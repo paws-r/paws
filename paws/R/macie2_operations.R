@@ -3755,7 +3755,7 @@ macie2_get_usage_statistics <- function(filterBy = NULL, maxResults = NULL, next
     http_method = "POST",
     http_path = "/usage/statistics",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "records"),
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "records", non_aggregate_keys = list("timeRange")),
     stream_api = FALSE
   )
   input <- .macie2$get_usage_statistics_input(filterBy = filterBy, maxResults = maxResults, nextToken = nextToken, sortBy = sortBy, timeRange = timeRange)

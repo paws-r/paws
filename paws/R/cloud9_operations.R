@@ -11,6 +11,10 @@ NULL
 #' Creates an Cloud9 development environment, launches an Amazon Elastic
 #' Compute Cloud (Amazon EC2) instance, and then connects from the instance
 #' to the environment.
+#' 
+#' Cloud9 is no longer available to new customers. Existing customers of
+#' Cloud9 can continue to use the service as normal. [Learn
+#' more"](https://aws.amazon.com/blogs/devops/how-to-migrate-from-aws-cloud9-to-aws-ide-toolkits-or-aws-cloudshell/)
 #'
 #' @usage
 #' cloud9_create_environment_ec2(name, description, clientRequestToken,
@@ -36,16 +40,13 @@ NULL
 #' the EC2 instance. To choose an AMI for the instance, you must specify a
 #' valid AMI alias or a valid Amazon EC2 Systems Manager (SSM) path.
 #' 
-#' From December 04, 2023, you will be required to include the `imageId`
-#' parameter for the
-#' [`create_environment_ec2`][cloud9_create_environment_ec2] action. This
-#' change will be reflected across all direct methods of communicating with
-#' the API, such as Amazon Web Services SDK, Amazon Web Services CLI and
-#' Amazon Web Services CloudFormation. This change will only affect direct
-#' API consumers, and not Cloud9 console users.
-#' 
 #' We recommend using Amazon Linux 2023 as the AMI to create your
 #' environment as it is fully supported.
+#' 
+#' From December 16, 2024, Ubuntu 18.04 will be removed from the list of
+#' available `imageIds` for Cloud9. This change is necessary as Ubuntu
+#' 18.04 has ended standard support on May 31, 2023. This change will only
+#' affect direct API consumers, and not Cloud9 console users.
 #' 
 #' Since Ubuntu 18.04 has ended standard support as of May 31, 2023, we
 #' recommend you choose Ubuntu 22.04.
@@ -130,7 +131,6 @@ NULL
 #'   name = "my-demo-environment",
 #'   automaticStopTimeMinutes = 60L,
 #'   description = "This is my demonstration environment.",
-#'   imageId = "amazonlinux-2023-x86_64",
 #'   instanceType = "t2.micro",
 #'   ownerArn = "arn:aws:iam::123456789012:user/MyDemoUser",
 #'   subnetId = "subnet-6300cd1b"
@@ -165,6 +165,10 @@ cloud9_create_environment_ec2 <- function(name, description = NULL, clientReques
 #'
 #' @description
 #' Adds an environment member to an Cloud9 development environment.
+#' 
+#' Cloud9 is no longer available to new customers. Existing customers of
+#' Cloud9 can continue to use the service as normal. [Learn
+#' more"](https://aws.amazon.com/blogs/devops/how-to-migrate-from-aws-cloud9-to-aws-ide-toolkits-or-aws-cloudshell/)
 #'
 #' @usage
 #' cloud9_create_environment_membership(environmentId, userArn,
@@ -245,6 +249,10 @@ cloud9_create_environment_membership <- function(environmentId, userArn, permiss
 #' @description
 #' Deletes an Cloud9 development environment. If an Amazon EC2 instance is
 #' connected to the environment, also terminates the instance.
+#' 
+#' Cloud9 is no longer available to new customers. Existing customers of
+#' Cloud9 can continue to use the service as normal. [Learn
+#' more"](https://aws.amazon.com/blogs/devops/how-to-migrate-from-aws-cloud9-to-aws-ide-toolkits-or-aws-cloudshell/)
 #'
 #' @usage
 #' cloud9_delete_environment(environmentId)
@@ -297,6 +305,10 @@ cloud9_delete_environment <- function(environmentId) {
 #'
 #' @description
 #' Deletes an environment member from a development environment.
+#' 
+#' Cloud9 is no longer available to new customers. Existing customers of
+#' Cloud9 can continue to use the service as normal. [Learn
+#' more"](https://aws.amazon.com/blogs/devops/how-to-migrate-from-aws-cloud9-to-aws-ide-toolkits-or-aws-cloudshell/)
 #'
 #' @usage
 #' cloud9_delete_environment_membership(environmentId, userArn)
@@ -355,6 +367,10 @@ cloud9_delete_environment_membership <- function(environmentId, userArn) {
 #' @description
 #' Gets information about environment members for an Cloud9 development
 #' environment.
+#' 
+#' Cloud9 is no longer available to new customers. Existing customers of
+#' Cloud9 can continue to use the service as normal. [Learn
+#' more"](https://aws.amazon.com/blogs/devops/how-to-migrate-from-aws-cloud9-to-aws-ide-toolkits-or-aws-cloudshell/)
 #'
 #' @usage
 #' cloud9_describe_environment_memberships(userArn, environmentId,
@@ -450,7 +466,7 @@ cloud9_describe_environment_memberships <- function(userArn = NULL, environmentI
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    paginator = list(result_key = "memberships", output_token = "nextToken", input_token = "nextToken", limit_key = "maxResults"),
     stream_api = FALSE
   )
   input <- .cloud9$describe_environment_memberships_input(userArn = userArn, environmentId = environmentId, permissions = permissions, nextToken = nextToken, maxResults = maxResults)
@@ -467,6 +483,10 @@ cloud9_describe_environment_memberships <- function(userArn = NULL, environmentI
 #'
 #' @description
 #' Gets status information for an Cloud9 development environment.
+#' 
+#' Cloud9 is no longer available to new customers. Existing customers of
+#' Cloud9 can continue to use the service as normal. [Learn
+#' more"](https://aws.amazon.com/blogs/devops/how-to-migrate-from-aws-cloud9-to-aws-ide-toolkits-or-aws-cloudshell/)
 #'
 #' @usage
 #' cloud9_describe_environment_status(environmentId)
@@ -525,6 +545,10 @@ cloud9_describe_environment_status <- function(environmentId) {
 #'
 #' @description
 #' Gets information about Cloud9 development environments.
+#' 
+#' Cloud9 is no longer available to new customers. Existing customers of
+#' Cloud9 can continue to use the service as normal. [Learn
+#' more"](https://aws.amazon.com/blogs/devops/how-to-migrate-from-aws-cloud9-to-aws-ide-toolkits-or-aws-cloudshell/)
 #'
 #' @usage
 #' cloud9_describe_environments(environmentIds)
@@ -603,6 +627,14 @@ cloud9_describe_environments <- function(environmentIds) {
 #'
 #' @description
 #' Gets a list of Cloud9 development environment identifiers.
+#' 
+#' Cloud9 is no longer available to new customers. Existing customers of
+#' Cloud9 can continue to use the service as normal. [Learn
+#' more"](https://aws.amazon.com/blogs/devops/how-to-migrate-from-aws-cloud9-to-aws-ide-toolkits-or-aws-cloudshell/)
+#' 
+#' Cloud9 is no longer available to new customers. Existing customers of
+#' Cloud9 can continue to use the service as normal. [Learn
+#' more"](https://aws.amazon.com/blogs/devops/how-to-migrate-from-aws-cloud9-to-aws-ide-toolkits-or-aws-cloudshell/)
 #'
 #' @usage
 #' cloud9_list_environments(nextToken, maxResults)
@@ -651,7 +683,7 @@ cloud9_list_environments <- function(nextToken = NULL, maxResults = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    paginator = list(result_key = "environmentIds", output_token = "nextToken", input_token = "nextToken", limit_key = "maxResults"),
     stream_api = FALSE
   )
   input <- .cloud9$list_environments_input(nextToken = nextToken, maxResults = maxResults)
@@ -670,6 +702,10 @@ cloud9_list_environments <- function(nextToken = NULL, maxResults = NULL) {
 #' @description
 #' Gets a list of the tags associated with an Cloud9 development
 #' environment.
+#' 
+#' Cloud9 is no longer available to new customers. Existing customers of
+#' Cloud9 can continue to use the service as normal. [Learn
+#' more"](https://aws.amazon.com/blogs/devops/how-to-migrate-from-aws-cloud9-to-aws-ide-toolkits-or-aws-cloudshell/)
 #'
 #' @usage
 #' cloud9_list_tags_for_resource(ResourceARN)
@@ -726,6 +762,10 @@ cloud9_list_tags_for_resource <- function(ResourceARN) {
 #' @description
 #' Adds tags to an Cloud9 development environment.
 #' 
+#' Cloud9 is no longer available to new customers. Existing customers of
+#' Cloud9 can continue to use the service as normal. [Learn
+#' more"](https://aws.amazon.com/blogs/devops/how-to-migrate-from-aws-cloud9-to-aws-ide-toolkits-or-aws-cloudshell/)
+#' 
 #' Tags that you add to an Cloud9 environment by using this method will NOT
 #' be automatically propagated to underlying resources.
 #'
@@ -780,6 +820,10 @@ cloud9_tag_resource <- function(ResourceARN, Tags) {
 #'
 #' @description
 #' Removes tags from an Cloud9 development environment.
+#' 
+#' Cloud9 is no longer available to new customers. Existing customers of
+#' Cloud9 can continue to use the service as normal. [Learn
+#' more"](https://aws.amazon.com/blogs/devops/how-to-migrate-from-aws-cloud9-to-aws-ide-toolkits-or-aws-cloudshell/)
 #'
 #' @usage
 #' cloud9_untag_resource(ResourceARN, TagKeys)
@@ -830,6 +874,10 @@ cloud9_untag_resource <- function(ResourceARN, TagKeys) {
 #'
 #' @description
 #' Changes the settings of an existing Cloud9 development environment.
+#' 
+#' Cloud9 is no longer available to new customers. Existing customers of
+#' Cloud9 can continue to use the service as normal. [Learn
+#' more"](https://aws.amazon.com/blogs/devops/how-to-migrate-from-aws-cloud9-to-aws-ide-toolkits-or-aws-cloudshell/)
 #'
 #' @usage
 #' cloud9_update_environment(environmentId, name, description,
@@ -904,6 +952,10 @@ cloud9_update_environment <- function(environmentId, name = NULL, description = 
 #' @description
 #' Changes the settings of an existing environment member for an Cloud9
 #' development environment.
+#' 
+#' Cloud9 is no longer available to new customers. Existing customers of
+#' Cloud9 can continue to use the service as normal. [Learn
+#' more"](https://aws.amazon.com/blogs/devops/how-to-migrate-from-aws-cloud9-to-aws-ide-toolkits-or-aws-cloudshell/)
 #'
 #' @usage
 #' cloud9_update_environment_membership(environmentId, userArn,

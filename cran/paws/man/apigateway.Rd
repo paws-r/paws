@@ -105,6 +105,7 @@ outside of AWS.
 \link[paws.networking:apigateway_create_documentation_part]{create_documentation_part} \tab Creates a documentation part\cr
 \link[paws.networking:apigateway_create_documentation_version]{create_documentation_version} \tab Creates a documentation version\cr
 \link[paws.networking:apigateway_create_domain_name]{create_domain_name} \tab Creates a new domain name\cr
+\link[paws.networking:apigateway_create_domain_name_access_association]{create_domain_name_access_association} \tab Creates a domain name access association resource between an access association source and a private custom domain name\cr
 \link[paws.networking:apigateway_create_model]{create_model} \tab Adds a new Model resource to an existing RestApi resource\cr
 \link[paws.networking:apigateway_create_request_validator]{create_request_validator} \tab Creates a RequestValidator of a given RestApi\cr
 \link[paws.networking:apigateway_create_resource]{create_resource} \tab Creates a Resource resource\cr
@@ -121,6 +122,7 @@ outside of AWS.
 \link[paws.networking:apigateway_delete_documentation_part]{delete_documentation_part} \tab Deletes a documentation part\cr
 \link[paws.networking:apigateway_delete_documentation_version]{delete_documentation_version} \tab Deletes a documentation version\cr
 \link[paws.networking:apigateway_delete_domain_name]{delete_domain_name} \tab Deletes the DomainName resource\cr
+\link[paws.networking:apigateway_delete_domain_name_access_association]{delete_domain_name_access_association} \tab Deletes the DomainNameAccessAssociation resource\cr
 \link[paws.networking:apigateway_delete_gateway_response]{delete_gateway_response} \tab Clears any customization of a GatewayResponse of a specified response type on the given RestApi and resets it with the default settings\cr
 \link[paws.networking:apigateway_delete_integration]{delete_integration} \tab Represents a delete integration\cr
 \link[paws.networking:apigateway_delete_integration_response]{delete_integration_response} \tab Represents a delete integration response\cr
@@ -153,6 +155,7 @@ outside of AWS.
 \link[paws.networking:apigateway_get_documentation_version]{get_documentation_version} \tab Gets a documentation version\cr
 \link[paws.networking:apigateway_get_documentation_versions]{get_documentation_versions} \tab Gets documentation versions\cr
 \link[paws.networking:apigateway_get_domain_name]{get_domain_name} \tab Represents a domain name that is contained in a simpler, more intuitive URL that can be called\cr
+\link[paws.networking:apigateway_get_domain_name_access_associations]{get_domain_name_access_associations} \tab Represents a collection on DomainNameAccessAssociations resources\cr
 \link[paws.networking:apigateway_get_domain_names]{get_domain_names} \tab Represents a collection of DomainName resources\cr
 \link[paws.networking:apigateway_get_export]{get_export} \tab Exports a deployed version of a RestApi in a specified format\cr
 \link[paws.networking:apigateway_get_gateway_response]{get_gateway_response} \tab Gets a GatewayResponse of a specified response type on the given RestApi\cr
@@ -192,6 +195,7 @@ outside of AWS.
 \link[paws.networking:apigateway_put_method]{put_method} \tab Add a method to an existing Resource resource\cr
 \link[paws.networking:apigateway_put_method_response]{put_method_response} \tab Adds a MethodResponse to an existing Method resource\cr
 \link[paws.networking:apigateway_put_rest_api]{put_rest_api} \tab A feature of the API Gateway control service for updating an existing API with an input of external API definitions\cr
+\link[paws.networking:apigateway_reject_domain_name_access_association]{reject_domain_name_access_association} \tab Rejects a domain name access association with a private custom domain name\cr
 \link[paws.networking:apigateway_tag_resource]{tag_resource} \tab Adds or updates a tag on a given resource\cr
 \link[paws.networking:apigateway_test_invoke_authorizer]{test_invoke_authorizer} \tab Simulate the execution of an Authorizer in your RestApi with headers, parameters, and an incoming request body\cr
 \link[paws.networking:apigateway_test_invoke_method]{test_invoke_method} \tab Simulate the invocation of a Method in your RestApi with headers, parameters, and an incoming request body\cr

@@ -8,9 +8,9 @@ you can use to deploy a model to an endpoint}
 sagemaker_create_inference_component(
   InferenceComponentName,
   EndpointName,
-  VariantName,
+  VariantName = NULL,
   Specification,
-  RuntimeConfig,
+  RuntimeConfig = NULL,
   Tags = NULL
 )
 }
@@ -19,13 +19,13 @@ sagemaker_create_inference_component(
 
 \item{EndpointName}{[required] The name of an existing endpoint where you host the inference component.}
 
-\item{VariantName}{[required] The name of an existing production variant where you host the inference
+\item{VariantName}{The name of an existing production variant where you host the inference
 component.}
 
 \item{Specification}{[required] Details about the resources to deploy with this inference component,
 including the model, container, and compute resources.}
 
-\item{RuntimeConfig}{[required] Runtime settings for a model that is deployed with an inference
+\item{RuntimeConfig}{Runtime settings for a model that is deployed with an inference
 component.}
 
 \item{Tags}{A list of key-value pairs associated with the model. For more

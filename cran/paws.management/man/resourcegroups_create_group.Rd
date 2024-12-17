@@ -9,7 +9,10 @@ resourcegroups_create_group(
   Description = NULL,
   ResourceQuery = NULL,
   Tags = NULL,
-  Configuration = NULL
+  Configuration = NULL,
+  Criticality = NULL,
+  Owner = NULL,
+  DisplayName = NULL
 )
 }
 \arguments{
@@ -41,6 +44,16 @@ configurations, see \href{https://docs.aws.amazon.com/ARG/latest/userguide/about
 
 A resource group can contain either a \code{Configuration} or a
 \code{ResourceQuery}, but not both.}
+
+\item{Criticality}{The critical rank of the application group on a scale of 1 to 10, with a
+rank of 1 being the most critical, and a rank of 10 being least
+critical.}
+
+\item{Owner}{A name, email address or other identifier for the person or group who is
+considered as the owner of this application group within your
+organization.}
+
+\item{DisplayName}{The name of the application group, which you can change at any time.}
 }
 \description{
 Creates a resource group with the specified name and description. You can optionally include either a resource query or a service configuration. For more information about constructing a resource query, see \href{https://docs.aws.amazon.com/ARG/latest/userguide/}{Build queries and groups in Resource Groups} in the \emph{Resource Groups User Guide}. For more information about service-linked groups and service configurations, see \href{https://docs.aws.amazon.com/ARG/latest/userguide/about-slg.html}{Service configurations for Resource Groups}.

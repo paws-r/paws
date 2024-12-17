@@ -15,7 +15,8 @@ pinpointsmsvoicev2_send_media_message(
   TimeToLive = NULL,
   Context = NULL,
   DryRun = NULL,
-  ProtectConfigurationId = NULL
+  ProtectConfigurationId = NULL,
+  MessageFeedbackEnabled = NULL
 )
 }
 \arguments{
@@ -23,7 +24,10 @@ pinpointsmsvoicev2_send_media_message(
 
 \item{OriginationIdentity}{[required] The origination identity of the message. This can be either the
 PhoneNumber, PhoneNumberId, PhoneNumberArn, SenderId, SenderIdArn,
-PoolId, or PoolArn.}
+PoolId, or PoolArn.
+
+If you are using a shared AWS End User Messaging SMS and Voice resource
+then you must use the full Amazon Resource Name(ARN).}
 
 \item{MessageBody}{The text body of the message.}
 
@@ -42,7 +46,7 @@ ConfigurationSetName or ConfigurationSetArn.}
 \item{MaxPrice}{The maximum amount that you want to spend, in US dollars, per each MMS
 message.}
 
-\item{TimeToLive}{How long the text message is valid for. By default this is 72 hours.}
+\item{TimeToLive}{How long the media message is valid for. By default this is 72 hours.}
 
 \item{Context}{You can specify custom data in this field. If you do, that data is
 logged to the event destination.}
@@ -51,6 +55,10 @@ logged to the event destination.}
 to the end recipient.}
 
 \item{ProtectConfigurationId}{The unique identifier of the protect configuration to use.}
+
+\item{MessageFeedbackEnabled}{Set to true to enable message feedback for the message. When a user
+receives the message you need to update the message status using
+\code{\link[=pinpointsmsvoicev2_put_message_feedback]{put_message_feedback}}.}
 }
 \description{
 Creates a new multimedia message (MMS) and sends it to a recipient's phone number.

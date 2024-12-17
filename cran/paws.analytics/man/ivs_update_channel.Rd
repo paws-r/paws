@@ -6,46 +6,57 @@
 \usage{
 ivs_update_channel(
   arn,
-  name = NULL,
-  latencyMode = NULL,
-  type = NULL,
   authorized = NULL,
-  recordingConfigurationArn = NULL,
+  containerFormat = NULL,
   insecureIngest = NULL,
+  latencyMode = NULL,
+  multitrackInputConfiguration = NULL,
+  name = NULL,
+  playbackRestrictionPolicyArn = NULL,
   preset = NULL,
-  playbackRestrictionPolicyArn = NULL
+  recordingConfigurationArn = NULL,
+  type = NULL
 )
 }
 \arguments{
 \item{arn}{[required] ARN of the channel to be updated.}
 
-\item{name}{Channel name.}
+\item{authorized}{Whether the channel is private (enabled for playback authorization).}
+
+\item{containerFormat}{Indicates which content-packaging format is used (MPEG-TS or fMP4). If
+\code{multitrackInputConfiguration} is specified and \code{enabled} is \code{true},
+then \code{containerFormat} is required and must be set to \code{FRAGMENTED_MP4}.
+Otherwise, \code{containerFormat} may be set to \code{TS} or \code{FRAGMENTED_MP4}.
+Default: \code{TS}.}
+
+\item{insecureIngest}{Whether the channel allows insecure RTMP and SRT ingest. Default:
+\code{false}.}
 
 \item{latencyMode}{Channel latency mode. Use \code{NORMAL} to broadcast and deliver live video
 up to Full HD. Use \code{LOW} for near-real-time interaction with viewers.}
 
-\item{type}{Channel type, which determines the allowable resolution and bitrate. \emph{If
-you exceed the allowable input resolution or bitrate, the stream
-probably will disconnect immediately.} Default: \code{STANDARD}. For details,
-see \href{https://docs.aws.amazon.com/ivs/latest/LowLatencyAPIReference/channel-types.html}{Channel Types}.}
+\item{multitrackInputConfiguration}{Object specifying multitrack input configuration. Default: no multitrack
+input configuration is specified.}
 
-\item{authorized}{Whether the channel is private (enabled for playback authorization).}
+\item{name}{Channel name.}
 
-\item{recordingConfigurationArn}{Recording-configuration ARN. A valid ARN value here both specifies the
-ARN and enables recording. If this is set to an empty string, recording
-is disabled.}
-
-\item{insecureIngest}{Whether the channel allows insecure RTMP and SRT ingest. Default:
-\code{false}.}
+\item{playbackRestrictionPolicyArn}{Playback-restriction-policy ARN. A valid ARN value here both specifies
+the ARN and enables playback restriction. If this is set to an empty
+string, playback restriction policy is disabled.}
 
 \item{preset}{Optional transcode preset for the channel. This is selectable only for
 \code{ADVANCED_HD} and \code{ADVANCED_SD} channel types. For those channel types,
 the default \code{preset} is \code{HIGHER_BANDWIDTH_DELIVERY}. For other channel
 types (\code{BASIC} and \code{STANDARD}), \code{preset} is the empty string (\code{""}).}
 
-\item{playbackRestrictionPolicyArn}{Playback-restriction-policy ARN. A valid ARN value here both specifies
-the ARN and enables playback restriction. If this is set to an empty
-string, playback restriction policy is disabled.}
+\item{recordingConfigurationArn}{Recording-configuration ARN. A valid ARN value here both specifies the
+ARN and enables recording. If this is set to an empty string, recording
+is disabled.}
+
+\item{type}{Channel type, which determines the allowable resolution and bitrate. \emph{If
+you exceed the allowable input resolution or bitrate, the stream
+probably will disconnect immediately.} Default: \code{STANDARD}. For details,
+see \href{https://docs.aws.amazon.com/ivs/latest/LowLatencyAPIReference/channel-types.html}{Channel Types}.}
 }
 \description{
 Updates a channel's configuration. Live channels cannot be updated. You must stop the ongoing stream, update the channel, and restart the stream for the changes to take effect.

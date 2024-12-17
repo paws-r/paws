@@ -302,7 +302,12 @@ eks_create_addon <- function(clusterName, addonName, addonVersion = NULL, servic
 #'
 #' See [https://www.paws-r-sdk.com/docs/eks_create_cluster/](https://www.paws-r-sdk.com/docs/eks_create_cluster/) for full documentation.
 #'
-#' @param name &#91;required&#93; The unique name to give to your cluster.
+#' @param name &#91;required&#93; The unique name to give to your cluster. The name can contain only
+#' alphanumeric characters (case-sensitive), hyphens, and underscores. It
+#' must start with an alphanumeric character and can't be longer than 100
+#' characters. The name must be unique within the Amazon Web Services
+#' Region and Amazon Web Services account that you're creating the cluster
+#' in.
 #' @param version The desired Kubernetes version for your cluster. If you don't specify a
 #' value here, the default version available in Amazon EKS is used.
 #' 
@@ -357,11 +362,41 @@ eks_create_addon <- function(clusterName, addonName, addonVersion = NULL, servic
 #' @param upgradePolicy New clusters, by default, have extended support enabled. You can disable
 #' extended support when creating a cluster by setting this value to
 #' `STANDARD`.
+#' @param zonalShiftConfig Enable or disable ARC zonal shift for the cluster. If zonal shift is
+#' enabled, Amazon Web Services configures zonal autoshift for the cluster.
+#' 
+#' Zonal shift is a feature of Amazon Application Recovery Controller
+#' (ARC). ARC zonal shift is designed to be a temporary measure that allows
+#' you to move traffic for a resource away from an impaired AZ until the
+#' zonal shift expires or you cancel it. You can extend the zonal shift if
+#' necessary.
+#' 
+#' You can start a zonal shift for an EKS cluster, or you can allow Amazon
+#' Web Services to do it for you by enabling *zonal autoshift*. This shift
+#' updates the flow of east-to-west network traffic in your cluster to only
+#' consider network endpoints for Pods running on worker nodes in healthy
+#' AZs. Additionally, any ALB or NLB handling ingress traffic for
+#' applications in your EKS cluster will automatically route traffic to
+#' targets in the healthy AZs. For more information about zonal shift in
+#' EKS, see [Learn about Amazon Application Recovery Controller (ARC) Zonal
+#' Shift in Amazon
+#' EKS](https://docs.aws.amazon.com/eks/latest/userguide/zone-shift.html)
+#' in the *Amazon EKS User Guide* .
+#' @param remoteNetworkConfig The configuration in the cluster for EKS Hybrid Nodes. You can't change
+#' or update this configuration after the cluster is created.
+#' @param computeConfig Enable or disable the compute capability of EKS Auto Mode when creating
+#' your EKS Auto Mode cluster. If the compute capability is enabled, EKS
+#' Auto Mode will create and delete EC2 Managed Instances in your Amazon
+#' Web Services account
+#' @param storageConfig Enable or disable the block storage capability of EKS Auto Mode when
+#' creating your EKS Auto Mode cluster. If the block storage capability is
+#' enabled, EKS Auto Mode will create and delete EBS volumes in your Amazon
+#' Web Services account.
 #'
 #' @keywords internal
 #'
 #' @rdname eks_create_cluster
-eks_create_cluster <- function(name, version = NULL, roleArn, resourcesVpcConfig, kubernetesNetworkConfig = NULL, logging = NULL, clientRequestToken = NULL, tags = NULL, encryptionConfig = NULL, outpostConfig = NULL, accessConfig = NULL, bootstrapSelfManagedAddons = NULL, upgradePolicy = NULL) {
+eks_create_cluster <- function(name, version = NULL, roleArn, resourcesVpcConfig, kubernetesNetworkConfig = NULL, logging = NULL, clientRequestToken = NULL, tags = NULL, encryptionConfig = NULL, outpostConfig = NULL, accessConfig = NULL, bootstrapSelfManagedAddons = NULL, upgradePolicy = NULL, zonalShiftConfig = NULL, remoteNetworkConfig = NULL, computeConfig = NULL, storageConfig = NULL) {
   op <- new_operation(
     name = "CreateCluster",
     http_method = "POST",
@@ -370,7 +405,7 @@ eks_create_cluster <- function(name, version = NULL, roleArn, resourcesVpcConfig
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .eks$create_cluster_input(name = name, version = version, roleArn = roleArn, resourcesVpcConfig = resourcesVpcConfig, kubernetesNetworkConfig = kubernetesNetworkConfig, logging = logging, clientRequestToken = clientRequestToken, tags = tags, encryptionConfig = encryptionConfig, outpostConfig = outpostConfig, accessConfig = accessConfig, bootstrapSelfManagedAddons = bootstrapSelfManagedAddons, upgradePolicy = upgradePolicy)
+  input <- .eks$create_cluster_input(name = name, version = version, roleArn = roleArn, resourcesVpcConfig = resourcesVpcConfig, kubernetesNetworkConfig = kubernetesNetworkConfig, logging = logging, clientRequestToken = clientRequestToken, tags = tags, encryptionConfig = encryptionConfig, outpostConfig = outpostConfig, accessConfig = accessConfig, bootstrapSelfManagedAddons = bootstrapSelfManagedAddons, upgradePolicy = upgradePolicy, zonalShiftConfig = zonalShiftConfig, remoteNetworkConfig = remoteNetworkConfig, computeConfig = computeConfig, storageConfig = storageConfig)
   output <- .eks$create_cluster_output()
   config <- get_config()
   svc <- .eks$service(config, op)
@@ -574,6 +609,7 @@ eks_create_fargate_profile <- function(fargateProfileName, clusterName, podExecu
 #' templates](https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html)
 #' in the *Amazon EKS User Guide*.
 #' @param updateConfig The node group update configuration.
+#' @param nodeRepairConfig The node auto repair configuration for the node group.
 #' @param capacityType The capacity type for your node group.
 #' @param version The Kubernetes version to use for your managed nodes. By default, the
 #' Kubernetes version of the cluster is used, and this is the only accepted
@@ -605,7 +641,7 @@ eks_create_fargate_profile <- function(fargateProfileName, clusterName, podExecu
 #' @keywords internal
 #'
 #' @rdname eks_create_nodegroup
-eks_create_nodegroup <- function(clusterName, nodegroupName, scalingConfig = NULL, diskSize = NULL, subnets, instanceTypes = NULL, amiType = NULL, remoteAccess = NULL, nodeRole, labels = NULL, taints = NULL, tags = NULL, clientRequestToken = NULL, launchTemplate = NULL, updateConfig = NULL, capacityType = NULL, version = NULL, releaseVersion = NULL) {
+eks_create_nodegroup <- function(clusterName, nodegroupName, scalingConfig = NULL, diskSize = NULL, subnets, instanceTypes = NULL, amiType = NULL, remoteAccess = NULL, nodeRole, labels = NULL, taints = NULL, tags = NULL, clientRequestToken = NULL, launchTemplate = NULL, updateConfig = NULL, nodeRepairConfig = NULL, capacityType = NULL, version = NULL, releaseVersion = NULL) {
   op <- new_operation(
     name = "CreateNodegroup",
     http_method = "POST",
@@ -614,7 +650,7 @@ eks_create_nodegroup <- function(clusterName, nodegroupName, scalingConfig = NUL
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .eks$create_nodegroup_input(clusterName = clusterName, nodegroupName = nodegroupName, scalingConfig = scalingConfig, diskSize = diskSize, subnets = subnets, instanceTypes = instanceTypes, amiType = amiType, remoteAccess = remoteAccess, nodeRole = nodeRole, labels = labels, taints = taints, tags = tags, clientRequestToken = clientRequestToken, launchTemplate = launchTemplate, updateConfig = updateConfig, capacityType = capacityType, version = version, releaseVersion = releaseVersion)
+  input <- .eks$create_nodegroup_input(clusterName = clusterName, nodegroupName = nodegroupName, scalingConfig = scalingConfig, diskSize = diskSize, subnets = subnets, instanceTypes = instanceTypes, amiType = amiType, remoteAccess = remoteAccess, nodeRole = nodeRole, labels = labels, taints = taints, tags = tags, clientRequestToken = clientRequestToken, launchTemplate = launchTemplate, updateConfig = updateConfig, nodeRepairConfig = nodeRepairConfig, capacityType = capacityType, version = version, releaseVersion = releaseVersion)
   output <- .eks$create_nodegroup_output()
   config <- get_config()
   svc <- .eks$service(config, op)
@@ -2319,11 +2355,36 @@ eks_update_addon <- function(clusterName, addonName, addonVersion = NULL, servic
 #' standard support. You cannot disable extended support once it starts.
 #' You must enable extended support before your cluster exits standard
 #' support.
+#' @param zonalShiftConfig Enable or disable ARC zonal shift for the cluster. If zonal shift is
+#' enabled, Amazon Web Services configures zonal autoshift for the cluster.
+#' 
+#' Zonal shift is a feature of Amazon Application Recovery Controller
+#' (ARC). ARC zonal shift is designed to be a temporary measure that allows
+#' you to move traffic for a resource away from an impaired AZ until the
+#' zonal shift expires or you cancel it. You can extend the zonal shift if
+#' necessary.
+#' 
+#' You can start a zonal shift for an EKS cluster, or you can allow Amazon
+#' Web Services to do it for you by enabling *zonal autoshift*. This shift
+#' updates the flow of east-to-west network traffic in your cluster to only
+#' consider network endpoints for Pods running on worker nodes in healthy
+#' AZs. Additionally, any ALB or NLB handling ingress traffic for
+#' applications in your EKS cluster will automatically route traffic to
+#' targets in the healthy AZs. For more information about zonal shift in
+#' EKS, see [Learn about Amazon Application Recovery Controller (ARC) Zonal
+#' Shift in Amazon
+#' EKS](https://docs.aws.amazon.com/eks/latest/userguide/zone-shift.html)
+#' in the *Amazon EKS User Guide* .
+#' @param computeConfig Update the configuration of the compute capability of your EKS Auto Mode
+#' cluster. For example, enable the capability.
+#' @param kubernetesNetworkConfig 
+#' @param storageConfig Update the configuration of the block storage capability of your EKS
+#' Auto Mode cluster. For example, enable the capability.
 #'
 #' @keywords internal
 #'
 #' @rdname eks_update_cluster_config
-eks_update_cluster_config <- function(name, resourcesVpcConfig = NULL, logging = NULL, clientRequestToken = NULL, accessConfig = NULL, upgradePolicy = NULL) {
+eks_update_cluster_config <- function(name, resourcesVpcConfig = NULL, logging = NULL, clientRequestToken = NULL, accessConfig = NULL, upgradePolicy = NULL, zonalShiftConfig = NULL, computeConfig = NULL, kubernetesNetworkConfig = NULL, storageConfig = NULL) {
   op <- new_operation(
     name = "UpdateClusterConfig",
     http_method = "POST",
@@ -2332,7 +2393,7 @@ eks_update_cluster_config <- function(name, resourcesVpcConfig = NULL, logging =
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .eks$update_cluster_config_input(name = name, resourcesVpcConfig = resourcesVpcConfig, logging = logging, clientRequestToken = clientRequestToken, accessConfig = accessConfig, upgradePolicy = upgradePolicy)
+  input <- .eks$update_cluster_config_input(name = name, resourcesVpcConfig = resourcesVpcConfig, logging = logging, clientRequestToken = clientRequestToken, accessConfig = accessConfig, upgradePolicy = upgradePolicy, zonalShiftConfig = zonalShiftConfig, computeConfig = computeConfig, kubernetesNetworkConfig = kubernetesNetworkConfig, storageConfig = storageConfig)
   output <- .eks$update_cluster_config_output()
   config <- get_config()
   svc <- .eks$service(config, op)
@@ -2428,13 +2489,14 @@ eks_update_eks_anywhere_subscription <- function(id, autoRenew, clientRequestTok
 #' @param scalingConfig The scaling configuration details for the Auto Scaling group after the
 #' update.
 #' @param updateConfig The node group update configuration.
+#' @param nodeRepairConfig The node auto repair configuration for the node group.
 #' @param clientRequestToken A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request.
 #'
 #' @keywords internal
 #'
 #' @rdname eks_update_nodegroup_config
-eks_update_nodegroup_config <- function(clusterName, nodegroupName, labels = NULL, taints = NULL, scalingConfig = NULL, updateConfig = NULL, clientRequestToken = NULL) {
+eks_update_nodegroup_config <- function(clusterName, nodegroupName, labels = NULL, taints = NULL, scalingConfig = NULL, updateConfig = NULL, nodeRepairConfig = NULL, clientRequestToken = NULL) {
   op <- new_operation(
     name = "UpdateNodegroupConfig",
     http_method = "POST",
@@ -2443,7 +2505,7 @@ eks_update_nodegroup_config <- function(clusterName, nodegroupName, labels = NUL
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .eks$update_nodegroup_config_input(clusterName = clusterName, nodegroupName = nodegroupName, labels = labels, taints = taints, scalingConfig = scalingConfig, updateConfig = updateConfig, clientRequestToken = clientRequestToken)
+  input <- .eks$update_nodegroup_config_input(clusterName = clusterName, nodegroupName = nodegroupName, labels = labels, taints = taints, scalingConfig = scalingConfig, updateConfig = updateConfig, nodeRepairConfig = nodeRepairConfig, clientRequestToken = clientRequestToken)
   output <- .eks$update_nodegroup_config_output()
   config <- get_config()
   svc <- .eks$service(config, op)

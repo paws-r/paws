@@ -16,6 +16,7 @@ sagemaker_create_domain(
   HomeEfsFileSystemKmsKeyId = NULL,
   KmsKeyId = NULL,
   AppSecurityGroupManagement = NULL,
+  TagPropagation = NULL,
   DefaultSpaceSettings = NULL
 )
 }
@@ -68,7 +69,10 @@ inter-app communication in \code{VPCOnly} mode. Required when
 is provided. If setting up the domain for use with RStudio, this value
 must be set to \code{Service}.}
 
-\item{DefaultSpaceSettings}{The default settings used to create a space.}
+\item{TagPropagation}{Indicates whether custom tag propagation is supported for the domain.
+Defaults to \code{DISABLED}.}
+
+\item{DefaultSpaceSettings}{The default settings for shared spaces that users create in the domain.}
 }
 \description{
 Creates a \code{Domain}. A domain consists of an associated Amazon Elastic File System volume, a list of authorized users, and a variety of security, application, policy, and Amazon Virtual Private Cloud (VPC) configurations. Users within a domain can share notebook files and other artifacts with each other.

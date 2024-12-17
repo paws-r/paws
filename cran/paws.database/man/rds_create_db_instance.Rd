@@ -49,6 +49,7 @@ rds_create_db_instance(
   PromotionTier = NULL,
   Timezone = NULL,
   EnableIAMDatabaseAuthentication = NULL,
+  DatabaseInsightsMode = NULL,
   EnablePerformanceInsights = NULL,
   PerformanceInsightsKMSKeyId = NULL,
   PerformanceInsightsRetentionPeriod = NULL,
@@ -84,6 +85,8 @@ cluster.
 Constraints:
 \itemize{
 \item Must contain 1 to 64 alphanumeric characters.
+\item Must begin with a letter. Subsequent characters can be letters,
+underscores, or digits (0-9).
 \item Can't be a word reserved by the database engine.
 }
 
@@ -336,6 +339,7 @@ Valid Values:
 \item \code{custom-sqlserver-ee} (for RDS Custom for SQL Server DB instances)
 \item \code{custom-sqlserver-se} (for RDS Custom for SQL Server DB instances)
 \item \code{custom-sqlserver-web} (for RDS Custom for SQL Server DB instances)
+\item \code{custom-sqlserver-dev} (for RDS Custom for SQL Server DB instances)
 \item \code{db2-ae}
 \item \code{db2-se}
 \item \code{mariadb}
@@ -431,7 +435,6 @@ Example: \verb{us-east-1d}}
 Constraints:
 \itemize{
 \item Must match the name of an existing DB subnet group.
-\item Must not be \code{default}.
 }
 
 Example: \code{mydbsubnetgroup}}
@@ -601,10 +604,10 @@ If you create an RDS Custom DB instance, you must set
 \item{LicenseModel}{The license model information for this DB instance.
 
 License models for RDS for Db2 require additional configuration. The
-Bring Your Own License (BYOL) model requires a custom parameter group.
-The Db2 license through Amazon Web Services Marketplace model requires
-an Amazon Web Services Marketplace subscription. For more information,
-see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/db2-licensing.html}{RDS for Db2 licensing options}
+Bring Your Own License (BYOL) model requires a custom parameter group
+and an Amazon Web Services License Manager self-managed license. The Db2
+license through Amazon Web Services Marketplace model requires an Amazon
+Web Services Marketplace subscription. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/db2-licensing.html}{Amazon RDS for Db2 licensing options}
 in the \emph{Amazon RDS User Guide}.
 
 The default for RDS for Db2 is \code{bring-your-own-license}.
@@ -874,6 +877,8 @@ This setting doesn't apply to the following DB instances:
 accounts is managed by the DB cluster.)
 \item RDS Custom
 }}
+
+\item{DatabaseInsightsMode}{Specifies the mode of Database Insights to enable for the instance.}
 
 \item{EnablePerformanceInsights}{Specifies whether to enable Performance Insights for the DB instance.
 For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PerfInsights.html}{Using Amazon Performance Insights}

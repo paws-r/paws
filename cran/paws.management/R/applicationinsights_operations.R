@@ -53,6 +53,7 @@ applicationinsights_add_workload <- function(ResourceGroupName, ComponentName, W
 #' @param OpsItemSNSTopicArn The SNS topic provided to Application Insights that is associated to the
 #' created opsItem. Allows you to receive notifications for updates to the
 #' opsItem.
+#' @param SNSNotificationArn The SNS notification topic ARN.
 #' @param Tags List of tags to add to the application. tag key (`Key`) and an
 #' associated tag value (`Value`). The maximum length of a tag key is 128
 #' characters. The maximum length of a tag value is 256 characters.
@@ -69,7 +70,7 @@ applicationinsights_add_workload <- function(ResourceGroupName, ComponentName, W
 #' @keywords internal
 #'
 #' @rdname applicationinsights_create_application
-applicationinsights_create_application <- function(ResourceGroupName = NULL, OpsCenterEnabled = NULL, CWEMonitorEnabled = NULL, OpsItemSNSTopicArn = NULL, Tags = NULL, AutoConfigEnabled = NULL, AutoCreate = NULL, GroupingType = NULL, AttachMissingPermission = NULL) {
+applicationinsights_create_application <- function(ResourceGroupName = NULL, OpsCenterEnabled = NULL, CWEMonitorEnabled = NULL, OpsItemSNSTopicArn = NULL, SNSNotificationArn = NULL, Tags = NULL, AutoConfigEnabled = NULL, AutoCreate = NULL, GroupingType = NULL, AttachMissingPermission = NULL) {
   op <- new_operation(
     name = "CreateApplication",
     http_method = "POST",
@@ -78,7 +79,7 @@ applicationinsights_create_application <- function(ResourceGroupName = NULL, Ops
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .applicationinsights$create_application_input(ResourceGroupName = ResourceGroupName, OpsCenterEnabled = OpsCenterEnabled, CWEMonitorEnabled = CWEMonitorEnabled, OpsItemSNSTopicArn = OpsItemSNSTopicArn, Tags = Tags, AutoConfigEnabled = AutoConfigEnabled, AutoCreate = AutoCreate, GroupingType = GroupingType, AttachMissingPermission = AttachMissingPermission)
+  input <- .applicationinsights$create_application_input(ResourceGroupName = ResourceGroupName, OpsCenterEnabled = OpsCenterEnabled, CWEMonitorEnabled = CWEMonitorEnabled, OpsItemSNSTopicArn = OpsItemSNSTopicArn, SNSNotificationArn = SNSNotificationArn, Tags = Tags, AutoConfigEnabled = AutoConfigEnabled, AutoCreate = AutoCreate, GroupingType = GroupingType, AttachMissingPermission = AttachMissingPermission)
   output <- .applicationinsights$create_application_output()
   config <- get_config()
   svc <- .applicationinsights$service(config, op)
@@ -143,8 +144,8 @@ applicationinsights_create_component <- function(ResourceGroupName, ComponentNam
 #' patterns from the console, a `Low` severity pattern translates to a
 #' `750,000` rank. A `Medium` severity pattern translates to a `500,000`
 #' rank. And a `High` severity pattern translates to a `250,000` rank. Rank
-#' values less than `1` or greater than `1,000,000` are reserved for
-#' AWS-provided patterns.
+#' values less than `1` or greater than `1,000,000` are reserved for Amazon
+#' Web Services provided patterns.
 #'
 #' @keywords internal
 #'
@@ -272,7 +273,7 @@ applicationinsights_delete_log_pattern <- function(ResourceGroupName, PatternSet
 #' See [https://www.paws-r-sdk.com/docs/applicationinsights_describe_application/](https://www.paws-r-sdk.com/docs/applicationinsights_describe_application/) for full documentation.
 #'
 #' @param ResourceGroupName &#91;required&#93; The name of the resource group.
-#' @param AccountId The AWS account ID for the resource group owner.
+#' @param AccountId The Amazon Web Services account ID for the resource group owner.
 #'
 #' @keywords internal
 #'
@@ -306,7 +307,7 @@ applicationinsights_describe_application <- function(ResourceGroupName, AccountI
 #'
 #' @param ResourceGroupName &#91;required&#93; The name of the resource group.
 #' @param ComponentName &#91;required&#93; The name of the component.
-#' @param AccountId The AWS account ID for the resource group owner.
+#' @param AccountId The Amazon Web Services account ID for the resource group owner.
 #'
 #' @keywords internal
 #'
@@ -339,7 +340,7 @@ applicationinsights_describe_component <- function(ResourceGroupName, ComponentN
 #'
 #' @param ResourceGroupName &#91;required&#93; The name of the resource group.
 #' @param ComponentName &#91;required&#93; The name of the component.
-#' @param AccountId The AWS account ID for the resource group owner.
+#' @param AccountId The Amazon Web Services account ID for the resource group owner.
 #'
 #' @keywords internal
 #'
@@ -373,7 +374,9 @@ applicationinsights_describe_component_configuration <- function(ResourceGroupNa
 #' @param ResourceGroupName &#91;required&#93; The name of the resource group.
 #' @param ComponentName &#91;required&#93; The name of the component.
 #' @param Tier &#91;required&#93; The tier of the application component.
-#' @param WorkloadName The name of the workload.
+#' @param WorkloadName The name of the workload. The name of the workload is required when the
+#' tier of the application component is `SAP_ASE_SINGLE_NODE` or
+#' `SAP_ASE_HIGH_AVAILABILITY`.
 #' @param RecommendationType The recommended configuration type.
 #'
 #' @keywords internal
@@ -408,7 +411,7 @@ applicationinsights_describe_component_configuration_recommendation <- function(
 #' @param ResourceGroupName &#91;required&#93; The name of the resource group.
 #' @param PatternSetName &#91;required&#93; The name of the log pattern set.
 #' @param PatternName &#91;required&#93; The name of the log pattern.
-#' @param AccountId The AWS account ID for the resource group owner.
+#' @param AccountId The Amazon Web Services account ID for the resource group owner.
 #'
 #' @keywords internal
 #'
@@ -440,7 +443,7 @@ applicationinsights_describe_log_pattern <- function(ResourceGroupName, PatternS
 #' See [https://www.paws-r-sdk.com/docs/applicationinsights_describe_observation/](https://www.paws-r-sdk.com/docs/applicationinsights_describe_observation/) for full documentation.
 #'
 #' @param ObservationId &#91;required&#93; The ID of the observation.
-#' @param AccountId The AWS account ID for the resource group owner.
+#' @param AccountId The Amazon Web Services account ID for the resource group owner.
 #'
 #' @keywords internal
 #'
@@ -472,8 +475,8 @@ applicationinsights_describe_observation <- function(ObservationId, AccountId = 
 #' See [https://www.paws-r-sdk.com/docs/applicationinsights_describe_problem/](https://www.paws-r-sdk.com/docs/applicationinsights_describe_problem/) for full documentation.
 #'
 #' @param ProblemId &#91;required&#93; The ID of the problem.
-#' @param AccountId The AWS account ID for the owner of the resource group affected by the
-#' problem.
+#' @param AccountId The Amazon Web Services account ID for the owner of the resource group
+#' affected by the problem.
 #'
 #' @keywords internal
 #'
@@ -505,7 +508,7 @@ applicationinsights_describe_problem <- function(ProblemId, AccountId = NULL) {
 #' See [https://www.paws-r-sdk.com/docs/applicationinsights_describe_problem_observations/](https://www.paws-r-sdk.com/docs/applicationinsights_describe_problem_observations/) for full documentation.
 #'
 #' @param ProblemId &#91;required&#93; The ID of the problem.
-#' @param AccountId The AWS account ID for the resource group owner.
+#' @param AccountId The Amazon Web Services account ID for the resource group owner.
 #'
 #' @keywords internal
 #'
@@ -539,7 +542,7 @@ applicationinsights_describe_problem_observations <- function(ProblemId, Account
 #' @param ResourceGroupName &#91;required&#93; The name of the resource group.
 #' @param ComponentName &#91;required&#93; The name of the component.
 #' @param WorkloadId &#91;required&#93; The ID of the workload.
-#' @param AccountId The AWS account ID for the workload owner.
+#' @param AccountId The Amazon Web Services account ID for the workload owner.
 #'
 #' @keywords internal
 #'
@@ -574,7 +577,7 @@ applicationinsights_describe_workload <- function(ResourceGroupName, ComponentNa
 #' the remaining results, make another call with the returned `NextToken`
 #' value.
 #' @param NextToken The token to request the next page of results.
-#' @param AccountId The AWS account ID for the resource group owner.
+#' @param AccountId The Amazon Web Services account ID for the resource group owner.
 #'
 #' @keywords internal
 #'
@@ -585,7 +588,7 @@ applicationinsights_list_applications <- function(MaxResults = NULL, NextToken =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .applicationinsights$list_applications_input(MaxResults = MaxResults, NextToken = NextToken, AccountId = AccountId)
@@ -611,7 +614,7 @@ applicationinsights_list_applications <- function(MaxResults = NULL, NextToken =
 #' the remaining results, make another call with the returned `NextToken`
 #' value.
 #' @param NextToken The token to request the next page of results.
-#' @param AccountId The AWS account ID for the resource group owner.
+#' @param AccountId The Amazon Web Services account ID for the resource group owner.
 #'
 #' @keywords internal
 #'
@@ -622,7 +625,7 @@ applicationinsights_list_components <- function(ResourceGroupName, MaxResults = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .applicationinsights$list_components_input(ResourceGroupName = ResourceGroupName, MaxResults = MaxResults, NextToken = NextToken, AccountId = AccountId)
@@ -666,7 +669,7 @@ applicationinsights_list_components <- function(ResourceGroupName, MaxResults = 
 #' of that parameter. Pagination continues from the end of the previous
 #' results that returned the `NextToken` value. This value is `null` when
 #' there are no more results to return.
-#' @param AccountId The AWS account ID for the resource group owner.
+#' @param AccountId The Amazon Web Services account ID for the resource group owner.
 #'
 #' @keywords internal
 #'
@@ -677,7 +680,7 @@ applicationinsights_list_configuration_history <- function(ResourceGroupName = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .applicationinsights$list_configuration_history_input(ResourceGroupName = ResourceGroupName, StartTime = StartTime, EndTime = EndTime, EventStatus = EventStatus, MaxResults = MaxResults, NextToken = NextToken, AccountId = AccountId)
@@ -702,7 +705,7 @@ applicationinsights_list_configuration_history <- function(ResourceGroupName = N
 #' the remaining results, make another call with the returned `NextToken`
 #' value.
 #' @param NextToken The token to request the next page of results.
-#' @param AccountId The AWS account ID for the resource group owner.
+#' @param AccountId The Amazon Web Services account ID for the resource group owner.
 #'
 #' @keywords internal
 #'
@@ -713,7 +716,7 @@ applicationinsights_list_log_pattern_sets <- function(ResourceGroupName, MaxResu
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .applicationinsights$list_log_pattern_sets_input(ResourceGroupName = ResourceGroupName, MaxResults = MaxResults, NextToken = NextToken, AccountId = AccountId)
@@ -739,7 +742,7 @@ applicationinsights_list_log_pattern_sets <- function(ResourceGroupName, MaxResu
 #' the remaining results, make another call with the returned `NextToken`
 #' value.
 #' @param NextToken The token to request the next page of results.
-#' @param AccountId The AWS account ID for the resource group owner.
+#' @param AccountId The Amazon Web Services account ID for the resource group owner.
 #'
 #' @keywords internal
 #'
@@ -750,7 +753,7 @@ applicationinsights_list_log_patterns <- function(ResourceGroupName, PatternSetN
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .applicationinsights$list_log_patterns_input(ResourceGroupName = ResourceGroupName, PatternSetName = PatternSetName, MaxResults = MaxResults, NextToken = NextToken, AccountId = AccountId)
@@ -770,7 +773,7 @@ applicationinsights_list_log_patterns <- function(ResourceGroupName, PatternSetN
 #'
 #' See [https://www.paws-r-sdk.com/docs/applicationinsights_list_problems/](https://www.paws-r-sdk.com/docs/applicationinsights_list_problems/) for full documentation.
 #'
-#' @param AccountId The AWS account ID for the resource group owner.
+#' @param AccountId The Amazon Web Services account ID for the resource group owner.
 #' @param ResourceGroupName The name of the resource group.
 #' @param StartTime The time when the problem was detected, in epoch seconds. If you don't
 #' specify a time frame for the request, problems within the past seven
@@ -794,7 +797,7 @@ applicationinsights_list_problems <- function(AccountId = NULL, ResourceGroupNam
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .applicationinsights$list_problems_input(AccountId = AccountId, ResourceGroupName = ResourceGroupName, StartTime = StartTime, EndTime = EndTime, MaxResults = MaxResults, NextToken = NextToken, ComponentName = ComponentName, Visibility = Visibility)
@@ -853,7 +856,7 @@ applicationinsights_list_tags_for_resource <- function(ResourceARN) {
 #' the remaining results, make another call with the returned `NextToken`
 #' value.
 #' @param NextToken The token to request the next page of results.
-#' @param AccountId The AWS account ID of the owner of the workload.
+#' @param AccountId The Amazon Web Services account ID of the owner of the workload.
 #'
 #' @keywords internal
 #'
@@ -864,7 +867,7 @@ applicationinsights_list_workloads <- function(ResourceGroupName, ComponentName,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .applicationinsights$list_workloads_input(ResourceGroupName = ResourceGroupName, ComponentName = ComponentName, MaxResults = MaxResults, NextToken = NextToken, AccountId = AccountId)
@@ -1001,6 +1004,8 @@ applicationinsights_untag_resource <- function(ResourceARN, TagKeys) {
 #' @param OpsItemSNSTopicArn The SNS topic provided to Application Insights that is associated to the
 #' created opsItem. Allows you to receive notifications for updates to the
 #' opsItem.
+#' @param SNSNotificationArn The SNS topic ARN. Allows you to receive SNS notifications for updates
+#' and issues with an application.
 #' @param RemoveSNSTopic Disassociates the SNS topic from the opsItem created for detected
 #' problems.
 #' @param AutoConfigEnabled Turns auto-configuration on or off.
@@ -1010,7 +1015,7 @@ applicationinsights_untag_resource <- function(ResourceARN, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname applicationinsights_update_application
-applicationinsights_update_application <- function(ResourceGroupName, OpsCenterEnabled = NULL, CWEMonitorEnabled = NULL, OpsItemSNSTopicArn = NULL, RemoveSNSTopic = NULL, AutoConfigEnabled = NULL, AttachMissingPermission = NULL) {
+applicationinsights_update_application <- function(ResourceGroupName, OpsCenterEnabled = NULL, CWEMonitorEnabled = NULL, OpsItemSNSTopicArn = NULL, SNSNotificationArn = NULL, RemoveSNSTopic = NULL, AutoConfigEnabled = NULL, AttachMissingPermission = NULL) {
   op <- new_operation(
     name = "UpdateApplication",
     http_method = "POST",
@@ -1019,7 +1024,7 @@ applicationinsights_update_application <- function(ResourceGroupName, OpsCenterE
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .applicationinsights$update_application_input(ResourceGroupName = ResourceGroupName, OpsCenterEnabled = OpsCenterEnabled, CWEMonitorEnabled = CWEMonitorEnabled, OpsItemSNSTopicArn = OpsItemSNSTopicArn, RemoveSNSTopic = RemoveSNSTopic, AutoConfigEnabled = AutoConfigEnabled, AttachMissingPermission = AttachMissingPermission)
+  input <- .applicationinsights$update_application_input(ResourceGroupName = ResourceGroupName, OpsCenterEnabled = OpsCenterEnabled, CWEMonitorEnabled = CWEMonitorEnabled, OpsItemSNSTopicArn = OpsItemSNSTopicArn, SNSNotificationArn = SNSNotificationArn, RemoveSNSTopic = RemoveSNSTopic, AutoConfigEnabled = AutoConfigEnabled, AttachMissingPermission = AttachMissingPermission)
   output <- .applicationinsights$update_application_output()
   config <- get_config()
   svc <- .applicationinsights$service(config, op)
@@ -1130,8 +1135,8 @@ applicationinsights_update_component_configuration <- function(ResourceGroupName
 #' patterns from the console, a `Low` severity pattern translates to a
 #' `750,000` rank. A `Medium` severity pattern translates to a `500,000`
 #' rank. And a `High` severity pattern translates to a `250,000` rank. Rank
-#' values less than `1` or greater than `1,000,000` are reserved for
-#' AWS-provided patterns.
+#' values less than `1` or greater than `1,000,000` are reserved for Amazon
+#' Web Services provided patterns.
 #'
 #' @keywords internal
 #'

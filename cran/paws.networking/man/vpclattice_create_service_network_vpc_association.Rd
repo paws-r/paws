@@ -25,9 +25,8 @@ which resources in a VPC are allowed to access the service network and
 its services. For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/vpc-security-groups.html}{Control traffic to resources using security groups}
 in the \emph{Amazon VPC User Guide}.}
 
-\item{serviceNetworkIdentifier}{[required] The ID or Amazon Resource Name (ARN) of the service network. You must
-use the ARN when the resources specified in the operation are in
-different accounts.}
+\item{serviceNetworkIdentifier}{[required] The ID or ARN of the service network. You must use an ARN if the
+resources are in different accounts.}
 
 \item{tags}{The tags for the association.}
 

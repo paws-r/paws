@@ -5,15 +5,39 @@
 \title{Describes the specified security groups or all of your security groups}
 \usage{
 ec2_describe_security_groups(
-  Filters = NULL,
   GroupIds = NULL,
   GroupNames = NULL,
-  DryRun = NULL,
   NextToken = NULL,
-  MaxResults = NULL
+  MaxResults = NULL,
+  DryRun = NULL,
+  Filters = NULL
 )
 }
 \arguments{
+\item{GroupIds}{The IDs of the security groups. Required for security groups in a
+nondefault VPC.
+
+Default: Describes all of your security groups.}
+
+\item{GroupNames}{[Default VPC] The names of the security groups. You can specify either
+the security group name or the security group ID.
+
+Default: Describes all of your security groups.}
+
+\item{NextToken}{The token returned from a previous paginated request. Pagination
+continues from the end of the items returned by the previous request.}
+
+\item{MaxResults}{The maximum number of items to return for this request. To get the next
+page of items, make another request with the token returned in the
+output. This value can be between 5 and 1000. If this parameter is not
+specified, then all items are returned. For more information, see
+\href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Query-Requests.html#api-pagination}{Pagination}.}
+
+\item{DryRun}{Checks whether you have the required permissions for the action, without
+actually making the request, and provides an error response. If you have
+the required permissions, the error response is \code{DryRunOperation}.
+Otherwise, it is \code{UnauthorizedOperation}.}
+
 \item{Filters}{The filters. If using multiple filters for rules, the results include
 security groups for which any combination of rules - not necessarily a
 single rule - match all filters.
@@ -72,30 +96,6 @@ regardless of the tag value.
 \item \code{vpc-id} - The ID of the VPC specified when the security group was
 created.
 }}
-
-\item{GroupIds}{The IDs of the security groups. Required for security groups in a
-nondefault VPC.
-
-Default: Describes all of your security groups.}
-
-\item{GroupNames}{[Default VPC] The names of the security groups. You can specify either
-the security group name or the security group ID.
-
-Default: Describes all of your security groups.}
-
-\item{DryRun}{Checks whether you have the required permissions for the action, without
-actually making the request, and provides an error response. If you have
-the required permissions, the error response is \code{DryRunOperation}.
-Otherwise, it is \code{UnauthorizedOperation}.}
-
-\item{NextToken}{The token returned from a previous paginated request. Pagination
-continues from the end of the items returned by the previous request.}
-
-\item{MaxResults}{The maximum number of items to return for this request. To get the next
-page of items, make another request with the token returned in the
-output. This value can be between 5 and 1000. If this parameter is not
-specified, then all items are returned. For more information, see
-\href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Query-Requests.html#api-pagination}{Pagination}.}
 }
 \description{
 Describes the specified security groups or all of your security groups.

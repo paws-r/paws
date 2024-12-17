@@ -12,7 +12,11 @@ rds_create_blue_green_deployment(
   TargetDBClusterParameterGroupName = NULL,
   Tags = NULL,
   TargetDBInstanceClass = NULL,
-  UpgradeTargetStorageConfig = NULL
+  UpgradeTargetStorageConfig = NULL,
+  TargetIops = NULL,
+  TargetStorageType = NULL,
+  TargetAllocatedStorage = NULL,
+  TargetStorageThroughput = NULL
 )
 }
 \arguments{
@@ -64,6 +68,31 @@ instances within the green DB cluster.}
 database. This option migrates the green DB instance from the older
 32-bit file system to the preferred configuration. For more information,
 see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PIOPS.StorageTypes.html#USER_PIOPS.UpgradeFileSystem}{Upgrading the storage file system for a DB instance}.}
+
+\item{TargetIops}{The amount of Provisioned IOPS (input/output operations per second) to
+allocate for the green DB instance. For information about valid IOPS
+values, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Storage.html}{Amazon RDS DB instance storage}
+in the \emph{Amazon RDS User Guide}.
+
+This setting doesn't apply to Amazon Aurora blue/green deployments.}
+
+\item{TargetStorageType}{The storage type to associate with the green DB instance.
+
+Valid Values: \code{gp2 | gp3 | io1 | io2}
+
+This setting doesn't apply to Amazon Aurora blue/green deployments.}
+
+\item{TargetAllocatedStorage}{The amount of storage in gibibytes (GiB) to allocate for the green DB
+instance. You can choose to increase or decrease the allocated storage
+on the green DB instance.
+
+This setting doesn't apply to Amazon Aurora blue/green deployments.}
+
+\item{TargetStorageThroughput}{The storage throughput value for the green DB instance.
+
+This setting applies only to the \code{gp3} storage type.
+
+This setting doesn't apply to Amazon Aurora blue/green deployments.}
 }
 \description{
 Creates a blue/green deployment.

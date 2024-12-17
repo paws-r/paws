@@ -11,7 +11,9 @@ omics_create_sequence_store(
   tags = NULL,
   clientToken = NULL,
   fallbackLocation = NULL,
-  eTagAlgorithmFamily = NULL
+  eTagAlgorithmFamily = NULL,
+  propagatedSetLevelTags = NULL,
+  s3AccessConfig = NULL
 )
 }
 \arguments{
@@ -30,6 +32,11 @@ for each request.}
 upload.}
 
 \item{eTagAlgorithmFamily}{The ETag algorithm family to use for ingested read sets.}
+
+\item{propagatedSetLevelTags}{The tags keys to propagate to the S3 objects associated with read sets
+in the sequence store.}
+
+\item{s3AccessConfig}{S3 access configuration parameters}
 }
 \description{
 Creates a sequence store.

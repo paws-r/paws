@@ -75,6 +75,234 @@ customerprofiles_add_profile_key <- function(ProfileId, KeyName, Values, DomainN
 }
 .customerprofiles$operations$add_profile_key <- customerprofiles_add_profile_key
 
+#' Fetch the possible attribute values given the attribute name
+#'
+#' @description
+#' Fetch the possible attribute values given the attribute name.
+#'
+#' @usage
+#' customerprofiles_batch_get_calculated_attribute_for_profile(
+#'   CalculatedAttributeName, DomainName, ProfileIds, ConditionOverrides)
+#'
+#' @param CalculatedAttributeName &#91;required&#93; The unique name of the calculated attribute.
+#' @param DomainName &#91;required&#93; The unique name of the domain.
+#' @param ProfileIds &#91;required&#93; List of unique identifiers for customer profiles to retrieve.
+#' @param ConditionOverrides Overrides the condition block within the original calculated attribute
+#' definition.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Errors = list(
+#'     list(
+#'       Code = "string",
+#'       Message = "string",
+#'       ProfileId = "string"
+#'     )
+#'   ),
+#'   CalculatedAttributeValues = list(
+#'     list(
+#'       CalculatedAttributeName = "string",
+#'       DisplayName = "string",
+#'       IsDataPartial = "string",
+#'       ProfileId = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   ConditionOverrides = list(
+#'     Range = list(
+#'       Start = 123,
+#'       End = 123,
+#'       Unit = "DAYS"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$batch_get_calculated_attribute_for_profile(
+#'   CalculatedAttributeName = "string",
+#'   DomainName = "string",
+#'   ProfileIds = list(
+#'     "string"
+#'   ),
+#'   ConditionOverrides = list(
+#'     Range = list(
+#'       Start = 123,
+#'       End = 123,
+#'       Unit = "DAYS"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_batch_get_calculated_attribute_for_profile
+#'
+#' @aliases customerprofiles_batch_get_calculated_attribute_for_profile
+customerprofiles_batch_get_calculated_attribute_for_profile <- function(CalculatedAttributeName, DomainName, ProfileIds, ConditionOverrides = NULL) {
+  op <- new_operation(
+    name = "BatchGetCalculatedAttributeForProfile",
+    http_method = "POST",
+    http_path = "/domains/{DomainName}/calculated-attributes/{CalculatedAttributeName}/batch-get-for-profiles",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .customerprofiles$batch_get_calculated_attribute_for_profile_input(CalculatedAttributeName = CalculatedAttributeName, DomainName = DomainName, ProfileIds = ProfileIds, ConditionOverrides = ConditionOverrides)
+  output <- .customerprofiles$batch_get_calculated_attribute_for_profile_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$batch_get_calculated_attribute_for_profile <- customerprofiles_batch_get_calculated_attribute_for_profile
+
+#' Get a batch of profiles
+#'
+#' @description
+#' Get a batch of profiles.
+#'
+#' @usage
+#' customerprofiles_batch_get_profile(DomainName, ProfileIds)
+#'
+#' @param DomainName &#91;required&#93; The unique name of the domain.
+#' @param ProfileIds &#91;required&#93; List of unique identifiers for customer profiles to retrieve.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Errors = list(
+#'     list(
+#'       Code = "string",
+#'       Message = "string",
+#'       ProfileId = "string"
+#'     )
+#'   ),
+#'   Profiles = list(
+#'     list(
+#'       ProfileId = "string",
+#'       AccountNumber = "string",
+#'       AdditionalInformation = "string",
+#'       PartyType = "INDIVIDUAL"|"BUSINESS"|"OTHER",
+#'       BusinessName = "string",
+#'       FirstName = "string",
+#'       MiddleName = "string",
+#'       LastName = "string",
+#'       BirthDate = "string",
+#'       Gender = "MALE"|"FEMALE"|"UNSPECIFIED",
+#'       PhoneNumber = "string",
+#'       MobilePhoneNumber = "string",
+#'       HomePhoneNumber = "string",
+#'       BusinessPhoneNumber = "string",
+#'       EmailAddress = "string",
+#'       PersonalEmailAddress = "string",
+#'       BusinessEmailAddress = "string",
+#'       Address = list(
+#'         Address1 = "string",
+#'         Address2 = "string",
+#'         Address3 = "string",
+#'         Address4 = "string",
+#'         City = "string",
+#'         County = "string",
+#'         State = "string",
+#'         Province = "string",
+#'         Country = "string",
+#'         PostalCode = "string"
+#'       ),
+#'       ShippingAddress = list(
+#'         Address1 = "string",
+#'         Address2 = "string",
+#'         Address3 = "string",
+#'         Address4 = "string",
+#'         City = "string",
+#'         County = "string",
+#'         State = "string",
+#'         Province = "string",
+#'         Country = "string",
+#'         PostalCode = "string"
+#'       ),
+#'       MailingAddress = list(
+#'         Address1 = "string",
+#'         Address2 = "string",
+#'         Address3 = "string",
+#'         Address4 = "string",
+#'         City = "string",
+#'         County = "string",
+#'         State = "string",
+#'         Province = "string",
+#'         Country = "string",
+#'         PostalCode = "string"
+#'       ),
+#'       BillingAddress = list(
+#'         Address1 = "string",
+#'         Address2 = "string",
+#'         Address3 = "string",
+#'         Address4 = "string",
+#'         City = "string",
+#'         County = "string",
+#'         State = "string",
+#'         Province = "string",
+#'         Country = "string",
+#'         PostalCode = "string"
+#'       ),
+#'       Attributes = list(
+#'         "string"
+#'       ),
+#'       FoundByItems = list(
+#'         list(
+#'           KeyName = "string",
+#'           Values = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       PartyTypeString = "string",
+#'       GenderString = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$batch_get_profile(
+#'   DomainName = "string",
+#'   ProfileIds = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_batch_get_profile
+#'
+#' @aliases customerprofiles_batch_get_profile
+customerprofiles_batch_get_profile <- function(DomainName, ProfileIds) {
+  op <- new_operation(
+    name = "BatchGetProfile",
+    http_method = "POST",
+    http_path = "/domains/{DomainName}/batch-get-profiles",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .customerprofiles$batch_get_profile_input(DomainName = DomainName, ProfileIds = ProfileIds)
+  output <- .customerprofiles$batch_get_profile_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$batch_get_profile <- customerprofiles_batch_get_profile
+
 #' Creates a new calculated attribute definition
 #'
 #' @description
@@ -89,7 +317,7 @@ customerprofiles_add_profile_key <- function(ProfileId, KeyName, Values, DomainN
 #' @usage
 #' customerprofiles_create_calculated_attribute_definition(DomainName,
 #'   CalculatedAttributeName, DisplayName, Description, AttributeDetails,
-#'   Conditions, Statistic, Tags)
+#'   Conditions, Filter, Statistic, Tags)
 #'
 #' @param DomainName &#91;required&#93; The unique name of the domain.
 #' @param CalculatedAttributeName &#91;required&#93; The unique name of the calculated attribute.
@@ -99,6 +327,8 @@ customerprofiles_add_profile_key <- function(ProfileId, KeyName, Values, DomainN
 #' expression.
 #' @param Conditions The conditions including range, object count, and threshold for the
 #' calculated attribute.
+#' @param Filter Defines how to filter incoming objects to include part of the Calculated
+#' Attribute.
 #' @param Statistic &#91;required&#93; The aggregation operation to perform for the calculated attribute.
 #' @param Tags The tags used to organize, track, or control access for this resource.
 #'
@@ -126,6 +356,26 @@ customerprofiles_add_profile_key <- function(ProfileId, KeyName, Values, DomainN
 #'     Threshold = list(
 #'       Value = "string",
 #'       Operator = "EQUAL_TO"|"GREATER_THAN"|"LESS_THAN"|"NOT_EQUAL_TO"
+#'     )
+#'   ),
+#'   Filter = list(
+#'     Include = "ALL"|"ANY"|"NONE",
+#'     Groups = list(
+#'       list(
+#'         Type = "ALL"|"ANY"|"NONE",
+#'         Dimensions = list(
+#'           list(
+#'             Attributes = list(
+#'               list(
+#'                 DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH"|"BEFORE"|"AFTER"|"BETWEEN"|"NOT_BETWEEN"|"ON"|"GREATER_THAN"|"LESS_THAN"|"GREATER_THAN_OR_EQUAL"|"LESS_THAN_OR_EQUAL"|"EQUAL",
+#'                 Values = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   Statistic = "FIRST_OCCURRENCE"|"LAST_OCCURRENCE"|"COUNT"|"SUM"|"MINIMUM"|"MAXIMUM"|"AVERAGE"|"MAX_OCCURRENCE",
@@ -167,6 +417,26 @@ customerprofiles_add_profile_key <- function(ProfileId, KeyName, Values, DomainN
 #'       Operator = "EQUAL_TO"|"GREATER_THAN"|"LESS_THAN"|"NOT_EQUAL_TO"
 #'     )
 #'   ),
+#'   Filter = list(
+#'     Include = "ALL"|"ANY"|"NONE",
+#'     Groups = list(
+#'       list(
+#'         Type = "ALL"|"ANY"|"NONE",
+#'         Dimensions = list(
+#'           list(
+#'             Attributes = list(
+#'               list(
+#'                 DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH"|"BEFORE"|"AFTER"|"BETWEEN"|"NOT_BETWEEN"|"ON"|"GREATER_THAN"|"LESS_THAN"|"GREATER_THAN_OR_EQUAL"|"LESS_THAN_OR_EQUAL"|"EQUAL",
+#'                 Values = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
 #'   Statistic = "FIRST_OCCURRENCE"|"LAST_OCCURRENCE"|"COUNT"|"SUM"|"MINIMUM"|"MAXIMUM"|"AVERAGE"|"MAX_OCCURRENCE",
 #'   Tags = list(
 #'     "string"
@@ -179,7 +449,7 @@ customerprofiles_add_profile_key <- function(ProfileId, KeyName, Values, DomainN
 #' @rdname customerprofiles_create_calculated_attribute_definition
 #'
 #' @aliases customerprofiles_create_calculated_attribute_definition
-customerprofiles_create_calculated_attribute_definition <- function(DomainName, CalculatedAttributeName, DisplayName = NULL, Description = NULL, AttributeDetails, Conditions = NULL, Statistic, Tags = NULL) {
+customerprofiles_create_calculated_attribute_definition <- function(DomainName, CalculatedAttributeName, DisplayName = NULL, Description = NULL, AttributeDetails, Conditions = NULL, Filter = NULL, Statistic, Tags = NULL) {
   op <- new_operation(
     name = "CreateCalculatedAttributeDefinition",
     http_method = "POST",
@@ -188,7 +458,7 @@ customerprofiles_create_calculated_attribute_definition <- function(DomainName, 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .customerprofiles$create_calculated_attribute_definition_input(DomainName = DomainName, CalculatedAttributeName = CalculatedAttributeName, DisplayName = DisplayName, Description = Description, AttributeDetails = AttributeDetails, Conditions = Conditions, Statistic = Statistic, Tags = Tags)
+  input <- .customerprofiles$create_calculated_attribute_definition_input(DomainName = DomainName, CalculatedAttributeName = CalculatedAttributeName, DisplayName = DisplayName, Description = Description, AttributeDetails = AttributeDetails, Conditions = Conditions, Filter = Filter, Statistic = Statistic, Tags = Tags)
   output <- .customerprofiles$create_calculated_attribute_definition_output()
   config <- get_config()
   svc <- .customerprofiles$service(config, op)
@@ -518,6 +788,152 @@ customerprofiles_create_event_stream <- function(DomainName, Uri, EventStreamNam
 }
 .customerprofiles$operations$create_event_stream <- customerprofiles_create_event_stream
 
+#' Creates an event trigger, which specifies the rules when to perform
+#' action based on customer's ingested data
+#'
+#' @description
+#' Creates an event trigger, which specifies the rules when to perform
+#' action based on customer's ingested data.
+#' 
+#' Each event stream can be associated with only one integration in the
+#' same region and AWS account as the event stream.
+#'
+#' @usage
+#' customerprofiles_create_event_trigger(DomainName, EventTriggerName,
+#'   ObjectTypeName, Description, EventTriggerConditions, SegmentFilter,
+#'   EventTriggerLimits, Tags)
+#'
+#' @param DomainName &#91;required&#93; The unique name of the domain.
+#' @param EventTriggerName &#91;required&#93; The unique name of the event trigger.
+#' @param ObjectTypeName &#91;required&#93; The unique name of the object type.
+#' @param Description The description of the event trigger.
+#' @param EventTriggerConditions &#91;required&#93; A list of conditions that determine when an event should trigger the
+#' destination.
+#' @param SegmentFilter The destination is triggered only for profiles that meet the criteria of
+#' a segment definition.
+#' @param EventTriggerLimits Defines limits controlling whether an event triggers the destination,
+#' based on ingestion latency and the number of invocations per profile
+#' over specific time periods.
+#' @param Tags An array of key-value pairs to apply to this resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EventTriggerName = "string",
+#'   ObjectTypeName = "string",
+#'   Description = "string",
+#'   EventTriggerConditions = list(
+#'     list(
+#'       EventTriggerDimensions = list(
+#'         list(
+#'           ObjectAttributes = list(
+#'             list(
+#'               Source = "string",
+#'               FieldName = "string",
+#'               ComparisonOperator = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH"|"GREATER_THAN"|"LESS_THAN"|"GREATER_THAN_OR_EQUAL"|"LESS_THAN_OR_EQUAL"|"EQUAL"|"BEFORE"|"AFTER"|"ON"|"BETWEEN"|"NOT_BETWEEN",
+#'               Values = list(
+#'                 "string"
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       LogicalOperator = "ANY"|"ALL"|"NONE"
+#'     )
+#'   ),
+#'   SegmentFilter = "string",
+#'   EventTriggerLimits = list(
+#'     EventExpiration = 123,
+#'     Periods = list(
+#'       list(
+#'         Unit = "HOURS"|"DAYS"|"WEEKS"|"MONTHS",
+#'         Value = 123,
+#'         MaxInvocationsPerProfile = 123,
+#'         Unlimited = TRUE|FALSE
+#'       )
+#'     )
+#'   ),
+#'   CreatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastUpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_event_trigger(
+#'   DomainName = "string",
+#'   EventTriggerName = "string",
+#'   ObjectTypeName = "string",
+#'   Description = "string",
+#'   EventTriggerConditions = list(
+#'     list(
+#'       EventTriggerDimensions = list(
+#'         list(
+#'           ObjectAttributes = list(
+#'             list(
+#'               Source = "string",
+#'               FieldName = "string",
+#'               ComparisonOperator = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH"|"GREATER_THAN"|"LESS_THAN"|"GREATER_THAN_OR_EQUAL"|"LESS_THAN_OR_EQUAL"|"EQUAL"|"BEFORE"|"AFTER"|"ON"|"BETWEEN"|"NOT_BETWEEN",
+#'               Values = list(
+#'                 "string"
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       LogicalOperator = "ANY"|"ALL"|"NONE"
+#'     )
+#'   ),
+#'   SegmentFilter = "string",
+#'   EventTriggerLimits = list(
+#'     EventExpiration = 123,
+#'     Periods = list(
+#'       list(
+#'         Unit = "HOURS"|"DAYS"|"WEEKS"|"MONTHS",
+#'         Value = 123,
+#'         MaxInvocationsPerProfile = 123,
+#'         Unlimited = TRUE|FALSE
+#'       )
+#'     )
+#'   ),
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_create_event_trigger
+#'
+#' @aliases customerprofiles_create_event_trigger
+customerprofiles_create_event_trigger <- function(DomainName, EventTriggerName, ObjectTypeName, Description = NULL, EventTriggerConditions, SegmentFilter = NULL, EventTriggerLimits = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateEventTrigger",
+    http_method = "POST",
+    http_path = "/domains/{DomainName}/event-triggers/{EventTriggerName}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .customerprofiles$create_event_trigger_input(DomainName = DomainName, EventTriggerName = EventTriggerName, ObjectTypeName = ObjectTypeName, Description = Description, EventTriggerConditions = EventTriggerConditions, SegmentFilter = SegmentFilter, EventTriggerLimits = EventTriggerLimits, Tags = Tags)
+  output <- .customerprofiles$create_event_trigger_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$create_event_trigger <- customerprofiles_create_event_trigger
+
 #' Creates an integration workflow
 #'
 #' @description
@@ -823,6 +1239,777 @@ customerprofiles_create_profile <- function(DomainName, AccountNumber = NULL, Ad
 }
 .customerprofiles$operations$create_profile <- customerprofiles_create_profile
 
+#' Creates a segment definition associated to the given domain
+#'
+#' @description
+#' Creates a segment definition associated to the given domain.
+#'
+#' @usage
+#' customerprofiles_create_segment_definition(DomainName,
+#'   SegmentDefinitionName, DisplayName, Description, SegmentGroups, Tags)
+#'
+#' @param DomainName &#91;required&#93; The unique name of the domain.
+#' @param SegmentDefinitionName &#91;required&#93; The unique name of the segment definition.
+#' @param DisplayName &#91;required&#93; The display name of the segment definition.
+#' @param Description The description of the segment definition.
+#' @param SegmentGroups &#91;required&#93; Specifies the base segments and dimensions for a segment definition
+#' along with their respective relationship.
+#' @param Tags The tags used to organize, track, or control access for this resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SegmentDefinitionName = "string",
+#'   DisplayName = "string",
+#'   Description = "string",
+#'   CreatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   SegmentDefinitionArn = "string",
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_segment_definition(
+#'   DomainName = "string",
+#'   SegmentDefinitionName = "string",
+#'   DisplayName = "string",
+#'   Description = "string",
+#'   SegmentGroups = list(
+#'     Groups = list(
+#'       list(
+#'         Dimensions = list(
+#'           list(
+#'             ProfileAttributes = list(
+#'               AccountNumber = list(
+#'                 DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                 Values = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               AdditionalInformation = list(
+#'                 DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                 Values = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               FirstName = list(
+#'                 DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                 Values = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               LastName = list(
+#'                 DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                 Values = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MiddleName = list(
+#'                 DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                 Values = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               GenderString = list(
+#'                 DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                 Values = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               PartyTypeString = list(
+#'                 DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                 Values = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               BirthDate = list(
+#'                 DimensionType = "BEFORE"|"AFTER"|"BETWEEN"|"NOT_BETWEEN"|"ON",
+#'                 Values = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               PhoneNumber = list(
+#'                 DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                 Values = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               BusinessName = list(
+#'                 DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                 Values = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               BusinessPhoneNumber = list(
+#'                 DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                 Values = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               HomePhoneNumber = list(
+#'                 DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                 Values = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MobilePhoneNumber = list(
+#'                 DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                 Values = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               EmailAddress = list(
+#'                 DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                 Values = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               PersonalEmailAddress = list(
+#'                 DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                 Values = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               BusinessEmailAddress = list(
+#'                 DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                 Values = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               Address = list(
+#'                 City = list(
+#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                   Values = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 Country = list(
+#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                   Values = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 County = list(
+#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                   Values = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 PostalCode = list(
+#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                   Values = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 Province = list(
+#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                   Values = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 State = list(
+#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                   Values = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
+#'               ShippingAddress = list(
+#'                 City = list(
+#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                   Values = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 Country = list(
+#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                   Values = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 County = list(
+#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                   Values = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 PostalCode = list(
+#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                   Values = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 Province = list(
+#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                   Values = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 State = list(
+#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                   Values = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
+#'               MailingAddress = list(
+#'                 City = list(
+#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                   Values = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 Country = list(
+#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                   Values = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 County = list(
+#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                   Values = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 PostalCode = list(
+#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                   Values = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 Province = list(
+#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                   Values = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 State = list(
+#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                   Values = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
+#'               BillingAddress = list(
+#'                 City = list(
+#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                   Values = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 Country = list(
+#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                   Values = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 County = list(
+#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                   Values = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 PostalCode = list(
+#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                   Values = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 Province = list(
+#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                   Values = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 State = list(
+#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                   Values = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
+#'               Attributes = list(
+#'                 list(
+#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH"|"BEFORE"|"AFTER"|"BETWEEN"|"NOT_BETWEEN"|"ON"|"GREATER_THAN"|"LESS_THAN"|"GREATER_THAN_OR_EQUAL"|"LESS_THAN_OR_EQUAL"|"EQUAL",
+#'                   Values = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             CalculatedAttributes = list(
+#'               list(
+#'                 DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH"|"BEFORE"|"AFTER"|"BETWEEN"|"NOT_BETWEEN"|"ON"|"GREATER_THAN"|"LESS_THAN"|"GREATER_THAN_OR_EQUAL"|"LESS_THAN_OR_EQUAL"|"EQUAL",
+#'                 Values = list(
+#'                   "string"
+#'                 ),
+#'                 ConditionOverrides = list(
+#'                   Range = list(
+#'                     Start = 123,
+#'                     End = 123,
+#'                     Unit = "DAYS"
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         SourceSegments = list(
+#'           list(
+#'             SegmentDefinitionName = "string"
+#'           )
+#'         ),
+#'         SourceType = "ALL"|"ANY"|"NONE",
+#'         Type = "ALL"|"ANY"|"NONE"
+#'       )
+#'     ),
+#'     Include = "ALL"|"ANY"|"NONE"
+#'   ),
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_create_segment_definition
+#'
+#' @aliases customerprofiles_create_segment_definition
+customerprofiles_create_segment_definition <- function(DomainName, SegmentDefinitionName, DisplayName, Description = NULL, SegmentGroups, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateSegmentDefinition",
+    http_method = "POST",
+    http_path = "/domains/{DomainName}/segment-definitions/{SegmentDefinitionName}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .customerprofiles$create_segment_definition_input(DomainName = DomainName, SegmentDefinitionName = SegmentDefinitionName, DisplayName = DisplayName, Description = Description, SegmentGroups = SegmentGroups, Tags = Tags)
+  output <- .customerprofiles$create_segment_definition_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$create_segment_definition <- customerprofiles_create_segment_definition
+
+#' Creates a segment estimate query
+#'
+#' @description
+#' Creates a segment estimate query.
+#'
+#' @usage
+#' customerprofiles_create_segment_estimate(DomainName, SegmentQuery)
+#'
+#' @param DomainName &#91;required&#93; The unique name of the domain.
+#' @param SegmentQuery &#91;required&#93; The segment query for calculating a segment estimate.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DomainName = "string",
+#'   EstimateId = "string",
+#'   StatusCode = 123
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_segment_estimate(
+#'   DomainName = "string",
+#'   SegmentQuery = list(
+#'     Groups = list(
+#'       list(
+#'         Dimensions = list(
+#'           list(
+#'             ProfileAttributes = list(
+#'               AccountNumber = list(
+#'                 DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                 Values = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               AdditionalInformation = list(
+#'                 DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                 Values = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               FirstName = list(
+#'                 DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                 Values = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               LastName = list(
+#'                 DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                 Values = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MiddleName = list(
+#'                 DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                 Values = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               GenderString = list(
+#'                 DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                 Values = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               PartyTypeString = list(
+#'                 DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                 Values = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               BirthDate = list(
+#'                 DimensionType = "BEFORE"|"AFTER"|"BETWEEN"|"NOT_BETWEEN"|"ON",
+#'                 Values = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               PhoneNumber = list(
+#'                 DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                 Values = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               BusinessName = list(
+#'                 DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                 Values = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               BusinessPhoneNumber = list(
+#'                 DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                 Values = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               HomePhoneNumber = list(
+#'                 DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                 Values = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MobilePhoneNumber = list(
+#'                 DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                 Values = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               EmailAddress = list(
+#'                 DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                 Values = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               PersonalEmailAddress = list(
+#'                 DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                 Values = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               BusinessEmailAddress = list(
+#'                 DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                 Values = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               Address = list(
+#'                 City = list(
+#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                   Values = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 Country = list(
+#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                   Values = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 County = list(
+#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                   Values = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 PostalCode = list(
+#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                   Values = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 Province = list(
+#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                   Values = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 State = list(
+#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                   Values = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
+#'               ShippingAddress = list(
+#'                 City = list(
+#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                   Values = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 Country = list(
+#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                   Values = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 County = list(
+#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                   Values = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 PostalCode = list(
+#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                   Values = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 Province = list(
+#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                   Values = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 State = list(
+#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                   Values = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
+#'               MailingAddress = list(
+#'                 City = list(
+#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                   Values = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 Country = list(
+#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                   Values = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 County = list(
+#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                   Values = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 PostalCode = list(
+#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                   Values = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 Province = list(
+#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                   Values = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 State = list(
+#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                   Values = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
+#'               BillingAddress = list(
+#'                 City = list(
+#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                   Values = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 Country = list(
+#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                   Values = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 County = list(
+#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                   Values = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 PostalCode = list(
+#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                   Values = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 Province = list(
+#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                   Values = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 State = list(
+#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                   Values = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
+#'               Attributes = list(
+#'                 list(
+#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH"|"BEFORE"|"AFTER"|"BETWEEN"|"NOT_BETWEEN"|"ON"|"GREATER_THAN"|"LESS_THAN"|"GREATER_THAN_OR_EQUAL"|"LESS_THAN_OR_EQUAL"|"EQUAL",
+#'                   Values = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             CalculatedAttributes = list(
+#'               list(
+#'                 DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH"|"BEFORE"|"AFTER"|"BETWEEN"|"NOT_BETWEEN"|"ON"|"GREATER_THAN"|"LESS_THAN"|"GREATER_THAN_OR_EQUAL"|"LESS_THAN_OR_EQUAL"|"EQUAL",
+#'                 Values = list(
+#'                   "string"
+#'                 ),
+#'                 ConditionOverrides = list(
+#'                   Range = list(
+#'                     Start = 123,
+#'                     End = 123,
+#'                     Unit = "DAYS"
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         SourceSegments = list(
+#'           list(
+#'             SegmentDefinitionName = "string"
+#'           )
+#'         ),
+#'         SourceType = "ALL"|"ANY"|"NONE",
+#'         Type = "ALL"|"ANY"|"NONE"
+#'       )
+#'     ),
+#'     Include = "ALL"|"ANY"|"NONE"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_create_segment_estimate
+#'
+#' @aliases customerprofiles_create_segment_estimate
+customerprofiles_create_segment_estimate <- function(DomainName, SegmentQuery) {
+  op <- new_operation(
+    name = "CreateSegmentEstimate",
+    http_method = "POST",
+    http_path = "/domains/{DomainName}/segment-estimates",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .customerprofiles$create_segment_estimate_input(DomainName = DomainName, SegmentQuery = SegmentQuery)
+  output <- .customerprofiles$create_segment_estimate_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$create_segment_estimate <- customerprofiles_create_segment_estimate
+
+#' Triggers a job to export a segment to a specified destination
+#'
+#' @description
+#' Triggers a job to export a segment to a specified destination.
+#'
+#' @usage
+#' customerprofiles_create_segment_snapshot(DomainName,
+#'   SegmentDefinitionName, DataFormat, EncryptionKey, RoleArn,
+#'   DestinationUri)
+#'
+#' @param DomainName &#91;required&#93; The unique name of the domain.
+#' @param SegmentDefinitionName &#91;required&#93; The name of the segment definition used in this snapshot request.
+#' @param DataFormat &#91;required&#93; The format in which the segment will be exported.
+#' @param EncryptionKey The Amazon Resource Name (ARN) of the KMS key used to encrypt the
+#' exported segment.
+#' @param RoleArn The Amazon Resource Name (ARN) of the IAM role that allows Customer
+#' Profiles service principal to assume the role for conducting KMS and S3
+#' operations.
+#' @param DestinationUri The destination to which the segment will be exported. This field must
+#' be provided if the request is not submitted from the Amazon Connect
+#' Admin Website.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SnapshotId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_segment_snapshot(
+#'   DomainName = "string",
+#'   SegmentDefinitionName = "string",
+#'   DataFormat = "CSV"|"JSONL"|"ORC",
+#'   EncryptionKey = "string",
+#'   RoleArn = "string",
+#'   DestinationUri = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_create_segment_snapshot
+#'
+#' @aliases customerprofiles_create_segment_snapshot
+customerprofiles_create_segment_snapshot <- function(DomainName, SegmentDefinitionName, DataFormat, EncryptionKey = NULL, RoleArn = NULL, DestinationUri = NULL) {
+  op <- new_operation(
+    name = "CreateSegmentSnapshot",
+    http_method = "POST",
+    http_path = "/domains/{DomainName}/segments/{SegmentDefinitionName}/snapshots",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .customerprofiles$create_segment_snapshot_input(DomainName = DomainName, SegmentDefinitionName = SegmentDefinitionName, DataFormat = DataFormat, EncryptionKey = EncryptionKey, RoleArn = RoleArn, DestinationUri = DestinationUri)
+  output <- .customerprofiles$create_segment_snapshot_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$create_segment_snapshot <- customerprofiles_create_segment_snapshot
+
 #' Deletes an existing calculated attribute definition
 #'
 #' @description
@@ -970,6 +2157,60 @@ customerprofiles_delete_event_stream <- function(DomainName, EventStreamName) {
   return(response)
 }
 .customerprofiles$operations$delete_event_stream <- customerprofiles_delete_event_stream
+
+#' Disable and deletes the Event Trigger
+#'
+#' @description
+#' Disable and deletes the Event Trigger.
+#' 
+#' You cannot delete an Event Trigger with an active Integration
+#' associated.
+#'
+#' @usage
+#' customerprofiles_delete_event_trigger(DomainName, EventTriggerName)
+#'
+#' @param DomainName &#91;required&#93; The unique name of the domain.
+#' @param EventTriggerName &#91;required&#93; The unique name of the event trigger.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Message = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_event_trigger(
+#'   DomainName = "string",
+#'   EventTriggerName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_delete_event_trigger
+#'
+#' @aliases customerprofiles_delete_event_trigger
+customerprofiles_delete_event_trigger <- function(DomainName, EventTriggerName) {
+  op <- new_operation(
+    name = "DeleteEventTrigger",
+    http_method = "DELETE",
+    http_path = "/domains/{DomainName}/event-triggers/{EventTriggerName}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .customerprofiles$delete_event_trigger_input(DomainName = DomainName, EventTriggerName = EventTriggerName)
+  output <- .customerprofiles$delete_event_trigger_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$delete_event_trigger <- customerprofiles_delete_event_trigger
 
 #' Removes an integration from a specific domain
 #'
@@ -1246,6 +2487,58 @@ customerprofiles_delete_profile_object_type <- function(DomainName, ObjectTypeNa
 }
 .customerprofiles$operations$delete_profile_object_type <- customerprofiles_delete_profile_object_type
 
+#' Deletes a segment definition from the domain
+#'
+#' @description
+#' Deletes a segment definition from the domain.
+#'
+#' @usage
+#' customerprofiles_delete_segment_definition(DomainName,
+#'   SegmentDefinitionName)
+#'
+#' @param DomainName &#91;required&#93; The unique name of the domain.
+#' @param SegmentDefinitionName &#91;required&#93; The unique name of the segment definition.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Message = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_segment_definition(
+#'   DomainName = "string",
+#'   SegmentDefinitionName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_delete_segment_definition
+#'
+#' @aliases customerprofiles_delete_segment_definition
+customerprofiles_delete_segment_definition <- function(DomainName, SegmentDefinitionName) {
+  op <- new_operation(
+    name = "DeleteSegmentDefinition",
+    http_method = "DELETE",
+    http_path = "/domains/{DomainName}/segment-definitions/{SegmentDefinitionName}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .customerprofiles$delete_segment_definition_input(DomainName = DomainName, SegmentDefinitionName = SegmentDefinitionName)
+  output <- .customerprofiles$delete_segment_definition_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$delete_segment_definition <- customerprofiles_delete_segment_definition
+
 #' Deletes the specified workflow and all its corresponding resources
 #'
 #' @description
@@ -1324,7 +2617,7 @@ customerprofiles_delete_workflow <- function(DomainName, WorkflowId) {
 #'         list(
 #'           list(
 #'             StandardIdentifiers = list(
-#'               "PROFILE"|"ASSET"|"CASE"|"UNIQUE"|"SECONDARY"|"LOOKUP_ONLY"|"NEW_ONLY"|"ORDER"
+#'               "PROFILE"|"ASSET"|"CASE"|"ORDER"|"COMMUNICATION_RECORD"|"UNIQUE"|"SECONDARY"|"LOOKUP_ONLY"|"NEW_ONLY"
 #'             ),
 #'             FieldNames = list(
 #'               "string"
@@ -1485,6 +2778,26 @@ customerprofiles_get_auto_merging_preview <- function(DomainName, Consolidation,
 #'     "2015-01-01"
 #'   ),
 #'   Statistic = "FIRST_OCCURRENCE"|"LAST_OCCURRENCE"|"COUNT"|"SUM"|"MINIMUM"|"MAXIMUM"|"AVERAGE"|"MAX_OCCURRENCE",
+#'   Filter = list(
+#'     Include = "ALL"|"ANY"|"NONE",
+#'     Groups = list(
+#'       list(
+#'         Type = "ALL"|"ANY"|"NONE",
+#'         Dimensions = list(
+#'           list(
+#'             Attributes = list(
+#'               list(
+#'                 DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH"|"BEFORE"|"AFTER"|"BETWEEN"|"NOT_BETWEEN"|"ON"|"GREATER_THAN"|"LESS_THAN"|"GREATER_THAN_OR_EQUAL"|"LESS_THAN_OR_EQUAL"|"EQUAL",
+#'                 Values = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
 #'   Conditions = list(
 #'     Range = list(
 #'       Value = 123,
@@ -1801,6 +3114,99 @@ customerprofiles_get_event_stream <- function(DomainName, EventStreamName) {
 }
 .customerprofiles$operations$get_event_stream <- customerprofiles_get_event_stream
 
+#' Get a specific Event Trigger from the domain
+#'
+#' @description
+#' Get a specific Event Trigger from the domain.
+#'
+#' @usage
+#' customerprofiles_get_event_trigger(DomainName, EventTriggerName)
+#'
+#' @param DomainName &#91;required&#93; The unique name of the domain.
+#' @param EventTriggerName &#91;required&#93; The unique name of the event trigger.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EventTriggerName = "string",
+#'   ObjectTypeName = "string",
+#'   Description = "string",
+#'   EventTriggerConditions = list(
+#'     list(
+#'       EventTriggerDimensions = list(
+#'         list(
+#'           ObjectAttributes = list(
+#'             list(
+#'               Source = "string",
+#'               FieldName = "string",
+#'               ComparisonOperator = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH"|"GREATER_THAN"|"LESS_THAN"|"GREATER_THAN_OR_EQUAL"|"LESS_THAN_OR_EQUAL"|"EQUAL"|"BEFORE"|"AFTER"|"ON"|"BETWEEN"|"NOT_BETWEEN",
+#'               Values = list(
+#'                 "string"
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       LogicalOperator = "ANY"|"ALL"|"NONE"
+#'     )
+#'   ),
+#'   SegmentFilter = "string",
+#'   EventTriggerLimits = list(
+#'     EventExpiration = 123,
+#'     Periods = list(
+#'       list(
+#'         Unit = "HOURS"|"DAYS"|"WEEKS"|"MONTHS",
+#'         Value = 123,
+#'         MaxInvocationsPerProfile = 123,
+#'         Unlimited = TRUE|FALSE
+#'       )
+#'     )
+#'   ),
+#'   CreatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastUpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_event_trigger(
+#'   DomainName = "string",
+#'   EventTriggerName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_get_event_trigger
+#'
+#' @aliases customerprofiles_get_event_trigger
+customerprofiles_get_event_trigger <- function(DomainName, EventTriggerName) {
+  op <- new_operation(
+    name = "GetEventTrigger",
+    http_method = "GET",
+    http_path = "/domains/{DomainName}/event-triggers/{EventTriggerName}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .customerprofiles$get_event_trigger_input(DomainName = DomainName, EventTriggerName = EventTriggerName)
+  output <- .customerprofiles$get_event_trigger_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$get_event_trigger <- customerprofiles_get_event_trigger
+
 #' Returns information about an Identity Resolution Job in a specific
 #' domain
 #'
@@ -1931,7 +3337,11 @@ customerprofiles_get_identity_resolution_job <- function(DomainName, JobId) {
 #'     "string"
 #'   ),
 #'   WorkflowId = "string",
-#'   IsUnstructured = TRUE|FALSE
+#'   IsUnstructured = TRUE|FALSE,
+#'   RoleArn = "string",
+#'   EventTriggerNames = list(
+#'     "string"
+#'   )
 #' )
 #' ```
 #'
@@ -2114,7 +3524,7 @@ customerprofiles_get_matches <- function(NextToken = NULL, MaxResults = NULL, Do
 #'     list(
 #'       list(
 #'         StandardIdentifiers = list(
-#'           "PROFILE"|"ASSET"|"CASE"|"UNIQUE"|"SECONDARY"|"LOOKUP_ONLY"|"NEW_ONLY"|"ORDER"
+#'           "PROFILE"|"ASSET"|"CASE"|"ORDER"|"COMMUNICATION_RECORD"|"UNIQUE"|"SECONDARY"|"LOOKUP_ONLY"|"NEW_ONLY"
 #'         ),
 #'         FieldNames = list(
 #'           "string"
@@ -2202,7 +3612,7 @@ customerprofiles_get_profile_object_type <- function(DomainName, ObjectTypeName)
 #'     list(
 #'       list(
 #'         StandardIdentifiers = list(
-#'           "PROFILE"|"ASSET"|"CASE"|"UNIQUE"|"SECONDARY"|"LOOKUP_ONLY"|"NEW_ONLY"|"ORDER"
+#'           "PROFILE"|"ASSET"|"CASE"|"ORDER"|"COMMUNICATION_RECORD"|"UNIQUE"|"SECONDARY"|"LOOKUP_ONLY"|"NEW_ONLY"
 #'         ),
 #'         FieldNames = list(
 #'           "string"
@@ -2243,6 +3653,626 @@ customerprofiles_get_profile_object_type_template <- function(TemplateId) {
   return(response)
 }
 .customerprofiles$operations$get_profile_object_type_template <- customerprofiles_get_profile_object_type_template
+
+#' Gets a segment definition from the domain
+#'
+#' @description
+#' Gets a segment definition from the domain.
+#'
+#' @usage
+#' customerprofiles_get_segment_definition(DomainName,
+#'   SegmentDefinitionName)
+#'
+#' @param DomainName &#91;required&#93; The unique name of the domain.
+#' @param SegmentDefinitionName &#91;required&#93; The unique name of the segment definition.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SegmentDefinitionName = "string",
+#'   DisplayName = "string",
+#'   Description = "string",
+#'   SegmentGroups = list(
+#'     Groups = list(
+#'       list(
+#'         Dimensions = list(
+#'           list(
+#'             ProfileAttributes = list(
+#'               AccountNumber = list(
+#'                 DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                 Values = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               AdditionalInformation = list(
+#'                 DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                 Values = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               FirstName = list(
+#'                 DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                 Values = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               LastName = list(
+#'                 DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                 Values = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MiddleName = list(
+#'                 DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                 Values = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               GenderString = list(
+#'                 DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                 Values = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               PartyTypeString = list(
+#'                 DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                 Values = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               BirthDate = list(
+#'                 DimensionType = "BEFORE"|"AFTER"|"BETWEEN"|"NOT_BETWEEN"|"ON",
+#'                 Values = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               PhoneNumber = list(
+#'                 DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                 Values = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               BusinessName = list(
+#'                 DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                 Values = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               BusinessPhoneNumber = list(
+#'                 DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                 Values = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               HomePhoneNumber = list(
+#'                 DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                 Values = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MobilePhoneNumber = list(
+#'                 DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                 Values = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               EmailAddress = list(
+#'                 DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                 Values = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               PersonalEmailAddress = list(
+#'                 DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                 Values = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               BusinessEmailAddress = list(
+#'                 DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                 Values = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               Address = list(
+#'                 City = list(
+#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                   Values = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 Country = list(
+#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                   Values = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 County = list(
+#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                   Values = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 PostalCode = list(
+#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                   Values = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 Province = list(
+#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                   Values = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 State = list(
+#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                   Values = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
+#'               ShippingAddress = list(
+#'                 City = list(
+#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                   Values = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 Country = list(
+#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                   Values = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 County = list(
+#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                   Values = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 PostalCode = list(
+#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                   Values = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 Province = list(
+#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                   Values = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 State = list(
+#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                   Values = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
+#'               MailingAddress = list(
+#'                 City = list(
+#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                   Values = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 Country = list(
+#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                   Values = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 County = list(
+#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                   Values = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 PostalCode = list(
+#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                   Values = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 Province = list(
+#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                   Values = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 State = list(
+#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                   Values = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
+#'               BillingAddress = list(
+#'                 City = list(
+#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                   Values = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 Country = list(
+#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                   Values = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 County = list(
+#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                   Values = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 PostalCode = list(
+#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                   Values = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 Province = list(
+#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                   Values = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 State = list(
+#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH",
+#'                   Values = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
+#'               Attributes = list(
+#'                 list(
+#'                   DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH"|"BEFORE"|"AFTER"|"BETWEEN"|"NOT_BETWEEN"|"ON"|"GREATER_THAN"|"LESS_THAN"|"GREATER_THAN_OR_EQUAL"|"LESS_THAN_OR_EQUAL"|"EQUAL",
+#'                   Values = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             CalculatedAttributes = list(
+#'               list(
+#'                 DimensionType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH"|"BEFORE"|"AFTER"|"BETWEEN"|"NOT_BETWEEN"|"ON"|"GREATER_THAN"|"LESS_THAN"|"GREATER_THAN_OR_EQUAL"|"LESS_THAN_OR_EQUAL"|"EQUAL",
+#'                 Values = list(
+#'                   "string"
+#'                 ),
+#'                 ConditionOverrides = list(
+#'                   Range = list(
+#'                     Start = 123,
+#'                     End = 123,
+#'                     Unit = "DAYS"
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         SourceSegments = list(
+#'           list(
+#'             SegmentDefinitionName = "string"
+#'           )
+#'         ),
+#'         SourceType = "ALL"|"ANY"|"NONE",
+#'         Type = "ALL"|"ANY"|"NONE"
+#'       )
+#'     ),
+#'     Include = "ALL"|"ANY"|"NONE"
+#'   ),
+#'   SegmentDefinitionArn = "string",
+#'   CreatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_segment_definition(
+#'   DomainName = "string",
+#'   SegmentDefinitionName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_get_segment_definition
+#'
+#' @aliases customerprofiles_get_segment_definition
+customerprofiles_get_segment_definition <- function(DomainName, SegmentDefinitionName) {
+  op <- new_operation(
+    name = "GetSegmentDefinition",
+    http_method = "GET",
+    http_path = "/domains/{DomainName}/segment-definitions/{SegmentDefinitionName}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .customerprofiles$get_segment_definition_input(DomainName = DomainName, SegmentDefinitionName = SegmentDefinitionName)
+  output <- .customerprofiles$get_segment_definition_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$get_segment_definition <- customerprofiles_get_segment_definition
+
+#' Gets the result of a segment estimate query
+#'
+#' @description
+#' Gets the result of a segment estimate query.
+#'
+#' @usage
+#' customerprofiles_get_segment_estimate(DomainName, EstimateId)
+#'
+#' @param DomainName &#91;required&#93; The unique name of the domain.
+#' @param EstimateId &#91;required&#93; The query Id passed by a previous
+#' [`create_segment_estimate`][customerprofiles_create_segment_estimate]
+#' operation.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DomainName = "string",
+#'   EstimateId = "string",
+#'   Status = "RUNNING"|"SUCCEEDED"|"FAILED",
+#'   Estimate = "string",
+#'   Message = "string",
+#'   StatusCode = 123
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_segment_estimate(
+#'   DomainName = "string",
+#'   EstimateId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_get_segment_estimate
+#'
+#' @aliases customerprofiles_get_segment_estimate
+customerprofiles_get_segment_estimate <- function(DomainName, EstimateId) {
+  op <- new_operation(
+    name = "GetSegmentEstimate",
+    http_method = "GET",
+    http_path = "/domains/{DomainName}/segment-estimates/{EstimateId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .customerprofiles$get_segment_estimate_input(DomainName = DomainName, EstimateId = EstimateId)
+  output <- .customerprofiles$get_segment_estimate_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$get_segment_estimate <- customerprofiles_get_segment_estimate
+
+#' Determines if the given profiles are within a segment
+#'
+#' @description
+#' Determines if the given profiles are within a segment.
+#'
+#' @usage
+#' customerprofiles_get_segment_membership(DomainName,
+#'   SegmentDefinitionName, ProfileIds)
+#'
+#' @param DomainName &#91;required&#93; The unique name of the domain.
+#' @param SegmentDefinitionName &#91;required&#93; The Id of the wanted segment. Needs to be a valid, and existing segment
+#' Id.
+#' @param ProfileIds &#91;required&#93; The list of profile IDs to query for.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SegmentDefinitionName = "string",
+#'   Profiles = list(
+#'     list(
+#'       ProfileId = "string",
+#'       QueryResult = "PRESENT"|"ABSENT",
+#'       Profile = list(
+#'         ProfileId = "string",
+#'         AccountNumber = "string",
+#'         AdditionalInformation = "string",
+#'         PartyType = "INDIVIDUAL"|"BUSINESS"|"OTHER",
+#'         BusinessName = "string",
+#'         FirstName = "string",
+#'         MiddleName = "string",
+#'         LastName = "string",
+#'         BirthDate = "string",
+#'         Gender = "MALE"|"FEMALE"|"UNSPECIFIED",
+#'         PhoneNumber = "string",
+#'         MobilePhoneNumber = "string",
+#'         HomePhoneNumber = "string",
+#'         BusinessPhoneNumber = "string",
+#'         EmailAddress = "string",
+#'         PersonalEmailAddress = "string",
+#'         BusinessEmailAddress = "string",
+#'         Address = list(
+#'           Address1 = "string",
+#'           Address2 = "string",
+#'           Address3 = "string",
+#'           Address4 = "string",
+#'           City = "string",
+#'           County = "string",
+#'           State = "string",
+#'           Province = "string",
+#'           Country = "string",
+#'           PostalCode = "string"
+#'         ),
+#'         ShippingAddress = list(
+#'           Address1 = "string",
+#'           Address2 = "string",
+#'           Address3 = "string",
+#'           Address4 = "string",
+#'           City = "string",
+#'           County = "string",
+#'           State = "string",
+#'           Province = "string",
+#'           Country = "string",
+#'           PostalCode = "string"
+#'         ),
+#'         MailingAddress = list(
+#'           Address1 = "string",
+#'           Address2 = "string",
+#'           Address3 = "string",
+#'           Address4 = "string",
+#'           City = "string",
+#'           County = "string",
+#'           State = "string",
+#'           Province = "string",
+#'           Country = "string",
+#'           PostalCode = "string"
+#'         ),
+#'         BillingAddress = list(
+#'           Address1 = "string",
+#'           Address2 = "string",
+#'           Address3 = "string",
+#'           Address4 = "string",
+#'           City = "string",
+#'           County = "string",
+#'           State = "string",
+#'           Province = "string",
+#'           Country = "string",
+#'           PostalCode = "string"
+#'         ),
+#'         Attributes = list(
+#'           "string"
+#'         ),
+#'         FoundByItems = list(
+#'           list(
+#'             KeyName = "string",
+#'             Values = list(
+#'               "string"
+#'             )
+#'           )
+#'         ),
+#'         PartyTypeString = "string",
+#'         GenderString = "string"
+#'       )
+#'     )
+#'   ),
+#'   Failures = list(
+#'     list(
+#'       ProfileId = "string",
+#'       Message = "string",
+#'       Status = 123
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_segment_membership(
+#'   DomainName = "string",
+#'   SegmentDefinitionName = "string",
+#'   ProfileIds = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_get_segment_membership
+#'
+#' @aliases customerprofiles_get_segment_membership
+customerprofiles_get_segment_membership <- function(DomainName, SegmentDefinitionName, ProfileIds) {
+  op <- new_operation(
+    name = "GetSegmentMembership",
+    http_method = "POST",
+    http_path = "/domains/{DomainName}/segments/{SegmentDefinitionName}/membership",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .customerprofiles$get_segment_membership_input(DomainName = DomainName, SegmentDefinitionName = SegmentDefinitionName, ProfileIds = ProfileIds)
+  output <- .customerprofiles$get_segment_membership_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$get_segment_membership <- customerprofiles_get_segment_membership
+
+#' Retrieve the latest status of a segment snapshot
+#'
+#' @description
+#' Retrieve the latest status of a segment snapshot.
+#'
+#' @usage
+#' customerprofiles_get_segment_snapshot(DomainName, SegmentDefinitionName,
+#'   SnapshotId)
+#'
+#' @param DomainName &#91;required&#93; The unique identifier of the domain.
+#' @param SegmentDefinitionName &#91;required&#93; The unique name of the segment definition.
+#' @param SnapshotId &#91;required&#93; The unique identifier of the segment snapshot.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SnapshotId = "string",
+#'   Status = "COMPLETED"|"IN_PROGRESS"|"FAILED",
+#'   StatusMessage = "string",
+#'   DataFormat = "CSV"|"JSONL"|"ORC",
+#'   EncryptionKey = "string",
+#'   RoleArn = "string",
+#'   DestinationUri = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_segment_snapshot(
+#'   DomainName = "string",
+#'   SegmentDefinitionName = "string",
+#'   SnapshotId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_get_segment_snapshot
+#'
+#' @aliases customerprofiles_get_segment_snapshot
+customerprofiles_get_segment_snapshot <- function(DomainName, SegmentDefinitionName, SnapshotId) {
+  op <- new_operation(
+    name = "GetSegmentSnapshot",
+    http_method = "GET",
+    http_path = "/domains/{DomainName}/segments/{SegmentDefinitionName}/snapshots/{SnapshotId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .customerprofiles$get_segment_snapshot_input(DomainName = DomainName, SegmentDefinitionName = SegmentDefinitionName, SnapshotId = SnapshotId)
+  output <- .customerprofiles$get_segment_snapshot_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$get_segment_snapshot <- customerprofiles_get_segment_snapshot
 
 #' Returns a set of profiles that belong to the same matching group using
 #' the matchId or profileId
@@ -2304,7 +4334,7 @@ customerprofiles_get_similar_profiles <- function(NextToken = NULL, MaxResults =
     http_method = "POST",
     http_path = "/domains/{DomainName}/matches",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ProfileIds"),
     stream_api = FALSE
   )
   input <- .customerprofiles$get_similar_profiles_input(NextToken = NextToken, MaxResults = MaxResults, DomainName = DomainName, MatchType = MatchType, SearchKey = SearchKey, SearchValue = SearchValue)
@@ -2508,7 +4538,11 @@ customerprofiles_get_workflow_steps <- function(DomainName, WorkflowId, NextToke
 #'         "string"
 #'       ),
 #'       WorkflowId = "string",
-#'       IsUnstructured = TRUE|FALSE
+#'       IsUnstructured = TRUE|FALSE,
+#'       RoleArn = "string",
+#'       EventTriggerNames = list(
+#'         "string"
+#'       )
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -2827,6 +4861,75 @@ customerprofiles_list_event_streams <- function(DomainName, NextToken = NULL, Ma
 }
 .customerprofiles$operations$list_event_streams <- customerprofiles_list_event_streams
 
+#' List all Event Triggers under a domain
+#'
+#' @description
+#' List all Event Triggers under a domain.
+#'
+#' @usage
+#' customerprofiles_list_event_triggers(DomainName, NextToken, MaxResults)
+#'
+#' @param DomainName &#91;required&#93; The unique name of the domain.
+#' @param NextToken The pagination token to use with ListEventTriggers.
+#' @param MaxResults The maximum number of results to return per page.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Items = list(
+#'     list(
+#'       ObjectTypeName = "string",
+#'       EventTriggerName = "string",
+#'       Description = "string",
+#'       CreatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastUpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Tags = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_event_triggers(
+#'   DomainName = "string",
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_list_event_triggers
+#'
+#' @aliases customerprofiles_list_event_triggers
+customerprofiles_list_event_triggers <- function(DomainName, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListEventTriggers",
+    http_method = "GET",
+    http_path = "/domains/{DomainName}/event-triggers",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Items"),
+    stream_api = FALSE
+  )
+  input <- .customerprofiles$list_event_triggers_input(DomainName = DomainName, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .customerprofiles$list_event_triggers_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$list_event_triggers <- customerprofiles_list_event_triggers
+
 #' Lists all of the Identity Resolution Jobs in your domain
 #'
 #' @description
@@ -2946,7 +5049,11 @@ customerprofiles_list_identity_resolution_jobs <- function(DomainName, NextToken
 #'         "string"
 #'       ),
 #'       WorkflowId = "string",
-#'       IsUnstructured = TRUE|FALSE
+#'       IsUnstructured = TRUE|FALSE,
+#'       RoleArn = "string",
+#'       EventTriggerNames = list(
+#'         "string"
+#'       )
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -2986,6 +5093,129 @@ customerprofiles_list_integrations <- function(DomainName, NextToken = NULL, Max
   return(response)
 }
 .customerprofiles$operations$list_integrations <- customerprofiles_list_integrations
+
+#' Fetch the possible attribute values given the attribute name
+#'
+#' @description
+#' Fetch the possible attribute values given the attribute name.
+#'
+#' @usage
+#' customerprofiles_list_object_type_attributes(NextToken, MaxResults,
+#'   DomainName, ObjectTypeName)
+#'
+#' @param NextToken The pagination token from the previous call.
+#' @param MaxResults The maximum number of objects returned per page.
+#' @param DomainName &#91;required&#93; The unique identifier of the domain.
+#' @param ObjectTypeName &#91;required&#93; The name of the profile object type.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Items = list(
+#'     list(
+#'       AttributeName = "string",
+#'       LastUpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_object_type_attributes(
+#'   NextToken = "string",
+#'   MaxResults = 123,
+#'   DomainName = "string",
+#'   ObjectTypeName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_list_object_type_attributes
+#'
+#' @aliases customerprofiles_list_object_type_attributes
+customerprofiles_list_object_type_attributes <- function(NextToken = NULL, MaxResults = NULL, DomainName, ObjectTypeName) {
+  op <- new_operation(
+    name = "ListObjectTypeAttributes",
+    http_method = "GET",
+    http_path = "/domains/{DomainName}/object-types/{ObjectTypeName}/attributes",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Items"),
+    stream_api = FALSE
+  )
+  input <- .customerprofiles$list_object_type_attributes_input(NextToken = NextToken, MaxResults = MaxResults, DomainName = DomainName, ObjectTypeName = ObjectTypeName)
+  output <- .customerprofiles$list_object_type_attributes_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$list_object_type_attributes <- customerprofiles_list_object_type_attributes
+
+#' Fetch the possible attribute values given the attribute name
+#'
+#' @description
+#' Fetch the possible attribute values given the attribute name.
+#'
+#' @usage
+#' customerprofiles_list_profile_attribute_values(DomainName,
+#'   AttributeName)
+#'
+#' @param DomainName &#91;required&#93; The unique identifier of the domain.
+#' @param AttributeName &#91;required&#93; The attribute name.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DomainName = "string",
+#'   AttributeName = "string",
+#'   Items = list(
+#'     list(
+#'       Value = "string"
+#'     )
+#'   ),
+#'   StatusCode = 123
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_profile_attribute_values(
+#'   DomainName = "string",
+#'   AttributeName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_list_profile_attribute_values
+#'
+#' @aliases customerprofiles_list_profile_attribute_values
+customerprofiles_list_profile_attribute_values <- function(DomainName, AttributeName) {
+  op <- new_operation(
+    name = "ListProfileAttributeValues",
+    http_method = "GET",
+    http_path = "/domains/{DomainName}/profile-attributes/{AttributeName}/values",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .customerprofiles$list_profile_attribute_values_input(DomainName = DomainName, AttributeName = AttributeName)
+  output <- .customerprofiles$list_profile_attribute_values_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$list_profile_attribute_values <- customerprofiles_list_profile_attribute_values
 
 #' Lists all of the template information for object types
 #'
@@ -3238,7 +5468,7 @@ customerprofiles_list_rule_based_matches <- function(NextToken = NULL, MaxResult
     http_method = "GET",
     http_path = "/domains/{DomainName}/profiles/ruleBasedMatches",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "MatchIds"),
     stream_api = FALSE
   )
   input <- .customerprofiles$list_rule_based_matches_input(NextToken = NextToken, MaxResults = MaxResults, DomainName = DomainName)
@@ -3250,6 +5480,74 @@ customerprofiles_list_rule_based_matches <- function(NextToken = NULL, MaxResult
   return(response)
 }
 .customerprofiles$operations$list_rule_based_matches <- customerprofiles_list_rule_based_matches
+
+#' Lists all segment definitions under a domain
+#'
+#' @description
+#' Lists all segment definitions under a domain.
+#'
+#' @usage
+#' customerprofiles_list_segment_definitions(DomainName, MaxResults,
+#'   NextToken)
+#'
+#' @param DomainName &#91;required&#93; The unique identifier of the domain.
+#' @param MaxResults The maximum number of objects returned per page.
+#' @param NextToken The pagination token from the previous call.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   Items = list(
+#'     list(
+#'       SegmentDefinitionName = "string",
+#'       DisplayName = "string",
+#'       Description = "string",
+#'       SegmentDefinitionArn = "string",
+#'       CreatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Tags = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_segment_definitions(
+#'   DomainName = "string",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_list_segment_definitions
+#'
+#' @aliases customerprofiles_list_segment_definitions
+customerprofiles_list_segment_definitions <- function(DomainName, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListSegmentDefinitions",
+    http_method = "GET",
+    http_path = "/domains/{DomainName}/segment-definitions",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Items"),
+    stream_api = FALSE
+  )
+  input <- .customerprofiles$list_segment_definitions_input(DomainName = DomainName, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .customerprofiles$list_segment_definitions_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$list_segment_definitions <- customerprofiles_list_segment_definitions
 
 #' Displays the tags associated with an Amazon Connect Customer Profiles
 #' resource
@@ -3518,7 +5816,7 @@ customerprofiles_merge_profiles <- function(DomainName, MainProfileId, ProfileId
 #'
 #' @usage
 #' customerprofiles_put_integration(DomainName, Uri, ObjectTypeName, Tags,
-#'   FlowDefinition, ObjectTypeNames)
+#'   FlowDefinition, ObjectTypeNames, RoleArn, EventTriggerNames)
 #'
 #' @param DomainName &#91;required&#93; The unique name of the domain.
 #' @param Uri The URI of the S3 bucket or any other type of data source.
@@ -3533,6 +5831,10 @@ customerprofiles_merge_profiles <- function(DomainName, MainProfileId, ProfileId
 #' `ShopifyUpdateCustomers`, `ShopifyCreateDraftOrders`,
 #' `ShopifyUpdateDraftOrders`, `ShopifyCreateOrders`, and
 #' `ShopifyUpdatedOrders`.
+#' @param RoleArn The Amazon Resource Name (ARN) of the IAM role. The Integration uses
+#' this role to make Customer Profiles requests on your behalf.
+#' @param EventTriggerNames A list of unique names for active event triggers associated with the
+#' integration.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3554,7 +5856,11 @@ customerprofiles_merge_profiles <- function(DomainName, MainProfileId, ProfileId
 #'     "string"
 #'   ),
 #'   WorkflowId = "string",
-#'   IsUnstructured = TRUE|FALSE
+#'   IsUnstructured = TRUE|FALSE,
+#'   RoleArn = "string",
+#'   EventTriggerNames = list(
+#'     "string"
+#'   )
 #' )
 #' ```
 #'
@@ -3640,6 +5946,10 @@ customerprofiles_merge_profiles <- function(DomainName, MainProfileId, ProfileId
 #'   ),
 #'   ObjectTypeNames = list(
 #'     "string"
+#'   ),
+#'   RoleArn = "string",
+#'   EventTriggerNames = list(
+#'     "string"
 #'   )
 #' )
 #' ```
@@ -3649,7 +5959,7 @@ customerprofiles_merge_profiles <- function(DomainName, MainProfileId, ProfileId
 #' @rdname customerprofiles_put_integration
 #'
 #' @aliases customerprofiles_put_integration
-customerprofiles_put_integration <- function(DomainName, Uri = NULL, ObjectTypeName = NULL, Tags = NULL, FlowDefinition = NULL, ObjectTypeNames = NULL) {
+customerprofiles_put_integration <- function(DomainName, Uri = NULL, ObjectTypeName = NULL, Tags = NULL, FlowDefinition = NULL, ObjectTypeNames = NULL, RoleArn = NULL, EventTriggerNames = NULL) {
   op <- new_operation(
     name = "PutIntegration",
     http_method = "PUT",
@@ -3658,7 +5968,7 @@ customerprofiles_put_integration <- function(DomainName, Uri = NULL, ObjectTypeN
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .customerprofiles$put_integration_input(DomainName = DomainName, Uri = Uri, ObjectTypeName = ObjectTypeName, Tags = Tags, FlowDefinition = FlowDefinition, ObjectTypeNames = ObjectTypeNames)
+  input <- .customerprofiles$put_integration_input(DomainName = DomainName, Uri = Uri, ObjectTypeName = ObjectTypeName, Tags = Tags, FlowDefinition = FlowDefinition, ObjectTypeNames = ObjectTypeNames, RoleArn = RoleArn, EventTriggerNames = EventTriggerNames)
   output <- .customerprofiles$put_integration_output()
   config <- get_config()
   svc <- .customerprofiles$service(config, op)
@@ -3799,7 +6109,7 @@ customerprofiles_put_profile_object <- function(ObjectTypeName, Object, DomainNa
 #'     list(
 #'       list(
 #'         StandardIdentifiers = list(
-#'           "PROFILE"|"ASSET"|"CASE"|"UNIQUE"|"SECONDARY"|"LOOKUP_ONLY"|"NEW_ONLY"|"ORDER"
+#'           "PROFILE"|"ASSET"|"CASE"|"ORDER"|"COMMUNICATION_RECORD"|"UNIQUE"|"SECONDARY"|"LOOKUP_ONLY"|"NEW_ONLY"
 #'         ),
 #'         FieldNames = list(
 #'           "string"
@@ -3842,7 +6152,7 @@ customerprofiles_put_profile_object <- function(ObjectTypeName, Object, DomainNa
 #'     list(
 #'       list(
 #'         StandardIdentifiers = list(
-#'           "PROFILE"|"ASSET"|"CASE"|"UNIQUE"|"SECONDARY"|"LOOKUP_ONLY"|"NEW_ONLY"|"ORDER"
+#'           "PROFILE"|"ASSET"|"CASE"|"ORDER"|"COMMUNICATION_RECORD"|"UNIQUE"|"SECONDARY"|"LOOKUP_ONLY"|"NEW_ONLY"
 #'         ),
 #'         FieldNames = list(
 #'           "string"
@@ -4530,6 +6840,143 @@ customerprofiles_update_domain <- function(DomainName, DefaultExpirationDays = N
   return(response)
 }
 .customerprofiles$operations$update_domain <- customerprofiles_update_domain
+
+#' Update the properties of an Event Trigger
+#'
+#' @description
+#' Update the properties of an Event Trigger.
+#'
+#' @usage
+#' customerprofiles_update_event_trigger(DomainName, EventTriggerName,
+#'   ObjectTypeName, Description, EventTriggerConditions, SegmentFilter,
+#'   EventTriggerLimits)
+#'
+#' @param DomainName &#91;required&#93; The unique name of the domain.
+#' @param EventTriggerName &#91;required&#93; The unique name of the event trigger.
+#' @param ObjectTypeName The unique name of the object type.
+#' @param Description The description of the event trigger.
+#' @param EventTriggerConditions A list of conditions that determine when an event should trigger the
+#' destination.
+#' @param SegmentFilter The destination is triggered only for profiles that meet the criteria of
+#' a segment definition.
+#' @param EventTriggerLimits Defines limits controlling whether an event triggers the destination,
+#' based on ingestion latency and the number of invocations per profile
+#' over specific time periods.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EventTriggerName = "string",
+#'   ObjectTypeName = "string",
+#'   Description = "string",
+#'   EventTriggerConditions = list(
+#'     list(
+#'       EventTriggerDimensions = list(
+#'         list(
+#'           ObjectAttributes = list(
+#'             list(
+#'               Source = "string",
+#'               FieldName = "string",
+#'               ComparisonOperator = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH"|"GREATER_THAN"|"LESS_THAN"|"GREATER_THAN_OR_EQUAL"|"LESS_THAN_OR_EQUAL"|"EQUAL"|"BEFORE"|"AFTER"|"ON"|"BETWEEN"|"NOT_BETWEEN",
+#'               Values = list(
+#'                 "string"
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       LogicalOperator = "ANY"|"ALL"|"NONE"
+#'     )
+#'   ),
+#'   SegmentFilter = "string",
+#'   EventTriggerLimits = list(
+#'     EventExpiration = 123,
+#'     Periods = list(
+#'       list(
+#'         Unit = "HOURS"|"DAYS"|"WEEKS"|"MONTHS",
+#'         Value = 123,
+#'         MaxInvocationsPerProfile = 123,
+#'         Unlimited = TRUE|FALSE
+#'       )
+#'     )
+#'   ),
+#'   CreatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastUpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_event_trigger(
+#'   DomainName = "string",
+#'   EventTriggerName = "string",
+#'   ObjectTypeName = "string",
+#'   Description = "string",
+#'   EventTriggerConditions = list(
+#'     list(
+#'       EventTriggerDimensions = list(
+#'         list(
+#'           ObjectAttributes = list(
+#'             list(
+#'               Source = "string",
+#'               FieldName = "string",
+#'               ComparisonOperator = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEGINS_WITH"|"ENDS_WITH"|"GREATER_THAN"|"LESS_THAN"|"GREATER_THAN_OR_EQUAL"|"LESS_THAN_OR_EQUAL"|"EQUAL"|"BEFORE"|"AFTER"|"ON"|"BETWEEN"|"NOT_BETWEEN",
+#'               Values = list(
+#'                 "string"
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       LogicalOperator = "ANY"|"ALL"|"NONE"
+#'     )
+#'   ),
+#'   SegmentFilter = "string",
+#'   EventTriggerLimits = list(
+#'     EventExpiration = 123,
+#'     Periods = list(
+#'       list(
+#'         Unit = "HOURS"|"DAYS"|"WEEKS"|"MONTHS",
+#'         Value = 123,
+#'         MaxInvocationsPerProfile = 123,
+#'         Unlimited = TRUE|FALSE
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_update_event_trigger
+#'
+#' @aliases customerprofiles_update_event_trigger
+customerprofiles_update_event_trigger <- function(DomainName, EventTriggerName, ObjectTypeName = NULL, Description = NULL, EventTriggerConditions = NULL, SegmentFilter = NULL, EventTriggerLimits = NULL) {
+  op <- new_operation(
+    name = "UpdateEventTrigger",
+    http_method = "PUT",
+    http_path = "/domains/{DomainName}/event-triggers/{EventTriggerName}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .customerprofiles$update_event_trigger_input(DomainName = DomainName, EventTriggerName = EventTriggerName, ObjectTypeName = ObjectTypeName, Description = Description, EventTriggerConditions = EventTriggerConditions, SegmentFilter = SegmentFilter, EventTriggerLimits = EventTriggerLimits)
+  output <- .customerprofiles$update_event_trigger_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$update_event_trigger <- customerprofiles_update_event_trigger
 
 #' Updates the properties of a profile
 #'

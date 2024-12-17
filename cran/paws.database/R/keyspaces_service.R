@@ -121,17 +121,22 @@ NULL
 #' \tabular{ll}{
 #'  \link[=keyspaces_create_keyspace]{create_keyspace} \tab The CreateKeyspace operation adds a new keyspace to your account\cr
 #'  \link[=keyspaces_create_table]{create_table} \tab The CreateTable operation adds a new table to the specified keyspace\cr
+#'  \link[=keyspaces_create_type]{create_type} \tab The CreateType operation creates a new user-defined type in the specified keyspace\cr
 #'  \link[=keyspaces_delete_keyspace]{delete_keyspace} \tab The DeleteKeyspace operation deletes a keyspace and all of its tables\cr
 #'  \link[=keyspaces_delete_table]{delete_table} \tab The DeleteTable operation deletes a table and all of its data\cr
-#'  \link[=keyspaces_get_keyspace]{get_keyspace} \tab Returns the name and the Amazon Resource Name (ARN) of the specified table\cr
+#'  \link[=keyspaces_delete_type]{delete_type} \tab The DeleteType operation deletes a user-defined type (UDT)\cr
+#'  \link[=keyspaces_get_keyspace]{get_keyspace} \tab Returns the name of the specified keyspace, the Amazon Resource Name (ARN), the replication strategy, the Amazon Web Services Regions of a multi-Region keyspace, and the status of newly added Regions after an UpdateKeyspace operation\cr
 #'  \link[=keyspaces_get_table]{get_table} \tab Returns information about the table, including the table's name and current status, the keyspace name, configuration settings, and metadata\cr
 #'  \link[=keyspaces_get_table_auto_scaling_settings]{get_table_auto_scaling_settings} \tab Returns auto scaling related settings of the specified table in JSON format\cr
-#'  \link[=keyspaces_list_keyspaces]{list_keyspaces} \tab Returns a list of keyspaces\cr
-#'  \link[=keyspaces_list_tables]{list_tables} \tab Returns a list of tables for a specified keyspace\cr
+#'  \link[=keyspaces_get_type]{get_type} \tab The GetType operation returns information about the type, for example the field definitions, the timestamp when the type was last modified, the level of nesting, the status, and details about if the type is used in other types and tables\cr
+#'  \link[=keyspaces_list_keyspaces]{list_keyspaces} \tab The ListKeyspaces operation returns a list of keyspaces\cr
+#'  \link[=keyspaces_list_tables]{list_tables} \tab The ListTables operation returns a list of tables for a specified keyspace\cr
 #'  \link[=keyspaces_list_tags_for_resource]{list_tags_for_resource} \tab Returns a list of all tags associated with the specified Amazon Keyspaces resource\cr
+#'  \link[=keyspaces_list_types]{list_types} \tab The ListTypes operation returns a list of types for a specified keyspace\cr
 #'  \link[=keyspaces_restore_table]{restore_table} \tab Restores the table to the specified point in time within the earliest_restorable_timestamp and the current time\cr
 #'  \link[=keyspaces_tag_resource]{tag_resource} \tab Associates a set of tags with a Amazon Keyspaces resource\cr
 #'  \link[=keyspaces_untag_resource]{untag_resource} \tab Removes the association of tags from a Amazon Keyspaces resource\cr
+#'  \link[=keyspaces_update_keyspace]{update_keyspace} \tab Adds a new Amazon Web Services Region to the keyspace\cr
 #'  \link[=keyspaces_update_table]{update_table} \tab Adds new columns to the table or updates one of the table's settings, for example capacity mode, auto scaling, encryption, point-in-time recovery, or ttl settings
 #' }
 #'
@@ -164,7 +169,7 @@ keyspaces <- function(config = list(), credentials = list(), endpoint = NULL, re
 
 .keyspaces$metadata <- list(
   service_name = "keyspaces",
-  endpoints = list("*" = list(endpoint = "cassandra.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "cassandra.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "cassandra.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "cassandra.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "cassandra.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "cassandra.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "cassandra.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "cassandra.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "cassandra.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "cassandra.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "cassandra.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "cassandra.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "cassandra.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Keyspaces",
   api_version = "2022-02-10",
   signing_name = "cassandra",

@@ -4,6 +4,10 @@ test_that("list_browser_settings", {
   expect_error(svc$list_browser_settings(), NA)
 })
 
+test_that("list_data_protection_settings", {
+  expect_error(svc$list_data_protection_settings(), NA)
+})
+
 test_that("list_ip_access_settings", {
   expect_error(svc$list_ip_access_settings(), NA)
 })

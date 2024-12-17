@@ -124,6 +124,8 @@ also don't need to worry about scaling your management infrastructure.
 \link[paws.compute:ecs_describe_capacity_providers]{describe_capacity_providers} \tab Describes one or more of your capacity providers\cr
 \link[paws.compute:ecs_describe_clusters]{describe_clusters} \tab Describes one or more of your clusters\cr
 \link[paws.compute:ecs_describe_container_instances]{describe_container_instances} \tab Describes one or more container instances\cr
+\link[paws.compute:ecs_describe_service_deployments]{describe_service_deployments} \tab Describes one or more of your service deployments\cr
+\link[paws.compute:ecs_describe_service_revisions]{describe_service_revisions} \tab Describes one or more service revisions\cr
 \link[paws.compute:ecs_describe_services]{describe_services} \tab Describes the specified services running in your cluster\cr
 \link[paws.compute:ecs_describe_task_definition]{describe_task_definition} \tab Describes a task definition\cr
 \link[paws.compute:ecs_describe_tasks]{describe_tasks} \tab Describes a specified task or tasks\cr
@@ -135,6 +137,7 @@ also don't need to worry about scaling your management infrastructure.
 \link[paws.compute:ecs_list_attributes]{list_attributes} \tab Lists the attributes for Amazon ECS resources within a specified target type and cluster\cr
 \link[paws.compute:ecs_list_clusters]{list_clusters} \tab Returns a list of existing clusters\cr
 \link[paws.compute:ecs_list_container_instances]{list_container_instances} \tab Returns a list of container instances in a specified cluster\cr
+\link[paws.compute:ecs_list_service_deployments]{list_service_deployments} \tab This operation lists all the service deployments that meet the specified filter criteria\cr
 \link[paws.compute:ecs_list_services]{list_services} \tab Returns a list of services\cr
 \link[paws.compute:ecs_list_services_by_namespace]{list_services_by_namespace} \tab This operation lists all of the services that are associated with a Cloud Map namespace\cr
 \link[paws.compute:ecs_list_tags_for_resource]{list_tags_for_resource} \tab List the tags for an Amazon ECS resource\cr

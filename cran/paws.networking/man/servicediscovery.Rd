@@ -107,7 +107,8 @@ service receive an answer that contains up to eight healthy records.
 \link[=servicediscovery_create_public_dns_namespace]{create_public_dns_namespace} \tab Creates a public namespace based on DNS, which is visible on the internet\cr
 \link[=servicediscovery_create_service]{create_service} \tab Creates a service\cr
 \link[=servicediscovery_delete_namespace]{delete_namespace} \tab Deletes a namespace from the current account\cr
-\link[=servicediscovery_delete_service]{delete_service} \tab Deletes a specified service\cr
+\link[=servicediscovery_delete_service]{delete_service} \tab Deletes a specified service and all associated service attributes\cr
+\link[=servicediscovery_delete_service_attributes]{delete_service_attributes} \tab Deletes specific attributes associated with a service\cr
 \link[=servicediscovery_deregister_instance]{deregister_instance} \tab Deletes the Amazon Route 53 DNS records and health check, if any, that Cloud Map created for the specified instance\cr
 \link[=servicediscovery_discover_instances]{discover_instances} \tab Discovers registered instances for a specified namespace and service\cr
 \link[=servicediscovery_discover_instances_revision]{discover_instances_revision} \tab Discovers the increasing revision associated with an instance\cr
@@ -116,6 +117,7 @@ service receive an answer that contains up to eight healthy records.
 \link[=servicediscovery_get_namespace]{get_namespace} \tab Gets information about a namespace\cr
 \link[=servicediscovery_get_operation]{get_operation} \tab Gets information about any operation that returns an operation ID in the response, such as a CreateHttpNamespace request\cr
 \link[=servicediscovery_get_service]{get_service} \tab Gets the settings for a specified service\cr
+\link[=servicediscovery_get_service_attributes]{get_service_attributes} \tab Returns the attributes associated with a specified service\cr
 \link[=servicediscovery_list_instances]{list_instances} \tab Lists summary information about the instances that you registered by using a specified service\cr
 \link[=servicediscovery_list_namespaces]{list_namespaces} \tab Lists summary information about the namespaces that were created by the current Amazon Web Services account\cr
 \link[=servicediscovery_list_operations]{list_operations} \tab Lists operations that match the criteria that you specify\cr
@@ -128,7 +130,8 @@ service receive an answer that contains up to eight healthy records.
 \link[=servicediscovery_update_instance_custom_health_status]{update_instance_custom_health_status} \tab Submits a request to change the health status of a custom health check to healthy or unhealthy\cr
 \link[=servicediscovery_update_private_dns_namespace]{update_private_dns_namespace} \tab Updates a private DNS namespace\cr
 \link[=servicediscovery_update_public_dns_namespace]{update_public_dns_namespace} \tab Updates a public DNS namespace\cr
-\link[=servicediscovery_update_service]{update_service} \tab Submits a request to perform the following operations:
+\link[=servicediscovery_update_service]{update_service} \tab Submits a request to perform the following operations:\cr
+\link[=servicediscovery_update_service_attributes]{update_service_attributes} \tab Submits a request to update a specified service to add service-level attributes
 }
 }
 

@@ -23,7 +23,41 @@ after the time you specify.}
 before the time you specify.}
 
 \item{statusEquals}{Specify a status to filter for batch inference jobs whose statuses match
-the string you specify.}
+the string you specify.
+
+The following statuses are possible:
+\itemize{
+\item Submitted – This job has been submitted to a queue for validation.
+\item Validating – This job is being validated for the requirements
+described in \href{https://docs.aws.amazon.com/bedrock/latest/userguide/batch-inference-data.html}{Format and upload your batch inference data}.
+The criteria include the following:
+\itemize{
+\item Your IAM service role has access to the Amazon S3 buckets
+containing your files.
+\item Your files are .jsonl files and each individual record is a JSON
+object in the correct format. Note that validation doesn't check
+if the \code{modelInput} value matches the request body for the
+model.
+\item Your files fulfill the requirements for file size and number of
+records. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/quotas.html}{Quotas for Amazon Bedrock}.
+}
+\item Scheduled – This job has been validated and is now in a queue. The
+job will automatically start when it reaches its turn.
+\item Expired – This job timed out because it was scheduled but didn't
+begin before the set timeout duration. Submit a new job request.
+\item InProgress – This job has begun. You can start viewing the results
+in the output S3 location.
+\item Completed – This job has successfully completed. View the output
+files in the output S3 location.
+\item PartiallyCompleted – This job has partially completed. Not all of
+your records could be processed in time. View the output files in
+the output S3 location.
+\item Failed – This job has failed. Check the failure message for any
+further details. For further assistance, reach out to the Amazon Web
+Services Support Center.
+\item Stopped – This job was stopped by a user.
+\item Stopping – This job is being stopped by a user.
+}}
 
 \item{nameContains}{Specify a string to filter for batch inference jobs whose names contain
 the string.}
@@ -44,7 +78,7 @@ request.}
 \item{sortOrder}{Specifies whether to sort the results by ascending or descending order.}
 }
 \description{
-Lists all batch inference jobs in the account. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/#batch-inference-view}{View details about a batch inference job}.
+Lists all batch inference jobs in the account. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/batch-inference-monitor.html}{View details about a batch inference job}.
 
 See \url{https://www.paws-r-sdk.com/docs/bedrock_list_model_invocation_jobs/} for full documentation.
 }

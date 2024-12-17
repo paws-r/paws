@@ -20,7 +20,7 @@ efs_create_file_system(
 \item{CreationToken}{[required] A string of up to 64 ASCII characters. Amazon EFS uses this to ensure
 idempotent creation.}
 
-\item{PerformanceMode}{The Performance mode of the file system. We recommend \code{generalPurpose}
+\item{PerformanceMode}{The performance mode of the file system. We recommend \code{generalPurpose}
 performance mode for all file systems. File systems using the \code{maxIO}
 performance mode can scale to higher levels of aggregate throughput and
 operations per second with a tradeoff of slightly higher latencies for
@@ -79,11 +79,11 @@ with the upper limit depending on Region. To increase this limit,
 contact Amazon Web Services Support. For more information, see \href{https://docs.aws.amazon.com/efs/latest/ug/limits.html#soft-limits}{Amazon EFS quotas that you can increase}
 in the \emph{Amazon EFS User Guide}.}
 
-\item{AvailabilityZoneName}{Used to create a One Zone file system. It specifies the Amazon Web
-Services Availability Zone in which to create the file system. Use the
-format \verb{us-east-1a} to specify the Availability Zone. For more
-information about One Zone file systems, see \href{https://docs.aws.amazon.com/efs/latest/ug/}{Using EFS storage classes} in the \emph{Amazon EFS
-User Guide}.
+\item{AvailabilityZoneName}{For One Zone file systems, specify the Amazon Web Services Availability
+Zone in which to create the file system. Use the format \verb{us-east-1a} to
+specify the Availability Zone. For more information about One Zone file
+systems, see \href{https://docs.aws.amazon.com/efs/latest/ug/#file-system-type}{EFS file system types} in
+the \emph{Amazon EFS User Guide}.
 
 One Zone file systems are not available in all Availability Zones in
 Amazon Web Services Regions where Amazon EFS is available.}

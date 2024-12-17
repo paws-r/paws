@@ -20,7 +20,7 @@ the next page of results in a paginated response.}
 The default is maximum. If you specify 0, Config uses the default.}
 }
 \description{
-Returns the details of one or more configuration aggregators. If the configuration aggregator is not specified, this action returns the details for all the configuration aggregators associated with the account.
+Returns the details of one or more configuration aggregators. If the configuration aggregator is not specified, this operation returns the details for all the configuration aggregators associated with the account.
 
 See \url{https://www.paws-r-sdk.com/docs/configservice_describe_configuration_aggregators/} for full documentation.
 }

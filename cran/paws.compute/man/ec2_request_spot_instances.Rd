@@ -5,65 +5,36 @@
 \title{Creates a Spot Instance request}
 \usage{
 ec2_request_spot_instances(
-  AvailabilityZoneGroup = NULL,
-  BlockDurationMinutes = NULL,
-  ClientToken = NULL,
-  DryRun = NULL,
-  InstanceCount = NULL,
-  LaunchGroup = NULL,
   LaunchSpecification = NULL,
+  TagSpecifications = NULL,
+  InstanceInterruptionBehavior = NULL,
+  DryRun = NULL,
   SpotPrice = NULL,
+  ClientToken = NULL,
+  InstanceCount = NULL,
   Type = NULL,
   ValidFrom = NULL,
   ValidUntil = NULL,
-  TagSpecifications = NULL,
-  InstanceInterruptionBehavior = NULL
+  LaunchGroup = NULL,
+  AvailabilityZoneGroup = NULL,
+  BlockDurationMinutes = NULL
 )
 }
 \arguments{
-\item{AvailabilityZoneGroup}{The user-specified name for a logical grouping of requests.
+\item{LaunchSpecification}{The launch specification.}
 
-When you specify an Availability Zone group in a Spot Instance request,
-all Spot Instances in the request are launched in the same Availability
-Zone. Instance proximity is maintained with this parameter, but the
-choice of Availability Zone is not. The group applies only to requests
-for Spot Instances of the same instance type. Any additional Spot
-Instance requests that are specified with the same Availability Zone
-group name are launched in that same Availability Zone, as long as at
-least one instance from the group is still active.
+\item{TagSpecifications}{The key-value pair for tagging the Spot Instance request on creation.
+The value for \code{ResourceType} must be \code{spot-instances-request}, otherwise
+the Spot Instance request fails. To tag the Spot Instance request after
+it has been created, see \code{\link[=ec2_create_tags]{create_tags}}.}
 
-If there is no active instance running in the Availability Zone group
-that you specify for a new Spot Instance request (all instances are
-terminated, the request is expired, or the maximum price you specified
-falls below current Spot price), then Amazon EC2 launches the instance
-in any Availability Zone where the constraint can be met. Consequently,
-the subsequent set of Spot Instances could be placed in a different zone
-from the original request, even if you specified the same Availability
-Zone group.
-
-Default: Instances are launched in any available Availability Zone.}
-
-\item{BlockDurationMinutes}{Deprecated.}
-
-\item{ClientToken}{Unique, case-sensitive identifier that you provide to ensure the
-idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency in Amazon EC2 API requests}
-in the \emph{Amazon EC2 User Guide}.}
+\item{InstanceInterruptionBehavior}{The behavior when a Spot Instance is interrupted. The default is
+\code{terminate}.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
-
-\item{InstanceCount}{The maximum number of Spot Instances to launch.
-
-Default: 1}
-
-\item{LaunchGroup}{The instance launch group. Launch groups are Spot Instances that launch
-together and terminate together.
-
-Default: Instances are launched and terminated individually}
-
-\item{LaunchSpecification}{The launch specification.}
 
 \item{SpotPrice}{The maximum price per unit hour that you are willing to pay for a Spot
 Instance. We do not recommend using this parameter because it can lead
@@ -72,6 +43,14 @@ will pay the current Spot price.
 
 If you specify a maximum price, your instances will be interrupted more
 frequently than if you do not specify this parameter.}
+
+\item{ClientToken}{Unique, case-sensitive identifier that you provide to ensure the
+idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency in Amazon EC2 API requests}
+in the \emph{Amazon EC2 User Guide}.}
+
+\item{InstanceCount}{The maximum number of Spot Instances to launch.
+
+Default: 1}
 
 \item{Type}{The Spot Instance request type.
 
@@ -99,13 +78,34 @@ and time is reached. By default, the request is valid for 7 days
 from the date the request was created.
 }}
 
-\item{TagSpecifications}{The key-value pair for tagging the Spot Instance request on creation.
-The value for \code{ResourceType} must be \code{spot-instances-request}, otherwise
-the Spot Instance request fails. To tag the Spot Instance request after
-it has been created, see \code{\link[=ec2_create_tags]{create_tags}}.}
+\item{LaunchGroup}{The instance launch group. Launch groups are Spot Instances that launch
+together and terminate together.
 
-\item{InstanceInterruptionBehavior}{The behavior when a Spot Instance is interrupted. The default is
-\code{terminate}.}
+Default: Instances are launched and terminated individually}
+
+\item{AvailabilityZoneGroup}{The user-specified name for a logical grouping of requests.
+
+When you specify an Availability Zone group in a Spot Instance request,
+all Spot Instances in the request are launched in the same Availability
+Zone. Instance proximity is maintained with this parameter, but the
+choice of Availability Zone is not. The group applies only to requests
+for Spot Instances of the same instance type. Any additional Spot
+Instance requests that are specified with the same Availability Zone
+group name are launched in that same Availability Zone, as long as at
+least one instance from the group is still active.
+
+If there is no active instance running in the Availability Zone group
+that you specify for a new Spot Instance request (all instances are
+terminated, the request is expired, or the maximum price you specified
+falls below current Spot price), then Amazon EC2 launches the instance
+in any Availability Zone where the constraint can be met. Consequently,
+the subsequent set of Spot Instances could be placed in a different zone
+from the original request, even if you specified the same Availability
+Zone group.
+
+Default: Instances are launched in any available Availability Zone.}
+
+\item{BlockDurationMinutes}{Deprecated.}
 }
 \description{
 Creates a Spot Instance request.

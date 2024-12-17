@@ -35,7 +35,7 @@ NULL
 
 .kendra$batch_delete_document_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(FailedDocuments = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(FailedDocuments = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), DataSourceId = structure(logical(0), tags = list(type = "string")), ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -59,7 +59,7 @@ NULL
 
 .kendra$batch_get_document_status_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Errors = structure(list(structure(list(DocumentId = structure(logical(0), tags = list(type = "string")), ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), DocumentStatusList = structure(list(structure(list(DocumentId = structure(logical(0), tags = list(type = "string")), DocumentStatus = structure(logical(0), tags = list(type = "string")), FailureCode = structure(logical(0), tags = list(type = "string")), FailureReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(Errors = structure(list(structure(list(DocumentId = structure(logical(0), tags = list(type = "string")), DataSourceId = structure(logical(0), tags = list(type = "string")), ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), DocumentStatusList = structure(list(structure(list(DocumentId = structure(logical(0), tags = list(type = "string")), DocumentStatus = structure(logical(0), tags = list(type = "string")), FailureCode = structure(logical(0), tags = list(type = "string")), FailureReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -71,7 +71,7 @@ NULL
 
 .kendra$batch_put_document_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(FailedDocuments = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(FailedDocuments = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), DataSourceId = structure(logical(0), tags = list(type = "string")), ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

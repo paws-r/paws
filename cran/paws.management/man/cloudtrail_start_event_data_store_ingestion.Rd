@@ -12,7 +12,7 @@ cloudtrail_start_event_data_store_ingestion(EventDataStore)
 want to start ingestion.}
 }
 \description{
-Starts the ingestion of live events on an event data store specified as either an ARN or the ID portion of the ARN. To start ingestion, the event data store \code{Status} must be \code{STOPPED_INGESTION} and the \code{eventCategory} must be \code{Management}, \code{Data}, or \code{ConfigurationItem}.
+Starts the ingestion of live events on an event data store specified as either an ARN or the ID portion of the ARN. To start ingestion, the event data store \code{Status} must be \code{STOPPED_INGESTION} and the \code{eventCategory} must be \code{Management}, \code{Data}, \code{NetworkActivity}, or \code{ConfigurationItem}.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudtrail_start_event_data_store_ingestion/} for full documentation.
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/inspector2_operations.R
 \name{inspector2_list_coverage}
 \alias{inspector2_list_coverage}
-\title{Lists coverage details for you environment}
+\title{Lists coverage details for your environment}
 \usage{
 inspector2_list_coverage(
   filterCriteria = NULL,
@@ -27,7 +27,7 @@ the \code{nextToken} value returned from the previous request to continue
 listing results after the first page.}
 }
 \description{
-Lists coverage details for you environment.
+Lists coverage details for your environment.
 
 See \url{https://www.paws-r-sdk.com/docs/inspector2_list_coverage/} for full documentation.
 }

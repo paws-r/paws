@@ -9,9 +9,11 @@ codebuild_update_fleet(
   baseCapacity = NULL,
   environmentType = NULL,
   computeType = NULL,
+  computeConfiguration = NULL,
   scalingConfiguration = NULL,
   overflowBehavior = NULL,
   vpcConfig = NULL,
+  proxyConfiguration = NULL,
   imageId = NULL,
   fleetServiceRole = NULL,
   tags = NULL
@@ -30,11 +32,21 @@ East (N. Virginia), US East (Ohio), US West (Oregon), EU (Ireland),
 Asia Pacific (Mumbai), Asia Pacific (Tokyo), Asia Pacific
 (Singapore), Asia Pacific (Sydney), EU (Frankfurt), and South
 America (São Paulo).
+\item The environment type \code{ARM_EC2} is available only in regions US East
+(N. Virginia), US East (Ohio), US West (Oregon), EU (Ireland), EU
+(Frankfurt), Asia Pacific (Tokyo), Asia Pacific (Singapore), Asia
+Pacific (Sydney), South America (São Paulo), and Asia Pacific
+(Mumbai).
 \item The environment type \code{LINUX_CONTAINER} is available only in regions
 US East (N. Virginia), US East (Ohio), US West (Oregon), EU
 (Ireland), EU (Frankfurt), Asia Pacific (Tokyo), Asia Pacific
 (Singapore), Asia Pacific (Sydney), South America (São Paulo), and
 Asia Pacific (Mumbai).
+\item The environment type \code{LINUX_EC2} is available only in regions US
+East (N. Virginia), US East (Ohio), US West (Oregon), EU (Ireland),
+EU (Frankfurt), Asia Pacific (Tokyo), Asia Pacific (Singapore), Asia
+Pacific (Sydney), South America (São Paulo), and Asia Pacific
+(Mumbai).
 \item The environment type \code{LINUX_GPU_CONTAINER} is available only in
 regions US East (N. Virginia), US East (Ohio), US West (Oregon), EU
 (Ireland), EU (Frankfurt), Asia Pacific (Tokyo), and Asia Pacific
@@ -45,6 +57,11 @@ Asia Pacific (Sydney), and EU (Frankfurt)
 \item The environment type \code{MAC_ARM} is available for Large fleets only in
 regions US East (N. Virginia), US East (Ohio), US West (Oregon), and
 Asia Pacific (Sydney).
+\item The environment type \code{WINDOWS_EC2} is available only in regions US
+East (N. Virginia), US East (Ohio), US West (Oregon), EU (Ireland),
+EU (Frankfurt), Asia Pacific (Tokyo), Asia Pacific (Singapore), Asia
+Pacific (Sydney), South America (São Paulo), and Asia Pacific
+(Mumbai).
 \item The environment type \code{WINDOWS_SERVER_2019_CONTAINER} is available
 only in regions US East (N. Virginia), US East (Ohio), US West
 (Oregon), Asia Pacific (Sydney), Asia Pacific (Tokyo), Asia Pacific
@@ -62,41 +79,67 @@ in the \emph{CodeBuild user guide}.}
 \item{computeType}{Information about the compute resources the compute fleet uses.
 Available values include:
 \itemize{
-\item \code{BUILD_GENERAL1_SMALL}: Use up to 3 GB memory and 2 vCPUs for
+\item \code{ATTRIBUTE_BASED_COMPUTE}: Specify the amount of vCPUs, memory, disk
+space, and the type of machine.
+
+If you use \code{ATTRIBUTE_BASED_COMPUTE}, you must define your
+attributes by using \code{computeConfiguration}. CodeBuild will select
+the cheapest instance that satisfies your specified attributes. For
+more information, see \href{https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-compute-types.html#environment-reserved-capacity.types}{Reserved capacity environment types}
+in the \emph{CodeBuild User Guide}.
+\item \code{BUILD_GENERAL1_SMALL}: Use up to 4 GiB memory and 2 vCPUs for
 builds.
-\item \code{BUILD_GENERAL1_MEDIUM}: Use up to 7 GB memory and 4 vCPUs for
+\item \code{BUILD_GENERAL1_MEDIUM}: Use up to 8 GiB memory and 4 vCPUs for
 builds.
-\item \code{BUILD_GENERAL1_LARGE}: Use up to 16 GB memory and 8 vCPUs for
+\item \code{BUILD_GENERAL1_LARGE}: Use up to 16 GiB memory and 8 vCPUs for
 builds, depending on your environment type.
-\item \code{BUILD_GENERAL1_XLARGE}: Use up to 70 GB memory and 36 vCPUs for
+\item \code{BUILD_GENERAL1_XLARGE}: Use up to 72 GiB memory and 36 vCPUs for
 builds, depending on your environment type.
-\item \code{BUILD_GENERAL1_2XLARGE}: Use up to 145 GB memory, 72 vCPUs, and 824
-GB of SSD storage for builds. This compute type supports Docker
+\item \code{BUILD_GENERAL1_2XLARGE}: Use up to 144 GiB memory, 72 vCPUs, and
+824 GB of SSD storage for builds. This compute type supports Docker
 images up to 100 GB uncompressed.
+\item \code{BUILD_LAMBDA_1GB}: Use up to 1 GiB memory for builds. Only
+available for environment type \code{LINUX_LAMBDA_CONTAINER} and
+\code{ARM_LAMBDA_CONTAINER}.
+\item \code{BUILD_LAMBDA_2GB}: Use up to 2 GiB memory for builds. Only
+available for environment type \code{LINUX_LAMBDA_CONTAINER} and
+\code{ARM_LAMBDA_CONTAINER}.
+\item \code{BUILD_LAMBDA_4GB}: Use up to 4 GiB memory for builds. Only
+available for environment type \code{LINUX_LAMBDA_CONTAINER} and
+\code{ARM_LAMBDA_CONTAINER}.
+\item \code{BUILD_LAMBDA_8GB}: Use up to 8 GiB memory for builds. Only
+available for environment type \code{LINUX_LAMBDA_CONTAINER} and
+\code{ARM_LAMBDA_CONTAINER}.
+\item \code{BUILD_LAMBDA_10GB}: Use up to 10 GiB memory for builds. Only
+available for environment type \code{LINUX_LAMBDA_CONTAINER} and
+\code{ARM_LAMBDA_CONTAINER}.
 }
 
 If you use \code{BUILD_GENERAL1_SMALL}:
 \itemize{
-\item For environment type \code{LINUX_CONTAINER}, you can use up to 3 GB
+\item For environment type \code{LINUX_CONTAINER}, you can use up to 4 GiB
 memory and 2 vCPUs for builds.
-\item For environment type \code{LINUX_GPU_CONTAINER}, you can use up to 16 GB
+\item For environment type \code{LINUX_GPU_CONTAINER}, you can use up to 16 GiB
 memory, 4 vCPUs, and 1 NVIDIA A10G Tensor Core GPU for builds.
-\item For environment type \code{ARM_CONTAINER}, you can use up to 4 GB memory
+\item For environment type \code{ARM_CONTAINER}, you can use up to 4 GiB memory
 and 2 vCPUs on ARM-based processors for builds.
 }
 
 If you use \code{BUILD_GENERAL1_LARGE}:
 \itemize{
-\item For environment type \code{LINUX_CONTAINER}, you can use up to 15 GB
+\item For environment type \code{LINUX_CONTAINER}, you can use up to 16 GiB
 memory and 8 vCPUs for builds.
-\item For environment type \code{LINUX_GPU_CONTAINER}, you can use up to 255 GB
-memory, 32 vCPUs, and 4 NVIDIA Tesla V100 GPUs for builds.
-\item For environment type \code{ARM_CONTAINER}, you can use up to 16 GB memory
-and 8 vCPUs on ARM-based processors for builds.
+\item For environment type \code{LINUX_GPU_CONTAINER}, you can use up to 255
+GiB memory, 32 vCPUs, and 4 NVIDIA Tesla V100 GPUs for builds.
+\item For environment type \code{ARM_CONTAINER}, you can use up to 16 GiB
+memory and 8 vCPUs on ARM-based processors for builds.
 }
 
-For more information, see \href{https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-compute-types.html}{Build environment compute types}
+For more information, see \href{https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-compute-types.html#environment.types}{On-demand environment types}
 in the \emph{CodeBuild User Guide.}}
+
+\item{computeConfiguration}{The compute configuration of the compute fleet. This is only required if
+\code{computeType} is set to \code{ATTRIBUTE_BASED_COMPUTE}.}
 
 \item{scalingConfiguration}{The scaling configuration of the compute fleet.}
 
@@ -114,6 +157,8 @@ see \href{https://docs.aws.amazon.com/codebuild/latest/userguide/auth-and-access
 }}
 
 \item{vpcConfig}{}
+
+\item{proxyConfiguration}{The proxy configuration of the compute fleet.}
 
 \item{imageId}{The Amazon Machine Image (AMI) of the compute fleet.}
 

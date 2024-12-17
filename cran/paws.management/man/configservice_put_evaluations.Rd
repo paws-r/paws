@@ -26,7 +26,7 @@ valid value for the \code{ResultToken} parameter, but the value cannot be
 null.}
 }
 \description{
-Used by an Lambda function to deliver evaluation results to Config. This action is required in every Lambda function that is invoked by an Config rule.
+Used by an Lambda function to deliver evaluation results to Config. This operation is required in every Lambda function that is invoked by an Config rule.
 
 See \url{https://www.paws-r-sdk.com/docs/configservice_put_evaluations/} for full documentation.
 }

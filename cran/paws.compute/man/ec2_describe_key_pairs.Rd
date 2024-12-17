@@ -5,14 +5,29 @@
 \title{Describes the specified key pairs or all of your key pairs}
 \usage{
 ec2_describe_key_pairs(
-  Filters = NULL,
   KeyNames = NULL,
   KeyPairIds = NULL,
+  IncludePublicKey = NULL,
   DryRun = NULL,
-  IncludePublicKey = NULL
+  Filters = NULL
 )
 }
 \arguments{
+\item{KeyNames}{The key pair names.
+
+Default: Describes all of your key pairs.}
+
+\item{KeyPairIds}{The IDs of the key pairs.}
+
+\item{IncludePublicKey}{If \code{true}, the public key material is included in the response.
+
+Default: \code{false}}
+
+\item{DryRun}{Checks whether you have the required permissions for the action, without
+actually making the request, and provides an error response. If you have
+the required permissions, the error response is \code{DryRunOperation}.
+Otherwise, it is \code{UnauthorizedOperation}.}
+
 \item{Filters}{The filters.
 \itemize{
 \item \code{key-pair-id} - The ID of the key pair.
@@ -27,21 +42,6 @@ the filter value. For example, to find all resources that have a tag
 with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner} for
 the filter name and \code{TeamA} for the filter value.
 }}
-
-\item{KeyNames}{The key pair names.
-
-Default: Describes all of your key pairs.}
-
-\item{KeyPairIds}{The IDs of the key pairs.}
-
-\item{DryRun}{Checks whether you have the required permissions for the action, without
-actually making the request, and provides an error response. If you have
-the required permissions, the error response is \code{DryRunOperation}.
-Otherwise, it is \code{UnauthorizedOperation}.}
-
-\item{IncludePublicKey}{If \code{true}, the public key material is included in the response.
-
-Default: \code{false}}
 }
 \description{
 Describes the specified key pairs or all of your key pairs.

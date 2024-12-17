@@ -34,7 +34,7 @@ the default is 80. For HTTPS, the default is 443.}
 
 \item{protocol}{[required] The listener protocol.}
 
-\item{serviceIdentifier}{[required] The ID or Amazon Resource Name (ARN) of the service.}
+\item{serviceIdentifier}{[required] The ID or ARN of the service.}
 
 \item{tags}{The tags for the listener.}
 }

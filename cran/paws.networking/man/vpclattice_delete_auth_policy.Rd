@@ -7,7 +7,7 @@
 vpclattice_delete_auth_policy(resourceIdentifier)
 }
 \arguments{
-\item{resourceIdentifier}{[required] The ID or Amazon Resource Name (ARN) of the resource.}
+\item{resourceIdentifier}{[required] The ID or ARN of the resource.}
 }
 \description{
 Deletes the specified auth policy. If an auth is set to \code{AWS_IAM} and the auth policy is deleted, all requests are denied. If you are trying to remove the auth policy completely, you must set the auth type to \code{NONE}. If auth is enabled on the resource, but no auth policy is set, all requests are denied.

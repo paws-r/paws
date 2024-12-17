@@ -115,7 +115,7 @@ NULL
 #' @section Operations:
 #' \tabular{ll}{
 #'  \link[=acmpca_create_certificate_authority]{create_certificate_authority} \tab Creates a root or subordinate private certificate authority (CA)\cr
-#'  \link[=acmpca_create_certificate_authority_audit_report]{create_certificate_authority_audit_report} \tab Creates an audit report that lists every time that your CA private key is used\cr
+#'  \link[=acmpca_create_certificate_authority_audit_report]{create_certificate_authority_audit_report} \tab Creates an audit report that lists every time that your CA private key is used to issue a certificate\cr
 #'  \link[=acmpca_create_permission]{create_permission} \tab Grants one or more permissions on a private CA to the Certificate Manager (ACM) service principal (acm\cr
 #'  \link[=acmpca_delete_certificate_authority]{delete_certificate_authority} \tab Deletes a private certificate authority (CA)\cr
 #'  \link[=acmpca_delete_permission]{delete_permission} \tab Revokes permissions on a private CA granted to the Certificate Manager (ACM) service principal (acm\cr
@@ -168,7 +168,7 @@ acmpca <- function(config = list(), credentials = list(), endpoint = NULL, regio
 
 .acmpca$metadata <- list(
   service_name = "acm-pca",
-  endpoints = list("*" = list(endpoint = "acm-pca.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "acm-pca.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "acm-pca.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "acm-pca.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "acm-pca.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "acm-pca.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "acm-pca.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "acm-pca.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "acm-pca.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "acm-pca.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "acm-pca.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "acm-pca.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "acm-pca.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "ACM PCA",
   api_version = "2017-08-22",
   signing_name = "acm-pca",

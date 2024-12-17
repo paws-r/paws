@@ -34,7 +34,11 @@ autoscaling_create_auto_scaling_group(
   DesiredCapacityType = NULL,
   DefaultInstanceWarmup = NULL,
   TrafficSources = NULL,
-  InstanceMaintenancePolicy = NULL
+  InstanceMaintenancePolicy = NULL,
+  AvailabilityZoneDistribution = NULL,
+  AvailabilityZoneImpairmentPolicy = NULL,
+  SkipZonalShiftValidation = NULL,
+  CapacityReservationSpecification = NULL
 )
 }
 \arguments{
@@ -242,6 +246,17 @@ Balancer, Network Load Balancer, and VPC Lattice.}
 
 \item{InstanceMaintenancePolicy}{An instance maintenance policy. For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-instance-maintenance-policy.html}{Set instance maintenance policy}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.}
+
+\item{AvailabilityZoneDistribution}{The instance capacity distribution across Availability Zones.}
+
+\item{AvailabilityZoneImpairmentPolicy}{The policy for Availability Zone impairment.}
+
+\item{SkipZonalShiftValidation}{If you enable zonal shift with cross-zone disabled load balancers,
+capacity could become imbalanced across Availability Zones. To skip the
+validation, specify \code{true}. For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-zonal-shift.html}{Auto Scaling group zonal shift}
+in the \emph{Amazon EC2 Auto Scaling User Guide}.}
+
+\item{CapacityReservationSpecification}{The capacity reservation specification for the Auto Scaling group.}
 }
 \description{
 \strong{We strongly recommend using a launch template when calling this operation to ensure full functionality for Amazon EC2 Auto Scaling and Amazon EC2.}

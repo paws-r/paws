@@ -9,6 +9,7 @@ connect_create_task_template(
   Name,
   Description = NULL,
   ContactFlowId = NULL,
+  SelfAssignFlowId = NULL,
   Constraints = NULL,
   Defaults = NULL,
   Status = NULL,
@@ -26,6 +27,9 @@ in the Amazon Resource Name (ARN) of the instance.}
 
 \item{ContactFlowId}{The identifier of the flow that runs by default when a task is created
 by referencing this template.}
+
+\item{SelfAssignFlowId}{The ContactFlowId for the flow that will be run if this template is used
+to create a self-assigned task.}
 
 \item{Constraints}{Constraints that are applicable to the fields listed.}
 

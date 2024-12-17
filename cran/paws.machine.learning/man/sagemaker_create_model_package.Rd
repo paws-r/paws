@@ -28,7 +28,8 @@ sagemaker_create_model_package(
   SkipModelValidation = NULL,
   SourceUri = NULL,
   SecurityConfig = NULL,
-  ModelCard = NULL
+  ModelCard = NULL,
+  ModelLifeCycle = NULL
 )
 }
 \arguments{
@@ -141,6 +142,8 @@ include \code{model_package_details}, and \code{model_overview} is composed of t
 about the model package model card schema, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/model-registry-details.html#model-card-schema}{Model package model card schema}.
 For more information about the model card associated with the model
 package, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/model-registry-details.html}{View the Details of a Model Version}.}
+
+\item{ModelLifeCycle}{A structure describing the current state of the model in its life cycle.}
 }
 \description{
 Creates a model package that you can use to create SageMaker models or list on Amazon Web Services Marketplace, or a versioned model that is part of a model group. Buyers can subscribe to model packages listed on Amazon Web Services Marketplace to create models in SageMaker.

@@ -685,7 +685,7 @@ lexmodelsv2_create_bot_alias <- function(botAliasName, description = NULL, botVe
 #'   nluIntentConfidenceThreshold = 123.0,
 #'   voiceSettings = list(
 #'     voiceId = "string",
-#'     engine = "standard"|"neural"
+#'     engine = "standard"|"neural"|"long-form"|"generative"
 #'   ),
 #'   botLocaleStatus = "Creating"|"Building"|"Built"|"ReadyExpressTesting"|"Failed"|"Deleting"|"NotBuilt"|"Importing"|"Processing",
 #'   creationDateTime = as.POSIXct(
@@ -746,7 +746,7 @@ lexmodelsv2_create_bot_alias <- function(botAliasName, description = NULL, botVe
 #'   nluIntentConfidenceThreshold = 123.0,
 #'   voiceSettings = list(
 #'     voiceId = "string",
-#'     engine = "standard"|"neural"
+#'     engine = "standard"|"neural"|"long-form"|"generative"
 #'   ),
 #'   generativeAISettings = list(
 #'     runtimeSettings = list(
@@ -13841,7 +13841,7 @@ lexmodelsv2_describe_bot_alias <- function(botAliasId, botId) {
 #'   nluIntentConfidenceThreshold = 123.0,
 #'   voiceSettings = list(
 #'     voiceId = "string",
-#'     engine = "standard"|"neural"
+#'     engine = "standard"|"neural"|"long-form"|"generative"
 #'   ),
 #'   intentsCount = 123,
 #'   slotTypesCount = 123,
@@ -14465,7 +14465,7 @@ lexmodelsv2_describe_export <- function(exportId) {
 #'       nluIntentConfidenceThreshold = 123.0,
 #'       voiceSettings = list(
 #'         voiceId = "string",
-#'         engine = "standard"|"neural"
+#'         engine = "standard"|"neural"|"long-form"|"generative"
 #'       )
 #'     ),
 #'     customVocabularyImportSpecification = list(
@@ -20875,7 +20875,7 @@ lexmodelsv2_list_aggregated_utterances <- function(botId, botAliasId = NULL, bot
     http_method = "POST",
     http_path = "/bots/{botId}/aggregatedutterances/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .lexmodelsv2$list_aggregated_utterances_input(botId = botId, botAliasId = botAliasId, botVersion = botVersion, localeId = localeId, aggregationDuration = aggregationDuration, sortBy = sortBy, filters = filters, maxResults = maxResults, nextToken = nextToken)
@@ -20955,7 +20955,7 @@ lexmodelsv2_list_bot_alias_replicas <- function(botId, replicaRegion, maxResults
     http_method = "POST",
     http_path = "/bots/{botId}/replicas/{replicaRegion}/botaliases/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .lexmodelsv2$list_bot_alias_replicas_input(botId = botId, replicaRegion = replicaRegion, maxResults = maxResults, nextToken = nextToken)
@@ -21030,7 +21030,7 @@ lexmodelsv2_list_bot_aliases <- function(botId, maxResults = NULL, nextToken = N
     http_method = "POST",
     http_path = "/bots/{botId}/botaliases/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .lexmodelsv2$list_bot_aliases_input(botId = botId, maxResults = maxResults, nextToken = nextToken)
@@ -21126,7 +21126,7 @@ lexmodelsv2_list_bot_locales <- function(botId, botVersion, sortBy = NULL, filte
     http_method = "POST",
     http_path = "/bots/{botId}/botversions/{botVersion}/botlocales/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .lexmodelsv2$list_bot_locales_input(botId = botId, botVersion = botVersion, sortBy = sortBy, filters = filters, maxResults = maxResults, nextToken = nextToken)
@@ -21206,7 +21206,7 @@ lexmodelsv2_list_bot_recommendations <- function(botId, botVersion, localeId, ma
     http_method = "POST",
     http_path = "/bots/{botId}/botversions/{botVersion}/botlocales/{localeId}/botrecommendations/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .lexmodelsv2$list_bot_recommendations_input(botId = botId, botVersion = botVersion, localeId = localeId, maxResults = maxResults, nextToken = nextToken)
@@ -21351,7 +21351,7 @@ lexmodelsv2_list_bot_resource_generations <- function(botId, botVersion, localeI
     http_method = "POST",
     http_path = "/bots/{botId}/botversions/{botVersion}/botlocales/{localeId}/generations",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .lexmodelsv2$list_bot_resource_generations_input(botId = botId, botVersion = botVersion, localeId = localeId, sortBy = sortBy, maxResults = maxResults, nextToken = nextToken)
@@ -21429,7 +21429,7 @@ lexmodelsv2_list_bot_version_replicas <- function(botId, replicaRegion, maxResul
     http_method = "POST",
     http_path = "/bots/{botId}/replicas/{replicaRegion}/botversions/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .lexmodelsv2$list_bot_version_replicas_input(botId = botId, replicaRegion = replicaRegion, maxResults = maxResults, nextToken = nextToken, sortBy = sortBy)
@@ -21516,7 +21516,7 @@ lexmodelsv2_list_bot_versions <- function(botId, sortBy = NULL, maxResults = NUL
     http_method = "POST",
     http_path = "/bots/{botId}/botversions/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .lexmodelsv2$list_bot_versions_input(botId = botId, sortBy = sortBy, maxResults = maxResults, nextToken = nextToken)
@@ -21608,7 +21608,7 @@ lexmodelsv2_list_bots <- function(sortBy = NULL, filters = NULL, maxResults = NU
     http_method = "POST",
     http_path = "/bots/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .lexmodelsv2$list_bots_input(sortBy = sortBy, filters = filters, maxResults = maxResults, nextToken = nextToken)
@@ -21692,7 +21692,7 @@ lexmodelsv2_list_built_in_intents <- function(localeId, sortBy = NULL, maxResult
     http_method = "POST",
     http_path = "/builtins/locales/{localeId}/intents/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .lexmodelsv2$list_built_in_intents_input(localeId = localeId, sortBy = sortBy, maxResults = maxResults, nextToken = nextToken)
@@ -21770,7 +21770,7 @@ lexmodelsv2_list_built_in_slot_types <- function(localeId, sortBy = NULL, maxRes
     http_method = "POST",
     http_path = "/builtins/locales/{localeId}/slottypes/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .lexmodelsv2$list_built_in_slot_types_input(localeId = localeId, sortBy = sortBy, maxResults = maxResults, nextToken = nextToken)
@@ -21845,7 +21845,7 @@ lexmodelsv2_list_custom_vocabulary_items <- function(botId, botVersion, localeId
     http_method = "POST",
     http_path = "/bots/{botId}/botversions/{botVersion}/botlocales/{localeId}/customvocabulary/DEFAULT/list",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .lexmodelsv2$list_custom_vocabulary_items_input(botId = botId, botVersion = botVersion, localeId = localeId, maxResults = maxResults, nextToken = nextToken)
@@ -21969,7 +21969,7 @@ lexmodelsv2_list_exports <- function(botId = NULL, botVersion = NULL, sortBy = N
     http_method = "POST",
     http_path = "/exports/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .lexmodelsv2$list_exports_input(botId = botId, botVersion = botVersion, sortBy = sortBy, filters = filters, maxResults = maxResults, nextToken = nextToken, localeId = localeId)
@@ -22077,7 +22077,7 @@ lexmodelsv2_list_imports <- function(botId = NULL, botVersion = NULL, sortBy = N
     http_method = "POST",
     http_path = "/imports/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .lexmodelsv2$list_imports_input(botId = botId, botVersion = botVersion, sortBy = sortBy, filters = filters, maxResults = maxResults, nextToken = nextToken, localeId = localeId)
@@ -22244,7 +22244,7 @@ lexmodelsv2_list_intent_metrics <- function(botId, startDateTime, endDateTime, m
     http_method = "POST",
     http_path = "/bots/{botId}/analytics/intentmetrics",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .lexmodelsv2$list_intent_metrics_input(botId = botId, startDateTime = startDateTime, endDateTime = endDateTime, metrics = metrics, binBy = binBy, groupBy = groupBy, filters = filters, maxResults = maxResults, nextToken = nextToken)
@@ -22513,7 +22513,7 @@ lexmodelsv2_list_intent_stage_metrics <- function(botId, startDateTime, endDateT
     http_method = "POST",
     http_path = "/bots/{botId}/analytics/intentstagemetrics",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .lexmodelsv2$list_intent_stage_metrics_input(botId = botId, startDateTime = startDateTime, endDateTime = endDateTime, metrics = metrics, binBy = binBy, groupBy = groupBy, filters = filters, maxResults = maxResults, nextToken = nextToken)
@@ -22630,7 +22630,7 @@ lexmodelsv2_list_intents <- function(botId, botVersion, localeId, sortBy = NULL,
     http_method = "POST",
     http_path = "/bots/{botId}/botversions/{botVersion}/botlocales/{localeId}/intents/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .lexmodelsv2$list_intents_input(botId = botId, botVersion = botVersion, localeId = localeId, sortBy = sortBy, filters = filters, maxResults = maxResults, nextToken = nextToken)
@@ -22711,7 +22711,7 @@ lexmodelsv2_list_recommended_intents <- function(botId, botVersion, localeId, bo
     http_method = "POST",
     http_path = "/bots/{botId}/botversions/{botVersion}/botlocales/{localeId}/botrecommendations/{botRecommendationId}/intents",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .lexmodelsv2$list_recommended_intents_input(botId = botId, botVersion = botVersion, localeId = localeId, botRecommendationId = botRecommendationId, nextToken = nextToken, maxResults = maxResults)
@@ -22839,7 +22839,7 @@ lexmodelsv2_list_session_analytics_data <- function(botId, startDateTime, endDat
     http_method = "POST",
     http_path = "/bots/{botId}/analytics/sessions",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .lexmodelsv2$list_session_analytics_data_input(botId = botId, startDateTime = startDateTime, endDateTime = endDateTime, sortBy = sortBy, filters = filters, maxResults = maxResults, nextToken = nextToken)
@@ -23007,7 +23007,7 @@ lexmodelsv2_list_session_metrics <- function(botId, startDateTime, endDateTime, 
     http_method = "POST",
     http_path = "/bots/{botId}/analytics/sessionmetrics",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .lexmodelsv2$list_session_metrics_input(botId = botId, startDateTime = startDateTime, endDateTime = endDateTime, metrics = metrics, binBy = binBy, groupBy = groupBy, filters = filters, maxResults = maxResults, nextToken = nextToken)
@@ -23109,7 +23109,7 @@ lexmodelsv2_list_slot_types <- function(botId, botVersion, localeId, sortBy = NU
     http_method = "POST",
     http_path = "/bots/{botId}/botversions/{botVersion}/botlocales/{localeId}/slottypes/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .lexmodelsv2$list_slot_types_input(botId = botId, botVersion = botVersion, localeId = localeId, sortBy = sortBy, filters = filters, maxResults = maxResults, nextToken = nextToken)
@@ -23293,7 +23293,7 @@ lexmodelsv2_list_slots <- function(botId, botVersion, localeId, intentId, sortBy
     http_method = "POST",
     http_path = "/bots/{botId}/botversions/{botVersion}/botlocales/{localeId}/intents/{intentId}/slots/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .lexmodelsv2$list_slots_input(botId = botId, botVersion = botVersion, localeId = localeId, intentId = intentId, sortBy = sortBy, filters = filters, maxResults = maxResults, nextToken = nextToken)
@@ -23599,7 +23599,7 @@ lexmodelsv2_list_test_execution_result_items <- function(testExecutionId, result
     http_method = "POST",
     http_path = "/testexecutions/{testExecutionId}/results",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .lexmodelsv2$list_test_execution_result_items_input(testExecutionId = testExecutionId, resultFilterBy = resultFilterBy, maxResults = maxResults, nextToken = nextToken)
@@ -23683,7 +23683,7 @@ lexmodelsv2_list_test_executions <- function(sortBy = NULL, maxResults = NULL, n
     http_method = "POST",
     http_path = "/testexecutions",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .lexmodelsv2$list_test_executions_input(sortBy = sortBy, maxResults = maxResults, nextToken = nextToken)
@@ -23810,7 +23810,7 @@ lexmodelsv2_list_test_set_records <- function(testSetId, maxResults = NULL, next
     http_method = "POST",
     http_path = "/testsets/{testSetId}/records",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .lexmodelsv2$list_test_set_records_input(testSetId = testSetId, maxResults = maxResults, nextToken = nextToken)
@@ -23893,7 +23893,7 @@ lexmodelsv2_list_test_sets <- function(sortBy = NULL, maxResults = NULL, nextTok
     http_method = "POST",
     http_path = "/testsets",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .lexmodelsv2$list_test_sets_input(sortBy = sortBy, maxResults = maxResults, nextToken = nextToken)
@@ -24058,7 +24058,7 @@ lexmodelsv2_list_utterance_analytics_data <- function(botId, startDateTime, endD
     http_method = "POST",
     http_path = "/bots/{botId}/analytics/utterances",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .lexmodelsv2$list_utterance_analytics_data_input(botId = botId, startDateTime = startDateTime, endDateTime = endDateTime, sortBy = sortBy, filters = filters, maxResults = maxResults, nextToken = nextToken)
@@ -24250,7 +24250,7 @@ lexmodelsv2_list_utterance_metrics <- function(botId, startDateTime, endDateTime
     http_method = "POST",
     http_path = "/bots/{botId}/analytics/utterancemetrics",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .lexmodelsv2$list_utterance_metrics_input(botId = botId, startDateTime = startDateTime, endDateTime = endDateTime, metrics = metrics, binBy = binBy, groupBy = groupBy, attributes = attributes, filters = filters, maxResults = maxResults, nextToken = nextToken)
@@ -24610,7 +24610,7 @@ lexmodelsv2_start_bot_resource_generation <- function(generationInputPrompt, bot
 #'       nluIntentConfidenceThreshold = 123.0,
 #'       voiceSettings = list(
 #'         voiceId = "string",
-#'         engine = "standard"|"neural"
+#'         engine = "standard"|"neural"|"long-form"|"generative"
 #'       )
 #'     ),
 #'     customVocabularyImportSpecification = list(
@@ -24671,7 +24671,7 @@ lexmodelsv2_start_bot_resource_generation <- function(generationInputPrompt, bot
 #'       nluIntentConfidenceThreshold = 123.0,
 #'       voiceSettings = list(
 #'         voiceId = "string",
-#'         engine = "standard"|"neural"
+#'         engine = "standard"|"neural"|"long-form"|"generative"
 #'       )
 #'     ),
 #'     customVocabularyImportSpecification = list(
@@ -25390,7 +25390,7 @@ lexmodelsv2_update_bot_alias <- function(botAliasId, botAliasName, description =
 #'   nluIntentConfidenceThreshold = 123.0,
 #'   voiceSettings = list(
 #'     voiceId = "string",
-#'     engine = "standard"|"neural"
+#'     engine = "standard"|"neural"|"long-form"|"generative"
 #'   ),
 #'   botLocaleStatus = "Creating"|"Building"|"Built"|"ReadyExpressTesting"|"Failed"|"Deleting"|"NotBuilt"|"Importing"|"Processing",
 #'   failureReasons = list(
@@ -25460,7 +25460,7 @@ lexmodelsv2_update_bot_alias <- function(botAliasId, botAliasName, description =
 #'   nluIntentConfidenceThreshold = 123.0,
 #'   voiceSettings = list(
 #'     voiceId = "string",
-#'     engine = "standard"|"neural"
+#'     engine = "standard"|"neural"|"long-form"|"generative"
 #'   ),
 #'   generativeAISettings = list(
 #'     runtimeSettings = list(

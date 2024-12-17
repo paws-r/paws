@@ -22,6 +22,12 @@ Encoding: UTF-8
 Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace", "collate"))
 RoxygenNote: 7.3.2
 Collate: 
+    'agentsforamazonbedrock_service.R'
+    'agentsforamazonbedrock_interfaces.R'
+    'agentsforamazonbedrock_operations.R'
+    'agentsforamazonbedrockruntime_service.R'
+    'agentsforamazonbedrockruntime_interfaces.R'
+    'agentsforamazonbedrockruntime_operations.R'
     'augmentedairuntime_service.R'
     'augmentedairuntime_interfaces.R'
     'augmentedairuntime_operations.R'

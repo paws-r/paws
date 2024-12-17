@@ -50,7 +50,7 @@ the following permissions:
 }
 
 For more information, see \href{https://docs.aws.amazon.com/service-authorization/latest/reference/list_amazons3.html}{Actions, Resources, and Condition Keys for Amazon S3}
-in the \emph{Amazon Web Services Identity and Access Management User Guide}.}
+in the \emph{Identity and Access Management User Guide}.}
 }
 \description{
 Tests a registered extension to make sure it meets all necessary requirements for being published in the CloudFormation registry.

@@ -16,7 +16,10 @@ pinpointsmsvoicev2_update_phone_number(
 }
 \arguments{
 \item{PhoneNumberId}{[required] The unique identifier of the phone number. Valid values for this field
-can be either the PhoneNumberId or PhoneNumberArn.}
+can be either the PhoneNumberId or PhoneNumberArn.
+
+If you are using a shared AWS End User Messaging SMS and Voice resource
+then you must use the full Amazon Resource Name(ARN).}
 
 \item{TwoWayEnabled}{By default this is set to false. When set to true you can receive
 incoming text messages from your end recipients.}

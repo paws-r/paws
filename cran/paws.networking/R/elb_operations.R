@@ -499,7 +499,7 @@ elb_describe_account_limits <- function(Marker = NULL, PageSize = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "Marker", limit_key = "PageSize", output_token = "NextMarker", result_key = "Limits"),
     stream_api = FALSE
   )
   input <- .elb$describe_account_limits_input(Marker = Marker, PageSize = PageSize)
@@ -532,7 +532,7 @@ elb_describe_instance_health <- function(LoadBalancerName, Instances = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "InstanceStates"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .elb$describe_instance_health_input(LoadBalancerName = LoadBalancerName, Instances = Instances)
@@ -595,7 +595,7 @@ elb_describe_load_balancer_policies <- function(LoadBalancerName = NULL, PolicyN
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "PolicyDescriptions"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .elb$describe_load_balancer_policies_input(LoadBalancerName = LoadBalancerName, PolicyNames = PolicyNames)
@@ -628,7 +628,7 @@ elb_describe_load_balancer_policy_types <- function(PolicyTypeNames = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "PolicyTypeDescriptions"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .elb$describe_load_balancer_policy_types_input(PolicyTypeNames = PolicyTypeNames)
@@ -663,7 +663,7 @@ elb_describe_load_balancers <- function(LoadBalancerNames = NULL, Marker = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", output_token = "NextMarker", result_key = "LoadBalancerDescriptions"),
+    paginator = list(input_token = "Marker", output_token = "NextMarker", result_key = "LoadBalancerDescriptions", limit_key = "PageSize"),
     stream_api = FALSE
   )
   input <- .elb$describe_load_balancers_input(LoadBalancerNames = LoadBalancerNames, Marker = Marker, PageSize = PageSize)

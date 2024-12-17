@@ -101,6 +101,7 @@ NULL
 #'  \link[=sagemaker_add_association]{add_association} \tab Creates an association between the source and the destination\cr
 #'  \link[=sagemaker_add_tags]{add_tags} \tab Adds or overwrites one or more tags for the specified SageMaker resource\cr
 #'  \link[=sagemaker_associate_trial_component]{associate_trial_component} \tab Associates a trial component with a trial\cr
+#'  \link[=sagemaker_batch_delete_cluster_nodes]{batch_delete_cluster_nodes} \tab Deletes specific nodes within a SageMaker HyperPod cluster\cr
 #'  \link[=sagemaker_batch_describe_model_package]{batch_describe_model_package} \tab This action batch describes a list of versioned model packages\cr
 #'  \link[=sagemaker_create_action]{create_action} \tab Creates an action\cr
 #'  \link[=sagemaker_create_algorithm]{create_algorithm} \tab Create a machine learning algorithm that you can use in SageMaker and list in the Amazon Web Services Marketplace\cr
@@ -110,8 +111,10 @@ NULL
 #'  \link[=sagemaker_create_auto_ml_job]{create_auto_ml_job} \tab Creates an Autopilot job also referred to as Autopilot experiment or AutoML job\cr
 #'  \link[=sagemaker_create_auto_ml_job_v2]{create_auto_ml_job_v2} \tab Creates an Autopilot job also referred to as Autopilot experiment or AutoML job V2\cr
 #'  \link[=sagemaker_create_cluster]{create_cluster} \tab Creates a SageMaker HyperPod cluster\cr
+#'  \link[=sagemaker_create_cluster_scheduler_config]{create_cluster_scheduler_config} \tab Create cluster policy configuration\cr
 #'  \link[=sagemaker_create_code_repository]{create_code_repository} \tab Creates a Git repository as a resource in your SageMaker account\cr
 #'  \link[=sagemaker_create_compilation_job]{create_compilation_job} \tab Starts a model compilation job\cr
+#'  \link[=sagemaker_create_compute_quota]{create_compute_quota} \tab Create compute allocation definition\cr
 #'  \link[=sagemaker_create_context]{create_context} \tab Creates a context\cr
 #'  \link[=sagemaker_create_data_quality_job_definition]{create_data_quality_job_definition} \tab Creates a definition for a job that monitors data quality and drift\cr
 #'  \link[=sagemaker_create_device_fleet]{create_device_fleet} \tab Creates a device fleet\cr
@@ -147,6 +150,8 @@ NULL
 #'  \link[=sagemaker_create_notebook_instance]{create_notebook_instance} \tab Creates an SageMaker notebook instance\cr
 #'  \link[=sagemaker_create_notebook_instance_lifecycle_config]{create_notebook_instance_lifecycle_config} \tab Creates a lifecycle configuration that you can associate with a notebook instance\cr
 #'  \link[=sagemaker_create_optimization_job]{create_optimization_job} \tab Creates a job that optimizes a model for inference performance\cr
+#'  \link[=sagemaker_create_partner_app]{create_partner_app} \tab Creates an Amazon SageMaker Partner AI App\cr
+#'  \link[=sagemaker_create_partner_app_presigned_url]{create_partner_app_presigned_url} \tab Creates a presigned URL to access an Amazon SageMaker Partner AI App\cr
 #'  \link[=sagemaker_create_pipeline]{create_pipeline} \tab Creates a pipeline using a JSON pipeline definition\cr
 #'  \link[=sagemaker_create_presigned_domain_url]{create_presigned_domain_url} \tab Creates a URL for a specified UserProfile in a Domain\cr
 #'  \link[=sagemaker_create_presigned_mlflow_tracking_server_url]{create_presigned_mlflow_tracking_server_url} \tab Returns a presigned URL that you can use to connect to the MLflow UI attached to your tracking server\cr
@@ -156,6 +161,7 @@ NULL
 #'  \link[=sagemaker_create_space]{create_space} \tab Creates a private space or a space used for real time collaboration in a domain\cr
 #'  \link[=sagemaker_create_studio_lifecycle_config]{create_studio_lifecycle_config} \tab Creates a new Amazon SageMaker Studio Lifecycle Configuration\cr
 #'  \link[=sagemaker_create_training_job]{create_training_job} \tab Starts a model training job\cr
+#'  \link[=sagemaker_create_training_plan]{create_training_plan} \tab Creates a new training plan in SageMaker to reserve compute capacity\cr
 #'  \link[=sagemaker_create_transform_job]{create_transform_job} \tab Starts a transform job\cr
 #'  \link[=sagemaker_create_trial]{create_trial} \tab Creates an SageMaker trial\cr
 #'  \link[=sagemaker_create_trial_component]{create_trial_component} \tab Creates a trial component, which is a stage of a machine learning trial\cr
@@ -169,8 +175,10 @@ NULL
 #'  \link[=sagemaker_delete_artifact]{delete_artifact} \tab Deletes an artifact\cr
 #'  \link[=sagemaker_delete_association]{delete_association} \tab Deletes an association\cr
 #'  \link[=sagemaker_delete_cluster]{delete_cluster} \tab Delete a SageMaker HyperPod cluster\cr
+#'  \link[=sagemaker_delete_cluster_scheduler_config]{delete_cluster_scheduler_config} \tab Deletes the cluster policy of the cluster\cr
 #'  \link[=sagemaker_delete_code_repository]{delete_code_repository} \tab Deletes the specified Git repository from your account\cr
 #'  \link[=sagemaker_delete_compilation_job]{delete_compilation_job} \tab Deletes the specified compilation job\cr
+#'  \link[=sagemaker_delete_compute_quota]{delete_compute_quota} \tab Deletes the compute allocation from the cluster\cr
 #'  \link[=sagemaker_delete_context]{delete_context} \tab Deletes an context\cr
 #'  \link[=sagemaker_delete_data_quality_job_definition]{delete_data_quality_job_definition} \tab Deletes a data quality monitoring job definition\cr
 #'  \link[=sagemaker_delete_device_fleet]{delete_device_fleet} \tab Deletes a fleet\cr
@@ -204,6 +212,7 @@ NULL
 #'  \link[=sagemaker_delete_notebook_instance]{delete_notebook_instance} \tab Deletes an SageMaker notebook instance\cr
 #'  \link[=sagemaker_delete_notebook_instance_lifecycle_config]{delete_notebook_instance_lifecycle_config} \tab Deletes a notebook instance lifecycle configuration\cr
 #'  \link[=sagemaker_delete_optimization_job]{delete_optimization_job} \tab Deletes an optimization job\cr
+#'  \link[=sagemaker_delete_partner_app]{delete_partner_app} \tab Deletes a SageMaker Partner AI App\cr
 #'  \link[=sagemaker_delete_pipeline]{delete_pipeline} \tab Deletes a pipeline if there are no running instances of the pipeline\cr
 #'  \link[=sagemaker_delete_project]{delete_project} \tab Delete the specified project\cr
 #'  \link[=sagemaker_delete_space]{delete_space} \tab Used to delete a space\cr
@@ -224,8 +233,10 @@ NULL
 #'  \link[=sagemaker_describe_auto_ml_job_v2]{describe_auto_ml_job_v2} \tab Returns information about an AutoML job created by calling CreateAutoMLJobV2 or CreateAutoMLJob\cr
 #'  \link[=sagemaker_describe_cluster]{describe_cluster} \tab Retrieves information of a SageMaker HyperPod cluster\cr
 #'  \link[=sagemaker_describe_cluster_node]{describe_cluster_node} \tab Retrieves information of a node (also called a instance interchangeably) of a SageMaker HyperPod cluster\cr
+#'  \link[=sagemaker_describe_cluster_scheduler_config]{describe_cluster_scheduler_config} \tab Description of the cluster policy\cr
 #'  \link[=sagemaker_describe_code_repository]{describe_code_repository} \tab Gets details about the specified Git repository\cr
 #'  \link[=sagemaker_describe_compilation_job]{describe_compilation_job} \tab Returns information about a model compilation job\cr
+#'  \link[=sagemaker_describe_compute_quota]{describe_compute_quota} \tab Description of the compute allocation definition\cr
 #'  \link[=sagemaker_describe_context]{describe_context} \tab Describes a context\cr
 #'  \link[=sagemaker_describe_data_quality_job_definition]{describe_data_quality_job_definition} \tab Gets the details of a data quality monitoring job definition\cr
 #'  \link[=sagemaker_describe_device]{describe_device} \tab Describes the device\cr
@@ -263,6 +274,7 @@ NULL
 #'  \link[=sagemaker_describe_notebook_instance]{describe_notebook_instance} \tab Returns information about a notebook instance\cr
 #'  \link[=sagemaker_describe_notebook_instance_lifecycle_config]{describe_notebook_instance_lifecycle_config} \tab Returns a description of a notebook instance lifecycle configuration\cr
 #'  \link[=sagemaker_describe_optimization_job]{describe_optimization_job} \tab Provides the properties of the specified optimization job\cr
+#'  \link[=sagemaker_describe_partner_app]{describe_partner_app} \tab Gets information about a SageMaker Partner AI App\cr
 #'  \link[=sagemaker_describe_pipeline]{describe_pipeline} \tab Describes the details of a pipeline\cr
 #'  \link[=sagemaker_describe_pipeline_definition_for_execution]{describe_pipeline_definition_for_execution} \tab Describes the details of an execution's pipeline definition\cr
 #'  \link[=sagemaker_describe_pipeline_execution]{describe_pipeline_execution} \tab Describes the details of a pipeline execution\cr
@@ -272,6 +284,7 @@ NULL
 #'  \link[=sagemaker_describe_studio_lifecycle_config]{describe_studio_lifecycle_config} \tab Describes the Amazon SageMaker Studio Lifecycle Configuration\cr
 #'  \link[=sagemaker_describe_subscribed_workteam]{describe_subscribed_workteam} \tab Gets information about a work team provided by a vendor\cr
 #'  \link[=sagemaker_describe_training_job]{describe_training_job} \tab Returns information about a training job\cr
+#'  \link[=sagemaker_describe_training_plan]{describe_training_plan} \tab Retrieves detailed information about a specific training plan\cr
 #'  \link[=sagemaker_describe_transform_job]{describe_transform_job} \tab Returns information about a transform job\cr
 #'  \link[=sagemaker_describe_trial]{describe_trial} \tab Provides a list of a trial's properties\cr
 #'  \link[=sagemaker_describe_trial_component]{describe_trial_component} \tab Provides a list of a trials component's properties\cr
@@ -299,8 +312,10 @@ NULL
 #'  \link[=sagemaker_list_candidates_for_auto_ml_job]{list_candidates_for_auto_ml_job} \tab List the candidates created for the job\cr
 #'  \link[=sagemaker_list_cluster_nodes]{list_cluster_nodes} \tab Retrieves the list of instances (also called nodes interchangeably) in a SageMaker HyperPod cluster\cr
 #'  \link[=sagemaker_list_clusters]{list_clusters} \tab Retrieves the list of SageMaker HyperPod clusters\cr
+#'  \link[=sagemaker_list_cluster_scheduler_configs]{list_cluster_scheduler_configs} \tab List the cluster policy configurations\cr
 #'  \link[=sagemaker_list_code_repositories]{list_code_repositories} \tab Gets a list of the Git repositories in your account\cr
 #'  \link[=sagemaker_list_compilation_jobs]{list_compilation_jobs} \tab Lists model compilation jobs that satisfy various filters\cr
+#'  \link[=sagemaker_list_compute_quotas]{list_compute_quotas} \tab List the resource allocation definitions\cr
 #'  \link[=sagemaker_list_contexts]{list_contexts} \tab Lists the contexts in your account and their properties\cr
 #'  \link[=sagemaker_list_data_quality_job_definitions]{list_data_quality_job_definitions} \tab Lists the data quality job definitions in your account\cr
 #'  \link[=sagemaker_list_device_fleets]{list_device_fleets} \tab Returns a list of devices in the fleet\cr
@@ -345,6 +360,7 @@ NULL
 #'  \link[=sagemaker_list_notebook_instance_lifecycle_configs]{list_notebook_instance_lifecycle_configs} \tab Lists notebook instance lifestyle configurations created with the CreateNotebookInstanceLifecycleConfig API\cr
 #'  \link[=sagemaker_list_notebook_instances]{list_notebook_instances} \tab Returns a list of the SageMaker notebook instances in the requester's account in an Amazon Web Services Region\cr
 #'  \link[=sagemaker_list_optimization_jobs]{list_optimization_jobs} \tab Lists the optimization jobs in your account and their properties\cr
+#'  \link[=sagemaker_list_partner_apps]{list_partner_apps} \tab Lists all of the SageMaker Partner AI Apps in an account\cr
 #'  \link[=sagemaker_list_pipeline_executions]{list_pipeline_executions} \tab Gets a list of the pipeline executions\cr
 #'  \link[=sagemaker_list_pipeline_execution_steps]{list_pipeline_execution_steps} \tab Gets a list of PipeLineExecutionStep objects\cr
 #'  \link[=sagemaker_list_pipeline_parameters_for_execution]{list_pipeline_parameters_for_execution} \tab Gets a list of parameters for a pipeline execution\cr
@@ -359,6 +375,7 @@ NULL
 #'  \link[=sagemaker_list_tags]{list_tags} \tab Returns the tags for the specified SageMaker resource\cr
 #'  \link[=sagemaker_list_training_jobs]{list_training_jobs} \tab Lists training jobs\cr
 #'  \link[=sagemaker_list_training_jobs_for_hyper_parameter_tuning_job]{list_training_jobs_for_hyper_parameter_tuning_job} \tab Gets a list of TrainingJobSummary objects that describe the training jobs that a hyperparameter tuning job launched\cr
+#'  \link[=sagemaker_list_training_plans]{list_training_plans} \tab Retrieves a list of training plans for the current account\cr
 #'  \link[=sagemaker_list_transform_jobs]{list_transform_jobs} \tab Lists transform jobs\cr
 #'  \link[=sagemaker_list_trial_components]{list_trial_components} \tab Lists the trial components in your account\cr
 #'  \link[=sagemaker_list_trials]{list_trials} \tab Lists the trials in your account\cr
@@ -371,6 +388,7 @@ NULL
 #'  \link[=sagemaker_render_ui_template]{render_ui_template} \tab Renders the UI template so that you can preview the worker's experience\cr
 #'  \link[=sagemaker_retry_pipeline_execution]{retry_pipeline_execution} \tab Retry the execution of the pipeline\cr
 #'  \link[=sagemaker_search]{search} \tab Finds SageMaker resources that match a search query\cr
+#'  \link[=sagemaker_search_training_plan_offerings]{search_training_plan_offerings} \tab Searches for available training plan offerings based on specified criteria\cr
 #'  \link[=sagemaker_send_pipeline_execution_step_failure]{send_pipeline_execution_step_failure} \tab Notifies the pipeline that the execution of a callback step failed, along with a message describing why\cr
 #'  \link[=sagemaker_send_pipeline_execution_step_success]{send_pipeline_execution_step_success} \tab Notifies the pipeline that the execution of a callback step succeeded and provides a list of the step's output parameters\cr
 #'  \link[=sagemaker_start_edge_deployment_stage]{start_edge_deployment_stage} \tab Starts a stage in an edge deployment plan\cr
@@ -399,8 +417,10 @@ NULL
 #'  \link[=sagemaker_update_app_image_config]{update_app_image_config} \tab Updates the properties of an AppImageConfig\cr
 #'  \link[=sagemaker_update_artifact]{update_artifact} \tab Updates an artifact\cr
 #'  \link[=sagemaker_update_cluster]{update_cluster} \tab Updates a SageMaker HyperPod cluster\cr
+#'  \link[=sagemaker_update_cluster_scheduler_config]{update_cluster_scheduler_config} \tab Update the cluster policy configuration\cr
 #'  \link[=sagemaker_update_cluster_software]{update_cluster_software} \tab Updates the platform software of a SageMaker HyperPod cluster for security patching\cr
 #'  \link[=sagemaker_update_code_repository]{update_code_repository} \tab Updates the specified Git repository with the specified values\cr
+#'  \link[=sagemaker_update_compute_quota]{update_compute_quota} \tab Update the compute allocation definition\cr
 #'  \link[=sagemaker_update_context]{update_context} \tab Updates a context\cr
 #'  \link[=sagemaker_update_device_fleet]{update_device_fleet} \tab Updates a fleet of devices\cr
 #'  \link[=sagemaker_update_devices]{update_devices} \tab Updates one or more devices in a fleet\cr
@@ -423,6 +443,7 @@ NULL
 #'  \link[=sagemaker_update_monitoring_schedule]{update_monitoring_schedule} \tab Updates a previously created schedule\cr
 #'  \link[=sagemaker_update_notebook_instance]{update_notebook_instance} \tab Updates a notebook instance\cr
 #'  \link[=sagemaker_update_notebook_instance_lifecycle_config]{update_notebook_instance_lifecycle_config} \tab Updates a notebook instance lifecycle configuration created with the CreateNotebookInstanceLifecycleConfig API\cr
+#'  \link[=sagemaker_update_partner_app]{update_partner_app} \tab Updates all of the SageMaker Partner AI Apps in an account\cr
 #'  \link[=sagemaker_update_pipeline]{update_pipeline} \tab Updates a pipeline\cr
 #'  \link[=sagemaker_update_pipeline_execution]{update_pipeline_execution} \tab Updates a pipeline execution\cr
 #'  \link[=sagemaker_update_project]{update_project} \tab Updates a machine learning (ML) project that is created from a template that sets up an ML pipeline from training to deploying an approved model\cr
@@ -464,7 +485,7 @@ sagemaker <- function(config = list(), credentials = list(), endpoint = NULL, re
 
 .sagemaker$metadata <- list(
   service_name = "sagemaker",
-  endpoints = list("*" = list(endpoint = "api.sagemaker.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "api.sagemaker.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "api.sagemaker.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "api.sagemaker.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "api.sagemaker.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "api.sagemaker.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "api.sagemaker.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "api.sagemaker.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "api.sagemaker.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "api.sagemaker.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "api.sagemaker.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "api.sagemaker.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "api.sagemaker.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "SageMaker",
   api_version = "2017-07-24",
   signing_name = "sagemaker",

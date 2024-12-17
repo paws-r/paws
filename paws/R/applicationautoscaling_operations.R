@@ -415,18 +415,6 @@ applicationautoscaling_delete_scaling_policy <- function(PolicyName, ServiceName
 #' )
 #' ```
 #'
-#' @examples
-#' \dontrun{
-#' # This example deletes a scheduled action for the AppStream 2.0 fleet
-#' # called sample-fleet.
-#' svc$delete_scheduled_action(
-#'   ResourceId = "fleet/sample-fleet",
-#'   ScalableDimension = "appstream:fleet:DesiredCapacity",
-#'   ScheduledActionName = "my-recurring-action",
-#'   ServiceNamespace = "appstream"
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname applicationautoscaling_delete_scheduled_action
@@ -858,6 +846,7 @@ applicationautoscaling_deregister_scalable_target <- function(ServiceNamespace, 
 #'       ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"comprehend:entity-recognizer-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits"|"kafka:broker-storage:VolumeSize"|"elasticache:replication-group:NodeGroups"|"elasticache:replication-group:Replicas"|"neptune:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredProvisionedConcurrency"|"sagemaker:inference-component:DesiredCopyCount"|"workspaces:workspacespool:DesiredUserSessions",
 #'       MinCapacity = 123,
 #'       MaxCapacity = 123,
+#'       PredictedCapacity = 123,
 #'       RoleARN = "string",
 #'       CreationTime = as.POSIXct(
 #'         "2015-01-01"
@@ -907,7 +896,7 @@ applicationautoscaling_describe_scalable_targets <- function(ServiceNamespace, R
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ScalableTargets"),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ScalableTargets"),
     stream_api = FALSE
   )
   input <- .applicationautoscaling$describe_scalable_targets_input(ServiceNamespace = ServiceNamespace, ResourceIds = ResourceIds, ScalableDimension = ScalableDimension, MaxResults = MaxResults, NextToken = NextToken)
@@ -1179,7 +1168,7 @@ applicationautoscaling_describe_scaling_activities <- function(ServiceNamespace,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ScalingActivities"),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ScalingActivities"),
     stream_api = FALSE
   )
   input <- .applicationautoscaling$describe_scaling_activities_input(ServiceNamespace = ServiceNamespace, ResourceId = ResourceId, ScalableDimension = ScalableDimension, MaxResults = MaxResults, NextToken = NextToken, IncludeNotScaledActivities = IncludeNotScaledActivities)
@@ -1390,7 +1379,7 @@ applicationautoscaling_describe_scaling_activities <- function(ServiceNamespace,
 #'       ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda"|"cassandra"|"kafka"|"elasticache"|"neptune"|"workspaces",
 #'       ResourceId = "string",
 #'       ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"comprehend:entity-recognizer-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits"|"kafka:broker-storage:VolumeSize"|"elasticache:replication-group:NodeGroups"|"elasticache:replication-group:Replicas"|"neptune:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredProvisionedConcurrency"|"sagemaker:inference-component:DesiredCopyCount"|"workspaces:workspacespool:DesiredUserSessions",
-#'       PolicyType = "StepScaling"|"TargetTrackingScaling",
+#'       PolicyType = "StepScaling"|"TargetTrackingScaling"|"PredictiveScaling",
 #'       StepScalingPolicyConfiguration = list(
 #'         AdjustmentType = "ChangeInCapacity"|"PercentChangeInCapacity"|"ExactCapacity",
 #'         StepAdjustments = list(
@@ -1448,6 +1437,101 @@ applicationautoscaling_describe_scaling_activities <- function(ServiceNamespace,
 #'         ScaleInCooldown = 123,
 #'         DisableScaleIn = TRUE|FALSE
 #'       ),
+#'       PredictiveScalingPolicyConfiguration = list(
+#'         MetricSpecifications = list(
+#'           list(
+#'             TargetValue = 123.0,
+#'             PredefinedMetricPairSpecification = list(
+#'               PredefinedMetricType = "string",
+#'               ResourceLabel = "string"
+#'             ),
+#'             PredefinedScalingMetricSpecification = list(
+#'               PredefinedMetricType = "string",
+#'               ResourceLabel = "string"
+#'             ),
+#'             PredefinedLoadMetricSpecification = list(
+#'               PredefinedMetricType = "string",
+#'               ResourceLabel = "string"
+#'             ),
+#'             CustomizedScalingMetricSpecification = list(
+#'               MetricDataQueries = list(
+#'                 list(
+#'                   Id = "string",
+#'                   Expression = "string",
+#'                   MetricStat = list(
+#'                     Metric = list(
+#'                       Dimensions = list(
+#'                         list(
+#'                           Name = "string",
+#'                           Value = "string"
+#'                         )
+#'                       ),
+#'                       MetricName = "string",
+#'                       Namespace = "string"
+#'                     ),
+#'                     Stat = "string",
+#'                     Unit = "string"
+#'                   ),
+#'                   Label = "string",
+#'                   ReturnData = TRUE|FALSE
+#'                 )
+#'               )
+#'             ),
+#'             CustomizedLoadMetricSpecification = list(
+#'               MetricDataQueries = list(
+#'                 list(
+#'                   Id = "string",
+#'                   Expression = "string",
+#'                   MetricStat = list(
+#'                     Metric = list(
+#'                       Dimensions = list(
+#'                         list(
+#'                           Name = "string",
+#'                           Value = "string"
+#'                         )
+#'                       ),
+#'                       MetricName = "string",
+#'                       Namespace = "string"
+#'                     ),
+#'                     Stat = "string",
+#'                     Unit = "string"
+#'                   ),
+#'                   Label = "string",
+#'                   ReturnData = TRUE|FALSE
+#'                 )
+#'               )
+#'             ),
+#'             CustomizedCapacityMetricSpecification = list(
+#'               MetricDataQueries = list(
+#'                 list(
+#'                   Id = "string",
+#'                   Expression = "string",
+#'                   MetricStat = list(
+#'                     Metric = list(
+#'                       Dimensions = list(
+#'                         list(
+#'                           Name = "string",
+#'                           Value = "string"
+#'                         )
+#'                       ),
+#'                       MetricName = "string",
+#'                       Namespace = "string"
+#'                     ),
+#'                     Stat = "string",
+#'                     Unit = "string"
+#'                   ),
+#'                   Label = "string",
+#'                   ReturnData = TRUE|FALSE
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         Mode = "ForecastOnly"|"ForecastAndScale",
+#'         SchedulingBufferTime = 123,
+#'         MaxCapacityBreachBehavior = "HonorMaxCapacity"|"IncreaseMaxCapacity",
+#'         MaxCapacityBuffer = 123
+#'       ),
 #'       Alarms = list(
 #'         list(
 #'           AlarmName = "string",
@@ -1497,7 +1581,7 @@ applicationautoscaling_describe_scaling_policies <- function(PolicyNames = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ScalingPolicies"),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ScalingPolicies"),
     stream_api = FALSE
   )
   input <- .applicationautoscaling$describe_scaling_policies_input(PolicyNames = PolicyNames, ServiceNamespace = ServiceNamespace, ResourceId = ResourceId, ScalableDimension = ScalableDimension, MaxResults = MaxResults, NextToken = NextToken)
@@ -1741,15 +1825,6 @@ applicationautoscaling_describe_scaling_policies <- function(PolicyNames = NULL,
 #' )
 #' ```
 #'
-#' @examples
-#' \dontrun{
-#' # This example describes the scheduled actions for the dynamodb service
-#' # namespace.
-#' svc$describe_scheduled_actions(
-#'   ServiceNamespace = "dynamodb"
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname applicationautoscaling_describe_scheduled_actions
@@ -1773,6 +1848,196 @@ applicationautoscaling_describe_scheduled_actions <- function(ScheduledActionNam
   return(response)
 }
 .applicationautoscaling$operations$describe_scheduled_actions <- applicationautoscaling_describe_scheduled_actions
+
+#' Retrieves the forecast data for a predictive scaling policy
+#'
+#' @description
+#' Retrieves the forecast data for a predictive scaling policy.
+#' 
+#' Load forecasts are predictions of the hourly load values using
+#' historical load data from CloudWatch and an analysis of historical
+#' trends. Capacity forecasts are represented as predicted values for the
+#' minimum capacity that is needed on an hourly basis, based on the hourly
+#' load forecast.
+#' 
+#' A minimum of 24 hours of data is required to create the initial
+#' forecasts. However, having a full 14 days of historical data results in
+#' more accurate forecasts.
+#'
+#' @usage
+#' applicationautoscaling_get_predictive_scaling_forecast(ServiceNamespace,
+#'   ResourceId, ScalableDimension, PolicyName, StartTime, EndTime)
+#'
+#' @param ServiceNamespace &#91;required&#93; The namespace of the Amazon Web Services service that provides the
+#' resource. For a resource provided by your own application or service,
+#' use `custom-resource` instead.
+#' @param ResourceId &#91;required&#93; The identifier of the resource.
+#' @param ScalableDimension &#91;required&#93; The scalable dimension.
+#' @param PolicyName &#91;required&#93; The name of the policy.
+#' @param StartTime &#91;required&#93; The inclusive start time of the time range for the forecast data to get.
+#' At most, the date and time can be one year before the current date and
+#' time
+#' @param EndTime &#91;required&#93; The exclusive end time of the time range for the forecast data to get.
+#' The maximum time duration between the start and end time is 30 days.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LoadForecast = list(
+#'     list(
+#'       Timestamps = list(
+#'         as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       ),
+#'       Values = list(
+#'         123.0
+#'       ),
+#'       MetricSpecification = list(
+#'         TargetValue = 123.0,
+#'         PredefinedMetricPairSpecification = list(
+#'           PredefinedMetricType = "string",
+#'           ResourceLabel = "string"
+#'         ),
+#'         PredefinedScalingMetricSpecification = list(
+#'           PredefinedMetricType = "string",
+#'           ResourceLabel = "string"
+#'         ),
+#'         PredefinedLoadMetricSpecification = list(
+#'           PredefinedMetricType = "string",
+#'           ResourceLabel = "string"
+#'         ),
+#'         CustomizedScalingMetricSpecification = list(
+#'           MetricDataQueries = list(
+#'             list(
+#'               Id = "string",
+#'               Expression = "string",
+#'               MetricStat = list(
+#'                 Metric = list(
+#'                   Dimensions = list(
+#'                     list(
+#'                       Name = "string",
+#'                       Value = "string"
+#'                     )
+#'                   ),
+#'                   MetricName = "string",
+#'                   Namespace = "string"
+#'                 ),
+#'                 Stat = "string",
+#'                 Unit = "string"
+#'               ),
+#'               Label = "string",
+#'               ReturnData = TRUE|FALSE
+#'             )
+#'           )
+#'         ),
+#'         CustomizedLoadMetricSpecification = list(
+#'           MetricDataQueries = list(
+#'             list(
+#'               Id = "string",
+#'               Expression = "string",
+#'               MetricStat = list(
+#'                 Metric = list(
+#'                   Dimensions = list(
+#'                     list(
+#'                       Name = "string",
+#'                       Value = "string"
+#'                     )
+#'                   ),
+#'                   MetricName = "string",
+#'                   Namespace = "string"
+#'                 ),
+#'                 Stat = "string",
+#'                 Unit = "string"
+#'               ),
+#'               Label = "string",
+#'               ReturnData = TRUE|FALSE
+#'             )
+#'           )
+#'         ),
+#'         CustomizedCapacityMetricSpecification = list(
+#'           MetricDataQueries = list(
+#'             list(
+#'               Id = "string",
+#'               Expression = "string",
+#'               MetricStat = list(
+#'                 Metric = list(
+#'                   Dimensions = list(
+#'                     list(
+#'                       Name = "string",
+#'                       Value = "string"
+#'                     )
+#'                   ),
+#'                   MetricName = "string",
+#'                   Namespace = "string"
+#'                 ),
+#'                 Stat = "string",
+#'                 Unit = "string"
+#'               ),
+#'               Label = "string",
+#'               ReturnData = TRUE|FALSE
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   CapacityForecast = list(
+#'     Timestamps = list(
+#'       as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     ),
+#'     Values = list(
+#'       123.0
+#'     )
+#'   ),
+#'   UpdateTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_predictive_scaling_forecast(
+#'   ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda"|"cassandra"|"kafka"|"elasticache"|"neptune"|"workspaces",
+#'   ResourceId = "string",
+#'   ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"comprehend:entity-recognizer-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits"|"kafka:broker-storage:VolumeSize"|"elasticache:replication-group:NodeGroups"|"elasticache:replication-group:Replicas"|"neptune:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredProvisionedConcurrency"|"sagemaker:inference-component:DesiredCopyCount"|"workspaces:workspacespool:DesiredUserSessions",
+#'   PolicyName = "string",
+#'   StartTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   EndTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname applicationautoscaling_get_predictive_scaling_forecast
+#'
+#' @aliases applicationautoscaling_get_predictive_scaling_forecast
+applicationautoscaling_get_predictive_scaling_forecast <- function(ServiceNamespace, ResourceId, ScalableDimension, PolicyName, StartTime, EndTime) {
+  op <- new_operation(
+    name = "GetPredictiveScalingForecast",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .applicationautoscaling$get_predictive_scaling_forecast_input(ServiceNamespace = ServiceNamespace, ResourceId = ResourceId, ScalableDimension = ScalableDimension, PolicyName = PolicyName, StartTime = StartTime, EndTime = EndTime)
+  output <- .applicationautoscaling$get_predictive_scaling_forecast_output()
+  config <- get_config()
+  svc <- .applicationautoscaling$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.applicationautoscaling$operations$get_predictive_scaling_forecast <- applicationautoscaling_get_predictive_scaling_forecast
 
 #' Returns all the tags on the specified Application Auto Scaling scalable
 #' target
@@ -1813,15 +2078,6 @@ applicationautoscaling_describe_scheduled_actions <- function(ScheduledActionNam
 #'   ResourceARN = "string"
 #' )
 #' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example lists the tag key names and values that are attached to the
-#' # scalable target specified by its ARN.
-#' svc$list_tags_for_resource(
-#'   ResourceARN = "arn:aws:application-autoscaling:us-west-2:123456789012:sca..."
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -1892,7 +2148,8 @@ applicationautoscaling_list_tags_for_resource <- function(ResourceARN) {
 #' applicationautoscaling_put_scaling_policy(PolicyName, ServiceNamespace,
 #'   ResourceId, ScalableDimension, PolicyType,
 #'   StepScalingPolicyConfiguration,
-#'   TargetTrackingScalingPolicyConfiguration)
+#'   TargetTrackingScalingPolicyConfiguration,
+#'   PredictiveScalingPolicyConfiguration)
 #'
 #' @param PolicyName &#91;required&#93; The name of the scaling policy.
 #' 
@@ -2078,6 +2335,7 @@ applicationautoscaling_list_tags_for_resource <- function(ResourceARN) {
 #' 
 #' This parameter is required if you are creating a policy and the policy
 #' type is `TargetTrackingScaling`.
+#' @param PredictiveScalingPolicyConfiguration The configuration of the predictive scaling policy.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2100,7 +2358,7 @@ applicationautoscaling_list_tags_for_resource <- function(ResourceARN) {
 #'   ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda"|"cassandra"|"kafka"|"elasticache"|"neptune"|"workspaces",
 #'   ResourceId = "string",
 #'   ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"comprehend:entity-recognizer-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits"|"kafka:broker-storage:VolumeSize"|"elasticache:replication-group:NodeGroups"|"elasticache:replication-group:Replicas"|"neptune:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredProvisionedConcurrency"|"sagemaker:inference-component:DesiredCopyCount"|"workspaces:workspacespool:DesiredUserSessions",
-#'   PolicyType = "StepScaling"|"TargetTrackingScaling",
+#'   PolicyType = "StepScaling"|"TargetTrackingScaling"|"PredictiveScaling",
 #'   StepScalingPolicyConfiguration = list(
 #'     AdjustmentType = "ChangeInCapacity"|"PercentChangeInCapacity"|"ExactCapacity",
 #'     StepAdjustments = list(
@@ -2157,6 +2415,101 @@ applicationautoscaling_list_tags_for_resource <- function(ResourceARN) {
 #'     ScaleOutCooldown = 123,
 #'     ScaleInCooldown = 123,
 #'     DisableScaleIn = TRUE|FALSE
+#'   ),
+#'   PredictiveScalingPolicyConfiguration = list(
+#'     MetricSpecifications = list(
+#'       list(
+#'         TargetValue = 123.0,
+#'         PredefinedMetricPairSpecification = list(
+#'           PredefinedMetricType = "string",
+#'           ResourceLabel = "string"
+#'         ),
+#'         PredefinedScalingMetricSpecification = list(
+#'           PredefinedMetricType = "string",
+#'           ResourceLabel = "string"
+#'         ),
+#'         PredefinedLoadMetricSpecification = list(
+#'           PredefinedMetricType = "string",
+#'           ResourceLabel = "string"
+#'         ),
+#'         CustomizedScalingMetricSpecification = list(
+#'           MetricDataQueries = list(
+#'             list(
+#'               Id = "string",
+#'               Expression = "string",
+#'               MetricStat = list(
+#'                 Metric = list(
+#'                   Dimensions = list(
+#'                     list(
+#'                       Name = "string",
+#'                       Value = "string"
+#'                     )
+#'                   ),
+#'                   MetricName = "string",
+#'                   Namespace = "string"
+#'                 ),
+#'                 Stat = "string",
+#'                 Unit = "string"
+#'               ),
+#'               Label = "string",
+#'               ReturnData = TRUE|FALSE
+#'             )
+#'           )
+#'         ),
+#'         CustomizedLoadMetricSpecification = list(
+#'           MetricDataQueries = list(
+#'             list(
+#'               Id = "string",
+#'               Expression = "string",
+#'               MetricStat = list(
+#'                 Metric = list(
+#'                   Dimensions = list(
+#'                     list(
+#'                       Name = "string",
+#'                       Value = "string"
+#'                     )
+#'                   ),
+#'                   MetricName = "string",
+#'                   Namespace = "string"
+#'                 ),
+#'                 Stat = "string",
+#'                 Unit = "string"
+#'               ),
+#'               Label = "string",
+#'               ReturnData = TRUE|FALSE
+#'             )
+#'           )
+#'         ),
+#'         CustomizedCapacityMetricSpecification = list(
+#'           MetricDataQueries = list(
+#'             list(
+#'               Id = "string",
+#'               Expression = "string",
+#'               MetricStat = list(
+#'                 Metric = list(
+#'                   Dimensions = list(
+#'                     list(
+#'                       Name = "string",
+#'                       Value = "string"
+#'                     )
+#'                   ),
+#'                   MetricName = "string",
+#'                   Namespace = "string"
+#'                 ),
+#'                 Stat = "string",
+#'                 Unit = "string"
+#'               ),
+#'               Label = "string",
+#'               ReturnData = TRUE|FALSE
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     Mode = "ForecastOnly"|"ForecastAndScale",
+#'     SchedulingBufferTime = 123,
+#'     MaxCapacityBreachBehavior = "HonorMaxCapacity"|"IncreaseMaxCapacity",
+#'     MaxCapacityBuffer = 123
 #'   )
 #' )
 #' ```
@@ -2190,7 +2543,7 @@ applicationautoscaling_list_tags_for_resource <- function(ResourceARN) {
 #' @rdname applicationautoscaling_put_scaling_policy
 #'
 #' @aliases applicationautoscaling_put_scaling_policy
-applicationautoscaling_put_scaling_policy <- function(PolicyName, ServiceNamespace, ResourceId, ScalableDimension, PolicyType = NULL, StepScalingPolicyConfiguration = NULL, TargetTrackingScalingPolicyConfiguration = NULL) {
+applicationautoscaling_put_scaling_policy <- function(PolicyName, ServiceNamespace, ResourceId, ScalableDimension, PolicyType = NULL, StepScalingPolicyConfiguration = NULL, TargetTrackingScalingPolicyConfiguration = NULL, PredictiveScalingPolicyConfiguration = NULL) {
   op <- new_operation(
     name = "PutScalingPolicy",
     http_method = "POST",
@@ -2199,7 +2552,7 @@ applicationautoscaling_put_scaling_policy <- function(PolicyName, ServiceNamespa
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .applicationautoscaling$put_scaling_policy_input(PolicyName = PolicyName, ServiceNamespace = ServiceNamespace, ResourceId = ResourceId, ScalableDimension = ScalableDimension, PolicyType = PolicyType, StepScalingPolicyConfiguration = StepScalingPolicyConfiguration, TargetTrackingScalingPolicyConfiguration = TargetTrackingScalingPolicyConfiguration)
+  input <- .applicationautoscaling$put_scaling_policy_input(PolicyName = PolicyName, ServiceNamespace = ServiceNamespace, ResourceId = ResourceId, ScalableDimension = ScalableDimension, PolicyType = PolicyType, StepScalingPolicyConfiguration = StepScalingPolicyConfiguration, TargetTrackingScalingPolicyConfiguration = TargetTrackingScalingPolicyConfiguration, PredictiveScalingPolicyConfiguration = PredictiveScalingPolicyConfiguration)
   output <- .applicationautoscaling$put_scaling_policy_output()
   config <- get_config()
   svc <- .applicationautoscaling$service(config, op)
@@ -2464,25 +2817,6 @@ applicationautoscaling_put_scaling_policy <- function(PolicyName, ServiceNamespa
 #'   )
 #' )
 #' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example adds a scheduled action to a DynamoDB table called
-#' # TestTable to scale out on a recurring schedule. On the specified
-#' # schedule (every day at 12:15pm UTC), if the current capacity is below
-#' # the value specified for MinCapacity, Application Auto Scaling scales out
-#' # to the value specified by MinCapacity.
-#' svc$put_scheduled_action(
-#'   ResourceId = "table/TestTable",
-#'   ScalableDimension = "dynamodb:table:WriteCapacityUnits",
-#'   ScalableTargetAction = list(
-#'     MinCapacity = 6L
-#'   ),
-#'   Schedule = "cron(15 12 * * ? *)",
-#'   ScheduledActionName = "my-recurring-action",
-#'   ServiceNamespace = "dynamodb"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -2949,18 +3283,6 @@ applicationautoscaling_register_scalable_target <- function(ServiceNamespace, Re
 #' )
 #' ```
 #'
-#' @examples
-#' \dontrun{
-#' # This example adds a tag with the key name "environment" and the value
-#' # "production" to the scalable target specified by its ARN.
-#' svc$tag_resource(
-#'   ResourceARN = "arn:aws:application-autoscaling:us-west-2:123456789012:sca...",
-#'   Tags = list(
-#'     environment = "production"
-#'   )
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname applicationautoscaling_tag_resource
@@ -3017,18 +3339,6 @@ applicationautoscaling_tag_resource <- function(ResourceARN, Tags) {
 #'   )
 #' )
 #' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example removes the tag pair with the key name "environment" from
-#' # the scalable target specified by its ARN.
-#' svc$untag_resource(
-#'   ResourceARN = "arn:aws:application-autoscaling:us-west-2:123456789012:sca...",
-#'   TagKeys = list(
-#'     "environment"
-#'   )
-#' )
-#' }
 #'
 #' @keywords internal
 #'

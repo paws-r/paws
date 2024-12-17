@@ -38,7 +38,11 @@ created.}
 the same Amazon Web Services Region.}
 
 \item{destinationPrefix}{The prefix used as the start of the key for every object exported. If
-you don't specify a value, the default is \code{exportedlogs}.}
+you don't specify a value, the default is \code{exportedlogs}.
+
+The length of this parameter must comply with the S3 object key name
+length limits. The object key name is a sequence of Unicode characters
+with UTF-8 encoding, and can be up to 1,024 bytes.}
 }
 \description{
 Creates an export task so that you can efficiently export data from a log group to an Amazon S3 bucket. When you perform a \code{\link[=cloudwatchlogs_create_export_task]{create_export_task}} operation, you must use credentials that have permission to write to the S3 bucket that you specify as the destination.

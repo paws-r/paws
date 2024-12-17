@@ -14,7 +14,8 @@ elbv2_create_load_balancer(
   Tags = NULL,
   Type = NULL,
   IpAddressType = NULL,
-  CustomerOwnedIpv4Pool = NULL
+  CustomerOwnedIpv4Pool = NULL,
+  EnablePrefixForIpv6SourceNat = NULL
 )
 }
 \arguments{
@@ -39,17 +40,14 @@ subnet.
 [Application Load Balancers on Local Zones] You can specify subnets
 from one or more Local Zones.
 
-[Network Load Balancers] You can specify subnets from one or more
-Availability Zones.
-
-[Gateway Load Balancers] You can specify subnets from one or more
-Availability Zones.}
+[Network Load Balancers and Gateway Load Balancers] You can specify
+subnets from one or more Availability Zones.}
 
 \item{SubnetMappings}{The IDs of the subnets. You can specify only one subnet per Availability
 Zone. You must specify either subnets or subnet mappings, but not both.
 
 [Application Load Balancers] You must specify subnets from at least
-two Availability Zones. You cannot specify Elastic IP addresses for your
+two Availability Zones. You can't specify Elastic IP addresses for your
 subnets.
 
 [Application Load Balancers on Outposts] You must specify one Outpost
@@ -66,7 +64,7 @@ subnet from the IPv4 range of the subnet. For internet-facing load
 balancer, you can specify one IPv6 address per subnet.
 
 [Gateway Load Balancers] You can specify subnets from one or more
-Availability Zones. You cannot specify Elastic IP addresses for your
+Availability Zones. You can't specify Elastic IP addresses for your
 subnets.}
 
 \item{SecurityGroups}{[Application Load Balancers and Network Load Balancers] The IDs of the
@@ -85,30 +83,29 @@ balancer.
 
 The default is an Internet-facing load balancer.
 
-You cannot specify a scheme for a Gateway Load Balancer.}
+You can't specify a scheme for a Gateway Load Balancer.}
 
 \item{Tags}{The tags to assign to the load balancer.}
 
 \item{Type}{The type of load balancer. The default is \code{application}.}
 
-\item{IpAddressType}{Note: Internal load balancers must use the \code{ipv4} IP address type.
+\item{IpAddressType}{The IP address type. Internal load balancers must use \code{ipv4}.
 
-[Application Load Balancers] The IP address type. The possible values
-are \code{ipv4} (for only IPv4 addresses), \code{dualstack} (for IPv4 and IPv6
-addresses), and \code{dualstack-without-public-ipv4} (for IPv6 only public
-addresses, with private IPv4 and IPv6 addresses).
+[Application Load Balancers] The possible values are \code{ipv4} (IPv4
+addresses), \code{dualstack} (IPv4 and IPv6 addresses), and
+\code{dualstack-without-public-ipv4} (public IPv6 addresses and private IPv4
+and IPv6 addresses).
 
-[Network Load Balancers] The IP address type. The possible values are
-\code{ipv4} (for only IPv4 addresses) and \code{dualstack} (for IPv4 and IPv6
-addresses). You can’t specify \code{dualstack} for a load balancer with a UDP
-or TCP_UDP listener.
-
-[Gateway Load Balancers] The IP address type. The possible values are
-\code{ipv4} (for only IPv4 addresses) and \code{dualstack} (for IPv4 and IPv6
+[Network Load Balancers and Gateway Load Balancers] The possible
+values are \code{ipv4} (IPv4 addresses) and \code{dualstack} (IPv4 and IPv6
 addresses).}
 
 \item{CustomerOwnedIpv4Pool}{[Application Load Balancers on Outposts] The ID of the customer-owned
 address pool (CoIP pool).}
+
+\item{EnablePrefixForIpv6SourceNat}{[Network Load Balancers with UDP listeners] Indicates whether to use
+an IPv6 prefix from each subnet for source NAT. The IP address type must
+be \code{dualstack}. The default value is \code{off}.}
 }
 \description{
 Creates an Application Load Balancer, Network Load Balancer, or Gateway Load Balancer.

@@ -2,7 +2,7 @@
 % Please edit documentation in R/ecr_service.R
 \name{ecr}
 \alias{ecr}
-\title{Amazon EC2 Container Registry}
+\title{Amazon Elastic Container Registry}
 \usage{
 ecr(config = list(), credentials = list(), endpoint = NULL, region = NULL)
 }
@@ -48,8 +48,6 @@ to the client. The available operations are listed in the
 Operations section.
 }
 \description{
-Amazon Elastic Container Registry
-
 Amazon Elastic Container Registry (Amazon ECR) is a managed container
 image registry service. Customers can use the familiar Docker CLI, or
 their preferred client, to push, pull, and manage images. Amazon ECR

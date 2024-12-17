@@ -121,9 +121,16 @@ kinesis_add_tags_to_stream <- function(StreamName = NULL, Tags, StreamARN = NULL
 #' 
 #' [`create_stream`][kinesis_create_stream] has a limit of five
 #' transactions per second per account.
+#' 
+#' You can add tags to the stream when making a
+#' [`create_stream`][kinesis_create_stream] request by setting the `Tags`
+#' parameter. If you pass `Tags` parameter, in addition to having
+#' `kinesis:createStream` permission, you must also have
+#' `kinesis:addTagsToStream` permission for the stream that will be
+#' created. Tags will take effect from the `CREATING` status of the stream.
 #'
 #' @usage
-#' kinesis_create_stream(StreamName, ShardCount, StreamModeDetails)
+#' kinesis_create_stream(StreamName, ShardCount, StreamModeDetails, Tags)
 #'
 #' @param StreamName &#91;required&#93; A name to identify the stream. The stream name is scoped to the Amazon
 #' Web Services account used by the application that creates the stream. It
@@ -137,6 +144,7 @@ kinesis_add_tags_to_stream <- function(StreamName = NULL, Tags, StreamARN = NULL
 #' @param StreamModeDetails Indicates the capacity mode of the data stream. Currently, in Kinesis
 #' Data Streams, you can choose between an **on-demand** capacity mode and
 #' a **provisioned** capacity mode for your data streams.
+#' @param Tags A set of up to 10 key-value pairs to use to create the tags.
 #'
 #' @return
 #' An empty list.
@@ -148,6 +156,9 @@ kinesis_add_tags_to_stream <- function(StreamName = NULL, Tags, StreamARN = NULL
 #'   ShardCount = 123,
 #'   StreamModeDetails = list(
 #'     StreamMode = "PROVISIONED"|"ON_DEMAND"
+#'   ),
+#'   Tags = list(
+#'     "string"
 #'   )
 #' )
 #' ```
@@ -157,7 +168,7 @@ kinesis_add_tags_to_stream <- function(StreamName = NULL, Tags, StreamARN = NULL
 #' @rdname kinesis_create_stream
 #'
 #' @aliases kinesis_create_stream
-kinesis_create_stream <- function(StreamName, ShardCount = NULL, StreamModeDetails = NULL) {
+kinesis_create_stream <- function(StreamName, ShardCount = NULL, StreamModeDetails = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateStream",
     http_method = "POST",
@@ -166,7 +177,7 @@ kinesis_create_stream <- function(StreamName, ShardCount = NULL, StreamModeDetai
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .kinesis$create_stream_input(StreamName = StreamName, ShardCount = ShardCount, StreamModeDetails = StreamModeDetails)
+  input <- .kinesis$create_stream_input(StreamName = StreamName, ShardCount = ShardCount, StreamModeDetails = StreamModeDetails, Tags = Tags)
   output <- .kinesis$create_stream_output()
   config <- get_config()
   svc <- .kinesis$service(config, op)
@@ -606,7 +617,7 @@ kinesis_describe_stream <- function(StreamName = NULL, Limit = NULL, ExclusiveSt
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "ExclusiveStartShardId", limit_key = "Limit", more_results = "StreamDescription.HasMoreShards", output_token = "StreamDescription.Shards[-1].ShardId", result_key = "StreamDescription.Shards"),
+    paginator = list(input_token = "ExclusiveStartShardId", limit_key = "Limit", more_results = "StreamDescription.HasMoreShards", output_token = "StreamDescription.Shards[-1].ShardId", result_key = "StreamDescription.Shards", non_aggregate_keys = list( "StreamDescription.StreamARN", "StreamDescription.StreamName", "StreamDescription.StreamStatus", "StreamDescription.RetentionPeriodHours", "StreamDescription.EnhancedMonitoring", "StreamDescription.EncryptionType", "StreamDescription.KeyId", "StreamDescription.StreamCreationTimestamp")),
     stream_api = FALSE
   )
   input <- .kinesis$describe_stream_input(StreamName = StreamName, Limit = Limit, ExclusiveStartShardId = ExclusiveStartShardId, StreamARN = StreamARN)
@@ -1552,7 +1563,7 @@ kinesis_list_shards <- function(StreamName = NULL, NextToken = NULL, ExclusiveSt
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Shards"),
     stream_api = FALSE
   )
   input <- .kinesis$list_shards_input(StreamName = StreamName, NextToken = NextToken, ExclusiveStartShardId = ExclusiveStartShardId, MaxResults = MaxResults, StreamCreationTimestamp = StreamCreationTimestamp, ShardFilter = ShardFilter, StreamARN = StreamARN)
@@ -1661,7 +1672,7 @@ kinesis_list_stream_consumers <- function(StreamARN, NextToken = NULL, MaxResult
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Consumers"),
     stream_api = FALSE
   )
   input <- .kinesis$list_stream_consumers_input(StreamARN = StreamARN, NextToken = NextToken, MaxResults = MaxResults, StreamCreationTimestamp = StreamCreationTimestamp)
@@ -2304,17 +2315,18 @@ kinesis_put_resource_policy <- function(ResourceARN, Policy) {
 #'
 #' @description
 #' Registers a consumer with a Kinesis data stream. When you use this
-#' operation, the consumer you register can then call SubscribeToShard to
-#' receive data from the stream using enhanced fan-out, at a rate of up to
-#' 2 MiB per second for every shard you subscribe to. This rate is
-#' unaffected by the total number of consumers that read from the same
-#' stream.
+#' operation, the consumer you register can then call
+#' [`subscribe_to_shard`][kinesis_subscribe_to_shard] to receive data from
+#' the stream using enhanced fan-out, at a rate of up to 2 MiB per second
+#' for every shard you subscribe to. This rate is unaffected by the total
+#' number of consumers that read from the same stream.
 #' 
 #' You can register up to 20 consumers per stream. A given consumer can
 #' only be registered with one stream at a time.
 #' 
-#' For an example of how to use this operations, see Enhanced Fan-Out Using
-#' the Kinesis Data Streams API.
+#' For an example of how to use this operation, see [Enhanced Fan-Out Using
+#' the Kinesis Data Streams
+#' API](https://docs.aws.amazon.com/streams/latest/dev/building-enhanced-consumers-api.html).
 #' 
 #' The use of this operation has a limit of five transactions per second
 #' per account. Also, only 5 consumers can be created simultaneously. In
@@ -2747,6 +2759,157 @@ kinesis_stop_stream_encryption <- function(StreamName = NULL, EncryptionType, Ke
   return(response)
 }
 .kinesis$operations$stop_stream_encryption <- kinesis_stop_stream_encryption
+
+#' This operation establishes an HTTP/2 connection between the consumer you
+#' specify in the ConsumerARN parameter and the shard you specify in the
+#' ShardId parameter
+#'
+#' @description
+#' This operation establishes an HTTP/2 connection between the consumer you
+#' specify in the `ConsumerARN` parameter and the shard you specify in the
+#' `ShardId` parameter. After the connection is successfully established,
+#' Kinesis Data Streams pushes records from the shard to the consumer over
+#' this connection. Before you call this operation, call
+#' [`register_stream_consumer`][kinesis_register_stream_consumer] to
+#' register the consumer with Kinesis Data Streams.
+#' 
+#' When the [`subscribe_to_shard`][kinesis_subscribe_to_shard] call
+#' succeeds, your consumer starts receiving events of type
+#' SubscribeToShardEvent over the HTTP/2 connection for up to 5 minutes,
+#' after which time you need to call
+#' [`subscribe_to_shard`][kinesis_subscribe_to_shard] again to renew the
+#' subscription if you want to continue to receive records.
+#' 
+#' You can make one call to
+#' [`subscribe_to_shard`][kinesis_subscribe_to_shard] per second per
+#' registered consumer per shard. For example, if you have a 4000 shard
+#' stream and two registered stream consumers, you can make one
+#' [`subscribe_to_shard`][kinesis_subscribe_to_shard] request per second
+#' for each combination of shard and registered consumer, allowing you to
+#' subscribe both consumers to all 4000 shards in one second.
+#' 
+#' If you call [`subscribe_to_shard`][kinesis_subscribe_to_shard] again
+#' with the same `ConsumerARN` and `ShardId` within 5 seconds of a
+#' successful call, you'll get a `ResourceInUseException`. If you call
+#' [`subscribe_to_shard`][kinesis_subscribe_to_shard] 5 seconds or more
+#' after a successful call, the second call takes over the subscription and
+#' the previous connection expires or fails with a
+#' `ResourceInUseException`.
+#' 
+#' For an example of how to use this operation, see [Enhanced Fan-Out Using
+#' the Kinesis Data Streams
+#' API](https://docs.aws.amazon.com/streams/latest/dev/building-enhanced-consumers-api.html).
+#'
+#' @usage
+#' kinesis_subscribe_to_shard(ConsumerARN, ShardId, StartingPosition)
+#'
+#' @param ConsumerARN &#91;required&#93; For this parameter, use the value you obtained when you called
+#' [`register_stream_consumer`][kinesis_register_stream_consumer].
+#' @param ShardId &#91;required&#93; The ID of the shard you want to subscribe to. To see a list of all the
+#' shards for a given stream, use [`list_shards`][kinesis_list_shards].
+#' @param StartingPosition &#91;required&#93; The starting position in the data stream from which to start streaming.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EventStream = list(
+#'     SubscribeToShardEvent = list(
+#'       Records = list(
+#'         list(
+#'           SequenceNumber = "string",
+#'           ApproximateArrivalTimestamp = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           Data = raw,
+#'           PartitionKey = "string",
+#'           EncryptionType = "NONE"|"KMS"
+#'         )
+#'       ),
+#'       ContinuationSequenceNumber = "string",
+#'       MillisBehindLatest = 123,
+#'       ChildShards = list(
+#'         list(
+#'           ShardId = "string",
+#'           ParentShards = list(
+#'             "string"
+#'           ),
+#'           HashKeyRange = list(
+#'             StartingHashKey = "string",
+#'             EndingHashKey = "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     ResourceNotFoundException = list(
+#'       message = "string"
+#'     ),
+#'     ResourceInUseException = list(
+#'       message = "string"
+#'     ),
+#'     KMSDisabledException = list(
+#'       message = "string"
+#'     ),
+#'     KMSInvalidStateException = list(
+#'       message = "string"
+#'     ),
+#'     KMSAccessDeniedException = list(
+#'       message = "string"
+#'     ),
+#'     KMSNotFoundException = list(
+#'       message = "string"
+#'     ),
+#'     KMSOptInRequired = list(
+#'       message = "string"
+#'     ),
+#'     KMSThrottlingException = list(
+#'       message = "string"
+#'     ),
+#'     InternalFailureException = list(
+#'       message = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$subscribe_to_shard(
+#'   ConsumerARN = "string",
+#'   ShardId = "string",
+#'   StartingPosition = list(
+#'     Type = "AT_SEQUENCE_NUMBER"|"AFTER_SEQUENCE_NUMBER"|"TRIM_HORIZON"|"LATEST"|"AT_TIMESTAMP",
+#'     SequenceNumber = "string",
+#'     Timestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kinesis_subscribe_to_shard
+#'
+#' @aliases kinesis_subscribe_to_shard
+kinesis_subscribe_to_shard <- function(ConsumerARN, ShardId, StartingPosition) {
+  op <- new_operation(
+    name = "SubscribeToShard",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = TRUE
+  )
+  input <- .kinesis$subscribe_to_shard_input(ConsumerARN = ConsumerARN, ShardId = ShardId, StartingPosition = StartingPosition)
+  output <- .kinesis$subscribe_to_shard_output()
+  config <- get_config()
+  svc <- .kinesis$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kinesis$operations$subscribe_to_shard <- kinesis_subscribe_to_shard
 
 #' Updates the shard count of the specified stream to the specified number
 #' of shards

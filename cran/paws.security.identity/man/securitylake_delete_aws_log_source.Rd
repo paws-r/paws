@@ -2,8 +2,8 @@
 % Please edit documentation in R/securitylake_operations.R
 \name{securitylake_delete_aws_log_source}
 \alias{securitylake_delete_aws_log_source}
-\title{Removes a natively supported Amazon Web Service as an Amazon Security
-Lake source}
+\title{Removes a natively supported Amazon Web Services service as an Amazon
+Security Lake source}
 \usage{
 securitylake_delete_aws_log_source(sources)
 }
@@ -12,7 +12,7 @@ securitylake_delete_aws_log_source(sources)
 a source in Security Lake.}
 }
 \description{
-Removes a natively supported Amazon Web Service as an Amazon Security Lake source. You can remove a source for one or more Regions. When you remove the source, Security Lake stops collecting data from that source in the specified Regions and accounts, and subscribers can no longer consume new data from the source. However, subscribers can still consume data that Security Lake collected from the source before removal.
+Removes a natively supported Amazon Web Services service as an Amazon Security Lake source. You can remove a source for one or more Regions. When you remove the source, Security Lake stops collecting data from that source in the specified Regions and accounts, and subscribers can no longer consume new data from the source. However, subscribers can still consume data that Security Lake collected from the source before removal.
 
 See \url{https://www.paws-r-sdk.com/docs/securitylake_delete_aws_log_source/} for full documentation.
 }

@@ -3,32 +3,32 @@
 #' @include firehose_service.R
 NULL
 
-#' Creates a Firehose delivery stream
+#' Creates a Firehose stream
 #'
 #' @description
-#' Creates a Firehose delivery stream.
+#' Creates a Firehose stream.
 #' 
-#' By default, you can create up to 50 delivery streams per Amazon Web
+#' By default, you can create up to 50 Firehose streams per Amazon Web
 #' Services Region.
 #' 
 #' This is an asynchronous operation that immediately returns. The initial
-#' status of the delivery stream is `CREATING`. After the delivery stream
+#' status of the Firehose stream is `CREATING`. After the Firehose stream
 #' is created, its status is `ACTIVE` and it now accepts data. If the
-#' delivery stream creation fails, the status transitions to
+#' Firehose stream creation fails, the status transitions to
 #' `CREATING_FAILED`. Attempts to send data to a delivery stream that is
 #' not in the `ACTIVE` state cause an exception. To check the state of a
-#' delivery stream, use
+#' Firehose stream, use
 #' [`describe_delivery_stream`][firehose_describe_delivery_stream].
 #' 
-#' If the status of a delivery stream is `CREATING_FAILED`, this status
+#' If the status of a Firehose stream is `CREATING_FAILED`, this status
 #' doesn't change, and you can't invoke
 #' [`create_delivery_stream`][firehose_create_delivery_stream] again on it.
 #' However, you can invoke the
 #' [`delete_delivery_stream`][firehose_delete_delivery_stream] operation to
 #' delete it.
 #' 
-#' A Firehose delivery stream can be configured to receive records directly
-#' from providers using [`put_record`][firehose_put_record] or
+#' A Firehose stream can be configured to receive records directly from
+#' providers using [`put_record`][firehose_put_record] or
 #' [`put_record_batch`][firehose_put_record_batch], or it can be configured
 #' to use an existing Kinesis stream as its source. To specify a Kinesis
 #' data stream as input, set the `DeliveryStreamType` parameter to
@@ -36,14 +36,14 @@ NULL
 #' Name (ARN) and role ARN in the `KinesisStreamSourceConfiguration`
 #' parameter.
 #' 
-#' To create a delivery stream with server-side encryption (SSE) enabled,
+#' To create a Firehose stream with server-side encryption (SSE) enabled,
 #' include DeliveryStreamEncryptionConfigurationInput in your request. This
 #' is optional. You can also invoke
 #' [`start_delivery_stream_encryption`][firehose_start_delivery_stream_encryption]
-#' to turn on SSE for an existing delivery stream that doesn't have SSE
+#' to turn on SSE for an existing Firehose stream that doesn't have SSE
 #' enabled.
 #' 
-#' A delivery stream is configured with a single destination, such as
+#' A Firehose stream is configured with a single destination, such as
 #' Amazon Simple Storage Service (Amazon S3), Amazon Redshift, Amazon
 #' OpenSearch Service, Amazon OpenSearch Serverless, Splunk, and any custom
 #' HTTP endpoint or HTTP endpoints owned by or supported by third-party
@@ -100,21 +100,21 @@ NULL
 #'   SplunkDestinationConfiguration, HttpEndpointDestinationConfiguration,
 #'   Tags, AmazonOpenSearchServerlessDestinationConfiguration,
 #'   MSKSourceConfiguration, SnowflakeDestinationConfiguration,
-#'   IcebergDestinationConfiguration)
+#'   IcebergDestinationConfiguration, DatabaseSourceConfiguration)
 #'
-#' @param DeliveryStreamName &#91;required&#93; The name of the delivery stream. This name must be unique per Amazon Web
-#' Services account in the same Amazon Web Services Region. If the delivery
+#' @param DeliveryStreamName &#91;required&#93; The name of the Firehose stream. This name must be unique per Amazon Web
+#' Services account in the same Amazon Web Services Region. If the Firehose
 #' streams are in different accounts or different Regions, you can have
-#' multiple delivery streams with the same name.
-#' @param DeliveryStreamType The delivery stream type. This parameter can be one of the following
+#' multiple Firehose streams with the same name.
+#' @param DeliveryStreamType The Firehose stream type. This parameter can be one of the following
 #' values:
 #' 
-#' -   `DirectPut`: Provider applications access the delivery stream
+#' -   `DirectPut`: Provider applications access the Firehose stream
 #'     directly.
 #' 
-#' -   `KinesisStreamAsSource`: The delivery stream uses a Kinesis data
+#' -   `KinesisStreamAsSource`: The Firehose stream uses a Kinesis data
 #'     stream as a source.
-#' @param KinesisStreamSourceConfiguration When a Kinesis data stream is used as the source for the delivery
+#' @param KinesisStreamSourceConfiguration When a Kinesis data stream is used as the source for the Firehose
 #' stream, a KinesisStreamSourceConfiguration containing the Kinesis data
 #' stream Amazon Resource Name (ARN) and the role ARN for the source
 #' stream.
@@ -131,23 +131,23 @@ NULL
 #' @param SplunkDestinationConfiguration The destination in Splunk. You can specify only one destination.
 #' @param HttpEndpointDestinationConfiguration Enables configuring Kinesis Firehose to deliver data to any HTTP
 #' endpoint destination. You can specify only one destination.
-#' @param Tags A set of tags to assign to the delivery stream. A tag is a key-value
+#' @param Tags A set of tags to assign to the Firehose stream. A tag is a key-value
 #' pair that you can define and assign to Amazon Web Services resources.
 #' Tags are metadata. For example, you can add friendly names and
 #' descriptions or other types of information that can help you distinguish
-#' the delivery stream. For more information about tags, see [Using Cost
+#' the Firehose stream. For more information about tags, see [Using Cost
 #' Allocation
 #' Tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html)
 #' in the Amazon Web Services Billing and Cost Management User Guide.
 #' 
-#' You can specify up to 50 tags when creating a delivery stream.
+#' You can specify up to 50 tags when creating a Firehose stream.
 #' 
 #' If you specify tags in the
 #' [`create_delivery_stream`][firehose_create_delivery_stream] action,
 #' Amazon Data Firehose performs an additional authorization on the
 #' `firehose:TagDeliveryStream` action to verify if users have permissions
 #' to create tags. If you do not provide this permission, requests to
-#' create new Firehose delivery streams with IAM resource tags will fail
+#' create new Firehose Firehose streams with IAM resource tags will fail
 #' with an `AccessDeniedException` such as following.
 #' 
 #' **AccessDeniedException**
@@ -164,8 +164,7 @@ NULL
 #' @param MSKSourceConfiguration 
 #' @param SnowflakeDestinationConfiguration Configure Snowflake destination
 #' @param IcebergDestinationConfiguration Configure Apache Iceberg Tables destination.
-#' 
-#' Amazon Data Firehose is in preview release and is subject to change.
+#' @param DatabaseSourceConfiguration Amazon Data Firehose is in preview release and is subject to change.
 #'
 #' @return
 #' A list with the following syntax:
@@ -179,7 +178,7 @@ NULL
 #' ```
 #' svc$create_delivery_stream(
 #'   DeliveryStreamName = "string",
-#'   DeliveryStreamType = "DirectPut"|"KinesisStreamAsSource"|"MSKAsSource",
+#'   DeliveryStreamType = "DirectPut"|"KinesisStreamAsSource"|"MSKAsSource"|"DatabaseAsSource",
 #'   KinesisStreamSourceConfiguration = list(
 #'     KinesisStreamARN = "string",
 #'     RoleARN = "string"
@@ -844,8 +843,21 @@ NULL
 #'         UniqueKeys = list(
 #'           "string"
 #'         ),
+#'         PartitionSpec = list(
+#'           Identity = list(
+#'             list(
+#'               SourceName = "string"
+#'             )
+#'           )
+#'         ),
 #'         S3ErrorOutputPrefix = "string"
 #'       )
+#'     ),
+#'     SchemaEvolutionConfiguration = list(
+#'       Enabled = TRUE|FALSE
+#'     ),
+#'     TableCreationConfiguration = list(
+#'       Enabled = TRUE|FALSE
 #'     ),
 #'     BufferingHints = list(
 #'       SizeInMBs = 123,
@@ -876,7 +888,8 @@ NULL
 #'     ),
 #'     RoleARN = "string",
 #'     CatalogConfiguration = list(
-#'       CatalogARN = "string"
+#'       CatalogARN = "string",
+#'       WarehouseLocation = "string"
 #'     ),
 #'     S3Configuration = list(
 #'       RoleARN = "string",
@@ -900,6 +913,50 @@ NULL
 #'         LogStreamName = "string"
 #'       )
 #'     )
+#'   ),
+#'   DatabaseSourceConfiguration = list(
+#'     Type = "MySQL"|"PostgreSQL",
+#'     Endpoint = "string",
+#'     Port = 123,
+#'     SSLMode = "Disabled"|"Enabled",
+#'     Databases = list(
+#'       Include = list(
+#'         "string"
+#'       ),
+#'       Exclude = list(
+#'         "string"
+#'       )
+#'     ),
+#'     Tables = list(
+#'       Include = list(
+#'         "string"
+#'       ),
+#'       Exclude = list(
+#'         "string"
+#'       )
+#'     ),
+#'     Columns = list(
+#'       Include = list(
+#'         "string"
+#'       ),
+#'       Exclude = list(
+#'         "string"
+#'       )
+#'     ),
+#'     SurrogateKeys = list(
+#'       "string"
+#'     ),
+#'     SnapshotWatermarkTable = "string",
+#'     DatabaseSourceAuthenticationConfiguration = list(
+#'       SecretsManagerConfiguration = list(
+#'         SecretARN = "string",
+#'         RoleARN = "string",
+#'         Enabled = TRUE|FALSE
+#'       )
+#'     ),
+#'     DatabaseSourceVPCConfiguration = list(
+#'       VpcEndpointServiceName = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -909,7 +966,7 @@ NULL
 #' @rdname firehose_create_delivery_stream
 #'
 #' @aliases firehose_create_delivery_stream
-firehose_create_delivery_stream <- function(DeliveryStreamName, DeliveryStreamType = NULL, KinesisStreamSourceConfiguration = NULL, DeliveryStreamEncryptionConfigurationInput = NULL, S3DestinationConfiguration = NULL, ExtendedS3DestinationConfiguration = NULL, RedshiftDestinationConfiguration = NULL, ElasticsearchDestinationConfiguration = NULL, AmazonopensearchserviceDestinationConfiguration = NULL, SplunkDestinationConfiguration = NULL, HttpEndpointDestinationConfiguration = NULL, Tags = NULL, AmazonOpenSearchServerlessDestinationConfiguration = NULL, MSKSourceConfiguration = NULL, SnowflakeDestinationConfiguration = NULL, IcebergDestinationConfiguration = NULL) {
+firehose_create_delivery_stream <- function(DeliveryStreamName, DeliveryStreamType = NULL, KinesisStreamSourceConfiguration = NULL, DeliveryStreamEncryptionConfigurationInput = NULL, S3DestinationConfiguration = NULL, ExtendedS3DestinationConfiguration = NULL, RedshiftDestinationConfiguration = NULL, ElasticsearchDestinationConfiguration = NULL, AmazonopensearchserviceDestinationConfiguration = NULL, SplunkDestinationConfiguration = NULL, HttpEndpointDestinationConfiguration = NULL, Tags = NULL, AmazonOpenSearchServerlessDestinationConfiguration = NULL, MSKSourceConfiguration = NULL, SnowflakeDestinationConfiguration = NULL, IcebergDestinationConfiguration = NULL, DatabaseSourceConfiguration = NULL) {
   op <- new_operation(
     name = "CreateDeliveryStream",
     http_method = "POST",
@@ -918,7 +975,7 @@ firehose_create_delivery_stream <- function(DeliveryStreamName, DeliveryStreamTy
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .firehose$create_delivery_stream_input(DeliveryStreamName = DeliveryStreamName, DeliveryStreamType = DeliveryStreamType, KinesisStreamSourceConfiguration = KinesisStreamSourceConfiguration, DeliveryStreamEncryptionConfigurationInput = DeliveryStreamEncryptionConfigurationInput, S3DestinationConfiguration = S3DestinationConfiguration, ExtendedS3DestinationConfiguration = ExtendedS3DestinationConfiguration, RedshiftDestinationConfiguration = RedshiftDestinationConfiguration, ElasticsearchDestinationConfiguration = ElasticsearchDestinationConfiguration, AmazonopensearchserviceDestinationConfiguration = AmazonopensearchserviceDestinationConfiguration, SplunkDestinationConfiguration = SplunkDestinationConfiguration, HttpEndpointDestinationConfiguration = HttpEndpointDestinationConfiguration, Tags = Tags, AmazonOpenSearchServerlessDestinationConfiguration = AmazonOpenSearchServerlessDestinationConfiguration, MSKSourceConfiguration = MSKSourceConfiguration, SnowflakeDestinationConfiguration = SnowflakeDestinationConfiguration, IcebergDestinationConfiguration = IcebergDestinationConfiguration)
+  input <- .firehose$create_delivery_stream_input(DeliveryStreamName = DeliveryStreamName, DeliveryStreamType = DeliveryStreamType, KinesisStreamSourceConfiguration = KinesisStreamSourceConfiguration, DeliveryStreamEncryptionConfigurationInput = DeliveryStreamEncryptionConfigurationInput, S3DestinationConfiguration = S3DestinationConfiguration, ExtendedS3DestinationConfiguration = ExtendedS3DestinationConfiguration, RedshiftDestinationConfiguration = RedshiftDestinationConfiguration, ElasticsearchDestinationConfiguration = ElasticsearchDestinationConfiguration, AmazonopensearchserviceDestinationConfiguration = AmazonopensearchserviceDestinationConfiguration, SplunkDestinationConfiguration = SplunkDestinationConfiguration, HttpEndpointDestinationConfiguration = HttpEndpointDestinationConfiguration, Tags = Tags, AmazonOpenSearchServerlessDestinationConfiguration = AmazonOpenSearchServerlessDestinationConfiguration, MSKSourceConfiguration = MSKSourceConfiguration, SnowflakeDestinationConfiguration = SnowflakeDestinationConfiguration, IcebergDestinationConfiguration = IcebergDestinationConfiguration, DatabaseSourceConfiguration = DatabaseSourceConfiguration)
   output <- .firehose$create_delivery_stream_output()
   config <- get_config()
   svc <- .firehose$service(config, op)
@@ -928,26 +985,26 @@ firehose_create_delivery_stream <- function(DeliveryStreamName, DeliveryStreamTy
 }
 .firehose$operations$create_delivery_stream <- firehose_create_delivery_stream
 
-#' Deletes a delivery stream and its data
+#' Deletes a Firehose stream and its data
 #'
 #' @description
-#' Deletes a delivery stream and its data.
+#' Deletes a Firehose stream and its data.
 #' 
-#' You can delete a delivery stream only if it is in one of the following
+#' You can delete a Firehose stream only if it is in one of the following
 #' states: `ACTIVE`, `DELETING`, `CREATING_FAILED`, or `DELETING_FAILED`.
-#' You can't delete a delivery stream that is in the `CREATING` state. To
-#' check the state of a delivery stream, use
+#' You can't delete a Firehose stream that is in the `CREATING` state. To
+#' check the state of a Firehose stream, use
 #' [`describe_delivery_stream`][firehose_describe_delivery_stream].
 #' 
 #' DeleteDeliveryStream is an asynchronous API. When an API request to
-#' DeleteDeliveryStream succeeds, the delivery stream is marked for
-#' deletion, and it goes into the `DELETING` state.While the delivery
+#' DeleteDeliveryStream succeeds, the Firehose stream is marked for
+#' deletion, and it goes into the `DELETING` state.While the Firehose
 #' stream is in the `DELETING` state, the service might continue to accept
 #' records, but it doesn't make any guarantees with respect to delivering
 #' the data. Therefore, as a best practice, first stop any applications
-#' that are sending records before you delete a delivery stream.
+#' that are sending records before you delete a Firehose stream.
 #' 
-#' Removal of a delivery stream that is in the `DELETING` state is a low
+#' Removal of a Firehose stream that is in the `DELETING` state is a low
 #' priority operation for the service. A stream may remain in the
 #' `DELETING` state for several minutes. Therefore, as a best practice,
 #' applications should not wait for streams in the `DELETING` state to be
@@ -956,8 +1013,8 @@ firehose_create_delivery_stream <- function(DeliveryStreamName, DeliveryStreamTy
 #' @usage
 #' firehose_delete_delivery_stream(DeliveryStreamName, AllowForceDelete)
 #'
-#' @param DeliveryStreamName &#91;required&#93; The name of the delivery stream.
-#' @param AllowForceDelete Set this to true if you want to delete the delivery stream even if
+#' @param DeliveryStreamName &#91;required&#93; The name of the Firehose stream.
+#' @param AllowForceDelete Set this to true if you want to delete the Firehose stream even if
 #' Firehose is unable to retire the grant for the CMK. Firehose might be
 #' unable to retire the grant due to a customer error, such as when the CMK
 #' or the grant are in an invalid state. If you force deletion, you can
@@ -1004,16 +1061,16 @@ firehose_delete_delivery_stream <- function(DeliveryStreamName, AllowForceDelete
 }
 .firehose$operations$delete_delivery_stream <- firehose_delete_delivery_stream
 
-#' Describes the specified delivery stream and its status
+#' Describes the specified Firehose stream and its status
 #'
 #' @description
-#' Describes the specified delivery stream and its status. For example,
-#' after your delivery stream is created, call
+#' Describes the specified Firehose stream and its status. For example,
+#' after your Firehose stream is created, call
 #' [`describe_delivery_stream`][firehose_describe_delivery_stream] to see
-#' whether the delivery stream is `ACTIVE` and therefore ready for data to
+#' whether the Firehose stream is `ACTIVE` and therefore ready for data to
 #' be sent to it.
 #' 
-#' If the status of a delivery stream is `CREATING_FAILED`, this status
+#' If the status of a Firehose stream is `CREATING_FAILED`, this status
 #' doesn't change, and you can't invoke
 #' [`create_delivery_stream`][firehose_create_delivery_stream] again on it.
 #' However, you can invoke the
@@ -1026,11 +1083,11 @@ firehose_delete_delivery_stream <- function(DeliveryStreamName, AllowForceDelete
 #' firehose_describe_delivery_stream(DeliveryStreamName, Limit,
 #'   ExclusiveStartDestinationId)
 #'
-#' @param DeliveryStreamName &#91;required&#93; The name of the delivery stream.
+#' @param DeliveryStreamName &#91;required&#93; The name of the Firehose stream.
 #' @param Limit The limit on the number of destinations to return. You can have one
-#' destination per delivery stream.
+#' destination per Firehose stream.
 #' @param ExclusiveStartDestinationId The ID of the destination to start returning the destination
-#' information. Firehose supports one destination per delivery stream.
+#' information. Firehose supports one destination per Firehose stream.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1041,7 +1098,7 @@ firehose_delete_delivery_stream <- function(DeliveryStreamName, AllowForceDelete
 #'     DeliveryStreamARN = "string",
 #'     DeliveryStreamStatus = "CREATING"|"CREATING_FAILED"|"DELETING"|"DELETING_FAILED"|"ACTIVE",
 #'     FailureDescription = list(
-#'       Type = "RETIRE_KMS_GRANT_FAILED"|"CREATE_KMS_GRANT_FAILED"|"KMS_ACCESS_DENIED"|"DISABLED_KMS_KEY"|"INVALID_KMS_KEY"|"KMS_KEY_NOT_FOUND"|"KMS_OPT_IN_REQUIRED"|"CREATE_ENI_FAILED"|"DELETE_ENI_FAILED"|"SUBNET_NOT_FOUND"|"SECURITY_GROUP_NOT_FOUND"|"ENI_ACCESS_DENIED"|"SUBNET_ACCESS_DENIED"|"SECURITY_GROUP_ACCESS_DENIED"|"UNKNOWN_ERROR",
+#'       Type = "VPC_ENDPOINT_SERVICE_NAME_NOT_FOUND"|"VPC_INTERFACE_ENDPOINT_SERVICE_ACCESS_DENIED"|"RETIRE_KMS_GRANT_FAILED"|"CREATE_KMS_GRANT_FAILED"|"KMS_ACCESS_DENIED"|"DISABLED_KMS_KEY"|"INVALID_KMS_KEY"|"KMS_KEY_NOT_FOUND"|"KMS_OPT_IN_REQUIRED"|"CREATE_ENI_FAILED"|"DELETE_ENI_FAILED"|"SUBNET_NOT_FOUND"|"SECURITY_GROUP_NOT_FOUND"|"ENI_ACCESS_DENIED"|"SUBNET_ACCESS_DENIED"|"SECURITY_GROUP_ACCESS_DENIED"|"UNKNOWN_ERROR",
 #'       Details = "string"
 #'     ),
 #'     DeliveryStreamEncryptionConfiguration = list(
@@ -1049,11 +1106,11 @@ firehose_delete_delivery_stream <- function(DeliveryStreamName, AllowForceDelete
 #'       KeyType = "AWS_OWNED_CMK"|"CUSTOMER_MANAGED_CMK",
 #'       Status = "ENABLED"|"ENABLING"|"ENABLING_FAILED"|"DISABLED"|"DISABLING"|"DISABLING_FAILED",
 #'       FailureDescription = list(
-#'         Type = "RETIRE_KMS_GRANT_FAILED"|"CREATE_KMS_GRANT_FAILED"|"KMS_ACCESS_DENIED"|"DISABLED_KMS_KEY"|"INVALID_KMS_KEY"|"KMS_KEY_NOT_FOUND"|"KMS_OPT_IN_REQUIRED"|"CREATE_ENI_FAILED"|"DELETE_ENI_FAILED"|"SUBNET_NOT_FOUND"|"SECURITY_GROUP_NOT_FOUND"|"ENI_ACCESS_DENIED"|"SUBNET_ACCESS_DENIED"|"SECURITY_GROUP_ACCESS_DENIED"|"UNKNOWN_ERROR",
+#'         Type = "VPC_ENDPOINT_SERVICE_NAME_NOT_FOUND"|"VPC_INTERFACE_ENDPOINT_SERVICE_ACCESS_DENIED"|"RETIRE_KMS_GRANT_FAILED"|"CREATE_KMS_GRANT_FAILED"|"KMS_ACCESS_DENIED"|"DISABLED_KMS_KEY"|"INVALID_KMS_KEY"|"KMS_KEY_NOT_FOUND"|"KMS_OPT_IN_REQUIRED"|"CREATE_ENI_FAILED"|"DELETE_ENI_FAILED"|"SUBNET_NOT_FOUND"|"SECURITY_GROUP_NOT_FOUND"|"ENI_ACCESS_DENIED"|"SUBNET_ACCESS_DENIED"|"SECURITY_GROUP_ACCESS_DENIED"|"UNKNOWN_ERROR",
 #'         Details = "string"
 #'       )
 #'     ),
-#'     DeliveryStreamType = "DirectPut"|"KinesisStreamAsSource"|"MSKAsSource",
+#'     DeliveryStreamType = "DirectPut"|"KinesisStreamAsSource"|"MSKAsSource"|"DatabaseAsSource",
 #'     VersionId = "string",
 #'     CreateTimestamp = as.POSIXct(
 #'       "2015-01-01"
@@ -1081,6 +1138,65 @@ firehose_delete_delivery_stream <- function(DeliveryStreamName, AllowForceDelete
 #'         ),
 #'         ReadFromTimestamp = as.POSIXct(
 #'           "2015-01-01"
+#'         )
+#'       ),
+#'       DatabaseSourceDescription = list(
+#'         Type = "MySQL"|"PostgreSQL",
+#'         Endpoint = "string",
+#'         Port = 123,
+#'         SSLMode = "Disabled"|"Enabled",
+#'         Databases = list(
+#'           Include = list(
+#'             "string"
+#'           ),
+#'           Exclude = list(
+#'             "string"
+#'           )
+#'         ),
+#'         Tables = list(
+#'           Include = list(
+#'             "string"
+#'           ),
+#'           Exclude = list(
+#'             "string"
+#'           )
+#'         ),
+#'         Columns = list(
+#'           Include = list(
+#'             "string"
+#'           ),
+#'           Exclude = list(
+#'             "string"
+#'           )
+#'         ),
+#'         SurrogateKeys = list(
+#'           "string"
+#'         ),
+#'         SnapshotWatermarkTable = "string",
+#'         SnapshotInfo = list(
+#'           list(
+#'             Id = "string",
+#'             Table = "string",
+#'             RequestTimestamp = as.POSIXct(
+#'               "2015-01-01"
+#'             ),
+#'             RequestedBy = "USER"|"FIREHOSE",
+#'             Status = "IN_PROGRESS"|"COMPLETE"|"SUSPENDED",
+#'             FailureDescription = list(
+#'               Type = "VPC_ENDPOINT_SERVICE_NAME_NOT_FOUND"|"VPC_INTERFACE_ENDPOINT_SERVICE_ACCESS_DENIED"|"RETIRE_KMS_GRANT_FAILED"|"CREATE_KMS_GRANT_FAILED"|"KMS_ACCESS_DENIED"|"DISABLED_KMS_KEY"|"INVALID_KMS_KEY"|"KMS_KEY_NOT_FOUND"|"KMS_OPT_IN_REQUIRED"|"CREATE_ENI_FAILED"|"DELETE_ENI_FAILED"|"SUBNET_NOT_FOUND"|"SECURITY_GROUP_NOT_FOUND"|"ENI_ACCESS_DENIED"|"SUBNET_ACCESS_DENIED"|"SECURITY_GROUP_ACCESS_DENIED"|"UNKNOWN_ERROR",
+#'               Details = "string"
+#'             )
+#'           )
+#'         ),
+#'         DatabaseSourceAuthenticationConfiguration = list(
+#'           SecretsManagerConfiguration = list(
+#'             SecretARN = "string",
+#'             RoleARN = "string",
+#'             Enabled = TRUE|FALSE
+#'           )
+#'         ),
+#'         DatabaseSourceVPCConfiguration = list(
+#'           VpcEndpointServiceName = "string"
 #'         )
 #'       )
 #'     ),
@@ -1725,8 +1841,21 @@ firehose_delete_delivery_stream <- function(DeliveryStreamName, AllowForceDelete
 #'               UniqueKeys = list(
 #'                 "string"
 #'               ),
+#'               PartitionSpec = list(
+#'                 Identity = list(
+#'                   list(
+#'                     SourceName = "string"
+#'                   )
+#'                 )
+#'               ),
 #'               S3ErrorOutputPrefix = "string"
 #'             )
+#'           ),
+#'           SchemaEvolutionConfiguration = list(
+#'             Enabled = TRUE|FALSE
+#'           ),
+#'           TableCreationConfiguration = list(
+#'             Enabled = TRUE|FALSE
 #'           ),
 #'           BufferingHints = list(
 #'             SizeInMBs = 123,
@@ -1757,7 +1886,8 @@ firehose_delete_delivery_stream <- function(DeliveryStreamName, AllowForceDelete
 #'           ),
 #'           RoleARN = "string",
 #'           CatalogConfiguration = list(
-#'             CatalogARN = "string"
+#'             CatalogARN = "string",
+#'             WarehouseLocation = "string"
 #'           ),
 #'           S3DestinationDescription = list(
 #'             RoleARN = "string",
@@ -1822,39 +1952,39 @@ firehose_describe_delivery_stream <- function(DeliveryStreamName, Limit = NULL, 
 }
 .firehose$operations$describe_delivery_stream <- firehose_describe_delivery_stream
 
-#' Lists your delivery streams in alphabetical order of their names
+#' Lists your Firehose streams in alphabetical order of their names
 #'
 #' @description
-#' Lists your delivery streams in alphabetical order of their names.
+#' Lists your Firehose streams in alphabetical order of their names.
 #' 
-#' The number of delivery streams might be too large to return using a
+#' The number of Firehose streams might be too large to return using a
 #' single call to
 #' [`list_delivery_streams`][firehose_list_delivery_streams]. You can limit
-#' the number of delivery streams returned, using the `Limit` parameter. To
+#' the number of Firehose streams returned, using the `Limit` parameter. To
 #' determine whether there are more delivery streams to list, check the
 #' value of `HasMoreDeliveryStreams` in the output. If there are more
-#' delivery streams to list, you can request them by calling this operation
+#' Firehose streams to list, you can request them by calling this operation
 #' again and setting the `ExclusiveStartDeliveryStreamName` parameter to
-#' the name of the last delivery stream returned in the last call.
+#' the name of the last Firehose stream returned in the last call.
 #'
 #' @usage
 #' firehose_list_delivery_streams(Limit, DeliveryStreamType,
 #'   ExclusiveStartDeliveryStreamName)
 #'
-#' @param Limit The maximum number of delivery streams to list. The default value is 10.
-#' @param DeliveryStreamType The delivery stream type. This can be one of the following values:
+#' @param Limit The maximum number of Firehose streams to list. The default value is 10.
+#' @param DeliveryStreamType The Firehose stream type. This can be one of the following values:
 #' 
-#' -   `DirectPut`: Provider applications access the delivery stream
+#' -   `DirectPut`: Provider applications access the Firehose stream
 #'     directly.
 #' 
-#' -   `KinesisStreamAsSource`: The delivery stream uses a Kinesis data
+#' -   `KinesisStreamAsSource`: The Firehose stream uses a Kinesis data
 #'     stream as a source.
 #' 
-#' This parameter is optional. If this parameter is omitted, delivery
+#' This parameter is optional. If this parameter is omitted, Firehose
 #' streams of all types are returned.
-#' @param ExclusiveStartDeliveryStreamName The list of delivery streams returned by this call to
+#' @param ExclusiveStartDeliveryStreamName The list of Firehose streams returned by this call to
 #' [`list_delivery_streams`][firehose_list_delivery_streams] will start
-#' with the delivery stream whose name comes alphabetically immediately
+#' with the Firehose stream whose name comes alphabetically immediately
 #' after the name you specify in `ExclusiveStartDeliveryStreamName`.
 #'
 #' @return
@@ -1872,7 +2002,7 @@ firehose_describe_delivery_stream <- function(DeliveryStreamName, Limit = NULL, 
 #' ```
 #' svc$list_delivery_streams(
 #'   Limit = 123,
-#'   DeliveryStreamType = "DirectPut"|"KinesisStreamAsSource"|"MSKAsSource",
+#'   DeliveryStreamType = "DirectPut"|"KinesisStreamAsSource"|"MSKAsSource"|"DatabaseAsSource",
 #'   ExclusiveStartDeliveryStreamName = "string"
 #' )
 #' ```
@@ -1901,23 +2031,23 @@ firehose_list_delivery_streams <- function(Limit = NULL, DeliveryStreamType = NU
 }
 .firehose$operations$list_delivery_streams <- firehose_list_delivery_streams
 
-#' Lists the tags for the specified delivery stream
+#' Lists the tags for the specified Firehose stream
 #'
 #' @description
-#' Lists the tags for the specified delivery stream. This operation has a
+#' Lists the tags for the specified Firehose stream. This operation has a
 #' limit of five transactions per second per account.
 #'
 #' @usage
 #' firehose_list_tags_for_delivery_stream(DeliveryStreamName,
 #'   ExclusiveStartTagKey, Limit)
 #'
-#' @param DeliveryStreamName &#91;required&#93; The name of the delivery stream whose tags you want to list.
+#' @param DeliveryStreamName &#91;required&#93; The name of the Firehose stream whose tags you want to list.
 #' @param ExclusiveStartTagKey The key to use as the starting point for the list of tags. If you set
 #' this parameter,
 #' [`list_tags_for_delivery_stream`][firehose_list_tags_for_delivery_stream]
 #' gets all tags that occur after `ExclusiveStartTagKey`.
 #' @param Limit The number of tags to return. If this number is less than the total
-#' number of tags associated with the delivery stream, `HasMoreTags` is set
+#' number of tags associated with the Firehose stream, `HasMoreTags` is set
 #' to `true` in the response. To list additional tags, set
 #' `ExclusiveStartTagKey` to the last key in the response.
 #'
@@ -1968,34 +2098,41 @@ firehose_list_tags_for_delivery_stream <- function(DeliveryStreamName, Exclusive
 }
 .firehose$operations$list_tags_for_delivery_stream <- firehose_list_tags_for_delivery_stream
 
-#' Writes a single data record into an Amazon Firehose delivery stream
+#' Writes a single data record into an Firehose stream
 #'
 #' @description
-#' Writes a single data record into an Amazon Firehose delivery stream. To
-#' write multiple data records into a delivery stream, use
+#' Writes a single data record into an Firehose stream. To write multiple
+#' data records into a Firehose stream, use
 #' [`put_record_batch`][firehose_put_record_batch]. Applications using
 #' these operations are referred to as producers.
 #' 
-#' By default, each delivery stream can take in up to 2,000 transactions
+#' By default, each Firehose stream can take in up to 2,000 transactions
 #' per second, 5,000 records per second, or 5 MB per second. If you use
 #' [`put_record`][firehose_put_record] and
 #' [`put_record_batch`][firehose_put_record_batch], the limits are an
-#' aggregate across these two operations for each delivery stream. For more
+#' aggregate across these two operations for each Firehose stream. For more
 #' information about limits and how to request an increase, see [Amazon
 #' Firehose
 #' Limits](https://docs.aws.amazon.com/firehose/latest/dev/limits.html).
 #' 
 #' Firehose accumulates and publishes a particular metric for a customer
 #' account in one minute intervals. It is possible that the bursts of
-#' incoming bytes/records ingested to a delivery stream last only for a few
+#' incoming bytes/records ingested to a Firehose stream last only for a few
 #' seconds. Due to this, the actual spikes in the traffic might not be
 #' fully visible in the customer's 1 minute CloudWatch metrics.
 #' 
-#' You must specify the name of the delivery stream and the data record
+#' You must specify the name of the Firehose stream and the data record
 #' when using [`put_record`][firehose_put_record]. The data record consists
 #' of a data blob that can be up to 1,000 KiB in size, and any kind of
 #' data. For example, it can be a segment from a log file, geographic
 #' location data, website clickstream data, and so on.
+#' 
+#' For multi record de-aggregation, you can not put more than 500 records
+#' even if the data blob length is less than 1000 KiB. If you include more
+#' than 500 records, the request succeeds but the record de-aggregation
+#' doesn't work as expected and transformation lambda is invoked with the
+#' complete base64 encoded data blob instead of de-aggregated base64
+#' decoded records.
 #' 
 #' Firehose buffers records before delivering them to the destination. To
 #' disambiguate the data blobs at the destination, a common solution is to
@@ -2011,14 +2148,14 @@ firehose_list_tags_for_delivery_stream <- function(DeliveryStreamName, Exclusive
 #' If the [`put_record`][firehose_put_record] operation throws a
 #' `ServiceUnavailableException`, the API is automatically reinvoked
 #' (retried) 3 times. If the exception persists, it is possible that the
-#' throughput limits have been exceeded for the delivery stream.
+#' throughput limits have been exceeded for the Firehose stream.
 #' 
 #' Re-invoking the Put API operations (for example, PutRecord and
 #' PutRecordBatch) can result in data duplicates. For larger data assets,
 #' allow for a longer time out before retrying Put API operations.
 #' 
 #' Data records sent to Firehose are stored for 24 hours from the time they
-#' are added to a delivery stream as it tries to send the records to the
+#' are added to a Firehose stream as it tries to send the records to the
 #' destination. If the destination is unreachable for more than 24 hours,
 #' the data is no longer available.
 #' 
@@ -2029,7 +2166,7 @@ firehose_list_tags_for_delivery_stream <- function(DeliveryStreamName, Exclusive
 #' @usage
 #' firehose_put_record(DeliveryStreamName, Record)
 #'
-#' @param DeliveryStreamName &#91;required&#93; The name of the delivery stream.
+#' @param DeliveryStreamName &#91;required&#93; The name of the Firehose stream.
 #' @param Record &#91;required&#93; The record.
 #'
 #' @return
@@ -2075,20 +2212,20 @@ firehose_put_record <- function(DeliveryStreamName, Record) {
 }
 .firehose$operations$put_record <- firehose_put_record
 
-#' Writes multiple data records into a delivery stream in a single call,
+#' Writes multiple data records into a Firehose stream in a single call,
 #' which can achieve higher throughput per producer than when writing
 #' single records
 #'
 #' @description
-#' Writes multiple data records into a delivery stream in a single call,
+#' Writes multiple data records into a Firehose stream in a single call,
 #' which can achieve higher throughput per producer than when writing
-#' single records. To write single data records into a delivery stream, use
+#' single records. To write single data records into a Firehose stream, use
 #' [`put_record`][firehose_put_record]. Applications using these operations
 #' are referred to as producers.
 #' 
 #' Firehose accumulates and publishes a particular metric for a customer
 #' account in one minute intervals. It is possible that the bursts of
-#' incoming bytes/records ingested to a delivery stream last only for a few
+#' incoming bytes/records ingested to a Firehose stream last only for a few
 #' seconds. Due to this, the actual spikes in the traffic might not be
 #' fully visible in the customer's 1 minute CloudWatch metrics.
 #' 
@@ -2100,11 +2237,18 @@ firehose_put_record <- function(DeliveryStreamName, Record) {
 #' (before base64 encoding), up to a limit of 4 MB for the entire request.
 #' These limits cannot be changed.
 #' 
-#' You must specify the name of the delivery stream and the data record
+#' You must specify the name of the Firehose stream and the data record
 #' when using [`put_record`][firehose_put_record]. The data record consists
 #' of a data blob that can be up to 1,000 KB in size, and any kind of data.
 #' For example, it could be a segment from a log file, geographic location
 #' data, website clickstream data, and so on.
+#' 
+#' For multi record de-aggregation, you can not put more than 500 records
+#' even if the data blob length is less than 1000 KiB. If you include more
+#' than 500 records, the request succeeds but the record de-aggregation
+#' doesn't work as expected and transformation lambda is invoked with the
+#' complete base64 encoded data blob instead of de-aggregated base64
+#' decoded records.
 #' 
 #' Firehose buffers records before delivering them to the destination. To
 #' disambiguate the data blobs at the destination, a common solution is to
@@ -2145,14 +2289,14 @@ firehose_put_record <- function(DeliveryStreamName, Record) {
 #' If [`put_record_batch`][firehose_put_record_batch] throws
 #' `ServiceUnavailableException`, the API is automatically reinvoked
 #' (retried) 3 times. If the exception persists, it is possible that the
-#' throughput limits have been exceeded for the delivery stream.
+#' throughput limits have been exceeded for the Firehose stream.
 #' 
 #' Re-invoking the Put API operations (for example, PutRecord and
 #' PutRecordBatch) can result in data duplicates. For larger data assets,
 #' allow for a longer time out before retrying Put API operations.
 #' 
 #' Data records sent to Firehose are stored for 24 hours from the time they
-#' are added to a delivery stream as it attempts to send the records to the
+#' are added to a Firehose stream as it attempts to send the records to the
 #' destination. If the destination is unreachable for more than 24 hours,
 #' the data is no longer available.
 #' 
@@ -2163,7 +2307,7 @@ firehose_put_record <- function(DeliveryStreamName, Record) {
 #' @usage
 #' firehose_put_record_batch(DeliveryStreamName, Records)
 #'
-#' @param DeliveryStreamName &#91;required&#93; The name of the delivery stream.
+#' @param DeliveryStreamName &#91;required&#93; The name of the Firehose stream.
 #' @param Records &#91;required&#93; One or more records.
 #'
 #' @return
@@ -2218,29 +2362,29 @@ firehose_put_record_batch <- function(DeliveryStreamName, Records) {
 }
 .firehose$operations$put_record_batch <- firehose_put_record_batch
 
-#' Enables server-side encryption (SSE) for the delivery stream
+#' Enables server-side encryption (SSE) for the Firehose stream
 #'
 #' @description
-#' Enables server-side encryption (SSE) for the delivery stream.
+#' Enables server-side encryption (SSE) for the Firehose stream.
 #' 
 #' This operation is asynchronous. It returns immediately. When you invoke
 #' it, Firehose first sets the encryption status of the stream to
-#' `ENABLING`, and then to `ENABLED`. The encryption status of a delivery
+#' `ENABLING`, and then to `ENABLED`. The encryption status of a Firehose
 #' stream is the `Status` property in
 #' DeliveryStreamEncryptionConfiguration. If the operation fails, the
 #' encryption status changes to `ENABLING_FAILED`. You can continue to read
-#' and write data to your delivery stream while the encryption status is
+#' and write data to your Firehose stream while the encryption status is
 #' `ENABLING`, but the data is not encrypted. It can take up to 5 seconds
 #' after the encryption status changes to `ENABLED` before all records
-#' written to the delivery stream are encrypted. To find out whether a
+#' written to the Firehose stream are encrypted. To find out whether a
 #' record or a batch of records was encrypted, check the response elements
 #' PutRecordOutput$Encrypted and PutRecordBatchOutput$Encrypted,
 #' respectively.
 #' 
-#' To check the encryption status of a delivery stream, use
+#' To check the encryption status of a Firehose stream, use
 #' [`describe_delivery_stream`][firehose_describe_delivery_stream].
 #' 
-#' Even if encryption is currently enabled for a delivery stream, you can
+#' Even if encryption is currently enabled for a Firehose stream, you can
 #' still invoke this operation on it to change the ARN of the CMK or both
 #' its type and ARN. If you invoke this method to change the CMK, and the
 #' old CMK is of type `CUSTOMER_MANAGED_CMK`, Firehose schedules the grant
@@ -2253,36 +2397,36 @@ firehose_put_record_batch <- function(DeliveryStreamName, Records) {
 #' and [`create_delivery_stream`][firehose_create_delivery_stream] should
 #' not be called with session credentials that are more than 6 hours old.
 #' 
-#' If a delivery stream already has encryption enabled and then you invoke
+#' If a Firehose stream already has encryption enabled and then you invoke
 #' this operation to change the ARN of the CMK or both its type and ARN and
 #' you get `ENABLING_FAILED`, this only means that the attempt to change
 #' the CMK failed. In this case, encryption remains enabled with the old
 #' CMK.
 #' 
-#' If the encryption status of your delivery stream is `ENABLING_FAILED`,
+#' If the encryption status of your Firehose stream is `ENABLING_FAILED`,
 #' you can invoke this operation again with a valid CMK. The CMK must be
 #' enabled and the key policy mustn't explicitly deny the permission for
 #' Firehose to invoke KMS encrypt and decrypt operations.
 #' 
-#' You can enable SSE for a delivery stream only if it's a delivery stream
+#' You can enable SSE for a Firehose stream only if it's a Firehose stream
 #' that uses `DirectPut` as its source.
 #' 
 #' The
 #' [`start_delivery_stream_encryption`][firehose_start_delivery_stream_encryption]
 #' and
 #' [`stop_delivery_stream_encryption`][firehose_stop_delivery_stream_encryption]
-#' operations have a combined limit of 25 calls per delivery stream per 24
+#' operations have a combined limit of 25 calls per Firehose stream per 24
 #' hours. For example, you reach the limit if you call
 #' [`start_delivery_stream_encryption`][firehose_start_delivery_stream_encryption]
 #' 13 times and
 #' [`stop_delivery_stream_encryption`][firehose_stop_delivery_stream_encryption]
-#' 12 times for the same delivery stream in a 24-hour period.
+#' 12 times for the same Firehose stream in a 24-hour period.
 #'
 #' @usage
 #' firehose_start_delivery_stream_encryption(DeliveryStreamName,
 #'   DeliveryStreamEncryptionConfigurationInput)
 #'
-#' @param DeliveryStreamName &#91;required&#93; The name of the delivery stream for which you want to enable server-side
+#' @param DeliveryStreamName &#91;required&#93; The name of the Firehose stream for which you want to enable server-side
 #' encryption (SSE).
 #' @param DeliveryStreamEncryptionConfigurationInput Used to specify the type and Amazon Resource Name (ARN) of the KMS key
 #' needed for Server-Side Encryption (SSE).
@@ -2325,22 +2469,22 @@ firehose_start_delivery_stream_encryption <- function(DeliveryStreamName, Delive
 }
 .firehose$operations$start_delivery_stream_encryption <- firehose_start_delivery_stream_encryption
 
-#' Disables server-side encryption (SSE) for the delivery stream
+#' Disables server-side encryption (SSE) for the Firehose stream
 #'
 #' @description
-#' Disables server-side encryption (SSE) for the delivery stream.
+#' Disables server-side encryption (SSE) for the Firehose stream.
 #' 
 #' This operation is asynchronous. It returns immediately. When you invoke
 #' it, Firehose first sets the encryption status of the stream to
 #' `DISABLING`, and then to `DISABLED`. You can continue to read and write
 #' data to your stream while its status is `DISABLING`. It can take up to 5
 #' seconds after the encryption status changes to `DISABLED` before all
-#' records written to the delivery stream are no longer subject to
+#' records written to the Firehose stream are no longer subject to
 #' encryption. To find out whether a record or a batch of records was
 #' encrypted, check the response elements PutRecordOutput$Encrypted and
 #' PutRecordBatchOutput$Encrypted, respectively.
 #' 
-#' To check the encryption state of a delivery stream, use
+#' To check the encryption state of a Firehose stream, use
 #' [`describe_delivery_stream`][firehose_describe_delivery_stream].
 #' 
 #' If SSE is enabled using a customer managed CMK and then you invoke
@@ -2353,17 +2497,17 @@ firehose_start_delivery_stream_encryption <- function(DeliveryStreamName, Delive
 #' [`start_delivery_stream_encryption`][firehose_start_delivery_stream_encryption]
 #' and
 #' [`stop_delivery_stream_encryption`][firehose_stop_delivery_stream_encryption]
-#' operations have a combined limit of 25 calls per delivery stream per 24
+#' operations have a combined limit of 25 calls per Firehose stream per 24
 #' hours. For example, you reach the limit if you call
 #' [`start_delivery_stream_encryption`][firehose_start_delivery_stream_encryption]
 #' 13 times and
 #' [`stop_delivery_stream_encryption`][firehose_stop_delivery_stream_encryption]
-#' 12 times for the same delivery stream in a 24-hour period.
+#' 12 times for the same Firehose stream in a 24-hour period.
 #'
 #' @usage
 #' firehose_stop_delivery_stream_encryption(DeliveryStreamName)
 #'
-#' @param DeliveryStreamName &#91;required&#93; The name of the delivery stream for which you want to disable
+#' @param DeliveryStreamName &#91;required&#93; The name of the Firehose stream for which you want to disable
 #' server-side encryption (SSE).
 #'
 #' @return
@@ -2400,27 +2544,27 @@ firehose_stop_delivery_stream_encryption <- function(DeliveryStreamName) {
 }
 .firehose$operations$stop_delivery_stream_encryption <- firehose_stop_delivery_stream_encryption
 
-#' Adds or updates tags for the specified delivery stream
+#' Adds or updates tags for the specified Firehose stream
 #'
 #' @description
-#' Adds or updates tags for the specified delivery stream. A tag is a
+#' Adds or updates tags for the specified Firehose stream. A tag is a
 #' key-value pair that you can define and assign to Amazon Web Services
 #' resources. If you specify a tag that already exists, the tag value is
 #' replaced with the value that you specify in the request. Tags are
 #' metadata. For example, you can add friendly names and descriptions or
-#' other types of information that can help you distinguish the delivery
+#' other types of information that can help you distinguish the Firehose
 #' stream. For more information about tags, see [Using Cost Allocation
 #' Tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html)
 #' in the *Amazon Web Services Billing and Cost Management User Guide*.
 #' 
-#' Each delivery stream can have up to 50 tags.
+#' Each Firehose stream can have up to 50 tags.
 #' 
 #' This operation has a limit of five transactions per second per account.
 #'
 #' @usage
 #' firehose_tag_delivery_stream(DeliveryStreamName, Tags)
 #'
-#' @param DeliveryStreamName &#91;required&#93; The name of the delivery stream to which you want to add the tags.
+#' @param DeliveryStreamName &#91;required&#93; The name of the Firehose stream to which you want to add the tags.
 #' @param Tags &#91;required&#93; A set of key-value pairs to use to create the tags.
 #'
 #' @return
@@ -2463,10 +2607,10 @@ firehose_tag_delivery_stream <- function(DeliveryStreamName, Tags) {
 }
 .firehose$operations$tag_delivery_stream <- firehose_tag_delivery_stream
 
-#' Removes tags from the specified delivery stream
+#' Removes tags from the specified Firehose stream
 #'
 #' @description
-#' Removes tags from the specified delivery stream. Removed tags are
+#' Removes tags from the specified Firehose stream. Removed tags are
 #' deleted, and you can't recover them after this operation successfully
 #' completes.
 #' 
@@ -2477,7 +2621,7 @@ firehose_tag_delivery_stream <- function(DeliveryStreamName, Tags) {
 #' @usage
 #' firehose_untag_delivery_stream(DeliveryStreamName, TagKeys)
 #'
-#' @param DeliveryStreamName &#91;required&#93; The name of the delivery stream.
+#' @param DeliveryStreamName &#91;required&#93; The name of the Firehose stream.
 #' @param TagKeys &#91;required&#93; A list of tag keys. Each corresponding tag is removed from the delivery
 #' stream.
 #'
@@ -2518,17 +2662,17 @@ firehose_untag_delivery_stream <- function(DeliveryStreamName, TagKeys) {
 }
 .firehose$operations$untag_delivery_stream <- firehose_untag_delivery_stream
 
-#' Updates the specified destination of the specified delivery stream
+#' Updates the specified destination of the specified Firehose stream
 #'
 #' @description
-#' Updates the specified destination of the specified delivery stream.
+#' Updates the specified destination of the specified Firehose stream.
 #' 
 #' Use this operation to change the destination type (for example, to
 #' replace the Amazon S3 destination with Amazon Redshift) or change the
 #' parameters associated with a destination (for example, to change the
 #' bucket name of the Amazon S3 destination). The update might not occur
-#' immediately. The target delivery stream remains active while the
-#' configurations are updated, so data writes to the delivery stream can
+#' immediately. The target Firehose stream remains active while the
+#' configurations are updated, so data writes to the Firehose stream can
 #' continue during this process. The updated configurations are usually
 #' effective within a few minutes.
 #' 
@@ -2566,7 +2710,7 @@ firehose_untag_delivery_stream <- function(DeliveryStreamName, TagKeys) {
 #'   AmazonOpenSearchServerlessDestinationUpdate, SnowflakeDestinationUpdate,
 #'   IcebergDestinationUpdate)
 #'
-#' @param DeliveryStreamName &#91;required&#93; The name of the delivery stream.
+#' @param DeliveryStreamName &#91;required&#93; The name of the Firehose stream.
 #' @param CurrentDeliveryStreamVersionId &#91;required&#93; Obtain this value from the `VersionId` result of
 #' DeliveryStreamDescription. This value is required, and helps the service
 #' perform conditional operations. For example, if there is an interleaving
@@ -2586,8 +2730,6 @@ firehose_untag_delivery_stream <- function(DeliveryStreamName, TagKeys) {
 #' Amazon OpenSearch Service.
 #' @param SnowflakeDestinationUpdate Update to the Snowflake destination configuration settings.
 #' @param IcebergDestinationUpdate Describes an update for a destination in Apache Iceberg Tables.
-#' 
-#' Amazon Data Firehose is in preview release and is subject to change.
 #'
 #' @return
 #' An empty list.
@@ -3204,8 +3346,21 @@ firehose_untag_delivery_stream <- function(DeliveryStreamName, TagKeys) {
 #'         UniqueKeys = list(
 #'           "string"
 #'         ),
+#'         PartitionSpec = list(
+#'           Identity = list(
+#'             list(
+#'               SourceName = "string"
+#'             )
+#'           )
+#'         ),
 #'         S3ErrorOutputPrefix = "string"
 #'       )
+#'     ),
+#'     SchemaEvolutionConfiguration = list(
+#'       Enabled = TRUE|FALSE
+#'     ),
+#'     TableCreationConfiguration = list(
+#'       Enabled = TRUE|FALSE
 #'     ),
 #'     BufferingHints = list(
 #'       SizeInMBs = 123,
@@ -3236,7 +3391,8 @@ firehose_untag_delivery_stream <- function(DeliveryStreamName, TagKeys) {
 #'     ),
 #'     RoleARN = "string",
 #'     CatalogConfiguration = list(
-#'       CatalogARN = "string"
+#'       CatalogARN = "string",
+#'       WarehouseLocation = "string"
 #'     ),
 #'     S3Configuration = list(
 #'       RoleARN = "string",

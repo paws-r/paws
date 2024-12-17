@@ -105,7 +105,8 @@ the \emph{Amazon Redshift Management Guide}.
 \link[paws.database:redshiftdataapiservice_describe_statement]{describe_statement} \tab Describes the details about a specific instance when a query was run by the Amazon Redshift Data API\cr
 \link[paws.database:redshiftdataapiservice_describe_table]{describe_table} \tab Describes the detailed information about a table from metadata in the cluster\cr
 \link[paws.database:redshiftdataapiservice_execute_statement]{execute_statement} \tab Runs an SQL statement, which can be data manipulation language (DML) or data definition language (DDL)\cr
-\link[paws.database:redshiftdataapiservice_get_statement_result]{get_statement_result} \tab Fetches the temporarily cached result of an SQL statement\cr
+\link[paws.database:redshiftdataapiservice_get_statement_result]{get_statement_result} \tab Fetches the temporarily cached result of an SQL statement in JSON format\cr
+\link[paws.database:redshiftdataapiservice_get_statement_result_v2]{get_statement_result_v2} \tab Fetches the temporarily cached result of an SQL statement in CSV format\cr
 \link[paws.database:redshiftdataapiservice_list_databases]{list_databases} \tab List the databases in a cluster\cr
 \link[paws.database:redshiftdataapiservice_list_schemas]{list_schemas} \tab Lists the schemas in a database\cr
 \link[paws.database:redshiftdataapiservice_list_statements]{list_statements} \tab List of SQL statements\cr

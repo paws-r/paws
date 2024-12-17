@@ -4,10 +4,17 @@
 \alias{apigateway_update_domain_name}
 \title{Changes information about the DomainName resource}
 \usage{
-apigateway_update_domain_name(domainName, patchOperations = NULL)
+apigateway_update_domain_name(
+  domainName,
+  domainNameId = NULL,
+  patchOperations = NULL
+)
 }
 \arguments{
 \item{domainName}{[required] The name of the DomainName resource to be changed.}
+
+\item{domainNameId}{The identifier for the domain name resource. Supported only for private
+custom domain names.}
 
 \item{patchOperations}{For more information about supported patch operations, see \href{https://docs.aws.amazon.com/apigateway/latest/api/patch-operations.html}{Patch Operations}.}
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_list_buckets}
 \alias{s3_list_buckets}
-\title{This operation is not supported by directory buckets}
+\title{This operation is not supported for directory buckets}
 \usage{
 s3_list_buckets(
   MaxBuckets = NULL,
@@ -23,7 +23,13 @@ pagination of the list results.
 
 Length Constraints: Minimum length of 0. Maximum length of 1024.
 
-Required: No.}
+Required: No.
+
+If you specify the \code{bucket-region}, \code{prefix}, or \code{continuation-token}
+query parameters without using \code{max-buckets} to set the maximum number
+of buckets returned in the response, Amazon S3 applies a default page
+size of 10,000 and provides a continuation token if there are more
+buckets.}
 
 \item{Prefix}{Limits the response to bucket names that begin with the specified bucket
 name prefix.}
@@ -40,7 +46,7 @@ limit the response to your buckets in Region \code{us-west-2}, the request
 must be made to an endpoint in Region \code{us-west-2}.}
 }
 \description{
-This operation is not supported by directory buckets.
+This operation is not supported for directory buckets.
 
 See \url{https://www.paws-r-sdk.com/docs/s3_list_buckets/} for full documentation.
 }

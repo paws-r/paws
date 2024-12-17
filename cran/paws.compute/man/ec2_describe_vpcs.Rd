@@ -7,9 +7,9 @@
 ec2_describe_vpcs(
   Filters = NULL,
   VpcIds = NULL,
-  DryRun = NULL,
   NextToken = NULL,
-  MaxResults = NULL
+  MaxResults = NULL,
+  DryRun = NULL
 )
 }
 \arguments{
@@ -38,11 +38,11 @@ block associated with the VPC.
 \item \code{owner-id} - The ID of the Amazon Web Services account that owns the
 VPC.
 \item \code{state} - The state of the VPC (\code{pending} | \code{available}).
-\item \code{tag}:\<key\> - The key/value combination of a tag assigned to the
-resource. Use the tag key in the filter name and the tag value as
-the filter value. For example, to find all resources that have a tag
-with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner} for
-the filter name and \code{TeamA} for the filter value.
+\item \code{tag} - The key/value combination of a tag assigned to the resource.
+Use the tag key in the filter name and the tag value as the filter
+value. For example, to find all resources that have a tag with the
+key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner} for the
+filter name and \code{TeamA} for the filter value.
 \item \code{tag-key} - The key of a tag assigned to the resource. Use this
 filter to find all resources assigned a tag with a specific key,
 regardless of the tag value.
@@ -51,11 +51,6 @@ regardless of the tag value.
 
 \item{VpcIds}{The IDs of the VPCs.}
 
-\item{DryRun}{Checks whether you have the required permissions for the action, without
-actually making the request, and provides an error response. If you have
-the required permissions, the error response is \code{DryRunOperation}.
-Otherwise, it is \code{UnauthorizedOperation}.}
-
 \item{NextToken}{The token returned from a previous paginated request. Pagination
 continues from the end of the items returned by the previous request.}
 
@@ -63,6 +58,11 @@ continues from the end of the items returned by the previous request.}
 page of items, make another request with the token returned in the
 output. For more information, see
 \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Query-Requests.html#api-pagination}{Pagination}.}
+
+\item{DryRun}{Checks whether you have the required permissions for the action, without
+actually making the request, and provides an error response. If you have
+the required permissions, the error response is \code{DryRunOperation}.
+Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
 Describes your VPCs. The default is to describe all your VPCs. Alternatively, you can specify specific VPC IDs or filter the results to include only the VPCs that match specific criteria.

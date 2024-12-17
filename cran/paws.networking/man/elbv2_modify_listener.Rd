@@ -18,14 +18,14 @@ elbv2_modify_listener(
 \arguments{
 \item{ListenerArn}{[required] The Amazon Resource Name (ARN) of the listener.}
 
-\item{Port}{The port for connections from clients to the load balancer. You cannot
+\item{Port}{The port for connections from clients to the load balancer. You can't
 specify a port for a Gateway Load Balancer.}
 
 \item{Protocol}{The protocol for connections from clients to the load balancer.
 Application Load Balancers support the HTTP and HTTPS protocols. Network
 Load Balancers support the TCP, TLS, UDP, and TCP_UDP protocols. You
 can’t change the protocol to UDP or TCP_UDP if dual-stack mode is
-enabled. You cannot specify a protocol for a Gateway Load Balancer.}
+enabled. You can't specify a protocol for a Gateway Load Balancer.}
 
 \item{SslPolicy}{[HTTPS and TLS listeners] The security policy that defines which
 protocols and ciphers are supported.

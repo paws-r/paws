@@ -31,8 +31,8 @@ will be the first to get matched to a log line. A pattern of rank
 patterns from the console, a \code{Low} severity pattern translates to a
 \verb{750,000} rank. A \code{Medium} severity pattern translates to a \verb{500,000}
 rank. And a \code{High} severity pattern translates to a \verb{250,000} rank. Rank
-values less than \code{1} or greater than \verb{1,000,000} are reserved for
-AWS-provided patterns.}
+values less than \code{1} or greater than \verb{1,000,000} are reserved for Amazon
+Web Services provided patterns.}
 }
 \description{
 Adds an log pattern to a \code{LogPatternSet}.

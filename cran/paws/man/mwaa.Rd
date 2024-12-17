@@ -72,6 +72,7 @@ operate the Airflow environment.
 \itemize{
 \item \code{create_cli_token}
 \item \code{create_web_login_token}
+\item \code{invoke_rest_api}
 }
 }
 
@@ -120,10 +121,11 @@ For a list of supported regions, see \href{https://docs.aws.amazon.com/general/l
 
 \tabular{ll}{
 \link[paws.application.integration:mwaa_create_cli_token]{create_cli_token} \tab Creates a CLI token for the Airflow CLI\cr
-\link[paws.application.integration:mwaa_create_environment]{create_environment} \tab Creates an Amazon Managed Workflows for Apache Airflow (MWAA) environment\cr
+\link[paws.application.integration:mwaa_create_environment]{create_environment} \tab Creates an Amazon Managed Workflows for Apache Airflow (Amazon MWAA) environment\cr
 \link[paws.application.integration:mwaa_create_web_login_token]{create_web_login_token} \tab Creates a web login token for the Airflow Web UI\cr
-\link[paws.application.integration:mwaa_delete_environment]{delete_environment} \tab Deletes an Amazon Managed Workflows for Apache Airflow (MWAA) environment\cr
+\link[paws.application.integration:mwaa_delete_environment]{delete_environment} \tab Deletes an Amazon Managed Workflows for Apache Airflow (Amazon MWAA) environment\cr
 \link[paws.application.integration:mwaa_get_environment]{get_environment} \tab Describes an Amazon Managed Workflows for Apache Airflow (MWAA) environment\cr
+\link[paws.application.integration:mwaa_invoke_rest_api]{invoke_rest_api} \tab Invokes the Apache Airflow REST API on the webserver with the specified inputs\cr
 \link[paws.application.integration:mwaa_list_environments]{list_environments} \tab Lists the Amazon Managed Workflows for Apache Airflow (MWAA) environments\cr
 \link[paws.application.integration:mwaa_list_tags_for_resource]{list_tags_for_resource} \tab Lists the key-value tag pairs associated to the Amazon Managed Workflows for Apache Airflow (MWAA) environment\cr
 \link[paws.application.integration:mwaa_publish_metrics]{publish_metrics} \tab Internal only\cr

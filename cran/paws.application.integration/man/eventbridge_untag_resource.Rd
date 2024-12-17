@@ -12,7 +12,7 @@ eventbridge_untag_resource(ResourceARN, TagKeys)
 \item{TagKeys}{[required] The list of tag keys to remove from the resource.}
 }
 \description{
-Removes one or more tags from the specified EventBridge resource. In Amazon EventBridge (CloudWatch Events), rules and event buses can be tagged.
+Removes one or more tags from the specified EventBridge resource. In Amazon EventBridge, rules and event buses can be tagged.
 
 See \url{https://www.paws-r-sdk.com/docs/eventbridge_untag_resource/} for full documentation.
 }

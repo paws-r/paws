@@ -11,11 +11,12 @@ accessanalyzer_check_access_not_granted(policyDocument, access, policyType)
 
 \item{access}{[required] An access object containing the permissions that shouldn't be granted by
 the specified policy. If only actions are specified, IAM Access Analyzer
-checks for access of the actions on all resources in the policy. If only
-resources are specified, then IAM Access Analyzer checks which actions
-have access to the specified resources. If both actions and resources
-are specified, then IAM Access Analyzer checks which of the specified
-actions have access to the specified resources.}
+checks for access to peform at least one of the actions on any resource
+in the policy. If only resources are specified, then IAM Access Analyzer
+checks for access to perform any action on at least one of the
+resources. If both actions and resources are specified, IAM Access
+Analyzer checks for access to perform at least one of the specified
+actions on at least one of the specified resources.}
 
 \item{policyType}{[required] The type of policy. Identity policies grant permissions to IAM
 principals. Identity policies include managed and inline policies for
@@ -23,9 +24,7 @@ IAM roles, users, and groups.
 
 Resource policies grant permissions on Amazon Web Services resources.
 Resource policies include trust policies for IAM roles and bucket
-policies for Amazon S3 buckets. You can provide a generic input such as
-identity policy or resource policy or a specific input such as managed
-policy or Amazon S3 bucket policy.}
+policies for Amazon S3 buckets.}
 }
 \description{
 Checks whether the specified access isn't allowed by a policy.

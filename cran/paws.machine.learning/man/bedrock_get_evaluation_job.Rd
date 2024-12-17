@@ -2,16 +2,16 @@
 % Please edit documentation in R/bedrock_operations.R
 \name{bedrock_get_evaluation_job}
 \alias{bedrock_get_evaluation_job}
-\title{Retrieves the properties associated with a model evaluation job,
-including the status of the job}
+\title{Gets information about an evaluation job, such as the status of the job}
 \usage{
 bedrock_get_evaluation_job(jobIdentifier)
 }
 \arguments{
-\item{jobIdentifier}{[required] The Amazon Resource Name (ARN) of the model evaluation job.}
+\item{jobIdentifier}{[required] The Amazon Resource Name (ARN) of the evaluation job you want get
+information on.}
 }
 \description{
-Retrieves the properties associated with a model evaluation job, including the status of the job. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/}{Model evaluation}.
+Gets information about an evaluation job, such as the status of the job.
 
 See \url{https://www.paws-r-sdk.com/docs/bedrock_get_evaluation_job/} for full documentation.
 }

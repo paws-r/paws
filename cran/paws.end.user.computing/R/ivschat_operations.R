@@ -59,11 +59,12 @@ ivschat_create_chat_token <- function(roomIdentifier, userId, capabilities = NUL
 #' content will be logged. There can be only one type of destination
 #' (`cloudWatchLogs`, `firehose`, or `s3`) in a `destinationConfiguration`.
 #' @param tags Tags to attach to the resource. Array of maps, each of the form
-#' `string:string (key:value)`. See [Tagging AWS
-#' Resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html)
-#' for details, including restrictions that apply to tags and "Tag naming
-#' limits and requirements"; Amazon IVS Chat has no constraints on tags
-#' beyond what is documented there.
+#' `string:string (key:value)`. See [Best practices and
+#' strategies](https://docs.aws.amazon.com/tag-editor/latest/userguide/best-practices-and-strats.html)
+#' in *Tagging Amazon Web Services Resources and Tag Editor* for details,
+#' including restrictions that apply to tags and "Tag naming limits and
+#' requirements"; Amazon IVS Chat has no constraints on tags beyond what is
+#' documented there.
 #'
 #' @keywords internal
 #'
@@ -102,11 +103,12 @@ ivschat_create_logging_configuration <- function(name = NULL, destinationConfigu
 #' rune/code-point count, not number of bytes. Default: 500.
 #' @param messageReviewHandler Configuration information for optional review of messages.
 #' @param tags Tags to attach to the resource. Array of maps, each of the form
-#' `string:string (key:value)`. See [Tagging AWS
-#' Resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html)
-#' for details, including restrictions that apply to tags and "Tag naming
-#' limits and requirements"; Amazon IVS Chat has no constraints beyond what
-#' is documented there.
+#' `string:string (key:value)`. See [Best practices and
+#' strategies](https://docs.aws.amazon.com/tag-editor/latest/userguide/best-practices-and-strats.html)
+#' in *Tagging Amazon Web Services Resources and Tag Editor* for details,
+#' including restrictions that apply to tags and "Tag naming limits and
+#' requirements"; Amazon IVS Chat has no constraints beyond what is
+#' documented there.
 #' @param loggingConfigurationIdentifiers Array of logging-configuration identifiers attached to the room.
 #'
 #' @keywords internal
@@ -350,7 +352,7 @@ ivschat_list_logging_configurations <- function(nextToken = NULL, maxResults = N
     http_method = "POST",
     http_path = "/ListLoggingConfigurations",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .ivschat$list_logging_configurations_input(nextToken = nextToken, maxResults = maxResults)
@@ -387,7 +389,7 @@ ivschat_list_rooms <- function(name = NULL, nextToken = NULL, maxResults = NULL,
     http_method = "POST",
     http_path = "/ListRooms",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .ivschat$list_rooms_input(name = name, nextToken = nextToken, maxResults = maxResults, messageReviewHandlerUri = messageReviewHandlerUri, loggingConfigurationIdentifier = loggingConfigurationIdentifier)
@@ -475,11 +477,12 @@ ivschat_send_event <- function(roomIdentifier, eventName, attributes = NULL) {
 #'
 #' @param resourceArn &#91;required&#93; The ARN of the resource to be tagged. The ARN must be URL-encoded.
 #' @param tags &#91;required&#93; Array of tags to be added or updated. Array of maps, each of the form
-#' `string:string (key:value)`. See [Tagging AWS
-#' Resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html)
-#' for details, including restrictions that apply to tags and "Tag naming
-#' limits and requirements"; Amazon IVS Chat has no constraints beyond what
-#' is documented there.
+#' `string:string (key:value)`. See [Best practices and
+#' strategies](https://docs.aws.amazon.com/tag-editor/latest/userguide/best-practices-and-strats.html)
+#' in *Tagging Amazon Web Services Resources and Tag Editor* for details,
+#' including restrictions that apply to tags and "Tag naming limits and
+#' requirements"; Amazon IVS Chat has no constraints beyond what is
+#' documented there.
 #'
 #' @keywords internal
 #'
@@ -512,11 +515,12 @@ ivschat_tag_resource <- function(resourceArn, tags) {
 #'
 #' @param resourceArn &#91;required&#93; The ARN of the resource to be untagged. The ARN must be URL-encoded.
 #' @param tagKeys &#91;required&#93; Array of tags to be removed. Array of maps, each of the form
-#' `string:string (key:value)`. See [Tagging AWS
-#' Resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html)
-#' for details, including restrictions that apply to tags and "Tag naming
-#' limits and requirements"; Amazon IVS Chat has no constraints beyond what
-#' is documented there.
+#' `string:string (key:value)`. See [Best practices and
+#' strategies](https://docs.aws.amazon.com/tag-editor/latest/userguide/best-practices-and-strats.html)
+#' in *Tagging Amazon Web Services Resources and Tag Editor* for details,
+#' including restrictions that apply to tags and "Tag naming limits and
+#' requirements"; Amazon IVS Chat has no constraints beyond what is
+#' documented there.
 #'
 #' @keywords internal
 #'

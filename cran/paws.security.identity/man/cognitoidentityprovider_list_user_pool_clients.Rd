@@ -11,8 +11,7 @@ cognitoidentityprovider_list_user_pool_clients(
 )
 }
 \arguments{
-\item{UserPoolId}{[required] The user pool ID for the user pool where you want to list user pool
-clients.}
+\item{UserPoolId}{[required] The ID of the user pool where you want to list user pool clients.}
 
 \item{MaxResults}{The maximum number of results you want the request to return when
 listing the user pool clients.}

@@ -7,12 +7,12 @@
 cognitoidentityprovider_delete_resource_server(UserPoolId, Identifier)
 }
 \arguments{
-\item{UserPoolId}{[required] The user pool ID for the user pool that hosts the resource server.}
+\item{UserPoolId}{[required] The ID of the user pool where you want to delete the resource server.}
 
-\item{Identifier}{[required] The identifier for the resource server.}
+\item{Identifier}{[required] The identifier of the resource server that you want to delete.}
 }
 \description{
-Deletes a resource server.
+Deletes a resource server. After you delete a resource server, users can no longer generate access tokens with scopes that are associate with that resource server.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_delete_resource_server/} for full documentation.
 }

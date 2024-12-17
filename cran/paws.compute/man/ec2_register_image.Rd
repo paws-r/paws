@@ -6,23 +6,23 @@
 \usage{
 ec2_register_image(
   ImageLocation = NULL,
-  Architecture = NULL,
-  BlockDeviceMappings = NULL,
-  Description = NULL,
-  DryRun = NULL,
-  EnaSupport = NULL,
-  KernelId = NULL,
-  Name,
   BillingProducts = NULL,
-  RamdiskId = NULL,
-  RootDeviceName = NULL,
-  SriovNetSupport = NULL,
-  VirtualizationType = NULL,
   BootMode = NULL,
   TpmSupport = NULL,
   UefiData = NULL,
   ImdsSupport = NULL,
-  TagSpecifications = NULL
+  TagSpecifications = NULL,
+  DryRun = NULL,
+  Name,
+  Description = NULL,
+  Architecture = NULL,
+  KernelId = NULL,
+  RamdiskId = NULL,
+  RootDeviceName = NULL,
+  BlockDeviceMappings = NULL,
+  VirtualizationType = NULL,
+  SriovNetSupport = NULL,
+  EnaSupport = NULL
 )
 }
 \arguments{
@@ -31,43 +31,6 @@ bucket must have the \code{aws-exec-read} canned access control list (ACL) to
 ensure that it can be accessed by Amazon EC2. For more information, see
 \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html#canned-acl}{Canned ACLs}
 in the \emph{Amazon S3 Service Developer Guide}.}
-
-\item{Architecture}{The architecture of the AMI.
-
-Default: For Amazon EBS-backed AMIs, \code{i386}. For instance store-backed
-AMIs, the architecture specified in the manifest file.}
-
-\item{BlockDeviceMappings}{The block device mapping entries.
-
-If you specify an Amazon EBS volume using the ID of an Amazon EBS
-snapshot, you can't specify the encryption state of the volume.
-
-If you create an AMI on an Outpost, then all backing snapshots must be
-on the same Outpost or in the Region of that Outpost. AMIs on an Outpost
-that include local snapshots can be used to launch instances on the same
-Outpost only. For more information, \href{https://docs.aws.amazon.com/ebs/latest/userguide/snapshots-outposts.html#ami}{Amazon EBS local snapshots on Outposts}
-in the \emph{Amazon EBS User Guide}.}
-
-\item{Description}{A description for your AMI.}
-
-\item{DryRun}{Checks whether you have the required permissions for the action, without
-actually making the request, and provides an error response. If you have
-the required permissions, the error response is \code{DryRunOperation}.
-Otherwise, it is \code{UnauthorizedOperation}.}
-
-\item{EnaSupport}{Set to \code{true} to enable enhanced networking with ENA for the AMI and any
-instances that you launch from the AMI.
-
-This option is supported only for HVM AMIs. Specifying this option with
-a PV AMI can make instances launched from the AMI unreachable.}
-
-\item{KernelId}{The ID of the kernel.}
-
-\item{Name}{[required] A name for your AMI.
-
-Constraints: 3-128 alphanumeric characters, parentheses (()), square
-brackets ([]), spaces ( ), periods (.), slashes (/), dashes (-),
-single quotes ('), at-signs (@), or underscores(_)}
 
 \item{BillingProducts}{The billing product codes. Your account must be authorized to specify
 billing product codes.
@@ -78,23 +41,6 @@ Amazon Web Services Marketplace. You must first register as a seller on
 the Amazon Web Services Marketplace. For more information, see \href{https://docs.aws.amazon.com/marketplace/latest/userguide/user-guide-for-sellers.html}{Getting started as a seller}
 and \href{https://docs.aws.amazon.com/marketplace/latest/userguide/ami-products.html}{AMI-based products}
 in the \emph{Amazon Web Services Marketplace Seller Guide}.}
-
-\item{RamdiskId}{The ID of the RAM disk.}
-
-\item{RootDeviceName}{The device name of the root device volume (for example, \verb{/dev/sda1}).}
-
-\item{SriovNetSupport}{Set to \code{simple} to enable enhanced networking with the Intel 82599
-Virtual Function interface for the AMI and any instances that you launch
-from the AMI.
-
-There is no way to disable \code{sriovNetSupport} at this time.
-
-This option is supported only for HVM AMIs. Specifying this option with
-a PV AMI can make instances launched from the AMI unreachable.}
-
-\item{VirtualizationType}{The type of virtualization (\code{hvm} | \code{paravirtual}).
-
-Default: \code{paravirtual}}
 
 \item{BootMode}{The boot mode of the AMI. A value of \code{uefi-preferred} indicates that the
 AMI supports both UEFI and Legacy BIOS.
@@ -135,6 +81,60 @@ specify another value for \code{ResourceType}, the request fails.
 
 To tag an AMI after it has been registered, see
 \code{\link[=ec2_create_tags]{create_tags}}.}
+
+\item{DryRun}{Checks whether you have the required permissions for the action, without
+actually making the request, and provides an error response. If you have
+the required permissions, the error response is \code{DryRunOperation}.
+Otherwise, it is \code{UnauthorizedOperation}.}
+
+\item{Name}{[required] A name for your AMI.
+
+Constraints: 3-128 alphanumeric characters, parentheses (()), square
+brackets ([]), spaces ( ), periods (.), slashes (/), dashes (-),
+single quotes ('), at-signs (@), or underscores(_)}
+
+\item{Description}{A description for your AMI.}
+
+\item{Architecture}{The architecture of the AMI.
+
+Default: For Amazon EBS-backed AMIs, \code{i386}. For instance store-backed
+AMIs, the architecture specified in the manifest file.}
+
+\item{KernelId}{The ID of the kernel.}
+
+\item{RamdiskId}{The ID of the RAM disk.}
+
+\item{RootDeviceName}{The device name of the root device volume (for example, \verb{/dev/sda1}).}
+
+\item{BlockDeviceMappings}{The block device mapping entries.
+
+If you specify an Amazon EBS volume using the ID of an Amazon EBS
+snapshot, you can't specify the encryption state of the volume.
+
+If you create an AMI on an Outpost, then all backing snapshots must be
+on the same Outpost or in the Region of that Outpost. AMIs on an Outpost
+that include local snapshots can be used to launch instances on the same
+Outpost only. For more information, \href{https://docs.aws.amazon.com/ebs/latest/userguide/snapshots-outposts.html#ami}{Amazon EBS local snapshots on Outposts}
+in the \emph{Amazon EBS User Guide}.}
+
+\item{VirtualizationType}{The type of virtualization (\code{hvm} | \code{paravirtual}).
+
+Default: \code{paravirtual}}
+
+\item{SriovNetSupport}{Set to \code{simple} to enable enhanced networking with the Intel 82599
+Virtual Function interface for the AMI and any instances that you launch
+from the AMI.
+
+There is no way to disable \code{sriovNetSupport} at this time.
+
+This option is supported only for HVM AMIs. Specifying this option with
+a PV AMI can make instances launched from the AMI unreachable.}
+
+\item{EnaSupport}{Set to \code{true} to enable enhanced networking with ENA for the AMI and any
+instances that you launch from the AMI.
+
+This option is supported only for HVM AMIs. Specifying this option with
+a PV AMI can make instances launched from the AMI unreachable.}
 }
 \description{
 Registers an AMI. When you're creating an instance-store backed AMI, registering the AMI is the final step in the creation process. For more information about creating AMIs, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami-ebs.html#creating-launching-ami-from-snapshot}{Create an AMI from a snapshot} and \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami-instance-store.html}{Create an instance-store backed AMI} in the \emph{Amazon EC2 User Guide}.

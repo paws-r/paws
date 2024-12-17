@@ -15,7 +15,7 @@ applicationinsights_describe_component_configuration(
 
 \item{ComponentName}{[required] The name of the component.}
 
-\item{AccountId}{The AWS account ID for the resource group owner.}
+\item{AccountId}{The Amazon Web Services account ID for the resource group owner.}
 }
 \description{
 Describes the monitoring configuration of the component.

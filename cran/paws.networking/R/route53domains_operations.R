@@ -642,7 +642,7 @@ route53domains_list_domains <- function(FilterConditions = NULL, SortCondition =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxItems", output_token = "NextPageMarker", result_key = "Domains"),
+    paginator = list(limit_key = "MaxItems", input_token = "Marker", output_token = "NextPageMarker", result_key = "Domains"),
     stream_api = FALSE
   )
   input <- .route53domains$list_domains_input(FilterConditions = FilterConditions, SortCondition = SortCondition, Marker = Marker, MaxItems = MaxItems)
@@ -691,7 +691,7 @@ route53domains_list_operations <- function(SubmittedSince = NULL, Marker = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxItems", output_token = "NextPageMarker", result_key = "Operations"),
+    paginator = list(limit_key = "MaxItems", input_token = "Marker", output_token = "NextPageMarker", result_key = "Operations"),
     stream_api = FALSE
   )
   input <- .route53domains$list_operations_input(SubmittedSince = SubmittedSince, Marker = Marker, MaxItems = MaxItems, Status = Status, Type = Type, SortBy = SortBy, SortOrder = SortOrder)

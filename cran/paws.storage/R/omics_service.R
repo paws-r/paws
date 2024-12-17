@@ -104,6 +104,7 @@ NULL
 #'  \link[=omics_create_annotation_store_version]{create_annotation_store_version} \tab Creates a new version of an annotation store\cr
 #'  \link[=omics_create_multipart_read_set_upload]{create_multipart_read_set_upload} \tab Begins a multipart read set upload\cr
 #'  \link[=omics_create_reference_store]{create_reference_store} \tab Creates a reference store\cr
+#'  \link[=omics_create_run_cache]{create_run_cache} \tab You can create a run cache to save the task outputs from completed tasks in a run for a private workflow\cr
 #'  \link[=omics_create_run_group]{create_run_group} \tab You can optionally create a run group to limit the compute resources for the runs that you add to the group\cr
 #'  \link[=omics_create_sequence_store]{create_sequence_store} \tab Creates a sequence store\cr
 #'  \link[=omics_create_share]{create_share} \tab Creates a cross-account shared resource\cr
@@ -114,7 +115,9 @@ NULL
 #'  \link[=omics_delete_reference]{delete_reference} \tab Deletes a genome reference\cr
 #'  \link[=omics_delete_reference_store]{delete_reference_store} \tab Deletes a genome reference store\cr
 #'  \link[=omics_delete_run]{delete_run} \tab Deletes a workflow run\cr
+#'  \link[=omics_delete_run_cache]{delete_run_cache} \tab Delete a run cache\cr
 #'  \link[=omics_delete_run_group]{delete_run_group} \tab Deletes a workflow run group\cr
+#'  \link[=omics_delete_s3_access_policy]{delete_s3_access_policy} \tab Deletes an access policy for the specified store\cr
 #'  \link[=omics_delete_sequence_store]{delete_sequence_store} \tab Deletes a sequence store\cr
 #'  \link[=omics_delete_share]{delete_share} \tab Deletes a resource share\cr
 #'  \link[=omics_delete_variant_store]{delete_variant_store} \tab Deletes a variant store\cr
@@ -132,8 +135,10 @@ NULL
 #'  \link[=omics_get_reference_metadata]{get_reference_metadata} \tab Gets information about a genome reference's metadata\cr
 #'  \link[=omics_get_reference_store]{get_reference_store} \tab Gets information about a reference store\cr
 #'  \link[=omics_get_run]{get_run} \tab Gets information about a workflow run\cr
+#'  \link[=omics_get_run_cache]{get_run_cache} \tab Retrieve the details for the specified run cache\cr
 #'  \link[=omics_get_run_group]{get_run_group} \tab Gets information about a workflow run group\cr
 #'  \link[=omics_get_run_task]{get_run_task} \tab Gets information about a workflow run task\cr
+#'  \link[=omics_get_s3_access_policy]{get_s3_access_policy} \tab Retrieves details about an access policy on a given store\cr
 #'  \link[=omics_get_sequence_store]{get_sequence_store} \tab Gets information about a sequence store\cr
 #'  \link[=omics_get_share]{get_share} \tab Retrieves the metadata for the specified resource share\cr
 #'  \link[=omics_get_variant_import_job]{get_variant_import_job} \tab Gets information about a variant import job\cr
@@ -151,6 +156,7 @@ NULL
 #'  \link[=omics_list_reference_import_jobs]{list_reference_import_jobs} \tab Retrieves a list of reference import jobs\cr
 #'  \link[=omics_list_references]{list_references} \tab Retrieves a list of references\cr
 #'  \link[=omics_list_reference_stores]{list_reference_stores} \tab Retrieves a list of reference stores\cr
+#'  \link[=omics_list_run_caches]{list_run_caches} \tab Retrieves a list of your run caches\cr
 #'  \link[=omics_list_run_groups]{list_run_groups} \tab Retrieves a list of run groups\cr
 #'  \link[=omics_list_runs]{list_runs} \tab Retrieves a list of runs\cr
 #'  \link[=omics_list_run_tasks]{list_run_tasks} \tab Retrieves a list of tasks for a run\cr
@@ -160,6 +166,7 @@ NULL
 #'  \link[=omics_list_variant_import_jobs]{list_variant_import_jobs} \tab Retrieves a list of variant import jobs\cr
 #'  \link[=omics_list_variant_stores]{list_variant_stores} \tab Retrieves a list of variant stores\cr
 #'  \link[=omics_list_workflows]{list_workflows} \tab Retrieves a list of workflows\cr
+#'  \link[=omics_put_s3_access_policy]{put_s3_access_policy} \tab Adds an access policy to the specified store\cr
 #'  \link[=omics_start_annotation_import_job]{start_annotation_import_job} \tab Starts an annotation import job\cr
 #'  \link[=omics_start_read_set_activation_job]{start_read_set_activation_job} \tab Activates an archived read set\cr
 #'  \link[=omics_start_read_set_export_job]{start_read_set_export_job} \tab Exports a read set to Amazon S3\cr
@@ -171,7 +178,9 @@ NULL
 #'  \link[=omics_untag_resource]{untag_resource} \tab Removes tags from a resource\cr
 #'  \link[=omics_update_annotation_store]{update_annotation_store} \tab Updates an annotation store\cr
 #'  \link[=omics_update_annotation_store_version]{update_annotation_store_version} \tab Updates the description of an annotation store version\cr
+#'  \link[=omics_update_run_cache]{update_run_cache} \tab Update a run cache\cr
 #'  \link[=omics_update_run_group]{update_run_group} \tab Updates a run group\cr
+#'  \link[=omics_update_sequence_store]{update_sequence_store} \tab Update one or more parameters for the sequence store\cr
 #'  \link[=omics_update_variant_store]{update_variant_store} \tab Updates a variant store\cr
 #'  \link[=omics_update_workflow]{update_workflow} \tab Updates a workflow\cr
 #'  \link[=omics_upload_read_set_part]{upload_read_set_part} \tab This operation uploads a specific part of a read set
@@ -206,7 +215,7 @@ omics <- function(config = list(), credentials = list(), endpoint = NULL, region
 
 .omics$metadata <- list(
   service_name = "omics",
-  endpoints = list("*" = list(endpoint = "omics.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "omics.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "omics.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "omics.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "omics.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "omics.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "omics.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "omics.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "omics.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "omics.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "omics.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "omics.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "omics.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Omics",
   api_version = "2022-11-28",
   signing_name = "omics",

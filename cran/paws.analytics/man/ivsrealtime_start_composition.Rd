@@ -23,10 +23,11 @@ ivsrealtime_start_composition(
 \item{destinations}{[required] Array of destination configuration.}
 
 \item{tags}{Tags attached to the resource. Array of maps, each of the form
-\code{string:string (key:value)}. See \href{https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html}{Tagging AWS Resources}
-for details, including restrictions that apply to tags and "Tag naming
-limits and requirements"; Amazon IVS has no constraints on tags beyond
-what is documented there.}
+\code{string:string (key:value)}. See \href{https://docs.aws.amazon.com/tag-editor/latest/userguide/best-practices-and-strats.html}{Best practices and strategies}
+in \emph{Tagging AWS Resources and Tag Editor} for details, including
+restrictions that apply to tags and "Tag naming limits and
+requirements"; Amazon IVS has no constraints on tags beyond what is
+documented there.}
 }
 \description{
 Starts a Composition from a stage based on the configuration provided in the request.

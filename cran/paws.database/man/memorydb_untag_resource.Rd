@@ -8,12 +8,12 @@ memorydb_untag_resource(ResourceArn, TagKeys)
 }
 \arguments{
 \item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the resource to which the tags are to
-be removed}
+be removed.}
 
-\item{TagKeys}{[required] The list of keys of the tags that are to be removed}
+\item{TagKeys}{[required] The list of keys of the tags that are to be removed.}
 }
 \description{
-Use this operation to remove tags on a resource
+Use this operation to remove tags on a resource.
 
 See \url{https://www.paws-r-sdk.com/docs/memorydb_untag_resource/} for full documentation.
 }

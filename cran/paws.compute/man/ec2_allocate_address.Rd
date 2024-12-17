@@ -10,9 +10,9 @@ ec2_allocate_address(
   PublicIpv4Pool = NULL,
   NetworkBorderGroup = NULL,
   CustomerOwnedIpv4Pool = NULL,
-  DryRun = NULL,
   TagSpecifications = NULL,
-  IpamPoolId = NULL
+  IpamPoolId = NULL,
+  DryRun = NULL
 )
 }
 \arguments{
@@ -34,14 +34,16 @@ move between network border groups.}
 Amazon EC2 select an address from the address pool. Alternatively,
 specify a specific address from the address pool.}
 
+\item{TagSpecifications}{The tags to assign to the Elastic IP address.}
+
+\item{IpamPoolId}{The ID of an IPAM pool which has an Amazon-provided or BYOIP public IPv4
+CIDR provisioned to it. For more information, see \href{https://docs.aws.amazon.com/vpc/latest/ipam/tutorials-eip-pool.html}{Allocate sequential Elastic IP addresses from an IPAM pool}
+in the \emph{Amazon VPC IPAM User Guide}.}
+
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
-
-\item{TagSpecifications}{The tags to assign to the Elastic IP address.}
-
-\item{IpamPoolId}{The ID of an IPAM pool.}
 }
 \description{
 Allocates an Elastic IP address to your Amazon Web Services account. After you allocate the Elastic IP address you can associate it with an instance or network interface. After you release an Elastic IP address, it is released to the IP address pool and can be allocated to a different Amazon Web Services account.

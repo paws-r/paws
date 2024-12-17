@@ -11,7 +11,9 @@ customerprofiles_put_integration(
   ObjectTypeName = NULL,
   Tags = NULL,
   FlowDefinition = NULL,
-  ObjectTypeNames = NULL
+  ObjectTypeNames = NULL,
+  RoleArn = NULL,
+  EventTriggerNames = NULL
 )
 }
 \arguments{
@@ -33,6 +35,12 @@ types: \code{SegmentIdentify}, \code{ShopifyCreateCustomers},
 \code{ShopifyUpdateCustomers}, \code{ShopifyCreateDraftOrders},
 \code{ShopifyUpdateDraftOrders}, \code{ShopifyCreateOrders}, and
 \code{ShopifyUpdatedOrders}.}
+
+\item{RoleArn}{The Amazon Resource Name (ARN) of the IAM role. The Integration uses
+this role to make Customer Profiles requests on your behalf.}
+
+\item{EventTriggerNames}{A list of unique names for active event triggers associated with the
+integration.}
 }
 \description{
 Adds an integration between the service and a third-party service, which includes Amazon AppFlow and Amazon Connect.

@@ -15,14 +15,18 @@ pinpointsmsvoicev2_send_voice_message(
   TimeToLive = NULL,
   Context = NULL,
   DryRun = NULL,
-  ProtectConfigurationId = NULL
+  ProtectConfigurationId = NULL,
+  MessageFeedbackEnabled = NULL
 )
 }
 \arguments{
 \item{DestinationPhoneNumber}{[required] The destination phone number in E.164 format.}
 
 \item{OriginationIdentity}{[required] The origination identity to use for the voice call. This can be the
-PhoneNumber, PhoneNumberId, PhoneNumberArn, PoolId, or PoolArn.}
+PhoneNumber, PhoneNumberId, PhoneNumberArn, PoolId, or PoolArn.
+
+If you are using a shared AWS End User Messaging SMS and Voice resource
+then you must use the full Amazon Resource Name(ARN).}
 
 \item{MessageBody}{The text to convert to a voice message.}
 
@@ -51,6 +55,10 @@ logged to the event destination.}
 to the end recipient.}
 
 \item{ProtectConfigurationId}{The unique identifier for the protect configuration.}
+
+\item{MessageFeedbackEnabled}{Set to true to enable message feedback for the message. When a user
+receives the message you need to update the message status using
+\code{\link[=pinpointsmsvoicev2_put_message_feedback]{put_message_feedback}}.}
 }
 \description{
 Allows you to send a request that sends a voice message. This operation uses \href{https://aws.amazon.com/polly/}{Amazon Polly} to convert a text script into a voice message.

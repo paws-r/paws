@@ -61,7 +61,8 @@ includes the JSON formatting characters of the override structure.}
 service to the task. If no value is specified, the tags aren't
 propagated.}
 
-\item{referenceId}{The reference ID to use for the task.}
+\item{referenceId}{This parameter is only used by Amazon ECS. It is not intended for use by
+customers.}
 
 \item{startedBy}{An optional tag specified when a task is started. For example, if you
 automatically trigger a task to run a batch process job, you could apply

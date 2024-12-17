@@ -27,6 +27,7 @@ rds_create_db_instance_read_replica(
   KmsKeyId = NULL,
   PreSignedUrl = NULL,
   EnableIAMDatabaseAuthentication = NULL,
+  DatabaseInsightsMode = NULL,
   EnablePerformanceInsights = NULL,
   PerformanceInsightsKMSKeyId = NULL,
   PerformanceInsightsRetentionPeriod = NULL,
@@ -50,8 +51,7 @@ rds_create_db_instance_read_replica(
   SourceDBClusterIdentifier = NULL,
   DedicatedLogVolume = NULL,
   UpgradeStorageConfig = NULL,
-  CACertificateIdentifier = NULL,
-  SourceRegion = NULL
+  CACertificateIdentifier = NULL
 )
 }
 \arguments{
@@ -134,17 +134,24 @@ source.
 
 This setting doesn't apply to RDS Custom DB instances.}
 
-\item{DBParameterGroupName}{The name of the DB parameter group to associate with this DB instance.
+\item{DBParameterGroupName}{The name of the DB parameter group to associate with this read replica
+DB instance.
 
-If you don't specify a value for \code{DBParameterGroupName}, then Amazon RDS
-uses the \code{DBParameterGroup} of the source DB instance for a same Region
-read replica, or the default \code{DBParameterGroup} for the specified DB
-engine for a cross-Region read replica.
+For Single-AZ or Multi-AZ DB instance read replica instances, if you
+don't specify a value for \code{DBParameterGroupName}, then Amazon RDS uses
+the \code{DBParameterGroup} of the source DB instance for a same Region read
+replica, or the default \code{DBParameterGroup} for the specified DB engine
+for a cross-Region read replica.
+
+For Multi-AZ DB cluster same Region read replica instances, if you don't
+specify a value for \code{DBParameterGroupName}, then Amazon RDS uses the
+default \code{DBParameterGroup}.
 
 Specifying a parameter group for this operation is only supported for
-MySQL DB instances for cross-Region read replicas and for Oracle DB
-instances. It isn't supported for MySQL DB instances for same Region
-read replicas or for RDS Custom.
+MySQL DB instances for cross-Region read replicas, for Multi-AZ DB
+cluster read replica instances, and for Oracle DB instances. It isn't
+supported for MySQL DB instances for same Region read replicas or for
+RDS Custom.
 
 Constraints:
 \itemize{
@@ -330,13 +337,7 @@ specifying \code{PreSignedUrl} manually. Specifying \code{SourceRegion}
 autogenerates a presigned URL that is a valid request for the operation
 that can run in the source Amazon Web Services Region.
 
-\code{SourceRegion} isn't supported for SQL Server, because Amazon RDS for
-SQL Server doesn't support cross-Region read replicas.
-
-This setting doesn't apply to RDS Custom DB instances.
-
-If you supply a value for this operation's \code{SourceRegion} parameter, a
-pre-signed URL will be calculated on your behalf.}
+This setting doesn't apply to RDS Custom DB instances.}
 
 \item{EnableIAMDatabaseAuthentication}{Specifies whether to enable mapping of Amazon Web Services Identity and
 Access Management (IAM) accounts to database accounts. By default,
@@ -346,6 +347,8 @@ For more information about IAM database authentication, see \href{https://docs.a
 in the \emph{Amazon RDS User Guide}.
 
 This setting doesn't apply to RDS Custom DB instances.}
+
+\item{DatabaseInsightsMode}{Specifies the mode of Database Insights.}
 
 \item{EnablePerformanceInsights}{Specifies whether to enable Performance Insights for the read replica.
 
@@ -570,8 +573,6 @@ This setting doesn't apply to RDS Custom DB instances.
 For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.SSL.html}{Using SSL/TLS to encrypt a connection to a DB instance}
 in the \emph{Amazon RDS User Guide} and \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.SSL.html}{Using SSL/TLS to encrypt a connection to a DB cluster}
 in the \emph{Amazon Aurora User Guide}.}
-
-\item{SourceRegion}{The ID of the region that contains the source for the read replica.}
 }
 \description{
 Creates a new DB instance that acts as a read replica for an existing source DB instance or Multi-AZ DB cluster. You can create a read replica for a DB instance running Db2, MariaDB, MySQL, Oracle, PostgreSQL, or SQL Server. You can create a read replica for a Multi-AZ DB cluster running MySQL or PostgreSQL. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReadRepl.html}{Working with read replicas} and \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/multi-az-db-clusters-concepts.html#multi-az-db-clusters-migrating-to-instance-with-read-replica}{Migrating from a Multi-AZ DB cluster to a DB instance using a read replica} in the \emph{Amazon RDS User Guide}.

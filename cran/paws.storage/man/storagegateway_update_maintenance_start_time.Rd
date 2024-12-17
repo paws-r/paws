@@ -43,7 +43,11 @@ Includes \code{AutomaticUpdatePolicy} field with the following inputs:
 \code{ALL_VERSIONS} - Enables regular gateway maintenance updates.
 
 \code{EMERGENCY_VERSIONS_ONLY} - Disables regular gateway maintenance
-updates.}
+updates. The gateway will still receive emergency version updates on
+rare occasions if necessary to remedy highly critical security or
+durability issues. You will be notified before an emergency version
+update is applied. These updates are applied during your gateway's
+scheduled maintenance window.}
 }
 \description{
 Updates a gateway's maintenance window schedule, with settings for monthly or weekly cadence, specific day and time to begin maintenance, and which types of updates to apply. Time configuration uses the gateway's time zone. You can pass values for a complete maintenance schedule, or update policy, or both. Previous values will persist for whichever setting you choose not to modify. If an incomplete or invalid maintenance schedule is passed, the entire request will be rejected with an error and no changes will occur.

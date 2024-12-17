@@ -55,11 +55,12 @@ kinesis_add_tags_to_stream <- function(StreamName = NULL, Tags, StreamARN = NULL
 #' @param StreamModeDetails Indicates the capacity mode of the data stream. Currently, in Kinesis
 #' Data Streams, you can choose between an **on-demand** capacity mode and
 #' a **provisioned** capacity mode for your data streams.
+#' @param Tags A set of up to 10 key-value pairs to use to create the tags.
 #'
 #' @keywords internal
 #'
 #' @rdname kinesis_create_stream
-kinesis_create_stream <- function(StreamName, ShardCount = NULL, StreamModeDetails = NULL) {
+kinesis_create_stream <- function(StreamName, ShardCount = NULL, StreamModeDetails = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateStream",
     http_method = "POST",
@@ -68,7 +69,7 @@ kinesis_create_stream <- function(StreamName, ShardCount = NULL, StreamModeDetai
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .kinesis$create_stream_input(StreamName = StreamName, ShardCount = ShardCount, StreamModeDetails = StreamModeDetails)
+  input <- .kinesis$create_stream_input(StreamName = StreamName, ShardCount = ShardCount, StreamModeDetails = StreamModeDetails, Tags = Tags)
   output <- .kinesis$create_stream_output()
   config <- get_config()
   svc <- .kinesis$service(config, op)
@@ -284,7 +285,7 @@ kinesis_describe_stream <- function(StreamName = NULL, Limit = NULL, ExclusiveSt
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "ExclusiveStartShardId", limit_key = "Limit", more_results = "StreamDescription.HasMoreShards", output_token = "StreamDescription.Shards[-1].ShardId", result_key = "StreamDescription.Shards"),
+    paginator = list(input_token = "ExclusiveStartShardId", limit_key = "Limit", more_results = "StreamDescription.HasMoreShards", output_token = "StreamDescription.Shards[-1].ShardId", result_key = "StreamDescription.Shards", non_aggregate_keys = list( "StreamDescription.StreamARN", "StreamDescription.StreamName", "StreamDescription.StreamStatus", "StreamDescription.RetentionPeriodHours", "StreamDescription.EnhancedMonitoring", "StreamDescription.EncryptionType", "StreamDescription.KeyId", "StreamDescription.StreamCreationTimestamp")),
     stream_api = FALSE
   )
   input <- .kinesis$describe_stream_input(StreamName = StreamName, Limit = Limit, ExclusiveStartShardId = ExclusiveStartShardId, StreamARN = StreamARN)
@@ -746,7 +747,7 @@ kinesis_list_shards <- function(StreamName = NULL, NextToken = NULL, ExclusiveSt
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Shards"),
     stream_api = FALSE
   )
   input <- .kinesis$list_shards_input(StreamName = StreamName, NextToken = NextToken, ExclusiveStartShardId = ExclusiveStartShardId, MaxResults = MaxResults, StreamCreationTimestamp = StreamCreationTimestamp, ShardFilter = ShardFilter, StreamARN = StreamARN)
@@ -818,7 +819,7 @@ kinesis_list_stream_consumers <- function(StreamARN, NextToken = NULL, MaxResult
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Consumers"),
     stream_api = FALSE
   )
   input <- .kinesis$list_stream_consumers_input(StreamARN = StreamARN, NextToken = NextToken, MaxResults = MaxResults, StreamCreationTimestamp = StreamCreationTimestamp)
@@ -1065,7 +1066,7 @@ kinesis_put_resource_policy <- function(ResourceARN, Policy) {
 #' Registers a consumer with a Kinesis data stream
 #'
 #' @description
-#' Registers a consumer with a Kinesis data stream. When you use this operation, the consumer you register can then call SubscribeToShard to receive data from the stream using enhanced fan-out, at a rate of up to 2 MiB per second for every shard you subscribe to. This rate is unaffected by the total number of consumers that read from the same stream.
+#' Registers a consumer with a Kinesis data stream. When you use this operation, the consumer you register can then call [`subscribe_to_shard`][kinesis_subscribe_to_shard] to receive data from the stream using enhanced fan-out, at a rate of up to 2 MiB per second for every shard you subscribe to. This rate is unaffected by the total number of consumers that read from the same stream.
 #'
 #' See [https://www.paws-r-sdk.com/docs/kinesis_register_stream_consumer/](https://www.paws-r-sdk.com/docs/kinesis_register_stream_consumer/) for full documentation.
 #'
@@ -1275,6 +1276,43 @@ kinesis_stop_stream_encryption <- function(StreamName = NULL, EncryptionType, Ke
   return(response)
 }
 .kinesis$operations$stop_stream_encryption <- kinesis_stop_stream_encryption
+
+#' This operation establishes an HTTP/2 connection between the consumer you
+#' specify in the ConsumerARN parameter and the shard you specify in the
+#' ShardId parameter
+#'
+#' @description
+#' This operation establishes an HTTP/2 connection between the consumer you specify in the `ConsumerARN` parameter and the shard you specify in the `ShardId` parameter. After the connection is successfully established, Kinesis Data Streams pushes records from the shard to the consumer over this connection. Before you call this operation, call [`register_stream_consumer`][kinesis_register_stream_consumer] to register the consumer with Kinesis Data Streams.
+#'
+#' See [https://www.paws-r-sdk.com/docs/kinesis_subscribe_to_shard/](https://www.paws-r-sdk.com/docs/kinesis_subscribe_to_shard/) for full documentation.
+#'
+#' @param ConsumerARN &#91;required&#93; For this parameter, use the value you obtained when you called
+#' [`register_stream_consumer`][kinesis_register_stream_consumer].
+#' @param ShardId &#91;required&#93; The ID of the shard you want to subscribe to. To see a list of all the
+#' shards for a given stream, use [`list_shards`][kinesis_list_shards].
+#' @param StartingPosition &#91;required&#93; The starting position in the data stream from which to start streaming.
+#'
+#' @keywords internal
+#'
+#' @rdname kinesis_subscribe_to_shard
+kinesis_subscribe_to_shard <- function(ConsumerARN, ShardId, StartingPosition) {
+  op <- new_operation(
+    name = "SubscribeToShard",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = TRUE
+  )
+  input <- .kinesis$subscribe_to_shard_input(ConsumerARN = ConsumerARN, ShardId = ShardId, StartingPosition = StartingPosition)
+  output <- .kinesis$subscribe_to_shard_output()
+  config <- get_config()
+  svc <- .kinesis$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kinesis$operations$subscribe_to_shard <- kinesis_subscribe_to_shard
 
 #' Updates the shard count of the specified stream to the specified number
 #' of shards

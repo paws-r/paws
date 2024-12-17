@@ -2,7 +2,7 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_get_bucket_lifecycle_configuration}
 \alias{s3_get_bucket_lifecycle_configuration}
-\title{This operation is not supported by directory buckets}
+\title{Returns the lifecycle configuration information set on the bucket}
 \usage{
 s3_get_bucket_lifecycle_configuration(Bucket, ExpectedBucketOwner = NULL)
 }
@@ -11,10 +11,13 @@ s3_get_bucket_lifecycle_configuration(Bucket, ExpectedBucketOwner = NULL)
 
 \item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the account ID that you
 provide does not match the actual owner of the bucket, the request fails
-with the HTTP status code \verb{403 Forbidden} (access denied).}
+with the HTTP status code \verb{403 Forbidden} (access denied).
+
+This parameter applies to general purpose buckets only. It is not
+supported for directory bucket lifecycle configurations.}
 }
 \description{
-This operation is not supported by directory buckets.
+Returns the lifecycle configuration information set on the bucket. For information about lifecycle configuration, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lifecycle-mgmt.html}{Object Lifecycle Management}.
 
 See \url{https://www.paws-r-sdk.com/docs/s3_get_bucket_lifecycle_configuration/} for full documentation.
 }

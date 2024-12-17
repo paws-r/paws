@@ -19,7 +19,7 @@ configservice_describe_compliance_by_config_rule(
 the next page of results in a paginated response.}
 }
 \description{
-Indicates whether the specified Config rules are compliant. If a rule is noncompliant, this action returns the number of Amazon Web Services resources that do not comply with the rule.
+Indicates whether the specified Config rules are compliant. If a rule is noncompliant, this operation returns the number of Amazon Web Services resources that do not comply with the rule.
 
 See \url{https://www.paws-r-sdk.com/docs/configservice_describe_compliance_by_config_rule/} for full documentation.
 }

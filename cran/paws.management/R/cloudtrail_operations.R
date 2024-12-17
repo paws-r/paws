@@ -3,22 +3,25 @@
 #' @include cloudtrail_service.R
 NULL
 
-#' Adds one or more tags to a trail, event data store, or channel, up to a
-#' limit of 50
+#' Adds one or more tags to a trail, event data store, dashboard, or
+#' channel, up to a limit of 50
 #'
 #' @description
-#' Adds one or more tags to a trail, event data store, or channel, up to a limit of 50. Overwrites an existing tag's value when a new value is specified for an existing tag key. Tag key names must be unique; you cannot have two keys with the same name but different values. If you specify a key without a value, the tag will be created with the specified key and a value of null. You can tag a trail or event data store that applies to all Amazon Web Services Regions only from the Region in which the trail or event data store was created (also known as its home Region).
+#' Adds one or more tags to a trail, event data store, dashboard, or channel, up to a limit of 50. Overwrites an existing tag's value when a new value is specified for an existing tag key. Tag key names must be unique; you cannot have two keys with the same name but different values. If you specify a key without a value, the tag will be created with the specified key and a value of null. You can tag a trail or event data store that applies to all Amazon Web Services Regions only from the Region in which the trail or event data store was created (also known as its home Region).
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudtrail_add_tags/](https://www.paws-r-sdk.com/docs/cloudtrail_add_tags/) for full documentation.
 #'
-#' @param ResourceId &#91;required&#93; Specifies the ARN of the trail, event data store, or channel to which
-#' one or more tags will be added.
+#' @param ResourceId &#91;required&#93; Specifies the ARN of the trail, event data store, dashboard, or channel
+#' to which one or more tags will be added.
 #' 
 #' The format of a trail ARN is:
 #' `arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail`
 #' 
 #' The format of an event data store ARN is:
 #' `arn:aws:cloudtrail:us-east-2:123456789012:eventdatastore/EXAMPLE-f852-4e8f-8bd1-bcf6cEXAMPLE`
+#' 
+#' The format of a dashboard ARN is:
+#' `arn:aws:cloudtrail:us-east-1:123456789012:dashboard/exampleDash`
 #' 
 #' The format of a channel ARN is:
 #' `arn:aws:cloudtrail:us-east-2:123456789012:channel/01234567890`
@@ -58,11 +61,12 @@ cloudtrail_add_tags <- function(ResourceId, TagsList) {
 #' the specified query is running.
 #' @param QueryId &#91;required&#93; The ID of the query that you want to cancel. The `QueryId` comes from
 #' the response of a [`start_query`][cloudtrail_start_query] operation.
+#' @param EventDataStoreOwnerAccountId The account ID of the event data store owner.
 #'
 #' @keywords internal
 #'
 #' @rdname cloudtrail_cancel_query
-cloudtrail_cancel_query <- function(EventDataStore = NULL, QueryId) {
+cloudtrail_cancel_query <- function(EventDataStore = NULL, QueryId, EventDataStoreOwnerAccountId = NULL) {
   op <- new_operation(
     name = "CancelQuery",
     http_method = "POST",
@@ -71,7 +75,7 @@ cloudtrail_cancel_query <- function(EventDataStore = NULL, QueryId) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .cloudtrail$cancel_query_input(EventDataStore = EventDataStore, QueryId = QueryId)
+  input <- .cloudtrail$cancel_query_input(EventDataStore = EventDataStore, QueryId = QueryId, EventDataStoreOwnerAccountId = EventDataStoreOwnerAccountId)
   output <- .cloudtrail$cancel_query_output()
   config <- get_config()
   svc <- .cloudtrail$service(config, op)
@@ -125,6 +129,53 @@ cloudtrail_create_channel <- function(Name, Source, Destinations, Tags = NULL) {
   return(response)
 }
 .cloudtrail$operations$create_channel <- cloudtrail_create_channel
+
+#' Creates a custom dashboard or the Highlights dashboard
+#'
+#' @description
+#' Creates a custom dashboard or the Highlights dashboard.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudtrail_create_dashboard/](https://www.paws-r-sdk.com/docs/cloudtrail_create_dashboard/) for full documentation.
+#'
+#' @param Name &#91;required&#93; The name of the dashboard. The name must be unique to your account.
+#' 
+#' To create the Highlights dashboard, the name must be
+#' `AWSCloudTrail-Highlights`.
+#' @param RefreshSchedule The refresh schedule configuration for the dashboard.
+#' 
+#' To create the Highlights dashboard, you must set a refresh schedule and
+#' set the `Status` to `ENABLED`. The `Unit` for the refresh schedule must
+#' be `HOURS` and the `Value` must be `6`.
+#' @param TagsList 
+#' @param TerminationProtectionEnabled Specifies whether termination protection is enabled for the dashboard.
+#' If termination protection is enabled, you cannot delete the dashboard
+#' until termination protection is disabled.
+#' @param Widgets An array of widgets for a custom dashboard. A custom dashboard can have
+#' a maximum of ten widgets.
+#' 
+#' You do not need to specify widgets for the Highlights dashboard.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudtrail_create_dashboard
+cloudtrail_create_dashboard <- function(Name, RefreshSchedule = NULL, TagsList = NULL, TerminationProtectionEnabled = NULL, Widgets = NULL) {
+  op <- new_operation(
+    name = "CreateDashboard",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudtrail$create_dashboard_input(Name = Name, RefreshSchedule = RefreshSchedule, TagsList = TagsList, TerminationProtectionEnabled = TerminationProtectionEnabled, Widgets = Widgets)
+  output <- .cloudtrail$create_dashboard_output()
+  config <- get_config()
+  svc <- .cloudtrail$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudtrail$operations$create_dashboard <- cloudtrail_create_dashboard
 
 #' Creates a new event data store
 #'
@@ -391,6 +442,37 @@ cloudtrail_delete_channel <- function(Channel) {
 }
 .cloudtrail$operations$delete_channel <- cloudtrail_delete_channel
 
+#' Deletes the specified dashboard
+#'
+#' @description
+#' Deletes the specified dashboard. You cannot delete a dashboard that has termination protection enabled.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudtrail_delete_dashboard/](https://www.paws-r-sdk.com/docs/cloudtrail_delete_dashboard/) for full documentation.
+#'
+#' @param DashboardId &#91;required&#93; The name or ARN for the dashboard.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudtrail_delete_dashboard
+cloudtrail_delete_dashboard <- function(DashboardId) {
+  op <- new_operation(
+    name = "DeleteDashboard",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudtrail$delete_dashboard_input(DashboardId = DashboardId)
+  output <- .cloudtrail$delete_dashboard_output()
+  config <- get_config()
+  svc <- .cloudtrail$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudtrail$operations$delete_dashboard <- cloudtrail_delete_dashboard
+
 #' Disables the event data store specified by EventDataStore, which accepts
 #' an event data store ARN
 #'
@@ -423,17 +505,25 @@ cloudtrail_delete_event_data_store <- function(EventDataStore) {
 }
 .cloudtrail$operations$delete_event_data_store <- cloudtrail_delete_event_data_store
 
-#' Deletes the resource-based policy attached to the CloudTrail channel
+#' Deletes the resource-based policy attached to the CloudTrail event data
+#' store, dashboard, or channel
 #'
 #' @description
-#' Deletes the resource-based policy attached to the CloudTrail channel.
+#' Deletes the resource-based policy attached to the CloudTrail event data store, dashboard, or channel.
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudtrail_delete_resource_policy/](https://www.paws-r-sdk.com/docs/cloudtrail_delete_resource_policy/) for full documentation.
 #'
-#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the CloudTrail channel you're deleting
-#' the resource-based policy from. The following is the format of a
-#' resource ARN:
-#' `arn:aws:cloudtrail:us-east-2:123456789012:channel/MyChannel`.
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the CloudTrail event data store,
+#' dashboard, or channel you're deleting the resource-based policy from.
+#' 
+#' Example event data store ARN format:
+#' `arn:aws:cloudtrail:us-east-2:123456789012:eventdatastore/EXAMPLE-f852-4e8f-8bd1-bcf6cEXAMPLE`
+#' 
+#' Example dashboard ARN format:
+#' `arn:aws:cloudtrail:us-east-1:123456789012:dashboard/exampleDash`
+#' 
+#' Example channel ARN format:
+#' `arn:aws:cloudtrail:us-east-2:123456789012:channel/01234567890`
 #'
 #' @keywords internal
 #'
@@ -535,11 +625,13 @@ cloudtrail_deregister_organization_delegated_admin <- function(DelegatedAdminAcc
 #' the specified query was run.
 #' @param QueryId The query ID.
 #' @param QueryAlias The alias that identifies a query template.
+#' @param RefreshId The ID of the dashboard refresh.
+#' @param EventDataStoreOwnerAccountId The account ID of the event data store owner.
 #'
 #' @keywords internal
 #'
 #' @rdname cloudtrail_describe_query
-cloudtrail_describe_query <- function(EventDataStore = NULL, QueryId = NULL, QueryAlias = NULL) {
+cloudtrail_describe_query <- function(EventDataStore = NULL, QueryId = NULL, QueryAlias = NULL, RefreshId = NULL, EventDataStoreOwnerAccountId = NULL) {
   op <- new_operation(
     name = "DescribeQuery",
     http_method = "POST",
@@ -548,7 +640,7 @@ cloudtrail_describe_query <- function(EventDataStore = NULL, QueryId = NULL, Que
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .cloudtrail$describe_query_input(EventDataStore = EventDataStore, QueryId = QueryId, QueryAlias = QueryAlias)
+  input <- .cloudtrail$describe_query_input(EventDataStore = EventDataStore, QueryId = QueryId, QueryAlias = QueryAlias, RefreshId = RefreshId, EventDataStoreOwnerAccountId = EventDataStoreOwnerAccountId)
   output <- .cloudtrail$describe_query_output()
   config <- get_config()
   svc <- .cloudtrail$service(config, op)
@@ -601,7 +693,7 @@ cloudtrail_describe_trails <- function(trailNameList = NULL, includeShadowTrails
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "trailList"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .cloudtrail$describe_trails_input(trailNameList = trailNameList, includeShadowTrails = includeShadowTrails)
@@ -683,6 +775,42 @@ cloudtrail_enable_federation <- function(EventDataStore, FederationRoleArn) {
 }
 .cloudtrail$operations$enable_federation <- cloudtrail_enable_federation
 
+#' Generates a query from a natural language prompt
+#'
+#' @description
+#' Generates a query from a natural language prompt. This operation uses generative artificial intelligence (generative AI) to produce a ready-to-use SQL query from the prompt.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudtrail_generate_query/](https://www.paws-r-sdk.com/docs/cloudtrail_generate_query/) for full documentation.
+#'
+#' @param EventDataStores &#91;required&#93; The ARN (or ID suffix of the ARN) of the event data store that you want
+#' to query. You can only specify one event data store.
+#' @param Prompt &#91;required&#93; The prompt that you want to use to generate the query. The prompt must
+#' be in English. For example prompts, see [Example
+#' prompts](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/lake-query-generator.html#lake-query-generator-examples)
+#' in the *CloudTrail* user guide.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudtrail_generate_query
+cloudtrail_generate_query <- function(EventDataStores, Prompt) {
+  op <- new_operation(
+    name = "GenerateQuery",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudtrail$generate_query_input(EventDataStores = EventDataStores, Prompt = Prompt)
+  output <- .cloudtrail$generate_query_output()
+  config <- get_config()
+  svc <- .cloudtrail$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudtrail$operations$generate_query <- cloudtrail_generate_query
+
 #' Returns information about a specific channel
 #'
 #' @description
@@ -713,6 +841,37 @@ cloudtrail_get_channel <- function(Channel) {
   return(response)
 }
 .cloudtrail$operations$get_channel <- cloudtrail_get_channel
+
+#' Returns the specified dashboard
+#'
+#' @description
+#' Returns the specified dashboard.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudtrail_get_dashboard/](https://www.paws-r-sdk.com/docs/cloudtrail_get_dashboard/) for full documentation.
+#'
+#' @param DashboardId &#91;required&#93; The name or ARN for the dashboard.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudtrail_get_dashboard
+cloudtrail_get_dashboard <- function(DashboardId) {
+  op <- new_operation(
+    name = "GetDashboard",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudtrail$get_dashboard_input(DashboardId = DashboardId)
+  output <- .cloudtrail$get_dashboard_output()
+  config <- get_config()
+  svc <- .cloudtrail$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudtrail$operations$get_dashboard <- cloudtrail_get_dashboard
 
 #' Returns information about an event data store specified as either an ARN
 #' or the ID portion of the ARN
@@ -894,20 +1053,21 @@ cloudtrail_get_insight_selectors <- function(TrailName = NULL, EventDataStore = 
 #' @param QueryId &#91;required&#93; The ID of the query for which you want to get results.
 #' @param NextToken A token you can use to get the next page of query results.
 #' @param MaxQueryResults The maximum number of query results to display on a single page.
+#' @param EventDataStoreOwnerAccountId The account ID of the event data store owner.
 #'
 #' @keywords internal
 #'
 #' @rdname cloudtrail_get_query_results
-cloudtrail_get_query_results <- function(EventDataStore = NULL, QueryId, NextToken = NULL, MaxQueryResults = NULL) {
+cloudtrail_get_query_results <- function(EventDataStore = NULL, QueryId, NextToken = NULL, MaxQueryResults = NULL, EventDataStoreOwnerAccountId = NULL) {
   op <- new_operation(
     name = "GetQueryResults",
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken"),
+    paginator = list(),
     stream_api = FALSE
   )
-  input <- .cloudtrail$get_query_results_input(EventDataStore = EventDataStore, QueryId = QueryId, NextToken = NextToken, MaxQueryResults = MaxQueryResults)
+  input <- .cloudtrail$get_query_results_input(EventDataStore = EventDataStore, QueryId = QueryId, NextToken = NextToken, MaxQueryResults = MaxQueryResults, EventDataStoreOwnerAccountId = EventDataStoreOwnerAccountId)
   output <- .cloudtrail$get_query_results_output()
   config <- get_config()
   svc <- .cloudtrail$service(config, op)
@@ -918,16 +1078,24 @@ cloudtrail_get_query_results <- function(EventDataStore = NULL, QueryId, NextTok
 .cloudtrail$operations$get_query_results <- cloudtrail_get_query_results
 
 #' Retrieves the JSON text of the resource-based policy document attached
-#' to the CloudTrail channel
+#' to the CloudTrail event data store, dashboard, or channel
 #'
 #' @description
-#' Retrieves the JSON text of the resource-based policy document attached to the CloudTrail channel.
+#' Retrieves the JSON text of the resource-based policy document attached to the CloudTrail event data store, dashboard, or channel.
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudtrail_get_resource_policy/](https://www.paws-r-sdk.com/docs/cloudtrail_get_resource_policy/) for full documentation.
 #'
-#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the CloudTrail channel attached to the
-#' resource-based policy. The following is the format of a resource ARN:
-#' `arn:aws:cloudtrail:us-east-2:123456789012:channel/MyChannel`.
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the CloudTrail event data store,
+#' dashboard, or channel attached to the resource-based policy.
+#' 
+#' Example event data store ARN format:
+#' `arn:aws:cloudtrail:us-east-2:123456789012:eventdatastore/EXAMPLE-f852-4e8f-8bd1-bcf6cEXAMPLE`
+#' 
+#' Example dashboard ARN format:
+#' `arn:aws:cloudtrail:us-east-1:123456789012:dashboard/exampleDash`
+#' 
+#' Example channel ARN format:
+#' `arn:aws:cloudtrail:us-east-2:123456789012:channel/01234567890`
 #'
 #' @keywords internal
 #'
@@ -992,10 +1160,14 @@ cloudtrail_get_trail <- function(Name) {
 #'
 #' @param Name &#91;required&#93; Specifies the name or the CloudTrail ARN of the trail for which you are
 #' requesting status. To get the status of a shadow trail (a replication of
-#' the trail in another Region), you must specify its ARN. The following is
-#' the format of a trail ARN.
+#' the trail in another Region), you must specify its ARN.
 #' 
+#' The following is the format of a trail ARN:
 #' `arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail`
+#' 
+#' If the trail is an organization trail and you are a member account in
+#' the organization in Organizations, you must provide the full ARN of that
+#' trail, and not just the name.
 #'
 #' @keywords internal
 #'
@@ -1042,7 +1214,7 @@ cloudtrail_list_channels <- function(MaxResults = NULL, NextToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .cloudtrail$list_channels_input(MaxResults = MaxResults, NextToken = NextToken)
@@ -1054,6 +1226,41 @@ cloudtrail_list_channels <- function(MaxResults = NULL, NextToken = NULL) {
   return(response)
 }
 .cloudtrail$operations$list_channels <- cloudtrail_list_channels
+
+#' Returns information about all dashboards in the account, in the current
+#' Region
+#'
+#' @description
+#' Returns information about all dashboards in the account, in the current Region.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudtrail_list_dashboards/](https://www.paws-r-sdk.com/docs/cloudtrail_list_dashboards/) for full documentation.
+#'
+#' @param NamePrefix Specify a name prefix to filter on.
+#' @param Type Specify a dashboard type to filter on: `CUSTOM` or `MANAGED`.
+#' @param NextToken A token you can use to get the next page of dashboard results.
+#' @param MaxResults The maximum number of dashboards to display on a single page.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudtrail_list_dashboards
+cloudtrail_list_dashboards <- function(NamePrefix = NULL, Type = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListDashboards",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudtrail$list_dashboards_input(NamePrefix = NamePrefix, Type = Type, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .cloudtrail$list_dashboards_output()
+  config <- get_config()
+  svc <- .cloudtrail$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudtrail$operations$list_dashboards <- cloudtrail_list_dashboards
 
 #' Returns information about all event data stores in the account, in the
 #' current Region
@@ -1075,7 +1282,7 @@ cloudtrail_list_event_data_stores <- function(NextToken = NULL, MaxResults = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .cloudtrail$list_event_data_stores_input(NextToken = NextToken, MaxResults = MaxResults)
@@ -1191,9 +1398,9 @@ cloudtrail_list_imports <- function(MaxResults = NULL, Destination = NULL, Impor
 #' @param Period Granularity of data to retrieve, in seconds. Valid values are `60`,
 #' `300`, and `3600`. If you specify any other value, you will get an
 #' error. The default is 3600 seconds.
-#' @param DataType Type of datapoints to return. Valid values are `NonZeroData` and
+#' @param DataType Type of data points to return. Valid values are `NonZeroData` and
 #' `FillWithZeros`. The default is `NonZeroData`.
-#' @param MaxResults The maximum number of datapoints to return. Valid values are integers
+#' @param MaxResults The maximum number of data points to return. Valid values are integers
 #' from 1 to 21600. The default value is 21600.
 #' @param NextToken Returned if all datapoints can't be returned in a single call. For
 #' example, due to reaching `MaxResults`.
@@ -1210,7 +1417,7 @@ cloudtrail_list_insights_metric_data <- function(EventSource, EventName, Insight
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .cloudtrail$list_insights_metric_data_input(EventSource = EventSource, EventName = EventName, InsightType = InsightType, ErrorCode = ErrorCode, StartTime = StartTime, EndTime = EndTime, Period = Period, DataType = DataType, MaxResults = MaxResults, NextToken = NextToken)
@@ -1291,7 +1498,7 @@ cloudtrail_list_queries <- function(EventDataStore, NextToken = NULL, MaxResults
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .cloudtrail$list_queries_input(EventDataStore = EventDataStore, NextToken = NextToken, MaxResults = MaxResults, StartTime = StartTime, EndTime = EndTime, QueryStatus = QueryStatus)
@@ -1304,22 +1511,25 @@ cloudtrail_list_queries <- function(EventDataStore, NextToken = NULL, MaxResults
 }
 .cloudtrail$operations$list_queries <- cloudtrail_list_queries
 
-#' Lists the tags for the specified trails, event data stores, or channels
-#' in the current Region
+#' Lists the tags for the specified trails, event data stores, dashboards,
+#' or channels in the current Region
 #'
 #' @description
-#' Lists the tags for the specified trails, event data stores, or channels in the current Region.
+#' Lists the tags for the specified trails, event data stores, dashboards, or channels in the current Region.
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudtrail_list_tags/](https://www.paws-r-sdk.com/docs/cloudtrail_list_tags/) for full documentation.
 #'
-#' @param ResourceIdList &#91;required&#93; Specifies a list of trail, event data store, or channel ARNs whose tags
-#' will be listed. The list has a limit of 20 ARNs.
+#' @param ResourceIdList &#91;required&#93; Specifies a list of trail, event data store, dashboard, or channel ARNs
+#' whose tags will be listed. The list has a limit of 20 ARNs.
 #' 
 #' Example trail ARN format:
 #' `arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail`
 #' 
 #' Example event data store ARN format:
 #' `arn:aws:cloudtrail:us-east-2:123456789012:eventdatastore/EXAMPLE-f852-4e8f-8bd1-bcf6cEXAMPLE`
+#' 
+#' Example dashboard ARN format:
+#' `arn:aws:cloudtrail:us-east-1:123456789012:dashboard/exampleDash`
 #' 
 #' Example channel ARN format:
 #' `arn:aws:cloudtrail:us-east-2:123456789012:channel/01234567890`
@@ -1419,7 +1629,7 @@ cloudtrail_lookup_events <- function(LookupAttributes = NULL, StartTime = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Events"),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Events"),
     stream_api = FALSE
   )
   input <- .cloudtrail$lookup_events_input(LookupAttributes = LookupAttributes, StartTime = StartTime, EndTime = EndTime, EventCategory = EventCategory, MaxResults = MaxResults, NextToken = NextToken)
@@ -1432,10 +1642,11 @@ cloudtrail_lookup_events <- function(LookupAttributes = NULL, StartTime = NULL, 
 }
 .cloudtrail$operations$lookup_events <- cloudtrail_lookup_events
 
-#' Configures an event selector or advanced event selectors for your trail
+#' Configures event selectors (also referred to as basic event selectors)
+#' or advanced event selectors for your trail
 #'
 #' @description
-#' Configures an event selector or advanced event selectors for your trail. Use event selectors or advanced event selectors to specify management and data event settings for your trail. If you want your trail to log Insights events, be sure the event selector enables logging of the Insights event types you want configured for your trail. For more information about logging Insights events, see [Logging Insights events](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-insights-events-with-cloudtrail.html) in the *CloudTrail User Guide*. By default, trails created without specific event selectors are configured to log all read and write management events, and no data events.
+#' Configures event selectors (also referred to as *basic event selectors*) or advanced event selectors for your trail. You can use either `AdvancedEventSelectors` or `EventSelectors`, but not both. If you apply `AdvancedEventSelectors` to a trail, any existing `EventSelectors` are overwritten.
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudtrail_put_event_selectors/](https://www.paws-r-sdk.com/docs/cloudtrail_put_event_selectors/) for full documentation.
 #'
@@ -1457,20 +1668,36 @@ cloudtrail_lookup_events <- function(LookupAttributes = NULL, StartTime = NULL, 
 #' If you specify a trail ARN, it must be in the following format.
 #' 
 #' `arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail`
-#' @param EventSelectors Specifies the settings for your event selectors. You can configure up to
-#' five event selectors for a trail. You can use either `EventSelectors` or
-#' `AdvancedEventSelectors` in a
+#' @param EventSelectors Specifies the settings for your event selectors. You can use event
+#' selectors to log management events and data events for the following
+#' resource types:
+#' 
+#' -   `AWS::DynamoDB::Table`
+#' 
+#' -   `AWS::Lambda::Function`
+#' 
+#' -   `AWS::S3::Object`
+#' 
+#' You can't use event selectors to log network activity events.
+#' 
+#' You can configure up to five event selectors for a trail. You can use
+#' either `EventSelectors` or `AdvancedEventSelectors` in a
 #' [`put_event_selectors`][cloudtrail_put_event_selectors] request, but not
 #' both. If you apply `EventSelectors` to a trail, any existing
 #' `AdvancedEventSelectors` are overwritten.
-#' @param AdvancedEventSelectors Specifies the settings for advanced event selectors. You can add
-#' advanced event selectors, and conditions for your advanced event
-#' selectors, up to a maximum of 500 values for all conditions and
+#' @param AdvancedEventSelectors Specifies the settings for advanced event selectors. You can use
+#' advanced event selectors to log management events, data events for all
+#' resource types, and network activity events.
+#' 
+#' You can add advanced event selectors, and conditions for your advanced
+#' event selectors, up to a maximum of 500 values for all conditions and
 #' selectors on a trail. You can use either `AdvancedEventSelectors` or
 #' `EventSelectors`, but not both. If you apply `AdvancedEventSelectors` to
 #' a trail, any existing `EventSelectors` are overwritten. For more
 #' information about advanced event selectors, see [Logging data
 #' events](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html)
+#' and [Logging network activity
+#' events](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-network-events-with-cloudtrail.html)
 #' in the *CloudTrail User Guide*.
 #'
 #' @keywords internal
@@ -1555,30 +1782,32 @@ cloudtrail_put_insight_selectors <- function(TrailName = NULL, InsightSelectors,
 }
 .cloudtrail$operations$put_insight_selectors <- cloudtrail_put_insight_selectors
 
-#' Attaches a resource-based permission policy to a CloudTrail channel that
-#' is used for an integration with an event source outside of Amazon Web
-#' Services
+#' Attaches a resource-based permission policy to a CloudTrail event data
+#' store, dashboard, or channel
 #'
 #' @description
-#' Attaches a resource-based permission policy to a CloudTrail channel that is used for an integration with an event source outside of Amazon Web Services. For more information about resource-based policies, see [CloudTrail resource-based policy examples](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/security_iam_resource-based-policy-examples.html) in the *CloudTrail User Guide*.
+#' Attaches a resource-based permission policy to a CloudTrail event data store, dashboard, or channel. For more information about resource-based policies, see [CloudTrail resource-based policy examples](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/security_iam_resource-based-policy-examples.html) in the *CloudTrail User Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudtrail_put_resource_policy/](https://www.paws-r-sdk.com/docs/cloudtrail_put_resource_policy/) for full documentation.
 #'
-#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the CloudTrail channel attached to the
-#' resource-based policy. The following is the format of a resource ARN:
-#' `arn:aws:cloudtrail:us-east-2:123456789012:channel/MyChannel`.
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the CloudTrail event data store,
+#' dashboard, or channel attached to the resource-based policy.
+#' 
+#' Example event data store ARN format:
+#' `arn:aws:cloudtrail:us-east-2:123456789012:eventdatastore/EXAMPLE-f852-4e8f-8bd1-bcf6cEXAMPLE`
+#' 
+#' Example dashboard ARN format:
+#' `arn:aws:cloudtrail:us-east-1:123456789012:dashboard/exampleDash`
+#' 
+#' Example channel ARN format:
+#' `arn:aws:cloudtrail:us-east-2:123456789012:channel/01234567890`
 #' @param ResourcePolicy &#91;required&#93; A JSON-formatted string for an Amazon Web Services resource-based
 #' policy.
 #' 
-#' The following are requirements for the resource policy:
-#' 
-#' -   Contains only one action: cloudtrail-data:PutAuditEvents
-#' 
-#' -   Contains at least one statement. The policy can have a maximum of 20
-#'     statements.
-#' 
-#' -   Each statement contains at least one principal. A statement can have
-#'     a maximum of 50 principals.
+#' For example resource-based policies, see [CloudTrail resource-based
+#' policy
+#' examples](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/security_iam_resource-based-policy-examples.html)
+#' in the *CloudTrail User Guide*.
 #'
 #' @keywords internal
 #'
@@ -1635,21 +1864,25 @@ cloudtrail_register_organization_delegated_admin <- function(MemberAccountId) {
 }
 .cloudtrail$operations$register_organization_delegated_admin <- cloudtrail_register_organization_delegated_admin
 
-#' Removes the specified tags from a trail, event data store, or channel
+#' Removes the specified tags from a trail, event data store, dashboard, or
+#' channel
 #'
 #' @description
-#' Removes the specified tags from a trail, event data store, or channel.
+#' Removes the specified tags from a trail, event data store, dashboard, or channel.
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudtrail_remove_tags/](https://www.paws-r-sdk.com/docs/cloudtrail_remove_tags/) for full documentation.
 #'
-#' @param ResourceId &#91;required&#93; Specifies the ARN of the trail, event data store, or channel from which
-#' tags should be removed.
+#' @param ResourceId &#91;required&#93; Specifies the ARN of the trail, event data store, dashboard, or channel
+#' from which tags should be removed.
 #' 
 #' Example trail ARN format:
 #' `arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail`
 #' 
 #' Example event data store ARN format:
 #' `arn:aws:cloudtrail:us-east-2:123456789012:eventdatastore/EXAMPLE-f852-4e8f-8bd1-bcf6cEXAMPLE`
+#' 
+#' Example dashboard ARN format:
+#' `arn:aws:cloudtrail:us-east-1:123456789012:dashboard/exampleDash`
 #' 
 #' Example channel ARN format:
 #' `arn:aws:cloudtrail:us-east-2:123456789012:channel/01234567890`
@@ -1710,11 +1943,50 @@ cloudtrail_restore_event_data_store <- function(EventDataStore) {
 }
 .cloudtrail$operations$restore_event_data_store <- cloudtrail_restore_event_data_store
 
+#' Starts a refresh of the specified dashboard
+#'
+#' @description
+#' Starts a refresh of the specified dashboard.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudtrail_start_dashboard_refresh/](https://www.paws-r-sdk.com/docs/cloudtrail_start_dashboard_refresh/) for full documentation.
+#'
+#' @param DashboardId &#91;required&#93; The name or ARN of the dashboard.
+#' @param QueryParameterValues The query parameter values for the dashboard
+#' 
+#' For custom dashboards, the following query parameters are valid:
+#' `$StartTime$`, `$EndTime$`, and `$Period$`.
+#' 
+#' For managed dashboards, the following query parameters are valid:
+#' `$StartTime$`, `$EndTime$`, `$Period$`, and `$EventDataStoreId$`. The
+#' `$EventDataStoreId$` query parameter is required.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudtrail_start_dashboard_refresh
+cloudtrail_start_dashboard_refresh <- function(DashboardId, QueryParameterValues = NULL) {
+  op <- new_operation(
+    name = "StartDashboardRefresh",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudtrail$start_dashboard_refresh_input(DashboardId = DashboardId, QueryParameterValues = QueryParameterValues)
+  output <- .cloudtrail$start_dashboard_refresh_output()
+  config <- get_config()
+  svc <- .cloudtrail$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudtrail$operations$start_dashboard_refresh <- cloudtrail_start_dashboard_refresh
+
 #' Starts the ingestion of live events on an event data store specified as
 #' either an ARN or the ID portion of the ARN
 #'
 #' @description
-#' Starts the ingestion of live events on an event data store specified as either an ARN or the ID portion of the ARN. To start ingestion, the event data store `Status` must be `STOPPED_INGESTION` and the `eventCategory` must be `Management`, `Data`, or `ConfigurationItem`.
+#' Starts the ingestion of live events on an event data store specified as either an ARN or the ID portion of the ARN. To start ingestion, the event data store `Status` must be `STOPPED_INGESTION` and the `eventCategory` must be `Management`, `Data`, `NetworkActivity`, or `ConfigurationItem`.
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudtrail_start_event_data_store_ingestion/](https://www.paws-r-sdk.com/docs/cloudtrail_start_event_data_store_ingestion/) for full documentation.
 #'
@@ -1839,11 +2111,12 @@ cloudtrail_start_logging <- function(Name) {
 #' @param DeliveryS3Uri The URI for the S3 bucket where CloudTrail delivers the query results.
 #' @param QueryAlias The alias that identifies a query template.
 #' @param QueryParameters The query parameters for the specified `QueryAlias`.
+#' @param EventDataStoreOwnerAccountId The account ID of the event data store owner.
 #'
 #' @keywords internal
 #'
 #' @rdname cloudtrail_start_query
-cloudtrail_start_query <- function(QueryStatement = NULL, DeliveryS3Uri = NULL, QueryAlias = NULL, QueryParameters = NULL) {
+cloudtrail_start_query <- function(QueryStatement = NULL, DeliveryS3Uri = NULL, QueryAlias = NULL, QueryParameters = NULL, EventDataStoreOwnerAccountId = NULL) {
   op <- new_operation(
     name = "StartQuery",
     http_method = "POST",
@@ -1852,7 +2125,7 @@ cloudtrail_start_query <- function(QueryStatement = NULL, DeliveryS3Uri = NULL, 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .cloudtrail$start_query_input(QueryStatement = QueryStatement, DeliveryS3Uri = DeliveryS3Uri, QueryAlias = QueryAlias, QueryParameters = QueryParameters)
+  input <- .cloudtrail$start_query_input(QueryStatement = QueryStatement, DeliveryS3Uri = DeliveryS3Uri, QueryAlias = QueryAlias, QueryParameters = QueryParameters, EventDataStoreOwnerAccountId = EventDataStoreOwnerAccountId)
   output <- .cloudtrail$start_query_output()
   config <- get_config()
   svc <- .cloudtrail$service(config, op)
@@ -1866,7 +2139,7 @@ cloudtrail_start_query <- function(QueryStatement = NULL, DeliveryS3Uri = NULL, 
 #' either an ARN or the ID portion of the ARN
 #'
 #' @description
-#' Stops the ingestion of live events on an event data store specified as either an ARN or the ID portion of the ARN. To stop ingestion, the event data store `Status` must be `ENABLED` and the `eventCategory` must be `Management`, `Data`, or `ConfigurationItem`.
+#' Stops the ingestion of live events on an event data store specified as either an ARN or the ID portion of the ARN. To stop ingestion, the event data store `Status` must be `ENABLED` and the `eventCategory` must be `Management`, `Data`, `NetworkActivity`, or `ConfigurationItem`.
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudtrail_stop_event_data_store_ingestion/](https://www.paws-r-sdk.com/docs/cloudtrail_stop_event_data_store_ingestion/) for full documentation.
 #'
@@ -1995,6 +2268,51 @@ cloudtrail_update_channel <- function(Channel, Destinations = NULL, Name = NULL)
   return(response)
 }
 .cloudtrail$operations$update_channel <- cloudtrail_update_channel
+
+#' Updates the specified dashboard
+#'
+#' @description
+#' Updates the specified dashboard.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudtrail_update_dashboard/](https://www.paws-r-sdk.com/docs/cloudtrail_update_dashboard/) for full documentation.
+#'
+#' @param DashboardId &#91;required&#93; The name or ARN of the dashboard.
+#' @param Widgets An array of widgets for the dashboard. A custom dashboard can have a
+#' maximum of 10 widgets.
+#' 
+#' To add new widgets, pass in an array that includes the existing widgets
+#' along with any new widgets. Run the
+#' [`get_dashboard`][cloudtrail_get_dashboard] operation to get the list of
+#' widgets for the dashboard.
+#' 
+#' To remove widgets, pass in an array that includes the existing widgets
+#' minus the widgets you want removed.
+#' @param RefreshSchedule The refresh schedule configuration for the dashboard.
+#' @param TerminationProtectionEnabled Specifies whether termination protection is enabled for the dashboard.
+#' If termination protection is enabled, you cannot delete the dashboard
+#' until termination protection is disabled.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudtrail_update_dashboard
+cloudtrail_update_dashboard <- function(DashboardId, Widgets = NULL, RefreshSchedule = NULL, TerminationProtectionEnabled = NULL) {
+  op <- new_operation(
+    name = "UpdateDashboard",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudtrail$update_dashboard_input(DashboardId = DashboardId, Widgets = Widgets, RefreshSchedule = RefreshSchedule, TerminationProtectionEnabled = TerminationProtectionEnabled)
+  output <- .cloudtrail$update_dashboard_output()
+  config <- get_config()
+  svc <- .cloudtrail$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudtrail$operations$update_dashboard <- cloudtrail_update_dashboard
 
 #' Updates an event data store
 #'

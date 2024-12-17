@@ -33,7 +33,7 @@ of \code{PT3H}. This is the only valid value for this parameter.
 
 The results that are returned are an approximation of the value you
 specify. There is a low probability that the returned results include
-metrics with last published data as much as 40 minutes more than the
+metrics with last published data as much as 50 minutes more than the
 specified time interval.}
 
 \item{IncludeLinkedAccounts}{If you are using this operation in a monitoring account, specify \code{true}

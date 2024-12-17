@@ -5,41 +5,27 @@
 \title{Replaces an entry (rule) in a network ACL}
 \usage{
 ec2_replace_network_acl_entry(
-  CidrBlock = NULL,
   DryRun = NULL,
-  Egress,
-  IcmpTypeCode = NULL,
-  Ipv6CidrBlock = NULL,
   NetworkAclId,
-  PortRange = NULL,
+  RuleNumber,
   Protocol,
   RuleAction,
-  RuleNumber
+  Egress,
+  CidrBlock = NULL,
+  Ipv6CidrBlock = NULL,
+  IcmpTypeCode = NULL,
+  PortRange = NULL
 )
 }
 \arguments{
-\item{CidrBlock}{The IPv4 network range to allow or deny, in CIDR notation (for example
-\verb{172.16.0.0/24}).}
-
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
-\item{Egress}{[required] Indicates whether to replace the egress rule.
-
-Default: If no value is specified, we replace the ingress rule.}
-
-\item{IcmpTypeCode}{ICMP protocol: The ICMP or ICMPv6 type and code. Required if specifying
-protocol 1 (ICMP) or protocol 58 (ICMPv6) with an IPv6 CIDR block.}
-
-\item{Ipv6CidrBlock}{The IPv6 network range to allow or deny, in CIDR notation (for example
-\verb{2001:bd8:1234:1a00::/64}).}
-
 \item{NetworkAclId}{[required] The ID of the ACL.}
 
-\item{PortRange}{TCP or UDP protocols: The range of ports the rule applies to. Required
-if specifying protocol 6 (TCP) or 17 (UDP).}
+\item{RuleNumber}{[required] The rule number of the entry to replace.}
 
 \item{Protocol}{[required] The protocol number. A value of "-1" means all protocols. If you specify
 "-1" or a protocol number other than "6" (TCP), "17" (UDP), or "1"
@@ -52,7 +38,21 @@ type and code.}
 
 \item{RuleAction}{[required] Indicates whether to allow or deny the traffic that matches the rule.}
 
-\item{RuleNumber}{[required] The rule number of the entry to replace.}
+\item{Egress}{[required] Indicates whether to replace the egress rule.
+
+Default: If no value is specified, we replace the ingress rule.}
+
+\item{CidrBlock}{The IPv4 network range to allow or deny, in CIDR notation (for example
+\verb{172.16.0.0/24}).}
+
+\item{Ipv6CidrBlock}{The IPv6 network range to allow or deny, in CIDR notation (for example
+\verb{2001:bd8:1234:1a00::/64}).}
+
+\item{IcmpTypeCode}{ICMP protocol: The ICMP or ICMPv6 type and code. Required if specifying
+protocol 1 (ICMP) or protocol 58 (ICMPv6) with an IPv6 CIDR block.}
+
+\item{PortRange}{TCP or UDP protocols: The range of ports the rule applies to. Required
+if specifying protocol 6 (TCP) or 17 (UDP).}
 }
 \description{
 Replaces an entry (rule) in a network ACL. For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/vpc-network-acls.html}{Network ACLs} in the \emph{Amazon VPC User Guide}.

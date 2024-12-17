@@ -70,9 +70,11 @@ value for the \code{SubnetId} parameter.}
 \item{VolumeSizeInGB}{The size, in GB, of the ML storage volume to attach to the notebook
 instance. The default value is 5 GB.}
 
-\item{AcceleratorTypes}{A list of Elastic Inference (EI) instance types to associate with this
-notebook instance. Currently, only one instance type can be associated
-with a notebook instance. For more information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/}{Using Elastic Inference in Amazon SageMaker}.}
+\item{AcceleratorTypes}{This parameter is no longer supported. Elastic Inference (EI) is no
+longer available.
+
+This parameter was used to specify a list of EI instance types to
+associate with this notebook instance.}
 
 \item{DefaultCodeRepository}{A Git repository to associate with the notebook instance as its default
 code repository. This can be either the name of a Git repository stored

@@ -11,6 +11,7 @@ eks_update_nodegroup_config(
   taints = NULL,
   scalingConfig = NULL,
   updateConfig = NULL,
+  nodeRepairConfig = NULL,
   clientRequestToken = NULL
 )
 }
@@ -29,6 +30,8 @@ the update. For more information, see \href{https://docs.aws.amazon.com/eks/late
 update.}
 
 \item{updateConfig}{The node group update configuration.}
+
+\item{nodeRepairConfig}{The node auto repair configuration for the node group.}
 
 \item{clientRequestToken}{A unique, case-sensitive identifier that you provide to ensure the
 idempotency of the request.}

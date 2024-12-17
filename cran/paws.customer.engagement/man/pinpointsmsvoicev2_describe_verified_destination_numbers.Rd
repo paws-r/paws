@@ -2,7 +2,7 @@
 % Please edit documentation in R/pinpointsmsvoicev2_operations.R
 \name{pinpointsmsvoicev2_describe_verified_destination_numbers}
 \alias{pinpointsmsvoicev2_describe_verified_destination_numbers}
-\title{Retrieves the specified verified destiona numbers}
+\title{Retrieves the specified verified destination numbers}
 \usage{
 pinpointsmsvoicev2_describe_verified_destination_numbers(
   VerifiedDestinationNumberIds = NULL,
@@ -13,7 +13,7 @@ pinpointsmsvoicev2_describe_verified_destination_numbers(
 )
 }
 \arguments{
-\item{VerifiedDestinationNumberIds}{An array of VerifiedDestinationNumberid to retreive.}
+\item{VerifiedDestinationNumberIds}{An array of VerifiedDestinationNumberid to retrieve.}
 
 \item{DestinationPhoneNumbers}{An array of verified destination phone number, in E.164 format.}
 
@@ -26,7 +26,7 @@ need to supply a value for this field in the initial request.}
 \item{MaxResults}{The maximum number of results to return per each request.}
 }
 \description{
-Retrieves the specified verified destiona numbers.
+Retrieves the specified verified destination numbers.
 
 See \url{https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_describe_verified_destination_numbers/} for full documentation.
 }

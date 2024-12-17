@@ -2,13 +2,14 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_update_user_pool_domain}
 \alias{cognitoidentityprovider_update_user_pool_domain}
-\title{Updates the Secure Sockets Layer (SSL) certificate for the custom domain
-for your user pool}
+\title{A user pool domain hosts managed login, an authorization server and web
+server for authentication in your application}
 \usage{
 cognitoidentityprovider_update_user_pool_domain(
   Domain,
   UserPoolId,
-  CustomDomainConfig
+  ManagedLoginVersion = NULL,
+  CustomDomainConfig = NULL
 )
 }
 \arguments{
@@ -22,12 +23,26 @@ separate subdomain names.}
 \item{UserPoolId}{[required] The ID of the user pool that is associated with the custom domain whose
 certificate you're updating.}
 
-\item{CustomDomainConfig}{[required] The configuration for a custom domain that hosts the sign-up and sign-in
+\item{ManagedLoginVersion}{A version number that indicates the state of managed login for your
+domain. Version \code{1} is hosted UI (classic). Version \code{2} is the newer
+managed login with the branding designer. For more information, see
+\href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-managed-login.html}{Managed login}.}
+
+\item{CustomDomainConfig}{The configuration for a custom domain that hosts the sign-up and sign-in
 pages for your application. Use this object to specify an SSL
-certificate that is managed by ACM.}
+certificate that is managed by ACM.
+
+When you create a custom domain, the passkey RP ID defaults to the
+custom domain. If you had a prefix domain active, this will cause
+passkey integration for your prefix domain to stop working due to a
+mismatch in RP ID. To keep the prefix domain passkey integration
+working, you can explicitly set RP ID to the prefix domain. Update the
+RP ID in a
+\code{\link[=cognitoidentityprovider_set_user_pool_mfa_config]{set_user_pool_mfa_config}}
+request.}
 }
 \description{
-Updates the Secure Sockets Layer (SSL) certificate for the custom domain for your user pool.
+A user pool domain hosts managed login, an authorization server and web server for authentication in your application. This operation updates the branding version for user pool domains between \code{1} for hosted UI (classic) and \code{2} for managed login. It also updates the SSL certificate for user pool custom domains.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_update_user_pool_domain/} for full documentation.
 }

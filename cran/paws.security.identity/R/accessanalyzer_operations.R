@@ -84,20 +84,19 @@ accessanalyzer_cancel_policy_generation <- function(jobId) {
 #' @param policyDocument &#91;required&#93; The JSON policy document to use as the content for the policy.
 #' @param access &#91;required&#93; An access object containing the permissions that shouldn't be granted by
 #' the specified policy. If only actions are specified, IAM Access Analyzer
-#' checks for access of the actions on all resources in the policy. If only
-#' resources are specified, then IAM Access Analyzer checks which actions
-#' have access to the specified resources. If both actions and resources
-#' are specified, then IAM Access Analyzer checks which of the specified
-#' actions have access to the specified resources.
+#' checks for access to peform at least one of the actions on any resource
+#' in the policy. If only resources are specified, then IAM Access Analyzer
+#' checks for access to perform any action on at least one of the
+#' resources. If both actions and resources are specified, IAM Access
+#' Analyzer checks for access to perform at least one of the specified
+#' actions on at least one of the specified resources.
 #' @param policyType &#91;required&#93; The type of policy. Identity policies grant permissions to IAM
 #' principals. Identity policies include managed and inline policies for
 #' IAM roles, users, and groups.
 #' 
 #' Resource policies grant permissions on Amazon Web Services resources.
 #' Resource policies include trust policies for IAM roles and bucket
-#' policies for Amazon S3 buckets. You can provide a generic input such as
-#' identity policy or resource policy or a specific input such as managed
-#' policy or Amazon S3 bucket policy.
+#' policies for Amazon S3 buckets.
 #'
 #' @keywords internal
 #'
@@ -256,12 +255,19 @@ accessanalyzer_create_access_preview <- function(analyzerArn, configurations, cl
 #' @param archiveRules Specifies the archive rules to add for the analyzer. Archive rules
 #' automatically archive findings that meet the criteria you define for the
 #' rule.
-#' @param tags An array of key-value pairs to apply to the analyzer.
+#' @param tags An array of key-value pairs to apply to the analyzer. You can use the
+#' set of Unicode letters, digits, whitespace, `_`, `.`, `/`, `=`, `+`, and
+#' `-`.
+#' 
+#' For the tag key, you can specify a value that is 1 to 128 characters in
+#' length and cannot be prefixed with `aws:`.
+#' 
+#' For the tag value, you can specify a value that is 0 to 256 characters
+#' in length.
 #' @param clientToken A client token.
 #' @param configuration Specifies the configuration of the analyzer. If the analyzer is an
 #' unused access analyzer, the specified scope of unused access is used for
-#' the configuration. If the analyzer is an external access analyzer, this
-#' field is not used.
+#' the configuration.
 #'
 #' @keywords internal
 #'
@@ -780,10 +786,10 @@ accessanalyzer_list_access_previews <- function(analyzerArn, nextToken = NULL, m
 .accessanalyzer$operations$list_access_previews <- accessanalyzer_list_access_previews
 
 #' Retrieves a list of resources of the specified type that have been
-#' analyzed by the specified external access analyzer
+#' analyzed by the specified analyzer
 #'
 #' @description
-#' Retrieves a list of resources of the specified type that have been analyzed by the specified external access analyzer. This action is not supported for unused access analyzers.
+#' Retrieves a list of resources of the specified type that have been analyzed by the specified analyzer.
 #'
 #' See [https://www.paws-r-sdk.com/docs/accessanalyzer_list_analyzed_resources/](https://www.paws-r-sdk.com/docs/accessanalyzer_list_analyzed_resources/) for full documentation.
 #'
@@ -1166,6 +1172,38 @@ accessanalyzer_untag_resource <- function(resourceArn, tagKeys) {
   return(response)
 }
 .accessanalyzer$operations$untag_resource <- accessanalyzer_untag_resource
+
+#' Modifies the configuration of an existing analyzer
+#'
+#' @description
+#' Modifies the configuration of an existing analyzer.
+#'
+#' See [https://www.paws-r-sdk.com/docs/accessanalyzer_update_analyzer/](https://www.paws-r-sdk.com/docs/accessanalyzer_update_analyzer/) for full documentation.
+#'
+#' @param analyzerName &#91;required&#93; The name of the analyzer to modify.
+#' @param configuration 
+#'
+#' @keywords internal
+#'
+#' @rdname accessanalyzer_update_analyzer
+accessanalyzer_update_analyzer <- function(analyzerName, configuration = NULL) {
+  op <- new_operation(
+    name = "UpdateAnalyzer",
+    http_method = "PUT",
+    http_path = "/analyzer/{analyzerName}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .accessanalyzer$update_analyzer_input(analyzerName = analyzerName, configuration = configuration)
+  output <- .accessanalyzer$update_analyzer_output()
+  config <- get_config()
+  svc <- .accessanalyzer$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.accessanalyzer$operations$update_analyzer <- accessanalyzer_update_analyzer
 
 #' Updates the criteria and values for the specified archive rule
 #'

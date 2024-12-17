@@ -2,8 +2,7 @@
 % Please edit documentation in R/elasticinference_operations.R
 \name{elasticinference_describe_accelerators}
 \alias{elasticinference_describe_accelerators}
-\title{Describes information over a provided set of accelerators belonging to
-an account}
+\title{Amazon Elastic Inference is no longer available}
 \usage{
 elasticinference_describe_accelerators(
   acceleratorIds = NULL,
@@ -31,7 +30,7 @@ outside of the AWS CLI.}
 a previously truncated response.}
 }
 \description{
-Describes information over a provided set of accelerators belonging to an account.
+Amazon Elastic Inference is no longer available.
 
 See \url{https://www.paws-r-sdk.com/docs/elasticinference_describe_accelerators/} for full documentation.
 }

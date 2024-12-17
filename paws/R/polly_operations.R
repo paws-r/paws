@@ -163,7 +163,7 @@ polly_describe_voices <- function(Engine = NULL, LanguageCode = NULL, IncludeAdd
     http_method = "GET",
     http_path = "/v1/voices",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Voices"),
     stream_api = FALSE
   )
   input <- .polly$describe_voices_input(Engine = Engine, LanguageCode = LanguageCode, IncludeAdditionalLanguageCodes = IncludeAdditionalLanguageCodes, NextToken = NextToken)
@@ -386,7 +386,7 @@ polly_list_lexicons <- function(NextToken = NULL) {
     http_method = "GET",
     http_path = "/v1/lexicons",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Lexicons"),
     stream_api = FALSE
   )
   input <- .polly$list_lexicons_input(NextToken = NextToken)
@@ -468,7 +468,7 @@ polly_list_speech_synthesis_tasks <- function(MaxResults = NULL, NextToken = NUL
     http_method = "GET",
     http_path = "/v1/synthesisTasks",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "SynthesisTasks"),
     stream_api = FALSE
   )
   input <- .polly$list_speech_synthesis_tasks_input(MaxResults = MaxResults, NextToken = NextToken, Status = Status)
@@ -516,7 +516,7 @@ polly_list_speech_synthesis_tasks <- function(MaxResults = NULL, NextToken = NUL
 #' \dontrun{
 #' # Stores a pronunciation lexicon in an AWS Region.
 #' svc$put_lexicon(
-#'   Content = "file://example.pls",
+#'   Content = "<Lexicon Content>",
 #'   Name = "W3C"
 #' )
 #' }

@@ -188,7 +188,7 @@ elasticsearchservice <- function(config = list(), credentials = list(), endpoint
 
 .elasticsearchservice$metadata <- list(
   service_name = "es",
-  endpoints = list("*" = list(endpoint = "es.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "es.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "es.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "es.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "es.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "es.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "es.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "es.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "es.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "es.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "es.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "es.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "es.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Elasticsearch Service",
   api_version = "2015-01-01",
   signing_name = "es",

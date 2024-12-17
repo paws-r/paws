@@ -6,19 +6,19 @@
 Delegation prefixes from a network interface}
 \usage{
 ec2_unassign_private_ip_addresses(
+  Ipv4Prefixes = NULL,
   NetworkInterfaceId,
-  PrivateIpAddresses = NULL,
-  Ipv4Prefixes = NULL
+  PrivateIpAddresses = NULL
 )
 }
 \arguments{
+\item{Ipv4Prefixes}{The IPv4 prefixes to unassign from the network interface.}
+
 \item{NetworkInterfaceId}{[required] The ID of the network interface.}
 
 \item{PrivateIpAddresses}{The secondary private IP addresses to unassign from the network
 interface. You can specify this option multiple times to unassign more
 than one IP address.}
-
-\item{Ipv4Prefixes}{The IPv4 prefixes to unassign from the network interface.}
 }
 \description{
 Unassigns one or more secondary private IP addresses, or IPv4 Prefix Delegation prefixes from a network interface.

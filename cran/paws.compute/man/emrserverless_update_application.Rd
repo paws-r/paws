@@ -18,7 +18,8 @@ emrserverless_update_application(
   interactiveConfiguration = NULL,
   releaseLabel = NULL,
   runtimeConfiguration = NULL,
-  monitoringConfiguration = NULL
+  monitoringConfiguration = NULL,
+  schedulerConfiguration = NULL
 )
 }
 \arguments{
@@ -69,6 +70,9 @@ consists of a classification and properties. This configuration is
 applied across all the job runs submitted under the application.}
 
 \item{monitoringConfiguration}{The configuration setting for monitoring.}
+
+\item{schedulerConfiguration}{The scheduler configuration for batch and streaming jobs running on this
+application. Supported with release labels emr-7.0.0 and above.}
 }
 \description{
 Updates a specified application. An application has to be in a stopped or created state in order to be updated.

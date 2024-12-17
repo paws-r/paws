@@ -10,7 +10,7 @@ bedrock_get_model_invocation_job(jobIdentifier)
 \item{jobIdentifier}{[required] The Amazon Resource Name (ARN) of the batch inference job.}
 }
 \description{
-Gets details about a batch inference job. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/#batch-inference-view}{View details about a batch inference job}
+Gets details about a batch inference job. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/batch-inference-monitor.html}{Monitor batch inference jobs}
 
 See \url{https://www.paws-r-sdk.com/docs/bedrock_get_model_invocation_job/} for full documentation.
 }

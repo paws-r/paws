@@ -138,12 +138,8 @@ in the \emph{IAM Identity Center User Guide}.
 \examples{
 \dontrun{
 svc <- ssooidc()
-# 
 svc$create_token(
-  clientId = "_yzkThXVzLWVhc3QtMQEXAMPLECLIENTID",
-  clientSecret = "VERYLONGSECRETeyJraWQiOiJrZXktMTU2NDAyODA5OSIsImFsZyI6IkhTMzg0In0",
-  deviceCode = "yJraWQiOiJrZXktMTU2Njk2ODA4OCIsImFsZyI6IkhTMzIn0EXAMPLEDEVICECODE",
-  grantType = "urn:ietf:params:oauth:grant-type:device-code"
+  Foo = 123
 )
 }
 

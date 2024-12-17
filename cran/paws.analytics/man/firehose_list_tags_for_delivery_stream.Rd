@@ -2,7 +2,7 @@
 % Please edit documentation in R/firehose_operations.R
 \name{firehose_list_tags_for_delivery_stream}
 \alias{firehose_list_tags_for_delivery_stream}
-\title{Lists the tags for the specified delivery stream}
+\title{Lists the tags for the specified Firehose stream}
 \usage{
 firehose_list_tags_for_delivery_stream(
   DeliveryStreamName,
@@ -11,7 +11,7 @@ firehose_list_tags_for_delivery_stream(
 )
 }
 \arguments{
-\item{DeliveryStreamName}{[required] The name of the delivery stream whose tags you want to list.}
+\item{DeliveryStreamName}{[required] The name of the Firehose stream whose tags you want to list.}
 
 \item{ExclusiveStartTagKey}{The key to use as the starting point for the list of tags. If you set
 this parameter,
@@ -19,12 +19,12 @@ this parameter,
 gets all tags that occur after \code{ExclusiveStartTagKey}.}
 
 \item{Limit}{The number of tags to return. If this number is less than the total
-number of tags associated with the delivery stream, \code{HasMoreTags} is set
+number of tags associated with the Firehose stream, \code{HasMoreTags} is set
 to \code{true} in the response. To list additional tags, set
 \code{ExclusiveStartTagKey} to the last key in the response.}
 }
 \description{
-Lists the tags for the specified delivery stream. This operation has a limit of five transactions per second per account.
+Lists the tags for the specified Firehose stream. This operation has a limit of five transactions per second per account.
 
 See \url{https://www.paws-r-sdk.com/docs/firehose_list_tags_for_delivery_stream/} for full documentation.
 }

@@ -9,6 +9,7 @@ cloudhsmv2_create_cluster(
   HsmType,
   SourceBackupId = NULL,
   SubnetIds,
+  NetworkType = NULL,
   TagList = NULL,
   Mode = NULL
 )
@@ -32,6 +33,9 @@ they must meet the following criteria:
 \item All subnets must be in the same virtual private cloud (VPC).
 \item You can specify only one subnet per Availability Zone.
 }}
+
+\item{NetworkType}{The NetworkType to create a cluster with. The allowed values are \code{IPV4}
+and \code{DUALSTACK}.}
 
 \item{TagList}{Tags to apply to the CloudHSM cluster during creation.}
 

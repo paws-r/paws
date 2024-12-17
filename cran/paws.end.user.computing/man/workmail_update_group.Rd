@@ -2,7 +2,7 @@
 % Please edit documentation in R/workmail_operations.R
 \name{workmail_update_group}
 \alias{workmail_update_group}
-\title{Updates attibutes in a group}
+\title{Updates attributes in a group}
 \usage{
 workmail_update_group(
   OrganizationId,
@@ -27,7 +27,7 @@ S-1-1-12-1234567890-123456789-123456789-1234
 \item{HiddenFromGlobalAddressList}{If enabled, the group is hidden from the global address list.}
 }
 \description{
-Updates attibutes in a group.
+Updates attributes in a group.
 
 See \url{https://www.paws-r-sdk.com/docs/workmail_update_group/} for full documentation.
 }

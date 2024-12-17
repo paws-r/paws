@@ -7,14 +7,14 @@ or all of the images available to you}
 \usage{
 ec2_describe_images(
   ExecutableUsers = NULL,
-  Filters = NULL,
   ImageIds = NULL,
   Owners = NULL,
   IncludeDeprecated = NULL,
   IncludeDisabled = NULL,
-  DryRun = NULL,
   MaxResults = NULL,
-  NextToken = NULL
+  NextToken = NULL,
+  DryRun = NULL,
+  Filters = NULL
 )
 }
 \arguments{
@@ -32,6 +32,40 @@ are shared with the organization or OU of which you are member are
 also returned.
 \item If you specify \code{all}, all public AMIs are returned.
 }}
+
+\item{ImageIds}{The image IDs.
+
+Default: Describes all images available to you.}
+
+\item{Owners}{Scopes the results to images with the specified owners. You can specify
+a combination of Amazon Web Services account IDs, \code{self}, \code{amazon},
+\code{aws-backup-vault}, and \code{aws-marketplace}. If you omit this parameter,
+the results include all images for which you have launch permissions,
+regardless of ownership.}
+
+\item{IncludeDeprecated}{Specifies whether to include deprecated AMIs.
+
+Default: No deprecated AMIs are included in the response.
+
+If you are the AMI owner, all deprecated AMIs appear in the response
+regardless of what you specify for this parameter.}
+
+\item{IncludeDisabled}{Specifies whether to include disabled AMIs.
+
+Default: No disabled AMIs are included in the response.}
+
+\item{MaxResults}{The maximum number of items to return for this request. To get the next
+page of items, make another request with the token returned in the
+output. For more information, see
+\href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Query-Requests.html#api-pagination}{Pagination}.}
+
+\item{NextToken}{The token returned from a previous paginated request. Pagination
+continues from the end of the items returned by the previous request.}
+
+\item{DryRun}{Checks whether you have the required permissions for the action, without
+actually making the request, and provides an error response. If you have
+the required permissions, the error response is \code{DryRunOperation}.
+Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{Filters}{The filters.
 \itemize{
@@ -60,17 +94,19 @@ creation).
 \item \code{ena-support} - A Boolean that indicates whether enhanced networking
 with ENA is enabled.
 \item \code{hypervisor} - The hypervisor type (\code{ovm} | \code{xen}).
+\item \code{image-allowed} - A Boolean that indicates whether the image meets
+the criteria specified for Allowed AMIs.
 \item \code{image-id} - The ID of the image.
 \item \code{image-type} - The image type (\code{machine} | \code{kernel} | \code{ramdisk}).
 \item \code{is-public} - A Boolean that indicates whether the image is public.
 \item \code{kernel-id} - The kernel ID.
 \item \code{manifest-location} - The location of the image manifest.
 \item \code{name} - The name of the AMI (provided during image creation).
-\item \code{owner-alias} - The owner alias (\code{amazon} | \code{aws-marketplace}). The
-valid aliases are defined in an Amazon-maintained list. This is not
-the Amazon Web Services account alias that can be set using the IAM
-console. We recommend that you use the \strong{Owner} request parameter
-instead of this filter.
+\item \code{owner-alias} - The owner alias (\code{amazon} | \code{aws-backup-vault} |
+\code{aws-marketplace}). The valid aliases are defined in an
+Amazon-maintained list. This is not the Amazon Web Services account
+alias that can be set using the IAM console. We recommend that you
+use the \strong{Owner} request parameter instead of this filter.
 \item \code{owner-id} - The Amazon Web Services account ID of the owner. We
 recommend that you use the \strong{Owner} request parameter instead of
 this filter.
@@ -82,6 +118,9 @@ this filter.
 example, \verb{/dev/sda1}).
 \item \code{root-device-type} - The type of the root device volume (\code{ebs} |
 \code{instance-store}).
+\item \code{source-image-id} - The ID of the source AMI from which the AMI was
+created.
+\item \code{source-image-region} - The Region of the source AMI.
 \item \code{source-instance-id} - The ID of the instance that the AMI was
 created from if the AMI was created using CreateImage. This filter
 is applicable only if the AMI was created using
@@ -92,7 +131,7 @@ is applicable only if the AMI was created using
 \item \code{state-reason-message} - The message for the state change.
 \item \code{sriov-net-support} - A value of \code{simple} indicates that enhanced
 networking with the Intel 82599 VF interface is enabled.
-\item \code{tag}:\<key\> - The key/value combination of a tag assigned to the
+\item \verb{tag:<key>} - The key/value combination of a tag assigned to the
 resource. Use the tag key in the filter name and the tag value as
 the filter value. For example, to find all resources that have a tag
 with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner} for
@@ -103,39 +142,6 @@ regardless of the tag value.
 \item \code{virtualization-type} - The virtualization type (\code{paravirtual} |
 \code{hvm}).
 }}
-
-\item{ImageIds}{The image IDs.
-
-Default: Describes all images available to you.}
-
-\item{Owners}{Scopes the results to images with the specified owners. You can specify
-a combination of Amazon Web Services account IDs, \code{self}, \code{amazon}, and
-\code{aws-marketplace}. If you omit this parameter, the results include all
-images for which you have launch permissions, regardless of ownership.}
-
-\item{IncludeDeprecated}{Specifies whether to include deprecated AMIs.
-
-Default: No deprecated AMIs are included in the response.
-
-If you are the AMI owner, all deprecated AMIs appear in the response
-regardless of what you specify for this parameter.}
-
-\item{IncludeDisabled}{Specifies whether to include disabled AMIs.
-
-Default: No disabled AMIs are included in the response.}
-
-\item{DryRun}{Checks whether you have the required permissions for the action, without
-actually making the request, and provides an error response. If you have
-the required permissions, the error response is \code{DryRunOperation}.
-Otherwise, it is \code{UnauthorizedOperation}.}
-
-\item{MaxResults}{The maximum number of items to return for this request. To get the next
-page of items, make another request with the token returned in the
-output. For more information, see
-\href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Query-Requests.html#api-pagination}{Pagination}.}
-
-\item{NextToken}{The token returned from a previous paginated request. Pagination
-continues from the end of the items returned by the previous request.}
 }
 \description{
 Describes the specified images (AMIs, AKIs, and ARIs) available to you or all of the images available to you.

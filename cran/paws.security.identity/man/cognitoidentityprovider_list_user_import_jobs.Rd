@@ -11,8 +11,7 @@ cognitoidentityprovider_list_user_import_jobs(
 )
 }
 \arguments{
-\item{UserPoolId}{[required] The user pool ID for the user pool that the users are being imported
-into.}
+\item{UserPoolId}{[required] The ID of the user pool that the users are being imported into.}
 
 \item{MaxResults}{[required] The maximum number of import jobs you want the request to return.}
 

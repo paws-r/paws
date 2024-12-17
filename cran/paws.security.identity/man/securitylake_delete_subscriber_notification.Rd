@@ -2,7 +2,7 @@
 % Please edit documentation in R/securitylake_operations.R
 \name{securitylake_delete_subscriber_notification}
 \alias{securitylake_delete_subscriber_notification}
-\title{Deletes the specified notification subscription in Amazon Security Lake
+\title{Deletes the specified subscription notification in Amazon Security Lake
 for the organization you specify}
 \usage{
 securitylake_delete_subscriber_notification(subscriberId)
@@ -11,7 +11,7 @@ securitylake_delete_subscriber_notification(subscriberId)
 \item{subscriberId}{[required] The ID of the Security Lake subscriber account.}
 }
 \description{
-Deletes the specified notification subscription in Amazon Security Lake for the organization you specify.
+Deletes the specified subscription notification in Amazon Security Lake for the organization you specify.
 
 See \url{https://www.paws-r-sdk.com/docs/securitylake_delete_subscriber_notification/} for full documentation.
 }

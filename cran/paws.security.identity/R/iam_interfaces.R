@@ -509,6 +509,30 @@ NULL
   list()
 }
 
+.iam$disable_organizations_root_credentials_management_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.iam$disable_organizations_root_credentials_management_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(OrganizationId = structure(logical(0), tags = list(type = "string")), EnabledFeatures = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure", resultWrapper = "DisableOrganizationsRootCredentialsManagementResult"))
+  return(populate(args, shape))
+}
+
+.iam$disable_organizations_root_sessions_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.iam$disable_organizations_root_sessions_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(OrganizationId = structure(logical(0), tags = list(type = "string")), EnabledFeatures = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure", resultWrapper = "DisableOrganizationsRootSessionsResult"))
+  return(populate(args, shape))
+}
+
 .iam$enable_mfa_device_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(UserName = structure(logical(0), tags = list(type = "string")), SerialNumber = structure(logical(0), tags = list(type = "string")), AuthenticationCode1 = structure(logical(0), tags = list(type = "string")), AuthenticationCode2 = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -517,6 +541,30 @@ NULL
 
 .iam$enable_mfa_device_output <- function(...) {
   list()
+}
+
+.iam$enable_organizations_root_credentials_management_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.iam$enable_organizations_root_credentials_management_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(OrganizationId = structure(logical(0), tags = list(type = "string")), EnabledFeatures = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure", resultWrapper = "EnableOrganizationsRootCredentialsManagementResult"))
+  return(populate(args, shape))
+}
+
+.iam$enable_organizations_root_sessions_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.iam$enable_organizations_root_sessions_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(OrganizationId = structure(logical(0), tags = list(type = "string")), EnabledFeatures = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure", resultWrapper = "EnableOrganizationsRootSessionsResult"))
+  return(populate(args, shape))
 }
 
 .iam$generate_credential_report_input <- function(...) {
@@ -1048,6 +1096,18 @@ NULL
 .iam$list_open_id_connect_providers_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(OpenIDConnectProviderList = structure(list(structure(list(Arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", resultWrapper = "ListOpenIDConnectProvidersResult"))
+  return(populate(args, shape))
+}
+
+.iam$list_organizations_features_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.iam$list_organizations_features_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(OrganizationId = structure(logical(0), tags = list(type = "string")), EnabledFeatures = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure", resultWrapper = "ListOrganizationsFeaturesResult"))
   return(populate(args, shape))
 }
 

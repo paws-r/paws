@@ -3,19 +3,28 @@
 \name{configservice_tag_resource}
 \alias{configservice_tag_resource}
 \title{Associates the specified tags to a resource with the specified
-resourceArn}
+ResourceArn}
 \usage{
 configservice_tag_resource(ResourceArn, Tags)
 }
 \arguments{
 \item{ResourceArn}{[required] The Amazon Resource Name (ARN) that identifies the resource for which to
-list the tags. Currently, the supported resources are \code{ConfigRule},
-\code{ConfigurationAggregator} and \code{AggregatorAuthorization}.}
+list the tags. The following resources are supported:
+\itemize{
+\item \code{ConfigurationRecorder}
+\item \code{ConfigRule}
+\item \code{OrganizationConfigRule}
+\item \code{ConformancePack}
+\item \code{OrganizationConformancePack}
+\item \code{ConfigurationAggregator}
+\item \code{AggregationAuthorization}
+\item \code{StoredQuery}
+}}
 
 \item{Tags}{[required] An array of tag object.}
 }
 \description{
-Associates the specified tags to a resource with the specified resourceArn. If existing tags on a resource are not specified in the request parameters, they are not changed. If existing tags are specified, however, then their values will be updated. When a resource is deleted, the tags associated with that resource are deleted as well.
+Associates the specified tags to a resource with the specified \code{ResourceArn}. If existing tags on a resource are not specified in the request parameters, they are not changed. If existing tags are specified, however, then their values will be updated. When a resource is deleted, the tags associated with that resource are deleted as well.
 
 See \url{https://www.paws-r-sdk.com/docs/configservice_tag_resource/} for full documentation.
 }

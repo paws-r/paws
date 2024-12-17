@@ -3,6 +3,55 @@
 #' @include docdbelastic_service.R
 NULL
 
+#' The type of pending maintenance action to be applied to the resource
+#'
+#' @description
+#' The type of pending maintenance action to be applied to the resource.
+#'
+#' See [https://www.paws-r-sdk.com/docs/docdbelastic_apply_pending_maintenance_action/](https://www.paws-r-sdk.com/docs/docdbelastic_apply_pending_maintenance_action/) for full documentation.
+#'
+#' @param applyAction &#91;required&#93; The pending maintenance action to apply to the resource.
+#' 
+#' Valid actions are:
+#' 
+#' -   `ENGINE_UPDATE `
+#' 
+#' -   `ENGINE_UPGRADE`
+#' 
+#' -   `SECURITY_UPDATE`
+#' 
+#' -   `OS_UPDATE`
+#' 
+#' -   `MASTER_USER_PASSWORD_UPDATE`
+#' @param applyOn A specific date to apply the pending maintenance action. Required if
+#' opt-in-type is `APPLY_ON`. Format: `yyyy/MM/dd HH:mm-yyyy/MM/dd HH:mm`
+#' @param optInType &#91;required&#93; A value that specifies the type of opt-in request, or undoes an opt-in
+#' request. An opt-in request of type `IMMEDIATE` can't be undone.
+#' @param resourceArn &#91;required&#93; The Amazon DocumentDB Amazon Resource Name (ARN) of the resource to
+#' which the pending maintenance action applies.
+#'
+#' @keywords internal
+#'
+#' @rdname docdbelastic_apply_pending_maintenance_action
+docdbelastic_apply_pending_maintenance_action <- function(applyAction, applyOn = NULL, optInType, resourceArn) {
+  op <- new_operation(
+    name = "ApplyPendingMaintenanceAction",
+    http_method = "POST",
+    http_path = "/pending-action",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .docdbelastic$apply_pending_maintenance_action_input(applyAction = applyAction, applyOn = applyOn, optInType = optInType, resourceArn = resourceArn)
+  output <- .docdbelastic$apply_pending_maintenance_action_output()
+  config <- get_config()
+  svc <- .docdbelastic$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.docdbelastic$operations$apply_pending_maintenance_action <- docdbelastic_apply_pending_maintenance_action
+
 #' Copies a snapshot of an elastic cluster
 #'
 #' @description
@@ -333,6 +382,38 @@ docdbelastic_get_cluster_snapshot <- function(snapshotArn) {
 }
 .docdbelastic$operations$get_cluster_snapshot <- docdbelastic_get_cluster_snapshot
 
+#' Retrieves all maintenance actions that are pending
+#'
+#' @description
+#' Retrieves all maintenance actions that are pending.
+#'
+#' See [https://www.paws-r-sdk.com/docs/docdbelastic_get_pending_maintenance_action/](https://www.paws-r-sdk.com/docs/docdbelastic_get_pending_maintenance_action/) for full documentation.
+#'
+#' @param resourceArn &#91;required&#93; Retrieves pending maintenance actions for a specific Amazon Resource
+#' Name (ARN).
+#'
+#' @keywords internal
+#'
+#' @rdname docdbelastic_get_pending_maintenance_action
+docdbelastic_get_pending_maintenance_action <- function(resourceArn) {
+  op <- new_operation(
+    name = "GetPendingMaintenanceAction",
+    http_method = "GET",
+    http_path = "/pending-action/{resourceArn}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .docdbelastic$get_pending_maintenance_action_input(resourceArn = resourceArn)
+  output <- .docdbelastic$get_pending_maintenance_action_output()
+  config <- get_config()
+  svc <- .docdbelastic$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.docdbelastic$operations$get_pending_maintenance_action <- docdbelastic_get_pending_maintenance_action
+
 #' Returns information about snapshots for a specified elastic cluster
 #'
 #' @description
@@ -417,6 +498,43 @@ docdbelastic_list_clusters <- function(maxResults = NULL, nextToken = NULL) {
   return(response)
 }
 .docdbelastic$operations$list_clusters <- docdbelastic_list_clusters
+
+#' Retrieves a list of all maintenance actions that are pending
+#'
+#' @description
+#' Retrieves a list of all maintenance actions that are pending.
+#'
+#' See [https://www.paws-r-sdk.com/docs/docdbelastic_list_pending_maintenance_actions/](https://www.paws-r-sdk.com/docs/docdbelastic_list_pending_maintenance_actions/) for full documentation.
+#'
+#' @param maxResults The maximum number of results to include in the response. If more
+#' records exist than the specified `maxResults` value, a pagination token
+#' (marker) is included in the response so that the remaining results can
+#' be retrieved.
+#' @param nextToken An optional pagination token provided by a previous request. If this
+#' parameter is specified, the response includes only records beyond the
+#' marker, up to the value specified by `maxResults`.
+#'
+#' @keywords internal
+#'
+#' @rdname docdbelastic_list_pending_maintenance_actions
+docdbelastic_list_pending_maintenance_actions <- function(maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListPendingMaintenanceActions",
+    http_method = "GET",
+    http_path = "/pending-actions",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "resourcePendingMaintenanceActions"),
+    stream_api = FALSE
+  )
+  input <- .docdbelastic$list_pending_maintenance_actions_input(maxResults = maxResults, nextToken = nextToken)
+  output <- .docdbelastic$list_pending_maintenance_actions_output()
+  config <- get_config()
+  svc <- .docdbelastic$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.docdbelastic$operations$list_pending_maintenance_actions <- docdbelastic_list_pending_maintenance_actions
 
 #' Lists all tags on a elastic cluster resource
 #'

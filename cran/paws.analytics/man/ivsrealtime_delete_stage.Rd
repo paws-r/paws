@@ -11,7 +11,7 @@ ivsrealtime_delete_stage(arn)
 \item{arn}{[required] ARN of the stage to be deleted.}
 }
 \description{
-Shuts down and deletes the specified stage (disconnecting all participants).
+Shuts down and deletes the specified stage (disconnecting all participants). This operation also removes the \code{stageArn} from the associated IngestConfiguration, if there are participants using the IngestConfiguration to publish to the stage.
 
 See \url{https://www.paws-r-sdk.com/docs/ivsrealtime_delete_stage/} for full documentation.
 }

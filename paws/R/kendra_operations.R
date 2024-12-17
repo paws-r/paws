@@ -179,6 +179,7 @@ kendra_associate_personas_to_entities <- function(Id, IndexId, Personas) {
 #'   FailedDocuments = list(
 #'     list(
 #'       Id = "string",
+#'       DataSourceId = "string",
 #'       ErrorCode = "InternalError"|"InvalidRequest",
 #'       ErrorMessage = "string"
 #'     )
@@ -325,6 +326,7 @@ kendra_batch_delete_featured_results_set <- function(IndexId, FeaturedResultsSet
 #'   Errors = list(
 #'     list(
 #'       DocumentId = "string",
+#'       DataSourceId = "string",
 #'       ErrorCode = "InternalError"|"InvalidRequest",
 #'       ErrorMessage = "string"
 #'     )
@@ -449,6 +451,7 @@ kendra_batch_get_document_status <- function(IndexId, DocumentInfoList) {
 #'   FailedDocuments = list(
 #'     list(
 #'       Id = "string",
+#'       DataSourceId = "string",
 #'       ErrorCode = "InternalError"|"InvalidRequest",
 #'       ErrorMessage = "string"
 #'     )
@@ -691,6 +694,12 @@ kendra_clear_query_suggestions <- function(IndexId) {
 #' your data source. Amazon Kendra currently only supports access control
 #' configuration for S3 data sources and documents indexed using the
 #' [`batch_put_document`][kendra_batch_put_document] API.
+#' 
+#' You can't configure access control using
+#' [`create_access_control_configuration`][kendra_create_access_control_configuration]
+#' for an Amazon Kendra Gen AI Enterprise Edition index. Amazon Kendra will
+#' return a `ValidationException` error for a `Gen_AI_ENTERPRISE_EDITION`
+#' index.
 #'
 #' @usage
 #' kendra_create_access_control_configuration(IndexId, Name, Description,
@@ -1897,7 +1906,7 @@ kendra_create_experience <- function(Name, IndexId, RoleArn = NULL, Configuratio
 #' @param Description A description for the FAQ.
 #' @param S3Path &#91;required&#93; The path to the FAQ file in S3.
 #' @param RoleArn &#91;required&#93; The Amazon Resource Name (ARN) of an IAM role with permission to access
-#' the S3 bucket that contains the FAQs. For more information, see [IAM
+#' the S3 bucket that contains the FAQ file. For more information, see [IAM
 #' access roles for Amazon
 #' Kendra](https://docs.aws.amazon.com/kendra/latest/dg/iam-roles.html).
 #' @param Tags A list of key-value pairs that identify the FAQ. You can use the tags to
@@ -2124,14 +2133,15 @@ kendra_create_featured_results_set <- function(IndexId, FeaturedResultsSetName, 
 #' @param Name &#91;required&#93; A name for the index.
 #' @param Edition The Amazon Kendra edition to use for the index. Choose
 #' `DEVELOPER_EDITION` for indexes intended for development, testing, or
-#' proof of concept. Use `ENTERPRISE_EDITION` for production. Once you set
-#' the edition for an index, it can't be changed.
+#' proof of concept. Use `ENTERPRISE_EDITION` for production. Use
+#' `GEN_AI_ENTERPRISE_EDITION` for creating generative AI applications.
+#' Once you set the edition for an index, it can't be changed.
 #' 
 #' The `Edition` parameter is optional. If you don't supply a value, the
 #' default is `ENTERPRISE_EDITION`.
 #' 
-#' For more information on quota limits for Enterprise and Developer
-#' editions, see
+#' For more information on quota limits for Gen AI Enterprise Edition,
+#' Enterprise Edition, and Developer Edition indices, see
 #' [Quotas](https://docs.aws.amazon.com/kendra/latest/dg/quotas.html).
 #' @param RoleArn &#91;required&#93; The Amazon Resource Name (ARN) of an IAM role with permission to access
 #' your Amazon CloudWatch logs and metrics. For more information, see [IAM
@@ -2149,7 +2159,17 @@ kendra_create_featured_results_set <- function(IndexId, FeaturedResultsSetName, 
 #' can consist of Unicode letters, digits, white space, and any of the
 #' following symbols: _ . : / = + - @@.
 #' @param UserTokenConfigurations The user token configuration.
+#' 
+#' If you're using an Amazon Kendra Gen AI Enterprise Edition index and you
+#' try to use `UserTokenConfigurations` to configure user context policy,
+#' Amazon Kendra returns a `ValidationException` error.
 #' @param UserContextPolicy The user context policy.
+#' 
+#' If you're using an Amazon Kendra Gen AI Enterprise Edition index, you
+#' can only use `ATTRIBUTE_FILTER` to filter search results by user
+#' context. If you're using an Amazon Kendra Gen AI Enterprise Edition
+#' index and you try to use `USER_TOKEN` to configure user context policy,
+#' Amazon Kendra returns a `ValidationException` error.
 #' 
 #' **ATTRIBUTE_FILTER**
 #' 
@@ -2168,6 +2188,9 @@ kendra_create_featured_results_set <- function(IndexId, FeaturedResultsSetName, 
 #' [UserGroupResolutionConfiguration](https://docs.aws.amazon.com/kendra/latest/APIReference/API_UserGroupResolutionConfiguration.html).
 #' This is useful for user context filtering, where search results are
 #' filtered based on the user or their group access to documents.
+#' 
+#' If you're using an Amazon Kendra Gen AI Enterprise Edition index,
+#' `UserGroupResolutionConfiguration` isn't supported.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2181,7 +2204,7 @@ kendra_create_featured_results_set <- function(IndexId, FeaturedResultsSetName, 
 #' ```
 #' svc$create_index(
 #'   Name = "string",
-#'   Edition = "DEVELOPER_EDITION"|"ENTERPRISE_EDITION",
+#'   Edition = "DEVELOPER_EDITION"|"ENTERPRISE_EDITION"|"GEN_AI_ENTERPRISE_EDITION",
 #'   RoleArn = "string",
 #'   ServerSideEncryptionConfiguration = list(
 #'     KmsKeyId = "string"
@@ -2589,10 +2612,10 @@ kendra_delete_experience <- function(Id, IndexId) {
 }
 .kendra$operations$delete_experience <- kendra_delete_experience
 
-#' Removes an FAQ from an index
+#' Removes a FAQ from an index
 #'
 #' @description
-#' Removes an FAQ from an index.
+#' Removes a FAQ from an index.
 #'
 #' @usage
 #' kendra_delete_faq(Id, IndexId)
@@ -2682,12 +2705,12 @@ kendra_delete_index <- function(Id) {
 }
 .kendra$operations$delete_index <- kendra_delete_index
 
-#' Deletes a group so that all users and sub groups that belong to the
-#' group can no longer access documents only available to that group
+#' Deletes a group so that all users that belong to the group can no longer
+#' access documents only available to that group
 #'
 #' @description
-#' Deletes a group so that all users and sub groups that belong to the
-#' group can no longer access documents only available to that group.
+#' Deletes a group so that all users that belong to the group can no longer
+#' access documents only available to that group.
 #' 
 #' For example, after deleting the group "Summer Interns", all interns who
 #' belonged to that group no longer see intern-only documents in their
@@ -3981,10 +4004,10 @@ kendra_describe_experience <- function(Id, IndexId) {
 }
 .kendra$operations$describe_experience <- kendra_describe_experience
 
-#' Gets information about an FAQ list
+#' Gets information about a FAQ
 #'
 #' @description
-#' Gets information about an FAQ list.
+#' Gets information about a FAQ.
 #'
 #' @usage
 #' kendra_describe_faq(Id, IndexId)
@@ -4141,7 +4164,7 @@ kendra_describe_featured_results_set <- function(IndexId, FeaturedResultsSetId) 
 #' list(
 #'   Name = "string",
 #'   Id = "string",
-#'   Edition = "DEVELOPER_EDITION"|"ENTERPRISE_EDITION",
+#'   Edition = "DEVELOPER_EDITION"|"ENTERPRISE_EDITION"|"GEN_AI_ENTERPRISE_EDITION",
 #'   RoleArn = "string",
 #'   ServerSideEncryptionConfiguration = list(
 #'     KmsKeyId = "string"
@@ -5018,7 +5041,7 @@ kendra_get_snapshots <- function(IndexId, Interval, MetricType, NextToken = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .kendra$get_snapshots_input(IndexId = IndexId, Interval = Interval, MetricType = MetricType, NextToken = NextToken, MaxResults = MaxResults)
@@ -5083,7 +5106,7 @@ kendra_list_access_control_configurations <- function(IndexId, NextToken = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .kendra$list_access_control_configurations_input(IndexId = IndexId, NextToken = NextToken, MaxResults = MaxResults)
@@ -5178,7 +5201,7 @@ kendra_list_data_source_sync_jobs <- function(Id, IndexId, NextToken = NULL, Max
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .kendra$list_data_source_sync_jobs_input(Id = Id, IndexId = IndexId, NextToken = NextToken, MaxResults = MaxResults, StartTimeFilter = StartTimeFilter, StatusFilter = StatusFilter)
@@ -5250,7 +5273,7 @@ kendra_list_data_sources <- function(IndexId, NextToken = NULL, MaxResults = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .kendra$list_data_sources_input(IndexId = IndexId, NextToken = NextToken, MaxResults = MaxResults)
@@ -5322,7 +5345,7 @@ kendra_list_entity_personas <- function(Id, IndexId, NextToken = NULL, MaxResult
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .kendra$list_entity_personas_input(Id = Id, IndexId = IndexId, NextToken = NextToken, MaxResults = MaxResults)
@@ -5397,7 +5420,7 @@ kendra_list_experience_entities <- function(Id, IndexId, NextToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .kendra$list_experience_entities_input(Id = Id, IndexId = IndexId, NextToken = NextToken)
@@ -5473,7 +5496,7 @@ kendra_list_experiences <- function(IndexId, NextToken = NULL, MaxResults = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .kendra$list_experiences_input(IndexId = IndexId, NextToken = NextToken, MaxResults = MaxResults)
@@ -5486,15 +5509,15 @@ kendra_list_experiences <- function(IndexId, NextToken = NULL, MaxResults = NULL
 }
 .kendra$operations$list_experiences <- kendra_list_experiences
 
-#' Gets a list of FAQ lists associated with an index
+#' Gets a list of FAQs associated with an index
 #'
 #' @description
-#' Gets a list of FAQ lists associated with an index.
+#' Gets a list of FAQs associated with an index.
 #'
 #' @usage
 #' kendra_list_faqs(IndexId, NextToken, MaxResults)
 #'
-#' @param IndexId &#91;required&#93; The index that contains the FAQ lists.
+#' @param IndexId &#91;required&#93; The index for the FAQs.
 #' @param NextToken If the previous response was incomplete (because there is more data to
 #' retrieve), Amazon Kendra returns a pagination token in the response. You
 #' can use this pagination token to retrieve the next set of FAQs.
@@ -5544,7 +5567,7 @@ kendra_list_faqs <- function(IndexId, NextToken = NULL, MaxResults = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .kendra$list_faqs_input(IndexId = IndexId, NextToken = NextToken, MaxResults = MaxResults)
@@ -5688,7 +5711,7 @@ kendra_list_groups_older_than_ordering_id <- function(IndexId, DataSourceId = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .kendra$list_groups_older_than_ordering_id_input(IndexId = IndexId, DataSourceId = DataSourceId, OrderingId = OrderingId, NextToken = NextToken, MaxResults = MaxResults)
@@ -5722,7 +5745,7 @@ kendra_list_groups_older_than_ordering_id <- function(IndexId, DataSourceId = NU
 #'     list(
 #'       Name = "string",
 #'       Id = "string",
-#'       Edition = "DEVELOPER_EDITION"|"ENTERPRISE_EDITION",
+#'       Edition = "DEVELOPER_EDITION"|"ENTERPRISE_EDITION"|"GEN_AI_ENTERPRISE_EDITION",
 #'       CreatedAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
@@ -5755,7 +5778,7 @@ kendra_list_indices <- function(NextToken = NULL, MaxResults = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .kendra$list_indices_input(NextToken = NextToken, MaxResults = MaxResults)
@@ -5839,7 +5862,7 @@ kendra_list_query_suggestions_block_lists <- function(IndexId, NextToken = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .kendra$list_query_suggestions_block_lists_input(IndexId = IndexId, NextToken = NextToken, MaxResults = MaxResults)
@@ -5852,17 +5875,22 @@ kendra_list_query_suggestions_block_lists <- function(IndexId, NextToken = NULL,
 }
 .kendra$operations$list_query_suggestions_block_lists <- kendra_list_query_suggestions_block_lists
 
-#' Gets a list of tags associated with a specified resource
+#' Gets a list of tags associated with a resource
 #'
 #' @description
-#' Gets a list of tags associated with a specified resource. Indexes, FAQs,
-#' and data sources can have tags associated with them.
+#' Gets a list of tags associated with a resource. Indexes, FAQs, data
+#' sources, and other resources can have tags associated with them.
 #'
 #' @usage
 #' kendra_list_tags_for_resource(ResourceARN)
 #'
-#' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the index, FAQ, or data source to get
-#' a list of tags for.
+#' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the index, FAQ, data source, or other
+#' resource to get a list of tags for. For example, the ARN of an index is
+#' constructed as follows:
+#' *arn:aws:kendra:your-region:your-account-id:index/index-id* For
+#' information on how to construct an ARN for all types of Amazon Kendra
+#' resources, see [Resource
+#' types](https://docs.aws.amazon.com/service-authorization/latest/reference/list_amazonkendra.html#amazonkendra-resources-for-iam-policies).
 #'
 #' @return
 #' A list with the following syntax:
@@ -5964,7 +5992,7 @@ kendra_list_thesauri <- function(IndexId, NextToken = NULL, MaxResults = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .kendra$list_thesauri_input(IndexId = IndexId, NextToken = NextToken, MaxResults = MaxResults)
@@ -6013,10 +6041,10 @@ kendra_list_thesauri <- function(IndexId, NextToken = NULL, MaxResults = NULL) {
 #' Confluence and Salesforce. However, "Sales and Marketing" team only
 #' needs access to customer-related documents stored in Salesforce.
 #' @param GroupId &#91;required&#93; The identifier of the group you want to map its users to.
-#' @param GroupMembers &#91;required&#93; The list that contains your users or sub groups that belong the same
-#' group.
+#' @param GroupMembers &#91;required&#93; The list that contains your users that belong the same group. This can
+#' include sub groups that belong to a group.
 #' 
-#' For example, the group "Company" includes the user "CEO" and the sub
+#' For example, the group "Company A" includes the user "CEO" and the sub
 #' groups "Research", "Engineering", and "Sales and Marketing".
 #' 
 #' If you have more than 1000 users and/or sub groups for a single group,
@@ -6024,7 +6052,7 @@ kendra_list_thesauri <- function(IndexId, NextToken = NULL, MaxResults = NULL) {
 #' sub groups for a group. Your sub groups can contain more than 1000
 #' users, but the list of sub groups that belong to a group (and/or users)
 #' must be no more than 1000.
-#' @param OrderingId The timestamp identifier you specify to ensure Amazon Kendra does not
+#' @param OrderingId The timestamp identifier you specify to ensure Amazon Kendra doesn't
 #' override the latest `PUT` action with previous actions. The highest
 #' number ID, which is the ordering ID, is the latest action you want to
 #' process and apply on top of other actions with lower number IDs. This
@@ -6040,8 +6068,8 @@ kendra_list_thesauri <- function(IndexId, NextToken = NULL, MaxResults = NULL) {
 #' 
 #' The default ordering ID is the current Unix time in milliseconds that
 #' the action was received by Amazon Kendra.
-#' @param RoleArn The Amazon Resource Name (ARN) of a role that has access to the S3 file
-#' that contains your list of users or sub groups that belong to a group.
+#' @param RoleArn The Amazon Resource Name (ARN) of an IAM role that has access to the S3
+#' file that contains your list of users that belong to a group.
 #' 
 #' For more information, see [IAM roles for Amazon
 #' Kendra](https://docs.aws.amazon.com/kendra/latest/dg/iam-roles.html#iam-roles-ds).
@@ -6136,6 +6164,12 @@ kendra_put_principal_mapping <- function(IndexId, DataSourceId = NULL, GroupId, 
 #' relevant results. If you filter result type to only question-answers, a
 #' maximum of four results are returned. If you filter result type to only
 #' answers, a maximum of three results are returned.
+#' 
+#' If you're using an Amazon Kendra Gen AI Enterprise Edition index, you
+#' can only use `ATTRIBUTE_FILTER` to filter search results by user
+#' context. If you're using an Amazon Kendra Gen AI Enterprise Edition
+#' index and you try to use `USER_TOKEN` to configure user context policy,
+#' Amazon Kendra returns a `ValidationException` error.
 #'
 #' @usage
 #' kendra_query(IndexId, QueryText, AttributeFilter, Facets,
@@ -6159,6 +6193,10 @@ kendra_put_principal_mapping <- function(IndexId, DataSourceId = NULL, GroupId, 
 #' 
 #' The `AttributeFilter` parameter means you can create a set of filtering
 #' rules that a document must satisfy to be included in the query results.
+#' 
+#' For Amazon Kendra Gen AI Enterprise Edition indices use
+#' `AttributeFilter` to enable document filtering for end users using
+#' `_email_id` or include public documents (`_email_id=null`).
 #' @param Facets An array of documents fields/attributes for faceted search. Amazon
 #' Kendra returns a count for each field key specified. This helps your
 #' users narrow their search.
@@ -6711,6 +6749,12 @@ kendra_query <- function(IndexId, QueryText = NULL, AttributeFilter = NULL, Face
 #' a single capacity unit and the default base capacity for an index, see
 #' [Adjusting
 #' capacity](https://docs.aws.amazon.com/kendra/latest/dg/adjusting-capacity.html).
+#' 
+#' If you're using an Amazon Kendra Gen AI Enterprise Edition index, you
+#' can only use `ATTRIBUTE_FILTER` to filter search results by user
+#' context. If you're using an Amazon Kendra Gen AI Enterprise Edition
+#' index and you try to use `USER_TOKEN` to configure user context policy,
+#' Amazon Kendra returns a `ValidationException` error.
 #'
 #' @usage
 #' kendra_retrieve(IndexId, QueryText, AttributeFilter,
@@ -6734,6 +6778,10 @@ kendra_query <- function(IndexId, QueryText = NULL, AttributeFilter = NULL, Face
 #' 
 #' The `AttributeFilter` parameter means you can create a set of filtering
 #' rules that a document must satisfy to be included in the query results.
+#' 
+#' For Amazon Kendra Gen AI Enterprise Edition indices use
+#' `AttributeFilter` to enable document filtering for end users using
+#' `_email_id` or include public documents (`_email_id=null`).
 #' @param RequestedDocumentAttributes A list of document fields/attributes to include in the response. You can
 #' limit the response to include certain document fields. By default, all
 #' document fields are included in the response.
@@ -7132,20 +7180,26 @@ kendra_submit_feedback <- function(IndexId, QueryId, ClickFeedbackItems = NULL, 
 }
 .kendra$operations$submit_feedback <- kendra_submit_feedback
 
-#' Adds the specified tag to the specified index, FAQ, or data source
-#' resource
+#' Adds the specified tag to the specified index, FAQ, data source, or
+#' other resource
 #'
 #' @description
-#' Adds the specified tag to the specified index, FAQ, or data source
-#' resource. If the tag already exists, the existing value is replaced with
-#' the new value.
+#' Adds the specified tag to the specified index, FAQ, data source, or
+#' other resource. If the tag already exists, the existing value is
+#' replaced with the new value.
 #'
 #' @usage
 #' kendra_tag_resource(ResourceARN, Tags)
 #'
-#' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the index, FAQ, or data source to tag.
-#' @param Tags &#91;required&#93; A list of tag keys to add to the index, FAQ, or data source. If a tag
-#' already exists, the existing value is replaced with the new value.
+#' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the index, FAQ, data source, or other
+#' resource to add a tag. For example, the ARN of an index is constructed
+#' as follows: *arn:aws:kendra:your-region:your-account-id:index/index-id*
+#' For information on how to construct an ARN for all types of Amazon
+#' Kendra resources, see [Resource
+#' types](https://docs.aws.amazon.com/service-authorization/latest/reference/list_amazonkendra.html#amazonkendra-resources-for-iam-policies).
+#' @param Tags &#91;required&#93; A list of tag keys to add to the index, FAQ, data source, or other
+#' resource. If a tag already exists, the existing value is replaced with
+#' the new value.
 #'
 #' @return
 #' An empty list.
@@ -7187,18 +7241,23 @@ kendra_tag_resource <- function(ResourceARN, Tags) {
 }
 .kendra$operations$tag_resource <- kendra_tag_resource
 
-#' Removes a tag from an index, FAQ, or a data source
+#' Removes a tag from an index, FAQ, data source, or other resource
 #'
 #' @description
-#' Removes a tag from an index, FAQ, or a data source.
+#' Removes a tag from an index, FAQ, data source, or other resource.
 #'
 #' @usage
 #' kendra_untag_resource(ResourceARN, TagKeys)
 #'
-#' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the index, FAQ, or data source to
-#' remove the tag from.
-#' @param TagKeys &#91;required&#93; A list of tag keys to remove from the index, FAQ, or data source. If a
-#' tag key does not exist on the resource, it is ignored.
+#' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the index, FAQ, data source, or other
+#' resource to remove a tag. For example, the ARN of an index is
+#' constructed as follows:
+#' *arn:aws:kendra:your-region:your-account-id:index/index-id* For
+#' information on how to construct an ARN for all types of Amazon Kendra
+#' resources, see [Resource
+#' types](https://docs.aws.amazon.com/service-authorization/latest/reference/list_amazonkendra.html#amazonkendra-resources-for-iam-policies).
+#' @param TagKeys &#91;required&#93; A list of tag keys to remove from the index, FAQ, data source, or other
+#' resource. If a tag key doesn't exist for the resource, it is ignored.
 #'
 #' @return
 #' An empty list.
@@ -7264,6 +7323,12 @@ kendra_untag_resource <- function(ResourceARN, TagKeys) {
 #' `.metadata.json` file. Amazon Kendra currently only supports access
 #' control configuration for S3 data sources and documents indexed using
 #' the [`batch_put_document`][kendra_batch_put_document] API.
+#' 
+#' You can't configure access control using
+#' [`create_access_control_configuration`][kendra_create_access_control_configuration]
+#' for an Amazon Kendra Gen AI Enterprise Edition index. Amazon Kendra will
+#' return a `ValidationException` error for a `Gen_AI_ENTERPRISE_EDITION`
+#' index.
 #'
 #' @usage
 #' kendra_update_access_control_configuration(IndexId, Id, Name,
@@ -7359,9 +7424,9 @@ kendra_update_access_control_configuration <- function(IndexId, Id, Name = NULL,
 #' VPC](https://docs.aws.amazon.com/kendra/latest/dg/vpc-configuration.html).
 #' @param Description A new description for the data source connector.
 #' @param Schedule The sync schedule you want to update for the data source connector.
-#' @param RoleArn The Amazon Resource Name (ARN) of a role with permission to access the
-#' data source and required resources. For more information, see [IAM roles
-#' for Amazon
+#' @param RoleArn The Amazon Resource Name (ARN) of an IAM role with permission to access
+#' the data source and required resources. For more information, see [IAM
+#' roles for Amazon
 #' Kendra](https://docs.aws.amazon.com/kendra/latest/dg/iam-roles.html).
 #' @param LanguageCode The code for a language you want to update for the data source
 #' connector. This allows you to support a language for all documents when
@@ -8304,10 +8369,10 @@ kendra_update_data_source <- function(Id, Name = NULL, IndexId, Configuration = 
 #' @param Id &#91;required&#93; The identifier of your Amazon Kendra experience you want to update.
 #' @param Name A new name for your Amazon Kendra experience.
 #' @param IndexId &#91;required&#93; The identifier of the index for your Amazon Kendra experience.
-#' @param RoleArn The Amazon Resource Name (ARN) of a role with permission to access
-#' [`query`][kendra_query] API, `QuerySuggestions` API,
+#' @param RoleArn The Amazon Resource Name (ARN) of an IAM role with permission to access
+#' the [`query`][kendra_query] API, `QuerySuggestions` API,
 #' [`submit_feedback`][kendra_submit_feedback] API, and IAM Identity Center
-#' that stores your user and group information. For more information, see
+#' that stores your users and groups information. For more information, see
 #' [IAM roles for Amazon
 #' Kendra](https://docs.aws.amazon.com/kendra/latest/dg/iam-roles.html).
 #' @param Configuration Configuration information you want to update for your Amazon Kendra
@@ -8491,12 +8556,25 @@ kendra_update_featured_results_set <- function(IndexId, FeaturedResultsSetId, Fe
 #' capacity below what is required to meet the storage needs for your
 #' index.
 #' @param UserTokenConfigurations The user token configuration.
+#' 
+#' If you're using an Amazon Kendra Gen AI Enterprise Edition index and you
+#' try to use `UserTokenConfigurations` to configure user context policy,
+#' Amazon Kendra returns a `ValidationException` error.
 #' @param UserContextPolicy The user context policy.
+#' 
+#' If you're using an Amazon Kendra Gen AI Enterprise Edition index, you
+#' can only use `ATTRIBUTE_FILTER` to filter search results by user
+#' context. If you're using an Amazon Kendra Gen AI Enterprise Edition
+#' index and you try to use `USER_TOKEN` to configure user context policy,
+#' Amazon Kendra returns a `ValidationException` error.
 #' @param UserGroupResolutionConfiguration Gets users and groups from IAM Identity Center identity source. To
 #' configure this, see
 #' [UserGroupResolutionConfiguration](https://docs.aws.amazon.com/kendra/latest/APIReference/API_UserGroupResolutionConfiguration.html).
 #' This is useful for user context filtering, where search results are
 #' filtered based on the user or their group access to documents.
+#' 
+#' If you're using an Amazon Kendra Gen AI Enterprise Edition index,
+#' `UserGroupResolutionConfiguration` isn't supported.
 #'
 #' @return
 #' An empty list.

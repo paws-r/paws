@@ -8,7 +8,11 @@ guardduty_get_findings(DetectorId, FindingIds, SortCriteria = NULL)
 }
 \arguments{
 \item{DetectorId}{[required] The ID of the detector that specifies the GuardDuty service whose
-findings you want to retrieve.}
+findings you want to retrieve.
+
+To find the \code{detectorId} in the current Region, see the Settings page in
+the GuardDuty console, or run the
+\code{\link[=guardduty_list_detectors]{list_detectors}} API.}
 
 \item{FindingIds}{[required] The IDs of the findings that you want to retrieve.}
 

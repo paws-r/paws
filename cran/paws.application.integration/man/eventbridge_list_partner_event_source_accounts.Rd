@@ -16,8 +16,15 @@ eventbridge_list_partner_event_source_accounts(
 \item{EventSourceName}{[required] The name of the partner event source to display account information
 about.}
 
-\item{NextToken}{The token returned by a previous call to this operation. Specifying this
-retrieves the next set of results.}
+\item{NextToken}{The token returned by a previous call, which you can use to retrieve the
+next set of results.
+
+The value of \code{nextToken} is a unique pagination token for each page. To
+retrieve the next page of results, make the call again using the
+returned token. Keep all other arguments unchanged.
+
+Using an expired pagination token results in an \verb{HTTP 400 InvalidToken}
+error.}
 
 \item{Limit}{Specifying this limits the number of results returned by this operation.
 The operation also returns a NextToken which you can use in a subsequent

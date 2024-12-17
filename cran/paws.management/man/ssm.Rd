@@ -180,6 +180,7 @@ Manager, see the \emph{\href{https://docs.aws.amazon.com/incident-manager/latest
 \link[=ssm_get_default_patch_baseline]{get_default_patch_baseline} \tab Retrieves the default patch baseline\cr
 \link[=ssm_get_deployable_patch_snapshot_for_instance]{get_deployable_patch_snapshot_for_instance} \tab Retrieves the current snapshot for the patch baseline the managed node uses\cr
 \link[=ssm_get_document]{get_document} \tab Gets the contents of the specified Amazon Web Services Systems Manager document (SSM document)\cr
+\link[=ssm_get_execution_preview]{get_execution_preview} \tab Initiates the process of retrieving an existing preview that shows the effects that running a specified Automation runbook would have on the targeted resources\cr
 \link[=ssm_get_inventory]{get_inventory} \tab Query inventory information\cr
 \link[=ssm_get_inventory_schema]{get_inventory_schema} \tab Return a list of inventory type names for the account, or return a list of attribute names for a specific Inventory item type\cr
 \link[=ssm_get_maintenance_window]{get_maintenance_window} \tab Retrieves a maintenance window\cr
@@ -209,6 +210,8 @@ Manager, see the \emph{\href{https://docs.aws.amazon.com/incident-manager/latest
 \link[=ssm_list_documents]{list_documents} \tab Returns all Systems Manager (SSM) documents in the current Amazon Web Services account and Amazon Web Services Region\cr
 \link[=ssm_list_document_versions]{list_document_versions} \tab List all versions for a document\cr
 \link[=ssm_list_inventory_entries]{list_inventory_entries} \tab A list of inventory items returned by the request\cr
+\link[=ssm_list_nodes]{list_nodes} \tab Takes in filters and returns a list of managed nodes matching the filter criteria\cr
+\link[=ssm_list_nodes_summary]{list_nodes_summary} \tab Generates a summary of managed instance/node metadata based on the filters and aggregators you specify\cr
 \link[=ssm_list_ops_item_events]{list_ops_item_events} \tab Returns a list of all OpsItem events in the current Amazon Web Services Region and Amazon Web Services account\cr
 \link[=ssm_list_ops_item_related_items]{list_ops_item_related_items} \tab Lists all related-item resources associated with a Systems Manager OpsCenter OpsItem\cr
 \link[=ssm_list_ops_metadata]{list_ops_metadata} \tab Amazon Web Services Systems Manager calls this API operation when displaying all Application Manager OpsMetadata objects or blobs\cr
@@ -232,6 +235,7 @@ Manager, see the \emph{\href{https://docs.aws.amazon.com/incident-manager/latest
 \link[=ssm_start_associations_once]{start_associations_once} \tab Runs an association immediately and only one time\cr
 \link[=ssm_start_automation_execution]{start_automation_execution} \tab Initiates execution of an Automation runbook\cr
 \link[=ssm_start_change_request_execution]{start_change_request_execution} \tab Creates a change request for Change Manager\cr
+\link[=ssm_start_execution_preview]{start_execution_preview} \tab Initiates the process of creating a preview showing the effects that running a specified Automation runbook would have on the targeted resources\cr
 \link[=ssm_start_session]{start_session} \tab Initiates a connection to a target (for example, a managed node) for a Session Manager session\cr
 \link[=ssm_stop_automation_execution]{stop_automation_execution} \tab Stop an Automation that is currently running\cr
 \link[=ssm_terminate_session]{terminate_session} \tab Permanently ends a session and closes the data connection between the Session Manager client and SSM Agent on the managed node\cr

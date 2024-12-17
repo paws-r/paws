@@ -869,7 +869,7 @@ codecommit_describe_merge_conflicts <- function(repositoryName, destinationCommi
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxMergeHunks", output_token = "nextToken"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .codecommit$describe_merge_conflicts_input(repositoryName = repositoryName, destinationCommitSpecifier = destinationCommitSpecifier, sourceCommitSpecifier = sourceCommitSpecifier, mergeOption = mergeOption, maxMergeHunks = maxMergeHunks, filePath = filePath, conflictDetailLevel = conflictDetailLevel, conflictResolutionStrategy = conflictResolutionStrategy, nextToken = nextToken)
@@ -911,7 +911,7 @@ codecommit_describe_pull_request_events <- function(pullRequestId, pullRequestEv
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken"),
+    paginator = list(result_key = "pullRequestEvents", output_token = "nextToken", input_token = "nextToken", limit_key = "maxResults"),
     stream_api = FALSE
   )
   input <- .codecommit$describe_pull_request_events_input(pullRequestId = pullRequestId, pullRequestEventType = pullRequestEventType, actorArn = actorArn, nextToken = nextToken, maxResults = maxResults)
@@ -1152,7 +1152,7 @@ codecommit_get_comment_reactions <- function(commentId, reactionUserArn = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .codecommit$get_comment_reactions_input(commentId = commentId, reactionUserArn = reactionUserArn, nextToken = nextToken, maxResults = maxResults)
@@ -1192,7 +1192,7 @@ codecommit_get_comments_for_compared_commit <- function(repositoryName, beforeCo
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken"),
+    paginator = list(result_key = "commentsForComparedCommitData", output_token = "nextToken", input_token = "nextToken", limit_key = "maxResults"),
     stream_api = FALSE
   )
   input <- .codecommit$get_comments_for_compared_commit_input(repositoryName = repositoryName, beforeCommitId = beforeCommitId, afterCommitId = afterCommitId, nextToken = nextToken, maxResults = maxResults)
@@ -1240,7 +1240,7 @@ codecommit_get_comments_for_pull_request <- function(pullRequestId, repositoryNa
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken"),
+    paginator = list(result_key = "commentsForPullRequestData", output_token = "nextToken", input_token = "nextToken", limit_key = "maxResults"),
     stream_api = FALSE
   )
   input <- .codecommit$get_comments_for_pull_request_input(pullRequestId = pullRequestId, repositoryName = repositoryName, beforeCommitId = beforeCommitId, afterCommitId = afterCommitId, nextToken = nextToken, maxResults = maxResults)
@@ -1325,7 +1325,7 @@ codecommit_get_differences <- function(repositoryName, beforeCommitSpecifier = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(result_key = "differences", output_token = "NextToken", input_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .codecommit$get_differences_input(repositoryName = repositoryName, beforeCommitSpecifier = beforeCommitSpecifier, afterCommitSpecifier = afterCommitSpecifier, beforePath = beforePath, afterPath = afterPath, MaxResults = MaxResults, NextToken = NextToken)
@@ -1498,7 +1498,7 @@ codecommit_get_merge_conflicts <- function(repositoryName, destinationCommitSpec
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxConflictFiles", output_token = "nextToken"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .codecommit$get_merge_conflicts_input(repositoryName = repositoryName, destinationCommitSpecifier = destinationCommitSpecifier, sourceCommitSpecifier = sourceCommitSpecifier, mergeOption = mergeOption, conflictDetailLevel = conflictDetailLevel, maxConflictFiles = maxConflictFiles, conflictResolutionStrategy = conflictResolutionStrategy, nextToken = nextToken)
@@ -1743,7 +1743,7 @@ codecommit_list_approval_rule_templates <- function(nextToken = NULL, maxResults
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .codecommit$list_approval_rule_templates_input(nextToken = nextToken, maxResults = maxResults)
@@ -1780,7 +1780,7 @@ codecommit_list_associated_approval_rule_templates_for_repository <- function(re
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .codecommit$list_associated_approval_rule_templates_for_repository_input(repositoryName = repositoryName, nextToken = nextToken, maxResults = maxResults)
@@ -1852,7 +1852,7 @@ codecommit_list_file_commit_history <- function(repositoryName, commitSpecifier 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .codecommit$list_file_commit_history_input(repositoryName = repositoryName, commitSpecifier = commitSpecifier, filePath = filePath, maxResults = maxResults, nextToken = nextToken)
@@ -1892,7 +1892,7 @@ codecommit_list_pull_requests <- function(repositoryName, authorArn = NULL, pull
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken"),
+    paginator = list(result_key = "pullRequestIds", output_token = "nextToken", input_token = "nextToken", limit_key = "maxResults"),
     stream_api = FALSE
   )
   input <- .codecommit$list_pull_requests_input(repositoryName = repositoryName, authorArn = authorArn, pullRequestStatus = pullRequestStatus, nextToken = nextToken, maxResults = maxResults)
@@ -1965,7 +1965,7 @@ codecommit_list_repositories_for_approval_rule_template <- function(approvalRule
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .codecommit$list_repositories_for_approval_rule_template_input(approvalRuleTemplateName = approvalRuleTemplateName, nextToken = nextToken, maxResults = maxResults)

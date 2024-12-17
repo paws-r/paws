@@ -50,11 +50,10 @@ lambda_add_layer_version_permission <- function(LayerName, VersionNumber, Statem
 }
 .lambda$operations$add_layer_version_permission <- lambda_add_layer_version_permission
 
-#' Grants an Amazon Web Servicesservice, Amazon Web Services account, or
-#' Amazon Web Services organization permission to use a function
+#' Grants a principal permission to use a function
 #'
 #' @description
-#' Grants an Amazon Web Servicesservice, Amazon Web Services account, or Amazon Web Services organization permission to use a function. You can apply the policy at the function level, or specify a qualifier to restrict access to a single version or alias. If you use a qualifier, the invoker must use the full Amazon Resource Name (ARN) of that version or alias to invoke the function. Note: Lambda does not support adding policies to version $LATEST.
+#' Grants a [principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_principal.html#Principal_specifying) permission to use a function. You can apply the policy at the function level, or specify a qualifier to restrict access to a single version or alias. If you use a qualifier, the invoker must use the full Amazon Resource Name (ARN) of that version or alias to invoke the function. Note: Lambda does not support adding policies to version $LATEST.
 #'
 #' See [https://www.paws-r-sdk.com/docs/lambda_add_permission/](https://www.paws-r-sdk.com/docs/lambda_add_permission/) for full documentation.
 #'
@@ -77,17 +76,17 @@ lambda_add_layer_version_permission <- function(LayerName, VersionNumber, Statem
 #' the same policy.
 #' @param Action &#91;required&#93; The action that the principal can use on the function. For example,
 #' `lambda:InvokeFunction` or `lambda:GetFunction`.
-#' @param Principal &#91;required&#93; The Amazon Web Servicesservice or Amazon Web Services account that
-#' invokes the function. If you specify a service, use `SourceArn` or
-#' `SourceAccount` to limit who can invoke the function through that
-#' service.
-#' @param SourceArn For Amazon Web Servicesservices, the ARN of the Amazon Web Services
+#' @param Principal &#91;required&#93; The Amazon Web Services service, Amazon Web Services account, IAM user,
+#' or IAM role that invokes the function. If you specify a service, use
+#' `SourceArn` or `SourceAccount` to limit who can invoke the function
+#' through that service.
+#' @param SourceArn For Amazon Web Services services, the ARN of the Amazon Web Services
 #' resource that invokes the function. For example, an Amazon S3 bucket or
 #' Amazon SNS topic.
 #' 
 #' Note that Lambda configures the comparison using the `StringLike`
 #' operator.
-#' @param SourceAccount For Amazon Web Servicesservice, the ID of the Amazon Web Services
+#' @param SourceAccount For Amazon Web Services service, the ID of the Amazon Web Services
 #' account that owns the resource. Use this together with `SourceArn` to
 #' ensure that the specified account owns the resource. It is possible for
 #' an Amazon S3 bucket to be deleted by its owner and recreated by another
@@ -190,11 +189,12 @@ lambda_create_alias <- function(FunctionName, Name, FunctionVersion, Description
 #' @param AllowedPublishers &#91;required&#93; Signing profiles for this code signing configuration.
 #' @param CodeSigningPolicies The code signing policies define the actions to take if the validation
 #' checks fail.
+#' @param Tags A list of tags to add to the code signing configuration.
 #'
 #' @keywords internal
 #'
 #' @rdname lambda_create_code_signing_config
-lambda_create_code_signing_config <- function(Description = NULL, AllowedPublishers, CodeSigningPolicies = NULL) {
+lambda_create_code_signing_config <- function(Description = NULL, AllowedPublishers, CodeSigningPolicies = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateCodeSigningConfig",
     http_method = "POST",
@@ -203,7 +203,7 @@ lambda_create_code_signing_config <- function(Description = NULL, AllowedPublish
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .lambda$create_code_signing_config_input(Description = Description, AllowedPublishers = AllowedPublishers, CodeSigningPolicies = CodeSigningPolicies)
+  input <- .lambda$create_code_signing_config_input(Description = Description, AllowedPublishers = AllowedPublishers, CodeSigningPolicies = CodeSigningPolicies, Tags = Tags)
   output <- .lambda$create_code_signing_config_output()
   config <- get_config()
   svc <- .lambda$service(config, op)
@@ -315,6 +315,7 @@ lambda_create_code_signing_config <- function(Description = NULL, AllowedPublish
 #' @param MaximumRetryAttempts (Kinesis and DynamoDB Streams only) Discard records after the specified
 #' number of retries. The default value is infinite (-1). When set to
 #' infinite (-1), failed records are retried until the record expires.
+#' @param Tags A list of tags to apply to the event source mapping.
 #' @param TumblingWindowInSeconds (Kinesis and DynamoDB Streams only) The duration in seconds of a
 #' processing window for DynamoDB and Kinesis Streams event sources. A
 #' value of 0 seconds indicates no tumbling window.
@@ -339,11 +340,18 @@ lambda_create_code_signing_config <- function(Description = NULL, AllowedPublish
 #' criteria](https://docs.aws.amazon.com/lambda/latest/dg/invocation-eventfiltering.html#filtering-basics).
 #' By default, Lambda does not encrypt your filter criteria object. Specify
 #' this property to encrypt data using your own customer managed key.
+#' @param MetricsConfig The metrics configuration for your event source. For more information,
+#' see [Event source mapping
+#' metrics](https://docs.aws.amazon.com/lambda/latest/dg/monitoring-metrics-types.html#event-source-mapping-metrics).
+#' @param ProvisionedPollerConfig (Amazon MSK and self-managed Apache Kafka only) The Provisioned Mode
+#' configuration for the event source. For more information, see
+#' [Provisioned
+#' Mode](https://docs.aws.amazon.com/lambda/latest/dg/invocation-eventsourcemapping.html#invocation-eventsourcemapping-provisioned-mode).
 #'
 #' @keywords internal
 #'
 #' @rdname lambda_create_event_source_mapping
-lambda_create_event_source_mapping <- function(EventSourceArn = NULL, FunctionName, Enabled = NULL, BatchSize = NULL, FilterCriteria = NULL, MaximumBatchingWindowInSeconds = NULL, ParallelizationFactor = NULL, StartingPosition = NULL, StartingPositionTimestamp = NULL, DestinationConfig = NULL, MaximumRecordAgeInSeconds = NULL, BisectBatchOnFunctionError = NULL, MaximumRetryAttempts = NULL, TumblingWindowInSeconds = NULL, Topics = NULL, Queues = NULL, SourceAccessConfigurations = NULL, SelfManagedEventSource = NULL, FunctionResponseTypes = NULL, AmazonManagedKafkaEventSourceConfig = NULL, SelfManagedKafkaEventSourceConfig = NULL, ScalingConfig = NULL, DocumentDBEventSourceConfig = NULL, KMSKeyArn = NULL) {
+lambda_create_event_source_mapping <- function(EventSourceArn = NULL, FunctionName, Enabled = NULL, BatchSize = NULL, FilterCriteria = NULL, MaximumBatchingWindowInSeconds = NULL, ParallelizationFactor = NULL, StartingPosition = NULL, StartingPositionTimestamp = NULL, DestinationConfig = NULL, MaximumRecordAgeInSeconds = NULL, BisectBatchOnFunctionError = NULL, MaximumRetryAttempts = NULL, Tags = NULL, TumblingWindowInSeconds = NULL, Topics = NULL, Queues = NULL, SourceAccessConfigurations = NULL, SelfManagedEventSource = NULL, FunctionResponseTypes = NULL, AmazonManagedKafkaEventSourceConfig = NULL, SelfManagedKafkaEventSourceConfig = NULL, ScalingConfig = NULL, DocumentDBEventSourceConfig = NULL, KMSKeyArn = NULL, MetricsConfig = NULL, ProvisionedPollerConfig = NULL) {
   op <- new_operation(
     name = "CreateEventSourceMapping",
     http_method = "POST",
@@ -352,7 +360,7 @@ lambda_create_event_source_mapping <- function(EventSourceArn = NULL, FunctionNa
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .lambda$create_event_source_mapping_input(EventSourceArn = EventSourceArn, FunctionName = FunctionName, Enabled = Enabled, BatchSize = BatchSize, FilterCriteria = FilterCriteria, MaximumBatchingWindowInSeconds = MaximumBatchingWindowInSeconds, ParallelizationFactor = ParallelizationFactor, StartingPosition = StartingPosition, StartingPositionTimestamp = StartingPositionTimestamp, DestinationConfig = DestinationConfig, MaximumRecordAgeInSeconds = MaximumRecordAgeInSeconds, BisectBatchOnFunctionError = BisectBatchOnFunctionError, MaximumRetryAttempts = MaximumRetryAttempts, TumblingWindowInSeconds = TumblingWindowInSeconds, Topics = Topics, Queues = Queues, SourceAccessConfigurations = SourceAccessConfigurations, SelfManagedEventSource = SelfManagedEventSource, FunctionResponseTypes = FunctionResponseTypes, AmazonManagedKafkaEventSourceConfig = AmazonManagedKafkaEventSourceConfig, SelfManagedKafkaEventSourceConfig = SelfManagedKafkaEventSourceConfig, ScalingConfig = ScalingConfig, DocumentDBEventSourceConfig = DocumentDBEventSourceConfig, KMSKeyArn = KMSKeyArn)
+  input <- .lambda$create_event_source_mapping_input(EventSourceArn = EventSourceArn, FunctionName = FunctionName, Enabled = Enabled, BatchSize = BatchSize, FilterCriteria = FilterCriteria, MaximumBatchingWindowInSeconds = MaximumBatchingWindowInSeconds, ParallelizationFactor = ParallelizationFactor, StartingPosition = StartingPosition, StartingPositionTimestamp = StartingPositionTimestamp, DestinationConfig = DestinationConfig, MaximumRecordAgeInSeconds = MaximumRecordAgeInSeconds, BisectBatchOnFunctionError = BisectBatchOnFunctionError, MaximumRetryAttempts = MaximumRetryAttempts, Tags = Tags, TumblingWindowInSeconds = TumblingWindowInSeconds, Topics = Topics, Queues = Queues, SourceAccessConfigurations = SourceAccessConfigurations, SelfManagedEventSource = SelfManagedEventSource, FunctionResponseTypes = FunctionResponseTypes, AmazonManagedKafkaEventSourceConfig = AmazonManagedKafkaEventSourceConfig, SelfManagedKafkaEventSourceConfig = SelfManagedKafkaEventSourceConfig, ScalingConfig = ScalingConfig, DocumentDBEventSourceConfig = DocumentDBEventSourceConfig, KMSKeyArn = KMSKeyArn, MetricsConfig = MetricsConfig, ProvisionedPollerConfig = ProvisionedPollerConfig)
   output <- .lambda$create_event_source_mapping_output()
   config <- get_config()
   svc <- .lambda$service(config, op)
@@ -365,7 +373,7 @@ lambda_create_event_source_mapping <- function(EventSourceArn = NULL, FunctionNa
 #' Creates a Lambda function
 #'
 #' @description
-#' Creates a Lambda function. To create a function, you need a [deployment package](https://docs.aws.amazon.com/lambda/latest/dg/) and an [execution role](https://docs.aws.amazon.com/lambda/latest/dg/lambda-permissions.html#lambda-intro-execution-role). The deployment package is a .zip file archive or container image that contains your function code. The execution role grants the function permission to use Amazon Web Servicesservices, such as Amazon CloudWatch Logs for log streaming and X-Ray for request tracing.
+#' Creates a Lambda function. To create a function, you need a [deployment package](https://docs.aws.amazon.com/lambda/latest/dg/) and an [execution role](https://docs.aws.amazon.com/lambda/latest/dg/lambda-permissions.html#lambda-intro-execution-role). The deployment package is a .zip file archive or container image that contains your function code. The execution role grants the function permission to use Amazon Web Services services, such as Amazon CloudWatch Logs for log streaming and X-Ray for request tracing.
 #'
 #' See [https://www.paws-r-sdk.com/docs/lambda_create_function/](https://www.paws-r-sdk.com/docs/lambda_create_function/) for full documentation.
 #'
@@ -430,16 +438,31 @@ lambda_create_event_source_mapping <- function(EventSourceArn = NULL, FunctionNa
 #' @param Environment Environment variables that are accessible from function code during
 #' execution.
 #' @param KMSKeyArn The ARN of the Key Management Service (KMS) customer managed key that's
-#' used to encrypt your function's [environment
-#' variables](https://docs.aws.amazon.com/lambda/latest/dg/configuration-envvars.html#configuration-envvars-encryption).
-#' When [Lambda
-#' SnapStart](https://docs.aws.amazon.com/lambda/latest/dg/snapstart-security.html)
-#' is activated, Lambda also uses this key is to encrypt your function's
-#' snapshot. If you deploy your function using a container image, Lambda
-#' also uses this key to encrypt your function when it's deployed. Note
-#' that this is not the same key that's used to protect your container
-#' image in the Amazon Elastic Container Registry (Amazon ECR). If you
-#' don't provide a customer managed key, Lambda uses a default service key.
+#' used to encrypt the following resources:
+#' 
+#' -   The function's [environment
+#'     variables](https://docs.aws.amazon.com/lambda/latest/dg/configuration-envvars.html#configuration-envvars-encryption).
+#' 
+#' -   The function's [Lambda
+#'     SnapStart](https://docs.aws.amazon.com/lambda/latest/dg/snapstart-security.html)
+#'     snapshots.
+#' 
+#' -   When used with `SourceKMSKeyArn`, the unzipped version of the .zip
+#'     deployment package that's used for function invocations. For more
+#'     information, see [Specifying a customer managed key for
+#'     Lambda](https://docs.aws.amazon.com/lambda/latest/dg/encrypt-zip-package.html#enable-zip-custom-encryption).
+#' 
+#' -   The optimized version of the container image that's used for
+#'     function invocations. Note that this is not the same key that's used
+#'     to protect your container image in the Amazon Elastic Container
+#'     Registry (Amazon ECR). For more information, see [Function
+#'     lifecycle](https://docs.aws.amazon.com/lambda/latest/dg/images-create.html#images-lifecycle).
+#' 
+#' If you don't provide a customer managed key, Lambda uses an [Amazon Web
+#' Services owned
+#' key](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-owned-cmk)
+#' or an [Amazon Web Services managed
+#' key](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-cmk).
 #' @param TracingConfig Set `Mode` to `Active` to sample and trace a subset of incoming requests
 #' with
 #' [X-Ray](https://docs.aws.amazon.com/lambda/latest/dg/services-xray.html).
@@ -1854,7 +1877,7 @@ lambda_list_aliases <- function(FunctionName, FunctionVersion = NULL, Marker = N
     http_method = "GET",
     http_path = "/2015-03-31/functions/{FunctionName}/aliases",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxItems", output_token = "NextMarker", result_key = "Aliases"),
+    paginator = list(input_token = "Marker", output_token = "NextMarker", limit_key = "MaxItems", result_key = "Aliases"),
     stream_api = FALSE
   )
   input <- .lambda$list_aliases_input(FunctionName = FunctionName, FunctionVersion = FunctionVersion, Marker = Marker, MaxItems = MaxItems)
@@ -1954,7 +1977,7 @@ lambda_list_event_source_mappings <- function(EventSourceArn = NULL, FunctionNam
     http_method = "GET",
     http_path = "/2015-03-31/event-source-mappings/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxItems", output_token = "NextMarker", result_key = "EventSourceMappings"),
+    paginator = list(input_token = "Marker", output_token = "NextMarker", limit_key = "MaxItems", result_key = "EventSourceMappings"),
     stream_api = FALSE
   )
   input <- .lambda$list_event_source_mappings_input(EventSourceArn = EventSourceArn, FunctionName = FunctionName, Marker = Marker, MaxItems = MaxItems)
@@ -2093,7 +2116,7 @@ lambda_list_functions <- function(MasterRegion = NULL, FunctionVersion = NULL, M
     http_method = "GET",
     http_path = "/2015-03-31/functions/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxItems", output_token = "NextMarker", result_key = "Functions"),
+    paginator = list(input_token = "Marker", output_token = "NextMarker", limit_key = "MaxItems", result_key = "Functions"),
     stream_api = FALSE
   )
   input <- .lambda$list_functions_input(MasterRegion = MasterRegion, FunctionVersion = FunctionVersion, Marker = Marker, MaxItems = MaxItems)
@@ -2273,15 +2296,16 @@ lambda_list_provisioned_concurrency_configs <- function(FunctionName, Marker = N
 }
 .lambda$operations$list_provisioned_concurrency_configs <- lambda_list_provisioned_concurrency_configs
 
-#' Returns a function's tags
+#' Returns a function, event source mapping, or code signing
+#' configuration's tags
 #'
 #' @description
-#' Returns a function's [tags](https://docs.aws.amazon.com/lambda/latest/dg/configuration-tags.html). You can also view tags with [`get_function`][lambda_get_function].
+#' Returns a function, event source mapping, or code signing configuration's [tags](https://docs.aws.amazon.com/lambda/latest/dg/configuration-tags.html). You can also view function tags with [`get_function`][lambda_get_function].
 #'
 #' See [https://www.paws-r-sdk.com/docs/lambda_list_tags/](https://www.paws-r-sdk.com/docs/lambda_list_tags/) for full documentation.
 #'
-#' @param Resource &#91;required&#93; The function's Amazon Resource Name (ARN). Note: Lambda does not support
-#' adding tags to aliases or versions.
+#' @param Resource &#91;required&#93; The resource's Amazon Resource Name (ARN). Note: Lambda does not support
+#' adding tags to function aliases or versions.
 #'
 #' @keywords internal
 #'
@@ -2585,9 +2609,14 @@ lambda_put_function_concurrency <- function(FunctionName, ReservedConcurrentExec
 #' 
 #' -   **Queue** - The ARN of a standard SQS queue.
 #' 
+#' -   **Bucket** - The ARN of an Amazon S3 bucket.
+#' 
 #' -   **Topic** - The ARN of a standard SNS topic.
 #' 
 #' -   **Event Bus** - The ARN of an Amazon EventBridge event bus.
+#' 
+#' S3 buckets are supported only for on-failure destinations. To retain
+#' records of successful invocations, use another destination type.
 #'
 #' @keywords internal
 #'
@@ -2832,11 +2861,11 @@ lambda_remove_layer_version_permission <- function(LayerName, VersionNumber, Sta
 }
 .lambda$operations$remove_layer_version_permission <- lambda_remove_layer_version_permission
 
-#' Revokes function-use permission from an Amazon Web Servicesservice or
+#' Revokes function-use permission from an Amazon Web Services service or
 #' another Amazon Web Services account
 #'
 #' @description
-#' Revokes function-use permission from an Amazon Web Servicesservice or another Amazon Web Services account. You can get the ID of the statement from the output of [`get_policy`][lambda_get_policy].
+#' Revokes function-use permission from an Amazon Web Services service or another Amazon Web Services account. You can get the ID of the statement from the output of [`get_policy`][lambda_get_policy].
 #'
 #' See [https://www.paws-r-sdk.com/docs/lambda_remove_permission/](https://www.paws-r-sdk.com/docs/lambda_remove_permission/) for full documentation.
 #'
@@ -2884,15 +2913,16 @@ lambda_remove_permission <- function(FunctionName, StatementId, Qualifier = NULL
 }
 .lambda$operations$remove_permission <- lambda_remove_permission
 
-#' Adds tags to a function
+#' Adds tags to a function, event source mapping, or code signing
+#' configuration
 #'
 #' @description
-#' Adds [tags](https://docs.aws.amazon.com/lambda/latest/dg/configuration-tags.html) to a function.
+#' Adds [tags](https://docs.aws.amazon.com/lambda/latest/dg/configuration-tags.html) to a function, event source mapping, or code signing configuration.
 #'
 #' See [https://www.paws-r-sdk.com/docs/lambda_tag_resource/](https://www.paws-r-sdk.com/docs/lambda_tag_resource/) for full documentation.
 #'
-#' @param Resource &#91;required&#93; The function's Amazon Resource Name (ARN).
-#' @param Tags &#91;required&#93; A list of tags to apply to the function.
+#' @param Resource &#91;required&#93; The resource's Amazon Resource Name (ARN).
+#' @param Tags &#91;required&#93; A list of tags to apply to the resource.
 #'
 #' @keywords internal
 #'
@@ -2916,15 +2946,16 @@ lambda_tag_resource <- function(Resource, Tags) {
 }
 .lambda$operations$tag_resource <- lambda_tag_resource
 
-#' Removes tags from a function
+#' Removes tags from a function, event source mapping, or code signing
+#' configuration
 #'
 #' @description
-#' Removes [tags](https://docs.aws.amazon.com/lambda/latest/dg/configuration-tags.html) from a function.
+#' Removes [tags](https://docs.aws.amazon.com/lambda/latest/dg/configuration-tags.html) from a function, event source mapping, or code signing configuration.
 #'
 #' See [https://www.paws-r-sdk.com/docs/lambda_untag_resource/](https://www.paws-r-sdk.com/docs/lambda_untag_resource/) for full documentation.
 #'
-#' @param Resource &#91;required&#93; The function's Amazon Resource Name (ARN).
-#' @param TagKeys &#91;required&#93; A list of tag keys to remove from the function.
+#' @param Resource &#91;required&#93; The resource's Amazon Resource Name (ARN).
+#' @param TagKeys &#91;required&#93; A list of tag keys to remove from the resource.
 #'
 #' @keywords internal
 #'
@@ -3131,11 +3162,18 @@ lambda_update_code_signing_config <- function(CodeSigningConfigArn, Description 
 #' criteria](https://docs.aws.amazon.com/lambda/latest/dg/invocation-eventfiltering.html#filtering-basics).
 #' By default, Lambda does not encrypt your filter criteria object. Specify
 #' this property to encrypt data using your own customer managed key.
+#' @param MetricsConfig The metrics configuration for your event source. For more information,
+#' see [Event source mapping
+#' metrics](https://docs.aws.amazon.com/lambda/latest/dg/monitoring-metrics-types.html#event-source-mapping-metrics).
+#' @param ProvisionedPollerConfig (Amazon MSK and self-managed Apache Kafka only) The Provisioned Mode
+#' configuration for the event source. For more information, see
+#' [Provisioned
+#' Mode](https://docs.aws.amazon.com/lambda/latest/dg/invocation-eventsourcemapping.html#invocation-eventsourcemapping-provisioned-mode).
 #'
 #' @keywords internal
 #'
 #' @rdname lambda_update_event_source_mapping
-lambda_update_event_source_mapping <- function(UUID, FunctionName = NULL, Enabled = NULL, BatchSize = NULL, FilterCriteria = NULL, MaximumBatchingWindowInSeconds = NULL, DestinationConfig = NULL, MaximumRecordAgeInSeconds = NULL, BisectBatchOnFunctionError = NULL, MaximumRetryAttempts = NULL, ParallelizationFactor = NULL, SourceAccessConfigurations = NULL, TumblingWindowInSeconds = NULL, FunctionResponseTypes = NULL, ScalingConfig = NULL, DocumentDBEventSourceConfig = NULL, KMSKeyArn = NULL) {
+lambda_update_event_source_mapping <- function(UUID, FunctionName = NULL, Enabled = NULL, BatchSize = NULL, FilterCriteria = NULL, MaximumBatchingWindowInSeconds = NULL, DestinationConfig = NULL, MaximumRecordAgeInSeconds = NULL, BisectBatchOnFunctionError = NULL, MaximumRetryAttempts = NULL, ParallelizationFactor = NULL, SourceAccessConfigurations = NULL, TumblingWindowInSeconds = NULL, FunctionResponseTypes = NULL, ScalingConfig = NULL, DocumentDBEventSourceConfig = NULL, KMSKeyArn = NULL, MetricsConfig = NULL, ProvisionedPollerConfig = NULL) {
   op <- new_operation(
     name = "UpdateEventSourceMapping",
     http_method = "PUT",
@@ -3144,7 +3182,7 @@ lambda_update_event_source_mapping <- function(UUID, FunctionName = NULL, Enable
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .lambda$update_event_source_mapping_input(UUID = UUID, FunctionName = FunctionName, Enabled = Enabled, BatchSize = BatchSize, FilterCriteria = FilterCriteria, MaximumBatchingWindowInSeconds = MaximumBatchingWindowInSeconds, DestinationConfig = DestinationConfig, MaximumRecordAgeInSeconds = MaximumRecordAgeInSeconds, BisectBatchOnFunctionError = BisectBatchOnFunctionError, MaximumRetryAttempts = MaximumRetryAttempts, ParallelizationFactor = ParallelizationFactor, SourceAccessConfigurations = SourceAccessConfigurations, TumblingWindowInSeconds = TumblingWindowInSeconds, FunctionResponseTypes = FunctionResponseTypes, ScalingConfig = ScalingConfig, DocumentDBEventSourceConfig = DocumentDBEventSourceConfig, KMSKeyArn = KMSKeyArn)
+  input <- .lambda$update_event_source_mapping_input(UUID = UUID, FunctionName = FunctionName, Enabled = Enabled, BatchSize = BatchSize, FilterCriteria = FilterCriteria, MaximumBatchingWindowInSeconds = MaximumBatchingWindowInSeconds, DestinationConfig = DestinationConfig, MaximumRecordAgeInSeconds = MaximumRecordAgeInSeconds, BisectBatchOnFunctionError = BisectBatchOnFunctionError, MaximumRetryAttempts = MaximumRetryAttempts, ParallelizationFactor = ParallelizationFactor, SourceAccessConfigurations = SourceAccessConfigurations, TumblingWindowInSeconds = TumblingWindowInSeconds, FunctionResponseTypes = FunctionResponseTypes, ScalingConfig = ScalingConfig, DocumentDBEventSourceConfig = DocumentDBEventSourceConfig, KMSKeyArn = KMSKeyArn, MetricsConfig = MetricsConfig, ProvisionedPollerConfig = ProvisionedPollerConfig)
   output <- .lambda$update_event_source_mapping_output()
   config <- get_config()
   svc <- .lambda$service(config, op)
@@ -3198,11 +3236,15 @@ lambda_update_event_source_mapping <- function(UUID, FunctionName = NULL, Enable
 #' @param Architectures The instruction set architecture that the function supports. Enter a
 #' string array with one of the valid values (arm64 or x86_64). The default
 #' value is `x86_64`.
+#' @param SourceKMSKeyArn The ARN of the Key Management Service (KMS) customer managed key that's
+#' used to encrypt your function's .zip deployment package. If you don't
+#' provide a customer managed key, Lambda uses an Amazon Web Services
+#' managed key.
 #'
 #' @keywords internal
 #'
 #' @rdname lambda_update_function_code
-lambda_update_function_code <- function(FunctionName, ZipFile = NULL, S3Bucket = NULL, S3Key = NULL, S3ObjectVersion = NULL, ImageUri = NULL, Publish = NULL, DryRun = NULL, RevisionId = NULL, Architectures = NULL) {
+lambda_update_function_code <- function(FunctionName, ZipFile = NULL, S3Bucket = NULL, S3Key = NULL, S3ObjectVersion = NULL, ImageUri = NULL, Publish = NULL, DryRun = NULL, RevisionId = NULL, Architectures = NULL, SourceKMSKeyArn = NULL) {
   op <- new_operation(
     name = "UpdateFunctionCode",
     http_method = "PUT",
@@ -3211,7 +3253,7 @@ lambda_update_function_code <- function(FunctionName, ZipFile = NULL, S3Bucket =
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .lambda$update_function_code_input(FunctionName = FunctionName, ZipFile = ZipFile, S3Bucket = S3Bucket, S3Key = S3Key, S3ObjectVersion = S3ObjectVersion, ImageUri = ImageUri, Publish = Publish, DryRun = DryRun, RevisionId = RevisionId, Architectures = Architectures)
+  input <- .lambda$update_function_code_input(FunctionName = FunctionName, ZipFile = ZipFile, S3Bucket = S3Bucket, S3Key = S3Key, S3ObjectVersion = S3ObjectVersion, ImageUri = ImageUri, Publish = Publish, DryRun = DryRun, RevisionId = RevisionId, Architectures = Architectures, SourceKMSKeyArn = SourceKMSKeyArn)
   output <- .lambda$update_function_code_output()
   config <- get_config()
   svc <- .lambda$service(config, op)
@@ -3284,16 +3326,31 @@ lambda_update_function_code <- function(FunctionName, ZipFile = NULL, S3Bucket =
 #' more information, see [Dead-letter
 #' queues](https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html#invocation-dlq).
 #' @param KMSKeyArn The ARN of the Key Management Service (KMS) customer managed key that's
-#' used to encrypt your function's [environment
-#' variables](https://docs.aws.amazon.com/lambda/latest/dg/configuration-envvars.html#configuration-envvars-encryption).
-#' When [Lambda
-#' SnapStart](https://docs.aws.amazon.com/lambda/latest/dg/snapstart-security.html)
-#' is activated, Lambda also uses this key is to encrypt your function's
-#' snapshot. If you deploy your function using a container image, Lambda
-#' also uses this key to encrypt your function when it's deployed. Note
-#' that this is not the same key that's used to protect your container
-#' image in the Amazon Elastic Container Registry (Amazon ECR). If you
-#' don't provide a customer managed key, Lambda uses a default service key.
+#' used to encrypt the following resources:
+#' 
+#' -   The function's [environment
+#'     variables](https://docs.aws.amazon.com/lambda/latest/dg/configuration-envvars.html#configuration-envvars-encryption).
+#' 
+#' -   The function's [Lambda
+#'     SnapStart](https://docs.aws.amazon.com/lambda/latest/dg/snapstart-security.html)
+#'     snapshots.
+#' 
+#' -   When used with `SourceKMSKeyArn`, the unzipped version of the .zip
+#'     deployment package that's used for function invocations. For more
+#'     information, see [Specifying a customer managed key for
+#'     Lambda](https://docs.aws.amazon.com/lambda/latest/dg/encrypt-zip-package.html#enable-zip-custom-encryption).
+#' 
+#' -   The optimized version of the container image that's used for
+#'     function invocations. Note that this is not the same key that's used
+#'     to protect your container image in the Amazon Elastic Container
+#'     Registry (Amazon ECR). For more information, see [Function
+#'     lifecycle](https://docs.aws.amazon.com/lambda/latest/dg/images-create.html#images-lifecycle).
+#' 
+#' If you don't provide a customer managed key, Lambda uses an [Amazon Web
+#' Services owned
+#' key](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-owned-cmk)
+#' or an [Amazon Web Services managed
+#' key](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-cmk).
 #' @param TracingConfig Set `Mode` to `Active` to sample and trace a subset of incoming requests
 #' with
 #' [X-Ray](https://docs.aws.amazon.com/lambda/latest/dg/services-xray.html).
@@ -3375,9 +3432,14 @@ lambda_update_function_configuration <- function(FunctionName, Role = NULL, Hand
 #' 
 #' -   **Queue** - The ARN of a standard SQS queue.
 #' 
+#' -   **Bucket** - The ARN of an Amazon S3 bucket.
+#' 
 #' -   **Topic** - The ARN of a standard SNS topic.
 #' 
 #' -   **Event Bus** - The ARN of an Amazon EventBridge event bus.
+#' 
+#' S3 buckets are supported only for on-failure destinations. To retain
+#' records of successful invocations, use another destination type.
 #'
 #' @keywords internal
 #'

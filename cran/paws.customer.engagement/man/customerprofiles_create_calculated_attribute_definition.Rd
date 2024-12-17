@@ -11,6 +11,7 @@ customerprofiles_create_calculated_attribute_definition(
   Description = NULL,
   AttributeDetails,
   Conditions = NULL,
+  Filter = NULL,
   Statistic,
   Tags = NULL
 )
@@ -29,6 +30,9 @@ expression.}
 
 \item{Conditions}{The conditions including range, object count, and threshold for the
 calculated attribute.}
+
+\item{Filter}{Defines how to filter incoming objects to include part of the Calculated
+Attribute.}
 
 \item{Statistic}{[required] The aggregation operation to perform for the calculated attribute.}
 

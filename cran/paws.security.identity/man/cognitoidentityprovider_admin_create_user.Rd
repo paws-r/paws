@@ -17,7 +17,7 @@ cognitoidentityprovider_admin_create_user(
 )
 }
 \arguments{
-\item{UserPoolId}{[required] The user pool ID for the user pool where the user will be created.}
+\item{UserPoolId}{[required] The ID of the user pool where you want to create a user.}
 
 \item{Username}{[required] The value that you want to set as the username sign-in attribute. The
 following conditions apply to the username parameter.
@@ -49,6 +49,11 @@ To send a message inviting the user to sign up, you must specify the
 user's email address or phone number. You can do this in your call to
 AdminCreateUser or in the \strong{Users} tab of the Amazon Cognito console
 for managing your user pools.
+
+You must also provide an email address or phone number when you expect
+the user to do passwordless sign-in with an email or SMS OTP. These
+attributes must be provided when passwordless options are the only
+available, or when you don't submit a \code{TemporaryPassword}.
 
 In your call to
 \code{\link[=cognitoidentityprovider_admin_create_user]{admin_create_user}}, you
@@ -84,12 +89,21 @@ For more information about the pre sign-up Lambda trigger, see \href{https://doc
 \item{TemporaryPassword}{The user's temporary password. This password must conform to the
 password policy that you specified when you created the user pool.
 
+The exception to the requirement for a password is when your user pool
+supports passwordless sign-in with email or SMS OTPs. To create a user
+with no password, omit this parameter or submit a blank value. You can
+only create a passwordless user when passwordless sign-in is available.
+See \href{https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_SignInPolicyType.html}{the SignInPolicyType}
+property of
+\code{\link[=cognitoidentityprovider_create_user_pool]{create_user_pool}} and
+\code{\link[=cognitoidentityprovider_update_user_pool]{update_user_pool}}.
+
 The temporary password is valid only once. To complete the Admin Create
 User flow, the user must enter the temporary password in the sign-in
 page, along with a new password to be used in all future sign-ins.
 
-This parameter isn't required. If you don't specify a value, Amazon
-Cognito generates one for you.
+If you don't specify a value, Amazon Cognito generates one for you
+unless you have passwordless options active for your user pool.
 
 The temporary password can only be used until the user account
 expiration limit that you set for your user pool. To reset the account
@@ -101,23 +115,23 @@ and specify \code{RESEND} for the \code{MessageAction} parameter.}
 \code{email_verified} attribute is set to \code{True}. Otherwise, it is ignored.
 
 If this parameter is set to \code{True} and the phone number or email address
-specified in the UserAttributes parameter already exists as an alias
-with a different user, the API call will migrate the alias from the
-previous user to the newly created user. The previous user will no
-longer be able to log in using that alias.
+specified in the \code{UserAttributes} parameter already exists as an alias
+with a different user, this request migrates the alias from the previous
+user to the newly-created user. The previous user will no longer be able
+to log in using that alias.
 
 If this parameter is set to \code{False}, the API throws an
 \code{AliasExistsException} error if the alias already exists. The default
 value is \code{False}.}
 
 \item{MessageAction}{Set to \code{RESEND} to resend the invitation message to a user that already
-exists and reset the expiration limit on the user's account. Set to
-\code{SUPPRESS} to suppress sending the message. You can specify only one
-value.}
+exists, and to reset the temporary-password duration with a new
+temporary password. Set to \code{SUPPRESS} to suppress sending the message.
+You can specify only one value.}
 
-\item{DesiredDeliveryMediums}{Specify \code{"EMAIL"} if email will be used to send the welcome message.
-Specify \code{"SMS"} if the phone number will be used. The default value is
-\code{"SMS"}. You can specify more than one value.}
+\item{DesiredDeliveryMediums}{Specify \code{EMAIL} if email will be used to send the welcome message.
+Specify \code{SMS} if the phone number will be used. The default value is
+\code{SMS}. You can specify more than one value.}
 
 \item{ClientMetadata}{A map of custom key-value pairs that you can provide as input for any
 custom workflows that this action triggers.
@@ -126,7 +140,7 @@ You create custom workflows by assigning Lambda functions to user pool
 triggers. When you use the AdminCreateUser API action, Amazon Cognito
 invokes the function that is assigned to the \emph{pre sign-up} trigger. When
 Amazon Cognito invokes this function, it passes a JSON payload, which
-the function receives as input. This payload contains a \code{clientMetadata}
+the function receives as input. This payload contains a \code{ClientMetadata}
 attribute, which provides the data that you assigned to the
 ClientMetadata parameter in your AdminCreateUser request. In your
 function code in Lambda, you can process the \code{clientMetadata} value to
@@ -135,16 +149,16 @@ enhance your workflow for your specific needs.
 For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-working-with-lambda-triggers.html}{Customizing user pool Workflows with Lambda Triggers}
 in the \emph{Amazon Cognito Developer Guide}.
 
-When you use the ClientMetadata parameter, remember that Amazon Cognito
+When you use the \code{ClientMetadata} parameter, note that Amazon Cognito
 won't do the following:
 \itemize{
-\item Store the ClientMetadata value. This data is available only to
+\item Store the \code{ClientMetadata} value. This data is available only to
 Lambda triggers that are assigned to a user pool to support custom
 workflows. If your user pool configuration doesn't include triggers,
-the ClientMetadata parameter serves no purpose.
-\item Validate the ClientMetadata value.
-\item Encrypt the ClientMetadata value. Don't use Amazon Cognito to
-provide sensitive information.
+the \code{ClientMetadata} parameter serves no purpose.
+\item Validate the \code{ClientMetadata} value.
+\item Encrypt the \code{ClientMetadata} value. Don't send sensitive information
+in this parameter.
 }}
 }
 \description{

@@ -24,6 +24,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \itemize{
 \item \code{ip-address-type} - The IP address type (\code{ipv4} | \code{ipv6}).
 \item \code{service-name} - The name of the service.
+\item \code{service-region} - The Region of the service.
 \item \code{tag}:\<key\> - The key/value combination of a tag assigned to the
 resource. Use the tag key in the filter name and the tag value as
 the filter value. For example, to find all resources that have a tag

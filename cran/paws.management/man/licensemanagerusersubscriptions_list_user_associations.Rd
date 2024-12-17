@@ -13,16 +13,21 @@ licensemanagerusersubscriptions_list_user_associations(
 )
 }
 \arguments{
-\item{Filters}{An array of structures that you can use to filter the results to those
-that match one or more sets of key-value pairs that you specify.}
+\item{Filters}{You can use the following filters to streamline results:
+\itemize{
+\item Status
+\item Username
+\item Domain
+}}
 
 \item{IdentityProvider}{[required] An object that specifies details for the identity provider.}
 
 \item{InstanceId}{[required] The ID of the EC2 instance, which provides user-based subscriptions.}
 
-\item{MaxResults}{Maximum number of results to return in a single call.}
+\item{MaxResults}{The maximum number of results to return from a single request.}
 
-\item{NextToken}{Token for the next set of results.}
+\item{NextToken}{A token to specify where to start paginating. This is the nextToken from
+a previously truncated response.}
 }
 \description{
 Lists user associations for an identity provider.

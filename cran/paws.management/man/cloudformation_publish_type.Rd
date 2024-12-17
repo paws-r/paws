@@ -42,7 +42,7 @@ CloudFormation automatically sets the first version number to be
 \verb{1.0.0}.}
 }
 \description{
-Publishes the specified extension to the CloudFormation registry as a public extension in this Region. Public extensions are available for use by all CloudFormation users. For more information about publishing extensions, see \href{https://docs.aws.amazon.com/cloudformation-cli/latest/userguide/publish-extension.html}{Publishing extensions to make them available for public use} in the \emph{CloudFormation CLI User Guide}.
+Publishes the specified extension to the CloudFormation registry as a public extension in this Region. Public extensions are available for use by all CloudFormation users. For more information about publishing extensions, see \href{https://docs.aws.amazon.com/cloudformation-cli/latest/userguide/publish-extension.html}{Publishing extensions to make them available for public use} in the \emph{CloudFormation Command Line Interface (CLI) User Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudformation_publish_type/} for full documentation.
 }

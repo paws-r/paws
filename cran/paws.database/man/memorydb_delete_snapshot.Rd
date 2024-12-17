@@ -7,7 +7,7 @@
 memorydb_delete_snapshot(SnapshotName)
 }
 \arguments{
-\item{SnapshotName}{[required] The name of the snapshot to delete}
+\item{SnapshotName}{[required] The name of the snapshot to delete.}
 }
 \description{
 Deletes an existing snapshot. When you receive a successful response from this operation, MemoryDB immediately begins deleting the snapshot; you cannot cancel or revert this operation.

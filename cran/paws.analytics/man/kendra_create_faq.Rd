@@ -27,7 +27,7 @@ kendra_create_faq(
 \item{S3Path}{[required] The path to the FAQ file in S3.}
 
 \item{RoleArn}{[required] The Amazon Resource Name (ARN) of an IAM role with permission to access
-the S3 bucket that contains the FAQs. For more information, see \href{https://docs.aws.amazon.com/kendra/latest/dg/iam-roles.html}{IAM access roles for Amazon Kendra}.}
+the S3 bucket that contains the FAQ file. For more information, see \href{https://docs.aws.amazon.com/kendra/latest/dg/iam-roles.html}{IAM access roles for Amazon Kendra}.}
 
 \item{Tags}{A list of key-value pairs that identify the FAQ. You can use the tags to
 identify and organize your resources and to control access to resources.}

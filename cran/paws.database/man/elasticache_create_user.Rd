@@ -2,7 +2,7 @@
 % Please edit documentation in R/elasticache_operations.R
 \name{elasticache_create_user}
 \alias{elasticache_create_user}
-\title{For Redis OSS engine version 6}
+\title{For Valkey engine version 7}
 \usage{
 elasticache_create_user(
   UserId,
@@ -35,7 +35,7 @@ A tag key must be accompanied by a tag value, although null is accepted.}
 \item{AuthenticationMode}{Specifies how to authenticate the user.}
 }
 \description{
-For Redis OSS engine version 6.0 onwards: Creates a Redis OSS user. For more information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/Clusters.RBAC.html}{Using Role Based Access Control (RBAC)}.
+For Valkey engine version 7.2 onwards and Redis OSS 6.0 and onwards: Creates a user. For more information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/Clusters.RBAC.html}{Using Role Based Access Control (RBAC)}.
 
 See \url{https://www.paws-r-sdk.com/docs/elasticache_create_user/} for full documentation.
 }

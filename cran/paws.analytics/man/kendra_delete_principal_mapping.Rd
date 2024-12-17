@@ -2,8 +2,8 @@
 % Please edit documentation in R/kendra_operations.R
 \name{kendra_delete_principal_mapping}
 \alias{kendra_delete_principal_mapping}
-\title{Deletes a group so that all users and sub groups that belong to the
-group can no longer access documents only available to that group}
+\title{Deletes a group so that all users that belong to the group can no longer
+access documents only available to that group}
 \usage{
 kendra_delete_principal_mapping(
   IndexId,
@@ -46,7 +46,7 @@ The default ordering ID is the current Unix time in milliseconds that
 the action was received by Amazon Kendra.}
 }
 \description{
-Deletes a group so that all users and sub groups that belong to the group can no longer access documents only available to that group.
+Deletes a group so that all users that belong to the group can no longer access documents only available to that group.
 
 See \url{https://www.paws-r-sdk.com/docs/kendra_delete_principal_mapping/} for full documentation.
 }

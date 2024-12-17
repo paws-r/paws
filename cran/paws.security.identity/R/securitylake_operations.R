@@ -3,11 +3,11 @@
 #' @include securitylake_service.R
 NULL
 
-#' Adds a natively supported Amazon Web Service as an Amazon Security Lake
-#' source
+#' Adds a natively supported Amazon Web Services service as an Amazon
+#' Security Lake source
 #'
 #' @description
-#' Adds a natively supported Amazon Web Service as an Amazon Security Lake source. Enables source types for member accounts in required Amazon Web Services Regions, based on the parameters you specify. You can choose any source type in any Region for either accounts that are part of a trusted organization or standalone accounts. Once you add an Amazon Web Service as a source, Security Lake starts collecting logs and events from it.
+#' Adds a natively supported Amazon Web Services service as an Amazon Security Lake source. Enables source types for member accounts in required Amazon Web Services Regions, based on the parameters you specify. You can choose any source type in any Region for either accounts that are part of a trusted organization or standalone accounts. Once you add an Amazon Web Services service as a source, Security Lake starts collecting logs and events from it.
 #'
 #' See [https://www.paws-r-sdk.com/docs/securitylake_create_aws_log_source/](https://www.paws-r-sdk.com/docs/securitylake_create_aws_log_source/) for full documentation.
 #'
@@ -44,7 +44,7 @@ securitylake_create_aws_log_source <- function(sources) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/securitylake_create_custom_log_source/](https://www.paws-r-sdk.com/docs/securitylake_create_custom_log_source/) for full documentation.
 #'
-#' @param configuration &#91;required&#93; The configuration for the third-party custom source.
+#' @param configuration &#91;required&#93; The configuration used for the third-party custom source.
 #' @param eventClasses The Open Cybersecurity Schema Framework (OCSF) event classes which
 #' describes the type of data that the custom source will send to Security
 #' Lake. The supported event classes are:
@@ -107,7 +107,12 @@ securitylake_create_aws_log_source <- function(sources) {
 #' 
 #' -   `CLOUD_API`
 #' @param sourceName &#91;required&#93; Specify the name for a third-party custom source. This must be a
-#' Regionally unique value.
+#' Regionally unique value. The `sourceName` you enter here, is used in the
+#' `LogProviderRole` name which follows the convention
+#' `AmazonSecurityLake-Provider-{name of the custom source}-{region}`. You
+#' must use a `CustomLogSource` name that is shorter than or equal to 20
+#' characters. This ensures that the `LogProviderRole` name is below the 64
+#' character limit.
 #' @param sourceVersion Specify the source version for the third-party custom source, to limit
 #' log collection to a specific version of custom data source.
 #'
@@ -176,11 +181,12 @@ securitylake_create_data_lake <- function(configurations, metaStoreManagerRoleAr
 #' for the organization you specify
 #'
 #' @description
-#' Creates the specified notification subscription in Amazon Security Lake for the organization you specify.
+#' Creates the specified notification subscription in Amazon Security Lake for the organization you specify. The notification subscription is created for exceptions that cannot be resolved by Security Lake automatically.
 #'
 #' See [https://www.paws-r-sdk.com/docs/securitylake_create_data_lake_exception_subscription/](https://www.paws-r-sdk.com/docs/securitylake_create_data_lake_exception_subscription/) for full documentation.
 #'
-#' @param exceptionTimeToLive The expiration period and time-to-live (TTL).
+#' @param exceptionTimeToLive The expiration period and time-to-live (TTL). It is the duration of time
+#' until which the exception message remains.
 #' @param notificationEndpoint &#91;required&#93; The Amazon Web Services account where you want to receive exception
 #' notifications.
 #' @param subscriptionProtocol &#91;required&#93; The subscription protocol to which exception notifications are posted.
@@ -240,18 +246,18 @@ securitylake_create_data_lake_organization_configuration <- function(autoEnableN
 }
 .securitylake$operations$create_data_lake_organization_configuration <- securitylake_create_data_lake_organization_configuration
 
-#' Creates a subscription permission for accounts that are already enabled
-#' in Amazon Security Lake
+#' Creates a subscriber for accounts that are already enabled in Amazon
+#' Security Lake
 #'
 #' @description
-#' Creates a subscription permission for accounts that are already enabled in Amazon Security Lake. You can create a subscriber with access to data in the current Amazon Web Services Region.
+#' Creates a subscriber for accounts that are already enabled in Amazon Security Lake. You can create a subscriber with access to data in the current Amazon Web Services Region.
 #'
 #' See [https://www.paws-r-sdk.com/docs/securitylake_create_subscriber/](https://www.paws-r-sdk.com/docs/securitylake_create_subscriber/) for full documentation.
 #'
 #' @param accessTypes The Amazon S3 or Lake Formation access type.
-#' @param sources &#91;required&#93; The supported Amazon Web Services from which logs and events are
-#' collected. Security Lake supports log and event collection for natively
-#' supported Amazon Web Services.
+#' @param sources &#91;required&#93; The supported Amazon Web Services services from which logs and events
+#' are collected. Security Lake supports log and event collection for
+#' natively supported Amazon Web Services services.
 #' @param subscriberDescription The description for your subscriber account in Security Lake.
 #' @param subscriberIdentity &#91;required&#93; The Amazon Web Services identity used to access your data.
 #' @param subscriberName &#91;required&#93; The name of your Security Lake subscriber account.
@@ -315,11 +321,11 @@ securitylake_create_subscriber_notification <- function(configuration, subscribe
 }
 .securitylake$operations$create_subscriber_notification <- securitylake_create_subscriber_notification
 
-#' Removes a natively supported Amazon Web Service as an Amazon Security
-#' Lake source
+#' Removes a natively supported Amazon Web Services service as an Amazon
+#' Security Lake source
 #'
 #' @description
-#' Removes a natively supported Amazon Web Service as an Amazon Security Lake source. You can remove a source for one or more Regions. When you remove the source, Security Lake stops collecting data from that source in the specified Regions and accounts, and subscribers can no longer consume new data from the source. However, subscribers can still consume data that Security Lake collected from the source before removal.
+#' Removes a natively supported Amazon Web Services service as an Amazon Security Lake source. You can remove a source for one or more Regions. When you remove the source, Security Lake stops collecting data from that source in the specified Regions and accounts, and subscribers can no longer consume new data from the source. However, subscribers can still consume data that Security Lake collected from the source before removal.
 #'
 #' See [https://www.paws-r-sdk.com/docs/securitylake_delete_aws_log_source/](https://www.paws-r-sdk.com/docs/securitylake_delete_aws_log_source/) for full documentation.
 #'
@@ -513,11 +519,11 @@ securitylake_delete_subscriber <- function(subscriberId) {
 }
 .securitylake$operations$delete_subscriber <- securitylake_delete_subscriber
 
-#' Deletes the specified notification subscription in Amazon Security Lake
+#' Deletes the specified subscription notification in Amazon Security Lake
 #' for the organization you specify
 #'
 #' @description
-#' Deletes the specified notification subscription in Amazon Security Lake for the organization you specify.
+#' Deletes the specified subscription notification in Amazon Security Lake for the organization you specify.
 #'
 #' See [https://www.paws-r-sdk.com/docs/securitylake_delete_subscriber_notification/](https://www.paws-r-sdk.com/docs/securitylake_delete_subscriber_notification/) for full documentation.
 #'
@@ -577,11 +583,11 @@ securitylake_deregister_data_lake_delegated_administrator <- function() {
 }
 .securitylake$operations$deregister_data_lake_delegated_administrator <- securitylake_deregister_data_lake_delegated_administrator
 
-#' Retrieves the details of exception notifications for the account in
-#' Amazon Security Lake
+#' Retrieves the protocol and endpoint that were provided when subscribing
+#' to Amazon SNS topics for exception notifications
 #'
 #' @description
-#' Retrieves the details of exception notifications for the account in Amazon Security Lake.
+#' Retrieves the protocol and endpoint that were provided when subscribing to Amazon SNS topics for exception notifications.
 #'
 #' See [https://www.paws-r-sdk.com/docs/securitylake_get_data_lake_exception_subscription/](https://www.paws-r-sdk.com/docs/securitylake_get_data_lake_exception_subscription/) for full documentation.
 #'
@@ -727,8 +733,8 @@ securitylake_get_subscriber <- function(subscriberId) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/securitylake_list_data_lake_exceptions/](https://www.paws-r-sdk.com/docs/securitylake_list_data_lake_exceptions/) for full documentation.
 #'
-#' @param maxResults List the maximum number of failures in Security Lake.
-#' @param nextToken List if there are more results available. The value of nextToken is a
+#' @param maxResults Lists the maximum number of failures in Security Lake.
+#' @param nextToken Lists if there are more results available. The value of nextToken is a
 #' unique pagination token for each page. Repeat the call using the
 #' returned token to retrieve the next page. Keep all other arguments
 #' unchanged.
@@ -791,10 +797,10 @@ securitylake_list_data_lakes <- function(regions = NULL) {
 }
 .securitylake$operations$list_data_lakes <- securitylake_list_data_lakes
 
-#' Retrieves the log sources in the current Amazon Web Services Region
+#' Retrieves the log sources
 #'
 #' @description
-#' Retrieves the log sources in the current Amazon Web Services Region.
+#' Retrieves the log sources.
 #'
 #' See [https://www.paws-r-sdk.com/docs/securitylake_list_log_sources/](https://www.paws-r-sdk.com/docs/securitylake_list_log_sources/) for full documentation.
 #'
@@ -828,10 +834,10 @@ securitylake_list_log_sources <- function(accounts = NULL, maxResults = NULL, ne
 }
 .securitylake$operations$list_log_sources <- securitylake_list_log_sources
 
-#' List all subscribers for the specific Amazon Security Lake account ID
+#' Lists all subscribers for the specific Amazon Security Lake account ID
 #'
 #' @description
-#' List all subscribers for the specific Amazon Security Lake account ID. You can retrieve a list of subscriptions associated with a specific organization or Amazon Web Services account.
+#' Lists all subscribers for the specific Amazon Security Lake account ID. You can retrieve a list of subscriptions associated with a specific organization or Amazon Web Services account.
 #'
 #' See [https://www.paws-r-sdk.com/docs/securitylake_list_subscribers/](https://www.paws-r-sdk.com/docs/securitylake_list_subscribers/) for full documentation.
 #'
@@ -1004,14 +1010,15 @@ securitylake_untag_resource <- function(resourceArn, tagKeys) {
 }
 .securitylake$operations$untag_resource <- securitylake_untag_resource
 
-#' Specifies where to store your security data and for how long
+#' You can use UpdateDataLake to specify where to store your security data,
+#' how it should be encrypted at rest and for how long
 #'
 #' @description
-#' Specifies where to store your security data and for how long. You can add a rollup Region to consolidate data from multiple Amazon Web Services Regions.
+#' You can use [`update_data_lake`][securitylake_update_data_lake] to specify where to store your security data, how it should be encrypted at rest and for how long. You can add a [Rollup Region](https://docs.aws.amazon.com/security-lake/latest/userguide/manage-regions.html#add-rollup-region) to consolidate data from multiple Amazon Web Services Regions, replace default encryption (SSE-S3) with [Customer Manged Key](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-cmk), or specify transition and expiration actions through storage [Lifecycle management](https://docs.aws.amazon.com/security-lake/latest/userguide/lifecycle-management.html). The [`update_data_lake`][securitylake_update_data_lake] API works as an "upsert" operation that performs an insert if the specified item or record does not exist, or an update if it already exists. Security Lake securely stores your data at rest using Amazon Web Services encryption solutions. For more details, see [Data protection in Amazon Security Lake](https://docs.aws.amazon.com/security-lake/latest/userguide/data-protection.html).
 #'
 #' See [https://www.paws-r-sdk.com/docs/securitylake_update_data_lake/](https://www.paws-r-sdk.com/docs/securitylake_update_data_lake/) for full documentation.
 #'
-#' @param configurations &#91;required&#93; Specify the Region or Regions that will contribute data to the rollup
+#' @param configurations &#91;required&#93; Specifies the Region or Regions that will contribute data to the rollup
 #' region.
 #' @param metaStoreManagerRoleArn The Amazon Resource Name (ARN) used to create and update the Glue table.
 #' This table contains partitions generated by the ingestion and
@@ -1047,7 +1054,8 @@ securitylake_update_data_lake <- function(configurations, metaStoreManagerRoleAr
 #'
 #' See [https://www.paws-r-sdk.com/docs/securitylake_update_data_lake_exception_subscription/](https://www.paws-r-sdk.com/docs/securitylake_update_data_lake_exception_subscription/) for full documentation.
 #'
-#' @param exceptionTimeToLive The time-to-live (TTL) for the exception message to remain.
+#' @param exceptionTimeToLive The time-to-live (TTL) for the exception message to remain. It is the
+#' duration of time until which the exception message remains.
 #' @param notificationEndpoint &#91;required&#93; The account that is subscribed to receive exception notifications.
 #' @param subscriptionProtocol &#91;required&#93; The subscription protocol to which exception messages are posted.
 #'
@@ -1081,14 +1089,14 @@ securitylake_update_data_lake_exception_subscription <- function(exceptionTimeTo
 #'
 #' See [https://www.paws-r-sdk.com/docs/securitylake_update_subscriber/](https://www.paws-r-sdk.com/docs/securitylake_update_subscriber/) for full documentation.
 #'
-#' @param sources The supported Amazon Web Services from which logs and events are
-#' collected. For the list of supported Amazon Web Services, see the
-#' [Amazon Security Lake User
+#' @param sources The supported Amazon Web Services services from which logs and events
+#' are collected. For the list of supported Amazon Web Services services,
+#' see the [Amazon Security Lake User
 #' Guide](https://docs.aws.amazon.com/security-lake/latest/userguide/internal-sources.html).
 #' @param subscriberDescription The description of the Security Lake account subscriber.
 #' @param subscriberId &#91;required&#93; A value created by Security Lake that uniquely identifies your
 #' subscription.
-#' @param subscriberIdentity The AWS identity used to access your data.
+#' @param subscriberIdentity The Amazon Web Services identity used to access your data.
 #' @param subscriberName The name of the Security Lake account subscriber.
 #'
 #' @keywords internal

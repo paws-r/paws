@@ -2,8 +2,7 @@
 % Please edit documentation in R/autoscaling_operations.R
 \name{autoscaling_attach_load_balancers}
 \alias{autoscaling_attach_load_balancers}
-\title{This API operation is superseded by AttachTrafficSources, which can
-attach multiple traffic sources types}
+\title{This API operation is superseded by https://docs}
 \usage{
 autoscaling_attach_load_balancers(AutoScalingGroupName, LoadBalancerNames)
 }
@@ -14,7 +13,7 @@ autoscaling_attach_load_balancers(AutoScalingGroupName, LoadBalancerNames)
 balancers.}
 }
 \description{
-This API operation is superseded by \code{\link[=autoscaling_attach_traffic_sources]{attach_traffic_sources}}, which can attach multiple traffic sources types. We recommend using \code{\link[=autoscaling_attach_traffic_sources]{attach_traffic_sources}} to simplify how you manage traffic sources. However, we continue to support \code{\link[=autoscaling_attach_load_balancers]{attach_load_balancers}}. You can use both the original \code{\link[=autoscaling_attach_load_balancers]{attach_load_balancers}} API operation and \code{\link[=autoscaling_attach_traffic_sources]{attach_traffic_sources}} on the same Auto Scaling group.
+This API operation is superseded by \url{https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_AttachTrafficSources.html}, which can attach multiple traffic sources types. We recommend using \code{\link[=autoscaling_attach_traffic_sources]{attach_traffic_sources}} to simplify how you manage traffic sources. However, we continue to support \code{\link[=autoscaling_attach_load_balancers]{attach_load_balancers}}. You can use both the original \code{\link[=autoscaling_attach_load_balancers]{attach_load_balancers}} API operation and \code{\link[=autoscaling_attach_traffic_sources]{attach_traffic_sources}} on the same Auto Scaling group.
 
 See \url{https://www.paws-r-sdk.com/docs/autoscaling_attach_load_balancers/} for full documentation.
 }

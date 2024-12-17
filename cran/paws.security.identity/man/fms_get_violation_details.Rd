@@ -11,6 +11,7 @@ fms_get_violation_details(PolicyId, MemberAccount, ResourceId, ResourceType)
 \item{PolicyId}{[required] The ID of the Firewall Manager policy that you want the details for. You
 can get violation details for the following policy types:
 \itemize{
+\item WAF
 \item DNS Firewall
 \item Imported Network Firewall
 \item Network Firewall
@@ -24,9 +25,10 @@ can get violation details for the following policy types:
 \item{ResourceId}{[required] The ID of the resource that has violations.}
 
 \item{ResourceType}{[required] The resource type. This is in the format shown in the \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html}{Amazon Web Services Resource Types Reference}.
-Supported resource types are: \verb{AWS::EC2::Instance},
-\verb{AWS::EC2::NetworkInterface}, \verb{AWS::EC2::SecurityGroup},
-\verb{AWS::NetworkFirewall::FirewallPolicy}, and \verb{AWS::EC2::Subnet}.}
+Supported resource types are: \verb{AWS::WAFv2::WebACL},
+\verb{AWS::EC2::Instance}, \verb{AWS::EC2::NetworkInterface},
+\verb{AWS::EC2::SecurityGroup}, \verb{AWS::NetworkFirewall::FirewallPolicy}, and
+\verb{AWS::EC2::Subnet}.}
 }
 \description{
 Retrieves violations for a resource based on the specified Firewall Manager policy and Amazon Web Services account.

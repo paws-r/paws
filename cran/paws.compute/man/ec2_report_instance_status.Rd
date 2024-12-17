@@ -5,26 +5,28 @@
 \title{Submits feedback about the status of an instance}
 \usage{
 ec2_report_instance_status(
-  Description = NULL,
   DryRun = NULL,
-  EndTime = NULL,
   Instances,
-  ReasonCodes,
+  Status,
   StartTime = NULL,
-  Status
+  EndTime = NULL,
+  ReasonCodes,
+  Description = NULL
 )
 }
 \arguments{
-\item{Description}{Descriptive text about the health state of your instance.}
-
-\item{DryRun}{Checks whether you have the required permissions for the action, without
-actually making the request, and provides an error response. If you have
-the required permissions, the error response is \code{DryRunOperation}.
-Otherwise, it is \code{UnauthorizedOperation}.}
-
-\item{EndTime}{The time at which the reported instance health state ended.}
+\item{DryRun}{Checks whether you have the required permissions for the operation,
+without actually making the request, and provides an error response. If
+you have the required permissions, the error response is
+\code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{Instances}{[required] The instances.}
+
+\item{Status}{[required] The status of all instances listed.}
+
+\item{StartTime}{The time at which the reported instance health state began.}
+
+\item{EndTime}{The time at which the reported instance health state ended.}
 
 \item{ReasonCodes}{[required] The reason codes that describe the health state of your instance.
 \itemize{
@@ -46,9 +48,7 @@ problems.
 \item \code{other}: [explain using the description parameter]
 }}
 
-\item{StartTime}{The time at which the reported instance health state began.}
-
-\item{Status}{[required] The status of all instances listed.}
+\item{Description}{Descriptive text about the health state of your instance.}
 }
 \description{
 Submits feedback about the status of an instance. The instance must be in the \code{running} state. If your experience with the instance differs from the instance status returned by \code{\link[=ec2_describe_instance_status]{describe_instance_status}}, use \code{\link[=ec2_report_instance_status]{report_instance_status}} to report your experience with the instance. Amazon EC2 collects this information to improve the accuracy of status checks.

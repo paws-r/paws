@@ -5,24 +5,28 @@
 \title{This action is deprecated}
 \usage{
 ec2_describe_moving_addresses(
-  Filters = NULL,
   DryRun = NULL,
-  MaxResults = NULL,
+  PublicIps = NULL,
   NextToken = NULL,
-  PublicIps = NULL
+  Filters = NULL,
+  MaxResults = NULL
 )
 }
 \arguments{
+\item{DryRun}{Checks whether you have the required permissions for the action, without
+actually making the request, and provides an error response. If you have
+the required permissions, the error response is \code{DryRunOperation}.
+Otherwise, it is \code{UnauthorizedOperation}.}
+
+\item{PublicIps}{One or more Elastic IP addresses.}
+
+\item{NextToken}{The token for the next page of results.}
+
 \item{Filters}{One or more filters.
 \itemize{
 \item \code{moving-status} - The status of the Elastic IP address
 (\code{MovingToVpc} | \code{RestoringToClassic}).
 }}
-
-\item{DryRun}{Checks whether you have the required permissions for the action, without
-actually making the request, and provides an error response. If you have
-the required permissions, the error response is \code{DryRunOperation}.
-Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{MaxResults}{The maximum number of results to return for the request in a single
 page. The remaining results of the initial request can be seen by
@@ -31,10 +35,6 @@ can be between 5 and 1000; if \code{MaxResults} is given a value outside of
 this range, an error is returned.
 
 Default: If no value is provided, the default is 1000.}
-
-\item{NextToken}{The token for the next page of results.}
-
-\item{PublicIps}{One or more Elastic IP addresses.}
 }
 \description{
 This action is deprecated.

@@ -64,14 +64,17 @@ or in any other Git repository. These repositories are cloned at the
 same level as the default repository of your notebook instance. For more
 information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/nbi-git-repo.html}{Associating Git Repositories with SageMaker Notebook Instances}.}
 
-\item{AcceleratorTypes}{A list of the Elastic Inference (EI) instance types to associate with
-this notebook instance. Currently only one EI instance type can be
-associated with a notebook instance. For more information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/}{Using Elastic Inference in Amazon SageMaker}.}
+\item{AcceleratorTypes}{This parameter is no longer supported. Elastic Inference (EI) is no
+longer available.
 
-\item{DisassociateAcceleratorTypes}{A list of the Elastic Inference (EI) instance types to remove from this
-notebook instance. This operation is idempotent. If you specify an
-accelerator type that is not associated with the notebook instance when
-you call this method, it does not throw an error.}
+This parameter was used to specify a list of the EI instance types to
+associate with this notebook instance.}
+
+\item{DisassociateAcceleratorTypes}{This parameter is no longer supported. Elastic Inference (EI) is no
+longer available.
+
+This parameter was used to specify a list of the EI instance types to
+remove from this notebook instance.}
 
 \item{DisassociateDefaultCodeRepository}{The name or URL of the default Git repository to remove from this
 notebook instance. This operation is idempotent. If you specify a Git

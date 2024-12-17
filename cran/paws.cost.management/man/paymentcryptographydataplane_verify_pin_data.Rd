@@ -13,7 +13,8 @@ paymentcryptographydataplane_verify_pin_data(
   PrimaryAccountNumber,
   PinBlockFormat,
   PinDataLength = NULL,
-  DukptAttributes = NULL
+  DukptAttributes = NULL,
+  EncryptionWrappedKey = NULL
 )
 }
 \arguments{
@@ -45,6 +46,8 @@ that the fill digits are random values from 10 to 15.}
 \item{PinDataLength}{The length of PIN being verified.}
 
 \item{DukptAttributes}{The attributes and values for the DUKPT encrypted PIN block data.}
+
+\item{EncryptionWrappedKey}{}
 }
 \description{
 Verifies pin-related data such as PIN and PIN Offset using algorithms including VISA PVV and IBM3624. For more information, see \href{https://docs.aws.amazon.com/payment-cryptography/latest/userguide/verify-pin-data.html}{Verify PIN data} in the \emph{Amazon Web Services Payment Cryptography User Guide}.

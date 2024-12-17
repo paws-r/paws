@@ -10,7 +10,8 @@ recyclebin_create_rule(
   Tags = NULL,
   ResourceType,
   ResourceTags = NULL,
-  LockConfiguration = NULL
+  LockConfiguration = NULL,
+  ExcludeResourceTags = NULL
 )
 }
 \arguments{
@@ -26,13 +27,13 @@ Amazon EBS snapshots and EBS-backed AMIs are supported. To retain
 snapshots, specify \code{EBS_SNAPSHOT}. To retain EBS-backed AMIs, specify
 \code{EC2_IMAGE}.}
 
-\item{ResourceTags}{Specifies the resource tags to use to identify resources that are to be
-retained by a tag-level retention rule. For tag-level retention rules,
-only deleted resources, of the specified resource type, that have one or
-more of the specified tag key and value pairs are retained. If a
-resource is deleted, but it does not have any of the specified tag key
-and value pairs, it is immediately deleted without being retained by the
-retention rule.
+\item{ResourceTags}{[Tag-level retention rules only] Specifies the resource tags to use to
+identify resources that are to be retained by a tag-level retention
+rule. For tag-level retention rules, only deleted resources, of the
+specified resource type, that have one or more of the specified tag key
+and value pairs are retained. If a resource is deleted, but it does not
+have any of the specified tag key and value pairs, it is immediately
+deleted without being retained by the retention rule.
 
 You can add the same tag key and value pair to a maximum or five
 retention rules.
@@ -44,9 +45,16 @@ Region in which the rule is created, even if the resources are not
 tagged.}
 
 \item{LockConfiguration}{Information about the retention rule lock configuration.}
+
+\item{ExcludeResourceTags}{[Region-level retention rules only] Specifies the exclusion tags to
+use to identify resources that are to be excluded, or ignored, by a
+Region-level retention rule. Resources that have any of these tags are
+not retained by the retention rule upon deletion.
+
+You can't specify exclusion tags for tag-level retention rules.}
 }
 \description{
-Creates a Recycle Bin retention rule. For more information, see \href{https://docs.aws.amazon.com/ebs/latest/userguide/#recycle-bin-create-rule}{Create Recycle Bin retention rules} in the \emph{Amazon Elastic Compute Cloud User Guide}.
+Creates a Recycle Bin retention rule. You can create two types of retention rules:
 
 See \url{https://www.paws-r-sdk.com/docs/recyclebin_create_rule/} for full documentation.
 }

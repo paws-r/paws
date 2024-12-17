@@ -186,8 +186,8 @@ rdsdataservice_batch_execute_statement <- function(resourceArn, secretArn, sql, 
 #' minutes. If a transaction times out before it's committed, it's rolled
 #' back automatically.
 #' 
-#' DDL statements inside a transaction cause an implicit commit. We
-#' recommend that you run each DDL statement in a separate
+#' For Aurora MySQL, DDL statements inside a transaction cause an implicit
+#' commit. We recommend that you run each MySQL DDL statement in a separate
 #' [`execute_statement`][rdsdataservice_execute_statement] call with
 #' `continueAfterTimeout` enabled.
 #'
@@ -303,9 +303,9 @@ rdsdataservice_commit_transaction <- function(resourceArn, secretArn, transactio
 #' @description
 #' Runs one or more SQL statements.
 #' 
-#' This operation isn't supported for Aurora PostgreSQL Serverless v2 and
-#' provisioned DB clusters, and for Aurora Serverless v1 DB clusters, the
-#' operation is deprecated. Use the
+#' This operation isn't supported for Aurora Serverless v2 and provisioned
+#' DB clusters. For Aurora Serverless v1 DB clusters, the operation is
+#' deprecated. Use the
 #' [`batch_execute_statement`][rdsdataservice_batch_execute_statement] or
 #' [`execute_statement`][rdsdataservice_execute_statement] operation.
 #'

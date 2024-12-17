@@ -5,20 +5,20 @@
 \title{Describes a network interface attribute}
 \usage{
 ec2_describe_network_interface_attribute(
-  Attribute = NULL,
   DryRun = NULL,
-  NetworkInterfaceId
+  NetworkInterfaceId,
+  Attribute = NULL
 )
 }
 \arguments{
-\item{Attribute}{The attribute of the network interface. This parameter is required.}
-
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{NetworkInterfaceId}{[required] The ID of the network interface.}
+
+\item{Attribute}{The attribute of the network interface. This parameter is required.}
 }
 \description{
 Describes a network interface attribute. You can specify only one attribute at a time.

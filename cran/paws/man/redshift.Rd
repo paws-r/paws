@@ -134,6 +134,7 @@ make up your data warehouse.
 \link[paws.database:redshift_create_event_subscription]{create_event_subscription} \tab Creates an Amazon Redshift event notification subscription\cr
 \link[paws.database:redshift_create_hsm_client_certificate]{create_hsm_client_certificate} \tab Creates an HSM client certificate that an Amazon Redshift cluster will use to connect to the client's HSM in order to store and retrieve the keys used to encrypt the cluster databases\cr
 \link[paws.database:redshift_create_hsm_configuration]{create_hsm_configuration} \tab Creates an HSM configuration that contains the information required by an Amazon Redshift cluster to store and use database encryption keys in a Hardware Security Module (HSM)\cr
+\link[paws.database:redshift_create_integration]{create_integration} \tab Creates a zero-ETL integration or S3 event integration with Amazon Redshift\cr
 \link[paws.database:redshift_create_redshift_idc_application]{create_redshift_idc_application} \tab Creates an Amazon Redshift application for use with IAM Identity Center\cr
 \link[paws.database:redshift_create_scheduled_action]{create_scheduled_action} \tab Creates a scheduled action\cr
 \link[paws.database:redshift_create_snapshot_copy_grant]{create_snapshot_copy_grant} \tab Creates a snapshot copy grant that permits Amazon Redshift to use an encrypted symmetric key from Key Management Service (KMS) to encrypt copied snapshots in a destination region\cr
@@ -152,6 +153,7 @@ make up your data warehouse.
 \link[paws.database:redshift_delete_event_subscription]{delete_event_subscription} \tab Deletes an Amazon Redshift event notification subscription\cr
 \link[paws.database:redshift_delete_hsm_client_certificate]{delete_hsm_client_certificate} \tab Deletes the specified HSM client certificate\cr
 \link[paws.database:redshift_delete_hsm_configuration]{delete_hsm_configuration} \tab Deletes the specified Amazon Redshift HSM configuration\cr
+\link[paws.database:redshift_delete_integration]{delete_integration} \tab Deletes a zero-ETL integration or S3 event integration with Amazon Redshift\cr
 \link[paws.database:redshift_delete_partner]{delete_partner} \tab Deletes a partner integration from a cluster\cr
 \link[paws.database:redshift_delete_redshift_idc_application]{delete_redshift_idc_application} \tab Deletes an Amazon Redshift IAM Identity Center application\cr
 \link[paws.database:redshift_delete_resource_policy]{delete_resource_policy} \tab Deletes the resource policy for a specified resource\cr
@@ -160,6 +162,7 @@ make up your data warehouse.
 \link[paws.database:redshift_delete_snapshot_schedule]{delete_snapshot_schedule} \tab Deletes a snapshot schedule\cr
 \link[paws.database:redshift_delete_tags]{delete_tags} \tab Deletes tags from a resource\cr
 \link[paws.database:redshift_delete_usage_limit]{delete_usage_limit} \tab Deletes a usage limit from a cluster\cr
+\link[paws.database:redshift_deregister_namespace]{deregister_namespace} \tab Deregisters a cluster or serverless namespace from the Amazon Web Services Glue Data Catalog\cr
 \link[paws.database:redshift_describe_account_attributes]{describe_account_attributes} \tab Returns a list of attributes attached to an account\cr
 \link[paws.database:redshift_describe_authentication_profiles]{describe_authentication_profiles} \tab Describes an authentication profile\cr
 \link[paws.database:redshift_describe_cluster_db_revisions]{describe_cluster_db_revisions} \tab Returns an array of ClusterDbRevision objects\cr
@@ -184,6 +187,7 @@ make up your data warehouse.
 \link[paws.database:redshift_describe_hsm_client_certificates]{describe_hsm_client_certificates} \tab Returns information about the specified HSM client certificate\cr
 \link[paws.database:redshift_describe_hsm_configurations]{describe_hsm_configurations} \tab Returns information about the specified Amazon Redshift HSM configuration\cr
 \link[paws.database:redshift_describe_inbound_integrations]{describe_inbound_integrations} \tab Returns a list of inbound integrations\cr
+\link[paws.database:redshift_describe_integrations]{describe_integrations} \tab Describes one or more zero-ETL or S3 event integrations with Amazon Redshift\cr
 \link[paws.database:redshift_describe_logging_status]{describe_logging_status} \tab Describes whether information, such as queries and connection attempts, is being logged for the specified Amazon Redshift cluster\cr
 \link[paws.database:redshift_describe_node_configuration_options]{describe_node_configuration_options} \tab Returns properties of possible node configurations such as node type, number of nodes, and disk usage for the specified action type\cr
 \link[paws.database:redshift_describe_orderable_cluster_options]{describe_orderable_cluster_options} \tab Returns a list of orderable cluster options\cr
@@ -225,6 +229,7 @@ make up your data warehouse.
 \link[paws.database:redshift_modify_custom_domain_association]{modify_custom_domain_association} \tab Contains information for changing a custom domain association\cr
 \link[paws.database:redshift_modify_endpoint_access]{modify_endpoint_access} \tab Modifies a Redshift-managed VPC endpoint\cr
 \link[paws.database:redshift_modify_event_subscription]{modify_event_subscription} \tab Modifies an existing Amazon Redshift event notification subscription\cr
+\link[paws.database:redshift_modify_integration]{modify_integration} \tab Modifies a zero-ETL integration or S3 event integration with Amazon Redshift\cr
 \link[paws.database:redshift_modify_redshift_idc_application]{modify_redshift_idc_application} \tab Changes an existing Amazon Redshift IAM Identity Center application\cr
 \link[paws.database:redshift_modify_scheduled_action]{modify_scheduled_action} \tab Modifies a scheduled action\cr
 \link[paws.database:redshift_modify_snapshot_copy_retention_period]{modify_snapshot_copy_retention_period} \tab Modifies the number of days to retain snapshots in the destination Amazon Web Services Region after they are copied from the source Amazon Web Services Region\cr
@@ -234,6 +239,7 @@ make up your data warehouse.
 \link[paws.database:redshift_purchase_reserved_node_offering]{purchase_reserved_node_offering} \tab Allows you to purchase reserved nodes\cr
 \link[paws.database:redshift_put_resource_policy]{put_resource_policy} \tab Updates the resource policy for a specified resource\cr
 \link[paws.database:redshift_reboot_cluster]{reboot_cluster} \tab Reboots a cluster\cr
+\link[paws.database:redshift_register_namespace]{register_namespace} \tab Registers a cluster or serverless namespace to the Amazon Web Services Glue Data Catalog\cr
 \link[paws.database:redshift_reject_data_share]{reject_data_share} \tab From a datashare consumer account, rejects the specified datashare\cr
 \link[paws.database:redshift_reset_cluster_parameter_group]{reset_cluster_parameter_group} \tab Sets one or more parameters of the specified parameter group to their default values and sets the source values of the parameters to "engine-default"\cr
 \link[paws.database:redshift_resize_cluster]{resize_cluster} \tab Changes the size of the cluster\cr

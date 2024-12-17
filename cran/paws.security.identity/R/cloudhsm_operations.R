@@ -418,7 +418,7 @@ cloudhsm_list_hapgs <- function(NextToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "HapgList"),
     stream_api = FALSE
   )
   input <- .cloudhsm$list_hapgs_input(NextToken = NextToken)
@@ -450,7 +450,7 @@ cloudhsm_list_hsms <- function(NextToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "HsmList"),
     stream_api = FALSE
   )
   input <- .cloudhsm$list_hsms_input(NextToken = NextToken)
@@ -483,7 +483,7 @@ cloudhsm_list_luna_clients <- function(NextToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "ClientList"),
     stream_api = FALSE
   )
   input <- .cloudhsm$list_luna_clients_input(NextToken = NextToken)

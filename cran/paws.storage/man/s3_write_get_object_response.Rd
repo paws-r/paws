@@ -2,7 +2,7 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_write_get_object_response}
 \alias{s3_write_get_object_response}
-\title{This operation is not supported by directory buckets}
+\title{This operation is not supported for directory buckets}
 \usage{
 s3_write_get_object_response(
   RequestRoute,
@@ -229,7 +229,7 @@ For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/user
 for server-side encryption with Amazon Web Services KMS (SSE-KMS).}
 }
 \description{
-This operation is not supported by directory buckets.
+This operation is not supported for directory buckets.
 
 See \url{https://www.paws-r-sdk.com/docs/s3_write_get_object_response/} for full documentation.
 }

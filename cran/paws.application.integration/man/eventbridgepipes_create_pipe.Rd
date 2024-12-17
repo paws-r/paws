@@ -16,7 +16,8 @@ eventbridgepipes_create_pipe(
   TargetParameters = NULL,
   RoleArn,
   Tags = NULL,
-  LogConfiguration = NULL
+  LogConfiguration = NULL,
+  KmsKeyIdentifier = NULL
 )
 }
 \arguments{
@@ -47,6 +48,17 @@ in the \emph{Amazon EventBridge User Guide}.}
 \item{Tags}{The list of key-value pairs to associate with the pipe.}
 
 \item{LogConfiguration}{The logging configuration settings for the pipe.}
+
+\item{KmsKeyIdentifier}{The identifier of the KMS customer managed key for EventBridge to use,
+if you choose to use a customer managed key to encrypt pipe data. The
+identifier can be the key Amazon Resource Name (ARN), KeyId, key alias,
+or key alias ARN.
+
+If you do not specify a customer managed key identifier, EventBridge
+uses an Amazon Web Services owned key to encrypt pipe data.
+
+For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/}{Managing keys} in the
+\emph{Key Management Service Developer Guide}.}
 }
 \description{
 Create a pipe. Amazon EventBridge Pipes connect event sources to targets and reduces the need for specialized knowledge and integration code.

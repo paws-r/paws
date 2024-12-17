@@ -4,12 +4,14 @@
 \alias{sagemaker_update_cluster}
 \title{Updates a SageMaker HyperPod cluster}
 \usage{
-sagemaker_update_cluster(ClusterName, InstanceGroups)
+sagemaker_update_cluster(ClusterName, InstanceGroups, NodeRecovery = NULL)
 }
 \arguments{
 \item{ClusterName}{[required] Specify the name of the SageMaker HyperPod cluster you want to update.}
 
 \item{InstanceGroups}{[required] Specify the instance groups to update.}
+
+\item{NodeRecovery}{The node recovery mode to be applied to the SageMaker HyperPod cluster.}
 }
 \description{
 Updates a SageMaker HyperPod cluster.

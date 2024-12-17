@@ -92,13 +92,18 @@ single request. Valid filter keys: \code{AGENT} |
 \code{AGENT_HIERARCHY_LEVEL_ONE} | \code{AGENT_HIERARCHY_LEVEL_TWO} |
 \code{AGENT_HIERARCHY_LEVEL_THREE} | \code{AGENT_HIERARCHY_LEVEL_FOUR} |
 \code{AGENT_HIERARCHY_LEVEL_FIVE} | \code{ANSWERING_MACHINE_DETECTION_STATUS}
-| \code{CAMPAIGN} | \code{CASE_TEMPLATE_ARN} | \code{CASE_STATUS} | \code{CHANNEL} |
+| \code{ BOT_ID} | \code{BOT_ALIAS} | \code{BOT_VERSION} | \code{BOT_LOCALE} |
+\code{BOT_INTENT_NAME} | \code{CAMPAIGN} | \code{CAMPAIGN_DELIVERY_EVENT_TYPE}
+|\code{CASE_TEMPLATE_ARN} | \code{CASE_STATUS} | \code{CHANNEL} |
 \code{contact/segmentAttributes/connect:Subtype} | \code{DISCONNECT_REASON} |
-\code{FEATURE} | \code{FLOW_TYPE} | \code{FLOWS_NEXT_RESOURCE_ID} |
+\code{FEATURE} | \code{FLOW_ACTION_ID} | \code{FLOW_TYPE} |
+\code{FLOWS_MODULE_RESOURCE_ID} | \code{FLOWS_NEXT_RESOURCE_ID} |
 \code{FLOWS_NEXT_RESOURCE_QUEUE_ID} | \code{FLOWS_OUTCOME_TYPE} |
 \code{FLOWS_RESOURCE_ID} | \code{INITIATION_METHOD} |
-\code{RESOURCE_PUBLISHED_TIMESTAMP} | \code{ROUTING_PROFILE} |
-\code{ROUTING_STEP_EXPRESSION} | \code{QUEUE} | \code{Q_CONNECT_ENABLED} |
+\code{INVOKING_RESOURCE_PUBLISHED_TIMESTAMP} | \code{INVOKING_RESOURCE_TYPE} |
+\code{PARENT_FLOWS_RESOURCE_ID} | \code{RESOURCE_PUBLISHED_TIMESTAMP} |
+\code{ROUTING_PROFILE} | \code{ROUTING_STEP_EXPRESSION} | \code{QUEUE} |
+\code{Q_CONNECT_ENABLED} |
 \item \strong{Filter values}: A maximum of 100 filter values are supported in a
 single request. VOICE, CHAT, and TASK are valid \code{filterValue} for
 the CHANNEL filter key. They do not count towards limitation of 100
@@ -144,13 +149,16 @@ If no grouping is specified, a summary of all metrics is returned.
 Valid grouping keys: \code{AGENT} | \code{AGENT_HIERARCHY_LEVEL_ONE} |
 \code{AGENT_HIERARCHY_LEVEL_TWO} | \code{AGENT_HIERARCHY_LEVEL_THREE} |
 \code{AGENT_HIERARCHY_LEVEL_FOUR} | \code{AGENT_HIERARCHY_LEVEL_FIVE} |
-\code{ANSWERING_MACHINE_DETECTION_STATUS} | \code{CAMPAIGN} | \code{CASE_TEMPLATE_ARN}
-| \code{CASE_STATUS} | \code{CHANNEL} |
-\code{contact/segmentAttributes/connect:Subtype} | \code{DISCONNECT_REASON} |
-\code{FLOWS_RESOURCE_ID} | \code{FLOWS_MODULE_RESOURCE_ID} | \code{FLOW_TYPE} |
-\code{FLOWS_OUTCOME_TYPE} | \code{INITIATION_METHOD} | \code{Q_CONNECT_ENABLED} |
-\code{QUEUE} | \code{RESOURCE_PUBLISHED_TIMESTAMP} | \code{ROUTING_PROFILE} |
-\code{ROUTING_STEP_EXPRESSION}}
+\code{ANSWERING_MACHINE_DETECTION_STATUS} | \code{BOT_ID} | \code{BOT_ALIAS} |
+\code{BOT_VERSION} | \code{BOT_LOCALE} | \code{BOT_INTENT_NAME} | \code{CAMPAIGN} |
+\code{CAMPAIGN_DELIVERY_EVENT_TYPE} | \code{CASE_TEMPLATE_ARN} | \code{CASE_STATUS} |
+\code{CHANNEL} | \code{contact/segmentAttributes/connect:Subtype} |
+\code{DISCONNECT_REASON} | \code{FLOWS_RESOURCE_ID} | \code{FLOWS_MODULE_RESOURCE_ID} |
+\code{FLOW_ACTION_ID} | \code{FLOW_TYPE} | \code{FLOWS_OUTCOME_TYPE} |
+\code{INITIATION_METHOD} | \code{INVOKING_RESOURCE_PUBLISHED_TIMESTAMP} |
+\code{INVOKING_RESOURCE_TYPE} | \code{PARENT_FLOWS_RESOURCE_ID} |
+\code{Q_CONNECT_ENABLED} | \code{QUEUE} | \code{RESOURCE_PUBLISHED_TIMESTAMP} |
+\code{ROUTING_PROFILE} | \code{ROUTING_STEP_EXPRESSION}}
 
 \item{Metrics}{[required] The metrics to retrieve. Specify the name, groupings, and filters for
 each metric. The following historical metrics are available. For a
@@ -301,7 +309,7 @@ Agent Hierarchy
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#htm-avg-agent-api-connecting-time}{Average agent API connecting time}
 
-The \code{Negate} key in Metric Level Filters is not applicable for this
+The \code{Negate} key in metric-level filters is not applicable for this
 metric.
 
 \strong{AVG_AGENT_PAUSE_TIME}
@@ -312,6 +320,30 @@ Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
 Agent Hierarchy, Q in Connect
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#average-agent-pause-time-historical}{Average agent pause time}
+
+\strong{AVG_BOT_CONVERSATION_TIME}
+
+Unit: Seconds
+
+Valid groupings and filters: Channel,
+contact/segmentAttributes/connect:Subtype, Bot ID, Bot alias, Bot
+version, Bot locale, Flows resource ID, Flows module resource ID, Flow
+type, Flow action ID, Invoking resource published timestamp, Initiation
+method, Invoking resource type, Parent flows resource ID
+
+UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/bot-metrics.html#average-bot-conversation-time-metric}{Average bot conversation time}
+
+\strong{AVG_BOT_CONVERSATION_TURNS}
+
+Unit: Count
+
+Valid groupings and filters: Channel,
+contact/segmentAttributes/connect:Subtype, Bot ID, Bot alias, Bot
+version, Bot locale, Flows resource ID, Flows module resource ID, Flow
+type, Flow action ID, Invoking resource published timestamp, Initiation
+method, Invoking resource type, Parent flows resource ID
+
+UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/bot-metrics.html#average-bot-conversation-turns-metric}{Average bot conversation turns}
 
 \strong{AVG_CASE_RELATED_CONTACTS}
 
@@ -357,12 +389,12 @@ UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-
 
 \strong{AVG_DIALS_PER_MINUTE}
 
-This metric is available only for contacts analyzed by outbound
-campaigns analytics.
+This metric is available only for outbound campaigns that use the agent
+assisted voice and automated voice delivery modes.
 
 Unit: Count
 
-Valid groupings and filters: Campaign, Agent, Queue, Routing Profile
+Valid groupings and filters: Agent, Campaign, Queue, Routing Profile
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#average-dials-historical}{Average dials per minute}
 
@@ -551,8 +583,8 @@ UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-
 
 \strong{AVG_WAIT_TIME_AFTER_CUSTOMER_CONNECTION}
 
-This metric is available only for contacts analyzed by outbound
-campaigns analytics.
+This metric is available only for outbound campaigns that use the agent
+assisted voice and automated voice delivery modes.
 
 Unit: Seconds
 
@@ -560,14 +592,39 @@ Valid groupings and filters: Campaign
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#average-wait-time-historical}{Average wait time after customer connection}
 
-\strong{CAMPAIGN_CONTACTS_ABANDONED_AFTER_X}
-
-This metric is available only for contacts analyzed by outbound
-campaigns analytics.
+\strong{BOT_CONVERSATIONS_COMPLETED}
 
 Unit: Count
 
-Valid groupings and filters: Campaign, Agent
+Valid groupings and filters: Channel,
+contact/segmentAttributes/connect:Subtype, Bot ID, Bot alias, Bot
+version, Bot locale, Flows resource ID, Flows module resource ID, Flow
+type, Flow action ID, Invoking resource published timestamp, Initiation
+method, Invoking resource type, Parent flows resource ID
+
+UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/bot-metrics.html#bot-conversations-completed-metric}{Bot conversations}
+
+\strong{BOT_INTENTS_COMPLETED}
+
+Unit: Count
+
+Valid groupings and filters: Channel,
+contact/segmentAttributes/connect:Subtype, Bot ID, Bot alias, Bot
+version, Bot locale, Bot intent name, Flows resource ID, Flows module
+resource ID, Flow type, Flow action ID, Invoking resource published
+timestamp, Initiation method, Invoking resource type, Parent flows
+resource ID
+
+UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/bot-metrics.html#bot-intents-completed-metric}{Bot intents completed}
+
+\strong{CAMPAIGN_CONTACTS_ABANDONED_AFTER_X}
+
+This metric is available only for outbound campaigns using the agent
+assisted voice and automated voice delivery modes.
+
+Unit: Count
+
+Valid groupings and filters: Agent, Campaign
 
 Threshold: For \code{ThresholdValue}, enter any whole number from 1 to 604800
 (inclusive), in seconds. For \code{Comparison}, you must enter \code{GT} (for
@@ -577,18 +634,42 @@ UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-
 
 \strong{CAMPAIGN_CONTACTS_ABANDONED_AFTER_X_RATE}
 
-This metric is available only for contacts analyzed by outbound
-campaigns analytics.
+This metric is available only for outbound campaigns using the agent
+assisted voice and automated voice delivery modes.
 
 Unit: Percent
 
-Valid groupings and filters: Campaign, Agent
+Valid groupings and filters: Agent, Campaign
 
 Threshold: For \code{ThresholdValue}, enter any whole number from 1 to 604800
 (inclusive), in seconds. For \code{Comparison}, you must enter \code{GT} (for
 \emph{Greater than}).
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#campaign-contacts-abandoned-rate-historical}{Campaign contacts abandoned after X rate}
+
+\strong{CAMPAIGN_INTERACTIONS}
+
+This metric is available only for outbound campaigns using the email
+delivery mode.
+
+Unit: Count
+
+Valid metric filter key: CAMPAIGN_INTERACTION_EVENT_TYPE
+
+Valid groupings and filters: Campaign
+
+UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#campaign-interactions-historical}{Campaign interactions}
+
+\strong{CAMPAIGN_SEND_ATTEMPTS}
+
+This metric is available only for outbound campaigns.
+
+Unit: Count
+
+Valid groupings and filters: Campaign, Channel,
+contact/segmentAttributes/connect:Subtype
+
+UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#campaign-send-attempts-historical}{Campaign send attempts}
 
 \strong{CASES_CREATED}
 
@@ -718,8 +799,8 @@ Valid groupings and filters: Queue, Channel, Routing Profile, Q in
 Connect
 
 Threshold: For \code{ThresholdValue}, enter any whole number from 1 to 604800
-(inclusive), in seconds. For \code{Comparison}, you must enter \code{LT} (for
-"Less than").
+(inclusive), in seconds. For \code{Comparison}, you can use \code{LT} (for "Less
+than") or \code{LTE} (for "Less than equal").
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#contacts-removed-historical}{Contacts removed from queue in X seconds}
 
@@ -730,9 +811,9 @@ Unit: Count
 Valid groupings and filters: Queue, Channel, Routing Profile,
 contact/segmentAttributes/connect:Subtype, Q in Connect
 
-Threshold: For \code{ThresholdValue} enter any whole number from 1 to 604800
-(inclusive), in seconds. For \code{Comparison}, you must enter \code{LT} (for
-"Less than").
+Threshold: For \code{ThresholdValue}, enter any whole number from 1 to 604800
+(inclusive), in seconds. For \code{Comparison}, you can use \code{LT} (for "Less
+than") or \code{LTE} (for "Less than equal").
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#contacts-resolved-historical}{Contacts resolved in X}
 
@@ -778,36 +859,46 @@ UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-
 
 \strong{DELIVERY_ATTEMPTS}
 
-This metric is available only for contacts analyzed by outbound
-campaigns analytics.
+This metric is available only for outbound campaigns.
 
 Unit: Count
 
 Valid metric filter key: \code{ANSWERING_MACHINE_DETECTION_STATUS},
-\code{DISCONNECT_REASON}
+\code{CAMPAIGN_DELIVERY_EVENT_TYPE}, \code{DISCONNECT_REASON}
 
-Valid groupings and filters: Campaign, Agent, Queue, Routing Profile,
-Answering Machine Detection Status, Disconnect Reason
+Valid groupings and filters: Agent, Answering Machine Detection Status,
+Campaign, Campaign Delivery EventType, Channel,
+contact/segmentAttributes/connect:Subtype, Disconnect Reason, Queue,
+Routing Profile
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#delivery-attempts-historical}{Delivery attempts}
 
+Campaign Delivery EventType filter and grouping are only available for
+SMS and Email campaign delivery modes. Agent, Queue, Routing Profile,
+Answering Machine Detection Status and Disconnect Reason are only
+available for agent assisted voice and automated voice delivery modes.
+
 \strong{DELIVERY_ATTEMPT_DISPOSITION_RATE}
 
-This metric is available only for contacts analyzed by outbound
-campaigns analytics, and with the answering machine detection enabled.
+This metric is available only for outbound campaigns. Dispositions for
+the agent assisted voice and automated voice delivery modes are only
+available with answering machine detection enabled.
 
 Unit: Percent
 
 Valid metric filter key: \code{ANSWERING_MACHINE_DETECTION_STATUS},
-\code{DISCONNECT_REASON}
+\code{CAMPAIGN_DELIVERY_EVENT_TYPE}, \code{DISCONNECT_REASON}
 
-Valid groupings and filters: Campaign, Agent, Answering Machine
-Detection Status, Disconnect Reason
-
-Answering Machine Detection Status and Disconnect Reason are valid
-filters but not valid groupings.
+Valid groupings and filters: Agent, Answering Machine Detection Status,
+Campaign, Channel, contact/segmentAttributes/connect:Subtype, Disconnect
+Reason, Queue, Routing Profile
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#delivery-attempt-disposition-rate-historical}{Delivery attempt disposition rate}
+
+Campaign Delivery Event Type filter and grouping are only available for
+SMS and Email campaign delivery modes. Agent, Queue, Routing Profile,
+Answering Machine Detection Status and Disconnect Reason are only
+available for agent assisted voice and automated voice delivery modes.
 
 \strong{FLOWS_OUTCOME}
 
@@ -834,12 +925,13 @@ UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-
 
 \strong{HUMAN_ANSWERED_CALLS}
 
-This metric is available only for contacts analyzed by outbound
-campaigns analytics, and with the answering machine detection enabled.
+This metric is available only for outbound campaigns. Dispositions for
+the agent assisted voice and automated voice delivery modes are only
+available with answering machine detection enabled.
 
 Unit: Count
 
-Valid groupings and filters: Campaign, Agent
+Valid groupings and filters: Agent, Campaign
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#human-answered-historical}{Human answered}
 
@@ -875,6 +967,31 @@ outcome type, Flows resource ID, Initiation method, Resource published
 timestamp
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#minimum-flow-time-historical}{Minimum flow time}
+
+\strong{PERCENT_BOT_CONVERSATIONS_OUTCOME}
+
+Unit: Percent
+
+Valid groupings and filters: Channel,
+contact/segmentAttributes/connect:Subtype, Bot ID, Bot alias, Bot
+version, Bot locale, Flows resource ID, Flows module resource ID, Flow
+type, Flow action ID, Invoking resource published timestamp, Initiation
+method, Invoking resource type, Parent flows resource ID
+
+UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/bot-metrics.html#percent-bot-conversations-outcome-metric}{Percent bot conversations outcome}
+
+\strong{PERCENT_BOT_INTENTS_OUTCOME}
+
+Unit: Percent
+
+Valid groupings and filters: Channel,
+contact/segmentAttributes/connect:Subtype, Bot ID, Bot alias, Bot
+version, Bot locale, Bot intent name, Flows resource ID, Flows module
+resource ID, Flow type, Flow action ID, Invoking resource published
+timestamp, Initiation method, Invoking resource type, Parent flows
+resource ID
+
+UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/bot-metrics.html#percent-bot-intents-outcome-metric}{Percent bot intents outcome}
 
 \strong{PERCENT_CASES_FIRST_CONTACT_RESOLVED}
 
@@ -998,8 +1115,8 @@ Valid groupings and filters: Queue, Channel, Routing Profile, Q in
 Connect
 
 Threshold: For \code{ThresholdValue}, enter any whole number from 1 to 604800
-(inclusive), in seconds. For \code{Comparison}, you must enter \code{LT} (for
-"Less than").
+(inclusive), in seconds. For \code{Comparison}, you can use \code{LT} (for "Less
+than") or \code{LTE} (for "Less than equal").
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#service-level-historical}{Service level X}
 
@@ -1034,7 +1151,7 @@ Agent Hierarchy
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#htm-agent-api-connecting-time}{Agent API connecting time}
 
-The \code{Negate} key in Metric Level Filters is not applicable for this
+The \code{Negate} key in metric-level filters is not applicable for this
 metric.
 
 \strong{CONTACTS_ABANDONED}
@@ -1061,8 +1178,8 @@ Valid groupings and filters: Queue, Channel, Routing Profile,
 contact/segmentAttributes/connect:Subtype, Q in Connect
 
 Threshold: For \code{ThresholdValue}, enter any whole number from 1 to 604800
-(inclusive), in seconds. For \code{Comparison}, you must enter \code{LT} (for
-"Less than").
+(inclusive), in seconds. For \code{Comparison}, you can use \code{LT} (for "Less
+than") or \code{LTE} (for "Less than equal").
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#contacts-abandoned-x-historical}{Contacts abandoned in X seconds}
 
@@ -1074,8 +1191,8 @@ Valid groupings and filters: Queue, Channel, Routing Profile,
 contact/segmentAttributes/connect:Subtype, Q in Connect
 
 Threshold: For \code{ThresholdValue}, enter any whole number from 1 to 604800
-(inclusive), in seconds. For \code{Comparison}, you must enter \code{LT} (for
-"Less than").
+(inclusive), in seconds. For \code{Comparison}, you can use \code{LT} (for "Less
+than") or \code{LTE} (for "Less than equal").
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#contacts-answered-x-historical}{Contacts answered in X seconds}
 

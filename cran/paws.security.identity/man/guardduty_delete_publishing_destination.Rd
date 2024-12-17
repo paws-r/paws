@@ -8,7 +8,11 @@ guardduty_delete_publishing_destination(DetectorId, DestinationId)
 }
 \arguments{
 \item{DetectorId}{[required] The unique ID of the detector associated with the publishing destination
-to delete.}
+to delete.
+
+To find the \code{detectorId} in the current Region, see the Settings page in
+the GuardDuty console, or run the
+\code{\link[=guardduty_list_detectors]{list_detectors}} API.}
 
 \item{DestinationId}{[required] The ID of the publishing destination to delete.}
 }

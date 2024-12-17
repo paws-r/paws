@@ -40,6 +40,14 @@ test_that("describe_reserved_instances", {
   expect_error(svc$describe_reserved_instances(MaxResults = 20), NA)
 })
 
+test_that("list_applications", {
+  expect_error(svc$list_applications(), NA)
+})
+
+test_that("list_direct_query_data_sources", {
+  expect_error(svc$list_direct_query_data_sources(), NA)
+})
+
 test_that("list_domain_names", {
   expect_error(svc$list_domain_names(), NA)
 })

@@ -8,7 +8,9 @@ sagemaker_create_cluster(
   ClusterName,
   InstanceGroups,
   VpcConfig = NULL,
-  Tags = NULL
+  Tags = NULL,
+  Orchestrator = NULL,
+  NodeRecovery = NULL
 )
 }
 \arguments{
@@ -23,6 +25,16 @@ Services resource. You can add tags to your cluster in the same way you
 add them in other Amazon Web Services services that support tagging. To
 learn more about tagging Amazon Web Services resources in general, see
 \href{https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html}{Tagging Amazon Web Services Resources User Guide}.}
+
+\item{Orchestrator}{The type of orchestrator to use for the SageMaker HyperPod cluster.
+Currently, the only supported value is \code{"eks"}, which is to use an
+Amazon Elastic Kubernetes Service (EKS) cluster as the orchestrator.}
+
+\item{NodeRecovery}{The node recovery mode for the SageMaker HyperPod cluster. When set to
+\code{Automatic}, SageMaker HyperPod will automatically reboot or replace
+faulty nodes when issues are detected. When set to \code{None}, cluster
+administrators will need to manually manage any faulty cluster
+instances.}
 }
 \description{
 Creates a SageMaker HyperPod cluster. SageMaker HyperPod is a capability of SageMaker for creating and managing persistent clusters for developing large machine learning models, such as large language models (LLMs) and diffusion models. To learn more, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-hyperpod.html}{Amazon SageMaker HyperPod} in the \emph{Amazon SageMaker Developer Guide}.

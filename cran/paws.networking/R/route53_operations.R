@@ -1966,7 +1966,7 @@ route53_list_health_checks <- function(Marker = NULL, MaxItems = NULL) {
     http_method = "GET",
     http_path = "/2013-04-01/healthcheck",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "NextMarker", result_key = "HealthChecks"),
+    paginator = list(input_token = "Marker", output_token = "NextMarker", more_results = "IsTruncated", limit_key = "MaxItems", result_key = "HealthChecks"),
     stream_api = FALSE
   )
   input <- .route53$list_health_checks_input(Marker = Marker, MaxItems = MaxItems)
@@ -2016,7 +2016,7 @@ route53_list_hosted_zones <- function(Marker = NULL, MaxItems = NULL, Delegation
     http_method = "GET",
     http_path = "/2013-04-01/hostedzone",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "NextMarker", result_key = "HostedZones"),
+    paginator = list(input_token = "Marker", output_token = "NextMarker", more_results = "IsTruncated", limit_key = "MaxItems", result_key = "HostedZones"),
     stream_api = FALSE
   )
   input <- .route53$list_hosted_zones_input(Marker = Marker, MaxItems = MaxItems, DelegationSetId = DelegationSetId, HostedZoneType = HostedZoneType)
@@ -2256,7 +2256,7 @@ route53_list_resource_record_sets <- function(HostedZoneId, StartRecordName = NU
     http_method = "GET",
     http_path = "/2013-04-01/hostedzone/{Id}/rrset",
     host_prefix = "",
-    paginator = list(input_token = list("StartRecordName", "StartRecordType", "StartRecordIdentifier"), limit_key = "MaxItems", more_results = "IsTruncated", output_token = c("NextRecordName", "NextRecordType", "NextRecordIdentifier" ), result_key = "ResourceRecordSets"),
+    paginator = list(more_results = "IsTruncated", limit_key = "MaxItems", result_key = "ResourceRecordSets", input_token = list("StartRecordName", "StartRecordType", "StartRecordIdentifier"), output_token = c("NextRecordName", "NextRecordType", "NextRecordIdentifier")),
     stream_api = FALSE
   )
   input <- .route53$list_resource_record_sets_input(HostedZoneId = HostedZoneId, StartRecordName = StartRecordName, StartRecordType = StartRecordType, StartRecordIdentifier = StartRecordIdentifier, MaxItems = MaxItems)
@@ -2731,7 +2731,7 @@ route53_list_vpc_association_authorizations <- function(HostedZoneId, NextToken 
     http_method = "GET",
     http_path = "/2013-04-01/hostedzone/{Id}/authorizevpcassociation",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", non_aggregate_keys = list( "HostedZoneId"), result_key = list("VPCs")),
     stream_api = FALSE
   )
   input <- .route53$list_vpc_association_authorizations_input(HostedZoneId = HostedZoneId, NextToken = NextToken, MaxResults = MaxResults)

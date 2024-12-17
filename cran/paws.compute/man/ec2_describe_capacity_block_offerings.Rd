@@ -7,8 +7,8 @@ Web Services Region that you're currently using}
 \usage{
 ec2_describe_capacity_block_offerings(
   DryRun = NULL,
-  InstanceType,
-  InstanceCount,
+  InstanceType = NULL,
+  InstanceCount = NULL,
   StartDateRange = NULL,
   EndDateRange = NULL,
   CapacityDurationHours,
@@ -22,10 +22,10 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
-\item{InstanceType}{[required] The type of instance for which the Capacity Block offering reserves
+\item{InstanceType}{The type of instance for which the Capacity Block offering reserves
 capacity.}
 
-\item{InstanceCount}{[required] The number of instances for which to reserve capacity.}
+\item{InstanceCount}{The number of instances for which to reserve capacity.}
 
 \item{StartDateRange}{The earliest start date for the Capacity Block offering.}
 

@@ -112,7 +112,7 @@ NULL
 #'  \link[=efs_create_access_point]{create_access_point} \tab Creates an EFS access point\cr
 #'  \link[=efs_create_file_system]{create_file_system} \tab Creates a new, empty file system\cr
 #'  \link[=efs_create_mount_target]{create_mount_target} \tab Creates a mount target for a file system\cr
-#'  \link[=efs_create_replication_configuration]{create_replication_configuration} \tab Creates a replication configuration that replicates an existing EFS file system to a new, read-only file system\cr
+#'  \link[=efs_create_replication_configuration]{create_replication_configuration} \tab Creates a replication configuration to either a new or existing EFS file system\cr
 #'  \link[=efs_create_tags]{create_tags} \tab DEPRECATED - CreateTags is deprecated and not maintained\cr
 #'  \link[=efs_delete_access_point]{delete_access_point} \tab Deletes the specified access point\cr
 #'  \link[=efs_delete_file_system]{delete_file_system} \tab Deletes a file system, permanently severing access to its contents\cr
@@ -171,7 +171,7 @@ efs <- function(config = list(), credentials = list(), endpoint = NULL, region =
 
 .efs$metadata <- list(
   service_name = "elasticfilesystem",
-  endpoints = list("*" = list(endpoint = "elasticfilesystem.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "elasticfilesystem.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "elasticfilesystem.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "elasticfilesystem.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "elasticfilesystem.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "elasticfilesystem.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "elasticfilesystem.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "elasticfilesystem.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "elasticfilesystem.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "elasticfilesystem.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "elasticfilesystem.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "elasticfilesystem.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "elasticfilesystem.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "EFS",
   api_version = "2015-02-01",
   signing_name = "elasticfilesystem",

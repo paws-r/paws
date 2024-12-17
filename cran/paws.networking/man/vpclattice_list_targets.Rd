@@ -16,7 +16,7 @@ vpclattice_list_targets(
 
 \item{nextToken}{A pagination token for the next page of results.}
 
-\item{targetGroupIdentifier}{[required] The ID or Amazon Resource Name (ARN) of the target group.}
+\item{targetGroupIdentifier}{[required] The ID or ARN of the target group.}
 
 \item{targets}{The targets.}
 }

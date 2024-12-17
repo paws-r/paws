@@ -416,6 +416,64 @@ workmail_create_group <- function(OrganizationId, Name, HiddenFromGlobalAddressL
 }
 .workmail$operations$create_group <- workmail_create_group
 
+#' Creates the WorkMail application in IAM Identity Center that can be used
+#' later in the WorkMail - IdC integration
+#'
+#' @description
+#' Creates the WorkMail application in IAM Identity Center that can be used
+#' later in the WorkMail - IdC integration. For more information, see
+#' PutIdentityProviderConfiguration. This action does not affect the
+#' authentication settings for any WorkMail organizations.
+#'
+#' @usage
+#' workmail_create_identity_center_application(Name, InstanceArn,
+#'   ClientToken)
+#'
+#' @param Name &#91;required&#93; The name of the IAM Identity Center application.
+#' @param InstanceArn &#91;required&#93; The Amazon Resource Name (ARN) of the instance.
+#' @param ClientToken The idempotency token associated with the request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ApplicationArn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_identity_center_application(
+#'   Name = "string",
+#'   InstanceArn = "string",
+#'   ClientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workmail_create_identity_center_application
+#'
+#' @aliases workmail_create_identity_center_application
+workmail_create_identity_center_application <- function(Name, InstanceArn, ClientToken = NULL) {
+  op <- new_operation(
+    name = "CreateIdentityCenterApplication",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .workmail$create_identity_center_application_input(Name = Name, InstanceArn = InstanceArn, ClientToken = ClientToken)
+  output <- .workmail$create_identity_center_application_output()
+  config <- get_config()
+  svc <- .workmail$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workmail$operations$create_identity_center_application <- workmail_create_identity_center_application
+
 #' Creates an impersonation role for the given WorkMail organization
 #'
 #' @description
@@ -752,7 +810,8 @@ workmail_create_resource <- function(OrganizationId, Name, Type, Description = N
 #'
 #' @usage
 #' workmail_create_user(OrganizationId, Name, DisplayName, Password, Role,
-#'   FirstName, LastName, HiddenFromGlobalAddressList)
+#'   FirstName, LastName, HiddenFromGlobalAddressList,
+#'   IdentityProviderUserId)
 #'
 #' @param OrganizationId &#91;required&#93; The identifier of the organization for which the user is created.
 #' @param Name &#91;required&#93; The name for the new user. WorkMail directory user names have a maximum
@@ -768,6 +827,9 @@ workmail_create_resource <- function(OrganizationId, Name, Type, Description = N
 #' @param LastName The last name of the new user.
 #' @param HiddenFromGlobalAddressList If this parameter is enabled, the user will be hidden from the address
 #' book.
+#' @param IdentityProviderUserId User ID from the IAM Identity Center. If this parameter is empty it will
+#' be updated automatically when the user logs in for the first time to the
+#' mailbox associated with WorkMail.
 #'
 #' @return
 #' A list with the following syntax:
@@ -787,7 +849,8 @@ workmail_create_resource <- function(OrganizationId, Name, Type, Description = N
 #'   Role = "USER"|"RESOURCE"|"SYSTEM_USER"|"REMOTE_USER",
 #'   FirstName = "string",
 #'   LastName = "string",
-#'   HiddenFromGlobalAddressList = TRUE|FALSE
+#'   HiddenFromGlobalAddressList = TRUE|FALSE,
+#'   IdentityProviderUserId = "string"
 #' )
 #' ```
 #'
@@ -796,7 +859,7 @@ workmail_create_resource <- function(OrganizationId, Name, Type, Description = N
 #' @rdname workmail_create_user
 #'
 #' @aliases workmail_create_user
-workmail_create_user <- function(OrganizationId, Name, DisplayName, Password = NULL, Role = NULL, FirstName = NULL, LastName = NULL, HiddenFromGlobalAddressList = NULL) {
+workmail_create_user <- function(OrganizationId, Name, DisplayName, Password = NULL, Role = NULL, FirstName = NULL, LastName = NULL, HiddenFromGlobalAddressList = NULL, IdentityProviderUserId = NULL) {
   op <- new_operation(
     name = "CreateUser",
     http_method = "POST",
@@ -805,7 +868,7 @@ workmail_create_user <- function(OrganizationId, Name, DisplayName, Password = N
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .workmail$create_user_input(OrganizationId = OrganizationId, Name = Name, DisplayName = DisplayName, Password = Password, Role = Role, FirstName = FirstName, LastName = LastName, HiddenFromGlobalAddressList = HiddenFromGlobalAddressList)
+  input <- .workmail$create_user_input(OrganizationId = OrganizationId, Name = Name, DisplayName = DisplayName, Password = Password, Role = Role, FirstName = FirstName, LastName = LastName, HiddenFromGlobalAddressList = HiddenFromGlobalAddressList, IdentityProviderUserId = IdentityProviderUserId)
   output <- .workmail$create_user_output()
   config <- get_config()
   svc <- .workmail$service(config, op)
@@ -1066,6 +1129,99 @@ workmail_delete_group <- function(OrganizationId, GroupId) {
 }
 .workmail$operations$delete_group <- workmail_delete_group
 
+#' Deletes the IAM Identity Center application from WorkMail
+#'
+#' @description
+#' Deletes the IAM Identity Center application from WorkMail. This action
+#' does not affect the authentication settings for any WorkMail
+#' organizations.
+#'
+#' @usage
+#' workmail_delete_identity_center_application(ApplicationArn)
+#'
+#' @param ApplicationArn &#91;required&#93; The Amazon Resource Name (ARN) of the application.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_identity_center_application(
+#'   ApplicationArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workmail_delete_identity_center_application
+#'
+#' @aliases workmail_delete_identity_center_application
+workmail_delete_identity_center_application <- function(ApplicationArn) {
+  op <- new_operation(
+    name = "DeleteIdentityCenterApplication",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .workmail$delete_identity_center_application_input(ApplicationArn = ApplicationArn)
+  output <- .workmail$delete_identity_center_application_output()
+  config <- get_config()
+  svc <- .workmail$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workmail$operations$delete_identity_center_application <- workmail_delete_identity_center_application
+
+#' Disables the integration between IdC and WorkMail
+#'
+#' @description
+#' Disables the integration between IdC and WorkMail. Authentication will
+#' continue with the directory as it was before the IdC integration. You
+#' might have to reset your directory passwords and reconfigure your
+#' desktop and mobile email clients.
+#'
+#' @usage
+#' workmail_delete_identity_provider_configuration(OrganizationId)
+#'
+#' @param OrganizationId &#91;required&#93; The Organization ID.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_identity_provider_configuration(
+#'   OrganizationId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workmail_delete_identity_provider_configuration
+#'
+#' @aliases workmail_delete_identity_provider_configuration
+workmail_delete_identity_provider_configuration <- function(OrganizationId) {
+  op <- new_operation(
+    name = "DeleteIdentityProviderConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .workmail$delete_identity_provider_configuration_input(OrganizationId = OrganizationId)
+  output <- .workmail$delete_identity_provider_configuration_output()
+  config <- get_config()
+  svc <- .workmail$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workmail$operations$delete_identity_provider_configuration <- workmail_delete_identity_provider_configuration
+
 #' Deletes an impersonation role for the given WorkMail organization
 #'
 #' @description
@@ -1313,7 +1469,7 @@ workmail_delete_mobile_device_access_rule <- function(OrganizationId, MobileDevi
 #'
 #' @usage
 #' workmail_delete_organization(ClientToken, OrganizationId,
-#'   DeleteDirectory, ForceDelete)
+#'   DeleteDirectory, ForceDelete, DeleteIdentityCenterApplication)
 #'
 #' @param ClientToken The idempotency token associated with the request.
 #' @param OrganizationId &#91;required&#93; The organization ID.
@@ -1321,6 +1477,8 @@ workmail_delete_mobile_device_access_rule <- function(OrganizationId, MobileDevi
 #' organization.
 #' @param ForceDelete Deletes a WorkMail organization even if the organization has enabled
 #' users.
+#' @param DeleteIdentityCenterApplication Deletes IAM Identity Center application for WorkMail. This action does
+#' not affect authentication settings for any organization.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1337,7 +1495,8 @@ workmail_delete_mobile_device_access_rule <- function(OrganizationId, MobileDevi
 #'   ClientToken = "string",
 #'   OrganizationId = "string",
 #'   DeleteDirectory = TRUE|FALSE,
-#'   ForceDelete = TRUE|FALSE
+#'   ForceDelete = TRUE|FALSE,
+#'   DeleteIdentityCenterApplication = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -1346,7 +1505,7 @@ workmail_delete_mobile_device_access_rule <- function(OrganizationId, MobileDevi
 #' @rdname workmail_delete_organization
 #'
 #' @aliases workmail_delete_organization
-workmail_delete_organization <- function(ClientToken = NULL, OrganizationId, DeleteDirectory, ForceDelete = NULL) {
+workmail_delete_organization <- function(ClientToken = NULL, OrganizationId, DeleteDirectory, ForceDelete = NULL, DeleteIdentityCenterApplication = NULL) {
   op <- new_operation(
     name = "DeleteOrganization",
     http_method = "POST",
@@ -1355,7 +1514,7 @@ workmail_delete_organization <- function(ClientToken = NULL, OrganizationId, Del
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .workmail$delete_organization_input(ClientToken = ClientToken, OrganizationId = OrganizationId, DeleteDirectory = DeleteDirectory, ForceDelete = ForceDelete)
+  input <- .workmail$delete_organization_input(ClientToken = ClientToken, OrganizationId = OrganizationId, DeleteDirectory = DeleteDirectory, ForceDelete = ForceDelete, DeleteIdentityCenterApplication = DeleteIdentityCenterApplication)
   output <- .workmail$delete_organization_output()
   config <- get_config()
   svc <- .workmail$service(config, op)
@@ -1364,6 +1523,55 @@ workmail_delete_organization <- function(ClientToken = NULL, OrganizationId, Del
   return(response)
 }
 .workmail$operations$delete_organization <- workmail_delete_organization
+
+#' Deletes the Personal Access Token from the provided WorkMail
+#' Organization
+#'
+#' @description
+#' Deletes the Personal Access Token from the provided WorkMail
+#' Organization.
+#'
+#' @usage
+#' workmail_delete_personal_access_token(OrganizationId,
+#'   PersonalAccessTokenId)
+#'
+#' @param OrganizationId &#91;required&#93; The Organization ID.
+#' @param PersonalAccessTokenId &#91;required&#93; The Personal Access Token ID.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_personal_access_token(
+#'   OrganizationId = "string",
+#'   PersonalAccessTokenId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workmail_delete_personal_access_token
+#'
+#' @aliases workmail_delete_personal_access_token
+workmail_delete_personal_access_token <- function(OrganizationId, PersonalAccessTokenId) {
+  op <- new_operation(
+    name = "DeletePersonalAccessToken",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .workmail$delete_personal_access_token_input(OrganizationId = OrganizationId, PersonalAccessTokenId = PersonalAccessTokenId)
+  output <- .workmail$delete_personal_access_token_output()
+  config <- get_config()
+  svc <- .workmail$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workmail$operations$delete_personal_access_token <- workmail_delete_personal_access_token
 
 #' Deletes the specified resource
 #'
@@ -1813,6 +2021,65 @@ workmail_describe_group <- function(OrganizationId, GroupId) {
 }
 .workmail$operations$describe_group <- workmail_describe_group
 
+#' Returns detailed information on the current IdC setup for the WorkMail
+#' organization
+#'
+#' @description
+#' Returns detailed information on the current IdC setup for the WorkMail
+#' organization.
+#'
+#' @usage
+#' workmail_describe_identity_provider_configuration(OrganizationId)
+#'
+#' @param OrganizationId &#91;required&#93; The Organization ID.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AuthenticationMode = "IDENTITY_PROVIDER_ONLY"|"IDENTITY_PROVIDER_AND_DIRECTORY",
+#'   IdentityCenterConfiguration = list(
+#'     InstanceArn = "string",
+#'     ApplicationArn = "string"
+#'   ),
+#'   PersonalAccessTokenConfiguration = list(
+#'     Status = "ACTIVE"|"INACTIVE",
+#'     LifetimeInDays = 123
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_identity_provider_configuration(
+#'   OrganizationId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workmail_describe_identity_provider_configuration
+#'
+#' @aliases workmail_describe_identity_provider_configuration
+workmail_describe_identity_provider_configuration <- function(OrganizationId) {
+  op <- new_operation(
+    name = "DescribeIdentityProviderConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .workmail$describe_identity_provider_configuration_input(OrganizationId = OrganizationId)
+  output <- .workmail$describe_identity_provider_configuration_output()
+  config <- get_config()
+  svc <- .workmail$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workmail$operations$describe_identity_provider_configuration <- workmail_describe_identity_provider_configuration
+
 #' Lists the settings in a DMARC policy for a specified organization
 #'
 #' @description
@@ -2124,7 +2391,9 @@ workmail_describe_resource <- function(OrganizationId, ResourceId) {
 #'   ZipCode = "string",
 #'   Department = "string",
 #'   Country = "string",
-#'   Office = "string"
+#'   Office = "string",
+#'   IdentityProviderUserId = "string",
+#'   IdentityProviderIdentityStoreId = "string"
 #' )
 #' ```
 #'
@@ -2838,6 +3107,74 @@ workmail_get_mobile_device_access_override <- function(OrganizationId, UserId, D
 }
 .workmail$operations$get_mobile_device_access_override <- workmail_get_mobile_device_access_override
 
+#' Requests details of a specific Personal Access Token within the WorkMail
+#' organization
+#'
+#' @description
+#' Requests details of a specific Personal Access Token within the WorkMail
+#' organization.
+#'
+#' @usage
+#' workmail_get_personal_access_token_metadata(OrganizationId,
+#'   PersonalAccessTokenId)
+#'
+#' @param OrganizationId &#91;required&#93; The Organization ID.
+#' @param PersonalAccessTokenId &#91;required&#93; The Personal Access Token ID.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PersonalAccessTokenId = "string",
+#'   UserId = "string",
+#'   Name = "string",
+#'   DateCreated = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   DateLastUsed = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   ExpiresTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Scopes = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_personal_access_token_metadata(
+#'   OrganizationId = "string",
+#'   PersonalAccessTokenId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workmail_get_personal_access_token_metadata
+#'
+#' @aliases workmail_get_personal_access_token_metadata
+workmail_get_personal_access_token_metadata <- function(OrganizationId, PersonalAccessTokenId) {
+  op <- new_operation(
+    name = "GetPersonalAccessTokenMetadata",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .workmail$get_personal_access_token_metadata_input(OrganizationId = OrganizationId, PersonalAccessTokenId = PersonalAccessTokenId)
+  output <- .workmail$get_personal_access_token_metadata_output()
+  config <- get_config()
+  svc <- .workmail$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workmail$operations$get_personal_access_token_metadata <- workmail_get_personal_access_token_metadata
+
 #' Lists the access control rules for the specified organization
 #'
 #' @description
@@ -2971,7 +3308,7 @@ workmail_list_aliases <- function(OrganizationId, EntityId, NextToken = NULL, Ma
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(result_key = "Aliases", output_token = "NextToken", input_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .workmail$list_aliases_input(OrganizationId = OrganizationId, EntityId = EntityId, NextToken = NextToken, MaxResults = MaxResults)
@@ -3131,7 +3468,7 @@ workmail_list_group_members <- function(OrganizationId, GroupId, NextToken = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(result_key = "Members", output_token = "NextToken", input_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .workmail$list_group_members_input(OrganizationId = OrganizationId, GroupId = GroupId, NextToken = NextToken, MaxResults = MaxResults)
@@ -3206,7 +3543,7 @@ workmail_list_groups <- function(OrganizationId, NextToken = NULL, MaxResults = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(result_key = "Groups", output_token = "NextToken", input_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .workmail$list_groups_input(OrganizationId = OrganizationId, NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
@@ -3283,7 +3620,7 @@ workmail_list_groups_for_entity <- function(OrganizationId, EntityId, Filters = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .workmail$list_groups_for_entity_input(OrganizationId = OrganizationId, EntityId = EntityId, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
@@ -3351,7 +3688,7 @@ workmail_list_impersonation_roles <- function(OrganizationId, NextToken = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .workmail$list_impersonation_roles_input(OrganizationId = OrganizationId, NextToken = NextToken, MaxResults = MaxResults)
@@ -3411,7 +3748,7 @@ workmail_list_mail_domains <- function(OrganizationId, MaxResults = NULL, NextTo
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .workmail$list_mail_domains_input(OrganizationId = OrganizationId, MaxResults = MaxResults, NextToken = NextToken)
@@ -3483,7 +3820,7 @@ workmail_list_mailbox_export_jobs <- function(OrganizationId, NextToken = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .workmail$list_mailbox_export_jobs_input(OrganizationId = OrganizationId, NextToken = NextToken, MaxResults = MaxResults)
@@ -3563,7 +3900,7 @@ workmail_list_mailbox_permissions <- function(OrganizationId, EntityId, NextToke
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Permissions"),
     stream_api = FALSE
   )
   input <- .workmail$list_mailbox_permissions_input(OrganizationId = OrganizationId, EntityId = EntityId, NextToken = NextToken, MaxResults = MaxResults)
@@ -3647,7 +3984,7 @@ workmail_list_mobile_device_access_overrides <- function(OrganizationId, UserId 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .workmail$list_mobile_device_access_overrides_input(OrganizationId = OrganizationId, UserId = UserId, DeviceId = DeviceId, NextToken = NextToken, MaxResults = MaxResults)
@@ -3796,7 +4133,7 @@ workmail_list_organizations <- function(NextToken = NULL, MaxResults = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(result_key = "OrganizationSummaries", output_token = "NextToken", input_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .workmail$list_organizations_input(NextToken = NextToken, MaxResults = MaxResults)
@@ -3808,6 +4145,81 @@ workmail_list_organizations <- function(NextToken = NULL, MaxResults = NULL) {
   return(response)
 }
 .workmail$operations$list_organizations <- workmail_list_organizations
+
+#' Returns a summary of your Personal Access Tokens
+#'
+#' @description
+#' Returns a summary of your Personal Access Tokens.
+#'
+#' @usage
+#' workmail_list_personal_access_tokens(OrganizationId, UserId, NextToken,
+#'   MaxResults)
+#'
+#' @param OrganizationId &#91;required&#93; The Organization ID.
+#' @param UserId The WorkMail User ID.
+#' @param NextToken The token from the previous response to query the next page.
+#' @param MaxResults The maximum amount of items that should be returned in a response.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   PersonalAccessTokenSummaries = list(
+#'     list(
+#'       PersonalAccessTokenId = "string",
+#'       UserId = "string",
+#'       Name = "string",
+#'       DateCreated = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       DateLastUsed = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ExpiresTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Scopes = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_personal_access_tokens(
+#'   OrganizationId = "string",
+#'   UserId = "string",
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workmail_list_personal_access_tokens
+#'
+#' @aliases workmail_list_personal_access_tokens
+workmail_list_personal_access_tokens <- function(OrganizationId, UserId = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListPersonalAccessTokens",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "PersonalAccessTokenSummaries"),
+    stream_api = FALSE
+  )
+  input <- .workmail$list_personal_access_tokens_input(OrganizationId = OrganizationId, UserId = UserId, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .workmail$list_personal_access_tokens_output()
+  config <- get_config()
+  svc <- .workmail$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workmail$operations$list_personal_access_tokens <- workmail_list_personal_access_tokens
 
 #' Lists the delegates associated with a resource
 #'
@@ -3870,7 +4282,7 @@ workmail_list_resource_delegates <- function(OrganizationId, ResourceId, NextTok
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Delegates"),
     stream_api = FALSE
   )
   input <- .workmail$list_resource_delegates_input(OrganizationId = OrganizationId, ResourceId = ResourceId, NextToken = NextToken, MaxResults = MaxResults)
@@ -3947,7 +4359,7 @@ workmail_list_resources <- function(OrganizationId, NextToken = NULL, MaxResults
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(result_key = "Resources", output_token = "NextToken", input_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .workmail$list_resources_input(OrganizationId = OrganizationId, NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
@@ -4046,7 +4458,9 @@ workmail_list_tags_for_resource <- function(ResourceARN) {
 #'       ),
 #'       DisabledDate = as.POSIXct(
 #'         "2015-01-01"
-#'       )
+#'       ),
+#'       IdentityProviderUserId = "string",
+#'       IdentityProviderIdentityStoreId = "string"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -4063,7 +4477,8 @@ workmail_list_tags_for_resource <- function(ResourceARN) {
 #'     UsernamePrefix = "string",
 #'     DisplayNamePrefix = "string",
 #'     PrimaryEmailPrefix = "string",
-#'     State = "ENABLED"|"DISABLED"|"DELETED"
+#'     State = "ENABLED"|"DISABLED"|"DELETED",
+#'     IdentityProviderUserIdPrefix = "string"
 #'   )
 #' )
 #' ```
@@ -4079,7 +4494,7 @@ workmail_list_users <- function(OrganizationId, NextToken = NULL, MaxResults = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(result_key = "Users", output_token = "NextToken", input_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .workmail$list_users_input(OrganizationId = OrganizationId, NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
@@ -4237,6 +4652,70 @@ workmail_put_email_monitoring_configuration <- function(OrganizationId, RoleArn,
   return(response)
 }
 .workmail$operations$put_email_monitoring_configuration <- workmail_put_email_monitoring_configuration
+
+#' Enables integration between IAM Identity Center (IdC) and WorkMail to
+#' proxy authentication requests for mailbox users
+#'
+#' @description
+#' Enables integration between IAM Identity Center (IdC) and WorkMail to
+#' proxy authentication requests for mailbox users. You can connect your
+#' IdC directory or your external directory to WorkMail through IdC and
+#' manage access to WorkMail mailboxes in a single place. For enhanced
+#' protection, you could enable Multifactor Authentication (MFA) and
+#' Personal Access Tokens.
+#'
+#' @usage
+#' workmail_put_identity_provider_configuration(OrganizationId,
+#'   AuthenticationMode, IdentityCenterConfiguration,
+#'   PersonalAccessTokenConfiguration)
+#'
+#' @param OrganizationId &#91;required&#93; The ID of the WorkMail Organization.
+#' @param AuthenticationMode &#91;required&#93; The authentication mode used in WorkMail.
+#' @param IdentityCenterConfiguration &#91;required&#93; The details of the IAM Identity Center configuration.
+#' @param PersonalAccessTokenConfiguration &#91;required&#93; The details of the Personal Access Token configuration.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_identity_provider_configuration(
+#'   OrganizationId = "string",
+#'   AuthenticationMode = "IDENTITY_PROVIDER_ONLY"|"IDENTITY_PROVIDER_AND_DIRECTORY",
+#'   IdentityCenterConfiguration = list(
+#'     InstanceArn = "string",
+#'     ApplicationArn = "string"
+#'   ),
+#'   PersonalAccessTokenConfiguration = list(
+#'     Status = "ACTIVE"|"INACTIVE",
+#'     LifetimeInDays = 123
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workmail_put_identity_provider_configuration
+#'
+#' @aliases workmail_put_identity_provider_configuration
+workmail_put_identity_provider_configuration <- function(OrganizationId, AuthenticationMode, IdentityCenterConfiguration, PersonalAccessTokenConfiguration) {
+  op <- new_operation(
+    name = "PutIdentityProviderConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .workmail$put_identity_provider_configuration_input(OrganizationId = OrganizationId, AuthenticationMode = AuthenticationMode, IdentityCenterConfiguration = IdentityCenterConfiguration, PersonalAccessTokenConfiguration = PersonalAccessTokenConfiguration)
+  output <- .workmail$put_identity_provider_configuration_output()
+  config <- get_config()
+  svc <- .workmail$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workmail$operations$put_identity_provider_configuration <- workmail_put_identity_provider_configuration
 
 #' Enables or disables a DMARC policy for a given organization
 #'
@@ -5042,10 +5521,10 @@ workmail_update_default_mail_domain <- function(OrganizationId, DomainName) {
 }
 .workmail$operations$update_default_mail_domain <- workmail_update_default_mail_domain
 
-#' Updates attibutes in a group
+#' Updates attributes in a group
 #'
 #' @description
-#' Updates attibutes in a group.
+#' Updates attributes in a group.
 #'
 #' @usage
 #' workmail_update_group(OrganizationId, GroupId,
@@ -5473,7 +5952,8 @@ workmail_update_resource <- function(OrganizationId, ResourceId, Name = NULL, Bo
 #' @usage
 #' workmail_update_user(OrganizationId, UserId, Role, DisplayName,
 #'   FirstName, LastName, HiddenFromGlobalAddressList, Initials, Telephone,
-#'   Street, JobTitle, City, Company, ZipCode, Department, Country, Office)
+#'   Street, JobTitle, City, Company, ZipCode, Department, Country, Office,
+#'   IdentityProviderUserId)
 #'
 #' @param OrganizationId &#91;required&#93; The identifier for the organization under which the user exists.
 #' @param UserId &#91;required&#93; The identifier for the user to be updated.
@@ -5500,10 +5980,13 @@ workmail_update_resource <- function(OrganizationId, ResourceId, Name = NULL, Bo
 #' @param JobTitle Updates the user's job title.
 #' @param City Updates the user's city.
 #' @param Company Updates the user's company.
-#' @param ZipCode Updates the user's zipcode.
+#' @param ZipCode Updates the user's zip code.
 #' @param Department Updates the user's department.
 #' @param Country Updates the user's country.
 #' @param Office Updates the user's office.
+#' @param IdentityProviderUserId User ID from the IAM Identity Center. If this parameter is empty it will
+#' be updated automatically when the user logs in for the first time to the
+#' mailbox associated with WorkMail.
 #'
 #' @return
 #' An empty list.
@@ -5527,7 +6010,8 @@ workmail_update_resource <- function(OrganizationId, ResourceId, Name = NULL, Bo
 #'   ZipCode = "string",
 #'   Department = "string",
 #'   Country = "string",
-#'   Office = "string"
+#'   Office = "string",
+#'   IdentityProviderUserId = "string"
 #' )
 #' ```
 #'
@@ -5536,7 +6020,7 @@ workmail_update_resource <- function(OrganizationId, ResourceId, Name = NULL, Bo
 #' @rdname workmail_update_user
 #'
 #' @aliases workmail_update_user
-workmail_update_user <- function(OrganizationId, UserId, Role = NULL, DisplayName = NULL, FirstName = NULL, LastName = NULL, HiddenFromGlobalAddressList = NULL, Initials = NULL, Telephone = NULL, Street = NULL, JobTitle = NULL, City = NULL, Company = NULL, ZipCode = NULL, Department = NULL, Country = NULL, Office = NULL) {
+workmail_update_user <- function(OrganizationId, UserId, Role = NULL, DisplayName = NULL, FirstName = NULL, LastName = NULL, HiddenFromGlobalAddressList = NULL, Initials = NULL, Telephone = NULL, Street = NULL, JobTitle = NULL, City = NULL, Company = NULL, ZipCode = NULL, Department = NULL, Country = NULL, Office = NULL, IdentityProviderUserId = NULL) {
   op <- new_operation(
     name = "UpdateUser",
     http_method = "POST",
@@ -5545,7 +6029,7 @@ workmail_update_user <- function(OrganizationId, UserId, Role = NULL, DisplayNam
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .workmail$update_user_input(OrganizationId = OrganizationId, UserId = UserId, Role = Role, DisplayName = DisplayName, FirstName = FirstName, LastName = LastName, HiddenFromGlobalAddressList = HiddenFromGlobalAddressList, Initials = Initials, Telephone = Telephone, Street = Street, JobTitle = JobTitle, City = City, Company = Company, ZipCode = ZipCode, Department = Department, Country = Country, Office = Office)
+  input <- .workmail$update_user_input(OrganizationId = OrganizationId, UserId = UserId, Role = Role, DisplayName = DisplayName, FirstName = FirstName, LastName = LastName, HiddenFromGlobalAddressList = HiddenFromGlobalAddressList, Initials = Initials, Telephone = Telephone, Street = Street, JobTitle = JobTitle, City = City, Company = Company, ZipCode = ZipCode, Department = Department, Country = Country, Office = Office, IdentityProviderUserId = IdentityProviderUserId)
   output <- .workmail$update_user_output()
   config <- get_config()
   svc <- .workmail$service(config, op)

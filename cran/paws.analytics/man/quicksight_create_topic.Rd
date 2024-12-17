@@ -4,7 +4,13 @@
 \alias{quicksight_create_topic}
 \title{Creates a new Q topic}
 \usage{
-quicksight_create_topic(AwsAccountId, TopicId, Topic, Tags = NULL)
+quicksight_create_topic(
+  AwsAccountId,
+  TopicId,
+  Topic,
+  Tags = NULL,
+  FolderArns = NULL
+)
 }
 \arguments{
 \item{AwsAccountId}{[required] The ID of the Amazon Web Services account that you want to create a
@@ -17,6 +23,8 @@ Amazon Web Services Region for each Amazon Web Services account.}
 
 \item{Tags}{Contains a map of the key-value pairs for the resource tag or tags that
 are assigned to the dataset.}
+
+\item{FolderArns}{The Folder ARN of the folder that you want the topic to reside in.}
 }
 \description{
 Creates a new Q topic.

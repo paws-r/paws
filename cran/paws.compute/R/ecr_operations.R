@@ -698,7 +698,7 @@ ecr_describe_images <- function(registryId = NULL, repositoryName, imageIds = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "imageDetails"),
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "imageDetails"),
     stream_api = FALSE
   )
   input <- .ecr$describe_images_input(registryId = registryId, repositoryName = repositoryName, imageIds = imageIds, nextToken = nextToken, maxResults = maxResults, filter = filter)
@@ -838,7 +838,7 @@ ecr_describe_repositories <- function(registryId = NULL, repositoryNames = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "repositories"),
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "repositories"),
     stream_api = FALSE
   )
   input <- .ecr$describe_repositories_input(registryId = registryId, repositoryNames = repositoryNames, nextToken = nextToken, maxResults = maxResults)
@@ -1265,7 +1265,7 @@ ecr_list_images <- function(registryId = NULL, repositoryName, nextToken = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "imageIds"),
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "imageIds"),
     stream_api = FALSE
   )
   input <- .ecr$list_images_input(registryId = registryId, repositoryName = repositoryName, nextToken = nextToken, maxResults = maxResults, filter = filter)

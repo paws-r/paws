@@ -10,7 +10,11 @@ eks_update_cluster_config(
   logging = NULL,
   clientRequestToken = NULL,
   accessConfig = NULL,
-  upgradePolicy = NULL
+  upgradePolicy = NULL,
+  zonalShiftConfig = NULL,
+  computeConfig = NULL,
+  kubernetesNetworkConfig = NULL,
+  storageConfig = NULL
 )
 }
 \arguments{
@@ -36,6 +40,33 @@ idempotency of the request.}
 standard support. You cannot disable extended support once it starts.
 You must enable extended support before your cluster exits standard
 support.}
+
+\item{zonalShiftConfig}{Enable or disable ARC zonal shift for the cluster. If zonal shift is
+enabled, Amazon Web Services configures zonal autoshift for the cluster.
+
+Zonal shift is a feature of Amazon Application Recovery Controller
+(ARC). ARC zonal shift is designed to be a temporary measure that allows
+you to move traffic for a resource away from an impaired AZ until the
+zonal shift expires or you cancel it. You can extend the zonal shift if
+necessary.
+
+You can start a zonal shift for an EKS cluster, or you can allow Amazon
+Web Services to do it for you by enabling \emph{zonal autoshift}. This shift
+updates the flow of east-to-west network traffic in your cluster to only
+consider network endpoints for Pods running on worker nodes in healthy
+AZs. Additionally, any ALB or NLB handling ingress traffic for
+applications in your EKS cluster will automatically route traffic to
+targets in the healthy AZs. For more information about zonal shift in
+EKS, see \href{https://docs.aws.amazon.com/eks/latest/userguide/zone-shift.html}{Learn about Amazon Application Recovery Controller (ARC) Zonal Shift in Amazon EKS}
+in the \emph{Amazon EKS User Guide} .}
+
+\item{computeConfig}{Update the configuration of the compute capability of your EKS Auto Mode
+cluster. For example, enable the capability.}
+
+\item{kubernetesNetworkConfig}{}
+
+\item{storageConfig}{Update the configuration of the block storage capability of your EKS
+Auto Mode cluster. For example, enable the capability.}
 }
 \description{
 Updates an Amazon EKS cluster configuration. Your cluster continues to function during the update. The response output includes an update ID that you can use to track the status of your cluster update with \code{\link[=eks_describe_update]{describe_update}}"/\>.

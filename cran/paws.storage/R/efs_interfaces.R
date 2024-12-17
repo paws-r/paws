@@ -41,13 +41,13 @@ NULL
 
 .efs$create_replication_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SourceFileSystemId = structure(logical(0), tags = list(location = "uri", locationName = "SourceFileSystemId", type = "string")), Destinations = structure(list(structure(list(Region = structure(logical(0), tags = list(type = "string")), AvailabilityZoneName = structure(logical(0), tags = list(type = "string")), KmsKeyId = structure(logical(0), tags = list(type = "string")), FileSystemId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(SourceFileSystemId = structure(logical(0), tags = list(location = "uri", locationName = "SourceFileSystemId", type = "string")), Destinations = structure(list(structure(list(Region = structure(logical(0), tags = list(type = "string")), AvailabilityZoneName = structure(logical(0), tags = list(type = "string")), KmsKeyId = structure(logical(0), tags = list(type = "string")), FileSystemId = structure(logical(0), tags = list(type = "string")), RoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .efs$create_replication_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SourceFileSystemId = structure(logical(0), tags = list(type = "string")), SourceFileSystemRegion = structure(logical(0), tags = list(type = "string")), SourceFileSystemArn = structure(logical(0), tags = list(type = "string")), OriginalSourceFileSystemArn = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), Destinations = structure(list(structure(list(Status = structure(logical(0), tags = list(type = "string")), FileSystemId = structure(logical(0), tags = list(type = "string")), Region = structure(logical(0), tags = list(type = "string")), LastReplicatedTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(SourceFileSystemId = structure(logical(0), tags = list(type = "string")), SourceFileSystemRegion = structure(logical(0), tags = list(type = "string")), SourceFileSystemArn = structure(logical(0), tags = list(type = "string")), OriginalSourceFileSystemArn = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), Destinations = structure(list(structure(list(Status = structure(logical(0), tags = list(type = "string")), FileSystemId = structure(logical(0), tags = list(type = "string")), Region = structure(logical(0), tags = list(type = "string")), LastReplicatedTimestamp = structure(logical(0), tags = list(type = "timestamp")), OwnerId = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), RoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), SourceFileSystemOwnerId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -103,7 +103,7 @@ NULL
 
 .efs$delete_replication_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SourceFileSystemId = structure(logical(0), tags = list(location = "uri", locationName = "SourceFileSystemId", type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(SourceFileSystemId = structure(logical(0), tags = list(location = "uri", locationName = "SourceFileSystemId", type = "string")), DeletionMode = structure(logical(0), tags = list(location = "querystring", locationName = "deletionMode", type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -225,7 +225,7 @@ NULL
 
 .efs$describe_replication_configurations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Replications = structure(list(structure(list(SourceFileSystemId = structure(logical(0), tags = list(type = "string")), SourceFileSystemRegion = structure(logical(0), tags = list(type = "string")), SourceFileSystemArn = structure(logical(0), tags = list(type = "string")), OriginalSourceFileSystemArn = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), Destinations = structure(list(structure(list(Status = structure(logical(0), tags = list(type = "string")), FileSystemId = structure(logical(0), tags = list(type = "string")), Region = structure(logical(0), tags = list(type = "string")), LastReplicatedTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Replications = structure(list(structure(list(SourceFileSystemId = structure(logical(0), tags = list(type = "string")), SourceFileSystemRegion = structure(logical(0), tags = list(type = "string")), SourceFileSystemArn = structure(logical(0), tags = list(type = "string")), OriginalSourceFileSystemArn = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), Destinations = structure(list(structure(list(Status = structure(logical(0), tags = list(type = "string")), FileSystemId = structure(logical(0), tags = list(type = "string")), Region = structure(logical(0), tags = list(type = "string")), LastReplicatedTimestamp = structure(logical(0), tags = list(type = "timestamp")), OwnerId = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), RoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), SourceFileSystemOwnerId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

@@ -8,7 +8,8 @@ codeartifact_get_repository_endpoint(
   domain,
   domainOwner = NULL,
   repository,
-  format
+  format,
+  endpointType = NULL
 )
 }
 \arguments{
@@ -22,6 +23,8 @@ spaces.}
 
 \item{format}{[required] Returns which endpoint of a repository to return. A repository has one
 endpoint for each package format.}
+
+\item{endpointType}{A string that specifies the type of endpoint.}
 }
 \description{
 Returns the endpoint of a repository for a specific package format. A repository has one endpoint for each package format:

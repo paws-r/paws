@@ -5,7 +5,7 @@ NULL
 
 .simpledb$batch_delete_attributes_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(type = "string")), Items = structure(list(structure(list(Name = structure(logical(0), tags = list(locationName = "ItemName", type = "string")), Attributes = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Attribute", type = "structure"))), tags = list(locationNameList = "Attribute", type = "list", flattened = TRUE))), tags = list(locationName = "Item", type = "structure"))), tags = list(locationNameList = "Item", type = "list", flattened = TRUE))), tags = list(type = "structure"))
+  shape <- structure(list(DomainName = structure(logical(0), tags = list(type = "string")), Items = structure(list(structure(list(Name = structure(logical(0), tags = list(locationName = "ItemName", type = "string")), Attributes = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), AlternateNameEncoding = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string")), AlternateValueEncoding = structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Attribute", type = "structure"))), tags = list(locationNameList = "Attribute", type = "list", flattened = TRUE))), tags = list(locationName = "Item", type = "structure"))), tags = list(locationNameList = "Item", type = "list", flattened = TRUE))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -35,7 +35,7 @@ NULL
 
 .simpledb$delete_attributes_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DomainName = structure(logical(0), tags = list(type = "string")), ItemName = structure(logical(0), tags = list(type = "string")), Attributes = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Attribute", type = "structure"))), tags = list(locationNameList = "Attribute", type = "list", flattened = TRUE)), Expected = structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string")), Exists = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(DomainName = structure(logical(0), tags = list(type = "string")), ItemName = structure(logical(0), tags = list(type = "string")), Attributes = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), AlternateNameEncoding = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string")), AlternateValueEncoding = structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "Attribute", type = "structure"))), tags = list(locationNameList = "Attribute", type = "list", flattened = TRUE)), Expected = structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string")), Exists = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

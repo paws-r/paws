@@ -15,7 +15,8 @@ sagemaker_list_training_jobs(
   StatusEquals = NULL,
   SortBy = NULL,
   SortOrder = NULL,
-  WarmPoolStatusEquals = NULL
+  WarmPoolStatusEquals = NULL,
+  TrainingPlanArnEquals = NULL
 )
 }
 \arguments{
@@ -49,6 +50,11 @@ jobs whose name contains the specified string.}
 
 \item{WarmPoolStatusEquals}{A filter that retrieves only training jobs with a specific warm pool
 status.}
+
+\item{TrainingPlanArnEquals}{The Amazon Resource Name (ARN); of the training plan to filter training
+jobs by. For more information about reserving GPU capacity for your
+SageMaker training jobs using Amazon SageMaker Training Plan, see
+\code{\link[=sagemaker_create_training_plan]{create_training_plan}}.}
 }
 \description{
 Lists training jobs.

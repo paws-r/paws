@@ -2,18 +2,19 @@
 % Please edit documentation in R/configservice_operations.R
 \name{configservice_delete_configuration_recorder}
 \alias{configservice_delete_configuration_recorder}
-\title{Deletes the configuration recorder}
+\title{Deletes the customer managed configuration recorder}
 \usage{
 configservice_delete_configuration_recorder(ConfigurationRecorderName)
 }
 \arguments{
-\item{ConfigurationRecorderName}{[required] The name of the configuration recorder to be deleted. You can retrieve
-the name of your configuration recorder by using the
+\item{ConfigurationRecorderName}{[required] The name of the customer managed configuration recorder that you want to
+delete. You can retrieve the name of your configuration recorders by
+using the
 \code{\link[=configservice_describe_configuration_recorders]{describe_configuration_recorders}}
-action.}
+operation.}
 }
 \description{
-Deletes the configuration recorder.
+Deletes the customer managed configuration recorder.
 
 See \url{https://www.paws-r-sdk.com/docs/configservice_delete_configuration_recorder/} for full documentation.
 }

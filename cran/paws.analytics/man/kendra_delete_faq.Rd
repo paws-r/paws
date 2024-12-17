@@ -2,7 +2,7 @@
 % Please edit documentation in R/kendra_operations.R
 \name{kendra_delete_faq}
 \alias{kendra_delete_faq}
-\title{Removes an FAQ from an index}
+\title{Removes a FAQ from an index}
 \usage{
 kendra_delete_faq(Id, IndexId)
 }
@@ -12,7 +12,7 @@ kendra_delete_faq(Id, IndexId)
 \item{IndexId}{[required] The identifier of the index for the FAQ.}
 }
 \description{
-Removes an FAQ from an index.
+Removes a FAQ from an index.
 
 See \url{https://www.paws-r-sdk.com/docs/kendra_delete_faq/} for full documentation.
 }

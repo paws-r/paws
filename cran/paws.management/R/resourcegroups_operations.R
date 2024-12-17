@@ -3,6 +3,37 @@
 #' @include resourcegroups_service.R
 NULL
 
+#' Cancels the specified tag-sync task
+#'
+#' @description
+#' Cancels the specified tag-sync task.
+#'
+#' See [https://www.paws-r-sdk.com/docs/resourcegroups_cancel_tag_sync_task/](https://www.paws-r-sdk.com/docs/resourcegroups_cancel_tag_sync_task/) for full documentation.
+#'
+#' @param TaskArn &#91;required&#93; The Amazon resource name (ARN) of the tag-sync task.
+#'
+#' @keywords internal
+#'
+#' @rdname resourcegroups_cancel_tag_sync_task
+resourcegroups_cancel_tag_sync_task <- function(TaskArn) {
+  op <- new_operation(
+    name = "CancelTagSyncTask",
+    http_method = "POST",
+    http_path = "/cancel-tag-sync-task",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .resourcegroups$cancel_tag_sync_task_input(TaskArn = TaskArn)
+  output <- .resourcegroups$cancel_tag_sync_task_output()
+  config <- get_config()
+  svc <- .resourcegroups$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.resourcegroups$operations$cancel_tag_sync_task <- resourcegroups_cancel_tag_sync_task
+
 #' Creates a resource group with the specified name and description
 #'
 #' @description
@@ -36,11 +67,18 @@ NULL
 #' 
 #' A resource group can contain either a `Configuration` or a
 #' `ResourceQuery`, but not both.
+#' @param Criticality The critical rank of the application group on a scale of 1 to 10, with a
+#' rank of 1 being the most critical, and a rank of 10 being least
+#' critical.
+#' @param Owner A name, email address or other identifier for the person or group who is
+#' considered as the owner of this application group within your
+#' organization.
+#' @param DisplayName The name of the application group, which you can change at any time.
 #'
 #' @keywords internal
 #'
 #' @rdname resourcegroups_create_group
-resourcegroups_create_group <- function(Name, Description = NULL, ResourceQuery = NULL, Tags = NULL, Configuration = NULL) {
+resourcegroups_create_group <- function(Name, Description = NULL, ResourceQuery = NULL, Tags = NULL, Configuration = NULL, Criticality = NULL, Owner = NULL, DisplayName = NULL) {
   op <- new_operation(
     name = "CreateGroup",
     http_method = "POST",
@@ -49,7 +87,7 @@ resourcegroups_create_group <- function(Name, Description = NULL, ResourceQuery 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .resourcegroups$create_group_input(Name = Name, Description = Description, ResourceQuery = ResourceQuery, Tags = Tags, Configuration = Configuration)
+  input <- .resourcegroups$create_group_input(Name = Name, Description = Description, ResourceQuery = ResourceQuery, Tags = Tags, Configuration = Configuration, Criticality = Criticality, Owner = Owner, DisplayName = DisplayName)
   output <- .resourcegroups$create_group_output()
   config <- get_config()
   svc <- .resourcegroups$service(config, op)
@@ -67,7 +105,8 @@ resourcegroups_create_group <- function(Name, Description = NULL, ResourceQuery 
 #' See [https://www.paws-r-sdk.com/docs/resourcegroups_delete_group/](https://www.paws-r-sdk.com/docs/resourcegroups_delete_group/) for full documentation.
 #'
 #' @param GroupName Deprecated - don't use this parameter. Use `Group` instead.
-#' @param Group The name or the ARN of the resource group to delete.
+#' @param Group The name or the Amazon resource name (ARN) of the resource group to
+#' delete.
 #'
 #' @keywords internal
 #'
@@ -130,7 +169,8 @@ resourcegroups_get_account_settings <- function() {
 #' See [https://www.paws-r-sdk.com/docs/resourcegroups_get_group/](https://www.paws-r-sdk.com/docs/resourcegroups_get_group/) for full documentation.
 #'
 #' @param GroupName Deprecated - don't use this parameter. Use `Group` instead.
-#' @param Group The name or the ARN of the resource group to retrieve.
+#' @param Group The name or the Amazon resource name (ARN) of the resource group to
+#' retrieve.
 #'
 #' @keywords internal
 #'
@@ -162,8 +202,8 @@ resourcegroups_get_group <- function(GroupName = NULL, Group = NULL) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/resourcegroups_get_group_configuration/](https://www.paws-r-sdk.com/docs/resourcegroups_get_group_configuration/) for full documentation.
 #'
-#' @param Group The name or the ARN of the resource group for which you want to retrive
-#' the service configuration.
+#' @param Group The name or the Amazon resource name (ARN) of the resource group for
+#' which you want to retrive the service configuration.
 #'
 #' @keywords internal
 #'
@@ -196,7 +236,8 @@ resourcegroups_get_group_configuration <- function(Group = NULL) {
 #' See [https://www.paws-r-sdk.com/docs/resourcegroups_get_group_query/](https://www.paws-r-sdk.com/docs/resourcegroups_get_group_query/) for full documentation.
 #'
 #' @param GroupName Don't use this parameter. Use `Group` instead.
-#' @param Group The name or the ARN of the resource group to query.
+#' @param Group The name or the Amazon resource name (ARN) of the resource group to
+#' query.
 #'
 #' @keywords internal
 #'
@@ -220,15 +261,47 @@ resourcegroups_get_group_query <- function(GroupName = NULL, Group = NULL) {
 }
 .resourcegroups$operations$get_group_query <- resourcegroups_get_group_query
 
-#' Returns a list of tags that are associated with a resource group,
-#' specified by an ARN
+#' Returns information about a specified tag-sync task
 #'
 #' @description
-#' Returns a list of tags that are associated with a resource group, specified by an ARN.
+#' Returns information about a specified tag-sync task.
+#'
+#' See [https://www.paws-r-sdk.com/docs/resourcegroups_get_tag_sync_task/](https://www.paws-r-sdk.com/docs/resourcegroups_get_tag_sync_task/) for full documentation.
+#'
+#' @param TaskArn &#91;required&#93; The Amazon resource name (ARN) of the tag-sync task.
+#'
+#' @keywords internal
+#'
+#' @rdname resourcegroups_get_tag_sync_task
+resourcegroups_get_tag_sync_task <- function(TaskArn) {
+  op <- new_operation(
+    name = "GetTagSyncTask",
+    http_method = "POST",
+    http_path = "/get-tag-sync-task",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .resourcegroups$get_tag_sync_task_input(TaskArn = TaskArn)
+  output <- .resourcegroups$get_tag_sync_task_output()
+  config <- get_config()
+  svc <- .resourcegroups$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.resourcegroups$operations$get_tag_sync_task <- resourcegroups_get_tag_sync_task
+
+#' Returns a list of tags that are associated with a resource group,
+#' specified by an Amazon resource name (ARN)
+#'
+#' @description
+#' Returns a list of tags that are associated with a resource group, specified by an Amazon resource name (ARN).
 #'
 #' See [https://www.paws-r-sdk.com/docs/resourcegroups_get_tags/](https://www.paws-r-sdk.com/docs/resourcegroups_get_tags/) for full documentation.
 #'
-#' @param Arn &#91;required&#93; The ARN of the resource group whose tags you want to retrieve.
+#' @param Arn &#91;required&#93; The Amazon resource name (ARN) of the resource group whose tags you want
+#' to retrieve.
 #'
 #' @keywords internal
 #'
@@ -259,8 +332,10 @@ resourcegroups_get_tags <- function(Arn) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/resourcegroups_group_resources/](https://www.paws-r-sdk.com/docs/resourcegroups_group_resources/) for full documentation.
 #'
-#' @param Group &#91;required&#93; The name or the ARN of the resource group to add resources to.
-#' @param ResourceArns &#91;required&#93; The list of ARNs of the resources to be added to the group.
+#' @param Group &#91;required&#93; The name or the Amazon resource name (ARN) of the resource group to add
+#' resources to.
+#' @param ResourceArns &#91;required&#93; The list of Amazon resource names (ARNs) of the resources to be added to
+#' the group.
 #'
 #' @keywords internal
 #'
@@ -284,17 +359,17 @@ resourcegroups_group_resources <- function(Group, ResourceArns) {
 }
 .resourcegroups$operations$group_resources <- resourcegroups_group_resources
 
-#' Returns a list of ARNs of the resources that are members of a specified
-#' resource group
+#' Returns a list of Amazon resource names (ARNs) of the resources that are
+#' members of a specified resource group
 #'
 #' @description
-#' Returns a list of ARNs of the resources that are members of a specified resource group.
+#' Returns a list of Amazon resource names (ARNs) of the resources that are members of a specified resource group.
 #'
 #' See [https://www.paws-r-sdk.com/docs/resourcegroups_list_group_resources/](https://www.paws-r-sdk.com/docs/resourcegroups_list_group_resources/) for full documentation.
 #'
 #' @param GroupName *Deprecated - don't use this parameter. Use the Group request field
 #' instead.*
-#' @param Group The name or the ARN of the resource group
+#' @param Group The name or the Amazon resource name (ARN) of the resource group.
 #' @param Filters Filters, formatted as ResourceFilter objects, that you want to apply to
 #' a [`list_group_resources`][resourcegroups_list_group_resources]
 #' operation. Filters the results to include only those of the specified
@@ -348,7 +423,7 @@ resourcegroups_list_group_resources <- function(GroupName = NULL, Group = NULL, 
     http_method = "POST",
     http_path = "/list-group-resources",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = list("ResourceIdentifiers", "Resources")),
+    paginator = list(result_key = list("ResourceIdentifiers", "Resources"), output_token = "NextToken", input_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .resourcegroups$list_group_resources_input(GroupName = GroupName, Group = Group, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
@@ -360,6 +435,48 @@ resourcegroups_list_group_resources <- function(GroupName = NULL, Group = NULL, 
   return(response)
 }
 .resourcegroups$operations$list_group_resources <- resourcegroups_list_group_resources
+
+#' Returns the status of the last grouping or ungrouping action for each
+#' resource in the specified application group
+#'
+#' @description
+#' Returns the status of the last grouping or ungrouping action for each resource in the specified application group.
+#'
+#' See [https://www.paws-r-sdk.com/docs/resourcegroups_list_grouping_statuses/](https://www.paws-r-sdk.com/docs/resourcegroups_list_grouping_statuses/) for full documentation.
+#'
+#' @param Group &#91;required&#93; The application group identifier, expressed as an Amazon resource name
+#' (ARN) or the application group name.
+#' @param MaxResults The maximum number of resources and their statuses returned in the
+#' response.
+#' @param Filters The filter name and value pair that is used to return more specific
+#' results from a list of resources.
+#' @param NextToken The parameter for receiving additional results if you receive a
+#' `NextToken` response in a previous request. A `NextToken` response
+#' indicates that more output is available. Set this parameter to the value
+#' provided by a previous call's `NextToken` response to indicate where the
+#' output should continue from.
+#'
+#' @keywords internal
+#'
+#' @rdname resourcegroups_list_grouping_statuses
+resourcegroups_list_grouping_statuses <- function(Group, MaxResults = NULL, Filters = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListGroupingStatuses",
+    http_method = "POST",
+    http_path = "/list-grouping-statuses",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "GroupingStatuses"),
+    stream_api = FALSE
+  )
+  input <- .resourcegroups$list_grouping_statuses_input(Group = Group, MaxResults = MaxResults, Filters = Filters, NextToken = NextToken)
+  output <- .resourcegroups$list_grouping_statuses_output()
+  config <- get_config()
+  svc <- .resourcegroups$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.resourcegroups$operations$list_grouping_statuses <- resourcegroups_list_grouping_statuses
 
 #' Returns a list of existing Resource Groups in your account
 #'
@@ -380,6 +497,8 @@ resourcegroups_list_group_resources <- function(GroupName = NULL, Group = NULL, 
 #' -   `configuration-type` - Filter the results to include only those
 #'     groups that have the specified configuration types attached. The
 #'     current supported values are:
+#' 
+#'     -   `AWS::ResourceGroups::ApplicationGroup`
 #' 
 #'     -   `AWS::AppRegistry::Application`
 #' 
@@ -417,7 +536,7 @@ resourcegroups_list_groups <- function(Filters = NULL, MaxResults = NULL, NextTo
     http_method = "POST",
     http_path = "/groups-list",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "GroupIdentifiers"),
+    paginator = list(result_key = list("GroupIdentifiers", "Groups"), output_token = "NextToken", input_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .resourcegroups$list_groups_input(Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
@@ -430,6 +549,44 @@ resourcegroups_list_groups <- function(Filters = NULL, MaxResults = NULL, NextTo
 }
 .resourcegroups$operations$list_groups <- resourcegroups_list_groups
 
+#' Returns a list of tag-sync tasks
+#'
+#' @description
+#' Returns a list of tag-sync tasks.
+#'
+#' See [https://www.paws-r-sdk.com/docs/resourcegroups_list_tag_sync_tasks/](https://www.paws-r-sdk.com/docs/resourcegroups_list_tag_sync_tasks/) for full documentation.
+#'
+#' @param Filters The Amazon resource name (ARN) or name of the application group for
+#' which you want to return a list of tag-sync tasks.
+#' @param MaxResults The maximum number of results to be included in the response.
+#' @param NextToken The parameter for receiving additional results if you receive a
+#' `NextToken` response in a previous request. A `NextToken` response
+#' indicates that more output is available. Set this parameter to the value
+#' provided by a previous call's `NextToken` response to indicate where the
+#' output should continue from.
+#'
+#' @keywords internal
+#'
+#' @rdname resourcegroups_list_tag_sync_tasks
+resourcegroups_list_tag_sync_tasks <- function(Filters = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListTagSyncTasks",
+    http_method = "POST",
+    http_path = "/list-tag-sync-tasks",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "TagSyncTasks"),
+    stream_api = FALSE
+  )
+  input <- .resourcegroups$list_tag_sync_tasks_input(Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .resourcegroups$list_tag_sync_tasks_output()
+  config <- get_config()
+  svc <- .resourcegroups$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.resourcegroups$operations$list_tag_sync_tasks <- resourcegroups_list_tag_sync_tasks
+
 #' Attaches a service configuration to the specified group
 #'
 #' @description
@@ -437,8 +594,8 @@ resourcegroups_list_groups <- function(Filters = NULL, MaxResults = NULL, NextTo
 #'
 #' See [https://www.paws-r-sdk.com/docs/resourcegroups_put_group_configuration/](https://www.paws-r-sdk.com/docs/resourcegroups_put_group_configuration/) for full documentation.
 #'
-#' @param Group The name or ARN of the resource group with the configuration that you
-#' want to update.
+#' @param Group The name or Amazon resource name (ARN) of the resource group with the
+#' configuration that you want to update.
 #' @param Configuration The new configuration to associate with the specified group. A
 #' configuration associates the resource group with an Amazon Web Services
 #' service and specifies how the service can interact with the resources in
@@ -510,7 +667,7 @@ resourcegroups_search_resources <- function(ResourceQuery, MaxResults = NULL, Ne
     http_method = "POST",
     http_path = "/resources/search",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ResourceIdentifiers"),
+    paginator = list(result_key = "ResourceIdentifiers", output_token = "NextToken", input_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .resourcegroups$search_resources_input(ResourceQuery = ResourceQuery, MaxResults = MaxResults, NextToken = NextToken)
@@ -523,14 +680,57 @@ resourcegroups_search_resources <- function(ResourceQuery, MaxResults = NULL, Ne
 }
 .resourcegroups$operations$search_resources <- resourcegroups_search_resources
 
-#' Adds tags to a resource group with the specified ARN
+#' Creates a new tag-sync task to onboard and sync resources tagged with a
+#' specific tag key-value pair to an application
 #'
 #' @description
-#' Adds tags to a resource group with the specified ARN. Existing tags on a resource group are not changed if they are not specified in the request parameters.
+#' Creates a new tag-sync task to onboard and sync resources tagged with a specific tag key-value pair to an application.
+#'
+#' See [https://www.paws-r-sdk.com/docs/resourcegroups_start_tag_sync_task/](https://www.paws-r-sdk.com/docs/resourcegroups_start_tag_sync_task/) for full documentation.
+#'
+#' @param Group &#91;required&#93; The Amazon resource name (ARN) or name of the application group for
+#' which you want to create a tag-sync task.
+#' @param TagKey &#91;required&#93; The tag key. Resources tagged with this tag key-value pair will be added
+#' to the application. If a resource with this tag is later untagged, the
+#' tag-sync task removes the resource from the application.
+#' @param TagValue &#91;required&#93; The tag value. Resources tagged with this tag key-value pair will be
+#' added to the application. If a resource with this tag is later untagged,
+#' the tag-sync task removes the resource from the application.
+#' @param RoleArn &#91;required&#93; The Amazon resource name (ARN) of the role assumed by the service to tag
+#' and untag resources on your behalf.
+#'
+#' @keywords internal
+#'
+#' @rdname resourcegroups_start_tag_sync_task
+resourcegroups_start_tag_sync_task <- function(Group, TagKey, TagValue, RoleArn) {
+  op <- new_operation(
+    name = "StartTagSyncTask",
+    http_method = "POST",
+    http_path = "/start-tag-sync-task",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .resourcegroups$start_tag_sync_task_input(Group = Group, TagKey = TagKey, TagValue = TagValue, RoleArn = RoleArn)
+  output <- .resourcegroups$start_tag_sync_task_output()
+  config <- get_config()
+  svc <- .resourcegroups$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.resourcegroups$operations$start_tag_sync_task <- resourcegroups_start_tag_sync_task
+
+#' Adds tags to a resource group with the specified Amazon resource name
+#' (ARN)
+#'
+#' @description
+#' Adds tags to a resource group with the specified Amazon resource name (ARN). Existing tags on a resource group are not changed if they are not specified in the request parameters.
 #'
 #' See [https://www.paws-r-sdk.com/docs/resourcegroups_tag/](https://www.paws-r-sdk.com/docs/resourcegroups_tag/) for full documentation.
 #'
-#' @param Arn &#91;required&#93; The ARN of the resource group to which to add tags.
+#' @param Arn &#91;required&#93; The Amazon resource name (ARN) of the resource group to which to add
+#' tags.
 #' @param Tags &#91;required&#93; The tags to add to the specified resource group. A tag is a
 #' string-to-string map of key-value pairs.
 #'
@@ -563,9 +763,10 @@ resourcegroups_tag <- function(Arn, Tags) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/resourcegroups_ungroup_resources/](https://www.paws-r-sdk.com/docs/resourcegroups_ungroup_resources/) for full documentation.
 #'
-#' @param Group &#91;required&#93; The name or the ARN of the resource group from which to remove the
-#' resources.
-#' @param ResourceArns &#91;required&#93; The ARNs of the resources to be removed from the group.
+#' @param Group &#91;required&#93; The name or the Amazon resource name (ARN) of the resource group from
+#' which to remove the resources.
+#' @param ResourceArns &#91;required&#93; The Amazon resource names (ARNs) of the resources to be removed from the
+#' group.
 #'
 #' @keywords internal
 #'
@@ -596,9 +797,9 @@ resourcegroups_ungroup_resources <- function(Group, ResourceArns) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/resourcegroups_untag/](https://www.paws-r-sdk.com/docs/resourcegroups_untag/) for full documentation.
 #'
-#' @param Arn &#91;required&#93; The ARN of the resource group from which to remove tags. The command
-#' removed both the specified keys and any values associated with those
-#' keys.
+#' @param Arn &#91;required&#93; The Amazon resource name (ARN) of the resource group from which to
+#' remove tags. The command removed both the specified keys and any values
+#' associated with those keys.
 #' @param Keys &#91;required&#93; The keys of the tags to be removed.
 #'
 #' @keywords internal
@@ -633,6 +834,9 @@ resourcegroups_untag <- function(Arn, Keys) {
 #' @param GroupLifecycleEventsDesiredStatus Specifies whether you want to turn [group lifecycle
 #' events](https://docs.aws.amazon.com/ARG/latest/userguide/monitor-groups.html)
 #' on or off.
+#' 
+#' You can't turn on group lifecycle events if your resource groups quota
+#' is greater than 2,000.
 #'
 #' @keywords internal
 #'
@@ -664,15 +868,22 @@ resourcegroups_update_account_settings <- function(GroupLifecycleEventsDesiredSt
 #' See [https://www.paws-r-sdk.com/docs/resourcegroups_update_group/](https://www.paws-r-sdk.com/docs/resourcegroups_update_group/) for full documentation.
 #'
 #' @param GroupName Don't use this parameter. Use `Group` instead.
-#' @param Group The name or the ARN of the resource group to modify.
+#' @param Group The name or the ARN of the resource group to update.
 #' @param Description The new description that you want to update the resource group with.
 #' Descriptions can contain letters, numbers, hyphens, underscores,
 #' periods, and spaces.
+#' @param Criticality The critical rank of the application group on a scale of 1 to 10, with a
+#' rank of 1 being the most critical, and a rank of 10 being least
+#' critical.
+#' @param Owner A name, email address or other identifier for the person or group who is
+#' considered as the owner of this application group within your
+#' organization.
+#' @param DisplayName The name of the application group, which you can change at any time.
 #'
 #' @keywords internal
 #'
 #' @rdname resourcegroups_update_group
-resourcegroups_update_group <- function(GroupName = NULL, Group = NULL, Description = NULL) {
+resourcegroups_update_group <- function(GroupName = NULL, Group = NULL, Description = NULL, Criticality = NULL, Owner = NULL, DisplayName = NULL) {
   op <- new_operation(
     name = "UpdateGroup",
     http_method = "POST",
@@ -681,7 +892,7 @@ resourcegroups_update_group <- function(GroupName = NULL, Group = NULL, Descript
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .resourcegroups$update_group_input(GroupName = GroupName, Group = Group, Description = Description)
+  input <- .resourcegroups$update_group_input(GroupName = GroupName, Group = Group, Description = Description, Criticality = Criticality, Owner = Owner, DisplayName = DisplayName)
   output <- .resourcegroups$update_group_output()
   config <- get_config()
   svc <- .resourcegroups$service(config, op)
@@ -699,7 +910,8 @@ resourcegroups_update_group <- function(GroupName = NULL, Group = NULL, Descript
 #' See [https://www.paws-r-sdk.com/docs/resourcegroups_update_group_query/](https://www.paws-r-sdk.com/docs/resourcegroups_update_group_query/) for full documentation.
 #'
 #' @param GroupName Don't use this parameter. Use `Group` instead.
-#' @param Group The name or the ARN of the resource group to query.
+#' @param Group The name or the Amazon resource name (ARN) of the resource group to
+#' query.
 #' @param ResourceQuery &#91;required&#93; The resource query to determine which Amazon Web Services resources are
 #' members of this resource group.
 #' 

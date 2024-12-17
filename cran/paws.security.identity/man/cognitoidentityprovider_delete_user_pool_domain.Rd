@@ -2,19 +2,19 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_delete_user_pool_domain}
 \alias{cognitoidentityprovider_delete_user_pool_domain}
-\title{Deletes a domain for a user pool}
+\title{Given a user pool ID and domain identifier, deletes a user pool domain}
 \usage{
 cognitoidentityprovider_delete_user_pool_domain(Domain, UserPoolId)
 }
 \arguments{
-\item{Domain}{[required] The domain string. For custom domains, this is the fully-qualified
-domain name, such as \code{auth.example.com}. For Amazon Cognito prefix
-domains, this is the prefix alone, such as \code{auth}.}
+\item{Domain}{[required] The domain that you want to delete. For custom domains, this is the
+fully-qualified domain name, such as \code{auth.example.com}. For Amazon
+Cognito prefix domains, this is the prefix alone, such as \code{auth}.}
 
-\item{UserPoolId}{[required] The user pool ID.}
+\item{UserPoolId}{[required] The ID of the user pool where you want to delete the domain.}
 }
 \description{
-Deletes a domain for a user pool.
+Given a user pool ID and domain identifier, deletes a user pool domain. After you delete a user pool domain, your managed login pages and authorization server are no longer available.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_delete_user_pool_domain/} for full documentation.
 }

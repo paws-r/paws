@@ -2,7 +2,8 @@
 % Please edit documentation in R/sfn_operations.R
 \name{sfn_validate_state_machine_definition}
 \alias{sfn_validate_state_machine_definition}
-\title{Validates the syntax of a state machine definition}
+\title{Validates the syntax of a state machine definition specified in Amazon
+States Language (ASL), a JSON-based, structured language}
 \usage{
 sfn_validate_state_machine_definition(
   definition,
@@ -32,7 +33,7 @@ If the number of diagnostics returned in the response exceeds
 set to \code{true}.}
 }
 \description{
-Validates the syntax of a state machine definition.
+Validates the syntax of a state machine definition specified in \href{https://docs.aws.amazon.com/step-functions/latest/dg/concepts-amazon-states-language.html}{Amazon States Language} (ASL), a JSON-based, structured language.
 
 See \url{https://www.paws-r-sdk.com/docs/sfn_validate_state_machine_definition/} for full documentation.
 }

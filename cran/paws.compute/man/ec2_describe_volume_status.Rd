@@ -5,14 +5,31 @@
 \title{Describes the status of the specified volumes}
 \usage{
 ec2_describe_volume_status(
-  Filters = NULL,
   MaxResults = NULL,
   NextToken = NULL,
   VolumeIds = NULL,
-  DryRun = NULL
+  DryRun = NULL,
+  Filters = NULL
 )
 }
 \arguments{
+\item{MaxResults}{The maximum number of items to return for this request. To get the next
+page of items, make another request with the token returned in the
+output. For more information, see
+\href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Query-Requests.html#api-pagination}{Pagination}.}
+
+\item{NextToken}{The token returned from a previous paginated request. Pagination
+continues from the end of the items returned by the previous request.}
+
+\item{VolumeIds}{The IDs of the volumes.
+
+Default: Describes all your volumes.}
+
+\item{DryRun}{Checks whether you have the required permissions for the action, without
+actually making the request, and provides an error response. If you have
+the required permissions, the error response is \code{DryRunOperation}.
+Otherwise, it is \code{UnauthorizedOperation}.}
+
 \item{Filters}{The filters.
 \itemize{
 \item \code{action.code} - The action code for the event (for example,
@@ -36,23 +53,6 @@ for \code{io-performance}: \code{normal} | \code{degraded} | \code{severely-degr
 \item \code{volume-status.status} - The status of the volume (\code{ok} | \code{impaired}
 | \code{warning} | \code{insufficient-data}).
 }}
-
-\item{MaxResults}{The maximum number of items to return for this request. To get the next
-page of items, make another request with the token returned in the
-output. For more information, see
-\href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Query-Requests.html#api-pagination}{Pagination}.}
-
-\item{NextToken}{The token returned from a previous paginated request. Pagination
-continues from the end of the items returned by the previous request.}
-
-\item{VolumeIds}{The IDs of the volumes.
-
-Default: Describes all your volumes.}
-
-\item{DryRun}{Checks whether you have the required permissions for the action, without
-actually making the request, and provides an error response. If you have
-the required permissions, the error response is \code{DryRunOperation}.
-Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
 Describes the status of the specified volumes. Volume status provides the result of the checks performed on your volumes to determine events that can impair the performance of your volumes. The performance of a volume can be affected if an issue occurs on the volume's underlying host. If the volume's underlying host experiences a power outage or system issue, after the system is restored, there could be data inconsistencies on the volume. Volume events notify you if this occurs. Volume actions notify you if any action needs to be taken in response to the event.

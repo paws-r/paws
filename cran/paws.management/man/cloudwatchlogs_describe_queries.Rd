@@ -9,7 +9,8 @@ cloudwatchlogs_describe_queries(
   logGroupName = NULL,
   status = NULL,
   maxResults = NULL,
-  nextToken = NULL
+  nextToken = NULL,
+  queryLanguage = NULL
 )
 }
 \arguments{
@@ -22,6 +23,9 @@ and \code{Scheduled}.}
 \item{maxResults}{Limits the number of returned queries to the specified number.}
 
 \item{nextToken}{}
+
+\item{queryLanguage}{Limits the returned queries to only the queries that use the specified
+query language.}
 }
 \description{
 Returns a list of CloudWatch Logs Insights queries that are scheduled, running, or have been run recently in this account. You can request all queries or limit it to queries of a specific log group or queries with a certain status.

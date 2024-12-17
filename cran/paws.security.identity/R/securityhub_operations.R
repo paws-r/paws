@@ -3,11 +3,11 @@
 #' @include securityhub_service.R
 NULL
 
-#' Accepts the invitation to be a member account and be monitored by the
-#' Security Hub administrator account that the invitation was sent from
+#' We recommend using Organizations instead of Security Hub invitations to
+#' manage your member accounts
 #'
 #' @description
-#' Accepts the invitation to be a member account and be monitored by the Security Hub administrator account that the invitation was sent from.
+#' We recommend using Organizations instead of Security Hub invitations to manage your member accounts. For information, see [Managing Security Hub administrator and member accounts with Organizations](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-accounts-orgs.html) in the *Security Hub User Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/securityhub_accept_administrator_invitation/](https://www.paws-r-sdk.com/docs/securityhub_accept_administrator_invitation/) for full documentation.
 #'
@@ -621,10 +621,10 @@ securityhub_create_configuration_policy <- function(Name, Description = NULL, Co
 }
 .securityhub$operations$create_configuration_policy <- securityhub_create_configuration_policy
 
-#' Used to enable finding aggregation
+#' The aggregation Region is now called the home Region
 #'
 #' @description
-#' Used to enable finding aggregation. Must be called from the aggregation Region.
+#' The *aggregation Region* is now called the *home Region*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/securityhub_create_finding_aggregator/](https://www.paws-r-sdk.com/docs/securityhub_create_finding_aggregator/) for full documentation.
 #'
@@ -656,12 +656,12 @@ securityhub_create_configuration_policy <- function(Name, Description = NULL, Co
 #' -   `NO_REGIONS` - Aggregates no data because no Regions are selected as
 #'     linked Regions.
 #' @param Regions If `RegionLinkingMode` is `ALL_REGIONS_EXCEPT_SPECIFIED`, then this is a
-#' space-separated list of Regions that do not aggregate findings to the
-#' aggregation Region.
+#' space-separated list of Regions that don't replicate and send findings
+#' to the home Region.
 #' 
 #' If `RegionLinkingMode` is `SPECIFIED_REGIONS`, then this is a
-#' space-separated list of Regions that do aggregate findings to the
-#' aggregation Region.
+#' space-separated list of Regions that do replicate and send findings to
+#' the home Region.
 #' 
 #' An `InvalidInputException` error results if you populate this field
 #' while `RegionLinkingMode` is `NO_REGIONS`.
@@ -761,10 +761,11 @@ securityhub_create_members <- function(AccountDetails) {
 }
 .securityhub$operations$create_members <- securityhub_create_members
 
-#' Declines invitations to become a member account
+#' We recommend using Organizations instead of Security Hub invitations to
+#' manage your member accounts
 #'
 #' @description
-#' Declines invitations to become a member account.
+#' We recommend using Organizations instead of Security Hub invitations to manage your member accounts. For information, see [Managing Security Hub administrator and member accounts with Organizations](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-accounts-orgs.html) in the *Security Hub User Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/securityhub_decline_invitations/](https://www.paws-r-sdk.com/docs/securityhub_decline_invitations/) for full documentation.
 #'
@@ -856,10 +857,10 @@ securityhub_delete_configuration_policy <- function(Identifier) {
 }
 .securityhub$operations$delete_configuration_policy <- securityhub_delete_configuration_policy
 
-#' Deletes a finding aggregator
+#' The aggregation Region is now called the home Region
 #'
 #' @description
-#' Deletes a finding aggregator. When you delete the finding aggregator, you stop finding aggregation.
+#' The *aggregation Region* is now called the *home Region*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/securityhub_delete_finding_aggregator/](https://www.paws-r-sdk.com/docs/securityhub_delete_finding_aggregator/) for full documentation.
 #'
@@ -919,11 +920,11 @@ securityhub_delete_insight <- function(InsightArn) {
 }
 .securityhub$operations$delete_insight <- securityhub_delete_insight
 
-#' Deletes invitations received by the Amazon Web Services account to
-#' become a member account
+#' We recommend using Organizations instead of Security Hub invitations to
+#' manage your member accounts
 #'
 #' @description
-#' Deletes invitations received by the Amazon Web Services account to become a member account.
+#' We recommend using Organizations instead of Security Hub invitations to manage your member accounts. For information, see [Managing Security Hub administrator and member accounts with Organizations](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-accounts-orgs.html) in the *Security Hub User Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/securityhub_delete_invitations/](https://www.paws-r-sdk.com/docs/securityhub_delete_invitations/) for full documentation.
 #'
@@ -1471,7 +1472,7 @@ securityhub_enable_organization_admin_account <- function(AdminAccountId) {
 #'
 #' @param Tags The tags to add to the hub resource when you enable Security Hub.
 #' @param EnableDefaultStandards Whether to enable the security standards that Security Hub has
-#' designated as automatically enabled. If you do not provide a value for
+#' designated as automatically enabled. If you don't provide a value for
 #' `EnableDefaultStandards`, it is set to `true`. To not enable the
 #' automatically enabled standards, set `EnableDefaultStandards` to
 #' `false`.
@@ -1636,7 +1637,7 @@ securityhub_get_enabled_standards <- function(StandardsSubscriptionArns = NULL, 
     http_method = "POST",
     http_path = "/standards/get",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "StandardsSubscriptions"),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "StandardsSubscriptions"),
     stream_api = FALSE
   )
   input <- .securityhub$get_enabled_standards_input(StandardsSubscriptionArns = StandardsSubscriptionArns, NextToken = NextToken, MaxResults = MaxResults)
@@ -1649,10 +1650,10 @@ securityhub_get_enabled_standards <- function(StandardsSubscriptionArns = NULL, 
 }
 .securityhub$operations$get_enabled_standards <- securityhub_get_enabled_standards
 
-#' Returns the current finding aggregation configuration
+#' The aggregation Region is now called the home Region
 #'
 #' @description
-#' Returns the current finding aggregation configuration.
+#' The *aggregation Region* is now called the *home Region*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/securityhub_get_finding_aggregator/](https://www.paws-r-sdk.com/docs/securityhub_get_finding_aggregator/) for full documentation.
 #'
@@ -1821,7 +1822,7 @@ securityhub_get_findings <- function(Filters = NULL, SortCriteria = NULL, NextTo
     http_method = "POST",
     http_path = "/findings",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Findings"),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Findings"),
     stream_api = FALSE
   )
   input <- .securityhub$get_findings_input(Filters = Filters, SortCriteria = SortCriteria, NextToken = NextToken, MaxResults = MaxResults)
@@ -1873,7 +1874,7 @@ securityhub_get_insight_results <- function(InsightArn) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/securityhub_get_insights/](https://www.paws-r-sdk.com/docs/securityhub_get_insights/) for full documentation.
 #'
-#' @param InsightArns The ARNs of the insights to describe. If you do not provide any insight
+#' @param InsightArns The ARNs of the insights to describe. If you don't provide any insight
 #' ARNs, then [`get_insights`][securityhub_get_insights] returns all of
 #' your custom insights. It does not return any managed insights.
 #' @param NextToken The token that is required for pagination. On your first call to the
@@ -1894,7 +1895,7 @@ securityhub_get_insights <- function(InsightArns = NULL, NextToken = NULL, MaxRe
     http_method = "POST",
     http_path = "/insights/get",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Insights"),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Insights"),
     stream_api = FALSE
   )
   input <- .securityhub$get_insights_input(InsightArns = InsightArns, NextToken = NextToken, MaxResults = MaxResults)
@@ -1907,12 +1908,11 @@ securityhub_get_insights <- function(InsightArns = NULL, NextToken = NULL, MaxRe
 }
 .securityhub$operations$get_insights <- securityhub_get_insights
 
-#' Returns the count of all Security Hub membership invitations that were
-#' sent to the current member account, not including the currently accepted
-#' invitation
+#' We recommend using Organizations instead of Security Hub invitations to
+#' manage your member accounts
 #'
 #' @description
-#' Returns the count of all Security Hub membership invitations that were sent to the current member account, not including the currently accepted invitation.
+#' We recommend using Organizations instead of Security Hub invitations to manage your member accounts. For information, see [Managing Security Hub administrator and member accounts with Organizations](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-accounts-orgs.html) in the *Security Hub User Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/securityhub_get_invitations_count/](https://www.paws-r-sdk.com/docs/securityhub_get_invitations_count/) for full documentation.
 #'
@@ -2036,11 +2036,11 @@ securityhub_get_security_control_definition <- function(SecurityControlId) {
 }
 .securityhub$operations$get_security_control_definition <- securityhub_get_security_control_definition
 
-#' Invites other Amazon Web Services accounts to become member accounts for
-#' the Security Hub administrator account that the invitation is sent from
+#' We recommend using Organizations instead of Security Hub invitations to
+#' manage your member accounts
 #'
 #' @description
-#' Invites other Amazon Web Services accounts to become member accounts for the Security Hub administrator account that the invitation is sent from.
+#' We recommend using Organizations instead of Security Hub invitations to manage your member accounts. For information, see [Managing Security Hub administrator and member accounts with Organizations](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-accounts-orgs.html) in the *Security Hub User Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/securityhub_invite_members/](https://www.paws-r-sdk.com/docs/securityhub_invite_members/) for full documentation.
 #'
@@ -2232,7 +2232,7 @@ securityhub_list_enabled_products_for_import <- function(NextToken = NULL, MaxRe
     http_method = "GET",
     http_path = "/productSubscriptions",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ProductSubscriptions"),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ProductSubscriptions"),
     stream_api = FALSE
   )
   input <- .securityhub$list_enabled_products_for_import_input(NextToken = NextToken, MaxResults = MaxResults)
@@ -2245,11 +2245,11 @@ securityhub_list_enabled_products_for_import <- function(NextToken = NULL, MaxRe
 }
 .securityhub$operations$list_enabled_products_for_import <- securityhub_list_enabled_products_for_import
 
-#' If finding aggregation is enabled, then ListFindingAggregators returns
-#' the ARN of the finding aggregator
+#' If cross-Region aggregation is enabled, then ListFindingAggregators
+#' returns the Amazon Resource Name (ARN) of the finding aggregator
 #'
 #' @description
-#' If finding aggregation is enabled, then [`list_finding_aggregators`][securityhub_list_finding_aggregators] returns the ARN of the finding aggregator. You can run this operation from any Region.
+#' If cross-Region aggregation is enabled, then [`list_finding_aggregators`][securityhub_list_finding_aggregators] returns the Amazon Resource Name (ARN) of the finding aggregator. You can run this operation from any Amazon Web Services Region.
 #'
 #' See [https://www.paws-r-sdk.com/docs/securityhub_list_finding_aggregators/](https://www.paws-r-sdk.com/docs/securityhub_list_finding_aggregators/) for full documentation.
 #'
@@ -2280,11 +2280,11 @@ securityhub_list_finding_aggregators <- function(NextToken = NULL, MaxResults = 
 }
 .securityhub$operations$list_finding_aggregators <- securityhub_list_finding_aggregators
 
-#' Lists all Security Hub membership invitations that were sent to the
-#' current Amazon Web Services account
+#' We recommend using Organizations instead of Security Hub invitations to
+#' manage your member accounts
 #'
 #' @description
-#' Lists all Security Hub membership invitations that were sent to the current Amazon Web Services account.
+#' We recommend using Organizations instead of Security Hub invitations to manage your member accounts. For information, see [Managing Security Hub administrator and member accounts with Organizations](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-accounts-orgs.html) in the *Security Hub User Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/securityhub_list_invitations/](https://www.paws-r-sdk.com/docs/securityhub_list_invitations/) for full documentation.
 #'
@@ -2306,7 +2306,7 @@ securityhub_list_invitations <- function(MaxResults = NULL, NextToken = NULL) {
     http_method = "GET",
     http_path = "/invitations",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Invitations"),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Invitations"),
     stream_api = FALSE
   )
   input <- .securityhub$list_invitations_input(MaxResults = MaxResults, NextToken = NextToken)
@@ -2355,7 +2355,7 @@ securityhub_list_members <- function(OnlyAssociated = NULL, MaxResults = NULL, N
     http_method = "GET",
     http_path = "/members",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Members"),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Members"),
     stream_api = FALSE
   )
   input <- .securityhub$list_members_input(OnlyAssociated = OnlyAssociated, MaxResults = MaxResults, NextToken = NextToken)
@@ -2740,10 +2740,10 @@ securityhub_update_configuration_policy <- function(Identifier, Name = NULL, Des
 }
 .securityhub$operations$update_configuration_policy <- securityhub_update_configuration_policy
 
-#' Updates the finding aggregation configuration
+#' The aggregation Region is now called the home Region
 #'
 #' @description
-#' Updates the finding aggregation configuration. Used to update the Region linking mode and the list of included or excluded Regions. You cannot use [`update_finding_aggregator`][securityhub_update_finding_aggregator] to change the aggregation Region.
+#' The *aggregation Region* is now called the *home Region*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/securityhub_update_finding_aggregator/](https://www.paws-r-sdk.com/docs/securityhub_update_finding_aggregator/) for full documentation.
 #'
@@ -2777,12 +2777,12 @@ securityhub_update_configuration_policy <- function(Identifier, Name = NULL, Des
 #' -   `NO_REGIONS` - Aggregates no data because no Regions are selected as
 #'     linked Regions.
 #' @param Regions If `RegionLinkingMode` is `ALL_REGIONS_EXCEPT_SPECIFIED`, then this is a
-#' space-separated list of Regions that do not aggregate findings to the
-#' aggregation Region.
+#' space-separated list of Regions that don't replicate and send findings
+#' to the home Region.
 #' 
 #' If `RegionLinkingMode` is `SPECIFIED_REGIONS`, then this is a
-#' space-separated list of Regions that do aggregate findings to the
-#' aggregation Region.
+#' space-separated list of Regions that do replicate and send findings to
+#' the home Region.
 #' 
 #' An `InvalidInputException` error results if you populate this field
 #' while `RegionLinkingMode` is `NO_REGIONS`.

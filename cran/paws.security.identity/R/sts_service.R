@@ -121,6 +121,7 @@ NULL
 #'  \link[=sts_assume_role]{assume_role} \tab Returns a set of temporary security credentials that you can use to access Amazon Web Services resources\cr
 #'  \link[=sts_assume_role_with_saml]{assume_role_with_saml} \tab Returns a set of temporary security credentials for users who have been authenticated via a SAML authentication response\cr
 #'  \link[=sts_assume_role_with_web_identity]{assume_role_with_web_identity} \tab Returns a set of temporary security credentials for users who have been authenticated in a mobile or web application with a web identity provider\cr
+#'  \link[=sts_assume_root]{assume_root} \tab Returns a set of short term credentials you can use to perform privileged tasks in a member account\cr
 #'  \link[=sts_decode_authorization_message]{decode_authorization_message} \tab Decodes additional information about the authorization status of a request from an encoded message returned in response to an Amazon Web Services request\cr
 #'  \link[=sts_get_access_key_info]{get_access_key_info} \tab Returns the account identifier for the specified access key ID\cr
 #'  \link[=sts_get_caller_identity]{get_caller_identity} \tab Returns details about the IAM user or role whose credentials are used to call the operation\cr
@@ -157,7 +158,7 @@ sts <- function(config = list(), credentials = list(), endpoint = NULL, region =
 
 .sts$metadata <- list(
   service_name = "sts",
-  endpoints = list("*" = list(endpoint = "https://sts.amazonaws.com", global = TRUE), "us-gov-*" = list(endpoint = "sts.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "sts.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "sts.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "sts.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "sts.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "sts.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("aws-global" = list(endpoint = "sts.amazonaws.com", global = TRUE), "us-east-1" = list(endpoint = "sts.amazonaws.com", global = TRUE), "^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "sts.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "sts.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "sts.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "sts.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "sts.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "sts.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "sts.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "STS",
   api_version = "2011-06-15",
   signing_name = "sts",

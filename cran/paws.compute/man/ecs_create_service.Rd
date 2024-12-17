@@ -9,6 +9,7 @@ ecs_create_service(
   cluster = NULL,
   serviceName,
   taskDefinition = NULL,
+  availabilityZoneRebalancing = NULL,
   loadBalancers = NULL,
   serviceRegistries = NULL,
   desiredCount = NULL,
@@ -29,7 +30,8 @@ ecs_create_service(
   propagateTags = NULL,
   enableExecuteCommand = NULL,
   serviceConnectConfiguration = NULL,
-  volumeConfigurations = NULL
+  volumeConfigurations = NULL,
+  vpcLatticeConfigurations = NULL
 )
 }
 \arguments{
@@ -50,6 +52,11 @@ A task definition must be specified if the service uses either the \code{ECS}
 or \code{CODE_DEPLOY} deployment controllers.
 
 For more information about deployment types, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/}{Amazon ECS deployment types}.}
+
+\item{availabilityZoneRebalancing}{Indicates whether to use Availability Zone rebalancing for the service.
+
+For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-rebalancing.html}{Balancing an Amazon ECS service across Availability Zones}
+in the \emph{Amazon Elastic Container Service Developer Guide}.}
 
 \item{loadBalancers}{A load balancer object representing the load balancers to use with your
 service. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-load-balancing.html}{Service load balancing}
@@ -144,7 +151,7 @@ must be omitted. If no \code{capacityProviderStrategy} or \code{launchType} is
 specified, the \code{defaultCapacityProviderStrategy} for the cluster is
 used.
 
-A capacity provider strategy may contain a maximum of 6 capacity
+A capacity provider strategy can contain a maximum of 20 capacity
 providers.}
 
 \item{platformVersion}{The platform version that your tasks in the service are running on. A
@@ -194,22 +201,18 @@ modes. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/lat
 in the \emph{Amazon Elastic Container Service Developer Guide}.}
 
 \item{healthCheckGracePeriodSeconds}{The period of time, in seconds, that the Amazon ECS service scheduler
-ignores unhealthy Elastic Load Balancing target health checks after a
-task has first started. This is only used when your service is
-configured to use a load balancer. If your service has a load balancer
-defined and you don't specify a health check grace period value, the
-default value of \code{0} is used.
+ignores unhealthy Elastic Load Balancing, VPC Lattice, and container
+health checks after a task has first started. If you don't specify a
+health check grace period value, the default value of \code{0} is used. If
+you don't use any of the health checks, then
+\code{healthCheckGracePeriodSeconds} is unused.
 
-If you do not use an Elastic Load Balancing, we recommend that you use
-the \code{startPeriod} in the task definition health check parameters. For
-more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_HealthCheck.html}{Health check}.
-
-If your service's tasks take a while to start and respond to Elastic
-Load Balancing health checks, you can specify a health check grace
-period of up to 2,147,483,647 seconds (about 69 years). During that
-time, the Amazon ECS service scheduler ignores health check status. This
-grace period can prevent the service scheduler from marking tasks as
-unhealthy and stopping them before they have time to come up.}
+If your service's tasks take a while to start and respond to health
+checks, you can specify a health check grace period of up to
+2,147,483,647 seconds (about 69 years). During that time, the Amazon ECS
+service scheduler ignores health check status. This grace period can
+prevent the service scheduler from marking tasks as unhealthy and
+stopping them before they have time to come up.}
 
 \item{schedulingStrategy}{The scheduling strategy to use for the service. For more information,
 see
@@ -303,6 +306,8 @@ in the \emph{Amazon Elastic Container Service Developer Guide}.}
 \item{volumeConfigurations}{The configuration for a volume specified in the task definition as a
 volume that is configured at launch time. Currently, the only supported
 volume type is an Amazon EBS volume.}
+
+\item{vpcLatticeConfigurations}{The VPC Lattice configuration for the service being created.}
 }
 \description{
 Runs and maintains your desired number of tasks from a specified task definition. If the number of tasks running in a service drops below the \code{desiredCount}, Amazon ECS runs another copy of the task in the specified cluster. To update an existing service, use \code{\link[=ecs_update_service]{update_service}}.

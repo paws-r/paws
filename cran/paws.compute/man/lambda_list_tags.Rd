@@ -2,16 +2,17 @@
 % Please edit documentation in R/lambda_operations.R
 \name{lambda_list_tags}
 \alias{lambda_list_tags}
-\title{Returns a function's tags}
+\title{Returns a function, event source mapping, or code signing
+configuration's tags}
 \usage{
 lambda_list_tags(Resource)
 }
 \arguments{
-\item{Resource}{[required] The function's Amazon Resource Name (ARN). Note: Lambda does not support
-adding tags to aliases or versions.}
+\item{Resource}{[required] The resource's Amazon Resource Name (ARN). Note: Lambda does not support
+adding tags to function aliases or versions.}
 }
 \description{
-Returns a function's \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-tags.html}{tags}. You can also view tags with \code{\link[=lambda_get_function]{get_function}}.
+Returns a function, event source mapping, or code signing configuration's \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-tags.html}{tags}. You can also view function tags with \code{\link[=lambda_get_function]{get_function}}.
 
 See \url{https://www.paws-r-sdk.com/docs/lambda_list_tags/} for full documentation.
 }

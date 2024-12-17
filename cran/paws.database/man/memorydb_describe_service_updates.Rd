@@ -15,9 +15,9 @@ memorydb_describe_service_updates(
 \arguments{
 \item{ServiceUpdateName}{The unique ID of the service update to describe.}
 
-\item{ClusterNames}{The list of cluster names to identify service updates to apply}
+\item{ClusterNames}{The list of cluster names to identify service updates to apply.}
 
-\item{Status}{The status(es) of the service updates to filter on}
+\item{Status}{The status(es) of the service updates to filter on.}
 
 \item{MaxResults}{The maximum number of records to include in the response. If more
 records exist than the specified MaxResults value, a token is included
@@ -30,7 +30,7 @@ for each page. Make the call again using the returned token to retrieve
 the next page. Keep all other arguments unchanged.}
 }
 \description{
-Returns details of the service updates
+Returns details of the service updates.
 
 See \url{https://www.paws-r-sdk.com/docs/memorydb_describe_service_updates/} for full documentation.
 }

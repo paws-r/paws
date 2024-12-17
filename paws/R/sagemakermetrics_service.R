@@ -87,13 +87,14 @@ NULL
 #' @examples
 #' \dontrun{
 #' svc <- sagemakermetrics()
-#' svc$batch_put_metrics(
+#' svc$batch_get_metrics(
 #'   Foo = 123
 #' )
 #' }
 #'
 #' @section Operations:
 #' \tabular{ll}{
+#'  \link[=sagemakermetrics_batch_get_metrics]{batch_get_metrics} \tab Used to retrieve training metrics from SageMaker\cr
 #'  \link[=sagemakermetrics_batch_put_metrics]{batch_put_metrics} \tab Used to ingest training metrics into SageMaker
 #' }
 #'
@@ -126,7 +127,7 @@ sagemakermetrics <- function(config = list(), credentials = list(), endpoint = N
 
 .sagemakermetrics$metadata <- list(
   service_name = "sagemakermetrics",
-  endpoints = list("*" = list(endpoint = "metrics.sagemaker.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "metrics.sagemaker.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "metrics.sagemaker.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "metrics.sagemaker.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "metrics.sagemaker.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "metrics.sagemaker.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "metrics.sagemaker.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "metrics.sagemaker.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "metrics.sagemaker.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "metrics.sagemaker.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "metrics.sagemaker.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "metrics.sagemaker.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "metrics.sagemaker.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "SageMaker Metrics",
   api_version = "2022-09-30",
   signing_name = "sagemaker",

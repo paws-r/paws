@@ -19,10 +19,11 @@ with different key options.
 
 \strong{Directory buckets} - When you use this operation with a directory
 bucket, you must use path-style requests in the format
-\verb{https://s3express-control.region_code.amazonaws.com/bucket-name }.
+\verb{https://s3express-control.region-code.amazonaws.com/bucket-name }.
 Virtual-hosted-style requests aren't supported. Directory bucket names
-must be unique in the chosen Availability Zone. Bucket names must also
-follow the format \code{ bucket_base_name--az_id--x-s3} (for example,
+must be unique in the chosen Zone (Availability Zone or Local Zone).
+Bucket names must also follow the format
+\code{ bucket-base-name--zone-id--x-s3} (for example,
 \code{ DOC-EXAMPLE-BUCKET--usw2-az1--x-s3}). For information about bucket
 naming restrictions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html}{Directory bucket naming rules}
 in the \emph{Amazon S3 User Guide}}

@@ -8,9 +8,13 @@ detector}
 guardduty_get_member_detectors(DetectorId, AccountIds)
 }
 \arguments{
-\item{DetectorId}{[required] The detector ID for the administrator account.}
+\item{DetectorId}{[required] The detector ID for the administrator account.
 
-\item{AccountIds}{[required] The account ID of the member account.}
+To find the \code{detectorId} in the current Region, see the Settings page in
+the GuardDuty console, or run the
+\code{\link[=guardduty_list_detectors]{list_detectors}} API.}
+
+\item{AccountIds}{[required] A list of member account IDs.}
 }
 \description{
 Describes which data sources are enabled for the member account's detector.

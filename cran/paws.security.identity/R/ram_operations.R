@@ -851,7 +851,7 @@ ram_get_resource_policies <- function(resourceArns, principal = NULL, nextToken 
     http_method = "POST",
     http_path = "/getresourcepolicies",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "policies"),
     stream_api = FALSE
   )
   input <- .ram$get_resource_policies_input(resourceArns = resourceArns, principal = principal, nextToken = nextToken, maxResults = maxResults)
@@ -922,7 +922,7 @@ ram_get_resource_share_associations <- function(associationType, resourceShareAr
     http_method = "POST",
     http_path = "/getresourceshareassociations",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "resourceShareAssociations"),
     stream_api = FALSE
   )
   input <- .ram$get_resource_share_associations_input(associationType = associationType, resourceShareArns = resourceShareArns, resourceArn = resourceArn, principal = principal, associationStatus = associationStatus, nextToken = nextToken, maxResults = maxResults)
@@ -974,7 +974,7 @@ ram_get_resource_share_invitations <- function(resourceShareInvitationArns = NUL
     http_method = "POST",
     http_path = "/getresourceshareinvitations",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "resourceShareInvitations"),
     stream_api = FALSE
   )
   input <- .ram$get_resource_share_invitations_input(resourceShareInvitationArns = resourceShareInvitationArns, resourceShareArns = resourceShareArns, nextToken = nextToken, maxResults = maxResults)
@@ -1042,7 +1042,7 @@ ram_get_resource_shares <- function(resourceShareArns = NULL, resourceShareStatu
     http_method = "POST",
     http_path = "/getresourceshares",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "resourceShares"),
     stream_api = FALSE
   )
   input <- .ram$get_resource_shares_input(resourceShareArns = resourceShareArns, resourceShareStatus = resourceShareStatus, resourceOwner = resourceOwner, name = name, tagFilters = tagFilters, nextToken = nextToken, maxResults = maxResults, permissionArn = permissionArn, permissionVersion = permissionVersion)
@@ -1106,7 +1106,7 @@ ram_list_pending_invitation_resources <- function(resourceShareInvitationArn, ne
     http_method = "POST",
     http_path = "/listpendinginvitationresources",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .ram$list_pending_invitation_resources_input(resourceShareInvitationArn = resourceShareInvitationArn, nextToken = nextToken, maxResults = maxResults, resourceRegionScope = resourceRegionScope)
@@ -1172,7 +1172,7 @@ ram_list_permission_associations <- function(permissionArn = NULL, permissionVer
     http_method = "POST",
     http_path = "/listpermissionassociations",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .ram$list_permission_associations_input(permissionArn = permissionArn, permissionVersion = permissionVersion, associationStatus = associationStatus, resourceType = resourceType, featureSet = featureSet, defaultVersion = defaultVersion, nextToken = nextToken, maxResults = maxResults)
@@ -1223,7 +1223,7 @@ ram_list_permission_versions <- function(permissionArn, nextToken = NULL, maxRes
     http_method = "POST",
     http_path = "/listpermissionversions",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .ram$list_permission_versions_input(permissionArn = permissionArn, nextToken = nextToken, maxResults = maxResults)
@@ -1286,7 +1286,7 @@ ram_list_permissions <- function(resourceType = NULL, nextToken = NULL, maxResul
     http_method = "POST",
     http_path = "/listpermissions",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .ram$list_permissions_input(resourceType = resourceType, nextToken = nextToken, maxResults = maxResults, permissionType = permissionType)
@@ -1376,7 +1376,7 @@ ram_list_principals <- function(resourceOwner, resourceArn = NULL, principals = 
     http_method = "POST",
     http_path = "/listprincipals",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "principals"),
     stream_api = FALSE
   )
   input <- .ram$list_principals_input(resourceOwner = resourceOwner, resourceArn = resourceArn, principals = principals, resourceType = resourceType, resourceShareArns = resourceShareArns, nextToken = nextToken, maxResults = maxResults)
@@ -1428,7 +1428,7 @@ ram_list_replace_permission_associations_work <- function(workIds = NULL, status
     http_method = "POST",
     http_path = "/listreplacepermissionassociationswork",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .ram$list_replace_permission_associations_work_input(workIds = workIds, status = status, nextToken = nextToken, maxResults = maxResults)
@@ -1477,7 +1477,7 @@ ram_list_resource_share_permissions <- function(resourceShareArn, nextToken = NU
     http_method = "POST",
     http_path = "/listresourcesharepermissions",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .ram$list_resource_share_permissions_input(resourceShareArn = resourceShareArn, nextToken = nextToken, maxResults = maxResults)
@@ -1535,7 +1535,7 @@ ram_list_resource_types <- function(nextToken = NULL, maxResults = NULL, resourc
     http_method = "POST",
     http_path = "/listresourcetypes",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .ram$list_resource_types_input(nextToken = nextToken, maxResults = maxResults, resourceRegionScope = resourceRegionScope)
@@ -1614,7 +1614,7 @@ ram_list_resources <- function(resourceOwner, principal = NULL, resourceType = N
     http_method = "POST",
     http_path = "/listresources",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "resources"),
     stream_api = FALSE
   )
   input <- .ram$list_resources_input(resourceOwner = resourceOwner, principal = principal, resourceType = resourceType, resourceArns = resourceArns, resourceShareArns = resourceShareArns, nextToken = nextToken, maxResults = maxResults, resourceRegionScope = resourceRegionScope)

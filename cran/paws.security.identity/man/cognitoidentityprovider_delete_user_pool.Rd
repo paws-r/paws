@@ -2,15 +2,15 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_delete_user_pool}
 \alias{cognitoidentityprovider_delete_user_pool}
-\title{Deletes the specified Amazon Cognito user pool}
+\title{Deletes a user pool}
 \usage{
 cognitoidentityprovider_delete_user_pool(UserPoolId)
 }
 \arguments{
-\item{UserPoolId}{[required] The user pool ID for the user pool you want to delete.}
+\item{UserPoolId}{[required] The ID of the user pool that you want to delete.}
 }
 \description{
-Deletes the specified Amazon Cognito user pool.
+Deletes a user pool. After you delete a user pool, users can no longer sign in to any associated applications.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_delete_user_pool/} for full documentation.
 }

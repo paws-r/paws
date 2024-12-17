@@ -75,6 +75,18 @@ NULL
   return(populate(args, shape))
 }
 
+.servicediscovery$delete_service_attributes_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ServiceId = structure(logical(0), tags = list(type = "string")), Attributes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.servicediscovery$delete_service_attributes_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .servicediscovery$deregister_instance_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(ServiceId = structure(logical(0), tags = list(type = "string")), InstanceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -168,6 +180,18 @@ NULL
 .servicediscovery$get_service_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(Service = structure(list(Id = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), NamespaceId = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), InstanceCount = structure(logical(0), tags = list(type = "integer")), DnsConfig = structure(list(NamespaceId = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "Top level attribute in request should be used to reference namespace-id", type = "string")), RoutingPolicy = structure(logical(0), tags = list(type = "string")), DnsRecords = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), TTL = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), Type = structure(logical(0), tags = list(type = "string")), HealthCheckConfig = structure(list(Type = structure(logical(0), tags = list(type = "string")), ResourcePath = structure(logical(0), tags = list(type = "string")), FailureThreshold = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), HealthCheckCustomConfig = structure(list(FailureThreshold = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "Configurable FailureThreshold of HealthCheckCustomConfig is deprecated.  It will always have value 1.", type = "integer"))), tags = list(type = "structure")), CreateDate = structure(logical(0), tags = list(type = "timestamp")), CreatorRequestId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.servicediscovery$get_service_attributes_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ServiceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.servicediscovery$get_service_attributes_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ServiceAttributes = structure(list(ServiceArn = structure(logical(0), tags = list(type = "string")), Attributes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -322,5 +346,17 @@ NULL
 .servicediscovery$update_service_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(OperationId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.servicediscovery$update_service_attributes_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ServiceId = structure(logical(0), tags = list(type = "string")), Attributes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.servicediscovery$update_service_attributes_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
   return(populate(args, shape))
 }

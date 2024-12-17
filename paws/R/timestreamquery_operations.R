@@ -285,7 +285,24 @@ timestreamquery_delete_scheduled_query <- function(ScheduledQueryArn) {
 #' ```
 #' list(
 #'   MaxQueryTCU = 123,
-#'   QueryPricingModel = "BYTES_SCANNED"|"COMPUTE_UNITS"
+#'   QueryPricingModel = "BYTES_SCANNED"|"COMPUTE_UNITS",
+#'   QueryCompute = list(
+#'     ComputeMode = "ON_DEMAND"|"PROVISIONED",
+#'     ProvisionedCapacity = list(
+#'       ActiveQueryTCU = 123,
+#'       NotificationConfiguration = list(
+#'         SnsConfiguration = list(
+#'           TopicArn = "string"
+#'         ),
+#'         RoleArn = "string"
+#'       ),
+#'       LastUpdate = list(
+#'         TargetQueryTCU = 123,
+#'         Status = "PENDING"|"FAILED"|"SUCCEEDED",
+#'         StatusMessage = "string"
+#'       )
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -489,6 +506,26 @@ timestreamquery_describe_endpoints <- function() {
 #'         RecordsIngested = 123,
 #'         QueryResultRows = 123
 #'       ),
+#'       QueryInsightsResponse = list(
+#'         QuerySpatialCoverage = list(
+#'           Max = list(
+#'             Value = 123.0,
+#'             TableArn = "string",
+#'             PartitionKey = list(
+#'               "string"
+#'             )
+#'           )
+#'         ),
+#'         QueryTemporalRange = list(
+#'           Max = list(
+#'             Value = 123,
+#'             TableArn = "string"
+#'           )
+#'         ),
+#'         QueryTableCount = 123,
+#'         OutputRows = 123,
+#'         OutputBytes = 123
+#'       ),
 #'       ErrorReportLocation = list(
 #'         S3ReportLocation = list(
 #'           BucketName = "string",
@@ -513,6 +550,26 @@ timestreamquery_describe_endpoints <- function() {
 #'           CumulativeBytesScanned = 123,
 #'           RecordsIngested = 123,
 #'           QueryResultRows = 123
+#'         ),
+#'         QueryInsightsResponse = list(
+#'           QuerySpatialCoverage = list(
+#'             Max = list(
+#'               Value = 123.0,
+#'               TableArn = "string",
+#'               PartitionKey = list(
+#'                 "string"
+#'               )
+#'             )
+#'           ),
+#'           QueryTemporalRange = list(
+#'             Max = list(
+#'               Value = 123,
+#'               TableArn = "string"
+#'             )
+#'           ),
+#'           QueryTableCount = 123,
+#'           OutputRows = 123,
+#'           OutputBytes = 123
 #'         ),
 #'         ErrorReportLocation = list(
 #'           S3ReportLocation = list(
@@ -562,15 +619,27 @@ timestreamquery_describe_scheduled_query <- function(ScheduledQueryArn) {
 #'
 #' @description
 #' You can use this API to run a scheduled query manually.
+#' 
+#' If you enabled `QueryInsights`, this API also returns insights and
+#' metrics related to the query that you executed as part of an Amazon SNS
+#' notification. `QueryInsights` helps with performance tuning of your
+#' query. For more information about `QueryInsights`, see [Using query
+#' insights to optimize queries in Amazon
+#' Timestream](https://docs.aws.amazon.com/timestream/latest/developerguide/using-query-insights.html).
 #'
 #' @usage
 #' timestreamquery_execute_scheduled_query(ScheduledQueryArn,
-#'   InvocationTime, ClientToken)
+#'   InvocationTime, ClientToken, QueryInsights)
 #'
 #' @param ScheduledQueryArn &#91;required&#93; ARN of the scheduled query.
 #' @param InvocationTime &#91;required&#93; The timestamp in UTC. Query will be run as if it was invoked at this
 #' timestamp.
 #' @param ClientToken Not used.
+#' @param QueryInsights Encapsulates settings for enabling `QueryInsights`.
+#' 
+#' Enabling `QueryInsights` returns insights and metrics as a part of the
+#' Amazon SNS notification for the query that you executed. You can use
+#' `QueryInsights` to tune your query performance and cost.
 #'
 #' @return
 #' An empty list.
@@ -582,7 +651,10 @@ timestreamquery_describe_scheduled_query <- function(ScheduledQueryArn) {
 #'   InvocationTime = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   ClientToken = "string"
+#'   ClientToken = "string",
+#'   QueryInsights = list(
+#'     Mode = "ENABLED_WITH_RATE_CONTROL"|"DISABLED"
+#'   )
 #' )
 #' ```
 #'
@@ -591,7 +663,7 @@ timestreamquery_describe_scheduled_query <- function(ScheduledQueryArn) {
 #' @rdname timestreamquery_execute_scheduled_query
 #'
 #' @aliases timestreamquery_execute_scheduled_query
-timestreamquery_execute_scheduled_query <- function(ScheduledQueryArn, InvocationTime, ClientToken = NULL) {
+timestreamquery_execute_scheduled_query <- function(ScheduledQueryArn, InvocationTime, ClientToken = NULL, QueryInsights = NULL) {
   op <- new_operation(
     name = "ExecuteScheduledQuery",
     http_method = "POST",
@@ -600,7 +672,7 @@ timestreamquery_execute_scheduled_query <- function(ScheduledQueryArn, Invocatio
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .timestreamquery$execute_scheduled_query_input(ScheduledQueryArn = ScheduledQueryArn, InvocationTime = InvocationTime, ClientToken = ClientToken)
+  input <- .timestreamquery$execute_scheduled_query_input(ScheduledQueryArn = ScheduledQueryArn, InvocationTime = InvocationTime, ClientToken = ClientToken, QueryInsights = QueryInsights)
   output <- .timestreamquery$execute_scheduled_query_output()
   config <- get_config()
   svc <- .timestreamquery$service(config, op)
@@ -871,6 +943,18 @@ timestreamquery_prepare_query <- function(QueryString, ValidateOnly = NULL) {
 #' @description
 #' [`query`][timestreamquery_query] is a synchronous operation that enables
 #' you to run a query against your Amazon Timestream data.
+#' 
+#' If you enabled `QueryInsights`, this API also returns insights and
+#' metrics related to the query that you executed. `QueryInsights` helps
+#' with performance tuning of your query. For more information about
+#' `QueryInsights`, see [Using query insights to optimize queries in Amazon
+#' Timestream](https://docs.aws.amazon.com/timestream/latest/developerguide/using-query-insights.html).
+#' 
+#' The maximum number of [`query`][timestreamquery_query] API requests
+#' you're allowed to make with `QueryInsights` enabled is 1 query per
+#' second (QPS). If you exceed this query rate, it might result in
+#' throttling.
+#' 
 #' [`query`][timestreamquery_query] will time out after 60 seconds. You
 #' must update the default timeout in the SDK to support a timeout of 60
 #' seconds. See the [code
@@ -897,7 +981,8 @@ timestreamquery_prepare_query <- function(QueryString, ValidateOnly = NULL) {
 #'     fail with an `Invalid pagination token` error.
 #'
 #' @usage
-#' timestreamquery_query(QueryString, ClientToken, NextToken, MaxRows)
+#' timestreamquery_query(QueryString, ClientToken, NextToken, MaxRows,
+#'   QueryInsights)
 #'
 #' @param QueryString &#91;required&#93; The query to be run by Timestream.
 #' @param ClientToken Unique, case-sensitive string of up to 64 ASCII characters specified
@@ -974,6 +1059,11 @@ timestreamquery_prepare_query <- function(QueryString, ValidateOnly = NULL) {
 #' return fewer rows to keep the response size from exceeding the 1 MB
 #' limit. If `MaxRows` is not provided, Timestream will send the necessary
 #' number of rows to meet the 1 MB limit.
+#' @param QueryInsights Encapsulates settings for enabling `QueryInsights`.
+#' 
+#' Enabling `QueryInsights` returns insights and metrics in addition to
+#' query results for the query that you executed. You can use
+#' `QueryInsights` to tune your query performance.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1014,6 +1104,29 @@ timestreamquery_prepare_query <- function(QueryString, ValidateOnly = NULL) {
 #'     ProgressPercentage = 123.0,
 #'     CumulativeBytesScanned = 123,
 #'     CumulativeBytesMetered = 123
+#'   ),
+#'   QueryInsightsResponse = list(
+#'     QuerySpatialCoverage = list(
+#'       Max = list(
+#'         Value = 123.0,
+#'         TableArn = "string",
+#'         PartitionKey = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     QueryTemporalRange = list(
+#'       Max = list(
+#'         Value = 123,
+#'         TableArn = "string"
+#'       )
+#'     ),
+#'     QueryTableCount = 123,
+#'     OutputRows = 123,
+#'     OutputBytes = 123,
+#'     UnloadPartitionCount = 123,
+#'     UnloadWrittenRows = 123,
+#'     UnloadWrittenBytes = 123
 #'   )
 #' )
 #' ```
@@ -1024,7 +1137,10 @@ timestreamquery_prepare_query <- function(QueryString, ValidateOnly = NULL) {
 #'   QueryString = "string",
 #'   ClientToken = "string",
 #'   NextToken = "string",
-#'   MaxRows = 123
+#'   MaxRows = 123,
+#'   QueryInsights = list(
+#'     Mode = "ENABLED_WITH_RATE_CONTROL"|"DISABLED"
+#'   )
 #' )
 #' ```
 #'
@@ -1033,16 +1149,16 @@ timestreamquery_prepare_query <- function(QueryString, ValidateOnly = NULL) {
 #' @rdname timestreamquery_query
 #'
 #' @aliases timestreamquery_query
-timestreamquery_query <- function(QueryString, ClientToken = NULL, NextToken = NULL, MaxRows = NULL) {
+timestreamquery_query <- function(QueryString, ClientToken = NULL, NextToken = NULL, MaxRows = NULL, QueryInsights = NULL) {
   op <- new_operation(
     name = "Query",
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxRows", non_aggregate_keys = list( "ColumnInfo", "QueryId", "QueryStatus"), output_token = "NextToken", result_key = "Rows"),
+    paginator = list(input_token = "NextToken", limit_key = "MaxRows", non_aggregate_keys = list( "ColumnInfo", "QueryId", "QueryStatus", "QueryInsightsResponse"), output_token = "NextToken", result_key = "Rows"),
     stream_api = FALSE
   )
-  input <- .timestreamquery$query_input(QueryString = QueryString, ClientToken = ClientToken, NextToken = NextToken, MaxRows = MaxRows)
+  input <- .timestreamquery$query_input(QueryString = QueryString, ClientToken = ClientToken, NextToken = NextToken, MaxRows = MaxRows, QueryInsights = QueryInsights)
   output <- .timestreamquery$query_output()
   config <- get_config()
   svc <- .timestreamquery$service(config, op)
@@ -1169,16 +1285,21 @@ timestreamquery_untag_resource <- function(ResourceARN, TagKeys) {
 #' you can't transition to using bytes scanned for query pricing.
 #'
 #' @usage
-#' timestreamquery_update_account_settings(MaxQueryTCU, QueryPricingModel)
+#' timestreamquery_update_account_settings(MaxQueryTCU, QueryPricingModel,
+#'   QueryCompute)
 #'
 #' @param MaxQueryTCU The maximum number of compute units the service will use at any point in
 #' time to serve your queries. To run queries, you must set a minimum
 #' capacity of 4 TCU. You can set the maximum number of TCU in multiples of
-#' 4, for example, 4, 8, 16, 32, and so on.
+#' 4, for example, 4, 8, 16, 32, and so on. The maximum value supported for
+#' `MaxQueryTCU` is 1000. To request an increase to this soft limit,
+#' contact Amazon Web Services Support. For information about the default
+#' quota for maxQueryTCU, see Default quotas. This configuration is
+#' applicable only for on-demand usage of Timestream Compute Units (TCUs).
 #' 
 #' The maximum value supported for `MaxQueryTCU` is 1000. To request an
 #' increase to this soft limit, contact Amazon Web Services Support. For
-#' information about the default quota for maxQueryTCU, see [Default
+#' information about the default quota for `maxQueryTCU`, see [Default
 #' quotas](https://docs.aws.amazon.com/timestream/latest/developerguide/ts-limits.html#limits.default).
 #' @param QueryPricingModel The pricing model for queries in an account.
 #' 
@@ -1186,13 +1307,36 @@ timestreamquery_untag_resource <- function(ResourceARN, TagKeys) {
 #' operations; however, the
 #' [`update_account_settings`][timestreamquery_update_account_settings] API
 #' operation doesn't recognize any values other than `COMPUTE_UNITS`.
+#' @param QueryCompute Modifies the query compute settings configured in your account,
+#' including the query pricing model and provisioned Timestream Compute
+#' Units (TCUs) in your account.
+#' 
+#' This API is idempotent, meaning that making the same request multiple
+#' times will have the same effect as making the request once.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
 #'   MaxQueryTCU = 123,
-#'   QueryPricingModel = "BYTES_SCANNED"|"COMPUTE_UNITS"
+#'   QueryPricingModel = "BYTES_SCANNED"|"COMPUTE_UNITS",
+#'   QueryCompute = list(
+#'     ComputeMode = "ON_DEMAND"|"PROVISIONED",
+#'     ProvisionedCapacity = list(
+#'       ActiveQueryTCU = 123,
+#'       NotificationConfiguration = list(
+#'         SnsConfiguration = list(
+#'           TopicArn = "string"
+#'         ),
+#'         RoleArn = "string"
+#'       ),
+#'       LastUpdate = list(
+#'         TargetQueryTCU = 123,
+#'         Status = "PENDING"|"FAILED"|"SUCCEEDED",
+#'         StatusMessage = "string"
+#'       )
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -1200,7 +1344,19 @@ timestreamquery_untag_resource <- function(ResourceARN, TagKeys) {
 #' ```
 #' svc$update_account_settings(
 #'   MaxQueryTCU = 123,
-#'   QueryPricingModel = "BYTES_SCANNED"|"COMPUTE_UNITS"
+#'   QueryPricingModel = "BYTES_SCANNED"|"COMPUTE_UNITS",
+#'   QueryCompute = list(
+#'     ComputeMode = "ON_DEMAND"|"PROVISIONED",
+#'     ProvisionedCapacity = list(
+#'       TargetQueryTCU = 123,
+#'       NotificationConfiguration = list(
+#'         SnsConfiguration = list(
+#'           TopicArn = "string"
+#'         ),
+#'         RoleArn = "string"
+#'       )
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -1209,7 +1365,7 @@ timestreamquery_untag_resource <- function(ResourceARN, TagKeys) {
 #' @rdname timestreamquery_update_account_settings
 #'
 #' @aliases timestreamquery_update_account_settings
-timestreamquery_update_account_settings <- function(MaxQueryTCU = NULL, QueryPricingModel = NULL) {
+timestreamquery_update_account_settings <- function(MaxQueryTCU = NULL, QueryPricingModel = NULL, QueryCompute = NULL) {
   op <- new_operation(
     name = "UpdateAccountSettings",
     http_method = "POST",
@@ -1218,7 +1374,7 @@ timestreamquery_update_account_settings <- function(MaxQueryTCU = NULL, QueryPri
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .timestreamquery$update_account_settings_input(MaxQueryTCU = MaxQueryTCU, QueryPricingModel = QueryPricingModel)
+  input <- .timestreamquery$update_account_settings_input(MaxQueryTCU = MaxQueryTCU, QueryPricingModel = QueryPricingModel, QueryCompute = QueryCompute)
   output <- .timestreamquery$update_account_settings_output()
   config <- get_config()
   svc <- .timestreamquery$service(config, op)

@@ -2,8 +2,8 @@
 % Please edit documentation in R/securityhub_operations.R
 \name{securityhub_invite_members}
 \alias{securityhub_invite_members}
-\title{Invites other Amazon Web Services accounts to become member accounts for
-the Security Hub administrator account that the invitation is sent from}
+\title{We recommend using Organizations instead of Security Hub invitations to
+manage your member accounts}
 \usage{
 securityhub_invite_members(AccountIds)
 }
@@ -12,7 +12,7 @@ securityhub_invite_members(AccountIds)
 Security Hub as members.}
 }
 \description{
-Invites other Amazon Web Services accounts to become member accounts for the Security Hub administrator account that the invitation is sent from.
+We recommend using Organizations instead of Security Hub invitations to manage your member accounts. For information, see \href{https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-accounts-orgs.html}{Managing Security Hub administrator and member accounts with Organizations} in the \emph{Security Hub User Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/securityhub_invite_members/} for full documentation.
 }

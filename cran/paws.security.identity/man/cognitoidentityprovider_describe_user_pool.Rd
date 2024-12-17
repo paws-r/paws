@@ -2,16 +2,15 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_describe_user_pool}
 \alias{cognitoidentityprovider_describe_user_pool}
-\title{Returns the configuration information and metadata of the specified user
-pool}
+\title{Given a user pool ID, returns configuration information}
 \usage{
 cognitoidentityprovider_describe_user_pool(UserPoolId)
 }
 \arguments{
-\item{UserPoolId}{[required] The user pool ID for the user pool you want to describe.}
+\item{UserPoolId}{[required] The ID of the user pool you want to describe.}
 }
 \description{
-Returns the configuration information and metadata of the specified user pool.
+Given a user pool ID, returns configuration information. This operation is useful when you want to inspect an existing user pool and programmatically replicate the configuration to another user pool.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_describe_user_pool/} for full documentation.
 }

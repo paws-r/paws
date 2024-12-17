@@ -5,27 +5,15 @@
 \title{Creates a placement group in which to launch instances}
 \usage{
 ec2_create_placement_group(
-  DryRun = NULL,
-  GroupName = NULL,
-  Strategy = NULL,
   PartitionCount = NULL,
   TagSpecifications = NULL,
-  SpreadLevel = NULL
+  SpreadLevel = NULL,
+  DryRun = NULL,
+  GroupName = NULL,
+  Strategy = NULL
 )
 }
 \arguments{
-\item{DryRun}{Checks whether you have the required permissions for the action, without
-actually making the request, and provides an error response. If you have
-the required permissions, the error response is \code{DryRunOperation}.
-Otherwise, it is \code{UnauthorizedOperation}.}
-
-\item{GroupName}{A name for the placement group. Must be unique within the scope of your
-account for the Region.
-
-Constraints: Up to 255 ASCII characters}
-
-\item{Strategy}{The placement strategy.}
-
 \item{PartitionCount}{The number of partitions. Valid only when \strong{Strategy} is set to
 \code{partition}.}
 
@@ -36,6 +24,18 @@ Constraints: Up to 255 ASCII characters}
 \item Host – You can use \code{host} only with Outpost placement groups.
 \item Rack – No usage restrictions.
 }}
+
+\item{DryRun}{Checks whether you have the required permissions for the operation,
+without actually making the request, and provides an error response. If
+you have the required permissions, the error response is
+\code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
+
+\item{GroupName}{A name for the placement group. Must be unique within the scope of your
+account for the Region.
+
+Constraints: Up to 255 ASCII characters}
+
+\item{Strategy}{The placement strategy.}
 }
 \description{
 Creates a placement group in which to launch instances. The strategy of the placement group determines how the instances are organized within the group.

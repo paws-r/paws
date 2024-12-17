@@ -2,7 +2,7 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_attach_vpn_gateway}
 \alias{ec2_attach_vpn_gateway}
-\title{Attaches a virtual private gateway to a VPC}
+\title{Attaches an available virtual private gateway to a VPC}
 \usage{
 ec2_attach_vpn_gateway(VpcId, VpnGatewayId, DryRun = NULL)
 }
@@ -17,7 +17,7 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
-Attaches a virtual private gateway to a VPC. You can attach one virtual private gateway to one VPC at a time.
+Attaches an available virtual private gateway to a VPC. You can attach one virtual private gateway to one VPC at a time.
 
 See \url{https://www.paws-r-sdk.com/docs/ec2_attach_vpn_gateway/} for full documentation.
 }

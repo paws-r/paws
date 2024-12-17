@@ -13,7 +13,7 @@ elasticache_describe_users(
 )
 }
 \arguments{
-\item{Engine}{The Redis OSS engine.}
+\item{Engine}{The engine.}
 
 \item{UserId}{The ID of the user.}
 

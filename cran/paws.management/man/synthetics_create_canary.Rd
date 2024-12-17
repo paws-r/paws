@@ -15,6 +15,8 @@ synthetics_create_canary(
   FailureRetentionPeriodInDays = NULL,
   RuntimeVersion,
   VpcConfig = NULL,
+  ResourcesToReplicateTags = NULL,
+  ProvisionedResourceCleanup = NULL,
   Tags = NULL,
   ArtifactConfig = NULL
 )
@@ -73,12 +75,33 @@ runtime versions and more information about runtime versions, see
 information about the subnet and security groups of the VPC endpoint.
 For more information, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Synthetics_Canaries_VPC.html}{Running a Canary in a VPC}.}
 
+\item{ResourcesToReplicateTags}{To have the tags that you apply to this canary also be applied to the
+Lambda function that the canary uses, specify this parameter with the
+value \verb{lambda-function}.
+
+If you specify this parameter and don't specify any tags in the \code{Tags}
+parameter, the canary creation fails.}
+
+\item{ProvisionedResourceCleanup}{Specifies whether to also delete the Lambda functions and layers used by
+this canary when the canary is deleted. If you omit this parameter, the
+default of \code{AUTOMATIC} is used, which means that the Lambda functions
+and layers will be deleted when the canary is deleted.
+
+If the value of this parameter is \code{OFF}, then the value of the
+\code{DeleteLambda} parameter of the
+\code{\link[=synthetics_delete_canary]{delete_canary}} operation determines whether
+the Lambda functions and layers will be deleted.}
+
 \item{Tags}{A list of key-value pairs to associate with the canary. You can
 associate as many as 50 tags with a canary.
 
 Tags can help you organize and categorize your resources. You can also
 use them to scope user permissions, by granting a user permission to
-access or change only the resources that have certain tag values.}
+access or change only the resources that have certain tag values.
+
+To have the tags that you apply to this canary also be applied to the
+Lambda function that the canary uses, specify this parameter with the
+value \verb{lambda-function}.}
 
 \item{ArtifactConfig}{A structure that contains the configuration for canary artifacts,
 including the encryption-at-rest settings for artifacts that the canary

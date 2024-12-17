@@ -32,7 +32,11 @@ provide one attribute filter; however, the \code{AndAllFilters}, \code{NotFilter
 and \code{OrAllFilters} parameters contain a list of other filters.
 
 The \code{AttributeFilter} parameter means you can create a set of filtering
-rules that a document must satisfy to be included in the query results.}
+rules that a document must satisfy to be included in the query results.
+
+For Amazon Kendra Gen AI Enterprise Edition indices use
+\code{AttributeFilter} to enable document filtering for end users using
+\verb{_email_id} or include public documents (\verb{_email_id=null}).}
 
 \item{RequestedDocumentAttributes}{A list of document fields/attributes to include in the response. You can
 limit the response to include certain document fields. By default, all

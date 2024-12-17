@@ -24,16 +24,20 @@ NULL
 #'     these in-progress multipart uploads, use the
 #'     [`list_multipart_uploads`][s3_list_multipart_uploads] operation to
 #'     list the in-progress multipart uploads in the bucket and use the
-#'     `AbortMultupartUpload` operation to abort all the in-progress
-#'     multipart uploads.
+#'     [`abort_multipart_upload`][s3_abort_multipart_upload] operation to
+#'     abort all the in-progress multipart uploads.
 #' 
 #' -   **Directory buckets** - For directory buckets, you must make
 #'     requests for this API operation to the Zonal endpoint. These
 #'     endpoints support virtual-hosted-style requests in the format
-#'     `https://bucket_name.s3express-az_id.region.amazonaws.com/key-name `.
-#'     Path-style requests are not supported. For more information, see
-#'     [Regional and Zonal
-#'     endpoints](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html)
+#'     `https://bucket-name.s3express-zone-id.region-code.amazonaws.com/key-name `.
+#'     Path-style requests are not supported. For more information about
+#'     endpoints in Availability Zones, see [Regional and Zonal endpoints
+#'     for directory buckets in Availability
+#'     Zones](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html)
+#'     in the *Amazon S3 User Guide*. For more information about endpoints
+#'     in Local Zones, see [Available Local Zone for directory
+#'     buckets](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-lzs-for-directory-buckets.html)
 #'     in the *Amazon S3 User Guide*.
 #' 
 #' ### Permissions
@@ -65,7 +69,7 @@ NULL
 #' ### HTTP Host header syntax
 #' 
 #' **Directory buckets** - The HTTP Host header syntax is
-#' ` Bucket_name.s3express-az_id.region.amazonaws.com`.
+#' ` Bucket-name.s3express-zone-id.region-code.amazonaws.com`.
 #' 
 #' The following operations are related to
 #' [`abort_multipart_upload`][s3_abort_multipart_upload]:
@@ -82,16 +86,16 @@ NULL
 #'
 #' @usage
 #' s3_abort_multipart_upload(Bucket, Key, UploadId, RequestPayer,
-#'   ExpectedBucketOwner)
+#'   ExpectedBucketOwner, IfMatchInitiatedTime)
 #'
 #' @param Bucket &#91;required&#93; The bucket name to which the upload was taking place.
 #' 
 #' **Directory buckets** - When you use this operation with a directory
 #' bucket, you must use virtual-hosted-style requests in the format
-#' ` Bucket_name.s3express-az_id.region.amazonaws.com`. Path-style requests
-#' are not supported. Directory bucket names must be unique in the chosen
-#' Availability Zone. Bucket names must follow the format
-#' ` bucket_base_name--az-id--x-s3` (for example,
+#' ` Bucket-name.s3express-zone-id.region-code.amazonaws.com`. Path-style
+#' requests are not supported. Directory bucket names must be unique in the
+#' chosen Zone (Availability Zone or Local Zone). Bucket names must follow
+#' the format ` bucket-base-name--zone-id--x-s3` (for example,
 #' ` DOC-EXAMPLE-BUCKET--usw2-az1--x-s3`). For information about bucket
 #' naming restrictions, see [Directory bucket naming
 #' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
@@ -128,6 +132,14 @@ NULL
 #' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
 #' provide does not match the actual owner of the bucket, the request fails
 #' with the HTTP status code `403 Forbidden` (access denied).
+#' @param IfMatchInitiatedTime If present, this header aborts an in progress multipart upload only if
+#' it was initiated on the provided timestamp. If the initiated timestamp
+#' of the multipart upload does not match the provided value, the operation
+#' returns a `412 Precondition Failed` error. If the initiated timestamp
+#' matches or if the multipart upload doesn’t exist, the operation returns
+#' a `204 Success (No Content)` response.
+#' 
+#' This functionality is only supported for directory buckets.
 #'
 #' @return
 #' A list with the following syntax:
@@ -144,7 +156,10 @@ NULL
 #'   Key = "string",
 #'   UploadId = "string",
 #'   RequestPayer = "requester",
-#'   ExpectedBucketOwner = "string"
+#'   ExpectedBucketOwner = "string",
+#'   IfMatchInitiatedTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
 #' )
 #' ```
 #'
@@ -163,7 +178,7 @@ NULL
 #' @rdname s3_abort_multipart_upload
 #'
 #' @aliases s3_abort_multipart_upload
-s3_abort_multipart_upload <- function(Bucket, Key, UploadId, RequestPayer = NULL, ExpectedBucketOwner = NULL) {
+s3_abort_multipart_upload <- function(Bucket, Key, UploadId, RequestPayer = NULL, ExpectedBucketOwner = NULL, IfMatchInitiatedTime = NULL) {
   op <- new_operation(
     name = "AbortMultipartUpload",
     http_method = "DELETE",
@@ -172,7 +187,7 @@ s3_abort_multipart_upload <- function(Bucket, Key, UploadId, RequestPayer = NULL
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .s3$abort_multipart_upload_input(Bucket = Bucket, Key = Key, UploadId = UploadId, RequestPayer = RequestPayer, ExpectedBucketOwner = ExpectedBucketOwner)
+  input <- .s3$abort_multipart_upload_input(Bucket = Bucket, Key = Key, UploadId = UploadId, RequestPayer = RequestPayer, ExpectedBucketOwner = ExpectedBucketOwner, IfMatchInitiatedTime = IfMatchInitiatedTime)
   output <- .s3$abort_multipart_upload_output()
   config <- get_config()
   svc <- .s3$service(config, op)
@@ -236,10 +251,14 @@ s3_abort_multipart_upload <- function(Bucket, Key, UploadId, RequestPayer = NULL
 #' **Directory buckets** - For directory buckets, you must make requests
 #' for this API operation to the Zonal endpoint. These endpoints support
 #' virtual-hosted-style requests in the format
-#' `https://bucket_name.s3express-az_id.region.amazonaws.com/key-name `.
-#' Path-style requests are not supported. For more information, see
-#' [Regional and Zonal
-#' endpoints](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html)
+#' `https://bucket-name.s3express-zone-id.region-code.amazonaws.com/key-name `.
+#' Path-style requests are not supported. For more information about
+#' endpoints in Availability Zones, see [Regional and Zonal endpoints for
+#' directory buckets in Availability
+#' Zones](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html)
+#' in the *Amazon S3 User Guide*. For more information about endpoints in
+#' Local Zones, see [Available Local Zone for directory
+#' buckets](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-lzs-for-directory-buckets.html)
 #' in the *Amazon S3 User Guide*.
 #' 
 #' ### Permissions
@@ -316,7 +335,7 @@ s3_abort_multipart_upload <- function(Bucket, Key, UploadId, RequestPayer = NULL
 #' ### HTTP Host header syntax
 #' 
 #' **Directory buckets** - The HTTP Host header syntax is
-#' ` Bucket_name.s3express-az_id.region.amazonaws.com`.
+#' ` Bucket-name.s3express-zone-id.region-code.amazonaws.com`.
 #' 
 #' The following operations are related to
 #' [`complete_multipart_upload`][s3_complete_multipart_upload]:
@@ -334,17 +353,17 @@ s3_abort_multipart_upload <- function(Bucket, Key, UploadId, RequestPayer = NULL
 #' @usage
 #' s3_complete_multipart_upload(Bucket, Key, MultipartUpload, UploadId,
 #'   ChecksumCRC32, ChecksumCRC32C, ChecksumSHA1, ChecksumSHA256,
-#'   RequestPayer, ExpectedBucketOwner, IfNoneMatch, SSECustomerAlgorithm,
-#'   SSECustomerKey, SSECustomerKeyMD5)
+#'   RequestPayer, ExpectedBucketOwner, IfMatch, IfNoneMatch,
+#'   SSECustomerAlgorithm, SSECustomerKey, SSECustomerKeyMD5)
 #'
 #' @param Bucket &#91;required&#93; Name of the bucket to which the multipart upload was initiated.
 #' 
 #' **Directory buckets** - When you use this operation with a directory
 #' bucket, you must use virtual-hosted-style requests in the format
-#' ` Bucket_name.s3express-az_id.region.amazonaws.com`. Path-style requests
-#' are not supported. Directory bucket names must be unique in the chosen
-#' Availability Zone. Bucket names must follow the format
-#' ` bucket_base_name--az-id--x-s3` (for example,
+#' ` Bucket-name.s3express-zone-id.region-code.amazonaws.com`. Path-style
+#' requests are not supported. Directory bucket names must be unique in the
+#' chosen Zone (Availability Zone or Local Zone). Bucket names must follow
+#' the format ` bucket-base-name--zone-id--x-s3` (for example,
 #' ` DOC-EXAMPLE-BUCKET--usw2-az1--x-s3`). For information about bucket
 #' naming restrictions, see [Directory bucket naming
 #' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
@@ -406,6 +425,23 @@ s3_abort_multipart_upload <- function(Bucket, Key, UploadId, RequestPayer = NULL
 #' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
 #' provide does not match the actual owner of the bucket, the request fails
 #' with the HTTP status code `403 Forbidden` (access denied).
+#' @param IfMatch Uploads the object only if the ETag (entity tag) value provided during
+#' the WRITE operation matches the ETag of the object in S3. If the ETag
+#' values do not match, the operation returns a `412 Precondition Failed`
+#' error.
+#' 
+#' If a conflicting operation occurs during the upload S3 returns a
+#' `409 ConditionalRequestConflict` response. On a 409 failure you should
+#' fetch the object's ETag, re-initiate the multipart upload with
+#' [`create_multipart_upload`][s3_create_multipart_upload], and re-upload
+#' each part.
+#' 
+#' Expects the ETag value as a string.
+#' 
+#' For more information about conditional requests, see [RFC
+#' 7232](https://datatracker.ietf.org/doc/html/rfc7232), or [Conditional
+#' requests](https://docs.aws.amazon.com/AmazonS3/latest/userguide/conditional-requests.html)
+#' in the *Amazon S3 User Guide*.
 #' @param IfNoneMatch Uploads the object only if the object key name does not already exist in
 #' the bucket specified. Otherwise, Amazon S3 returns a
 #' `412 Precondition Failed` error.
@@ -490,9 +526,10 @@ s3_abort_multipart_upload <- function(Bucket, Key, UploadId, RequestPayer = NULL
 #'   ChecksumSHA256 = "string",
 #'   RequestPayer = "requester",
 #'   ExpectedBucketOwner = "string",
+#'   IfMatch = "string",
 #'   IfNoneMatch = "string",
 #'   SSECustomerAlgorithm = "string",
-#'   SSECustomerKey = raw,
+#'   SSECustomerKey = "string",
 #'   SSECustomerKeyMD5 = "string"
 #' )
 #' ```
@@ -524,7 +561,7 @@ s3_abort_multipart_upload <- function(Bucket, Key, UploadId, RequestPayer = NULL
 #' @rdname s3_complete_multipart_upload
 #'
 #' @aliases s3_complete_multipart_upload
-s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, UploadId, ChecksumCRC32 = NULL, ChecksumCRC32C = NULL, ChecksumSHA1 = NULL, ChecksumSHA256 = NULL, RequestPayer = NULL, ExpectedBucketOwner = NULL, IfNoneMatch = NULL, SSECustomerAlgorithm = NULL, SSECustomerKey = NULL, SSECustomerKeyMD5 = NULL) {
+s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, UploadId, ChecksumCRC32 = NULL, ChecksumCRC32C = NULL, ChecksumSHA1 = NULL, ChecksumSHA256 = NULL, RequestPayer = NULL, ExpectedBucketOwner = NULL, IfMatch = NULL, IfNoneMatch = NULL, SSECustomerAlgorithm = NULL, SSECustomerKey = NULL, SSECustomerKeyMD5 = NULL) {
   op <- new_operation(
     name = "CompleteMultipartUpload",
     http_method = "POST",
@@ -533,7 +570,7 @@ s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, Up
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .s3$complete_multipart_upload_input(Bucket = Bucket, Key = Key, MultipartUpload = MultipartUpload, UploadId = UploadId, ChecksumCRC32 = ChecksumCRC32, ChecksumCRC32C = ChecksumCRC32C, ChecksumSHA1 = ChecksumSHA1, ChecksumSHA256 = ChecksumSHA256, RequestPayer = RequestPayer, ExpectedBucketOwner = ExpectedBucketOwner, IfNoneMatch = IfNoneMatch, SSECustomerAlgorithm = SSECustomerAlgorithm, SSECustomerKey = SSECustomerKey, SSECustomerKeyMD5 = SSECustomerKeyMD5)
+  input <- .s3$complete_multipart_upload_input(Bucket = Bucket, Key = Key, MultipartUpload = MultipartUpload, UploadId = UploadId, ChecksumCRC32 = ChecksumCRC32, ChecksumCRC32C = ChecksumCRC32C, ChecksumSHA1 = ChecksumSHA1, ChecksumSHA256 = ChecksumSHA256, RequestPayer = RequestPayer, ExpectedBucketOwner = ExpectedBucketOwner, IfMatch = IfMatch, IfNoneMatch = IfNoneMatch, SSECustomerAlgorithm = SSECustomerAlgorithm, SSECustomerKey = SSECustomerKey, SSECustomerKeyMD5 = SSECustomerKeyMD5)
   output <- .s3$complete_multipart_upload_output()
   config <- get_config()
   svc <- .s3$service(config, op)
@@ -565,10 +602,14 @@ s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, Up
 #' -   **Directory buckets** - For directory buckets, you must make
 #'     requests for this API operation to the Zonal endpoint. These
 #'     endpoints support virtual-hosted-style requests in the format
-#'     `https://bucket_name.s3express-az_id.region.amazonaws.com/key-name `.
-#'     Path-style requests are not supported. For more information, see
-#'     [Regional and Zonal
-#'     endpoints](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html)
+#'     `https://bucket-name.s3express-zone-id.region-code.amazonaws.com/key-name `.
+#'     Path-style requests are not supported. For more information about
+#'     endpoints in Availability Zones, see [Regional and Zonal endpoints
+#'     for directory buckets in Availability
+#'     Zones](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html)
+#'     in the *Amazon S3 User Guide*. For more information about endpoints
+#'     in Local Zones, see [Available Local Zone for directory
+#'     buckets](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-lzs-for-directory-buckets.html)
 #'     in the *Amazon S3 User Guide*.
 #' 
 #' -   VPC endpoints don't support cross-Region requests (including
@@ -703,7 +744,7 @@ s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, Up
 #' ### HTTP Host header syntax
 #' 
 #' **Directory buckets** - The HTTP Host header syntax is
-#' ` Bucket_name.s3express-az_id.region.amazonaws.com`.
+#' ` Bucket-name.s3express-zone-id.region-code.amazonaws.com`.
 #' 
 #' The following operations are related to [`copy_object`][s3_copy_object]:
 #' 
@@ -756,14 +797,20 @@ s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, Up
 #' 
 #' **Directory buckets** - When you use this operation with a directory
 #' bucket, you must use virtual-hosted-style requests in the format
-#' ` Bucket_name.s3express-az_id.region.amazonaws.com`. Path-style requests
-#' are not supported. Directory bucket names must be unique in the chosen
-#' Availability Zone. Bucket names must follow the format
-#' ` bucket_base_name--az-id--x-s3` (for example,
+#' ` Bucket-name.s3express-zone-id.region-code.amazonaws.com`. Path-style
+#' requests are not supported. Directory bucket names must be unique in the
+#' chosen Zone (Availability Zone or Local Zone). Bucket names must follow
+#' the format ` bucket-base-name--zone-id--x-s3` (for example,
 #' ` DOC-EXAMPLE-BUCKET--usw2-az1--x-s3`). For information about bucket
 #' naming restrictions, see [Directory bucket naming
 #' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
 #' in the *Amazon S3 User Guide*.
+#' 
+#' Copying objects across different Amazon Web Services Regions isn't
+#' supported when the source or destination bucket is in Amazon Web
+#' Services Local Zones. The source and destination buckets must have the
+#' same parent Amazon Web Services Region. Otherwise, you get an HTTP
+#' `400 Bad Request` error with the error code `InvalidRequest`.
 #' 
 #' **Access points** - When you use this action with an access point, you
 #' must provide the alias of the access point in place of the bucket name
@@ -1381,13 +1428,13 @@ s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, Up
 #'   StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER"|"DEEP_ARCHIVE"|"OUTPOSTS"|"GLACIER_IR"|"SNOW"|"EXPRESS_ONEZONE",
 #'   WebsiteRedirectLocation = "string",
 #'   SSECustomerAlgorithm = "string",
-#'   SSECustomerKey = raw,
+#'   SSECustomerKey = "string",
 #'   SSECustomerKeyMD5 = "string",
 #'   SSEKMSKeyId = "string",
 #'   SSEKMSEncryptionContext = "string",
 #'   BucketKeyEnabled = TRUE|FALSE,
 #'   CopySourceSSECustomerAlgorithm = "string",
-#'   CopySourceSSECustomerKey = raw,
+#'   CopySourceSSECustomerKey = "string",
 #'   CopySourceSSECustomerKeyMD5 = "string",
 #'   RequestPayer = "requester",
 #'   Tagging = "string",
@@ -1469,10 +1516,14 @@ s3_copy_object <- function(ACL = NULL, Bucket, CacheControl = NULL, ChecksumAlgo
 #' -   **Directory buckets** - For directory buckets, you must make
 #'     requests for this API operation to the Regional endpoint. These
 #'     endpoints support path-style requests in the format
-#'     `https://s3express-control.region_code.amazonaws.com/bucket-name `.
-#'     Virtual-hosted-style requests aren't supported. For more
-#'     information, see [Regional and Zonal
-#'     endpoints](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html)
+#'     `https://s3express-control.region-code.amazonaws.com/bucket-name `.
+#'     Virtual-hosted-style requests aren't supported. For more information
+#'     about endpoints in Availability Zones, see [Regional and Zonal
+#'     endpoints for directory buckets in Availability
+#'     Zones](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html)
+#'     in the *Amazon S3 User Guide*. For more information about endpoints
+#'     in Local Zones, see [Available Local Zone for directory
+#'     buckets](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-lzs-for-directory-buckets.html)
 #'     in the *Amazon S3 User Guide*.
 #' 
 #' ### Permissions
@@ -1563,7 +1614,7 @@ s3_copy_object <- function(ACL = NULL, Bucket, CacheControl = NULL, ChecksumAlgo
 #' ### HTTP Host header syntax
 #' 
 #' **Directory buckets** - The HTTP Host header syntax is
-#' `s3express-control.region.amazonaws.com`.
+#' `s3express-control.region-code.amazonaws.com`.
 #' 
 #' The following operations are related to
 #' [`create_bucket`][s3_create_bucket]:
@@ -1589,10 +1640,11 @@ s3_copy_object <- function(ACL = NULL, Bucket, CacheControl = NULL, ChecksumAlgo
 #' 
 #' **Directory buckets** - When you use this operation with a directory
 #' bucket, you must use path-style requests in the format
-#' `https://s3express-control.region_code.amazonaws.com/bucket-name `.
+#' `https://s3express-control.region-code.amazonaws.com/bucket-name `.
 #' Virtual-hosted-style requests aren't supported. Directory bucket names
-#' must be unique in the chosen Availability Zone. Bucket names must also
-#' follow the format ` bucket_base_name--az_id--x-s3` (for example,
+#' must be unique in the chosen Zone (Availability Zone or Local Zone).
+#' Bucket names must also follow the format
+#' ` bucket-base-name--zone-id--x-s3` (for example,
 #' ` DOC-EXAMPLE-BUCKET--usw2-az1--x-s3`). For information about bucket
 #' naming restrictions, see [Directory bucket naming
 #' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
@@ -1639,11 +1691,11 @@ s3_copy_object <- function(ACL = NULL, Bucket, CacheControl = NULL, ChecksumAlgo
 #'   CreateBucketConfiguration = list(
 #'     LocationConstraint = "af-south-1"|"ap-east-1"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"ap-south-1"|"ap-south-2"|"ap-southeast-1"|"ap-southeast-2"|"ap-southeast-3"|"ca-central-1"|"cn-north-1"|"cn-northwest-1"|"EU"|"eu-central-1"|"eu-north-1"|"eu-south-1"|"eu-south-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"me-south-1"|"sa-east-1"|"us-east-2"|"us-gov-east-1"|"us-gov-west-1"|"us-west-1"|"us-west-2",
 #'     Location = list(
-#'       Type = "AvailabilityZone",
+#'       Type = "AvailabilityZone"|"LocalZone",
 #'       Name = "string"
 #'     ),
 #'     Bucket = list(
-#'       DataRedundancy = "SingleAvailabilityZone",
+#'       DataRedundancy = "SingleAvailabilityZone"|"SingleLocalZone",
 #'       Type = "Directory"
 #'     )
 #'   ),
@@ -1698,6 +1750,100 @@ s3_create_bucket <- function(ACL = NULL, Bucket, CreateBucketConfiguration = NUL
 }
 .s3$operations$create_bucket <- s3_create_bucket
 
+#' Creates a metadata table configuration for a general purpose bucket
+#'
+#' @description
+#' Creates a metadata table configuration for a general purpose bucket. For
+#' more information, see [Accelerating data discovery with S3
+#' Metadata](https://docs.aws.amazon.com/AmazonS3/latest/userguide/metadata-tables-overview.html)
+#' in the *Amazon S3 User Guide*.
+#' 
+#' ### Permissions
+#' 
+#' To use this operation, you must have the following permissions. For more
+#' information, see [Setting up permissions for configuring metadata
+#' tables](https://docs.aws.amazon.com/AmazonS3/latest/userguide/metadata-tables-permissions.html)
+#' in the *Amazon S3 User Guide*.
+#' 
+#' If you also want to integrate your table bucket with Amazon Web Services
+#' analytics services so that you can query your metadata table, you need
+#' additional permissions. For more information, see [Integrating Amazon S3
+#' Tables with Amazon Web Services analytics
+#' services](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-tables-integrating-aws.html)
+#' in the *Amazon S3 User Guide*.
+#' 
+#' -   `s3:CreateBucketMetadataTableConfiguration`
+#' 
+#' -   `s3tables:CreateNamespace`
+#' 
+#' -   `s3tables:GetTable`
+#' 
+#' -   `s3tables:CreateTable`
+#' 
+#' -   `s3tables:PutTablePolicy`
+#' 
+#' The following operations are related to
+#' [`create_bucket_metadata_table_configuration`][s3_create_bucket_metadata_table_configuration]:
+#' 
+#' -   [`delete_bucket_metadata_table_configuration`][s3_delete_bucket_metadata_table_configuration]
+#' 
+#' -   [`get_bucket_metadata_table_configuration`][s3_get_bucket_metadata_table_configuration]
+#'
+#' @usage
+#' s3_create_bucket_metadata_table_configuration(Bucket, ContentMD5,
+#'   ChecksumAlgorithm, MetadataTableConfiguration, ExpectedBucketOwner)
+#'
+#' @param Bucket &#91;required&#93; The general purpose bucket that you want to create the metadata table
+#' configuration in.
+#' @param ContentMD5 The `Content-MD5` header for the metadata table configuration.
+#' @param ChecksumAlgorithm The checksum algorithm to use with your metadata table configuration.
+#' @param MetadataTableConfiguration &#91;required&#93; The contents of your metadata table configuration.
+#' @param ExpectedBucketOwner The expected owner of the general purpose bucket that contains your
+#' metadata table configuration.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_bucket_metadata_table_configuration(
+#'   Bucket = "string",
+#'   ContentMD5 = "string",
+#'   ChecksumAlgorithm = "CRC32"|"CRC32C"|"SHA1"|"SHA256",
+#'   MetadataTableConfiguration = list(
+#'     S3TablesDestination = list(
+#'       TableBucketArn = "string",
+#'       TableName = "string"
+#'     )
+#'   ),
+#'   ExpectedBucketOwner = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname s3_create_bucket_metadata_table_configuration
+#'
+#' @aliases s3_create_bucket_metadata_table_configuration
+s3_create_bucket_metadata_table_configuration <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm = NULL, MetadataTableConfiguration, ExpectedBucketOwner = NULL) {
+  op <- new_operation(
+    name = "CreateBucketMetadataTableConfiguration",
+    http_method = "POST",
+    http_path = "/{Bucket}?metadataTable",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .s3$create_bucket_metadata_table_configuration_input(Bucket = Bucket, ContentMD5 = ContentMD5, ChecksumAlgorithm = ChecksumAlgorithm, MetadataTableConfiguration = MetadataTableConfiguration, ExpectedBucketOwner = ExpectedBucketOwner)
+  output <- .s3$create_bucket_metadata_table_configuration_output()
+  config <- get_config()
+  svc <- .s3$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3$operations$create_bucket_metadata_table_configuration <- s3_create_bucket_metadata_table_configuration
+
 #' This action initiates a multipart upload and returns an upload ID
 #'
 #' @description
@@ -1731,10 +1877,14 @@ s3_create_bucket <- function(ACL = NULL, Bucket, CreateBucketConfiguration = NUL
 #' -   **Directory buckets** - For directory buckets, you must make
 #'     requests for this API operation to the Zonal endpoint. These
 #'     endpoints support virtual-hosted-style requests in the format
-#'     `https://bucket_name.s3express-az_id.region.amazonaws.com/key-name `.
-#'     Path-style requests are not supported. For more information, see
-#'     [Regional and Zonal
-#'     endpoints](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html)
+#'     `https://bucket-name.s3express-zone-id.region-code.amazonaws.com/key-name `.
+#'     Path-style requests are not supported. For more information about
+#'     endpoints in Availability Zones, see [Regional and Zonal endpoints
+#'     for directory buckets in Availability
+#'     Zones](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html)
+#'     in the *Amazon S3 User Guide*. For more information about endpoints
+#'     in Local Zones, see [Available Local Zone for directory
+#'     buckets](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-lzs-for-directory-buckets.html)
 #'     in the *Amazon S3 User Guide*.
 #' 
 #' ### Request signing
@@ -1943,7 +2093,7 @@ s3_create_bucket <- function(ACL = NULL, Bucket, CreateBucketConfiguration = NUL
 #' ### HTTP Host header syntax
 #' 
 #' **Directory buckets** - The HTTP Host header syntax is
-#' ` Bucket_name.s3express-az_id.region.amazonaws.com`.
+#' ` Bucket-name.s3express-zone-id.region-code.amazonaws.com`.
 #' 
 #' The following operations are related to
 #' [`create_multipart_upload`][s3_create_multipart_upload]:
@@ -1992,10 +2142,10 @@ s3_create_bucket <- function(ACL = NULL, Bucket, CreateBucketConfiguration = NUL
 #' 
 #' **Directory buckets** - When you use this operation with a directory
 #' bucket, you must use virtual-hosted-style requests in the format
-#' ` Bucket_name.s3express-az_id.region.amazonaws.com`. Path-style requests
-#' are not supported. Directory bucket names must be unique in the chosen
-#' Availability Zone. Bucket names must follow the format
-#' ` bucket_base_name--az-id--x-s3` (for example,
+#' ` Bucket-name.s3express-zone-id.region-code.amazonaws.com`. Path-style
+#' requests are not supported. Directory bucket names must be unique in the
+#' chosen Zone (Availability Zone or Local Zone). Bucket names must follow
+#' the format ` bucket-base-name--zone-id--x-s3` (for example,
 #' ` DOC-EXAMPLE-BUCKET--usw2-az1--x-s3`). For information about bucket
 #' naming restrictions, see [Directory bucket naming
 #' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
@@ -2469,7 +2619,7 @@ s3_create_bucket <- function(ACL = NULL, Bucket, CreateBucketConfiguration = NUL
 #'   StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER"|"DEEP_ARCHIVE"|"OUTPOSTS"|"GLACIER_IR"|"SNOW"|"EXPRESS_ONEZONE",
 #'   WebsiteRedirectLocation = "string",
 #'   SSECustomerAlgorithm = "string",
-#'   SSECustomerKey = raw,
+#'   SSECustomerKey = "string",
 #'   SSECustomerKeyMD5 = "string",
 #'   SSEKMSKeyId = "string",
 #'   SSEKMSEncryptionContext = "string",
@@ -2564,10 +2714,14 @@ s3_create_multipart_upload <- function(ACL = NULL, Bucket, CacheControl = NULL, 
 #' 
 #' -   You must make requests for this API operation to the Zonal endpoint.
 #'     These endpoints support virtual-hosted-style requests in the format
-#'     `https://bucket_name.s3express-az_id.region.amazonaws.com`.
-#'     Path-style requests are not supported. For more information, see
-#'     [Regional and Zonal
-#'     endpoints](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html)
+#'     `https://bucket-name.s3express-zone-id.region-code.amazonaws.com`.
+#'     Path-style requests are not supported. For more information about
+#'     endpoints in Availability Zones, see [Regional and Zonal endpoints
+#'     for directory buckets in Availability
+#'     Zones](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html)
+#'     in the *Amazon S3 User Guide*. For more information about endpoints
+#'     in Local Zones, see [Available Local Zone for directory
+#'     buckets](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-lzs-for-directory-buckets.html)
 #'     in the *Amazon S3 User Guide*.
 #' 
 #' -   **[`copy_object`][s3_copy_object] API operation** - Unlike other
@@ -2679,7 +2833,7 @@ s3_create_multipart_upload <- function(ACL = NULL, Bucket, CacheControl = NULL, 
 #' ### HTTP Host header syntax
 #' 
 #' **Directory buckets** - The HTTP Host header syntax is
-#' ` Bucket_name.s3express-az_id.region.amazonaws.com`.
+#' ` Bucket-name.s3express-zone-id.region-code.amazonaws.com`.
 #'
 #' @usage
 #' s3_create_session(SessionMode, Bucket, ServerSideEncryption,
@@ -2824,10 +2978,14 @@ s3_create_session <- function(SessionMode = NULL, Bucket, ServerSideEncryption =
 #' -   **Directory buckets** - For directory buckets, you must make
 #'     requests for this API operation to the Regional endpoint. These
 #'     endpoints support path-style requests in the format
-#'     `https://s3express-control.region_code.amazonaws.com/bucket-name `.
-#'     Virtual-hosted-style requests aren't supported. For more
-#'     information, see [Regional and Zonal
-#'     endpoints](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html)
+#'     `https://s3express-control.region-code.amazonaws.com/bucket-name `.
+#'     Virtual-hosted-style requests aren't supported. For more information
+#'     about endpoints in Availability Zones, see [Regional and Zonal
+#'     endpoints for directory buckets in Availability
+#'     Zones](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html)
+#'     in the *Amazon S3 User Guide*. For more information about endpoints
+#'     in Local Zones, see [Available Local Zone for directory
+#'     buckets](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-lzs-for-directory-buckets.html)
 #'     in the *Amazon S3 User Guide*.
 #' 
 #' ### Permissions
@@ -2849,7 +3007,7 @@ s3_create_session <- function(SessionMode = NULL, Bucket, ServerSideEncryption =
 #' ### HTTP Host header syntax
 #' 
 #' **Directory buckets** - The HTTP Host header syntax is
-#' `s3express-control.region.amazonaws.com`.
+#' `s3express-control.region-code.amazonaws.com`.
 #' 
 #' The following operations are related to
 #' [`delete_bucket`][s3_delete_bucket]:
@@ -2865,10 +3023,11 @@ s3_create_session <- function(SessionMode = NULL, Bucket, ServerSideEncryption =
 #' 
 #' **Directory buckets** - When you use this operation with a directory
 #' bucket, you must use path-style requests in the format
-#' `https://s3express-control.region_code.amazonaws.com/bucket-name `.
+#' `https://s3express-control.region-code.amazonaws.com/bucket-name `.
 #' Virtual-hosted-style requests aren't supported. Directory bucket names
-#' must be unique in the chosen Availability Zone. Bucket names must also
-#' follow the format ` bucket_base_name--az_id--x-s3` (for example,
+#' must be unique in the chosen Zone (Availability Zone or Local Zone).
+#' Bucket names must also follow the format
+#' ` bucket-base-name--zone-id--x-s3` (for example,
 #' ` DOC-EXAMPLE-BUCKET--usw2-az1--x-s3`). For information about bucket
 #' naming restrictions, see [Directory bucket naming
 #' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
@@ -2924,10 +3083,10 @@ s3_delete_bucket <- function(Bucket, ExpectedBucketOwner = NULL) {
 }
 .s3$operations$delete_bucket <- s3_delete_bucket
 
-#' This operation is not supported by directory buckets
+#' This operation is not supported for directory buckets
 #'
 #' @description
-#' This operation is not supported by directory buckets.
+#' This operation is not supported for directory buckets.
 #' 
 #' Deletes an analytics configuration for the bucket (specified by the
 #' analytics configuration ID).
@@ -3000,10 +3159,10 @@ s3_delete_bucket_analytics_configuration <- function(Bucket, Id, ExpectedBucketO
 }
 .s3$operations$delete_bucket_analytics_configuration <- s3_delete_bucket_analytics_configuration
 
-#' This operation is not supported by directory buckets
+#' This operation is not supported for directory buckets
 #'
 #' @description
-#' This operation is not supported by directory buckets.
+#' This operation is not supported for directory buckets.
 #' 
 #' Deletes the `cors` configuration information set for the bucket.
 #' 
@@ -3118,7 +3277,7 @@ s3_delete_bucket_cors <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' ### HTTP Host header syntax
 #' 
 #' **Directory buckets** - The HTTP Host header syntax is
-#' `s3express-control.region.amazonaws.com`.
+#' `s3express-control.region-code.amazonaws.com`.
 #' 
 #' The following operations are related to
 #' [`delete_bucket_encryption`][s3_delete_bucket_encryption]:
@@ -3135,10 +3294,11 @@ s3_delete_bucket_cors <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' 
 #' **Directory buckets** - When you use this operation with a directory
 #' bucket, you must use path-style requests in the format
-#' `https://s3express-control.region_code.amazonaws.com/bucket-name `.
+#' `https://s3express-control.region-code.amazonaws.com/bucket-name `.
 #' Virtual-hosted-style requests aren't supported. Directory bucket names
-#' must be unique in the chosen Availability Zone. Bucket names must also
-#' follow the format ` bucket_base_name--az_id--x-s3` (for example,
+#' must be unique in the chosen Zone (Availability Zone or Local Zone).
+#' Bucket names must also follow the format
+#' ` bucket-base-name--zone-id--x-s3` (for example,
 #' ` DOC-EXAMPLE-BUCKET--usw2-az1--x-s3`). For information about bucket
 #' naming restrictions, see [Directory bucket naming
 #' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
@@ -3186,10 +3346,10 @@ s3_delete_bucket_encryption <- function(Bucket, ExpectedBucketOwner = NULL) {
 }
 .s3$operations$delete_bucket_encryption <- s3_delete_bucket_encryption
 
-#' This operation is not supported by directory buckets
+#' This operation is not supported for directory buckets
 #'
 #' @description
-#' This operation is not supported by directory buckets.
+#' This operation is not supported for directory buckets.
 #' 
 #' Deletes the S3 Intelligent-Tiering configuration from the specified
 #' bucket.
@@ -3266,10 +3426,10 @@ s3_delete_bucket_intelligent_tiering_configuration <- function(Bucket, Id) {
 }
 .s3$operations$delete_bucket_intelligent_tiering_configuration <- s3_delete_bucket_intelligent_tiering_configuration
 
-#' This operation is not supported by directory buckets
+#' This operation is not supported for directory buckets
 #'
 #' @description
-#' This operation is not supported by directory buckets.
+#' This operation is not supported for directory buckets.
 #' 
 #' Deletes an inventory configuration (identified by the inventory ID) from
 #' the bucket.
@@ -3342,24 +3502,61 @@ s3_delete_bucket_inventory_configuration <- function(Bucket, Id, ExpectedBucketO
 }
 .s3$operations$delete_bucket_inventory_configuration <- s3_delete_bucket_inventory_configuration
 
-#' This operation is not supported by directory buckets
+#' Deletes the lifecycle configuration from the specified bucket
 #'
 #' @description
-#' This operation is not supported by directory buckets.
-#' 
 #' Deletes the lifecycle configuration from the specified bucket. Amazon S3
 #' removes all the lifecycle configuration rules in the lifecycle
 #' subresource associated with the bucket. Your objects never expire, and
 #' Amazon S3 no longer automatically deletes any objects on the basis of
 #' rules contained in the deleted lifecycle configuration.
 #' 
-#' To use this operation, you must have permission to perform the
-#' `s3:PutLifecycleConfiguration` action. By default, the bucket owner has
-#' this permission and the bucket owner can grant this permission to
-#' others.
+#' ### Permissions
 #' 
-#' There is usually some time lag before lifecycle configuration deletion
-#' is fully propagated to all the Amazon S3 systems.
+#' -   **General purpose bucket permissions** - By default, all Amazon S3
+#'     resources are private, including buckets, objects, and related
+#'     subresources (for example, lifecycle configuration and website
+#'     configuration). Only the resource owner (that is, the Amazon Web
+#'     Services account that created it) can access the resource. The
+#'     resource owner can optionally grant access permissions to others by
+#'     writing an access policy. For this operation, a user must have the
+#'     `s3:PutLifecycleConfiguration` permission.
+#' 
+#'     For more information about permissions, see [Managing Access
+#'     Permissions to Your Amazon S3
+#'     Resources](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security-iam.html).
+#' 
+#' 
+#' -   **Directory bucket permissions** - You must have the
+#'     `s3express:PutLifecycleConfiguration` permission in an IAM
+#'     identity-based policy to use this operation. Cross-account access to
+#'     this API operation isn't supported. The resource owner can
+#'     optionally grant access permissions to others by creating a role or
+#'     user for them as long as they are within the same account as the
+#'     owner and resource.
+#' 
+#'     For more information about directory bucket policies and
+#'     permissions, see [Authorizing Regional endpoint APIs with
+#'     IAM](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-security-iam.html)
+#'     in the *Amazon S3 User Guide*.
+#' 
+#'     **Directory buckets** - For directory buckets, you must make
+#'     requests for this API operation to the Regional endpoint. These
+#'     endpoints support path-style requests in the format
+#'     `https://s3express-control.region-code.amazonaws.com/bucket-name `.
+#'     Virtual-hosted-style requests aren't supported. For more information
+#'     about endpoints in Availability Zones, see [Regional and Zonal
+#'     endpoints for directory buckets in Availability
+#'     Zones](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html)
+#'     in the *Amazon S3 User Guide*. For more information about endpoints
+#'     in Local Zones, see [Available Local Zone for directory
+#'     buckets](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-lzs-for-directory-buckets.html)
+#'     in the *Amazon S3 User Guide*.
+#' 
+#' ### HTTP Host header syntax
+#' 
+#' **Directory buckets** - The HTTP Host header syntax is
+#' `s3express-control.region.amazonaws.com`.
 #' 
 #' For more information about the object expiration, see [Elements to
 #' Describe Lifecycle
@@ -3378,6 +3575,9 @@ s3_delete_bucket_inventory_configuration <- function(Bucket, Id, ExpectedBucketO
 #' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
 #' provide does not match the actual owner of the bucket, the request fails
 #' with the HTTP status code `403 Forbidden` (access denied).
+#' 
+#' This parameter applies to general purpose buckets only. It is not
+#' supported for directory bucket lifecycle configurations.
 #'
 #' @return
 #' An empty list.
@@ -3422,10 +3622,77 @@ s3_delete_bucket_lifecycle <- function(Bucket, ExpectedBucketOwner = NULL) {
 }
 .s3$operations$delete_bucket_lifecycle <- s3_delete_bucket_lifecycle
 
-#' This operation is not supported by directory buckets
+#' Deletes a metadata table configuration from a general purpose bucket
 #'
 #' @description
-#' This operation is not supported by directory buckets.
+#' Deletes a metadata table configuration from a general purpose bucket.
+#' For more information, see [Accelerating data discovery with S3
+#' Metadata](https://docs.aws.amazon.com/AmazonS3/latest/userguide/metadata-tables-overview.html)
+#' in the *Amazon S3 User Guide*.
+#' 
+#' ### Permissions
+#' 
+#' To use this operation, you must have the
+#' `s3:DeleteBucketMetadataTableConfiguration` permission. For more
+#' information, see [Setting up permissions for configuring metadata
+#' tables](https://docs.aws.amazon.com/AmazonS3/latest/userguide/metadata-tables-permissions.html)
+#' in the *Amazon S3 User Guide*.
+#' 
+#' The following operations are related to
+#' [`delete_bucket_metadata_table_configuration`][s3_delete_bucket_metadata_table_configuration]:
+#' 
+#' -   [`create_bucket_metadata_table_configuration`][s3_create_bucket_metadata_table_configuration]
+#' 
+#' -   [`get_bucket_metadata_table_configuration`][s3_get_bucket_metadata_table_configuration]
+#'
+#' @usage
+#' s3_delete_bucket_metadata_table_configuration(Bucket,
+#'   ExpectedBucketOwner)
+#'
+#' @param Bucket &#91;required&#93; The general purpose bucket that you want to remove the metadata table
+#' configuration from.
+#' @param ExpectedBucketOwner The expected bucket owner of the general purpose bucket that you want to
+#' remove the metadata table configuration from.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_bucket_metadata_table_configuration(
+#'   Bucket = "string",
+#'   ExpectedBucketOwner = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname s3_delete_bucket_metadata_table_configuration
+#'
+#' @aliases s3_delete_bucket_metadata_table_configuration
+s3_delete_bucket_metadata_table_configuration <- function(Bucket, ExpectedBucketOwner = NULL) {
+  op <- new_operation(
+    name = "DeleteBucketMetadataTableConfiguration",
+    http_method = "DELETE",
+    http_path = "/{Bucket}?metadataTable",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .s3$delete_bucket_metadata_table_configuration_input(Bucket = Bucket, ExpectedBucketOwner = ExpectedBucketOwner)
+  output <- .s3$delete_bucket_metadata_table_configuration_output()
+  config <- get_config()
+  svc <- .s3$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3$operations$delete_bucket_metadata_table_configuration <- s3_delete_bucket_metadata_table_configuration
+
+#' This operation is not supported for directory buckets
+#'
+#' @description
+#' This operation is not supported for directory buckets.
 #' 
 #' Deletes a metrics configuration for the Amazon CloudWatch request
 #' metrics (specified by the metrics configuration ID) from the bucket.
@@ -3503,10 +3770,10 @@ s3_delete_bucket_metrics_configuration <- function(Bucket, Id, ExpectedBucketOwn
 }
 .s3$operations$delete_bucket_metrics_configuration <- s3_delete_bucket_metrics_configuration
 
-#' This operation is not supported by directory buckets
+#' This operation is not supported for directory buckets
 #'
 #' @description
-#' This operation is not supported by directory buckets.
+#' This operation is not supported for directory buckets.
 #' 
 #' Removes `OwnershipControls` for an Amazon S3 bucket. To use this
 #' operation, you must have the `s3:PutBucketOwnershipControls` permission.
@@ -3575,10 +3842,14 @@ s3_delete_bucket_ownership_controls <- function(Bucket, ExpectedBucketOwner = NU
 #' **Directory buckets** - For directory buckets, you must make requests
 #' for this API operation to the Regional endpoint. These endpoints support
 #' path-style requests in the format
-#' `https://s3express-control.region_code.amazonaws.com/bucket-name `.
-#' Virtual-hosted-style requests aren't supported. For more information,
-#' see [Regional and Zonal
-#' endpoints](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html)
+#' `https://s3express-control.region-code.amazonaws.com/bucket-name `.
+#' Virtual-hosted-style requests aren't supported. For more information
+#' about endpoints in Availability Zones, see [Regional and Zonal endpoints
+#' for directory buckets in Availability
+#' Zones](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html)
+#' in the *Amazon S3 User Guide*. For more information about endpoints in
+#' Local Zones, see [Available Local Zone for directory
+#' buckets](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-lzs-for-directory-buckets.html)
 #' in the *Amazon S3 User Guide*.
 #' 
 #' ### Permissions
@@ -3627,7 +3898,7 @@ s3_delete_bucket_ownership_controls <- function(Bucket, ExpectedBucketOwner = NU
 #' ### HTTP Host header syntax
 #' 
 #' **Directory buckets** - The HTTP Host header syntax is
-#' `s3express-control.region.amazonaws.com`.
+#' `s3express-control.region-code.amazonaws.com`.
 #' 
 #' The following operations are related to
 #' [`delete_bucket_policy`][s3_delete_bucket_policy]
@@ -3643,10 +3914,11 @@ s3_delete_bucket_ownership_controls <- function(Bucket, ExpectedBucketOwner = NU
 #' 
 #' **Directory buckets** - When you use this operation with a directory
 #' bucket, you must use path-style requests in the format
-#' `https://s3express-control.region_code.amazonaws.com/bucket-name `.
+#' `https://s3express-control.region-code.amazonaws.com/bucket-name `.
 #' Virtual-hosted-style requests aren't supported. Directory bucket names
-#' must be unique in the chosen Availability Zone. Bucket names must also
-#' follow the format ` bucket_base_name--az_id--x-s3` (for example,
+#' must be unique in the chosen Zone (Availability Zone or Local Zone).
+#' Bucket names must also follow the format
+#' ` bucket-base-name--zone-id--x-s3` (for example,
 #' ` DOC-EXAMPLE-BUCKET--usw2-az1--x-s3`). For information about bucket
 #' naming restrictions, see [Directory bucket naming
 #' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
@@ -3702,10 +3974,10 @@ s3_delete_bucket_policy <- function(Bucket, ExpectedBucketOwner = NULL) {
 }
 .s3$operations$delete_bucket_policy <- s3_delete_bucket_policy
 
-#' This operation is not supported by directory buckets
+#' This operation is not supported for directory buckets
 #'
 #' @description
-#' This operation is not supported by directory buckets.
+#' This operation is not supported for directory buckets.
 #' 
 #' Deletes the replication configuration from the bucket.
 #' 
@@ -3782,10 +4054,10 @@ s3_delete_bucket_replication <- function(Bucket, ExpectedBucketOwner = NULL) {
 }
 .s3$operations$delete_bucket_replication <- s3_delete_bucket_replication
 
-#' This operation is not supported by directory buckets
+#' This operation is not supported for directory buckets
 #'
 #' @description
-#' This operation is not supported by directory buckets.
+#' This operation is not supported for directory buckets.
 #' 
 #' Deletes the tags from the bucket.
 #' 
@@ -3851,10 +4123,10 @@ s3_delete_bucket_tagging <- function(Bucket, ExpectedBucketOwner = NULL) {
 }
 .s3$operations$delete_bucket_tagging <- s3_delete_bucket_tagging
 
-#' This operation is not supported by directory buckets
+#' This operation is not supported for directory buckets
 #'
 #' @description
-#' This operation is not supported by directory buckets.
+#' This operation is not supported for directory buckets.
 #' 
 #' This action removes the website configuration for a bucket. Amazon S3
 #' returns a `200 OK` response upon successfully deleting a website
@@ -3935,39 +4207,76 @@ s3_delete_bucket_website <- function(Bucket, ExpectedBucketOwner = NULL) {
 #'
 #' @description
 #' Removes an object from a bucket. The behavior depends on the bucket's
-#' versioning state. For more information, see [Best practices to consider
-#' before deleting an
-#' object](https://docs.aws.amazon.com/AmazonS3/latest/userguide/DeletingObjects.html#DeletingObjects-best-practices).
+#' versioning state:
+#' 
+#' -   If bucket versioning is not enabled, the operation permanently
+#'     deletes the object.
+#' 
+#' -   If bucket versioning is enabled, the operation inserts a delete
+#'     marker, which becomes the current version of the object. To
+#'     permanently delete an object in a versioned bucket, you must include
+#'     the object’s `versionId` in the request. For more information about
+#'     versioning-enabled buckets, see [Deleting object versions from a
+#'     versioning-enabled
+#'     bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/DeletingObjectVersions.html).
+#' 
+#' -   If bucket versioning is suspended, the operation removes the object
+#'     that has a null `versionId`, if there is one, and inserts a delete
+#'     marker that becomes the current version of the object. If there
+#'     isn't an object with a null `versionId`, and all versions of the
+#'     object have a `versionId`, Amazon S3 does not remove the object and
+#'     only inserts a delete marker. To permanently delete an object that
+#'     has a `versionId`, you must include the object’s `versionId` in the
+#'     request. For more information about versioning-suspended buckets,
+#'     see [Deleting objects from versioning-suspended
+#'     buckets](https://docs.aws.amazon.com/AmazonS3/latest/userguide/DeletingObjectsfromVersioningSuspendedBuckets.html).
+#' 
+#' 
+#' -   **Directory buckets** - S3 Versioning isn't enabled and supported
+#'     for directory buckets. For this API operation, only the `null` value
+#'     of the version ID is supported by directory buckets. You can only
+#'     specify `null` to the `versionId` query parameter in the request.
+#' 
+#' -   **Directory buckets** - For directory buckets, you must make
+#'     requests for this API operation to the Zonal endpoint. These
+#'     endpoints support virtual-hosted-style requests in the format
+#'     `https://bucket-name.s3express-zone-id.region-code.amazonaws.com/key-name `.
+#'     Path-style requests are not supported. For more information about
+#'     endpoints in Availability Zones, see [Regional and Zonal endpoints
+#'     for directory buckets in Availability
+#'     Zones](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html)
+#'     in the *Amazon S3 User Guide*. For more information about endpoints
+#'     in Local Zones, see [Available Local Zone for directory
+#'     buckets](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-lzs-for-directory-buckets.html)
+#'     in the *Amazon S3 User Guide*.
 #' 
 #' To remove a specific version, you must use the `versionId` query
 #' parameter. Using this query parameter permanently deletes the version.
 #' If the object deleted is a delete marker, Amazon S3 sets the response
-#' header `x-amz-delete-marker` to true. If the object you want to delete
-#' is in a bucket where the bucket versioning configuration is MFA delete
-#' enabled, you must include the `x-amz-mfa` request header in the DELETE
-#' `versionId` request. Requests that include `x-amz-mfa` must use HTTPS.
-#' For more information about MFA delete and to see example requests, see
-#' [Using MFA
-#' delete](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingMFADelete.html)
-#' and [Sample
-#' request](https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteObject.html#ExampleVersionObjectDelete)
-#' in the *Amazon S3 User Guide*.
+#' header `x-amz-delete-marker` to true.
 #' 
-#' -   S3 Versioning isn't enabled and supported for directory buckets. For
-#'     this API operation, only the `null` value of the version ID is
-#'     supported by directory buckets. You can only specify `null` to the
-#'     `versionId` query parameter in the request.
+#' If the object you want to delete is in a bucket where the bucket
+#' versioning configuration is MFA Delete enabled, you must include the
+#' `x-amz-mfa` request header in the DELETE `versionId` request. Requests
+#' that include `x-amz-mfa` must use HTTPS. For more information about MFA
+#' Delete, see [Using MFA
+#' Delete](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingMFADelete.html)
+#' in the *Amazon S3 User Guide*. To see sample requests that use
+#' versioning, see [Sample
+#' Request](https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteObject.html#ExampleVersionObjectDelete).
 #' 
-#' -   For directory buckets, you must make requests for this API operation
-#'     to the Zonal endpoint. These endpoints support virtual-hosted-style
-#'     requests in the format
-#'     `https://bucket_name.s3express-az_id.region.amazonaws.com/key-name `.
-#'     Path-style requests are not supported. For more information, see
-#'     [Regional and Zonal
-#'     endpoints](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html)
-#'     in the *Amazon S3 User Guide*.
+#' **Directory buckets** - MFA delete is not supported by directory
+#' buckets.
 #' 
-#' -   MFA delete is not supported by directory buckets.
+#' You can delete objects by explicitly calling DELETE Object or calling
+#' ([`put_bucket_lifecycle`][s3_put_bucket_lifecycle]) to enable Amazon S3
+#' to remove them for you. If you want to block users or accounts from
+#' removing or deleting objects from your bucket, you must deny them the
+#' `s3:DeleteObject`, `s3:DeleteObjectVersion`, and
+#' `s3:PutLifeCycleConfiguration` actions.
+#' 
+#' **Directory buckets** - S3 Lifecycle is not supported by directory
+#' buckets.
 #' 
 #' ### Permissions
 #' 
@@ -3979,28 +4288,32 @@ s3_delete_bucket_website <- function(Bucket, ExpectedBucketOwner = NULL) {
 #'     -   **`s3:DeleteObject`** - To delete an object from a bucket, you
 #'         must always have the `s3:DeleteObject` permission.
 #' 
-#'         You can also use
-#'         [`put_bucket_lifecycle`][s3_put_bucket_lifecycle] to delete
-#'         objects in Amazon S3.
-#' 
 #'     -   **`s3:DeleteObjectVersion`** - To delete a specific version of
 #'         an object from a versioning-enabled bucket, you must have the
 #'         `s3:DeleteObjectVersion` permission.
 #' 
-#'     -   If you want to block users or accounts from removing or deleting
-#'         objects from your bucket, you must deny them the
-#'         `s3:DeleteObject`, `s3:DeleteObjectVersion`, and
-#'         `s3:PutLifeCycleConfiguration` permissions.
-#' 
-#' -   **Directory buckets permissions** - To grant access to this API
+#' -   **Directory bucket permissions** - To grant access to this API
 #'     operation on a directory bucket, we recommend that you use the
-#'     [`create_session`][s3_create_session] API operation for
-#'     session-based authorization.
+#'     [`create_session`](https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateSession.html)
+#'     API operation for session-based authorization. Specifically, you
+#'     grant the `s3express:CreateSession` permission to the directory
+#'     bucket in a bucket policy or an IAM identity-based policy. Then, you
+#'     make the [`create_session`][s3_create_session] API call on the
+#'     bucket to obtain a session token. With the session token in your
+#'     request header, you can make API requests to this operation. After
+#'     the session token expires, you make another
+#'     [`create_session`][s3_create_session] API call to generate a new
+#'     session token for use. Amazon Web Services CLI or SDKs create
+#'     session and refresh the session token automatically to avoid service
+#'     interruptions when a session expires. For more information about
+#'     authorization, see
+#'     [`create_session`](https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateSession.html)
+#'     .
 #' 
 #' ### HTTP Host header syntax
 #' 
 #' **Directory buckets** - The HTTP Host header syntax is
-#' ` Bucket_name.s3express-az_id.region.amazonaws.com`.
+#' ` Bucket-name.s3express-zone-id.region-code.amazonaws.com`.
 #' 
 #' The following action is related to [`delete_object`][s3_delete_object]:
 #' 
@@ -4008,16 +4321,17 @@ s3_delete_bucket_website <- function(Bucket, ExpectedBucketOwner = NULL) {
 #'
 #' @usage
 #' s3_delete_object(Bucket, Key, MFA, VersionId, RequestPayer,
-#'   BypassGovernanceRetention, ExpectedBucketOwner)
+#'   BypassGovernanceRetention, ExpectedBucketOwner, IfMatch,
+#'   IfMatchLastModifiedTime, IfMatchSize)
 #'
 #' @param Bucket &#91;required&#93; The bucket name of the bucket containing the object.
 #' 
 #' **Directory buckets** - When you use this operation with a directory
 #' bucket, you must use virtual-hosted-style requests in the format
-#' ` Bucket_name.s3express-az_id.region.amazonaws.com`. Path-style requests
-#' are not supported. Directory bucket names must be unique in the chosen
-#' Availability Zone. Bucket names must follow the format
-#' ` bucket_base_name--az-id--x-s3` (for example,
+#' ` Bucket-name.s3express-zone-id.region-code.amazonaws.com`. Path-style
+#' requests are not supported. Directory bucket names must be unique in the
+#' chosen Zone (Availability Zone or Local Zone). Bucket names must follow
+#' the format ` bucket-base-name--zone-id--x-s3` (for example,
 #' ` DOC-EXAMPLE-BUCKET--usw2-az1--x-s3`). For information about bucket
 #' naming restrictions, see [Directory bucket naming
 #' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
@@ -4068,6 +4382,33 @@ s3_delete_bucket_website <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
 #' provide does not match the actual owner of the bucket, the request fails
 #' with the HTTP status code `403 Forbidden` (access denied).
+#' @param IfMatch The `If-Match` header field makes the request method conditional on
+#' ETags. If the ETag value does not match, the operation returns a
+#' `412 Precondition Failed` error. If the ETag matches or if the object
+#' doesn't exist, the operation will return a
+#' `204 Success (No Content) response`.
+#' 
+#' For more information about conditional requests, see RFC 7232.
+#' 
+#' This functionality is only supported for directory buckets.
+#' @param IfMatchLastModifiedTime If present, the object is deleted only if its modification times matches
+#' the provided `Timestamp`. If the `Timestamp` values do not match, the
+#' operation returns a `412 Precondition Failed` error. If the `Timestamp`
+#' matches or if the object doesn’t exist, the operation returns a
+#' `204 Success (No Content)` response.
+#' 
+#' This functionality is only supported for directory buckets.
+#' @param IfMatchSize If present, the object is deleted only if its size matches the provided
+#' size in bytes. If the `Size` value does not match, the operation returns
+#' a `412 Precondition Failed` error. If the `Size` matches or if the
+#' object doesn’t exist, the operation returns a `204 Success (No Content)`
+#' response.
+#' 
+#' This functionality is only supported for directory buckets.
+#' 
+#' You can use the `If-Match`, `x-amz-if-match-last-modified-time` and
+#' `x-amz-if-match-size` conditional headers in conjunction with each-other
+#' or individually.
 #'
 #' @return
 #' A list with the following syntax:
@@ -4088,22 +4429,27 @@ s3_delete_bucket_website <- function(Bucket, ExpectedBucketOwner = NULL) {
 #'   VersionId = "string",
 #'   RequestPayer = "requester",
 #'   BypassGovernanceRetention = TRUE|FALSE,
-#'   ExpectedBucketOwner = "string"
+#'   ExpectedBucketOwner = "string",
+#'   IfMatch = "string",
+#'   IfMatchLastModifiedTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   IfMatchSize = 123
 #' )
 #' ```
 #'
 #' @examples
 #' \dontrun{
-#' # The following example deletes an object from a non-versioned bucket.
-#' svc$delete_object(
-#'   Bucket = "ExampleBucket",
-#'   Key = "HappyFace.jpg"
-#' )
-#' 
 #' # The following example deletes an object from an S3 bucket.
 #' svc$delete_object(
 #'   Bucket = "examplebucket",
 #'   Key = "objectkey.jpg"
+#' )
+#' 
+#' # The following example deletes an object from a non-versioned bucket.
+#' svc$delete_object(
+#'   Bucket = "ExampleBucket",
+#'   Key = "HappyFace.jpg"
 #' )
 #' }
 #'
@@ -4112,7 +4458,7 @@ s3_delete_bucket_website <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' @rdname s3_delete_object
 #'
 #' @aliases s3_delete_object
-s3_delete_object <- function(Bucket, Key, MFA = NULL, VersionId = NULL, RequestPayer = NULL, BypassGovernanceRetention = NULL, ExpectedBucketOwner = NULL) {
+s3_delete_object <- function(Bucket, Key, MFA = NULL, VersionId = NULL, RequestPayer = NULL, BypassGovernanceRetention = NULL, ExpectedBucketOwner = NULL, IfMatch = NULL, IfMatchLastModifiedTime = NULL, IfMatchSize = NULL) {
   op <- new_operation(
     name = "DeleteObject",
     http_method = "DELETE",
@@ -4121,7 +4467,7 @@ s3_delete_object <- function(Bucket, Key, MFA = NULL, VersionId = NULL, RequestP
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .s3$delete_object_input(Bucket = Bucket, Key = Key, MFA = MFA, VersionId = VersionId, RequestPayer = RequestPayer, BypassGovernanceRetention = BypassGovernanceRetention, ExpectedBucketOwner = ExpectedBucketOwner)
+  input <- .s3$delete_object_input(Bucket = Bucket, Key = Key, MFA = MFA, VersionId = VersionId, RequestPayer = RequestPayer, BypassGovernanceRetention = BypassGovernanceRetention, ExpectedBucketOwner = ExpectedBucketOwner, IfMatch = IfMatch, IfMatchLastModifiedTime = IfMatchLastModifiedTime, IfMatchSize = IfMatchSize)
   output <- .s3$delete_object_output()
   config <- get_config()
   svc <- .s3$service(config, op)
@@ -4131,10 +4477,10 @@ s3_delete_object <- function(Bucket, Key, MFA = NULL, VersionId = NULL, RequestP
 }
 .s3$operations$delete_object <- s3_delete_object
 
-#' This operation is not supported by directory buckets
+#' This operation is not supported for directory buckets
 #'
 #' @description
-#' This operation is not supported by directory buckets.
+#' This operation is not supported for directory buckets.
 #' 
 #' Removes the entire tag set from the specified object. For more
 #' information about managing object tags, see [Object
@@ -4209,20 +4555,20 @@ s3_delete_object <- function(Bucket, Key, MFA = NULL, VersionId = NULL, RequestP
 #' @examples
 #' \dontrun{
 #' # The following example removes tag set associated with the specified
-#' # object. If the bucket is versioning enabled, the operation removes tag
-#' # set from the latest object version.
-#' svc$delete_object_tagging(
-#'   Bucket = "examplebucket",
-#'   Key = "HappyFace.jpg"
-#' )
-#' 
-#' # The following example removes tag set associated with the specified
 #' # object version. The request specifies both the object key and object
 #' # version.
 #' svc$delete_object_tagging(
 #'   Bucket = "examplebucket",
 #'   Key = "HappyFace.jpg",
 #'   VersionId = "ydlaNkwWm0SfKJR.T1b1fIdPRbldTYRI"
+#' )
+#' 
+#' # The following example removes tag set associated with the specified
+#' # object. If the bucket is versioning enabled, the operation removes tag
+#' # set from the latest object version.
+#' svc$delete_object_tagging(
+#'   Bucket = "examplebucket",
+#'   Key = "HappyFace.jpg"
 #' )
 #' }
 #'
@@ -4273,10 +4619,14 @@ s3_delete_object_tagging <- function(Bucket, Key, VersionId = NULL, ExpectedBuck
 #' -   **Directory buckets** - For directory buckets, you must make
 #'     requests for this API operation to the Zonal endpoint. These
 #'     endpoints support virtual-hosted-style requests in the format
-#'     `https://bucket_name.s3express-az_id.region.amazonaws.com/key-name `.
-#'     Path-style requests are not supported. For more information, see
-#'     [Regional and Zonal
-#'     endpoints](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html)
+#'     `https://bucket-name.s3express-zone-id.region-code.amazonaws.com/key-name `.
+#'     Path-style requests are not supported. For more information about
+#'     endpoints in Availability Zones, see [Regional and Zonal endpoints
+#'     for directory buckets in Availability
+#'     Zones](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html)
+#'     in the *Amazon S3 User Guide*. For more information about endpoints
+#'     in Local Zones, see [Available Local Zone for directory
+#'     buckets](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-lzs-for-directory-buckets.html)
 #'     in the *Amazon S3 User Guide*.
 #' 
 #' The operation supports two modes for the response: verbose and quiet. By
@@ -4347,7 +4697,7 @@ s3_delete_object_tagging <- function(Bucket, Key, VersionId = NULL, ExpectedBuck
 #' ### HTTP Host header syntax
 #' 
 #' **Directory buckets** - The HTTP Host header syntax is
-#' ` Bucket_name.s3express-az_id.region.amazonaws.com`.
+#' ` Bucket-name.s3express-zone-id.region-code.amazonaws.com`.
 #' 
 #' The following operations are related to
 #' [`delete_objects`][s3_delete_objects]:
@@ -4370,10 +4720,10 @@ s3_delete_object_tagging <- function(Bucket, Key, VersionId = NULL, ExpectedBuck
 #' 
 #' **Directory buckets** - When you use this operation with a directory
 #' bucket, you must use virtual-hosted-style requests in the format
-#' ` Bucket_name.s3express-az_id.region.amazonaws.com`. Path-style requests
-#' are not supported. Directory bucket names must be unique in the chosen
-#' Availability Zone. Bucket names must follow the format
-#' ` bucket_base_name--az-id--x-s3` (for example,
+#' ` Bucket-name.s3express-zone-id.region-code.amazonaws.com`. Path-style
+#' requests are not supported. Directory bucket names must be unique in the
+#' chosen Zone (Availability Zone or Local Zone). Bucket names must follow
+#' the format ` bucket-base-name--zone-id--x-s3` (for example,
 #' ` DOC-EXAMPLE-BUCKET--usw2-az1--x-s3`). For information about bucket
 #' naming restrictions, see [Directory bucket naming
 #' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
@@ -4494,7 +4844,12 @@ s3_delete_object_tagging <- function(Bucket, Key, VersionId = NULL, ExpectedBuck
 #'     Objects = list(
 #'       list(
 #'         Key = "string",
-#'         VersionId = "string"
+#'         VersionId = "string",
+#'         ETag = "string",
+#'         LastModifiedTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         Size = 123
 #'       )
 #'     ),
 #'     Quiet = TRUE|FALSE
@@ -4509,25 +4864,6 @@ s3_delete_object_tagging <- function(Bucket, Key, VersionId = NULL, ExpectedBuck
 #'
 #' @examples
 #' \dontrun{
-#' # The following example deletes objects from a bucket. The bucket is
-#' # versioned, and the request does not specify the object version to
-#' # delete. In this case, all versions remain in the bucket and S3 adds a
-#' # delete marker.
-#' svc$delete_objects(
-#'   Bucket = "examplebucket",
-#'   Delete = list(
-#'     Objects = list(
-#'       list(
-#'         Key = "objectkey1"
-#'       ),
-#'       list(
-#'         Key = "objectkey2"
-#'       )
-#'     ),
-#'     Quiet = FALSE
-#'   )
-#' )
-#' 
 #' # The following example deletes objects from a bucket. The request
 #' # specifies object versions. S3 deletes specific object versions and
 #' # returns the key and versions of deleted objects in the response.
@@ -4542,6 +4878,25 @@ s3_delete_object_tagging <- function(Bucket, Key, VersionId = NULL, ExpectedBuck
 #'       list(
 #'         Key = "HappyFace.jpg",
 #'         VersionId = "yoz3HB.ZhCS_tKVEmIOr7qYyyAaZSKVd"
+#'       )
+#'     ),
+#'     Quiet = FALSE
+#'   )
+#' )
+#' 
+#' # The following example deletes objects from a bucket. The bucket is
+#' # versioned, and the request does not specify the object version to
+#' # delete. In this case, all versions remain in the bucket and S3 adds a
+#' # delete marker.
+#' svc$delete_objects(
+#'   Bucket = "examplebucket",
+#'   Delete = list(
+#'     Objects = list(
+#'       list(
+#'         Key = "objectkey1"
+#'       ),
+#'       list(
+#'         Key = "objectkey2"
 #'       )
 #'     ),
 #'     Quiet = FALSE
@@ -4573,10 +4928,10 @@ s3_delete_objects <- function(Bucket, Delete, MFA = NULL, RequestPayer = NULL, B
 }
 .s3$operations$delete_objects <- s3_delete_objects
 
-#' This operation is not supported by directory buckets
+#' This operation is not supported for directory buckets
 #'
 #' @description
-#' This operation is not supported by directory buckets.
+#' This operation is not supported for directory buckets.
 #' 
 #' Removes the `PublicAccessBlock` configuration for an Amazon S3 bucket.
 #' To use this operation, you must have the `s3:PutBucketPublicAccessBlock`
@@ -4642,10 +4997,10 @@ s3_delete_public_access_block <- function(Bucket, ExpectedBucketOwner = NULL) {
 }
 .s3$operations$delete_public_access_block <- s3_delete_public_access_block
 
-#' This operation is not supported by directory buckets
+#' This operation is not supported for directory buckets
 #'
 #' @description
-#' This operation is not supported by directory buckets.
+#' This operation is not supported for directory buckets.
 #' 
 #' This implementation of the GET action uses the `accelerate` subresource
 #' to return the Transfer Acceleration state of a bucket, which is either
@@ -4734,10 +5089,10 @@ s3_get_bucket_accelerate_configuration <- function(Bucket, ExpectedBucketOwner =
 }
 .s3$operations$get_bucket_accelerate_configuration <- s3_get_bucket_accelerate_configuration
 
-#' This operation is not supported by directory buckets
+#' This operation is not supported for directory buckets
 #'
 #' @description
-#' This operation is not supported by directory buckets.
+#' This operation is not supported for directory buckets.
 #' 
 #' This implementation of the `GET` action uses the `acl` subresource to
 #' return the access control list (ACL) of a bucket. To use `GET` to return
@@ -4843,10 +5198,10 @@ s3_get_bucket_acl <- function(Bucket, ExpectedBucketOwner = NULL) {
 }
 .s3$operations$get_bucket_acl <- s3_get_bucket_acl
 
-#' This operation is not supported by directory buckets
+#' This operation is not supported for directory buckets
 #'
 #' @description
-#' This operation is not supported by directory buckets.
+#' This operation is not supported for directory buckets.
 #' 
 #' This implementation of the GET action returns an analytics configuration
 #' (identified by the analytics configuration ID) from the bucket.
@@ -4957,10 +5312,10 @@ s3_get_bucket_analytics_configuration <- function(Bucket, Id, ExpectedBucketOwne
 }
 .s3$operations$get_bucket_analytics_configuration <- s3_get_bucket_analytics_configuration
 
-#' This operation is not supported by directory buckets
+#' This operation is not supported for directory buckets
 #'
 #' @description
-#' This operation is not supported by directory buckets.
+#' This operation is not supported for directory buckets.
 #' 
 #' Returns the Cross-Origin Resource Sharing (CORS) configuration
 #' information set for the bucket.
@@ -5119,7 +5474,7 @@ s3_get_bucket_cors <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' ### HTTP Host header syntax
 #' 
 #' **Directory buckets** - The HTTP Host header syntax is
-#' `s3express-control.region.amazonaws.com`.
+#' `s3express-control.region-code.amazonaws.com`.
 #' 
 #' The following operations are related to
 #' [`get_bucket_encryption`][s3_get_bucket_encryption]:
@@ -5136,10 +5491,11 @@ s3_get_bucket_cors <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' 
 #' **Directory buckets** - When you use this operation with a directory
 #' bucket, you must use path-style requests in the format
-#' `https://s3express-control.region_code.amazonaws.com/bucket-name `.
+#' `https://s3express-control.region-code.amazonaws.com/bucket-name `.
 #' Virtual-hosted-style requests aren't supported. Directory bucket names
-#' must be unique in the chosen Availability Zone. Bucket names must also
-#' follow the format ` bucket_base_name--az_id--x-s3` (for example,
+#' must be unique in the chosen Zone (Availability Zone or Local Zone).
+#' Bucket names must also follow the format
+#' ` bucket-base-name--zone-id--x-s3` (for example,
 #' ` DOC-EXAMPLE-BUCKET--usw2-az1--x-s3`). For information about bucket
 #' naming restrictions, see [Directory bucket naming
 #' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
@@ -5202,10 +5558,10 @@ s3_get_bucket_encryption <- function(Bucket, ExpectedBucketOwner = NULL) {
 }
 .s3$operations$get_bucket_encryption <- s3_get_bucket_encryption
 
-#' This operation is not supported by directory buckets
+#' This operation is not supported for directory buckets
 #'
 #' @description
-#' This operation is not supported by directory buckets.
+#' This operation is not supported for directory buckets.
 #' 
 #' Gets the S3 Intelligent-Tiering configuration from the specified bucket.
 #' 
@@ -5311,10 +5667,10 @@ s3_get_bucket_intelligent_tiering_configuration <- function(Bucket, Id) {
 }
 .s3$operations$get_bucket_intelligent_tiering_configuration <- s3_get_bucket_intelligent_tiering_configuration
 
-#' This operation is not supported by directory buckets
+#' This operation is not supported for directory buckets
 #'
 #' @description
-#' This operation is not supported by directory buckets.
+#' This operation is not supported for directory buckets.
 #' 
 #' Returns an inventory configuration (identified by the inventory
 #' configuration ID) from the bucket.
@@ -5427,7 +5783,7 @@ s3_get_bucket_inventory_configuration <- function(Bucket, Id, ExpectedBucketOwne
 #' should see the updated version of this topic. This topic is provided for
 #' backward compatibility.
 #' 
-#' This operation is not supported by directory buckets.
+#' This operation is not supported for directory buckets.
 #' 
 #' Returns the lifecycle configuration information set on the bucket. For
 #' information about lifecycle configuration, see [Object Lifecycle
@@ -5550,35 +5906,72 @@ s3_get_bucket_lifecycle <- function(Bucket, ExpectedBucketOwner = NULL) {
 }
 .s3$operations$get_bucket_lifecycle <- s3_get_bucket_lifecycle
 
-#' This operation is not supported by directory buckets
+#' Returns the lifecycle configuration information set on the bucket
 #'
 #' @description
-#' This operation is not supported by directory buckets.
-#' 
-#' Bucket lifecycle configuration now supports specifying a lifecycle rule
-#' using an object key name prefix, one or more object tags, object size,
-#' or any combination of these. Accordingly, this section describes the
-#' latest API. The previous version of the API supported filtering based
-#' only on an object key name prefix, which is supported for backward
-#' compatibility. For the related API description, see
-#' [`get_bucket_lifecycle`][s3_get_bucket_lifecycle]. Accordingly, this
-#' section describes the latest API. The response describes the new filter
-#' element that you can use to specify a filter to select a subset of
-#' objects to which the rule applies. If you are using a previous version
-#' of the lifecycle configuration, it still works. For the earlier action,
-#' 
 #' Returns the lifecycle configuration information set on the bucket. For
 #' information about lifecycle configuration, see [Object Lifecycle
 #' Management](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lifecycle-mgmt.html).
 #' 
-#' To use this operation, you must have permission to perform the
-#' `s3:GetLifecycleConfiguration` action. The bucket owner has this
-#' permission, by default. The bucket owner can grant this permission to
-#' others. For more information about permissions, see [Permissions Related
-#' to Bucket Subresource
-#' Operations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security_iam_service-with-iam.html#security_iam_service-with-iam-id-based-policies-actions)
-#' and [Managing Access Permissions to Your Amazon S3
-#' Resources](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security-iam.html).
+#' Bucket lifecycle configuration now supports specifying a lifecycle rule
+#' using an object key name prefix, one or more object tags, object size,
+#' or any combination of these. Accordingly, this section describes the
+#' latest API, which is compatible with the new functionality. The previous
+#' version of the API supported filtering based only on an object key name
+#' prefix, which is supported for general purpose buckets for backward
+#' compatibility. For the related API description, see
+#' [`get_bucket_lifecycle`][s3_get_bucket_lifecycle].
+#' 
+#' Lifecyle configurations for directory buckets only support expiring
+#' objects and cancelling multipart uploads. Expiring of versioned objects,
+#' transitions and tag filters are not supported.
+#' 
+#' ### Permissions
+#' 
+#' -   **General purpose bucket permissions** - By default, all Amazon S3
+#'     resources are private, including buckets, objects, and related
+#'     subresources (for example, lifecycle configuration and website
+#'     configuration). Only the resource owner (that is, the Amazon Web
+#'     Services account that created it) can access the resource. The
+#'     resource owner can optionally grant access permissions to others by
+#'     writing an access policy. For this operation, a user must have the
+#'     `s3:GetLifecycleConfiguration` permission.
+#' 
+#'     For more information about permissions, see [Managing Access
+#'     Permissions to Your Amazon S3
+#'     Resources](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security-iam.html).
+#' 
+#' 
+#' -   **Directory bucket permissions** - You must have the
+#'     `s3express:GetLifecycleConfiguration` permission in an IAM
+#'     identity-based policy to use this operation. Cross-account access to
+#'     this API operation isn't supported. The resource owner can
+#'     optionally grant access permissions to others by creating a role or
+#'     user for them as long as they are within the same account as the
+#'     owner and resource.
+#' 
+#'     For more information about directory bucket policies and
+#'     permissions, see [Authorizing Regional endpoint APIs with
+#'     IAM](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-security-iam.html)
+#'     in the *Amazon S3 User Guide*.
+#' 
+#'     **Directory buckets** - For directory buckets, you must make
+#'     requests for this API operation to the Regional endpoint. These
+#'     endpoints support path-style requests in the format
+#'     `https://s3express-control.region-code.amazonaws.com/bucket-name `.
+#'     Virtual-hosted-style requests aren't supported. For more information
+#'     about endpoints in Availability Zones, see [Regional and Zonal
+#'     endpoints for directory buckets in Availability
+#'     Zones](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html)
+#'     in the *Amazon S3 User Guide*. For more information about endpoints
+#'     in Local Zones, see [Available Local Zone for directory
+#'     buckets](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-lzs-for-directory-buckets.html)
+#'     in the *Amazon S3 User Guide*.
+#' 
+#' ### HTTP Host header syntax
+#' 
+#' **Directory buckets** - The HTTP Host header syntax is
+#' `s3express-control.region.amazonaws.com`.
 #' 
 #' [`get_bucket_lifecycle_configuration`][s3_get_bucket_lifecycle_configuration]
 #' has the following special error:
@@ -5607,6 +6000,9 @@ s3_get_bucket_lifecycle <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
 #' provide does not match the actual owner of the bucket, the request fails
 #' with the HTTP status code `403 Forbidden` (access denied).
+#' 
+#' This parameter applies to general purpose buckets only. It is not
+#' supported for directory bucket lifecycle configurations.
 #'
 #' @return
 #' A list with the following syntax:
@@ -5714,10 +6110,10 @@ s3_get_bucket_lifecycle_configuration <- function(Bucket, ExpectedBucketOwner = 
 }
 .s3$operations$get_bucket_lifecycle_configuration <- s3_get_bucket_lifecycle_configuration
 
-#' This operation is not supported by directory buckets
+#' This operation is not supported for directory buckets
 #'
 #' @description
-#' This operation is not supported by directory buckets.
+#' This operation is not supported for directory buckets.
 #' 
 #' Returns the Region the bucket resides in. You set the bucket's Region
 #' using the `LocationConstraint` request parameter in a
@@ -5813,10 +6209,10 @@ s3_get_bucket_location <- function(Bucket, ExpectedBucketOwner = NULL) {
 }
 .s3$operations$get_bucket_location <- s3_get_bucket_location
 
-#' This operation is not supported by directory buckets
+#' This operation is not supported for directory buckets
 #'
 #' @description
-#' This operation is not supported by directory buckets.
+#' This operation is not supported for directory buckets.
 #' 
 #' Returns the logging status of a bucket and the permissions users have to
 #' view and modify that status.
@@ -5897,10 +6293,95 @@ s3_get_bucket_logging <- function(Bucket, ExpectedBucketOwner = NULL) {
 }
 .s3$operations$get_bucket_logging <- s3_get_bucket_logging
 
-#' This operation is not supported by directory buckets
+#' Retrieves the metadata table configuration for a general purpose bucket
 #'
 #' @description
-#' This operation is not supported by directory buckets.
+#' Retrieves the metadata table configuration for a general purpose bucket.
+#' For more information, see [Accelerating data discovery with S3
+#' Metadata](https://docs.aws.amazon.com/AmazonS3/latest/userguide/metadata-tables-overview.html)
+#' in the *Amazon S3 User Guide*.
+#' 
+#' ### Permissions
+#' 
+#' To use this operation, you must have the
+#' `s3:GetBucketMetadataTableConfiguration` permission. For more
+#' information, see [Setting up permissions for configuring metadata
+#' tables](https://docs.aws.amazon.com/AmazonS3/latest/userguide/metadata-tables-permissions.html)
+#' in the *Amazon S3 User Guide*.
+#' 
+#' The following operations are related to
+#' [`get_bucket_metadata_table_configuration`][s3_get_bucket_metadata_table_configuration]:
+#' 
+#' -   [`create_bucket_metadata_table_configuration`][s3_create_bucket_metadata_table_configuration]
+#' 
+#' -   [`delete_bucket_metadata_table_configuration`][s3_delete_bucket_metadata_table_configuration]
+#'
+#' @usage
+#' s3_get_bucket_metadata_table_configuration(Bucket, ExpectedBucketOwner)
+#'
+#' @param Bucket &#91;required&#93; The general purpose bucket that contains the metadata table
+#' configuration that you want to retrieve.
+#' @param ExpectedBucketOwner The expected owner of the general purpose bucket that you want to
+#' retrieve the metadata table configuration from.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GetBucketMetadataTableConfigurationResult = list(
+#'     MetadataTableConfigurationResult = list(
+#'       S3TablesDestinationResult = list(
+#'         TableBucketArn = "string",
+#'         TableName = "string",
+#'         TableArn = "string",
+#'         TableNamespace = "string"
+#'       )
+#'     ),
+#'     Status = "string",
+#'     Error = list(
+#'       ErrorCode = "string",
+#'       ErrorMessage = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_bucket_metadata_table_configuration(
+#'   Bucket = "string",
+#'   ExpectedBucketOwner = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname s3_get_bucket_metadata_table_configuration
+#'
+#' @aliases s3_get_bucket_metadata_table_configuration
+s3_get_bucket_metadata_table_configuration <- function(Bucket, ExpectedBucketOwner = NULL) {
+  op <- new_operation(
+    name = "GetBucketMetadataTableConfiguration",
+    http_method = "GET",
+    http_path = "/{Bucket}?metadataTable",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .s3$get_bucket_metadata_table_configuration_input(Bucket = Bucket, ExpectedBucketOwner = ExpectedBucketOwner)
+  output <- .s3$get_bucket_metadata_table_configuration_output()
+  config <- get_config()
+  svc <- .s3$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3$operations$get_bucket_metadata_table_configuration <- s3_get_bucket_metadata_table_configuration
+
+#' This operation is not supported for directory buckets
+#'
+#' @description
+#' This operation is not supported for directory buckets.
 #' 
 #' Gets a metrics configuration (specified by the metrics configuration ID)
 #' from the bucket. Note that this doesn't include the daily storage
@@ -6003,10 +6484,10 @@ s3_get_bucket_metrics_configuration <- function(Bucket, Id, ExpectedBucketOwner 
 }
 .s3$operations$get_bucket_metrics_configuration <- s3_get_bucket_metrics_configuration
 
-#' This operation is not supported by directory buckets
+#' This operation is not supported for directory buckets
 #'
 #' @description
-#' This operation is not supported by directory buckets.
+#' This operation is not supported for directory buckets.
 #' 
 #' No longer used, see
 #' [`get_bucket_notification_configuration`][s3_get_bucket_notification_configuration].
@@ -6109,10 +6590,10 @@ s3_get_bucket_notification <- function(Bucket, ExpectedBucketOwner = NULL) {
 }
 .s3$operations$get_bucket_notification <- s3_get_bucket_notification
 
-#' This operation is not supported by directory buckets
+#' This operation is not supported for directory buckets
 #'
 #' @description
-#' This operation is not supported by directory buckets.
+#' This operation is not supported for directory buckets.
 #' 
 #' Returns the notification configuration of a bucket.
 #' 
@@ -6262,10 +6743,10 @@ s3_get_bucket_notification_configuration <- function(Bucket, ExpectedBucketOwner
 }
 .s3$operations$get_bucket_notification_configuration <- s3_get_bucket_notification_configuration
 
-#' This operation is not supported by directory buckets
+#' This operation is not supported for directory buckets
 #'
 #' @description
-#' This operation is not supported by directory buckets.
+#' This operation is not supported for directory buckets.
 #' 
 #' Retrieves `OwnershipControls` for an Amazon S3 bucket. To use this
 #' operation, you must have the `s3:GetBucketOwnershipControls` permission.
@@ -6346,10 +6827,14 @@ s3_get_bucket_ownership_controls <- function(Bucket, ExpectedBucketOwner = NULL)
 #' **Directory buckets** - For directory buckets, you must make requests
 #' for this API operation to the Regional endpoint. These endpoints support
 #' path-style requests in the format
-#' `https://s3express-control.region_code.amazonaws.com/bucket-name `.
-#' Virtual-hosted-style requests aren't supported. For more information,
-#' see [Regional and Zonal
-#' endpoints](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html)
+#' `https://s3express-control.region-code.amazonaws.com/bucket-name `.
+#' Virtual-hosted-style requests aren't supported. For more information
+#' about endpoints in Availability Zones, see [Regional and Zonal endpoints
+#' for directory buckets in Availability
+#' Zones](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html)
+#' in the *Amazon S3 User Guide*. For more information about endpoints in
+#' Local Zones, see [Available Local Zone for directory
+#' buckets](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-lzs-for-directory-buckets.html)
 #' in the *Amazon S3 User Guide*.
 #' 
 #' ### Permissions
@@ -6409,7 +6894,7 @@ s3_get_bucket_ownership_controls <- function(Bucket, ExpectedBucketOwner = NULL)
 #' ### HTTP Host header syntax
 #' 
 #' **Directory buckets** - The HTTP Host header syntax is
-#' `s3express-control.region.amazonaws.com`.
+#' `s3express-control.region-code.amazonaws.com`.
 #' 
 #' The following action is related to
 #' [`get_bucket_policy`][s3_get_bucket_policy]:
@@ -6423,10 +6908,11 @@ s3_get_bucket_ownership_controls <- function(Bucket, ExpectedBucketOwner = NULL)
 #' 
 #' **Directory buckets** - When you use this operation with a directory
 #' bucket, you must use path-style requests in the format
-#' `https://s3express-control.region_code.amazonaws.com/bucket-name `.
+#' `https://s3express-control.region-code.amazonaws.com/bucket-name `.
 #' Virtual-hosted-style requests aren't supported. Directory bucket names
-#' must be unique in the chosen Availability Zone. Bucket names must also
-#' follow the format ` bucket_base_name--az_id--x-s3` (for example,
+#' must be unique in the chosen Zone (Availability Zone or Local Zone).
+#' Bucket names must also follow the format
+#' ` bucket-base-name--zone-id--x-s3` (for example,
 #' ` DOC-EXAMPLE-BUCKET--usw2-az1--x-s3`). For information about bucket
 #' naming restrictions, see [Directory bucket naming
 #' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
@@ -6502,10 +6988,10 @@ s3_get_bucket_policy <- function(Bucket, ExpectedBucketOwner = NULL) {
 }
 .s3$operations$get_bucket_policy <- s3_get_bucket_policy
 
-#' This operation is not supported by directory buckets
+#' This operation is not supported for directory buckets
 #'
 #' @description
-#' This operation is not supported by directory buckets.
+#' This operation is not supported for directory buckets.
 #' 
 #' Retrieves the policy status for an Amazon S3 bucket, indicating whether
 #' the bucket is public. In order to use this operation, you must have the
@@ -6580,10 +7066,10 @@ s3_get_bucket_policy_status <- function(Bucket, ExpectedBucketOwner = NULL) {
 }
 .s3$operations$get_bucket_policy_status <- s3_get_bucket_policy_status
 
-#' This operation is not supported by directory buckets
+#' This operation is not supported for directory buckets
 #'
 #' @description
-#' This operation is not supported by directory buckets.
+#' This operation is not supported for directory buckets.
 #' 
 #' Returns the replication configuration of a bucket.
 #' 
@@ -6735,10 +7221,10 @@ s3_get_bucket_replication <- function(Bucket, ExpectedBucketOwner = NULL) {
 }
 .s3$operations$get_bucket_replication <- s3_get_bucket_replication
 
-#' This operation is not supported by directory buckets
+#' This operation is not supported for directory buckets
 #'
 #' @description
-#' This operation is not supported by directory buckets.
+#' This operation is not supported for directory buckets.
 #' 
 #' Returns the request payment configuration of a bucket. To use this
 #' version of the operation, you must be the bucket owner. For more
@@ -6807,10 +7293,10 @@ s3_get_bucket_request_payment <- function(Bucket, ExpectedBucketOwner = NULL) {
 }
 .s3$operations$get_bucket_request_payment <- s3_get_bucket_request_payment
 
-#' This operation is not supported by directory buckets
+#' This operation is not supported for directory buckets
 #'
 #' @description
-#' This operation is not supported by directory buckets.
+#' This operation is not supported for directory buckets.
 #' 
 #' Returns the tag set associated with the bucket.
 #' 
@@ -6893,10 +7379,10 @@ s3_get_bucket_tagging <- function(Bucket, ExpectedBucketOwner = NULL) {
 }
 .s3$operations$get_bucket_tagging <- s3_get_bucket_tagging
 
-#' This operation is not supported by directory buckets
+#' This operation is not supported for directory buckets
 #'
 #' @description
-#' This operation is not supported by directory buckets.
+#' This operation is not supported for directory buckets.
 #' 
 #' Returns the versioning state of a bucket.
 #' 
@@ -6973,10 +7459,10 @@ s3_get_bucket_versioning <- function(Bucket, ExpectedBucketOwner = NULL) {
 }
 .s3$operations$get_bucket_versioning <- s3_get_bucket_versioning
 
-#' This operation is not supported by directory buckets
+#' This operation is not supported for directory buckets
 #'
 #' @description
-#' This operation is not supported by directory buckets.
+#' This operation is not supported for directory buckets.
 #' 
 #' Returns the website configuration for a bucket. To host website on
 #' Amazon S3, you can configure a bucket as website by adding a website
@@ -7104,10 +7590,14 @@ s3_get_bucket_website <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' `/photos/2006/February/sample.jpg`. Also, when you make requests to this
 #' API operation, your requests are sent to the Zonal endpoint. These
 #' endpoints support virtual-hosted-style requests in the format
-#' `https://bucket_name.s3express-az_id.region.amazonaws.com/key-name `.
-#' Path-style requests are not supported. For more information, see
-#' [Regional and Zonal
-#' endpoints](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html)
+#' `https://bucket-name.s3express-zone-id.region-code.amazonaws.com/key-name `.
+#' Path-style requests are not supported. For more information about
+#' endpoints in Availability Zones, see [Regional and Zonal endpoints for
+#' directory buckets in Availability
+#' Zones](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html)
+#' in the *Amazon S3 User Guide*. For more information about endpoints in
+#' Local Zones, see [Available Local Zone for directory
+#' buckets](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-lzs-for-directory-buckets.html)
 #' in the *Amazon S3 User Guide*.
 #' 
 #' ### Permissions
@@ -7241,7 +7731,7 @@ s3_get_bucket_website <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' ### HTTP Host header syntax
 #' 
 #' **Directory buckets** - The HTTP Host header syntax is
-#' ` Bucket_name.s3express-az_id.region.amazonaws.com`.
+#' ` Bucket-name.s3express-zone-id.region-code.amazonaws.com`.
 #' 
 #' The following operations are related to [`get_object`][s3_get_object]:
 #' 
@@ -7261,10 +7751,10 @@ s3_get_bucket_website <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' 
 #' **Directory buckets** - When you use this operation with a directory
 #' bucket, you must use virtual-hosted-style requests in the format
-#' ` Bucket_name.s3express-az_id.region.amazonaws.com`. Path-style requests
-#' are not supported. Directory bucket names must be unique in the chosen
-#' Availability Zone. Bucket names must follow the format
-#' ` bucket_base_name--az-id--x-s3` (for example,
+#' ` Bucket-name.s3express-zone-id.region-code.amazonaws.com`. Path-style
+#' requests are not supported. Directory bucket names must be unique in the
+#' chosen Zone (Availability Zone or Local Zone). Bucket names must follow
+#' the format ` bucket-base-name--zone-id--x-s3` (for example,
 #' ` DOC-EXAMPLE-BUCKET--usw2-az1--x-s3`). For information about bucket
 #' naming restrictions, see [Directory bucket naming
 #' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
@@ -7489,7 +7979,6 @@ s3_get_bucket_website <- function(Bucket, ExpectedBucketOwner = NULL) {
 #'   Expires = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   ExpiresString = "string",
 #'   WebsiteRedirectLocation = "string",
 #'   ServerSideEncryption = "AES256"|"aws:kms"|"aws:kms:dsse",
 #'   Metadata = list(
@@ -7536,7 +8025,7 @@ s3_get_bucket_website <- function(Bucket, ExpectedBucketOwner = NULL) {
 #'   ),
 #'   VersionId = "string",
 #'   SSECustomerAlgorithm = "string",
-#'   SSECustomerKey = raw,
+#'   SSECustomerKey = "string",
 #'   SSECustomerKeyMD5 = "string",
 #'   RequestPayer = "requester",
 #'   PartNumber = 123,
@@ -7547,18 +8036,18 @@ s3_get_bucket_website <- function(Bucket, ExpectedBucketOwner = NULL) {
 #'
 #' @examples
 #' \dontrun{
+#' # The following example retrieves an object for an S3 bucket.
+#' svc$get_object(
+#'   Bucket = "examplebucket",
+#'   Key = "HappyFace.jpg"
+#' )
+#' 
 #' # The following example retrieves an object for an S3 bucket. The request
 #' # specifies the range header to retrieve a specific byte range.
 #' svc$get_object(
 #'   Bucket = "examplebucket",
 #'   Key = "SampleFile.txt",
 #'   Range = "bytes=0-9"
-#' )
-#' 
-#' # The following example retrieves an object for an S3 bucket.
-#' svc$get_object(
-#'   Bucket = "examplebucket",
-#'   Key = "HappyFace.jpg"
 #' )
 #' }
 #'
@@ -7586,10 +8075,10 @@ s3_get_object <- function(Bucket, IfMatch = NULL, IfModifiedSince = NULL, IfNone
 }
 .s3$operations$get_object <- s3_get_object
 
-#' This operation is not supported by directory buckets
+#' This operation is not supported for directory buckets
 #'
 #' @description
-#' This operation is not supported by directory buckets.
+#' This operation is not supported for directory buckets.
 #' 
 #' Returns the access control list (ACL) of an object. To use this
 #' operation, you must have `s3:GetObjectAcl` permissions or `READ_ACP`
@@ -7735,10 +8224,14 @@ s3_get_object_acl <- function(Bucket, Key, VersionId = NULL, RequestPayer = NULL
 #' **Directory buckets** - For directory buckets, you must make requests
 #' for this API operation to the Zonal endpoint. These endpoints support
 #' virtual-hosted-style requests in the format
-#' `https://bucket_name.s3express-az_id.region.amazonaws.com/key-name `.
-#' Path-style requests are not supported. For more information, see
-#' [Regional and Zonal
-#' endpoints](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html)
+#' `https://bucket-name.s3express-zone-id.region-code.amazonaws.com/key-name `.
+#' Path-style requests are not supported. For more information about
+#' endpoints in Availability Zones, see [Regional and Zonal endpoints for
+#' directory buckets in Availability
+#' Zones](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html)
+#' in the *Amazon S3 User Guide*. For more information about endpoints in
+#' Local Zones, see [Available Local Zone for directory
+#' buckets](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-lzs-for-directory-buckets.html)
 #' in the *Amazon S3 User Guide*.
 #' 
 #' ### Permissions
@@ -7869,7 +8362,7 @@ s3_get_object_acl <- function(Bucket, Key, VersionId = NULL, RequestPayer = NULL
 #' ### HTTP Host header syntax
 #' 
 #' **Directory buckets** - The HTTP Host header syntax is
-#' ` Bucket_name.s3express-az_id.region.amazonaws.com`.
+#' ` Bucket-name.s3express-zone-id.region-code.amazonaws.com`.
 #' 
 #' The following actions are related to
 #' [`get_object_attributes`][s3_get_object_attributes]:
@@ -7899,10 +8392,10 @@ s3_get_object_acl <- function(Bucket, Key, VersionId = NULL, RequestPayer = NULL
 #' 
 #' **Directory buckets** - When you use this operation with a directory
 #' bucket, you must use virtual-hosted-style requests in the format
-#' ` Bucket_name.s3express-az_id.region.amazonaws.com`. Path-style requests
-#' are not supported. Directory bucket names must be unique in the chosen
-#' Availability Zone. Bucket names must follow the format
-#' ` bucket_base_name--az-id--x-s3` (for example,
+#' ` Bucket-name.s3express-zone-id.region-code.amazonaws.com`. Path-style
+#' requests are not supported. Directory bucket names must be unique in the
+#' chosen Zone (Availability Zone or Local Zone). Bucket names must follow
+#' the format ` bucket-base-name--zone-id--x-s3` (for example,
 #' ` DOC-EXAMPLE-BUCKET--usw2-az1--x-s3`). For information about bucket
 #' naming restrictions, see [Directory bucket naming
 #' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
@@ -8014,7 +8507,7 @@ s3_get_object_acl <- function(Bucket, Key, VersionId = NULL, RequestPayer = NULL
 #'   MaxParts = 123,
 #'   PartNumberMarker = 123,
 #'   SSECustomerAlgorithm = "string",
-#'   SSECustomerKey = raw,
+#'   SSECustomerKey = "string",
 #'   SSECustomerKeyMD5 = "string",
 #'   RequestPayer = "requester",
 #'   ExpectedBucketOwner = "string",
@@ -8048,10 +8541,10 @@ s3_get_object_attributes <- function(Bucket, Key, VersionId = NULL, MaxParts = N
 }
 .s3$operations$get_object_attributes <- s3_get_object_attributes
 
-#' This operation is not supported by directory buckets
+#' This operation is not supported for directory buckets
 #'
 #' @description
-#' This operation is not supported by directory buckets.
+#' This operation is not supported for directory buckets.
 #' 
 #' Gets an object's current legal hold status. For more information, see
 #' [Locking
@@ -8136,10 +8629,10 @@ s3_get_object_legal_hold <- function(Bucket, Key, VersionId = NULL, RequestPayer
 }
 .s3$operations$get_object_legal_hold <- s3_get_object_legal_hold
 
-#' This operation is not supported by directory buckets
+#' This operation is not supported for directory buckets
 #'
 #' @description
-#' This operation is not supported by directory buckets.
+#' This operation is not supported for directory buckets.
 #' 
 #' Gets the Object Lock configuration for a bucket. The rule specified in
 #' the Object Lock configuration will be applied by default to every new
@@ -8221,10 +8714,10 @@ s3_get_object_lock_configuration <- function(Bucket, ExpectedBucketOwner = NULL)
 }
 .s3$operations$get_object_lock_configuration <- s3_get_object_lock_configuration
 
-#' This operation is not supported by directory buckets
+#' This operation is not supported for directory buckets
 #'
 #' @description
-#' This operation is not supported by directory buckets.
+#' This operation is not supported for directory buckets.
 #' 
 #' Retrieves an object's retention settings. For more information, see
 #' [Locking
@@ -8312,10 +8805,10 @@ s3_get_object_retention <- function(Bucket, Key, VersionId = NULL, RequestPayer 
 }
 .s3$operations$get_object_retention <- s3_get_object_retention
 
-#' This operation is not supported by directory buckets
+#' This operation is not supported for directory buckets
 #'
 #' @description
-#' This operation is not supported by directory buckets.
+#' This operation is not supported for directory buckets.
 #' 
 #' Returns the tag-set of an object. You send the GET request against the
 #' tagging subresource associated with the object.
@@ -8405,18 +8898,18 @@ s3_get_object_retention <- function(Bucket, Key, VersionId = NULL, RequestPayer 
 #'
 #' @examples
 #' \dontrun{
+#' # The following example retrieves tag set of an object.
+#' svc$get_object_tagging(
+#'   Bucket = "examplebucket",
+#'   Key = "HappyFace.jpg"
+#' )
+#' 
 #' # The following example retrieves tag set of an object. The request
 #' # specifies object version.
 #' svc$get_object_tagging(
 #'   Bucket = "examplebucket",
 #'   Key = "exampleobject",
 #'   VersionId = "ydlaNkwWm0SfKJR.T1b1fIdPRbldTYRI"
-#' )
-#' 
-#' # The following example retrieves tag set of an object.
-#' svc$get_object_tagging(
-#'   Bucket = "examplebucket",
-#'   Key = "HappyFace.jpg"
 #' )
 #' }
 #'
@@ -8444,10 +8937,10 @@ s3_get_object_tagging <- function(Bucket, Key, VersionId = NULL, ExpectedBucketO
 }
 .s3$operations$get_object_tagging <- s3_get_object_tagging
 
-#' This operation is not supported by directory buckets
+#' This operation is not supported for directory buckets
 #'
 #' @description
-#' This operation is not supported by directory buckets.
+#' This operation is not supported for directory buckets.
 #' 
 #' Returns torrent files from a bucket. BitTorrent can save you bandwidth
 #' when you're distributing large files.
@@ -8528,10 +9021,10 @@ s3_get_object_torrent <- function(Bucket, Key, RequestPayer = NULL, ExpectedBuck
 }
 .s3$operations$get_object_torrent <- s3_get_object_torrent
 
-#' This operation is not supported by directory buckets
+#' This operation is not supported for directory buckets
 #'
 #' @description
-#' This operation is not supported by directory buckets.
+#' This operation is not supported for directory buckets.
 #' 
 #' Retrieves the `PublicAccessBlock` configuration for an Amazon S3 bucket.
 #' To use this operation, you must have the `s3:GetBucketPublicAccessBlock`
@@ -8674,14 +9167,18 @@ s3_get_public_access_block <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' ### HTTP Host header syntax
 #' 
 #' **Directory buckets** - The HTTP Host header syntax is
-#' ` Bucket_name.s3express-az_id.region.amazonaws.com`.
+#' ` Bucket-name.s3express-zone-id.region-code.amazonaws.com`.
 #' 
 #' You must make requests for this API operation to the Zonal endpoint.
 #' These endpoints support virtual-hosted-style requests in the format
-#' `https://bucket_name.s3express-az_id.region.amazonaws.com`. Path-style
-#' requests are not supported. For more information, see [Regional and
-#' Zonal
-#' endpoints](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html)
+#' `https://bucket-name.s3express-zone-id.region-code.amazonaws.com`.
+#' Path-style requests are not supported. For more information about
+#' endpoints in Availability Zones, see [Regional and Zonal endpoints for
+#' directory buckets in Availability
+#' Zones](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html)
+#' in the *Amazon S3 User Guide*. For more information about endpoints in
+#' Local Zones, see [Available Local Zone for directory
+#' buckets](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-lzs-for-directory-buckets.html)
 #' in the *Amazon S3 User Guide*.
 #'
 #' @usage
@@ -8691,10 +9188,10 @@ s3_get_public_access_block <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' 
 #' **Directory buckets** - When you use this operation with a directory
 #' bucket, you must use virtual-hosted-style requests in the format
-#' ` Bucket_name.s3express-az_id.region.amazonaws.com`. Path-style requests
-#' are not supported. Directory bucket names must be unique in the chosen
-#' Availability Zone. Bucket names must follow the format
-#' ` bucket_base_name--az-id--x-s3` (for example,
+#' ` Bucket-name.s3express-zone-id.region-code.amazonaws.com`. Path-style
+#' requests are not supported. Directory bucket names must be unique in the
+#' chosen Zone (Availability Zone or Local Zone). Bucket names must follow
+#' the format ` bucket-base-name--zone-id--x-s3` (for example,
 #' ` DOC-EXAMPLE-BUCKET--usw2-az1--x-s3`). For information about bucket
 #' naming restrictions, see [Directory bucket naming
 #' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
@@ -8741,7 +9238,7 @@ s3_get_public_access_block <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   BucketLocationType = "AvailabilityZone",
+#'   BucketLocationType = "AvailabilityZone"|"LocalZone",
 #'   BucketLocationName = "string",
 #'   BucketRegion = "string",
 #'   AccessPointAlias = TRUE|FALSE
@@ -8902,7 +9399,7 @@ s3_head_bucket <- function(Bucket, ExpectedBucketOwner = NULL) {
 #'     response header.
 #' 
 #' 
-#' -   **Directory buckets** - Delete marker is not supported by directory
+#' -   **Directory buckets** - Delete marker is not supported for directory
 #'     buckets.
 #' 
 #' -   **Directory buckets** - S3 Versioning isn't enabled and supported
@@ -8913,15 +9410,19 @@ s3_head_bucket <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' ### HTTP Host header syntax
 #' 
 #' **Directory buckets** - The HTTP Host header syntax is
-#' ` Bucket_name.s3express-az_id.region.amazonaws.com`.
+#' ` Bucket-name.s3express-zone-id.region-code.amazonaws.com`.
 #' 
 #' For directory buckets, you must make requests for this API operation to
 #' the Zonal endpoint. These endpoints support virtual-hosted-style
 #' requests in the format
-#' `https://bucket_name.s3express-az_id.region.amazonaws.com/key-name `.
-#' Path-style requests are not supported. For more information, see
-#' [Regional and Zonal
-#' endpoints](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html)
+#' `https://bucket-name.s3express-zone-id.region-code.amazonaws.com/key-name `.
+#' Path-style requests are not supported. For more information about
+#' endpoints in Availability Zones, see [Regional and Zonal endpoints for
+#' directory buckets in Availability
+#' Zones](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html)
+#' in the *Amazon S3 User Guide*. For more information about endpoints in
+#' Local Zones, see [Available Local Zone for directory
+#' buckets](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-lzs-for-directory-buckets.html)
 #' in the *Amazon S3 User Guide*.
 #' 
 #' The following actions are related to [`head_object`][s3_head_object]:
@@ -8942,10 +9443,10 @@ s3_head_bucket <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' 
 #' **Directory buckets** - When you use this operation with a directory
 #' bucket, you must use virtual-hosted-style requests in the format
-#' ` Bucket_name.s3express-az_id.region.amazonaws.com`. Path-style requests
-#' are not supported. Directory bucket names must be unique in the chosen
-#' Availability Zone. Bucket names must follow the format
-#' ` bucket_base_name--az-id--x-s3` (for example,
+#' ` Bucket-name.s3express-zone-id.region-code.amazonaws.com`. Path-style
+#' requests are not supported. Directory bucket names must be unique in the
+#' chosen Zone (Availability Zone or Local Zone). Bucket names must follow
+#' the format ` bucket-base-name--zone-id--x-s3` (for example,
 #' ` DOC-EXAMPLE-BUCKET--usw2-az1--x-s3`). For information about bucket
 #' naming restrictions, see [Directory bucket naming
 #' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
@@ -9113,7 +9614,6 @@ s3_head_bucket <- function(Bucket, ExpectedBucketOwner = NULL) {
 #'   Expires = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   ExpiresString = "string",
 #'   WebsiteRedirectLocation = "string",
 #'   ServerSideEncryption = "AES256"|"aws:kms"|"aws:kms:dsse",
 #'   Metadata = list(
@@ -9159,7 +9659,7 @@ s3_head_bucket <- function(Bucket, ExpectedBucketOwner = NULL) {
 #'   ),
 #'   VersionId = "string",
 #'   SSECustomerAlgorithm = "string",
-#'   SSECustomerKey = raw,
+#'   SSECustomerKey = "string",
 #'   SSECustomerKeyMD5 = "string",
 #'   RequestPayer = "requester",
 #'   PartNumber = 123,
@@ -9201,10 +9701,10 @@ s3_head_object <- function(Bucket, IfMatch = NULL, IfModifiedSince = NULL, IfNon
 }
 .s3$operations$head_object <- s3_head_object
 
-#' This operation is not supported by directory buckets
+#' This operation is not supported for directory buckets
 #'
 #' @description
-#' This operation is not supported by directory buckets.
+#' This operation is not supported for directory buckets.
 #' 
 #' Lists the analytics configurations for the bucket. You can have up to
 #' 1,000 analytics configurations per bucket.
@@ -9329,10 +9829,10 @@ s3_list_bucket_analytics_configurations <- function(Bucket, ContinuationToken = 
 }
 .s3$operations$list_bucket_analytics_configurations <- s3_list_bucket_analytics_configurations
 
-#' This operation is not supported by directory buckets
+#' This operation is not supported for directory buckets
 #'
 #' @description
-#' This operation is not supported by directory buckets.
+#' This operation is not supported for directory buckets.
 #' 
 #' Lists the S3 Intelligent-Tiering configuration from the specified
 #' bucket.
@@ -9446,10 +9946,10 @@ s3_list_bucket_intelligent_tiering_configurations <- function(Bucket, Continuati
 }
 .s3$operations$list_bucket_intelligent_tiering_configurations <- s3_list_bucket_intelligent_tiering_configurations
 
-#' This operation is not supported by directory buckets
+#' This operation is not supported for directory buckets
 #'
 #' @description
-#' This operation is not supported by directory buckets.
+#' This operation is not supported for directory buckets.
 #' 
 #' Returns a list of inventory configurations for the bucket. You can have
 #' up to 1,000 analytics configurations per bucket.
@@ -9571,10 +10071,10 @@ s3_list_bucket_inventory_configurations <- function(Bucket, ContinuationToken = 
 }
 .s3$operations$list_bucket_inventory_configurations <- s3_list_bucket_inventory_configurations
 
-#' This operation is not supported by directory buckets
+#' This operation is not supported for directory buckets
 #'
 #' @description
-#' This operation is not supported by directory buckets.
+#' This operation is not supported for directory buckets.
 #' 
 #' Lists the metrics configurations for the bucket. The metrics
 #' configurations are only for the request metrics of the bucket and do not
@@ -9692,18 +10192,29 @@ s3_list_bucket_metrics_configurations <- function(Bucket, ContinuationToken = NU
 }
 .s3$operations$list_bucket_metrics_configurations <- s3_list_bucket_metrics_configurations
 
-#' This operation is not supported by directory buckets
+#' This operation is not supported for directory buckets
 #'
 #' @description
-#' This operation is not supported by directory buckets.
+#' This operation is not supported for directory buckets.
 #' 
 #' Returns a list of all buckets owned by the authenticated sender of the
-#' request. To use this operation, you must have the `s3:ListAllMyBuckets`
-#' permission.
+#' request. To grant IAM permission to use this operation, you must add the
+#' `s3:ListAllMyBuckets` policy action.
 #' 
 #' For information about Amazon S3 buckets, see [Creating, configuring, and
 #' working with Amazon S3
 #' buckets](https://docs.aws.amazon.com/AmazonS3/latest/userguide/creating-buckets-s3.html).
+#' 
+#' We strongly recommend using only paginated
+#' [`list_buckets`][s3_list_buckets] requests. Unpaginated
+#' [`list_buckets`][s3_list_buckets] requests are only supported for Amazon
+#' Web Services accounts set to the default general purpose bucket quota of
+#' 10,000. If you have an approved general purpose bucket quota above
+#' 10,000, you must send paginated [`list_buckets`][s3_list_buckets]
+#' requests to list your account’s buckets. All unpaginated
+#' [`list_buckets`][s3_list_buckets] requests will be rejected for Amazon
+#' Web Services accounts with a general purpose bucket quota greater than
+#' 10,000.
 #'
 #' @usage
 #' s3_list_buckets(MaxBuckets, ContinuationToken, Prefix, BucketRegion)
@@ -9719,6 +10230,12 @@ s3_list_bucket_metrics_configurations <- function(Bucket, ContinuationToken = NU
 #' Length Constraints: Minimum length of 0. Maximum length of 1024.
 #' 
 #' Required: No.
+#' 
+#' If you specify the `bucket-region`, `prefix`, or `continuation-token`
+#' query parameters without using `max-buckets` to set the maximum number
+#' of buckets returned in the response, Amazon S3 applies a default page
+#' size of 10,000 and provides a continuation token if there are more
+#' buckets.
 #' @param Prefix Limits the response to bucket names that begin with the specified bucket
 #' name prefix.
 #' @param BucketRegion Limits the response to buckets that are located in the specified Amazon
@@ -9765,13 +10282,6 @@ s3_list_bucket_metrics_configurations <- function(Bucket, ContinuationToken = NU
 #' )
 #' ```
 #'
-#' @examples
-#' \dontrun{
-#' # The following example returns all the buckets owned by the sender of
-#' # this request.
-#' svc$list_buckets()
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname s3_list_buckets
@@ -9809,10 +10319,14 @@ s3_list_buckets <- function(MaxBuckets = NULL, ContinuationToken = NULL, Prefix 
 #' **Directory buckets** - For directory buckets, you must make requests
 #' for this API operation to the Regional endpoint. These endpoints support
 #' path-style requests in the format
-#' `https://s3express-control.region_code.amazonaws.com/bucket-name `.
-#' Virtual-hosted-style requests aren't supported. For more information,
-#' see [Regional and Zonal
-#' endpoints](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html)
+#' `https://s3express-control.region-code.amazonaws.com/bucket-name `.
+#' Virtual-hosted-style requests aren't supported. For more information
+#' about endpoints in Availability Zones, see [Regional and Zonal endpoints
+#' for directory buckets in Availability
+#' Zones](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html)
+#' in the *Amazon S3 User Guide*. For more information about endpoints in
+#' Local Zones, see [Available Local Zone for directory
+#' buckets](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-lzs-for-directory-buckets.html)
 #' in the *Amazon S3 User Guide*.
 #' 
 #' ### Permissions
@@ -9831,6 +10345,9 @@ s3_list_buckets <- function(MaxBuckets = NULL, ContinuationToken = NULL, Prefix 
 #' 
 #' **Directory buckets** - The HTTP Host header syntax is
 #' `s3express-control.region.amazonaws.com`.
+#' 
+#' The `BucketRegion` response element is not part of the
+#' [`list_directory_buckets`][s3_list_directory_buckets] Response Syntax.
 #'
 #' @usage
 #' s3_list_directory_buckets(ContinuationToken, MaxDirectoryBuckets)
@@ -9906,8 +10423,8 @@ s3_list_directory_buckets <- function(ContinuationToken = NULL, MaxDirectoryBuck
 #' multipart uploads, use the
 #' [`list_multipart_uploads`][s3_list_multipart_uploads] operation to list
 #' the in-progress multipart uploads in the bucket and use the
-#' `AbortMultupartUpload` operation to abort all the in-progress multipart
-#' uploads.
+#' [`abort_multipart_upload`][s3_abort_multipart_upload] operation to abort
+#' all the in-progress multipart uploads.
 #' 
 #' The [`list_multipart_uploads`][s3_list_multipart_uploads] operation
 #' returns a maximum of 1,000 multipart uploads in the response. The limit
@@ -9939,10 +10456,14 @@ s3_list_directory_buckets <- function(ContinuationToken = NULL, MaxDirectoryBuck
 #' **Directory buckets** - For directory buckets, you must make requests
 #' for this API operation to the Zonal endpoint. These endpoints support
 #' virtual-hosted-style requests in the format
-#' `https://bucket_name.s3express-az_id.region.amazonaws.com/key-name `.
-#' Path-style requests are not supported. For more information, see
-#' [Regional and Zonal
-#' endpoints](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html)
+#' `https://bucket-name.s3express-zone-id.region-code.amazonaws.com/key-name `.
+#' Path-style requests are not supported. For more information about
+#' endpoints in Availability Zones, see [Regional and Zonal endpoints for
+#' directory buckets in Availability
+#' Zones](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html)
+#' in the *Amazon S3 User Guide*. For more information about endpoints in
+#' Local Zones, see [Available Local Zone for directory
+#' buckets](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-lzs-for-directory-buckets.html)
 #' in the *Amazon S3 User Guide*.
 #' 
 #' ### Permissions
@@ -9994,7 +10515,7 @@ s3_list_directory_buckets <- function(ContinuationToken = NULL, MaxDirectoryBuck
 #' ### HTTP Host header syntax
 #' 
 #' **Directory buckets** - The HTTP Host header syntax is
-#' ` Bucket_name.s3express-az_id.region.amazonaws.com`.
+#' ` Bucket-name.s3express-zone-id.region-code.amazonaws.com`.
 #' 
 #' The following operations are related to
 #' [`list_multipart_uploads`][s3_list_multipart_uploads]:
@@ -10017,10 +10538,10 @@ s3_list_directory_buckets <- function(ContinuationToken = NULL, MaxDirectoryBuck
 #' 
 #' **Directory buckets** - When you use this operation with a directory
 #' bucket, you must use virtual-hosted-style requests in the format
-#' ` Bucket_name.s3express-az_id.region.amazonaws.com`. Path-style requests
-#' are not supported. Directory bucket names must be unique in the chosen
-#' Availability Zone. Bucket names must follow the format
-#' ` bucket_base_name--az-id--x-s3` (for example,
+#' ` Bucket-name.s3express-zone-id.region-code.amazonaws.com`. Path-style
+#' requests are not supported. Directory bucket names must be unique in the
+#' chosen Zone (Availability Zone or Local Zone). Bucket names must follow
+#' the format ` bucket-base-name--zone-id--x-s3` (for example,
 #' ` DOC-EXAMPLE-BUCKET--usw2-az1--x-s3`). For information about bucket
 #' naming restrictions, see [Directory bucket naming
 #' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
@@ -10198,7 +10719,7 @@ s3_list_multipart_uploads <- function(Bucket, Delimiter = NULL, EncodingType = N
     http_method = "GET",
     http_path = "/{Bucket}?uploads",
     host_prefix = "",
-    paginator = list(input_token = list("KeyMarker", "UploadIdMarker"), limit_key = "MaxUploads", more_results = "IsTruncated", output_token = c("NextKeyMarker", "NextUploadIdMarker"), result_key = list("Uploads", "CommonPrefixes")),
+    paginator = list(limit_key = "MaxUploads", more_results = "IsTruncated", output_token = c("NextKeyMarker", "NextUploadIdMarker"), input_token = list("KeyMarker", "UploadIdMarker"), result_key = list( "Uploads", "CommonPrefixes")),
     stream_api = FALSE
   )
   input <- .s3$list_multipart_uploads_input(Bucket = Bucket, Delimiter = Delimiter, EncodingType = EncodingType, KeyMarker = KeyMarker, MaxUploads = MaxUploads, Prefix = Prefix, UploadIdMarker = UploadIdMarker, ExpectedBucketOwner = ExpectedBucketOwner, RequestPayer = RequestPayer)
@@ -10211,10 +10732,10 @@ s3_list_multipart_uploads <- function(Bucket, Delimiter = NULL, EncodingType = N
 }
 .s3$operations$list_multipart_uploads <- s3_list_multipart_uploads
 
-#' This operation is not supported by directory buckets
+#' This operation is not supported for directory buckets
 #'
 #' @description
-#' This operation is not supported by directory buckets.
+#' This operation is not supported for directory buckets.
 #' 
 #' Returns metadata about all versions of the objects in a bucket. You can
 #' also use request parameters as selection criteria to return metadata
@@ -10357,8 +10878,11 @@ s3_list_multipart_uploads <- function(Bucket, Delimiter = NULL, EncodingType = N
 #'
 #' @examples
 #' \dontrun{
-#' # The following example returns versions of an object with specific key
-#' # name prefix.
+#' # The following example return versions of an object with specific key
+#' # name prefix. The request limits the number of items returned to two. If
+#' # there are are more than two object version, S3 returns NextToken in the
+#' # response. You can specify this token value in your next request to fetch
+#' # next set of object versions.
 #' svc$list_object_versions(
 #'   Bucket = "examplebucket",
 #'   Prefix = "HappyFace.jpg"
@@ -10376,7 +10900,7 @@ s3_list_object_versions <- function(Bucket, Delimiter = NULL, EncodingType = NUL
     http_method = "GET",
     http_path = "/{Bucket}?versions",
     host_prefix = "",
-    paginator = list(input_token = list("KeyMarker", "VersionIdMarker"), limit_key = "MaxKeys", more_results = "IsTruncated", output_token = c("NextKeyMarker", "NextVersionIdMarker"), result_key = list("Versions", "DeleteMarkers", "CommonPrefixes")),
+    paginator = list(more_results = "IsTruncated", limit_key = "MaxKeys", output_token = c("NextKeyMarker", "NextVersionIdMarker"), input_token = list("KeyMarker", "VersionIdMarker"), result_key = list("Versions", "DeleteMarkers", "CommonPrefixes")),
     stream_api = FALSE
   )
   input <- .s3$list_object_versions_input(Bucket = Bucket, Delimiter = Delimiter, EncodingType = EncodingType, KeyMarker = KeyMarker, MaxKeys = MaxKeys, Prefix = Prefix, VersionIdMarker = VersionIdMarker, ExpectedBucketOwner = ExpectedBucketOwner, RequestPayer = RequestPayer, OptionalObjectAttributes = OptionalObjectAttributes)
@@ -10389,10 +10913,10 @@ s3_list_object_versions <- function(Bucket, Delimiter = NULL, EncodingType = NUL
 }
 .s3$operations$list_object_versions <- s3_list_object_versions
 
-#' This operation is not supported by directory buckets
+#' This operation is not supported for directory buckets
 #'
 #' @description
-#' This operation is not supported by directory buckets.
+#' This operation is not supported for directory buckets.
 #' 
 #' Returns some or all (up to 1,000) of the objects in a bucket. You can
 #' use the request parameters as selection criteria to return a subset of
@@ -10426,10 +10950,10 @@ s3_list_object_versions <- function(Bucket, Delimiter = NULL, EncodingType = NUL
 #' 
 #' **Directory buckets** - When you use this operation with a directory
 #' bucket, you must use virtual-hosted-style requests in the format
-#' ` Bucket_name.s3express-az_id.region.amazonaws.com`. Path-style requests
-#' are not supported. Directory bucket names must be unique in the chosen
-#' Availability Zone. Bucket names must follow the format
-#' ` bucket_base_name--az-id--x-s3` (for example,
+#' ` Bucket-name.s3express-zone-id.region-code.amazonaws.com`. Path-style
+#' requests are not supported. Directory bucket names must be unique in the
+#' chosen Zone (Availability Zone or Local Zone). Bucket names must follow
+#' the format ` bucket-base-name--zone-id--x-s3` (for example,
 #' ` DOC-EXAMPLE-BUCKET--usw2-az1--x-s3`). For information about bucket
 #' naming restrictions, see [Directory bucket naming
 #' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
@@ -10560,7 +11084,7 @@ s3_list_objects <- function(Bucket, Delimiter = NULL, EncodingType = NULL, Marke
     http_method = "GET",
     http_path = "/{Bucket}",
     host_prefix = "",
-    paginator = list(input_token = c("Marker", "Marker"), limit_key = "MaxKeys", more_results = "IsTruncated", output_token = c("NextMarker", "Contents[-1].Key"), result_key = list("Contents", "CommonPrefixes")),
+    paginator = list(more_results = "IsTruncated", limit_key = "MaxKeys", output_token = c("NextMarker", "Contents[-1].Key"), input_token = c("Marker", "Marker"), result_key = list( "Contents", "CommonPrefixes")),
     stream_api = FALSE
   )
   input <- .s3$list_objects_input(Bucket = Bucket, Delimiter = Delimiter, EncodingType = EncodingType, Marker = Marker, MaxKeys = MaxKeys, Prefix = Prefix, RequestPayer = RequestPayer, ExpectedBucketOwner = ExpectedBucketOwner, OptionalObjectAttributes = OptionalObjectAttributes)
@@ -10598,10 +11122,14 @@ s3_list_objects <- function(Bucket, Delimiter = NULL, EncodingType = NULL, Marke
 #' -   **Directory buckets** - For directory buckets, you must make
 #'     requests for this API operation to the Zonal endpoint. These
 #'     endpoints support virtual-hosted-style requests in the format
-#'     `https://bucket_name.s3express-az_id.region.amazonaws.com/key-name `.
-#'     Path-style requests are not supported. For more information, see
-#'     [Regional and Zonal
-#'     endpoints](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html)
+#'     `https://bucket-name.s3express-zone-id.region-code.amazonaws.com/key-name `.
+#'     Path-style requests are not supported. For more information about
+#'     endpoints in Availability Zones, see [Regional and Zonal endpoints
+#'     for directory buckets in Availability
+#'     Zones](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html)
+#'     in the *Amazon S3 User Guide*. For more information about endpoints
+#'     in Local Zones, see [Available Local Zone for directory
+#'     buckets](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-lzs-for-directory-buckets.html)
 #'     in the *Amazon S3 User Guide*.
 #' 
 #' ### Permissions
@@ -10648,7 +11176,7 @@ s3_list_objects <- function(Bucket, Delimiter = NULL, EncodingType = NULL, Marke
 #' ### HTTP Host header syntax
 #' 
 #' **Directory buckets** - The HTTP Host header syntax is
-#' ` Bucket_name.s3express-az_id.region.amazonaws.com`.
+#' ` Bucket-name.s3express-zone-id.region-code.amazonaws.com`.
 #' 
 #' This section describes the latest revision of this action. We recommend
 #' that you use this revised API operation for application development. For
@@ -10671,10 +11199,10 @@ s3_list_objects <- function(Bucket, Delimiter = NULL, EncodingType = NULL, Marke
 #'
 #' @param Bucket &#91;required&#93; **Directory buckets** - When you use this operation with a directory
 #' bucket, you must use virtual-hosted-style requests in the format
-#' ` Bucket_name.s3express-az_id.region.amazonaws.com`. Path-style requests
-#' are not supported. Directory bucket names must be unique in the chosen
-#' Availability Zone. Bucket names must follow the format
-#' ` bucket_base_name--az-id--x-s3` (for example,
+#' ` Bucket-name.s3express-zone-id.region-code.amazonaws.com`. Path-style
+#' requests are not supported. Directory bucket names must be unique in the
+#' chosen Zone (Availability Zone or Local Zone). Bucket names must follow
+#' the format ` bucket-base-name--zone-id--x-s3` (for example,
 #' ` DOC-EXAMPLE-BUCKET--usw2-az1--x-s3`). For information about bucket
 #' naming restrictions, see [Directory bucket naming
 #' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
@@ -10840,7 +11368,7 @@ s3_list_objects <- function(Bucket, Delimiter = NULL, EncodingType = NULL, Marke
 #' # The following example retrieves object list. The request specifies max
 #' # keys to limit response to include only 2 object keys.
 #' svc$list_objects_v2(
-#'   Bucket = "DOC-EXAMPLE-BUCKET",
+#'   Bucket = "examplebucket",
 #'   MaxKeys = "2"
 #' )
 #' }
@@ -10856,7 +11384,7 @@ s3_list_objects_v2 <- function(Bucket, Delimiter = NULL, EncodingType = NULL, Ma
     http_method = "GET",
     http_path = "/{Bucket}?list-type=2",
     host_prefix = "",
-    paginator = list(input_token = "ContinuationToken", limit_key = "MaxKeys", output_token = "NextContinuationToken", result_key = list( "Contents", "CommonPrefixes")),
+    paginator = list(more_results = "IsTruncated", limit_key = "MaxKeys", output_token = "NextContinuationToken", input_token = "ContinuationToken", result_key = list("Contents", "CommonPrefixes")),
     stream_api = FALSE
   )
   input <- .s3$list_objects_v2_input(Bucket = Bucket, Delimiter = Delimiter, EncodingType = EncodingType, MaxKeys = MaxKeys, Prefix = Prefix, ContinuationToken = ContinuationToken, FetchOwner = FetchOwner, StartAfter = StartAfter, RequestPayer = RequestPayer, ExpectedBucketOwner = ExpectedBucketOwner, OptionalObjectAttributes = OptionalObjectAttributes)
@@ -10897,10 +11425,14 @@ s3_list_objects_v2 <- function(Bucket, Delimiter = NULL, EncodingType = NULL, Ma
 #' **Directory buckets** - For directory buckets, you must make requests
 #' for this API operation to the Zonal endpoint. These endpoints support
 #' virtual-hosted-style requests in the format
-#' `https://bucket_name.s3express-az_id.region.amazonaws.com/key-name `.
-#' Path-style requests are not supported. For more information, see
-#' [Regional and Zonal
-#' endpoints](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html)
+#' `https://bucket-name.s3express-zone-id.region-code.amazonaws.com/key-name `.
+#' Path-style requests are not supported. For more information about
+#' endpoints in Availability Zones, see [Regional and Zonal endpoints for
+#' directory buckets in Availability
+#' Zones](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html)
+#' in the *Amazon S3 User Guide*. For more information about endpoints in
+#' Local Zones, see [Available Local Zone for directory
+#' buckets](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-lzs-for-directory-buckets.html)
 #' in the *Amazon S3 User Guide*.
 #' 
 #' ### Permissions
@@ -10938,7 +11470,7 @@ s3_list_objects_v2 <- function(Bucket, Delimiter = NULL, EncodingType = NULL, Ma
 #' ### HTTP Host header syntax
 #' 
 #' **Directory buckets** - The HTTP Host header syntax is
-#' ` Bucket_name.s3express-az_id.region.amazonaws.com`.
+#' ` Bucket-name.s3express-zone-id.region-code.amazonaws.com`.
 #' 
 #' The following operations are related to [`list_parts`][s3_list_parts]:
 #' 
@@ -10963,10 +11495,10 @@ s3_list_objects_v2 <- function(Bucket, Delimiter = NULL, EncodingType = NULL, Ma
 #' 
 #' **Directory buckets** - When you use this operation with a directory
 #' bucket, you must use virtual-hosted-style requests in the format
-#' ` Bucket_name.s3express-az_id.region.amazonaws.com`. Path-style requests
-#' are not supported. Directory bucket names must be unique in the chosen
-#' Availability Zone. Bucket names must follow the format
-#' ` bucket_base_name--az-id--x-s3` (for example,
+#' ` Bucket-name.s3express-zone-id.region-code.amazonaws.com`. Path-style
+#' requests are not supported. Directory bucket names must be unique in the
+#' chosen Zone (Availability Zone or Local Zone). Bucket names must follow
+#' the format ` bucket-base-name--zone-id--x-s3` (for example,
 #' ` DOC-EXAMPLE-BUCKET--usw2-az1--x-s3`). For information about bucket
 #' naming restrictions, see [Directory bucket naming
 #' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
@@ -11083,7 +11615,7 @@ s3_list_objects_v2 <- function(Bucket, Delimiter = NULL, EncodingType = NULL, Ma
 #'   RequestPayer = "requester",
 #'   ExpectedBucketOwner = "string",
 #'   SSECustomerAlgorithm = "string",
-#'   SSECustomerKey = raw,
+#'   SSECustomerKey = "string",
 #'   SSECustomerKeyMD5 = "string"
 #' )
 #' ```
@@ -11110,7 +11642,7 @@ s3_list_parts <- function(Bucket, Key, MaxParts = NULL, PartNumberMarker = NULL,
     http_method = "GET",
     http_path = "/{Bucket}/{Key+}",
     host_prefix = "",
-    paginator = list(input_token = "PartNumberMarker", limit_key = "MaxParts", more_results = "IsTruncated", output_token = "NextPartNumberMarker", result_key = "Parts"),
+    paginator = list(more_results = "IsTruncated", limit_key = "MaxParts", output_token = "NextPartNumberMarker", input_token = "PartNumberMarker", result_key = "Parts"),
     stream_api = FALSE
   )
   input <- .s3$list_parts_input(Bucket = Bucket, Key = Key, MaxParts = MaxParts, PartNumberMarker = PartNumberMarker, UploadId = UploadId, RequestPayer = RequestPayer, ExpectedBucketOwner = ExpectedBucketOwner, SSECustomerAlgorithm = SSECustomerAlgorithm, SSECustomerKey = SSECustomerKey, SSECustomerKeyMD5 = SSECustomerKeyMD5)
@@ -11123,10 +11655,10 @@ s3_list_parts <- function(Bucket, Key, MaxParts = NULL, PartNumberMarker = NULL,
 }
 .s3$operations$list_parts <- s3_list_parts
 
-#' This operation is not supported by directory buckets
+#' This operation is not supported for directory buckets
 #'
 #' @description
-#' This operation is not supported by directory buckets.
+#' This operation is not supported for directory buckets.
 #' 
 #' Sets the accelerate configuration of an existing bucket. Amazon S3
 #' Transfer Acceleration is a bucket-level feature that enables you to
@@ -11229,10 +11761,10 @@ s3_put_bucket_accelerate_configuration <- function(Bucket, AccelerateConfigurati
 }
 .s3$operations$put_bucket_accelerate_configuration <- s3_put_bucket_accelerate_configuration
 
-#' This operation is not supported by directory buckets
+#' This operation is not supported for directory buckets
 #'
 #' @description
-#' This operation is not supported by directory buckets.
+#' This operation is not supported for directory buckets.
 #' 
 #' Sets the permissions on an existing bucket using access control lists
 #' (ACL). For more information, see [Using
@@ -11501,10 +12033,10 @@ s3_put_bucket_acl <- function(ACL = NULL, AccessControlPolicy = NULL, Bucket, Co
 }
 .s3$operations$put_bucket_acl <- s3_put_bucket_acl
 
-#' This operation is not supported by directory buckets
+#' This operation is not supported for directory buckets
 #'
 #' @description
-#' This operation is not supported by directory buckets.
+#' This operation is not supported for directory buckets.
 #' 
 #' Sets an analytics configuration for the bucket (specified by the
 #' analytics configuration ID). You can have up to 1,000 analytics
@@ -11648,10 +12180,10 @@ s3_put_bucket_analytics_configuration <- function(Bucket, Id, AnalyticsConfigura
 }
 .s3$operations$put_bucket_analytics_configuration <- s3_put_bucket_analytics_configuration
 
-#' This operation is not supported by directory buckets
+#' This operation is not supported for directory buckets
 #'
 #' @description
-#' This operation is not supported by directory buckets.
+#' This operation is not supported for directory buckets.
 #' 
 #' Sets the `cors` configuration for your bucket. If the configuration
 #' exists, Amazon S3 replaces it.
@@ -11843,10 +12375,14 @@ s3_put_bucket_cors <- function(Bucket, CORSConfiguration, ContentMD5 = NULL, Che
 #' **Directory buckets** - For directory buckets, you must make requests
 #' for this API operation to the Regional endpoint. These endpoints support
 #' path-style requests in the format
-#' `https://s3express-control.region_code.amazonaws.com/bucket-name `.
-#' Virtual-hosted-style requests aren't supported. For more information,
-#' see [Regional and Zonal
-#' endpoints](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html)
+#' `https://s3express-control.region-code.amazonaws.com/bucket-name `.
+#' Virtual-hosted-style requests aren't supported. For more information
+#' about endpoints in Availability Zones, see [Regional and Zonal endpoints
+#' for directory buckets in Availability
+#' Zones](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html)
+#' in the *Amazon S3 User Guide*. For more information about endpoints in
+#' Local Zones, see [Available Local Zone for directory
+#' buckets](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-lzs-for-directory-buckets.html)
 #' in the *Amazon S3 User Guide*.
 #' 
 #' By default, all buckets have a default encryption configuration that
@@ -11960,7 +12496,7 @@ s3_put_bucket_cors <- function(Bucket, CORSConfiguration, ContentMD5 = NULL, Che
 #' ### HTTP Host header syntax
 #' 
 #' **Directory buckets** - The HTTP Host header syntax is
-#' `s3express-control.region.amazonaws.com`.
+#' `s3express-control.region-code.amazonaws.com`.
 #' 
 #' The following operations are related to
 #' [`put_bucket_encryption`][s3_put_bucket_encryption]:
@@ -11978,10 +12514,11 @@ s3_put_bucket_cors <- function(Bucket, CORSConfiguration, ContentMD5 = NULL, Che
 #' 
 #' **Directory buckets** - When you use this operation with a directory
 #' bucket, you must use path-style requests in the format
-#' `https://s3express-control.region_code.amazonaws.com/bucket-name `.
+#' `https://s3express-control.region-code.amazonaws.com/bucket-name `.
 #' Virtual-hosted-style requests aren't supported. Directory bucket names
-#' must be unique in the chosen Availability Zone. Bucket names must also
-#' follow the format ` bucket_base_name--az_id--x-s3` (for example,
+#' must be unique in the chosen Zone (Availability Zone or Local Zone).
+#' Bucket names must also follow the format
+#' ` bucket-base-name--zone-id--x-s3` (for example,
 #' ` DOC-EXAMPLE-BUCKET--usw2-az1--x-s3`). For information about bucket
 #' naming restrictions, see [Directory bucket naming
 #' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
@@ -12065,10 +12602,10 @@ s3_put_bucket_encryption <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorith
 }
 .s3$operations$put_bucket_encryption <- s3_put_bucket_encryption
 
-#' This operation is not supported by directory buckets
+#' This operation is not supported for directory buckets
 #'
 #' @description
-#' This operation is not supported by directory buckets.
+#' This operation is not supported for directory buckets.
 #' 
 #' Puts a S3 Intelligent-Tiering configuration to the specified bucket. You
 #' can have up to 1,000 S3 Intelligent-Tiering configurations per bucket.
@@ -12199,10 +12736,10 @@ s3_put_bucket_intelligent_tiering_configuration <- function(Bucket, Id, Intellig
 }
 .s3$operations$put_bucket_intelligent_tiering_configuration <- s3_put_bucket_intelligent_tiering_configuration
 
-#' This operation is not supported by directory buckets
+#' This operation is not supported for directory buckets
 #'
 #' @description
-#' This operation is not supported by directory buckets.
+#' This operation is not supported for directory buckets.
 #' 
 #' This implementation of the `PUT` action adds an inventory configuration
 #' (identified by the inventory ID) to the bucket. You can have up to 1,000
@@ -12363,15 +12900,15 @@ s3_put_bucket_inventory_configuration <- function(Bucket, Id, InventoryConfigura
 }
 .s3$operations$put_bucket_inventory_configuration <- s3_put_bucket_inventory_configuration
 
-#' This operation is not supported by directory buckets
+#' For an updated version of this API, see PutBucketLifecycleConfiguration
 #'
 #' @description
-#' This operation is not supported by directory buckets.
-#' 
 #' For an updated version of this API, see
 #' [`put_bucket_lifecycle_configuration`][s3_put_bucket_lifecycle_configuration].
 #' This version has been deprecated. Existing lifecycle configurations will
 #' work. For new lifecycle configurations, use the updated API.
+#' 
+#' This operation is not supported for directory buckets.
 #' 
 #' Creates a new lifecycle configuration for the bucket or replaces an
 #' existing lifecycle configuration. For information about lifecycle
@@ -12524,11 +13061,10 @@ s3_put_bucket_lifecycle <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm
 }
 .s3$operations$put_bucket_lifecycle <- s3_put_bucket_lifecycle
 
-#' This operation is not supported by directory buckets
+#' Creates a new lifecycle configuration for the bucket or replaces an
+#' existing lifecycle configuration
 #'
 #' @description
-#' This operation is not supported by directory buckets.
-#' 
 #' Creates a new lifecycle configuration for the bucket or replaces an
 #' existing lifecycle configuration. Keep in mind that this will overwrite
 #' an existing lifecycle configuration, so if you want to retain any
@@ -12537,7 +13073,19 @@ s3_put_bucket_lifecycle <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm
 #' [Managing your storage
 #' lifecycle](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lifecycle-mgmt.html).
 #' 
+#' Bucket lifecycle configuration now supports specifying a lifecycle rule
+#' using an object key name prefix, one or more object tags, object size,
+#' or any combination of these. Accordingly, this section describes the
+#' latest API. The previous version of the API supported filtering based
+#' only on an object key name prefix, which is supported for backward
+#' compatibility. For the related API description, see
+#' [`put_bucket_lifecycle`][s3_put_bucket_lifecycle].
+#' 
 #' ### Rules
+#' 
+#' ### Permissions
+#' 
+#' ### HTTP Host header syntax
 #' 
 #' You specify the lifecycle configuration in your request body. The
 #' lifecycle configuration is specified as XML consisting of one or more
@@ -12549,8 +13097,12 @@ s3_put_bucket_lifecycle <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm
 #' or any combination of these. Accordingly, this section describes the
 #' latest API. The previous version of the API supported filtering based
 #' only on an object key name prefix, which is supported for backward
-#' compatibility. For the related API description, see
-#' [`put_bucket_lifecycle`][s3_put_bucket_lifecycle].
+#' compatibility for general purpose buckets. For the related API
+#' description, see [`put_bucket_lifecycle`][s3_put_bucket_lifecycle].
+#' 
+#' Lifecyle configurations for directory buckets only support expiring
+#' objects and cancelling multipart uploads. Expiring of versioned
+#' objects,transitions and tag filters are not supported.
 #' 
 #' A lifecycle rule consists of the following:
 #' 
@@ -12573,36 +13125,62 @@ s3_put_bucket_lifecycle <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm
 #' and [Lifecycle Configuration
 #' Elements](https://docs.aws.amazon.com/AmazonS3/latest/userguide/intro-lifecycle-rules.html).
 #' 
-#' ### Permissions
+#' -   **General purpose bucket permissions** - By default, all Amazon S3
+#'     resources are private, including buckets, objects, and related
+#'     subresources (for example, lifecycle configuration and website
+#'     configuration). Only the resource owner (that is, the Amazon Web
+#'     Services account that created it) can access the resource. The
+#'     resource owner can optionally grant access permissions to others by
+#'     writing an access policy. For this operation, a user must have the
+#'     `s3:PutLifecycleConfiguration` permission.
 #' 
-#' By default, all Amazon S3 resources are private, including buckets,
-#' objects, and related subresources (for example, lifecycle configuration
-#' and website configuration). Only the resource owner (that is, the Amazon
-#' Web Services account that created it) can access the resource. The
-#' resource owner can optionally grant access permissions to others by
-#' writing an access policy. For this operation, a user must get the
-#' `s3:PutLifecycleConfiguration` permission.
+#'     You can also explicitly deny permissions. An explicit deny also
+#'     supersedes any other permissions. If you want to block users or
+#'     accounts from removing or deleting objects from your bucket, you
+#'     must deny them permissions for the following actions:
 #' 
-#' You can also explicitly deny permissions. An explicit deny also
-#' supersedes any other permissions. If you want to block users or accounts
-#' from removing or deleting objects from your bucket, you must deny them
-#' permissions for the following actions:
+#'     -   `s3:DeleteObject`
 #' 
-#' -   `s3:DeleteObject`
+#'     -   `s3:DeleteObjectVersion`
 #' 
-#' -   `s3:DeleteObjectVersion`
+#'     -   `s3:PutLifecycleConfiguration`
 #' 
-#' -   `s3:PutLifecycleConfiguration`
+#'         For more information about permissions, see [Managing Access
+#'         Permissions to Your Amazon S3
+#'         Resources](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security-iam.html).
 #' 
-#' For more information about permissions, see [Managing Access Permissions
-#' to Your Amazon S3
-#' Resources](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security-iam.html).
+#' 
+#' -   **Directory bucket permissions** - You must have the
+#'     `s3express:PutLifecycleConfiguration` permission in an IAM
+#'     identity-based policy to use this operation. Cross-account access to
+#'     this API operation isn't supported. The resource owner can
+#'     optionally grant access permissions to others by creating a role or
+#'     user for them as long as they are within the same account as the
+#'     owner and resource.
+#' 
+#'     For more information about directory bucket policies and
+#'     permissions, see [Authorizing Regional endpoint APIs with
+#'     IAM](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-security-iam.html)
+#'     in the *Amazon S3 User Guide*.
+#' 
+#'     **Directory buckets** - For directory buckets, you must make
+#'     requests for this API operation to the Regional endpoint. These
+#'     endpoints support path-style requests in the format
+#'     `https://s3express-control.region-code.amazonaws.com/bucket-name `.
+#'     Virtual-hosted-style requests aren't supported. For more information
+#'     about endpoints in Availability Zones, see [Regional and Zonal
+#'     endpoints for directory buckets in Availability
+#'     Zones](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html)
+#'     in the *Amazon S3 User Guide*. For more information about endpoints
+#'     in Local Zones, see [Available Local Zone for directory
+#'     buckets](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-lzs-for-directory-buckets.html)
+#'     in the *Amazon S3 User Guide*.
+#' 
+#' **Directory buckets** - The HTTP Host header syntax is
+#' `s3express-control.region.amazonaws.com`.
 #' 
 #' The following operations are related to
 #' [`put_bucket_lifecycle_configuration`][s3_put_bucket_lifecycle_configuration]:
-#' 
-#' -   [Examples of Lifecycle
-#'     Configuration](https://docs.aws.amazon.com/AmazonS3/latest/userguide/lifecycle-configuration-examples.html)
 #' 
 #' -   [`get_bucket_lifecycle_configuration`][s3_get_bucket_lifecycle_configuration]
 #' 
@@ -12629,8 +13207,14 @@ s3_put_bucket_lifecycle <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm
 #' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
 #' provide does not match the actual owner of the bucket, the request fails
 #' with the HTTP status code `403 Forbidden` (access denied).
+#' 
+#' This parameter applies to general purpose buckets only. It is not
+#' supported for directory bucket lifecycle configurations.
 #' @param TransitionDefaultMinimumObjectSize Indicates which default minimum object size behavior is applied to the
 #' lifecycle configuration.
+#' 
+#' This parameter applies to general purpose buckets only. It is not
+#' supported for directory bucket lifecycle configurations.
 #' 
 #' -   `all_storage_classes_128K` - Objects smaller than 128 KB will not
 #'     transition to any storage class by default.
@@ -12775,10 +13359,10 @@ s3_put_bucket_lifecycle_configuration <- function(Bucket, ChecksumAlgorithm = NU
 }
 .s3$operations$put_bucket_lifecycle_configuration <- s3_put_bucket_lifecycle_configuration
 
-#' This operation is not supported by directory buckets
+#' This operation is not supported for directory buckets
 #'
 #' @description
-#' This operation is not supported by directory buckets.
+#' This operation is not supported for directory buckets.
 #' 
 #' Set the logging parameters for a bucket and to specify permissions for
 #' who can view and modify the logging parameters. All logs are saved to
@@ -12958,10 +13542,10 @@ s3_put_bucket_logging <- function(Bucket, BucketLoggingStatus, ContentMD5 = NULL
 }
 .s3$operations$put_bucket_logging <- s3_put_bucket_logging
 
-#' This operation is not supported by directory buckets
+#' This operation is not supported for directory buckets
 #'
 #' @description
-#' This operation is not supported by directory buckets.
+#' This operation is not supported for directory buckets.
 #' 
 #' Sets a metrics configuration (specified by the metrics configuration ID)
 #' for the bucket. You can have up to 1,000 metrics configurations per
@@ -13071,10 +13655,10 @@ s3_put_bucket_metrics_configuration <- function(Bucket, Id, MetricsConfiguration
 }
 .s3$operations$put_bucket_metrics_configuration <- s3_put_bucket_metrics_configuration
 
-#' This operation is not supported by directory buckets
+#' This operation is not supported for directory buckets
 #'
 #' @description
-#' This operation is not supported by directory buckets.
+#' This operation is not supported for directory buckets.
 #' 
 #' No longer used, see the
 #' [`put_bucket_notification_configuration`][s3_put_bucket_notification_configuration]
@@ -13171,10 +13755,10 @@ s3_put_bucket_notification <- function(Bucket, ContentMD5 = NULL, ChecksumAlgori
 }
 .s3$operations$put_bucket_notification <- s3_put_bucket_notification
 
-#' This operation is not supported by directory buckets
+#' This operation is not supported for directory buckets
 #'
 #' @description
-#' This operation is not supported by directory buckets.
+#' This operation is not supported for directory buckets.
 #' 
 #' Enables notifications of specified events for a bucket. For more
 #' information about event notifications, see [Configuring Event
@@ -13366,10 +13950,10 @@ s3_put_bucket_notification_configuration <- function(Bucket, NotificationConfigu
 }
 .s3$operations$put_bucket_notification_configuration <- s3_put_bucket_notification_configuration
 
-#' This operation is not supported by directory buckets
+#' This operation is not supported for directory buckets
 #'
 #' @description
-#' This operation is not supported by directory buckets.
+#' This operation is not supported for directory buckets.
 #' 
 #' Creates or modifies `OwnershipControls` for an Amazon S3 bucket. To use
 #' this operation, you must have the `s3:PutBucketOwnershipControls`
@@ -13455,10 +14039,14 @@ s3_put_bucket_ownership_controls <- function(Bucket, ContentMD5 = NULL, Expected
 #' **Directory buckets** - For directory buckets, you must make requests
 #' for this API operation to the Regional endpoint. These endpoints support
 #' path-style requests in the format
-#' `https://s3express-control.region_code.amazonaws.com/bucket-name `.
-#' Virtual-hosted-style requests aren't supported. For more information,
-#' see [Regional and Zonal
-#' endpoints](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html)
+#' `https://s3express-control.region-code.amazonaws.com/bucket-name `.
+#' Virtual-hosted-style requests aren't supported. For more information
+#' about endpoints in Availability Zones, see [Regional and Zonal endpoints
+#' for directory buckets in Availability
+#' Zones](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html)
+#' in the *Amazon S3 User Guide*. For more information about endpoints in
+#' Local Zones, see [Available Local Zone for directory
+#' buckets](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-lzs-for-directory-buckets.html)
 #' in the *Amazon S3 User Guide*.
 #' 
 #' ### Permissions
@@ -13518,7 +14106,7 @@ s3_put_bucket_ownership_controls <- function(Bucket, ContentMD5 = NULL, Expected
 #' ### HTTP Host header syntax
 #' 
 #' **Directory buckets** - The HTTP Host header syntax is
-#' `s3express-control.region.amazonaws.com`.
+#' `s3express-control.region-code.amazonaws.com`.
 #' 
 #' The following operations are related to
 #' [`put_bucket_policy`][s3_put_bucket_policy]:
@@ -13535,10 +14123,11 @@ s3_put_bucket_ownership_controls <- function(Bucket, ContentMD5 = NULL, Expected
 #' 
 #' **Directory buckets** - When you use this operation with a directory
 #' bucket, you must use path-style requests in the format
-#' `https://s3express-control.region_code.amazonaws.com/bucket-name `.
+#' `https://s3express-control.region-code.amazonaws.com/bucket-name `.
 #' Virtual-hosted-style requests aren't supported. Directory bucket names
-#' must be unique in the chosen Availability Zone. Bucket names must also
-#' follow the format ` bucket_base_name--az_id--x-s3` (for example,
+#' must be unique in the chosen Zone (Availability Zone or Local Zone).
+#' Bucket names must also follow the format
+#' ` bucket-base-name--zone-id--x-s3` (for example,
 #' ` DOC-EXAMPLE-BUCKET--usw2-az1--x-s3`). For information about bucket
 #' naming restrictions, see [Directory bucket naming
 #' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
@@ -13644,10 +14233,10 @@ s3_put_bucket_policy <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm = 
 }
 .s3$operations$put_bucket_policy <- s3_put_bucket_policy
 
-#' This operation is not supported by directory buckets
+#' This operation is not supported for directory buckets
 #'
 #' @description
-#' This operation is not supported by directory buckets.
+#' This operation is not supported for directory buckets.
 #' 
 #' Creates a replication configuration or replaces an existing one. For
 #' more information, see
@@ -13878,10 +14467,10 @@ s3_put_bucket_replication <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorit
 }
 .s3$operations$put_bucket_replication <- s3_put_bucket_replication
 
-#' This operation is not supported by directory buckets
+#' This operation is not supported for directory buckets
 #'
 #' @description
-#' This operation is not supported by directory buckets.
+#' This operation is not supported for directory buckets.
 #' 
 #' Sets the request payment configuration for a bucket. By default, the
 #' bucket owner pays for downloads from the bucket. This configuration
@@ -13978,10 +14567,10 @@ s3_put_bucket_request_payment <- function(Bucket, ContentMD5 = NULL, ChecksumAlg
 }
 .s3$operations$put_bucket_request_payment <- s3_put_bucket_request_payment
 
-#' This operation is not supported by directory buckets
+#' This operation is not supported for directory buckets
 #'
 #' @description
-#' This operation is not supported by directory buckets.
+#' This operation is not supported for directory buckets.
 #' 
 #' Sets the tags for a bucket.
 #' 
@@ -14128,15 +14717,18 @@ s3_put_bucket_tagging <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 }
 .s3$operations$put_bucket_tagging <- s3_put_bucket_tagging
 
-#' This operation is not supported by directory buckets
+#' This operation is not supported for directory buckets
 #'
 #' @description
-#' This operation is not supported by directory buckets.
+#' This operation is not supported for directory buckets.
 #' 
 #' When you enable versioning on a bucket for the first time, it might take
-#' a short amount of time for the change to be fully propagated. We
-#' recommend that you wait for 15 minutes after enabling versioning before
-#' issuing write operations (`PUT` or `DELETE`) on objects in the bucket.
+#' a short amount of time for the change to be fully propagated. While this
+#' change is propagating, you may encounter intermittent
+#' `HTTP 404 NoSuchKey` errors for requests to objects created or updated
+#' after enabling versioning. We recommend that you wait for 15 minutes
+#' after enabling versioning before issuing write operations (`PUT` or
+#' `DELETE`) on objects in the bucket.
 #' 
 #' Sets the versioning state of an existing bucket.
 #' 
@@ -14263,10 +14855,10 @@ s3_put_bucket_versioning <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorith
 }
 .s3$operations$put_bucket_versioning <- s3_put_bucket_versioning
 
-#' This operation is not supported by directory buckets
+#' This operation is not supported for directory buckets
 #'
 #' @description
-#' This operation is not supported by directory buckets.
+#' This operation is not supported for directory buckets.
 #' 
 #' Sets the configuration of the website that is specified in the `website`
 #' subresource. To configure a bucket as a website, you can add this
@@ -14469,10 +15061,14 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #' -   **Directory buckets** - For directory buckets, you must make
 #'     requests for this API operation to the Zonal endpoint. These
 #'     endpoints support virtual-hosted-style requests in the format
-#'     `https://bucket_name.s3express-az_id.region.amazonaws.com/key-name `.
-#'     Path-style requests are not supported. For more information, see
-#'     [Regional and Zonal
-#'     endpoints](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html)
+#'     `https://bucket-name.s3express-zone-id.region-code.amazonaws.com/key-name `.
+#'     Path-style requests are not supported. For more information about
+#'     endpoints in Availability Zones, see [Regional and Zonal endpoints
+#'     for directory buckets in Availability
+#'     Zones](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html)
+#'     in the *Amazon S3 User Guide*. For more information about endpoints
+#'     in Local Zones, see [Available Local Zone for directory
+#'     buckets](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-lzs-for-directory-buckets.html)
 #'     in the *Amazon S3 User Guide*.
 #' 
 #' Amazon S3 is a distributed system. If it receives multiple write
@@ -14558,7 +15154,7 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #' ### HTTP Host header syntax
 #' 
 #' **Directory buckets** - The HTTP Host header syntax is
-#' ` Bucket_name.s3express-az_id.region.amazonaws.com`.
+#' ` Bucket-name.s3express-zone-id.region-code.amazonaws.com`.
 #' 
 #' For more information about related Amazon S3 APIs, see the following:
 #' 
@@ -14570,12 +15166,13 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #' s3_put_object(ACL, Body, Bucket, CacheControl, ContentDisposition,
 #'   ContentEncoding, ContentLanguage, ContentLength, ContentMD5,
 #'   ContentType, ChecksumAlgorithm, ChecksumCRC32, ChecksumCRC32C,
-#'   ChecksumSHA1, ChecksumSHA256, Expires, IfNoneMatch, GrantFullControl,
-#'   GrantRead, GrantReadACP, GrantWriteACP, Key, Metadata,
-#'   ServerSideEncryption, StorageClass, WebsiteRedirectLocation,
-#'   SSECustomerAlgorithm, SSECustomerKey, SSECustomerKeyMD5, SSEKMSKeyId,
-#'   SSEKMSEncryptionContext, BucketKeyEnabled, RequestPayer, Tagging,
-#'   ObjectLockMode, ObjectLockRetainUntilDate, ObjectLockLegalHoldStatus,
+#'   ChecksumSHA1, ChecksumSHA256, Expires, IfMatch, IfNoneMatch,
+#'   GrantFullControl, GrantRead, GrantReadACP, GrantWriteACP, Key,
+#'   WriteOffsetBytes, Metadata, ServerSideEncryption, StorageClass,
+#'   WebsiteRedirectLocation, SSECustomerAlgorithm, SSECustomerKey,
+#'   SSECustomerKeyMD5, SSEKMSKeyId, SSEKMSEncryptionContext,
+#'   BucketKeyEnabled, RequestPayer, Tagging, ObjectLockMode,
+#'   ObjectLockRetainUntilDate, ObjectLockLegalHoldStatus,
 #'   ExpectedBucketOwner)
 #'
 #' @param ACL The canned ACL to apply to the object. For more information, see [Canned
@@ -14614,10 +15211,10 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #' 
 #' **Directory buckets** - When you use this operation with a directory
 #' bucket, you must use virtual-hosted-style requests in the format
-#' ` Bucket_name.s3express-az_id.region.amazonaws.com`. Path-style requests
-#' are not supported. Directory bucket names must be unique in the chosen
-#' Availability Zone. Bucket names must follow the format
-#' ` bucket_base_name--az-id--x-s3` (for example,
+#' ` Bucket-name.s3express-zone-id.region-code.amazonaws.com`. Path-style
+#' requests are not supported. Directory bucket names must be unique in the
+#' chosen Zone (Availability Zone or Local Zone). Bucket names must follow
+#' the format ` bucket-base-name--zone-id--x-s3` (for example,
 #' ` DOC-EXAMPLE-BUCKET--usw2-az1--x-s3`). For information about bucket
 #' naming restrictions, see [Directory bucket naming
 #' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
@@ -14743,6 +15340,21 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #' in the *Amazon S3 User Guide*.
 #' @param Expires The date and time at which the object is no longer cacheable. For more
 #' information, see <https://www.rfc-editor.org/rfc/rfc7234#section-5.3>.
+#' @param IfMatch Uploads the object only if the ETag (entity tag) value provided during
+#' the WRITE operation matches the ETag of the object in S3. If the ETag
+#' values do not match, the operation returns a `412 Precondition Failed`
+#' error.
+#' 
+#' If a conflicting operation occurs during the upload S3 returns a
+#' `409 ConditionalRequestConflict` response. On a 409 failure you should
+#' fetch the object's ETag and retry the upload.
+#' 
+#' Expects the ETag value as a string.
+#' 
+#' For more information about conditional requests, see [RFC
+#' 7232](https://datatracker.ietf.org/doc/html/rfc7232), or [Conditional
+#' requests](https://docs.aws.amazon.com/AmazonS3/latest/userguide/conditional-requests.html)
+#' in the *Amazon S3 User Guide*.
 #' @param IfNoneMatch Uploads the object only if the object key name does not already exist in
 #' the bucket specified. Otherwise, Amazon S3 returns a
 #' `412 Precondition Failed` error.
@@ -14779,6 +15391,13 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #' 
 #' -   This functionality is not supported for Amazon S3 on Outposts.
 #' @param Key &#91;required&#93; Object key for which the PUT action was initiated.
+#' @param WriteOffsetBytes Specifies the offset for appending data to existing objects in bytes.
+#' The offset must be equal to the size of the existing object being
+#' appended to. If no object exists, setting this header to 0 will create a
+#' new object.
+#' 
+#' This functionality is only supported for objects in the Amazon S3
+#' Express One Zone storage class in directory buckets.
 #' @param Metadata A map of metadata to store with the object in S3.
 #' @param ServerSideEncryption The server-side encryption algorithm that was used when you store this
 #' object in Amazon S3 (for example, `AES256`, `aws:kms`, `aws:kms:dsse`).
@@ -15001,6 +15620,7 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #'   SSEKMSKeyId = "string",
 #'   SSEKMSEncryptionContext = "string",
 #'   BucketKeyEnabled = TRUE|FALSE,
+#'   Size = 123,
 #'   RequestCharged = "requester"
 #' )
 #' ```
@@ -15026,12 +15646,14 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #'   Expires = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
+#'   IfMatch = "string",
 #'   IfNoneMatch = "string",
 #'   GrantFullControl = "string",
 #'   GrantRead = "string",
 #'   GrantReadACP = "string",
 #'   GrantWriteACP = "string",
 #'   Key = "string",
+#'   WriteOffsetBytes = 123,
 #'   Metadata = list(
 #'     "string"
 #'   ),
@@ -15039,7 +15661,7 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #'   StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER"|"DEEP_ARCHIVE"|"OUTPOSTS"|"GLACIER_IR"|"SNOW"|"EXPRESS_ONEZONE",
 #'   WebsiteRedirectLocation = "string",
 #'   SSECustomerAlgorithm = "string",
-#'   SSECustomerKey = raw,
+#'   SSECustomerKey = "string",
 #'   SSECustomerKeyMD5 = "string",
 #'   SSEKMSKeyId = "string",
 #'   SSEKMSEncryptionContext = "string",
@@ -15065,26 +15687,15 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #'   Key = "objectkey"
 #' )
 #' 
-#' # The following example creates an object. The request also specifies
-#' # optional metadata. If the bucket is versioning enabled, S3 returns
-#' # version ID in response.
-#' svc$put_object(
-#'   Body = "filetoupload",
-#'   Bucket = "examplebucket",
-#'   Key = "exampleobject",
-#'   Metadata = list(
-#'     metadata1 = "value1",
-#'     metadata2 = "value2"
-#'   )
-#' )
-#' 
-#' # The following example uploads an object to a versioning-enabled bucket.
-#' # The source file is specified using Windows file syntax. S3 returns
-#' # VersionId of the newly created object.
+#' # The following example uploads an object. The request specifies optional
+#' # request headers to directs S3 to use specific storage class and use
+#' # server-side encryption.
 #' svc$put_object(
 #'   Body = "HappyFace.jpg",
 #'   Bucket = "examplebucket",
-#'   Key = "HappyFace.jpg"
+#'   Key = "HappyFace.jpg",
+#'   ServerSideEncryption = "AES256",
+#'   StorageClass = "STANDARD_IA"
 #' )
 #' 
 #' # The following example uploads and object. The request specifies optional
@@ -15098,15 +15709,26 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #'   Key = "exampleobject"
 #' )
 #' 
-#' # The following example uploads an object. The request specifies optional
-#' # request headers to directs S3 to use specific storage class and use
-#' # server-side encryption.
+#' # The following example uploads an object to a versioning-enabled bucket.
+#' # The source file is specified using Windows file syntax. S3 returns
+#' # VersionId of the newly created object.
 #' svc$put_object(
 #'   Body = "HappyFace.jpg",
 #'   Bucket = "examplebucket",
-#'   Key = "HappyFace.jpg",
-#'   ServerSideEncryption = "AES256",
-#'   StorageClass = "STANDARD_IA"
+#'   Key = "HappyFace.jpg"
+#' )
+#' 
+#' # The following example creates an object. The request also specifies
+#' # optional metadata. If the bucket is versioning enabled, S3 returns
+#' # version ID in response.
+#' svc$put_object(
+#'   Body = "filetoupload",
+#'   Bucket = "examplebucket",
+#'   Key = "exampleobject",
+#'   Metadata = list(
+#'     metadata1 = "value1",
+#'     metadata2 = "value2"
+#'   )
 #' )
 #' 
 #' # The following example uploads an object. The request specifies optional
@@ -15119,7 +15741,7 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #'   Tagging = "key1=value1&key2=value2"
 #' )
 #' 
-#' # The following example uploads an object. The request specifies the
+#' # The following example uploads and object. The request specifies the
 #' # optional server-side encryption option. The request also specifies
 #' # optional object tags. If the bucket is versioning enabled, S3 returns
 #' # version ID in response.
@@ -15137,7 +15759,7 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #' @rdname s3_put_object
 #'
 #' @aliases s3_put_object
-s3_put_object <- function(ACL = NULL, Body = NULL, Bucket, CacheControl = NULL, ContentDisposition = NULL, ContentEncoding = NULL, ContentLanguage = NULL, ContentLength = NULL, ContentMD5 = NULL, ContentType = NULL, ChecksumAlgorithm = NULL, ChecksumCRC32 = NULL, ChecksumCRC32C = NULL, ChecksumSHA1 = NULL, ChecksumSHA256 = NULL, Expires = NULL, IfNoneMatch = NULL, GrantFullControl = NULL, GrantRead = NULL, GrantReadACP = NULL, GrantWriteACP = NULL, Key, Metadata = NULL, ServerSideEncryption = NULL, StorageClass = NULL, WebsiteRedirectLocation = NULL, SSECustomerAlgorithm = NULL, SSECustomerKey = NULL, SSECustomerKeyMD5 = NULL, SSEKMSKeyId = NULL, SSEKMSEncryptionContext = NULL, BucketKeyEnabled = NULL, RequestPayer = NULL, Tagging = NULL, ObjectLockMode = NULL, ObjectLockRetainUntilDate = NULL, ObjectLockLegalHoldStatus = NULL, ExpectedBucketOwner = NULL) {
+s3_put_object <- function(ACL = NULL, Body = NULL, Bucket, CacheControl = NULL, ContentDisposition = NULL, ContentEncoding = NULL, ContentLanguage = NULL, ContentLength = NULL, ContentMD5 = NULL, ContentType = NULL, ChecksumAlgorithm = NULL, ChecksumCRC32 = NULL, ChecksumCRC32C = NULL, ChecksumSHA1 = NULL, ChecksumSHA256 = NULL, Expires = NULL, IfMatch = NULL, IfNoneMatch = NULL, GrantFullControl = NULL, GrantRead = NULL, GrantReadACP = NULL, GrantWriteACP = NULL, Key, WriteOffsetBytes = NULL, Metadata = NULL, ServerSideEncryption = NULL, StorageClass = NULL, WebsiteRedirectLocation = NULL, SSECustomerAlgorithm = NULL, SSECustomerKey = NULL, SSECustomerKeyMD5 = NULL, SSEKMSKeyId = NULL, SSEKMSEncryptionContext = NULL, BucketKeyEnabled = NULL, RequestPayer = NULL, Tagging = NULL, ObjectLockMode = NULL, ObjectLockRetainUntilDate = NULL, ObjectLockLegalHoldStatus = NULL, ExpectedBucketOwner = NULL) {
   op <- new_operation(
     name = "PutObject",
     http_method = "PUT",
@@ -15146,7 +15768,7 @@ s3_put_object <- function(ACL = NULL, Body = NULL, Bucket, CacheControl = NULL, 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .s3$put_object_input(ACL = ACL, Body = Body, Bucket = Bucket, CacheControl = CacheControl, ContentDisposition = ContentDisposition, ContentEncoding = ContentEncoding, ContentLanguage = ContentLanguage, ContentLength = ContentLength, ContentMD5 = ContentMD5, ContentType = ContentType, ChecksumAlgorithm = ChecksumAlgorithm, ChecksumCRC32 = ChecksumCRC32, ChecksumCRC32C = ChecksumCRC32C, ChecksumSHA1 = ChecksumSHA1, ChecksumSHA256 = ChecksumSHA256, Expires = Expires, IfNoneMatch = IfNoneMatch, GrantFullControl = GrantFullControl, GrantRead = GrantRead, GrantReadACP = GrantReadACP, GrantWriteACP = GrantWriteACP, Key = Key, Metadata = Metadata, ServerSideEncryption = ServerSideEncryption, StorageClass = StorageClass, WebsiteRedirectLocation = WebsiteRedirectLocation, SSECustomerAlgorithm = SSECustomerAlgorithm, SSECustomerKey = SSECustomerKey, SSECustomerKeyMD5 = SSECustomerKeyMD5, SSEKMSKeyId = SSEKMSKeyId, SSEKMSEncryptionContext = SSEKMSEncryptionContext, BucketKeyEnabled = BucketKeyEnabled, RequestPayer = RequestPayer, Tagging = Tagging, ObjectLockMode = ObjectLockMode, ObjectLockRetainUntilDate = ObjectLockRetainUntilDate, ObjectLockLegalHoldStatus = ObjectLockLegalHoldStatus, ExpectedBucketOwner = ExpectedBucketOwner)
+  input <- .s3$put_object_input(ACL = ACL, Body = Body, Bucket = Bucket, CacheControl = CacheControl, ContentDisposition = ContentDisposition, ContentEncoding = ContentEncoding, ContentLanguage = ContentLanguage, ContentLength = ContentLength, ContentMD5 = ContentMD5, ContentType = ContentType, ChecksumAlgorithm = ChecksumAlgorithm, ChecksumCRC32 = ChecksumCRC32, ChecksumCRC32C = ChecksumCRC32C, ChecksumSHA1 = ChecksumSHA1, ChecksumSHA256 = ChecksumSHA256, Expires = Expires, IfMatch = IfMatch, IfNoneMatch = IfNoneMatch, GrantFullControl = GrantFullControl, GrantRead = GrantRead, GrantReadACP = GrantReadACP, GrantWriteACP = GrantWriteACP, Key = Key, WriteOffsetBytes = WriteOffsetBytes, Metadata = Metadata, ServerSideEncryption = ServerSideEncryption, StorageClass = StorageClass, WebsiteRedirectLocation = WebsiteRedirectLocation, SSECustomerAlgorithm = SSECustomerAlgorithm, SSECustomerKey = SSECustomerKey, SSECustomerKeyMD5 = SSECustomerKeyMD5, SSEKMSKeyId = SSEKMSKeyId, SSEKMSEncryptionContext = SSEKMSEncryptionContext, BucketKeyEnabled = BucketKeyEnabled, RequestPayer = RequestPayer, Tagging = Tagging, ObjectLockMode = ObjectLockMode, ObjectLockRetainUntilDate = ObjectLockRetainUntilDate, ObjectLockLegalHoldStatus = ObjectLockLegalHoldStatus, ExpectedBucketOwner = ExpectedBucketOwner)
   output <- .s3$put_object_output()
   config <- get_config()
   svc <- .s3$service(config, op)
@@ -15156,10 +15778,10 @@ s3_put_object <- function(ACL = NULL, Body = NULL, Bucket, CacheControl = NULL, 
 }
 .s3$operations$put_object <- s3_put_object
 
-#' This operation is not supported by directory buckets
+#' This operation is not supported for directory buckets
 #'
 #' @description
-#' This operation is not supported by directory buckets.
+#' This operation is not supported for directory buckets.
 #' 
 #' Uses the `acl` subresource to set the access control list (ACL)
 #' permissions for a new or existing object in an S3 bucket. You must have
@@ -15481,10 +16103,10 @@ s3_put_object_acl <- function(ACL = NULL, AccessControlPolicy = NULL, Bucket, Co
 }
 .s3$operations$put_object_acl <- s3_put_object_acl
 
-#' This operation is not supported by directory buckets
+#' This operation is not supported for directory buckets
 #'
 #' @description
-#' This operation is not supported by directory buckets.
+#' This operation is not supported for directory buckets.
 #' 
 #' Applies a legal hold configuration to the specified object. For more
 #' information, see [Locking
@@ -15583,10 +16205,10 @@ s3_put_object_legal_hold <- function(Bucket, Key, LegalHold = NULL, RequestPayer
 }
 .s3$operations$put_object_legal_hold <- s3_put_object_legal_hold
 
-#' This operation is not supported by directory buckets
+#' This operation is not supported for directory buckets
 #'
 #' @description
-#' This operation is not supported by directory buckets.
+#' This operation is not supported for directory buckets.
 #' 
 #' Places an Object Lock configuration on the specified bucket. The rule
 #' specified in the Object Lock configuration will be applied by default to
@@ -15688,10 +16310,10 @@ s3_put_object_lock_configuration <- function(Bucket, ObjectLockConfiguration = N
 }
 .s3$operations$put_object_lock_configuration <- s3_put_object_lock_configuration
 
-#' This operation is not supported by directory buckets
+#' This operation is not supported for directory buckets
 #'
 #' @description
-#' This operation is not supported by directory buckets.
+#' This operation is not supported for directory buckets.
 #' 
 #' Places an Object Retention configuration on an object. For more
 #' information, see [Locking
@@ -15802,10 +16424,10 @@ s3_put_object_retention <- function(Bucket, Key, Retention = NULL, RequestPayer 
 }
 .s3$operations$put_object_retention <- s3_put_object_retention
 
-#' This operation is not supported by directory buckets
+#' This operation is not supported for directory buckets
 #'
 #' @description
-#' This operation is not supported by directory buckets.
+#' This operation is not supported for directory buckets.
 #' 
 #' Sets the supplied tag-set to an object that already exists in a bucket.
 #' A tag is a key-value pair. For more information, see [Object
@@ -15979,10 +16601,10 @@ s3_put_object_tagging <- function(Bucket, Key, VersionId = NULL, ContentMD5 = NU
 }
 .s3$operations$put_object_tagging <- s3_put_object_tagging
 
-#' This operation is not supported by directory buckets
+#' This operation is not supported for directory buckets
 #'
 #' @description
-#' This operation is not supported by directory buckets.
+#' This operation is not supported for directory buckets.
 #' 
 #' Creates or modifies the `PublicAccessBlock` configuration for an Amazon
 #' S3 bucket. To use this operation, you must have the
@@ -16089,10 +16711,10 @@ s3_put_public_access_block <- function(Bucket, ContentMD5 = NULL, ChecksumAlgori
 }
 .s3$operations$put_public_access_block <- s3_put_public_access_block
 
-#' This operation is not supported by directory buckets
+#' This operation is not supported for directory buckets
 #'
 #' @description
-#' This operation is not supported by directory buckets.
+#' This operation is not supported for directory buckets.
 #' 
 #' Restores an archived copy of an object back into Amazon S3
 #' 
@@ -16448,10 +17070,10 @@ s3_restore_object <- function(Bucket, Key, VersionId = NULL, RestoreRequest = NU
 }
 .s3$operations$restore_object <- s3_restore_object
 
-#' This operation is not supported by directory buckets
+#' This operation is not supported for directory buckets
 #'
 #' @description
-#' This operation is not supported by directory buckets.
+#' This operation is not supported for directory buckets.
 #' 
 #' This action filters the contents of an Amazon S3 object based on a
 #' simple structured query language (SQL) statement. In the request, along
@@ -16644,7 +17266,7 @@ s3_restore_object <- function(Bucket, Key, VersionId = NULL, RestoreRequest = NU
 #'   Bucket = "string",
 #'   Key = "string",
 #'   SSECustomerAlgorithm = "string",
-#'   SSECustomerKey = raw,
+#'   SSECustomerKey = "string",
 #'   SSECustomerKeyMD5 = "string",
 #'   Expression = "string",
 #'   ExpressionType = "SQL",
@@ -16752,10 +17374,14 @@ s3_select_object_content <- function(Bucket, Key, SSECustomerAlgorithm = NULL, S
 #' **Directory buckets** - For directory buckets, you must make requests
 #' for this API operation to the Zonal endpoint. These endpoints support
 #' virtual-hosted-style requests in the format
-#' `https://bucket_name.s3express-az_id.region.amazonaws.com/key-name `.
-#' Path-style requests are not supported. For more information, see
-#' [Regional and Zonal
-#' endpoints](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html)
+#' `https://bucket-name.s3express-zone-id.region-code.amazonaws.com/key-name `.
+#' Path-style requests are not supported. For more information about
+#' endpoints in Availability Zones, see [Regional and Zonal endpoints for
+#' directory buckets in Availability
+#' Zones](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html)
+#' in the *Amazon S3 User Guide*. For more information about endpoints in
+#' Local Zones, see [Available Local Zone for directory
+#' buckets](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-lzs-for-directory-buckets.html)
 #' in the *Amazon S3 User Guide*.
 #' 
 #' ### Permissions
@@ -16878,7 +17504,7 @@ s3_select_object_content <- function(Bucket, Key, SSECustomerAlgorithm = NULL, S
 #' ### HTTP Host header syntax
 #' 
 #' **Directory buckets** - The HTTP Host header syntax is
-#' ` Bucket_name.s3express-az_id.region.amazonaws.com`.
+#' ` Bucket-name.s3express-zone-id.region-code.amazonaws.com`.
 #' 
 #' The following operations are related to [`upload_part`][s3_upload_part]:
 #' 
@@ -16903,10 +17529,10 @@ s3_select_object_content <- function(Bucket, Key, SSECustomerAlgorithm = NULL, S
 #' 
 #' **Directory buckets** - When you use this operation with a directory
 #' bucket, you must use virtual-hosted-style requests in the format
-#' ` Bucket_name.s3express-az_id.region.amazonaws.com`. Path-style requests
-#' are not supported. Directory bucket names must be unique in the chosen
-#' Availability Zone. Bucket names must follow the format
-#' ` bucket_base_name--az-id--x-s3` (for example,
+#' ` Bucket-name.s3express-zone-id.region-code.amazonaws.com`. Path-style
+#' requests are not supported. Directory bucket names must be unique in the
+#' chosen Zone (Availability Zone or Local Zone). Bucket names must follow
+#' the format ` bucket-base-name--zone-id--x-s3` (for example,
 #' ` DOC-EXAMPLE-BUCKET--usw2-az1--x-s3`). For information about bucket
 #' naming restrictions, see [Directory bucket naming
 #' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
@@ -17044,7 +17670,7 @@ s3_select_object_content <- function(Bucket, Key, SSECustomerAlgorithm = NULL, S
 #'   PartNumber = 123,
 #'   UploadId = "string",
 #'   SSECustomerAlgorithm = "string",
-#'   SSECustomerKey = raw,
+#'   SSECustomerKey = "string",
 #'   SSECustomerKeyMD5 = "string",
 #'   RequestPayer = "requester",
 #'   ExpectedBucketOwner = "string"
@@ -17121,10 +17747,14 @@ s3_upload_part <- function(Body = NULL, Bucket, ContentLength = NULL, ContentMD5
 #' **Directory buckets** - For directory buckets, you must make requests
 #' for this API operation to the Zonal endpoint. These endpoints support
 #' virtual-hosted-style requests in the format
-#' `https://bucket_name.s3express-az_id.region.amazonaws.com/key-name `.
-#' Path-style requests are not supported. For more information, see
-#' [Regional and Zonal
-#' endpoints](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html)
+#' `https://bucket-name.s3express-zone-id.region-code.amazonaws.com/key-name `.
+#' Path-style requests are not supported. For more information about
+#' endpoints in Availability Zones, see [Regional and Zonal endpoints for
+#' directory buckets in Availability
+#' Zones](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-Regions-and-Zones.html)
+#' in the *Amazon S3 User Guide*. For more information about endpoints in
+#' Local Zones, see [Available Local Zone for directory
+#' buckets](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-lzs-for-directory-buckets.html)
 #' in the *Amazon S3 User Guide*.
 #' 
 #' ### Authentication and authorization
@@ -17265,7 +17895,7 @@ s3_upload_part <- function(Body = NULL, Bucket, ContentLength = NULL, ContentMD5
 #' ### HTTP Host header syntax
 #' 
 #' **Directory buckets** - The HTTP Host header syntax is
-#' ` Bucket_name.s3express-az_id.region.amazonaws.com`.
+#' ` Bucket-name.s3express-zone-id.region-code.amazonaws.com`.
 #' 
 #' The following operations are related to
 #' [`upload_part_copy`][s3_upload_part_copy]:
@@ -17295,14 +17925,20 @@ s3_upload_part <- function(Body = NULL, Bucket, ContentLength = NULL, ContentMD5
 #' 
 #' **Directory buckets** - When you use this operation with a directory
 #' bucket, you must use virtual-hosted-style requests in the format
-#' ` Bucket_name.s3express-az_id.region.amazonaws.com`. Path-style requests
-#' are not supported. Directory bucket names must be unique in the chosen
-#' Availability Zone. Bucket names must follow the format
-#' ` bucket_base_name--az-id--x-s3` (for example,
+#' ` Bucket-name.s3express-zone-id.region-code.amazonaws.com`. Path-style
+#' requests are not supported. Directory bucket names must be unique in the
+#' chosen Zone (Availability Zone or Local Zone). Bucket names must follow
+#' the format ` bucket-base-name--zone-id--x-s3` (for example,
 #' ` DOC-EXAMPLE-BUCKET--usw2-az1--x-s3`). For information about bucket
 #' naming restrictions, see [Directory bucket naming
 #' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
 #' in the *Amazon S3 User Guide*.
+#' 
+#' Copying objects across different Amazon Web Services Regions isn't
+#' supported when the source or destination bucket is in Amazon Web
+#' Services Local Zones. The source and destination buckets must have the
+#' same parent Amazon Web Services Region. Otherwise, you get an HTTP
+#' `400 Bad Request` error with the error code `InvalidRequest`.
 #' 
 #' **Access points** - When you use this action with an access point, you
 #' must provide the alias of the access point in place of the bucket name
@@ -17527,10 +18163,10 @@ s3_upload_part <- function(Body = NULL, Bucket, ContentLength = NULL, ContentMD5
 #'   PartNumber = 123,
 #'   UploadId = "string",
 #'   SSECustomerAlgorithm = "string",
-#'   SSECustomerKey = raw,
+#'   SSECustomerKey = "string",
 #'   SSECustomerKeyMD5 = "string",
 #'   CopySourceSSECustomerAlgorithm = "string",
-#'   CopySourceSSECustomerKey = raw,
+#'   CopySourceSSECustomerKey = "string",
 #'   CopySourceSSECustomerKeyMD5 = "string",
 #'   RequestPayer = "requester",
 #'   ExpectedBucketOwner = "string",
@@ -17540,6 +18176,16 @@ s3_upload_part <- function(Body = NULL, Bucket, ContentLength = NULL, ContentMD5
 #'
 #' @examples
 #' \dontrun{
+#' # The following example uploads a part of a multipart upload by copying
+#' # data from an existing object as data source.
+#' svc$upload_part_copy(
+#'   Bucket = "examplebucket",
+#'   CopySource = "/bucketname/sourceobjectkey",
+#'   Key = "examplelargeobject",
+#'   PartNumber = "1",
+#'   UploadId = "exampleuoh_10OhKhT7YukE9bjzTPRiuaCotmZM_pFngJFir9OZNrSr5cWa3c..."
+#' )
+#' 
 #' # The following example uploads a part of a multipart upload by copying a
 #' # specified byte range from an existing object as data source.
 #' svc$upload_part_copy(
@@ -17548,16 +18194,6 @@ s3_upload_part <- function(Body = NULL, Bucket, ContentLength = NULL, ContentMD5
 #'   CopySourceRange = "bytes=1-100000",
 #'   Key = "examplelargeobject",
 #'   PartNumber = "2",
-#'   UploadId = "exampleuoh_10OhKhT7YukE9bjzTPRiuaCotmZM_pFngJFir9OZNrSr5cWa3c..."
-#' )
-#' 
-#' # The following example uploads a part of a multipart upload by copying
-#' # data from an existing object as data source.
-#' svc$upload_part_copy(
-#'   Bucket = "examplebucket",
-#'   CopySource = "/bucketname/sourceobjectkey",
-#'   Key = "examplelargeobject",
-#'   PartNumber = "1",
 #'   UploadId = "exampleuoh_10OhKhT7YukE9bjzTPRiuaCotmZM_pFngJFir9OZNrSr5cWa3c..."
 #' )
 #' }
@@ -17586,10 +18222,10 @@ s3_upload_part_copy <- function(Bucket, CopySource, CopySourceIfMatch = NULL, Co
 }
 .s3$operations$upload_part_copy <- s3_upload_part_copy
 
-#' This operation is not supported by directory buckets
+#' This operation is not supported for directory buckets
 #'
 #' @description
-#' This operation is not supported by directory buckets.
+#' This operation is not supported for directory buckets.
 #' 
 #' Passes transformed objects to a [`get_object`][s3_get_object] operation
 #' when using Object Lambda access points. For information about Object

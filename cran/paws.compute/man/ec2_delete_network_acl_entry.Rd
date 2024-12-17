@@ -5,7 +5,7 @@
 \title{Deletes the specified ingress or egress entry (rule) from the specified
 network ACL}
 \usage{
-ec2_delete_network_acl_entry(DryRun = NULL, Egress, NetworkAclId, RuleNumber)
+ec2_delete_network_acl_entry(DryRun = NULL, NetworkAclId, RuleNumber, Egress)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -13,11 +13,11 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
-\item{Egress}{[required] Indicates whether the rule is an egress rule.}
-
 \item{NetworkAclId}{[required] The ID of the network ACL.}
 
 \item{RuleNumber}{[required] The rule number of the entry to delete.}
+
+\item{Egress}{[required] Indicates whether the rule is an egress rule.}
 }
 \description{
 Deletes the specified ingress or egress entry (rule) from the specified network ACL.

@@ -7,9 +7,9 @@
 ec2_describe_subnets(
   Filters = NULL,
   SubnetIds = NULL,
-  DryRun = NULL,
   NextToken = NULL,
-  MaxResults = NULL
+  MaxResults = NULL,
+  DryRun = NULL
 )
 }
 \arguments{
@@ -69,11 +69,11 @@ with DNS AAAA records.
 \item \code{state} - The state of the subnet (\code{pending} | \code{available}).
 \item \code{subnet-arn} - The Amazon Resource Name (ARN) of the subnet.
 \item \code{subnet-id} - The ID of the subnet.
-\item \code{tag}:\<key\> - The key/value combination of a tag assigned to the
-resource. Use the tag key in the filter name and the tag value as
-the filter value. For example, to find all resources that have a tag
-with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner} for
-the filter name and \code{TeamA} for the filter value.
+\item \code{tag} - The key/value combination of a tag assigned to the resource.
+Use the tag key in the filter name and the tag value as the filter
+value. For example, to find all resources that have a tag with the
+key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner} for the
+filter name and \code{TeamA} for the filter value.
 \item \code{tag-key} - The key of a tag assigned to the resource. Use this
 filter to find all resources assigned a tag with a specific key,
 regardless of the tag value.
@@ -84,11 +84,6 @@ regardless of the tag value.
 
 Default: Describes all your subnets.}
 
-\item{DryRun}{Checks whether you have the required permissions for the action, without
-actually making the request, and provides an error response. If you have
-the required permissions, the error response is \code{DryRunOperation}.
-Otherwise, it is \code{UnauthorizedOperation}.}
-
 \item{NextToken}{The token returned from a previous paginated request. Pagination
 continues from the end of the items returned by the previous request.}
 
@@ -96,6 +91,11 @@ continues from the end of the items returned by the previous request.}
 page of items, make another request with the token returned in the
 output. For more information, see
 \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Query-Requests.html#api-pagination}{Pagination}.}
+
+\item{DryRun}{Checks whether you have the required permissions for the action, without
+actually making the request, and provides an error response. If you have
+the required permissions, the error response is \code{DryRunOperation}.
+Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
 Describes your subnets. The default is to describe all your subnets. Alternatively, you can specify specific subnet IDs or filter the results to include only the subnets that match specific criteria.

@@ -12,7 +12,12 @@ glue_put_workflow_run_properties(Name, RunId, RunProperties)
 \item{RunId}{[required] The ID of the workflow run for which the run properties should be
 updated.}
 
-\item{RunProperties}{[required] The properties to put for the specified run.}
+\item{RunProperties}{[required] The properties to put for the specified run.
+
+Run properties may be logged. Do not pass plaintext secrets as
+properties. Retrieve secrets from a Glue Connection, Amazon Web Services
+Secrets Manager or other secret management mechanism if you intend to
+use them within the workflow run.}
 }
 \description{
 Puts the specified workflow run properties for the given workflow run. If a property already exists for the specified run, then it overrides the value otherwise adds the property to existing properties.

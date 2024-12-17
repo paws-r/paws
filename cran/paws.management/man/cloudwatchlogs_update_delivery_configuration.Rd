@@ -16,14 +16,14 @@ cloudwatchlogs_update_delivery_configuration(
 \item{id}{[required] The ID of the delivery to be updated by this request.}
 
 \item{recordFields}{The list of record fields to be delivered to the destination, in order.
-If the delivery’s log source has mandatory fields, they must be included
+If the delivery's log source has mandatory fields, they must be included
 in this list.}
 
 \item{fieldDelimiter}{The field delimiter to use between record fields when the final output
 format of a delivery is in \code{Plain}, \code{W3C}, or \code{Raw} format.}
 
 \item{s3DeliveryConfiguration}{This structure contains parameters that are valid only when the
-delivery’s delivery destination is an S3 bucket.}
+delivery's delivery destination is an S3 bucket.}
 }
 \description{
 Use this operation to update the configuration of a \href{https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_Delivery.html}{delivery} to change either the S3 path pattern or the format of the delivered logs. You can't use this operation to change the source or destination of the delivery.

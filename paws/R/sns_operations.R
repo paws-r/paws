@@ -506,13 +506,8 @@ sns_create_sms_sandbox_phone_number <- function(PhoneNumber, LanguageCode = NULL
 #' The following attributes apply only to [FIFO
 #' topics](https://docs.aws.amazon.com/sns/latest/dg/sns-fifo-topics.html):
 #' 
-#' -   `ArchivePolicy` – Adds or updates an inline policy document to
-#'     archive messages stored in the specified Amazon SNS topic.
-#' 
-#' -   `BeginningArchiveTime` – The earliest starting point at which a
-#'     message in the topic’s archive can be replayed from. This point in
-#'     time is based on the configured message retention period set by the
-#'     topic’s message archiving policy.
+#' -   `ArchivePolicy` – The policy that sets the retention period for
+#'     messages stored in the message archive of an Amazon SNS FIFO topic.
 #' 
 #' -   `ContentBasedDeduplication` – Enables content-based deduplication
 #'     for FIFO topics.
@@ -2847,6 +2842,9 @@ sns_set_subscription_attributes <- function(SubscriptionArn, AttributeName, Attr
 #' 
 #' The following attribute applies only to [FIFO
 #' topics](https://docs.aws.amazon.com/sns/latest/dg/sns-fifo-topics.html):
+#' 
+#' -   `ArchivePolicy` – The policy that sets the retention period for
+#'     messages stored in the message archive of an Amazon SNS FIFO topic.
 #' 
 #' -   `ContentBasedDeduplication` – Enables content-based deduplication
 #'     for FIFO topics.

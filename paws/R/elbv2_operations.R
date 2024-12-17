@@ -252,9 +252,9 @@ elbv2_add_trust_store_revocations <- function(TrustStoreArn, RevocationContents 
 #' Application Load Balancers, the supported protocols are HTTP and HTTPS.
 #' For Network Load Balancers, the supported protocols are TCP, TLS, UDP,
 #' and TCP_UDP. You can’t specify the UDP or TCP_UDP protocol if dual-stack
-#' mode is enabled. You cannot specify a protocol for a Gateway Load
+#' mode is enabled. You can't specify a protocol for a Gateway Load
 #' Balancer.
-#' @param Port The port on which the load balancer is listening. You cannot specify a
+#' @param Port The port on which the load balancer is listening. You can't specify a
 #' port for a Gateway Load Balancer.
 #' @param SslPolicy \[HTTPS and TLS listeners\] The security policy that defines which
 #' protocols and ciphers are supported.
@@ -372,7 +372,8 @@ elbv2_add_trust_store_revocations <- function(TrustStoreArn, RevocationContents 
 #'         Mode = "string",
 #'         TrustStoreArn = "string",
 #'         IgnoreClientCertificateExpiry = TRUE|FALSE,
-#'         TrustStoreAssociationStatus = "active"|"removed"
+#'         TrustStoreAssociationStatus = "active"|"removed",
+#'         AdvertiseTrustStoreCaNames = "on"|"off"
 #'       )
 #'     )
 #'   )
@@ -465,7 +466,8 @@ elbv2_add_trust_store_revocations <- function(TrustStoreArn, RevocationContents 
 #'     Mode = "string",
 #'     TrustStoreArn = "string",
 #'     IgnoreClientCertificateExpiry = TRUE|FALSE,
-#'     TrustStoreAssociationStatus = "active"|"removed"
+#'     TrustStoreAssociationStatus = "active"|"removed",
+#'     AdvertiseTrustStoreCaNames = "on"|"off"
 #'   )
 #' )
 #' ```
@@ -561,7 +563,7 @@ elbv2_create_listener <- function(LoadBalancerArn, Protocol = NULL, Port = NULL,
 #' @usage
 #' elbv2_create_load_balancer(Name, Subnets, SubnetMappings,
 #'   SecurityGroups, Scheme, Tags, Type, IpAddressType,
-#'   CustomerOwnedIpv4Pool)
+#'   CustomerOwnedIpv4Pool, EnablePrefixForIpv6SourceNat)
 #'
 #' @param Name &#91;required&#93; The name of the load balancer.
 #' 
@@ -583,16 +585,13 @@ elbv2_create_listener <- function(LoadBalancerArn, Protocol = NULL, Port = NULL,
 #' \[Application Load Balancers on Local Zones\] You can specify subnets
 #' from one or more Local Zones.
 #' 
-#' \[Network Load Balancers\] You can specify subnets from one or more
-#' Availability Zones.
-#' 
-#' \[Gateway Load Balancers\] You can specify subnets from one or more
-#' Availability Zones.
+#' \[Network Load Balancers and Gateway Load Balancers\] You can specify
+#' subnets from one or more Availability Zones.
 #' @param SubnetMappings The IDs of the subnets. You can specify only one subnet per Availability
 #' Zone. You must specify either subnets or subnet mappings, but not both.
 #' 
 #' \[Application Load Balancers\] You must specify subnets from at least
-#' two Availability Zones. You cannot specify Elastic IP addresses for your
+#' two Availability Zones. You can't specify Elastic IP addresses for your
 #' subnets.
 #' 
 #' \[Application Load Balancers on Outposts\] You must specify one Outpost
@@ -609,7 +608,7 @@ elbv2_create_listener <- function(LoadBalancerArn, Protocol = NULL, Port = NULL,
 #' balancer, you can specify one IPv6 address per subnet.
 #' 
 #' \[Gateway Load Balancers\] You can specify subnets from one or more
-#' Availability Zones. You cannot specify Elastic IP addresses for your
+#' Availability Zones. You can't specify Elastic IP addresses for your
 #' subnets.
 #' @param SecurityGroups \[Application Load Balancers and Network Load Balancers\] The IDs of the
 #' security groups for the load balancer.
@@ -626,26 +625,24 @@ elbv2_create_listener <- function(LoadBalancerArn, Protocol = NULL, Port = NULL,
 #' 
 #' The default is an Internet-facing load balancer.
 #' 
-#' You cannot specify a scheme for a Gateway Load Balancer.
+#' You can't specify a scheme for a Gateway Load Balancer.
 #' @param Tags The tags to assign to the load balancer.
 #' @param Type The type of load balancer. The default is `application`.
-#' @param IpAddressType Note: Internal load balancers must use the `ipv4` IP address type.
+#' @param IpAddressType The IP address type. Internal load balancers must use `ipv4`.
 #' 
-#' \[Application Load Balancers\] The IP address type. The possible values
-#' are `ipv4` (for only IPv4 addresses), `dualstack` (for IPv4 and IPv6
-#' addresses), and `dualstack-without-public-ipv4` (for IPv6 only public
-#' addresses, with private IPv4 and IPv6 addresses).
+#' \[Application Load Balancers\] The possible values are `ipv4` (IPv4
+#' addresses), `dualstack` (IPv4 and IPv6 addresses), and
+#' `dualstack-without-public-ipv4` (public IPv6 addresses and private IPv4
+#' and IPv6 addresses).
 #' 
-#' \[Network Load Balancers\] The IP address type. The possible values are
-#' `ipv4` (for only IPv4 addresses) and `dualstack` (for IPv4 and IPv6
-#' addresses). You can’t specify `dualstack` for a load balancer with a UDP
-#' or TCP_UDP listener.
-#' 
-#' \[Gateway Load Balancers\] The IP address type. The possible values are
-#' `ipv4` (for only IPv4 addresses) and `dualstack` (for IPv4 and IPv6
+#' \[Network Load Balancers and Gateway Load Balancers\] The possible
+#' values are `ipv4` (IPv4 addresses) and `dualstack` (IPv4 and IPv6
 #' addresses).
 #' @param CustomerOwnedIpv4Pool \[Application Load Balancers on Outposts\] The ID of the customer-owned
 #' address pool (CoIP pool).
+#' @param EnablePrefixForIpv6SourceNat \[Network Load Balancers with UDP listeners\] Indicates whether to use
+#' an IPv6 prefix from each subnet for source NAT. The IP address type must
+#' be `dualstack`. The default value is `off`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -679,6 +676,9 @@ elbv2_create_listener <- function(LoadBalancerArn, Protocol = NULL, Port = NULL,
 #'               PrivateIPv4Address = "string",
 #'               IPv6Address = "string"
 #'             )
+#'           ),
+#'           SourceNatIpv6Prefixes = list(
+#'             "string"
 #'           )
 #'         )
 #'       ),
@@ -687,7 +687,8 @@ elbv2_create_listener <- function(LoadBalancerArn, Protocol = NULL, Port = NULL,
 #'       ),
 #'       IpAddressType = "ipv4"|"dualstack"|"dualstack-without-public-ipv4",
 #'       CustomerOwnedIpv4Pool = "string",
-#'       EnforceSecurityGroupInboundRulesOnPrivateLinkTraffic = "string"
+#'       EnforceSecurityGroupInboundRulesOnPrivateLinkTraffic = "string",
+#'       EnablePrefixForIpv6SourceNat = "on"|"off"
 #'     )
 #'   )
 #' )
@@ -705,7 +706,8 @@ elbv2_create_listener <- function(LoadBalancerArn, Protocol = NULL, Port = NULL,
 #'       SubnetId = "string",
 #'       AllocationId = "string",
 #'       PrivateIPv4Address = "string",
-#'       IPv6Address = "string"
+#'       IPv6Address = "string",
+#'       SourceNatIpv6Prefix = "string"
 #'     )
 #'   ),
 #'   SecurityGroups = list(
@@ -720,7 +722,8 @@ elbv2_create_listener <- function(LoadBalancerArn, Protocol = NULL, Port = NULL,
 #'   ),
 #'   Type = "application"|"network"|"gateway",
 #'   IpAddressType = "ipv4"|"dualstack"|"dualstack-without-public-ipv4",
-#'   CustomerOwnedIpv4Pool = "string"
+#'   CustomerOwnedIpv4Pool = "string",
+#'   EnablePrefixForIpv6SourceNat = "on"|"off"
 #' )
 #' ```
 #'
@@ -754,7 +757,7 @@ elbv2_create_listener <- function(LoadBalancerArn, Protocol = NULL, Port = NULL,
 #' @rdname elbv2_create_load_balancer
 #'
 #' @aliases elbv2_create_load_balancer
-elbv2_create_load_balancer <- function(Name, Subnets = NULL, SubnetMappings = NULL, SecurityGroups = NULL, Scheme = NULL, Tags = NULL, Type = NULL, IpAddressType = NULL, CustomerOwnedIpv4Pool = NULL) {
+elbv2_create_load_balancer <- function(Name, Subnets = NULL, SubnetMappings = NULL, SecurityGroups = NULL, Scheme = NULL, Tags = NULL, Type = NULL, IpAddressType = NULL, CustomerOwnedIpv4Pool = NULL, EnablePrefixForIpv6SourceNat = NULL) {
   op <- new_operation(
     name = "CreateLoadBalancer",
     http_method = "POST",
@@ -763,7 +766,7 @@ elbv2_create_load_balancer <- function(Name, Subnets = NULL, SubnetMappings = NU
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .elbv2$create_load_balancer_input(Name = Name, Subnets = Subnets, SubnetMappings = SubnetMappings, SecurityGroups = SecurityGroups, Scheme = Scheme, Tags = Tags, Type = Type, IpAddressType = IpAddressType, CustomerOwnedIpv4Pool = CustomerOwnedIpv4Pool)
+  input <- .elbv2$create_load_balancer_input(Name = Name, Subnets = Subnets, SubnetMappings = SubnetMappings, SecurityGroups = SecurityGroups, Scheme = Scheme, Tags = Tags, Type = Type, IpAddressType = IpAddressType, CustomerOwnedIpv4Pool = CustomerOwnedIpv4Pool, EnablePrefixForIpv6SourceNat = EnablePrefixForIpv6SourceNat)
   output <- .elbv2$create_load_balancer_output()
   config <- get_config()
   svc <- .elbv2$service(config, op)
@@ -1142,7 +1145,7 @@ elbv2_create_rule <- function(ListenerArn, Conditions, Priority, Actions, Tags =
 #' @param HealthCheckEnabled Indicates whether health checks are enabled. If the target type is
 #' `lambda`, health checks are disabled by default but can be enabled. If
 #' the target type is `instance`, `ip`, or `alb`, health checks are always
-#' enabled and cannot be disabled.
+#' enabled and can't be disabled.
 #' @param HealthCheckPath \[HTTP/HTTPS health checks\] The destination for health checks on the
 #' targets.
 #' 
@@ -1194,9 +1197,7 @@ elbv2_create_rule <- function(ListenerArn, Conditions, Priority, Actions, Tags =
 #' 
 #' -   `alb` - Register a single Application Load Balancer as a target.
 #' @param Tags The tags to assign to the target group.
-#' @param IpAddressType The type of IP address used for this target group. The possible values
-#' are `ipv4` and `ipv6`. This is an optional parameter. If not specified,
-#' the IP address type defaults to `ipv4`.
+#' @param IpAddressType The IP address type. The default value is `ipv4`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1311,8 +1312,7 @@ elbv2_create_target_group <- function(Name, Protocol = NULL, ProtocolVersion = N
 #'
 #' @param Name &#91;required&#93; The name of the trust store.
 #' 
-#' This name must be unique per region and cannot be changed after
-#' creation.
+#' This name must be unique per region and can't be changed after creation.
 #' @param CaCertificatesBundleS3Bucket &#91;required&#93; The Amazon S3 bucket for the ca certificates bundle.
 #' @param CaCertificatesBundleS3Key &#91;required&#93; The Amazon S3 path for the ca certificates bundle.
 #' @param CaCertificatesBundleS3ObjectVersion The Amazon S3 object version for the ca certificates bundle. If
@@ -1569,16 +1569,6 @@ elbv2_delete_rule <- function(RuleArn) {
 #'   ResourceArn = "string"
 #' )
 #' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example deletes the association between the specified trust store
-#' # and the specified load balancer.
-#' svc$delete_shared_trust_store_association(
-#'   ResourceArn = "arn:aws:elasticloadbalancing:us-east-1:123456789012:loadba...",
-#'   TrustStoreArn = "arn:aws:elasticloadbalancing:us-east-1:123456789012:trus..."
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -1856,7 +1846,7 @@ elbv2_describe_account_limits <- function(Marker = NULL, PageSize = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "Marker", limit_key = "PageSize", output_token = "NextMarker", result_key = "Limits"),
     stream_api = FALSE
   )
   input <- .elbv2$describe_account_limits_input(Marker = Marker, PageSize = PageSize)
@@ -1868,6 +1858,73 @@ elbv2_describe_account_limits <- function(Marker = NULL, PageSize = NULL) {
   return(response)
 }
 .elbv2$operations$describe_account_limits <- elbv2_describe_account_limits
+
+#' Describes the capacity reservation status for the specified load
+#' balancer
+#'
+#' @description
+#' Describes the capacity reservation status for the specified load
+#' balancer.
+#'
+#' @usage
+#' elbv2_describe_capacity_reservation(LoadBalancerArn)
+#'
+#' @param LoadBalancerArn &#91;required&#93; The Amazon Resource Name (ARN) of the load balancer.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LastModifiedTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   DecreaseRequestsRemaining = 123,
+#'   MinimumLoadBalancerCapacity = list(
+#'     CapacityUnits = 123
+#'   ),
+#'   CapacityReservationState = list(
+#'     list(
+#'       State = list(
+#'         Code = "provisioned"|"pending"|"rebalancing"|"failed",
+#'         Reason = "string"
+#'       ),
+#'       AvailabilityZone = "string",
+#'       EffectiveCapacityUnits = 123.0
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_capacity_reservation(
+#'   LoadBalancerArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname elbv2_describe_capacity_reservation
+#'
+#' @aliases elbv2_describe_capacity_reservation
+elbv2_describe_capacity_reservation <- function(LoadBalancerArn) {
+  op <- new_operation(
+    name = "DescribeCapacityReservation",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .elbv2$describe_capacity_reservation_input(LoadBalancerArn = LoadBalancerArn)
+  output <- .elbv2$describe_capacity_reservation_output()
+  config <- get_config()
+  svc <- .elbv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.elbv2$operations$describe_capacity_reservation <- elbv2_describe_capacity_reservation
 
 #' Describes the attributes for the specified listener
 #'
@@ -1898,14 +1955,6 @@ elbv2_describe_account_limits <- function(Marker = NULL, PageSize = NULL) {
 #'   ListenerArn = "string"
 #' )
 #' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example describes the attributes of the specified listener.
-#' svc$describe_listener_attributes(
-#'   ListenerArn = "aws:elasticloadbalancing:us-east-1:123456789012:listener/n..."
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -1990,7 +2039,7 @@ elbv2_describe_listener_certificates <- function(ListenerArn, Marker = NULL, Pag
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "Marker", limit_key = "PageSize", output_token = "NextMarker", result_key = "Certificates"),
     stream_api = FALSE
   )
   input <- .elbv2$describe_listener_certificates_input(ListenerArn = ListenerArn, Marker = Marker, PageSize = PageSize)
@@ -2107,7 +2156,8 @@ elbv2_describe_listener_certificates <- function(ListenerArn, Marker = NULL, Pag
 #'         Mode = "string",
 #'         TrustStoreArn = "string",
 #'         IgnoreClientCertificateExpiry = TRUE|FALSE,
-#'         TrustStoreAssociationStatus = "active"|"removed"
+#'         TrustStoreAssociationStatus = "active"|"removed",
+#'         AdvertiseTrustStoreCaNames = "on"|"off"
 #'       )
 #'     )
 #'   ),
@@ -2148,7 +2198,7 @@ elbv2_describe_listeners <- function(LoadBalancerArn = NULL, ListenerArns = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", output_token = "NextMarker", result_key = "Listeners"),
+    paginator = list(input_token = "Marker", output_token = "NextMarker", limit_key = "PageSize", result_key = "Listeners"),
     stream_api = FALSE
   )
   input <- .elbv2$describe_listeners_input(LoadBalancerArn = LoadBalancerArn, ListenerArns = ListenerArns, Marker = Marker, PageSize = PageSize)
@@ -2286,6 +2336,9 @@ elbv2_describe_load_balancer_attributes <- function(LoadBalancerArn) {
 #'               PrivateIPv4Address = "string",
 #'               IPv6Address = "string"
 #'             )
+#'           ),
+#'           SourceNatIpv6Prefixes = list(
+#'             "string"
 #'           )
 #'         )
 #'       ),
@@ -2294,7 +2347,8 @@ elbv2_describe_load_balancer_attributes <- function(LoadBalancerArn) {
 #'       ),
 #'       IpAddressType = "ipv4"|"dualstack"|"dualstack-without-public-ipv4",
 #'       CustomerOwnedIpv4Pool = "string",
-#'       EnforceSecurityGroupInboundRulesOnPrivateLinkTraffic = "string"
+#'       EnforceSecurityGroupInboundRulesOnPrivateLinkTraffic = "string",
+#'       EnablePrefixForIpv6SourceNat = "on"|"off"
 #'     )
 #'   ),
 #'   NextMarker = "string"
@@ -2336,7 +2390,7 @@ elbv2_describe_load_balancers <- function(LoadBalancerArns = NULL, Names = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", output_token = "NextMarker", result_key = "LoadBalancers"),
+    paginator = list(input_token = "Marker", output_token = "NextMarker", limit_key = "PageSize", result_key = "LoadBalancers"),
     stream_api = FALSE
   )
   input <- .elbv2$describe_load_balancers_input(LoadBalancerArns = LoadBalancerArns, Names = Names, Marker = Marker, PageSize = PageSize)
@@ -2514,7 +2568,7 @@ elbv2_describe_rules <- function(ListenerArn = NULL, RuleArns = NULL, Marker = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "Marker", limit_key = "PageSize", output_token = "NextMarker", result_key = "Rules"),
     stream_api = FALSE
   )
   input <- .elbv2$describe_rules_input(ListenerArn = ListenerArn, RuleArns = RuleArns, Marker = Marker, PageSize = PageSize)
@@ -2608,7 +2662,7 @@ elbv2_describe_ssl_policies <- function(Names = NULL, Marker = NULL, PageSize = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "Marker", limit_key = "PageSize", output_token = "NextMarker", result_key = "SslPolicies"),
     stream_api = FALSE
   )
   input <- .elbv2$describe_ssl_policies_input(Names = Names, Marker = Marker, PageSize = PageSize, LoadBalancerType = LoadBalancerType)
@@ -2863,7 +2917,7 @@ elbv2_describe_target_groups <- function(LoadBalancerArn = NULL, TargetGroupArns
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", output_token = "NextMarker", result_key = "TargetGroups"),
+    paginator = list(input_token = "Marker", output_token = "NextMarker", limit_key = "PageSize", result_key = "TargetGroups"),
     stream_api = FALSE
   )
   input <- .elbv2$describe_target_groups_input(LoadBalancerArn = LoadBalancerArn, TargetGroupArns = TargetGroupArns, Names = Names, Marker = Marker, PageSize = PageSize)
@@ -2908,6 +2962,11 @@ elbv2_describe_target_groups <- function(LoadBalancerArn = NULL, TargetGroupArns
 #'       AnomalyDetection = list(
 #'         Result = "anomalous"|"normal",
 #'         MitigationInEffect = "yes"|"no"
+#'       ),
+#'       AdministrativeOverride = list(
+#'         State = "unknown"|"no_override"|"zonal_shift_active"|"zonal_shift_delegated_to_dns",
+#'         Reason = "AdministrativeOverride.Unknown"|"AdministrativeOverride.NoOverride"|"AdministrativeOverride.ZonalShiftActive"|"AdministrativeOverride.ZonalShiftDelegatedToDns",
+#'         Description = "string"
 #'       )
 #'     )
 #'   )
@@ -3023,7 +3082,7 @@ elbv2_describe_trust_store_associations <- function(TrustStoreArn, Marker = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "PageSize", output_token = "NextMarker"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .elbv2$describe_trust_store_associations_input(TrustStoreArn = TrustStoreArn, Marker = Marker, PageSize = PageSize)
@@ -3092,7 +3151,7 @@ elbv2_describe_trust_store_revocations <- function(TrustStoreArn, RevocationIds 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "PageSize", output_token = "NextMarker"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .elbv2$describe_trust_store_revocations_input(TrustStoreArn = TrustStoreArn, RevocationIds = RevocationIds, Marker = Marker, PageSize = PageSize)
@@ -3161,7 +3220,7 @@ elbv2_describe_trust_stores <- function(TrustStoreArns = NULL, Names = NULL, Mar
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "PageSize", output_token = "NextMarker"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .elbv2$describe_trust_stores_input(TrustStoreArns = TrustStoreArns, Names = Names, Marker = Marker, PageSize = PageSize)
@@ -3198,15 +3257,6 @@ elbv2_describe_trust_stores <- function(TrustStoreArns = NULL, Names = NULL, Mar
 #'   ResourceArn = "string"
 #' )
 #' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example retrieves the resource policy for the specified trust
-#' # store.
-#' svc$get_resource_policy(
-#'   ResourceArn = "arn:aws:elasticloadbalancing:us-east-1:123456789012:trusts..."
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -3336,6 +3386,81 @@ elbv2_get_trust_store_revocation_content <- function(TrustStoreArn, RevocationId
 }
 .elbv2$operations$get_trust_store_revocation_content <- elbv2_get_trust_store_revocation_content
 
+#' Modifies the capacity reservation of the specified load balancer
+#'
+#' @description
+#' Modifies the capacity reservation of the specified load balancer.
+#' 
+#' When modifying capacity reservation, you must include at least one
+#' `MinimumLoadBalancerCapacity` or `ResetCapacityReservation`.
+#'
+#' @usage
+#' elbv2_modify_capacity_reservation(LoadBalancerArn,
+#'   MinimumLoadBalancerCapacity, ResetCapacityReservation)
+#'
+#' @param LoadBalancerArn &#91;required&#93; The Amazon Resource Name (ARN) of the load balancer.
+#' @param MinimumLoadBalancerCapacity The minimum load balancer capacity reserved.
+#' @param ResetCapacityReservation Resets the capacity reservation.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LastModifiedTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   DecreaseRequestsRemaining = 123,
+#'   MinimumLoadBalancerCapacity = list(
+#'     CapacityUnits = 123
+#'   ),
+#'   CapacityReservationState = list(
+#'     list(
+#'       State = list(
+#'         Code = "provisioned"|"pending"|"rebalancing"|"failed",
+#'         Reason = "string"
+#'       ),
+#'       AvailabilityZone = "string",
+#'       EffectiveCapacityUnits = 123.0
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$modify_capacity_reservation(
+#'   LoadBalancerArn = "string",
+#'   MinimumLoadBalancerCapacity = list(
+#'     CapacityUnits = 123
+#'   ),
+#'   ResetCapacityReservation = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname elbv2_modify_capacity_reservation
+#'
+#' @aliases elbv2_modify_capacity_reservation
+elbv2_modify_capacity_reservation <- function(LoadBalancerArn, MinimumLoadBalancerCapacity = NULL, ResetCapacityReservation = NULL) {
+  op <- new_operation(
+    name = "ModifyCapacityReservation",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .elbv2$modify_capacity_reservation_input(LoadBalancerArn = LoadBalancerArn, MinimumLoadBalancerCapacity = MinimumLoadBalancerCapacity, ResetCapacityReservation = ResetCapacityReservation)
+  output <- .elbv2$modify_capacity_reservation_output()
+  config <- get_config()
+  svc <- .elbv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.elbv2$operations$modify_capacity_reservation <- elbv2_modify_capacity_reservation
+
 #' Replaces the specified properties of the specified listener
 #'
 #' @description
@@ -3356,13 +3481,13 @@ elbv2_get_trust_store_revocation_content <- function(TrustStoreArn, RevocationId
 #'   Certificates, DefaultActions, AlpnPolicy, MutualAuthentication)
 #'
 #' @param ListenerArn &#91;required&#93; The Amazon Resource Name (ARN) of the listener.
-#' @param Port The port for connections from clients to the load balancer. You cannot
+#' @param Port The port for connections from clients to the load balancer. You can't
 #' specify a port for a Gateway Load Balancer.
 #' @param Protocol The protocol for connections from clients to the load balancer.
 #' Application Load Balancers support the HTTP and HTTPS protocols. Network
 #' Load Balancers support the TCP, TLS, UDP, and TCP_UDP protocols. You
 #' can’t change the protocol to UDP or TCP_UDP if dual-stack mode is
-#' enabled. You cannot specify a protocol for a Gateway Load Balancer.
+#' enabled. You can't specify a protocol for a Gateway Load Balancer.
 #' @param SslPolicy \[HTTPS and TLS listeners\] The security policy that defines which
 #' protocols and ciphers are supported.
 #' 
@@ -3478,7 +3603,8 @@ elbv2_get_trust_store_revocation_content <- function(TrustStoreArn, RevocationId
 #'         Mode = "string",
 #'         TrustStoreArn = "string",
 #'         IgnoreClientCertificateExpiry = TRUE|FALSE,
-#'         TrustStoreAssociationStatus = "active"|"removed"
+#'         TrustStoreAssociationStatus = "active"|"removed",
+#'         AdvertiseTrustStoreCaNames = "on"|"off"
 #'       )
 #'     )
 #'   )
@@ -3565,7 +3691,8 @@ elbv2_get_trust_store_revocation_content <- function(TrustStoreArn, RevocationId
 #'     Mode = "string",
 #'     TrustStoreArn = "string",
 #'     IgnoreClientCertificateExpiry = TRUE|FALSE,
-#'     TrustStoreAssociationStatus = "active"|"removed"
+#'     TrustStoreAssociationStatus = "active"|"removed",
+#'     AdvertiseTrustStoreCaNames = "on"|"off"
 #'   )
 #' )
 #' ```
@@ -4368,7 +4495,7 @@ elbv2_modify_trust_store <- function(TrustStoreArn, CaCertificatesBundleS3Bucket
 #' each EC2 instance or IP address with the same target group multiple
 #' times using different ports.
 #' 
-#' With a Network Load Balancer, you cannot register instances by instance
+#' With a Network Load Balancer, you can't register instances by instance
 #' ID if they have the following instance types: C1, CC1, CC2, CG1, CG2,
 #' CR1, CS1, G1, G2, HI1, HS1, M1, M2, M3, and T1. You can register
 #' instances of these types by IP address.
@@ -4636,25 +4763,20 @@ elbv2_remove_trust_store_revocations <- function(TrustStoreArn, RevocationIds) {
 #' elbv2_set_ip_address_type(LoadBalancerArn, IpAddressType)
 #'
 #' @param LoadBalancerArn &#91;required&#93; The Amazon Resource Name (ARN) of the load balancer.
-#' @param IpAddressType &#91;required&#93; Note: Internal load balancers must use the `ipv4` IP address type.
+#' @param IpAddressType &#91;required&#93; The IP address type. Internal load balancers must use `ipv4`.
 #' 
-#' \[Application Load Balancers\] The IP address type. The possible values
-#' are `ipv4` (for only IPv4 addresses), `dualstack` (for IPv4 and IPv6
-#' addresses), and `dualstack-without-public-ipv4` (for IPv6 only public
-#' addresses, with private IPv4 and IPv6 addresses).
+#' \[Application Load Balancers\] The possible values are `ipv4` (IPv4
+#' addresses), `dualstack` (IPv4 and IPv6 addresses), and
+#' `dualstack-without-public-ipv4` (public IPv6 addresses and private IPv4
+#' and IPv6 addresses).
 #' 
-#' Note: Application Load Balancer authentication only supports IPv4
-#' addresses when connecting to an Identity Provider (IdP) or Amazon
-#' Cognito endpoint. Without a public IPv4 address the load balancer cannot
-#' complete the authentication process, resulting in HTTP 500 errors.
+#' Application Load Balancer authentication supports IPv4 addresses only
+#' when connecting to an Identity Provider (IdP) or Amazon Cognito
+#' endpoint. Without a public IPv4 address the load balancer can't complete
+#' the authentication process, resulting in HTTP 500 errors.
 #' 
-#' \[Network Load Balancers\] The IP address type. The possible values are
-#' `ipv4` (for only IPv4 addresses) and `dualstack` (for IPv4 and IPv6
-#' addresses). You can’t specify `dualstack` for a load balancer with a UDP
-#' or TCP_UDP listener.
-#' 
-#' \[Gateway Load Balancers\] The IP address type. The possible values are
-#' `ipv4` (for only IPv4 addresses) and `dualstack` (for IPv4 and IPv6
+#' \[Network Load Balancers and Gateway Load Balancers\] The possible
+#' values are `ipv4` (IPv4 addresses) and `dualstack` (IPv4 and IPv6
 #' addresses).
 #'
 #' @return
@@ -4973,7 +5095,7 @@ elbv2_set_security_groups <- function(LoadBalancerArn, SecurityGroups, EnforceSe
 #'
 #' @usage
 #' elbv2_set_subnets(LoadBalancerArn, Subnets, SubnetMappings,
-#'   IpAddressType)
+#'   IpAddressType, EnablePrefixForIpv6SourceNat)
 #'
 #' @param LoadBalancerArn &#91;required&#93; The Amazon Resource Name (ARN) of the load balancer.
 #' @param Subnets The IDs of the public subnets. You can specify only one subnet per
@@ -4988,16 +5110,13 @@ elbv2_set_security_groups <- function(LoadBalancerArn, SecurityGroups, EnforceSe
 #' \[Application Load Balancers on Local Zones\] You can specify subnets
 #' from one or more Local Zones.
 #' 
-#' \[Network Load Balancers\] You can specify subnets from one or more
-#' Availability Zones.
-#' 
-#' \[Gateway Load Balancers\] You can specify subnets from one or more
-#' Availability Zones.
+#' \[Network Load Balancers and Gateway Load Balancers\] You can specify
+#' subnets from one or more Availability Zones.
 #' @param SubnetMappings The IDs of the public subnets. You can specify only one subnet per
 #' Availability Zone. You must specify either subnets or subnet mappings.
 #' 
 #' \[Application Load Balancers\] You must specify subnets from at least
-#' two Availability Zones. You cannot specify Elastic IP addresses for your
+#' two Availability Zones. You can't specify Elastic IP addresses for your
 #' subnets.
 #' 
 #' \[Application Load Balancers on Outposts\] You must specify one Outpost
@@ -5015,19 +5134,19 @@ elbv2_set_security_groups <- function(LoadBalancerArn, SecurityGroups, EnforceSe
 #' 
 #' \[Gateway Load Balancers\] You can specify subnets from one or more
 #' Availability Zones.
-#' @param IpAddressType \[Application Load Balancers\] The IP address type. The possible values
-#' are `ipv4` (for only IPv4 addresses), `dualstack` (for IPv4 and IPv6
-#' addresses), and `dualstack-without-public-ipv4` (for IPv6 only public
-#' addresses, with private IPv4 and IPv6 addresses).
+#' @param IpAddressType The IP address type.
 #' 
-#' \[Network Load Balancers\] The type of IP addresses used by the subnets
-#' for your load balancer. The possible values are `ipv4` (for IPv4
-#' addresses) and `dualstack` (for IPv4 and IPv6 addresses). You can’t
-#' specify `dualstack` for a load balancer with a UDP or TCP_UDP listener.
+#' \[Application Load Balancers\] The possible values are `ipv4` (IPv4
+#' addresses), `dualstack` (IPv4 and IPv6 addresses), and
+#' `dualstack-without-public-ipv4` (public IPv6 addresses and private IPv4
+#' and IPv6 addresses).
 #' 
-#' \[Gateway Load Balancers\] The type of IP addresses used by the subnets
-#' for your load balancer. The possible values are `ipv4` (for IPv4
-#' addresses) and `dualstack` (for IPv4 and IPv6 addresses).
+#' \[Network Load Balancers and Gateway Load Balancers\] The possible
+#' values are `ipv4` (IPv4 addresses) and `dualstack` (IPv4 and IPv6
+#' addresses).
+#' @param EnablePrefixForIpv6SourceNat \[Network Load Balancers with UDP listeners\] Indicates whether to use
+#' an IPv6 prefix from each subnet for source NAT. The IP address type must
+#' be `dualstack`. The default value is `off`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -5045,10 +5164,14 @@ elbv2_set_security_groups <- function(LoadBalancerArn, SecurityGroups, EnforceSe
 #'           PrivateIPv4Address = "string",
 #'           IPv6Address = "string"
 #'         )
+#'       ),
+#'       SourceNatIpv6Prefixes = list(
+#'         "string"
 #'       )
 #'     )
 #'   ),
-#'   IpAddressType = "ipv4"|"dualstack"|"dualstack-without-public-ipv4"
+#'   IpAddressType = "ipv4"|"dualstack"|"dualstack-without-public-ipv4",
+#'   EnablePrefixForIpv6SourceNat = "on"|"off"
 #' )
 #' ```
 #'
@@ -5064,10 +5187,12 @@ elbv2_set_security_groups <- function(LoadBalancerArn, SecurityGroups, EnforceSe
 #'       SubnetId = "string",
 #'       AllocationId = "string",
 #'       PrivateIPv4Address = "string",
-#'       IPv6Address = "string"
+#'       IPv6Address = "string",
+#'       SourceNatIpv6Prefix = "string"
 #'     )
 #'   ),
-#'   IpAddressType = "ipv4"|"dualstack"|"dualstack-without-public-ipv4"
+#'   IpAddressType = "ipv4"|"dualstack"|"dualstack-without-public-ipv4",
+#'   EnablePrefixForIpv6SourceNat = "on"|"off"
 #' )
 #' ```
 #'
@@ -5089,7 +5214,7 @@ elbv2_set_security_groups <- function(LoadBalancerArn, SecurityGroups, EnforceSe
 #' @rdname elbv2_set_subnets
 #'
 #' @aliases elbv2_set_subnets
-elbv2_set_subnets <- function(LoadBalancerArn, Subnets = NULL, SubnetMappings = NULL, IpAddressType = NULL) {
+elbv2_set_subnets <- function(LoadBalancerArn, Subnets = NULL, SubnetMappings = NULL, IpAddressType = NULL, EnablePrefixForIpv6SourceNat = NULL) {
   op <- new_operation(
     name = "SetSubnets",
     http_method = "POST",
@@ -5098,7 +5223,7 @@ elbv2_set_subnets <- function(LoadBalancerArn, Subnets = NULL, SubnetMappings = 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .elbv2$set_subnets_input(LoadBalancerArn = LoadBalancerArn, Subnets = Subnets, SubnetMappings = SubnetMappings, IpAddressType = IpAddressType)
+  input <- .elbv2$set_subnets_input(LoadBalancerArn = LoadBalancerArn, Subnets = Subnets, SubnetMappings = SubnetMappings, IpAddressType = IpAddressType, EnablePrefixForIpv6SourceNat = EnablePrefixForIpv6SourceNat)
   output <- .elbv2$set_subnets_output()
   config <- get_config()
   svc <- .elbv2$service(config, op)

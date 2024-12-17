@@ -2,17 +2,18 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_describe_user_pool_domain}
 \alias{cognitoidentityprovider_describe_user_pool_domain}
-\title{Gets information about a domain}
+\title{Given a user pool domain name, returns information about the domain
+configuration}
 \usage{
 cognitoidentityprovider_describe_user_pool_domain(Domain)
 }
 \arguments{
-\item{Domain}{[required] The domain string. For custom domains, this is the fully-qualified
-domain name, such as \code{auth.example.com}. For Amazon Cognito prefix
-domains, this is the prefix alone, such as \code{auth}.}
+\item{Domain}{[required] The domain that you want to describe. For custom domains, this is the
+fully-qualified domain name, such as \code{auth.example.com}. For Amazon
+Cognito prefix domains, this is the prefix alone, such as \code{auth}.}
 }
 \description{
-Gets information about a domain.
+Given a user pool domain name, returns information about the domain configuration.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_describe_user_pool_domain/} for full documentation.
 }

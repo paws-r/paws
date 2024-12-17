@@ -12,6 +12,14 @@ test_that("list_data_cells_filter", {
   expect_error(svc$list_data_cells_filter(MaxResults = 20), NA)
 })
 
+test_that("list_lf_tag_expressions", {
+  expect_error(svc$list_lf_tag_expressions(), NA)
+})
+
+test_that("list_lf_tag_expressions", {
+  expect_error(svc$list_lf_tag_expressions(MaxResults = 20), NA)
+})
+
 test_that("list_lf_tags", {
   expect_error(svc$list_lf_tags(), NA)
 })

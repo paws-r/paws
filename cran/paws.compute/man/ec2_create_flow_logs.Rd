@@ -90,7 +90,7 @@ arn:aws:firehose:\emph{region}:\emph{account_id}:deliverystream:\emph{my_stream}
 order in which they should appear. If you omit this parameter, the flow
 log is created using the default format. If you specify this parameter,
 you must include at least one field. For more information about the
-available fields, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/flow-logs.html#flow-log-records}{Flow log records}
+available fields, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/flow-log-records.html}{Flow log records}
 in the \emph{Amazon VPC User Guide} or \href{https://docs.aws.amazon.com/vpc/latest/tgw/tgw-flow-logs.html#flow-log-records}{Transit Gateway Flow Log records}
 in the \emph{Amazon Web Services Transit Gateway Guide}.
 

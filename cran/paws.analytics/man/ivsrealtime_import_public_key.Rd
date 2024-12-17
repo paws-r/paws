@@ -12,10 +12,11 @@ ivsrealtime_import_public_key(publicKeyMaterial, name = NULL, tags = NULL)
 \item{name}{Name of the public key to be imported.}
 
 \item{tags}{Tags attached to the resource. Array of maps, each of the form
-\code{string:string (key:value)}. See \href{https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html}{Tagging AWS Resources}
-for details, including restrictions that apply to tags and "Tag naming
-limits and requirements"; Amazon IVS has no constraints on tags beyond
-what is documented there.}
+\code{string:string (key:value)}. See \href{https://docs.aws.amazon.com/tag-editor/latest/userguide/best-practices-and-strats.html}{Best practices and strategies}
+in \emph{Tagging AWS Resources and Tag Editor} for details, including
+restrictions that apply to tags and "Tag naming limits and
+requirements"; Amazon IVS has no constraints on tags beyond what is
+documented there.}
 }
 \description{
 Import a public key to be used for signing stage participant tokens.

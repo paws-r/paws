@@ -9,7 +9,8 @@ ec2_modify_verified_access_instance(
   VerifiedAccessInstanceId,
   Description = NULL,
   DryRun = NULL,
-  ClientToken = NULL
+  ClientToken = NULL,
+  CidrEndpointsCustomSubDomain = NULL
 )
 }
 \arguments{
@@ -24,6 +25,8 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{ClientToken}{A unique, case-sensitive token that you provide to ensure idempotency of
 your modification request. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency}.}
+
+\item{CidrEndpointsCustomSubDomain}{The custom subdomain.}
 }
 \description{
 Modifies the configuration of the specified Amazon Web Services Verified Access instance.

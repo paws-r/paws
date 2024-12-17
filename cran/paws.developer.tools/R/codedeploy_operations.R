@@ -1344,7 +1344,7 @@ codedeploy_list_deployment_targets <- function(deploymentId, nextToken = NULL, t
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "targetIds"),
     stream_api = FALSE
   )
   input <- .codedeploy$list_deployment_targets_input(deploymentId = deploymentId, nextToken = nextToken, targetFilters = targetFilters)
@@ -1439,7 +1439,7 @@ codedeploy_list_git_hub_account_token_names <- function(nextToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "tokenNameList"),
     stream_api = FALSE
   )
   input <- .codedeploy$list_git_hub_account_token_names_input(nextToken = nextToken)
@@ -1481,7 +1481,7 @@ codedeploy_list_on_premises_instances <- function(registrationStatus = NULL, tag
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "instanceNames"),
     stream_api = FALSE
   )
   input <- .codedeploy$list_on_premises_instances_input(registrationStatus = registrationStatus, tagFilters = tagFilters, nextToken = nextToken)

@@ -4,10 +4,18 @@
 \alias{apigateway_get_base_path_mappings}
 \title{Represents a collection of BasePathMapping resources}
 \usage{
-apigateway_get_base_path_mappings(domainName, position = NULL, limit = NULL)
+apigateway_get_base_path_mappings(
+  domainName,
+  domainNameId = NULL,
+  position = NULL,
+  limit = NULL
+)
 }
 \arguments{
 \item{domainName}{[required] The domain name of a BasePathMapping resource.}
+
+\item{domainNameId}{The identifier for the domain name resource. Supported only for private
+custom domain names.}
 
 \item{position}{The current pagination position in the paged result set.}
 

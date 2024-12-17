@@ -2,7 +2,7 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_put_bucket_cors}
 \alias{s3_put_bucket_cors}
-\title{This operation is not supported by directory buckets}
+\title{This operation is not supported for directory buckets}
 \usage{
 s3_put_bucket_cors(
   Bucket,
@@ -43,7 +43,7 @@ provide does not match the actual owner of the bucket, the request fails
 with the HTTP status code \verb{403 Forbidden} (access denied).}
 }
 \description{
-This operation is not supported by directory buckets.
+This operation is not supported for directory buckets.
 
 See \url{https://www.paws-r-sdk.com/docs/s3_put_bucket_cors/} for full documentation.
 }

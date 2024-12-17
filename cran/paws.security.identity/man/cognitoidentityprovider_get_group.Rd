@@ -9,7 +9,7 @@ cognitoidentityprovider_get_group(GroupName, UserPoolId)
 \arguments{
 \item{GroupName}{[required] The name of the group.}
 
-\item{UserPoolId}{[required] The user pool ID for the user pool.}
+\item{UserPoolId}{[required] The ID of the user pool.}
 }
 \description{
 Gets a group.

@@ -5,12 +5,16 @@
 \title{Describes the modifications made to your Reserved Instances}
 \usage{
 ec2_describe_reserved_instances_modifications(
-  Filters = NULL,
   ReservedInstancesModificationIds = NULL,
-  NextToken = NULL
+  NextToken = NULL,
+  Filters = NULL
 )
 }
 \arguments{
+\item{ReservedInstancesModificationIds}{IDs for the submitted modification request.}
+
+\item{NextToken}{The token to retrieve the next page of results.}
+
 \item{Filters}{One or more filters.
 \itemize{
 \item \code{client-token} - The idempotency token for the modification request.
@@ -35,10 +39,6 @@ request.
 \item \code{update-date} - The time when the modification request was last
 updated.
 }}
-
-\item{ReservedInstancesModificationIds}{IDs for the submitted modification request.}
-
-\item{NextToken}{The token to retrieve the next page of results.}
 }
 \description{
 Describes the modifications made to your Reserved Instances. If no parameter is specified, information about all your Reserved Instances modification requests is returned. If a modification ID is specified, only information about the specific modification is returned.

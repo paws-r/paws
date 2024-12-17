@@ -9,6 +9,7 @@ datazone_put_environment_blueprint_configuration(
   domainIdentifier,
   enabledRegions,
   environmentBlueprintIdentifier,
+  environmentRolePermissionBoundary = NULL,
   manageAccessRoleArn = NULL,
   provisioningConfigurations = NULL,
   provisioningRoleArn = NULL,
@@ -21,6 +22,8 @@ datazone_put_environment_blueprint_configuration(
 \item{enabledRegions}{[required] Specifies the enabled Amazon Web Services Regions.}
 
 \item{environmentBlueprintIdentifier}{[required] The identifier of the environment blueprint.}
+
+\item{environmentRolePermissionBoundary}{The environment role permissions boundary.}
 
 \item{manageAccessRoleArn}{The ARN of the manage access role.}
 

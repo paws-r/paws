@@ -21,12 +21,14 @@ s3_put_object(
   ChecksumSHA1 = NULL,
   ChecksumSHA256 = NULL,
   Expires = NULL,
+  IfMatch = NULL,
   IfNoneMatch = NULL,
   GrantFullControl = NULL,
   GrantRead = NULL,
   GrantReadACP = NULL,
   GrantWriteACP = NULL,
   Key,
+  WriteOffsetBytes = NULL,
   Metadata = NULL,
   ServerSideEncryption = NULL,
   StorageClass = NULL,
@@ -79,10 +81,10 @@ in the \emph{Amazon S3 User Guide}.
 
 \strong{Directory buckets} - When you use this operation with a directory
 bucket, you must use virtual-hosted-style requests in the format
-\code{ Bucket_name.s3express-az_id.region.amazonaws.com}. Path-style requests
-are not supported. Directory bucket names must be unique in the chosen
-Availability Zone. Bucket names must follow the format
-\code{ bucket_base_name--az-id--x-s3} (for example,
+\code{ Bucket-name.s3express-zone-id.region-code.amazonaws.com}. Path-style
+requests are not supported. Directory bucket names must be unique in the
+chosen Zone (Availability Zone or Local Zone). Bucket names must follow
+the format \code{ bucket-base-name--zone-id--x-s3} (for example,
 \code{ DOC-EXAMPLE-BUCKET--usw2-az1--x-s3}). For information about bucket
 naming restrictions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html}{Directory bucket naming rules}
 in the \emph{Amazon S3 User Guide}.
@@ -206,6 +208,20 @@ in the \emph{Amazon S3 User Guide}.}
 \item{Expires}{The date and time at which the object is no longer cacheable. For more
 information, see \url{https://www.rfc-editor.org/rfc/rfc7234#section-5.3}.}
 
+\item{IfMatch}{Uploads the object only if the ETag (entity tag) value provided during
+the WRITE operation matches the ETag of the object in S3. If the ETag
+values do not match, the operation returns a \verb{412 Precondition Failed}
+error.
+
+If a conflicting operation occurs during the upload S3 returns a
+\verb{409 ConditionalRequestConflict} response. On a 409 failure you should
+fetch the object's ETag and retry the upload.
+
+Expects the ETag value as a string.
+
+For more information about conditional requests, see \href{https://datatracker.ietf.org/doc/html/rfc7232}{RFC 7232}, or \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/conditional-requests.html}{Conditional requests}
+in the \emph{Amazon S3 User Guide}.}
+
 \item{IfNoneMatch}{Uploads the object only if the object key name does not already exist in
 the bucket specified. Otherwise, Amazon S3 returns a
 \verb{412 Precondition Failed} error.
@@ -245,6 +261,14 @@ object.
 }}
 
 \item{Key}{[required] Object key for which the PUT action was initiated.}
+
+\item{WriteOffsetBytes}{Specifies the offset for appending data to existing objects in bytes.
+The offset must be equal to the size of the existing object being
+appended to. If no object exists, setting this header to 0 will create a
+new object.
+
+This functionality is only supported for objects in the Amazon S3
+Express One Zone storage class in directory buckets.}
 
 \item{Metadata}{A map of metadata to store with the object in S3.}
 

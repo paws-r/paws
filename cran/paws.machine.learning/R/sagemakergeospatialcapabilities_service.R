@@ -140,7 +140,7 @@ sagemakergeospatialcapabilities <- function(config = list(), credentials = list(
 
 .sagemakergeospatialcapabilities$metadata <- list(
   service_name = "sagemakergeospatialcapabilities",
-  endpoints = list("*" = list(endpoint = "sagemaker-geospatial.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "sagemaker-geospatial.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "sagemaker-geospatial.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "sagemaker-geospatial.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "sagemaker-geospatial.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "sagemaker-geospatial.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "sagemaker-geospatial.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "sagemaker-geospatial.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "sagemaker-geospatial.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "sagemaker-geospatial.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "sagemaker-geospatial.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "sagemaker-geospatial.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "sagemaker-geospatial.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "SageMaker Geospatial",
   api_version = "2020-05-27",
   signing_name = "sagemaker-geospatial",

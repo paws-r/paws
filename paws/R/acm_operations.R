@@ -718,7 +718,7 @@ acm_list_certificates <- function(CertificateStatuses = NULL, Includes = NULL, N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxItems", output_token = "NextToken", result_key = "CertificateSummaryList"),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxItems", result_key = "CertificateSummaryList"),
     stream_api = FALSE
   )
   input <- .acm$list_certificates_input(CertificateStatuses = CertificateStatuses, Includes = Includes, NextToken = NextToken, MaxItems = MaxItems, SortBy = SortBy, SortOrder = SortOrder)

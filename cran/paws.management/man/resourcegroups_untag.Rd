@@ -7,9 +7,9 @@
 resourcegroups_untag(Arn, Keys)
 }
 \arguments{
-\item{Arn}{[required] The ARN of the resource group from which to remove tags. The command
-removed both the specified keys and any values associated with those
-keys.}
+\item{Arn}{[required] The Amazon resource name (ARN) of the resource group from which to
+remove tags. The command removed both the specified keys and any values
+associated with those keys.}
 
 \item{Keys}{[required] The keys of the tags to be removed.}
 }

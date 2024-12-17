@@ -11,11 +11,13 @@ ssm_reset_service_setting(SettingId)
 \item{SettingId}{[required] The Amazon Resource Name (ARN) of the service setting to reset. The
 setting ID can be one of the following.
 \itemize{
-\item \verb{/ssm/managed-instance/default-ec2-instance-management-role}
+\item \verb{/ssm/appmanager/appmanager-enabled}
 \item \verb{/ssm/automation/customer-script-log-destination}
 \item \verb{/ssm/automation/customer-script-log-group-name}
+\item /ssm/automation/enable-adaptive-concurrency
 \item \verb{/ssm/documents/console/public-sharing-permission}
 \item \verb{/ssm/managed-instance/activation-tier}
+\item \verb{/ssm/managed-instance/default-ec2-instance-management-role}
 \item \verb{/ssm/opsinsights/opscenter}
 \item \verb{/ssm/parameter-store/default-parameter-tier}
 \item \verb{/ssm/parameter-store/high-throughput-enabled}

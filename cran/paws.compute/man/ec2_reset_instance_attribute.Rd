@@ -4,20 +4,20 @@
 \alias{ec2_reset_instance_attribute}
 \title{Resets an attribute of an instance to its default value}
 \usage{
-ec2_reset_instance_attribute(Attribute, DryRun = NULL, InstanceId)
+ec2_reset_instance_attribute(DryRun = NULL, InstanceId, Attribute)
 }
 \arguments{
+\item{DryRun}{Checks whether you have the required permissions for the operation,
+without actually making the request, and provides an error response. If
+you have the required permissions, the error response is
+\code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
+
+\item{InstanceId}{[required] The ID of the instance.}
+
 \item{Attribute}{[required] The attribute to reset.
 
 You can only reset the following attributes: \code{kernel} | \code{ramdisk} |
 \code{sourceDestCheck}.}
-
-\item{DryRun}{Checks whether you have the required permissions for the action, without
-actually making the request, and provides an error response. If you have
-the required permissions, the error response is \code{DryRunOperation}.
-Otherwise, it is \code{UnauthorizedOperation}.}
-
-\item{InstanceId}{[required] The ID of the instance.}
 }
 \description{
 Resets an attribute of an instance to its default value. To reset the \code{kernel} or \code{ramdisk}, the instance must be in a stopped state. To reset the \code{sourceDestCheck}, the instance can be either running or stopped.

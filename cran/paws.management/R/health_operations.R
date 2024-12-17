@@ -35,7 +35,7 @@ health_describe_affected_accounts_for_organization <- function(eventArn, nextTok
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", non_aggregate_keys = list( "eventScopeCode"), output_token = "nextToken", result_key = "affectedAccounts"),
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "affectedAccounts", non_aggregate_keys = list( "eventScopeCode")),
     stream_api = FALSE
   )
   input <- .health$describe_affected_accounts_for_organization_input(eventArn = eventArn, nextToken = nextToken, maxResults = maxResults)
@@ -52,7 +52,7 @@ health_describe_affected_accounts_for_organization <- function(eventArn, nextTok
 #' events, based on the specified filter criteria
 #'
 #' @description
-#' Returns a list of entities that have been affected by the specified events, based on the specified filter criteria. Entities can refer to individual customer resources, groups of customer resources, or any other construct, depending on the Amazon Web Service. Events that have impact beyond that of the affected entities, or where the extent of impact is unknown, include at least one entity indicating this.
+#' Returns a list of entities that have been affected by the specified events, based on the specified filter criteria. Entities can refer to individual customer resources, groups of customer resources, or any other construct, depending on the Amazon Web Services service. Events that have impact beyond that of the affected entities, or where the extent of impact is unknown, include at least one entity indicating this.
 #'
 #' See [https://www.paws-r-sdk.com/docs/health_describe_affected_entities/](https://www.paws-r-sdk.com/docs/health_describe_affected_entities/) for full documentation.
 #'
@@ -77,7 +77,7 @@ health_describe_affected_entities <- function(filter, locale = NULL, nextToken =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "entities"),
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "entities"),
     stream_api = FALSE
   )
   input <- .health$describe_affected_entities_input(filter = filter, locale = locale, nextToken = nextToken, maxResults = maxResults)
@@ -95,7 +95,7 @@ health_describe_affected_entities <- function(filter, locale = NULL, nextToken =
 #' the filter criteria
 #'
 #' @description
-#' Returns a list of entities that have been affected by one or more events for one or more accounts in your organization in Organizations, based on the filter criteria. Entities can refer to individual customer resources, groups of customer resources, or any other construct, depending on the Amazon Web Service.
+#' Returns a list of entities that have been affected by one or more events for one or more accounts in your organization in Organizations, based on the filter criteria. Entities can refer to individual customer resources, groups of customer resources, or any other construct, depending on the Amazon Web Services service.
 #'
 #' See [https://www.paws-r-sdk.com/docs/health_describe_affected_entities_for_organization/](https://www.paws-r-sdk.com/docs/health_describe_affected_entities_for_organization/) for full documentation.
 #'
@@ -154,7 +154,7 @@ health_describe_entity_aggregates <- function(eventArns = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "entityAggregates"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .health$describe_entity_aggregates_input(eventArns = eventArns)
@@ -229,7 +229,7 @@ health_describe_event_aggregates <- function(filter = NULL, aggregateField, maxR
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "eventAggregates"),
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "eventAggregates"),
     stream_api = FALSE
   )
   input <- .health$describe_event_aggregates_input(filter = filter, aggregateField = aggregateField, maxResults = maxResults, nextToken = nextToken)
@@ -314,7 +314,7 @@ health_describe_event_details_for_organization <- function(organizationEventDeta
 #' Returns the event types that meet the specified filter criteria
 #'
 #' @description
-#' Returns the event types that meet the specified filter criteria. You can use this API operation to find information about the Health event, such as the category, Amazon Web Service, and event code. The metadata for each event appears in the [EventType](https://docs.aws.amazon.com/health/latest/APIReference/API_EventType.html) object.
+#' Returns the event types that meet the specified filter criteria. You can use this API operation to find information about the Health event, such as the category, Amazon Web Services service, and event code. The metadata for each event appears in the [EventType](https://docs.aws.amazon.com/health/latest/APIReference/API_EventType.html) object.
 #'
 #' See [https://www.paws-r-sdk.com/docs/health_describe_event_types/](https://www.paws-r-sdk.com/docs/health_describe_event_types/) for full documentation.
 #'
@@ -341,7 +341,7 @@ health_describe_event_types <- function(filter = NULL, locale = NULL, nextToken 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "eventTypes"),
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "eventTypes"),
     stream_api = FALSE
   )
   input <- .health$describe_event_types_input(filter = filter, locale = locale, nextToken = nextToken, maxResults = maxResults)
@@ -381,7 +381,7 @@ health_describe_events <- function(filter = NULL, nextToken = NULL, maxResults =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "events"),
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "events"),
     stream_api = FALSE
   )
   input <- .health$describe_events_input(filter = filter, nextToken = nextToken, maxResults = maxResults, locale = locale)

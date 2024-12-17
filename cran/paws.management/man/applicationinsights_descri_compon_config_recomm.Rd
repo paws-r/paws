@@ -19,7 +19,9 @@ applicationinsights_describe_component_configuration_recommendation(
 
 \item{Tier}{[required] The tier of the application component.}
 
-\item{WorkloadName}{The name of the workload.}
+\item{WorkloadName}{The name of the workload. The name of the workload is required when the
+tier of the application component is \code{SAP_ASE_SINGLE_NODE} or
+\code{SAP_ASE_HIGH_AVAILABILITY}.}
 
 \item{RecommendationType}{The recommended configuration type.}
 }

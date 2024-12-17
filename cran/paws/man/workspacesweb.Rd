@@ -102,12 +102,14 @@ capacity management, scaling, and maintaining browser images.
 
 \tabular{ll}{
 \link[paws.end.user.computing:workspacesweb_associate_browser_settings]{associate_browser_settings} \tab Associates a browser settings resource with a web portal\cr
+\link[paws.end.user.computing:workspacesweb_associate_data_protection_settings]{associate_data_protection_settings} \tab Associates a data protection settings resource with a web portal\cr
 \link[paws.end.user.computing:workspacesweb_associate_ip_access_settings]{associate_ip_access_settings} \tab Associates an IP access settings resource with a web portal\cr
 \link[paws.end.user.computing:workspacesweb_associate_network_settings]{associate_network_settings} \tab Associates a network settings resource with a web portal\cr
 \link[paws.end.user.computing:workspacesweb_associate_trust_store]{associate_trust_store} \tab Associates a trust store with a web portal\cr
 \link[paws.end.user.computing:workspacesweb_associate_user_access_logging_settings]{associate_user_access_logging_settings} \tab Associates a user access logging settings resource with a web portal\cr
 \link[paws.end.user.computing:workspacesweb_associate_user_settings]{associate_user_settings} \tab Associates a user settings resource with a web portal\cr
 \link[paws.end.user.computing:workspacesweb_create_browser_settings]{create_browser_settings} \tab Creates a browser settings resource that can be associated with a web portal\cr
+\link[paws.end.user.computing:workspacesweb_create_data_protection_settings]{create_data_protection_settings} \tab Creates a data protection settings resource that can be associated with a web portal\cr
 \link[paws.end.user.computing:workspacesweb_create_identity_provider]{create_identity_provider} \tab Creates an identity provider resource that is then associated with a web portal\cr
 \link[paws.end.user.computing:workspacesweb_create_ip_access_settings]{create_ip_access_settings} \tab Creates an IP access settings resource that can be associated with a web portal\cr
 \link[paws.end.user.computing:workspacesweb_create_network_settings]{create_network_settings} \tab Creates a network settings resource that can be associated with a web portal\cr
@@ -116,6 +118,7 @@ capacity management, scaling, and maintaining browser images.
 \link[paws.end.user.computing:workspacesweb_create_user_access_logging_settings]{create_user_access_logging_settings} \tab Creates a user access logging settings resource that can be associated with a web portal\cr
 \link[paws.end.user.computing:workspacesweb_create_user_settings]{create_user_settings} \tab Creates a user settings resource that can be associated with a web portal\cr
 \link[paws.end.user.computing:workspacesweb_delete_browser_settings]{delete_browser_settings} \tab Deletes browser settings\cr
+\link[paws.end.user.computing:workspacesweb_delete_data_protection_settings]{delete_data_protection_settings} \tab Deletes data protection settings\cr
 \link[paws.end.user.computing:workspacesweb_delete_identity_provider]{delete_identity_provider} \tab Deletes the identity provider\cr
 \link[paws.end.user.computing:workspacesweb_delete_ip_access_settings]{delete_ip_access_settings} \tab Deletes IP access settings\cr
 \link[paws.end.user.computing:workspacesweb_delete_network_settings]{delete_network_settings} \tab Deletes network settings\cr
@@ -124,26 +127,32 @@ capacity management, scaling, and maintaining browser images.
 \link[paws.end.user.computing:workspacesweb_delete_user_access_logging_settings]{delete_user_access_logging_settings} \tab Deletes user access logging settings\cr
 \link[paws.end.user.computing:workspacesweb_delete_user_settings]{delete_user_settings} \tab Deletes user settings\cr
 \link[paws.end.user.computing:workspacesweb_disassociate_browser_settings]{disassociate_browser_settings} \tab Disassociates browser settings from a web portal\cr
+\link[paws.end.user.computing:workspacesweb_disassociate_data_protection_settings]{disassociate_data_protection_settings} \tab Disassociates data protection settings from a web portal\cr
 \link[paws.end.user.computing:workspacesweb_disassociate_ip_access_settings]{disassociate_ip_access_settings} \tab Disassociates IP access settings from a web portal\cr
 \link[paws.end.user.computing:workspacesweb_disassociate_network_settings]{disassociate_network_settings} \tab Disassociates network settings from a web portal\cr
 \link[paws.end.user.computing:workspacesweb_disassociate_trust_store]{disassociate_trust_store} \tab Disassociates a trust store from a web portal\cr
 \link[paws.end.user.computing:workspacesweb_disassociate_user_access_logging_settings]{disassociate_user_access_logging_settings} \tab Disassociates user access logging settings from a web portal\cr
 \link[paws.end.user.computing:workspacesweb_disassociate_user_settings]{disassociate_user_settings} \tab Disassociates user settings from a web portal\cr
+\link[paws.end.user.computing:workspacesweb_expire_session]{expire_session} \tab Expires an active secure browser session\cr
 \link[paws.end.user.computing:workspacesweb_get_browser_settings]{get_browser_settings} \tab Gets browser settings\cr
+\link[paws.end.user.computing:workspacesweb_get_data_protection_settings]{get_data_protection_settings} \tab Gets the data protection settings\cr
 \link[paws.end.user.computing:workspacesweb_get_identity_provider]{get_identity_provider} \tab Gets the identity provider\cr
 \link[paws.end.user.computing:workspacesweb_get_ip_access_settings]{get_ip_access_settings} \tab Gets the IP access settings\cr
 \link[paws.end.user.computing:workspacesweb_get_network_settings]{get_network_settings} \tab Gets the network settings\cr
 \link[paws.end.user.computing:workspacesweb_get_portal]{get_portal} \tab Gets the web portal\cr
 \link[paws.end.user.computing:workspacesweb_get_portal_service_provider_metadata]{get_portal_service_provider_metadata} \tab Gets the service provider metadata\cr
+\link[paws.end.user.computing:workspacesweb_get_session]{get_session} \tab Gets information for a secure browser session\cr
 \link[paws.end.user.computing:workspacesweb_get_trust_store]{get_trust_store} \tab Gets the trust store\cr
 \link[paws.end.user.computing:workspacesweb_get_trust_store_certificate]{get_trust_store_certificate} \tab Gets the trust store certificate\cr
 \link[paws.end.user.computing:workspacesweb_get_user_access_logging_settings]{get_user_access_logging_settings} \tab Gets user access logging settings\cr
 \link[paws.end.user.computing:workspacesweb_get_user_settings]{get_user_settings} \tab Gets user settings\cr
 \link[paws.end.user.computing:workspacesweb_list_browser_settings]{list_browser_settings} \tab Retrieves a list of browser settings\cr
+\link[paws.end.user.computing:workspacesweb_list_data_protection_settings]{list_data_protection_settings} \tab Retrieves a list of data protection settings\cr
 \link[paws.end.user.computing:workspacesweb_list_identity_providers]{list_identity_providers} \tab Retrieves a list of identity providers for a specific web portal\cr
 \link[paws.end.user.computing:workspacesweb_list_ip_access_settings]{list_ip_access_settings} \tab Retrieves a list of IP access settings\cr
 \link[paws.end.user.computing:workspacesweb_list_network_settings]{list_network_settings} \tab Retrieves a list of network settings\cr
 \link[paws.end.user.computing:workspacesweb_list_portals]{list_portals} \tab Retrieves a list or web portals\cr
+\link[paws.end.user.computing:workspacesweb_list_sessions]{list_sessions} \tab Lists information for multiple secure browser sessions from a specific portal\cr
 \link[paws.end.user.computing:workspacesweb_list_tags_for_resource]{list_tags_for_resource} \tab Retrieves a list of tags for a resource\cr
 \link[paws.end.user.computing:workspacesweb_list_trust_store_certificates]{list_trust_store_certificates} \tab Retrieves a list of trust store certificates\cr
 \link[paws.end.user.computing:workspacesweb_list_trust_stores]{list_trust_stores} \tab Retrieves a list of trust stores\cr
@@ -152,6 +161,7 @@ capacity management, scaling, and maintaining browser images.
 \link[paws.end.user.computing:workspacesweb_tag_resource]{tag_resource} \tab Adds or overwrites one or more tags for the specified resource\cr
 \link[paws.end.user.computing:workspacesweb_untag_resource]{untag_resource} \tab Removes one or more tags from the specified resource\cr
 \link[paws.end.user.computing:workspacesweb_update_browser_settings]{update_browser_settings} \tab Updates browser settings\cr
+\link[paws.end.user.computing:workspacesweb_update_data_protection_settings]{update_data_protection_settings} \tab Updates data protection settings\cr
 \link[paws.end.user.computing:workspacesweb_update_identity_provider]{update_identity_provider} \tab Updates the identity provider\cr
 \link[paws.end.user.computing:workspacesweb_update_ip_access_settings]{update_ip_access_settings} \tab Updates IP access settings\cr
 \link[paws.end.user.computing:workspacesweb_update_network_settings]{update_network_settings} \tab Updates network settings\cr

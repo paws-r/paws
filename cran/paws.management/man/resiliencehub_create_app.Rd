@@ -6,6 +6,7 @@
 \usage{
 resiliencehub_create_app(
   assessmentSchedule = NULL,
+  awsApplicationArn = NULL,
   clientToken = NULL,
   description = NULL,
   eventSubscriptions = NULL,
@@ -17,6 +18,11 @@ resiliencehub_create_app(
 }
 \arguments{
 \item{assessmentSchedule}{Assessment execution schedule with 'Daily' or 'Disabled' values.}
+
+\item{awsApplicationArn}{Amazon Resource Name (ARN) of Resource Groups group that is integrated
+with an AppRegistry application. For more information about ARNs, see
+\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}
+in the \emph{Amazon Web Services General Reference} guide.}
 
 \item{clientToken}{Used for an idempotency token. A client token is a unique,
 case-sensitive string of up to 64 ASCII characters. You should not reuse

@@ -10,7 +10,8 @@ resourcegroups_get_group_query(GroupName = NULL, Group = NULL)
 \arguments{
 \item{GroupName}{Don't use this parameter. Use \code{Group} instead.}
 
-\item{Group}{The name or the ARN of the resource group to query.}
+\item{Group}{The name or the Amazon resource name (ARN) of the resource group to
+query.}
 }
 \description{
 Retrieves the resource query associated with the specified resource group. For more information about resource queries, see \href{https://docs.aws.amazon.com/ARG/latest/userguide/gettingstarted-query.html#gettingstarted-query-cli-tag}{Create a tag-based group in Resource Groups}.

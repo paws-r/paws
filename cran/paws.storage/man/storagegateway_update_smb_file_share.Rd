@@ -6,6 +6,7 @@
 \usage{
 storagegateway_update_smb_file_share(
   FileShareARN,
+  EncryptionType = NULL,
   KMSEncrypted = NULL,
   KMSKey = NULL,
   DefaultStorageClass = NULL,
@@ -30,15 +31,41 @@ storagegateway_update_smb_file_share(
 \item{FileShareARN}{[required] The Amazon Resource Name (ARN) of the SMB file share that you want to
 update.}
 
-\item{KMSEncrypted}{Set to \code{true} to use Amazon S3 server-side encryption with your own KMS
-key, or \code{false} to use a key managed by Amazon S3. Optional.
+\item{EncryptionType}{A value that specifies the type of server-side encryption that the file
+share will use for the data that it stores in Amazon S3.
+
+We recommend using \code{EncryptionType} instead of \code{KMSEncrypted} to set the
+file share encryption method. You do not need to provide values for both
+parameters.
+
+If values for both parameters exist in the same request, then the
+specified encryption methods must not conflict. For example, if
+\code{EncryptionType} is \code{SseS3}, then \code{KMSEncrypted} must be \code{false}. If
+\code{EncryptionType} is \code{SseKms} or \code{DsseKms}, then \code{KMSEncrypted} must be
+\code{true}.}
+
+\item{KMSEncrypted}{Optional. Set to \code{true} to use Amazon S3 server-side encryption with
+your own KMS key (SSE-KMS), or \code{false} to use a key managed by Amazon S3
+(SSE-S3). To use dual-layer encryption (DSSE-KMS), set the
+\code{EncryptionType} parameter instead.
+
+We recommend using \code{EncryptionType} instead of \code{KMSEncrypted} to set the
+file share encryption method. You do not need to provide values for both
+parameters.
+
+If values for both parameters exist in the same request, then the
+specified encryption methods must not conflict. For example, if
+\code{EncryptionType} is \code{SseS3}, then \code{KMSEncrypted} must be \code{false}. If
+\code{EncryptionType} is \code{SseKms} or \code{DsseKms}, then \code{KMSEncrypted} must be
+\code{true}.
 
 Valid Values: \code{true} | \code{false}}
 
-\item{KMSKey}{The Amazon Resource Name (ARN) of a symmetric customer master key (CMK)
-used for Amazon S3 server-side encryption. Storage Gateway does not
-support asymmetric CMKs. This value can only be set when \code{KMSEncrypted}
-is \code{true}. Optional.}
+\item{KMSKey}{Optional. The Amazon Resource Name (ARN) of a symmetric customer master
+key (CMK) used for Amazon S3 server-side encryption. Storage Gateway
+does not support asymmetric CMKs. This value must be set if
+\code{KMSEncrypted} is \code{true}, or if \code{EncryptionType} is \code{SseKms} or
+\code{DsseKms}.}
 
 \item{DefaultStorageClass}{The default storage class for objects put into an Amazon S3 bucket by
 the S3 File Gateway. The default value is \code{S3_STANDARD}. Optional.
@@ -76,8 +103,8 @@ Valid Values: \code{true} | \code{false}}
 file share. Set it to \code{false} to map file and directory permissions to
 the POSIX permissions.
 
-For more information, see \href{https://docs.aws.amazon.com/storagegateway/}{Using Microsoft Windows ACLs to control access to an SMB file share} in the \emph{Storage
-Gateway User Guide}.
+For more information, see \href{https://docs.aws.amazon.com/filegateway/latest/files3/smb-acl.html}{Using Windows ACLs to limit SMB file share access}
+in the \emph{Amazon S3 File Gateway User Guide}.
 
 Valid Values: \code{true} | \code{false}}
 
@@ -112,7 +139,11 @@ default value is \code{ClientSpecified}.}
 \item{FileShareName}{The name of the file share. Optional.
 
 \code{FileShareName} must be set if an S3 prefix name is set in
-\code{LocationARN}, or if an access point or access point alias is used.}
+\code{LocationARN}, or if an access point or access point alias is used.
+
+A valid SMB file share name cannot contain the following characters:
+\code{[},\verb{]},\verb{#},\verb{;},\code{<},\code{>},\code{:},\verb{\\"},\verb{\\},\code{/},\code{|},\verb{?},\code{*},\code{+}, or ASCII
+control characters \code{1-31}.}
 
 \item{CacheAttributes}{Specifies refresh cache information for the file share.}
 
@@ -125,6 +156,10 @@ multiple notifications for the same file in a small time period.
 
 \code{SettlingTimeInSeconds} has no effect on the timing of the object
 uploading to Amazon S3, only the timing of the notification.
+
+This setting is not meant to specify an exact time at which the
+notification will be sent. In some cases, the gateway might require more
+than the specified delay time to generate and send notifications.
 
 The following example sets \code{NotificationPolicy} on with
 \code{SettlingTimeInSeconds} set to 60.

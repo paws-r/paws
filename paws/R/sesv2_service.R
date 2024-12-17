@@ -92,9 +92,8 @@ NULL
 #' @examples
 #' \dontrun{
 #' svc <- sesv2()
-#' # Cancels the export job with ID ef28cf62-9d8e-4b60-9283-b09816c99a99
-#' svc$cancel_export_job(
-#'   JobId = "ef28cf62-9d8e-4b60-9283-b09816c99a99"
+#' svc$batch_get_metric_data(
+#'   Foo = 123
 #' )
 #' }
 #'
@@ -114,6 +113,7 @@ NULL
 #'  \link[=sesv2_create_email_template]{create_email_template} \tab Creates an email template\cr
 #'  \link[=sesv2_create_export_job]{create_export_job} \tab Creates an export job for a data source and destination\cr
 #'  \link[=sesv2_create_import_job]{create_import_job} \tab Creates an import job for a data destination\cr
+#'  \link[=sesv2_create_multi_region_endpoint]{create_multi_region_endpoint} \tab Creates a multi-region endpoint (global-endpoint)\cr
 #'  \link[=sesv2_delete_configuration_set]{delete_configuration_set} \tab Delete an existing configuration set\cr
 #'  \link[=sesv2_delete_configuration_set_event_destination]{delete_configuration_set_event_destination} \tab Delete an event destination\cr
 #'  \link[=sesv2_delete_contact]{delete_contact} \tab Removes a contact from a contact list\cr
@@ -123,6 +123,7 @@ NULL
 #'  \link[=sesv2_delete_email_identity]{delete_email_identity} \tab Deletes an email identity\cr
 #'  \link[=sesv2_delete_email_identity_policy]{delete_email_identity_policy} \tab Deletes the specified sending authorization policy for the given identity (an email address or a domain)\cr
 #'  \link[=sesv2_delete_email_template]{delete_email_template} \tab Deletes an email template\cr
+#'  \link[=sesv2_delete_multi_region_endpoint]{delete_multi_region_endpoint} \tab Deletes a multi-region endpoint (global-endpoint)\cr
 #'  \link[=sesv2_delete_suppressed_destination]{delete_suppressed_destination} \tab Removes an email address from the suppression list for your account\cr
 #'  \link[=sesv2_get_account]{get_account} \tab Obtain information about the email-sending status and capabilities of your Amazon SES account in the current Amazon Web Services Region\cr
 #'  \link[=sesv2_get_blacklist_reports]{get_blacklist_reports} \tab Retrieve a list of the blacklists that your dedicated IP addresses appear on\cr
@@ -144,6 +145,7 @@ NULL
 #'  \link[=sesv2_get_export_job]{get_export_job} \tab Provides information about an export job\cr
 #'  \link[=sesv2_get_import_job]{get_import_job} \tab Provides information about an import job\cr
 #'  \link[=sesv2_get_message_insights]{get_message_insights} \tab Provides information about a specific message, including the from address, the subject, the recipient address, email tags, as well as events associated with the message\cr
+#'  \link[=sesv2_get_multi_region_endpoint]{get_multi_region_endpoint} \tab Displays the multi-region endpoint (global-endpoint) configuration\cr
 #'  \link[=sesv2_get_suppressed_destination]{get_suppressed_destination} \tab Retrieves information about a specific email address that's on the suppression list for your account\cr
 #'  \link[=sesv2_list_configuration_sets]{list_configuration_sets} \tab List all of the configuration sets associated with your account in the current region\cr
 #'  \link[=sesv2_list_contact_lists]{list_contact_lists} \tab Lists all of the contact lists available\cr
@@ -156,6 +158,7 @@ NULL
 #'  \link[=sesv2_list_email_templates]{list_email_templates} \tab Lists the email templates present in your Amazon SES account in the current Amazon Web Services Region\cr
 #'  \link[=sesv2_list_export_jobs]{list_export_jobs} \tab Lists all of the export jobs\cr
 #'  \link[=sesv2_list_import_jobs]{list_import_jobs} \tab Lists all of the import jobs\cr
+#'  \link[=sesv2_list_multi_region_endpoints]{list_multi_region_endpoints} \tab List the multi-region endpoints (global-endpoints)\cr
 #'  \link[=sesv2_list_recommendations]{list_recommendations} \tab Lists the recommendations present in your Amazon SES account in the current Amazon Web Services Region\cr
 #'  \link[=sesv2_list_suppressed_destinations]{list_suppressed_destinations} \tab Retrieves a list of email addresses that are on the suppression list for your account\cr
 #'  \link[=sesv2_list_tags_for_resource]{list_tags_for_resource} \tab Retrieve a list of the tags (keys and values) that are associated with a specified resource\cr
@@ -223,7 +226,7 @@ sesv2 <- function(config = list(), credentials = list(), endpoint = NULL, region
 
 .sesv2$metadata <- list(
   service_name = "sesv2",
-  endpoints = list("*" = list(endpoint = "email.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "email.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "email.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "email.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "email.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "email.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "email.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "email.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "email.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "email.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "email.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "email.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "email.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "SESv2",
   api_version = "2019-09-27",
   signing_name = "ses",

@@ -122,6 +122,7 @@ memorydb_create_acl <- function(ACLName, UserNames = NULL, Tags = NULL) {
 #' @param ClusterName &#91;required&#93; The name of the cluster. This value must be unique as it also serves as
 #' the cluster identifier.
 #' @param NodeType &#91;required&#93; The compute and memory capacity of the nodes in the cluster.
+#' @param MultiRegionClusterName The name of the multi-Region cluster to be created.
 #' @param ParameterGroupName The name of the parameter group associated with the cluster.
 #' @param Description An optional description of the cluster.
 #' @param NumShards The number of shards the cluster will contain. The default value is 1.
@@ -179,6 +180,7 @@ memorydb_create_acl <- function(ACLName, UserNames = NULL, Tags = NULL) {
 #' If you do not specify this parameter, MemoryDB automatically chooses an
 #' appropriate time range.
 #' @param ACLName &#91;required&#93; The name of the Access Control List to associate with the cluster.
+#' @param Engine The name of the engine to be used for the cluster.
 #' @param EngineVersion The version number of the Redis OSS engine to be used for the cluster.
 #' @param AutoMinorVersionUpgrade When set to true, the cluster will automatically receive minor engine
 #' version upgrades after launch.
@@ -190,7 +192,7 @@ memorydb_create_acl <- function(ACLName, UserNames = NULL, Tags = NULL) {
 #' @keywords internal
 #'
 #' @rdname memorydb_create_cluster
-memorydb_create_cluster <- function(ClusterName, NodeType, ParameterGroupName = NULL, Description = NULL, NumShards = NULL, NumReplicasPerShard = NULL, SubnetGroupName = NULL, SecurityGroupIds = NULL, MaintenanceWindow = NULL, Port = NULL, SnsTopicArn = NULL, TLSEnabled = NULL, KmsKeyId = NULL, SnapshotArns = NULL, SnapshotName = NULL, SnapshotRetentionLimit = NULL, Tags = NULL, SnapshotWindow = NULL, ACLName, EngineVersion = NULL, AutoMinorVersionUpgrade = NULL, DataTiering = NULL) {
+memorydb_create_cluster <- function(ClusterName, NodeType, MultiRegionClusterName = NULL, ParameterGroupName = NULL, Description = NULL, NumShards = NULL, NumReplicasPerShard = NULL, SubnetGroupName = NULL, SecurityGroupIds = NULL, MaintenanceWindow = NULL, Port = NULL, SnsTopicArn = NULL, TLSEnabled = NULL, KmsKeyId = NULL, SnapshotArns = NULL, SnapshotName = NULL, SnapshotRetentionLimit = NULL, Tags = NULL, SnapshotWindow = NULL, ACLName, Engine = NULL, EngineVersion = NULL, AutoMinorVersionUpgrade = NULL, DataTiering = NULL) {
   op <- new_operation(
     name = "CreateCluster",
     http_method = "POST",
@@ -199,7 +201,7 @@ memorydb_create_cluster <- function(ClusterName, NodeType, ParameterGroupName = 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .memorydb$create_cluster_input(ClusterName = ClusterName, NodeType = NodeType, ParameterGroupName = ParameterGroupName, Description = Description, NumShards = NumShards, NumReplicasPerShard = NumReplicasPerShard, SubnetGroupName = SubnetGroupName, SecurityGroupIds = SecurityGroupIds, MaintenanceWindow = MaintenanceWindow, Port = Port, SnsTopicArn = SnsTopicArn, TLSEnabled = TLSEnabled, KmsKeyId = KmsKeyId, SnapshotArns = SnapshotArns, SnapshotName = SnapshotName, SnapshotRetentionLimit = SnapshotRetentionLimit, Tags = Tags, SnapshotWindow = SnapshotWindow, ACLName = ACLName, EngineVersion = EngineVersion, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, DataTiering = DataTiering)
+  input <- .memorydb$create_cluster_input(ClusterName = ClusterName, NodeType = NodeType, MultiRegionClusterName = MultiRegionClusterName, ParameterGroupName = ParameterGroupName, Description = Description, NumShards = NumShards, NumReplicasPerShard = NumReplicasPerShard, SubnetGroupName = SubnetGroupName, SecurityGroupIds = SecurityGroupIds, MaintenanceWindow = MaintenanceWindow, Port = Port, SnsTopicArn = SnsTopicArn, TLSEnabled = TLSEnabled, KmsKeyId = KmsKeyId, SnapshotArns = SnapshotArns, SnapshotName = SnapshotName, SnapshotRetentionLimit = SnapshotRetentionLimit, Tags = Tags, SnapshotWindow = SnapshotWindow, ACLName = ACLName, Engine = Engine, EngineVersion = EngineVersion, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, DataTiering = DataTiering)
   output <- .memorydb$create_cluster_output()
   config <- get_config()
   svc <- .memorydb$service(config, op)
@@ -208,6 +210,46 @@ memorydb_create_cluster <- function(ClusterName, NodeType, ParameterGroupName = 
   return(response)
 }
 .memorydb$operations$create_cluster <- memorydb_create_cluster
+
+#' Creates a new multi-Region cluster
+#'
+#' @description
+#' Creates a new multi-Region cluster.
+#'
+#' See [https://www.paws-r-sdk.com/docs/memorydb_create_multi_region_cluster/](https://www.paws-r-sdk.com/docs/memorydb_create_multi_region_cluster/) for full documentation.
+#'
+#' @param MultiRegionClusterNameSuffix &#91;required&#93; A suffix to be added to the multi-Region cluster name.
+#' @param Description A description for the multi-Region cluster.
+#' @param Engine The name of the engine to be used for the multi-Region cluster.
+#' @param EngineVersion The version of the engine to be used for the multi-Region cluster.
+#' @param NodeType &#91;required&#93; The node type to be used for the multi-Region cluster.
+#' @param MultiRegionParameterGroupName The name of the multi-Region parameter group to be associated with the
+#' cluster.
+#' @param NumShards The number of shards for the multi-Region cluster.
+#' @param TLSEnabled Whether to enable TLS encryption for the multi-Region cluster.
+#' @param Tags A list of tags to be applied to the multi-Region cluster.
+#'
+#' @keywords internal
+#'
+#' @rdname memorydb_create_multi_region_cluster
+memorydb_create_multi_region_cluster <- function(MultiRegionClusterNameSuffix, Description = NULL, Engine = NULL, EngineVersion = NULL, NodeType, MultiRegionParameterGroupName = NULL, NumShards = NULL, TLSEnabled = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateMultiRegionCluster",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .memorydb$create_multi_region_cluster_input(MultiRegionClusterNameSuffix = MultiRegionClusterNameSuffix, Description = Description, Engine = Engine, EngineVersion = EngineVersion, NodeType = NodeType, MultiRegionParameterGroupName = MultiRegionParameterGroupName, NumShards = NumShards, TLSEnabled = TLSEnabled, Tags = Tags)
+  output <- .memorydb$create_multi_region_cluster_output()
+  config <- get_config()
+  svc <- .memorydb$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.memorydb$operations$create_multi_region_cluster <- memorydb_create_multi_region_cluster
 
 #' Creates a new MemoryDB parameter group
 #'
@@ -359,7 +401,7 @@ memorydb_create_user <- function(UserName, AuthenticationMode, AccessString, Tag
 #'
 #' See [https://www.paws-r-sdk.com/docs/memorydb_delete_acl/](https://www.paws-r-sdk.com/docs/memorydb_delete_acl/) for full documentation.
 #'
-#' @param ACLName &#91;required&#93; The name of the Access Control List to delete
+#' @param ACLName &#91;required&#93; The name of the Access Control List to delete.
 #'
 #' @keywords internal
 #'
@@ -386,11 +428,12 @@ memorydb_delete_acl <- function(ACLName) {
 #' Deletes a cluster
 #'
 #' @description
-#' Deletes a cluster. It also deletes all associated nodes and node endpoints
+#' Deletes a cluster. It also deletes all associated nodes and node endpoints.
 #'
 #' See [https://www.paws-r-sdk.com/docs/memorydb_delete_cluster/](https://www.paws-r-sdk.com/docs/memorydb_delete_cluster/) for full documentation.
 #'
 #' @param ClusterName &#91;required&#93; The name of the cluster to be deleted
+#' @param MultiRegionClusterName The name of the multi-Region cluster to be deleted.
 #' @param FinalSnapshotName The user-supplied name of a final cluster snapshot. This is the unique
 #' name that identifies the snapshot. MemoryDB creates the snapshot, and
 #' then deletes the cluster immediately afterward.
@@ -398,7 +441,7 @@ memorydb_delete_acl <- function(ACLName) {
 #' @keywords internal
 #'
 #' @rdname memorydb_delete_cluster
-memorydb_delete_cluster <- function(ClusterName, FinalSnapshotName = NULL) {
+memorydb_delete_cluster <- function(ClusterName, MultiRegionClusterName = NULL, FinalSnapshotName = NULL) {
   op <- new_operation(
     name = "DeleteCluster",
     http_method = "POST",
@@ -407,7 +450,7 @@ memorydb_delete_cluster <- function(ClusterName, FinalSnapshotName = NULL) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .memorydb$delete_cluster_input(ClusterName = ClusterName, FinalSnapshotName = FinalSnapshotName)
+  input <- .memorydb$delete_cluster_input(ClusterName = ClusterName, MultiRegionClusterName = MultiRegionClusterName, FinalSnapshotName = FinalSnapshotName)
   output <- .memorydb$delete_cluster_output()
   config <- get_config()
   svc <- .memorydb$service(config, op)
@@ -416,6 +459,37 @@ memorydb_delete_cluster <- function(ClusterName, FinalSnapshotName = NULL) {
   return(response)
 }
 .memorydb$operations$delete_cluster <- memorydb_delete_cluster
+
+#' Deletes an existing multi-Region cluster
+#'
+#' @description
+#' Deletes an existing multi-Region cluster.
+#'
+#' See [https://www.paws-r-sdk.com/docs/memorydb_delete_multi_region_cluster/](https://www.paws-r-sdk.com/docs/memorydb_delete_multi_region_cluster/) for full documentation.
+#'
+#' @param MultiRegionClusterName &#91;required&#93; The name of the multi-Region cluster to be deleted.
+#'
+#' @keywords internal
+#'
+#' @rdname memorydb_delete_multi_region_cluster
+memorydb_delete_multi_region_cluster <- function(MultiRegionClusterName) {
+  op <- new_operation(
+    name = "DeleteMultiRegionCluster",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .memorydb$delete_multi_region_cluster_input(MultiRegionClusterName = MultiRegionClusterName)
+  output <- .memorydb$delete_multi_region_cluster_output()
+  config <- get_config()
+  svc <- .memorydb$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.memorydb$operations$delete_multi_region_cluster <- memorydb_delete_multi_region_cluster
 
 #' Deletes the specified parameter group
 #'
@@ -455,7 +529,7 @@ memorydb_delete_parameter_group <- function(ParameterGroupName) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/memorydb_delete_snapshot/](https://www.paws-r-sdk.com/docs/memorydb_delete_snapshot/) for full documentation.
 #'
-#' @param SnapshotName &#91;required&#93; The name of the snapshot to delete
+#' @param SnapshotName &#91;required&#93; The name of the snapshot to delete.
 #'
 #' @keywords internal
 #'
@@ -486,7 +560,7 @@ memorydb_delete_snapshot <- function(SnapshotName) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/memorydb_delete_subnet_group/](https://www.paws-r-sdk.com/docs/memorydb_delete_subnet_group/) for full documentation.
 #'
-#' @param SubnetGroupName &#91;required&#93; The name of the subnet group to delete
+#' @param SubnetGroupName &#91;required&#93; The name of the subnet group to delete.
 #'
 #' @keywords internal
 #'
@@ -544,11 +618,11 @@ memorydb_delete_user <- function(UserName) {
 #' Returns a list of ACLs
 #'
 #' @description
-#' Returns a list of ACLs
+#' Returns a list of ACLs.
 #'
 #' See [https://www.paws-r-sdk.com/docs/memorydb_describe_ac_ls/](https://www.paws-r-sdk.com/docs/memorydb_describe_ac_ls/) for full documentation.
 #'
-#' @param ACLName The name of the ACL
+#' @param ACLName The name of the ACL.
 #' @param MaxResults The maximum number of records to include in the response. If more
 #' records exist than the specified MaxResults value, a token is included
 #' in the response so that the remaining results can be retrieved.
@@ -589,7 +663,7 @@ memorydb_describe_ac_ls <- function(ACLName = NULL, MaxResults = NULL, NextToken
 #'
 #' See [https://www.paws-r-sdk.com/docs/memorydb_describe_clusters/](https://www.paws-r-sdk.com/docs/memorydb_describe_clusters/) for full documentation.
 #'
-#' @param ClusterName The name of the cluster
+#' @param ClusterName The name of the cluster.
 #' @param MaxResults The maximum number of records to include in the response. If more
 #' records exist than the specified MaxResults value, a token is included
 #' in the response so that the remaining results can be retrieved.
@@ -630,6 +704,7 @@ memorydb_describe_clusters <- function(ClusterName = NULL, MaxResults = NULL, Ne
 #'
 #' See [https://www.paws-r-sdk.com/docs/memorydb_describe_engine_versions/](https://www.paws-r-sdk.com/docs/memorydb_describe_engine_versions/) for full documentation.
 #'
+#' @param Engine The name of the engine for which to list available versions.
 #' @param EngineVersion The Redis OSS engine version
 #' @param ParameterGroupFamily The name of a specific parameter group family to return details for.
 #' @param MaxResults The maximum number of records to include in the response. If more
@@ -646,7 +721,7 @@ memorydb_describe_clusters <- function(ClusterName = NULL, MaxResults = NULL, Ne
 #' @keywords internal
 #'
 #' @rdname memorydb_describe_engine_versions
-memorydb_describe_engine_versions <- function(EngineVersion = NULL, ParameterGroupFamily = NULL, MaxResults = NULL, NextToken = NULL, DefaultOnly = NULL) {
+memorydb_describe_engine_versions <- function(Engine = NULL, EngineVersion = NULL, ParameterGroupFamily = NULL, MaxResults = NULL, NextToken = NULL, DefaultOnly = NULL) {
   op <- new_operation(
     name = "DescribeEngineVersions",
     http_method = "POST",
@@ -655,7 +730,7 @@ memorydb_describe_engine_versions <- function(EngineVersion = NULL, ParameterGro
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "EngineVersions"),
     stream_api = FALSE
   )
-  input <- .memorydb$describe_engine_versions_input(EngineVersion = EngineVersion, ParameterGroupFamily = ParameterGroupFamily, MaxResults = MaxResults, NextToken = NextToken, DefaultOnly = DefaultOnly)
+  input <- .memorydb$describe_engine_versions_input(Engine = Engine, EngineVersion = EngineVersion, ParameterGroupFamily = ParameterGroupFamily, MaxResults = MaxResults, NextToken = NextToken, DefaultOnly = DefaultOnly)
   output <- .memorydb$describe_engine_versions_output()
   config <- get_config()
   svc <- .memorydb$service(config, op)
@@ -712,6 +787,40 @@ memorydb_describe_events <- function(SourceName = NULL, SourceType = NULL, Start
   return(response)
 }
 .memorydb$operations$describe_events <- memorydb_describe_events
+
+#' Returns details about one or more multi-Region clusters
+#'
+#' @description
+#' Returns details about one or more multi-Region clusters.
+#'
+#' See [https://www.paws-r-sdk.com/docs/memorydb_describe_multi_region_clusters/](https://www.paws-r-sdk.com/docs/memorydb_describe_multi_region_clusters/) for full documentation.
+#'
+#' @param MultiRegionClusterName The name of a specific multi-Region cluster to describe.
+#' @param MaxResults The maximum number of results to return.
+#' @param NextToken A token to specify where to start paginating.
+#' @param ShowClusterDetails Details about the multi-Region cluster.
+#'
+#' @keywords internal
+#'
+#' @rdname memorydb_describe_multi_region_clusters
+memorydb_describe_multi_region_clusters <- function(MultiRegionClusterName = NULL, MaxResults = NULL, NextToken = NULL, ShowClusterDetails = NULL) {
+  op <- new_operation(
+    name = "DescribeMultiRegionClusters",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "MultiRegionClusters"),
+    stream_api = FALSE
+  )
+  input <- .memorydb$describe_multi_region_clusters_input(MultiRegionClusterName = MultiRegionClusterName, MaxResults = MaxResults, NextToken = NextToken, ShowClusterDetails = ShowClusterDetails)
+  output <- .memorydb$describe_multi_region_clusters_output()
+  config <- get_config()
+  svc <- .memorydb$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.memorydb$operations$describe_multi_region_clusters <- memorydb_describe_multi_region_clusters
 
 #' Returns a list of parameter group descriptions
 #'
@@ -893,13 +1002,13 @@ memorydb_describe_reserved_nodes_offerings <- function(ReservedNodesOfferingId =
 #' Returns details of the service updates
 #'
 #' @description
-#' Returns details of the service updates
+#' Returns details of the service updates.
 #'
 #' See [https://www.paws-r-sdk.com/docs/memorydb_describe_service_updates/](https://www.paws-r-sdk.com/docs/memorydb_describe_service_updates/) for full documentation.
 #'
 #' @param ServiceUpdateName The unique ID of the service update to describe.
-#' @param ClusterNames The list of cluster names to identify service updates to apply
-#' @param Status The status(es) of the service updates to filter on
+#' @param ClusterNames The list of cluster names to identify service updates to apply.
+#' @param Status The status(es) of the service updates to filter on.
 #' @param MaxResults The maximum number of records to include in the response. If more
 #' records exist than the specified MaxResults value, a token is included
 #' in the response so that the remaining results can be retrieved.
@@ -1025,7 +1134,7 @@ memorydb_describe_subnet_groups <- function(SubnetGroupName = NULL, MaxResults =
 #'
 #' See [https://www.paws-r-sdk.com/docs/memorydb_describe_users/](https://www.paws-r-sdk.com/docs/memorydb_describe_users/) for full documentation.
 #'
-#' @param UserName The name of the user
+#' @param UserName The name of the user.
 #' @param Filters Filter to determine the list of users to return.
 #' @param MaxResults The maximum number of records to include in the response. If more
 #' records exist than the specified MaxResults value, a token is included
@@ -1065,8 +1174,8 @@ memorydb_describe_users <- function(UserName = NULL, Filters = NULL, MaxResults 
 #'
 #' See [https://www.paws-r-sdk.com/docs/memorydb_failover_shard/](https://www.paws-r-sdk.com/docs/memorydb_failover_shard/) for full documentation.
 #'
-#' @param ClusterName &#91;required&#93; The cluster being failed over
-#' @param ShardName &#91;required&#93; The name of the shard
+#' @param ClusterName &#91;required&#93; The cluster being failed over.
+#' @param ShardName &#91;required&#93; The name of the shard.
 #'
 #' @keywords internal
 #'
@@ -1089,6 +1198,37 @@ memorydb_failover_shard <- function(ClusterName, ShardName) {
   return(response)
 }
 .memorydb$operations$failover_shard <- memorydb_failover_shard
+
+#' Lists the allowed updates for a multi-Region cluster
+#'
+#' @description
+#' Lists the allowed updates for a multi-Region cluster.
+#'
+#' See [https://www.paws-r-sdk.com/docs/memorydb_list_allowed_multi_region_cluster_updates/](https://www.paws-r-sdk.com/docs/memorydb_list_allowed_multi_region_cluster_updates/) for full documentation.
+#'
+#' @param MultiRegionClusterName &#91;required&#93; The name of the multi-Region cluster.
+#'
+#' @keywords internal
+#'
+#' @rdname memorydb_list_allowed_multi_region_cluster_updates
+memorydb_list_allowed_multi_region_cluster_updates <- function(MultiRegionClusterName) {
+  op <- new_operation(
+    name = "ListAllowedMultiRegionClusterUpdates",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .memorydb$list_allowed_multi_region_cluster_updates_input(MultiRegionClusterName = MultiRegionClusterName)
+  output <- .memorydb$list_allowed_multi_region_cluster_updates_output()
+  config <- get_config()
+  svc <- .memorydb$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.memorydb$operations$list_allowed_multi_region_cluster_updates <- memorydb_list_allowed_multi_region_cluster_updates
 
 #' Lists all available node types that you can scale to from your cluster's
 #' current node type
@@ -1127,12 +1267,12 @@ memorydb_list_allowed_node_type_updates <- function(ClusterName) {
 #' Lists all tags currently on a named resource
 #'
 #' @description
-#' Lists all tags currently on a named resource. A tag is a key-value pair where the key and value are case-sensitive. You can use tags to categorize and track your MemoryDB resources. For more information, see [Tagging your MemoryDB resources](https://docs.aws.amazon.com/memorydb/latest/devguide/)
+#' Lists all tags currently on a named resource. A tag is a key-value pair where the key and value are case-sensitive. You can use tags to categorize and track your MemoryDB resources. For more information, see [Tagging your MemoryDB resources](https://docs.aws.amazon.com/memorydb/latest/devguide/).
 #'
 #' See [https://www.paws-r-sdk.com/docs/memorydb_list_tags/](https://www.paws-r-sdk.com/docs/memorydb_list_tags/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource for which you want the
-#' list of tags
+#' list of tags.
 #'
 #' @keywords internal
 #'
@@ -1237,7 +1377,7 @@ memorydb_reset_parameter_group <- function(ParameterGroupName, AllParameters = N
 #' See [https://www.paws-r-sdk.com/docs/memorydb_tag_resource/](https://www.paws-r-sdk.com/docs/memorydb_tag_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource to which the tags are to
-#' be added
+#' be added.
 #' @param Tags &#91;required&#93; A list of tags to be added to this resource. A tag is a key-value pair.
 #' A tag key must be accompanied by a tag value, although null is accepted.
 #'
@@ -1266,13 +1406,13 @@ memorydb_tag_resource <- function(ResourceArn, Tags) {
 #' Use this operation to remove tags on a resource
 #'
 #' @description
-#' Use this operation to remove tags on a resource
+#' Use this operation to remove tags on a resource.
 #'
 #' See [https://www.paws-r-sdk.com/docs/memorydb_untag_resource/](https://www.paws-r-sdk.com/docs/memorydb_untag_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource to which the tags are to
-#' be removed
-#' @param TagKeys &#91;required&#93; The list of keys of the tags that are to be removed
+#' be removed.
+#' @param TagKeys &#91;required&#93; The list of keys of the tags that are to be removed.
 #'
 #' @keywords internal
 #'
@@ -1303,9 +1443,9 @@ memorydb_untag_resource <- function(ResourceArn, TagKeys) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/memorydb_update_acl/](https://www.paws-r-sdk.com/docs/memorydb_update_acl/) for full documentation.
 #'
-#' @param ACLName &#91;required&#93; The name of the Access Control List
-#' @param UserNamesToAdd The list of users to add to the Access Control List
-#' @param UserNamesToRemove The list of users to remove from the Access Control List
+#' @param ACLName &#91;required&#93; The name of the Access Control List.
+#' @param UserNamesToAdd The list of users to add to the Access Control List.
+#' @param UserNamesToRemove The list of users to remove from the Access Control List.
 #'
 #' @keywords internal
 #'
@@ -1336,9 +1476,9 @@ memorydb_update_acl <- function(ACLName, UserNamesToAdd = NULL, UserNamesToRemov
 #'
 #' See [https://www.paws-r-sdk.com/docs/memorydb_update_cluster/](https://www.paws-r-sdk.com/docs/memorydb_update_cluster/) for full documentation.
 #'
-#' @param ClusterName &#91;required&#93; The name of the cluster to update
-#' @param Description The description of the cluster to update
-#' @param SecurityGroupIds The SecurityGroupIds to update
+#' @param ClusterName &#91;required&#93; The name of the cluster to update.
+#' @param Description The description of the cluster to update.
+#' @param SecurityGroupIds The SecurityGroupIds to update.
 #' @param MaintenanceWindow Specifies the weekly time range during which maintenance on the cluster
 #' is performed. It is specified as a range in the format
 #' ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum maintenance window
@@ -1361,10 +1501,10 @@ memorydb_update_acl <- function(ACLName, UserNamesToAdd = NULL, UserNamesToRemov
 #' -   `sat`
 #' 
 #' Example: `sun:23:00-mon:01:30`
-#' @param SnsTopicArn The SNS topic ARN to update
+#' @param SnsTopicArn The SNS topic ARN to update.
 #' @param SnsTopicStatus The status of the Amazon SNS notification topic. Notifications are sent
 #' only if the status is active.
-#' @param ParameterGroupName The name of the parameter group to update
+#' @param ParameterGroupName The name of the parameter group to update.
 #' @param SnapshotWindow The daily time range (in UTC) during which MemoryDB begins taking a
 #' daily snapshot of your cluster.
 #' @param SnapshotRetentionLimit The number of days for which MemoryDB retains automatic cluster
@@ -1372,19 +1512,20 @@ memorydb_update_acl <- function(ACLName, UserNamesToAdd = NULL, UserNamesToRemov
 #' SnapshotRetentionLimit to 5, a snapshot that was taken today is retained
 #' for 5 days before being deleted.
 #' @param NodeType A valid node type that you want to scale this cluster up or down to.
+#' @param Engine The name of the engine to be used for the cluster.
 #' @param EngineVersion The upgraded version of the engine to be run on the nodes. You can
 #' upgrade to a newer engine version, but you cannot downgrade to an
 #' earlier engine version. If you want to use an earlier engine version,
 #' you must delete the existing cluster and create it anew with the earlier
 #' engine version.
-#' @param ReplicaConfiguration The number of replicas that will reside in each shard
-#' @param ShardConfiguration The number of shards in the cluster
-#' @param ACLName The Access Control List that is associated with the cluster
+#' @param ReplicaConfiguration The number of replicas that will reside in each shard.
+#' @param ShardConfiguration The number of shards in the cluster.
+#' @param ACLName The Access Control List that is associated with the cluster.
 #'
 #' @keywords internal
 #'
 #' @rdname memorydb_update_cluster
-memorydb_update_cluster <- function(ClusterName, Description = NULL, SecurityGroupIds = NULL, MaintenanceWindow = NULL, SnsTopicArn = NULL, SnsTopicStatus = NULL, ParameterGroupName = NULL, SnapshotWindow = NULL, SnapshotRetentionLimit = NULL, NodeType = NULL, EngineVersion = NULL, ReplicaConfiguration = NULL, ShardConfiguration = NULL, ACLName = NULL) {
+memorydb_update_cluster <- function(ClusterName, Description = NULL, SecurityGroupIds = NULL, MaintenanceWindow = NULL, SnsTopicArn = NULL, SnsTopicStatus = NULL, ParameterGroupName = NULL, SnapshotWindow = NULL, SnapshotRetentionLimit = NULL, NodeType = NULL, Engine = NULL, EngineVersion = NULL, ReplicaConfiguration = NULL, ShardConfiguration = NULL, ACLName = NULL) {
   op <- new_operation(
     name = "UpdateCluster",
     http_method = "POST",
@@ -1393,7 +1534,7 @@ memorydb_update_cluster <- function(ClusterName, Description = NULL, SecurityGro
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .memorydb$update_cluster_input(ClusterName = ClusterName, Description = Description, SecurityGroupIds = SecurityGroupIds, MaintenanceWindow = MaintenanceWindow, SnsTopicArn = SnsTopicArn, SnsTopicStatus = SnsTopicStatus, ParameterGroupName = ParameterGroupName, SnapshotWindow = SnapshotWindow, SnapshotRetentionLimit = SnapshotRetentionLimit, NodeType = NodeType, EngineVersion = EngineVersion, ReplicaConfiguration = ReplicaConfiguration, ShardConfiguration = ShardConfiguration, ACLName = ACLName)
+  input <- .memorydb$update_cluster_input(ClusterName = ClusterName, Description = Description, SecurityGroupIds = SecurityGroupIds, MaintenanceWindow = MaintenanceWindow, SnsTopicArn = SnsTopicArn, SnsTopicStatus = SnsTopicStatus, ParameterGroupName = ParameterGroupName, SnapshotWindow = SnapshotWindow, SnapshotRetentionLimit = SnapshotRetentionLimit, NodeType = NodeType, Engine = Engine, EngineVersion = EngineVersion, ReplicaConfiguration = ReplicaConfiguration, ShardConfiguration = ShardConfiguration, ACLName = ACLName)
   output <- .memorydb$update_cluster_output()
   config <- get_config()
   svc <- .memorydb$service(config, op)
@@ -1402,6 +1543,43 @@ memorydb_update_cluster <- function(ClusterName, Description = NULL, SecurityGro
   return(response)
 }
 .memorydb$operations$update_cluster <- memorydb_update_cluster
+
+#' Updates the configuration of an existing multi-Region cluster
+#'
+#' @description
+#' Updates the configuration of an existing multi-Region cluster.
+#'
+#' See [https://www.paws-r-sdk.com/docs/memorydb_update_multi_region_cluster/](https://www.paws-r-sdk.com/docs/memorydb_update_multi_region_cluster/) for full documentation.
+#'
+#' @param MultiRegionClusterName &#91;required&#93; The name of the multi-Region cluster to be updated.
+#' @param NodeType The new node type to be used for the multi-Region cluster.
+#' @param Description A new description for the multi-Region cluster.
+#' @param EngineVersion The new engine version to be used for the multi-Region cluster.
+#' @param ShardConfiguration 
+#' @param MultiRegionParameterGroupName The new multi-Region parameter group to be associated with the cluster.
+#' @param UpdateStrategy Whether to force the update even if it may cause data loss.
+#'
+#' @keywords internal
+#'
+#' @rdname memorydb_update_multi_region_cluster
+memorydb_update_multi_region_cluster <- function(MultiRegionClusterName, NodeType = NULL, Description = NULL, EngineVersion = NULL, ShardConfiguration = NULL, MultiRegionParameterGroupName = NULL, UpdateStrategy = NULL) {
+  op <- new_operation(
+    name = "UpdateMultiRegionCluster",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .memorydb$update_multi_region_cluster_input(MultiRegionClusterName = MultiRegionClusterName, NodeType = NodeType, Description = Description, EngineVersion = EngineVersion, ShardConfiguration = ShardConfiguration, MultiRegionParameterGroupName = MultiRegionParameterGroupName, UpdateStrategy = UpdateStrategy)
+  output <- .memorydb$update_multi_region_cluster_output()
+  config <- get_config()
+  svc <- .memorydb$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.memorydb$operations$update_multi_region_cluster <- memorydb_update_multi_region_cluster
 
 #' Updates the parameters of a parameter group
 #'

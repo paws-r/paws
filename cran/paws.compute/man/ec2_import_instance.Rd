@@ -2,32 +2,32 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_import_instance}
 \alias{ec2_import_instance}
-\title{We recommend that you use the ImportImage API}
+\title{We recommend that you use the ImportImage API instead}
 \usage{
 ec2_import_instance(
-  Description = NULL,
-  DiskImages = NULL,
   DryRun = NULL,
+  Description = NULL,
   LaunchSpecification = NULL,
+  DiskImages = NULL,
   Platform
 )
 }
 \arguments{
-\item{Description}{A description for the instance being imported.}
-
-\item{DiskImages}{The disk image.}
-
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
+\item{Description}{A description for the instance being imported.}
+
 \item{LaunchSpecification}{The launch specification.}
+
+\item{DiskImages}{The disk image.}
 
 \item{Platform}{[required] The instance operating system.}
 }
 \description{
-We recommend that you use the \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ImportImage.html}{\code{import_image}} API. For more information, see \href{https://docs.aws.amazon.com/vm-import/latest/userguide/vmimport-image-import.html}{Importing a VM as an image using VM Import/Export} in the \emph{VM Import/Export User Guide}.
+We recommend that you use the \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ImportImage.html}{\code{import_image}} API instead. For more information, see \href{https://docs.aws.amazon.com/vm-import/latest/userguide/vmimport-image-import.html}{Importing a VM as an image using VM Import/Export} in the \emph{VM Import/Export User Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/ec2_import_instance/} for full documentation.
 }

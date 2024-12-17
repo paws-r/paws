@@ -298,8 +298,11 @@ the user guide.
 \examples{
 \dontrun{
 svc <- rds()
-svc$add_role_to_db_cluster(
-  Foo = 123
+# This example add a source identifier to an event notification
+# subscription.
+svc$add_source_identifier_to_subscription(
+  SourceIdentifier = "mymysqlinstance",
+  SubscriptionName = "mymysqleventsubscription"
 )
 }
 

@@ -8,10 +8,10 @@ at the account level in the specified Amazon Web Services Region}
 ec2_get_instance_metadata_defaults(DryRun = NULL)
 }
 \arguments{
-\item{DryRun}{Checks whether you have the required permissions for the action, without
-actually making the request, and provides an error response. If you have
-the required permissions, the error response is \code{DryRunOperation}.
-Otherwise, it is \code{UnauthorizedOperation}.}
+\item{DryRun}{Checks whether you have the required permissions for the operation,
+without actually making the request, and provides an error response. If
+you have the required permissions, the error response is
+\code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
 Gets the default instance metadata service (IMDS) settings that are set at the account level in the specified Amazon Web Services Region.

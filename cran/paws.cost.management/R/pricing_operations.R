@@ -31,7 +31,7 @@ pricing_describe_services <- function(ServiceCode = NULL, FormatVersion = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Services"),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Services", non_aggregate_keys = list("FormatVersion")),
     stream_api = FALSE
   )
   input <- .pricing$describe_services_input(ServiceCode = ServiceCode, FormatVersion = FormatVersion, NextToken = NextToken, MaxResults = MaxResults)
@@ -143,7 +143,7 @@ pricing_get_products <- function(ServiceCode, Filters = NULL, FormatVersion = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "PriceList"),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "PriceList", non_aggregate_keys = list("FormatVersion")),
     stream_api = FALSE
   )
   input <- .pricing$get_products_input(ServiceCode = ServiceCode, Filters = Filters, FormatVersion = FormatVersion, NextToken = NextToken, MaxResults = MaxResults)

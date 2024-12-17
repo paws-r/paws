@@ -2,18 +2,20 @@
 % Please edit documentation in R/resourcegroups_operations.R
 \name{resourcegroups_tag}
 \alias{resourcegroups_tag}
-\title{Adds tags to a resource group with the specified ARN}
+\title{Adds tags to a resource group with the specified Amazon resource name
+(ARN)}
 \usage{
 resourcegroups_tag(Arn, Tags)
 }
 \arguments{
-\item{Arn}{[required] The ARN of the resource group to which to add tags.}
+\item{Arn}{[required] The Amazon resource name (ARN) of the resource group to which to add
+tags.}
 
 \item{Tags}{[required] The tags to add to the specified resource group. A tag is a
 string-to-string map of key-value pairs.}
 }
 \description{
-Adds tags to a resource group with the specified ARN. Existing tags on a resource group are not changed if they are not specified in the request parameters.
+Adds tags to a resource group with the specified Amazon resource name (ARN). Existing tags on a resource group are not changed if they are not specified in the request parameters.
 
 See \url{https://www.paws-r-sdk.com/docs/resourcegroups_tag/} for full documentation.
 }

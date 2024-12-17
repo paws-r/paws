@@ -11116,18 +11116,6 @@ pinpoint_get_journey_execution_metrics <- function(ApplicationId, JourneyId, Nex
 #' )
 #' ```
 #'
-#' @examples
-#' \dontrun{
-#' # The following example gets activity execution metrics for a single run
-#' # of a journey.
-#' svc$get_journey_run_execution_activity_metrics(
-#'   ApplicationId = "11111111112222222222333333333344",
-#'   JourneyId = "aaaaaaaaaabbbbbbbbbbccccccccccdd",
-#'   RunId = "99999999998888888888777777777766",
-#'   JourneyActivityId = "AAAAAAAAAA"
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname pinpoint_get_journey_run_execution_activity_metrics
@@ -11201,17 +11189,6 @@ pinpoint_get_journey_run_execution_activity_metrics <- function(ApplicationId, J
 #' )
 #' ```
 #'
-#' @examples
-#' \dontrun{
-#' # The following example gets execution metrics for a single run of a
-#' # journey.
-#' svc$get_journey_run_execution_metrics(
-#'   ApplicationId = "11111111112222222222333333333344",
-#'   JourneyId = "aaaaaaaaaabbbbbbbbbbccccccccccdd",
-#'   RunId = "99999999998888888888777777777766"
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname pinpoint_get_journey_run_execution_metrics
@@ -11280,15 +11257,6 @@ pinpoint_get_journey_run_execution_metrics <- function(ApplicationId, JourneyId,
 #'   Token = "string"
 #' )
 #' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example gets the runs of a journey.
-#' svc$get_journey_runs(
-#'   ApplicationId = "11111111112222222222333333333344",
-#'   JourneyId = "aaaaaaaaaabbbbbbbbbbccccccccccdd"
-#' )
-#' }
 #'
 #' @keywords internal
 #'

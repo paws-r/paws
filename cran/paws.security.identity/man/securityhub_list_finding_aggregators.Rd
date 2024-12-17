@@ -2,8 +2,8 @@
 % Please edit documentation in R/securityhub_operations.R
 \name{securityhub_list_finding_aggregators}
 \alias{securityhub_list_finding_aggregators}
-\title{If finding aggregation is enabled, then ListFindingAggregators returns
-the ARN of the finding aggregator}
+\title{If cross-Region aggregation is enabled, then ListFindingAggregators
+returns the Amazon Resource Name (ARN) of the finding aggregator}
 \usage{
 securityhub_list_finding_aggregators(NextToken = NULL, MaxResults = NULL)
 }
@@ -15,7 +15,7 @@ set of results to return.}
 returns a single result.}
 }
 \description{
-If finding aggregation is enabled, then \code{\link[=securityhub_list_finding_aggregators]{list_finding_aggregators}} returns the ARN of the finding aggregator. You can run this operation from any Region.
+If cross-Region aggregation is enabled, then \code{\link[=securityhub_list_finding_aggregators]{list_finding_aggregators}} returns the Amazon Resource Name (ARN) of the finding aggregator. You can run this operation from any Amazon Web Services Region.
 
 See \url{https://www.paws-r-sdk.com/docs/securityhub_list_finding_aggregators/} for full documentation.
 }

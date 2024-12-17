@@ -5,14 +5,26 @@
 \title{Describes one or more of the Reserved Instances that you purchased}
 \usage{
 ec2_describe_reserved_instances(
-  Filters = NULL,
   OfferingClass = NULL,
   ReservedInstancesIds = NULL,
   DryRun = NULL,
+  Filters = NULL,
   OfferingType = NULL
 )
 }
 \arguments{
+\item{OfferingClass}{Describes whether the Reserved Instance is Standard or Convertible.}
+
+\item{ReservedInstancesIds}{One or more Reserved Instance IDs.
+
+Default: Describes all your Reserved Instances, or only those otherwise
+specified.}
+
+\item{DryRun}{Checks whether you have the required permissions for the action, without
+actually making the request, and provides an error response. If you have
+the required permissions, the error response is \code{DryRunOperation}.
+Otherwise, it is \code{UnauthorizedOperation}.}
+
 \item{Filters}{One or more filters.
 \itemize{
 \item \code{availability-zone} - The Availability Zone where the Reserved
@@ -50,18 +62,6 @@ regardless of the tag value.
 \item \code{usage-price} - The usage price of the Reserved Instance, per hour
 (for example, 0.84).
 }}
-
-\item{OfferingClass}{Describes whether the Reserved Instance is Standard or Convertible.}
-
-\item{ReservedInstancesIds}{One or more Reserved Instance IDs.
-
-Default: Describes all your Reserved Instances, or only those otherwise
-specified.}
-
-\item{DryRun}{Checks whether you have the required permissions for the action, without
-actually making the request, and provides an error response. If you have
-the required permissions, the error response is \code{DryRunOperation}.
-Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{OfferingType}{The Reserved Instance offering type. If you are using tools that predate
 the 2011-11-01 API version, you only have access to the

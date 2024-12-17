@@ -9,7 +9,11 @@ guardduty_archive_findings(DetectorId, FindingIds)
 }
 \arguments{
 \item{DetectorId}{[required] The ID of the detector that specifies the GuardDuty service whose
-findings you want to archive.}
+findings you want to archive.
+
+To find the \code{detectorId} in the current Region, see the Settings page in
+the GuardDuty console, or run the
+\code{\link[=guardduty_list_detectors]{list_detectors}} API.}
 
 \item{FindingIds}{[required] The IDs of the findings that you want to archive.}
 }

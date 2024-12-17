@@ -2,8 +2,8 @@
 % Please edit documentation in R/cloudfront_operations.R
 \name{cloudfront_list_origin_access_controls}
 \alias{cloudfront_list_origin_access_controls}
-\title{Gets the list of CloudFront origin access controls in this Amazon Web
-Services account}
+\title{Gets the list of CloudFront origin access controls (OACs) in this Amazon
+Web Services account}
 \usage{
 cloudfront_list_origin_access_controls(Marker = NULL, MaxItems = NULL)
 }
@@ -18,7 +18,7 @@ page's response.}
 response.}
 }
 \description{
-Gets the list of CloudFront origin access controls in this Amazon Web Services account.
+Gets the list of CloudFront origin access controls (OACs) in this Amazon Web Services account.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudfront_list_origin_access_controls/} for full documentation.
 }

@@ -48,10 +48,11 @@ dimensions for searching:
 with. Possible values are the following:
 
 \- Amazon Web Services(Amazon Web Services): The entity that sells
-Amazon Web Services.
+Amazon Web Services services.
 
 \- AISPL (Amazon Internet Services Pvt. Ltd.): The local Indian
-entity that's an acting reseller for Amazon Web Services in India.
+entity that's an acting reseller for Amazon Web Services services in
+India.
 
 \- Amazon Web Services Marketplace: The entity that supports the
 sale of solutions that are built on Amazon Web Services by

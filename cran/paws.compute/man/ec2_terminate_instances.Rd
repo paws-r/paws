@@ -12,10 +12,10 @@ ec2_terminate_instances(InstanceIds, DryRun = NULL)
 Constraints: Up to 1000 instance IDs. We recommend breaking up this
 request into smaller batches.}
 
-\item{DryRun}{Checks whether you have the required permissions for the action, without
-actually making the request, and provides an error response. If you have
-the required permissions, the error response is \code{DryRunOperation}.
-Otherwise, it is \code{UnauthorizedOperation}.}
+\item{DryRun}{Checks whether you have the required permissions for the operation,
+without actually making the request, and provides an error response. If
+you have the required permissions, the error response is
+\code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
 Shuts down the specified instances. This operation is idempotent; if you terminate an instance more than once, each call succeeds.

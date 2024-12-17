@@ -4,16 +4,16 @@
 \alias{ec2_disassociate_route_table}
 \title{Disassociates a subnet or gateway from a route table}
 \usage{
-ec2_disassociate_route_table(AssociationId, DryRun = NULL)
+ec2_disassociate_route_table(DryRun = NULL, AssociationId)
 }
 \arguments{
-\item{AssociationId}{[required] The association ID representing the current association between the
-route table and subnet or gateway.}
-
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
+
+\item{AssociationId}{[required] The association ID representing the current association between the
+route table and subnet or gateway.}
 }
 \description{
 Disassociates a subnet or gateway from a route table.

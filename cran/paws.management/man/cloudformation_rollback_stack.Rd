@@ -15,8 +15,8 @@ cloudformation_rollback_stack(
 \arguments{
 \item{StackName}{[required] The name that's associated with the stack.}
 
-\item{RoleARN}{The Amazon Resource Name (ARN) of an Identity and Access Management role
-that CloudFormation assumes to rollback the stack.}
+\item{RoleARN}{The Amazon Resource Name (ARN) of an IAM role that CloudFormation
+assumes to rollback the stack.}
 
 \item{ClientRequestToken}{A unique identifier for this
 \code{\link[=cloudformation_rollback_stack]{rollback_stack}} request.}

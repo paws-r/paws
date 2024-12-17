@@ -9,8 +9,8 @@ workspaces_accept_account_link_invitation(LinkId, ClientToken = NULL)
 \arguments{
 \item{LinkId}{[required] The identifier of the account link.}
 
-\item{ClientToken}{A string of up to 64 ASCII characters that Amazon EFS uses to ensure
-idempotent creation.}
+\item{ClientToken}{A string of up to 64 ASCII characters that Amazon WorkSpaces uses to
+ensure idempotent creation.}
 }
 \description{
 Accepts the account link invitation.

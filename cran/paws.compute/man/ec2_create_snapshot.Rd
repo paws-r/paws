@@ -9,23 +9,21 @@ ec2_create_snapshot(
   OutpostArn = NULL,
   VolumeId,
   TagSpecifications = NULL,
+  Location = NULL,
   DryRun = NULL
 )
 }
 \arguments{
 \item{Description}{A description for the snapshot.}
 
-\item{OutpostArn}{The Amazon Resource Name (ARN) of the Outpost on which to create a local
-snapshot.
+\item{OutpostArn}{Only supported for volumes on Outposts. If the source volume is not on
+an Outpost, omit this parameter.
 \itemize{
-\item To create a snapshot of a volume in a Region, omit this parameter.
-The snapshot is created in the same Region as the volume.
-\item To create a snapshot of a volume on an Outpost and store the
-snapshot in the Region, omit this parameter. The snapshot is created
-in the Region for the Outpost.
-\item To create a snapshot of a volume on an Outpost and store the
-snapshot on an Outpost, specify the ARN of the destination Outpost.
-The snapshot must be created on the same Outpost as the volume.
+\item To create the snapshot on the same Outpost as the source volume,
+specify the ARN of that Outpost. The snapshot must be created on the
+same Outpost as the volume.
+\item To create the snapshot in the parent Region of the Outpost, omit
+this parameter.
 }
 
 For more information, see \href{https://docs.aws.amazon.com/ebs/latest/userguide/snapshots-outposts.html#create-snapshot}{Create local snapshots from volumes on an Outpost}
@@ -34,6 +32,17 @@ in the \emph{Amazon EBS User Guide}.}
 \item{VolumeId}{[required] The ID of the Amazon EBS volume.}
 
 \item{TagSpecifications}{The tags to apply to the snapshot during creation.}
+
+\item{Location}{Only supported for volumes in Local Zones. If the source volume is not
+in a Local Zone, omit this parameter.
+\itemize{
+\item To create a local snapshot in the same Local Zone as the source
+volume, specify \code{local}.
+\item To create a regional snapshot in the parent Region of the Local
+Zone, specify \code{regional} or omit this parameter.
+}
+
+Default value: \code{regional}}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have

@@ -5,14 +5,23 @@
 \title{Describes the specified instances or all instances}
 \usage{
 ec2_describe_instances(
-  Filters = NULL,
   InstanceIds = NULL,
   DryRun = NULL,
-  MaxResults = NULL,
-  NextToken = NULL
+  Filters = NULL,
+  NextToken = NULL,
+  MaxResults = NULL
 )
 }
 \arguments{
+\item{InstanceIds}{The instance IDs.
+
+Default: Describes all your instances.}
+
+\item{DryRun}{Checks whether you have the required permissions for the operation,
+without actually making the request, and provides an error response. If
+you have the required permissions, the error response is
+\code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
+
 \item{Filters}{The filters.
 \itemize{
 \item \code{affinity} - The affinity setting for an instance running on a
@@ -62,8 +71,6 @@ The value \code{xen} is used for both Xen and Nitro hypervisors.
 the instance. Specified as an ARN.
 \item \code{iam-instance-profile.id} - The instance profile associated with the
 instance. Specified as an ID.
-\item \code{iam-instance-profile.name} - The instance profile associated with
-the instance. Specified as an name.
 \item \code{image-id} - The ID of the image used to launch the instance.
 \item \code{instance-id} - The ID of the instance.
 \item \code{instance-lifecycle} - Indicates whether this is a Spot Instance, a
@@ -193,6 +200,11 @@ assigned to the network interface.
 interface.
 \item \code{network-interface.network-interface-id} - The ID of the network
 interface.
+\item \code{network-interface.operator.managed} - A Boolean that indicates
+whether the instance has a managed network interface.
+\item \code{network-interface.operator.principal} - The principal that manages
+the network interface. Only valid for instances with managed network
+interfaces, where \code{managed} is \code{true}.
 \item \code{network-interface.outpost-arn} - The ARN of the Outpost.
 \item \code{network-interface.owner-id} - The ID of the owner of the network
 interface.
@@ -219,6 +231,13 @@ network interface.
 network interface.
 \item \code{network-interface.vpc-id} - The ID of the VPC for the network
 interface.
+\item \code{network-performance-options.bandwidth-weighting} - Where the
+performance boost is applied, if applicable. Valid values:
+\code{default}, \code{vpc-1}, \code{ebs-1}.
+\item \code{operator.managed} - A Boolean that indicates whether this is a
+managed instance.
+\item \code{operator.principal} - The principal that manages the instance. Only
+valid for managed instances, where \code{managed} is \code{true}.
 \item \code{outpost-arn} - The Amazon Resource Name (ARN) of the Outpost.
 \item \code{owner-id} - The Amazon Web Services account ID of the instance
 owner.
@@ -313,14 +332,8 @@ was last updated, for example, \verb{2022-09-15T17:15:20.000Z}.
 \item \code{vpc-id} - The ID of the VPC that the instance is running in.
 }}
 
-\item{InstanceIds}{The instance IDs.
-
-Default: Describes all your instances.}
-
-\item{DryRun}{Checks whether you have the required permissions for the action, without
-actually making the request, and provides an error response. If you have
-the required permissions, the error response is \code{DryRunOperation}.
-Otherwise, it is \code{UnauthorizedOperation}.}
+\item{NextToken}{The token returned from a previous paginated request. Pagination
+continues from the end of the items returned by the previous request.}
 
 \item{MaxResults}{The maximum number of items to return for this request. To get the next
 page of items, make another request with the token returned in the
@@ -329,9 +342,6 @@ output. For more information, see
 
 You cannot specify this parameter and the instance IDs parameter in the
 same request.}
-
-\item{NextToken}{The token returned from a previous paginated request. Pagination
-continues from the end of the items returned by the previous request.}
 }
 \description{
 Describes the specified instances or all instances.

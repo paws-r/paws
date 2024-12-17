@@ -25,9 +25,9 @@ resilience policy data can be stored.}
 \item{policy}{[required] The type of resiliency policy to be created, including the recovery time
 objective (RTO) and recovery point objective (RPO) in seconds.}
 
-\item{policyDescription}{The description for the policy.}
+\item{policyDescription}{Description of the resiliency policy.}
 
-\item{policyName}{[required] The name of the policy}
+\item{policyName}{[required] Name of the resiliency policy.}
 
 \item{tags}{Tags assigned to the resource. A tag is a label that you assign to an
 Amazon Web Services resource. Each tag consists of a key/value pair.}

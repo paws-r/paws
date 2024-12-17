@@ -3,16 +3,87 @@
 #' @include sagemakermetrics_service.R
 NULL
 
+#' Used to retrieve training metrics from SageMaker
+#'
+#' @description
+#' Used to retrieve training metrics from SageMaker.
+#'
+#' @usage
+#' sagemakermetrics_batch_get_metrics(MetricQueries)
+#'
+#' @param MetricQueries &#91;required&#93; Queries made to retrieve training metrics from SageMaker.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   MetricQueryResults = list(
+#'     list(
+#'       Status = "Complete"|"Truncated"|"InternalError"|"ValidationError",
+#'       Message = "string",
+#'       XAxisValues = list(
+#'         123
+#'       ),
+#'       MetricValues = list(
+#'         123.0
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$batch_get_metrics(
+#'   MetricQueries = list(
+#'     list(
+#'       MetricName = "string",
+#'       ResourceArn = "string",
+#'       MetricStat = "Min"|"Max"|"Avg"|"Count"|"StdDev"|"Last",
+#'       Period = "OneMinute"|"FiveMinute"|"OneHour"|"IterationNumber",
+#'       XAxisType = "IterationNumber"|"Timestamp",
+#'       Start = 123,
+#'       End = 123
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemakermetrics_batch_get_metrics
+#'
+#' @aliases sagemakermetrics_batch_get_metrics
+sagemakermetrics_batch_get_metrics <- function(MetricQueries) {
+  op <- new_operation(
+    name = "BatchGetMetrics",
+    http_method = "POST",
+    http_path = "/BatchGetMetrics",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .sagemakermetrics$batch_get_metrics_input(MetricQueries = MetricQueries)
+  output <- .sagemakermetrics$batch_get_metrics_output()
+  config <- get_config()
+  svc <- .sagemakermetrics$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemakermetrics$operations$batch_get_metrics <- sagemakermetrics_batch_get_metrics
+
 #' Used to ingest training metrics into SageMaker
 #'
 #' @description
 #' Used to ingest training metrics into SageMaker. These metrics can be
-#' visualized in SageMaker Studio and retrieved with the `GetMetrics` API.
+#' visualized in SageMaker Studio.
 #'
 #' @usage
 #' sagemakermetrics_batch_put_metrics(TrialComponentName, MetricData)
 #'
-#' @param TrialComponentName &#91;required&#93; The name of the Trial Component to associate with the metrics.
+#' @param TrialComponentName &#91;required&#93; The name of the Trial Component to associate with the metrics. The Trial
+#' Component name must be entirely lowercase.
 #' @param MetricData &#91;required&#93; A list of raw metric values to put.
 #'
 #' @return

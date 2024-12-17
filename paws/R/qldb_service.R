@@ -141,7 +141,7 @@ qldb <- function(config = list(), credentials = list(), endpoint = NULL, region 
 
 .qldb$metadata <- list(
   service_name = "qldb",
-  endpoints = list("*" = list(endpoint = "qldb.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "qldb.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "qldb.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "qldb.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "qldb.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "qldb.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "qldb.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "qldb.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "qldb.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "qldb.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "qldb.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "qldb.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "qldb.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "QLDB",
   api_version = "2019-01-02",
   signing_name = "qldb",

@@ -2,7 +2,8 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_describe_risk_configuration}
 \alias{cognitoidentityprovider_describe_risk_configuration}
-\title{Describes the risk configuration}
+\title{Given an app client or user pool ID where threat protection is
+configured, describes the risk configuration}
 \usage{
 cognitoidentityprovider_describe_risk_configuration(
   UserPoolId,
@@ -10,12 +11,20 @@ cognitoidentityprovider_describe_risk_configuration(
 )
 }
 \arguments{
-\item{UserPoolId}{[required] The user pool ID.}
+\item{UserPoolId}{[required] The ID of the user pool with the risk configuration that you want to
+inspect. You can apply default risk configuration at the user pool level
+and further customize it from user pool defaults at the app-client
+level. Specify \code{ClientId} to inspect client-level configuration, or
+\code{UserPoolId} to inspect pool-level configuration.}
 
-\item{ClientId}{The app client ID.}
+\item{ClientId}{The ID of the app client with the risk configuration that you want to
+inspect. You can apply default risk configuration at the user pool level
+and further customize it from user pool defaults at the app-client
+level. Specify \code{ClientId} to inspect client-level configuration, or
+\code{UserPoolId} to inspect pool-level configuration.}
 }
 \description{
-Describes the risk configuration.
+Given an app client or user pool ID where threat protection is configured, describes the risk configuration. This operation returns details about adaptive authentication, compromised credentials, and IP-address allow- and denylists. For more information about threat protection, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pool-settings-threat-protection.html}{Threat protection}.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_describe_risk_configuration/} for full documentation.
 }

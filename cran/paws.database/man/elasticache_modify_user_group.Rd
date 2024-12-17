@@ -7,7 +7,8 @@
 elasticache_modify_user_group(
   UserGroupId,
   UserIdsToAdd = NULL,
-  UserIdsToRemove = NULL
+  UserIdsToRemove = NULL,
+  Engine = NULL
 )
 }
 \arguments{
@@ -16,6 +17,8 @@ elasticache_modify_user_group(
 \item{UserIdsToAdd}{The list of user IDs to add to the user group.}
 
 \item{UserIdsToRemove}{The list of user IDs to remove from the user group.}
+
+\item{Engine}{The engine for a user group.}
 }
 \description{
 Changes the list of users that belong to the user group.

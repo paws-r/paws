@@ -38,8 +38,9 @@ associated with a file system.}
 
 \item{DataRepositoryPath}{[required] The path to the Amazon S3 data repository that will be linked to the
 file system. The path can be an S3 bucket or prefix in the format
-\verb{s3://myBucket/myPrefix/}. This path specifies where in the S3 data
-repository files will be imported from or exported to.}
+\verb{s3://bucket-name/prefix/} (where \code{prefix} is optional). This path
+specifies where in the S3 data repository files will be imported from or
+exported to.}
 
 \item{BatchImportMetaDataOnCreate}{Set to \code{true} to run an import data repository task to import metadata
 from the data repository to the file system after the data repository

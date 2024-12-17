@@ -2,7 +2,7 @@
 % Please edit documentation in R/vpclattice_operations.R
 \name{vpclattice_list_service_network_vpc_associations}
 \alias{vpclattice_list_service_network_vpc_associations}
-\title{Lists the service network and VPC associations}
+\title{Lists the associations between a service network and a VPC}
 \usage{
 vpclattice_list_service_network_vpc_associations(
   maxResults = NULL,
@@ -16,12 +16,12 @@ vpclattice_list_service_network_vpc_associations(
 
 \item{nextToken}{A pagination token for the next page of results.}
 
-\item{serviceNetworkIdentifier}{The ID or Amazon Resource Name (ARN) of the service network.}
+\item{serviceNetworkIdentifier}{The ID or ARN of the service network.}
 
-\item{vpcIdentifier}{The ID or Amazon Resource Name (ARN) of the VPC.}
+\item{vpcIdentifier}{The ID or ARN of the VPC.}
 }
 \description{
-Lists the service network and VPC associations. You can filter the list either by VPC or service network. You must provide either the service network identifier or the VPC identifier.
+Lists the associations between a service network and a VPC. You can filter the list either by VPC or service network. You must provide either the ID of the service network identifier or the ID of the VPC.
 
 See \url{https://www.paws-r-sdk.com/docs/vpclattice_list_service_network_vpc_associations/} for full documentation.
 }

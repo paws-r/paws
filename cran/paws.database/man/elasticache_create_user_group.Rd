@@ -2,7 +2,7 @@
 % Please edit documentation in R/elasticache_operations.R
 \name{elasticache_create_user_group}
 \alias{elasticache_create_user_group}
-\title{For Redis OSS engine version 6}
+\title{For Valkey engine version 7}
 \usage{
 elasticache_create_user_group(UserGroupId, Engine, UserIds = NULL, Tags = NULL)
 }
@@ -15,10 +15,10 @@ elasticache_create_user_group(UserGroupId, Engine, UserIds = NULL, Tags = NULL)
 
 \item{Tags}{A list of tags to be added to this resource. A tag is a key-value pair.
 A tag key must be accompanied by a tag value, although null is accepted.
-Available for Redis OSS only.}
+Available for Valkey and Redis OSS only.}
 }
 \description{
-For Redis OSS engine version 6.0 onwards: Creates a Redis OSS user group. For more information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/Clusters.RBAC.html}{Using Role Based Access Control (RBAC)}
+For Valkey engine version 7.2 onwards and Redis OSS 6.0 onwards: Creates a user group. For more information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/Clusters.RBAC.html}{Using Role Based Access Control (RBAC)}
 
 See \url{https://www.paws-r-sdk.com/docs/elasticache_create_user_group/} for full documentation.
 }

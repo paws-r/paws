@@ -99,6 +99,8 @@ NULL
 #' 
 #' -   Invoke
 #' 
+#' -   Compute
+#' 
 #' Pipelines also include *transitions*, which allow the transition of
 #' artifacts from one stage to the next in a pipeline after the actions in
 #' one stage complete.
@@ -317,7 +319,7 @@ codepipeline <- function(config = list(), credentials = list(), endpoint = NULL,
 
 .codepipeline$metadata <- list(
   service_name = "codepipeline",
-  endpoints = list("*" = list(endpoint = "codepipeline.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "codepipeline.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "codepipeline.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "codepipeline.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "codepipeline.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "codepipeline.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "codepipeline.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "codepipeline.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "codepipeline.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "codepipeline.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "codepipeline.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "codepipeline.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "codepipeline.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "CodePipeline",
   api_version = "2015-07-09",
   signing_name = "codepipeline",

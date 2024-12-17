@@ -8,7 +8,8 @@ eventbridge_create_connection(
   Name,
   Description = NULL,
   AuthorizationType,
-  AuthParameters
+  AuthParameters,
+  InvocationConnectivityParameters = NULL
 )
 }
 \arguments{
@@ -20,8 +21,16 @@ eventbridge_create_connection(
 
 OAUTH tokens are refreshed when a 401 or 407 response is returned.}
 
-\item{AuthParameters}{[required] A \code{CreateConnectionAuthRequestParameters} object that contains the
-authorization parameters to use to authorize with the endpoint.}
+\item{AuthParameters}{[required] The authorization parameters to use to authorize with the endpoint.
+
+You must include only authorization parameters for the
+\code{AuthorizationType} you specify.}
+
+\item{InvocationConnectivityParameters}{For connections to private resource endpoints, the parameters to use for
+invoking the resource endpoint.
+
+For more information, see \href{https://docs.aws.amazon.com/eventbridge/latest/userguide/}{Connecting to private resources} in
+the \emph{Amazon EventBridge User Guide} .}
 }
 \description{
 Creates a connection. A connection defines the authorization type and credentials to use for authorization with an API destination HTTP endpoint.

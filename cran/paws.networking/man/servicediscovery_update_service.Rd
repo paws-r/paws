@@ -9,7 +9,8 @@ servicediscovery_update_service(Id, Service)
 \arguments{
 \item{Id}{[required] The ID of the service that you want to update.}
 
-\item{Service}{[required] A complex type that contains the new settings for the service.}
+\item{Service}{[required] A complex type that contains the new settings for the service. You can
+specify a maximum of 30 attributes (key-value pairs).}
 }
 \description{
 Submits a request to perform the following operations:

@@ -2,8 +2,8 @@
 % Please edit documentation in R/wafv2_operations.R
 \name{wafv2_delete_firewall_manager_rule_groups}
 \alias{wafv2_delete_firewall_manager_rule_groups}
-\title{Deletes all rule groups that are managed by Firewall Manager for the
-specified web ACL}
+\title{Deletes all rule groups that are managed by Firewall Manager from the
+specified WebACL}
 \usage{
 wafv2_delete_firewall_manager_rule_groups(WebACLArn, WebACLLockToken)
 }
@@ -20,7 +20,7 @@ last retrieved it. If a change has been made, the update fails with a
 and use the new token returned by that operation.}
 }
 \description{
-Deletes all rule groups that are managed by Firewall Manager for the specified web ACL.
+Deletes all rule groups that are managed by Firewall Manager from the specified WebACL.
 
 See \url{https://www.paws-r-sdk.com/docs/wafv2_delete_firewall_manager_rule_groups/} for full documentation.
 }

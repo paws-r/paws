@@ -7,7 +7,8 @@
 lambda_create_code_signing_config(
   Description = NULL,
   AllowedPublishers,
-  CodeSigningPolicies = NULL
+  CodeSigningPolicies = NULL,
+  Tags = NULL
 )
 }
 \arguments{
@@ -17,6 +18,8 @@ lambda_create_code_signing_config(
 
 \item{CodeSigningPolicies}{The code signing policies define the actions to take if the validation
 checks fail.}
+
+\item{Tags}{A list of tags to add to the code signing configuration.}
 }
 \description{
 Creates a code signing configuration. A \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-codesigning.html}{code signing configuration} defines a list of allowed signing profiles and defines the code-signing validation policy (action to be taken if deployment validation checks fail).

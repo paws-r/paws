@@ -2,18 +2,18 @@
 % Please edit documentation in R/firehose_operations.R
 \name{firehose_untag_delivery_stream}
 \alias{firehose_untag_delivery_stream}
-\title{Removes tags from the specified delivery stream}
+\title{Removes tags from the specified Firehose stream}
 \usage{
 firehose_untag_delivery_stream(DeliveryStreamName, TagKeys)
 }
 \arguments{
-\item{DeliveryStreamName}{[required] The name of the delivery stream.}
+\item{DeliveryStreamName}{[required] The name of the Firehose stream.}
 
 \item{TagKeys}{[required] A list of tag keys. Each corresponding tag is removed from the delivery
 stream.}
 }
 \description{
-Removes tags from the specified delivery stream. Removed tags are deleted, and you can't recover them after this operation successfully completes.
+Removes tags from the specified Firehose stream. Removed tags are deleted, and you can't recover them after this operation successfully completes.
 
 See \url{https://www.paws-r-sdk.com/docs/firehose_untag_delivery_stream/} for full documentation.
 }

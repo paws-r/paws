@@ -13,7 +13,8 @@ rds_create_global_cluster(
   EngineLifecycleSupport = NULL,
   DeletionProtection = NULL,
   DatabaseName = NULL,
-  StorageEncrypted = NULL
+  StorageEncrypted = NULL,
+  Tags = NULL
 )
 }
 \arguments{
@@ -98,6 +99,8 @@ Constraints:
 this case, Amazon Aurora uses the setting from the source DB
 cluster.
 }}
+
+\item{Tags}{Tags to assign to the global cluster.}
 }
 \description{
 Creates an Aurora global database spread across multiple Amazon Web Services Regions. The global database contains a single primary cluster with read-write capability, and a read-only secondary cluster that receives data from the primary cluster through high-speed replication performed by the Aurora storage subsystem.

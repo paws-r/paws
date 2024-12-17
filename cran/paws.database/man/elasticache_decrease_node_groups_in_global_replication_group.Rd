@@ -21,14 +21,14 @@ the shard configuration}
 \item{GlobalNodeGroupsToRemove}{If the value of NodeGroupCount is less than the current number of node
 groups (shards), then either NodeGroupsToRemove or NodeGroupsToRetain is
 required. GlobalNodeGroupsToRemove is a list of NodeGroupIds to remove
-from the cluster. ElastiCache (Redis OSS) will attempt to remove all
-node groups listed by GlobalNodeGroupsToRemove from the cluster.}
+from the cluster. ElastiCache will attempt to remove all node groups
+listed by GlobalNodeGroupsToRemove from the cluster.}
 
 \item{GlobalNodeGroupsToRetain}{If the value of NodeGroupCount is less than the current number of node
 groups (shards), then either NodeGroupsToRemove or NodeGroupsToRetain is
 required. GlobalNodeGroupsToRetain is a list of NodeGroupIds to retain
-from the cluster. ElastiCache (Redis OSS) will attempt to retain all
-node groups listed by GlobalNodeGroupsToRetain from the cluster.}
+from the cluster. ElastiCache will attempt to retain all node groups
+listed by GlobalNodeGroupsToRetain from the cluster.}
 
 \item{ApplyImmediately}{[required] Indicates that the shard reconfiguration process begins immediately. At
 present, the only permitted value for this parameter is true.}

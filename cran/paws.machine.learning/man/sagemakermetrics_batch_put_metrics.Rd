@@ -7,12 +7,13 @@
 sagemakermetrics_batch_put_metrics(TrialComponentName, MetricData)
 }
 \arguments{
-\item{TrialComponentName}{[required] The name of the Trial Component to associate with the metrics.}
+\item{TrialComponentName}{[required] The name of the Trial Component to associate with the metrics. The Trial
+Component name must be entirely lowercase.}
 
 \item{MetricData}{[required] A list of raw metric values to put.}
 }
 \description{
-Used to ingest training metrics into SageMaker. These metrics can be visualized in SageMaker Studio and retrieved with the \code{GetMetrics} API.
+Used to ingest training metrics into SageMaker. These metrics can be visualized in SageMaker Studio.
 
 See \url{https://www.paws-r-sdk.com/docs/sagemakermetrics_batch_put_metrics/} for full documentation.
 }

@@ -218,7 +218,8 @@ route53resolver_create_firewall_domain_list <- function(CreatorRequestId, Name, 
 #' stamp.
 #' @param FirewallRuleGroupId &#91;required&#93; The unique identifier of the firewall rule group where you want to
 #' create the rule.
-#' @param FirewallDomainListId &#91;required&#93; The ID of the domain list that you want to use in the rule.
+#' @param FirewallDomainListId The ID of the domain list that you want to use in the rule. Can't be
+#' used together with `DnsThreatProtecton`.
 #' @param Priority &#91;required&#93; The setting that determines the processing order of the rule in the rule
 #' group. DNS Firewall processes the rules in a rule group by order of
 #' priority, starting from the lowest setting.
@@ -228,9 +229,11 @@ route53resolver_create_firewall_domain_list <- function(CreatorRequestId, Name, 
 #' for example, use 100, 200, and so on. You can change the priority
 #' setting for the rules in a rule group at any time.
 #' @param Action &#91;required&#93; The action that DNS Firewall should take on a DNS query when it matches
-#' one of the domains in the rule's domain list:
+#' one of the domains in the rule's domain list, or a threat in a DNS
+#' Firewall Advanced rule:
 #' 
-#' -   `ALLOW` - Permit the request to go through.
+#' -   `ALLOW` - Permit the request to go through. Not available for DNS
+#'     Firewall Advanced rules.
 #' 
 #' -   `ALERT` - Permit the request and send metrics and logs to Cloud
 #'     Watch.
@@ -269,11 +272,11 @@ route53resolver_create_firewall_domain_list <- function(CreatorRequestId, Name, 
 #' @param FirewallDomainRedirectionAction How you want the the rule to evaluate DNS redirection in the DNS
 #' redirection chain, such as CNAME or DNAME.
 #' 
-#' `Inspect_Redirection_Domain `(Default) inspects all domains in the
+#' `INSPECT_REDIRECTION_DOMAIN`: (Default) inspects all domains in the
 #' redirection chain. The individual domains in the redirection chain must
 #' be added to the domain list.
 #' 
-#' `Trust_Redirection_Domain ` inspects only the first domain in the
+#' `TRUST_REDIRECTION_DOMAIN`: Inspects only the first domain in the
 #' redirection chain. You don't need to add the subsequent domains in the
 #' domain in the redirection list to the domain list.
 #' @param Qtype The DNS query type you want the rule to evaluate. Allowed values are;
@@ -311,11 +314,24 @@ route53resolver_create_firewall_domain_list <- function(CreatorRequestId, Name, 
 #'     be 1-65334, for example, TYPE28. For more information, see [List of
 #'     DNS record
 #'     types](https://en.wikipedia.org/wiki/List_of_DNS_record_types).
+#' @param DnsThreatProtection Use to create a DNS Firewall Advanced rule.
+#' @param ConfidenceThreshold The confidence threshold for DNS Firewall Advanced. You must provide
+#' this value when you create a DNS Firewall Advanced rule. The confidence
+#' level values mean:
+#' 
+#' -   `LOW`: Provides the highest detection rate for threats, but also
+#'     increases false positives.
+#' 
+#' -   `MEDIUM`: Provides a balance between detecting threats and false
+#'     positives.
+#' 
+#' -   `HIGH`: Detects only the most well corroborated threats with a low
+#'     rate of false positives.
 #'
 #' @keywords internal
 #'
 #' @rdname route53resolver_create_firewall_rule
-route53resolver_create_firewall_rule <- function(CreatorRequestId, FirewallRuleGroupId, FirewallDomainListId, Priority, Action, BlockResponse = NULL, BlockOverrideDomain = NULL, BlockOverrideDnsType = NULL, BlockOverrideTtl = NULL, Name, FirewallDomainRedirectionAction = NULL, Qtype = NULL) {
+route53resolver_create_firewall_rule <- function(CreatorRequestId, FirewallRuleGroupId, FirewallDomainListId = NULL, Priority, Action, BlockResponse = NULL, BlockOverrideDomain = NULL, BlockOverrideDnsType = NULL, BlockOverrideTtl = NULL, Name, FirewallDomainRedirectionAction = NULL, Qtype = NULL, DnsThreatProtection = NULL, ConfidenceThreshold = NULL) {
   op <- new_operation(
     name = "CreateFirewallRule",
     http_method = "POST",
@@ -324,7 +340,7 @@ route53resolver_create_firewall_rule <- function(CreatorRequestId, FirewallRuleG
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .route53resolver$create_firewall_rule_input(CreatorRequestId = CreatorRequestId, FirewallRuleGroupId = FirewallRuleGroupId, FirewallDomainListId = FirewallDomainListId, Priority = Priority, Action = Action, BlockResponse = BlockResponse, BlockOverrideDomain = BlockOverrideDomain, BlockOverrideDnsType = BlockOverrideDnsType, BlockOverrideTtl = BlockOverrideTtl, Name = Name, FirewallDomainRedirectionAction = FirewallDomainRedirectionAction, Qtype = Qtype)
+  input <- .route53resolver$create_firewall_rule_input(CreatorRequestId = CreatorRequestId, FirewallRuleGroupId = FirewallRuleGroupId, FirewallDomainListId = FirewallDomainListId, Priority = Priority, Action = Action, BlockResponse = BlockResponse, BlockOverrideDomain = BlockOverrideDomain, BlockOverrideDnsType = BlockOverrideDnsType, BlockOverrideTtl = BlockOverrideTtl, Name = Name, FirewallDomainRedirectionAction = FirewallDomainRedirectionAction, Qtype = Qtype, DnsThreatProtection = DnsThreatProtection, ConfidenceThreshold = ConfidenceThreshold)
   output <- .route53resolver$create_firewall_rule_output()
   config <- get_config()
   svc <- .route53resolver$service(config, op)
@@ -529,11 +545,11 @@ route53resolver_create_resolver_endpoint <- function(CreatorRequestId, Name = NU
 #' 
 #' -   **S3 bucket**:
 #' 
-#'     `arn:aws:s3:::examplebucket`
+#'     `arn:aws:s3:::amzn-s3-demo-bucket`
 #' 
 #'     You can optionally append a file prefix to the end of the ARN.
 #' 
-#'     `arn:aws:s3:::examplebucket/development/`
+#'     `arn:aws:s3:::amzn-s3-demo-bucket/development/`
 #' 
 #' -   **CloudWatch Logs log group**:
 #' 
@@ -679,7 +695,8 @@ route53resolver_delete_firewall_domain_list <- function(FirewallDomainListId) {
 #'
 #' @param FirewallRuleGroupId &#91;required&#93; The unique identifier of the firewall rule group that you want to delete
 #' the rule from.
-#' @param FirewallDomainListId &#91;required&#93; The ID of the domain list that's used in the rule.
+#' @param FirewallDomainListId The ID of the domain list that's used in the rule.
+#' @param FirewallThreatProtectionId The ID that is created for a DNS Firewall Advanced rule.
 #' @param Qtype The DNS query type that the rule you are deleting evaluates. Allowed
 #' values are;
 #' 
@@ -720,7 +737,7 @@ route53resolver_delete_firewall_domain_list <- function(FirewallDomainListId) {
 #' @keywords internal
 #'
 #' @rdname route53resolver_delete_firewall_rule
-route53resolver_delete_firewall_rule <- function(FirewallRuleGroupId, FirewallDomainListId, Qtype = NULL) {
+route53resolver_delete_firewall_rule <- function(FirewallRuleGroupId, FirewallDomainListId = NULL, FirewallThreatProtectionId = NULL, Qtype = NULL) {
   op <- new_operation(
     name = "DeleteFirewallRule",
     http_method = "POST",
@@ -729,7 +746,7 @@ route53resolver_delete_firewall_rule <- function(FirewallRuleGroupId, FirewallDo
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .route53resolver$delete_firewall_rule_input(FirewallRuleGroupId = FirewallRuleGroupId, FirewallDomainListId = FirewallDomainListId, Qtype = Qtype)
+  input <- .route53resolver$delete_firewall_rule_input(FirewallRuleGroupId = FirewallRuleGroupId, FirewallDomainListId = FirewallDomainListId, FirewallThreatProtectionId = FirewallThreatProtectionId, Qtype = Qtype)
   output <- .route53resolver$delete_firewall_rule_output()
   config <- get_config()
   svc <- .route53resolver$service(config, op)
@@ -1807,9 +1824,11 @@ route53resolver_list_firewall_rule_groups <- function(MaxResults = NULL, NextTok
 #' @param Action Optional additional filter for the rules to retrieve.
 #' 
 #' The action that DNS Firewall should take on a DNS query when it matches
-#' one of the domains in the rule's domain list:
+#' one of the domains in the rule's domain list, or a threat in a DNS
+#' Firewall Advanced rule:
 #' 
-#' -   `ALLOW` - Permit the request to go through.
+#' -   `ALLOW` - Permit the request to go through. Not availabe for DNS
+#'     Firewall Advanced rules.
 #' 
 #' -   `ALERT` - Permit the request to go through but send an alert to the
 #'     logs.
@@ -2432,7 +2451,7 @@ route53resolver_list_tags_for_resource <- function(ResourceArn, MaxResults = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Tags"),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Tags"),
     stream_api = FALSE
   )
   input <- .route53resolver$list_tags_for_resource_input(ResourceArn = ResourceArn, MaxResults = MaxResults, NextToken = NextToken)
@@ -2785,7 +2804,8 @@ route53resolver_update_firewall_domains <- function(FirewallDomainListId, Operat
 #' See [https://www.paws-r-sdk.com/docs/route53resolver_update_firewall_rule/](https://www.paws-r-sdk.com/docs/route53resolver_update_firewall_rule/) for full documentation.
 #'
 #' @param FirewallRuleGroupId &#91;required&#93; The unique identifier of the firewall rule group for the rule.
-#' @param FirewallDomainListId &#91;required&#93; The ID of the domain list to use in the rule.
+#' @param FirewallDomainListId The ID of the domain list to use in the rule.
+#' @param FirewallThreatProtectionId The DNS Firewall Advanced rule ID.
 #' @param Priority The setting that determines the processing order of the rule in the rule
 #' group. DNS Firewall processes the rules in a rule group by order of
 #' priority, starting from the lowest setting.
@@ -2795,9 +2815,11 @@ route53resolver_update_firewall_domains <- function(FirewallDomainListId, Operat
 #' for example, use 100, 200, and so on. You can change the priority
 #' setting for the rules in a rule group at any time.
 #' @param Action The action that DNS Firewall should take on a DNS query when it matches
-#' one of the domains in the rule's domain list:
+#' one of the domains in the rule's domain list, or a threat in a DNS
+#' Firewall Advanced rule:
 #' 
-#' -   `ALLOW` - Permit the request to go through.
+#' -   `ALLOW` - Permit the request to go through. Not available for DNS
+#'     Firewall Advanced rules.
 #' 
 #' -   `ALERT` - Permit the request to go through but send an alert to the
 #'     logs.
@@ -2828,11 +2850,11 @@ route53resolver_update_firewall_domains <- function(FirewallDomainListId, Operat
 #' @param FirewallDomainRedirectionAction How you want the the rule to evaluate DNS redirection in the DNS
 #' redirection chain, such as CNAME or DNAME.
 #' 
-#' `Inspect_Redirection_Domain `(Default) inspects all domains in the
+#' `INSPECT_REDIRECTION_DOMAIN`: (Default) inspects all domains in the
 #' redirection chain. The individual domains in the redirection chain must
 #' be added to the domain list.
 #' 
-#' `Trust_Redirection_Domain ` inspects only the first domain in the
+#' `TRUST_REDIRECTION_DOMAIN`: Inspects only the first domain in the
 #' redirection chain. You don't need to add the subsequent domains in the
 #' domain in the redirection list to the domain list.
 #' @param Qtype The DNS query type you want the rule to evaluate. Allowed values are;
@@ -2870,11 +2892,36 @@ route53resolver_update_firewall_domains <- function(FirewallDomainListId, Operat
 #'     be 1-65334, for example, TYPE28. For more information, see [List of
 #'     DNS record
 #'     types](https://en.wikipedia.org/wiki/List_of_DNS_record_types).
+#' 
+#'     If you set up a firewall BLOCK rule with action NXDOMAIN on query
+#'     type equals AAAA, this action will not be applied to synthetic IPv6
+#'     addresses generated when DNS64 is enabled.
+#' @param DnsThreatProtection The type of the DNS Firewall Advanced rule. Valid values are:
+#' 
+#' -   `DGA`: Domain generation algorithms detection. DGAs are used by
+#'     attackers to generate a large number of domains to to launch malware
+#'     attacks.
+#' 
+#' -   `DNS_TUNNELING`: DNS tunneling detection. DNS tunneling is used by
+#'     attackers to exfiltrate data from the client by using the DNS tunnel
+#'     without making a network connection to the client.
+#' @param ConfidenceThreshold The confidence threshold for DNS Firewall Advanced. You must provide
+#' this value when you create a DNS Firewall Advanced rule. The confidence
+#' level values mean:
+#' 
+#' -   `LOW`: Provides the highest detection rate for threats, but also
+#'     increases false positives.
+#' 
+#' -   `MEDIUM`: Provides a balance between detecting threats and false
+#'     positives.
+#' 
+#' -   `HIGH`: Detects only the most well corroborated threats with a low
+#'     rate of false positives.
 #'
 #' @keywords internal
 #'
 #' @rdname route53resolver_update_firewall_rule
-route53resolver_update_firewall_rule <- function(FirewallRuleGroupId, FirewallDomainListId, Priority = NULL, Action = NULL, BlockResponse = NULL, BlockOverrideDomain = NULL, BlockOverrideDnsType = NULL, BlockOverrideTtl = NULL, Name = NULL, FirewallDomainRedirectionAction = NULL, Qtype = NULL) {
+route53resolver_update_firewall_rule <- function(FirewallRuleGroupId, FirewallDomainListId = NULL, FirewallThreatProtectionId = NULL, Priority = NULL, Action = NULL, BlockResponse = NULL, BlockOverrideDomain = NULL, BlockOverrideDnsType = NULL, BlockOverrideTtl = NULL, Name = NULL, FirewallDomainRedirectionAction = NULL, Qtype = NULL, DnsThreatProtection = NULL, ConfidenceThreshold = NULL) {
   op <- new_operation(
     name = "UpdateFirewallRule",
     http_method = "POST",
@@ -2883,7 +2930,7 @@ route53resolver_update_firewall_rule <- function(FirewallRuleGroupId, FirewallDo
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .route53resolver$update_firewall_rule_input(FirewallRuleGroupId = FirewallRuleGroupId, FirewallDomainListId = FirewallDomainListId, Priority = Priority, Action = Action, BlockResponse = BlockResponse, BlockOverrideDomain = BlockOverrideDomain, BlockOverrideDnsType = BlockOverrideDnsType, BlockOverrideTtl = BlockOverrideTtl, Name = Name, FirewallDomainRedirectionAction = FirewallDomainRedirectionAction, Qtype = Qtype)
+  input <- .route53resolver$update_firewall_rule_input(FirewallRuleGroupId = FirewallRuleGroupId, FirewallDomainListId = FirewallDomainListId, FirewallThreatProtectionId = FirewallThreatProtectionId, Priority = Priority, Action = Action, BlockResponse = BlockResponse, BlockOverrideDomain = BlockOverrideDomain, BlockOverrideDnsType = BlockOverrideDnsType, BlockOverrideTtl = BlockOverrideTtl, Name = Name, FirewallDomainRedirectionAction = FirewallDomainRedirectionAction, Qtype = Qtype, DnsThreatProtection = DnsThreatProtection, ConfidenceThreshold = ConfidenceThreshold)
   output <- .route53resolver$update_firewall_rule_output()
   config <- get_config()
   svc <- .route53resolver$service(config, op)

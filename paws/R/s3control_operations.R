@@ -803,8 +803,8 @@ s3control_create_bucket <- function(ACL = NULL, Bucket, CreateBucketConfiguratio
 #' S3 console.
 #' @param Operation &#91;required&#93; The action that you want this job to perform on every object listed in
 #' the manifest. For more information about the available actions, see
-#' [Operations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/) in
-#' the *Amazon S3 User Guide*.
+#' [Operations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/batch-ops-operations.html)
+#' in the *Amazon S3 User Guide*.
 #' @param Report &#91;required&#93; Configuration parameters for the optional job-completion report.
 #' @param ClientRequestToken &#91;required&#93; An idempotency token to ensure that you don't accidentally submit the
 #' same request twice. You can use any string up to the maximum length.
@@ -898,7 +898,7 @@ s3control_create_bucket <- function(ACL = NULL, Bucket, CreateBucketConfiguratio
 #'         "2015-01-01"
 #'       ),
 #'       BucketKeyEnabled = TRUE|FALSE,
-#'       ChecksumAlgorithm = "CRC32"|"CRC32C"|"SHA1"|"SHA256"
+#'       ChecksumAlgorithm = "CRC32"|"CRC32C"|"SHA1"|"SHA256"|"CRC64NVME"
 #'     ),
 #'     S3PutObjectAcl = list(
 #'       AccessControlPolicy = list(
@@ -2777,7 +2777,7 @@ s3control_delete_storage_lens_group <- function(Name, AccountId) {
 #'           "2015-01-01"
 #'         ),
 #'         BucketKeyEnabled = TRUE|FALSE,
-#'         ChecksumAlgorithm = "CRC32"|"CRC32C"|"SHA1"|"SHA256"
+#'         ChecksumAlgorithm = "CRC32"|"CRC32C"|"SHA1"|"SHA256"|"CRC64NVME"
 #'       ),
 #'       S3PutObjectAcl = list(
 #'         AccessControlPolicy = list(
@@ -5767,7 +5767,7 @@ s3control_list_access_grants <- function(AccountId, NextToken = NULL, MaxResults
     http_method = "GET",
     http_path = "/v20180820/accessgrantsinstance/grants",
     host_prefix = "{AccountId}.",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .s3control$list_access_grants_input(AccountId = AccountId, NextToken = NextToken, MaxResults = MaxResults, GranteeType = GranteeType, GranteeIdentifier = GranteeIdentifier, Permission = Permission, GrantScope = GrantScope, ApplicationArn = ApplicationArn)
@@ -5844,7 +5844,7 @@ s3control_list_access_grants_instances <- function(AccountId, NextToken = NULL, 
     http_method = "GET",
     http_path = "/v20180820/accessgrantsinstances",
     host_prefix = "{AccountId}.",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .s3control$list_access_grants_instances_input(AccountId = AccountId, NextToken = NextToken, MaxResults = MaxResults)
@@ -5930,7 +5930,7 @@ s3control_list_access_grants_locations <- function(AccountId, NextToken = NULL, 
     http_method = "GET",
     http_path = "/v20180820/accessgrantsinstance/locations",
     host_prefix = "{AccountId}.",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .s3control$list_access_grants_locations_input(AccountId = AccountId, NextToken = NextToken, MaxResults = MaxResults, LocationScope = LocationScope)
@@ -6045,7 +6045,7 @@ s3control_list_access_points <- function(AccountId, Bucket = NULL, NextToken = N
     http_method = "GET",
     http_path = "/v20180820/accesspoint",
     host_prefix = "{AccountId}.",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .s3control$list_access_points_input(AccountId = AccountId, Bucket = Bucket, NextToken = NextToken, MaxResults = MaxResults)
@@ -6144,14 +6144,24 @@ s3control_list_access_points_for_object_lambda <- function(AccountId, NextToken 
 }
 .s3control$operations$list_access_points_for_object_lambda <- s3control_list_access_points_for_object_lambda
 
-#' Returns a list of the access grants that were given to the caller using
-#' S3 Access Grants and that allow the caller to access the S3 data of the
-#' Amazon Web Services account specified in the request
+#' Use this API to list the access grants that grant the caller access to
+#' Amazon S3 data through S3 Access Grants
 #'
 #' @description
-#' Returns a list of the access grants that were given to the caller using
-#' S3 Access Grants and that allow the caller to access the S3 data of the
-#' Amazon Web Services account specified in the request.
+#' Use this API to list the access grants that grant the caller access to
+#' Amazon S3 data through S3 Access Grants. The caller (grantee) can be an
+#' Identity and Access Management (IAM) identity or Amazon Web Services
+#' Identity Center corporate directory identity. You must pass the Amazon
+#' Web Services account of the S3 data owner (grantor) in the request. You
+#' can, optionally, narrow the results by `GrantScope`, using a fragment of
+#' the data's S3 path, and S3 Access Grants will return only the grants
+#' with a path that contains the path fragment. You can also pass the
+#' `AllowedByApplication` filter in the request, which returns only the
+#' grants authorized for applications, whether the application is the
+#' caller's Identity Center application or any other application (`ALL`).
+#' For more information, see [List the caller's access
+#' grants](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-grants-list-grants.html)
+#' in the *Amazon S3 User Guide*.
 #' 
 #' ### Permissions
 #' 
@@ -6324,7 +6334,7 @@ s3control_list_jobs <- function(AccountId, JobStatuses = NULL, NextToken = NULL,
     http_method = "GET",
     http_path = "/v20180820/jobs",
     host_prefix = "{AccountId}.",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .s3control$list_jobs_input(AccountId = AccountId, JobStatuses = JobStatuses, NextToken = NextToken, MaxResults = MaxResults)
@@ -6423,7 +6433,7 @@ s3control_list_multi_region_access_points <- function(AccountId, NextToken = NUL
     http_method = "GET",
     http_path = "/v20180820/mrap/instances",
     host_prefix = "{AccountId}.",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .s3control$list_multi_region_access_points_input(AccountId = AccountId, NextToken = NextToken, MaxResults = MaxResults)
@@ -6504,7 +6514,7 @@ s3control_list_regional_buckets <- function(AccountId, NextToken = NULL, MaxResu
     http_method = "GET",
     http_path = "/v20180820/bucket",
     host_prefix = "{AccountId}.",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .s3control$list_regional_buckets_input(AccountId = AccountId, NextToken = NextToken, MaxResults = MaxResults, OutpostId = OutpostId)
@@ -6575,7 +6585,7 @@ s3control_list_storage_lens_configurations <- function(AccountId, NextToken = NU
     http_method = "GET",
     http_path = "/v20180820/storagelens",
     host_prefix = "{AccountId}.",
-    paginator = list(input_token = "NextToken", output_token = "NextToken"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .s3control$list_storage_lens_configurations_input(AccountId = AccountId, NextToken = NextToken)
@@ -6644,7 +6654,7 @@ s3control_list_storage_lens_groups <- function(AccountId, NextToken = NULL) {
     http_method = "GET",
     http_path = "/v20180820/storagelensgroup",
     host_prefix = "{AccountId}.",
-    paginator = list(input_token = "NextToken", output_token = "NextToken"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .s3control$list_storage_lens_groups_input(AccountId = AccountId, NextToken = NextToken)

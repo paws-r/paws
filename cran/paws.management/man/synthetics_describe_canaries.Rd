@@ -14,7 +14,7 @@ results.}
 
 \item{MaxResults}{Specify this parameter to limit how many canaries are returned each time
 you use the \code{\link[=synthetics_describe_canaries]{describe_canaries}}
-operation. If you omit this parameter, the default of 100 is used.}
+operation. If you omit this parameter, the default of 20 is used.}
 
 \item{Names}{Use this parameter to return only canaries that match the names that you
 specify here. You can specify as many as five canary names.

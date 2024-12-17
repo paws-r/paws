@@ -24,7 +24,7 @@ successfully using the same client token and parameters, the retry
 succeeds without performing any actions. If the parameters aren't
 identical, the retry fails.}
 
-\item{listenerIdentifier}{[required] The ID or Amazon Resource Name (ARN) of the listener.}
+\item{listenerIdentifier}{[required] The ID or ARN of the listener.}
 
 \item{match}{[required] The rule match.}
 
@@ -36,7 +36,7 @@ as the first or last character, or immediately after another hyphen.}
 must have a unique priority. The lower the priority number the higher
 the priority.}
 
-\item{serviceIdentifier}{[required] The ID or Amazon Resource Name (ARN) of the service.}
+\item{serviceIdentifier}{[required] The ID or ARN of the service.}
 
 \item{tags}{The tags for the rule.}
 }

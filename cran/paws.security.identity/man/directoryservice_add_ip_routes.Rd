@@ -26,25 +26,40 @@ rules:
 
 Inbound:
 \itemize{
-\item Type: Custom UDP Rule, Protocol: UDP, Range: 88, Source: 0.0.0.0/0
-\item Type: Custom UDP Rule, Protocol: UDP, Range: 123, Source: 0.0.0.0/0
-\item Type: Custom UDP Rule, Protocol: UDP, Range: 138, Source: 0.0.0.0/0
-\item Type: Custom UDP Rule, Protocol: UDP, Range: 389, Source: 0.0.0.0/0
-\item Type: Custom UDP Rule, Protocol: UDP, Range: 464, Source: 0.0.0.0/0
-\item Type: Custom UDP Rule, Protocol: UDP, Range: 445, Source: 0.0.0.0/0
-\item Type: Custom TCP Rule, Protocol: TCP, Range: 88, Source: 0.0.0.0/0
-\item Type: Custom TCP Rule, Protocol: TCP, Range: 135, Source: 0.0.0.0/0
-\item Type: Custom TCP Rule, Protocol: TCP, Range: 445, Source: 0.0.0.0/0
-\item Type: Custom TCP Rule, Protocol: TCP, Range: 464, Source: 0.0.0.0/0
-\item Type: Custom TCP Rule, Protocol: TCP, Range: 636, Source: 0.0.0.0/0
+\item Type: Custom UDP Rule, Protocol: UDP, Range: 88, Source: Managed
+Microsoft AD VPC IPv4 CIDR
+\item Type: Custom UDP Rule, Protocol: UDP, Range: 123, Source: Managed
+Microsoft AD VPC IPv4 CIDR
+\item Type: Custom UDP Rule, Protocol: UDP, Range: 138, Source: Managed
+Microsoft AD VPC IPv4 CIDR
+\item Type: Custom UDP Rule, Protocol: UDP, Range: 389, Source: Managed
+Microsoft AD VPC IPv4 CIDR
+\item Type: Custom UDP Rule, Protocol: UDP, Range: 464, Source: Managed
+Microsoft AD VPC IPv4 CIDR
+\item Type: Custom UDP Rule, Protocol: UDP, Range: 445, Source: Managed
+Microsoft AD VPC IPv4 CIDR
+\item Type: Custom TCP Rule, Protocol: TCP, Range: 88, Source: Managed
+Microsoft AD VPC IPv4 CIDR
+\item Type: Custom TCP Rule, Protocol: TCP, Range: 135, Source: Managed
+Microsoft AD VPC IPv4 CIDR
+\item Type: Custom TCP Rule, Protocol: TCP, Range: 445, Source: Managed
+Microsoft AD VPC IPv4 CIDR
+\item Type: Custom TCP Rule, Protocol: TCP, Range: 464, Source: Managed
+Microsoft AD VPC IPv4 CIDR
+\item Type: Custom TCP Rule, Protocol: TCP, Range: 636, Source: Managed
+Microsoft AD VPC IPv4 CIDR
 \item Type: Custom TCP Rule, Protocol: TCP, Range: 1024-65535, Source:
-0.0.0.0/0
+Managed Microsoft AD VPC IPv4 CIDR
 \item Type: Custom TCP Rule, Protocol: TCP, Range: 3268-33269, Source:
-0.0.0.0/0
-\item Type: DNS (UDP), Protocol: UDP, Range: 53, Source: 0.0.0.0/0
-\item Type: DNS (TCP), Protocol: TCP, Range: 53, Source: 0.0.0.0/0
-\item Type: LDAP, Protocol: TCP, Range: 389, Source: 0.0.0.0/0
-\item Type: All ICMP, Protocol: All, Range: N/A, Source: 0.0.0.0/0
+Managed Microsoft AD VPC IPv4 CIDR
+\item Type: DNS (UDP), Protocol: UDP, Range: 53, Source: Managed Microsoft
+AD VPC IPv4 CIDR
+\item Type: DNS (TCP), Protocol: TCP, Range: 53, Source: Managed Microsoft
+AD VPC IPv4 CIDR
+\item Type: LDAP, Protocol: TCP, Range: 389, Source: Managed Microsoft AD
+VPC IPv4 CIDR
+\item Type: All ICMP, Protocol: All, Range: N/A, Source: Managed Microsoft
+AD VPC IPv4 CIDR
 }
 
 Outbound:

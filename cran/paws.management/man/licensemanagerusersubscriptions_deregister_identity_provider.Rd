@@ -2,21 +2,29 @@
 % Please edit documentation in R/licensemanagerusersubscriptions_operations.R
 \name{licensemanagerusersubscriptions_deregister_identity_provider}
 \alias{licensemanagerusersubscriptions_deregister_identity_provider}
-\title{Deregisters the identity provider from providing user-based
-subscriptions}
+\title{Deregisters the Active Directory identity provider from License Manager
+user-based subscriptions}
 \usage{
 licensemanagerusersubscriptions_deregister_identity_provider(
-  IdentityProvider,
-  Product
+  IdentityProvider = NULL,
+  IdentityProviderArn = NULL,
+  Product = NULL
 )
 }
 \arguments{
-\item{IdentityProvider}{[required] An object that specifies details for the identity provider.}
+\item{IdentityProvider}{An object that specifies details for the Active Directory identity
+provider.}
 
-\item{Product}{[required] The name of the user-based subscription product.}
+\item{IdentityProviderArn}{The Amazon Resource Name (ARN) that identifies the identity provider to
+deregister.}
+
+\item{Product}{The name of the user-based subscription product.
+
+Valid values: \code{VISUAL_STUDIO_ENTERPRISE} | \code{VISUAL_STUDIO_PROFESSIONAL}
+| \code{OFFICE_PROFESSIONAL_PLUS}}
 }
 \description{
-Deregisters the identity provider from providing user-based subscriptions.
+Deregisters the Active Directory identity provider from License Manager user-based subscriptions.
 
 See \url{https://www.paws-r-sdk.com/docs/licensemanagerusersubscriptions_deregister_identity_provider/} for full documentation.
 }

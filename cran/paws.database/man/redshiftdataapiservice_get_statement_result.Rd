@@ -2,7 +2,7 @@
 % Please edit documentation in R/redshiftdataapiservice_operations.R
 \name{redshiftdataapiservice_get_statement_result}
 \alias{redshiftdataapiservice_get_statement_result}
-\title{Fetches the temporarily cached result of an SQL statement}
+\title{Fetches the temporarily cached result of an SQL statement in JSON format}
 \usage{
 redshiftdataapiservice_get_statement_result(Id, NextToken = NULL)
 }
@@ -23,7 +23,7 @@ command. If the NextToken field is empty, all response records have been
 retrieved for the request.}
 }
 \description{
-Fetches the temporarily cached result of an SQL statement. A token is returned to page through the statement results.
+Fetches the temporarily cached result of an SQL statement in JSON format. The \code{\link[=redshiftdataapiservice_execute_statement]{execute_statement}} or \code{\link[=redshiftdataapiservice_batch_execute_statement]{batch_execute_statement}} operation that ran the SQL statement must have specified \code{ResultFormat} as \code{JSON} , or let the format default to JSON. A token is returned to page through the statement results.
 
 See \url{https://www.paws-r-sdk.com/docs/redshiftdataapiservice_get_statement_result/} for full documentation.
 }

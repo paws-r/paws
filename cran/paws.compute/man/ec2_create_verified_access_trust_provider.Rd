@@ -16,7 +16,8 @@ ec2_create_verified_access_trust_provider(
   TagSpecifications = NULL,
   ClientToken = NULL,
   DryRun = NULL,
-  SseSpecification = NULL
+  SseSpecification = NULL,
+  NativeApplicationOidcOptions = NULL
 )
 }
 \arguments{
@@ -49,6 +50,8 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{SseSpecification}{The options for server side encryption.}
+
+\item{NativeApplicationOidcOptions}{The OpenID Connect (OIDC) options.}
 }
 \description{
 A trust provider is a third-party entity that creates, maintains, and manages identity information for users and devices. When an application request is made, the identity information sent by the trust provider is evaluated by Verified Access before allowing or denying the application request.

@@ -7,7 +7,7 @@
 rds_delete_db_shard_group(DBShardGroupIdentifier)
 }
 \arguments{
-\item{DBShardGroupIdentifier}{[required] Teh name of the DB shard group to delete.}
+\item{DBShardGroupIdentifier}{[required] The name of the DB shard group to delete.}
 }
 \description{
 Deletes an Aurora Limitless Database DB shard group.

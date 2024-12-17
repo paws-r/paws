@@ -14,8 +14,8 @@ arn:\code{partition}:resiliencehub:\code{region}:\code{account}:app/\code{app-id
 information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}
 in the \emph{Amazon Web Services General Reference} guide.}
 
-\item{entries}{[required] Indicates the list of resource grouping recommendations you want to
-include in your application.}
+\item{entries}{[required] List of resource grouping recommendations you want to include in your
+application.}
 }
 \description{
 Accepts the resource grouping recommendations suggested by Resilience Hub for your application.

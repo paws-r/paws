@@ -3,6 +3,18 @@
 #' @include sagemakermetrics_service.R
 NULL
 
+.sagemakermetrics$batch_get_metrics_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(MetricQueries = structure(list(structure(list(MetricName = structure(logical(0), tags = list(type = "string")), ResourceArn = structure(logical(0), tags = list(type = "string")), MetricStat = structure(logical(0), tags = list(type = "string")), Period = structure(logical(0), tags = list(type = "string")), XAxisType = structure(logical(0), tags = list(type = "string")), Start = structure(logical(0), tags = list(box = TRUE, type = "long")), End = structure(logical(0), tags = list(box = TRUE, type = "long"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.sagemakermetrics$batch_get_metrics_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(MetricQueryResults = structure(list(structure(list(Status = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string")), XAxisValues = structure(list(structure(logical(0), tags = list(type = "long"))), tags = list(type = "list")), MetricValues = structure(list(structure(logical(0), tags = list(type = "double"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .sagemakermetrics$batch_put_metrics_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(TrialComponentName = structure(logical(0), tags = list(type = "string")), MetricData = structure(list(structure(list(MetricName = structure(logical(0), tags = list(type = "string")), Timestamp = structure(logical(0), tags = list(type = "timestamp")), Step = structure(logical(0), tags = list(type = "integer")), Value = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))

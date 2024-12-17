@@ -12,6 +12,7 @@ ec2_create_vpc_endpoint_service_configuration(
   NetworkLoadBalancerArns = NULL,
   GatewayLoadBalancerArns = NULL,
   SupportedIpAddressTypes = NULL,
+  SupportedRegions = NULL,
   ClientToken = NULL,
   TagSpecifications = NULL
 )
@@ -34,6 +35,8 @@ VPC endpoint service.}
 
 \item{SupportedIpAddressTypes}{The supported IP address types. The possible values are \code{ipv4} and
 \code{ipv6}.}
+
+\item{SupportedRegions}{The Regions from which service consumers can access the service.}
 
 \item{ClientToken}{Unique, case-sensitive identifier that you provide to ensure the
 idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{How to ensure idempotency}.}

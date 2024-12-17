@@ -39,15 +39,28 @@ If you are using extra storage units, you can't reduce the storage
 capacity below what is required to meet the storage needs for your
 index.}
 
-\item{UserTokenConfigurations}{The user token configuration.}
+\item{UserTokenConfigurations}{The user token configuration.
 
-\item{UserContextPolicy}{The user context policy.}
+If you're using an Amazon Kendra Gen AI Enterprise Edition index and you
+try to use \code{UserTokenConfigurations} to configure user context policy,
+Amazon Kendra returns a \code{ValidationException} error.}
+
+\item{UserContextPolicy}{The user context policy.
+
+If you're using an Amazon Kendra Gen AI Enterprise Edition index, you
+can only use \code{ATTRIBUTE_FILTER} to filter search results by user
+context. If you're using an Amazon Kendra Gen AI Enterprise Edition
+index and you try to use \code{USER_TOKEN} to configure user context policy,
+Amazon Kendra returns a \code{ValidationException} error.}
 
 \item{UserGroupResolutionConfiguration}{Gets users and groups from IAM Identity Center identity source. To
 configure this, see
 \href{https://docs.aws.amazon.com/kendra/latest/APIReference/API_UserGroupResolutionConfiguration.html}{UserGroupResolutionConfiguration}.
 This is useful for user context filtering, where search results are
-filtered based on the user or their group access to documents.}
+filtered based on the user or their group access to documents.
+
+If you're using an Amazon Kendra Gen AI Enterprise Edition index,
+\code{UserGroupResolutionConfiguration} isn't supported.}
 }
 \description{
 Updates an Amazon Kendra index.

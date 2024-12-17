@@ -2,33 +2,45 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_create_user_pool_domain}
 \alias{cognitoidentityprovider_create_user_pool_domain}
-\title{Creates a new domain for a user pool}
+\title{A user pool domain hosts managed login, an authorization server and web
+server for authentication in your application}
 \usage{
 cognitoidentityprovider_create_user_pool_domain(
   Domain,
   UserPoolId,
+  ManagedLoginVersion = NULL,
   CustomDomainConfig = NULL
 )
 }
 \arguments{
 \item{Domain}{[required] The domain string. For custom domains, this is the fully-qualified
-domain name, such as \code{auth.example.com}. For Amazon Cognito prefix
-domains, this is the prefix alone, such as \code{auth}.}
+domain name, such as \code{auth.example.com}. For prefix domains, this is the
+prefix alone, such as \code{myprefix}. A prefix value of \code{myprefix} for a
+user pool in the us-east-1 Region results in a domain of
+\verb{myprefix.auth.us-east-1.amazoncognito.com}.}
 
-\item{UserPoolId}{[required] The user pool ID.}
+\item{UserPoolId}{[required] The ID of the user pool where you want to add a domain.}
 
-\item{CustomDomainConfig}{The configuration for a custom domain that hosts the sign-up and sign-in
-webpages for your application.
+\item{ManagedLoginVersion}{The version of managed login branding that you want to apply to your
+domain. A value of \code{1} indicates hosted UI (classic) and a version of
+\code{2} indicates managed login.
+
+Managed login requires that your user pool be configured for any
+\href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-sign-in-feature-plans.html}{feature plan}
+other than \code{Lite}.}
+
+\item{CustomDomainConfig}{The configuration for a custom domain. Configures your domain with an
+Certificate Manager certificate in the \code{us-east-1} Region.
 
 Provide this parameter only if you want to use a custom domain for your
-user pool. Otherwise, you can exclude this parameter and use the Amazon
-Cognito hosted domain instead.
+user pool. Otherwise, you can exclude this parameter and use a prefix
+domain instead.
 
 For more information about the hosted domain and custom domains, see
 \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-assign-domain.html}{Configuring a User Pool Domain}.}
 }
 \description{
-Creates a new domain for a user pool.
+A user pool domain hosts managed login, an authorization server and web server for authentication in your application. This operation creates a new user pool prefix or custom domain and sets the managed login branding version. Set the branding version to \code{1} for hosted UI (classic) or \code{2} for managed login. When you choose a custom domain, you must provide an SSL certificate in the US East (N. Virginia) Amazon Web Services Region in your request.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_create_user_pool_domain/} for full documentation.
 }

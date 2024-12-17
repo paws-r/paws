@@ -5,11 +5,13 @@
 \title{Create an Amazon DataZone environment}
 \usage{
 datazone_create_environment(
+  deploymentOrder = NULL,
   description = NULL,
   domainIdentifier,
   environmentAccountIdentifier = NULL,
   environmentAccountRegion = NULL,
   environmentBlueprintIdentifier = NULL,
+  environmentConfigurationId = NULL,
   environmentProfileIdentifier,
   glossaryTerms = NULL,
   name,
@@ -18,6 +20,8 @@ datazone_create_environment(
 )
 }
 \arguments{
+\item{deploymentOrder}{The deployment order of the environment.}
+
 \item{description}{The description of the Amazon DataZone environment.}
 
 \item{domainIdentifier}{[required] The identifier of the Amazon DataZone domain in which the environment is
@@ -28,6 +32,8 @@ created.}
 \item{environmentAccountRegion}{The region of the account in which the environment is being created.}
 
 \item{environmentBlueprintIdentifier}{The ID of the blueprint with which the environment is being created.}
+
+\item{environmentConfigurationId}{The configuration ID of the environment.}
 
 \item{environmentProfileIdentifier}{[required] The identifier of the environment profile that is used to create this
 Amazon DataZone environment.}

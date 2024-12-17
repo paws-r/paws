@@ -18,6 +18,7 @@ imagebuilder_create_infrastructure_configuration(
   resourceTags = NULL,
   instanceMetadataOptions = NULL,
   tags = NULL,
+  placement = NULL,
   clientToken
 )
 }
@@ -57,12 +58,19 @@ encrypted using keys from other accounts. The key that is used to
 encrypt the SNS topic must reside in the account that the Image Builder
 service runs under.}
 
-\item{resourceTags}{The tags attached to the resource created by Image Builder.}
+\item{resourceTags}{The metadata tags to assign to the Amazon EC2 instance that Image
+Builder launches during the build process. Tags are formatted as key
+value pairs.}
 
 \item{instanceMetadataOptions}{The instance metadata options that you can set for the HTTP requests
 that pipeline builds use to launch EC2 build and test instances.}
 
-\item{tags}{The tags of the infrastructure configuration.}
+\item{tags}{The metadata tags to assign to the infrastructure configuration resource
+that Image Builder creates as output. Tags are formatted as key value
+pairs.}
+
+\item{placement}{The instance placement settings that define where the instances that are
+launched from your image will run.}
 
 \item{clientToken}{[required] Unique, case-sensitive identifier you provide to ensure idempotency of
 the request. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency}

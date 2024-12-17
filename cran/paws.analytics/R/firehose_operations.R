@@ -3,26 +3,26 @@
 #' @include firehose_service.R
 NULL
 
-#' Creates a Firehose delivery stream
+#' Creates a Firehose stream
 #'
 #' @description
-#' Creates a Firehose delivery stream.
+#' Creates a Firehose stream.
 #'
 #' See [https://www.paws-r-sdk.com/docs/firehose_create_delivery_stream/](https://www.paws-r-sdk.com/docs/firehose_create_delivery_stream/) for full documentation.
 #'
-#' @param DeliveryStreamName &#91;required&#93; The name of the delivery stream. This name must be unique per Amazon Web
-#' Services account in the same Amazon Web Services Region. If the delivery
+#' @param DeliveryStreamName &#91;required&#93; The name of the Firehose stream. This name must be unique per Amazon Web
+#' Services account in the same Amazon Web Services Region. If the Firehose
 #' streams are in different accounts or different Regions, you can have
-#' multiple delivery streams with the same name.
-#' @param DeliveryStreamType The delivery stream type. This parameter can be one of the following
+#' multiple Firehose streams with the same name.
+#' @param DeliveryStreamType The Firehose stream type. This parameter can be one of the following
 #' values:
 #' 
-#' -   `DirectPut`: Provider applications access the delivery stream
+#' -   `DirectPut`: Provider applications access the Firehose stream
 #'     directly.
 #' 
-#' -   `KinesisStreamAsSource`: The delivery stream uses a Kinesis data
+#' -   `KinesisStreamAsSource`: The Firehose stream uses a Kinesis data
 #'     stream as a source.
-#' @param KinesisStreamSourceConfiguration When a Kinesis data stream is used as the source for the delivery
+#' @param KinesisStreamSourceConfiguration When a Kinesis data stream is used as the source for the Firehose
 #' stream, a KinesisStreamSourceConfiguration containing the Kinesis data
 #' stream Amazon Resource Name (ARN) and the role ARN for the source
 #' stream.
@@ -39,23 +39,23 @@ NULL
 #' @param SplunkDestinationConfiguration The destination in Splunk. You can specify only one destination.
 #' @param HttpEndpointDestinationConfiguration Enables configuring Kinesis Firehose to deliver data to any HTTP
 #' endpoint destination. You can specify only one destination.
-#' @param Tags A set of tags to assign to the delivery stream. A tag is a key-value
+#' @param Tags A set of tags to assign to the Firehose stream. A tag is a key-value
 #' pair that you can define and assign to Amazon Web Services resources.
 #' Tags are metadata. For example, you can add friendly names and
 #' descriptions or other types of information that can help you distinguish
-#' the delivery stream. For more information about tags, see [Using Cost
+#' the Firehose stream. For more information about tags, see [Using Cost
 #' Allocation
 #' Tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html)
 #' in the Amazon Web Services Billing and Cost Management User Guide.
 #' 
-#' You can specify up to 50 tags when creating a delivery stream.
+#' You can specify up to 50 tags when creating a Firehose stream.
 #' 
 #' If you specify tags in the
 #' [`create_delivery_stream`][firehose_create_delivery_stream] action,
 #' Amazon Data Firehose performs an additional authorization on the
 #' `firehose:TagDeliveryStream` action to verify if users have permissions
 #' to create tags. If you do not provide this permission, requests to
-#' create new Firehose delivery streams with IAM resource tags will fail
+#' create new Firehose Firehose streams with IAM resource tags will fail
 #' with an `AccessDeniedException` such as following.
 #' 
 #' **AccessDeniedException**
@@ -72,13 +72,12 @@ NULL
 #' @param MSKSourceConfiguration 
 #' @param SnowflakeDestinationConfiguration Configure Snowflake destination
 #' @param IcebergDestinationConfiguration Configure Apache Iceberg Tables destination.
-#' 
-#' Amazon Data Firehose is in preview release and is subject to change.
+#' @param DatabaseSourceConfiguration Amazon Data Firehose is in preview release and is subject to change.
 #'
 #' @keywords internal
 #'
 #' @rdname firehose_create_delivery_stream
-firehose_create_delivery_stream <- function(DeliveryStreamName, DeliveryStreamType = NULL, KinesisStreamSourceConfiguration = NULL, DeliveryStreamEncryptionConfigurationInput = NULL, S3DestinationConfiguration = NULL, ExtendedS3DestinationConfiguration = NULL, RedshiftDestinationConfiguration = NULL, ElasticsearchDestinationConfiguration = NULL, AmazonopensearchserviceDestinationConfiguration = NULL, SplunkDestinationConfiguration = NULL, HttpEndpointDestinationConfiguration = NULL, Tags = NULL, AmazonOpenSearchServerlessDestinationConfiguration = NULL, MSKSourceConfiguration = NULL, SnowflakeDestinationConfiguration = NULL, IcebergDestinationConfiguration = NULL) {
+firehose_create_delivery_stream <- function(DeliveryStreamName, DeliveryStreamType = NULL, KinesisStreamSourceConfiguration = NULL, DeliveryStreamEncryptionConfigurationInput = NULL, S3DestinationConfiguration = NULL, ExtendedS3DestinationConfiguration = NULL, RedshiftDestinationConfiguration = NULL, ElasticsearchDestinationConfiguration = NULL, AmazonopensearchserviceDestinationConfiguration = NULL, SplunkDestinationConfiguration = NULL, HttpEndpointDestinationConfiguration = NULL, Tags = NULL, AmazonOpenSearchServerlessDestinationConfiguration = NULL, MSKSourceConfiguration = NULL, SnowflakeDestinationConfiguration = NULL, IcebergDestinationConfiguration = NULL, DatabaseSourceConfiguration = NULL) {
   op <- new_operation(
     name = "CreateDeliveryStream",
     http_method = "POST",
@@ -87,7 +86,7 @@ firehose_create_delivery_stream <- function(DeliveryStreamName, DeliveryStreamTy
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .firehose$create_delivery_stream_input(DeliveryStreamName = DeliveryStreamName, DeliveryStreamType = DeliveryStreamType, KinesisStreamSourceConfiguration = KinesisStreamSourceConfiguration, DeliveryStreamEncryptionConfigurationInput = DeliveryStreamEncryptionConfigurationInput, S3DestinationConfiguration = S3DestinationConfiguration, ExtendedS3DestinationConfiguration = ExtendedS3DestinationConfiguration, RedshiftDestinationConfiguration = RedshiftDestinationConfiguration, ElasticsearchDestinationConfiguration = ElasticsearchDestinationConfiguration, AmazonopensearchserviceDestinationConfiguration = AmazonopensearchserviceDestinationConfiguration, SplunkDestinationConfiguration = SplunkDestinationConfiguration, HttpEndpointDestinationConfiguration = HttpEndpointDestinationConfiguration, Tags = Tags, AmazonOpenSearchServerlessDestinationConfiguration = AmazonOpenSearchServerlessDestinationConfiguration, MSKSourceConfiguration = MSKSourceConfiguration, SnowflakeDestinationConfiguration = SnowflakeDestinationConfiguration, IcebergDestinationConfiguration = IcebergDestinationConfiguration)
+  input <- .firehose$create_delivery_stream_input(DeliveryStreamName = DeliveryStreamName, DeliveryStreamType = DeliveryStreamType, KinesisStreamSourceConfiguration = KinesisStreamSourceConfiguration, DeliveryStreamEncryptionConfigurationInput = DeliveryStreamEncryptionConfigurationInput, S3DestinationConfiguration = S3DestinationConfiguration, ExtendedS3DestinationConfiguration = ExtendedS3DestinationConfiguration, RedshiftDestinationConfiguration = RedshiftDestinationConfiguration, ElasticsearchDestinationConfiguration = ElasticsearchDestinationConfiguration, AmazonopensearchserviceDestinationConfiguration = AmazonopensearchserviceDestinationConfiguration, SplunkDestinationConfiguration = SplunkDestinationConfiguration, HttpEndpointDestinationConfiguration = HttpEndpointDestinationConfiguration, Tags = Tags, AmazonOpenSearchServerlessDestinationConfiguration = AmazonOpenSearchServerlessDestinationConfiguration, MSKSourceConfiguration = MSKSourceConfiguration, SnowflakeDestinationConfiguration = SnowflakeDestinationConfiguration, IcebergDestinationConfiguration = IcebergDestinationConfiguration, DatabaseSourceConfiguration = DatabaseSourceConfiguration)
   output <- .firehose$create_delivery_stream_output()
   config <- get_config()
   svc <- .firehose$service(config, op)
@@ -97,15 +96,15 @@ firehose_create_delivery_stream <- function(DeliveryStreamName, DeliveryStreamTy
 }
 .firehose$operations$create_delivery_stream <- firehose_create_delivery_stream
 
-#' Deletes a delivery stream and its data
+#' Deletes a Firehose stream and its data
 #'
 #' @description
-#' Deletes a delivery stream and its data.
+#' Deletes a Firehose stream and its data.
 #'
 #' See [https://www.paws-r-sdk.com/docs/firehose_delete_delivery_stream/](https://www.paws-r-sdk.com/docs/firehose_delete_delivery_stream/) for full documentation.
 #'
-#' @param DeliveryStreamName &#91;required&#93; The name of the delivery stream.
-#' @param AllowForceDelete Set this to true if you want to delete the delivery stream even if
+#' @param DeliveryStreamName &#91;required&#93; The name of the Firehose stream.
+#' @param AllowForceDelete Set this to true if you want to delete the Firehose stream even if
 #' Firehose is unable to retire the grant for the CMK. Firehose might be
 #' unable to retire the grant due to a customer error, such as when the CMK
 #' or the grant are in an invalid state. If you force deletion, you can
@@ -139,18 +138,18 @@ firehose_delete_delivery_stream <- function(DeliveryStreamName, AllowForceDelete
 }
 .firehose$operations$delete_delivery_stream <- firehose_delete_delivery_stream
 
-#' Describes the specified delivery stream and its status
+#' Describes the specified Firehose stream and its status
 #'
 #' @description
-#' Describes the specified delivery stream and its status. For example, after your delivery stream is created, call [`describe_delivery_stream`][firehose_describe_delivery_stream] to see whether the delivery stream is `ACTIVE` and therefore ready for data to be sent to it.
+#' Describes the specified Firehose stream and its status. For example, after your Firehose stream is created, call [`describe_delivery_stream`][firehose_describe_delivery_stream] to see whether the Firehose stream is `ACTIVE` and therefore ready for data to be sent to it.
 #'
 #' See [https://www.paws-r-sdk.com/docs/firehose_describe_delivery_stream/](https://www.paws-r-sdk.com/docs/firehose_describe_delivery_stream/) for full documentation.
 #'
-#' @param DeliveryStreamName &#91;required&#93; The name of the delivery stream.
+#' @param DeliveryStreamName &#91;required&#93; The name of the Firehose stream.
 #' @param Limit The limit on the number of destinations to return. You can have one
-#' destination per delivery stream.
+#' destination per Firehose stream.
 #' @param ExclusiveStartDestinationId The ID of the destination to start returning the destination
-#' information. Firehose supports one destination per delivery stream.
+#' information. Firehose supports one destination per Firehose stream.
 #'
 #' @keywords internal
 #'
@@ -174,27 +173,27 @@ firehose_describe_delivery_stream <- function(DeliveryStreamName, Limit = NULL, 
 }
 .firehose$operations$describe_delivery_stream <- firehose_describe_delivery_stream
 
-#' Lists your delivery streams in alphabetical order of their names
+#' Lists your Firehose streams in alphabetical order of their names
 #'
 #' @description
-#' Lists your delivery streams in alphabetical order of their names.
+#' Lists your Firehose streams in alphabetical order of their names.
 #'
 #' See [https://www.paws-r-sdk.com/docs/firehose_list_delivery_streams/](https://www.paws-r-sdk.com/docs/firehose_list_delivery_streams/) for full documentation.
 #'
-#' @param Limit The maximum number of delivery streams to list. The default value is 10.
-#' @param DeliveryStreamType The delivery stream type. This can be one of the following values:
+#' @param Limit The maximum number of Firehose streams to list. The default value is 10.
+#' @param DeliveryStreamType The Firehose stream type. This can be one of the following values:
 #' 
-#' -   `DirectPut`: Provider applications access the delivery stream
+#' -   `DirectPut`: Provider applications access the Firehose stream
 #'     directly.
 #' 
-#' -   `KinesisStreamAsSource`: The delivery stream uses a Kinesis data
+#' -   `KinesisStreamAsSource`: The Firehose stream uses a Kinesis data
 #'     stream as a source.
 #' 
-#' This parameter is optional. If this parameter is omitted, delivery
+#' This parameter is optional. If this parameter is omitted, Firehose
 #' streams of all types are returned.
-#' @param ExclusiveStartDeliveryStreamName The list of delivery streams returned by this call to
+#' @param ExclusiveStartDeliveryStreamName The list of Firehose streams returned by this call to
 #' [`list_delivery_streams`][firehose_list_delivery_streams] will start
-#' with the delivery stream whose name comes alphabetically immediately
+#' with the Firehose stream whose name comes alphabetically immediately
 #' after the name you specify in `ExclusiveStartDeliveryStreamName`.
 #'
 #' @keywords internal
@@ -219,20 +218,20 @@ firehose_list_delivery_streams <- function(Limit = NULL, DeliveryStreamType = NU
 }
 .firehose$operations$list_delivery_streams <- firehose_list_delivery_streams
 
-#' Lists the tags for the specified delivery stream
+#' Lists the tags for the specified Firehose stream
 #'
 #' @description
-#' Lists the tags for the specified delivery stream. This operation has a limit of five transactions per second per account.
+#' Lists the tags for the specified Firehose stream. This operation has a limit of five transactions per second per account.
 #'
 #' See [https://www.paws-r-sdk.com/docs/firehose_list_tags_for_delivery_stream/](https://www.paws-r-sdk.com/docs/firehose_list_tags_for_delivery_stream/) for full documentation.
 #'
-#' @param DeliveryStreamName &#91;required&#93; The name of the delivery stream whose tags you want to list.
+#' @param DeliveryStreamName &#91;required&#93; The name of the Firehose stream whose tags you want to list.
 #' @param ExclusiveStartTagKey The key to use as the starting point for the list of tags. If you set
 #' this parameter,
 #' [`list_tags_for_delivery_stream`][firehose_list_tags_for_delivery_stream]
 #' gets all tags that occur after `ExclusiveStartTagKey`.
 #' @param Limit The number of tags to return. If this number is less than the total
-#' number of tags associated with the delivery stream, `HasMoreTags` is set
+#' number of tags associated with the Firehose stream, `HasMoreTags` is set
 #' to `true` in the response. To list additional tags, set
 #' `ExclusiveStartTagKey` to the last key in the response.
 #'
@@ -258,14 +257,14 @@ firehose_list_tags_for_delivery_stream <- function(DeliveryStreamName, Exclusive
 }
 .firehose$operations$list_tags_for_delivery_stream <- firehose_list_tags_for_delivery_stream
 
-#' Writes a single data record into an Amazon Firehose delivery stream
+#' Writes a single data record into an Firehose stream
 #'
 #' @description
-#' Writes a single data record into an Amazon Firehose delivery stream. To write multiple data records into a delivery stream, use [`put_record_batch`][firehose_put_record_batch]. Applications using these operations are referred to as producers.
+#' Writes a single data record into an Firehose stream. To write multiple data records into a Firehose stream, use [`put_record_batch`][firehose_put_record_batch]. Applications using these operations are referred to as producers.
 #'
 #' See [https://www.paws-r-sdk.com/docs/firehose_put_record/](https://www.paws-r-sdk.com/docs/firehose_put_record/) for full documentation.
 #'
-#' @param DeliveryStreamName &#91;required&#93; The name of the delivery stream.
+#' @param DeliveryStreamName &#91;required&#93; The name of the Firehose stream.
 #' @param Record &#91;required&#93; The record.
 #'
 #' @keywords internal
@@ -290,16 +289,16 @@ firehose_put_record <- function(DeliveryStreamName, Record) {
 }
 .firehose$operations$put_record <- firehose_put_record
 
-#' Writes multiple data records into a delivery stream in a single call,
+#' Writes multiple data records into a Firehose stream in a single call,
 #' which can achieve higher throughput per producer than when writing
 #' single records
 #'
 #' @description
-#' Writes multiple data records into a delivery stream in a single call, which can achieve higher throughput per producer than when writing single records. To write single data records into a delivery stream, use [`put_record`][firehose_put_record]. Applications using these operations are referred to as producers.
+#' Writes multiple data records into a Firehose stream in a single call, which can achieve higher throughput per producer than when writing single records. To write single data records into a Firehose stream, use [`put_record`][firehose_put_record]. Applications using these operations are referred to as producers.
 #'
 #' See [https://www.paws-r-sdk.com/docs/firehose_put_record_batch/](https://www.paws-r-sdk.com/docs/firehose_put_record_batch/) for full documentation.
 #'
-#' @param DeliveryStreamName &#91;required&#93; The name of the delivery stream.
+#' @param DeliveryStreamName &#91;required&#93; The name of the Firehose stream.
 #' @param Records &#91;required&#93; One or more records.
 #'
 #' @keywords internal
@@ -324,14 +323,14 @@ firehose_put_record_batch <- function(DeliveryStreamName, Records) {
 }
 .firehose$operations$put_record_batch <- firehose_put_record_batch
 
-#' Enables server-side encryption (SSE) for the delivery stream
+#' Enables server-side encryption (SSE) for the Firehose stream
 #'
 #' @description
-#' Enables server-side encryption (SSE) for the delivery stream.
+#' Enables server-side encryption (SSE) for the Firehose stream.
 #'
 #' See [https://www.paws-r-sdk.com/docs/firehose_start_delivery_stream_encryption/](https://www.paws-r-sdk.com/docs/firehose_start_delivery_stream_encryption/) for full documentation.
 #'
-#' @param DeliveryStreamName &#91;required&#93; The name of the delivery stream for which you want to enable server-side
+#' @param DeliveryStreamName &#91;required&#93; The name of the Firehose stream for which you want to enable server-side
 #' encryption (SSE).
 #' @param DeliveryStreamEncryptionConfigurationInput Used to specify the type and Amazon Resource Name (ARN) of the KMS key
 #' needed for Server-Side Encryption (SSE).
@@ -358,14 +357,14 @@ firehose_start_delivery_stream_encryption <- function(DeliveryStreamName, Delive
 }
 .firehose$operations$start_delivery_stream_encryption <- firehose_start_delivery_stream_encryption
 
-#' Disables server-side encryption (SSE) for the delivery stream
+#' Disables server-side encryption (SSE) for the Firehose stream
 #'
 #' @description
-#' Disables server-side encryption (SSE) for the delivery stream.
+#' Disables server-side encryption (SSE) for the Firehose stream.
 #'
 #' See [https://www.paws-r-sdk.com/docs/firehose_stop_delivery_stream_encryption/](https://www.paws-r-sdk.com/docs/firehose_stop_delivery_stream_encryption/) for full documentation.
 #'
-#' @param DeliveryStreamName &#91;required&#93; The name of the delivery stream for which you want to disable
+#' @param DeliveryStreamName &#91;required&#93; The name of the Firehose stream for which you want to disable
 #' server-side encryption (SSE).
 #'
 #' @keywords internal
@@ -390,14 +389,14 @@ firehose_stop_delivery_stream_encryption <- function(DeliveryStreamName) {
 }
 .firehose$operations$stop_delivery_stream_encryption <- firehose_stop_delivery_stream_encryption
 
-#' Adds or updates tags for the specified delivery stream
+#' Adds or updates tags for the specified Firehose stream
 #'
 #' @description
-#' Adds or updates tags for the specified delivery stream. A tag is a key-value pair that you can define and assign to Amazon Web Services resources. If you specify a tag that already exists, the tag value is replaced with the value that you specify in the request. Tags are metadata. For example, you can add friendly names and descriptions or other types of information that can help you distinguish the delivery stream. For more information about tags, see [Using Cost Allocation Tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html) in the *Amazon Web Services Billing and Cost Management User Guide*.
+#' Adds or updates tags for the specified Firehose stream. A tag is a key-value pair that you can define and assign to Amazon Web Services resources. If you specify a tag that already exists, the tag value is replaced with the value that you specify in the request. Tags are metadata. For example, you can add friendly names and descriptions or other types of information that can help you distinguish the Firehose stream. For more information about tags, see [Using Cost Allocation Tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html) in the *Amazon Web Services Billing and Cost Management User Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/firehose_tag_delivery_stream/](https://www.paws-r-sdk.com/docs/firehose_tag_delivery_stream/) for full documentation.
 #'
-#' @param DeliveryStreamName &#91;required&#93; The name of the delivery stream to which you want to add the tags.
+#' @param DeliveryStreamName &#91;required&#93; The name of the Firehose stream to which you want to add the tags.
 #' @param Tags &#91;required&#93; A set of key-value pairs to use to create the tags.
 #'
 #' @keywords internal
@@ -422,14 +421,14 @@ firehose_tag_delivery_stream <- function(DeliveryStreamName, Tags) {
 }
 .firehose$operations$tag_delivery_stream <- firehose_tag_delivery_stream
 
-#' Removes tags from the specified delivery stream
+#' Removes tags from the specified Firehose stream
 #'
 #' @description
-#' Removes tags from the specified delivery stream. Removed tags are deleted, and you can't recover them after this operation successfully completes.
+#' Removes tags from the specified Firehose stream. Removed tags are deleted, and you can't recover them after this operation successfully completes.
 #'
 #' See [https://www.paws-r-sdk.com/docs/firehose_untag_delivery_stream/](https://www.paws-r-sdk.com/docs/firehose_untag_delivery_stream/) for full documentation.
 #'
-#' @param DeliveryStreamName &#91;required&#93; The name of the delivery stream.
+#' @param DeliveryStreamName &#91;required&#93; The name of the Firehose stream.
 #' @param TagKeys &#91;required&#93; A list of tag keys. Each corresponding tag is removed from the delivery
 #' stream.
 #'
@@ -455,14 +454,14 @@ firehose_untag_delivery_stream <- function(DeliveryStreamName, TagKeys) {
 }
 .firehose$operations$untag_delivery_stream <- firehose_untag_delivery_stream
 
-#' Updates the specified destination of the specified delivery stream
+#' Updates the specified destination of the specified Firehose stream
 #'
 #' @description
-#' Updates the specified destination of the specified delivery stream.
+#' Updates the specified destination of the specified Firehose stream.
 #'
 #' See [https://www.paws-r-sdk.com/docs/firehose_update_destination/](https://www.paws-r-sdk.com/docs/firehose_update_destination/) for full documentation.
 #'
-#' @param DeliveryStreamName &#91;required&#93; The name of the delivery stream.
+#' @param DeliveryStreamName &#91;required&#93; The name of the Firehose stream.
 #' @param CurrentDeliveryStreamVersionId &#91;required&#93; Obtain this value from the `VersionId` result of
 #' DeliveryStreamDescription. This value is required, and helps the service
 #' perform conditional operations. For example, if there is an interleaving
@@ -482,8 +481,6 @@ firehose_untag_delivery_stream <- function(DeliveryStreamName, TagKeys) {
 #' Amazon OpenSearch Service.
 #' @param SnowflakeDestinationUpdate Update to the Snowflake destination configuration settings.
 #' @param IcebergDestinationUpdate Describes an update for a destination in Apache Iceberg Tables.
-#' 
-#' Amazon Data Firehose is in preview release and is subject to change.
 #'
 #' @keywords internal
 #'

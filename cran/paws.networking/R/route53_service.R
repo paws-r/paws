@@ -217,7 +217,7 @@ route53 <- function(config = list(), credentials = list(), endpoint = NULL, regi
 
 .route53$metadata <- list(
   service_name = "route53",
-  endpoints = list("*" = list(endpoint = "https://route53.amazonaws.com", global = TRUE), "cn-*" = list(endpoint = "route53.amazonaws.com.cn", global = TRUE), "us-gov-*" = list(endpoint = "route53.us-gov.amazonaws.com", global = TRUE), "us-iso-*" = list(endpoint = "route53.c2s.ic.gov", global = TRUE), "us-isob-*" = list(endpoint = "route53.sc2s.sgov.gov", global = TRUE), "us-isof-*" = list(endpoint = "route53.csp.hci.ic.gov", global = TRUE), "eu-isoe-*" = list(endpoint = "route53.cloud.adc-e.uk", global = TRUE)),
+  endpoints = list("aws-global" = list(endpoint = "route53.amazonaws.com", global = TRUE), "us-east-1" = list(endpoint = "route53.amazonaws.com", global = TRUE), "^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "route53.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "route53.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "route53.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "route53.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "route53.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "route53.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "route53.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Route 53",
   api_version = "2013-04-01",
   signing_name = "route53",

@@ -2,7 +2,7 @@
 % Please edit documentation in R/securityhub_operations.R
 \name{securityhub_create_finding_aggregator}
 \alias{securityhub_create_finding_aggregator}
-\title{Used to enable finding aggregation}
+\title{The aggregation Region is now called the home Region}
 \usage{
 securityhub_create_finding_aggregator(RegionLinkingMode, Regions = NULL)
 }
@@ -34,18 +34,18 @@ linked Regions.
 }}
 
 \item{Regions}{If \code{RegionLinkingMode} is \code{ALL_REGIONS_EXCEPT_SPECIFIED}, then this is a
-space-separated list of Regions that do not aggregate findings to the
-aggregation Region.
+space-separated list of Regions that don't replicate and send findings
+to the home Region.
 
 If \code{RegionLinkingMode} is \code{SPECIFIED_REGIONS}, then this is a
-space-separated list of Regions that do aggregate findings to the
-aggregation Region.
+space-separated list of Regions that do replicate and send findings to
+the home Region.
 
 An \code{InvalidInputException} error results if you populate this field
 while \code{RegionLinkingMode} is \code{NO_REGIONS}.}
 }
 \description{
-Used to enable finding aggregation. Must be called from the aggregation Region.
+The \emph{aggregation Region} is now called the \emph{home Region}.
 
 See \url{https://www.paws-r-sdk.com/docs/securityhub_create_finding_aggregator/} for full documentation.
 }

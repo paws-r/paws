@@ -8,7 +8,11 @@ types}
 guardduty_create_sample_findings(DetectorId, FindingTypes = NULL)
 }
 \arguments{
-\item{DetectorId}{[required] The ID of the detector to create sample findings for.}
+\item{DetectorId}{[required] The ID of the detector for which you need to create sample findings.
+
+To find the \code{detectorId} in the current Region, see the Settings page in
+the GuardDuty console, or run the
+\code{\link[=guardduty_list_detectors]{list_detectors}} API.}
 
 \item{FindingTypes}{The types of sample findings to generate.}
 }

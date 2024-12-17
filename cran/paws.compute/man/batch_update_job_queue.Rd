@@ -51,7 +51,9 @@ architecture types in a single job queue.}
 
 \item{jobStateTimeLimitActions}{The set of actions that Batch perform on jobs that remain at the head of
 the job queue in the specified state longer than specified times. Batch
-will perform each action after \code{maxTimeSeconds} has passed.}
+will perform each action after \code{maxTimeSeconds} has passed. (\strong{Note}:
+The minimum value for maxTimeSeconds is 600 (10 minutes) and its maximum
+value is 86,400 (24 hours).)}
 }
 \description{
 Updates a job queue.

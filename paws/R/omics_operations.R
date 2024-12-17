@@ -711,6 +711,108 @@ omics_create_reference_store <- function(name, description = NULL, sseConfig = N
 }
 .omics$operations$create_reference_store <- omics_create_reference_store
 
+#' You can create a run cache to save the task outputs from completed tasks
+#' in a run for a private workflow
+#'
+#' @description
+#' You can create a run cache to save the task outputs from completed tasks
+#' in a run for a private workflow. Subsequent runs use the task outputs
+#' from the cache, rather than computing the task outputs again. You
+#' specify an Amazon S3 location where HealthOmics saves the cached data.
+#' This data must be immediately accessible (not in an archived state).
+#' 
+#' For more information, see [Creating a run
+#' cache](https://docs.aws.amazon.com/omics/latest/dev/workflow-cache-create.html)
+#' in the AWS HealthOmics User Guide.
+#'
+#' @usage
+#' omics_create_run_cache(cacheBehavior, cacheS3Location, description,
+#'   name, requestId, tags, cacheBucketOwnerId)
+#'
+#' @param cacheBehavior Default cache behavior for runs that use this cache. Supported values
+#' are:
+#' 
+#' `CACHE_ON_FAILURE`: Caches task outputs from completed tasks for runs
+#' that fail. This setting is useful if you're debugging a workflow that
+#' fails after several tasks completed successfully. The subsequent run
+#' uses the cache outputs for previously-completed tasks if the task
+#' definition, inputs, and container in ECR are identical to the prior run.
+#' 
+#' `CACHE_ALWAYS`: Caches task outputs from completed tasks for all runs.
+#' This setting is useful in development mode, but do not use it in a
+#' production setting.
+#' 
+#' If you don't specify a value, the default behavior is CACHE_ON_FAILURE.
+#' When you start a run that uses this cache, you can override the default
+#' cache behavior.
+#' 
+#' For more information, see [Run cache
+#' behavior](https://docs.aws.amazon.com/omics/latest/dev/how-run-cache.html#run-cache-behavior)
+#' in the AWS HealthOmics User Guide.
+#' @param cacheS3Location &#91;required&#93; Specify the S3 location for storing the cached task outputs. This data
+#' must be immediately accessible (not in an archived state).
+#' @param description Enter a description of the run cache.
+#' @param name Enter a user-friendly name for the run cache.
+#' @param requestId &#91;required&#93; A unique request token, to ensure idempotency. If you don't specify a
+#' token, HealthOmics automatically generates a universally unique
+#' identifier (UUID) for the request.
+#' @param tags Specify one or more tags to associate with this run cache.
+#' @param cacheBucketOwnerId The AWS account ID of the expected owner of the S3 bucket for the run
+#' cache. If not provided, your account ID is set as the owner of the
+#' bucket.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   arn = "string",
+#'   id = "string",
+#'   status = "ACTIVE"|"DELETED"|"FAILED",
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_run_cache(
+#'   cacheBehavior = "CACHE_ON_FAILURE"|"CACHE_ALWAYS",
+#'   cacheS3Location = "string",
+#'   description = "string",
+#'   name = "string",
+#'   requestId = "string",
+#'   tags = list(
+#'     "string"
+#'   ),
+#'   cacheBucketOwnerId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname omics_create_run_cache
+#'
+#' @aliases omics_create_run_cache
+omics_create_run_cache <- function(cacheBehavior = NULL, cacheS3Location, description = NULL, name = NULL, requestId, tags = NULL, cacheBucketOwnerId = NULL) {
+  op <- new_operation(
+    name = "CreateRunCache",
+    http_method = "POST",
+    http_path = "/runCache",
+    host_prefix = "workflows-",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .omics$create_run_cache_input(cacheBehavior = cacheBehavior, cacheS3Location = cacheS3Location, description = description, name = name, requestId = requestId, tags = tags, cacheBucketOwnerId = cacheBucketOwnerId)
+  output <- .omics$create_run_cache_output()
+  config <- get_config()
+  svc <- .omics$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.omics$operations$create_run_cache <- omics_create_run_cache
+
 #' You can optionally create a run group to limit the compute resources for
 #' the runs that you add to the group
 #'
@@ -792,7 +894,8 @@ omics_create_run_group <- function(name = NULL, maxCpus = NULL, maxRuns = NULL, 
 #'
 #' @usage
 #' omics_create_sequence_store(name, description, sseConfig, tags,
-#'   clientToken, fallbackLocation, eTagAlgorithmFamily)
+#'   clientToken, fallbackLocation, eTagAlgorithmFamily,
+#'   propagatedSetLevelTags, s3AccessConfig)
 #'
 #' @param name &#91;required&#93; A name for the store.
 #' @param description A description for the store.
@@ -803,6 +906,9 @@ omics_create_run_group <- function(name = NULL, maxCpus = NULL, maxRuns = NULL, 
 #' @param fallbackLocation An S3 location that is used to store files that have failed a direct
 #' upload.
 #' @param eTagAlgorithmFamily The ETag algorithm family to use for ingested read sets.
+#' @param propagatedSetLevelTags The tags keys to propagate to the S3 objects associated with read sets
+#' in the sequence store.
+#' @param s3AccessConfig S3 access configuration parameters
 #'
 #' @return
 #' A list with the following syntax:
@@ -820,7 +926,17 @@ omics_create_run_group <- function(name = NULL, maxCpus = NULL, maxRuns = NULL, 
 #'     "2015-01-01"
 #'   ),
 #'   fallbackLocation = "string",
-#'   eTagAlgorithmFamily = "MD5up"|"SHA256up"|"SHA512up"
+#'   eTagAlgorithmFamily = "MD5up"|"SHA256up"|"SHA512up",
+#'   status = "CREATING"|"ACTIVE"|"UPDATING"|"DELETING"|"FAILED",
+#'   statusMessage = "string",
+#'   propagatedSetLevelTags = list(
+#'     "string"
+#'   ),
+#'   s3Access = list(
+#'     s3Uri = "string",
+#'     s3AccessPointArn = "string",
+#'     accessLogLocation = "string"
+#'   )
 #' )
 #' ```
 #'
@@ -838,7 +954,13 @@ omics_create_run_group <- function(name = NULL, maxCpus = NULL, maxRuns = NULL, 
 #'   ),
 #'   clientToken = "string",
 #'   fallbackLocation = "string",
-#'   eTagAlgorithmFamily = "MD5up"|"SHA256up"|"SHA512up"
+#'   eTagAlgorithmFamily = "MD5up"|"SHA256up"|"SHA512up",
+#'   propagatedSetLevelTags = list(
+#'     "string"
+#'   ),
+#'   s3AccessConfig = list(
+#'     accessLogLocation = "string"
+#'   )
 #' )
 #' ```
 #'
@@ -847,7 +969,7 @@ omics_create_run_group <- function(name = NULL, maxCpus = NULL, maxRuns = NULL, 
 #' @rdname omics_create_sequence_store
 #'
 #' @aliases omics_create_sequence_store
-omics_create_sequence_store <- function(name, description = NULL, sseConfig = NULL, tags = NULL, clientToken = NULL, fallbackLocation = NULL, eTagAlgorithmFamily = NULL) {
+omics_create_sequence_store <- function(name, description = NULL, sseConfig = NULL, tags = NULL, clientToken = NULL, fallbackLocation = NULL, eTagAlgorithmFamily = NULL, propagatedSetLevelTags = NULL, s3AccessConfig = NULL) {
   op <- new_operation(
     name = "CreateSequenceStore",
     http_method = "POST",
@@ -856,7 +978,7 @@ omics_create_sequence_store <- function(name, description = NULL, sseConfig = NU
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .omics$create_sequence_store_input(name = name, description = description, sseConfig = sseConfig, tags = tags, clientToken = clientToken, fallbackLocation = fallbackLocation, eTagAlgorithmFamily = eTagAlgorithmFamily)
+  input <- .omics$create_sequence_store_input(name = name, description = description, sseConfig = sseConfig, tags = tags, clientToken = clientToken, fallbackLocation = fallbackLocation, eTagAlgorithmFamily = eTagAlgorithmFamily, propagatedSetLevelTags = propagatedSetLevelTags, s3AccessConfig = s3AccessConfig)
   output <- .omics$create_sequence_store_output()
   config <- get_config()
   svc <- .omics$service(config, op)
@@ -1335,6 +1457,58 @@ omics_delete_run <- function(id) {
 }
 .omics$operations$delete_run <- omics_delete_run
 
+#' Delete a run cache
+#'
+#' @description
+#' Delete a run cache. This action removes the cache metadata stored in the
+#' service account, but doesn't delete the data in Amazon S3. You can
+#' access the cache data in Amazon S3, for inspection or to troubleshoot
+#' issues. You can remove old cache data using standard S3 `Delete`
+#' operations.
+#' 
+#' For more information, see [Deleting a run
+#' cache](https://docs.aws.amazon.com/omics/latest/dev/workflow-cache-delete.html)
+#' in the AWS HealthOmics User Guide.
+#'
+#' @usage
+#' omics_delete_run_cache(id)
+#'
+#' @param id &#91;required&#93; Run cache identifier for the cache you want to delete.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_run_cache(
+#'   id = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname omics_delete_run_cache
+#'
+#' @aliases omics_delete_run_cache
+omics_delete_run_cache <- function(id) {
+  op <- new_operation(
+    name = "DeleteRunCache",
+    http_method = "DELETE",
+    http_path = "/runCache/{id}",
+    host_prefix = "workflows-",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .omics$delete_run_cache_input(id = id)
+  output <- .omics$delete_run_cache_output()
+  config <- get_config()
+  svc <- .omics$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.omics$operations$delete_run_cache <- omics_delete_run_cache
+
 #' Deletes a workflow run group
 #'
 #' @description
@@ -1378,6 +1552,50 @@ omics_delete_run_group <- function(id) {
   return(response)
 }
 .omics$operations$delete_run_group <- omics_delete_run_group
+
+#' Deletes an access policy for the specified store
+#'
+#' @description
+#' Deletes an access policy for the specified store.
+#'
+#' @usage
+#' omics_delete_s3_access_policy(s3AccessPointArn)
+#'
+#' @param s3AccessPointArn &#91;required&#93; The S3 access point ARN that has the access policy.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_s3_access_policy(
+#'   s3AccessPointArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname omics_delete_s3_access_policy
+#'
+#' @aliases omics_delete_s3_access_policy
+omics_delete_s3_access_policy <- function(s3AccessPointArn) {
+  op <- new_operation(
+    name = "DeleteS3AccessPolicy",
+    http_method = "DELETE",
+    http_path = "/s3accesspolicy/{s3AccessPointArn}",
+    host_prefix = "control-storage-",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .omics$delete_s3_access_policy_input(s3AccessPointArn = s3AccessPointArn)
+  output <- .omics$delete_s3_access_policy_output()
+  config <- get_config()
+  svc <- .omics$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.omics$operations$delete_s3_access_policy <- omics_delete_s3_access_policy
 
 #' Deletes a sequence store
 #'
@@ -2485,6 +2703,13 @@ omics_get_reference_store <- function(id) {
 #' 
 #' If a workflow is shared with you, you cannot export information about
 #' the run.
+#' 
+#' HealthOmics stores a fixed number of runs that are available to the
+#' console and API. If GetRun doesn't return the requested run, you can
+#' find run logs for all runs in the CloudWatch logs. For more information
+#' about viewing the run logs, see [CloudWatch
+#' logs](https://docs.aws.amazon.com/omics/latest/dev/) in the *AWS
+#' HealthOmics User Guide*.
 #'
 #' @usage
 #' omics_get_run(id, export)
@@ -2498,6 +2723,9 @@ omics_get_reference_store <- function(id) {
 #' list(
 #'   arn = "string",
 #'   id = "string",
+#'   cacheId = "string",
+#'   cacheBehavior = "CACHE_ON_FAILURE"|"CACHE_ALWAYS",
+#'   engineVersion = "string",
 #'   status = "PENDING"|"STARTING"|"RUNNING"|"STOPPING"|"COMPLETED"|"DELETED"|"CANCELLED"|"FAILED",
 #'   workflowId = "string",
 #'   workflowType = "PRIVATE"|"READY2RUN",
@@ -2576,6 +2804,72 @@ omics_get_run <- function(id, export = NULL) {
   return(response)
 }
 .omics$operations$get_run <- omics_get_run
+
+#' Retrieve the details for the specified run cache
+#'
+#' @description
+#' Retrieve the details for the specified run cache.
+#' 
+#' For more information, see [Call caching for HealthOmics
+#' runs](https://docs.aws.amazon.com/omics/latest/dev/) in the AWS
+#' HealthOmics User Guide.
+#'
+#' @usage
+#' omics_get_run_cache(id)
+#'
+#' @param id &#91;required&#93; The identifier of the run cache to retrieve.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   arn = "string",
+#'   cacheBehavior = "CACHE_ON_FAILURE"|"CACHE_ALWAYS",
+#'   cacheBucketOwnerId = "string",
+#'   cacheS3Uri = "string",
+#'   creationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   description = "string",
+#'   id = "string",
+#'   name = "string",
+#'   status = "ACTIVE"|"DELETED"|"FAILED",
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_run_cache(
+#'   id = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname omics_get_run_cache
+#'
+#' @aliases omics_get_run_cache
+omics_get_run_cache <- function(id) {
+  op <- new_operation(
+    name = "GetRunCache",
+    http_method = "GET",
+    http_path = "/runCache/{id}",
+    host_prefix = "workflows-",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .omics$get_run_cache_input(id = id)
+  output <- .omics$get_run_cache_output()
+  config <- get_config()
+  svc <- .omics$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.omics$operations$get_run_cache <- omics_get_run_cache
 
 #' Gets information about a workflow run group
 #'
@@ -2657,6 +2951,8 @@ omics_get_run_group <- function(id) {
 #'   status = "PENDING"|"STARTING"|"RUNNING"|"STOPPING"|"COMPLETED"|"CANCELLED"|"FAILED",
 #'   name = "string",
 #'   cpus = 123,
+#'   cacheHit = TRUE|FALSE,
+#'   cacheS3Uri = "string",
 #'   memory = 123,
 #'   creationTime = as.POSIXct(
 #'     "2015-01-01"
@@ -2707,6 +3003,61 @@ omics_get_run_task <- function(id, taskId) {
 }
 .omics$operations$get_run_task <- omics_get_run_task
 
+#' Retrieves details about an access policy on a given store
+#'
+#' @description
+#' Retrieves details about an access policy on a given store.
+#'
+#' @usage
+#' omics_get_s3_access_policy(s3AccessPointArn)
+#'
+#' @param s3AccessPointArn &#91;required&#93; The S3 access point ARN that has the access policy.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   s3AccessPointArn = "string",
+#'   storeId = "string",
+#'   storeType = "SEQUENCE_STORE"|"REFERENCE_STORE",
+#'   updateTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   s3AccessPolicy = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_s3_access_policy(
+#'   s3AccessPointArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname omics_get_s3_access_policy
+#'
+#' @aliases omics_get_s3_access_policy
+omics_get_s3_access_policy <- function(s3AccessPointArn) {
+  op <- new_operation(
+    name = "GetS3AccessPolicy",
+    http_method = "GET",
+    http_path = "/s3accesspolicy/{s3AccessPointArn}",
+    host_prefix = "control-storage-",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .omics$get_s3_access_policy_input(s3AccessPointArn = s3AccessPointArn)
+  output <- .omics$get_s3_access_policy_output()
+  config <- get_config()
+  svc <- .omics$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.omics$operations$get_s3_access_policy <- omics_get_s3_access_policy
+
 #' Gets information about a sequence store
 #'
 #' @description
@@ -2735,9 +3086,18 @@ omics_get_run_task <- function(id, taskId) {
 #'   fallbackLocation = "string",
 #'   s3Access = list(
 #'     s3Uri = "string",
-#'     s3AccessPointArn = "string"
+#'     s3AccessPointArn = "string",
+#'     accessLogLocation = "string"
 #'   ),
-#'   eTagAlgorithmFamily = "MD5up"|"SHA256up"|"SHA512up"
+#'   eTagAlgorithmFamily = "MD5up"|"SHA256up"|"SHA512up",
+#'   status = "CREATING"|"ACTIVE"|"UPDATING"|"DELETING"|"FAILED",
+#'   statusMessage = "string",
+#'   propagatedSetLevelTags = list(
+#'     "string"
+#'   ),
+#'   updateTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
 #' )
 #' ```
 #'
@@ -4050,6 +4410,71 @@ omics_list_references <- function(referenceStoreId, maxResults = NULL, nextToken
 }
 .omics$operations$list_references <- omics_list_references
 
+#' Retrieves a list of your run caches
+#'
+#' @description
+#' Retrieves a list of your run caches.
+#'
+#' @usage
+#' omics_list_run_caches(maxResults, startingToken)
+#'
+#' @param maxResults The maximum number of results to return.
+#' @param startingToken Optional pagination token returned from a prior call to the
+#' [`list_run_caches`][omics_list_run_caches] API operation.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   items = list(
+#'     list(
+#'       arn = "string",
+#'       cacheBehavior = "CACHE_ON_FAILURE"|"CACHE_ALWAYS",
+#'       cacheS3Uri = "string",
+#'       creationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       id = "string",
+#'       name = "string",
+#'       status = "ACTIVE"|"DELETED"|"FAILED"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_run_caches(
+#'   maxResults = 123,
+#'   startingToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname omics_list_run_caches
+#'
+#' @aliases omics_list_run_caches
+omics_list_run_caches <- function(maxResults = NULL, startingToken = NULL) {
+  op <- new_operation(
+    name = "ListRunCaches",
+    http_method = "GET",
+    http_path = "/runCache",
+    host_prefix = "workflows-",
+    paginator = list(input_token = "startingToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
+    stream_api = FALSE
+  )
+  input <- .omics$list_run_caches_input(maxResults = maxResults, startingToken = startingToken)
+  output <- .omics$list_run_caches_output()
+  config <- get_config()
+  svc <- .omics$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.omics$operations$list_run_caches <- omics_list_run_caches
+
 #' Retrieves a list of run groups
 #'
 #' @description
@@ -4142,6 +4567,8 @@ omics_list_run_groups <- function(name = NULL, startingToken = NULL, maxResults 
 #'       status = "PENDING"|"STARTING"|"RUNNING"|"STOPPING"|"COMPLETED"|"CANCELLED"|"FAILED",
 #'       name = "string",
 #'       cpus = 123,
+#'       cacheHit = TRUE|FALSE,
+#'       cacheS3Uri = "string",
 #'       memory = 123,
 #'       creationTime = as.POSIXct(
 #'         "2015-01-01"
@@ -4198,6 +4625,13 @@ omics_list_run_tasks <- function(id, status = NULL, startingToken = NULL, maxRes
 #'
 #' @description
 #' Retrieves a list of runs.
+#' 
+#' HealthOmics stores a fixed number of runs that are available to the
+#' console and API. If the ListRuns response doesn't include specific runs
+#' that you expected, you can find run logs for all runs in the CloudWatch
+#' logs. For more information about viewing the run logs, see [CloudWatch
+#' logs](https://docs.aws.amazon.com/omics/latest/dev/) in the *AWS
+#' HealthOmics User Guide*.
 #'
 #' @usage
 #' omics_list_runs(name, runGroupId, startingToken, maxResults, status)
@@ -4305,7 +4739,12 @@ omics_list_runs <- function(name = NULL, runGroupId = NULL, startingToken = NULL
 #'         "2015-01-01"
 #'       ),
 #'       fallbackLocation = "string",
-#'       eTagAlgorithmFamily = "MD5up"|"SHA256up"|"SHA512up"
+#'       eTagAlgorithmFamily = "MD5up"|"SHA256up"|"SHA512up",
+#'       status = "CREATING"|"ACTIVE"|"UPDATING"|"DELETING"|"FAILED",
+#'       statusMessage = "string",
+#'       updateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
 #'     )
 #'   )
 #' )
@@ -4322,6 +4761,13 @@ omics_list_runs <- function(name = NULL, runGroupId = NULL, startingToken = NULL
 #'       "2015-01-01"
 #'     ),
 #'     createdBefore = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     status = "CREATING"|"ACTIVE"|"UPDATING"|"DELETING"|"FAILED",
+#'     updatedAfter = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     updatedBefore = as.POSIXct(
 #'       "2015-01-01"
 #'     )
 #'   )
@@ -4728,6 +5174,59 @@ omics_list_workflows <- function(type = NULL, name = NULL, startingToken = NULL,
 }
 .omics$operations$list_workflows <- omics_list_workflows
 
+#' Adds an access policy to the specified store
+#'
+#' @description
+#' Adds an access policy to the specified store.
+#'
+#' @usage
+#' omics_put_s3_access_policy(s3AccessPointArn, s3AccessPolicy)
+#'
+#' @param s3AccessPointArn &#91;required&#93; The S3 access point ARN where you want to put the access policy.
+#' @param s3AccessPolicy &#91;required&#93; The resource policy that controls S3 access to the store.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   s3AccessPointArn = "string",
+#'   storeId = "string",
+#'   storeType = "SEQUENCE_STORE"|"REFERENCE_STORE"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_s3_access_policy(
+#'   s3AccessPointArn = "string",
+#'   s3AccessPolicy = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname omics_put_s3_access_policy
+#'
+#' @aliases omics_put_s3_access_policy
+omics_put_s3_access_policy <- function(s3AccessPointArn, s3AccessPolicy) {
+  op <- new_operation(
+    name = "PutS3AccessPolicy",
+    http_method = "PUT",
+    http_path = "/s3accesspolicy/{s3AccessPointArn}",
+    host_prefix = "control-storage-",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .omics$put_s3_access_policy_input(s3AccessPointArn = s3AccessPointArn, s3AccessPolicy = s3AccessPolicy)
+  output <- .omics$put_s3_access_policy_output()
+  config <- get_config()
+  svc <- .omics$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.omics$operations$put_s3_access_policy <- omics_put_s3_access_policy
+
 #' Starts an annotation import job
 #'
 #' @description
@@ -5108,10 +5607,11 @@ omics_start_reference_import_job <- function(referenceStoreId, roleArn, clientTo
 #' 
 #' StartRun will not support re-run for a workflow that is shared with you.
 #' 
-#' The total number of runs in your account is subject to a quota per
-#' Region. To avoid needing to delete runs manually, you can set the
-#' retention mode to `REMOVE`. Runs with this setting are deleted
-#' automatically when the run quoata is exceeded.
+#' HealthOmics stores a fixed number of runs that are available to the
+#' console and API. By default, HealthOmics doesn't any remove any runs. If
+#' HealthOmics reaches the maximum number of runs, you must manually remove
+#' runs. To have older runs removed automatically, set the retention mode
+#' to `REMOVE`.
 #' 
 #' By default, the run uses STATIC storage. For STATIC storage, set the
 #' `storageCapacity` field. You can set the storage type to DYNAMIC. You do
@@ -5122,15 +5622,23 @@ omics_start_reference_import_job <- function(referenceStoreId, roleArn, clientTo
 #' HealthOmics User Guide*.
 #'
 #' @usage
-#' omics_start_run(workflowId, workflowType, runId, roleArn, name,
-#'   runGroupId, priority, parameters, storageCapacity, outputUri, logLevel,
-#'   tags, requestId, retentionMode, storageType, workflowOwnerId)
+#' omics_start_run(workflowId, workflowType, runId, roleArn, name, cacheId,
+#'   cacheBehavior, runGroupId, priority, parameters, storageCapacity,
+#'   outputUri, logLevel, tags, requestId, retentionMode, storageType,
+#'   workflowOwnerId)
 #'
 #' @param workflowId The run's workflow ID.
 #' @param workflowType The run's workflow type.
 #' @param runId The ID of a run to duplicate.
 #' @param roleArn &#91;required&#93; A service role for the run.
 #' @param name A name for the run.
+#' @param cacheId Identifier of the cache associated with this run. If you don't specify a
+#' cache ID, no task outputs are cached for this run.
+#' @param cacheBehavior The cache behavior for the run. You specify this value if you want to
+#' override the default behavior for the cache. You had set the default
+#' value when you created the cache. For more information, see [Run cache
+#' behavior](https://docs.aws.amazon.com/omics/latest/dev/how-run-cache.html#run-cache-behavior)
+#' in the AWS HealthOmics User Guide.
 #' @param runGroupId The run's group ID.
 #' @param priority A priority for the run.
 #' @param parameters Parameters for the run.
@@ -5142,7 +5650,19 @@ omics_start_reference_import_job <- function(referenceStoreId, roleArn, clientTo
 #' @param tags Tags for the run.
 #' @param requestId &#91;required&#93; To ensure that requests don't run multiple times, specify a unique ID
 #' for each request.
-#' @param retentionMode The retention mode for the run.
+#' @param retentionMode The retention mode for the run. The default value is RETAIN.
+#' 
+#' HealthOmics stores a fixed number of runs that are available to the
+#' console and API. In the default mode (RETAIN), you need to remove runs
+#' manually when the number of run exceeds the maximum. If you set the
+#' retention mode to `REMOVE`, HealthOmics automatically removes runs (that
+#' have mode set to REMOVE) when the number of run exceeds the maximum. All
+#' run logs are available in CloudWatch logs, if you need information about
+#' a run that is no longer available to the API.
+#' 
+#' For more information about retention mode, see [Specifying run retention
+#' mode](https://docs.aws.amazon.com/omics/latest/dev/starting-a-run.html)
+#' in the *AWS HealthOmics User Guide*.
 #' @param storageType The run's storage type. By default, the run uses STATIC storage type,
 #' which allocates a fixed amount of storage. If you set the storage type
 #' to DYNAMIC, HealthOmics dynamically scales the storage up or down, based
@@ -5172,6 +5692,8 @@ omics_start_reference_import_job <- function(referenceStoreId, roleArn, clientTo
 #'   runId = "string",
 #'   roleArn = "string",
 #'   name = "string",
+#'   cacheId = "string",
+#'   cacheBehavior = "CACHE_ON_FAILURE"|"CACHE_ALWAYS",
 #'   runGroupId = "string",
 #'   priority = 123,
 #'   parameters = list(),
@@ -5193,7 +5715,7 @@ omics_start_reference_import_job <- function(referenceStoreId, roleArn, clientTo
 #' @rdname omics_start_run
 #'
 #' @aliases omics_start_run
-omics_start_run <- function(workflowId = NULL, workflowType = NULL, runId = NULL, roleArn, name = NULL, runGroupId = NULL, priority = NULL, parameters = NULL, storageCapacity = NULL, outputUri = NULL, logLevel = NULL, tags = NULL, requestId, retentionMode = NULL, storageType = NULL, workflowOwnerId = NULL) {
+omics_start_run <- function(workflowId = NULL, workflowType = NULL, runId = NULL, roleArn, name = NULL, cacheId = NULL, cacheBehavior = NULL, runGroupId = NULL, priority = NULL, parameters = NULL, storageCapacity = NULL, outputUri = NULL, logLevel = NULL, tags = NULL, requestId, retentionMode = NULL, storageType = NULL, workflowOwnerId = NULL) {
   op <- new_operation(
     name = "StartRun",
     http_method = "POST",
@@ -5202,7 +5724,7 @@ omics_start_run <- function(workflowId = NULL, workflowType = NULL, runId = NULL
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .omics$start_run_input(workflowId = workflowId, workflowType = workflowType, runId = runId, roleArn = roleArn, name = name, runGroupId = runGroupId, priority = priority, parameters = parameters, storageCapacity = storageCapacity, outputUri = outputUri, logLevel = logLevel, tags = tags, requestId = requestId, retentionMode = retentionMode, storageType = storageType, workflowOwnerId = workflowOwnerId)
+  input <- .omics$start_run_input(workflowId = workflowId, workflowType = workflowType, runId = runId, roleArn = roleArn, name = name, cacheId = cacheId, cacheBehavior = cacheBehavior, runGroupId = runGroupId, priority = priority, parameters = parameters, storageCapacity = storageCapacity, outputUri = outputUri, logLevel = logLevel, tags = tags, requestId = requestId, retentionMode = retentionMode, storageType = storageType, workflowOwnerId = workflowOwnerId)
   output <- .omics$start_run_output()
   config <- get_config()
   svc <- .omics$service(config, op)
@@ -5513,6 +6035,56 @@ omics_update_annotation_store_version <- function(name, versionName, description
 }
 .omics$operations$update_annotation_store_version <- omics_update_annotation_store_version
 
+#' Update a run cache
+#'
+#' @description
+#' Update a run cache.
+#'
+#' @usage
+#' omics_update_run_cache(cacheBehavior, description, id, name)
+#'
+#' @param cacheBehavior Update the default run cache behavior.
+#' @param description Update the run cache description.
+#' @param id &#91;required&#93; The identifier of the run cache you want to update.
+#' @param name Update the name of the run cache.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_run_cache(
+#'   cacheBehavior = "CACHE_ON_FAILURE"|"CACHE_ALWAYS",
+#'   description = "string",
+#'   id = "string",
+#'   name = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname omics_update_run_cache
+#'
+#' @aliases omics_update_run_cache
+omics_update_run_cache <- function(cacheBehavior = NULL, description = NULL, id, name = NULL) {
+  op <- new_operation(
+    name = "UpdateRunCache",
+    http_method = "POST",
+    http_path = "/runCache/{id}",
+    host_prefix = "workflows-",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .omics$update_run_cache_input(cacheBehavior = cacheBehavior, description = description, id = id, name = name)
+  output <- .omics$update_run_cache_output()
+  config <- get_config()
+  svc <- .omics$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.omics$operations$update_run_cache <- omics_update_run_cache
+
 #' Updates a run group
 #'
 #' @description
@@ -5566,6 +6138,100 @@ omics_update_run_group <- function(id, name = NULL, maxCpus = NULL, maxRuns = NU
   return(response)
 }
 .omics$operations$update_run_group <- omics_update_run_group
+
+#' Update one or more parameters for the sequence store
+#'
+#' @description
+#' Update one or more parameters for the sequence store.
+#'
+#' @usage
+#' omics_update_sequence_store(id, name, description, clientToken,
+#'   fallbackLocation, propagatedSetLevelTags, s3AccessConfig)
+#'
+#' @param id &#91;required&#93; The ID of the sequence store.
+#' @param name A name for the sequence store.
+#' @param description A description for the sequence store.
+#' @param clientToken To ensure that requests don't run multiple times, specify a unique token
+#' for each request.
+#' @param fallbackLocation The S3 URI of a bucket and folder to store Read Sets that fail to
+#' upload.
+#' @param propagatedSetLevelTags The tags keys to propagate to the S3 objects associated with read sets
+#' in the sequence store.
+#' @param s3AccessConfig S3 access configuration parameters.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   id = "string",
+#'   arn = "string",
+#'   name = "string",
+#'   description = "string",
+#'   sseConfig = list(
+#'     type = "KMS",
+#'     keyArn = "string"
+#'   ),
+#'   creationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   updateTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   propagatedSetLevelTags = list(
+#'     "string"
+#'   ),
+#'   status = "CREATING"|"ACTIVE"|"UPDATING"|"DELETING"|"FAILED",
+#'   statusMessage = "string",
+#'   fallbackLocation = "string",
+#'   s3Access = list(
+#'     s3Uri = "string",
+#'     s3AccessPointArn = "string",
+#'     accessLogLocation = "string"
+#'   ),
+#'   eTagAlgorithmFamily = "MD5up"|"SHA256up"|"SHA512up"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_sequence_store(
+#'   id = "string",
+#'   name = "string",
+#'   description = "string",
+#'   clientToken = "string",
+#'   fallbackLocation = "string",
+#'   propagatedSetLevelTags = list(
+#'     "string"
+#'   ),
+#'   s3AccessConfig = list(
+#'     accessLogLocation = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname omics_update_sequence_store
+#'
+#' @aliases omics_update_sequence_store
+omics_update_sequence_store <- function(id, name = NULL, description = NULL, clientToken = NULL, fallbackLocation = NULL, propagatedSetLevelTags = NULL, s3AccessConfig = NULL) {
+  op <- new_operation(
+    name = "UpdateSequenceStore",
+    http_method = "PATCH",
+    http_path = "/sequencestore/{id}",
+    host_prefix = "control-storage-",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .omics$update_sequence_store_input(id = id, name = name, description = description, clientToken = clientToken, fallbackLocation = fallbackLocation, propagatedSetLevelTags = propagatedSetLevelTags, s3AccessConfig = s3AccessConfig)
+  output <- .omics$update_sequence_store_output()
+  config <- get_config()
+  svc <- .omics$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.omics$operations$update_sequence_store <- omics_update_sequence_store
 
 #' Updates a variant store
 #'

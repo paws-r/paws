@@ -2,8 +2,10 @@
 % Please edit documentation in R/keyspaces_operations.R
 \name{keyspaces_get_keyspace}
 \alias{keyspaces_get_keyspace}
-\title{Returns the name and the Amazon Resource Name (ARN) of the specified
-table}
+\title{Returns the name of the specified keyspace, the Amazon Resource Name
+(ARN), the replication strategy, the Amazon Web Services Regions of a
+multi-Region keyspace, and the status of newly added Regions after an
+UpdateKeyspace operation}
 \usage{
 keyspaces_get_keyspace(keyspaceName)
 }
@@ -11,7 +13,7 @@ keyspaces_get_keyspace(keyspaceName)
 \item{keyspaceName}{[required] The name of the keyspace.}
 }
 \description{
-Returns the name and the Amazon Resource Name (ARN) of the specified table.
+Returns the name of the specified keyspace, the Amazon Resource Name (ARN), the replication strategy, the Amazon Web Services Regions of a multi-Region keyspace, and the status of newly added Regions after an \code{\link[=keyspaces_update_keyspace]{update_keyspace}} operation.
 
 See \url{https://www.paws-r-sdk.com/docs/keyspaces_get_keyspace/} for full documentation.
 }

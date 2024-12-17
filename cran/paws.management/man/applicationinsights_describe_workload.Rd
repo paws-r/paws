@@ -18,7 +18,7 @@ applicationinsights_describe_workload(
 
 \item{WorkloadId}{[required] The ID of the workload.}
 
-\item{AccountId}{The AWS account ID for the workload owner.}
+\item{AccountId}{The Amazon Web Services account ID for the workload owner.}
 }
 \description{
 Describes a workload and its configuration.

@@ -229,7 +229,7 @@ route53resolver <- function(config = list(), credentials = list(), endpoint = NU
 
 .route53resolver$metadata <- list(
   service_name = "route53resolver",
-  endpoints = list("*" = list(endpoint = "route53resolver.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "route53resolver.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "route53resolver.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "route53resolver.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "route53resolver.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "route53resolver.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "route53resolver.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "route53resolver.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "route53resolver.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "route53resolver.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "route53resolver.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "route53resolver.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "route53resolver.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Route53Resolver",
   api_version = "2018-04-01",
   signing_name = "route53resolver",

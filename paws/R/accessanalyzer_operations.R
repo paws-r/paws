@@ -115,20 +115,19 @@ accessanalyzer_cancel_policy_generation <- function(jobId) {
 #' @param policyDocument &#91;required&#93; The JSON policy document to use as the content for the policy.
 #' @param access &#91;required&#93; An access object containing the permissions that shouldn't be granted by
 #' the specified policy. If only actions are specified, IAM Access Analyzer
-#' checks for access of the actions on all resources in the policy. If only
-#' resources are specified, then IAM Access Analyzer checks which actions
-#' have access to the specified resources. If both actions and resources
-#' are specified, then IAM Access Analyzer checks which of the specified
-#' actions have access to the specified resources.
+#' checks for access to peform at least one of the actions on any resource
+#' in the policy. If only resources are specified, then IAM Access Analyzer
+#' checks for access to perform any action on at least one of the
+#' resources. If both actions and resources are specified, IAM Access
+#' Analyzer checks for access to perform at least one of the specified
+#' actions on at least one of the specified resources.
 #' @param policyType &#91;required&#93; The type of policy. Identity policies grant permissions to IAM
 #' principals. Identity policies include managed and inline policies for
 #' IAM roles, users, and groups.
 #' 
 #' Resource policies grant permissions on Amazon Web Services resources.
 #' Resource policies include trust policies for IAM roles and bucket
-#' policies for Amazon S3 buckets. You can provide a generic input such as
-#' identity policy or resource policy or a specific input such as managed
-#' policy or Amazon S3 bucket policy.
+#' policies for Amazon S3 buckets.
 #'
 #' @return
 #' A list with the following syntax:
@@ -163,48 +162,6 @@ accessanalyzer_cancel_policy_generation <- function(jobId) {
 #'   policyType = "IDENTITY_POLICY"|"RESOURCE_POLICY"
 #' )
 #' ```
-#'
-#' @examples
-#' \dontrun{
-#' #
-#' svc$check_access_not_granted(
-#'   access = list(
-#'     list(
-#'       actions = list(
-#'         "s3:PutObject"
-#'       )
-#'     )
-#'   ),
-#'   policyDocument = "\{"Version":"2012-10-17","Id":"123","Statement":[\{"Sid":...",
-#'   policyType = "RESOURCE_POLICY"
-#' )
-#' 
-#' #
-#' svc$check_access_not_granted(
-#'   access = list(
-#'     list(
-#'       resources = list(
-#'         "arn:aws:s3:::sensitive-bucket/*"
-#'       )
-#'     )
-#'   ),
-#'   policyDocument = "\{"Version":"2012-10-17","Id":"123","Statement":[\{"Sid":...",
-#'   policyType = "RESOURCE_POLICY"
-#' )
-#' 
-#' #
-#' svc$check_access_not_granted(
-#'   access = list(
-#'     list(
-#'       resources = list(
-#'         "arn:aws:s3:::my-bucket/*"
-#'       )
-#'     )
-#'   ),
-#'   policyDocument = "\{"Version":"2012-10-17","Id":"123","Statement":[\{"Sid":...",
-#'   policyType = "RESOURCE_POLICY"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -350,21 +307,6 @@ accessanalyzer_check_no_new_access <- function(newPolicyDocument, existingPolicy
 #'   resourceType = "AWS::DynamoDB::Table"|"AWS::DynamoDB::Stream"|"AWS::EFS::FileSystem"|"AWS::OpenSearchService::Domain"|"AWS::Kinesis::Stream"|"AWS::Kinesis::StreamConsumer"|"AWS::KMS::Key"|"AWS::Lambda::Function"|"AWS::S3::Bucket"|"AWS::S3::AccessPoint"|"AWS::S3Express::DirectoryBucket"|"AWS::S3::Glacier"|"AWS::S3Outposts::Bucket"|"AWS::S3Outposts::AccessPoint"|"AWS::SecretsManager::Secret"|"AWS::SNS::Topic"|"AWS::SQS::Queue"|"AWS::IAM::AssumeRolePolicyDocument"
 #' )
 #' ```
-#'
-#' @examples
-#' \dontrun{
-#' #
-#' svc$check_no_public_access(
-#'   policyDocument = "\{\"Version\":\"2012-10-17\",\"Statement\":[\{\"Sid\":\"Bob\",\"Effe...",
-#'   resourceType = "AWS::S3::Bucket"
-#' )
-#' 
-#' #
-#' svc$check_no_public_access(
-#'   policyDocument = "\{\"Version\":\"2012-10-17\",\"Statement\":[\{\"Sid\":\"Bob\",\"Effe...",
-#'   resourceType = "AWS::S3::Bucket"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -583,12 +525,19 @@ accessanalyzer_create_access_preview <- function(analyzerArn, configurations, cl
 #' @param archiveRules Specifies the archive rules to add for the analyzer. Archive rules
 #' automatically archive findings that meet the criteria you define for the
 #' rule.
-#' @param tags An array of key-value pairs to apply to the analyzer.
+#' @param tags An array of key-value pairs to apply to the analyzer. You can use the
+#' set of Unicode letters, digits, whitespace, `_`, `.`, `/`, `=`, `+`, and
+#' `-`.
+#' 
+#' For the tag key, you can specify a value that is 1 to 128 characters in
+#' length and cannot be prefixed with `aws:`.
+#' 
+#' For the tag value, you can specify a value that is 0 to 256 characters
+#' in length.
 #' @param clientToken A client token.
 #' @param configuration Specifies the configuration of the analyzer. If the analyzer is an
 #' unused access analyzer, the specified scope of unused access is used for
-#' the configuration. If the analyzer is an external access analyzer, this
-#' field is not used.
+#' the configuration.
 #'
 #' @return
 #' A list with the following syntax:
@@ -628,7 +577,21 @@ accessanalyzer_create_access_preview <- function(analyzerArn, configurations, cl
 #'   clientToken = "string",
 #'   configuration = list(
 #'     unusedAccess = list(
-#'       unusedAccessAge = 123
+#'       unusedAccessAge = 123,
+#'       analysisRule = list(
+#'         exclusions = list(
+#'           list(
+#'             accountIds = list(
+#'               "string"
+#'             ),
+#'             resourceTags = list(
+#'               list(
+#'                 "string"
+#'               )
+#'             )
+#'           )
+#'         )
+#'       )
 #'     )
 #'   )
 #' )
@@ -850,21 +813,6 @@ accessanalyzer_delete_archive_rule <- function(analyzerName, ruleName, clientTok
 #'   id = "string"
 #' )
 #' ```
-#'
-#' @examples
-#' \dontrun{
-#' #
-#' svc$generate_finding_recommendation(
-#'   analyzerArn = "arn:aws:access-analyzer:us-east-1:111122223333:analyzer/a",
-#'   id = "finding-id"
-#' )
-#' 
-#' #
-#' svc$generate_finding_recommendation(
-#'   analyzerArn = "arn:aws:access-analyzer:us-east-1:111122223333:analyzer/a",
-#'   id = "!"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -1088,7 +1036,7 @@ accessanalyzer_get_access_preview <- function(accessPreviewId, analyzerArn) {
 #' list(
 #'   resource = list(
 #'     resourceArn = "string",
-#'     resourceType = "AWS::S3::Bucket"|"AWS::IAM::Role"|"AWS::SQS::Queue"|"AWS::Lambda::Function"|"AWS::Lambda::LayerVersion"|"AWS::KMS::Key"|"AWS::SecretsManager::Secret"|"AWS::EFS::FileSystem"|"AWS::EC2::Snapshot"|"AWS::ECR::Repository"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBClusterSnapshot"|"AWS::SNS::Topic"|"AWS::S3Express::DirectoryBucket"|"AWS::DynamoDB::Table"|"AWS::DynamoDB::Stream",
+#'     resourceType = "AWS::S3::Bucket"|"AWS::IAM::Role"|"AWS::SQS::Queue"|"AWS::Lambda::Function"|"AWS::Lambda::LayerVersion"|"AWS::KMS::Key"|"AWS::SecretsManager::Secret"|"AWS::EFS::FileSystem"|"AWS::EC2::Snapshot"|"AWS::ECR::Repository"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBClusterSnapshot"|"AWS::SNS::Topic"|"AWS::S3Express::DirectoryBucket"|"AWS::DynamoDB::Table"|"AWS::DynamoDB::Stream"|"AWS::IAM::User",
 #'     createdAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
@@ -1178,7 +1126,21 @@ accessanalyzer_get_analyzed_resource <- function(analyzerArn, resourceArn) {
 #'     ),
 #'     configuration = list(
 #'       unusedAccess = list(
-#'         unusedAccessAge = 123
+#'         unusedAccessAge = 123,
+#'         analysisRule = list(
+#'           exclusions = list(
+#'             list(
+#'               accountIds = list(
+#'                 "string"
+#'               ),
+#'               resourceTags = list(
+#'                 list(
+#'                   "string"
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         )
 #'       )
 #'     )
 #'   )
@@ -1324,7 +1286,7 @@ accessanalyzer_get_archive_rule <- function(analyzerName, ruleName) {
 #'     ),
 #'     resource = "string",
 #'     isPublic = TRUE|FALSE,
-#'     resourceType = "AWS::S3::Bucket"|"AWS::IAM::Role"|"AWS::SQS::Queue"|"AWS::Lambda::Function"|"AWS::Lambda::LayerVersion"|"AWS::KMS::Key"|"AWS::SecretsManager::Secret"|"AWS::EFS::FileSystem"|"AWS::EC2::Snapshot"|"AWS::ECR::Repository"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBClusterSnapshot"|"AWS::SNS::Topic"|"AWS::S3Express::DirectoryBucket"|"AWS::DynamoDB::Table"|"AWS::DynamoDB::Stream",
+#'     resourceType = "AWS::S3::Bucket"|"AWS::IAM::Role"|"AWS::SQS::Queue"|"AWS::Lambda::Function"|"AWS::Lambda::LayerVersion"|"AWS::KMS::Key"|"AWS::SecretsManager::Secret"|"AWS::EFS::FileSystem"|"AWS::EC2::Snapshot"|"AWS::ECR::Repository"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBClusterSnapshot"|"AWS::SNS::Topic"|"AWS::S3Express::DirectoryBucket"|"AWS::DynamoDB::Table"|"AWS::DynamoDB::Stream"|"AWS::IAM::User",
 #'     condition = list(
 #'       "string"
 #'     ),
@@ -1348,7 +1310,8 @@ accessanalyzer_get_archive_rule <- function(analyzerName, ruleName) {
 #'           accessPointAccount = "string"
 #'         )
 #'       )
-#'     )
+#'     ),
+#'     resourceControlPolicyRestriction = "APPLICABLE"|"FAILED_TO_EVALUATE_RCP"|"NOT_APPLICABLE"
 #'   )
 #' )
 #' ```
@@ -1446,37 +1409,6 @@ accessanalyzer_get_finding <- function(analyzerArn, id) {
 #' )
 #' ```
 #'
-#' @examples
-#' \dontrun{
-#' #
-#' svc$get_finding_recommendation(
-#'   analyzerArn = "arn:aws:access-analyzer:us-east-1:111122223333:analyzer/a",
-#'   id = "finding-id",
-#'   maxResults = 3L,
-#'   nextToken = "token"
-#' )
-#' 
-#' #
-#' svc$get_finding_recommendation(
-#'   analyzerArn = "arn:aws:access-analyzer:us-east-1:111122223333:analyzer/a",
-#'   id = "finding-id",
-#'   maxResults = 3L
-#' )
-#' 
-#' #
-#' svc$get_finding_recommendation(
-#'   analyzerArn = "arn:aws:access-analyzer:us-east-1:111122223333:analyzer/a",
-#'   id = "finding-id",
-#'   maxResults = 3L
-#' )
-#' 
-#' #
-#' svc$get_finding_recommendation(
-#'   analyzerArn = "arn:aws:access-analyzer:us-east-1:111122223333:analyzer/a",
-#'   id = "!"
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname accessanalyzer_get_finding_recommendation
@@ -1533,7 +1465,7 @@ accessanalyzer_get_finding_recommendation <- function(analyzerArn, id, maxResult
 #'   id = "string",
 #'   nextToken = "string",
 #'   resource = "string",
-#'   resourceType = "AWS::S3::Bucket"|"AWS::IAM::Role"|"AWS::SQS::Queue"|"AWS::Lambda::Function"|"AWS::Lambda::LayerVersion"|"AWS::KMS::Key"|"AWS::SecretsManager::Secret"|"AWS::EFS::FileSystem"|"AWS::EC2::Snapshot"|"AWS::ECR::Repository"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBClusterSnapshot"|"AWS::SNS::Topic"|"AWS::S3Express::DirectoryBucket"|"AWS::DynamoDB::Table"|"AWS::DynamoDB::Stream",
+#'   resourceType = "AWS::S3::Bucket"|"AWS::IAM::Role"|"AWS::SQS::Queue"|"AWS::Lambda::Function"|"AWS::Lambda::LayerVersion"|"AWS::KMS::Key"|"AWS::SecretsManager::Secret"|"AWS::EFS::FileSystem"|"AWS::EC2::Snapshot"|"AWS::ECR::Repository"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBClusterSnapshot"|"AWS::SNS::Topic"|"AWS::S3Express::DirectoryBucket"|"AWS::DynamoDB::Table"|"AWS::DynamoDB::Stream"|"AWS::IAM::User",
 #'   resourceOwnerAccount = "string",
 #'   status = "ACTIVE"|"ARCHIVED"|"RESOLVED",
 #'   updatedAt = as.POSIXct(
@@ -1560,7 +1492,8 @@ accessanalyzer_get_finding_recommendation <- function(analyzerArn, id, maxResult
 #'               accessPointAccount = "string"
 #'             )
 #'           )
-#'         )
+#'         ),
+#'         resourceControlPolicyRestriction = "APPLICABLE"|"FAILED_TO_EVALUATE_RCP"|"NOT_APPLICABLE"
 #'       ),
 #'       unusedPermissionDetails = list(
 #'         actions = list(
@@ -1783,7 +1716,7 @@ accessanalyzer_get_generated_policy <- function(jobId, includeResourcePlaceholde
 #'       ),
 #'       resource = "string",
 #'       isPublic = TRUE|FALSE,
-#'       resourceType = "AWS::S3::Bucket"|"AWS::IAM::Role"|"AWS::SQS::Queue"|"AWS::Lambda::Function"|"AWS::Lambda::LayerVersion"|"AWS::KMS::Key"|"AWS::SecretsManager::Secret"|"AWS::EFS::FileSystem"|"AWS::EC2::Snapshot"|"AWS::ECR::Repository"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBClusterSnapshot"|"AWS::SNS::Topic"|"AWS::S3Express::DirectoryBucket"|"AWS::DynamoDB::Table"|"AWS::DynamoDB::Stream",
+#'       resourceType = "AWS::S3::Bucket"|"AWS::IAM::Role"|"AWS::SQS::Queue"|"AWS::Lambda::Function"|"AWS::Lambda::LayerVersion"|"AWS::KMS::Key"|"AWS::SecretsManager::Secret"|"AWS::EFS::FileSystem"|"AWS::EC2::Snapshot"|"AWS::ECR::Repository"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBClusterSnapshot"|"AWS::SNS::Topic"|"AWS::S3Express::DirectoryBucket"|"AWS::DynamoDB::Table"|"AWS::DynamoDB::Stream"|"AWS::IAM::User",
 #'       createdAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
@@ -1799,7 +1732,8 @@ accessanalyzer_get_generated_policy <- function(jobId, includeResourcePlaceholde
 #'             accessPointAccount = "string"
 #'           )
 #'         )
-#'       )
+#'       ),
+#'       resourceControlPolicyRestriction = "APPLICABLE"|"FAILED_TO_EVALUATE_RCP"|"NOT_APPLICABLE"
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -1923,12 +1857,11 @@ accessanalyzer_list_access_previews <- function(analyzerArn, nextToken = NULL, m
 .accessanalyzer$operations$list_access_previews <- accessanalyzer_list_access_previews
 
 #' Retrieves a list of resources of the specified type that have been
-#' analyzed by the specified external access analyzer
+#' analyzed by the specified analyzer
 #'
 #' @description
 #' Retrieves a list of resources of the specified type that have been
-#' analyzed by the specified external access analyzer. This action is not
-#' supported for unused access analyzers.
+#' analyzed by the specified analyzer.
 #'
 #' @usage
 #' accessanalyzer_list_analyzed_resources(analyzerArn, resourceType,
@@ -1949,7 +1882,7 @@ accessanalyzer_list_access_previews <- function(analyzerArn, nextToken = NULL, m
 #'     list(
 #'       resourceArn = "string",
 #'       resourceOwnerAccount = "string",
-#'       resourceType = "AWS::S3::Bucket"|"AWS::IAM::Role"|"AWS::SQS::Queue"|"AWS::Lambda::Function"|"AWS::Lambda::LayerVersion"|"AWS::KMS::Key"|"AWS::SecretsManager::Secret"|"AWS::EFS::FileSystem"|"AWS::EC2::Snapshot"|"AWS::ECR::Repository"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBClusterSnapshot"|"AWS::SNS::Topic"|"AWS::S3Express::DirectoryBucket"|"AWS::DynamoDB::Table"|"AWS::DynamoDB::Stream"
+#'       resourceType = "AWS::S3::Bucket"|"AWS::IAM::Role"|"AWS::SQS::Queue"|"AWS::Lambda::Function"|"AWS::Lambda::LayerVersion"|"AWS::KMS::Key"|"AWS::SecretsManager::Secret"|"AWS::EFS::FileSystem"|"AWS::EC2::Snapshot"|"AWS::ECR::Repository"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBClusterSnapshot"|"AWS::SNS::Topic"|"AWS::S3Express::DirectoryBucket"|"AWS::DynamoDB::Table"|"AWS::DynamoDB::Stream"|"AWS::IAM::User"
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -1960,7 +1893,7 @@ accessanalyzer_list_access_previews <- function(analyzerArn, nextToken = NULL, m
 #' ```
 #' svc$list_analyzed_resources(
 #'   analyzerArn = "string",
-#'   resourceType = "AWS::S3::Bucket"|"AWS::IAM::Role"|"AWS::SQS::Queue"|"AWS::Lambda::Function"|"AWS::Lambda::LayerVersion"|"AWS::KMS::Key"|"AWS::SecretsManager::Secret"|"AWS::EFS::FileSystem"|"AWS::EC2::Snapshot"|"AWS::ECR::Repository"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBClusterSnapshot"|"AWS::SNS::Topic"|"AWS::S3Express::DirectoryBucket"|"AWS::DynamoDB::Table"|"AWS::DynamoDB::Stream",
+#'   resourceType = "AWS::S3::Bucket"|"AWS::IAM::Role"|"AWS::SQS::Queue"|"AWS::Lambda::Function"|"AWS::Lambda::LayerVersion"|"AWS::KMS::Key"|"AWS::SecretsManager::Secret"|"AWS::EFS::FileSystem"|"AWS::EC2::Snapshot"|"AWS::ECR::Repository"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBClusterSnapshot"|"AWS::SNS::Topic"|"AWS::S3Express::DirectoryBucket"|"AWS::DynamoDB::Table"|"AWS::DynamoDB::Stream"|"AWS::IAM::User",
 #'   nextToken = "string",
 #'   maxResults = 123
 #' )
@@ -2027,7 +1960,21 @@ accessanalyzer_list_analyzed_resources <- function(analyzerArn, resourceType = N
 #'       ),
 #'       configuration = list(
 #'         unusedAccess = list(
-#'           unusedAccessAge = 123
+#'           unusedAccessAge = 123,
+#'           analysisRule = list(
+#'             exclusions = list(
+#'               list(
+#'                 accountIds = list(
+#'                   "string"
+#'                 ),
+#'                 resourceTags = list(
+#'                   list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           )
 #'         )
 #'       )
 #'     )
@@ -2187,7 +2134,7 @@ accessanalyzer_list_archive_rules <- function(analyzerName, nextToken = NULL, ma
 #'       ),
 #'       resource = "string",
 #'       isPublic = TRUE|FALSE,
-#'       resourceType = "AWS::S3::Bucket"|"AWS::IAM::Role"|"AWS::SQS::Queue"|"AWS::Lambda::Function"|"AWS::Lambda::LayerVersion"|"AWS::KMS::Key"|"AWS::SecretsManager::Secret"|"AWS::EFS::FileSystem"|"AWS::EC2::Snapshot"|"AWS::ECR::Repository"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBClusterSnapshot"|"AWS::SNS::Topic"|"AWS::S3Express::DirectoryBucket"|"AWS::DynamoDB::Table"|"AWS::DynamoDB::Stream",
+#'       resourceType = "AWS::S3::Bucket"|"AWS::IAM::Role"|"AWS::SQS::Queue"|"AWS::Lambda::Function"|"AWS::Lambda::LayerVersion"|"AWS::KMS::Key"|"AWS::SecretsManager::Secret"|"AWS::EFS::FileSystem"|"AWS::EC2::Snapshot"|"AWS::ECR::Repository"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBClusterSnapshot"|"AWS::SNS::Topic"|"AWS::S3Express::DirectoryBucket"|"AWS::DynamoDB::Table"|"AWS::DynamoDB::Stream"|"AWS::IAM::User",
 #'       condition = list(
 #'         "string"
 #'       ),
@@ -2211,7 +2158,8 @@ accessanalyzer_list_archive_rules <- function(analyzerName, nextToken = NULL, ma
 #'             accessPointAccount = "string"
 #'           )
 #'         )
-#'       )
+#'       ),
+#'       resourceControlPolicyRestriction = "APPLICABLE"|"FAILED_TO_EVALUATE_RCP"|"NOT_APPLICABLE"
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -2309,7 +2257,7 @@ accessanalyzer_list_findings <- function(analyzerArn, filter = NULL, sort = NULL
 #'       error = "string",
 #'       id = "string",
 #'       resource = "string",
-#'       resourceType = "AWS::S3::Bucket"|"AWS::IAM::Role"|"AWS::SQS::Queue"|"AWS::Lambda::Function"|"AWS::Lambda::LayerVersion"|"AWS::KMS::Key"|"AWS::SecretsManager::Secret"|"AWS::EFS::FileSystem"|"AWS::EC2::Snapshot"|"AWS::ECR::Repository"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBClusterSnapshot"|"AWS::SNS::Topic"|"AWS::S3Express::DirectoryBucket"|"AWS::DynamoDB::Table"|"AWS::DynamoDB::Stream",
+#'       resourceType = "AWS::S3::Bucket"|"AWS::IAM::Role"|"AWS::SQS::Queue"|"AWS::Lambda::Function"|"AWS::Lambda::LayerVersion"|"AWS::KMS::Key"|"AWS::SecretsManager::Secret"|"AWS::EFS::FileSystem"|"AWS::EC2::Snapshot"|"AWS::ECR::Repository"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBClusterSnapshot"|"AWS::SNS::Topic"|"AWS::S3Express::DirectoryBucket"|"AWS::DynamoDB::Table"|"AWS::DynamoDB::Stream"|"AWS::IAM::User",
 #'       resourceOwnerAccount = "string",
 #'       status = "ACTIVE"|"ARCHIVED"|"RESOLVED",
 #'       updatedAt = as.POSIXct(
@@ -2727,6 +2675,93 @@ accessanalyzer_untag_resource <- function(resourceArn, tagKeys) {
 }
 .accessanalyzer$operations$untag_resource <- accessanalyzer_untag_resource
 
+#' Modifies the configuration of an existing analyzer
+#'
+#' @description
+#' Modifies the configuration of an existing analyzer.
+#'
+#' @usage
+#' accessanalyzer_update_analyzer(analyzerName, configuration)
+#'
+#' @param analyzerName &#91;required&#93; The name of the analyzer to modify.
+#' @param configuration 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   configuration = list(
+#'     unusedAccess = list(
+#'       unusedAccessAge = 123,
+#'       analysisRule = list(
+#'         exclusions = list(
+#'           list(
+#'             accountIds = list(
+#'               "string"
+#'             ),
+#'             resourceTags = list(
+#'               list(
+#'                 "string"
+#'               )
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_analyzer(
+#'   analyzerName = "string",
+#'   configuration = list(
+#'     unusedAccess = list(
+#'       unusedAccessAge = 123,
+#'       analysisRule = list(
+#'         exclusions = list(
+#'           list(
+#'             accountIds = list(
+#'               "string"
+#'             ),
+#'             resourceTags = list(
+#'               list(
+#'                 "string"
+#'               )
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname accessanalyzer_update_analyzer
+#'
+#' @aliases accessanalyzer_update_analyzer
+accessanalyzer_update_analyzer <- function(analyzerName, configuration = NULL) {
+  op <- new_operation(
+    name = "UpdateAnalyzer",
+    http_method = "PUT",
+    http_path = "/analyzer/{analyzerName}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .accessanalyzer$update_analyzer_input(analyzerName = analyzerName, configuration = configuration)
+  output <- .accessanalyzer$update_analyzer_output()
+  config <- get_config()
+  svc <- .accessanalyzer$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.accessanalyzer$operations$update_analyzer <- accessanalyzer_update_analyzer
+
 #' Updates the criteria and values for the specified archive rule
 #'
 #' @description
@@ -2942,7 +2977,7 @@ accessanalyzer_update_findings <- function(analyzerArn, status, ids = NULL, reso
 #'   maxResults = 123,
 #'   nextToken = "string",
 #'   policyDocument = "string",
-#'   policyType = "IDENTITY_POLICY"|"RESOURCE_POLICY"|"SERVICE_CONTROL_POLICY",
+#'   policyType = "IDENTITY_POLICY"|"RESOURCE_POLICY"|"SERVICE_CONTROL_POLICY"|"RESOURCE_CONTROL_POLICY",
 #'   validatePolicyResourceType = "AWS::S3::Bucket"|"AWS::S3::AccessPoint"|"AWS::S3::MultiRegionAccessPoint"|"AWS::S3ObjectLambda::AccessPoint"|"AWS::IAM::AssumeRolePolicyDocument"|"AWS::DynamoDB::Table"
 #' )
 #' ```

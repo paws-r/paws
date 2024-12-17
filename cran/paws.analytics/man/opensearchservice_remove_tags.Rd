@@ -3,18 +3,19 @@
 \name{opensearchservice_remove_tags}
 \alias{opensearchservice_remove_tags}
 \title{Removes the specified set of tags from an Amazon OpenSearch Service
-domain}
+domain, data source, or application}
 \usage{
 opensearchservice_remove_tags(ARN, TagKeys)
 }
 \arguments{
-\item{ARN}{[required] The Amazon Resource Name (ARN) of the domain from which you want to
-delete the specified tags.}
+\item{ARN}{[required] The Amazon Resource Name (ARN) of the domain, data source, or
+application from which you want to delete the specified tags.}
 
-\item{TagKeys}{[required] The list of tag keys to remove from the domain.}
+\item{TagKeys}{[required] The list of tag keys to remove from the domain, data source, or
+application.}
 }
 \description{
-Removes the specified set of tags from an Amazon OpenSearch Service domain. For more information, see \href{https://docs.aws.amazon.com/opensearch-service/latest/developerguide/#managedomains-awsresorcetagging}{Tagging Amazon OpenSearch Service domains}.
+Removes the specified set of tags from an Amazon OpenSearch Service domain, data source, or application. For more information, see \href{https://docs.aws.amazon.com/opensearch-service/latest/developerguide/#managedomains-awsresorcetagging}{Tagging Amazon OpenSearch Service resources}.
 
 See \url{https://www.paws-r-sdk.com/docs/opensearchservice_remove_tags/} for full documentation.
 }

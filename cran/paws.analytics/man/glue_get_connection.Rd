@@ -4,7 +4,12 @@
 \alias{glue_get_connection}
 \title{Retrieves a connection definition from the Data Catalog}
 \usage{
-glue_get_connection(CatalogId = NULL, Name, HidePassword = NULL)
+glue_get_connection(
+  CatalogId = NULL,
+  Name,
+  HidePassword = NULL,
+  ApplyOverrideForComputeEnvironment = NULL
+)
 }
 \arguments{
 \item{CatalogId}{The ID of the Data Catalog in which the connection resides. If none is
@@ -18,6 +23,9 @@ connection, and does not display the password. Set this parameter when
 the caller might not have permission to use the KMS key to decrypt the
 password, but it does have permission to access the rest of the
 connection properties.}
+
+\item{ApplyOverrideForComputeEnvironment}{For connections that may be used in multiple services, specifies
+returning properties for the specified compute environment.}
 }
 \description{
 Retrieves a connection definition from the Data Catalog.

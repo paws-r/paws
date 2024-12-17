@@ -119,6 +119,42 @@ sagemaker_associate_trial_component <- function(TrialComponentName, TrialName) {
 }
 .sagemaker$operations$associate_trial_component <- sagemaker_associate_trial_component
 
+#' Deletes specific nodes within a SageMaker HyperPod cluster
+#'
+#' @description
+#' Deletes specific nodes within a SageMaker HyperPod cluster. [`batch_delete_cluster_nodes`][sagemaker_batch_delete_cluster_nodes] accepts a cluster name and a list of node IDs.
+#'
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_batch_delete_cluster_nodes/](https://www.paws-r-sdk.com/docs/sagemaker_batch_delete_cluster_nodes/) for full documentation.
+#'
+#' @param ClusterName &#91;required&#93; The name of the SageMaker HyperPod cluster from which to delete the
+#' specified nodes.
+#' @param NodeIds &#91;required&#93; A list of node IDs to be deleted from the specified cluster.
+#' 
+#' For SageMaker HyperPod clusters using the Slurm workload manager, you
+#' cannot remove instances that are configured as Slurm controller nodes.
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_batch_delete_cluster_nodes
+sagemaker_batch_delete_cluster_nodes <- function(ClusterName, NodeIds) {
+  op <- new_operation(
+    name = "BatchDeleteClusterNodes",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .sagemaker$batch_delete_cluster_nodes_input(ClusterName = ClusterName, NodeIds = NodeIds)
+  output <- .sagemaker$batch_delete_cluster_nodes_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$batch_delete_cluster_nodes <- sagemaker_batch_delete_cluster_nodes
+
 #' This action batch describes a list of versioned model packages
 #'
 #' @description
@@ -566,11 +602,19 @@ sagemaker_create_auto_ml_job_v2 <- function(AutoMLJobName, AutoMLJobInputDataCon
 #' learn more about tagging Amazon Web Services resources in general, see
 #' [Tagging Amazon Web Services Resources User
 #' Guide](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html).
+#' @param Orchestrator The type of orchestrator to use for the SageMaker HyperPod cluster.
+#' Currently, the only supported value is `"eks"`, which is to use an
+#' Amazon Elastic Kubernetes Service (EKS) cluster as the orchestrator.
+#' @param NodeRecovery The node recovery mode for the SageMaker HyperPod cluster. When set to
+#' `Automatic`, SageMaker HyperPod will automatically reboot or replace
+#' faulty nodes when issues are detected. When set to `None`, cluster
+#' administrators will need to manually manage any faulty cluster
+#' instances.
 #'
 #' @keywords internal
 #'
 #' @rdname sagemaker_create_cluster
-sagemaker_create_cluster <- function(ClusterName, InstanceGroups, VpcConfig = NULL, Tags = NULL) {
+sagemaker_create_cluster <- function(ClusterName, InstanceGroups, VpcConfig = NULL, Tags = NULL, Orchestrator = NULL, NodeRecovery = NULL) {
   op <- new_operation(
     name = "CreateCluster",
     http_method = "POST",
@@ -579,7 +623,7 @@ sagemaker_create_cluster <- function(ClusterName, InstanceGroups, VpcConfig = NU
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .sagemaker$create_cluster_input(ClusterName = ClusterName, InstanceGroups = InstanceGroups, VpcConfig = VpcConfig, Tags = Tags)
+  input <- .sagemaker$create_cluster_input(ClusterName = ClusterName, InstanceGroups = InstanceGroups, VpcConfig = VpcConfig, Tags = Tags, Orchestrator = Orchestrator, NodeRecovery = NodeRecovery)
   output <- .sagemaker$create_cluster_output()
   config <- get_config()
   svc <- .sagemaker$service(config, op)
@@ -588,6 +632,41 @@ sagemaker_create_cluster <- function(ClusterName, InstanceGroups, VpcConfig = NU
   return(response)
 }
 .sagemaker$operations$create_cluster <- sagemaker_create_cluster
+
+#' Create cluster policy configuration
+#'
+#' @description
+#' Create cluster policy configuration. This policy is used for task prioritization and fair-share allocation of idle compute. This helps prioritize critical workloads and distributes idle compute across entities.
+#'
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_create_cluster_scheduler_config/](https://www.paws-r-sdk.com/docs/sagemaker_create_cluster_scheduler_config/) for full documentation.
+#'
+#' @param Name &#91;required&#93; Name for the cluster policy.
+#' @param ClusterArn &#91;required&#93; ARN of the cluster.
+#' @param SchedulerConfig &#91;required&#93; Configuration about the monitoring schedule.
+#' @param Description Description of the cluster policy.
+#' @param Tags Tags of the cluster policy.
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_create_cluster_scheduler_config
+sagemaker_create_cluster_scheduler_config <- function(Name, ClusterArn, SchedulerConfig, Description = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateClusterSchedulerConfig",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .sagemaker$create_cluster_scheduler_config_input(Name = Name, ClusterArn = ClusterArn, SchedulerConfig = SchedulerConfig, Description = Description, Tags = Tags)
+  output <- .sagemaker$create_cluster_scheduler_config_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$create_cluster_scheduler_config <- sagemaker_create_cluster_scheduler_config
 
 #' Creates a Git repository as a resource in your SageMaker account
 #'
@@ -702,6 +781,47 @@ sagemaker_create_compilation_job <- function(CompilationJobName, RoleArn, ModelP
   return(response)
 }
 .sagemaker$operations$create_compilation_job <- sagemaker_create_compilation_job
+
+#' Create compute allocation definition
+#'
+#' @description
+#' Create compute allocation definition. This defines how compute is allocated, shared, and borrowed for specified entities. Specifically, how to lend and borrow idle compute and assign a fair-share weight to the specified entities.
+#'
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_create_compute_quota/](https://www.paws-r-sdk.com/docs/sagemaker_create_compute_quota/) for full documentation.
+#'
+#' @param Name &#91;required&#93; Name to the compute allocation definition.
+#' @param Description Description of the compute allocation definition.
+#' @param ClusterArn &#91;required&#93; ARN of the cluster.
+#' @param ComputeQuotaConfig &#91;required&#93; Configuration of the compute allocation definition. This includes the
+#' resource sharing option, and the setting to preempt low priority tasks.
+#' @param ComputeQuotaTarget &#91;required&#93; The target entity to allocate compute resources to.
+#' @param ActivationState The state of the compute allocation being described. Use to enable or
+#' disable compute allocation.
+#' 
+#' Default is `Enabled`.
+#' @param Tags Tags of the compute allocation definition.
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_create_compute_quota
+sagemaker_create_compute_quota <- function(Name, Description = NULL, ClusterArn, ComputeQuotaConfig, ComputeQuotaTarget, ActivationState = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateComputeQuota",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .sagemaker$create_compute_quota_input(Name = Name, Description = Description, ClusterArn = ClusterArn, ComputeQuotaConfig = ComputeQuotaConfig, ComputeQuotaTarget = ComputeQuotaTarget, ActivationState = ActivationState, Tags = Tags)
+  output <- .sagemaker$create_compute_quota_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$create_compute_quota <- sagemaker_create_compute_quota
 
 #' Creates a context
 #'
@@ -871,12 +991,14 @@ sagemaker_create_device_fleet <- function(DeviceFleetName, RoleArn = NULL, Descr
 #' `DomainSettings.RStudioServerProDomainSettings.DomainExecutionRoleArn`
 #' is provided. If setting up the domain for use with RStudio, this value
 #' must be set to `Service`.
-#' @param DefaultSpaceSettings The default settings used to create a space.
+#' @param TagPropagation Indicates whether custom tag propagation is supported for the domain.
+#' Defaults to `DISABLED`.
+#' @param DefaultSpaceSettings The default settings for shared spaces that users create in the domain.
 #'
 #' @keywords internal
 #'
 #' @rdname sagemaker_create_domain
-sagemaker_create_domain <- function(DomainName, AuthMode, DefaultUserSettings, DomainSettings = NULL, SubnetIds, VpcId, Tags = NULL, AppNetworkAccessType = NULL, HomeEfsFileSystemKmsKeyId = NULL, KmsKeyId = NULL, AppSecurityGroupManagement = NULL, DefaultSpaceSettings = NULL) {
+sagemaker_create_domain <- function(DomainName, AuthMode, DefaultUserSettings, DomainSettings = NULL, SubnetIds, VpcId, Tags = NULL, AppNetworkAccessType = NULL, HomeEfsFileSystemKmsKeyId = NULL, KmsKeyId = NULL, AppSecurityGroupManagement = NULL, TagPropagation = NULL, DefaultSpaceSettings = NULL) {
   op <- new_operation(
     name = "CreateDomain",
     http_method = "POST",
@@ -885,7 +1007,7 @@ sagemaker_create_domain <- function(DomainName, AuthMode, DefaultUserSettings, D
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .sagemaker$create_domain_input(DomainName = DomainName, AuthMode = AuthMode, DefaultUserSettings = DefaultUserSettings, DomainSettings = DomainSettings, SubnetIds = SubnetIds, VpcId = VpcId, Tags = Tags, AppNetworkAccessType = AppNetworkAccessType, HomeEfsFileSystemKmsKeyId = HomeEfsFileSystemKmsKeyId, KmsKeyId = KmsKeyId, AppSecurityGroupManagement = AppSecurityGroupManagement, DefaultSpaceSettings = DefaultSpaceSettings)
+  input <- .sagemaker$create_domain_input(DomainName = DomainName, AuthMode = AuthMode, DefaultUserSettings = DefaultUserSettings, DomainSettings = DomainSettings, SubnetIds = SubnetIds, VpcId = VpcId, Tags = Tags, AppNetworkAccessType = AppNetworkAccessType, HomeEfsFileSystemKmsKeyId = HomeEfsFileSystemKmsKeyId, KmsKeyId = KmsKeyId, AppSecurityGroupManagement = AppSecurityGroupManagement, TagPropagation = TagPropagation, DefaultSpaceSettings = DefaultSpaceSettings)
   output <- .sagemaker$create_domain_output()
   config <- get_config()
   svc <- .sagemaker$service(config, op)
@@ -1679,11 +1801,11 @@ sagemaker_create_image_version <- function(BaseImage, ClientToken, ImageName, Al
 #'
 #' @param InferenceComponentName &#91;required&#93; A unique name to assign to the inference component.
 #' @param EndpointName &#91;required&#93; The name of an existing endpoint where you host the inference component.
-#' @param VariantName &#91;required&#93; The name of an existing production variant where you host the inference
+#' @param VariantName The name of an existing production variant where you host the inference
 #' component.
 #' @param Specification &#91;required&#93; Details about the resources to deploy with this inference component,
 #' including the model, container, and compute resources.
-#' @param RuntimeConfig &#91;required&#93; Runtime settings for a model that is deployed with an inference
+#' @param RuntimeConfig Runtime settings for a model that is deployed with an inference
 #' component.
 #' @param Tags A list of key-value pairs associated with the model. For more
 #' information, see [Tagging Amazon Web Services
@@ -1693,7 +1815,7 @@ sagemaker_create_image_version <- function(BaseImage, ClientToken, ImageName, Al
 #' @keywords internal
 #'
 #' @rdname sagemaker_create_inference_component
-sagemaker_create_inference_component <- function(InferenceComponentName, EndpointName, VariantName, Specification, RuntimeConfig, Tags = NULL) {
+sagemaker_create_inference_component <- function(InferenceComponentName, EndpointName, VariantName = NULL, Specification, RuntimeConfig = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateInferenceComponent",
     http_method = "POST",
@@ -2445,11 +2567,12 @@ sagemaker_create_model_explainability_job_definition <- function(JobDefinitionNa
 #' For more information about the model card associated with the model
 #' package, see [View the Details of a Model
 #' Version](https://docs.aws.amazon.com/sagemaker/latest/dg/model-registry-details.html).
+#' @param ModelLifeCycle A structure describing the current state of the model in its life cycle.
 #'
 #' @keywords internal
 #'
 #' @rdname sagemaker_create_model_package
-sagemaker_create_model_package <- function(ModelPackageName = NULL, ModelPackageGroupName = NULL, ModelPackageDescription = NULL, InferenceSpecification = NULL, ValidationSpecification = NULL, SourceAlgorithmSpecification = NULL, CertifyForMarketplace = NULL, Tags = NULL, ModelApprovalStatus = NULL, MetadataProperties = NULL, ModelMetrics = NULL, ClientToken = NULL, Domain = NULL, Task = NULL, SamplePayloadUrl = NULL, CustomerMetadataProperties = NULL, DriftCheckBaselines = NULL, AdditionalInferenceSpecifications = NULL, SkipModelValidation = NULL, SourceUri = NULL, SecurityConfig = NULL, ModelCard = NULL) {
+sagemaker_create_model_package <- function(ModelPackageName = NULL, ModelPackageGroupName = NULL, ModelPackageDescription = NULL, InferenceSpecification = NULL, ValidationSpecification = NULL, SourceAlgorithmSpecification = NULL, CertifyForMarketplace = NULL, Tags = NULL, ModelApprovalStatus = NULL, MetadataProperties = NULL, ModelMetrics = NULL, ClientToken = NULL, Domain = NULL, Task = NULL, SamplePayloadUrl = NULL, CustomerMetadataProperties = NULL, DriftCheckBaselines = NULL, AdditionalInferenceSpecifications = NULL, SkipModelValidation = NULL, SourceUri = NULL, SecurityConfig = NULL, ModelCard = NULL, ModelLifeCycle = NULL) {
   op <- new_operation(
     name = "CreateModelPackage",
     http_method = "POST",
@@ -2458,7 +2581,7 @@ sagemaker_create_model_package <- function(ModelPackageName = NULL, ModelPackage
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .sagemaker$create_model_package_input(ModelPackageName = ModelPackageName, ModelPackageGroupName = ModelPackageGroupName, ModelPackageDescription = ModelPackageDescription, InferenceSpecification = InferenceSpecification, ValidationSpecification = ValidationSpecification, SourceAlgorithmSpecification = SourceAlgorithmSpecification, CertifyForMarketplace = CertifyForMarketplace, Tags = Tags, ModelApprovalStatus = ModelApprovalStatus, MetadataProperties = MetadataProperties, ModelMetrics = ModelMetrics, ClientToken = ClientToken, Domain = Domain, Task = Task, SamplePayloadUrl = SamplePayloadUrl, CustomerMetadataProperties = CustomerMetadataProperties, DriftCheckBaselines = DriftCheckBaselines, AdditionalInferenceSpecifications = AdditionalInferenceSpecifications, SkipModelValidation = SkipModelValidation, SourceUri = SourceUri, SecurityConfig = SecurityConfig, ModelCard = ModelCard)
+  input <- .sagemaker$create_model_package_input(ModelPackageName = ModelPackageName, ModelPackageGroupName = ModelPackageGroupName, ModelPackageDescription = ModelPackageDescription, InferenceSpecification = InferenceSpecification, ValidationSpecification = ValidationSpecification, SourceAlgorithmSpecification = SourceAlgorithmSpecification, CertifyForMarketplace = CertifyForMarketplace, Tags = Tags, ModelApprovalStatus = ModelApprovalStatus, MetadataProperties = MetadataProperties, ModelMetrics = ModelMetrics, ClientToken = ClientToken, Domain = Domain, Task = Task, SamplePayloadUrl = SamplePayloadUrl, CustomerMetadataProperties = CustomerMetadataProperties, DriftCheckBaselines = DriftCheckBaselines, AdditionalInferenceSpecifications = AdditionalInferenceSpecifications, SkipModelValidation = SkipModelValidation, SourceUri = SourceUri, SecurityConfig = SecurityConfig, ModelCard = ModelCard, ModelLifeCycle = ModelLifeCycle)
   output <- .sagemaker$create_model_package_output()
   config <- get_config()
   svc <- .sagemaker$service(config, op)
@@ -2637,11 +2760,11 @@ sagemaker_create_monitoring_schedule <- function(MonitoringScheduleName, Monitor
 #' value for the `SubnetId` parameter.
 #' @param VolumeSizeInGB The size, in GB, of the ML storage volume to attach to the notebook
 #' instance. The default value is 5 GB.
-#' @param AcceleratorTypes A list of Elastic Inference (EI) instance types to associate with this
-#' notebook instance. Currently, only one instance type can be associated
-#' with a notebook instance. For more information, see [Using Elastic
-#' Inference in Amazon
-#' SageMaker](https://docs.aws.amazon.com/sagemaker/latest/dg/).
+#' @param AcceleratorTypes This parameter is no longer supported. Elastic Inference (EI) is no
+#' longer available.
+#' 
+#' This parameter was used to specify a list of EI instance types to
+#' associate with this notebook instance.
 #' @param DefaultCodeRepository A Git repository to associate with the notebook instance as its default
 #' code repository. This can be either the name of a Git repository stored
 #' as a resource in your account, or the URL of a Git repository in [Amazon
@@ -2789,6 +2912,87 @@ sagemaker_create_optimization_job <- function(OptimizationJobName, RoleArn, Mode
   return(response)
 }
 .sagemaker$operations$create_optimization_job <- sagemaker_create_optimization_job
+
+#' Creates an Amazon SageMaker Partner AI App
+#'
+#' @description
+#' Creates an Amazon SageMaker Partner AI App.
+#'
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_create_partner_app/](https://www.paws-r-sdk.com/docs/sagemaker_create_partner_app/) for full documentation.
+#'
+#' @param Name &#91;required&#93; The name to give the SageMaker Partner AI App.
+#' @param Type &#91;required&#93; The type of SageMaker Partner AI App to create. Must be one of the
+#' following: `lakera-guard`, `comet`, `deepchecks-llm-evaluation`, or
+#' `fiddler`.
+#' @param ExecutionRoleArn &#91;required&#93; The ARN of the IAM role that the partner application uses.
+#' @param MaintenanceConfig Maintenance configuration settings for the SageMaker Partner AI App.
+#' @param Tier &#91;required&#93; Indicates the instance type and size of the cluster attached to the
+#' SageMaker Partner AI App.
+#' @param ApplicationConfig Configuration settings for the SageMaker Partner AI App.
+#' @param AuthType &#91;required&#93; The authorization type that users use to access the SageMaker Partner AI
+#' App.
+#' @param EnableIamSessionBasedIdentity When set to `TRUE`, the SageMaker Partner AI App sets the Amazon Web
+#' Services IAM session name or the authenticated IAM user as the identity
+#' of the SageMaker Partner AI App user.
+#' @param ClientToken A unique token that guarantees that the call to this API is idempotent.
+#' @param Tags Each tag consists of a key and an optional value. Tag keys must be
+#' unique per resource.
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_create_partner_app
+sagemaker_create_partner_app <- function(Name, Type, ExecutionRoleArn, MaintenanceConfig = NULL, Tier, ApplicationConfig = NULL, AuthType, EnableIamSessionBasedIdentity = NULL, ClientToken = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "CreatePartnerApp",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .sagemaker$create_partner_app_input(Name = Name, Type = Type, ExecutionRoleArn = ExecutionRoleArn, MaintenanceConfig = MaintenanceConfig, Tier = Tier, ApplicationConfig = ApplicationConfig, AuthType = AuthType, EnableIamSessionBasedIdentity = EnableIamSessionBasedIdentity, ClientToken = ClientToken, Tags = Tags)
+  output <- .sagemaker$create_partner_app_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$create_partner_app <- sagemaker_create_partner_app
+
+#' Creates a presigned URL to access an Amazon SageMaker Partner AI App
+#'
+#' @description
+#' Creates a presigned URL to access an Amazon SageMaker Partner AI App.
+#'
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_create_partner_app_presigned_url/](https://www.paws-r-sdk.com/docs/sagemaker_create_partner_app_presigned_url/) for full documentation.
+#'
+#' @param Arn &#91;required&#93; The ARN of the SageMaker Partner AI App to create the presigned URL for.
+#' @param ExpiresInSeconds The time that will pass before the presigned URL expires.
+#' @param SessionExpirationDurationInSeconds Indicates how long the Amazon SageMaker Partner AI App session can be
+#' accessed for after logging in.
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_create_partner_app_presigned_url
+sagemaker_create_partner_app_presigned_url <- function(Arn, ExpiresInSeconds = NULL, SessionExpirationDurationInSeconds = NULL) {
+  op <- new_operation(
+    name = "CreatePartnerAppPresignedUrl",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .sagemaker$create_partner_app_presigned_url_input(Arn = Arn, ExpiresInSeconds = ExpiresInSeconds, SessionExpirationDurationInSeconds = SessionExpirationDurationInSeconds)
+  output <- .sagemaker$create_partner_app_presigned_url_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$create_partner_app_presigned_url <- sagemaker_create_partner_app_presigned_url
 
 #' Creates a pipeline using a JSON pipeline definition
 #'
@@ -3302,6 +3506,40 @@ sagemaker_create_training_job <- function(TrainingJobName, HyperParameters = NUL
   return(response)
 }
 .sagemaker$operations$create_training_job <- sagemaker_create_training_job
+
+#' Creates a new training plan in SageMaker to reserve compute capacity
+#'
+#' @description
+#' Creates a new training plan in SageMaker to reserve compute capacity.
+#'
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_create_training_plan/](https://www.paws-r-sdk.com/docs/sagemaker_create_training_plan/) for full documentation.
+#'
+#' @param TrainingPlanName &#91;required&#93; The name of the training plan to create.
+#' @param TrainingPlanOfferingId &#91;required&#93; The unique identifier of the training plan offering to use for creating
+#' this plan.
+#' @param Tags An array of key-value pairs to apply to this training plan.
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_create_training_plan
+sagemaker_create_training_plan <- function(TrainingPlanName, TrainingPlanOfferingId, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateTrainingPlan",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .sagemaker$create_training_plan_input(TrainingPlanName = TrainingPlanName, TrainingPlanOfferingId = TrainingPlanOfferingId, Tags = Tags)
+  output <- .sagemaker$create_training_plan_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$create_training_plan <- sagemaker_create_training_plan
 
 #' Starts a transform job
 #'
@@ -3878,6 +4116,37 @@ sagemaker_delete_cluster <- function(ClusterName) {
 }
 .sagemaker$operations$delete_cluster <- sagemaker_delete_cluster
 
+#' Deletes the cluster policy of the cluster
+#'
+#' @description
+#' Deletes the cluster policy of the cluster.
+#'
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_delete_cluster_scheduler_config/](https://www.paws-r-sdk.com/docs/sagemaker_delete_cluster_scheduler_config/) for full documentation.
+#'
+#' @param ClusterSchedulerConfigId &#91;required&#93; ID of the cluster policy.
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_delete_cluster_scheduler_config
+sagemaker_delete_cluster_scheduler_config <- function(ClusterSchedulerConfigId) {
+  op <- new_operation(
+    name = "DeleteClusterSchedulerConfig",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .sagemaker$delete_cluster_scheduler_config_input(ClusterSchedulerConfigId = ClusterSchedulerConfigId)
+  output <- .sagemaker$delete_cluster_scheduler_config_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$delete_cluster_scheduler_config <- sagemaker_delete_cluster_scheduler_config
+
 #' Deletes the specified Git repository from your account
 #'
 #' @description
@@ -3939,6 +4208,37 @@ sagemaker_delete_compilation_job <- function(CompilationJobName) {
   return(response)
 }
 .sagemaker$operations$delete_compilation_job <- sagemaker_delete_compilation_job
+
+#' Deletes the compute allocation from the cluster
+#'
+#' @description
+#' Deletes the compute allocation from the cluster.
+#'
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_delete_compute_quota/](https://www.paws-r-sdk.com/docs/sagemaker_delete_compute_quota/) for full documentation.
+#'
+#' @param ComputeQuotaId &#91;required&#93; ID of the compute allocation definition.
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_delete_compute_quota
+sagemaker_delete_compute_quota <- function(ComputeQuotaId) {
+  op <- new_operation(
+    name = "DeleteComputeQuota",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .sagemaker$delete_compute_quota_input(ComputeQuotaId = ComputeQuotaId)
+  output <- .sagemaker$delete_compute_quota_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$delete_compute_quota <- sagemaker_delete_compute_quota
 
 #' Deletes an context
 #'
@@ -4987,6 +5287,38 @@ sagemaker_delete_optimization_job <- function(OptimizationJobName) {
 }
 .sagemaker$operations$delete_optimization_job <- sagemaker_delete_optimization_job
 
+#' Deletes a SageMaker Partner AI App
+#'
+#' @description
+#' Deletes a SageMaker Partner AI App.
+#'
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_delete_partner_app/](https://www.paws-r-sdk.com/docs/sagemaker_delete_partner_app/) for full documentation.
+#'
+#' @param Arn &#91;required&#93; The ARN of the SageMaker Partner AI App to delete.
+#' @param ClientToken A unique token that guarantees that the call to this API is idempotent.
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_delete_partner_app
+sagemaker_delete_partner_app <- function(Arn, ClientToken = NULL) {
+  op <- new_operation(
+    name = "DeletePartnerApp",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .sagemaker$delete_partner_app_input(Arn = Arn, ClientToken = ClientToken)
+  output <- .sagemaker$delete_partner_app_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$delete_partner_app <- sagemaker_delete_partner_app
+
 #' Deletes a pipeline if there are no running instances of the pipeline
 #'
 #' @description
@@ -5627,6 +5959,38 @@ sagemaker_describe_cluster_node <- function(ClusterName, NodeId) {
 }
 .sagemaker$operations$describe_cluster_node <- sagemaker_describe_cluster_node
 
+#' Description of the cluster policy
+#'
+#' @description
+#' Description of the cluster policy. This policy is used for task prioritization and fair-share allocation. This helps prioritize critical workloads and distributes idle compute across entities.
+#'
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_describe_cluster_scheduler_config/](https://www.paws-r-sdk.com/docs/sagemaker_describe_cluster_scheduler_config/) for full documentation.
+#'
+#' @param ClusterSchedulerConfigId &#91;required&#93; ID of the cluster policy.
+#' @param ClusterSchedulerConfigVersion Version of the cluster policy.
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_describe_cluster_scheduler_config
+sagemaker_describe_cluster_scheduler_config <- function(ClusterSchedulerConfigId, ClusterSchedulerConfigVersion = NULL) {
+  op <- new_operation(
+    name = "DescribeClusterSchedulerConfig",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .sagemaker$describe_cluster_scheduler_config_input(ClusterSchedulerConfigId = ClusterSchedulerConfigId, ClusterSchedulerConfigVersion = ClusterSchedulerConfigVersion)
+  output <- .sagemaker$describe_cluster_scheduler_config_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$describe_cluster_scheduler_config <- sagemaker_describe_cluster_scheduler_config
+
 #' Gets details about the specified Git repository
 #'
 #' @description
@@ -5688,6 +6052,38 @@ sagemaker_describe_compilation_job <- function(CompilationJobName) {
   return(response)
 }
 .sagemaker$operations$describe_compilation_job <- sagemaker_describe_compilation_job
+
+#' Description of the compute allocation definition
+#'
+#' @description
+#' Description of the compute allocation definition.
+#'
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_describe_compute_quota/](https://www.paws-r-sdk.com/docs/sagemaker_describe_compute_quota/) for full documentation.
+#'
+#' @param ComputeQuotaId &#91;required&#93; ID of the compute allocation definition.
+#' @param ComputeQuotaVersion Version of the compute allocation definition.
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_describe_compute_quota
+sagemaker_describe_compute_quota <- function(ComputeQuotaId, ComputeQuotaVersion = NULL) {
+  op <- new_operation(
+    name = "DescribeComputeQuota",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .sagemaker$describe_compute_quota_input(ComputeQuotaId = ComputeQuotaId, ComputeQuotaVersion = ComputeQuotaVersion)
+  output <- .sagemaker$describe_compute_quota_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$describe_compute_quota <- sagemaker_describe_compute_quota
 
 #' Describes a context
 #'
@@ -6868,6 +7264,37 @@ sagemaker_describe_optimization_job <- function(OptimizationJobName) {
 }
 .sagemaker$operations$describe_optimization_job <- sagemaker_describe_optimization_job
 
+#' Gets information about a SageMaker Partner AI App
+#'
+#' @description
+#' Gets information about a SageMaker Partner AI App.
+#'
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_describe_partner_app/](https://www.paws-r-sdk.com/docs/sagemaker_describe_partner_app/) for full documentation.
+#'
+#' @param Arn &#91;required&#93; The ARN of the SageMaker Partner AI App to describe.
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_describe_partner_app
+sagemaker_describe_partner_app <- function(Arn) {
+  op <- new_operation(
+    name = "DescribePartnerApp",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .sagemaker$describe_partner_app_input(Arn = Arn)
+  output <- .sagemaker$describe_partner_app_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$describe_partner_app <- sagemaker_describe_partner_app
+
 #' Describes the details of a pipeline
 #'
 #' @description
@@ -7149,6 +7576,37 @@ sagemaker_describe_training_job <- function(TrainingJobName) {
   return(response)
 }
 .sagemaker$operations$describe_training_job <- sagemaker_describe_training_job
+
+#' Retrieves detailed information about a specific training plan
+#'
+#' @description
+#' Retrieves detailed information about a specific training plan.
+#'
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_describe_training_plan/](https://www.paws-r-sdk.com/docs/sagemaker_describe_training_plan/) for full documentation.
+#'
+#' @param TrainingPlanName &#91;required&#93; The name of the training plan to describe.
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_describe_training_plan
+sagemaker_describe_training_plan <- function(TrainingPlanName) {
+  op <- new_operation(
+    name = "DescribeTrainingPlan",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .sagemaker$describe_training_plan_input(TrainingPlanName = TrainingPlanName)
+  output <- .sagemaker$describe_training_plan_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$describe_training_plan <- sagemaker_describe_training_plan
 
 #' Returns information about a transform job
 #'
@@ -7757,7 +8215,7 @@ sagemaker_list_algorithms <- function(CreationTimeAfter = NULL, CreationTimeBefo
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "AlgorithmSummaryList"),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "AlgorithmSummaryList"),
     stream_api = FALSE
   )
   input <- .sagemaker$list_algorithms_input(CreationTimeAfter = CreationTimeAfter, CreationTimeBefore = CreationTimeBefore, MaxResults = MaxResults, NameContains = NameContains, NextToken = NextToken, SortBy = SortBy, SortOrder = SortOrder)
@@ -8144,6 +8602,53 @@ sagemaker_list_cluster_nodes <- function(ClusterName, CreationTimeAfter = NULL, 
 }
 .sagemaker$operations$list_cluster_nodes <- sagemaker_list_cluster_nodes
 
+#' List the cluster policy configurations
+#'
+#' @description
+#' List the cluster policy configurations.
+#'
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_list_cluster_scheduler_configs/](https://www.paws-r-sdk.com/docs/sagemaker_list_cluster_scheduler_configs/) for full documentation.
+#'
+#' @param CreatedAfter Filter for after this creation time. The input for this parameter is a
+#' Unix timestamp. To convert a date and time into a Unix timestamp, see
+#' [EpochConverter](https://www.epochconverter.com/).
+#' @param CreatedBefore Filter for before this creation time. The input for this parameter is a
+#' Unix timestamp. To convert a date and time into a Unix timestamp, see
+#' [EpochConverter](https://www.epochconverter.com/).
+#' @param NameContains Filter for name containing this string.
+#' @param ClusterArn Filter for ARN of the cluster.
+#' @param Status Filter for status.
+#' @param SortBy Filter for sorting the list by a given value. For example, sort by name,
+#' creation time, or status.
+#' @param SortOrder The order of the list. By default, listed in `Descending` order
+#' according to by `SortBy`. To change the list order, you can specify
+#' `SortOrder` to be `Ascending`.
+#' @param NextToken If the previous response was truncated, you will receive this token. Use
+#' it in your next request to receive the next set of results.
+#' @param MaxResults The maximum number of cluster policies to list.
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_list_cluster_scheduler_configs
+sagemaker_list_cluster_scheduler_configs <- function(CreatedAfter = NULL, CreatedBefore = NULL, NameContains = NULL, ClusterArn = NULL, Status = NULL, SortBy = NULL, SortOrder = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListClusterSchedulerConfigs",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ClusterSchedulerConfigSummaries"),
+    stream_api = FALSE
+  )
+  input <- .sagemaker$list_cluster_scheduler_configs_input(CreatedAfter = CreatedAfter, CreatedBefore = CreatedBefore, NameContains = NameContains, ClusterArn = ClusterArn, Status = Status, SortBy = SortBy, SortOrder = SortOrder, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .sagemaker$list_cluster_scheduler_configs_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$list_cluster_scheduler_configs <- sagemaker_list_cluster_scheduler_configs
+
 #' Retrieves the list of SageMaker HyperPod clusters
 #'
 #' @description
@@ -8185,11 +8690,15 @@ sagemaker_list_cluster_nodes <- function(ClusterName, CreationTimeAfter = NULL, 
 #' @param SortBy The field by which to sort results. The default value is
 #' `CREATION_TIME`.
 #' @param SortOrder The sort order for results. The default value is `Ascending`.
+#' @param TrainingPlanArn The Amazon Resource Name (ARN); of the training plan to filter clusters
+#' by. For more information about reserving GPU capacity for your SageMaker
+#' HyperPod clusters using Amazon SageMaker Training Plan, see
+#' [`create_training_plan`][sagemaker_create_training_plan].
 #'
 #' @keywords internal
 #'
 #' @rdname sagemaker_list_clusters
-sagemaker_list_clusters <- function(CreationTimeAfter = NULL, CreationTimeBefore = NULL, MaxResults = NULL, NameContains = NULL, NextToken = NULL, SortBy = NULL, SortOrder = NULL) {
+sagemaker_list_clusters <- function(CreationTimeAfter = NULL, CreationTimeBefore = NULL, MaxResults = NULL, NameContains = NULL, NextToken = NULL, SortBy = NULL, SortOrder = NULL, TrainingPlanArn = NULL) {
   op <- new_operation(
     name = "ListClusters",
     http_method = "POST",
@@ -8198,7 +8707,7 @@ sagemaker_list_clusters <- function(CreationTimeAfter = NULL, CreationTimeBefore
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ClusterSummaries"),
     stream_api = FALSE
   )
-  input <- .sagemaker$list_clusters_input(CreationTimeAfter = CreationTimeAfter, CreationTimeBefore = CreationTimeBefore, MaxResults = MaxResults, NameContains = NameContains, NextToken = NextToken, SortBy = SortBy, SortOrder = SortOrder)
+  input <- .sagemaker$list_clusters_input(CreationTimeAfter = CreationTimeAfter, CreationTimeBefore = CreationTimeBefore, MaxResults = MaxResults, NameContains = NameContains, NextToken = NextToken, SortBy = SortBy, SortOrder = SortOrder, TrainingPlanArn = TrainingPlanArn)
   output <- .sagemaker$list_clusters_output()
   config <- get_config()
   svc <- .sagemaker$service(config, op)
@@ -8241,7 +8750,7 @@ sagemaker_list_code_repositories <- function(CreationTimeAfter = NULL, CreationT
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "CodeRepositorySummaryList"),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "CodeRepositorySummaryList"),
     stream_api = FALSE
   )
   input <- .sagemaker$list_code_repositories_input(CreationTimeAfter = CreationTimeAfter, CreationTimeBefore = CreationTimeBefore, LastModifiedTimeAfter = LastModifiedTimeAfter, LastModifiedTimeBefore = LastModifiedTimeBefore, MaxResults = MaxResults, NameContains = NameContains, NextToken = NextToken, SortBy = SortBy, SortOrder = SortOrder)
@@ -8290,7 +8799,7 @@ sagemaker_list_compilation_jobs <- function(NextToken = NULL, MaxResults = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "CompilationJobSummaries"),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "CompilationJobSummaries"),
     stream_api = FALSE
   )
   input <- .sagemaker$list_compilation_jobs_input(NextToken = NextToken, MaxResults = MaxResults, CreationTimeAfter = CreationTimeAfter, CreationTimeBefore = CreationTimeBefore, LastModifiedTimeAfter = LastModifiedTimeAfter, LastModifiedTimeBefore = LastModifiedTimeBefore, NameContains = NameContains, StatusEquals = StatusEquals, SortBy = SortBy, SortOrder = SortOrder)
@@ -8302,6 +8811,53 @@ sagemaker_list_compilation_jobs <- function(NextToken = NULL, MaxResults = NULL,
   return(response)
 }
 .sagemaker$operations$list_compilation_jobs <- sagemaker_list_compilation_jobs
+
+#' List the resource allocation definitions
+#'
+#' @description
+#' List the resource allocation definitions.
+#'
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_list_compute_quotas/](https://www.paws-r-sdk.com/docs/sagemaker_list_compute_quotas/) for full documentation.
+#'
+#' @param CreatedAfter Filter for after this creation time. The input for this parameter is a
+#' Unix timestamp. To convert a date and time into a Unix timestamp, see
+#' [EpochConverter](https://www.epochconverter.com/).
+#' @param CreatedBefore Filter for before this creation time. The input for this parameter is a
+#' Unix timestamp. To convert a date and time into a Unix timestamp, see
+#' [EpochConverter](https://www.epochconverter.com/).
+#' @param NameContains Filter for name containing this string.
+#' @param Status Filter for status.
+#' @param ClusterArn Filter for ARN of the cluster.
+#' @param SortBy Filter for sorting the list by a given value. For example, sort by name,
+#' creation time, or status.
+#' @param SortOrder The order of the list. By default, listed in `Descending` order
+#' according to by `SortBy`. To change the list order, you can specify
+#' `SortOrder` to be `Ascending`.
+#' @param NextToken If the previous response was truncated, you will receive this token. Use
+#' it in your next request to receive the next set of results.
+#' @param MaxResults The maximum number of compute allocation definitions to list.
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_list_compute_quotas
+sagemaker_list_compute_quotas <- function(CreatedAfter = NULL, CreatedBefore = NULL, NameContains = NULL, Status = NULL, ClusterArn = NULL, SortBy = NULL, SortOrder = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListComputeQuotas",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ComputeQuotaSummaries"),
+    stream_api = FALSE
+  )
+  input <- .sagemaker$list_compute_quotas_input(CreatedAfter = CreatedAfter, CreatedBefore = CreatedBefore, NameContains = NameContains, Status = Status, ClusterArn = ClusterArn, SortBy = SortBy, SortOrder = SortOrder, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .sagemaker$list_compute_quotas_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$list_compute_quotas <- sagemaker_list_compute_quotas
 
 #' Lists the contexts in your account and their properties
 #'
@@ -8625,7 +9181,7 @@ sagemaker_list_endpoint_configs <- function(SortBy = NULL, SortOrder = NULL, Nex
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "EndpointConfigs"),
+    paginator = list(result_key = "EndpointConfigs", output_token = "NextToken", input_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .sagemaker$list_endpoint_configs_input(SortBy = SortBy, SortOrder = SortOrder, NextToken = NextToken, MaxResults = MaxResults, NameContains = NameContains, CreationTimeBefore = CreationTimeBefore, CreationTimeAfter = CreationTimeAfter)
@@ -8673,7 +9229,7 @@ sagemaker_list_endpoints <- function(SortBy = NULL, SortOrder = NULL, NextToken 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Endpoints"),
+    paginator = list(result_key = "Endpoints", output_token = "NextToken", input_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .sagemaker$list_endpoints_input(SortBy = SortBy, SortOrder = SortOrder, NextToken = NextToken, MaxResults = MaxResults, NameContains = NameContains, CreationTimeBefore = CreationTimeBefore, CreationTimeAfter = CreationTimeAfter, LastModifiedTimeBefore = LastModifiedTimeBefore, LastModifiedTimeAfter = LastModifiedTimeAfter, StatusEquals = StatusEquals)
@@ -9018,7 +9574,7 @@ sagemaker_list_hyper_parameter_tuning_jobs <- function(NextToken = NULL, MaxResu
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "HyperParameterTuningJobSummaries"),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "HyperParameterTuningJobSummaries"),
     stream_api = FALSE
   )
   input <- .sagemaker$list_hyper_parameter_tuning_jobs_input(NextToken = NextToken, MaxResults = MaxResults, SortBy = SortBy, SortOrder = SortOrder, NameContains = NameContains, CreationTimeAfter = CreationTimeAfter, CreationTimeBefore = CreationTimeBefore, LastModifiedTimeAfter = LastModifiedTimeAfter, LastModifiedTimeBefore = LastModifiedTimeBefore, StatusEquals = StatusEquals)
@@ -9357,7 +9913,7 @@ sagemaker_list_labeling_jobs <- function(CreationTimeAfter = NULL, CreationTimeB
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "LabelingJobSummaryList"),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "LabelingJobSummaryList"),
     stream_api = FALSE
   )
   input <- .sagemaker$list_labeling_jobs_input(CreationTimeAfter = CreationTimeAfter, CreationTimeBefore = CreationTimeBefore, LastModifiedTimeAfter = LastModifiedTimeAfter, LastModifiedTimeBefore = LastModifiedTimeBefore, MaxResults = MaxResults, NextToken = NextToken, NameContains = NameContains, SortBy = SortBy, SortOrder = SortOrder, StatusEquals = StatusEquals)
@@ -9403,7 +9959,7 @@ sagemaker_list_labeling_jobs_for_workteam <- function(WorkteamArn, MaxResults = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "LabelingJobSummaryList"),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "LabelingJobSummaryList"),
     stream_api = FALSE
   )
   input <- .sagemaker$list_labeling_jobs_for_workteam_input(WorkteamArn = WorkteamArn, MaxResults = MaxResults, NextToken = NextToken, CreationTimeAfter = CreationTimeAfter, CreationTimeBefore = CreationTimeBefore, JobReferenceCodeContains = JobReferenceCodeContains, SortBy = SortBy, SortOrder = SortOrder)
@@ -9863,7 +10419,7 @@ sagemaker_list_model_packages <- function(CreationTimeAfter = NULL, CreationTime
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ModelPackageSummaryList"),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ModelPackageSummaryList"),
     stream_api = FALSE
   )
   input <- .sagemaker$list_model_packages_input(CreationTimeAfter = CreationTimeAfter, CreationTimeBefore = CreationTimeBefore, MaxResults = MaxResults, NameContains = NameContains, ModelApprovalStatus = ModelApprovalStatus, ModelPackageGroupName = ModelPackageGroupName, ModelPackageType = ModelPackageType, NextToken = NextToken, SortBy = SortBy, SortOrder = SortOrder)
@@ -9954,7 +10510,7 @@ sagemaker_list_models <- function(SortBy = NULL, SortOrder = NULL, NextToken = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Models"),
+    paginator = list(result_key = "Models", output_token = "NextToken", input_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .sagemaker$list_models_input(SortBy = SortBy, SortOrder = SortOrder, NextToken = NextToken, MaxResults = MaxResults, NameContains = NameContains, CreationTimeBefore = CreationTimeBefore, CreationTimeAfter = CreationTimeAfter)
@@ -10190,7 +10746,7 @@ sagemaker_list_notebook_instance_lifecycle_configs <- function(NextToken = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "NotebookInstanceLifecycleConfigs"),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "NotebookInstanceLifecycleConfigs"),
     stream_api = FALSE
   )
   input <- .sagemaker$list_notebook_instance_lifecycle_configs_input(NextToken = NextToken, MaxResults = MaxResults, SortBy = SortBy, SortOrder = SortOrder, NameContains = NameContains, CreationTimeBefore = CreationTimeBefore, CreationTimeAfter = CreationTimeAfter, LastModifiedTimeBefore = LastModifiedTimeBefore, LastModifiedTimeAfter = LastModifiedTimeAfter)
@@ -10255,7 +10811,7 @@ sagemaker_list_notebook_instances <- function(NextToken = NULL, MaxResults = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "NotebookInstances"),
+    paginator = list(result_key = "NotebookInstances", output_token = "NextToken", input_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .sagemaker$list_notebook_instances_input(NextToken = NextToken, MaxResults = MaxResults, SortBy = SortBy, SortOrder = SortOrder, NameContains = NameContains, CreationTimeBefore = CreationTimeBefore, CreationTimeAfter = CreationTimeAfter, LastModifiedTimeBefore = LastModifiedTimeBefore, LastModifiedTimeAfter = LastModifiedTimeAfter, StatusEquals = StatusEquals, NotebookInstanceLifecycleConfigNameContains = NotebookInstanceLifecycleConfigNameContains, DefaultCodeRepositoryContains = DefaultCodeRepositoryContains, AdditionalCodeRepositoryEquals = AdditionalCodeRepositoryEquals)
@@ -10320,6 +10876,45 @@ sagemaker_list_optimization_jobs <- function(NextToken = NULL, MaxResults = NULL
   return(response)
 }
 .sagemaker$operations$list_optimization_jobs <- sagemaker_list_optimization_jobs
+
+#' Lists all of the SageMaker Partner AI Apps in an account
+#'
+#' @description
+#' Lists all of the SageMaker Partner AI Apps in an account.
+#'
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_list_partner_apps/](https://www.paws-r-sdk.com/docs/sagemaker_list_partner_apps/) for full documentation.
+#'
+#' @param MaxResults This parameter defines the maximum number of results that can be
+#' returned in a single response. The `MaxResults` parameter is an upper
+#' bound, not a target. If there are more results available than the value
+#' specified, a `NextToken` is provided in the response. The `NextToken`
+#' indicates that the user should get the next set of results by providing
+#' this token as a part of a subsequent call. The default value for
+#' `MaxResults` is 10.
+#' @param NextToken If the previous response was truncated, you will receive this token. Use
+#' it in your next request to receive the next set of results.
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_list_partner_apps
+sagemaker_list_partner_apps <- function(MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListPartnerApps",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Summaries"),
+    stream_api = FALSE
+  )
+  input <- .sagemaker$list_partner_apps_input(MaxResults = MaxResults, NextToken = NextToken)
+  output <- .sagemaker$list_partner_apps_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$list_partner_apps <- sagemaker_list_partner_apps
 
 #' Gets a list of PipeLineExecutionStep objects
 #'
@@ -10557,7 +11152,7 @@ sagemaker_list_projects <- function(CreationTimeAfter = NULL, CreationTimeBefore
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .sagemaker$list_projects_input(CreationTimeAfter = CreationTimeAfter, CreationTimeBefore = CreationTimeBefore, MaxResults = MaxResults, NameContains = NameContains, NextToken = NextToken, SortBy = SortBy, SortOrder = SortOrder)
@@ -10770,7 +11365,7 @@ sagemaker_list_subscribed_workteams <- function(NameContains = NULL, NextToken =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "SubscribedWorkteams"),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "SubscribedWorkteams"),
     stream_api = FALSE
   )
   input <- .sagemaker$list_subscribed_workteams_input(NameContains = NameContains, NextToken = NextToken, MaxResults = MaxResults)
@@ -10806,7 +11401,7 @@ sagemaker_list_tags <- function(ResourceArn, NextToken = NULL, MaxResults = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Tags"),
+    paginator = list(result_key = "Tags", output_token = "NextToken", input_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .sagemaker$list_tags_input(ResourceArn = ResourceArn, NextToken = NextToken, MaxResults = MaxResults)
@@ -10846,20 +11441,24 @@ sagemaker_list_tags <- function(ResourceArn, NextToken = NULL, MaxResults = NULL
 #' @param SortOrder The sort order for results. The default is `Ascending`.
 #' @param WarmPoolStatusEquals A filter that retrieves only training jobs with a specific warm pool
 #' status.
+#' @param TrainingPlanArnEquals The Amazon Resource Name (ARN); of the training plan to filter training
+#' jobs by. For more information about reserving GPU capacity for your
+#' SageMaker training jobs using Amazon SageMaker Training Plan, see
+#' [`create_training_plan`][sagemaker_create_training_plan].
 #'
 #' @keywords internal
 #'
 #' @rdname sagemaker_list_training_jobs
-sagemaker_list_training_jobs <- function(NextToken = NULL, MaxResults = NULL, CreationTimeAfter = NULL, CreationTimeBefore = NULL, LastModifiedTimeAfter = NULL, LastModifiedTimeBefore = NULL, NameContains = NULL, StatusEquals = NULL, SortBy = NULL, SortOrder = NULL, WarmPoolStatusEquals = NULL) {
+sagemaker_list_training_jobs <- function(NextToken = NULL, MaxResults = NULL, CreationTimeAfter = NULL, CreationTimeBefore = NULL, LastModifiedTimeAfter = NULL, LastModifiedTimeBefore = NULL, NameContains = NULL, StatusEquals = NULL, SortBy = NULL, SortOrder = NULL, WarmPoolStatusEquals = NULL, TrainingPlanArnEquals = NULL) {
   op <- new_operation(
     name = "ListTrainingJobs",
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "TrainingJobSummaries"),
+    paginator = list(result_key = "TrainingJobSummaries", output_token = "NextToken", input_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
-  input <- .sagemaker$list_training_jobs_input(NextToken = NextToken, MaxResults = MaxResults, CreationTimeAfter = CreationTimeAfter, CreationTimeBefore = CreationTimeBefore, LastModifiedTimeAfter = LastModifiedTimeAfter, LastModifiedTimeBefore = LastModifiedTimeBefore, NameContains = NameContains, StatusEquals = StatusEquals, SortBy = SortBy, SortOrder = SortOrder, WarmPoolStatusEquals = WarmPoolStatusEquals)
+  input <- .sagemaker$list_training_jobs_input(NextToken = NextToken, MaxResults = MaxResults, CreationTimeAfter = CreationTimeAfter, CreationTimeBefore = CreationTimeBefore, LastModifiedTimeAfter = LastModifiedTimeAfter, LastModifiedTimeBefore = LastModifiedTimeBefore, NameContains = NameContains, StatusEquals = StatusEquals, SortBy = SortBy, SortOrder = SortOrder, WarmPoolStatusEquals = WarmPoolStatusEquals, TrainingPlanArnEquals = TrainingPlanArnEquals)
   output <- .sagemaker$list_training_jobs_output()
   config <- get_config()
   svc <- .sagemaker$service(config, op)
@@ -10899,7 +11498,7 @@ sagemaker_list_training_jobs_for_hyper_parameter_tuning_job <- function(HyperPar
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "TrainingJobSummaries"),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TrainingJobSummaries"),
     stream_api = FALSE
   )
   input <- .sagemaker$list_training_jobs_for_hyper_parameter_tuning_job_input(HyperParameterTuningJobName = HyperParameterTuningJobName, NextToken = NextToken, MaxResults = MaxResults, StatusEquals = StatusEquals, SortBy = SortBy, SortOrder = SortOrder)
@@ -10911,6 +11510,46 @@ sagemaker_list_training_jobs_for_hyper_parameter_tuning_job <- function(HyperPar
   return(response)
 }
 .sagemaker$operations$list_training_jobs_for_hyper_parameter_tuning_job <- sagemaker_list_training_jobs_for_hyper_parameter_tuning_job
+
+#' Retrieves a list of training plans for the current account
+#'
+#' @description
+#' Retrieves a list of training plans for the current account.
+#'
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_list_training_plans/](https://www.paws-r-sdk.com/docs/sagemaker_list_training_plans/) for full documentation.
+#'
+#' @param NextToken A token to continue pagination if more results are available.
+#' @param MaxResults The maximum number of results to return in the response.
+#' @param StartTimeAfter Filter to list only training plans with an actual start time after this
+#' date.
+#' @param StartTimeBefore Filter to list only training plans with an actual start time before this
+#' date.
+#' @param SortBy The training plan field to sort the results by (e.g., StartTime,
+#' Status).
+#' @param SortOrder The order to sort the results (Ascending or Descending).
+#' @param Filters Additional filters to apply to the list of training plans.
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_list_training_plans
+sagemaker_list_training_plans <- function(NextToken = NULL, MaxResults = NULL, StartTimeAfter = NULL, StartTimeBefore = NULL, SortBy = NULL, SortOrder = NULL, Filters = NULL) {
+  op <- new_operation(
+    name = "ListTrainingPlans",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "TrainingPlanSummaries"),
+    stream_api = FALSE
+  )
+  input <- .sagemaker$list_training_plans_input(NextToken = NextToken, MaxResults = MaxResults, StartTimeAfter = StartTimeAfter, StartTimeBefore = StartTimeBefore, SortBy = SortBy, SortOrder = SortOrder, Filters = Filters)
+  output <- .sagemaker$list_training_plans_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$list_training_plans <- sagemaker_list_training_plans
 
 #' Lists transform jobs
 #'
@@ -10948,7 +11587,7 @@ sagemaker_list_transform_jobs <- function(CreationTimeAfter = NULL, CreationTime
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "TransformJobSummaries"),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TransformJobSummaries"),
     stream_api = FALSE
   )
   input <- .sagemaker$list_transform_jobs_input(CreationTimeAfter = CreationTimeAfter, CreationTimeBefore = CreationTimeBefore, LastModifiedTimeAfter = LastModifiedTimeAfter, LastModifiedTimeBefore = LastModifiedTimeBefore, NameContains = NameContains, StatusEquals = StatusEquals, SortBy = SortBy, SortOrder = SortOrder, NextToken = NextToken, MaxResults = MaxResults)
@@ -11159,7 +11798,7 @@ sagemaker_list_workteams <- function(SortBy = NULL, SortOrder = NULL, NameContai
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Workteams"),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Workteams"),
     stream_api = FALSE
   )
   input <- .sagemaker$list_workteams_input(SortBy = SortBy, SortOrder = SortOrder, NameContains = NameContains, NextToken = NextToken, MaxResults = MaxResults)
@@ -11252,7 +11891,7 @@ sagemaker_query_lineage <- function(StartArns = NULL, Direction = NULL, IncludeE
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .sagemaker$query_lineage_input(StartArns = StartArns, Direction = Direction, IncludeEdges = IncludeEdges, Filters = Filters, MaxDepth = MaxDepth, MaxResults = MaxResults, NextToken = NextToken)
@@ -11416,7 +12055,7 @@ sagemaker_search <- function(Resource, SearchExpression = NULL, SortBy = NULL, S
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Results"),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Results"),
     stream_api = FALSE
   )
   input <- .sagemaker$search_input(Resource = Resource, SearchExpression = SearchExpression, SortBy = SortBy, SortOrder = SortOrder, NextToken = NextToken, MaxResults = MaxResults, CrossAccountFilterOption = CrossAccountFilterOption, VisibilityConditions = VisibilityConditions)
@@ -11428,6 +12067,63 @@ sagemaker_search <- function(Resource, SearchExpression = NULL, SortBy = NULL, S
   return(response)
 }
 .sagemaker$operations$search <- sagemaker_search
+
+#' Searches for available training plan offerings based on specified
+#' criteria
+#'
+#' @description
+#' Searches for available training plan offerings based on specified criteria.
+#'
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_search_training_plan_offerings/](https://www.paws-r-sdk.com/docs/sagemaker_search_training_plan_offerings/) for full documentation.
+#'
+#' @param InstanceType &#91;required&#93; The type of instance you want to search for in the available training
+#' plan offerings. This field allows you to filter the search results based
+#' on the specific compute resources you require for your SageMaker
+#' training jobs or SageMaker HyperPod clusters. When searching for
+#' training plan offerings, specifying the instance type helps you find
+#' Reserved Instances that match your computational needs.
+#' @param InstanceCount &#91;required&#93; The number of instances you want to reserve in the training plan
+#' offerings. This allows you to specify the quantity of compute resources
+#' needed for your SageMaker training jobs or SageMaker HyperPod clusters,
+#' helping you find reserved capacity offerings that match your
+#' requirements.
+#' @param StartTimeAfter A filter to search for training plan offerings with a start time after a
+#' specified date.
+#' @param EndTimeBefore A filter to search for reserved capacity offerings with an end time
+#' before a specified date.
+#' @param DurationHours The desired duration in hours for the training plan offerings.
+#' @param TargetResources &#91;required&#93; The target resources (e.g., SageMaker Training Jobs, SageMaker HyperPod)
+#' to search for in the offerings.
+#' 
+#' Training plans are specific to their target resource.
+#' 
+#' -   A training plan designed for SageMaker training jobs can only be
+#'     used to schedule and run training jobs.
+#' 
+#' -   A training plan for HyperPod clusters can be used exclusively to
+#'     provide compute resources to a cluster's instance group.
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_search_training_plan_offerings
+sagemaker_search_training_plan_offerings <- function(InstanceType, InstanceCount, StartTimeAfter = NULL, EndTimeBefore = NULL, DurationHours = NULL, TargetResources) {
+  op <- new_operation(
+    name = "SearchTrainingPlanOfferings",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .sagemaker$search_training_plan_offerings_input(InstanceType = InstanceType, InstanceCount = InstanceCount, StartTimeAfter = StartTimeAfter, EndTimeBefore = EndTimeBefore, DurationHours = DurationHours, TargetResources = TargetResources)
+  output <- .sagemaker$search_training_plan_offerings_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$search_training_plan_offerings <- sagemaker_search_training_plan_offerings
 
 #' Notifies the pipeline that the execution of a callback step failed,
 #' along with a message describing why
@@ -12330,11 +13026,12 @@ sagemaker_update_artifact <- function(ArtifactArn, ArtifactName = NULL, Properti
 #'
 #' @param ClusterName &#91;required&#93; Specify the name of the SageMaker HyperPod cluster you want to update.
 #' @param InstanceGroups &#91;required&#93; Specify the instance groups to update.
+#' @param NodeRecovery The node recovery mode to be applied to the SageMaker HyperPod cluster.
 #'
 #' @keywords internal
 #'
 #' @rdname sagemaker_update_cluster
-sagemaker_update_cluster <- function(ClusterName, InstanceGroups) {
+sagemaker_update_cluster <- function(ClusterName, InstanceGroups, NodeRecovery = NULL) {
   op <- new_operation(
     name = "UpdateCluster",
     http_method = "POST",
@@ -12343,7 +13040,7 @@ sagemaker_update_cluster <- function(ClusterName, InstanceGroups) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .sagemaker$update_cluster_input(ClusterName = ClusterName, InstanceGroups = InstanceGroups)
+  input <- .sagemaker$update_cluster_input(ClusterName = ClusterName, InstanceGroups = InstanceGroups, NodeRecovery = NodeRecovery)
   output <- .sagemaker$update_cluster_output()
   config <- get_config()
   svc <- .sagemaker$service(config, op)
@@ -12352,6 +13049,40 @@ sagemaker_update_cluster <- function(ClusterName, InstanceGroups) {
   return(response)
 }
 .sagemaker$operations$update_cluster <- sagemaker_update_cluster
+
+#' Update the cluster policy configuration
+#'
+#' @description
+#' Update the cluster policy configuration.
+#'
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_update_cluster_scheduler_config/](https://www.paws-r-sdk.com/docs/sagemaker_update_cluster_scheduler_config/) for full documentation.
+#'
+#' @param ClusterSchedulerConfigId &#91;required&#93; ID of the cluster policy.
+#' @param TargetVersion &#91;required&#93; Target version.
+#' @param SchedulerConfig Cluster policy configuration.
+#' @param Description Description of the cluster policy.
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_update_cluster_scheduler_config
+sagemaker_update_cluster_scheduler_config <- function(ClusterSchedulerConfigId, TargetVersion, SchedulerConfig = NULL, Description = NULL) {
+  op <- new_operation(
+    name = "UpdateClusterSchedulerConfig",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .sagemaker$update_cluster_scheduler_config_input(ClusterSchedulerConfigId = ClusterSchedulerConfigId, TargetVersion = TargetVersion, SchedulerConfig = SchedulerConfig, Description = Description)
+  output <- .sagemaker$update_cluster_scheduler_config_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$update_cluster_scheduler_config <- sagemaker_update_cluster_scheduler_config
 
 #' Updates the platform software of a SageMaker HyperPod cluster for
 #' security patching
@@ -12423,6 +13154,46 @@ sagemaker_update_code_repository <- function(CodeRepositoryName, GitConfig = NUL
   return(response)
 }
 .sagemaker$operations$update_code_repository <- sagemaker_update_code_repository
+
+#' Update the compute allocation definition
+#'
+#' @description
+#' Update the compute allocation definition.
+#'
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_update_compute_quota/](https://www.paws-r-sdk.com/docs/sagemaker_update_compute_quota/) for full documentation.
+#'
+#' @param ComputeQuotaId &#91;required&#93; ID of the compute allocation definition.
+#' @param TargetVersion &#91;required&#93; Target version.
+#' @param ComputeQuotaConfig Configuration of the compute allocation definition. This includes the
+#' resource sharing option, and the setting to preempt low priority tasks.
+#' @param ComputeQuotaTarget The target entity to allocate compute resources to.
+#' @param ActivationState The state of the compute allocation being described. Use to enable or
+#' disable compute allocation.
+#' 
+#' Default is `Enabled`.
+#' @param Description Description of the compute allocation definition.
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_update_compute_quota
+sagemaker_update_compute_quota <- function(ComputeQuotaId, TargetVersion, ComputeQuotaConfig = NULL, ComputeQuotaTarget = NULL, ActivationState = NULL, Description = NULL) {
+  op <- new_operation(
+    name = "UpdateComputeQuota",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .sagemaker$update_compute_quota_input(ComputeQuotaId = ComputeQuotaId, TargetVersion = TargetVersion, ComputeQuotaConfig = ComputeQuotaConfig, ComputeQuotaTarget = ComputeQuotaTarget, ActivationState = ActivationState, Description = Description)
+  output <- .sagemaker$update_compute_quota_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$update_compute_quota <- sagemaker_update_compute_quota
 
 #' Updates a context
 #'
@@ -12546,7 +13317,7 @@ sagemaker_update_devices <- function(DeviceFleetName, Devices) {
 #' `DomainSettings.RStudioServerProDomainSettings.DomainExecutionRoleArn`
 #' is provided. If setting up the domain for use with RStudio, this value
 #' must be set to `Service`.
-#' @param DefaultSpaceSettings The default settings used to create a space within the domain.
+#' @param DefaultSpaceSettings The default settings for shared spaces that users create in the domain.
 #' @param SubnetIds The VPC subnets that Studio uses for communication.
 #' 
 #' If removing subnets, ensure there are no apps in the `InService`,
@@ -12566,11 +13337,13 @@ sagemaker_update_devices <- function(DeviceFleetName, Devices) {
 #' is already set or
 #' `DomainSettings.RStudioServerProDomainSettings.DomainExecutionRoleArn`
 #' is provided as part of the same request.
+#' @param TagPropagation Indicates whether custom tag propagation is supported for the domain.
+#' Defaults to `DISABLED`.
 #'
 #' @keywords internal
 #'
 #' @rdname sagemaker_update_domain
-sagemaker_update_domain <- function(DomainId, DefaultUserSettings = NULL, DomainSettingsForUpdate = NULL, AppSecurityGroupManagement = NULL, DefaultSpaceSettings = NULL, SubnetIds = NULL, AppNetworkAccessType = NULL) {
+sagemaker_update_domain <- function(DomainId, DefaultUserSettings = NULL, DomainSettingsForUpdate = NULL, AppSecurityGroupManagement = NULL, DefaultSpaceSettings = NULL, SubnetIds = NULL, AppNetworkAccessType = NULL, TagPropagation = NULL) {
   op <- new_operation(
     name = "UpdateDomain",
     http_method = "POST",
@@ -12579,7 +13352,7 @@ sagemaker_update_domain <- function(DomainId, DefaultUserSettings = NULL, Domain
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .sagemaker$update_domain_input(DomainId = DomainId, DefaultUserSettings = DefaultUserSettings, DomainSettingsForUpdate = DomainSettingsForUpdate, AppSecurityGroupManagement = AppSecurityGroupManagement, DefaultSpaceSettings = DefaultSpaceSettings, SubnetIds = SubnetIds, AppNetworkAccessType = AppNetworkAccessType)
+  input <- .sagemaker$update_domain_input(DomainId = DomainId, DefaultUserSettings = DefaultUserSettings, DomainSettingsForUpdate = DomainSettingsForUpdate, AppSecurityGroupManagement = AppSecurityGroupManagement, DefaultSpaceSettings = DefaultSpaceSettings, SubnetIds = SubnetIds, AppNetworkAccessType = AppNetworkAccessType, TagPropagation = TagPropagation)
   output <- .sagemaker$update_domain_output()
   config <- get_config()
   svc <- .sagemaker$service(config, op)
@@ -13171,11 +13944,13 @@ sagemaker_update_model_card <- function(ModelCardName, Content = NULL, ModelCard
 #' For more information about the model card associated with the model
 #' package, see [View the Details of a Model
 #' Version](https://docs.aws.amazon.com/sagemaker/latest/dg/model-registry-details.html).
+#' @param ModelLifeCycle A structure describing the current state of the model in its life cycle.
+#' @param ClientToken A unique token that guarantees that the call to this API is idempotent.
 #'
 #' @keywords internal
 #'
 #' @rdname sagemaker_update_model_package
-sagemaker_update_model_package <- function(ModelPackageArn, ModelApprovalStatus = NULL, ApprovalDescription = NULL, CustomerMetadataProperties = NULL, CustomerMetadataPropertiesToRemove = NULL, AdditionalInferenceSpecificationsToAdd = NULL, InferenceSpecification = NULL, SourceUri = NULL, ModelCard = NULL) {
+sagemaker_update_model_package <- function(ModelPackageArn, ModelApprovalStatus = NULL, ApprovalDescription = NULL, CustomerMetadataProperties = NULL, CustomerMetadataPropertiesToRemove = NULL, AdditionalInferenceSpecificationsToAdd = NULL, InferenceSpecification = NULL, SourceUri = NULL, ModelCard = NULL, ModelLifeCycle = NULL, ClientToken = NULL) {
   op <- new_operation(
     name = "UpdateModelPackage",
     http_method = "POST",
@@ -13184,7 +13959,7 @@ sagemaker_update_model_package <- function(ModelPackageArn, ModelApprovalStatus 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .sagemaker$update_model_package_input(ModelPackageArn = ModelPackageArn, ModelApprovalStatus = ModelApprovalStatus, ApprovalDescription = ApprovalDescription, CustomerMetadataProperties = CustomerMetadataProperties, CustomerMetadataPropertiesToRemove = CustomerMetadataPropertiesToRemove, AdditionalInferenceSpecificationsToAdd = AdditionalInferenceSpecificationsToAdd, InferenceSpecification = InferenceSpecification, SourceUri = SourceUri, ModelCard = ModelCard)
+  input <- .sagemaker$update_model_package_input(ModelPackageArn = ModelPackageArn, ModelApprovalStatus = ModelApprovalStatus, ApprovalDescription = ApprovalDescription, CustomerMetadataProperties = CustomerMetadataProperties, CustomerMetadataPropertiesToRemove = CustomerMetadataPropertiesToRemove, AdditionalInferenceSpecificationsToAdd = AdditionalInferenceSpecificationsToAdd, InferenceSpecification = InferenceSpecification, SourceUri = SourceUri, ModelCard = ModelCard, ModelLifeCycle = ModelLifeCycle, ClientToken = ClientToken)
   output <- .sagemaker$update_model_package_output()
   config <- get_config()
   svc <- .sagemaker$service(config, op)
@@ -13313,15 +14088,16 @@ sagemaker_update_monitoring_schedule <- function(MonitoringScheduleName, Monitor
 #' same level as the default repository of your notebook instance. For more
 #' information, see [Associating Git Repositories with SageMaker Notebook
 #' Instances](https://docs.aws.amazon.com/sagemaker/latest/dg/nbi-git-repo.html).
-#' @param AcceleratorTypes A list of the Elastic Inference (EI) instance types to associate with
-#' this notebook instance. Currently only one EI instance type can be
-#' associated with a notebook instance. For more information, see [Using
-#' Elastic Inference in Amazon
-#' SageMaker](https://docs.aws.amazon.com/sagemaker/latest/dg/).
-#' @param DisassociateAcceleratorTypes A list of the Elastic Inference (EI) instance types to remove from this
-#' notebook instance. This operation is idempotent. If you specify an
-#' accelerator type that is not associated with the notebook instance when
-#' you call this method, it does not throw an error.
+#' @param AcceleratorTypes This parameter is no longer supported. Elastic Inference (EI) is no
+#' longer available.
+#' 
+#' This parameter was used to specify a list of the EI instance types to
+#' associate with this notebook instance.
+#' @param DisassociateAcceleratorTypes This parameter is no longer supported. Elastic Inference (EI) is no
+#' longer available.
+#' 
+#' This parameter was used to specify a list of the EI instance types to
+#' remove from this notebook instance.
 #' @param DisassociateDefaultCodeRepository The name or URL of the default Git repository to remove from this
 #' notebook instance. This operation is idempotent. If you specify a Git
 #' repository that is not associated with the notebook instance when you
@@ -13396,6 +14172,47 @@ sagemaker_update_notebook_instance_lifecycle_config <- function(NotebookInstance
   return(response)
 }
 .sagemaker$operations$update_notebook_instance_lifecycle_config <- sagemaker_update_notebook_instance_lifecycle_config
+
+#' Updates all of the SageMaker Partner AI Apps in an account
+#'
+#' @description
+#' Updates all of the SageMaker Partner AI Apps in an account.
+#'
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_update_partner_app/](https://www.paws-r-sdk.com/docs/sagemaker_update_partner_app/) for full documentation.
+#'
+#' @param Arn &#91;required&#93; The ARN of the SageMaker Partner AI App to update.
+#' @param MaintenanceConfig Maintenance configuration settings for the SageMaker Partner AI App.
+#' @param Tier Indicates the instance type and size of the cluster attached to the
+#' SageMaker Partner AI App.
+#' @param ApplicationConfig Configuration settings for the SageMaker Partner AI App.
+#' @param EnableIamSessionBasedIdentity When set to `TRUE`, the SageMaker Partner AI App sets the Amazon Web
+#' Services IAM session name or the authenticated IAM user as the identity
+#' of the SageMaker Partner AI App user.
+#' @param ClientToken A unique token that guarantees that the call to this API is idempotent.
+#' @param Tags Each tag consists of a key and an optional value. Tag keys must be
+#' unique per resource.
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_update_partner_app
+sagemaker_update_partner_app <- function(Arn, MaintenanceConfig = NULL, Tier = NULL, ApplicationConfig = NULL, EnableIamSessionBasedIdentity = NULL, ClientToken = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "UpdatePartnerApp",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .sagemaker$update_partner_app_input(Arn = Arn, MaintenanceConfig = MaintenanceConfig, Tier = Tier, ApplicationConfig = ApplicationConfig, EnableIamSessionBasedIdentity = EnableIamSessionBasedIdentity, ClientToken = ClientToken, Tags = Tags)
+  output <- .sagemaker$update_partner_app_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$update_partner_app <- sagemaker_update_partner_app
 
 #' Updates a pipeline
 #'

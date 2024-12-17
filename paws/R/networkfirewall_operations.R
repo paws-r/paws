@@ -485,7 +485,10 @@ networkfirewall_create_firewall <- function(FirewallName, FirewallPolicyArn, Vpc
 #'     ),
 #'     StatefulEngineOptions = list(
 #'       RuleOrder = "DEFAULT_ACTION_ORDER"|"STRICT_ORDER",
-#'       StreamExceptionPolicy = "DROP"|"CONTINUE"|"REJECT"
+#'       StreamExceptionPolicy = "DROP"|"CONTINUE"|"REJECT",
+#'       FlowTimeouts = list(
+#'         TcpIdleTimeoutSeconds = 123
+#'       )
 #'     ),
 #'     TLSInspectionConfigurationArn = "string",
 #'     PolicyVariables = list(
@@ -1703,7 +1706,10 @@ networkfirewall_describe_firewall <- function(FirewallName = NULL, FirewallArn =
 #'     ),
 #'     StatefulEngineOptions = list(
 #'       RuleOrder = "DEFAULT_ACTION_ORDER"|"STRICT_ORDER",
-#'       StreamExceptionPolicy = "DROP"|"CONTINUE"|"REJECT"
+#'       StreamExceptionPolicy = "DROP"|"CONTINUE"|"REJECT",
+#'       FlowTimeouts = list(
+#'         TcpIdleTimeoutSeconds = 123
+#'       )
 #'     ),
 #'     TLSInspectionConfigurationArn = "string",
 #'     PolicyVariables = list(
@@ -3360,7 +3366,10 @@ networkfirewall_update_firewall_encryption_configuration <- function(UpdateToken
 #'     ),
 #'     StatefulEngineOptions = list(
 #'       RuleOrder = "DEFAULT_ACTION_ORDER"|"STRICT_ORDER",
-#'       StreamExceptionPolicy = "DROP"|"CONTINUE"|"REJECT"
+#'       StreamExceptionPolicy = "DROP"|"CONTINUE"|"REJECT",
+#'       FlowTimeouts = list(
+#'         TcpIdleTimeoutSeconds = 123
+#'       )
 #'     ),
 #'     TLSInspectionConfigurationArn = "string",
 #'     PolicyVariables = list(

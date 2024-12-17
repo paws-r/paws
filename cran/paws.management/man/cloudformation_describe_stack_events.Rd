@@ -22,7 +22,7 @@ Default: There is no default value.}
 retrieve.}
 }
 \description{
-Returns all stack related events for a specified stack in reverse chronological order. For more information about a stack's event history, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stack-resource-configuration-complete.html}{CloudFormation stack creation events} in the \emph{CloudFormation User Guide}.
+Returns all stack related events for a specified stack in reverse chronological order. For more information about a stack's event history, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stack-resource-configuration-complete.html}{Understand CloudFormation stack creation events} in the \emph{CloudFormation User Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudformation_describe_stack_events/} for full documentation.
 }

@@ -216,7 +216,7 @@ datapipeline_describe_objects <- function(pipelineId, objectIds, evaluateExpress
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "marker", more_results = "hasMoreResults", output_token = "marker", result_key = "pipelineObjects"),
+    paginator = list(input_token = "marker", output_token = "marker", more_results = "hasMoreResults", result_key = "pipelineObjects"),
     stream_api = FALSE
   )
   input <- .datapipeline$describe_objects_input(pipelineId = pipelineId, objectIds = objectIds, evaluateExpressions = evaluateExpressions, marker = marker)
@@ -249,7 +249,7 @@ datapipeline_describe_pipelines <- function(pipelineIds) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "pipelineDescriptionList"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .datapipeline$describe_pipelines_input(pipelineIds = pipelineIds)
@@ -352,7 +352,7 @@ datapipeline_list_pipelines <- function(marker = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "marker", more_results = "hasMoreResults", output_token = "marker", result_key = "pipelineIdList"),
+    paginator = list(input_token = "marker", output_token = "marker", more_results = "hasMoreResults", result_key = "pipelineIdList"),
     stream_api = FALSE
   )
   input <- .datapipeline$list_pipelines_input(marker = marker)
@@ -479,7 +479,7 @@ datapipeline_query_objects <- function(pipelineId, query = NULL, sphere, marker 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "marker", limit_key = "limit", more_results = "hasMoreResults", output_token = "marker", result_key = "ids"),
+    paginator = list(input_token = "marker", output_token = "marker", more_results = "hasMoreResults", limit_key = "limit", result_key = "ids"),
     stream_api = FALSE
   )
   input <- .datapipeline$query_objects_input(pipelineId = pipelineId, query = query, sphere = sphere, marker = marker, limit = limit)

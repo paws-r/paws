@@ -133,6 +133,18 @@ NULL
   return(populate(args, shape))
 }
 
+.omics$create_run_cache_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(cacheBehavior = structure(logical(0), tags = list(type = "string")), cacheS3Location = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), requestId = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), cacheBucketOwnerId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.omics$create_run_cache_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(arn = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .omics$create_run_group_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), maxCpus = structure(logical(0), tags = list(type = "integer", box = TRUE)), maxRuns = structure(logical(0), tags = list(type = "integer", box = TRUE)), maxDuration = structure(logical(0), tags = list(type = "integer", box = TRUE)), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), requestId = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), maxGpus = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
@@ -147,13 +159,13 @@ NULL
 
 .omics$create_sequence_store_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), sseConfig = structure(list(type = structure(logical(0), tags = list(type = "string")), keyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), clientToken = structure(logical(0), tags = list(type = "string")), fallbackLocation = structure(logical(0), tags = list(type = "string")), eTagAlgorithmFamily = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), sseConfig = structure(list(type = structure(logical(0), tags = list(type = "string")), keyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), fallbackLocation = structure(logical(0), tags = list(type = "string")), eTagAlgorithmFamily = structure(logical(0), tags = list(type = "string")), propagatedSetLevelTags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), s3AccessConfig = structure(list(accessLogLocation = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .omics$create_sequence_store_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), sseConfig = structure(list(type = structure(logical(0), tags = list(type = "string")), keyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), creationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), fallbackLocation = structure(logical(0), tags = list(type = "string")), eTagAlgorithmFamily = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(id = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), sseConfig = structure(list(type = structure(logical(0), tags = list(type = "string")), keyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), creationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), fallbackLocation = structure(logical(0), tags = list(type = "string")), eTagAlgorithmFamily = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), statusMessage = structure(logical(0), tags = list(type = "string")), propagatedSetLevelTags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), s3Access = structure(list(s3Uri = structure(logical(0), tags = list(type = "string")), s3AccessPointArn = structure(logical(0), tags = list(type = "string")), accessLogLocation = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -251,6 +263,16 @@ NULL
   list()
 }
 
+.omics$delete_run_cache_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(id = structure(logical(0), tags = list(location = "uri", locationName = "id", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.omics$delete_run_cache_output <- function(...) {
+  list()
+}
+
 .omics$delete_run_group_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(id = structure(logical(0), tags = list(location = "uri", locationName = "id", type = "string"))), tags = list(type = "structure"))
@@ -259,6 +281,18 @@ NULL
 
 .omics$delete_run_group_output <- function(...) {
   list()
+}
+
+.omics$delete_s3_access_policy_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(s3AccessPointArn = structure(logical(0), tags = list(location = "uri", locationName = "s3AccessPointArn", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.omics$delete_s3_access_policy_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
 }
 
 .omics$delete_sequence_store_input <- function(...) {
@@ -459,7 +493,19 @@ NULL
 
 .omics$get_run_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(arn = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), workflowId = structure(logical(0), tags = list(type = "string")), workflowType = structure(logical(0), tags = list(type = "string")), runId = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), runGroupId = structure(logical(0), tags = list(type = "string")), priority = structure(logical(0), tags = list(type = "integer", box = TRUE)), definition = structure(logical(0), tags = list(type = "string")), digest = structure(logical(0), tags = list(type = "string")), parameters = structure(list(), tags = list(type = "structure", document = TRUE)), storageCapacity = structure(logical(0), tags = list(type = "integer", box = TRUE)), outputUri = structure(logical(0), tags = list(type = "string")), logLevel = structure(logical(0), tags = list(type = "string")), resourceDigests = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), startedBy = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), startTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), stopTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), statusMessage = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), accelerators = structure(logical(0), tags = list(type = "string")), retentionMode = structure(logical(0), tags = list(type = "string")), failureReason = structure(logical(0), tags = list(type = "string")), logLocation = structure(list(engineLogStream = structure(logical(0), tags = list(type = "string")), runLogStream = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), uuid = structure(logical(0), tags = list(type = "string")), runOutputUri = structure(logical(0), tags = list(type = "string")), storageType = structure(logical(0), tags = list(type = "string")), workflowOwnerId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(arn = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), cacheId = structure(logical(0), tags = list(type = "string")), cacheBehavior = structure(logical(0), tags = list(type = "string")), engineVersion = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), workflowId = structure(logical(0), tags = list(type = "string")), workflowType = structure(logical(0), tags = list(type = "string")), runId = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), runGroupId = structure(logical(0), tags = list(type = "string")), priority = structure(logical(0), tags = list(type = "integer", box = TRUE)), definition = structure(logical(0), tags = list(type = "string")), digest = structure(logical(0), tags = list(type = "string")), parameters = structure(list(), tags = list(type = "structure", document = TRUE)), storageCapacity = structure(logical(0), tags = list(type = "integer", box = TRUE)), outputUri = structure(logical(0), tags = list(type = "string")), logLevel = structure(logical(0), tags = list(type = "string")), resourceDigests = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), startedBy = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), startTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), stopTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), statusMessage = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), accelerators = structure(logical(0), tags = list(type = "string")), retentionMode = structure(logical(0), tags = list(type = "string")), failureReason = structure(logical(0), tags = list(type = "string")), logLocation = structure(list(engineLogStream = structure(logical(0), tags = list(type = "string")), runLogStream = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), uuid = structure(logical(0), tags = list(type = "string")), runOutputUri = structure(logical(0), tags = list(type = "string")), storageType = structure(logical(0), tags = list(type = "string")), workflowOwnerId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.omics$get_run_cache_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(id = structure(logical(0), tags = list(location = "uri", locationName = "id", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.omics$get_run_cache_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(arn = structure(logical(0), tags = list(type = "string")), cacheBehavior = structure(logical(0), tags = list(type = "string")), cacheBucketOwnerId = structure(logical(0), tags = list(type = "string")), cacheS3Uri = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), description = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -483,7 +529,19 @@ NULL
 
 .omics$get_run_task_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(taskId = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), cpus = structure(logical(0), tags = list(type = "integer", box = TRUE)), memory = structure(logical(0), tags = list(type = "integer", box = TRUE)), creationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), startTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), stopTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), statusMessage = structure(logical(0), tags = list(type = "string")), logStream = structure(logical(0), tags = list(type = "string")), gpus = structure(logical(0), tags = list(type = "integer", box = TRUE)), instanceType = structure(logical(0), tags = list(type = "string")), failureReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(taskId = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), cpus = structure(logical(0), tags = list(type = "integer", box = TRUE)), cacheHit = structure(logical(0), tags = list(type = "boolean", box = TRUE)), cacheS3Uri = structure(logical(0), tags = list(type = "string")), memory = structure(logical(0), tags = list(type = "integer", box = TRUE)), creationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), startTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), stopTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), statusMessage = structure(logical(0), tags = list(type = "string")), logStream = structure(logical(0), tags = list(type = "string")), gpus = structure(logical(0), tags = list(type = "integer", box = TRUE)), instanceType = structure(logical(0), tags = list(type = "string")), failureReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.omics$get_s3_access_policy_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(s3AccessPointArn = structure(logical(0), tags = list(location = "uri", locationName = "s3AccessPointArn", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.omics$get_s3_access_policy_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(s3AccessPointArn = structure(logical(0), tags = list(type = "string")), storeId = structure(logical(0), tags = list(type = "string")), storeType = structure(logical(0), tags = list(type = "string")), updateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), s3AccessPolicy = structure(logical(0), tags = list(jsonvalue = TRUE, type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -495,7 +553,7 @@ NULL
 
 .omics$get_sequence_store_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), sseConfig = structure(list(type = structure(logical(0), tags = list(type = "string")), keyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), creationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), fallbackLocation = structure(logical(0), tags = list(type = "string")), s3Access = structure(list(s3Uri = structure(logical(0), tags = list(type = "string")), s3AccessPointArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), eTagAlgorithmFamily = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(id = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), sseConfig = structure(list(type = structure(logical(0), tags = list(type = "string")), keyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), creationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), fallbackLocation = structure(logical(0), tags = list(type = "string")), s3Access = structure(list(s3Uri = structure(logical(0), tags = list(type = "string")), s3AccessPointArn = structure(logical(0), tags = list(type = "string")), accessLogLocation = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), eTagAlgorithmFamily = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), statusMessage = structure(logical(0), tags = list(type = "string")), propagatedSetLevelTags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), updateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -691,6 +749,18 @@ NULL
   return(populate(args, shape))
 }
 
+.omics$list_run_caches_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), startingToken = structure(logical(0), tags = list(location = "querystring", locationName = "startingToken", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.omics$list_run_caches_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(items = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), cacheBehavior = structure(logical(0), tags = list(type = "string")), cacheS3Uri = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .omics$list_run_groups_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(name = structure(logical(0), tags = list(location = "querystring", locationName = "name", type = "string")), startingToken = structure(logical(0), tags = list(location = "querystring", locationName = "startingToken", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE))), tags = list(type = "structure"))
@@ -711,7 +781,7 @@ NULL
 
 .omics$list_run_tasks_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(items = structure(list(structure(list(taskId = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), cpus = structure(logical(0), tags = list(type = "integer", box = TRUE)), memory = structure(logical(0), tags = list(type = "integer", box = TRUE)), creationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), startTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), stopTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), gpus = structure(logical(0), tags = list(type = "integer", box = TRUE)), instanceType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(items = structure(list(structure(list(taskId = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), cpus = structure(logical(0), tags = list(type = "integer", box = TRUE)), cacheHit = structure(logical(0), tags = list(type = "boolean", box = TRUE)), cacheS3Uri = structure(logical(0), tags = list(type = "string")), memory = structure(logical(0), tags = list(type = "integer", box = TRUE)), creationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), startTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), stopTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), gpus = structure(logical(0), tags = list(type = "integer", box = TRUE)), instanceType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -729,13 +799,13 @@ NULL
 
 .omics$list_sequence_stores_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), filter = structure(list(name = structure(logical(0), tags = list(type = "string")), createdAfter = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), createdBefore = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), filter = structure(list(name = structure(logical(0), tags = list(type = "string")), createdAfter = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), createdBefore = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), status = structure(logical(0), tags = list(type = "string")), updatedAfter = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updatedBefore = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .omics$list_sequence_stores_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), sequenceStores = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), sseConfig = structure(list(type = structure(logical(0), tags = list(type = "string")), keyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), creationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), fallbackLocation = structure(logical(0), tags = list(type = "string")), eTagAlgorithmFamily = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), sequenceStores = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), sseConfig = structure(list(type = structure(logical(0), tags = list(type = "string")), keyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), creationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), fallbackLocation = structure(logical(0), tags = list(type = "string")), eTagAlgorithmFamily = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), statusMessage = structure(logical(0), tags = list(type = "string")), updateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -796,6 +866,18 @@ NULL
 .omics$list_workflows_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(items = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), digest = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), metadata = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.omics$put_s3_access_policy_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(s3AccessPointArn = structure(logical(0), tags = list(location = "uri", locationName = "s3AccessPointArn", type = "string")), s3AccessPolicy = structure(logical(0), tags = list(jsonvalue = TRUE, type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.omics$put_s3_access_policy_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(s3AccessPointArn = structure(logical(0), tags = list(type = "string")), storeId = structure(logical(0), tags = list(type = "string")), storeType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -861,7 +943,7 @@ NULL
 
 .omics$start_run_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(workflowId = structure(logical(0), tags = list(type = "string")), workflowType = structure(logical(0), tags = list(type = "string")), runId = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), runGroupId = structure(logical(0), tags = list(type = "string")), priority = structure(logical(0), tags = list(type = "integer", box = TRUE)), parameters = structure(list(), tags = list(type = "structure", document = TRUE)), storageCapacity = structure(logical(0), tags = list(type = "integer", box = TRUE)), outputUri = structure(logical(0), tags = list(type = "string")), logLevel = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), requestId = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), retentionMode = structure(logical(0), tags = list(type = "string")), storageType = structure(logical(0), tags = list(type = "string")), workflowOwnerId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(workflowId = structure(logical(0), tags = list(type = "string")), workflowType = structure(logical(0), tags = list(type = "string")), runId = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), cacheId = structure(logical(0), tags = list(type = "string")), cacheBehavior = structure(logical(0), tags = list(type = "string")), runGroupId = structure(logical(0), tags = list(type = "string")), priority = structure(logical(0), tags = list(type = "integer", box = TRUE)), parameters = structure(list(), tags = list(type = "structure", document = TRUE)), storageCapacity = structure(logical(0), tags = list(type = "integer", box = TRUE)), outputUri = structure(logical(0), tags = list(type = "string")), logLevel = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), requestId = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), retentionMode = structure(logical(0), tags = list(type = "string")), storageType = structure(logical(0), tags = list(type = "string")), workflowOwnerId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -931,6 +1013,16 @@ NULL
   return(populate(args, shape))
 }
 
+.omics$update_run_cache_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(cacheBehavior = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(location = "uri", locationName = "id", type = "string")), name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.omics$update_run_cache_output <- function(...) {
+  list()
+}
+
 .omics$update_run_group_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(id = structure(logical(0), tags = list(location = "uri", locationName = "id", type = "string")), name = structure(logical(0), tags = list(type = "string")), maxCpus = structure(logical(0), tags = list(type = "integer", box = TRUE)), maxRuns = structure(logical(0), tags = list(type = "integer", box = TRUE)), maxDuration = structure(logical(0), tags = list(type = "integer", box = TRUE)), maxGpus = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
@@ -939,6 +1031,18 @@ NULL
 
 .omics$update_run_group_output <- function(...) {
   list()
+}
+
+.omics$update_sequence_store_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(id = structure(logical(0), tags = list(location = "uri", locationName = "id", type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), fallbackLocation = structure(logical(0), tags = list(type = "string")), propagatedSetLevelTags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), s3AccessConfig = structure(list(accessLogLocation = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.omics$update_sequence_store_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(id = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), sseConfig = structure(list(type = structure(logical(0), tags = list(type = "string")), keyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), creationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), updateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), propagatedSetLevelTags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), status = structure(logical(0), tags = list(type = "string")), statusMessage = structure(logical(0), tags = list(type = "string")), fallbackLocation = structure(logical(0), tags = list(type = "string")), s3Access = structure(list(s3Uri = structure(logical(0), tags = list(type = "string")), s3AccessPointArn = structure(logical(0), tags = list(type = "string")), accessLogLocation = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), eTagAlgorithmFamily = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
 }
 
 .omics$update_variant_store_input <- function(...) {

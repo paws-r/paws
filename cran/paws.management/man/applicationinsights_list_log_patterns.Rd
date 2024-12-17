@@ -23,7 +23,7 @@ value.}
 
 \item{NextToken}{The token to request the next page of results.}
 
-\item{AccountId}{The AWS account ID for the resource group owner.}
+\item{AccountId}{The Amazon Web Services account ID for the resource group owner.}
 }
 \description{
 Lists the log patterns in the specific log \code{LogPatternSet}.

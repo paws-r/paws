@@ -9,17 +9,21 @@ licensemanagerusersubscriptions_associate_user(
   Domain = NULL,
   IdentityProvider,
   InstanceId,
+  Tags = NULL,
   Username
 )
 }
 \arguments{
-\item{Domain}{The domain name of the user.}
+\item{Domain}{The domain name of the Active Directory that contains information for
+the user to associate.}
 
-\item{IdentityProvider}{[required] The identity provider of the user.}
+\item{IdentityProvider}{[required] The identity provider for the user.}
 
-\item{InstanceId}{[required] The ID of the EC2 instance, which provides user-based subscriptions.}
+\item{InstanceId}{[required] The ID of the EC2 instance that provides the user-based subscription.}
 
-\item{Username}{[required] The user name from the identity provider for the user.}
+\item{Tags}{The tags that apply for the user association.}
+
+\item{Username}{[required] The user name from the identity provider.}
 }
 \description{
 Associates the user to an EC2 instance to utilize user-based subscriptions.

@@ -44,16 +44,16 @@ connectivity. The default is public connectivity.}
 provide an address, a private IPv4 address will be automatically
 assigned.}
 
-\item{SecondaryAllocationIds}{Secondary EIP allocation IDs. For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html#nat-gateway-creating}{Create a NAT gateway}
+\item{SecondaryAllocationIds}{Secondary EIP allocation IDs. For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/nat-gateway-working-with.html}{Create a NAT gateway}
 in the \emph{Amazon VPC User Guide}.}
 
 \item{SecondaryPrivateIpAddresses}{Secondary private IPv4 addresses. For more information about secondary
-addresses, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html#nat-gateway-creating}{Create a NAT gateway}
+addresses, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/nat-gateway-working-with.html}{Create a NAT gateway}
 in the \emph{Amazon VPC User Guide}.}
 
 \item{SecondaryPrivateIpAddressCount}{[Private NAT gateway only] The number of secondary private IPv4
 addresses you want to assign to the NAT gateway. For more information
-about secondary addresses, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html#nat-gateway-creating}{Create a NAT gateway}
+about secondary addresses, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/nat-gateway-working-with.html}{Create a NAT gateway}
 in the \emph{Amazon VPC User Guide}.}
 }
 \description{

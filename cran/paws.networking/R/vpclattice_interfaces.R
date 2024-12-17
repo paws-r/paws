@@ -17,13 +17,13 @@ NULL
 
 .vpclattice$create_access_log_subscription_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), destinationArn = structure(logical(0), tags = list(type = "string")), resourceIdentifier = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  shape <- structure(list(clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), destinationArn = structure(logical(0), tags = list(type = "string")), resourceIdentifier = structure(logical(0), tags = list(type = "string")), serviceNetworkLogType = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .vpclattice$create_access_log_subscription_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(arn = structure(logical(0), tags = list(type = "string")), destinationArn = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), resourceArn = structure(logical(0), tags = list(type = "string")), resourceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(arn = structure(logical(0), tags = list(type = "string")), destinationArn = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), resourceArn = structure(logical(0), tags = list(type = "string")), resourceId = structure(logical(0), tags = list(type = "string")), serviceNetworkLogType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -36,6 +36,30 @@ NULL
 .vpclattice$create_listener_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(arn = structure(logical(0), tags = list(type = "string")), defaultAction = structure(list(fixedResponse = structure(list(statusCode = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), forward = structure(list(targetGroups = structure(list(structure(list(targetGroupIdentifier = structure(logical(0), tags = list(type = "string")), weight = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), port = structure(logical(0), tags = list(type = "integer", box = TRUE)), protocol = structure(logical(0), tags = list(type = "string")), serviceArn = structure(logical(0), tags = list(type = "string")), serviceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.vpclattice$create_resource_configuration_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(allowAssociationToShareableServiceNetwork = structure(logical(0), tags = list(type = "boolean", box = TRUE)), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), name = structure(logical(0), tags = list(type = "string")), portRanges = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), protocol = structure(logical(0), tags = list(type = "string")), resourceConfigurationDefinition = structure(list(arnResource = structure(list(arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), dnsResource = structure(list(domainName = structure(logical(0), tags = list(type = "string")), ipAddressType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ipResource = structure(list(ipAddress = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), resourceConfigurationGroupIdentifier = structure(logical(0), tags = list(type = "string")), resourceGatewayIdentifier = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.vpclattice$create_resource_configuration_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(allowAssociationToShareableServiceNetwork = structure(logical(0), tags = list(type = "boolean", box = TRUE)), arn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), failureReason = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), portRanges = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), protocol = structure(logical(0), tags = list(type = "string")), resourceConfigurationDefinition = structure(list(arnResource = structure(list(arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), dnsResource = structure(list(domainName = structure(logical(0), tags = list(type = "string")), ipAddressType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ipResource = structure(list(ipAddress = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), resourceConfigurationGroupId = structure(logical(0), tags = list(type = "string")), resourceGatewayId = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.vpclattice$create_resource_gateway_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), ipAddressType = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), securityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), subnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), vpcIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.vpclattice$create_resource_gateway_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(arn = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), ipAddressType = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), securityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), status = structure(logical(0), tags = list(type = "string")), subnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), vpcIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -65,13 +89,25 @@ NULL
 
 .vpclattice$create_service_network_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(authType = structure(logical(0), tags = list(type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), name = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  shape <- structure(list(authType = structure(logical(0), tags = list(type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), name = structure(logical(0), tags = list(type = "string")), sharingConfig = structure(list(enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .vpclattice$create_service_network_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(arn = structure(logical(0), tags = list(type = "string")), authType = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(arn = structure(logical(0), tags = list(type = "string")), authType = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), sharingConfig = structure(list(enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.vpclattice$create_service_network_resource_association_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), resourceConfigurationIdentifier = structure(logical(0), tags = list(type = "string")), serviceNetworkIdentifier = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.vpclattice$create_service_network_resource_association_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(arn = structure(logical(0), tags = list(type = "string")), createdBy = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -147,6 +183,42 @@ NULL
   return(populate(args, shape))
 }
 
+.vpclattice$delete_resource_configuration_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(resourceConfigurationIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "resourceConfigurationIdentifier", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.vpclattice$delete_resource_configuration_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.vpclattice$delete_resource_endpoint_association_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(resourceEndpointAssociationIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "resourceEndpointAssociationIdentifier", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.vpclattice$delete_resource_endpoint_association_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(arn = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), resourceConfigurationArn = structure(logical(0), tags = list(type = "string")), resourceConfigurationId = structure(logical(0), tags = list(type = "string")), vpcEndpointId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.vpclattice$delete_resource_gateway_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(resourceGatewayIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "resourceGatewayIdentifier", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.vpclattice$delete_resource_gateway_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(arn = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .vpclattice$delete_resource_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string"))), tags = list(type = "structure"))
@@ -192,6 +264,18 @@ NULL
 .vpclattice$delete_service_network_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.vpclattice$delete_service_network_resource_association_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(serviceNetworkResourceAssociationIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "serviceNetworkResourceAssociationIdentifier", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.vpclattice$delete_service_network_resource_association_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(arn = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -251,7 +335,7 @@ NULL
 
 .vpclattice$get_access_log_subscription_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(arn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), destinationArn = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), lastUpdatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), resourceArn = structure(logical(0), tags = list(type = "string")), resourceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(arn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), destinationArn = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), lastUpdatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), resourceArn = structure(logical(0), tags = list(type = "string")), resourceId = structure(logical(0), tags = list(type = "string")), serviceNetworkLogType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -276,6 +360,30 @@ NULL
 .vpclattice$get_listener_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(arn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), defaultAction = structure(list(fixedResponse = structure(list(statusCode = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), forward = structure(list(targetGroups = structure(list(structure(list(targetGroupIdentifier = structure(logical(0), tags = list(type = "string")), weight = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), id = structure(logical(0), tags = list(type = "string")), lastUpdatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), name = structure(logical(0), tags = list(type = "string")), port = structure(logical(0), tags = list(type = "integer", box = TRUE)), protocol = structure(logical(0), tags = list(type = "string")), serviceArn = structure(logical(0), tags = list(type = "string")), serviceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.vpclattice$get_resource_configuration_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(resourceConfigurationIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "resourceConfigurationIdentifier", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.vpclattice$get_resource_configuration_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(allowAssociationToShareableServiceNetwork = structure(logical(0), tags = list(type = "boolean", box = TRUE)), amazonManaged = structure(logical(0), tags = list(type = "boolean", box = TRUE)), arn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), customDomainName = structure(logical(0), tags = list(type = "string")), failureReason = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), lastUpdatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), name = structure(logical(0), tags = list(type = "string")), portRanges = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), protocol = structure(logical(0), tags = list(type = "string")), resourceConfigurationDefinition = structure(list(arnResource = structure(list(arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), dnsResource = structure(list(domainName = structure(logical(0), tags = list(type = "string")), ipAddressType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ipResource = structure(list(ipAddress = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), resourceConfigurationGroupId = structure(logical(0), tags = list(type = "string")), resourceGatewayId = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.vpclattice$get_resource_gateway_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(resourceGatewayIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "resourceGatewayIdentifier", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.vpclattice$get_resource_gateway_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(arn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), id = structure(logical(0), tags = list(type = "string")), ipAddressType = structure(logical(0), tags = list(type = "string")), lastUpdatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), name = structure(logical(0), tags = list(type = "string")), securityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), status = structure(logical(0), tags = list(type = "string")), subnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), vpcId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -323,7 +431,19 @@ NULL
 
 .vpclattice$get_service_network_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(arn = structure(logical(0), tags = list(type = "string")), authType = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), id = structure(logical(0), tags = list(type = "string")), lastUpdatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), name = structure(logical(0), tags = list(type = "string")), numberOfAssociatedServices = structure(logical(0), tags = list(type = "long", box = TRUE)), numberOfAssociatedVPCs = structure(logical(0), tags = list(type = "long", box = TRUE))), tags = list(type = "structure"))
+  shape <- structure(list(arn = structure(logical(0), tags = list(type = "string")), authType = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), id = structure(logical(0), tags = list(type = "string")), lastUpdatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), name = structure(logical(0), tags = list(type = "string")), numberOfAssociatedServices = structure(logical(0), tags = list(type = "long", box = TRUE)), numberOfAssociatedVPCs = structure(logical(0), tags = list(type = "long", box = TRUE)), sharingConfig = structure(list(enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.vpclattice$get_service_network_resource_association_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(serviceNetworkResourceAssociationIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "serviceNetworkResourceAssociationIdentifier", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.vpclattice$get_service_network_resource_association_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(arn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), createdBy = structure(logical(0), tags = list(type = "string")), dnsEntry = structure(list(domainName = structure(logical(0), tags = list(type = "string")), hostedZoneId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), failureCode = structure(logical(0), tags = list(type = "string")), failureReason = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), isManagedAssociation = structure(logical(0), tags = list(type = "boolean", box = TRUE)), lastUpdatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), privateDnsEntry = structure(list(domainName = structure(logical(0), tags = list(type = "string")), hostedZoneId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), resourceConfigurationArn = structure(logical(0), tags = list(type = "string")), resourceConfigurationId = structure(logical(0), tags = list(type = "string")), resourceConfigurationName = structure(logical(0), tags = list(type = "string")), serviceNetworkArn = structure(logical(0), tags = list(type = "string")), serviceNetworkId = structure(logical(0), tags = list(type = "string")), serviceNetworkName = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -371,7 +491,7 @@ NULL
 
 .vpclattice$list_access_log_subscriptions_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(items = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), destinationArn = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), lastUpdatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), resourceArn = structure(logical(0), tags = list(type = "string")), resourceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(items = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), destinationArn = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), lastUpdatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), resourceArn = structure(logical(0), tags = list(type = "string")), resourceId = structure(logical(0), tags = list(type = "string")), serviceNetworkLogType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -387,6 +507,42 @@ NULL
   return(populate(args, shape))
 }
 
+.vpclattice$list_resource_configurations_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), resourceConfigurationGroupIdentifier = structure(logical(0), tags = list(location = "querystring", locationName = "resourceConfigurationGroupIdentifier", type = "string")), resourceGatewayIdentifier = structure(logical(0), tags = list(location = "querystring", locationName = "resourceGatewayIdentifier", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.vpclattice$list_resource_configurations_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(items = structure(list(structure(list(amazonManaged = structure(logical(0), tags = list(type = "boolean", box = TRUE)), arn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), id = structure(logical(0), tags = list(type = "string")), lastUpdatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), name = structure(logical(0), tags = list(type = "string")), resourceConfigurationGroupId = structure(logical(0), tags = list(type = "string")), resourceGatewayId = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.vpclattice$list_resource_endpoint_associations_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), resourceConfigurationIdentifier = structure(logical(0), tags = list(location = "querystring", locationName = "resourceConfigurationIdentifier", type = "string")), resourceEndpointAssociationIdentifier = structure(logical(0), tags = list(location = "querystring", locationName = "resourceEndpointAssociationIdentifier", type = "string")), vpcEndpointId = structure(logical(0), tags = list(location = "querystring", locationName = "vpcEndpointId", type = "string")), vpcEndpointOwner = structure(logical(0), tags = list(location = "querystring", locationName = "vpcEndpointOwner", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.vpclattice$list_resource_endpoint_associations_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(items = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), createdBy = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), resourceConfigurationArn = structure(logical(0), tags = list(type = "string")), resourceConfigurationId = structure(logical(0), tags = list(type = "string")), resourceConfigurationName = structure(logical(0), tags = list(type = "string")), vpcEndpointId = structure(logical(0), tags = list(type = "string")), vpcEndpointOwner = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.vpclattice$list_resource_gateways_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.vpclattice$list_resource_gateways_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(items = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), id = structure(logical(0), tags = list(type = "string")), ipAddressType = structure(logical(0), tags = list(type = "string")), lastUpdatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), name = structure(logical(0), tags = list(type = "string")), securityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), status = structure(logical(0), tags = list(type = "string")), subnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), vpcIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .vpclattice$list_rules_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(listenerIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "listenerIdentifier", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), serviceIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "serviceIdentifier", type = "string"))), tags = list(type = "structure"))
@@ -396,6 +552,18 @@ NULL
 .vpclattice$list_rules_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(items = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), id = structure(logical(0), tags = list(type = "string")), isDefault = structure(logical(0), tags = list(type = "boolean", box = TRUE)), lastUpdatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), name = structure(logical(0), tags = list(type = "string")), priority = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.vpclattice$list_service_network_resource_associations_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), resourceConfigurationIdentifier = structure(logical(0), tags = list(location = "querystring", locationName = "resourceConfigurationIdentifier", type = "string")), serviceNetworkIdentifier = structure(logical(0), tags = list(location = "querystring", locationName = "serviceNetworkIdentifier", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.vpclattice$list_service_network_resource_associations_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(items = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), createdBy = structure(logical(0), tags = list(type = "string")), dnsEntry = structure(list(domainName = structure(logical(0), tags = list(type = "string")), hostedZoneId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), failureCode = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), isManagedAssociation = structure(logical(0), tags = list(type = "boolean", box = TRUE)), privateDnsEntry = structure(list(domainName = structure(logical(0), tags = list(type = "string")), hostedZoneId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), resourceConfigurationArn = structure(logical(0), tags = list(type = "string")), resourceConfigurationId = structure(logical(0), tags = list(type = "string")), resourceConfigurationName = structure(logical(0), tags = list(type = "string")), serviceNetworkArn = structure(logical(0), tags = list(type = "string")), serviceNetworkId = structure(logical(0), tags = list(type = "string")), serviceNetworkName = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -423,6 +591,18 @@ NULL
   return(populate(args, shape))
 }
 
+.vpclattice$list_service_network_vpc_endpoint_associations_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), serviceNetworkIdentifier = structure(logical(0), tags = list(location = "querystring", locationName = "serviceNetworkIdentifier", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.vpclattice$list_service_network_vpc_endpoint_associations_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(items = structure(list(structure(list(createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), id = structure(logical(0), tags = list(type = "string")), serviceNetworkArn = structure(logical(0), tags = list(type = "string")), state = structure(logical(0), tags = list(type = "string")), vpcEndpointId = structure(logical(0), tags = list(type = "string")), vpcEndpointOwnerId = structure(logical(0), tags = list(type = "string")), vpcId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .vpclattice$list_service_networks_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
@@ -431,7 +611,7 @@ NULL
 
 .vpclattice$list_service_networks_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(items = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), id = structure(logical(0), tags = list(type = "string")), lastUpdatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), name = structure(logical(0), tags = list(type = "string")), numberOfAssociatedServices = structure(logical(0), tags = list(type = "long", box = TRUE)), numberOfAssociatedVPCs = structure(logical(0), tags = list(type = "long", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(items = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), id = structure(logical(0), tags = list(type = "string")), lastUpdatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), name = structure(logical(0), tags = list(type = "string")), numberOfAssociatedResourceConfigurations = structure(logical(0), tags = list(type = "long", box = TRUE)), numberOfAssociatedServices = structure(logical(0), tags = list(type = "long", box = TRUE)), numberOfAssociatedVPCs = structure(logical(0), tags = list(type = "long", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -564,6 +744,30 @@ NULL
 .vpclattice$update_listener_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(arn = structure(logical(0), tags = list(type = "string")), defaultAction = structure(list(fixedResponse = structure(list(statusCode = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), forward = structure(list(targetGroups = structure(list(structure(list(targetGroupIdentifier = structure(logical(0), tags = list(type = "string")), weight = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), port = structure(logical(0), tags = list(type = "integer", box = TRUE)), protocol = structure(logical(0), tags = list(type = "string")), serviceArn = structure(logical(0), tags = list(type = "string")), serviceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.vpclattice$update_resource_configuration_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(allowAssociationToShareableServiceNetwork = structure(logical(0), tags = list(type = "boolean", box = TRUE)), portRanges = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), resourceConfigurationDefinition = structure(list(arnResource = structure(list(arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), dnsResource = structure(list(domainName = structure(logical(0), tags = list(type = "string")), ipAddressType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ipResource = structure(list(ipAddress = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), resourceConfigurationIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "resourceConfigurationIdentifier", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.vpclattice$update_resource_configuration_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(allowAssociationToShareableServiceNetwork = structure(logical(0), tags = list(type = "boolean", box = TRUE)), arn = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), portRanges = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), protocol = structure(logical(0), tags = list(type = "string")), resourceConfigurationDefinition = structure(list(arnResource = structure(list(arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), dnsResource = structure(list(domainName = structure(logical(0), tags = list(type = "string")), ipAddressType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ipResource = structure(list(ipAddress = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), resourceConfigurationGroupId = structure(logical(0), tags = list(type = "string")), resourceGatewayId = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.vpclattice$update_resource_gateway_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(resourceGatewayIdentifier = structure(logical(0), tags = list(location = "uri", locationName = "resourceGatewayIdentifier", type = "string")), securityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.vpclattice$update_resource_gateway_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(arn = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), ipAddressType = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), securityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), status = structure(logical(0), tags = list(type = "string")), subnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), vpcId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

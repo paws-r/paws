@@ -151,7 +151,11 @@ NULL
 #'  \link[=iam_detach_group_policy]{detach_group_policy} \tab Removes the specified managed policy from the specified IAM group\cr
 #'  \link[=iam_detach_role_policy]{detach_role_policy} \tab Removes the specified managed policy from the specified role\cr
 #'  \link[=iam_detach_user_policy]{detach_user_policy} \tab Removes the specified managed policy from the specified user\cr
+#'  \link[=iam_disable_organizations_root_credentials_management]{disable_organizations_root_credentials_management} \tab Disables the management of privileged root user credentials across member accounts in your organization\cr
+#'  \link[=iam_disable_organizations_root_sessions]{disable_organizations_root_sessions} \tab Disables root user sessions for privileged tasks across member accounts in your organization\cr
 #'  \link[=iam_enable_mfa_device]{enable_mfa_device} \tab Enables the specified MFA device and associates it with the specified IAM user\cr
+#'  \link[=iam_enable_organizations_root_credentials_management]{enable_organizations_root_credentials_management} \tab Enables the management of privileged root user credentials across member accounts in your organization\cr
+#'  \link[=iam_enable_organizations_root_sessions]{enable_organizations_root_sessions} \tab Allows the management account or delegated administrator to perform privileged tasks on member accounts in your organization\cr
 #'  \link[=iam_generate_credential_report]{generate_credential_report} \tab Generates a credential report for the Amazon Web Services account\cr
 #'  \link[=iam_generate_organizations_access_report]{generate_organizations_access_report} \tab Generates a report for service last accessed data for Organizations\cr
 #'  \link[=iam_generate_service_last_accessed_details]{generate_service_last_accessed_details} \tab Generates a report that includes details about when an IAM resource (user, group, role, or policy) was last used in an attempt to access Amazon Web Services services\cr
@@ -197,6 +201,7 @@ NULL
 #'  \link[=iam_list_mfa_device_tags]{list_mfa_device_tags} \tab Lists the tags that are attached to the specified IAM virtual multi-factor authentication (MFA) device\cr
 #'  \link[=iam_list_open_id_connect_providers]{list_open_id_connect_providers} \tab Lists information about the IAM OpenID Connect (OIDC) provider resource objects defined in the Amazon Web Services account\cr
 #'  \link[=iam_list_open_id_connect_provider_tags]{list_open_id_connect_provider_tags} \tab Lists the tags that are attached to the specified OpenID Connect (OIDC)-compatible identity provider\cr
+#'  \link[=iam_list_organizations_features]{list_organizations_features} \tab Lists the centralized root access features enabled for your organization\cr
 #'  \link[=iam_list_policies]{list_policies} \tab Lists all the managed policies that are available in your Amazon Web Services account, including your own customer-defined managed policies and all Amazon Web Services managed policies\cr
 #'  \link[=iam_list_policies_granting_service_access]{list_policies_granting_service_access} \tab Retrieves a list of policies that the IAM identity (user, group, or role) can use to access each specified service\cr
 #'  \link[=iam_list_policy_tags]{list_policy_tags} \tab Lists the tags that are attached to the specified IAM customer managed policy\cr
@@ -293,7 +298,7 @@ iam <- function(config = list(), credentials = list(), endpoint = NULL, region =
 
 .iam$metadata <- list(
   service_name = "iam",
-  endpoints = list("*" = list(endpoint = "https://iam.amazonaws.com", global = TRUE), "cn-*" = list(endpoint = "iam.cn-north-1.amazonaws.com.cn", global = TRUE), "us-iso-*" = list(endpoint = "iam.us-iso-east-1.c2s.ic.gov", global = TRUE), "us-gov-*" = list(endpoint = "iam.us-gov.amazonaws.com", global = TRUE), "eu-isoe-*" = list(endpoint = "iam.{region}.cloud.adc-e.uk", global = FALSE), "us-isob-*" = list(endpoint = "iam.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "iam.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("aws-global" = list(endpoint = "iam.amazonaws.com", global = TRUE), "us-east-1" = list(endpoint = "iam.amazonaws.com", global = TRUE), "^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "iam.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "iam.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "iam.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "iam.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "iam.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "iam.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "iam.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "IAM",
   api_version = "2010-05-08",
   signing_name = "iam",

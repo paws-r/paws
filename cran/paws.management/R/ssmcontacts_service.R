@@ -93,8 +93,12 @@ NULL
 #' @examples
 #' \dontrun{
 #' svc <- ssmcontacts()
+#' # The following accept-page operation uses an accept code sent to the
+#' # contact channel to accept a page.
 #' svc$accept_page(
-#'   Foo = 123
+#'   AcceptCode = "425440",
+#'   AcceptType = "READ",
+#'   PageId = "arn:aws:ssm-contacts:us-east-2:682428703967:page/akuam/94ea0c7b..."
 #' )
 #' }
 #'
@@ -170,7 +174,7 @@ ssmcontacts <- function(config = list(), credentials = list(), endpoint = NULL, 
 
 .ssmcontacts$metadata <- list(
   service_name = "ssmcontacts",
-  endpoints = list("*" = list(endpoint = "ssm-contacts.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "ssm-contacts.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "ssm-contacts.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "ssm-contacts.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "ssm-contacts.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "ssm-contacts.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "ssm-contacts.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "ssm-contacts.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "ssm-contacts.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "ssm-contacts.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "ssm-contacts.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "ssm-contacts.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "ssm-contacts.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "SSM Contacts",
   api_version = "2021-05-03",
   signing_name = "ssm-contacts",

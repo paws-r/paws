@@ -3374,7 +3374,7 @@ waf_get_rate_based_rule_managed_keys <- function(RuleId, NextMarker = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextMarker", output_token = "NextMarker", result_key = "ManagedKeys"),
     stream_api = FALSE
   )
   input <- .waf$get_rate_based_rule_managed_keys_input(RuleId = RuleId, NextMarker = NextMarker)
@@ -4270,7 +4270,7 @@ waf_list_activated_rules_in_rule_group <- function(RuleGroupId = NULL, NextMarke
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextMarker", limit_key = "Limit", output_token = "NextMarker", result_key = "ActivatedRules"),
     stream_api = FALSE
   )
   input <- .waf$list_activated_rules_in_rule_group_input(RuleGroupId = RuleGroupId, NextMarker = NextMarker, Limit = Limit)
@@ -4347,7 +4347,7 @@ waf_list_byte_match_sets <- function(NextMarker = NULL, Limit = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextMarker", output_token = "NextMarker", limit_key = "Limit", result_key = "ByteMatchSets"),
     stream_api = FALSE
   )
   input <- .waf$list_byte_match_sets_input(NextMarker = NextMarker, Limit = Limit)
@@ -4424,7 +4424,7 @@ waf_list_geo_match_sets <- function(NextMarker = NULL, Limit = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextMarker", limit_key = "Limit", output_token = "NextMarker", result_key = "GeoMatchSets"),
     stream_api = FALSE
   )
   input <- .waf$list_geo_match_sets_input(NextMarker = NextMarker, Limit = Limit)
@@ -4507,7 +4507,7 @@ waf_list_ip_sets <- function(NextMarker = NULL, Limit = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextMarker", output_token = "NextMarker", limit_key = "Limit", result_key = "IPSets"),
     stream_api = FALSE
   )
   input <- .waf$list_ip_sets_input(NextMarker = NextMarker, Limit = Limit)
@@ -4594,7 +4594,7 @@ waf_list_logging_configurations <- function(NextMarker = NULL, Limit = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextMarker", limit_key = "Limit", output_token = "NextMarker", result_key = "LoggingConfigurations"),
     stream_api = FALSE
   )
   input <- .waf$list_logging_configurations_input(NextMarker = NextMarker, Limit = Limit)
@@ -4670,7 +4670,7 @@ waf_list_rate_based_rules <- function(NextMarker = NULL, Limit = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextMarker", limit_key = "Limit", output_token = "NextMarker", result_key = "Rules"),
     stream_api = FALSE
   )
   input <- .waf$list_rate_based_rules_input(NextMarker = NextMarker, Limit = Limit)
@@ -4747,7 +4747,7 @@ waf_list_regex_match_sets <- function(NextMarker = NULL, Limit = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextMarker", limit_key = "Limit", output_token = "NextMarker", result_key = "RegexMatchSets"),
     stream_api = FALSE
   )
   input <- .waf$list_regex_match_sets_input(NextMarker = NextMarker, Limit = Limit)
@@ -4825,7 +4825,7 @@ waf_list_regex_pattern_sets <- function(NextMarker = NULL, Limit = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextMarker", limit_key = "Limit", output_token = "NextMarker", result_key = "RegexPatternSets"),
     stream_api = FALSE
   )
   input <- .waf$list_regex_pattern_sets_input(NextMarker = NextMarker, Limit = Limit)
@@ -4901,7 +4901,7 @@ waf_list_rule_groups <- function(NextMarker = NULL, Limit = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextMarker", limit_key = "Limit", output_token = "NextMarker", result_key = "RuleGroups"),
     stream_api = FALSE
   )
   input <- .waf$list_rule_groups_input(NextMarker = NextMarker, Limit = Limit)
@@ -4985,7 +4985,7 @@ waf_list_rules <- function(NextMarker = NULL, Limit = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextMarker", output_token = "NextMarker", limit_key = "Limit", result_key = "Rules"),
     stream_api = FALSE
   )
   input <- .waf$list_rules_input(NextMarker = NextMarker, Limit = Limit)
@@ -5072,7 +5072,7 @@ waf_list_size_constraint_sets <- function(NextMarker = NULL, Limit = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextMarker", output_token = "NextMarker", limit_key = "Limit", result_key = "SizeConstraintSets"),
     stream_api = FALSE
   )
   input <- .waf$list_size_constraint_sets_input(NextMarker = NextMarker, Limit = Limit)
@@ -5158,7 +5158,7 @@ waf_list_sql_injection_match_sets <- function(NextMarker = NULL, Limit = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextMarker", output_token = "NextMarker", limit_key = "Limit", result_key = "SqlInjectionMatchSets"),
     stream_api = FALSE
   )
   input <- .waf$list_sql_injection_match_sets_input(NextMarker = NextMarker, Limit = Limit)
@@ -5236,7 +5236,7 @@ waf_list_subscribed_rule_groups <- function(NextMarker = NULL, Limit = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextMarker", limit_key = "Limit", output_token = "NextMarker", result_key = "RuleGroups"),
     stream_api = FALSE
   )
   input <- .waf$list_subscribed_rule_groups_input(NextMarker = NextMarker, Limit = Limit)
@@ -5404,7 +5404,7 @@ waf_list_web_ac_ls <- function(NextMarker = NULL, Limit = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextMarker", output_token = "NextMarker", limit_key = "Limit", result_key = "WebACLs"),
     stream_api = FALSE
   )
   input <- .waf$list_web_ac_ls_input(NextMarker = NextMarker, Limit = Limit)
@@ -5489,7 +5489,7 @@ waf_list_xss_match_sets <- function(NextMarker = NULL, Limit = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextMarker", output_token = "NextMarker", limit_key = "Limit", result_key = "XssMatchSets"),
     stream_api = FALSE
   )
   input <- .waf$list_xss_match_sets_input(NextMarker = NextMarker, Limit = Limit)

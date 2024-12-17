@@ -5,12 +5,9 @@
 \title{Describes the ID format settings for resources for the specified IAM
 user, IAM role, or root user}
 \usage{
-ec2_describe_identity_id_format(PrincipalArn, Resource = NULL)
+ec2_describe_identity_id_format(Resource = NULL, PrincipalArn)
 }
 \arguments{
-\item{PrincipalArn}{[required] The ARN of the principal, which can be an IAM role, IAM user, or the
-root user.}
-
 \item{Resource}{The type of resource: \code{bundle} | \code{conversion-task} | \code{customer-gateway}
 | \code{dhcp-options} | \code{elastic-ip-allocation} | \code{elastic-ip-association} |
 \code{export-task} | \code{flow-log} | \code{image} | \code{import-task} | \code{instance} |
@@ -21,6 +18,9 @@ root user.}
 \code{subnet-cidr-block-association} | \code{volume} | \code{vpc} |
 \code{vpc-cidr-block-association} | \code{vpc-endpoint} | \code{vpc-peering-connection}
 | \code{vpn-connection} | \code{vpn-gateway}}
+
+\item{PrincipalArn}{[required] The ARN of the principal, which can be an IAM role, IAM user, or the
+root user.}
 }
 \description{
 Describes the ID format settings for resources for the specified IAM user, IAM role, or root user. For example, you can view the resource types that are enabled for longer IDs. This request only returns information about resource types whose ID formats can be modified; it does not return information about other resource types. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/resources.html}{Resource IDs} in the \emph{Amazon Elastic Compute Cloud User Guide}.

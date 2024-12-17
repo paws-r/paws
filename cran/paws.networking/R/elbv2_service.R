@@ -147,6 +147,7 @@ NULL
 #'  \link[=elbv2_delete_trust_store]{delete_trust_store} \tab Deletes a trust store\cr
 #'  \link[=elbv2_deregister_targets]{deregister_targets} \tab Deregisters the specified targets from the specified target group\cr
 #'  \link[=elbv2_describe_account_limits]{describe_account_limits} \tab Describes the current Elastic Load Balancing resource limits for your Amazon Web Services account\cr
+#'  \link[=elbv2_describe_capacity_reservation]{describe_capacity_reservation} \tab Describes the capacity reservation status for the specified load balancer\cr
 #'  \link[=elbv2_describe_listener_attributes]{describe_listener_attributes} \tab Describes the attributes for the specified listener\cr
 #'  \link[=elbv2_describe_listener_certificates]{describe_listener_certificates} \tab Describes the default certificate and the certificate list for the specified HTTPS or TLS listener\cr
 #'  \link[=elbv2_describe_listeners]{describe_listeners} \tab Describes the specified listeners or the listeners for the specified Application Load Balancer, Network Load Balancer, or Gateway Load Balancer\cr
@@ -164,6 +165,7 @@ NULL
 #'  \link[=elbv2_get_resource_policy]{get_resource_policy} \tab Retrieves the resource policy for a specified resource\cr
 #'  \link[=elbv2_get_trust_store_ca_certificates_bundle]{get_trust_store_ca_certificates_bundle} \tab Retrieves the ca certificate bundle\cr
 #'  \link[=elbv2_get_trust_store_revocation_content]{get_trust_store_revocation_content} \tab Retrieves the specified revocation file\cr
+#'  \link[=elbv2_modify_capacity_reservation]{modify_capacity_reservation} \tab Modifies the capacity reservation of the specified load balancer\cr
 #'  \link[=elbv2_modify_listener]{modify_listener} \tab Replaces the specified properties of the specified listener\cr
 #'  \link[=elbv2_modify_listener_attributes]{modify_listener_attributes} \tab Modifies the specified attributes of the specified listener\cr
 #'  \link[=elbv2_modify_load_balancer_attributes]{modify_load_balancer_attributes} \tab Modifies the specified attributes of the specified Application Load Balancer, Network Load Balancer, or Gateway Load Balancer\cr
@@ -210,7 +212,7 @@ elbv2 <- function(config = list(), credentials = list(), endpoint = NULL, region
 
 .elbv2$metadata <- list(
   service_name = "elasticloadbalancing",
-  endpoints = list("*" = list(endpoint = "elasticloadbalancing.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "elasticloadbalancing.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "elasticloadbalancing.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "elasticloadbalancing.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "elasticloadbalancing.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "elasticloadbalancing.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "elasticloadbalancing.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "elasticloadbalancing.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "elasticloadbalancing.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "elasticloadbalancing.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "elasticloadbalancing.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "elasticloadbalancing.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "elasticloadbalancing.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Elastic Load Balancing v2",
   api_version = "2015-12-01",
   signing_name = "elasticloadbalancing",

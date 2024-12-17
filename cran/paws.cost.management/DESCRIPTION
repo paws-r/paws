@@ -21,6 +21,9 @@ Encoding: UTF-8
 Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace", "collate"))
 RoxygenNote: 7.3.2
 Collate: 
+    'billing_service.R'
+    'billing_interfaces.R'
+    'billing_operations.R'
     'billingconductor_service.R'
     'billingconductor_interfaces.R'
     'billingconductor_operations.R'

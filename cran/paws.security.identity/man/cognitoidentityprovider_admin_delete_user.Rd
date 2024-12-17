@@ -2,12 +2,12 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_admin_delete_user}
 \alias{cognitoidentityprovider_admin_delete_user}
-\title{Deletes a user as an administrator}
+\title{Deletes a user profile in your user pool}
 \usage{
 cognitoidentityprovider_admin_delete_user(UserPoolId, Username)
 }
 \arguments{
-\item{UserPoolId}{[required] The user pool ID for the user pool where you want to delete the user.}
+\item{UserPoolId}{[required] The ID of the user pool where you want to delete the user.}
 
 \item{Username}{[required] The username of the user that you want to query or modify. The value of
 this parameter is typically your user's username, but it can be any of
@@ -16,7 +16,7 @@ user pool, this value must be the \code{sub} of a local user or the username
 of a user from a third-party IdP.}
 }
 \description{
-Deletes a user as an administrator. Works on any user.
+Deletes a user profile in your user pool.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_admin_delete_user/} for full documentation.
 }

@@ -113,6 +113,7 @@ permissions to use the service, see the \href{https://docs.aws.amazon.com/comput
 \link[paws.compute:computeoptimizer_export_ebs_volume_recommendations]{export_ebs_volume_recommendations} \tab Exports optimization recommendations for Amazon EBS volumes\cr
 \link[paws.compute:computeoptimizer_export_ec2_instance_recommendations]{export_ec2_instance_recommendations} \tab Exports optimization recommendations for Amazon EC2 instances\cr
 \link[paws.compute:computeoptimizer_export_ecs_service_recommendations]{export_ecs_service_recommendations} \tab Exports optimization recommendations for Amazon ECS services on Fargate\cr
+\link[paws.compute:computeoptimizer_export_idle_recommendations]{export_idle_recommendations} \tab Export optimization recommendations for your idle resources\cr
 \link[paws.compute:computeoptimizer_export_lambda_function_recommendations]{export_lambda_function_recommendations} \tab Exports optimization recommendations for Lambda functions\cr
 \link[paws.compute:computeoptimizer_export_license_recommendations]{export_license_recommendations} \tab Export optimization recommendations for your licenses\cr
 \link[paws.compute:computeoptimizer_export_rds_database_recommendations]{export_rds_database_recommendations} \tab Export optimization recommendations for your Amazon Relational Database Service (Amazon RDS)\cr
@@ -125,6 +126,7 @@ permissions to use the service, see the \href{https://docs.aws.amazon.com/comput
 \link[paws.compute:computeoptimizer_get_effective_recommendation_preferences]{get_effective_recommendation_preferences} \tab Returns the recommendation preferences that are in effect for a given resource, such as enhanced infrastructure metrics\cr
 \link[paws.compute:computeoptimizer_get_enrollment_status]{get_enrollment_status} \tab Returns the enrollment (opt in) status of an account to the Compute Optimizer service\cr
 \link[paws.compute:computeoptimizer_get_enrollment_statuses_for_organization]{get_enrollment_statuses_for_organization} \tab Returns the Compute Optimizer enrollment (opt-in) status of organization member accounts, if your account is an organization management account\cr
+\link[paws.compute:computeoptimizer_get_idle_recommendations]{get_idle_recommendations} \tab Returns idle resource recommendations\cr
 \link[paws.compute:computeoptimizer_get_lambda_function_recommendations]{get_lambda_function_recommendations} \tab Returns Lambda function recommendations\cr
 \link[paws.compute:computeoptimizer_get_license_recommendations]{get_license_recommendations} \tab Returns license recommendations for Amazon EC2 instances that run on a specific license\cr
 \link[paws.compute:computeoptimizer_get_rds_database_recommendation_projected_metrics]{get_rds_database_recommendation_projected_metrics} \tab Returns the projected metrics of Amazon RDS recommendations\cr

@@ -517,7 +517,7 @@ devopsguru_get_resource_collection <- function(ResourceCollectionType, NextToken
     http_method = "GET",
     http_path = "/resource-collections/{ResourceCollectionType}",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", non_aggregate_keys = list("ResourceCollection"), output_token = "NextToken", result_key = list("ResourceCollection.CloudFormation.StackNames", "ResourceCollection.Tags")),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = list( "ResourceCollection.CloudFormation.StackNames", "ResourceCollection.Tags"), non_aggregate_keys = list("ResourceCollection")),
     stream_api = FALSE
   )
   input <- .devopsguru$get_resource_collection_input(ResourceCollectionType = ResourceCollectionType, NextToken = NextToken)
@@ -558,7 +558,7 @@ devopsguru_list_anomalies_for_insight <- function(InsightId, StartTimeRange = NU
     http_method = "POST",
     http_path = "/anomalies/insight/{InsightId}",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = list("ReactiveAnomalies", "ProactiveAnomalies")),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = list("ReactiveAnomalies", "ProactiveAnomalies")),
     stream_api = FALSE
   )
   input <- .devopsguru$list_anomalies_for_insight_input(InsightId = InsightId, StartTimeRange = StartTimeRange, MaxResults = MaxResults, NextToken = NextToken, AccountId = AccountId, Filters = Filters)
@@ -632,7 +632,7 @@ devopsguru_list_events <- function(Filters, MaxResults = NULL, NextToken = NULL,
     http_method = "POST",
     http_path = "/events",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Events"),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Events"),
     stream_api = FALSE
   )
   input <- .devopsguru$list_events_input(Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, AccountId = AccountId)
@@ -669,7 +669,7 @@ devopsguru_list_insights <- function(StatusFilter, MaxResults = NULL, NextToken 
     http_method = "POST",
     http_path = "/insights",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = list("ProactiveInsights", "ReactiveInsights")),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = list("ProactiveInsights", "ReactiveInsights")),
     stream_api = FALSE
   )
   input <- .devopsguru$list_insights_input(StatusFilter = StatusFilter, MaxResults = MaxResults, NextToken = NextToken)
@@ -915,7 +915,7 @@ devopsguru_search_insights <- function(StartTimeRange, Filters = NULL, MaxResult
     http_method = "POST",
     http_path = "/insights/search",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = list("ProactiveInsights", "ReactiveInsights")),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = list("ProactiveInsights", "ReactiveInsights")),
     stream_api = FALSE
   )
   input <- .devopsguru$search_insights_input(StartTimeRange = StartTimeRange, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, Type = Type)

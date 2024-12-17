@@ -9,7 +9,7 @@ applicationinsights_describe_observation(ObservationId, AccountId = NULL)
 \arguments{
 \item{ObservationId}{[required] The ID of the observation.}
 
-\item{AccountId}{The AWS account ID for the resource group owner.}
+\item{AccountId}{The Amazon Web Services account ID for the resource group owner.}
 }
 \description{
 Describes an anomaly or error with the application.

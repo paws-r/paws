@@ -17,18 +17,19 @@ apigateway_create_domain_name(
   tags = NULL,
   securityPolicy = NULL,
   mutualTlsAuthentication = NULL,
-  ownershipVerificationCertificateArn = NULL
+  ownershipVerificationCertificateArn = NULL,
+  policy = NULL
 )
 }
 \arguments{
 \item{domainName}{[required] The name of the DomainName resource.}
 
 \item{certificateName}{The user-friendly name of the certificate that will be used by
-edge-optimized endpoint for this domain name.}
+edge-optimized endpoint or private endpoint for this domain name.}
 
 \item{certificateBody}{[Deprecated] The body of the server certificate that will be used by
-edge-optimized endpoint for this domain name provided by your
-certificate authority.}
+edge-optimized endpoint or private endpoint for this domain name
+provided by your certificate authority.}
 
 \item{certificatePrivateKey}{[Deprecated] Your edge-optimized endpoint's domain name certificate's
 private key.}
@@ -42,8 +43,8 @@ certificates that were provided by your certificate authority. Do not
 include any intermediaries that are not in the chain of trust path.}
 
 \item{certificateArn}{The reference to an Amazon Web Services-managed certificate that will be
-used by edge-optimized endpoint for this domain name. Certificate
-Manager is the only supported source.}
+used by edge-optimized endpoint or private endpoint for this domain
+name. Certificate Manager is the only supported source.}
 
 \item{regionalCertificateName}{The user-friendly name of the certificate that will be used by regional
 endpoint for this domain name.}
@@ -68,6 +69,10 @@ DomainName. The valid values are \code{TLS_1_0} and \code{TLS_1_2}.}
 your custom domain. Only required when configuring mutual TLS and using
 an ACM imported or private CA certificate ARN as the
 regionalCertificateArn.}
+
+\item{policy}{A stringified JSON policy document that applies to the \code{execute-api}
+service for this DomainName regardless of the caller and Method
+configuration. Supported only for private custom domain names.}
 }
 \description{
 Creates a new domain name.

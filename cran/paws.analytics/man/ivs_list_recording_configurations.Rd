@@ -6,14 +6,14 @@
 account, in the Amazon Web Services region where the API request is
 processed}
 \usage{
-ivs_list_recording_configurations(nextToken = NULL, maxResults = NULL)
+ivs_list_recording_configurations(maxResults = NULL, nextToken = NULL)
 }
 \arguments{
-\item{nextToken}{The first recording configuration to retrieve. This is used for
-pagination; see the \code{nextToken} response field.}
-
 \item{maxResults}{Maximum number of recording configurations to return. Default: your
 service quota or 100, whichever is smaller.}
+
+\item{nextToken}{The first recording configuration to retrieve. This is used for
+pagination; see the \code{nextToken} response field.}
 }
 \description{
 Gets summary information about all recording configurations in your account, in the Amazon Web Services region where the API request is processed.

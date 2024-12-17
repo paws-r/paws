@@ -8,8 +8,12 @@ specifying a list of Amazon Web Services account IDs}
 guardduty_create_members(DetectorId, AccountDetails)
 }
 \arguments{
-\item{DetectorId}{[required] The unique ID of the detector of the GuardDuty account that you want to
-associate member accounts with.}
+\item{DetectorId}{[required] The unique ID of the detector of the GuardDuty account for which you
+want to associate member accounts.
+
+To find the \code{detectorId} in the current Region, see the Settings page in
+the GuardDuty console, or run the
+\code{\link[=guardduty_list_detectors]{list_detectors}} API.}
 
 \item{AccountDetails}{[required] A list of account ID and email address pairs of the accounts that you
 want to associate with the GuardDuty administrator account.}

@@ -76,7 +76,7 @@ For server-side composition:
 \itemize{
 \item \strong{Composition process} — Composites participants of a stage into a
 single video and forwards it to a set of outputs (e.g., IVS
-channels). Composition endpoints support this process.
+channels). Composition operations support this process.
 \item \strong{Composition} — Controls the look of the outputs, including how
 participants are positioned in the video.
 }
@@ -88,16 +88,17 @@ For more information about your IVS live stream, also see \href{https://docs.aws
 A \emph{tag} is a metadata label that you assign to an AWS resource. A tag
 comprises a \emph{key} and a \emph{value}, both set by you. For example, you might
 set a tag as \code{topic:nature} to label a particular video category. See
-\href{https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html}{Tagging AWS Resources}
-for more information, including restrictions that apply to tags and "Tag
-naming limits and requirements"; Amazon IVS stages has no
-service-specific constraints beyond what is documented there.
+\href{https://docs.aws.amazon.com/tag-editor/latest/userguide/best-practices-and-strats.html}{Best practices and strategies}
+in \emph{Tagging AWS Resources and Tag Editor} for details, including
+restrictions that apply to tags and "Tag naming limits and
+requirements"; Amazon IVS stages has no service-specific constraints
+beyond what is documented there.
 
 Tags can help you identify and organize your AWS resources. For example,
 you can use the same tag for different resources to indicate that they
 are related. You can also use tags to manage access (see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_tags.html}{Access Tags}).
 
-The Amazon IVS real-time API has these tag-related endpoints:
+The Amazon IVS real-time API has these tag-related operations:
 \code{tag_resource},
 \code{untag_resource}, and
 \code{list_tags_for_resource}. The
@@ -145,16 +146,19 @@ At most 50 tags can be applied to a resource.
 
 \tabular{ll}{
 \link[paws.analytics:ivsrealtime_create_encoder_configuration]{create_encoder_configuration} \tab Creates an EncoderConfiguration object\cr
+\link[paws.analytics:ivsrealtime_create_ingest_configuration]{create_ingest_configuration} \tab Creates a new IngestConfiguration resource, used to specify the ingest protocol for a stage\cr
 \link[paws.analytics:ivsrealtime_create_participant_token]{create_participant_token} \tab Creates an additional token for a specified stage\cr
 \link[paws.analytics:ivsrealtime_create_stage]{create_stage} \tab Creates a new stage (and optionally participant tokens)\cr
 \link[paws.analytics:ivsrealtime_create_storage_configuration]{create_storage_configuration} \tab Creates a new storage configuration, used to enable recording to Amazon S3\cr
 \link[paws.analytics:ivsrealtime_delete_encoder_configuration]{delete_encoder_configuration} \tab Deletes an EncoderConfiguration resource\cr
+\link[paws.analytics:ivsrealtime_delete_ingest_configuration]{delete_ingest_configuration} \tab Deletes a specified IngestConfiguration, so it can no longer be used to broadcast\cr
 \link[paws.analytics:ivsrealtime_delete_public_key]{delete_public_key} \tab Deletes the specified public key used to sign stage participant tokens\cr
 \link[paws.analytics:ivsrealtime_delete_stage]{delete_stage} \tab Shuts down and deletes the specified stage (disconnecting all participants)\cr
 \link[paws.analytics:ivsrealtime_delete_storage_configuration]{delete_storage_configuration} \tab Deletes the storage configuration for the specified ARN\cr
-\link[paws.analytics:ivsrealtime_disconnect_participant]{disconnect_participant} \tab Disconnects a specified participant and revokes the participant permanently from a specified stage\cr
+\link[paws.analytics:ivsrealtime_disconnect_participant]{disconnect_participant} \tab Disconnects a specified participant from a specified stage\cr
 \link[paws.analytics:ivsrealtime_get_composition]{get_composition} \tab Get information about the specified Composition resource\cr
 \link[paws.analytics:ivsrealtime_get_encoder_configuration]{get_encoder_configuration} \tab Gets information about the specified EncoderConfiguration resource\cr
+\link[paws.analytics:ivsrealtime_get_ingest_configuration]{get_ingest_configuration} \tab Gets information about the specified IngestConfiguration\cr
 \link[paws.analytics:ivsrealtime_get_participant]{get_participant} \tab Gets information about the specified participant token\cr
 \link[paws.analytics:ivsrealtime_get_public_key]{get_public_key} \tab Gets information for the specified public key\cr
 \link[paws.analytics:ivsrealtime_get_stage]{get_stage} \tab Gets information for the specified stage\cr
@@ -163,6 +167,7 @@ At most 50 tags can be applied to a resource.
 \link[paws.analytics:ivsrealtime_import_public_key]{import_public_key} \tab Import a public key to be used for signing stage participant tokens\cr
 \link[paws.analytics:ivsrealtime_list_compositions]{list_compositions} \tab Gets summary information about all Compositions in your account, in the AWS region where the API request is processed\cr
 \link[paws.analytics:ivsrealtime_list_encoder_configurations]{list_encoder_configurations} \tab Gets summary information about all EncoderConfigurations in your account, in the AWS region where the API request is processed\cr
+\link[paws.analytics:ivsrealtime_list_ingest_configurations]{list_ingest_configurations} \tab Lists all IngestConfigurations in your account, in the AWS region where the API request is processed\cr
 \link[paws.analytics:ivsrealtime_list_participant_events]{list_participant_events} \tab Lists events for a specified participant that occurred during a specified stage session\cr
 \link[paws.analytics:ivsrealtime_list_participants]{list_participants} \tab Lists all participants in a specified stage session\cr
 \link[paws.analytics:ivsrealtime_list_public_keys]{list_public_keys} \tab Gets summary information about all public keys in your account, in the AWS region where the API request is processed\cr
@@ -174,6 +179,7 @@ At most 50 tags can be applied to a resource.
 \link[paws.analytics:ivsrealtime_stop_composition]{stop_composition} \tab Stops and deletes a Composition resource\cr
 \link[paws.analytics:ivsrealtime_tag_resource]{tag_resource} \tab Adds or updates tags for the AWS resource with the specified ARN\cr
 \link[paws.analytics:ivsrealtime_untag_resource]{untag_resource} \tab Removes tags from the resource with the specified ARN\cr
+\link[paws.analytics:ivsrealtime_update_ingest_configuration]{update_ingest_configuration} \tab Updates a specified IngestConfiguration\cr
 \link[paws.analytics:ivsrealtime_update_stage]{update_stage} \tab Updates a stage’s configuration
 }
 }

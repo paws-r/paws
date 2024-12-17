@@ -133,6 +133,7 @@ NULL
 #'  \link[=directoryservice_describe_client_authentication_settings]{describe_client_authentication_settings} \tab Retrieves information about the type of client authentication for the specified directory, if the type is specified\cr
 #'  \link[=directoryservice_describe_conditional_forwarders]{describe_conditional_forwarders} \tab Obtains information about the conditional forwarders for this account\cr
 #'  \link[=directoryservice_describe_directories]{describe_directories} \tab Obtains information about the directories that belong to this account\cr
+#'  \link[=directoryservice_describe_directory_data_access]{describe_directory_data_access} \tab Obtains status of directory data access enablement through the Directory Service Data API for the specified directory\cr
 #'  \link[=directoryservice_describe_domain_controllers]{describe_domain_controllers} \tab Provides information about any domain controllers in your directory\cr
 #'  \link[=directoryservice_describe_event_topics]{describe_event_topics} \tab Obtains information about which Amazon SNS topics receive status messages from the specified directory\cr
 #'  \link[=directoryservice_describe_ldaps_settings]{describe_ldaps_settings} \tab Describes the status of LDAP security for the specified directory\cr
@@ -143,10 +144,12 @@ NULL
 #'  \link[=directoryservice_describe_trusts]{describe_trusts} \tab Obtains information about the trust relationships for this account\cr
 #'  \link[=directoryservice_describe_update_directory]{describe_update_directory} \tab Describes the updates of a directory for a particular update type\cr
 #'  \link[=directoryservice_disable_client_authentication]{disable_client_authentication} \tab Disables alternative client authentication methods for the specified directory\cr
+#'  \link[=directoryservice_disable_directory_data_access]{disable_directory_data_access} \tab Deactivates access to directory data via the Directory Service Data API for the specified directory\cr
 #'  \link[=directoryservice_disable_ldaps]{disable_ldaps} \tab Deactivates LDAP secure calls for the specified directory\cr
 #'  \link[=directoryservice_disable_radius]{disable_radius} \tab Disables multi-factor authentication (MFA) with the Remote Authentication Dial In User Service (RADIUS) server for an AD Connector or Microsoft AD directory\cr
 #'  \link[=directoryservice_disable_sso]{disable_sso} \tab Disables single-sign on for a directory\cr
 #'  \link[=directoryservice_enable_client_authentication]{enable_client_authentication} \tab Enables alternative client authentication methods for the specified directory\cr
+#'  \link[=directoryservice_enable_directory_data_access]{enable_directory_data_access} \tab Enables access to directory data via the Directory Service Data API for the specified directory\cr
 #'  \link[=directoryservice_enable_ldaps]{enable_ldaps} \tab Activates the switch for the specific directory to always use LDAP secure calls\cr
 #'  \link[=directoryservice_enable_radius]{enable_radius} \tab Enables multi-factor authentication (MFA) with the Remote Authentication Dial In User Service (RADIUS) server for an AD Connector or Microsoft AD directory\cr
 #'  \link[=directoryservice_enable_sso]{enable_sso} \tab Enables single sign-on for a directory\cr
@@ -206,7 +209,7 @@ directoryservice <- function(config = list(), credentials = list(), endpoint = N
 
 .directoryservice$metadata <- list(
   service_name = "ds",
-  endpoints = list("*" = list(endpoint = "ds.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "ds.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "ds.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "ds.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "ds.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "ds.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "ds.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "ds.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "ds.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "ds.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "ds.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "ds.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "ds.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Directory Service",
   api_version = "2015-04-16",
   signing_name = "ds",

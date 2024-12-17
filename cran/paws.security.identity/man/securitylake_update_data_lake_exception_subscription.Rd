@@ -12,7 +12,8 @@ securitylake_update_data_lake_exception_subscription(
 )
 }
 \arguments{
-\item{exceptionTimeToLive}{The time-to-live (TTL) for the exception message to remain.}
+\item{exceptionTimeToLive}{The time-to-live (TTL) for the exception message to remain. It is the
+duration of time until which the exception message remains.}
 
 \item{notificationEndpoint}{[required] The account that is subscribed to receive exception notifications.}
 

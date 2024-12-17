@@ -23,7 +23,7 @@ value.}
 
 \item{NextToken}{The token to request the next page of results.}
 
-\item{AccountId}{The AWS account ID of the owner of the workload.}
+\item{AccountId}{The Amazon Web Services account ID of the owner of the workload.}
 }
 \description{
 Lists the workloads that are configured on a given component.

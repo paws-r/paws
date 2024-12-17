@@ -9,7 +9,7 @@ multi-account search feature}
 resourceexplorer_get_account_level_service_configuration()
 }
 \description{
-Retrieves the status of your account's Amazon Web Services service access, and validates the service linked role required to access the multi-account search feature. Only the management account or a delegated administrator with service access enabled can invoke this API call.
+Retrieves the status of your account's Amazon Web Services service access, and validates the service linked role required to access the multi-account search feature. Only the management account can invoke this API call.
 
 See \url{https://www.paws-r-sdk.com/docs/resourceexplorer_get_account_level_service_configuration/} for full documentation.
 }

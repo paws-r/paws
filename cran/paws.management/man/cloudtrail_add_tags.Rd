@@ -2,14 +2,14 @@
 % Please edit documentation in R/cloudtrail_operations.R
 \name{cloudtrail_add_tags}
 \alias{cloudtrail_add_tags}
-\title{Adds one or more tags to a trail, event data store, or channel, up to a
-limit of 50}
+\title{Adds one or more tags to a trail, event data store, dashboard, or
+channel, up to a limit of 50}
 \usage{
 cloudtrail_add_tags(ResourceId, TagsList)
 }
 \arguments{
-\item{ResourceId}{[required] Specifies the ARN of the trail, event data store, or channel to which
-one or more tags will be added.
+\item{ResourceId}{[required] Specifies the ARN of the trail, event data store, dashboard, or channel
+to which one or more tags will be added.
 
 The format of a trail ARN is:
 \code{arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail}
@@ -17,13 +17,16 @@ The format of a trail ARN is:
 The format of an event data store ARN is:
 \verb{arn:aws:cloudtrail:us-east-2:123456789012:eventdatastore/EXAMPLE-f852-4e8f-8bd1-bcf6cEXAMPLE}
 
+The format of a dashboard ARN is:
+\code{arn:aws:cloudtrail:us-east-1:123456789012:dashboard/exampleDash}
+
 The format of a channel ARN is:
 \code{arn:aws:cloudtrail:us-east-2:123456789012:channel/01234567890}}
 
 \item{TagsList}{[required] Contains a list of tags, up to a limit of 50}
 }
 \description{
-Adds one or more tags to a trail, event data store, or channel, up to a limit of 50. Overwrites an existing tag's value when a new value is specified for an existing tag key. Tag key names must be unique; you cannot have two keys with the same name but different values. If you specify a key without a value, the tag will be created with the specified key and a value of null. You can tag a trail or event data store that applies to all Amazon Web Services Regions only from the Region in which the trail or event data store was created (also known as its home Region).
+Adds one or more tags to a trail, event data store, dashboard, or channel, up to a limit of 50. Overwrites an existing tag's value when a new value is specified for an existing tag key. Tag key names must be unique; you cannot have two keys with the same name but different values. If you specify a key without a value, the tag will be created with the specified key and a value of null. You can tag a trail or event data store that applies to all Amazon Web Services Regions only from the Region in which the trail or event data store was created (also known as its home Region).
 
 See \url{https://www.paws-r-sdk.com/docs/cloudtrail_add_tags/} for full documentation.
 }

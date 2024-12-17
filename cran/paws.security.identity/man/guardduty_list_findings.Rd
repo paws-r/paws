@@ -14,7 +14,11 @@ guardduty_list_findings(
 }
 \arguments{
 \item{DetectorId}{[required] The ID of the detector that specifies the GuardDuty service whose
-findings you want to list.}
+findings you want to list.
+
+To find the \code{detectorId} in the current Region, see the Settings page in
+the GuardDuty console, or run the
+\code{\link[=guardduty_list_detectors]{list_detectors}} API.}
 
 \item{FindingCriteria}{Represents the criteria used for querying findings. Valid values
 include:
@@ -69,6 +73,7 @@ When this attribute is set to 'true', only archived findings are
 listed. When it's set to 'false', only unarchived findings are
 listed. When this attribute is not set, all existing findings are
 listed.
+\item service.ebsVolumeScanDetails.scanId
 \item service.resourceRole
 \item severity
 \item type

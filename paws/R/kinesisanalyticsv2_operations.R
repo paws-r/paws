@@ -2752,7 +2752,7 @@ kinesisanalyticsv2_list_application_snapshots <- function(ApplicationName, Limit
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "Limit", result_key = "SnapshotSummaries"),
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "SnapshotSummaries"),
     stream_api = FALSE
   )
   input <- .kinesisanalyticsv2$list_application_snapshots_input(ApplicationName = ApplicationName, Limit = Limit, NextToken = NextToken)
@@ -2897,7 +2897,7 @@ kinesisanalyticsv2_list_applications <- function(Limit = NULL, NextToken = NULL)
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "Limit", result_key = "ApplicationSummaries"),
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "ApplicationSummaries"),
     stream_api = FALSE
   )
   input <- .kinesisanalyticsv2$list_applications_input(Limit = Limit, NextToken = NextToken)

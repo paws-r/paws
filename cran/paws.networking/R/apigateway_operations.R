@@ -144,6 +144,8 @@ apigateway_create_authorizer <- function(restApiId, name, type, providerARNs = N
 #' See [https://www.paws-r-sdk.com/docs/apigateway_create_base_path_mapping/](https://www.paws-r-sdk.com/docs/apigateway_create_base_path_mapping/) for full documentation.
 #'
 #' @param domainName &#91;required&#93; The domain name of the BasePathMapping resource to create.
+#' @param domainNameId The identifier for the domain name resource. Supported only for private
+#' custom domain names.
 #' @param basePath The base path name that callers of the API must provide as part of the
 #' URL after the domain name. This value must be unique for all of the
 #' mappings across a single API. Specify '(none)' if you do not want
@@ -156,7 +158,7 @@ apigateway_create_authorizer <- function(restApiId, name, type, providerARNs = N
 #' @keywords internal
 #'
 #' @rdname apigateway_create_base_path_mapping
-apigateway_create_base_path_mapping <- function(domainName, basePath = NULL, restApiId, stage = NULL) {
+apigateway_create_base_path_mapping <- function(domainName, domainNameId = NULL, basePath = NULL, restApiId, stage = NULL) {
   op <- new_operation(
     name = "CreateBasePathMapping",
     http_method = "POST",
@@ -165,7 +167,7 @@ apigateway_create_base_path_mapping <- function(domainName, basePath = NULL, res
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .apigateway$create_base_path_mapping_input(domainName = domainName, basePath = basePath, restApiId = restApiId, stage = stage)
+  input <- .apigateway$create_base_path_mapping_input(domainName = domainName, domainNameId = domainNameId, basePath = basePath, restApiId = restApiId, stage = stage)
   output <- .apigateway$create_base_path_mapping_output()
   config <- get_config()
   svc <- .apigateway$service(config, op)
@@ -301,10 +303,10 @@ apigateway_create_documentation_version <- function(restApiId, documentationVers
 #'
 #' @param domainName &#91;required&#93; The name of the DomainName resource.
 #' @param certificateName The user-friendly name of the certificate that will be used by
-#' edge-optimized endpoint for this domain name.
+#' edge-optimized endpoint or private endpoint for this domain name.
 #' @param certificateBody \[Deprecated\] The body of the server certificate that will be used by
-#' edge-optimized endpoint for this domain name provided by your
-#' certificate authority.
+#' edge-optimized endpoint or private endpoint for this domain name
+#' provided by your certificate authority.
 #' @param certificatePrivateKey \[Deprecated\] Your edge-optimized endpoint's domain name certificate's
 #' private key.
 #' @param certificateChain \[Deprecated\] The intermediate certificates and optionally the root
@@ -315,8 +317,8 @@ apigateway_create_documentation_version <- function(restApiId, documentationVers
 #' certificates that were provided by your certificate authority. Do not
 #' include any intermediaries that are not in the chain of trust path.
 #' @param certificateArn The reference to an Amazon Web Services-managed certificate that will be
-#' used by edge-optimized endpoint for this domain name. Certificate
-#' Manager is the only supported source.
+#' used by edge-optimized endpoint or private endpoint for this domain
+#' name. Certificate Manager is the only supported source.
 #' @param regionalCertificateName The user-friendly name of the certificate that will be used by regional
 #' endpoint for this domain name.
 #' @param regionalCertificateArn The reference to an Amazon Web Services-managed certificate that will be
@@ -334,11 +336,14 @@ apigateway_create_documentation_version <- function(restApiId, documentationVers
 #' your custom domain. Only required when configuring mutual TLS and using
 #' an ACM imported or private CA certificate ARN as the
 #' regionalCertificateArn.
+#' @param policy A stringified JSON policy document that applies to the `execute-api`
+#' service for this DomainName regardless of the caller and Method
+#' configuration. Supported only for private custom domain names.
 #'
 #' @keywords internal
 #'
 #' @rdname apigateway_create_domain_name
-apigateway_create_domain_name <- function(domainName, certificateName = NULL, certificateBody = NULL, certificatePrivateKey = NULL, certificateChain = NULL, certificateArn = NULL, regionalCertificateName = NULL, regionalCertificateArn = NULL, endpointConfiguration = NULL, tags = NULL, securityPolicy = NULL, mutualTlsAuthentication = NULL, ownershipVerificationCertificateArn = NULL) {
+apigateway_create_domain_name <- function(domainName, certificateName = NULL, certificateBody = NULL, certificatePrivateKey = NULL, certificateChain = NULL, certificateArn = NULL, regionalCertificateName = NULL, regionalCertificateArn = NULL, endpointConfiguration = NULL, tags = NULL, securityPolicy = NULL, mutualTlsAuthentication = NULL, ownershipVerificationCertificateArn = NULL, policy = NULL) {
   op <- new_operation(
     name = "CreateDomainName",
     http_method = "POST",
@@ -347,7 +352,7 @@ apigateway_create_domain_name <- function(domainName, certificateName = NULL, ce
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .apigateway$create_domain_name_input(domainName = domainName, certificateName = certificateName, certificateBody = certificateBody, certificatePrivateKey = certificatePrivateKey, certificateChain = certificateChain, certificateArn = certificateArn, regionalCertificateName = regionalCertificateName, regionalCertificateArn = regionalCertificateArn, endpointConfiguration = endpointConfiguration, tags = tags, securityPolicy = securityPolicy, mutualTlsAuthentication = mutualTlsAuthentication, ownershipVerificationCertificateArn = ownershipVerificationCertificateArn)
+  input <- .apigateway$create_domain_name_input(domainName = domainName, certificateName = certificateName, certificateBody = certificateBody, certificatePrivateKey = certificatePrivateKey, certificateChain = certificateChain, certificateArn = certificateArn, regionalCertificateName = regionalCertificateName, regionalCertificateArn = regionalCertificateArn, endpointConfiguration = endpointConfiguration, tags = tags, securityPolicy = securityPolicy, mutualTlsAuthentication = mutualTlsAuthentication, ownershipVerificationCertificateArn = ownershipVerificationCertificateArn, policy = policy)
   output <- .apigateway$create_domain_name_output()
   config <- get_config()
   svc <- .apigateway$service(config, op)
@@ -356,6 +361,44 @@ apigateway_create_domain_name <- function(domainName, certificateName = NULL, ce
   return(response)
 }
 .apigateway$operations$create_domain_name <- apigateway_create_domain_name
+
+#' Creates a domain name access association resource between an access
+#' association source and a private custom domain name
+#'
+#' @description
+#' Creates a domain name access association resource between an access association source and a private custom domain name.
+#'
+#' See [https://www.paws-r-sdk.com/docs/apigateway_create_domain_name_access_association/](https://www.paws-r-sdk.com/docs/apigateway_create_domain_name_access_association/) for full documentation.
+#'
+#' @param domainNameArn &#91;required&#93; The ARN of the domain name.
+#' @param accessAssociationSourceType &#91;required&#93; The type of the domain name access association source.
+#' @param accessAssociationSource &#91;required&#93; The identifier of the domain name access association source. For a VPCE,
+#' the value is the VPC endpoint ID.
+#' @param tags The key-value map of strings. The valid character set is
+#' \[a-zA-Z+-=._:/\]. The tag key can be up to 128 characters and must not
+#' start with `aws:`. The tag value can be up to 256 characters.
+#'
+#' @keywords internal
+#'
+#' @rdname apigateway_create_domain_name_access_association
+apigateway_create_domain_name_access_association <- function(domainNameArn, accessAssociationSourceType, accessAssociationSource, tags = NULL) {
+  op <- new_operation(
+    name = "CreateDomainNameAccessAssociation",
+    http_method = "POST",
+    http_path = "/domainnameaccessassociations",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .apigateway$create_domain_name_access_association_input(domainNameArn = domainNameArn, accessAssociationSourceType = accessAssociationSourceType, accessAssociationSource = accessAssociationSource, tags = tags)
+  output <- .apigateway$create_domain_name_access_association_output()
+  config <- get_config()
+  svc <- .apigateway$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.apigateway$operations$create_domain_name_access_association <- apigateway_create_domain_name_access_association
 
 #' Adds a new Model resource to an existing RestApi resource
 #'
@@ -754,6 +797,8 @@ apigateway_delete_authorizer <- function(restApiId, authorizerId) {
 #' See [https://www.paws-r-sdk.com/docs/apigateway_delete_base_path_mapping/](https://www.paws-r-sdk.com/docs/apigateway_delete_base_path_mapping/) for full documentation.
 #'
 #' @param domainName &#91;required&#93; The domain name of the BasePathMapping resource to delete.
+#' @param domainNameId The identifier for the domain name resource. Supported only for private
+#' custom domain names.
 #' @param basePath &#91;required&#93; The base path name of the BasePathMapping resource to delete.
 #' 
 #' To specify an empty base path, set this parameter to `'(none)'`.
@@ -761,7 +806,7 @@ apigateway_delete_authorizer <- function(restApiId, authorizerId) {
 #' @keywords internal
 #'
 #' @rdname apigateway_delete_base_path_mapping
-apigateway_delete_base_path_mapping <- function(domainName, basePath) {
+apigateway_delete_base_path_mapping <- function(domainName, domainNameId = NULL, basePath) {
   op <- new_operation(
     name = "DeleteBasePathMapping",
     http_method = "DELETE",
@@ -770,7 +815,7 @@ apigateway_delete_base_path_mapping <- function(domainName, basePath) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .apigateway$delete_base_path_mapping_input(domainName = domainName, basePath = basePath)
+  input <- .apigateway$delete_base_path_mapping_input(domainName = domainName, domainNameId = domainNameId, basePath = basePath)
   output <- .apigateway$delete_base_path_mapping_output()
   config <- get_config()
   svc <- .apigateway$service(config, op)
@@ -915,11 +960,13 @@ apigateway_delete_documentation_version <- function(restApiId, documentationVers
 #' See [https://www.paws-r-sdk.com/docs/apigateway_delete_domain_name/](https://www.paws-r-sdk.com/docs/apigateway_delete_domain_name/) for full documentation.
 #'
 #' @param domainName &#91;required&#93; The name of the DomainName resource to be deleted.
+#' @param domainNameId The identifier for the domain name resource. Supported only for private
+#' custom domain names.
 #'
 #' @keywords internal
 #'
 #' @rdname apigateway_delete_domain_name
-apigateway_delete_domain_name <- function(domainName) {
+apigateway_delete_domain_name <- function(domainName, domainNameId = NULL) {
   op <- new_operation(
     name = "DeleteDomainName",
     http_method = "DELETE",
@@ -928,7 +975,7 @@ apigateway_delete_domain_name <- function(domainName) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .apigateway$delete_domain_name_input(domainName = domainName)
+  input <- .apigateway$delete_domain_name_input(domainName = domainName, domainNameId = domainNameId)
   output <- .apigateway$delete_domain_name_output()
   config <- get_config()
   svc <- .apigateway$service(config, op)
@@ -937,6 +984,37 @@ apigateway_delete_domain_name <- function(domainName) {
   return(response)
 }
 .apigateway$operations$delete_domain_name <- apigateway_delete_domain_name
+
+#' Deletes the DomainNameAccessAssociation resource
+#'
+#' @description
+#' Deletes the DomainNameAccessAssociation resource.
+#'
+#' See [https://www.paws-r-sdk.com/docs/apigateway_delete_domain_name_access_association/](https://www.paws-r-sdk.com/docs/apigateway_delete_domain_name_access_association/) for full documentation.
+#'
+#' @param domainNameAccessAssociationArn &#91;required&#93; The ARN of the domain name access association resource.
+#'
+#' @keywords internal
+#'
+#' @rdname apigateway_delete_domain_name_access_association
+apigateway_delete_domain_name_access_association <- function(domainNameAccessAssociationArn) {
+  op <- new_operation(
+    name = "DeleteDomainNameAccessAssociation",
+    http_method = "DELETE",
+    http_path = "/domainnameaccessassociations/{domain_name_access_association_arn}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .apigateway$delete_domain_name_access_association_input(domainNameAccessAssociationArn = domainNameAccessAssociationArn)
+  output <- .apigateway$delete_domain_name_access_association_output()
+  config <- get_config()
+  svc <- .apigateway$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.apigateway$operations$delete_domain_name_access_association <- apigateway_delete_domain_name_access_association
 
 #' Clears any customization of a GatewayResponse of a specified response
 #' type on the given RestApi and resets it with the default settings
@@ -1548,7 +1626,7 @@ apigateway_get_api_keys <- function(position = NULL, limit = NULL, nameQuery = N
     http_method = "GET",
     http_path = "/apikeys",
     host_prefix = "",
-    paginator = list(input_token = "position", limit_key = "limit", output_token = "position", result_key = "items"),
+    paginator = list(input_token = "position", output_token = "position", limit_key = "limit", result_key = "items"),
     stream_api = FALSE
   )
   input <- .apigateway$get_api_keys_input(position = position, limit = limit, nameQuery = nameQuery, customerId = customerId, includeValues = includeValues)
@@ -1614,7 +1692,7 @@ apigateway_get_authorizers <- function(restApiId, position = NULL, limit = NULL)
     http_method = "GET",
     http_path = "/restapis/{restapi_id}/authorizers",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "position", limit_key = "limit", output_token = "position", result_key = "items"),
     stream_api = FALSE
   )
   input <- .apigateway$get_authorizers_input(restApiId = restApiId, position = position, limit = limit)
@@ -1635,6 +1713,8 @@ apigateway_get_authorizers <- function(restApiId, position = NULL, limit = NULL)
 #' See [https://www.paws-r-sdk.com/docs/apigateway_get_base_path_mapping/](https://www.paws-r-sdk.com/docs/apigateway_get_base_path_mapping/) for full documentation.
 #'
 #' @param domainName &#91;required&#93; The domain name of the BasePathMapping resource to be described.
+#' @param domainNameId The identifier for the domain name resource. Supported only for private
+#' custom domain names.
 #' @param basePath &#91;required&#93; The base path name that callers of the API must provide as part of the
 #' URL after the domain name. This value must be unique for all of the
 #' mappings across a single API. Specify '(none)' if you do not want
@@ -1643,7 +1723,7 @@ apigateway_get_authorizers <- function(restApiId, position = NULL, limit = NULL)
 #' @keywords internal
 #'
 #' @rdname apigateway_get_base_path_mapping
-apigateway_get_base_path_mapping <- function(domainName, basePath) {
+apigateway_get_base_path_mapping <- function(domainName, domainNameId = NULL, basePath) {
   op <- new_operation(
     name = "GetBasePathMapping",
     http_method = "GET",
@@ -1652,7 +1732,7 @@ apigateway_get_base_path_mapping <- function(domainName, basePath) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .apigateway$get_base_path_mapping_input(domainName = domainName, basePath = basePath)
+  input <- .apigateway$get_base_path_mapping_input(domainName = domainName, domainNameId = domainNameId, basePath = basePath)
   output <- .apigateway$get_base_path_mapping_output()
   config <- get_config()
   svc <- .apigateway$service(config, op)
@@ -1670,6 +1750,8 @@ apigateway_get_base_path_mapping <- function(domainName, basePath) {
 #' See [https://www.paws-r-sdk.com/docs/apigateway_get_base_path_mappings/](https://www.paws-r-sdk.com/docs/apigateway_get_base_path_mappings/) for full documentation.
 #'
 #' @param domainName &#91;required&#93; The domain name of a BasePathMapping resource.
+#' @param domainNameId The identifier for the domain name resource. Supported only for private
+#' custom domain names.
 #' @param position The current pagination position in the paged result set.
 #' @param limit The maximum number of returned results per page. The default value is 25
 #' and the maximum value is 500.
@@ -1677,16 +1759,16 @@ apigateway_get_base_path_mapping <- function(domainName, basePath) {
 #' @keywords internal
 #'
 #' @rdname apigateway_get_base_path_mappings
-apigateway_get_base_path_mappings <- function(domainName, position = NULL, limit = NULL) {
+apigateway_get_base_path_mappings <- function(domainName, domainNameId = NULL, position = NULL, limit = NULL) {
   op <- new_operation(
     name = "GetBasePathMappings",
     http_method = "GET",
     http_path = "/domainnames/{domain_name}/basepathmappings",
     host_prefix = "",
-    paginator = list(input_token = "position", limit_key = "limit", output_token = "position", result_key = "items"),
+    paginator = list(input_token = "position", output_token = "position", limit_key = "limit", result_key = "items"),
     stream_api = FALSE
   )
-  input <- .apigateway$get_base_path_mappings_input(domainName = domainName, position = position, limit = limit)
+  input <- .apigateway$get_base_path_mappings_input(domainName = domainName, domainNameId = domainNameId, position = position, limit = limit)
   output <- .apigateway$get_base_path_mappings_output()
   config <- get_config()
   svc <- .apigateway$service(config, op)
@@ -1747,7 +1829,7 @@ apigateway_get_client_certificates <- function(position = NULL, limit = NULL) {
     http_method = "GET",
     http_path = "/clientcertificates",
     host_prefix = "",
-    paginator = list(input_token = "position", limit_key = "limit", output_token = "position", result_key = "items"),
+    paginator = list(input_token = "position", output_token = "position", limit_key = "limit", result_key = "items"),
     stream_api = FALSE
   )
   input <- .apigateway$get_client_certificates_input(position = position, limit = limit)
@@ -1823,7 +1905,7 @@ apigateway_get_deployments <- function(restApiId, position = NULL, limit = NULL)
     http_method = "GET",
     http_path = "/restapis/{restapi_id}/deployments",
     host_prefix = "",
-    paginator = list(input_token = "position", limit_key = "limit", output_token = "position", result_key = "items"),
+    paginator = list(input_token = "position", output_token = "position", limit_key = "limit", result_key = "items"),
     stream_api = FALSE
   )
   input <- .apigateway$get_deployments_input(restApiId = restApiId, position = position, limit = limit)
@@ -1895,7 +1977,7 @@ apigateway_get_documentation_parts <- function(restApiId, type = NULL, nameQuery
     http_method = "GET",
     http_path = "/restapis/{restapi_id}/documentation/parts",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "position", limit_key = "limit", output_token = "position", result_key = "items"),
     stream_api = FALSE
   )
   input <- .apigateway$get_documentation_parts_input(restApiId = restApiId, type = type, nameQuery = nameQuery, path = path, position = position, limit = limit, locationStatus = locationStatus)
@@ -1961,7 +2043,7 @@ apigateway_get_documentation_versions <- function(restApiId, position = NULL, li
     http_method = "GET",
     http_path = "/restapis/{restapi_id}/documentation/versions",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "position", limit_key = "limit", output_token = "position", result_key = "items"),
     stream_api = FALSE
   )
   input <- .apigateway$get_documentation_versions_input(restApiId = restApiId, position = position, limit = limit)
@@ -1983,11 +2065,13 @@ apigateway_get_documentation_versions <- function(restApiId, position = NULL, li
 #' See [https://www.paws-r-sdk.com/docs/apigateway_get_domain_name/](https://www.paws-r-sdk.com/docs/apigateway_get_domain_name/) for full documentation.
 #'
 #' @param domainName &#91;required&#93; The name of the DomainName resource.
+#' @param domainNameId The identifier for the domain name resource. Supported only for private
+#' custom domain names.
 #'
 #' @keywords internal
 #'
 #' @rdname apigateway_get_domain_name
-apigateway_get_domain_name <- function(domainName) {
+apigateway_get_domain_name <- function(domainName, domainNameId = NULL) {
   op <- new_operation(
     name = "GetDomainName",
     http_method = "GET",
@@ -1996,7 +2080,7 @@ apigateway_get_domain_name <- function(domainName) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .apigateway$get_domain_name_input(domainName = domainName)
+  input <- .apigateway$get_domain_name_input(domainName = domainName, domainNameId = domainNameId)
   output <- .apigateway$get_domain_name_output()
   config <- get_config()
   svc <- .apigateway$service(config, op)
@@ -2005,6 +2089,43 @@ apigateway_get_domain_name <- function(domainName) {
   return(response)
 }
 .apigateway$operations$get_domain_name <- apigateway_get_domain_name
+
+#' Represents a collection on DomainNameAccessAssociations resources
+#'
+#' @description
+#' Represents a collection on DomainNameAccessAssociations resources.
+#'
+#' See [https://www.paws-r-sdk.com/docs/apigateway_get_domain_name_access_associations/](https://www.paws-r-sdk.com/docs/apigateway_get_domain_name_access_associations/) for full documentation.
+#'
+#' @param position The current pagination position in the paged result set.
+#' @param limit The maximum number of returned results per page. The default value is 25
+#' and the maximum value is 500.
+#' @param resourceOwner The owner of the domain name access association. Use `SELF` to only list
+#' the domain name access associations owned by your own account. Use
+#' `OTHER_ACCOUNTS` to list the domain name access associations with your
+#' private custom domain names that are owned by other AWS accounts.
+#'
+#' @keywords internal
+#'
+#' @rdname apigateway_get_domain_name_access_associations
+apigateway_get_domain_name_access_associations <- function(position = NULL, limit = NULL, resourceOwner = NULL) {
+  op <- new_operation(
+    name = "GetDomainNameAccessAssociations",
+    http_method = "GET",
+    http_path = "/domainnameaccessassociations",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .apigateway$get_domain_name_access_associations_input(position = position, limit = limit, resourceOwner = resourceOwner)
+  output <- .apigateway$get_domain_name_access_associations_output()
+  config <- get_config()
+  svc <- .apigateway$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.apigateway$operations$get_domain_name_access_associations <- apigateway_get_domain_name_access_associations
 
 #' Represents a collection of DomainName resources
 #'
@@ -2016,20 +2137,21 @@ apigateway_get_domain_name <- function(domainName) {
 #' @param position The current pagination position in the paged result set.
 #' @param limit The maximum number of returned results per page. The default value is 25
 #' and the maximum value is 500.
+#' @param resourceOwner The owner of the domain name access association.
 #'
 #' @keywords internal
 #'
 #' @rdname apigateway_get_domain_names
-apigateway_get_domain_names <- function(position = NULL, limit = NULL) {
+apigateway_get_domain_names <- function(position = NULL, limit = NULL, resourceOwner = NULL) {
   op <- new_operation(
     name = "GetDomainNames",
     http_method = "GET",
     http_path = "/domainnames",
     host_prefix = "",
-    paginator = list(input_token = "position", limit_key = "limit", output_token = "position", result_key = "items"),
+    paginator = list(input_token = "position", output_token = "position", limit_key = "limit", result_key = "items"),
     stream_api = FALSE
   )
-  input <- .apigateway$get_domain_names_input(position = position, limit = limit)
+  input <- .apigateway$get_domain_names_input(position = position, limit = limit, resourceOwner = resourceOwner)
   output <- .apigateway$get_domain_names_output()
   config <- get_config()
   svc <- .apigateway$service(config, op)
@@ -2141,7 +2263,7 @@ apigateway_get_gateway_responses <- function(restApiId, position = NULL, limit =
     http_method = "GET",
     http_path = "/restapis/{restapi_id}/gatewayresponses",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "position", limit_key = "limit", output_token = "position", result_key = "items"),
     stream_api = FALSE
   )
   input <- .apigateway$get_gateway_responses_input(restApiId = restApiId, position = position, limit = limit)
@@ -2377,7 +2499,7 @@ apigateway_get_models <- function(restApiId, position = NULL, limit = NULL) {
     http_method = "GET",
     http_path = "/restapis/{restapi_id}/models",
     host_prefix = "",
-    paginator = list(input_token = "position", limit_key = "limit", output_token = "position", result_key = "items"),
+    paginator = list(input_token = "position", output_token = "position", limit_key = "limit", result_key = "items"),
     stream_api = FALSE
   )
   input <- .apigateway$get_models_input(restApiId = restApiId, position = position, limit = limit)
@@ -2443,7 +2565,7 @@ apigateway_get_request_validators <- function(restApiId, position = NULL, limit 
     http_method = "GET",
     http_path = "/restapis/{restapi_id}/requestvalidators",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "position", limit_key = "limit", output_token = "position", result_key = "items"),
     stream_api = FALSE
   )
   input <- .apigateway$get_request_validators_input(restApiId = restApiId, position = position, limit = limit)
@@ -2523,7 +2645,7 @@ apigateway_get_resources <- function(restApiId, position = NULL, limit = NULL, e
     http_method = "GET",
     http_path = "/restapis/{restapi_id}/resources",
     host_prefix = "",
-    paginator = list(input_token = "position", limit_key = "limit", output_token = "position", result_key = "items"),
+    paginator = list(input_token = "position", output_token = "position", limit_key = "limit", result_key = "items"),
     stream_api = FALSE
   )
   input <- .apigateway$get_resources_input(restApiId = restApiId, position = position, limit = limit, embed = embed)
@@ -2587,7 +2709,7 @@ apigateway_get_rest_apis <- function(position = NULL, limit = NULL) {
     http_method = "GET",
     http_path = "/restapis",
     host_prefix = "",
-    paginator = list(input_token = "position", limit_key = "limit", output_token = "position", result_key = "items"),
+    paginator = list(input_token = "position", output_token = "position", limit_key = "limit", result_key = "items"),
     stream_api = FALSE
   )
   input <- .apigateway$get_rest_apis_input(position = position, limit = limit)
@@ -2692,7 +2814,7 @@ apigateway_get_sdk_types <- function(position = NULL, limit = NULL) {
     http_method = "GET",
     http_path = "/sdktypes",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "position", limit_key = "limit", output_token = "position", result_key = "items"),
     stream_api = FALSE
   )
   input <- .apigateway$get_sdk_types_input(position = position, limit = limit)
@@ -2828,7 +2950,7 @@ apigateway_get_usage <- function(usagePlanId, keyId = NULL, startDate, endDate, 
     http_method = "GET",
     http_path = "/usageplans/{usageplanId}/usage",
     host_prefix = "",
-    paginator = list(input_token = "position", limit_key = "limit", non_aggregate_keys = list( "usagePlanId", "startDate", "endDate"), output_token = "position", result_key = "items"),
+    paginator = list(input_token = "position", output_token = "position", limit_key = "limit", result_key = "items", non_aggregate_keys = list("usagePlanId", "startDate", "endDate")),
     stream_api = FALSE
   )
   input <- .apigateway$get_usage_input(usagePlanId = usagePlanId, keyId = keyId, startDate = startDate, endDate = endDate, position = position, limit = limit)
@@ -2931,7 +3053,7 @@ apigateway_get_usage_plan_keys <- function(usagePlanId, position = NULL, limit =
     http_method = "GET",
     http_path = "/usageplans/{usageplanId}/keys",
     host_prefix = "",
-    paginator = list(input_token = "position", limit_key = "limit", output_token = "position", result_key = "items"),
+    paginator = list(input_token = "position", output_token = "position", limit_key = "limit", result_key = "items"),
     stream_api = FALSE
   )
   input <- .apigateway$get_usage_plan_keys_input(usagePlanId = usagePlanId, position = position, limit = limit, nameQuery = nameQuery)
@@ -2965,7 +3087,7 @@ apigateway_get_usage_plans <- function(position = NULL, keyId = NULL, limit = NU
     http_method = "GET",
     http_path = "/usageplans",
     host_prefix = "",
-    paginator = list(input_token = "position", limit_key = "limit", output_token = "position", result_key = "items"),
+    paginator = list(input_token = "position", output_token = "position", limit_key = "limit", result_key = "items"),
     stream_api = FALSE
   )
   input <- .apigateway$get_usage_plans_input(position = position, keyId = keyId, limit = limit)
@@ -3523,6 +3645,39 @@ apigateway_put_rest_api <- function(restApiId, mode = NULL, failOnWarnings = NUL
 }
 .apigateway$operations$put_rest_api <- apigateway_put_rest_api
 
+#' Rejects a domain name access association with a private custom domain
+#' name
+#'
+#' @description
+#' Rejects a domain name access association with a private custom domain name.
+#'
+#' See [https://www.paws-r-sdk.com/docs/apigateway_reject_domain_name_access_association/](https://www.paws-r-sdk.com/docs/apigateway_reject_domain_name_access_association/) for full documentation.
+#'
+#' @param domainNameAccessAssociationArn &#91;required&#93; The ARN of the domain name access association resource.
+#' @param domainNameArn &#91;required&#93; The ARN of the domain name.
+#'
+#' @keywords internal
+#'
+#' @rdname apigateway_reject_domain_name_access_association
+apigateway_reject_domain_name_access_association <- function(domainNameAccessAssociationArn, domainNameArn) {
+  op <- new_operation(
+    name = "RejectDomainNameAccessAssociation",
+    http_method = "POST",
+    http_path = "/rejectdomainnameaccessassociations",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .apigateway$reject_domain_name_access_association_input(domainNameAccessAssociationArn = domainNameAccessAssociationArn, domainNameArn = domainNameArn)
+  output <- .apigateway$reject_domain_name_access_association_output()
+  config <- get_config()
+  svc <- .apigateway$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.apigateway$operations$reject_domain_name_access_association <- apigateway_reject_domain_name_access_association
+
 #' Adds or updates a tag on a given resource
 #'
 #' @description
@@ -3788,6 +3943,8 @@ apigateway_update_authorizer <- function(restApiId, authorizerId, patchOperation
 #' See [https://www.paws-r-sdk.com/docs/apigateway_update_base_path_mapping/](https://www.paws-r-sdk.com/docs/apigateway_update_base_path_mapping/) for full documentation.
 #'
 #' @param domainName &#91;required&#93; The domain name of the BasePathMapping resource to change.
+#' @param domainNameId The identifier for the domain name resource. Supported only for private
+#' custom domain names.
 #' @param basePath &#91;required&#93; The base path of the BasePathMapping resource to change.
 #' 
 #' To specify an empty base path, set this parameter to `'(none)'`.
@@ -3797,7 +3954,7 @@ apigateway_update_authorizer <- function(restApiId, authorizerId, patchOperation
 #' @keywords internal
 #'
 #' @rdname apigateway_update_base_path_mapping
-apigateway_update_base_path_mapping <- function(domainName, basePath, patchOperations = NULL) {
+apigateway_update_base_path_mapping <- function(domainName, domainNameId = NULL, basePath, patchOperations = NULL) {
   op <- new_operation(
     name = "UpdateBasePathMapping",
     http_method = "PATCH",
@@ -3806,7 +3963,7 @@ apigateway_update_base_path_mapping <- function(domainName, basePath, patchOpera
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .apigateway$update_base_path_mapping_input(domainName = domainName, basePath = basePath, patchOperations = patchOperations)
+  input <- .apigateway$update_base_path_mapping_input(domainName = domainName, domainNameId = domainNameId, basePath = basePath, patchOperations = patchOperations)
   output <- .apigateway$update_base_path_mapping_output()
   config <- get_config()
   svc <- .apigateway$service(config, op)
@@ -3960,13 +4117,15 @@ apigateway_update_documentation_version <- function(restApiId, documentationVers
 #' See [https://www.paws-r-sdk.com/docs/apigateway_update_domain_name/](https://www.paws-r-sdk.com/docs/apigateway_update_domain_name/) for full documentation.
 #'
 #' @param domainName &#91;required&#93; The name of the DomainName resource to be changed.
+#' @param domainNameId The identifier for the domain name resource. Supported only for private
+#' custom domain names.
 #' @param patchOperations For more information about supported patch operations, see [Patch
 #' Operations](https://docs.aws.amazon.com/apigateway/latest/api/patch-operations.html).
 #'
 #' @keywords internal
 #'
 #' @rdname apigateway_update_domain_name
-apigateway_update_domain_name <- function(domainName, patchOperations = NULL) {
+apigateway_update_domain_name <- function(domainName, domainNameId = NULL, patchOperations = NULL) {
   op <- new_operation(
     name = "UpdateDomainName",
     http_method = "PATCH",
@@ -3975,7 +4134,7 @@ apigateway_update_domain_name <- function(domainName, patchOperations = NULL) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .apigateway$update_domain_name_input(domainName = domainName, patchOperations = patchOperations)
+  input <- .apigateway$update_domain_name_input(domainName = domainName, domainNameId = domainNameId, patchOperations = patchOperations)
   output <- .apigateway$update_domain_name_output()
   config <- get_config()
   svc <- .apigateway$service(config, op)

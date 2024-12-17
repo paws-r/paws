@@ -377,6 +377,8 @@ redshiftserverless_create_usage_limit <- function(amount, breachAction = NULL, p
 #' @param namespaceName &#91;required&#93; The name of the namespace to associate with the workgroup.
 #' @param port The custom port to use when connecting to a workgroup. Valid port ranges
 #' are 5431-5455 and 8191-8215. The default is 5439.
+#' @param pricePerformanceTarget An object that represents the price performance target settings for the
+#' workgroup.
 #' @param publiclyAccessible A value that specifies whether the workgroup can be accessed from a
 #' public network.
 #' @param securityGroupIds An array of security group IDs to associate with the workgroup.
@@ -387,7 +389,7 @@ redshiftserverless_create_usage_limit <- function(amount, breachAction = NULL, p
 #' @keywords internal
 #'
 #' @rdname redshiftserverless_create_workgroup
-redshiftserverless_create_workgroup <- function(baseCapacity = NULL, configParameters = NULL, enhancedVpcRouting = NULL, ipAddressType = NULL, maxCapacity = NULL, namespaceName, port = NULL, publiclyAccessible = NULL, securityGroupIds = NULL, subnetIds = NULL, tags = NULL, workgroupName) {
+redshiftserverless_create_workgroup <- function(baseCapacity = NULL, configParameters = NULL, enhancedVpcRouting = NULL, ipAddressType = NULL, maxCapacity = NULL, namespaceName, port = NULL, pricePerformanceTarget = NULL, publiclyAccessible = NULL, securityGroupIds = NULL, subnetIds = NULL, tags = NULL, workgroupName) {
   op <- new_operation(
     name = "CreateWorkgroup",
     http_method = "POST",
@@ -396,7 +398,7 @@ redshiftserverless_create_workgroup <- function(baseCapacity = NULL, configParam
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .redshiftserverless$create_workgroup_input(baseCapacity = baseCapacity, configParameters = configParameters, enhancedVpcRouting = enhancedVpcRouting, ipAddressType = ipAddressType, maxCapacity = maxCapacity, namespaceName = namespaceName, port = port, publiclyAccessible = publiclyAccessible, securityGroupIds = securityGroupIds, subnetIds = subnetIds, tags = tags, workgroupName = workgroupName)
+  input <- .redshiftserverless$create_workgroup_input(baseCapacity = baseCapacity, configParameters = configParameters, enhancedVpcRouting = enhancedVpcRouting, ipAddressType = ipAddressType, maxCapacity = maxCapacity, namespaceName = namespaceName, port = port, pricePerformanceTarget = pricePerformanceTarget, publiclyAccessible = publiclyAccessible, securityGroupIds = securityGroupIds, subnetIds = subnetIds, tags = tags, workgroupName = workgroupName)
   output <- .redshiftserverless$create_workgroup_output()
   config <- get_config()
   svc <- .redshiftserverless$service(config, op)
@@ -1136,6 +1138,44 @@ redshiftserverless_list_endpoint_access <- function(maxResults = NULL, nextToken
   return(response)
 }
 .redshiftserverless$operations$list_endpoint_access <- redshiftserverless_list_endpoint_access
+
+#' Returns information about a list of specified managed workgroups in your
+#' account
+#'
+#' @description
+#' Returns information about a list of specified managed workgroups in your account.
+#'
+#' See [https://www.paws-r-sdk.com/docs/redshiftserverless_list_managed_workgroups/](https://www.paws-r-sdk.com/docs/redshiftserverless_list_managed_workgroups/) for full documentation.
+#'
+#' @param maxResults An optional parameter that specifies the maximum number of results to
+#' return. You can use nextToken to display the next page of results.
+#' @param nextToken If your initial ListManagedWorkgroups operation returns a nextToken, you
+#' can include the returned nextToken in following ListManagedWorkgroups
+#' operations, which returns results in the next page.
+#' @param sourceArn The Amazon Resource Name (ARN) for the managed workgroup in the AWS Glue
+#' Data Catalog.
+#'
+#' @keywords internal
+#'
+#' @rdname redshiftserverless_list_managed_workgroups
+redshiftserverless_list_managed_workgroups <- function(maxResults = NULL, nextToken = NULL, sourceArn = NULL) {
+  op <- new_operation(
+    name = "ListManagedWorkgroups",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "managedWorkgroups"),
+    stream_api = FALSE
+  )
+  input <- .redshiftserverless$list_managed_workgroups_input(maxResults = maxResults, nextToken = nextToken, sourceArn = sourceArn)
+  output <- .redshiftserverless$list_managed_workgroups_output()
+  config <- get_config()
+  svc <- .redshiftserverless$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshiftserverless$operations$list_managed_workgroups <- redshiftserverless_list_managed_workgroups
 
 #' Returns information about a list of specified namespaces
 #'
@@ -2057,6 +2097,8 @@ redshiftserverless_update_usage_limit <- function(amount = NULL, breachAction = 
 #' serve queries. The max capacity is specified in RPUs.
 #' @param port The custom port to use when connecting to a workgroup. Valid port ranges
 #' are 5431-5455 and 8191-8215. The default is 5439.
+#' @param pricePerformanceTarget An object that represents the price performance target settings for the
+#' workgroup.
 #' @param publiclyAccessible A value that specifies whether the workgroup can be accessible from a
 #' public network.
 #' @param securityGroupIds An array of security group IDs to associate with the workgroup.
@@ -2067,7 +2109,7 @@ redshiftserverless_update_usage_limit <- function(amount = NULL, breachAction = 
 #' @keywords internal
 #'
 #' @rdname redshiftserverless_update_workgroup
-redshiftserverless_update_workgroup <- function(baseCapacity = NULL, configParameters = NULL, enhancedVpcRouting = NULL, ipAddressType = NULL, maxCapacity = NULL, port = NULL, publiclyAccessible = NULL, securityGroupIds = NULL, subnetIds = NULL, workgroupName) {
+redshiftserverless_update_workgroup <- function(baseCapacity = NULL, configParameters = NULL, enhancedVpcRouting = NULL, ipAddressType = NULL, maxCapacity = NULL, port = NULL, pricePerformanceTarget = NULL, publiclyAccessible = NULL, securityGroupIds = NULL, subnetIds = NULL, workgroupName) {
   op <- new_operation(
     name = "UpdateWorkgroup",
     http_method = "POST",
@@ -2076,7 +2118,7 @@ redshiftserverless_update_workgroup <- function(baseCapacity = NULL, configParam
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .redshiftserverless$update_workgroup_input(baseCapacity = baseCapacity, configParameters = configParameters, enhancedVpcRouting = enhancedVpcRouting, ipAddressType = ipAddressType, maxCapacity = maxCapacity, port = port, publiclyAccessible = publiclyAccessible, securityGroupIds = securityGroupIds, subnetIds = subnetIds, workgroupName = workgroupName)
+  input <- .redshiftserverless$update_workgroup_input(baseCapacity = baseCapacity, configParameters = configParameters, enhancedVpcRouting = enhancedVpcRouting, ipAddressType = ipAddressType, maxCapacity = maxCapacity, port = port, pricePerformanceTarget = pricePerformanceTarget, publiclyAccessible = publiclyAccessible, securityGroupIds = securityGroupIds, subnetIds = subnetIds, workgroupName = workgroupName)
   output <- .redshiftserverless$update_workgroup_output()
   config <- get_config()
   svc <- .redshiftserverless$service(config, op)

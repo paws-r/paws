@@ -13,7 +13,11 @@ guardduty_update_detector(
 )
 }
 \arguments{
-\item{DetectorId}{[required] The unique ID of the detector to update.}
+\item{DetectorId}{[required] The unique ID of the detector to update.
+
+To find the \code{detectorId} in the current Region, see the Settings page in
+the GuardDuty console, or run the
+\code{\link[=guardduty_list_detectors]{list_detectors}} API.}
 
 \item{Enable}{Specifies whether the detector is enabled or not enabled.}
 

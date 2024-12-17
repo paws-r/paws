@@ -333,7 +333,7 @@ timestreamwrite_list_batch_load_tasks <- function(NextToken = NULL, MaxResults =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .timestreamwrite$list_batch_load_tasks_input(NextToken = NextToken, MaxResults = MaxResults, TaskStatus = TaskStatus)
@@ -369,7 +369,7 @@ timestreamwrite_list_databases <- function(NextToken = NULL, MaxResults = NULL) 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .timestreamwrite$list_databases_input(NextToken = NextToken, MaxResults = MaxResults)
@@ -407,7 +407,7 @@ timestreamwrite_list_tables <- function(DatabaseName = NULL, NextToken = NULL, M
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .timestreamwrite$list_tables_input(DatabaseName = DatabaseName, NextToken = NextToken, MaxResults = MaxResults)

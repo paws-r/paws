@@ -7,15 +7,18 @@
 ec2_purchase_reserved_instances_offering(
   InstanceCount,
   ReservedInstancesOfferingId,
+  PurchaseTime = NULL,
   DryRun = NULL,
-  LimitPrice = NULL,
-  PurchaseTime = NULL
+  LimitPrice = NULL
 )
 }
 \arguments{
 \item{InstanceCount}{[required] The number of Reserved Instances to purchase.}
 
 \item{ReservedInstancesOfferingId}{[required] The ID of the Reserved Instance offering to purchase.}
+
+\item{PurchaseTime}{The time at which to purchase the Reserved Instance, in UTC format (for
+example, \emph{YYYY}-\emph{MM}-\emph{DD}T\emph{HH}:\emph{MM}:\emph{SS}Z).}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have
@@ -25,9 +28,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{LimitPrice}{Specified for Reserved Instance Marketplace offerings to limit the total
 order and ensure that the Reserved Instances are not purchased at
 unexpected prices.}
-
-\item{PurchaseTime}{The time at which to purchase the Reserved Instance, in UTC format (for
-example, \emph{YYYY}-\emph{MM}-\emph{DD}T\emph{HH}:\emph{MM}:\emph{SS}Z).}
 }
 \description{
 Purchases a Reserved Instance for use with your account. With Reserved Instances, you pay a lower hourly rate compared to On-Demand instance pricing.

@@ -2,16 +2,16 @@
 % Please edit documentation in R/firehose_operations.R
 \name{firehose_stop_delivery_stream_encryption}
 \alias{firehose_stop_delivery_stream_encryption}
-\title{Disables server-side encryption (SSE) for the delivery stream}
+\title{Disables server-side encryption (SSE) for the Firehose stream}
 \usage{
 firehose_stop_delivery_stream_encryption(DeliveryStreamName)
 }
 \arguments{
-\item{DeliveryStreamName}{[required] The name of the delivery stream for which you want to disable
+\item{DeliveryStreamName}{[required] The name of the Firehose stream for which you want to disable
 server-side encryption (SSE).}
 }
 \description{
-Disables server-side encryption (SSE) for the delivery stream.
+Disables server-side encryption (SSE) for the Firehose stream.
 
 See \url{https://www.paws-r-sdk.com/docs/firehose_stop_delivery_stream_encryption/} for full documentation.
 }

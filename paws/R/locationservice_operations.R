@@ -2885,7 +2885,7 @@ locationservice_get_device_position_history <- function(TrackerName, DeviceId, N
     http_method = "POST",
     http_path = "/tracking/v0/trackers/{TrackerName}/devices/{DeviceId}/list-positions",
     host_prefix = "tracking.",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "DevicePositions"),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "DevicePositions", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .locationservice$get_device_position_history_input(TrackerName = TrackerName, DeviceId = DeviceId, NextToken = NextToken, StartTimeInclusive = StartTimeInclusive, EndTimeExclusive = EndTimeExclusive, MaxResults = MaxResults)
@@ -3647,7 +3647,7 @@ locationservice_list_geofences <- function(CollectionName, NextToken = NULL, Max
     http_method = "POST",
     http_path = "/geofencing/v0/collections/{CollectionName}/list-geofences",
     host_prefix = "geofencing.",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Entries"),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Entries", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .locationservice$list_geofences_input(CollectionName = CollectionName, NextToken = NextToken, MaxResults = MaxResults)

@@ -2,8 +2,7 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_admin_confirm_sign_up}
 \alias{cognitoidentityprovider_admin_confirm_sign_up}
-\title{This IAM-authenticated API operation confirms user sign-up as an
-administrator}
+\title{Confirms user sign-up as an administrator}
 \usage{
 cognitoidentityprovider_admin_confirm_sign_up(
   UserPoolId,
@@ -12,7 +11,8 @@ cognitoidentityprovider_admin_confirm_sign_up(
 )
 }
 \arguments{
-\item{UserPoolId}{[required] The user pool ID for which you want to confirm user registration.}
+\item{UserPoolId}{[required] The ID of the user pool where you want to confirm a user's sign-up
+request.}
 
 \item{Username}{[required] The username of the user that you want to query or modify. The value of
 this parameter is typically your user's username, but it can be any of
@@ -36,20 +36,20 @@ specific needs.
 For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-working-with-lambda-triggers.html}{Customizing user pool Workflows with Lambda Triggers}
 in the \emph{Amazon Cognito Developer Guide}.
 
-When you use the ClientMetadata parameter, remember that Amazon Cognito
+When you use the \code{ClientMetadata} parameter, note that Amazon Cognito
 won't do the following:
 \itemize{
-\item Store the ClientMetadata value. This data is available only to
+\item Store the \code{ClientMetadata} value. This data is available only to
 Lambda triggers that are assigned to a user pool to support custom
 workflows. If your user pool configuration doesn't include triggers,
-the ClientMetadata parameter serves no purpose.
-\item Validate the ClientMetadata value.
-\item Encrypt the ClientMetadata value. Don't use Amazon Cognito to
-provide sensitive information.
+the \code{ClientMetadata} parameter serves no purpose.
+\item Validate the \code{ClientMetadata} value.
+\item Encrypt the \code{ClientMetadata} value. Don't send sensitive information
+in this parameter.
 }}
 }
 \description{
-This IAM-authenticated API operation confirms user sign-up as an administrator. Unlike \code{\link[=cognitoidentityprovider_confirm_sign_up]{confirm_sign_up}}, your IAM credentials authorize user account confirmation. No confirmation code is required.
+Confirms user sign-up as an administrator. Unlike \code{\link[=cognitoidentityprovider_confirm_sign_up]{confirm_sign_up}}, your IAM credentials authorize user account confirmation. No confirmation code is required.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_admin_confirm_sign_up/} for full documentation.
 }

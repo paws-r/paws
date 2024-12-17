@@ -10,8 +10,7 @@ rds_copy_db_cluster_snapshot(
   KmsKeyId = NULL,
   PreSignedUrl = NULL,
   CopyTags = NULL,
-  Tags = NULL,
-  SourceRegion = NULL
+  Tags = NULL
 )
 }
 \arguments{
@@ -116,17 +115,12 @@ If you are using an Amazon Web Services SDK tool or the CLI, you can
 specify \code{SourceRegion} (or \code{--source-region} for the CLI) instead of
 specifying \code{PreSignedUrl} manually. Specifying \code{SourceRegion}
 autogenerates a presigned URL that is a valid request for the operation
-that can run in the source Amazon Web Services Region.
-
-If you supply a value for this operation's \code{SourceRegion} parameter, a
-pre-signed URL will be calculated on your behalf.}
+that can run in the source Amazon Web Services Region.}
 
 \item{CopyTags}{Specifies whether to copy all tags from the source DB cluster snapshot
 to the target DB cluster snapshot. By default, tags are not copied.}
 
 \item{Tags}{}
-
-\item{SourceRegion}{The ID of the region that contains the snapshot to be copied.}
 }
 \description{
 Copies a snapshot of a DB cluster.

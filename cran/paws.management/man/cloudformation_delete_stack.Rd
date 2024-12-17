@@ -23,9 +23,9 @@ retained resources.
 Retaining resources is useful when you can't delete a resource, such as
 a non-empty S3 bucket, but you want to delete the stack.}
 
-\item{RoleARN}{The Amazon Resource Name (ARN) of an Identity and Access Management
-(IAM) role that CloudFormation assumes to delete the stack.
-CloudFormation uses the role's credentials to make calls on your behalf.
+\item{RoleARN}{The Amazon Resource Name (ARN) of an IAM role that CloudFormation
+assumes to delete the stack. CloudFormation uses the role's credentials
+to make calls on your behalf.
 
 If you don't specify a value, CloudFormation uses the role that was
 previously associated with the stack. If no role is available,

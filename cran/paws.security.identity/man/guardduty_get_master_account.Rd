@@ -8,7 +8,11 @@ with the current GuardDuty member account}
 guardduty_get_master_account(DetectorId)
 }
 \arguments{
-\item{DetectorId}{[required] The unique ID of the detector of the GuardDuty member account.}
+\item{DetectorId}{[required] The unique ID of the detector of the GuardDuty member account.
+
+To find the \code{detectorId} in the current Region, see the Settings page in
+the GuardDuty console, or run the
+\code{\link[=guardduty_list_detectors]{list_detectors}} API.}
 }
 \description{
 Provides the details for the GuardDuty administrator account associated with the current GuardDuty member account.

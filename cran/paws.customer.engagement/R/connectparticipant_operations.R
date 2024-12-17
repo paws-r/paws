@@ -212,7 +212,7 @@ connectparticipant_get_transcript <- function(ContactId = NULL, MaxResults = NUL
     http_method = "POST",
     http_path = "/participant/transcript",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .connectparticipant$get_transcript_input(ContactId = ContactId, MaxResults = MaxResults, NextToken = NextToken, ScanDirection = ScanDirection, SortOrder = SortOrder, StartPosition = StartPosition, ConnectionToken = ConnectionToken)

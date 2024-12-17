@@ -84,6 +84,10 @@ test_that("describe_inbound_integrations", {
   expect_error(svc$describe_inbound_integrations(), NA)
 })
 
+test_that("describe_integrations", {
+  expect_error(svc$describe_integrations(), NA)
+})
+
 test_that("describe_orderable_cluster_options", {
   expect_error(svc$describe_orderable_cluster_options(), NA)
 })

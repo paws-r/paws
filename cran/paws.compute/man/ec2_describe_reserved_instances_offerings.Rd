@@ -6,7 +6,6 @@
 \usage{
 ec2_describe_reserved_instances_offerings(
   AvailabilityZone = NULL,
-  Filters = NULL,
   IncludeMarketplace = NULL,
   InstanceType = NULL,
   MaxDuration = NULL,
@@ -16,43 +15,15 @@ ec2_describe_reserved_instances_offerings(
   ProductDescription = NULL,
   ReservedInstancesOfferingIds = NULL,
   DryRun = NULL,
+  Filters = NULL,
   InstanceTenancy = NULL,
-  MaxResults = NULL,
+  OfferingType = NULL,
   NextToken = NULL,
-  OfferingType = NULL
+  MaxResults = NULL
 )
 }
 \arguments{
 \item{AvailabilityZone}{The Availability Zone in which the Reserved Instance can be used.}
-
-\item{Filters}{One or more filters.
-\itemize{
-\item \code{availability-zone} - The Availability Zone where the Reserved
-Instance can be used.
-\item \code{duration} - The duration of the Reserved Instance (for example, one
-year or three years), in seconds (\code{31536000} | \code{94608000}).
-\item \code{fixed-price} - The purchase price of the Reserved Instance (for
-example, 9800.0).
-\item \code{instance-type} - The instance type that is covered by the
-reservation.
-\item \code{marketplace} - Set to \code{true} to show only Reserved Instance
-Marketplace offerings. When this filter is not used, which is the
-default behavior, all offerings from both Amazon Web Services and
-the Reserved Instance Marketplace are listed.
-\item \code{product-description} - The Reserved Instance product platform
-description (\code{Linux/UNIX} | \verb{Linux with SQL Server Standard} |
-\verb{Linux with SQL Server Web} | \verb{Linux with SQL Server Enterprise} |
-\verb{SUSE Linux} | \verb{Red Hat Enterprise Linux} |
-\verb{Red Hat Enterprise Linux with HA} | \code{Windows} |
-\verb{Windows with SQL Server Standard} | \verb{Windows with SQL Server Web} |
-\verb{Windows with SQL Server Enterprise}).
-\item \code{reserved-instances-offering-id} - The Reserved Instances offering
-ID.
-\item \code{scope} - The scope of the Reserved Instance (\verb{Availability Zone} or
-\code{Region}).
-\item \code{usage-price} - The usage price of the Reserved Instance, per hour
-(for example, 0.84).
-}}
 
 \item{IncludeMarketplace}{Include Reserved Instance Marketplace offerings in the response.}
 
@@ -87,6 +58,35 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
+\item{Filters}{One or more filters.
+\itemize{
+\item \code{availability-zone} - The Availability Zone where the Reserved
+Instance can be used.
+\item \code{duration} - The duration of the Reserved Instance (for example, one
+year or three years), in seconds (\code{31536000} | \code{94608000}).
+\item \code{fixed-price} - The purchase price of the Reserved Instance (for
+example, 9800.0).
+\item \code{instance-type} - The instance type that is covered by the
+reservation.
+\item \code{marketplace} - Set to \code{true} to show only Reserved Instance
+Marketplace offerings. When this filter is not used, which is the
+default behavior, all offerings from both Amazon Web Services and
+the Reserved Instance Marketplace are listed.
+\item \code{product-description} - The Reserved Instance product platform
+description (\code{Linux/UNIX} | \verb{Linux with SQL Server Standard} |
+\verb{Linux with SQL Server Web} | \verb{Linux with SQL Server Enterprise} |
+\verb{SUSE Linux} | \verb{Red Hat Enterprise Linux} |
+\verb{Red Hat Enterprise Linux with HA} | \code{Windows} |
+\verb{Windows with SQL Server Standard} | \verb{Windows with SQL Server Web} |
+\verb{Windows with SQL Server Enterprise}).
+\item \code{reserved-instances-offering-id} - The Reserved Instances offering
+ID.
+\item \code{scope} - The scope of the Reserved Instance (\verb{Availability Zone} or
+\code{Region}).
+\item \code{usage-price} - The usage price of the Reserved Instance, per hour
+(for example, 0.84).
+}}
+
 \item{InstanceTenancy}{The tenancy of the instances covered by the reservation. A Reserved
 Instance with a tenancy of \code{dedicated} is applied to instances that run
 in a VPC on single-tenant hardware (i.e., Dedicated Instances).
@@ -96,18 +96,18 @@ the \code{default} or \code{dedicated} values only.
 
 Default: \code{default}}
 
+\item{OfferingType}{The Reserved Instance offering type. If you are using tools that predate
+the 2011-11-01 API version, you only have access to the
+\verb{Medium Utilization} Reserved Instance offering type.}
+
+\item{NextToken}{The token to retrieve the next page of results.}
+
 \item{MaxResults}{The maximum number of results to return for the request in a single
 page. The remaining results of the initial request can be seen by
 sending another request with the returned \code{NextToken} value. The maximum
 is 100.
 
 Default: 100}
-
-\item{NextToken}{The token to retrieve the next page of results.}
-
-\item{OfferingType}{The Reserved Instance offering type. If you are using tools that predate
-the 2011-11-01 API version, you only have access to the
-\verb{Medium Utilization} Reserved Instance offering type.}
 }
 \description{
 Describes Reserved Instance offerings that are available for purchase. With Reserved Instances, you purchase the right to launch instances for a period of time. During that time period, you do not receive insufficient capacity errors, and you pay a lower usage rate than the rate charged for On-Demand instances for the actual time used.

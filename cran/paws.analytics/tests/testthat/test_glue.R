@@ -1,5 +1,13 @@
 svc <- paws::glue()
 
+test_that("describe_inbound_integrations", {
+  expect_error(svc$describe_inbound_integrations(), NA)
+})
+
+test_that("describe_integrations", {
+  expect_error(svc$describe_integrations(), NA)
+})
+
 test_that("list_blueprints", {
   expect_error(svc$list_blueprints(), NA)
 })
@@ -14,6 +22,14 @@ test_that("list_column_statistics_task_runs", {
 
 test_that("list_column_statistics_task_runs", {
   expect_error(svc$list_column_statistics_task_runs(MaxResults = 20), NA)
+})
+
+test_that("list_connection_types", {
+  expect_error(svc$list_connection_types(), NA)
+})
+
+test_that("list_connection_types", {
+  expect_error(svc$list_connection_types(MaxResults = 20), NA)
 })
 
 test_that("list_crawlers", {
@@ -86,6 +102,10 @@ test_that("list_dev_endpoints", {
 
 test_that("list_dev_endpoints", {
   expect_error(svc$list_dev_endpoints(MaxResults = 20), NA)
+})
+
+test_that("list_entities", {
+  expect_error(svc$list_entities(), NA)
 })
 
 test_that("list_jobs", {

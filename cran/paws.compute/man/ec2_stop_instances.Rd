@@ -16,10 +16,10 @@ in the \emph{Amazon EC2 User Guide}.
 
 Default: \code{false}}
 
-\item{DryRun}{Checks whether you have the required permissions for the action, without
-actually making the request, and provides an error response. If you have
-the required permissions, the error response is \code{DryRunOperation}.
-Otherwise, it is \code{UnauthorizedOperation}.}
+\item{DryRun}{Checks whether you have the required permissions for the operation,
+without actually making the request, and provides an error response. If
+you have the required permissions, the error response is
+\code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{Force}{Forces the instances to stop. The instances do not have an opportunity
 to flush file system caches or file system metadata. If you use this

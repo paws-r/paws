@@ -8,19 +8,15 @@ cloudformation_validate_template(TemplateBody = NULL, TemplateURL = NULL)
 }
 \arguments{
 \item{TemplateBody}{Structure containing the template body with a minimum length of 1 byte
-and a maximum length of 51,200 bytes. For more information, go to
-\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html}{Template Anatomy}
-in the \emph{CloudFormation User Guide}.
+and a maximum length of 51,200 bytes.
 
 Conditional: You must pass \code{TemplateURL} or \code{TemplateBody}. If both are
 passed, only \code{TemplateBody} is used.}
 
 \item{TemplateURL}{Location of file containing the template body. The URL must point to a
 template (max size: 460,800 bytes) that is located in an Amazon S3
-bucket or a Systems Manager document. For more information, go to
-\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html}{Template Anatomy}
-in the \emph{CloudFormation User Guide}. The location for an Amazon S3 bucket
-must start with \verb{https://}.
+bucket or a Systems Manager document. The location for an Amazon S3
+bucket must start with \verb{https://}.
 
 Conditional: You must pass \code{TemplateURL} or \code{TemplateBody}. If both are
 passed, only \code{TemplateBody} is used.}

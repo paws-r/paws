@@ -4,7 +4,12 @@
 \alias{connect_stop_contact_recording}
 \title{Stops recording a call when a contact is being recorded}
 \usage{
-connect_stop_contact_recording(InstanceId, ContactId, InitialContactId)
+connect_stop_contact_recording(
+  InstanceId,
+  ContactId,
+  InitialContactId,
+  ContactRecordingType = NULL
+)
 }
 \arguments{
 \item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can \href{https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html}{find the instance ID}
@@ -14,6 +19,8 @@ in the Amazon Resource Name (ARN) of the instance.}
 
 \item{InitialContactId}{[required] The identifier of the contact. This is the identifier of the contact
 associated with the first interaction with the contact center.}
+
+\item{ContactRecordingType}{The type of recording being operated on.}
 }
 \description{
 Stops recording a call when a contact is being recorded. StopContactRecording is a one-time action. If you use StopContactRecording to stop recording an ongoing call, you can't use StartContactRecording to restart it. For scenarios where the recording has started and you want to suspend it for sensitive information (for example, to collect a credit card number), and then restart it, use SuspendContactRecording and ResumeContactRecording.

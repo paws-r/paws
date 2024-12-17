@@ -1925,7 +1925,7 @@ licensemanager_list_associations_for_license_configuration <- function(LicenseCo
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "LicenseConfigurationAssociations"),
     stream_api = FALSE
   )
   input <- .licensemanager$list_associations_for_license_configuration_input(LicenseConfigurationArn = LicenseConfigurationArn, MaxResults = MaxResults, NextToken = NextToken)
@@ -2219,7 +2219,7 @@ licensemanager_list_license_configurations <- function(LicenseConfigurationArns 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "LicenseConfigurations"),
     stream_api = FALSE
   )
   input <- .licensemanager$list_license_configurations_input(LicenseConfigurationArns = LicenseConfigurationArns, MaxResults = MaxResults, NextToken = NextToken, Filters = Filters)
@@ -2462,7 +2462,7 @@ licensemanager_list_license_specifications_for_resource <- function(ResourceArn,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "LicenseSpecifications"),
     stream_api = FALSE
   )
   input <- .licensemanager$list_license_specifications_for_resource_input(ResourceArn = ResourceArn, MaxResults = MaxResults, NextToken = NextToken)
@@ -3208,7 +3208,7 @@ licensemanager_list_resource_inventory <- function(MaxResults = NULL, NextToken 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ResourceInventoryList"),
     stream_api = FALSE
   )
   input <- .licensemanager$list_resource_inventory_input(MaxResults = MaxResults, NextToken = NextToken, Filters = Filters)
@@ -3433,7 +3433,7 @@ licensemanager_list_usage_for_license_configuration <- function(LicenseConfigura
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "LicenseConfigurationUsageList"),
     stream_api = FALSE
   )
   input <- .licensemanager$list_usage_for_license_configuration_input(LicenseConfigurationArn = LicenseConfigurationArn, MaxResults = MaxResults, NextToken = NextToken, Filters = Filters)

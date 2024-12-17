@@ -190,7 +190,7 @@ NULL
 #'  \link[=organizations_disable_aws_service_access]{disable_aws_service_access} \tab Disables the integration of an Amazon Web Services service (the service that is specified by ServicePrincipal) with Organizations\cr
 #'  \link[=organizations_disable_policy_type]{disable_policy_type} \tab Disables an organizational policy type in a root\cr
 #'  \link[=organizations_enable_all_features]{enable_all_features} \tab Enables all features in an organization\cr
-#'  \link[=organizations_enable_aws_service_access]{enable_aws_service_access} \tab Enables the integration of an Amazon Web Services service (the service that is specified by ServicePrincipal) with Organizations\cr
+#'  \link[=organizations_enable_aws_service_access]{enable_aws_service_access} \tab Provides an Amazon Web Services service (the service that is specified by ServicePrincipal) with permissions to view the structure of an organization, create a service-linked role in all the accounts in the organization, and allow the service to perform operations on behalf of the organization and its accounts\cr
 #'  \link[=organizations_enable_policy_type]{enable_policy_type} \tab Enables a policy type in a root\cr
 #'  \link[=organizations_invite_account_to_organization]{invite_account_to_organization} \tab Sends an invitation to another account to join your organization as a member account\cr
 #'  \link[=organizations_leave_organization]{leave_organization} \tab Removes a member account from its parent organization\cr
@@ -249,7 +249,7 @@ organizations <- function(config = list(), credentials = list(), endpoint = NULL
 
 .organizations$metadata <- list(
   service_name = "organizations",
-  endpoints = list("*" = list(endpoint = "organizations.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "organizations.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "organizations.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "organizations.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "organizations.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "organizations.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("aws-global" = list(endpoint = "organizations.us-east-1.amazonaws.com", global = TRUE), "us-east-1" = list(endpoint = "organizations.us-east-1.amazonaws.com", global = TRUE), "^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "organizations.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "organizations.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "organizations.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "organizations.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "organizations.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "organizations.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "organizations.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Organizations",
   api_version = "2016-11-28",
   signing_name = "organizations",

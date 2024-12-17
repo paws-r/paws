@@ -2,7 +2,7 @@
 % Please edit documentation in R/firehose_operations.R
 \name{firehose_describe_delivery_stream}
 \alias{firehose_describe_delivery_stream}
-\title{Describes the specified delivery stream and its status}
+\title{Describes the specified Firehose stream and its status}
 \usage{
 firehose_describe_delivery_stream(
   DeliveryStreamName,
@@ -11,16 +11,16 @@ firehose_describe_delivery_stream(
 )
 }
 \arguments{
-\item{DeliveryStreamName}{[required] The name of the delivery stream.}
+\item{DeliveryStreamName}{[required] The name of the Firehose stream.}
 
 \item{Limit}{The limit on the number of destinations to return. You can have one
-destination per delivery stream.}
+destination per Firehose stream.}
 
 \item{ExclusiveStartDestinationId}{The ID of the destination to start returning the destination
-information. Firehose supports one destination per delivery stream.}
+information. Firehose supports one destination per Firehose stream.}
 }
 \description{
-Describes the specified delivery stream and its status. For example, after your delivery stream is created, call \code{\link[=firehose_describe_delivery_stream]{describe_delivery_stream}} to see whether the delivery stream is \code{ACTIVE} and therefore ready for data to be sent to it.
+Describes the specified Firehose stream and its status. For example, after your Firehose stream is created, call \code{\link[=firehose_describe_delivery_stream]{describe_delivery_stream}} to see whether the Firehose stream is \code{ACTIVE} and therefore ready for data to be sent to it.
 
 See \url{https://www.paws-r-sdk.com/docs/firehose_describe_delivery_stream/} for full documentation.
 }

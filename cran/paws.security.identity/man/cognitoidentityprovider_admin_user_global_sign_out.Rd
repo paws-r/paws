@@ -8,7 +8,7 @@ issued to a user}
 cognitoidentityprovider_admin_user_global_sign_out(UserPoolId, Username)
 }
 \arguments{
-\item{UserPoolId}{[required] The user pool ID.}
+\item{UserPoolId}{[required] The ID of the user pool where you want to sign out a user.}
 
 \item{Username}{[required] The username of the user that you want to query or modify. The value of
 this parameter is typically your user's username, but it can be any of

@@ -7,6 +7,7 @@
 opensearchserviceserverless_create_security_config(
   clientToken = NULL,
   description = NULL,
+  iamIdentityCenterOptions = NULL,
   name,
   samlOptions = NULL,
   type
@@ -16,6 +17,10 @@ opensearchserviceserverless_create_security_config(
 \item{clientToken}{Unique, case-sensitive identifier to ensure idempotency of the request.}
 
 \item{description}{A description of the security configuration.}
+
+\item{iamIdentityCenterOptions}{Describes IAM Identity Center options in the form of a key-value map.
+This field is required if you specify iamidentitycenter for the type
+parameter.}
 
 \item{name}{[required] The name of the security configuration.}
 

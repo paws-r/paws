@@ -31,10 +31,16 @@ messages, or both.}
 \item{NumberType}{[required] The type of phone number to request.}
 
 \item{OptOutListName}{The name of the OptOutList to associate with the phone number. You can
-use the OptOutListName or OptOutListArn.}
+use the OptOutListName or OptOutListArn.
+
+If you are using a shared AWS End User Messaging SMS and Voice resource
+then you must use the full Amazon Resource Name(ARN).}
 
 \item{PoolId}{The pool to associated with the phone number. You can use the PoolId or
-PoolArn.}
+PoolArn.
+
+If you are using a shared AWS End User Messaging SMS and Voice resource
+then you must use the full Amazon Resource Name(ARN).}
 
 \item{RegistrationId}{Use this field to attach your phone number for an external registration
 process.}

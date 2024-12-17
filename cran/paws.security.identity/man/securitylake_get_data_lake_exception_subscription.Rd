@@ -2,13 +2,13 @@
 % Please edit documentation in R/securitylake_operations.R
 \name{securitylake_get_data_lake_exception_subscription}
 \alias{securitylake_get_data_lake_exception_subscription}
-\title{Retrieves the details of exception notifications for the account in
-Amazon Security Lake}
+\title{Retrieves the protocol and endpoint that were provided when subscribing
+to Amazon SNS topics for exception notifications}
 \usage{
 securitylake_get_data_lake_exception_subscription()
 }
 \description{
-Retrieves the details of exception notifications for the account in Amazon Security Lake.
+Retrieves the protocol and endpoint that were provided when subscribing to Amazon SNS topics for exception notifications.
 
 See \url{https://www.paws-r-sdk.com/docs/securitylake_get_data_lake_exception_subscription/} for full documentation.
 }

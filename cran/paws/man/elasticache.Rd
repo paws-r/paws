@@ -116,15 +116,15 @@ their cache and can receive alarms if a part of their cache runs hot.
 \link[paws.database:elasticache_create_cache_parameter_group]{create_cache_parameter_group} \tab Creates a new Amazon ElastiCache cache parameter group\cr
 \link[paws.database:elasticache_create_cache_security_group]{create_cache_security_group} \tab Creates a new cache security group\cr
 \link[paws.database:elasticache_create_cache_subnet_group]{create_cache_subnet_group} \tab Creates a new cache subnet group\cr
-\link[paws.database:elasticache_create_global_replication_group]{create_global_replication_group} \tab Global Datastore for Redis OSS offers fully managed, fast, reliable and secure cross-region replication\cr
-\link[paws.database:elasticache_create_replication_group]{create_replication_group} \tab Creates a Redis OSS (cluster mode disabled) or a Redis OSS (cluster mode enabled) replication group\cr
+\link[paws.database:elasticache_create_global_replication_group]{create_global_replication_group} \tab Global Datastore offers fully managed, fast, reliable and secure cross-region replication\cr
+\link[paws.database:elasticache_create_replication_group]{create_replication_group} \tab Creates a Valkey or Redis OSS (cluster mode disabled) or a Valkey or Redis OSS (cluster mode enabled) replication group\cr
 \link[paws.database:elasticache_create_serverless_cache]{create_serverless_cache} \tab Creates a serverless cache\cr
 \link[paws.database:elasticache_create_serverless_cache_snapshot]{create_serverless_cache_snapshot} \tab This API creates a copy of an entire ServerlessCache at a specific moment in time\cr
 \link[paws.database:elasticache_create_snapshot]{create_snapshot} \tab Creates a copy of an entire cluster or replication group at a specific moment in time\cr
-\link[paws.database:elasticache_create_user]{create_user} \tab For Redis OSS engine version 6\cr
-\link[paws.database:elasticache_create_user_group]{create_user_group} \tab For Redis OSS engine version 6\cr
+\link[paws.database:elasticache_create_user]{create_user} \tab For Valkey engine version 7\cr
+\link[paws.database:elasticache_create_user_group]{create_user_group} \tab For Valkey engine version 7\cr
 \link[paws.database:elasticache_decrease_node_groups_in_global_replication_group]{decrease_node_groups_in_global_replication_group} \tab Decreases the number of node groups in a Global datastore\cr
-\link[paws.database:elasticache_decrease_replica_count]{decrease_replica_count} \tab Dynamically decreases the number of replicas in a Redis OSS (cluster mode disabled) replication group or the number of replica nodes in one or more node groups (shards) of a Redis OSS (cluster mode enabled) replication group\cr
+\link[paws.database:elasticache_decrease_replica_count]{decrease_replica_count} \tab Dynamically decreases the number of replicas in a Valkey or Redis OSS (cluster mode disabled) replication group or the number of replica nodes in one or more node groups (shards) of a Valkey or Redis OSS (cluster mode enabled) replication group\cr
 \link[paws.database:elasticache_delete_cache_cluster]{delete_cache_cluster} \tab Deletes a previously provisioned cluster\cr
 \link[paws.database:elasticache_delete_cache_parameter_group]{delete_cache_parameter_group} \tab Deletes the specified cache parameter group\cr
 \link[paws.database:elasticache_delete_cache_security_group]{delete_cache_security_group} \tab Deletes a cache security group\cr
@@ -134,8 +134,8 @@ their cache and can receive alarms if a part of their cache runs hot.
 \link[paws.database:elasticache_delete_serverless_cache]{delete_serverless_cache} \tab Deletes a specified existing serverless cache\cr
 \link[paws.database:elasticache_delete_serverless_cache_snapshot]{delete_serverless_cache_snapshot} \tab Deletes an existing serverless cache snapshot\cr
 \link[paws.database:elasticache_delete_snapshot]{delete_snapshot} \tab Deletes an existing snapshot\cr
-\link[paws.database:elasticache_delete_user]{delete_user} \tab For Redis OSS engine version 6\cr
-\link[paws.database:elasticache_delete_user_group]{delete_user_group} \tab For Redis OSS engine version 6\cr
+\link[paws.database:elasticache_delete_user]{delete_user} \tab For Valkey engine version 7\cr
+\link[paws.database:elasticache_delete_user_group]{delete_user_group} \tab For Valkey engine version 7\cr
 \link[paws.database:elasticache_describe_cache_clusters]{describe_cache_clusters} \tab Returns information about all provisioned clusters if no cluster identifier is specified, or about a specific cache cluster if a cluster identifier is supplied\cr
 \link[paws.database:elasticache_describe_cache_engine_versions]{describe_cache_engine_versions} \tab Returns a list of the available cache engines and their versions\cr
 \link[paws.database:elasticache_describe_cache_parameter_groups]{describe_cache_parameter_groups} \tab Returns a list of cache parameter group descriptions\cr
@@ -159,8 +159,8 @@ their cache and can receive alarms if a part of their cache runs hot.
 \link[paws.database:elasticache_export_serverless_cache_snapshot]{export_serverless_cache_snapshot} \tab Provides the functionality to export the serverless cache snapshot data to Amazon S3\cr
 \link[paws.database:elasticache_failover_global_replication_group]{failover_global_replication_group} \tab Used to failover the primary region to a secondary region\cr
 \link[paws.database:elasticache_increase_node_groups_in_global_replication_group]{increase_node_groups_in_global_replication_group} \tab Increase the number of node groups in the Global datastore\cr
-\link[paws.database:elasticache_increase_replica_count]{increase_replica_count} \tab Dynamically increases the number of replicas in a Redis OSS (cluster mode disabled) replication group or the number of replica nodes in one or more node groups (shards) of a Redis OSS (cluster mode enabled) replication group\cr
-\link[paws.database:elasticache_list_allowed_node_type_modifications]{list_allowed_node_type_modifications} \tab Lists all available node types that you can scale your Redis OSS cluster's or replication group's current node type\cr
+\link[paws.database:elasticache_increase_replica_count]{increase_replica_count} \tab Dynamically increases the number of replicas in a Valkey or Redis OSS (cluster mode disabled) replication group or the number of replica nodes in one or more node groups (shards) of a Valkey or Redis OSS (cluster mode enabled) replication group\cr
+\link[paws.database:elasticache_list_allowed_node_type_modifications]{list_allowed_node_type_modifications} \tab Lists all available node types that you can scale with your cluster's replication group's current node type\cr
 \link[paws.database:elasticache_list_tags_for_resource]{list_tags_for_resource} \tab Lists all tags currently on a named resource\cr
 \link[paws.database:elasticache_modify_cache_cluster]{modify_cache_cluster} \tab Modifies the settings for a cluster\cr
 \link[paws.database:elasticache_modify_cache_parameter_group]{modify_cache_parameter_group} \tab Modifies the parameters of a cache parameter group\cr
@@ -186,8 +186,19 @@ their cache and can receive alarms if a part of their cache runs hot.
 \examples{
 \dontrun{
 svc <- elasticache()
+# Adds up to 10 tags, key/value pairs, to a cluster or snapshot resource.
 svc$add_tags_to_resource(
-  Foo = 123
+  ResourceName = "arn:aws:elasticache:us-east-1:1234567890:cluster:my-mem-cluster",
+  Tags = list(
+    list(
+      Key = "APIVersion",
+      Value = "20150202"
+    ),
+    list(
+      Key = "Service",
+      Value = "ElastiCache"
+    )
+  )
 )
 }
 

@@ -5,10 +5,16 @@
 \title{Deletes the password for the specified IAM user, For more information,
 see Managing passwords for IAM users}
 \usage{
-iam_delete_login_profile(UserName)
+iam_delete_login_profile(UserName = NULL)
 }
 \arguments{
-\item{UserName}{[required] The name of the user whose password you want to delete.
+\item{UserName}{The name of the user whose password you want to delete.
+
+This parameter is optional. If no user name is included, it defaults to
+the principal making the request. When you make this request with root
+user credentials, you must use an
+\href{https://docs.aws.amazon.com/STS/latest/APIReference/API_AssumeRoot.html}{AssumeRoot}
+session to omit the user name.
 
 This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 consisting of upper and lowercase alphanumeric characters with no

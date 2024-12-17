@@ -14,8 +14,8 @@ ec2_revoke_security_group_ingress(
   SourceSecurityGroupName = NULL,
   SourceSecurityGroupOwnerId = NULL,
   ToPort = NULL,
-  DryRun = NULL,
-  SecurityGroupRuleIds = NULL
+  SecurityGroupRuleIds = NULL,
+  DryRun = NULL
 )
 }
 \arguments{
@@ -50,12 +50,12 @@ IP permissions instead.}
 \item{ToPort}{If the protocol is TCP or UDP, this is the end of the port range. If the
 protocol is ICMP, this is the ICMP code or -1 (all ICMP codes).}
 
+\item{SecurityGroupRuleIds}{The IDs of the security group rules.}
+
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
-
-\item{SecurityGroupRuleIds}{The IDs of the security group rules.}
 }
 \description{
 Removes the specified inbound (ingress) rules from a security group.

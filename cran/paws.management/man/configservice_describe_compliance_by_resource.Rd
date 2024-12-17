@@ -15,7 +15,7 @@ configservice_describe_compliance_by_resource(
 }
 \arguments{
 \item{ResourceType}{The types of Amazon Web Services resources for which you want compliance
-information (for example, \verb{AWS::EC2::Instance}). For this action, you
+information (for example, \verb{AWS::EC2::Instance}). For this operation, you
 can specify that the resource type is an Amazon Web Services account by
 specifying \verb{AWS::::Account}.}
 
@@ -33,7 +33,7 @@ specify 0, Config uses the default.}
 the next page of results in a paginated response.}
 }
 \description{
-Indicates whether the specified Amazon Web Services resources are compliant. If a resource is noncompliant, this action returns the number of Config rules that the resource does not comply with.
+Indicates whether the specified Amazon Web Services resources are compliant. If a resource is noncompliant, this operation returns the number of Config rules that the resource does not comply with.
 
 See \url{https://www.paws-r-sdk.com/docs/configservice_describe_compliance_by_resource/} for full documentation.
 }

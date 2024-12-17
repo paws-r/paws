@@ -148,7 +148,7 @@ dax <- function(config = list(), credentials = list(), endpoint = NULL, region =
 
 .dax$metadata <- list(
   service_name = "dax",
-  endpoints = list("*" = list(endpoint = "dax.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "dax.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "dax.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "dax.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "dax.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "dax.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "dax.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "dax.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "dax.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "dax.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "dax.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "dax.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "dax.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "DAX",
   api_version = "2017-04-19",
   signing_name = "dax",

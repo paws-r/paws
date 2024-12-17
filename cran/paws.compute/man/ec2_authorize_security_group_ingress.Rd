@@ -14,8 +14,8 @@ ec2_authorize_security_group_ingress(
   SourceSecurityGroupName = NULL,
   SourceSecurityGroupOwnerId = NULL,
   ToPort = NULL,
-  DryRun = NULL,
-  TagSpecifications = NULL
+  TagSpecifications = NULL,
+  DryRun = NULL
 )
 }
 \arguments{
@@ -73,12 +73,12 @@ ICMP codes).
 To specify multiple rules and descriptions for the rules, use IP
 permissions instead.}
 
+\item{TagSpecifications}{The tags applied to the security group rule.}
+
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
-
-\item{TagSpecifications}{The tags applied to the security group rule.}
 }
 \description{
 Adds the specified inbound (ingress) rules to a security group.

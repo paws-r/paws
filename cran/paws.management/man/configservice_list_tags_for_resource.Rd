@@ -12,8 +12,17 @@ configservice_list_tags_for_resource(
 }
 \arguments{
 \item{ResourceArn}{[required] The Amazon Resource Name (ARN) that identifies the resource for which to
-list the tags. Currently, the supported resources are \code{ConfigRule},
-\code{ConfigurationAggregator} and \code{AggregatorAuthorization}.}
+list the tags. The following resources are supported:
+\itemize{
+\item \code{ConfigurationRecorder}
+\item \code{ConfigRule}
+\item \code{OrganizationConfigRule}
+\item \code{ConformancePack}
+\item \code{OrganizationConformancePack}
+\item \code{ConfigurationAggregator}
+\item \code{AggregationAuthorization}
+\item \code{StoredQuery}
+}}
 
 \item{Limit}{The maximum number of tags returned on each page. The limit maximum is
 50. You cannot specify a number greater than 50. If you specify 0,

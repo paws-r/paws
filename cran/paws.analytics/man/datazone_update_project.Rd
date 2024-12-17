@@ -7,6 +7,7 @@
 datazone_update_project(
   description = NULL,
   domainIdentifier,
+  environmentDeploymentDetails = NULL,
   glossaryTerms = NULL,
   identifier,
   name = NULL
@@ -17,6 +18,8 @@ datazone_update_project(
 \code{\link[=datazone_update_project]{update_project}} action.}
 
 \item{domainIdentifier}{[required] The ID of the Amazon DataZone domain where a project is being updated.}
+
+\item{environmentDeploymentDetails}{The environment deployment details of the project.}
 
 \item{glossaryTerms}{The glossary terms to be updated as part of the
 \code{\link[=datazone_update_project]{update_project}} action.}

@@ -53,10 +53,10 @@ The default is the time of request.}
 \code{300}, and \code{3600}. If you specify any other value, you will get an
 error. The default is 3600 seconds.}
 
-\item{DataType}{Type of datapoints to return. Valid values are \code{NonZeroData} and
+\item{DataType}{Type of data points to return. Valid values are \code{NonZeroData} and
 \code{FillWithZeros}. The default is \code{NonZeroData}.}
 
-\item{MaxResults}{The maximum number of datapoints to return. Valid values are integers
+\item{MaxResults}{The maximum number of data points to return. Valid values are integers
 from 1 to 21600. The default value is 21600.}
 
 \item{NextToken}{Returned if all datapoints can't be returned in a single call. For

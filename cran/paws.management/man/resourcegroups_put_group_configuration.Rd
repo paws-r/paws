@@ -7,8 +7,8 @@
 resourcegroups_put_group_configuration(Group = NULL, Configuration = NULL)
 }
 \arguments{
-\item{Group}{The name or ARN of the resource group with the configuration that you
-want to update.}
+\item{Group}{The name or Amazon resource name (ARN) of the resource group with the
+configuration that you want to update.}
 
 \item{Configuration}{The new configuration to associate with the specified group. A
 configuration associates the resource group with an Amazon Web Services

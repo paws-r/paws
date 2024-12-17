@@ -148,13 +148,14 @@ NULL
 #' @examples
 #' \dontrun{
 #' svc <- verifiedpermissions()
-#' svc$batch_is_authorized(
+#' svc$batch_get_policy(
 #'   Foo = 123
 #' )
 #' }
 #'
 #' @section Operations:
 #' \tabular{ll}{
+#'  \link[=verifiedpermissions_batch_get_policy]{batch_get_policy} \tab Retrieves information about a group (batch) of policies\cr
 #'  \link[=verifiedpermissions_batch_is_authorized]{batch_is_authorized} \tab Makes a series of decisions about multiple authorization requests for one principal or resource\cr
 #'  \link[=verifiedpermissions_batch_is_authorized_with_token]{batch_is_authorized_with_token} \tab Makes a series of decisions about multiple authorization requests for one token\cr
 #'  \link[=verifiedpermissions_create_identity_source]{create_identity_source} \tab Adds an identity source to a policy store–an Amazon Cognito user pool or OpenID Connect (OIDC) identity provider (IdP)\cr
@@ -212,7 +213,7 @@ verifiedpermissions <- function(config = list(), credentials = list(), endpoint 
 
 .verifiedpermissions$metadata <- list(
   service_name = "verifiedpermissions",
-  endpoints = list("*" = list(endpoint = "verifiedpermissions.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "verifiedpermissions.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "verifiedpermissions.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "verifiedpermissions.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "verifiedpermissions.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "verifiedpermissions.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "verifiedpermissions.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "verifiedpermissions.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "verifiedpermissions.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "verifiedpermissions.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "verifiedpermissions.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "verifiedpermissions.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "verifiedpermissions.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "VerifiedPermissions",
   api_version = "2021-12-01",
   signing_name = "verifiedpermissions",

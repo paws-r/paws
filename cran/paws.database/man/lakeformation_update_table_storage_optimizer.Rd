@@ -18,7 +18,7 @@ lakeformation_update_table_storage_optimizer(
 
 \item{TableName}{[required] Name of the table for which to enable the storage optimizer.}
 
-\item{StorageOptimizerConfig}{[required] Name of the table for which to enable the storage optimizer.}
+\item{StorageOptimizerConfig}{[required] Name of the configuration for the storage optimizer.}
 }
 \description{
 Updates the configuration of the storage optimizers for a table.

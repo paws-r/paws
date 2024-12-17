@@ -83,15 +83,15 @@ when it was made, and additional details. To learn more about Security
 Lake information in CloudTrail, see the \href{https://docs.aws.amazon.com/security-lake/latest/userguide/securitylake-cloudtrail.html}{Amazon Security Lake User Guide}.
 
 Security Lake automates the collection of security-related log and event
-data from integrated Amazon Web Services and third-party services. It
-also helps you manage the lifecycle of data with customizable retention
-and replication settings. Security Lake converts ingested data into
-Apache Parquet format and a standard open-source schema called the Open
-Cybersecurity Schema Framework (OCSF).
+data from integrated Amazon Web Services services and third-party
+services. It also helps you manage the lifecycle of data with
+customizable retention and replication settings. Security Lake converts
+ingested data into Apache Parquet format and a standard open-source
+schema called the Open Cybersecurity Schema Framework (OCSF).
 
-Other Amazon Web Services and third-party services can subscribe to the
-data that's stored in Security Lake for incident response and security
-data analytics.
+Other Amazon Web Services services and third-party services can
+subscribe to the data that's stored in Security Lake for incident
+response and security data analytics.
 }
 \section{Service syntax}{
 
@@ -132,34 +132,34 @@ data analytics.
 \section{Operations}{
 
 \tabular{ll}{
-\link[paws.security.identity:securitylake_create_aws_log_source]{create_aws_log_source} \tab Adds a natively supported Amazon Web Service as an Amazon Security Lake source\cr
+\link[paws.security.identity:securitylake_create_aws_log_source]{create_aws_log_source} \tab Adds a natively supported Amazon Web Services service as an Amazon Security Lake source\cr
 \link[paws.security.identity:securitylake_create_custom_log_source]{create_custom_log_source} \tab Adds a third-party custom source in Amazon Security Lake, from the Amazon Web Services Region where you want to create a custom source\cr
 \link[paws.security.identity:securitylake_create_data_lake]{create_data_lake} \tab Initializes an Amazon Security Lake instance with the provided (or default) configuration\cr
 \link[paws.security.identity:securitylake_create_data_lake_exception_subscription]{create_data_lake_exception_subscription} \tab Creates the specified notification subscription in Amazon Security Lake for the organization you specify\cr
 \link[paws.security.identity:securitylake_create_data_lake_organization_configuration]{create_data_lake_organization_configuration} \tab Automatically enables Amazon Security Lake for new member accounts in your organization\cr
-\link[paws.security.identity:securitylake_create_subscriber]{create_subscriber} \tab Creates a subscription permission for accounts that are already enabled in Amazon Security Lake\cr
+\link[paws.security.identity:securitylake_create_subscriber]{create_subscriber} \tab Creates a subscriber for accounts that are already enabled in Amazon Security Lake\cr
 \link[paws.security.identity:securitylake_create_subscriber_notification]{create_subscriber_notification} \tab Notifies the subscriber when new data is written to the data lake for the sources that the subscriber consumes in Security Lake\cr
-\link[paws.security.identity:securitylake_delete_aws_log_source]{delete_aws_log_source} \tab Removes a natively supported Amazon Web Service as an Amazon Security Lake source\cr
+\link[paws.security.identity:securitylake_delete_aws_log_source]{delete_aws_log_source} \tab Removes a natively supported Amazon Web Services service as an Amazon Security Lake source\cr
 \link[paws.security.identity:securitylake_delete_custom_log_source]{delete_custom_log_source} \tab Removes a custom log source from Amazon Security Lake, to stop sending data from the custom source to Security Lake\cr
 \link[paws.security.identity:securitylake_delete_data_lake]{delete_data_lake} \tab When you disable Amazon Security Lake from your account, Security Lake is disabled in all Amazon Web Services Regions and it stops collecting data from your sources\cr
 \link[paws.security.identity:securitylake_delete_data_lake_exception_subscription]{delete_data_lake_exception_subscription} \tab Deletes the specified notification subscription in Amazon Security Lake for the organization you specify\cr
 \link[paws.security.identity:securitylake_delete_data_lake_organization_configuration]{delete_data_lake_organization_configuration} \tab Turns off automatic enablement of Amazon Security Lake for member accounts that are added to an organization in Organizations\cr
 \link[paws.security.identity:securitylake_delete_subscriber]{delete_subscriber} \tab Deletes the subscription permission and all notification settings for accounts that are already enabled in Amazon Security Lake\cr
-\link[paws.security.identity:securitylake_delete_subscriber_notification]{delete_subscriber_notification} \tab Deletes the specified notification subscription in Amazon Security Lake for the organization you specify\cr
+\link[paws.security.identity:securitylake_delete_subscriber_notification]{delete_subscriber_notification} \tab Deletes the specified subscription notification in Amazon Security Lake for the organization you specify\cr
 \link[paws.security.identity:securitylake_deregister_data_lake_delegated_administrator]{deregister_data_lake_delegated_administrator} \tab Deletes the Amazon Security Lake delegated administrator account for the organization\cr
-\link[paws.security.identity:securitylake_get_data_lake_exception_subscription]{get_data_lake_exception_subscription} \tab Retrieves the details of exception notifications for the account in Amazon Security Lake\cr
+\link[paws.security.identity:securitylake_get_data_lake_exception_subscription]{get_data_lake_exception_subscription} \tab Retrieves the protocol and endpoint that were provided when subscribing to Amazon SNS topics for exception notifications\cr
 \link[paws.security.identity:securitylake_get_data_lake_organization_configuration]{get_data_lake_organization_configuration} \tab Retrieves the configuration that will be automatically set up for accounts added to the organization after the organization has onboarded to Amazon Security Lake\cr
 \link[paws.security.identity:securitylake_get_data_lake_sources]{get_data_lake_sources} \tab Retrieves a snapshot of the current Region, including whether Amazon Security Lake is enabled for those accounts and which sources Security Lake is collecting data from\cr
 \link[paws.security.identity:securitylake_get_subscriber]{get_subscriber} \tab Retrieves the subscription information for the specified subscription ID\cr
 \link[paws.security.identity:securitylake_list_data_lake_exceptions]{list_data_lake_exceptions} \tab Lists the Amazon Security Lake exceptions that you can use to find the source of problems and fix them\cr
 \link[paws.security.identity:securitylake_list_data_lakes]{list_data_lakes} \tab Retrieves the Amazon Security Lake configuration object for the specified Amazon Web Services Regions\cr
-\link[paws.security.identity:securitylake_list_log_sources]{list_log_sources} \tab Retrieves the log sources in the current Amazon Web Services Region\cr
-\link[paws.security.identity:securitylake_list_subscribers]{list_subscribers} \tab List all subscribers for the specific Amazon Security Lake account ID\cr
+\link[paws.security.identity:securitylake_list_log_sources]{list_log_sources} \tab Retrieves the log sources\cr
+\link[paws.security.identity:securitylake_list_subscribers]{list_subscribers} \tab Lists all subscribers for the specific Amazon Security Lake account ID\cr
 \link[paws.security.identity:securitylake_list_tags_for_resource]{list_tags_for_resource} \tab Retrieves the tags (keys and values) that are associated with an Amazon Security Lake resource: a subscriber, or the data lake configuration for your Amazon Web Services account in a particular Amazon Web Services Region\cr
 \link[paws.security.identity:securitylake_register_data_lake_delegated_administrator]{register_data_lake_delegated_administrator} \tab Designates the Amazon Security Lake delegated administrator account for the organization\cr
 \link[paws.security.identity:securitylake_tag_resource]{tag_resource} \tab Adds or updates one or more tags that are associated with an Amazon Security Lake resource: a subscriber, or the data lake configuration for your Amazon Web Services account in a particular Amazon Web Services Region\cr
 \link[paws.security.identity:securitylake_untag_resource]{untag_resource} \tab Removes one or more tags (keys and values) from an Amazon Security Lake resource: a subscriber, or the data lake configuration for your Amazon Web Services account in a particular Amazon Web Services Region\cr
-\link[paws.security.identity:securitylake_update_data_lake]{update_data_lake} \tab Specifies where to store your security data and for how long\cr
+\link[paws.security.identity:securitylake_update_data_lake]{update_data_lake} \tab You can use UpdateDataLake to specify where to store your security data, how it should be encrypted at rest and for how long\cr
 \link[paws.security.identity:securitylake_update_data_lake_exception_subscription]{update_data_lake_exception_subscription} \tab Updates the specified notification subscription in Amazon Security Lake for the organization you specify\cr
 \link[paws.security.identity:securitylake_update_subscriber]{update_subscriber} \tab Updates an existing subscription for the given Amazon Security Lake account ID\cr
 \link[paws.security.identity:securitylake_update_subscriber_notification]{update_subscriber_notification} \tab Updates an existing notification method for the subscription (SQS or HTTPs endpoint) or switches the notification subscription endpoint for a subscriber

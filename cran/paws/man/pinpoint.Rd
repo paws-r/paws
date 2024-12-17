@@ -217,13 +217,8 @@ Doc Engage API - Amazon Pinpoint API
 \examples{
 \dontrun{
 svc <- pinpoint()
-# The following example gets activity execution metrics for a single run
-# of a journey.
-svc$get_journey_run_execution_activity_metrics(
-  ApplicationId = "11111111112222222222333333333344",
-  JourneyId = "aaaaaaaaaabbbbbbbbbbccccccccccdd",
-  RunId = "99999999998888888888777777777766",
-  JourneyActivityId = "AAAAAAAAAA"
+svc$create_app(
+  Foo = 123
 )
 }
 

@@ -40,13 +40,53 @@ following examples are partial JSON request bodies that highlight
 challenge-response parameters.
 
 You must provide a SECRET_HASH parameter in all challenge responses to
-an app client that has a client secret.
+an app client that has a client secret. Include a \code{DEVICE_KEY} for
+device authentication.
+
+\strong{SELECT_CHALLENGE}
+
+\verb{"ChallengeName": "SELECT_CHALLENGE", "ChallengeResponses": \{ "USERNAME": "[username]", "ANSWER": "[Challenge name]"\}}
+
+Available challenges are \code{PASSWORD}, \code{PASSWORD_SRP}, \code{EMAIL_OTP},
+\code{SMS_OTP}, and \code{WEB_AUTHN}.
+
+Complete authentication in the \code{SELECT_CHALLENGE} response for
+\code{PASSWORD}, \code{PASSWORD_SRP}, and \code{WEB_AUTHN}:
+\itemize{
+\item \verb{"ChallengeName": "SELECT_CHALLENGE", "ChallengeResponses": \{ "ANSWER": "WEB_AUTHN", "USERNAME": "[username]", "CREDENTIAL": "[AuthenticationResponseJSON]"\}}
+
+See
+\href{https://www.w3.org/TR/webauthn-3/#dictdef-authenticationresponsejson}{AuthenticationResponseJSON}.
+\item \verb{"ChallengeName": "SELECT_CHALLENGE", "ChallengeResponses": \{ "ANSWER": "PASSWORD", "USERNAME": "[username]", "PASSWORD": "[password]"\}}
+\item \verb{"ChallengeName": "SELECT_CHALLENGE", "ChallengeResponses": \{ "ANSWER": "PASSWORD_SRP", "USERNAME": "[username]", "SRP_A": "[SRP_A]"\}}
+}
+
+For \code{SMS_OTP} and \code{EMAIL_OTP}, respond with the username and answer.
+Your user pool will send a code for the user to submit in the next
+challenge response.
+\itemize{
+\item \verb{"ChallengeName": "SELECT_CHALLENGE", "ChallengeResponses": \{ "ANSWER": "SMS_OTP", "USERNAME": "[username]"\}}
+\item \verb{"ChallengeName": "SELECT_CHALLENGE", "ChallengeResponses": \{ "ANSWER": "EMAIL_OTP", "USERNAME": "[username]"\}}
+}
+
+\strong{SMS_OTP}
+
+\verb{"ChallengeName": "SMS_OTP", "ChallengeResponses": \{"SMS_OTP_CODE": "[code]", "USERNAME": "[username]"\}}
+
+\strong{EMAIL_OTP}
+
+\verb{"ChallengeName": "EMAIL_OTP", "ChallengeResponses": \{"EMAIL_OTP_CODE": "[code]", "USERNAME": "[username]"\}}
 
 \strong{SMS_MFA}
 
-\verb{"ChallengeName": "SMS_MFA", "ChallengeResponses": \{"SMS_MFA_CODE": "[SMS_code]", "USERNAME": "[username]"\}}
+\verb{"ChallengeName": "SMS_MFA", "ChallengeResponses": \{"SMS_MFA_CODE": "[code]", "USERNAME": "[username]"\}}
 
 \strong{PASSWORD_VERIFIER}
+
+This challenge response is part of the SRP flow. Amazon Cognito requires
+that your application respond to this challenge within a few seconds.
+When the response time exceeds this period, your user pool returns a
+\code{NotAuthorizedException} error.
 
 \verb{"ChallengeName": "PASSWORD_VERIFIER", "ChallengeResponses": \{"PASSWORD_CLAIM_SIGNATURE": "[claim_signature]", "PASSWORD_CLAIM_SECRET_BLOCK": "[secret_block]", "TIMESTAMP": [timestamp], "USERNAME": "[username]"\}}
 
@@ -108,7 +148,9 @@ calls.}
 \item{UserContextData}{Contextual data about your user session, such as the device fingerprint,
 IP address, or location. Amazon Cognito advanced security evaluates the
 risk of an authentication event based on the context that your app
-generates and passes to Amazon Cognito when it makes API requests.}
+generates and passes to Amazon Cognito when it makes API requests.
+
+For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-settings-viewing-threat-protection-app.html}{Collecting data for threat protection in applications}.}
 
 \item{ClientMetadata}{A map of custom key-value pairs that you can provide as input for any
 custom workflows that this action triggers.
@@ -128,16 +170,16 @@ to enhance your workflow for your specific needs.
 For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-working-with-lambda-triggers.html}{Customizing user pool Workflows with Lambda Triggers}
 in the \emph{Amazon Cognito Developer Guide}.
 
-When you use the ClientMetadata parameter, remember that Amazon Cognito
+When you use the \code{ClientMetadata} parameter, note that Amazon Cognito
 won't do the following:
 \itemize{
-\item Store the ClientMetadata value. This data is available only to
+\item Store the \code{ClientMetadata} value. This data is available only to
 Lambda triggers that are assigned to a user pool to support custom
 workflows. If your user pool configuration doesn't include triggers,
-the ClientMetadata parameter serves no purpose.
-\item Validate the ClientMetadata value.
-\item Encrypt the ClientMetadata value. Don't use Amazon Cognito to
-provide sensitive information.
+the \code{ClientMetadata} parameter serves no purpose.
+\item Validate the \code{ClientMetadata} value.
+\item Encrypt the \code{ClientMetadata} value. Don't send sensitive information
+in this parameter.
 }}
 }
 \description{

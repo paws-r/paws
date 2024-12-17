@@ -2,17 +2,18 @@
 % Please edit documentation in R/lambda_operations.R
 \name{lambda_tag_resource}
 \alias{lambda_tag_resource}
-\title{Adds tags to a function}
+\title{Adds tags to a function, event source mapping, or code signing
+configuration}
 \usage{
 lambda_tag_resource(Resource, Tags)
 }
 \arguments{
-\item{Resource}{[required] The function's Amazon Resource Name (ARN).}
+\item{Resource}{[required] The resource's Amazon Resource Name (ARN).}
 
-\item{Tags}{[required] A list of tags to apply to the function.}
+\item{Tags}{[required] A list of tags to apply to the resource.}
 }
 \description{
-Adds \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-tags.html}{tags} to a function.
+Adds \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-tags.html}{tags} to a function, event source mapping, or code signing configuration.
 
 See \url{https://www.paws-r-sdk.com/docs/lambda_tag_resource/} for full documentation.
 }

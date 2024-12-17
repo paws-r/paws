@@ -678,7 +678,7 @@ kafka_batch_disassociate_scram_secret <- function(ClusterArn, SecretArnList) {
 #' A list of brokers that a client application can use to bootstrap
 #'
 #' @description
-#' A list of brokers that a client application can use to bootstrap.
+#' A list of brokers that a client application can use to bootstrap. This list doesn't necessarily include all of the brokers in the cluster. The following Python 3.6 example shows how you can use the Amazon Resource Name (ARN) of a cluster to get its bootstrap brokers. If you don't know the ARN of your cluster, you can use the [`list_clusters`][kafka_list_clusters] operation to get the ARNs of all the clusters in this account and Region.
 #'
 #' See [https://www.paws-r-sdk.com/docs/kafka_get_bootstrap_brokers/](https://www.paws-r-sdk.com/docs/kafka_get_bootstrap_brokers/) for full documentation.
 #'
@@ -864,7 +864,7 @@ kafka_list_clusters <- function(ClusterNameFilter = NULL, MaxResults = NULL, Nex
     http_method = "GET",
     http_path = "/v1/clusters",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ClusterInfoList"),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ClusterInfoList"),
     stream_api = FALSE
   )
   input <- .kafka$list_clusters_input(ClusterNameFilter = ClusterNameFilter, MaxResults = MaxResults, NextToken = NextToken)
@@ -1045,7 +1045,7 @@ kafka_list_nodes <- function(ClusterArn, MaxResults = NULL, NextToken = NULL) {
     http_method = "GET",
     http_path = "/v1/clusters/{clusterArn}/nodes",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "NodeInfoList"),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "NodeInfoList"),
     stream_api = FALSE
   )
   input <- .kafka$list_nodes_input(ClusterArn = ClusterArn, MaxResults = MaxResults, NextToken = NextToken)

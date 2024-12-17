@@ -9,7 +9,8 @@ ec2_describe_vpc_endpoint_services(
   ServiceNames = NULL,
   Filters = NULL,
   MaxResults = NULL,
-  NextToken = NULL
+  NextToken = NULL,
+  ServiceRegions = NULL
 )
 }
 \arguments{
@@ -25,6 +26,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item \code{owner} - The ID or alias of the Amazon Web Services account that
 owns the service.
 \item \code{service-name} - The name of the service.
+\item \code{service-region} - The Region of the service.
 \item \code{service-type} - The type of service (\code{Interface} | \code{Gateway} |
 \code{GatewayLoadBalancer}).
 \item \code{supported-ip-address-types} - The IP address type (\code{ipv4} |
@@ -48,6 +50,8 @@ items.}
 
 \item{NextToken}{The token for the next set of items to return. (You received this token
 from a prior call.)}
+
+\item{ServiceRegions}{The service Regions.}
 }
 \description{
 Describes available services to which you can create a VPC endpoint.

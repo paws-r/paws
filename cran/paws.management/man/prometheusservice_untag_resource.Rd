@@ -8,12 +8,12 @@ resource}
 prometheusservice_untag_resource(resourceArn, tagKeys)
 }
 \arguments{
-\item{resourceArn}{[required] The ARN of the workspace or rule groups namespace.}
+\item{resourceArn}{[required] The ARN of the resource from which to remove a tag.}
 
 \item{tagKeys}{[required] The keys of the tags to remove.}
 }
 \description{
-Removes the specified tags from an Amazon Managed Service for Prometheus resource. The only resources that can be tagged are workspaces and rule groups namespaces.
+Removes the specified tags from an Amazon Managed Service for Prometheus resource. The only resources that can be tagged are rule groups namespaces, scrapers, and workspaces.
 
 See \url{https://www.paws-r-sdk.com/docs/prometheusservice_untag_resource/} for full documentation.
 }

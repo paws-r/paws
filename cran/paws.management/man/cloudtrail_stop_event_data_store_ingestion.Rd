@@ -12,7 +12,7 @@ cloudtrail_stop_event_data_store_ingestion(EventDataStore)
 want to stop ingestion.}
 }
 \description{
-Stops the ingestion of live events on an event data store specified as either an ARN or the ID portion of the ARN. To stop ingestion, the event data store \code{Status} must be \code{ENABLED} and the \code{eventCategory} must be \code{Management}, \code{Data}, or \code{ConfigurationItem}.
+Stops the ingestion of live events on an event data store specified as either an ARN or the ID portion of the ARN. To stop ingestion, the event data store \code{Status} must be \code{ENABLED} and the \code{eventCategory} must be \code{Management}, \code{Data}, \code{NetworkActivity}, or \code{ConfigurationItem}.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudtrail_stop_event_data_store_ingestion/} for full documentation.
 }

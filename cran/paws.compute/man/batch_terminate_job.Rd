@@ -11,8 +11,10 @@ batch_terminate_job(jobId, reason)
 
 \item{reason}{[required] A message to attach to the job that explains the reason for canceling
 it. This message is returned by future
-\code{\link[=batch_describe_jobs]{describe_jobs}} operations on the job. This
-message is also recorded in the Batch activity logs.}
+\code{\link[=batch_describe_jobs]{describe_jobs}} operations on the job. It is also
+recorded in the Batch activity logs.
+
+This parameter has as limit of 1024 characters.}
 }
 \description{
 Terminates a job in a job queue. Jobs that are in the \code{STARTING} or \code{RUNNING} state are terminated, which causes them to transition to \code{FAILED}. Jobs that have not progressed to the \code{STARTING} state are cancelled.

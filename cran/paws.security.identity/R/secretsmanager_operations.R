@@ -36,7 +36,7 @@ secretsmanager_batch_get_secret_value <- function(SecretIdList = NULL, Filters =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .secretsmanager$batch_get_secret_value_input(SecretIdList = SecretIdList, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
@@ -537,7 +537,7 @@ secretsmanager_list_secret_version_ids <- function(SecretId, MaxResults = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .secretsmanager$list_secret_version_ids_input(SecretId = SecretId, MaxResults = MaxResults, NextToken = NextToken, IncludeDeprecated = IncludeDeprecated)
@@ -581,7 +581,7 @@ secretsmanager_list_secrets <- function(IncludePlannedDeletion = NULL, MaxResult
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "SecretList"),
     stream_api = FALSE
   )
   input <- .secretsmanager$list_secrets_input(IncludePlannedDeletion = IncludePlannedDeletion, MaxResults = MaxResults, NextToken = NextToken, Filters = Filters, SortOrder = SortOrder)

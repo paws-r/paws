@@ -3,10 +3,11 @@
 #' @include xray_service.R
 NULL
 
-#' Retrieves a list of traces specified by ID
+#' You cannot find traces through this API if Transaction Search is enabled
+#' since trace is not indexed in X-Ray
 #'
 #' @description
-#' Retrieves a list of traces specified by ID. Each trace is a collection of segment documents that originates from a single request. Use [`get_trace_summaries`][xray_get_trace_summaries] to get a list of trace IDs.
+#' You cannot find traces through this API if Transaction Search is enabled since trace is not indexed in X-Ray.
 #'
 #' See [https://www.paws-r-sdk.com/docs/xray_batch_get_traces/](https://www.paws-r-sdk.com/docs/xray_batch_get_traces/) for full documentation.
 #'
@@ -22,7 +23,7 @@ xray_batch_get_traces <- function(TraceIds, NextToken = NULL) {
     http_method = "POST",
     http_path = "/Traces",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", non_aggregate_keys = list("UnprocessedTraceIds"), output_token = "NextToken", result_key = "Traces"),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Traces", non_aggregate_keys = list("UnprocessedTraceIds")),
     stream_api = FALSE
   )
   input <- .xray$batch_get_traces_input(TraceIds = TraceIds, NextToken = NextToken)
@@ -34,6 +35,38 @@ xray_batch_get_traces <- function(TraceIds, NextToken = NULL) {
   return(response)
 }
 .xray$operations$batch_get_traces <- xray_batch_get_traces
+
+#' Cancels an ongoing trace retrieval job initiated by StartTraceRetrieval
+#' using the provided RetrievalToken
+#'
+#' @description
+#' Cancels an ongoing trace retrieval job initiated by [`start_trace_retrieval`][xray_start_trace_retrieval] using the provided `RetrievalToken`. A successful cancellation will return an HTTP 200 response.
+#'
+#' See [https://www.paws-r-sdk.com/docs/xray_cancel_trace_retrieval/](https://www.paws-r-sdk.com/docs/xray_cancel_trace_retrieval/) for full documentation.
+#'
+#' @param RetrievalToken &#91;required&#93; Retrieval token.
+#'
+#' @keywords internal
+#'
+#' @rdname xray_cancel_trace_retrieval
+xray_cancel_trace_retrieval <- function(RetrievalToken) {
+  op <- new_operation(
+    name = "CancelTraceRetrieval",
+    http_method = "POST",
+    http_path = "/CancelTraceRetrieval",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .xray$cancel_trace_retrieval_input(RetrievalToken = RetrievalToken)
+  output <- .xray$cancel_trace_retrieval_output()
+  config <- get_config()
+  svc <- .xray$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.xray$operations$cancel_trace_retrieval <- xray_cancel_trace_retrieval
 
 #' Creates a group resource with a name and a filter expression
 #'
@@ -345,6 +378,38 @@ xray_get_groups <- function(NextToken = NULL) {
 }
 .xray$operations$get_groups <- xray_get_groups
 
+#' Retrieves all indexing rules
+#'
+#' @description
+#' Retrieves all indexing rules.
+#'
+#' See [https://www.paws-r-sdk.com/docs/xray_get_indexing_rules/](https://www.paws-r-sdk.com/docs/xray_get_indexing_rules/) for full documentation.
+#'
+#' @param NextToken Specify the pagination token returned by a previous request to retrieve
+#' the next page of indexes.
+#'
+#' @keywords internal
+#'
+#' @rdname xray_get_indexing_rules
+xray_get_indexing_rules <- function(NextToken = NULL) {
+  op <- new_operation(
+    name = "GetIndexingRules",
+    http_method = "POST",
+    http_path = "/GetIndexingRules",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .xray$get_indexing_rules_input(NextToken = NextToken)
+  output <- .xray$get_indexing_rules_output()
+  config <- get_config()
+  svc <- .xray$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.xray$operations$get_indexing_rules <- xray_get_indexing_rules
+
 #' Retrieves the summary information of an insight
 #'
 #' @description
@@ -400,7 +465,7 @@ xray_get_insight_events <- function(InsightId, MaxResults = NULL, NextToken = NU
     http_method = "POST",
     http_path = "/InsightEvents",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .xray$get_insight_events_input(InsightId = InsightId, MaxResults = MaxResults, NextToken = NextToken)
@@ -481,7 +546,7 @@ xray_get_insight_summaries <- function(States = NULL, GroupARN = NULL, GroupName
     http_method = "POST",
     http_path = "/InsightSummaries",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .xray$get_insight_summaries_input(States = States, GroupARN = GroupARN, GroupName = GroupName, StartTime = StartTime, EndTime = EndTime, MaxResults = MaxResults, NextToken = NextToken)
@@ -493,6 +558,41 @@ xray_get_insight_summaries <- function(States = NULL, GroupARN = NULL, GroupName
   return(response)
 }
 .xray$operations$get_insight_summaries <- xray_get_insight_summaries
+
+#' Retrieves a service graph for traces based on the specified
+#' RetrievalToken from the CloudWatch log group generated by Transaction
+#' Search
+#'
+#' @description
+#' Retrieves a service graph for traces based on the specified `RetrievalToken` from the CloudWatch log group generated by Transaction Search. This API does not initiate a retrieval job. You must first execute [`start_trace_retrieval`][xray_start_trace_retrieval] to obtain the required `RetrievalToken`.
+#'
+#' See [https://www.paws-r-sdk.com/docs/xray_get_retrieved_traces_graph/](https://www.paws-r-sdk.com/docs/xray_get_retrieved_traces_graph/) for full documentation.
+#'
+#' @param RetrievalToken &#91;required&#93; Retrieval token.
+#' @param NextToken Specify the pagination token returned by a previous request to retrieve
+#' the next page of indexes.
+#'
+#' @keywords internal
+#'
+#' @rdname xray_get_retrieved_traces_graph
+xray_get_retrieved_traces_graph <- function(RetrievalToken, NextToken = NULL) {
+  op <- new_operation(
+    name = "GetRetrievedTracesGraph",
+    http_method = "POST",
+    http_path = "/GetRetrievedTracesGraph",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .xray$get_retrieved_traces_graph_input(RetrievalToken = RetrievalToken, NextToken = NextToken)
+  output <- .xray$get_retrieved_traces_graph_output()
+  config <- get_config()
+  svc <- .xray$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.xray$operations$get_retrieved_traces_graph <- xray_get_retrieved_traces_graph
 
 #' Retrieves all sampling rules
 #'
@@ -613,7 +713,7 @@ xray_get_service_graph <- function(StartTime, EndTime, GroupName = NULL, GroupAR
     http_method = "POST",
     http_path = "/ServiceGraph",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", non_aggregate_keys = list("StartTime", "EndTime", "ContainsOldGroupVersions"), output_token = "NextToken", result_key = "Services"),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Services", non_aggregate_keys = list("StartTime", "EndTime", "ContainsOldGroupVersions")),
     stream_api = FALSE
   )
   input <- .xray$get_service_graph_input(StartTime = StartTime, EndTime = EndTime, GroupName = GroupName, GroupARN = GroupARN, NextToken = NextToken)
@@ -701,6 +801,38 @@ xray_get_trace_graph <- function(TraceIds, NextToken = NULL) {
 }
 .xray$operations$get_trace_graph <- xray_get_trace_graph
 
+#' Retrieves the current destination of data sent to PutTraceSegments and
+#' OpenTelemetry API
+#'
+#' @description
+#' Retrieves the current destination of data sent to [`put_trace_segments`][xray_put_trace_segments] and *OpenTelemetry* API. The Transaction Search feature requires a CloudWatchLogs destination. For more information, see [Transaction Search](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Transaction-Search.html) and [OpenTelemetry](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-OpenTelemetry-Sections.html).
+#'
+#' See [https://www.paws-r-sdk.com/docs/xray_get_trace_segment_destination/](https://www.paws-r-sdk.com/docs/xray_get_trace_segment_destination/) for full documentation.
+#'
+
+#'
+#' @keywords internal
+#'
+#' @rdname xray_get_trace_segment_destination
+xray_get_trace_segment_destination <- function() {
+  op <- new_operation(
+    name = "GetTraceSegmentDestination",
+    http_method = "POST",
+    http_path = "/GetTraceSegmentDestination",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .xray$get_trace_segment_destination_input()
+  output <- .xray$get_trace_segment_destination_output()
+  config <- get_config()
+  svc <- .xray$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.xray$operations$get_trace_segment_destination <- xray_get_trace_segment_destination
+
 #' Retrieves IDs and annotations for traces available for a specified time
 #' frame using an optional filter
 #'
@@ -711,8 +843,8 @@ xray_get_trace_graph <- function(TraceIds, NextToken = NULL) {
 #'
 #' @param StartTime &#91;required&#93; The start of the time frame for which to retrieve traces.
 #' @param EndTime &#91;required&#93; The end of the time frame for which to retrieve traces.
-#' @param TimeRangeType A parameter to indicate whether to query trace summaries by TraceId,
-#' Event (trace update time), or Service (segment end time).
+#' @param TimeRangeType Query trace summaries by TraceId (trace start time), Event (trace update
+#' time), or Service (trace segment end time).
 #' @param Sampling Set to `true` to get summaries for only a subset of available traces.
 #' @param SamplingStrategy A parameter to indicate whether to enable sampling on trace summaries.
 #' Input parameters are Name and Value.
@@ -730,7 +862,7 @@ xray_get_trace_summaries <- function(StartTime, EndTime, TimeRangeType = NULL, S
     http_method = "POST",
     http_path = "/TraceSummaries",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", non_aggregate_keys = list("TracesProcessedCount", "ApproximateTime"), output_token = "NextToken", result_key = "TraceSummaries"),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "TraceSummaries", non_aggregate_keys = list("TracesProcessedCount", "ApproximateTime")),
     stream_api = FALSE
   )
   input <- .xray$get_trace_summaries_input(StartTime = StartTime, EndTime = EndTime, TimeRangeType = TimeRangeType, Sampling = Sampling, SamplingStrategy = SamplingStrategy, FilterExpression = FilterExpression, NextToken = NextToken)
@@ -774,6 +906,41 @@ xray_list_resource_policies <- function(NextToken = NULL) {
   return(response)
 }
 .xray$operations$list_resource_policies <- xray_list_resource_policies
+
+#' Retrieves a list of traces for a given RetrievalToken from the
+#' CloudWatch log group generated by Transaction Search
+#'
+#' @description
+#' Retrieves a list of traces for a given `RetrievalToken` from the CloudWatch log group generated by Transaction Search. For information on what each trace returns, see [`batch_get_traces`][xray_batch_get_traces].
+#'
+#' See [https://www.paws-r-sdk.com/docs/xray_list_retrieved_traces/](https://www.paws-r-sdk.com/docs/xray_list_retrieved_traces/) for full documentation.
+#'
+#' @param RetrievalToken &#91;required&#93; Retrieval token.
+#' @param TraceFormat Format of the requested traces.
+#' @param NextToken Specify the pagination token returned by a previous request to retrieve
+#' the next page of indexes.
+#'
+#' @keywords internal
+#'
+#' @rdname xray_list_retrieved_traces
+xray_list_retrieved_traces <- function(RetrievalToken, TraceFormat = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListRetrievedTraces",
+    http_method = "POST",
+    http_path = "/ListRetrievedTraces",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .xray$list_retrieved_traces_input(RetrievalToken = RetrievalToken, TraceFormat = TraceFormat, NextToken = NextToken)
+  output <- .xray$list_retrieved_traces_output()
+  config <- get_config()
+  svc <- .xray$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.xray$operations$list_retrieved_traces <- xray_list_retrieved_traces
 
 #' Returns a list of tags that are applied to the specified Amazon Web
 #' Services X-Ray group or sampling rule
@@ -948,7 +1115,7 @@ xray_put_telemetry_records <- function(TelemetryRecords, EC2InstanceId = NULL, H
 #' Uploads segment documents to Amazon Web Services X-Ray
 #'
 #' @description
-#' Uploads segment documents to Amazon Web Services X-Ray. The [X-Ray SDK](https://docs.aws.amazon.com/xray/) generates segment documents and sends them to the X-Ray daemon, which uploads them in batches. A segment document can be a completed segment, an in-progress segment, or an array of subsegments.
+#' Uploads segment documents to Amazon Web Services X-Ray. A segment document can be a completed segment, an in-progress segment, or an array of subsegments.
 #'
 #' See [https://www.paws-r-sdk.com/docs/xray_put_trace_segments/](https://www.paws-r-sdk.com/docs/xray_put_trace_segments/) for full documentation.
 #'
@@ -976,6 +1143,45 @@ xray_put_trace_segments <- function(TraceSegmentDocuments) {
   return(response)
 }
 .xray$operations$put_trace_segments <- xray_put_trace_segments
+
+#' Initiates a trace retrieval process using the specified time range and
+#' for the give trace IDs on Transaction Search generated by the CloudWatch
+#' log group
+#'
+#' @description
+#' Initiates a trace retrieval process using the specified time range and for the give trace IDs on Transaction Search generated by the CloudWatch log group. For more information, see [Transaction Search](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Transaction-Search.html).
+#'
+#' See [https://www.paws-r-sdk.com/docs/xray_start_trace_retrieval/](https://www.paws-r-sdk.com/docs/xray_start_trace_retrieval/) for full documentation.
+#'
+#' @param TraceIds &#91;required&#93; Specify the trace IDs of the traces to be retrieved.
+#' @param StartTime &#91;required&#93; The start of the time range to retrieve traces. The range is inclusive,
+#' so the specified start time is included in the query. Specified as epoch
+#' time, the number of seconds since January 1, 1970, 00:00:00 UTC.
+#' @param EndTime &#91;required&#93; The end of the time range to retrieve traces. The range is inclusive, so
+#' the specified end time is included in the query. Specified as epoch
+#' time, the number of seconds since January 1, 1970, 00:00:00 UTC.
+#'
+#' @keywords internal
+#'
+#' @rdname xray_start_trace_retrieval
+xray_start_trace_retrieval <- function(TraceIds, StartTime, EndTime) {
+  op <- new_operation(
+    name = "StartTraceRetrieval",
+    http_method = "POST",
+    http_path = "/StartTraceRetrieval",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .xray$start_trace_retrieval_input(TraceIds = TraceIds, StartTime = StartTime, EndTime = EndTime)
+  output <- .xray$start_trace_retrieval_output()
+  config <- get_config()
+  svc <- .xray$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.xray$operations$start_trace_retrieval <- xray_start_trace_retrieval
 
 #' Applies tags to an existing Amazon Web Services X-Ray group or sampling
 #' rule
@@ -1105,6 +1311,38 @@ xray_update_group <- function(GroupName = NULL, GroupARN = NULL, FilterExpressio
 }
 .xray$operations$update_group <- xray_update_group
 
+#' Modifies an indexing rule’s configuration
+#'
+#' @description
+#' Modifies an indexing rule’s configuration.
+#'
+#' See [https://www.paws-r-sdk.com/docs/xray_update_indexing_rule/](https://www.paws-r-sdk.com/docs/xray_update_indexing_rule/) for full documentation.
+#'
+#' @param Name &#91;required&#93; Name of the indexing rule to be updated.
+#' @param Rule &#91;required&#93; Rule configuration to be updated.
+#'
+#' @keywords internal
+#'
+#' @rdname xray_update_indexing_rule
+xray_update_indexing_rule <- function(Name, Rule) {
+  op <- new_operation(
+    name = "UpdateIndexingRule",
+    http_method = "POST",
+    http_path = "/UpdateIndexingRule",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .xray$update_indexing_rule_input(Name = Name, Rule = Rule)
+  output <- .xray$update_indexing_rule_output()
+  config <- get_config()
+  svc <- .xray$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.xray$operations$update_indexing_rule <- xray_update_indexing_rule
+
 #' Modifies a sampling rule's configuration
 #'
 #' @description
@@ -1135,3 +1373,34 @@ xray_update_sampling_rule <- function(SamplingRuleUpdate) {
   return(response)
 }
 .xray$operations$update_sampling_rule <- xray_update_sampling_rule
+
+#' Modifies the destination of data sent to PutTraceSegments
+#'
+#' @description
+#' Modifies the destination of data sent to [`put_trace_segments`][xray_put_trace_segments]. The Transaction Search feature requires the CloudWatchLogs destination. For more information, see [Transaction Search](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Transaction-Search.html).
+#'
+#' See [https://www.paws-r-sdk.com/docs/xray_update_trace_segment_destination/](https://www.paws-r-sdk.com/docs/xray_update_trace_segment_destination/) for full documentation.
+#'
+#' @param Destination The configured destination of trace segments.
+#'
+#' @keywords internal
+#'
+#' @rdname xray_update_trace_segment_destination
+xray_update_trace_segment_destination <- function(Destination = NULL) {
+  op <- new_operation(
+    name = "UpdateTraceSegmentDestination",
+    http_method = "POST",
+    http_path = "/UpdateTraceSegmentDestination",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .xray$update_trace_segment_destination_input(Destination = Destination)
+  output <- .xray$update_trace_segment_destination_output()
+  config <- get_config()
+  svc <- .xray$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.xray$operations$update_trace_segment_destination <- xray_update_trace_segment_destination

@@ -11,7 +11,7 @@ cognitoidentityprovider_list_resource_servers(
 )
 }
 \arguments{
-\item{UserPoolId}{[required] The user pool ID for the user pool.}
+\item{UserPoolId}{[required] The ID of the user pool.}
 
 \item{MaxResults}{The maximum number of resource servers to return.}
 

@@ -184,7 +184,7 @@ including how to turn it on and find your log files, see the \href{https://docs.
 \link[=organizations_disable_aws_service_access]{disable_aws_service_access} \tab Disables the integration of an Amazon Web Services service (the service that is specified by ServicePrincipal) with Organizations\cr
 \link[=organizations_disable_policy_type]{disable_policy_type} \tab Disables an organizational policy type in a root\cr
 \link[=organizations_enable_all_features]{enable_all_features} \tab Enables all features in an organization\cr
-\link[=organizations_enable_aws_service_access]{enable_aws_service_access} \tab Enables the integration of an Amazon Web Services service (the service that is specified by ServicePrincipal) with Organizations\cr
+\link[=organizations_enable_aws_service_access]{enable_aws_service_access} \tab Provides an Amazon Web Services service (the service that is specified by ServicePrincipal) with permissions to view the structure of an organization, create a service-linked role in all the accounts in the organization, and allow the service to perform operations on behalf of the organization and its accounts\cr
 \link[=organizations_enable_policy_type]{enable_policy_type} \tab Enables a policy type in a root\cr
 \link[=organizations_invite_account_to_organization]{invite_account_to_organization} \tab Sends an invitation to another account to join your organization as a member account\cr
 \link[=organizations_leave_organization]{leave_organization} \tab Removes a member account from its parent organization\cr

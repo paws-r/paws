@@ -2,14 +2,14 @@
 % Please edit documentation in R/connect_operations.R
 \name{connect_create_queue}
 \alias{connect_create_queue}
-\title{This API is in preview release for Amazon Connect and is subject to
-change}
+\title{Creates a new queue for the specified Amazon Connect instance}
 \usage{
 connect_create_queue(
   InstanceId,
   Name,
   Description = NULL,
   OutboundCallerConfig = NULL,
+  OutboundEmailConfig = NULL,
   HoursOfOperationId,
   MaxContacts = NULL,
   QuickConnectIds = NULL,
@@ -26,6 +26,8 @@ in the Amazon Resource Name (ARN) of the instance.}
 
 \item{OutboundCallerConfig}{The outbound caller ID name, number, and outbound whisper flow.}
 
+\item{OutboundEmailConfig}{The outbound email address ID for a specified queue.}
+
 \item{HoursOfOperationId}{[required] The identifier for the hours of operation.}
 
 \item{MaxContacts}{The maximum number of contacts that can be in the queue before it is
@@ -37,7 +39,7 @@ considered full.}
 For example, \{ "Tags": \{"key1":"value1", "key2":"value2"\} \}.}
 }
 \description{
-This API is in preview release for Amazon Connect and is subject to change.
+Creates a new queue for the specified Amazon Connect instance.
 
 See \url{https://www.paws-r-sdk.com/docs/connect_create_queue/} for full documentation.
 }

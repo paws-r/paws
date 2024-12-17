@@ -7,11 +7,11 @@
 memorydb_update_acl(ACLName, UserNamesToAdd = NULL, UserNamesToRemove = NULL)
 }
 \arguments{
-\item{ACLName}{[required] The name of the Access Control List}
+\item{ACLName}{[required] The name of the Access Control List.}
 
-\item{UserNamesToAdd}{The list of users to add to the Access Control List}
+\item{UserNamesToAdd}{The list of users to add to the Access Control List.}
 
-\item{UserNamesToRemove}{The list of users to remove from the Access Control List}
+\item{UserNamesToRemove}{The list of users to remove from the Access Control List.}
 }
 \description{
 Changes the list of users that belong to the Access Control List.

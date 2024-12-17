@@ -2,9 +2,9 @@
 % Please edit documentation in R/cloudwatchlogs_operations.R
 \name{cloudwatchlogs_put_account_policy}
 \alias{cloudwatchlogs_put_account_policy}
-\title{Creates an account-level data protection policy or subscription filter
-policy that applies to all log groups or a subset of log groups in the
-account}
+\title{Creates an account-level data protection policy, subscription filter
+policy, or field index policy that applies to all log groups or a subset
+of log groups in the account}
 \usage{
 cloudwatchlogs_put_account_policy(
   policyName,
@@ -88,7 +88,28 @@ destination. By default, log data is grouped by log stream, but the
 grouping can be set to \code{Random} for a more even distribution. This
 property is only applicable when the destination is an Kinesis Data
 Streams data stream.
-}}
+}
+
+\strong{Transformer policy}
+
+A transformer policy must include one JSON block with the array of
+processors and their configurations. For more information about
+available processors, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CloudWatch-Logs-Transformation.html#CloudWatch-Logs-Transformation-Processors}{Processors that you can use}.
+
+\strong{Field index policy}
+
+A field index filter policy can include the following attribute in a
+JSON block:
+\itemize{
+\item \strong{Fields} The array of field indexes to create.
+}
+
+It must contain at least one field index.
+
+The following is an example of an index policy document that creates two
+indexes, \code{RequestId} and \code{TransactionId}.
+
+\verb{"policyDocument": "\{ \\"Fields\\": [ \\"RequestId\\", \\"TransactionId\\" ] \}"}}
 
 \item{policyType}{[required] The type of policy that you're creating or updating.}
 
@@ -96,19 +117,28 @@ Streams data stream.
 specifies that the data protection policy applies to all log groups in
 the account. If you omit this parameter, the default of \code{ALL} is used.}
 
-\item{selectionCriteria}{Use this parameter to apply the subscription filter policy to a subset
-of log groups in the account. Currently, the only supported filter is
-\verb{LogGroupName NOT IN []}. The \code{selectionCriteria} string can be up to
-25KB in length. The length is determined by using its UTF-8 bytes.
-
-Using the \code{selectionCriteria} parameter is useful to help prevent
-infinite loops. For more information, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/Subscriptions-recursion-prevention.html}{Log recursion prevention}.
+\item{selectionCriteria}{Use this parameter to apply the new policy to a subset of log groups in
+the account.
 
 Specifing \code{selectionCriteria} is valid only when you specify
-\code{ SUBSCRIPTION_FILTER_POLICY} for \code{policyType}.}
+\code{SUBSCRIPTION_FILTER_POLICY}, \code{FIELD_INDEX_POLICY} or
+\code{TRANSFORMER_POLICY}for \code{policyType}.
+
+If \code{policyType} is \code{SUBSCRIPTION_FILTER_POLICY}, the only supported
+\code{selectionCriteria} filter is \verb{LogGroupName NOT IN []}
+
+If \code{policyType} is \code{FIELD_INDEX_POLICY} or \code{TRANSFORMER_POLICY}, the
+only supported \code{selectionCriteria} filter is \code{LogGroupNamePrefix}
+
+The \code{selectionCriteria} string can be up to 25KB in length. The length
+is determined by using its UTF-8 bytes.
+
+Using the \code{selectionCriteria} parameter with
+\code{SUBSCRIPTION_FILTER_POLICY} is useful to help prevent infinite loops.
+For more information, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/Subscriptions-recursion-prevention.html}{Log recursion prevention}.}
 }
 \description{
-Creates an account-level data protection policy or subscription filter policy that applies to all log groups or a subset of log groups in the account.
+Creates an account-level data protection policy, subscription filter policy, or field index policy that applies to all log groups or a subset of log groups in the account.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudwatchlogs_put_account_policy/} for full documentation.
 }

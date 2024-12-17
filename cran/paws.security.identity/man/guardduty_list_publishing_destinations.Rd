@@ -12,7 +12,12 @@ guardduty_list_publishing_destinations(
 )
 }
 \arguments{
-\item{DetectorId}{[required] The ID of the detector to retrieve publishing destinations for.}
+\item{DetectorId}{[required] The detector ID for which you want to retrieve the publishing
+destination.
+
+To find the \code{detectorId} in the current Region, see the Settings page in
+the GuardDuty console, or run the
+\code{\link[=guardduty_list_detectors]{list_detectors}} API.}
 
 \item{MaxResults}{The maximum number of results to return in the response.}
 

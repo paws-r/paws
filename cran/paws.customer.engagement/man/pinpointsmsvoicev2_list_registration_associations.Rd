@@ -2,7 +2,7 @@
 % Please edit documentation in R/pinpointsmsvoicev2_operations.R
 \name{pinpointsmsvoicev2_list_registration_associations}
 \alias{pinpointsmsvoicev2_list_registration_associations}
-\title{Retreive all of the origination identies that are associated with a
+\title{Retrieve all of the origination identities that are associated with a
 registration}
 \usage{
 pinpointsmsvoicev2_list_registration_associations(
@@ -24,7 +24,7 @@ need to supply a value for this field in the initial request.}
 \item{MaxResults}{The maximum number of results to return per each request.}
 }
 \description{
-Retreive all of the origination identies that are associated with a registration.
+Retrieve all of the origination identities that are associated with a registration.
 
 See \url{https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_list_registration_associations/} for full documentation.
 }

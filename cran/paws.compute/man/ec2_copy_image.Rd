@@ -13,9 +13,9 @@ ec2_copy_image(
   SourceImageId,
   SourceRegion,
   DestinationOutpostArn = NULL,
-  DryRun = NULL,
   CopyImageTags = NULL,
-  TagSpecifications = NULL
+  TagSpecifications = NULL,
+  DryRun = NULL
 )
 }
 \arguments{
@@ -71,11 +71,6 @@ from one Outpost to another, or within the same Outpost.
 For more information, see \href{https://docs.aws.amazon.com/ebs/latest/userguide/snapshots-outposts.html#copy-amis}{Copy AMIs from an Amazon Web Services Region to an Outpost}
 in the \emph{Amazon EBS User Guide}.}
 
-\item{DryRun}{Checks whether you have the required permissions for the action, without
-actually making the request, and provides an error response. If you have
-the required permissions, the error response is \code{DryRunOperation}.
-Otherwise, it is \code{UnauthorizedOperation}.}
-
 \item{CopyImageTags}{Indicates whether to include your user-defined AMI tags when copying the
 AMI.
 
@@ -100,6 +95,11 @@ If you specify other values for \code{ResourceType}, the request fails.
 
 To tag an AMI or snapshot after it has been created, see
 \code{\link[=ec2_create_tags]{create_tags}}.}
+
+\item{DryRun}{Checks whether you have the required permissions for the action, without
+actually making the request, and provides an error response. If you have
+the required permissions, the error response is \code{DryRunOperation}.
+Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
 Initiates an AMI copy operation. You can copy an AMI from one Region to another, or from a Region to an Outpost. You can't copy an AMI from an Outpost to a Region, from one Outpost to another, or within the same Outpost. To copy an AMI to another partition, see \code{\link[=ec2_create_store_image_task]{create_store_image_task}}.

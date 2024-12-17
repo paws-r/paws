@@ -3,6 +3,37 @@
 #' @include verifiedpermissions_service.R
 NULL
 
+#' Retrieves information about a group (batch) of policies
+#'
+#' @description
+#' Retrieves information about a group (batch) of policies.
+#'
+#' See [https://www.paws-r-sdk.com/docs/verifiedpermissions_batch_get_policy/](https://www.paws-r-sdk.com/docs/verifiedpermissions_batch_get_policy/) for full documentation.
+#'
+#' @param requests &#91;required&#93; An array of up to 100 policies you want information about.
+#'
+#' @keywords internal
+#'
+#' @rdname verifiedpermissions_batch_get_policy
+verifiedpermissions_batch_get_policy <- function(requests) {
+  op <- new_operation(
+    name = "BatchGetPolicy",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .verifiedpermissions$batch_get_policy_input(requests = requests)
+  output <- .verifiedpermissions$batch_get_policy_output()
+  config <- get_config()
+  svc <- .verifiedpermissions$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.verifiedpermissions$operations$batch_get_policy <- verifiedpermissions_batch_get_policy
+
 #' Makes a series of decisions about multiple authorization requests for
 #' one principal or resource
 #'
@@ -987,11 +1018,6 @@ verifiedpermissions_put_schema <- function(policyStoreId, definition) {
 #' @param identitySourceId &#91;required&#93; Specifies the ID of the identity source that you want to update.
 #' @param updateConfiguration &#91;required&#93; Specifies the details required to communicate with the identity provider
 #' (IdP) associated with this identity source.
-#' 
-#' At this time, the only valid member of this structure is a Amazon
-#' Cognito user pool configuration.
-#' 
-#' You must specify a `userPoolArn`, and optionally, a `ClientId`.
 #' @param principalEntityType Specifies the data type of principals generated for identities
 #' authenticated by the identity source.
 #'

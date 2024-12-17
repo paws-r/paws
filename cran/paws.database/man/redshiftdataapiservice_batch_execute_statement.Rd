@@ -10,6 +10,7 @@ redshiftdataapiservice_batch_execute_statement(
   ClusterIdentifier = NULL,
   Database = NULL,
   DbUser = NULL,
+  ResultFormat = NULL,
   SecretArn = NULL,
   SessionId = NULL,
   SessionKeepAliveSeconds = NULL,
@@ -33,6 +34,9 @@ using either Secrets Manager or temporary credentials.}
 \item{DbUser}{The database user name. This parameter is required when connecting to a
 cluster as a database user and authenticating using temporary
 credentials.}
+
+\item{ResultFormat}{The data format of the result of the SQL statement. If no format is
+specified, the default is JSON.}
 
 \item{SecretArn}{The name or ARN of the secret that enables access to the database. This
 parameter is required when authenticating using Secrets Manager.}

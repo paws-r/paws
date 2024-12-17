@@ -15,7 +15,7 @@ default.
 auth is enabled and an auth policy is required.
 }}
 
-\item{serviceNetworkIdentifier}{[required] The ID or Amazon Resource Name (ARN) of the service network.}
+\item{serviceNetworkIdentifier}{[required] The ID or ARN of the service network.}
 }
 \description{
 Updates the specified service network.

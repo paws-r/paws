@@ -11,15 +11,17 @@ NULL
 #'
 #' See [https://www.paws-r-sdk.com/docs/licensemanagerusersubscriptions_associate_user/](https://www.paws-r-sdk.com/docs/licensemanagerusersubscriptions_associate_user/) for full documentation.
 #'
-#' @param Domain The domain name of the user.
-#' @param IdentityProvider &#91;required&#93; The identity provider of the user.
-#' @param InstanceId &#91;required&#93; The ID of the EC2 instance, which provides user-based subscriptions.
-#' @param Username &#91;required&#93; The user name from the identity provider for the user.
+#' @param Domain The domain name of the Active Directory that contains information for
+#' the user to associate.
+#' @param IdentityProvider &#91;required&#93; The identity provider for the user.
+#' @param InstanceId &#91;required&#93; The ID of the EC2 instance that provides the user-based subscription.
+#' @param Tags The tags that apply for the user association.
+#' @param Username &#91;required&#93; The user name from the identity provider.
 #'
 #' @keywords internal
 #'
 #' @rdname licensemanagerusersubscriptions_associate_user
-licensemanagerusersubscriptions_associate_user <- function(Domain = NULL, IdentityProvider, InstanceId, Username) {
+licensemanagerusersubscriptions_associate_user <- function(Domain = NULL, IdentityProvider, InstanceId, Tags = NULL, Username) {
   op <- new_operation(
     name = "AssociateUser",
     http_method = "POST",
@@ -28,7 +30,7 @@ licensemanagerusersubscriptions_associate_user <- function(Domain = NULL, Identi
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .licensemanagerusersubscriptions$associate_user_input(Domain = Domain, IdentityProvider = IdentityProvider, InstanceId = InstanceId, Username = Username)
+  input <- .licensemanagerusersubscriptions$associate_user_input(Domain = Domain, IdentityProvider = IdentityProvider, InstanceId = InstanceId, Tags = Tags, Username = Username)
   output <- .licensemanagerusersubscriptions$associate_user_output()
   config <- get_config()
   svc <- .licensemanagerusersubscriptions$service(config, op)
@@ -38,21 +40,101 @@ licensemanagerusersubscriptions_associate_user <- function(Domain = NULL, Identi
 }
 .licensemanagerusersubscriptions$operations$associate_user <- licensemanagerusersubscriptions_associate_user
 
-#' Deregisters the identity provider from providing user-based
-#' subscriptions
+#' Creates a network endpoint for the Remote Desktop Services (RDS) license
+#' server
 #'
 #' @description
-#' Deregisters the identity provider from providing user-based subscriptions.
+#' Creates a network endpoint for the Remote Desktop Services (RDS) license server.
+#'
+#' See [https://www.paws-r-sdk.com/docs/licensemanagerusersubscriptions_create_license_server_endpoint/](https://www.paws-r-sdk.com/docs/licensemanagerusersubscriptions_create_license_server_endpoint/) for full documentation.
+#'
+#' @param IdentityProviderArn &#91;required&#93; The Amazon Resource Name (ARN) that identifies the `IdentityProvider`
+#' resource that contains details about a registered identity provider. In
+#' the case of Active Directory, that can be a self-managed Active
+#' Directory or an Amazon Web Services Managed Active Directory that
+#' contains user identity details.
+#' @param LicenseServerSettings &#91;required&#93; The `LicenseServerSettings` resource to create for the endpoint. The
+#' settings include the type of license server and the Secrets Manager
+#' secret that enables administrators to add or remove users associated
+#' with the license server.
+#' @param Tags The tags that apply for the license server endpoint.
+#'
+#' @keywords internal
+#'
+#' @rdname licensemanagerusersubscriptions_cre_lic_ser_end
+licensemanagerusersubscriptions_create_license_server_endpoint <- function(IdentityProviderArn, LicenseServerSettings, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateLicenseServerEndpoint",
+    http_method = "POST",
+    http_path = "/license-server/CreateLicenseServerEndpoint",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .licensemanagerusersubscriptions$create_license_server_endpoint_input(IdentityProviderArn = IdentityProviderArn, LicenseServerSettings = LicenseServerSettings, Tags = Tags)
+  output <- .licensemanagerusersubscriptions$create_license_server_endpoint_output()
+  config <- get_config()
+  svc <- .licensemanagerusersubscriptions$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.licensemanagerusersubscriptions$operations$create_license_server_endpoint <- licensemanagerusersubscriptions_create_license_server_endpoint
+
+#' Deletes a LicenseServerEndpoint resource
+#'
+#' @description
+#' Deletes a `LicenseServerEndpoint` resource.
+#'
+#' See [https://www.paws-r-sdk.com/docs/licensemanagerusersubscriptions_delete_license_server_endpoint/](https://www.paws-r-sdk.com/docs/licensemanagerusersubscriptions_delete_license_server_endpoint/) for full documentation.
+#'
+#' @param LicenseServerEndpointArn &#91;required&#93; The Amazon Resource Name (ARN) that identifies the
+#' `LicenseServerEndpoint` resource to delete.
+#' @param ServerType &#91;required&#93; The type of License Server that the delete request refers to.
+#'
+#' @keywords internal
+#'
+#' @rdname licensemanagerusersubscriptions_del_lic_ser_end
+licensemanagerusersubscriptions_delete_license_server_endpoint <- function(LicenseServerEndpointArn, ServerType) {
+  op <- new_operation(
+    name = "DeleteLicenseServerEndpoint",
+    http_method = "POST",
+    http_path = "/license-server/DeleteLicenseServerEndpoint",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .licensemanagerusersubscriptions$delete_license_server_endpoint_input(LicenseServerEndpointArn = LicenseServerEndpointArn, ServerType = ServerType)
+  output <- .licensemanagerusersubscriptions$delete_license_server_endpoint_output()
+  config <- get_config()
+  svc <- .licensemanagerusersubscriptions$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.licensemanagerusersubscriptions$operations$delete_license_server_endpoint <- licensemanagerusersubscriptions_delete_license_server_endpoint
+
+#' Deregisters the Active Directory identity provider from License Manager
+#' user-based subscriptions
+#'
+#' @description
+#' Deregisters the Active Directory identity provider from License Manager user-based subscriptions.
 #'
 #' See [https://www.paws-r-sdk.com/docs/licensemanagerusersubscriptions_deregister_identity_provider/](https://www.paws-r-sdk.com/docs/licensemanagerusersubscriptions_deregister_identity_provider/) for full documentation.
 #'
-#' @param IdentityProvider &#91;required&#93; An object that specifies details for the identity provider.
-#' @param Product &#91;required&#93; The name of the user-based subscription product.
+#' @param IdentityProvider An object that specifies details for the Active Directory identity
+#' provider.
+#' @param IdentityProviderArn The Amazon Resource Name (ARN) that identifies the identity provider to
+#' deregister.
+#' @param Product The name of the user-based subscription product.
+#' 
+#' Valid values: `VISUAL_STUDIO_ENTERPRISE` | `VISUAL_STUDIO_PROFESSIONAL`
+#' | `OFFICE_PROFESSIONAL_PLUS`
 #'
 #' @keywords internal
 #'
 #' @rdname licensemanagerusersubscriptions_deregister_identity_provider
-licensemanagerusersubscriptions_deregister_identity_provider <- function(IdentityProvider, Product) {
+licensemanagerusersubscriptions_deregister_identity_provider <- function(IdentityProvider = NULL, IdentityProviderArn = NULL, Product = NULL) {
   op <- new_operation(
     name = "DeregisterIdentityProvider",
     http_method = "POST",
@@ -61,7 +143,7 @@ licensemanagerusersubscriptions_deregister_identity_provider <- function(Identit
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .licensemanagerusersubscriptions$deregister_identity_provider_input(IdentityProvider = IdentityProvider, Product = Product)
+  input <- .licensemanagerusersubscriptions$deregister_identity_provider_input(IdentityProvider = IdentityProvider, IdentityProviderArn = IdentityProviderArn, Product = Product)
   output <- .licensemanagerusersubscriptions$deregister_identity_provider_output()
   config <- get_config()
   svc <- .licensemanagerusersubscriptions$service(config, op)
@@ -79,15 +161,19 @@ licensemanagerusersubscriptions_deregister_identity_provider <- function(Identit
 #'
 #' See [https://www.paws-r-sdk.com/docs/licensemanagerusersubscriptions_disassociate_user/](https://www.paws-r-sdk.com/docs/licensemanagerusersubscriptions_disassociate_user/) for full documentation.
 #'
-#' @param Domain The domain name of the user.
-#' @param IdentityProvider &#91;required&#93; An object that specifies details for the identity provider.
-#' @param InstanceId &#91;required&#93; The ID of the EC2 instance, which provides user-based subscriptions.
-#' @param Username &#91;required&#93; The user name from the identity provider for the user.
+#' @param Domain The domain name of the Active Directory that contains information for
+#' the user to disassociate.
+#' @param IdentityProvider An object that specifies details for the Active Directory identity
+#' provider.
+#' @param InstanceId The ID of the EC2 instance which provides user-based subscriptions.
+#' @param InstanceUserArn The Amazon Resource Name (ARN) of the user to disassociate from the EC2
+#' instance.
+#' @param Username The user name from the Active Directory identity provider for the user.
 #'
 #' @keywords internal
 #'
 #' @rdname licensemanagerusersubscriptions_disassociate_user
-licensemanagerusersubscriptions_disassociate_user <- function(Domain = NULL, IdentityProvider, InstanceId, Username) {
+licensemanagerusersubscriptions_disassociate_user <- function(Domain = NULL, IdentityProvider = NULL, InstanceId = NULL, InstanceUserArn = NULL, Username = NULL) {
   op <- new_operation(
     name = "DisassociateUser",
     http_method = "POST",
@@ -96,7 +182,7 @@ licensemanagerusersubscriptions_disassociate_user <- function(Domain = NULL, Ide
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .licensemanagerusersubscriptions$disassociate_user_input(Domain = Domain, IdentityProvider = IdentityProvider, InstanceId = InstanceId, Username = Username)
+  input <- .licensemanagerusersubscriptions$disassociate_user_input(Domain = Domain, IdentityProvider = IdentityProvider, InstanceId = InstanceId, InstanceUserArn = InstanceUserArn, Username = Username)
   output <- .licensemanagerusersubscriptions$disassociate_user_output()
   config <- get_config()
   svc <- .licensemanagerusersubscriptions$service(config, op)
@@ -106,20 +192,27 @@ licensemanagerusersubscriptions_disassociate_user <- function(Domain = NULL, Ide
 }
 .licensemanagerusersubscriptions$operations$disassociate_user <- licensemanagerusersubscriptions_disassociate_user
 
-#' Lists the identity providers for user-based subscriptions
+#' Lists the Active Directory identity providers for user-based
+#' subscriptions
 #'
 #' @description
-#' Lists the identity providers for user-based subscriptions.
+#' Lists the Active Directory identity providers for user-based subscriptions.
 #'
 #' See [https://www.paws-r-sdk.com/docs/licensemanagerusersubscriptions_list_identity_providers/](https://www.paws-r-sdk.com/docs/licensemanagerusersubscriptions_list_identity_providers/) for full documentation.
 #'
-#' @param MaxResults Maximum number of results to return in a single call.
-#' @param NextToken Token for the next set of results.
+#' @param Filters You can use the following filters to streamline results:
+#' 
+#' -   Product
+#' 
+#' -   DirectoryId
+#' @param MaxResults The maximum number of results to return from a single request.
+#' @param NextToken A token to specify where to start paginating. This is the nextToken from
+#' a previously truncated response.
 #'
 #' @keywords internal
 #'
 #' @rdname licensemanagerusersubscriptions_list_identity_providers
-licensemanagerusersubscriptions_list_identity_providers <- function(MaxResults = NULL, NextToken = NULL) {
+licensemanagerusersubscriptions_list_identity_providers <- function(Filters = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListIdentityProviders",
     http_method = "POST",
@@ -128,7 +221,7 @@ licensemanagerusersubscriptions_list_identity_providers <- function(MaxResults =
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "IdentityProviderSummaries"),
     stream_api = FALSE
   )
-  input <- .licensemanagerusersubscriptions$list_identity_providers_input(MaxResults = MaxResults, NextToken = NextToken)
+  input <- .licensemanagerusersubscriptions$list_identity_providers_input(Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .licensemanagerusersubscriptions$list_identity_providers_output()
   config <- get_config()
   svc <- .licensemanagerusersubscriptions$service(config, op)
@@ -145,10 +238,14 @@ licensemanagerusersubscriptions_list_identity_providers <- function(MaxResults =
 #'
 #' See [https://www.paws-r-sdk.com/docs/licensemanagerusersubscriptions_list_instances/](https://www.paws-r-sdk.com/docs/licensemanagerusersubscriptions_list_instances/) for full documentation.
 #'
-#' @param Filters An array of structures that you can use to filter the results to those
-#' that match one or more sets of key-value pairs that you specify.
-#' @param MaxResults Maximum number of results to return in a single call.
-#' @param NextToken Token for the next set of results.
+#' @param Filters You can use the following filters to streamline results:
+#' 
+#' -   Status
+#' 
+#' -   InstanceId
+#' @param MaxResults The maximum number of results to return from a single request.
+#' @param NextToken A token to specify where to start paginating. This is the nextToken from
+#' a previously truncated response.
 #'
 #' @keywords internal
 #'
@@ -172,6 +269,42 @@ licensemanagerusersubscriptions_list_instances <- function(Filters = NULL, MaxRe
 }
 .licensemanagerusersubscriptions$operations$list_instances <- licensemanagerusersubscriptions_list_instances
 
+#' List the Remote Desktop Services (RDS) License Server endpoints
+#'
+#' @description
+#' List the Remote Desktop Services (RDS) License Server endpoints
+#'
+#' See [https://www.paws-r-sdk.com/docs/licensemanagerusersubscriptions_list_license_server_endpoints/](https://www.paws-r-sdk.com/docs/licensemanagerusersubscriptions_list_license_server_endpoints/) for full documentation.
+#'
+#' @param Filters You can use the following filters to streamline results:
+#' 
+#' -   IdentityProviderArn
+#' @param MaxResults The maximum number of results to return from a single request.
+#' @param NextToken A token to specify where to start paginating. This is the nextToken from
+#' a previously truncated response.
+#'
+#' @keywords internal
+#'
+#' @rdname licensemanagerusersubscriptions_lis_lic_ser_end
+licensemanagerusersubscriptions_list_license_server_endpoints <- function(Filters = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListLicenseServerEndpoints",
+    http_method = "POST",
+    http_path = "/license-server/ListLicenseServerEndpoints",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "LicenseServerEndpoints"),
+    stream_api = FALSE
+  )
+  input <- .licensemanagerusersubscriptions$list_license_server_endpoints_input(Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .licensemanagerusersubscriptions$list_license_server_endpoints_output()
+  config <- get_config()
+  svc <- .licensemanagerusersubscriptions$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.licensemanagerusersubscriptions$operations$list_license_server_endpoints <- licensemanagerusersubscriptions_list_license_server_endpoints
+
 #' Lists the user-based subscription products available from an identity
 #' provider
 #'
@@ -180,17 +313,26 @@ licensemanagerusersubscriptions_list_instances <- function(Filters = NULL, MaxRe
 #'
 #' See [https://www.paws-r-sdk.com/docs/licensemanagerusersubscriptions_list_product_subscriptions/](https://www.paws-r-sdk.com/docs/licensemanagerusersubscriptions_list_product_subscriptions/) for full documentation.
 #'
-#' @param Filters An array of structures that you can use to filter the results to those
-#' that match one or more sets of key-value pairs that you specify.
+#' @param Filters You can use the following filters to streamline results:
+#' 
+#' -   Status
+#' 
+#' -   Username
+#' 
+#' -   Domain
 #' @param IdentityProvider &#91;required&#93; An object that specifies details for the identity provider.
-#' @param MaxResults Maximum number of results to return in a single call.
-#' @param NextToken Token for the next set of results.
-#' @param Product &#91;required&#93; The name of the user-based subscription product.
+#' @param MaxResults The maximum number of results to return from a single request.
+#' @param NextToken A token to specify where to start paginating. This is the nextToken from
+#' a previously truncated response.
+#' @param Product The name of the user-based subscription product.
+#' 
+#' Valid values: `VISUAL_STUDIO_ENTERPRISE` | `VISUAL_STUDIO_PROFESSIONAL`
+#' | `OFFICE_PROFESSIONAL_PLUS`
 #'
 #' @keywords internal
 #'
 #' @rdname licensemanagerusersubscriptions_list_product_subscriptions
-licensemanagerusersubscriptions_list_product_subscriptions <- function(Filters = NULL, IdentityProvider, MaxResults = NULL, NextToken = NULL, Product) {
+licensemanagerusersubscriptions_list_product_subscriptions <- function(Filters = NULL, IdentityProvider, MaxResults = NULL, NextToken = NULL, Product = NULL) {
   op <- new_operation(
     name = "ListProductSubscriptions",
     http_method = "POST",
@@ -209,6 +351,38 @@ licensemanagerusersubscriptions_list_product_subscriptions <- function(Filters =
 }
 .licensemanagerusersubscriptions$operations$list_product_subscriptions <- licensemanagerusersubscriptions_list_product_subscriptions
 
+#' Returns the list of tags for the specified resource
+#'
+#' @description
+#' Returns the list of tags for the specified resource.
+#'
+#' See [https://www.paws-r-sdk.com/docs/licensemanagerusersubscriptions_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/licensemanagerusersubscriptions_list_tags_for_resource/) for full documentation.
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource whose tags you want to
+#' retrieve.
+#'
+#' @keywords internal
+#'
+#' @rdname licensemanagerusersubscriptions_list_tags_for_resource
+licensemanagerusersubscriptions_list_tags_for_resource <- function(ResourceArn) {
+  op <- new_operation(
+    name = "ListTagsForResource",
+    http_method = "GET",
+    http_path = "/tags/{ResourceArn}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .licensemanagerusersubscriptions$list_tags_for_resource_input(ResourceArn = ResourceArn)
+  output <- .licensemanagerusersubscriptions$list_tags_for_resource_output()
+  config <- get_config()
+  svc <- .licensemanagerusersubscriptions$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.licensemanagerusersubscriptions$operations$list_tags_for_resource <- licensemanagerusersubscriptions_list_tags_for_resource
+
 #' Lists user associations for an identity provider
 #'
 #' @description
@@ -216,12 +390,18 @@ licensemanagerusersubscriptions_list_product_subscriptions <- function(Filters =
 #'
 #' See [https://www.paws-r-sdk.com/docs/licensemanagerusersubscriptions_list_user_associations/](https://www.paws-r-sdk.com/docs/licensemanagerusersubscriptions_list_user_associations/) for full documentation.
 #'
-#' @param Filters An array of structures that you can use to filter the results to those
-#' that match one or more sets of key-value pairs that you specify.
+#' @param Filters You can use the following filters to streamline results:
+#' 
+#' -   Status
+#' 
+#' -   Username
+#' 
+#' -   Domain
 #' @param IdentityProvider &#91;required&#93; An object that specifies details for the identity provider.
 #' @param InstanceId &#91;required&#93; The ID of the EC2 instance, which provides user-based subscriptions.
-#' @param MaxResults Maximum number of results to return in a single call.
-#' @param NextToken Token for the next set of results.
+#' @param MaxResults The maximum number of results to return from a single request.
+#' @param NextToken A token to specify where to start paginating. This is the nextToken from
+#' a previously truncated response.
 #'
 #' @keywords internal
 #'
@@ -252,15 +432,19 @@ licensemanagerusersubscriptions_list_user_associations <- function(Filters = NUL
 #'
 #' See [https://www.paws-r-sdk.com/docs/licensemanagerusersubscriptions_register_identity_provider/](https://www.paws-r-sdk.com/docs/licensemanagerusersubscriptions_register_identity_provider/) for full documentation.
 #'
-#' @param IdentityProvider &#91;required&#93; An object that specifies details for the identity provider.
+#' @param IdentityProvider &#91;required&#93; An object that specifies details for the identity provider to register.
 #' @param Product &#91;required&#93; The name of the user-based subscription product.
+#' 
+#' Valid values: `VISUAL_STUDIO_ENTERPRISE` | `VISUAL_STUDIO_PROFESSIONAL`
+#' | `OFFICE_PROFESSIONAL_PLUS`
 #' @param Settings The registered identity provider’s product related configuration
 #' settings such as the subnets to provision VPC endpoints.
+#' @param Tags The tags that apply to the identity provider's registration.
 #'
 #' @keywords internal
 #'
 #' @rdname licensemanagerusersubscriptions_register_identity_provider
-licensemanagerusersubscriptions_register_identity_provider <- function(IdentityProvider, Product, Settings = NULL) {
+licensemanagerusersubscriptions_register_identity_provider <- function(IdentityProvider, Product, Settings = NULL, Tags = NULL) {
   op <- new_operation(
     name = "RegisterIdentityProvider",
     http_method = "POST",
@@ -269,7 +453,7 @@ licensemanagerusersubscriptions_register_identity_provider <- function(IdentityP
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .licensemanagerusersubscriptions$register_identity_provider_input(IdentityProvider = IdentityProvider, Product = Product, Settings = Settings)
+  input <- .licensemanagerusersubscriptions$register_identity_provider_input(IdentityProvider = IdentityProvider, Product = Product, Settings = Settings, Tags = Tags)
   output <- .licensemanagerusersubscriptions$register_identity_provider_output()
   config <- get_config()
   svc <- .licensemanagerusersubscriptions$service(config, op)
@@ -287,15 +471,20 @@ licensemanagerusersubscriptions_register_identity_provider <- function(IdentityP
 #'
 #' See [https://www.paws-r-sdk.com/docs/licensemanagerusersubscriptions_start_product_subscription/](https://www.paws-r-sdk.com/docs/licensemanagerusersubscriptions_start_product_subscription/) for full documentation.
 #'
-#' @param Domain The domain name of the user.
+#' @param Domain The domain name of the Active Directory that contains the user for whom
+#' to start the product subscription.
 #' @param IdentityProvider &#91;required&#93; An object that specifies details for the identity provider.
 #' @param Product &#91;required&#93; The name of the user-based subscription product.
+#' 
+#' Valid values: `VISUAL_STUDIO_ENTERPRISE` | `VISUAL_STUDIO_PROFESSIONAL`
+#' | `OFFICE_PROFESSIONAL_PLUS`
+#' @param Tags The tags that apply to the product subscription.
 #' @param Username &#91;required&#93; The user name from the identity provider of the user.
 #'
 #' @keywords internal
 #'
 #' @rdname licensemanagerusersubscriptions_start_product_subscription
-licensemanagerusersubscriptions_start_product_subscription <- function(Domain = NULL, IdentityProvider, Product, Username) {
+licensemanagerusersubscriptions_start_product_subscription <- function(Domain = NULL, IdentityProvider, Product, Tags = NULL, Username) {
   op <- new_operation(
     name = "StartProductSubscription",
     http_method = "POST",
@@ -304,7 +493,7 @@ licensemanagerusersubscriptions_start_product_subscription <- function(Domain = 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .licensemanagerusersubscriptions$start_product_subscription_input(Domain = Domain, IdentityProvider = IdentityProvider, Product = Product, Username = Username)
+  input <- .licensemanagerusersubscriptions$start_product_subscription_input(Domain = Domain, IdentityProvider = IdentityProvider, Product = Product, Tags = Tags, Username = Username)
   output <- .licensemanagerusersubscriptions$start_product_subscription_output()
   config <- get_config()
   svc <- .licensemanagerusersubscriptions$service(config, op)
@@ -322,15 +511,20 @@ licensemanagerusersubscriptions_start_product_subscription <- function(Domain = 
 #'
 #' See [https://www.paws-r-sdk.com/docs/licensemanagerusersubscriptions_stop_product_subscription/](https://www.paws-r-sdk.com/docs/licensemanagerusersubscriptions_stop_product_subscription/) for full documentation.
 #'
-#' @param Domain The domain name of the user.
-#' @param IdentityProvider &#91;required&#93; An object that specifies details for the identity provider.
-#' @param Product &#91;required&#93; The name of the user-based subscription product.
-#' @param Username &#91;required&#93; The user name from the identity provider for the user.
+#' @param Domain The domain name of the Active Directory that contains the user for whom
+#' to stop the product subscription.
+#' @param IdentityProvider An object that specifies details for the identity provider.
+#' @param Product The name of the user-based subscription product.
+#' 
+#' Valid values: `VISUAL_STUDIO_ENTERPRISE` | `VISUAL_STUDIO_PROFESSIONAL`
+#' | `OFFICE_PROFESSIONAL_PLUS`
+#' @param ProductUserArn The Amazon Resource Name (ARN) of the product user.
+#' @param Username The user name from the identity provider for the user.
 #'
 #' @keywords internal
 #'
 #' @rdname licensemanagerusersubscriptions_stop_product_subscription
-licensemanagerusersubscriptions_stop_product_subscription <- function(Domain = NULL, IdentityProvider, Product, Username) {
+licensemanagerusersubscriptions_stop_product_subscription <- function(Domain = NULL, IdentityProvider = NULL, Product = NULL, ProductUserArn = NULL, Username = NULL) {
   op <- new_operation(
     name = "StopProductSubscription",
     http_method = "POST",
@@ -339,7 +533,7 @@ licensemanagerusersubscriptions_stop_product_subscription <- function(Domain = N
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .licensemanagerusersubscriptions$stop_product_subscription_input(Domain = Domain, IdentityProvider = IdentityProvider, Product = Product, Username = Username)
+  input <- .licensemanagerusersubscriptions$stop_product_subscription_input(Domain = Domain, IdentityProvider = IdentityProvider, Product = Product, ProductUserArn = ProductUserArn, Username = Username)
   output <- .licensemanagerusersubscriptions$stop_product_subscription_output()
   config <- get_config()
   svc <- .licensemanagerusersubscriptions$service(config, op)
@@ -349,6 +543,71 @@ licensemanagerusersubscriptions_stop_product_subscription <- function(Domain = N
 }
 .licensemanagerusersubscriptions$operations$stop_product_subscription <- licensemanagerusersubscriptions_stop_product_subscription
 
+#' Adds tags to a resource
+#'
+#' @description
+#' Adds tags to a resource.
+#'
+#' See [https://www.paws-r-sdk.com/docs/licensemanagerusersubscriptions_tag_resource/](https://www.paws-r-sdk.com/docs/licensemanagerusersubscriptions_tag_resource/) for full documentation.
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource that you want to tag.
+#' @param Tags &#91;required&#93; The tags to apply to the specified resource.
+#'
+#' @keywords internal
+#'
+#' @rdname licensemanagerusersubscriptions_tag_resource
+licensemanagerusersubscriptions_tag_resource <- function(ResourceArn, Tags) {
+  op <- new_operation(
+    name = "TagResource",
+    http_method = "PUT",
+    http_path = "/tags/{ResourceArn}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .licensemanagerusersubscriptions$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
+  output <- .licensemanagerusersubscriptions$tag_resource_output()
+  config <- get_config()
+  svc <- .licensemanagerusersubscriptions$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.licensemanagerusersubscriptions$operations$tag_resource <- licensemanagerusersubscriptions_tag_resource
+
+#' Removes tags from a resource
+#'
+#' @description
+#' Removes tags from a resource.
+#'
+#' See [https://www.paws-r-sdk.com/docs/licensemanagerusersubscriptions_untag_resource/](https://www.paws-r-sdk.com/docs/licensemanagerusersubscriptions_untag_resource/) for full documentation.
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource that you want to remove
+#' tags from.
+#' @param TagKeys &#91;required&#93; The tag keys to remove from the resource.
+#'
+#' @keywords internal
+#'
+#' @rdname licensemanagerusersubscriptions_untag_resource
+licensemanagerusersubscriptions_untag_resource <- function(ResourceArn, TagKeys) {
+  op <- new_operation(
+    name = "UntagResource",
+    http_method = "DELETE",
+    http_path = "/tags/{ResourceArn}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .licensemanagerusersubscriptions$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
+  output <- .licensemanagerusersubscriptions$untag_resource_output()
+  config <- get_config()
+  svc <- .licensemanagerusersubscriptions$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.licensemanagerusersubscriptions$operations$untag_resource <- licensemanagerusersubscriptions_untag_resource
+
 #' Updates additional product configuration settings for the registered
 #' identity provider
 #'
@@ -357,8 +616,12 @@ licensemanagerusersubscriptions_stop_product_subscription <- function(Domain = N
 #'
 #' See [https://www.paws-r-sdk.com/docs/licensemanagerusersubscriptions_update_identity_provider_settings/](https://www.paws-r-sdk.com/docs/licensemanagerusersubscriptions_update_identity_provider_settings/) for full documentation.
 #'
-#' @param IdentityProvider &#91;required&#93; 
-#' @param Product &#91;required&#93; The name of the user-based subscription product.
+#' @param IdentityProvider 
+#' @param IdentityProviderArn The Amazon Resource Name (ARN) of the identity provider to update.
+#' @param Product The name of the user-based subscription product.
+#' 
+#' Valid values: `VISUAL_STUDIO_ENTERPRISE` | `VISUAL_STUDIO_PROFESSIONAL`
+#' | `OFFICE_PROFESSIONAL_PLUS`
 #' @param UpdateSettings &#91;required&#93; Updates the registered identity provider’s product related configuration
 #' settings. You can update any combination of settings in a single
 #' operation such as the:
@@ -372,7 +635,7 @@ licensemanagerusersubscriptions_stop_product_subscription <- function(Domain = N
 #' @keywords internal
 #'
 #' @rdname licensemanagerusersubscriptions_upd_ide_pro_set
-licensemanagerusersubscriptions_update_identity_provider_settings <- function(IdentityProvider, Product, UpdateSettings) {
+licensemanagerusersubscriptions_update_identity_provider_settings <- function(IdentityProvider = NULL, IdentityProviderArn = NULL, Product = NULL, UpdateSettings) {
   op <- new_operation(
     name = "UpdateIdentityProviderSettings",
     http_method = "POST",
@@ -381,7 +644,7 @@ licensemanagerusersubscriptions_update_identity_provider_settings <- function(Id
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .licensemanagerusersubscriptions$update_identity_provider_settings_input(IdentityProvider = IdentityProvider, Product = Product, UpdateSettings = UpdateSettings)
+  input <- .licensemanagerusersubscriptions$update_identity_provider_settings_input(IdentityProvider = IdentityProvider, IdentityProviderArn = IdentityProviderArn, Product = Product, UpdateSettings = UpdateSettings)
   output <- .licensemanagerusersubscriptions$update_identity_provider_settings_output()
   config <- get_config()
   svc <- .licensemanagerusersubscriptions$service(config, op)

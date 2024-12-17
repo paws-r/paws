@@ -271,7 +271,7 @@ autoscalingplans_describe_scaling_plan_resources <- function(ScalingPlanName, Sc
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ScalingPlanResources"),
     stream_api = FALSE
   )
   input <- .autoscalingplans$describe_scaling_plan_resources_input(ScalingPlanName = ScalingPlanName, ScalingPlanVersion = ScalingPlanVersion, MaxResults = MaxResults, NextToken = NextToken)
@@ -431,7 +431,7 @@ autoscalingplans_describe_scaling_plans <- function(ScalingPlanNames = NULL, Sca
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ScalingPlans"),
     stream_api = FALSE
   )
   input <- .autoscalingplans$describe_scaling_plans_input(ScalingPlanNames = ScalingPlanNames, ScalingPlanVersion = ScalingPlanVersion, ApplicationSources = ApplicationSources, MaxResults = MaxResults, NextToken = NextToken)

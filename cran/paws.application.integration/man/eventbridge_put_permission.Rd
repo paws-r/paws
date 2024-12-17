@@ -56,7 +56,7 @@ include a \code{Policy} parameter in the request instead of using the
 \code{StatementId}, \code{Action}, \code{Principal}, or \code{Condition} parameters.}
 }
 \description{
-Running \code{\link[=eventbridge_put_permission]{put_permission}} permits the specified Amazon Web Services account or Amazon Web Services organization to put events to the specified \emph{event bus}. Amazon EventBridge (CloudWatch Events) rules in your account are triggered by these events arriving to an event bus in your account.
+Running \code{\link[=eventbridge_put_permission]{put_permission}} permits the specified Amazon Web Services account or Amazon Web Services organization to put events to the specified \emph{event bus}. Amazon EventBridge rules in your account are triggered by these events arriving to an event bus in your account.
 
 See \url{https://www.paws-r-sdk.com/docs/eventbridge_put_permission/} for full documentation.
 }

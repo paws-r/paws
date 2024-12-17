@@ -99,7 +99,8 @@ operations.
 \link[paws.machine.learning:lexruntimev2_get_session]{get_session} \tab Returns session information for a specified bot, alias, and user\cr
 \link[paws.machine.learning:lexruntimev2_put_session]{put_session} \tab Creates a new session or modifies an existing session with an Amazon Lex V2 bot\cr
 \link[paws.machine.learning:lexruntimev2_recognize_text]{recognize_text} \tab Sends user input to Amazon Lex V2\cr
-\link[paws.machine.learning:lexruntimev2_recognize_utterance]{recognize_utterance} \tab Sends user input to Amazon Lex V2
+\link[paws.machine.learning:lexruntimev2_recognize_utterance]{recognize_utterance} \tab Sends user input to Amazon Lex V2\cr
+\link[paws.machine.learning:lexruntimev2_start_conversation]{start_conversation} \tab Starts an HTTP/2 bidirectional event stream that enables you to send audio, text, or DTMF input in real time
 }
 }
 

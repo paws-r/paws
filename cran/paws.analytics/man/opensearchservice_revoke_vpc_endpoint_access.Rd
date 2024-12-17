@@ -5,12 +5,18 @@
 \title{Revokes access to an Amazon OpenSearch Service domain that was provided
 through an interface VPC endpoint}
 \usage{
-opensearchservice_revoke_vpc_endpoint_access(DomainName, Account)
+opensearchservice_revoke_vpc_endpoint_access(
+  DomainName,
+  Account = NULL,
+  Service = NULL
+)
 }
 \arguments{
 \item{DomainName}{[required] The name of the OpenSearch Service domain.}
 
-\item{Account}{[required] The account ID to revoke access from.}
+\item{Account}{The account ID to revoke access from.}
+
+\item{Service}{The service SP to revoke access from.}
 }
 \description{
 Revokes access to an Amazon OpenSearch Service domain that was provided through an interface VPC endpoint.

@@ -131,7 +131,7 @@ Amazon ECR, and Amazon Web Services Lambda environments.
 \link[paws.security.identity:inspector2_list_cis_scan_results_aggregated_by_checks]{list_cis_scan_results_aggregated_by_checks} \tab Lists scan results aggregated by checks\cr
 \link[paws.security.identity:inspector2_list_cis_scan_results_aggregated_by_target_resource]{list_cis_scan_results_aggregated_by_target_resource} \tab Lists scan results aggregated by a target resource\cr
 \link[paws.security.identity:inspector2_list_cis_scans]{list_cis_scans} \tab Returns a CIS scan list\cr
-\link[paws.security.identity:inspector2_list_coverage]{list_coverage} \tab Lists coverage details for you environment\cr
+\link[paws.security.identity:inspector2_list_coverage]{list_coverage} \tab Lists coverage details for your environment\cr
 \link[paws.security.identity:inspector2_list_coverage_statistics]{list_coverage_statistics} \tab Lists Amazon Inspector coverage statistics for your environment\cr
 \link[paws.security.identity:inspector2_list_delegated_admin_accounts]{list_delegated_admin_accounts} \tab Lists information about the Amazon Inspector delegated administrator of your organization\cr
 \link[paws.security.identity:inspector2_list_filters]{list_filters} \tab Lists the filters associated with your account\cr

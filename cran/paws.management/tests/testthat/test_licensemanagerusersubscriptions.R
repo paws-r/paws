@@ -15,3 +15,11 @@ test_that("list_instances", {
 test_that("list_instances", {
   expect_error(svc$list_instances(MaxResults = 20), NA)
 })
+
+test_that("list_license_server_endpoints", {
+  expect_error(svc$list_license_server_endpoints(), NA)
+})
+
+test_that("list_license_server_endpoints", {
+  expect_error(svc$list_license_server_endpoints(MaxResults = 20), NA)
+})

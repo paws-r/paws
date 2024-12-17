@@ -305,6 +305,7 @@ Amazon Web Services CloudTrail User Guide.
 \link[paws.management:controltower_list_landing_zones]{list_landing_zones} \tab Returns the landing zone ARN for the landing zone deployed in your managed account\cr
 \link[paws.management:controltower_list_tags_for_resource]{list_tags_for_resource} \tab Returns a list of tags associated with the resource\cr
 \link[paws.management:controltower_reset_enabled_baseline]{reset_enabled_baseline} \tab Re-enables an EnabledBaseline resource\cr
+\link[paws.management:controltower_reset_enabled_control]{reset_enabled_control} \tab Resets an enabled control\cr
 \link[paws.management:controltower_reset_landing_zone]{reset_landing_zone} \tab This API call resets a landing zone\cr
 \link[paws.management:controltower_tag_resource]{tag_resource} \tab Applies tags to a resource\cr
 \link[paws.management:controltower_untag_resource]{untag_resource} \tab Removes tags from a resource\cr

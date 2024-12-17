@@ -2,7 +2,7 @@
 % Please edit documentation in R/servicediscovery_operations.R
 \name{servicediscovery_delete_service}
 \alias{servicediscovery_delete_service}
-\title{Deletes a specified service}
+\title{Deletes a specified service and all associated service attributes}
 \usage{
 servicediscovery_delete_service(Id)
 }
@@ -10,7 +10,7 @@ servicediscovery_delete_service(Id)
 \item{Id}{[required] The ID of the service that you want to delete.}
 }
 \description{
-Deletes a specified service. If the service still contains one or more registered instances, the request fails.
+Deletes a specified service and all associated service attributes. If the service still contains one or more registered instances, the request fails.
 
 See \url{https://www.paws-r-sdk.com/docs/servicediscovery_delete_service/} for full documentation.
 }

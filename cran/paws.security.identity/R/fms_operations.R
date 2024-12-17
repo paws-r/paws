@@ -760,6 +760,8 @@ fms_get_third_party_firewall_association_status <- function(ThirdPartyFirewall) 
 #' @param PolicyId &#91;required&#93; The ID of the Firewall Manager policy that you want the details for. You
 #' can get violation details for the following policy types:
 #' 
+#' -   WAF
+#' 
 #' -   DNS Firewall
 #' 
 #' -   Imported Network Firewall
@@ -776,9 +778,10 @@ fms_get_third_party_firewall_association_status <- function(ThirdPartyFirewall) 
 #' @param ResourceType &#91;required&#93; The resource type. This is in the format shown in the [Amazon Web
 #' Services Resource Types
 #' Reference](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html).
-#' Supported resource types are: `AWS::EC2::Instance`,
-#' `AWS::EC2::NetworkInterface`, `AWS::EC2::SecurityGroup`,
-#' `AWS::NetworkFirewall::FirewallPolicy`, and `AWS::EC2::Subnet`.
+#' Supported resource types are: `AWS::WAFv2::WebACL`,
+#' `AWS::EC2::Instance`, `AWS::EC2::NetworkInterface`,
+#' `AWS::EC2::SecurityGroup`, `AWS::NetworkFirewall::FirewallPolicy`, and
+#' `AWS::EC2::Subnet`.
 #'
 #' @keywords internal
 #'

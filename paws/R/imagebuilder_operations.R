@@ -194,7 +194,7 @@ imagebuilder_cancel_lifecycle_execution <- function(lifecycleExecutionId, client
 #'   semanticVersion = "string",
 #'   description = "string",
 #'   changeDescription = "string",
-#'   platform = "Windows"|"Linux",
+#'   platform = "Windows"|"Linux"|"macOS",
 #'   supportedOsVersions = list(
 #'     "string"
 #'   ),
@@ -279,7 +279,7 @@ imagebuilder_create_component <- function(name, semanticVersion, description = N
 #' @param tags Tags that are attached to the container recipe.
 #' @param workingDirectory The working directory for use during build and test workflows.
 #' @param targetRepository &#91;required&#93; The destination repository for the container image.
-#' @param kmsKeyId Identifies which KMS key is used to encrypt the container image.
+#' @param kmsKeyId Identifies which KMS key is used to encrypt the Dockerfile template.
 #' @param clientToken &#91;required&#93; Unique, case-sensitive identifier you provide to ensure idempotency of
 #' the request. For more information, see [Ensuring
 #' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html)
@@ -337,7 +337,7 @@ imagebuilder_create_component <- function(name, semanticVersion, description = N
 #'   ),
 #'   dockerfileTemplateData = "string",
 #'   dockerfileTemplateUri = "string",
-#'   platformOverride = "Windows"|"Linux",
+#'   platformOverride = "Windows"|"Linux"|"macOS",
 #'   imageOsVersionOverride = "string",
 #'   parentImage = "string",
 #'   tags = list(
@@ -898,7 +898,7 @@ imagebuilder_create_image_recipe <- function(name, description = NULL, semanticV
 #' imagebuilder_create_infrastructure_configuration(name, description,
 #'   instanceTypes, instanceProfileName, securityGroupIds, subnetId, logging,
 #'   keyPair, terminateInstanceOnFailure, snsTopicArn, resourceTags,
-#'   instanceMetadataOptions, tags, clientToken)
+#'   instanceMetadataOptions, tags, placement, clientToken)
 #'
 #' @param name &#91;required&#93; The name of the infrastructure configuration.
 #' @param description The description of the infrastructure configuration.
@@ -925,10 +925,16 @@ imagebuilder_create_image_recipe <- function(name, description = NULL, semanticV
 #' encrypted using keys from other accounts. The key that is used to
 #' encrypt the SNS topic must reside in the account that the Image Builder
 #' service runs under.
-#' @param resourceTags The tags attached to the resource created by Image Builder.
+#' @param resourceTags The metadata tags to assign to the Amazon EC2 instance that Image
+#' Builder launches during the build process. Tags are formatted as key
+#' value pairs.
 #' @param instanceMetadataOptions The instance metadata options that you can set for the HTTP requests
 #' that pipeline builds use to launch EC2 build and test instances.
-#' @param tags The tags of the infrastructure configuration.
+#' @param tags The metadata tags to assign to the infrastructure configuration resource
+#' that Image Builder creates as output. Tags are formatted as key value
+#' pairs.
+#' @param placement The instance placement settings that define where the instances that are
+#' launched from your image will run.
 #' @param clientToken &#91;required&#93; Unique, case-sensitive identifier you provide to ensure idempotency of
 #' the request. For more information, see [Ensuring
 #' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html)
@@ -976,6 +982,12 @@ imagebuilder_create_image_recipe <- function(name, description = NULL, semanticV
 #'   tags = list(
 #'     "string"
 #'   ),
+#'   placement = list(
+#'     availabilityZone = "string",
+#'     tenancy = "default"|"dedicated"|"host",
+#'     hostId = "string",
+#'     hostResourceGroupArn = "string"
+#'   ),
 #'   clientToken = "string"
 #' )
 #' ```
@@ -985,7 +997,7 @@ imagebuilder_create_image_recipe <- function(name, description = NULL, semanticV
 #' @rdname imagebuilder_create_infrastructure_configuration
 #'
 #' @aliases imagebuilder_create_infrastructure_configuration
-imagebuilder_create_infrastructure_configuration <- function(name, description = NULL, instanceTypes = NULL, instanceProfileName, securityGroupIds = NULL, subnetId = NULL, logging = NULL, keyPair = NULL, terminateInstanceOnFailure = NULL, snsTopicArn = NULL, resourceTags = NULL, instanceMetadataOptions = NULL, tags = NULL, clientToken) {
+imagebuilder_create_infrastructure_configuration <- function(name, description = NULL, instanceTypes = NULL, instanceProfileName, securityGroupIds = NULL, subnetId = NULL, logging = NULL, keyPair = NULL, terminateInstanceOnFailure = NULL, snsTopicArn = NULL, resourceTags = NULL, instanceMetadataOptions = NULL, tags = NULL, placement = NULL, clientToken) {
   op <- new_operation(
     name = "CreateInfrastructureConfiguration",
     http_method = "PUT",
@@ -994,7 +1006,7 @@ imagebuilder_create_infrastructure_configuration <- function(name, description =
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .imagebuilder$create_infrastructure_configuration_input(name = name, description = description, instanceTypes = instanceTypes, instanceProfileName = instanceProfileName, securityGroupIds = securityGroupIds, subnetId = subnetId, logging = logging, keyPair = keyPair, terminateInstanceOnFailure = terminateInstanceOnFailure, snsTopicArn = snsTopicArn, resourceTags = resourceTags, instanceMetadataOptions = instanceMetadataOptions, tags = tags, clientToken = clientToken)
+  input <- .imagebuilder$create_infrastructure_configuration_input(name = name, description = description, instanceTypes = instanceTypes, instanceProfileName = instanceProfileName, securityGroupIds = securityGroupIds, subnetId = subnetId, logging = logging, keyPair = keyPair, terminateInstanceOnFailure = terminateInstanceOnFailure, snsTopicArn = snsTopicArn, resourceTags = resourceTags, instanceMetadataOptions = instanceMetadataOptions, tags = tags, placement = placement, clientToken = clientToken)
   output <- .imagebuilder$create_infrastructure_configuration_output()
   config <- get_config()
   svc <- .imagebuilder$service(config, op)
@@ -1718,12 +1730,12 @@ imagebuilder_delete_workflow <- function(workflowBuildVersionArn) {
 #'     description = "string",
 #'     changeDescription = "string",
 #'     type = "BUILD"|"TEST",
-#'     platform = "Windows"|"Linux",
+#'     platform = "Windows"|"Linux"|"macOS",
 #'     supportedOsVersions = list(
 #'       "string"
 #'     ),
 #'     state = list(
-#'       status = "DEPRECATED",
+#'       status = "DEPRECATED"|"DISABLED"|"ACTIVE",
 #'       reason = "string"
 #'     ),
 #'     parameters = list(
@@ -1745,7 +1757,13 @@ imagebuilder_delete_workflow <- function(workflowBuildVersionArn) {
 #'       "string"
 #'     ),
 #'     publisher = "string",
-#'     obfuscate = TRUE|FALSE
+#'     obfuscate = TRUE|FALSE,
+#'     productCodes = list(
+#'       list(
+#'         productCodeId = "string",
+#'         productCodeType = "marketplace"
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -1852,7 +1870,7 @@ imagebuilder_get_component_policy <- function(componentArn) {
 #'     containerType = "DOCKER",
 #'     name = "string",
 #'     description = "string",
-#'     platform = "Windows"|"Linux",
+#'     platform = "Windows"|"Linux"|"macOS",
 #'     owner = "string",
 #'     version = "string",
 #'     components = list(
@@ -2140,7 +2158,7 @@ imagebuilder_get_distribution_configuration <- function(distributionConfiguratio
 #'     type = "AMI"|"DOCKER",
 #'     name = "string",
 #'     version = "string",
-#'     platform = "Windows"|"Linux",
+#'     platform = "Windows"|"Linux"|"macOS",
 #'     enhancedImageMetadataEnabled = TRUE|FALSE,
 #'     osVersion = "string",
 #'     state = list(
@@ -2152,7 +2170,7 @@ imagebuilder_get_distribution_configuration <- function(distributionConfiguratio
 #'       type = "AMI"|"DOCKER",
 #'       name = "string",
 #'       description = "string",
-#'       platform = "Windows"|"Linux",
+#'       platform = "Windows"|"Linux"|"macOS",
 #'       owner = "string",
 #'       version = "string",
 #'       components = list(
@@ -2203,7 +2221,7 @@ imagebuilder_get_distribution_configuration <- function(distributionConfiguratio
 #'       containerType = "DOCKER",
 #'       name = "string",
 #'       description = "string",
-#'       platform = "Windows"|"Linux",
+#'       platform = "Windows"|"Linux"|"macOS",
 #'       owner = "string",
 #'       version = "string",
 #'       components = list(
@@ -2287,6 +2305,12 @@ imagebuilder_get_distribution_configuration <- function(distributionConfiguratio
 #'       ),
 #'       tags = list(
 #'         "string"
+#'       ),
+#'       placement = list(
+#'         availabilityZone = "string",
+#'         tenancy = "default"|"dedicated"|"host",
+#'         hostId = "string",
+#'         hostResourceGroupArn = "string"
 #'       )
 #'     ),
 #'     distributionConfiguration = list(
@@ -2492,7 +2516,7 @@ imagebuilder_get_image <- function(imageBuildVersionArn) {
 #'     arn = "string",
 #'     name = "string",
 #'     description = "string",
-#'     platform = "Windows"|"Linux",
+#'     platform = "Windows"|"Linux"|"macOS",
 #'     enhancedImageMetadataEnabled = TRUE|FALSE,
 #'     imageRecipeArn = "string",
 #'     containerRecipeArn = "string",
@@ -2647,7 +2671,7 @@ imagebuilder_get_image_policy <- function(imageArn) {
 #'     type = "AMI"|"DOCKER",
 #'     name = "string",
 #'     description = "string",
-#'     platform = "Windows"|"Linux",
+#'     platform = "Windows"|"Linux"|"macOS",
 #'     owner = "string",
 #'     version = "string",
 #'     components = list(
@@ -2827,6 +2851,12 @@ imagebuilder_get_image_recipe_policy <- function(imageRecipeArn) {
 #'     ),
 #'     tags = list(
 #'       "string"
+#'     ),
+#'     placement = list(
+#'       availabilityZone = "string",
+#'       tenancy = "default"|"dedicated"|"host",
+#'       hostId = "string",
+#'       hostResourceGroupArn = "string"
 #'     )
 #'   )
 #' )
@@ -3049,6 +3079,69 @@ imagebuilder_get_lifecycle_policy <- function(lifecyclePolicyArn) {
   return(response)
 }
 .imagebuilder$operations$get_lifecycle_policy <- imagebuilder_get_lifecycle_policy
+
+#' Verify the subscription and perform resource dependency checks on the
+#' requested Amazon Web Services Marketplace resource
+#'
+#' @description
+#' Verify the subscription and perform resource dependency checks on the
+#' requested Amazon Web Services Marketplace resource. For Amazon Web
+#' Services Marketplace components, the response contains fields to
+#' download the components and their artifacts.
+#'
+#' @usage
+#' imagebuilder_get_marketplace_resource(resourceType, resourceArn,
+#'   resourceLocation)
+#'
+#' @param resourceType &#91;required&#93; Specifies which type of Amazon Web Services Marketplace resource Image
+#' Builder retrieves.
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) that uniquely identifies an Amazon Web
+#' Services Marketplace resource.
+#' @param resourceLocation The bucket path that you can specify to download the resource from
+#' Amazon S3.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   resourceArn = "string",
+#'   url = "string",
+#'   data = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_marketplace_resource(
+#'   resourceType = "COMPONENT_DATA"|"COMPONENT_ARTIFACT",
+#'   resourceArn = "string",
+#'   resourceLocation = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname imagebuilder_get_marketplace_resource
+#'
+#' @aliases imagebuilder_get_marketplace_resource
+imagebuilder_get_marketplace_resource <- function(resourceType, resourceArn, resourceLocation = NULL) {
+  op <- new_operation(
+    name = "GetMarketplaceResource",
+    http_method = "POST",
+    http_path = "/GetMarketplaceResource",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .imagebuilder$get_marketplace_resource_input(resourceType = resourceType, resourceArn = resourceArn, resourceLocation = resourceLocation)
+  output <- .imagebuilder$get_marketplace_resource_output()
+  config <- get_config()
+  svc <- .imagebuilder$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.imagebuilder$operations$get_marketplace_resource <- imagebuilder_get_marketplace_resource
 
 #' Get a workflow resource object
 #'
@@ -3325,7 +3418,7 @@ imagebuilder_get_workflow_step_execution <- function(stepExecutionId) {
 #'   changeDescription = "string",
 #'   type = "BUILD"|"TEST",
 #'   format = "SHELL",
-#'   platform = "Windows"|"Linux",
+#'   platform = "Windows"|"Linux"|"macOS",
 #'   data = "string",
 #'   uri = "string",
 #'   kmsKeyId = "string",
@@ -3428,7 +3521,7 @@ imagebuilder_import_component <- function(name, semanticVersion, description = N
 #'   name = "string",
 #'   semanticVersion = "string",
 #'   description = "string",
-#'   platform = "Windows"|"Linux",
+#'   platform = "Windows"|"Linux"|"macOS",
 #'   osVersion = "string",
 #'   vmImportTaskId = "string",
 #'   tags = list(
@@ -3462,22 +3555,12 @@ imagebuilder_import_vm_image <- function(name, semanticVersion, description = NU
 }
 .imagebuilder$operations$import_vm_image <- imagebuilder_import_vm_image
 
-#' Returns the list of component build versions for the specified semantic
-#' version
+#' Returns the list of component build versions for the specified component
+#' version Amazon Resource Name (ARN)
 #'
 #' @description
-#' Returns the list of component build versions for the specified semantic
-#' version.
-#' 
-#' The semantic version has four nodes:
-#' \<major\>.\<minor\>.\<patch\>/\<build\>. You can assign values for the
-#' first three, and can filter on all of them.
-#' 
-#' **Filtering:** With semantic versioning, you have the flexibility to use
-#' wildcards (x) to specify the most recent versions or nodes when
-#' selecting the base image or components for your recipe. When you use a
-#' wildcard in any node, all nodes to the right of the first wildcard must
-#' also be wildcards.
+#' Returns the list of component build versions for the specified component
+#' version Amazon Resource Name (ARN).
 #'
 #' @usage
 #' imagebuilder_list_component_build_versions(componentVersionArn,
@@ -3499,12 +3582,12 @@ imagebuilder_import_vm_image <- function(name, semanticVersion, description = NU
 #'       arn = "string",
 #'       name = "string",
 #'       version = "string",
-#'       platform = "Windows"|"Linux",
+#'       platform = "Windows"|"Linux"|"macOS",
 #'       supportedOsVersions = list(
 #'         "string"
 #'       ),
 #'       state = list(
-#'         status = "DEPRECATED",
+#'         status = "DEPRECATED"|"DISABLED"|"ACTIVE",
 #'         reason = "string"
 #'       ),
 #'       type = "BUILD"|"TEST",
@@ -3543,7 +3626,7 @@ imagebuilder_list_component_build_versions <- function(componentVersionArn, maxR
     http_method = "POST",
     http_path = "/ListComponentBuildVersions",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "componentSummaryList"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .imagebuilder$list_component_build_versions_input(componentVersionArn = componentVersionArn, maxResults = maxResults, nextToken = nextToken)
@@ -3612,13 +3695,20 @@ imagebuilder_list_component_build_versions <- function(componentVersionArn, maxR
 #'       name = "string",
 #'       version = "string",
 #'       description = "string",
-#'       platform = "Windows"|"Linux",
+#'       platform = "Windows"|"Linux"|"macOS",
 #'       supportedOsVersions = list(
 #'         "string"
 #'       ),
 #'       type = "BUILD"|"TEST",
 #'       owner = "string",
-#'       dateCreated = "string"
+#'       dateCreated = "string",
+#'       status = "DEPRECATED"|"DISABLED"|"ACTIVE",
+#'       productCodes = list(
+#'         list(
+#'           productCodeId = "string",
+#'           productCodeType = "marketplace"
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -3628,7 +3718,7 @@ imagebuilder_list_component_build_versions <- function(componentVersionArn, maxR
 #' @section Request syntax:
 #' ```
 #' svc$list_components(
-#'   owner = "Self"|"Shared"|"Amazon"|"ThirdParty",
+#'   owner = "Self"|"Shared"|"Amazon"|"ThirdParty"|"AWSMarketplace",
 #'   filters = list(
 #'     list(
 #'       name = "string",
@@ -3654,7 +3744,7 @@ imagebuilder_list_components <- function(owner = NULL, filters = NULL, byName = 
     http_method = "POST",
     http_path = "/ListComponents",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "componentVersionList"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .imagebuilder$list_components_input(owner = owner, filters = filters, byName = byName, maxResults = maxResults, nextToken = nextToken)
@@ -3702,7 +3792,7 @@ imagebuilder_list_components <- function(owner = NULL, filters = NULL, byName = 
 #'       arn = "string",
 #'       containerType = "DOCKER",
 #'       name = "string",
-#'       platform = "Windows"|"Linux",
+#'       platform = "Windows"|"Linux"|"macOS",
 #'       owner = "string",
 #'       parentImage = "string",
 #'       dateCreated = "string",
@@ -3718,7 +3808,7 @@ imagebuilder_list_components <- function(owner = NULL, filters = NULL, byName = 
 #' @section Request syntax:
 #' ```
 #' svc$list_container_recipes(
-#'   owner = "Self"|"Shared"|"Amazon"|"ThirdParty",
+#'   owner = "Self"|"Shared"|"Amazon"|"ThirdParty"|"AWSMarketplace",
 #'   filters = list(
 #'     list(
 #'       name = "string",
@@ -3743,7 +3833,7 @@ imagebuilder_list_container_recipes <- function(owner = NULL, filters = NULL, ma
     http_method = "POST",
     http_path = "/ListContainerRecipes",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "containerRecipeSummaryList"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .imagebuilder$list_container_recipes_input(owner = owner, filters = filters, maxResults = maxResults, nextToken = nextToken)
@@ -3821,7 +3911,7 @@ imagebuilder_list_distribution_configurations <- function(filters = NULL, maxRes
     http_method = "POST",
     http_path = "/ListDistributionConfigurations",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "distributionConfigurationSummaryList"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .imagebuilder$list_distribution_configurations_input(filters = filters, maxResults = maxResults, nextToken = nextToken)
@@ -3871,7 +3961,7 @@ imagebuilder_list_distribution_configurations <- function(filters = NULL, maxRes
 #'       name = "string",
 #'       type = "AMI"|"DOCKER",
 #'       version = "string",
-#'       platform = "Windows"|"Linux",
+#'       platform = "Windows"|"Linux"|"macOS",
 #'       osVersion = "string",
 #'       state = list(
 #'         status = "PENDING"|"CREATING"|"BUILDING"|"TESTING"|"DISTRIBUTING"|"INTEGRATING"|"AVAILABLE"|"CANCELLED"|"FAILED"|"DEPRECATED"|"DELETED"|"DISABLED",
@@ -3945,7 +4035,7 @@ imagebuilder_list_image_build_versions <- function(imageVersionArn, filters = NU
     http_method = "POST",
     http_path = "/ListImageBuildVersions",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "imageSummaryList"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .imagebuilder$list_image_build_versions_input(imageVersionArn = imageVersionArn, filters = filters, maxResults = maxResults, nextToken = nextToken)
@@ -4012,7 +4102,7 @@ imagebuilder_list_image_packages <- function(imageBuildVersionArn, maxResults = 
     http_method = "POST",
     http_path = "/ListImagePackages",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "imagePackageList"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .imagebuilder$list_image_packages_input(imageBuildVersionArn = imageBuildVersionArn, maxResults = maxResults, nextToken = nextToken)
@@ -4056,7 +4146,7 @@ imagebuilder_list_image_packages <- function(imageBuildVersionArn, maxResults = 
 #'       name = "string",
 #'       type = "AMI"|"DOCKER",
 #'       version = "string",
-#'       platform = "Windows"|"Linux",
+#'       platform = "Windows"|"Linux"|"macOS",
 #'       osVersion = "string",
 #'       state = list(
 #'         status = "PENDING"|"CREATING"|"BUILDING"|"TESTING"|"DISTRIBUTING"|"INTEGRATING"|"AVAILABLE"|"CANCELLED"|"FAILED"|"DEPRECATED"|"DELETED"|"DISABLED",
@@ -4130,7 +4220,7 @@ imagebuilder_list_image_pipeline_images <- function(imagePipelineArn, filters = 
     http_method = "POST",
     http_path = "/ListImagePipelineImages",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "imageSummaryList"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .imagebuilder$list_image_pipeline_images_input(imagePipelineArn = imagePipelineArn, filters = filters, maxResults = maxResults, nextToken = nextToken)
@@ -4178,7 +4268,7 @@ imagebuilder_list_image_pipeline_images <- function(imagePipelineArn, filters = 
 #'       arn = "string",
 #'       name = "string",
 #'       description = "string",
-#'       platform = "Windows"|"Linux",
+#'       platform = "Windows"|"Linux"|"macOS",
 #'       enhancedImageMetadataEnabled = TRUE|FALSE,
 #'       imageRecipeArn = "string",
 #'       containerRecipeArn = "string",
@@ -4259,7 +4349,7 @@ imagebuilder_list_image_pipelines <- function(filters = NULL, maxResults = NULL,
     http_method = "POST",
     http_path = "/ListImagePipelines",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "imagePipelineList"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .imagebuilder$list_image_pipelines_input(filters = filters, maxResults = maxResults, nextToken = nextToken)
@@ -4305,7 +4395,7 @@ imagebuilder_list_image_pipelines <- function(filters = NULL, maxResults = NULL,
 #'     list(
 #'       arn = "string",
 #'       name = "string",
-#'       platform = "Windows"|"Linux",
+#'       platform = "Windows"|"Linux"|"macOS",
 #'       owner = "string",
 #'       parentImage = "string",
 #'       dateCreated = "string",
@@ -4321,7 +4411,7 @@ imagebuilder_list_image_pipelines <- function(filters = NULL, maxResults = NULL,
 #' @section Request syntax:
 #' ```
 #' svc$list_image_recipes(
-#'   owner = "Self"|"Shared"|"Amazon"|"ThirdParty",
+#'   owner = "Self"|"Shared"|"Amazon"|"ThirdParty"|"AWSMarketplace",
 #'   filters = list(
 #'     list(
 #'       name = "string",
@@ -4346,7 +4436,7 @@ imagebuilder_list_image_recipes <- function(owner = NULL, filters = NULL, maxRes
     http_method = "POST",
     http_path = "/ListImageRecipes",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "imageRecipeSummaryList"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .imagebuilder$list_image_recipes_input(owner = owner, filters = filters, maxResults = maxResults, nextToken = nextToken)
@@ -4461,7 +4551,7 @@ imagebuilder_list_image_scan_finding_aggregations <- function(filter = NULL, nex
     http_method = "POST",
     http_path = "/ListImageScanFindingAggregations",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "responses"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .imagebuilder$list_image_scan_finding_aggregations_input(filter = filter, nextToken = nextToken)
@@ -4615,7 +4705,7 @@ imagebuilder_list_image_scan_findings <- function(filters = NULL, maxResults = N
     http_method = "POST",
     http_path = "/ListImageScanFindings",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "findings"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .imagebuilder$list_image_scan_findings_input(filters = filters, maxResults = maxResults, nextToken = nextToken)
@@ -4671,7 +4761,7 @@ imagebuilder_list_image_scan_findings <- function(filters = NULL, maxResults = N
 #'       name = "string",
 #'       type = "AMI"|"DOCKER",
 #'       version = "string",
-#'       platform = "Windows"|"Linux",
+#'       platform = "Windows"|"Linux"|"macOS",
 #'       osVersion = "string",
 #'       owner = "string",
 #'       dateCreated = "string",
@@ -4686,7 +4776,7 @@ imagebuilder_list_image_scan_findings <- function(filters = NULL, maxResults = N
 #' @section Request syntax:
 #' ```
 #' svc$list_images(
-#'   owner = "Self"|"Shared"|"Amazon"|"ThirdParty",
+#'   owner = "Self"|"Shared"|"Amazon"|"ThirdParty"|"AWSMarketplace",
 #'   filters = list(
 #'     list(
 #'       name = "string",
@@ -4713,7 +4803,7 @@ imagebuilder_list_images <- function(owner = NULL, filters = NULL, byName = NULL
     http_method = "POST",
     http_path = "/ListImages",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "imageVersionList"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .imagebuilder$list_images_input(owner = owner, filters = filters, byName = byName, maxResults = maxResults, nextToken = nextToken, includeDeprecated = includeDeprecated)
@@ -4761,7 +4851,13 @@ imagebuilder_list_images <- function(owner = NULL, filters = NULL, byName = NULL
 #'       instanceTypes = list(
 #'         "string"
 #'       ),
-#'       instanceProfileName = "string"
+#'       instanceProfileName = "string",
+#'       placement = list(
+#'         availabilityZone = "string",
+#'         tenancy = "default"|"dedicated"|"host",
+#'         hostId = "string",
+#'         hostResourceGroupArn = "string"
+#'       )
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -4795,7 +4891,7 @@ imagebuilder_list_infrastructure_configurations <- function(filters = NULL, maxR
     http_method = "POST",
     http_path = "/ListInfrastructureConfigurations",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "infrastructureConfigurationSummaryList"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .imagebuilder$list_infrastructure_configurations_input(filters = filters, maxResults = maxResults, nextToken = nextToken)
@@ -4900,7 +4996,7 @@ imagebuilder_list_lifecycle_execution_resources <- function(lifecycleExecutionId
     http_method = "POST",
     http_path = "/ListLifecycleExecutionResources",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "resources"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .imagebuilder$list_lifecycle_execution_resources_input(lifecycleExecutionId = lifecycleExecutionId, parentResourceId = parentResourceId, maxResults = maxResults, nextToken = nextToken)
@@ -4975,7 +5071,7 @@ imagebuilder_list_lifecycle_executions <- function(maxResults = NULL, nextToken 
     http_method = "POST",
     http_path = "/ListLifecycleExecutions",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "lifecycleExecutions"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .imagebuilder$list_lifecycle_executions_input(maxResults = maxResults, nextToken = nextToken, resourceArn = resourceArn)
@@ -5059,7 +5155,7 @@ imagebuilder_list_lifecycle_policies <- function(filters = NULL, maxResults = NU
     http_method = "POST",
     http_path = "/ListLifecyclePolicies",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "lifecyclePolicySummaryList"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .imagebuilder$list_lifecycle_policies_input(filters = filters, maxResults = maxResults, nextToken = nextToken)
@@ -5176,7 +5272,7 @@ imagebuilder_list_waiting_workflow_steps <- function(maxResults = NULL, nextToke
     http_method = "POST",
     http_path = "/ListWaitingWorkflowSteps",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "steps"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .imagebuilder$list_waiting_workflow_steps_input(maxResults = maxResults, nextToken = nextToken)
@@ -5251,7 +5347,7 @@ imagebuilder_list_workflow_build_versions <- function(workflowVersionArn, maxRes
     http_method = "POST",
     http_path = "/ListWorkflowBuildVersions",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "workflowSummaryList"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .imagebuilder$list_workflow_build_versions_input(workflowVersionArn = workflowVersionArn, maxResults = maxResults, nextToken = nextToken)
@@ -5328,7 +5424,7 @@ imagebuilder_list_workflow_executions <- function(maxResults = NULL, nextToken =
     http_method = "POST",
     http_path = "/ListWorkflowExecutions",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "workflowExecutions"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .imagebuilder$list_workflow_executions_input(maxResults = maxResults, nextToken = nextToken, imageBuildVersionArn = imageBuildVersionArn)
@@ -5406,7 +5502,7 @@ imagebuilder_list_workflow_step_executions <- function(maxResults = NULL, nextTo
     http_method = "POST",
     http_path = "/ListWorkflowStepExecutions",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "steps"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .imagebuilder$list_workflow_step_executions_input(maxResults = maxResults, nextToken = nextToken, workflowExecutionId = workflowExecutionId)
@@ -5458,7 +5554,7 @@ imagebuilder_list_workflow_step_executions <- function(maxResults = NULL, nextTo
 #' @section Request syntax:
 #' ```
 #' svc$list_workflows(
-#'   owner = "Self"|"Shared"|"Amazon"|"ThirdParty",
+#'   owner = "Self"|"Shared"|"Amazon"|"ThirdParty"|"AWSMarketplace",
 #'   filters = list(
 #'     list(
 #'       name = "string",
@@ -5484,7 +5580,7 @@ imagebuilder_list_workflows <- function(owner = NULL, filters = NULL, byName = N
     http_method = "POST",
     http_path = "/ListWorkflows",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "workflowVersionList"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .imagebuilder$list_workflows_input(owner = owner, filters = filters, byName = byName, maxResults = maxResults, nextToken = nextToken)
@@ -6330,8 +6426,8 @@ imagebuilder_update_image_pipeline <- function(imagePipelineArn, description = N
 #' imagebuilder_update_infrastructure_configuration(
 #'   infrastructureConfigurationArn, description, instanceTypes,
 #'   instanceProfileName, securityGroupIds, subnetId, logging, keyPair,
-#'   terminateInstanceOnFailure, snsTopicArn, clientToken, resourceTags,
-#'   instanceMetadataOptions)
+#'   terminateInstanceOnFailure, snsTopicArn, resourceTags,
+#'   instanceMetadataOptions, placement, clientToken)
 #'
 #' @param infrastructureConfigurationArn &#91;required&#93; The Amazon Resource Name (ARN) of the infrastructure configuration that
 #' you want to update.
@@ -6359,10 +6455,6 @@ imagebuilder_update_image_pipeline <- function(imagePipelineArn, description = N
 #' encrypted using keys from other accounts. The key that is used to
 #' encrypt the SNS topic must reside in the account that the Image Builder
 #' service runs under.
-#' @param clientToken &#91;required&#93; Unique, case-sensitive identifier you provide to ensure idempotency of
-#' the request. For more information, see [Ensuring
-#' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html)
-#' in the *Amazon EC2 API Reference*.
 #' @param resourceTags The tags attached to the resource created by Image Builder.
 #' @param instanceMetadataOptions The instance metadata options that you can set for the HTTP requests
 #' that pipeline builds use to launch EC2 build and test instances. For
@@ -6376,6 +6468,12 @@ imagebuilder_update_image_pipeline <- function(imagePipelineArn, description = N
 #' -   [Configure the instance metadata
 #'     options](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-options.html)
 #'     in the *Amazon EC2 Windows Guide* for Windows instances.
+#' @param placement The instance placement settings that define where the instances that are
+#' launched from your image will run.
+#' @param clientToken &#91;required&#93; Unique, case-sensitive identifier you provide to ensure idempotency of
+#' the request. For more information, see [Ensuring
+#' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html)
+#' in the *Amazon EC2 API Reference*.
 #'
 #' @return
 #' A list with the following syntax:
@@ -6409,14 +6507,20 @@ imagebuilder_update_image_pipeline <- function(imagePipelineArn, description = N
 #'   keyPair = "string",
 #'   terminateInstanceOnFailure = TRUE|FALSE,
 #'   snsTopicArn = "string",
-#'   clientToken = "string",
 #'   resourceTags = list(
 #'     "string"
 #'   ),
 #'   instanceMetadataOptions = list(
 #'     httpTokens = "string",
 #'     httpPutResponseHopLimit = 123
-#'   )
+#'   ),
+#'   placement = list(
+#'     availabilityZone = "string",
+#'     tenancy = "default"|"dedicated"|"host",
+#'     hostId = "string",
+#'     hostResourceGroupArn = "string"
+#'   ),
+#'   clientToken = "string"
 #' )
 #' ```
 #'
@@ -6425,7 +6529,7 @@ imagebuilder_update_image_pipeline <- function(imagePipelineArn, description = N
 #' @rdname imagebuilder_update_infrastructure_configuration
 #'
 #' @aliases imagebuilder_update_infrastructure_configuration
-imagebuilder_update_infrastructure_configuration <- function(infrastructureConfigurationArn, description = NULL, instanceTypes = NULL, instanceProfileName, securityGroupIds = NULL, subnetId = NULL, logging = NULL, keyPair = NULL, terminateInstanceOnFailure = NULL, snsTopicArn = NULL, clientToken, resourceTags = NULL, instanceMetadataOptions = NULL) {
+imagebuilder_update_infrastructure_configuration <- function(infrastructureConfigurationArn, description = NULL, instanceTypes = NULL, instanceProfileName, securityGroupIds = NULL, subnetId = NULL, logging = NULL, keyPair = NULL, terminateInstanceOnFailure = NULL, snsTopicArn = NULL, resourceTags = NULL, instanceMetadataOptions = NULL, placement = NULL, clientToken) {
   op <- new_operation(
     name = "UpdateInfrastructureConfiguration",
     http_method = "PUT",
@@ -6434,7 +6538,7 @@ imagebuilder_update_infrastructure_configuration <- function(infrastructureConfi
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .imagebuilder$update_infrastructure_configuration_input(infrastructureConfigurationArn = infrastructureConfigurationArn, description = description, instanceTypes = instanceTypes, instanceProfileName = instanceProfileName, securityGroupIds = securityGroupIds, subnetId = subnetId, logging = logging, keyPair = keyPair, terminateInstanceOnFailure = terminateInstanceOnFailure, snsTopicArn = snsTopicArn, clientToken = clientToken, resourceTags = resourceTags, instanceMetadataOptions = instanceMetadataOptions)
+  input <- .imagebuilder$update_infrastructure_configuration_input(infrastructureConfigurationArn = infrastructureConfigurationArn, description = description, instanceTypes = instanceTypes, instanceProfileName = instanceProfileName, securityGroupIds = securityGroupIds, subnetId = subnetId, logging = logging, keyPair = keyPair, terminateInstanceOnFailure = terminateInstanceOnFailure, snsTopicArn = snsTopicArn, resourceTags = resourceTags, instanceMetadataOptions = instanceMetadataOptions, placement = placement, clientToken = clientToken)
   output <- .imagebuilder$update_infrastructure_configuration_output()
   config <- get_config()
   svc <- .imagebuilder$service(config, op)

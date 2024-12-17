@@ -2,18 +2,18 @@
 % Please edit documentation in R/vpclattice_operations.R
 \name{vpclattice_get_service_network_vpc_association}
 \alias{vpclattice_get_service_network_vpc_association}
-\title{Retrieves information about the association between a service network
-and a VPC}
+\title{Retrieves information about the specified association between a service
+network and a VPC}
 \usage{
 vpclattice_get_service_network_vpc_association(
   serviceNetworkVpcAssociationIdentifier
 )
 }
 \arguments{
-\item{serviceNetworkVpcAssociationIdentifier}{[required] The ID or Amazon Resource Name (ARN) of the association.}
+\item{serviceNetworkVpcAssociationIdentifier}{[required] The ID or ARN of the association.}
 }
 \description{
-Retrieves information about the association between a service network and a VPC.
+Retrieves information about the specified association between a service network and a VPC.
 
 See \url{https://www.paws-r-sdk.com/docs/vpclattice_get_service_network_vpc_association/} for full documentation.
 }

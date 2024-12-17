@@ -7,7 +7,7 @@ NULL
 #' delegated administrator
 #'
 #' @description
-#' Associates an Amazon Web Services account with an Amazon Inspector delegated administrator. An HTTP 200 response indicates the association was successfully started, but doesn’t indicate whether it was completed. You can check if the association completed by using [`list_members`][inspector2_list_members] for multiple accounts or [GetMembers](https://docs.aws.amazon.com/inspector/v2/APIReference/API_GetMember.html) for a single account.
+#' Associates an Amazon Web Services account with an Amazon Inspector delegated administrator. An HTTP 200 response indicates the association was started but doesn’t indicate whether it completed. You can check if the association completed using [`list_members`][inspector2_list_members] for multiple accounts or [GetMembers](https://docs.aws.amazon.com/inspector/v2/APIReference/API_GetMember.html) for a single account. An HTTP 402 response indicates the association failed because the organization size exceeded its limit. For information on limits, see [Amazon Inspector quotas](https://docs.aws.amazon.com/inspector/latest/user/quotas.html).
 #'
 #' See [https://www.paws-r-sdk.com/docs/inspector2_associate_member/](https://www.paws-r-sdk.com/docs/inspector2_associate_member/) for full documentation.
 #'
@@ -412,7 +412,8 @@ inspector2_create_findings_report <- function(filterCriteria = NULL, reportForma
 #' @param reportFormat &#91;required&#93; The output format for the software bill of materials (SBOM) report.
 #' @param resourceFilterCriteria The resource filter criteria for the software bill of materials (SBOM)
 #' report.
-#' @param s3Destination &#91;required&#93; 
+#' @param s3Destination &#91;required&#93; Contains details of the Amazon S3 bucket and KMS key used to export
+#' findings.
 #'
 #' @keywords internal
 #'
@@ -1183,10 +1184,10 @@ inspector2_list_cis_scans <- function(detailLevel = NULL, filterCriteria = NULL,
 }
 .inspector2$operations$list_cis_scans <- inspector2_list_cis_scans
 
-#' Lists coverage details for you environment
+#' Lists coverage details for your environment
 #'
 #' @description
-#' Lists coverage details for you environment.
+#' Lists coverage details for your environment.
 #'
 #' See [https://www.paws-r-sdk.com/docs/inspector2_list_coverage/](https://www.paws-r-sdk.com/docs/inspector2_list_coverage/) for full documentation.
 #'
@@ -1715,7 +1716,7 @@ inspector2_start_cis_session <- function(message, scanJobId) {
 #' Stops a CIS session
 #'
 #' @description
-#' Stops a CIS session. This API is used by the Amazon Inspector SSM plugin to communicate with the Amazon Inspector service. The Amazon Inspector SSM plugin calls this API to start a CIS scan session for the scan ID supplied by the service.
+#' Stops a CIS session. This API is used by the Amazon Inspector SSM plugin to communicate with the Amazon Inspector service. The Amazon Inspector SSM plugin calls this API to stop a CIS scan session for the scan ID supplied by the service.
 #'
 #' See [https://www.paws-r-sdk.com/docs/inspector2_stop_cis_session/](https://www.paws-r-sdk.com/docs/inspector2_stop_cis_session/) for full documentation.
 #'

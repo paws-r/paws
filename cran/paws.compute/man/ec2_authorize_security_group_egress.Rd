@@ -5,19 +5,21 @@
 \title{Adds the specified outbound (egress) rules to a security group}
 \usage{
 ec2_authorize_security_group_egress(
+  TagSpecifications = NULL,
   DryRun = NULL,
   GroupId,
-  IpPermissions = NULL,
-  TagSpecifications = NULL,
-  CidrIp = NULL,
-  FromPort = NULL,
-  IpProtocol = NULL,
-  ToPort = NULL,
   SourceSecurityGroupName = NULL,
-  SourceSecurityGroupOwnerId = NULL
+  SourceSecurityGroupOwnerId = NULL,
+  IpProtocol = NULL,
+  FromPort = NULL,
+  ToPort = NULL,
+  CidrIp = NULL,
+  IpPermissions = NULL
 )
 }
 \arguments{
+\item{TagSpecifications}{The tags applied to the security group rule.}
+
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
@@ -25,21 +27,19 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{GroupId}{[required] The ID of the security group.}
 
-\item{IpPermissions}{The permissions for the security group rules.}
-
-\item{TagSpecifications}{The tags applied to the security group rule.}
-
-\item{CidrIp}{Not supported. Use IP permissions instead.}
-
-\item{FromPort}{Not supported. Use IP permissions instead.}
-
-\item{IpProtocol}{Not supported. Use IP permissions instead.}
-
-\item{ToPort}{Not supported. Use IP permissions instead.}
-
 \item{SourceSecurityGroupName}{Not supported. Use IP permissions instead.}
 
 \item{SourceSecurityGroupOwnerId}{Not supported. Use IP permissions instead.}
+
+\item{IpProtocol}{Not supported. Use IP permissions instead.}
+
+\item{FromPort}{Not supported. Use IP permissions instead.}
+
+\item{ToPort}{Not supported. Use IP permissions instead.}
+
+\item{CidrIp}{Not supported. Use IP permissions instead.}
+
+\item{IpPermissions}{The permissions for the security group rules.}
 }
 \description{
 Adds the specified outbound (egress) rules to a security group.

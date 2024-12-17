@@ -9,11 +9,14 @@ NULL
 #' @description
 #' Associates an Amazon Web Services account with an Amazon Inspector
 #' delegated administrator. An HTTP 200 response indicates the association
-#' was successfully started, but doesn’t indicate whether it was completed.
-#' You can check if the association completed by using
+#' was started but doesn’t indicate whether it completed. You can check if
+#' the association completed using
 #' [`list_members`][inspector2_list_members] for multiple accounts or
 #' [GetMembers](https://docs.aws.amazon.com/inspector/v2/APIReference/API_GetMember.html)
-#' for a single account.
+#' for a single account. An HTTP 402 response indicates the association
+#' failed because the organization size exceeded its limit. For information
+#' on limits, see [Amazon Inspector
+#' quotas](https://docs.aws.amazon.com/inspector/latest/user/quotas.html).
 #'
 #' @usage
 #' inspector2_associate_member(accountId)
@@ -1057,6 +1060,10 @@ inspector2_create_cis_scan_configuration <- function(scanName, schedule, securit
 #'           lowerInclusive = 123.0,
 #'           upperInclusive = 123.0
 #'         ),
+#'         filePath = list(
+#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'           value = "string"
+#'         ),
 #'         name = list(
 #'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
 #'           value = "string"
@@ -1416,6 +1423,10 @@ inspector2_create_filter <- function(action, description = NULL, filterCriteria,
 #'           lowerInclusive = 123.0,
 #'           upperInclusive = 123.0
 #'         ),
+#'         filePath = list(
+#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'           value = "string"
+#'         ),
 #'         name = list(
 #'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
 #'           value = "string"
@@ -1484,7 +1495,8 @@ inspector2_create_findings_report <- function(filterCriteria = NULL, reportForma
 #' @param reportFormat &#91;required&#93; The output format for the software bill of materials (SBOM) report.
 #' @param resourceFilterCriteria The resource filter criteria for the software bill of materials (SBOM)
 #' report.
-#' @param s3Destination &#91;required&#93; 
+#' @param s3Destination &#91;required&#93; Contains details of the Amazon S3 bucket and KMS key used to export
+#' findings.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2751,6 +2763,10 @@ inspector2_get_encryption_key <- function(resourceType, scanType) {
 #'           lowerInclusive = 123.0,
 #'           upperInclusive = 123.0
 #'         ),
+#'         filePath = list(
+#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'           value = "string"
+#'         ),
 #'         name = list(
 #'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
 #'           value = "string"
@@ -3575,10 +3591,10 @@ inspector2_list_cis_scans <- function(detailLevel = NULL, filterCriteria = NULL,
 }
 .inspector2$operations$list_cis_scans <- inspector2_list_cis_scans
 
-#' Lists coverage details for you environment
+#' Lists coverage details for your environment
 #'
 #' @description
-#' Lists coverage details for you environment.
+#' Lists coverage details for your environment.
 #'
 #' @usage
 #' inspector2_list_coverage(filterCriteria, maxResults, nextToken)
@@ -3635,7 +3651,7 @@ inspector2_list_cis_scans <- function(detailLevel = NULL, filterCriteria = NULL,
 #'           layers = list(
 #'             "string"
 #'           ),
-#'           runtime = "NODEJS"|"NODEJS_12_X"|"NODEJS_14_X"|"NODEJS_16_X"|"JAVA_8"|"JAVA_8_AL2"|"JAVA_11"|"PYTHON_3_7"|"PYTHON_3_8"|"PYTHON_3_9"|"UNSUPPORTED"|"NODEJS_18_X"|"GO_1_X"|"JAVA_17"|"PYTHON_3_10"
+#'           runtime = "NODEJS"|"NODEJS_12_X"|"NODEJS_14_X"|"NODEJS_16_X"|"JAVA_8"|"JAVA_8_AL2"|"JAVA_11"|"PYTHON_3_7"|"PYTHON_3_8"|"PYTHON_3_9"|"UNSUPPORTED"|"NODEJS_18_X"|"GO_1_X"|"JAVA_17"|"PYTHON_3_10"|"PYTHON_3_11"|"DOTNETCORE_3_1"|"DOTNET_6"|"DOTNET_7"|"RUBY_2_7"|"RUBY_3_2"
 #'         )
 #'       ),
 #'       resourceType = "AWS_EC2_INSTANCE"|"AWS_ECR_CONTAINER_IMAGE"|"AWS_ECR_REPOSITORY"|"AWS_LAMBDA_FUNCTION",
@@ -4327,6 +4343,10 @@ inspector2_list_delegated_admin_accounts <- function(maxResults = NULL, nextToke
 #'               lowerInclusive = 123.0,
 #'               upperInclusive = 123.0
 #'             ),
+#'             filePath = list(
+#'               comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'               value = "string"
+#'             ),
 #'             name = list(
 #'               comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
 #'               value = "string"
@@ -4949,7 +4969,7 @@ inspector2_list_finding_aggregations <- function(accountIds = NULL, aggregationR
 #'             filePath = "string",
 #'             fixedInVersion = "string",
 #'             name = "string",
-#'             packageManager = "BUNDLER"|"CARGO"|"COMPOSER"|"NPM"|"NUGET"|"PIPENV"|"POETRY"|"YARN"|"GOBINARY"|"GOMOD"|"JAR"|"OS"|"PIP"|"PYTHONPKG"|"NODEPKG"|"POM"|"GEMSPEC",
+#'             packageManager = "BUNDLER"|"CARGO"|"COMPOSER"|"NPM"|"NUGET"|"PIPENV"|"POETRY"|"YARN"|"GOBINARY"|"GOMOD"|"JAR"|"OS"|"PIP"|"PYTHONPKG"|"NODEPKG"|"POM"|"GEMSPEC"|"DOTNET_CORE",
 #'             release = "string",
 #'             remediation = "string",
 #'             sourceLambdaLayerArn = "string",
@@ -5013,7 +5033,7 @@ inspector2_list_finding_aggregations <- function(accountIds = NULL, aggregationR
 #'                 "string"
 #'               ),
 #'               packageType = "IMAGE"|"ZIP",
-#'               runtime = "NODEJS"|"NODEJS_12_X"|"NODEJS_14_X"|"NODEJS_16_X"|"JAVA_8"|"JAVA_8_AL2"|"JAVA_11"|"PYTHON_3_7"|"PYTHON_3_8"|"PYTHON_3_9"|"UNSUPPORTED"|"NODEJS_18_X"|"GO_1_X"|"JAVA_17"|"PYTHON_3_10",
+#'               runtime = "NODEJS"|"NODEJS_12_X"|"NODEJS_14_X"|"NODEJS_16_X"|"JAVA_8"|"JAVA_8_AL2"|"JAVA_11"|"PYTHON_3_7"|"PYTHON_3_8"|"PYTHON_3_9"|"UNSUPPORTED"|"NODEJS_18_X"|"GO_1_X"|"JAVA_17"|"PYTHON_3_10"|"PYTHON_3_11"|"DOTNETCORE_3_1"|"DOTNET_6"|"DOTNET_7"|"RUBY_2_7"|"RUBY_3_2",
 #'               version = "string",
 #'               vpcConfig = list(
 #'                 securityGroupIds = list(
@@ -5328,6 +5348,10 @@ inspector2_list_finding_aggregations <- function(accountIds = NULL, aggregationR
 #'         epoch = list(
 #'           lowerInclusive = 123.0,
 #'           upperInclusive = 123.0
+#'         ),
+#'         filePath = list(
+#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'           value = "string"
 #'         ),
 #'         name = list(
 #'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
@@ -5922,7 +5946,7 @@ inspector2_start_cis_session <- function(message, scanJobId) {
 #' @description
 #' Stops a CIS session. This API is used by the Amazon Inspector SSM plugin
 #' to communicate with the Amazon Inspector service. The Amazon Inspector
-#' SSM plugin calls this API to start a CIS scan session for the scan ID
+#' SSM plugin calls this API to stop a CIS scan session for the scan ID
 #' supplied by the service.
 #'
 #' @usage
@@ -6659,6 +6683,10 @@ inspector2_update_encryption_key <- function(kmsKeyId, resourceType, scanType) {
 #'         epoch = list(
 #'           lowerInclusive = 123.0,
 #'           upperInclusive = 123.0
+#'         ),
+#'         filePath = list(
+#'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",
+#'           value = "string"
 #'         ),
 #'         name = list(
 #'           comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS",

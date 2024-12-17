@@ -13,7 +13,9 @@ sagemaker_update_model_package(
   AdditionalInferenceSpecificationsToAdd = NULL,
   InferenceSpecification = NULL,
   SourceUri = NULL,
-  ModelCard = NULL
+  ModelCard = NULL,
+  ModelLifeCycle = NULL,
+  ClientToken = NULL
 )
 }
 \arguments{
@@ -57,6 +59,10 @@ include \code{model_package_details}, and \code{model_overview} is composed of t
 about the model package model card schema, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/model-registry-details.html#model-card-schema}{Model package model card schema}.
 For more information about the model card associated with the model
 package, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/model-registry-details.html}{View the Details of a Model Version}.}
+
+\item{ModelLifeCycle}{A structure describing the current state of the model in its life cycle.}
+
+\item{ClientToken}{A unique token that guarantees that the call to this API is idempotent.}
 }
 \description{
 Updates a versioned model.

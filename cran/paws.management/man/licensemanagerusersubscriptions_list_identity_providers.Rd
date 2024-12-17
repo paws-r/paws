@@ -2,20 +2,29 @@
 % Please edit documentation in R/licensemanagerusersubscriptions_operations.R
 \name{licensemanagerusersubscriptions_list_identity_providers}
 \alias{licensemanagerusersubscriptions_list_identity_providers}
-\title{Lists the identity providers for user-based subscriptions}
+\title{Lists the Active Directory identity providers for user-based
+subscriptions}
 \usage{
 licensemanagerusersubscriptions_list_identity_providers(
+  Filters = NULL,
   MaxResults = NULL,
   NextToken = NULL
 )
 }
 \arguments{
-\item{MaxResults}{Maximum number of results to return in a single call.}
+\item{Filters}{You can use the following filters to streamline results:
+\itemize{
+\item Product
+\item DirectoryId
+}}
 
-\item{NextToken}{Token for the next set of results.}
+\item{MaxResults}{The maximum number of results to return from a single request.}
+
+\item{NextToken}{A token to specify where to start paginating. This is the nextToken from
+a previously truncated response.}
 }
 \description{
-Lists the identity providers for user-based subscriptions.
+Lists the Active Directory identity providers for user-based subscriptions.
 
 See \url{https://www.paws-r-sdk.com/docs/licensemanagerusersubscriptions_list_identity_providers/} for full documentation.
 }

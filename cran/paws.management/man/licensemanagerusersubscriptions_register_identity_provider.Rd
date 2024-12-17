@@ -7,16 +7,22 @@
 licensemanagerusersubscriptions_register_identity_provider(
   IdentityProvider,
   Product,
-  Settings = NULL
+  Settings = NULL,
+  Tags = NULL
 )
 }
 \arguments{
-\item{IdentityProvider}{[required] An object that specifies details for the identity provider.}
+\item{IdentityProvider}{[required] An object that specifies details for the identity provider to register.}
 
-\item{Product}{[required] The name of the user-based subscription product.}
+\item{Product}{[required] The name of the user-based subscription product.
+
+Valid values: \code{VISUAL_STUDIO_ENTERPRISE} | \code{VISUAL_STUDIO_PROFESSIONAL}
+| \code{OFFICE_PROFESSIONAL_PLUS}}
 
 \item{Settings}{The registered identity provider’s product related configuration
 settings such as the subnets to provision VPC endpoints.}
+
+\item{Tags}{The tags that apply to the identity provider's registration.}
 }
 \description{
 Registers an identity provider for user-based subscriptions.

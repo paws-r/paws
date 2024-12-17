@@ -55,6 +55,9 @@ test, debug, and release software in the cloud.
 
 For more information about Cloud9, see the \href{https://docs.aws.amazon.com/cloud9/latest/user-guide/}{Cloud9 User Guide}.
 
+Cloud9 is no longer available to new customers. Existing customers of
+Cloud9 can continue to use the service as normal. \href{https://aws.amazon.com/blogs/devops/how-to-migrate-from-aws-cloud9-to-aws-ide-toolkits-or-aws-cloudshell/}{Learn more"}
+
 Cloud9 supports these operations:
 \itemize{
 \item \code{\link[=cloud9_create_environment_ec2]{create_environment_ec2}}: Creates
@@ -150,7 +153,6 @@ svc$create_environment_ec2(
   name = "my-demo-environment",
   automaticStopTimeMinutes = 60L,
   description = "This is my demonstration environment.",
-  imageId = "amazonlinux-2023-x86_64",
   instanceType = "t2.micro",
   ownerArn = "arn:aws:iam::123456789012:user/MyDemoUser",
   subnetId = "subnet-6300cd1b"

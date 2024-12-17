@@ -2,14 +2,14 @@
 % Please edit documentation in R/firehose_operations.R
 \name{firehose_delete_delivery_stream}
 \alias{firehose_delete_delivery_stream}
-\title{Deletes a delivery stream and its data}
+\title{Deletes a Firehose stream and its data}
 \usage{
 firehose_delete_delivery_stream(DeliveryStreamName, AllowForceDelete = NULL)
 }
 \arguments{
-\item{DeliveryStreamName}{[required] The name of the delivery stream.}
+\item{DeliveryStreamName}{[required] The name of the Firehose stream.}
 
-\item{AllowForceDelete}{Set this to true if you want to delete the delivery stream even if
+\item{AllowForceDelete}{Set this to true if you want to delete the Firehose stream even if
 Firehose is unable to retire the grant for the CMK. Firehose might be
 unable to retire the grant due to a customer error, such as when the CMK
 or the grant are in an invalid state. If you force deletion, you can
@@ -22,7 +22,7 @@ Firehose keeps retrying the delete operation.
 The default value is false.}
 }
 \description{
-Deletes a delivery stream and its data.
+Deletes a Firehose stream and its data.
 
 See \url{https://www.paws-r-sdk.com/docs/firehose_delete_delivery_stream/} for full documentation.
 }

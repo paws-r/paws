@@ -98,7 +98,7 @@ and the \href{https://docs.aws.amazon.com/efs/latest/ug/whatisefs.html}{Amazon E
 \link[paws.storage:efs_create_access_point]{create_access_point} \tab Creates an EFS access point\cr
 \link[paws.storage:efs_create_file_system]{create_file_system} \tab Creates a new, empty file system\cr
 \link[paws.storage:efs_create_mount_target]{create_mount_target} \tab Creates a mount target for a file system\cr
-\link[paws.storage:efs_create_replication_configuration]{create_replication_configuration} \tab Creates a replication configuration that replicates an existing EFS file system to a new, read-only file system\cr
+\link[paws.storage:efs_create_replication_configuration]{create_replication_configuration} \tab Creates a replication configuration to either a new or existing EFS file system\cr
 \link[paws.storage:efs_create_tags]{create_tags} \tab DEPRECATED - CreateTags is deprecated and not maintained\cr
 \link[paws.storage:efs_delete_access_point]{delete_access_point} \tab Deletes the specified access point\cr
 \link[paws.storage:efs_delete_file_system]{delete_file_system} \tab Deletes a file system, permanently severing access to its contents\cr

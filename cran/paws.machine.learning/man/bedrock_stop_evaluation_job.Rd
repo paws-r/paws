@@ -2,15 +2,15 @@
 % Please edit documentation in R/bedrock_operations.R
 \name{bedrock_stop_evaluation_job}
 \alias{bedrock_stop_evaluation_job}
-\title{Stops an in progress model evaluation job}
+\title{Stops an evaluation job that is current being created or running}
 \usage{
 bedrock_stop_evaluation_job(jobIdentifier)
 }
 \arguments{
-\item{jobIdentifier}{[required] The ARN of the model evaluation job you want to stop.}
+\item{jobIdentifier}{[required] The Amazon Resource Name (ARN) of the evaluation job you want to stop.}
 }
 \description{
-Stops an in progress model evaluation job.
+Stops an evaluation job that is current being created or running.
 
 See \url{https://www.paws-r-sdk.com/docs/bedrock_stop_evaluation_job/} for full documentation.
 }

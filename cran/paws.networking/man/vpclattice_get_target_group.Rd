@@ -7,7 +7,7 @@
 vpclattice_get_target_group(targetGroupIdentifier)
 }
 \arguments{
-\item{targetGroupIdentifier}{[required] The ID or Amazon Resource Name (ARN) of the target group.}
+\item{targetGroupIdentifier}{[required] The ID or ARN of the target group.}
 }
 \description{
 Retrieves information about the specified target group.

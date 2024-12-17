@@ -4,13 +4,13 @@
 \alias{ivs_list_playback_restriction_policies}
 \title{Gets summary information about playback restriction policies}
 \usage{
-ivs_list_playback_restriction_policies(nextToken = NULL, maxResults = NULL)
+ivs_list_playback_restriction_policies(maxResults = NULL, nextToken = NULL)
 }
 \arguments{
+\item{maxResults}{Maximum number of policies to return. Default: 1.}
+
 \item{nextToken}{The first policy to retrieve. This is used for pagination; see the
 \code{nextToken} response field.}
-
-\item{maxResults}{Maximum number of policies to return. Default: 1.}
 }
 \description{
 Gets summary information about playback restriction policies.

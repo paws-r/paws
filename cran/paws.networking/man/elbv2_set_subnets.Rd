@@ -10,7 +10,8 @@ elbv2_set_subnets(
   LoadBalancerArn,
   Subnets = NULL,
   SubnetMappings = NULL,
-  IpAddressType = NULL
+  IpAddressType = NULL,
+  EnablePrefixForIpv6SourceNat = NULL
 )
 }
 \arguments{
@@ -28,17 +29,14 @@ subnet.
 [Application Load Balancers on Local Zones] You can specify subnets
 from one or more Local Zones.
 
-[Network Load Balancers] You can specify subnets from one or more
-Availability Zones.
-
-[Gateway Load Balancers] You can specify subnets from one or more
-Availability Zones.}
+[Network Load Balancers and Gateway Load Balancers] You can specify
+subnets from one or more Availability Zones.}
 
 \item{SubnetMappings}{The IDs of the public subnets. You can specify only one subnet per
 Availability Zone. You must specify either subnets or subnet mappings.
 
 [Application Load Balancers] You must specify subnets from at least
-two Availability Zones. You cannot specify Elastic IP addresses for your
+two Availability Zones. You can't specify Elastic IP addresses for your
 subnets.
 
 [Application Load Balancers on Outposts] You must specify one Outpost
@@ -57,19 +55,20 @@ balancer, you can specify one IPv6 address per subnet.
 [Gateway Load Balancers] You can specify subnets from one or more
 Availability Zones.}
 
-\item{IpAddressType}{[Application Load Balancers] The IP address type. The possible values
-are \code{ipv4} (for only IPv4 addresses), \code{dualstack} (for IPv4 and IPv6
-addresses), and \code{dualstack-without-public-ipv4} (for IPv6 only public
-addresses, with private IPv4 and IPv6 addresses).
+\item{IpAddressType}{The IP address type.
 
-[Network Load Balancers] The type of IP addresses used by the subnets
-for your load balancer. The possible values are \code{ipv4} (for IPv4
-addresses) and \code{dualstack} (for IPv4 and IPv6 addresses). You can’t
-specify \code{dualstack} for a load balancer with a UDP or TCP_UDP listener.
+[Application Load Balancers] The possible values are \code{ipv4} (IPv4
+addresses), \code{dualstack} (IPv4 and IPv6 addresses), and
+\code{dualstack-without-public-ipv4} (public IPv6 addresses and private IPv4
+and IPv6 addresses).
 
-[Gateway Load Balancers] The type of IP addresses used by the subnets
-for your load balancer. The possible values are \code{ipv4} (for IPv4
-addresses) and \code{dualstack} (for IPv4 and IPv6 addresses).}
+[Network Load Balancers and Gateway Load Balancers] The possible
+values are \code{ipv4} (IPv4 addresses) and \code{dualstack} (IPv4 and IPv6
+addresses).}
+
+\item{EnablePrefixForIpv6SourceNat}{[Network Load Balancers with UDP listeners] Indicates whether to use
+an IPv6 prefix from each subnet for source NAT. The IP address type must
+be \code{dualstack}. The default value is \code{off}.}
 }
 \description{
 Enables the Availability Zones for the specified public subnets for the specified Application Load Balancer, Network Load Balancer or Gateway Load Balancer. The specified subnets replace the previously enabled subnets.

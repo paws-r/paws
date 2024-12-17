@@ -52,6 +52,10 @@ Valid Values: See \href{https://docs.aws.amazon.com/general/latest/gr/sg.html}{S
 is critical to all later functions of the gateway and cannot be changed
 after activation. The default value is \code{CACHED}.
 
+Amazon FSx File Gateway is no longer available to new customers.
+Existing customers of FSx File Gateway can continue to use the service
+normally. For capabilities similar to FSx File Gateway, visit \href{https://aws.amazon.com/blogs/storage/switch-your-file-share-access-from-amazon-fsx-file-gateway-to-amazon-fsx-for-windows-file-server/}{this blog post}.
+
 Valid Values: \code{STORED} | \code{CACHED} | \code{VTL} | \code{FILE_S3} | \code{FILE_FSX_SMB}}
 
 \item{TapeDriveType}{The value that indicates the type of tape drive to use for tape gateway.

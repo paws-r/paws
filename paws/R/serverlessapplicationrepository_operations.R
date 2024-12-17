@@ -818,7 +818,7 @@ serverlessapplicationrepository_list_application_dependencies <- function(Applic
     http_method = "GET",
     http_path = "/applications/{applicationId}/dependencies",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxItems"),
+    paginator = list(input_token = "NextToken", limit_key = "MaxItems", output_token = "NextToken", result_key = "Dependencies"),
     stream_api = FALSE
   )
   input <- .serverlessapplicationrepository$list_application_dependencies_input(ApplicationId = ApplicationId, MaxItems = MaxItems, NextToken = NextToken, SemanticVersion = SemanticVersion)
@@ -880,7 +880,7 @@ serverlessapplicationrepository_list_application_versions <- function(Applicatio
     http_method = "GET",
     http_path = "/applications/{applicationId}/versions",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxItems"),
+    paginator = list(input_token = "NextToken", limit_key = "MaxItems", output_token = "NextToken", result_key = "Versions"),
     stream_api = FALSE
   )
   input <- .serverlessapplicationrepository$list_application_versions_input(ApplicationId = ApplicationId, MaxItems = MaxItems, NextToken = NextToken)
@@ -945,7 +945,7 @@ serverlessapplicationrepository_list_applications <- function(MaxItems = NULL, N
     http_method = "GET",
     http_path = "/applications",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxItems"),
+    paginator = list(input_token = "NextToken", limit_key = "MaxItems", output_token = "NextToken", result_key = "Applications"),
     stream_api = FALSE
   )
   input <- .serverlessapplicationrepository$list_applications_input(MaxItems = MaxItems, NextToken = NextToken)

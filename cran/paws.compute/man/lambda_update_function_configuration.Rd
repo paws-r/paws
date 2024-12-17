@@ -84,14 +84,22 @@ where Lambda sends asynchronous events when they fail processing. For
 more information, see \href{https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html#invocation-dlq}{Dead-letter queues}.}
 
 \item{KMSKeyArn}{The ARN of the Key Management Service (KMS) customer managed key that's
-used to encrypt your function's \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-envvars.html#configuration-envvars-encryption}{environment variables}.
-When \href{https://docs.aws.amazon.com/lambda/latest/dg/snapstart-security.html}{Lambda SnapStart}
-is activated, Lambda also uses this key is to encrypt your function's
-snapshot. If you deploy your function using a container image, Lambda
-also uses this key to encrypt your function when it's deployed. Note
-that this is not the same key that's used to protect your container
-image in the Amazon Elastic Container Registry (Amazon ECR). If you
-don't provide a customer managed key, Lambda uses a default service key.}
+used to encrypt the following resources:
+\itemize{
+\item The function's \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-envvars.html#configuration-envvars-encryption}{environment variables}.
+\item The function's \href{https://docs.aws.amazon.com/lambda/latest/dg/snapstart-security.html}{Lambda SnapStart}
+snapshots.
+\item When used with \code{SourceKMSKeyArn}, the unzipped version of the .zip
+deployment package that's used for function invocations. For more
+information, see \href{https://docs.aws.amazon.com/lambda/latest/dg/encrypt-zip-package.html#enable-zip-custom-encryption}{Specifying a customer managed key for Lambda}.
+\item The optimized version of the container image that's used for
+function invocations. Note that this is not the same key that's used
+to protect your container image in the Amazon Elastic Container
+Registry (Amazon ECR). For more information, see \href{https://docs.aws.amazon.com/lambda/latest/dg/images-create.html#images-lifecycle}{Function lifecycle}.
+}
+
+If you don't provide a customer managed key, Lambda uses an \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-owned-cmk}{Amazon Web Services owned key}
+or an \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-cmk}{Amazon Web Services managed key}.}
 
 \item{TracingConfig}{Set \code{Mode} to \code{Active} to sample and trace a subset of incoming requests
 with

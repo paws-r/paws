@@ -10,6 +10,7 @@ datazone_update_domain(
   domainExecutionRole = NULL,
   identifier,
   name = NULL,
+  serviceRole = NULL,
   singleSignOn = NULL
 )
 }
@@ -27,6 +28,8 @@ idempotency of the request.}
 
 \item{name}{The name to be updated as part of the
 \code{\link[=datazone_update_domain]{update_domain}} action.}
+
+\item{serviceRole}{The service role of the domain.}
 
 \item{singleSignOn}{The single sign-on option to be updated as part of the
 \code{\link[=datazone_update_domain]{update_domain}} action.}

@@ -19,7 +19,12 @@ account.}
 \item{Description}{A description of the workflow.}
 
 \item{DefaultRunProperties}{A collection of properties to be used as part of each execution of the
-workflow.}
+workflow.
+
+Run properties may be logged. Do not pass plaintext secrets as
+properties. Retrieve secrets from a Glue Connection, Amazon Web Services
+Secrets Manager or other secret management mechanism if you intend to
+use them within the workflow run.}
 
 \item{Tags}{The tags to be used with this workflow.}
 

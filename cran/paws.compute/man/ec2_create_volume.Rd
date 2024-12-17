@@ -14,11 +14,12 @@ ec2_create_volume(
   Size = NULL,
   SnapshotId = NULL,
   VolumeType = NULL,
-  DryRun = NULL,
   TagSpecifications = NULL,
   MultiAttachEnabled = NULL,
   Throughput = NULL,
-  ClientToken = NULL
+  ClientToken = NULL,
+  Operator = NULL,
+  DryRun = NULL
 )
 }
 \arguments{
@@ -114,11 +115,6 @@ in the \emph{Amazon EBS User Guide}.
 
 Default: \code{gp2}}
 
-\item{DryRun}{Checks whether you have the required permissions for the action, without
-actually making the request, and provides an error response. If you have
-the required permissions, the error response is \code{DryRunOperation}.
-Otherwise, it is \code{UnauthorizedOperation}.}
-
 \item{TagSpecifications}{The tags to apply to the volume during creation.}
 
 \item{MultiAttachEnabled}{Indicates whether to enable Amazon EBS Multi-Attach. If you enable
@@ -135,6 +131,13 @@ Valid Range: Minimum value of 125. Maximum value of 1000.}
 
 \item{ClientToken}{Unique, case-sensitive identifier that you provide to ensure the
 idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensure Idempotency}.}
+
+\item{Operator}{Reserved for internal use.}
+
+\item{DryRun}{Checks whether you have the required permissions for the action, without
+actually making the request, and provides an error response. If you have
+the required permissions, the error response is \code{DryRunOperation}.
+Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
 Creates an EBS volume that can be attached to an instance in the same Availability Zone.

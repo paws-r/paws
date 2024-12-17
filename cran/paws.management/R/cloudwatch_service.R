@@ -137,7 +137,7 @@ NULL
 #'  \link[=cloudwatch_put_insight_rule]{put_insight_rule} \tab Creates a Contributor Insights rule\cr
 #'  \link[=cloudwatch_put_managed_insight_rules]{put_managed_insight_rules} \tab Creates a managed Contributor Insights rule for a specified Amazon Web Services resource\cr
 #'  \link[=cloudwatch_put_metric_alarm]{put_metric_alarm} \tab Creates or updates an alarm and associates it with the specified metric, metric math expression, anomaly detection model, or Metrics Insights query\cr
-#'  \link[=cloudwatch_put_metric_data]{put_metric_data} \tab Publishes metric data points to Amazon CloudWatch\cr
+#'  \link[=cloudwatch_put_metric_data]{put_metric_data} \tab Publishes metric data to Amazon CloudWatch\cr
 #'  \link[=cloudwatch_put_metric_stream]{put_metric_stream} \tab Creates or updates a metric stream\cr
 #'  \link[=cloudwatch_set_alarm_state]{set_alarm_state} \tab Temporarily sets the state of an alarm for testing purposes\cr
 #'  \link[=cloudwatch_start_metric_streams]{start_metric_streams} \tab Starts the streaming of metrics for one or more of your metric streams\cr
@@ -175,7 +175,7 @@ cloudwatch <- function(config = list(), credentials = list(), endpoint = NULL, r
 
 .cloudwatch$metadata <- list(
   service_name = "monitoring",
-  endpoints = list("*" = list(endpoint = "monitoring.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "monitoring.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "monitoring.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "monitoring.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "monitoring.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "monitoring.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "monitoring.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "monitoring.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "monitoring.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "monitoring.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "monitoring.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "monitoring.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "monitoring.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "CloudWatch",
   api_version = "2010-08-01",
   signing_name = "monitoring",

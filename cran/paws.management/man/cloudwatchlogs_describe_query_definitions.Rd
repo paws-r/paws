@@ -6,12 +6,16 @@
 Insights query definitions}
 \usage{
 cloudwatchlogs_describe_query_definitions(
+  queryLanguage = NULL,
   queryDefinitionNamePrefix = NULL,
   maxResults = NULL,
   nextToken = NULL
 )
 }
 \arguments{
+\item{queryLanguage}{The query language used for this query. For more information about the
+query languages that CloudWatch Logs supports, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_AnalyzeLogData_Languages.html}{Supported query languages}.}
+
 \item{queryDefinitionNamePrefix}{Use this parameter to filter your results to only the query definitions
 that have names that start with the prefix you specify.}
 

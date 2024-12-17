@@ -19,11 +19,15 @@ with "ABC" in the name.}
 \item{HomeRegion}{The primary Region of the endpoints associated with this account. For
 example \code{"HomeRegion": "us-east-1"}.}
 
-\item{NextToken}{If \code{nextToken} is returned, there are more results available. The value
-of \code{nextToken} is a unique pagination token for each page. Make the call
-again using the returned token to retrieve the next page. Keep all other
-arguments unchanged. Each pagination token expires after 24 hours. Using
-an expired pagination token will return an HTTP 400 InvalidToken error.}
+\item{NextToken}{The token returned by a previous call, which you can use to retrieve the
+next set of results.
+
+The value of \code{nextToken} is a unique pagination token for each page. To
+retrieve the next page of results, make the call again using the
+returned token. Keep all other arguments unchanged.
+
+Using an expired pagination token results in an \verb{HTTP 400 InvalidToken}
+error.}
 
 \item{MaxResults}{The maximum number of results returned by the call.}
 }

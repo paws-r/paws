@@ -11,7 +11,8 @@ cloudwatchlogs_put_subscription_filter(
   filterPattern,
   destinationArn,
   roleArn = NULL,
-  distribution = NULL
+  distribution = NULL,
+  applyOnTransformedLogs = NULL
 )
 }
 \arguments{
@@ -52,6 +53,15 @@ cross-account delivery.}
 log data is grouped by log stream, but the grouping can be set to random
 for a more even distribution. This property is only applicable when the
 destination is an Amazon Kinesis data stream.}
+
+\item{applyOnTransformedLogs}{This parameter is valid only for log groups that have an active log
+transformer. For more information about log transformers, see
+\code{\link[=cloudwatchlogs_put_transformer]{put_transformer}}.
+
+If the log group uses either a log-group level or account-level
+transformer, and you specify \code{true}, the subscription filter will be
+applied on the transformed version of the log events instead of the
+original ingested log events.}
 }
 \description{
 Creates or updates a subscription filter and associates it with the specified log group. With subscription filters, you can subscribe to a real-time stream of log events ingested through \code{\link[=cloudwatchlogs_put_log_events]{put_log_events}} and have them delivered to a specific destination. When log events are sent to the receiving service, they are Base64 encoded and compressed with the GZIP format.

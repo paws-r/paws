@@ -8,7 +8,7 @@ app client's app UI, if any such information exists for the client}
 cognitoidentityprovider_get_ui_customization(UserPoolId, ClientId = NULL)
 }
 \arguments{
-\item{UserPoolId}{[required] The user pool ID for the user pool.}
+\item{UserPoolId}{[required] The ID of the user pool.}
 
 \item{ClientId}{The client ID for the client app.}
 }

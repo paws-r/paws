@@ -2,7 +2,7 @@
 % Please edit documentation in R/mwaa_operations.R
 \name{mwaa_create_environment}
 \alias{mwaa_create_environment}
-\title{Creates an Amazon Managed Workflows for Apache Airflow (MWAA)
+\title{Creates an Amazon Managed Workflows for Apache Airflow (Amazon MWAA)
 environment}
 \usage{
 mwaa_create_environment(
@@ -95,9 +95,9 @@ For more information, see \href{https://docs.aws.amazon.com/mwaa/latest/userguid
 options you want to attach to your environment. For more information,
 see \href{https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-env-variables.html}{Apache Airflow configuration options}.}
 
-\item{EnvironmentClass}{The environment class type. Valid values: \code{mw1.small}, \code{mw1.medium},
-\code{mw1.large}, \code{mw1.xlarge}, and \code{mw1.2xlarge}. For more information, see
-\href{https://docs.aws.amazon.com/mwaa/latest/userguide/environment-class.html}{Amazon MWAA environment class}.}
+\item{EnvironmentClass}{The environment class type. Valid values: \code{mw1.micro}, \code{mw1.small},
+\code{mw1.medium}, \code{mw1.large}, \code{mw1.xlarge}, and \code{mw1.2xlarge}. For more
+information, see \href{https://docs.aws.amazon.com/mwaa/latest/userguide/environment-class.html}{Amazon MWAA environment class}.}
 
 \item{MaxWorkers}{The maximum number of workers that you want to run in your environment.
 MWAA scales the number of Apache Airflow workers up to the number you
@@ -112,10 +112,10 @@ or a Customer managed CMK (advanced). For more information, see \href{https://do
 
 \item{AirflowVersion}{The Apache Airflow version for your environment. If no value is
 specified, it defaults to the latest version. For more information, see
-\href{https://docs.aws.amazon.com/mwaa/latest/userguide/airflow-versions.html}{Apache Airflow versions on Amazon Managed Workflows for Apache Airflow (MWAA)}.
+\href{https://docs.aws.amazon.com/mwaa/latest/userguide/airflow-versions.html}{Apache Airflow versions on Amazon Managed Workflows for Apache Airflow (Amazon MWAA)}.
 
 Valid values: \verb{1.10.12}, \verb{2.0.2}, \verb{2.2.2}, \verb{2.4.3}, \verb{2.5.1}, \verb{2.6.3},
-\verb{2.7.2} \verb{2.8.1}}
+\verb{2.7.2}, \verb{2.8.1}, \verb{2.9.2}, and \verb{2.10.1}.}
 
 \item{LoggingConfiguration}{Defines the Apache Airflow logs to send to CloudWatch Logs.}
 
@@ -139,7 +139,9 @@ worker count you specify in the \code{MinWorkers} field. For example, \code{2}.}
 \item{Schedulers}{The number of Apache Airflow schedulers to run in your environment.
 Valid values:
 \itemize{
-\item v2 - Accepts between \code{2} to \code{5}. Defaults to \code{2}.
+\item v2 - For environments larger than mw1.micro, accepts values from \code{2}
+to \code{5}. Defaults to \code{2} for all environment sizes except mw1.micro,
+which defaults to \code{1}.
 \item v1 - Accepts \code{1}.
 }}
 
@@ -162,7 +164,9 @@ Apache Airflow CLI. As the transaction-per-second rate, and the network
 load, decrease, Amazon MWAA disposes of the additional web servers, and
 scales down to the number set in \code{MinxWebserers}.
 
-Valid values: Accepts between \code{2} and \code{5}. Defaults to \code{2}.}
+Valid values: For environments larger than mw1.micro, accepts values
+from \code{2} to \code{5}. Defaults to \code{2} for all environment sizes except
+mw1.micro, which defaults to \code{1}.}
 
 \item{MaxWebservers}{The maximum number of web servers that you want to run in your
 environment. Amazon MWAA scales the number of Apache Airflow web servers
@@ -175,10 +179,12 @@ of web servers up to the number set in \code{MaxWebserers}. As TPS rates
 decrease Amazon MWAA disposes of the additional web servers, and scales
 down to the number set in \code{MinxWebserers}.
 
-Valid values: Accepts between \code{2} and \code{5}. Defaults to \code{2}.}
+Valid values: For environments larger than mw1.micro, accepts values
+from \code{2} to \code{5}. Defaults to \code{2} for all environment sizes except
+mw1.micro, which defaults to \code{1}.}
 }
 \description{
-Creates an Amazon Managed Workflows for Apache Airflow (MWAA) environment.
+Creates an Amazon Managed Workflows for Apache Airflow (Amazon MWAA) environment.
 
 See \url{https://www.paws-r-sdk.com/docs/mwaa_create_environment/} for full documentation.
 }

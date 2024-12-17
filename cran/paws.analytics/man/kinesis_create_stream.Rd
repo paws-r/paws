@@ -4,7 +4,12 @@
 \alias{kinesis_create_stream}
 \title{Creates a Kinesis data stream}
 \usage{
-kinesis_create_stream(StreamName, ShardCount = NULL, StreamModeDetails = NULL)
+kinesis_create_stream(
+  StreamName,
+  ShardCount = NULL,
+  StreamModeDetails = NULL,
+  Tags = NULL
+)
 }
 \arguments{
 \item{StreamName}{[required] A name to identify the stream. The stream name is scoped to the Amazon
@@ -21,6 +26,8 @@ for greater provisioned throughput.}
 \item{StreamModeDetails}{Indicates the capacity mode of the data stream. Currently, in Kinesis
 Data Streams, you can choose between an \strong{on-demand} capacity mode and
 a \strong{provisioned} capacity mode for your data streams.}
+
+\item{Tags}{A set of up to 10 key-value pairs to use to create the tags.}
 }
 \description{
 Creates a Kinesis data stream. A stream captures and transports data records that are continuously emitted from different data sources or \emph{producers}. Scale-out within a stream is explicitly supported by means of shards, which are uniquely identified groups of data records in a stream.

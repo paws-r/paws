@@ -5,6 +5,7 @@
 \title{Lists data sources in Amazon DataZone}
 \usage{
 datazone_list_data_sources(
+  connectionIdentifier = NULL,
   domainIdentifier,
   environmentIdentifier = NULL,
   maxResults = NULL,
@@ -16,6 +17,8 @@ datazone_list_data_sources(
 )
 }
 \arguments{
+\item{connectionIdentifier}{The ID of the connection.}
+
 \item{domainIdentifier}{[required] The identifier of the Amazon DataZone domain in which to list the data
 sources.}
 

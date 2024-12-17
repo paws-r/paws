@@ -64,9 +64,9 @@ with Amazon Web Services
 }
 
 Use \code{GetServices} without a service code to retrieve the service codes
-for all Amazon Web Services, then \code{GetServices} with a service code to
-retrieve the attribute names for that service. After you have the
-service code and attribute names, you can use
+for all Amazon Web Services services, then \code{GetServices} with a service
+code to retrieve the attribute names for that service. After you have
+the service code and attribute names, you can use
 \code{get_attribute_values} to see what
 values are available for an attribute. With the service code and an
 attribute name and value, you can use
@@ -127,8 +127,11 @@ in the \emph{Billing User Guide}.
 \examples{
 \dontrun{
 svc <- pricing()
+# Retrieves the service for the given Service Code.
 svc$describe_services(
-  Foo = 123
+  FormatVersion = "aws_v1",
+  MaxResults = 1L,
+  ServiceCode = "AmazonEC2"
 )
 }
 

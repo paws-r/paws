@@ -10,7 +10,10 @@ pinpointsmsvoicev2_release_phone_number(PhoneNumberId)
 \item{PhoneNumberId}{[required] The PhoneNumberId or PhoneNumberArn of the phone number to release. You
 can use
 \code{\link[=pinpointsmsvoicev2_describe_phone_numbers]{describe_phone_numbers}} to
-get the values for PhoneNumberId and PhoneNumberArn.}
+get the values for PhoneNumberId and PhoneNumberArn.
+
+If you are using a shared AWS End User Messaging SMS and Voice resource
+then you must use the full Amazon Resource Name(ARN).}
 }
 \description{
 Releases an existing origination phone number in your account. Once released, a phone number is no longer available for sending messages.

@@ -540,7 +540,7 @@ controltower_get_baseline_operation <- function(operationIdentifier) {
 #'       "2015-01-01"
 #'     ),
 #'     operationIdentifier = "string",
-#'     operationType = "ENABLE_CONTROL"|"DISABLE_CONTROL"|"UPDATE_ENABLED_CONTROL",
+#'     operationType = "ENABLE_CONTROL"|"DISABLE_CONTROL"|"UPDATE_ENABLED_CONTROL"|"RESET_ENABLED_CONTROL",
 #'     startTime = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
@@ -609,6 +609,7 @@ controltower_get_control_operation <- function(operationIdentifier) {
 #'         value = list()
 #'       )
 #'     ),
+#'     parentIdentifier = "string",
 #'     statusSummary = list(
 #'       lastOperationIdentifier = "string",
 #'       status = "SUCCEEDED"|"FAILED"|"UNDER_CHANGE"
@@ -932,7 +933,7 @@ controltower_list_baselines <- function(maxResults = NULL, nextToken = NULL) {
 #'         "2015-01-01"
 #'       ),
 #'       operationIdentifier = "string",
-#'       operationType = "ENABLE_CONTROL"|"DISABLE_CONTROL"|"UPDATE_ENABLED_CONTROL",
+#'       operationType = "ENABLE_CONTROL"|"DISABLE_CONTROL"|"UPDATE_ENABLED_CONTROL"|"RESET_ENABLED_CONTROL",
 #'       startTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
@@ -953,7 +954,7 @@ controltower_list_baselines <- function(maxResults = NULL, nextToken = NULL) {
 #'       "string"
 #'     ),
 #'     controlOperationTypes = list(
-#'       "ENABLE_CONTROL"|"DISABLE_CONTROL"|"UPDATE_ENABLED_CONTROL"
+#'       "ENABLE_CONTROL"|"DISABLE_CONTROL"|"UPDATE_ENABLED_CONTROL"|"RESET_ENABLED_CONTROL"
 #'     ),
 #'     enabledControlIdentifiers = list(
 #'       "string"
@@ -1005,11 +1006,14 @@ controltower_list_control_operations <- function(filter = NULL, maxResults = NUL
 #' .
 #'
 #' @usage
-#' controltower_list_enabled_baselines(filter, maxResults, nextToken)
+#' controltower_list_enabled_baselines(filter, includeChildren, maxResults,
+#'   nextToken)
 #'
 #' @param filter A filter applied on the `ListEnabledBaseline` operation. Allowed filters
 #' are `baselineIdentifiers` and `targetIdentifiers`. The filter can be
 #' applied for either, or both.
+#' @param includeChildren A value that can be set to include the child enabled baselines in
+#' responses. The default value is false.
 #' @param maxResults The maximum number of results to be shown.
 #' @param nextToken A pagination token.
 #'
@@ -1022,6 +1026,7 @@ controltower_list_control_operations <- function(filter = NULL, maxResults = NUL
 #'       arn = "string",
 #'       baselineIdentifier = "string",
 #'       baselineVersion = "string",
+#'       parentIdentifier = "string",
 #'       statusSummary = list(
 #'         lastOperationIdentifier = "string",
 #'         status = "SUCCEEDED"|"FAILED"|"UNDER_CHANGE"
@@ -1040,10 +1045,14 @@ controltower_list_control_operations <- function(filter = NULL, maxResults = NUL
 #'     baselineIdentifiers = list(
 #'       "string"
 #'     ),
+#'     parentIdentifiers = list(
+#'       "string"
+#'     ),
 #'     targetIdentifiers = list(
 #'       "string"
 #'     )
 #'   ),
+#'   includeChildren = TRUE|FALSE,
 #'   maxResults = 123,
 #'   nextToken = "string"
 #' )
@@ -1054,7 +1063,7 @@ controltower_list_control_operations <- function(filter = NULL, maxResults = NUL
 #' @rdname controltower_list_enabled_baselines
 #'
 #' @aliases controltower_list_enabled_baselines
-controltower_list_enabled_baselines <- function(filter = NULL, maxResults = NULL, nextToken = NULL) {
+controltower_list_enabled_baselines <- function(filter = NULL, includeChildren = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListEnabledBaselines",
     http_method = "POST",
@@ -1063,7 +1072,7 @@ controltower_list_enabled_baselines <- function(filter = NULL, maxResults = NULL
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "enabledBaselines"),
     stream_api = FALSE
   )
-  input <- .controltower$list_enabled_baselines_input(filter = filter, maxResults = maxResults, nextToken = nextToken)
+  input <- .controltower$list_enabled_baselines_input(filter = filter, includeChildren = includeChildren, maxResults = maxResults, nextToken = nextToken)
   output <- .controltower$list_enabled_baselines_output()
   config <- get_config()
   svc <- .controltower$service(config, op)
@@ -1405,6 +1414,55 @@ controltower_reset_enabled_baseline <- function(enabledBaselineIdentifier) {
 }
 .controltower$operations$reset_enabled_baseline <- controltower_reset_enabled_baseline
 
+#' Resets an enabled control
+#'
+#' @description
+#' Resets an enabled control.
+#'
+#' @usage
+#' controltower_reset_enabled_control(enabledControlIdentifier)
+#'
+#' @param enabledControlIdentifier &#91;required&#93; The ARN of the enabled control to be reset.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   operationIdentifier = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$reset_enabled_control(
+#'   enabledControlIdentifier = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname controltower_reset_enabled_control
+#'
+#' @aliases controltower_reset_enabled_control
+controltower_reset_enabled_control <- function(enabledControlIdentifier) {
+  op <- new_operation(
+    name = "ResetEnabledControl",
+    http_method = "POST",
+    http_path = "/reset-enabled-control",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .controltower$reset_enabled_control_input(enabledControlIdentifier = enabledControlIdentifier)
+  output <- .controltower$reset_enabled_control_output()
+  config <- get_config()
+  svc <- .controltower$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.controltower$operations$reset_enabled_control <- controltower_reset_enabled_control
+
 #' This API call resets a landing zone
 #'
 #' @description
@@ -1638,12 +1696,14 @@ controltower_update_enabled_baseline <- function(baselineVersion, enabledBaselin
 #' Services Control Tower updates the control to match any valid parameters
 #' that you supply.
 #' 
-#' If the `DriftSummary` status for the control shows as DRIFTED, you
-#' cannot call this API. Instead, you can update the control by calling
-#' [`disable_control`][controltower_disable_control] and again calling
-#' [`enable_control`][controltower_enable_control], or you can run an
-#' extending governance operation. For usage examples, see the [*Controls
-#' Reference
+#' If the `DriftSummary` status for the control shows as `DRIFTED`, you
+#' cannot call this API. Instead, you can update the control by calling the
+#' [`reset_enabled_control`][controltower_reset_enabled_control] API.
+#' Alternatively, you can call
+#' [`disable_control`][controltower_disable_control] and then call
+#' [`enable_control`][controltower_enable_control] again. Also, you can run
+#' an extending governance operation to repair drift. For usage examples,
+#' see the [*Controls Reference
 #' Guide*](https://docs.aws.amazon.com/controltower/latest/controlreference/control-api-examples-short.html)
 #' .
 #'

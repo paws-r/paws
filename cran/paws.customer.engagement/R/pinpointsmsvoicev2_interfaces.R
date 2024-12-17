@@ -131,7 +131,7 @@ NULL
 
 .pinpointsmsvoicev2$create_registration_version_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RegistrationArn = structure(logical(0), tags = list(type = "string")), RegistrationId = structure(logical(0), tags = list(type = "string")), VersionNumber = structure(logical(0), tags = list(type = "long", box = TRUE)), RegistrationVersionStatus = structure(logical(0), tags = list(type = "string")), RegistrationVersionStatusHistory = structure(list(DraftTimestamp = structure(logical(0), tags = list(type = "timestamp")), SubmittedTimestamp = structure(logical(0), tags = list(type = "timestamp")), ReviewingTimestamp = structure(logical(0), tags = list(type = "timestamp")), ApprovedTimestamp = structure(logical(0), tags = list(type = "timestamp")), DiscardedTimestamp = structure(logical(0), tags = list(type = "timestamp")), DeniedTimestamp = structure(logical(0), tags = list(type = "timestamp")), RevokedTimestamp = structure(logical(0), tags = list(type = "timestamp")), ArchivedTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(RegistrationArn = structure(logical(0), tags = list(type = "string")), RegistrationId = structure(logical(0), tags = list(type = "string")), VersionNumber = structure(logical(0), tags = list(type = "long", box = TRUE)), RegistrationVersionStatus = structure(logical(0), tags = list(type = "string")), RegistrationVersionStatusHistory = structure(list(DraftTimestamp = structure(logical(0), tags = list(type = "timestamp")), SubmittedTimestamp = structure(logical(0), tags = list(type = "timestamp")), ReviewingTimestamp = structure(logical(0), tags = list(type = "timestamp")), RequiresAuthenticationTimestamp = structure(logical(0), tags = list(type = "timestamp")), ApprovedTimestamp = structure(logical(0), tags = list(type = "timestamp")), DiscardedTimestamp = structure(logical(0), tags = list(type = "timestamp")), DeniedTimestamp = structure(logical(0), tags = list(type = "timestamp")), RevokedTimestamp = structure(logical(0), tags = list(type = "timestamp")), ArchivedTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -167,7 +167,7 @@ NULL
 
 .pinpointsmsvoicev2$delete_configuration_set_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ConfigurationSetArn = structure(logical(0), tags = list(type = "string")), ConfigurationSetName = structure(logical(0), tags = list(type = "string")), EventDestinations = structure(list(structure(list(EventDestinationName = structure(logical(0), tags = list(type = "string")), Enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), MatchingEventTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), CloudWatchLogsDestination = structure(list(IamRoleArn = structure(logical(0), tags = list(type = "string")), LogGroupArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), KinesisFirehoseDestination = structure(list(IamRoleArn = structure(logical(0), tags = list(type = "string")), DeliveryStreamArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SnsDestination = structure(list(TopicArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), DefaultMessageType = structure(logical(0), tags = list(type = "string")), DefaultSenderId = structure(logical(0), tags = list(type = "string")), CreatedTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
+  shape <- structure(list(ConfigurationSetArn = structure(logical(0), tags = list(type = "string")), ConfigurationSetName = structure(logical(0), tags = list(type = "string")), EventDestinations = structure(list(structure(list(EventDestinationName = structure(logical(0), tags = list(type = "string")), Enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), MatchingEventTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), CloudWatchLogsDestination = structure(list(IamRoleArn = structure(logical(0), tags = list(type = "string")), LogGroupArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), KinesisFirehoseDestination = structure(list(IamRoleArn = structure(logical(0), tags = list(type = "string")), DeliveryStreamArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SnsDestination = structure(list(TopicArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), DefaultMessageType = structure(logical(0), tags = list(type = "string")), DefaultSenderId = structure(logical(0), tags = list(type = "string")), DefaultMessageFeedbackEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), CreatedTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -279,6 +279,18 @@ NULL
   return(populate(args, shape))
 }
 
+.pinpointsmsvoicev2$delete_protect_configuration_rule_set_number_override_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ProtectConfigurationId = structure(logical(0), tags = list(type = "string")), DestinationPhoneNumber = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.pinpointsmsvoicev2$delete_protect_configuration_rule_set_number_override_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ProtectConfigurationArn = structure(logical(0), tags = list(type = "string")), ProtectConfigurationId = structure(logical(0), tags = list(type = "string")), DestinationPhoneNumber = structure(logical(0), tags = list(type = "string")), CreatedTimestamp = structure(logical(0), tags = list(type = "timestamp")), Action = structure(logical(0), tags = list(type = "string")), IsoCountryCode = structure(logical(0), tags = list(type = "string")), ExpirationTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .pinpointsmsvoicev2$delete_registration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(RegistrationId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -312,6 +324,18 @@ NULL
 .pinpointsmsvoicev2$delete_registration_field_value_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(RegistrationArn = structure(logical(0), tags = list(type = "string")), RegistrationId = structure(logical(0), tags = list(type = "string")), VersionNumber = structure(logical(0), tags = list(type = "long", box = TRUE)), FieldPath = structure(logical(0), tags = list(type = "string")), SelectChoices = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), TextValue = structure(logical(0), tags = list(type = "string")), RegistrationAttachmentId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.pinpointsmsvoicev2$delete_resource_policy_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.pinpointsmsvoicev2$delete_resource_policy_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(type = "string")), Policy = structure(logical(0), tags = list(type = "string")), CreatedTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -383,7 +407,7 @@ NULL
 
 .pinpointsmsvoicev2$describe_configuration_sets_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ConfigurationSets = structure(list(structure(list(ConfigurationSetArn = structure(logical(0), tags = list(type = "string")), ConfigurationSetName = structure(logical(0), tags = list(type = "string")), EventDestinations = structure(list(structure(list(EventDestinationName = structure(logical(0), tags = list(type = "string")), Enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), MatchingEventTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), CloudWatchLogsDestination = structure(list(IamRoleArn = structure(logical(0), tags = list(type = "string")), LogGroupArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), KinesisFirehoseDestination = structure(list(IamRoleArn = structure(logical(0), tags = list(type = "string")), DeliveryStreamArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SnsDestination = structure(list(TopicArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), DefaultMessageType = structure(logical(0), tags = list(type = "string")), DefaultSenderId = structure(logical(0), tags = list(type = "string")), CreatedTimestamp = structure(logical(0), tags = list(type = "timestamp")), ProtectConfigurationId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(ConfigurationSets = structure(list(structure(list(ConfigurationSetArn = structure(logical(0), tags = list(type = "string")), ConfigurationSetName = structure(logical(0), tags = list(type = "string")), EventDestinations = structure(list(structure(list(EventDestinationName = structure(logical(0), tags = list(type = "string")), Enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), MatchingEventTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), CloudWatchLogsDestination = structure(list(IamRoleArn = structure(logical(0), tags = list(type = "string")), LogGroupArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), KinesisFirehoseDestination = structure(list(IamRoleArn = structure(logical(0), tags = list(type = "string")), DeliveryStreamArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SnsDestination = structure(list(TopicArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), DefaultMessageType = structure(logical(0), tags = list(type = "string")), DefaultSenderId = structure(logical(0), tags = list(type = "string")), DefaultMessageFeedbackEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), CreatedTimestamp = structure(logical(0), tags = list(type = "timestamp")), ProtectConfigurationId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -401,7 +425,7 @@ NULL
 
 .pinpointsmsvoicev2$describe_opt_out_lists_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(OptOutListNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
+  shape <- structure(list(OptOutListNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), Owner = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -425,7 +449,7 @@ NULL
 
 .pinpointsmsvoicev2$describe_phone_numbers_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PhoneNumberIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Filters = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
+  shape <- structure(list(PhoneNumberIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Filters = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), Owner = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -437,7 +461,7 @@ NULL
 
 .pinpointsmsvoicev2$describe_pools_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PoolIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Filters = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
+  shape <- structure(list(PoolIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Filters = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), Owner = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -527,7 +551,7 @@ NULL
 
 .pinpointsmsvoicev2$describe_registration_versions_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RegistrationArn = structure(logical(0), tags = list(type = "string")), RegistrationId = structure(logical(0), tags = list(type = "string")), RegistrationVersions = structure(list(structure(list(VersionNumber = structure(logical(0), tags = list(type = "long", box = TRUE)), RegistrationVersionStatus = structure(logical(0), tags = list(type = "string")), RegistrationVersionStatusHistory = structure(list(DraftTimestamp = structure(logical(0), tags = list(type = "timestamp")), SubmittedTimestamp = structure(logical(0), tags = list(type = "timestamp")), ReviewingTimestamp = structure(logical(0), tags = list(type = "timestamp")), ApprovedTimestamp = structure(logical(0), tags = list(type = "timestamp")), DiscardedTimestamp = structure(logical(0), tags = list(type = "timestamp")), DeniedTimestamp = structure(logical(0), tags = list(type = "timestamp")), RevokedTimestamp = structure(logical(0), tags = list(type = "timestamp")), ArchivedTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), DeniedReasons = structure(list(structure(list(Reason = structure(logical(0), tags = list(type = "string")), ShortDescription = structure(logical(0), tags = list(type = "string")), LongDescription = structure(logical(0), tags = list(type = "string")), DocumentationTitle = structure(logical(0), tags = list(type = "string")), DocumentationLink = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(RegistrationArn = structure(logical(0), tags = list(type = "string")), RegistrationId = structure(logical(0), tags = list(type = "string")), RegistrationVersions = structure(list(structure(list(VersionNumber = structure(logical(0), tags = list(type = "long", box = TRUE)), RegistrationVersionStatus = structure(logical(0), tags = list(type = "string")), RegistrationVersionStatusHistory = structure(list(DraftTimestamp = structure(logical(0), tags = list(type = "timestamp")), SubmittedTimestamp = structure(logical(0), tags = list(type = "timestamp")), ReviewingTimestamp = structure(logical(0), tags = list(type = "timestamp")), RequiresAuthenticationTimestamp = structure(logical(0), tags = list(type = "timestamp")), ApprovedTimestamp = structure(logical(0), tags = list(type = "timestamp")), DiscardedTimestamp = structure(logical(0), tags = list(type = "timestamp")), DeniedTimestamp = structure(logical(0), tags = list(type = "timestamp")), RevokedTimestamp = structure(logical(0), tags = list(type = "timestamp")), ArchivedTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), DeniedReasons = structure(list(structure(list(Reason = structure(logical(0), tags = list(type = "string")), ShortDescription = structure(logical(0), tags = list(type = "string")), LongDescription = structure(logical(0), tags = list(type = "string")), DocumentationTitle = structure(logical(0), tags = list(type = "string")), DocumentationLink = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -545,7 +569,7 @@ NULL
 
 .pinpointsmsvoicev2$describe_sender_ids_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SenderIds = structure(list(structure(list(SenderId = structure(logical(0), tags = list(type = "string")), IsoCountryCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Filters = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
+  shape <- structure(list(SenderIds = structure(list(structure(list(SenderId = structure(logical(0), tags = list(type = "string")), IsoCountryCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Filters = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), Owner = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -611,7 +635,7 @@ NULL
 
 .pinpointsmsvoicev2$discard_registration_version_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RegistrationArn = structure(logical(0), tags = list(type = "string")), RegistrationId = structure(logical(0), tags = list(type = "string")), VersionNumber = structure(logical(0), tags = list(type = "long", box = TRUE)), RegistrationVersionStatus = structure(logical(0), tags = list(type = "string")), RegistrationVersionStatusHistory = structure(list(DraftTimestamp = structure(logical(0), tags = list(type = "timestamp")), SubmittedTimestamp = structure(logical(0), tags = list(type = "timestamp")), ReviewingTimestamp = structure(logical(0), tags = list(type = "timestamp")), ApprovedTimestamp = structure(logical(0), tags = list(type = "timestamp")), DiscardedTimestamp = structure(logical(0), tags = list(type = "timestamp")), DeniedTimestamp = structure(logical(0), tags = list(type = "timestamp")), RevokedTimestamp = structure(logical(0), tags = list(type = "timestamp")), ArchivedTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(RegistrationArn = structure(logical(0), tags = list(type = "string")), RegistrationId = structure(logical(0), tags = list(type = "string")), VersionNumber = structure(logical(0), tags = list(type = "long", box = TRUE)), RegistrationVersionStatus = structure(logical(0), tags = list(type = "string")), RegistrationVersionStatusHistory = structure(list(DraftTimestamp = structure(logical(0), tags = list(type = "timestamp")), SubmittedTimestamp = structure(logical(0), tags = list(type = "timestamp")), ReviewingTimestamp = structure(logical(0), tags = list(type = "timestamp")), RequiresAuthenticationTimestamp = structure(logical(0), tags = list(type = "timestamp")), ApprovedTimestamp = structure(logical(0), tags = list(type = "timestamp")), DiscardedTimestamp = structure(logical(0), tags = list(type = "timestamp")), DeniedTimestamp = structure(logical(0), tags = list(type = "timestamp")), RevokedTimestamp = structure(logical(0), tags = list(type = "timestamp")), ArchivedTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -627,6 +651,18 @@ NULL
   return(populate(args, shape))
 }
 
+.pinpointsmsvoicev2$get_resource_policy_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.pinpointsmsvoicev2$get_resource_policy_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(type = "string")), Policy = structure(logical(0), tags = list(type = "string")), CreatedTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .pinpointsmsvoicev2$list_pool_origination_identities_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(PoolId = structure(logical(0), tags = list(type = "string")), Filters = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
@@ -636,6 +672,18 @@ NULL
 .pinpointsmsvoicev2$list_pool_origination_identities_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(PoolArn = structure(logical(0), tags = list(type = "string")), PoolId = structure(logical(0), tags = list(type = "string")), OriginationIdentities = structure(list(structure(list(OriginationIdentityArn = structure(logical(0), tags = list(type = "string")), OriginationIdentity = structure(logical(0), tags = list(type = "string")), IsoCountryCode = structure(logical(0), tags = list(type = "string")), NumberCapabilities = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), PhoneNumber = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.pinpointsmsvoicev2$list_protect_configuration_rule_set_number_overrides_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ProtectConfigurationId = structure(logical(0), tags = list(type = "string")), Filters = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.pinpointsmsvoicev2$list_protect_configuration_rule_set_number_overrides_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ProtectConfigurationArn = structure(logical(0), tags = list(type = "string")), ProtectConfigurationId = structure(logical(0), tags = list(type = "string")), RuleSetNumberOverrides = structure(list(structure(list(DestinationPhoneNumber = structure(logical(0), tags = list(type = "string")), CreatedTimestamp = structure(logical(0), tags = list(type = "timestamp")), Action = structure(logical(0), tags = list(type = "string")), IsoCountryCode = structure(logical(0), tags = list(type = "string")), ExpirationTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -675,6 +723,18 @@ NULL
   return(populate(args, shape))
 }
 
+.pinpointsmsvoicev2$put_message_feedback_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(MessageId = structure(logical(0), tags = list(type = "string")), MessageFeedbackStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.pinpointsmsvoicev2$put_message_feedback_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(MessageId = structure(logical(0), tags = list(type = "string")), MessageFeedbackStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .pinpointsmsvoicev2$put_opted_out_number_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(OptOutListName = structure(logical(0), tags = list(type = "string")), OptedOutNumber = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -687,6 +747,18 @@ NULL
   return(populate(args, shape))
 }
 
+.pinpointsmsvoicev2$put_protect_configuration_rule_set_number_override_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), ProtectConfigurationId = structure(logical(0), tags = list(type = "string")), DestinationPhoneNumber = structure(logical(0), tags = list(type = "string")), Action = structure(logical(0), tags = list(type = "string")), ExpirationTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.pinpointsmsvoicev2$put_protect_configuration_rule_set_number_override_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ProtectConfigurationArn = structure(logical(0), tags = list(type = "string")), ProtectConfigurationId = structure(logical(0), tags = list(type = "string")), DestinationPhoneNumber = structure(logical(0), tags = list(type = "string")), CreatedTimestamp = structure(logical(0), tags = list(type = "timestamp")), Action = structure(logical(0), tags = list(type = "string")), IsoCountryCode = structure(logical(0), tags = list(type = "string")), ExpirationTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .pinpointsmsvoicev2$put_registration_field_value_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(RegistrationId = structure(logical(0), tags = list(type = "string")), FieldPath = structure(logical(0), tags = list(type = "string")), SelectChoices = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), TextValue = structure(logical(0), tags = list(type = "string")), RegistrationAttachmentId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -696,6 +768,18 @@ NULL
 .pinpointsmsvoicev2$put_registration_field_value_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(RegistrationArn = structure(logical(0), tags = list(type = "string")), RegistrationId = structure(logical(0), tags = list(type = "string")), VersionNumber = structure(logical(0), tags = list(type = "long", box = TRUE)), FieldPath = structure(logical(0), tags = list(type = "string")), SelectChoices = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), TextValue = structure(logical(0), tags = list(type = "string")), RegistrationAttachmentId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.pinpointsmsvoicev2$put_resource_policy_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(type = "string")), Policy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.pinpointsmsvoicev2$put_resource_policy_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(type = "string")), Policy = structure(logical(0), tags = list(type = "string")), CreatedTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -761,7 +845,7 @@ NULL
 
 .pinpointsmsvoicev2$send_media_message_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DestinationPhoneNumber = structure(logical(0), tags = list(type = "string")), OriginationIdentity = structure(logical(0), tags = list(type = "string")), MessageBody = structure(logical(0), tags = list(type = "string")), MediaUrls = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ConfigurationSetName = structure(logical(0), tags = list(type = "string")), MaxPrice = structure(logical(0), tags = list(type = "string")), TimeToLive = structure(logical(0), tags = list(type = "integer", box = TRUE)), Context = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), DryRun = structure(logical(0), tags = list(type = "boolean")), ProtectConfigurationId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(DestinationPhoneNumber = structure(logical(0), tags = list(type = "string")), OriginationIdentity = structure(logical(0), tags = list(type = "string")), MessageBody = structure(logical(0), tags = list(type = "string")), MediaUrls = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ConfigurationSetName = structure(logical(0), tags = list(type = "string")), MaxPrice = structure(logical(0), tags = list(type = "string")), TimeToLive = structure(logical(0), tags = list(type = "integer", box = TRUE)), Context = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), DryRun = structure(logical(0), tags = list(type = "boolean")), ProtectConfigurationId = structure(logical(0), tags = list(type = "string")), MessageFeedbackEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -773,7 +857,7 @@ NULL
 
 .pinpointsmsvoicev2$send_text_message_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DestinationPhoneNumber = structure(logical(0), tags = list(type = "string")), OriginationIdentity = structure(logical(0), tags = list(type = "string")), MessageBody = structure(logical(0), tags = list(type = "string")), MessageType = structure(logical(0), tags = list(type = "string")), Keyword = structure(logical(0), tags = list(type = "string")), ConfigurationSetName = structure(logical(0), tags = list(type = "string")), MaxPrice = structure(logical(0), tags = list(type = "string")), TimeToLive = structure(logical(0), tags = list(type = "integer", box = TRUE)), Context = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), DestinationCountryParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), DryRun = structure(logical(0), tags = list(type = "boolean")), ProtectConfigurationId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(DestinationPhoneNumber = structure(logical(0), tags = list(type = "string")), OriginationIdentity = structure(logical(0), tags = list(type = "string")), MessageBody = structure(logical(0), tags = list(type = "string")), MessageType = structure(logical(0), tags = list(type = "string")), Keyword = structure(logical(0), tags = list(type = "string")), ConfigurationSetName = structure(logical(0), tags = list(type = "string")), MaxPrice = structure(logical(0), tags = list(type = "string")), TimeToLive = structure(logical(0), tags = list(type = "integer", box = TRUE)), Context = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), DestinationCountryParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), DryRun = structure(logical(0), tags = list(type = "boolean")), ProtectConfigurationId = structure(logical(0), tags = list(type = "string")), MessageFeedbackEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -785,7 +869,7 @@ NULL
 
 .pinpointsmsvoicev2$send_voice_message_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DestinationPhoneNumber = structure(logical(0), tags = list(type = "string")), OriginationIdentity = structure(logical(0), tags = list(type = "string")), MessageBody = structure(logical(0), tags = list(type = "string")), MessageBodyTextType = structure(logical(0), tags = list(type = "string")), VoiceId = structure(logical(0), tags = list(type = "string")), ConfigurationSetName = structure(logical(0), tags = list(type = "string")), MaxPricePerMinute = structure(logical(0), tags = list(type = "string")), TimeToLive = structure(logical(0), tags = list(type = "integer", box = TRUE)), Context = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), DryRun = structure(logical(0), tags = list(type = "boolean")), ProtectConfigurationId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(DestinationPhoneNumber = structure(logical(0), tags = list(type = "string")), OriginationIdentity = structure(logical(0), tags = list(type = "string")), MessageBody = structure(logical(0), tags = list(type = "string")), MessageBodyTextType = structure(logical(0), tags = list(type = "string")), VoiceId = structure(logical(0), tags = list(type = "string")), ConfigurationSetName = structure(logical(0), tags = list(type = "string")), MaxPricePerMinute = structure(logical(0), tags = list(type = "string")), TimeToLive = structure(logical(0), tags = list(type = "integer", box = TRUE)), Context = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), DryRun = structure(logical(0), tags = list(type = "boolean")), ProtectConfigurationId = structure(logical(0), tags = list(type = "string")), MessageFeedbackEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -804,6 +888,18 @@ NULL
 .pinpointsmsvoicev2$set_account_default_protect_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(DefaultProtectConfigurationArn = structure(logical(0), tags = list(type = "string")), DefaultProtectConfigurationId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.pinpointsmsvoicev2$set_default_message_feedback_enabled_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ConfigurationSetName = structure(logical(0), tags = list(type = "string")), MessageFeedbackEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.pinpointsmsvoicev2$set_default_message_feedback_enabled_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ConfigurationSetArn = structure(logical(0), tags = list(type = "string")), ConfigurationSetName = structure(logical(0), tags = list(type = "string")), MessageFeedbackEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -875,7 +971,7 @@ NULL
 
 .pinpointsmsvoicev2$submit_registration_version_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RegistrationArn = structure(logical(0), tags = list(type = "string")), RegistrationId = structure(logical(0), tags = list(type = "string")), VersionNumber = structure(logical(0), tags = list(type = "long", box = TRUE)), RegistrationVersionStatus = structure(logical(0), tags = list(type = "string")), RegistrationVersionStatusHistory = structure(list(DraftTimestamp = structure(logical(0), tags = list(type = "timestamp")), SubmittedTimestamp = structure(logical(0), tags = list(type = "timestamp")), ReviewingTimestamp = structure(logical(0), tags = list(type = "timestamp")), ApprovedTimestamp = structure(logical(0), tags = list(type = "timestamp")), DiscardedTimestamp = structure(logical(0), tags = list(type = "timestamp")), DeniedTimestamp = structure(logical(0), tags = list(type = "timestamp")), RevokedTimestamp = structure(logical(0), tags = list(type = "timestamp")), ArchivedTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(RegistrationArn = structure(logical(0), tags = list(type = "string")), RegistrationId = structure(logical(0), tags = list(type = "string")), VersionNumber = structure(logical(0), tags = list(type = "long", box = TRUE)), RegistrationVersionStatus = structure(logical(0), tags = list(type = "string")), RegistrationVersionStatusHistory = structure(list(DraftTimestamp = structure(logical(0), tags = list(type = "timestamp")), SubmittedTimestamp = structure(logical(0), tags = list(type = "timestamp")), ReviewingTimestamp = structure(logical(0), tags = list(type = "timestamp")), RequiresAuthenticationTimestamp = structure(logical(0), tags = list(type = "timestamp")), ApprovedTimestamp = structure(logical(0), tags = list(type = "timestamp")), DiscardedTimestamp = structure(logical(0), tags = list(type = "timestamp")), DeniedTimestamp = structure(logical(0), tags = list(type = "timestamp")), RevokedTimestamp = structure(logical(0), tags = list(type = "timestamp")), ArchivedTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

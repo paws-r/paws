@@ -14,7 +14,7 @@ prometheusservice_create_scraper(
 )
 }
 \arguments{
-\item{alias}{(optional) a name to associate with the scraper. This is for your use,
+\item{alias}{(optional) An alias to associate with the scraper. This is for your use,
 and does not need to be unique.}
 
 \item{clientToken}{(Optional) A unique, case-sensitive identifier that you can provide to
@@ -32,7 +32,7 @@ in the \emph{Amazon Managed Service for Prometheus User Guide}.}
 scraper.}
 }
 \description{
-The \code{\link[=prometheusservice_create_scraper]{create_scraper}} operation creates a scraper to collect metrics. A scraper pulls metrics from Prometheus-compatible sources within an Amazon EKS cluster, and sends them to your Amazon Managed Service for Prometheus workspace. You can configure the scraper to control what metrics are collected, and what transformations are applied prior to sending them to your workspace.
+The \code{\link[=prometheusservice_create_scraper]{create_scraper}} operation creates a scraper to collect metrics. A scraper pulls metrics from Prometheus-compatible sources within an Amazon EKS cluster, and sends them to your Amazon Managed Service for Prometheus workspace. Scrapers are flexible, and can be configured to control what metrics are collected, the frequency of collection, what transformations are applied to the metrics, and more.
 
 See \url{https://www.paws-r-sdk.com/docs/prometheusservice_create_scraper/} for full documentation.
 }

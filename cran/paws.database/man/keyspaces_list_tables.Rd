@@ -2,7 +2,8 @@
 % Please edit documentation in R/keyspaces_operations.R
 \name{keyspaces_list_tables}
 \alias{keyspaces_list_tables}
-\title{Returns a list of tables for a specified keyspace}
+\title{The ListTables operation returns a list of tables for a specified
+keyspace}
 \usage{
 keyspaces_list_tables(nextToken = NULL, maxResults = NULL, keyspaceName)
 }
@@ -18,7 +19,7 @@ value as an argument of a subsequent API invocation.}
 \item{keyspaceName}{[required] The name of the keyspace.}
 }
 \description{
-Returns a list of tables for a specified keyspace.
+The \code{\link[=keyspaces_list_tables]{list_tables}} operation returns a list of tables for a specified keyspace.
 
 See \url{https://www.paws-r-sdk.com/docs/keyspaces_list_tables/} for full documentation.
 }

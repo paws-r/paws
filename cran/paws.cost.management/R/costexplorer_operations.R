@@ -464,6 +464,37 @@ costexplorer_get_approximate_usage_records <- function(Granularity, Services = N
 }
 .costexplorer$operations$get_approximate_usage_records <- costexplorer_get_approximate_usage_records
 
+#' Retrieves a commitment purchase analysis result based on the AnalysisId
+#'
+#' @description
+#' Retrieves a commitment purchase analysis result based on the `AnalysisId`.
+#'
+#' See [https://www.paws-r-sdk.com/docs/costexplorer_get_commitment_purchase_analysis/](https://www.paws-r-sdk.com/docs/costexplorer_get_commitment_purchase_analysis/) for full documentation.
+#'
+#' @param AnalysisId &#91;required&#93; The analysis ID that's associated with the commitment purchase analysis.
+#'
+#' @keywords internal
+#'
+#' @rdname costexplorer_get_commitment_purchase_analysis
+costexplorer_get_commitment_purchase_analysis <- function(AnalysisId) {
+  op <- new_operation(
+    name = "GetCommitmentPurchaseAnalysis",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .costexplorer$get_commitment_purchase_analysis_input(AnalysisId = AnalysisId)
+  output <- .costexplorer$get_commitment_purchase_analysis_output()
+  config <- get_config()
+  svc <- .costexplorer$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.costexplorer$operations$get_commitment_purchase_analysis <- costexplorer_get_commitment_purchase_analysis
+
 #' Retrieves cost and usage metrics for your account
 #'
 #' @description
@@ -854,10 +885,11 @@ costexplorer_get_cost_forecast <- function(TimePeriod, Metric, Granularity, Filt
 #'     with. Possible values are the following:
 #' 
 #'     \- Amazon Web Services(Amazon Web Services): The entity that sells
-#'     Amazon Web Services.
+#'     Amazon Web Services services.
 #' 
 #'     \- AISPL (Amazon Internet Services Pvt. Ltd.): The local Indian
-#'     entity that's an acting reseller for Amazon Web Services in India.
+#'     entity that's an acting reseller for Amazon Web Services services in
+#'     India.
 #' 
 #'     \- Amazon Web Services Marketplace: The entity that supports the
 #'     sale of solutions that are built on Amazon Web Services by
@@ -1279,6 +1311,12 @@ costexplorer_get_reservation_purchase_recommendation <- function(AccountId = NUL
 #' 
 #' -   SERVICE
 #' 
+#'     If not specified, the `SERVICE` filter defaults to Amazon Elastic
+#'     Compute Cloud - Compute. Supported values for `SERVICE` are Amazon
+#'     Elastic Compute Cloud - Compute, Amazon Relational Database Service,
+#'     Amazon ElastiCache, Amazon Redshift, and Amazon Elasticsearch
+#'     Service. The value for the `SERVICE` filter should not exceed "1".
+#' 
 #' -   SCOPE
 #' 
 #' -   TENANCY
@@ -1509,7 +1547,7 @@ costexplorer_get_savings_plans_coverage <- function(TimePeriod, GroupBy = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .costexplorer$get_savings_plans_coverage_input(TimePeriod = TimePeriod, GroupBy = GroupBy, Granularity = Granularity, Filter = Filter, Metrics = Metrics, NextToken = NextToken, MaxResults = MaxResults, SortBy = SortBy)
@@ -1720,7 +1758,7 @@ costexplorer_get_savings_plans_utilization_details <- function(TimePeriod, Filte
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .costexplorer$get_savings_plans_utilization_details_input(TimePeriod = TimePeriod, Filter = Filter, DataType = DataType, NextToken = NextToken, MaxResults = MaxResults, SortBy = SortBy)
@@ -1912,6 +1950,41 @@ costexplorer_get_usage_forecast <- function(TimePeriod, Metric, Granularity, Fil
 }
 .costexplorer$operations$get_usage_forecast <- costexplorer_get_usage_forecast
 
+#' Lists the commitment purchase analyses for your account
+#'
+#' @description
+#' Lists the commitment purchase analyses for your account.
+#'
+#' See [https://www.paws-r-sdk.com/docs/costexplorer_list_commitment_purchase_analyses/](https://www.paws-r-sdk.com/docs/costexplorer_list_commitment_purchase_analyses/) for full documentation.
+#'
+#' @param AnalysisStatus The status of the analysis.
+#' @param NextPageToken The token to retrieve the next set of results.
+#' @param PageSize The number of analyses that you want returned in a single response
+#' object.
+#' @param AnalysisIds The analysis IDs associated with the commitment purchase analyses.
+#'
+#' @keywords internal
+#'
+#' @rdname costexplorer_list_commitment_purchase_analyses
+costexplorer_list_commitment_purchase_analyses <- function(AnalysisStatus = NULL, NextPageToken = NULL, PageSize = NULL, AnalysisIds = NULL) {
+  op <- new_operation(
+    name = "ListCommitmentPurchaseAnalyses",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .costexplorer$list_commitment_purchase_analyses_input(AnalysisStatus = AnalysisStatus, NextPageToken = NextPageToken, PageSize = PageSize, AnalysisIds = AnalysisIds)
+  output <- .costexplorer$list_commitment_purchase_analyses_output()
+  config <- get_config()
+  svc <- .costexplorer$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.costexplorer$operations$list_commitment_purchase_analyses <- costexplorer_list_commitment_purchase_analyses
+
 #' Retrieves a list of your historical cost allocation tag backfill
 #' requests
 #'
@@ -1934,7 +2007,7 @@ costexplorer_list_cost_allocation_tag_backfill_history <- function(NextToken = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .costexplorer$list_cost_allocation_tag_backfill_history_input(NextToken = NextToken, MaxResults = MaxResults)
@@ -1977,7 +2050,7 @@ costexplorer_list_cost_allocation_tags <- function(Status = NULL, TagKeys = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .costexplorer$list_cost_allocation_tags_input(Status = Status, TagKeys = TagKeys, Type = Type, NextToken = NextToken, MaxResults = MaxResults)
@@ -2013,7 +2086,7 @@ costexplorer_list_cost_category_definitions <- function(EffectiveOn = NULL, Next
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .costexplorer$list_cost_category_definitions_input(EffectiveOn = EffectiveOn, NextToken = NextToken, MaxResults = MaxResults)
@@ -2128,6 +2201,38 @@ costexplorer_provide_anomaly_feedback <- function(AnomalyId, Feedback) {
   return(response)
 }
 .costexplorer$operations$provide_anomaly_feedback <- costexplorer_provide_anomaly_feedback
+
+#' Specifies the parameters of a planned commitment purchase and starts the
+#' generation of the analysis
+#'
+#' @description
+#' Specifies the parameters of a planned commitment purchase and starts the generation of the analysis. This enables you to estimate the cost, coverage, and utilization impact of your planned commitment purchases.
+#'
+#' See [https://www.paws-r-sdk.com/docs/costexplorer_start_commitment_purchase_analysis/](https://www.paws-r-sdk.com/docs/costexplorer_start_commitment_purchase_analysis/) for full documentation.
+#'
+#' @param CommitmentPurchaseAnalysisConfiguration &#91;required&#93; The configuration for the commitment purchase analysis.
+#'
+#' @keywords internal
+#'
+#' @rdname costexplorer_start_commitment_purchase_analysis
+costexplorer_start_commitment_purchase_analysis <- function(CommitmentPurchaseAnalysisConfiguration) {
+  op <- new_operation(
+    name = "StartCommitmentPurchaseAnalysis",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .costexplorer$start_commitment_purchase_analysis_input(CommitmentPurchaseAnalysisConfiguration = CommitmentPurchaseAnalysisConfiguration)
+  output <- .costexplorer$start_commitment_purchase_analysis_output()
+  config <- get_config()
+  svc <- .costexplorer$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.costexplorer$operations$start_commitment_purchase_analysis <- costexplorer_start_commitment_purchase_analysis
 
 #' Request a cost allocation tag backfill
 #'

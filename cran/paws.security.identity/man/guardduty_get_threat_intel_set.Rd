@@ -7,8 +7,12 @@
 guardduty_get_threat_intel_set(DetectorId, ThreatIntelSetId)
 }
 \arguments{
-\item{DetectorId}{[required] The unique ID of the detector that the threatIntelSet is associated
-with.}
+\item{DetectorId}{[required] The unique ID of the detector that is associated with the
+threatIntelSet.
+
+To find the \code{detectorId} in the current Region, see the Settings page in
+the GuardDuty console, or run the
+\code{\link[=guardduty_list_detectors]{list_detectors}} API.}
 
 \item{ThreatIntelSetId}{[required] The unique ID of the threatIntelSet that you want to get.}
 }

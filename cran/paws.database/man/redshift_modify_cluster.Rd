@@ -58,8 +58,8 @@ must also specify the number of nodes parameter.
 For more information about resizing clusters, go to \href{https://docs.aws.amazon.com/redshift/latest/mgmt/}{Resizing Clusters in Amazon Redshift}
 in the \emph{Amazon Redshift Cluster Management Guide}.
 
-Valid Values: \code{dc2.large} | \code{dc2.8xlarge} | \code{ra3.xlplus} | \code{ra3.4xlarge}
-| \code{ra3.16xlarge}}
+Valid Values: \code{dc2.large} | \code{dc2.8xlarge} | \code{ra3.large} | \code{ra3.xlplus} |
+\code{ra3.4xlarge} | \code{ra3.16xlarge}}
 
 \item{NumberOfNodes}{The new number of nodes of the cluster. If you specify a new number of
 nodes, you must also specify the node type parameter.

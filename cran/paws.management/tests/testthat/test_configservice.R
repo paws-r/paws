@@ -72,6 +72,14 @@ test_that("describe_retention_configurations", {
   expect_error(svc$describe_retention_configurations(), NA)
 })
 
+test_that("list_configuration_recorders", {
+  expect_error(svc$list_configuration_recorders(), NA)
+})
+
+test_that("list_configuration_recorders", {
+  expect_error(svc$list_configuration_recorders(MaxResults = 20), NA)
+})
+
 test_that("list_conformance_pack_compliance_scores", {
   expect_error(svc$list_conformance_pack_compliance_scores(), NA)
 })

@@ -4,10 +4,13 @@
 \alias{apigateway_delete_base_path_mapping}
 \title{Deletes the BasePathMapping resource}
 \usage{
-apigateway_delete_base_path_mapping(domainName, basePath)
+apigateway_delete_base_path_mapping(domainName, domainNameId = NULL, basePath)
 }
 \arguments{
 \item{domainName}{[required] The domain name of the BasePathMapping resource to delete.}
+
+\item{domainNameId}{The identifier for the domain name resource. Supported only for private
+custom domain names.}
 
 \item{basePath}{[required] The base path name of the BasePathMapping resource to delete.
 

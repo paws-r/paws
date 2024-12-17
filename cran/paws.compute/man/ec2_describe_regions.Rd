@@ -5,13 +5,24 @@
 \title{Describes the Regions that are enabled for your account, or all Regions}
 \usage{
 ec2_describe_regions(
-  Filters = NULL,
   RegionNames = NULL,
+  AllRegions = NULL,
   DryRun = NULL,
-  AllRegions = NULL
+  Filters = NULL
 )
 }
 \arguments{
+\item{RegionNames}{The names of the Regions. You can specify any Regions, whether they are
+enabled and disabled for your account.}
+
+\item{AllRegions}{Indicates whether to display all Regions, including Regions that are
+disabled for your account.}
+
+\item{DryRun}{Checks whether you have the required permissions for the action, without
+actually making the request, and provides an error response. If you have
+the required permissions, the error response is \code{DryRunOperation}.
+Otherwise, it is \code{UnauthorizedOperation}.}
+
 \item{Filters}{The filters.
 \itemize{
 \item \code{endpoint} - The endpoint of the Region (for example,
@@ -20,17 +31,6 @@ ec2_describe_regions(
 (\verb{opt-in-not-required} | \verb{opted-in} | \verb{not-opted-in}).
 \item \code{region-name} - The name of the Region (for example, \code{us-east-1}).
 }}
-
-\item{RegionNames}{The names of the Regions. You can specify any Regions, whether they are
-enabled and disabled for your account.}
-
-\item{DryRun}{Checks whether you have the required permissions for the action, without
-actually making the request, and provides an error response. If you have
-the required permissions, the error response is \code{DryRunOperation}.
-Otherwise, it is \code{UnauthorizedOperation}.}
-
-\item{AllRegions}{Indicates whether to display all Regions, including Regions that are
-disabled for your account.}
 }
 \description{
 Describes the Regions that are enabled for your account, or all Regions.

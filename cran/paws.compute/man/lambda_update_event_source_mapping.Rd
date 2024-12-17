@@ -21,7 +21,9 @@ lambda_update_event_source_mapping(
   FunctionResponseTypes = NULL,
   ScalingConfig = NULL,
   DocumentDBEventSourceConfig = NULL,
-  KMSKeyArn = NULL
+  KMSKeyArn = NULL,
+  MetricsConfig = NULL,
+  ProvisionedPollerConfig = NULL
 )
 }
 \arguments{
@@ -120,6 +122,13 @@ more information, see \href{https://docs.aws.amazon.com/lambda/latest/dg/with-sq
 Lambda uses to encrypt your function's \href{https://docs.aws.amazon.com/lambda/latest/dg/invocation-eventfiltering.html#filtering-basics}{filter criteria}.
 By default, Lambda does not encrypt your filter criteria object. Specify
 this property to encrypt data using your own customer managed key.}
+
+\item{MetricsConfig}{The metrics configuration for your event source. For more information,
+see \href{https://docs.aws.amazon.com/lambda/latest/dg/monitoring-metrics-types.html#event-source-mapping-metrics}{Event source mapping metrics}.}
+
+\item{ProvisionedPollerConfig}{(Amazon MSK and self-managed Apache Kafka only) The Provisioned Mode
+configuration for the event source. For more information, see
+\href{https://docs.aws.amazon.com/lambda/latest/dg/invocation-eventsourcemapping.html#invocation-eventsourcemapping-provisioned-mode}{Provisioned Mode}.}
 }
 \description{
 Updates an event source mapping. You can change the function that Lambda invokes, or pause invocation and resume later from the same location.

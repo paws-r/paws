@@ -56,6 +56,14 @@ test_that("list_auto_ml_jobs", {
   expect_error(svc$list_auto_ml_jobs(MaxResults = 20), NA)
 })
 
+test_that("list_cluster_scheduler_configs", {
+  expect_error(svc$list_cluster_scheduler_configs(), NA)
+})
+
+test_that("list_cluster_scheduler_configs", {
+  expect_error(svc$list_cluster_scheduler_configs(MaxResults = 20), NA)
+})
+
 test_that("list_clusters", {
   expect_error(svc$list_clusters(), NA)
 })
@@ -78,6 +86,14 @@ test_that("list_compilation_jobs", {
 
 test_that("list_compilation_jobs", {
   expect_error(svc$list_compilation_jobs(MaxResults = 20), NA)
+})
+
+test_that("list_compute_quotas", {
+  expect_error(svc$list_compute_quotas(), NA)
+})
+
+test_that("list_compute_quotas", {
+  expect_error(svc$list_compute_quotas(MaxResults = 20), NA)
 })
 
 test_that("list_contexts", {
@@ -368,6 +384,14 @@ test_that("list_optimization_jobs", {
   expect_error(svc$list_optimization_jobs(MaxResults = 20), NA)
 })
 
+test_that("list_partner_apps", {
+  expect_error(svc$list_partner_apps(), NA)
+})
+
+test_that("list_partner_apps", {
+  expect_error(svc$list_partner_apps(MaxResults = 20), NA)
+})
+
 test_that("list_pipeline_execution_steps", {
   expect_error(svc$list_pipeline_execution_steps(), NA)
 })
@@ -438,6 +462,14 @@ test_that("list_training_jobs", {
 
 test_that("list_training_jobs", {
   expect_error(svc$list_training_jobs(MaxResults = 20), NA)
+})
+
+test_that("list_training_plans", {
+  expect_error(svc$list_training_plans(), NA)
+})
+
+test_that("list_training_plans", {
+  expect_error(svc$list_training_plans(MaxResults = 20), NA)
 })
 
 test_that("list_transform_jobs", {

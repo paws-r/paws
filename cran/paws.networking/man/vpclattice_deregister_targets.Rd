@@ -7,7 +7,7 @@
 vpclattice_deregister_targets(targetGroupIdentifier, targets)
 }
 \arguments{
-\item{targetGroupIdentifier}{[required] The ID or Amazon Resource Name (ARN) of the target group.}
+\item{targetGroupIdentifier}{[required] The ID or ARN of the target group.}
 
 \item{targets}{[required] The targets to deregister.}
 }

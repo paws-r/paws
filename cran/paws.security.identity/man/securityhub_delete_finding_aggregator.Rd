@@ -2,7 +2,7 @@
 % Please edit documentation in R/securityhub_operations.R
 \name{securityhub_delete_finding_aggregator}
 \alias{securityhub_delete_finding_aggregator}
-\title{Deletes a finding aggregator}
+\title{The aggregation Region is now called the home Region}
 \usage{
 securityhub_delete_finding_aggregator(FindingAggregatorArn)
 }
@@ -11,7 +11,7 @@ securityhub_delete_finding_aggregator(FindingAggregatorArn)
 \code{\link[=securityhub_list_finding_aggregators]{list_finding_aggregators}}.}
 }
 \description{
-Deletes a finding aggregator. When you delete the finding aggregator, you stop finding aggregation.
+The \emph{aggregation Region} is now called the \emph{home Region}.
 
 See \url{https://www.paws-r-sdk.com/docs/securityhub_delete_finding_aggregator/} for full documentation.
 }

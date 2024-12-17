@@ -5,26 +5,20 @@
 \title{Associates a CIDR block with your VPC}
 \usage{
 ec2_associate_vpc_cidr_block(
-  AmazonProvidedIpv6CidrBlock = NULL,
   CidrBlock = NULL,
-  VpcId,
   Ipv6CidrBlockNetworkBorderGroup = NULL,
   Ipv6Pool = NULL,
   Ipv6CidrBlock = NULL,
   Ipv4IpamPoolId = NULL,
   Ipv4NetmaskLength = NULL,
   Ipv6IpamPoolId = NULL,
-  Ipv6NetmaskLength = NULL
+  Ipv6NetmaskLength = NULL,
+  VpcId,
+  AmazonProvidedIpv6CidrBlock = NULL
 )
 }
 \arguments{
-\item{AmazonProvidedIpv6CidrBlock}{Requests an Amazon-provided IPv6 CIDR block with a /56 prefix length for
-the VPC. You cannot specify the range of IPv6 addresses or the size of
-the CIDR block.}
-
 \item{CidrBlock}{An IPv4 CIDR block to associate with the VPC.}
-
-\item{VpcId}{[required] The ID of the VPC.}
 
 \item{Ipv6CidrBlockNetworkBorderGroup}{The name of the location from which we advertise the IPV6 CIDR block.
 Use this parameter to limit the CIDR block to this location.
@@ -59,6 +53,12 @@ IPAM User Guide}.}
 Amazon VPC IP Address Manager (IPAM) pool. For more information about
 IPAM, see \href{https://docs.aws.amazon.com/vpc/latest/ipam/}{What is IPAM?}
 in the \emph{Amazon VPC IPAM User Guide}.}
+
+\item{VpcId}{[required] The ID of the VPC.}
+
+\item{AmazonProvidedIpv6CidrBlock}{Requests an Amazon-provided IPv6 CIDR block with a /56 prefix length for
+the VPC. You cannot specify the range of IPv6 addresses or the size of
+the CIDR block.}
 }
 \description{
 Associates a CIDR block with your VPC. You can associate a secondary IPv4 CIDR block, an Amazon-provided IPv6 CIDR block, or an IPv6 CIDR block from an IPv6 address pool that you provisioned through bring your own IP addresses (\href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-byoip.html}{BYOIP}).

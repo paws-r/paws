@@ -4,17 +4,31 @@
 \alias{iam_create_login_profile}
 \title{Creates a password for the specified IAM user}
 \usage{
-iam_create_login_profile(UserName, Password, PasswordResetRequired = NULL)
+iam_create_login_profile(
+  UserName = NULL,
+  Password = NULL,
+  PasswordResetRequired = NULL
+)
 }
 \arguments{
-\item{UserName}{[required] The name of the IAM user to create a password for. The user must already
+\item{UserName}{The name of the IAM user to create a password for. The user must already
 exist.
+
+This parameter is optional. If no user name is included, it defaults to
+the principal making the request. When you make this request with root
+user credentials, you must use an
+\href{https://docs.aws.amazon.com/STS/latest/APIReference/API_AssumeRoot.html}{AssumeRoot}
+session to omit the user name.
 
 This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
 spaces. You can also include any of the following characters: _+=,.@-}
 
-\item{Password}{[required] The new password for the user.
+\item{Password}{The new password for the user.
+
+This parameter must be omitted when you make the request with an
+\href{https://docs.aws.amazon.com/STS/latest/APIReference/API_AssumeRoot.html}{AssumeRoot}
+session. It is required in all other cases.
 
 The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} that is used to
 validate this parameter is a string of characters. That string can

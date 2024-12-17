@@ -40,7 +40,7 @@ NULL
 #' @section Request syntax:
 #' ```
 #' svc$delete_recommendation_preferences(
-#'   resourceType = "Ec2Instance"|"AutoScalingGroup"|"EbsVolume"|"LambdaFunction"|"NotApplicable"|"EcsService"|"License"|"RdsDBInstance",
+#'   resourceType = "Ec2Instance"|"AutoScalingGroup"|"EbsVolume"|"LambdaFunction"|"NotApplicable"|"EcsService"|"License"|"RdsDBInstance"|"Idle",
 #'   scope = list(
 #'     name = "Organization"|"AccountId"|"ResourceArn",
 #'     value = "string"
@@ -124,7 +124,7 @@ computeoptimizer_delete_recommendation_preferences <- function(resourceType, sco
 #'           metadataKey = "string"
 #'         )
 #'       ),
-#'       resourceType = "Ec2Instance"|"AutoScalingGroup"|"EbsVolume"|"LambdaFunction"|"NotApplicable"|"EcsService"|"License"|"RdsDBInstance",
+#'       resourceType = "Ec2Instance"|"AutoScalingGroup"|"EbsVolume"|"LambdaFunction"|"NotApplicable"|"EcsService"|"License"|"RdsDBInstance"|"Idle",
 #'       status = "Queued"|"InProgress"|"Complete"|"Failed",
 #'       creationTimestamp = as.POSIXct(
 #'         "2015-01-01"
@@ -720,6 +720,129 @@ computeoptimizer_export_ecs_service_recommendations <- function(accountIds = NUL
 }
 .computeoptimizer$operations$export_ecs_service_recommendations <- computeoptimizer_export_ecs_service_recommendations
 
+#' Export optimization recommendations for your idle resources
+#'
+#' @description
+#' Export optimization recommendations for your idle resources.
+#' 
+#' Recommendations are exported in a comma-separated values (CSV) file, and
+#' its metadata in a JavaScript Object Notation (JSON) file, to an existing
+#' Amazon Simple Storage Service (Amazon S3) bucket that you specify. For
+#' more information, see [Exporting
+#' Recommendations](https://docs.aws.amazon.com/compute-optimizer/latest/ug/exporting-recommendations.html)
+#' in the *Compute Optimizer User Guide*.
+#' 
+#' You can have only one idle resource export job in progress per Amazon
+#' Web Services Region.
+#'
+#' @usage
+#' computeoptimizer_export_idle_recommendations(accountIds, filters,
+#'   fieldsToExport, s3DestinationConfig, fileFormat, includeMemberAccounts)
+#'
+#' @param accountIds The Amazon Web Services account IDs for the export idle resource
+#' recommendations.
+#' 
+#' If your account is the management account or the delegated administrator
+#' of an organization, use this parameter to specify the member account you
+#' want to export recommendations to.
+#' 
+#' This parameter can't be specified together with the include member
+#' accounts parameter. The parameters are mutually exclusive.
+#' 
+#' If this parameter or the include member accounts parameter is omitted,
+#' the recommendations for member accounts aren't included in the export.
+#' 
+#' You can specify multiple account IDs per request.
+#' @param filters An array of objects to specify a filter that exports a more specific set
+#' of idle resource recommendations.
+#' @param fieldsToExport The recommendations data to include in the export file. For more
+#' information about the fields that can be exported, see [Exported
+#' files](https://docs.aws.amazon.com/compute-optimizer/latest/ug/exporting-recommendations.html#exported-files)
+#' in the *Compute Optimizer User Guide*.
+#' @param s3DestinationConfig &#91;required&#93; 
+#' @param fileFormat The format of the export file. The CSV file is the only export file
+#' format currently supported.
+#' @param includeMemberAccounts If your account is the management account or the delegated administrator
+#' of an organization, this parameter indicates whether to include
+#' recommendations for resources in all member accounts of the
+#' organization.
+#' 
+#' The member accounts must also be opted in to Compute Optimizer, and
+#' trusted access for Compute Optimizer must be enabled in the organization
+#' account. For more information, see [Compute Optimizer and Amazon Web
+#' Services Organizations trusted
+#' access](https://docs.aws.amazon.com/compute-optimizer/latest/ug/security-iam.html#trusted-service-access)
+#' in the *Compute Optimizer User Guide*.
+#' 
+#' If this parameter is omitted, recommendations for member accounts of the
+#' organization aren't included in the export file.
+#' 
+#' If this parameter or the account ID parameter is omitted,
+#' recommendations for member accounts aren't included in the export.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   jobId = "string",
+#'   s3Destination = list(
+#'     bucket = "string",
+#'     key = "string",
+#'     metadataKey = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$export_idle_recommendations(
+#'   accountIds = list(
+#'     "string"
+#'   ),
+#'   filters = list(
+#'     list(
+#'       name = "Finding"|"ResourceType",
+#'       values = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   fieldsToExport = list(
+#'     "AccountId"|"ResourceArn"|"ResourceId"|"ResourceType"|"LastRefreshTimestamp"|"LookbackPeriodInDays"|"SavingsOpportunity"|"SavingsOpportunityAfterDiscount"|"UtilizationMetricsCpuMaximum"|"UtilizationMetricsMemoryMaximum"|"UtilizationMetricsNetworkOutBytesPerSecondMaximum"|"UtilizationMetricsNetworkInBytesPerSecondMaximum"|"UtilizationMetricsDatabaseConnectionsMaximum"|"UtilizationMetricsEBSVolumeReadIOPSMaximum"|"UtilizationMetricsEBSVolumeWriteIOPSMaximum"|"UtilizationMetricsVolumeReadOpsPerSecondMaximum"|"UtilizationMetricsVolumeWriteOpsPerSecondMaximum"|"Finding"|"FindingDescription"|"Tags"
+#'   ),
+#'   s3DestinationConfig = list(
+#'     bucket = "string",
+#'     keyPrefix = "string"
+#'   ),
+#'   fileFormat = "Csv",
+#'   includeMemberAccounts = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname computeoptimizer_export_idle_recommendations
+#'
+#' @aliases computeoptimizer_export_idle_recommendations
+computeoptimizer_export_idle_recommendations <- function(accountIds = NULL, filters = NULL, fieldsToExport = NULL, s3DestinationConfig, fileFormat = NULL, includeMemberAccounts = NULL) {
+  op <- new_operation(
+    name = "ExportIdleRecommendations",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .computeoptimizer$export_idle_recommendations_input(accountIds = accountIds, filters = filters, fieldsToExport = fieldsToExport, s3DestinationConfig = s3DestinationConfig, fileFormat = fileFormat, includeMemberAccounts = includeMemberAccounts)
+  output <- .computeoptimizer$export_idle_recommendations_output()
+  config <- get_config()
+  svc <- .computeoptimizer$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.computeoptimizer$operations$export_idle_recommendations <- computeoptimizer_export_idle_recommendations
+
 #' Exports optimization recommendations for Lambda functions
 #'
 #' @description
@@ -1063,7 +1186,7 @@ computeoptimizer_export_license_recommendations <- function(accountIds = NULL, f
 #'     )
 #'   ),
 #'   fieldsToExport = list(
-#'     "ResourceArn"|"AccountId"|"Engine"|"EngineVersion"|"Idle"|"MultiAZDBInstance"|"CurrentDBInstanceClass"|"CurrentStorageConfigurationStorageType"|"CurrentStorageConfigurationAllocatedStorage"|"CurrentStorageConfigurationMaxAllocatedStorage"|"CurrentStorageConfigurationIOPS"|"CurrentStorageConfigurationStorageThroughput"|"CurrentInstanceOnDemandHourlyPrice"|"CurrentStorageOnDemandMonthlyPrice"|"LookbackPeriodInDays"|"UtilizationMetricsCpuMaximum"|"UtilizationMetricsMemoryMaximum"|"UtilizationMetricsEBSVolumeStorageSpaceUtilizationMaximum"|"UtilizationMetricsNetworkReceiveThroughputMaximum"|"UtilizationMetricsNetworkTransmitThroughputMaximum"|"UtilizationMetricsEBSVolumeReadIOPSMaximum"|"UtilizationMetricsEBSVolumeWriteIOPSMaximum"|"UtilizationMetricsEBSVolumeReadThroughputMaximum"|"UtilizationMetricsEBSVolumeWriteThroughputMaximum"|"UtilizationMetricsDatabaseConnectionsMaximum"|"InstanceFinding"|"InstanceFindingReasonCodes"|"StorageFinding"|"StorageFindingReasonCodes"|"InstanceRecommendationOptionsDBInstanceClass"|"InstanceRecommendationOptionsRank"|"InstanceRecommendationOptionsPerformanceRisk"|"InstanceRecommendationOptionsProjectedUtilizationMetricsCpuMaximum"|"StorageRecommendationOptionsStorageType"|"StorageRecommendationOptionsAllocatedStorage"|"StorageRecommendationOptionsMaxAllocatedStorage"|"StorageRecommendationOptionsIOPS"|"StorageRecommendationOptionsStorageThroughput"|"StorageRecommendationOptionsRank"|"InstanceRecommendationOptionsInstanceOnDemandHourlyPrice"|"InstanceRecommendationOptionsSavingsOpportunityPercentage"|"InstanceRecommendationOptionsEstimatedMonthlySavingsCurrency"|"InstanceRecommendationOptionsEstimatedMonthlySavingsValue"|"InstanceRecommendationOptionsSavingsOpportunityAfterDiscountsPercentage"|"InstanceRecommendationOptionsEstimatedMonthlySavingsCurrencyAfterDiscounts"|"InstanceRecommendationOptionsEstimatedMonthlySavingsValueAfterDiscounts"|"StorageRecommendationOptionsOnDemandMonthlyPrice"|"StorageRecommendationOptionsSavingsOpportunityPercentage"|"StorageRecommendationOptionsEstimatedMonthlySavingsCurrency"|"StorageRecommendationOptionsEstimatedMonthlySavingsValue"|"StorageRecommendationOptionsSavingsOpportunityAfterDiscountsPercentage"|"StorageRecommendationOptionsEstimatedMonthlySavingsCurrencyAfterDiscounts"|"StorageRecommendationOptionsEstimatedMonthlySavingsValueAfterDiscounts"|"EffectiveRecommendationPreferencesCpuVendorArchitectures"|"EffectiveRecommendationPreferencesEnhancedInfrastructureMetrics"|"EffectiveRecommendationPreferencesLookBackPeriod"|"EffectiveRecommendationPreferencesSavingsEstimationMode"|"LastRefreshTimestamp"|"Tags"
+#'     "ResourceArn"|"AccountId"|"Engine"|"EngineVersion"|"Idle"|"MultiAZDBInstance"|"CurrentDBInstanceClass"|"CurrentStorageConfigurationStorageType"|"CurrentStorageConfigurationAllocatedStorage"|"CurrentStorageConfigurationMaxAllocatedStorage"|"CurrentStorageConfigurationIOPS"|"CurrentStorageConfigurationStorageThroughput"|"CurrentInstanceOnDemandHourlyPrice"|"CurrentStorageOnDemandMonthlyPrice"|"LookbackPeriodInDays"|"CurrentInstancePerformanceRisk"|"UtilizationMetricsCpuMaximum"|"UtilizationMetricsMemoryMaximum"|"UtilizationMetricsEBSVolumeStorageSpaceUtilizationMaximum"|"UtilizationMetricsNetworkReceiveThroughputMaximum"|"UtilizationMetricsNetworkTransmitThroughputMaximum"|"UtilizationMetricsEBSVolumeReadIOPSMaximum"|"UtilizationMetricsEBSVolumeWriteIOPSMaximum"|"UtilizationMetricsEBSVolumeReadThroughputMaximum"|"UtilizationMetricsEBSVolumeWriteThroughputMaximum"|"UtilizationMetricsDatabaseConnectionsMaximum"|"UtilizationMetricsStorageNetworkReceiveThroughputMaximum"|"UtilizationMetricsStorageNetworkTransmitThroughputMaximum"|"UtilizationMetricsAuroraMemoryHealthStateMaximum"|"UtilizationMetricsAuroraMemoryNumDeclinedSqlTotalMaximum"|"UtilizationMetricsAuroraMemoryNumKillConnTotalMaximum"|"UtilizationMetricsAuroraMemoryNumKillQueryTotalMaximum"|"UtilizationMetricsReadIOPSEphemeralStorageMaximum"|"UtilizationMetricsWriteIOPSEphemeralStorageMaximum"|"InstanceFinding"|"InstanceFindingReasonCodes"|"StorageFinding"|"StorageFindingReasonCodes"|"InstanceRecommendationOptionsDBInstanceClass"|"InstanceRecommendationOptionsRank"|"InstanceRecommendationOptionsPerformanceRisk"|"InstanceRecommendationOptionsProjectedUtilizationMetricsCpuMaximum"|"StorageRecommendationOptionsStorageType"|"StorageRecommendationOptionsAllocatedStorage"|"StorageRecommendationOptionsMaxAllocatedStorage"|"StorageRecommendationOptionsIOPS"|"StorageRecommendationOptionsStorageThroughput"|"StorageRecommendationOptionsRank"|"InstanceRecommendationOptionsInstanceOnDemandHourlyPrice"|"InstanceRecommendationOptionsSavingsOpportunityPercentage"|"InstanceRecommendationOptionsEstimatedMonthlySavingsCurrency"|"InstanceRecommendationOptionsEstimatedMonthlySavingsValue"|"InstanceRecommendationOptionsSavingsOpportunityAfterDiscountsPercentage"|"InstanceRecommendationOptionsEstimatedMonthlySavingsCurrencyAfterDiscounts"|"InstanceRecommendationOptionsEstimatedMonthlySavingsValueAfterDiscounts"|"StorageRecommendationOptionsOnDemandMonthlyPrice"|"StorageRecommendationOptionsSavingsOpportunityPercentage"|"StorageRecommendationOptionsEstimatedMonthlySavingsCurrency"|"StorageRecommendationOptionsEstimatedMonthlySavingsValue"|"StorageRecommendationOptionsSavingsOpportunityAfterDiscountsPercentage"|"StorageRecommendationOptionsEstimatedMonthlySavingsCurrencyAfterDiscounts"|"StorageRecommendationOptionsEstimatedMonthlySavingsValueAfterDiscounts"|"EffectiveRecommendationPreferencesCpuVendorArchitectures"|"EffectiveRecommendationPreferencesEnhancedInfrastructureMetrics"|"EffectiveRecommendationPreferencesLookBackPeriod"|"EffectiveRecommendationPreferencesSavingsEstimationMode"|"LastRefreshTimestamp"|"Tags"|"DBClusterIdentifier"|"PromotionTier"
 #'   ),
 #'   s3DestinationConfig = list(
 #'     bucket = "string",
@@ -2320,6 +2443,145 @@ computeoptimizer_get_enrollment_statuses_for_organization <- function(filters = 
 }
 .computeoptimizer$operations$get_enrollment_statuses_for_organization <- computeoptimizer_get_enrollment_statuses_for_organization
 
+#' Returns idle resource recommendations
+#'
+#' @description
+#' Returns idle resource recommendations. Compute Optimizer generates
+#' recommendations for idle resources that meet a specific set of
+#' requirements. For more information, see [Resource
+#' requirements](https://docs.aws.amazon.com/compute-optimizer/latest/ug/requirements.html)
+#' in the *Compute Optimizer User Guide*
+#'
+#' @usage
+#' computeoptimizer_get_idle_recommendations(resourceArns, nextToken,
+#'   maxResults, filters, accountIds, orderBy)
+#'
+#' @param resourceArns The ARN that identifies the idle resource.
+#' @param nextToken The token to advance to the next page of idle resource recommendations.
+#' @param maxResults The maximum number of idle resource recommendations to return with a
+#' single request.
+#' 
+#' To retrieve the remaining results, make another request with the
+#' returned `nextToken` value.
+#' @param filters An array of objects to specify a filter that returns a more specific
+#' list of idle resource recommendations.
+#' @param accountIds Return the idle resource recommendations to the specified Amazon Web
+#' Services account IDs.
+#' 
+#' If your account is the management account or the delegated administrator
+#' of an organization, use this parameter to return the idle resource
+#' recommendations to specific member accounts.
+#' 
+#' You can only specify one account ID per request.
+#' @param orderBy The order to sort the idle resource recommendations.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   nextToken = "string",
+#'   idleRecommendations = list(
+#'     list(
+#'       resourceArn = "string",
+#'       resourceId = "string",
+#'       resourceType = "EC2Instance"|"AutoScalingGroup"|"EBSVolume"|"ECSService"|"RDSDBInstance",
+#'       accountId = "string",
+#'       finding = "Idle"|"Unattached",
+#'       findingDescription = "string",
+#'       savingsOpportunity = list(
+#'         savingsOpportunityPercentage = 123.0,
+#'         estimatedMonthlySavings = list(
+#'           currency = "USD"|"CNY",
+#'           value = 123.0
+#'         )
+#'       ),
+#'       savingsOpportunityAfterDiscounts = list(
+#'         savingsOpportunityPercentage = 123.0,
+#'         estimatedMonthlySavings = list(
+#'           currency = "USD"|"CNY",
+#'           value = 123.0
+#'         )
+#'       ),
+#'       utilizationMetrics = list(
+#'         list(
+#'           name = "CPU"|"Memory"|"NetworkOutBytesPerSecond"|"NetworkInBytesPerSecond"|"DatabaseConnections"|"EBSVolumeReadIOPS"|"EBSVolumeWriteIOPS"|"VolumeReadOpsPerSecond"|"VolumeWriteOpsPerSecond",
+#'           statistic = "Maximum"|"Average",
+#'           value = 123.0
+#'         )
+#'       ),
+#'       lookBackPeriodInDays = 123.0,
+#'       lastRefreshTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       tags = list(
+#'         list(
+#'           key = "string",
+#'           value = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   errors = list(
+#'     list(
+#'       identifier = "string",
+#'       code = "string",
+#'       message = "string",
+#'       resourceType = "EC2Instance"|"AutoScalingGroup"|"EBSVolume"|"ECSService"|"RDSDBInstance"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_idle_recommendations(
+#'   resourceArns = list(
+#'     "string"
+#'   ),
+#'   nextToken = "string",
+#'   maxResults = 123,
+#'   filters = list(
+#'     list(
+#'       name = "Finding"|"ResourceType",
+#'       values = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   accountIds = list(
+#'     "string"
+#'   ),
+#'   orderBy = list(
+#'     dimension = "SavingsValue"|"SavingsValueAfterDiscount",
+#'     order = "Asc"|"Desc"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname computeoptimizer_get_idle_recommendations
+#'
+#' @aliases computeoptimizer_get_idle_recommendations
+computeoptimizer_get_idle_recommendations <- function(resourceArns = NULL, nextToken = NULL, maxResults = NULL, filters = NULL, accountIds = NULL, orderBy = NULL) {
+  op <- new_operation(
+    name = "GetIdleRecommendations",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .computeoptimizer$get_idle_recommendations_input(resourceArns = resourceArns, nextToken = nextToken, maxResults = maxResults, filters = filters, accountIds = accountIds, orderBy = orderBy)
+  output <- .computeoptimizer$get_idle_recommendations_output()
+  config <- get_config()
+  svc <- .computeoptimizer$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.computeoptimizer$operations$get_idle_recommendations <- computeoptimizer_get_idle_recommendations
+
 #' Returns Lambda function recommendations
 #'
 #' @description
@@ -2661,7 +2923,7 @@ computeoptimizer_get_license_recommendations <- function(resourceArns = NULL, ne
 #'       rank = 123,
 #'       projectedMetrics = list(
 #'         list(
-#'           name = "CPU"|"Memory"|"EBSVolumeStorageSpaceUtilization"|"NetworkReceiveThroughput"|"NetworkTransmitThroughput"|"EBSVolumeReadIOPS"|"EBSVolumeWriteIOPS"|"EBSVolumeReadThroughput"|"EBSVolumeWriteThroughput"|"DatabaseConnections",
+#'           name = "CPU"|"Memory"|"EBSVolumeStorageSpaceUtilization"|"NetworkReceiveThroughput"|"NetworkTransmitThroughput"|"EBSVolumeReadIOPS"|"EBSVolumeWriteIOPS"|"EBSVolumeReadThroughput"|"EBSVolumeWriteThroughput"|"DatabaseConnections"|"StorageNetworkReceiveThroughput"|"StorageNetworkTransmitThroughput"|"AuroraMemoryHealthState"|"AuroraMemoryNumDeclinedSql"|"AuroraMemoryNumKillConnTotal"|"AuroraMemoryNumKillQueryTotal"|"ReadIOPSEphemeralStorage"|"WriteIOPSEphemeralStorage",
 #'           timestamps = list(
 #'             as.POSIXct(
 #'               "2015-01-01"
@@ -2774,6 +3036,7 @@ computeoptimizer_get_rds_database_recommendation_projected_metrics <- function(r
 #'       accountId = "string",
 #'       engine = "string",
 #'       engineVersion = "string",
+#'       promotionTier = 123,
 #'       currentDBInstanceClass = "string",
 #'       currentStorageConfiguration = list(
 #'         storageType = "string",
@@ -2782,12 +3045,14 @@ computeoptimizer_get_rds_database_recommendation_projected_metrics <- function(r
 #'         maxAllocatedStorage = 123,
 #'         storageThroughput = 123
 #'       ),
+#'       dbClusterIdentifier = "string",
 #'       idle = "True"|"False",
 #'       instanceFinding = "Optimized"|"Underprovisioned"|"Overprovisioned",
 #'       storageFinding = "Optimized"|"Underprovisioned"|"Overprovisioned",
 #'       instanceFindingReasonCodes = list(
-#'         "CPUOverprovisioned"|"NetworkBandwidthOverprovisioned"|"EBSIOPSOverprovisioned"|"EBSThroughputOverprovisioned"|"CPUUnderprovisioned"|"NetworkBandwidthUnderprovisioned"|"EBSThroughputUnderprovisioned"|"NewGenerationDBInstanceClassAvailable"|"NewEngineVersionAvailable"
+#'         "CPUOverprovisioned"|"NetworkBandwidthOverprovisioned"|"EBSIOPSOverprovisioned"|"EBSIOPSUnderprovisioned"|"EBSThroughputOverprovisioned"|"CPUUnderprovisioned"|"NetworkBandwidthUnderprovisioned"|"EBSThroughputUnderprovisioned"|"NewGenerationDBInstanceClassAvailable"|"NewEngineVersionAvailable"|"DBClusterWriterUnderprovisioned"|"MemoryUnderprovisioned"|"InstanceStorageReadIOPSUnderprovisioned"|"InstanceStorageWriteIOPSUnderprovisioned"
 #'       ),
+#'       currentInstancePerformanceRisk = "VeryLow"|"Low"|"Medium"|"High",
 #'       storageFindingReasonCodes = list(
 #'         "EBSVolumeAllocatedStorageUnderprovisioned"|"EBSVolumeThroughputUnderprovisioned"|"EBSVolumeIOPSOverprovisioned"|"EBSVolumeThroughputOverprovisioned"|"NewGenerationStorageTypeAvailable"
 #'       ),
@@ -2796,7 +3061,7 @@ computeoptimizer_get_rds_database_recommendation_projected_metrics <- function(r
 #'           dbInstanceClass = "string",
 #'           projectedUtilizationMetrics = list(
 #'             list(
-#'               name = "CPU"|"Memory"|"EBSVolumeStorageSpaceUtilization"|"NetworkReceiveThroughput"|"NetworkTransmitThroughput"|"EBSVolumeReadIOPS"|"EBSVolumeWriteIOPS"|"EBSVolumeReadThroughput"|"EBSVolumeWriteThroughput"|"DatabaseConnections",
+#'               name = "CPU"|"Memory"|"EBSVolumeStorageSpaceUtilization"|"NetworkReceiveThroughput"|"NetworkTransmitThroughput"|"EBSVolumeReadIOPS"|"EBSVolumeWriteIOPS"|"EBSVolumeReadThroughput"|"EBSVolumeWriteThroughput"|"DatabaseConnections"|"StorageNetworkReceiveThroughput"|"StorageNetworkTransmitThroughput"|"AuroraMemoryHealthState"|"AuroraMemoryNumDeclinedSql"|"AuroraMemoryNumKillConnTotal"|"AuroraMemoryNumKillQueryTotal"|"ReadIOPSEphemeralStorage"|"WriteIOPSEphemeralStorage",
 #'               statistic = "Maximum"|"Minimum"|"Average",
 #'               value = 123.0
 #'             )
@@ -2847,7 +3112,7 @@ computeoptimizer_get_rds_database_recommendation_projected_metrics <- function(r
 #'       ),
 #'       utilizationMetrics = list(
 #'         list(
-#'           name = "CPU"|"Memory"|"EBSVolumeStorageSpaceUtilization"|"NetworkReceiveThroughput"|"NetworkTransmitThroughput"|"EBSVolumeReadIOPS"|"EBSVolumeWriteIOPS"|"EBSVolumeReadThroughput"|"EBSVolumeWriteThroughput"|"DatabaseConnections",
+#'           name = "CPU"|"Memory"|"EBSVolumeStorageSpaceUtilization"|"NetworkReceiveThroughput"|"NetworkTransmitThroughput"|"EBSVolumeReadIOPS"|"EBSVolumeWriteIOPS"|"EBSVolumeReadThroughput"|"EBSVolumeWriteThroughput"|"DatabaseConnections"|"StorageNetworkReceiveThroughput"|"StorageNetworkTransmitThroughput"|"AuroraMemoryHealthState"|"AuroraMemoryNumDeclinedSql"|"AuroraMemoryNumKillConnTotal"|"AuroraMemoryNumKillQueryTotal"|"ReadIOPSEphemeralStorage"|"WriteIOPSEphemeralStorage",
 #'           statistic = "Maximum"|"Minimum"|"Average",
 #'           value = 123.0
 #'         )
@@ -2988,7 +3253,7 @@ computeoptimizer_get_rds_database_recommendations <- function(resourceArns = NUL
 #'         name = "Organization"|"AccountId"|"ResourceArn",
 #'         value = "string"
 #'       ),
-#'       resourceType = "Ec2Instance"|"AutoScalingGroup"|"EbsVolume"|"LambdaFunction"|"NotApplicable"|"EcsService"|"License"|"RdsDBInstance",
+#'       resourceType = "Ec2Instance"|"AutoScalingGroup"|"EbsVolume"|"LambdaFunction"|"NotApplicable"|"EcsService"|"License"|"RdsDBInstance"|"Idle",
 #'       enhancedInfrastructureMetrics = "Active"|"Inactive",
 #'       inferredWorkloadTypes = "Active"|"Inactive",
 #'       externalMetricsPreference = list(
@@ -3027,7 +3292,7 @@ computeoptimizer_get_rds_database_recommendations <- function(resourceArns = NUL
 #' @section Request syntax:
 #' ```
 #' svc$get_recommendation_preferences(
-#'   resourceType = "Ec2Instance"|"AutoScalingGroup"|"EbsVolume"|"LambdaFunction"|"NotApplicable"|"EcsService"|"License"|"RdsDBInstance",
+#'   resourceType = "Ec2Instance"|"AutoScalingGroup"|"EbsVolume"|"LambdaFunction"|"NotApplicable"|"EcsService"|"License"|"RdsDBInstance"|"Idle",
 #'   scope = list(
 #'     name = "Organization"|"AccountId"|"ResourceArn",
 #'     value = "string"
@@ -3121,9 +3386,29 @@ computeoptimizer_get_recommendation_preferences <- function(resourceType, scope 
 #'           )
 #'         )
 #'       ),
+#'       idleSummaries = list(
+#'         list(
+#'           name = "Idle"|"Unattached",
+#'           value = 123.0
+#'         )
+#'       ),
 #'       recommendationResourceType = "Ec2Instance"|"AutoScalingGroup"|"EbsVolume"|"LambdaFunction"|"EcsService"|"License"|"RdsDBInstance"|"RdsDBInstanceStorage",
 #'       accountId = "string",
 #'       savingsOpportunity = list(
+#'         savingsOpportunityPercentage = 123.0,
+#'         estimatedMonthlySavings = list(
+#'           currency = "USD"|"CNY",
+#'           value = 123.0
+#'         )
+#'       ),
+#'       idleSavingsOpportunity = list(
+#'         savingsOpportunityPercentage = 123.0,
+#'         estimatedMonthlySavings = list(
+#'           currency = "USD"|"CNY",
+#'           value = 123.0
+#'         )
+#'       ),
+#'       aggregatedSavingsOpportunity = list(
 #'         savingsOpportunityPercentage = 123.0,
 #'         estimatedMonthlySavings = list(
 #'           currency = "USD"|"CNY",
@@ -3321,7 +3606,7 @@ computeoptimizer_get_recommendation_summaries <- function(accountIds = NULL, nex
 #' @section Request syntax:
 #' ```
 #' svc$put_recommendation_preferences(
-#'   resourceType = "Ec2Instance"|"AutoScalingGroup"|"EbsVolume"|"LambdaFunction"|"NotApplicable"|"EcsService"|"License"|"RdsDBInstance",
+#'   resourceType = "Ec2Instance"|"AutoScalingGroup"|"EbsVolume"|"LambdaFunction"|"NotApplicable"|"EcsService"|"License"|"RdsDBInstance"|"Idle",
 #'   scope = list(
 #'     name = "Organization"|"AccountId"|"ResourceArn",
 #'     value = "string"

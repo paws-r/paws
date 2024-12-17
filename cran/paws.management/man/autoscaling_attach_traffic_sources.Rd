@@ -4,13 +4,22 @@
 \alias{autoscaling_attach_traffic_sources}
 \title{Attaches one or more traffic sources to the specified Auto Scaling group}
 \usage{
-autoscaling_attach_traffic_sources(AutoScalingGroupName, TrafficSources)
+autoscaling_attach_traffic_sources(
+  AutoScalingGroupName,
+  TrafficSources,
+  SkipZonalShiftValidation = NULL
+)
 }
 \arguments{
 \item{AutoScalingGroupName}{[required] The name of the Auto Scaling group.}
 
 \item{TrafficSources}{[required] The unique identifiers of one or more traffic sources. You can specify
 up to 10 traffic sources.}
+
+\item{SkipZonalShiftValidation}{If you enable zonal shift with cross-zone disabled load balancers,
+capacity could become imbalanced across Availability Zones. To skip the
+validation, specify \code{true}. For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-zonal-shift.html}{Auto Scaling group zonal shift}
+in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 }
 \description{
 Attaches one or more traffic sources to the specified Auto Scaling group.

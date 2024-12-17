@@ -37,7 +37,7 @@ used.
 When you use cluster auto scaling, you must specify
 \code{capacityProviderStrategy} and not \code{launchType}.
 
-A capacity provider strategy may contain a maximum of 6 capacity
+A capacity provider strategy can contain a maximum of 20 capacity
 providers.}
 
 \item{cluster}{The short name or full Amazon Resource Name (ARN) of the cluster to run
@@ -124,8 +124,8 @@ action.
 An error will be received if you specify the \code{SERVICE} option when
 running a task.}
 
-\item{referenceId}{The reference ID to use for the task. The reference ID can have a
-maximum length of 1024 characters.}
+\item{referenceId}{This parameter is only used by Amazon ECS. It is not intended for use by
+customers.}
 
 \item{startedBy}{An optional tag specified when a task is started. For example, if you
 automatically trigger a task to run a batch process job, you could apply

@@ -1,5 +1,9 @@
 svc <- paws::costexplorer()
 
+test_that("list_commitment_purchase_analyses", {
+  expect_error(svc$list_commitment_purchase_analyses(), NA)
+})
+
 test_that("list_cost_allocation_tag_backfill_history", {
   expect_error(svc$list_cost_allocation_tag_backfill_history(), NA)
 })

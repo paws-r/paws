@@ -17,7 +17,7 @@ value.}
 
 \item{NextToken}{The token to request the next page of results.}
 
-\item{AccountId}{The AWS account ID for the resource group owner.}
+\item{AccountId}{The Amazon Web Services account ID for the resource group owner.}
 }
 \description{
 Lists the IDs of the applications that you are monitoring.

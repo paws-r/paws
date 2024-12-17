@@ -6,14 +6,31 @@ NULL
 #' Creates a Recycle Bin retention rule
 #'
 #' @description
-#' Creates a Recycle Bin retention rule. For more information, see [Create
-#' Recycle Bin retention
-#' rules](https://docs.aws.amazon.com/ebs/latest/userguide/#recycle-bin-create-rule)
-#' in the *Amazon Elastic Compute Cloud User Guide*.
+#' Creates a Recycle Bin retention rule. You can create two types of
+#' retention rules:
+#' 
+#' -   **Tag-level retention rules** - These retention rules use resource
+#'     tags to identify the resources to protect. For each retention rule,
+#'     you specify one or more tag key and value pairs. Resources (of the
+#'     specified type) that have at least one of these tag key and value
+#'     pairs are automatically retained in the Recycle Bin upon deletion.
+#'     Use this type of retention rule to protect specific resources in
+#'     your account based on their tags.
+#' 
+#' -   **Region-level retention rules** - These retention rules, by
+#'     default, apply to all of the resources (of the specified type) in
+#'     the Region, even if the resources are not tagged. However, you can
+#'     specify exclusion tags to exclude resources that have specific tags.
+#'     Use this type of retention rule to protect all resources of a
+#'     specific type in a Region.
+#' 
+#' For more information, see [Create Recycle Bin retention
+#' rules](https://docs.aws.amazon.com/ebs/latest/userguide/recycle-bin.html)
+#' in the *Amazon EBS User Guide*.
 #'
 #' @usage
 #' recyclebin_create_rule(RetentionPeriod, Description, Tags, ResourceType,
-#'   ResourceTags, LockConfiguration)
+#'   ResourceTags, LockConfiguration, ExcludeResourceTags)
 #'
 #' @param RetentionPeriod &#91;required&#93; Information about the retention period for which the retention rule is
 #' to retain resources.
@@ -23,13 +40,13 @@ NULL
 #' Amazon EBS snapshots and EBS-backed AMIs are supported. To retain
 #' snapshots, specify `EBS_SNAPSHOT`. To retain EBS-backed AMIs, specify
 #' `EC2_IMAGE`.
-#' @param ResourceTags Specifies the resource tags to use to identify resources that are to be
-#' retained by a tag-level retention rule. For tag-level retention rules,
-#' only deleted resources, of the specified resource type, that have one or
-#' more of the specified tag key and value pairs are retained. If a
-#' resource is deleted, but it does not have any of the specified tag key
-#' and value pairs, it is immediately deleted without being retained by the
-#' retention rule.
+#' @param ResourceTags \[Tag-level retention rules only\] Specifies the resource tags to use to
+#' identify resources that are to be retained by a tag-level retention
+#' rule. For tag-level retention rules, only deleted resources, of the
+#' specified resource type, that have one or more of the specified tag key
+#' and value pairs are retained. If a resource is deleted, but it does not
+#' have any of the specified tag key and value pairs, it is immediately
+#' deleted without being retained by the retention rule.
 #' 
 #' You can add the same tag key and value pair to a maximum or five
 #' retention rules.
@@ -40,6 +57,12 @@ NULL
 #' Region in which the rule is created, even if the resources are not
 #' tagged.
 #' @param LockConfiguration Information about the retention rule lock configuration.
+#' @param ExcludeResourceTags \[Region-level retention rules only\] Specifies the exclusion tags to
+#' use to identify resources that are to be excluded, or ignored, by a
+#' Region-level retention rule. Resources that have any of these tags are
+#' not retained by the retention rule upon deletion.
+#' 
+#' You can't specify exclusion tags for tag-level retention rules.
 #'
 #' @return
 #' A list with the following syntax:
@@ -72,7 +95,13 @@ NULL
 #'     )
 #'   ),
 #'   LockState = "locked"|"pending_unlock"|"unlocked",
-#'   RuleArn = "string"
+#'   RuleArn = "string",
+#'   ExcludeResourceTags = list(
+#'     list(
+#'       ResourceTagKey = "string",
+#'       ResourceTagValue = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -102,6 +131,12 @@ NULL
 #'       UnlockDelayValue = 123,
 #'       UnlockDelayUnit = "DAYS"
 #'     )
+#'   ),
+#'   ExcludeResourceTags = list(
+#'     list(
+#'       ResourceTagKey = "string",
+#'       ResourceTagValue = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -111,7 +146,7 @@ NULL
 #' @rdname recyclebin_create_rule
 #'
 #' @aliases recyclebin_create_rule
-recyclebin_create_rule <- function(RetentionPeriod, Description = NULL, Tags = NULL, ResourceType, ResourceTags = NULL, LockConfiguration = NULL) {
+recyclebin_create_rule <- function(RetentionPeriod, Description = NULL, Tags = NULL, ResourceType, ResourceTags = NULL, LockConfiguration = NULL, ExcludeResourceTags = NULL) {
   op <- new_operation(
     name = "CreateRule",
     http_method = "POST",
@@ -120,7 +155,7 @@ recyclebin_create_rule <- function(RetentionPeriod, Description = NULL, Tags = N
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .recyclebin$create_rule_input(RetentionPeriod = RetentionPeriod, Description = Description, Tags = Tags, ResourceType = ResourceType, ResourceTags = ResourceTags, LockConfiguration = LockConfiguration)
+  input <- .recyclebin$create_rule_input(RetentionPeriod = RetentionPeriod, Description = Description, Tags = Tags, ResourceType = ResourceType, ResourceTags = ResourceTags, LockConfiguration = LockConfiguration, ExcludeResourceTags = ExcludeResourceTags)
   output <- .recyclebin$create_rule_output()
   config <- get_config()
   svc <- .recyclebin$service(config, op)
@@ -215,7 +250,13 @@ recyclebin_delete_rule <- function(Identifier) {
 #'   LockEndTime = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   RuleArn = "string"
+#'   RuleArn = "string",
+#'   ExcludeResourceTags = list(
+#'     list(
+#'       ResourceTagKey = "string",
+#'       ResourceTagValue = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -257,7 +298,7 @@ recyclebin_get_rule <- function(Identifier) {
 #'
 #' @usage
 #' recyclebin_list_rules(MaxResults, NextToken, ResourceType, ResourceTags,
-#'   LockState)
+#'   LockState, ExcludeResourceTags)
 #'
 #' @param MaxResults The maximum number of results to return with a single call. To retrieve
 #' the remaining results, make another call with the returned `NextToken`
@@ -268,10 +309,13 @@ recyclebin_get_rule <- function(Identifier) {
 #' Amazon EBS snapshots and EBS-backed AMIs are supported. To list
 #' retention rules that retain snapshots, specify `EBS_SNAPSHOT`. To list
 #' retention rules that retain EBS-backed AMIs, specify `EC2_IMAGE`.
-#' @param ResourceTags Information about the resource tags used to identify resources that are
-#' retained by the retention rule.
+#' @param ResourceTags \[Tag-level retention rules only\] Information about the resource tags
+#' used to identify resources that are retained by the retention rule.
 #' @param LockState The lock state of the retention rules to list. Only retention rules with
 #' the specified lock state are returned.
+#' @param ExcludeResourceTags \[Region-level retention rules only\] Information about the exclusion
+#' tags used to identify resources that are to be excluded, or ignored, by
+#' the retention rule.
 #'
 #' @return
 #' A list with the following syntax:
@@ -305,7 +349,13 @@ recyclebin_get_rule <- function(Identifier) {
 #'       ResourceTagValue = "string"
 #'     )
 #'   ),
-#'   LockState = "locked"|"pending_unlock"|"unlocked"
+#'   LockState = "locked"|"pending_unlock"|"unlocked",
+#'   ExcludeResourceTags = list(
+#'     list(
+#'       ResourceTagKey = "string",
+#'       ResourceTagValue = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -314,7 +364,7 @@ recyclebin_get_rule <- function(Identifier) {
 #' @rdname recyclebin_list_rules
 #'
 #' @aliases recyclebin_list_rules
-recyclebin_list_rules <- function(MaxResults = NULL, NextToken = NULL, ResourceType, ResourceTags = NULL, LockState = NULL) {
+recyclebin_list_rules <- function(MaxResults = NULL, NextToken = NULL, ResourceType, ResourceTags = NULL, LockState = NULL, ExcludeResourceTags = NULL) {
   op <- new_operation(
     name = "ListRules",
     http_method = "POST",
@@ -323,7 +373,7 @@ recyclebin_list_rules <- function(MaxResults = NULL, NextToken = NULL, ResourceT
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Rules"),
     stream_api = FALSE
   )
-  input <- .recyclebin$list_rules_input(MaxResults = MaxResults, NextToken = NextToken, ResourceType = ResourceType, ResourceTags = ResourceTags, LockState = LockState)
+  input <- .recyclebin$list_rules_input(MaxResults = MaxResults, NextToken = NextToken, ResourceType = ResourceType, ResourceTags = ResourceTags, LockState = LockState, ExcludeResourceTags = ExcludeResourceTags)
   output <- .recyclebin$list_rules_output()
   config <- get_config()
   svc <- .recyclebin$service(config, op)
@@ -387,11 +437,14 @@ recyclebin_list_tags_for_resource <- function(ResourceArn) {
 }
 .recyclebin$operations$list_tags_for_resource <- recyclebin_list_tags_for_resource
 
-#' Locks a retention rule
+#' Locks a Region-level retention rule
 #'
 #' @description
-#' Locks a retention rule. A locked retention rule can't be modified or
-#' deleted.
+#' Locks a Region-level retention rule. A locked retention rule can't be
+#' modified or deleted.
+#' 
+#' You can't lock tag-level retention rules, or Region-level retention
+#' rules that have exclusion tags.
 #'
 #' @usage
 #' recyclebin_lock_rule(Identifier, LockConfiguration)
@@ -424,7 +477,13 @@ recyclebin_list_tags_for_resource <- function(ResourceArn) {
 #'     )
 #'   ),
 #'   LockState = "locked"|"pending_unlock"|"unlocked",
-#'   RuleArn = "string"
+#'   RuleArn = "string",
+#'   ExcludeResourceTags = list(
+#'     list(
+#'       ResourceTagKey = "string",
+#'       ResourceTagValue = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -555,7 +614,13 @@ recyclebin_tag_resource <- function(ResourceArn, Tags) {
 #'   LockEndTime = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   RuleArn = "string"
+#'   RuleArn = "string",
+#'   ExcludeResourceTags = list(
+#'     list(
+#'       ResourceTagKey = "string",
+#'       ResourceTagValue = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -651,7 +716,7 @@ recyclebin_untag_resource <- function(ResourceArn, TagKeys) {
 #'
 #' @usage
 #' recyclebin_update_rule(Identifier, RetentionPeriod, Description,
-#'   ResourceType, ResourceTags)
+#'   ResourceType, ResourceTags, ExcludeResourceTags)
 #'
 #' @param Identifier &#91;required&#93; The unique ID of the retention rule.
 #' @param RetentionPeriod Information about the retention period for which the retention rule is
@@ -659,13 +724,13 @@ recyclebin_untag_resource <- function(ResourceArn, TagKeys) {
 #' @param Description The retention rule description.
 #' @param ResourceType This parameter is currently not supported. You can't update a retention
 #' rule's resource type after creation.
-#' @param ResourceTags Specifies the resource tags to use to identify resources that are to be
-#' retained by a tag-level retention rule. For tag-level retention rules,
-#' only deleted resources, of the specified resource type, that have one or
-#' more of the specified tag key and value pairs are retained. If a
-#' resource is deleted, but it does not have any of the specified tag key
-#' and value pairs, it is immediately deleted without being retained by the
-#' retention rule.
+#' @param ResourceTags \[Tag-level retention rules only\] Specifies the resource tags to use to
+#' identify resources that are to be retained by a tag-level retention
+#' rule. For tag-level retention rules, only deleted resources, of the
+#' specified resource type, that have one or more of the specified tag key
+#' and value pairs are retained. If a resource is deleted, but it does not
+#' have any of the specified tag key and value pairs, it is immediately
+#' deleted without being retained by the retention rule.
 #' 
 #' You can add the same tag key and value pair to a maximum or five
 #' retention rules.
@@ -675,6 +740,12 @@ recyclebin_untag_resource <- function(ResourceArn, TagKeys) {
 #' It retains all deleted resources of the specified resource type in the
 #' Region in which the rule is created, even if the resources are not
 #' tagged.
+#' @param ExcludeResourceTags \[Region-level retention rules only\] Specifies the exclusion tags to
+#' use to identify resources that are to be excluded, or ignored, by a
+#' Region-level retention rule. Resources that have any of these tags are
+#' not retained by the retention rule upon deletion.
+#' 
+#' You can't specify exclusion tags for tag-level retention rules.
 #'
 #' @return
 #' A list with the following syntax:
@@ -698,7 +769,13 @@ recyclebin_untag_resource <- function(ResourceArn, TagKeys) {
 #'   LockEndTime = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   RuleArn = "string"
+#'   RuleArn = "string",
+#'   ExcludeResourceTags = list(
+#'     list(
+#'       ResourceTagKey = "string",
+#'       ResourceTagValue = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -717,6 +794,12 @@ recyclebin_untag_resource <- function(ResourceArn, TagKeys) {
 #'       ResourceTagKey = "string",
 #'       ResourceTagValue = "string"
 #'     )
+#'   ),
+#'   ExcludeResourceTags = list(
+#'     list(
+#'       ResourceTagKey = "string",
+#'       ResourceTagValue = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -726,7 +809,7 @@ recyclebin_untag_resource <- function(ResourceArn, TagKeys) {
 #' @rdname recyclebin_update_rule
 #'
 #' @aliases recyclebin_update_rule
-recyclebin_update_rule <- function(Identifier, RetentionPeriod = NULL, Description = NULL, ResourceType = NULL, ResourceTags = NULL) {
+recyclebin_update_rule <- function(Identifier, RetentionPeriod = NULL, Description = NULL, ResourceType = NULL, ResourceTags = NULL, ExcludeResourceTags = NULL) {
   op <- new_operation(
     name = "UpdateRule",
     http_method = "PATCH",
@@ -735,7 +818,7 @@ recyclebin_update_rule <- function(Identifier, RetentionPeriod = NULL, Descripti
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .recyclebin$update_rule_input(Identifier = Identifier, RetentionPeriod = RetentionPeriod, Description = Description, ResourceType = ResourceType, ResourceTags = ResourceTags)
+  input <- .recyclebin$update_rule_input(Identifier = Identifier, RetentionPeriod = RetentionPeriod, Description = Description, ResourceType = ResourceType, ResourceTags = ResourceTags, ExcludeResourceTags = ExcludeResourceTags)
   output <- .recyclebin$update_rule_output()
   config <- get_config()
   svc <- .recyclebin$service(config, op)

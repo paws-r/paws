@@ -20,8 +20,7 @@ glue_list_table_optimizer_runs(
 
 \item{TableName}{[required] The name of the table.}
 
-\item{Type}{[required] The type of table optimizer. Currently, the only valid value is
-\code{compaction}.}
+\item{Type}{[required] The type of table optimizer.}
 
 \item{MaxResults}{The maximum number of optimizer runs to return on each call.}
 

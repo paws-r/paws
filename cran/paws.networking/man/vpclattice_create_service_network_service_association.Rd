@@ -2,7 +2,7 @@
 % Please edit documentation in R/vpclattice_operations.R
 \name{vpclattice_create_service_network_service_association}
 \alias{vpclattice_create_service_network_service_association}
-\title{Associates a service with a service network}
+\title{Associates the specified service with the specified service network}
 \usage{
 vpclattice_create_service_network_service_association(
   clientToken = NULL,
@@ -18,16 +18,15 @@ successfully using the same client token and parameters, the retry
 succeeds without performing any actions. If the parameters aren't
 identical, the retry fails.}
 
-\item{serviceIdentifier}{[required] The ID or Amazon Resource Name (ARN) of the service.}
+\item{serviceIdentifier}{[required] The ID or ARN of the service.}
 
-\item{serviceNetworkIdentifier}{[required] The ID or Amazon Resource Name (ARN) of the service network. You must
-use the ARN if the resources specified in the operation are in different
-accounts.}
+\item{serviceNetworkIdentifier}{[required] The ID or ARN of the service network. You must use an ARN if the
+resources are in different accounts.}
 
 \item{tags}{The tags for the association.}
 }
 \description{
-Associates a service with a service network. For more information, see \href{https://docs.aws.amazon.com/vpc-lattice/latest/ug/service-network-associations.html#service-network-service-associations}{Manage service associations} in the \emph{Amazon VPC Lattice User Guide}.
+Associates the specified service with the specified service network. For more information, see \href{https://docs.aws.amazon.com/vpc-lattice/latest/ug/service-network-associations.html#service-network-service-associations}{Manage service associations} in the \emph{Amazon VPC Lattice User Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/vpclattice_create_service_network_service_association/} for full documentation.
 }

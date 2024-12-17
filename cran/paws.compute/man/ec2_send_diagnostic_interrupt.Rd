@@ -11,10 +11,10 @@ ec2_send_diagnostic_interrupt(InstanceId, DryRun = NULL)
 \arguments{
 \item{InstanceId}{[required] The ID of the instance.}
 
-\item{DryRun}{Checks whether you have the required permissions for the action, without
-actually making the request, and provides an error response. If you have
-the required permissions, the error response is \code{DryRunOperation}.
-Otherwise, it is \code{UnauthorizedOperation}.}
+\item{DryRun}{Checks whether you have the required permissions for the operation,
+without actually making the request, and provides an error response. If
+you have the required permissions, the error response is
+\code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
 Sends a diagnostic interrupt to the specified Amazon EC2 instance to trigger a \emph{kernel panic} (on Linux instances), or a \emph{blue screen}/\emph{stop error} (on Windows instances). For instances based on Intel and AMD processors, the interrupt is received as a \emph{non-maskable interrupt} (NMI).

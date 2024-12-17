@@ -14,7 +14,11 @@ guardduty_update_ip_set(
 }
 \arguments{
 \item{DetectorId}{[required] The detectorID that specifies the GuardDuty service whose IPSet you want
-to update.}
+to update.
+
+To find the \code{detectorId} in the current Region, see the Settings page in
+the GuardDuty console, or run the
+\code{\link[=guardduty_list_detectors]{list_detectors}} API.}
 
 \item{IpSetId}{[required] The unique ID that specifies the IPSet that you want to update.}
 

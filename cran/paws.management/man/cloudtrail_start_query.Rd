@@ -8,7 +8,8 @@ cloudtrail_start_query(
   QueryStatement = NULL,
   DeliveryS3Uri = NULL,
   QueryAlias = NULL,
-  QueryParameters = NULL
+  QueryParameters = NULL,
+  EventDataStoreOwnerAccountId = NULL
 )
 }
 \arguments{
@@ -19,6 +20,8 @@ cloudtrail_start_query(
 \item{QueryAlias}{The alias that identifies a query template.}
 
 \item{QueryParameters}{The query parameters for the specified \code{QueryAlias}.}
+
+\item{EventDataStoreOwnerAccountId}{The account ID of the event data store owner.}
 }
 \description{
 Starts a CloudTrail Lake query. Use the \code{QueryStatement} parameter to provide your SQL query, enclosed in single quotation marks. Use the optional \code{DeliveryS3Uri} parameter to deliver the query results to an S3 bucket.

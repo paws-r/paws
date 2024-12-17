@@ -63,9 +63,8 @@ stack.
 
 Some stack templates might include resources that can affect
 permissions in your Amazon Web Services account; for example, by
-creating new Identity and Access Management (IAM) users. For those
-stacks, you must explicitly acknowledge this by specifying one of
-these capabilities.
+creating new IAM users. For those stacks, you must explicitly
+acknowledge this by specifying one of these capabilities.
 
 The following IAM resources require you to specify either the
 \code{CAPABILITY_IAM} or \code{CAPABILITY_NAMED_IAM} capability.
@@ -90,7 +89,7 @@ permissions if necessary.
 \item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-usertogroupaddition.html}{AWS::IAM::UserToGroupAddition}
 }
 
-For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/control-access-with-iam.html#capabilities}{Acknowledging IAM resources in CloudFormation templates}.
+For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/control-access-with-iam.html#using-iam-capabilities}{Acknowledging IAM resources in CloudFormation templates}.
 \item \code{CAPABILITY_AUTO_EXPAND}
 
 Some template contain macros. Macros perform custom processing on
@@ -118,7 +117,7 @@ directly from the template using the
 \code{\link[=cloudformation_update_stack]{update_stack}} action, and specifying
 this capability.
 
-For more information about macros, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-macros.html}{Using CloudFormation macros to perform custom processing on templates}.
+For more information about macros, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-macros.html}{Perform custom processing on CloudFormation templates with template macros}.
 }
 
 Only one of the \code{Capabilities} and \code{ResourceType} parameters can be
@@ -130,21 +129,21 @@ you execute this change set, such as \verb{AWS::EC2::Instance},
 
 If the list of resource types doesn't include a resource type that
 you're updating, the stack update fails. By default, CloudFormation
-grants permissions to all resource types. Identity and Access Management
-(IAM) uses this parameter for condition keys in IAM policies for
-CloudFormation. For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/control-access-with-iam.html}{Controlling access with Identity and Access Management}
+grants permissions to all resource types. IAM uses this parameter for
+condition keys in IAM policies for CloudFormation. For more information,
+see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/control-access-with-iam.html}{Control access with Identity and Access Management}
 in the \emph{CloudFormation User Guide}.
 
 Only one of the \code{Capabilities} and \code{ResourceType} parameters can be
 specified.}
 
-\item{RoleARN}{The Amazon Resource Name (ARN) of an Identity and Access Management
-(IAM) role that CloudFormation assumes when executing the change set.
-CloudFormation uses the role's credentials to make calls on your behalf.
-CloudFormation uses this role for all future operations on the stack.
-Provided that users have permission to operate on the stack,
-CloudFormation uses this role even if the users don't have permission to
-pass it. Ensure that the role grants least permission.
+\item{RoleARN}{The Amazon Resource Name (ARN) of an IAM role that CloudFormation
+assumes when executing the change set. CloudFormation uses the role's
+credentials to make calls on your behalf. CloudFormation uses this role
+for all future operations on the stack. Provided that users have
+permission to operate on the stack, CloudFormation uses this role even
+if the users don't have permission to pass it. Ensure that the role
+grants least permission.
 
 If you don't specify a value, CloudFormation uses the role that was
 previously associated with the stack. If no role is available,
@@ -155,9 +154,9 @@ credentials.}
 creation and updating operations, and for the specified monitoring
 period afterwards.}
 
-\item{NotificationARNs}{The Amazon Resource Names (ARNs) of Amazon Simple Notification Service
-(Amazon SNS) topics that CloudFormation associates with the stack. To
-remove all associated notification topics, specify an empty list.}
+\item{NotificationARNs}{The Amazon Resource Names (ARNs) of Amazon SNS topics that
+CloudFormation associates with the stack. To remove all associated
+notification topics, specify an empty list.}
 
 \item{Tags}{Key-value pairs to associate with this stack. CloudFormation also
 propagates these tags to resources in the stack. You can specify a
@@ -187,9 +186,8 @@ specify \code{IMPORT}.
 
 If you create a change set for a new stack, CloudFormation creates a
 stack with a unique stack ID, but no template or resources. The stack
-will be in the
-\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/service_code_examples.html#d0e11995}{REVIEW_IN_PROGRESS}
-state until you execute the change set.
+will be in the \code{REVIEW_IN_PROGRESS} state until you execute the change
+set.
 
 By default, CloudFormation specifies \code{UPDATE}. You can't use the
 \code{UPDATE} type to create a change set for a new stack or the \code{CREATE}
@@ -232,7 +230,7 @@ This parameter can only import resources that have custom names in
 templates. For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-name.html}{name type}
 in the \emph{CloudFormation User Guide}. To import resources that do not
 accept custom names, such as EC2 instances, use the resource import
-feature instead. For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/resource-import.html}{Bringing existing resources into CloudFormation management}
+feature instead. For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/resource-import.html}{Import Amazon Web Services resources into a CloudFormation stack with a resource import}
 in the \emph{CloudFormation User Guide}.}
 }
 \description{

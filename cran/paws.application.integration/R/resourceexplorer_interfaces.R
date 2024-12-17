@@ -113,6 +113,18 @@ NULL
   return(populate(args, shape))
 }
 
+.resourceexplorer$get_managed_view_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ManagedViewArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.resourceexplorer$get_managed_view_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ManagedView = structure(list(Filters = structure(list(FilterString = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", sensitive = TRUE)), IncludedProperties = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), LastUpdatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), ManagedViewArn = structure(logical(0), tags = list(type = "string")), ManagedViewName = structure(logical(0), tags = list(type = "string")), Owner = structure(logical(0), tags = list(type = "string")), ResourcePolicy = structure(logical(0), tags = list(type = "string")), Scope = structure(logical(0), tags = list(type = "string")), TrustedService = structure(logical(0), tags = list(type = "string")), Version = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .resourceexplorer$get_view_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(ViewArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -146,6 +158,30 @@ NULL
 .resourceexplorer$list_indexes_for_members_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(Indexes = structure(list(structure(list(AccountId = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), Region = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.resourceexplorer$list_managed_views_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), NextToken = structure(logical(0), tags = list(type = "string")), ServicePrincipal = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.resourceexplorer$list_managed_views_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ManagedViews = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.resourceexplorer$list_resources_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Filters = structure(list(FilterString = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", sensitive = TRUE)), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), NextToken = structure(logical(0), tags = list(type = "string")), ViewArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.resourceexplorer$list_resources_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), Resources = structure(list(structure(list(Arn = structure(logical(0), tags = list(type = "string")), LastReportedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), OwningAccountId = structure(logical(0), tags = list(type = "string")), Properties = structure(list(structure(list(Data = structure(list(), tags = list(type = "structure", document = TRUE)), LastReportedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Region = structure(logical(0), tags = list(type = "string")), ResourceType = structure(logical(0), tags = list(type = "string")), Service = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ViewArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

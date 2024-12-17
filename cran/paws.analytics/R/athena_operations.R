@@ -179,9 +179,24 @@ athena_create_capacity_reservation <- function(TargetDpus, Name, Tags = NULL) {
 #' for the Amazon Web Services account and can use a maximum of 127
 #' alphanumeric, underscore, at sign, or hyphen characters. The remainder
 #' of the length constraint of 256 is reserved for use by Athena.
+#' 
+#' For `FEDERATED` type the catalog name has following considerations and
+#' limits:
+#' 
+#' -   The catalog name allows special characters such as `_ , @@ , \ , - `.
+#'     These characters are replaced with a hyphen (-) when creating the
+#'     CFN Stack Name and with an underscore (_) when creating the Lambda
+#'     Function and Glue Connection Name.
+#' 
+#' -   The catalog name has a theoretical limit of 128 characters. However,
+#'     since we use it to create other resources that allow less characters
+#'     and we prepend a prefix to it, the actual catalog name limit for
+#'     `FEDERATED` catalog is 64 - 23 = 41 characters.
 #' @param Type &#91;required&#93; The type of data catalog to create: `LAMBDA` for a federated catalog,
-#' `HIVE` for an external hive metastore, or `GLUE` for an Glue Data
-#' Catalog.
+#' `GLUE` for an Glue Data Catalog, and `HIVE` for an external Apache Hive
+#' metastore. `FEDERATED` is a federated catalog for which Athena creates
+#' the connection and the Lambda function for you based on the parameters
+#' that you pass.
 #' @param Description A description of the data catalog to be created.
 #' @param Parameters Specifies the Lambda function or functions to use for creating the data
 #' catalog. This is a mapping whose values depend on the catalog type.
@@ -217,8 +232,30 @@ athena_create_capacity_reservation <- function(TargetDpus, Name, Tags = NULL) {
 #'     -   The `GLUE` data catalog type also applies to the default
 #'         `AwsDataCatalog` that already exists in your account, of which
 #'         you can have only one and cannot modify.
+#' 
+#' -   The `FEDERATED` data catalog type uses one of the following
+#'     parameters, but not both. Use `connection-arn` for an existing Glue
+#'     connection. Use `connection-type` and `connection-properties` to
+#'     specify the configuration setting for a new connection.
+#' 
+#'     -   `connection-arn:<glue_connection_arn_to_reuse> `
+#' 
+#'     -   `lambda-role-arn` (optional): The execution role to use for the
+#'         Lambda function. If not provided, one is created.
+#' 
+#'     -   `connection-type:MYSQL|REDSHIFT|...., connection-properties:"<json_string>"`
+#' 
+#'         For *\<json_string\>* , use escaped JSON text, as in the
+#'         following example.
+#' 
+#'         `"{\"spill_bucket\":\"my_spill\",\"spill_prefix\":\"athena-spill\",\"host\":\"abc12345.snowflakecomputing.com\",\"port\":\"1234\",\"warehouse\":\"DEV_WH\",\"database\":\"TEST\",\"schema\":\"PUBLIC\",\"SecretArn\":\"arn:aws:secretsmanager:ap-south-1:111122223333:secret:snowflake-XHb67j\"}"`
 #' @param Tags A list of comma separated tags to add to the data catalog that is
-#' created.
+#' created. All the resources that are created by the
+#' [`create_data_catalog`][athena_create_data_catalog] API operation with
+#' `FEDERATED` type will have the tag
+#' `federated_athena_datacatalog="true"`. This includes the CFN Stack, Glue
+#' Connection, Athena DataCatalog, and all the resources created as part of
+#' the CFN Stack (Lambda Function, IAM policies/roles).
 #'
 #' @keywords internal
 #'
@@ -480,11 +517,15 @@ athena_delete_capacity_reservation <- function(Name) {
 #' See [https://www.paws-r-sdk.com/docs/athena_delete_data_catalog/](https://www.paws-r-sdk.com/docs/athena_delete_data_catalog/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the data catalog to delete.
+#' @param DeleteCatalogOnly Deletes the Athena Data Catalog. You can only use this with the
+#' `FEDERATED` catalogs. You usually perform this before registering the
+#' connector with Glue Data Catalog. After deletion, you will have to
+#' manage the Glue Connection and Lambda function.
 #'
 #' @keywords internal
 #'
 #' @rdname athena_delete_data_catalog
-athena_delete_data_catalog <- function(Name) {
+athena_delete_data_catalog <- function(Name, DeleteCatalogOnly = NULL) {
   op <- new_operation(
     name = "DeleteDataCatalog",
     http_method = "POST",
@@ -493,7 +534,7 @@ athena_delete_data_catalog <- function(Name) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .athena$delete_data_catalog_input(Name = Name)
+  input <- .athena$delete_data_catalog_input(Name = Name, DeleteCatalogOnly = DeleteCatalogOnly)
   output <- .athena$delete_data_catalog_output()
   config <- get_config()
   svc <- .athena$service(config, op)
@@ -1040,7 +1081,7 @@ athena_get_query_results <- function(QueryExecutionId, NextToken = NULL, MaxResu
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ResultSet.Rows", non_aggregate_keys = list( "ResultSet.ResultSetMetadata", "UpdateCount")),
     stream_api = FALSE
   )
   input <- .athena$get_query_results_input(QueryExecutionId = QueryExecutionId, NextToken = NextToken, MaxResults = MaxResults)
@@ -1281,7 +1322,7 @@ athena_list_application_dpu_sizes <- function(MaxResults = NULL, NextToken = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .athena$list_application_dpu_sizes_input(MaxResults = MaxResults, NextToken = NextToken)
@@ -1338,7 +1379,7 @@ athena_list_calculation_executions <- function(SessionId, StateFilter = NULL, Ma
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .athena$list_calculation_executions_input(SessionId = SessionId, StateFilter = StateFilter, MaxResults = MaxResults, NextToken = NextToken)
@@ -1371,7 +1412,7 @@ athena_list_capacity_reservations <- function(NextToken = NULL, MaxResults = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .athena$list_capacity_reservations_input(NextToken = NextToken, MaxResults = MaxResults)
@@ -1482,7 +1523,7 @@ athena_list_engine_versions <- function(NextToken = NULL, MaxResults = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .athena$list_engine_versions_input(NextToken = NextToken, MaxResults = MaxResults)
@@ -1533,7 +1574,7 @@ athena_list_executors <- function(SessionId, ExecutorStateFilter = NULL, MaxResu
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .athena$list_executors_input(SessionId = SessionId, ExecutorStateFilter = ExecutorStateFilter, MaxResults = MaxResults, NextToken = NextToken)
@@ -1572,7 +1613,7 @@ athena_list_named_queries <- function(NextToken = NULL, MaxResults = NULL, WorkG
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "NamedQueryIds"),
     stream_api = FALSE
   )
   input <- .athena$list_named_queries_input(NextToken = NextToken, MaxResults = MaxResults, WorkGroup = WorkGroup)
@@ -1683,7 +1724,7 @@ athena_list_prepared_statements <- function(WorkGroup, NextToken = NULL, MaxResu
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .athena$list_prepared_statements_input(WorkGroup = WorkGroup, NextToken = NextToken, MaxResults = MaxResults)
@@ -1722,7 +1763,7 @@ athena_list_query_executions <- function(NextToken = NULL, MaxResults = NULL, Wo
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "QueryExecutionIds"),
     stream_api = FALSE
   )
   input <- .athena$list_query_executions_input(NextToken = NextToken, MaxResults = MaxResults, WorkGroup = WorkGroup)
@@ -1780,7 +1821,7 @@ athena_list_sessions <- function(WorkGroup, StateFilter = NULL, MaxResults = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .athena$list_sessions_input(WorkGroup = WorkGroup, StateFilter = StateFilter, MaxResults = MaxResults, NextToken = NextToken)
@@ -1893,7 +1934,7 @@ athena_list_work_groups <- function(NextToken = NULL, MaxResults = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .athena$list_work_groups_input(NextToken = NextToken, MaxResults = MaxResults)

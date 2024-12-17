@@ -18,8 +18,17 @@ see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.AR
 
 \item{ApplyAction}{[required] The pending maintenance action to apply to this resource.
 
-Valid Values: \code{system-update}, \code{db-upgrade}, \code{hardware-maintenance},
-\code{ca-certificate-rotation}}
+Valid Values:
+\itemize{
+\item \code{ca-certificate-rotation}
+\item \code{db-upgrade}
+\item \code{hardware-maintenance}
+\item \code{os-upgrade}
+\item \code{system-update}
+}
+
+For more information about these actions, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_UpgradeDBInstance.Maintenance.html#maintenance-actions-aurora}{Maintenance actions for Amazon Aurora}
+or \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.Maintenance.html#maintenance-actions-rds}{Maintenance actions for Amazon RDS}.}
 
 \item{OptInType}{[required] A value that specifies the type of opt-in request, or undoes an opt-in
 request. An opt-in request of type \code{immediate} can't be undone.

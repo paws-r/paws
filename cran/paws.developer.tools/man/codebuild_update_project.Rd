@@ -25,7 +25,8 @@ codebuild_update_project(
   logsConfig = NULL,
   fileSystemLocations = NULL,
   buildBatchConfig = NULL,
-  concurrentBuildLimit = NULL
+  concurrentBuildLimit = NULL,
+  autoRetryLimit = NULL
 )
 }
 \arguments{
@@ -129,6 +130,11 @@ or equal to this limit. If the current build count meets this limit, new
 builds are throttled and are not run.
 
 To remove this limit, set this value to -1.}
+
+\item{autoRetryLimit}{The maximum number of additional automatic retries after a failed build.
+For example, if the auto-retry limit is set to 2, CodeBuild will call
+the \code{\link[=codebuild_retry_build]{retry_build}} API to automatically retry
+your build for up to 2 additional times.}
 }
 \description{
 Changes the settings of a build project.

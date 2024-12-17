@@ -23,9 +23,9 @@ integrate your identity provider with your web portal. User and group
 access to your web portal is controlled through your identity provider.
 
 \verb{IAM Identity Center} web portals are authenticated through IAM Identity
-Center (successor to Single Sign-On). Identity sources (including
-external identity provider integration), plus user and group access to
-your web portal, can be configured in the IAM Identity Center.}
+Center. Identity sources (including external identity provider
+integration), plus user and group access to your web portal, can be
+configured in the IAM Identity Center.}
 
 \item{displayName}{The name of the web portal. This is not visible to users who log into
 the web portal.}

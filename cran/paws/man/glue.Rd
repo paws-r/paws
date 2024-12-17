@@ -115,13 +115,18 @@ Defines the public endpoint for the Glue service.
 \link[paws.analytics:glue_cancel_statement]{cancel_statement} \tab Cancels the statement\cr
 \link[paws.analytics:glue_check_schema_version_validity]{check_schema_version_validity} \tab Validates the supplied schema\cr
 \link[paws.analytics:glue_create_blueprint]{create_blueprint} \tab Registers a blueprint with Glue\cr
+\link[paws.analytics:glue_create_catalog]{create_catalog} \tab Creates a new catalog in the Glue Data Catalog\cr
 \link[paws.analytics:glue_create_classifier]{create_classifier} \tab Creates a classifier in the user's account\cr
+\link[paws.analytics:glue_create_column_statistics_task_settings]{create_column_statistics_task_settings} \tab Creates settings for a column statistics task\cr
 \link[paws.analytics:glue_create_connection]{create_connection} \tab Creates a connection definition in the Data Catalog\cr
 \link[paws.analytics:glue_create_crawler]{create_crawler} \tab Creates a new crawler with specified targets, role, configuration, and optional schedule\cr
 \link[paws.analytics:glue_create_custom_entity_type]{create_custom_entity_type} \tab Creates a custom pattern that is used to detect sensitive data across the columns and rows of your structured data\cr
 \link[paws.analytics:glue_create_database]{create_database} \tab Creates a new database in a Data Catalog\cr
 \link[paws.analytics:glue_create_data_quality_ruleset]{create_data_quality_ruleset} \tab Creates a data quality ruleset with DQDL rules applied to a specified Glue table\cr
 \link[paws.analytics:glue_create_dev_endpoint]{create_dev_endpoint} \tab Creates a new development endpoint\cr
+\link[paws.analytics:glue_create_integration]{create_integration} \tab Creates a Zero-ETL integration in the caller's account between two resources with Amazon Resource Names (ARNs): the SourceArn and TargetArn\cr
+\link[paws.analytics:glue_create_integration_resource_property]{create_integration_resource_property} \tab This API can be used for setting up the ResourceProperty of the Glue connection (for the source) or Glue database ARN (for the target)\cr
+\link[paws.analytics:glue_create_integration_table_properties]{create_integration_table_properties} \tab This API is used to provide optional override properties for the the tables that need to be replicated\cr
 \link[paws.analytics:glue_create_job]{create_job} \tab Creates a new job definition\cr
 \link[paws.analytics:glue_create_ml_transform]{create_ml_transform} \tab Creates an Glue machine learning transform\cr
 \link[paws.analytics:glue_create_partition]{create_partition} \tab Creates a new partition\cr
@@ -138,15 +143,19 @@ Defines the public endpoint for the Glue service.
 \link[paws.analytics:glue_create_user_defined_function]{create_user_defined_function} \tab Creates a new function definition in the Data Catalog\cr
 \link[paws.analytics:glue_create_workflow]{create_workflow} \tab Creates a new workflow\cr
 \link[paws.analytics:glue_delete_blueprint]{delete_blueprint} \tab Deletes an existing blueprint\cr
+\link[paws.analytics:glue_delete_catalog]{delete_catalog} \tab Removes the specified catalog from the Glue Data Catalog\cr
 \link[paws.analytics:glue_delete_classifier]{delete_classifier} \tab Removes a classifier from the Data Catalog\cr
 \link[paws.analytics:glue_delete_column_statistics_for_partition]{delete_column_statistics_for_partition} \tab Delete the partition column statistics of a column\cr
 \link[paws.analytics:glue_delete_column_statistics_for_table]{delete_column_statistics_for_table} \tab Retrieves table statistics of columns\cr
+\link[paws.analytics:glue_delete_column_statistics_task_settings]{delete_column_statistics_task_settings} \tab Deletes settings for a column statistics task\cr
 \link[paws.analytics:glue_delete_connection]{delete_connection} \tab Deletes a connection from the Data Catalog\cr
 \link[paws.analytics:glue_delete_crawler]{delete_crawler} \tab Removes a specified crawler from the Glue Data Catalog, unless the crawler state is RUNNING\cr
 \link[paws.analytics:glue_delete_custom_entity_type]{delete_custom_entity_type} \tab Deletes a custom pattern by specifying its name\cr
 \link[paws.analytics:glue_delete_database]{delete_database} \tab Removes a specified database from a Data Catalog\cr
 \link[paws.analytics:glue_delete_data_quality_ruleset]{delete_data_quality_ruleset} \tab Deletes a data quality ruleset\cr
 \link[paws.analytics:glue_delete_dev_endpoint]{delete_dev_endpoint} \tab Deletes a specified development endpoint\cr
+\link[paws.analytics:glue_delete_integration]{delete_integration} \tab Deletes the specified Zero-ETL integration\cr
+\link[paws.analytics:glue_delete_integration_table_properties]{delete_integration_table_properties} \tab Deletes the table properties that have been created for the tables that need to be replicated\cr
 \link[paws.analytics:glue_delete_job]{delete_job} \tab Deletes a specified job definition\cr
 \link[paws.analytics:glue_delete_ml_transform]{delete_ml_transform} \tab Deletes an Glue machine learning transform\cr
 \link[paws.analytics:glue_delete_partition]{delete_partition} \tab Deletes a specified partition\cr
@@ -164,16 +173,23 @@ Defines the public endpoint for the Glue service.
 \link[paws.analytics:glue_delete_usage_profile]{delete_usage_profile} \tab Deletes the Glue specified usage profile\cr
 \link[paws.analytics:glue_delete_user_defined_function]{delete_user_defined_function} \tab Deletes an existing function definition from the Data Catalog\cr
 \link[paws.analytics:glue_delete_workflow]{delete_workflow} \tab Deletes a workflow\cr
+\link[paws.analytics:glue_describe_connection_type]{describe_connection_type} \tab The DescribeConnectionType API provides full details of the supported options for a given connection type in Glue\cr
+\link[paws.analytics:glue_describe_entity]{describe_entity} \tab Provides details regarding the entity used with the connection type, with a description of the data model for each field in the selected entity\cr
+\link[paws.analytics:glue_describe_inbound_integrations]{describe_inbound_integrations} \tab Returns a list of inbound integrations for the specified integration\cr
+\link[paws.analytics:glue_describe_integrations]{describe_integrations} \tab The API is used to retrieve a list of integrations\cr
 \link[paws.analytics:glue_get_blueprint]{get_blueprint} \tab Retrieves the details of a blueprint\cr
 \link[paws.analytics:glue_get_blueprint_run]{get_blueprint_run} \tab Retrieves the details of a blueprint run\cr
 \link[paws.analytics:glue_get_blueprint_runs]{get_blueprint_runs} \tab Retrieves the details of blueprint runs for a specified blueprint\cr
+\link[paws.analytics:glue_get_catalog]{get_catalog} \tab The name of the Catalog to retrieve\cr
 \link[paws.analytics:glue_get_catalog_import_status]{get_catalog_import_status} \tab Retrieves the status of a migration operation\cr
+\link[paws.analytics:glue_get_catalogs]{get_catalogs} \tab Retrieves all catalogs defined in a catalog in the Glue Data Catalog\cr
 \link[paws.analytics:glue_get_classifier]{get_classifier} \tab Retrieve a classifier by name\cr
 \link[paws.analytics:glue_get_classifiers]{get_classifiers} \tab Lists all classifier objects in the Data Catalog\cr
 \link[paws.analytics:glue_get_column_statistics_for_partition]{get_column_statistics_for_partition} \tab Retrieves partition statistics of columns\cr
 \link[paws.analytics:glue_get_column_statistics_for_table]{get_column_statistics_for_table} \tab Retrieves table statistics of columns\cr
 \link[paws.analytics:glue_get_column_statistics_task_run]{get_column_statistics_task_run} \tab Get the associated metadata/information for a task run, given a task run ID\cr
 \link[paws.analytics:glue_get_column_statistics_task_runs]{get_column_statistics_task_runs} \tab Retrieves information about all runs associated with the specified table\cr
+\link[paws.analytics:glue_get_column_statistics_task_settings]{get_column_statistics_task_settings} \tab Gets settings for a column statistics task\cr
 \link[paws.analytics:glue_get_connection]{get_connection} \tab Retrieves a connection definition from the Data Catalog\cr
 \link[paws.analytics:glue_get_connections]{get_connections} \tab Retrieves a list of connection definitions from the Data Catalog\cr
 \link[paws.analytics:glue_get_crawler]{get_crawler} \tab Retrieves metadata for a specified crawler\cr
@@ -192,6 +208,9 @@ Defines the public endpoint for the Glue service.
 \link[paws.analytics:glue_get_data_quality_ruleset_evaluation_run]{get_data_quality_ruleset_evaluation_run} \tab Retrieves a specific run where a ruleset is evaluated against a data source\cr
 \link[paws.analytics:glue_get_dev_endpoint]{get_dev_endpoint} \tab Retrieves information about a specified development endpoint\cr
 \link[paws.analytics:glue_get_dev_endpoints]{get_dev_endpoints} \tab Retrieves all the development endpoints in this Amazon Web Services account\cr
+\link[paws.analytics:glue_get_entity_records]{get_entity_records} \tab This API is used to query preview data from a given connection type or from a native Amazon S3 based Glue Data Catalog\cr
+\link[paws.analytics:glue_get_integration_resource_property]{get_integration_resource_property} \tab This API is used for fetching the ResourceProperty of the Glue connection (for the source) or Glue database ARN (for the target)\cr
+\link[paws.analytics:glue_get_integration_table_properties]{get_integration_table_properties} \tab This API is used to retrieve optional override properties for the tables that need to be replicated\cr
 \link[paws.analytics:glue_get_job]{get_job} \tab Retrieves an existing job definition\cr
 \link[paws.analytics:glue_get_job_bookmark]{get_job_bookmark} \tab Returns information on a job bookmark entry\cr
 \link[paws.analytics:glue_get_job_run]{get_job_run} \tab Retrieves the metadata for a given job run\cr
@@ -238,6 +257,7 @@ Defines the public endpoint for the Glue service.
 \link[paws.analytics:glue_import_catalog_to_glue]{import_catalog_to_glue} \tab Imports an existing Amazon Athena Data Catalog to Glue\cr
 \link[paws.analytics:glue_list_blueprints]{list_blueprints} \tab Lists all the blueprint names in an account\cr
 \link[paws.analytics:glue_list_column_statistics_task_runs]{list_column_statistics_task_runs} \tab List all task runs for a particular account\cr
+\link[paws.analytics:glue_list_connection_types]{list_connection_types} \tab The ListConnectionTypes API provides a discovery mechanism to learn available connection types in Glue\cr
 \link[paws.analytics:glue_list_crawlers]{list_crawlers} \tab Retrieves the names of all crawler resources in this Amazon Web Services account, or the resources with the specified tag\cr
 \link[paws.analytics:glue_list_crawls]{list_crawls} \tab Returns all the crawls of a specified crawler\cr
 \link[paws.analytics:glue_list_custom_entity_types]{list_custom_entity_types} \tab Lists all the custom patterns that have been created\cr
@@ -248,6 +268,7 @@ Defines the public endpoint for the Glue service.
 \link[paws.analytics:glue_list_data_quality_statistic_annotations]{list_data_quality_statistic_annotations} \tab Retrieve annotations for a data quality statistic\cr
 \link[paws.analytics:glue_list_data_quality_statistics]{list_data_quality_statistics} \tab Retrieves a list of data quality statistics\cr
 \link[paws.analytics:glue_list_dev_endpoints]{list_dev_endpoints} \tab Retrieves the names of all DevEndpoint resources in this Amazon Web Services account, or the resources with the specified tag\cr
+\link[paws.analytics:glue_list_entities]{list_entities} \tab Returns the available entities supported by the connection type\cr
 \link[paws.analytics:glue_list_jobs]{list_jobs} \tab Retrieves the names of all job resources in this Amazon Web Services account, or the resources with the specified tag\cr
 \link[paws.analytics:glue_list_ml_transforms]{list_ml_transforms} \tab Retrieves a sortable, filterable list of existing Glue machine learning transforms in this Amazon Web Services account, or the resources with the specified tag\cr
 \link[paws.analytics:glue_list_registries]{list_registries} \tab Returns a list of registries that you have created, with minimal registry information\cr
@@ -259,6 +280,7 @@ Defines the public endpoint for the Glue service.
 \link[paws.analytics:glue_list_triggers]{list_triggers} \tab Retrieves the names of all trigger resources in this Amazon Web Services account, or the resources with the specified tag\cr
 \link[paws.analytics:glue_list_usage_profiles]{list_usage_profiles} \tab List all the Glue usage profiles\cr
 \link[paws.analytics:glue_list_workflows]{list_workflows} \tab Lists names of workflows created in the account\cr
+\link[paws.analytics:glue_modify_integration]{modify_integration} \tab Modifies a Zero-ETL integration in the caller's account\cr
 \link[paws.analytics:glue_put_data_catalog_encryption_settings]{put_data_catalog_encryption_settings} \tab Sets the security configuration for a specified catalog\cr
 \link[paws.analytics:glue_put_data_quality_profile_annotation]{put_data_quality_profile_annotation} \tab Annotate all datapoints for a Profile\cr
 \link[paws.analytics:glue_put_resource_policy]{put_resource_policy} \tab Sets the Data Catalog resource policy for access control\cr
@@ -273,6 +295,7 @@ Defines the public endpoint for the Glue service.
 \link[paws.analytics:glue_search_tables]{search_tables} \tab Searches a set of tables based on properties in the table metadata as well as on the parent database\cr
 \link[paws.analytics:glue_start_blueprint_run]{start_blueprint_run} \tab Starts a new run of the specified blueprint\cr
 \link[paws.analytics:glue_start_column_statistics_task_run]{start_column_statistics_task_run} \tab Starts a column statistics task run, for a specified table and columns\cr
+\link[paws.analytics:glue_start_column_statistics_task_run_schedule]{start_column_statistics_task_run_schedule} \tab Starts a column statistics task run schedule\cr
 \link[paws.analytics:glue_start_crawler]{start_crawler} \tab Starts a crawl using the specified crawler, regardless of what is scheduled\cr
 \link[paws.analytics:glue_start_crawler_schedule]{start_crawler_schedule} \tab Changes the schedule state of the specified crawler to SCHEDULED, unless the crawler is already running or the schedule state is already SCHEDULED\cr
 \link[paws.analytics:glue_start_data_quality_rule_recommendation_run]{start_data_quality_rule_recommendation_run} \tab Starts a recommendation run that is used to generate rules when you don't know what rules to write\cr
@@ -285,23 +308,29 @@ Defines the public endpoint for the Glue service.
 \link[paws.analytics:glue_start_trigger]{start_trigger} \tab Starts an existing trigger\cr
 \link[paws.analytics:glue_start_workflow_run]{start_workflow_run} \tab Starts a new run of the specified workflow\cr
 \link[paws.analytics:glue_stop_column_statistics_task_run]{stop_column_statistics_task_run} \tab Stops a task run for the specified table\cr
+\link[paws.analytics:glue_stop_column_statistics_task_run_schedule]{stop_column_statistics_task_run_schedule} \tab Stops a column statistics task run schedule\cr
 \link[paws.analytics:glue_stop_crawler]{stop_crawler} \tab If the specified crawler is running, stops the crawl\cr
 \link[paws.analytics:glue_stop_crawler_schedule]{stop_crawler_schedule} \tab Sets the schedule state of the specified crawler to NOT_SCHEDULED, but does not stop the crawler if it is already running\cr
 \link[paws.analytics:glue_stop_session]{stop_session} \tab Stops the session\cr
 \link[paws.analytics:glue_stop_trigger]{stop_trigger} \tab Stops a specified trigger\cr
 \link[paws.analytics:glue_stop_workflow_run]{stop_workflow_run} \tab Stops the execution of the specified workflow run\cr
 \link[paws.analytics:glue_tag_resource]{tag_resource} \tab Adds tags to a resource\cr
+\link[paws.analytics:glue_test_connection]{test_connection} \tab Tests a connection to a service to validate the service credentials that you provide\cr
 \link[paws.analytics:glue_untag_resource]{untag_resource} \tab Removes tags from a resource\cr
 \link[paws.analytics:glue_update_blueprint]{update_blueprint} \tab Updates a registered blueprint\cr
+\link[paws.analytics:glue_update_catalog]{update_catalog} \tab Updates an existing catalog's properties in the Glue Data Catalog\cr
 \link[paws.analytics:glue_update_classifier]{update_classifier} \tab Modifies an existing classifier (a GrokClassifier, an XMLClassifier, a JsonClassifier, or a CsvClassifier, depending on which field is present)\cr
 \link[paws.analytics:glue_update_column_statistics_for_partition]{update_column_statistics_for_partition} \tab Creates or updates partition statistics of columns\cr
 \link[paws.analytics:glue_update_column_statistics_for_table]{update_column_statistics_for_table} \tab Creates or updates table statistics of columns\cr
+\link[paws.analytics:glue_update_column_statistics_task_settings]{update_column_statistics_task_settings} \tab Updates settings for a column statistics task\cr
 \link[paws.analytics:glue_update_connection]{update_connection} \tab Updates a connection definition in the Data Catalog\cr
 \link[paws.analytics:glue_update_crawler]{update_crawler} \tab Updates a crawler\cr
 \link[paws.analytics:glue_update_crawler_schedule]{update_crawler_schedule} \tab Updates the schedule of a crawler using a cron expression\cr
 \link[paws.analytics:glue_update_database]{update_database} \tab Updates an existing database definition in a Data Catalog\cr
 \link[paws.analytics:glue_update_data_quality_ruleset]{update_data_quality_ruleset} \tab Updates the specified data quality ruleset\cr
 \link[paws.analytics:glue_update_dev_endpoint]{update_dev_endpoint} \tab Updates a specified development endpoint\cr
+\link[paws.analytics:glue_update_integration_resource_property]{update_integration_resource_property} \tab This API can be used for updating the ResourceProperty of the Glue connection (for the source) or Glue database ARN (for the target)\cr
+\link[paws.analytics:glue_update_integration_table_properties]{update_integration_table_properties} \tab This API is used to provide optional override properties for the tables that need to be replicated\cr
 \link[paws.analytics:glue_update_job]{update_job} \tab Updates an existing job definition\cr
 \link[paws.analytics:glue_update_job_from_source_control]{update_job_from_source_control} \tab Synchronizes a job from the source control repository\cr
 \link[paws.analytics:glue_update_ml_transform]{update_ml_transform} \tab Updates an existing machine learning transform\cr

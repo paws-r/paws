@@ -69,15 +69,56 @@ opensearchservice_add_data_source <- function(DomainName, Name, DataSourceType, 
 }
 .opensearchservice$operations$add_data_source <- opensearchservice_add_data_source
 
-#' Attaches tags to an existing Amazon OpenSearch Service domain
+#' Adds a new data source in Amazon OpenSearch Service so that you can
+#' perform direct queries on external data
 #'
 #' @description
-#' Attaches tags to an existing Amazon OpenSearch Service domain. Tags are a set of case-sensitive key-value pairs. A domain can have up to 10 tags. For more information, see [Tagging Amazon OpenSearch Service domains](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/managedomains-awsresourcetagging.html).
+#' Adds a new data source in Amazon OpenSearch Service so that you can perform direct queries on external data.
+#'
+#' See [https://www.paws-r-sdk.com/docs/opensearchservice_add_direct_query_data_source/](https://www.paws-r-sdk.com/docs/opensearchservice_add_direct_query_data_source/) for full documentation.
+#'
+#' @param DataSourceName &#91;required&#93; A unique, user-defined label to identify the data source within your
+#' OpenSearch Service environment.
+#' @param DataSourceType &#91;required&#93; The supported Amazon Web Services service that you want to use as the
+#' source for direct queries in OpenSearch Service.
+#' @param Description An optional text field for providing additional context and details
+#' about the data source.
+#' @param OpenSearchArns &#91;required&#93; A list of Amazon Resource Names (ARNs) for the OpenSearch collections
+#' that are associated with the direct query data source.
+#' @param TagList 
+#'
+#' @keywords internal
+#'
+#' @rdname opensearchservice_add_direct_query_data_source
+opensearchservice_add_direct_query_data_source <- function(DataSourceName, DataSourceType, Description = NULL, OpenSearchArns, TagList = NULL) {
+  op <- new_operation(
+    name = "AddDirectQueryDataSource",
+    http_method = "POST",
+    http_path = "/2021-01-01/opensearch/directQueryDataSource",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .opensearchservice$add_direct_query_data_source_input(DataSourceName = DataSourceName, DataSourceType = DataSourceType, Description = Description, OpenSearchArns = OpenSearchArns, TagList = TagList)
+  output <- .opensearchservice$add_direct_query_data_source_output()
+  config <- get_config()
+  svc <- .opensearchservice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.opensearchservice$operations$add_direct_query_data_source <- opensearchservice_add_direct_query_data_source
+
+#' Attaches tags to an existing Amazon OpenSearch Service domain, data
+#' source, or application
+#'
+#' @description
+#' Attaches tags to an existing Amazon OpenSearch Service domain, data source, or application.
 #'
 #' See [https://www.paws-r-sdk.com/docs/opensearchservice_add_tags/](https://www.paws-r-sdk.com/docs/opensearchservice_add_tags/) for full documentation.
 #'
-#' @param ARN &#91;required&#93; Amazon Resource Name (ARN) for the OpenSearch Service domain to which
-#' you want to attach resource tags.
+#' @param ARN &#91;required&#93; Amazon Resource Name (ARN) for the OpenSearch Service domain, data
+#' source, or application to which you want to attach resource tags.
 #' @param TagList &#91;required&#93; List of resource tags.
 #'
 #' @keywords internal
@@ -113,11 +154,15 @@ opensearchservice_add_tags <- function(ARN, TagList) {
 #' [`describe_packages`][opensearchservice_describe_packages] to find this
 #' value.
 #' @param DomainName &#91;required&#93; Name of the domain to associate the package with.
+#' @param PrerequisitePackageIDList A list of package IDs that must be associated with the domain before the
+#' package specified in the request can be associated.
+#' @param AssociationConfiguration The configuration for associating a package with an Amazon OpenSearch
+#' Service domain.
 #'
 #' @keywords internal
 #'
 #' @rdname opensearchservice_associate_package
-opensearchservice_associate_package <- function(PackageID, DomainName) {
+opensearchservice_associate_package <- function(PackageID, DomainName, PrerequisitePackageIDList = NULL, AssociationConfiguration = NULL) {
   op <- new_operation(
     name = "AssociatePackage",
     http_method = "POST",
@@ -126,7 +171,7 @@ opensearchservice_associate_package <- function(PackageID, DomainName) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .opensearchservice$associate_package_input(PackageID = PackageID, DomainName = DomainName)
+  input <- .opensearchservice$associate_package_input(PackageID = PackageID, DomainName = DomainName, PrerequisitePackageIDList = PrerequisitePackageIDList, AssociationConfiguration = AssociationConfiguration)
   output <- .opensearchservice$associate_package_output()
   config <- get_config()
   svc <- .opensearchservice$service(config, op)
@@ -135,6 +180,40 @@ opensearchservice_associate_package <- function(PackageID, DomainName) {
   return(response)
 }
 .opensearchservice$operations$associate_package <- opensearchservice_associate_package
+
+#' Operation in the Amazon OpenSearch Service API for associating multiple
+#' packages with a domain simultaneously
+#'
+#' @description
+#' Operation in the Amazon OpenSearch Service API for associating multiple packages with a domain simultaneously.
+#'
+#' See [https://www.paws-r-sdk.com/docs/opensearchservice_associate_packages/](https://www.paws-r-sdk.com/docs/opensearchservice_associate_packages/) for full documentation.
+#'
+#' @param PackageList &#91;required&#93; A list of packages and their prerequisites to be associated with a
+#' domain.
+#' @param DomainName &#91;required&#93; 
+#'
+#' @keywords internal
+#'
+#' @rdname opensearchservice_associate_packages
+opensearchservice_associate_packages <- function(PackageList, DomainName) {
+  op <- new_operation(
+    name = "AssociatePackages",
+    http_method = "POST",
+    http_path = "/2021-01-01/packages/associateMultiple",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .opensearchservice$associate_packages_input(PackageList = PackageList, DomainName = DomainName)
+  output <- .opensearchservice$associate_packages_output()
+  config <- get_config()
+  svc <- .opensearchservice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.opensearchservice$operations$associate_packages <- opensearchservice_associate_packages
 
 #' Provides access to an Amazon OpenSearch Service domain through the use
 #' of an interface VPC endpoint
@@ -145,12 +224,13 @@ opensearchservice_associate_package <- function(PackageID, DomainName) {
 #' See [https://www.paws-r-sdk.com/docs/opensearchservice_authorize_vpc_endpoint_access/](https://www.paws-r-sdk.com/docs/opensearchservice_authorize_vpc_endpoint_access/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of the OpenSearch Service domain to provide access to.
-#' @param Account &#91;required&#93; The Amazon Web Services account ID to grant access to.
+#' @param Account The Amazon Web Services account ID to grant access to.
+#' @param Service The Amazon Web Services service SP to grant access to.
 #'
 #' @keywords internal
 #'
 #' @rdname opensearchservice_authorize_vpc_endpoint_access
-opensearchservice_authorize_vpc_endpoint_access <- function(DomainName, Account) {
+opensearchservice_authorize_vpc_endpoint_access <- function(DomainName, Account = NULL, Service = NULL) {
   op <- new_operation(
     name = "AuthorizeVpcEndpointAccess",
     http_method = "POST",
@@ -159,7 +239,7 @@ opensearchservice_authorize_vpc_endpoint_access <- function(DomainName, Account)
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .opensearchservice$authorize_vpc_endpoint_access_input(DomainName = DomainName, Account = Account)
+  input <- .opensearchservice$authorize_vpc_endpoint_access_input(DomainName = DomainName, Account = Account, Service = Service)
   output <- .opensearchservice$authorize_vpc_endpoint_access_output()
   config <- get_config()
   svc <- .opensearchservice$service(config, op)
@@ -236,6 +316,46 @@ opensearchservice_cancel_service_software_update <- function(DomainName) {
 }
 .opensearchservice$operations$cancel_service_software_update <- opensearchservice_cancel_service_software_update
 
+#' Creates an OpenSearch Application
+#'
+#' @description
+#' Creates an OpenSearch Application.
+#'
+#' See [https://www.paws-r-sdk.com/docs/opensearchservice_create_application/](https://www.paws-r-sdk.com/docs/opensearchservice_create_application/) for full documentation.
+#'
+#' @param clientToken A unique client idempotency token. It will be auto generated if not
+#' provided.
+#' @param name &#91;required&#93; Name of the OpenSearch Appication to create. Application names are
+#' unique across the applications owned by an account within an Amazon Web
+#' Services Region.
+#' @param dataSources Data sources to be associated with the OpenSearch Application.
+#' @param iamIdentityCenterOptions Settings of IAM Identity Center for the OpenSearch Application.
+#' @param appConfigs Configurations of the OpenSearch Application, inlcuding admin
+#' configuration.
+#' @param tagList 
+#'
+#' @keywords internal
+#'
+#' @rdname opensearchservice_create_application
+opensearchservice_create_application <- function(clientToken = NULL, name, dataSources = NULL, iamIdentityCenterOptions = NULL, appConfigs = NULL, tagList = NULL) {
+  op <- new_operation(
+    name = "CreateApplication",
+    http_method = "POST",
+    http_path = "/2021-01-01/opensearch/application",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .opensearchservice$create_application_input(clientToken = clientToken, name = name, dataSources = dataSources, iamIdentityCenterOptions = iamIdentityCenterOptions, appConfigs = appConfigs, tagList = tagList)
+  output <- .opensearchservice$create_application_output()
+  config <- get_config()
+  svc <- .opensearchservice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.opensearchservice$operations$create_application <- opensearchservice_create_application
+
 #' Creates an Amazon OpenSearch Service domain
 #'
 #' @description
@@ -305,6 +425,7 @@ opensearchservice_cancel_service_software_update <- function(DomainName) {
 #' @param DomainEndpointOptions Additional options for the domain endpoint, such as whether to require
 #' HTTPS for all traffic.
 #' @param AdvancedSecurityOptions Options for fine-grained access control.
+#' @param IdentityCenterOptions Options for IAM Identity Center Option control for the domain.
 #' @param TagList List of tags to add to the domain upon creation.
 #' @param AutoTuneOptions Options for Auto-Tune.
 #' @param OffPeakWindowOptions Specifies a daily 10-hour time block during which OpenSearch Service can
@@ -318,7 +439,7 @@ opensearchservice_cancel_service_software_update <- function(DomainName) {
 #' @keywords internal
 #'
 #' @rdname opensearchservice_create_domain
-opensearchservice_create_domain <- function(DomainName, EngineVersion = NULL, ClusterConfig = NULL, EBSOptions = NULL, AccessPolicies = NULL, IPAddressType = NULL, SnapshotOptions = NULL, VPCOptions = NULL, CognitoOptions = NULL, EncryptionAtRestOptions = NULL, NodeToNodeEncryptionOptions = NULL, AdvancedOptions = NULL, LogPublishingOptions = NULL, DomainEndpointOptions = NULL, AdvancedSecurityOptions = NULL, TagList = NULL, AutoTuneOptions = NULL, OffPeakWindowOptions = NULL, SoftwareUpdateOptions = NULL, AIMLOptions = NULL) {
+opensearchservice_create_domain <- function(DomainName, EngineVersion = NULL, ClusterConfig = NULL, EBSOptions = NULL, AccessPolicies = NULL, IPAddressType = NULL, SnapshotOptions = NULL, VPCOptions = NULL, CognitoOptions = NULL, EncryptionAtRestOptions = NULL, NodeToNodeEncryptionOptions = NULL, AdvancedOptions = NULL, LogPublishingOptions = NULL, DomainEndpointOptions = NULL, AdvancedSecurityOptions = NULL, IdentityCenterOptions = NULL, TagList = NULL, AutoTuneOptions = NULL, OffPeakWindowOptions = NULL, SoftwareUpdateOptions = NULL, AIMLOptions = NULL) {
   op <- new_operation(
     name = "CreateDomain",
     http_method = "POST",
@@ -327,7 +448,7 @@ opensearchservice_create_domain <- function(DomainName, EngineVersion = NULL, Cl
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .opensearchservice$create_domain_input(DomainName = DomainName, EngineVersion = EngineVersion, ClusterConfig = ClusterConfig, EBSOptions = EBSOptions, AccessPolicies = AccessPolicies, IPAddressType = IPAddressType, SnapshotOptions = SnapshotOptions, VPCOptions = VPCOptions, CognitoOptions = CognitoOptions, EncryptionAtRestOptions = EncryptionAtRestOptions, NodeToNodeEncryptionOptions = NodeToNodeEncryptionOptions, AdvancedOptions = AdvancedOptions, LogPublishingOptions = LogPublishingOptions, DomainEndpointOptions = DomainEndpointOptions, AdvancedSecurityOptions = AdvancedSecurityOptions, TagList = TagList, AutoTuneOptions = AutoTuneOptions, OffPeakWindowOptions = OffPeakWindowOptions, SoftwareUpdateOptions = SoftwareUpdateOptions, AIMLOptions = AIMLOptions)
+  input <- .opensearchservice$create_domain_input(DomainName = DomainName, EngineVersion = EngineVersion, ClusterConfig = ClusterConfig, EBSOptions = EBSOptions, AccessPolicies = AccessPolicies, IPAddressType = IPAddressType, SnapshotOptions = SnapshotOptions, VPCOptions = VPCOptions, CognitoOptions = CognitoOptions, EncryptionAtRestOptions = EncryptionAtRestOptions, NodeToNodeEncryptionOptions = NodeToNodeEncryptionOptions, AdvancedOptions = AdvancedOptions, LogPublishingOptions = LogPublishingOptions, DomainEndpointOptions = DomainEndpointOptions, AdvancedSecurityOptions = AdvancedSecurityOptions, IdentityCenterOptions = IdentityCenterOptions, TagList = TagList, AutoTuneOptions = AutoTuneOptions, OffPeakWindowOptions = OffPeakWindowOptions, SoftwareUpdateOptions = SoftwareUpdateOptions, AIMLOptions = AIMLOptions)
   output <- .opensearchservice$create_domain_output()
   config <- get_config()
   svc <- .opensearchservice$service(config, op)
@@ -384,11 +505,18 @@ opensearchservice_create_outbound_connection <- function(LocalDomainInfo, Remote
 #' @param PackageType &#91;required&#93; The type of package.
 #' @param PackageDescription Description of the package.
 #' @param PackageSource &#91;required&#93; The Amazon S3 location from which to import the package.
+#' @param PackageConfiguration The configuration parameters for the package being created.
+#' @param EngineVersion The version of the Amazon OpenSearch Service engine for which is
+#' compatible with the package. This can only be specified for package type
+#' `ZIP-PLUGIN`
+#' @param PackageVendingOptions The vending options for the package being created. They determine if the
+#' package can be vended to other users.
+#' @param PackageEncryptionOptions The encryption parameters for the package being created.
 #'
 #' @keywords internal
 #'
 #' @rdname opensearchservice_create_package
-opensearchservice_create_package <- function(PackageName, PackageType, PackageDescription = NULL, PackageSource) {
+opensearchservice_create_package <- function(PackageName, PackageType, PackageDescription = NULL, PackageSource, PackageConfiguration = NULL, EngineVersion = NULL, PackageVendingOptions = NULL, PackageEncryptionOptions = NULL) {
   op <- new_operation(
     name = "CreatePackage",
     http_method = "POST",
@@ -397,7 +525,7 @@ opensearchservice_create_package <- function(PackageName, PackageType, PackageDe
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .opensearchservice$create_package_input(PackageName = PackageName, PackageType = PackageType, PackageDescription = PackageDescription, PackageSource = PackageSource)
+  input <- .opensearchservice$create_package_input(PackageName = PackageName, PackageType = PackageType, PackageDescription = PackageDescription, PackageSource = PackageSource, PackageConfiguration = PackageConfiguration, EngineVersion = EngineVersion, PackageVendingOptions = PackageVendingOptions, PackageEncryptionOptions = PackageEncryptionOptions)
   output <- .opensearchservice$create_package_output()
   config <- get_config()
   svc <- .opensearchservice$service(config, op)
@@ -440,6 +568,38 @@ opensearchservice_create_vpc_endpoint <- function(DomainArn, VpcOptions, ClientT
 }
 .opensearchservice$operations$create_vpc_endpoint <- opensearchservice_create_vpc_endpoint
 
+#' Deletes an existing OpenSearch Application
+#'
+#' @description
+#' Deletes an existing OpenSearch Application.
+#'
+#' See [https://www.paws-r-sdk.com/docs/opensearchservice_delete_application/](https://www.paws-r-sdk.com/docs/opensearchservice_delete_application/) for full documentation.
+#'
+#' @param id &#91;required&#93; Unique identifier for the OpenSearch Application that you want to
+#' delete.
+#'
+#' @keywords internal
+#'
+#' @rdname opensearchservice_delete_application
+opensearchservice_delete_application <- function(id) {
+  op <- new_operation(
+    name = "DeleteApplication",
+    http_method = "DELETE",
+    http_path = "/2021-01-01/opensearch/application/{id}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .opensearchservice$delete_application_input(id = id)
+  output <- .opensearchservice$delete_application_output()
+  config <- get_config()
+  svc <- .opensearchservice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.opensearchservice$operations$delete_application <- opensearchservice_delete_application
+
 #' Deletes a direct-query data source
 #'
 #' @description
@@ -471,6 +631,39 @@ opensearchservice_delete_data_source <- function(DomainName, Name) {
   return(response)
 }
 .opensearchservice$operations$delete_data_source <- opensearchservice_delete_data_source
+
+#' Deletes a previously configured direct query data source from Amazon
+#' OpenSearch Service
+#'
+#' @description
+#' Deletes a previously configured direct query data source from Amazon OpenSearch Service.
+#'
+#' See [https://www.paws-r-sdk.com/docs/opensearchservice_delete_direct_query_data_source/](https://www.paws-r-sdk.com/docs/opensearchservice_delete_direct_query_data_source/) for full documentation.
+#'
+#' @param DataSourceName &#91;required&#93; A unique, user-defined label to identify the data source within your
+#' OpenSearch Service environment.
+#'
+#' @keywords internal
+#'
+#' @rdname opensearchservice_delete_direct_query_data_source
+opensearchservice_delete_direct_query_data_source <- function(DataSourceName) {
+  op <- new_operation(
+    name = "DeleteDirectQueryDataSource",
+    http_method = "DELETE",
+    http_path = "/2021-01-01/opensearch/directQueryDataSource/{DataSourceName}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .opensearchservice$delete_direct_query_data_source_input(DataSourceName = DataSourceName)
+  output <- .opensearchservice$delete_direct_query_data_source_output()
+  config <- get_config()
+  svc <- .opensearchservice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.opensearchservice$operations$delete_direct_query_data_source <- opensearchservice_delete_direct_query_data_source
 
 #' Deletes an Amazon OpenSearch Service domain and all of its data
 #'
@@ -691,7 +884,7 @@ opensearchservice_describe_domain_auto_tunes <- function(DomainName, MaxResults 
     http_method = "GET",
     http_path = "/2021-01-01/opensearch/domain/{DomainName}/autoTunes",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .opensearchservice$describe_domain_auto_tunes_input(DomainName = DomainName, MaxResults = MaxResults, NextToken = NextToken)
@@ -934,7 +1127,7 @@ opensearchservice_describe_inbound_connections <- function(Filters = NULL, MaxRe
     http_method = "POST",
     http_path = "/2021-01-01/opensearch/cc/inboundConnection/search",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .opensearchservice$describe_inbound_connections_input(Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
@@ -1011,7 +1204,7 @@ opensearchservice_describe_outbound_connections <- function(Filters = NULL, MaxR
     http_method = "POST",
     http_path = "/2021-01-01/opensearch/cc/outboundConnection/search",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .opensearchservice$describe_outbound_connections_input(Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
@@ -1049,7 +1242,7 @@ opensearchservice_describe_packages <- function(Filters = NULL, MaxResults = NUL
     http_method = "POST",
     http_path = "/2021-01-01/packages/describe",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .opensearchservice$describe_packages_input(Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
@@ -1091,7 +1284,7 @@ opensearchservice_describe_reserved_instance_offerings <- function(ReservedInsta
     http_method = "GET",
     http_path = "/2021-01-01/opensearch/reservedInstanceOfferings",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .opensearchservice$describe_reserved_instance_offerings_input(ReservedInstanceOfferingId = ReservedInstanceOfferingId, MaxResults = MaxResults, NextToken = NextToken)
@@ -1133,7 +1326,7 @@ opensearchservice_describe_reserved_instances <- function(ReservedInstanceId = N
     http_method = "GET",
     http_path = "/2021-01-01/opensearch/reservedInstances",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .opensearchservice$describe_reserved_instances_input(ReservedInstanceId = ReservedInstanceId, MaxResults = MaxResults, NextToken = NextToken)
@@ -1211,6 +1404,69 @@ opensearchservice_dissociate_package <- function(PackageID, DomainName) {
 }
 .opensearchservice$operations$dissociate_package <- opensearchservice_dissociate_package
 
+#' Dissociates multiple packages from a domain simulatneously
+#'
+#' @description
+#' Dissociates multiple packages from a domain simulatneously.
+#'
+#' See [https://www.paws-r-sdk.com/docs/opensearchservice_dissociate_packages/](https://www.paws-r-sdk.com/docs/opensearchservice_dissociate_packages/) for full documentation.
+#'
+#' @param PackageList &#91;required&#93; A list of package IDs to be dissociated from a domain.
+#' @param DomainName &#91;required&#93; 
+#'
+#' @keywords internal
+#'
+#' @rdname opensearchservice_dissociate_packages
+opensearchservice_dissociate_packages <- function(PackageList, DomainName) {
+  op <- new_operation(
+    name = "DissociatePackages",
+    http_method = "POST",
+    http_path = "/2021-01-01/packages/dissociateMultiple",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .opensearchservice$dissociate_packages_input(PackageList = PackageList, DomainName = DomainName)
+  output <- .opensearchservice$dissociate_packages_output()
+  config <- get_config()
+  svc <- .opensearchservice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.opensearchservice$operations$dissociate_packages <- opensearchservice_dissociate_packages
+
+#' Check the configuration and status of an existing OpenSearch Application
+#'
+#' @description
+#' Check the configuration and status of an existing OpenSearch Application.
+#'
+#' See [https://www.paws-r-sdk.com/docs/opensearchservice_get_application/](https://www.paws-r-sdk.com/docs/opensearchservice_get_application/) for full documentation.
+#'
+#' @param id &#91;required&#93; Unique identifier of the checked OpenSearch Application.
+#'
+#' @keywords internal
+#'
+#' @rdname opensearchservice_get_application
+opensearchservice_get_application <- function(id) {
+  op <- new_operation(
+    name = "GetApplication",
+    http_method = "GET",
+    http_path = "/2021-01-01/opensearch/application/{id}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .opensearchservice$get_application_input(id = id)
+  output <- .opensearchservice$get_application_output()
+  config <- get_config()
+  svc <- .opensearchservice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.opensearchservice$operations$get_application <- opensearchservice_get_application
+
 #' Returns a map of OpenSearch or Elasticsearch versions and the versions
 #' you can upgrade them to
 #'
@@ -1276,6 +1532,39 @@ opensearchservice_get_data_source <- function(DomainName, Name) {
 }
 .opensearchservice$operations$get_data_source <- opensearchservice_get_data_source
 
+#' Returns detailed configuration information for a specific direct query
+#' data source in Amazon OpenSearch Service
+#'
+#' @description
+#' Returns detailed configuration information for a specific direct query data source in Amazon OpenSearch Service.
+#'
+#' See [https://www.paws-r-sdk.com/docs/opensearchservice_get_direct_query_data_source/](https://www.paws-r-sdk.com/docs/opensearchservice_get_direct_query_data_source/) for full documentation.
+#'
+#' @param DataSourceName &#91;required&#93; A unique, user-defined label that identifies the data source within your
+#' OpenSearch Service environment.
+#'
+#' @keywords internal
+#'
+#' @rdname opensearchservice_get_direct_query_data_source
+opensearchservice_get_direct_query_data_source <- function(DataSourceName) {
+  op <- new_operation(
+    name = "GetDirectQueryDataSource",
+    http_method = "GET",
+    http_path = "/2021-01-01/opensearch/directQueryDataSource/{DataSourceName}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .opensearchservice$get_direct_query_data_source_input(DataSourceName = DataSourceName)
+  output <- .opensearchservice$get_direct_query_data_source_output()
+  config <- get_config()
+  svc <- .opensearchservice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.opensearchservice$operations$get_direct_query_data_source <- opensearchservice_get_direct_query_data_source
+
 #' The status of the maintenance action
 #'
 #' @description
@@ -1336,7 +1625,7 @@ opensearchservice_get_package_version_history <- function(PackageID, MaxResults 
     http_method = "GET",
     http_path = "/2021-01-01/packages/{PackageID}/history",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .opensearchservice$get_package_version_history_input(PackageID = PackageID, MaxResults = MaxResults, NextToken = NextToken)
@@ -1376,7 +1665,7 @@ opensearchservice_get_upgrade_history <- function(DomainName, MaxResults = NULL,
     http_method = "GET",
     http_path = "/2021-01-01/opensearch/upgradeDomain/{DomainName}/history",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .opensearchservice$get_upgrade_history_input(DomainName = DomainName, MaxResults = MaxResults, NextToken = NextToken)
@@ -1421,6 +1710,41 @@ opensearchservice_get_upgrade_status <- function(DomainName) {
 }
 .opensearchservice$operations$get_upgrade_status <- opensearchservice_get_upgrade_status
 
+#' List all OpenSearch Applications under your account
+#'
+#' @description
+#' List all OpenSearch Applications under your account.
+#'
+#' See [https://www.paws-r-sdk.com/docs/opensearchservice_list_applications/](https://www.paws-r-sdk.com/docs/opensearchservice_list_applications/) for full documentation.
+#'
+#' @param nextToken 
+#' @param statuses OpenSearch Application Status can be used as filters for the listing
+#' request. Possible values are `CREATING`, `UPDATING`, `DELETING`,
+#' `FAILED`, `ACTIVE`, and `DELETED`.
+#' @param maxResults 
+#'
+#' @keywords internal
+#'
+#' @rdname opensearchservice_list_applications
+opensearchservice_list_applications <- function(nextToken = NULL, statuses = NULL, maxResults = NULL) {
+  op <- new_operation(
+    name = "ListApplications",
+    http_method = "GET",
+    http_path = "/2021-01-01/opensearch/list-applications",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "ApplicationSummaries"),
+    stream_api = FALSE
+  )
+  input <- .opensearchservice$list_applications_input(nextToken = nextToken, statuses = statuses, maxResults = maxResults)
+  output <- .opensearchservice$list_applications_output()
+  config <- get_config()
+  svc <- .opensearchservice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.opensearchservice$operations$list_applications <- opensearchservice_list_applications
+
 #' Lists direct-query data sources for a specific domain
 #'
 #' @description
@@ -1452,6 +1776,38 @@ opensearchservice_list_data_sources <- function(DomainName) {
 }
 .opensearchservice$operations$list_data_sources <- opensearchservice_list_data_sources
 
+#' Lists an inventory of all the direct query data sources that you have
+#' configured within Amazon OpenSearch Service
+#'
+#' @description
+#' Lists an inventory of all the direct query data sources that you have configured within Amazon OpenSearch Service.
+#'
+#' See [https://www.paws-r-sdk.com/docs/opensearchservice_list_direct_query_data_sources/](https://www.paws-r-sdk.com/docs/opensearchservice_list_direct_query_data_sources/) for full documentation.
+#'
+#' @param NextToken 
+#'
+#' @keywords internal
+#'
+#' @rdname opensearchservice_list_direct_query_data_sources
+opensearchservice_list_direct_query_data_sources <- function(NextToken = NULL) {
+  op <- new_operation(
+    name = "ListDirectQueryDataSources",
+    http_method = "GET",
+    http_path = "/2021-01-01/opensearch/directQueryDataSource",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .opensearchservice$list_direct_query_data_sources_input(NextToken = NextToken)
+  output <- .opensearchservice$list_direct_query_data_sources_output()
+  config <- get_config()
+  svc <- .opensearchservice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.opensearchservice$operations$list_direct_query_data_sources <- opensearchservice_list_direct_query_data_sources
+
 #' A list of maintenance actions for the domain
 #'
 #' @description
@@ -1480,7 +1836,7 @@ opensearchservice_list_domain_maintenances <- function(DomainName, Action = NULL
     http_method = "GET",
     http_path = "/2021-01-01/opensearch/domain/{DomainName}/domainMaintenances",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .opensearchservice$list_domain_maintenances_input(DomainName = DomainName, Action = Action, Status = Status, MaxResults = MaxResults, NextToken = NextToken)
@@ -1553,7 +1909,7 @@ opensearchservice_list_domains_for_package <- function(PackageID, MaxResults = N
     http_method = "GET",
     http_path = "/2021-01-01/packages/{PackageID}/domains",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .opensearchservice$list_domains_for_package_input(PackageID = PackageID, MaxResults = MaxResults, NextToken = NextToken)
@@ -1599,7 +1955,7 @@ opensearchservice_list_instance_type_details <- function(EngineVersion, DomainNa
     http_method = "GET",
     http_path = "/2021-01-01/opensearch/instanceTypeDetails/{EngineVersion}",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .opensearchservice$list_instance_type_details_input(EngineVersion = EngineVersion, DomainName = DomainName, MaxResults = MaxResults, NextToken = NextToken, RetrieveAZs = RetrieveAZs, InstanceType = InstanceType)
@@ -1638,7 +1994,7 @@ opensearchservice_list_packages_for_domain <- function(DomainName, MaxResults = 
     http_method = "GET",
     http_path = "/2021-01-01/domain/{DomainName}/packages",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .opensearchservice$list_packages_for_domain_input(DomainName = DomainName, MaxResults = MaxResults, NextToken = NextToken)
@@ -1678,7 +2034,7 @@ opensearchservice_list_scheduled_actions <- function(DomainName, MaxResults = NU
     http_method = "GET",
     http_path = "/2021-01-01/opensearch/domain/{DomainName}/scheduledActions",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .opensearchservice$list_scheduled_actions_input(DomainName = DomainName, MaxResults = MaxResults, NextToken = NextToken)
@@ -1691,14 +2047,16 @@ opensearchservice_list_scheduled_actions <- function(DomainName, MaxResults = NU
 }
 .opensearchservice$operations$list_scheduled_actions <- opensearchservice_list_scheduled_actions
 
-#' Returns all resource tags for an Amazon OpenSearch Service domain
+#' Returns all resource tags for an Amazon OpenSearch Service domain, data
+#' source, or application
 #'
 #' @description
-#' Returns all resource tags for an Amazon OpenSearch Service domain. For more information, see [Tagging Amazon OpenSearch Service domains](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/managedomains-awsresourcetagging.html).
+#' Returns all resource tags for an Amazon OpenSearch Service domain, data source, or application. For more information, see [Tagging Amazon OpenSearch Service resources](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/managedomains-awsresourcetagging.html).
 #'
 #' See [https://www.paws-r-sdk.com/docs/opensearchservice_list_tags/](https://www.paws-r-sdk.com/docs/opensearchservice_list_tags/) for full documentation.
 #'
-#' @param ARN &#91;required&#93; Amazon Resource Name (ARN) for the domain to view tags for.
+#' @param ARN &#91;required&#93; Amazon Resource Name (ARN) for the domain, data source, or application
+#' to view tags for.
 #'
 #' @keywords internal
 #'
@@ -1747,7 +2105,7 @@ opensearchservice_list_versions <- function(MaxResults = NULL, NextToken = NULL)
     http_method = "GET",
     http_path = "/2021-01-01/opensearch/versions",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .opensearchservice$list_versions_input(MaxResults = MaxResults, NextToken = NextToken)
@@ -1938,16 +2296,17 @@ opensearchservice_reject_inbound_connection <- function(ConnectionId) {
 .opensearchservice$operations$reject_inbound_connection <- opensearchservice_reject_inbound_connection
 
 #' Removes the specified set of tags from an Amazon OpenSearch Service
-#' domain
+#' domain, data source, or application
 #'
 #' @description
-#' Removes the specified set of tags from an Amazon OpenSearch Service domain. For more information, see [Tagging Amazon OpenSearch Service domains](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/#managedomains-awsresorcetagging).
+#' Removes the specified set of tags from an Amazon OpenSearch Service domain, data source, or application. For more information, see [Tagging Amazon OpenSearch Service resources](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/#managedomains-awsresorcetagging).
 #'
 #' See [https://www.paws-r-sdk.com/docs/opensearchservice_remove_tags/](https://www.paws-r-sdk.com/docs/opensearchservice_remove_tags/) for full documentation.
 #'
-#' @param ARN &#91;required&#93; The Amazon Resource Name (ARN) of the domain from which you want to
-#' delete the specified tags.
-#' @param TagKeys &#91;required&#93; The list of tag keys to remove from the domain.
+#' @param ARN &#91;required&#93; The Amazon Resource Name (ARN) of the domain, data source, or
+#' application from which you want to delete the specified tags.
+#' @param TagKeys &#91;required&#93; The list of tag keys to remove from the domain, data source, or
+#' application.
 #'
 #' @keywords internal
 #'
@@ -1980,12 +2339,13 @@ opensearchservice_remove_tags <- function(ARN, TagKeys) {
 #' See [https://www.paws-r-sdk.com/docs/opensearchservice_revoke_vpc_endpoint_access/](https://www.paws-r-sdk.com/docs/opensearchservice_revoke_vpc_endpoint_access/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of the OpenSearch Service domain.
-#' @param Account &#91;required&#93; The account ID to revoke access from.
+#' @param Account The account ID to revoke access from.
+#' @param Service The service SP to revoke access from.
 #'
 #' @keywords internal
 #'
 #' @rdname opensearchservice_revoke_vpc_endpoint_access
-opensearchservice_revoke_vpc_endpoint_access <- function(DomainName, Account) {
+opensearchservice_revoke_vpc_endpoint_access <- function(DomainName, Account = NULL, Service = NULL) {
   op <- new_operation(
     name = "RevokeVpcEndpointAccess",
     http_method = "POST",
@@ -1994,7 +2354,7 @@ opensearchservice_revoke_vpc_endpoint_access <- function(DomainName, Account) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .opensearchservice$revoke_vpc_endpoint_access_input(DomainName = DomainName, Account = Account)
+  input <- .opensearchservice$revoke_vpc_endpoint_access_input(DomainName = DomainName, Account = Account, Service = Service)
   output <- .opensearchservice$revoke_vpc_endpoint_access_output()
   config <- get_config()
   svc <- .opensearchservice$service(config, op)
@@ -2089,6 +2449,39 @@ opensearchservice_start_service_software_update <- function(DomainName, Schedule
 }
 .opensearchservice$operations$start_service_software_update <- opensearchservice_start_service_software_update
 
+#' Update the OpenSearch Application
+#'
+#' @description
+#' Update the OpenSearch Application.
+#'
+#' See [https://www.paws-r-sdk.com/docs/opensearchservice_update_application/](https://www.paws-r-sdk.com/docs/opensearchservice_update_application/) for full documentation.
+#'
+#' @param id &#91;required&#93; Unique identifier of the OpenSearch Application to be updated.
+#' @param dataSources Data sources to be associated with the OpenSearch Application.
+#' @param appConfigs Configurations to be changed for the OpenSearch Application.
+#'
+#' @keywords internal
+#'
+#' @rdname opensearchservice_update_application
+opensearchservice_update_application <- function(id, dataSources = NULL, appConfigs = NULL) {
+  op <- new_operation(
+    name = "UpdateApplication",
+    http_method = "PUT",
+    http_path = "/2021-01-01/opensearch/application/{id}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .opensearchservice$update_application_input(id = id, dataSources = dataSources, appConfigs = appConfigs)
+  output <- .opensearchservice$update_application_output()
+  config <- get_config()
+  svc <- .opensearchservice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.opensearchservice$operations$update_application <- opensearchservice_update_application
+
 #' Updates a direct-query data source
 #'
 #' @description
@@ -2123,6 +2516,45 @@ opensearchservice_update_data_source <- function(DomainName, Name, DataSourceTyp
   return(response)
 }
 .opensearchservice$operations$update_data_source <- opensearchservice_update_data_source
+
+#' Updates the configuration or properties of an existing direct query data
+#' source in Amazon OpenSearch Service
+#'
+#' @description
+#' Updates the configuration or properties of an existing direct query data source in Amazon OpenSearch Service.
+#'
+#' See [https://www.paws-r-sdk.com/docs/opensearchservice_update_direct_query_data_source/](https://www.paws-r-sdk.com/docs/opensearchservice_update_direct_query_data_source/) for full documentation.
+#'
+#' @param DataSourceName &#91;required&#93; A unique, user-defined label to identify the data source within your
+#' OpenSearch Service environment.
+#' @param DataSourceType &#91;required&#93; The supported Amazon Web Services service that you want to use as the
+#' source for direct queries in OpenSearch Service.
+#' @param Description An optional text field for providing additional context and details
+#' about the data source.
+#' @param OpenSearchArns &#91;required&#93; A list of Amazon Resource Names (ARNs) for the OpenSearch collections
+#' that are associated with the direct query data source.
+#'
+#' @keywords internal
+#'
+#' @rdname opensearchservice_update_direct_query_data_source
+opensearchservice_update_direct_query_data_source <- function(DataSourceName, DataSourceType, Description = NULL, OpenSearchArns) {
+  op <- new_operation(
+    name = "UpdateDirectQueryDataSource",
+    http_method = "PUT",
+    http_path = "/2021-01-01/opensearch/directQueryDataSource/{DataSourceName}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .opensearchservice$update_direct_query_data_source_input(DataSourceName = DataSourceName, DataSourceType = DataSourceType, Description = Description, OpenSearchArns = OpenSearchArns)
+  output <- .opensearchservice$update_direct_query_data_source_output()
+  config <- get_config()
+  svc <- .opensearchservice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.opensearchservice$operations$update_direct_query_data_source <- opensearchservice_update_direct_query_data_source
 
 #' Modifies the cluster configuration of the specified Amazon OpenSearch
 #' Service domain
@@ -2179,6 +2611,7 @@ opensearchservice_update_data_source <- function(DomainName, Name, DataSourceTyp
 #' HTTPS for all traffic.
 #' @param NodeToNodeEncryptionOptions Node-to-node encryption options for the domain.
 #' @param AdvancedSecurityOptions Options for fine-grained access control.
+#' @param IdentityCenterOptions 
 #' @param AutoTuneOptions Options for Auto-Tune.
 #' @param DryRun This flag, when set to True, specifies whether the `UpdateDomain`
 #' request should return the results of a dry run analysis without actually
@@ -2199,7 +2632,7 @@ opensearchservice_update_data_source <- function(DomainName, Name, DataSourceTyp
 #' @keywords internal
 #'
 #' @rdname opensearchservice_update_domain_config
-opensearchservice_update_domain_config <- function(DomainName, ClusterConfig = NULL, EBSOptions = NULL, SnapshotOptions = NULL, VPCOptions = NULL, CognitoOptions = NULL, AdvancedOptions = NULL, AccessPolicies = NULL, IPAddressType = NULL, LogPublishingOptions = NULL, EncryptionAtRestOptions = NULL, DomainEndpointOptions = NULL, NodeToNodeEncryptionOptions = NULL, AdvancedSecurityOptions = NULL, AutoTuneOptions = NULL, DryRun = NULL, DryRunMode = NULL, OffPeakWindowOptions = NULL, SoftwareUpdateOptions = NULL, AIMLOptions = NULL) {
+opensearchservice_update_domain_config <- function(DomainName, ClusterConfig = NULL, EBSOptions = NULL, SnapshotOptions = NULL, VPCOptions = NULL, CognitoOptions = NULL, AdvancedOptions = NULL, AccessPolicies = NULL, IPAddressType = NULL, LogPublishingOptions = NULL, EncryptionAtRestOptions = NULL, DomainEndpointOptions = NULL, NodeToNodeEncryptionOptions = NULL, AdvancedSecurityOptions = NULL, IdentityCenterOptions = NULL, AutoTuneOptions = NULL, DryRun = NULL, DryRunMode = NULL, OffPeakWindowOptions = NULL, SoftwareUpdateOptions = NULL, AIMLOptions = NULL) {
   op <- new_operation(
     name = "UpdateDomainConfig",
     http_method = "POST",
@@ -2208,7 +2641,7 @@ opensearchservice_update_domain_config <- function(DomainName, ClusterConfig = N
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .opensearchservice$update_domain_config_input(DomainName = DomainName, ClusterConfig = ClusterConfig, EBSOptions = EBSOptions, SnapshotOptions = SnapshotOptions, VPCOptions = VPCOptions, CognitoOptions = CognitoOptions, AdvancedOptions = AdvancedOptions, AccessPolicies = AccessPolicies, IPAddressType = IPAddressType, LogPublishingOptions = LogPublishingOptions, EncryptionAtRestOptions = EncryptionAtRestOptions, DomainEndpointOptions = DomainEndpointOptions, NodeToNodeEncryptionOptions = NodeToNodeEncryptionOptions, AdvancedSecurityOptions = AdvancedSecurityOptions, AutoTuneOptions = AutoTuneOptions, DryRun = DryRun, DryRunMode = DryRunMode, OffPeakWindowOptions = OffPeakWindowOptions, SoftwareUpdateOptions = SoftwareUpdateOptions, AIMLOptions = AIMLOptions)
+  input <- .opensearchservice$update_domain_config_input(DomainName = DomainName, ClusterConfig = ClusterConfig, EBSOptions = EBSOptions, SnapshotOptions = SnapshotOptions, VPCOptions = VPCOptions, CognitoOptions = CognitoOptions, AdvancedOptions = AdvancedOptions, AccessPolicies = AccessPolicies, IPAddressType = IPAddressType, LogPublishingOptions = LogPublishingOptions, EncryptionAtRestOptions = EncryptionAtRestOptions, DomainEndpointOptions = DomainEndpointOptions, NodeToNodeEncryptionOptions = NodeToNodeEncryptionOptions, AdvancedSecurityOptions = AdvancedSecurityOptions, IdentityCenterOptions = IdentityCenterOptions, AutoTuneOptions = AutoTuneOptions, DryRun = DryRun, DryRunMode = DryRunMode, OffPeakWindowOptions = OffPeakWindowOptions, SoftwareUpdateOptions = SoftwareUpdateOptions, AIMLOptions = AIMLOptions)
   output <- .opensearchservice$update_domain_config_output()
   config <- get_config()
   svc <- .opensearchservice$service(config, op)
@@ -2230,11 +2663,13 @@ opensearchservice_update_domain_config <- function(DomainName, ClusterConfig = N
 #' @param PackageDescription A new description of the package.
 #' @param CommitMessage Commit message for the updated file, which is shown as part of
 #' `GetPackageVersionHistoryResponse`.
+#' @param PackageConfiguration The updated configuration details for a package.
+#' @param PackageEncryptionOptions Encryption options for a package.
 #'
 #' @keywords internal
 #'
 #' @rdname opensearchservice_update_package
-opensearchservice_update_package <- function(PackageID, PackageSource, PackageDescription = NULL, CommitMessage = NULL) {
+opensearchservice_update_package <- function(PackageID, PackageSource, PackageDescription = NULL, CommitMessage = NULL, PackageConfiguration = NULL, PackageEncryptionOptions = NULL) {
   op <- new_operation(
     name = "UpdatePackage",
     http_method = "POST",
@@ -2243,7 +2678,7 @@ opensearchservice_update_package <- function(PackageID, PackageSource, PackageDe
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .opensearchservice$update_package_input(PackageID = PackageID, PackageSource = PackageSource, PackageDescription = PackageDescription, CommitMessage = CommitMessage)
+  input <- .opensearchservice$update_package_input(PackageID = PackageID, PackageSource = PackageSource, PackageDescription = PackageDescription, CommitMessage = CommitMessage, PackageConfiguration = PackageConfiguration, PackageEncryptionOptions = PackageEncryptionOptions)
   output <- .opensearchservice$update_package_output()
   config <- get_config()
   svc <- .opensearchservice$service(config, op)
@@ -2252,6 +2687,40 @@ opensearchservice_update_package <- function(PackageID, PackageSource, PackageDe
   return(response)
 }
 .opensearchservice$operations$update_package <- opensearchservice_update_package
+
+#' Updates the scope of a package
+#'
+#' @description
+#' Updates the scope of a package. Scope of the package defines users who can view and associate a package.
+#'
+#' See [https://www.paws-r-sdk.com/docs/opensearchservice_update_package_scope/](https://www.paws-r-sdk.com/docs/opensearchservice_update_package_scope/) for full documentation.
+#'
+#' @param PackageID &#91;required&#93; ID of the package whose scope is being updated.
+#' @param Operation &#91;required&#93; The operation to perform on the package scope (e.g., add/remove/override
+#' users).
+#' @param PackageUserList &#91;required&#93; List of users to be added or removed from the package scope.
+#'
+#' @keywords internal
+#'
+#' @rdname opensearchservice_update_package_scope
+opensearchservice_update_package_scope <- function(PackageID, Operation, PackageUserList) {
+  op <- new_operation(
+    name = "UpdatePackageScope",
+    http_method = "POST",
+    http_path = "/2021-01-01/packages/updateScope",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .opensearchservice$update_package_scope_input(PackageID = PackageID, Operation = Operation, PackageUserList = PackageUserList)
+  output <- .opensearchservice$update_package_scope_output()
+  config <- get_config()
+  svc <- .opensearchservice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.opensearchservice$operations$update_package_scope <- opensearchservice_update_package_scope
 
 #' Reschedules a planned domain configuration change for a later time
 #'

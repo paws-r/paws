@@ -6,11 +6,14 @@
 account and Amazon Web Services Region}
 \usage{
 paymentcryptographycontrolplane_list_aliases(
+  KeyArn = NULL,
   NextToken = NULL,
   MaxResults = NULL
 )
 }
 \arguments{
+\item{KeyArn}{The \code{keyARN} for which you want to list all aliases.}
+
 \item{NextToken}{Use this parameter in a subsequent request after you receive a response
 with truncated results. Set it to the value of \code{NextToken} from the
 truncated response you just received.}
@@ -24,7 +27,7 @@ This value is optional. If you include a value, it must be between 1 and
 100, inclusive. If you do not include a value, it defaults to 50.}
 }
 \description{
-Lists the aliases for all keys in the caller's Amazon Web Services account and Amazon Web Services Region. You can filter the list of aliases. For more information, see \href{https://docs.aws.amazon.com/payment-cryptography/latest/userguide/keys-managealias.html}{Using aliases} in the \emph{Amazon Web Services Payment Cryptography User Guide}.
+Lists the aliases for all keys in the caller's Amazon Web Services account and Amazon Web Services Region. You can filter the aliases by \code{keyARN}. For more information, see \href{https://docs.aws.amazon.com/payment-cryptography/latest/userguide/keys-managealias.html}{Using aliases} in the \emph{Amazon Web Services Payment Cryptography User Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/paymentcryptographycontrolplane_list_aliases/} for full documentation.
 }

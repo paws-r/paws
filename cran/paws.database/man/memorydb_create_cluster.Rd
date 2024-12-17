@@ -7,6 +7,7 @@
 memorydb_create_cluster(
   ClusterName,
   NodeType,
+  MultiRegionClusterName = NULL,
   ParameterGroupName = NULL,
   Description = NULL,
   NumShards = NULL,
@@ -24,6 +25,7 @@ memorydb_create_cluster(
   Tags = NULL,
   SnapshotWindow = NULL,
   ACLName,
+  Engine = NULL,
   EngineVersion = NULL,
   AutoMinorVersionUpgrade = NULL,
   DataTiering = NULL
@@ -34,6 +36,8 @@ memorydb_create_cluster(
 the cluster identifier.}
 
 \item{NodeType}{[required] The compute and memory capacity of the nodes in the cluster.}
+
+\item{MultiRegionClusterName}{The name of the multi-Region cluster to be created.}
 
 \item{ParameterGroupName}{The name of the parameter group associated with the cluster.}
 
@@ -103,6 +107,8 @@ If you do not specify this parameter, MemoryDB automatically chooses an
 appropriate time range.}
 
 \item{ACLName}{[required] The name of the Access Control List to associate with the cluster.}
+
+\item{Engine}{The name of the engine to be used for the cluster.}
 
 \item{EngineVersion}{The version number of the Redis OSS engine to be used for the cluster.}
 

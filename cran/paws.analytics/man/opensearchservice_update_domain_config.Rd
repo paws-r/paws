@@ -20,6 +20,7 @@ opensearchservice_update_domain_config(
   DomainEndpointOptions = NULL,
   NodeToNodeEncryptionOptions = NULL,
   AdvancedSecurityOptions = NULL,
+  IdentityCenterOptions = NULL,
   AutoTuneOptions = NULL,
   DryRun = NULL,
   DryRunMode = NULL,
@@ -85,6 +86,8 @@ HTTPS for all traffic.}
 \item{NodeToNodeEncryptionOptions}{Node-to-node encryption options for the domain.}
 
 \item{AdvancedSecurityOptions}{Options for fine-grained access control.}
+
+\item{IdentityCenterOptions}{}
 
 \item{AutoTuneOptions}{Options for Auto-Tune.}
 

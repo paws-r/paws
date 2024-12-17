@@ -13,7 +13,9 @@ quicksight_start_asset_bundle_export_job(
   CloudFormationOverridePropertyConfiguration = NULL,
   IncludePermissions = NULL,
   IncludeTags = NULL,
-  ValidationStrategy = NULL
+  ValidationStrategy = NULL,
+  IncludeFolderMemberships = NULL,
+  IncludeFolderMembers = NULL
 )
 }
 \arguments{
@@ -66,6 +68,13 @@ for the export job. If \code{StrictModeForAllResources} is set to \code{TRUE},
 strict validation for every error is enforced. If it is set to \code{FALSE},
 validation is skipped for specific UI errors that are shown as warnings.
 The default value for \code{StrictModeForAllResources} is \code{FALSE}.}
+
+\item{IncludeFolderMemberships}{A Boolean that determines if the exported asset carries over information
+about the folders that the asset is a member of.}
+
+\item{IncludeFolderMembers}{A setting that indicates whether you want to include folder assets. You
+can also use this setting to recusrsively include all subfolders of an
+exported folder.}
 }
 \description{
 Starts an Asset Bundle export job.

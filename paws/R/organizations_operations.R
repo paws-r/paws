@@ -133,13 +133,19 @@ organizations_accept_handshake <- function(HandshakeId) {
 #' of policy. Refer to the *Organizations User Guide* for information about
 #' each policy type:
 #' 
-#' -   [AISERVICES_OPT_OUT_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out.html)
+#' -   [SERVICE_CONTROL_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html)
+#' 
+#' -   [RESOURCE_CONTROL_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_rcps.html)
+#' 
+#' -   [DECLARATIVE_POLICY_EC2](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_declarative.html)
 #' 
 #' -   [BACKUP_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_backup.html)
 #' 
-#' -   [SERVICE_CONTROL_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html)
-#' 
 #' -   [TAG_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html)
+#' 
+#' -   [CHATBOT_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_chatbot.html)
+#' 
+#' -   [AISERVICES_OPT_OUT_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out.html)
 #' 
 #' This operation can be called only from the organization's management
 #' account or by a member account that is a delegated administrator for an
@@ -364,12 +370,12 @@ organizations_cancel_handshake <- function(HandshakeId) {
 #' -   You can close only 10% of member accounts, between 10 and 1000,
 #'     within a rolling 30 day period. This quota is not bound by a
 #'     calendar month, but starts when you close an account. After you
-#'     reach this limit, you can close additional accounts. For more
+#'     reach this limit, you can't close additional accounts. For more
 #'     information, see [Closing a member account in your
 #'     organization](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_close.html)
 #'     and [Quotas for
-#'     Organizations](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_limits.html)in
-#'     the *Organizations User Guide*.
+#'     Organizations](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_limits.html)
+#'     in the *Organizations User Guide*.
 #' 
 #' -   To reinstate a closed account, contact Amazon Web Services Support
 #'     within the 90-day grace period while the account is in SUSPENDED
@@ -492,12 +498,13 @@ organizations_close_account <- function(AccountId) {
 #'     then try again. If the error persists, contact Amazon Web Services
 #'     Support.
 #' 
-#' -   Using [`create_account`][organizations_create_account] to create
-#'     multiple temporary accounts isn't recommended. You can only close an
-#'     account from the Billing and Cost Management console, and you must
-#'     be signed in as the root user. For information on the requirements
-#'     and process for closing an account, see [Closing a member account in
-#'     your
+#' -   It isn't recommended to use
+#'     [`create_account`][organizations_create_account] to create multiple
+#'     temporary accounts, and using the
+#'     [`create_account`][organizations_create_account] API to close
+#'     accounts is subject to a 30-day usage quota. For information on the
+#'     requirements and process for closing an account, see [Closing a
+#'     member account in your
 #'     organization](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_close.html)
 #'     in the *Organizations User Guide*.
 #' 
@@ -1027,7 +1034,7 @@ organizations_create_gov_cloud_account <- function(Email, AccountName, RoleName 
 #'     MasterAccountEmail = "string",
 #'     AvailablePolicyTypes = list(
 #'       list(
-#'         Type = "SERVICE_CONTROL_POLICY"|"TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY",
+#'         Type = "SERVICE_CONTROL_POLICY"|"RESOURCE_CONTROL_POLICY"|"TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY"|"CHATBOT_POLICY"|"DECLARATIVE_POLICY_EC2",
 #'         Status = "ENABLED"|"PENDING_ENABLE"|"PENDING_DISABLE"
 #'       )
 #'     )
@@ -1234,13 +1241,19 @@ organizations_create_organizational_unit <- function(ParentId, Name, Tags = NULL
 #' @param Type &#91;required&#93; The type of policy to create. You can specify one of the following
 #' values:
 #' 
-#' -   [AISERVICES_OPT_OUT_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out.html)
+#' -   [SERVICE_CONTROL_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html)
+#' 
+#' -   [RESOURCE_CONTROL_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_rcps.html)
+#' 
+#' -   [DECLARATIVE_POLICY_EC2](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_declarative.html)
 #' 
 #' -   [BACKUP_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_backup.html)
 #' 
-#' -   [SERVICE_CONTROL_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html)
-#' 
 #' -   [TAG_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html)
+#' 
+#' -   [CHATBOT_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_chatbot.html)
+#' 
+#' -   [AISERVICES_OPT_OUT_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out.html)
 #' @param Tags A list of tags that you want to attach to the newly created policy. For
 #' each tag in the list, you must specify both a tag key and a value. You
 #' can set the value to an empty string, but you can't set it to `null`.
@@ -1262,7 +1275,7 @@ organizations_create_organizational_unit <- function(ParentId, Name, Tags = NULL
 #'       Arn = "string",
 #'       Name = "string",
 #'       Description = "string",
-#'       Type = "SERVICE_CONTROL_POLICY"|"TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY",
+#'       Type = "SERVICE_CONTROL_POLICY"|"RESOURCE_CONTROL_POLICY"|"TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY"|"CHATBOT_POLICY"|"DECLARATIVE_POLICY_EC2",
 #'       AwsManaged = TRUE|FALSE
 #'     ),
 #'     Content = "string"
@@ -1276,7 +1289,7 @@ organizations_create_organizational_unit <- function(ParentId, Name, Tags = NULL
 #'   Content = "string",
 #'   Description = "string",
 #'   Name = "string",
-#'   Type = "SERVICE_CONTROL_POLICY"|"TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY",
+#'   Type = "SERVICE_CONTROL_POLICY"|"RESOURCE_CONTROL_POLICY"|"TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY"|"CHATBOT_POLICY"|"DECLARATIVE_POLICY_EC2",
 #'   Tags = list(
 #'     list(
 #'       Key = "string",
@@ -1898,8 +1911,9 @@ organizations_describe_create_account_status <- function(CreateAccountRequestId)
 #' the specified type that the account inherits, plus any policy of that
 #' type that is directly attached to the account.
 #' 
-#' This operation applies only to policy types *other* than service control
-#' policies (SCPs).
+#' This operation applies only to management policies. It does not apply to
+#' authorization policies: service control policies (SCPs) and resource
+#' control policies (RCPs).
 #' 
 #' For more information about policy inheritance, see [Understanding
 #' management policy
@@ -1914,11 +1928,15 @@ organizations_describe_create_account_status <- function(CreateAccountRequestId)
 #' @param PolicyType &#91;required&#93; The type of policy that you want information about. You can specify one
 #' of the following values:
 #' 
-#' -   [AISERVICES_OPT_OUT_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out.html)
+#' -   [DECLARATIVE_POLICY_EC2](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_declarative.html)
 #' 
 #' -   [BACKUP_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_backup.html)
 #' 
 #' -   [TAG_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html)
+#' 
+#' -   [CHATBOT_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_chatbot.html)
+#' 
+#' -   [AISERVICES_OPT_OUT_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out.html)
 #' @param TargetId When you're signed in as the management account, specify the ID of the
 #' account that you want details about. Specifying an organization root or
 #' organizational unit (OU) as the target is not supported.
@@ -1933,7 +1951,7 @@ organizations_describe_create_account_status <- function(CreateAccountRequestId)
 #'       "2015-01-01"
 #'     ),
 #'     TargetId = "string",
-#'     PolicyType = "TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY"
+#'     PolicyType = "TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY"|"CHATBOT_POLICY"|"DECLARATIVE_POLICY_EC2"
 #'   )
 #' )
 #' ```
@@ -1941,7 +1959,7 @@ organizations_describe_create_account_status <- function(CreateAccountRequestId)
 #' @section Request syntax:
 #' ```
 #' svc$describe_effective_policy(
-#'   PolicyType = "TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY",
+#'   PolicyType = "TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY"|"CHATBOT_POLICY"|"DECLARATIVE_POLICY_EC2",
 #'   TargetId = "string"
 #' )
 #' ```
@@ -2106,7 +2124,7 @@ organizations_describe_handshake <- function(HandshakeId) {
 #'     MasterAccountEmail = "string",
 #'     AvailablePolicyTypes = list(
 #'       list(
-#'         Type = "SERVICE_CONTROL_POLICY"|"TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY",
+#'         Type = "SERVICE_CONTROL_POLICY"|"RESOURCE_CONTROL_POLICY"|"TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY"|"CHATBOT_POLICY"|"DECLARATIVE_POLICY_EC2",
 #'         Status = "ENABLED"|"PENDING_ENABLE"|"PENDING_DISABLE"
 #'       )
 #'     )
@@ -2253,7 +2271,7 @@ organizations_describe_organizational_unit <- function(OrganizationalUnitId) {
 #'       Arn = "string",
 #'       Name = "string",
 #'       Description = "string",
-#'       Type = "SERVICE_CONTROL_POLICY"|"TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY",
+#'       Type = "SERVICE_CONTROL_POLICY"|"RESOURCE_CONTROL_POLICY"|"TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY"|"CHATBOT_POLICY"|"DECLARATIVE_POLICY_EC2",
 #'       AwsManaged = TRUE|FALSE
 #'     ),
 #'     Content = "string"
@@ -2608,13 +2626,19 @@ organizations_disable_aws_service_access <- function(ServicePrincipal) {
 #' @param PolicyType &#91;required&#93; The policy type that you want to disable in this root. You can specify
 #' one of the following values:
 #' 
-#' -   [AISERVICES_OPT_OUT_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out.html)
+#' -   [SERVICE_CONTROL_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html)
+#' 
+#' -   [RESOURCE_CONTROL_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_rcps.html)
+#' 
+#' -   [DECLARATIVE_POLICY_EC2](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_declarative.html)
 #' 
 #' -   [BACKUP_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_backup.html)
 #' 
-#' -   [SERVICE_CONTROL_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html)
-#' 
 #' -   [TAG_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html)
+#' 
+#' -   [CHATBOT_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_chatbot.html)
+#' 
+#' -   [AISERVICES_OPT_OUT_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out.html)
 #'
 #' @return
 #' A list with the following syntax:
@@ -2626,7 +2650,7 @@ organizations_disable_aws_service_access <- function(ServicePrincipal) {
 #'     Name = "string",
 #'     PolicyTypes = list(
 #'       list(
-#'         Type = "SERVICE_CONTROL_POLICY"|"TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY",
+#'         Type = "SERVICE_CONTROL_POLICY"|"RESOURCE_CONTROL_POLICY"|"TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY"|"CHATBOT_POLICY"|"DECLARATIVE_POLICY_EC2",
 #'         Status = "ENABLED"|"PENDING_ENABLE"|"PENDING_DISABLE"
 #'       )
 #'     )
@@ -2638,7 +2662,7 @@ organizations_disable_aws_service_access <- function(ServicePrincipal) {
 #' ```
 #' svc$disable_policy_type(
 #'   RootId = "string",
-#'   PolicyType = "SERVICE_CONTROL_POLICY"|"TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY"
+#'   PolicyType = "SERVICE_CONTROL_POLICY"|"RESOURCE_CONTROL_POLICY"|"TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY"|"CHATBOT_POLICY"|"DECLARATIVE_POLICY_EC2"
 #' )
 #' ```
 #'
@@ -2677,17 +2701,21 @@ organizations_disable_policy_type <- function(RootId, PolicyType) {
 }
 .organizations$operations$disable_policy_type <- organizations_disable_policy_type
 
-#' Enables the integration of an Amazon Web Services service (the service
-#' that is specified by ServicePrincipal) with Organizations
+#' Provides an Amazon Web Services service (the service that is specified
+#' by ServicePrincipal) with permissions to view the structure of an
+#' organization, create a service-linked role in all the accounts in the
+#' organization, and allow the service to perform operations on behalf of
+#' the organization and its accounts
 #'
 #' @description
-#' Enables the integration of an Amazon Web Services service (the service
-#' that is specified by `ServicePrincipal`) with Organizations. When you
-#' enable integration, you allow the specified service to create a
-#' [service-linked
+#' Provides an Amazon Web Services service (the service that is specified
+#' by `ServicePrincipal`) with permissions to view the structure of an
+#' organization, create a [service-linked
 #' role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create-service-linked-role.html)
-#' in all the accounts in your organization. This allows the service to
-#' perform operations on your behalf in your organization and its accounts.
+#' in all the accounts in the organization, and allow the service to
+#' perform operations on behalf of the organization and its accounts.
+#' Establishing these permissions can be a first step in enabling the
+#' integration of an Amazon Web Services service with Organizations.
 #' 
 #' We recommend that you enable integration between Organizations and the
 #' specified Amazon Web Services service by using the console or commands
@@ -2902,13 +2930,19 @@ organizations_enable_all_features <- function() {
 #' @param PolicyType &#91;required&#93; The policy type that you want to enable. You can specify one of the
 #' following values:
 #' 
-#' -   [AISERVICES_OPT_OUT_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out.html)
+#' -   [SERVICE_CONTROL_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html)
+#' 
+#' -   [RESOURCE_CONTROL_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_rcps.html)
+#' 
+#' -   [DECLARATIVE_POLICY_EC2](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_declarative.html)
 #' 
 #' -   [BACKUP_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_backup.html)
 #' 
-#' -   [SERVICE_CONTROL_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html)
-#' 
 #' -   [TAG_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html)
+#' 
+#' -   [CHATBOT_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_chatbot.html)
+#' 
+#' -   [AISERVICES_OPT_OUT_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out.html)
 #'
 #' @return
 #' A list with the following syntax:
@@ -2920,7 +2954,7 @@ organizations_enable_all_features <- function() {
 #'     Name = "string",
 #'     PolicyTypes = list(
 #'       list(
-#'         Type = "SERVICE_CONTROL_POLICY"|"TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY",
+#'         Type = "SERVICE_CONTROL_POLICY"|"RESOURCE_CONTROL_POLICY"|"TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY"|"CHATBOT_POLICY"|"DECLARATIVE_POLICY_EC2",
 #'         Status = "ENABLED"|"PENDING_ENABLE"|"PENDING_DISABLE"
 #'       )
 #'     )
@@ -2932,7 +2966,7 @@ organizations_enable_all_features <- function() {
 #' ```
 #' svc$enable_policy_type(
 #'   RootId = "string",
-#'   PolicyType = "SERVICE_CONTROL_POLICY"|"TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY"
+#'   PolicyType = "SERVICE_CONTROL_POLICY"|"RESOURCE_CONTROL_POLICY"|"TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY"|"CHATBOT_POLICY"|"DECLARATIVE_POLICY_EC2"
 #' )
 #' ```
 #'
@@ -3191,8 +3225,9 @@ organizations_invite_account_to_organization <- function(Target, Notes = NULL, T
 #'     support tags.
 #' 
 #' -   A newly created account has a waiting period before it can be
-#'     removed from its organization. If you get an error that indicates
-#'     that a wait period is required, then try again in a few days.
+#'     removed from its organization. You must wait until at least seven
+#'     days after the account was created. Invited accounts aren't subject
+#'     to this waiting period.
 #' 
 #' -   If you are using an organization principal to call
 #'     [`leave_organization`][organizations_leave_organization] across
@@ -3314,7 +3349,7 @@ organizations_list_aws_service_access_for_organization <- function(NextToken = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(result_key = "EnabledServicePrincipals", output_token = "NextToken", input_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .organizations$list_aws_service_access_for_organization_input(NextToken = NextToken, MaxResults = MaxResults)
@@ -3411,7 +3446,7 @@ organizations_list_accounts <- function(NextToken = NULL, MaxResults = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Accounts"),
     stream_api = FALSE
   )
   input <- .organizations$list_accounts_input(NextToken = NextToken, MaxResults = MaxResults)
@@ -3516,7 +3551,7 @@ organizations_list_accounts_for_parent <- function(ParentId, NextToken = NULL, M
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Accounts"),
     stream_api = FALSE
   )
   input <- .organizations$list_accounts_for_parent_input(ParentId = ParentId, NextToken = NextToken, MaxResults = MaxResults)
@@ -3626,7 +3661,7 @@ organizations_list_children <- function(ParentId, ChildType, NextToken = NULL, M
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Children"),
     stream_api = FALSE
   )
   input <- .organizations$list_children_input(ParentId = ParentId, ChildType = ChildType, NextToken = NextToken, MaxResults = MaxResults)
@@ -3742,7 +3777,7 @@ organizations_list_create_account_status <- function(States = NULL, NextToken = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "CreateAccountStatuses"),
     stream_api = FALSE
   )
   input <- .organizations$list_create_account_status_input(States = States, NextToken = NextToken, MaxResults = MaxResults)
@@ -4041,7 +4076,7 @@ organizations_list_handshakes_for_account <- function(Filter = NULL, NextToken =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Handshakes"),
     stream_api = FALSE
   )
   input <- .organizations$list_handshakes_for_account_input(Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
@@ -4170,7 +4205,7 @@ organizations_list_handshakes_for_organization <- function(Filter = NULL, NextTo
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Handshakes"),
     stream_api = FALSE
   )
   input <- .organizations$list_handshakes_for_organization_input(Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
@@ -4277,7 +4312,7 @@ organizations_list_organizational_units_for_parent <- function(ParentId, NextTok
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "OrganizationalUnits"),
     stream_api = FALSE
   )
   input <- .organizations$list_organizational_units_for_parent_input(ParentId = ParentId, NextToken = NextToken, MaxResults = MaxResults)
@@ -4385,7 +4420,7 @@ organizations_list_parents <- function(ChildId, NextToken = NULL, MaxResults = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Parents"),
     stream_api = FALSE
   )
   input <- .organizations$list_parents_input(ChildId = ChildId, NextToken = NextToken, MaxResults = MaxResults)
@@ -4421,13 +4456,19 @@ organizations_list_parents <- function(ChildId, NextToken = NULL, MaxResults = N
 #' @param Filter &#91;required&#93; Specifies the type of policy that you want to include in the response.
 #' You must specify one of the following values:
 #' 
-#' -   [AISERVICES_OPT_OUT_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out.html)
+#' -   [SERVICE_CONTROL_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html)
+#' 
+#' -   [RESOURCE_CONTROL_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_rcps.html)
+#' 
+#' -   [DECLARATIVE_POLICY_EC2](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_declarative.html)
 #' 
 #' -   [BACKUP_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_backup.html)
 #' 
-#' -   [SERVICE_CONTROL_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html)
-#' 
 #' -   [TAG_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html)
+#' 
+#' -   [CHATBOT_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_chatbot.html)
+#' 
+#' -   [AISERVICES_OPT_OUT_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out.html)
 #' @param NextToken The parameter for receiving additional results if you receive a
 #' `NextToken` response in a previous request. A `NextToken` response
 #' indicates that more output is available. Set this parameter to the value
@@ -4454,7 +4495,7 @@ organizations_list_parents <- function(ChildId, NextToken = NULL, MaxResults = N
 #'       Arn = "string",
 #'       Name = "string",
 #'       Description = "string",
-#'       Type = "SERVICE_CONTROL_POLICY"|"TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY",
+#'       Type = "SERVICE_CONTROL_POLICY"|"RESOURCE_CONTROL_POLICY"|"TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY"|"CHATBOT_POLICY"|"DECLARATIVE_POLICY_EC2",
 #'       AwsManaged = TRUE|FALSE
 #'     )
 #'   ),
@@ -4465,7 +4506,7 @@ organizations_list_parents <- function(ChildId, NextToken = NULL, MaxResults = N
 #' @section Request syntax:
 #' ```
 #' svc$list_policies(
-#'   Filter = "SERVICE_CONTROL_POLICY"|"TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY",
+#'   Filter = "SERVICE_CONTROL_POLICY"|"RESOURCE_CONTROL_POLICY"|"TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY"|"CHATBOT_POLICY"|"DECLARATIVE_POLICY_EC2",
 #'   NextToken = "string",
 #'   MaxResults = 123
 #' )
@@ -4491,7 +4532,7 @@ organizations_list_policies <- function(Filter, NextToken = NULL, MaxResults = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Policies"),
     stream_api = FALSE
   )
   input <- .organizations$list_policies_input(Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
@@ -4544,13 +4585,19 @@ organizations_list_policies <- function(Filter, NextToken = NULL, MaxResults = N
 #' @param Filter &#91;required&#93; The type of policy that you want to include in the returned list. You
 #' must specify one of the following values:
 #' 
-#' -   [AISERVICES_OPT_OUT_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out.html)
+#' -   [SERVICE_CONTROL_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html)
+#' 
+#' -   [RESOURCE_CONTROL_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_rcps.html)
+#' 
+#' -   [DECLARATIVE_POLICY_EC2](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_declarative.html)
 #' 
 #' -   [BACKUP_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_backup.html)
 #' 
-#' -   [SERVICE_CONTROL_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html)
-#' 
 #' -   [TAG_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html)
+#' 
+#' -   [CHATBOT_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_chatbot.html)
+#' 
+#' -   [AISERVICES_OPT_OUT_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out.html)
 #' @param NextToken The parameter for receiving additional results if you receive a
 #' `NextToken` response in a previous request. A `NextToken` response
 #' indicates that more output is available. Set this parameter to the value
@@ -4577,7 +4624,7 @@ organizations_list_policies <- function(Filter, NextToken = NULL, MaxResults = N
 #'       Arn = "string",
 #'       Name = "string",
 #'       Description = "string",
-#'       Type = "SERVICE_CONTROL_POLICY"|"TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY",
+#'       Type = "SERVICE_CONTROL_POLICY"|"RESOURCE_CONTROL_POLICY"|"TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY"|"CHATBOT_POLICY"|"DECLARATIVE_POLICY_EC2",
 #'       AwsManaged = TRUE|FALSE
 #'     )
 #'   ),
@@ -4589,7 +4636,7 @@ organizations_list_policies <- function(Filter, NextToken = NULL, MaxResults = N
 #' ```
 #' svc$list_policies_for_target(
 #'   TargetId = "string",
-#'   Filter = "SERVICE_CONTROL_POLICY"|"TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY",
+#'   Filter = "SERVICE_CONTROL_POLICY"|"RESOURCE_CONTROL_POLICY"|"TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY"|"CHATBOT_POLICY"|"DECLARATIVE_POLICY_EC2",
 #'   NextToken = "string",
 #'   MaxResults = 123
 #' )
@@ -4619,7 +4666,7 @@ organizations_list_policies_for_target <- function(TargetId, Filter, NextToken =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Policies"),
     stream_api = FALSE
   )
   input <- .organizations$list_policies_for_target_input(TargetId = TargetId, Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
@@ -4684,7 +4731,7 @@ organizations_list_policies_for_target <- function(TargetId, Filter, NextToken =
 #'       Name = "string",
 #'       PolicyTypes = list(
 #'         list(
-#'           Type = "SERVICE_CONTROL_POLICY"|"TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY",
+#'           Type = "SERVICE_CONTROL_POLICY"|"RESOURCE_CONTROL_POLICY"|"TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY"|"CHATBOT_POLICY"|"DECLARATIVE_POLICY_EC2",
 #'           Status = "ENABLED"|"PENDING_ENABLE"|"PENDING_DISABLE"
 #'         )
 #'       )
@@ -4720,7 +4767,7 @@ organizations_list_roots <- function(NextToken = NULL, MaxResults = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Roots"),
     stream_api = FALSE
   )
   input <- .organizations$list_roots_input(NextToken = NextToken, MaxResults = MaxResults)
@@ -4908,7 +4955,7 @@ organizations_list_targets_for_policy <- function(PolicyId, NextToken = NULL, Ma
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Targets"),
     stream_api = FALSE
   )
   input <- .organizations$list_targets_for_policy_input(PolicyId = PolicyId, NextToken = NextToken, MaxResults = MaxResults)
@@ -5533,7 +5580,7 @@ organizations_update_organizational_unit <- function(OrganizationalUnitId, Name 
 #'       Arn = "string",
 #'       Name = "string",
 #'       Description = "string",
-#'       Type = "SERVICE_CONTROL_POLICY"|"TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY",
+#'       Type = "SERVICE_CONTROL_POLICY"|"RESOURCE_CONTROL_POLICY"|"TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY"|"CHATBOT_POLICY"|"DECLARATIVE_POLICY_EC2",
 #'       AwsManaged = TRUE|FALSE
 #'     ),
 #'     Content = "string"

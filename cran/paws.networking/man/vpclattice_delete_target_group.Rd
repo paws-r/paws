@@ -7,7 +7,7 @@
 vpclattice_delete_target_group(targetGroupIdentifier)
 }
 \arguments{
-\item{targetGroupIdentifier}{[required] The ID or Amazon Resource Name (ARN) of the target group.}
+\item{targetGroupIdentifier}{[required] The ID or ARN of the target group.}
 }
 \description{
 Deletes a target group. You can't delete a target group if it is used in a listener rule or if the target group creation is in progress.

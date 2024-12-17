@@ -29,7 +29,7 @@ NULL
 
 .apigateway$create_base_path_mapping_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(domainName = structure(logical(0), tags = list(location = "uri", locationName = "domain_name", type = "string")), basePath = structure(logical(0), tags = list(type = "string")), restApiId = structure(logical(0), tags = list(type = "string")), stage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(domainName = structure(logical(0), tags = list(location = "uri", locationName = "domain_name", type = "string")), domainNameId = structure(logical(0), tags = list(location = "querystring", locationName = "domainNameId", type = "string")), basePath = structure(logical(0), tags = list(type = "string")), restApiId = structure(logical(0), tags = list(type = "string")), stage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -77,13 +77,25 @@ NULL
 
 .apigateway$create_domain_name_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(domainName = structure(logical(0), tags = list(type = "string")), certificateName = structure(logical(0), tags = list(type = "string")), certificateBody = structure(logical(0), tags = list(type = "string")), certificatePrivateKey = structure(logical(0), tags = list(type = "string")), certificateChain = structure(logical(0), tags = list(type = "string")), certificateArn = structure(logical(0), tags = list(type = "string")), regionalCertificateName = structure(logical(0), tags = list(type = "string")), regionalCertificateArn = structure(logical(0), tags = list(type = "string")), endpointConfiguration = structure(list(types = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), vpcEndpointIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), securityPolicy = structure(logical(0), tags = list(type = "string")), mutualTlsAuthentication = structure(list(truststoreUri = structure(logical(0), tags = list(type = "string")), truststoreVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ownershipVerificationCertificateArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(domainName = structure(logical(0), tags = list(type = "string")), certificateName = structure(logical(0), tags = list(type = "string")), certificateBody = structure(logical(0), tags = list(type = "string")), certificatePrivateKey = structure(logical(0), tags = list(type = "string")), certificateChain = structure(logical(0), tags = list(type = "string")), certificateArn = structure(logical(0), tags = list(type = "string")), regionalCertificateName = structure(logical(0), tags = list(type = "string")), regionalCertificateArn = structure(logical(0), tags = list(type = "string")), endpointConfiguration = structure(list(types = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), vpcEndpointIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), securityPolicy = structure(logical(0), tags = list(type = "string")), mutualTlsAuthentication = structure(list(truststoreUri = structure(logical(0), tags = list(type = "string")), truststoreVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ownershipVerificationCertificateArn = structure(logical(0), tags = list(type = "string")), policy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .apigateway$create_domain_name_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(domainName = structure(logical(0), tags = list(type = "string")), certificateName = structure(logical(0), tags = list(type = "string")), certificateArn = structure(logical(0), tags = list(type = "string")), certificateUploadDate = structure(logical(0), tags = list(type = "timestamp")), regionalDomainName = structure(logical(0), tags = list(type = "string")), regionalHostedZoneId = structure(logical(0), tags = list(type = "string")), regionalCertificateName = structure(logical(0), tags = list(type = "string")), regionalCertificateArn = structure(logical(0), tags = list(type = "string")), distributionDomainName = structure(logical(0), tags = list(type = "string")), distributionHostedZoneId = structure(logical(0), tags = list(type = "string")), endpointConfiguration = structure(list(types = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), vpcEndpointIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), domainNameStatus = structure(logical(0), tags = list(type = "string")), domainNameStatusMessage = structure(logical(0), tags = list(type = "string")), securityPolicy = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), mutualTlsAuthentication = structure(list(truststoreUri = structure(logical(0), tags = list(type = "string")), truststoreVersion = structure(logical(0), tags = list(type = "string")), truststoreWarnings = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), ownershipVerificationCertificateArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(domainName = structure(logical(0), tags = list(type = "string")), domainNameId = structure(logical(0), tags = list(type = "string")), domainNameArn = structure(logical(0), tags = list(type = "string")), certificateName = structure(logical(0), tags = list(type = "string")), certificateArn = structure(logical(0), tags = list(type = "string")), certificateUploadDate = structure(logical(0), tags = list(type = "timestamp")), regionalDomainName = structure(logical(0), tags = list(type = "string")), regionalHostedZoneId = structure(logical(0), tags = list(type = "string")), regionalCertificateName = structure(logical(0), tags = list(type = "string")), regionalCertificateArn = structure(logical(0), tags = list(type = "string")), distributionDomainName = structure(logical(0), tags = list(type = "string")), distributionHostedZoneId = structure(logical(0), tags = list(type = "string")), endpointConfiguration = structure(list(types = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), vpcEndpointIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), domainNameStatus = structure(logical(0), tags = list(type = "string")), domainNameStatusMessage = structure(logical(0), tags = list(type = "string")), securityPolicy = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), mutualTlsAuthentication = structure(list(truststoreUri = structure(logical(0), tags = list(type = "string")), truststoreVersion = structure(logical(0), tags = list(type = "string")), truststoreWarnings = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), ownershipVerificationCertificateArn = structure(logical(0), tags = list(type = "string")), managementPolicy = structure(logical(0), tags = list(type = "string")), policy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.apigateway$create_domain_name_access_association_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(domainNameArn = structure(logical(0), tags = list(type = "string")), accessAssociationSourceType = structure(logical(0), tags = list(type = "string")), accessAssociationSource = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.apigateway$create_domain_name_access_association_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(domainNameAccessAssociationArn = structure(logical(0), tags = list(type = "string")), domainNameArn = structure(logical(0), tags = list(type = "string")), accessAssociationSourceType = structure(logical(0), tags = list(type = "string")), accessAssociationSource = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -205,7 +217,7 @@ NULL
 
 .apigateway$delete_base_path_mapping_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(domainName = structure(logical(0), tags = list(location = "uri", locationName = "domain_name", type = "string")), basePath = structure(logical(0), tags = list(location = "uri", locationName = "base_path", type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(domainName = structure(logical(0), tags = list(location = "uri", locationName = "domain_name", type = "string")), domainNameId = structure(logical(0), tags = list(location = "querystring", locationName = "domainNameId", type = "string")), basePath = structure(logical(0), tags = list(location = "uri", locationName = "base_path", type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -255,11 +267,21 @@ NULL
 
 .apigateway$delete_domain_name_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(domainName = structure(logical(0), tags = list(location = "uri", locationName = "domain_name", type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(domainName = structure(logical(0), tags = list(location = "uri", locationName = "domain_name", type = "string")), domainNameId = structure(logical(0), tags = list(location = "querystring", locationName = "domainNameId", type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .apigateway$delete_domain_name_output <- function(...) {
+  list()
+}
+
+.apigateway$delete_domain_name_access_association_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(domainNameAccessAssociationArn = structure(logical(0), tags = list(location = "uri", locationName = "domain_name_access_association_arn", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.apigateway$delete_domain_name_access_association_output <- function(...) {
   list()
 }
 
@@ -487,7 +509,7 @@ NULL
 
 .apigateway$get_base_path_mapping_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(domainName = structure(logical(0), tags = list(location = "uri", locationName = "domain_name", type = "string")), basePath = structure(logical(0), tags = list(location = "uri", locationName = "base_path", type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(domainName = structure(logical(0), tags = list(location = "uri", locationName = "domain_name", type = "string")), domainNameId = structure(logical(0), tags = list(location = "querystring", locationName = "domainNameId", type = "string")), basePath = structure(logical(0), tags = list(location = "uri", locationName = "base_path", type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -499,7 +521,7 @@ NULL
 
 .apigateway$get_base_path_mappings_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(domainName = structure(logical(0), tags = list(location = "uri", locationName = "domain_name", type = "string")), position = structure(logical(0), tags = list(location = "querystring", locationName = "position", type = "string")), limit = structure(logical(0), tags = list(location = "querystring", locationName = "limit", type = "integer"))), tags = list(type = "structure"))
+  shape <- structure(list(domainName = structure(logical(0), tags = list(location = "uri", locationName = "domain_name", type = "string")), domainNameId = structure(logical(0), tags = list(location = "querystring", locationName = "domainNameId", type = "string")), position = structure(logical(0), tags = list(location = "querystring", locationName = "position", type = "string")), limit = structure(logical(0), tags = list(location = "querystring", locationName = "limit", type = "integer"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -607,25 +629,37 @@ NULL
 
 .apigateway$get_domain_name_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(domainName = structure(logical(0), tags = list(location = "uri", locationName = "domain_name", type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(domainName = structure(logical(0), tags = list(location = "uri", locationName = "domain_name", type = "string")), domainNameId = structure(logical(0), tags = list(location = "querystring", locationName = "domainNameId", type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .apigateway$get_domain_name_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(domainName = structure(logical(0), tags = list(type = "string")), certificateName = structure(logical(0), tags = list(type = "string")), certificateArn = structure(logical(0), tags = list(type = "string")), certificateUploadDate = structure(logical(0), tags = list(type = "timestamp")), regionalDomainName = structure(logical(0), tags = list(type = "string")), regionalHostedZoneId = structure(logical(0), tags = list(type = "string")), regionalCertificateName = structure(logical(0), tags = list(type = "string")), regionalCertificateArn = structure(logical(0), tags = list(type = "string")), distributionDomainName = structure(logical(0), tags = list(type = "string")), distributionHostedZoneId = structure(logical(0), tags = list(type = "string")), endpointConfiguration = structure(list(types = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), vpcEndpointIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), domainNameStatus = structure(logical(0), tags = list(type = "string")), domainNameStatusMessage = structure(logical(0), tags = list(type = "string")), securityPolicy = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), mutualTlsAuthentication = structure(list(truststoreUri = structure(logical(0), tags = list(type = "string")), truststoreVersion = structure(logical(0), tags = list(type = "string")), truststoreWarnings = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), ownershipVerificationCertificateArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(domainName = structure(logical(0), tags = list(type = "string")), domainNameId = structure(logical(0), tags = list(type = "string")), domainNameArn = structure(logical(0), tags = list(type = "string")), certificateName = structure(logical(0), tags = list(type = "string")), certificateArn = structure(logical(0), tags = list(type = "string")), certificateUploadDate = structure(logical(0), tags = list(type = "timestamp")), regionalDomainName = structure(logical(0), tags = list(type = "string")), regionalHostedZoneId = structure(logical(0), tags = list(type = "string")), regionalCertificateName = structure(logical(0), tags = list(type = "string")), regionalCertificateArn = structure(logical(0), tags = list(type = "string")), distributionDomainName = structure(logical(0), tags = list(type = "string")), distributionHostedZoneId = structure(logical(0), tags = list(type = "string")), endpointConfiguration = structure(list(types = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), vpcEndpointIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), domainNameStatus = structure(logical(0), tags = list(type = "string")), domainNameStatusMessage = structure(logical(0), tags = list(type = "string")), securityPolicy = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), mutualTlsAuthentication = structure(list(truststoreUri = structure(logical(0), tags = list(type = "string")), truststoreVersion = structure(logical(0), tags = list(type = "string")), truststoreWarnings = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), ownershipVerificationCertificateArn = structure(logical(0), tags = list(type = "string")), managementPolicy = structure(logical(0), tags = list(type = "string")), policy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.apigateway$get_domain_name_access_associations_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(position = structure(logical(0), tags = list(location = "querystring", locationName = "position", type = "string")), limit = structure(logical(0), tags = list(location = "querystring", locationName = "limit", type = "integer")), resourceOwner = structure(logical(0), tags = list(location = "querystring", locationName = "resourceOwner", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.apigateway$get_domain_name_access_associations_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(position = structure(logical(0), tags = list(type = "string")), items = structure(list(structure(list(domainNameAccessAssociationArn = structure(logical(0), tags = list(type = "string")), domainNameArn = structure(logical(0), tags = list(type = "string")), accessAssociationSourceType = structure(logical(0), tags = list(type = "string")), accessAssociationSource = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(locationName = "item", type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .apigateway$get_domain_names_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(position = structure(logical(0), tags = list(location = "querystring", locationName = "position", type = "string")), limit = structure(logical(0), tags = list(location = "querystring", locationName = "limit", type = "integer"))), tags = list(type = "structure"))
+  shape <- structure(list(position = structure(logical(0), tags = list(location = "querystring", locationName = "position", type = "string")), limit = structure(logical(0), tags = list(location = "querystring", locationName = "limit", type = "integer")), resourceOwner = structure(logical(0), tags = list(location = "querystring", locationName = "resourceOwner", type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .apigateway$get_domain_names_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(position = structure(logical(0), tags = list(type = "string")), items = structure(list(structure(list(domainName = structure(logical(0), tags = list(type = "string")), certificateName = structure(logical(0), tags = list(type = "string")), certificateArn = structure(logical(0), tags = list(type = "string")), certificateUploadDate = structure(logical(0), tags = list(type = "timestamp")), regionalDomainName = structure(logical(0), tags = list(type = "string")), regionalHostedZoneId = structure(logical(0), tags = list(type = "string")), regionalCertificateName = structure(logical(0), tags = list(type = "string")), regionalCertificateArn = structure(logical(0), tags = list(type = "string")), distributionDomainName = structure(logical(0), tags = list(type = "string")), distributionHostedZoneId = structure(logical(0), tags = list(type = "string")), endpointConfiguration = structure(list(types = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), vpcEndpointIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), domainNameStatus = structure(logical(0), tags = list(type = "string")), domainNameStatusMessage = structure(logical(0), tags = list(type = "string")), securityPolicy = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), mutualTlsAuthentication = structure(list(truststoreUri = structure(logical(0), tags = list(type = "string")), truststoreVersion = structure(logical(0), tags = list(type = "string")), truststoreWarnings = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), ownershipVerificationCertificateArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(locationName = "item", type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(position = structure(logical(0), tags = list(type = "string")), items = structure(list(structure(list(domainName = structure(logical(0), tags = list(type = "string")), domainNameId = structure(logical(0), tags = list(type = "string")), domainNameArn = structure(logical(0), tags = list(type = "string")), certificateName = structure(logical(0), tags = list(type = "string")), certificateArn = structure(logical(0), tags = list(type = "string")), certificateUploadDate = structure(logical(0), tags = list(type = "timestamp")), regionalDomainName = structure(logical(0), tags = list(type = "string")), regionalHostedZoneId = structure(logical(0), tags = list(type = "string")), regionalCertificateName = structure(logical(0), tags = list(type = "string")), regionalCertificateArn = structure(logical(0), tags = list(type = "string")), distributionDomainName = structure(logical(0), tags = list(type = "string")), distributionHostedZoneId = structure(logical(0), tags = list(type = "string")), endpointConfiguration = structure(list(types = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), vpcEndpointIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), domainNameStatus = structure(logical(0), tags = list(type = "string")), domainNameStatusMessage = structure(logical(0), tags = list(type = "string")), securityPolicy = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), mutualTlsAuthentication = structure(list(truststoreUri = structure(logical(0), tags = list(type = "string")), truststoreVersion = structure(logical(0), tags = list(type = "string")), truststoreWarnings = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), ownershipVerificationCertificateArn = structure(logical(0), tags = list(type = "string")), managementPolicy = structure(logical(0), tags = list(type = "string")), policy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(locationName = "item", type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -1085,6 +1119,16 @@ NULL
   return(populate(args, shape))
 }
 
+.apigateway$reject_domain_name_access_association_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(domainNameAccessAssociationArn = structure(logical(0), tags = list(location = "querystring", locationName = "domainNameAccessAssociationArn", type = "string")), domainNameArn = structure(logical(0), tags = list(location = "querystring", locationName = "domainNameArn", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.apigateway$reject_domain_name_access_association_output <- function(...) {
+  list()
+}
+
 .apigateway$tag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resource_arn", type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
@@ -1167,7 +1211,7 @@ NULL
 
 .apigateway$update_base_path_mapping_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(domainName = structure(logical(0), tags = list(location = "uri", locationName = "domain_name", type = "string")), basePath = structure(logical(0), tags = list(location = "uri", locationName = "base_path", type = "string")), patchOperations = structure(list(structure(list(op = structure(logical(0), tags = list(type = "string")), path = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string")), from = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(domainName = structure(logical(0), tags = list(location = "uri", locationName = "domain_name", type = "string")), domainNameId = structure(logical(0), tags = list(location = "querystring", locationName = "domainNameId", type = "string")), basePath = structure(logical(0), tags = list(location = "uri", locationName = "base_path", type = "string")), patchOperations = structure(list(structure(list(op = structure(logical(0), tags = list(type = "string")), path = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string")), from = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -1227,13 +1271,13 @@ NULL
 
 .apigateway$update_domain_name_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(domainName = structure(logical(0), tags = list(location = "uri", locationName = "domain_name", type = "string")), patchOperations = structure(list(structure(list(op = structure(logical(0), tags = list(type = "string")), path = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string")), from = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(domainName = structure(logical(0), tags = list(location = "uri", locationName = "domain_name", type = "string")), domainNameId = structure(logical(0), tags = list(location = "querystring", locationName = "domainNameId", type = "string")), patchOperations = structure(list(structure(list(op = structure(logical(0), tags = list(type = "string")), path = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string")), from = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .apigateway$update_domain_name_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(domainName = structure(logical(0), tags = list(type = "string")), certificateName = structure(logical(0), tags = list(type = "string")), certificateArn = structure(logical(0), tags = list(type = "string")), certificateUploadDate = structure(logical(0), tags = list(type = "timestamp")), regionalDomainName = structure(logical(0), tags = list(type = "string")), regionalHostedZoneId = structure(logical(0), tags = list(type = "string")), regionalCertificateName = structure(logical(0), tags = list(type = "string")), regionalCertificateArn = structure(logical(0), tags = list(type = "string")), distributionDomainName = structure(logical(0), tags = list(type = "string")), distributionHostedZoneId = structure(logical(0), tags = list(type = "string")), endpointConfiguration = structure(list(types = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), vpcEndpointIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), domainNameStatus = structure(logical(0), tags = list(type = "string")), domainNameStatusMessage = structure(logical(0), tags = list(type = "string")), securityPolicy = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), mutualTlsAuthentication = structure(list(truststoreUri = structure(logical(0), tags = list(type = "string")), truststoreVersion = structure(logical(0), tags = list(type = "string")), truststoreWarnings = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), ownershipVerificationCertificateArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(domainName = structure(logical(0), tags = list(type = "string")), domainNameId = structure(logical(0), tags = list(type = "string")), domainNameArn = structure(logical(0), tags = list(type = "string")), certificateName = structure(logical(0), tags = list(type = "string")), certificateArn = structure(logical(0), tags = list(type = "string")), certificateUploadDate = structure(logical(0), tags = list(type = "timestamp")), regionalDomainName = structure(logical(0), tags = list(type = "string")), regionalHostedZoneId = structure(logical(0), tags = list(type = "string")), regionalCertificateName = structure(logical(0), tags = list(type = "string")), regionalCertificateArn = structure(logical(0), tags = list(type = "string")), distributionDomainName = structure(logical(0), tags = list(type = "string")), distributionHostedZoneId = structure(logical(0), tags = list(type = "string")), endpointConfiguration = structure(list(types = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), vpcEndpointIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), domainNameStatus = structure(logical(0), tags = list(type = "string")), domainNameStatusMessage = structure(logical(0), tags = list(type = "string")), securityPolicy = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), mutualTlsAuthentication = structure(list(truststoreUri = structure(logical(0), tags = list(type = "string")), truststoreVersion = structure(logical(0), tags = list(type = "string")), truststoreWarnings = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), ownershipVerificationCertificateArn = structure(logical(0), tags = list(type = "string")), managementPolicy = structure(logical(0), tags = list(type = "string")), policy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

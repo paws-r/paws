@@ -6,13 +6,22 @@
 addresses}
 \usage{
 ec2_describe_addresses(
-  Filters = NULL,
   PublicIps = NULL,
-  AllocationIds = NULL,
-  DryRun = NULL
+  DryRun = NULL,
+  Filters = NULL,
+  AllocationIds = NULL
 )
 }
 \arguments{
+\item{PublicIps}{One or more Elastic IP addresses.
+
+Default: Describes all your Elastic IP addresses.}
+
+\item{DryRun}{Checks whether you have the required permissions for the action, without
+actually making the request, and provides an error response. If you have
+the required permissions, the error response is \code{DryRunOperation}.
+Otherwise, it is \code{UnauthorizedOperation}.}
+
 \item{Filters}{One or more filters. Filter names and values are case-sensitive.
 \itemize{
 \item \code{allocation-id} - The allocation ID for the address.
@@ -39,16 +48,7 @@ filter to find all resources assigned a tag with a specific key,
 regardless of the tag value.
 }}
 
-\item{PublicIps}{One or more Elastic IP addresses.
-
-Default: Describes all your Elastic IP addresses.}
-
 \item{AllocationIds}{Information about the allocation IDs.}
-
-\item{DryRun}{Checks whether you have the required permissions for the action, without
-actually making the request, and provides an error response. If you have
-the required permissions, the error response is \code{DryRunOperation}.
-Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
 Describes the specified Elastic IP addresses or all of your Elastic IP addresses.

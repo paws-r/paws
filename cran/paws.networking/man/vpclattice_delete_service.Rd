@@ -7,7 +7,7 @@
 vpclattice_delete_service(serviceIdentifier)
 }
 \arguments{
-\item{serviceIdentifier}{[required] The ID or Amazon Resource Name (ARN) of the service.}
+\item{serviceIdentifier}{[required] The ID or ARN of the service.}
 }
 \description{
 Deletes a service. A service can't be deleted if it's associated with a service network. If you delete a service, all resources related to the service, such as the resource policy, auth policy, listeners, listener rules, and access log subscriptions, are also deleted. For more information, see \href{https://docs.aws.amazon.com/vpc-lattice/latest/ug/services.html#delete-service}{Delete a service} in the \emph{Amazon VPC Lattice User Guide}.

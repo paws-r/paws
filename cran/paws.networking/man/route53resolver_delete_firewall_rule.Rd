@@ -6,7 +6,8 @@
 \usage{
 route53resolver_delete_firewall_rule(
   FirewallRuleGroupId,
-  FirewallDomainListId,
+  FirewallDomainListId = NULL,
+  FirewallThreatProtectionId = NULL,
   Qtype = NULL
 )
 }
@@ -14,7 +15,9 @@ route53resolver_delete_firewall_rule(
 \item{FirewallRuleGroupId}{[required] The unique identifier of the firewall rule group that you want to delete
 the rule from.}
 
-\item{FirewallDomainListId}{[required] The ID of the domain list that's used in the rule.}
+\item{FirewallDomainListId}{The ID of the domain list that's used in the rule.}
+
+\item{FirewallThreatProtectionId}{The ID that is created for a DNS Firewall Advanced rule.}
 
 \item{Qtype}{The DNS query type that the rule you are deleting evaluates. Allowed
 values are;

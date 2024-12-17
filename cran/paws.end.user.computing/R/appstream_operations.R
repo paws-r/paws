@@ -1641,7 +1641,7 @@ appstream_describe_app_block_builder_app_block_associations <- function(AppBlock
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .appstream$describe_app_block_builder_app_block_associations_input(AppBlockArn = AppBlockArn, AppBlockBuilderName = AppBlockBuilderName, MaxResults = MaxResults, NextToken = NextToken)
@@ -1675,7 +1675,7 @@ appstream_describe_app_block_builders <- function(Names = NULL, NextToken = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .appstream$describe_app_block_builders_input(Names = Names, NextToken = NextToken, MaxResults = MaxResults)
@@ -1814,7 +1814,7 @@ appstream_describe_directory_configs <- function(DirectoryNames = NULL, MaxResul
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "DirectoryConfigs"),
     stream_api = FALSE
   )
   input <- .appstream$describe_directory_configs_input(DirectoryNames = DirectoryNames, MaxResults = MaxResults, NextToken = NextToken)
@@ -1883,7 +1883,7 @@ appstream_describe_fleets <- function(Names = NULL, NextToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Fleets"),
     stream_api = FALSE
   )
   input <- .appstream$describe_fleets_input(Names = Names, NextToken = NextToken)
@@ -1918,7 +1918,7 @@ appstream_describe_image_builders <- function(Names = NULL, MaxResults = NULL, N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ImageBuilders"),
     stream_api = FALSE
   )
   input <- .appstream$describe_image_builders_input(Names = Names, MaxResults = MaxResults, NextToken = NextToken)
@@ -1956,7 +1956,7 @@ appstream_describe_image_permissions <- function(Name, MaxResults = NULL, Shared
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .appstream$describe_image_permissions_input(Name = Name, MaxResults = MaxResults, SharedAwsAccountIds = SharedAwsAccountIds, NextToken = NextToken)
@@ -1993,7 +1993,7 @@ appstream_describe_images <- function(Names = NULL, Arns = NULL, Type = NULL, Ne
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Images"),
     stream_api = FALSE
   )
   input <- .appstream$describe_images_input(Names = Names, Arns = Arns, Type = Type, NextToken = NextToken, MaxResults = MaxResults)
@@ -2036,7 +2036,7 @@ appstream_describe_sessions <- function(StackName, FleetName, UserId = NULL, Nex
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "Limit", result_key = "Sessions"),
     stream_api = FALSE
   )
   input <- .appstream$describe_sessions_input(StackName = StackName, FleetName = FleetName, UserId = UserId, NextToken = NextToken, Limit = Limit, AuthenticationType = AuthenticationType, InstanceId = InstanceId)
@@ -2070,7 +2070,7 @@ appstream_describe_stacks <- function(Names = NULL, NextToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Stacks"),
     stream_api = FALSE
   )
   input <- .appstream$describe_stacks_input(Names = Names, NextToken = NextToken)
@@ -2173,7 +2173,7 @@ appstream_describe_user_stack_associations <- function(StackName = NULL, UserNam
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "UserStackAssociations"),
     stream_api = FALSE
   )
   input <- .appstream$describe_user_stack_associations_input(StackName = StackName, UserName = UserName, AuthenticationType = AuthenticationType, MaxResults = MaxResults, NextToken = NextToken)
@@ -2209,7 +2209,7 @@ appstream_describe_users <- function(AuthenticationType, MaxResults = NULL, Next
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Users"),
     stream_api = FALSE
   )
   input <- .appstream$describe_users_input(AuthenticationType = AuthenticationType, MaxResults = MaxResults, NextToken = NextToken)
@@ -2474,7 +2474,7 @@ appstream_list_associated_fleets <- function(StackName, NextToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Names"),
     stream_api = FALSE
   )
   input <- .appstream$list_associated_fleets_input(StackName = StackName, NextToken = NextToken)
@@ -2508,7 +2508,7 @@ appstream_list_associated_stacks <- function(FleetName, NextToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Names"),
     stream_api = FALSE
   )
   input <- .appstream$list_associated_stacks_input(FleetName = FleetName, NextToken = NextToken)

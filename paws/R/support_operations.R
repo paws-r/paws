@@ -491,7 +491,7 @@ support_describe_cases <- function(caseIdList = NULL, displayId = NULL, afterTim
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "cases"),
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "cases"),
     stream_api = FALSE
   )
   input <- .support$describe_cases_input(caseIdList = caseIdList, displayId = displayId, afterTime = afterTime, beforeTime = beforeTime, includeResolvedCases = includeResolvedCases, nextToken = nextToken, maxResults = maxResults, language = language, includeCommunications = includeCommunications)
@@ -589,7 +589,7 @@ support_describe_communications <- function(caseId, beforeTime = NULL, afterTime
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "communications"),
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "communications"),
     stream_api = FALSE
   )
   input <- .support$describe_communications_input(caseId = caseId, beforeTime = beforeTime, afterTime = afterTime, nextToken = nextToken, maxResults = maxResults)
@@ -776,7 +776,7 @@ support_describe_services <- function(serviceCodeList = NULL, language = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "services"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .support$describe_services_input(serviceCodeList = serviceCodeList, language = language)
@@ -1013,7 +1013,7 @@ support_describe_trusted_advisor_check_refresh_statuses <- function(checkIds) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "statuses"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .support$describe_trusted_advisor_check_refresh_statuses_input(checkIds = checkIds)
@@ -1250,7 +1250,7 @@ support_describe_trusted_advisor_check_summaries <- function(checkIds) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "summaries"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .support$describe_trusted_advisor_check_summaries_input(checkIds = checkIds)

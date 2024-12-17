@@ -17,10 +17,10 @@ to be revoked. This must be of the form:
 
 \code{arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 }}
 
-\item{RevocationConfiguration}{Contains information to enable Online Certificate Status Protocol (OCSP)
-support, to enable a certificate revocation list (CRL), to enable both,
-or to enable neither. If this parameter is not supplied, existing
-capibilites remain unchanged. For more information, see the
+\item{RevocationConfiguration}{Contains information to enable support for Online Certificate Status
+Protocol (OCSP), certificate revocation list (CRL), both protocols, or
+neither. If you don't supply this parameter, existing capibilites remain
+unchanged. For more information, see the
 \href{https://docs.aws.amazon.com/privateca/latest/APIReference/API_OcspConfiguration.html}{OcspConfiguration}
 and
 \href{https://docs.aws.amazon.com/privateca/latest/APIReference/API_CrlConfiguration.html}{CrlConfiguration}
@@ -39,7 +39,22 @@ for CRLs or OCSP must conform to
 use of special characters in a CNAME.
 \item In a CRL or OCSP configuration, the value of a CNAME parameter must
 not include a protocol prefix such as "http://" or "https://".
-}}
+}
+
+If you update the \code{S3BucketName} of
+\href{https://docs.aws.amazon.com/privateca/latest/APIReference/API_CrlConfiguration.html}{CrlConfiguration},
+you can break revocation for existing certificates. In other words, if
+you call
+\code{\link[=acmpca_update_certificate_authority]{update_certificate_authority}} to
+update the CRL configuration's S3 bucket name, Amazon Web Services
+Private CA only writes CRLs to the new S3 bucket. Certificates issued
+prior to this point will have the old S3 bucket name in your CRL
+Distribution Point (CDP) extension, essentially breaking revocation. If
+you must update the S3 bucket, you'll need to reissue old certificates
+to keep the revocation working. Alternatively, you can use a
+\href{https://docs.aws.amazon.com/privateca/latest/APIReference/API_CrlConfiguration.html#privateca-Type-CrlConfiguration-CustomCname}{CustomCname}
+in your CRL configuration if you might need to change the S3 bucket name
+in the future.}
 
 \item{Status}{Status of your private CA.}
 }

@@ -37,8 +37,8 @@ request to retrieve information about the individual cache nodes.}
 
 \item{ShowCacheClustersNotInReplicationGroups}{An optional flag that can be included in the \code{DescribeCacheCluster}
 request to show only nodes (API/CLI: clusters) that are not members of a
-replication group. In practice, this mean Memcached and single node
-Redis OSS clusters.}
+replication group. In practice, this means Memcached and single node
+Valkey or Redis OSS clusters.}
 }
 \description{
 Returns information about all provisioned clusters if no cluster identifier is specified, or about a specific cache cluster if a cluster identifier is supplied.

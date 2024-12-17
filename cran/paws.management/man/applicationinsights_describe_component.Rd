@@ -16,7 +16,7 @@ applicationinsights_describe_component(
 
 \item{ComponentName}{[required] The name of the component.}
 
-\item{AccountId}{The AWS account ID for the resource group owner.}
+\item{AccountId}{The Amazon Web Services account ID for the resource group owner.}
 }
 \description{
 Describes a component and lists the resources that are grouped together in a component.

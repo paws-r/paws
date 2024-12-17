@@ -240,17 +240,22 @@ NULL
 #' @examples
 #' \dontrun{
 #' svc <- rekognition()
-#' # This operation associates one or more faces with an existing UserID.
-#' svc$associate_faces(
-#'   ClientRequestToken = "550e8400-e29b-41d4-a716-446655440002",
-#'   CollectionId = "MyCollection",
-#'   FaceIds = list(
-#'     "f5817d37-94f6-4335-bfee-6cf79a3d806e",
-#'     "851cb847-dccc-4fea-9309-9f4805967855",
-#'     "35ebbb41-7f67-4263-908d-dd0ecba05ab9"
+#' # This operation compares the largest face detected in the source image
+#' # with each face detected in the target image.
+#' svc$compare_faces(
+#'   SimilarityThreshold = 90L,
+#'   SourceImage = list(
+#'     S3Object = list(
+#'       Bucket = "mybucket",
+#'       Name = "mysourceimage"
+#'     )
 #'   ),
-#'   UserId = "DemoUser",
-#'   UserMatchThreshold = 70L
+#'   TargetImage = list(
+#'     S3Object = list(
+#'       Bucket = "mybucket",
+#'       Name = "mytargetimage"
+#'     )
+#'   )
 #' )
 #' }
 #'
@@ -362,7 +367,7 @@ rekognition <- function(config = list(), credentials = list(), endpoint = NULL, 
 
 .rekognition$metadata <- list(
   service_name = "rekognition",
-  endpoints = list("*" = list(endpoint = "rekognition.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "rekognition.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "rekognition.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "rekognition.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "rekognition.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "rekognition.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "rekognition.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "rekognition.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "rekognition.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "rekognition.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "rekognition.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "rekognition.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "rekognition.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Rekognition",
   api_version = "2016-06-27",
   signing_name = "rekognition",

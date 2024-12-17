@@ -2,7 +2,7 @@
 % Please edit documentation in R/firehose_operations.R
 \name{firehose_create_delivery_stream}
 \alias{firehose_create_delivery_stream}
-\title{Creates a Firehose delivery stream}
+\title{Creates a Firehose stream}
 \usage{
 firehose_create_delivery_stream(
   DeliveryStreamName,
@@ -20,25 +20,26 @@ firehose_create_delivery_stream(
   AmazonOpenSearchServerlessDestinationConfiguration = NULL,
   MSKSourceConfiguration = NULL,
   SnowflakeDestinationConfiguration = NULL,
-  IcebergDestinationConfiguration = NULL
+  IcebergDestinationConfiguration = NULL,
+  DatabaseSourceConfiguration = NULL
 )
 }
 \arguments{
-\item{DeliveryStreamName}{[required] The name of the delivery stream. This name must be unique per Amazon Web
-Services account in the same Amazon Web Services Region. If the delivery
+\item{DeliveryStreamName}{[required] The name of the Firehose stream. This name must be unique per Amazon Web
+Services account in the same Amazon Web Services Region. If the Firehose
 streams are in different accounts or different Regions, you can have
-multiple delivery streams with the same name.}
+multiple Firehose streams with the same name.}
 
-\item{DeliveryStreamType}{The delivery stream type. This parameter can be one of the following
+\item{DeliveryStreamType}{The Firehose stream type. This parameter can be one of the following
 values:
 \itemize{
-\item \code{DirectPut}: Provider applications access the delivery stream
+\item \code{DirectPut}: Provider applications access the Firehose stream
 directly.
-\item \code{KinesisStreamAsSource}: The delivery stream uses a Kinesis data
+\item \code{KinesisStreamAsSource}: The Firehose stream uses a Kinesis data
 stream as a source.
 }}
 
-\item{KinesisStreamSourceConfiguration}{When a Kinesis data stream is used as the source for the delivery
+\item{KinesisStreamSourceConfiguration}{When a Kinesis data stream is used as the source for the Firehose
 stream, a KinesisStreamSourceConfiguration containing the Kinesis data
 stream Amazon Resource Name (ARN) and the role ARN for the source
 stream.}
@@ -64,21 +65,21 @@ destination.}
 \item{HttpEndpointDestinationConfiguration}{Enables configuring Kinesis Firehose to deliver data to any HTTP
 endpoint destination. You can specify only one destination.}
 
-\item{Tags}{A set of tags to assign to the delivery stream. A tag is a key-value
+\item{Tags}{A set of tags to assign to the Firehose stream. A tag is a key-value
 pair that you can define and assign to Amazon Web Services resources.
 Tags are metadata. For example, you can add friendly names and
 descriptions or other types of information that can help you distinguish
-the delivery stream. For more information about tags, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html}{Using Cost Allocation Tags}
+the Firehose stream. For more information about tags, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html}{Using Cost Allocation Tags}
 in the Amazon Web Services Billing and Cost Management User Guide.
 
-You can specify up to 50 tags when creating a delivery stream.
+You can specify up to 50 tags when creating a Firehose stream.
 
 If you specify tags in the
 \code{\link[=firehose_create_delivery_stream]{create_delivery_stream}} action,
 Amazon Data Firehose performs an additional authorization on the
 \code{firehose:TagDeliveryStream} action to verify if users have permissions
 to create tags. If you do not provide this permission, requests to
-create new Firehose delivery streams with IAM resource tags will fail
+create new Firehose Firehose streams with IAM resource tags will fail
 with an \code{AccessDeniedException} such as following.
 
 \strong{AccessDeniedException}
@@ -97,12 +98,12 @@ Service. You can specify only one destination.}
 
 \item{SnowflakeDestinationConfiguration}{Configure Snowflake destination}
 
-\item{IcebergDestinationConfiguration}{Configure Apache Iceberg Tables destination.
+\item{IcebergDestinationConfiguration}{Configure Apache Iceberg Tables destination.}
 
-Amazon Data Firehose is in preview release and is subject to change.}
+\item{DatabaseSourceConfiguration}{Amazon Data Firehose is in preview release and is subject to change.}
 }
 \description{
-Creates a Firehose delivery stream.
+Creates a Firehose stream.
 
 See \url{https://www.paws-r-sdk.com/docs/firehose_create_delivery_stream/} for full documentation.
 }

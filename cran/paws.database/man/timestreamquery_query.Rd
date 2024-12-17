@@ -9,7 +9,8 @@ timestreamquery_query(
   QueryString,
   ClientToken = NULL,
   NextToken = NULL,
-  MaxRows = NULL
+  MaxRows = NULL,
+  QueryInsights = NULL
 )
 }
 \arguments{
@@ -85,9 +86,15 @@ If the row size is large (e.g. a row has many columns), Timestream may
 return fewer rows to keep the response size from exceeding the 1 MB
 limit. If \code{MaxRows} is not provided, Timestream will send the necessary
 number of rows to meet the 1 MB limit.}
+
+\item{QueryInsights}{Encapsulates settings for enabling \code{QueryInsights}.
+
+Enabling \code{QueryInsights} returns insights and metrics in addition to
+query results for the query that you executed. You can use
+\code{QueryInsights} to tune your query performance.}
 }
 \description{
-\code{\link[=timestreamquery_query]{query}} is a synchronous operation that enables you to run a query against your Amazon Timestream data. \code{\link[=timestreamquery_query]{query}} will time out after 60 seconds. You must update the default timeout in the SDK to support a timeout of 60 seconds. See the \href{https://docs.aws.amazon.com/timestream/latest/developerguide/code-samples.run-query.html}{code sample} for details.
+\code{\link[=timestreamquery_query]{query}} is a synchronous operation that enables you to run a query against your Amazon Timestream data.
 
 See \url{https://www.paws-r-sdk.com/docs/timestreamquery_query/} for full documentation.
 }

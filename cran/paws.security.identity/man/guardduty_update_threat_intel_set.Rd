@@ -14,7 +14,11 @@ guardduty_update_threat_intel_set(
 }
 \arguments{
 \item{DetectorId}{[required] The detectorID that specifies the GuardDuty service whose ThreatIntelSet
-you want to update.}
+you want to update.
+
+To find the \code{detectorId} in the current Region, see the Settings page in
+the GuardDuty console, or run the
+\code{\link[=guardduty_list_detectors]{list_detectors}} API.}
 
 \item{ThreatIntelSetId}{[required] The unique ID that specifies the ThreatIntelSet that you want to update.}
 

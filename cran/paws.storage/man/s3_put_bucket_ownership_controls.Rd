@@ -2,7 +2,7 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_put_bucket_ownership_controls}
 \alias{s3_put_bucket_ownership_controls}
-\title{This operation is not supported by directory buckets}
+\title{This operation is not supported for directory buckets}
 \usage{
 s3_put_bucket_ownership_controls(
   Bucket,
@@ -29,7 +29,7 @@ with the HTTP status code \verb{403 Forbidden} (access denied).}
 ObjectWriter) that you want to apply to this Amazon S3 bucket.}
 }
 \description{
-This operation is not supported by directory buckets.
+This operation is not supported for directory buckets.
 
 See \url{https://www.paws-r-sdk.com/docs/s3_put_bucket_ownership_controls/} for full documentation.
 }

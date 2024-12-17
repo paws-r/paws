@@ -2,20 +2,30 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_admin_set_user_mfa_preference}
 \alias{cognitoidentityprovider_admin_set_user_mfa_preference}
-\title{The user's multi-factor authentication (MFA) preference, including which
-MFA options are activated, and if any are preferred}
+\title{Sets the user's multi-factor authentication (MFA) preference, including
+which MFA options are activated, and if any are preferred}
 \usage{
 cognitoidentityprovider_admin_set_user_mfa_preference(
   SMSMfaSettings = NULL,
   SoftwareTokenMfaSettings = NULL,
+  EmailMfaSettings = NULL,
   Username,
   UserPoolId
 )
 }
 \arguments{
-\item{SMSMfaSettings}{The SMS text message MFA settings.}
+\item{SMSMfaSettings}{User preferences for SMS message MFA. Activates or deactivates SMS MFA
+and sets it as the preferred MFA method when multiple methods are
+available.}
 
-\item{SoftwareTokenMfaSettings}{The time-based one-time password software token MFA settings.}
+\item{SoftwareTokenMfaSettings}{User preferences for time-based one-time password (TOTP) MFA. Activates
+or deactivates TOTP MFA and sets it as the preferred MFA method when
+multiple methods are available.}
+
+\item{EmailMfaSettings}{User preferences for email message MFA. Activates or deactivates email
+MFA and sets it as the preferred MFA method when multiple methods are
+available. To activate this setting, \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pool-settings-threat-protection.html}{advanced security features}
+must be active in your user pool.}
 
 \item{Username}{[required] The username of the user that you want to query or modify. The value of
 this parameter is typically your user's username, but it can be any of
@@ -23,10 +33,10 @@ their alias attributes. If \code{username} isn't an alias attribute in your
 user pool, this value must be the \code{sub} of a local user or the username
 of a user from a third-party IdP.}
 
-\item{UserPoolId}{[required] The user pool ID.}
+\item{UserPoolId}{[required] The ID of the user pool where you want to set a user's MFA preferences.}
 }
 \description{
-The user's multi-factor authentication (MFA) preference, including which MFA options are activated, and if any are preferred. Only one factor can be set as preferred. The preferred MFA factor will be used to authenticate a user if multiple factors are activated. If multiple options are activated and no preference is set, a challenge to choose an MFA option will be returned during sign-in.
+Sets the user's multi-factor authentication (MFA) preference, including which MFA options are activated, and if any are preferred. Only one factor can be set as preferred. The preferred MFA factor will be used to authenticate a user if multiple factors are activated. If multiple options are activated and no preference is set, a challenge to choose an MFA option will be returned during sign-in.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_admin_set_user_mfa_preference/} for full documentation.
 }

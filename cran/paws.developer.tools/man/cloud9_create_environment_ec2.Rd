@@ -44,16 +44,13 @@ with the Amazon EC2 instance.}
 the EC2 instance. To choose an AMI for the instance, you must specify a
 valid AMI alias or a valid Amazon EC2 Systems Manager (SSM) path.
 
-From December 04, 2023, you will be required to include the \code{imageId}
-parameter for the
-\code{\link[=cloud9_create_environment_ec2]{create_environment_ec2}} action. This
-change will be reflected across all direct methods of communicating with
-the API, such as Amazon Web Services SDK, Amazon Web Services CLI and
-Amazon Web Services CloudFormation. This change will only affect direct
-API consumers, and not Cloud9 console users.
-
 We recommend using Amazon Linux 2023 as the AMI to create your
 environment as it is fully supported.
+
+From December 16, 2024, Ubuntu 18.04 will be removed from the list of
+available \code{imageIds} for Cloud9. This change is necessary as Ubuntu
+18.04 has ended standard support on May 31, 2023. This change will only
+affect direct API consumers, and not Cloud9 console users.
 
 Since Ubuntu 18.04 has ended standard support as of May 31, 2023, we
 recommend you choose Ubuntu 22.04.

@@ -18,7 +18,10 @@ SenderId or SenderIdArn. You can use
 \code{\link[=pinpointsmsvoicev2_describe_phone_numbers]{describe_phone_numbers}}
 get the values for PhoneNumberId and PhoneNumberArn while
 \code{\link[=pinpointsmsvoicev2_describe_sender_ids]{describe_sender_ids}} can be
-used to get the values for SenderId and SenderIdArn.}
+used to get the values for SenderId and SenderIdArn.
+
+If you are using a shared AWS End User Messaging SMS and Voice resource
+then you must use the full Amazon Resource Name(ARN).}
 
 \item{Keyword}{[required] The new keyword to add.}
 

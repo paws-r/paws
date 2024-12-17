@@ -58,13 +58,11 @@ migrating your resources to this version, because it has a number of
 significant improvements.
 
 If you used WAF prior to this release, you can't use this WAFV2 API to
-access any WAF resources that you created before. You can access your
-old rules, web ACLs, and other WAF resources only through the WAF
-Classic APIs. The WAF Classic APIs have retained the prior names,
-endpoints, and namespaces.
+access any WAF resources that you created before. WAF Classic support
+will end on September 30, 2025.
 
-For information, including how to migrate your WAF resources to this
-version, see the \href{https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html}{WAF Developer Guide}.
+For information about WAF, including how to migrate your WAF Classic
+resources to this version, see the \href{https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html}{WAF Developer Guide}.
 
 WAF is a web application firewall that lets you monitor the HTTP and
 HTTPS requests that are forwarded to an Amazon CloudFront distribution,
@@ -95,23 +93,6 @@ listed for US East (N. Virginia): us-east-1.
 Alternatively, you can use one of the Amazon Web Services SDKs to access
 an API that's tailored to the programming language or platform that
 you're using. For more information, see \href{https://aws.amazon.com/developer/tools/#SDKs}{Amazon Web Services SDKs}.
-
-We currently provide two versions of the WAF API: this API and the prior
-versions, the classic WAF APIs. This new API provides the same
-functionality as the older versions, with the following major
-improvements:
-\itemize{
-\item You use one API for both global and regional applications. Where you
-need to distinguish the scope, you specify a \code{Scope} parameter and
-set it to \code{CLOUDFRONT} or \code{REGIONAL}.
-\item You can define a web ACL or rule group with a single call, and
-update it with a single call. You define all rule specifications in
-JSON format, and pass them to your rule group or web ACL calls.
-\item The limits WAF places on the use of rules more closely reflects the
-cost of running each type of rule. Rule groups include capacity
-settings, so you know the maximum cost of a rule group when you use
-it.
-}
 }
 \section{Service syntax}{
 
@@ -160,7 +141,7 @@ it.
 \link[paws.security.identity:wafv2_create_rule_group]{create_rule_group} \tab Creates a RuleGroup per the specifications provided\cr
 \link[paws.security.identity:wafv2_create_web_acl]{create_web_acl} \tab Creates a WebACL per the specifications provided\cr
 \link[paws.security.identity:wafv2_delete_api_key]{delete_api_key} \tab Deletes the specified API key\cr
-\link[paws.security.identity:wafv2_delete_firewall_manager_rule_groups]{delete_firewall_manager_rule_groups} \tab Deletes all rule groups that are managed by Firewall Manager for the specified web ACL\cr
+\link[paws.security.identity:wafv2_delete_firewall_manager_rule_groups]{delete_firewall_manager_rule_groups} \tab Deletes all rule groups that are managed by Firewall Manager from the specified WebACL\cr
 \link[paws.security.identity:wafv2_delete_ip_set]{delete_ip_set} \tab Deletes the specified IPSet\cr
 \link[paws.security.identity:wafv2_delete_logging_configuration]{delete_logging_configuration} \tab Deletes the LoggingConfiguration from the specified web ACL\cr
 \link[paws.security.identity:wafv2_delete_permission_policy]{delete_permission_policy} \tab Permanently deletes an IAM policy from the specified rule group\cr

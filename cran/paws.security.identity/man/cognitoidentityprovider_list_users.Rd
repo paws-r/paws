@@ -13,8 +13,7 @@ cognitoidentityprovider_list_users(
 )
 }
 \arguments{
-\item{UserPoolId}{[required] The user pool ID for the user pool on which the search should be
-performed.}
+\item{UserPoolId}{[required] The ID of the user pool on which the search should be performed.}
 
 \item{AttributesToGet}{A JSON array of user attribute names, for example \code{given_name}, that you
 want Amazon Cognito to include in the response for each user. When you
@@ -37,10 +36,10 @@ Cognito returns the next set of items after the current list. Subsequent
 requests return a new pagination token. By use of this token, you can
 paginate through the full list of items.}
 
-\item{Filter}{A filter string of the form "\emph{AttributeName} \emph{Filter-Type}
-"\emph{AttributeValue}"". Quotation marks within the filter string must be
-escaped using the backslash (\verb{\\}) character. For example,
-\verb{"family_name = \\"Reddy\\""}.
+\item{Filter}{A filter string of the form
+\verb{\\"AttributeName Filter-Type \\"AttributeValue\\"}. Quotation marks within
+the filter string must be escaped using the backslash (\verb{\\}) character.
+For example, \verb{"family_name = \\"Reddy\\""}.
 \itemize{
 \item \emph{AttributeName}: The name of the attribute to search for. You can
 only search for one attribute at a time.

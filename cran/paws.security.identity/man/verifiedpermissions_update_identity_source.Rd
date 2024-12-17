@@ -20,12 +20,7 @@ that you want to update.}
 \item{identitySourceId}{[required] Specifies the ID of the identity source that you want to update.}
 
 \item{updateConfiguration}{[required] Specifies the details required to communicate with the identity provider
-(IdP) associated with this identity source.
-
-At this time, the only valid member of this structure is a Amazon
-Cognito user pool configuration.
-
-You must specify a \code{userPoolArn}, and optionally, a \code{ClientId}.}
+(IdP) associated with this identity source.}
 
 \item{principalEntityType}{Specifies the data type of principals generated for identities
 authenticated by the identity source.}

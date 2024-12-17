@@ -7,6 +7,12 @@ NULL
 #'
 #' @description
 #' The action to apply a guardrail.
+#' 
+#' For troubleshooting some of the common errors you might encounter when
+#' using the [`apply_guardrail`][bedrockruntime_apply_guardrail] API, see
+#' [Troubleshooting Amazon Bedrock API Error
+#' Codes](https://docs.aws.amazon.com/bedrock/latest/userguide/troubleshooting-api-error-codes.html)
+#' in the Amazon Bedrock User Guide
 #'
 #' @usage
 #' bedrockruntime_apply_guardrail(guardrailIdentifier, guardrailVersion,
@@ -51,6 +57,7 @@ NULL
 #'           list(
 #'             type = "INSULTS"|"HATE"|"SEXUAL"|"VIOLENCE"|"MISCONDUCT"|"PROMPT_ATTACK",
 #'             confidence = "NONE"|"LOW"|"MEDIUM"|"HIGH",
+#'             filterStrength = "NONE"|"LOW"|"MEDIUM"|"HIGH",
 #'             action = "BLOCKED"
 #'           )
 #'         )
@@ -96,7 +103,38 @@ NULL
 #'             action = "BLOCKED"|"NONE"
 #'           )
 #'         )
+#'       ),
+#'       invocationMetrics = list(
+#'         guardrailProcessingLatency = 123,
+#'         usage = list(
+#'           topicPolicyUnits = 123,
+#'           contentPolicyUnits = 123,
+#'           wordPolicyUnits = 123,
+#'           sensitiveInformationPolicyUnits = 123,
+#'           sensitiveInformationPolicyFreeUnits = 123,
+#'           contextualGroundingPolicyUnits = 123
+#'         ),
+#'         guardrailCoverage = list(
+#'           textCharacters = list(
+#'             guarded = 123,
+#'             total = 123
+#'           ),
+#'           images = list(
+#'             guarded = 123,
+#'             total = 123
+#'           )
+#'         )
 #'       )
+#'     )
+#'   ),
+#'   guardrailCoverage = list(
+#'     textCharacters = list(
+#'       guarded = 123,
+#'       total = 123
+#'     ),
+#'     images = list(
+#'       guarded = 123,
+#'       total = 123
 #'     )
 #'   )
 #' )
@@ -114,6 +152,12 @@ NULL
 #'         text = "string",
 #'         qualifiers = list(
 #'           "grounding_source"|"query"|"guard_content"
+#'         )
+#'       ),
+#'       image = list(
+#'         format = "png"|"jpeg",
+#'         source = list(
+#'           bytes = raw
 #'         )
 #'       )
 #'     )
@@ -158,6 +202,21 @@ bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion
 #' Amazon Bedrock doesn't store any text, images, or documents that you
 #' provide as content. The data is only used to generate the response.
 #' 
+#' You can submit a prompt by including it in the `messages` field,
+#' specifying the `modelId` of a foundation model or inference profile to
+#' run inference on it, and including any other fields that are relevant to
+#' your use case.
+#' 
+#' You can also submit a prompt from Prompt management by specifying the
+#' ARN of the prompt version and including a map of variables to values in
+#' the `promptVariables` field. You can append more messages to the prompt
+#' by using the `messages` field. If you use a prompt from Prompt
+#' management, you can't include the following fields in the request:
+#' `additionalModelRequestFields`, `inferenceConfig`, `system`, or
+#' `toolConfig`. Instead, these fields must be defined through Prompt
+#' management. For more information, see [Use a prompt from Prompt
+#' management](https://docs.aws.amazon.com/bedrock/latest/userguide/).
+#' 
 #' For information about the Converse API, see *Use the Converse API* in
 #' the *Amazon Bedrock User Guide*. To use a guardrail, see *Use a
 #' guardrail with the Converse API* in the *Amazon Bedrock User Guide*. To
@@ -168,16 +227,31 @@ bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion
 #' User Guide*.
 #' 
 #' This operation requires permission for the `bedrock:InvokeModel` action.
+#' 
+#' To deny all inference access to resources that you specify in the
+#' modelId field, you need to deny access to the `bedrock:InvokeModel` and
+#' `bedrock:InvokeModelWithResponseStream` actions. Doing this also denies
+#' access to the resource through the base inference actions
+#' ([`invoke_model`][bedrockruntime_invoke_model] and
+#' [`invoke_model_with_response_stream`][bedrockruntime_invoke_model_with_response_stream]).
+#' For more information see [Deny access for inference on specific
+#' models](https://docs.aws.amazon.com/bedrock/latest/userguide/security_iam_id-based-policy-examples.html#security_iam_id-based-policy-examples-deny-inference).
+#' 
+#' For troubleshooting some of the common errors you might encounter when
+#' using the [`converse`][bedrockruntime_converse] API, see
+#' [Troubleshooting Amazon Bedrock API Error
+#' Codes](https://docs.aws.amazon.com/bedrock/latest/userguide/troubleshooting-api-error-codes.html)
+#' in the Amazon Bedrock User Guide
 #'
 #' @usage
 #' bedrockruntime_converse(modelId, messages, system, inferenceConfig,
 #'   toolConfig, guardrailConfig, additionalModelRequestFields,
-#'   additionalModelResponseFieldPaths)
+#'   promptVariables, additionalModelResponseFieldPaths, requestMetadata,
+#'   performanceConfig)
 #'
-#' @param modelId &#91;required&#93; The identifier for the model that you want to call.
-#' 
-#' The `modelId` to provide depends on the type of model or throughput that
-#' you use:
+#' @param modelId &#91;required&#93; Specifies the model or throughput with which to run inference, or the
+#' prompt resource to use in inference. The value depends on the resource
+#' that you use:
 #' 
 #' -   If you use a base model, specify the model ID or its ARN. For a list
 #'     of model IDs for base models, see [Amazon Bedrock base model IDs
@@ -203,30 +277,48 @@ bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion
 #'     Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/model-customization-use.html)
 #'     in the Amazon Bedrock User Guide.
 #' 
+#' -   To include a prompt that was defined in [Prompt
+#'     management](https://docs.aws.amazon.com/bedrock/latest/userguide/prompt-management.html),
+#'     specify the ARN of the prompt version to use.
+#' 
 #' The Converse API doesn't support [imported
 #' models](https://docs.aws.amazon.com/bedrock/latest/userguide/model-customization-import-model.html).
-#' @param messages &#91;required&#93; The messages that you want to send to the model.
-#' @param system A system prompt to pass to the model.
+#' @param messages The messages that you want to send to the model.
+#' @param system A prompt that provides instructions or context to the model about the
+#' task it should perform, or the persona it should adopt during the
+#' conversation.
 #' @param inferenceConfig Inference parameters to pass to the model.
-#' [`converse`][bedrockruntime_converse] supports a base set of inference
-#' parameters. If you need to pass additional parameters that the model
-#' supports, use the `additionalModelRequestFields` request field.
+#' [`converse`][bedrockruntime_converse] and
+#' [`converse_stream`][bedrockruntime_converse_stream] support a base set
+#' of inference parameters. If you need to pass additional parameters that
+#' the model supports, use the `additionalModelRequestFields` request
+#' field.
 #' @param toolConfig Configuration information for the tools that the model can use when
 #' generating a response.
 #' 
-#' This field is only supported by Anthropic Claude 3, Cohere Command R,
-#' Cohere Command R+, and Mistral Large models.
+#' For information about models that support tool use, see [Supported
+#' models and model
+#' features](https://docs.aws.amazon.com/bedrock/latest/userguide/conversation-inference.html#conversation-inference-supported-models-features).
 #' @param guardrailConfig Configuration information for a guardrail that you want to use in the
-#' request.
+#' request. If you include `guardContent` blocks in the `content` field in
+#' the `messages` field, the guardrail operates only on those messages. If
+#' you include no `guardContent` blocks, the guardrail operates on all
+#' messages in the request body and in any included prompt resource.
 #' @param additionalModelRequestFields Additional inference parameters that the model supports, beyond the base
 #' set of inference parameters that [`converse`][bedrockruntime_converse]
-#' supports in the `inferenceConfig` field. For more information, see
-#' [Model
+#' and [`converse_stream`][bedrockruntime_converse_stream] support in the
+#' `inferenceConfig` field. For more information, see [Model
 #' parameters](https://docs.aws.amazon.com/bedrock/latest/userguide/model-parameters.html).
+#' @param promptVariables Contains a map of variables in a prompt from Prompt management to
+#' objects containing the values to fill in for them when running model
+#' invocation. This field is ignored if you don't specify a prompt resource
+#' in the `modelId` field.
 #' @param additionalModelResponseFieldPaths Additional model parameters field paths to return in the response.
-#' [`converse`][bedrockruntime_converse] returns the requested fields as a
-#' JSON Pointer object in the `additionalModelResponseFields` field. The
-#' following is example JSON for `additionalModelResponseFieldPaths`.
+#' [`converse`][bedrockruntime_converse] and
+#' [`converse_stream`][bedrockruntime_converse_stream] return the requested
+#' fields as a JSON Pointer object in the `additionalModelResponseFields`
+#' field. The following is example JSON for
+#' `additionalModelResponseFieldPaths`.
 #' 
 #' `[ "/stop_sequence" ]`
 #' 
@@ -234,10 +326,13 @@ bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion
 #' Engineering Task Force
 #' (IETF)](https://datatracker.ietf.org/doc/html/rfc6901) documentation.
 #' 
-#' [`converse`][bedrockruntime_converse] rejects an empty JSON Pointer or
-#' incorrectly structured JSON Pointer with a `400` error code. if the JSON
-#' Pointer is valid, but the requested field is not in the model response,
-#' it is ignored by [`converse`][bedrockruntime_converse].
+#' [`converse`][bedrockruntime_converse] and
+#' [`converse_stream`][bedrockruntime_converse_stream] reject an empty JSON
+#' Pointer or incorrectly structured JSON Pointer with a `400` error code.
+#' if the JSON Pointer is valid, but the requested field is not in the
+#' model response, it is ignored by [`converse`][bedrockruntime_converse].
+#' @param requestMetadata Key-value pairs that you can use to filter invocation logs.
+#' @param performanceConfig Model performance settings for the request.
 #'
 #' @return
 #' A list with the following syntax:
@@ -260,6 +355,16 @@ bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion
 #'             name = "string",
 #'             source = list(
 #'               bytes = raw
+#'             )
+#'           ),
+#'           video = list(
+#'             format = "mkv"|"mov"|"mp4"|"webm"|"flv"|"mpeg"|"mpg"|"wmv"|"three_gp",
+#'             source = list(
+#'               bytes = raw,
+#'               s3Location = list(
+#'                 uri = "string",
+#'                 bucketOwner = "string"
+#'               )
 #'             )
 #'           ),
 #'           toolUse = list(
@@ -285,6 +390,16 @@ bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion
 #'                   source = list(
 #'                     bytes = raw
 #'                   )
+#'                 ),
+#'                 video = list(
+#'                   format = "mkv"|"mov"|"mp4"|"webm"|"flv"|"mpeg"|"mpg"|"wmv"|"three_gp",
+#'                   source = list(
+#'                     bytes = raw,
+#'                     s3Location = list(
+#'                       uri = "string",
+#'                       bucketOwner = "string"
+#'                     )
+#'                   )
 #'                 )
 #'               )
 #'             ),
@@ -295,6 +410,12 @@ bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion
 #'               text = "string",
 #'               qualifiers = list(
 #'                 "grounding_source"|"query"|"guard_content"
+#'               )
+#'             ),
+#'             image = list(
+#'               format = "png"|"jpeg",
+#'               source = list(
+#'                 bytes = raw
 #'               )
 #'             )
 #'           )
@@ -333,6 +454,7 @@ bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion
 #'               list(
 #'                 type = "INSULTS"|"HATE"|"SEXUAL"|"VIOLENCE"|"MISCONDUCT"|"PROMPT_ATTACK",
 #'                 confidence = "NONE"|"LOW"|"MEDIUM"|"HIGH",
+#'                 filterStrength = "NONE"|"LOW"|"MEDIUM"|"HIGH",
 #'                 action = "BLOCKED"
 #'               )
 #'             )
@@ -378,6 +500,27 @@ bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion
 #'                 action = "BLOCKED"|"NONE"
 #'               )
 #'             )
+#'           ),
+#'           invocationMetrics = list(
+#'             guardrailProcessingLatency = 123,
+#'             usage = list(
+#'               topicPolicyUnits = 123,
+#'               contentPolicyUnits = 123,
+#'               wordPolicyUnits = 123,
+#'               sensitiveInformationPolicyUnits = 123,
+#'               sensitiveInformationPolicyFreeUnits = 123,
+#'               contextualGroundingPolicyUnits = 123
+#'             ),
+#'             guardrailCoverage = list(
+#'               textCharacters = list(
+#'                 guarded = 123,
+#'                 total = 123
+#'               ),
+#'               images = list(
+#'                 guarded = 123,
+#'                 total = 123
+#'               )
+#'             )
 #'           )
 #'         )
 #'       ),
@@ -398,6 +541,7 @@ bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion
 #'                 list(
 #'                   type = "INSULTS"|"HATE"|"SEXUAL"|"VIOLENCE"|"MISCONDUCT"|"PROMPT_ATTACK",
 #'                   confidence = "NONE"|"LOW"|"MEDIUM"|"HIGH",
+#'                   filterStrength = "NONE"|"LOW"|"MEDIUM"|"HIGH",
 #'                   action = "BLOCKED"
 #'                 )
 #'               )
@@ -443,11 +587,38 @@ bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion
 #'                   action = "BLOCKED"|"NONE"
 #'                 )
 #'               )
+#'             ),
+#'             invocationMetrics = list(
+#'               guardrailProcessingLatency = 123,
+#'               usage = list(
+#'                 topicPolicyUnits = 123,
+#'                 contentPolicyUnits = 123,
+#'                 wordPolicyUnits = 123,
+#'                 sensitiveInformationPolicyUnits = 123,
+#'                 sensitiveInformationPolicyFreeUnits = 123,
+#'                 contextualGroundingPolicyUnits = 123
+#'               ),
+#'               guardrailCoverage = list(
+#'                 textCharacters = list(
+#'                   guarded = 123,
+#'                   total = 123
+#'                 ),
+#'                 images = list(
+#'                   guarded = 123,
+#'                   total = 123
+#'                 )
+#'               )
 #'             )
 #'           )
 #'         )
 #'       )
+#'     ),
+#'     promptRouter = list(
+#'       invokedModelId = "string"
 #'     )
+#'   ),
+#'   performanceConfig = list(
+#'     latency = "standard"|"optimized"
 #'   )
 #' )
 #' ```
@@ -475,6 +646,16 @@ bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion
 #'               bytes = raw
 #'             )
 #'           ),
+#'           video = list(
+#'             format = "mkv"|"mov"|"mp4"|"webm"|"flv"|"mpeg"|"mpg"|"wmv"|"three_gp",
+#'             source = list(
+#'               bytes = raw,
+#'               s3Location = list(
+#'                 uri = "string",
+#'                 bucketOwner = "string"
+#'               )
+#'             )
+#'           ),
 #'           toolUse = list(
 #'             toolUseId = "string",
 #'             name = "string",
@@ -498,6 +679,16 @@ bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion
 #'                   source = list(
 #'                     bytes = raw
 #'                   )
+#'                 ),
+#'                 video = list(
+#'                   format = "mkv"|"mov"|"mp4"|"webm"|"flv"|"mpeg"|"mpg"|"wmv"|"three_gp",
+#'                   source = list(
+#'                     bytes = raw,
+#'                     s3Location = list(
+#'                       uri = "string",
+#'                       bucketOwner = "string"
+#'                     )
+#'                   )
 #'                 )
 #'               )
 #'             ),
@@ -508,6 +699,12 @@ bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion
 #'               text = "string",
 #'               qualifiers = list(
 #'                 "grounding_source"|"query"|"guard_content"
+#'               )
+#'             ),
+#'             image = list(
+#'               format = "png"|"jpeg",
+#'               source = list(
+#'                 bytes = raw
 #'               )
 #'             )
 #'           )
@@ -523,6 +720,12 @@ bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion
 #'           text = "string",
 #'           qualifiers = list(
 #'             "grounding_source"|"query"|"guard_content"
+#'           )
+#'         ),
+#'         image = list(
+#'           format = "png"|"jpeg",
+#'           source = list(
+#'             bytes = raw
 #'           )
 #'         )
 #'       )
@@ -562,8 +765,19 @@ bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion
 #'     trace = "enabled"|"disabled"
 #'   ),
 #'   additionalModelRequestFields = list(),
+#'   promptVariables = list(
+#'     list(
+#'       text = "string"
+#'     )
+#'   ),
 #'   additionalModelResponseFieldPaths = list(
 #'     "string"
+#'   ),
+#'   requestMetadata = list(
+#'     "string"
+#'   ),
+#'   performanceConfig = list(
+#'     latency = "standard"|"optimized"
 #'   )
 #' )
 #' ```
@@ -573,7 +787,7 @@ bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion
 #' @rdname bedrockruntime_converse
 #'
 #' @aliases bedrockruntime_converse
-bedrockruntime_converse <- function(modelId, messages, system = NULL, inferenceConfig = NULL, toolConfig = NULL, guardrailConfig = NULL, additionalModelRequestFields = NULL, additionalModelResponseFieldPaths = NULL) {
+bedrockruntime_converse <- function(modelId, messages = NULL, system = NULL, inferenceConfig = NULL, toolConfig = NULL, guardrailConfig = NULL, additionalModelRequestFields = NULL, promptVariables = NULL, additionalModelResponseFieldPaths = NULL, requestMetadata = NULL, performanceConfig = NULL) {
   op <- new_operation(
     name = "Converse",
     http_method = "POST",
@@ -582,7 +796,7 @@ bedrockruntime_converse <- function(modelId, messages, system = NULL, inferenceC
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockruntime$converse_input(modelId = modelId, messages = messages, system = system, inferenceConfig = inferenceConfig, toolConfig = toolConfig, guardrailConfig = guardrailConfig, additionalModelRequestFields = additionalModelRequestFields, additionalModelResponseFieldPaths = additionalModelResponseFieldPaths)
+  input <- .bedrockruntime$converse_input(modelId = modelId, messages = messages, system = system, inferenceConfig = inferenceConfig, toolConfig = toolConfig, guardrailConfig = guardrailConfig, additionalModelRequestFields = additionalModelRequestFields, promptVariables = promptVariables, additionalModelResponseFieldPaths = additionalModelResponseFieldPaths, requestMetadata = requestMetadata, performanceConfig = performanceConfig)
   output <- .bedrockruntime$converse_output()
   config <- get_config()
   svc <- .bedrockruntime$service(config, op)
@@ -614,6 +828,21 @@ bedrockruntime_converse <- function(modelId, messages, system = NULL, inferenceC
 #' Amazon Bedrock doesn't store any text, images, or documents that you
 #' provide as content. The data is only used to generate the response.
 #' 
+#' You can submit a prompt by including it in the `messages` field,
+#' specifying the `modelId` of a foundation model or inference profile to
+#' run inference on it, and including any other fields that are relevant to
+#' your use case.
+#' 
+#' You can also submit a prompt from Prompt management by specifying the
+#' ARN of the prompt version and including a map of variables to values in
+#' the `promptVariables` field. You can append more messages to the prompt
+#' by using the `messages` field. If you use a prompt from Prompt
+#' management, you can't include the following fields in the request:
+#' `additionalModelRequestFields`, `inferenceConfig`, `system`, or
+#' `toolConfig`. Instead, these fields must be defined through Prompt
+#' management. For more information, see [Use a prompt from Prompt
+#' management](https://docs.aws.amazon.com/bedrock/latest/userguide/).
+#' 
 #' For information about the Converse API, see *Use the Converse API* in
 #' the *Amazon Bedrock User Guide*. To use a guardrail, see *Use a
 #' guardrail with the Converse API* in the *Amazon Bedrock User Guide*. To
@@ -625,16 +854,31 @@ bedrockruntime_converse <- function(modelId, messages, system = NULL, inferenceC
 #' 
 #' This operation requires permission for the
 #' `bedrock:InvokeModelWithResponseStream` action.
+#' 
+#' To deny all inference access to resources that you specify in the
+#' modelId field, you need to deny access to the `bedrock:InvokeModel` and
+#' `bedrock:InvokeModelWithResponseStream` actions. Doing this also denies
+#' access to the resource through the base inference actions
+#' ([`invoke_model`][bedrockruntime_invoke_model] and
+#' [`invoke_model_with_response_stream`][bedrockruntime_invoke_model_with_response_stream]).
+#' For more information see [Deny access for inference on specific
+#' models](https://docs.aws.amazon.com/bedrock/latest/userguide/security_iam_id-based-policy-examples.html#security_iam_id-based-policy-examples-deny-inference).
+#' 
+#' For troubleshooting some of the common errors you might encounter when
+#' using the [`converse_stream`][bedrockruntime_converse_stream] API, see
+#' [Troubleshooting Amazon Bedrock API Error
+#' Codes](https://docs.aws.amazon.com/bedrock/latest/userguide/troubleshooting-api-error-codes.html)
+#' in the Amazon Bedrock User Guide
 #'
 #' @usage
 #' bedrockruntime_converse_stream(modelId, messages, system,
 #'   inferenceConfig, toolConfig, guardrailConfig,
-#'   additionalModelRequestFields, additionalModelResponseFieldPaths)
+#'   additionalModelRequestFields, promptVariables,
+#'   additionalModelResponseFieldPaths, requestMetadata, performanceConfig)
 #'
-#' @param modelId &#91;required&#93; The ID for the model.
-#' 
-#' The `modelId` to provide depends on the type of model or throughput that
-#' you use:
+#' @param modelId &#91;required&#93; Specifies the model or throughput with which to run inference, or the
+#' prompt resource to use in inference. The value depends on the resource
+#' that you use:
 #' 
 #' -   If you use a base model, specify the model ID or its ARN. For a list
 #'     of model IDs for base models, see [Amazon Bedrock base model IDs
@@ -660,29 +904,47 @@ bedrockruntime_converse <- function(modelId, messages, system = NULL, inferenceC
 #'     Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/model-customization-use.html)
 #'     in the Amazon Bedrock User Guide.
 #' 
+#' -   To include a prompt that was defined in [Prompt
+#'     management](https://docs.aws.amazon.com/bedrock/latest/userguide/prompt-management.html),
+#'     specify the ARN of the prompt version to use.
+#' 
 #' The Converse API doesn't support [imported
 #' models](https://docs.aws.amazon.com/bedrock/latest/userguide/model-customization-import-model.html).
-#' @param messages &#91;required&#93; The messages that you want to send to the model.
-#' @param system A system prompt to send to the model.
+#' @param messages The messages that you want to send to the model.
+#' @param system A prompt that provides instructions or context to the model about the
+#' task it should perform, or the persona it should adopt during the
+#' conversation.
 #' @param inferenceConfig Inference parameters to pass to the model.
-#' [`converse_stream`][bedrockruntime_converse_stream] supports a base set
+#' [`converse`][bedrockruntime_converse] and
+#' [`converse_stream`][bedrockruntime_converse_stream] support a base set
 #' of inference parameters. If you need to pass additional parameters that
 #' the model supports, use the `additionalModelRequestFields` request
 #' field.
 #' @param toolConfig Configuration information for the tools that the model can use when
 #' generating a response.
 #' 
-#' This field is only supported by Anthropic Claude 3 models.
+#' For information about models that support streaming tool use, see
+#' [Supported models and model
+#' features](https://docs.aws.amazon.com/bedrock/latest/userguide/conversation-inference.html#conversation-inference-supported-models-features).
 #' @param guardrailConfig Configuration information for a guardrail that you want to use in the
-#' request.
+#' request. If you include `guardContent` blocks in the `content` field in
+#' the `messages` field, the guardrail operates only on those messages. If
+#' you include no `guardContent` blocks, the guardrail operates on all
+#' messages in the request body and in any included prompt resource.
 #' @param additionalModelRequestFields Additional inference parameters that the model supports, beyond the base
-#' set of inference parameters that
-#' [`converse_stream`][bedrockruntime_converse_stream] supports in the
-#' `inferenceConfig` field.
+#' set of inference parameters that [`converse`][bedrockruntime_converse]
+#' and [`converse_stream`][bedrockruntime_converse_stream] support in the
+#' `inferenceConfig` field. For more information, see [Model
+#' parameters](https://docs.aws.amazon.com/bedrock/latest/userguide/model-parameters.html).
+#' @param promptVariables Contains a map of variables in a prompt from Prompt management to
+#' objects containing the values to fill in for them when running model
+#' invocation. This field is ignored if you don't specify a prompt resource
+#' in the `modelId` field.
 #' @param additionalModelResponseFieldPaths Additional model parameters field paths to return in the response.
-#' [`converse_stream`][bedrockruntime_converse_stream] returns the
-#' requested fields as a JSON Pointer object in the
-#' `additionalModelResponseFields` field. The following is example JSON for
+#' [`converse`][bedrockruntime_converse] and
+#' [`converse_stream`][bedrockruntime_converse_stream] return the requested
+#' fields as a JSON Pointer object in the `additionalModelResponseFields`
+#' field. The following is example JSON for
 #' `additionalModelResponseFieldPaths`.
 #' 
 #' `[ "/stop_sequence" ]`
@@ -691,11 +953,13 @@ bedrockruntime_converse <- function(modelId, messages, system = NULL, inferenceC
 #' Engineering Task Force
 #' (IETF)](https://datatracker.ietf.org/doc/html/rfc6901) documentation.
 #' 
-#' [`converse_stream`][bedrockruntime_converse_stream] rejects an empty
-#' JSON Pointer or incorrectly structured JSON Pointer with a `400` error
-#' code. if the JSON Pointer is valid, but the requested field is not in
-#' the model response, it is ignored by
-#' [`converse_stream`][bedrockruntime_converse_stream].
+#' [`converse`][bedrockruntime_converse] and
+#' [`converse_stream`][bedrockruntime_converse_stream] reject an empty JSON
+#' Pointer or incorrectly structured JSON Pointer with a `400` error code.
+#' if the JSON Pointer is valid, but the requested field is not in the
+#' model response, it is ignored by [`converse`][bedrockruntime_converse].
+#' @param requestMetadata Key-value pairs that you can use to filter invocation logs.
+#' @param performanceConfig Model performance settings for the request.
 #'
 #' @return
 #' A list with the following syntax:
@@ -760,6 +1024,7 @@ bedrockruntime_converse <- function(modelId, messages, system = NULL, inferenceC
 #'                   list(
 #'                     type = "INSULTS"|"HATE"|"SEXUAL"|"VIOLENCE"|"MISCONDUCT"|"PROMPT_ATTACK",
 #'                     confidence = "NONE"|"LOW"|"MEDIUM"|"HIGH",
+#'                     filterStrength = "NONE"|"LOW"|"MEDIUM"|"HIGH",
 #'                     action = "BLOCKED"
 #'                   )
 #'                 )
@@ -805,6 +1070,27 @@ bedrockruntime_converse <- function(modelId, messages, system = NULL, inferenceC
 #'                     action = "BLOCKED"|"NONE"
 #'                   )
 #'                 )
+#'               ),
+#'               invocationMetrics = list(
+#'                 guardrailProcessingLatency = 123,
+#'                 usage = list(
+#'                   topicPolicyUnits = 123,
+#'                   contentPolicyUnits = 123,
+#'                   wordPolicyUnits = 123,
+#'                   sensitiveInformationPolicyUnits = 123,
+#'                   sensitiveInformationPolicyFreeUnits = 123,
+#'                   contextualGroundingPolicyUnits = 123
+#'                 ),
+#'                 guardrailCoverage = list(
+#'                   textCharacters = list(
+#'                     guarded = 123,
+#'                     total = 123
+#'                   ),
+#'                   images = list(
+#'                     guarded = 123,
+#'                     total = 123
+#'                   )
+#'                 )
 #'               )
 #'             )
 #'           ),
@@ -825,6 +1111,7 @@ bedrockruntime_converse <- function(modelId, messages, system = NULL, inferenceC
 #'                     list(
 #'                       type = "INSULTS"|"HATE"|"SEXUAL"|"VIOLENCE"|"MISCONDUCT"|"PROMPT_ATTACK",
 #'                       confidence = "NONE"|"LOW"|"MEDIUM"|"HIGH",
+#'                       filterStrength = "NONE"|"LOW"|"MEDIUM"|"HIGH",
 #'                       action = "BLOCKED"
 #'                     )
 #'                   )
@@ -870,11 +1157,38 @@ bedrockruntime_converse <- function(modelId, messages, system = NULL, inferenceC
 #'                       action = "BLOCKED"|"NONE"
 #'                     )
 #'                   )
+#'                 ),
+#'                 invocationMetrics = list(
+#'                   guardrailProcessingLatency = 123,
+#'                   usage = list(
+#'                     topicPolicyUnits = 123,
+#'                     contentPolicyUnits = 123,
+#'                     wordPolicyUnits = 123,
+#'                     sensitiveInformationPolicyUnits = 123,
+#'                     sensitiveInformationPolicyFreeUnits = 123,
+#'                     contextualGroundingPolicyUnits = 123
+#'                   ),
+#'                   guardrailCoverage = list(
+#'                     textCharacters = list(
+#'                       guarded = 123,
+#'                       total = 123
+#'                     ),
+#'                     images = list(
+#'                       guarded = 123,
+#'                       total = 123
+#'                     )
+#'                   )
 #'                 )
 #'               )
 #'             )
 #'           )
+#'         ),
+#'         promptRouter = list(
+#'           invokedModelId = "string"
 #'         )
+#'       ),
+#'       performanceConfig = list(
+#'         latency = "standard"|"optimized"
 #'       )
 #'     ),
 #'     internalServerException = list(
@@ -921,6 +1235,16 @@ bedrockruntime_converse <- function(modelId, messages, system = NULL, inferenceC
 #'               bytes = raw
 #'             )
 #'           ),
+#'           video = list(
+#'             format = "mkv"|"mov"|"mp4"|"webm"|"flv"|"mpeg"|"mpg"|"wmv"|"three_gp",
+#'             source = list(
+#'               bytes = raw,
+#'               s3Location = list(
+#'                 uri = "string",
+#'                 bucketOwner = "string"
+#'               )
+#'             )
+#'           ),
 #'           toolUse = list(
 #'             toolUseId = "string",
 #'             name = "string",
@@ -944,6 +1268,16 @@ bedrockruntime_converse <- function(modelId, messages, system = NULL, inferenceC
 #'                   source = list(
 #'                     bytes = raw
 #'                   )
+#'                 ),
+#'                 video = list(
+#'                   format = "mkv"|"mov"|"mp4"|"webm"|"flv"|"mpeg"|"mpg"|"wmv"|"three_gp",
+#'                   source = list(
+#'                     bytes = raw,
+#'                     s3Location = list(
+#'                       uri = "string",
+#'                       bucketOwner = "string"
+#'                     )
+#'                   )
 #'                 )
 #'               )
 #'             ),
@@ -954,6 +1288,12 @@ bedrockruntime_converse <- function(modelId, messages, system = NULL, inferenceC
 #'               text = "string",
 #'               qualifiers = list(
 #'                 "grounding_source"|"query"|"guard_content"
+#'               )
+#'             ),
+#'             image = list(
+#'               format = "png"|"jpeg",
+#'               source = list(
+#'                 bytes = raw
 #'               )
 #'             )
 #'           )
@@ -969,6 +1309,12 @@ bedrockruntime_converse <- function(modelId, messages, system = NULL, inferenceC
 #'           text = "string",
 #'           qualifiers = list(
 #'             "grounding_source"|"query"|"guard_content"
+#'           )
+#'         ),
+#'         image = list(
+#'           format = "png"|"jpeg",
+#'           source = list(
+#'             bytes = raw
 #'           )
 #'         )
 #'       )
@@ -1009,8 +1355,19 @@ bedrockruntime_converse <- function(modelId, messages, system = NULL, inferenceC
 #'     streamProcessingMode = "sync"|"async"
 #'   ),
 #'   additionalModelRequestFields = list(),
+#'   promptVariables = list(
+#'     list(
+#'       text = "string"
+#'     )
+#'   ),
 #'   additionalModelResponseFieldPaths = list(
 #'     "string"
+#'   ),
+#'   requestMetadata = list(
+#'     "string"
+#'   ),
+#'   performanceConfig = list(
+#'     latency = "standard"|"optimized"
 #'   )
 #' )
 #' ```
@@ -1020,7 +1377,7 @@ bedrockruntime_converse <- function(modelId, messages, system = NULL, inferenceC
 #' @rdname bedrockruntime_converse_stream
 #'
 #' @aliases bedrockruntime_converse_stream
-bedrockruntime_converse_stream <- function(modelId, messages, system = NULL, inferenceConfig = NULL, toolConfig = NULL, guardrailConfig = NULL, additionalModelRequestFields = NULL, additionalModelResponseFieldPaths = NULL) {
+bedrockruntime_converse_stream <- function(modelId, messages = NULL, system = NULL, inferenceConfig = NULL, toolConfig = NULL, guardrailConfig = NULL, additionalModelRequestFields = NULL, promptVariables = NULL, additionalModelResponseFieldPaths = NULL, requestMetadata = NULL, performanceConfig = NULL) {
   op <- new_operation(
     name = "ConverseStream",
     http_method = "POST",
@@ -1029,7 +1386,7 @@ bedrockruntime_converse_stream <- function(modelId, messages, system = NULL, inf
     paginator = list(),
     stream_api = TRUE
   )
-  input <- .bedrockruntime$converse_stream_input(modelId = modelId, messages = messages, system = system, inferenceConfig = inferenceConfig, toolConfig = toolConfig, guardrailConfig = guardrailConfig, additionalModelRequestFields = additionalModelRequestFields, additionalModelResponseFieldPaths = additionalModelResponseFieldPaths)
+  input <- .bedrockruntime$converse_stream_input(modelId = modelId, messages = messages, system = system, inferenceConfig = inferenceConfig, toolConfig = toolConfig, guardrailConfig = guardrailConfig, additionalModelRequestFields = additionalModelRequestFields, promptVariables = promptVariables, additionalModelResponseFieldPaths = additionalModelResponseFieldPaths, requestMetadata = requestMetadata, performanceConfig = performanceConfig)
   output <- .bedrockruntime$converse_stream_output()
   config <- get_config()
   svc <- .bedrockruntime$service(config, op)
@@ -1038,6 +1395,75 @@ bedrockruntime_converse_stream <- function(modelId, messages, system = NULL, inf
   return(response)
 }
 .bedrockruntime$operations$converse_stream <- bedrockruntime_converse_stream
+
+#' Retrieve information about an asynchronous invocation
+#'
+#' @description
+#' Retrieve information about an asynchronous invocation.
+#'
+#' @usage
+#' bedrockruntime_get_async_invoke(invocationArn)
+#'
+#' @param invocationArn &#91;required&#93; The invocation's ARN.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   invocationArn = "string",
+#'   modelArn = "string",
+#'   clientRequestToken = "string",
+#'   status = "InProgress"|"Completed"|"Failed",
+#'   failureMessage = "string",
+#'   submitTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   lastModifiedTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   endTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   outputDataConfig = list(
+#'     s3OutputDataConfig = list(
+#'       s3Uri = "string",
+#'       kmsKeyId = "string",
+#'       bucketOwner = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_async_invoke(
+#'   invocationArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockruntime_get_async_invoke
+#'
+#' @aliases bedrockruntime_get_async_invoke
+bedrockruntime_get_async_invoke <- function(invocationArn) {
+  op <- new_operation(
+    name = "GetAsyncInvoke",
+    http_method = "GET",
+    http_path = "/async-invoke/{invocationArn}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrockruntime$get_async_invoke_input(invocationArn = invocationArn)
+  output <- .bedrockruntime$get_async_invoke_output()
+  config <- get_config()
+  svc <- .bedrockruntime$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockruntime$operations$get_async_invoke <- bedrockruntime_get_async_invoke
 
 #' Invokes the specified Amazon Bedrock model to run inference using the
 #' prompt and inference parameters provided in the request body
@@ -1051,12 +1477,27 @@ bedrockruntime_converse_stream <- function(modelId, messages, system = NULL, inf
 #' Bedrock User Guide*.
 #' 
 #' This operation requires permission for the `bedrock:InvokeModel` action.
+#' 
+#' To deny all inference access to resources that you specify in the
+#' modelId field, you need to deny access to the `bedrock:InvokeModel` and
+#' `bedrock:InvokeModelWithResponseStream` actions. Doing this also denies
+#' access to the resource through the Converse API actions
+#' ([`converse`][bedrockruntime_converse] and
+#' [`converse_stream`][bedrockruntime_converse_stream]). For more
+#' information see [Deny access for inference on specific
+#' models](https://docs.aws.amazon.com/bedrock/latest/userguide/security_iam_id-based-policy-examples.html#security_iam_id-based-policy-examples-deny-inference).
+#' 
+#' For troubleshooting some of the common errors you might encounter when
+#' using the [`invoke_model`][bedrockruntime_invoke_model] API, see
+#' [Troubleshooting Amazon Bedrock API Error
+#' Codes](https://docs.aws.amazon.com/bedrock/latest/userguide/troubleshooting-api-error-codes.html)
+#' in the Amazon Bedrock User Guide
 #'
 #' @usage
 #' bedrockruntime_invoke_model(body, contentType, accept, modelId, trace,
-#'   guardrailIdentifier, guardrailVersion)
+#'   guardrailIdentifier, guardrailVersion, performanceConfigLatency)
 #'
-#' @param body &#91;required&#93; The prompt and inference parameters in the format specified in the
+#' @param body The prompt and inference parameters in the format specified in the
 #' `contentType` in the header. You must provide the body in JSON format.
 #' To see the format and content of the request and response bodies for
 #' different models, refer to [Inference
@@ -1070,12 +1511,19 @@ bedrockruntime_converse_stream <- function(modelId, messages, system = NULL, inf
 #' value is `application/json`.
 #' @param modelId &#91;required&#93; The unique identifier of the model to invoke to run inference.
 #' 
-#' The `modelId` to provide depends on the type of model that you use:
+#' The `modelId` to provide depends on the type of model or throughput that
+#' you use:
 #' 
 #' -   If you use a base model, specify the model ID or its ARN. For a list
 #'     of model IDs for base models, see [Amazon Bedrock base model IDs
 #'     (on-demand
 #'     throughput)](https://docs.aws.amazon.com/bedrock/latest/userguide/models-supported.html#model-ids-arns)
+#'     in the Amazon Bedrock User Guide.
+#' 
+#' -   If you use an inference profile, specify the inference profile ID or
+#'     its ARN. For a list of inference profile IDs, see [Supported Regions
+#'     and models for cross-region
+#'     inference](https://docs.aws.amazon.com/bedrock/latest/userguide/inference-profiles-support.html)
 #'     in the Amazon Bedrock User Guide.
 #' 
 #' -   If you use a provisioned model, specify the ARN of the Provisioned
@@ -1112,13 +1560,15 @@ bedrockruntime_converse_stream <- function(modelId, messages, system = NULL, inf
 #' -   You provide a guardrail identifier, but `guardrailVersion` isn't
 #'     specified.
 #' @param guardrailVersion The version number for the guardrail. The value can also be `DRAFT`.
+#' @param performanceConfigLatency Model performance settings for the request.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
 #'   body = raw,
-#'   contentType = "string"
+#'   contentType = "string",
+#'   performanceConfigLatency = "standard"|"optimized"
 #' )
 #' ```
 #'
@@ -1131,7 +1581,8 @@ bedrockruntime_converse_stream <- function(modelId, messages, system = NULL, inf
 #'   modelId = "string",
 #'   trace = "ENABLED"|"DISABLED",
 #'   guardrailIdentifier = "string",
-#'   guardrailVersion = "string"
+#'   guardrailVersion = "string",
+#'   performanceConfigLatency = "standard"|"optimized"
 #' )
 #' ```
 #'
@@ -1140,7 +1591,7 @@ bedrockruntime_converse_stream <- function(modelId, messages, system = NULL, inf
 #' @rdname bedrockruntime_invoke_model
 #'
 #' @aliases bedrockruntime_invoke_model
-bedrockruntime_invoke_model <- function(body, contentType = NULL, accept = NULL, modelId, trace = NULL, guardrailIdentifier = NULL, guardrailVersion = NULL) {
+bedrockruntime_invoke_model <- function(body = NULL, contentType = NULL, accept = NULL, modelId, trace = NULL, guardrailIdentifier = NULL, guardrailVersion = NULL, performanceConfigLatency = NULL) {
   op <- new_operation(
     name = "InvokeModel",
     http_method = "POST",
@@ -1149,7 +1600,7 @@ bedrockruntime_invoke_model <- function(body, contentType = NULL, accept = NULL,
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockruntime$invoke_model_input(body = body, contentType = contentType, accept = accept, modelId = modelId, trace = trace, guardrailIdentifier = guardrailIdentifier, guardrailVersion = guardrailVersion)
+  input <- .bedrockruntime$invoke_model_input(body = body, contentType = contentType, accept = accept, modelId = modelId, trace = trace, guardrailIdentifier = guardrailIdentifier, guardrailVersion = guardrailVersion, performanceConfigLatency = performanceConfigLatency)
   output <- .bedrockruntime$invoke_model_output()
   config <- get_config()
   svc <- .bedrockruntime$service(config, op)
@@ -1180,12 +1631,29 @@ bedrockruntime_invoke_model <- function(body, contentType = NULL, accept = NULL,
 #' 
 #' This operation requires permissions to perform the
 #' `bedrock:InvokeModelWithResponseStream` action.
+#' 
+#' To deny all inference access to resources that you specify in the
+#' modelId field, you need to deny access to the `bedrock:InvokeModel` and
+#' `bedrock:InvokeModelWithResponseStream` actions. Doing this also denies
+#' access to the resource through the Converse API actions
+#' ([`converse`][bedrockruntime_converse] and
+#' [`converse_stream`][bedrockruntime_converse_stream]). For more
+#' information see [Deny access for inference on specific
+#' models](https://docs.aws.amazon.com/bedrock/latest/userguide/security_iam_id-based-policy-examples.html#security_iam_id-based-policy-examples-deny-inference).
+#' 
+#' For troubleshooting some of the common errors you might encounter when
+#' using the
+#' [`invoke_model_with_response_stream`][bedrockruntime_invoke_model_with_response_stream]
+#' API, see [Troubleshooting Amazon Bedrock API Error
+#' Codes](https://docs.aws.amazon.com/bedrock/latest/userguide/troubleshooting-api-error-codes.html)
+#' in the Amazon Bedrock User Guide
 #'
 #' @usage
 #' bedrockruntime_invoke_model_with_response_stream(body, contentType,
-#'   accept, modelId, trace, guardrailIdentifier, guardrailVersion)
+#'   accept, modelId, trace, guardrailIdentifier, guardrailVersion,
+#'   performanceConfigLatency)
 #'
-#' @param body &#91;required&#93; The prompt and inference parameters in the format specified in the
+#' @param body The prompt and inference parameters in the format specified in the
 #' `contentType` in the header. You must provide the body in JSON format.
 #' To see the format and content of the request and response bodies for
 #' different models, refer to [Inference
@@ -1199,12 +1667,19 @@ bedrockruntime_invoke_model <- function(body, contentType = NULL, accept = NULL,
 #' value is `application/json`.
 #' @param modelId &#91;required&#93; The unique identifier of the model to invoke to run inference.
 #' 
-#' The `modelId` to provide depends on the type of model that you use:
+#' The `modelId` to provide depends on the type of model or throughput that
+#' you use:
 #' 
 #' -   If you use a base model, specify the model ID or its ARN. For a list
 #'     of model IDs for base models, see [Amazon Bedrock base model IDs
 #'     (on-demand
 #'     throughput)](https://docs.aws.amazon.com/bedrock/latest/userguide/models-supported.html#model-ids-arns)
+#'     in the Amazon Bedrock User Guide.
+#' 
+#' -   If you use an inference profile, specify the inference profile ID or
+#'     its ARN. For a list of inference profile IDs, see [Supported Regions
+#'     and models for cross-region
+#'     inference](https://docs.aws.amazon.com/bedrock/latest/userguide/inference-profiles-support.html)
 #'     in the Amazon Bedrock User Guide.
 #' 
 #' -   If you use a provisioned model, specify the ARN of the Provisioned
@@ -1241,6 +1716,7 @@ bedrockruntime_invoke_model <- function(body, contentType = NULL, accept = NULL,
 #' -   You provide a guardrail identifier, but `guardrailVersion` isn't
 #'     specified.
 #' @param guardrailVersion The version number for the guardrail. The value can also be `DRAFT`.
+#' @param performanceConfigLatency Model performance settings for the request.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1271,7 +1747,8 @@ bedrockruntime_invoke_model <- function(body, contentType = NULL, accept = NULL,
 #'       message = "string"
 #'     )
 #'   ),
-#'   contentType = "string"
+#'   contentType = "string",
+#'   performanceConfigLatency = "standard"|"optimized"
 #' )
 #' ```
 #'
@@ -1284,7 +1761,8 @@ bedrockruntime_invoke_model <- function(body, contentType = NULL, accept = NULL,
 #'   modelId = "string",
 #'   trace = "ENABLED"|"DISABLED",
 #'   guardrailIdentifier = "string",
-#'   guardrailVersion = "string"
+#'   guardrailVersion = "string",
+#'   performanceConfigLatency = "standard"|"optimized"
 #' )
 #' ```
 #'
@@ -1293,7 +1771,7 @@ bedrockruntime_invoke_model <- function(body, contentType = NULL, accept = NULL,
 #' @rdname bedrockruntime_invoke_model_with_response_stream
 #'
 #' @aliases bedrockruntime_invoke_model_with_response_stream
-bedrockruntime_invoke_model_with_response_stream <- function(body, contentType = NULL, accept = NULL, modelId, trace = NULL, guardrailIdentifier = NULL, guardrailVersion = NULL) {
+bedrockruntime_invoke_model_with_response_stream <- function(body = NULL, contentType = NULL, accept = NULL, modelId, trace = NULL, guardrailIdentifier = NULL, guardrailVersion = NULL, performanceConfigLatency = NULL) {
   op <- new_operation(
     name = "InvokeModelWithResponseStream",
     http_method = "POST",
@@ -1302,7 +1780,7 @@ bedrockruntime_invoke_model_with_response_stream <- function(body, contentType =
     paginator = list(),
     stream_api = TRUE
   )
-  input <- .bedrockruntime$invoke_model_with_response_stream_input(body = body, contentType = contentType, accept = accept, modelId = modelId, trace = trace, guardrailIdentifier = guardrailIdentifier, guardrailVersion = guardrailVersion)
+  input <- .bedrockruntime$invoke_model_with_response_stream_input(body = body, contentType = contentType, accept = accept, modelId = modelId, trace = trace, guardrailIdentifier = guardrailIdentifier, guardrailVersion = guardrailVersion, performanceConfigLatency = performanceConfigLatency)
   output <- .bedrockruntime$invoke_model_with_response_stream_output()
   config <- get_config()
   svc <- .bedrockruntime$service(config, op)
@@ -1311,3 +1789,175 @@ bedrockruntime_invoke_model_with_response_stream <- function(body, contentType =
   return(response)
 }
 .bedrockruntime$operations$invoke_model_with_response_stream <- bedrockruntime_invoke_model_with_response_stream
+
+#' Lists asynchronous invocations
+#'
+#' @description
+#' Lists asynchronous invocations.
+#'
+#' @usage
+#' bedrockruntime_list_async_invokes(submitTimeAfter, submitTimeBefore,
+#'   statusEquals, maxResults, nextToken, sortBy, sortOrder)
+#'
+#' @param submitTimeAfter Include invocations submitted after this time.
+#' @param submitTimeBefore Include invocations submitted before this time.
+#' @param statusEquals Filter invocations by status.
+#' @param maxResults The maximum number of invocations to return in one page of results.
+#' @param nextToken Specify the pagination token from a previous request to retrieve the
+#' next page of results.
+#' @param sortBy How to sort the response.
+#' @param sortOrder The sorting order for the response.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   nextToken = "string",
+#'   asyncInvokeSummaries = list(
+#'     list(
+#'       invocationArn = "string",
+#'       modelArn = "string",
+#'       clientRequestToken = "string",
+#'       status = "InProgress"|"Completed"|"Failed",
+#'       failureMessage = "string",
+#'       submitTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastModifiedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       endTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       outputDataConfig = list(
+#'         s3OutputDataConfig = list(
+#'           s3Uri = "string",
+#'           kmsKeyId = "string",
+#'           bucketOwner = "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_async_invokes(
+#'   submitTimeAfter = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   submitTimeBefore = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   statusEquals = "InProgress"|"Completed"|"Failed",
+#'   maxResults = 123,
+#'   nextToken = "string",
+#'   sortBy = "SubmissionTime",
+#'   sortOrder = "Ascending"|"Descending"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockruntime_list_async_invokes
+#'
+#' @aliases bedrockruntime_list_async_invokes
+bedrockruntime_list_async_invokes <- function(submitTimeAfter = NULL, submitTimeBefore = NULL, statusEquals = NULL, maxResults = NULL, nextToken = NULL, sortBy = NULL, sortOrder = NULL) {
+  op <- new_operation(
+    name = "ListAsyncInvokes",
+    http_method = "GET",
+    http_path = "/async-invoke",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "asyncInvokeSummaries"),
+    stream_api = FALSE
+  )
+  input <- .bedrockruntime$list_async_invokes_input(submitTimeAfter = submitTimeAfter, submitTimeBefore = submitTimeBefore, statusEquals = statusEquals, maxResults = maxResults, nextToken = nextToken, sortBy = sortBy, sortOrder = sortOrder)
+  output <- .bedrockruntime$list_async_invokes_output()
+  config <- get_config()
+  svc <- .bedrockruntime$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockruntime$operations$list_async_invokes <- bedrockruntime_list_async_invokes
+
+#' Starts an asynchronous invocation
+#'
+#' @description
+#' Starts an asynchronous invocation.
+#' 
+#' This operation requires permission for the `bedrock:InvokeModel` action.
+#' 
+#' To deny all inference access to resources that you specify in the
+#' modelId field, you need to deny access to the `bedrock:InvokeModel` and
+#' `bedrock:InvokeModelWithResponseStream` actions. Doing this also denies
+#' access to the resource through the Converse API actions
+#' ([`converse`][bedrockruntime_converse] and
+#' [`converse_stream`][bedrockruntime_converse_stream]). For more
+#' information see [Deny access for inference on specific
+#' models](https://docs.aws.amazon.com/bedrock/latest/userguide/security_iam_id-based-policy-examples.html#security_iam_id-based-policy-examples-deny-inference).
+#'
+#' @usage
+#' bedrockruntime_start_async_invoke(clientRequestToken, modelId,
+#'   modelInput, outputDataConfig, tags)
+#'
+#' @param clientRequestToken Specify idempotency token to ensure that requests are not duplicated.
+#' @param modelId &#91;required&#93; The model to invoke.
+#' @param modelInput &#91;required&#93; Input to send to the model.
+#' @param outputDataConfig &#91;required&#93; Where to store the output.
+#' @param tags Tags to apply to the invocation.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   invocationArn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$start_async_invoke(
+#'   clientRequestToken = "string",
+#'   modelId = "string",
+#'   modelInput = list(),
+#'   outputDataConfig = list(
+#'     s3OutputDataConfig = list(
+#'       s3Uri = "string",
+#'       kmsKeyId = "string",
+#'       bucketOwner = "string"
+#'     )
+#'   ),
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockruntime_start_async_invoke
+#'
+#' @aliases bedrockruntime_start_async_invoke
+bedrockruntime_start_async_invoke <- function(clientRequestToken = NULL, modelId, modelInput, outputDataConfig, tags = NULL) {
+  op <- new_operation(
+    name = "StartAsyncInvoke",
+    http_method = "POST",
+    http_path = "/async-invoke",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrockruntime$start_async_invoke_input(clientRequestToken = clientRequestToken, modelId = modelId, modelInput = modelInput, outputDataConfig = outputDataConfig, tags = tags)
+  output <- .bedrockruntime$start_async_invoke_output()
+  config <- get_config()
+  svc <- .bedrockruntime$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockruntime$operations$start_async_invoke <- bedrockruntime_start_async_invoke

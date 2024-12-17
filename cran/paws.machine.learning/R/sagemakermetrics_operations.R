@@ -3,14 +3,46 @@
 #' @include sagemakermetrics_service.R
 NULL
 
+#' Used to retrieve training metrics from SageMaker
+#'
+#' @description
+#' Used to retrieve training metrics from SageMaker.
+#'
+#' See [https://www.paws-r-sdk.com/docs/sagemakermetrics_batch_get_metrics/](https://www.paws-r-sdk.com/docs/sagemakermetrics_batch_get_metrics/) for full documentation.
+#'
+#' @param MetricQueries &#91;required&#93; Queries made to retrieve training metrics from SageMaker.
+#'
+#' @keywords internal
+#'
+#' @rdname sagemakermetrics_batch_get_metrics
+sagemakermetrics_batch_get_metrics <- function(MetricQueries) {
+  op <- new_operation(
+    name = "BatchGetMetrics",
+    http_method = "POST",
+    http_path = "/BatchGetMetrics",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .sagemakermetrics$batch_get_metrics_input(MetricQueries = MetricQueries)
+  output <- .sagemakermetrics$batch_get_metrics_output()
+  config <- get_config()
+  svc <- .sagemakermetrics$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemakermetrics$operations$batch_get_metrics <- sagemakermetrics_batch_get_metrics
+
 #' Used to ingest training metrics into SageMaker
 #'
 #' @description
-#' Used to ingest training metrics into SageMaker. These metrics can be visualized in SageMaker Studio and retrieved with the `GetMetrics` API.
+#' Used to ingest training metrics into SageMaker. These metrics can be visualized in SageMaker Studio.
 #'
 #' See [https://www.paws-r-sdk.com/docs/sagemakermetrics_batch_put_metrics/](https://www.paws-r-sdk.com/docs/sagemakermetrics_batch_put_metrics/) for full documentation.
 #'
-#' @param TrialComponentName &#91;required&#93; The name of the Trial Component to associate with the metrics.
+#' @param TrialComponentName &#91;required&#93; The name of the Trial Component to associate with the metrics. The Trial
+#' Component name must be entirely lowercase.
 #' @param MetricData &#91;required&#93; A list of raw metric values to put.
 #'
 #' @keywords internal

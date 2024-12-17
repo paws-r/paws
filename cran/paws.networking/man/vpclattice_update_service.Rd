@@ -21,7 +21,7 @@ auth is enabled and an auth policy is required.
 
 \item{certificateArn}{The Amazon Resource Name (ARN) of the certificate.}
 
-\item{serviceIdentifier}{[required] The ID or Amazon Resource Name (ARN) of the service.}
+\item{serviceIdentifier}{[required] The ID or ARN of the service.}
 }
 \description{
 Updates the specified service.

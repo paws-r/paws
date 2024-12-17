@@ -6,6 +6,7 @@
 \usage{
 controltower_list_enabled_baselines(
   filter = NULL,
+  includeChildren = NULL,
   maxResults = NULL,
   nextToken = NULL
 )
@@ -14,6 +15,9 @@ controltower_list_enabled_baselines(
 \item{filter}{A filter applied on the \code{ListEnabledBaseline} operation. Allowed filters
 are \code{baselineIdentifiers} and \code{targetIdentifiers}. The filter can be
 applied for either, or both.}
+
+\item{includeChildren}{A value that can be set to include the child enabled baselines in
+responses. The default value is false.}
 
 \item{maxResults}{The maximum number of results to be shown.}
 

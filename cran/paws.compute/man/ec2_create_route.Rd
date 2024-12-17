@@ -5,52 +5,29 @@
 \title{Creates a route in a route table within a VPC}
 \usage{
 ec2_create_route(
-  DestinationCidrBlock = NULL,
-  DestinationIpv6CidrBlock = NULL,
   DestinationPrefixListId = NULL,
-  DryRun = NULL,
   VpcEndpointId = NULL,
-  EgressOnlyInternetGatewayId = NULL,
-  GatewayId = NULL,
-  InstanceId = NULL,
-  NatGatewayId = NULL,
   TransitGatewayId = NULL,
   LocalGatewayId = NULL,
   CarrierGatewayId = NULL,
-  NetworkInterfaceId = NULL,
+  CoreNetworkArn = NULL,
+  DryRun = NULL,
   RouteTableId,
+  DestinationCidrBlock = NULL,
+  GatewayId = NULL,
+  DestinationIpv6CidrBlock = NULL,
+  EgressOnlyInternetGatewayId = NULL,
+  InstanceId = NULL,
+  NetworkInterfaceId = NULL,
   VpcPeeringConnectionId = NULL,
-  CoreNetworkArn = NULL
+  NatGatewayId = NULL
 )
 }
 \arguments{
-\item{DestinationCidrBlock}{The IPv4 CIDR address block used for the destination match. Routing
-decisions are based on the most specific match. We modify the specified
-CIDR block to its canonical form; for example, if you specify
-\verb{100.68.0.18/18}, we modify it to \verb{100.68.0.0/18}.}
-
-\item{DestinationIpv6CidrBlock}{The IPv6 CIDR block used for the destination match. Routing decisions
-are based on the most specific match.}
-
 \item{DestinationPrefixListId}{The ID of a prefix list used for the destination match.}
-
-\item{DryRun}{Checks whether you have the required permissions for the action, without
-actually making the request, and provides an error response. If you have
-the required permissions, the error response is \code{DryRunOperation}.
-Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{VpcEndpointId}{The ID of a VPC endpoint. Supported for Gateway Load Balancer endpoints
 only.}
-
-\item{EgressOnlyInternetGatewayId}{[IPv6 traffic only] The ID of an egress-only internet gateway.}
-
-\item{GatewayId}{The ID of an internet gateway or virtual private gateway attached to
-your VPC.}
-
-\item{InstanceId}{The ID of a NAT instance in your VPC. The operation fails if you specify
-an instance ID unless exactly one network interface is attached.}
-
-\item{NatGatewayId}{[IPv4 traffic only] The ID of a NAT gateway.}
 
 \item{TransitGatewayId}{The ID of a transit gateway.}
 
@@ -61,13 +38,36 @@ an instance ID unless exactly one network interface is attached.}
 You can only use this option when the VPC contains a subnet which is
 associated with a Wavelength Zone.}
 
-\item{NetworkInterfaceId}{The ID of a network interface.}
+\item{CoreNetworkArn}{The Amazon Resource Name (ARN) of the core network.}
+
+\item{DryRun}{Checks whether you have the required permissions for the action, without
+actually making the request, and provides an error response. If you have
+the required permissions, the error response is \code{DryRunOperation}.
+Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{RouteTableId}{[required] The ID of the route table for the route.}
 
+\item{DestinationCidrBlock}{The IPv4 CIDR address block used for the destination match. Routing
+decisions are based on the most specific match. We modify the specified
+CIDR block to its canonical form; for example, if you specify
+\verb{100.68.0.18/18}, we modify it to \verb{100.68.0.0/18}.}
+
+\item{GatewayId}{The ID of an internet gateway or virtual private gateway attached to
+your VPC.}
+
+\item{DestinationIpv6CidrBlock}{The IPv6 CIDR block used for the destination match. Routing decisions
+are based on the most specific match.}
+
+\item{EgressOnlyInternetGatewayId}{[IPv6 traffic only] The ID of an egress-only internet gateway.}
+
+\item{InstanceId}{The ID of a NAT instance in your VPC. The operation fails if you specify
+an instance ID unless exactly one network interface is attached.}
+
+\item{NetworkInterfaceId}{The ID of a network interface.}
+
 \item{VpcPeeringConnectionId}{The ID of a VPC peering connection.}
 
-\item{CoreNetworkArn}{The Amazon Resource Name (ARN) of the core network.}
+\item{NatGatewayId}{[IPv4 traffic only] The ID of a NAT gateway.}
 }
 \description{
 Creates a route in a route table within a VPC.

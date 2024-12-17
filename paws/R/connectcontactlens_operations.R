@@ -89,7 +89,7 @@ connectcontactlens_list_realtime_contact_analysis_segments <- function(InstanceI
     http_method = "POST",
     http_path = "/realtime-contact-analysis/analysis-segments",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .connectcontactlens$list_realtime_contact_analysis_segments_input(InstanceId = InstanceId, ContactId = ContactId, MaxResults = MaxResults, NextToken = NextToken)

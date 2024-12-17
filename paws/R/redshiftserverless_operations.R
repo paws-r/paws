@@ -773,11 +773,29 @@ redshiftserverless_create_usage_limit <- function(amount, breachAction = NULL, p
 #'
 #' @description
 #' Creates an workgroup in Amazon Redshift Serverless.
+#' 
+#' VPC Block Public Access (BPA) enables you to block resources in VPCs and
+#' subnets that you own in a Region from reaching or being reached from the
+#' internet through internet gateways and egress-only internet gateways. If
+#' a workgroup is in an account with VPC BPA turned on, the following
+#' capabilities are blocked:
+#' 
+#' -   Creating a public access workgroup
+#' 
+#' -   Modifying a private workgroup to public
+#' 
+#' -   Adding a subnet with VPC BPA turned on to the workgroup when the
+#'     workgroup is public
+#' 
+#' For more information about VPC BPA, see [Block public access to VPCs and
+#' subnets](https://docs.aws.amazon.com/vpc/latest/userguide/security-vpc-bpa.html)
+#' in the *Amazon VPC User Guide*.
 #'
 #' @usage
 #' redshiftserverless_create_workgroup(baseCapacity, configParameters,
 #'   enhancedVpcRouting, ipAddressType, maxCapacity, namespaceName, port,
-#'   publiclyAccessible, securityGroupIds, subnetIds, tags, workgroupName)
+#'   pricePerformanceTarget, publiclyAccessible, securityGroupIds, subnetIds,
+#'   tags, workgroupName)
 #'
 #' @param baseCapacity The base data warehouse capacity of the workgroup in Redshift Processing
 #' Units (RPUs).
@@ -799,6 +817,8 @@ redshiftserverless_create_usage_limit <- function(amount, breachAction = NULL, p
 #' @param namespaceName &#91;required&#93; The name of the namespace to associate with the workgroup.
 #' @param port The custom port to use when connecting to a workgroup. Valid port ranges
 #' are 5431-5455 and 8191-8215. The default is 5439.
+#' @param pricePerformanceTarget An object that represents the price performance target settings for the
+#' workgroup.
 #' @param publiclyAccessible A value that specifies whether the workgroup can be accessed from a
 #' public network.
 #' @param securityGroupIds An array of security group IDs to associate with the workgroup.
@@ -854,6 +874,10 @@ redshiftserverless_create_usage_limit <- function(amount, breachAction = NULL, p
 #'     namespaceName = "string",
 #'     patchVersion = "string",
 #'     port = 123,
+#'     pricePerformanceTarget = list(
+#'       level = 123,
+#'       status = "ENABLED"|"DISABLED"
+#'     ),
 #'     publiclyAccessible = TRUE|FALSE,
 #'     securityGroupIds = list(
 #'       "string"
@@ -885,6 +909,10 @@ redshiftserverless_create_usage_limit <- function(amount, breachAction = NULL, p
 #'   maxCapacity = 123,
 #'   namespaceName = "string",
 #'   port = 123,
+#'   pricePerformanceTarget = list(
+#'     level = 123,
+#'     status = "ENABLED"|"DISABLED"
+#'   ),
 #'   publiclyAccessible = TRUE|FALSE,
 #'   securityGroupIds = list(
 #'     "string"
@@ -907,7 +935,7 @@ redshiftserverless_create_usage_limit <- function(amount, breachAction = NULL, p
 #' @rdname redshiftserverless_create_workgroup
 #'
 #' @aliases redshiftserverless_create_workgroup
-redshiftserverless_create_workgroup <- function(baseCapacity = NULL, configParameters = NULL, enhancedVpcRouting = NULL, ipAddressType = NULL, maxCapacity = NULL, namespaceName, port = NULL, publiclyAccessible = NULL, securityGroupIds = NULL, subnetIds = NULL, tags = NULL, workgroupName) {
+redshiftserverless_create_workgroup <- function(baseCapacity = NULL, configParameters = NULL, enhancedVpcRouting = NULL, ipAddressType = NULL, maxCapacity = NULL, namespaceName, port = NULL, pricePerformanceTarget = NULL, publiclyAccessible = NULL, securityGroupIds = NULL, subnetIds = NULL, tags = NULL, workgroupName) {
   op <- new_operation(
     name = "CreateWorkgroup",
     http_method = "POST",
@@ -916,7 +944,7 @@ redshiftserverless_create_workgroup <- function(baseCapacity = NULL, configParam
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .redshiftserverless$create_workgroup_input(baseCapacity = baseCapacity, configParameters = configParameters, enhancedVpcRouting = enhancedVpcRouting, ipAddressType = ipAddressType, maxCapacity = maxCapacity, namespaceName = namespaceName, port = port, publiclyAccessible = publiclyAccessible, securityGroupIds = securityGroupIds, subnetIds = subnetIds, tags = tags, workgroupName = workgroupName)
+  input <- .redshiftserverless$create_workgroup_input(baseCapacity = baseCapacity, configParameters = configParameters, enhancedVpcRouting = enhancedVpcRouting, ipAddressType = ipAddressType, maxCapacity = maxCapacity, namespaceName = namespaceName, port = port, pricePerformanceTarget = pricePerformanceTarget, publiclyAccessible = publiclyAccessible, securityGroupIds = securityGroupIds, subnetIds = subnetIds, tags = tags, workgroupName = workgroupName)
   output <- .redshiftserverless$create_workgroup_output()
   config <- get_config()
   svc <- .redshiftserverless$service(config, op)
@@ -1512,6 +1540,10 @@ redshiftserverless_delete_usage_limit <- function(usageLimitId) {
 #'     namespaceName = "string",
 #'     patchVersion = "string",
 #'     port = 123,
+#'     pricePerformanceTarget = list(
+#'       level = 123,
+#'       status = "ENABLED"|"DISABLED"
+#'     ),
 #'     publiclyAccessible = TRUE|FALSE,
 #'     securityGroupIds = list(
 #'       "string"
@@ -1570,7 +1602,12 @@ redshiftserverless_delete_workgroup <- function(workgroupName) {
 #' optionally specify a duration between 900 seconds (15 minutes) and 3600
 #' seconds (60 minutes).
 #' 
-#'      <p>The Identity and Access Management (IAM) user or role that runs GetCredentials must have an IAM policy attached that allows access to all necessary actions and resources.</p> <p>If the <code>DbName</code> parameter is specified, the IAM policy must allow access to the resource dbname for the specified database name.</p> 
+#' The Identity and Access Management (IAM) user or role that runs
+#' GetCredentials must have an IAM policy attached that allows access to
+#' all necessary actions and resources.
+#' 
+#' If the `DbName` parameter is specified, the IAM policy must allow access
+#' to the resource dbname for the specified database name.
 #'
 #' @usage
 #' redshiftserverless_get_credentials(customDomainName, dbName,
@@ -2321,6 +2358,10 @@ redshiftserverless_get_usage_limit <- function(usageLimitId) {
 #'     namespaceName = "string",
 #'     patchVersion = "string",
 #'     port = 123,
+#'     pricePerformanceTarget = list(
+#'       level = 123,
+#'       status = "ENABLED"|"DISABLED"
+#'     ),
 #'     publiclyAccessible = TRUE|FALSE,
 #'     securityGroupIds = list(
 #'       "string"
@@ -2537,6 +2578,77 @@ redshiftserverless_list_endpoint_access <- function(maxResults = NULL, nextToken
   return(response)
 }
 .redshiftserverless$operations$list_endpoint_access <- redshiftserverless_list_endpoint_access
+
+#' Returns information about a list of specified managed workgroups in your
+#' account
+#'
+#' @description
+#' Returns information about a list of specified managed workgroups in your
+#' account.
+#'
+#' @usage
+#' redshiftserverless_list_managed_workgroups(maxResults, nextToken,
+#'   sourceArn)
+#'
+#' @param maxResults An optional parameter that specifies the maximum number of results to
+#' return. You can use nextToken to display the next page of results.
+#' @param nextToken If your initial ListManagedWorkgroups operation returns a nextToken, you
+#' can include the returned nextToken in following ListManagedWorkgroups
+#' operations, which returns results in the next page.
+#' @param sourceArn The Amazon Resource Name (ARN) for the managed workgroup in the AWS Glue
+#' Data Catalog.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   managedWorkgroups = list(
+#'     list(
+#'       creationDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       managedWorkgroupId = "string",
+#'       managedWorkgroupName = "string",
+#'       sourceArn = "string",
+#'       status = "CREATING"|"DELETING"|"MODIFYING"|"AVAILABLE"|"NOT_AVAILABLE"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_managed_workgroups(
+#'   maxResults = 123,
+#'   nextToken = "string",
+#'   sourceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname redshiftserverless_list_managed_workgroups
+#'
+#' @aliases redshiftserverless_list_managed_workgroups
+redshiftserverless_list_managed_workgroups <- function(maxResults = NULL, nextToken = NULL, sourceArn = NULL) {
+  op <- new_operation(
+    name = "ListManagedWorkgroups",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "managedWorkgroups"),
+    stream_api = FALSE
+  )
+  input <- .redshiftserverless$list_managed_workgroups_input(maxResults = maxResults, nextToken = nextToken, sourceArn = sourceArn)
+  output <- .redshiftserverless$list_managed_workgroups_output()
+  config <- get_config()
+  svc <- .redshiftserverless$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshiftserverless$operations$list_managed_workgroups <- redshiftserverless_list_managed_workgroups
 
 #' Returns information about a list of specified namespaces
 #'
@@ -3217,6 +3329,10 @@ redshiftserverless_list_usage_limits <- function(maxResults = NULL, nextToken = 
 #'       namespaceName = "string",
 #'       patchVersion = "string",
 #'       port = 123,
+#'       pricePerformanceTarget = list(
+#'         level = 123,
+#'         status = "ENABLED"|"DISABLED"
+#'       ),
 #'       publiclyAccessible = TRUE|FALSE,
 #'       securityGroupIds = list(
 #'         "string"
@@ -4402,11 +4518,29 @@ redshiftserverless_update_usage_limit <- function(amount = NULL, breachAction = 
 #' update multiple parameters in one request. For example, you can update
 #' `baseCapacity` or `port` in a single request, but you can't update both
 #' in the same request.
+#' 
+#' VPC Block Public Access (BPA) enables you to block resources in VPCs and
+#' subnets that you own in a Region from reaching or being reached from the
+#' internet through internet gateways and egress-only internet gateways. If
+#' a workgroup is in an account with VPC BPA turned on, the following
+#' capabilities are blocked:
+#' 
+#' -   Creating a public access workgroup
+#' 
+#' -   Modifying a private workgroup to public
+#' 
+#' -   Adding a subnet with VPC BPA turned on to the workgroup when the
+#'     workgroup is public
+#' 
+#' For more information about VPC BPA, see [Block public access to VPCs and
+#' subnets](https://docs.aws.amazon.com/vpc/latest/userguide/security-vpc-bpa.html)
+#' in the *Amazon VPC User Guide*.
 #'
 #' @usage
 #' redshiftserverless_update_workgroup(baseCapacity, configParameters,
 #'   enhancedVpcRouting, ipAddressType, maxCapacity, port,
-#'   publiclyAccessible, securityGroupIds, subnetIds, workgroupName)
+#'   pricePerformanceTarget, publiclyAccessible, securityGroupIds, subnetIds,
+#'   workgroupName)
 #'
 #' @param baseCapacity The new base data warehouse capacity in Redshift Processing Units
 #' (RPUs).
@@ -4427,6 +4561,8 @@ redshiftserverless_update_usage_limit <- function(amount = NULL, breachAction = 
 #' serve queries. The max capacity is specified in RPUs.
 #' @param port The custom port to use when connecting to a workgroup. Valid port ranges
 #' are 5431-5455 and 8191-8215. The default is 5439.
+#' @param pricePerformanceTarget An object that represents the price performance target settings for the
+#' workgroup.
 #' @param publiclyAccessible A value that specifies whether the workgroup can be accessible from a
 #' public network.
 #' @param securityGroupIds An array of security group IDs to associate with the workgroup.
@@ -4482,6 +4618,10 @@ redshiftserverless_update_usage_limit <- function(amount = NULL, breachAction = 
 #'     namespaceName = "string",
 #'     patchVersion = "string",
 #'     port = 123,
+#'     pricePerformanceTarget = list(
+#'       level = 123,
+#'       status = "ENABLED"|"DISABLED"
+#'     ),
 #'     publiclyAccessible = TRUE|FALSE,
 #'     securityGroupIds = list(
 #'       "string"
@@ -4512,6 +4652,10 @@ redshiftserverless_update_usage_limit <- function(amount = NULL, breachAction = 
 #'   ipAddressType = "string",
 #'   maxCapacity = 123,
 #'   port = 123,
+#'   pricePerformanceTarget = list(
+#'     level = 123,
+#'     status = "ENABLED"|"DISABLED"
+#'   ),
 #'   publiclyAccessible = TRUE|FALSE,
 #'   securityGroupIds = list(
 #'     "string"
@@ -4528,7 +4672,7 @@ redshiftserverless_update_usage_limit <- function(amount = NULL, breachAction = 
 #' @rdname redshiftserverless_update_workgroup
 #'
 #' @aliases redshiftserverless_update_workgroup
-redshiftserverless_update_workgroup <- function(baseCapacity = NULL, configParameters = NULL, enhancedVpcRouting = NULL, ipAddressType = NULL, maxCapacity = NULL, port = NULL, publiclyAccessible = NULL, securityGroupIds = NULL, subnetIds = NULL, workgroupName) {
+redshiftserverless_update_workgroup <- function(baseCapacity = NULL, configParameters = NULL, enhancedVpcRouting = NULL, ipAddressType = NULL, maxCapacity = NULL, port = NULL, pricePerformanceTarget = NULL, publiclyAccessible = NULL, securityGroupIds = NULL, subnetIds = NULL, workgroupName) {
   op <- new_operation(
     name = "UpdateWorkgroup",
     http_method = "POST",
@@ -4537,7 +4681,7 @@ redshiftserverless_update_workgroup <- function(baseCapacity = NULL, configParam
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .redshiftserverless$update_workgroup_input(baseCapacity = baseCapacity, configParameters = configParameters, enhancedVpcRouting = enhancedVpcRouting, ipAddressType = ipAddressType, maxCapacity = maxCapacity, port = port, publiclyAccessible = publiclyAccessible, securityGroupIds = securityGroupIds, subnetIds = subnetIds, workgroupName = workgroupName)
+  input <- .redshiftserverless$update_workgroup_input(baseCapacity = baseCapacity, configParameters = configParameters, enhancedVpcRouting = enhancedVpcRouting, ipAddressType = ipAddressType, maxCapacity = maxCapacity, port = port, pricePerformanceTarget = pricePerformanceTarget, publiclyAccessible = publiclyAccessible, securityGroupIds = securityGroupIds, subnetIds = subnetIds, workgroupName = workgroupName)
   output <- .redshiftserverless$update_workgroup_output()
   config <- get_config()
   svc <- .redshiftserverless$service(config, op)

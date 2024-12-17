@@ -2208,7 +2208,7 @@ glacier_list_jobs <- function(accountId, vaultName, limit = NULL, marker = NULL,
     http_method = "GET",
     http_path = "/{accountId}/vaults/{vaultName}/jobs",
     host_prefix = "",
-    paginator = list(input_token = "marker", limit_key = "limit", output_token = "Marker", result_key = "JobList"),
+    paginator = list(input_token = "marker", output_token = "Marker", limit_key = "limit", result_key = "JobList"),
     stream_api = FALSE
   )
   input <- .glacier$list_jobs_input(accountId = accountId, vaultName = vaultName, limit = limit, marker = marker, statuscode = statuscode, completed = completed)
@@ -2328,7 +2328,7 @@ glacier_list_multipart_uploads <- function(accountId, vaultName, marker = NULL, 
     http_method = "GET",
     http_path = "/{accountId}/vaults/{vaultName}/multipart-uploads",
     host_prefix = "",
-    paginator = list(input_token = "marker", limit_key = "limit", output_token = "Marker", result_key = "UploadsList"),
+    paginator = list(input_token = "marker", output_token = "Marker", limit_key = "limit", result_key = "UploadsList"),
     stream_api = FALSE
   )
   input <- .glacier$list_multipart_uploads_input(accountId = accountId, vaultName = vaultName, marker = marker, limit = limit)
@@ -2445,7 +2445,7 @@ glacier_list_parts <- function(accountId, vaultName, uploadId, marker = NULL, li
     http_method = "GET",
     http_path = "/{accountId}/vaults/{vaultName}/multipart-uploads/{uploadId}",
     host_prefix = "",
-    paginator = list(input_token = "marker", limit_key = "limit", output_token = "Marker", result_key = "Parts"),
+    paginator = list(input_token = "marker", output_token = "Marker", limit_key = "limit", result_key = "Parts"),
     stream_api = FALSE
   )
   input <- .glacier$list_parts_input(accountId = accountId, vaultName = vaultName, uploadId = uploadId, marker = marker, limit = limit)
@@ -2688,7 +2688,7 @@ glacier_list_vaults <- function(accountId, marker = NULL, limit = NULL) {
     http_method = "GET",
     http_path = "/{accountId}/vaults",
     host_prefix = "",
-    paginator = list(input_token = "marker", limit_key = "limit", output_token = "Marker", result_key = "VaultList"),
+    paginator = list(input_token = "marker", output_token = "Marker", limit_key = "limit", result_key = "VaultList"),
     stream_api = FALSE
   )
   input <- .glacier$list_vaults_input(accountId = accountId, marker = marker, limit = limit)

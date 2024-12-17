@@ -45,6 +45,12 @@ dimensions:
 \item PLATFORM
 \item REGION
 \item SERVICE
+
+If not specified, the \code{SERVICE} filter defaults to Amazon Elastic
+Compute Cloud - Compute. Supported values for \code{SERVICE} are Amazon
+Elastic Compute Cloud - Compute, Amazon Relational Database Service,
+Amazon ElastiCache, Amazon Redshift, and Amazon Elasticsearch
+Service. The value for the \code{SERVICE} filter should not exceed "1".
 \item SCOPE
 \item TENANCY
 }

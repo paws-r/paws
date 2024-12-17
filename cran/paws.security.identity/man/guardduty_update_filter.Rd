@@ -15,7 +15,11 @@ guardduty_update_filter(
 }
 \arguments{
 \item{DetectorId}{[required] The unique ID of the detector that specifies the GuardDuty service where
-you want to update a filter.}
+you want to update a filter.
+
+To find the \code{detectorId} in the current Region, see the Settings page in
+the GuardDuty console, or run the
+\code{\link[=guardduty_list_detectors]{list_detectors}} API.}
 
 \item{FilterName}{[required] The name of the filter.}
 

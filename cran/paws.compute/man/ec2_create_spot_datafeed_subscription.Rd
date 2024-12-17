@@ -5,17 +5,17 @@
 \title{Creates a data feed for Spot Instances, enabling you to view Spot
 Instance usage logs}
 \usage{
-ec2_create_spot_datafeed_subscription(Bucket, DryRun = NULL, Prefix = NULL)
+ec2_create_spot_datafeed_subscription(DryRun = NULL, Bucket, Prefix = NULL)
 }
 \arguments{
-\item{Bucket}{[required] The name of the Amazon S3 bucket in which to store the Spot Instance
-data feed. For more information about bucket names, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/BucketRestrictions.html#bucketnamingrules}{Rules for bucket naming}
-in the \emph{Amazon S3 Developer Guide}.}
-
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
+
+\item{Bucket}{[required] The name of the Amazon S3 bucket in which to store the Spot Instance
+data feed. For more information about bucket names, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html}{Bucket naming rules}
+in the \emph{Amazon S3 User Guide}.}
 
 \item{Prefix}{The prefix for the data feed file names.}
 }

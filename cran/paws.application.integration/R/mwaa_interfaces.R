@@ -63,6 +63,18 @@ NULL
   return(populate(args, shape))
 }
 
+.mwaa$invoke_rest_api_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Name = structure(logical(0), tags = list(location = "uri", locationName = "Name", type = "string")), Path = structure(logical(0), tags = list(type = "string")), Method = structure(logical(0), tags = list(type = "string")), QueryParameters = structure(list(), tags = list(type = "structure", document = TRUE)), Body = structure(list(), tags = list(type = "structure", document = TRUE, sensitive = TRUE))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.mwaa$invoke_rest_api_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(RestApiStatusCode = structure(logical(0), tags = list(type = "integer", box = TRUE)), RestApiResponse = structure(list(), tags = list(type = "structure", document = TRUE, sensitive = TRUE))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .mwaa$list_environments_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "NextToken", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "MaxResults", type = "integer", box = TRUE))), tags = list(type = "structure"))

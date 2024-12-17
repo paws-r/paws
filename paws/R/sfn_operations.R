@@ -988,6 +988,11 @@ sfn_describe_map_run <- function(mapRunArn) {
 #'     kmsKeyId = "string",
 #'     kmsDataKeyReusePeriodSeconds = 123,
 #'     type = "AWS_OWNED_KEY"|"CUSTOMER_MANAGED_KMS_KEY"
+#'   ),
+#'   variableReferences = list(
+#'     list(
+#'       "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -1155,6 +1160,11 @@ sfn_describe_state_machine_alias <- function(stateMachineAliasArn) {
 #'     kmsKeyId = "string",
 #'     kmsDataKeyReusePeriodSeconds = 123,
 #'     type = "AWS_OWNED_KEY"|"CUSTOMER_MANAGED_KMS_KEY"
+#'   ),
+#'   variableReferences = list(
+#'     list(
+#'       "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -1313,7 +1323,7 @@ sfn_get_activity_task <- function(activityArn, workerName = NULL) {
 #'       timestamp = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       type = "ActivityFailed"|"ActivityScheduled"|"ActivityScheduleFailed"|"ActivityStarted"|"ActivitySucceeded"|"ActivityTimedOut"|"ChoiceStateEntered"|"ChoiceStateExited"|"ExecutionAborted"|"ExecutionFailed"|"ExecutionStarted"|"ExecutionSucceeded"|"ExecutionTimedOut"|"FailStateEntered"|"LambdaFunctionFailed"|"LambdaFunctionScheduled"|"LambdaFunctionScheduleFailed"|"LambdaFunctionStarted"|"LambdaFunctionStartFailed"|"LambdaFunctionSucceeded"|"LambdaFunctionTimedOut"|"MapIterationAborted"|"MapIterationFailed"|"MapIterationStarted"|"MapIterationSucceeded"|"MapStateAborted"|"MapStateEntered"|"MapStateExited"|"MapStateFailed"|"MapStateStarted"|"MapStateSucceeded"|"ParallelStateAborted"|"ParallelStateEntered"|"ParallelStateExited"|"ParallelStateFailed"|"ParallelStateStarted"|"ParallelStateSucceeded"|"PassStateEntered"|"PassStateExited"|"SucceedStateEntered"|"SucceedStateExited"|"TaskFailed"|"TaskScheduled"|"TaskStarted"|"TaskStartFailed"|"TaskStateAborted"|"TaskStateEntered"|"TaskStateExited"|"TaskSubmitFailed"|"TaskSubmitted"|"TaskSucceeded"|"TaskTimedOut"|"WaitStateAborted"|"WaitStateEntered"|"WaitStateExited"|"MapRunAborted"|"MapRunFailed"|"MapRunStarted"|"MapRunSucceeded"|"ExecutionRedriven"|"MapRunRedriven",
+#'       type = "ActivityFailed"|"ActivityScheduled"|"ActivityScheduleFailed"|"ActivityStarted"|"ActivitySucceeded"|"ActivityTimedOut"|"ChoiceStateEntered"|"ChoiceStateExited"|"ExecutionAborted"|"ExecutionFailed"|"ExecutionStarted"|"ExecutionSucceeded"|"ExecutionTimedOut"|"FailStateEntered"|"LambdaFunctionFailed"|"LambdaFunctionScheduled"|"LambdaFunctionScheduleFailed"|"LambdaFunctionStarted"|"LambdaFunctionStartFailed"|"LambdaFunctionSucceeded"|"LambdaFunctionTimedOut"|"MapIterationAborted"|"MapIterationFailed"|"MapIterationStarted"|"MapIterationSucceeded"|"MapStateAborted"|"MapStateEntered"|"MapStateExited"|"MapStateFailed"|"MapStateStarted"|"MapStateSucceeded"|"ParallelStateAborted"|"ParallelStateEntered"|"ParallelStateExited"|"ParallelStateFailed"|"ParallelStateStarted"|"ParallelStateSucceeded"|"PassStateEntered"|"PassStateExited"|"SucceedStateEntered"|"SucceedStateExited"|"TaskFailed"|"TaskScheduled"|"TaskStarted"|"TaskStartFailed"|"TaskStateAborted"|"TaskStateEntered"|"TaskStateExited"|"TaskSubmitFailed"|"TaskSubmitted"|"TaskSucceeded"|"TaskTimedOut"|"WaitStateAborted"|"WaitStateEntered"|"WaitStateExited"|"MapRunAborted"|"MapRunFailed"|"MapRunStarted"|"MapRunSucceeded"|"ExecutionRedriven"|"MapRunRedriven"|"EvaluationFailed",
 #'       id = 123,
 #'       previousEventId = 123,
 #'       activityFailedEventDetails = list(
@@ -1495,6 +1505,12 @@ sfn_get_activity_task <- function(activityArn, workerName = NULL) {
 #'         output = "string",
 #'         outputDetails = list(
 #'           truncated = TRUE|FALSE
+#'         ),
+#'         assignedVariables = list(
+#'           "string"
+#'         ),
+#'         assignedVariablesDetails = list(
+#'           truncated = TRUE|FALSE
 #'         )
 #'       ),
 #'       mapRunStartedEventDetails = list(
@@ -1507,6 +1523,12 @@ sfn_get_activity_task <- function(activityArn, workerName = NULL) {
 #'       mapRunRedrivenEventDetails = list(
 #'         mapRunArn = "string",
 #'         redriveCount = 123
+#'       ),
+#'       evaluationFailedEventDetails = list(
+#'         error = "string",
+#'         cause = "string",
+#'         location = "string",
+#'         state = "string"
 #'       )
 #'     )
 #'   ),
@@ -1536,7 +1558,7 @@ sfn_get_execution_history <- function(executionArn, maxResults = NULL, reverseOr
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "events"),
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "events"),
     stream_api = FALSE
   )
   input <- .sfn$get_execution_history_input(executionArn = executionArn, maxResults = maxResults, reverseOrder = reverseOrder, nextToken = nextToken, includeExecutionData = includeExecutionData)
@@ -1616,7 +1638,7 @@ sfn_list_activities <- function(maxResults = NULL, nextToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "activities"),
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "activities"),
     stream_api = FALSE
   )
   input <- .sfn$list_activities_input(maxResults = maxResults, nextToken = nextToken)
@@ -1763,7 +1785,7 @@ sfn_list_executions <- function(stateMachineArn = NULL, statusFilter = NULL, max
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "executions"),
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "executions"),
     stream_api = FALSE
   )
   input <- .sfn$list_executions_input(stateMachineArn = stateMachineArn, statusFilter = statusFilter, maxResults = maxResults, nextToken = nextToken, mapRunArn = mapRunArn, redriveFilter = redriveFilter)
@@ -2112,7 +2134,7 @@ sfn_list_state_machines <- function(maxResults = NULL, nextToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "stateMachines"),
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "stateMachines"),
     stream_api = FALSE
   )
   input <- .sfn$list_state_machines_input(maxResults = maxResults, nextToken = nextToken)
@@ -3055,12 +3077,12 @@ sfn_tag_resource <- function(resourceArn, tags) {
 #'
 #' @usage
 #' sfn_test_state(definition, roleArn, input, inspectionLevel,
-#'   revealSecrets)
+#'   revealSecrets, variables)
 #'
 #' @param definition &#91;required&#93; The [Amazon States
 #' Language](https://docs.aws.amazon.com/step-functions/latest/dg/concepts-amazon-states-language.html)
 #' (ASL) definition of the state.
-#' @param roleArn &#91;required&#93; The Amazon Resource Name (ARN) of the execution role with the required
+#' @param roleArn The Amazon Resource Name (ARN) of the execution role with the required
 #' IAM permissions for the state.
 #' @param input A string that contains the JSON input data for the state.
 #' @param inspectionLevel Determines the values to return when a state is tested. You can specify
@@ -3093,6 +3115,8 @@ sfn_tag_resource <- function(resourceArn, tags) {
 #' Without this permission, Step Functions throws an access denied error.
 #' 
 #' By default, `revealSecrets` is set to `false`.
+#' @param variables JSON object literal that sets variables used in the state under test.
+#' Object keys are the variable names and values are the variable values.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3103,6 +3127,7 @@ sfn_tag_resource <- function(resourceArn, tags) {
 #'   cause = "string",
 #'   inspectionData = list(
 #'     input = "string",
+#'     afterArguments = "string",
 #'     afterInputPath = "string",
 #'     afterParameters = "string",
 #'     result = "string",
@@ -3121,7 +3146,8 @@ sfn_tag_resource <- function(resourceArn, tags) {
 #'       statusMessage = "string",
 #'       headers = "string",
 #'       body = "string"
-#'     )
+#'     ),
+#'     variables = "string"
 #'   ),
 #'   nextState = "string",
 #'   status = "SUCCEEDED"|"FAILED"|"RETRIABLE"|"CAUGHT_ERROR"
@@ -3135,7 +3161,8 @@ sfn_tag_resource <- function(resourceArn, tags) {
 #'   roleArn = "string",
 #'   input = "string",
 #'   inspectionLevel = "INFO"|"DEBUG"|"TRACE",
-#'   revealSecrets = TRUE|FALSE
+#'   revealSecrets = TRUE|FALSE,
+#'   variables = "string"
 #' )
 #' ```
 #'
@@ -3144,7 +3171,7 @@ sfn_tag_resource <- function(resourceArn, tags) {
 #' @rdname sfn_test_state
 #'
 #' @aliases sfn_test_state
-sfn_test_state <- function(definition, roleArn, input = NULL, inspectionLevel = NULL, revealSecrets = NULL) {
+sfn_test_state <- function(definition, roleArn = NULL, input = NULL, inspectionLevel = NULL, revealSecrets = NULL, variables = NULL) {
   op <- new_operation(
     name = "TestState",
     http_method = "POST",
@@ -3153,7 +3180,7 @@ sfn_test_state <- function(definition, roleArn, input = NULL, inspectionLevel = 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .sfn$test_state_input(definition = definition, roleArn = roleArn, input = input, inspectionLevel = inspectionLevel, revealSecrets = revealSecrets)
+  input <- .sfn$test_state_input(definition = definition, roleArn = roleArn, input = input, inspectionLevel = inspectionLevel, revealSecrets = revealSecrets, variables = variables)
   output <- .sfn$test_state_output()
   config <- get_config()
   svc <- .sfn$service(config, op)
@@ -3507,35 +3534,47 @@ sfn_update_state_machine_alias <- function(stateMachineAliasArn, description = N
 }
 .sfn$operations$update_state_machine_alias <- sfn_update_state_machine_alias
 
-#' Validates the syntax of a state machine definition
+#' Validates the syntax of a state machine definition specified in Amazon
+#' States Language (ASL), a JSON-based, structured language
 #'
 #' @description
-#' Validates the syntax of a state machine definition.
+#' Validates the syntax of a state machine definition specified in [Amazon
+#' States
+#' Language](https://docs.aws.amazon.com/step-functions/latest/dg/concepts-amazon-states-language.html)
+#' (ASL), a JSON-based, structured language.
 #' 
 #' You can validate that a state machine definition is correct without
-#' creating a state machine resource. Step Functions will implicitly
-#' perform the same syntax check when you invoke
-#' [`create_state_machine`][sfn_create_state_machine] and
-#' [`update_state_machine`][sfn_update_state_machine]. State machine
-#' definitions are specified using a JSON-based, structured language. For
-#' more information on Amazon States Language see [Amazon States
-#' Language](https://docs.aws.amazon.com/step-functions/latest/dg/concepts-amazon-states-language.html)
-#' (ASL).
+#' creating a state machine resource.
 #' 
 #' Suggested uses for
 #' [`validate_state_machine_definition`][sfn_validate_state_machine_definition]:
 #' 
 #' -   Integrate automated checks into your code review or Continuous
-#'     Integration (CI) process to validate state machine definitions
-#'     before starting deployments.
+#'     Integration (CI) process to check state machine definitions before
+#'     starting deployments.
 #' 
-#' -   Run the validation from a Git pre-commit hook to check your state
-#'     machine definitions before committing them to your source
-#'     repository.
+#' -   Run validation from a Git pre-commit hook to verify the definition
+#'     before committing to your source repository.
 #' 
-#' Errors found in the state machine definition will be returned in the
-#' response as a list of **diagnostic elements**, rather than raise an
-#' exception.
+#' Validation will look for problems in your state machine definition and
+#' return a **result** and a list of **diagnostic elements**.
+#' 
+#' The **result** value will be `OK` when your workflow definition can be
+#' successfully created or updated. Note the result can be `OK` even when
+#' diagnostic warnings are present in the response. The **result** value
+#' will be `FAIL` when the workflow definition contains errors that would
+#' prevent you from creating or updating your state machine.
+#' 
+#' The list of
+#' [ValidateStateMachineDefinitionDiagnostic](https://docs.aws.amazon.com/step-functions/latest/apireference/API_ValidateStateMachineDefinitionDiagnostic.html)
+#' data elements can contain zero or more **WARNING** and/or **ERROR**
+#' elements.
+#' 
+#' The **ValidateStateMachineDefinition API** might add new diagnostics in
+#' the future, adjust diagnostic codes, or change the message wording. Your
+#' automated processes should only rely on the value of the **result**
+#' field value (OK, FAIL). Do **not** rely on the exact order, count, or
+#' wording of diagnostic messages.
 #'
 #' @usage
 #' sfn_validate_state_machine_definition(definition, type, severity,

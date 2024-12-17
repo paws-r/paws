@@ -7,7 +7,11 @@
 guardduty_unarchive_findings(DetectorId, FindingIds)
 }
 \arguments{
-\item{DetectorId}{[required] The ID of the detector associated with the findings to unarchive.}
+\item{DetectorId}{[required] The ID of the detector associated with the findings to unarchive.
+
+To find the \code{detectorId} in the current Region, see the Settings page in
+the GuardDuty console, or run the
+\code{\link[=guardduty_list_detectors]{list_detectors}} API.}
 
 \item{FindingIds}{[required] The IDs of the findings to unarchive.}
 }

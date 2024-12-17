@@ -2,8 +2,7 @@
 % Please edit documentation in R/connect_operations.R
 \name{connect_disassociate_analytics_data_set}
 \alias{connect_disassociate_analytics_data_set}
-\title{This API is in preview release for Amazon Connect and is subject to
-change}
+\title{Removes the dataset ID associated with a given Amazon Connect instance}
 \usage{
 connect_disassociate_analytics_data_set(
   InstanceId,
@@ -23,7 +22,7 @@ If not specified, by default this value is the Amazon Web Services
 account that has the Amazon Connect instance.}
 }
 \description{
-This API is in preview release for Amazon Connect and is subject to change.
+Removes the dataset ID associated with a given Amazon Connect instance.
 
 See \url{https://www.paws-r-sdk.com/docs/connect_disassociate_analytics_data_set/} for full documentation.
 }

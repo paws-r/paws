@@ -20,8 +20,15 @@ that match the prefix are returned.}
 
 \item{EventSourceArn}{The ARN of the archive from which the events are replayed.}
 
-\item{NextToken}{The token returned by a previous call to retrieve the next set of
-results.}
+\item{NextToken}{The token returned by a previous call, which you can use to retrieve the
+next set of results.
+
+The value of \code{nextToken} is a unique pagination token for each page. To
+retrieve the next page of results, make the call again using the
+returned token. Keep all other arguments unchanged.
+
+Using an expired pagination token results in an \verb{HTTP 400 InvalidToken}
+error.}
 
 \item{Limit}{The maximum number of replays to retrieve.}
 }

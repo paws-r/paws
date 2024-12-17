@@ -692,7 +692,7 @@ codepipeline_list_pipeline_executions <- function(pipelineName, maxResults = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "pipelineExecutionSummaries"),
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "pipelineExecutionSummaries"),
     stream_api = FALSE
   )
   input <- .codepipeline$list_pipeline_executions_input(pipelineName = pipelineName, maxResults = maxResults, filter = filter, nextToken = nextToken)
@@ -728,7 +728,7 @@ codepipeline_list_pipelines <- function(nextToken = NULL, maxResults = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "pipelines"),
+    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "pipelines", limit_key = "maxResults"),
     stream_api = FALSE
   )
   input <- .codepipeline$list_pipelines_input(nextToken = nextToken, maxResults = maxResults)
@@ -873,7 +873,7 @@ codepipeline_list_webhooks <- function(NextToken = NULL, MaxResults = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "webhooks"),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "webhooks"),
     stream_api = FALSE
   )
   input <- .codepipeline$list_webhooks_input(NextToken = NextToken, MaxResults = MaxResults)
@@ -1044,6 +1044,12 @@ codepipeline_put_action_revision <- function(pipelineName, stageName, actionName
 #' [`get_pipeline_state`][codepipeline_get_pipeline_state] action. It is
 #' used to validate that the approval request corresponding to this token
 #' is still valid.
+#' 
+#' For a pipeline where the execution mode is set to PARALLEL, the token
+#' required to approve/reject approval request as detailed above is not
+#' available. Instead, use the `externalExecutionId` from the
+#' [`get_pipeline_state`][codepipeline_get_pipeline_state] action as the
+#' token in the approval request.
 #'
 #' @keywords internal
 #'

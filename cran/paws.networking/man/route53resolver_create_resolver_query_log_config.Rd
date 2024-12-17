@@ -22,11 +22,11 @@ the following:
 \itemize{
 \item \strong{S3 bucket}:
 
-\code{arn:aws:s3:::examplebucket}
+\code{arn:aws:s3:::amzn-s3-demo-bucket}
 
 You can optionally append a file prefix to the end of the ARN.
 
-\verb{arn:aws:s3:::examplebucket/development/}
+\verb{arn:aws:s3:::amzn-s3-demo-bucket/development/}
 \item \strong{CloudWatch Logs log group}:
 
 \verb{arn:aws:logs:us-west-1:123456789012:log-group:/mystack-testgroup-12ABC1AB12A1:*}

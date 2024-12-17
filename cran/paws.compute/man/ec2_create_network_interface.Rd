@@ -5,74 +5,28 @@
 \title{Creates a network interface in the specified subnet}
 \usage{
 ec2_create_network_interface(
-  Description = NULL,
-  DryRun = NULL,
-  Groups = NULL,
-  Ipv6AddressCount = NULL,
-  Ipv6Addresses = NULL,
-  PrivateIpAddress = NULL,
-  PrivateIpAddresses = NULL,
-  SecondaryPrivateIpAddressCount = NULL,
   Ipv4Prefixes = NULL,
   Ipv4PrefixCount = NULL,
   Ipv6Prefixes = NULL,
   Ipv6PrefixCount = NULL,
   InterfaceType = NULL,
-  SubnetId,
   TagSpecifications = NULL,
   ClientToken = NULL,
   EnablePrimaryIpv6 = NULL,
-  ConnectionTrackingSpecification = NULL
+  ConnectionTrackingSpecification = NULL,
+  Operator = NULL,
+  SubnetId,
+  Description = NULL,
+  PrivateIpAddress = NULL,
+  Groups = NULL,
+  PrivateIpAddresses = NULL,
+  SecondaryPrivateIpAddressCount = NULL,
+  Ipv6Addresses = NULL,
+  Ipv6AddressCount = NULL,
+  DryRun = NULL
 )
 }
 \arguments{
-\item{Description}{A description for the network interface.}
-
-\item{DryRun}{Checks whether you have the required permissions for the action, without
-actually making the request, and provides an error response. If you have
-the required permissions, the error response is \code{DryRunOperation}.
-Otherwise, it is \code{UnauthorizedOperation}.}
-
-\item{Groups}{The IDs of one or more security groups.}
-
-\item{Ipv6AddressCount}{The number of IPv6 addresses to assign to a network interface. Amazon
-EC2 automatically selects the IPv6 addresses from the subnet range.
-
-You can't specify a count of IPv6 addresses using this parameter if
-you've specified one of the following: specific IPv6 addresses, specific
-IPv6 prefixes, or a count of IPv6 prefixes.
-
-If your subnet has the \code{AssignIpv6AddressOnCreation} attribute set, you
-can override that setting by specifying 0 as the IPv6 address count.}
-
-\item{Ipv6Addresses}{The IPv6 addresses from the IPv6 CIDR block range of your subnet.
-
-You can't specify IPv6 addresses using this parameter if you've
-specified one of the following: a count of IPv6 addresses, specific IPv6
-prefixes, or a count of IPv6 prefixes.}
-
-\item{PrivateIpAddress}{The primary private IPv4 address of the network interface. If you don't
-specify an IPv4 address, Amazon EC2 selects one for you from the
-subnet's IPv4 CIDR range. If you specify an IP address, you cannot
-indicate any IP addresses specified in \code{privateIpAddresses} as primary
-(only one IP address can be designated as primary).}
-
-\item{PrivateIpAddresses}{The private IPv4 addresses.
-
-You can't specify private IPv4 addresses if you've specified one of the
-following: a count of private IPv4 addresses, specific IPv4 prefixes, or
-a count of IPv4 prefixes.}
-
-\item{SecondaryPrivateIpAddressCount}{The number of secondary private IPv4 addresses to assign to a network
-interface. When you specify a number of secondary IPv4 addresses, Amazon
-EC2 selects these IP addresses within the subnet's IPv4 CIDR range. You
-can't specify this option and specify more than one private IP address
-using \code{privateIpAddresses}.
-
-You can't specify a count of private IPv4 addresses if you've specified
-one of the following: specific private IPv4 addresses, specific IPv4
-prefixes, or a count of IPv4 prefixes.}
-
 \item{Ipv4Prefixes}{The IPv4 prefixes assigned to the network interface.
 
 You can't specify IPv4 prefixes if you've specified one of the
@@ -101,9 +55,11 @@ count of IPv6 addresses.}
 
 \item{InterfaceType}{The type of network interface. The default is \code{interface}.
 
-The only supported values are \code{interface}, \code{efa}, and \code{trunk}.}
+If you specify \code{efa-only}, do not assign any IP addresses to the network
+interface. EFA-only network interfaces do not support IP addresses.
 
-\item{SubnetId}{[required] The ID of the subnet to associate with the network interface.}
+The only supported values are \code{interface}, \code{efa}, \code{efa-only}, and
+\code{trunk}.}
 
 \item{TagSpecifications}{The tags to apply to the new network interface.}
 
@@ -127,6 +83,57 @@ first IPv6 GUA address associated with the ENI becomes the primary IPv6
 address.}
 
 \item{ConnectionTrackingSpecification}{A connection tracking specification for the network interface.}
+
+\item{Operator}{Reserved for internal use.}
+
+\item{SubnetId}{[required] The ID of the subnet to associate with the network interface.}
+
+\item{Description}{A description for the network interface.}
+
+\item{PrivateIpAddress}{The primary private IPv4 address of the network interface. If you don't
+specify an IPv4 address, Amazon EC2 selects one for you from the
+subnet's IPv4 CIDR range. If you specify an IP address, you cannot
+indicate any IP addresses specified in \code{privateIpAddresses} as primary
+(only one IP address can be designated as primary).}
+
+\item{Groups}{The IDs of one or more security groups.}
+
+\item{PrivateIpAddresses}{The private IPv4 addresses.
+
+You can't specify private IPv4 addresses if you've specified one of the
+following: a count of private IPv4 addresses, specific IPv4 prefixes, or
+a count of IPv4 prefixes.}
+
+\item{SecondaryPrivateIpAddressCount}{The number of secondary private IPv4 addresses to assign to a network
+interface. When you specify a number of secondary IPv4 addresses, Amazon
+EC2 selects these IP addresses within the subnet's IPv4 CIDR range. You
+can't specify this option and specify more than one private IP address
+using \code{privateIpAddresses}.
+
+You can't specify a count of private IPv4 addresses if you've specified
+one of the following: specific private IPv4 addresses, specific IPv4
+prefixes, or a count of IPv4 prefixes.}
+
+\item{Ipv6Addresses}{The IPv6 addresses from the IPv6 CIDR block range of your subnet.
+
+You can't specify IPv6 addresses using this parameter if you've
+specified one of the following: a count of IPv6 addresses, specific IPv6
+prefixes, or a count of IPv6 prefixes.}
+
+\item{Ipv6AddressCount}{The number of IPv6 addresses to assign to a network interface. Amazon
+EC2 automatically selects the IPv6 addresses from the subnet range.
+
+You can't specify a count of IPv6 addresses using this parameter if
+you've specified one of the following: specific IPv6 addresses, specific
+IPv6 prefixes, or a count of IPv6 prefixes.
+
+If your subnet has the \code{AssignIpv6AddressOnCreation} attribute set, you
+can override that setting by specifying 0 as the IPv6 address count.}
+
+\item{DryRun}{Checks whether you have the required permissions for the action, without
+actually making the request, and provides an error response. If you have
+the required permissions, the error response is \code{DryRunOperation}.
+Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
 Creates a network interface in the specified subnet.

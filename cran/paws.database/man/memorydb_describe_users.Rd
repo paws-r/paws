@@ -12,7 +12,7 @@ memorydb_describe_users(
 )
 }
 \arguments{
-\item{UserName}{The name of the user}
+\item{UserName}{The name of the user.}
 
 \item{Filters}{Filter to determine the list of users to return.}
 

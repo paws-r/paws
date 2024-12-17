@@ -12,7 +12,9 @@ ec2_modify_verified_access_endpoint(
   NetworkInterfaceOptions = NULL,
   Description = NULL,
   ClientToken = NULL,
-  DryRun = NULL
+  DryRun = NULL,
+  RdsOptions = NULL,
+  CidrOptions = NULL
 )
 }
 \arguments{
@@ -34,6 +36,10 @@ your modification request. For more information, see \href{https://docs.aws.amaz
 actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
+
+\item{RdsOptions}{The RDS options.}
+
+\item{CidrOptions}{The CIDR options.}
 }
 \description{
 Modifies the configuration of the specified Amazon Web Services Verified Access endpoint.

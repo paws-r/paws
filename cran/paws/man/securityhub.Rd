@@ -59,7 +59,7 @@ Services environment against security industry standards and best
 practices.
 
 Security Hub collects security data across Amazon Web Services accounts,
-Amazon Web Servicesservices, and supported third-party products and
+Amazon Web Services services, and supported third-party products and
 helps you analyze your security trends and identify the highest priority
 security issues.
 
@@ -75,11 +75,11 @@ checks against security controls and generates control findings to help
 you assess your compliance against security best practices.
 
 In addition to generating control findings, Security Hub also receives
-findings from other Amazon Web Servicesservices, such as Amazon
+findings from other Amazon Web Services services, such as Amazon
 GuardDuty and Amazon Inspector, and supported third-party products. This
 gives you a single pane of glass into a variety of security-related
 issues. You can also send Security Hub findings to other Amazon Web
-Servicesservices and supported third-party products.
+Services services and supported third-party products.
 
 Security Hub offers automation features that help you triage and
 remediate security issues. For example, you can use automation rules to
@@ -94,7 +94,7 @@ it helpful to also review the \href{https://docs.aws.amazon.com/securityhub/late
 . The user guide explains key concepts and provides procedures that
 demonstrate how to use Security Hub features. It also provides
 information about topics such as integrating Security Hub with other
-Amazon Web Servicesservices.
+Amazon Web Services services.
 
 In addition to interacting with Security Hub by making calls to the
 Security Hub API, you can use a current version of an Amazon Web
@@ -102,7 +102,7 @@ Services command line tool or SDK. Amazon Web Services provides tools
 and SDKs that consist of libraries and sample code for various languages
 and platforms, such as PowerShell, Java, Go, Python, C++, and .NET.
 These tools and SDKs provide convenient, programmatic access to Security
-Hub and other Amazon Web Servicesservices . They also handle tasks such
+Hub and other Amazon Web Services services . They also handle tasks such
 as signing requests, managing errors, and retrying requests
 automatically. For information about installing and using the Amazon Web
 Services tools and SDKs, see \href{https://aws.amazon.com/developer/tools/}{Tools to Build on Amazon Web Services}.
@@ -179,7 +179,7 @@ second.
 \section{Operations}{
 
 \tabular{ll}{
-\link[paws.security.identity:securityhub_accept_administrator_invitation]{accept_administrator_invitation} \tab Accepts the invitation to be a member account and be monitored by the Security Hub administrator account that the invitation was sent from\cr
+\link[paws.security.identity:securityhub_accept_administrator_invitation]{accept_administrator_invitation} \tab We recommend using Organizations instead of Security Hub invitations to manage your member accounts\cr
 \link[paws.security.identity:securityhub_accept_invitation]{accept_invitation} \tab This method is deprecated\cr
 \link[paws.security.identity:securityhub_batch_delete_automation_rules]{batch_delete_automation_rules} \tab Deletes one or more automation rules\cr
 \link[paws.security.identity:securityhub_batch_disable_standards]{batch_disable_standards} \tab Disables the standards specified by the provided StandardsSubscriptionArns\cr
@@ -195,15 +195,15 @@ second.
 \link[paws.security.identity:securityhub_create_action_target]{create_action_target} \tab Creates a custom action target in Security Hub\cr
 \link[paws.security.identity:securityhub_create_automation_rule]{create_automation_rule} \tab Creates an automation rule based on input parameters\cr
 \link[paws.security.identity:securityhub_create_configuration_policy]{create_configuration_policy} \tab Creates a configuration policy with the defined configuration\cr
-\link[paws.security.identity:securityhub_create_finding_aggregator]{create_finding_aggregator} \tab Used to enable finding aggregation\cr
+\link[paws.security.identity:securityhub_create_finding_aggregator]{create_finding_aggregator} \tab The aggregation Region is now called the home Region\cr
 \link[paws.security.identity:securityhub_create_insight]{create_insight} \tab Creates a custom insight in Security Hub\cr
 \link[paws.security.identity:securityhub_create_members]{create_members} \tab Creates a member association in Security Hub between the specified accounts and the account used to make the request, which is the administrator account\cr
-\link[paws.security.identity:securityhub_decline_invitations]{decline_invitations} \tab Declines invitations to become a member account\cr
+\link[paws.security.identity:securityhub_decline_invitations]{decline_invitations} \tab We recommend using Organizations instead of Security Hub invitations to manage your member accounts\cr
 \link[paws.security.identity:securityhub_delete_action_target]{delete_action_target} \tab Deletes a custom action target from Security Hub\cr
 \link[paws.security.identity:securityhub_delete_configuration_policy]{delete_configuration_policy} \tab Deletes a configuration policy\cr
-\link[paws.security.identity:securityhub_delete_finding_aggregator]{delete_finding_aggregator} \tab Deletes a finding aggregator\cr
+\link[paws.security.identity:securityhub_delete_finding_aggregator]{delete_finding_aggregator} \tab The aggregation Region is now called the home Region\cr
 \link[paws.security.identity:securityhub_delete_insight]{delete_insight} \tab Deletes the insight specified by the InsightArn\cr
-\link[paws.security.identity:securityhub_delete_invitations]{delete_invitations} \tab Deletes invitations received by the Amazon Web Services account to become a member account\cr
+\link[paws.security.identity:securityhub_delete_invitations]{delete_invitations} \tab We recommend using Organizations instead of Security Hub invitations to manage your member accounts\cr
 \link[paws.security.identity:securityhub_delete_members]{delete_members} \tab Deletes the specified member accounts from Security Hub\cr
 \link[paws.security.identity:securityhub_describe_action_targets]{describe_action_targets} \tab Returns a list of the custom action targets in Security Hub in your account\cr
 \link[paws.security.identity:securityhub_describe_hub]{describe_hub} \tab Returns details about the Hub resource in your account, including the HubArn and the time when you enabled Security Hub\cr
@@ -224,22 +224,22 @@ second.
 \link[paws.security.identity:securityhub_get_configuration_policy]{get_configuration_policy} \tab Provides information about a configuration policy\cr
 \link[paws.security.identity:securityhub_get_configuration_policy_association]{get_configuration_policy_association} \tab Returns the association between a configuration and a target account, organizational unit, or the root\cr
 \link[paws.security.identity:securityhub_get_enabled_standards]{get_enabled_standards} \tab Returns a list of the standards that are currently enabled\cr
-\link[paws.security.identity:securityhub_get_finding_aggregator]{get_finding_aggregator} \tab Returns the current finding aggregation configuration\cr
+\link[paws.security.identity:securityhub_get_finding_aggregator]{get_finding_aggregator} \tab The aggregation Region is now called the home Region\cr
 \link[paws.security.identity:securityhub_get_finding_history]{get_finding_history} \tab Returns history for a Security Hub finding in the last 90 days\cr
 \link[paws.security.identity:securityhub_get_findings]{get_findings} \tab Returns a list of findings that match the specified criteria\cr
 \link[paws.security.identity:securityhub_get_insight_results]{get_insight_results} \tab Lists the results of the Security Hub insight specified by the insight ARN\cr
 \link[paws.security.identity:securityhub_get_insights]{get_insights} \tab Lists and describes insights for the specified insight ARNs\cr
-\link[paws.security.identity:securityhub_get_invitations_count]{get_invitations_count} \tab Returns the count of all Security Hub membership invitations that were sent to the current member account, not including the currently accepted invitation\cr
+\link[paws.security.identity:securityhub_get_invitations_count]{get_invitations_count} \tab We recommend using Organizations instead of Security Hub invitations to manage your member accounts\cr
 \link[paws.security.identity:securityhub_get_master_account]{get_master_account} \tab This method is deprecated\cr
 \link[paws.security.identity:securityhub_get_members]{get_members} \tab Returns the details for the Security Hub member accounts for the specified account IDs\cr
 \link[paws.security.identity:securityhub_get_security_control_definition]{get_security_control_definition} \tab Retrieves the definition of a security control\cr
-\link[paws.security.identity:securityhub_invite_members]{invite_members} \tab Invites other Amazon Web Services accounts to become member accounts for the Security Hub administrator account that the invitation is sent from\cr
+\link[paws.security.identity:securityhub_invite_members]{invite_members} \tab We recommend using Organizations instead of Security Hub invitations to manage your member accounts\cr
 \link[paws.security.identity:securityhub_list_automation_rules]{list_automation_rules} \tab A list of automation rules and their metadata for the calling account\cr
 \link[paws.security.identity:securityhub_list_configuration_policies]{list_configuration_policies} \tab Lists the configuration policies that the Security Hub delegated administrator has created for your organization\cr
 \link[paws.security.identity:securityhub_list_configuration_policy_associations]{list_configuration_policy_associations} \tab Provides information about the associations for your configuration policies and self-managed behavior\cr
 \link[paws.security.identity:securityhub_list_enabled_products_for_import]{list_enabled_products_for_import} \tab Lists all findings-generating solutions (products) that you are subscribed to receive findings from in Security Hub\cr
-\link[paws.security.identity:securityhub_list_finding_aggregators]{list_finding_aggregators} \tab If finding aggregation is enabled, then ListFindingAggregators returns the ARN of the finding aggregator\cr
-\link[paws.security.identity:securityhub_list_invitations]{list_invitations} \tab Lists all Security Hub membership invitations that were sent to the current Amazon Web Services account\cr
+\link[paws.security.identity:securityhub_list_finding_aggregators]{list_finding_aggregators} \tab If cross-Region aggregation is enabled, then ListFindingAggregators returns the Amazon Resource Name (ARN) of the finding aggregator\cr
+\link[paws.security.identity:securityhub_list_invitations]{list_invitations} \tab We recommend using Organizations instead of Security Hub invitations to manage your member accounts\cr
 \link[paws.security.identity:securityhub_list_members]{list_members} \tab Lists details about all member accounts for the current Security Hub administrator account\cr
 \link[paws.security.identity:securityhub_list_organization_admin_accounts]{list_organization_admin_accounts} \tab Lists the Security Hub administrator accounts\cr
 \link[paws.security.identity:securityhub_list_security_control_definitions]{list_security_control_definitions} \tab Lists all of the security controls that apply to a specified standard\cr
@@ -251,7 +251,7 @@ second.
 \link[paws.security.identity:securityhub_untag_resource]{untag_resource} \tab Removes one or more tags from a resource\cr
 \link[paws.security.identity:securityhub_update_action_target]{update_action_target} \tab Updates the name and description of a custom action target in Security Hub\cr
 \link[paws.security.identity:securityhub_update_configuration_policy]{update_configuration_policy} \tab Updates a configuration policy\cr
-\link[paws.security.identity:securityhub_update_finding_aggregator]{update_finding_aggregator} \tab Updates the finding aggregation configuration\cr
+\link[paws.security.identity:securityhub_update_finding_aggregator]{update_finding_aggregator} \tab The aggregation Region is now called the home Region\cr
 \link[paws.security.identity:securityhub_update_findings]{update_findings} \tab UpdateFindings is a deprecated operation\cr
 \link[paws.security.identity:securityhub_update_insight]{update_insight} \tab Updates the Security Hub insight identified by the specified insight ARN\cr
 \link[paws.security.identity:securityhub_update_organization_configuration]{update_organization_configuration} \tab Updates the configuration of your organization in Security Hub\cr
@@ -264,13 +264,8 @@ second.
 \examples{
 \dontrun{
 svc <- securityhub()
-# The following example demonstrates how an account can accept an
-# invitation from the Security Hub administrator account to be a member
-# account. This operation is applicable only to member accounts that are
-# not added through AWS Organizations.
 svc$accept_administrator_invitation(
-  AdministratorId = "123456789012",
-  InvitationId = "7ab938c5d52d7904ad09f9e7c20cc4eb"
+  Foo = 123
 )
 }
 

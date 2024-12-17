@@ -8,7 +8,11 @@ opensearchservice_create_package(
   PackageName,
   PackageType,
   PackageDescription = NULL,
-  PackageSource
+  PackageSource,
+  PackageConfiguration = NULL,
+  EngineVersion = NULL,
+  PackageVendingOptions = NULL,
+  PackageEncryptionOptions = NULL
 )
 }
 \arguments{
@@ -19,6 +23,17 @@ opensearchservice_create_package(
 \item{PackageDescription}{Description of the package.}
 
 \item{PackageSource}{[required] The Amazon S3 location from which to import the package.}
+
+\item{PackageConfiguration}{The configuration parameters for the package being created.}
+
+\item{EngineVersion}{The version of the Amazon OpenSearch Service engine for which is
+compatible with the package. This can only be specified for package type
+\code{ZIP-PLUGIN}}
+
+\item{PackageVendingOptions}{The vending options for the package being created. They determine if the
+package can be vended to other users.}
+
+\item{PackageEncryptionOptions}{The encryption parameters for the package being created.}
 }
 \description{
 Creates a package for use with Amazon OpenSearch Service domains. For more information, see \href{https://docs.aws.amazon.com/opensearch-service/latest/developerguide/custom-packages.html}{Custom packages for Amazon OpenSearch Service}.

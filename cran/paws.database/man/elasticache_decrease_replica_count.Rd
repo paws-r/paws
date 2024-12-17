@@ -2,10 +2,10 @@
 % Please edit documentation in R/elasticache_operations.R
 \name{elasticache_decrease_replica_count}
 \alias{elasticache_decrease_replica_count}
-\title{Dynamically decreases the number of replicas in a Redis OSS (cluster
-mode disabled) replication group or the number of replica nodes in one
-or more node groups (shards) of a Redis OSS (cluster mode enabled)
-replication group}
+\title{Dynamically decreases the number of replicas in a Valkey or Redis OSS
+(cluster mode disabled) replication group or the number of replica nodes
+in one or more node groups (shards) of a Valkey or Redis OSS (cluster
+mode enabled) replication group}
 \usage{
 elasticache_decrease_replica_count(
   ReplicationGroupId,
@@ -20,26 +20,27 @@ elasticache_decrease_replica_count(
 nodes.}
 
 \item{NewReplicaCount}{The number of read replica nodes you want at the completion of this
-operation. For Redis OSS (cluster mode disabled) replication groups,
-this is the number of replica nodes in the replication group. For Redis
-OSS (cluster mode enabled) replication groups, this is the number of
-replica nodes in each of the replication group's node groups.
+operation. For Valkey or Redis OSS (cluster mode disabled) replication
+groups, this is the number of replica nodes in the replication group.
+For Valkey or Redis OSS (cluster mode enabled) replication groups, this
+is the number of replica nodes in each of the replication group's node
+groups.
 
 The minimum number of replicas in a shard or replication group is:
 \itemize{
-\item Redis OSS (cluster mode disabled)
+\item Valkey or Redis OSS (cluster mode disabled)
 \itemize{
 \item If Multi-AZ is enabled: 1
 \item If Multi-AZ is not enabled: 0
 }
-\item Redis OSS (cluster mode enabled): 0 (though you will not be able to
-failover to a replica if your primary node fails)
+\item Valkey or Redis OSS (cluster mode enabled): 0 (though you will not
+be able to failover to a replica if your primary node fails)
 }}
 
 \item{ReplicaConfiguration}{A list of \code{ConfigureShard} objects that can be used to configure each
-shard in a Redis OSS (cluster mode enabled) replication group. The
-\code{ConfigureShard} has three members: \code{NewReplicaCount}, \code{NodeGroupId},
-and \code{PreferredAvailabilityZones}.}
+shard in a Valkey or Redis OSS (cluster mode enabled) replication group.
+The \code{ConfigureShard} has three members: \code{NewReplicaCount},
+\code{NodeGroupId}, and \code{PreferredAvailabilityZones}.}
 
 \item{ReplicasToRemove}{A list of the node ids to remove from the replication group or node
 group (shard).}
@@ -48,7 +49,7 @@ group (shard).}
 \code{ApplyImmediately=False} is not currently supported.}
 }
 \description{
-Dynamically decreases the number of replicas in a Redis OSS (cluster mode disabled) replication group or the number of replica nodes in one or more node groups (shards) of a Redis OSS (cluster mode enabled) replication group. This operation is performed with no cluster down time.
+Dynamically decreases the number of replicas in a Valkey or Redis OSS (cluster mode disabled) replication group or the number of replica nodes in one or more node groups (shards) of a Valkey or Redis OSS (cluster mode enabled) replication group. This operation is performed with no cluster down time.
 
 See \url{https://www.paws-r-sdk.com/docs/elasticache_decrease_replica_count/} for full documentation.
 }

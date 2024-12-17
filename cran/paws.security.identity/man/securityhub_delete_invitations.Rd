@@ -2,8 +2,8 @@
 % Please edit documentation in R/securityhub_operations.R
 \name{securityhub_delete_invitations}
 \alias{securityhub_delete_invitations}
-\title{Deletes invitations received by the Amazon Web Services account to
-become a member account}
+\title{We recommend using Organizations instead of Security Hub invitations to
+manage your member accounts}
 \usage{
 securityhub_delete_invitations(AccountIds)
 }
@@ -12,7 +12,7 @@ securityhub_delete_invitations(AccountIds)
 delete.}
 }
 \description{
-Deletes invitations received by the Amazon Web Services account to become a member account.
+We recommend using Organizations instead of Security Hub invitations to manage your member accounts. For information, see \href{https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-accounts-orgs.html}{Managing Security Hub administrator and member accounts with Organizations} in the \emph{Security Hub User Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/securityhub_delete_invitations/} for full documentation.
 }

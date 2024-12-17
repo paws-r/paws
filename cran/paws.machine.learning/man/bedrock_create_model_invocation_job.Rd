@@ -11,6 +11,7 @@ bedrock_create_model_invocation_job(
   modelId,
   inputDataConfig,
   outputDataConfig,
+  vpcConfig = NULL,
   timeoutDurationInHours = NULL,
   tags = NULL
 )
@@ -33,6 +34,9 @@ inference job.}
 \item{inputDataConfig}{[required] Details about the location of the input to the batch inference job.}
 
 \item{outputDataConfig}{[required] Details about the location of the output of the batch inference job.}
+
+\item{vpcConfig}{The configuration of the Virtual Private Cloud (VPC) for the data in the
+batch inference job. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/batch-vpc.html}{Protect batch inference jobs using a VPC}.}
 
 \item{timeoutDurationInHours}{The number of hours after which to force the batch inference job to time
 out.}

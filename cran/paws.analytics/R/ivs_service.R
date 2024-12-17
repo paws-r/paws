@@ -64,11 +64,12 @@ NULL
 #' A *tag* is a metadata label that you assign to an Amazon Web Services
 #' resource. A tag comprises a *key* and a *value*, both set by you. For
 #' example, you might set a tag as `topic:nature` to label a particular
-#' video category. See [Tagging Amazon Web Services
-#' Resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html)
-#' for more information, including restrictions that apply to tags and "Tag
-#' naming limits and requirements"; Amazon IVS has no service-specific
-#' constraints beyond what is documented there.
+#' video category. See [Best practices and
+#' strategies](https://docs.aws.amazon.com/tag-editor/latest/userguide/best-practices-and-strats.html)
+#' in *Tagging Amazon Web Services Resources and Tag Editor* for details,
+#' including restrictions that apply to tags and "Tag naming limits and
+#' requirements"; Amazon IVS has no service-specific constraints beyond
+#' what is documented there.
 #' 
 #' Tags can help you identify and organize your Amazon Web Services
 #' resources. For example, you can use the same tag for different resources
@@ -76,7 +77,7 @@ NULL
 #' access (see [Access
 #' Tags](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_tags.html)).
 #' 
-#' The Amazon IVS API has these tag-related endpoints:
+#' The Amazon IVS API has these tag-related operations:
 #' [`tag_resource`][ivs_tag_resource],
 #' [`untag_resource`][ivs_untag_resource], and
 #' [`list_tags_for_resource`][ivs_list_tags_for_resource]. The following
@@ -280,11 +281,11 @@ ivs <- function(config = list(), credentials = list(), endpoint = NULL, region =
 
 .ivs$metadata <- list(
   service_name = "ivs",
-  endpoints = list("*" = list(endpoint = "ivs.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "ivs.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "ivs.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "ivs.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "ivs.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "ivs.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "ivs.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "ivs.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "ivs.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "ivs.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "ivs.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "ivs.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "ivs.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "ivs",
   api_version = "2020-07-14",
   signing_name = "ivs",
-  json_version = "",
+  json_version = "1.1",
   target_prefix = ""
 )
 

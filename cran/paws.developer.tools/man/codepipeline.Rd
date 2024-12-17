@@ -130,6 +130,7 @@ categories are:
 \item Deploy
 \item Approval
 \item Invoke
+\item Compute
 }
 
 Pipelines also include \emph{transitions}, which allow the transition of

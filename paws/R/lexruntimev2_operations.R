@@ -878,3 +878,401 @@ lexruntimev2_recognize_utterance <- function(botId, botAliasId, localeId, sessio
   return(response)
 }
 .lexruntimev2$operations$recognize_utterance <- lexruntimev2_recognize_utterance
+
+#' Starts an HTTP/2 bidirectional event stream that enables you to send
+#' audio, text, or DTMF input in real time
+#'
+#' @description
+#' Starts an HTTP/2 bidirectional event stream that enables you to send
+#' audio, text, or DTMF input in real time. After your application starts a
+#' conversation, users send input to Amazon Lex V2 as a stream of events.
+#' Amazon Lex V2 processes the incoming events and responds with streaming
+#' text or audio events.
+#' 
+#' Audio input must be in the following format:
+#' `audio/lpcm sample-rate=8000 sample-size-bits=16 channel-count=1; is-big-endian=false`.
+#' 
+#' If the optional post-fulfillment response is specified, the messages are
+#' returned as follows. For more information, see
+#' [PostFulfillmentStatusSpecification](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_PostFulfillmentStatusSpecification.html).
+#' 
+#' -   **Success message** - Returned if the Lambda function completes
+#'     successfully and the intent state is fulfilled or ready fulfillment
+#'     if the message is present.
+#' 
+#' -   **Failed message** - The failed message is returned if the Lambda
+#'     function throws an exception or if the Lambda function returns a
+#'     failed intent state without a message.
+#' 
+#' -   **Timeout message** - If you don't configure a timeout message and a
+#'     timeout, and the Lambda function doesn't return within 30 seconds,
+#'     the timeout message is returned. If you configure a timeout, the
+#'     timeout message is returned when the period times out.
+#' 
+#' For more information, see [Completion
+#' message](https://docs.aws.amazon.com/lexv2/latest/dg/streaming-progress.html#progress-complete.html).
+#' 
+#' If the optional update message is configured, it is played at the
+#' specified frequency while the Lambda function is running and the update
+#' message state is active. If the fulfillment update message is not
+#' active, the Lambda function runs with a 30 second timeout.
+#' 
+#' For more information, see [Update
+#' message](https://docs.aws.amazon.com/lexv2/latest/dg/streaming-progress.html#progress-update.html)
+#' 
+#' The [`start_conversation`][lexruntimev2_start_conversation] operation is
+#' supported only in the following SDKs:
+#' 
+#' -   [AWS SDK for
+#'     C++](https://sdk.amazonaws.com/cpp/api/crosslink_redirect.html?uid=runtime.lex.v2-2020-08-07&type=StartConversation)
+#' 
+#' -   [AWS SDK for Java
+#'     V2](https://sdk.amazonaws.com/java/api/latest/crosslink_redirect.html?uid=runtime.lex.v2-2020-08-07&type=StartConversation)
+#' 
+#' -   [AWS SDK for Ruby
+#'     V3](https://docs.aws.amazon.com/sdk-for-ruby/v3/api/Aws/LexRuntimeV2/Client.html#start_conversation-instance_method)
+#'
+#' @usage
+#' lexruntimev2_start_conversation(botId, botAliasId, localeId, sessionId,
+#'   conversationMode, requestEventStream)
+#'
+#' @param botId &#91;required&#93; The identifier of the bot to process the request.
+#' @param botAliasId &#91;required&#93; The alias identifier in use for the bot that processes the request.
+#' @param localeId &#91;required&#93; The locale where the session is in use.
+#' @param sessionId &#91;required&#93; The identifier of the user session that is having the conversation.
+#' @param conversationMode The conversation type that you are using the Amazon Lex V2. If the
+#' conversation mode is `AUDIO` you can send both audio and DTMF
+#' information. If the mode is `TEXT` you can only send text.
+#' @param requestEventStream &#91;required&#93; Represents the stream of events to Amazon Lex V2 from your application.
+#' The events are encoded as HTTP/2 data frames.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   responseEventStream = list(
+#'     PlaybackInterruptionEvent = list(
+#'       eventReason = "DTMF_START_DETECTED"|"TEXT_DETECTED"|"VOICE_START_DETECTED",
+#'       causedByEventId = "string",
+#'       eventId = "string"
+#'     ),
+#'     TranscriptEvent = list(
+#'       transcript = "string",
+#'       eventId = "string"
+#'     ),
+#'     IntentResultEvent = list(
+#'       inputMode = "Text"|"Speech"|"DTMF",
+#'       interpretations = list(
+#'         list(
+#'           nluConfidence = list(
+#'             score = 123.0
+#'           ),
+#'           sentimentResponse = list(
+#'             sentiment = "MIXED"|"NEGATIVE"|"NEUTRAL"|"POSITIVE",
+#'             sentimentScore = list(
+#'               positive = 123.0,
+#'               negative = 123.0,
+#'               neutral = 123.0,
+#'               mixed = 123.0
+#'             )
+#'           ),
+#'           intent = list(
+#'             name = "string",
+#'             slots = list(
+#'               list(
+#'                 value = list(
+#'                   originalValue = "string",
+#'                   interpretedValue = "string",
+#'                   resolvedValues = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 shape = "Scalar"|"List"|"Composite",
+#'                 values = list(
+#'                   list()
+#'                 ),
+#'                 subSlots = list()
+#'               )
+#'             ),
+#'             state = "Failed"|"Fulfilled"|"InProgress"|"ReadyForFulfillment"|"Waiting"|"FulfillmentInProgress",
+#'             confirmationState = "Confirmed"|"Denied"|"None"
+#'           ),
+#'           interpretationSource = "Bedrock"|"Lex"
+#'         )
+#'       ),
+#'       sessionState = list(
+#'         dialogAction = list(
+#'           type = "Close"|"ConfirmIntent"|"Delegate"|"ElicitIntent"|"ElicitSlot"|"None",
+#'           slotToElicit = "string",
+#'           slotElicitationStyle = "Default"|"SpellByLetter"|"SpellByWord",
+#'           subSlotToElicit = list(
+#'             name = "string",
+#'             subSlotToElicit = list()
+#'           )
+#'         ),
+#'         intent = list(
+#'           name = "string",
+#'           slots = list(
+#'             list(
+#'               value = list(
+#'                 originalValue = "string",
+#'                 interpretedValue = "string",
+#'                 resolvedValues = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               shape = "Scalar"|"List"|"Composite",
+#'               values = list(
+#'                 list()
+#'               ),
+#'               subSlots = list()
+#'             )
+#'           ),
+#'           state = "Failed"|"Fulfilled"|"InProgress"|"ReadyForFulfillment"|"Waiting"|"FulfillmentInProgress",
+#'           confirmationState = "Confirmed"|"Denied"|"None"
+#'         ),
+#'         activeContexts = list(
+#'           list(
+#'             name = "string",
+#'             timeToLive = list(
+#'               timeToLiveInSeconds = 123,
+#'               turnsToLive = 123
+#'             ),
+#'             contextAttributes = list(
+#'               "string"
+#'             )
+#'           )
+#'         ),
+#'         sessionAttributes = list(
+#'           "string"
+#'         ),
+#'         originatingRequestId = "string",
+#'         runtimeHints = list(
+#'           slotHints = list(
+#'             list(
+#'               list(
+#'                 runtimeHintValues = list(
+#'                   list(
+#'                     phrase = "string"
+#'                   )
+#'                 ),
+#'                 subSlotHints = list()
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       requestAttributes = list(
+#'         "string"
+#'       ),
+#'       sessionId = "string",
+#'       eventId = "string",
+#'       recognizedBotMember = list(
+#'         botId = "string",
+#'         botName = "string"
+#'       )
+#'     ),
+#'     TextResponseEvent = list(
+#'       messages = list(
+#'         list(
+#'           content = "string",
+#'           contentType = "CustomPayload"|"ImageResponseCard"|"PlainText"|"SSML",
+#'           imageResponseCard = list(
+#'             title = "string",
+#'             subtitle = "string",
+#'             imageUrl = "string",
+#'             buttons = list(
+#'               list(
+#'                 text = "string",
+#'                 value = "string"
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       eventId = "string"
+#'     ),
+#'     AudioResponseEvent = list(
+#'       audioChunk = raw,
+#'       contentType = "string",
+#'       eventId = "string"
+#'     ),
+#'     HeartbeatEvent = list(
+#'       eventId = "string"
+#'     ),
+#'     AccessDeniedException = list(
+#'       message = "string"
+#'     ),
+#'     ResourceNotFoundException = list(
+#'       message = "string"
+#'     ),
+#'     ValidationException = list(
+#'       message = "string"
+#'     ),
+#'     ThrottlingException = list(
+#'       message = "string"
+#'     ),
+#'     InternalServerException = list(
+#'       message = "string"
+#'     ),
+#'     ConflictException = list(
+#'       message = "string"
+#'     ),
+#'     DependencyFailedException = list(
+#'       message = "string"
+#'     ),
+#'     BadGatewayException = list(
+#'       message = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$start_conversation(
+#'   botId = "string",
+#'   botAliasId = "string",
+#'   localeId = "string",
+#'   sessionId = "string",
+#'   conversationMode = "AUDIO"|"TEXT",
+#'   requestEventStream = list(
+#'     ConfigurationEvent = list(
+#'       requestAttributes = list(
+#'         "string"
+#'       ),
+#'       responseContentType = "string",
+#'       sessionState = list(
+#'         dialogAction = list(
+#'           type = "Close"|"ConfirmIntent"|"Delegate"|"ElicitIntent"|"ElicitSlot"|"None",
+#'           slotToElicit = "string",
+#'           slotElicitationStyle = "Default"|"SpellByLetter"|"SpellByWord",
+#'           subSlotToElicit = list(
+#'             name = "string",
+#'             subSlotToElicit = list()
+#'           )
+#'         ),
+#'         intent = list(
+#'           name = "string",
+#'           slots = list(
+#'             list(
+#'               value = list(
+#'                 originalValue = "string",
+#'                 interpretedValue = "string",
+#'                 resolvedValues = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               shape = "Scalar"|"List"|"Composite",
+#'               values = list(
+#'                 list()
+#'               ),
+#'               subSlots = list()
+#'             )
+#'           ),
+#'           state = "Failed"|"Fulfilled"|"InProgress"|"ReadyForFulfillment"|"Waiting"|"FulfillmentInProgress",
+#'           confirmationState = "Confirmed"|"Denied"|"None"
+#'         ),
+#'         activeContexts = list(
+#'           list(
+#'             name = "string",
+#'             timeToLive = list(
+#'               timeToLiveInSeconds = 123,
+#'               turnsToLive = 123
+#'             ),
+#'             contextAttributes = list(
+#'               "string"
+#'             )
+#'           )
+#'         ),
+#'         sessionAttributes = list(
+#'           "string"
+#'         ),
+#'         originatingRequestId = "string",
+#'         runtimeHints = list(
+#'           slotHints = list(
+#'             list(
+#'               list(
+#'                 runtimeHintValues = list(
+#'                   list(
+#'                     phrase = "string"
+#'                   )
+#'                 ),
+#'                 subSlotHints = list()
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       welcomeMessages = list(
+#'         list(
+#'           content = "string",
+#'           contentType = "CustomPayload"|"ImageResponseCard"|"PlainText"|"SSML",
+#'           imageResponseCard = list(
+#'             title = "string",
+#'             subtitle = "string",
+#'             imageUrl = "string",
+#'             buttons = list(
+#'               list(
+#'                 text = "string",
+#'                 value = "string"
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       disablePlayback = TRUE|FALSE,
+#'       eventId = "string",
+#'       clientTimestampMillis = 123
+#'     ),
+#'     AudioInputEvent = list(
+#'       audioChunk = raw,
+#'       contentType = "string",
+#'       eventId = "string",
+#'       clientTimestampMillis = 123
+#'     ),
+#'     DTMFInputEvent = list(
+#'       inputCharacter = "string",
+#'       eventId = "string",
+#'       clientTimestampMillis = 123
+#'     ),
+#'     TextInputEvent = list(
+#'       text = "string",
+#'       eventId = "string",
+#'       clientTimestampMillis = 123
+#'     ),
+#'     PlaybackCompletionEvent = list(
+#'       eventId = "string",
+#'       clientTimestampMillis = 123
+#'     ),
+#'     DisconnectionEvent = list(
+#'       eventId = "string",
+#'       clientTimestampMillis = 123
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lexruntimev2_start_conversation
+#'
+#' @aliases lexruntimev2_start_conversation
+lexruntimev2_start_conversation <- function(botId, botAliasId, localeId, sessionId, conversationMode = NULL, requestEventStream) {
+  op <- new_operation(
+    name = "StartConversation",
+    http_method = "POST",
+    http_path = "/bots/{botId}/botAliases/{botAliasId}/botLocales/{localeId}/sessions/{sessionId}/conversation",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = TRUE
+  )
+  input <- .lexruntimev2$start_conversation_input(botId = botId, botAliasId = botAliasId, localeId = localeId, sessionId = sessionId, conversationMode = conversationMode, requestEventStream = requestEventStream)
+  output <- .lexruntimev2$start_conversation_output()
+  config <- get_config()
+  svc <- .lexruntimev2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lexruntimev2$operations$start_conversation <- lexruntimev2_start_conversation

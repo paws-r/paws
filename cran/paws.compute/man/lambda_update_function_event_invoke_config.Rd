@@ -43,9 +43,13 @@ processing.
 \itemize{
 \item \strong{Function} - The Amazon Resource Name (ARN) of a Lambda function.
 \item \strong{Queue} - The ARN of a standard SQS queue.
+\item \strong{Bucket} - The ARN of an Amazon S3 bucket.
 \item \strong{Topic} - The ARN of a standard SNS topic.
 \item \strong{Event Bus} - The ARN of an Amazon EventBridge event bus.
-}}
+}
+
+S3 buckets are supported only for on-failure destinations. To retain
+records of successful invocations, use another destination type.}
 }
 \description{
 Updates the configuration for asynchronous invocation for a function, version, or alias.

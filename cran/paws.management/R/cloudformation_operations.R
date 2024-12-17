@@ -38,7 +38,7 @@ cloudformation_activate_organizations_access <- function() {
 #' stack templates
 #'
 #' @description
-#' Activates a public third-party extension, making it available for use in stack templates. For more information, see [Using public extensions](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/registry-public.html) in the *CloudFormation User Guide*.
+#' Activates a public third-party extension, making it available for use in stack templates. Once you have activated a public third-party extension in your account and Region, use [`set_type_configuration`][cloudformation_set_type_configuration] to specify configuration properties for the extension. For more information, see [Using public extensions](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/registry-public.html) in the *CloudFormation User Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudformation_activate_type/](https://www.paws-r-sdk.com/docs/cloudformation_activate_type/) for full documentation.
 #'
@@ -206,13 +206,13 @@ cloudformation_cancel_update_stack <- function(StackName, ClientRequestToken = N
 #' using the `AWS::CloudFormation::Stack` resource). Instead, use this
 #' operation on the parent stack (the stack that contains the
 #' `AWS::CloudFormation::Stack` resource).
-#' @param RoleARN The Amazon Resource Name (ARN) of an Identity and Access Management
-#' (IAM) role that CloudFormation assumes to roll back the stack.
-#' CloudFormation uses the role's credentials to make calls on your behalf.
-#' CloudFormation always uses this role for all future operations on the
-#' stack. Provided that users have permission to operate on the stack,
-#' CloudFormation uses this role even if the users don't have permission to
-#' pass it. Ensure that the role grants least permission.
+#' @param RoleARN The Amazon Resource Name (ARN) of an IAM role that CloudFormation
+#' assumes to roll back the stack. CloudFormation uses the role's
+#' credentials to make calls on your behalf. CloudFormation always uses
+#' this role for all future operations on the stack. Provided that users
+#' have permission to operate on the stack, CloudFormation uses this role
+#' even if the users don't have permission to pass it. Ensure that the role
+#' grants least permission.
 #' 
 #' If you don't specify a value, CloudFormation uses the role that was
 #' previously associated with the stack. If no role is available,
@@ -253,9 +253,9 @@ cloudformation_cancel_update_stack <- function(StackName, ClientRequestToken = N
 #' 
 #' Don't confuse a child stack's name with its corresponding logical ID
 #' defined in the parent stack. For an example of a continue update
-#' rollback operation with nested stacks, see [Using ResourcesToSkip to
-#' recover a nested stacks
-#' hierarchy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-continueupdaterollback.html#nested-stacks).
+#' rollback operation with nested stacks, see [Continue rolling back from
+#' failed nested stack
+#' updates](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-continueupdaterollback.html#nested-stacks).
 #' @param ClientRequestToken A unique identifier for this
 #' [`continue_update_rollback`][cloudformation_continue_update_rollback]
 #' request. Specify this token if you plan to retry requests so that
@@ -324,9 +324,8 @@ cloudformation_continue_update_rollback <- function(StackName, RoleARN = NULL, R
 #' 
 #'     Some stack templates might include resources that can affect
 #'     permissions in your Amazon Web Services account; for example, by
-#'     creating new Identity and Access Management (IAM) users. For those
-#'     stacks, you must explicitly acknowledge this by specifying one of
-#'     these capabilities.
+#'     creating new IAM users. For those stacks, you must explicitly
+#'     acknowledge this by specifying one of these capabilities.
 #' 
 #'     The following IAM resources require you to specify either the
 #'     `CAPABILITY_IAM` or `CAPABILITY_NAMED_IAM` capability.
@@ -359,7 +358,7 @@ cloudformation_continue_update_rollback <- function(StackName, RoleARN = NULL, R
 #' 
 #'     For more information, see [Acknowledging IAM resources in
 #'     CloudFormation
-#'     templates](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/control-access-with-iam.html#capabilities).
+#'     templates](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/control-access-with-iam.html#using-iam-capabilities).
 #' 
 #' -   `CAPABILITY_AUTO_EXPAND`
 #' 
@@ -388,9 +387,9 @@ cloudformation_continue_update_rollback <- function(StackName, RoleARN = NULL, R
 #'     [`update_stack`][cloudformation_update_stack] action, and specifying
 #'     this capability.
 #' 
-#'     For more information about macros, see [Using CloudFormation macros
-#'     to perform custom processing on
-#'     templates](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-macros.html).
+#'     For more information about macros, see [Perform custom processing on
+#'     CloudFormation templates with template
+#'     macros](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-macros.html).
 #' 
 #' Only one of the `Capabilities` and `ResourceType` parameters can be
 #' specified.
@@ -400,22 +399,21 @@ cloudformation_continue_update_rollback <- function(StackName, RoleARN = NULL, R
 #' 
 #' If the list of resource types doesn't include a resource type that
 #' you're updating, the stack update fails. By default, CloudFormation
-#' grants permissions to all resource types. Identity and Access Management
-#' (IAM) uses this parameter for condition keys in IAM policies for
-#' CloudFormation. For more information, see [Controlling access with
-#' Identity and Access
+#' grants permissions to all resource types. IAM uses this parameter for
+#' condition keys in IAM policies for CloudFormation. For more information,
+#' see [Control access with Identity and Access
 #' Management](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/control-access-with-iam.html)
 #' in the *CloudFormation User Guide*.
 #' 
 #' Only one of the `Capabilities` and `ResourceType` parameters can be
 #' specified.
-#' @param RoleARN The Amazon Resource Name (ARN) of an Identity and Access Management
-#' (IAM) role that CloudFormation assumes when executing the change set.
-#' CloudFormation uses the role's credentials to make calls on your behalf.
-#' CloudFormation uses this role for all future operations on the stack.
-#' Provided that users have permission to operate on the stack,
-#' CloudFormation uses this role even if the users don't have permission to
-#' pass it. Ensure that the role grants least permission.
+#' @param RoleARN The Amazon Resource Name (ARN) of an IAM role that CloudFormation
+#' assumes when executing the change set. CloudFormation uses the role's
+#' credentials to make calls on your behalf. CloudFormation uses this role
+#' for all future operations on the stack. Provided that users have
+#' permission to operate on the stack, CloudFormation uses this role even
+#' if the users don't have permission to pass it. Ensure that the role
+#' grants least permission.
 #' 
 #' If you don't specify a value, CloudFormation uses the role that was
 #' previously associated with the stack. If no role is available,
@@ -424,9 +422,9 @@ cloudformation_continue_update_rollback <- function(StackName, RoleARN = NULL, R
 #' @param RollbackConfiguration The rollback triggers for CloudFormation to monitor during stack
 #' creation and updating operations, and for the specified monitoring
 #' period afterwards.
-#' @param NotificationARNs The Amazon Resource Names (ARNs) of Amazon Simple Notification Service
-#' (Amazon SNS) topics that CloudFormation associates with the stack. To
-#' remove all associated notification topics, specify an empty list.
+#' @param NotificationARNs The Amazon Resource Names (ARNs) of Amazon SNS topics that
+#' CloudFormation associates with the stack. To remove all associated
+#' notification topics, specify an empty list.
 #' @param Tags Key-value pairs to associate with this stack. CloudFormation also
 #' propagates these tags to resources in the stack. You can specify a
 #' maximum of 50 tags.
@@ -451,9 +449,8 @@ cloudformation_continue_update_rollback <- function(StackName, RoleARN = NULL, R
 #' 
 #' If you create a change set for a new stack, CloudFormation creates a
 #' stack with a unique stack ID, but no template or resources. The stack
-#' will be in the
-#' [REVIEW_IN_PROGRESS](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/service_code_examples.html#d0e11995)
-#' state until you execute the change set.
+#' will be in the `REVIEW_IN_PROGRESS` state until you execute the change
+#' set.
 #' 
 #' By default, CloudFormation specifies `UPDATE`. You can't use the
 #' `UPDATE` type to create a change set for a new stack or the `CREATE`
@@ -494,9 +491,9 @@ cloudformation_continue_update_rollback <- function(StackName, RoleARN = NULL, R
 #' type](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-name.html)
 #' in the *CloudFormation User Guide*. To import resources that do not
 #' accept custom names, such as EC2 instances, use the resource import
-#' feature instead. For more information, see [Bringing existing resources
-#' into CloudFormation
-#' management](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/resource-import.html)
+#' feature instead. For more information, see [Import Amazon Web Services
+#' resources into a CloudFormation stack with a resource
+#' import](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/resource-import.html)
 #' in the *CloudFormation User Guide*.
 #'
 #' @keywords internal
@@ -577,19 +574,14 @@ cloudformation_create_generated_template <- function(Resources = NULL, Generated
 #' and hyphens. It must start with an alphabetical character and can't be
 #' longer than 128 characters.
 #' @param TemplateBody Structure containing the template body with a minimum length of 1 byte
-#' and a maximum length of 51,200 bytes. For more information, go to
-#' [Template
-#' anatomy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
-#' in the *CloudFormation User Guide*.
+#' and a maximum length of 51,200 bytes.
 #' 
 #' Conditional: You must specify either the `TemplateBody` or the
 #' `TemplateURL` parameter, but not both.
 #' @param TemplateURL Location of file containing the template body. The URL must point to a
 #' template (max size: 460,800 bytes) that's located in an Amazon S3 bucket
-#' or a Systems Manager document. For more information, go to the [Template
-#' anatomy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
-#' in the *CloudFormation User Guide*. The location for an Amazon S3 bucket
-#' must start with `https://`.
+#' or a Systems Manager document. The location for an Amazon S3 bucket must
+#' start with `https://`.
 #' 
 #' Conditional: You must specify either the `TemplateBody` or the
 #' `TemplateURL` parameter, but not both.
@@ -607,9 +599,9 @@ cloudformation_create_generated_template <- function(Resources = NULL, Generated
 #' @param TimeoutInMinutes The amount of time that can pass before the stack status becomes
 #' `CREATE_FAILED`; if `DisableRollback` is not set or is set to `false`,
 #' the stack will be rolled back.
-#' @param NotificationARNs The Amazon Simple Notification Service (Amazon SNS) topic ARNs to
-#' publish stack related events. You can find your Amazon SNS topic ARNs
-#' using the Amazon SNS console or your Command Line Interface (CLI).
+#' @param NotificationARNs The Amazon SNS topic ARNs to publish stack related events. You can find
+#' your Amazon SNS topic ARNs using the Amazon SNS console or your Command
+#' Line Interface (CLI).
 #' @param Capabilities In some cases, you must explicitly acknowledge that your stack template
 #' contains certain capabilities in order for CloudFormation to create the
 #' stack.
@@ -618,9 +610,8 @@ cloudformation_create_generated_template <- function(Resources = NULL, Generated
 #' 
 #'     Some stack templates might include resources that can affect
 #'     permissions in your Amazon Web Services account; for example, by
-#'     creating new Identity and Access Management (IAM) users. For those
-#'     stacks, you must explicitly acknowledge this by specifying one of
-#'     these capabilities.
+#'     creating new IAM users. For those stacks, you must explicitly
+#'     acknowledge this by specifying one of these capabilities.
 #' 
 #'     The following IAM resources require you to specify either the
 #'     `CAPABILITY_IAM` or `CAPABILITY_NAMED_IAM` capability.
@@ -651,9 +642,9 @@ cloudformation_create_generated_template <- function(Resources = NULL, Generated
 #' 
 #'     -   [AWS::IAM::UserToGroupAddition](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-usertogroupaddition.html)
 #' 
-#'     For more information, see [Acknowledging IAM Resources in
+#'     For more information, see [Acknowledging IAM resources in
 #'     CloudFormation
-#'     Templates](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/control-access-with-iam.html#capabilities).
+#'     templates](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/control-access-with-iam.html#using-iam-capabilities).
 #' 
 #' -   `CAPABILITY_AUTO_EXPAND`
 #' 
@@ -684,9 +675,9 @@ cloudformation_create_generated_template <- function(Resources = NULL, Generated
 #'     can update the function operation without CloudFormation being
 #'     notified.
 #' 
-#'     For more information, see [Using CloudFormation macros to perform
-#'     custom processing on
-#'     templates](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-macros.html).
+#'     For more information, see [Perform custom processing on
+#'     CloudFormation templates with template
+#'     macros](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-macros.html).
 #' 
 #' Only one of the `Capabilities` and `ResourceType` parameters can be
 #' specified.
@@ -702,21 +693,20 @@ cloudformation_create_generated_template <- function(Resources = NULL, Generated
 #' 
 #' If the list of resource types doesn't include a resource that you're
 #' creating, the stack creation fails. By default, CloudFormation grants
-#' permissions to all resource types. Identity and Access Management (IAM)
-#' uses this parameter for CloudFormation-specific condition keys in IAM
-#' policies. For more information, see [Controlling Access with Identity
-#' and Access
+#' permissions to all resource types. IAM uses this parameter for
+#' CloudFormation-specific condition keys in IAM policies. For more
+#' information, see [Control access with Identity and Access
 #' Management](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/control-access-with-iam.html).
 #' 
 #' Only one of the `Capabilities` and `ResourceType` parameters can be
 #' specified.
-#' @param RoleARN The Amazon Resource Name (ARN) of an Identity and Access Management
-#' (IAM) role that CloudFormation assumes to create the stack.
-#' CloudFormation uses the role's credentials to make calls on your behalf.
-#' CloudFormation always uses this role for all future operations on the
-#' stack. Provided that users have permission to operate on the stack,
-#' CloudFormation uses this role even if the users don't have permission to
-#' pass it. Ensure that the role grants least privilege.
+#' @param RoleARN The Amazon Resource Name (ARN) of an IAM role that CloudFormation
+#' assumes to create the stack. CloudFormation uses the role's credentials
+#' to make calls on your behalf. CloudFormation always uses this role for
+#' all future operations on the stack. Provided that users have permission
+#' to operate on the stack, CloudFormation uses this role even if the users
+#' don't have permission to pass it. Ensure that the role grants least
+#' privilege.
 #' 
 #' If you don't specify a value, CloudFormation uses the role that was
 #' previously associated with the stack. If no role is available,
@@ -727,9 +717,9 @@ cloudformation_create_generated_template <- function(Resources = NULL, Generated
 #' `OnFailure` or `DisableRollback`, but not both.
 #' 
 #' Default: `ROLLBACK`
-#' @param StackPolicyBody Structure containing the stack policy body. For more information, go to
-#' [Prevent Updates to Stack
-#' Resources](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/protect-stack-resources.html)
+#' @param StackPolicyBody Structure containing the stack policy body. For more information, see
+#' [Prevent updates to stack
+#' resources](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/protect-stack-resources.html)
 #' in the *CloudFormation User Guide*. You can specify either the
 #' `StackPolicyBody` or the `StackPolicyURL` parameter, but not both.
 #' @param StackPolicyURL Location of a file containing the stack policy. The URL must point to a
@@ -763,8 +753,8 @@ cloudformation_create_generated_template <- function(Resources = NULL, Generated
 #' @param EnableTerminationProtection Whether to enable termination protection on the specified stack. If a
 #' user attempts to delete a stack with termination protection enabled, the
 #' operation fails and the stack remains unchanged. For more information,
-#' see [Protecting a Stack From Being
-#' Deleted](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-protect-stacks.html)
+#' see [Protect CloudFormation stacks from being
+#' deleted](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-protect-stacks.html)
 #' in the *CloudFormation User Guide*. Termination protection is
 #' deactivated on stacks by default.
 #' 
@@ -919,19 +909,13 @@ cloudformation_create_stack_instances <- function(StackSetName, Accounts = NULL,
 #' @param Description A description of the stack set. You can use the description to identify
 #' the stack set's purpose or other important information.
 #' @param TemplateBody The structure that contains the template body, with a minimum length of
-#' 1 byte and a maximum length of 51,200 bytes. For more information, see
-#' [Template
-#' Anatomy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
-#' in the *CloudFormation User Guide*.
+#' 1 byte and a maximum length of 51,200 bytes.
 #' 
 #' Conditional: You must specify either the TemplateBody or the TemplateURL
 #' parameter, but not both.
 #' @param TemplateURL The location of the file that contains the template body. The URL must
 #' point to a template (maximum size: 460,800 bytes) that's located in an
-#' Amazon S3 bucket or a Systems Manager document. For more information,
-#' see [Template
-#' Anatomy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
-#' in the *CloudFormation User Guide*.
+#' Amazon S3 bucket or a Systems Manager document.
 #' 
 #' Conditional: You must specify either the TemplateBody or the TemplateURL
 #' parameter, but not both.
@@ -946,9 +930,8 @@ cloudformation_create_stack_instances <- function(StackSetName, Accounts = NULL,
 #' 
 #'     Some stack templates might include resources that can affect
 #'     permissions in your Amazon Web Services account; for example, by
-#'     creating new Identity and Access Management (IAM) users. For those
-#'     stack sets, you must explicitly acknowledge this by specifying one
-#'     of these capabilities.
+#'     creating new IAM users. For those stack sets, you must explicitly
+#'     acknowledge this by specifying one of these capabilities.
 #' 
 #'     The following IAM resources require you to specify either the
 #'     `CAPABILITY_IAM` or `CAPABILITY_NAMED_IAM` capability.
@@ -979,9 +962,9 @@ cloudformation_create_stack_instances <- function(StackSetName, Accounts = NULL,
 #' 
 #'     -   [AWS::IAM::UserToGroupAddition](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-usertogroupaddition.html)
 #' 
-#'     For more information, see [Acknowledging IAM Resources in
+#'     For more information, see [Acknowledging IAM resources in
 #'     CloudFormation
-#'     Templates](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/control-access-with-iam.html#capabilities).
+#'     templates](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/control-access-with-iam.html#using-iam-capabilities).
 #' 
 #' -   `CAPABILITY_AUTO_EXPAND`
 #' 
@@ -1257,9 +1240,9 @@ cloudformation_delete_generated_template <- function(GeneratedTemplateName) {
 #' 
 #' Retaining resources is useful when you can't delete a resource, such as
 #' a non-empty S3 bucket, but you want to delete the stack.
-#' @param RoleARN The Amazon Resource Name (ARN) of an Identity and Access Management
-#' (IAM) role that CloudFormation assumes to delete the stack.
-#' CloudFormation uses the role's credentials to make calls on your behalf.
+#' @param RoleARN The Amazon Resource Name (ARN) of an IAM role that CloudFormation
+#' assumes to delete the stack. CloudFormation uses the role's credentials
+#' to make calls on your behalf.
 #' 
 #' If you don't specify a value, CloudFormation uses the role that was
 #' previously associated with the stack. If no role is available,
@@ -1491,7 +1474,7 @@ cloudformation_deregister_type <- function(Arn = NULL, Type = NULL, TypeName = N
 #' number of stacks that you can create in your account
 #'
 #' @description
-#' Retrieves your account's CloudFormation limits, such as the maximum number of stacks that you can create in your account. For more information about account limits, see [CloudFormation Quotas](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cloudformation-limits.html) in the *CloudFormation User Guide*.
+#' Retrieves your account's CloudFormation limits, such as the maximum number of stacks that you can create in your account. For more information about account limits, see [Understand CloudFormation quotas](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cloudformation-limits.html) in the *CloudFormation User Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudformation_describe_account_limits/](https://www.paws-r-sdk.com/docs/cloudformation_describe_account_limits/) for full documentation.
 #'
@@ -1524,7 +1507,7 @@ cloudformation_describe_account_limits <- function(NextToken = NULL) {
 #' CloudFormation will make if you execute the change set
 #'
 #' @description
-#' Returns the inputs for the change set and a list of changes that CloudFormation will make if you execute the change set. For more information, see [Updating Stacks Using Change Sets](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-changesets.html) in the *CloudFormation User Guide*.
+#' Returns the inputs for the change set and a list of changes that CloudFormation will make if you execute the change set. For more information, see [Update CloudFormation stacks using change sets](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-changesets.html) in the *CloudFormation User Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudformation_describe_change_set/](https://www.paws-r-sdk.com/docs/cloudformation_describe_change_set/) for full documentation.
 #'
@@ -1548,7 +1531,7 @@ cloudformation_describe_change_set <- function(ChangeSetName, StackName = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Changes", non_aggregate_keys = list("ChangeSetName", "ChangeSetId", "StackId", "StackName", "Description", "Parameters", "CreationTime", "ExecutionStatus", "Status", "StatusReason", "NotificationARNs", "RollbackConfiguration", "Capabilities", "Tags", "ParentChangeSetId", "IncludeNestedStacks", "RootChangeSetId", "OnStackFailure", "ImportExistingResources")),
     stream_api = FALSE
   )
   input <- .cloudformation$describe_change_set_input(ChangeSetName = ChangeSetName, StackName = StackName, NextToken = NextToken, IncludePropertyValues = IncludePropertyValues)
@@ -1749,7 +1732,7 @@ cloudformation_describe_resource_scan <- function(ResourceScanId) {
 #' Returns information about a stack drift detection operation
 #'
 #' @description
-#' Returns information about a stack drift detection operation. A stack drift detection operation detects whether a stack's actual configuration differs, or has *drifted*, from its expected configuration, as defined in the stack template and any values specified as template parameters. A stack is considered to have drifted if one or more of its resources have drifted. For more information about stack and resource drift, see [Detecting Unregulated Configuration Changes to Stacks and Resources](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift.html).
+#' Returns information about a stack drift detection operation. A stack drift detection operation detects whether a stack's actual configuration differs, or has *drifted*, from its expected configuration, as defined in the stack template and any values specified as template parameters. A stack is considered to have drifted if one or more of its resources have drifted. For more information about stack and resource drift, see [Detect unmanaged configuration changes to stacks and resources with drift detection](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift.html).
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudformation_describe_stack_drift_detection_status/](https://www.paws-r-sdk.com/docs/cloudformation_describe_stack_drift_detection_status/) for full documentation.
 #'
@@ -1785,7 +1768,7 @@ cloudformation_describe_stack_drift_detection_status <- function(StackDriftDetec
 #' chronological order
 #'
 #' @description
-#' Returns all stack related events for a specified stack in reverse chronological order. For more information about a stack's event history, see [CloudFormation stack creation events](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stack-resource-configuration-complete.html) in the *CloudFormation User Guide*.
+#' Returns all stack related events for a specified stack in reverse chronological order. For more information about a stack's event history, see [Understand CloudFormation stack creation events](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stack-resource-configuration-complete.html) in the *CloudFormation User Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudformation_describe_stack_events/](https://www.paws-r-sdk.com/docs/cloudformation_describe_stack_events/) for full documentation.
 #'
@@ -1955,7 +1938,7 @@ cloudformation_describe_stack_resource_drifts <- function(StackName, StackResour
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .cloudformation$describe_stack_resource_drifts_input(StackName = StackName, StackResourceDriftStatusFilters = StackResourceDriftStatusFilters, NextToken = NextToken, MaxResults = MaxResults)
@@ -2015,7 +1998,7 @@ cloudformation_describe_stack_resources <- function(StackName = NULL, LogicalRes
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "StackResources"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .cloudformation$describe_stack_resources_input(StackName = StackName, LogicalResourceId = LogicalResourceId, PhysicalResourceId = PhysicalResourceId)
@@ -2130,7 +2113,7 @@ cloudformation_describe_stack_set_operation <- function(StackSetName, OperationI
 #' specified, then it returns the description for all the stacks created
 #'
 #' @description
-#' Returns the description for the specified stack; if no stack name was specified, then it returns the description for all the stacks created. For more information about a stack's event history, see [CloudFormation stack creation events](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stack-resource-configuration-complete.html) in the *CloudFormation User Guide*.
+#' Returns the description for the specified stack; if no stack name was specified, then it returns the description for all the stacks created. For more information about a stack's event history, see [Understand CloudFormation stack creation events](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stack-resource-configuration-complete.html) in the *CloudFormation User Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudformation_describe_stacks/](https://www.paws-r-sdk.com/docs/cloudformation_describe_stacks/) for full documentation.
 #'
@@ -2277,7 +2260,7 @@ cloudformation_describe_type_registration <- function(RegistrationToken) {
 #' any values specified as template parameters
 #'
 #' @description
-#' Detects whether a stack's actual configuration differs, or has *drifted*, from its expected configuration, as defined in the stack template and any values specified as template parameters. For each resource in the stack that supports drift detection, CloudFormation compares the actual configuration of the resource with its expected template configuration. Only resource properties explicitly defined in the stack template are checked for drift. A stack is considered to have drifted if one or more of its resources differ from their expected template configurations. For more information, see [Detecting Unregulated Configuration Changes to Stacks and Resources](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift.html).
+#' Detects whether a stack's actual configuration differs, or has *drifted*, from its expected configuration, as defined in the stack template and any values specified as template parameters. For each resource in the stack that supports drift detection, CloudFormation compares the actual configuration of the resource with its expected template configuration. Only resource properties explicitly defined in the stack template are checked for drift. A stack is considered to have drifted if one or more of its resources differ from their expected template configurations. For more information, see [Detect unmanaged configuration changes to stacks and resources with drift detection](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift.html).
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudformation_detect_stack_drift/](https://www.paws-r-sdk.com/docs/cloudformation_detect_stack_drift/) for full documentation.
 #'
@@ -2311,7 +2294,7 @@ cloudformation_detect_stack_drift <- function(StackName, LogicalResourceIds = NU
 #' the stack template and any values specified as template parameters
 #'
 #' @description
-#' Returns information about whether a resource's actual configuration differs, or has *drifted*, from its expected configuration, as defined in the stack template and any values specified as template parameters. This information includes actual and expected property values for resources in which CloudFormation detects drift. Only resource properties explicitly defined in the stack template are checked for drift. For more information about stack and resource drift, see [Detecting Unregulated Configuration Changes to Stacks and Resources](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift.html).
+#' Returns information about whether a resource's actual configuration differs, or has *drifted*, from its expected configuration, as defined in the stack template and any values specified as template parameters. This information includes actual and expected property values for resources in which CloudFormation detects drift. Only resource properties explicitly defined in the stack template are checked for drift. For more information about stack and resource drift, see [Detect unmanaged configuration changes to stacks and resources with drift detection](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift.html).
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudformation_detect_stack_resource_drift/](https://www.paws-r-sdk.com/docs/cloudformation_detect_stack_resource_drift/) for full documentation.
 #'
@@ -2404,19 +2387,14 @@ cloudformation_detect_stack_set_drift <- function(StackSetName, OperationPrefere
 #' See [https://www.paws-r-sdk.com/docs/cloudformation_estimate_template_cost/](https://www.paws-r-sdk.com/docs/cloudformation_estimate_template_cost/) for full documentation.
 #'
 #' @param TemplateBody Structure containing the template body with a minimum length of 1 byte
-#' and a maximum length of 51,200 bytes. (For more information, go to
-#' [Template
-#' Anatomy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
-#' in the *CloudFormation User Guide*.)
+#' and a maximum length of 51,200 bytes.
 #' 
 #' Conditional: You must pass `TemplateBody` or `TemplateURL`. If both are
 #' passed, only `TemplateBody` is used.
 #' @param TemplateURL Location of file containing the template body. The URL must point to a
 #' template that's located in an Amazon S3 bucket or a Systems Manager
-#' document. For more information, go to [Template
-#' Anatomy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
-#' in the *CloudFormation User Guide*. The location for an Amazon S3 bucket
-#' must start with `https://`.
+#' document. The location for an Amazon S3 bucket must start with
+#' `https://`.
 #' 
 #' Conditional: You must pass `TemplateURL` or `TemplateBody`. If both are
 #' passed, only `TemplateBody` is used.
@@ -2641,20 +2619,14 @@ cloudformation_get_template <- function(StackName = NULL, ChangeSetName = NULL, 
 #' See [https://www.paws-r-sdk.com/docs/cloudformation_get_template_summary/](https://www.paws-r-sdk.com/docs/cloudformation_get_template_summary/) for full documentation.
 #'
 #' @param TemplateBody Structure containing the template body with a minimum length of 1 byte
-#' and a maximum length of 51,200 bytes. For more information about
-#' templates, see [Template
-#' anatomy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
-#' in the *CloudFormation User Guide*.
+#' and a maximum length of 51,200 bytes.
 #' 
 #' Conditional: You must specify only one of the following parameters:
 #' `StackName`, `StackSetName`, `TemplateBody`, or `TemplateURL`.
 #' @param TemplateURL Location of file containing the template body. The URL must point to a
 #' template (max size: 460,800 bytes) that's located in an Amazon S3 bucket
-#' or a Systems Manager document. For more information about templates, see
-#' [Template
-#' anatomy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
-#' in the *CloudFormation User Guide*. The location for an Amazon S3 bucket
-#' must start with `https://`.
+#' or a Systems Manager document. The location for an Amazon S3 bucket must
+#' start with `https://`.
 #' 
 #' Conditional: You must specify only one of the following parameters:
 #' `StackName`, `StackSetName`, `TemplateBody`, or `TemplateURL`.
@@ -2871,6 +2843,47 @@ cloudformation_list_generated_templates <- function(NextToken = NULL, MaxResults
   return(response)
 }
 .cloudformation$operations$list_generated_templates <- cloudformation_list_generated_templates
+
+#' Returns summaries of invoked Hooks when a change set or Cloud Control
+#' API operation target is provided
+#'
+#' @description
+#' Returns summaries of invoked Hooks when a change set or Cloud Control API operation target is provided.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudformation_list_hook_results/](https://www.paws-r-sdk.com/docs/cloudformation_list_hook_results/) for full documentation.
+#'
+#' @param TargetType &#91;required&#93; The type of operation being targeted by the Hook.
+#' @param TargetId &#91;required&#93; The logical ID of the target the operation is acting on by the Hook. If
+#' the target is a change set, it's the ARN of the change set.
+#' 
+#' If the target is a Cloud Control API operation, this will be the
+#' `HookRequestToken` returned by the Cloud Control API operation request.
+#' For more information on the `HookRequestToken`, see
+#' [ProgressEvent](https://docs.aws.amazon.com/cloudcontrolapi/latest/APIReference/API_ProgressEvent.html).
+#' @param NextToken A string that identifies the next page of events that you want to
+#' retrieve.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudformation_list_hook_results
+cloudformation_list_hook_results <- function(TargetType, TargetId, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListHookResults",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudformation$list_hook_results_input(TargetType = TargetType, TargetId = TargetId, NextToken = NextToken)
+  output <- .cloudformation$list_hook_results_output()
+  config <- get_config()
+  svc <- .cloudformation$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudformation$operations$list_hook_results <- cloudformation_list_hook_results
 
 #' Lists all stacks that are importing an exported output value
 #'
@@ -3154,7 +3167,7 @@ cloudformation_list_stack_instances <- function(StackSetName, NextToken = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Summaries"),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Summaries"),
     stream_api = FALSE
   )
   input <- .cloudformation$list_stack_instances_input(StackSetName = StackSetName, NextToken = NextToken, MaxResults = MaxResults, Filters = Filters, StackInstanceAccount = StackInstanceAccount, StackInstanceRegion = StackInstanceRegion, CallAs = CallAs)
@@ -3312,7 +3325,7 @@ cloudformation_list_stack_set_operation_results <- function(StackSetName, Operat
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Summaries"),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Summaries"),
     stream_api = FALSE
   )
   input <- .cloudformation$list_stack_set_operation_results_input(StackSetName = StackSetName, OperationId = OperationId, NextToken = NextToken, MaxResults = MaxResults, CallAs = CallAs, Filters = Filters)
@@ -3372,7 +3385,7 @@ cloudformation_list_stack_set_operations <- function(StackSetName, NextToken = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Summaries"),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Summaries"),
     stream_api = FALSE
   )
   input <- .cloudformation$list_stack_set_operations_input(StackSetName = StackSetName, NextToken = NextToken, MaxResults = MaxResults, CallAs = CallAs)
@@ -3433,7 +3446,7 @@ cloudformation_list_stack_sets <- function(NextToken = NULL, MaxResults = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Summaries"),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Summaries"),
     stream_api = FALSE
   )
   input <- .cloudformation$list_stack_sets_input(NextToken = NextToken, MaxResults = MaxResults, Status = Status, CallAs = CallAs)
@@ -3522,7 +3535,7 @@ cloudformation_list_type_registrations <- function(Type = NULL, TypeName = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .cloudformation$list_type_registrations_input(Type = Type, TypeName = TypeName, TypeArn = TypeArn, RegistrationStatusFilter = RegistrationStatusFilter, MaxResults = MaxResults, NextToken = NextToken)
@@ -3589,7 +3602,7 @@ cloudformation_list_type_versions <- function(Type = NULL, TypeName = NULL, Arn 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .cloudformation$list_type_versions_input(Type = Type, TypeName = TypeName, Arn = Arn, MaxResults = MaxResults, NextToken = NextToken, DeprecatedStatus = DeprecatedStatus, PublisherId = PublisherId)
@@ -3701,7 +3714,7 @@ cloudformation_list_types <- function(Visibility = NULL, ProvisioningType = NULL
 #' public extension in this Region
 #'
 #' @description
-#' Publishes the specified extension to the CloudFormation registry as a public extension in this Region. Public extensions are available for use by all CloudFormation users. For more information about publishing extensions, see [Publishing extensions to make them available for public use](https://docs.aws.amazon.com/cloudformation-cli/latest/userguide/publish-extension.html) in the *CloudFormation CLI User Guide*.
+#' Publishes the specified extension to the CloudFormation registry as a public extension in this Region. Public extensions are available for use by all CloudFormation users. For more information about publishing extensions, see [Publishing extensions to make them available for public use](https://docs.aws.amazon.com/cloudformation-cli/latest/userguide/publish-extension.html) in the *CloudFormation Command Line Interface (CLI) User Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudformation_publish_type/](https://www.paws-r-sdk.com/docs/cloudformation_publish_type/) for full documentation.
 #'
@@ -3816,10 +3829,10 @@ cloudformation_record_handler_progress <- function(BearerToken, OperationStatus,
 #' verification, the Amazon Resource Name (ARN) for your connection to that
 #' account.
 #' 
-#' For more information, see [Registering your account to publish
-#' CloudFormation
+#' For more information, see [Prerequisite: Registering your account to
+#' publish CloudFormation
 #' extensions](https://docs.aws.amazon.com/cloudformation-cli/latest/userguide/publish-extension.html#publish-extension-prereqs)
-#' in the *CloudFormation CLI User Guide*.
+#' in the *CloudFormation Command Line Interface (CLI) User Guide*.
 #'
 #' @keywords internal
 #'
@@ -3855,11 +3868,11 @@ cloudformation_register_publisher <- function(AcceptTermsAndConditions = NULL, C
 #' 
 #' We suggest that extension names adhere to the following patterns:
 #' 
-#' -   For resource types, *company_or_organization*::*service*::*type*.
+#' -   For resource types, `company_or_organization::service::type`.
 #' 
-#' -   For modules, *company_or_organization*::*service*::*type*::MODULE.
+#' -   For modules, `company_or_organization::service::type::MODULE`.
 #' 
-#' -   For hooks, *MyCompany*::*Testing*::*MyTestHook*.
+#' -   For hooks, `MyCompany::Testing::MyTestHook`.
 #' 
 #' The following organization namespaces are reserved and can't be used in
 #' your extension names:
@@ -3881,7 +3894,7 @@ cloudformation_register_publisher <- function(AcceptTermsAndConditions = NULL, C
 #' For information about generating a schema handler package for the
 #' extension you want to register, see
 #' [submit](https://docs.aws.amazon.com/cloudformation-cli/latest/userguide/resource-type-cli-submit.html)
-#' in the *CloudFormation CLI User Guide*.
+#' in the *CloudFormation Command Line Interface (CLI) User Guide*.
 #' 
 #' The user registering the extension must be able to access the package in
 #' the S3 bucket. That's, the user needs to have
@@ -3946,8 +3959,8 @@ cloudformation_register_type <- function(Type = NULL, TypeName, SchemaHandlerPac
 #' See [https://www.paws-r-sdk.com/docs/cloudformation_rollback_stack/](https://www.paws-r-sdk.com/docs/cloudformation_rollback_stack/) for full documentation.
 #'
 #' @param StackName &#91;required&#93; The name that's associated with the stack.
-#' @param RoleARN The Amazon Resource Name (ARN) of an Identity and Access Management role
-#' that CloudFormation assumes to rollback the stack.
+#' @param RoleARN The Amazon Resource Name (ARN) of an IAM role that CloudFormation
+#' assumes to rollback the stack.
 #' @param ClientRequestToken A unique identifier for this
 #' [`rollback_stack`][cloudformation_rollback_stack] request.
 #' @param RetainExceptOnCreate When set to `true`, newly created resources are deleted when the
@@ -3986,7 +3999,7 @@ cloudformation_rollback_stack <- function(StackName, RoleARN = NULL, ClientReque
 #' See [https://www.paws-r-sdk.com/docs/cloudformation_set_stack_policy/](https://www.paws-r-sdk.com/docs/cloudformation_set_stack_policy/) for full documentation.
 #'
 #' @param StackName &#91;required&#93; The name or unique stack ID that you want to associate a policy with.
-#' @param StackPolicyBody Structure containing the stack policy body. For more information, go to
+#' @param StackPolicyBody Structure containing the stack policy body. For more information, see
 #' [Prevent updates to stack
 #' resources](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/protect-stack-resources.html)
 #' in the *CloudFormation User Guide*. You can specify either the
@@ -4045,9 +4058,9 @@ cloudformation_set_stack_policy <- function(StackName, StackPolicyBody = NULL, S
 #' The configuration data must be formatted as JSON, and validate against
 #' the schema returned in the `ConfigurationSchema` response element of
 #' [`describe_type`][cloudformation_describe_type]. For more information,
-#' see [Defining account-level configuration data for an
+#' see [Defining the account-level configuration of an
 #' extension](https://docs.aws.amazon.com/cloudformation-cli/latest/userguide/resource-type-model.html#resource-type-howto-configuration)
-#' in the *CloudFormation CLI User Guide*.
+#' in the *CloudFormation Command Line Interface (CLI) User Guide*.
 #' @param ConfigurationAlias An alias by which to refer to this extension configuration data.
 #' 
 #' Conditional: Specifying a configuration alias is required when setting a
@@ -4295,7 +4308,7 @@ cloudformation_stop_stack_set_operation <- function(StackSetName, OperationId, C
 #' For more information, see [Actions, Resources, and Condition Keys for
 #' Amazon
 #' S3](https://docs.aws.amazon.com/service-authorization/latest/reference/list_amazons3.html)
-#' in the *Amazon Web Services Identity and Access Management User Guide*.
+#' in the *Identity and Access Management User Guide*.
 #'
 #' @keywords internal
 #'
@@ -4370,20 +4383,15 @@ cloudformation_update_generated_template <- function(GeneratedTemplateName, NewG
 #'
 #' @param StackName &#91;required&#93; The name or unique stack ID of the stack to update.
 #' @param TemplateBody Structure containing the template body with a minimum length of 1 byte
-#' and a maximum length of 51,200 bytes. (For more information, go to
-#' [Template
-#' Anatomy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
-#' in the *CloudFormation User Guide*.)
+#' and a maximum length of 51,200 bytes.
 #' 
 #' Conditional: You must specify only one of the following parameters:
 #' `TemplateBody`, `TemplateURL`, or set the `UsePreviousTemplate` to
 #' `true`.
 #' @param TemplateURL Location of file containing the template body. The URL must point to a
 #' template that's located in an Amazon S3 bucket or a Systems Manager
-#' document. For more information, go to [Template
-#' Anatomy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
-#' in the *CloudFormation User Guide*. The location for an Amazon S3 bucket
-#' must start with `https://`.
+#' document. The location for an Amazon S3 bucket must start with
+#' `https://`.
 #' 
 #' Conditional: You must specify only one of the following parameters:
 #' `TemplateBody`, `TemplateURL`, or set the `UsePreviousTemplate` to
@@ -4424,10 +4432,9 @@ cloudformation_update_generated_template <- function(GeneratedTemplateName, NewG
 #' -   `CAPABILITY_IAM` and `CAPABILITY_NAMED_IAM`
 #' 
 #'     Some stack templates might include resources that can affect
-#'     permissions in your Amazon Web Services account; for example, by
-#'     creating new Identity and Access Management (IAM) users. For those
-#'     stacks, you must explicitly acknowledge this by specifying one of
-#'     these capabilities.
+#'     permissions in your Amazon Web Services account, for example, by
+#'     creating new IAM users. For those stacks, you must explicitly
+#'     acknowledge this by specifying one of these capabilities.
 #' 
 #'     The following IAM resources require you to specify either the
 #'     `CAPABILITY_IAM` or `CAPABILITY_NAMED_IAM` capability.
@@ -4458,9 +4465,9 @@ cloudformation_update_generated_template <- function(GeneratedTemplateName, NewG
 #' 
 #'     -   [AWS::IAM::UserToGroupAddition](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-usertogroupaddition.html)
 #' 
-#'     For more information, see [Acknowledging IAM Resources in
+#'     For more information, see [Acknowledging IAM resources in
 #'     CloudFormation
-#'     Templates](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/control-access-with-iam.html#capabilities).
+#'     templates](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/control-access-with-iam.html#using-iam-capabilities).
 #' 
 #' -   `CAPABILITY_AUTO_EXPAND`
 #' 
@@ -4491,9 +4498,9 @@ cloudformation_update_generated_template <- function(GeneratedTemplateName, NewG
 #'     can update the function operation without CloudFormation being
 #'     notified.
 #' 
-#'     For more information, see [Using CloudFormation Macros to Perform
-#'     Custom Processing on
-#'     Templates](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-macros.html).
+#'     For more information, see [Perform custom processing on
+#'     CloudFormation templates with template
+#'     macros](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-macros.html).
 #' 
 #' Only one of the `Capabilities` and `ResourceType` parameters can be
 #' specified.
@@ -4503,21 +4510,20 @@ cloudformation_update_generated_template <- function(GeneratedTemplateName, NewG
 #' 
 #' If the list of resource types doesn't include a resource that you're
 #' updating, the stack update fails. By default, CloudFormation grants
-#' permissions to all resource types. Identity and Access Management (IAM)
-#' uses this parameter for CloudFormation-specific condition keys in IAM
-#' policies. For more information, see [Controlling Access with Identity
-#' and Access
+#' permissions to all resource types. IAM uses this parameter for
+#' CloudFormation-specific condition keys in IAM policies. For more
+#' information, see [Control access with Identity and Access
 #' Management](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/control-access-with-iam.html).
 #' 
 #' Only one of the `Capabilities` and `ResourceType` parameters can be
 #' specified.
-#' @param RoleARN The Amazon Resource Name (ARN) of an Identity and Access Management
-#' (IAM) role that CloudFormation assumes to update the stack.
-#' CloudFormation uses the role's credentials to make calls on your behalf.
-#' CloudFormation always uses this role for all future operations on the
-#' stack. Provided that users have permission to operate on the stack,
-#' CloudFormation uses this role even if the users don't have permission to
-#' pass it. Ensure that the role grants least privilege.
+#' @param RoleARN The Amazon Resource Name (ARN) of an IAM role that CloudFormation
+#' assumes to update the stack. CloudFormation uses the role's credentials
+#' to make calls on your behalf. CloudFormation always uses this role for
+#' all future operations on the stack. Provided that users have permission
+#' to operate on the stack, CloudFormation uses this role even if the users
+#' don't have permission to pass it. Ensure that the role grants least
+#' privilege.
 #' 
 #' If you don't specify a value, CloudFormation uses the role that was
 #' previously associated with the stack. If no role is available,
@@ -4730,19 +4736,13 @@ cloudformation_update_stack_instances <- function(StackSetName, Accounts = NULL,
 #' @param StackSetName &#91;required&#93; The name or unique ID of the stack set that you want to update.
 #' @param Description A brief description of updates that you are making.
 #' @param TemplateBody The structure that contains the template body, with a minimum length of
-#' 1 byte and a maximum length of 51,200 bytes. For more information, see
-#' [Template
-#' Anatomy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
-#' in the *CloudFormation User Guide*.
+#' 1 byte and a maximum length of 51,200 bytes.
 #' 
 #' Conditional: You must specify only one of the following parameters:
 #' `TemplateBody` or `TemplateURL`—or set `UsePreviousTemplate` to true.
 #' @param TemplateURL The location of the file that contains the template body. The URL must
 #' point to a template (maximum size: 460,800 bytes) that is located in an
-#' Amazon S3 bucket or a Systems Manager document. For more information,
-#' see [Template
-#' Anatomy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
-#' in the *CloudFormation User Guide*.
+#' Amazon S3 bucket or a Systems Manager document.
 #' 
 #' Conditional: You must specify only one of the following parameters:
 #' `TemplateBody` or `TemplateURL`—or set `UsePreviousTemplate` to true.
@@ -4759,10 +4759,9 @@ cloudformation_update_stack_instances <- function(StackSetName, Accounts = NULL,
 #' -   `CAPABILITY_IAM` and `CAPABILITY_NAMED_IAM`
 #' 
 #'     Some stack templates might include resources that can affect
-#'     permissions in your Amazon Web Services account; for example, by
-#'     creating new Identity and Access Management (IAM) users. For those
-#'     stacks sets, you must explicitly acknowledge this by specifying one
-#'     of these capabilities.
+#'     permissions in your Amazon Web Services account, for example, by
+#'     creating new IAM users. For those stacks sets, you must explicitly
+#'     acknowledge this by specifying one of these capabilities.
 #' 
 #'     The following IAM resources require you to specify either the
 #'     `CAPABILITY_IAM` or `CAPABILITY_NAMED_IAM` capability.
@@ -4793,9 +4792,9 @@ cloudformation_update_stack_instances <- function(StackSetName, Accounts = NULL,
 #' 
 #'     -   [AWS::IAM::UserToGroupAddition](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-usertogroupaddition.html)
 #' 
-#'     For more information, see [Acknowledging IAM Resources in
+#'     For more information, see [Acknowledging IAM resources in
 #'     CloudFormation
-#'     Templates](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/control-access-with-iam.html#capabilities).
+#'     templates](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/control-access-with-iam.html#using-iam-capabilities).
 #' 
 #' -   `CAPABILITY_AUTO_EXPAND`
 #' 
@@ -4998,7 +4997,7 @@ cloudformation_update_stack_set <- function(StackSetName, Description = NULL, Te
 #' Updates termination protection for the specified stack
 #'
 #' @description
-#' Updates termination protection for the specified stack. If a user attempts to delete a stack with termination protection enabled, the operation fails and the stack remains unchanged. For more information, see [Protecting a Stack From Being Deleted](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-protect-stacks.html) in the *CloudFormation User Guide*.
+#' Updates termination protection for the specified stack. If a user attempts to delete a stack with termination protection enabled, the operation fails and the stack remains unchanged. For more information, see [Protect a CloudFormation stack from being deleted](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-protect-stacks.html) in the *CloudFormation User Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudformation_update_termination_protection/](https://www.paws-r-sdk.com/docs/cloudformation_update_termination_protection/) for full documentation.
 #'
@@ -5036,20 +5035,14 @@ cloudformation_update_termination_protection <- function(EnableTerminationProtec
 #' See [https://www.paws-r-sdk.com/docs/cloudformation_validate_template/](https://www.paws-r-sdk.com/docs/cloudformation_validate_template/) for full documentation.
 #'
 #' @param TemplateBody Structure containing the template body with a minimum length of 1 byte
-#' and a maximum length of 51,200 bytes. For more information, go to
-#' [Template
-#' Anatomy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
-#' in the *CloudFormation User Guide*.
+#' and a maximum length of 51,200 bytes.
 #' 
 #' Conditional: You must pass `TemplateURL` or `TemplateBody`. If both are
 #' passed, only `TemplateBody` is used.
 #' @param TemplateURL Location of file containing the template body. The URL must point to a
 #' template (max size: 460,800 bytes) that is located in an Amazon S3
-#' bucket or a Systems Manager document. For more information, go to
-#' [Template
-#' Anatomy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
-#' in the *CloudFormation User Guide*. The location for an Amazon S3 bucket
-#' must start with `https://`.
+#' bucket or a Systems Manager document. The location for an Amazon S3
+#' bucket must start with `https://`.
 #' 
 #' Conditional: You must pass `TemplateURL` or `TemplateBody`. If both are
 #' passed, only `TemplateBody` is used.

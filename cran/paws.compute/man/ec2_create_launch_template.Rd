@@ -10,6 +10,7 @@ ec2_create_launch_template(
   LaunchTemplateName,
   VersionDescription = NULL,
   LaunchTemplateData,
+  Operator = NULL,
   TagSpecifications = NULL
 )
 }
@@ -29,6 +30,8 @@ Constraint: Maximum 128 ASCII characters.}
 \item{VersionDescription}{A description for the first version of the launch template.}
 
 \item{LaunchTemplateData}{[required] The information for the launch template.}
+
+\item{Operator}{Reserved for internal use.}
 
 \item{TagSpecifications}{The tags to apply to the launch template on creation. To tag the launch
 template, the resource type must be \code{launch-template}.

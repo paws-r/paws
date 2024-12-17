@@ -293,7 +293,7 @@ NULL
 
 .codeartifact$get_repository_endpoint_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(domain = structure(logical(0), tags = list(location = "querystring", locationName = "domain", type = "string")), domainOwner = structure(logical(0), tags = list(location = "querystring", locationName = "domain-owner", type = "string")), repository = structure(logical(0), tags = list(location = "querystring", locationName = "repository", type = "string")), format = structure(logical(0), tags = list(location = "querystring", locationName = "format", type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(domain = structure(logical(0), tags = list(location = "querystring", locationName = "domain", type = "string")), domainOwner = structure(logical(0), tags = list(location = "querystring", locationName = "domain-owner", type = "string")), repository = structure(logical(0), tags = list(location = "querystring", locationName = "repository", type = "string")), format = structure(logical(0), tags = list(location = "querystring", locationName = "format", type = "string")), endpointType = structure(logical(0), tags = list(location = "querystring", locationName = "endpointType", type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

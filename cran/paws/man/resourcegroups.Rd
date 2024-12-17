@@ -80,8 +80,8 @@ the following types of operations.
 \item Create, Read, Update, and Delete (CRUD) operations on resource
 groups and resource query entities
 \item Applying, editing, and removing tags from resource groups
-\item Resolving resource group member ARNs so they can be returned as
-search results
+\item Resolving resource group member Amazon resource names (ARN)s so they
+can be returned as search results
 \item Getting data about resources that are members of a group
 \item Searching Amazon Web Services resources based on a resource query
 }
@@ -125,19 +125,24 @@ search results
 \section{Operations}{
 
 \tabular{ll}{
+\link[paws.management:resourcegroups_cancel_tag_sync_task]{cancel_tag_sync_task} \tab Cancels the specified tag-sync task\cr
 \link[paws.management:resourcegroups_create_group]{create_group} \tab Creates a resource group with the specified name and description\cr
 \link[paws.management:resourcegroups_delete_group]{delete_group} \tab Deletes the specified resource group\cr
 \link[paws.management:resourcegroups_get_account_settings]{get_account_settings} \tab Retrieves the current status of optional features in Resource Groups\cr
 \link[paws.management:resourcegroups_get_group]{get_group} \tab Returns information about a specified resource group\cr
 \link[paws.management:resourcegroups_get_group_configuration]{get_group_configuration} \tab Retrieves the service configuration associated with the specified resource group\cr
 \link[paws.management:resourcegroups_get_group_query]{get_group_query} \tab Retrieves the resource query associated with the specified resource group\cr
-\link[paws.management:resourcegroups_get_tags]{get_tags} \tab Returns a list of tags that are associated with a resource group, specified by an ARN\cr
+\link[paws.management:resourcegroups_get_tags]{get_tags} \tab Returns a list of tags that are associated with a resource group, specified by an Amazon resource name (ARN)\cr
+\link[paws.management:resourcegroups_get_tag_sync_task]{get_tag_sync_task} \tab Returns information about a specified tag-sync task\cr
 \link[paws.management:resourcegroups_group_resources]{group_resources} \tab Adds the specified resources to the specified group\cr
-\link[paws.management:resourcegroups_list_group_resources]{list_group_resources} \tab Returns a list of ARNs of the resources that are members of a specified resource group\cr
+\link[paws.management:resourcegroups_list_grouping_statuses]{list_grouping_statuses} \tab Returns the status of the last grouping or ungrouping action for each resource in the specified application group\cr
+\link[paws.management:resourcegroups_list_group_resources]{list_group_resources} \tab Returns a list of Amazon resource names (ARNs) of the resources that are members of a specified resource group\cr
 \link[paws.management:resourcegroups_list_groups]{list_groups} \tab Returns a list of existing Resource Groups in your account\cr
+\link[paws.management:resourcegroups_list_tag_sync_tasks]{list_tag_sync_tasks} \tab Returns a list of tag-sync tasks\cr
 \link[paws.management:resourcegroups_put_group_configuration]{put_group_configuration} \tab Attaches a service configuration to the specified group\cr
 \link[paws.management:resourcegroups_search_resources]{search_resources} \tab Returns a list of Amazon Web Services resource identifiers that matches the specified query\cr
-\link[paws.management:resourcegroups_tag]{tag} \tab Adds tags to a resource group with the specified ARN\cr
+\link[paws.management:resourcegroups_start_tag_sync_task]{start_tag_sync_task} \tab Creates a new tag-sync task to onboard and sync resources tagged with a specific tag key-value pair to an application\cr
+\link[paws.management:resourcegroups_tag]{tag} \tab Adds tags to a resource group with the specified Amazon resource name (ARN)\cr
 \link[paws.management:resourcegroups_ungroup_resources]{ungroup_resources} \tab Removes the specified resources from the specified group\cr
 \link[paws.management:resourcegroups_untag]{untag} \tab Deletes tags from a specified resource group\cr
 \link[paws.management:resourcegroups_update_account_settings]{update_account_settings} \tab Turns on or turns off optional features in Resource Groups\cr
@@ -149,7 +154,7 @@ search results
 \examples{
 \dontrun{
 svc <- resourcegroups()
-svc$create_group(
+svc$cancel_tag_sync_task(
   Foo = 123
 )
 }

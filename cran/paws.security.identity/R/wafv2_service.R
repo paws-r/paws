@@ -15,13 +15,11 @@ NULL
 #' significant improvements.
 #' 
 #' If you used WAF prior to this release, you can't use this WAFV2 API to
-#' access any WAF resources that you created before. You can access your
-#' old rules, web ACLs, and other WAF resources only through the WAF
-#' Classic APIs. The WAF Classic APIs have retained the prior names,
-#' endpoints, and namespaces.
+#' access any WAF resources that you created before. WAF Classic support
+#' will end on September 30, 2025.
 #' 
-#' For information, including how to migrate your WAF resources to this
-#' version, see the [WAF Developer
+#' For information about WAF, including how to migrate your WAF Classic
+#' resources to this version, see the [WAF Developer
 #' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
 #' 
 #' WAF is a web application firewall that lets you monitor the HTTP and
@@ -57,24 +55,6 @@ NULL
 #' an API that's tailored to the programming language or platform that
 #' you're using. For more information, see [Amazon Web Services
 #' SDKs](https://aws.amazon.com/developer/tools/#SDKs).
-#' 
-#' We currently provide two versions of the WAF API: this API and the prior
-#' versions, the classic WAF APIs. This new API provides the same
-#' functionality as the older versions, with the following major
-#' improvements:
-#' 
-#' -   You use one API for both global and regional applications. Where you
-#'     need to distinguish the scope, you specify a `Scope` parameter and
-#'     set it to `CLOUDFRONT` or `REGIONAL`.
-#' 
-#' -   You can define a web ACL or rule group with a single call, and
-#'     update it with a single call. You define all rule specifications in
-#'     JSON format, and pass them to your rule group or web ACL calls.
-#' 
-#' -   The limits WAF places on the use of rules more closely reflects the
-#'     cost of running each type of rule. Rule groups include capacity
-#'     settings, so you know the maximum cost of a rule group when you use
-#'     it.
 #'
 #' @param
 #' config
@@ -167,7 +147,7 @@ NULL
 #'  \link[=wafv2_create_rule_group]{create_rule_group} \tab Creates a RuleGroup per the specifications provided\cr
 #'  \link[=wafv2_create_web_acl]{create_web_acl} \tab Creates a WebACL per the specifications provided\cr
 #'  \link[=wafv2_delete_api_key]{delete_api_key} \tab Deletes the specified API key\cr
-#'  \link[=wafv2_delete_firewall_manager_rule_groups]{delete_firewall_manager_rule_groups} \tab Deletes all rule groups that are managed by Firewall Manager for the specified web ACL\cr
+#'  \link[=wafv2_delete_firewall_manager_rule_groups]{delete_firewall_manager_rule_groups} \tab Deletes all rule groups that are managed by Firewall Manager from the specified WebACL\cr
 #'  \link[=wafv2_delete_ip_set]{delete_ip_set} \tab Deletes the specified IPSet\cr
 #'  \link[=wafv2_delete_logging_configuration]{delete_logging_configuration} \tab Deletes the LoggingConfiguration from the specified web ACL\cr
 #'  \link[=wafv2_delete_permission_policy]{delete_permission_policy} \tab Permanently deletes an IAM policy from the specified rule group\cr
@@ -244,7 +224,7 @@ wafv2 <- function(config = list(), credentials = list(), endpoint = NULL, region
 
 .wafv2$metadata <- list(
   service_name = "wafv2",
-  endpoints = list("*" = list(endpoint = "wafv2.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "wafv2.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "wafv2.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "wafv2.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "wafv2.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "wafv2.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "wafv2.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "wafv2.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "wafv2.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "wafv2.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "wafv2.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "wafv2.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "wafv2.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "WAFV2",
   api_version = "2019-07-29",
   signing_name = "wafv2",

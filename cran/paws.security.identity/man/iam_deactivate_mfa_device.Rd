@@ -5,10 +5,16 @@
 \title{Deactivates the specified MFA device and removes it from association
 with the user name for which it was originally enabled}
 \usage{
-iam_deactivate_mfa_device(UserName, SerialNumber)
+iam_deactivate_mfa_device(UserName = NULL, SerialNumber)
 }
 \arguments{
-\item{UserName}{[required] The name of the user whose MFA device you want to deactivate.
+\item{UserName}{The name of the user whose MFA device you want to deactivate.
+
+This parameter is optional. If no user name is included, it defaults to
+the principal making the request. When you make this request with root
+user credentials, you must use an
+\href{https://docs.aws.amazon.com/STS/latest/APIReference/API_AssumeRoot.html}{AssumeRoot}
+session to omit the user name.
 
 This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 consisting of upper and lowercase alphanumeric characters with no

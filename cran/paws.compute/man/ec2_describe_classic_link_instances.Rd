@@ -5,36 +5,39 @@
 \title{This action is deprecated}
 \usage{
 ec2_describe_classic_link_instances(
-  Filters = NULL,
   DryRun = NULL,
   InstanceIds = NULL,
-  MaxResults = NULL,
-  NextToken = NULL
+  Filters = NULL,
+  NextToken = NULL,
+  MaxResults = NULL
 )
 }
 \arguments{
-\item{Filters}{The filters.
-\itemize{
-\item \code{group-id} - The ID of a VPC security group that's associated with
-the instance.
-\item \code{instance-id} - The ID of the instance.
-\item \code{tag}:\<key\> - The key/value combination of a tag assigned to the
-resource. Use the tag key in the filter name and the tag value as
-the filter value. For example, to find all resources that have a tag
-with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner} for
-the filter name and \code{TeamA} for the filter value.
-\item \code{tag-key} - The key of a tag assigned to the resource. Use this
-filter to find all resources assigned a tag with a specific key,
-regardless of the tag value.
-\item \code{vpc-id} - The ID of the VPC to which the instance is linked.
-}}
-
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{InstanceIds}{The instance IDs. Must be instances linked to a VPC through ClassicLink.}
+
+\item{Filters}{The filters.
+\itemize{
+\item \code{group-id} - The ID of a VPC security group that's associated with
+the instance.
+\item \code{instance-id} - The ID of the instance.
+\item \code{tag} - The key/value combination of a tag assigned to the resource.
+Use the tag key in the filter name and the tag value as the filter
+value. For example, to find all resources that have a tag with the
+key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner} for the
+filter name and \code{TeamA} for the filter value.
+\item \code{tag-key} - The key of a tag assigned to the resource. Use this
+filter to find all resources assigned a tag with a specific key,
+regardless of the tag value.
+\item \code{vpc-id} - The ID of the VPC to which the instance is linked.
+}}
+
+\item{NextToken}{The token returned from a previous paginated request. Pagination
+continues from the end of the items returned by the previous request.}
 
 \item{MaxResults}{The maximum number of items to return for this request. To get the next
 page of items, make another request with the token returned in the
@@ -43,9 +46,6 @@ output. For more information, see
 
 Constraint: If the value is greater than 1000, we return only 1000
 items.}
-
-\item{NextToken}{The token returned from a previous paginated request. Pagination
-continues from the end of the items returned by the previous request.}
 }
 \description{
 This action is deprecated.

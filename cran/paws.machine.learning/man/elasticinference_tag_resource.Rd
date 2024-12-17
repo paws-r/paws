@@ -2,7 +2,7 @@
 % Please edit documentation in R/elasticinference_operations.R
 \name{elasticinference_tag_resource}
 \alias{elasticinference_tag_resource}
-\title{Adds the specified tags to an Elastic Inference Accelerator}
+\title{Amazon Elastic Inference is no longer available}
 \usage{
 elasticinference_tag_resource(resourceArn, tags)
 }
@@ -12,7 +12,7 @@ elasticinference_tag_resource(resourceArn, tags)
 \item{tags}{[required] The tags to add to the Elastic Inference Accelerator.}
 }
 \description{
-Adds the specified tags to an Elastic Inference Accelerator.
+Amazon Elastic Inference is no longer available.
 
 See \url{https://www.paws-r-sdk.com/docs/elasticinference_tag_resource/} for full documentation.
 }

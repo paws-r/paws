@@ -12,7 +12,8 @@ applicationautoscaling_put_scaling_policy(
   ScalableDimension,
   PolicyType = NULL,
   StepScalingPolicyConfiguration = NULL,
-  TargetTrackingScalingPolicyConfiguration = NULL
+  TargetTrackingScalingPolicyConfiguration = NULL,
+  PredictiveScalingPolicyConfiguration = NULL
 )
 }
 \arguments{
@@ -165,6 +166,8 @@ customized metrics.
 
 This parameter is required if you are creating a policy and the policy
 type is \code{TargetTrackingScaling}.}
+
+\item{PredictiveScalingPolicyConfiguration}{The configuration of the predictive scaling policy.}
 }
 \description{
 Creates or updates a scaling policy for an Application Auto Scaling scalable target.

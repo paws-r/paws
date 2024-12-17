@@ -13,7 +13,7 @@ cloudformation_set_stack_policy(
 \arguments{
 \item{StackName}{[required] The name or unique stack ID that you want to associate a policy with.}
 
-\item{StackPolicyBody}{Structure containing the stack policy body. For more information, go to
+\item{StackPolicyBody}{Structure containing the stack policy body. For more information, see
 \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/protect-stack-resources.html}{Prevent updates to stack resources}
 in the \emph{CloudFormation User Guide}. You can specify either the
 \code{StackPolicyBody} or the \code{StackPolicyURL} parameter, but not both.}

@@ -8,7 +8,9 @@ milliseconds, number of events scanned and matched, and query status}
 cloudtrail_describe_query(
   EventDataStore = NULL,
   QueryId = NULL,
-  QueryAlias = NULL
+  QueryAlias = NULL,
+  RefreshId = NULL,
+  EventDataStoreOwnerAccountId = NULL
 )
 }
 \arguments{
@@ -18,6 +20,10 @@ the specified query was run.}
 \item{QueryId}{The query ID.}
 
 \item{QueryAlias}{The alias that identifies a query template.}
+
+\item{RefreshId}{The ID of the dashboard refresh.}
+
+\item{EventDataStoreOwnerAccountId}{The account ID of the event data store owner.}
 }
 \description{
 Returns metadata about a query, including query run time in milliseconds, number of events scanned and matched, and query status. If the query results were delivered to an S3 bucket, the response also provides the S3 URI and the delivery status.

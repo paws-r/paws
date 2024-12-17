@@ -2,19 +2,17 @@
 % Please edit documentation in R/configservice_operations.R
 \name{configservice_put_delivery_channel}
 \alias{configservice_put_delivery_channel}
-\title{Creates a delivery channel object to deliver configuration information
-and other compliance information to an Amazon S3 bucket and Amazon SNS
-topic}
+\title{Creates or updates a delivery channel to deliver configuration
+information and other compliance information}
 \usage{
 configservice_put_delivery_channel(DeliveryChannel)
 }
 \arguments{
-\item{DeliveryChannel}{[required] The configuration delivery channel object that delivers the
-configuration information to an Amazon S3 bucket and to an Amazon SNS
-topic.}
+\item{DeliveryChannel}{[required] An object for the delivery channel. A delivery channel sends
+notifications and updated configuration states.}
 }
 \description{
-Creates a delivery channel object to deliver configuration information and other compliance information to an Amazon S3 bucket and Amazon SNS topic. For more information, see \href{https://docs.aws.amazon.com/config/latest/developerguide/notifications-for-AWS-Config.html}{Notifications that Config Sends to an Amazon SNS topic}.
+Creates or updates a delivery channel to deliver configuration information and other compliance information.
 
 See \url{https://www.paws-r-sdk.com/docs/configservice_put_delivery_channel/} for full documentation.
 }

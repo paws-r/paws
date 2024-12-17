@@ -103,41 +103,56 @@ directoryservice_accept_shared_directory <- function(SharedDirectoryId) {
 #' 
 #' Inbound:
 #' 
-#' -   Type: Custom UDP Rule, Protocol: UDP, Range: 88, Source: 0.0.0.0/0
+#' -   Type: Custom UDP Rule, Protocol: UDP, Range: 88, Source: Managed
+#'     Microsoft AD VPC IPv4 CIDR
 #' 
-#' -   Type: Custom UDP Rule, Protocol: UDP, Range: 123, Source: 0.0.0.0/0
+#' -   Type: Custom UDP Rule, Protocol: UDP, Range: 123, Source: Managed
+#'     Microsoft AD VPC IPv4 CIDR
 #' 
-#' -   Type: Custom UDP Rule, Protocol: UDP, Range: 138, Source: 0.0.0.0/0
+#' -   Type: Custom UDP Rule, Protocol: UDP, Range: 138, Source: Managed
+#'     Microsoft AD VPC IPv4 CIDR
 #' 
-#' -   Type: Custom UDP Rule, Protocol: UDP, Range: 389, Source: 0.0.0.0/0
+#' -   Type: Custom UDP Rule, Protocol: UDP, Range: 389, Source: Managed
+#'     Microsoft AD VPC IPv4 CIDR
 #' 
-#' -   Type: Custom UDP Rule, Protocol: UDP, Range: 464, Source: 0.0.0.0/0
+#' -   Type: Custom UDP Rule, Protocol: UDP, Range: 464, Source: Managed
+#'     Microsoft AD VPC IPv4 CIDR
 #' 
-#' -   Type: Custom UDP Rule, Protocol: UDP, Range: 445, Source: 0.0.0.0/0
+#' -   Type: Custom UDP Rule, Protocol: UDP, Range: 445, Source: Managed
+#'     Microsoft AD VPC IPv4 CIDR
 #' 
-#' -   Type: Custom TCP Rule, Protocol: TCP, Range: 88, Source: 0.0.0.0/0
+#' -   Type: Custom TCP Rule, Protocol: TCP, Range: 88, Source: Managed
+#'     Microsoft AD VPC IPv4 CIDR
 #' 
-#' -   Type: Custom TCP Rule, Protocol: TCP, Range: 135, Source: 0.0.0.0/0
+#' -   Type: Custom TCP Rule, Protocol: TCP, Range: 135, Source: Managed
+#'     Microsoft AD VPC IPv4 CIDR
 #' 
-#' -   Type: Custom TCP Rule, Protocol: TCP, Range: 445, Source: 0.0.0.0/0
+#' -   Type: Custom TCP Rule, Protocol: TCP, Range: 445, Source: Managed
+#'     Microsoft AD VPC IPv4 CIDR
 #' 
-#' -   Type: Custom TCP Rule, Protocol: TCP, Range: 464, Source: 0.0.0.0/0
+#' -   Type: Custom TCP Rule, Protocol: TCP, Range: 464, Source: Managed
+#'     Microsoft AD VPC IPv4 CIDR
 #' 
-#' -   Type: Custom TCP Rule, Protocol: TCP, Range: 636, Source: 0.0.0.0/0
+#' -   Type: Custom TCP Rule, Protocol: TCP, Range: 636, Source: Managed
+#'     Microsoft AD VPC IPv4 CIDR
 #' 
 #' -   Type: Custom TCP Rule, Protocol: TCP, Range: 1024-65535, Source:
-#'     0.0.0.0/0
+#'     Managed Microsoft AD VPC IPv4 CIDR
 #' 
 #' -   Type: Custom TCP Rule, Protocol: TCP, Range: 3268-33269, Source:
-#'     0.0.0.0/0
+#'     Managed Microsoft AD VPC IPv4 CIDR
 #' 
-#' -   Type: DNS (UDP), Protocol: UDP, Range: 53, Source: 0.0.0.0/0
+#' -   Type: DNS (UDP), Protocol: UDP, Range: 53, Source: Managed Microsoft
+#'     AD VPC IPv4 CIDR
 #' 
-#' -   Type: DNS (TCP), Protocol: TCP, Range: 53, Source: 0.0.0.0/0
+#' -   Type: DNS (TCP), Protocol: TCP, Range: 53, Source: Managed Microsoft
+#'     AD VPC IPv4 CIDR
 #' 
-#' -   Type: LDAP, Protocol: TCP, Range: 389, Source: 0.0.0.0/0
+#' -   Type: LDAP, Protocol: TCP, Range: 389, Source: Managed Microsoft AD
+#'     VPC IPv4 CIDR
 #' 
-#' -   Type: All ICMP, Protocol: All, Range: N/A, Source: 0.0.0.0/0
+#' -   Type: All ICMP, Protocol: All, Range: N/A, Source: Managed Microsoft
+#'     AD VPC IPv4 CIDR
 #' 
 #' Outbound:
 #' 
@@ -678,7 +693,7 @@ directoryservice_create_conditional_forwarder <- function(DirectoryId, RemoteDom
 #' 
 #' For additional information about how Active Directory passwords are
 #' enforced, see [Password must meet complexity
-#' requirements](https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-10/security/threat-protection/security-policy-settings/password-must-meet-complexity-requirements)
+#' requirements](https://learn.microsoft.com/en-us/windows/security/threat-protection/security-policy-settings/password-must-meet-complexity-requirements)
 #' on the Microsoft website.
 #' @param Description A description for the directory.
 #' @param Size &#91;required&#93; The size of the directory.
@@ -967,8 +982,8 @@ directoryservice_create_snapshot <- function(DirectoryId, Name = NULL) {
 #' establish the trust relationship.
 #' @param RemoteDomainName &#91;required&#93; The Fully Qualified Domain Name (FQDN) of the external domain for which
 #' to create the trust relationship.
-#' @param TrustPassword &#91;required&#93; The trust password. The must be the same password that was used when
-#' creating the trust relationship on the external domain.
+#' @param TrustPassword &#91;required&#93; The trust password. The trust password must be the same password that
+#' was used when creating the trust relationship on the external domain.
 #' @param TrustDirection &#91;required&#93; The direction of the trust relationship.
 #' @param TrustType The trust relationship type. `Forest` is the default.
 #' @param ConditionalForwarderIpAddrs The IP addresses of the remote DNS server associated with
@@ -1638,7 +1653,7 @@ directoryservice_describe_conditional_forwarders <- function(DirectoryId, Remote
 #'       DnsIpAddrs = list(
 #'         "string"
 #'       ),
-#'       Stage = "Requested"|"Creating"|"Created"|"Active"|"Inoperable"|"Impaired"|"Restoring"|"RestoreFailed"|"Deleting"|"Deleted"|"Failed",
+#'       Stage = "Requested"|"Creating"|"Created"|"Active"|"Inoperable"|"Impaired"|"Restoring"|"RestoreFailed"|"Deleting"|"Deleted"|"Failed"|"Updating",
 #'       ShareStatus = "Shared"|"PendingAcceptance"|"Rejected"|"Rejecting"|"RejectFailed"|"Sharing"|"ShareFailed"|"Deleted"|"Deleting",
 #'       ShareMethod = "ORGANIZATIONS"|"HANDSHAKE",
 #'       ShareNotes = "string",
@@ -1767,6 +1782,57 @@ directoryservice_describe_directories <- function(DirectoryIds = NULL, NextToken
 }
 .directoryservice$operations$describe_directories <- directoryservice_describe_directories
 
+#' Obtains status of directory data access enablement through the Directory
+#' Service Data API for the specified directory
+#'
+#' @description
+#' Obtains status of directory data access enablement through the Directory
+#' Service Data API for the specified directory.
+#'
+#' @usage
+#' directoryservice_describe_directory_data_access(DirectoryId)
+#'
+#' @param DirectoryId &#91;required&#93; The directory identifier.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DataAccessStatus = "Disabled"|"Disabling"|"Enabled"|"Enabling"|"Failed"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_directory_data_access(
+#'   DirectoryId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname directoryservice_describe_directory_data_access
+#'
+#' @aliases directoryservice_describe_directory_data_access
+directoryservice_describe_directory_data_access <- function(DirectoryId) {
+  op <- new_operation(
+    name = "DescribeDirectoryDataAccess",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .directoryservice$describe_directory_data_access_input(DirectoryId = DirectoryId)
+  output <- .directoryservice$describe_directory_data_access_output()
+  config <- get_config()
+  svc <- .directoryservice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.directoryservice$operations$describe_directory_data_access <- directoryservice_describe_directory_data_access
+
 #' Provides information about any domain controllers in your directory
 #'
 #' @description
@@ -1797,7 +1863,7 @@ directoryservice_describe_directories <- function(DirectoryIds = NULL, NextToken
 #'       VpcId = "string",
 #'       SubnetId = "string",
 #'       AvailabilityZone = "string",
-#'       Status = "Creating"|"Active"|"Impaired"|"Restoring"|"Deleting"|"Deleted"|"Failed",
+#'       Status = "Creating"|"Active"|"Impaired"|"Restoring"|"Deleting"|"Deleted"|"Failed"|"Updating",
 #'       StatusReason = "string",
 #'       LaunchTime = as.POSIXct(
 #'         "2015-01-01"
@@ -1834,7 +1900,7 @@ directoryservice_describe_domain_controllers <- function(DirectoryId, DomainCont
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken"),
+    paginator = list(result_key = "DomainControllers", output_token = "NextToken", input_token = "NextToken", limit_key = "Limit"),
     stream_api = FALSE
   )
   input <- .directoryservice$describe_domain_controllers_input(DirectoryId = DirectoryId, DomainControllerIds = DomainControllerIds, NextToken = NextToken, Limit = Limit)
@@ -2012,7 +2078,7 @@ directoryservice_describe_ldaps_settings <- function(DirectoryId, Type = NULL, N
 #'       DirectoryId = "string",
 #'       RegionName = "string",
 #'       RegionType = "Primary"|"Additional",
-#'       Status = "Requested"|"Creating"|"Created"|"Active"|"Inoperable"|"Impaired"|"Restoring"|"RestoreFailed"|"Deleting"|"Deleted"|"Failed",
+#'       Status = "Requested"|"Creating"|"Created"|"Active"|"Inoperable"|"Impaired"|"Restoring"|"RestoreFailed"|"Deleting"|"Deleted"|"Failed"|"Updating",
 #'       VpcSettings = list(
 #'         VpcId = "string",
 #'         SubnetIds = list(
@@ -2496,8 +2562,8 @@ directoryservice_describe_update_directory <- function(DirectoryId, UpdateType, 
 #' directoryservice_disable_client_authentication(DirectoryId, Type)
 #'
 #' @param DirectoryId &#91;required&#93; The identifier of the directory
-#' @param Type &#91;required&#93; The type of client authentication to disable. Currently, only the
-#' parameter, `SmartCard` is supported.
+#' @param Type &#91;required&#93; The type of client authentication to disable. Currently the only
+#' parameter `"SmartCard"` is supported.
 #'
 #' @return
 #' An empty list.
@@ -2533,6 +2599,52 @@ directoryservice_disable_client_authentication <- function(DirectoryId, Type) {
   return(response)
 }
 .directoryservice$operations$disable_client_authentication <- directoryservice_disable_client_authentication
+
+#' Deactivates access to directory data via the Directory Service Data API
+#' for the specified directory
+#'
+#' @description
+#' Deactivates access to directory data via the Directory Service Data API
+#' for the specified directory.
+#'
+#' @usage
+#' directoryservice_disable_directory_data_access(DirectoryId)
+#'
+#' @param DirectoryId &#91;required&#93; The directory identifier.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$disable_directory_data_access(
+#'   DirectoryId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname directoryservice_disable_directory_data_access
+#'
+#' @aliases directoryservice_disable_directory_data_access
+directoryservice_disable_directory_data_access <- function(DirectoryId) {
+  op <- new_operation(
+    name = "DisableDirectoryDataAccess",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .directoryservice$disable_directory_data_access_input(DirectoryId = DirectoryId)
+  output <- .directoryservice$disable_directory_data_access_output()
+  config <- get_config()
+  svc <- .directoryservice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.directoryservice$operations$disable_directory_data_access <- directoryservice_disable_directory_data_access
 
 #' Deactivates LDAP secure calls for the specified directory
 #'
@@ -2737,6 +2849,52 @@ directoryservice_enable_client_authentication <- function(DirectoryId, Type) {
   return(response)
 }
 .directoryservice$operations$enable_client_authentication <- directoryservice_enable_client_authentication
+
+#' Enables access to directory data via the Directory Service Data API for
+#' the specified directory
+#'
+#' @description
+#' Enables access to directory data via the Directory Service Data API for
+#' the specified directory.
+#'
+#' @usage
+#' directoryservice_enable_directory_data_access(DirectoryId)
+#'
+#' @param DirectoryId &#91;required&#93; The directory identifier.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$enable_directory_data_access(
+#'   DirectoryId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname directoryservice_enable_directory_data_access
+#'
+#' @aliases directoryservice_enable_directory_data_access
+directoryservice_enable_directory_data_access <- function(DirectoryId) {
+  op <- new_operation(
+    name = "EnableDirectoryDataAccess",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .directoryservice$enable_directory_data_access_input(DirectoryId = DirectoryId)
+  output <- .directoryservice$enable_directory_data_access_output()
+  config <- get_config()
+  svc <- .directoryservice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.directoryservice$operations$enable_directory_data_access <- directoryservice_enable_directory_data_access
 
 #' Activates the switch for the specific directory to always use LDAP
 #' secure calls
@@ -3674,7 +3832,8 @@ directoryservice_remove_tags_from_resource <- function(ResourceId, TagKeys) {
 #'
 #' @description
 #' Resets the password for any user in your Managed Microsoft AD or Simple
-#' AD directory.
+#' AD directory. Disabled users will become enabled and can be
+#' authenticated following the API call.
 #' 
 #' You can reset the password for any user in your directory with the
 #' following exceptions:

@@ -132,9 +132,12 @@ NULL
 #'  \link[=resourceexplorer_get_account_level_service_configuration]{get_account_level_service_configuration} \tab Retrieves the status of your account's Amazon Web Services service access, and validates the service linked role required to access the multi-account search feature\cr
 #'  \link[=resourceexplorer_get_default_view]{get_default_view} \tab Retrieves the Amazon Resource Name (ARN) of the view that is the default for the Amazon Web Services Region in which you call this operation\cr
 #'  \link[=resourceexplorer_get_index]{get_index} \tab Retrieves details about the Amazon Web Services Resource Explorer index in the Amazon Web Services Region in which you invoked the operation\cr
+#'  \link[=resourceexplorer_get_managed_view]{get_managed_view} \tab Retrieves details of the specified Amazon Web Services-managed view\cr
 #'  \link[=resourceexplorer_get_view]{get_view} \tab Retrieves details of the specified view\cr
 #'  \link[=resourceexplorer_list_indexes]{list_indexes} \tab Retrieves a list of all of the indexes in Amazon Web Services Regions that are currently collecting resource information for Amazon Web Services Resource Explorer\cr
 #'  \link[=resourceexplorer_list_indexes_for_members]{list_indexes_for_members} \tab Retrieves a list of a member's indexes in all Amazon Web Services Regions that are currently collecting resource information for Amazon Web Services Resource Explorer\cr
+#'  \link[=resourceexplorer_list_managed_views]{list_managed_views} \tab Lists the Amazon resource names (ARNs) of the Amazon Web Services-managed views available in the Amazon Web Services Region in which you call this operation\cr
+#'  \link[=resourceexplorer_list_resources]{list_resources} \tab Returns a list of resources and their details that match the specified criteria\cr
 #'  \link[=resourceexplorer_list_supported_resource_types]{list_supported_resource_types} \tab Retrieves a list of all resource types currently supported by Amazon Web Services Resource Explorer\cr
 #'  \link[=resourceexplorer_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags that are attached to the specified resource\cr
 #'  \link[=resourceexplorer_list_views]{list_views} \tab Lists the Amazon resource names (ARNs) of the views available in the Amazon Web Services Region in which you call this operation\cr
@@ -174,7 +177,7 @@ resourceexplorer <- function(config = list(), credentials = list(), endpoint = N
 
 .resourceexplorer$metadata <- list(
   service_name = "resourceexplorer",
-  endpoints = list("*" = list(endpoint = "resource-explorer-2.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "resource-explorer-2.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "resource-explorer-2.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "resource-explorer-2.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "resource-explorer-2.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "resource-explorer-2.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "resource-explorer-2.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "resource-explorer-2.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "resource-explorer-2.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "resource-explorer-2.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "resource-explorer-2.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "resource-explorer-2.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "resource-explorer-2.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Resource Explorer 2",
   api_version = "2022-07-28",
   signing_name = "resource-explorer-2",

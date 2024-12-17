@@ -259,7 +259,7 @@ fsx_cancel_data_repository_task <- function(TaskId) {
 #'         Message = "string"
 #'       ),
 #'       StorageCapacity = 123,
-#'       StorageType = "SSD"|"HDD",
+#'       StorageType = "SSD"|"HDD"|"INTELLIGENT_TIERING",
 #'       VpcId = "string",
 #'       SubnetIds = list(
 #'         "string"
@@ -348,7 +348,8 @@ fsx_cancel_data_repository_task <- function(TaskId) {
 #'         MetadataConfiguration = list(
 #'           Iops = 123,
 #'           Mode = "AUTOMATIC"|"USER_PROVISIONED"
-#'         )
+#'         ),
+#'         EfaEnabled = TRUE|FALSE
 #'       ),
 #'       AdministrativeActions = list(
 #'         list(
@@ -548,7 +549,11 @@ fsx_cancel_data_repository_task <- function(TaskId) {
 #'         RouteTableIds = list(
 #'           "string"
 #'         ),
-#'         EndpointIpAddress = "string"
+#'         EndpointIpAddress = "string",
+#'         ReadCacheConfiguration = list(
+#'           SizingMode = "NO_CACHE"|"USER_PROVISIONED"|"PROPORTIONAL_TO_THROUGHPUT_CAPACITY",
+#'           SizeGiB = 123
+#'         )
 #'       )
 #'     ),
 #'     DirectoryInformation = list(
@@ -648,7 +653,7 @@ fsx_cancel_data_repository_task <- function(TaskId) {
 #'               Message = "string"
 #'             ),
 #'             StorageCapacity = 123,
-#'             StorageType = "SSD"|"HDD",
+#'             StorageType = "SSD"|"HDD"|"INTELLIGENT_TIERING",
 #'             VpcId = "string",
 #'             SubnetIds = list(
 #'               "string"
@@ -737,7 +742,8 @@ fsx_cancel_data_repository_task <- function(TaskId) {
 #'               MetadataConfiguration = list(
 #'                 Iops = 123,
 #'                 Mode = "AUTOMATIC"|"USER_PROVISIONED"
-#'               )
+#'               ),
+#'               EfaEnabled = TRUE|FALSE
 #'             ),
 #'             AdministrativeActions = list(),
 #'             OntapConfiguration = list(
@@ -792,7 +798,11 @@ fsx_cancel_data_repository_task <- function(TaskId) {
 #'               RouteTableIds = list(
 #'                 "string"
 #'               ),
-#'               EndpointIpAddress = "string"
+#'               EndpointIpAddress = "string",
+#'               ReadCacheConfiguration = list(
+#'                 SizingMode = "NO_CACHE"|"USER_PROVISIONED"|"PROPORTIONAL_TO_THROUGHPUT_CAPACITY",
+#'                 SizeGiB = 123
+#'               )
 #'             )
 #'           ),
 #'           FailureDetails = list(
@@ -863,7 +873,8 @@ fsx_cancel_data_repository_task <- function(TaskId) {
 #'         DestinationSnapshot = "string",
 #'         CopyStrategy = "CLONE"|"FULL_COPY"|"INCREMENTAL_COPY"
 #'       )
-#'     )
+#'     ),
+#'     SizeInBytes = 123
 #'   )
 #' )
 #' ```
@@ -988,7 +999,7 @@ fsx_copy_backup <- function(ClientRequestToken = NULL, SourceBackupId, SourceReg
 #'           Message = "string"
 #'         ),
 #'         StorageCapacity = 123,
-#'         StorageType = "SSD"|"HDD",
+#'         StorageType = "SSD"|"HDD"|"INTELLIGENT_TIERING",
 #'         VpcId = "string",
 #'         SubnetIds = list(
 #'           "string"
@@ -1077,7 +1088,8 @@ fsx_copy_backup <- function(ClientRequestToken = NULL, SourceBackupId, SourceReg
 #'           MetadataConfiguration = list(
 #'             Iops = 123,
 #'             Mode = "AUTOMATIC"|"USER_PROVISIONED"
-#'           )
+#'           ),
+#'           EfaEnabled = TRUE|FALSE
 #'         ),
 #'         AdministrativeActions = list(),
 #'         OntapConfiguration = list(
@@ -1132,7 +1144,11 @@ fsx_copy_backup <- function(ClientRequestToken = NULL, SourceBackupId, SourceReg
 #'           RouteTableIds = list(
 #'             "string"
 #'           ),
-#'           EndpointIpAddress = "string"
+#'           EndpointIpAddress = "string",
+#'           ReadCacheConfiguration = list(
+#'             SizingMode = "NO_CACHE"|"USER_PROVISIONED"|"PROPORTIONAL_TO_THROUGHPUT_CAPACITY",
+#'             SizeGiB = 123
+#'           )
 #'         )
 #'       ),
 #'       FailureDetails = list(
@@ -1422,7 +1438,7 @@ fsx_copy_snapshot_and_update_volume <- function(ClientRequestToken = NULL, Volum
 #'         Message = "string"
 #'       ),
 #'       StorageCapacity = 123,
-#'       StorageType = "SSD"|"HDD",
+#'       StorageType = "SSD"|"HDD"|"INTELLIGENT_TIERING",
 #'       VpcId = "string",
 #'       SubnetIds = list(
 #'         "string"
@@ -1511,7 +1527,8 @@ fsx_copy_snapshot_and_update_volume <- function(ClientRequestToken = NULL, Volum
 #'         MetadataConfiguration = list(
 #'           Iops = 123,
 #'           Mode = "AUTOMATIC"|"USER_PROVISIONED"
-#'         )
+#'         ),
+#'         EfaEnabled = TRUE|FALSE
 #'       ),
 #'       AdministrativeActions = list(
 #'         list(
@@ -1711,7 +1728,11 @@ fsx_copy_snapshot_and_update_volume <- function(ClientRequestToken = NULL, Volum
 #'         RouteTableIds = list(
 #'           "string"
 #'         ),
-#'         EndpointIpAddress = "string"
+#'         EndpointIpAddress = "string",
+#'         ReadCacheConfiguration = list(
+#'           SizingMode = "NO_CACHE"|"USER_PROVISIONED"|"PROPORTIONAL_TO_THROUGHPUT_CAPACITY",
+#'           SizeGiB = 123
+#'         )
 #'       )
 #'     ),
 #'     DirectoryInformation = list(
@@ -1811,7 +1832,7 @@ fsx_copy_snapshot_and_update_volume <- function(ClientRequestToken = NULL, Volum
 #'               Message = "string"
 #'             ),
 #'             StorageCapacity = 123,
-#'             StorageType = "SSD"|"HDD",
+#'             StorageType = "SSD"|"HDD"|"INTELLIGENT_TIERING",
 #'             VpcId = "string",
 #'             SubnetIds = list(
 #'               "string"
@@ -1900,7 +1921,8 @@ fsx_copy_snapshot_and_update_volume <- function(ClientRequestToken = NULL, Volum
 #'               MetadataConfiguration = list(
 #'                 Iops = 123,
 #'                 Mode = "AUTOMATIC"|"USER_PROVISIONED"
-#'               )
+#'               ),
+#'               EfaEnabled = TRUE|FALSE
 #'             ),
 #'             AdministrativeActions = list(),
 #'             OntapConfiguration = list(
@@ -1955,7 +1977,11 @@ fsx_copy_snapshot_and_update_volume <- function(ClientRequestToken = NULL, Volum
 #'               RouteTableIds = list(
 #'                 "string"
 #'               ),
-#'               EndpointIpAddress = "string"
+#'               EndpointIpAddress = "string",
+#'               ReadCacheConfiguration = list(
+#'                 SizingMode = "NO_CACHE"|"USER_PROVISIONED"|"PROPORTIONAL_TO_THROUGHPUT_CAPACITY",
+#'                 SizeGiB = 123
+#'               )
 #'             )
 #'           ),
 #'           FailureDetails = list(
@@ -2026,7 +2052,8 @@ fsx_copy_snapshot_and_update_volume <- function(ClientRequestToken = NULL, Volum
 #'         DestinationSnapshot = "string",
 #'         CopyStrategy = "CLONE"|"FULL_COPY"|"INCREMENTAL_COPY"
 #'       )
-#'     )
+#'     ),
+#'     SizeInBytes = 123
 #'   )
 #' )
 #' ```
@@ -2132,8 +2159,9 @@ fsx_create_backup <- function(FileSystemId = NULL, ClientRequestToken = NULL, Ta
 #' associated with a file system.
 #' @param DataRepositoryPath &#91;required&#93; The path to the Amazon S3 data repository that will be linked to the
 #' file system. The path can be an S3 bucket or prefix in the format
-#' `s3://myBucket/myPrefix/`. This path specifies where in the S3 data
-#' repository files will be imported from or exported to.
+#' `s3://bucket-name/prefix/` (where `prefix` is optional). This path
+#' specifies where in the S3 data repository files will be imported from or
+#' exported to.
 #' @param BatchImportMetaDataOnCreate Set to `true` to run an import data repository task to import metadata
 #' from the data repository to the file system after the data repository
 #' association is created. Default is `false`.
@@ -2328,7 +2356,7 @@ fsx_create_data_repository_association <- function(FileSystemId, FileSystemPath 
 #' -   For import tasks, the list contains paths in the Amazon S3 bucket
 #'     from which POSIX metadata changes are imported to the FSx for Lustre
 #'     file system. The path can be an S3 bucket or prefix in the format
-#'     `s3://myBucket/myPrefix` (where `myPrefix` is optional).
+#'     `s3://bucket-name/prefix` (where `prefix` is optional).
 #' 
 #' -   For release tasks, the list contains directory or file paths on the
 #'     FSx for Lustre file system from which to release exported files. If
@@ -2729,7 +2757,7 @@ fsx_create_file_cache <- function(ClientRequestToken = NULL, FileCacheType, File
 #' SDK.
 #' @param FileSystemType &#91;required&#93; The type of Amazon FSx file system to create. Valid values are
 #' `WINDOWS`, `LUSTRE`, `ONTAP`, and `OPENZFS`.
-#' @param StorageCapacity &#91;required&#93; Sets the storage capacity of the file system that you're creating, in
+#' @param StorageCapacity Sets the storage capacity of the file system that you're creating, in
 #' gibibytes (GiB).
 #' 
 #' **FSx for Lustre file systems** - The amount of storage capacity that
@@ -2762,8 +2790,8 @@ fsx_create_file_cache <- function(ClientRequestToken = NULL, FileCacheType, File
 #' -   For SSD storage, valid values are 32 GiB-65,536 GiB (64 TiB).
 #' 
 #' -   For HDD storage, valid values are 2000 GiB-65,536 GiB (64 TiB).
-#' @param StorageType Sets the storage type for the file system that you're creating. Valid
-#' values are `SSD` and `HDD`.
+#' @param StorageType Sets the storage class for the file system that you're creating. Valid
+#' values are `SSD`, `HDD`, and `INTELLIGENT_TIERING`.
 #' 
 #' -   Set to `SSD` to use solid state drive storage. SSD is supported on
 #'     all Windows, Lustre, ONTAP, and OpenZFS deployment types.
@@ -2772,11 +2800,17 @@ fsx_create_file_cache <- function(ClientRequestToken = NULL, FileCacheType, File
 #'     `SINGLE_AZ_2` and `MULTI_AZ_1` Windows file system deployment types,
 #'     and on `PERSISTENT_1` Lustre file system deployment types.
 #' 
+#' -   Set to `INTELLIGENT_TIERING` to use fully elastic,
+#'     intelligently-tiered storage. Intelligent-Tiering is only available
+#'     for OpenZFS file systems with the Multi-AZ deployment type.
+#' 
 #' Default value is `SSD`. For more information, see [Storage type
 #' options](https://docs.aws.amazon.com/fsx/latest/WindowsGuide/managing-storage-configuration.html#optimize-storage-costs)
-#' in the *FSx for Windows File Server User Guide* and [Multiple storage
+#' in the *FSx for Windows File Server User Guide*, [Multiple storage
 #' options](https://docs.aws.amazon.com/fsx/latest/LustreGuide/what-is.html#storage-options)
-#' in the *FSx for Lustre User Guide*.
+#' in the *FSx for Lustre User Guide*, and [Working with
+#' Intelligent-Tiering](https://docs.aws.amazon.com/fsx/latest/OpenZFSGuide/performance-intelligent-tiering.html)
+#' in the *Amazon FSx for OpenZFS User Guide*.
 #' @param SubnetIds &#91;required&#93; Specifies the IDs of the subnets that the file system will be accessible
 #' from. For Windows and ONTAP `MULTI_AZ_1` deployment types,provide
 #' exactly two subnet IDs, one for the preferred file server and one for
@@ -2844,7 +2878,7 @@ fsx_create_file_cache <- function(ClientRequestToken = NULL, FileCacheType, File
 #'       Message = "string"
 #'     ),
 #'     StorageCapacity = 123,
-#'     StorageType = "SSD"|"HDD",
+#'     StorageType = "SSD"|"HDD"|"INTELLIGENT_TIERING",
 #'     VpcId = "string",
 #'     SubnetIds = list(
 #'       "string"
@@ -2933,7 +2967,8 @@ fsx_create_file_cache <- function(ClientRequestToken = NULL, FileCacheType, File
 #'       MetadataConfiguration = list(
 #'         Iops = 123,
 #'         Mode = "AUTOMATIC"|"USER_PROVISIONED"
-#'       )
+#'       ),
+#'       EfaEnabled = TRUE|FALSE
 #'     ),
 #'     AdministrativeActions = list(
 #'       list(
@@ -3133,7 +3168,11 @@ fsx_create_file_cache <- function(ClientRequestToken = NULL, FileCacheType, File
 #'       RouteTableIds = list(
 #'         "string"
 #'       ),
-#'       EndpointIpAddress = "string"
+#'       EndpointIpAddress = "string",
+#'       ReadCacheConfiguration = list(
+#'         SizingMode = "NO_CACHE"|"USER_PROVISIONED"|"PROPORTIONAL_TO_THROUGHPUT_CAPACITY",
+#'         SizeGiB = 123
+#'       )
 #'     )
 #'   )
 #' )
@@ -3145,7 +3184,7 @@ fsx_create_file_cache <- function(ClientRequestToken = NULL, FileCacheType, File
 #'   ClientRequestToken = "string",
 #'   FileSystemType = "WINDOWS"|"LUSTRE"|"ONTAP"|"OPENZFS",
 #'   StorageCapacity = 123,
-#'   StorageType = "SSD"|"HDD",
+#'   StorageType = "SSD"|"HDD"|"INTELLIGENT_TIERING",
 #'   SubnetIds = list(
 #'     "string"
 #'   ),
@@ -3204,6 +3243,7 @@ fsx_create_file_cache <- function(ClientRequestToken = NULL, FileCacheType, File
 #'     CopyTagsToBackups = TRUE|FALSE,
 #'     DriveCacheType = "NONE"|"READ",
 #'     DataCompressionType = "NONE"|"LZ4",
+#'     EfaEnabled = TRUE|FALSE,
 #'     LogConfiguration = list(
 #'       Level = "DISABLED"|"WARN_ONLY"|"ERROR_ONLY"|"WARN_ERROR",
 #'       Destination = "string"
@@ -3280,6 +3320,10 @@ fsx_create_file_cache <- function(ClientRequestToken = NULL, FileCacheType, File
 #'     EndpointIpAddressRange = "string",
 #'     RouteTableIds = list(
 #'       "string"
+#'     ),
+#'     ReadCacheConfiguration = list(
+#'       SizingMode = "NO_CACHE"|"USER_PROVISIONED"|"PROPORTIONAL_TO_THROUGHPUT_CAPACITY",
+#'       SizeGiB = 123
 #'     )
 #'   )
 #' )
@@ -3325,7 +3369,7 @@ fsx_create_file_cache <- function(ClientRequestToken = NULL, FileCacheType, File
 #' @rdname fsx_create_file_system
 #'
 #' @aliases fsx_create_file_system
-fsx_create_file_system <- function(ClientRequestToken = NULL, FileSystemType, StorageCapacity, StorageType = NULL, SubnetIds, SecurityGroupIds = NULL, Tags = NULL, KmsKeyId = NULL, WindowsConfiguration = NULL, LustreConfiguration = NULL, OntapConfiguration = NULL, FileSystemTypeVersion = NULL, OpenZFSConfiguration = NULL) {
+fsx_create_file_system <- function(ClientRequestToken = NULL, FileSystemType, StorageCapacity = NULL, StorageType = NULL, SubnetIds, SecurityGroupIds = NULL, Tags = NULL, KmsKeyId = NULL, WindowsConfiguration = NULL, LustreConfiguration = NULL, OntapConfiguration = NULL, FileSystemTypeVersion = NULL, OpenZFSConfiguration = NULL) {
   op <- new_operation(
     name = "CreateFileSystem",
     http_method = "POST",
@@ -3471,7 +3515,7 @@ fsx_create_file_system <- function(ClientRequestToken = NULL, FileSystemType, St
 #'       Message = "string"
 #'     ),
 #'     StorageCapacity = 123,
-#'     StorageType = "SSD"|"HDD",
+#'     StorageType = "SSD"|"HDD"|"INTELLIGENT_TIERING",
 #'     VpcId = "string",
 #'     SubnetIds = list(
 #'       "string"
@@ -3560,7 +3604,8 @@ fsx_create_file_system <- function(ClientRequestToken = NULL, FileSystemType, St
 #'       MetadataConfiguration = list(
 #'         Iops = 123,
 #'         Mode = "AUTOMATIC"|"USER_PROVISIONED"
-#'       )
+#'       ),
+#'       EfaEnabled = TRUE|FALSE
 #'     ),
 #'     AdministrativeActions = list(
 #'       list(
@@ -3760,7 +3805,11 @@ fsx_create_file_system <- function(ClientRequestToken = NULL, FileSystemType, St
 #'       RouteTableIds = list(
 #'         "string"
 #'       ),
-#'       EndpointIpAddress = "string"
+#'       EndpointIpAddress = "string",
+#'       ReadCacheConfiguration = list(
+#'         SizingMode = "NO_CACHE"|"USER_PROVISIONED"|"PROPORTIONAL_TO_THROUGHPUT_CAPACITY",
+#'         SizeGiB = 123
+#'       )
 #'     )
 #'   )
 #' )
@@ -3828,6 +3877,7 @@ fsx_create_file_system <- function(ClientRequestToken = NULL, FileSystemType, St
 #'     CopyTagsToBackups = TRUE|FALSE,
 #'     DriveCacheType = "NONE"|"READ",
 #'     DataCompressionType = "NONE"|"LZ4",
+#'     EfaEnabled = TRUE|FALSE,
 #'     LogConfiguration = list(
 #'       Level = "DISABLED"|"WARN_ONLY"|"ERROR_ONLY"|"WARN_ERROR",
 #'       Destination = "string"
@@ -3843,7 +3893,7 @@ fsx_create_file_system <- function(ClientRequestToken = NULL, FileSystemType, St
 #'       Mode = "AUTOMATIC"|"USER_PROVISIONED"
 #'     )
 #'   ),
-#'   StorageType = "SSD"|"HDD",
+#'   StorageType = "SSD"|"HDD"|"INTELLIGENT_TIERING",
 #'   KmsKeyId = "string",
 #'   FileSystemTypeVersion = "string",
 #'   OpenZFSConfiguration = list(
@@ -3887,6 +3937,10 @@ fsx_create_file_system <- function(ClientRequestToken = NULL, FileSystemType, St
 #'     EndpointIpAddressRange = "string",
 #'     RouteTableIds = list(
 #'       "string"
+#'     ),
+#'     ReadCacheConfiguration = list(
+#'       SizingMode = "NO_CACHE"|"USER_PROVISIONED"|"PROPORTIONAL_TO_THROUGHPUT_CAPACITY",
+#'       SizeGiB = 123
 #'     )
 #'   ),
 #'   StorageCapacity = 123
@@ -4025,7 +4079,7 @@ fsx_create_file_system_from_backup <- function(BackupId, ClientRequestToken = NU
 #'             Message = "string"
 #'           ),
 #'           StorageCapacity = 123,
-#'           StorageType = "SSD"|"HDD",
+#'           StorageType = "SSD"|"HDD"|"INTELLIGENT_TIERING",
 #'           VpcId = "string",
 #'           SubnetIds = list(
 #'             "string"
@@ -4114,7 +4168,8 @@ fsx_create_file_system_from_backup <- function(BackupId, ClientRequestToken = NU
 #'             MetadataConfiguration = list(
 #'               Iops = 123,
 #'               Mode = "AUTOMATIC"|"USER_PROVISIONED"
-#'             )
+#'             ),
+#'             EfaEnabled = TRUE|FALSE
 #'           ),
 #'           AdministrativeActions = list(),
 #'           OntapConfiguration = list(
@@ -4169,7 +4224,11 @@ fsx_create_file_system_from_backup <- function(BackupId, ClientRequestToken = NU
 #'             RouteTableIds = list(
 #'               "string"
 #'             ),
-#'             EndpointIpAddress = "string"
+#'             EndpointIpAddress = "string",
+#'             ReadCacheConfiguration = list(
+#'               SizingMode = "NO_CACHE"|"USER_PROVISIONED"|"PROPORTIONAL_TO_THROUGHPUT_CAPACITY",
+#'               SizeGiB = 123
+#'             )
 #'           )
 #'         ),
 #'         FailureDetails = list(
@@ -4603,7 +4662,7 @@ fsx_create_storage_virtual_machine <- function(ActiveDirectoryConfiguration = NU
 #'             Message = "string"
 #'           ),
 #'           StorageCapacity = 123,
-#'           StorageType = "SSD"|"HDD",
+#'           StorageType = "SSD"|"HDD"|"INTELLIGENT_TIERING",
 #'           VpcId = "string",
 #'           SubnetIds = list(
 #'             "string"
@@ -4692,7 +4751,8 @@ fsx_create_storage_virtual_machine <- function(ActiveDirectoryConfiguration = NU
 #'             MetadataConfiguration = list(
 #'               Iops = 123,
 #'               Mode = "AUTOMATIC"|"USER_PROVISIONED"
-#'             )
+#'             ),
+#'             EfaEnabled = TRUE|FALSE
 #'           ),
 #'           AdministrativeActions = list(),
 #'           OntapConfiguration = list(
@@ -4747,7 +4807,11 @@ fsx_create_storage_virtual_machine <- function(ActiveDirectoryConfiguration = NU
 #'             RouteTableIds = list(
 #'               "string"
 #'             ),
-#'             EndpointIpAddress = "string"
+#'             EndpointIpAddress = "string",
+#'             ReadCacheConfiguration = list(
+#'               SizingMode = "NO_CACHE"|"USER_PROVISIONED"|"PROPORTIONAL_TO_THROUGHPUT_CAPACITY",
+#'               SizeGiB = 123
+#'             )
 #'           )
 #'         ),
 #'         FailureDetails = list(
@@ -5048,7 +5112,7 @@ fsx_create_volume <- function(ClientRequestToken = NULL, VolumeType, Name, Ontap
 #'             Message = "string"
 #'           ),
 #'           StorageCapacity = 123,
-#'           StorageType = "SSD"|"HDD",
+#'           StorageType = "SSD"|"HDD"|"INTELLIGENT_TIERING",
 #'           VpcId = "string",
 #'           SubnetIds = list(
 #'             "string"
@@ -5137,7 +5201,8 @@ fsx_create_volume <- function(ClientRequestToken = NULL, VolumeType, Name, Ontap
 #'             MetadataConfiguration = list(
 #'               Iops = 123,
 #'               Mode = "AUTOMATIC"|"USER_PROVISIONED"
-#'             )
+#'             ),
+#'             EfaEnabled = TRUE|FALSE
 #'           ),
 #'           AdministrativeActions = list(),
 #'           OntapConfiguration = list(
@@ -5192,7 +5257,11 @@ fsx_create_volume <- function(ClientRequestToken = NULL, VolumeType, Name, Ontap
 #'             RouteTableIds = list(
 #'               "string"
 #'             ),
-#'             EndpointIpAddress = "string"
+#'             EndpointIpAddress = "string",
+#'             ReadCacheConfiguration = list(
+#'               SizingMode = "NO_CACHE"|"USER_PROVISIONED"|"PROPORTIONAL_TO_THROUGHPUT_CAPACITY",
+#'               SizeGiB = 123
+#'             )
 #'           )
 #'         ),
 #'         FailureDetails = list(
@@ -6002,7 +6071,7 @@ fsx_delete_volume <- function(ClientRequestToken = NULL, VolumeId, OntapConfigur
 #'           Message = "string"
 #'         ),
 #'         StorageCapacity = 123,
-#'         StorageType = "SSD"|"HDD",
+#'         StorageType = "SSD"|"HDD"|"INTELLIGENT_TIERING",
 #'         VpcId = "string",
 #'         SubnetIds = list(
 #'           "string"
@@ -6091,7 +6160,8 @@ fsx_delete_volume <- function(ClientRequestToken = NULL, VolumeId, OntapConfigur
 #'           MetadataConfiguration = list(
 #'             Iops = 123,
 #'             Mode = "AUTOMATIC"|"USER_PROVISIONED"
-#'           )
+#'           ),
+#'           EfaEnabled = TRUE|FALSE
 #'         ),
 #'         AdministrativeActions = list(
 #'           list(
@@ -6291,7 +6361,11 @@ fsx_delete_volume <- function(ClientRequestToken = NULL, VolumeId, OntapConfigur
 #'           RouteTableIds = list(
 #'             "string"
 #'           ),
-#'           EndpointIpAddress = "string"
+#'           EndpointIpAddress = "string",
+#'           ReadCacheConfiguration = list(
+#'             SizingMode = "NO_CACHE"|"USER_PROVISIONED"|"PROPORTIONAL_TO_THROUGHPUT_CAPACITY",
+#'             SizeGiB = 123
+#'           )
 #'         )
 #'       ),
 #'       DirectoryInformation = list(
@@ -6391,7 +6465,7 @@ fsx_delete_volume <- function(ClientRequestToken = NULL, VolumeId, OntapConfigur
 #'                 Message = "string"
 #'               ),
 #'               StorageCapacity = 123,
-#'               StorageType = "SSD"|"HDD",
+#'               StorageType = "SSD"|"HDD"|"INTELLIGENT_TIERING",
 #'               VpcId = "string",
 #'               SubnetIds = list(
 #'                 "string"
@@ -6480,7 +6554,8 @@ fsx_delete_volume <- function(ClientRequestToken = NULL, VolumeId, OntapConfigur
 #'                 MetadataConfiguration = list(
 #'                   Iops = 123,
 #'                   Mode = "AUTOMATIC"|"USER_PROVISIONED"
-#'                 )
+#'                 ),
+#'                 EfaEnabled = TRUE|FALSE
 #'               ),
 #'               AdministrativeActions = list(),
 #'               OntapConfiguration = list(
@@ -6535,7 +6610,11 @@ fsx_delete_volume <- function(ClientRequestToken = NULL, VolumeId, OntapConfigur
 #'                 RouteTableIds = list(
 #'                   "string"
 #'                 ),
-#'                 EndpointIpAddress = "string"
+#'                 EndpointIpAddress = "string",
+#'                 ReadCacheConfiguration = list(
+#'                   SizingMode = "NO_CACHE"|"USER_PROVISIONED"|"PROPORTIONAL_TO_THROUGHPUT_CAPACITY",
+#'                   SizeGiB = 123
+#'                 )
 #'               )
 #'             ),
 #'             FailureDetails = list(
@@ -6606,7 +6685,8 @@ fsx_delete_volume <- function(ClientRequestToken = NULL, VolumeId, OntapConfigur
 #'           DestinationSnapshot = "string",
 #'           CopyStrategy = "CLONE"|"FULL_COPY"|"INCREMENTAL_COPY"
 #'         )
-#'       )
+#'       ),
+#'       SizeInBytes = 123
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -6649,7 +6729,7 @@ fsx_describe_backups <- function(BackupIds = NULL, Filters = NULL, MaxResults = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Backups"),
     stream_api = FALSE
   )
   input <- .fsx$describe_backups_input(BackupIds = BackupIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
@@ -6793,7 +6873,7 @@ fsx_describe_data_repository_associations <- function(AssociationIds = NULL, Fil
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .fsx$describe_data_repository_associations_input(AssociationIds = AssociationIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
@@ -6931,7 +7011,7 @@ fsx_describe_data_repository_tasks <- function(TaskIds = NULL, Filters = NULL, M
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .fsx$describe_data_repository_tasks_input(TaskIds = TaskIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
@@ -7056,7 +7136,7 @@ fsx_describe_file_caches <- function(FileCacheIds = NULL, MaxResults = NULL, Nex
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .fsx$describe_file_caches_input(FileCacheIds = FileCacheIds, MaxResults = MaxResults, NextToken = NextToken)
@@ -7130,7 +7210,7 @@ fsx_describe_file_system_aliases <- function(ClientRequestToken = NULL, FileSyst
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .fsx$describe_file_system_aliases_input(ClientRequestToken = ClientRequestToken, FileSystemId = FileSystemId, MaxResults = MaxResults, NextToken = NextToken)
@@ -7208,7 +7288,7 @@ fsx_describe_file_system_aliases <- function(ClientRequestToken = NULL, FileSyst
 #'         Message = "string"
 #'       ),
 #'       StorageCapacity = 123,
-#'       StorageType = "SSD"|"HDD",
+#'       StorageType = "SSD"|"HDD"|"INTELLIGENT_TIERING",
 #'       VpcId = "string",
 #'       SubnetIds = list(
 #'         "string"
@@ -7297,7 +7377,8 @@ fsx_describe_file_system_aliases <- function(ClientRequestToken = NULL, FileSyst
 #'         MetadataConfiguration = list(
 #'           Iops = 123,
 #'           Mode = "AUTOMATIC"|"USER_PROVISIONED"
-#'         )
+#'         ),
+#'         EfaEnabled = TRUE|FALSE
 #'       ),
 #'       AdministrativeActions = list(
 #'         list(
@@ -7497,7 +7578,11 @@ fsx_describe_file_system_aliases <- function(ClientRequestToken = NULL, FileSyst
 #'         RouteTableIds = list(
 #'           "string"
 #'         ),
-#'         EndpointIpAddress = "string"
+#'         EndpointIpAddress = "string",
+#'         ReadCacheConfiguration = list(
+#'           SizingMode = "NO_CACHE"|"USER_PROVISIONED"|"PROPORTIONAL_TO_THROUGHPUT_CAPACITY",
+#'           SizeGiB = 123
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -7534,7 +7619,7 @@ fsx_describe_file_systems <- function(FileSystemIds = NULL, MaxResults = NULL, N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "FileSystems"),
     stream_api = FALSE
   )
   input <- .fsx$describe_file_systems_input(FileSystemIds = FileSystemIds, MaxResults = MaxResults, NextToken = NextToken)
@@ -7691,7 +7776,7 @@ fsx_describe_shared_vpc_configuration <- function() {
 #'               Message = "string"
 #'             ),
 #'             StorageCapacity = 123,
-#'             StorageType = "SSD"|"HDD",
+#'             StorageType = "SSD"|"HDD"|"INTELLIGENT_TIERING",
 #'             VpcId = "string",
 #'             SubnetIds = list(
 #'               "string"
@@ -7780,7 +7865,8 @@ fsx_describe_shared_vpc_configuration <- function() {
 #'               MetadataConfiguration = list(
 #'                 Iops = 123,
 #'                 Mode = "AUTOMATIC"|"USER_PROVISIONED"
-#'               )
+#'               ),
+#'               EfaEnabled = TRUE|FALSE
 #'             ),
 #'             AdministrativeActions = list(),
 #'             OntapConfiguration = list(
@@ -7835,7 +7921,11 @@ fsx_describe_shared_vpc_configuration <- function() {
 #'               RouteTableIds = list(
 #'                 "string"
 #'               ),
-#'               EndpointIpAddress = "string"
+#'               EndpointIpAddress = "string",
+#'               ReadCacheConfiguration = list(
+#'                 SizingMode = "NO_CACHE"|"USER_PROVISIONED"|"PROPORTIONAL_TO_THROUGHPUT_CAPACITY",
+#'                 SizeGiB = 123
+#'               )
 #'             )
 #'           ),
 #'           FailureDetails = list(
@@ -7993,7 +8083,7 @@ fsx_describe_snapshots <- function(SnapshotIds = NULL, Filters = NULL, MaxResult
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .fsx$describe_snapshots_input(SnapshotIds = SnapshotIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, IncludeShared = IncludeShared)
@@ -8243,7 +8333,7 @@ fsx_describe_storage_virtual_machines <- function(StorageVirtualMachineIds = NUL
 #'               Message = "string"
 #'             ),
 #'             StorageCapacity = 123,
-#'             StorageType = "SSD"|"HDD",
+#'             StorageType = "SSD"|"HDD"|"INTELLIGENT_TIERING",
 #'             VpcId = "string",
 #'             SubnetIds = list(
 #'               "string"
@@ -8332,7 +8422,8 @@ fsx_describe_storage_virtual_machines <- function(StorageVirtualMachineIds = NUL
 #'               MetadataConfiguration = list(
 #'                 Iops = 123,
 #'                 Mode = "AUTOMATIC"|"USER_PROVISIONED"
-#'               )
+#'               ),
+#'               EfaEnabled = TRUE|FALSE
 #'             ),
 #'             AdministrativeActions = list(),
 #'             OntapConfiguration = list(
@@ -8387,7 +8478,11 @@ fsx_describe_storage_virtual_machines <- function(StorageVirtualMachineIds = NUL
 #'               RouteTableIds = list(
 #'                 "string"
 #'               ),
-#'               EndpointIpAddress = "string"
+#'               EndpointIpAddress = "string",
+#'               ReadCacheConfiguration = list(
+#'                 SizingMode = "NO_CACHE"|"USER_PROVISIONED"|"PROPORTIONAL_TO_THROUGHPUT_CAPACITY",
+#'                 SizeGiB = 123
+#'               )
 #'             )
 #'           ),
 #'           FailureDetails = list(
@@ -8663,7 +8758,7 @@ fsx_list_tags_for_resource <- function(ResourceARN, MaxResults = NULL, NextToken
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Tags"),
     stream_api = FALSE
   )
   input <- .fsx$list_tags_for_resource_input(ResourceARN = ResourceARN, MaxResults = MaxResults, NextToken = NextToken)
@@ -8704,7 +8799,7 @@ fsx_list_tags_for_resource <- function(ResourceARN, MaxResults = NULL, NextToken
 #'       Message = "string"
 #'     ),
 #'     StorageCapacity = 123,
-#'     StorageType = "SSD"|"HDD",
+#'     StorageType = "SSD"|"HDD"|"INTELLIGENT_TIERING",
 #'     VpcId = "string",
 #'     SubnetIds = list(
 #'       "string"
@@ -8793,7 +8888,8 @@ fsx_list_tags_for_resource <- function(ResourceARN, MaxResults = NULL, NextToken
 #'       MetadataConfiguration = list(
 #'         Iops = 123,
 #'         Mode = "AUTOMATIC"|"USER_PROVISIONED"
-#'       )
+#'       ),
+#'       EfaEnabled = TRUE|FALSE
 #'     ),
 #'     AdministrativeActions = list(
 #'       list(
@@ -8993,7 +9089,11 @@ fsx_list_tags_for_resource <- function(ResourceARN, MaxResults = NULL, NextToken
 #'       RouteTableIds = list(
 #'         "string"
 #'       ),
-#'       EndpointIpAddress = "string"
+#'       EndpointIpAddress = "string",
+#'       ReadCacheConfiguration = list(
+#'         SizingMode = "NO_CACHE"|"USER_PROVISIONED"|"PROPORTIONAL_TO_THROUGHPUT_CAPACITY",
+#'         SizeGiB = 123
+#'       )
 #'     )
 #'   )
 #' )
@@ -9086,7 +9186,7 @@ fsx_release_file_system_nfs_v3_locks <- function(FileSystemId, ClientRequestToke
 #'           Message = "string"
 #'         ),
 #'         StorageCapacity = 123,
-#'         StorageType = "SSD"|"HDD",
+#'         StorageType = "SSD"|"HDD"|"INTELLIGENT_TIERING",
 #'         VpcId = "string",
 #'         SubnetIds = list(
 #'           "string"
@@ -9175,7 +9275,8 @@ fsx_release_file_system_nfs_v3_locks <- function(FileSystemId, ClientRequestToke
 #'           MetadataConfiguration = list(
 #'             Iops = 123,
 #'             Mode = "AUTOMATIC"|"USER_PROVISIONED"
-#'           )
+#'           ),
+#'           EfaEnabled = TRUE|FALSE
 #'         ),
 #'         AdministrativeActions = list(),
 #'         OntapConfiguration = list(
@@ -9230,7 +9331,11 @@ fsx_release_file_system_nfs_v3_locks <- function(FileSystemId, ClientRequestToke
 #'           RouteTableIds = list(
 #'             "string"
 #'           ),
-#'           EndpointIpAddress = "string"
+#'           EndpointIpAddress = "string",
+#'           ReadCacheConfiguration = list(
+#'             SizingMode = "NO_CACHE"|"USER_PROVISIONED"|"PROPORTIONAL_TO_THROUGHPUT_CAPACITY",
+#'             SizeGiB = 123
+#'           )
 #'         )
 #'       ),
 #'       FailureDetails = list(
@@ -9440,7 +9545,7 @@ fsx_restore_volume_from_snapshot <- function(ClientRequestToken = NULL, VolumeId
 #'       Message = "string"
 #'     ),
 #'     StorageCapacity = 123,
-#'     StorageType = "SSD"|"HDD",
+#'     StorageType = "SSD"|"HDD"|"INTELLIGENT_TIERING",
 #'     VpcId = "string",
 #'     SubnetIds = list(
 #'       "string"
@@ -9529,7 +9634,8 @@ fsx_restore_volume_from_snapshot <- function(ClientRequestToken = NULL, VolumeId
 #'       MetadataConfiguration = list(
 #'         Iops = 123,
 #'         Mode = "AUTOMATIC"|"USER_PROVISIONED"
-#'       )
+#'       ),
+#'       EfaEnabled = TRUE|FALSE
 #'     ),
 #'     AdministrativeActions = list(
 #'       list(
@@ -9729,7 +9835,11 @@ fsx_restore_volume_from_snapshot <- function(ClientRequestToken = NULL, VolumeId
 #'       RouteTableIds = list(
 #'         "string"
 #'       ),
-#'       EndpointIpAddress = "string"
+#'       EndpointIpAddress = "string",
+#'       ReadCacheConfiguration = list(
+#'         SizingMode = "NO_CACHE"|"USER_PROVISIONED"|"PROPORTIONAL_TO_THROUGHPUT_CAPACITY",
+#'         SizeGiB = 123
+#'       )
 #'     )
 #'   )
 #' )
@@ -10212,6 +10322,8 @@ fsx_update_file_cache <- function(FileCacheId, ClientRequestToken = NULL, Lustre
 #' 
 #' -   `DiskIopsConfiguration`
 #' 
+#' -   `ReadCacheConfiguration`
+#' 
 #' -   `RemoveRouteTableIds`
 #' 
 #' -   `StorageCapacity`
@@ -10298,7 +10410,7 @@ fsx_update_file_cache <- function(FileCacheId, ClientRequestToken = NULL, Lustre
 #'       Message = "string"
 #'     ),
 #'     StorageCapacity = 123,
-#'     StorageType = "SSD"|"HDD",
+#'     StorageType = "SSD"|"HDD"|"INTELLIGENT_TIERING",
 #'     VpcId = "string",
 #'     SubnetIds = list(
 #'       "string"
@@ -10387,7 +10499,8 @@ fsx_update_file_cache <- function(FileCacheId, ClientRequestToken = NULL, Lustre
 #'       MetadataConfiguration = list(
 #'         Iops = 123,
 #'         Mode = "AUTOMATIC"|"USER_PROVISIONED"
-#'       )
+#'       ),
+#'       EfaEnabled = TRUE|FALSE
 #'     ),
 #'     AdministrativeActions = list(
 #'       list(
@@ -10587,7 +10700,11 @@ fsx_update_file_cache <- function(FileCacheId, ClientRequestToken = NULL, Lustre
 #'       RouteTableIds = list(
 #'         "string"
 #'       ),
-#'       EndpointIpAddress = "string"
+#'       EndpointIpAddress = "string",
+#'       ReadCacheConfiguration = list(
+#'         SizingMode = "NO_CACHE"|"USER_PROVISIONED"|"PROPORTIONAL_TO_THROUGHPUT_CAPACITY",
+#'         SizeGiB = 123
+#'       )
 #'     )
 #'   )
 #' )
@@ -10681,9 +10798,13 @@ fsx_update_file_cache <- function(FileCacheId, ClientRequestToken = NULL, Lustre
 #'     ),
 #'     RemoveRouteTableIds = list(
 #'       "string"
+#'     ),
+#'     ReadCacheConfiguration = list(
+#'       SizingMode = "NO_CACHE"|"USER_PROVISIONED"|"PROPORTIONAL_TO_THROUGHPUT_CAPACITY",
+#'       SizeGiB = 123
 #'     )
 #'   ),
-#'   StorageType = "SSD"|"HDD"
+#'   StorageType = "SSD"|"HDD"|"INTELLIGENT_TIERING"
 #' )
 #' ```
 #'
@@ -10847,7 +10968,7 @@ fsx_update_shared_vpc_configuration <- function(EnableFsxRouteTableUpdatesFromPa
 #'             Message = "string"
 #'           ),
 #'           StorageCapacity = 123,
-#'           StorageType = "SSD"|"HDD",
+#'           StorageType = "SSD"|"HDD"|"INTELLIGENT_TIERING",
 #'           VpcId = "string",
 #'           SubnetIds = list(
 #'             "string"
@@ -10936,7 +11057,8 @@ fsx_update_shared_vpc_configuration <- function(EnableFsxRouteTableUpdatesFromPa
 #'             MetadataConfiguration = list(
 #'               Iops = 123,
 #'               Mode = "AUTOMATIC"|"USER_PROVISIONED"
-#'             )
+#'             ),
+#'             EfaEnabled = TRUE|FALSE
 #'           ),
 #'           AdministrativeActions = list(),
 #'           OntapConfiguration = list(
@@ -10991,7 +11113,11 @@ fsx_update_shared_vpc_configuration <- function(EnableFsxRouteTableUpdatesFromPa
 #'             RouteTableIds = list(
 #'               "string"
 #'             ),
-#'             EndpointIpAddress = "string"
+#'             EndpointIpAddress = "string",
+#'             ReadCacheConfiguration = list(
+#'               SizingMode = "NO_CACHE"|"USER_PROVISIONED"|"PROPORTIONAL_TO_THROUGHPUT_CAPACITY",
+#'               SizeGiB = 123
+#'             )
 #'           )
 #'         ),
 #'         FailureDetails = list(
@@ -11391,7 +11517,7 @@ fsx_update_storage_virtual_machine <- function(ActiveDirectoryConfiguration = NU
 #'             Message = "string"
 #'           ),
 #'           StorageCapacity = 123,
-#'           StorageType = "SSD"|"HDD",
+#'           StorageType = "SSD"|"HDD"|"INTELLIGENT_TIERING",
 #'           VpcId = "string",
 #'           SubnetIds = list(
 #'             "string"
@@ -11480,7 +11606,8 @@ fsx_update_storage_virtual_machine <- function(ActiveDirectoryConfiguration = NU
 #'             MetadataConfiguration = list(
 #'               Iops = 123,
 #'               Mode = "AUTOMATIC"|"USER_PROVISIONED"
-#'             )
+#'             ),
+#'             EfaEnabled = TRUE|FALSE
 #'           ),
 #'           AdministrativeActions = list(),
 #'           OntapConfiguration = list(
@@ -11535,7 +11662,11 @@ fsx_update_storage_virtual_machine <- function(ActiveDirectoryConfiguration = NU
 #'             RouteTableIds = list(
 #'               "string"
 #'             ),
-#'             EndpointIpAddress = "string"
+#'             EndpointIpAddress = "string",
+#'             ReadCacheConfiguration = list(
+#'               SizingMode = "NO_CACHE"|"USER_PROVISIONED"|"PROPORTIONAL_TO_THROUGHPUT_CAPACITY",
+#'               SizeGiB = 123
+#'             )
 #'           )
 #'         ),
 #'         FailureDetails = list(

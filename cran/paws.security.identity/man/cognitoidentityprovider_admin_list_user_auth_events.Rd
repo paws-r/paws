@@ -2,8 +2,8 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_admin_list_user_auth_events}
 \alias{cognitoidentityprovider_admin_list_user_auth_events}
-\title{A history of user activity and any risks detected as part of Amazon
-Cognito advanced security}
+\title{Requests a history of user activity and any risks detected as part of
+Amazon Cognito threat protection}
 \usage{
 cognitoidentityprovider_admin_list_user_auth_events(
   UserPoolId,
@@ -13,7 +13,8 @@ cognitoidentityprovider_admin_list_user_auth_events(
 )
 }
 \arguments{
-\item{UserPoolId}{[required] The user pool ID.}
+\item{UserPoolId}{[required] The Id of the user pool that contains the user profile with the logged
+events.}
 
 \item{Username}{[required] The username of the user that you want to query or modify. The value of
 this parameter is typically your user's username, but it can be any of
@@ -25,10 +26,15 @@ of a user from a third-party IdP.}
 if you set \code{MaxResults} to 0, or if you don't include a \code{MaxResults}
 parameter.}
 
-\item{NextToken}{A pagination token.}
+\item{NextToken}{This API operation returns a limited number of results. The pagination
+token is an identifier that you can present in an additional API request
+with the same parameters. When you include the pagination token, Amazon
+Cognito returns the next set of items after the current list. Subsequent
+requests return a new pagination token. By use of this token, you can
+paginate through the full list of items.}
 }
 \description{
-A history of user activity and any risks detected as part of Amazon Cognito advanced security.
+Requests a history of user activity and any risks detected as part of Amazon Cognito threat protection. For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pool-settings-adaptive-authentication.html#user-pool-settings-adaptive-authentication-event-user-history}{Viewing user event history}.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_admin_list_user_auth_events/} for full documentation.
 }

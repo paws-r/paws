@@ -374,6 +374,44 @@ networkmanager_create_device <- function(GlobalNetworkId, AWSLocation = NULL, De
 }
 .networkmanager$operations$create_device <- networkmanager_create_device
 
+#' Creates an Amazon Web Services Direct Connect gateway attachment
+#'
+#' @description
+#' Creates an Amazon Web Services Direct Connect gateway attachment
+#'
+#' See [https://www.paws-r-sdk.com/docs/networkmanager_create_direct_connect_gateway_attachment/](https://www.paws-r-sdk.com/docs/networkmanager_create_direct_connect_gateway_attachment/) for full documentation.
+#'
+#' @param CoreNetworkId &#91;required&#93; The ID of the Cloud WAN core network that the Direct Connect gateway
+#' attachment should be attached to.
+#' @param DirectConnectGatewayArn &#91;required&#93; The ARN of the Direct Connect gateway attachment.
+#' @param EdgeLocations &#91;required&#93; One or more core network edge locations that the Direct Connect gateway
+#' attachment is associated with.
+#' @param Tags The key value tags to apply to the Direct Connect gateway attachment
+#' during creation.
+#' @param ClientToken client token
+#'
+#' @keywords internal
+#'
+#' @rdname networkmanager_create_direct_connect_gateway_attachment
+networkmanager_create_direct_connect_gateway_attachment <- function(CoreNetworkId, DirectConnectGatewayArn, EdgeLocations, Tags = NULL, ClientToken = NULL) {
+  op <- new_operation(
+    name = "CreateDirectConnectGatewayAttachment",
+    http_method = "POST",
+    http_path = "/direct-connect-gateway-attachments",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .networkmanager$create_direct_connect_gateway_attachment_input(CoreNetworkId = CoreNetworkId, DirectConnectGatewayArn = DirectConnectGatewayArn, EdgeLocations = EdgeLocations, Tags = Tags, ClientToken = ClientToken)
+  output <- .networkmanager$create_direct_connect_gateway_attachment_output()
+  config <- get_config()
+  svc <- .networkmanager$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkmanager$operations$create_direct_connect_gateway_attachment <- networkmanager_create_direct_connect_gateway_attachment
+
 #' Creates a new, empty global network
 #'
 #' @description
@@ -1546,6 +1584,39 @@ networkmanager_get_devices <- function(GlobalNetworkId, DeviceIds = NULL, SiteId
   return(response)
 }
 .networkmanager$operations$get_devices <- networkmanager_get_devices
+
+#' Returns information about a specific Amazon Web Services Direct Connect
+#' gateway attachment
+#'
+#' @description
+#' Returns information about a specific Amazon Web Services Direct Connect gateway attachment.
+#'
+#' See [https://www.paws-r-sdk.com/docs/networkmanager_get_direct_connect_gateway_attachment/](https://www.paws-r-sdk.com/docs/networkmanager_get_direct_connect_gateway_attachment/) for full documentation.
+#'
+#' @param AttachmentId &#91;required&#93; The ID of the Direct Connect gateway attachment that you want to see
+#' details about.
+#'
+#' @keywords internal
+#'
+#' @rdname networkmanager_get_direct_connect_gateway_attachment
+networkmanager_get_direct_connect_gateway_attachment <- function(AttachmentId) {
+  op <- new_operation(
+    name = "GetDirectConnectGatewayAttachment",
+    http_method = "GET",
+    http_path = "/direct-connect-gateway-attachments/{attachmentId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .networkmanager$get_direct_connect_gateway_attachment_input(AttachmentId = AttachmentId)
+  output <- .networkmanager$get_direct_connect_gateway_attachment_output()
+  config <- get_config()
+  svc <- .networkmanager$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkmanager$operations$get_direct_connect_gateway_attachment <- networkmanager_get_direct_connect_gateway_attachment
 
 #' Gets the link associations for a device or a link
 #'
@@ -2880,6 +2951,43 @@ networkmanager_update_device <- function(GlobalNetworkId, DeviceId, AWSLocation 
   return(response)
 }
 .networkmanager$operations$update_device <- networkmanager_update_device
+
+#' Updates the edge locations associated with an Amazon Web Services Direct
+#' Connect gateway attachment
+#'
+#' @description
+#' Updates the edge locations associated with an Amazon Web Services Direct Connect gateway attachment.
+#'
+#' See [https://www.paws-r-sdk.com/docs/networkmanager_update_direct_connect_gateway_attachment/](https://www.paws-r-sdk.com/docs/networkmanager_update_direct_connect_gateway_attachment/) for full documentation.
+#'
+#' @param AttachmentId &#91;required&#93; The ID of the Direct Connect gateway attachment for the updated edge
+#' locations.
+#' @param EdgeLocations One or more edge locations to update for the Direct Connect gateway
+#' attachment. The updated array of edge locations overwrites the previous
+#' array of locations. `EdgeLocations` is only used for Direct Connect
+#' gateway attachments.
+#'
+#' @keywords internal
+#'
+#' @rdname networkmanager_update_direct_connect_gateway_attachment
+networkmanager_update_direct_connect_gateway_attachment <- function(AttachmentId, EdgeLocations = NULL) {
+  op <- new_operation(
+    name = "UpdateDirectConnectGatewayAttachment",
+    http_method = "PATCH",
+    http_path = "/direct-connect-gateway-attachments/{attachmentId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .networkmanager$update_direct_connect_gateway_attachment_input(AttachmentId = AttachmentId, EdgeLocations = EdgeLocations)
+  output <- .networkmanager$update_direct_connect_gateway_attachment_output()
+  config <- get_config()
+  svc <- .networkmanager$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkmanager$operations$update_direct_connect_gateway_attachment <- networkmanager_update_direct_connect_gateway_attachment
 
 #' Updates an existing global network
 #'

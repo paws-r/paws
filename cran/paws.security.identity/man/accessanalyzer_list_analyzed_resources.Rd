@@ -3,7 +3,7 @@
 \name{accessanalyzer_list_analyzed_resources}
 \alias{accessanalyzer_list_analyzed_resources}
 \title{Retrieves a list of resources of the specified type that have been
-analyzed by the specified external access analyzer}
+analyzed by the specified analyzer}
 \usage{
 accessanalyzer_list_analyzed_resources(
   analyzerArn,
@@ -23,7 +23,7 @@ to retrieve a list of analyzed resources from.}
 \item{maxResults}{The maximum number of results to return in the response.}
 }
 \description{
-Retrieves a list of resources of the specified type that have been analyzed by the specified external access analyzer. This action is not supported for unused access analyzers.
+Retrieves a list of resources of the specified type that have been analyzed by the specified analyzer.
 
 See \url{https://www.paws-r-sdk.com/docs/accessanalyzer_list_analyzed_resources/} for full documentation.
 }

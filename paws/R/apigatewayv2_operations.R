@@ -2483,7 +2483,7 @@ apigatewayv2_get_apis <- function(MaxResults = NULL, NextToken = NULL) {
     http_method = "GET",
     http_path = "/v2/apis",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Items"),
     stream_api = FALSE
   )
   input <- .apigatewayv2$get_apis_input(MaxResults = MaxResults, NextToken = NextToken)
@@ -2627,7 +2627,7 @@ apigatewayv2_get_authorizers <- function(ApiId, MaxResults = NULL, NextToken = N
     http_method = "GET",
     http_path = "/v2/apis/{apiId}/authorizers",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Items"),
     stream_api = FALSE
   )
   input <- .apigatewayv2$get_authorizers_input(ApiId = ApiId, MaxResults = MaxResults, NextToken = NextToken)
@@ -2751,7 +2751,7 @@ apigatewayv2_get_deployments <- function(ApiId, MaxResults = NULL, NextToken = N
     http_method = "GET",
     http_path = "/v2/apis/{apiId}/deployments",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Items"),
     stream_api = FALSE
   )
   input <- .apigatewayv2$get_deployments_input(ApiId = ApiId, MaxResults = MaxResults, NextToken = NextToken)
@@ -2911,7 +2911,7 @@ apigatewayv2_get_domain_names <- function(MaxResults = NULL, NextToken = NULL) {
     http_method = "GET",
     http_path = "/v2/domainnames",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Items"),
     stream_api = FALSE
   )
   input <- .apigatewayv2$get_domain_names_input(MaxResults = MaxResults, NextToken = NextToken)
@@ -3125,7 +3125,7 @@ apigatewayv2_get_integration_responses <- function(ApiId, IntegrationId, MaxResu
     http_method = "GET",
     http_path = "/v2/apis/{apiId}/integrations/{integrationId}/integrationresponses",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Items"),
     stream_api = FALSE
   )
   input <- .apigatewayv2$get_integration_responses_input(ApiId = ApiId, IntegrationId = IntegrationId, MaxResults = MaxResults, NextToken = NextToken)
@@ -3213,7 +3213,7 @@ apigatewayv2_get_integrations <- function(ApiId, MaxResults = NULL, NextToken = 
     http_method = "GET",
     http_path = "/v2/apis/{apiId}/integrations",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Items"),
     stream_api = FALSE
   )
   input <- .apigatewayv2$get_integrations_input(ApiId = ApiId, MaxResults = MaxResults, NextToken = NextToken)
@@ -3382,7 +3382,7 @@ apigatewayv2_get_models <- function(ApiId, MaxResults = NULL, NextToken = NULL) 
     http_method = "GET",
     http_path = "/v2/apis/{apiId}/models",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Items"),
     stream_api = FALSE
   )
   input <- .apigatewayv2$get_models_input(ApiId = ApiId, MaxResults = MaxResults, NextToken = NextToken)
@@ -3587,7 +3587,7 @@ apigatewayv2_get_route_responses <- function(ApiId, MaxResults = NULL, NextToken
     http_method = "GET",
     http_path = "/v2/apis/{apiId}/routes/{routeId}/routeresponses",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Items"),
     stream_api = FALSE
   )
   input <- .apigatewayv2$get_route_responses_input(ApiId = ApiId, MaxResults = MaxResults, NextToken = NextToken, RouteId = RouteId)
@@ -3666,7 +3666,7 @@ apigatewayv2_get_routes <- function(ApiId, MaxResults = NULL, NextToken = NULL) 
     http_method = "GET",
     http_path = "/v2/apis/{apiId}/routes",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Items"),
     stream_api = FALSE
   )
   input <- .apigatewayv2$get_routes_input(ApiId = ApiId, MaxResults = MaxResults, NextToken = NextToken)
@@ -3853,7 +3853,7 @@ apigatewayv2_get_stages <- function(ApiId, MaxResults = NULL, NextToken = NULL) 
     http_method = "GET",
     http_path = "/v2/apis/{apiId}/stages",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Items"),
     stream_api = FALSE
   )
   input <- .apigatewayv2$get_stages_input(ApiId = ApiId, MaxResults = MaxResults, NextToken = NextToken)

@@ -94,8 +94,13 @@ NULL
 #' @examples
 #' \dontrun{
 #' svc <- codebuild()
-#' svc$batch_delete_builds(
-#'   Foo = 123
+#' # The following example gets information about builds with the specified
+#' # build IDs.
+#' svc$batch_get_builds(
+#'   ids = list(
+#'     "codebuild-demo-project:9b0ac37f-d19e-4254-9079-f47e9a389eEX",
+#'     "codebuild-demo-project:b79a46f7-1473-4636-a23f-da9c45c208EX"
+#'   )
 #' )
 #' }
 #'
@@ -182,7 +187,7 @@ codebuild <- function(config = list(), credentials = list(), endpoint = NULL, re
 
 .codebuild$metadata <- list(
   service_name = "codebuild",
-  endpoints = list("*" = list(endpoint = "codebuild.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "codebuild.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "codebuild.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "codebuild.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "codebuild.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "codebuild.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "codebuild.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "codebuild.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "codebuild.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "codebuild.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "codebuild.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "codebuild.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "codebuild.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "CodeBuild",
   api_version = "2016-10-06",
   signing_name = "codebuild",

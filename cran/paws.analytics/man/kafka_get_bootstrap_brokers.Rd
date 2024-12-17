@@ -10,7 +10,7 @@ kafka_get_bootstrap_brokers(ClusterArn)
 \item{ClusterArn}{[required] The Amazon Resource Name (ARN) that uniquely identifies the cluster.}
 }
 \description{
-A list of brokers that a client application can use to bootstrap.
+A list of brokers that a client application can use to bootstrap. This list doesn't necessarily include all of the brokers in the cluster. The following Python 3.6 example shows how you can use the Amazon Resource Name (ARN) of a cluster to get its bootstrap brokers. If you don't know the ARN of your cluster, you can use the \code{\link[=kafka_list_clusters]{list_clusters}} operation to get the ARNs of all the clusters in this account and Region.
 
 See \url{https://www.paws-r-sdk.com/docs/kafka_get_bootstrap_brokers/} for full documentation.
 }

@@ -1815,7 +1815,7 @@ shield_list_protection_groups <- function(NextToken = NULL, MaxResults = NULL, I
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .shield$list_protection_groups_input(NextToken = NextToken, MaxResults = MaxResults, InclusionFilters = InclusionFilters)
@@ -1923,7 +1923,7 @@ shield_list_protections <- function(NextToken = NULL, MaxResults = NULL, Inclusi
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Protections"),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Protections"),
     stream_api = FALSE
   )
   input <- .shield$list_protections_input(NextToken = NextToken, MaxResults = MaxResults, InclusionFilters = InclusionFilters)
@@ -2002,7 +2002,7 @@ shield_list_resources_in_protection_group <- function(ProtectionGroupId, NextTok
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .shield$list_resources_in_protection_group_input(ProtectionGroupId = ProtectionGroupId, NextToken = NextToken, MaxResults = MaxResults)

@@ -236,7 +236,7 @@ workspaces <- function(config = list(), credentials = list(), endpoint = NULL, r
 
 .workspaces$metadata <- list(
   service_name = "workspaces",
-  endpoints = list("*" = list(endpoint = "workspaces.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "workspaces.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "workspaces.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "workspaces.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "workspaces.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "workspaces.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "workspaces.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "workspaces.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "workspaces.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "workspaces.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "workspaces.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "workspaces.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "workspaces.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "WorkSpaces",
   api_version = "2015-04-08",
   signing_name = "workspaces",

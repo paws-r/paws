@@ -137,7 +137,7 @@ ebs_list_changed_blocks <- function(FirstSnapshotId = NULL, SecondSnapshotId, Ne
     http_method = "GET",
     http_path = "/snapshots/{secondSnapshotId}/changedblocks",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .ebs$list_changed_blocks_input(FirstSnapshotId = FirstSnapshotId, SecondSnapshotId = SecondSnapshotId, NextToken = NextToken, MaxResults = MaxResults, StartingBlockIndex = StartingBlockIndex)
@@ -186,7 +186,7 @@ ebs_list_snapshot_blocks <- function(SnapshotId, NextToken = NULL, MaxResults = 
     http_method = "GET",
     http_path = "/snapshots/{snapshotId}/blocks",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .ebs$list_snapshot_blocks_input(SnapshotId = SnapshotId, NextToken = NextToken, MaxResults = MaxResults, StartingBlockIndex = StartingBlockIndex)
