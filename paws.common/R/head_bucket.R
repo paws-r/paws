@@ -1,10 +1,22 @@
+s3_endpoints <- list(
+  "aws-global" = list(endpoint = "s3.amazonaws.com", global = TRUE),
+  "us-east-1" = list(endpoint = "s3.amazonaws.com", global = TRUE),
+  "^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE),
+  "^cn\\-\\w+\\-\\d+$" = list(endpoint = "s3.{region}.amazonaws.com.cn", global = FALSE),
+  "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE),
+  "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "s3.{region}.c2s.ic.gov", global = FALSE),
+  "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "s3.{region}.sc2s.sgov.gov", global = FALSE),
+  "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "s3.{region}.cloud.adc-e.uk", global = FALSE),
+  "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "s3.{region}.csp.hci.ic.gov", global = FALSE)
+)
+
 .s3 <- list()
 
 .s3$operations <- list()
 
 .s3$metadata <- list(
   service_name = "s3",
-  endpoints = list("us-gov-west-1" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE), "us-west-1" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE), "us-west-2" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE), "eu-west-1" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE), "ap-southeast-1" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE), "ap-southeast-2" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE), "ap-northeast-1" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE), "sa-east-1" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE), "us-east-1" = list(endpoint = "s3.amazonaws.com", global = FALSE), "*" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "s3.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "s3.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "s3.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "s3.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "s3.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = s3_endpoints,
   service_id = "S3",
   api_version = "2006-03-01",
   signing_name = "s3",

@@ -304,23 +304,6 @@ s3_unmarshal_error <- function(request) {
 }
 
 ################################################################################
-
-s3_endpoints <- list(
-  "us-gov-west-1" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE),
-  "us-west-1" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE),
-  "us-west-2" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE),
-  "eu-west-1" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE),
-  "ap-southeast-1" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE),
-  "ap-southeast-2" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE),
-  "ap-northeast-1" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE),
-  "sa-east-1" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE),
-  "us-east-1" = list(endpoint = "s3.amazonaws.com", global = FALSE),
-  "*" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE),
-  "cn-*" = list(endpoint = "s3.{region}.amazonaws.com.cn", global = FALSE),
-  "us-iso-*" = list(endpoint = "s3.{region}.c2s.ic.gov", global = FALSE),
-  "us-isob-*" = list(endpoint = "s3.{region}.sc2s.sgov.gov", global = FALSE)
-)
-
 # Developed from botocore S3RegionRedirectorv2:
 # https://github.com/boto/botocore/blob/de6dfccdb68e70005ed2a73dc5d04bc1e97f0541/botocore/utils.py#L1509
 

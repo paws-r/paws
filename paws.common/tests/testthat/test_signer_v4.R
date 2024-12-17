@@ -14,7 +14,7 @@ test_creds <- Credentials(
 
 test_that("v4_sign_request_handler", {
   metadata <- list(
-    endpoints = list("*" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE)),
+    endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "s3.amazonaws.com", global = FALSE)),
     service_name = "s3"
   )
   client <- new_service(metadata, new_handlers("restxml", "s3"), Config())
@@ -154,7 +154,7 @@ anonymous_test_creds <- Credentials(
 
 test_that("Test anonymous credentials", {
   metadata <- list(
-    endpoints = list("*" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE)),
+    endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "s3.amazonaws.com", global = FALSE)),
     service_name = "s3"
   )
   client <- new_service(metadata, new_handlers("restxml", "s3"), Config())

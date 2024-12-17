@@ -21,8 +21,8 @@ check_global <- function(endpoint) {
 
 #' @useDynLib paws.common _paws_common_endpoint_unescape
 #' @importFrom Rcpp evalCpp
-endpoint_unescape <- function(endpoint, service, region) {
-    .Call('_paws_common_endpoint_unescape', PACKAGE = 'paws.common', endpoint, service, region)
+endpoint_unescape <- function(endpoint, region) {
+    .Call('_paws_common_endpoint_unescape', PACKAGE = 'paws.common', endpoint, region)
 }
 
 #' @useDynLib paws.common _paws_common_get_region_pattern
