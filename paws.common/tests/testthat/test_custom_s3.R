@@ -1,6 +1,9 @@
 build_request <- function(bucket, operation) {
   metadata <- list(
-    endpoints = list("*" = list(endpoint = "s3.amazonaws.com", global = FALSE)),
+    endpoints = list(
+      "aws-global" = list(endpoint = "s3.amazonaws.com", global = TRUE),
+      "^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "s3.amazonaws.com", global = FALSE)
+    ),
     service_name = "s3"
   )
   svc <- new_service(metadata, new_handlers("restxml", "s3"))
@@ -50,7 +53,10 @@ test_that("update_endpoint_for_s3_config", {
 
 test_that("content_md5 works with an empty body", {
   metadata <- list(
-    endpoints = list("*" = list(endpoint = "s3.amazonaws.com", global = FALSE)),
+    endpoints = list(
+      "aws-global" = list(endpoint = "s3.amazonaws.com", global = TRUE),
+      "^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE)
+    ),
     service_name = "s3"
   )
   op <- new_operation(
@@ -324,7 +330,10 @@ test_that("redirect error without region", {
 
 build_copy_object_request <- function(bucket, key, copy_source) {
   metadata <- list(
-    endpoints = list("*" = list(endpoint = "s3.amazonaws.com", global = FALSE)),
+    endpoints = list(
+      "aws-global" = list(endpoint = "s3.amazonaws.com", global = TRUE),
+      "^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE)
+    ),
     service_name = "s3"
   )
   svc <- new_service(metadata, new_handlers("restxml", "s3"))

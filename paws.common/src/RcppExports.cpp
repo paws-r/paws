@@ -45,20 +45,19 @@ BEGIN_RCPP
 END_RCPP
 }
 // endpoint_unescape
-std::string endpoint_unescape(std::string endpoint, const std::string& service, const std::string& region);
-RcppExport SEXP _paws_common_endpoint_unescape(SEXP endpointSEXP, SEXP serviceSEXP, SEXP regionSEXP) {
+std::string endpoint_unescape(std::string endpoint, const std::string& region);
+RcppExport SEXP _paws_common_endpoint_unescape(SEXP endpointSEXP, SEXP regionSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< std::string >::type endpoint(endpointSEXP);
-    Rcpp::traits::input_parameter< const std::string& >::type service(serviceSEXP);
     Rcpp::traits::input_parameter< const std::string& >::type region(regionSEXP);
-    rcpp_result_gen = Rcpp::wrap(endpoint_unescape(endpoint, service, region));
+    rcpp_result_gen = Rcpp::wrap(endpoint_unescape(endpoint, region));
     return rcpp_result_gen;
 END_RCPP
 }
 // get_region_pattern
-CharacterVector get_region_pattern(CharacterVector region_pattern, const std::string& region);
+std::string get_region_pattern(CharacterVector region_pattern, const std::string& region);
 RcppExport SEXP _paws_common_get_region_pattern(SEXP region_patternSEXP, SEXP regionSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
@@ -96,7 +95,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"_paws_common_paws_url_encoder", (DL_FUNC) &_paws_common_paws_url_encoder, 2},
     {"_paws_common_json_convert_string", (DL_FUNC) &_paws_common_json_convert_string, 1},
     {"_paws_common_check_global", (DL_FUNC) &_paws_common_check_global, 1},
-    {"_paws_common_endpoint_unescape", (DL_FUNC) &_paws_common_endpoint_unescape, 3},
+    {"_paws_common_endpoint_unescape", (DL_FUNC) &_paws_common_endpoint_unescape, 2},
     {"_paws_common_get_region_pattern", (DL_FUNC) &_paws_common_get_region_pattern, 2},
     {"_paws_common_char_sort", (DL_FUNC) &_paws_common_char_sort, 1},
     {"_paws_common_uuid_v4", (DL_FUNC) &_paws_common_uuid_v4, 1},

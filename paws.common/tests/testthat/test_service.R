@@ -67,7 +67,9 @@ test_that("new_service null cfgs", {
 test_that("new_service adds customizations", {
   metadata <- list(
     service_name = "dynamodb",
-    endpoints = list("*" = list(endpoint = "dynamodb.{region}.amazonaws.com", global = FALSE)),
+    endpoints = list(
+      "^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "dynamodb.{region}.amazonaws.com", global = FALSE)
+    ),
     service_id = "DynamoDB",
     api_version = "2012-08-10",
     signing_name = NULL,

@@ -1,8 +1,9 @@
 test_that("resolver_endpoint", {
   endpoints <- list(
-    "*" = list(endpoint = "{service}.{region}.amazonaws.com", global = FALSE),
-    "us-east-*" = list(endpoint = "https://{service}.amazonaws.com", global = FALSE),
-    "us-west-*" = list(endpoint = "http://us-west.amazonaws.com", global = TRUE)
+    "aws-global" = list(endpoint = "service.amazonaws.com", global = TRUE),
+    "us-west-1" = list(endpoint = "service.amazonaws.com", global = TRUE),
+    "us-east-1" = list(endpoint = "service.amazonaws.com", global = FALSE),
+    "^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "service.{region}.amazonaws.com", global = FALSE)
   )
 
   r <- resolver_endpoint("service", "region", endpoints)
@@ -14,41 +15,17 @@ test_that("resolver_endpoint", {
   expect_equal(r$signing_region, "us-east-1")
 
   r <- resolver_endpoint("service", "us-west-2", endpoints)
-  expect_equal(r$endpoint, "https://us-west.amazonaws.com")
-  expect_equal(r$signing_region, "us-east-1")
-
-  r <- resolver_endpoint("service", "aws-global", endpoints)
-  expect_equal(r$endpoint, "https://us-west.amazonaws.com")
-  expect_equal(r$signing_region, "us-east-1")
-
-  endpoints <- list(
-    "*" = list(endpoint = "https://{service}.amazonaws.com", global = TRUE),
-    "us-east-*" = list(endpoint = "https://{service}.amazonaws.com", global = FALSE),
-    "us-west-*" = list(endpoint = "https://us-west.amazonaws.com", global = TRUE)
-  )
+  expect_equal(r$endpoint, "https://service.us-west-2.amazonaws.com")
+  expect_equal(r$signing_region, "us-west-2")
 
   r <- resolver_endpoint("service", "aws-global", endpoints)
   expect_equal(r$endpoint, "https://service.amazonaws.com")
-  expect_equal(r$signing_region, "us-east-1")
-})
-
-test_that("resolver_endpoint old endpoint format handling", {
-  endpoints <- list(
-    "*" = "{service}.{region}.amazonaws.com",
-    "us-east-*" = "https://{service}.amazonaws.com",
-    "us-west-*" = "http://us-west.amazonaws.com"
-  )
-
-  r <- resolver_endpoint("service", "region", endpoints)
-  expect_equal(r$endpoint, "https://service.region.amazonaws.com")
-  expect_equal(r$signing_region, "region")
+  expect_equal(r$signing_region, "aws-global")
 })
 
 test_that("resolver_endpoint no region and no global region found", {
   endpoints <- list(
-    "*" = list(endpoint = "https://{service}.amazonaws.com", global = FALSE),
-    "us-east-*" = list(endpoint = "https://{service}.amazonaws.com", global = FALSE),
-    "us-west-*" = list(endpoint = "https://us-west.amazonaws.com", global = FALSE)
+    "^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "service.{region}.amazonaws.com", global = FALSE)
   )
 
   expect_error(
@@ -59,29 +36,30 @@ test_that("resolver_endpoint no region and no global region found", {
 
 test_that("resolver_endpoint service sts_regional_endpoint", {
   endpoints <- list(
-    "*" = list(endpoint = "https://{service}.amazonaws.com", global = FALSE),
-    "us-east-*" = list(endpoint = "https://{service}.amazonaws.com", global = FALSE),
-    "us-west-*" = list(endpoint = "https://us-west.amazonaws.com", global = TRUE)
+    "aws-global" = list(endpoint = "service.amazonaws.com", global = TRUE),
+    "us-west-1" = list(endpoint = "service.amazonaws.com", global = TRUE),
+    "^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "service.{region}.amazonaws.com", global = FALSE)
   )
 
-  r <- resolver_endpoint("sts", "aws-global", endpoints, "regional")
+  r <- resolver_endpoint("sts", "us-east-1", endpoints, "regional")
   expect_equal(r$endpoint, "https://sts.us-east-1.amazonaws.com")
   expect_equal(r$signing_region, "us-east-1")
 
   r <- resolver_endpoint("sts", "aws-global", endpoints, "legacy")
   expect_equal(r$endpoint, "https://sts.amazonaws.com")
-  expect_equal(r$signing_region, "us-east-1")
+  expect_equal(r$signing_region, "aws-global")
 })
 
 test_that("resolver_endpoint service s3 default region", {
   endpoints <- list(
-    "*" = list(endpoint = "https://{service}.amazonaws.com", global = FALSE),
-    "us-west-*" = list(endpoint = "https://us-west.amazonaws.com", global = TRUE)
+    "aws-global" = list(endpoint = "s3.amazonaws.com", global = TRUE),
+    "us-west-1" = list(endpoint = "s3.amazonaws.com", global = TRUE),
+    "^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE)
   )
 
   r <- resolver_endpoint("s3", "aws-global", endpoints)
   expect_equal(r$endpoint, "https://s3.amazonaws.com")
-  expect_equal(r$signing_region, "us-east-1")
+  expect_equal(r$signing_region, "aws-global")
 })
 
 test_that("client_config uses custom endpoint", {
@@ -90,7 +68,7 @@ test_that("client_config uses custom endpoint", {
   cfgs$endpoint <- "https://test.us-west-2.amazonaws.com"
   client_cfg <- client_config(
     service_name = "dynamodb",
-    endpoints = list("*" = list(
+    endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(
       endpoint = "dynamodb.{region}.amazonaws.com",
       global = FALSE
     )),
@@ -108,7 +86,7 @@ test_that("client_config uses custom region", {
   cfgs$region <- "test_region"
   client_cfg <- client_config(
     service_name = "dynamodb",
-    endpoints = list("*" = list(
+    endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(
       endpoint = "dynamodb.{region}.amazonaws.com",
       global = FALSE
     )),
@@ -130,7 +108,7 @@ test_that("client_config uses custom credentials", {
 
   client_cfg <- client_config(
     service_name = "dynamodb",
-    endpoints = list("*" = list(
+    endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(
       endpoint = "dynamodb.{region}.amazonaws.com",
       global = FALSE
     )),

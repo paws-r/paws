@@ -85,33 +85,24 @@ HOST_PREFIX_RE <- "^[A-Za-z0-9\\.\\-]+$"
 # resolver_endpoint returns the endpoint for a given service.
 # e.g. "https://ec2.us-east-1.amazonaws.com"
 resolver_endpoint <- function(service, region, endpoints, sts_regional_endpoint = "", scheme = "https", host_prefix = "") {
-  # Set default region for s3:
-  # https://github.com/boto/botocore/blob/develop/botocore/regions.py#L189-L220
-  if (service == "s3" & (region == "aws-global")) {
-    region <- "us-east-1"
-  }
   # locate global endpoint
   global_found <- check_global(endpoints)
-  global_region <- (region == "aws-global")
+  global_region <- region == "aws-global"
   if (!any(global_found) & global_region) {
     stop("No region provided and no global region found.")
   }
-  search_region <- (
+  signing_region <- (
     if (any(global_found) & global_region) names(global_found[global_found][1]) else region
   )
-  e <- endpoints[[get_region_pattern(names(endpoints), search_region)]]
-  # TODO: Delete old endpoint format handling once all packages are updated.
-  if (is.character(e)) {
-    e <- list(endpoint = e, global = FALSE)
-  }
+  e <- endpoints[[get_region_pattern(names(endpoints), signing_region)]]
   if (service == "sts" & nzchar(sts_regional_endpoint)) {
     e$endpoint <- set_sts_regional_endpoint(
       sts_regional_endpoint, e
     )
     region <- set_sts_region(sts_regional_endpoint, region)
   }
-  signing_region <- if (e[["global"]]) "us-east-1" else region
-  endpoint <- endpoint_unescape(e[["endpoint"]], service, signing_region)
+  # signing_region <- if (e[["global"]]) "us-east-1" else region
+  endpoint <- endpoint_unescape(e[["endpoint"]], signing_region)
   if (grepl(HOST_PREFIX_RE, host_prefix)) {
     endpoint <- sprintf("%s%s", host_prefix, endpoint)
   }

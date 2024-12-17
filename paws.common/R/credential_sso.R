@@ -4,7 +4,7 @@
 
 .sso$metadata <- list(
   service_name = "sso",
-  endpoints = list("*" = list(endpoint = "portal.sso.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "portal.sso.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "portal.sso.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "portal.sso.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "portal.sso.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "portal.sso.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "portal.sso.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "portal.sso.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "portal.sso.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "portal.sso.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "portal.sso.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "SSO",
   api_version = "2019-06-10",
   signing_name = "awsssoportal",

@@ -224,7 +224,7 @@ list_objects_v2_output_params <- structure(
 test_that("check standard generated presigned url", {
   metadata <- list(
     endpoints = list(
-      "*" = list(endpoint = "s3.amazonaws.com", global = FALSE)
+      "^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "s3.amazonaws.com", global = FALSE)
     ),
     service_name = "s3"
   )
@@ -268,7 +268,7 @@ test_that("check standard generated presigned url", {
 test_that("check standard generated presigned url for anonymous signing", {
   metadata <- list(
     endpoints = list(
-      "*" = list(endpoint = "s3.amazonaws.com", global = FALSE)
+      "^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "s3.amazonaws.com", global = FALSE)
     ),
     service_name = "s3"
   )
@@ -307,7 +307,7 @@ test_that("check standard generated presigned url with no credentials explicitly
 
   metadata <- list(
     endpoints = list(
-      "*" = list(endpoint = "s3.amazonaws.com", global = FALSE)
+      "^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "s3.amazonaws.com", global = FALSE)
     ),
     service_name = "s3"
   )
@@ -740,7 +740,7 @@ get_object_output_params <- structure(
 test_that("check generate_presigned_url with query string arguments of interest", {
   metadata <- list(
     endpoints = list(
-      "*" = list(endpoint = "s3.amazonaws.com", global = FALSE)
+      "^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "s3.amazonaws.com", global = FALSE)
     ),
     service_name = "s3"
   )
