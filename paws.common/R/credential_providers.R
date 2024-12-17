@@ -233,10 +233,15 @@ config_file_credential_source <- function(role_arn, role_session_name, mfa_seria
   return(role_creds)
 }
 
-aws_sso_cmd <- function(profile_name, msg) {
-  cmd <- sprintf("aws sso login --profile %s", profile_name)
-  log_warn(msg, cmd)
-  system(cmd, intern = TRUE)
+aws_sso_cmd <- function(profile_name, msg)  {
+  cmd <- c("sso", "login", "--profile", profile_name)
+  log_warn(msg, paste("aws", paste(cmd, collapse = " ")))
+  tf <- tempfile()
+  on.exit(unlink(tf))
+  system2("aws", cmd, stderr =  tf)
+  if (file.exists(tf) && length(error <- readLines(tf)) > 0) {
+    stop(error, call. = FALSE)
+  }
 }
 
 # Get credentials from profile associated with an SSO login.  Assumes
