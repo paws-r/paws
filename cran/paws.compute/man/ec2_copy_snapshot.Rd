@@ -15,6 +15,7 @@ ec2_copy_snapshot(
   SourceRegion,
   SourceSnapshotId,
   TagSpecifications = NULL,
+  CompletionDurationMinutes = NULL,
   DryRun = NULL
 )
 }
@@ -85,6 +86,13 @@ the snapshot will move to an \code{error} state.}
 \item{SourceSnapshotId}{[required] The ID of the EBS snapshot to copy.}
 
 \item{TagSpecifications}{The tags to apply to the new snapshot.}
+
+\item{CompletionDurationMinutes}{Specify a completion duration, in 15 minute increments, to initiate a
+time-based snapshot copy. Time-based snapshot copy operations complete
+within the specified duration. For more information, see \href{https://docs.aws.amazon.com/ebs/latest/userguide/time-based-copies.html}{Time-based copies}.
+
+If you do not specify a value, the snapshot copy operation is completed
+on a best-effort basis.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have

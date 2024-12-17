@@ -335,7 +335,7 @@ major engine version on your DB cluster past the end of standard support
 for that engine version. For more information, see the following
 sections:
 \itemize{
-\item Amazon Aurora (PostgreSQL only) - \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/extended-support.html}{Using Amazon RDS Extended Support}
+\item Amazon Aurora - \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/extended-support.html}{Using Amazon RDS Extended Support}
 in the \emph{Amazon Aurora User Guide}
 \item Amazon RDS - \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/extended-support.html}{Using Amazon RDS Extended Support}
 in the \emph{Amazon RDS User Guide}

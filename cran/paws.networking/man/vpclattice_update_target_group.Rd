@@ -9,7 +9,7 @@ vpclattice_update_target_group(healthCheck, targetGroupIdentifier)
 \arguments{
 \item{healthCheck}{[required] The health check configuration.}
 
-\item{targetGroupIdentifier}{[required] The ID or Amazon Resource Name (ARN) of the target group.}
+\item{targetGroupIdentifier}{[required] The ID or ARN of the target group.}
 }
 \description{
 Updates the specified target group.

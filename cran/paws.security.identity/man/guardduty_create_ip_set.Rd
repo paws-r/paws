@@ -16,8 +16,12 @@ guardduty_create_ip_set(
 )
 }
 \arguments{
-\item{DetectorId}{[required] The unique ID of the detector of the GuardDuty account that you want to
-create an IPSet for.}
+\item{DetectorId}{[required] The unique ID of the detector of the GuardDuty account for which you
+want to create an IPSet.
+
+To find the \code{detectorId} in the current Region, see the Settings page in
+the GuardDuty console, or run the
+\code{\link[=guardduty_list_detectors]{list_detectors}} API.}
 
 \item{Name}{[required] The user-friendly name to identify the IPSet.
 

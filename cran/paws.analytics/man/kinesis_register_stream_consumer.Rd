@@ -14,7 +14,7 @@ consumer with. For more info, see \href{https://docs.aws.amazon.com/IAM/latest/U
 However, consumer names don't have to be unique across data streams.}
 }
 \description{
-Registers a consumer with a Kinesis data stream. When you use this operation, the consumer you register can then call SubscribeToShard to receive data from the stream using enhanced fan-out, at a rate of up to 2 MiB per second for every shard you subscribe to. This rate is unaffected by the total number of consumers that read from the same stream.
+Registers a consumer with a Kinesis data stream. When you use this operation, the consumer you register can then call \code{\link[=kinesis_subscribe_to_shard]{subscribe_to_shard}} to receive data from the stream using enhanced fan-out, at a rate of up to 2 MiB per second for every shard you subscribe to. This rate is unaffected by the total number of consumers that read from the same stream.
 
 See \url{https://www.paws-r-sdk.com/docs/kinesis_register_stream_consumer/} for full documentation.
 }

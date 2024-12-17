@@ -20,9 +20,9 @@ NULL
 #' vpclattice_batch_update_rule(listenerIdentifier, rules,
 #'   serviceIdentifier)
 #'
-#' @param listenerIdentifier &#91;required&#93; The ID or Amazon Resource Name (ARN) of the listener.
+#' @param listenerIdentifier &#91;required&#93; The ID or ARN of the listener.
 #' @param rules &#91;required&#93; The rules for the specified listener.
-#' @param serviceIdentifier &#91;required&#93; The ID or Amazon Resource Name (ARN) of the service.
+#' @param serviceIdentifier &#91;required&#93; The ID or ARN of the service.
 #'
 #' @return
 #' A list with the following syntax:
@@ -173,7 +173,7 @@ vpclattice_batch_update_rule <- function(listenerIdentifier, rules, serviceIdent
 #'
 #' @usage
 #' vpclattice_create_access_log_subscription(clientToken, destinationArn,
-#'   resourceIdentifier, tags)
+#'   resourceIdentifier, serviceNetworkLogType, tags)
 #'
 #' @param clientToken A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. If you retry a request that completed
@@ -183,7 +183,8 @@ vpclattice_batch_update_rule <- function(listenerIdentifier, rules, serviceIdent
 #' @param destinationArn &#91;required&#93; The Amazon Resource Name (ARN) of the destination. The supported
 #' destination types are CloudWatch Log groups, Kinesis Data Firehose
 #' delivery streams, and Amazon S3 buckets.
-#' @param resourceIdentifier &#91;required&#93; The ID or Amazon Resource Name (ARN) of the service network or service.
+#' @param resourceIdentifier &#91;required&#93; The ID or ARN of the service network or service.
+#' @param serviceNetworkLogType The type of log that monitors your Amazon VPC Lattice service networks.
 #' @param tags The tags for the access log subscription.
 #'
 #' @return
@@ -194,7 +195,8 @@ vpclattice_batch_update_rule <- function(listenerIdentifier, rules, serviceIdent
 #'   destinationArn = "string",
 #'   id = "string",
 #'   resourceArn = "string",
-#'   resourceId = "string"
+#'   resourceId = "string",
+#'   serviceNetworkLogType = "SERVICE"|"RESOURCE"
 #' )
 #' ```
 #'
@@ -204,6 +206,7 @@ vpclattice_batch_update_rule <- function(listenerIdentifier, rules, serviceIdent
 #'   clientToken = "string",
 #'   destinationArn = "string",
 #'   resourceIdentifier = "string",
+#'   serviceNetworkLogType = "SERVICE"|"RESOURCE",
 #'   tags = list(
 #'     "string"
 #'   )
@@ -215,7 +218,7 @@ vpclattice_batch_update_rule <- function(listenerIdentifier, rules, serviceIdent
 #' @rdname vpclattice_create_access_log_subscription
 #'
 #' @aliases vpclattice_create_access_log_subscription
-vpclattice_create_access_log_subscription <- function(clientToken = NULL, destinationArn, resourceIdentifier, tags = NULL) {
+vpclattice_create_access_log_subscription <- function(clientToken = NULL, destinationArn, resourceIdentifier, serviceNetworkLogType = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateAccessLogSubscription",
     http_method = "POST",
@@ -224,7 +227,7 @@ vpclattice_create_access_log_subscription <- function(clientToken = NULL, destin
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .vpclattice$create_access_log_subscription_input(clientToken = clientToken, destinationArn = destinationArn, resourceIdentifier = resourceIdentifier, tags = tags)
+  input <- .vpclattice$create_access_log_subscription_input(clientToken = clientToken, destinationArn = destinationArn, resourceIdentifier = resourceIdentifier, serviceNetworkLogType = serviceNetworkLogType, tags = tags)
   output <- .vpclattice$create_access_log_subscription_output()
   config <- get_config()
   svc <- .vpclattice$service(config, op)
@@ -262,7 +265,7 @@ vpclattice_create_access_log_subscription <- function(clientToken = NULL, destin
 #' @param port The listener port. You can specify a value from 1 to 65535. For HTTP,
 #' the default is 80. For HTTPS, the default is 443.
 #' @param protocol &#91;required&#93; The listener protocol.
-#' @param serviceIdentifier &#91;required&#93; The ID or Amazon Resource Name (ARN) of the service.
+#' @param serviceIdentifier &#91;required&#93; The ID or ARN of the service.
 #' @param tags The tags for the listener.
 #'
 #' @return
@@ -343,6 +346,230 @@ vpclattice_create_listener <- function(clientToken = NULL, defaultAction, name, 
 }
 .vpclattice$operations$create_listener <- vpclattice_create_listener
 
+#' Creates a resource configuration
+#'
+#' @description
+#' Creates a resource configuration. A resource configuration defines a
+#' specific resource. You can associate a resource configuration with a
+#' service network or a VPC endpoint.
+#'
+#' @usage
+#' vpclattice_create_resource_configuration(
+#'   allowAssociationToShareableServiceNetwork, clientToken, name,
+#'   portRanges, protocol, resourceConfigurationDefinition,
+#'   resourceConfigurationGroupIdentifier, resourceGatewayIdentifier, tags,
+#'   type)
+#'
+#' @param allowAssociationToShareableServiceNetwork (SINGLE, GROUP, ARN) Specifies whether the resource configuration can be
+#' associated with a sharable service network. The default is false.
+#' @param clientToken A unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request. If you retry a request that completed
+#' successfully using the same client token and parameters, the retry
+#' succeeds without performing any actions. If the parameters aren't
+#' identical, the retry fails.
+#' @param name &#91;required&#93; The name of the resource configuration. The name must be unique within
+#' the account. The valid characters are a-z, 0-9, and hyphens (-). You
+#' can't use a hyphen as the first or last character, or immediately after
+#' another hyphen.
+#' @param portRanges (SINGLE, GROUP, CHILD) The TCP port ranges that a consumer can use to
+#' access a resource configuration (for example: 1-65535). You can separate
+#' port ranges using commas (for example: 1,2,22-30).
+#' @param protocol (SINGLE, GROUP) The protocol accepted by the resource configuration.
+#' @param resourceConfigurationDefinition (SINGLE, CHILD, ARN) The resource configuration.
+#' @param resourceConfigurationGroupIdentifier (CHILD) The ID or ARN of the parent resource configuration (type is
+#' `GROUP`). This is used to associate a child resource configuration with
+#' a group resource configuration.
+#' @param resourceGatewayIdentifier (SINGLE, GROUP, ARN) The ID or ARN of the resource gateway used to
+#' connect to the resource configuration. For a child resource
+#' configuration, this value is inherited from the parent resource
+#' configuration.
+#' @param tags The tags for the resource configuration.
+#' @param type &#91;required&#93; The type of resource configuration.
+#' 
+#' -   `SINGLE` - A single resource.
+#' 
+#' -   `GROUP` - A group of resources. You must create a group resource
+#'     configuration before you create a child resource configuration.
+#' 
+#' -   `CHILD` - A single resource that is part of a group resource
+#'     configuration.
+#' 
+#' -   `ARN` - An Amazon Web Services resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   allowAssociationToShareableServiceNetwork = TRUE|FALSE,
+#'   arn = "string",
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   failureReason = "string",
+#'   id = "string",
+#'   name = "string",
+#'   portRanges = list(
+#'     "string"
+#'   ),
+#'   protocol = "TCP",
+#'   resourceConfigurationDefinition = list(
+#'     arnResource = list(
+#'       arn = "string"
+#'     ),
+#'     dnsResource = list(
+#'       domainName = "string",
+#'       ipAddressType = "IPV4"|"IPV6"|"DUALSTACK"
+#'     ),
+#'     ipResource = list(
+#'       ipAddress = "string"
+#'     )
+#'   ),
+#'   resourceConfigurationGroupId = "string",
+#'   resourceGatewayId = "string",
+#'   status = "ACTIVE"|"CREATE_IN_PROGRESS"|"UPDATE_IN_PROGRESS"|"DELETE_IN_PROGRESS"|"CREATE_FAILED"|"UPDATE_FAILED"|"DELETE_FAILED",
+#'   type = "GROUP"|"CHILD"|"SINGLE"|"ARN"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_resource_configuration(
+#'   allowAssociationToShareableServiceNetwork = TRUE|FALSE,
+#'   clientToken = "string",
+#'   name = "string",
+#'   portRanges = list(
+#'     "string"
+#'   ),
+#'   protocol = "TCP",
+#'   resourceConfigurationDefinition = list(
+#'     arnResource = list(
+#'       arn = "string"
+#'     ),
+#'     dnsResource = list(
+#'       domainName = "string",
+#'       ipAddressType = "IPV4"|"IPV6"|"DUALSTACK"
+#'     ),
+#'     ipResource = list(
+#'       ipAddress = "string"
+#'     )
+#'   ),
+#'   resourceConfigurationGroupIdentifier = "string",
+#'   resourceGatewayIdentifier = "string",
+#'   tags = list(
+#'     "string"
+#'   ),
+#'   type = "GROUP"|"CHILD"|"SINGLE"|"ARN"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname vpclattice_create_resource_configuration
+#'
+#' @aliases vpclattice_create_resource_configuration
+vpclattice_create_resource_configuration <- function(allowAssociationToShareableServiceNetwork = NULL, clientToken = NULL, name, portRanges = NULL, protocol = NULL, resourceConfigurationDefinition = NULL, resourceConfigurationGroupIdentifier = NULL, resourceGatewayIdentifier = NULL, tags = NULL, type) {
+  op <- new_operation(
+    name = "CreateResourceConfiguration",
+    http_method = "POST",
+    http_path = "/resourceconfigurations",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .vpclattice$create_resource_configuration_input(allowAssociationToShareableServiceNetwork = allowAssociationToShareableServiceNetwork, clientToken = clientToken, name = name, portRanges = portRanges, protocol = protocol, resourceConfigurationDefinition = resourceConfigurationDefinition, resourceConfigurationGroupIdentifier = resourceConfigurationGroupIdentifier, resourceGatewayIdentifier = resourceGatewayIdentifier, tags = tags, type = type)
+  output <- .vpclattice$create_resource_configuration_output()
+  config <- get_config()
+  svc <- .vpclattice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.vpclattice$operations$create_resource_configuration <- vpclattice_create_resource_configuration
+
+#' Creates a resource gateway
+#'
+#' @description
+#' Creates a resource gateway.
+#'
+#' @usage
+#' vpclattice_create_resource_gateway(clientToken, ipAddressType, name,
+#'   securityGroupIds, subnetIds, tags, vpcIdentifier)
+#'
+#' @param clientToken A unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request. If you retry a request that completed
+#' successfully using the same client token and parameters, the retry
+#' succeeds without performing any actions. If the parameters aren't
+#' identical, the retry fails.
+#' @param ipAddressType The type of IP address used by the resource gateway.
+#' @param name &#91;required&#93; The name of the resource gateway.
+#' @param securityGroupIds The IDs of the security groups to apply to the resource gateway. The
+#' security groups must be in the same VPC.
+#' @param subnetIds &#91;required&#93; The IDs of the VPC subnets in which to create the resource gateway.
+#' @param tags The tags for the resource gateway.
+#' @param vpcIdentifier &#91;required&#93; The ID of the VPC for the resource gateway.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   arn = "string",
+#'   id = "string",
+#'   ipAddressType = "IPV4"|"IPV6"|"DUALSTACK",
+#'   name = "string",
+#'   securityGroupIds = list(
+#'     "string"
+#'   ),
+#'   status = "ACTIVE"|"CREATE_IN_PROGRESS"|"UPDATE_IN_PROGRESS"|"DELETE_IN_PROGRESS"|"CREATE_FAILED"|"UPDATE_FAILED"|"DELETE_FAILED",
+#'   subnetIds = list(
+#'     "string"
+#'   ),
+#'   vpcIdentifier = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_resource_gateway(
+#'   clientToken = "string",
+#'   ipAddressType = "IPV4"|"IPV6"|"DUALSTACK",
+#'   name = "string",
+#'   securityGroupIds = list(
+#'     "string"
+#'   ),
+#'   subnetIds = list(
+#'     "string"
+#'   ),
+#'   tags = list(
+#'     "string"
+#'   ),
+#'   vpcIdentifier = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname vpclattice_create_resource_gateway
+#'
+#' @aliases vpclattice_create_resource_gateway
+vpclattice_create_resource_gateway <- function(clientToken = NULL, ipAddressType = NULL, name, securityGroupIds = NULL, subnetIds, tags = NULL, vpcIdentifier) {
+  op <- new_operation(
+    name = "CreateResourceGateway",
+    http_method = "POST",
+    http_path = "/resourcegateways",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .vpclattice$create_resource_gateway_input(clientToken = clientToken, ipAddressType = ipAddressType, name = name, securityGroupIds = securityGroupIds, subnetIds = subnetIds, tags = tags, vpcIdentifier = vpcIdentifier)
+  output <- .vpclattice$create_resource_gateway_output()
+  config <- get_config()
+  svc <- .vpclattice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.vpclattice$operations$create_resource_gateway <- vpclattice_create_resource_gateway
+
 #' Creates a listener rule
 #'
 #' @description
@@ -363,7 +590,7 @@ vpclattice_create_listener <- function(clientToken = NULL, defaultAction, name, 
 #' successfully using the same client token and parameters, the retry
 #' succeeds without performing any actions. If the parameters aren't
 #' identical, the retry fails.
-#' @param listenerIdentifier &#91;required&#93; The ID or Amazon Resource Name (ARN) of the listener.
+#' @param listenerIdentifier &#91;required&#93; The ID or ARN of the listener.
 #' @param match &#91;required&#93; The rule match.
 #' @param name &#91;required&#93; The name of the rule. The name must be unique within the listener. The
 #' valid characters are a-z, 0-9, and hyphens (-). You can't use a hyphen
@@ -371,7 +598,7 @@ vpclattice_create_listener <- function(clientToken = NULL, defaultAction, name, 
 #' @param priority &#91;required&#93; The priority assigned to the rule. Each rule for a specific listener
 #' must have a unique priority. The lower the priority number the higher
 #' the priority.
-#' @param serviceIdentifier &#91;required&#93; The ID or Amazon Resource Name (ARN) of the service.
+#' @param serviceIdentifier &#91;required&#93; The ID or ARN of the service.
 #' @param tags The tags for the rule.
 #'
 #' @return
@@ -597,7 +824,8 @@ vpclattice_create_service <- function(authType = NULL, certificateArn = NULL, cl
 #' in the *Amazon VPC Lattice User Guide*.
 #'
 #' @usage
-#' vpclattice_create_service_network(authType, clientToken, name, tags)
+#' vpclattice_create_service_network(authType, clientToken, name,
+#'   sharingConfig, tags)
 #'
 #' @param authType The type of IAM policy.
 #' 
@@ -615,6 +843,7 @@ vpclattice_create_service <- function(authType = NULL, certificateArn = NULL, cl
 #' The valid characters are a-z, 0-9, and hyphens (-). You can't use a
 #' hyphen as the first or last character, or immediately after another
 #' hyphen.
+#' @param sharingConfig Specify if the service network should be enabled for sharing.
 #' @param tags The tags for the service network.
 #'
 #' @return
@@ -624,7 +853,10 @@ vpclattice_create_service <- function(authType = NULL, certificateArn = NULL, cl
 #'   arn = "string",
 #'   authType = "NONE"|"AWS_IAM",
 #'   id = "string",
-#'   name = "string"
+#'   name = "string",
+#'   sharingConfig = list(
+#'     enabled = TRUE|FALSE
+#'   )
 #' )
 #' ```
 #'
@@ -634,6 +866,9 @@ vpclattice_create_service <- function(authType = NULL, certificateArn = NULL, cl
 #'   authType = "NONE"|"AWS_IAM",
 #'   clientToken = "string",
 #'   name = "string",
+#'   sharingConfig = list(
+#'     enabled = TRUE|FALSE
+#'   ),
 #'   tags = list(
 #'     "string"
 #'   )
@@ -645,7 +880,7 @@ vpclattice_create_service <- function(authType = NULL, certificateArn = NULL, cl
 #' @rdname vpclattice_create_service_network
 #'
 #' @aliases vpclattice_create_service_network
-vpclattice_create_service_network <- function(authType = NULL, clientToken = NULL, name, tags = NULL) {
+vpclattice_create_service_network <- function(authType = NULL, clientToken = NULL, name, sharingConfig = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateServiceNetwork",
     http_method = "POST",
@@ -654,7 +889,7 @@ vpclattice_create_service_network <- function(authType = NULL, clientToken = NUL
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .vpclattice$create_service_network_input(authType = authType, clientToken = clientToken, name = name, tags = tags)
+  input <- .vpclattice$create_service_network_input(authType = authType, clientToken = clientToken, name = name, sharingConfig = sharingConfig, tags = tags)
   output <- .vpclattice$create_service_network_output()
   config <- get_config()
   svc <- .vpclattice$service(config, op)
@@ -664,11 +899,82 @@ vpclattice_create_service_network <- function(authType = NULL, clientToken = NUL
 }
 .vpclattice$operations$create_service_network <- vpclattice_create_service_network
 
-#' Associates a service with a service network
+#' Associates the specified service network with the specified resource
+#' configuration
 #'
 #' @description
-#' Associates a service with a service network. For more information, see
-#' [Manage service
+#' Associates the specified service network with the specified resource
+#' configuration. This allows the resource configuration to receive
+#' connections through the service network, including through a service
+#' network VPC endpoint.
+#'
+#' @usage
+#' vpclattice_create_service_network_resource_association(clientToken,
+#'   resourceConfigurationIdentifier, serviceNetworkIdentifier, tags)
+#'
+#' @param clientToken A unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request. If you retry a request that completed
+#' successfully using the same client token and parameters, the retry
+#' succeeds without performing any actions. If the parameters aren't
+#' identical, the retry fails.
+#' @param resourceConfigurationIdentifier &#91;required&#93; The ID of the resource configuration to associate with the service
+#' network.
+#' @param serviceNetworkIdentifier &#91;required&#93; The ID of the service network to associate with the resource
+#' configuration.
+#' @param tags The tags for the association.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   arn = "string",
+#'   createdBy = "string",
+#'   id = "string",
+#'   status = "CREATE_IN_PROGRESS"|"ACTIVE"|"PARTIAL"|"DELETE_IN_PROGRESS"|"CREATE_FAILED"|"DELETE_FAILED"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_service_network_resource_association(
+#'   clientToken = "string",
+#'   resourceConfigurationIdentifier = "string",
+#'   serviceNetworkIdentifier = "string",
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname vpclattice_create_service_network_resource_association
+#'
+#' @aliases vpclattice_create_service_network_resource_association
+vpclattice_create_service_network_resource_association <- function(clientToken = NULL, resourceConfigurationIdentifier, serviceNetworkIdentifier, tags = NULL) {
+  op <- new_operation(
+    name = "CreateServiceNetworkResourceAssociation",
+    http_method = "POST",
+    http_path = "/servicenetworkresourceassociations",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .vpclattice$create_service_network_resource_association_input(clientToken = clientToken, resourceConfigurationIdentifier = resourceConfigurationIdentifier, serviceNetworkIdentifier = serviceNetworkIdentifier, tags = tags)
+  output <- .vpclattice$create_service_network_resource_association_output()
+  config <- get_config()
+  svc <- .vpclattice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.vpclattice$operations$create_service_network_resource_association <- vpclattice_create_service_network_resource_association
+
+#' Associates the specified service with the specified service network
+#'
+#' @description
+#' Associates the specified service with the specified service network. For
+#' more information, see [Manage service
 #' associations](https://docs.aws.amazon.com/vpc-lattice/latest/ug/service-network-associations.html#service-network-service-associations)
 #' in the *Amazon VPC Lattice User Guide*.
 #' 
@@ -692,10 +998,9 @@ vpclattice_create_service_network <- function(authType = NULL, clientToken = NUL
 #' successfully using the same client token and parameters, the retry
 #' succeeds without performing any actions. If the parameters aren't
 #' identical, the retry fails.
-#' @param serviceIdentifier &#91;required&#93; The ID or Amazon Resource Name (ARN) of the service.
-#' @param serviceNetworkIdentifier &#91;required&#93; The ID or Amazon Resource Name (ARN) of the service network. You must
-#' use the ARN if the resources specified in the operation are in different
-#' accounts.
+#' @param serviceIdentifier &#91;required&#93; The ID or ARN of the service.
+#' @param serviceNetworkIdentifier &#91;required&#93; The ID or ARN of the service network. You must use an ARN if the
+#' resources are in different accounts.
 #' @param tags The tags for the association.
 #'
 #' @return
@@ -789,9 +1094,8 @@ vpclattice_create_service_network_service_association <- function(clientToken = 
 #' using security
 #' groups](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-security-groups.html)
 #' in the *Amazon VPC User Guide*.
-#' @param serviceNetworkIdentifier &#91;required&#93; The ID or Amazon Resource Name (ARN) of the service network. You must
-#' use the ARN when the resources specified in the operation are in
-#' different accounts.
+#' @param serviceNetworkIdentifier &#91;required&#93; The ID or ARN of the service network. You must use an ARN if the
+#' resources are in different accounts.
 #' @param tags The tags for the association.
 #' @param vpcIdentifier &#91;required&#93; The ID of the VPC.
 #'
@@ -976,7 +1280,7 @@ vpclattice_create_target_group <- function(clientToken = NULL, config = NULL, na
 #' vpclattice_delete_access_log_subscription(
 #'   accessLogSubscriptionIdentifier)
 #'
-#' @param accessLogSubscriptionIdentifier &#91;required&#93; The ID or Amazon Resource Name (ARN) of the access log subscription.
+#' @param accessLogSubscriptionIdentifier &#91;required&#93; The ID or ARN of the access log subscription.
 #'
 #' @return
 #' An empty list.
@@ -1024,7 +1328,7 @@ vpclattice_delete_access_log_subscription <- function(accessLogSubscriptionIdent
 #' @usage
 #' vpclattice_delete_auth_policy(resourceIdentifier)
 #'
-#' @param resourceIdentifier &#91;required&#93; The ID or Amazon Resource Name (ARN) of the resource.
+#' @param resourceIdentifier &#91;required&#93; The ID or ARN of the resource.
 #'
 #' @return
 #' An empty list.
@@ -1068,8 +1372,8 @@ vpclattice_delete_auth_policy <- function(resourceIdentifier) {
 #' @usage
 #' vpclattice_delete_listener(listenerIdentifier, serviceIdentifier)
 #'
-#' @param listenerIdentifier &#91;required&#93; The ID or Amazon Resource Name (ARN) of the listener.
-#' @param serviceIdentifier &#91;required&#93; The ID or Amazon Resource Name (ARN) of the service.
+#' @param listenerIdentifier &#91;required&#93; The ID or ARN of the listener.
+#' @param serviceIdentifier &#91;required&#93; The ID or ARN of the service.
 #'
 #' @return
 #' An empty list.
@@ -1105,6 +1409,157 @@ vpclattice_delete_listener <- function(listenerIdentifier, serviceIdentifier) {
   return(response)
 }
 .vpclattice$operations$delete_listener <- vpclattice_delete_listener
+
+#' Deletes the specified resource configuration
+#'
+#' @description
+#' Deletes the specified resource configuration.
+#'
+#' @usage
+#' vpclattice_delete_resource_configuration(
+#'   resourceConfigurationIdentifier)
+#'
+#' @param resourceConfigurationIdentifier &#91;required&#93; The ID or ARN of the resource configuration.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_resource_configuration(
+#'   resourceConfigurationIdentifier = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname vpclattice_delete_resource_configuration
+#'
+#' @aliases vpclattice_delete_resource_configuration
+vpclattice_delete_resource_configuration <- function(resourceConfigurationIdentifier) {
+  op <- new_operation(
+    name = "DeleteResourceConfiguration",
+    http_method = "DELETE",
+    http_path = "/resourceconfigurations/{resourceConfigurationIdentifier}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .vpclattice$delete_resource_configuration_input(resourceConfigurationIdentifier = resourceConfigurationIdentifier)
+  output <- .vpclattice$delete_resource_configuration_output()
+  config <- get_config()
+  svc <- .vpclattice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.vpclattice$operations$delete_resource_configuration <- vpclattice_delete_resource_configuration
+
+#' Disassociates the resource configuration from the resource VPC endpoint
+#'
+#' @description
+#' Disassociates the resource configuration from the resource VPC endpoint.
+#'
+#' @usage
+#' vpclattice_delete_resource_endpoint_association(
+#'   resourceEndpointAssociationIdentifier)
+#'
+#' @param resourceEndpointAssociationIdentifier &#91;required&#93; The ID or ARN of the association.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   arn = "string",
+#'   id = "string",
+#'   resourceConfigurationArn = "string",
+#'   resourceConfigurationId = "string",
+#'   vpcEndpointId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_resource_endpoint_association(
+#'   resourceEndpointAssociationIdentifier = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname vpclattice_delete_resource_endpoint_association
+#'
+#' @aliases vpclattice_delete_resource_endpoint_association
+vpclattice_delete_resource_endpoint_association <- function(resourceEndpointAssociationIdentifier) {
+  op <- new_operation(
+    name = "DeleteResourceEndpointAssociation",
+    http_method = "DELETE",
+    http_path = "/resourceendpointassociations/{resourceEndpointAssociationIdentifier}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .vpclattice$delete_resource_endpoint_association_input(resourceEndpointAssociationIdentifier = resourceEndpointAssociationIdentifier)
+  output <- .vpclattice$delete_resource_endpoint_association_output()
+  config <- get_config()
+  svc <- .vpclattice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.vpclattice$operations$delete_resource_endpoint_association <- vpclattice_delete_resource_endpoint_association
+
+#' Deletes the specified resource gateway
+#'
+#' @description
+#' Deletes the specified resource gateway.
+#'
+#' @usage
+#' vpclattice_delete_resource_gateway(resourceGatewayIdentifier)
+#'
+#' @param resourceGatewayIdentifier &#91;required&#93; The ID or ARN of the resource gateway.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   arn = "string",
+#'   id = "string",
+#'   name = "string",
+#'   status = "ACTIVE"|"CREATE_IN_PROGRESS"|"UPDATE_IN_PROGRESS"|"DELETE_IN_PROGRESS"|"CREATE_FAILED"|"UPDATE_FAILED"|"DELETE_FAILED"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_resource_gateway(
+#'   resourceGatewayIdentifier = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname vpclattice_delete_resource_gateway
+#'
+#' @aliases vpclattice_delete_resource_gateway
+vpclattice_delete_resource_gateway <- function(resourceGatewayIdentifier) {
+  op <- new_operation(
+    name = "DeleteResourceGateway",
+    http_method = "DELETE",
+    http_path = "/resourcegateways/{resourceGatewayIdentifier}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .vpclattice$delete_resource_gateway_input(resourceGatewayIdentifier = resourceGatewayIdentifier)
+  output <- .vpclattice$delete_resource_gateway_output()
+  config <- get_config()
+  svc <- .vpclattice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.vpclattice$operations$delete_resource_gateway <- vpclattice_delete_resource_gateway
 
 #' Deletes the specified resource policy
 #'
@@ -1167,9 +1622,9 @@ vpclattice_delete_resource_policy <- function(resourceArn) {
 #' vpclattice_delete_rule(listenerIdentifier, ruleIdentifier,
 #'   serviceIdentifier)
 #'
-#' @param listenerIdentifier &#91;required&#93; The ID or Amazon Resource Name (ARN) of the listener.
-#' @param ruleIdentifier &#91;required&#93; The ID or Amazon Resource Name (ARN) of the rule.
-#' @param serviceIdentifier &#91;required&#93; The ID or Amazon Resource Name (ARN) of the service.
+#' @param listenerIdentifier &#91;required&#93; The ID or ARN of the listener.
+#' @param ruleIdentifier &#91;required&#93; The ID or ARN of the rule.
+#' @param serviceIdentifier &#91;required&#93; The ID or ARN of the service.
 #'
 #' @return
 #' An empty list.
@@ -1221,7 +1676,7 @@ vpclattice_delete_rule <- function(listenerIdentifier, ruleIdentifier, serviceId
 #' @usage
 #' vpclattice_delete_service(serviceIdentifier)
 #'
-#' @param serviceIdentifier &#91;required&#93; The ID or Amazon Resource Name (ARN) of the service.
+#' @param serviceIdentifier &#91;required&#93; The ID or ARN of the service.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1279,7 +1734,7 @@ vpclattice_delete_service <- function(serviceIdentifier) {
 #' @usage
 #' vpclattice_delete_service_network(serviceNetworkIdentifier)
 #'
-#' @param serviceNetworkIdentifier &#91;required&#93; The Amazon Resource Name (ARN) or ID of the service network.
+#' @param serviceNetworkIdentifier &#91;required&#93; The ID or ARN of the service network.
 #'
 #' @return
 #' An empty list.
@@ -1315,19 +1770,71 @@ vpclattice_delete_service_network <- function(serviceNetworkIdentifier) {
 }
 .vpclattice$operations$delete_service_network <- vpclattice_delete_service_network
 
-#' Deletes the association between a specified service and the specific
-#' service network
+#' Deletes the association between a service network and a resource
+#' configuration
 #'
 #' @description
-#' Deletes the association between a specified service and the specific
-#' service network. This operation fails if an association is still in
-#' progress.
+#' Deletes the association between a service network and a resource
+#' configuration.
+#'
+#' @usage
+#' vpclattice_delete_service_network_resource_association(
+#'   serviceNetworkResourceAssociationIdentifier)
+#'
+#' @param serviceNetworkResourceAssociationIdentifier &#91;required&#93; The ID of the association.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   arn = "string",
+#'   id = "string",
+#'   status = "CREATE_IN_PROGRESS"|"ACTIVE"|"PARTIAL"|"DELETE_IN_PROGRESS"|"CREATE_FAILED"|"DELETE_FAILED"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_service_network_resource_association(
+#'   serviceNetworkResourceAssociationIdentifier = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname vpclattice_delete_service_network_resource_association
+#'
+#' @aliases vpclattice_delete_service_network_resource_association
+vpclattice_delete_service_network_resource_association <- function(serviceNetworkResourceAssociationIdentifier) {
+  op <- new_operation(
+    name = "DeleteServiceNetworkResourceAssociation",
+    http_method = "DELETE",
+    http_path = "/servicenetworkresourceassociations/{serviceNetworkResourceAssociationIdentifier}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .vpclattice$delete_service_network_resource_association_input(serviceNetworkResourceAssociationIdentifier = serviceNetworkResourceAssociationIdentifier)
+  output <- .vpclattice$delete_service_network_resource_association_output()
+  config <- get_config()
+  svc <- .vpclattice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.vpclattice$operations$delete_service_network_resource_association <- vpclattice_delete_service_network_resource_association
+
+#' Deletes the association between a service and a service network
+#'
+#' @description
+#' Deletes the association between a service and a service network. This
+#' operation fails if an association is still in progress.
 #'
 #' @usage
 #' vpclattice_delete_service_network_service_association(
 #'   serviceNetworkServiceAssociationIdentifier)
 #'
-#' @param serviceNetworkServiceAssociationIdentifier &#91;required&#93; The ID or Amazon Resource Name (ARN) of the association.
+#' @param serviceNetworkServiceAssociationIdentifier &#91;required&#93; The ID or ARN of the association.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1380,7 +1887,7 @@ vpclattice_delete_service_network_service_association <- function(serviceNetwork
 #' vpclattice_delete_service_network_vpc_association(
 #'   serviceNetworkVpcAssociationIdentifier)
 #'
-#' @param serviceNetworkVpcAssociationIdentifier &#91;required&#93; The ID or Amazon Resource Name (ARN) of the association.
+#' @param serviceNetworkVpcAssociationIdentifier &#91;required&#93; The ID or ARN of the association.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1432,7 +1939,7 @@ vpclattice_delete_service_network_vpc_association <- function(serviceNetworkVpcA
 #' @usage
 #' vpclattice_delete_target_group(targetGroupIdentifier)
 #'
-#' @param targetGroupIdentifier &#91;required&#93; The ID or Amazon Resource Name (ARN) of the target group.
+#' @param targetGroupIdentifier &#91;required&#93; The ID or ARN of the target group.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1483,7 +1990,7 @@ vpclattice_delete_target_group <- function(targetGroupIdentifier) {
 #' @usage
 #' vpclattice_deregister_targets(targetGroupIdentifier, targets)
 #'
-#' @param targetGroupIdentifier &#91;required&#93; The ID or Amazon Resource Name (ARN) of the target group.
+#' @param targetGroupIdentifier &#91;required&#93; The ID or ARN of the target group.
 #' @param targets &#91;required&#93; The targets to deregister.
 #'
 #' @return
@@ -1552,7 +2059,7 @@ vpclattice_deregister_targets <- function(targetGroupIdentifier, targets) {
 #' @usage
 #' vpclattice_get_access_log_subscription(accessLogSubscriptionIdentifier)
 #'
-#' @param accessLogSubscriptionIdentifier &#91;required&#93; The ID or Amazon Resource Name (ARN) of the access log subscription.
+#' @param accessLogSubscriptionIdentifier &#91;required&#93; The ID or ARN of the access log subscription.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1568,7 +2075,8 @@ vpclattice_deregister_targets <- function(targetGroupIdentifier, targets) {
 #'     "2015-01-01"
 #'   ),
 #'   resourceArn = "string",
-#'   resourceId = "string"
+#'   resourceId = "string",
+#'   serviceNetworkLogType = "SERVICE"|"RESOURCE"
 #' )
 #' ```
 #'
@@ -1613,7 +2121,7 @@ vpclattice_get_access_log_subscription <- function(accessLogSubscriptionIdentifi
 #' @usage
 #' vpclattice_get_auth_policy(resourceIdentifier)
 #'
-#' @param resourceIdentifier &#91;required&#93; The ID or Amazon Resource Name (ARN) of the service network or service.
+#' @param resourceIdentifier &#91;required&#93; The ID or ARN of the service network or service.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1671,8 +2179,8 @@ vpclattice_get_auth_policy <- function(resourceIdentifier) {
 #' @usage
 #' vpclattice_get_listener(listenerIdentifier, serviceIdentifier)
 #'
-#' @param listenerIdentifier &#91;required&#93; The ID or Amazon Resource Name (ARN) of the listener.
-#' @param serviceIdentifier &#91;required&#93; The ID or Amazon Resource Name (ARN) of the service.
+#' @param listenerIdentifier &#91;required&#93; The ID or ARN of the listener.
+#' @param serviceIdentifier &#91;required&#93; The ID or ARN of the service.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1739,12 +2247,159 @@ vpclattice_get_listener <- function(listenerIdentifier, serviceIdentifier) {
 }
 .vpclattice$operations$get_listener <- vpclattice_get_listener
 
-#' Retrieves information about the resource policy
+#' Retrieves information about the specified resource configuration
 #'
 #' @description
-#' Retrieves information about the resource policy. The resource policy is
-#' an IAM policy created on behalf of the resource owner when they share a
-#' resource.
+#' Retrieves information about the specified resource configuration.
+#'
+#' @usage
+#' vpclattice_get_resource_configuration(resourceConfigurationIdentifier)
+#'
+#' @param resourceConfigurationIdentifier &#91;required&#93; The ID of the resource configuration.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   allowAssociationToShareableServiceNetwork = TRUE|FALSE,
+#'   amazonManaged = TRUE|FALSE,
+#'   arn = "string",
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   customDomainName = "string",
+#'   failureReason = "string",
+#'   id = "string",
+#'   lastUpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   name = "string",
+#'   portRanges = list(
+#'     "string"
+#'   ),
+#'   protocol = "TCP",
+#'   resourceConfigurationDefinition = list(
+#'     arnResource = list(
+#'       arn = "string"
+#'     ),
+#'     dnsResource = list(
+#'       domainName = "string",
+#'       ipAddressType = "IPV4"|"IPV6"|"DUALSTACK"
+#'     ),
+#'     ipResource = list(
+#'       ipAddress = "string"
+#'     )
+#'   ),
+#'   resourceConfigurationGroupId = "string",
+#'   resourceGatewayId = "string",
+#'   status = "ACTIVE"|"CREATE_IN_PROGRESS"|"UPDATE_IN_PROGRESS"|"DELETE_IN_PROGRESS"|"CREATE_FAILED"|"UPDATE_FAILED"|"DELETE_FAILED",
+#'   type = "GROUP"|"CHILD"|"SINGLE"|"ARN"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_resource_configuration(
+#'   resourceConfigurationIdentifier = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname vpclattice_get_resource_configuration
+#'
+#' @aliases vpclattice_get_resource_configuration
+vpclattice_get_resource_configuration <- function(resourceConfigurationIdentifier) {
+  op <- new_operation(
+    name = "GetResourceConfiguration",
+    http_method = "GET",
+    http_path = "/resourceconfigurations/{resourceConfigurationIdentifier}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .vpclattice$get_resource_configuration_input(resourceConfigurationIdentifier = resourceConfigurationIdentifier)
+  output <- .vpclattice$get_resource_configuration_output()
+  config <- get_config()
+  svc <- .vpclattice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.vpclattice$operations$get_resource_configuration <- vpclattice_get_resource_configuration
+
+#' Retrieves information about the specified resource gateway
+#'
+#' @description
+#' Retrieves information about the specified resource gateway.
+#'
+#' @usage
+#' vpclattice_get_resource_gateway(resourceGatewayIdentifier)
+#'
+#' @param resourceGatewayIdentifier &#91;required&#93; The ID of the resource gateway.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   arn = "string",
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   id = "string",
+#'   ipAddressType = "IPV4"|"IPV6"|"DUALSTACK",
+#'   lastUpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   name = "string",
+#'   securityGroupIds = list(
+#'     "string"
+#'   ),
+#'   status = "ACTIVE"|"CREATE_IN_PROGRESS"|"UPDATE_IN_PROGRESS"|"DELETE_IN_PROGRESS"|"CREATE_FAILED"|"UPDATE_FAILED"|"DELETE_FAILED",
+#'   subnetIds = list(
+#'     "string"
+#'   ),
+#'   vpcId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_resource_gateway(
+#'   resourceGatewayIdentifier = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname vpclattice_get_resource_gateway
+#'
+#' @aliases vpclattice_get_resource_gateway
+vpclattice_get_resource_gateway <- function(resourceGatewayIdentifier) {
+  op <- new_operation(
+    name = "GetResourceGateway",
+    http_method = "GET",
+    http_path = "/resourcegateways/{resourceGatewayIdentifier}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .vpclattice$get_resource_gateway_input(resourceGatewayIdentifier = resourceGatewayIdentifier)
+  output <- .vpclattice$get_resource_gateway_output()
+  config <- get_config()
+  svc <- .vpclattice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.vpclattice$operations$get_resource_gateway <- vpclattice_get_resource_gateway
+
+#' Retrieves information about the specified resource policy
+#'
+#' @description
+#' Retrieves information about the specified resource policy. The resource
+#' policy is an IAM policy created on behalf of the resource owner when
+#' they share a resource.
 #'
 #' @usage
 #' vpclattice_get_resource_policy(resourceArn)
@@ -1790,12 +2445,12 @@ vpclattice_get_resource_policy <- function(resourceArn) {
 }
 .vpclattice$operations$get_resource_policy <- vpclattice_get_resource_policy
 
-#' Retrieves information about listener rules
+#' Retrieves information about the specified listener rules
 #'
 #' @description
-#' Retrieves information about listener rules. You can also retrieve
-#' information about the default listener rule. For more information, see
-#' [Listener
+#' Retrieves information about the specified listener rules. You can also
+#' retrieve information about the default listener rule. For more
+#' information, see [Listener
 #' rules](https://docs.aws.amazon.com/vpc-lattice/latest/ug/listeners.html#listener-rules)
 #' in the *Amazon VPC Lattice User Guide*.
 #'
@@ -1803,9 +2458,9 @@ vpclattice_get_resource_policy <- function(resourceArn) {
 #' vpclattice_get_rule(listenerIdentifier, ruleIdentifier,
 #'   serviceIdentifier)
 #'
-#' @param listenerIdentifier &#91;required&#93; The ID or Amazon Resource Name (ARN) of the listener.
-#' @param ruleIdentifier &#91;required&#93; The ID or Amazon Resource Name (ARN) of the listener rule.
-#' @param serviceIdentifier &#91;required&#93; The ID or Amazon Resource Name (ARN) of the service.
+#' @param listenerIdentifier &#91;required&#93; The ID or ARN of the listener.
+#' @param ruleIdentifier &#91;required&#93; The ID or ARN of the listener rule.
+#' @param serviceIdentifier &#91;required&#93; The ID or ARN of the service.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1902,7 +2557,7 @@ vpclattice_get_rule <- function(listenerIdentifier, ruleIdentifier, serviceIdent
 #' @usage
 #' vpclattice_get_service(serviceIdentifier)
 #'
-#' @param serviceIdentifier &#91;required&#93; The ID or Amazon Resource Name (ARN) of the service.
+#' @param serviceIdentifier &#91;required&#93; The ID or ARN of the service.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1969,7 +2624,7 @@ vpclattice_get_service <- function(serviceIdentifier) {
 #' @usage
 #' vpclattice_get_service_network(serviceNetworkIdentifier)
 #'
-#' @param serviceNetworkIdentifier &#91;required&#93; The ID or Amazon Resource Name (ARN) of the service network.
+#' @param serviceNetworkIdentifier &#91;required&#93; The ID or ARN of the service network.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1986,7 +2641,10 @@ vpclattice_get_service <- function(serviceIdentifier) {
 #'   ),
 #'   name = "string",
 #'   numberOfAssociatedServices = 123,
-#'   numberOfAssociatedVPCs = 123
+#'   numberOfAssociatedVPCs = 123,
+#'   sharingConfig = list(
+#'     enabled = TRUE|FALSE
+#'   )
 #' )
 #' ```
 #'
@@ -2022,6 +2680,84 @@ vpclattice_get_service_network <- function(serviceNetworkIdentifier) {
 .vpclattice$operations$get_service_network <- vpclattice_get_service_network
 
 #' Retrieves information about the specified association between a service
+#' network and a resource configuration
+#'
+#' @description
+#' Retrieves information about the specified association between a service
+#' network and a resource configuration.
+#'
+#' @usage
+#' vpclattice_get_service_network_resource_association(
+#'   serviceNetworkResourceAssociationIdentifier)
+#'
+#' @param serviceNetworkResourceAssociationIdentifier &#91;required&#93; The ID of the association.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   arn = "string",
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   createdBy = "string",
+#'   dnsEntry = list(
+#'     domainName = "string",
+#'     hostedZoneId = "string"
+#'   ),
+#'   failureCode = "string",
+#'   failureReason = "string",
+#'   id = "string",
+#'   isManagedAssociation = TRUE|FALSE,
+#'   lastUpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   privateDnsEntry = list(
+#'     domainName = "string",
+#'     hostedZoneId = "string"
+#'   ),
+#'   resourceConfigurationArn = "string",
+#'   resourceConfigurationId = "string",
+#'   resourceConfigurationName = "string",
+#'   serviceNetworkArn = "string",
+#'   serviceNetworkId = "string",
+#'   serviceNetworkName = "string",
+#'   status = "CREATE_IN_PROGRESS"|"ACTIVE"|"PARTIAL"|"DELETE_IN_PROGRESS"|"CREATE_FAILED"|"DELETE_FAILED"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_service_network_resource_association(
+#'   serviceNetworkResourceAssociationIdentifier = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname vpclattice_get_service_network_resource_association
+#'
+#' @aliases vpclattice_get_service_network_resource_association
+vpclattice_get_service_network_resource_association <- function(serviceNetworkResourceAssociationIdentifier) {
+  op <- new_operation(
+    name = "GetServiceNetworkResourceAssociation",
+    http_method = "GET",
+    http_path = "/servicenetworkresourceassociations/{serviceNetworkResourceAssociationIdentifier}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .vpclattice$get_service_network_resource_association_input(serviceNetworkResourceAssociationIdentifier = serviceNetworkResourceAssociationIdentifier)
+  output <- .vpclattice$get_service_network_resource_association_output()
+  config <- get_config()
+  svc <- .vpclattice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.vpclattice$operations$get_service_network_resource_association <- vpclattice_get_service_network_resource_association
+
+#' Retrieves information about the specified association between a service
 #' network and a service
 #'
 #' @description
@@ -2032,7 +2768,7 @@ vpclattice_get_service_network <- function(serviceNetworkIdentifier) {
 #' vpclattice_get_service_network_service_association(
 #'   serviceNetworkServiceAssociationIdentifier)
 #'
-#' @param serviceNetworkServiceAssociationIdentifier &#91;required&#93; The ID or Amazon Resource Name (ARN) of the association.
+#' @param serviceNetworkServiceAssociationIdentifier &#91;required&#93; The ID or ARN of the association.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2092,18 +2828,18 @@ vpclattice_get_service_network_service_association <- function(serviceNetworkSer
 }
 .vpclattice$operations$get_service_network_service_association <- vpclattice_get_service_network_service_association
 
-#' Retrieves information about the association between a service network
-#' and a VPC
+#' Retrieves information about the specified association between a service
+#' network and a VPC
 #'
 #' @description
-#' Retrieves information about the association between a service network
-#' and a VPC.
+#' Retrieves information about the specified association between a service
+#' network and a VPC.
 #'
 #' @usage
 #' vpclattice_get_service_network_vpc_association(
 #'   serviceNetworkVpcAssociationIdentifier)
 #'
-#' @param serviceNetworkVpcAssociationIdentifier &#91;required&#93; The ID or Amazon Resource Name (ARN) of the association.
+#' @param serviceNetworkVpcAssociationIdentifier &#91;required&#93; The ID or ARN of the association.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2170,7 +2906,7 @@ vpclattice_get_service_network_vpc_association <- function(serviceNetworkVpcAsso
 #' @usage
 #' vpclattice_get_target_group(targetGroupIdentifier)
 #'
-#' @param targetGroupIdentifier &#91;required&#93; The ID or Amazon Resource Name (ARN) of the target group.
+#' @param targetGroupIdentifier &#91;required&#93; The ID or ARN of the target group.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2248,11 +2984,11 @@ vpclattice_get_target_group <- function(targetGroupIdentifier) {
 }
 .vpclattice$operations$get_target_group <- vpclattice_get_target_group
 
-#' Lists all access log subscriptions for the specified service network or
+#' Lists the access log subscriptions for the specified service network or
 #' service
 #'
 #' @description
-#' Lists all access log subscriptions for the specified service network or
+#' Lists the access log subscriptions for the specified service network or
 #' service.
 #'
 #' @usage
@@ -2261,7 +2997,7 @@ vpclattice_get_target_group <- function(targetGroupIdentifier) {
 #'
 #' @param maxResults The maximum number of results to return.
 #' @param nextToken A pagination token for the next page of results.
-#' @param resourceIdentifier &#91;required&#93; The ID or Amazon Resource Name (ARN) of the service network or service.
+#' @param resourceIdentifier &#91;required&#93; The ID or ARN of the service network or service.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2279,7 +3015,8 @@ vpclattice_get_target_group <- function(targetGroupIdentifier) {
 #'         "2015-01-01"
 #'       ),
 #'       resourceArn = "string",
-#'       resourceId = "string"
+#'       resourceId = "string",
+#'       serviceNetworkLogType = "SERVICE"|"RESOURCE"
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -2329,7 +3066,7 @@ vpclattice_list_access_log_subscriptions <- function(maxResults = NULL, nextToke
 #'
 #' @param maxResults The maximum number of results to return.
 #' @param nextToken A pagination token for the next page of results.
-#' @param serviceIdentifier &#91;required&#93; The ID or Amazon Resource Name (ARN) of the service.
+#' @param serviceIdentifier &#91;required&#93; The ID or ARN of the service.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2387,19 +3124,243 @@ vpclattice_list_listeners <- function(maxResults = NULL, nextToken = NULL, servi
 }
 .vpclattice$operations$list_listeners <- vpclattice_list_listeners
 
-#' Lists the rules for the listener
+#' Lists the resource configurations owned by or shared with this account
 #'
 #' @description
-#' Lists the rules for the listener.
+#' Lists the resource configurations owned by or shared with this account.
+#'
+#' @usage
+#' vpclattice_list_resource_configurations(maxResults, nextToken,
+#'   resourceConfigurationGroupIdentifier, resourceGatewayIdentifier)
+#'
+#' @param maxResults The maximum page size.
+#' @param nextToken A pagination token for the next page of results.
+#' @param resourceConfigurationGroupIdentifier The ID of the group resource configuration.
+#' @param resourceGatewayIdentifier The ID of the resource gateway for the resource configuration.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   items = list(
+#'     list(
+#'       amazonManaged = TRUE|FALSE,
+#'       arn = "string",
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       id = "string",
+#'       lastUpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       name = "string",
+#'       resourceConfigurationGroupId = "string",
+#'       resourceGatewayId = "string",
+#'       status = "ACTIVE"|"CREATE_IN_PROGRESS"|"UPDATE_IN_PROGRESS"|"DELETE_IN_PROGRESS"|"CREATE_FAILED"|"UPDATE_FAILED"|"DELETE_FAILED",
+#'       type = "GROUP"|"CHILD"|"SINGLE"|"ARN"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_resource_configurations(
+#'   maxResults = 123,
+#'   nextToken = "string",
+#'   resourceConfigurationGroupIdentifier = "string",
+#'   resourceGatewayIdentifier = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname vpclattice_list_resource_configurations
+#'
+#' @aliases vpclattice_list_resource_configurations
+vpclattice_list_resource_configurations <- function(maxResults = NULL, nextToken = NULL, resourceConfigurationGroupIdentifier = NULL, resourceGatewayIdentifier = NULL) {
+  op <- new_operation(
+    name = "ListResourceConfigurations",
+    http_method = "GET",
+    http_path = "/resourceconfigurations",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
+    stream_api = FALSE
+  )
+  input <- .vpclattice$list_resource_configurations_input(maxResults = maxResults, nextToken = nextToken, resourceConfigurationGroupIdentifier = resourceConfigurationGroupIdentifier, resourceGatewayIdentifier = resourceGatewayIdentifier)
+  output <- .vpclattice$list_resource_configurations_output()
+  config <- get_config()
+  svc <- .vpclattice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.vpclattice$operations$list_resource_configurations <- vpclattice_list_resource_configurations
+
+#' Lists the associations for the specified VPC endpoint
+#'
+#' @description
+#' Lists the associations for the specified VPC endpoint.
+#'
+#' @usage
+#' vpclattice_list_resource_endpoint_associations(maxResults, nextToken,
+#'   resourceConfigurationIdentifier, resourceEndpointAssociationIdentifier,
+#'   vpcEndpointId, vpcEndpointOwner)
+#'
+#' @param maxResults The maximum page size.
+#' @param nextToken A pagination token for the next page of results.
+#' @param resourceConfigurationIdentifier &#91;required&#93; The ID for the resource configuration associated with the VPC endpoint.
+#' @param resourceEndpointAssociationIdentifier The ID of the association.
+#' @param vpcEndpointId The ID of the VPC endpoint in the association.
+#' @param vpcEndpointOwner The owner of the VPC endpoint in the association.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   items = list(
+#'     list(
+#'       arn = "string",
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       createdBy = "string",
+#'       id = "string",
+#'       resourceConfigurationArn = "string",
+#'       resourceConfigurationId = "string",
+#'       resourceConfigurationName = "string",
+#'       vpcEndpointId = "string",
+#'       vpcEndpointOwner = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_resource_endpoint_associations(
+#'   maxResults = 123,
+#'   nextToken = "string",
+#'   resourceConfigurationIdentifier = "string",
+#'   resourceEndpointAssociationIdentifier = "string",
+#'   vpcEndpointId = "string",
+#'   vpcEndpointOwner = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname vpclattice_list_resource_endpoint_associations
+#'
+#' @aliases vpclattice_list_resource_endpoint_associations
+vpclattice_list_resource_endpoint_associations <- function(maxResults = NULL, nextToken = NULL, resourceConfigurationIdentifier, resourceEndpointAssociationIdentifier = NULL, vpcEndpointId = NULL, vpcEndpointOwner = NULL) {
+  op <- new_operation(
+    name = "ListResourceEndpointAssociations",
+    http_method = "GET",
+    http_path = "/resourceendpointassociations",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
+    stream_api = FALSE
+  )
+  input <- .vpclattice$list_resource_endpoint_associations_input(maxResults = maxResults, nextToken = nextToken, resourceConfigurationIdentifier = resourceConfigurationIdentifier, resourceEndpointAssociationIdentifier = resourceEndpointAssociationIdentifier, vpcEndpointId = vpcEndpointId, vpcEndpointOwner = vpcEndpointOwner)
+  output <- .vpclattice$list_resource_endpoint_associations_output()
+  config <- get_config()
+  svc <- .vpclattice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.vpclattice$operations$list_resource_endpoint_associations <- vpclattice_list_resource_endpoint_associations
+
+#' Lists the resource gateways that you own or that were shared with you
+#'
+#' @description
+#' Lists the resource gateways that you own or that were shared with you.
+#'
+#' @usage
+#' vpclattice_list_resource_gateways(maxResults, nextToken)
+#'
+#' @param maxResults The maximum page size.
+#' @param nextToken If there are additional results, a pagination token for the next page of
+#' results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   items = list(
+#'     list(
+#'       arn = "string",
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       id = "string",
+#'       ipAddressType = "IPV4"|"IPV6"|"DUALSTACK",
+#'       lastUpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       name = "string",
+#'       securityGroupIds = list(
+#'         "string"
+#'       ),
+#'       status = "ACTIVE"|"CREATE_IN_PROGRESS"|"UPDATE_IN_PROGRESS"|"DELETE_IN_PROGRESS"|"CREATE_FAILED"|"UPDATE_FAILED"|"DELETE_FAILED",
+#'       subnetIds = list(
+#'         "string"
+#'       ),
+#'       vpcIdentifier = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_resource_gateways(
+#'   maxResults = 123,
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname vpclattice_list_resource_gateways
+#'
+#' @aliases vpclattice_list_resource_gateways
+vpclattice_list_resource_gateways <- function(maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListResourceGateways",
+    http_method = "GET",
+    http_path = "/resourcegateways",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
+    stream_api = FALSE
+  )
+  input <- .vpclattice$list_resource_gateways_input(maxResults = maxResults, nextToken = nextToken)
+  output <- .vpclattice$list_resource_gateways_output()
+  config <- get_config()
+  svc <- .vpclattice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.vpclattice$operations$list_resource_gateways <- vpclattice_list_resource_gateways
+
+#' Lists the rules for the specified listener
+#'
+#' @description
+#' Lists the rules for the specified listener.
 #'
 #' @usage
 #' vpclattice_list_rules(listenerIdentifier, maxResults, nextToken,
 #'   serviceIdentifier)
 #'
-#' @param listenerIdentifier &#91;required&#93; The ID or Amazon Resource Name (ARN) of the listener.
+#' @param listenerIdentifier &#91;required&#93; The ID or ARN of the listener.
 #' @param maxResults The maximum number of results to return.
 #' @param nextToken A pagination token for the next page of results.
-#' @param serviceIdentifier &#91;required&#93; The ID or Amazon Resource Name (ARN) of the service.
+#' @param serviceIdentifier &#91;required&#93; The ID or ARN of the service.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2458,19 +3419,104 @@ vpclattice_list_rules <- function(listenerIdentifier, maxResults = NULL, nextTok
 }
 .vpclattice$operations$list_rules <- vpclattice_list_rules
 
-#' Lists the associations between the service network and the service
+#' Lists the associations between a service network and a resource
+#' configuration
 #'
 #' @description
-#' Lists the associations between the service network and the service. You
-#' can filter the list either by service or service network. You must
-#' provide either the service network identifier or the service identifier.
+#' Lists the associations between a service network and a resource
+#' configuration.
+#'
+#' @usage
+#' vpclattice_list_service_network_resource_associations(maxResults,
+#'   nextToken, resourceConfigurationIdentifier, serviceNetworkIdentifier)
+#'
+#' @param maxResults The maximum page size.
+#' @param nextToken If there are additional results, a pagination token for the next page of
+#' results.
+#' @param resourceConfigurationIdentifier The ID of the resource configurationk.
+#' @param serviceNetworkIdentifier The ID of the service network.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   items = list(
+#'     list(
+#'       arn = "string",
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       createdBy = "string",
+#'       dnsEntry = list(
+#'         domainName = "string",
+#'         hostedZoneId = "string"
+#'       ),
+#'       failureCode = "string",
+#'       id = "string",
+#'       isManagedAssociation = TRUE|FALSE,
+#'       privateDnsEntry = list(
+#'         domainName = "string",
+#'         hostedZoneId = "string"
+#'       ),
+#'       resourceConfigurationArn = "string",
+#'       resourceConfigurationId = "string",
+#'       resourceConfigurationName = "string",
+#'       serviceNetworkArn = "string",
+#'       serviceNetworkId = "string",
+#'       serviceNetworkName = "string",
+#'       status = "CREATE_IN_PROGRESS"|"ACTIVE"|"PARTIAL"|"DELETE_IN_PROGRESS"|"CREATE_FAILED"|"DELETE_FAILED"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_service_network_resource_associations(
+#'   maxResults = 123,
+#'   nextToken = "string",
+#'   resourceConfigurationIdentifier = "string",
+#'   serviceNetworkIdentifier = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname vpclattice_list_service_network_resource_associations
+#'
+#' @aliases vpclattice_list_service_network_resource_associations
+vpclattice_list_service_network_resource_associations <- function(maxResults = NULL, nextToken = NULL, resourceConfigurationIdentifier = NULL, serviceNetworkIdentifier = NULL) {
+  op <- new_operation(
+    name = "ListServiceNetworkResourceAssociations",
+    http_method = "GET",
+    http_path = "/servicenetworkresourceassociations",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
+    stream_api = FALSE
+  )
+  input <- .vpclattice$list_service_network_resource_associations_input(maxResults = maxResults, nextToken = nextToken, resourceConfigurationIdentifier = resourceConfigurationIdentifier, serviceNetworkIdentifier = serviceNetworkIdentifier)
+  output <- .vpclattice$list_service_network_resource_associations_output()
+  config <- get_config()
+  svc <- .vpclattice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.vpclattice$operations$list_service_network_resource_associations <- vpclattice_list_service_network_resource_associations
+
+#' Lists the associations between a service network and a service
+#'
+#' @description
+#' Lists the associations between a service network and a service. You can
+#' filter the list either by service or service network. You must provide
+#' either the service network identifier or the service identifier.
 #' 
-#' Every association in Amazon VPC Lattice is given a unique Amazon
-#' Resource Name (ARN), such as when a service network is associated with a
-#' VPC or when a service is associated with a service network. If the
-#' association is for a resource that is shared with another account, the
-#' association includes the local account ID as the prefix in the ARN for
-#' each account the resource is shared with.
+#' Every association in Amazon VPC Lattice has a unique Amazon Resource
+#' Name (ARN), such as when a service network is associated with a VPC or
+#' when a service is associated with a service network. If the association
+#' is for a resource is shared with another account, the association
+#' includes the local account ID as the prefix in the ARN.
 #'
 #' @usage
 #' vpclattice_list_service_network_service_associations(maxResults,
@@ -2478,8 +3524,8 @@ vpclattice_list_rules <- function(listenerIdentifier, maxResults = NULL, nextTok
 #'
 #' @param maxResults The maximum number of results to return.
 #' @param nextToken A pagination token for the next page of results.
-#' @param serviceIdentifier The ID or Amazon Resource Name (ARN) of the service.
-#' @param serviceNetworkIdentifier The ID or Amazon Resource Name (ARN) of the service network.
+#' @param serviceIdentifier The ID or ARN of the service.
+#' @param serviceNetworkIdentifier The ID or ARN of the service network.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2545,12 +3591,12 @@ vpclattice_list_service_network_service_associations <- function(maxResults = NU
 }
 .vpclattice$operations$list_service_network_service_associations <- vpclattice_list_service_network_service_associations
 
-#' Lists the service network and VPC associations
+#' Lists the associations between a service network and a VPC
 #'
 #' @description
-#' Lists the service network and VPC associations. You can filter the list
-#' either by VPC or service network. You must provide either the service
-#' network identifier or the VPC identifier.
+#' Lists the associations between a service network and a VPC. You can
+#' filter the list either by VPC or service network. You must provide
+#' either the ID of the service network identifier or the ID of the VPC.
 #'
 #' @usage
 #' vpclattice_list_service_network_vpc_associations(maxResults, nextToken,
@@ -2558,8 +3604,8 @@ vpclattice_list_service_network_service_associations <- function(maxResults = NU
 #'
 #' @param maxResults The maximum number of results to return.
 #' @param nextToken A pagination token for the next page of results.
-#' @param serviceNetworkIdentifier The ID or Amazon Resource Name (ARN) of the service network.
-#' @param vpcIdentifier The ID or Amazon Resource Name (ARN) of the VPC.
+#' @param serviceNetworkIdentifier The ID or ARN of the service network.
+#' @param vpcIdentifier The ID or ARN of the VPC.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2621,13 +3667,79 @@ vpclattice_list_service_network_vpc_associations <- function(maxResults = NULL, 
 }
 .vpclattice$operations$list_service_network_vpc_associations <- vpclattice_list_service_network_vpc_associations
 
-#' Lists the service networks owned by the caller account or shared with
-#' the caller account
+#' Lists the associations between a service network and a VPC endpoint
 #'
 #' @description
-#' Lists the service networks owned by the caller account or shared with
-#' the caller account. Also includes the account ID in the ARN to show
-#' which account owns the service network.
+#' Lists the associations between a service network and a VPC endpoint.
+#'
+#' @usage
+#' vpclattice_list_service_network_vpc_endpoint_associations(maxResults,
+#'   nextToken, serviceNetworkIdentifier)
+#'
+#' @param maxResults The maximum page size.
+#' @param nextToken If there are additional results, a pagination token for the next page of
+#' results.
+#' @param serviceNetworkIdentifier &#91;required&#93; The ID of the service network associated with the VPC endpoint.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   items = list(
+#'     list(
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       id = "string",
+#'       serviceNetworkArn = "string",
+#'       state = "string",
+#'       vpcEndpointId = "string",
+#'       vpcEndpointOwnerId = "string",
+#'       vpcId = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_service_network_vpc_endpoint_associations(
+#'   maxResults = 123,
+#'   nextToken = "string",
+#'   serviceNetworkIdentifier = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname vpclattice_list_service_network_vpc_endpoint_associations
+#'
+#' @aliases vpclattice_list_service_network_vpc_endpoint_associations
+vpclattice_list_service_network_vpc_endpoint_associations <- function(maxResults = NULL, nextToken = NULL, serviceNetworkIdentifier) {
+  op <- new_operation(
+    name = "ListServiceNetworkVpcEndpointAssociations",
+    http_method = "GET",
+    http_path = "/servicenetworkvpcendpointassociations",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
+    stream_api = FALSE
+  )
+  input <- .vpclattice$list_service_network_vpc_endpoint_associations_input(maxResults = maxResults, nextToken = nextToken, serviceNetworkIdentifier = serviceNetworkIdentifier)
+  output <- .vpclattice$list_service_network_vpc_endpoint_associations_output()
+  config <- get_config()
+  svc <- .vpclattice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.vpclattice$operations$list_service_network_vpc_endpoint_associations <- vpclattice_list_service_network_vpc_endpoint_associations
+
+#' Lists the service networks owned by or shared with this account
+#'
+#' @description
+#' Lists the service networks owned by or shared with this account. The
+#' account ID in the ARN shows which account owns the service network.
 #'
 #' @usage
 #' vpclattice_list_service_networks(maxResults, nextToken)
@@ -2650,6 +3762,7 @@ vpclattice_list_service_network_vpc_associations <- function(maxResults = NULL, 
 #'         "2015-01-01"
 #'       ),
 #'       name = "string",
+#'       numberOfAssociatedResourceConfigurations = 123,
 #'       numberOfAssociatedServices = 123,
 #'       numberOfAssociatedVPCs = 123
 #'     )
@@ -2826,7 +3939,7 @@ vpclattice_list_tags_for_resource <- function(resourceArn) {
 #' @param maxResults The maximum number of results to return.
 #' @param nextToken A pagination token for the next page of results.
 #' @param targetGroupType The target group type.
-#' @param vpcIdentifier The ID or Amazon Resource Name (ARN) of the VPC.
+#' @param vpcIdentifier The ID or ARN of the VPC.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2906,7 +4019,7 @@ vpclattice_list_target_groups <- function(maxResults = NULL, nextToken = NULL, t
 #'
 #' @param maxResults The maximum number of results to return.
 #' @param nextToken A pagination token for the next page of results.
-#' @param targetGroupIdentifier &#91;required&#93; The ID or Amazon Resource Name (ARN) of the target group.
+#' @param targetGroupIdentifier &#91;required&#93; The ID or ARN of the target group.
 #' @param targets The targets.
 #'
 #' @return
@@ -2979,8 +4092,8 @@ vpclattice_list_targets <- function(maxResults = NULL, nextToken = NULL, targetG
 #'
 #' @param policy &#91;required&#93; The auth policy. The policy string in JSON must not contain newlines or
 #' blank lines.
-#' @param resourceIdentifier &#91;required&#93; The ID or Amazon Resource Name (ARN) of the service network or service
-#' for which the policy is created.
+#' @param resourceIdentifier &#91;required&#93; The ID or ARN of the service network or service for which the policy is
+#' created.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3037,8 +4150,8 @@ vpclattice_put_auth_policy <- function(policy, resourceIdentifier) {
 #'
 #' @param policy &#91;required&#93; An IAM policy. The policy string in JSON must not contain newlines or
 #' blank lines.
-#' @param resourceArn &#91;required&#93; The ID or Amazon Resource Name (ARN) of the service network or service
-#' for which the policy is created.
+#' @param resourceArn &#91;required&#93; The ID or ARN of the service network or service for which the policy is
+#' created.
 #'
 #' @return
 #' An empty list.
@@ -3084,7 +4197,7 @@ vpclattice_put_resource_policy <- function(policy, resourceArn) {
 #' @usage
 #' vpclattice_register_targets(targetGroupIdentifier, targets)
 #'
-#' @param targetGroupIdentifier &#91;required&#93; The ID or Amazon Resource Name (ARN) of the target group.
+#' @param targetGroupIdentifier &#91;required&#93; The ID or ARN of the target group.
 #' @param targets &#91;required&#93; The targets.
 #'
 #' @return
@@ -3250,7 +4363,7 @@ vpclattice_untag_resource <- function(resourceArn, tagKeys) {
 #' vpclattice_update_access_log_subscription(
 #'   accessLogSubscriptionIdentifier, destinationArn)
 #'
-#' @param accessLogSubscriptionIdentifier &#91;required&#93; The ID or Amazon Resource Name (ARN) of the access log subscription.
+#' @param accessLogSubscriptionIdentifier &#91;required&#93; The ID or ARN of the access log subscription.
 #' @param destinationArn &#91;required&#93; The Amazon Resource Name (ARN) of the access log destination.
 #'
 #' @return
@@ -3307,8 +4420,8 @@ vpclattice_update_access_log_subscription <- function(accessLogSubscriptionIdent
 #'   serviceIdentifier)
 #'
 #' @param defaultAction &#91;required&#93; The action for the default rule.
-#' @param listenerIdentifier &#91;required&#93; The ID or Amazon Resource Name (ARN) of the listener.
-#' @param serviceIdentifier &#91;required&#93; The ID or Amazon Resource Name (ARN) of the service.
+#' @param listenerIdentifier &#91;required&#93; The ID or ARN of the listener.
+#' @param serviceIdentifier &#91;required&#93; The ID or ARN of the service.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3382,11 +4495,172 @@ vpclattice_update_listener <- function(defaultAction, listenerIdentifier, servic
 }
 .vpclattice$operations$update_listener <- vpclattice_update_listener
 
-#' Updates a rule for the listener
+#' Updates the specified resource configuration
 #'
 #' @description
-#' Updates a rule for the listener. You can't modify a default listener
-#' rule. To modify a default listener rule, use
+#' Updates the specified resource configuration.
+#'
+#' @usage
+#' vpclattice_update_resource_configuration(
+#'   allowAssociationToShareableServiceNetwork, portRanges,
+#'   resourceConfigurationDefinition, resourceConfigurationIdentifier)
+#'
+#' @param allowAssociationToShareableServiceNetwork Indicates whether to add the resource configuration to service networks
+#' that are shared with other accounts.
+#' @param portRanges The TCP port ranges that a consumer can use to access a resource
+#' configuration. You can separate port ranges with a comma. Example:
+#' 1-65535 or 1,2,22-30
+#' @param resourceConfigurationDefinition The resource configuration.
+#' @param resourceConfigurationIdentifier &#91;required&#93; The ID of the resource configuration.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   allowAssociationToShareableServiceNetwork = TRUE|FALSE,
+#'   arn = "string",
+#'   id = "string",
+#'   name = "string",
+#'   portRanges = list(
+#'     "string"
+#'   ),
+#'   protocol = "TCP",
+#'   resourceConfigurationDefinition = list(
+#'     arnResource = list(
+#'       arn = "string"
+#'     ),
+#'     dnsResource = list(
+#'       domainName = "string",
+#'       ipAddressType = "IPV4"|"IPV6"|"DUALSTACK"
+#'     ),
+#'     ipResource = list(
+#'       ipAddress = "string"
+#'     )
+#'   ),
+#'   resourceConfigurationGroupId = "string",
+#'   resourceGatewayId = "string",
+#'   status = "ACTIVE"|"CREATE_IN_PROGRESS"|"UPDATE_IN_PROGRESS"|"DELETE_IN_PROGRESS"|"CREATE_FAILED"|"UPDATE_FAILED"|"DELETE_FAILED",
+#'   type = "GROUP"|"CHILD"|"SINGLE"|"ARN"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_resource_configuration(
+#'   allowAssociationToShareableServiceNetwork = TRUE|FALSE,
+#'   portRanges = list(
+#'     "string"
+#'   ),
+#'   resourceConfigurationDefinition = list(
+#'     arnResource = list(
+#'       arn = "string"
+#'     ),
+#'     dnsResource = list(
+#'       domainName = "string",
+#'       ipAddressType = "IPV4"|"IPV6"|"DUALSTACK"
+#'     ),
+#'     ipResource = list(
+#'       ipAddress = "string"
+#'     )
+#'   ),
+#'   resourceConfigurationIdentifier = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname vpclattice_update_resource_configuration
+#'
+#' @aliases vpclattice_update_resource_configuration
+vpclattice_update_resource_configuration <- function(allowAssociationToShareableServiceNetwork = NULL, portRanges = NULL, resourceConfigurationDefinition = NULL, resourceConfigurationIdentifier) {
+  op <- new_operation(
+    name = "UpdateResourceConfiguration",
+    http_method = "PATCH",
+    http_path = "/resourceconfigurations/{resourceConfigurationIdentifier}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .vpclattice$update_resource_configuration_input(allowAssociationToShareableServiceNetwork = allowAssociationToShareableServiceNetwork, portRanges = portRanges, resourceConfigurationDefinition = resourceConfigurationDefinition, resourceConfigurationIdentifier = resourceConfigurationIdentifier)
+  output <- .vpclattice$update_resource_configuration_output()
+  config <- get_config()
+  svc <- .vpclattice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.vpclattice$operations$update_resource_configuration <- vpclattice_update_resource_configuration
+
+#' Updates the specified resource gateway
+#'
+#' @description
+#' Updates the specified resource gateway.
+#'
+#' @usage
+#' vpclattice_update_resource_gateway(resourceGatewayIdentifier,
+#'   securityGroupIds)
+#'
+#' @param resourceGatewayIdentifier &#91;required&#93; The ID or ARN of the resource gateway.
+#' @param securityGroupIds The IDs of the security groups associated with the resource gateway.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   arn = "string",
+#'   id = "string",
+#'   ipAddressType = "IPV4"|"IPV6",
+#'   name = "string",
+#'   securityGroupIds = list(
+#'     "string"
+#'   ),
+#'   status = "ACTIVE"|"CREATE_IN_PROGRESS"|"UPDATE_IN_PROGRESS"|"DELETE_IN_PROGRESS"|"CREATE_FAILED"|"UPDATE_FAILED"|"DELETE_FAILED",
+#'   subnetIds = list(
+#'     "string"
+#'   ),
+#'   vpcId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_resource_gateway(
+#'   resourceGatewayIdentifier = "string",
+#'   securityGroupIds = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname vpclattice_update_resource_gateway
+#'
+#' @aliases vpclattice_update_resource_gateway
+vpclattice_update_resource_gateway <- function(resourceGatewayIdentifier, securityGroupIds = NULL) {
+  op <- new_operation(
+    name = "UpdateResourceGateway",
+    http_method = "PATCH",
+    http_path = "/resourcegateways/{resourceGatewayIdentifier}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .vpclattice$update_resource_gateway_input(resourceGatewayIdentifier = resourceGatewayIdentifier, securityGroupIds = securityGroupIds)
+  output <- .vpclattice$update_resource_gateway_output()
+  config <- get_config()
+  svc <- .vpclattice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.vpclattice$operations$update_resource_gateway <- vpclattice_update_resource_gateway
+
+#' Updates a specified rule for the listener
+#'
+#' @description
+#' Updates a specified rule for the listener. You can't modify a default
+#' listener rule. To modify a default listener rule, use
 #' [`update_listener`][vpclattice_update_listener].
 #'
 #' @usage
@@ -3394,12 +4668,12 @@ vpclattice_update_listener <- function(defaultAction, listenerIdentifier, servic
 #'   ruleIdentifier, serviceIdentifier)
 #'
 #' @param action Information about the action for the specified listener rule.
-#' @param listenerIdentifier &#91;required&#93; The ID or Amazon Resource Name (ARN) of the listener.
+#' @param listenerIdentifier &#91;required&#93; The ID or ARN of the listener.
 #' @param match The rule match.
 #' @param priority The rule priority. A listener can't have multiple rules with the same
 #' priority.
-#' @param ruleIdentifier &#91;required&#93; The ID or Amazon Resource Name (ARN) of the rule.
-#' @param serviceIdentifier &#91;required&#93; The ID or Amazon Resource Name (ARN) of the service.
+#' @param ruleIdentifier &#91;required&#93; The ID or ARN of the rule.
+#' @param serviceIdentifier &#91;required&#93; The ID or ARN of the service.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3535,7 +4809,7 @@ vpclattice_update_rule <- function(action = NULL, listenerIdentifier, match = NU
 #' -   `AWS_IAM`: The resource uses an IAM policy. When this type is used,
 #'     auth is enabled and an auth policy is required.
 #' @param certificateArn The Amazon Resource Name (ARN) of the certificate.
-#' @param serviceIdentifier &#91;required&#93; The ID or Amazon Resource Name (ARN) of the service.
+#' @param serviceIdentifier &#91;required&#93; The ID or ARN of the service.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3598,7 +4872,7 @@ vpclattice_update_service <- function(authType = NULL, certificateArn = NULL, se
 #' 
 #' -   `AWS_IAM`: The resource uses an IAM policy. When this type is used,
 #'     auth is enabled and an auth policy is required.
-#' @param serviceNetworkIdentifier &#91;required&#93; The ID or Amazon Resource Name (ARN) of the service network.
+#' @param serviceNetworkIdentifier &#91;required&#93; The ID or ARN of the service network.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3648,9 +4922,9 @@ vpclattice_update_service_network <- function(authType, serviceNetworkIdentifier
 #' @description
 #' Updates the service network and VPC association. If you add a security
 #' group to the service network and VPC association, the association must
-#' continue to always have at least one security group. You can add or edit
+#' continue to have at least one security group. You can add or edit
 #' security groups at any time. However, to remove all security groups, you
-#' must first delete the association and recreate it without security
+#' must first delete the association and then recreate it without security
 #' groups.
 #'
 #' @usage
@@ -3658,7 +4932,7 @@ vpclattice_update_service_network <- function(authType, serviceNetworkIdentifier
 #'   serviceNetworkVpcAssociationIdentifier)
 #'
 #' @param securityGroupIds &#91;required&#93; The IDs of the security groups.
-#' @param serviceNetworkVpcAssociationIdentifier &#91;required&#93; The ID or Amazon Resource Name (ARN) of the association.
+#' @param serviceNetworkVpcAssociationIdentifier &#91;required&#93; The ID or ARN of the association.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3717,7 +4991,7 @@ vpclattice_update_service_network_vpc_association <- function(securityGroupIds, 
 #' vpclattice_update_target_group(healthCheck, targetGroupIdentifier)
 #'
 #' @param healthCheck &#91;required&#93; The health check configuration.
-#' @param targetGroupIdentifier &#91;required&#93; The ID or Amazon Resource Name (ARN) of the target group.
+#' @param targetGroupIdentifier &#91;required&#93; The ID or ARN of the target group.
 #'
 #' @return
 #' A list with the following syntax:

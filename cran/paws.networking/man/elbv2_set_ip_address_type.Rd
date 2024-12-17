@@ -10,25 +10,20 @@ elbv2_set_ip_address_type(LoadBalancerArn, IpAddressType)
 \arguments{
 \item{LoadBalancerArn}{[required] The Amazon Resource Name (ARN) of the load balancer.}
 
-\item{IpAddressType}{[required] Note: Internal load balancers must use the \code{ipv4} IP address type.
+\item{IpAddressType}{[required] The IP address type. Internal load balancers must use \code{ipv4}.
 
-[Application Load Balancers] The IP address type. The possible values
-are \code{ipv4} (for only IPv4 addresses), \code{dualstack} (for IPv4 and IPv6
-addresses), and \code{dualstack-without-public-ipv4} (for IPv6 only public
-addresses, with private IPv4 and IPv6 addresses).
+[Application Load Balancers] The possible values are \code{ipv4} (IPv4
+addresses), \code{dualstack} (IPv4 and IPv6 addresses), and
+\code{dualstack-without-public-ipv4} (public IPv6 addresses and private IPv4
+and IPv6 addresses).
 
-Note: Application Load Balancer authentication only supports IPv4
-addresses when connecting to an Identity Provider (IdP) or Amazon
-Cognito endpoint. Without a public IPv4 address the load balancer cannot
-complete the authentication process, resulting in HTTP 500 errors.
+Application Load Balancer authentication supports IPv4 addresses only
+when connecting to an Identity Provider (IdP) or Amazon Cognito
+endpoint. Without a public IPv4 address the load balancer can't complete
+the authentication process, resulting in HTTP 500 errors.
 
-[Network Load Balancers] The IP address type. The possible values are
-\code{ipv4} (for only IPv4 addresses) and \code{dualstack} (for IPv4 and IPv6
-addresses). You can’t specify \code{dualstack} for a load balancer with a UDP
-or TCP_UDP listener.
-
-[Gateway Load Balancers] The IP address type. The possible values are
-\code{ipv4} (for only IPv4 addresses) and \code{dualstack} (for IPv4 and IPv6
+[Network Load Balancers and Gateway Load Balancers] The possible
+values are \code{ipv4} (IPv4 addresses) and \code{dualstack} (IPv4 and IPv6
 addresses).}
 }
 \description{

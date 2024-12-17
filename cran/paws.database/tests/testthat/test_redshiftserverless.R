@@ -8,6 +8,10 @@ test_that("list_endpoint_access", {
   expect_error(svc$list_endpoint_access(), NA)
 })
 
+test_that("list_managed_workgroups", {
+  expect_error(svc$list_managed_workgroups(), NA)
+})
+
 test_that("list_namespaces", {
   expect_error(svc$list_namespaces(), NA)
 })

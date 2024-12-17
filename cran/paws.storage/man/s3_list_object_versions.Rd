@@ -2,7 +2,7 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_list_object_versions}
 \alias{s3_list_object_versions}
-\title{This operation is not supported by directory buckets}
+\title{This operation is not supported for directory buckets}
 \usage{
 s3_list_object_versions(
   Bucket,
@@ -57,7 +57,7 @@ with the HTTP status code \verb{403 Forbidden} (access denied).}
 Fields that you do not specify are not returned.}
 }
 \description{
-This operation is not supported by directory buckets.
+This operation is not supported for directory buckets.
 
 See \url{https://www.paws-r-sdk.com/docs/s3_list_object_versions/} for full documentation.
 }

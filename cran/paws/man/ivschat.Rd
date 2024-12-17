@@ -88,16 +88,17 @@ endpoints for more information.
 A \emph{tag} is a metadata label that you assign to an AWS resource. A tag
 comprises a \emph{key} and a \emph{value}, both set by you. For example, you might
 set a tag as \code{topic:nature} to label a particular video category. See
-\href{https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html}{Tagging AWS Resources}
-for more information, including restrictions that apply to tags and "Tag
-naming limits and requirements"; Amazon IVS Chat has no service-specific
-constraints beyond what is documented there.
+\href{https://docs.aws.amazon.com/tag-editor/latest/userguide/best-practices-and-strats.html}{Best practices and strategies}
+in \emph{Tagging Amazon Web Services Resources and Tag Editor} for details,
+including restrictions that apply to tags and "Tag naming limits and
+requirements"; Amazon IVS Chat has no service-specific constraints
+beyond what is documented there.
 
 Tags can help you identify and organize your AWS resources. For example,
 you can use the same tag for different resources to indicate that they
 are related. You can also use tags to manage access (see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_tags.html}{Access Tags}).
 
-The Amazon IVS Chat API has these tag-related endpoints:
+The Amazon IVS Chat API has these tag-related operations:
 \code{tag_resource},
 \code{untag_resource}, and
 \code{list_tags_for_resource}. The
@@ -119,7 +120,7 @@ to have permissions for Amazon IVS Chat API requests.
 
 Users (viewers) connect to a room using secure access tokens that you
 create using the \code{create_chat_token}
-endpoint through the AWS SDK. You call CreateChatToken for every user’s
+operation through the AWS SDK. You call CreateChatToken for every user’s
 chat session, passing identity and authorization information about the
 user.
 

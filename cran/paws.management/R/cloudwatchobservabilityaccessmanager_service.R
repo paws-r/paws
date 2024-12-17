@@ -153,7 +153,7 @@ cloudwatchobservabilityaccessmanager <- function(config = list(), credentials = 
 
 .cloudwatchobservabilityaccessmanager$metadata <- list(
   service_name = "cloudwatchobservabilityaccessmanager",
-  endpoints = list("*" = list(endpoint = "oam.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "oam.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "oam.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "oam.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "oam.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "oam.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "oam.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "oam.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "oam.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "oam.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "oam.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "oam.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "oam.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "OAM",
   api_version = "2022-06-10",
   signing_name = "oam",

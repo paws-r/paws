@@ -103,18 +103,6 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \dontrun{
-#' # The following example gets the values for three secrets.
-#' svc$batch_get_secret_value(
-#'   SecretIdList = list(
-#'     "MySecret1",
-#'     "MySecret2",
-#'     "MySecret3"
-#'   )
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname secretsmanager_batch_get_secret_value
@@ -126,7 +114,7 @@ secretsmanager_batch_get_secret_value <- function(SecretIdList = NULL, Filters =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .secretsmanager$batch_get_secret_value_input(SecretIdList = SecretIdList, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
@@ -1267,7 +1255,7 @@ secretsmanager_list_secret_version_ids <- function(SecretId, MaxResults = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .secretsmanager$list_secret_version_ids_input(SecretId = SecretId, MaxResults = MaxResults, NextToken = NextToken, IncludeDeprecated = IncludeDeprecated)
@@ -1424,7 +1412,7 @@ secretsmanager_list_secrets <- function(IncludePlannedDeletion = NULL, MaxResult
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "SecretList"),
     stream_api = FALSE
   )
   input <- .secretsmanager$list_secrets_input(IncludePlannedDeletion = IncludePlannedDeletion, MaxResults = MaxResults, NextToken = NextToken, Filters = Filters, SortOrder = SortOrder)
@@ -1894,21 +1882,6 @@ secretsmanager_remove_regions_from_replication <- function(SecretId, RemoveRepli
 #'   ForceOverwriteReplicaSecret = TRUE|FALSE
 #' )
 #' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example replicates a secret to eu-west-3. The replica is
-#' # encrypted with the AWS managed key aws/secretsmanager.
-#' svc$replicate_secret_to_regions(
-#'   AddReplicaRegions = list(
-#'     list(
-#'       Region = "eu-west-3"
-#'     )
-#'   ),
-#'   ForceOverwriteReplicaSecret = TRUE,
-#'   SecretId = "MyTestSecret"
-#' )
-#' }
 #'
 #' @keywords internal
 #'

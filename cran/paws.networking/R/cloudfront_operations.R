@@ -86,6 +86,40 @@ cloudfront_copy_distribution <- function(PrimaryDistributionId, Staging = NULL, 
 }
 .cloudfront$operations$copy_distribution <- cloudfront_copy_distribution
 
+#' Creates an Anycast static IP list
+#'
+#' @description
+#' Creates an Anycast static IP list.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudfront_create_anycast_ip_list/](https://www.paws-r-sdk.com/docs/cloudfront_create_anycast_ip_list/) for full documentation.
+#'
+#' @param Name &#91;required&#93; Name of the Anycast static IP list.
+#' @param IpCount &#91;required&#93; The number of static IP addresses that are allocated to the Anycast
+#' static IP list.
+#' @param Tags 
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_create_anycast_ip_list
+cloudfront_create_anycast_ip_list <- function(Name, IpCount, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateAnycastIpList",
+    http_method = "POST",
+    http_path = "/2020-05-31/anycast-ip-list",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudfront$create_anycast_ip_list_input(Name = Name, IpCount = IpCount, Tags = Tags)
+  output <- .cloudfront$create_anycast_ip_list_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$create_anycast_ip_list <- cloudfront_create_anycast_ip_list
+
 #' Creates a cache policy
 #'
 #' @description
@@ -425,7 +459,7 @@ cloudfront_create_key_value_store <- function(Name, Comment = NULL, ImportSource
   op <- new_operation(
     name = "CreateKeyValueStore",
     http_method = "POST",
-    http_path = "/2020-05-31/key-value-store/",
+    http_path = "/2020-05-31/key-value-store",
     host_prefix = "",
     paginator = list(),
     stream_api = FALSE
@@ -460,7 +494,7 @@ cloudfront_create_monitoring_subscription <- function(DistributionId, Monitoring
   op <- new_operation(
     name = "CreateMonitoringSubscription",
     http_method = "POST",
-    http_path = "/2020-05-31/distributions/{DistributionId}/monitoring-subscription/",
+    http_path = "/2020-05-31/distributions/{DistributionId}/monitoring-subscription",
     host_prefix = "",
     paginator = list(),
     stream_api = FALSE
@@ -703,6 +737,71 @@ cloudfront_create_streaming_distribution_with_tags <- function(StreamingDistribu
   return(response)
 }
 .cloudfront$operations$create_streaming_distribution_with_tags <- cloudfront_create_streaming_distribution_with_tags
+
+#' Create an Amazon CloudFront VPC origin
+#'
+#' @description
+#' Create an Amazon CloudFront VPC origin.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudfront_create_vpc_origin/](https://www.paws-r-sdk.com/docs/cloudfront_create_vpc_origin/) for full documentation.
+#'
+#' @param VpcOriginEndpointConfig &#91;required&#93; The VPC origin endpoint configuration.
+#' @param Tags 
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_create_vpc_origin
+cloudfront_create_vpc_origin <- function(VpcOriginEndpointConfig, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateVpcOrigin",
+    http_method = "POST",
+    http_path = "/2020-05-31/vpc-origin",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudfront$create_vpc_origin_input(VpcOriginEndpointConfig = VpcOriginEndpointConfig, Tags = Tags)
+  output <- .cloudfront$create_vpc_origin_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$create_vpc_origin <- cloudfront_create_vpc_origin
+
+#' Deletes an Anycast static IP list
+#'
+#' @description
+#' Deletes an Anycast static IP list.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudfront_delete_anycast_ip_list/](https://www.paws-r-sdk.com/docs/cloudfront_delete_anycast_ip_list/) for full documentation.
+#'
+#' @param Id &#91;required&#93; The ID of the Anycast static IP list.
+#' @param IfMatch &#91;required&#93; The current version (`ETag` value) of the Anycast static IP list that
+#' you are deleting.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_delete_anycast_ip_list
+cloudfront_delete_anycast_ip_list <- function(Id, IfMatch) {
+  op <- new_operation(
+    name = "DeleteAnycastIpList",
+    http_method = "DELETE",
+    http_path = "/2020-05-31/anycast-ip-list/{Id}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudfront$delete_anycast_ip_list_input(Id = Id, IfMatch = IfMatch)
+  output <- .cloudfront$delete_anycast_ip_list_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$delete_anycast_ip_list <- cloudfront_delete_anycast_ip_list
 
 #' Deletes a cache policy
 #'
@@ -1027,7 +1126,7 @@ cloudfront_delete_monitoring_subscription <- function(DistributionId) {
   op <- new_operation(
     name = "DeleteMonitoringSubscription",
     http_method = "DELETE",
-    http_path = "/2020-05-31/distributions/{DistributionId}/monitoring-subscription/",
+    http_path = "/2020-05-31/distributions/{DistributionId}/monitoring-subscription",
     host_prefix = "",
     paginator = list(),
     stream_api = FALSE
@@ -1166,7 +1265,7 @@ cloudfront_delete_realtime_log_config <- function(Name = NULL, ARN = NULL) {
   op <- new_operation(
     name = "DeleteRealtimeLogConfig",
     http_method = "POST",
-    http_path = "/2020-05-31/delete-realtime-log-config/",
+    http_path = "/2020-05-31/delete-realtime-log-config",
     host_prefix = "",
     paginator = list(),
     stream_api = FALSE
@@ -1256,6 +1355,38 @@ cloudfront_delete_streaming_distribution <- function(Id, IfMatch = NULL) {
 }
 .cloudfront$operations$delete_streaming_distribution <- cloudfront_delete_streaming_distribution
 
+#' Delete an Amazon CloudFront VPC origin
+#'
+#' @description
+#' Delete an Amazon CloudFront VPC origin.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudfront_delete_vpc_origin/](https://www.paws-r-sdk.com/docs/cloudfront_delete_vpc_origin/) for full documentation.
+#'
+#' @param Id &#91;required&#93; The VPC origin ID.
+#' @param IfMatch &#91;required&#93; The VPC origin to delete, if a match occurs.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_delete_vpc_origin
+cloudfront_delete_vpc_origin <- function(Id, IfMatch) {
+  op <- new_operation(
+    name = "DeleteVpcOrigin",
+    http_method = "DELETE",
+    http_path = "/2020-05-31/vpc-origin/{Id}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudfront$delete_vpc_origin_input(Id = Id, IfMatch = IfMatch)
+  output <- .cloudfront$delete_vpc_origin_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$delete_vpc_origin <- cloudfront_delete_vpc_origin
+
 #' Gets configuration information and metadata about a CloudFront function,
 #' but not the function's code
 #'
@@ -1319,6 +1450,37 @@ cloudfront_describe_key_value_store <- function(Name) {
   return(response)
 }
 .cloudfront$operations$describe_key_value_store <- cloudfront_describe_key_value_store
+
+#' Gets an Anycast static IP list
+#'
+#' @description
+#' Gets an Anycast static IP list.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudfront_get_anycast_ip_list/](https://www.paws-r-sdk.com/docs/cloudfront_get_anycast_ip_list/) for full documentation.
+#'
+#' @param Id &#91;required&#93; The ID of the Anycast static IP list.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_get_anycast_ip_list
+cloudfront_get_anycast_ip_list <- function(Id) {
+  op <- new_operation(
+    name = "GetAnycastIpList",
+    http_method = "GET",
+    http_path = "/2020-05-31/anycast-ip-list/{Id}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudfront$get_anycast_ip_list_input(Id = Id)
+  output <- .cloudfront$get_anycast_ip_list_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$get_anycast_ip_list <- cloudfront_get_anycast_ip_list
 
 #' Gets a cache policy, including the following metadata:
 #'
@@ -1854,7 +2016,7 @@ cloudfront_get_monitoring_subscription <- function(DistributionId) {
   op <- new_operation(
     name = "GetMonitoringSubscription",
     http_method = "GET",
-    http_path = "/2020-05-31/distributions/{DistributionId}/monitoring-subscription/",
+    http_path = "/2020-05-31/distributions/{DistributionId}/monitoring-subscription",
     host_prefix = "",
     paginator = list(),
     stream_api = FALSE
@@ -2087,7 +2249,7 @@ cloudfront_get_realtime_log_config <- function(Name = NULL, ARN = NULL) {
   op <- new_operation(
     name = "GetRealtimeLogConfig",
     http_method = "POST",
-    http_path = "/2020-05-31/get-realtime-log-config/",
+    http_path = "/2020-05-31/get-realtime-log-config",
     host_prefix = "",
     paginator = list(),
     stream_api = FALSE
@@ -2244,6 +2406,73 @@ cloudfront_get_streaming_distribution_config <- function(Id) {
 }
 .cloudfront$operations$get_streaming_distribution_config <- cloudfront_get_streaming_distribution_config
 
+#' Get the details of an Amazon CloudFront VPC origin
+#'
+#' @description
+#' Get the details of an Amazon CloudFront VPC origin.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudfront_get_vpc_origin/](https://www.paws-r-sdk.com/docs/cloudfront_get_vpc_origin/) for full documentation.
+#'
+#' @param Id &#91;required&#93; The VPC origin ID.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_get_vpc_origin
+cloudfront_get_vpc_origin <- function(Id) {
+  op <- new_operation(
+    name = "GetVpcOrigin",
+    http_method = "GET",
+    http_path = "/2020-05-31/vpc-origin/{Id}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudfront$get_vpc_origin_input(Id = Id)
+  output <- .cloudfront$get_vpc_origin_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$get_vpc_origin <- cloudfront_get_vpc_origin
+
+#' Lists your Anycast static IP lists
+#'
+#' @description
+#' Lists your Anycast static IP lists.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudfront_list_anycast_ip_lists/](https://www.paws-r-sdk.com/docs/cloudfront_list_anycast_ip_lists/) for full documentation.
+#'
+#' @param Marker Use this field when paginating results to indicate where to begin in
+#' your list. The response includes items in the list that occur after the
+#' marker. To get the next page of the list, set this field's value to the
+#' value of `NextMarker` from the current page's response.
+#' @param MaxItems The maximum number of Anycast static IP lists that you want returned in
+#' the response.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_list_anycast_ip_lists
+cloudfront_list_anycast_ip_lists <- function(Marker = NULL, MaxItems = NULL) {
+  op <- new_operation(
+    name = "ListAnycastIpLists",
+    http_method = "GET",
+    http_path = "/2020-05-31/anycast-ip-list",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudfront$list_anycast_ip_lists_input(Marker = Marker, MaxItems = MaxItems)
+  output <- .cloudfront$list_anycast_ip_lists_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$list_anycast_ip_lists <- cloudfront_list_anycast_ip_lists
+
 #' Gets a list of cache policies
 #'
 #' @description
@@ -2312,7 +2541,7 @@ cloudfront_list_cloud_front_origin_access_identities <- function(Marker = NULL, 
     http_method = "GET",
     http_path = "/2020-05-31/origin-access-identity/cloudfront",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "CloudFrontOriginAccessIdentityList.IsTruncated", output_token = "CloudFrontOriginAccessIdentityList.NextMarker", result_key = "CloudFrontOriginAccessIdentityList.Items"),
+    paginator = list(input_token = "Marker", output_token = "CloudFrontOriginAccessIdentityList.NextMarker", limit_key = "MaxItems", more_results = "CloudFrontOriginAccessIdentityList.IsTruncated", result_key = "CloudFrontOriginAccessIdentityList.Items"),
     stream_api = FALSE
   )
   input <- .cloudfront$list_cloud_front_origin_access_identities_input(Marker = Marker, MaxItems = MaxItems)
@@ -2428,7 +2657,7 @@ cloudfront_list_distributions <- function(Marker = NULL, MaxItems = NULL) {
     http_method = "GET",
     http_path = "/2020-05-31/distribution",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "DistributionList.IsTruncated", output_token = "DistributionList.NextMarker", result_key = "DistributionList.Items"),
+    paginator = list(input_token = "Marker", output_token = "DistributionList.NextMarker", limit_key = "MaxItems", more_results = "DistributionList.IsTruncated", result_key = "DistributionList.Items"),
     stream_api = FALSE
   )
   input <- .cloudfront$list_distributions_input(Marker = Marker, MaxItems = MaxItems)
@@ -2440,6 +2669,44 @@ cloudfront_list_distributions <- function(Marker = NULL, MaxItems = NULL) {
   return(response)
 }
 .cloudfront$operations$list_distributions <- cloudfront_list_distributions
+
+#' Lists the distributions in your account that are associated with the
+#' specified AnycastIpListId
+#'
+#' @description
+#' Lists the distributions in your account that are associated with the specified `AnycastIpListId`.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudfront_list_distributions_by_anycast_ip_list_id/](https://www.paws-r-sdk.com/docs/cloudfront_list_distributions_by_anycast_ip_list_id/) for full documentation.
+#'
+#' @param Marker Use this field when paginating results to indicate where to begin in
+#' your list. The response includes items in the list that occur after the
+#' marker. To get the next page of the list, set this field's value to the
+#' value of `NextMarker` from the current page's response.
+#' @param MaxItems The maximum number of distributions that you want returned in the
+#' response.
+#' @param AnycastIpListId &#91;required&#93; The ID of the Anycast static IP list.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_list_distributions_by_anycast_ip_list_id
+cloudfront_list_distributions_by_anycast_ip_list_id <- function(Marker = NULL, MaxItems = NULL, AnycastIpListId) {
+  op <- new_operation(
+    name = "ListDistributionsByAnycastIpListId",
+    http_method = "GET",
+    http_path = "/2020-05-31/distributionsByAnycastIpListId/{AnycastIpListId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudfront$list_distributions_by_anycast_ip_list_id_input(Marker = Marker, MaxItems = MaxItems, AnycastIpListId = AnycastIpListId)
+  output <- .cloudfront$list_distributions_by_anycast_ip_list_id_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$list_distributions_by_anycast_ip_list_id <- cloudfront_list_distributions_by_anycast_ip_list_id
 
 #' Gets a list of distribution IDs for distributions that have a cache
 #' behavior that's associated with the specified cache policy
@@ -2584,7 +2851,7 @@ cloudfront_list_distributions_by_realtime_log_config <- function(Marker = NULL, 
   op <- new_operation(
     name = "ListDistributionsByRealtimeLogConfig",
     http_method = "POST",
-    http_path = "/2020-05-31/distributionsByRealtimeLogConfig/",
+    http_path = "/2020-05-31/distributionsByRealtimeLogConfig",
     host_prefix = "",
     paginator = list(),
     stream_api = FALSE
@@ -2638,6 +2905,39 @@ cloudfront_list_distributions_by_response_headers_policy_id <- function(Marker =
   return(response)
 }
 .cloudfront$operations$list_distributions_by_response_headers_policy_id <- cloudfront_list_distributions_by_response_headers_policy_id
+
+#' List CloudFront distributions by their VPC origin ID
+#'
+#' @description
+#' List CloudFront distributions by their VPC origin ID.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudfront_list_distributions_by_vpc_origin_id/](https://www.paws-r-sdk.com/docs/cloudfront_list_distributions_by_vpc_origin_id/) for full documentation.
+#'
+#' @param Marker The marker associated with the VPC origin distributions list.
+#' @param MaxItems The maximum number of items included in the list.
+#' @param VpcOriginId &#91;required&#93; The VPC origin ID.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_list_distributions_by_vpc_origin_id
+cloudfront_list_distributions_by_vpc_origin_id <- function(Marker = NULL, MaxItems = NULL, VpcOriginId) {
+  op <- new_operation(
+    name = "ListDistributionsByVpcOriginId",
+    http_method = "GET",
+    http_path = "/2020-05-31/distributionsByVpcOriginId/{VpcOriginId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudfront$list_distributions_by_vpc_origin_id_input(Marker = Marker, MaxItems = MaxItems, VpcOriginId = VpcOriginId)
+  output <- .cloudfront$list_distributions_by_vpc_origin_id_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$list_distributions_by_vpc_origin_id <- cloudfront_list_distributions_by_vpc_origin_id
 
 #' List the distributions that are associated with a specified WAF web ACL
 #'
@@ -2828,7 +3128,7 @@ cloudfront_list_invalidations <- function(DistributionId, Marker = NULL, MaxItem
     http_method = "GET",
     http_path = "/2020-05-31/distribution/{DistributionId}/invalidation",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "InvalidationList.IsTruncated", output_token = "InvalidationList.NextMarker", result_key = "InvalidationList.Items"),
+    paginator = list(input_token = "Marker", output_token = "InvalidationList.NextMarker", limit_key = "MaxItems", more_results = "InvalidationList.IsTruncated", result_key = "InvalidationList.Items"),
     stream_api = FALSE
   )
   input <- .cloudfront$list_invalidations_input(DistributionId = DistributionId, Marker = Marker, MaxItems = MaxItems)
@@ -2910,11 +3210,11 @@ cloudfront_list_key_value_stores <- function(Marker = NULL, MaxItems = NULL, Sta
 }
 .cloudfront$operations$list_key_value_stores <- cloudfront_list_key_value_stores
 
-#' Gets the list of CloudFront origin access controls in this Amazon Web
-#' Services account
+#' Gets the list of CloudFront origin access controls (OACs) in this Amazon
+#' Web Services account
 #'
 #' @description
-#' Gets the list of CloudFront origin access controls in this Amazon Web Services account.
+#' Gets the list of CloudFront origin access controls (OACs) in this Amazon Web Services account.
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudfront_list_origin_access_controls/](https://www.paws-r-sdk.com/docs/cloudfront_list_origin_access_controls/) for full documentation.
 #'
@@ -3016,7 +3316,7 @@ cloudfront_list_public_keys <- function(Marker = NULL, MaxItems = NULL) {
     http_method = "GET",
     http_path = "/2020-05-31/public-key",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "Marker", output_token = "PublicKeyList.NextMarker", limit_key = "MaxItems", result_key = "PublicKeyList.Items"),
     stream_api = FALSE
   )
   input <- .cloudfront$list_public_keys_input(Marker = Marker, MaxItems = MaxItems)
@@ -3130,7 +3430,7 @@ cloudfront_list_streaming_distributions <- function(Marker = NULL, MaxItems = NU
     http_method = "GET",
     http_path = "/2020-05-31/streaming-distribution",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "StreamingDistributionList.IsTruncated", output_token = "StreamingDistributionList.NextMarker", result_key = "StreamingDistributionList.Items"),
+    paginator = list(input_token = "Marker", output_token = "StreamingDistributionList.NextMarker", limit_key = "MaxItems", more_results = "StreamingDistributionList.IsTruncated", result_key = "StreamingDistributionList.Items"),
     stream_api = FALSE
   )
   input <- .cloudfront$list_streaming_distributions_input(Marker = Marker, MaxItems = MaxItems)
@@ -3173,6 +3473,38 @@ cloudfront_list_tags_for_resource <- function(Resource) {
   return(response)
 }
 .cloudfront$operations$list_tags_for_resource <- cloudfront_list_tags_for_resource
+
+#' List the CloudFront VPC origins in your account
+#'
+#' @description
+#' List the CloudFront VPC origins in your account.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudfront_list_vpc_origins/](https://www.paws-r-sdk.com/docs/cloudfront_list_vpc_origins/) for full documentation.
+#'
+#' @param Marker The marker associated with the VPC origins list.
+#' @param MaxItems The maximum number of items included in the list.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_list_vpc_origins
+cloudfront_list_vpc_origins <- function(Marker = NULL, MaxItems = NULL) {
+  op <- new_operation(
+    name = "ListVpcOrigins",
+    http_method = "GET",
+    http_path = "/2020-05-31/vpc-origin",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudfront$list_vpc_origins_input(Marker = Marker, MaxItems = MaxItems)
+  output <- .cloudfront$list_vpc_origins_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$list_vpc_origins <- cloudfront_list_vpc_origins
 
 #' Publishes a CloudFront function by copying the function code from the
 #' DEVELOPMENT stage to LIVE
@@ -3803,7 +4135,7 @@ cloudfront_update_realtime_log_config <- function(EndPoints = NULL, Fields = NUL
   op <- new_operation(
     name = "UpdateRealtimeLogConfig",
     http_method = "PUT",
-    http_path = "/2020-05-31/realtime-log-config/",
+    http_path = "/2020-05-31/realtime-log-config",
     host_prefix = "",
     paginator = list(),
     stream_api = FALSE
@@ -3888,3 +4220,36 @@ cloudfront_update_streaming_distribution <- function(StreamingDistributionConfig
   return(response)
 }
 .cloudfront$operations$update_streaming_distribution <- cloudfront_update_streaming_distribution
+
+#' Update an Amazon CloudFront VPC origin in your account
+#'
+#' @description
+#' Update an Amazon CloudFront VPC origin in your account.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudfront_update_vpc_origin/](https://www.paws-r-sdk.com/docs/cloudfront_update_vpc_origin/) for full documentation.
+#'
+#' @param VpcOriginEndpointConfig &#91;required&#93; The VPC origin endpoint configuration.
+#' @param Id &#91;required&#93; The VPC origin ID.
+#' @param IfMatch &#91;required&#93; The VPC origin to update, if a match occurs.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_update_vpc_origin
+cloudfront_update_vpc_origin <- function(VpcOriginEndpointConfig, Id, IfMatch) {
+  op <- new_operation(
+    name = "UpdateVpcOrigin",
+    http_method = "PUT",
+    http_path = "/2020-05-31/vpc-origin/{Id}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudfront$update_vpc_origin_input(VpcOriginEndpointConfig = VpcOriginEndpointConfig, Id = Id, IfMatch = IfMatch)
+  output <- .cloudfront$update_vpc_origin_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$update_vpc_origin <- cloudfront_update_vpc_origin

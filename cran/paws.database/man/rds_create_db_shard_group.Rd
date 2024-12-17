@@ -10,7 +10,8 @@ rds_create_db_shard_group(
   ComputeRedundancy = NULL,
   MaxACU,
   MinACU = NULL,
-  PubliclyAccessible = NULL
+  PubliclyAccessible = NULL,
+  Tags = NULL
 )
 }
 \arguments{
@@ -18,16 +19,15 @@ rds_create_db_shard_group(
 
 \item{DBClusterIdentifier}{[required] The name of the primary DB cluster for the DB shard group.}
 
-\item{ComputeRedundancy}{Specifies whether to create standby instances for the DB shard group.
-Valid values are the following:
+\item{ComputeRedundancy}{Specifies whether to create standby DB shard groups for the DB shard
+group. Valid values are the following:
 \itemize{
-\item 0 - Creates a single, primary DB instance for each physical shard.
-This is the default value, and the only one supported for the
-preview.
-\item 1 - Creates a primary DB instance and a standby instance in a
-different Availability Zone (AZ) for each physical shard.
-\item 2 - Creates a primary DB instance and two standby instances in
-different AZs for each physical shard.
+\item 0 - Creates a DB shard group without a standby DB shard group. This
+is the default value.
+\item 1 - Creates a DB shard group with a standby DB shard group in a
+different Availability Zone (AZ).
+\item 2 - Creates a DB shard group with two standby DB shard groups in two
+different AZs.
 }}
 
 \item{MaxACU}{[required] The maximum capacity of the DB shard group in Aurora capacity units
@@ -69,6 +69,8 @@ gateway attached to it, the DB shard group is private.
 \item If the subnets are part of a VPC that has an internet gateway
 attached to it, the DB shard group is public.
 }}
+
+\item{Tags}{}
 }
 \description{
 Creates a new DB shard group for Aurora Limitless Database. You must enable Aurora Limitless Database to create a DB shard group.

@@ -20,9 +20,9 @@ cloudformation_register_type(
 
 We suggest that extension names adhere to the following patterns:
 \itemize{
-\item For resource types, \emph{company_or_organization}::\emph{service}::\emph{type}.
-\item For modules, \emph{company_or_organization}::\emph{service}::\emph{type}::MODULE.
-\item For hooks, \emph{MyCompany}::\emph{Testing}::\emph{MyTestHook}.
+\item For resource types, \verb{company_or_organization::service::type}.
+\item For modules, \verb{company_or_organization::service::type::MODULE}.
+\item For hooks, \verb{MyCompany::Testing::MyTestHook}.
 }
 
 The following organization namespaces are reserved and can't be used in
@@ -42,7 +42,7 @@ contains the necessary files for the extension you want to register.
 For information about generating a schema handler package for the
 extension you want to register, see
 \href{https://docs.aws.amazon.com/cloudformation-cli/latest/userguide/resource-type-cli-submit.html}{submit}
-in the \emph{CloudFormation CLI User Guide}.
+in the \emph{CloudFormation Command Line Interface (CLI) User Guide}.
 
 The user registering the extension must be able to access the package in
 the S3 bucket. That's, the user needs to have

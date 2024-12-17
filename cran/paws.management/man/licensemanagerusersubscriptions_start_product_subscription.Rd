@@ -9,15 +9,22 @@ licensemanagerusersubscriptions_start_product_subscription(
   Domain = NULL,
   IdentityProvider,
   Product,
+  Tags = NULL,
   Username
 )
 }
 \arguments{
-\item{Domain}{The domain name of the user.}
+\item{Domain}{The domain name of the Active Directory that contains the user for whom
+to start the product subscription.}
 
 \item{IdentityProvider}{[required] An object that specifies details for the identity provider.}
 
-\item{Product}{[required] The name of the user-based subscription product.}
+\item{Product}{[required] The name of the user-based subscription product.
+
+Valid values: \code{VISUAL_STUDIO_ENTERPRISE} | \code{VISUAL_STUDIO_PROFESSIONAL}
+| \code{OFFICE_PROFESSIONAL_PLUS}}
+
+\item{Tags}{The tags that apply to the product subscription.}
 
 \item{Username}{[required] The user name from the identity provider of the user.}
 }

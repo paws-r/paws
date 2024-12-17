@@ -68,7 +68,7 @@ default is port 80.}
 \item{HealthCheckEnabled}{Indicates whether health checks are enabled. If the target type is
 \code{lambda}, health checks are disabled by default but can be enabled. If
 the target type is \code{instance}, \code{ip}, or \code{alb}, health checks are always
-enabled and cannot be disabled.}
+enabled and can't be disabled.}
 
 \item{HealthCheckPath}{[HTTP/HTTPS health checks] The destination for health checks on the
 targets.
@@ -127,9 +127,7 @@ specify publicly routable IP addresses.
 
 \item{Tags}{The tags to assign to the target group.}
 
-\item{IpAddressType}{The type of IP address used for this target group. The possible values
-are \code{ipv4} and \code{ipv6}. This is an optional parameter. If not specified,
-the IP address type defaults to \code{ipv4}.}
+\item{IpAddressType}{The IP address type. The default value is \code{ipv4}.}
 }
 \description{
 Creates a target group.

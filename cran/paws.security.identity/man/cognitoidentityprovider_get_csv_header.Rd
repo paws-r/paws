@@ -8,8 +8,7 @@ be used as input for the user import job}
 cognitoidentityprovider_get_csv_header(UserPoolId)
 }
 \arguments{
-\item{UserPoolId}{[required] The user pool ID for the user pool that the users are to be imported
-into.}
+\item{UserPoolId}{[required] The ID of the user pool that the users are to be imported into.}
 }
 \description{
 Gets the header information for the comma-separated value (CSV) file to be used as input for the user import job.

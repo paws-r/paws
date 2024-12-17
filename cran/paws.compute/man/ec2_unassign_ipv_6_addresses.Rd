@@ -6,17 +6,17 @@
 from a network interface}
 \usage{
 ec2_unassign_ipv_6_addresses(
-  Ipv6Addresses = NULL,
   Ipv6Prefixes = NULL,
-  NetworkInterfaceId
+  NetworkInterfaceId,
+  Ipv6Addresses = NULL
 )
 }
 \arguments{
-\item{Ipv6Addresses}{The IPv6 addresses to unassign from the network interface.}
-
 \item{Ipv6Prefixes}{The IPv6 prefixes to unassign from the network interface.}
 
 \item{NetworkInterfaceId}{[required] The ID of the network interface.}
+
+\item{Ipv6Addresses}{The IPv6 addresses to unassign from the network interface.}
 }
 \description{
 Unassigns one or more IPv6 addresses IPv4 Prefix Delegation prefixes from a network interface.

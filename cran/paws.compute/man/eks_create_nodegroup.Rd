@@ -20,6 +20,7 @@ eks_create_nodegroup(
   clientRequestToken = NULL,
   launchTemplate = NULL,
   updateConfig = NULL,
+  nodeRepairConfig = NULL,
   capacityType = NULL,
   version = NULL,
   releaseVersion = NULL
@@ -111,6 +112,8 @@ the requirements in \code{launchTemplateSpecification}. Also refer to
 in the \emph{Amazon EKS User Guide}.}
 
 \item{updateConfig}{The node group update configuration.}
+
+\item{nodeRepairConfig}{The node auto repair configuration for the node group.}
 
 \item{capacityType}{The capacity type for your node group.}
 

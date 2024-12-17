@@ -6,18 +6,21 @@
 network interface}
 \usage{
 ec2_assign_private_ip_addresses(
-  AllowReassignment = NULL,
+  Ipv4Prefixes = NULL,
+  Ipv4PrefixCount = NULL,
   NetworkInterfaceId,
   PrivateIpAddresses = NULL,
   SecondaryPrivateIpAddressCount = NULL,
-  Ipv4Prefixes = NULL,
-  Ipv4PrefixCount = NULL
+  AllowReassignment = NULL
 )
 }
 \arguments{
-\item{AllowReassignment}{Indicates whether to allow an IP address that is already assigned to
-another network interface or instance to be reassigned to the specified
-network interface.}
+\item{Ipv4Prefixes}{One or more IPv4 prefixes assigned to the network interface. You cannot
+use this option if you use the \code{Ipv4PrefixCount} option.}
+
+\item{Ipv4PrefixCount}{The number of IPv4 prefixes that Amazon Web Services automatically
+assigns to the network interface. You cannot use this option if you use
+the \verb{Ipv4 Prefixes} option.}
 
 \item{NetworkInterfaceId}{[required] The ID of the network interface.}
 
@@ -32,12 +35,9 @@ IP address within the subnet range.}
 You can't specify this parameter when also specifying private IP
 addresses.}
 
-\item{Ipv4Prefixes}{One or more IPv4 prefixes assigned to the network interface. You cannot
-use this option if you use the \code{Ipv4PrefixCount} option.}
-
-\item{Ipv4PrefixCount}{The number of IPv4 prefixes that Amazon Web Services automatically
-assigns to the network interface. You cannot use this option if you use
-the \verb{Ipv4 Prefixes} option.}
+\item{AllowReassignment}{Indicates whether to allow an IP address that is already assigned to
+another network interface or instance to be reassigned to the specified
+network interface.}
 }
 \description{
 Assigns one or more secondary private IP addresses to the specified network interface.

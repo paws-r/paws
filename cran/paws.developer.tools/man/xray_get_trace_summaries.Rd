@@ -20,8 +20,8 @@ xray_get_trace_summaries(
 
 \item{EndTime}{[required] The end of the time frame for which to retrieve traces.}
 
-\item{TimeRangeType}{A parameter to indicate whether to query trace summaries by TraceId,
-Event (trace update time), or Service (segment end time).}
+\item{TimeRangeType}{Query trace summaries by TraceId (trace start time), Event (trace update
+time), or Service (trace segment end time).}
 
 \item{Sampling}{Set to \code{true} to get summaries for only a subset of available traces.}
 

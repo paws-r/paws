@@ -16,7 +16,8 @@ pinpointsmsvoicev2_send_text_message(
   Context = NULL,
   DestinationCountryParameters = NULL,
   DryRun = NULL,
-  ProtectConfigurationId = NULL
+  ProtectConfigurationId = NULL,
+  MessageFeedbackEnabled = NULL
 )
 }
 \arguments{
@@ -24,7 +25,10 @@ pinpointsmsvoicev2_send_text_message(
 
 \item{OriginationIdentity}{The origination identity of the message. This can be either the
 PhoneNumber, PhoneNumberId, PhoneNumberArn, SenderId, SenderIdArn,
-PoolId, or PoolArn.}
+PoolId, or PoolArn.
+
+If you are using a shared AWS End User Messaging SMS and Voice resource
+then you must use the full Amazon Resource Name(ARN).}
 
 \item{MessageBody}{The body of the text message.}
 
@@ -73,6 +77,10 @@ is used. For more information about MPS limits, see \href{https://docs.aws.amazo
 in the \emph{AWS End User Messaging SMS User Guide}..}
 
 \item{ProtectConfigurationId}{The unique identifier for the protect configuration.}
+
+\item{MessageFeedbackEnabled}{Set to true to enable message feedback for the message. When a user
+receives the message you need to update the message status using
+\code{\link[=pinpointsmsvoicev2_put_message_feedback]{put_message_feedback}}.}
 }
 \description{
 Creates a new text message and sends it to a recipient's phone number. SendTextMessage only sends an SMS message to one recipient each time it is invoked.

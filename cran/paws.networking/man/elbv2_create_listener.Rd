@@ -24,10 +24,10 @@ elbv2_create_listener(
 Application Load Balancers, the supported protocols are HTTP and HTTPS.
 For Network Load Balancers, the supported protocols are TCP, TLS, UDP,
 and TCP_UDP. You can’t specify the UDP or TCP_UDP protocol if dual-stack
-mode is enabled. You cannot specify a protocol for a Gateway Load
+mode is enabled. You can't specify a protocol for a Gateway Load
 Balancer.}
 
-\item{Port}{The port on which the load balancer is listening. You cannot specify a
+\item{Port}{The port on which the load balancer is listening. You can't specify a
 port for a Gateway Load Balancer.}
 
 \item{SslPolicy}{[HTTPS and TLS listeners] The security policy that defines which

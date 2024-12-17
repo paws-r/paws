@@ -2,7 +2,7 @@
 % Please edit documentation in R/connect_operations.R
 \name{connect_search_contact_flows}
 \alias{connect_search_contact_flows}
-\title{Searches the contact flows in an Amazon Connect instance, with optional
+\title{Searches the flows in an Amazon Connect instance, with optional
 filtering}
 \usage{
 connect_search_contact_flows(
@@ -32,7 +32,7 @@ minimum of 2 characters and a maximum of 25 characters. Any queries with
 character lengths outside of this range will result in invalid results.}
 }
 \description{
-Searches the contact flows in an Amazon Connect instance, with optional filtering.
+Searches the flows in an Amazon Connect instance, with optional filtering.
 
 See \url{https://www.paws-r-sdk.com/docs/connect_search_contact_flows/} for full documentation.
 }

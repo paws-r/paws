@@ -137,6 +137,7 @@ NULL
 #'  \link[=prometheusservice_tag_resource]{tag_resource} \tab The TagResource operation associates tags with an Amazon Managed Service for Prometheus resource\cr
 #'  \link[=prometheusservice_untag_resource]{untag_resource} \tab Removes the specified tags from an Amazon Managed Service for Prometheus resource\cr
 #'  \link[=prometheusservice_update_logging_configuration]{update_logging_configuration} \tab Updates the log group ARN or the workspace ID of the current logging configuration\cr
+#'  \link[=prometheusservice_update_scraper]{update_scraper} \tab Updates an existing scraper\cr
 #'  \link[=prometheusservice_update_workspace_alias]{update_workspace_alias} \tab Updates the alias of an existing workspace
 #' }
 #'
@@ -169,7 +170,7 @@ prometheusservice <- function(config = list(), credentials = list(), endpoint = 
 
 .prometheusservice$metadata <- list(
   service_name = "prometheusservice",
-  endpoints = list("*" = list(endpoint = "aps.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "aps.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "aps.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "aps.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "aps.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "aps.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "aps.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "aps.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "aps.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "aps.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "aps.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "aps.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "aps.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "amp",
   api_version = "2020-08-01",
   signing_name = "aps",

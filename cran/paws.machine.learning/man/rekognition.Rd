@@ -266,17 +266,22 @@ common errors.
 \examples{
 \dontrun{
 svc <- rekognition()
-# This operation associates one or more faces with an existing UserID.
-svc$associate_faces(
-  ClientRequestToken = "550e8400-e29b-41d4-a716-446655440002",
-  CollectionId = "MyCollection",
-  FaceIds = list(
-    "f5817d37-94f6-4335-bfee-6cf79a3d806e",
-    "851cb847-dccc-4fea-9309-9f4805967855",
-    "35ebbb41-7f67-4263-908d-dd0ecba05ab9"
+# This operation compares the largest face detected in the source image
+# with each face detected in the target image.
+svc$compare_faces(
+  SimilarityThreshold = 90L,
+  SourceImage = list(
+    S3Object = list(
+      Bucket = "mybucket",
+      Name = "mysourceimage"
+    )
   ),
-  UserId = "DemoUser",
-  UserMatchThreshold = 70L
+  TargetImage = list(
+    S3Object = list(
+      Bucket = "mybucket",
+      Name = "mytargetimage"
+    )
+  )
 )
 }
 

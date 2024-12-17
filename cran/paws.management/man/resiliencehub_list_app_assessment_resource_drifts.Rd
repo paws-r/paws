@@ -2,8 +2,7 @@
 % Please edit documentation in R/resiliencehub_operations.R
 \name{resiliencehub_list_app_assessment_resource_drifts}
 \alias{resiliencehub_list_app_assessment_resource_drifts}
-\title{Indicates the list of resource drifts that were detected while running
-an assessment}
+\title{List of resource drifts that were detected while running an assessment}
 \usage{
 resiliencehub_list_app_assessment_resource_drifts(
   assessmentArn,
@@ -18,15 +17,14 @@ arn:\code{partition}:resiliencehub:\code{region}:\code{account}:app-assessment/\
 For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}
 in the \emph{Amazon Web Services General Reference} guide.}
 
-\item{maxResults}{Indicates the maximum number of drift results to include in the
-response. If more results exist than the specified \code{MaxResults} value, a
-token is included in the response so that the remaining results can be
-retrieved.}
+\item{maxResults}{Maximum number of drift results to include in the response. If more
+results exist than the specified \code{MaxResults} value, a token is included
+in the response so that the remaining results can be retrieved.}
 
 \item{nextToken}{Null, or the token from a previous call to get the next set of results.}
 }
 \description{
-Indicates the list of resource drifts that were detected while running an assessment.
+List of resource drifts that were detected while running an assessment.
 
 See \url{https://www.paws-r-sdk.com/docs/resiliencehub_list_app_assessment_resource_drifts/} for full documentation.
 }

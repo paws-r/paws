@@ -3,6 +3,18 @@
 #' @include docdbelastic_service.R
 NULL
 
+.docdbelastic$apply_pending_maintenance_action_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(applyAction = structure(logical(0), tags = list(type = "string")), applyOn = structure(logical(0), tags = list(type = "string")), optInType = structure(logical(0), tags = list(type = "string")), resourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.docdbelastic$apply_pending_maintenance_action_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(resourcePendingMaintenanceAction = structure(list(pendingMaintenanceActionDetails = structure(list(structure(list(action = structure(logical(0), tags = list(type = "string")), autoAppliedAfterDate = structure(logical(0), tags = list(type = "string")), currentApplyDate = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), forcedApplyDate = structure(logical(0), tags = list(type = "string")), optInStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), resourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .docdbelastic$copy_cluster_snapshot_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(copyTags = structure(logical(0), tags = list(type = "boolean", box = TRUE)), kmsKeyId = structure(logical(0), tags = list(type = "string")), snapshotArn = structure(logical(0), tags = list(location = "uri", locationName = "snapshotArn", type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), targetSnapshotName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -87,6 +99,18 @@ NULL
   return(populate(args, shape))
 }
 
+.docdbelastic$get_pending_maintenance_action_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.docdbelastic$get_pending_maintenance_action_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(resourcePendingMaintenanceAction = structure(list(pendingMaintenanceActionDetails = structure(list(structure(list(action = structure(logical(0), tags = list(type = "string")), autoAppliedAfterDate = structure(logical(0), tags = list(type = "string")), currentApplyDate = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), forcedApplyDate = structure(logical(0), tags = list(type = "string")), optInStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), resourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .docdbelastic$list_cluster_snapshots_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(clusterArn = structure(logical(0), tags = list(location = "querystring", locationName = "clusterArn", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), snapshotType = structure(logical(0), tags = list(location = "querystring", locationName = "snapshotType", type = "string"))), tags = list(type = "structure"))
@@ -108,6 +132,18 @@ NULL
 .docdbelastic$list_clusters_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(clusters = structure(list(structure(list(clusterArn = structure(logical(0), tags = list(type = "string")), clusterName = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.docdbelastic$list_pending_maintenance_actions_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.docdbelastic$list_pending_maintenance_actions_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), resourcePendingMaintenanceActions = structure(list(structure(list(pendingMaintenanceActionDetails = structure(list(structure(list(action = structure(logical(0), tags = list(type = "string")), autoAppliedAfterDate = structure(logical(0), tags = list(type = "string")), currentApplyDate = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), forcedApplyDate = structure(logical(0), tags = list(type = "string")), optInStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), resourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

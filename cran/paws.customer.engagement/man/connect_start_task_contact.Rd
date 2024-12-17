@@ -16,7 +16,8 @@ connect_start_task_contact(
   ScheduledTime = NULL,
   TaskTemplateId = NULL,
   QuickConnectId = NULL,
-  RelatedContactId = NULL
+  RelatedContactId = NULL,
+  SegmentAttributes = NULL
 )
 }
 \arguments{
@@ -30,10 +31,9 @@ a maximum of 12 linked task contacts in a chain.}
 
 \item{ContactFlowId}{The identifier of the flow for initiating the tasks. To see the
 ContactFlowId in the Amazon Connect admin website, on the navigation
-menu go to \strong{Routing}, \strong{Contact Flows}. Choose the flow. On the flow
-page, under the name of the flow, choose \strong{Show additional flow
-information}. The ContactFlowId is the last part of the ARN, shown here
-in bold:
+menu go to \strong{Routing}, \strong{Flows}. Choose the flow. On the flow page,
+under the name of the flow, choose \strong{Show additional flow information}.
+The ContactFlowId is the last part of the ARN, shown here in bold:
 
 arn:aws:connect:us-west-2:xxxxxxxxxxxx:instance/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/contact-flow/\strong{846ec553-a005-41c0-8341-xxxxxxxxxxxx}}
 
@@ -82,6 +82,24 @@ contact are limited to the individual contact ID, unlike what happens
 when tasks are linked by using \code{PreviousContactID}. There are no limits
 to the number of contacts that can be linked by using
 \code{RelatedContactId}.}
+
+\item{SegmentAttributes}{A set of system defined key-value pairs stored on individual contact
+segments (unique contact ID) using an attribute map. The attributes are
+standard Amazon Connect attributes. They can be accessed in flows.
+
+Attribute keys can include only alphanumeric, -, and _.
+
+This field can be used to set Contact Expiry as a duration in minutes
+and set a UserId for the User who created a task.
+
+To set contact expiry, a ValueMap must be specified containing the
+integer number of minutes the contact will be active for before
+expiring, with \code{SegmentAttributes} like \{
+\verb{ "connect:ContactExpiry": \\\{"ValueMap" : \\\{ "ExpiryDuration": \\\{ "ValueInteger": 135\\\}\\\}\\\}\\\}}.
+
+To set the created by user, a valid AgentResourceId must be supplied,
+with \code{SegmentAttributes} like \{
+\verb{"connect:CreatedByUser" \\\{ "ValueString": "arn:aws:connect:us-west-2:xxxxxxxxxxxx:instance/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/agent/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"\\\}\\\}\\\}}.}
 }
 \description{
 Initiates a flow to start a new task contact. For more information about task contacts, see \href{https://docs.aws.amazon.com/connect/latest/adminguide/tasks.html}{Concepts: Tasks in Amazon Connect} in the \emph{Amazon Connect Administrator Guide}.

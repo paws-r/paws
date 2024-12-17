@@ -12,6 +12,7 @@ redshiftserverless_create_workgroup(
   maxCapacity = NULL,
   namespaceName,
   port = NULL,
+  pricePerformanceTarget = NULL,
   publiclyAccessible = NULL,
   securityGroupIds = NULL,
   subnetIds = NULL,
@@ -44,6 +45,9 @@ serve queries. The max capacity is specified in RPUs.}
 
 \item{port}{The custom port to use when connecting to a workgroup. Valid port ranges
 are 5431-5455 and 8191-8215. The default is 5439.}
+
+\item{pricePerformanceTarget}{An object that represents the price performance target settings for the
+workgroup.}
 
 \item{publiclyAccessible}{A value that specifies whether the workgroup can be accessed from a
 public network.}

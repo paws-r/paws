@@ -90,28 +90,6 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \dontrun{
-#' # 
-#' svc$create_token(
-#'   clientId = "_yzkThXVzLWVhc3QtMQEXAMPLECLIENTID",
-#'   clientSecret = "VERYLONGSECRETeyJraWQiOiJrZXktMTU2NDAyODA5OSIsImFsZyI6IkhTMzg0In0",
-#'   deviceCode = "yJraWQiOiJrZXktMTU2Njk2ODA4OCIsImFsZyI6IkhTMzIn0EXAMPLEDEVICECODE",
-#'   grantType = "urn:ietf:params:oauth:grant-type:device-code"
-#' )
-#' 
-#' # 
-#' svc$create_token(
-#'   clientId = "_yzkThXVzLWVhc3QtMQEXAMPLECLIENTID",
-#'   clientSecret = "VERYLONGSECRETeyJraWQiOiJrZXktMTU2NDAyODA5OSIsImFsZyI6IkhTMzg0In0",
-#'   grantType = "refresh_token",
-#'   refreshToken = "aorvJYubGpU6i91YnH7Mfo-AT2fIVa1zCfA_Rvq9yjVKIP3onFmmykuQ7...",
-#'   scope = list(
-#'     "codewhisperer:completions"
-#'   )
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname ssooidc_create_token
@@ -245,45 +223,6 @@ ssooidc_create_token <- function(clientId, clientSecret, grantType, deviceCode =
 #' )
 #' ```
 #'
-#' @examples
-#' \dontrun{
-#' # 
-#' svc$create_token_with_iam(
-#'   clientId = "arn:aws:sso::123456789012:application/ssoins-111111111111/apl-222222222222",
-#'   code = "yJraWQiOiJrZXktMTU2Njk2ODA4OCIsImFsZyI6IkhTMzg0In0EXAMPLEAUTHCODE",
-#'   grantType = "authorization_code",
-#'   redirectUri = "https://mywebapp.example/redirect",
-#'   scope = list(
-#'     "openid",
-#'     "aws",
-#'     "sts:identity_context"
-#'   )
-#' )
-#' 
-#' # 
-#' svc$create_token_with_iam(
-#'   clientId = "arn:aws:sso::123456789012:application/ssoins-111111111111/apl-222222222222",
-#'   grantType = "refresh_token",
-#'   refreshToken = "aorvJYubGpU6i91YnH7Mfo-AT2fIVa1zCfA_Rvq9yjVKIP3onFmmykuQ7..."
-#' )
-#' 
-#' # 
-#' svc$create_token_with_iam(
-#'   assertion = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjFMVE16YWtpaGlS...",
-#'   clientId = "arn:aws:sso::123456789012:application/ssoins-111111111111/apl-222222222222",
-#'   grantType = "urn:ietf:params:oauth:grant-type:jwt-bearer"
-#' )
-#' 
-#' # 
-#' svc$create_token_with_iam(
-#'   clientId = "arn:aws:sso::123456789012:application/ssoins-111111111111/apl-222222222222",
-#'   grantType = "urn:ietf:params:oauth:grant-type:token-exchange",
-#'   requestedTokenType = "urn:ietf:params:oauth:token-type:access_token",
-#'   subjectToken = "aoak-Hig8TUDPNX1xZwOMXM5MxOWDL0E0jg9P6_C_jKQPxS_SKCP6f0kh...",
-#'   subjectTokenType = "urn:ietf:params:oauth:token-type:access_token"
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname ssooidc_create_token_with_iam
@@ -371,28 +310,6 @@ ssooidc_create_token_with_iam <- function(clientId, grantType, code = NULL, refr
 #' )
 #' ```
 #'
-#' @examples
-#' \dontrun{
-#' # 
-#' svc$register_client(
-#'   clientName = "My IDE Plugin",
-#'   clientType = "public",
-#'   entitledApplicationArn = "arn:aws:sso::ACCOUNTID:application/ssoins-11111...",
-#'   grantTypes = list(
-#'     "authorization_code",
-#'     "refresh_token"
-#'   ),
-#'   issuerUrl = "https://identitycenter.amazonaws.com/ssoins-1111111111111111",
-#'   redirectUris = list(
-#'     "127.0.0.1:PORT/oauth/callback"
-#'   ),
-#'   scopes = list(
-#'     "sso:account:access",
-#'     "codewhisperer:completions"
-#'   )
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname ssooidc_register_client
@@ -459,16 +376,6 @@ ssooidc_register_client <- function(clientName, clientType, scopes = NULL, redir
 #'   startUrl = "string"
 #' )
 #' ```
-#'
-#' @examples
-#' \dontrun{
-#' # 
-#' svc$start_device_authorization(
-#'   clientId = "_yzkThXVzLWVhc3QtMQEXAMPLECLIENTID",
-#'   clientSecret = "VERYLONGSECRETeyJraWQiOiJrZXktMTU2NDAyODA5OSIsImFsZyI6IkhTMzg0In0",
-#'   startUrl = "https://identitycenter.amazonaws.com/ssoins-111111111111"
-#' )
-#' }
 #'
 #' @keywords internal
 #'

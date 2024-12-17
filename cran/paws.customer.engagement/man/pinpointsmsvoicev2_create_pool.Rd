@@ -24,7 +24,10 @@ used to get the values for SenderId and SenderIdArn.
 
 After the pool is created you can add more origination identities to the
 pool by using
-\code{\link[=pinpointsmsvoicev2_associate_origination_identity]{associate_origination_identity}}.}
+\code{\link[=pinpointsmsvoicev2_associate_origination_identity]{associate_origination_identity}}.
+
+If you are using a shared AWS End User Messaging SMS and Voice resource
+then you must use the full Amazon Resource Name(ARN).}
 
 \item{IsoCountryCode}{[required] The new two-character code, in ISO 3166-1 alpha-2 format, for the
 country or region of the new pool.}

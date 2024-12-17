@@ -2,17 +2,18 @@
 % Please edit documentation in R/lambda_operations.R
 \name{lambda_untag_resource}
 \alias{lambda_untag_resource}
-\title{Removes tags from a function}
+\title{Removes tags from a function, event source mapping, or code signing
+configuration}
 \usage{
 lambda_untag_resource(Resource, TagKeys)
 }
 \arguments{
-\item{Resource}{[required] The function's Amazon Resource Name (ARN).}
+\item{Resource}{[required] The resource's Amazon Resource Name (ARN).}
 
-\item{TagKeys}{[required] A list of tag keys to remove from the function.}
+\item{TagKeys}{[required] A list of tag keys to remove from the resource.}
 }
 \description{
-Removes \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-tags.html}{tags} from a function.
+Removes \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-tags.html}{tags} from a function, event source mapping, or code signing configuration.
 
 See \url{https://www.paws-r-sdk.com/docs/lambda_untag_resource/} for full documentation.
 }

@@ -13,7 +13,8 @@ fis_create_experiment_template(
   roleArn,
   tags = NULL,
   logConfiguration = NULL,
-  experimentOptions = NULL
+  experimentOptions = NULL,
+  experimentReportConfiguration = NULL
 )
 }
 \arguments{
@@ -36,6 +37,8 @@ service permission to perform service actions on your behalf.}
 \item{logConfiguration}{The configuration for experiment logging.}
 
 \item{experimentOptions}{The experiment options for the experiment template.}
+
+\item{experimentReportConfiguration}{The experiment report configuration for the experiment template.}
 }
 \description{
 Creates an experiment template.

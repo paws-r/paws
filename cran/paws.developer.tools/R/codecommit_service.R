@@ -517,7 +517,7 @@ codecommit <- function(config = list(), credentials = list(), endpoint = NULL, r
 
 .codecommit$metadata <- list(
   service_name = "codecommit",
-  endpoints = list("*" = list(endpoint = "codecommit.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "codecommit.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "codecommit.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "codecommit.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "codecommit.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "codecommit.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "codecommit.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "codecommit.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "codecommit.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "codecommit.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "codecommit.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "codecommit.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "codecommit.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "CodeCommit",
   api_version = "2015-04-13",
   signing_name = "codecommit",

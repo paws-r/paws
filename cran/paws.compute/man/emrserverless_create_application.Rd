@@ -20,7 +20,8 @@ emrserverless_create_application(
   workerTypeSpecifications = NULL,
   runtimeConfiguration = NULL,
   monitoringConfiguration = NULL,
-  interactiveConfiguration = NULL
+  interactiveConfiguration = NULL,
+  schedulerConfiguration = NULL
 )
 }
 \arguments{
@@ -74,6 +75,9 @@ applied to all the job runs submitted under the application.}
 
 \item{interactiveConfiguration}{The interactive configuration object that enables the interactive use
 cases to use when running an application.}
+
+\item{schedulerConfiguration}{The scheduler configuration for batch and streaming jobs running on this
+application. Supported with release labels emr-7.0.0 and above.}
 }
 \description{
 Creates an application.

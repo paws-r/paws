@@ -6,7 +6,12 @@
 using SuspendContactRecording, this API resumes recording whatever
 recording is selected in the flow configuration: call, screen, or both}
 \usage{
-connect_resume_contact_recording(InstanceId, ContactId, InitialContactId)
+connect_resume_contact_recording(
+  InstanceId,
+  ContactId,
+  InitialContactId,
+  ContactRecordingType = NULL
+)
 }
 \arguments{
 \item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can \href{https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html}{find the instance ID}
@@ -16,6 +21,8 @@ in the Amazon Resource Name (ARN) of the instance.}
 
 \item{InitialContactId}{[required] The identifier of the contact. This is the identifier of the contact
 associated with the first interaction with the contact center.}
+
+\item{ContactRecordingType}{The type of recording being operated on.}
 }
 \description{
 When a contact is being recorded, and the recording has been suspended using SuspendContactRecording, this API resumes recording whatever recording is selected in the flow configuration: call, screen, or both. If only call recording or only screen recording is enabled, then it would resume.

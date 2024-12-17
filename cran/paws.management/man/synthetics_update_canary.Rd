@@ -16,7 +16,8 @@ synthetics_update_canary(
   VpcConfig = NULL,
   VisualReference = NULL,
   ArtifactS3Location = NULL,
-  ArtifactConfig = NULL
+  ArtifactConfig = NULL,
+  ProvisionedResourceCleanup = NULL
 )
 }
 \arguments{
@@ -80,6 +81,14 @@ and HAR files. The name of the S3 bucket can't include a period (.).}
 \item{ArtifactConfig}{A structure that contains the configuration for canary artifacts,
 including the encryption-at-rest settings for artifacts that the canary
 uploads to Amazon S3.}
+
+\item{ProvisionedResourceCleanup}{Specifies whether to also delete the Lambda functions and layers used by
+this canary when the canary is deleted.
+
+If the value of this parameter is \code{OFF}, then the value of the
+\code{DeleteLambda} parameter of the
+\code{\link[=synthetics_delete_canary]{delete_canary}} operation determines whether
+the Lambda functions and layers will be deleted.}
 }
 \description{
 Updates the configuration of a canary that has already been created.

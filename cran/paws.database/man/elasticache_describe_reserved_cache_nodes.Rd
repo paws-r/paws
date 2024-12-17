@@ -122,12 +122,12 @@ for these types.)
 \itemize{
 \item All current generation instance types are created in Amazon VPC by
 default.
-\item Redis OSS append-only files (AOF) are not supported for T1 or T2
-instances.
-\item Redis OSS Multi-AZ with automatic failover is not supported on T1
-instances.
-\item Redis OSS configuration variables \code{appendonly} and \code{appendfsync} are
-not supported on Redis OSS version 2.8.22 and later.
+\item Valkey or Redis OSS append-only files (AOF) are not supported for T1
+or T2 instances.
+\item Valkey or Redis OSS Multi-AZ with automatic failover is not
+supported on T1 instances.
+\item The configuration variables \code{appendonly} and \code{appendfsync} are not
+supported on Valkey, or on Redis OSS version 2.8.22 and later.
 }}
 
 \item{Duration}{The duration filter value, specified in years or seconds. Use this

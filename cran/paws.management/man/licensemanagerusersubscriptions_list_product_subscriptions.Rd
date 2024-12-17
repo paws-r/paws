@@ -10,20 +10,28 @@ licensemanagerusersubscriptions_list_product_subscriptions(
   IdentityProvider,
   MaxResults = NULL,
   NextToken = NULL,
-  Product
+  Product = NULL
 )
 }
 \arguments{
-\item{Filters}{An array of structures that you can use to filter the results to those
-that match one or more sets of key-value pairs that you specify.}
+\item{Filters}{You can use the following filters to streamline results:
+\itemize{
+\item Status
+\item Username
+\item Domain
+}}
 
 \item{IdentityProvider}{[required] An object that specifies details for the identity provider.}
 
-\item{MaxResults}{Maximum number of results to return in a single call.}
+\item{MaxResults}{The maximum number of results to return from a single request.}
 
-\item{NextToken}{Token for the next set of results.}
+\item{NextToken}{A token to specify where to start paginating. This is the nextToken from
+a previously truncated response.}
 
-\item{Product}{[required] The name of the user-based subscription product.}
+\item{Product}{The name of the user-based subscription product.
+
+Valid values: \code{VISUAL_STUDIO_ENTERPRISE} | \code{VISUAL_STUDIO_PROFESSIONAL}
+| \code{OFFICE_PROFESSIONAL_PLUS}}
 }
 \description{
 Lists the user-based subscription products available from an identity provider.

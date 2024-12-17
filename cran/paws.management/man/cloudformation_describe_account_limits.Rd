@@ -12,7 +12,7 @@ cloudformation_describe_account_limits(NextToken = NULL)
 retrieve.}
 }
 \description{
-Retrieves your account's CloudFormation limits, such as the maximum number of stacks that you can create in your account. For more information about account limits, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cloudformation-limits.html}{CloudFormation Quotas} in the \emph{CloudFormation User Guide}.
+Retrieves your account's CloudFormation limits, such as the maximum number of stacks that you can create in your account. For more information about account limits, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cloudformation-limits.html}{Understand CloudFormation quotas} in the \emph{CloudFormation User Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudformation_describe_account_limits/} for full documentation.
 }

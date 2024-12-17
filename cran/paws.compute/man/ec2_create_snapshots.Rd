@@ -2,8 +2,8 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_create_snapshots}
 \alias{ec2_create_snapshots}
-\title{Creates crash-consistent snapshots of multiple EBS volumes and stores
-the data in S3}
+\title{Creates crash-consistent snapshots of multiple EBS volumes attached to
+an Amazon EC2 instance}
 \usage{
 ec2_create_snapshots(
   Description = NULL,
@@ -11,7 +11,8 @@ ec2_create_snapshots(
   OutpostArn = NULL,
   TagSpecifications = NULL,
   DryRun = NULL,
-  CopyTagsFromSource = NULL
+  CopyTagsFromSource = NULL,
+  Location = NULL
 )
 }
 \arguments{
@@ -20,21 +21,17 @@ ec2_create_snapshots(
 \item{InstanceSpecification}{[required] The instance to specify which volumes should be included in the
 snapshots.}
 
-\item{OutpostArn}{The Amazon Resource Name (ARN) of the Outpost on which to create the
-local snapshots.
+\item{OutpostArn}{Only supported for instances on Outposts. If the source instance is not
+on an Outpost, omit this parameter.
 \itemize{
-\item To create snapshots from an instance in a Region, omit this
-parameter. The snapshots are created in the same Region as the
-instance.
-\item To create snapshots from an instance on an Outpost and store the
-snapshots in the Region, omit this parameter. The snapshots are
-created in the Region for the Outpost.
-\item To create snapshots from an instance on an Outpost and store the
-snapshots on an Outpost, specify the ARN of the destination Outpost.
-The snapshots must be created on the same Outpost as the instance.
+\item To create the snapshots on the same Outpost as the source instance,
+specify the ARN of that Outpost. The snapshots must be created on
+the same Outpost as the instance.
+\item To create the snapshots in the parent Region of the Outpost, omit
+this parameter.
 }
 
-For more information, see \href{https://docs.aws.amazon.com/ebs/latest/userguide/snapshots-outposts.html#create-multivol-snapshot}{Create multi-volume local snapshots from instances on an Outpost}
+For more information, see \href{https://docs.aws.amazon.com/ebs/latest/userguide/snapshots-outposts.html#create-snapshot}{Create local snapshots from volumes on an Outpost}
 in the \emph{Amazon EBS User Guide}.}
 
 \item{TagSpecifications}{Tags to apply to every snapshot specified by the instance.}
@@ -45,9 +42,20 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{CopyTagsFromSource}{Copies the tags from the specified volume to corresponding snapshot.}
+
+\item{Location}{Only supported for instances in Local Zones. If the source instance is
+not in a Local Zone, omit this parameter.
+\itemize{
+\item To create local snapshots in the same Local Zone as the source
+instance, specify \code{local}.
+\item To create a regional snapshots in the parent Region of the Local
+Zone, specify \code{regional} or omit this parameter.
+}
+
+Default value: \code{regional}}
 }
 \description{
-Creates crash-consistent snapshots of multiple EBS volumes and stores the data in S3. Volumes are chosen by specifying an instance. Any attached volumes will produce one snapshot each that is crash-consistent across the instance.
+Creates crash-consistent snapshots of multiple EBS volumes attached to an Amazon EC2 instance. Volumes are chosen by specifying an instance. Each volume attached to the specified instance will produce one snapshot that is crash-consistent across the instance. You can include all of the volumes currently attached to the instance, or you can exclude the root volume or specific data (non-root) volumes from the multi-volume snapshot set.
 
 See \url{https://www.paws-r-sdk.com/docs/ec2_create_snapshots/} for full documentation.
 }

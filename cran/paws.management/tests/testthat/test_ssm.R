@@ -120,6 +120,14 @@ test_that("list_documents", {
   expect_error(svc$list_documents(MaxResults = 20), NA)
 })
 
+test_that("list_nodes", {
+  expect_error(svc$list_nodes(), NA)
+})
+
+test_that("list_nodes", {
+  expect_error(svc$list_nodes(MaxResults = 20), NA)
+})
+
 test_that("list_ops_item_events", {
   expect_error(svc$list_ops_item_events(), NA)
 })

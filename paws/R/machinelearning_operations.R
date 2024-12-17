@@ -1358,7 +1358,7 @@ machinelearning_describe_batch_predictions <- function(FilterVariable = NULL, EQ
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "Results"),
+    paginator = list(limit_key = "Limit", output_token = "NextToken", input_token = "NextToken", result_key = "Results"),
     stream_api = FALSE
   )
   input <- .machinelearning$describe_batch_predictions_input(FilterVariable = FilterVariable, EQ = EQ, GT = GT, LT = LT, GE = GE, LE = LE, NE = NE, Prefix = Prefix, SortOrder = SortOrder, NextToken = NextToken, Limit = Limit)
@@ -1522,7 +1522,7 @@ machinelearning_describe_data_sources <- function(FilterVariable = NULL, EQ = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "Results"),
+    paginator = list(limit_key = "Limit", output_token = "NextToken", input_token = "NextToken", result_key = "Results"),
     stream_api = FALSE
   )
   input <- .machinelearning$describe_data_sources_input(FilterVariable = FilterVariable, EQ = EQ, GT = GT, LT = LT, GE = GE, LE = LE, NE = NE, Prefix = Prefix, SortOrder = SortOrder, NextToken = NextToken, Limit = Limit)
@@ -1677,7 +1677,7 @@ machinelearning_describe_evaluations <- function(FilterVariable = NULL, EQ = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "Results"),
+    paginator = list(limit_key = "Limit", output_token = "NextToken", input_token = "NextToken", result_key = "Results"),
     stream_api = FALSE
   )
   input <- .machinelearning$describe_evaluations_input(FilterVariable = FilterVariable, EQ = EQ, GT = GT, LT = LT, GE = GE, LE = LE, NE = NE, Prefix = Prefix, SortOrder = SortOrder, NextToken = NextToken, Limit = Limit)
@@ -1845,7 +1845,7 @@ machinelearning_describe_ml_models <- function(FilterVariable = NULL, EQ = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "Results"),
+    paginator = list(limit_key = "Limit", output_token = "NextToken", input_token = "NextToken", result_key = "Results"),
     stream_api = FALSE
   )
   input <- .machinelearning$describe_ml_models_input(FilterVariable = FilterVariable, EQ = EQ, GT = GT, LT = LT, GE = GE, LE = LE, NE = NE, Prefix = Prefix, SortOrder = SortOrder, NextToken = NextToken, Limit = Limit)

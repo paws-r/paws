@@ -71,7 +71,7 @@ NULL
 
 .athena$create_data_catalog_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
+  shape <- structure(list(DataCatalog = structure(list(Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Parameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), Status = structure(logical(0), tags = list(type = "string")), ConnectionType = structure(logical(0), tags = list(type = "string")), Error = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -149,13 +149,13 @@ NULL
 
 .athena$delete_data_catalog_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), DeleteCatalogOnly = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .athena$delete_data_catalog_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(), tags = list(type = "structure"))
+  shape <- structure(list(DataCatalog = structure(list(Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Parameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), Status = structure(logical(0), tags = list(type = "string")), ConnectionType = structure(logical(0), tags = list(type = "string")), Error = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -287,7 +287,7 @@ NULL
 
 .athena$get_data_catalog_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DataCatalog = structure(list(Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Parameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(DataCatalog = structure(list(Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Parameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), Status = structure(logical(0), tags = list(type = "string")), ConnectionType = structure(logical(0), tags = list(type = "string")), Error = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -479,7 +479,7 @@ NULL
 
 .athena$list_data_catalogs_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DataCatalogsSummary = structure(list(structure(list(CatalogName = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(DataCatalogsSummary = structure(list(structure(list(CatalogName = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), ConnectionType = structure(logical(0), tags = list(type = "string")), Error = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

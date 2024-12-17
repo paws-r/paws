@@ -2,8 +2,8 @@
 % Please edit documentation in R/securitylake_operations.R
 \name{securitylake_create_subscriber}
 \alias{securitylake_create_subscriber}
-\title{Creates a subscription permission for accounts that are already enabled
-in Amazon Security Lake}
+\title{Creates a subscriber for accounts that are already enabled in Amazon
+Security Lake}
 \usage{
 securitylake_create_subscriber(
   accessTypes = NULL,
@@ -17,9 +17,9 @@ securitylake_create_subscriber(
 \arguments{
 \item{accessTypes}{The Amazon S3 or Lake Formation access type.}
 
-\item{sources}{[required] The supported Amazon Web Services from which logs and events are
-collected. Security Lake supports log and event collection for natively
-supported Amazon Web Services.}
+\item{sources}{[required] The supported Amazon Web Services services from which logs and events
+are collected. Security Lake supports log and event collection for
+natively supported Amazon Web Services services.}
 
 \item{subscriberDescription}{The description for your subscriber account in Security Lake.}
 
@@ -32,7 +32,7 @@ For each tag, you must specify both a tag key and a tag value. A tag
 value cannot be null, but it can be an empty string.}
 }
 \description{
-Creates a subscription permission for accounts that are already enabled in Amazon Security Lake. You can create a subscriber with access to data in the current Amazon Web Services Region.
+Creates a subscriber for accounts that are already enabled in Amazon Security Lake. You can create a subscriber with access to data in the current Amazon Web Services Region.
 
 See \url{https://www.paws-r-sdk.com/docs/securitylake_create_subscriber/} for full documentation.
 }

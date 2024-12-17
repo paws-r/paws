@@ -6,17 +6,18 @@
 prompt and inference parameters provided in the request body}
 \usage{
 bedrockruntime_invoke_model(
-  body,
+  body = NULL,
   contentType = NULL,
   accept = NULL,
   modelId,
   trace = NULL,
   guardrailIdentifier = NULL,
-  guardrailVersion = NULL
+  guardrailVersion = NULL,
+  performanceConfigLatency = NULL
 )
 }
 \arguments{
-\item{body}{[required] The prompt and inference parameters in the format specified in the
+\item{body}{The prompt and inference parameters in the format specified in the
 \code{contentType} in the header. You must provide the body in JSON format.
 To see the format and content of the request and response bodies for
 different models, refer to \href{https://docs.aws.amazon.com/bedrock/latest/userguide/model-parameters.html}{Inference parameters}.
@@ -31,10 +32,14 @@ value is \code{application/json}.}
 
 \item{modelId}{[required] The unique identifier of the model to invoke to run inference.
 
-The \code{modelId} to provide depends on the type of model that you use:
+The \code{modelId} to provide depends on the type of model or throughput that
+you use:
 \itemize{
 \item If you use a base model, specify the model ID or its ARN. For a list
 of model IDs for base models, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/models-supported.html#model-ids-arns}{Amazon Bedrock base model IDs (on-demand throughput)}
+in the Amazon Bedrock User Guide.
+\item If you use an inference profile, specify the inference profile ID or
+its ARN. For a list of inference profile IDs, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/inference-profiles-support.html}{Supported Regions and models for cross-region inference}
 in the Amazon Bedrock User Guide.
 \item If you use a provisioned model, specify the ARN of the Provisioned
 Throughput. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/prov-thru-use.html}{Run inference using a Provisioned Throughput}
@@ -67,6 +72,8 @@ specified.
 }}
 
 \item{guardrailVersion}{The version number for the guardrail. The value can also be \code{DRAFT}.}
+
+\item{performanceConfigLatency}{Model performance settings for the request.}
 }
 \description{
 Invokes the specified Amazon Bedrock model to run inference using the prompt and inference parameters provided in the request body. You use model inference to generate text, images, and embeddings.

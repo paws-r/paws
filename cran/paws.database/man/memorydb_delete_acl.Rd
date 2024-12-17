@@ -7,7 +7,7 @@
 memorydb_delete_acl(ACLName)
 }
 \arguments{
-\item{ACLName}{[required] The name of the Access Control List to delete}
+\item{ACLName}{[required] The name of the Access Control List to delete.}
 }
 \description{
 Deletes an Access Control List. The ACL must first be disassociated from the cluster before it can be deleted. For more information, see \href{https://docs.aws.amazon.com/memorydb/latest/devguide/clusters.acls.html}{Authenticating users with Access Contol Lists (ACLs)}.

@@ -10,10 +10,11 @@ ivschat_tag_resource(resourceArn, tags)
 \item{resourceArn}{[required] The ARN of the resource to be tagged. The ARN must be URL-encoded.}
 
 \item{tags}{[required] Array of tags to be added or updated. Array of maps, each of the form
-\code{string:string (key:value)}. See \href{https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html}{Tagging AWS Resources}
-for details, including restrictions that apply to tags and "Tag naming
-limits and requirements"; Amazon IVS Chat has no constraints beyond what
-is documented there.}
+\code{string:string (key:value)}. See \href{https://docs.aws.amazon.com/tag-editor/latest/userguide/best-practices-and-strats.html}{Best practices and strategies}
+in \emph{Tagging Amazon Web Services Resources and Tag Editor} for details,
+including restrictions that apply to tags and "Tag naming limits and
+requirements"; Amazon IVS Chat has no constraints beyond what is
+documented there.}
 }
 \description{
 Adds or updates tags for the AWS resource with the specified ARN.

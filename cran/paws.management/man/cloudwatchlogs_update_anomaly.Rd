@@ -10,7 +10,8 @@ cloudwatchlogs_update_anomaly(
   patternId = NULL,
   anomalyDetectorArn,
   suppressionType = NULL,
-  suppressionPeriod = NULL
+  suppressionPeriod = NULL,
+  baseline = NULL
 )
 }
 \arguments{
@@ -30,9 +31,17 @@ If you specify \code{INFINITE}, any value for \code{suppressionPeriod} is ignore
 
 \item{suppressionPeriod}{If you are temporarily suppressing an anomaly or pattern, use this
 structure to specify how long the suppression is to last.}
+
+\item{baseline}{Set this to \code{true} to prevent CloudWatch Logs from displaying this
+behavior as an anomaly in the future. The behavior is then treated as
+baseline behavior. However, if similar but more severe occurrences of
+this behavior occur in the future, those will still be reported as
+anomalies.
+
+The default is \code{false}}
 }
 \description{
-Use this operation to \emph{suppress} anomaly detection for a specified anomaly or pattern. If you suppress an anomaly, CloudWatch Logs won’t report new occurrences of that anomaly and won't update that anomaly with new data. If you suppress a pattern, CloudWatch Logs won’t report any anomalies related to that pattern.
+Use this operation to \emph{suppress} anomaly detection for a specified anomaly or pattern. If you suppress an anomaly, CloudWatch Logs won't report new occurrences of that anomaly and won't update that anomaly with new data. If you suppress a pattern, CloudWatch Logs won't report any anomalies related to that pattern.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudwatchlogs_update_anomaly/} for full documentation.
 }

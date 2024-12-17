@@ -17,7 +17,7 @@ response so that the remaining results can be retrieved.}
 
 \item{nextToken}{Null, or the token from a previous call to get the next set of results.}
 
-\item{policyName}{The name of the policy}
+\item{policyName}{Name of the resiliency policy.}
 }
 \description{
 Lists the resiliency policies for the Resilience Hub applications.

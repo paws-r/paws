@@ -9,7 +9,8 @@ recyclebin_update_rule(
   RetentionPeriod = NULL,
   Description = NULL,
   ResourceType = NULL,
-  ResourceTags = NULL
+  ResourceTags = NULL,
+  ExcludeResourceTags = NULL
 )
 }
 \arguments{
@@ -23,13 +24,13 @@ to retain resources.}
 \item{ResourceType}{This parameter is currently not supported. You can't update a retention
 rule's resource type after creation.}
 
-\item{ResourceTags}{Specifies the resource tags to use to identify resources that are to be
-retained by a tag-level retention rule. For tag-level retention rules,
-only deleted resources, of the specified resource type, that have one or
-more of the specified tag key and value pairs are retained. If a
-resource is deleted, but it does not have any of the specified tag key
-and value pairs, it is immediately deleted without being retained by the
-retention rule.
+\item{ResourceTags}{[Tag-level retention rules only] Specifies the resource tags to use to
+identify resources that are to be retained by a tag-level retention
+rule. For tag-level retention rules, only deleted resources, of the
+specified resource type, that have one or more of the specified tag key
+and value pairs are retained. If a resource is deleted, but it does not
+have any of the specified tag key and value pairs, it is immediately
+deleted without being retained by the retention rule.
 
 You can add the same tag key and value pair to a maximum or five
 retention rules.
@@ -39,6 +40,13 @@ Region-level retention rule does not have any resource tags specified.
 It retains all deleted resources of the specified resource type in the
 Region in which the rule is created, even if the resources are not
 tagged.}
+
+\item{ExcludeResourceTags}{[Region-level retention rules only] Specifies the exclusion tags to
+use to identify resources that are to be excluded, or ignored, by a
+Region-level retention rule. Resources that have any of these tags are
+not retained by the retention rule upon deletion.
+
+You can't specify exclusion tags for tag-level retention rules.}
 }
 \description{
 Updates an existing Recycle Bin retention rule. You can update a retention rule's description, resource tags, and retention period at any time after creation. You can't update a retention rule's resource type after creation. For more information, see \href{https://docs.aws.amazon.com/ebs/latest/userguide/#recycle-bin-update-rule}{Update Recycle Bin retention rules} in the \emph{Amazon Elastic Compute Cloud User Guide}.

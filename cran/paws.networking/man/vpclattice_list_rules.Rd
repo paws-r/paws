@@ -2,7 +2,7 @@
 % Please edit documentation in R/vpclattice_operations.R
 \name{vpclattice_list_rules}
 \alias{vpclattice_list_rules}
-\title{Lists the rules for the listener}
+\title{Lists the rules for the specified listener}
 \usage{
 vpclattice_list_rules(
   listenerIdentifier,
@@ -12,16 +12,16 @@ vpclattice_list_rules(
 )
 }
 \arguments{
-\item{listenerIdentifier}{[required] The ID or Amazon Resource Name (ARN) of the listener.}
+\item{listenerIdentifier}{[required] The ID or ARN of the listener.}
 
 \item{maxResults}{The maximum number of results to return.}
 
 \item{nextToken}{A pagination token for the next page of results.}
 
-\item{serviceIdentifier}{[required] The ID or Amazon Resource Name (ARN) of the service.}
+\item{serviceIdentifier}{[required] The ID or ARN of the service.}
 }
 \description{
-Lists the rules for the listener.
+Lists the rules for the specified listener.
 
 See \url{https://www.paws-r-sdk.com/docs/vpclattice_list_rules/} for full documentation.
 }

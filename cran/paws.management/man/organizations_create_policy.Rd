@@ -27,10 +27,13 @@ ASCII character range.}
 \item{Type}{[required] The type of policy to create. You can specify one of the following
 values:
 \itemize{
-\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out.html}{AISERVICES_OPT_OUT_POLICY}
-\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_backup.html}{BACKUP_POLICY}
 \item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html}{SERVICE_CONTROL_POLICY}
+\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_rcps.html}{RESOURCE_CONTROL_POLICY}
+\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_declarative.html}{DECLARATIVE_POLICY_EC2}
+\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_backup.html}{BACKUP_POLICY}
 \item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html}{TAG_POLICY}
+\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_chatbot.html}{CHATBOT_POLICY}
+\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out.html}{AISERVICES_OPT_OUT_POLICY}
 }}
 
 \item{Tags}{A list of tags that you want to attach to the newly created policy. For

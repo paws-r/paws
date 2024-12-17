@@ -849,7 +849,7 @@ fms_get_apps_list <- function(ListId, DefaultList = NULL) {
 #'     Violators = list(
 #'       list(
 #'         ResourceId = "string",
-#'         ViolationReason = "WEB_ACL_MISSING_RULE_GROUP"|"RESOURCE_MISSING_WEB_ACL"|"RESOURCE_INCORRECT_WEB_ACL"|"RESOURCE_MISSING_SHIELD_PROTECTION"|"RESOURCE_MISSING_WEB_ACL_OR_SHIELD_PROTECTION"|"RESOURCE_MISSING_SECURITY_GROUP"|"RESOURCE_VIOLATES_AUDIT_SECURITY_GROUP"|"SECURITY_GROUP_UNUSED"|"SECURITY_GROUP_REDUNDANT"|"FMS_CREATED_SECURITY_GROUP_EDITED"|"MISSING_FIREWALL"|"MISSING_FIREWALL_SUBNET_IN_AZ"|"MISSING_EXPECTED_ROUTE_TABLE"|"NETWORK_FIREWALL_POLICY_MODIFIED"|"FIREWALL_SUBNET_IS_OUT_OF_SCOPE"|"INTERNET_GATEWAY_MISSING_EXPECTED_ROUTE"|"FIREWALL_SUBNET_MISSING_EXPECTED_ROUTE"|"UNEXPECTED_FIREWALL_ROUTES"|"UNEXPECTED_TARGET_GATEWAY_ROUTES"|"TRAFFIC_INSPECTION_CROSSES_AZ_BOUNDARY"|"INVALID_ROUTE_CONFIGURATION"|"MISSING_TARGET_GATEWAY"|"INTERNET_TRAFFIC_NOT_INSPECTED"|"BLACK_HOLE_ROUTE_DETECTED"|"BLACK_HOLE_ROUTE_DETECTED_IN_FIREWALL_SUBNET"|"RESOURCE_MISSING_DNS_FIREWALL"|"ROUTE_HAS_OUT_OF_SCOPE_ENDPOINT"|"FIREWALL_SUBNET_MISSING_VPCE_ENDPOINT"|"INVALID_NETWORK_ACL_ENTRY",
+#'         ViolationReason = "WEB_ACL_MISSING_RULE_GROUP"|"RESOURCE_MISSING_WEB_ACL"|"RESOURCE_INCORRECT_WEB_ACL"|"RESOURCE_MISSING_SHIELD_PROTECTION"|"RESOURCE_MISSING_WEB_ACL_OR_SHIELD_PROTECTION"|"RESOURCE_MISSING_SECURITY_GROUP"|"RESOURCE_VIOLATES_AUDIT_SECURITY_GROUP"|"SECURITY_GROUP_UNUSED"|"SECURITY_GROUP_REDUNDANT"|"FMS_CREATED_SECURITY_GROUP_EDITED"|"MISSING_FIREWALL"|"MISSING_FIREWALL_SUBNET_IN_AZ"|"MISSING_EXPECTED_ROUTE_TABLE"|"NETWORK_FIREWALL_POLICY_MODIFIED"|"FIREWALL_SUBNET_IS_OUT_OF_SCOPE"|"INTERNET_GATEWAY_MISSING_EXPECTED_ROUTE"|"FIREWALL_SUBNET_MISSING_EXPECTED_ROUTE"|"UNEXPECTED_FIREWALL_ROUTES"|"UNEXPECTED_TARGET_GATEWAY_ROUTES"|"TRAFFIC_INSPECTION_CROSSES_AZ_BOUNDARY"|"INVALID_ROUTE_CONFIGURATION"|"MISSING_TARGET_GATEWAY"|"INTERNET_TRAFFIC_NOT_INSPECTED"|"BLACK_HOLE_ROUTE_DETECTED"|"BLACK_HOLE_ROUTE_DETECTED_IN_FIREWALL_SUBNET"|"RESOURCE_MISSING_DNS_FIREWALL"|"ROUTE_HAS_OUT_OF_SCOPE_ENDPOINT"|"FIREWALL_SUBNET_MISSING_VPCE_ENDPOINT"|"INVALID_NETWORK_ACL_ENTRY"|"WEB_ACL_CONFIGURATION_OR_SCOPE_OF_USE",
 #'         ResourceType = "string",
 #'         Metadata = list(
 #'           "string"
@@ -1370,6 +1370,8 @@ fms_get_third_party_firewall_association_status <- function(ThirdPartyFirewall) 
 #' @param PolicyId &#91;required&#93; The ID of the Firewall Manager policy that you want the details for. You
 #' can get violation details for the following policy types:
 #' 
+#' -   WAF
+#' 
 #' -   DNS Firewall
 #' 
 #' -   Imported Network Firewall
@@ -1386,9 +1388,10 @@ fms_get_third_party_firewall_association_status <- function(ThirdPartyFirewall) 
 #' @param ResourceType &#91;required&#93; The resource type. This is in the format shown in the [Amazon Web
 #' Services Resource Types
 #' Reference](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html).
-#' Supported resource types are: `AWS::EC2::Instance`,
-#' `AWS::EC2::NetworkInterface`, `AWS::EC2::SecurityGroup`,
-#' `AWS::NetworkFirewall::FirewallPolicy`, and `AWS::EC2::Subnet`.
+#' Supported resource types are: `AWS::WAFv2::WebACL`,
+#' `AWS::EC2::Instance`, `AWS::EC2::NetworkInterface`,
+#' `AWS::EC2::SecurityGroup`, `AWS::NetworkFirewall::FirewallPolicy`, and
+#' `AWS::EC2::Subnet`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2066,6 +2069,16 @@ fms_get_third_party_firewall_association_status <- function(ThirdPartyFirewall) 
 #'               ),
 #'               IsDefaultAction = TRUE|FALSE
 #'             )
+#'           )
+#'         ),
+#'         WebACLHasIncompatibleConfigurationViolation = list(
+#'           WebACLArn = "string",
+#'           Description = "string"
+#'         ),
+#'         WebACLHasOutOfScopeResourcesViolation = list(
+#'           WebACLArn = "string",
+#'           OutOfScopeResourceList = list(
+#'             "string"
 #'           )
 #'         )
 #'       )

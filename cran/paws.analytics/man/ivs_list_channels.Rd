@@ -7,24 +7,24 @@ Amazon Web Services region where the API request is processed}
 \usage{
 ivs_list_channels(
   filterByName = NULL,
-  filterByRecordingConfigurationArn = NULL,
   filterByPlaybackRestrictionPolicyArn = NULL,
-  nextToken = NULL,
-  maxResults = NULL
+  filterByRecordingConfigurationArn = NULL,
+  maxResults = NULL,
+  nextToken = NULL
 )
 }
 \arguments{
 \item{filterByName}{Filters the channel list to match the specified name.}
 
+\item{filterByPlaybackRestrictionPolicyArn}{Filters the channel list to match the specified policy.}
+
 \item{filterByRecordingConfigurationArn}{Filters the channel list to match the specified recording-configuration
 ARN.}
 
-\item{filterByPlaybackRestrictionPolicyArn}{Filters the channel list to match the specified policy.}
+\item{maxResults}{Maximum number of channels to return. Default: 100.}
 
 \item{nextToken}{The first channel to retrieve. This is used for pagination; see the
 \code{nextToken} response field.}
-
-\item{maxResults}{Maximum number of channels to return. Default: 100.}
 }
 \description{
 Gets summary information about all channels in your account, in the Amazon Web Services region where the API request is processed. This list can be filtered to match a specified name or recording-configuration ARN. Filters are mutually exclusive and cannot be used together. If you try to use both filters, you will get an error (409 ConflictException).

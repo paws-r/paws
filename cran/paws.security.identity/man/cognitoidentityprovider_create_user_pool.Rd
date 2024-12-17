@@ -27,13 +27,17 @@ cognitoidentityprovider_create_user_pool(
   Schema = NULL,
   UserPoolAddOns = NULL,
   UsernameConfiguration = NULL,
-  AccountRecoverySetting = NULL
+  AccountRecoverySetting = NULL,
+  UserPoolTier = NULL
 )
 }
 \arguments{
-\item{PoolName}{[required] A string used to name the user pool.}
+\item{PoolName}{[required] A friendlhy name for your user pool.}
 
-\item{Policies}{The policies associated with the new user pool.}
+\item{Policies}{The password policy and sign-in policy in the user pool. The password
+policy sets options like password complexity requirements and password
+history. The sign-in policy sets the options available to applications
+in \href{https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-selection-sdk.html#authentication-flows-selection-choice}{choice-based authentication}.}
 
 \item{DeletionProtection}{When active, \code{DeletionProtection} prevents accidental deletion of your
 user pool. Before you can delete a user pool that you have protected
@@ -48,29 +52,20 @@ after you deactivate deletion protection in an
 \code{\link[=cognitoidentityprovider_update_user_pool]{update_user_pool}} API
 request.}
 
-\item{LambdaConfig}{The Lambda trigger configuration information for the new user pool.
+\item{LambdaConfig}{A collection of user pool Lambda triggers. Amazon Cognito invokes
+triggers at several possible stages of authentication operations.
+Triggers can modify the outcome of the operations that invoked them.}
 
-In a push model, event sources (such as Amazon S3 and custom
-applications) need permission to invoke a function. So you must make an
-extra call to add permission for these event sources to invoke your
-Lambda function.
-
-For more information on using the Lambda API to add permission, see
-\href{https://docs.aws.amazon.com/lambda/latest/api/API_AddPermission.html}{AddPermission}
-.
-
-For adding permission using the CLI, see
-\href{https://docs.aws.amazon.com/cli/latest/reference/lambda/add-permission.html}{add-permission}
-.}
-
-\item{AutoVerifiedAttributes}{The attributes to be auto-verified. Possible values: \strong{email},
-\strong{phone_number}.}
+\item{AutoVerifiedAttributes}{The attributes that you want your user pool to automatically verify.
+Possible values: \strong{email}, \strong{phone_number}. For more information see
+\href{https://docs.aws.amazon.com/cognito/latest/developerguide/signing-up-users-in-your-app.html#allowing-users-to-sign-up-and-confirm-themselves}{Verifying contact information at sign-up}.}
 
 \item{AliasAttributes}{Attributes supported as an alias for this user pool. Possible values:
-\strong{phone_number}, \strong{email}, or \strong{preferred_username}.}
+\strong{phone_number}, \strong{email}, or \strong{preferred_username}. For more
+information about alias attributes, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-settings-attributes.html#user-pool-settings-aliases}{Customizing sign-in attributes}.}
 
 \item{UsernameAttributes}{Specifies whether a user can use an email address or phone number as a
-username when they sign up.}
+username when they sign up. For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-settings-attributes.html#user-pool-settings-aliases}{Customizing sign-in attributes}.}
 
 \item{SmsVerificationMessage}{This parameter is no longer used. See
 \href{https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_VerificationMessageTemplateType.html}{VerificationMessageTemplateType}.}
@@ -81,12 +76,22 @@ username when they sign up.}
 \item{EmailVerificationSubject}{This parameter is no longer used. See
 \href{https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_VerificationMessageTemplateType.html}{VerificationMessageTemplateType}.}
 
-\item{VerificationMessageTemplate}{The template for the verification message that the user sees when the
-app requests permission to access the user's information.}
+\item{VerificationMessageTemplate}{The template for the verification message that your user pool delivers
+to users who set an email address or phone number attribute.
+
+Set the email message type that corresponds to your \code{DefaultEmailOption}
+selection. For \code{CONFIRM_WITH_LINK}, specify an \code{EmailMessageByLink} and
+leave \code{EmailMessage} blank. For \code{CONFIRM_WITH_CODE}, specify an
+\code{EmailMessage} and leave \code{EmailMessageByLink} blank. When you supply
+both parameters with either choice, Amazon Cognito returns an error.}
 
 \item{SmsAuthenticationMessage}{A string representing the SMS authentication message.}
 
-\item{MfaConfiguration}{Specifies MFA configuration details.}
+\item{MfaConfiguration}{Sets multi-factor authentication (MFA) to be on, off, or optional. When
+\code{ON}, all users must set up MFA before they can sign in. When
+\code{OPTIONAL}, your application must make a client-side determination of
+whether a user wants to register an MFA device. For user pools with
+adaptive authentication with threat protection, choose \code{OPTIONAL}.}
 
 \item{UserAttributeUpdateSettings}{The settings for updates to user attributes. These settings include the
 property \code{AttributesRequireVerificationBeforeUpdate}, a user-pool
@@ -94,12 +99,16 @@ setting that tells Amazon Cognito how to handle changes to the value of
 your users' email address and phone number attributes. For more
 information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-settings-email-phone-verification.html#user-pool-settings-verifications-verify-attribute-updates}{Verifying updates to email addresses and phone numbers}.}
 
-\item{DeviceConfiguration}{The device-remembering configuration for a user pool. A null value
-indicates that you have deactivated device remembering in your user
-pool.
+\item{DeviceConfiguration}{The device-remembering configuration for a user pool. Device remembering
+or device tracking is a "Remember me on this device" option for user
+pools that perform authentication with the device key of a trusted
+device in the back end, instead of a user-provided MFA code. For more
+information about device authentication, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/amazon-cognito-user-pools-device-tracking.html}{Working with user devices in your user pool}.
+A null value indicates that you have deactivated device remembering in
+your user pool.
 
 When you provide a value for any \code{DeviceConfiguration} field, you
-activate the Amazon Cognito device-remembering feature.}
+activate the Amazon Cognito device-remembering feature. For more infor}
 
 \item{EmailConfiguration}{The email configuration of your user pool. The email configuration type
 sets your preferred sending method, Amazon Web Services Region, and
@@ -110,7 +119,7 @@ pool must use to send an SMS message from your Amazon Web Services
 account through Amazon Simple Notification Service. To send SMS messages
 with Amazon SNS in the Amazon Web Services Region that you want, the
 Amazon Cognito user pool uses an Identity and Access Management (IAM)
-role in your Amazon Web Services account.}
+role in your Amazon Web Services account. For more information see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-sms-settings.html}{SMS message settings}.}
 
 \item{UserPoolTags}{The tag keys and values to assign to the user pool. A tag is a label
 that you can use to categorize and manage user pools in different ways,
@@ -118,10 +127,14 @@ such as by purpose, owner, environment, or other criteria.}
 
 \item{AdminCreateUserConfig}{The configuration for
 \code{\link[=cognitoidentityprovider_admin_create_user]{admin_create_user}}
-requests.}
+requests. Includes the template for the invitation message for new
+users, the duration of temporary passwords, and permitting self-service
+sign-up.}
 
-\item{Schema}{An array of schema attributes for the new user pool. These attributes
-can be standard or custom attributes.}
+\item{Schema}{An array of attributes for the new user pool. You can add custom
+attributes and modify the properties of default attributes. The
+specifications in this parameter set the required attributes in your
+user pool. For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-settings-attributes.html}{Working with user attributes}.}
 
 \item{UserPoolAddOns}{User pool add-ons. Contains settings for activation of advanced security
 features. To log user security information but take no action, set to
@@ -130,20 +143,20 @@ your user pool, set to \code{ENFORCED}.
 
 For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pool-settings-threat-protection.html}{Adding advanced security to a user pool}.}
 
-\item{UsernameConfiguration}{Case sensitivity on the username input for the selected sign-in option.
-When case sensitivity is set to \code{False} (case insensitive), users can
-sign in with any combination of capital and lowercase letters. For
-example, \code{username}, \code{USERNAME}, or \code{UserName}, or for email,
-\code{email@example.com} or \code{EMaiL@eXamplE.Com}. For most use cases, set case
-sensitivity to \code{False} (case insensitive) as a best practice. When
-usernames and email addresses are case insensitive, Amazon Cognito
-treats any variation in case as the same user, and prevents a case
-variation from being assigned to the same attribute for a different
-user.
+\item{UsernameConfiguration}{Sets the case sensitivity option for sign-in usernames. When
+\code{CaseSensitive} is \code{false} (case insensitive), users can sign in with
+any combination of capital and lowercase letters. For example,
+\code{username}, \code{USERNAME}, or \code{UserName}, or for email, \code{email@example.com}
+or \code{EMaiL@eXamplE.Com}. For most use cases, set case sensitivity to
+\code{false} as a best practice. When usernames and email addresses are case
+insensitive, Amazon Cognito treats any variation in case as the same
+user, and prevents a case variation from being assigned to the same
+attribute for a different user.
 
-This configuration is immutable after you set it. For more information,
-see
-\href{https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_UsernameConfigurationType.html}{UsernameConfigurationType}.}
+When \code{CaseSensitive} is \code{true} (case sensitive), Amazon Cognito
+interprets \code{USERNAME} and \code{UserName} as distinct users.
+
+This configuration is immutable after you set it.}
 
 \item{AccountRecoverySetting}{The available verified method a user can use to recover their password
 when they call
@@ -154,6 +167,11 @@ password recovery mechanism if the user also has SMS multi-factor
 authentication (MFA) activated. In the absence of this setting, Amazon
 Cognito uses the legacy behavior to determine the recovery method where
 SMS is preferred through email.}
+
+\item{UserPoolTier}{The user pool \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-sign-in-feature-plans.html}{feature plan},
+or tier. This parameter determines the eligibility of the user pool for
+features like managed login, access-token customization, and threat
+protection. Defaults to \code{ESSENTIALS}.}
 }
 \description{
 This action might generate an SMS text message. Starting June 1, 2021, US telecom carriers require you to register an origination phone number before you can send SMS messages to US phone numbers. If you use SMS text messages in Amazon Cognito, you must register a phone number with Amazon Pinpoint. Amazon Cognito uses the registered number automatically. Otherwise, Amazon Cognito users who must receive SMS messages might not be able to sign up, activate their accounts, or sign in.

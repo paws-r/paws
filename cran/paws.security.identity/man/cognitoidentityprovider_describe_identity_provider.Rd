@@ -2,17 +2,18 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_describe_identity_provider}
 \alias{cognitoidentityprovider_describe_identity_provider}
-\title{Gets information about a specific IdP}
+\title{Given a user pool ID and identity provider (IdP) name, returns details
+about the IdP}
 \usage{
 cognitoidentityprovider_describe_identity_provider(UserPoolId, ProviderName)
 }
 \arguments{
-\item{UserPoolId}{[required] The user pool ID.}
+\item{UserPoolId}{[required] The ID of the user pool that has the IdP that you want to describe..}
 
-\item{ProviderName}{[required] The IdP name.}
+\item{ProviderName}{[required] The name of the IdP that you want to describe.}
 }
 \description{
-Gets information about a specific IdP.
+Given a user pool ID and identity provider (IdP) name, returns details about the IdP.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_describe_identity_provider/} for full documentation.
 }

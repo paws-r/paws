@@ -25,7 +25,7 @@ results.}
 
 \item{SearchFilter}{Filters to be applied to search results.}
 
-\item{SearchCriteria}{The search criteria to be used to return contact flow modules.
+\item{SearchCriteria}{The search criteria to be used to return flow modules.
 
 The \code{name} and \code{description} fields support "contains" queries with a
 minimum of 2 characters and a maximum of 25 characters. Any queries with

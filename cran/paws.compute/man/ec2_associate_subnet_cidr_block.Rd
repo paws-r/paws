@@ -5,20 +5,20 @@
 \title{Associates a CIDR block with your subnet}
 \usage{
 ec2_associate_subnet_cidr_block(
-  Ipv6CidrBlock = NULL,
-  SubnetId,
   Ipv6IpamPoolId = NULL,
-  Ipv6NetmaskLength = NULL
+  Ipv6NetmaskLength = NULL,
+  SubnetId,
+  Ipv6CidrBlock = NULL
 )
 }
 \arguments{
-\item{Ipv6CidrBlock}{The IPv6 CIDR block for your subnet.}
-
-\item{SubnetId}{[required] The ID of your subnet.}
-
 \item{Ipv6IpamPoolId}{An IPv6 IPAM pool ID.}
 
 \item{Ipv6NetmaskLength}{An IPv6 netmask length.}
+
+\item{SubnetId}{[required] The ID of your subnet.}
+
+\item{Ipv6CidrBlock}{The IPv6 CIDR block for your subnet.}
 }
 \description{
 Associates a CIDR block with your subnet. You can only associate a single IPv6 CIDR block with your subnet.

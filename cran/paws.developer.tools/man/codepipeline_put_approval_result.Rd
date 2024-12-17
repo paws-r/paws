@@ -25,7 +25,13 @@ codepipeline_put_approval_result(
 The token for each open approval request can be obtained using the
 \code{\link[=codepipeline_get_pipeline_state]{get_pipeline_state}} action. It is
 used to validate that the approval request corresponding to this token
-is still valid.}
+is still valid.
+
+For a pipeline where the execution mode is set to PARALLEL, the token
+required to approve/reject approval request as detailed above is not
+available. Instead, use the \code{externalExecutionId} from the
+\code{\link[=codepipeline_get_pipeline_state]{get_pipeline_state}} action as the
+token in the approval request.}
 }
 \description{
 Provides the response to a manual approval request to CodePipeline. Valid responses include Approved and Rejected.

@@ -6,23 +6,23 @@
 private gateway attached to your VPC with a route table in your VPC}
 \usage{
 ec2_associate_route_table(
+  GatewayId = NULL,
   DryRun = NULL,
-  RouteTableId,
   SubnetId = NULL,
-  GatewayId = NULL
+  RouteTableId
 )
 }
 \arguments{
+\item{GatewayId}{The ID of the internet gateway or virtual private gateway.}
+
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
-\item{RouteTableId}{[required] The ID of the route table.}
-
 \item{SubnetId}{The ID of the subnet.}
 
-\item{GatewayId}{The ID of the internet gateway or virtual private gateway.}
+\item{RouteTableId}{[required] The ID of the route table.}
 }
 \description{
 Associates a subnet in your VPC or an internet gateway or virtual private gateway attached to your VPC with a route table in your VPC. This association causes traffic from the subnet or gateway to be routed according to the routes in the route table. The action returns an association ID, which you need in order to disassociate the route table later. A route table can be associated with multiple subnets.

@@ -12,9 +12,7 @@ connect_associate_traffic_distribution_group_user(
 }
 \arguments{
 \item{TrafficDistributionGroupId}{[required] The identifier of the traffic distribution group. This can be the ID or
-the ARN if the API is being called in the Region where the traffic
-distribution group was created. The ARN must be provided if the call is
-from the replicated Region.}
+the ARN of the traffic distribution group.}
 
 \item{UserId}{[required] The identifier of the user account. This can be the ID or the ARN of the
 user.}
@@ -23,7 +21,7 @@ user.}
 in the Amazon Resource Name (ARN) of the instance.}
 }
 \description{
-Associates an agent with a traffic distribution group.
+Associates an agent with a traffic distribution group. This API can be called only in the Region where the traffic distribution group is created.
 
 See \url{https://www.paws-r-sdk.com/docs/connect_associate_traffic_distribution_group_user/} for full documentation.
 }

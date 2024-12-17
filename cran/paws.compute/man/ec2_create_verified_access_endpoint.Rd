@@ -9,9 +9,9 @@ ec2_create_verified_access_endpoint(
   VerifiedAccessGroupId,
   EndpointType,
   AttachmentType,
-  DomainCertificateArn,
-  ApplicationDomain,
-  EndpointDomainPrefix,
+  DomainCertificateArn = NULL,
+  ApplicationDomain = NULL,
+  EndpointDomainPrefix = NULL,
   SecurityGroupIds = NULL,
   LoadBalancerOptions = NULL,
   NetworkInterfaceOptions = NULL,
@@ -20,7 +20,9 @@ ec2_create_verified_access_endpoint(
   TagSpecifications = NULL,
   ClientToken = NULL,
   DryRun = NULL,
-  SseSpecification = NULL
+  SseSpecification = NULL,
+  RdsOptions = NULL,
+  CidrOptions = NULL
 )
 }
 \arguments{
@@ -30,14 +32,14 @@ ec2_create_verified_access_endpoint(
 
 \item{AttachmentType}{[required] The type of attachment.}
 
-\item{DomainCertificateArn}{[required] The ARN of the public TLS/SSL certificate in Amazon Web Services
+\item{DomainCertificateArn}{The ARN of the public TLS/SSL certificate in Amazon Web Services
 Certificate Manager to associate with the endpoint. The CN in the
 certificate must match the DNS name your end users will use to reach
 your application.}
 
-\item{ApplicationDomain}{[required] The DNS name for users to reach your application.}
+\item{ApplicationDomain}{The DNS name for users to reach your application.}
 
-\item{EndpointDomainPrefix}{[required] A custom identifier that is prepended to the DNS name that is generated
+\item{EndpointDomainPrefix}{A custom identifier that is prepended to the DNS name that is generated
 for the endpoint.}
 
 \item{SecurityGroupIds}{The IDs of the security groups to associate with the Verified Access
@@ -64,6 +66,12 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{SseSpecification}{The options for server side encryption.}
+
+\item{RdsOptions}{The RDS details. This parameter is required if the endpoint type is
+\code{rds}.}
+
+\item{CidrOptions}{The CIDR options. This parameter is required if the endpoint type is
+\code{cidr}.}
 }
 \description{
 An Amazon Web Services Verified Access endpoint is where you define your application along with an optional endpoint-level access policy.

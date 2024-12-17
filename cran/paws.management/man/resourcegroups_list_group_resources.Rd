@@ -2,8 +2,8 @@
 % Please edit documentation in R/resourcegroups_operations.R
 \name{resourcegroups_list_group_resources}
 \alias{resourcegroups_list_group_resources}
-\title{Returns a list of ARNs of the resources that are members of a specified
-resource group}
+\title{Returns a list of Amazon resource names (ARNs) of the resources that are
+members of a specified resource group}
 \usage{
 resourcegroups_list_group_resources(
   GroupName = NULL,
@@ -17,7 +17,7 @@ resourcegroups_list_group_resources(
 \item{GroupName}{\emph{Deprecated - don't use this parameter. Use the Group request field
 instead.}}
 
-\item{Group}{The name or the ARN of the resource group}
+\item{Group}{The name or the Amazon resource name (ARN) of the resource group.}
 
 \item{Filters}{Filters, formatted as ResourceFilter objects, that you want to apply to
 a \code{\link[=resourcegroups_list_group_resources]{list_group_resources}}
@@ -67,7 +67,7 @@ provided by a previous call's \code{NextToken} response to indicate where the
 output should continue from.}
 }
 \description{
-Returns a list of ARNs of the resources that are members of a specified resource group.
+Returns a list of Amazon resource names (ARNs) of the resources that are members of a specified resource group.
 
 See \url{https://www.paws-r-sdk.com/docs/resourcegroups_list_group_resources/} for full documentation.
 }

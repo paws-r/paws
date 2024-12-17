@@ -19,10 +19,9 @@ workspaces_import_workspace_image(
 
 \item{IngestionProcess}{[required] The ingestion process to be used when importing the image, depending on
 which protocol you want to use for your BYOL Workspace image, either
-PCoIP, WorkSpaces Streaming Protocol (WSP), or bring your own protocol
-(BYOP). To use WSP, specify a value that ends in \verb{_WSP}. To use PCoIP,
-specify a value that does not end in \verb{_WSP}. To use BYOP, specify a
-value that ends in \verb{_BYOP}.
+PCoIP, WSP, or bring your own protocol (BYOP). To use DCV, specify a
+value that ends in \verb{_WSP}. To use PCoIP, specify a value that does not
+end in \verb{_WSP}. To use BYOP, specify a value that ends in \verb{_BYOP}.
 
 For non-GPU-enabled bundles (bundles other than Graphics or
 GraphicsPro), specify \code{BYOL_REGULAR}, \code{BYOL_REGULAR_WSP}, or
@@ -44,9 +43,10 @@ subscribing to Office for BYOL images, see \href{https://docs.aws.amazon.com/wor
 \itemize{
 \item Although this parameter is an array, only one item is allowed at
 this time.
-\item During the image import process, non-GPU WSP WorkSpaces with Windows
-11 support only \code{Microsoft_Office_2019}. GPU WSP WorkSpaces with
-Windows 11 do not support Office installation.
+\item During the image import process, non-GPU DCV (formerly WSP)
+WorkSpaces with Windows 11 support only \code{Microsoft_Office_2019}. GPU
+DCV (formerly WSP) WorkSpaces with Windows 11 do not support Office
+installation.
 }}
 }
 \description{

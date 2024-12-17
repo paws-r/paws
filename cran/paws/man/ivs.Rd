@@ -99,17 +99,18 @@ For more information about your IVS live stream, also see \href{https://docs.aws
 A \emph{tag} is a metadata label that you assign to an Amazon Web Services
 resource. A tag comprises a \emph{key} and a \emph{value}, both set by you. For
 example, you might set a tag as \code{topic:nature} to label a particular
-video category. See \href{https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html}{Tagging Amazon Web Services Resources}
-for more information, including restrictions that apply to tags and "Tag
-naming limits and requirements"; Amazon IVS has no service-specific
-constraints beyond what is documented there.
+video category. See \href{https://docs.aws.amazon.com/tag-editor/latest/userguide/best-practices-and-strats.html}{Best practices and strategies}
+in \emph{Tagging Amazon Web Services Resources and Tag Editor} for details,
+including restrictions that apply to tags and "Tag naming limits and
+requirements"; Amazon IVS has no service-specific constraints beyond
+what is documented there.
 
 Tags can help you identify and organize your Amazon Web Services
 resources. For example, you can use the same tag for different resources
 to indicate that they are related. You can also use tags to manage
 access (see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_tags.html}{Access Tags}).
 
-The Amazon IVS API has these tag-related endpoints:
+The Amazon IVS API has these tag-related operations:
 \code{tag_resource},
 \code{untag_resource}, and
 \code{list_tags_for_resource}. The following

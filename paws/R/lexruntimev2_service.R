@@ -95,7 +95,8 @@ NULL
 #'  \link[=lexruntimev2_get_session]{get_session} \tab Returns session information for a specified bot, alias, and user\cr
 #'  \link[=lexruntimev2_put_session]{put_session} \tab Creates a new session or modifies an existing session with an Amazon Lex V2 bot\cr
 #'  \link[=lexruntimev2_recognize_text]{recognize_text} \tab Sends user input to Amazon Lex V2\cr
-#'  \link[=lexruntimev2_recognize_utterance]{recognize_utterance} \tab Sends user input to Amazon Lex V2
+#'  \link[=lexruntimev2_recognize_utterance]{recognize_utterance} \tab Sends user input to Amazon Lex V2\cr
+#'  \link[=lexruntimev2_start_conversation]{start_conversation} \tab Starts an HTTP/2 bidirectional event stream that enables you to send audio, text, or DTMF input in real time
 #' }
 #'
 #' @return
@@ -127,7 +128,7 @@ lexruntimev2 <- function(config = list(), credentials = list(), endpoint = NULL,
 
 .lexruntimev2$metadata <- list(
   service_name = "lexruntimev2",
-  endpoints = list("*" = list(endpoint = "runtime-v2-lex.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "runtime-v2-lex.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "runtime-v2-lex.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "runtime-v2-lex.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "runtime-v2-lex.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "runtime-v2-lex.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "runtime-v2-lex.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "runtime-v2-lex.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "runtime-v2-lex.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "runtime-v2-lex.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "runtime-v2-lex.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "runtime-v2-lex.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "runtime-v2-lex.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Lex Runtime V2",
   api_version = "2020-08-07",
   signing_name = "lex",

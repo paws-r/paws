@@ -2,7 +2,7 @@
 % Please edit documentation in R/firehose_operations.R
 \name{firehose_list_delivery_streams}
 \alias{firehose_list_delivery_streams}
-\title{Lists your delivery streams in alphabetical order of their names}
+\title{Lists your Firehose streams in alphabetical order of their names}
 \usage{
 firehose_list_delivery_streams(
   Limit = NULL,
@@ -11,26 +11,26 @@ firehose_list_delivery_streams(
 )
 }
 \arguments{
-\item{Limit}{The maximum number of delivery streams to list. The default value is 10.}
+\item{Limit}{The maximum number of Firehose streams to list. The default value is 10.}
 
-\item{DeliveryStreamType}{The delivery stream type. This can be one of the following values:
+\item{DeliveryStreamType}{The Firehose stream type. This can be one of the following values:
 \itemize{
-\item \code{DirectPut}: Provider applications access the delivery stream
+\item \code{DirectPut}: Provider applications access the Firehose stream
 directly.
-\item \code{KinesisStreamAsSource}: The delivery stream uses a Kinesis data
+\item \code{KinesisStreamAsSource}: The Firehose stream uses a Kinesis data
 stream as a source.
 }
 
-This parameter is optional. If this parameter is omitted, delivery
+This parameter is optional. If this parameter is omitted, Firehose
 streams of all types are returned.}
 
-\item{ExclusiveStartDeliveryStreamName}{The list of delivery streams returned by this call to
+\item{ExclusiveStartDeliveryStreamName}{The list of Firehose streams returned by this call to
 \code{\link[=firehose_list_delivery_streams]{list_delivery_streams}} will start
-with the delivery stream whose name comes alphabetically immediately
+with the Firehose stream whose name comes alphabetically immediately
 after the name you specify in \code{ExclusiveStartDeliveryStreamName}.}
 }
 \description{
-Lists your delivery streams in alphabetical order of their names.
+Lists your Firehose streams in alphabetical order of their names.
 
 See \url{https://www.paws-r-sdk.com/docs/firehose_list_delivery_streams/} for full documentation.
 }

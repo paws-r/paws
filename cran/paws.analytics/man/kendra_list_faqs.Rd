@@ -2,12 +2,12 @@
 % Please edit documentation in R/kendra_operations.R
 \name{kendra_list_faqs}
 \alias{kendra_list_faqs}
-\title{Gets a list of FAQ lists associated with an index}
+\title{Gets a list of FAQs associated with an index}
 \usage{
 kendra_list_faqs(IndexId, NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
-\item{IndexId}{[required] The index that contains the FAQ lists.}
+\item{IndexId}{[required] The index for the FAQs.}
 
 \item{NextToken}{If the previous response was incomplete (because there is more data to
 retrieve), Amazon Kendra returns a pagination token in the response. You
@@ -17,7 +17,7 @@ can use this pagination token to retrieve the next set of FAQs.}
 results in the list, this response contains only the actual results.}
 }
 \description{
-Gets a list of FAQ lists associated with an index.
+Gets a list of FAQs associated with an index.
 
 See \url{https://www.paws-r-sdk.com/docs/kendra_list_faqs/} for full documentation.
 }

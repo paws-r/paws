@@ -17,11 +17,26 @@ athena_create_data_catalog(
 \item{Name}{[required] The name of the data catalog to create. The catalog name must be unique
 for the Amazon Web Services account and can use a maximum of 127
 alphanumeric, underscore, at sign, or hyphen characters. The remainder
-of the length constraint of 256 is reserved for use by Athena.}
+of the length constraint of 256 is reserved for use by Athena.
+
+For \code{FEDERATED} type the catalog name has following considerations and
+limits:
+\itemize{
+\item The catalog name allows special characters such as \verb{_ , @ , \\ , - }.
+These characters are replaced with a hyphen (-) when creating the
+CFN Stack Name and with an underscore (_) when creating the Lambda
+Function and Glue Connection Name.
+\item The catalog name has a theoretical limit of 128 characters. However,
+since we use it to create other resources that allow less characters
+and we prepend a prefix to it, the actual catalog name limit for
+\code{FEDERATED} catalog is 64 - 23 = 41 characters.
+}}
 
 \item{Type}{[required] The type of data catalog to create: \code{LAMBDA} for a federated catalog,
-\code{HIVE} for an external hive metastore, or \code{GLUE} for an Glue Data
-Catalog.}
+\code{GLUE} for an Glue Data Catalog, and \code{HIVE} for an external Apache Hive
+metastore. \code{FEDERATED} is a federated catalog for which Athena creates
+the connection and the Lambda function for you based on the parameters
+that you pass.}
 
 \item{Description}{A description of the data catalog to be created.}
 
@@ -58,10 +73,30 @@ to which the Glue Data Catalog belongs.
 \code{AwsDataCatalog} that already exists in your account, of which
 you can have only one and cannot modify.
 }
+\item The \code{FEDERATED} data catalog type uses one of the following
+parameters, but not both. Use \code{connection-arn} for an existing Glue
+connection. Use \code{connection-type} and \code{connection-properties} to
+specify the configuration setting for a new connection.
+\itemize{
+\item \verb{connection-arn:<glue_connection_arn_to_reuse> }
+\item \code{lambda-role-arn} (optional): The execution role to use for the
+Lambda function. If not provided, one is created.
+\item \verb{connection-type:MYSQL|REDSHIFT|...., connection-properties:"<json_string>"}
+
+For \emph{\<json_string\>} , use escaped JSON text, as in the
+following example.
+
+\verb{"\{\\"spill_bucket\\":\\"my_spill\\",\\"spill_prefix\\":\\"athena-spill\\",\\"host\\":\\"abc12345.snowflakecomputing.com\\",\\"port\\":\\"1234\\",\\"warehouse\\":\\"DEV_WH\\",\\"database\\":\\"TEST\\",\\"schema\\":\\"PUBLIC\\",\\"SecretArn\\":\\"arn:aws:secretsmanager:ap-south-1:111122223333:secret:snowflake-XHb67j\\"\}"}
+}
 }}
 
 \item{Tags}{A list of comma separated tags to add to the data catalog that is
-created.}
+created. All the resources that are created by the
+\code{\link[=athena_create_data_catalog]{create_data_catalog}} API operation with
+\code{FEDERATED} type will have the tag
+\code{federated_athena_datacatalog="true"}. This includes the CFN Stack, Glue
+Connection, Athena DataCatalog, and all the resources created as part of
+the CFN Stack (Lambda Function, IAM policies/roles).}
 }
 \description{
 Creates (registers) a data catalog with the specified name and properties. Catalogs created are visible to all users of the same Amazon Web Services account.

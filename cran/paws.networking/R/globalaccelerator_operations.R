@@ -1176,7 +1176,7 @@ globalaccelerator_list_accelerators <- function(MaxResults = NULL, NextToken = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Accelerators"),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Accelerators"),
     stream_api = FALSE
   )
   input <- .globalaccelerator$list_accelerators_input(MaxResults = MaxResults, NextToken = NextToken)
@@ -1534,7 +1534,7 @@ globalaccelerator_list_endpoint_groups <- function(ListenerArn, MaxResults = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "EndpointGroups"),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "EndpointGroups"),
     stream_api = FALSE
   )
   input <- .globalaccelerator$list_endpoint_groups_input(ListenerArn = ListenerArn, MaxResults = MaxResults, NextToken = NextToken)
@@ -1570,7 +1570,7 @@ globalaccelerator_list_listeners <- function(AcceleratorArn, MaxResults = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Listeners"),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Listeners"),
     stream_api = FALSE
   )
   input <- .globalaccelerator$list_listeners_input(AcceleratorArn = AcceleratorArn, MaxResults = MaxResults, NextToken = NextToken)

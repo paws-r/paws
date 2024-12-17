@@ -4,17 +4,23 @@
 \alias{memorydb_delete_cluster}
 \title{Deletes a cluster}
 \usage{
-memorydb_delete_cluster(ClusterName, FinalSnapshotName = NULL)
+memorydb_delete_cluster(
+  ClusterName,
+  MultiRegionClusterName = NULL,
+  FinalSnapshotName = NULL
+)
 }
 \arguments{
 \item{ClusterName}{[required] The name of the cluster to be deleted}
+
+\item{MultiRegionClusterName}{The name of the multi-Region cluster to be deleted.}
 
 \item{FinalSnapshotName}{The user-supplied name of a final cluster snapshot. This is the unique
 name that identifies the snapshot. MemoryDB creates the snapshot, and
 then deletes the cluster immediately afterward.}
 }
 \description{
-Deletes a cluster. It also deletes all associated nodes and node endpoints
+Deletes a cluster. It also deletes all associated nodes and node endpoints.
 
 See \url{https://www.paws-r-sdk.com/docs/memorydb_delete_cluster/} for full documentation.
 }

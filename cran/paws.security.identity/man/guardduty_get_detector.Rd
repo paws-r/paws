@@ -2,15 +2,19 @@
 % Please edit documentation in R/guardduty_operations.R
 \name{guardduty_get_detector}
 \alias{guardduty_get_detector}
-\title{Retrieves an Amazon GuardDuty detector specified by the detectorId}
+\title{Retrieves a GuardDuty detector specified by the detectorId}
 \usage{
 guardduty_get_detector(DetectorId)
 }
 \arguments{
-\item{DetectorId}{[required] The unique ID of the detector that you want to get.}
+\item{DetectorId}{[required] The unique ID of the detector that you want to get.
+
+To find the \code{detectorId} in the current Region, see the Settings page in
+the GuardDuty console, or run the
+\code{\link[=guardduty_list_detectors]{list_detectors}} API.}
 }
 \description{
-Retrieves an Amazon GuardDuty detector specified by the detectorId.
+Retrieves a GuardDuty detector specified by the detectorId.
 
 See \url{https://www.paws-r-sdk.com/docs/guardduty_get_detector/} for full documentation.
 }

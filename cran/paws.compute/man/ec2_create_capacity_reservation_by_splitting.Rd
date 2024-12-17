@@ -2,8 +2,8 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_create_capacity_reservation_by_splitting}
 \alias{ec2_create_capacity_reservation_by_splitting}
-\title{Create a new Capacity Reservation by splitting the available capacity of
-the source Capacity Reservation}
+\title{Create a new Capacity Reservation by splitting the capacity of the
+source Capacity Reservation}
 \usage{
 ec2_create_capacity_reservation_by_splitting(
   DryRun = NULL,
@@ -23,14 +23,14 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensure Idempotency}.}
 
 \item{SourceCapacityReservationId}{[required] The ID of the Capacity Reservation from which you want to split the
-available capacity.}
+capacity.}
 
 \item{InstanceCount}{[required] The number of instances to split from the source Capacity Reservation.}
 
 \item{TagSpecifications}{The tags to apply to the new Capacity Reservation.}
 }
 \description{
-Create a new Capacity Reservation by splitting the available capacity of the source Capacity Reservation. The new Capacity Reservation will have the same attributes as the source Capacity Reservation except for tags. The source Capacity Reservation must be \code{active} and owned by your Amazon Web Services account.
+Create a new Capacity Reservation by splitting the capacity of the source Capacity Reservation. The new Capacity Reservation will have the same attributes as the source Capacity Reservation except for tags. The source Capacity Reservation must be \code{active} and owned by your Amazon Web Services account.
 
 See \url{https://www.paws-r-sdk.com/docs/ec2_create_capacity_reservation_by_splitting/} for full documentation.
 }

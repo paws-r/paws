@@ -7,8 +7,7 @@
 cognitoidentityprovider_start_user_import_job(UserPoolId, JobId)
 }
 \arguments{
-\item{UserPoolId}{[required] The user pool ID for the user pool that the users are being imported
-into.}
+\item{UserPoolId}{[required] The ID of the user pool that the users are being imported into.}
 
 \item{JobId}{[required] The job ID for the user import job.}
 }

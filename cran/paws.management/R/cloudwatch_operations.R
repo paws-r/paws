@@ -231,7 +231,7 @@ cloudwatch_describe_alarm_history <- function(AlarmName = NULL, AlarmTypes = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken", result_key = "AlarmHistoryItems"),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxRecords", result_key = "AlarmHistoryItems"),
     stream_api = FALSE
   )
   input <- .cloudwatch$describe_alarm_history_input(AlarmName = AlarmName, AlarmTypes = AlarmTypes, HistoryItemType = HistoryItemType, StartDate = StartDate, EndDate = EndDate, MaxRecords = MaxRecords, NextToken = NextToken, ScanBy = ScanBy)
@@ -319,7 +319,7 @@ cloudwatch_describe_alarms <- function(AlarmNames = NULL, AlarmNamePrefix = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken", result_key = list("MetricAlarms", "CompositeAlarms")),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxRecords", result_key = list("MetricAlarms", "CompositeAlarms")),
     stream_api = FALSE
   )
   input <- .cloudwatch$describe_alarms_input(AlarmNames = AlarmNames, AlarmNamePrefix = AlarmNamePrefix, AlarmTypes = AlarmTypes, ChildrenOfAlarmName = ChildrenOfAlarmName, ParentsOfAlarmName = ParentsOfAlarmName, StateValue = StateValue, ActionPrefix = ActionPrefix, MaxRecords = MaxRecords, NextToken = NextToken)
@@ -360,7 +360,7 @@ cloudwatch_describe_alarms_for_metric <- function(MetricName, Namespace, Statist
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "MetricAlarms"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .cloudwatch$describe_alarms_for_metric_input(MetricName = MetricName, Namespace = Namespace, Statistic = Statistic, ExtendedStatistic = ExtendedStatistic, Dimensions = Dimensions, Period = Period, Unit = Unit)
@@ -443,7 +443,7 @@ cloudwatch_describe_insight_rules <- function(NextToken = NULL, MaxResults = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .cloudwatch$describe_insight_rules_input(NextToken = NextToken, MaxResults = MaxResults)
@@ -1058,7 +1058,7 @@ cloudwatch_list_managed_insight_rules <- function(ResourceARN, NextToken = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .cloudwatch$list_managed_insight_rules_input(ResourceARN = ResourceARN, NextToken = NextToken, MaxResults = MaxResults)
@@ -1091,7 +1091,7 @@ cloudwatch_list_metric_streams <- function(NextToken = NULL, MaxResults = NULL) 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .cloudwatch$list_metric_streams_input(NextToken = NextToken, MaxResults = MaxResults)
@@ -1125,7 +1125,7 @@ cloudwatch_list_metric_streams <- function(NextToken = NULL, MaxResults = NULL) 
 #' 
 #' The results that are returned are an approximation of the value you
 #' specify. There is a low probability that the returned results include
-#' metrics with last published data as much as 40 minutes more than the
+#' metrics with last published data as much as 50 minutes more than the
 #' specified time interval.
 #' @param IncludeLinkedAccounts If you are using this operation in a monitoring account, specify `true`
 #' to include metrics from source accounts in the returned data.
@@ -1311,6 +1311,10 @@ cloudwatch_put_anomaly_detector <- function(Namespace = NULL, MetricName = NULL,
 #' **Systems Manager actions:**
 #' 
 #' `arn:aws:ssm:region:account-id:opsitem:severity `
+#' 
+#' **Start a Amazon Q Developer operational investigation**
+#' 
+#' `arn:aws:aiops:region:account-id:investigation-group:ingestigation-group-id `
 #' @param AlarmDescription The description for the composite alarm.
 #' @param AlarmName &#91;required&#93; The name for the composite alarm. This name must be unique within the
 #' Region.
@@ -1692,6 +1696,10 @@ cloudwatch_put_managed_insight_rules <- function(ManagedRules) {
 #' -   `arn:aws:ssm:region:account-id:opsitem:severity#CATEGORY=category-name `
 #' 
 #' -   `arn:aws:ssm-incidents::account-id:responseplan/response-plan-name `
+#' 
+#' **Start a Amazon Q Developer operational investigation**
+#' 
+#' `arn:aws:aiops:region:account-id:investigation-group:ingestigation-group-id `
 #' @param InsufficientDataActions The actions to execute when this alarm transitions to the
 #' `INSUFFICIENT_DATA` state from any other state. Each action is specified
 #' as an Amazon Resource Name (ARN). Valid values:
@@ -1908,6 +1916,10 @@ cloudwatch_put_managed_insight_rules <- function(ManagedRules) {
 #' you specify in this parameter are ignored. To change the tags of an
 #' existing alarm, use [`tag_resource`][cloudwatch_tag_resource] or
 #' [`untag_resource`][cloudwatch_untag_resource].
+#' 
+#' To use this field to set tags for an alarm when you create it, you must
+#' be signed on with both the `cloudwatch:PutMetricAlarm` and
+#' `cloudwatch:TagResource` permissions.
 #' @param ThresholdMetricId If this is an alarm based on an anomaly detection model, make this value
 #' match the ID of the `ANOMALY_DETECTION_BAND` function.
 #' 
@@ -1938,10 +1950,10 @@ cloudwatch_put_metric_alarm <- function(AlarmName, AlarmDescription = NULL, Acti
 }
 .cloudwatch$operations$put_metric_alarm <- cloudwatch_put_metric_alarm
 
-#' Publishes metric data points to Amazon CloudWatch
+#' Publishes metric data to Amazon CloudWatch
 #'
 #' @description
-#' Publishes metric data points to Amazon CloudWatch. CloudWatch associates the data points with the specified metric. If the specified metric does not exist, CloudWatch creates the metric. When CloudWatch creates a metric, it can take up to fifteen minutes for the metric to appear in calls to [`list_metrics`][cloudwatch_list_metrics].
+#' Publishes metric data to Amazon CloudWatch. CloudWatch associates the data with the specified metric. If the specified metric does not exist, CloudWatch creates the metric. When CloudWatch creates a metric, it can take up to fifteen minutes for the metric to appear in calls to [`list_metrics`][cloudwatch_list_metrics].
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudwatch_put_metric_data/](https://www.paws-r-sdk.com/docs/cloudwatch_put_metric_data/) for full documentation.
 #'
@@ -1950,13 +1962,60 @@ cloudwatch_put_metric_alarm <- function(AlarmName, AlarmDescription = NULL, Acti
 #' 
 #' To avoid conflicts with Amazon Web Services service namespaces, you
 #' should not specify a namespace that begins with `AWS/`
-#' @param MetricData &#91;required&#93; The data for the metric. The array can include no more than 1000 metrics
-#' per call.
+#' @param MetricData The data for the metrics. Use this parameter if your metrics do not
+#' contain associated entities. The array can include no more than 1000
+#' metrics per call.
+#' 
+#' The limit of metrics allowed, 1000, is the sum of both
+#' `EntityMetricData` and `MetricData` metrics.
+#' @param EntityMetricData Data for metrics that contain associated entity information. You can
+#' include up to two `EntityMetricData` objects, each of which can contain
+#' a single `Entity` and associated metrics.
+#' 
+#' The limit of metrics allowed, 1000, is the sum of both
+#' `EntityMetricData` and `MetricData` metrics.
+#' @param StrictEntityValidation Whether to accept valid metric data when an invalid entity is sent.
+#' 
+#' -   When set to `true`: Any validation error (for entity or metric data)
+#'     will fail the entire request, and no data will be ingested. The
+#'     failed operation will return a 400 result with the error.
+#' 
+#' -   When set to `false`: Validation errors in the entity will not
+#'     associate the metric with the entity, but the metric data will still
+#'     be accepted and ingested. Validation errors in the metric data will
+#'     fail the entire request, and no data will be ingested.
+#' 
+#'     In the case of an invalid entity, the operation will return a `200`
+#'     status, but an additional response header will contain information
+#'     about the validation errors. The new header,
+#'     `X-Amzn-Failure-Message` is an enumeration of the following values:
+#' 
+#'     -   `InvalidEntity` - The provided entity is invalid.
+#' 
+#'     -   `InvalidKeyAttributes` - The provided `KeyAttributes` of an
+#'         entity is invalid.
+#' 
+#'     -   `InvalidAttributes` - The provided `Attributes` of an entity is
+#'         invalid.
+#' 
+#'     -   `InvalidTypeValue` - The provided `Type` in the `KeyAttributes`
+#'         of an entity is invalid.
+#' 
+#'     -   `EntitySizeTooLarge` - The number of `EntityMetricData` objects
+#'         allowed is 2.
+#' 
+#'     -   `MissingRequiredFields` - There are missing required fields in
+#'         the `KeyAttributes` for the provided `Type`.
+#' 
+#'     For details of the requirements for specifying an entity, see How to
+#'     add related information to telemetry in the *CloudWatch User Guide*.
+#' 
+#' This parameter is *required* when `EntityMetricData` is included.
 #'
 #' @keywords internal
 #'
 #' @rdname cloudwatch_put_metric_data
-cloudwatch_put_metric_data <- function(Namespace, MetricData) {
+cloudwatch_put_metric_data <- function(Namespace, MetricData = NULL, EntityMetricData = NULL, StrictEntityValidation = NULL) {
   op <- new_operation(
     name = "PutMetricData",
     http_method = "POST",
@@ -1965,7 +2024,7 @@ cloudwatch_put_metric_data <- function(Namespace, MetricData) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .cloudwatch$put_metric_data_input(Namespace = Namespace, MetricData = MetricData)
+  input <- .cloudwatch$put_metric_data_input(Namespace = Namespace, MetricData = MetricData, EntityMetricData = EntityMetricData, StrictEntityValidation = StrictEntityValidation)
   output <- .cloudwatch$put_metric_data_output()
   config <- get_config()
   svc <- .cloudwatch$service(config, op)

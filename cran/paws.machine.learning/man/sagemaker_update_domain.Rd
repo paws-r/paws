@@ -11,7 +11,8 @@ sagemaker_update_domain(
   AppSecurityGroupManagement = NULL,
   DefaultSpaceSettings = NULL,
   SubnetIds = NULL,
-  AppNetworkAccessType = NULL
+  AppNetworkAccessType = NULL,
+  TagPropagation = NULL
 )
 }
 \arguments{
@@ -28,7 +29,7 @@ inter-app communication in \code{VPCOnly} mode. Required when
 is provided. If setting up the domain for use with RStudio, this value
 must be set to \code{Service}.}
 
-\item{DefaultSpaceSettings}{The default settings used to create a space within the domain.}
+\item{DefaultSpaceSettings}{The default settings for shared spaces that users create in the domain.}
 
 \item{SubnetIds}{The VPC subnets that Studio uses for communication.
 
@@ -50,6 +51,9 @@ updated if
 is already set or
 \code{DomainSettings.RStudioServerProDomainSettings.DomainExecutionRoleArn}
 is provided as part of the same request.}
+
+\item{TagPropagation}{Indicates whether custom tag propagation is supported for the domain.
+Defaults to \code{DISABLED}.}
 }
 \description{
 Updates the default settings for new user profiles in the domain.

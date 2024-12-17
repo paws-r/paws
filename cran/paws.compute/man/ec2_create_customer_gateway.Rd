@@ -13,8 +13,8 @@ ec2_create_customer_gateway(
   TagSpecifications = NULL,
   DeviceName = NULL,
   IpAddress = NULL,
-  DryRun = NULL,
-  BgpAsnExtended = NULL
+  BgpAsnExtended = NULL,
+  DryRun = NULL
 )
 }
 \arguments{
@@ -47,17 +47,17 @@ options is set to \code{PrivateIpv4}, you can use an RFC6598 or RFC1918
 private IPv4 address. If \code{OutsideIpAddressType} is set to \code{PublicIpv4},
 you can use a public IPv4 address.}
 
-\item{DryRun}{Checks whether you have the required permissions for the action, without
-actually making the request, and provides an error response. If you have
-the required permissions, the error response is \code{DryRunOperation}.
-Otherwise, it is \code{UnauthorizedOperation}.}
-
 \item{BgpAsnExtended}{For customer gateway devices that support BGP, specify the device's ASN.
 You must specify either \code{BgpAsn} or \code{BgpAsnExtended} when creating the
 customer gateway. If the ASN is larger than \verb{2,147,483,647}, you must
 use \code{BgpAsnExtended}.
 
 Valid values: \verb{2,147,483,648} to \verb{4,294,967,295}}
+
+\item{DryRun}{Checks whether you have the required permissions for the action, without
+actually making the request, and provides an error response. If you have
+the required permissions, the error response is \code{DryRunOperation}.
+Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
 Provides information to Amazon Web Services about your customer gateway device. The customer gateway device is the appliance at your end of the VPN connection. You must provide the IP address of the customer gateway device’s external interface. The IP address must be static and can be behind a device performing network address translation (NAT).

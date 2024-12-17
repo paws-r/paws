@@ -12,10 +12,9 @@ rds_describe_db_shard_groups(
 )
 }
 \arguments{
-\item{DBShardGroupIdentifier}{The user-supplied DB shard group identifier or the Amazon Resource Name
-(ARN) of the DB shard group. If this parameter is specified, information
-for only the specific DB shard group is returned. This parameter isn't
-case-sensitive.
+\item{DBShardGroupIdentifier}{The user-supplied DB shard group identifier. If this parameter is
+specified, information for only the specific DB shard group is returned.
+This parameter isn't case-sensitive.
 
 Constraints:
 \itemize{

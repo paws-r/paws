@@ -12,8 +12,12 @@ guardduty_list_threat_intel_sets(
 )
 }
 \arguments{
-\item{DetectorId}{[required] The unique ID of the detector that the threatIntelSet is associated
-with.}
+\item{DetectorId}{[required] The unique ID of the detector that is associated with the
+threatIntelSet.
+
+To find the \code{detectorId} in the current Region, see the Settings page in
+the GuardDuty console, or run the
+\code{\link[=guardduty_list_detectors]{list_detectors}} API.}
 
 \item{MaxResults}{You can use this parameter to indicate the maximum number of items that
 you want in the response. The default value is 50. The maximum value is

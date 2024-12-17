@@ -133,7 +133,7 @@ account <- function(config = list(), credentials = list(), endpoint = NULL, regi
 
 .account$metadata <- list(
   service_name = "account",
-  endpoints = list("*" = list(endpoint = "account.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "account.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "account.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "account.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "account.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "account.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("aws-global" = list(endpoint = "account.us-east-1.amazonaws.com", global = TRUE), "us-east-1" = list(endpoint = "account.us-east-1.amazonaws.com", global = TRUE), "^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "account.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "account.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "account.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "account.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "account.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "account.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "account.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Account",
   api_version = "2021-02-01",
   signing_name = "account",

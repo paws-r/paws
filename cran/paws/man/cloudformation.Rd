@@ -59,10 +59,10 @@ CloudFormation allows you to create and manage Amazon Web Services
 infrastructure deployments predictably and repeatedly. You can use
 CloudFormation to leverage Amazon Web Services products, such as Amazon
 Elastic Compute Cloud, Amazon Elastic Block Store, Amazon Simple
-Notification Service, Elastic Load Balancing, and Auto Scaling to build
-highly reliable, highly scalable, cost-effective applications without
-creating or configuring the underlying Amazon Web Services
-infrastructure.
+Notification Service, Elastic Load Balancing, and Amazon EC2 Auto
+Scaling to build highly reliable, highly scalable, cost-effective
+applications without creating or configuring the underlying Amazon Web
+Services infrastructure.
 
 With CloudFormation, you declare all your resources and dependencies in
 a template file. The template defines a collection of resources as a
@@ -165,6 +165,7 @@ Services product, you can find the product's technical documentation at
 \link[paws.management:cloudformation_list_change_sets]{list_change_sets} \tab Returns the ID and status of each active change set for a stack\cr
 \link[paws.management:cloudformation_list_exports]{list_exports} \tab Lists all exported output values in the account and Region in which you call this action\cr
 \link[paws.management:cloudformation_list_generated_templates]{list_generated_templates} \tab Lists your generated templates in this Region\cr
+\link[paws.management:cloudformation_list_hook_results]{list_hook_results} \tab Returns summaries of invoked Hooks when a change set or Cloud Control API operation target is provided\cr
 \link[paws.management:cloudformation_list_imports]{list_imports} \tab Lists all stacks that are importing an exported output value\cr
 \link[paws.management:cloudformation_list_resource_scan_related_resources]{list_resource_scan_related_resources} \tab Lists the related resources for a list of resources from a resource scan\cr
 \link[paws.management:cloudformation_list_resource_scan_resources]{list_resource_scan_resources} \tab Lists the resources from a resource scan\cr
@@ -204,23 +205,8 @@ Services product, you can find the product's technical documentation at
 \examples{
 \dontrun{
 svc <- cloudformation()
-# This example creates a generated template with a resources file.
-svc$create_generated_template(
-  GeneratedTemplateName = "JazzyTemplate",
-  Resources = list(
-    list(
-      ResourceIdentifier = list(
-        BucketName = "jazz-bucket"
-      ),
-      ResourceType = "AWS::S3::Bucket"
-    ),
-    list(
-      ResourceIdentifier = list(
-        DhcpOptionsId = "random-id123"
-      ),
-      ResourceType = "AWS::EC2::DHCPOptions"
-    )
-  )
+svc$activate_organizations_access(
+  Foo = 123
 )
 }
 

@@ -72,7 +72,7 @@ image.}
 
 \item{targetRepository}{[required] The destination repository for the container image.}
 
-\item{kmsKeyId}{Identifies which KMS key is used to encrypt the container image.}
+\item{kmsKeyId}{Identifies which KMS key is used to encrypt the Dockerfile template.}
 
 \item{clientToken}{[required] Unique, case-sensitive identifier you provide to ensure idempotency of
 the request. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency}

@@ -13,9 +13,9 @@ NULL
 #' 
 #' Data API is available with the following types of Aurora databases:
 #' 
-#' -   Aurora PostgreSQL - Serverless v2, Serverless v1, and provisioned
+#' -   Aurora PostgreSQL - Serverless v2, provisioned, and Serverless v1
 #' 
-#' -   Aurora MySQL - Serverless v1 only
+#' -   Aurora MySQL - Serverless v2, provisioned, and Serverless v1
 #' 
 #' For more information about the Data API, see [Using RDS Data
 #' API](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/data-api.html)
@@ -141,11 +141,11 @@ rdsdataservice <- function(config = list(), credentials = list(), endpoint = NUL
 
 .rdsdataservice$metadata <- list(
   service_name = "rdsdataservice",
-  endpoints = list("*" = list(endpoint = "rds-data.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "rds-data.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "rds-data.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "rds-data.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "rds-data.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "rds-data.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "rds-data.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "rds-data.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "rds-data.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "rds-data.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "rds-data.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "rds-data.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "rds-data.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "RDS Data",
   api_version = "2018-08-01",
   signing_name = "rds-data",
-  json_version = "1.1",
+  json_version = "",
   target_prefix = ""
 )
 

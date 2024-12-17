@@ -15,7 +15,7 @@ NULL
 
 .kinesis$create_stream_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(StreamName = structure(logical(0), tags = list(type = "string")), ShardCount = structure(logical(0), tags = list(type = "integer")), StreamModeDetails = structure(list(StreamMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(StreamName = structure(logical(0), tags = list(type = "string")), ShardCount = structure(logical(0), tags = list(type = "integer")), StreamModeDetails = structure(list(StreamMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -323,6 +323,18 @@ NULL
 
 .kinesis$stop_stream_encryption_output <- function(...) {
   list()
+}
+
+.kinesis$subscribe_to_shard_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ConsumerARN = structure(logical(0), tags = list(type = "string")), ShardId = structure(logical(0), tags = list(type = "string")), StartingPosition = structure(list(Type = structure(logical(0), tags = list(type = "string")), SequenceNumber = structure(logical(0), tags = list(type = "string")), Timestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.kinesis$subscribe_to_shard_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(EventStream = structure(list(SubscribeToShardEvent = structure(list(Records = structure(list(structure(list(SequenceNumber = structure(logical(0), tags = list(type = "string")), ApproximateArrivalTimestamp = structure(logical(0), tags = list(type = "timestamp")), Data = structure(logical(0), tags = list(type = "blob")), PartitionKey = structure(logical(0), tags = list(type = "string")), EncryptionType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ContinuationSequenceNumber = structure(logical(0), tags = list(type = "string")), MillisBehindLatest = structure(logical(0), tags = list(type = "long")), ChildShards = structure(list(structure(list(ShardId = structure(logical(0), tags = list(type = "string")), ParentShards = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), HashKeyRange = structure(list(StartingHashKey = structure(logical(0), tags = list(type = "string")), EndingHashKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", event = TRUE)), ResourceNotFoundException = structure(list(message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", exception = TRUE)), ResourceInUseException = structure(list(message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", exception = TRUE)), KMSDisabledException = structure(list(message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", exception = TRUE)), KMSInvalidStateException = structure(list(message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", exception = TRUE)), KMSAccessDeniedException = structure(list(message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", exception = TRUE)), KMSNotFoundException = structure(list(message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", exception = TRUE)), KMSOptInRequired = structure(list(message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", exception = TRUE)), KMSThrottlingException = structure(list(message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", exception = TRUE)), InternalFailureException = structure(list(message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", exception = TRUE, fault = TRUE))), tags = list(type = "structure", eventstream = TRUE))), tags = list(type = "structure"))
+  return(populate(args, shape))
 }
 
 .kinesis$update_shard_count_input <- function(...) {

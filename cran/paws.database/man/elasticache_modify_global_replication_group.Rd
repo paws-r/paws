@@ -8,6 +8,7 @@ elasticache_modify_global_replication_group(
   GlobalReplicationGroupId,
   ApplyImmediately,
   CacheNodeType = NULL,
+  Engine = NULL,
   EngineVersion = NULL,
   CacheParameterGroupName = NULL,
   GlobalReplicationGroupDescription = NULL,
@@ -23,6 +24,9 @@ Modifications to Global Replication Groups cannot be requested to be
 applied in PreferredMaintenceWindow.}
 
 \item{CacheNodeType}{A valid cache node type that you want to scale this Global datastore to.}
+
+\item{Engine}{Modifies the engine listed in a global replication group message. The
+options are redis, memcached or valkey.}
 
 \item{EngineVersion}{The upgraded version of the cache engine to be run on the clusters in
 the Global datastore.}

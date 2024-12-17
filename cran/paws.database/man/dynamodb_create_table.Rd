@@ -17,6 +17,7 @@ dynamodb_create_table(
   Tags = NULL,
   TableClass = NULL,
   DeletionProtectionEnabled = NULL,
+  WarmThroughput = NULL,
   ResourcePolicy = NULL,
   OnDemandThroughput = NULL
 )
@@ -187,6 +188,9 @@ the item are written to the stream.
 
 \item{DeletionProtectionEnabled}{Indicates whether deletion protection is to be enabled (true) or
 disabled (false) on the table.}
+
+\item{WarmThroughput}{Represents the warm throughput (in read units per second and write units
+per second) for creating a table.}
 
 \item{ResourcePolicy}{An Amazon Web Services resource-based policy document in JSON format
 that will be attached to the table.

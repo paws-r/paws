@@ -7,7 +7,8 @@
 cloudwatchlogs_describe_account_policies(
   policyType,
   policyName = NULL,
-  accountIdentifiers = NULL
+  accountIdentifiers = NULL,
+  nextToken = NULL
 )
 }
 \arguments{
@@ -25,6 +26,9 @@ specify only one account ID in this parameter.
 
 If you omit this parameter, only the policy in the current account is
 returned.}
+
+\item{nextToken}{The token for the next set of items to return. (You received this token
+from a previous call.)}
 }
 \description{
 Returns a list of all CloudWatch Logs account policies in the account.

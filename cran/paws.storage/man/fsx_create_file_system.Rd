@@ -7,7 +7,7 @@
 fsx_create_file_system(
   ClientRequestToken = NULL,
   FileSystemType,
-  StorageCapacity,
+  StorageCapacity = NULL,
   StorageType = NULL,
   SubnetIds,
   SecurityGroupIds = NULL,
@@ -29,7 +29,7 @@ SDK.}
 \item{FileSystemType}{[required] The type of Amazon FSx file system to create. Valid values are
 \code{WINDOWS}, \code{LUSTRE}, \code{ONTAP}, and \code{OPENZFS}.}
 
-\item{StorageCapacity}{[required] Sets the storage capacity of the file system that you're creating, in
+\item{StorageCapacity}{Sets the storage capacity of the file system that you're creating, in
 gibibytes (GiB).
 
 \strong{FSx for Lustre file systems} - The amount of storage capacity that
@@ -62,19 +62,23 @@ capacity that you can configure depends on the value that you set for
 \item For HDD storage, valid values are 2000 GiB-65,536 GiB (64 TiB).
 }}
 
-\item{StorageType}{Sets the storage type for the file system that you're creating. Valid
-values are \code{SSD} and \code{HDD}.
+\item{StorageType}{Sets the storage class for the file system that you're creating. Valid
+values are \code{SSD}, \code{HDD}, and \code{INTELLIGENT_TIERING}.
 \itemize{
 \item Set to \code{SSD} to use solid state drive storage. SSD is supported on
 all Windows, Lustre, ONTAP, and OpenZFS deployment types.
 \item Set to \code{HDD} to use hard disk drive storage. HDD is supported on
 \code{SINGLE_AZ_2} and \code{MULTI_AZ_1} Windows file system deployment types,
 and on \code{PERSISTENT_1} Lustre file system deployment types.
+\item Set to \code{INTELLIGENT_TIERING} to use fully elastic,
+intelligently-tiered storage. Intelligent-Tiering is only available
+for OpenZFS file systems with the Multi-AZ deployment type.
 }
 
 Default value is \code{SSD}. For more information, see \href{https://docs.aws.amazon.com/fsx/latest/WindowsGuide/managing-storage-configuration.html#optimize-storage-costs}{Storage type options}
-in the \emph{FSx for Windows File Server User Guide} and \href{https://docs.aws.amazon.com/fsx/latest/LustreGuide/what-is.html#storage-options}{Multiple storage options}
-in the \emph{FSx for Lustre User Guide}.}
+in the \emph{FSx for Windows File Server User Guide}, \href{https://docs.aws.amazon.com/fsx/latest/LustreGuide/what-is.html#storage-options}{Multiple storage options}
+in the \emph{FSx for Lustre User Guide}, and \href{https://docs.aws.amazon.com/fsx/latest/OpenZFSGuide/performance-intelligent-tiering.html}{Working with Intelligent-Tiering}
+in the \emph{Amazon FSx for OpenZFS User Guide}.}
 
 \item{SubnetIds}{[required] Specifies the IDs of the subnets that the file system will be accessible
 from. For Windows and ONTAP \code{MULTI_AZ_1} deployment types,provide

@@ -585,6 +585,18 @@ NULL
   return(populate(args, shape))
 }
 
+.cloudformation$list_hook_results_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(TargetType = structure(logical(0), tags = list(type = "string")), TargetId = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudformation$list_hook_results_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(TargetType = structure(logical(0), tags = list(type = "string")), TargetId = structure(logical(0), tags = list(type = "string")), HookResults = structure(list(structure(list(InvocationPoint = structure(logical(0), tags = list(type = "string")), FailureMode = structure(logical(0), tags = list(type = "string")), TypeName = structure(logical(0), tags = list(type = "string")), TypeVersionId = structure(logical(0), tags = list(type = "string")), TypeConfigurationVersionId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), HookStatusReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "ListHookResultsResult"))
+  return(populate(args, shape))
+}
+
 .cloudformation$list_imports_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(ExportName = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))

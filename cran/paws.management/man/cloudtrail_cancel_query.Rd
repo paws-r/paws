@@ -5,7 +5,11 @@
 \title{Cancels a query if the query is not in a terminated state, such as
 CANCELLED, FAILED, TIMED_OUT, or FINISHED}
 \usage{
-cloudtrail_cancel_query(EventDataStore = NULL, QueryId)
+cloudtrail_cancel_query(
+  EventDataStore = NULL,
+  QueryId,
+  EventDataStoreOwnerAccountId = NULL
+)
 }
 \arguments{
 \item{EventDataStore}{The ARN (or the ID suffix of the ARN) of an event data store on which
@@ -13,6 +17,8 @@ the specified query is running.}
 
 \item{QueryId}{[required] The ID of the query that you want to cancel. The \code{QueryId} comes from
 the response of a \code{\link[=cloudtrail_start_query]{start_query}} operation.}
+
+\item{EventDataStoreOwnerAccountId}{The account ID of the event data store owner.}
 }
 \description{
 Cancels a query if the query is not in a terminated state, such as \code{CANCELLED}, \code{FAILED}, \code{TIMED_OUT}, or \code{FINISHED}. You must specify an ARN value for \code{EventDataStore}. The ID of the query that you want to cancel is also required. When you run \code{\link[=cloudtrail_cancel_query]{cancel_query}}, the query status might show as \code{CANCELLED} even if the operation is not yet finished.

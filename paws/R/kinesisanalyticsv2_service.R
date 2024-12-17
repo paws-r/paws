@@ -161,7 +161,7 @@ kinesisanalyticsv2 <- function(config = list(), credentials = list(), endpoint =
 
 .kinesisanalyticsv2$metadata <- list(
   service_name = "kinesisanalyticsv2",
-  endpoints = list("*" = list(endpoint = "kinesisanalytics.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "kinesisanalytics.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "kinesisanalytics.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "kinesisanalytics.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "kinesisanalytics.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "kinesisanalytics.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "kinesisanalytics.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "kinesisanalytics.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "kinesisanalytics.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "kinesisanalytics.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "kinesisanalytics.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "kinesisanalytics.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "kinesisanalytics.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Kinesis Analytics V2",
   api_version = "2018-05-23",
   signing_name = "kinesisanalytics",

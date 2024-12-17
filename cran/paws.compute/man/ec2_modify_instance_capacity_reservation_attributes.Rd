@@ -21,7 +21,7 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
-Modifies the Capacity Reservation settings for a stopped instance. Use this action to configure an instance to target a specific Capacity Reservation, run in any \code{open} Capacity Reservation with matching attributes, or run On-Demand Instance capacity.
+Modifies the Capacity Reservation settings for a stopped instance. Use this action to configure an instance to target a specific Capacity Reservation, run in any \code{open} Capacity Reservation with matching attributes, run in On-Demand Instance capacity, or only run in a Capacity Reservation.
 
 See \url{https://www.paws-r-sdk.com/docs/ec2_modify_instance_capacity_reservation_attributes/} for full documentation.
 }

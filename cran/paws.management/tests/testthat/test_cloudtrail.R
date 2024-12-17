@@ -16,6 +16,14 @@ test_that("list_channels", {
   expect_error(svc$list_channels(MaxResults = 20), NA)
 })
 
+test_that("list_dashboards", {
+  expect_error(svc$list_dashboards(), NA)
+})
+
+test_that("list_dashboards", {
+  expect_error(svc$list_dashboards(MaxResults = 20), NA)
+})
+
 test_that("list_event_data_stores", {
   expect_error(svc$list_event_data_stores(), NA)
 })

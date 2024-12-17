@@ -34,18 +34,15 @@ and hyphens. It must start with an alphabetical character and can't be
 longer than 128 characters.}
 
 \item{TemplateBody}{Structure containing the template body with a minimum length of 1 byte
-and a maximum length of 51,200 bytes. For more information, go to
-\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html}{Template anatomy}
-in the \emph{CloudFormation User Guide}.
+and a maximum length of 51,200 bytes.
 
 Conditional: You must specify either the \code{TemplateBody} or the
 \code{TemplateURL} parameter, but not both.}
 
 \item{TemplateURL}{Location of file containing the template body. The URL must point to a
 template (max size: 460,800 bytes) that's located in an Amazon S3 bucket
-or a Systems Manager document. For more information, go to the \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html}{Template anatomy}
-in the \emph{CloudFormation User Guide}. The location for an Amazon S3 bucket
-must start with \verb{https://}.
+or a Systems Manager document. The location for an Amazon S3 bucket must
+start with \verb{https://}.
 
 Conditional: You must specify either the \code{TemplateBody} or the
 \code{TemplateURL} parameter, but not both.}
@@ -68,9 +65,9 @@ period afterwards.}
 \code{CREATE_FAILED}; if \code{DisableRollback} is not set or is set to \code{false},
 the stack will be rolled back.}
 
-\item{NotificationARNs}{The Amazon Simple Notification Service (Amazon SNS) topic ARNs to
-publish stack related events. You can find your Amazon SNS topic ARNs
-using the Amazon SNS console or your Command Line Interface (CLI).}
+\item{NotificationARNs}{The Amazon SNS topic ARNs to publish stack related events. You can find
+your Amazon SNS topic ARNs using the Amazon SNS console or your Command
+Line Interface (CLI).}
 
 \item{Capabilities}{In some cases, you must explicitly acknowledge that your stack template
 contains certain capabilities in order for CloudFormation to create the
@@ -80,9 +77,8 @@ stack.
 
 Some stack templates might include resources that can affect
 permissions in your Amazon Web Services account; for example, by
-creating new Identity and Access Management (IAM) users. For those
-stacks, you must explicitly acknowledge this by specifying one of
-these capabilities.
+creating new IAM users. For those stacks, you must explicitly
+acknowledge this by specifying one of these capabilities.
 
 The following IAM resources require you to specify either the
 \code{CAPABILITY_IAM} or \code{CAPABILITY_NAMED_IAM} capability.
@@ -107,7 +103,7 @@ permissions if necessary.
 \item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-usertogroupaddition.html}{AWS::IAM::UserToGroupAddition}
 }
 
-For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/control-access-with-iam.html#capabilities}{Acknowledging IAM Resources in CloudFormation Templates}.
+For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/control-access-with-iam.html#using-iam-capabilities}{Acknowledging IAM resources in CloudFormation templates}.
 \item \code{CAPABILITY_AUTO_EXPAND}
 
 Some template contain macros. Macros perform custom processing on
@@ -137,7 +133,7 @@ processing stack templates. Be aware that the Lambda function owner
 can update the function operation without CloudFormation being
 notified.
 
-For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-macros.html}{Using CloudFormation macros to perform custom processing on templates}.
+For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-macros.html}{Perform custom processing on CloudFormation templates with template macros}.
 }
 
 Only one of the \code{Capabilities} and \code{ResourceType} parameters can be
@@ -155,20 +151,20 @@ specific Amazon Web Services resource).
 
 If the list of resource types doesn't include a resource that you're
 creating, the stack creation fails. By default, CloudFormation grants
-permissions to all resource types. Identity and Access Management (IAM)
-uses this parameter for CloudFormation-specific condition keys in IAM
-policies. For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/control-access-with-iam.html}{Controlling Access with Identity and Access Management}.
+permissions to all resource types. IAM uses this parameter for
+CloudFormation-specific condition keys in IAM policies. For more
+information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/control-access-with-iam.html}{Control access with Identity and Access Management}.
 
 Only one of the \code{Capabilities} and \code{ResourceType} parameters can be
 specified.}
 
-\item{RoleARN}{The Amazon Resource Name (ARN) of an Identity and Access Management
-(IAM) role that CloudFormation assumes to create the stack.
-CloudFormation uses the role's credentials to make calls on your behalf.
-CloudFormation always uses this role for all future operations on the
-stack. Provided that users have permission to operate on the stack,
-CloudFormation uses this role even if the users don't have permission to
-pass it. Ensure that the role grants least privilege.
+\item{RoleARN}{The Amazon Resource Name (ARN) of an IAM role that CloudFormation
+assumes to create the stack. CloudFormation uses the role's credentials
+to make calls on your behalf. CloudFormation always uses this role for
+all future operations on the stack. Provided that users have permission
+to operate on the stack, CloudFormation uses this role even if the users
+don't have permission to pass it. Ensure that the role grants least
+privilege.
 
 If you don't specify a value, CloudFormation uses the role that was
 previously associated with the stack. If no role is available,
@@ -181,8 +177,8 @@ be one of: \code{DO_NOTHING}, \code{ROLLBACK}, or \code{DELETE}. You can specify
 
 Default: \code{ROLLBACK}}
 
-\item{StackPolicyBody}{Structure containing the stack policy body. For more information, go to
-\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/protect-stack-resources.html}{Prevent Updates to Stack Resources}
+\item{StackPolicyBody}{Structure containing the stack policy body. For more information, see
+\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/protect-stack-resources.html}{Prevent updates to stack resources}
 in the \emph{CloudFormation User Guide}. You can specify either the
 \code{StackPolicyBody} or the \code{StackPolicyURL} parameter, but not both.}
 
@@ -220,7 +216,7 @@ following format:
 \item{EnableTerminationProtection}{Whether to enable termination protection on the specified stack. If a
 user attempts to delete a stack with termination protection enabled, the
 operation fails and the stack remains unchanged. For more information,
-see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-protect-stacks.html}{Protecting a Stack From Being Deleted}
+see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-protect-stacks.html}{Protect CloudFormation stacks from being deleted}
 in the \emph{CloudFormation User Guide}. Termination protection is
 deactivated on stacks by default.
 

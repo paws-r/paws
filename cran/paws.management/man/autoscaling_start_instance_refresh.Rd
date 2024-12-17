@@ -43,6 +43,7 @@ additional features, such as the following:
 \item Checkpoints
 \item CloudWatch alarms
 \item Skip matching
+\item Bake time
 }}
 }
 \description{

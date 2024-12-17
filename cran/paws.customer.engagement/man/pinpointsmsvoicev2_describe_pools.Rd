@@ -9,12 +9,16 @@ pinpointsmsvoicev2_describe_pools(
   PoolIds = NULL,
   Filters = NULL,
   NextToken = NULL,
-  MaxResults = NULL
+  MaxResults = NULL,
+  Owner = NULL
 )
 }
 \arguments{
 \item{PoolIds}{The unique identifier of pools to find. This is an array of strings that
-can be either the PoolId or PoolArn.}
+can be either the PoolId or PoolArn.
+
+If you are using a shared AWS End User Messaging SMS and Voice resource
+then you must use the full Amazon Resource Name(ARN).}
 
 \item{Filters}{An array of PoolFilter objects to filter the results.}
 
@@ -22,6 +26,10 @@ can be either the PoolId or PoolArn.}
 need to supply a value for this field in the initial request.}
 
 \item{MaxResults}{The maximum number of results to return per each request.}
+
+\item{Owner}{Use \code{SELF} to filter the list of Pools to ones your account owns or use
+\code{SHARED} to filter on Pools shared with your account. The \code{Owner} and
+\code{PoolIds} parameters can't be used at the same time.}
 }
 \description{
 Retrieves the specified pools or all pools associated with your Amazon Web Services account.

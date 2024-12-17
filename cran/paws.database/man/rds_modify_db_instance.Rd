@@ -43,6 +43,7 @@ rds_modify_db_instance(
   DisableDomain = NULL,
   PromotionTier = NULL,
   EnableIAMDatabaseAuthentication = NULL,
+  DatabaseInsightsMode = NULL,
   EnablePerformanceInsights = NULL,
   PerformanceInsightsKMSKeyId = NULL,
   PerformanceInsightsRetentionPeriod = NULL,
@@ -669,6 +670,8 @@ For more information about IAM database authentication, see \href{https://docs.a
 in the \emph{Amazon RDS User Guide.}
 
 This setting doesn't apply to RDS Custom DB instances.}
+
+\item{DatabaseInsightsMode}{Specifies the mode of Database Insights to enable for the instance.}
 
 \item{EnablePerformanceInsights}{Specifies whether to enable Performance Insights for the DB instance.
 

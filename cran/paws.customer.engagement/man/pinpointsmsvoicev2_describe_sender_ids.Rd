@@ -9,11 +9,15 @@ pinpointsmsvoicev2_describe_sender_ids(
   SenderIds = NULL,
   Filters = NULL,
   NextToken = NULL,
-  MaxResults = NULL
+  MaxResults = NULL,
+  Owner = NULL
 )
 }
 \arguments{
-\item{SenderIds}{An array of SenderIdAndCountry objects to search for.}
+\item{SenderIds}{An array of SenderIdAndCountry objects to search for.
+
+If you are using a shared AWS End User Messaging SMS and Voice resource
+then you must use the full Amazon Resource Name(ARN).}
 
 \item{Filters}{An array of SenderIdFilter objects to filter the results.}
 
@@ -21,6 +25,10 @@ pinpointsmsvoicev2_describe_sender_ids(
 need to supply a value for this field in the initial request.}
 
 \item{MaxResults}{The maximum number of results to return per each request.}
+
+\item{Owner}{Use \code{SELF} to filter the list of Sender Ids to ones your account owns or
+use \code{SHARED} to filter on Sender Ids shared with your account. The
+\code{Owner} and \code{SenderIds} parameters can't be used at the same time.}
 }
 \description{
 Describes the specified SenderIds or all SenderIds associated with your Amazon Web Services account.

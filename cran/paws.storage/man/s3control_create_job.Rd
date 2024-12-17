@@ -27,8 +27,8 @@ S3 console.}
 
 \item{Operation}{[required] The action that you want this job to perform on every object listed in
 the manifest. For more information about the available actions, see
-\href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/}{Operations} in
-the \emph{Amazon S3 User Guide}.}
+\href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/batch-ops-operations.html}{Operations}
+in the \emph{Amazon S3 User Guide}.}
 
 \item{Report}{[required] Configuration parameters for the optional job-completion report.}
 

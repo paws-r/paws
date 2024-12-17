@@ -5,15 +5,17 @@
 \title{Changes the password for a specified user in a user pool}
 \usage{
 cognitoidentityprovider_change_password(
-  PreviousPassword,
+  PreviousPassword = NULL,
   ProposedPassword,
   AccessToken
 )
 }
 \arguments{
-\item{PreviousPassword}{[required] The old password.}
+\item{PreviousPassword}{The user's previous password. Required if the user has a password. If
+the user has no password and only signs in with passwordless
+authentication options, you can omit this parameter.}
 
-\item{ProposedPassword}{[required] The new password.}
+\item{ProposedPassword}{[required] A new password that you prompted the user to enter in your application.}
 
 \item{AccessToken}{[required] A valid access token that Amazon Cognito issued to the user whose
 password you want to change.}

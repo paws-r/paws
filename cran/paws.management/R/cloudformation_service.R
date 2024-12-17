@@ -11,10 +11,10 @@ NULL
 #' infrastructure deployments predictably and repeatedly. You can use
 #' CloudFormation to leverage Amazon Web Services products, such as Amazon
 #' Elastic Compute Cloud, Amazon Elastic Block Store, Amazon Simple
-#' Notification Service, Elastic Load Balancing, and Auto Scaling to build
-#' highly reliable, highly scalable, cost-effective applications without
-#' creating or configuring the underlying Amazon Web Services
-#' infrastructure.
+#' Notification Service, Elastic Load Balancing, and Amazon EC2 Auto
+#' Scaling to build highly reliable, highly scalable, cost-effective
+#' applications without creating or configuring the underlying Amazon Web
+#' Services infrastructure.
 #' 
 #' With CloudFormation, you declare all your resources and dependencies in
 #' a template file. The template defines a collection of resources as a
@@ -106,23 +106,8 @@ NULL
 #' @examples
 #' \dontrun{
 #' svc <- cloudformation()
-#' # This example creates a generated template with a resources file.
-#' svc$create_generated_template(
-#'   GeneratedTemplateName = "JazzyTemplate",
-#'   Resources = list(
-#'     list(
-#'       ResourceIdentifier = list(
-#'         BucketName = "jazz-bucket"
-#'       ),
-#'       ResourceType = "AWS::S3::Bucket"
-#'     ),
-#'     list(
-#'       ResourceIdentifier = list(
-#'         DhcpOptionsId = "random-id123"
-#'       ),
-#'       ResourceType = "AWS::EC2::DHCPOptions"
-#'     )
-#'   )
+#' svc$activate_organizations_access(
+#'   Foo = 123
 #' )
 #' }
 #'
@@ -177,6 +162,7 @@ NULL
 #'  \link[=cloudformation_list_change_sets]{list_change_sets} \tab Returns the ID and status of each active change set for a stack\cr
 #'  \link[=cloudformation_list_exports]{list_exports} \tab Lists all exported output values in the account and Region in which you call this action\cr
 #'  \link[=cloudformation_list_generated_templates]{list_generated_templates} \tab Lists your generated templates in this Region\cr
+#'  \link[=cloudformation_list_hook_results]{list_hook_results} \tab Returns summaries of invoked Hooks when a change set or Cloud Control API operation target is provided\cr
 #'  \link[=cloudformation_list_imports]{list_imports} \tab Lists all stacks that are importing an exported output value\cr
 #'  \link[=cloudformation_list_resource_scan_related_resources]{list_resource_scan_related_resources} \tab Lists the related resources for a list of resources from a resource scan\cr
 #'  \link[=cloudformation_list_resource_scan_resources]{list_resource_scan_resources} \tab Lists the resources from a resource scan\cr
@@ -241,7 +227,7 @@ cloudformation <- function(config = list(), credentials = list(), endpoint = NUL
 
 .cloudformation$metadata <- list(
   service_name = "cloudformation",
-  endpoints = list("*" = list(endpoint = "cloudformation.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "cloudformation.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "cloudformation.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "cloudformation.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "cloudformation.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "cloudformation.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "cloudformation.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "cloudformation.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "cloudformation.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "cloudformation.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "cloudformation.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "cloudformation.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "cloudformation.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "CloudFormation",
   api_version = "2010-05-15",
   signing_name = "cloudformation",

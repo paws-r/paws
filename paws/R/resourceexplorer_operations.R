@@ -572,8 +572,8 @@ resourceexplorer_disassociate_default_view <- function() {
 #' @description
 #' Retrieves the status of your account's Amazon Web Services service
 #' access, and validates the service linked role required to access the
-#' multi-account search feature. Only the management account or a delegated
-#' administrator with service access enabled can invoke this API call.
+#' multi-account search feature. Only the management account can invoke
+#' this API call.
 #'
 #' @usage
 #' resourceexplorer_get_account_level_service_configuration()
@@ -727,6 +727,75 @@ resourceexplorer_get_index <- function() {
   return(response)
 }
 .resourceexplorer$operations$get_index <- resourceexplorer_get_index
+
+#' Retrieves details of the specified Amazon Web Services-managed view
+#'
+#' @description
+#' Retrieves details of the specified [Amazon Web Services-managed
+#' view](https://docs.aws.amazon.com/resource-explorer/latest/userguide/aws-managed-views.html).
+#'
+#' @usage
+#' resourceexplorer_get_managed_view(ManagedViewArn)
+#'
+#' @param ManagedViewArn &#91;required&#93; The Amazon resource name (ARN) of the managed view.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ManagedView = list(
+#'     Filters = list(
+#'       FilterString = "string"
+#'     ),
+#'     IncludedProperties = list(
+#'       list(
+#'         Name = "string"
+#'       )
+#'     ),
+#'     LastUpdatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ManagedViewArn = "string",
+#'     ManagedViewName = "string",
+#'     Owner = "string",
+#'     ResourcePolicy = "string",
+#'     Scope = "string",
+#'     TrustedService = "string",
+#'     Version = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_managed_view(
+#'   ManagedViewArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname resourceexplorer_get_managed_view
+#'
+#' @aliases resourceexplorer_get_managed_view
+resourceexplorer_get_managed_view <- function(ManagedViewArn) {
+  op <- new_operation(
+    name = "GetManagedView",
+    http_method = "POST",
+    http_path = "/GetManagedView",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .resourceexplorer$get_managed_view_input(ManagedViewArn = ManagedViewArn)
+  output <- .resourceexplorer$get_managed_view_output()
+  config <- get_config()
+  svc <- .resourceexplorer$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.resourceexplorer$operations$get_managed_view <- resourceexplorer_get_managed_view
 
 #' Retrieves details of the specified view
 #'
@@ -967,6 +1036,187 @@ resourceexplorer_list_indexes_for_members <- function(AccountIdList, MaxResults 
   return(response)
 }
 .resourceexplorer$operations$list_indexes_for_members <- resourceexplorer_list_indexes_for_members
+
+#' Lists the Amazon resource names (ARNs) of the Amazon Web
+#' Services-managed views available in the Amazon Web Services Region in
+#' which you call this operation
+#'
+#' @description
+#' Lists the Amazon resource names (ARNs) of the [Amazon Web
+#' Services-managed
+#' views](https://docs.aws.amazon.com/resource-explorer/latest/userguide/aws-managed-views.html)
+#' available in the Amazon Web Services Region in which you call this
+#' operation.
+#'
+#' @usage
+#' resourceexplorer_list_managed_views(MaxResults, NextToken,
+#'   ServicePrincipal)
+#'
+#' @param MaxResults The maximum number of results that you want included on each page of the
+#' response. If you do not include this parameter, it defaults to a value
+#' appropriate to the operation. If additional items exist beyond those
+#' included in the current response, the `NextToken` response element is
+#' present and has a value (is not null). Include that value as the
+#' `NextToken` request parameter in the next call to the operation to get
+#' the next part of the results.
+#' 
+#' An API operation can return fewer results than the maximum even when
+#' there are more results available. You should check `NextToken` after
+#' every operation to ensure that you receive all of the results.
+#' @param NextToken The parameter for receiving additional results if you receive a
+#' `NextToken` response in a previous request. A `NextToken` response
+#' indicates that more output is available. Set this parameter to the value
+#' of the previous call's `NextToken` response to indicate where the output
+#' should continue from. The pagination tokens expire after 24 hours.
+#' @param ServicePrincipal Specifies a service principal name. If specified, then the operation
+#' only returns the managed views that are managed by the input service.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ManagedViews = list(
+#'     "string"
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_managed_views(
+#'   MaxResults = 123,
+#'   NextToken = "string",
+#'   ServicePrincipal = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname resourceexplorer_list_managed_views
+#'
+#' @aliases resourceexplorer_list_managed_views
+resourceexplorer_list_managed_views <- function(MaxResults = NULL, NextToken = NULL, ServicePrincipal = NULL) {
+  op <- new_operation(
+    name = "ListManagedViews",
+    http_method = "POST",
+    http_path = "/ListManagedViews",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ManagedViews"),
+    stream_api = FALSE
+  )
+  input <- .resourceexplorer$list_managed_views_input(MaxResults = MaxResults, NextToken = NextToken, ServicePrincipal = ServicePrincipal)
+  output <- .resourceexplorer$list_managed_views_output()
+  config <- get_config()
+  svc <- .resourceexplorer$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.resourceexplorer$operations$list_managed_views <- resourceexplorer_list_managed_views
+
+#' Returns a list of resources and their details that match the specified
+#' criteria
+#'
+#' @description
+#' Returns a list of resources and their details that match the specified
+#' criteria. This query must use a view. If you don’t explicitly specify a
+#' view, then Resource Explorer uses the default view for the Amazon Web
+#' Services Region in which you call this operation.
+#'
+#' @usage
+#' resourceexplorer_list_resources(Filters, MaxResults, NextToken, ViewArn)
+#'
+#' @param Filters 
+#' @param MaxResults The maximum number of results that you want included on each page of the
+#' response. If you do not include this parameter, it defaults to a value
+#' appropriate to the operation. If additional items exist beyond those
+#' included in the current response, the `NextToken` response element is
+#' present and has a value (is not null). Include that value as the
+#' `NextToken` request parameter in the next call to the operation to get
+#' the next part of the results.
+#' 
+#' An API operation can return fewer results than the maximum even when
+#' there are more results available. You should check `NextToken` after
+#' every operation to ensure that you receive all of the results.
+#' @param NextToken The parameter for receiving additional results if you receive a
+#' `NextToken` response in a previous request. A `NextToken` response
+#' indicates that more output is available. Set this parameter to the value
+#' of the previous call's `NextToken` response to indicate where the output
+#' should continue from. The pagination tokens expire after 24 hours.
+#' @param ViewArn Specifies the Amazon resource name (ARN) of the view to use for the
+#' query. If you don't specify a value for this parameter, then the
+#' operation automatically uses the default view for the Amazon Web
+#' Services Region in which you called this operation. If the Region either
+#' doesn't have a default view or if you don't have permission to use the
+#' default view, then the operation fails with a 401 Unauthorized
+#' exception.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   Resources = list(
+#'     list(
+#'       Arn = "string",
+#'       LastReportedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       OwningAccountId = "string",
+#'       Properties = list(
+#'         list(
+#'           Data = list(),
+#'           LastReportedAt = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           Name = "string"
+#'         )
+#'       ),
+#'       Region = "string",
+#'       ResourceType = "string",
+#'       Service = "string"
+#'     )
+#'   ),
+#'   ViewArn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_resources(
+#'   Filters = list(
+#'     FilterString = "string"
+#'   ),
+#'   MaxResults = 123,
+#'   NextToken = "string",
+#'   ViewArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname resourceexplorer_list_resources
+#'
+#' @aliases resourceexplorer_list_resources
+resourceexplorer_list_resources <- function(Filters = NULL, MaxResults = NULL, NextToken = NULL, ViewArn = NULL) {
+  op <- new_operation(
+    name = "ListResources",
+    http_method = "POST",
+    http_path = "/ListResources",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Resources"),
+    stream_api = FALSE
+  )
+  input <- .resourceexplorer$list_resources_input(Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, ViewArn = ViewArn)
+  output <- .resourceexplorer$list_resources_output()
+  config <- get_config()
+  svc <- .resourceexplorer$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.resourceexplorer$operations$list_resources <- resourceexplorer_list_resources
 
 #' Retrieves a list of all resource types currently supported by Amazon Web
 #' Services Resource Explorer

@@ -94,8 +94,11 @@ NULL
 #'  \link[=bedrockruntime_apply_guardrail]{apply_guardrail} \tab The action to apply a guardrail\cr
 #'  \link[=bedrockruntime_converse]{converse} \tab Sends messages to the specified Amazon Bedrock model\cr
 #'  \link[=bedrockruntime_converse_stream]{converse_stream} \tab Sends messages to the specified Amazon Bedrock model and returns the response in a stream\cr
+#'  \link[=bedrockruntime_get_async_invoke]{get_async_invoke} \tab Retrieve information about an asynchronous invocation\cr
 #'  \link[=bedrockruntime_invoke_model]{invoke_model} \tab Invokes the specified Amazon Bedrock model to run inference using the prompt and inference parameters provided in the request body\cr
-#'  \link[=bedrockruntime_invoke_model_with_response_stream]{invoke_model_with_response_stream} \tab Invoke the specified Amazon Bedrock model to run inference using the prompt and inference parameters provided in the request body
+#'  \link[=bedrockruntime_invoke_model_with_response_stream]{invoke_model_with_response_stream} \tab Invoke the specified Amazon Bedrock model to run inference using the prompt and inference parameters provided in the request body\cr
+#'  \link[=bedrockruntime_list_async_invokes]{list_async_invokes} \tab Lists asynchronous invocations\cr
+#'  \link[=bedrockruntime_start_async_invoke]{start_async_invoke} \tab Starts an asynchronous invocation
 #' }
 #'
 #' @return
@@ -127,7 +130,7 @@ bedrockruntime <- function(config = list(), credentials = list(), endpoint = NUL
 
 .bedrockruntime$metadata <- list(
   service_name = "bedrockruntime",
-  endpoints = list("*" = list(endpoint = "bedrock-runtime.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "bedrock-runtime.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "bedrock-runtime.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "bedrock-runtime.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "bedrock-runtime.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "bedrock-runtime.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "bedrock-runtime.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "bedrock-runtime.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "bedrock-runtime.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "bedrock-runtime.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "bedrock-runtime.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "bedrock-runtime.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "bedrock-runtime.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Bedrock Runtime",
   api_version = "2023-09-30",
   signing_name = "bedrock",

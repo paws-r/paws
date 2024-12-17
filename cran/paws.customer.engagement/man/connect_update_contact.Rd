@@ -10,7 +10,12 @@ connect_update_contact(
   ContactId,
   Name = NULL,
   Description = NULL,
-  References = NULL
+  References = NULL,
+  SegmentAttributes = NULL,
+  QueueInfo = NULL,
+  UserInfo = NULL,
+  CustomerEndpoint = NULL,
+  SystemEndpoint = NULL
 )
 }
 \arguments{
@@ -26,6 +31,41 @@ associated with the first interaction with your contact center.}
 
 \item{References}{Well-formed data on contact, shown to agents on Contact Control Panel
 (CCP).}
+
+\item{SegmentAttributes}{A set of system defined key-value pairs stored on individual contact
+segments (unique contact ID) using an attribute map. The attributes are
+standard Amazon Connect attributes. They can be accessed in flows.
+
+Attribute keys can include only alphanumeric, -, and _.
+
+This field can be used to show channel subtype, such as \code{connect:Guide}.
+
+Currently Contact Expiry is the only segment attribute which can be
+updated by using the UpdateContact API.}
+
+\item{QueueInfo}{Information about the queue associated with a contact. This parameter
+can only be updated for external audio contacts. It is used when you
+integrate third-party systems with Contact Lens for analytics. For more
+information, see \href{https://docs.aws.amazon.com/connect/latest/adminguide/contact-lens-integration.html}{Amazon Connect Contact Lens integration}
+in the \emph{Amazon Connect Administrator Guide}.}
+
+\item{UserInfo}{Information about the agent associated with a contact. This parameter
+can only be updated for external audio contacts. It is used when you
+integrate third-party systems with Contact Lens for analytics. For more
+information, see \href{https://docs.aws.amazon.com/connect/latest/adminguide/contact-lens-integration.html}{Amazon Connect Contact Lens integration}
+in the \emph{Amazon Connect Administrator Guide}.}
+
+\item{CustomerEndpoint}{The endpoint of the customer for which the contact was initiated. For
+external audio contacts, this is usually the end customer's phone
+number. This value can only be updated for external audio contacts. For
+more information, see \href{https://docs.aws.amazon.com/connect/latest/adminguide/contact-lens-integration.html}{Amazon Connect Contact Lens integration}
+in the \emph{Amazon Connect Administrator Guide}.}
+
+\item{SystemEndpoint}{External system endpoint for the contact was initiated. For external
+audio contacts, this is the phone number of the external system such as
+the contact center. This value can only be updated for external audio
+contacts. For more information, see \href{https://docs.aws.amazon.com/connect/latest/adminguide/contact-lens-integration.html}{Amazon Connect Contact Lens integration}
+in the \emph{Amazon Connect Administrator Guide}.}
 }
 \description{
 This API is in preview release for Amazon Connect and is subject to change.

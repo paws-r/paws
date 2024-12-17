@@ -13,8 +13,10 @@ NULL
 #' @param jobId &#91;required&#93; The Batch job ID of the job to cancel.
 #' @param reason &#91;required&#93; A message to attach to the job that explains the reason for canceling
 #' it. This message is returned by future
-#' [`describe_jobs`][batch_describe_jobs] operations on the job. This
-#' message is also recorded in the Batch activity logs.
+#' [`describe_jobs`][batch_describe_jobs] operations on the job. It is also
+#' recorded in the Batch activity logs.
+#' 
+#' This parameter has as limit of 1024 characters.
 #'
 #' @keywords internal
 #'
@@ -165,14 +167,22 @@ batch_create_compute_environment <- function(computeEnvironmentName, type, state
 #' @param state The state of the job queue. If the job queue state is `ENABLED`, it is
 #' able to accept jobs. If the job queue state is `DISABLED`, new jobs
 #' can't be added to the queue, but jobs already in the queue can finish.
-#' @param schedulingPolicyArn The Amazon Resource Name (ARN) of the fair share scheduling policy. If
-#' this parameter is specified, the job queue uses a fair share scheduling
-#' policy. If this parameter isn't specified, the job queue uses a first
-#' in, first out (FIFO) scheduling policy. After a job queue is created,
-#' you can replace but can't remove the fair share scheduling policy. The
-#' format is `aws:Partition:batch:Region:Account:scheduling-policy/Name `.
+#' @param schedulingPolicyArn The Amazon Resource Name (ARN) of the fair share scheduling policy. Job
+#' queues that don't have a scheduling policy are scheduled in a first-in,
+#' first-out (FIFO) model. After a job queue has a scheduling policy, it
+#' can be replaced but can't be removed.
+#' 
+#' The format is
+#' `aws:Partition:batch:Region:Account:scheduling-policy/Name `.
+#' 
 #' An example is
 #' `aws:aws:batch:us-west-2:123456789012:scheduling-policy/MySchedulingPolicy`.
+#' 
+#' A job queue without a scheduling policy is scheduled as a FIFO job queue
+#' and can't have a scheduling policy added. Jobs queues with a scheduling
+#' policy can have a maximum of 500 active fair share identifiers. When the
+#' limit has been reached, submissions of any jobs that add a new fair
+#' share identifier fail.
 #' @param priority &#91;required&#93; The priority of the job queue. Job queues with a higher priority (or a
 #' higher integer value for the `priority` parameter) are evaluated first
 #' when associated with the same compute environment. Priority is
@@ -201,6 +211,8 @@ batch_create_compute_environment <- function(computeEnvironmentName, type, state
 #' @param jobStateTimeLimitActions The set of actions that Batch performs on jobs that remain at the head
 #' of the job queue in the specified state longer than specified times.
 #' Batch will perform each action after `maxTimeSeconds` has passed.
+#' (**Note**: The minimum value for maxTimeSeconds is 600 (10 minutes) and
+#' its maximum value is 86,400 (24 hours).)
 #'
 #' @keywords internal
 #'
@@ -434,7 +446,7 @@ batch_describe_compute_environments <- function(computeEnvironments = NULL, maxR
     http_method = "POST",
     http_path = "/v1/describecomputeenvironments",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "computeEnvironments"),
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "computeEnvironments"),
     stream_api = FALSE
   )
   input <- .batch$describe_compute_environments_input(computeEnvironments = computeEnvironments, maxResults = maxResults, nextToken = nextToken)
@@ -492,7 +504,7 @@ batch_describe_job_definitions <- function(jobDefinitions = NULL, maxResults = N
     http_method = "POST",
     http_path = "/v1/describejobdefinitions",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "jobDefinitions"),
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "jobDefinitions"),
     stream_api = FALSE
   )
   input <- .batch$describe_job_definitions_input(jobDefinitions = jobDefinitions, maxResults = maxResults, jobDefinitionName = jobDefinitionName, status = status, nextToken = nextToken)
@@ -544,7 +556,7 @@ batch_describe_job_queues <- function(jobQueues = NULL, maxResults = NULL, nextT
     http_method = "POST",
     http_path = "/v1/describejobqueues",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "jobQueues"),
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "jobQueues"),
     stream_api = FALSE
   )
   input <- .batch$describe_job_queues_input(jobQueues = jobQueues, maxResults = maxResults, nextToken = nextToken)
@@ -751,7 +763,7 @@ batch_list_jobs <- function(jobQueue = NULL, arrayJobId = NULL, multiNodeJobId =
     http_method = "POST",
     http_path = "/v1/listjobs",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "jobSummaryList"),
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "jobSummaryList"),
     stream_api = FALSE
   )
   input <- .batch$list_jobs_input(jobQueue = jobQueue, arrayJobId = arrayJobId, multiNodeJobId = multiNodeJobId, jobStatus = jobStatus, maxResults = maxResults, nextToken = nextToken, filters = filters)
@@ -1132,8 +1144,10 @@ batch_tag_resource <- function(resourceArn, tags) {
 #' @param jobId &#91;required&#93; The Batch job ID of the job to terminate.
 #' @param reason &#91;required&#93; A message to attach to the job that explains the reason for canceling
 #' it. This message is returned by future
-#' [`describe_jobs`][batch_describe_jobs] operations on the job. This
-#' message is also recorded in the Batch activity logs.
+#' [`describe_jobs`][batch_describe_jobs] operations on the job. It is also
+#' recorded in the Batch activity logs.
+#' 
+#' This parameter has as limit of 1024 characters.
 #'
 #' @keywords internal
 #'
@@ -1330,7 +1344,9 @@ batch_update_compute_environment <- function(computeEnvironment, state = NULL, u
 #' architecture types in a single job queue.
 #' @param jobStateTimeLimitActions The set of actions that Batch perform on jobs that remain at the head of
 #' the job queue in the specified state longer than specified times. Batch
-#' will perform each action after `maxTimeSeconds` has passed.
+#' will perform each action after `maxTimeSeconds` has passed. (**Note**:
+#' The minimum value for maxTimeSeconds is 600 (10 minutes) and its maximum
+#' value is 86,400 (24 hours).)
 #'
 #' @keywords internal
 #'

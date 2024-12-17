@@ -9,8 +9,8 @@ applicationinsights_describe_problem(ProblemId, AccountId = NULL)
 \arguments{
 \item{ProblemId}{[required] The ID of the problem.}
 
-\item{AccountId}{The AWS account ID for the owner of the resource group affected by the
-problem.}
+\item{AccountId}{The Amazon Web Services account ID for the owner of the resource group
+affected by the problem.}
 }
 \description{
 Describes an application problem.

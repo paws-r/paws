@@ -8,7 +8,11 @@ trial period}
 guardduty_get_remaining_free_trial_days(DetectorId, AccountIds = NULL)
 }
 \arguments{
-\item{DetectorId}{[required] The unique ID of the detector of the GuardDuty member account.}
+\item{DetectorId}{[required] The unique ID of the detector of the GuardDuty member account.
+
+To find the \code{detectorId} in the current Region, see the Settings page in
+the GuardDuty console, or run the
+\code{\link[=guardduty_list_detectors]{list_detectors}} API.}
 
 \item{AccountIds}{A list of account identifiers of the GuardDuty member account.}
 }

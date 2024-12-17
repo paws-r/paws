@@ -7,7 +7,7 @@
 memorydb_describe_ac_ls(ACLName = NULL, MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
-\item{ACLName}{The name of the ACL}
+\item{ACLName}{The name of the ACL.}
 
 \item{MaxResults}{The maximum number of records to include in the response. If more
 records exist than the specified MaxResults value, a token is included
@@ -20,7 +20,7 @@ for each page. Make the call again using the returned token to retrieve
 the next page. Keep all other arguments unchanged.}
 }
 \description{
-Returns a list of ACLs
+Returns a list of ACLs.
 
 See \url{https://www.paws-r-sdk.com/docs/memorydb_describe_ac_ls/} for full documentation.
 }

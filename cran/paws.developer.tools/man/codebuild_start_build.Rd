@@ -36,7 +36,8 @@ codebuild_start_build(
   registryCredentialOverride = NULL,
   imagePullCredentialsTypeOverride = NULL,
   debugSessionEnabled = NULL,
-  fleetOverride = NULL
+  fleetOverride = NULL,
+  autoRetryLimitOverride = NULL
 )
 }
 \arguments{
@@ -225,6 +226,11 @@ information, see \href{https://docs.aws.amazon.com/codebuild/latest/userguide/se
 
 \item{fleetOverride}{A ProjectFleet object specified for this build that overrides the one
 defined in the build project.}
+
+\item{autoRetryLimitOverride}{The maximum number of additional automatic retries after a failed build.
+For example, if the auto-retry limit is set to 2, CodeBuild will call
+the \code{\link[=codebuild_retry_build]{retry_build}} API to automatically retry
+your build for up to 2 additional times.}
 }
 \description{
 Starts running a build with the settings defined in the project. These setting include: how to run a build, where to get the source code, which build environment to use, which build commands to run, and where to store the build output.

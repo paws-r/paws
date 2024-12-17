@@ -5,14 +5,32 @@
 \title{Describes one or more of your network interfaces}
 \usage{
 ec2_describe_network_interfaces(
-  Filters = NULL,
+  NextToken = NULL,
+  MaxResults = NULL,
   DryRun = NULL,
   NetworkInterfaceIds = NULL,
-  NextToken = NULL,
-  MaxResults = NULL
+  Filters = NULL
 )
 }
 \arguments{
+\item{NextToken}{The token returned from a previous paginated request. Pagination
+continues from the end of the items returned by the previous request.}
+
+\item{MaxResults}{The maximum number of items to return for this request. To get the next
+page of items, make another request with the token returned in the
+output. You cannot specify this parameter and the network interface IDs
+parameter in the same request. For more information, see
+\href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Query-Requests.html#api-pagination}{Pagination}.}
+
+\item{DryRun}{Checks whether you have the required permissions for the action, without
+actually making the request, and provides an error response. If you have
+the required permissions, the error response is \code{DryRunOperation}.
+Otherwise, it is \code{UnauthorizedOperation}.}
+
+\item{NetworkInterfaceIds}{The network interface IDs.
+
+Default: Describes all your network interfaces.}
+
 \item{Filters}{One or more filters.
 \itemize{
 \item \code{association.allocation-id} - The allocation ID returned when you
@@ -56,8 +74,8 @@ interface.
 network interface.
 \item \code{interface-type} - The type of network interface
 (\code{api_gateway_managed} | \code{aws_codestar_connections_managed} |
-\code{branch} | \code{ec2_instance_connect_endpoint} | \code{efa} | \code{efs} |
-\code{gateway_load_balancer} | \code{gateway_load_balancer_endpoint} |
+\code{branch} | \code{ec2_instance_connect_endpoint} | \code{efa} | \code{efa-only} |
+\code{efs} | \code{gateway_load_balancer} | \code{gateway_load_balancer_endpoint} |
 \code{global_accelerator_managed} | \code{interface} | \code{iot_rules_managed} |
 \code{lambda} | \code{load_balancer} | \code{nat_gateway} | \code{network_load_balancer}
 | \code{quicksight} | \code{transit_gateway} | \code{trunk} | \code{vpc_endpoint}).
@@ -94,24 +112,6 @@ filter to find all resources assigned a tag with a specific key,
 regardless of the tag value.
 \item \code{vpc-id} - The ID of the VPC for the network interface.
 }}
-
-\item{DryRun}{Checks whether you have the required permissions for the action, without
-actually making the request, and provides an error response. If you have
-the required permissions, the error response is \code{DryRunOperation}.
-Otherwise, it is \code{UnauthorizedOperation}.}
-
-\item{NetworkInterfaceIds}{The network interface IDs.
-
-Default: Describes all your network interfaces.}
-
-\item{NextToken}{The token returned from a previous paginated request. Pagination
-continues from the end of the items returned by the previous request.}
-
-\item{MaxResults}{The maximum number of items to return for this request. To get the next
-page of items, make another request with the token returned in the
-output. You cannot specify this parameter and the network interface IDs
-parameter in the same request. For more information, see
-\href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Query-Requests.html#api-pagination}{Pagination}.}
 }
 \description{
 Describes one or more of your network interfaces.

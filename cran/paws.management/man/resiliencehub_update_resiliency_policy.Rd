@@ -17,8 +17,8 @@ resiliencehub_update_resiliency_policy(
 \item{dataLocationConstraint}{Specifies a high-level geographical location constraint for where your
 resilience policy data can be stored.}
 
-\item{policy}{The type of resiliency policy to be created, including the recovery time
-objective (RTO) and recovery point objective (RPO) in seconds.}
+\item{policy}{Resiliency policy to be created, including the recovery time objective
+(RTO) and recovery point objective (RPO) in seconds.}
 
 \item{policyArn}{[required] Amazon Resource Name (ARN) of the resiliency policy. The format for this
 ARN is:
@@ -26,9 +26,9 @@ arn:\code{partition}:resiliencehub:\code{region}:\code{account}:resiliency-polic
 For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}
 in the \emph{Amazon Web Services General Reference} guide.}
 
-\item{policyDescription}{The description for the policy.}
+\item{policyDescription}{Description of the resiliency policy.}
 
-\item{policyName}{The name of the policy}
+\item{policyName}{Name of the resiliency policy.}
 
 \item{tier}{The tier for this resiliency policy, ranging from the highest severity
 (\code{MissionCritical}) to lowest (\code{NonCritical}).}

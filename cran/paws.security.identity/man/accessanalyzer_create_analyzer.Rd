@@ -25,14 +25,21 @@ can create up to 5 analyzers per organization per Region.}
 automatically archive findings that meet the criteria you define for the
 rule.}
 
-\item{tags}{An array of key-value pairs to apply to the analyzer.}
+\item{tags}{An array of key-value pairs to apply to the analyzer. You can use the
+set of Unicode letters, digits, whitespace, \verb{_}, \code{.}, \code{/}, \code{=}, \code{+}, and
+\code{-}.
+
+For the tag key, you can specify a value that is 1 to 128 characters in
+length and cannot be prefixed with \verb{aws:}.
+
+For the tag value, you can specify a value that is 0 to 256 characters
+in length.}
 
 \item{clientToken}{A client token.}
 
 \item{configuration}{Specifies the configuration of the analyzer. If the analyzer is an
 unused access analyzer, the specified scope of unused access is used for
-the configuration. If the analyzer is an external access analyzer, this
-field is not used.}
+the configuration.}
 }
 \description{
 Creates an analyzer for your account.

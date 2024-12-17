@@ -2545,7 +2545,7 @@ kms_list_aliases <- function(KeyId = NULL, Limit = NULL, Marker = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "Limit", more_results = "Truncated", output_token = "NextMarker", result_key = "Aliases"),
+    paginator = list(limit_key = "Limit", input_token = "Marker", output_token = "NextMarker", more_results = "Truncated", result_key = "Aliases"),
     stream_api = FALSE
   )
   input <- .kms$list_aliases_input(KeyId = KeyId, Limit = Limit, Marker = Marker)
@@ -2603,7 +2603,7 @@ kms_list_grants <- function(Limit = NULL, Marker = NULL, KeyId, GrantId = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "Limit", more_results = "Truncated", output_token = "NextMarker", result_key = "Grants"),
+    paginator = list(limit_key = "Limit", input_token = "Marker", output_token = "NextMarker", more_results = "Truncated", result_key = "Grants"),
     stream_api = FALSE
   )
   input <- .kms$list_grants_input(Limit = Limit, Marker = Marker, KeyId = KeyId, GrantId = GrantId, GranteePrincipal = GranteePrincipal)
@@ -2657,7 +2657,7 @@ kms_list_key_policies <- function(KeyId, Limit = NULL, Marker = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "Limit", more_results = "Truncated", output_token = "NextMarker", result_key = "PolicyNames"),
+    paginator = list(limit_key = "Limit", input_token = "Marker", output_token = "NextMarker", more_results = "Truncated", result_key = "PolicyNames"),
     stream_api = FALSE
   )
   input <- .kms$list_key_policies_input(KeyId = KeyId, Limit = Limit, Marker = Marker)
@@ -2750,7 +2750,7 @@ kms_list_keys <- function(Limit = NULL, Marker = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "Limit", more_results = "Truncated", output_token = "NextMarker", result_key = "Keys"),
+    paginator = list(limit_key = "Limit", input_token = "Marker", output_token = "NextMarker", more_results = "Truncated", result_key = "Keys"),
     stream_api = FALSE
   )
   input <- .kms$list_keys_input(Limit = Limit, Marker = Marker)

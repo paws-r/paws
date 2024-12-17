@@ -2,7 +2,7 @@
 % Please edit documentation in R/elasticinference_operations.R
 \name{elasticinference_list_tags_for_resource}
 \alias{elasticinference_list_tags_for_resource}
-\title{Returns all tags of an Elastic Inference Accelerator}
+\title{Amazon Elastic Inference is no longer available}
 \usage{
 elasticinference_list_tags_for_resource(resourceArn)
 }
@@ -10,7 +10,7 @@ elasticinference_list_tags_for_resource(resourceArn)
 \item{resourceArn}{[required] The ARN of the Elastic Inference Accelerator to list the tags for.}
 }
 \description{
-Returns all tags of an Elastic Inference Accelerator.
+Amazon Elastic Inference is no longer available.
 
 See \url{https://www.paws-r-sdk.com/docs/elasticinference_list_tags_for_resource/} for full documentation.
 }

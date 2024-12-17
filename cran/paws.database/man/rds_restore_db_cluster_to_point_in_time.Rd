@@ -34,6 +34,11 @@ rds_restore_db_cluster_to_point_in_time(
   NetworkType = NULL,
   SourceDbClusterResourceId = NULL,
   RdsCustomClusterConfiguration = NULL,
+  MonitoringInterval = NULL,
+  MonitoringRoleArn = NULL,
+  EnablePerformanceInsights = NULL,
+  PerformanceInsightsKMSKeyId = NULL,
+  PerformanceInsightsRetentionPeriod = NULL,
   EngineLifecycleSupport = NULL
 )
 }
@@ -160,9 +165,10 @@ Access Management (IAM) accounts to database accounts. By default,
 mapping isn't enabled.
 
 For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.IAMDBAuth.html}{IAM Database Authentication}
-in the \emph{Amazon Aurora User Guide}.
+in the \emph{Amazon Aurora User Guide} or \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html}{IAM database authentication for MariaDB, MySQL, and PostgreSQL}
+in the \emph{Amazon RDS User Guide}.
 
-Valid for: Aurora DB clusters only}
+Valid for: Aurora DB clusters and Multi-AZ DB clusters}
 
 \item{BacktrackWindow}{The target backtrack window, in seconds. To disable backtracking, set
 this value to 0.
@@ -356,6 +362,53 @@ Valid for: Aurora DB clusters only}
 
 \item{RdsCustomClusterConfiguration}{Reserved for future use.}
 
+\item{MonitoringInterval}{The interval, in seconds, between points when Enhanced Monitoring
+metrics are collected for the DB cluster. To turn off collecting
+Enhanced Monitoring metrics, specify \code{0}.
+
+If \code{MonitoringRoleArn} is specified, also set \code{MonitoringInterval} to a
+value other than \code{0}.
+
+Valid Values: \code{0 | 1 | 5 | 10 | 15 | 30 | 60}
+
+Default: \code{0}}
+
+\item{MonitoringRoleArn}{The Amazon Resource Name (ARN) for the IAM role that permits RDS to send
+Enhanced Monitoring metrics to Amazon CloudWatch Logs. An example is
+\code{arn:aws:iam:123456789012:role/emaccess}.
+
+If \code{MonitoringInterval} is set to a value other than \code{0}, supply a
+\code{MonitoringRoleArn} value.}
+
+\item{EnablePerformanceInsights}{Specifies whether to turn on Performance Insights for the DB cluster.}
+
+\item{PerformanceInsightsKMSKeyId}{The Amazon Web Services KMS key identifier for encryption of Performance
+Insights data.
+
+The Amazon Web Services KMS key identifier is the key ARN, key ID, alias
+ARN, or alias name for the KMS key.
+
+If you don't specify a value for \code{PerformanceInsightsKMSKeyId}, then
+Amazon RDS uses your default KMS key. There is a default KMS key for
+your Amazon Web Services account. Your Amazon Web Services account has a
+different default KMS key for each Amazon Web Services Region.}
+
+\item{PerformanceInsightsRetentionPeriod}{The number of days to retain Performance Insights data.
+
+Valid Values:
+\itemize{
+\item \code{7}
+\item \emph{month} * 31, where \emph{month} is a number of months from 1-23.
+Examples: \code{93} (3 months * 31), \code{341} (11 months * 31), \code{589} (19
+months * 31)
+\item \code{731}
+}
+
+Default: \code{7} days
+
+If you specify a retention period that isn't valid, such as \code{94}, Amazon
+RDS issues an error.}
+
 \item{EngineLifecycleSupport}{The life cycle type for this DB cluster.
 
 By default, this value is set to \code{open-source-rds-extended-support},
@@ -372,7 +425,7 @@ major engine version on your DB cluster past the end of standard support
 for that engine version. For more information, see the following
 sections:
 \itemize{
-\item Amazon Aurora (PostgreSQL only) - \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/extended-support.html}{Using Amazon RDS Extended Support}
+\item Amazon Aurora - \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/extended-support.html}{Using Amazon RDS Extended Support}
 in the \emph{Amazon Aurora User Guide}
 \item Amazon RDS - \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/extended-support.html}{Using Amazon RDS Extended Support}
 in the \emph{Amazon RDS User Guide}

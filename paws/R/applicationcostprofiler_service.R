@@ -136,7 +136,7 @@ applicationcostprofiler <- function(config = list(), credentials = list(), endpo
 
 .applicationcostprofiler$metadata <- list(
   service_name = "applicationcostprofiler",
-  endpoints = list("*" = list(endpoint = "application-cost-profiler.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "application-cost-profiler.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "application-cost-profiler.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "application-cost-profiler.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "application-cost-profiler.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "application-cost-profiler.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "application-cost-profiler.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "application-cost-profiler.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "application-cost-profiler.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "application-cost-profiler.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "application-cost-profiler.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "application-cost-profiler.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "application-cost-profiler.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "ApplicationCostProfiler",
   api_version = "2020-09-10",
   signing_name = "application-cost-profiler",

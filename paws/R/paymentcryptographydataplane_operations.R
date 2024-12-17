@@ -13,8 +13,8 @@ NULL
 #' data](https://docs.aws.amazon.com/payment-cryptography/latest/userguide/decrypt-data.html)
 #' in the *Amazon Web Services Payment Cryptography User Guide*.
 #' 
-#' You can use an encryption key generated within Amazon Web Services
-#' Payment Cryptography, or you can import your own encryption key by
+#' You can use an decryption key generated within Amazon Web Services
+#' Payment Cryptography, or you can import your own decryption key by
 #' calling
 #' [ImportKey](https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_ImportKey.html).
 #' For this operation, the key must have `KeyModesOfUse` set to `Decrypt`.
@@ -24,6 +24,18 @@ NULL
 #' Payment Cryptography, you can export the public component of the
 #' asymmetric key pair by calling
 #' [GetPublicCertificate](https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_GetPublicKeyCertificate.html).
+#' 
+#' This operation also supports dynamic keys, allowing you to pass a
+#' dynamic decryption key as a TR-31 WrappedKeyBlock. This can be used when
+#' key material is frequently rotated, such as during every card
+#' transaction, and there is need to avoid importing short-lived keys into
+#' Amazon Web Services Payment Cryptography. To decrypt using dynamic keys,
+#' the `keyARN` is the Key Encryption Key (KEK) of the TR-31 wrapped
+#' decryption key material. The incoming wrapped key shall have a key
+#' purpose of D0 with a mode of use of B or D. For more information, see
+#' [Using Dynamic
+#' Keys](https://docs.aws.amazon.com/payment-cryptography/latest/userguide/use-cases-acquirers-dynamickeys.html)
+#' in the *Amazon Web Services Payment Cryptography User Guide*.
 #' 
 #' For symmetric and DUKPT decryption, Amazon Web Services Payment
 #' Cryptography supports `TDES` and `AES` algorithms. For EMV decryption,
@@ -111,7 +123,15 @@ NULL
 #'   ),
 #'   WrappedKey = list(
 #'     WrappedKeyMaterial = list(
-#'       Tr31KeyBlock = "string"
+#'       Tr31KeyBlock = "string",
+#'       DiffieHellmanSymmetricKey = list(
+#'         CertificateAuthorityPublicKeyIdentifier = "string",
+#'         PublicKeyCertificate = "string",
+#'         KeyAlgorithm = "TDES_2KEY"|"TDES_3KEY"|"AES_128"|"AES_192"|"AES_256",
+#'         KeyDerivationFunction = "NIST_SP800"|"ANSI_X963",
+#'         KeyDerivationHashAlgorithm = "SHA_256"|"SHA_384"|"SHA_512",
+#'         SharedInformation = "string"
+#'       )
 #'     ),
 #'     KeyCheckValueAlgorithm = "CMAC"|"ANSI_X9_24"
 #'   )
@@ -157,11 +177,24 @@ paymentcryptographydataplane_decrypt_data <- function(KeyIdentifier, CipherText,
 #' [CreateKey](https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_CreateKey.html).
 #' You can import your own encryption key by calling
 #' [ImportKey](https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_ImportKey.html).
+#' 
 #' For this operation, the key must have `KeyModesOfUse` set to `Encrypt`.
 #' In asymmetric encryption, plaintext is encrypted using public component.
 #' You can import the public component of an asymmetric key pair created
 #' outside Amazon Web Services Payment Cryptography by calling
 #' [ImportKey](https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_ImportKey.html).
+#' 
+#' This operation also supports dynamic keys, allowing you to pass a
+#' dynamic encryption key as a TR-31 WrappedKeyBlock. This can be used when
+#' key material is frequently rotated, such as during every card
+#' transaction, and there is need to avoid importing short-lived keys into
+#' Amazon Web Services Payment Cryptography. To encrypt using dynamic keys,
+#' the `keyARN` is the Key Encryption Key (KEK) of the TR-31 wrapped
+#' encryption key material. The incoming wrapped key shall have a key
+#' purpose of D0 with a mode of use of B or D. For more information, see
+#' [Using Dynamic
+#' Keys](https://docs.aws.amazon.com/payment-cryptography/latest/userguide/use-cases-acquirers-dynamickeys.html)
+#' in the *Amazon Web Services Payment Cryptography User Guide*.
 #' 
 #' For symmetric and DUKPT encryption, Amazon Web Services Payment
 #' Cryptography supports `TDES` and `AES` algorithms. For EMV encryption,
@@ -265,7 +298,15 @@ paymentcryptographydataplane_decrypt_data <- function(KeyIdentifier, CipherText,
 #'   ),
 #'   WrappedKey = list(
 #'     WrappedKeyMaterial = list(
-#'       Tr31KeyBlock = "string"
+#'       Tr31KeyBlock = "string",
+#'       DiffieHellmanSymmetricKey = list(
+#'         CertificateAuthorityPublicKeyIdentifier = "string",
+#'         PublicKeyCertificate = "string",
+#'         KeyAlgorithm = "TDES_2KEY"|"TDES_3KEY"|"AES_128"|"AES_192"|"AES_256",
+#'         KeyDerivationFunction = "NIST_SP800"|"ANSI_X963",
+#'         KeyDerivationHashAlgorithm = "SHA_256"|"SHA_384"|"SHA_512",
+#'         SharedInformation = "string"
+#'       )
 #'     ),
 #'     KeyCheckValueAlgorithm = "CMAC"|"ANSI_X9_24"
 #'   )
@@ -544,6 +585,177 @@ paymentcryptographydataplane_generate_mac <- function(KeyIdentifier, MessageData
 }
 .paymentcryptographydataplane$operations$generate_mac <- paymentcryptographydataplane_generate_mac
 
+#' Generates an issuer script mac for EMV payment cards that use offline
+#' PINs as the cardholder verification method (CVM)
+#'
+#' @description
+#' Generates an issuer script mac for EMV payment cards that use offline
+#' PINs as the cardholder verification method (CVM).
+#' 
+#' This operation generates an authenticated issuer script response by
+#' appending the incoming message data (APDU command) with the target
+#' encrypted PIN block in ISO2 format. The command structure and method to
+#' send the issuer script update to the card is not defined by this
+#' operation and is typically determined by the applicable payment card
+#' scheme.
+#' 
+#' The primary inputs to this operation include the incoming new encrypted
+#' pinblock, PIN encryption key (PEK), issuer master key (IMK), primary
+#' account number (PAN), and the payment card derivation method.
+#' 
+#' The operation uses two issuer master keys - secure messaging for
+#' confidentiality (IMK-SMC) and secure messaging for integrity (IMK-SMI).
+#' The SMC key is used to internally derive a key to secure the pin, while
+#' SMI key is used to internally derive a key to authenticate the script
+#' reponse as per the EMV 4.4 - Book 2 - Security and Key Management
+#' specification.
+#' 
+#' This operation supports Amex, EMV2000, EMVCommon, Mastercard and Visa
+#' derivation methods, each requiring specific input parameters. Users must
+#' follow the specific derivation method and input parameters defined by
+#' the respective payment card scheme.
+#' 
+#' Use [`generate_mac`][paymentcryptographydataplane_generate_mac]
+#' operation when sending a script update to an EMV card that does not
+#' involve PIN change. When assigning IAM permissions, it is important to
+#' understand that
+#' [`encrypt_data`][paymentcryptographydataplane_encrypt_data] using EMV
+#' keys and [`generate_mac`][paymentcryptographydataplane_generate_mac]
+#' perform similar functions to this command.
+#' 
+#' **Cross-account use**: This operation can't be used across different
+#' Amazon Web Services accounts.
+#' 
+#' **Related operations:**
+#' 
+#' -   [`encrypt_data`][paymentcryptographydataplane_encrypt_data]
+#' 
+#' -   [`generate_mac`][paymentcryptographydataplane_generate_mac]
+#'
+#' @usage
+#' paymentcryptographydataplane_generate_mac_emv_pin_change(
+#'   NewPinPekIdentifier, NewEncryptedPinBlock, PinBlockFormat,
+#'   SecureMessagingIntegrityKeyIdentifier,
+#'   SecureMessagingConfidentialityKeyIdentifier, MessageData,
+#'   DerivationMethodAttributes)
+#'
+#' @param NewPinPekIdentifier &#91;required&#93; The `keyARN` of the PEK protecting the incoming new encrypted PIN block.
+#' @param NewEncryptedPinBlock &#91;required&#93; The incoming new encrypted PIN block data for offline pin change on an
+#' EMV card.
+#' @param PinBlockFormat &#91;required&#93; The PIN encoding format of the incoming new encrypted PIN block as
+#' specified in ISO 9564.
+#' @param SecureMessagingIntegrityKeyIdentifier &#91;required&#93; The `keyARN` of the issuer master key (IMK-SMI) used to authenticate the
+#' issuer script response.
+#' @param SecureMessagingConfidentialityKeyIdentifier &#91;required&#93; The `keyARN` of the issuer master key (IMK-SMC) used to protect the PIN
+#' block data in the issuer script response.
+#' @param MessageData &#91;required&#93; The message data is the APDU command from the card reader or terminal.
+#' The target encrypted PIN block, after translation to ISO2 format, is
+#' appended to this message data to generate an issuer script response.
+#' @param DerivationMethodAttributes &#91;required&#93; The attributes and data values to derive payment card specific
+#' confidentiality and integrity keys.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NewPinPekArn = "string",
+#'   SecureMessagingIntegrityKeyArn = "string",
+#'   SecureMessagingConfidentialityKeyArn = "string",
+#'   Mac = "string",
+#'   EncryptedPinBlock = "string",
+#'   NewPinPekKeyCheckValue = "string",
+#'   SecureMessagingIntegrityKeyCheckValue = "string",
+#'   SecureMessagingConfidentialityKeyCheckValue = "string",
+#'   VisaAmexDerivationOutputs = list(
+#'     AuthorizationRequestKeyArn = "string",
+#'     AuthorizationRequestKeyCheckValue = "string",
+#'     CurrentPinPekArn = "string",
+#'     CurrentPinPekKeyCheckValue = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$generate_mac_emv_pin_change(
+#'   NewPinPekIdentifier = "string",
+#'   NewEncryptedPinBlock = "string",
+#'   PinBlockFormat = "ISO_FORMAT_0"|"ISO_FORMAT_1"|"ISO_FORMAT_3",
+#'   SecureMessagingIntegrityKeyIdentifier = "string",
+#'   SecureMessagingConfidentialityKeyIdentifier = "string",
+#'   MessageData = "string",
+#'   DerivationMethodAttributes = list(
+#'     EmvCommon = list(
+#'       MajorKeyDerivationMode = "EMV_OPTION_A"|"EMV_OPTION_B",
+#'       PrimaryAccountNumber = "string",
+#'       PanSequenceNumber = "string",
+#'       ApplicationCryptogram = "string",
+#'       Mode = "ECB"|"CBC",
+#'       PinBlockPaddingType = "NO_PADDING"|"ISO_IEC_7816_4",
+#'       PinBlockLengthPosition = "NONE"|"FRONT_OF_PIN_BLOCK"
+#'     ),
+#'     Amex = list(
+#'       MajorKeyDerivationMode = "EMV_OPTION_A"|"EMV_OPTION_B",
+#'       PrimaryAccountNumber = "string",
+#'       PanSequenceNumber = "string",
+#'       ApplicationTransactionCounter = "string",
+#'       AuthorizationRequestKeyIdentifier = "string",
+#'       CurrentPinAttributes = list(
+#'         CurrentPinPekIdentifier = "string",
+#'         CurrentEncryptedPinBlock = "string"
+#'       )
+#'     ),
+#'     Visa = list(
+#'       MajorKeyDerivationMode = "EMV_OPTION_A"|"EMV_OPTION_B",
+#'       PrimaryAccountNumber = "string",
+#'       PanSequenceNumber = "string",
+#'       ApplicationTransactionCounter = "string",
+#'       AuthorizationRequestKeyIdentifier = "string",
+#'       CurrentPinAttributes = list(
+#'         CurrentPinPekIdentifier = "string",
+#'         CurrentEncryptedPinBlock = "string"
+#'       )
+#'     ),
+#'     Emv2000 = list(
+#'       MajorKeyDerivationMode = "EMV_OPTION_A"|"EMV_OPTION_B",
+#'       PrimaryAccountNumber = "string",
+#'       PanSequenceNumber = "string",
+#'       ApplicationTransactionCounter = "string"
+#'     ),
+#'     Mastercard = list(
+#'       MajorKeyDerivationMode = "EMV_OPTION_A"|"EMV_OPTION_B",
+#'       PrimaryAccountNumber = "string",
+#'       PanSequenceNumber = "string",
+#'       ApplicationCryptogram = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname paymentcryptographydataplane_generate_mac_emv_pin_change
+#'
+#' @aliases paymentcryptographydataplane_generate_mac_emv_pin_change
+paymentcryptographydataplane_generate_mac_emv_pin_change <- function(NewPinPekIdentifier, NewEncryptedPinBlock, PinBlockFormat, SecureMessagingIntegrityKeyIdentifier, SecureMessagingConfidentialityKeyIdentifier, MessageData, DerivationMethodAttributes) {
+  op <- new_operation(
+    name = "GenerateMacEmvPinChange",
+    http_method = "POST",
+    http_path = "/macemvpinchange/generate",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .paymentcryptographydataplane$generate_mac_emv_pin_change_input(NewPinPekIdentifier = NewPinPekIdentifier, NewEncryptedPinBlock = NewEncryptedPinBlock, PinBlockFormat = PinBlockFormat, SecureMessagingIntegrityKeyIdentifier = SecureMessagingIntegrityKeyIdentifier, SecureMessagingConfidentialityKeyIdentifier = SecureMessagingConfidentialityKeyIdentifier, MessageData = MessageData, DerivationMethodAttributes = DerivationMethodAttributes)
+  output <- .paymentcryptographydataplane$generate_mac_emv_pin_change_output()
+  config <- get_config()
+  svc <- .paymentcryptographydataplane$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.paymentcryptographydataplane$operations$generate_mac_emv_pin_change <- paymentcryptographydataplane_generate_mac_emv_pin_change
+
 #' Generates pin-related data such as PIN, PIN Verification Value (PVV),
 #' PIN Block, and PIN Offset during new card issuance or reissuance
 #'
@@ -560,6 +772,15 @@ paymentcryptographydataplane_generate_mac <- function(KeyIdentifier, MessageData
 #' `EncryptedPinBlock` for transmission from Amazon Web Services Payment
 #' Cryptography. This operation uses a separate Pin Verification Key (PVK)
 #' for VISA PVV generation.
+#' 
+#' Using ECDH key exchange, you can receive cardholder selectable PINs into
+#' Amazon Web Services Payment Cryptography. The ECDH derived key protects
+#' the incoming PIN block. You can also use it for reveal PIN, wherein the
+#' generated PIN block is protected by the ECDH derived key before
+#' transmission from Amazon Web Services Payment Cryptography. For more
+#' information on establishing ECDH derived keys, see the [Generating
+#' keys](https://docs.aws.amazon.com/payment-cryptography/latest/userguide/create-keys.html)
+#' in the *Amazon Web Services Payment Cryptography User Guide*.
 #' 
 #' For information about valid keys for this operation, see [Understanding
 #' key
@@ -582,12 +803,13 @@ paymentcryptographydataplane_generate_mac <- function(KeyIdentifier, MessageData
 #' @usage
 #' paymentcryptographydataplane_generate_pin_data(GenerationKeyIdentifier,
 #'   EncryptionKeyIdentifier, GenerationAttributes, PinDataLength,
-#'   PrimaryAccountNumber, PinBlockFormat)
+#'   PrimaryAccountNumber, PinBlockFormat, EncryptionWrappedKey)
 #'
 #' @param GenerationKeyIdentifier &#91;required&#93; The `keyARN` of the PEK that Amazon Web Services Payment Cryptography
 #' uses for pin data generation.
 #' @param EncryptionKeyIdentifier &#91;required&#93; The `keyARN` of the PEK that Amazon Web Services Payment Cryptography
-#' uses to encrypt the PIN Block.
+#' uses to encrypt the PIN Block. For ECDH, it is the `keyARN` of the
+#' asymmetric ECC key.
 #' @param GenerationAttributes &#91;required&#93; The attributes and values to use for PIN, PVV, or PIN Offset generation.
 #' @param PinDataLength The length of PIN under generation.
 #' @param PrimaryAccountNumber &#91;required&#93; The Primary Account Number (PAN), a unique identifier for a payment
@@ -603,6 +825,7 @@ paymentcryptographydataplane_generate_mac <- function(KeyIdentifier, MessageData
 #' 
 #' The `ISO_Format_3` PIN block format is the same as `ISO_Format_0` except
 #' that the fill digits are random values from 10 to 15.
+#' @param EncryptionWrappedKey 
 #'
 #' @return
 #' A list with the following syntax:
@@ -658,7 +881,21 @@ paymentcryptographydataplane_generate_mac <- function(KeyIdentifier, MessageData
 #'   ),
 #'   PinDataLength = 123,
 #'   PrimaryAccountNumber = "string",
-#'   PinBlockFormat = "ISO_FORMAT_0"|"ISO_FORMAT_3"
+#'   PinBlockFormat = "ISO_FORMAT_0"|"ISO_FORMAT_3"|"ISO_FORMAT_4",
+#'   EncryptionWrappedKey = list(
+#'     WrappedKeyMaterial = list(
+#'       Tr31KeyBlock = "string",
+#'       DiffieHellmanSymmetricKey = list(
+#'         CertificateAuthorityPublicKeyIdentifier = "string",
+#'         PublicKeyCertificate = "string",
+#'         KeyAlgorithm = "TDES_2KEY"|"TDES_3KEY"|"AES_128"|"AES_192"|"AES_256",
+#'         KeyDerivationFunction = "NIST_SP800"|"ANSI_X963",
+#'         KeyDerivationHashAlgorithm = "SHA_256"|"SHA_384"|"SHA_512",
+#'         SharedInformation = "string"
+#'       )
+#'     ),
+#'     KeyCheckValueAlgorithm = "CMAC"|"ANSI_X9_24"
+#'   )
 #' )
 #' ```
 #'
@@ -667,7 +904,7 @@ paymentcryptographydataplane_generate_mac <- function(KeyIdentifier, MessageData
 #' @rdname paymentcryptographydataplane_generate_pin_data
 #'
 #' @aliases paymentcryptographydataplane_generate_pin_data
-paymentcryptographydataplane_generate_pin_data <- function(GenerationKeyIdentifier, EncryptionKeyIdentifier, GenerationAttributes, PinDataLength = NULL, PrimaryAccountNumber, PinBlockFormat) {
+paymentcryptographydataplane_generate_pin_data <- function(GenerationKeyIdentifier, EncryptionKeyIdentifier, GenerationAttributes, PinDataLength = NULL, PrimaryAccountNumber, PinBlockFormat, EncryptionWrappedKey = NULL) {
   op <- new_operation(
     name = "GeneratePinData",
     http_method = "POST",
@@ -676,7 +913,7 @@ paymentcryptographydataplane_generate_pin_data <- function(GenerationKeyIdentifi
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .paymentcryptographydataplane$generate_pin_data_input(GenerationKeyIdentifier = GenerationKeyIdentifier, EncryptionKeyIdentifier = EncryptionKeyIdentifier, GenerationAttributes = GenerationAttributes, PinDataLength = PinDataLength, PrimaryAccountNumber = PrimaryAccountNumber, PinBlockFormat = PinBlockFormat)
+  input <- .paymentcryptographydataplane$generate_pin_data_input(GenerationKeyIdentifier = GenerationKeyIdentifier, EncryptionKeyIdentifier = EncryptionKeyIdentifier, GenerationAttributes = GenerationAttributes, PinDataLength = PinDataLength, PrimaryAccountNumber = PrimaryAccountNumber, PinBlockFormat = PinBlockFormat, EncryptionWrappedKey = EncryptionWrappedKey)
   output <- .paymentcryptographydataplane$generate_pin_data_output()
   config <- get_config()
   svc <- .paymentcryptographydataplane$service(config, op)
@@ -698,6 +935,18 @@ paymentcryptographydataplane_generate_pin_data <- function(GenerationKeyIdentifi
 #' [ImportKey](https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_ImportKey.html).
 #' The `KeyArn` for use with this operation must be in a compatible key
 #' state with `KeyModesOfUse` set to `Encrypt`.
+#' 
+#' This operation also supports dynamic keys, allowing you to pass a
+#' dynamic encryption key as a TR-31 WrappedKeyBlock. This can be used when
+#' key material is frequently rotated, such as during every card
+#' transaction, and there is need to avoid importing short-lived keys into
+#' Amazon Web Services Payment Cryptography. To re-encrypt using dynamic
+#' keys, the `keyARN` is the Key Encryption Key (KEK) of the TR-31 wrapped
+#' encryption key material. The incoming wrapped key shall have a key
+#' purpose of D0 with a mode of use of B or D. For more information, see
+#' [Using Dynamic
+#' Keys](https://docs.aws.amazon.com/payment-cryptography/latest/userguide/use-cases-acquirers-dynamickeys.html)
+#' in the *Amazon Web Services Payment Cryptography User Guide*.
 #' 
 #' For symmetric and DUKPT encryption, Amazon Web Services Payment
 #' Cryptography supports `TDES` and `AES` algorithms. To encrypt using
@@ -794,13 +1043,29 @@ paymentcryptographydataplane_generate_pin_data <- function(GenerationKeyIdentifi
 #'   ),
 #'   IncomingWrappedKey = list(
 #'     WrappedKeyMaterial = list(
-#'       Tr31KeyBlock = "string"
+#'       Tr31KeyBlock = "string",
+#'       DiffieHellmanSymmetricKey = list(
+#'         CertificateAuthorityPublicKeyIdentifier = "string",
+#'         PublicKeyCertificate = "string",
+#'         KeyAlgorithm = "TDES_2KEY"|"TDES_3KEY"|"AES_128"|"AES_192"|"AES_256",
+#'         KeyDerivationFunction = "NIST_SP800"|"ANSI_X963",
+#'         KeyDerivationHashAlgorithm = "SHA_256"|"SHA_384"|"SHA_512",
+#'         SharedInformation = "string"
+#'       )
 #'     ),
 #'     KeyCheckValueAlgorithm = "CMAC"|"ANSI_X9_24"
 #'   ),
 #'   OutgoingWrappedKey = list(
 #'     WrappedKeyMaterial = list(
-#'       Tr31KeyBlock = "string"
+#'       Tr31KeyBlock = "string",
+#'       DiffieHellmanSymmetricKey = list(
+#'         CertificateAuthorityPublicKeyIdentifier = "string",
+#'         PublicKeyCertificate = "string",
+#'         KeyAlgorithm = "TDES_2KEY"|"TDES_3KEY"|"AES_128"|"AES_192"|"AES_256",
+#'         KeyDerivationFunction = "NIST_SP800"|"ANSI_X963",
+#'         KeyDerivationHashAlgorithm = "SHA_256"|"SHA_384"|"SHA_512",
+#'         SharedInformation = "string"
+#'       )
 #'     ),
 #'     KeyCheckValueAlgorithm = "CMAC"|"ANSI_X9_24"
 #'   )
@@ -839,13 +1104,37 @@ paymentcryptographydataplane_re_encrypt_data <- function(IncomingKeyIdentifier, 
 #' data](https://docs.aws.amazon.com/payment-cryptography/latest/userguide/translate-pin-data.html)
 #' in the *Amazon Web Services Payment Cryptography User Guide*.
 #' 
-#' PIN block translation involves changing the encrytion of PIN block from
-#' one encryption key to another encryption key and changing PIN block
-#' format from one to another without PIN block data leaving Amazon Web
-#' Services Payment Cryptography. The encryption key transformation can be
-#' from PEK (Pin Encryption Key) to BDK (Base Derivation Key) for DUKPT or
-#' from BDK for DUKPT to PEK. Amazon Web Services Payment Cryptography
-#' supports `TDES` and `AES` key derivation type for DUKPT translations.
+#' PIN block translation involves changing a PIN block from one encryption
+#' key to another and optionally change its format. PIN block translation
+#' occurs entirely within the HSM boundary and PIN data never enters or
+#' leaves Amazon Web Services Payment Cryptography in clear text. The
+#' encryption key transformation can be from PEK (Pin Encryption Key) to
+#' BDK (Base Derivation Key) for DUKPT or from BDK for DUKPT to PEK.
+#' 
+#' Amazon Web Services Payment Cryptography also supports use of dynamic
+#' keys and ECDH (Elliptic Curve Diffie-Hellman) based key exchange for
+#' this operation.
+#' 
+#' Dynamic keys allow you to pass a PEK as a TR-31 WrappedKeyBlock. They
+#' can be used when key material is frequently rotated, such as during
+#' every card transaction, and there is need to avoid importing short-lived
+#' keys into Amazon Web Services Payment Cryptography. To translate PIN
+#' block using dynamic keys, the `keyARN` is the Key Encryption Key (KEK)
+#' of the TR-31 wrapped PEK. The incoming wrapped key shall have a key
+#' purpose of P0 with a mode of use of B or D. For more information, see
+#' [Using Dynamic
+#' Keys](https://docs.aws.amazon.com/payment-cryptography/latest/userguide/use-cases-acquirers-dynamickeys.html)
+#' in the *Amazon Web Services Payment Cryptography User Guide*.
+#' 
+#' Using ECDH key exchange, you can receive cardholder selectable PINs into
+#' Amazon Web Services Payment Cryptography. The ECDH derived key protects
+#' the incoming PIN block, which is translated to a PEK encrypted PIN block
+#' for use within the service. You can also use ECDH for reveal PIN,
+#' wherein the service translates the PIN block from PEK to a ECDH derived
+#' encryption key. For more information on establishing ECDH derived keys,
+#' see the [Generating
+#' keys](https://docs.aws.amazon.com/payment-cryptography/latest/userguide/create-keys.html)
+#' in the *Amazon Web Services Payment Cryptography User Guide*.
 #' 
 #' The allowed combinations of PIN block format translations are guided by
 #' PCI. It is important to note that not all encrypted PIN block formats
@@ -884,11 +1173,12 @@ paymentcryptographydataplane_re_encrypt_data <- function(IncomingKeyIdentifier, 
 #' @param IncomingKeyIdentifier &#91;required&#93; The `keyARN` of the encryption key under which incoming PIN block data
 #' is encrypted. This key type can be PEK or BDK.
 #' 
-#' When a WrappedKeyBlock is provided, this value will be the identifier to
-#' the key wrapping key for PIN block. Otherwise, it is the key identifier
-#' used to perform the operation.
+#' For dynamic keys, it is the `keyARN` of KEK of the TR-31 wrapped PEK.
+#' For ECDH, it is the `keyARN` of the asymmetric ECC key.
 #' @param OutgoingKeyIdentifier &#91;required&#93; The `keyARN` of the encryption key for encrypting outgoing PIN block
 #' data. This key type can be PEK or BDK.
+#' 
+#' For ECDH, it is the `keyARN` of the asymmetric ECC key.
 #' @param IncomingTranslationAttributes &#91;required&#93; The format of the incoming PIN block data for translation within Amazon
 #' Web Services Payment Cryptography.
 #' @param OutgoingTranslationAttributes &#91;required&#93; The format of the outgoing PIN block data after translation by Amazon
@@ -956,13 +1246,29 @@ paymentcryptographydataplane_re_encrypt_data <- function(IncomingKeyIdentifier, 
 #'   ),
 #'   IncomingWrappedKey = list(
 #'     WrappedKeyMaterial = list(
-#'       Tr31KeyBlock = "string"
+#'       Tr31KeyBlock = "string",
+#'       DiffieHellmanSymmetricKey = list(
+#'         CertificateAuthorityPublicKeyIdentifier = "string",
+#'         PublicKeyCertificate = "string",
+#'         KeyAlgorithm = "TDES_2KEY"|"TDES_3KEY"|"AES_128"|"AES_192"|"AES_256",
+#'         KeyDerivationFunction = "NIST_SP800"|"ANSI_X963",
+#'         KeyDerivationHashAlgorithm = "SHA_256"|"SHA_384"|"SHA_512",
+#'         SharedInformation = "string"
+#'       )
 #'     ),
 #'     KeyCheckValueAlgorithm = "CMAC"|"ANSI_X9_24"
 #'   ),
 #'   OutgoingWrappedKey = list(
 #'     WrappedKeyMaterial = list(
-#'       Tr31KeyBlock = "string"
+#'       Tr31KeyBlock = "string",
+#'       DiffieHellmanSymmetricKey = list(
+#'         CertificateAuthorityPublicKeyIdentifier = "string",
+#'         PublicKeyCertificate = "string",
+#'         KeyAlgorithm = "TDES_2KEY"|"TDES_3KEY"|"AES_128"|"AES_192"|"AES_256",
+#'         KeyDerivationFunction = "NIST_SP800"|"ANSI_X963",
+#'         KeyDerivationHashAlgorithm = "SHA_256"|"SHA_384"|"SHA_512",
+#'         SharedInformation = "string"
+#'       )
 #'     ),
 #'     KeyCheckValueAlgorithm = "CMAC"|"ANSI_X9_24"
 #'   )
@@ -1416,7 +1722,8 @@ paymentcryptographydataplane_verify_mac <- function(KeyIdentifier, MessageData, 
 #' @usage
 #' paymentcryptographydataplane_verify_pin_data(VerificationKeyIdentifier,
 #'   EncryptionKeyIdentifier, VerificationAttributes, EncryptedPinBlock,
-#'   PrimaryAccountNumber, PinBlockFormat, PinDataLength, DukptAttributes)
+#'   PrimaryAccountNumber, PinBlockFormat, PinDataLength, DukptAttributes,
+#'   EncryptionWrappedKey)
 #'
 #' @param VerificationKeyIdentifier &#91;required&#93; The `keyARN` of the PIN verification key.
 #' @param EncryptionKeyIdentifier &#91;required&#93; The `keyARN` of the encryption key under which the PIN block data is
@@ -1439,6 +1746,7 @@ paymentcryptographydataplane_verify_mac <- function(KeyIdentifier, MessageData, 
 #' that the fill digits are random values from 10 to 15.
 #' @param PinDataLength The length of PIN being verified.
 #' @param DukptAttributes The attributes and values for the DUKPT encrypted PIN block data.
+#' @param EncryptionWrappedKey 
 #'
 #' @return
 #' A list with the following syntax:
@@ -1470,11 +1778,25 @@ paymentcryptographydataplane_verify_mac <- function(KeyIdentifier, MessageData, 
 #'   ),
 #'   EncryptedPinBlock = "string",
 #'   PrimaryAccountNumber = "string",
-#'   PinBlockFormat = "ISO_FORMAT_0"|"ISO_FORMAT_3",
+#'   PinBlockFormat = "ISO_FORMAT_0"|"ISO_FORMAT_3"|"ISO_FORMAT_4",
 #'   PinDataLength = 123,
 #'   DukptAttributes = list(
 #'     KeySerialNumber = "string",
 #'     DukptDerivationType = "TDES_2KEY"|"TDES_3KEY"|"AES_128"|"AES_192"|"AES_256"
+#'   ),
+#'   EncryptionWrappedKey = list(
+#'     WrappedKeyMaterial = list(
+#'       Tr31KeyBlock = "string",
+#'       DiffieHellmanSymmetricKey = list(
+#'         CertificateAuthorityPublicKeyIdentifier = "string",
+#'         PublicKeyCertificate = "string",
+#'         KeyAlgorithm = "TDES_2KEY"|"TDES_3KEY"|"AES_128"|"AES_192"|"AES_256",
+#'         KeyDerivationFunction = "NIST_SP800"|"ANSI_X963",
+#'         KeyDerivationHashAlgorithm = "SHA_256"|"SHA_384"|"SHA_512",
+#'         SharedInformation = "string"
+#'       )
+#'     ),
+#'     KeyCheckValueAlgorithm = "CMAC"|"ANSI_X9_24"
 #'   )
 #' )
 #' ```
@@ -1484,7 +1806,7 @@ paymentcryptographydataplane_verify_mac <- function(KeyIdentifier, MessageData, 
 #' @rdname paymentcryptographydataplane_verify_pin_data
 #'
 #' @aliases paymentcryptographydataplane_verify_pin_data
-paymentcryptographydataplane_verify_pin_data <- function(VerificationKeyIdentifier, EncryptionKeyIdentifier, VerificationAttributes, EncryptedPinBlock, PrimaryAccountNumber, PinBlockFormat, PinDataLength = NULL, DukptAttributes = NULL) {
+paymentcryptographydataplane_verify_pin_data <- function(VerificationKeyIdentifier, EncryptionKeyIdentifier, VerificationAttributes, EncryptedPinBlock, PrimaryAccountNumber, PinBlockFormat, PinDataLength = NULL, DukptAttributes = NULL, EncryptionWrappedKey = NULL) {
   op <- new_operation(
     name = "VerifyPinData",
     http_method = "POST",
@@ -1493,7 +1815,7 @@ paymentcryptographydataplane_verify_pin_data <- function(VerificationKeyIdentifi
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .paymentcryptographydataplane$verify_pin_data_input(VerificationKeyIdentifier = VerificationKeyIdentifier, EncryptionKeyIdentifier = EncryptionKeyIdentifier, VerificationAttributes = VerificationAttributes, EncryptedPinBlock = EncryptedPinBlock, PrimaryAccountNumber = PrimaryAccountNumber, PinBlockFormat = PinBlockFormat, PinDataLength = PinDataLength, DukptAttributes = DukptAttributes)
+  input <- .paymentcryptographydataplane$verify_pin_data_input(VerificationKeyIdentifier = VerificationKeyIdentifier, EncryptionKeyIdentifier = EncryptionKeyIdentifier, VerificationAttributes = VerificationAttributes, EncryptedPinBlock = EncryptedPinBlock, PrimaryAccountNumber = PrimaryAccountNumber, PinBlockFormat = PinBlockFormat, PinDataLength = PinDataLength, DukptAttributes = DukptAttributes, EncryptionWrappedKey = EncryptionWrappedKey)
   output <- .paymentcryptographydataplane$verify_pin_data_output()
   config <- get_config()
   svc <- .paymentcryptographydataplane$service(config, op)

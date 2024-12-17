@@ -6,14 +6,29 @@
 are available to you}
 \usage{
 ec2_describe_availability_zones(
-  Filters = NULL,
   ZoneNames = NULL,
   ZoneIds = NULL,
   AllAvailabilityZones = NULL,
-  DryRun = NULL
+  DryRun = NULL,
+  Filters = NULL
 )
 }
 \arguments{
+\item{ZoneNames}{The names of the Availability Zones, Local Zones, and Wavelength Zones.}
+
+\item{ZoneIds}{The IDs of the Availability Zones, Local Zones, and Wavelength Zones.}
+
+\item{AllAvailabilityZones}{Include all Availability Zones, Local Zones, and Wavelength Zones
+regardless of your opt-in status.
+
+If you do not use this parameter, the results include only the zones for
+the Regions where you have chosen the option to opt in.}
+
+\item{DryRun}{Checks whether you have the required permissions for the action, without
+actually making the request, and provides an error response. If you have
+the required permissions, the error response is \code{DryRunOperation}.
+Otherwise, it is \code{UnauthorizedOperation}.}
+
 \item{Filters}{The filters.
 \itemize{
 \item \code{group-name} - For Availability Zones, use the Region name. For
@@ -43,21 +58,6 @@ the Wavelength Zone (for example, \code{us-east-1-wl1-bos-wlz-1}).
 \item \code{zone-type} - The type of zone (\code{availability-zone} | \code{local-zone} |
 \code{wavelength-zone}).
 }}
-
-\item{ZoneNames}{The names of the Availability Zones, Local Zones, and Wavelength Zones.}
-
-\item{ZoneIds}{The IDs of the Availability Zones, Local Zones, and Wavelength Zones.}
-
-\item{AllAvailabilityZones}{Include all Availability Zones, Local Zones, and Wavelength Zones
-regardless of your opt-in status.
-
-If you do not use this parameter, the results include only the zones for
-the Regions where you have chosen the option to opt in.}
-
-\item{DryRun}{Checks whether you have the required permissions for the action, without
-actually making the request, and provides an error response. If you have
-the required permissions, the error response is \code{DryRunOperation}.
-Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
 Describes the Availability Zones, Local Zones, and Wavelength Zones that are available to you. If there is an event impacting a zone, you can use this request to view the state and any provided messages for that zone.

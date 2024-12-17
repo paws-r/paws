@@ -39,6 +39,18 @@ NULL
   return(populate(args, shape))
 }
 
+.sts$assume_root_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(TargetPrincipal = structure(logical(0), tags = list(type = "string")), TaskPolicyArn = structure(list(arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), DurationSeconds = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.sts$assume_root_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Credentials = structure(list(AccessKeyId = structure(logical(0), tags = list(type = "string")), SecretAccessKey = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), SessionToken = structure(logical(0), tags = list(type = "string")), Expiration = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), SourceIdentity = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "AssumeRootResult"))
+  return(populate(args, shape))
+}
+
 .sts$decode_authorization_message_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(EncodedMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))

@@ -9,7 +9,8 @@ s3_abort_multipart_upload(
   Key,
   UploadId,
   RequestPayer = NULL,
-  ExpectedBucketOwner = NULL
+  ExpectedBucketOwner = NULL,
+  IfMatchInitiatedTime = NULL
 )
 }
 \arguments{
@@ -17,10 +18,10 @@ s3_abort_multipart_upload(
 
 \strong{Directory buckets} - When you use this operation with a directory
 bucket, you must use virtual-hosted-style requests in the format
-\code{ Bucket_name.s3express-az_id.region.amazonaws.com}. Path-style requests
-are not supported. Directory bucket names must be unique in the chosen
-Availability Zone. Bucket names must follow the format
-\code{ bucket_base_name--az-id--x-s3} (for example,
+\code{ Bucket-name.s3express-zone-id.region-code.amazonaws.com}. Path-style
+requests are not supported. Directory bucket names must be unique in the
+chosen Zone (Availability Zone or Local Zone). Bucket names must follow
+the format \code{ bucket-base-name--zone-id--x-s3} (for example,
 \code{ DOC-EXAMPLE-BUCKET--usw2-az1--x-s3}). For information about bucket
 naming restrictions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html}{Directory bucket naming rules}
 in the \emph{Amazon S3 User Guide}.
@@ -57,6 +58,15 @@ in the \emph{Amazon S3 User Guide}.}
 \item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the account ID that you
 provide does not match the actual owner of the bucket, the request fails
 with the HTTP status code \verb{403 Forbidden} (access denied).}
+
+\item{IfMatchInitiatedTime}{If present, this header aborts an in progress multipart upload only if
+it was initiated on the provided timestamp. If the initiated timestamp
+of the multipart upload does not match the provided value, the operation
+returns a \verb{412 Precondition Failed} error. If the initiated timestamp
+matches or if the multipart upload doesn’t exist, the operation returns
+a \verb{204 Success (No Content)} response.
+
+This functionality is only supported for directory buckets.}
 }
 \description{
 This operation aborts a multipart upload. After a multipart upload is aborted, no additional parts can be uploaded using that upload ID. The storage consumed by any previously uploaded parts will be freed. However, if any part uploads are currently in progress, those part uploads might or might not succeed. As a result, it might be necessary to abort a given multipart upload multiple times in order to completely free all storage consumed by all parts.

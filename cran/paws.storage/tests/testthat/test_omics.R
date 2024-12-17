@@ -12,6 +12,10 @@ test_that("list_reference_stores", {
   expect_error(svc$list_reference_stores(), NA)
 })
 
+test_that("list_run_caches", {
+  expect_error(svc$list_run_caches(), NA)
+})
+
 test_that("list_run_groups", {
   expect_error(svc$list_run_groups(), NA)
 })

@@ -9,6 +9,7 @@ vpclattice_create_access_log_subscription(
   clientToken = NULL,
   destinationArn,
   resourceIdentifier,
+  serviceNetworkLogType = NULL,
   tags = NULL
 )
 }
@@ -23,7 +24,9 @@ identical, the retry fails.}
 destination types are CloudWatch Log groups, Kinesis Data Firehose
 delivery streams, and Amazon S3 buckets.}
 
-\item{resourceIdentifier}{[required] The ID or Amazon Resource Name (ARN) of the service network or service.}
+\item{resourceIdentifier}{[required] The ID or ARN of the service network or service.}
+
+\item{serviceNetworkLogType}{The type of log that monitors your Amazon VPC Lattice service networks.}
 
 \item{tags}{The tags for the access log subscription.}
 }

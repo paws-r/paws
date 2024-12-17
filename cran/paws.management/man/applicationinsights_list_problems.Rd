@@ -16,7 +16,7 @@ applicationinsights_list_problems(
 )
 }
 \arguments{
-\item{AccountId}{The AWS account ID for the resource group owner.}
+\item{AccountId}{The Amazon Web Services account ID for the resource group owner.}
 
 \item{ResourceGroupName}{The name of the resource group.}
 

@@ -2,17 +2,19 @@
 % Please edit documentation in R/configservice_operations.R
 \name{configservice_put_configuration_recorder}
 \alias{configservice_put_configuration_recorder}
-\title{Creates a new configuration recorder to record configuration changes for
-specified resource types}
+\title{Creates or updates the customer managed configuration recorder}
 \usage{
-configservice_put_configuration_recorder(ConfigurationRecorder)
+configservice_put_configuration_recorder(ConfigurationRecorder, Tags = NULL)
 }
 \arguments{
-\item{ConfigurationRecorder}{[required] An object for the configuration recorder to record configuration changes
-for specified resource types.}
+\item{ConfigurationRecorder}{[required] An object for the configuration recorder. A configuration recorder
+records configuration changes for the resource types in scope.}
+
+\item{Tags}{The tags for the customer managed configuration recorder. Each tag
+consists of a key and an optional value, both of which you define.}
 }
 \description{
-Creates a new configuration recorder to record configuration changes for specified resource types.
+Creates or updates the customer managed configuration recorder.
 
 See \url{https://www.paws-r-sdk.com/docs/configservice_put_configuration_recorder/} for full documentation.
 }

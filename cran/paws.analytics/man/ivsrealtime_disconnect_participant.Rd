@@ -2,22 +2,24 @@
 % Please edit documentation in R/ivsrealtime_operations.R
 \name{ivsrealtime_disconnect_participant}
 \alias{ivsrealtime_disconnect_participant}
-\title{Disconnects a specified participant and revokes the participant
-permanently from a specified stage}
+\title{Disconnects a specified participant from a specified stage}
 \usage{
 ivsrealtime_disconnect_participant(stageArn, participantId, reason = NULL)
 }
 \arguments{
 \item{stageArn}{[required] ARN of the stage to which the participant is attached.}
 
-\item{participantId}{[required] Identifier of the participant to be disconnected. This is assigned by
-IVS and returned by
-\code{\link[=ivsrealtime_create_participant_token]{create_participant_token}}.}
+\item{participantId}{[required] Identifier of the participant to be disconnected. IVS assigns this; it
+is returned by
+\code{\link[=ivsrealtime_create_participant_token]{create_participant_token}} (for
+streams using WebRTC ingest) or
+\code{\link[=ivsrealtime_create_ingest_configuration]{create_ingest_configuration}}
+(for streams using RTMP ingest).}
 
 \item{reason}{Description of why this participant is being disconnected.}
 }
 \description{
-Disconnects a specified participant and revokes the participant permanently from a specified stage.
+Disconnects a specified participant from a specified stage. If the participant is publishing using an IngestConfiguration, DisconnectParticipant also updates the \code{stageArn} in the IngestConfiguration to be an empty string.
 
 See \url{https://www.paws-r-sdk.com/docs/ivsrealtime_disconnect_participant/} for full documentation.
 }

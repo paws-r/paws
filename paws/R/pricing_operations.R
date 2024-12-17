@@ -57,6 +57,16 @@ NULL
 #' )
 #' ```
 #'
+#' @examples
+#' \dontrun{
+#' # Retrieves the service for the given Service Code.
+#' svc$describe_services(
+#'   FormatVersion = "aws_v1",
+#'   MaxResults = 1L,
+#'   ServiceCode = "AmazonEC2"
+#' )
+#' }
+#'
 #' @keywords internal
 #'
 #' @rdname pricing_describe_services
@@ -68,7 +78,7 @@ pricing_describe_services <- function(ServiceCode = NULL, FormatVersion = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Services"),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Services", non_aggregate_keys = list("FormatVersion")),
     stream_api = FALSE
   )
   input <- .pricing$describe_services_input(ServiceCode = ServiceCode, FormatVersion = FormatVersion, NextToken = NextToken, MaxResults = MaxResults)
@@ -125,6 +135,17 @@ pricing_describe_services <- function(ServiceCode = NULL, FormatVersion = NULL, 
 #'   MaxResults = 123
 #' )
 #' ```
+#'
+#' @examples
+#' \dontrun{
+#' # This operation returns a list of values available for the given
+#' # attribute.
+#' svc$get_attribute_values(
+#'   AttributeName = "volumeType",
+#'   MaxResults = 2L,
+#'   ServiceCode = "AmazonEC2"
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -260,6 +281,27 @@ pricing_get_price_list_file_url <- function(PriceListArn, FileFormat) {
 #' )
 #' ```
 #'
+#' @examples
+#' \dontrun{
+#' # This operation returns a list of products that match the given criteria.
+#' svc$get_products(
+#'   Filters = list(
+#'     list(
+#'       Field = "ServiceCode",
+#'       Type = "TERM_MATCH",
+#'       Value = "AmazonEC2"
+#'     ),
+#'     list(
+#'       Field = "volumeType",
+#'       Type = "TERM_MATCH",
+#'       Value = "Provisioned IOPS"
+#'     )
+#'   ),
+#'   FormatVersion = "aws_v1",
+#'   MaxResults = 1L
+#' )
+#' }
+#'
 #' @keywords internal
 #'
 #' @rdname pricing_get_products
@@ -271,7 +313,7 @@ pricing_get_products <- function(ServiceCode, Filters = NULL, FormatVersion = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "PriceList"),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "PriceList", non_aggregate_keys = list("FormatVersion")),
     stream_api = FALSE
   )
   input <- .pricing$get_products_input(ServiceCode = ServiceCode, Filters = Filters, FormatVersion = FormatVersion, NextToken = NextToken, MaxResults = MaxResults)

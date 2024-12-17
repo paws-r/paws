@@ -14,7 +14,8 @@ eventbridgepipes_update_pipe(
   Target = NULL,
   TargetParameters = NULL,
   RoleArn,
-  LogConfiguration = NULL
+  LogConfiguration = NULL,
+  KmsKeyIdentifier = NULL
 )
 }
 \arguments{
@@ -41,6 +42,22 @@ in the \emph{Amazon EventBridge User Guide}.}
 \item{RoleArn}{[required] The ARN of the role that allows the pipe to send data to the target.}
 
 \item{LogConfiguration}{The logging configuration settings for the pipe.}
+
+\item{KmsKeyIdentifier}{The identifier of the KMS customer managed key for EventBridge to use,
+if you choose to use a customer managed key to encrypt pipe data. The
+identifier can be the key Amazon Resource Name (ARN), KeyId, key alias,
+or key alias ARN.
+
+To update a pipe that is using the default Amazon Web Services owned key
+to use a customer managed key instead, or update a pipe that is using a
+customer managed key to use a different customer managed key, specify a
+customer managed key identifier.
+
+To update a pipe that is using a customer managed key to use the default
+Amazon Web Services owned key, specify an empty string.
+
+For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/}{Managing keys} in the
+\emph{Key Management Service Developer Guide}.}
 }
 \description{
 Update an existing pipe. When you call \code{\link[=eventbridgepipes_update_pipe]{update_pipe}}, EventBridge only the updates fields you have specified in the request; the rest remain unchanged. The exception to this is if you modify any Amazon Web Services-service specific fields in the \code{SourceParameters}, \code{EnrichmentParameters}, or \code{TargetParameters} objects. For example, \code{DynamoDBStreamParameters} or \code{EventBridgeEventBusParameters}. EventBridge updates the fields in these objects atomically as one and overrides existing values. This is by design, and means that if you don't specify an optional field in one of these \code{Parameters} objects, EventBridge sets that field to its system-default value during the update.

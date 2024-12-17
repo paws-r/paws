@@ -5,6 +5,7 @@
 \title{Creates or updates a query definition for CloudWatch Logs Insights}
 \usage{
 cloudwatchlogs_put_query_definition(
+  queryLanguage = NULL,
   name,
   queryDefinitionId = NULL,
   logGroupNames = NULL,
@@ -13,6 +14,10 @@ cloudwatchlogs_put_query_definition(
 )
 }
 \arguments{
+\item{queryLanguage}{Specify the query language to use for this query. The options are Logs
+Insights QL, OpenSearch PPL, and OpenSearch SQL. For more information
+about the query languages that CloudWatch Logs supports, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_AnalyzeLogData_Languages.html}{Supported query languages}.}
+
 \item{name}{[required] A name for the query definition. If you are saving numerous query
 definitions, we recommend that you name them. This way, you can find the
 ones you want by using the first part of the name as a filter in the
@@ -29,10 +34,13 @@ CloudWatch generates a unique ID for the new query definition and
 include it in the response to this operation.}
 
 \item{logGroupNames}{Use this parameter to include specific log groups as part of your query
-definition.
+definition. If your query uses the OpenSearch Service query language,
+you specify the log group names inside the \code{querystring} instead of
+here.
 
-If you are updating a query definition and you omit this parameter, then
-the updated definition will contain no log groups.}
+If you are updating an existing query definition for the Logs Insights
+QL or OpenSearch Service PPL and you omit this parameter, then the
+updated definition will contain no log groups.}
 
 \item{queryString}{[required] The query string to use for this definition. For more information, see
 \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_QuerySyntax.html}{CloudWatch Logs Insights Query Syntax}.}

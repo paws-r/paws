@@ -110,6 +110,7 @@ NULL
 #'  \link[=computeoptimizer_export_ebs_volume_recommendations]{export_ebs_volume_recommendations} \tab Exports optimization recommendations for Amazon EBS volumes\cr
 #'  \link[=computeoptimizer_export_ec2_instance_recommendations]{export_ec2_instance_recommendations} \tab Exports optimization recommendations for Amazon EC2 instances\cr
 #'  \link[=computeoptimizer_export_ecs_service_recommendations]{export_ecs_service_recommendations} \tab Exports optimization recommendations for Amazon ECS services on Fargate\cr
+#'  \link[=computeoptimizer_export_idle_recommendations]{export_idle_recommendations} \tab Export optimization recommendations for your idle resources\cr
 #'  \link[=computeoptimizer_export_lambda_function_recommendations]{export_lambda_function_recommendations} \tab Exports optimization recommendations for Lambda functions\cr
 #'  \link[=computeoptimizer_export_license_recommendations]{export_license_recommendations} \tab Export optimization recommendations for your licenses\cr
 #'  \link[=computeoptimizer_export_rds_database_recommendations]{export_rds_database_recommendations} \tab Export optimization recommendations for your Amazon Relational Database Service (Amazon RDS)\cr
@@ -122,6 +123,7 @@ NULL
 #'  \link[=computeoptimizer_get_effective_recommendation_preferences]{get_effective_recommendation_preferences} \tab Returns the recommendation preferences that are in effect for a given resource, such as enhanced infrastructure metrics\cr
 #'  \link[=computeoptimizer_get_enrollment_status]{get_enrollment_status} \tab Returns the enrollment (opt in) status of an account to the Compute Optimizer service\cr
 #'  \link[=computeoptimizer_get_enrollment_statuses_for_organization]{get_enrollment_statuses_for_organization} \tab Returns the Compute Optimizer enrollment (opt-in) status of organization member accounts, if your account is an organization management account\cr
+#'  \link[=computeoptimizer_get_idle_recommendations]{get_idle_recommendations} \tab Returns idle resource recommendations\cr
 #'  \link[=computeoptimizer_get_lambda_function_recommendations]{get_lambda_function_recommendations} \tab Returns Lambda function recommendations\cr
 #'  \link[=computeoptimizer_get_license_recommendations]{get_license_recommendations} \tab Returns license recommendations for Amazon EC2 instances that run on a specific license\cr
 #'  \link[=computeoptimizer_get_rds_database_recommendation_projected_metrics]{get_rds_database_recommendation_projected_metrics} \tab Returns the projected metrics of Amazon RDS recommendations\cr
@@ -161,7 +163,7 @@ computeoptimizer <- function(config = list(), credentials = list(), endpoint = N
 
 .computeoptimizer$metadata <- list(
   service_name = "computeoptimizer",
-  endpoints = list("*" = list(endpoint = "compute-optimizer.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "compute-optimizer.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "compute-optimizer.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "compute-optimizer.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "compute-optimizer.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "compute-optimizer.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "compute-optimizer.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "compute-optimizer.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "compute-optimizer.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "compute-optimizer.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "compute-optimizer.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "compute-optimizer.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "compute-optimizer.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Compute Optimizer",
   api_version = "2019-11-01",
   signing_name = "compute-optimizer",

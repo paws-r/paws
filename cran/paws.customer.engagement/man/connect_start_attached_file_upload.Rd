@@ -32,11 +32,15 @@ populates this field. For more information about idempotency, see
 \item{UrlExpiryInSeconds}{Optional override for the expiry of the pre-signed S3 URL in seconds.
 The default value is 300.}
 
-\item{FileUseCaseType}{[required] The use case for the file.}
+\item{FileUseCaseType}{[required] The use case for the file.
 
-\item{AssociatedResourceArn}{[required] The resource to which the attached file is (being) uploaded to.
-\href{https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_CreateCase.html}{Cases}
-are the only current supported resource.
+Only \code{ATTACHMENTS} are supported.}
+
+\item{AssociatedResourceArn}{[required] The resource to which the attached file is (being) uploaded to. The
+supported resources are
+\href{https://docs.aws.amazon.com/connect/latest/adminguide/cases.html}{Cases}
+and
+\href{https://docs.aws.amazon.com/connect/latest/adminguide/setup-email-channel.html}{Email}.
 
 This value must be a valid ARN.}
 

@@ -11,24 +11,6 @@ NULL
 #' reduces round trips and latencies. This enables Amazon SimpleDB to
 #' optimize requests, which generally yields better throughput.
 #' 
-#' If you specify BatchDeleteAttributes without attributes or values, all
-#' the attributes for the item are deleted.
-#' 
-#' BatchDeleteAttributes is an idempotent operation; running it multiple
-#' times on the same item or attribute doesn't result in an error.
-#' 
-#' The BatchDeleteAttributes operation succeeds or fails in its entirety.
-#' There are no partial deletes. You can execute multiple
-#' BatchDeleteAttributes operations and other operations in parallel.
-#' However, large numbers of concurrent BatchDeleteAttributes calls can
-#' result in Service Unavailable (503) responses.
-#' 
-#' This operation is vulnerable to exceeding the maximum URL size when
-#' making a REST request using the HTTP GET method.
-#' 
-#' This operation does not support conditions using Expected.X.Name,
-#' Expected.X.Value, or Expected.X.Exists.
-#' 
 #' The following limitations are enforced for this operation:
 #' 
 #' -   1 MB request size
@@ -53,7 +35,9 @@ NULL
 #'       Attributes = list(
 #'         list(
 #'           Name = "string",
-#'           Value = "string"
+#'           AlternateNameEncoding = "string",
+#'           Value = "string",
+#'           AlternateValueEncoding = "string"
 #'         )
 #'       )
 #'     )
@@ -119,10 +103,6 @@ simpledb_batch_delete_attributes <- function(DomainName, Items) {
 #' `{'I', 'b', '4' }` with the Replace parameter set to true, the final
 #' attributes of the item will be `{ 'a', '1' }` and `{ 'b', '4' }`,
 #' replacing the previous values of the 'b' attribute with the new value.
-#' 
-#' You cannot specify an empty string as an item or as an attribute name.
-#' The [`batch_put_attributes`][simpledb_batch_put_attributes] operation
-#' succeeds or fails in its entirety. There are no partial puts.
 #' 
 #' This operation is vulnerable to exceeding the maximum URL size when
 #' making a REST request using the HTTP GET method. This operation does not
@@ -205,9 +185,6 @@ simpledb_batch_put_attributes <- function(DomainName, Items) {
 #' [`create_domain`][simpledb_create_domain] operation may take 10 or more
 #' seconds to complete.
 #' 
-#' CreateDomain is an idempotent operation; running it multiple times using
-#' the same domain name will not result in an error response.
-#' 
 #' The client can create up to 100 domains per account.
 #' 
 #' If the client requires additional domains, go to
@@ -260,10 +237,6 @@ simpledb_create_domain <- function(DomainName) {
 #' Deletes one or more attributes associated with an item. If all
 #' attributes of the item are deleted, the item is deleted.
 #' 
-#' If [`delete_attributes`][simpledb_delete_attributes] is called without
-#' being passed any attributes or values specified, all the attributes for
-#' the item are deleted.
-#' 
 #' [`delete_attributes`][simpledb_delete_attributes] is an idempotent
 #' operation; running it multiple times on the same item or attribute does
 #' not result in an error response.
@@ -300,7 +273,9 @@ simpledb_create_domain <- function(DomainName) {
 #'   Attributes = list(
 #'     list(
 #'       Name = "string",
-#'       Value = "string"
+#'       AlternateNameEncoding = "string",
+#'       Value = "string",
+#'       AlternateValueEncoding = "string"
 #'     )
 #'   ),
 #'   Expected = list(
@@ -342,10 +317,6 @@ simpledb_delete_attributes <- function(DomainName, ItemName, Attributes = NULL, 
 #' domain. Any items (and their attributes) in the domain are deleted as
 #' well. The [`delete_domain`][simpledb_delete_domain] operation might take
 #' 10 or more seconds to complete.
-#' 
-#' Running [`delete_domain`][simpledb_delete_domain] on a domain that does
-#' not exist or running the function multiple times using the same domain
-#' name will not result in an error response.
 #'
 #' @usage
 #' simpledb_delete_domain(DomainName)
@@ -455,9 +426,6 @@ simpledb_domain_metadata <- function(DomainName) {
 #' If the item does not exist on the replica that was accessed for this
 #' operation, an empty set is returned. The system does not return an error
 #' as it cannot guarantee the item does not exist on other replicas.
-#' 
-#' If GetAttributes is called without being passed any attribute names, all
-#' the attributes for the item are returned.
 #'
 #' @usage
 #' simpledb_get_attributes(DomainName, ItemName, AttributeNames,
@@ -613,9 +581,6 @@ simpledb_list_domains <- function(MaxNumberOfDomains = NULL, NextToken = NULL) {
 #' attributes of the item are changed to `{ 'a', '1' }` and `{ 'b', '4' }`,
 #' which replaces the previous values of the 'b' attribute with the new
 #' value.
-#' 
-#' Using [`put_attributes`][simpledb_put_attributes] to replace attribute
-#' values that do not exist will not result in an error response.
 #' 
 #' You cannot specify an empty string as an attribute name.
 #' 

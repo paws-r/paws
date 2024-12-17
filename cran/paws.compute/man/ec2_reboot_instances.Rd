@@ -9,10 +9,10 @@ ec2_reboot_instances(InstanceIds, DryRun = NULL)
 \arguments{
 \item{InstanceIds}{[required] The instance IDs.}
 
-\item{DryRun}{Checks whether you have the required permissions for the action, without
-actually making the request, and provides an error response. If you have
-the required permissions, the error response is \code{DryRunOperation}.
-Otherwise, it is \code{UnauthorizedOperation}.}
+\item{DryRun}{Checks whether you have the required permissions for the operation,
+without actually making the request, and provides an error response. If
+you have the required permissions, the error response is
+\code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
 Requests a reboot of the specified instances. This operation is asynchronous; it only queues a request to reboot the specified instances. The operation succeeds if the instances are valid and belong to you. Requests to reboot terminated instances are ignored.

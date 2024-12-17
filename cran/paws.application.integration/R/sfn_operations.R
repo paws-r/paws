@@ -597,7 +597,7 @@ sfn_get_execution_history <- function(executionArn, maxResults = NULL, reverseOr
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "events"),
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "events"),
     stream_api = FALSE
   )
   input <- .sfn$get_execution_history_input(executionArn = executionArn, maxResults = maxResults, reverseOrder = reverseOrder, nextToken = nextToken, includeExecutionData = includeExecutionData)
@@ -639,7 +639,7 @@ sfn_list_activities <- function(maxResults = NULL, nextToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "activities"),
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "activities"),
     stream_api = FALSE
   )
   input <- .sfn$list_activities_input(maxResults = maxResults, nextToken = nextToken)
@@ -715,7 +715,7 @@ sfn_list_executions <- function(stateMachineArn = NULL, statusFilter = NULL, max
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "executions"),
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "executions"),
     stream_api = FALSE
   )
   input <- .sfn$list_executions_input(stateMachineArn = stateMachineArn, statusFilter = statusFilter, maxResults = maxResults, nextToken = nextToken, mapRunArn = mapRunArn, redriveFilter = redriveFilter)
@@ -892,7 +892,7 @@ sfn_list_state_machines <- function(maxResults = NULL, nextToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "stateMachines"),
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "stateMachines"),
     stream_api = FALSE
   )
   input <- .sfn$list_state_machines_input(maxResults = maxResults, nextToken = nextToken)
@@ -1364,7 +1364,7 @@ sfn_tag_resource <- function(resourceArn, tags) {
 #' @param definition &#91;required&#93; The [Amazon States
 #' Language](https://docs.aws.amazon.com/step-functions/latest/dg/concepts-amazon-states-language.html)
 #' (ASL) definition of the state.
-#' @param roleArn &#91;required&#93; The Amazon Resource Name (ARN) of the execution role with the required
+#' @param roleArn The Amazon Resource Name (ARN) of the execution role with the required
 #' IAM permissions for the state.
 #' @param input A string that contains the JSON input data for the state.
 #' @param inspectionLevel Determines the values to return when a state is tested. You can specify
@@ -1397,11 +1397,13 @@ sfn_tag_resource <- function(resourceArn, tags) {
 #' Without this permission, Step Functions throws an access denied error.
 #' 
 #' By default, `revealSecrets` is set to `false`.
+#' @param variables JSON object literal that sets variables used in the state under test.
+#' Object keys are the variable names and values are the variable values.
 #'
 #' @keywords internal
 #'
 #' @rdname sfn_test_state
-sfn_test_state <- function(definition, roleArn, input = NULL, inspectionLevel = NULL, revealSecrets = NULL) {
+sfn_test_state <- function(definition, roleArn = NULL, input = NULL, inspectionLevel = NULL, revealSecrets = NULL, variables = NULL) {
   op <- new_operation(
     name = "TestState",
     http_method = "POST",
@@ -1410,7 +1412,7 @@ sfn_test_state <- function(definition, roleArn, input = NULL, inspectionLevel = 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .sfn$test_state_input(definition = definition, roleArn = roleArn, input = input, inspectionLevel = inspectionLevel, revealSecrets = revealSecrets)
+  input <- .sfn$test_state_input(definition = definition, roleArn = roleArn, input = input, inspectionLevel = inspectionLevel, revealSecrets = revealSecrets, variables = variables)
   output <- .sfn$test_state_output()
   config <- get_config()
   svc <- .sfn$service(config, op)
@@ -1572,10 +1574,11 @@ sfn_update_state_machine_alias <- function(stateMachineAliasArn, description = N
 }
 .sfn$operations$update_state_machine_alias <- sfn_update_state_machine_alias
 
-#' Validates the syntax of a state machine definition
+#' Validates the syntax of a state machine definition specified in Amazon
+#' States Language (ASL), a JSON-based, structured language
 #'
 #' @description
-#' Validates the syntax of a state machine definition.
+#' Validates the syntax of a state machine definition specified in [Amazon States Language](https://docs.aws.amazon.com/step-functions/latest/dg/concepts-amazon-states-language.html) (ASL), a JSON-based, structured language.
 #'
 #' See [https://www.paws-r-sdk.com/docs/sfn_validate_state_machine_definition/](https://www.paws-r-sdk.com/docs/sfn_validate_state_machine_definition/) for full documentation.
 #'

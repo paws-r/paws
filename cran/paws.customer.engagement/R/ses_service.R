@@ -220,7 +220,7 @@ ses <- function(config = list(), credentials = list(), endpoint = NULL, region =
 
 .ses$metadata <- list(
   service_name = "email",
-  endpoints = list("*" = list(endpoint = "email.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "email.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "email.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "email.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "email.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "email.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "email.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "email.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "email.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "email.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "email.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "email.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "email.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "SES",
   api_version = "2010-12-01",
   signing_name = "ses",

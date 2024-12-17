@@ -2,17 +2,16 @@
 % Please edit documentation in R/configservice_operations.R
 \name{configservice_start_configuration_recorder}
 \alias{configservice_start_configuration_recorder}
-\title{Starts recording configurations of the Amazon Web Services resources you
-have selected to record in your Amazon Web Services account}
+\title{Starts the customer managed configuration recorder}
 \usage{
 configservice_start_configuration_recorder(ConfigurationRecorderName)
 }
 \arguments{
-\item{ConfigurationRecorderName}{[required] The name of the recorder object that records each configuration change
-made to the resources.}
+\item{ConfigurationRecorderName}{[required] The name of the customer managed configuration recorder that you want to
+start.}
 }
 \description{
-Starts recording configurations of the Amazon Web Services resources you have selected to record in your Amazon Web Services account.
+Starts the customer managed configuration recorder. The customer managed configuration recorder will begin recording configuration changes for the resource types you specify.
 
 See \url{https://www.paws-r-sdk.com/docs/configservice_start_configuration_recorder/} for full documentation.
 }

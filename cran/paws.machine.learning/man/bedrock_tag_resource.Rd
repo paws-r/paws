@@ -12,7 +12,7 @@ bedrock_tag_resource(resourceARN, tags)
 \item{tags}{[required] Tags to associate with the resource.}
 }
 \description{
-Associate tags with a resource. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/tagging.html}{Tagging resources} in the \href{https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html}{Amazon Bedrock User Guide}.
+Associate tags with a resource. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html}{Tagging resources} in the \href{https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html}{Amazon Bedrock User Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/bedrock_tag_resource/} for full documentation.
 }

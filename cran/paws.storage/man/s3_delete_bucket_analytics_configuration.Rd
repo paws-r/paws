@@ -2,7 +2,7 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_delete_bucket_analytics_configuration}
 \alias{s3_delete_bucket_analytics_configuration}
-\title{This operation is not supported by directory buckets}
+\title{This operation is not supported for directory buckets}
 \usage{
 s3_delete_bucket_analytics_configuration(
   Bucket,
@@ -20,7 +20,7 @@ provide does not match the actual owner of the bucket, the request fails
 with the HTTP status code \verb{403 Forbidden} (access denied).}
 }
 \description{
-This operation is not supported by directory buckets.
+This operation is not supported for directory buckets.
 
 See \url{https://www.paws-r-sdk.com/docs/s3_delete_bucket_analytics_configuration/} for full documentation.
 }

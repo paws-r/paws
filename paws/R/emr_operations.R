@@ -87,12 +87,20 @@ NULL
 #'     ),
 #'     ResizeSpecifications = list(
 #'       SpotResizeSpecification = list(
-#'         TimeoutDurationMinutes = 123
+#'         TimeoutDurationMinutes = 123,
+#'         AllocationStrategy = "capacity-optimized"|"price-capacity-optimized"|"lowest-price"|"diversified"|"capacity-optimized-prioritized"
 #'       ),
 #'       OnDemandResizeSpecification = list(
-#'         TimeoutDurationMinutes = 123
+#'         TimeoutDurationMinutes = 123,
+#'         AllocationStrategy = "lowest-price"|"prioritized",
+#'         CapacityReservationOptions = list(
+#'           UsageStrategy = "use-capacity-reservations-first",
+#'           CapacityReservationPreference = "open"|"none",
+#'           CapacityReservationResourceGroupArn = "string"
+#'         )
 #'       )
-#'     )
+#'     ),
+#'     Context = "string"
 #'   )
 #' )
 #' ```
@@ -1267,7 +1275,7 @@ emr_describe_job_flows <- function(CreatedAfter = NULL, CreatedBefore = NULL, Jo
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "JobFlows"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .emr$describe_job_flows_input(CreatedAfter = CreatedAfter, CreatedBefore = CreatedBefore, JobFlowIds = JobFlowIds, JobFlowStates = JobFlowStates)
@@ -1873,7 +1881,9 @@ emr_get_cluster_session_credentials <- function(ClusterId, ExecutionRoleArn = NU
 #'       MaximumCapacityUnits = 123,
 #'       MaximumOnDemandCapacityUnits = 123,
 #'       MaximumCoreCapacityUnits = 123
-#'     )
+#'     ),
+#'     UtilizationPerformanceIndex = 123,
+#'     ScalingStrategy = "DEFAULT"|"ADVANCED"
 #'   )
 #' )
 #' ```
@@ -2253,12 +2263,20 @@ emr_list_clusters <- function(CreatedAfter = NULL, CreatedBefore = NULL, Cluster
 #'       ),
 #'       ResizeSpecifications = list(
 #'         SpotResizeSpecification = list(
-#'           TimeoutDurationMinutes = 123
+#'           TimeoutDurationMinutes = 123,
+#'           AllocationStrategy = "capacity-optimized"|"price-capacity-optimized"|"lowest-price"|"diversified"|"capacity-optimized-prioritized"
 #'         ),
 #'         OnDemandResizeSpecification = list(
-#'           TimeoutDurationMinutes = 123
+#'           TimeoutDurationMinutes = 123,
+#'           AllocationStrategy = "lowest-price"|"prioritized",
+#'           CapacityReservationOptions = list(
+#'             UsageStrategy = "use-capacity-reservations-first",
+#'             CapacityReservationPreference = "open"|"none",
+#'             CapacityReservationResourceGroupArn = "string"
+#'           )
 #'         )
-#'       )
+#'       ),
+#'       Context = "string"
 #'     )
 #'   ),
 #'   Marker = "string"
@@ -2756,7 +2774,7 @@ emr_list_release_labels <- function(Filters = NULL, NextToken = NULL, MaxResults
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .emr$list_release_labels_input(Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
@@ -3136,7 +3154,7 @@ emr_list_supported_instance_types <- function(ReleaseLabel, Marker = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", output_token = "Marker"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .emr$list_supported_instance_types_input(ReleaseLabel = ReleaseLabel, Marker = Marker)
@@ -3237,12 +3255,53 @@ emr_modify_cluster <- function(ClusterId, StepConcurrencyLevel = NULL) {
 #'     TargetSpotCapacity = 123,
 #'     ResizeSpecifications = list(
 #'       SpotResizeSpecification = list(
-#'         TimeoutDurationMinutes = 123
+#'         TimeoutDurationMinutes = 123,
+#'         AllocationStrategy = "capacity-optimized"|"price-capacity-optimized"|"lowest-price"|"diversified"|"capacity-optimized-prioritized"
 #'       ),
 #'       OnDemandResizeSpecification = list(
-#'         TimeoutDurationMinutes = 123
+#'         TimeoutDurationMinutes = 123,
+#'         AllocationStrategy = "lowest-price"|"prioritized",
+#'         CapacityReservationOptions = list(
+#'           UsageStrategy = "use-capacity-reservations-first",
+#'           CapacityReservationPreference = "open"|"none",
+#'           CapacityReservationResourceGroupArn = "string"
+#'         )
 #'       )
-#'     )
+#'     ),
+#'     InstanceTypeConfigs = list(
+#'       list(
+#'         InstanceType = "string",
+#'         WeightedCapacity = 123,
+#'         BidPrice = "string",
+#'         BidPriceAsPercentageOfOnDemandPrice = 123.0,
+#'         EbsConfiguration = list(
+#'           EbsBlockDeviceConfigs = list(
+#'             list(
+#'               VolumeSpecification = list(
+#'                 VolumeType = "string",
+#'                 Iops = 123,
+#'                 SizeInGB = 123,
+#'                 Throughput = 123
+#'               ),
+#'               VolumesPerInstance = 123
+#'             )
+#'           ),
+#'           EbsOptimized = TRUE|FALSE
+#'         ),
+#'         Configurations = list(
+#'           list(
+#'             Classification = "string",
+#'             Configurations = list(),
+#'             Properties = list(
+#'               "string"
+#'             )
+#'           )
+#'         ),
+#'         CustomAmiId = "string",
+#'         Priority = 123.0
+#'       )
+#'     ),
+#'     Context = "string"
 #'   )
 #' )
 #' ```
@@ -3656,7 +3715,9 @@ emr_put_block_public_access_configuration <- function(BlockPublicAccessConfigura
 #'       MaximumCapacityUnits = 123,
 #'       MaximumOnDemandCapacityUnits = 123,
 #'       MaximumCoreCapacityUnits = 123
-#'     )
+#'     ),
+#'     UtilizationPerformanceIndex = 123,
+#'     ScalingStrategy = "DEFAULT"|"ADVANCED"
 #'   )
 #' )
 #' ```
@@ -4237,12 +4298,20 @@ emr_remove_tags <- function(ResourceId, TagKeys) {
 #'         ),
 #'         ResizeSpecifications = list(
 #'           SpotResizeSpecification = list(
-#'             TimeoutDurationMinutes = 123
+#'             TimeoutDurationMinutes = 123,
+#'             AllocationStrategy = "capacity-optimized"|"price-capacity-optimized"|"lowest-price"|"diversified"|"capacity-optimized-prioritized"
 #'           ),
 #'           OnDemandResizeSpecification = list(
-#'             TimeoutDurationMinutes = 123
+#'             TimeoutDurationMinutes = 123,
+#'             AllocationStrategy = "lowest-price"|"prioritized",
+#'             CapacityReservationOptions = list(
+#'               UsageStrategy = "use-capacity-reservations-first",
+#'               CapacityReservationPreference = "open"|"none",
+#'               CapacityReservationResourceGroupArn = "string"
+#'             )
 #'           )
-#'         )
+#'         ),
+#'         Context = "string"
 #'       )
 #'     ),
 #'     Ec2KeyName = "string",
@@ -4362,7 +4431,9 @@ emr_remove_tags <- function(ResourceId, TagKeys) {
 #'       MaximumCapacityUnits = 123,
 #'       MaximumOnDemandCapacityUnits = 123,
 #'       MaximumCoreCapacityUnits = 123
-#'     )
+#'     ),
+#'     UtilizationPerformanceIndex = 123,
+#'     ScalingStrategy = "DEFAULT"|"ADVANCED"
 #'   ),
 #'   PlacementGroupConfigs = list(
 #'     list(

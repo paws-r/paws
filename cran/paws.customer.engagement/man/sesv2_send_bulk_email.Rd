@@ -13,7 +13,8 @@ sesv2_send_bulk_email(
   DefaultEmailTags = NULL,
   DefaultContent,
   BulkEmailEntries,
-  ConfigurationSetName = NULL
+  ConfigurationSetName = NULL,
+  EndpointId = NULL
 )
 }
 \arguments{
@@ -65,6 +66,8 @@ template message.}
 \item{BulkEmailEntries}{[required] The list of bulk email entry objects.}
 
 \item{ConfigurationSetName}{The name of the configuration set to use when sending the email.}
+
+\item{EndpointId}{The ID of the multi-region endpoint (global-endpoint).}
 }
 \description{
 Composes an email message to multiple destinations.

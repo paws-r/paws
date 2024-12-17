@@ -5,13 +5,31 @@
 \title{Describes the specified placement groups or all of your placement groups}
 \usage{
 ec2_describe_placement_groups(
-  Filters = NULL,
+  GroupIds = NULL,
   DryRun = NULL,
   GroupNames = NULL,
-  GroupIds = NULL
+  Filters = NULL
 )
 }
 \arguments{
+\item{GroupIds}{The IDs of the placement groups.}
+
+\item{DryRun}{Checks whether you have the required permissions for the operation,
+without actually making the request, and provides an error response. If
+you have the required permissions, the error response is
+\code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
+
+\item{GroupNames}{The names of the placement groups.
+
+Constraints:
+\itemize{
+\item You can specify a name only if the placement group is owned by your
+account.
+\item If a placement group is \emph{shared} with your account, specifying the
+name results in an error. You must use the \code{GroupId} parameter
+instead.
+}}
+
 \item{Filters}{The filters.
 \itemize{
 \item \code{group-name} - The name of the placement group.
@@ -31,24 +49,6 @@ the filter name and \code{TeamA} for the filter value.
 filter to find all resources that have a tag with a specific key,
 regardless of the tag value.
 }}
-
-\item{DryRun}{Checks whether you have the required permissions for the action, without
-actually making the request, and provides an error response. If you have
-the required permissions, the error response is \code{DryRunOperation}.
-Otherwise, it is \code{UnauthorizedOperation}.}
-
-\item{GroupNames}{The names of the placement groups.
-
-Constraints:
-\itemize{
-\item You can specify a name only if the placement group is owned by your
-account.
-\item If a placement group is \emph{shared} with your account, specifying the
-name results in an error. You must use the \code{GroupId} parameter
-instead.
-}}
-
-\item{GroupIds}{The IDs of the placement groups.}
 }
 \description{
 Describes the specified placement groups or all of your placement groups.

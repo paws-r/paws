@@ -364,6 +364,7 @@ NULL
 #'  \link[=controltower_list_landing_zones]{list_landing_zones} \tab Returns the landing zone ARN for the landing zone deployed in your managed account\cr
 #'  \link[=controltower_list_tags_for_resource]{list_tags_for_resource} \tab Returns a list of tags associated with the resource\cr
 #'  \link[=controltower_reset_enabled_baseline]{reset_enabled_baseline} \tab Re-enables an EnabledBaseline resource\cr
+#'  \link[=controltower_reset_enabled_control]{reset_enabled_control} \tab Resets an enabled control\cr
 #'  \link[=controltower_reset_landing_zone]{reset_landing_zone} \tab This API call resets a landing zone\cr
 #'  \link[=controltower_tag_resource]{tag_resource} \tab Applies tags to a resource\cr
 #'  \link[=controltower_untag_resource]{untag_resource} \tab Removes tags from a resource\cr
@@ -401,7 +402,7 @@ controltower <- function(config = list(), credentials = list(), endpoint = NULL,
 
 .controltower$metadata <- list(
   service_name = "controltower",
-  endpoints = list("*" = list(endpoint = "controltower.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "controltower.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "controltower.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "controltower.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "controltower.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "controltower.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "controltower.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "controltower.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "controltower.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "controltower.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "controltower.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "controltower.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "controltower.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "ControlTower",
   api_version = "2018-05-10",
   signing_name = "controltower",

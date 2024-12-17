@@ -2,7 +2,7 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_admin_list_devices}
 \alias{cognitoidentityprovider_admin_list_devices}
-\title{Lists devices, as an administrator}
+\title{Lists a user's registered devices}
 \usage{
 cognitoidentityprovider_admin_list_devices(
   UserPoolId,
@@ -12,7 +12,7 @@ cognitoidentityprovider_admin_list_devices(
 )
 }
 \arguments{
-\item{UserPoolId}{[required] The user pool ID.}
+\item{UserPoolId}{[required] The ID of the user pool where the device owner is a user.}
 
 \item{Username}{[required] The username of the user that you want to query or modify. The value of
 this parameter is typically your user's username, but it can be any of
@@ -20,7 +20,8 @@ their alias attributes. If \code{username} isn't an alias attribute in your
 user pool, this value must be the \code{sub} of a local user or the username
 of a user from a third-party IdP.}
 
-\item{Limit}{The limit of the devices request.}
+\item{Limit}{The maximum number of devices that you want Amazon Cognito to return in
+the response.}
 
 \item{PaginationToken}{This API operation returns a limited number of results. The pagination
 token is an identifier that you can present in an additional API request
@@ -30,7 +31,7 @@ requests return a new pagination token. By use of this token, you can
 paginate through the full list of items.}
 }
 \description{
-Lists devices, as an administrator.
+Lists a user's registered devices. Remembered devices are used in authentication services where you offer a "Remember me" option for users who you want to permit to sign in without MFA from a trusted device. Users can bypass MFA while your application performs device SRP authentication on the back end. For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/amazon-cognito-user-pools-device-tracking.html}{Working with devices}.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_admin_list_devices/} for full documentation.
 }

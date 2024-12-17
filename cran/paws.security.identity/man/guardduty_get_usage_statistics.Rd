@@ -16,7 +16,11 @@ guardduty_get_usage_statistics(
 }
 \arguments{
 \item{DetectorId}{[required] The ID of the detector that specifies the GuardDuty service whose usage
-statistics you want to retrieve.}
+statistics you want to retrieve.
+
+To find the \code{detectorId} in the current Region, see the Settings page in
+the GuardDuty console, or run the
+\code{\link[=guardduty_list_detectors]{list_detectors}} API.}
 
 \item{UsageStatisticType}{[required] The type of usage statistics to retrieve.}
 

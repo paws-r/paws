@@ -11,7 +11,8 @@ cognitoidentityprovider_admin_add_user_to_group(
 )
 }
 \arguments{
-\item{UserPoolId}{[required] The user pool ID for the user pool.}
+\item{UserPoolId}{[required] The ID of the user pool that contains the group that you want to add the
+user to.}
 
 \item{Username}{[required] The username of the user that you want to query or modify. The value of
 this parameter is typically your user's username, but it can be any of

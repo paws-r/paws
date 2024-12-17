@@ -6,17 +6,18 @@
 \usage{
 sfn_test_state(
   definition,
-  roleArn,
+  roleArn = NULL,
   input = NULL,
   inspectionLevel = NULL,
-  revealSecrets = NULL
+  revealSecrets = NULL,
+  variables = NULL
 )
 }
 \arguments{
 \item{definition}{[required] The \href{https://docs.aws.amazon.com/step-functions/latest/dg/concepts-amazon-states-language.html}{Amazon States Language}
 (ASL) definition of the state.}
 
-\item{roleArn}{[required] The Amazon Resource Name (ARN) of the execution role with the required
+\item{roleArn}{The Amazon Resource Name (ARN) of the execution role with the required
 IAM permissions for the state.}
 
 \item{input}{A string that contains the JSON input data for the state.}
@@ -49,6 +50,9 @@ sets the \code{states:RevealSecrets} permission, see \href{https://docs.aws.amaz
 Without this permission, Step Functions throws an access denied error.
 
 By default, \code{revealSecrets} is set to \code{false}.}
+
+\item{variables}{JSON object literal that sets variables used in the state under test.
+Object keys are the variable names and values are the variable values.}
 }
 \description{
 Accepts the definition of a single state and executes it. You can test a state without creating a state machine or updating an existing state machine. Using this API, you can test the following:

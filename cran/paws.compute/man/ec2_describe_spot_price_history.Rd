@@ -5,18 +5,35 @@
 \title{Describes the Spot price history}
 \usage{
 ec2_describe_spot_price_history(
-  Filters = NULL,
-  AvailabilityZone = NULL,
   DryRun = NULL,
+  StartTime = NULL,
   EndTime = NULL,
   InstanceTypes = NULL,
-  MaxResults = NULL,
-  NextToken = NULL,
   ProductDescriptions = NULL,
-  StartTime = NULL
+  Filters = NULL,
+  AvailabilityZone = NULL,
+  MaxResults = NULL,
+  NextToken = NULL
 )
 }
 \arguments{
+\item{DryRun}{Checks whether you have the required permissions for the action, without
+actually making the request, and provides an error response. If you have
+the required permissions, the error response is \code{DryRunOperation}.
+Otherwise, it is \code{UnauthorizedOperation}.}
+
+\item{StartTime}{The date and time, up to the past 90 days, from which to start
+retrieving the price history data, in UTC format (for example,
+\emph{YYYY}-\emph{MM}-\emph{DD}T\emph{HH}:\emph{MM}:\emph{SS}Z).}
+
+\item{EndTime}{The date and time, up to the current date, from which to stop retrieving
+the price history data, in UTC format (for example,
+\emph{YYYY}-\emph{MM}-\emph{DD}T\emph{HH}:\emph{MM}:\emph{SS}Z).}
+
+\item{InstanceTypes}{Filters the results by the specified instance types.}
+
+\item{ProductDescriptions}{Filters the results by the specified basic product descriptions.}
+
 \item{Filters}{The filters.
 \itemize{
 \item \code{availability-zone} - The Availability Zone for which prices should
@@ -37,17 +54,6 @@ not supported.
 
 \item{AvailabilityZone}{Filters the results by the specified Availability Zone.}
 
-\item{DryRun}{Checks whether you have the required permissions for the action, without
-actually making the request, and provides an error response. If you have
-the required permissions, the error response is \code{DryRunOperation}.
-Otherwise, it is \code{UnauthorizedOperation}.}
-
-\item{EndTime}{The date and time, up to the current date, from which to stop retrieving
-the price history data, in UTC format (for example,
-\emph{YYYY}-\emph{MM}-\emph{DD}T\emph{HH}:\emph{MM}:\emph{SS}Z).}
-
-\item{InstanceTypes}{Filters the results by the specified instance types.}
-
 \item{MaxResults}{The maximum number of items to return for this request. To get the next
 page of items, make another request with the token returned in the
 output. For more information, see
@@ -55,12 +61,6 @@ output. For more information, see
 
 \item{NextToken}{The token returned from a previous paginated request. Pagination
 continues from the end of the items returned by the previous request.}
-
-\item{ProductDescriptions}{Filters the results by the specified basic product descriptions.}
-
-\item{StartTime}{The date and time, up to the past 90 days, from which to start
-retrieving the price history data, in UTC format (for example,
-\emph{YYYY}-\emph{MM}-\emph{DD}T\emph{HH}:\emph{MM}:\emph{SS}Z).}
 }
 \description{
 Describes the Spot price history. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances-history.html}{Spot Instance pricing history} in the \emph{Amazon EC2 User Guide}.

@@ -2,7 +2,8 @@
 % Please edit documentation in R/xray_operations.R
 \name{xray_batch_get_traces}
 \alias{xray_batch_get_traces}
-\title{Retrieves a list of traces specified by ID}
+\title{You cannot find traces through this API if Transaction Search is enabled
+since trace is not indexed in X-Ray}
 \usage{
 xray_batch_get_traces(TraceIds, NextToken = NULL)
 }
@@ -12,7 +13,7 @@ xray_batch_get_traces(TraceIds, NextToken = NULL)
 \item{NextToken}{Pagination token.}
 }
 \description{
-Retrieves a list of traces specified by ID. Each trace is a collection of segment documents that originates from a single request. Use \code{\link[=xray_get_trace_summaries]{get_trace_summaries}} to get a list of trace IDs.
+You cannot find traces through this API if Transaction Search is enabled since trace is not indexed in X-Ray.
 
 See \url{https://www.paws-r-sdk.com/docs/xray_batch_get_traces/} for full documentation.
 }

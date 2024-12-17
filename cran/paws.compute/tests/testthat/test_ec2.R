@@ -44,6 +44,14 @@ test_that("describe_bundle_tasks", {
   expect_error(svc$describe_bundle_tasks(), NA)
 })
 
+test_that("describe_capacity_block_extension_history", {
+  expect_error(svc$describe_capacity_block_extension_history(), NA)
+})
+
+test_that("describe_capacity_block_extension_history", {
+  expect_error(svc$describe_capacity_block_extension_history(MaxResults = 20), NA)
+})
+
 test_that("describe_capacity_reservation_fleets", {
   expect_error(svc$describe_capacity_reservation_fleets(), NA)
 })
@@ -98,6 +106,14 @@ test_that("describe_conversion_tasks", {
 
 test_that("describe_customer_gateways", {
   expect_error(svc$describe_customer_gateways(), NA)
+})
+
+test_that("describe_declarative_policies_reports", {
+  expect_error(svc$describe_declarative_policies_reports(), NA)
+})
+
+test_that("describe_declarative_policies_reports", {
+  expect_error(svc$describe_declarative_policies_reports(MaxResults = 20), NA)
 })
 
 test_that("describe_dhcp_options", {
@@ -254,6 +270,14 @@ test_that("describe_instance_event_windows", {
 
 test_that("describe_instance_event_windows", {
   expect_error(svc$describe_instance_event_windows(MaxResults = 20), NA)
+})
+
+test_that("describe_instance_image_metadata", {
+  expect_error(svc$describe_instance_image_metadata(), NA)
+})
+
+test_that("describe_instance_image_metadata", {
+  expect_error(svc$describe_instance_image_metadata(MaxResults = 20), NA)
 })
 
 test_that("describe_instance_status", {
@@ -596,6 +620,14 @@ test_that("describe_security_group_rules", {
   expect_error(svc$describe_security_group_rules(MaxResults = 20), NA)
 })
 
+test_that("describe_security_group_vpc_associations", {
+  expect_error(svc$describe_security_group_vpc_associations(), NA)
+})
+
+test_that("describe_security_group_vpc_associations", {
+  expect_error(svc$describe_security_group_vpc_associations(MaxResults = 20), NA)
+})
+
 test_that("describe_security_groups", {
   expect_error(svc$describe_security_groups(), NA)
 })
@@ -852,6 +884,18 @@ test_that("describe_volumes_modifications", {
   expect_error(svc$describe_volumes_modifications(MaxResults = 20), NA)
 })
 
+test_that("describe_vpc_block_public_access_exclusions", {
+  expect_error(svc$describe_vpc_block_public_access_exclusions(), NA)
+})
+
+test_that("describe_vpc_block_public_access_exclusions", {
+  expect_error(svc$describe_vpc_block_public_access_exclusions(MaxResults = 20), NA)
+})
+
+test_that("describe_vpc_block_public_access_options", {
+  expect_error(svc$describe_vpc_block_public_access_options(), NA)
+})
+
 test_that("describe_vpc_classic_link", {
   expect_error(svc$describe_vpc_classic_link(), NA)
 })
@@ -862,6 +906,14 @@ test_that("describe_vpc_classic_link_dns_support", {
 
 test_that("describe_vpc_classic_link_dns_support", {
   expect_error(svc$describe_vpc_classic_link_dns_support(MaxResults = 20), NA)
+})
+
+test_that("describe_vpc_endpoint_associations", {
+  expect_error(svc$describe_vpc_endpoint_associations(), NA)
+})
+
+test_that("describe_vpc_endpoint_associations", {
+  expect_error(svc$describe_vpc_endpoint_associations(MaxResults = 20), NA)
 })
 
 test_that("describe_vpc_endpoint_connection_notifications", {

@@ -35,11 +35,11 @@ mwaa_create_cli_token <- function(Name) {
 }
 .mwaa$operations$create_cli_token <- mwaa_create_cli_token
 
-#' Creates an Amazon Managed Workflows for Apache Airflow (MWAA)
+#' Creates an Amazon Managed Workflows for Apache Airflow (Amazon MWAA)
 #' environment
 #'
 #' @description
-#' Creates an Amazon Managed Workflows for Apache Airflow (MWAA) environment.
+#' Creates an Amazon Managed Workflows for Apache Airflow (Amazon MWAA) environment.
 #'
 #' See [https://www.paws-r-sdk.com/docs/mwaa_create_environment/](https://www.paws-r-sdk.com/docs/mwaa_create_environment/) for full documentation.
 #'
@@ -104,9 +104,9 @@ mwaa_create_cli_token <- function(Name) {
 #' options you want to attach to your environment. For more information,
 #' see [Apache Airflow configuration
 #' options](https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-env-variables.html).
-#' @param EnvironmentClass The environment class type. Valid values: `mw1.small`, `mw1.medium`,
-#' `mw1.large`, `mw1.xlarge`, and `mw1.2xlarge`. For more information, see
-#' [Amazon MWAA environment
+#' @param EnvironmentClass The environment class type. Valid values: `mw1.micro`, `mw1.small`,
+#' `mw1.medium`, `mw1.large`, `mw1.xlarge`, and `mw1.2xlarge`. For more
+#' information, see [Amazon MWAA environment
 #' class](https://docs.aws.amazon.com/mwaa/latest/userguide/environment-class.html).
 #' @param MaxWorkers The maximum number of workers that you want to run in your environment.
 #' MWAA scales the number of Apache Airflow workers up to the number you
@@ -122,10 +122,11 @@ mwaa_create_cli_token <- function(Name) {
 #' @param AirflowVersion The Apache Airflow version for your environment. If no value is
 #' specified, it defaults to the latest version. For more information, see
 #' [Apache Airflow versions on Amazon Managed Workflows for Apache Airflow
-#' (MWAA)](https://docs.aws.amazon.com/mwaa/latest/userguide/airflow-versions.html).
+#' (Amazon
+#' MWAA)](https://docs.aws.amazon.com/mwaa/latest/userguide/airflow-versions.html).
 #' 
 #' Valid values: `1.10.12`, `2.0.2`, `2.2.2`, `2.4.3`, `2.5.1`, `2.6.3`,
-#' `2.7.2` `2.8.1`
+#' `2.7.2`, `2.8.1`, `2.9.2`, and `2.10.1`.
 #' @param LoggingConfiguration Defines the Apache Airflow logs to send to CloudWatch Logs.
 #' @param WeeklyMaintenanceWindowStart The day and time of the week in Coordinated Universal Time (UTC) 24-hour
 #' standard time to start weekly maintenance updates of your environment in
@@ -146,7 +147,9 @@ mwaa_create_cli_token <- function(Name) {
 #' @param Schedulers The number of Apache Airflow schedulers to run in your environment.
 #' Valid values:
 #' 
-#' -   v2 - Accepts between `2` to `5`. Defaults to `2`.
+#' -   v2 - For environments larger than mw1.micro, accepts values from `2`
+#'     to `5`. Defaults to `2` for all environment sizes except mw1.micro,
+#'     which defaults to `1`.
 #' 
 #' -   v1 - Accepts `1`.
 #' @param EndpointManagement Defines whether the VPC endpoints configured for the environment are
@@ -167,7 +170,9 @@ mwaa_create_cli_token <- function(Name) {
 #' load, decrease, Amazon MWAA disposes of the additional web servers, and
 #' scales down to the number set in `MinxWebserers`.
 #' 
-#' Valid values: Accepts between `2` and `5`. Defaults to `2`.
+#' Valid values: For environments larger than mw1.micro, accepts values
+#' from `2` to `5`. Defaults to `2` for all environment sizes except
+#' mw1.micro, which defaults to `1`.
 #' @param MaxWebservers The maximum number of web servers that you want to run in your
 #' environment. Amazon MWAA scales the number of Apache Airflow web servers
 #' up to the number you specify for `MaxWebservers` when you interact with
@@ -179,7 +184,9 @@ mwaa_create_cli_token <- function(Name) {
 #' decrease Amazon MWAA disposes of the additional web servers, and scales
 #' down to the number set in `MinxWebserers`.
 #' 
-#' Valid values: Accepts between `2` and `5`. Defaults to `2`.
+#' Valid values: For environments larger than mw1.micro, accepts values
+#' from `2` to `5`. Defaults to `2` for all environment sizes except
+#' mw1.micro, which defaults to `1`.
 #'
 #' @keywords internal
 #'
@@ -235,11 +242,11 @@ mwaa_create_web_login_token <- function(Name) {
 }
 .mwaa$operations$create_web_login_token <- mwaa_create_web_login_token
 
-#' Deletes an Amazon Managed Workflows for Apache Airflow (MWAA)
+#' Deletes an Amazon Managed Workflows for Apache Airflow (Amazon MWAA)
 #' environment
 #'
 #' @description
-#' Deletes an Amazon Managed Workflows for Apache Airflow (MWAA) environment.
+#' Deletes an Amazon Managed Workflows for Apache Airflow (Amazon MWAA) environment.
 #'
 #' See [https://www.paws-r-sdk.com/docs/mwaa_delete_environment/](https://www.paws-r-sdk.com/docs/mwaa_delete_environment/) for full documentation.
 #'
@@ -300,6 +307,49 @@ mwaa_get_environment <- function(Name) {
   return(response)
 }
 .mwaa$operations$get_environment <- mwaa_get_environment
+
+#' Invokes the Apache Airflow REST API on the webserver with the specified
+#' inputs
+#'
+#' @description
+#' Invokes the Apache Airflow REST API on the webserver with the specified inputs. To learn more, see [Using the Apache Airflow REST API](https://docs.aws.amazon.com/mwaa/latest/userguide/access-mwaa-apache-airflow-rest-api.html)
+#'
+#' See [https://www.paws-r-sdk.com/docs/mwaa_invoke_rest_api/](https://www.paws-r-sdk.com/docs/mwaa_invoke_rest_api/) for full documentation.
+#'
+#' @param Name &#91;required&#93; The name of the Amazon MWAA environment. For example,
+#' `MyMWAAEnvironment`.
+#' @param Path &#91;required&#93; The Apache Airflow REST API endpoint path to be called. For example,
+#' `/dags/123456/clearTaskInstances`. For more information, see [Apache
+#' Airflow
+#' API](https://airflow.apache.org/docs/apache-airflow/stable/stable-rest-api-ref.html)
+#' @param Method &#91;required&#93; The HTTP method used for making Airflow REST API calls. For example,
+#' `POST`.
+#' @param QueryParameters Query parameters to be included in the Apache Airflow REST API call,
+#' provided as a JSON object.
+#' @param Body The request body for the Apache Airflow REST API call, provided as a
+#' JSON object.
+#'
+#' @keywords internal
+#'
+#' @rdname mwaa_invoke_rest_api
+mwaa_invoke_rest_api <- function(Name, Path, Method, QueryParameters = NULL, Body = NULL) {
+  op <- new_operation(
+    name = "InvokeRestApi",
+    http_method = "POST",
+    http_path = "/restapi/{Name}",
+    host_prefix = "env.",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .mwaa$invoke_rest_api_input(Name = Name, Path = Path, Method = Method, QueryParameters = QueryParameters, Body = Body)
+  output <- .mwaa$invoke_rest_api_output()
+  config <- get_config()
+  svc <- .mwaa$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.mwaa$operations$invoke_rest_api <- mwaa_invoke_rest_api
 
 #' Lists the Amazon Managed Workflows for Apache Airflow (MWAA)
 #' environments
@@ -504,7 +554,7 @@ mwaa_untag_resource <- function(ResourceArn, tagKeys) {
 #' environment](https://docs.aws.amazon.com/mwaa/latest/userguide/upgrading-environment.html).
 #' 
 #' Valid values: `1.10.12`, `2.0.2`, `2.2.2`, `2.4.3`, `2.5.1`, `2.6.3`,
-#' `2.7.2`, `2.8.1`.
+#' `2.7.2`, `2.8.1`, `2.9.2`, and `2.10.1`.
 #' @param SourceBucketArn The Amazon Resource Name (ARN) of the Amazon S3 bucket where your DAG
 #' code and supporting files are stored. For example,
 #' `arn:aws:s3:::my-airflow-bucket-unique-name`. For more information, see
@@ -553,9 +603,9 @@ mwaa_untag_resource <- function(ResourceArn, tagKeys) {
 #' options you want to attach to your environment. For more information,
 #' see [Apache Airflow configuration
 #' options](https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-env-variables.html).
-#' @param EnvironmentClass The environment class type. Valid values: `mw1.small`, `mw1.medium`,
-#' `mw1.large`, `mw1.xlarge`, and `mw1.2xlarge`. For more information, see
-#' [Amazon MWAA environment
+#' @param EnvironmentClass The environment class type. Valid values: `mw1.micro`, `mw1.small`,
+#' `mw1.medium`, `mw1.large`, `mw1.xlarge`, and `mw1.2xlarge`. For more
+#' information, see [Amazon MWAA environment
 #' class](https://docs.aws.amazon.com/mwaa/latest/userguide/environment-class.html).
 #' @param MaxWorkers The maximum number of workers that you want to run in your environment.
 #' MWAA scales the number of Apache Airflow workers up to the number you
@@ -590,7 +640,9 @@ mwaa_untag_resource <- function(ResourceArn, tagKeys) {
 #' load, decrease, Amazon MWAA disposes of the additional web servers, and
 #' scales down to the number set in `MinxWebserers`.
 #' 
-#' Valid values: Accepts between `2` and `5`. Defaults to `2`.
+#' Valid values: For environments larger than mw1.micro, accepts values
+#' from `2` to `5`. Defaults to `2` for all environment sizes except
+#' mw1.micro, which defaults to `1`.
 #' @param MaxWebservers The maximum number of web servers that you want to run in your
 #' environment. Amazon MWAA scales the number of Apache Airflow web servers
 #' up to the number you specify for `MaxWebservers` when you interact with
@@ -602,7 +654,9 @@ mwaa_untag_resource <- function(ResourceArn, tagKeys) {
 #' decrease Amazon MWAA disposes of the additional web servers, and scales
 #' down to the number set in `MinxWebserers`.
 #' 
-#' Valid values: Accepts between `2` and `5`. Defaults to `2`.
+#' Valid values: For environments larger than mw1.micro, accepts values
+#' from `2` to `5`. Defaults to `2` for all environment sizes except
+#' mw1.micro, which defaults to `1`.
 #'
 #' @keywords internal
 #'

@@ -418,6 +418,8 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #' specified, authorization will occur using the latest revision of a task
 #' definition.
 #' 
+#' Amazon Elastic Inference (EI) is no longer available to customers.
+#' 
 #' In addition to maintaining the desired count of tasks in your service,
 #' you can optionally run your service behind one or more load balancers.
 #' The load balancers distribute traffic across the tasks that are
@@ -519,24 +521,16 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #' strategies, see [Amazon ECS task
 #' placement](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-placement.html)
 #' in the *Amazon Elastic Container Service Developer Guide*
-#' 
-#' Starting April 15, 2023, Amazon Web Services will not onboard new
-#' customers to Amazon Elastic Inference (EI), and will help current
-#' customers migrate their workloads to options that offer better price and
-#' performance. After April 15, 2023, new customers will not be able to
-#' launch instances with Amazon EI accelerators in Amazon SageMaker, Amazon
-#' ECS, or Amazon EC2. However, customers who have used Amazon EI at least
-#' once during the past 30-day period are considered current customers and
-#' will be able to continue using the service.
 #'
 #' @usage
-#' ecs_create_service(cluster, serviceName, taskDefinition, loadBalancers,
-#'   serviceRegistries, desiredCount, clientToken, launchType,
-#'   capacityProviderStrategy, platformVersion, role,
-#'   deploymentConfiguration, placementConstraints, placementStrategy,
-#'   networkConfiguration, healthCheckGracePeriodSeconds, schedulingStrategy,
-#'   deploymentController, tags, enableECSManagedTags, propagateTags,
-#'   enableExecuteCommand, serviceConnectConfiguration, volumeConfigurations)
+#' ecs_create_service(cluster, serviceName, taskDefinition,
+#'   availabilityZoneRebalancing, loadBalancers, serviceRegistries,
+#'   desiredCount, clientToken, launchType, capacityProviderStrategy,
+#'   platformVersion, role, deploymentConfiguration, placementConstraints,
+#'   placementStrategy, networkConfiguration, healthCheckGracePeriodSeconds,
+#'   schedulingStrategy, deploymentController, tags, enableECSManagedTags,
+#'   propagateTags, enableExecuteCommand, serviceConnectConfiguration,
+#'   volumeConfigurations, vpcLatticeConfigurations)
 #'
 #' @param cluster The short name or full Amazon Resource Name (ARN) of the cluster that
 #' you run your service on. If you do not specify a cluster, the default
@@ -554,6 +548,12 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #' 
 #' For more information about deployment types, see [Amazon ECS deployment
 #' types](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/).
+#' @param availabilityZoneRebalancing Indicates whether to use Availability Zone rebalancing for the service.
+#' 
+#' For more information, see [Balancing an Amazon ECS service across
+#' Availability
+#' Zones](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-rebalancing.html)
+#' in the *Amazon Elastic Container Service Developer Guide*.
 #' @param loadBalancers A load balancer object representing the load balancers to use with your
 #' service. For more information, see [Service load
 #' balancing](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-load-balancing.html)
@@ -647,7 +647,7 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #' specified, the `defaultCapacityProviderStrategy` for the cluster is
 #' used.
 #' 
-#' A capacity provider strategy may contain a maximum of 6 capacity
+#' A capacity provider strategy can contain a maximum of 20 capacity
 #' providers.
 #' @param platformVersion The platform version that your tasks in the service are running on. A
 #' platform version is specified only for tasks using the Fargate launch
@@ -694,23 +694,18 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #' networking](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html)
 #' in the *Amazon Elastic Container Service Developer Guide*.
 #' @param healthCheckGracePeriodSeconds The period of time, in seconds, that the Amazon ECS service scheduler
-#' ignores unhealthy Elastic Load Balancing target health checks after a
-#' task has first started. This is only used when your service is
-#' configured to use a load balancer. If your service has a load balancer
-#' defined and you don't specify a health check grace period value, the
-#' default value of `0` is used.
+#' ignores unhealthy Elastic Load Balancing, VPC Lattice, and container
+#' health checks after a task has first started. If you don't specify a
+#' health check grace period value, the default value of `0` is used. If
+#' you don't use any of the health checks, then
+#' `healthCheckGracePeriodSeconds` is unused.
 #' 
-#' If you do not use an Elastic Load Balancing, we recommend that you use
-#' the `startPeriod` in the task definition health check parameters. For
-#' more information, see [Health
-#' check](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_HealthCheck.html).
-#' 
-#' If your service's tasks take a while to start and respond to Elastic
-#' Load Balancing health checks, you can specify a health check grace
-#' period of up to 2,147,483,647 seconds (about 69 years). During that
-#' time, the Amazon ECS service scheduler ignores health check status. This
-#' grace period can prevent the service scheduler from marking tasks as
-#' unhealthy and stopping them before they have time to come up.
+#' If your service's tasks take a while to start and respond to health
+#' checks, you can specify a health check grace period of up to
+#' 2,147,483,647 seconds (about 69 years). During that time, the Amazon ECS
+#' service scheduler ignores health check status. This grace period can
+#' prevent the service scheduler from marking tasks as unhealthy and
+#' stopping them before they have time to come up.
 #' @param schedulingStrategy The scheduling strategy to use for the service. For more information,
 #' see
 #' [Services](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs_services.html).
@@ -804,6 +799,7 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #' @param volumeConfigurations The configuration for a volume specified in the task definition as a
 #' volume that is configured at launch time. Currently, the only supported
 #' volume type is an Amazon EBS volume.
+#' @param vpcLatticeConfigurations The VPC Lattice configuration for the service being created.
 #'
 #' @return
 #' A list with the following syntax:
@@ -855,8 +851,8 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #'         alarmNames = list(
 #'           "string"
 #'         ),
-#'         enable = TRUE|FALSE,
-#'         rollback = TRUE|FALSE
+#'         rollback = TRUE|FALSE,
+#'         enable = TRUE|FALSE
 #'       )
 #'     ),
 #'     taskSets = list(
@@ -1042,12 +1038,19 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #'                 )
 #'               ),
 #'               roleArn = "string",
-#'               filesystemType = "ext3"|"ext4"|"xfs"
+#'               filesystemType = "ext3"|"ext4"|"xfs"|"ntfs"
 #'             )
 #'           )
 #'         ),
 #'         fargateEphemeralStorage = list(
 #'           kmsKeyId = "string"
+#'         ),
+#'         vpcLatticeConfigurations = list(
+#'           list(
+#'             roleArn = "string",
+#'             targetGroupArn = "string",
+#'             portName = "string"
+#'           )
 #'         )
 #'       )
 #'     ),
@@ -1101,7 +1104,8 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #'     createdBy = "string",
 #'     enableECSManagedTags = TRUE|FALSE,
 #'     propagateTags = "TASK_DEFINITION"|"SERVICE"|"NONE",
-#'     enableExecuteCommand = TRUE|FALSE
+#'     enableExecuteCommand = TRUE|FALSE,
+#'     availabilityZoneRebalancing = "ENABLED"|"DISABLED"
 #'   )
 #' )
 #' ```
@@ -1112,6 +1116,7 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #'   cluster = "string",
 #'   serviceName = "string",
 #'   taskDefinition = "string",
+#'   availabilityZoneRebalancing = "ENABLED"|"DISABLED",
 #'   loadBalancers = list(
 #'     list(
 #'       targetGroupArn = "string",
@@ -1151,8 +1156,8 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #'       alarmNames = list(
 #'         "string"
 #'       ),
-#'       enable = TRUE|FALSE,
-#'       rollback = TRUE|FALSE
+#'       rollback = TRUE|FALSE,
+#'       enable = TRUE|FALSE
 #'     )
 #'   ),
 #'   placementConstraints = list(
@@ -1256,8 +1261,15 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #'           )
 #'         ),
 #'         roleArn = "string",
-#'         filesystemType = "ext3"|"ext4"|"xfs"
+#'         filesystemType = "ext3"|"ext4"|"xfs"|"ntfs"
 #'       )
+#'     )
+#'   ),
+#'   vpcLatticeConfigurations = list(
+#'     list(
+#'       roleArn = "string",
+#'       targetGroupArn = "string",
+#'       portName = "string"
 #'     )
 #'   )
 #' )
@@ -1298,7 +1310,7 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #' @rdname ecs_create_service
 #'
 #' @aliases ecs_create_service
-ecs_create_service <- function(cluster = NULL, serviceName, taskDefinition = NULL, loadBalancers = NULL, serviceRegistries = NULL, desiredCount = NULL, clientToken = NULL, launchType = NULL, capacityProviderStrategy = NULL, platformVersion = NULL, role = NULL, deploymentConfiguration = NULL, placementConstraints = NULL, placementStrategy = NULL, networkConfiguration = NULL, healthCheckGracePeriodSeconds = NULL, schedulingStrategy = NULL, deploymentController = NULL, tags = NULL, enableECSManagedTags = NULL, propagateTags = NULL, enableExecuteCommand = NULL, serviceConnectConfiguration = NULL, volumeConfigurations = NULL) {
+ecs_create_service <- function(cluster = NULL, serviceName, taskDefinition = NULL, availabilityZoneRebalancing = NULL, loadBalancers = NULL, serviceRegistries = NULL, desiredCount = NULL, clientToken = NULL, launchType = NULL, capacityProviderStrategy = NULL, platformVersion = NULL, role = NULL, deploymentConfiguration = NULL, placementConstraints = NULL, placementStrategy = NULL, networkConfiguration = NULL, healthCheckGracePeriodSeconds = NULL, schedulingStrategy = NULL, deploymentController = NULL, tags = NULL, enableECSManagedTags = NULL, propagateTags = NULL, enableExecuteCommand = NULL, serviceConnectConfiguration = NULL, volumeConfigurations = NULL, vpcLatticeConfigurations = NULL) {
   op <- new_operation(
     name = "CreateService",
     http_method = "POST",
@@ -1307,7 +1319,7 @@ ecs_create_service <- function(cluster = NULL, serviceName, taskDefinition = NUL
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ecs$create_service_input(cluster = cluster, serviceName = serviceName, taskDefinition = taskDefinition, loadBalancers = loadBalancers, serviceRegistries = serviceRegistries, desiredCount = desiredCount, clientToken = clientToken, launchType = launchType, capacityProviderStrategy = capacityProviderStrategy, platformVersion = platformVersion, role = role, deploymentConfiguration = deploymentConfiguration, placementConstraints = placementConstraints, placementStrategy = placementStrategy, networkConfiguration = networkConfiguration, healthCheckGracePeriodSeconds = healthCheckGracePeriodSeconds, schedulingStrategy = schedulingStrategy, deploymentController = deploymentController, tags = tags, enableECSManagedTags = enableECSManagedTags, propagateTags = propagateTags, enableExecuteCommand = enableExecuteCommand, serviceConnectConfiguration = serviceConnectConfiguration, volumeConfigurations = volumeConfigurations)
+  input <- .ecs$create_service_input(cluster = cluster, serviceName = serviceName, taskDefinition = taskDefinition, availabilityZoneRebalancing = availabilityZoneRebalancing, loadBalancers = loadBalancers, serviceRegistries = serviceRegistries, desiredCount = desiredCount, clientToken = clientToken, launchType = launchType, capacityProviderStrategy = capacityProviderStrategy, platformVersion = platformVersion, role = role, deploymentConfiguration = deploymentConfiguration, placementConstraints = placementConstraints, placementStrategy = placementStrategy, networkConfiguration = networkConfiguration, healthCheckGracePeriodSeconds = healthCheckGracePeriodSeconds, schedulingStrategy = schedulingStrategy, deploymentController = deploymentController, tags = tags, enableECSManagedTags = enableECSManagedTags, propagateTags = propagateTags, enableExecuteCommand = enableExecuteCommand, serviceConnectConfiguration = serviceConnectConfiguration, volumeConfigurations = volumeConfigurations, vpcLatticeConfigurations = vpcLatticeConfigurations)
   output <- .ecs$create_service_output()
   config <- get_config()
   svc <- .ecs$service(config, op)
@@ -1758,7 +1770,7 @@ ecs_delete_attributes <- function(cluster = NULL, attributes) {
 #' 
 #' The `FARGATE` and `FARGATE_SPOT` capacity providers are reserved and
 #' can't be deleted. You can disassociate them from a cluster using either
-#' [PutCapacityProviderProviders](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/)
+#' [`put_cluster_capacity_providers`][ecs_put_cluster_capacity_providers]
 #' or by deleting the cluster.
 #' 
 #' Prior to a capacity provider being deleted, the capacity provider must
@@ -1771,7 +1783,7 @@ ecs_delete_attributes <- function(cluster = NULL, attributes) {
 #' remaining capacity providers. Only capacity providers that aren't
 #' associated with a cluster can be deleted. To remove a capacity provider
 #' from a cluster, you can either use
-#' [PutCapacityProviderProviders](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/)
+#' [`put_cluster_capacity_providers`][ecs_put_cluster_capacity_providers]
 #' or delete the cluster.
 #'
 #' @usage
@@ -2066,8 +2078,8 @@ ecs_delete_cluster <- function(cluster) {
 #'         alarmNames = list(
 #'           "string"
 #'         ),
-#'         enable = TRUE|FALSE,
-#'         rollback = TRUE|FALSE
+#'         rollback = TRUE|FALSE,
+#'         enable = TRUE|FALSE
 #'       )
 #'     ),
 #'     taskSets = list(
@@ -2253,12 +2265,19 @@ ecs_delete_cluster <- function(cluster) {
 #'                 )
 #'               ),
 #'               roleArn = "string",
-#'               filesystemType = "ext3"|"ext4"|"xfs"
+#'               filesystemType = "ext3"|"ext4"|"xfs"|"ntfs"
 #'             )
 #'           )
 #'         ),
 #'         fargateEphemeralStorage = list(
 #'           kmsKeyId = "string"
+#'         ),
+#'         vpcLatticeConfigurations = list(
+#'           list(
+#'             roleArn = "string",
+#'             targetGroupArn = "string",
+#'             portName = "string"
+#'           )
 #'         )
 #'       )
 #'     ),
@@ -2312,7 +2331,8 @@ ecs_delete_cluster <- function(cluster) {
 #'     createdBy = "string",
 #'     enableECSManagedTags = TRUE|FALSE,
 #'     propagateTags = "TASK_DEFINITION"|"SERVICE"|"NONE",
-#'     enableExecuteCommand = TRUE|FALSE
+#'     enableExecuteCommand = TRUE|FALSE,
+#'     availabilityZoneRebalancing = "ENABLED"|"DISABLED"
 #'   )
 #' )
 #' ```
@@ -2514,6 +2534,7 @@ ecs_delete_service <- function(cluster = NULL, service, force = NULL) {
 #'           ),
 #'           startTimeout = 123,
 #'           stopTimeout = 123,
+#'           versionConsistency = "enabled"|"disabled",
 #'           hostname = "string",
 #'           user = "string",
 #'           workingDirectory = "string",
@@ -3201,6 +3222,7 @@ ecs_deregister_container_instance <- function(cluster = NULL, containerInstance,
 #'         ),
 #'         startTimeout = 123,
 #'         stopTimeout = 123,
+#'         versionConsistency = "enabled"|"disabled",
 #'         hostname = "string",
 #'         user = "string",
 #'         workingDirectory = "string",
@@ -3533,6 +3555,10 @@ ecs_describe_capacity_providers <- function(capacityProviders = NULL, include = 
 #'
 #' @description
 #' Describes one or more of your clusters.
+#' 
+#' For CLI examples, see
+#' [describe-clusters.rst](https://github.com/aws/aws-cli/blob/develop/awscli/examples/ecs/describe-clusters.rst)
+#' on GitHub.
 #'
 #' @usage
 #' ecs_describe_clusters(clusters, include)
@@ -3867,6 +3893,348 @@ ecs_describe_container_instances <- function(cluster = NULL, containerInstances,
 }
 .ecs$operations$describe_container_instances <- ecs_describe_container_instances
 
+#' Describes one or more of your service deployments
+#'
+#' @description
+#' Describes one or more of your service deployments.
+#' 
+#' A service deployment happens when you release a software update for the
+#' service. For more information, see [Amazon ECS service
+#' deployments](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/).
+#'
+#' @usage
+#' ecs_describe_service_deployments(serviceDeploymentArns)
+#'
+#' @param serviceDeploymentArns &#91;required&#93; The ARN of the service deployment.
+#' 
+#' You can specify a maximum of 20 ARNs.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   serviceDeployments = list(
+#'     list(
+#'       serviceDeploymentArn = "string",
+#'       serviceArn = "string",
+#'       clusterArn = "string",
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       startedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       finishedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       stoppedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       updatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       sourceServiceRevisions = list(
+#'         list(
+#'           arn = "string",
+#'           requestedTaskCount = 123,
+#'           runningTaskCount = 123,
+#'           pendingTaskCount = 123
+#'         )
+#'       ),
+#'       targetServiceRevision = list(
+#'         arn = "string",
+#'         requestedTaskCount = 123,
+#'         runningTaskCount = 123,
+#'         pendingTaskCount = 123
+#'       ),
+#'       status = "PENDING"|"SUCCESSFUL"|"STOPPED"|"STOP_REQUESTED"|"IN_PROGRESS"|"ROLLBACK_IN_PROGRESS"|"ROLLBACK_SUCCESSFUL"|"ROLLBACK_FAILED",
+#'       statusReason = "string",
+#'       deploymentConfiguration = list(
+#'         deploymentCircuitBreaker = list(
+#'           enable = TRUE|FALSE,
+#'           rollback = TRUE|FALSE
+#'         ),
+#'         maximumPercent = 123,
+#'         minimumHealthyPercent = 123,
+#'         alarms = list(
+#'           alarmNames = list(
+#'             "string"
+#'           ),
+#'           rollback = TRUE|FALSE,
+#'           enable = TRUE|FALSE
+#'         )
+#'       ),
+#'       rollback = list(
+#'         reason = "string",
+#'         startedAt = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         serviceRevisionArn = "string"
+#'       ),
+#'       deploymentCircuitBreaker = list(
+#'         status = "TRIGGERED"|"MONITORING"|"MONITORING_COMPLETE"|"DISABLED",
+#'         failureCount = 123,
+#'         threshold = 123
+#'       ),
+#'       alarms = list(
+#'         status = "TRIGGERED"|"MONITORING"|"MONITORING_COMPLETE"|"DISABLED",
+#'         alarmNames = list(
+#'           "string"
+#'         ),
+#'         triggeredAlarmNames = list(
+#'           "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   failures = list(
+#'     list(
+#'       arn = "string",
+#'       reason = "string",
+#'       detail = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_service_deployments(
+#'   serviceDeploymentArns = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ecs_describe_service_deployments
+#'
+#' @aliases ecs_describe_service_deployments
+ecs_describe_service_deployments <- function(serviceDeploymentArns) {
+  op <- new_operation(
+    name = "DescribeServiceDeployments",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ecs$describe_service_deployments_input(serviceDeploymentArns = serviceDeploymentArns)
+  output <- .ecs$describe_service_deployments_output()
+  config <- get_config()
+  svc <- .ecs$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ecs$operations$describe_service_deployments <- ecs_describe_service_deployments
+
+#' Describes one or more service revisions
+#'
+#' @description
+#' Describes one or more service revisions.
+#' 
+#' A service revision is a version of the service that includes the values
+#' for the Amazon ECS resources (for example, task definition) and the
+#' environment resources (for example, load balancers, subnets, and
+#' security groups). For more information, see [Amazon ECS service
+#' revisions](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-revision.html).
+#' 
+#' You can't describe a service revision that was created before October
+#' 25, 2024.
+#'
+#' @usage
+#' ecs_describe_service_revisions(serviceRevisionArns)
+#'
+#' @param serviceRevisionArns &#91;required&#93; The ARN of the service revision.
+#' 
+#' You can specify a maximum of 20 ARNs.
+#' 
+#' You can call [`list_service_deployments`][ecs_list_service_deployments]
+#' to get the ARNs.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   serviceRevisions = list(
+#'     list(
+#'       serviceRevisionArn = "string",
+#'       serviceArn = "string",
+#'       clusterArn = "string",
+#'       taskDefinition = "string",
+#'       capacityProviderStrategy = list(
+#'         list(
+#'           capacityProvider = "string",
+#'           weight = 123,
+#'           base = 123
+#'         )
+#'       ),
+#'       launchType = "EC2"|"FARGATE"|"EXTERNAL",
+#'       platformVersion = "string",
+#'       platformFamily = "string",
+#'       loadBalancers = list(
+#'         list(
+#'           targetGroupArn = "string",
+#'           loadBalancerName = "string",
+#'           containerName = "string",
+#'           containerPort = 123
+#'         )
+#'       ),
+#'       serviceRegistries = list(
+#'         list(
+#'           registryArn = "string",
+#'           port = 123,
+#'           containerName = "string",
+#'           containerPort = 123
+#'         )
+#'       ),
+#'       networkConfiguration = list(
+#'         awsvpcConfiguration = list(
+#'           subnets = list(
+#'             "string"
+#'           ),
+#'           securityGroups = list(
+#'             "string"
+#'           ),
+#'           assignPublicIp = "ENABLED"|"DISABLED"
+#'         )
+#'       ),
+#'       containerImages = list(
+#'         list(
+#'           containerName = "string",
+#'           imageDigest = "string",
+#'           image = "string"
+#'         )
+#'       ),
+#'       guardDutyEnabled = TRUE|FALSE,
+#'       serviceConnectConfiguration = list(
+#'         enabled = TRUE|FALSE,
+#'         namespace = "string",
+#'         services = list(
+#'           list(
+#'             portName = "string",
+#'             discoveryName = "string",
+#'             clientAliases = list(
+#'               list(
+#'                 port = 123,
+#'                 dnsName = "string"
+#'               )
+#'             ),
+#'             ingressPortOverride = 123,
+#'             timeout = list(
+#'               idleTimeoutSeconds = 123,
+#'               perRequestTimeoutSeconds = 123
+#'             ),
+#'             tls = list(
+#'               issuerCertificateAuthority = list(
+#'                 awsPcaAuthorityArn = "string"
+#'               ),
+#'               kmsKey = "string",
+#'               roleArn = "string"
+#'             )
+#'           )
+#'         ),
+#'         logConfiguration = list(
+#'           logDriver = "json-file"|"syslog"|"journald"|"gelf"|"fluentd"|"awslogs"|"splunk"|"awsfirelens",
+#'           options = list(
+#'             "string"
+#'           ),
+#'           secretOptions = list(
+#'             list(
+#'               name = "string",
+#'               valueFrom = "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       volumeConfigurations = list(
+#'         list(
+#'           name = "string",
+#'           managedEBSVolume = list(
+#'             encrypted = TRUE|FALSE,
+#'             kmsKeyId = "string",
+#'             volumeType = "string",
+#'             sizeInGiB = 123,
+#'             snapshotId = "string",
+#'             iops = 123,
+#'             throughput = 123,
+#'             tagSpecifications = list(
+#'               list(
+#'                 resourceType = "volume",
+#'                 tags = list(
+#'                   list(
+#'                     key = "string",
+#'                     value = "string"
+#'                   )
+#'                 ),
+#'                 propagateTags = "TASK_DEFINITION"|"SERVICE"|"NONE"
+#'               )
+#'             ),
+#'             roleArn = "string",
+#'             filesystemType = "ext3"|"ext4"|"xfs"|"ntfs"
+#'           )
+#'         )
+#'       ),
+#'       fargateEphemeralStorage = list(
+#'         kmsKeyId = "string"
+#'       ),
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       vpcLatticeConfigurations = list(
+#'         list(
+#'           roleArn = "string",
+#'           targetGroupArn = "string",
+#'           portName = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   failures = list(
+#'     list(
+#'       arn = "string",
+#'       reason = "string",
+#'       detail = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_service_revisions(
+#'   serviceRevisionArns = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ecs_describe_service_revisions
+#'
+#' @aliases ecs_describe_service_revisions
+ecs_describe_service_revisions <- function(serviceRevisionArns) {
+  op <- new_operation(
+    name = "DescribeServiceRevisions",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ecs$describe_service_revisions_input(serviceRevisionArns = serviceRevisionArns)
+  output <- .ecs$describe_service_revisions_output()
+  config <- get_config()
+  svc <- .ecs$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ecs$operations$describe_service_revisions <- ecs_describe_service_revisions
+
 #' Describes the specified services running in your cluster
 #'
 #' @description
@@ -3937,8 +4305,8 @@ ecs_describe_container_instances <- function(cluster = NULL, containerInstances,
 #'           alarmNames = list(
 #'             "string"
 #'           ),
-#'           enable = TRUE|FALSE,
-#'           rollback = TRUE|FALSE
+#'           rollback = TRUE|FALSE,
+#'           enable = TRUE|FALSE
 #'         )
 #'       ),
 #'       taskSets = list(
@@ -4124,12 +4492,19 @@ ecs_describe_container_instances <- function(cluster = NULL, containerInstances,
 #'                   )
 #'                 ),
 #'                 roleArn = "string",
-#'                 filesystemType = "ext3"|"ext4"|"xfs"
+#'                 filesystemType = "ext3"|"ext4"|"xfs"|"ntfs"
 #'               )
 #'             )
 #'           ),
 #'           fargateEphemeralStorage = list(
 #'             kmsKeyId = "string"
+#'           ),
+#'           vpcLatticeConfigurations = list(
+#'             list(
+#'               roleArn = "string",
+#'               targetGroupArn = "string",
+#'               portName = "string"
+#'             )
 #'           )
 #'         )
 #'       ),
@@ -4183,7 +4558,8 @@ ecs_describe_container_instances <- function(cluster = NULL, containerInstances,
 #'       createdBy = "string",
 #'       enableECSManagedTags = TRUE|FALSE,
 #'       propagateTags = "TASK_DEFINITION"|"SERVICE"|"NONE",
-#'       enableExecuteCommand = TRUE|FALSE
+#'       enableExecuteCommand = TRUE|FALSE,
+#'       availabilityZoneRebalancing = "ENABLED"|"DISABLED"
 #'     )
 #'   ),
 #'   failures = list(
@@ -4378,6 +4754,7 @@ ecs_describe_services <- function(cluster = NULL, services, include = NULL) {
 #'         ),
 #'         startTimeout = 123,
 #'         stopTimeout = 123,
+#'         versionConsistency = "enabled"|"disabled",
 #'         hostname = "string",
 #'         user = "string",
 #'         workingDirectory = "string",
@@ -4771,9 +5148,8 @@ ecs_describe_task_sets <- function(cluster, service, taskSets = NULL, include = 
 #'
 #' @param cluster The short name or full Amazon Resource Name (ARN) of the cluster that
 #' hosts the task or tasks to describe. If you do not specify a cluster,
-#' the default cluster is assumed. This parameter is required if the task
-#' or tasks you are describing were launched in any cluster other than the
-#' default cluster.
+#' the default cluster is assumed. This parameter is required. If you do
+#' not specify a value, the `default` cluster is used.
 #' @param tasks &#91;required&#93; A list of up to 100 task IDs or full ARN entries.
 #' @param include Specifies whether you want to see the resource tags for the task. If
 #' `TAGS` is specified, the tags are included in the response. If this
@@ -5207,17 +5583,6 @@ ecs_execute_command <- function(cluster = NULL, container = NULL, command, inter
 #' )
 #' ```
 #'
-#' @examples
-#' \dontrun{
-#' # In this example, we get the protection status for a single task.
-#' svc$get_task_protection(
-#'   cluster = "test-task-protection",
-#'   tasks = list(
-#'     "b8b1cf532d0e46ba8d44a40d1de16772"
-#'   )
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname ecs_get_task_protection
@@ -5514,7 +5879,7 @@ ecs_list_clusters <- function(nextToken = NULL, maxResults = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "clusterArns"),
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "clusterArns"),
     stream_api = FALSE
   )
   input <- .ecs$list_clusters_input(nextToken = nextToken, maxResults = maxResults)
@@ -5621,7 +5986,7 @@ ecs_list_container_instances <- function(cluster = NULL, filter = NULL, nextToke
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "containerInstanceArns"),
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "containerInstanceArns"),
     stream_api = FALSE
   )
   input <- .ecs$list_container_instances_input(cluster = cluster, filter = filter, nextToken = nextToken, maxResults = maxResults, status = status)
@@ -5633,6 +5998,126 @@ ecs_list_container_instances <- function(cluster = NULL, filter = NULL, nextToke
   return(response)
 }
 .ecs$operations$list_container_instances <- ecs_list_container_instances
+
+#' This operation lists all the service deployments that meet the specified
+#' filter criteria
+#'
+#' @description
+#' This operation lists all the service deployments that meet the specified
+#' filter criteria.
+#' 
+#' A service deployment happens when you release a softwre update for the
+#' service. You route traffic from the running service revisions to the new
+#' service revison and control the number of running tasks.
+#' 
+#' This API returns the values that you use for the request parameters in
+#' [`describe_service_revisions`][ecs_describe_service_revisions].
+#'
+#' @usage
+#' ecs_list_service_deployments(service, cluster, status, createdAt,
+#'   nextToken, maxResults)
+#'
+#' @param service &#91;required&#93; The ARN or name of the service
+#' @param cluster The cluster that hosts the service. This can either be the cluster name
+#' or ARN. Starting April 15, 2023, Amazon Web Services will not onboard
+#' new customers to Amazon Elastic Inference (EI), and will help current
+#' customers migrate their workloads to options that offer better price and
+#' performanceIf you don't specify a cluster, `default` is used.
+#' @param status An optional filter you can use to narrow the results. If you do not
+#' specify a status, then all status values are included in the result.
+#' @param createdAt An optional filter you can use to narrow the results by the service
+#' creation date. If you do not specify a value, the result includes all
+#' services created before the current time. The format is yyyy-MM-dd
+#' HH:mm:ss.SSSSSS.
+#' @param nextToken The `nextToken` value returned from a
+#' [`list_service_deployments`][ecs_list_service_deployments] request
+#' indicating that more results are available to fulfill the request and
+#' further calls are needed. If you provided `maxResults`, it's possible
+#' the number of results is fewer than `maxResults`.
+#' @param maxResults The maximum number of service deployment results that
+#' [`list_service_deployments`][ecs_list_service_deployments] returned in
+#' paginated output. When this parameter is used,
+#' [`list_service_deployments`][ecs_list_service_deployments] only returns
+#' `maxResults` results in a single page along with a `nextToken` response
+#' element. The remaining results of the initial request can be seen by
+#' sending another
+#' [`list_service_deployments`][ecs_list_service_deployments] request with
+#' the returned `nextToken` value. This value can be between 1 and 100. If
+#' this parameter isn't used, then
+#' [`list_service_deployments`][ecs_list_service_deployments] returns up to
+#' 20 results and a `nextToken` value if applicable.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   serviceDeployments = list(
+#'     list(
+#'       serviceDeploymentArn = "string",
+#'       serviceArn = "string",
+#'       clusterArn = "string",
+#'       startedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       finishedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       targetServiceRevisionArn = "string",
+#'       status = "PENDING"|"SUCCESSFUL"|"STOPPED"|"STOP_REQUESTED"|"IN_PROGRESS"|"ROLLBACK_IN_PROGRESS"|"ROLLBACK_SUCCESSFUL"|"ROLLBACK_FAILED",
+#'       statusReason = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_service_deployments(
+#'   service = "string",
+#'   cluster = "string",
+#'   status = list(
+#'     "PENDING"|"SUCCESSFUL"|"STOPPED"|"STOP_REQUESTED"|"IN_PROGRESS"|"ROLLBACK_IN_PROGRESS"|"ROLLBACK_SUCCESSFUL"|"ROLLBACK_FAILED"
+#'   ),
+#'   createdAt = list(
+#'     before = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     after = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   ),
+#'   nextToken = "string",
+#'   maxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ecs_list_service_deployments
+#'
+#' @aliases ecs_list_service_deployments
+ecs_list_service_deployments <- function(service, cluster = NULL, status = NULL, createdAt = NULL, nextToken = NULL, maxResults = NULL) {
+  op <- new_operation(
+    name = "ListServiceDeployments",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ecs$list_service_deployments_input(service = service, cluster = cluster, status = status, createdAt = createdAt, nextToken = nextToken, maxResults = maxResults)
+  output <- .ecs$list_service_deployments_output()
+  config <- get_config()
+  svc <- .ecs$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ecs$operations$list_service_deployments <- ecs_list_service_deployments
 
 #' Returns a list of services
 #'
@@ -5711,7 +6196,7 @@ ecs_list_services <- function(cluster = NULL, nextToken = NULL, maxResults = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "serviceArns"),
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "serviceArns"),
     stream_api = FALSE
   )
   input <- .ecs$list_services_input(cluster = cluster, nextToken = nextToken, maxResults = maxResults, launchType = launchType, schedulingStrategy = schedulingStrategy)
@@ -5972,7 +6457,7 @@ ecs_list_task_definition_families <- function(familyPrefix = NULL, status = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "families"),
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "families"),
     stream_api = FALSE
   )
   input <- .ecs$list_task_definition_families_input(familyPrefix = familyPrefix, status = status, nextToken = nextToken, maxResults = maxResults)
@@ -6078,7 +6563,7 @@ ecs_list_task_definitions <- function(familyPrefix = NULL, status = NULL, sort =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "taskDefinitionArns"),
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "taskDefinitionArns"),
     stream_api = FALSE
   )
   input <- .ecs$list_task_definitions_input(familyPrefix = familyPrefix, status = status, sort = sort, nextToken = nextToken, maxResults = maxResults)
@@ -6208,7 +6693,7 @@ ecs_list_tasks <- function(cluster = NULL, containerInstance = NULL, family = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "taskArns"),
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "taskArns"),
     stream_api = FALSE
   )
   input <- .ecs$list_tasks_input(cluster = cluster, containerInstance = containerInstance, family = family, nextToken = nextToken, maxResults = maxResults, startedBy = startedBy, serviceName = serviceName, desiredStatus = desiredStatus, launchType = launchType)
@@ -6258,6 +6743,12 @@ ecs_list_tasks <- function(cluster = NULL, containerInstance = NULL, family = NU
 #'     You must turn on this setting to use Amazon ECS features such as
 #'     resource tagging.
 #' 
+#' -   `fargateFIPSMode` - When turned on, you can run Fargate workloads in
+#'     a manner that is compliant with Federal Information Processing
+#'     Standard (FIPS-140). For more information, see [Fargate Federal
+#'     Information Processing Standard
+#'     (FIPS-140)](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-fips-compliance.html).
+#' 
 #' -   `containerInstanceLongArnFormat` - When modified, the Amazon
 #'     Resource Name (ARN) and resource ID format of the resource type for
 #'     a specified user, role, or the root user for an account is affected.
@@ -6276,13 +6767,26 @@ ecs_list_tasks <- function(cluster = NULL, containerInstance = NULL, family = NU
 #'     Trunking](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/container-instance-eni.html)
 #'     in the *Amazon Elastic Container Service Developer Guide*.
 #' 
-#' -   `containerInsights` - When modified, the default setting indicating
-#'     whether Amazon Web Services CloudWatch Container Insights is turned
-#'     on for your clusters is changed. If `containerInsights` is turned
-#'     on, any new clusters that are created will have Container Insights
-#'     turned on unless you disable it during cluster creation. For more
-#'     information, see [CloudWatch Container
-#'     Insights](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cloudwatch-container-insights.html)
+#' -   `containerInsights` - Container Insights with enhanced observability
+#'     provides all the Container Insights metrics, plus additional task
+#'     and container metrics. This version supports enhanced observability
+#'     for Amazon ECS clusters using the Amazon EC2 and Fargate launch
+#'     types. After you configure Container Insights with enhanced
+#'     observability on Amazon ECS, Container Insights auto-collects
+#'     detailed infrastructure telemetry from the cluster level down to the
+#'     container level in your environment and displays these critical
+#'     performance data in curated dashboards removing the heavy lifting in
+#'     observability set-up.
+#' 
+#'     To use Container Insights with enhanced observability, set the
+#'     `containerInsights` account setting to `enhanced`.
+#' 
+#'     To use Container Insights, set the `containerInsights` account
+#'     setting to `enabled`.
+#' 
+#'     For more information, see [Monitor Amazon ECS containers using
+#'     Container Insights with enhanced
+#'     observability](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cloudwatch-container-insights.html)
 #'     in the *Amazon Elastic Container Service Developer Guide*.
 #' 
 #' -   `dualStackIPv6` - When turned on, when using a VPC in dual stack
@@ -6293,9 +6797,6 @@ ecs_list_tasks <- function(cluster = NULL, containerInstance = NULL, family = NU
 #'     For more information on using IPv6 with tasks launched on Fargate,
 #'     see [Using a VPC in dual-stack
 #'     mode](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/fargate-task-networking.html#fargate-task-networking-vpc-dual-stack).
-#' 
-#' -   `fargateFIPSMode` - If you specify `fargateFIPSMode`, Fargate FIPS
-#'     140 compliance is affected.
 #' 
 #' -   `fargateTaskRetirementWaitPeriod` - When Amazon Web Services
 #'     determines that a security or infrastructure update is needed for an
@@ -6326,7 +6827,7 @@ ecs_list_tasks <- function(cluster = NULL, containerInstance = NULL, family = NU
 #'     with Amazon ECS Runtime
 #'     Monitoring](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-guard-duty-integration.html).
 #' @param value &#91;required&#93; The account setting value for the specified principal ARN. Accepted
-#' values are `enabled`, `disabled`, `on`, and `off`.
+#' values are `enabled`, `disabled`, `enhanced`, `on`, and `off`.
 #' 
 #' When you specify `fargateTaskRetirementWaitPeriod` for the `name`, the
 #' following are the valid values:
@@ -6471,13 +6972,26 @@ ecs_put_account_setting <- function(name, value, principalArn = NULL) {
 #'     Trunking](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/container-instance-eni.html)
 #'     in the *Amazon Elastic Container Service Developer Guide*.
 #' 
-#' -   `containerInsights` - When modified, the default setting indicating
-#'     whether Amazon Web Services CloudWatch Container Insights is turned
-#'     on for your clusters is changed. If `containerInsights` is turned
-#'     on, any new clusters that are created will have Container Insights
-#'     turned on unless you disable it during cluster creation. For more
-#'     information, see [CloudWatch Container
-#'     Insights](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cloudwatch-container-insights.html)
+#' -   `containerInsights` - Container Insights with enhanced observability
+#'     provides all the Container Insights metrics, plus additional task
+#'     and container metrics. This version supports enhanced observability
+#'     for Amazon ECS clusters using the Amazon EC2 and Fargate launch
+#'     types. After you configure Container Insights with enhanced
+#'     observability on Amazon ECS, Container Insights auto-collects
+#'     detailed infrastructure telemetry from the cluster level down to the
+#'     container level in your environment and displays these critical
+#'     performance data in curated dashboards removing the heavy lifting in
+#'     observability set-up.
+#' 
+#'     To use Container Insights with enhanced observability, set the
+#'     `containerInsights` account setting to `enhanced`.
+#' 
+#'     To use Container Insights, set the `containerInsights` account
+#'     setting to `enabled`.
+#' 
+#'     For more information, see [Monitor Amazon ECS containers using
+#'     Container Insights with enhanced
+#'     observability](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cloudwatch-container-insights.html)
 #'     in the *Amazon Elastic Container Service Developer Guide*.
 #' 
 #' -   `dualStackIPv6` - When turned on, when using a VPC in dual stack
@@ -6521,7 +7035,7 @@ ecs_put_account_setting <- function(name, value, principalArn = NULL) {
 #'     with Amazon ECS Runtime
 #'     Monitoring](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-guard-duty-integration.html).
 #' @param value &#91;required&#93; The account setting value for the specified principal ARN. Accepted
-#' values are `enabled`, `disabled`, `on`, and `off`.
+#' values are `enabled`, `disabled`, `on`, `enhanced`, and `off`.
 #' 
 #' When you specify `fargateTaskRetirementWaitPeriod` for the `name`, the
 #' following are the valid values:
@@ -7489,6 +8003,7 @@ ecs_register_container_instance <- function(cluster = NULL, instanceIdentityDocu
 #'         ),
 #'         startTimeout = 123,
 #'         stopTimeout = 123,
+#'         versionConsistency = "enabled"|"disabled",
 #'         hostname = "string",
 #'         user = "string",
 #'         workingDirectory = "string",
@@ -7789,6 +8304,7 @@ ecs_register_container_instance <- function(cluster = NULL, instanceIdentityDocu
 #'       ),
 #'       startTimeout = 123,
 #'       stopTimeout = 123,
+#'       versionConsistency = "enabled"|"disabled",
 #'       hostname = "string",
 #'       user = "string",
 #'       workingDirectory = "string",
@@ -8006,6 +8522,8 @@ ecs_register_task_definition <- function(family, taskRoleArn = NULL, executionRo
 #' specified, authorization will occur using the latest revision of a task
 #' definition.
 #' 
+#' Amazon Elastic Inference (EI) is no longer available to customers.
+#' 
 #' You can allow Amazon ECS to place tasks for you, or you can customize
 #' how Amazon ECS places tasks using placement constraints and placement
 #' strategies. For more information, see [Scheduling
@@ -8014,15 +8532,6 @@ ecs_register_task_definition <- function(family, taskRoleArn = NULL, executionRo
 #' 
 #' Alternatively, you can use [`start_task`][ecs_start_task] to use your
 #' own scheduler or place tasks manually on specific container instances.
-#' 
-#' Starting April 15, 2023, Amazon Web Services will not onboard new
-#' customers to Amazon Elastic Inference (EI), and will help current
-#' customers migrate their workloads to options that offer better price and
-#' performance. After April 15, 2023, new customers will not be able to
-#' launch instances with Amazon EI accelerators in Amazon SageMaker, Amazon
-#' ECS, or Amazon EC2. However, customers who have used Amazon EI at least
-#' once during the past 30-day period are considered current customers and
-#' will be able to continue using the service.
 #' 
 #' You can attach Amazon EBS volumes to Amazon ECS tasks by configuring the
 #' volume when creating or updating a service. For more infomation, see
@@ -8069,7 +8578,7 @@ ecs_register_task_definition <- function(family, taskRoleArn = NULL, executionRo
 #' When you use cluster auto scaling, you must specify
 #' `capacityProviderStrategy` and not `launchType`.
 #' 
-#' A capacity provider strategy may contain a maximum of 6 capacity
+#' A capacity provider strategy can contain a maximum of 20 capacity
 #' providers.
 #' @param cluster The short name or full Amazon Resource Name (ARN) of the cluster to run
 #' your task on. If you do not specify a cluster, the default cluster is
@@ -8148,8 +8657,8 @@ ecs_register_task_definition <- function(family, taskRoleArn = NULL, executionRo
 #' 
 #' An error will be received if you specify the `SERVICE` option when
 #' running a task.
-#' @param referenceId The reference ID to use for the task. The reference ID can have a
-#' maximum length of 1024 characters.
+#' @param referenceId This parameter is only used by Amazon ECS. It is not intended for use by
+#' customers.
 #' @param startedBy An optional tag specified when a task is started. For example, if you
 #' automatically trigger a task to run a batch process job, you could apply
 #' a unique identifier for that job to your task with the `startedBy`
@@ -8536,7 +9045,7 @@ ecs_register_task_definition <- function(family, taskRoleArn = NULL, executionRo
 #'         terminationPolicy = list(
 #'           deleteOnTermination = TRUE|FALSE
 #'         ),
-#'         filesystemType = "ext3"|"ext4"|"xfs"
+#'         filesystemType = "ext3"|"ext4"|"xfs"|"ntfs"
 #'       )
 #'     )
 #'   )
@@ -8588,14 +9097,7 @@ ecs_run_task <- function(capacityProviderStrategy = NULL, cluster = NULL, count 
 #' specified, authorization will occur using the latest revision of a task
 #' definition.
 #' 
-#' Starting April 15, 2023, Amazon Web Services will not onboard new
-#' customers to Amazon Elastic Inference (EI), and will help current
-#' customers migrate their workloads to options that offer better price and
-#' performance. After April 15, 2023, new customers will not be able to
-#' launch instances with Amazon EI accelerators in Amazon SageMaker, Amazon
-#' ECS, or Amazon EC2. However, customers who have used Amazon EI at least
-#' once during the past 30-day period are considered current customers and
-#' will be able to continue using the service.
+#' Amazon Elastic Inference (EI) is no longer available to customers.
 #' 
 #' Alternatively, you can use[`run_task`][ecs_run_task] to place tasks for
 #' you. For more information, see [Scheduling
@@ -8646,7 +9148,8 @@ ecs_run_task <- function(capacityProviderStrategy = NULL, cluster = NULL, count 
 #' @param propagateTags Specifies whether to propagate the tags from the task definition or the
 #' service to the task. If no value is specified, the tags aren't
 #' propagated.
-#' @param referenceId The reference ID to use for the task.
+#' @param referenceId This parameter is only used by Amazon ECS. It is not intended for use by
+#' customers.
 #' @param startedBy An optional tag specified when a task is started. For example, if you
 #' automatically trigger a task to run a batch process job, you could apply
 #' a unique identifier for that job to your task with the `startedBy`
@@ -8990,7 +9493,7 @@ ecs_run_task <- function(capacityProviderStrategy = NULL, cluster = NULL, count 
 #'         terminationPolicy = list(
 #'           deleteOnTermination = TRUE|FALSE
 #'         ),
-#'         filesystemType = "ext3"|"ext4"|"xfs"
+#'         filesystemType = "ext3"|"ext4"|"xfs"|"ntfs"
 #'       )
 #'     )
 #'   )
@@ -10595,11 +11098,13 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
 #'
 #' @usage
 #' ecs_update_service(cluster, service, desiredCount, taskDefinition,
-#'   capacityProviderStrategy, deploymentConfiguration, networkConfiguration,
-#'   placementConstraints, placementStrategy, platformVersion,
-#'   forceNewDeployment, healthCheckGracePeriodSeconds, enableExecuteCommand,
+#'   capacityProviderStrategy, deploymentConfiguration,
+#'   availabilityZoneRebalancing, networkConfiguration, placementConstraints,
+#'   placementStrategy, platformVersion, forceNewDeployment,
+#'   healthCheckGracePeriodSeconds, enableExecuteCommand,
 #'   enableECSManagedTags, loadBalancers, propagateTags, serviceRegistries,
-#'   serviceConnectConfiguration, volumeConfigurations)
+#'   serviceConnectConfiguration, volumeConfigurations,
+#'   vpcLatticeConfigurations)
 #'
 #' @param cluster The short name or full Amazon Resource Name (ARN) of the cluster that
 #' your service runs on. If you do not specify a cluster, the default
@@ -10647,6 +11152,12 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
 #' a cluster after the cluster is created.
 #' @param deploymentConfiguration Optional deployment parameters that control how many tasks run during
 #' the deployment and the ordering of stopping and starting tasks.
+#' @param availabilityZoneRebalancing Indicates whether to use Availability Zone rebalancing for the service.
+#' 
+#' For more information, see [Balancing an Amazon ECS service across
+#' Availability
+#' Zones](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-rebalancing.html)
+#' in the *Amazon Elastic Container Service Developer Guide*.
 #' @param networkConfiguration An object representing the network configuration for the service.
 #' @param placementConstraints An array of task placement constraint objects to update the service to
 #' use. If no value is specified, the existing placement constraints for
@@ -10677,15 +11188,18 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
 #' image/tag combination (`my_image:latest`) or to roll Fargate tasks onto
 #' a newer platform version.
 #' @param healthCheckGracePeriodSeconds The period of time, in seconds, that the Amazon ECS service scheduler
-#' ignores unhealthy Elastic Load Balancing target health checks after a
-#' task has first started. This is only valid if your service is configured
-#' to use a load balancer. If your service's tasks take a while to start
-#' and respond to Elastic Load Balancing health checks, you can specify a
-#' health check grace period of up to 2,147,483,647 seconds. During that
-#' time, the Amazon ECS service scheduler ignores the Elastic Load
-#' Balancing health check status. This grace period can prevent the ECS
-#' service scheduler from marking tasks as unhealthy and stopping them
-#' before they have time to come up.
+#' ignores unhealthy Elastic Load Balancing, VPC Lattice, and container
+#' health checks after a task has first started. If you don't specify a
+#' health check grace period value, the default value of `0` is used. If
+#' you don't use any of the health checks, then
+#' `healthCheckGracePeriodSeconds` is unused.
+#' 
+#' If your service's tasks take a while to start and respond to health
+#' checks, you can specify a health check grace period of up to
+#' 2,147,483,647 seconds (about 69 years). During that time, the Amazon ECS
+#' service scheduler ignores health check status. This grace period can
+#' prevent the service scheduler from marking tasks as unhealthy and
+#' stopping them before they have time to come up.
 #' @param enableExecuteCommand If `true`, this enables execute command functionality on all task
 #' containers.
 #' 
@@ -10768,6 +11282,8 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
 #' If set to null, no new deployment is triggered. Otherwise, if this
 #' configuration differs from the existing one, it triggers a new
 #' deployment.
+#' @param vpcLatticeConfigurations An object representing the VPC Lattice configuration for the service
+#' being updated.
 #'
 #' @return
 #' A list with the following syntax:
@@ -10819,8 +11335,8 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
 #'         alarmNames = list(
 #'           "string"
 #'         ),
-#'         enable = TRUE|FALSE,
-#'         rollback = TRUE|FALSE
+#'         rollback = TRUE|FALSE,
+#'         enable = TRUE|FALSE
 #'       )
 #'     ),
 #'     taskSets = list(
@@ -11006,12 +11522,19 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
 #'                 )
 #'               ),
 #'               roleArn = "string",
-#'               filesystemType = "ext3"|"ext4"|"xfs"
+#'               filesystemType = "ext3"|"ext4"|"xfs"|"ntfs"
 #'             )
 #'           )
 #'         ),
 #'         fargateEphemeralStorage = list(
 #'           kmsKeyId = "string"
+#'         ),
+#'         vpcLatticeConfigurations = list(
+#'           list(
+#'             roleArn = "string",
+#'             targetGroupArn = "string",
+#'             portName = "string"
+#'           )
 #'         )
 #'       )
 #'     ),
@@ -11065,7 +11588,8 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
 #'     createdBy = "string",
 #'     enableECSManagedTags = TRUE|FALSE,
 #'     propagateTags = "TASK_DEFINITION"|"SERVICE"|"NONE",
-#'     enableExecuteCommand = TRUE|FALSE
+#'     enableExecuteCommand = TRUE|FALSE,
+#'     availabilityZoneRebalancing = "ENABLED"|"DISABLED"
 #'   )
 #' )
 #' ```
@@ -11095,10 +11619,11 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
 #'       alarmNames = list(
 #'         "string"
 #'       ),
-#'       enable = TRUE|FALSE,
-#'       rollback = TRUE|FALSE
+#'       rollback = TRUE|FALSE,
+#'       enable = TRUE|FALSE
 #'     )
 #'   ),
+#'   availabilityZoneRebalancing = "ENABLED"|"DISABLED",
 #'   networkConfiguration = list(
 #'     awsvpcConfiguration = list(
 #'       subnets = list(
@@ -11208,8 +11733,15 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
 #'           )
 #'         ),
 #'         roleArn = "string",
-#'         filesystemType = "ext3"|"ext4"|"xfs"
+#'         filesystemType = "ext3"|"ext4"|"xfs"|"ntfs"
 #'       )
+#'     )
+#'   ),
+#'   vpcLatticeConfigurations = list(
+#'     list(
+#'       roleArn = "string",
+#'       targetGroupArn = "string",
+#'       portName = "string"
 #'     )
 #'   )
 #' )
@@ -11237,7 +11769,7 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
 #' @rdname ecs_update_service
 #'
 #' @aliases ecs_update_service
-ecs_update_service <- function(cluster = NULL, service, desiredCount = NULL, taskDefinition = NULL, capacityProviderStrategy = NULL, deploymentConfiguration = NULL, networkConfiguration = NULL, placementConstraints = NULL, placementStrategy = NULL, platformVersion = NULL, forceNewDeployment = NULL, healthCheckGracePeriodSeconds = NULL, enableExecuteCommand = NULL, enableECSManagedTags = NULL, loadBalancers = NULL, propagateTags = NULL, serviceRegistries = NULL, serviceConnectConfiguration = NULL, volumeConfigurations = NULL) {
+ecs_update_service <- function(cluster = NULL, service, desiredCount = NULL, taskDefinition = NULL, capacityProviderStrategy = NULL, deploymentConfiguration = NULL, availabilityZoneRebalancing = NULL, networkConfiguration = NULL, placementConstraints = NULL, placementStrategy = NULL, platformVersion = NULL, forceNewDeployment = NULL, healthCheckGracePeriodSeconds = NULL, enableExecuteCommand = NULL, enableECSManagedTags = NULL, loadBalancers = NULL, propagateTags = NULL, serviceRegistries = NULL, serviceConnectConfiguration = NULL, volumeConfigurations = NULL, vpcLatticeConfigurations = NULL) {
   op <- new_operation(
     name = "UpdateService",
     http_method = "POST",
@@ -11246,7 +11778,7 @@ ecs_update_service <- function(cluster = NULL, service, desiredCount = NULL, tas
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ecs$update_service_input(cluster = cluster, service = service, desiredCount = desiredCount, taskDefinition = taskDefinition, capacityProviderStrategy = capacityProviderStrategy, deploymentConfiguration = deploymentConfiguration, networkConfiguration = networkConfiguration, placementConstraints = placementConstraints, placementStrategy = placementStrategy, platformVersion = platformVersion, forceNewDeployment = forceNewDeployment, healthCheckGracePeriodSeconds = healthCheckGracePeriodSeconds, enableExecuteCommand = enableExecuteCommand, enableECSManagedTags = enableECSManagedTags, loadBalancers = loadBalancers, propagateTags = propagateTags, serviceRegistries = serviceRegistries, serviceConnectConfiguration = serviceConnectConfiguration, volumeConfigurations = volumeConfigurations)
+  input <- .ecs$update_service_input(cluster = cluster, service = service, desiredCount = desiredCount, taskDefinition = taskDefinition, capacityProviderStrategy = capacityProviderStrategy, deploymentConfiguration = deploymentConfiguration, availabilityZoneRebalancing = availabilityZoneRebalancing, networkConfiguration = networkConfiguration, placementConstraints = placementConstraints, placementStrategy = placementStrategy, platformVersion = platformVersion, forceNewDeployment = forceNewDeployment, healthCheckGracePeriodSeconds = healthCheckGracePeriodSeconds, enableExecuteCommand = enableExecuteCommand, enableECSManagedTags = enableECSManagedTags, loadBalancers = loadBalancers, propagateTags = propagateTags, serviceRegistries = serviceRegistries, serviceConnectConfiguration = serviceConnectConfiguration, volumeConfigurations = volumeConfigurations, vpcLatticeConfigurations = vpcLatticeConfigurations)
   output <- .ecs$update_service_output()
   config <- get_config()
   svc <- .ecs$service(config, op)
@@ -11478,39 +12010,6 @@ ecs_update_service_primary_task_set <- function(cluster, service, primaryTaskSet
 #'   expiresInMinutes = 123
 #' )
 #' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example enables scale-in protection for a task for 60 minutes.
-#' svc$update_task_protection(
-#'   cluster = "test-task-protection",
-#'   expiresInMinutes = 60L,
-#'   protectionEnabled = TRUE,
-#'   tasks = list(
-#'     "b8b1cf532d0e46ba8d44a40d1de16772"
-#'   )
-#' )
-#' 
-#' # This example enables task scale-in protection for a task, without
-#' # specifying the expiresInMinutes parameter, for the default protection
-#' # period of 120 minutes.
-#' svc$update_task_protection(
-#'   cluster = "test-task-protection",
-#'   protectionEnabled = TRUE,
-#'   tasks = list(
-#'     "b8b1cf532d0e46ba8d44a40d1de16772"
-#'   )
-#' )
-#' 
-#' # This example removes scale-in protection for a task.
-#' svc$update_task_protection(
-#'   cluster = "test-task-protection",
-#'   protectionEnabled = FALSE,
-#'   tasks = list(
-#'     "b8b1cf532d0e46ba8d44a40d1de16772"
-#'   )
-#' )
-#' }
 #'
 #' @keywords internal
 #'

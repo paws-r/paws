@@ -18,6 +18,7 @@ lambda_create_event_source_mapping(
   MaximumRecordAgeInSeconds = NULL,
   BisectBatchOnFunctionError = NULL,
   MaximumRetryAttempts = NULL,
+  Tags = NULL,
   TumblingWindowInSeconds = NULL,
   Topics = NULL,
   Queues = NULL,
@@ -28,7 +29,9 @@ lambda_create_event_source_mapping(
   SelfManagedKafkaEventSourceConfig = NULL,
   ScalingConfig = NULL,
   DocumentDBEventSourceConfig = NULL,
-  KMSKeyArn = NULL
+  KMSKeyArn = NULL,
+  MetricsConfig = NULL,
+  ProvisionedPollerConfig = NULL
 )
 }
 \arguments{
@@ -126,6 +129,8 @@ split the batch in two and retry.}
 number of retries. The default value is infinite (-1). When set to
 infinite (-1), failed records are retried until the record expires.}
 
+\item{Tags}{A list of tags to apply to the event source mapping.}
+
 \item{TumblingWindowInSeconds}{(Kinesis and DynamoDB Streams only) The duration in seconds of a
 processing window for DynamoDB and Kinesis Streams event sources. A
 value of 0 seconds indicates no tumbling window.}
@@ -157,6 +162,13 @@ more information, see \href{https://docs.aws.amazon.com/lambda/latest/dg/with-sq
 Lambda uses to encrypt your function's \href{https://docs.aws.amazon.com/lambda/latest/dg/invocation-eventfiltering.html#filtering-basics}{filter criteria}.
 By default, Lambda does not encrypt your filter criteria object. Specify
 this property to encrypt data using your own customer managed key.}
+
+\item{MetricsConfig}{The metrics configuration for your event source. For more information,
+see \href{https://docs.aws.amazon.com/lambda/latest/dg/monitoring-metrics-types.html#event-source-mapping-metrics}{Event source mapping metrics}.}
+
+\item{ProvisionedPollerConfig}{(Amazon MSK and self-managed Apache Kafka only) The Provisioned Mode
+configuration for the event source. For more information, see
+\href{https://docs.aws.amazon.com/lambda/latest/dg/invocation-eventsourcemapping.html#invocation-eventsourcemapping-provisioned-mode}{Provisioned Mode}.}
 }
 \description{
 Creates a mapping between an event source and an Lambda function. Lambda reads items from the event source and invokes the function.

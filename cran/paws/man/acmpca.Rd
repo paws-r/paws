@@ -113,7 +113,7 @@ account and visit the Service Quotas console.
 
 \tabular{ll}{
 \link[paws.security.identity:acmpca_create_certificate_authority]{create_certificate_authority} \tab Creates a root or subordinate private certificate authority (CA)\cr
-\link[paws.security.identity:acmpca_create_certificate_authority_audit_report]{create_certificate_authority_audit_report} \tab Creates an audit report that lists every time that your CA private key is used\cr
+\link[paws.security.identity:acmpca_create_certificate_authority_audit_report]{create_certificate_authority_audit_report} \tab Creates an audit report that lists every time that your CA private key is used to issue a certificate\cr
 \link[paws.security.identity:acmpca_create_permission]{create_permission} \tab Grants one or more permissions on a private CA to the Certificate Manager (ACM) service principal (acm\cr
 \link[paws.security.identity:acmpca_delete_certificate_authority]{delete_certificate_authority} \tab Deletes a private certificate authority (CA)\cr
 \link[paws.security.identity:acmpca_delete_permission]{delete_permission} \tab Revokes permissions on a private CA granted to the Certificate Manager (ACM) service principal (acm\cr

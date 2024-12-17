@@ -106,6 +106,7 @@ Services Lake Formation.
 \link[paws.analytics:datazone_create_asset_filter]{create_asset_filter} \tab Creates a data asset filter\cr
 \link[paws.analytics:datazone_create_asset_revision]{create_asset_revision} \tab Creates a revision of the asset\cr
 \link[paws.analytics:datazone_create_asset_type]{create_asset_type} \tab Creates a custom asset type\cr
+\link[paws.analytics:datazone_create_connection]{create_connection} \tab Creates a new connection\cr
 \link[paws.analytics:datazone_create_data_product]{create_data_product} \tab Creates a data product\cr
 \link[paws.analytics:datazone_create_data_product_revision]{create_data_product_revision} \tab Creates a data product revision\cr
 \link[paws.analytics:datazone_create_data_source]{create_data_source} \tab Creates an Amazon DataZone data source\cr
@@ -121,6 +122,8 @@ Services Lake Formation.
 \link[paws.analytics:datazone_create_listing_change_set]{create_listing_change_set} \tab Publishes a listing (a record of an asset at a given time) or removes a listing from the catalog\cr
 \link[paws.analytics:datazone_create_project]{create_project} \tab Creates an Amazon DataZone project\cr
 \link[paws.analytics:datazone_create_project_membership]{create_project_membership} \tab Creates a project membership in Amazon DataZone\cr
+\link[paws.analytics:datazone_create_project_profile]{create_project_profile} \tab Creates a project profile\cr
+\link[paws.analytics:datazone_create_rule]{create_rule} \tab Creates a rule in Amazon DataZone\cr
 \link[paws.analytics:datazone_create_subscription_grant]{create_subscription_grant} \tab Creates a subsscription grant in Amazon DataZone\cr
 \link[paws.analytics:datazone_create_subscription_request]{create_subscription_request} \tab Creates a subscription request in Amazon DataZone\cr
 \link[paws.analytics:datazone_create_subscription_target]{create_subscription_target} \tab Creates a subscription target in Amazon DataZone\cr
@@ -128,6 +131,7 @@ Services Lake Formation.
 \link[paws.analytics:datazone_delete_asset]{delete_asset} \tab Deletes an asset in Amazon DataZone\cr
 \link[paws.analytics:datazone_delete_asset_filter]{delete_asset_filter} \tab Deletes an asset filter\cr
 \link[paws.analytics:datazone_delete_asset_type]{delete_asset_type} \tab Deletes an asset type in Amazon DataZone\cr
+\link[paws.analytics:datazone_delete_connection]{delete_connection} \tab Deletes and connection\cr
 \link[paws.analytics:datazone_delete_data_product]{delete_data_product} \tab Deletes a data product in Amazon DataZone\cr
 \link[paws.analytics:datazone_delete_data_source]{delete_data_source} \tab Deletes a data source in Amazon DataZone\cr
 \link[paws.analytics:datazone_delete_domain]{delete_domain} \tab Deletes a Amazon DataZone domain\cr
@@ -142,6 +146,8 @@ Services Lake Formation.
 \link[paws.analytics:datazone_delete_listing]{delete_listing} \tab Deletes a listing (a record of an asset at a given time)\cr
 \link[paws.analytics:datazone_delete_project]{delete_project} \tab Deletes a project in Amazon DataZone\cr
 \link[paws.analytics:datazone_delete_project_membership]{delete_project_membership} \tab Deletes project membership in Amazon DataZone\cr
+\link[paws.analytics:datazone_delete_project_profile]{delete_project_profile} \tab Deletes a project profile\cr
+\link[paws.analytics:datazone_delete_rule]{delete_rule} \tab Deletes a rule in Amazon DataZone\cr
 \link[paws.analytics:datazone_delete_subscription_grant]{delete_subscription_grant} \tab Deletes and subscription grant in Amazon DataZone\cr
 \link[paws.analytics:datazone_delete_subscription_request]{delete_subscription_request} \tab Deletes a subscription request in Amazon DataZone\cr
 \link[paws.analytics:datazone_delete_subscription_target]{delete_subscription_target} \tab Deletes a subscription target in Amazon DataZone\cr
@@ -150,6 +156,7 @@ Services Lake Formation.
 \link[paws.analytics:datazone_get_asset]{get_asset} \tab Gets an Amazon DataZone asset\cr
 \link[paws.analytics:datazone_get_asset_filter]{get_asset_filter} \tab Gets an asset filter\cr
 \link[paws.analytics:datazone_get_asset_type]{get_asset_type} \tab Gets an Amazon DataZone asset type\cr
+\link[paws.analytics:datazone_get_connection]{get_connection} \tab Gets a connection\cr
 \link[paws.analytics:datazone_get_data_product]{get_data_product} \tab Gets the data product\cr
 \link[paws.analytics:datazone_get_data_source]{get_data_source} \tab Gets an Amazon DataZone data source\cr
 \link[paws.analytics:datazone_get_data_source_run]{get_data_source_run} \tab Gets an Amazon DataZone data source run\cr
@@ -166,10 +173,14 @@ Services Lake Formation.
 \link[paws.analytics:datazone_get_glossary_term]{get_glossary_term} \tab Gets a business glossary term in Amazon DataZone\cr
 \link[paws.analytics:datazone_get_group_profile]{get_group_profile} \tab Gets a group profile in Amazon DataZone\cr
 \link[paws.analytics:datazone_get_iam_portal_login_url]{get_iam_portal_login_url} \tab Gets the data portal URL for the specified Amazon DataZone domain\cr
+\link[paws.analytics:datazone_get_job_run]{get_job_run} \tab The details of the job run\cr
+\link[paws.analytics:datazone_get_lineage_event]{get_lineage_event} \tab Describes the lineage event\cr
 \link[paws.analytics:datazone_get_lineage_node]{get_lineage_node} \tab Gets the data lineage node\cr
 \link[paws.analytics:datazone_get_listing]{get_listing} \tab Gets a listing (a record of an asset at a given time)\cr
 \link[paws.analytics:datazone_get_metadata_generation_run]{get_metadata_generation_run} \tab Gets a metadata generation run in Amazon DataZone\cr
 \link[paws.analytics:datazone_get_project]{get_project} \tab Gets a project in Amazon DataZone\cr
+\link[paws.analytics:datazone_get_project_profile]{get_project_profile} \tab The details of the project profile\cr
+\link[paws.analytics:datazone_get_rule]{get_rule} \tab Gets the details of a rule in Amazon DataZone\cr
 \link[paws.analytics:datazone_get_subscription]{get_subscription} \tab Gets a subscription in Amazon DataZone\cr
 \link[paws.analytics:datazone_get_subscription_grant]{get_subscription_grant} \tab Gets the subscription grant in Amazon DataZone\cr
 \link[paws.analytics:datazone_get_subscription_request_details]{get_subscription_request_details} \tab Gets the details of the specified subscription request\cr
@@ -178,6 +189,7 @@ Services Lake Formation.
 \link[paws.analytics:datazone_get_user_profile]{get_user_profile} \tab Gets a user profile in Amazon DataZone\cr
 \link[paws.analytics:datazone_list_asset_filters]{list_asset_filters} \tab Lists asset filters\cr
 \link[paws.analytics:datazone_list_asset_revisions]{list_asset_revisions} \tab Lists the revisions for the asset\cr
+\link[paws.analytics:datazone_list_connections]{list_connections} \tab Lists connections\cr
 \link[paws.analytics:datazone_list_data_product_revisions]{list_data_product_revisions} \tab Lists data product revisions\cr
 \link[paws.analytics:datazone_list_data_source_run_activities]{list_data_source_run_activities} \tab Lists data source run activities\cr
 \link[paws.analytics:datazone_list_data_source_runs]{list_data_source_runs} \tab Lists data source runs in Amazon DataZone\cr
@@ -190,12 +202,16 @@ Services Lake Formation.
 \link[paws.analytics:datazone_list_environment_blueprints]{list_environment_blueprints} \tab Lists blueprints in an Amazon DataZone environment\cr
 \link[paws.analytics:datazone_list_environment_profiles]{list_environment_profiles} \tab Lists Amazon DataZone environment profiles\cr
 \link[paws.analytics:datazone_list_environments]{list_environments} \tab Lists Amazon DataZone environments\cr
+\link[paws.analytics:datazone_list_job_runs]{list_job_runs} \tab Lists job runs\cr
+\link[paws.analytics:datazone_list_lineage_events]{list_lineage_events} \tab Lists lineage events\cr
 \link[paws.analytics:datazone_list_lineage_node_history]{list_lineage_node_history} \tab Lists the history of the specified data lineage node\cr
 \link[paws.analytics:datazone_list_metadata_generation_runs]{list_metadata_generation_runs} \tab Lists all metadata generation runs\cr
 \link[paws.analytics:datazone_list_notifications]{list_notifications} \tab Lists all Amazon DataZone notifications\cr
 \link[paws.analytics:datazone_list_policy_grants]{list_policy_grants} \tab Lists policy grants\cr
 \link[paws.analytics:datazone_list_project_memberships]{list_project_memberships} \tab Lists all members of the specified project\cr
+\link[paws.analytics:datazone_list_project_profiles]{list_project_profiles} \tab Lists project profiles\cr
 \link[paws.analytics:datazone_list_projects]{list_projects} \tab Lists Amazon DataZone projects\cr
+\link[paws.analytics:datazone_list_rules]{list_rules} \tab Lists existing rules\cr
 \link[paws.analytics:datazone_list_subscription_grants]{list_subscription_grants} \tab Lists subscription grants\cr
 \link[paws.analytics:datazone_list_subscription_requests]{list_subscription_requests} \tab Lists Amazon DataZone subscription requests\cr
 \link[paws.analytics:datazone_list_subscriptions]{list_subscriptions} \tab Lists subscriptions in Amazon DataZone\cr
@@ -220,6 +236,7 @@ Services Lake Formation.
 \link[paws.analytics:datazone_tag_resource]{tag_resource} \tab Tags a resource in Amazon DataZone\cr
 \link[paws.analytics:datazone_untag_resource]{untag_resource} \tab Untags a resource in Amazon DataZone\cr
 \link[paws.analytics:datazone_update_asset_filter]{update_asset_filter} \tab Updates an asset filter\cr
+\link[paws.analytics:datazone_update_connection]{update_connection} \tab Updates a connection\cr
 \link[paws.analytics:datazone_update_data_source]{update_data_source} \tab Updates the specified data source in Amazon DataZone\cr
 \link[paws.analytics:datazone_update_domain]{update_domain} \tab Updates a Amazon DataZone domain\cr
 \link[paws.analytics:datazone_update_domain_unit]{update_domain_unit} \tab Updates the domain unit\cr
@@ -230,6 +247,8 @@ Services Lake Formation.
 \link[paws.analytics:datazone_update_glossary_term]{update_glossary_term} \tab Updates a business glossary term in Amazon DataZone\cr
 \link[paws.analytics:datazone_update_group_profile]{update_group_profile} \tab Updates the specified group profile in Amazon DataZone\cr
 \link[paws.analytics:datazone_update_project]{update_project} \tab Updates the specified project in Amazon DataZone\cr
+\link[paws.analytics:datazone_update_project_profile]{update_project_profile} \tab Updates a project profile\cr
+\link[paws.analytics:datazone_update_rule]{update_rule} \tab Updates a rule\cr
 \link[paws.analytics:datazone_update_subscription_grant_status]{update_subscription_grant_status} \tab Updates the status of the specified subscription grant status in Amazon DataZone\cr
 \link[paws.analytics:datazone_update_subscription_request]{update_subscription_request} \tab Updates a specified subscription request in Amazon DataZone\cr
 \link[paws.analytics:datazone_update_subscription_target]{update_subscription_target} \tab Updates the specified subscription target in Amazon DataZone\cr

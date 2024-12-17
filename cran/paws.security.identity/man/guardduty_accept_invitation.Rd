@@ -8,7 +8,11 @@ account}
 guardduty_accept_invitation(DetectorId, MasterId, InvitationId)
 }
 \arguments{
-\item{DetectorId}{[required] The unique ID of the detector of the GuardDuty member account.}
+\item{DetectorId}{[required] The unique ID of the detector of the GuardDuty member account.
+
+To find the \code{detectorId} in the current Region, see the Settings page in
+the GuardDuty console, or run the
+\code{\link[=guardduty_list_detectors]{list_detectors}} API.}
 
 \item{MasterId}{[required] The account ID of the GuardDuty administrator account whose invitation
 you're accepting.}

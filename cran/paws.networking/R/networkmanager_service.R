@@ -102,6 +102,7 @@ NULL
 #'  \link[=networkmanager_create_connect_peer]{create_connect_peer} \tab Creates a core network Connect peer for a specified core network connect attachment between a core network and an appliance\cr
 #'  \link[=networkmanager_create_core_network]{create_core_network} \tab Creates a core network as part of your global network, and optionally, with a core network policy\cr
 #'  \link[=networkmanager_create_device]{create_device} \tab Creates a new device in a global network\cr
+#'  \link[=networkmanager_create_direct_connect_gateway_attachment]{create_direct_connect_gateway_attachment} \tab Creates an Amazon Web Services Direct Connect gateway attachment\cr
 #'  \link[=networkmanager_create_global_network]{create_global_network} \tab Creates a new, empty global network\cr
 #'  \link[=networkmanager_create_link]{create_link} \tab Creates a new link for a specified site\cr
 #'  \link[=networkmanager_create_site]{create_site} \tab Creates a new site in a global network\cr
@@ -137,6 +138,7 @@ NULL
 #'  \link[=networkmanager_get_core_network_policy]{get_core_network_policy} \tab Returns details about a core network policy\cr
 #'  \link[=networkmanager_get_customer_gateway_associations]{get_customer_gateway_associations} \tab Gets the association information for customer gateways that are associated with devices and links in your global network\cr
 #'  \link[=networkmanager_get_devices]{get_devices} \tab Gets information about one or more of your devices in a global network\cr
+#'  \link[=networkmanager_get_direct_connect_gateway_attachment]{get_direct_connect_gateway_attachment} \tab Returns information about a specific Amazon Web Services Direct Connect gateway attachment\cr
 #'  \link[=networkmanager_get_link_associations]{get_link_associations} \tab Gets the link associations for a device or a link\cr
 #'  \link[=networkmanager_get_links]{get_links} \tab Gets information about one or more links in a specified global network\cr
 #'  \link[=networkmanager_get_network_resource_counts]{get_network_resource_counts} \tab Gets the count of network resources, by resource type, for the specified global network\cr
@@ -172,6 +174,7 @@ NULL
 #'  \link[=networkmanager_update_connection]{update_connection} \tab Updates the information for an existing connection\cr
 #'  \link[=networkmanager_update_core_network]{update_core_network} \tab Updates the description of a core network\cr
 #'  \link[=networkmanager_update_device]{update_device} \tab Updates the details for an existing device\cr
+#'  \link[=networkmanager_update_direct_connect_gateway_attachment]{update_direct_connect_gateway_attachment} \tab Updates the edge locations associated with an Amazon Web Services Direct Connect gateway attachment\cr
 #'  \link[=networkmanager_update_global_network]{update_global_network} \tab Updates an existing global network\cr
 #'  \link[=networkmanager_update_link]{update_link} \tab Updates the details for an existing link\cr
 #'  \link[=networkmanager_update_network_resource_metadata]{update_network_resource_metadata} \tab Updates the resource metadata for the specified global network\cr
@@ -208,7 +211,7 @@ networkmanager <- function(config = list(), credentials = list(), endpoint = NUL
 
 .networkmanager$metadata <- list(
   service_name = "networkmanager",
-  endpoints = list("*" = list(endpoint = "networkmanager.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "networkmanager.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "networkmanager.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "networkmanager.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "networkmanager.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "networkmanager.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("aws-global" = list(endpoint = "networkmanager.us-west-2.amazonaws.com", global = TRUE), "us-west-2" = list(endpoint = "networkmanager.us-west-2.amazonaws.com", global = TRUE), "^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "networkmanager.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "networkmanager.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "networkmanager.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "networkmanager.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "networkmanager.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "networkmanager.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "networkmanager.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "NetworkManager",
   api_version = "2019-07-05",
   signing_name = "networkmanager",

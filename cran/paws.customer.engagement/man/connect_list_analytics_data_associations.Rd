@@ -2,8 +2,8 @@
 % Please edit documentation in R/connect_operations.R
 \name{connect_list_analytics_data_associations}
 \alias{connect_list_analytics_data_associations}
-\title{This API is in preview release for Amazon Connect and is subject to
-change}
+\title{Lists the association status of requested dataset ID for a given Amazon
+Connect instance}
 \usage{
 connect_list_analytics_data_associations(
   InstanceId,
@@ -25,7 +25,7 @@ results.}
 \item{MaxResults}{The maximum number of results to return per page.}
 }
 \description{
-This API is in preview release for Amazon Connect and is subject to change.
+Lists the association status of requested dataset ID for a given Amazon Connect instance.
 
 See \url{https://www.paws-r-sdk.com/docs/connect_list_analytics_data_associations/} for full documentation.
 }

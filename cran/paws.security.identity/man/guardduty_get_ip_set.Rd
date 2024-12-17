@@ -7,7 +7,11 @@
 guardduty_get_ip_set(DetectorId, IpSetId)
 }
 \arguments{
-\item{DetectorId}{[required] The unique ID of the detector that the IPSet is associated with.}
+\item{DetectorId}{[required] The unique ID of the detector that is associated with the IPSet.
+
+To find the \code{detectorId} in the current Region, see the Settings page in
+the GuardDuty console, or run the
+\code{\link[=guardduty_list_detectors]{list_detectors}} API.}
 
 \item{IpSetId}{[required] The unique ID of the IPSet to retrieve.}
 }

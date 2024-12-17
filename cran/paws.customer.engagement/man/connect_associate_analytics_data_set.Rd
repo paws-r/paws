@@ -2,8 +2,8 @@
 % Please edit documentation in R/connect_operations.R
 \name{connect_associate_analytics_data_set}
 \alias{connect_associate_analytics_data_set}
-\title{This API is in preview release for Amazon Connect and is subject to
-change}
+\title{Associates the specified dataset for a Amazon Connect instance with the
+target account}
 \usage{
 connect_associate_analytics_data_set(
   InstanceId,
@@ -23,7 +23,7 @@ If not specified, by default this value is the Amazon Web Services
 account that has the Amazon Connect instance.}
 }
 \description{
-This API is in preview release for Amazon Connect and is subject to change.
+Associates the specified dataset for a Amazon Connect instance with the target account. You can associate only one dataset in a single call.
 
 See \url{https://www.paws-r-sdk.com/docs/connect_associate_analytics_data_set/} for full documentation.
 }

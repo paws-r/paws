@@ -6,7 +6,8 @@
 \usage{
 route53resolver_update_firewall_rule(
   FirewallRuleGroupId,
-  FirewallDomainListId,
+  FirewallDomainListId = NULL,
+  FirewallThreatProtectionId = NULL,
   Priority = NULL,
   Action = NULL,
   BlockResponse = NULL,
@@ -15,13 +16,17 @@ route53resolver_update_firewall_rule(
   BlockOverrideTtl = NULL,
   Name = NULL,
   FirewallDomainRedirectionAction = NULL,
-  Qtype = NULL
+  Qtype = NULL,
+  DnsThreatProtection = NULL,
+  ConfidenceThreshold = NULL
 )
 }
 \arguments{
 \item{FirewallRuleGroupId}{[required] The unique identifier of the firewall rule group for the rule.}
 
-\item{FirewallDomainListId}{[required] The ID of the domain list to use in the rule.}
+\item{FirewallDomainListId}{The ID of the domain list to use in the rule.}
+
+\item{FirewallThreatProtectionId}{The DNS Firewall Advanced rule ID.}
 
 \item{Priority}{The setting that determines the processing order of the rule in the rule
 group. DNS Firewall processes the rules in a rule group by order of
@@ -33,9 +38,11 @@ for example, use 100, 200, and so on. You can change the priority
 setting for the rules in a rule group at any time.}
 
 \item{Action}{The action that DNS Firewall should take on a DNS query when it matches
-one of the domains in the rule's domain list:
+one of the domains in the rule's domain list, or a threat in a DNS
+Firewall Advanced rule:
 \itemize{
-\item \code{ALLOW} - Permit the request to go through.
+\item \code{ALLOW} - Permit the request to go through. Not available for DNS
+Firewall Advanced rules.
 \item \code{ALERT} - Permit the request to go through but send an alert to the
 logs.
 \item \code{BLOCK} - Disallow the request. This option requires additional
@@ -70,11 +77,11 @@ browser to cache the provided override record. Used for the rule action
 \item{FirewallDomainRedirectionAction}{How you want the the rule to evaluate DNS redirection in the DNS
 redirection chain, such as CNAME or DNAME.
 
-\code{Inspect_Redirection_Domain }(Default) inspects all domains in the
+\code{INSPECT_REDIRECTION_DOMAIN}: (Default) inspects all domains in the
 redirection chain. The individual domains in the redirection chain must
 be added to the domain list.
 
-\code{Trust_Redirection_Domain } inspects only the first domain in the
+\code{TRUST_REDIRECTION_DOMAIN}: Inspects only the first domain in the
 redirection chain. You don't need to add the subsequent domains in the
 domain in the redirection list to the domain list.}
 
@@ -98,6 +105,32 @@ zone.
 \item A query type you define by using the DNS type ID, for example 28 for
 AAAA. The values must be defined as TYPENUMBER, where the NUMBER can
 be 1-65334, for example, TYPE28. For more information, see \href{https://en.wikipedia.org/wiki/List_of_DNS_record_types}{List of DNS record types}.
+
+If you set up a firewall BLOCK rule with action NXDOMAIN on query
+type equals AAAA, this action will not be applied to synthetic IPv6
+addresses generated when DNS64 is enabled.
+}}
+
+\item{DnsThreatProtection}{The type of the DNS Firewall Advanced rule. Valid values are:
+\itemize{
+\item \code{DGA}: Domain generation algorithms detection. DGAs are used by
+attackers to generate a large number of domains to to launch malware
+attacks.
+\item \code{DNS_TUNNELING}: DNS tunneling detection. DNS tunneling is used by
+attackers to exfiltrate data from the client by using the DNS tunnel
+without making a network connection to the client.
+}}
+
+\item{ConfidenceThreshold}{The confidence threshold for DNS Firewall Advanced. You must provide
+this value when you create a DNS Firewall Advanced rule. The confidence
+level values mean:
+\itemize{
+\item \code{LOW}: Provides the highest detection rate for threats, but also
+increases false positives.
+\item \code{MEDIUM}: Provides a balance between detecting threats and false
+positives.
+\item \code{HIGH}: Detects only the most well corroborated threats with a low
+rate of false positives.
 }}
 }
 \description{

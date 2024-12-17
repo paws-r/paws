@@ -6,19 +6,21 @@
 security group}
 \usage{
 ec2_revoke_security_group_egress(
+  SecurityGroupRuleIds = NULL,
   DryRun = NULL,
   GroupId,
-  IpPermissions = NULL,
-  SecurityGroupRuleIds = NULL,
-  CidrIp = NULL,
-  FromPort = NULL,
-  IpProtocol = NULL,
-  ToPort = NULL,
   SourceSecurityGroupName = NULL,
-  SourceSecurityGroupOwnerId = NULL
+  SourceSecurityGroupOwnerId = NULL,
+  IpProtocol = NULL,
+  FromPort = NULL,
+  ToPort = NULL,
+  CidrIp = NULL,
+  IpPermissions = NULL
 )
 }
 \arguments{
+\item{SecurityGroupRuleIds}{The IDs of the security group rules.}
+
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
@@ -26,25 +28,23 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{GroupId}{[required] The ID of the security group.}
 
-\item{IpPermissions}{The sets of IP permissions. You can't specify a destination security
-group and a CIDR IP address range in the same set of permissions.}
-
-\item{SecurityGroupRuleIds}{The IDs of the security group rules.}
-
-\item{CidrIp}{Not supported. Use a set of IP permissions to specify the CIDR.}
-
-\item{FromPort}{Not supported. Use a set of IP permissions to specify the port.}
-
-\item{IpProtocol}{Not supported. Use a set of IP permissions to specify the protocol name
-or number.}
-
-\item{ToPort}{Not supported. Use a set of IP permissions to specify the port.}
-
 \item{SourceSecurityGroupName}{Not supported. Use a set of IP permissions to specify a destination
 security group.}
 
 \item{SourceSecurityGroupOwnerId}{Not supported. Use a set of IP permissions to specify a destination
 security group.}
+
+\item{IpProtocol}{Not supported. Use a set of IP permissions to specify the protocol name
+or number.}
+
+\item{FromPort}{Not supported. Use a set of IP permissions to specify the port.}
+
+\item{ToPort}{Not supported. Use a set of IP permissions to specify the port.}
+
+\item{CidrIp}{Not supported. Use a set of IP permissions to specify the CIDR.}
+
+\item{IpPermissions}{The sets of IP permissions. You can't specify a destination security
+group and a CIDR IP address range in the same set of permissions.}
 }
 \description{
 Removes the specified outbound (egress) rules from the specified security group.

@@ -11,16 +11,16 @@ cognitoidentityprovider_create_user_import_job(
 )
 }
 \arguments{
-\item{JobName}{[required] The job name for the user import job.}
+\item{JobName}{[required] A friendly name for the user import job.}
 
-\item{UserPoolId}{[required] The user pool ID for the user pool that the users are being imported
-into.}
+\item{UserPoolId}{[required] The ID of the user pool that you want to import users into.}
 
-\item{CloudWatchLogsRoleArn}{[required] The role ARN for the Amazon CloudWatch Logs Logging role for the user
-import job.}
+\item{CloudWatchLogsRoleArn}{[required] You must specify an IAM role that has permission to log import-job
+results to Amazon CloudWatch Logs. This parameter is the ARN of that
+role.}
 }
 \description{
-Creates a user import job.
+Creates a user import job. You can import users into user pools from a comma-separated values (CSV) file without adding Amazon Cognito MAU costs to your Amazon Web Services bill. To generate a template for your import, see \code{\link[=cognitoidentityprovider_get_csv_header]{get_csv_header}}. To learn more about CSV import, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-using-import-tool.html}{Importing users from a CSV file}.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_create_user_import_job/} for full documentation.
 }

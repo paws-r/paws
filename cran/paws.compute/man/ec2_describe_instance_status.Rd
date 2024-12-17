@@ -5,15 +5,37 @@
 \title{Describes the status of the specified instances or all of your instances}
 \usage{
 ec2_describe_instance_status(
-  Filters = NULL,
   InstanceIds = NULL,
   MaxResults = NULL,
   NextToken = NULL,
   DryRun = NULL,
+  Filters = NULL,
   IncludeAllInstances = NULL
 )
 }
 \arguments{
+\item{InstanceIds}{The instance IDs.
+
+Default: Describes all your instances.
+
+Constraints: Maximum 100 explicitly specified instance IDs.}
+
+\item{MaxResults}{The maximum number of items to return for this request. To get the next
+page of items, make another request with the token returned in the
+output. For more information, see
+\href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Query-Requests.html#api-pagination}{Pagination}.
+
+You cannot specify this parameter and the instance IDs parameter in the
+same request.}
+
+\item{NextToken}{The token returned from a previous paginated request. Pagination
+continues from the end of the items returned by the previous request.}
+
+\item{DryRun}{Checks whether you have the required permissions for the operation,
+without actually making the request, and provides an error response. If
+you have the required permissions, the error response is
+\code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
+
 \item{Filters}{The filters.
 \itemize{
 \item \code{availability-zone} - The Availability Zone of the instance.
@@ -43,6 +65,10 @@ the name is \code{reachability} (\code{passed} | \code{failed} | \code{initializ
 \item \code{instance-status.status} - The status of the instance (\code{ok} |
 \code{impaired} | \code{initializing} | \code{insufficient-data} |
 \code{not-applicable}).
+\item \code{operator.managed} - A Boolean that indicates whether this is a
+managed instance.
+\item \code{operator.principal} - The principal that manages the instance. Only
+valid for managed instances, where \code{managed} is \code{true}.
 \item \code{system-status.reachability} - Filters on system status where the
 name is \code{reachability} (\code{passed} | \code{failed} | \code{initializing} |
 \code{insufficient-data}).
@@ -53,28 +79,6 @@ name is \code{reachability} (\code{passed} | \code{failed} | \code{initializing}
 for the instance (\code{ok} | \code{impaired} | \code{initializing} |
 \code{insufficient-data} | \code{not-applicable}).
 }}
-
-\item{InstanceIds}{The instance IDs.
-
-Default: Describes all your instances.
-
-Constraints: Maximum 100 explicitly specified instance IDs.}
-
-\item{MaxResults}{The maximum number of items to return for this request. To get the next
-page of items, make another request with the token returned in the
-output. For more information, see
-\href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Query-Requests.html#api-pagination}{Pagination}.
-
-You cannot specify this parameter and the instance IDs parameter in the
-same request.}
-
-\item{NextToken}{The token returned from a previous paginated request. Pagination
-continues from the end of the items returned by the previous request.}
-
-\item{DryRun}{Checks whether you have the required permissions for the action, without
-actually making the request, and provides an error response. If you have
-the required permissions, the error response is \code{DryRunOperation}.
-Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{IncludeAllInstances}{When \code{true}, includes the health status for all instances. When \code{false},
 includes the health status for running instances only.

@@ -12,7 +12,7 @@ cognitoidentityprovider_list_users_in_group(
 )
 }
 \arguments{
-\item{UserPoolId}{[required] The user pool ID for the user pool.}
+\item{UserPoolId}{[required] The ID of the user pool.}
 
 \item{GroupName}{[required] The name of the group.}
 

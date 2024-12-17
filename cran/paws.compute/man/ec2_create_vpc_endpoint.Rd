@@ -8,7 +8,7 @@ ec2_create_vpc_endpoint(
   DryRun = NULL,
   VpcEndpointType = NULL,
   VpcId,
-  ServiceName,
+  ServiceName = NULL,
   PolicyDocument = NULL,
   RouteTableIds = NULL,
   SubnetIds = NULL,
@@ -18,7 +18,10 @@ ec2_create_vpc_endpoint(
   ClientToken = NULL,
   PrivateDnsEnabled = NULL,
   TagSpecifications = NULL,
-  SubnetConfigurations = NULL
+  SubnetConfigurations = NULL,
+  ServiceNetworkArn = NULL,
+  ResourceConfigurationArn = NULL,
+  ServiceRegion = NULL
 )
 }
 \arguments{
@@ -33,7 +36,7 @@ Default: Gateway}
 
 \item{VpcId}{[required] The ID of the VPC.}
 
-\item{ServiceName}{[required] The name of the endpoint service.}
+\item{ServiceName}{The name of the endpoint service.}
 
 \item{PolicyDocument}{(Interface and gateway endpoints) A policy to attach to the endpoint
 that controls access to the service. The policy must be in valid JSON
@@ -76,6 +79,15 @@ Default: \code{true}}
 \item{TagSpecifications}{The tags to associate with the endpoint.}
 
 \item{SubnetConfigurations}{The subnet configurations for the endpoint.}
+
+\item{ServiceNetworkArn}{The Amazon Resource Name (ARN) of a service network that will be
+associated with the VPC endpoint of type service-network.}
+
+\item{ResourceConfigurationArn}{The Amazon Resource Name (ARN) of a resource configuration that will be
+associated with the VPC endpoint of type resource.}
+
+\item{ServiceRegion}{The Region where the service is hosted. The default is the current
+Region.}
 }
 \description{
 Creates a VPC endpoint. A VPC endpoint provides a private connection between the specified VPC and the specified endpoint service. You can use an endpoint service provided by Amazon Web Services, an Amazon Web Services Marketplace Partner, or another Amazon Web Services account. For more information, see the \href{https://docs.aws.amazon.com/vpc/latest/privatelink/}{Amazon Web Services PrivateLink User Guide}.

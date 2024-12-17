@@ -5,18 +5,18 @@
 \title{Cancels an active conversion task}
 \usage{
 ec2_cancel_conversion_task(
-  ConversionTaskId,
   DryRun = NULL,
+  ConversionTaskId,
   ReasonMessage = NULL
 )
 }
 \arguments{
-\item{ConversionTaskId}{[required] The ID of the conversion task.}
-
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
+
+\item{ConversionTaskId}{[required] The ID of the conversion task.}
 
 \item{ReasonMessage}{The reason for canceling the conversion task.}
 }

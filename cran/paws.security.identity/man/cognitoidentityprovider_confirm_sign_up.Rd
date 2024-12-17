@@ -2,7 +2,7 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_confirm_sign_up}
 \alias{cognitoidentityprovider_confirm_sign_up}
-\title{This public API operation provides a code that Amazon Cognito sent to
+\title{This public API operation submits a code that Amazon Cognito sent to
 your user when they signed up in your user pool via the SignUp API
 operation}
 \usage{
@@ -14,7 +14,8 @@ cognitoidentityprovider_confirm_sign_up(
   ForceAliasCreation = NULL,
   AnalyticsMetadata = NULL,
   UserContextData = NULL,
-  ClientMetadata = NULL
+  ClientMetadata = NULL,
+  Session = NULL
 )
 }
 \arguments{
@@ -22,7 +23,7 @@ cognitoidentityprovider_confirm_sign_up(
 
 \item{SecretHash}{A keyed-hash message authentication code (HMAC) calculated using the
 secret key of a user pool client and username plus the client ID in the
-message.}
+message. For more information about \code{SecretHash}, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/signing-up-users-in-your-app.html#cognito-user-pools-computing-secret-hash}{Computing secret hash values}.}
 
 \item{Username}{[required] The username of the user that you want to query or modify. The value of
 this parameter is typically your user's username, but it can be any of
@@ -30,14 +31,25 @@ their alias attributes. If \code{username} isn't an alias attribute in your
 user pool, this value must be the \code{sub} of a local user or the username
 of a user from a third-party IdP.}
 
-\item{ConfirmationCode}{[required] The confirmation code sent by a user's request to confirm registration.}
+\item{ConfirmationCode}{[required] The confirmation code that your user pool sent in response to the
+\code{\link[=cognitoidentityprovider_sign_up]{sign_up}} request.}
 
-\item{ForceAliasCreation}{Boolean to be specified to force user confirmation irrespective of
-existing alias. By default set to \code{False}. If this parameter is set to
-\code{True} and the phone number/email used for sign up confirmation already
-exists as an alias with a different user, the API call will migrate the
-alias from the previous user to the newly created user being confirmed.
-If set to \code{False}, the API will throw an \strong{AliasExistsException} error.}
+\item{ForceAliasCreation}{When \code{true}, forces user confirmation despite any existing aliases.
+Defaults to \code{false}. A value of \code{true} migrates the alias from an
+existing user to the new user if an existing user already has the phone
+number or email address as an alias.
+
+Say, for example, that an existing user has an \code{email} attribute of
+\code{bob@example.com} and email is an alias in your user pool. If the new
+user also has an email of \code{bob@example.com} and your
+\code{\link[=cognitoidentityprovider_confirm_sign_up]{confirm_sign_up}} response
+sets \code{ForceAliasCreation} to \code{true}, the new user can sign in with a
+username of \code{bob@example.com} and the existing user can no longer do so.
+
+If \code{false} and an attribute belongs to an existing alias, this request
+returns an \strong{AliasExistsException} error.
+
+For more information about sign-in aliases, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-settings-attributes.html#user-pool-settings-aliases}{Customizing sign-in attributes}.}
 
 \item{AnalyticsMetadata}{The Amazon Pinpoint analytics metadata for collecting metrics for
 \code{\link[=cognitoidentityprovider_confirm_sign_up]{confirm_sign_up}} calls.}
@@ -45,7 +57,9 @@ If set to \code{False}, the API will throw an \strong{AliasExistsException} erro
 \item{UserContextData}{Contextual data about your user session, such as the device fingerprint,
 IP address, or location. Amazon Cognito advanced security evaluates the
 risk of an authentication event based on the context that your app
-generates and passes to Amazon Cognito when it makes API requests.}
+generates and passes to Amazon Cognito when it makes API requests.
+
+For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-settings-viewing-threat-protection-app.html}{Collecting data for threat protection in applications}.}
 
 \item{ClientMetadata}{A map of custom key-value pairs that you can provide as input for any
 custom workflows that this action triggers.
@@ -63,20 +77,25 @@ enhance your workflow for your specific needs.
 For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-working-with-lambda-triggers.html}{Customizing user pool Workflows with Lambda Triggers}
 in the \emph{Amazon Cognito Developer Guide}.
 
-When you use the ClientMetadata parameter, remember that Amazon Cognito
+When you use the \code{ClientMetadata} parameter, note that Amazon Cognito
 won't do the following:
 \itemize{
-\item Store the ClientMetadata value. This data is available only to
+\item Store the \code{ClientMetadata} value. This data is available only to
 Lambda triggers that are assigned to a user pool to support custom
 workflows. If your user pool configuration doesn't include triggers,
-the ClientMetadata parameter serves no purpose.
-\item Validate the ClientMetadata value.
-\item Encrypt the ClientMetadata value. Don't use Amazon Cognito to
-provide sensitive information.
+the \code{ClientMetadata} parameter serves no purpose.
+\item Validate the \code{ClientMetadata} value.
+\item Encrypt the \code{ClientMetadata} value. Don't send sensitive information
+in this parameter.
 }}
+
+\item{Session}{The optional session ID from a
+\code{\link[=cognitoidentityprovider_sign_up]{sign_up}} API request. You can sign
+in a user directly from the sign-up process with the \code{USER_AUTH}
+authentication flow.}
 }
 \description{
-This public API operation provides a code that Amazon Cognito sent to your user when they signed up in your user pool via the \code{\link[=cognitoidentityprovider_sign_up]{sign_up}} API operation. After your user enters their code, they confirm ownership of the email address or phone number that they provided, and their user account becomes active. Depending on your user pool configuration, your users will receive their confirmation code in an email or SMS message.
+This public API operation submits a code that Amazon Cognito sent to your user when they signed up in your user pool via the \code{\link[=cognitoidentityprovider_sign_up]{sign_up}} API operation. After your user enters their code, they confirm ownership of the email address or phone number that they provided, and their user account becomes active. Depending on your user pool configuration, your users will receive their confirmation code in an email or SMS message.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_confirm_sign_up/} for full documentation.
 }

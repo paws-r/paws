@@ -149,8 +149,12 @@ escalation.
 \examples{
 \dontrun{
 svc <- ssmcontacts()
+# The following accept-page operation uses an accept code sent to the
+# contact channel to accept a page.
 svc$accept_page(
-  Foo = 123
+  AcceptCode = "425440",
+  AcceptType = "READ",
+  PageId = "arn:aws:ssm-contacts:us-east-2:682428703967:page/akuam/94ea0c7b..."
 )
 }
 

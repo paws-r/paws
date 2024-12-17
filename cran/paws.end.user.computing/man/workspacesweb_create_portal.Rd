@@ -28,9 +28,9 @@ integrate your identity provider with your web portal. User and group
 access to your web portal is controlled through your identity provider.
 
 \verb{IAM Identity Center} web portals are authenticated through IAM Identity
-Center (successor to Single Sign-On). Identity sources (including
-external identity provider integration), plus user and group access to
-your web portal, can be configured in the IAM Identity Center.}
+Center. Identity sources (including external identity provider
+integration), plus user and group access to your web portal, can be
+configured in the IAM Identity Center.}
 
 \item{clientToken}{A unique, case-sensitive identifier that you provide to ensure the
 idempotency of the request. Idempotency ensures that an API request

@@ -2,8 +2,7 @@
 % Please edit documentation in R/bedrock_operations.R
 \name{bedrock_create_evaluation_job}
 \alias{bedrock_create_evaluation_job}
-\title{API operation for creating and managing Amazon Bedrock automatic model
-evaluation jobs and model evaluation jobs that use human workers}
+\title{Creates an evaluation job}
 \usage{
 bedrock_create_evaluation_job(
   jobName,
@@ -12,16 +11,17 @@ bedrock_create_evaluation_job(
   roleArn,
   customerEncryptionKeyId = NULL,
   jobTags = NULL,
+  applicationType = NULL,
   evaluationConfig,
   inferenceConfig,
   outputDataConfig
 )
 }
 \arguments{
-\item{jobName}{[required] The name of the model evaluation job. Model evaluation job names must
-unique with your AWS account, and your account's AWS region.}
+\item{jobName}{[required] A name for the evaluation job. Names must unique with your Amazon Web
+Services account, and your account's Amazon Web Services region.}
 
-\item{jobDescription}{A description of the model evaluation job.}
+\item{jobDescription}{A description of the evaluation job.}
 
 \item{clientRequestToken}{A unique, case-sensitive identifier to ensure that the API request
 completes no more than one time. If this token matches a previous
@@ -29,30 +29,33 @@ request, Amazon Bedrock ignores the request, but does not return an
 error. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency}.}
 
 \item{roleArn}{[required] The Amazon Resource Name (ARN) of an IAM service role that Amazon
-Bedrock can assume to perform tasks on your behalf. The service role
-must have Amazon Bedrock as the service principal, and provide access to
-any Amazon S3 buckets specified in the \code{EvaluationConfig} object. To
-pass this role to Amazon Bedrock, the caller of this API must have the
-\code{iam:PassRole} permission. To learn more about the required permissions,
-see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/model-evaluation-security-service-roles.html}{Required permissions}.}
+Bedrock can assume to perform tasks on your behalf. To learn more about
+the required permissions, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/model-evaluation-security-service-roles.html}{Required permissions for model evaluations}.}
 
-\item{customerEncryptionKeyId}{Specify your customer managed key ARN that will be used to encrypt your
-model evaluation job.}
+\item{customerEncryptionKeyId}{Specify your customer managed encryption key Amazon Resource Name (ARN)
+that will be used to encrypt your evaluation job.}
 
 \item{jobTags}{Tags to attach to the model evaluation job.}
 
-\item{evaluationConfig}{[required] Specifies whether the model evaluation job is automatic or uses human
-worker.}
+\item{applicationType}{Specifies whether the evaluation job is for evaluating a model or
+evaluating a knowledge base (retrieval and response generation).}
 
-\item{inferenceConfig}{[required] Specify the models you want to use in your model evaluation job.
-Automatic model evaluation jobs support a single model, and model
-evaluation job that use human workers support two models.}
+\item{evaluationConfig}{[required] Contains the configuration details of either an automated or human-based
+evaluation job.}
 
-\item{outputDataConfig}{[required] An object that defines where the results of model evaluation job will be
-saved in Amazon S3.}
+\item{inferenceConfig}{[required] Contains the configuration details of the inference model for the
+evaluation job.
+
+For model evaluation jobs, automated jobs support a single model or
+\href{https://docs.aws.amazon.com/bedrock/latest/userguide/cross-region-inference.html}{inference profile},
+and jobs that use human workers support two models or inference
+profiles.}
+
+\item{outputDataConfig}{[required] Contains the configuration details of the Amazon S3 bucket for storing
+the results of the evaluation job.}
 }
 \description{
-API operation for creating and managing Amazon Bedrock automatic model evaluation jobs and model evaluation jobs that use human workers. To learn more about the requirements for creating a model evaluation job see, \href{https://docs.aws.amazon.com/bedrock/latest/userguide/}{Model evaluation}.
+Creates an evaluation job.
 
 See \url{https://www.paws-r-sdk.com/docs/bedrock_create_evaluation_job/} for full documentation.
 }

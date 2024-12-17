@@ -30,8 +30,7 @@ cognitoidentityprovider_update_user_pool_client(
 )
 }
 \arguments{
-\item{UserPoolId}{[required] The user pool ID for the user pool where you want to update the user
-pool client.}
+\item{UserPoolId}{[required] The ID of the user pool where you want to update the user pool client.}
 
 \item{ClientId}{[required] The ID of the client associated with the user pool.}
 
@@ -88,21 +87,21 @@ your ID tokens are valid for one hour.}
 refresh tokens. The default unit for RefreshToken is days, and the
 default for ID and access tokens is hours.}
 
-\item{ReadAttributes}{The list of user attributes that you want your app client to have
-read-only access to. After your user authenticates in your app, their
-access token authorizes them to read their own attribute value for any
-attribute in this list. An example of this kind of activity is when your
-user selects a link to view their profile information. Your app makes a
+\item{ReadAttributes}{The list of user attributes that you want your app client to have read
+access to. After your user authenticates in your app, their access token
+authorizes them to read their own attribute value for any attribute in
+this list. An example of this kind of activity is when your user selects
+a link to view their profile information. Your app makes a
 \code{\link[=cognitoidentityprovider_get_user]{get_user}} API request to retrieve
 and display your user's profile data.
 
 When you don't specify the \code{ReadAttributes} for your app client, your
 app can read the values of \code{email_verified}, \code{phone_number_verified},
-and the Standard attributes of your user pool. When your user pool has
-read access to these default attributes, \code{ReadAttributes} doesn't return
-any information. Amazon Cognito only populates \code{ReadAttributes} in the
-API response if you have specified your own custom set of read
-attributes.}
+and the Standard attributes of your user pool. When your user pool app
+client has read access to these default attributes, \code{ReadAttributes}
+doesn't return any information. Amazon Cognito only populates
+\code{ReadAttributes} in the API response if you have specified your own
+custom set of read attributes.}
 
 \item{WriteAttributes}{The list of user attributes that you want your app client to have write
 access to. After your user authenticates in your app, their access token
@@ -139,6 +138,14 @@ supports \code{ALLOW_REFRESH_TOKEN_AUTH}, \code{ALLOW_USER_SRP_AUTH}, and
 
 Valid values include:
 \itemize{
+\item \code{ALLOW_USER_AUTH}: Enable selection-based sign-in with \code{USER_AUTH}.
+This setting covers username-password, secure remote password (SRP),
+passwordless, and passkey authentication. This authentiation flow
+can do username-password and SRP authentication without other
+\code{ExplicitAuthFlows} permitting them. For example users can complete
+an SRP challenge through \code{USER_AUTH} without the flow
+\code{USER_SRP_AUTH} being active for the app client. This flow doesn't
+include \code{CUSTOM_AUTH}.
 \item \code{ALLOW_ADMIN_USER_PASSWORD_AUTH}: Enable admin based user password
 authentication flow \code{ADMIN_USER_PASSWORD_AUTH}. This setting
 replaces the \code{ADMIN_NO_SRP_AUTH} setting. With this authentication
@@ -159,10 +166,17 @@ In some environments, you will see the values \code{ADMIN_NO_SRP_AUTH},
 legacy \code{ExplicitAuthFlows} values to user pool clients at the same time
 as values that begin with \code{ALLOW_}, like \code{ALLOW_USER_SRP_AUTH}.}
 
-\item{SupportedIdentityProviders}{A list of provider names for the IdPs that this client supports. The
-following are supported: \code{COGNITO}, \code{Facebook}, \code{Google},
-\code{SignInWithApple}, \code{LoginWithAmazon}, and the names of your own SAML and
-OIDC providers.}
+\item{SupportedIdentityProviders}{A list of provider names for the identity providers (IdPs) that are
+supported on this client. The following are supported: \code{COGNITO},
+\code{Facebook}, \code{Google}, \code{SignInWithApple}, and \code{LoginWithAmazon}. You can
+also specify the names that you configured for the SAML and OIDC IdPs in
+your user pool, for example \code{MySAMLIdP} or \code{MyOIDCIdP}.
+
+This setting applies to providers that you can access with \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-managed-login.html}{managed login}.
+The removal of \code{COGNITO} from this list doesn't prevent authentication
+operations for local users with the user pools API in an Amazon Web
+Services SDK. The only way to prevent API-based authentication is to
+block access with a \href{https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-waf.html}{WAF rule}.}
 
 \item{CallbackURLs}{A list of allowed redirect (callback) URLs for the IdPs.
 

@@ -10,7 +10,7 @@ configservice_describe_delivery_channels(DeliveryChannelNames = NULL)
 \item{DeliveryChannelNames}{A list of delivery channel names.}
 }
 \description{
-Returns details about the specified delivery channel. If a delivery channel is not specified, this action returns the details of all delivery channels associated with the account.
+Returns details about the specified delivery channel. If a delivery channel is not specified, this operation returns the details of all delivery channels associated with the account.
 
 See \url{https://www.paws-r-sdk.com/docs/configservice_describe_delivery_channels/} for full documentation.
 }

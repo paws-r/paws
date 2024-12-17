@@ -330,7 +330,7 @@ dax_describe_clusters <- function(ClusterNames = NULL, MaxResults = NULL, NextTo
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Clusters"),
     stream_api = FALSE
   )
   input <- .dax$describe_clusters_input(ClusterNames = ClusterNames, MaxResults = MaxResults, NextToken = NextToken)
@@ -370,7 +370,7 @@ dax_describe_default_parameters <- function(MaxResults = NULL, NextToken = NULL)
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Parameters"),
     stream_api = FALSE
   )
   input <- .dax$describe_default_parameters_input(MaxResults = MaxResults, NextToken = NextToken)
@@ -418,7 +418,7 @@ dax_describe_events <- function(SourceName = NULL, SourceType = NULL, StartTime 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Events"),
     stream_api = FALSE
   )
   input <- .dax$describe_events_input(SourceName = SourceName, SourceType = SourceType, StartTime = StartTime, EndTime = EndTime, Duration = Duration, MaxResults = MaxResults, NextToken = NextToken)
@@ -458,7 +458,7 @@ dax_describe_parameter_groups <- function(ParameterGroupNames = NULL, MaxResults
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ParameterGroups"),
     stream_api = FALSE
   )
   input <- .dax$describe_parameter_groups_input(ParameterGroupNames = ParameterGroupNames, MaxResults = MaxResults, NextToken = NextToken)
@@ -500,7 +500,7 @@ dax_describe_parameters <- function(ParameterGroupName, Source = NULL, MaxResult
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Parameters"),
     stream_api = FALSE
   )
   input <- .dax$describe_parameters_input(ParameterGroupName = ParameterGroupName, Source = Source, MaxResults = MaxResults, NextToken = NextToken)
@@ -540,7 +540,7 @@ dax_describe_subnet_groups <- function(SubnetGroupNames = NULL, MaxResults = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "SubnetGroups"),
     stream_api = FALSE
   )
   input <- .dax$describe_subnet_groups_input(SubnetGroupNames = SubnetGroupNames, MaxResults = MaxResults, NextToken = NextToken)
@@ -610,7 +610,7 @@ dax_list_tags <- function(ResourceName, NextToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Tags"),
     stream_api = FALSE
   )
   input <- .dax$list_tags_input(ResourceName = ResourceName, NextToken = NextToken)

@@ -106,6 +106,7 @@ Amazon Web Services accounts, Regions, and on-premises locations.
 \link[paws.networking:networkmanager_create_connect_peer]{create_connect_peer} \tab Creates a core network Connect peer for a specified core network connect attachment between a core network and an appliance\cr
 \link[paws.networking:networkmanager_create_core_network]{create_core_network} \tab Creates a core network as part of your global network, and optionally, with a core network policy\cr
 \link[paws.networking:networkmanager_create_device]{create_device} \tab Creates a new device in a global network\cr
+\link[paws.networking:networkmanager_create_direct_connect_gateway_attachment]{create_direct_connect_gateway_attachment} \tab Creates an Amazon Web Services Direct Connect gateway attachment\cr
 \link[paws.networking:networkmanager_create_global_network]{create_global_network} \tab Creates a new, empty global network\cr
 \link[paws.networking:networkmanager_create_link]{create_link} \tab Creates a new link for a specified site\cr
 \link[paws.networking:networkmanager_create_site]{create_site} \tab Creates a new site in a global network\cr
@@ -141,6 +142,7 @@ Amazon Web Services accounts, Regions, and on-premises locations.
 \link[paws.networking:networkmanager_get_core_network_policy]{get_core_network_policy} \tab Returns details about a core network policy\cr
 \link[paws.networking:networkmanager_get_customer_gateway_associations]{get_customer_gateway_associations} \tab Gets the association information for customer gateways that are associated with devices and links in your global network\cr
 \link[paws.networking:networkmanager_get_devices]{get_devices} \tab Gets information about one or more of your devices in a global network\cr
+\link[paws.networking:networkmanager_get_direct_connect_gateway_attachment]{get_direct_connect_gateway_attachment} \tab Returns information about a specific Amazon Web Services Direct Connect gateway attachment\cr
 \link[paws.networking:networkmanager_get_link_associations]{get_link_associations} \tab Gets the link associations for a device or a link\cr
 \link[paws.networking:networkmanager_get_links]{get_links} \tab Gets information about one or more links in a specified global network\cr
 \link[paws.networking:networkmanager_get_network_resource_counts]{get_network_resource_counts} \tab Gets the count of network resources, by resource type, for the specified global network\cr
@@ -176,6 +178,7 @@ Amazon Web Services accounts, Regions, and on-premises locations.
 \link[paws.networking:networkmanager_update_connection]{update_connection} \tab Updates the information for an existing connection\cr
 \link[paws.networking:networkmanager_update_core_network]{update_core_network} \tab Updates the description of a core network\cr
 \link[paws.networking:networkmanager_update_device]{update_device} \tab Updates the details for an existing device\cr
+\link[paws.networking:networkmanager_update_direct_connect_gateway_attachment]{update_direct_connect_gateway_attachment} \tab Updates the edge locations associated with an Amazon Web Services Direct Connect gateway attachment\cr
 \link[paws.networking:networkmanager_update_global_network]{update_global_network} \tab Updates an existing global network\cr
 \link[paws.networking:networkmanager_update_link]{update_link} \tab Updates the details for an existing link\cr
 \link[paws.networking:networkmanager_update_network_resource_metadata]{update_network_resource_metadata} \tab Updates the resource metadata for the specified global network\cr

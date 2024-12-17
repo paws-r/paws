@@ -26,14 +26,18 @@ value is \code{WINDOWS}.}
 
 \item{Name}{[required] The name of the patch baseline.}
 
-\item{GlobalFilters}{A set of global filters used to include patches in the baseline.}
+\item{GlobalFilters}{A set of global filters used to include patches in the baseline.
+
+The \code{GlobalFilters} parameter can be configured only by using the CLI or
+an Amazon Web Services SDK. It can't be configured from the Patch
+Manager console, and its value isn't displayed in the console.}
 
 \item{ApprovalRules}{A set of rules used to include patches in the baseline.}
 
 \item{ApprovedPatches}{A list of explicitly approved patches for the baseline.
 
 For information about accepted formats for lists of approved patches and
-rejected patches, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-approved-rejected-package-name-formats.html}{About package name formats for approved and rejected patch lists}
+rejected patches, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-approved-rejected-package-name-formats.html}{Package name formats for approved and rejected patch lists}
 in the \emph{Amazon Web Services Systems Manager User Guide}.}
 
 \item{ApprovedPatchesComplianceLevel}{Defines the compliance level for approved patches. When an approved
@@ -47,7 +51,7 @@ is \code{false}. Applies to Linux managed nodes only.}
 \item{RejectedPatches}{A list of explicitly rejected patches for the baseline.
 
 For information about accepted formats for lists of approved patches and
-rejected patches, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-approved-rejected-package-name-formats.html}{About package name formats for approved and rejected patch lists}
+rejected patches, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-approved-rejected-package-name-formats.html}{Package name formats for approved and rejected patch lists}
 in the \emph{Amazon Web Services Systems Manager User Guide}.}
 
 \item{RejectedPatchesAction}{The action for Patch Manager to take on patches included in the

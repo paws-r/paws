@@ -9,6 +9,7 @@ applicationinsights_create_application(
   OpsCenterEnabled = NULL,
   CWEMonitorEnabled = NULL,
   OpsItemSNSTopicArn = NULL,
+  SNSNotificationArn = NULL,
   Tags = NULL,
   AutoConfigEnabled = NULL,
   AutoCreate = NULL,
@@ -29,6 +30,8 @@ for the application resources, such as \verb{instance terminated},
 \item{OpsItemSNSTopicArn}{The SNS topic provided to Application Insights that is associated to the
 created opsItem. Allows you to receive notifications for updates to the
 opsItem.}
+
+\item{SNSNotificationArn}{The SNS notification topic ARN.}
 
 \item{Tags}{List of tags to add to the application. tag key (\code{Key}) and an
 associated tag value (\code{Value}). The maximum length of a tag key is 128

@@ -3,6 +3,18 @@
 #' @include configservice_service.R
 NULL
 
+.configservice$associate_resource_types_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ConfigurationRecorderArn = structure(logical(0), tags = list(type = "string")), ResourceTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.configservice$associate_resource_types_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ConfigurationRecorder = structure(list(arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), roleARN = structure(logical(0), tags = list(type = "string")), recordingGroup = structure(list(allSupported = structure(logical(0), tags = list(type = "boolean")), includeGlobalResourceTypes = structure(logical(0), tags = list(type = "boolean")), resourceTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), exclusionByResourceTypes = structure(list(resourceTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), recordingStrategy = structure(list(useOnly = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), recordingMode = structure(list(recordingFrequency = structure(logical(0), tags = list(type = "string")), recordingModeOverrides = structure(list(structure(list(description = structure(logical(0), tags = list(type = "string")), resourceTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), recordingFrequency = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), recordingScope = structure(logical(0), tags = list(type = "string")), servicePrincipal = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .configservice$batch_get_aggregate_resource_config_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(ConfigurationAggregatorName = structure(logical(0), tags = list(type = "string")), ResourceIdentifiers = structure(list(structure(list(SourceAccountId = structure(logical(0), tags = list(type = "string")), SourceRegion = structure(logical(0), tags = list(type = "string")), ResourceId = structure(logical(0), tags = list(type = "string")), ResourceType = structure(logical(0), tags = list(type = "string")), ResourceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
@@ -173,6 +185,18 @@ NULL
   list()
 }
 
+.configservice$delete_service_linked_configuration_recorder_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ServicePrincipal = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.configservice$delete_service_linked_configuration_recorder_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Arn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .configservice$delete_stored_query_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(QueryName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -301,31 +325,31 @@ NULL
 
 .configservice$describe_configuration_aggregators_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ConfigurationAggregators = structure(list(structure(list(ConfigurationAggregatorName = structure(logical(0), tags = list(type = "string")), ConfigurationAggregatorArn = structure(logical(0), tags = list(type = "string")), AccountAggregationSources = structure(list(structure(list(AccountIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AllAwsRegions = structure(logical(0), tags = list(type = "boolean")), AwsRegions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), OrganizationAggregationSource = structure(list(RoleArn = structure(logical(0), tags = list(type = "string")), AwsRegions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AllAwsRegions = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedTime = structure(logical(0), tags = list(type = "timestamp")), CreatedBy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(ConfigurationAggregators = structure(list(structure(list(ConfigurationAggregatorName = structure(logical(0), tags = list(type = "string")), ConfigurationAggregatorArn = structure(logical(0), tags = list(type = "string")), AccountAggregationSources = structure(list(structure(list(AccountIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AllAwsRegions = structure(logical(0), tags = list(type = "boolean")), AwsRegions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), OrganizationAggregationSource = structure(list(RoleArn = structure(logical(0), tags = list(type = "string")), AwsRegions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AllAwsRegions = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedTime = structure(logical(0), tags = list(type = "timestamp")), CreatedBy = structure(logical(0), tags = list(type = "string")), AggregatorFilters = structure(list(ResourceType = structure(list(Type = structure(logical(0), tags = list(type = "string")), Value = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), ServicePrincipal = structure(list(Type = structure(logical(0), tags = list(type = "string")), Value = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .configservice$describe_configuration_recorder_status_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ConfigurationRecorderNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(ConfigurationRecorderNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ServicePrincipal = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .configservice$describe_configuration_recorder_status_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ConfigurationRecordersStatus = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), lastStartTime = structure(logical(0), tags = list(type = "timestamp")), lastStopTime = structure(logical(0), tags = list(type = "timestamp")), recording = structure(logical(0), tags = list(type = "boolean")), lastStatus = structure(logical(0), tags = list(type = "string")), lastErrorCode = structure(logical(0), tags = list(type = "string")), lastErrorMessage = structure(logical(0), tags = list(type = "string")), lastStatusChangeTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(ConfigurationRecordersStatus = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), lastStartTime = structure(logical(0), tags = list(type = "timestamp")), lastStopTime = structure(logical(0), tags = list(type = "timestamp")), recording = structure(logical(0), tags = list(type = "boolean")), lastStatus = structure(logical(0), tags = list(type = "string")), lastErrorCode = structure(logical(0), tags = list(type = "string")), lastErrorMessage = structure(logical(0), tags = list(type = "string")), lastStatusChangeTime = structure(logical(0), tags = list(type = "timestamp")), servicePrincipal = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .configservice$describe_configuration_recorders_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ConfigurationRecorderNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(ConfigurationRecorderNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ServicePrincipal = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .configservice$describe_configuration_recorders_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ConfigurationRecorders = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), roleARN = structure(logical(0), tags = list(type = "string")), recordingGroup = structure(list(allSupported = structure(logical(0), tags = list(type = "boolean")), includeGlobalResourceTypes = structure(logical(0), tags = list(type = "boolean")), resourceTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), exclusionByResourceTypes = structure(list(resourceTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), recordingStrategy = structure(list(useOnly = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), recordingMode = structure(list(recordingFrequency = structure(logical(0), tags = list(type = "string")), recordingModeOverrides = structure(list(structure(list(description = structure(logical(0), tags = list(type = "string")), resourceTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), recordingFrequency = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(ConfigurationRecorders = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), roleARN = structure(logical(0), tags = list(type = "string")), recordingGroup = structure(list(allSupported = structure(logical(0), tags = list(type = "boolean")), includeGlobalResourceTypes = structure(logical(0), tags = list(type = "boolean")), resourceTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), exclusionByResourceTypes = structure(list(resourceTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), recordingStrategy = structure(list(useOnly = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), recordingMode = structure(list(recordingFrequency = structure(logical(0), tags = list(type = "string")), recordingModeOverrides = structure(list(structure(list(description = structure(logical(0), tags = list(type = "string")), resourceTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), recordingFrequency = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), recordingScope = structure(logical(0), tags = list(type = "string")), servicePrincipal = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -494,6 +518,18 @@ NULL
 .configservice$describe_retention_configurations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(RetentionConfigurations = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), RetentionPeriodInDays = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.configservice$disassociate_resource_types_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ConfigurationRecorderArn = structure(logical(0), tags = list(type = "string")), ResourceTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.configservice$disassociate_resource_types_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ConfigurationRecorder = structure(list(arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), roleARN = structure(logical(0), tags = list(type = "string")), recordingGroup = structure(list(allSupported = structure(logical(0), tags = list(type = "boolean")), includeGlobalResourceTypes = structure(logical(0), tags = list(type = "boolean")), resourceTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), exclusionByResourceTypes = structure(list(resourceTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), recordingStrategy = structure(list(useOnly = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), recordingMode = structure(list(recordingFrequency = structure(logical(0), tags = list(type = "string")), recordingModeOverrides = structure(list(structure(list(description = structure(logical(0), tags = list(type = "string")), resourceTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), recordingFrequency = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), recordingScope = structure(logical(0), tags = list(type = "string")), servicePrincipal = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -735,6 +771,18 @@ NULL
   return(populate(args, shape))
 }
 
+.configservice$list_configuration_recorders_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Filters = structure(list(structure(list(filterName = structure(logical(0), tags = list(type = "string")), filterValue = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), MaxResults = structure(logical(0), tags = list(box = TRUE, type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.configservice$list_configuration_recorders_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ConfigurationRecorderSummaries = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), servicePrincipal = structure(logical(0), tags = list(type = "string")), recordingScope = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .configservice$list_conformance_pack_compliance_scores_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(Filters = structure(list(ConformancePackNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), SortOrder = structure(logical(0), tags = list(type = "string")), SortBy = structure(logical(0), tags = list(type = "string")), Limit = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -819,19 +867,19 @@ NULL
 
 .configservice$put_configuration_aggregator_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ConfigurationAggregatorName = structure(logical(0), tags = list(type = "string")), AccountAggregationSources = structure(list(structure(list(AccountIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AllAwsRegions = structure(logical(0), tags = list(type = "boolean")), AwsRegions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), OrganizationAggregationSource = structure(list(RoleArn = structure(logical(0), tags = list(type = "string")), AwsRegions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AllAwsRegions = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(ConfigurationAggregatorName = structure(logical(0), tags = list(type = "string")), AccountAggregationSources = structure(list(structure(list(AccountIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AllAwsRegions = structure(logical(0), tags = list(type = "boolean")), AwsRegions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), OrganizationAggregationSource = structure(list(RoleArn = structure(logical(0), tags = list(type = "string")), AwsRegions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AllAwsRegions = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), AggregatorFilters = structure(list(ResourceType = structure(list(Type = structure(logical(0), tags = list(type = "string")), Value = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), ServicePrincipal = structure(list(Type = structure(logical(0), tags = list(type = "string")), Value = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .configservice$put_configuration_aggregator_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ConfigurationAggregator = structure(list(ConfigurationAggregatorName = structure(logical(0), tags = list(type = "string")), ConfigurationAggregatorArn = structure(logical(0), tags = list(type = "string")), AccountAggregationSources = structure(list(structure(list(AccountIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AllAwsRegions = structure(logical(0), tags = list(type = "boolean")), AwsRegions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), OrganizationAggregationSource = structure(list(RoleArn = structure(logical(0), tags = list(type = "string")), AwsRegions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AllAwsRegions = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedTime = structure(logical(0), tags = list(type = "timestamp")), CreatedBy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(ConfigurationAggregator = structure(list(ConfigurationAggregatorName = structure(logical(0), tags = list(type = "string")), ConfigurationAggregatorArn = structure(logical(0), tags = list(type = "string")), AccountAggregationSources = structure(list(structure(list(AccountIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AllAwsRegions = structure(logical(0), tags = list(type = "boolean")), AwsRegions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), OrganizationAggregationSource = structure(list(RoleArn = structure(logical(0), tags = list(type = "string")), AwsRegions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AllAwsRegions = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedTime = structure(logical(0), tags = list(type = "timestamp")), CreatedBy = structure(logical(0), tags = list(type = "string")), AggregatorFilters = structure(list(ResourceType = structure(list(Type = structure(logical(0), tags = list(type = "string")), Value = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), ServicePrincipal = structure(list(Type = structure(logical(0), tags = list(type = "string")), Value = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .configservice$put_configuration_recorder_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ConfigurationRecorder = structure(list(name = structure(logical(0), tags = list(type = "string")), roleARN = structure(logical(0), tags = list(type = "string")), recordingGroup = structure(list(allSupported = structure(logical(0), tags = list(type = "boolean")), includeGlobalResourceTypes = structure(logical(0), tags = list(type = "boolean")), resourceTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), exclusionByResourceTypes = structure(list(resourceTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), recordingStrategy = structure(list(useOnly = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), recordingMode = structure(list(recordingFrequency = structure(logical(0), tags = list(type = "string")), recordingModeOverrides = structure(list(structure(list(description = structure(logical(0), tags = list(type = "string")), resourceTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), recordingFrequency = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(ConfigurationRecorder = structure(list(arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), roleARN = structure(logical(0), tags = list(type = "string")), recordingGroup = structure(list(allSupported = structure(logical(0), tags = list(type = "boolean")), includeGlobalResourceTypes = structure(logical(0), tags = list(type = "boolean")), resourceTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), exclusionByResourceTypes = structure(list(resourceTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), recordingStrategy = structure(list(useOnly = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), recordingMode = structure(list(recordingFrequency = structure(logical(0), tags = list(type = "string")), recordingModeOverrides = structure(list(structure(list(description = structure(logical(0), tags = list(type = "string")), resourceTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), recordingFrequency = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), recordingScope = structure(logical(0), tags = list(type = "string")), servicePrincipal = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -952,6 +1000,18 @@ NULL
 .configservice$put_retention_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(RetentionConfiguration = structure(list(Name = structure(logical(0), tags = list(type = "string")), RetentionPeriodInDays = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.configservice$put_service_linked_configuration_recorder_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ServicePrincipal = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.configservice$put_service_linked_configuration_recorder_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Arn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

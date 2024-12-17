@@ -6,34 +6,30 @@
 is either running or stopped}
 \usage{
 ec2_create_image(
-  BlockDeviceMappings = NULL,
-  Description = NULL,
+  TagSpecifications = NULL,
   DryRun = NULL,
   InstanceId,
   Name,
+  Description = NULL,
   NoReboot = NULL,
-  TagSpecifications = NULL
+  BlockDeviceMappings = NULL
 )
 }
 \arguments{
-\item{BlockDeviceMappings}{The block device mappings.
-
-When using the CreateImage action:
+\item{TagSpecifications}{The tags to apply to the AMI and snapshots on creation. You can tag the
+AMI, the snapshots, or both.
 \itemize{
-\item You can't change the volume size using the VolumeSize parameter. If
-you want a different volume size, you must first change the volume
-size of the source instance.
-\item You can't modify the encryption status of existing volumes or
-snapshots. To create an AMI with volumes or snapshots that have a
-different encryption status (for example, where the source volume
-and snapshots are unencrypted, and you want to create an AMI with
-encrypted volumes or snapshots), use the
-\code{\link[=ec2_copy_image]{copy_image}} action.
-\item The only option that can be changed for existing mappings or
-snapshots is \code{DeleteOnTermination}.
-}}
+\item To tag the AMI, the value for \code{ResourceType} must be \code{image}.
+\item To tag the snapshots that are created of the root volume and of
+other Amazon EBS volumes that are attached to the instance, the
+value for \code{ResourceType} must be \code{snapshot}. The same tag is applied
+to all of the snapshots that are created.
+}
 
-\item{Description}{A description for the new image.}
+If you specify other values for \code{ResourceType}, the request fails.
+
+To tag an AMI or snapshot after it has been created, see
+\code{\link[=ec2_create_tags]{create_tags}}.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have
@@ -47,6 +43,8 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 Constraints: 3-128 alphanumeric characters, parentheses (()), square
 brackets ([]), spaces ( ), periods (.), slashes (/), dashes (-),
 single quotes ('), at-signs (@), or underscores(_)}
+
+\item{Description}{A description for the new image.}
 
 \item{NoReboot}{Indicates whether or not the instance should be automatically rebooted
 before creating the image. Specify one of the following values:
@@ -63,20 +61,22 @@ volumes before the snapshots are created.
 
 Default: \code{false}}
 
-\item{TagSpecifications}{The tags to apply to the AMI and snapshots on creation. You can tag the
-AMI, the snapshots, or both.
+\item{BlockDeviceMappings}{The block device mappings.
+
+When using the CreateImage action:
 \itemize{
-\item To tag the AMI, the value for \code{ResourceType} must be \code{image}.
-\item To tag the snapshots that are created of the root volume and of
-other Amazon EBS volumes that are attached to the instance, the
-value for \code{ResourceType} must be \code{snapshot}. The same tag is applied
-to all of the snapshots that are created.
-}
-
-If you specify other values for \code{ResourceType}, the request fails.
-
-To tag an AMI or snapshot after it has been created, see
-\code{\link[=ec2_create_tags]{create_tags}}.}
+\item You can't change the volume size using the VolumeSize parameter. If
+you want a different volume size, you must first change the volume
+size of the source instance.
+\item You can't modify the encryption status of existing volumes or
+snapshots. To create an AMI with volumes or snapshots that have a
+different encryption status (for example, where the source volume
+and snapshots are unencrypted, and you want to create an AMI with
+encrypted volumes or snapshots), use the
+\code{\link[=ec2_copy_image]{copy_image}} action.
+\item The only option that can be changed for existing mappings or
+snapshots is \code{DeleteOnTermination}.
+}}
 }
 \description{
 Creates an Amazon EBS-backed AMI from an Amazon EBS-backed instance that is either running or stopped.

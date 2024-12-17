@@ -78,6 +78,9 @@ has local instance storage (\code{true} | \code{false}).
 \item \code{instance-type} - The instance type (for example \code{c5.2xlarge} or
 c5*).
 \item \verb{memory-info.size-in-mib} - The memory size.
+\item \code{network-info.bandwidth-weightings} - For instances that support
+bandwidth weighting to boost performance (\code{default}, \code{vpc-1},
+\code{ebs-1}).
 \item \code{network-info.efa-info.maximum-efa-interfaces} - The maximum number
 of Elastic Fabric Adapters (EFAs) per instance.
 \item \code{network-info.efa-supported} - Indicates whether the instance type
@@ -115,7 +118,8 @@ in GHz.
 \item \code{supported-boot-mode} - The boot mode (\code{legacy-bios} | \code{uefi}).
 \item \code{supported-root-device-type} - The root device type (\code{ebs} |
 \code{instance-store}).
-\item \code{supported-usage-class} - The usage class (\code{on-demand} | \code{spot}).
+\item \code{supported-usage-class} - The usage class (\code{on-demand} | \code{spot} |
+\code{capacity-block}).
 \item \code{supported-virtualization-type} - The virtualization type (\code{hvm} |
 \code{paravirtual}).
 \item \code{vcpu-info.default-cores} - The default number of cores for the

@@ -2227,7 +2227,7 @@ codeartifact_get_package_version_readme <- function(domain, domainOwner = NULL, 
 #'
 #' @usage
 #' codeartifact_get_repository_endpoint(domain, domainOwner, repository,
-#'   format)
+#'   format, endpointType)
 #'
 #' @param domain &#91;required&#93; The name of the domain that contains the repository.
 #' @param domainOwner The 12-digit account number of the Amazon Web Services account that owns
@@ -2236,6 +2236,7 @@ codeartifact_get_package_version_readme <- function(domain, domainOwner = NULL, 
 #' @param repository &#91;required&#93; The name of the repository.
 #' @param format &#91;required&#93; Returns which endpoint of a repository to return. A repository has one
 #' endpoint for each package format.
+#' @param endpointType A string that specifies the type of endpoint.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2251,7 +2252,8 @@ codeartifact_get_package_version_readme <- function(domain, domainOwner = NULL, 
 #'   domain = "string",
 #'   domainOwner = "string",
 #'   repository = "string",
-#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift"|"cargo"
+#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"ruby"|"swift"|"cargo",
+#'   endpointType = "dualstack"|"ipv4"
 #' )
 #' ```
 #'
@@ -2260,7 +2262,7 @@ codeartifact_get_package_version_readme <- function(domain, domainOwner = NULL, 
 #' @rdname codeartifact_get_repository_endpoint
 #'
 #' @aliases codeartifact_get_repository_endpoint
-codeartifact_get_repository_endpoint <- function(domain, domainOwner = NULL, repository, format) {
+codeartifact_get_repository_endpoint <- function(domain, domainOwner = NULL, repository, format, endpointType = NULL) {
   op <- new_operation(
     name = "GetRepositoryEndpoint",
     http_method = "GET",
@@ -2269,7 +2271,7 @@ codeartifact_get_repository_endpoint <- function(domain, domainOwner = NULL, rep
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .codeartifact$get_repository_endpoint_input(domain = domain, domainOwner = domainOwner, repository = repository, format = format)
+  input <- .codeartifact$get_repository_endpoint_input(domain = domain, domainOwner = domainOwner, repository = repository, format = format, endpointType = endpointType)
   output <- .codeartifact$get_repository_endpoint_output()
   config <- get_config()
   svc <- .codeartifact$service(config, op)

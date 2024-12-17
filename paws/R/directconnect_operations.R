@@ -47,6 +47,11 @@ NULL
 #'         cidr = "string"
 #'       )
 #'     ),
+#'     associatedCoreNetwork = list(
+#'       id = "string",
+#'       ownerAccount = "string",
+#'       attachmentId = "string"
+#'     ),
 #'     virtualGatewayId = "string",
 #'     virtualGatewayRegion = "string",
 #'     virtualGatewayOwnerAccount = "string"
@@ -1775,6 +1780,11 @@ directconnect_create_direct_connect_gateway <- function(directConnectGatewayName
 #'         cidr = "string"
 #'       )
 #'     ),
+#'     associatedCoreNetwork = list(
+#'       id = "string",
+#'       ownerAccount = "string",
+#'       attachmentId = "string"
+#'     ),
 #'     virtualGatewayId = "string",
 #'     virtualGatewayRegion = "string",
 #'     virtualGatewayOwnerAccount = "string"
@@ -2909,6 +2919,11 @@ directconnect_delete_direct_connect_gateway <- function(directConnectGatewayId) 
 #'         cidr = "string"
 #'       )
 #'     ),
+#'     associatedCoreNetwork = list(
+#'       id = "string",
+#'       ownerAccount = "string",
+#'       attachmentId = "string"
+#'     ),
 #'     virtualGatewayId = "string",
 #'     virtualGatewayRegion = "string",
 #'     virtualGatewayOwnerAccount = "string"
@@ -3389,7 +3404,7 @@ directconnect_describe_connections <- function(connectionId = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "connections"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .directconnect$describe_connections_input(connectionId = connectionId)
@@ -3484,7 +3499,7 @@ directconnect_describe_connections_on_interconnect <- function(interconnectId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "connections"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .directconnect$describe_connections_on_interconnect_input(interconnectId = interconnectId)
@@ -3711,6 +3726,11 @@ directconnect_describe_direct_connect_gateway_association_proposals <- function(
 #'           cidr = "string"
 #'         )
 #'       ),
+#'       associatedCoreNetwork = list(
+#'         id = "string",
+#'         ownerAccount = "string",
+#'         attachmentId = "string"
+#'       ),
 #'       virtualGatewayId = "string",
 #'       virtualGatewayRegion = "string",
 #'       virtualGatewayOwnerAccount = "string"
@@ -3743,7 +3763,7 @@ directconnect_describe_direct_connect_gateway_associations <- function(associati
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "directConnectGatewayAssociations"),
     stream_api = FALSE
   )
   input <- .directconnect$describe_direct_connect_gateway_associations_input(associationId = associationId, associatedGatewayId = associatedGatewayId, directConnectGatewayId = directConnectGatewayId, maxResults = maxResults, nextToken = nextToken, virtualGatewayId = virtualGatewayId)
@@ -3823,7 +3843,7 @@ directconnect_describe_direct_connect_gateway_attachments <- function(directConn
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "directConnectGatewayAttachments"),
     stream_api = FALSE
   )
   input <- .directconnect$describe_direct_connect_gateway_attachments_input(directConnectGatewayId = directConnectGatewayId, virtualInterfaceId = virtualInterfaceId, maxResults = maxResults, nextToken = nextToken)
@@ -3894,7 +3914,7 @@ directconnect_describe_direct_connect_gateways <- function(directConnectGatewayI
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "directConnectGateways"),
     stream_api = FALSE
   )
   input <- .directconnect$describe_direct_connect_gateways_input(directConnectGatewayId = directConnectGatewayId, maxResults = maxResults, nextToken = nextToken)
@@ -4131,7 +4151,7 @@ directconnect_describe_interconnects <- function(interconnectId = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "interconnects"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .directconnect$describe_interconnects_input(interconnectId = interconnectId)
@@ -4384,7 +4404,7 @@ directconnect_describe_locations <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "locations"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .directconnect$describe_locations_input()
@@ -4567,7 +4587,7 @@ directconnect_describe_virtual_gateways <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "virtualGateways"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .directconnect$describe_virtual_gateways_input()
@@ -4678,7 +4698,7 @@ directconnect_describe_virtual_interfaces <- function(connectionId = NULL, virtu
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "virtualInterfaces"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .directconnect$describe_virtual_interfaces_input(connectionId = connectionId, virtualInterfaceId = virtualInterfaceId)
@@ -5400,6 +5420,11 @@ directconnect_update_direct_connect_gateway <- function(directConnectGatewayId, 
 #'       list(
 #'         cidr = "string"
 #'       )
+#'     ),
+#'     associatedCoreNetwork = list(
+#'       id = "string",
+#'       ownerAccount = "string",
+#'       attachmentId = "string"
 #'     ),
 #'     virtualGatewayId = "string",
 #'     virtualGatewayRegion = "string",

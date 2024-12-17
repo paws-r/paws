@@ -60,6 +60,19 @@ NULL
 #' )
 #' ```
 #'
+#' @examples
+#' \dontrun{
+#' # The following example grants permission for the account 223456789012 to
+#' # use version 1 of a layer named my-layer.
+#' svc$add_layer_version_permission(
+#'   Action = "lambda:GetLayerVersion",
+#'   LayerName = "my-layer",
+#'   Principal = "223456789012",
+#'   StatementId = "xaccount",
+#'   VersionNumber = 1L
+#' )
+#' }
+#'
 #' @keywords internal
 #'
 #' @rdname lambda_add_layer_version_permission
@@ -84,24 +97,23 @@ lambda_add_layer_version_permission <- function(LayerName, VersionNumber, Statem
 }
 .lambda$operations$add_layer_version_permission <- lambda_add_layer_version_permission
 
-#' Grants an Amazon Web Servicesservice, Amazon Web Services account, or
-#' Amazon Web Services organization permission to use a function
+#' Grants a principal permission to use a function
 #'
 #' @description
-#' Grants an Amazon Web Servicesservice, Amazon Web Services account, or
-#' Amazon Web Services organization permission to use a function. You can
-#' apply the policy at the function level, or specify a qualifier to
-#' restrict access to a single version or alias. If you use a qualifier,
-#' the invoker must use the full Amazon Resource Name (ARN) of that version
-#' or alias to invoke the function. Note: Lambda does not support adding
-#' policies to version $LATEST.
+#' Grants a
+#' [principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_principal.html#Principal_specifying)
+#' permission to use a function. You can apply the policy at the function
+#' level, or specify a qualifier to restrict access to a single version or
+#' alias. If you use a qualifier, the invoker must use the full Amazon
+#' Resource Name (ARN) of that version or alias to invoke the function.
+#' Note: Lambda does not support adding policies to version $LATEST.
 #' 
 #' To grant permission to another account, specify the account ID as the
 #' `Principal`. To grant permission to an organization defined in
 #' Organizations, specify the organization ID as the `PrincipalOrgID`. For
-#' Amazon Web Servicesservices, the principal is a domain-style identifier
+#' Amazon Web Services services, the principal is a domain-style identifier
 #' that the service defines, such as `s3.amazonaws.com` or
-#' `sns.amazonaws.com`. For Amazon Web Servicesservices, you can also
+#' `sns.amazonaws.com`. For Amazon Web Services services, you can also
 #' specify the ARN of the associated resource as the `SourceArn`. If you
 #' grant permission to a service principal without specifying the source,
 #' other accounts could potentially configure resources in their account to
@@ -136,17 +148,17 @@ lambda_add_layer_version_permission <- function(LayerName, VersionNumber, Statem
 #' the same policy.
 #' @param Action &#91;required&#93; The action that the principal can use on the function. For example,
 #' `lambda:InvokeFunction` or `lambda:GetFunction`.
-#' @param Principal &#91;required&#93; The Amazon Web Servicesservice or Amazon Web Services account that
-#' invokes the function. If you specify a service, use `SourceArn` or
-#' `SourceAccount` to limit who can invoke the function through that
-#' service.
-#' @param SourceArn For Amazon Web Servicesservices, the ARN of the Amazon Web Services
+#' @param Principal &#91;required&#93; The Amazon Web Services service, Amazon Web Services account, IAM user,
+#' or IAM role that invokes the function. If you specify a service, use
+#' `SourceArn` or `SourceAccount` to limit who can invoke the function
+#' through that service.
+#' @param SourceArn For Amazon Web Services services, the ARN of the Amazon Web Services
 #' resource that invokes the function. For example, an Amazon S3 bucket or
 #' Amazon SNS topic.
 #' 
 #' Note that Lambda configures the comparison using the `StringLike`
 #' operator.
-#' @param SourceAccount For Amazon Web Servicesservice, the ID of the Amazon Web Services
+#' @param SourceAccount For Amazon Web Services service, the ID of the Amazon Web Services
 #' account that owns the resource. Use this together with `SourceArn` to
 #' ensure that the specified account owns the resource. It is possible for
 #' an Amazon S3 bucket to be deleted by its owner and recreated by another
@@ -191,6 +203,30 @@ lambda_add_layer_version_permission <- function(LayerName, VersionNumber, Statem
 #'   FunctionUrlAuthType = "NONE"|"AWS_IAM"
 #' )
 #' ```
+#'
+#' @examples
+#' \dontrun{
+#' # The following example adds permission for Amazon S3 to invoke a Lambda
+#' # function named my-function for notifications from a bucket named
+#' # my-bucket-1xpuxmplzrlbh in account 123456789012.
+#' svc$add_permission(
+#'   Action = "lambda:InvokeFunction",
+#'   FunctionName = "my-function",
+#'   Principal = "s3.amazonaws.com",
+#'   SourceAccount = "123456789012",
+#'   SourceArn = "arn:aws:s3:::my-bucket-1xpuxmplzrlbh/*",
+#'   StatementId = "s3"
+#' )
+#' 
+#' # The following example adds permission for account 223456789012 invoke a
+#' # Lambda function named my-function.
+#' svc$add_permission(
+#'   Action = "lambda:InvokeFunction",
+#'   FunctionName = "my-function",
+#'   Principal = "223456789012",
+#'   StatementId = "xaccount"
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -284,6 +320,18 @@ lambda_add_permission <- function(FunctionName, StatementId, Action, Principal, 
 #' )
 #' ```
 #'
+#' @examples
+#' \dontrun{
+#' # The following example creates an alias named LIVE that points to version
+#' # 1 of the my-function Lambda function.
+#' svc$create_alias(
+#'   Description = "alias for live version of function",
+#'   FunctionName = "my-function",
+#'   FunctionVersion = "1",
+#'   Name = "LIVE"
+#' )
+#' }
+#'
 #' @keywords internal
 #'
 #' @rdname lambda_create_alias
@@ -319,12 +367,13 @@ lambda_create_alias <- function(FunctionName, Name, FunctionVersion, Description
 #'
 #' @usage
 #' lambda_create_code_signing_config(Description, AllowedPublishers,
-#'   CodeSigningPolicies)
+#'   CodeSigningPolicies, Tags)
 #'
 #' @param Description Descriptive name for this code signing configuration.
 #' @param AllowedPublishers &#91;required&#93; Signing profiles for this code signing configuration.
 #' @param CodeSigningPolicies The code signing policies define the actions to take if the validation
 #' checks fail.
+#' @param Tags A list of tags to add to the code signing configuration.
 #'
 #' @return
 #' A list with the following syntax:
@@ -358,6 +407,9 @@ lambda_create_alias <- function(FunctionName, Name, FunctionVersion, Description
 #'   ),
 #'   CodeSigningPolicies = list(
 #'     UntrustedArtifactOnDeployment = "Warn"|"Enforce"
+#'   ),
+#'   Tags = list(
+#'     "string"
 #'   )
 #' )
 #' ```
@@ -367,7 +419,7 @@ lambda_create_alias <- function(FunctionName, Name, FunctionVersion, Description
 #' @rdname lambda_create_code_signing_config
 #'
 #' @aliases lambda_create_code_signing_config
-lambda_create_code_signing_config <- function(Description = NULL, AllowedPublishers, CodeSigningPolicies = NULL) {
+lambda_create_code_signing_config <- function(Description = NULL, AllowedPublishers, CodeSigningPolicies = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateCodeSigningConfig",
     http_method = "POST",
@@ -376,7 +428,7 @@ lambda_create_code_signing_config <- function(Description = NULL, AllowedPublish
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .lambda$create_code_signing_config_input(Description = Description, AllowedPublishers = AllowedPublishers, CodeSigningPolicies = CodeSigningPolicies)
+  input <- .lambda$create_code_signing_config_input(Description = Description, AllowedPublishers = AllowedPublishers, CodeSigningPolicies = CodeSigningPolicies, Tags = Tags)
   output <- .lambda$create_code_signing_config_output()
   config <- get_config()
   svc <- .lambda$service(config, op)
@@ -416,14 +468,11 @@ lambda_create_code_signing_config <- function(Description = NULL, AllowedPublish
 #' -   [Amazon
 #'     DocumentDB](https://docs.aws.amazon.com/lambda/latest/dg/with-documentdb.html)
 #' 
-#' The following error handling options are available only for stream
-#' sources (DynamoDB and Kinesis):
+#' The following error handling options are available only for DynamoDB and
+#' Kinesis event sources:
 #' 
 #' -   `BisectBatchOnFunctionError` – If the function returns an error,
 #'     split the batch in two and retry.
-#' 
-#' -   `DestinationConfig` – Send discarded records to an Amazon SQS queue
-#'     or Amazon SNS topic.
 #' 
 #' -   `MaximumRecordAgeInSeconds` – Discard records older than the
 #'     specified age. The default value is infinite (-1). When set to
@@ -435,6 +484,12 @@ lambda_create_code_signing_config <- function(Description = NULL, AllowedPublish
 #' 
 #' -   `ParallelizationFactor` – Process multiple batches from each shard
 #'     concurrently.
+#' 
+#' For stream sources (DynamoDB, Kinesis, Amazon MSK, and self-managed
+#' Apache Kafka), the following option is also available:
+#' 
+#' -   `DestinationConfig` – Send discarded records to an Amazon SQS queue,
+#'     Amazon SNS topic, or Amazon S3 bucket.
 #' 
 #' For information about which configuration parameters apply to each event
 #' source, see the following topics.
@@ -465,11 +520,12 @@ lambda_create_code_signing_config <- function(Description = NULL, AllowedPublish
 #'   Enabled, BatchSize, FilterCriteria, MaximumBatchingWindowInSeconds,
 #'   ParallelizationFactor, StartingPosition, StartingPositionTimestamp,
 #'   DestinationConfig, MaximumRecordAgeInSeconds,
-#'   BisectBatchOnFunctionError, MaximumRetryAttempts,
+#'   BisectBatchOnFunctionError, MaximumRetryAttempts, Tags,
 #'   TumblingWindowInSeconds, Topics, Queues, SourceAccessConfigurations,
 #'   SelfManagedEventSource, FunctionResponseTypes,
 #'   AmazonManagedKafkaEventSourceConfig, SelfManagedKafkaEventSourceConfig,
-#'   ScalingConfig, DocumentDBEventSourceConfig, KMSKeyArn)
+#'   ScalingConfig, DocumentDBEventSourceConfig, KMSKeyArn, MetricsConfig,
+#'   ProvisionedPollerConfig)
 #'
 #' @param EventSourceArn The Amazon Resource Name (ARN) of the event source.
 #' 
@@ -566,6 +622,7 @@ lambda_create_code_signing_config <- function(Description = NULL, AllowedPublish
 #' @param MaximumRetryAttempts (Kinesis and DynamoDB Streams only) Discard records after the specified
 #' number of retries. The default value is infinite (-1). When set to
 #' infinite (-1), failed records are retried until the record expires.
+#' @param Tags A list of tags to apply to the event source mapping.
 #' @param TumblingWindowInSeconds (Kinesis and DynamoDB Streams only) The duration in seconds of a
 #' processing window for DynamoDB and Kinesis Streams event sources. A
 #' value of 0 seconds indicates no tumbling window.
@@ -590,6 +647,13 @@ lambda_create_code_signing_config <- function(Description = NULL, AllowedPublish
 #' criteria](https://docs.aws.amazon.com/lambda/latest/dg/invocation-eventfiltering.html#filtering-basics).
 #' By default, Lambda does not encrypt your filter criteria object. Specify
 #' this property to encrypt data using your own customer managed key.
+#' @param MetricsConfig The metrics configuration for your event source. For more information,
+#' see [Event source mapping
+#' metrics](https://docs.aws.amazon.com/lambda/latest/dg/monitoring-metrics-types.html#event-source-mapping-metrics).
+#' @param ProvisionedPollerConfig (Amazon MSK and self-managed Apache Kafka only) The Provisioned Mode
+#' configuration for the event source. For more information, see
+#' [Provisioned
+#' Mode](https://docs.aws.amazon.com/lambda/latest/dg/invocation-eventsourcemapping.html#invocation-eventsourcemapping-provisioned-mode).
 #'
 #' @return
 #' A list with the following syntax:
@@ -670,6 +734,16 @@ lambda_create_code_signing_config <- function(Description = NULL, AllowedPublish
 #'   FilterCriteriaError = list(
 #'     ErrorCode = "string",
 #'     Message = "string"
+#'   ),
+#'   EventSourceMappingArn = "string",
+#'   MetricsConfig = list(
+#'     Metrics = list(
+#'       "EventCount"
+#'     )
+#'   ),
+#'   ProvisionedPollerConfig = list(
+#'     MinimumPollers = 123,
+#'     MaximumPollers = 123
 #'   )
 #' )
 #' ```
@@ -705,6 +779,9 @@ lambda_create_code_signing_config <- function(Description = NULL, AllowedPublish
 #'   MaximumRecordAgeInSeconds = 123,
 #'   BisectBatchOnFunctionError = TRUE|FALSE,
 #'   MaximumRetryAttempts = 123,
+#'   Tags = list(
+#'     "string"
+#'   ),
 #'   TumblingWindowInSeconds = 123,
 #'   Topics = list(
 #'     "string"
@@ -742,16 +819,36 @@ lambda_create_code_signing_config <- function(Description = NULL, AllowedPublish
 #'     CollectionName = "string",
 #'     FullDocument = "UpdateLookup"|"Default"
 #'   ),
-#'   KMSKeyArn = "string"
+#'   KMSKeyArn = "string",
+#'   MetricsConfig = list(
+#'     Metrics = list(
+#'       "EventCount"
+#'     )
+#'   ),
+#'   ProvisionedPollerConfig = list(
+#'     MinimumPollers = 123,
+#'     MaximumPollers = 123
+#'   )
 #' )
 #' ```
+#'
+#' @examples
+#' \dontrun{
+#' # The following example creates a mapping between an SQS queue and the
+#' # my-function Lambda function.
+#' svc$create_event_source_mapping(
+#'   BatchSize = 5L,
+#'   EventSourceArn = "arn:aws:sqs:us-west-2:123456789012:my-queue",
+#'   FunctionName = "my-function"
+#' )
+#' }
 #'
 #' @keywords internal
 #'
 #' @rdname lambda_create_event_source_mapping
 #'
 #' @aliases lambda_create_event_source_mapping
-lambda_create_event_source_mapping <- function(EventSourceArn = NULL, FunctionName, Enabled = NULL, BatchSize = NULL, FilterCriteria = NULL, MaximumBatchingWindowInSeconds = NULL, ParallelizationFactor = NULL, StartingPosition = NULL, StartingPositionTimestamp = NULL, DestinationConfig = NULL, MaximumRecordAgeInSeconds = NULL, BisectBatchOnFunctionError = NULL, MaximumRetryAttempts = NULL, TumblingWindowInSeconds = NULL, Topics = NULL, Queues = NULL, SourceAccessConfigurations = NULL, SelfManagedEventSource = NULL, FunctionResponseTypes = NULL, AmazonManagedKafkaEventSourceConfig = NULL, SelfManagedKafkaEventSourceConfig = NULL, ScalingConfig = NULL, DocumentDBEventSourceConfig = NULL, KMSKeyArn = NULL) {
+lambda_create_event_source_mapping <- function(EventSourceArn = NULL, FunctionName, Enabled = NULL, BatchSize = NULL, FilterCriteria = NULL, MaximumBatchingWindowInSeconds = NULL, ParallelizationFactor = NULL, StartingPosition = NULL, StartingPositionTimestamp = NULL, DestinationConfig = NULL, MaximumRecordAgeInSeconds = NULL, BisectBatchOnFunctionError = NULL, MaximumRetryAttempts = NULL, Tags = NULL, TumblingWindowInSeconds = NULL, Topics = NULL, Queues = NULL, SourceAccessConfigurations = NULL, SelfManagedEventSource = NULL, FunctionResponseTypes = NULL, AmazonManagedKafkaEventSourceConfig = NULL, SelfManagedKafkaEventSourceConfig = NULL, ScalingConfig = NULL, DocumentDBEventSourceConfig = NULL, KMSKeyArn = NULL, MetricsConfig = NULL, ProvisionedPollerConfig = NULL) {
   op <- new_operation(
     name = "CreateEventSourceMapping",
     http_method = "POST",
@@ -760,7 +857,7 @@ lambda_create_event_source_mapping <- function(EventSourceArn = NULL, FunctionNa
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .lambda$create_event_source_mapping_input(EventSourceArn = EventSourceArn, FunctionName = FunctionName, Enabled = Enabled, BatchSize = BatchSize, FilterCriteria = FilterCriteria, MaximumBatchingWindowInSeconds = MaximumBatchingWindowInSeconds, ParallelizationFactor = ParallelizationFactor, StartingPosition = StartingPosition, StartingPositionTimestamp = StartingPositionTimestamp, DestinationConfig = DestinationConfig, MaximumRecordAgeInSeconds = MaximumRecordAgeInSeconds, BisectBatchOnFunctionError = BisectBatchOnFunctionError, MaximumRetryAttempts = MaximumRetryAttempts, TumblingWindowInSeconds = TumblingWindowInSeconds, Topics = Topics, Queues = Queues, SourceAccessConfigurations = SourceAccessConfigurations, SelfManagedEventSource = SelfManagedEventSource, FunctionResponseTypes = FunctionResponseTypes, AmazonManagedKafkaEventSourceConfig = AmazonManagedKafkaEventSourceConfig, SelfManagedKafkaEventSourceConfig = SelfManagedKafkaEventSourceConfig, ScalingConfig = ScalingConfig, DocumentDBEventSourceConfig = DocumentDBEventSourceConfig, KMSKeyArn = KMSKeyArn)
+  input <- .lambda$create_event_source_mapping_input(EventSourceArn = EventSourceArn, FunctionName = FunctionName, Enabled = Enabled, BatchSize = BatchSize, FilterCriteria = FilterCriteria, MaximumBatchingWindowInSeconds = MaximumBatchingWindowInSeconds, ParallelizationFactor = ParallelizationFactor, StartingPosition = StartingPosition, StartingPositionTimestamp = StartingPositionTimestamp, DestinationConfig = DestinationConfig, MaximumRecordAgeInSeconds = MaximumRecordAgeInSeconds, BisectBatchOnFunctionError = BisectBatchOnFunctionError, MaximumRetryAttempts = MaximumRetryAttempts, Tags = Tags, TumblingWindowInSeconds = TumblingWindowInSeconds, Topics = Topics, Queues = Queues, SourceAccessConfigurations = SourceAccessConfigurations, SelfManagedEventSource = SelfManagedEventSource, FunctionResponseTypes = FunctionResponseTypes, AmazonManagedKafkaEventSourceConfig = AmazonManagedKafkaEventSourceConfig, SelfManagedKafkaEventSourceConfig = SelfManagedKafkaEventSourceConfig, ScalingConfig = ScalingConfig, DocumentDBEventSourceConfig = DocumentDBEventSourceConfig, KMSKeyArn = KMSKeyArn, MetricsConfig = MetricsConfig, ProvisionedPollerConfig = ProvisionedPollerConfig)
   output <- .lambda$create_event_source_mapping_output()
   config <- get_config()
   svc <- .lambda$service(config, op)
@@ -779,8 +876,8 @@ lambda_create_event_source_mapping <- function(EventSourceArn = NULL, FunctionNa
 #' role](https://docs.aws.amazon.com/lambda/latest/dg/lambda-permissions.html#lambda-intro-execution-role).
 #' The deployment package is a .zip file archive or container image that
 #' contains your function code. The execution role grants the function
-#' permission to use Amazon Web Servicesservices, such as Amazon CloudWatch
-#' Logs for log streaming and X-Ray for request tracing.
+#' permission to use Amazon Web Services services, such as Amazon
+#' CloudWatch Logs for log streaming and X-Ray for request tracing.
 #' 
 #' If the deployment package is a [container
 #' image](https://docs.aws.amazon.com/lambda/latest/dg/images-create.html),
@@ -833,15 +930,15 @@ lambda_create_event_source_mapping <- function(EventSourceArn = NULL, FunctionNa
 #' publisher. The code-signing configuration includes set of signing
 #' profiles, which define the trusted publishers for this function.
 #' 
-#' If another Amazon Web Services account or an Amazon Web Servicesservice
+#' If another Amazon Web Services account or an Amazon Web Services service
 #' invokes your function, use [`add_permission`][lambda_add_permission] to
 #' grant permission by creating a resource-based Identity and Access
 #' Management (IAM) policy. You can grant permissions at the function
 #' level, on a version, or on an alias.
 #' 
 #' To invoke your function directly, use [`invoke`][lambda_invoke]. To
-#' invoke your function in response to events in other Amazon Web
-#' Servicesservices, create an event source mapping
+#' invoke your function in response to events in other Amazon Web Services
+#' services, create an event source mapping
 #' ([`create_event_source_mapping`][lambda_create_event_source_mapping]),
 #' or configure a function trigger in the other service. For more
 #' information, see [Invoking Lambda
@@ -915,16 +1012,31 @@ lambda_create_event_source_mapping <- function(EventSourceArn = NULL, FunctionNa
 #' @param Environment Environment variables that are accessible from function code during
 #' execution.
 #' @param KMSKeyArn The ARN of the Key Management Service (KMS) customer managed key that's
-#' used to encrypt your function's [environment
-#' variables](https://docs.aws.amazon.com/lambda/latest/dg/configuration-envvars.html#configuration-envvars-encryption).
-#' When [Lambda
-#' SnapStart](https://docs.aws.amazon.com/lambda/latest/dg/snapstart-security.html)
-#' is activated, Lambda also uses this key is to encrypt your function's
-#' snapshot. If you deploy your function using a container image, Lambda
-#' also uses this key to encrypt your function when it's deployed. Note
-#' that this is not the same key that's used to protect your container
-#' image in the Amazon Elastic Container Registry (Amazon ECR). If you
-#' don't provide a customer managed key, Lambda uses a default service key.
+#' used to encrypt the following resources:
+#' 
+#' -   The function's [environment
+#'     variables](https://docs.aws.amazon.com/lambda/latest/dg/configuration-envvars.html#configuration-envvars-encryption).
+#' 
+#' -   The function's [Lambda
+#'     SnapStart](https://docs.aws.amazon.com/lambda/latest/dg/snapstart-security.html)
+#'     snapshots.
+#' 
+#' -   When used with `SourceKMSKeyArn`, the unzipped version of the .zip
+#'     deployment package that's used for function invocations. For more
+#'     information, see [Specifying a customer managed key for
+#'     Lambda](https://docs.aws.amazon.com/lambda/latest/dg/encrypt-zip-package.html#enable-zip-custom-encryption).
+#' 
+#' -   The optimized version of the container image that's used for
+#'     function invocations. Note that this is not the same key that's used
+#'     to protect your container image in the Amazon Elastic Container
+#'     Registry (Amazon ECR). For more information, see [Function
+#'     lifecycle](https://docs.aws.amazon.com/lambda/latest/dg/images-create.html#images-lifecycle).
+#' 
+#' If you don't provide a customer managed key, Lambda uses an [Amazon Web
+#' Services owned
+#' key](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-owned-cmk)
+#' or an [Amazon Web Services managed
+#' key](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-cmk).
 #' @param TracingConfig Set `Mode` to `Active` to sample and trace a subset of incoming requests
 #' with
 #' [X-Ray](https://docs.aws.amazon.com/lambda/latest/dg/services-xray.html).
@@ -961,7 +1073,7 @@ lambda_create_event_source_mapping <- function(EventSourceArn = NULL, FunctionNa
 #' list(
 #'   FunctionName = "string",
 #'   FunctionArn = "string",
-#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21",
+#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x",
 #'   Role = "string",
 #'   Handler = "string",
 #'   CodeSize = 123,
@@ -1067,7 +1179,7 @@ lambda_create_event_source_mapping <- function(EventSourceArn = NULL, FunctionNa
 #' ```
 #' svc$create_function(
 #'   FunctionName = "string",
-#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21",
+#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x",
 #'   Role = "string",
 #'   Handler = "string",
 #'   Code = list(
@@ -1075,7 +1187,8 @@ lambda_create_event_source_mapping <- function(EventSourceArn = NULL, FunctionNa
 #'     S3Bucket = "string",
 #'     S3Key = "string",
 #'     S3ObjectVersion = "string",
-#'     ImageUri = "string"
+#'     ImageUri = "string",
+#'     SourceKMSKeyArn = "string"
 #'   ),
 #'   Description = "string",
 #'   Timeout = 123,
@@ -1142,6 +1255,39 @@ lambda_create_event_source_mapping <- function(EventSourceArn = NULL, FunctionNa
 #'   )
 #' )
 #' ```
+#'
+#' @examples
+#' \dontrun{
+#' # The following example creates a function with a deployment package in
+#' # Amazon S3 and enables X-Ray tracing and environment variable encryption.
+#' svc$create_function(
+#'   Code = list(
+#'     S3Bucket = "my-bucket-1xpuxmplzrlbh",
+#'     S3Key = "function.zip"
+#'   ),
+#'   Description = "Process image objects from Amazon S3.",
+#'   Environment = list(
+#'     Variables = list(
+#'       BUCKET = "my-bucket-1xpuxmplzrlbh",
+#'       PREFIX = "inbound"
+#'     )
+#'   ),
+#'   FunctionName = "my-function",
+#'   Handler = "index.handler",
+#'   KMSKeyArn = "arn:aws:kms:us-west-2:123456789012:key/b0844d6c-xmpl-4463-97a4-d49f50839966",
+#'   MemorySize = 256L,
+#'   Publish = TRUE,
+#'   Role = "arn:aws:iam::123456789012:role/lambda-role",
+#'   Runtime = "nodejs12.x",
+#'   Tags = list(
+#'     DEPARTMENT = "Assets"
+#'   ),
+#'   Timeout = 15L,
+#'   TracingConfig = list(
+#'     Mode = "Active"
+#'   )
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -1329,6 +1475,16 @@ lambda_create_function_url_config <- function(FunctionName, Qualifier = NULL, Au
 #' )
 #' ```
 #'
+#' @examples
+#' \dontrun{
+#' # The following example deletes an alias named BLUE from a function named
+#' # my-function
+#' svc$delete_alias(
+#'   FunctionName = "my-function",
+#'   Name = "BLUE"
+#' )
+#' }
+#'
 #' @keywords internal
 #'
 #' @rdname lambda_delete_alias
@@ -1493,6 +1649,16 @@ lambda_delete_code_signing_config <- function(CodeSigningConfigArn) {
 #'   FilterCriteriaError = list(
 #'     ErrorCode = "string",
 #'     Message = "string"
+#'   ),
+#'   EventSourceMappingArn = "string",
+#'   MetricsConfig = list(
+#'     Metrics = list(
+#'       "EventCount"
+#'     )
+#'   ),
+#'   ProvisionedPollerConfig = list(
+#'     MinimumPollers = 123,
+#'     MaximumPollers = 123
 #'   )
 #' )
 #' ```
@@ -1503,6 +1669,15 @@ lambda_delete_code_signing_config <- function(CodeSigningConfigArn) {
 #'   UUID = "string"
 #' )
 #' ```
+#'
+#' @examples
+#' \dontrun{
+#' # The following example deletes an event source mapping. To get a
+#' # mapping's UUID, use ListEventSourceMappings.
+#' svc$delete_event_source_mapping(
+#'   UUID = "14e0db71-xmpl-4eb5-b481-8945cf9d10c2"
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -1538,7 +1713,7 @@ lambda_delete_event_source_mapping <- function(UUID) {
 #' 
 #' To delete Lambda event source mappings that invoke a function, use
 #' [`delete_event_source_mapping`][lambda_delete_event_source_mapping]. For
-#' Amazon Web Servicesservices and resources that invoke your function
+#' Amazon Web Services services and resources that invoke your function
 #' directly, delete the trigger in the service where you originally
 #' configured it.
 #'
@@ -1573,6 +1748,16 @@ lambda_delete_event_source_mapping <- function(UUID) {
 #'   Qualifier = "string"
 #' )
 #' ```
+#'
+#' @examples
+#' \dontrun{
+#' # The following example deletes version 1 of a Lambda function named
+#' # my-function.
+#' svc$delete_function(
+#'   FunctionName = "my-function",
+#'   Qualifier = "1"
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -1686,6 +1871,15 @@ lambda_delete_function_code_signing_config <- function(FunctionName) {
 #' )
 #' ```
 #'
+#' @examples
+#' \dontrun{
+#' # The following example deletes the reserved concurrent execution limit
+#' # from a function named my-function.
+#' svc$delete_function_concurrency(
+#'   FunctionName = "my-function"
+#' )
+#' }
+#'
 #' @keywords internal
 #'
 #' @rdname lambda_delete_function_concurrency
@@ -1750,6 +1944,16 @@ lambda_delete_function_concurrency <- function(FunctionName) {
 #'   Qualifier = "string"
 #' )
 #' ```
+#'
+#' @examples
+#' \dontrun{
+#' # The following example deletes the asynchronous invocation configuration
+#' # for the GREEN alias of a function named my-function.
+#' svc$delete_function_event_invoke_config(
+#'   FunctionName = "my-function",
+#'   Qualifier = "GREEN"
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -1861,6 +2065,15 @@ lambda_delete_function_url_config <- function(FunctionName, Qualifier = NULL) {
 #' )
 #' ```
 #'
+#' @examples
+#' \dontrun{
+#' # The following example deletes version 2 of a layer named my-layer.
+#' svc$delete_layer_version(
+#'   LayerName = "my-layer",
+#'   VersionNumber = 2L
+#' )
+#' }
+#'
 #' @keywords internal
 #'
 #' @rdname lambda_delete_layer_version
@@ -1918,6 +2131,16 @@ lambda_delete_layer_version <- function(LayerName, VersionNumber) {
 #'   Qualifier = "string"
 #' )
 #' ```
+#'
+#' @examples
+#' \dontrun{
+#' # The following example deletes the provisioned concurrency configuration
+#' # for the GREEN alias of a function named my-function.
+#' svc$delete_provisioned_concurrency_config(
+#'   FunctionName = "my-function",
+#'   Qualifier = "GREEN"
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -1978,6 +2201,13 @@ lambda_delete_provisioned_concurrency_config <- function(FunctionName, Qualifier
 #' ```
 #' svc$get_account_settings()
 #' ```
+#'
+#' @examples
+#' \dontrun{
+#' # This operation takes no parameters and returns details about storage and
+#' # concurrency quotas in the current Region.
+#' svc$get_account_settings()
+#' }
 #'
 #' @keywords internal
 #'
@@ -2051,6 +2281,16 @@ lambda_get_account_settings <- function() {
 #'   Name = "string"
 #' )
 #' ```
+#'
+#' @examples
+#' \dontrun{
+#' # The following example returns details about an alias named BLUE for a
+#' # function named my-function
+#' svc$get_alias(
+#'   FunctionName = "my-function",
+#'   Name = "BLUE"
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -2229,6 +2469,16 @@ lambda_get_code_signing_config <- function(CodeSigningConfigArn) {
 #'   FilterCriteriaError = list(
 #'     ErrorCode = "string",
 #'     Message = "string"
+#'   ),
+#'   EventSourceMappingArn = "string",
+#'   MetricsConfig = list(
+#'     Metrics = list(
+#'       "EventCount"
+#'     )
+#'   ),
+#'   ProvisionedPollerConfig = list(
+#'     MinimumPollers = 123,
+#'     MaximumPollers = 123
 #'   )
 #' )
 #' ```
@@ -2239,6 +2489,15 @@ lambda_get_code_signing_config <- function(CodeSigningConfigArn) {
 #'   UUID = "string"
 #' )
 #' ```
+#'
+#' @examples
+#' \dontrun{
+#' # The following example returns details about an event source mapping. To
+#' # get a mapping's UUID, use ListEventSourceMappings.
+#' svc$get_event_source_mapping(
+#'   UUID = "14e0db71-xmpl-4eb5-b481-8945cf9d10c2"
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -2301,7 +2560,7 @@ lambda_get_event_source_mapping <- function(UUID) {
 #'   Configuration = list(
 #'     FunctionName = "string",
 #'     FunctionArn = "string",
-#'     Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21",
+#'     Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x",
 #'     Role = "string",
 #'     Handler = "string",
 #'     CodeSize = 123,
@@ -2405,10 +2664,15 @@ lambda_get_event_source_mapping <- function(UUID) {
 #'     RepositoryType = "string",
 #'     Location = "string",
 #'     ImageUri = "string",
-#'     ResolvedImageUri = "string"
+#'     ResolvedImageUri = "string",
+#'     SourceKMSKeyArn = "string"
 #'   ),
 #'   Tags = list(
 #'     "string"
+#'   ),
+#'   TagsError = list(
+#'     ErrorCode = "string",
+#'     Message = "string"
 #'   ),
 #'   Concurrency = list(
 #'     ReservedConcurrentExecutions = 123
@@ -2423,6 +2687,16 @@ lambda_get_event_source_mapping <- function(UUID) {
 #'   Qualifier = "string"
 #' )
 #' ```
+#'
+#' @examples
+#' \dontrun{
+#' # The following example returns code and configuration details for version
+#' # 1 of a function named my-function.
+#' svc$get_function(
+#'   FunctionName = "my-function",
+#'   Qualifier = "1"
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -2550,6 +2824,15 @@ lambda_get_function_code_signing_config <- function(FunctionName) {
 #' )
 #' ```
 #'
+#' @examples
+#' \dontrun{
+#' # The following example returns the reserved concurrency setting for a
+#' # function named my-function.
+#' svc$get_function_concurrency(
+#'   FunctionName = "my-function"
+#' )
+#' }
+#'
 #' @keywords internal
 #'
 #' @rdname lambda_get_function_concurrency
@@ -2612,7 +2895,7 @@ lambda_get_function_concurrency <- function(FunctionName) {
 #' list(
 #'   FunctionName = "string",
 #'   FunctionArn = "string",
-#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21",
+#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x",
 #'   Role = "string",
 #'   Handler = "string",
 #'   CodeSize = 123,
@@ -2722,6 +3005,16 @@ lambda_get_function_concurrency <- function(FunctionName) {
 #' )
 #' ```
 #'
+#' @examples
+#' \dontrun{
+#' # The following example returns and configuration details for version 1 of
+#' # a function named my-function.
+#' svc$get_function_configuration(
+#'   FunctionName = "my-function",
+#'   Qualifier = "1"
+#' )
+#' }
+#'
 #' @keywords internal
 #'
 #' @rdname lambda_get_function_configuration
@@ -2804,6 +3097,16 @@ lambda_get_function_configuration <- function(FunctionName, Qualifier = NULL) {
 #'   Qualifier = "string"
 #' )
 #' ```
+#'
+#' @examples
+#' \dontrun{
+#' # The following example returns the asynchronous invocation configuration
+#' # for the BLUE alias of a function named my-function.
+#' svc$get_function_event_invoke_config(
+#'   FunctionName = "my-function",
+#'   Qualifier = "BLUE"
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -2995,7 +3298,7 @@ lambda_get_function_url_config <- function(FunctionName, Qualifier = NULL) {
 #'   CreatedDate = "string",
 #'   Version = 123,
 #'   CompatibleRuntimes = list(
-#'     "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"
+#'     "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x"
 #'   ),
 #'   LicenseInfo = "string",
 #'   CompatibleArchitectures = list(
@@ -3011,6 +3314,16 @@ lambda_get_function_url_config <- function(FunctionName, Qualifier = NULL) {
 #'   VersionNumber = 123
 #' )
 #' ```
+#'
+#' @examples
+#' \dontrun{
+#' # The following example returns information for version 1 of a layer named
+#' # my-layer.
+#' svc$get_layer_version(
+#'   LayerName = "my-layer",
+#'   VersionNumber = 1L
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -3066,7 +3379,7 @@ lambda_get_layer_version <- function(LayerName, VersionNumber) {
 #'   CreatedDate = "string",
 #'   Version = 123,
 #'   CompatibleRuntimes = list(
-#'     "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"
+#'     "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x"
 #'   ),
 #'   LicenseInfo = "string",
 #'   CompatibleArchitectures = list(
@@ -3081,6 +3394,15 @@ lambda_get_layer_version <- function(LayerName, VersionNumber) {
 #'   Arn = "string"
 #' )
 #' ```
+#'
+#' @examples
+#' \dontrun{
+#' # The following example returns information about the layer version with
+#' # the specified Amazon Resource Name (ARN).
+#' svc$get_layer_version_by_arn(
+#'   Arn = "arn:aws:lambda:ca-central-1:123456789012:layer:blank-python-lib:3"
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -3205,6 +3527,16 @@ lambda_get_layer_version_policy <- function(LayerName, VersionNumber) {
 #' )
 #' ```
 #'
+#' @examples
+#' \dontrun{
+#' # The following example returns the resource-based policy for version 1 of
+#' # a Lambda function named my-function.
+#' svc$get_policy(
+#'   FunctionName = "my-function",
+#'   Qualifier = "1"
+#' )
+#' }
+#'
 #' @keywords internal
 #'
 #' @rdname lambda_get_policy
@@ -3274,6 +3606,23 @@ lambda_get_policy <- function(FunctionName, Qualifier = NULL) {
 #'   Qualifier = "string"
 #' )
 #' ```
+#'
+#' @examples
+#' \dontrun{
+#' # The following example returns details for the provisioned concurrency
+#' # configuration for the BLUE alias of the specified function.
+#' svc$get_provisioned_concurrency_config(
+#'   FunctionName = "my-function",
+#'   Qualifier = "BLUE"
+#' )
+#' 
+#' # The following example displays details for the provisioned concurrency
+#' # configuration for the BLUE alias of the specified function.
+#' svc$get_provisioned_concurrency_config(
+#'   FunctionName = "my-function",
+#'   Qualifier = "BLUE"
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -3498,6 +3847,26 @@ lambda_get_runtime_management_config <- function(FunctionName, Qualifier = NULL)
 #' )
 #' ```
 #'
+#' @examples
+#' \dontrun{
+#' # The following example invokes version 1 of a function named my-function
+#' # with an empty event payload.
+#' svc$invoke(
+#'   FunctionName = "my-function",
+#'   Payload = "{}",
+#'   Qualifier = "1"
+#' )
+#' 
+#' # The following example invokes version 1 of a function named my-function
+#' # asynchronously.
+#' svc$invoke(
+#'   FunctionName = "my-function",
+#'   InvocationType = "Event",
+#'   Payload = "{}",
+#'   Qualifier = "1"
+#' )
+#' }
+#'
 #' @keywords internal
 #'
 #' @rdname lambda_invoke
@@ -3566,6 +3935,15 @@ lambda_invoke <- function(FunctionName, InvocationType = NULL, LogType = NULL, C
 #'   InvokeArgs = raw
 #' )
 #' ```
+#'
+#' @examples
+#' \dontrun{
+#' # The following example invokes a Lambda function asynchronously
+#' svc$invoke_async(
+#'   FunctionName = "my-function",
+#'   InvokeArgs = "{}"
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -3760,6 +4138,15 @@ lambda_invoke_with_response_stream <- function(FunctionName, InvocationType = NU
 #' )
 #' ```
 #'
+#' @examples
+#' \dontrun{
+#' # The following example returns a list of aliases for a function named
+#' # my-function.
+#' svc$list_aliases(
+#'   FunctionName = "my-function"
+#' )
+#' }
+#'
 #' @keywords internal
 #'
 #' @rdname lambda_list_aliases
@@ -3771,7 +4158,7 @@ lambda_list_aliases <- function(FunctionName, FunctionVersion = NULL, Marker = N
     http_method = "GET",
     http_path = "/2015-03-31/functions/{FunctionName}/aliases",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxItems", output_token = "NextMarker", result_key = "Aliases"),
+    paginator = list(input_token = "Marker", output_token = "NextMarker", limit_key = "MaxItems", result_key = "Aliases"),
     stream_api = FALSE
   )
   input <- .lambda$list_aliases_input(FunctionName = FunctionName, FunctionVersion = FunctionVersion, Marker = Marker, MaxItems = MaxItems)
@@ -3985,6 +4372,16 @@ lambda_list_code_signing_configs <- function(Marker = NULL, MaxItems = NULL) {
 #'       FilterCriteriaError = list(
 #'         ErrorCode = "string",
 #'         Message = "string"
+#'       ),
+#'       EventSourceMappingArn = "string",
+#'       MetricsConfig = list(
+#'         Metrics = list(
+#'           "EventCount"
+#'         )
+#'       ),
+#'       ProvisionedPollerConfig = list(
+#'         MinimumPollers = 123,
+#'         MaximumPollers = 123
 #'       )
 #'     )
 #'   )
@@ -4001,6 +4398,15 @@ lambda_list_code_signing_configs <- function(Marker = NULL, MaxItems = NULL) {
 #' )
 #' ```
 #'
+#' @examples
+#' \dontrun{
+#' # The following example returns a list of the event source mappings for a
+#' # function named my-function.
+#' svc$list_event_source_mappings(
+#'   FunctionName = "my-function"
+#' )
+#' }
+#'
 #' @keywords internal
 #'
 #' @rdname lambda_list_event_source_mappings
@@ -4012,7 +4418,7 @@ lambda_list_event_source_mappings <- function(EventSourceArn = NULL, FunctionNam
     http_method = "GET",
     http_path = "/2015-03-31/event-source-mappings/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxItems", output_token = "NextMarker", result_key = "EventSourceMappings"),
+    paginator = list(input_token = "Marker", output_token = "NextMarker", limit_key = "MaxItems", result_key = "EventSourceMappings"),
     stream_api = FALSE
   )
   input <- .lambda$list_event_source_mappings_input(EventSourceArn = EventSourceArn, FunctionName = FunctionName, Marker = Marker, MaxItems = MaxItems)
@@ -4090,6 +4496,15 @@ lambda_list_event_source_mappings <- function(EventSourceArn = NULL, FunctionNam
 #'   MaxItems = 123
 #' )
 #' ```
+#'
+#' @examples
+#' \dontrun{
+#' # The following example returns a list of asynchronous invocation
+#' # configurations for a function named my-function.
+#' svc$list_function_event_invoke_configs(
+#'   FunctionName = "my-function"
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -4252,7 +4667,7 @@ lambda_list_function_url_configs <- function(FunctionName, Marker = NULL, MaxIte
 #'     list(
 #'       FunctionName = "string",
 #'       FunctionArn = "string",
-#'       Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21",
+#'       Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x",
 #'       Role = "string",
 #'       Handler = "string",
 #'       CodeSize = 123,
@@ -4366,6 +4781,12 @@ lambda_list_function_url_configs <- function(FunctionName, Marker = NULL, MaxIte
 #' )
 #' ```
 #'
+#' @examples
+#' \dontrun{
+#' # This operation returns a list of Lambda functions.
+#' svc$list_functions()
+#' }
+#'
 #' @keywords internal
 #'
 #' @rdname lambda_list_functions
@@ -4377,7 +4798,7 @@ lambda_list_functions <- function(MasterRegion = NULL, FunctionVersion = NULL, M
     http_method = "GET",
     http_path = "/2015-03-31/functions/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxItems", output_token = "NextMarker", result_key = "Functions"),
+    paginator = list(input_token = "Marker", output_token = "NextMarker", limit_key = "MaxItems", result_key = "Functions"),
     stream_api = FALSE
   )
   input <- .lambda$list_functions_input(MasterRegion = MasterRegion, FunctionVersion = FunctionVersion, Marker = Marker, MaxItems = MaxItems)
@@ -4491,7 +4912,7 @@ lambda_list_functions_by_code_signing_config <- function(CodeSigningConfigArn, M
 #'       Description = "string",
 #'       CreatedDate = "string",
 #'       CompatibleRuntimes = list(
-#'         "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"
+#'         "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x"
 #'       ),
 #'       LicenseInfo = "string",
 #'       CompatibleArchitectures = list(
@@ -4505,13 +4926,22 @@ lambda_list_functions_by_code_signing_config <- function(CodeSigningConfigArn, M
 #' @section Request syntax:
 #' ```
 #' svc$list_layer_versions(
-#'   CompatibleRuntime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21",
+#'   CompatibleRuntime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x",
 #'   LayerName = "string",
 #'   Marker = "string",
 #'   MaxItems = 123,
 #'   CompatibleArchitecture = "x86_64"|"arm64"
 #' )
 #' ```
+#'
+#' @examples
+#' \dontrun{
+#' # The following example displays information about the versions for the
+#' # layer named blank-java-lib
+#' svc$list_layer_versions(
+#'   LayerName = "blank-java-lib"
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -4583,7 +5013,7 @@ lambda_list_layer_versions <- function(CompatibleRuntime = NULL, LayerName, Mark
 #'         Description = "string",
 #'         CreatedDate = "string",
 #'         CompatibleRuntimes = list(
-#'           "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"
+#'           "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x"
 #'         ),
 #'         LicenseInfo = "string",
 #'         CompatibleArchitectures = list(
@@ -4598,12 +5028,21 @@ lambda_list_layer_versions <- function(CompatibleRuntime = NULL, LayerName, Mark
 #' @section Request syntax:
 #' ```
 #' svc$list_layers(
-#'   CompatibleRuntime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21",
+#'   CompatibleRuntime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x",
 #'   Marker = "string",
 #'   MaxItems = 123,
 #'   CompatibleArchitecture = "x86_64"|"arm64"
 #' )
 #' ```
+#'
+#' @examples
+#' \dontrun{
+#' # The following example returns information about layers that are
+#' # compatible with the Python 3.7 runtime.
+#' svc$list_layers(
+#'   CompatibleRuntime = "python3.7"
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -4685,6 +5124,15 @@ lambda_list_layers <- function(CompatibleRuntime = NULL, Marker = NULL, MaxItems
 #' )
 #' ```
 #'
+#' @examples
+#' \dontrun{
+#' # The following example returns a list of provisioned concurrency
+#' # configurations for a function named my-function.
+#' svc$list_provisioned_concurrency_configs(
+#'   FunctionName = "my-function"
+#' )
+#' }
+#'
 #' @keywords internal
 #'
 #' @rdname lambda_list_provisioned_concurrency_configs
@@ -4709,18 +5157,21 @@ lambda_list_provisioned_concurrency_configs <- function(FunctionName, Marker = N
 }
 .lambda$operations$list_provisioned_concurrency_configs <- lambda_list_provisioned_concurrency_configs
 
-#' Returns a function's tags
+#' Returns a function, event source mapping, or code signing
+#' configuration's tags
 #'
 #' @description
-#' Returns a function's
+#' Returns a function, event source mapping, or code signing
+#' configuration's
 #' [tags](https://docs.aws.amazon.com/lambda/latest/dg/configuration-tags.html).
-#' You can also view tags with [`get_function`][lambda_get_function].
+#' You can also view function tags with
+#' [`get_function`][lambda_get_function].
 #'
 #' @usage
 #' lambda_list_tags(Resource)
 #'
-#' @param Resource &#91;required&#93; The function's Amazon Resource Name (ARN). Note: Lambda does not support
-#' adding tags to aliases or versions.
+#' @param Resource &#91;required&#93; The resource's Amazon Resource Name (ARN). Note: Lambda does not support
+#' adding tags to function aliases or versions.
 #'
 #' @return
 #' A list with the following syntax:
@@ -4738,6 +5189,15 @@ lambda_list_provisioned_concurrency_configs <- function(FunctionName, Marker = N
 #'   Resource = "string"
 #' )
 #' ```
+#'
+#' @examples
+#' \dontrun{
+#' # The following example displays the tags attached to the my-function
+#' # Lambda function.
+#' svc$list_tags(
+#'   Resource = "arn:aws:lambda:us-west-2:123456789012:function:my-function"
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -4804,7 +5264,7 @@ lambda_list_tags <- function(Resource) {
 #'     list(
 #'       FunctionName = "string",
 #'       FunctionArn = "string",
-#'       Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21",
+#'       Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x",
 #'       Role = "string",
 #'       Handler = "string",
 #'       CodeSize = 123,
@@ -4917,6 +5377,15 @@ lambda_list_tags <- function(Resource) {
 #' )
 #' ```
 #'
+#' @examples
+#' \dontrun{
+#' # The following example returns a list of versions of a function named
+#' # my-function
+#' svc$list_versions_by_function(
+#'   FunctionName = "my-function"
+#' )
+#' }
+#'
 #' @keywords internal
 #'
 #' @rdname lambda_list_versions_by_function
@@ -4998,7 +5467,7 @@ lambda_list_versions_by_function <- function(FunctionName, Marker = NULL, MaxIte
 #'   CreatedDate = "string",
 #'   Version = 123,
 #'   CompatibleRuntimes = list(
-#'     "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"
+#'     "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x"
 #'   ),
 #'   LicenseInfo = "string",
 #'   CompatibleArchitectures = list(
@@ -5019,7 +5488,7 @@ lambda_list_versions_by_function <- function(FunctionName, Marker = NULL, MaxIte
 #'     ZipFile = raw
 #'   ),
 #'   CompatibleRuntimes = list(
-#'     "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"
+#'     "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x"
 #'   ),
 #'   LicenseInfo = "string",
 #'   CompatibleArchitectures = list(
@@ -5027,6 +5496,26 @@ lambda_list_versions_by_function <- function(FunctionName, Marker = NULL, MaxIte
 #'   )
 #' )
 #' ```
+#'
+#' @examples
+#' \dontrun{
+#' # The following example creates a new Python library layer version. The
+#' # command retrieves the layer content a file named layer.zip in the
+#' # specified S3 bucket.
+#' svc$publish_layer_version(
+#'   CompatibleRuntimes = list(
+#'     "python3.6",
+#'     "python3.7"
+#'   ),
+#'   Content = list(
+#'     S3Bucket = "lambda-layers-us-west-2-123456789012",
+#'     S3Key = "layer.zip"
+#'   ),
+#'   Description = "My Python layer",
+#'   LayerName = "my-layer",
+#'   LicenseInfo = "MIT"
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -5104,7 +5593,7 @@ lambda_publish_layer_version <- function(LayerName, Description = NULL, Content,
 #' list(
 #'   FunctionName = "string",
 #'   FunctionArn = "string",
-#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21",
+#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x",
 #'   Role = "string",
 #'   Handler = "string",
 #'   CodeSize = 123,
@@ -5215,6 +5704,16 @@ lambda_publish_layer_version <- function(LayerName, Description = NULL, Content,
 #'   RevisionId = "string"
 #' )
 #' ```
+#'
+#' @examples
+#' \dontrun{
+#' # This operation publishes a version of a Lambda function
+#' svc$publish_version(
+#'   CodeSha256 = "",
+#'   Description = "",
+#'   FunctionName = "myFunction"
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -5363,6 +5862,16 @@ lambda_put_function_code_signing_config <- function(CodeSigningConfigArn, Functi
 #' )
 #' ```
 #'
+#' @examples
+#' \dontrun{
+#' # The following example configures 100 reserved concurrent executions for
+#' # the my-function function.
+#' svc$put_function_concurrency(
+#'   FunctionName = "my-function",
+#'   ReservedConcurrentExecutions = 100L
+#' )
+#' }
+#'
 #' @keywords internal
 #'
 #' @rdname lambda_put_function_concurrency
@@ -5406,13 +5915,16 @@ lambda_put_function_concurrency <- function(FunctionName, ReservedConcurrentExec
 #' retain discarded events, configure a dead-letter queue with
 #' [`update_function_configuration`][lambda_update_function_configuration].
 #' 
-#' To send an invocation record to a queue, topic, function, or event bus,
-#' specify a
+#' To send an invocation record to a queue, topic, S3 bucket, function, or
+#' event bus, specify a
 #' [destination](https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html#invocation-async-destinations).
 #' You can configure separate destinations for successful invocations
 #' (on-success) and events that fail all processing attempts (on-failure).
 #' You can configure destinations in addition to or instead of a
 #' dead-letter queue.
+#' 
+#' S3 buckets are supported only for on-failure destinations. To retain
+#' records of successful invocations, use another destination type.
 #'
 #' @usage
 #' lambda_put_function_event_invoke_config(FunctionName, Qualifier,
@@ -5446,9 +5958,14 @@ lambda_put_function_concurrency <- function(FunctionName, ReservedConcurrentExec
 #' 
 #' -   **Queue** - The ARN of a standard SQS queue.
 #' 
+#' -   **Bucket** - The ARN of an Amazon S3 bucket.
+#' 
 #' -   **Topic** - The ARN of a standard SNS topic.
 #' 
 #' -   **Event Bus** - The ARN of an Amazon EventBridge event bus.
+#' 
+#' S3 buckets are supported only for on-failure destinations. To retain
+#' records of successful invocations, use another destination type.
 #'
 #' @return
 #' A list with the following syntax:
@@ -5488,6 +6005,17 @@ lambda_put_function_concurrency <- function(FunctionName, ReservedConcurrentExec
 #'   )
 #' )
 #' ```
+#'
+#' @examples
+#' \dontrun{
+#' # The following example sets a maximum event age of one hour and disables
+#' # retries for the specified function.
+#' svc$put_function_event_invoke_config(
+#'   FunctionName = "my-function",
+#'   MaximumEventAgeInSeconds = 3600L,
+#'   MaximumRetryAttempts = 0L
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -5660,6 +6188,17 @@ lambda_put_function_recursion_config <- function(FunctionName, RecursiveLoop) {
 #' )
 #' ```
 #'
+#' @examples
+#' \dontrun{
+#' # The following example allocates 100 provisioned concurrency for the BLUE
+#' # alias of the specified function.
+#' svc$put_provisioned_concurrency_config(
+#'   FunctionName = "my-function",
+#'   ProvisionedConcurrentExecutions = 100L,
+#'   Qualifier = "BLUE"
+#' )
+#' }
+#'
 #' @keywords internal
 #'
 #' @rdname lambda_put_provisioned_concurrency_config
@@ -5817,6 +6356,17 @@ lambda_put_runtime_management_config <- function(FunctionName, Qualifier = NULL,
 #' )
 #' ```
 #'
+#' @examples
+#' \dontrun{
+#' # The following example deletes permission for an account to configure a
+#' # layer version.
+#' svc$remove_layer_version_permission(
+#'   LayerName = "my-layer",
+#'   StatementId = "xaccount",
+#'   VersionNumber = 1L
+#' )
+#' }
+#'
 #' @keywords internal
 #'
 #' @rdname lambda_remove_layer_version_permission
@@ -5841,11 +6391,11 @@ lambda_remove_layer_version_permission <- function(LayerName, VersionNumber, Sta
 }
 .lambda$operations$remove_layer_version_permission <- lambda_remove_layer_version_permission
 
-#' Revokes function-use permission from an Amazon Web Servicesservice or
+#' Revokes function-use permission from an Amazon Web Services service or
 #' another Amazon Web Services account
 #'
 #' @description
-#' Revokes function-use permission from an Amazon Web Servicesservice or
+#' Revokes function-use permission from an Amazon Web Services service or
 #' another Amazon Web Services account. You can get the ID of the statement
 #' from the output of [`get_policy`][lambda_get_policy].
 #'
@@ -5888,6 +6438,17 @@ lambda_remove_layer_version_permission <- function(LayerName, VersionNumber, Sta
 #' )
 #' ```
 #'
+#' @examples
+#' \dontrun{
+#' # The following example removes a permissions statement named xaccount
+#' # from the PROD alias of a function named my-function.
+#' svc$remove_permission(
+#'   FunctionName = "my-function",
+#'   Qualifier = "PROD",
+#'   StatementId = "xaccount"
+#' )
+#' }
+#'
 #' @keywords internal
 #'
 #' @rdname lambda_remove_permission
@@ -5912,18 +6473,19 @@ lambda_remove_permission <- function(FunctionName, StatementId, Qualifier = NULL
 }
 .lambda$operations$remove_permission <- lambda_remove_permission
 
-#' Adds tags to a function
+#' Adds tags to a function, event source mapping, or code signing
+#' configuration
 #'
 #' @description
 #' Adds
 #' [tags](https://docs.aws.amazon.com/lambda/latest/dg/configuration-tags.html)
-#' to a function.
+#' to a function, event source mapping, or code signing configuration.
 #'
 #' @usage
 #' lambda_tag_resource(Resource, Tags)
 #'
-#' @param Resource &#91;required&#93; The function's Amazon Resource Name (ARN).
-#' @param Tags &#91;required&#93; A list of tags to apply to the function.
+#' @param Resource &#91;required&#93; The resource's Amazon Resource Name (ARN).
+#' @param Tags &#91;required&#93; A list of tags to apply to the resource.
 #'
 #' @return
 #' An empty list.
@@ -5937,6 +6499,18 @@ lambda_remove_permission <- function(FunctionName, StatementId, Qualifier = NULL
 #'   )
 #' )
 #' ```
+#'
+#' @examples
+#' \dontrun{
+#' # The following example adds a tag with the key name DEPARTMENT and a
+#' # value of 'Department A' to the specified Lambda function.
+#' svc$tag_resource(
+#'   Resource = "arn:aws:lambda:us-west-2:123456789012:function:my-function",
+#'   Tags = list(
+#'     DEPARTMENT = "Department A"
+#'   )
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -5962,18 +6536,19 @@ lambda_tag_resource <- function(Resource, Tags) {
 }
 .lambda$operations$tag_resource <- lambda_tag_resource
 
-#' Removes tags from a function
+#' Removes tags from a function, event source mapping, or code signing
+#' configuration
 #'
 #' @description
 #' Removes
 #' [tags](https://docs.aws.amazon.com/lambda/latest/dg/configuration-tags.html)
-#' from a function.
+#' from a function, event source mapping, or code signing configuration.
 #'
 #' @usage
 #' lambda_untag_resource(Resource, TagKeys)
 #'
-#' @param Resource &#91;required&#93; The function's Amazon Resource Name (ARN).
-#' @param TagKeys &#91;required&#93; A list of tag keys to remove from the function.
+#' @param Resource &#91;required&#93; The resource's Amazon Resource Name (ARN).
+#' @param TagKeys &#91;required&#93; A list of tag keys to remove from the resource.
 #'
 #' @return
 #' An empty list.
@@ -5987,6 +6562,18 @@ lambda_tag_resource <- function(Resource, Tags) {
 #'   )
 #' )
 #' ```
+#'
+#' @examples
+#' \dontrun{
+#' # The following example removes the tag with the key name DEPARTMENT tag
+#' # from the my-function Lambda function.
+#' svc$untag_resource(
+#'   Resource = "arn:aws:lambda:us-west-2:123456789012:function:my-function",
+#'   TagKeys = list(
+#'     "DEPARTMENT"
+#'   )
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -6077,6 +6664,22 @@ lambda_untag_resource <- function(Resource, TagKeys) {
 #'   RevisionId = "string"
 #' )
 #' ```
+#'
+#' @examples
+#' \dontrun{
+#' # The following example updates the alias named BLUE to send 30% of
+#' # traffic to version 2 and 70% to version 1.
+#' svc$update_alias(
+#'   FunctionName = "my-function",
+#'   FunctionVersion = "2",
+#'   Name = "BLUE",
+#'   RoutingConfig = list(
+#'     AdditionalVersionWeights = list(
+#'       `1` = 0.7
+#'     )
+#'   )
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -6209,14 +6812,11 @@ lambda_update_code_signing_config <- function(CodeSigningConfigArn, Description 
 #' -   [Amazon
 #'     DocumentDB](https://docs.aws.amazon.com/lambda/latest/dg/with-documentdb.html)
 #' 
-#' The following error handling options are available only for stream
-#' sources (DynamoDB and Kinesis):
+#' The following error handling options are available only for DynamoDB and
+#' Kinesis event sources:
 #' 
 #' -   `BisectBatchOnFunctionError` – If the function returns an error,
 #'     split the batch in two and retry.
-#' 
-#' -   `DestinationConfig` – Send discarded records to an Amazon SQS queue
-#'     or Amazon SNS topic.
 #' 
 #' -   `MaximumRecordAgeInSeconds` – Discard records older than the
 #'     specified age. The default value is infinite (-1). When set to
@@ -6228,6 +6828,12 @@ lambda_update_code_signing_config <- function(CodeSigningConfigArn, Description 
 #' 
 #' -   `ParallelizationFactor` – Process multiple batches from each shard
 #'     concurrently.
+#' 
+#' For stream sources (DynamoDB, Kinesis, Amazon MSK, and self-managed
+#' Apache Kafka), the following option is also available:
+#' 
+#' -   `DestinationConfig` – Send discarded records to an Amazon SQS queue,
+#'     Amazon SNS topic, or Amazon S3 bucket.
 #' 
 #' For information about which configuration parameters apply to each event
 #' source, see the following topics.
@@ -6260,7 +6866,7 @@ lambda_update_code_signing_config <- function(CodeSigningConfigArn, Description 
 #'   BisectBatchOnFunctionError, MaximumRetryAttempts, ParallelizationFactor,
 #'   SourceAccessConfigurations, TumblingWindowInSeconds,
 #'   FunctionResponseTypes, ScalingConfig, DocumentDBEventSourceConfig,
-#'   KMSKeyArn)
+#'   KMSKeyArn, MetricsConfig, ProvisionedPollerConfig)
 #'
 #' @param UUID &#91;required&#93; The identifier of the event source mapping.
 #' @param FunctionName The name or ARN of the Lambda function.
@@ -6352,6 +6958,13 @@ lambda_update_code_signing_config <- function(CodeSigningConfigArn, Description 
 #' criteria](https://docs.aws.amazon.com/lambda/latest/dg/invocation-eventfiltering.html#filtering-basics).
 #' By default, Lambda does not encrypt your filter criteria object. Specify
 #' this property to encrypt data using your own customer managed key.
+#' @param MetricsConfig The metrics configuration for your event source. For more information,
+#' see [Event source mapping
+#' metrics](https://docs.aws.amazon.com/lambda/latest/dg/monitoring-metrics-types.html#event-source-mapping-metrics).
+#' @param ProvisionedPollerConfig (Amazon MSK and self-managed Apache Kafka only) The Provisioned Mode
+#' configuration for the event source. For more information, see
+#' [Provisioned
+#' Mode](https://docs.aws.amazon.com/lambda/latest/dg/invocation-eventsourcemapping.html#invocation-eventsourcemapping-provisioned-mode).
 #'
 #' @return
 #' A list with the following syntax:
@@ -6432,6 +7045,16 @@ lambda_update_code_signing_config <- function(CodeSigningConfigArn, Description 
 #'   FilterCriteriaError = list(
 #'     ErrorCode = "string",
 #'     Message = "string"
+#'   ),
+#'   EventSourceMappingArn = "string",
+#'   MetricsConfig = list(
+#'     Metrics = list(
+#'       "EventCount"
+#'     )
+#'   ),
+#'   ProvisionedPollerConfig = list(
+#'     MinimumPollers = 123,
+#'     MaximumPollers = 123
 #'   )
 #' )
 #' ```
@@ -6481,16 +7104,36 @@ lambda_update_code_signing_config <- function(CodeSigningConfigArn, Description 
 #'     CollectionName = "string",
 #'     FullDocument = "UpdateLookup"|"Default"
 #'   ),
-#'   KMSKeyArn = "string"
+#'   KMSKeyArn = "string",
+#'   MetricsConfig = list(
+#'     Metrics = list(
+#'       "EventCount"
+#'     )
+#'   ),
+#'   ProvisionedPollerConfig = list(
+#'     MinimumPollers = 123,
+#'     MaximumPollers = 123
+#'   )
 #' )
 #' ```
+#'
+#' @examples
+#' \dontrun{
+#' # This operation updates a Lambda function event source mapping
+#' svc$update_event_source_mapping(
+#'   BatchSize = 123L,
+#'   Enabled = TRUE,
+#'   FunctionName = "myFunction",
+#'   UUID = "1234xCy789012"
+#' )
+#' }
 #'
 #' @keywords internal
 #'
 #' @rdname lambda_update_event_source_mapping
 #'
 #' @aliases lambda_update_event_source_mapping
-lambda_update_event_source_mapping <- function(UUID, FunctionName = NULL, Enabled = NULL, BatchSize = NULL, FilterCriteria = NULL, MaximumBatchingWindowInSeconds = NULL, DestinationConfig = NULL, MaximumRecordAgeInSeconds = NULL, BisectBatchOnFunctionError = NULL, MaximumRetryAttempts = NULL, ParallelizationFactor = NULL, SourceAccessConfigurations = NULL, TumblingWindowInSeconds = NULL, FunctionResponseTypes = NULL, ScalingConfig = NULL, DocumentDBEventSourceConfig = NULL, KMSKeyArn = NULL) {
+lambda_update_event_source_mapping <- function(UUID, FunctionName = NULL, Enabled = NULL, BatchSize = NULL, FilterCriteria = NULL, MaximumBatchingWindowInSeconds = NULL, DestinationConfig = NULL, MaximumRecordAgeInSeconds = NULL, BisectBatchOnFunctionError = NULL, MaximumRetryAttempts = NULL, ParallelizationFactor = NULL, SourceAccessConfigurations = NULL, TumblingWindowInSeconds = NULL, FunctionResponseTypes = NULL, ScalingConfig = NULL, DocumentDBEventSourceConfig = NULL, KMSKeyArn = NULL, MetricsConfig = NULL, ProvisionedPollerConfig = NULL) {
   op <- new_operation(
     name = "UpdateEventSourceMapping",
     http_method = "PUT",
@@ -6499,7 +7142,7 @@ lambda_update_event_source_mapping <- function(UUID, FunctionName = NULL, Enable
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .lambda$update_event_source_mapping_input(UUID = UUID, FunctionName = FunctionName, Enabled = Enabled, BatchSize = BatchSize, FilterCriteria = FilterCriteria, MaximumBatchingWindowInSeconds = MaximumBatchingWindowInSeconds, DestinationConfig = DestinationConfig, MaximumRecordAgeInSeconds = MaximumRecordAgeInSeconds, BisectBatchOnFunctionError = BisectBatchOnFunctionError, MaximumRetryAttempts = MaximumRetryAttempts, ParallelizationFactor = ParallelizationFactor, SourceAccessConfigurations = SourceAccessConfigurations, TumblingWindowInSeconds = TumblingWindowInSeconds, FunctionResponseTypes = FunctionResponseTypes, ScalingConfig = ScalingConfig, DocumentDBEventSourceConfig = DocumentDBEventSourceConfig, KMSKeyArn = KMSKeyArn)
+  input <- .lambda$update_event_source_mapping_input(UUID = UUID, FunctionName = FunctionName, Enabled = Enabled, BatchSize = BatchSize, FilterCriteria = FilterCriteria, MaximumBatchingWindowInSeconds = MaximumBatchingWindowInSeconds, DestinationConfig = DestinationConfig, MaximumRecordAgeInSeconds = MaximumRecordAgeInSeconds, BisectBatchOnFunctionError = BisectBatchOnFunctionError, MaximumRetryAttempts = MaximumRetryAttempts, ParallelizationFactor = ParallelizationFactor, SourceAccessConfigurations = SourceAccessConfigurations, TumblingWindowInSeconds = TumblingWindowInSeconds, FunctionResponseTypes = FunctionResponseTypes, ScalingConfig = ScalingConfig, DocumentDBEventSourceConfig = DocumentDBEventSourceConfig, KMSKeyArn = KMSKeyArn, MetricsConfig = MetricsConfig, ProvisionedPollerConfig = ProvisionedPollerConfig)
   output <- .lambda$update_event_source_mapping_output()
   config <- get_config()
   svc <- .lambda$service(config, op)
@@ -6540,7 +7183,8 @@ lambda_update_event_source_mapping <- function(UUID, FunctionName = NULL, Enable
 #'
 #' @usage
 #' lambda_update_function_code(FunctionName, ZipFile, S3Bucket, S3Key,
-#'   S3ObjectVersion, ImageUri, Publish, DryRun, RevisionId, Architectures)
+#'   S3ObjectVersion, ImageUri, Publish, DryRun, RevisionId, Architectures,
+#'   SourceKMSKeyArn)
 #'
 #' @param FunctionName &#91;required&#93; The name or ARN of the Lambda function.
 #' 
@@ -6579,6 +7223,10 @@ lambda_update_event_source_mapping <- function(UUID, FunctionName = NULL, Enable
 #' @param Architectures The instruction set architecture that the function supports. Enter a
 #' string array with one of the valid values (arm64 or x86_64). The default
 #' value is `x86_64`.
+#' @param SourceKMSKeyArn The ARN of the Key Management Service (KMS) customer managed key that's
+#' used to encrypt your function's .zip deployment package. If you don't
+#' provide a customer managed key, Lambda uses an Amazon Web Services
+#' managed key.
 #'
 #' @return
 #' A list with the following syntax:
@@ -6586,7 +7234,7 @@ lambda_update_event_source_mapping <- function(UUID, FunctionName = NULL, Enable
 #' list(
 #'   FunctionName = "string",
 #'   FunctionArn = "string",
-#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21",
+#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x",
 #'   Role = "string",
 #'   Handler = "string",
 #'   CodeSize = 123,
@@ -6702,16 +7350,29 @@ lambda_update_event_source_mapping <- function(UUID, FunctionName = NULL, Enable
 #'   RevisionId = "string",
 #'   Architectures = list(
 #'     "x86_64"|"arm64"
-#'   )
+#'   ),
+#'   SourceKMSKeyArn = "string"
 #' )
 #' ```
+#'
+#' @examples
+#' \dontrun{
+#' # The following example replaces the code of the unpublished ($LATEST)
+#' # version of a function named my-function with the contents of the
+#' # specified zip file in Amazon S3.
+#' svc$update_function_code(
+#'   FunctionName = "my-function",
+#'   S3Bucket = "my-bucket-1xpuxmplzrlbh",
+#'   S3Key = "function.zip"
+#' )
+#' }
 #'
 #' @keywords internal
 #'
 #' @rdname lambda_update_function_code
 #'
 #' @aliases lambda_update_function_code
-lambda_update_function_code <- function(FunctionName, ZipFile = NULL, S3Bucket = NULL, S3Key = NULL, S3ObjectVersion = NULL, ImageUri = NULL, Publish = NULL, DryRun = NULL, RevisionId = NULL, Architectures = NULL) {
+lambda_update_function_code <- function(FunctionName, ZipFile = NULL, S3Bucket = NULL, S3Key = NULL, S3ObjectVersion = NULL, ImageUri = NULL, Publish = NULL, DryRun = NULL, RevisionId = NULL, Architectures = NULL, SourceKMSKeyArn = NULL) {
   op <- new_operation(
     name = "UpdateFunctionCode",
     http_method = "PUT",
@@ -6720,7 +7381,7 @@ lambda_update_function_code <- function(FunctionName, ZipFile = NULL, S3Bucket =
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .lambda$update_function_code_input(FunctionName = FunctionName, ZipFile = ZipFile, S3Bucket = S3Bucket, S3Key = S3Key, S3ObjectVersion = S3ObjectVersion, ImageUri = ImageUri, Publish = Publish, DryRun = DryRun, RevisionId = RevisionId, Architectures = Architectures)
+  input <- .lambda$update_function_code_input(FunctionName = FunctionName, ZipFile = ZipFile, S3Bucket = S3Bucket, S3Key = S3Key, S3ObjectVersion = S3ObjectVersion, ImageUri = ImageUri, Publish = Publish, DryRun = DryRun, RevisionId = RevisionId, Architectures = Architectures, SourceKMSKeyArn = SourceKMSKeyArn)
   output <- .lambda$update_function_code_output()
   config <- get_config()
   svc <- .lambda$service(config, op)
@@ -6754,7 +7415,7 @@ lambda_update_function_code <- function(FunctionName, ZipFile = NULL, S3Bucket =
 #' To configure function concurrency, use
 #' [`put_function_concurrency`][lambda_put_function_concurrency]. To grant
 #' invoke permissions to an Amazon Web Services account or Amazon Web
-#' Servicesservice, use [`add_permission`][lambda_add_permission].
+#' Services service, use [`add_permission`][lambda_add_permission].
 #'
 #' @usage
 #' lambda_update_function_configuration(FunctionName, Role, Handler,
@@ -6819,16 +7480,31 @@ lambda_update_function_code <- function(FunctionName, ZipFile = NULL, S3Bucket =
 #' more information, see [Dead-letter
 #' queues](https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html#invocation-dlq).
 #' @param KMSKeyArn The ARN of the Key Management Service (KMS) customer managed key that's
-#' used to encrypt your function's [environment
-#' variables](https://docs.aws.amazon.com/lambda/latest/dg/configuration-envvars.html#configuration-envvars-encryption).
-#' When [Lambda
-#' SnapStart](https://docs.aws.amazon.com/lambda/latest/dg/snapstart-security.html)
-#' is activated, Lambda also uses this key is to encrypt your function's
-#' snapshot. If you deploy your function using a container image, Lambda
-#' also uses this key to encrypt your function when it's deployed. Note
-#' that this is not the same key that's used to protect your container
-#' image in the Amazon Elastic Container Registry (Amazon ECR). If you
-#' don't provide a customer managed key, Lambda uses a default service key.
+#' used to encrypt the following resources:
+#' 
+#' -   The function's [environment
+#'     variables](https://docs.aws.amazon.com/lambda/latest/dg/configuration-envvars.html#configuration-envvars-encryption).
+#' 
+#' -   The function's [Lambda
+#'     SnapStart](https://docs.aws.amazon.com/lambda/latest/dg/snapstart-security.html)
+#'     snapshots.
+#' 
+#' -   When used with `SourceKMSKeyArn`, the unzipped version of the .zip
+#'     deployment package that's used for function invocations. For more
+#'     information, see [Specifying a customer managed key for
+#'     Lambda](https://docs.aws.amazon.com/lambda/latest/dg/encrypt-zip-package.html#enable-zip-custom-encryption).
+#' 
+#' -   The optimized version of the container image that's used for
+#'     function invocations. Note that this is not the same key that's used
+#'     to protect your container image in the Amazon Elastic Container
+#'     Registry (Amazon ECR). For more information, see [Function
+#'     lifecycle](https://docs.aws.amazon.com/lambda/latest/dg/images-create.html#images-lifecycle).
+#' 
+#' If you don't provide a customer managed key, Lambda uses an [Amazon Web
+#' Services owned
+#' key](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-owned-cmk)
+#' or an [Amazon Web Services managed
+#' key](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-cmk).
 #' @param TracingConfig Set `Mode` to `Active` to sample and trace a subset of incoming requests
 #' with
 #' [X-Ray](https://docs.aws.amazon.com/lambda/latest/dg/services-xray.html).
@@ -6858,7 +7534,7 @@ lambda_update_function_code <- function(FunctionName, ZipFile = NULL, S3Bucket =
 #' list(
 #'   FunctionName = "string",
 #'   FunctionArn = "string",
-#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21",
+#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x",
 #'   Role = "string",
 #'   Handler = "string",
 #'   CodeSize = 123,
@@ -6983,7 +7659,7 @@ lambda_update_function_code <- function(FunctionName, ZipFile = NULL, S3Bucket =
 #'       "string"
 #'     )
 #'   ),
-#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21",
+#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"nodejs14.x"|"nodejs16.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"python3.9"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"dotnet6"|"dotnet8"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"|"nodejs18.x"|"python3.10"|"java17"|"ruby3.2"|"ruby3.3"|"python3.11"|"nodejs20.x"|"provided.al2023"|"python3.12"|"java21"|"python3.13"|"nodejs22.x",
 #'   DeadLetterConfig = list(
 #'     TargetArn = "string"
 #'   ),
@@ -7024,6 +7700,16 @@ lambda_update_function_code <- function(FunctionName, ZipFile = NULL, S3Bucket =
 #'   )
 #' )
 #' ```
+#'
+#' @examples
+#' \dontrun{
+#' # The following example modifies the memory size to be 256 MB for the
+#' # unpublished ($LATEST) version of a function named my-function.
+#' svc$update_function_configuration(
+#'   FunctionName = "my-function",
+#'   MemorySize = 256L
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -7091,9 +7777,14 @@ lambda_update_function_configuration <- function(FunctionName, Role = NULL, Hand
 #' 
 #' -   **Queue** - The ARN of a standard SQS queue.
 #' 
+#' -   **Bucket** - The ARN of an Amazon S3 bucket.
+#' 
 #' -   **Topic** - The ARN of a standard SNS topic.
 #' 
 #' -   **Event Bus** - The ARN of an Amazon EventBridge event bus.
+#' 
+#' S3 buckets are supported only for on-failure destinations. To retain
+#' records of successful invocations, use another destination type.
 #'
 #' @return
 #' A list with the following syntax:
@@ -7133,6 +7824,20 @@ lambda_update_function_configuration <- function(FunctionName, Role = NULL, Hand
 #'   )
 #' )
 #' ```
+#'
+#' @examples
+#' \dontrun{
+#' # The following example adds an on-failure destination to the existing
+#' # asynchronous invocation configuration for a function named my-function.
+#' svc$update_function_event_invoke_config(
+#'   DestinationConfig = list(
+#'     OnFailure = list(
+#'       Destination = "arn:aws:sqs:us-east-2:123456789012:destination"
+#'     )
+#'   ),
+#'   FunctionName = "my-function"
+#' )
+#' }
 #'
 #' @keywords internal
 #'

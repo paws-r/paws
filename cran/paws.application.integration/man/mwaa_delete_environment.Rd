@@ -2,7 +2,7 @@
 % Please edit documentation in R/mwaa_operations.R
 \name{mwaa_delete_environment}
 \alias{mwaa_delete_environment}
-\title{Deletes an Amazon Managed Workflows for Apache Airflow (MWAA)
+\title{Deletes an Amazon Managed Workflows for Apache Airflow (Amazon MWAA)
 environment}
 \usage{
 mwaa_delete_environment(Name)
@@ -12,7 +12,7 @@ mwaa_delete_environment(Name)
 \code{MyMWAAEnvironment}.}
 }
 \description{
-Deletes an Amazon Managed Workflows for Apache Airflow (MWAA) environment.
+Deletes an Amazon Managed Workflows for Apache Airflow (Amazon MWAA) environment.
 
 See \url{https://www.paws-r-sdk.com/docs/mwaa_delete_environment/} for full documentation.
 }

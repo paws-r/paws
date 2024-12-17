@@ -11,6 +11,7 @@ ecs_update_service(
   taskDefinition = NULL,
   capacityProviderStrategy = NULL,
   deploymentConfiguration = NULL,
+  availabilityZoneRebalancing = NULL,
   networkConfiguration = NULL,
   placementConstraints = NULL,
   placementStrategy = NULL,
@@ -23,7 +24,8 @@ ecs_update_service(
   propagateTags = NULL,
   serviceRegistries = NULL,
   serviceConnectConfiguration = NULL,
-  volumeConfigurations = NULL
+  volumeConfigurations = NULL,
+  vpcLatticeConfigurations = NULL
 )
 }
 \arguments{
@@ -79,6 +81,11 @@ a cluster after the cluster is created.}
 \item{deploymentConfiguration}{Optional deployment parameters that control how many tasks run during
 the deployment and the ordering of stopping and starting tasks.}
 
+\item{availabilityZoneRebalancing}{Indicates whether to use Availability Zone rebalancing for the service.
+
+For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-rebalancing.html}{Balancing an Amazon ECS service across Availability Zones}
+in the \emph{Amazon Elastic Container Service Developer Guide}.}
+
 \item{networkConfiguration}{An object representing the network configuration for the service.}
 
 \item{placementConstraints}{An array of task placement constraint objects to update the service to
@@ -113,15 +120,18 @@ image/tag combination (\code{my_image:latest}) or to roll Fargate tasks onto
 a newer platform version.}
 
 \item{healthCheckGracePeriodSeconds}{The period of time, in seconds, that the Amazon ECS service scheduler
-ignores unhealthy Elastic Load Balancing target health checks after a
-task has first started. This is only valid if your service is configured
-to use a load balancer. If your service's tasks take a while to start
-and respond to Elastic Load Balancing health checks, you can specify a
-health check grace period of up to 2,147,483,647 seconds. During that
-time, the Amazon ECS service scheduler ignores the Elastic Load
-Balancing health check status. This grace period can prevent the ECS
-service scheduler from marking tasks as unhealthy and stopping them
-before they have time to come up.}
+ignores unhealthy Elastic Load Balancing, VPC Lattice, and container
+health checks after a task has first started. If you don't specify a
+health check grace period value, the default value of \code{0} is used. If
+you don't use any of the health checks, then
+\code{healthCheckGracePeriodSeconds} is unused.
+
+If your service's tasks take a while to start and respond to health
+checks, you can specify a health check grace period of up to
+2,147,483,647 seconds (about 69 years). During that time, the Amazon ECS
+service scheduler ignores health check status. This grace period can
+prevent the service scheduler from marking tasks as unhealthy and
+stopping them before they have time to come up.}
 
 \item{enableExecuteCommand}{If \code{true}, this enables execute command functionality on all task
 containers.
@@ -205,6 +215,9 @@ The \code{name} of the volume must match the \code{name} from the task definitio
 If set to null, no new deployment is triggered. Otherwise, if this
 configuration differs from the existing one, it triggers a new
 deployment.}
+
+\item{vpcLatticeConfigurations}{An object representing the VPC Lattice configuration for the service
+being updated.}
 }
 \description{
 Modifies the parameters of a service.

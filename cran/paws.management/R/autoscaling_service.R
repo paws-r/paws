@@ -105,7 +105,7 @@ NULL
 #' @section Operations:
 #' \tabular{ll}{
 #'  \link[=autoscaling_attach_instances]{attach_instances} \tab Attaches one or more EC2 instances to the specified Auto Scaling group\cr
-#'  \link[=autoscaling_attach_load_balancers]{attach_load_balancers} \tab This API operation is superseded by AttachTrafficSources, which can attach multiple traffic sources types\cr
+#'  \link[=autoscaling_attach_load_balancers]{attach_load_balancers} \tab This API operation is superseded by https://docs\cr
 #'  \link[=autoscaling_attach_load_balancer_target_groups]{attach_load_balancer_target_groups} \tab This API operation is superseded by AttachTrafficSources, which can attach multiple traffic sources types\cr
 #'  \link[=autoscaling_attach_traffic_sources]{attach_traffic_sources} \tab Attaches one or more traffic sources to the specified Auto Scaling group\cr
 #'  \link[=autoscaling_batch_delete_scheduled_action]{batch_delete_scheduled_action} \tab Deletes one or more scheduled actions for the specified Auto Scaling group\cr
@@ -200,7 +200,7 @@ autoscaling <- function(config = list(), credentials = list(), endpoint = NULL, 
 
 .autoscaling$metadata <- list(
   service_name = "autoscaling",
-  endpoints = list("*" = list(endpoint = "autoscaling.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "autoscaling.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "autoscaling.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "autoscaling.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "autoscaling.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "autoscaling.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "autoscaling.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "autoscaling.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "autoscaling.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "autoscaling.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "autoscaling.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "autoscaling.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "autoscaling.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Auto Scaling",
   api_version = "2011-01-01",
   signing_name = "autoscaling",

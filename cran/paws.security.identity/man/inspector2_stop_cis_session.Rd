@@ -14,7 +14,7 @@ inspector2_stop_cis_session(message, scanJobId, sessionToken)
 \item{sessionToken}{[required] The unique token that identifies the CIS session.}
 }
 \description{
-Stops a CIS session. This API is used by the Amazon Inspector SSM plugin to communicate with the Amazon Inspector service. The Amazon Inspector SSM plugin calls this API to start a CIS scan session for the scan ID supplied by the service.
+Stops a CIS session. This API is used by the Amazon Inspector SSM plugin to communicate with the Amazon Inspector service. The Amazon Inspector SSM plugin calls this API to stop a CIS scan session for the scan ID supplied by the service.
 
 See \url{https://www.paws-r-sdk.com/docs/inspector2_stop_cis_session/} for full documentation.
 }

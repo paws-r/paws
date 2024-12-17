@@ -158,9 +158,11 @@ NULL
 #'  \link[=pinpointsmsvoicev2_delete_opt_out_list]{delete_opt_out_list} \tab Deletes an existing opt-out list\cr
 #'  \link[=pinpointsmsvoicev2_delete_pool]{delete_pool} \tab Deletes an existing pool\cr
 #'  \link[=pinpointsmsvoicev2_delete_protect_configuration]{delete_protect_configuration} \tab Permanently delete the protect configuration\cr
+#'  \link[=pinpointsmsvoicev2_delete_protect_configuration_rule_set_number_override]{delete_protect_configuration_rule_set_number_override} \tab Permanently delete the protect configuration rule set number override\cr
 #'  \link[=pinpointsmsvoicev2_delete_registration]{delete_registration} \tab Permanently delete an existing registration from your account\cr
 #'  \link[=pinpointsmsvoicev2_delete_registration_attachment]{delete_registration_attachment} \tab Permanently delete the specified registration attachment\cr
 #'  \link[=pinpointsmsvoicev2_delete_registration_field_value]{delete_registration_field_value} \tab Delete the value in a registration form field\cr
+#'  \link[=pinpointsmsvoicev2_delete_resource_policy]{delete_resource_policy} \tab Deletes the resource-based policy document attached to the AWS End User Messaging SMS and Voice resource\cr
 #'  \link[=pinpointsmsvoicev2_delete_text_message_spend_limit_override]{delete_text_message_spend_limit_override} \tab Deletes an account-level monthly spending limit override for sending text messages\cr
 #'  \link[=pinpointsmsvoicev2_delete_verified_destination_number]{delete_verified_destination_number} \tab Delete a verified destination phone number\cr
 #'  \link[=pinpointsmsvoicev2_delete_voice_message_spend_limit_override]{delete_voice_message_spend_limit_override} \tab Deletes an account level monthly spend limit override for sending voice messages\cr
@@ -182,17 +184,22 @@ NULL
 #'  \link[=pinpointsmsvoicev2_describe_registration_versions]{describe_registration_versions} \tab Retrieves the specified registration version\cr
 #'  \link[=pinpointsmsvoicev2_describe_sender_ids]{describe_sender_ids} \tab Describes the specified SenderIds or all SenderIds associated with your Amazon Web Services account\cr
 #'  \link[=pinpointsmsvoicev2_describe_spend_limits]{describe_spend_limits} \tab Describes the current monthly spend limits for sending voice and text messages\cr
-#'  \link[=pinpointsmsvoicev2_describe_verified_destination_numbers]{describe_verified_destination_numbers} \tab Retrieves the specified verified destiona numbers\cr
+#'  \link[=pinpointsmsvoicev2_describe_verified_destination_numbers]{describe_verified_destination_numbers} \tab Retrieves the specified verified destination numbers\cr
 #'  \link[=pinpointsmsvoicev2_disassociate_origination_identity]{disassociate_origination_identity} \tab Removes the specified origination identity from an existing pool\cr
 #'  \link[=pinpointsmsvoicev2_disassociate_protect_configuration]{disassociate_protect_configuration} \tab Disassociate a protect configuration from a configuration set\cr
 #'  \link[=pinpointsmsvoicev2_discard_registration_version]{discard_registration_version} \tab Discard the current version of the registration\cr
 #'  \link[=pinpointsmsvoicev2_get_protect_configuration_country_rule_set]{get_protect_configuration_country_rule_set} \tab Retrieve the CountryRuleSet for the specified NumberCapability from a protect configuration\cr
+#'  \link[=pinpointsmsvoicev2_get_resource_policy]{get_resource_policy} \tab Retrieves the JSON text of the resource-based policy document attached to the AWS End User Messaging SMS and Voice resource\cr
 #'  \link[=pinpointsmsvoicev2_list_pool_origination_identities]{list_pool_origination_identities} \tab Lists all associated origination identities in your pool\cr
-#'  \link[=pinpointsmsvoicev2_list_registration_associations]{list_registration_associations} \tab Retreive all of the origination identies that are associated with a registration\cr
+#'  \link[=pinpointsmsvoicev2_list_protect_configuration_rule_set_number_overrides]{list_protect_configuration_rule_set_number_overrides} \tab Retrieve all of the protect configuration rule set number overrides that match the filters\cr
+#'  \link[=pinpointsmsvoicev2_list_registration_associations]{list_registration_associations} \tab Retrieve all of the origination identities that are associated with a registration\cr
 #'  \link[=pinpointsmsvoicev2_list_tags_for_resource]{list_tags_for_resource} \tab List all tags associated with a resource\cr
 #'  \link[=pinpointsmsvoicev2_put_keyword]{put_keyword} \tab Creates or updates a keyword configuration on an origination phone number or pool\cr
+#'  \link[=pinpointsmsvoicev2_put_message_feedback]{put_message_feedback} \tab Set the MessageFeedbackStatus as RECEIVED or FAILED for the passed in MessageId\cr
 #'  \link[=pinpointsmsvoicev2_put_opted_out_number]{put_opted_out_number} \tab Creates an opted out destination phone number in the opt-out list\cr
+#'  \link[=pinpointsmsvoicev2_put_protect_configuration_rule_set_number_override]{put_protect_configuration_rule_set_number_override} \tab Create or update a RuleSetNumberOverride and associate it with a protect configuration\cr
 #'  \link[=pinpointsmsvoicev2_put_registration_field_value]{put_registration_field_value} \tab Creates or updates a field value for a registration\cr
+#'  \link[=pinpointsmsvoicev2_put_resource_policy]{put_resource_policy} \tab Attaches a resource-based policy to a AWS End User Messaging SMS and Voice resource(phone number, sender Id, phone poll, or opt-out list) that is used for sharing the resource\cr
 #'  \link[=pinpointsmsvoicev2_release_phone_number]{release_phone_number} \tab Releases an existing origination phone number in your account\cr
 #'  \link[=pinpointsmsvoicev2_release_sender_id]{release_sender_id} \tab Releases an existing sender ID in your account\cr
 #'  \link[=pinpointsmsvoicev2_request_phone_number]{request_phone_number} \tab Request an origination phone number for use in your account\cr
@@ -202,6 +209,7 @@ NULL
 #'  \link[=pinpointsmsvoicev2_send_text_message]{send_text_message} \tab Creates a new text message and sends it to a recipient's phone number\cr
 #'  \link[=pinpointsmsvoicev2_send_voice_message]{send_voice_message} \tab Allows you to send a request that sends a voice message\cr
 #'  \link[=pinpointsmsvoicev2_set_account_default_protect_configuration]{set_account_default_protect_configuration} \tab Set a protect configuration as your account default\cr
+#'  \link[=pinpointsmsvoicev2_set_default_message_feedback_enabled]{set_default_message_feedback_enabled} \tab Sets a configuration set's default for message feedback\cr
 #'  \link[=pinpointsmsvoicev2_set_default_message_type]{set_default_message_type} \tab Sets the default message type on a configuration set\cr
 #'  \link[=pinpointsmsvoicev2_set_default_sender_id]{set_default_sender_id} \tab Sets default sender ID on a configuration set\cr
 #'  \link[=pinpointsmsvoicev2_set_media_message_spend_limit_override]{set_media_message_spend_limit_override} \tab Sets an account level monthly spend limit override for sending MMS messages\cr
@@ -248,7 +256,7 @@ pinpointsmsvoicev2 <- function(config = list(), credentials = list(), endpoint =
 
 .pinpointsmsvoicev2$metadata <- list(
   service_name = "pinpointsmsvoicev2",
-  endpoints = list("*" = list(endpoint = "sms-voice.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "sms-voice.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "sms-voice.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "sms-voice.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "sms-voice.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "sms-voice.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "sms-voice.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "sms-voice.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "sms-voice.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "sms-voice.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "sms-voice.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "sms-voice.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "sms-voice.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Pinpoint SMS Voice V2",
   api_version = "2022-03-31",
   signing_name = "sms-voice",

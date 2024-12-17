@@ -2,17 +2,17 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_delete_user_pool_client}
 \alias{cognitoidentityprovider_delete_user_pool_client}
-\title{Allows the developer to delete the user pool client}
+\title{Deletes a user pool app client}
 \usage{
 cognitoidentityprovider_delete_user_pool_client(UserPoolId, ClientId)
 }
 \arguments{
-\item{UserPoolId}{[required] The user pool ID for the user pool where you want to delete the client.}
+\item{UserPoolId}{[required] The ID of the user pool where you want to delete the client.}
 
-\item{ClientId}{[required] The app client ID of the app associated with the user pool.}
+\item{ClientId}{[required] The ID of the user pool app client that you want to delete.}
 }
 \description{
-Allows the developer to delete the user pool client.
+Deletes a user pool app client. After you delete an app client, users can no longer sign in to the associated application.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_delete_user_pool_client/} for full documentation.
 }

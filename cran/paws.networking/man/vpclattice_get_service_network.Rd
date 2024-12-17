@@ -7,7 +7,7 @@
 vpclattice_get_service_network(serviceNetworkIdentifier)
 }
 \arguments{
-\item{serviceNetworkIdentifier}{[required] The ID or Amazon Resource Name (ARN) of the service network.}
+\item{serviceNetworkIdentifier}{[required] The ID or ARN of the service network.}
 }
 \description{
 Retrieves information about the specified service network.

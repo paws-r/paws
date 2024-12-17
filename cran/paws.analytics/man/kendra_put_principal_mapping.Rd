@@ -28,10 +28,10 @@ needs access to customer-related documents stored in Salesforce.}
 
 \item{GroupId}{[required] The identifier of the group you want to map its users to.}
 
-\item{GroupMembers}{[required] The list that contains your users or sub groups that belong the same
-group.
+\item{GroupMembers}{[required] The list that contains your users that belong the same group. This can
+include sub groups that belong to a group.
 
-For example, the group "Company" includes the user "CEO" and the sub
+For example, the group "Company A" includes the user "CEO" and the sub
 groups "Research", "Engineering", and "Sales and Marketing".
 
 If you have more than 1000 users and/or sub groups for a single group,
@@ -40,7 +40,7 @@ sub groups for a group. Your sub groups can contain more than 1000
 users, but the list of sub groups that belong to a group (and/or users)
 must be no more than 1000.}
 
-\item{OrderingId}{The timestamp identifier you specify to ensure Amazon Kendra does not
+\item{OrderingId}{The timestamp identifier you specify to ensure Amazon Kendra doesn't
 override the latest \code{PUT} action with previous actions. The highest
 number ID, which is the ordering ID, is the latest action you want to
 process and apply on top of other actions with lower number IDs. This
@@ -57,8 +57,8 @@ which are yet to be processed.
 The default ordering ID is the current Unix time in milliseconds that
 the action was received by Amazon Kendra.}
 
-\item{RoleArn}{The Amazon Resource Name (ARN) of a role that has access to the S3 file
-that contains your list of users or sub groups that belong to a group.
+\item{RoleArn}{The Amazon Resource Name (ARN) of an IAM role that has access to the S3
+file that contains your list of users that belong to a group.
 
 For more information, see \href{https://docs.aws.amazon.com/kendra/latest/dg/iam-roles.html#iam-roles-ds}{IAM roles for Amazon Kendra}.}
 }

@@ -1291,7 +1291,7 @@ sqs_list_dead_letter_source_queues <- function(QueueUrl, NextToken = NULL, MaxRe
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "queueUrls"),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "queueUrls"),
     stream_api = FALSE
   )
   input <- .sqs$list_dead_letter_source_queues_input(QueueUrl = QueueUrl, NextToken = NextToken, MaxResults = MaxResults)
@@ -1505,7 +1505,7 @@ sqs_list_queues <- function(QueueNamePrefix = NULL, NextToken = NULL, MaxResults
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "QueueUrls"),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "QueueUrls"),
     stream_api = FALSE
   )
   input <- .sqs$list_queues_input(QueueNamePrefix = QueueNamePrefix, NextToken = NextToken, MaxResults = MaxResults)
@@ -1828,7 +1828,7 @@ sqs_purge_queue <- function(QueueUrl) {
 #' 
 #' For best practices of using `ReceiveRequestAttemptId`, see [Using the
 #' ReceiveRequestAttemptId Request
-#' Parameter](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/)
+#' Parameter](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/using-receiverequestattemptid-request-parameter.html)
 #' in the *Amazon SQS Developer Guide*.
 #'
 #' @return

@@ -20,7 +20,7 @@ ssm_describe_maintenance_window_executions(
 \code{ExecutedBefore} and \code{ExecutedAfter}.
 \item Values. An array of strings, each between 1 and 256 characters.
 Supported values are date/time strings in a valid ISO 8601 date/time
-format, such as \verb{2021-11-04T05:00:00Z}.
+format, such as \verb{2024-11-04T05:00:00Z}.
 }}
 
 \item{MaxResults}{The maximum number of items to return for this call. The call also

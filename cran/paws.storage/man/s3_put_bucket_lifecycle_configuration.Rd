@@ -2,7 +2,8 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_put_bucket_lifecycle_configuration}
 \alias{s3_put_bucket_lifecycle_configuration}
-\title{This operation is not supported by directory buckets}
+\title{Creates a new lifecycle configuration for the bucket or replaces an
+existing lifecycle configuration}
 \usage{
 s3_put_bucket_lifecycle_configuration(
   Bucket,
@@ -30,10 +31,16 @@ If you provide an individual checksum, Amazon S3 ignores any provided
 
 \item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the account ID that you
 provide does not match the actual owner of the bucket, the request fails
-with the HTTP status code \verb{403 Forbidden} (access denied).}
+with the HTTP status code \verb{403 Forbidden} (access denied).
+
+This parameter applies to general purpose buckets only. It is not
+supported for directory bucket lifecycle configurations.}
 
 \item{TransitionDefaultMinimumObjectSize}{Indicates which default minimum object size behavior is applied to the
 lifecycle configuration.
+
+This parameter applies to general purpose buckets only. It is not
+supported for directory bucket lifecycle configurations.
 \itemize{
 \item \code{all_storage_classes_128K} - Objects smaller than 128 KB will not
 transition to any storage class by default.
@@ -49,7 +56,7 @@ filter that specifies a custom \code{ObjectSizeGreaterThan} or
 always take precedence over the default transition behavior.}
 }
 \description{
-This operation is not supported by directory buckets.
+Creates a new lifecycle configuration for the bucket or replaces an existing lifecycle configuration. Keep in mind that this will overwrite an existing lifecycle configuration, so if you want to retain any configuration details, they must be included in the new lifecycle configuration. For information about lifecycle configuration, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lifecycle-mgmt.html}{Managing your storage lifecycle}.
 
 See \url{https://www.paws-r-sdk.com/docs/s3_put_bucket_lifecycle_configuration/} for full documentation.
 }

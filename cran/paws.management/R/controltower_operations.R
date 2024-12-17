@@ -520,13 +520,15 @@ controltower_list_control_operations <- function(filter = NULL, maxResults = NUL
 #' @param filter A filter applied on the `ListEnabledBaseline` operation. Allowed filters
 #' are `baselineIdentifiers` and `targetIdentifiers`. The filter can be
 #' applied for either, or both.
+#' @param includeChildren A value that can be set to include the child enabled baselines in
+#' responses. The default value is false.
 #' @param maxResults The maximum number of results to be shown.
 #' @param nextToken A pagination token.
 #'
 #' @keywords internal
 #'
 #' @rdname controltower_list_enabled_baselines
-controltower_list_enabled_baselines <- function(filter = NULL, maxResults = NULL, nextToken = NULL) {
+controltower_list_enabled_baselines <- function(filter = NULL, includeChildren = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListEnabledBaselines",
     http_method = "POST",
@@ -535,7 +537,7 @@ controltower_list_enabled_baselines <- function(filter = NULL, maxResults = NULL
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "enabledBaselines"),
     stream_api = FALSE
   )
-  input <- .controltower$list_enabled_baselines_input(filter = filter, maxResults = maxResults, nextToken = nextToken)
+  input <- .controltower$list_enabled_baselines_input(filter = filter, includeChildren = includeChildren, maxResults = maxResults, nextToken = nextToken)
   output <- .controltower$list_enabled_baselines_output()
   config <- get_config()
   svc <- .controltower$service(config, op)
@@ -717,6 +719,37 @@ controltower_reset_enabled_baseline <- function(enabledBaselineIdentifier) {
   return(response)
 }
 .controltower$operations$reset_enabled_baseline <- controltower_reset_enabled_baseline
+
+#' Resets an enabled control
+#'
+#' @description
+#' Resets an enabled control.
+#'
+#' See [https://www.paws-r-sdk.com/docs/controltower_reset_enabled_control/](https://www.paws-r-sdk.com/docs/controltower_reset_enabled_control/) for full documentation.
+#'
+#' @param enabledControlIdentifier &#91;required&#93; The ARN of the enabled control to be reset.
+#'
+#' @keywords internal
+#'
+#' @rdname controltower_reset_enabled_control
+controltower_reset_enabled_control <- function(enabledControlIdentifier) {
+  op <- new_operation(
+    name = "ResetEnabledControl",
+    http_method = "POST",
+    http_path = "/reset-enabled-control",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .controltower$reset_enabled_control_input(enabledControlIdentifier = enabledControlIdentifier)
+  output <- .controltower$reset_enabled_control_output()
+  config <- get_config()
+  svc <- .controltower$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.controltower$operations$reset_enabled_control <- controltower_reset_enabled_control
 
 #' This API call resets a landing zone
 #'

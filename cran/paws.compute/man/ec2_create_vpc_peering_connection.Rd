@@ -6,36 +6,36 @@
 you own and an accepter VPC with which to create the connection}
 \usage{
 ec2_create_vpc_peering_connection(
-  DryRun = NULL,
-  PeerOwnerId = NULL,
-  PeerVpcId = NULL,
-  VpcId,
   PeerRegion = NULL,
-  TagSpecifications = NULL
+  TagSpecifications = NULL,
+  DryRun = NULL,
+  VpcId,
+  PeerVpcId = NULL,
+  PeerOwnerId = NULL
 )
 }
 \arguments{
-\item{DryRun}{Checks whether you have the required permissions for the action, without
-actually making the request, and provides an error response. If you have
-the required permissions, the error response is \code{DryRunOperation}.
-Otherwise, it is \code{UnauthorizedOperation}.}
-
-\item{PeerOwnerId}{The Amazon Web Services account ID of the owner of the accepter VPC.
-
-Default: Your Amazon Web Services account ID}
-
-\item{PeerVpcId}{The ID of the VPC with which you are creating the VPC peering
-connection. You must specify this parameter in the request.}
-
-\item{VpcId}{[required] The ID of the requester VPC. You must specify this parameter in the
-request.}
-
 \item{PeerRegion}{The Region code for the accepter VPC, if the accepter VPC is located in
 a Region other than the Region in which you make the request.
 
 Default: The Region in which you make the request.}
 
 \item{TagSpecifications}{The tags to assign to the peering connection.}
+
+\item{DryRun}{Checks whether you have the required permissions for the action, without
+actually making the request, and provides an error response. If you have
+the required permissions, the error response is \code{DryRunOperation}.
+Otherwise, it is \code{UnauthorizedOperation}.}
+
+\item{VpcId}{[required] The ID of the requester VPC. You must specify this parameter in the
+request.}
+
+\item{PeerVpcId}{The ID of the VPC with which you are creating the VPC peering
+connection. You must specify this parameter in the request.}
+
+\item{PeerOwnerId}{The Amazon Web Services account ID of the owner of the accepter VPC.
+
+Default: Your Amazon Web Services account ID}
 }
 \description{
 Requests a VPC peering connection between two VPCs: a requester VPC that you own and an accepter VPC with which to create the connection. The accepter VPC can belong to another Amazon Web Services account and can be in a different Region to the requester VPC. The requester VPC and accepter VPC cannot have overlapping CIDR blocks.

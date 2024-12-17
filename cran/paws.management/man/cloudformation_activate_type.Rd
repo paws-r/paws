@@ -77,7 +77,7 @@ version selected.
 You can specify \code{MajorVersion} or \code{VersionBump}, but not both.}
 }
 \description{
-Activates a public third-party extension, making it available for use in stack templates. For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/registry-public.html}{Using public extensions} in the \emph{CloudFormation User Guide}.
+Activates a public third-party extension, making it available for use in stack templates. Once you have activated a public third-party extension in your account and Region, use \code{\link[=cloudformation_set_type_configuration]{set_type_configuration}} to specify configuration properties for the extension. For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/registry-public.html}{Using public extensions} in the \emph{CloudFormation User Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudformation_activate_type/} for full documentation.
 }

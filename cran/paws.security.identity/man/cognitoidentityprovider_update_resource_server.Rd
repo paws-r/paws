@@ -12,7 +12,7 @@ cognitoidentityprovider_update_resource_server(
 )
 }
 \arguments{
-\item{UserPoolId}{[required] The user pool ID for the user pool.}
+\item{UserPoolId}{[required] The ID of the user pool.}
 
 \item{Identifier}{[required] A unique resource server identifier for the resource server. The
 identifier can be an API friendly name like \code{solar-system-data}. You can

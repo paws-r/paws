@@ -26,9 +26,11 @@ priority, starting from the lowest setting.}
 \item{Action}{Optional additional filter for the rules to retrieve.
 
 The action that DNS Firewall should take on a DNS query when it matches
-one of the domains in the rule's domain list:
+one of the domains in the rule's domain list, or a threat in a DNS
+Firewall Advanced rule:
 \itemize{
-\item \code{ALLOW} - Permit the request to go through.
+\item \code{ALLOW} - Permit the request to go through. Not availabe for DNS
+Firewall Advanced rules.
 \item \code{ALERT} - Permit the request to go through but send an alert to the
 logs.
 \item \code{BLOCK} - Disallow the request. If this is specified, additional

@@ -71,6 +71,8 @@ ASCII character from the space character to the end of the valid
 character list (\code{U+0020} through \verb{U+00FF}). It can also include the tab
 (\code{U+0009}), linefeed (\verb{U+000A}), and carriage return (\verb{U+000D}) characters.
 
+For more information about role session permissions, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html#policies_session}{Session policies}.
+
 An Amazon Web Services conversion compresses the passed inline session
 policy, managed policy ARNs, and session tags into a packed binary
 format that has a separate limit. Your request can fail for this limit
@@ -101,7 +103,7 @@ console session. For more information, see \href{https://docs.aws.amazon.com/IAM
 in the \emph{IAM User Guide}.}
 }
 \description{
-Returns a set of temporary security credentials for users who have been authenticated via a SAML authentication response. This operation provides a mechanism for tying an enterprise identity store or directory to role-based Amazon Web Services access without user-specific credentials or configuration. For a comparison of \code{\link[=sts_assume_role_with_saml]{assume_role_with_saml}} with the other API operations that produce temporary credentials, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html}{Requesting Temporary Security Credentials} and \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#stsapi_comparison}{Comparing the Amazon Web Services STS API operations} in the \emph{IAM User Guide}.
+Returns a set of temporary security credentials for users who have been authenticated via a SAML authentication response. This operation provides a mechanism for tying an enterprise identity store or directory to role-based Amazon Web Services access without user-specific credentials or configuration. For a comparison of \code{\link[=sts_assume_role_with_saml]{assume_role_with_saml}} with the other API operations that produce temporary credentials, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html}{Requesting Temporary Security Credentials} and \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_sts-comparison.html}{Compare STS credentials} in the \emph{IAM User Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/sts_assume_role_with_saml/} for full documentation.
 }

@@ -113,7 +113,7 @@ NULL
 #'  \link[=recyclebin_get_rule]{get_rule} \tab Gets information about a Recycle Bin retention rule\cr
 #'  \link[=recyclebin_list_rules]{list_rules} \tab Lists the Recycle Bin retention rules in the Region\cr
 #'  \link[=recyclebin_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags assigned to a retention rule\cr
-#'  \link[=recyclebin_lock_rule]{lock_rule} \tab Locks a retention rule\cr
+#'  \link[=recyclebin_lock_rule]{lock_rule} \tab Locks a Region-level retention rule\cr
 #'  \link[=recyclebin_tag_resource]{tag_resource} \tab Assigns tags to the specified retention rule\cr
 #'  \link[=recyclebin_unlock_rule]{unlock_rule} \tab Unlocks a retention rule\cr
 #'  \link[=recyclebin_untag_resource]{untag_resource} \tab Unassigns a tag from a retention rule\cr
@@ -149,7 +149,7 @@ recyclebin <- function(config = list(), credentials = list(), endpoint = NULL, r
 
 .recyclebin$metadata <- list(
   service_name = "recyclebin",
-  endpoints = list("*" = list(endpoint = "rbin.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "rbin.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "rbin.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "rbin.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "rbin.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "rbin.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "rbin.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "rbin.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "rbin.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "rbin.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "rbin.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "rbin.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "rbin.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "rbin",
   api_version = "2021-06-15",
   signing_name = "rbin",

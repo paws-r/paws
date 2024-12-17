@@ -10,11 +10,11 @@ rds_switchover_blue_green_deployment(
 )
 }
 \arguments{
-\item{BlueGreenDeploymentIdentifier}{[required] The unique identifier of the blue/green deployment.
+\item{BlueGreenDeploymentIdentifier}{[required] The resource ID of the blue/green deployment.
 
 Constraints:
 \itemize{
-\item Must match an existing blue/green deployment identifier.
+\item Must match an existing blue/green deployment resource ID.
 }}
 
 \item{SwitchoverTimeout}{The amount of time, in seconds, for the switchover to complete.

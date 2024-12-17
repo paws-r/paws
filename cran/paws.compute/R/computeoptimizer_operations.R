@@ -411,6 +411,76 @@ computeoptimizer_export_ecs_service_recommendations <- function(accountIds = NUL
 }
 .computeoptimizer$operations$export_ecs_service_recommendations <- computeoptimizer_export_ecs_service_recommendations
 
+#' Export optimization recommendations for your idle resources
+#'
+#' @description
+#' Export optimization recommendations for your idle resources.
+#'
+#' See [https://www.paws-r-sdk.com/docs/computeoptimizer_export_idle_recommendations/](https://www.paws-r-sdk.com/docs/computeoptimizer_export_idle_recommendations/) for full documentation.
+#'
+#' @param accountIds The Amazon Web Services account IDs for the export idle resource
+#' recommendations.
+#' 
+#' If your account is the management account or the delegated administrator
+#' of an organization, use this parameter to specify the member account you
+#' want to export recommendations to.
+#' 
+#' This parameter can't be specified together with the include member
+#' accounts parameter. The parameters are mutually exclusive.
+#' 
+#' If this parameter or the include member accounts parameter is omitted,
+#' the recommendations for member accounts aren't included in the export.
+#' 
+#' You can specify multiple account IDs per request.
+#' @param filters An array of objects to specify a filter that exports a more specific set
+#' of idle resource recommendations.
+#' @param fieldsToExport The recommendations data to include in the export file. For more
+#' information about the fields that can be exported, see [Exported
+#' files](https://docs.aws.amazon.com/compute-optimizer/latest/ug/exporting-recommendations.html#exported-files)
+#' in the *Compute Optimizer User Guide*.
+#' @param s3DestinationConfig &#91;required&#93; 
+#' @param fileFormat The format of the export file. The CSV file is the only export file
+#' format currently supported.
+#' @param includeMemberAccounts If your account is the management account or the delegated administrator
+#' of an organization, this parameter indicates whether to include
+#' recommendations for resources in all member accounts of the
+#' organization.
+#' 
+#' The member accounts must also be opted in to Compute Optimizer, and
+#' trusted access for Compute Optimizer must be enabled in the organization
+#' account. For more information, see [Compute Optimizer and Amazon Web
+#' Services Organizations trusted
+#' access](https://docs.aws.amazon.com/compute-optimizer/latest/ug/security-iam.html#trusted-service-access)
+#' in the *Compute Optimizer User Guide*.
+#' 
+#' If this parameter is omitted, recommendations for member accounts of the
+#' organization aren't included in the export file.
+#' 
+#' If this parameter or the account ID parameter is omitted,
+#' recommendations for member accounts aren't included in the export.
+#'
+#' @keywords internal
+#'
+#' @rdname computeoptimizer_export_idle_recommendations
+computeoptimizer_export_idle_recommendations <- function(accountIds = NULL, filters = NULL, fieldsToExport = NULL, s3DestinationConfig, fileFormat = NULL, includeMemberAccounts = NULL) {
+  op <- new_operation(
+    name = "ExportIdleRecommendations",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .computeoptimizer$export_idle_recommendations_input(accountIds = accountIds, filters = filters, fieldsToExport = fieldsToExport, s3DestinationConfig = s3DestinationConfig, fileFormat = fileFormat, includeMemberAccounts = includeMemberAccounts)
+  output <- .computeoptimizer$export_idle_recommendations_output()
+  config <- get_config()
+  svc <- .computeoptimizer$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.computeoptimizer$operations$export_idle_recommendations <- computeoptimizer_export_idle_recommendations
+
 #' Exports optimization recommendations for Lambda functions
 #'
 #' @description
@@ -1011,6 +1081,54 @@ computeoptimizer_get_enrollment_statuses_for_organization <- function(filters = 
   return(response)
 }
 .computeoptimizer$operations$get_enrollment_statuses_for_organization <- computeoptimizer_get_enrollment_statuses_for_organization
+
+#' Returns idle resource recommendations
+#'
+#' @description
+#' Returns idle resource recommendations. Compute Optimizer generates recommendations for idle resources that meet a specific set of requirements. For more information, see [Resource requirements](https://docs.aws.amazon.com/compute-optimizer/latest/ug/requirements.html) in the *Compute Optimizer User Guide*
+#'
+#' See [https://www.paws-r-sdk.com/docs/computeoptimizer_get_idle_recommendations/](https://www.paws-r-sdk.com/docs/computeoptimizer_get_idle_recommendations/) for full documentation.
+#'
+#' @param resourceArns The ARN that identifies the idle resource.
+#' @param nextToken The token to advance to the next page of idle resource recommendations.
+#' @param maxResults The maximum number of idle resource recommendations to return with a
+#' single request.
+#' 
+#' To retrieve the remaining results, make another request with the
+#' returned `nextToken` value.
+#' @param filters An array of objects to specify a filter that returns a more specific
+#' list of idle resource recommendations.
+#' @param accountIds Return the idle resource recommendations to the specified Amazon Web
+#' Services account IDs.
+#' 
+#' If your account is the management account or the delegated administrator
+#' of an organization, use this parameter to return the idle resource
+#' recommendations to specific member accounts.
+#' 
+#' You can only specify one account ID per request.
+#' @param orderBy The order to sort the idle resource recommendations.
+#'
+#' @keywords internal
+#'
+#' @rdname computeoptimizer_get_idle_recommendations
+computeoptimizer_get_idle_recommendations <- function(resourceArns = NULL, nextToken = NULL, maxResults = NULL, filters = NULL, accountIds = NULL, orderBy = NULL) {
+  op <- new_operation(
+    name = "GetIdleRecommendations",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .computeoptimizer$get_idle_recommendations_input(resourceArns = resourceArns, nextToken = nextToken, maxResults = maxResults, filters = filters, accountIds = accountIds, orderBy = orderBy)
+  output <- .computeoptimizer$get_idle_recommendations_output()
+  config <- get_config()
+  svc <- .computeoptimizer$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.computeoptimizer$operations$get_idle_recommendations <- computeoptimizer_get_idle_recommendations
 
 #' Returns Lambda function recommendations
 #'

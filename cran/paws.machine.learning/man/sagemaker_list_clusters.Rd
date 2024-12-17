@@ -11,7 +11,8 @@ sagemaker_list_clusters(
   NameContains = NULL,
   NextToken = NULL,
   SortBy = NULL,
-  SortOrder = NULL
+  SortOrder = NULL,
+  TrainingPlanArn = NULL
 )
 }
 \arguments{
@@ -53,6 +54,11 @@ in the \emph{Amazon Web Services Command Line Interface User Guide}.}
 \code{CREATION_TIME}.}
 
 \item{SortOrder}{The sort order for results. The default value is \code{Ascending}.}
+
+\item{TrainingPlanArn}{The Amazon Resource Name (ARN); of the training plan to filter clusters
+by. For more information about reserving GPU capacity for your SageMaker
+HyperPod clusters using Amazon SageMaker Training Plan, see
+\code{\link[=sagemaker_create_training_plan]{create_training_plan}}.}
 }
 \description{
 Retrieves the list of SageMaker HyperPod clusters.

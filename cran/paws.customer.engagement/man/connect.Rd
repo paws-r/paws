@@ -66,8 +66,8 @@ create. There are also limits to the number of requests that you can
 make per second. For more information, see \href{https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-service-limits.html}{Amazon Connect Service Quotas}
 in the \emph{Amazon Connect Administrator Guide}.
 
-You can connect programmatically to an Amazon Web Services service by
-using an endpoint. For a list of Amazon Connect endpoints, see \href{https://docs.aws.amazon.com/general/latest/gr/connect_region.html}{Amazon Connect Endpoints}.
+You can use an endpoint to connect programmatically to an Amazon Web
+Services service. For a list of Amazon Connect endpoints, see \href{https://docs.aws.amazon.com/general/latest/gr/connect_region.html}{Amazon Connect Endpoints}.
 }
 \section{Service syntax}{
 
@@ -109,7 +109,7 @@ using an endpoint. For a list of Amazon Connect endpoints, see \href{https://doc
 
 \tabular{ll}{
 \link[=connect_activate_evaluation_form]{activate_evaluation_form} \tab Activates an evaluation form in the specified Amazon Connect instance\cr
-\link[=connect_associate_analytics_data_set]{associate_analytics_data_set} \tab This API is in preview release for Amazon Connect and is subject to change\cr
+\link[=connect_associate_analytics_data_set]{associate_analytics_data_set} \tab Associates the specified dataset for a Amazon Connect instance with the target account\cr
 \link[=connect_associate_approved_origin]{associate_approved_origin} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 \link[=connect_associate_bot]{associate_bot} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 \link[=connect_associate_default_vocabulary]{associate_default_vocabulary} \tab Associates an existing vocabulary as the default\cr
@@ -123,25 +123,30 @@ using an endpoint. For a list of Amazon Connect endpoints, see \href{https://doc
 \link[=connect_associate_security_key]{associate_security_key} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 \link[=connect_associate_traffic_distribution_group_user]{associate_traffic_distribution_group_user} \tab Associates an agent with a traffic distribution group\cr
 \link[=connect_associate_user_proficiencies]{associate_user_proficiencies} \tab >Associates a set of proficiencies with a user\cr
-\link[=connect_batch_associate_analytics_data_set]{batch_associate_analytics_data_set} \tab This API is in preview release for Amazon Connect and is subject to change\cr
-\link[=connect_batch_disassociate_analytics_data_set]{batch_disassociate_analytics_data_set} \tab This API is in preview release for Amazon Connect and is subject to change\cr
+\link[=connect_batch_associate_analytics_data_set]{batch_associate_analytics_data_set} \tab Associates a list of analytics datasets for a given Amazon Connect instance to a target account\cr
+\link[=connect_batch_disassociate_analytics_data_set]{batch_disassociate_analytics_data_set} \tab Removes a list of analytics datasets associated with a given Amazon Connect instance\cr
 \link[=connect_batch_get_attached_file_metadata]{batch_get_attached_file_metadata} \tab Allows you to retrieve metadata about multiple attached files on an associated resource\cr
 \link[=connect_batch_get_flow_association]{batch_get_flow_association} \tab Retrieve the flow associations for the given resources\cr
 \link[=connect_batch_put_contact]{batch_put_contact} \tab Only the Amazon Connect outbound campaigns service principal is allowed to assume a role in your account and call this API\cr
 \link[=connect_claim_phone_number]{claim_phone_number} \tab Claims an available phone number to your Amazon Connect instance or traffic distribution group\cr
 \link[=connect_complete_attached_file_upload]{complete_attached_file_upload} \tab Allows you to confirm that the attached file has been uploaded using the pre-signed URL provided in the StartAttachedFileUpload API\cr
 \link[=connect_create_agent_status]{create_agent_status} \tab This API is in preview release for Amazon Connect and is subject to change\cr
+\link[=connect_create_contact]{create_contact} \tab Creates a new contact\cr
 \link[=connect_create_contact_flow]{create_contact_flow} \tab Creates a flow for the specified Amazon Connect instance\cr
 \link[=connect_create_contact_flow_module]{create_contact_flow_module} \tab Creates a flow module for the specified Amazon Connect instance\cr
+\link[=connect_create_contact_flow_version]{create_contact_flow_version} \tab Publishes a new version of the flow provided\cr
+\link[=connect_create_email_address]{create_email_address} \tab Create new email address in the specified Amazon Connect instance\cr
 \link[=connect_create_evaluation_form]{create_evaluation_form} \tab Creates an evaluation form in the specified Amazon Connect instance\cr
 \link[=connect_create_hours_of_operation]{create_hours_of_operation} \tab This API is in preview release for Amazon Connect and is subject to change\cr
+\link[=connect_create_hours_of_operation_override]{create_hours_of_operation_override} \tab Creates an hours of operation override in an Amazon Connect hours of operation resource\cr
 \link[=connect_create_instance]{create_instance} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 \link[=connect_create_integration_association]{create_integration_association} \tab Creates an Amazon Web Services resource association with an Amazon Connect instance\cr
 \link[=connect_create_participant]{create_participant} \tab Adds a new participant into an on-going chat contact\cr
 \link[=connect_create_persistent_contact_association]{create_persistent_contact_association} \tab Enables rehydration of chats for the lifespan of a contact\cr
 \link[=connect_create_predefined_attribute]{create_predefined_attribute} \tab Creates a new predefined attribute for the specified Amazon Connect instance\cr
 \link[=connect_create_prompt]{create_prompt} \tab Creates a prompt\cr
-\link[=connect_create_queue]{create_queue} \tab This API is in preview release for Amazon Connect and is subject to change\cr
+\link[=connect_create_push_notification_registration]{create_push_notification_registration} \tab Creates registration for a device token and a chat contact to receive real-time push notifications\cr
+\link[=connect_create_queue]{create_queue} \tab Creates a new queue for the specified Amazon Connect instance\cr
 \link[=connect_create_quick_connect]{create_quick_connect} \tab Creates a quick connect for the specified Amazon Connect instance\cr
 \link[=connect_create_routing_profile]{create_routing_profile} \tab Creates a new routing profile\cr
 \link[=connect_create_rule]{create_rule} \tab Creates a rule for the specified Amazon Connect instance\cr
@@ -159,12 +164,15 @@ using an endpoint. For a list of Amazon Connect endpoints, see \href{https://doc
 \link[=connect_delete_contact_evaluation]{delete_contact_evaluation} \tab Deletes a contact evaluation in the specified Amazon Connect instance\cr
 \link[=connect_delete_contact_flow]{delete_contact_flow} \tab Deletes a flow for the specified Amazon Connect instance\cr
 \link[=connect_delete_contact_flow_module]{delete_contact_flow_module} \tab Deletes the specified flow module\cr
+\link[=connect_delete_email_address]{delete_email_address} \tab Deletes email address from the specified Amazon Connect instance\cr
 \link[=connect_delete_evaluation_form]{delete_evaluation_form} \tab Deletes an evaluation form in the specified Amazon Connect instance\cr
 \link[=connect_delete_hours_of_operation]{delete_hours_of_operation} \tab This API is in preview release for Amazon Connect and is subject to change\cr
+\link[=connect_delete_hours_of_operation_override]{delete_hours_of_operation_override} \tab Deletes an hours of operation override in an Amazon Connect hours of operation resource\cr
 \link[=connect_delete_instance]{delete_instance} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 \link[=connect_delete_integration_association]{delete_integration_association} \tab Deletes an Amazon Web Services resource association from an Amazon Connect instance\cr
 \link[=connect_delete_predefined_attribute]{delete_predefined_attribute} \tab Deletes a predefined attribute from the specified Amazon Connect instance\cr
 \link[=connect_delete_prompt]{delete_prompt} \tab Deletes a prompt\cr
+\link[=connect_delete_push_notification_registration]{delete_push_notification_registration} \tab Deletes registration for a device token and a chat contact\cr
 \link[=connect_delete_queue]{delete_queue} \tab Deletes a queue\cr
 \link[=connect_delete_quick_connect]{delete_quick_connect} \tab Deletes a quick connect\cr
 \link[=connect_delete_routing_profile]{delete_routing_profile} \tab Deletes a routing profile\cr
@@ -184,8 +192,10 @@ using an endpoint. For a list of Amazon Connect endpoints, see \href{https://doc
 \link[=connect_describe_contact_evaluation]{describe_contact_evaluation} \tab Describes a contact evaluation in the specified Amazon Connect instance\cr
 \link[=connect_describe_contact_flow]{describe_contact_flow} \tab Describes the specified flow\cr
 \link[=connect_describe_contact_flow_module]{describe_contact_flow_module} \tab Describes the specified flow module\cr
+\link[=connect_describe_email_address]{describe_email_address} \tab Describe email address form the specified Amazon Connect instance\cr
 \link[=connect_describe_evaluation_form]{describe_evaluation_form} \tab Describes an evaluation form in the specified Amazon Connect instance\cr
 \link[=connect_describe_hours_of_operation]{describe_hours_of_operation} \tab This API is in preview release for Amazon Connect and is subject to change\cr
+\link[=connect_describe_hours_of_operation_override]{describe_hours_of_operation_override} \tab Describes the hours of operation override\cr
 \link[=connect_describe_instance]{describe_instance} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 \link[=connect_describe_instance_attribute]{describe_instance_attribute} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 \link[=connect_describe_instance_storage_config]{describe_instance_storage_config} \tab This API is in preview release for Amazon Connect and is subject to change\cr
@@ -203,7 +213,7 @@ using an endpoint. For a list of Amazon Connect endpoints, see \href{https://doc
 \link[=connect_describe_user_hierarchy_structure]{describe_user_hierarchy_structure} \tab Describes the hierarchy structure of the specified Amazon Connect instance\cr
 \link[=connect_describe_view]{describe_view} \tab Retrieves the view for the specified Amazon Connect instance and view identifier\cr
 \link[=connect_describe_vocabulary]{describe_vocabulary} \tab Describes the specified vocabulary\cr
-\link[=connect_disassociate_analytics_data_set]{disassociate_analytics_data_set} \tab This API is in preview release for Amazon Connect and is subject to change\cr
+\link[=connect_disassociate_analytics_data_set]{disassociate_analytics_data_set} \tab Removes the dataset ID associated with a given Amazon Connect instance\cr
 \link[=connect_disassociate_approved_origin]{disassociate_approved_origin} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 \link[=connect_disassociate_bot]{disassociate_bot} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 \link[=connect_disassociate_flow]{disassociate_flow} \tab Disassociates a connect resource from a flow\cr
@@ -221,6 +231,7 @@ using an endpoint. For a list of Amazon Connect endpoints, see \href{https://doc
 \link[=connect_get_contact_attributes]{get_contact_attributes} \tab Retrieves the contact attributes for the specified contact\cr
 \link[=connect_get_current_metric_data]{get_current_metric_data} \tab Gets the real-time metric data from the specified Amazon Connect instance\cr
 \link[=connect_get_current_user_data]{get_current_user_data} \tab Gets the real-time active user data from the specified Amazon Connect instance\cr
+\link[=connect_get_effective_hours_of_operations]{get_effective_hours_of_operations} \tab Get the hours of operations with the effective override applied\cr
 \link[=connect_get_federation_token]{get_federation_token} \tab Supports SAML sign-in for Amazon Connect\cr
 \link[=connect_get_flow_association]{get_flow_association} \tab Retrieves the flow associated for a given resource\cr
 \link[=connect_get_metric_data]{get_metric_data} \tab Gets historical metric data from the specified Amazon Connect instance\cr
@@ -228,20 +239,23 @@ using an endpoint. For a list of Amazon Connect endpoints, see \href{https://doc
 \link[=connect_get_prompt_file]{get_prompt_file} \tab Gets the prompt file\cr
 \link[=connect_get_task_template]{get_task_template} \tab Gets details about a specific task template in the specified Amazon Connect instance\cr
 \link[=connect_get_traffic_distribution]{get_traffic_distribution} \tab Retrieves the current traffic distribution for a given traffic distribution group\cr
-\link[=connect_import_phone_number]{import_phone_number} \tab Imports a claimed phone number from an external service, such as Amazon Pinpoint, into an Amazon Connect instance\cr
+\link[=connect_import_phone_number]{import_phone_number} \tab Imports a claimed phone number from an external service, such as Amazon Web Services End User Messaging, into an Amazon Connect instance\cr
 \link[=connect_list_agent_statuses]{list_agent_statuses} \tab This API is in preview release for Amazon Connect and is subject to change\cr
-\link[=connect_list_analytics_data_associations]{list_analytics_data_associations} \tab This API is in preview release for Amazon Connect and is subject to change\cr
+\link[=connect_list_analytics_data_associations]{list_analytics_data_associations} \tab Lists the association status of requested dataset ID for a given Amazon Connect instance\cr
 \link[=connect_list_approved_origins]{list_approved_origins} \tab This API is in preview release for Amazon Connect and is subject to change\cr
+\link[=connect_list_associated_contacts]{list_associated_contacts} \tab Provides information about contact tree, a list of associated contacts with a unique identifier\cr
 \link[=connect_list_authentication_profiles]{list_authentication_profiles} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 \link[=connect_list_bots]{list_bots} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 \link[=connect_list_contact_evaluations]{list_contact_evaluations} \tab Lists contact evaluations in the specified Amazon Connect instance\cr
 \link[=connect_list_contact_flow_modules]{list_contact_flow_modules} \tab Provides information about the flow modules for the specified Amazon Connect instance\cr
 \link[=connect_list_contact_flows]{list_contact_flows} \tab Provides information about the flows for the specified Amazon Connect instance\cr
+\link[=connect_list_contact_flow_versions]{list_contact_flow_versions} \tab Returns all the available versions for the specified Amazon Connect instance and flow identifier\cr
 \link[=connect_list_contact_references]{list_contact_references} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 \link[=connect_list_default_vocabularies]{list_default_vocabularies} \tab Lists the default vocabularies for the specified Amazon Connect instance\cr
 \link[=connect_list_evaluation_forms]{list_evaluation_forms} \tab Lists evaluation forms in the specified Amazon Connect instance\cr
 \link[=connect_list_evaluation_form_versions]{list_evaluation_form_versions} \tab Lists versions of an evaluation form in the specified Amazon Connect instance\cr
 \link[=connect_list_flow_associations]{list_flow_associations} \tab List the flow association based on the filters\cr
+\link[=connect_list_hours_of_operation_overrides]{list_hours_of_operation_overrides} \tab List the hours of operation overrides\cr
 \link[=connect_list_hours_of_operations]{list_hours_of_operations} \tab Provides information about the hours of operation for the specified Amazon Connect instance\cr
 \link[=connect_list_instance_attributes]{list_instance_attributes} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 \link[=connect_list_instances]{list_instances} \tab This API is in preview release for Amazon Connect and is subject to change\cr
@@ -284,8 +298,10 @@ using an endpoint. For a list of Amazon Connect endpoints, see \href{https://doc
 \link[=connect_search_agent_statuses]{search_agent_statuses} \tab Searches AgentStatuses in an Amazon Connect instance, with optional filtering\cr
 \link[=connect_search_available_phone_numbers]{search_available_phone_numbers} \tab Searches for available phone numbers that you can claim to your Amazon Connect instance or traffic distribution group\cr
 \link[=connect_search_contact_flow_modules]{search_contact_flow_modules} \tab Searches the flow modules in an Amazon Connect instance, with optional filtering\cr
-\link[=connect_search_contact_flows]{search_contact_flows} \tab Searches the contact flows in an Amazon Connect instance, with optional filtering\cr
+\link[=connect_search_contact_flows]{search_contact_flows} \tab Searches the flows in an Amazon Connect instance, with optional filtering\cr
 \link[=connect_search_contacts]{search_contacts} \tab Searches contacts in an Amazon Connect instance\cr
+\link[=connect_search_email_addresses]{search_email_addresses} \tab Searches email address in an instance, with optional filtering\cr
+\link[=connect_search_hours_of_operation_overrides]{search_hours_of_operation_overrides} \tab Searches the hours of operation overrides\cr
 \link[=connect_search_hours_of_operations]{search_hours_of_operations} \tab Searches the hours of operation in an Amazon Connect instance, with optional filtering\cr
 \link[=connect_search_predefined_attributes]{search_predefined_attributes} \tab Searches predefined attributes that meet certain criteria\cr
 \link[=connect_search_prompts]{search_prompts} \tab Searches prompts in an Amazon Connect instance, with optional filtering\cr
@@ -298,12 +314,17 @@ using an endpoint. For a list of Amazon Connect endpoints, see \href{https://doc
 \link[=connect_search_users]{search_users} \tab Searches users in an Amazon Connect instance, with optional filtering\cr
 \link[=connect_search_vocabularies]{search_vocabularies} \tab Searches for vocabularies within a specific Amazon Connect instance using State, NameStartsWith, and LanguageCode\cr
 \link[=connect_send_chat_integration_event]{send_chat_integration_event} \tab Processes chat integration events from Amazon Web Services or external integrations to Amazon Connect\cr
+\link[=connect_send_outbound_email]{send_outbound_email} \tab Send outbound email for outbound campaigns\cr
 \link[=connect_start_attached_file_upload]{start_attached_file_upload} \tab Provides a pre-signed Amazon S3 URL in response for uploading your content\cr
 \link[=connect_start_chat_contact]{start_chat_contact} \tab Initiates a flow to start a new chat for the customer\cr
 \link[=connect_start_contact_evaluation]{start_contact_evaluation} \tab Starts an empty evaluation in the specified Amazon Connect instance, using the given evaluation form for the particular contact\cr
 \link[=connect_start_contact_recording]{start_contact_recording} \tab Starts recording the contact:\cr
 \link[=connect_start_contact_streaming]{start_contact_streaming} \tab Initiates real-time message streaming for a new chat contact\cr
+\link[=connect_start_email_contact]{start_email_contact} \tab Creates an inbound email contact and initiates a flow to start the email contact for the customer\cr
+\link[=connect_start_outbound_chat_contact]{start_outbound_chat_contact} \tab Initiates a new outbound SMS contact to a customer\cr
+\link[=connect_start_outbound_email_contact]{start_outbound_email_contact} \tab Initiates a flow to send an agent reply or outbound email contact (created from the CreateContact API) to a customer\cr
 \link[=connect_start_outbound_voice_contact]{start_outbound_voice_contact} \tab Places an outbound call to a contact, and then initiates the flow\cr
+\link[=connect_start_screen_sharing]{start_screen_sharing} \tab Starts screen sharing for a contact\cr
 \link[=connect_start_task_contact]{start_task_contact} \tab Initiates a flow to start a new task contact\cr
 \link[=connect_start_web_rtc_contact]{start_web_rtc_contact} \tab Places an inbound in-app, web, or video call to a contact, and then initiates the flow\cr
 \link[=connect_stop_contact]{stop_contact} \tab Ends the specified contact\cr
@@ -328,8 +349,10 @@ using an endpoint. For a list of Amazon Connect endpoints, see \href{https://doc
 \link[=connect_update_contact_flow_name]{update_contact_flow_name} \tab The name of the flow\cr
 \link[=connect_update_contact_routing_data]{update_contact_routing_data} \tab Updates routing priority and age on the contact (QueuePriority and QueueTimeAdjustmentInSeconds)\cr
 \link[=connect_update_contact_schedule]{update_contact_schedule} \tab Updates the scheduled time of a task contact that is already scheduled\cr
+\link[=connect_update_email_address_metadata]{update_email_address_metadata} \tab Updates an email address metadata\cr
 \link[=connect_update_evaluation_form]{update_evaluation_form} \tab Updates details about a specific evaluation form version in the specified Amazon Connect instance\cr
 \link[=connect_update_hours_of_operation]{update_hours_of_operation} \tab This API is in preview release for Amazon Connect and is subject to change\cr
+\link[=connect_update_hours_of_operation_override]{update_hours_of_operation_override} \tab Update the hours of operation override\cr
 \link[=connect_update_instance_attribute]{update_instance_attribute} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 \link[=connect_update_instance_storage_config]{update_instance_storage_config} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 \link[=connect_update_participant_role_config]{update_participant_role_config} \tab Updates timeouts for when human chat participants are to be considered idle, and when agents are automatically disconnected from a chat due to idleness\cr
@@ -341,6 +364,7 @@ using an endpoint. For a list of Amazon Connect endpoints, see \href{https://doc
 \link[=connect_update_queue_max_contacts]{update_queue_max_contacts} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 \link[=connect_update_queue_name]{update_queue_name} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 \link[=connect_update_queue_outbound_caller_config]{update_queue_outbound_caller_config} \tab This API is in preview release for Amazon Connect and is subject to change\cr
+\link[=connect_update_queue_outbound_email_config]{update_queue_outbound_email_config} \tab Updates the outbound email address Id for a specified queue\cr
 \link[=connect_update_queue_status]{update_queue_status} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 \link[=connect_update_quick_connect_config]{update_quick_connect_config} \tab Updates the configuration settings for the specified quick connect\cr
 \link[=connect_update_quick_connect_name]{update_quick_connect_name} \tab Updates the name and description of a quick connect\cr

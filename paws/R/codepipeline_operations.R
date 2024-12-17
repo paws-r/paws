@@ -156,7 +156,7 @@ codepipeline_acknowledge_third_party_job <- function(jobId, nonce, clientToken) 
 #' list(
 #'   actionType = list(
 #'     id = list(
-#'       category = "Source"|"Build"|"Deploy"|"Test"|"Invoke"|"Approval",
+#'       category = "Source"|"Build"|"Deploy"|"Test"|"Invoke"|"Approval"|"Compute",
 #'       owner = "AWS"|"ThirdParty"|"Custom",
 #'       provider = "string",
 #'       version = "string"
@@ -199,7 +199,7 @@ codepipeline_acknowledge_third_party_job <- function(jobId, nonce, clientToken) 
 #' @section Request syntax:
 #' ```
 #' svc$create_custom_action_type(
-#'   category = "Source"|"Build"|"Deploy"|"Test"|"Invoke"|"Approval",
+#'   category = "Source"|"Build"|"Deploy"|"Test"|"Invoke"|"Approval"|"Compute",
 #'   provider = "string",
 #'   version = "string",
 #'   settings = list(
@@ -315,7 +315,7 @@ codepipeline_create_custom_action_type <- function(category, provider, version, 
 #'           list(
 #'             name = "string",
 #'             actionTypeId = list(
-#'               category = "Source"|"Build"|"Deploy"|"Test"|"Invoke"|"Approval",
+#'               category = "Source"|"Build"|"Deploy"|"Test"|"Invoke"|"Approval"|"Compute",
 #'               owner = "AWS"|"ThirdParty"|"Custom",
 #'               provider = "string",
 #'               version = "string"
@@ -324,15 +324,24 @@ codepipeline_create_custom_action_type <- function(category, provider, version, 
 #'             configuration = list(
 #'               "string"
 #'             ),
+#'             commands = list(
+#'               "string"
+#'             ),
 #'             outputArtifacts = list(
 #'               list(
-#'                 name = "string"
+#'                 name = "string",
+#'                 files = list(
+#'                   "string"
+#'                 )
 #'               )
 #'             ),
 #'             inputArtifacts = list(
 #'               list(
 #'                 name = "string"
 #'               )
+#'             ),
+#'             outputVariables = list(
+#'               "string"
 #'             ),
 #'             roleArn = "string",
 #'             region = "string",
@@ -341,10 +350,13 @@ codepipeline_create_custom_action_type <- function(category, provider, version, 
 #'           )
 #'         ),
 #'         onFailure = list(
-#'           result = "ROLLBACK"|"FAIL",
+#'           result = "ROLLBACK"|"FAIL"|"RETRY"|"SKIP",
+#'           retryConfiguration = list(
+#'             retryMode = "FAILED_ACTIONS"|"ALL_ACTIONS"
+#'           ),
 #'           conditions = list(
 #'             list(
-#'               result = "ROLLBACK"|"FAIL",
+#'               result = "ROLLBACK"|"FAIL"|"RETRY"|"SKIP",
 #'               rules = list(
 #'                 list(
 #'                   name = "string",
@@ -373,7 +385,7 @@ codepipeline_create_custom_action_type <- function(category, provider, version, 
 #'         onSuccess = list(
 #'           conditions = list(
 #'             list(
-#'               result = "ROLLBACK"|"FAIL",
+#'               result = "ROLLBACK"|"FAIL"|"RETRY"|"SKIP",
 #'               rules = list(
 #'                 list(
 #'                   name = "string",
@@ -402,7 +414,7 @@ codepipeline_create_custom_action_type <- function(category, provider, version, 
 #'         beforeEntry = list(
 #'           conditions = list(
 #'             list(
-#'               result = "ROLLBACK"|"FAIL",
+#'               result = "ROLLBACK"|"FAIL"|"RETRY"|"SKIP",
 #'               rules = list(
 #'                 list(
 #'                   name = "string",
@@ -546,7 +558,7 @@ codepipeline_create_custom_action_type <- function(category, provider, version, 
 #'           list(
 #'             name = "string",
 #'             actionTypeId = list(
-#'               category = "Source"|"Build"|"Deploy"|"Test"|"Invoke"|"Approval",
+#'               category = "Source"|"Build"|"Deploy"|"Test"|"Invoke"|"Approval"|"Compute",
 #'               owner = "AWS"|"ThirdParty"|"Custom",
 #'               provider = "string",
 #'               version = "string"
@@ -555,15 +567,24 @@ codepipeline_create_custom_action_type <- function(category, provider, version, 
 #'             configuration = list(
 #'               "string"
 #'             ),
+#'             commands = list(
+#'               "string"
+#'             ),
 #'             outputArtifacts = list(
 #'               list(
-#'                 name = "string"
+#'                 name = "string",
+#'                 files = list(
+#'                   "string"
+#'                 )
 #'               )
 #'             ),
 #'             inputArtifacts = list(
 #'               list(
 #'                 name = "string"
 #'               )
+#'             ),
+#'             outputVariables = list(
+#'               "string"
 #'             ),
 #'             roleArn = "string",
 #'             region = "string",
@@ -572,10 +593,13 @@ codepipeline_create_custom_action_type <- function(category, provider, version, 
 #'           )
 #'         ),
 #'         onFailure = list(
-#'           result = "ROLLBACK"|"FAIL",
+#'           result = "ROLLBACK"|"FAIL"|"RETRY"|"SKIP",
+#'           retryConfiguration = list(
+#'             retryMode = "FAILED_ACTIONS"|"ALL_ACTIONS"
+#'           ),
 #'           conditions = list(
 #'             list(
-#'               result = "ROLLBACK"|"FAIL",
+#'               result = "ROLLBACK"|"FAIL"|"RETRY"|"SKIP",
 #'               rules = list(
 #'                 list(
 #'                   name = "string",
@@ -604,7 +628,7 @@ codepipeline_create_custom_action_type <- function(category, provider, version, 
 #'         onSuccess = list(
 #'           conditions = list(
 #'             list(
-#'               result = "ROLLBACK"|"FAIL",
+#'               result = "ROLLBACK"|"FAIL"|"RETRY"|"SKIP",
 #'               rules = list(
 #'                 list(
 #'                   name = "string",
@@ -633,7 +657,7 @@ codepipeline_create_custom_action_type <- function(category, provider, version, 
 #'         beforeEntry = list(
 #'           conditions = list(
 #'             list(
-#'               result = "ROLLBACK"|"FAIL",
+#'               result = "ROLLBACK"|"FAIL"|"RETRY"|"SKIP",
 #'               rules = list(
 #'                 list(
 #'                   name = "string",
@@ -793,7 +817,7 @@ codepipeline_create_pipeline <- function(pipeline, tags = NULL) {
 #' @section Request syntax:
 #' ```
 #' svc$delete_custom_action_type(
-#'   category = "Source"|"Build"|"Deploy"|"Test"|"Invoke"|"Approval",
+#'   category = "Source"|"Build"|"Deploy"|"Test"|"Invoke"|"Approval"|"Compute",
 #'   provider = "string",
 #'   version = "string"
 #' )
@@ -1135,7 +1159,7 @@ codepipeline_enable_stage_transition <- function(pipelineName, stageName, transi
 #'       jobTimeout = 123
 #'     ),
 #'     id = list(
-#'       category = "Source"|"Build"|"Deploy"|"Test"|"Invoke"|"Approval",
+#'       category = "Source"|"Build"|"Deploy"|"Test"|"Invoke"|"Approval"|"Compute",
 #'       owner = "string",
 #'       provider = "string",
 #'       version = "string"
@@ -1176,7 +1200,7 @@ codepipeline_enable_stage_transition <- function(pipelineName, stageName, transi
 #' @section Request syntax:
 #' ```
 #' svc$get_action_type(
-#'   category = "Source"|"Build"|"Deploy"|"Test"|"Invoke"|"Approval",
+#'   category = "Source"|"Build"|"Deploy"|"Test"|"Invoke"|"Approval"|"Compute",
 #'   owner = "string",
 #'   provider = "string",
 #'   version = "string"
@@ -1230,7 +1254,7 @@ codepipeline_get_action_type <- function(category, owner, provider, version) {
 #'     id = "string",
 #'     data = list(
 #'       actionTypeId = list(
-#'         category = "Source"|"Build"|"Deploy"|"Test"|"Invoke"|"Approval",
+#'         category = "Source"|"Build"|"Deploy"|"Test"|"Invoke"|"Approval"|"Compute",
 #'         owner = "AWS"|"ThirdParty"|"Custom",
 #'         provider = "string",
 #'         version = "string"
@@ -1379,7 +1403,7 @@ codepipeline_get_job_details <- function(jobId) {
 #'           list(
 #'             name = "string",
 #'             actionTypeId = list(
-#'               category = "Source"|"Build"|"Deploy"|"Test"|"Invoke"|"Approval",
+#'               category = "Source"|"Build"|"Deploy"|"Test"|"Invoke"|"Approval"|"Compute",
 #'               owner = "AWS"|"ThirdParty"|"Custom",
 #'               provider = "string",
 #'               version = "string"
@@ -1388,15 +1412,24 @@ codepipeline_get_job_details <- function(jobId) {
 #'             configuration = list(
 #'               "string"
 #'             ),
+#'             commands = list(
+#'               "string"
+#'             ),
 #'             outputArtifacts = list(
 #'               list(
-#'                 name = "string"
+#'                 name = "string",
+#'                 files = list(
+#'                   "string"
+#'                 )
 #'               )
 #'             ),
 #'             inputArtifacts = list(
 #'               list(
 #'                 name = "string"
 #'               )
+#'             ),
+#'             outputVariables = list(
+#'               "string"
 #'             ),
 #'             roleArn = "string",
 #'             region = "string",
@@ -1405,10 +1438,13 @@ codepipeline_get_job_details <- function(jobId) {
 #'           )
 #'         ),
 #'         onFailure = list(
-#'           result = "ROLLBACK"|"FAIL",
+#'           result = "ROLLBACK"|"FAIL"|"RETRY"|"SKIP",
+#'           retryConfiguration = list(
+#'             retryMode = "FAILED_ACTIONS"|"ALL_ACTIONS"
+#'           ),
 #'           conditions = list(
 #'             list(
-#'               result = "ROLLBACK"|"FAIL",
+#'               result = "ROLLBACK"|"FAIL"|"RETRY"|"SKIP",
 #'               rules = list(
 #'                 list(
 #'                   name = "string",
@@ -1437,7 +1473,7 @@ codepipeline_get_job_details <- function(jobId) {
 #'         onSuccess = list(
 #'           conditions = list(
 #'             list(
-#'               result = "ROLLBACK"|"FAIL",
+#'               result = "ROLLBACK"|"FAIL"|"RETRY"|"SKIP",
 #'               rules = list(
 #'                 list(
 #'                   name = "string",
@@ -1466,7 +1502,7 @@ codepipeline_get_job_details <- function(jobId) {
 #'         beforeEntry = list(
 #'           conditions = list(
 #'             list(
-#'               result = "ROLLBACK"|"FAIL",
+#'               result = "ROLLBACK"|"FAIL"|"RETRY"|"SKIP",
 #'               rules = list(
 #'                 list(
 #'                   name = "string",
@@ -1727,13 +1763,13 @@ codepipeline_get_pipeline_execution <- function(pipelineName, pipelineExecutionI
 #'       stageName = "string",
 #'       inboundExecution = list(
 #'         pipelineExecutionId = "string",
-#'         status = "Cancelled"|"InProgress"|"Failed"|"Stopped"|"Stopping"|"Succeeded",
+#'         status = "Cancelled"|"InProgress"|"Failed"|"Stopped"|"Stopping"|"Succeeded"|"Skipped",
 #'         type = "STANDARD"|"ROLLBACK"
 #'       ),
 #'       inboundExecutions = list(
 #'         list(
 #'           pipelineExecutionId = "string",
-#'           status = "Cancelled"|"InProgress"|"Failed"|"Stopped"|"Stopping"|"Succeeded",
+#'           status = "Cancelled"|"InProgress"|"Failed"|"Stopped"|"Stopping"|"Succeeded"|"Skipped",
 #'           type = "STANDARD"|"ROLLBACK"
 #'         )
 #'       ),
@@ -1770,7 +1806,8 @@ codepipeline_get_pipeline_execution <- function(pipelineName, pipelineExecutionI
 #'             errorDetails = list(
 #'               code = "string",
 #'               message = "string"
-#'             )
+#'             ),
+#'             logStreamARN = "string"
 #'           ),
 #'           entityUrl = "string",
 #'           revisionUrl = "string"
@@ -1778,7 +1815,7 @@ codepipeline_get_pipeline_execution <- function(pipelineName, pipelineExecutionI
 #'       ),
 #'       latestExecution = list(
 #'         pipelineExecutionId = "string",
-#'         status = "Cancelled"|"InProgress"|"Failed"|"Stopped"|"Stopping"|"Succeeded",
+#'         status = "Cancelled"|"InProgress"|"Failed"|"Stopped"|"Stopping"|"Succeeded"|"Skipped",
 #'         type = "STANDARD"|"ROLLBACK"
 #'       ),
 #'       beforeEntryConditionState = list(
@@ -1921,6 +1958,11 @@ codepipeline_get_pipeline_execution <- function(pipelineName, pipelineExecutionI
 #'             )
 #'           )
 #'         )
+#'       ),
+#'       retryStageMetadata = list(
+#'         autoStageRetryAttempt = 123,
+#'         manualStageRetryAttempt = 123,
+#'         latestRetryTrigger = "AutomatedStageRetry"|"ManualStageRetry"
 #'       )
 #'     )
 #'   ),
@@ -1991,7 +2033,7 @@ codepipeline_get_pipeline_state <- function(name) {
 #'     id = "string",
 #'     data = list(
 #'       actionTypeId = list(
-#'         category = "Source"|"Build"|"Deploy"|"Test"|"Invoke"|"Approval",
+#'         category = "Source"|"Build"|"Deploy"|"Test"|"Invoke"|"Approval"|"Compute",
 #'         owner = "AWS"|"ThirdParty"|"Custom",
 #'         provider = "string",
 #'         version = "string"
@@ -2129,7 +2171,7 @@ codepipeline_get_third_party_job_details <- function(jobId, clientToken) {
 #'       status = "InProgress"|"Abandoned"|"Succeeded"|"Failed",
 #'       input = list(
 #'         actionTypeId = list(
-#'           category = "Source"|"Build"|"Deploy"|"Test"|"Invoke"|"Approval",
+#'           category = "Source"|"Build"|"Deploy"|"Test"|"Invoke"|"Approval"|"Compute",
 #'           owner = "AWS"|"ThirdParty"|"Custom",
 #'           provider = "string",
 #'           version = "string"
@@ -2170,7 +2212,8 @@ codepipeline_get_third_party_job_details <- function(jobId, clientToken) {
 #'           errorDetails = list(
 #'             code = "string",
 #'             message = "string"
-#'           )
+#'           ),
+#'           logStreamARN = "string"
 #'         ),
 #'         outputVariables = list(
 #'           "string"
@@ -2246,7 +2289,7 @@ codepipeline_list_action_executions <- function(pipelineName, filter = NULL, max
 #'   actionTypes = list(
 #'     list(
 #'       id = list(
-#'         category = "Source"|"Build"|"Deploy"|"Test"|"Invoke"|"Approval",
+#'         category = "Source"|"Build"|"Deploy"|"Test"|"Invoke"|"Approval"|"Compute",
 #'         owner = "AWS"|"ThirdParty"|"Custom",
 #'         provider = "string",
 #'         version = "string"
@@ -2406,7 +2449,7 @@ codepipeline_list_pipeline_executions <- function(pipelineName, maxResults = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "pipelineExecutionSummaries"),
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "pipelineExecutionSummaries"),
     stream_api = FALSE
   )
   input <- .codepipeline$list_pipeline_executions_input(pipelineName = pipelineName, maxResults = maxResults, filter = filter, nextToken = nextToken)
@@ -2475,7 +2518,7 @@ codepipeline_list_pipelines <- function(nextToken = NULL, maxResults = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "pipelines"),
+    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "pipelines", limit_key = "maxResults"),
     stream_api = FALSE
   )
   input <- .codepipeline$list_pipelines_input(nextToken = nextToken, maxResults = maxResults)
@@ -2834,7 +2877,7 @@ codepipeline_list_webhooks <- function(NextToken = NULL, MaxResults = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "webhooks"),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "webhooks"),
     stream_api = FALSE
   )
   input <- .codepipeline$list_webhooks_input(NextToken = NextToken, MaxResults = MaxResults)
@@ -2934,7 +2977,7 @@ codepipeline_override_stage_condition <- function(pipelineName, stageName, pipel
 #'       id = "string",
 #'       data = list(
 #'         actionTypeId = list(
-#'           category = "Source"|"Build"|"Deploy"|"Test"|"Invoke"|"Approval",
+#'           category = "Source"|"Build"|"Deploy"|"Test"|"Invoke"|"Approval"|"Compute",
 #'           owner = "AWS"|"ThirdParty"|"Custom",
 #'           provider = "string",
 #'           version = "string"
@@ -3004,7 +3047,7 @@ codepipeline_override_stage_condition <- function(pipelineName, stageName, pipel
 #' ```
 #' svc$poll_for_jobs(
 #'   actionTypeId = list(
-#'     category = "Source"|"Build"|"Deploy"|"Test"|"Invoke"|"Approval",
+#'     category = "Source"|"Build"|"Deploy"|"Test"|"Invoke"|"Approval"|"Compute",
 #'     owner = "AWS"|"ThirdParty"|"Custom",
 #'     provider = "string",
 #'     version = "string"
@@ -3074,7 +3117,7 @@ codepipeline_poll_for_jobs <- function(actionTypeId, maxBatchSize = NULL, queryP
 #' ```
 #' svc$poll_for_third_party_jobs(
 #'   actionTypeId = list(
-#'     category = "Source"|"Build"|"Deploy"|"Test"|"Invoke"|"Approval",
+#'     category = "Source"|"Build"|"Deploy"|"Test"|"Invoke"|"Approval"|"Compute",
 #'     owner = "AWS"|"ThirdParty"|"Custom",
 #'     provider = "string",
 #'     version = "string"
@@ -3191,6 +3234,12 @@ codepipeline_put_action_revision <- function(pipelineName, stageName, actionName
 #' [`get_pipeline_state`][codepipeline_get_pipeline_state] action. It is
 #' used to validate that the approval request corresponding to this token
 #' is still valid.
+#' 
+#' For a pipeline where the execution mode is set to PARALLEL, the token
+#' required to approve/reject approval request as detailed above is not
+#' available. Instead, use the `externalExecutionId` from the
+#' [`get_pipeline_state`][codepipeline_get_pipeline_state] action as the
+#' token in the approval request.
 #'
 #' @return
 #' A list with the following syntax:
@@ -4082,7 +4131,7 @@ codepipeline_untag_resource <- function(resourceArn, tagKeys) {
 #'       jobTimeout = 123
 #'     ),
 #'     id = list(
-#'       category = "Source"|"Build"|"Deploy"|"Test"|"Invoke"|"Approval",
+#'       category = "Source"|"Build"|"Deploy"|"Test"|"Invoke"|"Approval"|"Compute",
 #'       owner = "string",
 #'       provider = "string",
 #'       version = "string"
@@ -4196,7 +4245,7 @@ codepipeline_update_action_type <- function(actionType) {
 #'           list(
 #'             name = "string",
 #'             actionTypeId = list(
-#'               category = "Source"|"Build"|"Deploy"|"Test"|"Invoke"|"Approval",
+#'               category = "Source"|"Build"|"Deploy"|"Test"|"Invoke"|"Approval"|"Compute",
 #'               owner = "AWS"|"ThirdParty"|"Custom",
 #'               provider = "string",
 #'               version = "string"
@@ -4205,15 +4254,24 @@ codepipeline_update_action_type <- function(actionType) {
 #'             configuration = list(
 #'               "string"
 #'             ),
+#'             commands = list(
+#'               "string"
+#'             ),
 #'             outputArtifacts = list(
 #'               list(
-#'                 name = "string"
+#'                 name = "string",
+#'                 files = list(
+#'                   "string"
+#'                 )
 #'               )
 #'             ),
 #'             inputArtifacts = list(
 #'               list(
 #'                 name = "string"
 #'               )
+#'             ),
+#'             outputVariables = list(
+#'               "string"
 #'             ),
 #'             roleArn = "string",
 #'             region = "string",
@@ -4222,10 +4280,13 @@ codepipeline_update_action_type <- function(actionType) {
 #'           )
 #'         ),
 #'         onFailure = list(
-#'           result = "ROLLBACK"|"FAIL",
+#'           result = "ROLLBACK"|"FAIL"|"RETRY"|"SKIP",
+#'           retryConfiguration = list(
+#'             retryMode = "FAILED_ACTIONS"|"ALL_ACTIONS"
+#'           ),
 #'           conditions = list(
 #'             list(
-#'               result = "ROLLBACK"|"FAIL",
+#'               result = "ROLLBACK"|"FAIL"|"RETRY"|"SKIP",
 #'               rules = list(
 #'                 list(
 #'                   name = "string",
@@ -4254,7 +4315,7 @@ codepipeline_update_action_type <- function(actionType) {
 #'         onSuccess = list(
 #'           conditions = list(
 #'             list(
-#'               result = "ROLLBACK"|"FAIL",
+#'               result = "ROLLBACK"|"FAIL"|"RETRY"|"SKIP",
 #'               rules = list(
 #'                 list(
 #'                   name = "string",
@@ -4283,7 +4344,7 @@ codepipeline_update_action_type <- function(actionType) {
 #'         beforeEntry = list(
 #'           conditions = list(
 #'             list(
-#'               result = "ROLLBACK"|"FAIL",
+#'               result = "ROLLBACK"|"FAIL"|"RETRY"|"SKIP",
 #'               rules = list(
 #'                 list(
 #'                   name = "string",
@@ -4421,7 +4482,7 @@ codepipeline_update_action_type <- function(actionType) {
 #'           list(
 #'             name = "string",
 #'             actionTypeId = list(
-#'               category = "Source"|"Build"|"Deploy"|"Test"|"Invoke"|"Approval",
+#'               category = "Source"|"Build"|"Deploy"|"Test"|"Invoke"|"Approval"|"Compute",
 #'               owner = "AWS"|"ThirdParty"|"Custom",
 #'               provider = "string",
 #'               version = "string"
@@ -4430,15 +4491,24 @@ codepipeline_update_action_type <- function(actionType) {
 #'             configuration = list(
 #'               "string"
 #'             ),
+#'             commands = list(
+#'               "string"
+#'             ),
 #'             outputArtifacts = list(
 #'               list(
-#'                 name = "string"
+#'                 name = "string",
+#'                 files = list(
+#'                   "string"
+#'                 )
 #'               )
 #'             ),
 #'             inputArtifacts = list(
 #'               list(
 #'                 name = "string"
 #'               )
+#'             ),
+#'             outputVariables = list(
+#'               "string"
 #'             ),
 #'             roleArn = "string",
 #'             region = "string",
@@ -4447,10 +4517,13 @@ codepipeline_update_action_type <- function(actionType) {
 #'           )
 #'         ),
 #'         onFailure = list(
-#'           result = "ROLLBACK"|"FAIL",
+#'           result = "ROLLBACK"|"FAIL"|"RETRY"|"SKIP",
+#'           retryConfiguration = list(
+#'             retryMode = "FAILED_ACTIONS"|"ALL_ACTIONS"
+#'           ),
 #'           conditions = list(
 #'             list(
-#'               result = "ROLLBACK"|"FAIL",
+#'               result = "ROLLBACK"|"FAIL"|"RETRY"|"SKIP",
 #'               rules = list(
 #'                 list(
 #'                   name = "string",
@@ -4479,7 +4552,7 @@ codepipeline_update_action_type <- function(actionType) {
 #'         onSuccess = list(
 #'           conditions = list(
 #'             list(
-#'               result = "ROLLBACK"|"FAIL",
+#'               result = "ROLLBACK"|"FAIL"|"RETRY"|"SKIP",
 #'               rules = list(
 #'                 list(
 #'                   name = "string",
@@ -4508,7 +4581,7 @@ codepipeline_update_action_type <- function(actionType) {
 #'         beforeEntry = list(
 #'           conditions = list(
 #'             list(
-#'               result = "ROLLBACK"|"FAIL",
+#'               result = "ROLLBACK"|"FAIL"|"RETRY"|"SKIP",
 #'               rules = list(
 #'                 list(
 #'                   name = "string",

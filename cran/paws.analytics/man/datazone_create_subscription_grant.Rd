@@ -10,7 +10,7 @@ datazone_create_subscription_grant(
   domainIdentifier,
   environmentIdentifier,
   grantedEntity,
-  subscriptionTargetIdentifier
+  subscriptionTargetIdentifier = NULL
 )
 }
 \arguments{
@@ -26,7 +26,7 @@ created.}
 
 \item{grantedEntity}{[required] The entity to which the subscription is to be granted.}
 
-\item{subscriptionTargetIdentifier}{[required] The ID of the subscription target for which the subscription grant is
+\item{subscriptionTargetIdentifier}{The ID of the subscription target for which the subscription grant is
 created.}
 }
 \description{

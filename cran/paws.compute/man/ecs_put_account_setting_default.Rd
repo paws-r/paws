@@ -42,12 +42,24 @@ is changed. If \code{awsvpcTrunking} is turned on, any new container
 instances that support the feature are launched have the increased
 ENI limits available to them. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/container-instance-eni.html}{Elastic Network Interface Trunking}
 in the \emph{Amazon Elastic Container Service Developer Guide}.
-\item \code{containerInsights} - When modified, the default setting indicating
-whether Amazon Web Services CloudWatch Container Insights is turned
-on for your clusters is changed. If \code{containerInsights} is turned
-on, any new clusters that are created will have Container Insights
-turned on unless you disable it during cluster creation. For more
-information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cloudwatch-container-insights.html}{CloudWatch Container Insights}
+\item \code{containerInsights} - Container Insights with enhanced observability
+provides all the Container Insights metrics, plus additional task
+and container metrics. This version supports enhanced observability
+for Amazon ECS clusters using the Amazon EC2 and Fargate launch
+types. After you configure Container Insights with enhanced
+observability on Amazon ECS, Container Insights auto-collects
+detailed infrastructure telemetry from the cluster level down to the
+container level in your environment and displays these critical
+performance data in curated dashboards removing the heavy lifting in
+observability set-up.
+
+To use Container Insights with enhanced observability, set the
+\code{containerInsights} account setting to \code{enhanced}.
+
+To use Container Insights, set the \code{containerInsights} account
+setting to \code{enabled}.
+
+For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cloudwatch-container-insights.html}{Monitor Amazon ECS containers using Container Insights with enhanced observability}
 in the \emph{Amazon Elastic Container Service Developer Guide}.
 \item \code{dualStackIPv6} - When turned on, when using a VPC in dual stack
 mode, your tasks using the \code{awsvpc} network mode can have an IPv6
@@ -82,7 +94,7 @@ behalf. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/la
 }}
 
 \item{value}{[required] The account setting value for the specified principal ARN. Accepted
-values are \code{enabled}, \code{disabled}, \code{on}, and \code{off}.
+values are \code{enabled}, \code{disabled}, \code{on}, \code{enhanced}, and \code{off}.
 
 When you specify \code{fargateTaskRetirementWaitPeriod} for the \code{name}, the
 following are the valid values:

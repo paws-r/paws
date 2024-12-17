@@ -9,10 +9,10 @@ ec2_monitor_instances(InstanceIds, DryRun = NULL)
 \arguments{
 \item{InstanceIds}{[required] The IDs of the instances.}
 
-\item{DryRun}{Checks whether you have the required permissions for the action, without
-actually making the request, and provides an error response. If you have
-the required permissions, the error response is \code{DryRunOperation}.
-Otherwise, it is \code{UnauthorizedOperation}.}
+\item{DryRun}{Checks whether you have the required permissions for the operation,
+without actually making the request, and provides an error response. If
+you have the required permissions, the error response is
+\code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
 Enables detailed monitoring for a running instance. Otherwise, basic monitoring is enabled. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-cloudwatch.html}{Monitor your instances using CloudWatch} in the \emph{Amazon EC2 User Guide}.

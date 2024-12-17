@@ -8,8 +8,17 @@ configservice_untag_resource(ResourceArn, TagKeys)
 }
 \arguments{
 \item{ResourceArn}{[required] The Amazon Resource Name (ARN) that identifies the resource for which to
-list the tags. Currently, the supported resources are \code{ConfigRule},
-\code{ConfigurationAggregator} and \code{AggregatorAuthorization}.}
+list the tags. The following resources are supported:
+\itemize{
+\item \code{ConfigurationRecorder}
+\item \code{ConfigRule}
+\item \code{OrganizationConfigRule}
+\item \code{ConformancePack}
+\item \code{OrganizationConformancePack}
+\item \code{ConfigurationAggregator}
+\item \code{AggregationAuthorization}
+\item \code{StoredQuery}
+}}
 
 \item{TagKeys}{[required] The keys of the tags to be removed.}
 }

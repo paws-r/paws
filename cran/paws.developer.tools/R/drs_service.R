@@ -171,7 +171,7 @@ drs <- function(config = list(), credentials = list(), endpoint = NULL, region =
 
 .drs$metadata <- list(
   service_name = "drs",
-  endpoints = list("*" = list(endpoint = "drs.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "drs.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "drs.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "drs.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "drs.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "drs.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "drs.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "drs.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "drs.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "drs.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "drs.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "drs.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "drs.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "drs",
   api_version = "2020-02-26",
   signing_name = "drs",

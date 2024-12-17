@@ -2,19 +2,24 @@
 % Please edit documentation in R/kendra_operations.R
 \name{kendra_tag_resource}
 \alias{kendra_tag_resource}
-\title{Adds the specified tag to the specified index, FAQ, or data source
-resource}
+\title{Adds the specified tag to the specified index, FAQ, data source, or
+other resource}
 \usage{
 kendra_tag_resource(ResourceARN, Tags)
 }
 \arguments{
-\item{ResourceARN}{[required] The Amazon Resource Name (ARN) of the index, FAQ, or data source to tag.}
+\item{ResourceARN}{[required] The Amazon Resource Name (ARN) of the index, FAQ, data source, or other
+resource to add a tag. For example, the ARN of an index is constructed
+as follows: \emph{arn:aws:kendra:your-region:your-account-id:index/index-id}
+For information on how to construct an ARN for all types of Amazon
+Kendra resources, see \href{https://docs.aws.amazon.com/service-authorization/latest/reference/list_amazonkendra.html#amazonkendra-resources-for-iam-policies}{Resource types}.}
 
-\item{Tags}{[required] A list of tag keys to add to the index, FAQ, or data source. If a tag
-already exists, the existing value is replaced with the new value.}
+\item{Tags}{[required] A list of tag keys to add to the index, FAQ, data source, or other
+resource. If a tag already exists, the existing value is replaced with
+the new value.}
 }
 \description{
-Adds the specified tag to the specified index, FAQ, or data source resource. If the tag already exists, the existing value is replaced with the new value.
+Adds the specified tag to the specified index, FAQ, data source, or other resource. If the tag already exists, the existing value is replaced with the new value.
 
 See \url{https://www.paws-r-sdk.com/docs/kendra_tag_resource/} for full documentation.
 }

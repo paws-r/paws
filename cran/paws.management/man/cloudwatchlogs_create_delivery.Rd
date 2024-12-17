@@ -19,14 +19,14 @@ cloudwatchlogs_create_delivery(
 \item{deliveryDestinationArn}{[required] The ARN of the delivery destination to use for this delivery.}
 
 \item{recordFields}{The list of record fields to be delivered to the destination, in order.
-If the delivery’s log source has mandatory fields, they must be included
+If the delivery's log source has mandatory fields, they must be included
 in this list.}
 
 \item{fieldDelimiter}{The field delimiter to use between record fields when the final output
 format of a delivery is in \code{Plain}, \code{W3C}, or \code{Raw} format.}
 
 \item{s3DeliveryConfiguration}{This structure contains parameters that are valid only when the
-delivery’s delivery destination is an S3 bucket.}
+delivery's delivery destination is an S3 bucket.}
 
 \item{tags}{An optional list of key-value pairs to associate with the resource.
 

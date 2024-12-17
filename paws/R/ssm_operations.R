@@ -306,8 +306,7 @@ ssm_cancel_maintenance_window_execution <- function(WindowExecutionId) {
 #' capabilities. You use the activation code and ID when installing SSM
 #' Agent on machines in your hybrid environment. For more information about
 #' requirements for managing on-premises machines using Systems Manager,
-#' see [Setting up Amazon Web Services Systems Manager for hybrid and
-#' multicloud
+#' see [Using Amazon Web Services Systems Manager in hybrid and multicloud
 #' environments](https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-hybrid-multicloud.html)
 #' in the *Amazon Web Services Systems Manager User Guide*.
 #' 
@@ -331,9 +330,9 @@ ssm_cancel_maintenance_window_execution <- function(WindowExecutionId) {
 #' @param IamRole &#91;required&#93; The name of the Identity and Access Management (IAM) role that you want
 #' to assign to the managed node. This IAM role must provide AssumeRole
 #' permissions for the Amazon Web Services Systems Manager service
-#' principal `ssm.amazonaws.com`. For more information, see [Create an IAM
-#' service role for a hybrid and multicloud
-#' environment](https://docs.aws.amazon.com/systems-manager/latest/userguide/hybrid-multicloud-service-role.html)
+#' principal `ssm.amazonaws.com`. For more information, see [Create the IAM
+#' service role required for Systems Manager in a hybrid and multicloud
+#' environments](https://docs.aws.amazon.com/systems-manager/latest/userguide/hybrid-multicloud-service-role.html)
 #' in the *Amazon Web Services Systems Manager User Guide*.
 #' 
 #' You can't specify an IAM service-linked role for this parameter. You
@@ -341,7 +340,7 @@ ssm_cancel_maintenance_window_execution <- function(WindowExecutionId) {
 #' @param RegistrationLimit Specify the maximum number of managed nodes you want to register. The
 #' default value is `1`.
 #' @param ExpirationDate The date by which this activation request should expire, in timestamp
-#' format, such as "2021-07-07T00:00:00". You can specify a date up to 30
+#' format, such as "2024-07-07T00:00:00". You can specify a date up to 30
 #' days in advance. If you don't provide an expiration date, the activation
 #' code expires in 24 hours.
 #' @param Tags Optional metadata that you assign to a resource. Tags enable you to
@@ -503,7 +502,7 @@ ssm_create_activation <- function(Description = NULL, DefaultInstanceName = NULL
 #' Amazon Web Services account, or individual managed node IDs. You can
 #' target all managed nodes in an Amazon Web Services account by specifying
 #' the `InstanceIds` key with a value of `*`. For more information about
-#' choosing targets for an association, see [About targets and rate
+#' choosing targets for an association, see [Understanding targets and rate
 #' controls in State Manager
 #' associations](https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-state-manager-targets-and-rate-controls.html)
 #' in the *Amazon Web Services Systems Manager User Guide*.
@@ -692,7 +691,21 @@ ssm_create_activation <- function(Description = NULL, DefaultInstanceName = NULL
 #'               Name = "string"
 #'             )
 #'           )
-#'         )
+#'         ),
+#'         IncludeChildOrganizationUnits = TRUE|FALSE,
+#'         ExcludeAccounts = list(
+#'           "string"
+#'         ),
+#'         Targets = list(
+#'           list(
+#'             Key = "string",
+#'             Values = list(
+#'               "string"
+#'             )
+#'           )
+#'         ),
+#'         TargetsMaxConcurrency = "string",
+#'         TargetsMaxErrors = "string"
 #'       )
 #'     ),
 #'     ScheduleOffset = 123,
@@ -777,7 +790,21 @@ ssm_create_activation <- function(Description = NULL, DefaultInstanceName = NULL
 #'             Name = "string"
 #'           )
 #'         )
-#'       )
+#'       ),
+#'       IncludeChildOrganizationUnits = TRUE|FALSE,
+#'       ExcludeAccounts = list(
+#'         "string"
+#'       ),
+#'       Targets = list(
+#'         list(
+#'           Key = "string",
+#'           Values = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       TargetsMaxConcurrency = "string",
+#'       TargetsMaxErrors = "string"
 #'     )
 #'   ),
 #'   ScheduleOffset = 123,
@@ -938,7 +965,21 @@ ssm_create_association <- function(Name, DocumentVersion = NULL, InstanceId = NU
 #'                 Name = "string"
 #'               )
 #'             )
-#'           )
+#'           ),
+#'           IncludeChildOrganizationUnits = TRUE|FALSE,
+#'           ExcludeAccounts = list(
+#'             "string"
+#'           ),
+#'           Targets = list(
+#'             list(
+#'               Key = "string",
+#'               Values = list(
+#'                 "string"
+#'               )
+#'             )
+#'           ),
+#'           TargetsMaxConcurrency = "string",
+#'           TargetsMaxErrors = "string"
 #'         )
 #'       ),
 #'       ScheduleOffset = 123,
@@ -1021,7 +1062,21 @@ ssm_create_association <- function(Name, DocumentVersion = NULL, InstanceId = NU
 #'                   Name = "string"
 #'                 )
 #'               )
-#'             )
+#'             ),
+#'             IncludeChildOrganizationUnits = TRUE|FALSE,
+#'             ExcludeAccounts = list(
+#'               "string"
+#'             ),
+#'             Targets = list(
+#'               list(
+#'                 Key = "string",
+#'                 Values = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             ),
+#'             TargetsMaxConcurrency = "string",
+#'             TargetsMaxErrors = "string"
 #'           )
 #'         ),
 #'         ScheduleOffset = 123,
@@ -1106,7 +1161,21 @@ ssm_create_association <- function(Name, DocumentVersion = NULL, InstanceId = NU
 #'                 Name = "string"
 #'               )
 #'             )
-#'           )
+#'           ),
+#'           IncludeChildOrganizationUnits = TRUE|FALSE,
+#'           ExcludeAccounts = list(
+#'             "string"
+#'           ),
+#'           Targets = list(
+#'             list(
+#'               Key = "string",
+#'               Values = list(
+#'                 "string"
+#'               )
+#'             )
+#'           ),
+#'           TargetsMaxConcurrency = "string",
+#'           TargetsMaxErrors = "string"
 #'         )
 #'       ),
 #'       ScheduleOffset = 123,
@@ -1799,12 +1868,16 @@ ssm_create_ops_metadata <- function(ResourceId, Metadata = NULL, Tags = NULL) {
 #' value is `WINDOWS`.
 #' @param Name &#91;required&#93; The name of the patch baseline.
 #' @param GlobalFilters A set of global filters used to include patches in the baseline.
+#' 
+#' The `GlobalFilters` parameter can be configured only by using the CLI or
+#' an Amazon Web Services SDK. It can't be configured from the Patch
+#' Manager console, and its value isn't displayed in the console.
 #' @param ApprovalRules A set of rules used to include patches in the baseline.
 #' @param ApprovedPatches A list of explicitly approved patches for the baseline.
 #' 
 #' For information about accepted formats for lists of approved patches and
-#' rejected patches, see [About package name formats for approved and
-#' rejected patch
+#' rejected patches, see [Package name formats for approved and rejected
+#' patch
 #' lists](https://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-approved-rejected-package-name-formats.html)
 #' in the *Amazon Web Services Systems Manager User Guide*.
 #' @param ApprovedPatchesComplianceLevel Defines the compliance level for approved patches. When an approved
@@ -1816,8 +1889,8 @@ ssm_create_ops_metadata <- function(ResourceId, Metadata = NULL, Tags = NULL) {
 #' @param RejectedPatches A list of explicitly rejected patches for the baseline.
 #' 
 #' For information about accepted formats for lists of approved patches and
-#' rejected patches, see [About package name formats for approved and
-#' rejected patch
+#' rejected patches, see [Package name formats for approved and rejected
+#' patch
 #' lists](https://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-approved-rejected-package-name-formats.html)
 #' in the *Amazon Web Services Systems Manager User Guide*.
 #' @param RejectedPatchesAction The action for Patch Manager to take on patches included in the
@@ -1970,9 +2043,9 @@ ssm_create_patch_baseline <- function(OperatingSystem = NULL, Name, GlobalFilter
 #' You can configure Systems Manager Inventory to use the
 #' `SyncToDestination` type to synchronize Inventory data from multiple
 #' Amazon Web Services Regions to a single Amazon Simple Storage Service
-#' (Amazon S3) bucket. For more information, see [Configuring resource data
+#' (Amazon S3) bucket. For more information, see [Creating a resource data
 #' sync for
-#' Inventory](https://docs.aws.amazon.com/systems-manager/latest/userguide/)
+#' Inventory](https://docs.aws.amazon.com/systems-manager/latest/userguide/inventory-create-resource-data-sync.html)
 #' in the *Amazon Web Services Systems Manager User Guide*.
 #' 
 #' You can configure Systems Manager Explorer to use the `SyncFromSource`
@@ -3060,7 +3133,7 @@ ssm_describe_activations <- function(Filters = NULL, MaxResults = NULL, NextToke
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ActivationList"),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ActivationList"),
     stream_api = FALSE
   )
   input <- .ssm$describe_activations_input(Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
@@ -3180,7 +3253,21 @@ ssm_describe_activations <- function(Filters = NULL, MaxResults = NULL, NextToke
 #'               Name = "string"
 #'             )
 #'           )
-#'         )
+#'         ),
+#'         IncludeChildOrganizationUnits = TRUE|FALSE,
+#'         ExcludeAccounts = list(
+#'           "string"
+#'         ),
+#'         Targets = list(
+#'           list(
+#'             Key = "string",
+#'             Values = list(
+#'               "string"
+#'             )
+#'           )
+#'         ),
+#'         TargetsMaxConcurrency = "string",
+#'         TargetsMaxErrors = "string"
 #'       )
 #'     ),
 #'     ScheduleOffset = 123,
@@ -3323,7 +3410,7 @@ ssm_describe_association_execution_targets <- function(AssociationId, ExecutionI
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "AssociationExecutionTargets"),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "AssociationExecutionTargets"),
     stream_api = FALSE
   )
   input <- .ssm$describe_association_execution_targets_input(AssociationId = AssociationId, ExecutionId = ExecutionId, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
@@ -3425,7 +3512,7 @@ ssm_describe_association_executions <- function(AssociationId, Filters = NULL, M
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "AssociationExecutions"),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "AssociationExecutions"),
     stream_api = FALSE
   )
   input <- .ssm$describe_association_executions_input(AssociationId = AssociationId, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
@@ -3521,6 +3608,7 @@ ssm_describe_association_executions <- function(AssociationId, Filters = NULL, M
 #'           State = "UNKNOWN"|"ALARM"
 #'         )
 #'       ),
+#'       TargetLocationsURL = "string",
 #'       AutomationSubtype = "ChangeRequest",
 #'       ScheduledTime = as.POSIXct(
 #'         "2015-01-01"
@@ -3570,7 +3658,21 @@ ssm_describe_association_executions <- function(AssociationId, Filters = NULL, M
 #'                     Name = "string"
 #'                   )
 #'                 )
-#'               )
+#'               ),
+#'               IncludeChildOrganizationUnits = TRUE|FALSE,
+#'               ExcludeAccounts = list(
+#'                 "string"
+#'               ),
+#'               Targets = list(
+#'                 list(
+#'                   Key = "string",
+#'                   Values = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
+#'               TargetsMaxConcurrency = "string",
+#'               TargetsMaxErrors = "string"
 #'             )
 #'           )
 #'         )
@@ -3722,7 +3824,21 @@ ssm_describe_automation_executions <- function(Filters = NULL, MaxResults = NULL
 #'               Name = "string"
 #'             )
 #'           )
-#'         )
+#'         ),
+#'         IncludeChildOrganizationUnits = TRUE|FALSE,
+#'         ExcludeAccounts = list(
+#'           "string"
+#'         ),
+#'         Targets = list(
+#'           list(
+#'             Key = "string",
+#'             Values = list(
+#'               "string"
+#'             )
+#'           )
+#'         ),
+#'         TargetsMaxConcurrency = "string",
+#'         TargetsMaxErrors = "string"
 #'       ),
 #'       TriggeredAlarms = list(
 #'         list(
@@ -4544,7 +4660,7 @@ ssm_describe_instance_information <- function(InstanceInformationFilterList = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "InstanceInformationList"),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "InstanceInformationList"),
     stream_api = FALSE
   )
   input <- .ssm$describe_instance_information_input(InstanceInformationFilterList = InstanceInformationFilterList, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
@@ -4788,8 +4904,7 @@ ssm_describe_instance_patch_states_for_patch_group <- function(PatchGroup, Filte
 #'     Sample values: `Installed` | `InstalledOther` |
 #'     `InstalledPendingReboot`
 #' 
-#'     For lists of all `State` values, see [Understanding patch compliance
-#'     state
+#'     For lists of all `State` values, see [Patch compliance state
 #'     values](https://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-compliance-states.html)
 #'     in the *Amazon Web Services Systems Manager User Guide*.
 #' @param NextToken The token for the next set of items to return. (You received this token
@@ -5275,7 +5390,7 @@ ssm_describe_maintenance_window_execution_tasks <- function(WindowExecutionId, F
 #' 
 #' -   Values. An array of strings, each between 1 and 256 characters.
 #'     Supported values are date/time strings in a valid ISO 8601 date/time
-#'     format, such as `2021-11-04T05:00:00Z`.
+#'     format, such as `2024-11-04T05:00:00Z`.
 #' @param MaxResults The maximum number of items to return for this call. The call also
 #' returns a token that you can specify in a subsequent call to get the
 #' next set of results.
@@ -6087,7 +6202,7 @@ ssm_describe_parameters <- function(Filters = NULL, ParameterFilters = NULL, Max
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Parameters"),
     stream_api = FALSE
   )
   input <- .ssm$describe_parameters_input(Filters = Filters, ParameterFilters = ParameterFilters, MaxResults = MaxResults, NextToken = NextToken, Shared = Shared)
@@ -6695,7 +6810,21 @@ ssm_disassociate_ops_item_related_item <- function(OpsItemId, AssociationId) {
 #'                 Name = "string"
 #'               )
 #'             )
-#'           )
+#'           ),
+#'           IncludeChildOrganizationUnits = TRUE|FALSE,
+#'           ExcludeAccounts = list(
+#'             "string"
+#'           ),
+#'           Targets = list(
+#'             list(
+#'               Key = "string",
+#'               Values = list(
+#'                 "string"
+#'               )
+#'             )
+#'           ),
+#'           TargetsMaxConcurrency = "string",
+#'           TargetsMaxErrors = "string"
 #'         ),
 #'         TriggeredAlarms = list(
 #'           list(
@@ -6772,7 +6901,21 @@ ssm_disassociate_ops_item_related_item <- function(OpsItemId, AssociationId) {
 #'               Name = "string"
 #'             )
 #'           )
-#'         )
+#'         ),
+#'         IncludeChildOrganizationUnits = TRUE|FALSE,
+#'         ExcludeAccounts = list(
+#'           "string"
+#'         ),
+#'         Targets = list(
+#'           list(
+#'             Key = "string",
+#'             Values = list(
+#'               "string"
+#'             )
+#'           )
+#'         ),
+#'         TargetsMaxConcurrency = "string",
+#'         TargetsMaxErrors = "string"
 #'       )
 #'     ),
 #'     ProgressCounters = list(
@@ -6796,6 +6939,7 @@ ssm_disassociate_ops_item_related_item <- function(OpsItemId, AssociationId) {
 #'         State = "UNKNOWN"|"ALARM"
 #'       )
 #'     ),
+#'     TargetLocationsURL = "string",
 #'     AutomationSubtype = "ChangeRequest",
 #'     ScheduledTime = as.POSIXct(
 #'       "2015-01-01"
@@ -6845,7 +6989,21 @@ ssm_disassociate_ops_item_related_item <- function(OpsItemId, AssociationId) {
 #'                   Name = "string"
 #'                 )
 #'               )
-#'             )
+#'             ),
+#'             IncludeChildOrganizationUnits = TRUE|FALSE,
+#'             ExcludeAccounts = list(
+#'               "string"
+#'             ),
+#'             Targets = list(
+#'               list(
+#'                 Key = "string",
+#'                 Values = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             ),
+#'             TargetsMaxConcurrency = "string",
+#'             TargetsMaxErrors = "string"
 #'           )
 #'         )
 #'       )
@@ -7390,6 +7548,81 @@ ssm_get_document <- function(Name, VersionName = NULL, DocumentVersion = NULL, D
 }
 .ssm$operations$get_document <- ssm_get_document
 
+#' Initiates the process of retrieving an existing preview that shows the
+#' effects that running a specified Automation runbook would have on the
+#' targeted resources
+#'
+#' @description
+#' Initiates the process of retrieving an existing preview that shows the
+#' effects that running a specified Automation runbook would have on the
+#' targeted resources.
+#'
+#' @usage
+#' ssm_get_execution_preview(ExecutionPreviewId)
+#'
+#' @param ExecutionPreviewId &#91;required&#93; The ID of the existing execution preview.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ExecutionPreviewId = "string",
+#'   EndedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Status = "Pending"|"InProgress"|"Success"|"Failed",
+#'   StatusMessage = "string",
+#'   ExecutionPreview = list(
+#'     Automation = list(
+#'       StepPreviews = list(
+#'         123
+#'       ),
+#'       Regions = list(
+#'         "string"
+#'       ),
+#'       TargetPreviews = list(
+#'         list(
+#'           Count = 123,
+#'           TargetType = "string"
+#'         )
+#'       ),
+#'       TotalAccounts = 123
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_execution_preview(
+#'   ExecutionPreviewId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ssm_get_execution_preview
+#'
+#' @aliases ssm_get_execution_preview
+ssm_get_execution_preview <- function(ExecutionPreviewId) {
+  op <- new_operation(
+    name = "GetExecutionPreview",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ssm$get_execution_preview_input(ExecutionPreviewId = ExecutionPreviewId)
+  output <- .ssm$get_execution_preview_output()
+  config <- get_config()
+  svc <- .ssm$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ssm$operations$get_execution_preview <- ssm_get_execution_preview
+
 #' Query inventory information
 #'
 #' @description
@@ -7492,7 +7725,7 @@ ssm_get_inventory <- function(Filters = NULL, Aggregators = NULL, ResultAttribut
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Entities"),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Entities"),
     stream_api = FALSE
   )
   input <- .ssm$get_inventory_input(Filters = Filters, Aggregators = Aggregators, ResultAttributes = ResultAttributes, NextToken = NextToken, MaxResults = MaxResults)
@@ -8331,7 +8564,7 @@ ssm_get_ops_summary <- function(SyncName = NULL, Filters = NULL, Aggregators = N
 #' parameter version, use `"Name": "name:version"`.
 #' 
 #' For more information about shared parameters, see [Working with shared
-#' parameters](https://docs.aws.amazon.com/systems-manager/latest/userguide/)
+#' parameters](https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-shared-parameters.html)
 #' in the *Amazon Web Services Systems Manager User Guide*.
 #' @param WithDecryption Return decrypted values for secure string parameters. This flag is
 #' ignored for `String` and `StringList` parameter types.
@@ -8469,7 +8702,7 @@ ssm_get_parameter_history <- function(Name, WithDecryption = NULL, MaxResults = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(result_key = "Parameters", output_token = "NextToken", input_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .ssm$get_parameter_history_input(Name = Name, WithDecryption = WithDecryption, MaxResults = MaxResults, NextToken = NextToken)
@@ -8673,7 +8906,7 @@ ssm_get_parameters_by_path <- function(Path, Recursive = NULL, ParameterFilters 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(result_key = "Parameters", output_token = "NextToken", input_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .ssm$get_parameters_by_path_input(Path = Path, Recursive = Recursive, ParameterFilters = ParameterFilters, WithDecryption = WithDecryption, MaxResults = MaxResults, NextToken = NextToken)
@@ -8953,15 +9186,19 @@ ssm_get_resource_policies <- function(ResourceArn, NextToken = NULL, MaxResults 
 #' @param SettingId &#91;required&#93; The ID of the service setting to get. The setting ID can be one of the
 #' following.
 #' 
-#' -   `/ssm/managed-instance/default-ec2-instance-management-role`
+#' -   `/ssm/appmanager/appmanager-enabled`
 #' 
 #' -   `/ssm/automation/customer-script-log-destination`
 #' 
 #' -   `/ssm/automation/customer-script-log-group-name`
 #' 
+#' -   /ssm/automation/enable-adaptive-concurrency
+#' 
 #' -   `/ssm/documents/console/public-sharing-permission`
 #' 
 #' -   `/ssm/managed-instance/activation-tier`
+#' 
+#' -   `/ssm/managed-instance/default-ec2-instance-management-role`
 #' 
 #' -   `/ssm/opsinsights/opscenter`
 #' 
@@ -9187,7 +9424,21 @@ ssm_label_parameter_version <- function(Name, ParameterVersion = NULL, Labels) {
 #'                 Name = "string"
 #'               )
 #'             )
-#'           )
+#'           ),
+#'           IncludeChildOrganizationUnits = TRUE|FALSE,
+#'           ExcludeAccounts = list(
+#'             "string"
+#'           ),
+#'           Targets = list(
+#'             list(
+#'               Key = "string",
+#'               Values = list(
+#'                 "string"
+#'               )
+#'             )
+#'           ),
+#'           TargetsMaxConcurrency = "string",
+#'           TargetsMaxErrors = "string"
 #'         )
 #'       ),
 #'       ScheduleOffset = 123,
@@ -9335,7 +9586,7 @@ ssm_list_associations <- function(AssociationFilterList = NULL, MaxResults = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Associations"),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Associations"),
     stream_api = FALSE
   )
   input <- .ssm$list_associations_input(AssociationFilterList = AssociationFilterList, MaxResults = MaxResults, NextToken = NextToken)
@@ -9461,7 +9712,7 @@ ssm_list_command_invocations <- function(CommandId = NULL, InstanceId = NULL, Ma
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "CommandInvocations"),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "CommandInvocations"),
     stream_api = FALSE
   )
   input <- .ssm$list_command_invocations_input(CommandId = CommandId, InstanceId = InstanceId, MaxResults = MaxResults, NextToken = NextToken, Filters = Filters, Details = Details)
@@ -9600,7 +9851,7 @@ ssm_list_commands <- function(CommandId = NULL, InstanceId = NULL, MaxResults = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Commands"),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Commands"),
     stream_api = FALSE
   )
   input <- .ssm$list_commands_input(CommandId = CommandId, InstanceId = InstanceId, MaxResults = MaxResults, NextToken = NextToken, Filters = Filters)
@@ -10074,7 +10325,7 @@ ssm_list_documents <- function(DocumentFilterList = NULL, Filters = NULL, MaxRes
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "DocumentIdentifiers"),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "DocumentIdentifiers"),
     stream_api = FALSE
   )
   input <- .ssm$list_documents_input(DocumentFilterList = DocumentFilterList, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
@@ -10165,6 +10416,195 @@ ssm_list_inventory_entries <- function(InstanceId, TypeName, Filters = NULL, Nex
   return(response)
 }
 .ssm$operations$list_inventory_entries <- ssm_list_inventory_entries
+
+#' Takes in filters and returns a list of managed nodes matching the filter
+#' criteria
+#'
+#' @description
+#' Takes in filters and returns a list of managed nodes matching the filter
+#' criteria.
+#'
+#' @usage
+#' ssm_list_nodes(SyncName, Filters, NextToken, MaxResults)
+#'
+#' @param SyncName The name of the resource data sync to retrieve information about.
+#' Required for cross-account/cross-Region configurations. Optional for
+#' single account/single-Region configurations.
+#' @param Filters One or more filters. Use a filter to return a more specific list of
+#' managed nodes.
+#' @param NextToken The token for the next set of items to return. (You received this token
+#' from a previous call.)
+#' @param MaxResults The maximum number of items to return for this call. The call also
+#' returns a token that you can specify in a subsequent call to get the
+#' next set of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Nodes = list(
+#'     list(
+#'       CaptureTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Id = "string",
+#'       Owner = list(
+#'         AccountId = "string",
+#'         OrganizationalUnitId = "string",
+#'         OrganizationalUnitPath = "string"
+#'       ),
+#'       Region = "string",
+#'       NodeType = list(
+#'         Instance = list(
+#'           AgentType = "string",
+#'           AgentVersion = "string",
+#'           ComputerName = "string",
+#'           InstanceStatus = "string",
+#'           IpAddress = "string",
+#'           ManagedStatus = "All"|"Managed"|"Unmanaged",
+#'           PlatformType = "Windows"|"Linux"|"MacOS",
+#'           PlatformName = "string",
+#'           PlatformVersion = "string",
+#'           ResourceType = "ManagedInstance"|"EC2Instance"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_nodes(
+#'   SyncName = "string",
+#'   Filters = list(
+#'     list(
+#'       Key = "AgentType"|"AgentVersion"|"ComputerName"|"InstanceId"|"InstanceStatus"|"IpAddress"|"ManagedStatus"|"PlatformName"|"PlatformType"|"PlatformVersion"|"ResourceType"|"OrganizationalUnitId"|"OrganizationalUnitPath"|"Region"|"AccountId",
+#'       Values = list(
+#'         "string"
+#'       ),
+#'       Type = "Equal"|"NotEqual"|"BeginWith"
+#'     )
+#'   ),
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ssm_list_nodes
+#'
+#' @aliases ssm_list_nodes
+ssm_list_nodes <- function(SyncName = NULL, Filters = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListNodes",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Nodes"),
+    stream_api = FALSE
+  )
+  input <- .ssm$list_nodes_input(SyncName = SyncName, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .ssm$list_nodes_output()
+  config <- get_config()
+  svc <- .ssm$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ssm$operations$list_nodes <- ssm_list_nodes
+
+#' Generates a summary of managed instance/node metadata based on the
+#' filters and aggregators you specify
+#'
+#' @description
+#' Generates a summary of managed instance/node metadata based on the
+#' filters and aggregators you specify. Results are grouped by the input
+#' aggregator you specify.
+#'
+#' @usage
+#' ssm_list_nodes_summary(SyncName, Filters, Aggregators, NextToken,
+#'   MaxResults)
+#'
+#' @param SyncName The name of the resource data sync to retrieve information about.
+#' Required for cross-account/cross-Region configuration. Optional for
+#' single account/single-Region configurations.
+#' @param Filters One or more filters. Use a filter to generate a summary that matches
+#' your specified filter criteria.
+#' @param Aggregators &#91;required&#93; Specify one or more aggregators to return a count of managed nodes that
+#' match that expression. For example, a count of managed nodes by
+#' operating system.
+#' @param NextToken The token for the next set of items to return. (You received this token
+#' from a previous call.) The call also returns a token that you can
+#' specify in a subsequent call to get the next set of results.
+#' @param MaxResults The maximum number of items to return for this call. The call also
+#' returns a token that you can specify in a subsequent call to get the
+#' next set of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Summary = list(
+#'     list(
+#'       "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_nodes_summary(
+#'   SyncName = "string",
+#'   Filters = list(
+#'     list(
+#'       Key = "AgentType"|"AgentVersion"|"ComputerName"|"InstanceId"|"InstanceStatus"|"IpAddress"|"ManagedStatus"|"PlatformName"|"PlatformType"|"PlatformVersion"|"ResourceType"|"OrganizationalUnitId"|"OrganizationalUnitPath"|"Region"|"AccountId",
+#'       Values = list(
+#'         "string"
+#'       ),
+#'       Type = "Equal"|"NotEqual"|"BeginWith"
+#'     )
+#'   ),
+#'   Aggregators = list(
+#'     list(
+#'       AggregatorType = "Count",
+#'       TypeName = "Instance",
+#'       AttributeName = "AgentVersion"|"PlatformName"|"PlatformType"|"PlatformVersion"|"Region"|"ResourceType",
+#'       Aggregators = list()
+#'     )
+#'   ),
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ssm_list_nodes_summary
+#'
+#' @aliases ssm_list_nodes_summary
+ssm_list_nodes_summary <- function(SyncName = NULL, Filters = NULL, Aggregators, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListNodesSummary",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Summary"),
+    stream_api = FALSE
+  )
+  input <- .ssm$list_nodes_summary_input(SyncName = SyncName, Filters = Filters, Aggregators = Aggregators, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .ssm$list_nodes_summary_output()
+  config <- get_config()
+  svc <- .ssm$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ssm$operations$list_nodes_summary <- ssm_list_nodes_summary
 
 #' Returns a list of all OpsItem events in the current Amazon Web Services
 #' Region and Amazon Web Services account
@@ -11624,8 +12064,8 @@ ssm_register_target_with_maintenance_window <- function(WindowId, ResourceType, 
 #' creating a custom policy and custom service role for running your
 #' maintenance window tasks. The policy can be crafted to provide only the
 #' permissions needed for your particular maintenance window tasks. For
-#' more information, see [Setting up maintenance
-#' windows](https://docs.aws.amazon.com/systems-manager/latest/userguide/setting-up-maintenance-windows.html)
+#' more information, see [Setting up Maintenance
+#' Windows](https://docs.aws.amazon.com/systems-manager/latest/userguide/setting-up-maintenance-windows.html)
 #' in the in the *Amazon Web Services Systems Manager User Guide*.
 #' @param TaskType &#91;required&#93; The type of task being registered.
 #' @param TaskParameters The parameters that should be passed to the task when it is run.
@@ -11927,15 +12367,19 @@ ssm_remove_tags_from_resource <- function(ResourceType, ResourceId, TagKeys) {
 #' @param SettingId &#91;required&#93; The Amazon Resource Name (ARN) of the service setting to reset. The
 #' setting ID can be one of the following.
 #' 
-#' -   `/ssm/managed-instance/default-ec2-instance-management-role`
+#' -   `/ssm/appmanager/appmanager-enabled`
 #' 
 #' -   `/ssm/automation/customer-script-log-destination`
 #' 
 #' -   `/ssm/automation/customer-script-log-group-name`
 #' 
+#' -   /ssm/automation/enable-adaptive-concurrency
+#' 
 #' -   `/ssm/documents/console/public-sharing-permission`
 #' 
 #' -   `/ssm/managed-instance/activation-tier`
+#' 
+#' -   `/ssm/managed-instance/default-ec2-instance-management-role`
 #' 
 #' -   `/ssm/opsinsights/opscenter`
 #' 
@@ -12432,7 +12876,8 @@ ssm_start_associations_once <- function(AssociationIds) {
 #' @usage
 #' ssm_start_automation_execution(DocumentName, DocumentVersion,
 #'   Parameters, ClientToken, Mode, TargetParameterName, Targets, TargetMaps,
-#'   MaxConcurrency, MaxErrors, TargetLocations, Tags, AlarmConfiguration)
+#'   MaxConcurrency, MaxErrors, TargetLocations, Tags, AlarmConfiguration,
+#'   TargetLocationsURL)
 #'
 #' @param DocumentName &#91;required&#93; The name of the SSM document to run. This can be a public document or a
 #' custom document. To run a shared document belonging to another account,
@@ -12451,11 +12896,17 @@ ssm_start_associations_once <- function(AssociationIds) {
 #' rate-controlled execution. Required if you specify targets.
 #' @param Targets A key-value mapping to target resources. Required if you specify
 #' TargetParameterName.
+#' 
+#' If both this parameter and the `TargetLocation:Targets` parameter are
+#' supplied, `TargetLocation:Targets` takes precedence.
 #' @param TargetMaps A key-value mapping of document parameters to target resources. Both
 #' Targets and TargetMaps can't be specified together.
 #' @param MaxConcurrency The maximum number of targets allowed to run this task in parallel. You
 #' can specify a number, such as 10, or a percentage, such as 10%. The
 #' default value is `10`.
+#' 
+#' If both this parameter and the `TargetLocation:TargetsMaxConcurrency`
+#' are supplied, `TargetLocation:TargetsMaxConcurrency` takes precedence.
 #' @param MaxErrors The number of errors that are allowed before the system stops running
 #' the automation on additional targets. You can specify either an absolute
 #' number of errors, for example 10, or a percentage of the target set, for
@@ -12471,12 +12922,14 @@ ssm_start_associations_once <- function(AssociationIds) {
 #' as well. If you need to ensure that there won't be more than max-errors
 #' failed executions, set max-concurrency to 1 so the executions proceed
 #' one at a time.
+#' 
+#' If this parameter and the `TargetLocation:TargetsMaxErrors` parameter
+#' are both supplied, `TargetLocation:TargetsMaxErrors` takes precedence.
 #' @param TargetLocations A location is a combination of Amazon Web Services Regions and/or Amazon
 #' Web Services accounts where you want to run the automation. Use this
 #' operation to start an automation in multiple Amazon Web Services Regions
 #' and multiple Amazon Web Services accounts. For more information, see
-#' [Running Automation workflows in multiple Amazon Web Services Regions
-#' and Amazon Web Services
+#' [Running automations in multiple Amazon Web Services Regions and
 #' accounts](https://docs.aws.amazon.com/systems-manager/latest/userguide/running-automations-multiple-accounts-regions.html)
 #' in the *Amazon Web Services Systems Manager User Guide*.
 #' @param Tags Optional metadata that you assign to a resource. You can specify a
@@ -12493,6 +12946,9 @@ ssm_start_associations_once <- function(AssociationIds) {
 #' To add tags to an existing automation, use the
 #' [`add_tags_to_resource`][ssm_add_tags_to_resource] operation.
 #' @param AlarmConfiguration The CloudWatch alarm you want to apply to your automation.
+#' @param TargetLocationsURL Specify a publicly accessible URL for a file that contains the
+#' `TargetLocations` body. Currently, only files in presigned Amazon S3
+#' buckets are supported.
 #'
 #' @return
 #' A list with the following syntax:
@@ -12550,7 +13006,21 @@ ssm_start_associations_once <- function(AssociationIds) {
 #'             Name = "string"
 #'           )
 #'         )
-#'       )
+#'       ),
+#'       IncludeChildOrganizationUnits = TRUE|FALSE,
+#'       ExcludeAccounts = list(
+#'         "string"
+#'       ),
+#'       Targets = list(
+#'         list(
+#'           Key = "string",
+#'           Values = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       TargetsMaxConcurrency = "string",
+#'       TargetsMaxErrors = "string"
 #'     )
 #'   ),
 #'   Tags = list(
@@ -12566,7 +13036,8 @@ ssm_start_associations_once <- function(AssociationIds) {
 #'         Name = "string"
 #'       )
 #'     )
-#'   )
+#'   ),
+#'   TargetLocationsURL = "string"
 #' )
 #' ```
 #'
@@ -12575,7 +13046,7 @@ ssm_start_associations_once <- function(AssociationIds) {
 #' @rdname ssm_start_automation_execution
 #'
 #' @aliases ssm_start_automation_execution
-ssm_start_automation_execution <- function(DocumentName, DocumentVersion = NULL, Parameters = NULL, ClientToken = NULL, Mode = NULL, TargetParameterName = NULL, Targets = NULL, TargetMaps = NULL, MaxConcurrency = NULL, MaxErrors = NULL, TargetLocations = NULL, Tags = NULL, AlarmConfiguration = NULL) {
+ssm_start_automation_execution <- function(DocumentName, DocumentVersion = NULL, Parameters = NULL, ClientToken = NULL, Mode = NULL, TargetParameterName = NULL, Targets = NULL, TargetMaps = NULL, MaxConcurrency = NULL, MaxErrors = NULL, TargetLocations = NULL, Tags = NULL, AlarmConfiguration = NULL, TargetLocationsURL = NULL) {
   op <- new_operation(
     name = "StartAutomationExecution",
     http_method = "POST",
@@ -12584,7 +13055,7 @@ ssm_start_automation_execution <- function(DocumentName, DocumentVersion = NULL,
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ssm$start_automation_execution_input(DocumentName = DocumentName, DocumentVersion = DocumentVersion, Parameters = Parameters, ClientToken = ClientToken, Mode = Mode, TargetParameterName = TargetParameterName, Targets = Targets, TargetMaps = TargetMaps, MaxConcurrency = MaxConcurrency, MaxErrors = MaxErrors, TargetLocations = TargetLocations, Tags = Tags, AlarmConfiguration = AlarmConfiguration)
+  input <- .ssm$start_automation_execution_input(DocumentName = DocumentName, DocumentVersion = DocumentVersion, Parameters = Parameters, ClientToken = ClientToken, Mode = Mode, TargetParameterName = TargetParameterName, Targets = Targets, TargetMaps = TargetMaps, MaxConcurrency = MaxConcurrency, MaxErrors = MaxErrors, TargetLocations = TargetLocations, Tags = Tags, AlarmConfiguration = AlarmConfiguration, TargetLocationsURL = TargetLocationsURL)
   output <- .ssm$start_automation_execution_output()
   config <- get_config()
   svc <- .ssm$service(config, op)
@@ -12725,7 +13196,21 @@ ssm_start_automation_execution <- function(DocumentName, DocumentVersion = NULL,
 #'                 Name = "string"
 #'               )
 #'             )
-#'           )
+#'           ),
+#'           IncludeChildOrganizationUnits = TRUE|FALSE,
+#'           ExcludeAccounts = list(
+#'             "string"
+#'           ),
+#'           Targets = list(
+#'             list(
+#'               Key = "string",
+#'               Values = list(
+#'                 "string"
+#'               )
+#'             )
+#'           ),
+#'           TargetsMaxConcurrency = "string",
+#'           TargetsMaxErrors = "string"
 #'         )
 #'       )
 #'     )
@@ -12766,6 +13251,127 @@ ssm_start_change_request_execution <- function(ScheduledTime = NULL, DocumentNam
   return(response)
 }
 .ssm$operations$start_change_request_execution <- ssm_start_change_request_execution
+
+#' Initiates the process of creating a preview showing the effects that
+#' running a specified Automation runbook would have on the targeted
+#' resources
+#'
+#' @description
+#' Initiates the process of creating a preview showing the effects that
+#' running a specified Automation runbook would have on the targeted
+#' resources.
+#'
+#' @usage
+#' ssm_start_execution_preview(DocumentName, DocumentVersion,
+#'   ExecutionInputs)
+#'
+#' @param DocumentName &#91;required&#93; The name of the Automation runbook to run. The result of the execution
+#' preview indicates what the impact would be of running this runbook.
+#' @param DocumentVersion The version of the Automation runbook to run. The default value is
+#' `$DEFAULT`.
+#' @param ExecutionInputs Information about the inputs that can be specified for the preview
+#' operation.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ExecutionPreviewId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$start_execution_preview(
+#'   DocumentName = "string",
+#'   DocumentVersion = "string",
+#'   ExecutionInputs = list(
+#'     Automation = list(
+#'       Parameters = list(
+#'         list(
+#'           "string"
+#'         )
+#'       ),
+#'       TargetParameterName = "string",
+#'       Targets = list(
+#'         list(
+#'           Key = "string",
+#'           Values = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       TargetMaps = list(
+#'         list(
+#'           list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       TargetLocations = list(
+#'         list(
+#'           Accounts = list(
+#'             "string"
+#'           ),
+#'           Regions = list(
+#'             "string"
+#'           ),
+#'           TargetLocationMaxConcurrency = "string",
+#'           TargetLocationMaxErrors = "string",
+#'           ExecutionRoleName = "string",
+#'           TargetLocationAlarmConfiguration = list(
+#'             IgnorePollAlarmFailure = TRUE|FALSE,
+#'             Alarms = list(
+#'               list(
+#'                 Name = "string"
+#'               )
+#'             )
+#'           ),
+#'           IncludeChildOrganizationUnits = TRUE|FALSE,
+#'           ExcludeAccounts = list(
+#'             "string"
+#'           ),
+#'           Targets = list(
+#'             list(
+#'               Key = "string",
+#'               Values = list(
+#'                 "string"
+#'               )
+#'             )
+#'           ),
+#'           TargetsMaxConcurrency = "string",
+#'           TargetsMaxErrors = "string"
+#'         )
+#'       ),
+#'       TargetLocationsURL = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ssm_start_execution_preview
+#'
+#' @aliases ssm_start_execution_preview
+ssm_start_execution_preview <- function(DocumentName, DocumentVersion = NULL, ExecutionInputs = NULL) {
+  op <- new_operation(
+    name = "StartExecutionPreview",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ssm$start_execution_preview_input(DocumentName = DocumentName, DocumentVersion = DocumentVersion, ExecutionInputs = ExecutionInputs)
+  output <- .ssm$start_execution_preview_output()
+  config <- get_config()
+  svc <- .ssm$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ssm$operations$start_execution_preview <- ssm_start_execution_preview
 
 #' Initiates a connection to a target (for example, a managed node) for a
 #' Session Manager session
@@ -13289,7 +13895,21 @@ ssm_unlabel_parameter_version <- function(Name, ParameterVersion, Labels) {
 #'               Name = "string"
 #'             )
 #'           )
-#'         )
+#'         ),
+#'         IncludeChildOrganizationUnits = TRUE|FALSE,
+#'         ExcludeAccounts = list(
+#'           "string"
+#'         ),
+#'         Targets = list(
+#'           list(
+#'             Key = "string",
+#'             Values = list(
+#'               "string"
+#'             )
+#'           )
+#'         ),
+#'         TargetsMaxConcurrency = "string",
+#'         TargetsMaxErrors = "string"
 #'       )
 #'     ),
 #'     ScheduleOffset = 123,
@@ -13375,7 +13995,21 @@ ssm_unlabel_parameter_version <- function(Name, ParameterVersion, Labels) {
 #'             Name = "string"
 #'           )
 #'         )
-#'       )
+#'       ),
+#'       IncludeChildOrganizationUnits = TRUE|FALSE,
+#'       ExcludeAccounts = list(
+#'         "string"
+#'       ),
+#'       Targets = list(
+#'         list(
+#'           Key = "string",
+#'           Values = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       TargetsMaxConcurrency = "string",
+#'       TargetsMaxErrors = "string"
 #'     )
 #'   ),
 #'   ScheduleOffset = 123,
@@ -13527,7 +14161,21 @@ ssm_update_association <- function(AssociationId, Parameters = NULL, DocumentVer
 #'               Name = "string"
 #'             )
 #'           )
-#'         )
+#'         ),
+#'         IncludeChildOrganizationUnits = TRUE|FALSE,
+#'         ExcludeAccounts = list(
+#'           "string"
+#'         ),
+#'         Targets = list(
+#'           list(
+#'             Key = "string",
+#'             Values = list(
+#'               "string"
+#'             )
+#'           )
+#'         ),
+#'         TargetsMaxConcurrency = "string",
+#'         TargetsMaxErrors = "string"
 #'       )
 #'     ),
 #'     ScheduleOffset = 123,
@@ -14176,8 +14824,8 @@ ssm_update_maintenance_window_target <- function(WindowId, WindowTargetId, Targe
 #' creating a custom policy and custom service role for running your
 #' maintenance window tasks. The policy can be crafted to provide only the
 #' permissions needed for your particular maintenance window tasks. For
-#' more information, see [Setting up maintenance
-#' windows](https://docs.aws.amazon.com/systems-manager/latest/userguide/setting-up-maintenance-windows.html)
+#' more information, see [Setting up Maintenance
+#' Windows](https://docs.aws.amazon.com/systems-manager/latest/userguide/setting-up-maintenance-windows.html)
 #' in the in the *Amazon Web Services Systems Manager User Guide*.
 #' @param TaskParameters The parameters to modify.
 #' 
@@ -14487,9 +15135,9 @@ ssm_update_maintenance_window_task <- function(WindowId, WindowTaskId, Targets =
 #' @param IamRole &#91;required&#93; The name of the Identity and Access Management (IAM) role that you want
 #' to assign to the managed node. This IAM role must provide AssumeRole
 #' permissions for the Amazon Web Services Systems Manager service
-#' principal `ssm.amazonaws.com`. For more information, see [Create an IAM
-#' service role for a hybrid and multicloud
-#' environment](https://docs.aws.amazon.com/systems-manager/latest/userguide/hybrid-multicloud-service-role.html)
+#' principal `ssm.amazonaws.com`. For more information, see [Create the IAM
+#' service role required for Systems Manager in hybrid and multicloud
+#' environments](https://docs.aws.amazon.com/systems-manager/latest/userguide/hybrid-multicloud-service-role.html)
 #' in the *Amazon Web Services Systems Manager User Guide*.
 #' 
 #' You can't specify an IAM service-linked role for this parameter. You
@@ -14591,8 +15239,7 @@ ssm_update_managed_instance_role <- function(InstanceId, IamRole) {
 #' OpsItems. For example, related OpsItems can include OpsItems with
 #' similar error messages, impacted resources, or statuses for the impacted
 #' resource.
-#' @param Status The OpsItem status. Status can be `Open`, `In Progress`, or `Resolved`.
-#' For more information, see [Editing OpsItem
+#' @param Status The OpsItem status. For more information, see [Editing OpsItem
 #' details](https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-working-with-OpsItems-editing-details.html)
 #' in the *Amazon Web Services Systems Manager User Guide*.
 #' @param OpsItemId &#91;required&#93; The ID of the OpsItem.
@@ -14761,12 +15408,16 @@ ssm_update_ops_metadata <- function(OpsMetadataArn, MetadataToUpdate = NULL, Key
 #' @param BaselineId &#91;required&#93; The ID of the patch baseline to update.
 #' @param Name The name of the patch baseline.
 #' @param GlobalFilters A set of global filters used to include patches in the baseline.
+#' 
+#' The `GlobalFilters` parameter can be configured only by using the CLI or
+#' an Amazon Web Services SDK. It can't be configured from the Patch
+#' Manager console, and its value isn't displayed in the console.
 #' @param ApprovalRules A set of rules used to include patches in the baseline.
 #' @param ApprovedPatches A list of explicitly approved patches for the baseline.
 #' 
 #' For information about accepted formats for lists of approved patches and
-#' rejected patches, see [About package name formats for approved and
-#' rejected patch
+#' rejected patches, see [Package name formats for approved and rejected
+#' patch
 #' lists](https://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-approved-rejected-package-name-formats.html)
 #' in the *Amazon Web Services Systems Manager User Guide*.
 #' @param ApprovedPatchesComplianceLevel Assigns a new compliance severity level to an existing patch baseline.
@@ -14776,8 +15427,8 @@ ssm_update_ops_metadata <- function(OpsMetadataArn, MetadataToUpdate = NULL, Key
 #' @param RejectedPatches A list of explicitly rejected patches for the baseline.
 #' 
 #' For information about accepted formats for lists of approved patches and
-#' rejected patches, see [About package name formats for approved and
-#' rejected patch
+#' rejected patches, see [Package name formats for approved and rejected
+#' patch
 #' lists](https://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-approved-rejected-package-name-formats.html)
 #' in the *Amazon Web Services Systems Manager User Guide*.
 #' @param RejectedPatchesAction The action for Patch Manager to take on patches included in the
@@ -15067,15 +15718,19 @@ ssm_update_resource_data_sync <- function(SyncName, SyncType, SyncSource) {
 #' `arn:aws:ssm:us-east-1:111122223333:servicesetting/ssm/parameter-store/high-throughput-enabled`.
 #' The setting ID can be one of the following.
 #' 
-#' -   `/ssm/managed-instance/default-ec2-instance-management-role`
+#' -   `/ssm/appmanager/appmanager-enabled`
 #' 
 #' -   `/ssm/automation/customer-script-log-destination`
 #' 
 #' -   `/ssm/automation/customer-script-log-group-name`
 #' 
+#' -   /ssm/automation/enable-adaptive-concurrency
+#' 
 #' -   `/ssm/documents/console/public-sharing-permission`
 #' 
 #' -   `/ssm/managed-instance/activation-tier`
+#' 
+#' -   `/ssm/managed-instance/default-ec2-instance-management-role`
 #' 
 #' -   `/ssm/opsinsights/opscenter`
 #' 
@@ -15091,8 +15746,7 @@ ssm_update_resource_data_sync <- function(SyncName, SyncType, SyncSource) {
 #' @param SettingValue &#91;required&#93; The new value to specify for the service setting. The following list
 #' specifies the available values for each setting.
 #' 
-#' -   For `/ssm/managed-instance/default-ec2-instance-management-role`,
-#'     enter the name of an IAM role.
+#' -   For `/ssm/appmanager/appmanager-enabled`, enter `True` or `False`.
 #' 
 #' -   For `/ssm/automation/customer-script-log-destination`, enter
 #'     `CloudWatch`.
@@ -15105,6 +15759,9 @@ ssm_update_resource_data_sync <- function(SyncName, SyncType, SyncSource) {
 #' 
 #' -   For `/ssm/managed-instance/activation-tier`, enter `standard` or
 #'     `advanced`.
+#' 
+#' -   For `/ssm/managed-instance/default-ec2-instance-management-role`,
+#'     enter the name of an IAM role.
 #' 
 #' -   For `/ssm/opsinsights/opscenter`, enter `Enabled` or `Disabled`.
 #' 

@@ -378,6 +378,75 @@ quicksight_create_analysis <- function(AwsAccountId, AnalysisId, Name, Parameter
 }
 .quicksight$operations$create_analysis <- quicksight_create_analysis
 
+#' Creates an Amazon QuickSight brand
+#'
+#' @description
+#' Creates an Amazon QuickSight brand.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_create_brand/](https://www.paws-r-sdk.com/docs/quicksight_create_brand/) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that owns the brand.
+#' @param BrandId &#91;required&#93; The ID of the Amazon QuickSight brand.
+#' @param BrandDefinition The definition of the brand.
+#' @param Tags A map of the key-value pairs that are assigned to the brand.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_create_brand
+quicksight_create_brand <- function(AwsAccountId, BrandId, BrandDefinition = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateBrand",
+    http_method = "POST",
+    http_path = "/accounts/{AwsAccountId}/brands/{BrandId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .quicksight$create_brand_input(AwsAccountId = AwsAccountId, BrandId = BrandId, BrandDefinition = BrandDefinition, Tags = Tags)
+  output <- .quicksight$create_brand_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$create_brand <- quicksight_create_brand
+
+#' Creates a custom permissions profile
+#'
+#' @description
+#' Creates a custom permissions profile.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_create_custom_permissions/](https://www.paws-r-sdk.com/docs/quicksight_create_custom_permissions/) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that you want to create the
+#' custom permissions profile in.
+#' @param CustomPermissionsName &#91;required&#93; The name of the custom permissions profile that you want to create.
+#' @param Capabilities A set of actions to include in the custom permissions profile.
+#' @param Tags The tags to associate with the custom permissions profile.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_create_custom_permissions
+quicksight_create_custom_permissions <- function(AwsAccountId, CustomPermissionsName, Capabilities = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateCustomPermissions",
+    http_method = "POST",
+    http_path = "/accounts/{AwsAccountId}/custom-permissions",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .quicksight$create_custom_permissions_input(AwsAccountId = AwsAccountId, CustomPermissionsName = CustomPermissionsName, Capabilities = Capabilities, Tags = Tags)
+  output <- .quicksight$create_custom_permissions_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$create_custom_permissions <- quicksight_create_custom_permissions
+
 #' Creates a dashboard from either a template or directly with a
 #' DashboardDefinition
 #'
@@ -1134,11 +1203,12 @@ quicksight_create_theme_alias <- function(AwsAccountId, ThemeId, AliasName, Them
 #' @param Topic &#91;required&#93; The definition of a topic to create.
 #' @param Tags Contains a map of the key-value pairs for the resource tag or tags that
 #' are assigned to the dataset.
+#' @param FolderArns The Folder ARN of the folder that you want the topic to reside in.
 #'
 #' @keywords internal
 #'
 #' @rdname quicksight_create_topic
-quicksight_create_topic <- function(AwsAccountId, TopicId, Topic, Tags = NULL) {
+quicksight_create_topic <- function(AwsAccountId, TopicId, Topic, Tags = NULL, FolderArns = NULL) {
   op <- new_operation(
     name = "CreateTopic",
     http_method = "POST",
@@ -1147,7 +1217,7 @@ quicksight_create_topic <- function(AwsAccountId, TopicId, Topic, Tags = NULL) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .quicksight$create_topic_input(AwsAccountId = AwsAccountId, TopicId = TopicId, Topic = Topic, Tags = Tags)
+  input <- .quicksight$create_topic_input(AwsAccountId = AwsAccountId, TopicId = TopicId, Topic = Topic, Tags = Tags, FolderArns = FolderArns)
   output <- .quicksight$create_topic_output()
   config <- get_config()
   svc <- .quicksight$service(config, op)
@@ -1346,6 +1416,103 @@ quicksight_delete_analysis <- function(AwsAccountId, AnalysisId, RecoveryWindowI
 }
 .quicksight$operations$delete_analysis <- quicksight_delete_analysis
 
+#' Deletes an Amazon QuickSight brand
+#'
+#' @description
+#' Deletes an Amazon QuickSight brand.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_delete_brand/](https://www.paws-r-sdk.com/docs/quicksight_delete_brand/) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that owns the brand.
+#' @param BrandId &#91;required&#93; The ID of the Amazon QuickSight brand.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_delete_brand
+quicksight_delete_brand <- function(AwsAccountId, BrandId) {
+  op <- new_operation(
+    name = "DeleteBrand",
+    http_method = "DELETE",
+    http_path = "/accounts/{AwsAccountId}/brands/{BrandId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .quicksight$delete_brand_input(AwsAccountId = AwsAccountId, BrandId = BrandId)
+  output <- .quicksight$delete_brand_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$delete_brand <- quicksight_delete_brand
+
+#' Deletes a brand assignment
+#'
+#' @description
+#' Deletes a brand assignment.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_delete_brand_assignment/](https://www.paws-r-sdk.com/docs/quicksight_delete_brand_assignment/) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that owns the brand
+#' assignment.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_delete_brand_assignment
+quicksight_delete_brand_assignment <- function(AwsAccountId) {
+  op <- new_operation(
+    name = "DeleteBrandAssignment",
+    http_method = "DELETE",
+    http_path = "/accounts/{AwsAccountId}/brandassignments",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .quicksight$delete_brand_assignment_input(AwsAccountId = AwsAccountId)
+  output <- .quicksight$delete_brand_assignment_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$delete_brand_assignment <- quicksight_delete_brand_assignment
+
+#' Deletes a custom permissions profile
+#'
+#' @description
+#' Deletes a custom permissions profile.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_delete_custom_permissions/](https://www.paws-r-sdk.com/docs/quicksight_delete_custom_permissions/) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the custom
+#' permissions profile that you want to delete.
+#' @param CustomPermissionsName &#91;required&#93; The name of the custom permissions profile that you want to delete.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_delete_custom_permissions
+quicksight_delete_custom_permissions <- function(AwsAccountId, CustomPermissionsName) {
+  op <- new_operation(
+    name = "DeleteCustomPermissions",
+    http_method = "DELETE",
+    http_path = "/accounts/{AwsAccountId}/custom-permissions/{CustomPermissionsName}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .quicksight$delete_custom_permissions_input(AwsAccountId = AwsAccountId, CustomPermissionsName = CustomPermissionsName)
+  output <- .quicksight$delete_custom_permissions_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$delete_custom_permissions <- quicksight_delete_custom_permissions
+
 #' Deletes a dashboard
 #'
 #' @description
@@ -1478,6 +1645,43 @@ quicksight_delete_data_source <- function(AwsAccountId, DataSourceId) {
   return(response)
 }
 .quicksight$operations$delete_data_source <- quicksight_delete_data_source
+
+#' Deletes a linked Amazon Q Business application from an Amazon QuickSight
+#' account
+#'
+#' @description
+#' Deletes a linked Amazon Q Business application from an Amazon QuickSight account
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_delete_default_q_business_application/](https://www.paws-r-sdk.com/docs/quicksight_delete_default_q_business_application/) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon QuickSight account that you want to disconnect from
+#' a Amazon Q Business application.
+#' @param Namespace The Amazon QuickSight namespace that you want to delete a linked Amazon
+#' Q Business application from. If this field is left blank, the Amazon Q
+#' Business application is deleted from the default namespace. Currently,
+#' the default namespace is the only valid value for this parameter.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_delete_default_q_business_application
+quicksight_delete_default_q_business_application <- function(AwsAccountId, Namespace = NULL) {
+  op <- new_operation(
+    name = "DeleteDefaultQBusinessApplication",
+    http_method = "DELETE",
+    http_path = "/accounts/{AwsAccountId}/default-qbusiness-application",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .quicksight$delete_default_q_business_application_input(AwsAccountId = AwsAccountId, Namespace = Namespace)
+  output <- .quicksight$delete_default_q_business_application_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$delete_default_q_business_application <- quicksight_delete_default_q_business_application
 
 #' Deletes an empty folder
 #'
@@ -2113,6 +2317,41 @@ quicksight_delete_user_by_principal_id <- function(PrincipalId, AwsAccountId, Na
 }
 .quicksight$operations$delete_user_by_principal_id <- quicksight_delete_user_by_principal_id
 
+#' Deletes a custom permissions profile from a user
+#'
+#' @description
+#' Deletes a custom permissions profile from a user.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_delete_user_custom_permission/](https://www.paws-r-sdk.com/docs/quicksight_delete_user_custom_permission/) for full documentation.
+#'
+#' @param UserName &#91;required&#93; The username of the user that you want to remove custom permissions
+#' from.
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the custom
+#' permission configuration that you want to delete.
+#' @param Namespace &#91;required&#93; The namespace that the user belongs to.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_delete_user_custom_permission
+quicksight_delete_user_custom_permission <- function(UserName, AwsAccountId, Namespace) {
+  op <- new_operation(
+    name = "DeleteUserCustomPermission",
+    http_method = "DELETE",
+    http_path = "/accounts/{AwsAccountId}/namespaces/{Namespace}/users/{UserName}/custom-permission",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .quicksight$delete_user_custom_permission_input(UserName = UserName, AwsAccountId = AwsAccountId, Namespace = Namespace)
+  output <- .quicksight$delete_user_custom_permission_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$delete_user_custom_permission <- quicksight_delete_user_custom_permission
+
 #' Deletes a VPC connection
 #'
 #' @description
@@ -2431,6 +2670,136 @@ quicksight_describe_asset_bundle_import_job <- function(AwsAccountId, AssetBundl
 }
 .quicksight$operations$describe_asset_bundle_import_job <- quicksight_describe_asset_bundle_import_job
 
+#' Describes a brand
+#'
+#' @description
+#' Describes a brand.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_describe_brand/](https://www.paws-r-sdk.com/docs/quicksight_describe_brand/) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that owns the brand.
+#' @param BrandId &#91;required&#93; The ID of the Amazon QuickSight brand.
+#' @param VersionId The ID of the specific version. The default value is the latest version.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_describe_brand
+quicksight_describe_brand <- function(AwsAccountId, BrandId, VersionId = NULL) {
+  op <- new_operation(
+    name = "DescribeBrand",
+    http_method = "GET",
+    http_path = "/accounts/{AwsAccountId}/brands/{BrandId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .quicksight$describe_brand_input(AwsAccountId = AwsAccountId, BrandId = BrandId, VersionId = VersionId)
+  output <- .quicksight$describe_brand_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$describe_brand <- quicksight_describe_brand
+
+#' Describes a brand assignment
+#'
+#' @description
+#' Describes a brand assignment.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_describe_brand_assignment/](https://www.paws-r-sdk.com/docs/quicksight_describe_brand_assignment/) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that owns the brand
+#' assignment.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_describe_brand_assignment
+quicksight_describe_brand_assignment <- function(AwsAccountId) {
+  op <- new_operation(
+    name = "DescribeBrandAssignment",
+    http_method = "GET",
+    http_path = "/accounts/{AwsAccountId}/brandassignments",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .quicksight$describe_brand_assignment_input(AwsAccountId = AwsAccountId)
+  output <- .quicksight$describe_brand_assignment_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$describe_brand_assignment <- quicksight_describe_brand_assignment
+
+#' Describes the published version of the brand
+#'
+#' @description
+#' Describes the published version of the brand.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_describe_brand_published_version/](https://www.paws-r-sdk.com/docs/quicksight_describe_brand_published_version/) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that owns the brand.
+#' @param BrandId &#91;required&#93; The ID of the Amazon QuickSight brand.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_describe_brand_published_version
+quicksight_describe_brand_published_version <- function(AwsAccountId, BrandId) {
+  op <- new_operation(
+    name = "DescribeBrandPublishedVersion",
+    http_method = "GET",
+    http_path = "/accounts/{AwsAccountId}/brands/{BrandId}/publishedversion",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .quicksight$describe_brand_published_version_input(AwsAccountId = AwsAccountId, BrandId = BrandId)
+  output <- .quicksight$describe_brand_published_version_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$describe_brand_published_version <- quicksight_describe_brand_published_version
+
+#' Describes a custom permissions profile
+#'
+#' @description
+#' Describes a custom permissions profile.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_describe_custom_permissions/](https://www.paws-r-sdk.com/docs/quicksight_describe_custom_permissions/) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the custom
+#' permissions profile that you want described.
+#' @param CustomPermissionsName &#91;required&#93; The name of the custom permissions profile to describe.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_describe_custom_permissions
+quicksight_describe_custom_permissions <- function(AwsAccountId, CustomPermissionsName) {
+  op <- new_operation(
+    name = "DescribeCustomPermissions",
+    http_method = "GET",
+    http_path = "/accounts/{AwsAccountId}/custom-permissions/{CustomPermissionsName}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .quicksight$describe_custom_permissions_input(AwsAccountId = AwsAccountId, CustomPermissionsName = CustomPermissionsName)
+  output <- .quicksight$describe_custom_permissions_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$describe_custom_permissions <- quicksight_describe_custom_permissions
+
 #' Provides a summary for a dashboard
 #'
 #' @description
@@ -2611,6 +2980,38 @@ quicksight_describe_dashboard_snapshot_job_result <- function(AwsAccountId, Dash
 }
 .quicksight$operations$describe_dashboard_snapshot_job_result <- quicksight_describe_dashboard_snapshot_job_result
 
+#' Describes an existing dashboard QA configuration
+#'
+#' @description
+#' Describes an existing dashboard QA configuration.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_describe_dashboards_qa_configuration/](https://www.paws-r-sdk.com/docs/quicksight_describe_dashboards_qa_configuration/) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the dashboard QA
+#' configuration that you want described.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_describe_dashboards_qa_configuration
+quicksight_describe_dashboards_qa_configuration <- function(AwsAccountId) {
+  op <- new_operation(
+    name = "DescribeDashboardsQAConfiguration",
+    http_method = "GET",
+    http_path = "/accounts/{AwsAccountId}/dashboards-qa-configuration",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .quicksight$describe_dashboards_qa_configuration_input(AwsAccountId = AwsAccountId)
+  output <- .quicksight$describe_dashboards_qa_configuration_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$describe_dashboards_qa_configuration <- quicksight_describe_dashboards_qa_configuration
+
 #' Describes a dataset
 #'
 #' @description
@@ -2774,6 +3175,43 @@ quicksight_describe_data_source_permissions <- function(AwsAccountId, DataSource
   return(response)
 }
 .quicksight$operations$describe_data_source_permissions <- quicksight_describe_data_source_permissions
+
+#' Describes a Amazon Q Business application that is linked to an Amazon
+#' QuickSight account
+#'
+#' @description
+#' Describes a Amazon Q Business application that is linked to an Amazon QuickSight account.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_describe_default_q_business_application/](https://www.paws-r-sdk.com/docs/quicksight_describe_default_q_business_application/) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon QuickSight account that is linked to the Amazon Q
+#' Business application that you want described.
+#' @param Namespace The Amazon QuickSight namespace that contains the linked Amazon Q
+#' Business application. If this field is left blank, the default namespace
+#' is used. Currently, the default namespace is the only valid value for
+#' this parameter.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_describe_default_q_business_application
+quicksight_describe_default_q_business_application <- function(AwsAccountId, Namespace = NULL) {
+  op <- new_operation(
+    name = "DescribeDefaultQBusinessApplication",
+    http_method = "GET",
+    http_path = "/accounts/{AwsAccountId}/default-qbusiness-application",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .quicksight$describe_default_q_business_application_input(AwsAccountId = AwsAccountId, Namespace = Namespace)
+  output <- .quicksight$describe_default_q_business_application_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$describe_default_q_business_application <- quicksight_describe_default_q_business_application
 
 #' Describes a folder
 #'
@@ -3115,6 +3553,70 @@ quicksight_describe_namespace <- function(AwsAccountId, Namespace) {
   return(response)
 }
 .quicksight$operations$describe_namespace <- quicksight_describe_namespace
+
+#' Describes a personalization configuration
+#'
+#' @description
+#' Describes a personalization configuration.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_describe_q_personalization_configuration/](https://www.paws-r-sdk.com/docs/quicksight_describe_q_personalization_configuration/) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the
+#' personalization configuration that the user wants described.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_describe_q_personalization_configuration
+quicksight_describe_q_personalization_configuration <- function(AwsAccountId) {
+  op <- new_operation(
+    name = "DescribeQPersonalizationConfiguration",
+    http_method = "GET",
+    http_path = "/accounts/{AwsAccountId}/q-personalization-configuration",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .quicksight$describe_q_personalization_configuration_input(AwsAccountId = AwsAccountId)
+  output <- .quicksight$describe_q_personalization_configuration_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$describe_q_personalization_configuration <- quicksight_describe_q_personalization_configuration
+
+#' Describes the state of a Amazon QuickSight Q Search configuration
+#'
+#' @description
+#' Describes the state of a Amazon QuickSight Q Search configuration.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_describe_quick_sight_q_search_configuration/](https://www.paws-r-sdk.com/docs/quicksight_describe_quick_sight_q_search_configuration/) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the Amazon
+#' QuickSight Q Search configuration that the user wants described.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_describe_quick_sight_q_search_configuration
+quicksight_describe_quick_sight_q_search_configuration <- function(AwsAccountId) {
+  op <- new_operation(
+    name = "DescribeQuickSightQSearchConfiguration",
+    http_method = "GET",
+    http_path = "/accounts/{AwsAccountId}/quicksight-q-search-configuration",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .quicksight$describe_quick_sight_q_search_configuration_input(AwsAccountId = AwsAccountId)
+  output <- .quicksight$describe_quick_sight_q_search_configuration_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$describe_quick_sight_q_search_configuration <- quicksight_describe_quick_sight_q_search_configuration
 
 #' Provides a summary of a refresh schedule
 #'
@@ -3773,6 +4275,41 @@ quicksight_generate_embed_url_for_registered_user <- function(AwsAccountId, Sess
 }
 .quicksight$operations$generate_embed_url_for_registered_user <- quicksight_generate_embed_url_for_registered_user
 
+#' Generates an embed URL that you can use to embed an Amazon QuickSight
+#' experience in your website
+#'
+#' @description
+#' Generates an embed URL that you can use to embed an Amazon QuickSight experience in your website. This action can be used for any type of user that is registered in an Amazon QuickSight account that uses IAM Identity Center for authentication. This API requires [identity-enhanced IAM Role sessions](https://docs.aws.amazon.com/singlesignon/latest/userguide/trustedidentitypropagation-overview.html#types-identity-enhanced-iam-role-sessions) for the authenticated user that the API call is being made for.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_generate_embed_url_for_registered_user_with_identity/](https://www.paws-r-sdk.com/docs/quicksight_generate_embed_url_for_registered_user_with_identity/) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services registered user.
+#' @param SessionLifetimeInMinutes The validity of the session in minutes.
+#' @param ExperienceConfiguration &#91;required&#93; 
+#' @param AllowedDomains A list of domains to be allowed to generate the embed URL.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_gener_embed_url_for_regis_user_with_ident
+quicksight_generate_embed_url_for_registered_user_with_identity <- function(AwsAccountId, SessionLifetimeInMinutes = NULL, ExperienceConfiguration, AllowedDomains = NULL) {
+  op <- new_operation(
+    name = "GenerateEmbedUrlForRegisteredUserWithIdentity",
+    http_method = "POST",
+    http_path = "/accounts/{AwsAccountId}/embed-url/registered-user-with-identity",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .quicksight$generate_embed_url_for_registered_user_with_identity_input(AwsAccountId = AwsAccountId, SessionLifetimeInMinutes = SessionLifetimeInMinutes, ExperienceConfiguration = ExperienceConfiguration, AllowedDomains = AllowedDomains)
+  output <- .quicksight$generate_embed_url_for_registered_user_with_identity_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$generate_embed_url_for_registered_user_with_identity <- quicksight_generate_embed_url_for_registered_user_with_identity
+
 #' Generates a temporary session URL and authorization code(bearer token)
 #' that you can use to embed an Amazon QuickSight read-only dashboard in
 #' your website or application
@@ -4020,6 +4557,76 @@ quicksight_list_asset_bundle_import_jobs <- function(AwsAccountId, NextToken = N
 }
 .quicksight$operations$list_asset_bundle_import_jobs <- quicksight_list_asset_bundle_import_jobs
 
+#' Lists all brands in an Amazon QuickSight account
+#'
+#' @description
+#' Lists all brands in an Amazon QuickSight account.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_list_brands/](https://www.paws-r-sdk.com/docs/quicksight_list_brands/) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that owns the brands that you
+#' want to list.
+#' @param MaxResults The maximum number of results to be returned in a single request.
+#' @param NextToken The token for the next set of results, or null if there are no more
+#' results.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_list_brands
+quicksight_list_brands <- function(AwsAccountId, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListBrands",
+    http_method = "GET",
+    http_path = "/accounts/{AwsAccountId}/brands",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Brands"),
+    stream_api = FALSE
+  )
+  input <- .quicksight$list_brands_input(AwsAccountId = AwsAccountId, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .quicksight$list_brands_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$list_brands <- quicksight_list_brands
+
+#' Returns a list of all the custom permissions profiles
+#'
+#' @description
+#' Returns a list of all the custom permissions profiles.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_list_custom_permissions/](https://www.paws-r-sdk.com/docs/quicksight_list_custom_permissions/) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the custom
+#' permissions profiles that you want to list.
+#' @param MaxResults The maximum number of results to return.
+#' @param NextToken The token for the next set of results, or null if there are no more
+#' results.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_list_custom_permissions
+quicksight_list_custom_permissions <- function(AwsAccountId, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListCustomPermissions",
+    http_method = "GET",
+    http_path = "/accounts/{AwsAccountId}/custom-permissions",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "CustomPermissionsList"),
+    stream_api = FALSE
+  )
+  input <- .quicksight$list_custom_permissions_input(AwsAccountId = AwsAccountId, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .quicksight$list_custom_permissions_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$list_custom_permissions <- quicksight_list_custom_permissions
+
 #' Lists all the versions of the dashboards in the Amazon QuickSight
 #' subscription
 #'
@@ -4230,6 +4837,42 @@ quicksight_list_folders <- function(AwsAccountId, NextToken = NULL, MaxResults =
   return(response)
 }
 .quicksight$operations$list_folders <- quicksight_list_folders
+
+#' List all folders that a resource is a member of
+#'
+#' @description
+#' List all folders that a resource is a member of.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_list_folders_for_resource/](https://www.paws-r-sdk.com/docs/quicksight_list_folders_for_resource/) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The ID for the Amazon Web Services account that contains the resource.
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) the resource whose folders you need to
+#' list.
+#' @param NextToken The token for the next set of results, or null if there are no more
+#' results.
+#' @param MaxResults The maximum number of results to be returned per request.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_list_folders_for_resource
+quicksight_list_folders_for_resource <- function(AwsAccountId, ResourceArn, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListFoldersForResource",
+    http_method = "GET",
+    http_path = "/accounts/{AwsAccountId}/resource/{ResourceArn}/folders",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Folders"),
+    stream_api = FALSE
+  )
+  input <- .quicksight$list_folders_for_resource_input(AwsAccountId = AwsAccountId, ResourceArn = ResourceArn, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .quicksight$list_folders_for_resource_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$list_folders_for_resource <- quicksight_list_folders_for_resource
 
 #' Lists member users in a group
 #'
@@ -4912,7 +5555,7 @@ quicksight_list_topics <- function(AwsAccountId, NextToken = NULL, MaxResults = 
     http_method = "GET",
     http_path = "/accounts/{AwsAccountId}/topics",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .quicksight$list_topics_input(AwsAccountId = AwsAccountId, NextToken = NextToken, MaxResults = MaxResults)
@@ -5024,7 +5667,7 @@ quicksight_list_vpc_connections <- function(AwsAccountId, NextToken = NULL, MaxR
     http_method = "GET",
     http_path = "/accounts/{AwsAccountId}/vpc-connections",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .quicksight$list_vpc_connections_input(AwsAccountId = AwsAccountId, NextToken = NextToken, MaxResults = MaxResults)
@@ -5036,6 +5679,43 @@ quicksight_list_vpc_connections <- function(AwsAccountId, NextToken = NULL, MaxR
   return(response)
 }
 .quicksight$operations$list_vpc_connections <- quicksight_list_vpc_connections
+
+#' Predicts existing visuals or generates new visuals to answer a given
+#' query
+#'
+#' @description
+#' Predicts existing visuals or generates new visuals to answer a given query.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_predict_qa_results/](https://www.paws-r-sdk.com/docs/quicksight_predict_qa_results/) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that the user wants to execute
+#' Predict QA results in.
+#' @param QueryText &#91;required&#93; The query text to be used to predict QA results.
+#' @param IncludeQuickSightQIndex Indicates whether Q indicies are included or excluded.
+#' @param IncludeGeneratedAnswer Indicates whether generated answers are included or excluded.
+#' @param MaxTopicsToConsider The number of maximum topics to be considered to predict QA results.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_predict_qa_results
+quicksight_predict_qa_results <- function(AwsAccountId, QueryText, IncludeQuickSightQIndex = NULL, IncludeGeneratedAnswer = NULL, MaxTopicsToConsider = NULL) {
+  op <- new_operation(
+    name = "PredictQAResults",
+    http_method = "POST",
+    http_path = "/accounts/{AwsAccountId}/qa/predict",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .quicksight$predict_qa_results_input(AwsAccountId = AwsAccountId, QueryText = QueryText, IncludeQuickSightQIndex = IncludeQuickSightQIndex, IncludeGeneratedAnswer = IncludeGeneratedAnswer, MaxTopicsToConsider = MaxTopicsToConsider)
+  output <- .quicksight$predict_qa_results_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$predict_qa_results <- quicksight_predict_qa_results
 
 #' Creates or updates the dataset refresh properties for the dataset
 #'
@@ -5207,11 +5887,17 @@ quicksight_register_user <- function(IdentityType, Email, UserRole, IamArn = NUL
 #'
 #' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the analysis.
 #' @param AnalysisId &#91;required&#93; The ID of the analysis that you're restoring.
+#' @param RestoreToFolders A boolean value that determines if the analysis will be restored to
+#' folders that it previously resided in. A `True` value restores analysis
+#' back to all folders that it previously resided in. A `False` value
+#' restores the analysis but does not restore the analysis back to all
+#' previously resided folders. Restoring a restricted analysis requires
+#' this parameter to be set to `True`.
 #'
 #' @keywords internal
 #'
 #' @rdname quicksight_restore_analysis
-quicksight_restore_analysis <- function(AwsAccountId, AnalysisId) {
+quicksight_restore_analysis <- function(AwsAccountId, AnalysisId, RestoreToFolders = NULL) {
   op <- new_operation(
     name = "RestoreAnalysis",
     http_method = "POST",
@@ -5220,7 +5906,7 @@ quicksight_restore_analysis <- function(AwsAccountId, AnalysisId) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .quicksight$restore_analysis_input(AwsAccountId = AwsAccountId, AnalysisId = AnalysisId)
+  input <- .quicksight$restore_analysis_input(AwsAccountId = AwsAccountId, AnalysisId = AnalysisId, RestoreToFolders = RestoreToFolders)
   output <- .quicksight$restore_analysis_output()
   config <- get_config()
   svc <- .quicksight$service(config, op)
@@ -5450,6 +6136,42 @@ quicksight_search_groups <- function(AwsAccountId, NextToken = NULL, MaxResults 
 }
 .quicksight$operations$search_groups <- quicksight_search_groups
 
+#' Searches for any Q topic that exists in an Amazon QuickSight account
+#'
+#' @description
+#' Searches for any Q topic that exists in an Amazon QuickSight account.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_search_topics/](https://www.paws-r-sdk.com/docs/quicksight_search_topics/) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the topic that
+#' you want to find.
+#' @param Filters &#91;required&#93; The filters that you want to use to search for the topic.
+#' @param NextToken The token for the next set of results, or null if there are no more
+#' results.
+#' @param MaxResults The maximum number of results to be returned per request.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_search_topics
+quicksight_search_topics <- function(AwsAccountId, Filters, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "SearchTopics",
+    http_method = "POST",
+    http_path = "/accounts/{AwsAccountId}/search/topics",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "TopicSummaryList"),
+    stream_api = FALSE
+  )
+  input <- .quicksight$search_topics_input(AwsAccountId = AwsAccountId, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .quicksight$search_topics_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$search_topics <- quicksight_search_topics
+
 #' Starts an Asset Bundle export job
 #'
 #' @description
@@ -5503,11 +6225,16 @@ quicksight_search_groups <- function(AwsAccountId, NextToken = NULL, MaxResults 
 #' strict validation for every error is enforced. If it is set to `FALSE`,
 #' validation is skipped for specific UI errors that are shown as warnings.
 #' The default value for `StrictModeForAllResources` is `FALSE`.
+#' @param IncludeFolderMemberships A Boolean that determines if the exported asset carries over information
+#' about the folders that the asset is a member of.
+#' @param IncludeFolderMembers A setting that indicates whether you want to include folder assets. You
+#' can also use this setting to recusrsively include all subfolders of an
+#' exported folder.
 #'
 #' @keywords internal
 #'
 #' @rdname quicksight_start_asset_bundle_export_job
-quicksight_start_asset_bundle_export_job <- function(AwsAccountId, AssetBundleExportJobId, ResourceArns, IncludeAllDependencies = NULL, ExportFormat, CloudFormationOverridePropertyConfiguration = NULL, IncludePermissions = NULL, IncludeTags = NULL, ValidationStrategy = NULL) {
+quicksight_start_asset_bundle_export_job <- function(AwsAccountId, AssetBundleExportJobId, ResourceArns, IncludeAllDependencies = NULL, ExportFormat, CloudFormationOverridePropertyConfiguration = NULL, IncludePermissions = NULL, IncludeTags = NULL, ValidationStrategy = NULL, IncludeFolderMemberships = NULL, IncludeFolderMembers = NULL) {
   op <- new_operation(
     name = "StartAssetBundleExportJob",
     http_method = "POST",
@@ -5516,7 +6243,7 @@ quicksight_start_asset_bundle_export_job <- function(AwsAccountId, AssetBundleEx
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .quicksight$start_asset_bundle_export_job_input(AwsAccountId = AwsAccountId, AssetBundleExportJobId = AssetBundleExportJobId, ResourceArns = ResourceArns, IncludeAllDependencies = IncludeAllDependencies, ExportFormat = ExportFormat, CloudFormationOverridePropertyConfiguration = CloudFormationOverridePropertyConfiguration, IncludePermissions = IncludePermissions, IncludeTags = IncludeTags, ValidationStrategy = ValidationStrategy)
+  input <- .quicksight$start_asset_bundle_export_job_input(AwsAccountId = AwsAccountId, AssetBundleExportJobId = AssetBundleExportJobId, ResourceArns = ResourceArns, IncludeAllDependencies = IncludeAllDependencies, ExportFormat = ExportFormat, CloudFormationOverridePropertyConfiguration = CloudFormationOverridePropertyConfiguration, IncludePermissions = IncludePermissions, IncludeTags = IncludeTags, ValidationStrategy = ValidationStrategy, IncludeFolderMemberships = IncludeFolderMemberships, IncludeFolderMembers = IncludeFolderMembers)
   output <- .quicksight$start_asset_bundle_export_job_output()
   config <- get_config()
   svc <- .quicksight$service(config, op)
@@ -5620,6 +6347,45 @@ quicksight_start_dashboard_snapshot_job <- function(AwsAccountId, DashboardId, S
   return(response)
 }
 .quicksight$operations$start_dashboard_snapshot_job <- quicksight_start_dashboard_snapshot_job
+
+#' Starts an asynchronous job that runs an existing dashboard schedule and
+#' sends the dashboard snapshot through email
+#'
+#' @description
+#' Starts an asynchronous job that runs an existing dashboard schedule and sends the dashboard snapshot through email.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_start_dashboard_snapshot_job_schedule/](https://www.paws-r-sdk.com/docs/quicksight_start_dashboard_snapshot_job_schedule/) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that the dashboard snapshot
+#' job is executed in.
+#' @param DashboardId &#91;required&#93; The ID of the dashboard that you want to start a snapshot job schedule
+#' for.
+#' @param ScheduleId &#91;required&#93; The ID of the schedule that you want to start a snapshot job schedule
+#' for. The schedule ID can be found in the Amazon QuickSight console in
+#' the **Schedules** pane of the dashboard that the schedule is configured
+#' for.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_start_dashboard_snapshot_job_schedule
+quicksight_start_dashboard_snapshot_job_schedule <- function(AwsAccountId, DashboardId, ScheduleId) {
+  op <- new_operation(
+    name = "StartDashboardSnapshotJobSchedule",
+    http_method = "POST",
+    http_path = "/accounts/{AwsAccountId}/dashboards/{DashboardId}/schedules/{ScheduleId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .quicksight$start_dashboard_snapshot_job_schedule_input(AwsAccountId = AwsAccountId, DashboardId = DashboardId, ScheduleId = ScheduleId)
+  output <- .quicksight$start_dashboard_snapshot_job_schedule_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$start_dashboard_snapshot_job_schedule <- quicksight_start_dashboard_snapshot_job_schedule
 
 #' Assigns one or more tags (key-value pairs) to the specified Amazon
 #' QuickSight resource
@@ -5860,6 +6626,172 @@ quicksight_update_analysis_permissions <- function(AwsAccountId, AnalysisId, Gra
 }
 .quicksight$operations$update_analysis_permissions <- quicksight_update_analysis_permissions
 
+#' Updates an Amazon QuickSight application with a token exchange grant
+#'
+#' @description
+#' Updates an Amazon QuickSight application with a token exchange grant. This operation only supports Amazon QuickSight applications that are registered with IAM Identity Center.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_update_application_with_token_exchange_grant/](https://www.paws-r-sdk.com/docs/quicksight_update_application_with_token_exchange_grant/) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account to be updated with a token
+#' exchange grant.
+#' @param Namespace &#91;required&#93; The namespace of the Amazon QuickSight application.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_update_application_with_token_exchange_grant
+quicksight_update_application_with_token_exchange_grant <- function(AwsAccountId, Namespace) {
+  op <- new_operation(
+    name = "UpdateApplicationWithTokenExchangeGrant",
+    http_method = "PUT",
+    http_path = "/accounts/{AwsAccountId}/application-with-token-exchange-grant",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .quicksight$update_application_with_token_exchange_grant_input(AwsAccountId = AwsAccountId, Namespace = Namespace)
+  output <- .quicksight$update_application_with_token_exchange_grant_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$update_application_with_token_exchange_grant <- quicksight_update_application_with_token_exchange_grant
+
+#' Updates a brand
+#'
+#' @description
+#' Updates a brand.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_update_brand/](https://www.paws-r-sdk.com/docs/quicksight_update_brand/) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that owns the brand.
+#' @param BrandId &#91;required&#93; The ID of the Amazon QuickSight brand.
+#' @param BrandDefinition The definition of the brand.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_update_brand
+quicksight_update_brand <- function(AwsAccountId, BrandId, BrandDefinition = NULL) {
+  op <- new_operation(
+    name = "UpdateBrand",
+    http_method = "PUT",
+    http_path = "/accounts/{AwsAccountId}/brands/{BrandId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .quicksight$update_brand_input(AwsAccountId = AwsAccountId, BrandId = BrandId, BrandDefinition = BrandDefinition)
+  output <- .quicksight$update_brand_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$update_brand <- quicksight_update_brand
+
+#' Updates a brand assignment
+#'
+#' @description
+#' Updates a brand assignment.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_update_brand_assignment/](https://www.paws-r-sdk.com/docs/quicksight_update_brand_assignment/) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that owns the brand
+#' assignment.
+#' @param BrandArn &#91;required&#93; The Amazon Resource Name (ARN) of the brand.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_update_brand_assignment
+quicksight_update_brand_assignment <- function(AwsAccountId, BrandArn) {
+  op <- new_operation(
+    name = "UpdateBrandAssignment",
+    http_method = "PUT",
+    http_path = "/accounts/{AwsAccountId}/brandassignments",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .quicksight$update_brand_assignment_input(AwsAccountId = AwsAccountId, BrandArn = BrandArn)
+  output <- .quicksight$update_brand_assignment_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$update_brand_assignment <- quicksight_update_brand_assignment
+
+#' Updates the published version of a brand
+#'
+#' @description
+#' Updates the published version of a brand.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_update_brand_published_version/](https://www.paws-r-sdk.com/docs/quicksight_update_brand_published_version/) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that owns the brand.
+#' @param BrandId &#91;required&#93; The ID of the Amazon QuickSight brand.
+#' @param VersionId &#91;required&#93; The ID of the published version.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_update_brand_published_version
+quicksight_update_brand_published_version <- function(AwsAccountId, BrandId, VersionId) {
+  op <- new_operation(
+    name = "UpdateBrandPublishedVersion",
+    http_method = "PUT",
+    http_path = "/accounts/{AwsAccountId}/brands/{BrandId}/publishedversion",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .quicksight$update_brand_published_version_input(AwsAccountId = AwsAccountId, BrandId = BrandId, VersionId = VersionId)
+  output <- .quicksight$update_brand_published_version_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$update_brand_published_version <- quicksight_update_brand_published_version
+
+#' Updates a custom permissions profile
+#'
+#' @description
+#' Updates a custom permissions profile.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_update_custom_permissions/](https://www.paws-r-sdk.com/docs/quicksight_update_custom_permissions/) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the custom
+#' permissions profile that you want to update.
+#' @param CustomPermissionsName &#91;required&#93; The name of the custom permissions profile that you want to update.
+#' @param Capabilities A set of actions to include in the custom permissions profile.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_update_custom_permissions
+quicksight_update_custom_permissions <- function(AwsAccountId, CustomPermissionsName, Capabilities = NULL) {
+  op <- new_operation(
+    name = "UpdateCustomPermissions",
+    http_method = "PUT",
+    http_path = "/accounts/{AwsAccountId}/custom-permissions/{CustomPermissionsName}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .quicksight$update_custom_permissions_input(AwsAccountId = AwsAccountId, CustomPermissionsName = CustomPermissionsName, Capabilities = Capabilities)
+  output <- .quicksight$update_custom_permissions_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$update_custom_permissions <- quicksight_update_custom_permissions
+
 #' Updates a dashboard in an Amazon Web Services account
 #'
 #' @description
@@ -6043,6 +6975,39 @@ quicksight_update_dashboard_published_version <- function(AwsAccountId, Dashboar
 }
 .quicksight$operations$update_dashboard_published_version <- quicksight_update_dashboard_published_version
 
+#' Updates a Dashboard QA configuration
+#'
+#' @description
+#' Updates a Dashboard QA configuration.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_update_dashboards_qa_configuration/](https://www.paws-r-sdk.com/docs/quicksight_update_dashboards_qa_configuration/) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the dashboard QA
+#' configuration that you want to update.
+#' @param DashboardsQAStatus &#91;required&#93; The status of dashboards QA configuration that you want to update.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_update_dashboards_qa_configuration
+quicksight_update_dashboards_qa_configuration <- function(AwsAccountId, DashboardsQAStatus) {
+  op <- new_operation(
+    name = "UpdateDashboardsQAConfiguration",
+    http_method = "PUT",
+    http_path = "/accounts/{AwsAccountId}/dashboards-qa-configuration",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .quicksight$update_dashboards_qa_configuration_input(AwsAccountId = AwsAccountId, DashboardsQAStatus = DashboardsQAStatus)
+  output <- .quicksight$update_dashboards_qa_configuration_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$update_dashboards_qa_configuration <- quicksight_update_dashboards_qa_configuration
+
 #' Updates a dataset
 #'
 #' @description
@@ -6207,6 +7172,44 @@ quicksight_update_data_source_permissions <- function(AwsAccountId, DataSourceId
   return(response)
 }
 .quicksight$operations$update_data_source_permissions <- quicksight_update_data_source_permissions
+
+#' Updates a Amazon Q Business application that is linked to a Amazon
+#' QuickSight account
+#'
+#' @description
+#' Updates a Amazon Q Business application that is linked to a Amazon QuickSight account.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_update_default_q_business_application/](https://www.paws-r-sdk.com/docs/quicksight_update_default_q_business_application/) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon QuickSight account that is connected to the Amazon
+#' Q Business application that you want to update.
+#' @param Namespace The Amazon QuickSight namespace that contains the linked Amazon Q
+#' Business application. If this field is left blank, the default namespace
+#' is used. Currently, the default namespace is the only valid value for
+#' this parameter.
+#' @param ApplicationId &#91;required&#93; The ID of the Amazon Q Business application that you want to update.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_update_default_q_business_application
+quicksight_update_default_q_business_application <- function(AwsAccountId, Namespace = NULL, ApplicationId) {
+  op <- new_operation(
+    name = "UpdateDefaultQBusinessApplication",
+    http_method = "PUT",
+    http_path = "/accounts/{AwsAccountId}/default-qbusiness-application",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .quicksight$update_default_q_business_application_input(AwsAccountId = AwsAccountId, Namespace = Namespace, ApplicationId = ApplicationId)
+  output <- .quicksight$update_default_q_business_application_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$update_default_q_business_application <- quicksight_update_default_q_business_application
 
 #' Updates the name of a folder
 #'
@@ -6508,6 +7511,75 @@ quicksight_update_public_sharing_settings <- function(AwsAccountId, PublicSharin
   return(response)
 }
 .quicksight$operations$update_public_sharing_settings <- quicksight_update_public_sharing_settings
+
+#' Updates a personalization configuration
+#'
+#' @description
+#' Updates a personalization configuration.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_update_q_personalization_configuration/](https://www.paws-r-sdk.com/docs/quicksight_update_q_personalization_configuration/) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account account that contains the
+#' personalization configuration that the user wants to update.
+#' @param PersonalizationMode &#91;required&#93; An option to allow Amazon QuickSight to customize data stories with user
+#' specific metadata, specifically location and job information, in your
+#' IAM Identity Center instance.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_update_q_personalization_configuration
+quicksight_update_q_personalization_configuration <- function(AwsAccountId, PersonalizationMode) {
+  op <- new_operation(
+    name = "UpdateQPersonalizationConfiguration",
+    http_method = "PUT",
+    http_path = "/accounts/{AwsAccountId}/q-personalization-configuration",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .quicksight$update_q_personalization_configuration_input(AwsAccountId = AwsAccountId, PersonalizationMode = PersonalizationMode)
+  output <- .quicksight$update_q_personalization_configuration_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$update_q_personalization_configuration <- quicksight_update_q_personalization_configuration
+
+#' Updates the state of a Amazon QuickSight Q Search configuration
+#'
+#' @description
+#' Updates the state of a Amazon QuickSight Q Search configuration.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_update_quick_sight_q_search_configuration/](https://www.paws-r-sdk.com/docs/quicksight_update_quick_sight_q_search_configuration/) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the Amazon
+#' QuickSight Q Search configuration that you want to update.
+#' @param QSearchStatus &#91;required&#93; The status of the Amazon QuickSight Q Search configuration that the user
+#' wants to update.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_update_quick_sight_q_search_configuration
+quicksight_update_quick_sight_q_search_configuration <- function(AwsAccountId, QSearchStatus) {
+  op <- new_operation(
+    name = "UpdateQuickSightQSearchConfiguration",
+    http_method = "PUT",
+    http_path = "/accounts/{AwsAccountId}/quicksight-q-search-configuration",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .quicksight$update_quick_sight_q_search_configuration_input(AwsAccountId = AwsAccountId, QSearchStatus = QSearchStatus)
+  output <- .quicksight$update_quick_sight_q_search_configuration_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$update_quick_sight_q_search_configuration <- quicksight_update_quick_sight_q_search_configuration
 
 #' Updates a refresh schedule for a dataset
 #'
@@ -7085,6 +8157,41 @@ quicksight_update_user <- function(UserName, AwsAccountId, Namespace, Email, Rol
   return(response)
 }
 .quicksight$operations$update_user <- quicksight_update_user
+
+#' Updates a custom permissions profile for a user
+#'
+#' @description
+#' Updates a custom permissions profile for a user.
+#'
+#' See [https://www.paws-r-sdk.com/docs/quicksight_update_user_custom_permission/](https://www.paws-r-sdk.com/docs/quicksight_update_user_custom_permission/) for full documentation.
+#'
+#' @param UserName &#91;required&#93; The username of the user that you want to update custom permissions for.
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the custom
+#' permission configuration that you want to update.
+#' @param Namespace &#91;required&#93; The namespace that the user belongs to.
+#' @param CustomPermissionsName &#91;required&#93; The name of the custom permissions that you want to update.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_update_user_custom_permission
+quicksight_update_user_custom_permission <- function(UserName, AwsAccountId, Namespace, CustomPermissionsName) {
+  op <- new_operation(
+    name = "UpdateUserCustomPermission",
+    http_method = "PUT",
+    http_path = "/accounts/{AwsAccountId}/namespaces/{Namespace}/users/{UserName}/custom-permission",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .quicksight$update_user_custom_permission_input(UserName = UserName, AwsAccountId = AwsAccountId, Namespace = Namespace, CustomPermissionsName = CustomPermissionsName)
+  output <- .quicksight$update_user_custom_permission_output()
+  config <- get_config()
+  svc <- .quicksight$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$update_user_custom_permission <- quicksight_update_user_custom_permission
 
 #' Updates a VPC connection
 #'

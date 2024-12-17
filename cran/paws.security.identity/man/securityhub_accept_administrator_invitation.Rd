@@ -2,8 +2,8 @@
 % Please edit documentation in R/securityhub_operations.R
 \name{securityhub_accept_administrator_invitation}
 \alias{securityhub_accept_administrator_invitation}
-\title{Accepts the invitation to be a member account and be monitored by the
-Security Hub administrator account that the invitation was sent from}
+\title{We recommend using Organizations instead of Security Hub invitations to
+manage your member accounts}
 \usage{
 securityhub_accept_administrator_invitation(AdministratorId, InvitationId)
 }
@@ -15,7 +15,7 @@ invitation.}
 administrator account.}
 }
 \description{
-Accepts the invitation to be a member account and be monitored by the Security Hub administrator account that the invitation was sent from.
+We recommend using Organizations instead of Security Hub invitations to manage your member accounts. For information, see \href{https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-accounts-orgs.html}{Managing Security Hub administrator and member accounts with Organizations} in the \emph{Security Hub User Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/securityhub_accept_administrator_invitation/} for full documentation.
 }

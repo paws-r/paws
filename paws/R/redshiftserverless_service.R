@@ -19,7 +19,7 @@ NULL
 #' 
 #' To learn more about Amazon Redshift Serverless, see [What is Amazon
 #' Redshift
-#' Serverless](https://docs.aws.amazon.com/redshift/latest/mgmt/serverless-whatis.html).
+#' Serverless?](https://docs.aws.amazon.com/redshift/latest/mgmt/serverless-whatis.html).
 #'
 #' @param
 #' config
@@ -135,6 +135,7 @@ NULL
 #'  \link[=redshiftserverless_get_workgroup]{get_workgroup} \tab Returns information about a specific workgroup\cr
 #'  \link[=redshiftserverless_list_custom_domain_associations]{list_custom_domain_associations} \tab Lists custom domain associations for Amazon Redshift Serverless\cr
 #'  \link[=redshiftserverless_list_endpoint_access]{list_endpoint_access} \tab Returns an array of EndpointAccess objects and relevant information\cr
+#'  \link[=redshiftserverless_list_managed_workgroups]{list_managed_workgroups} \tab Returns information about a list of specified managed workgroups in your account\cr
 #'  \link[=redshiftserverless_list_namespaces]{list_namespaces} \tab Returns information about a list of specified namespaces\cr
 #'  \link[=redshiftserverless_list_recovery_points]{list_recovery_points} \tab Returns an array of recovery points\cr
 #'  \link[=redshiftserverless_list_scheduled_actions]{list_scheduled_actions} \tab Returns a list of scheduled actions\cr
@@ -190,7 +191,7 @@ redshiftserverless <- function(config = list(), credentials = list(), endpoint =
 
 .redshiftserverless$metadata <- list(
   service_name = "redshiftserverless",
-  endpoints = list("*" = list(endpoint = "redshift-serverless.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "redshift-serverless.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "redshift-serverless.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "redshift-serverless.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "redshift-serverless.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "redshift-serverless.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "redshift-serverless.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "redshift-serverless.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "redshift-serverless.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "redshift-serverless.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "redshift-serverless.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "redshift-serverless.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "redshift-serverless.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Redshift Serverless",
   api_version = "2021-04-21",
   signing_name = "redshift-serverless",

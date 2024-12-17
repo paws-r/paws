@@ -5,14 +5,29 @@
 \title{Describes your route tables}
 \usage{
 ec2_describe_route_tables(
-  Filters = NULL,
+  NextToken = NULL,
+  MaxResults = NULL,
   DryRun = NULL,
   RouteTableIds = NULL,
-  NextToken = NULL,
-  MaxResults = NULL
+  Filters = NULL
 )
 }
 \arguments{
+\item{NextToken}{The token returned from a previous paginated request. Pagination
+continues from the end of the items returned by the previous request.}
+
+\item{MaxResults}{The maximum number of items to return for this request. To get the next
+page of items, make another request with the token returned in the
+output. For more information, see
+\href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Query-Requests.html#api-pagination}{Pagination}.}
+
+\item{DryRun}{Checks whether you have the required permissions for the action, without
+actually making the request, and provides an error response. If you have
+the required permissions, the error response is \code{DryRunOperation}.
+Otherwise, it is \code{UnauthorizedOperation}.}
+
+\item{RouteTableIds}{The IDs of the route tables.}
+
 \item{Filters}{The filters.
 \itemize{
 \item \code{association.gateway-id} - The ID of the gateway involved in the
@@ -57,31 +72,16 @@ to the VPC, the specified NAT instance has been terminated, and so
 on).
 \item \code{route.vpc-peering-connection-id} - The ID of a VPC peering
 connection specified in a route in the table.
-\item \code{tag}:\<key\> - The key/value combination of a tag assigned to the
-resource. Use the tag key in the filter name and the tag value as
-the filter value. For example, to find all resources that have a tag
-with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner} for
-the filter name and \code{TeamA} for the filter value.
+\item \code{tag} - The key/value combination of a tag assigned to the resource.
+Use the tag key in the filter name and the tag value as the filter
+value. For example, to find all resources that have a tag with the
+key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner} for the
+filter name and \code{TeamA} for the filter value.
 \item \code{tag-key} - The key of a tag assigned to the resource. Use this
 filter to find all resources assigned a tag with a specific key,
 regardless of the tag value.
 \item \code{vpc-id} - The ID of the VPC for the route table.
 }}
-
-\item{DryRun}{Checks whether you have the required permissions for the action, without
-actually making the request, and provides an error response. If you have
-the required permissions, the error response is \code{DryRunOperation}.
-Otherwise, it is \code{UnauthorizedOperation}.}
-
-\item{RouteTableIds}{The IDs of the route tables.}
-
-\item{NextToken}{The token returned from a previous paginated request. Pagination
-continues from the end of the items returned by the previous request.}
-
-\item{MaxResults}{The maximum number of items to return for this request. To get the next
-page of items, make another request with the token returned in the
-output. For more information, see
-\href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Query-Requests.html#api-pagination}{Pagination}.}
 }
 \description{
 Describes your route tables. The default is to describe all your route tables. Alternatively, you can specify specific route table IDs or filter the results to include only the route tables that match specific criteria.

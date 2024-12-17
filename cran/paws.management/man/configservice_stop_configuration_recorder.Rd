@@ -2,17 +2,16 @@
 % Please edit documentation in R/configservice_operations.R
 \name{configservice_stop_configuration_recorder}
 \alias{configservice_stop_configuration_recorder}
-\title{Stops recording configurations of the Amazon Web Services resources you
-have selected to record in your Amazon Web Services account}
+\title{Stops the customer managed configuration recorder}
 \usage{
 configservice_stop_configuration_recorder(ConfigurationRecorderName)
 }
 \arguments{
-\item{ConfigurationRecorderName}{[required] The name of the recorder object that records each configuration change
-made to the resources.}
+\item{ConfigurationRecorderName}{[required] The name of the customer managed configuration recorder that you want to
+stop.}
 }
 \description{
-Stops recording configurations of the Amazon Web Services resources you have selected to record in your Amazon Web Services account.
+Stops the customer managed configuration recorder. The customer managed configuration recorder will stop recording configuration changes for the resource types you have specified.
 
 See \url{https://www.paws-r-sdk.com/docs/configservice_stop_configuration_recorder/} for full documentation.
 }

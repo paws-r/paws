@@ -106,10 +106,12 @@ Defines the public endpoint for the Lake Formation service.
 \link[paws.database:lakeformation_create_lake_formation_identity_center_configuration]{create_lake_formation_identity_center_configuration} \tab Creates an IAM Identity Center connection with Lake Formation to allow IAM Identity Center users and groups to access Data Catalog resources\cr
 \link[paws.database:lakeformation_create_lake_formation_opt_in]{create_lake_formation_opt_in} \tab Enforce Lake Formation permissions for the given databases, tables, and principals\cr
 \link[paws.database:lakeformation_create_lf_tag]{create_lf_tag} \tab Creates an LF-tag with the specified name and values\cr
+\link[paws.database:lakeformation_create_lf_tag_expression]{create_lf_tag_expression} \tab Creates a new LF-Tag expression with the provided name, description, catalog ID, and expression body\cr
 \link[paws.database:lakeformation_delete_data_cells_filter]{delete_data_cells_filter} \tab Deletes a data cell filter\cr
 \link[paws.database:lakeformation_delete_lake_formation_identity_center_configuration]{delete_lake_formation_identity_center_configuration} \tab Deletes an IAM Identity Center connection with Lake Formation\cr
 \link[paws.database:lakeformation_delete_lake_formation_opt_in]{delete_lake_formation_opt_in} \tab Remove the Lake Formation permissions enforcement of the given databases, tables, and principals\cr
 \link[paws.database:lakeformation_delete_lf_tag]{delete_lf_tag} \tab Deletes the specified LF-tag given a key name\cr
+\link[paws.database:lakeformation_delete_lf_tag_expression]{delete_lf_tag_expression} \tab Deletes the LF-Tag expression\cr
 \link[paws.database:lakeformation_delete_objects_on_cancel]{delete_objects_on_cancel} \tab For a specific governed table, provides a list of Amazon S3 objects that will be written during the current transaction and that can be automatically deleted if the transaction is canceled\cr
 \link[paws.database:lakeformation_deregister_resource]{deregister_resource} \tab Deregisters the resource as managed by the Data Catalog\cr
 \link[paws.database:lakeformation_describe_lake_formation_identity_center_configuration]{describe_lake_formation_identity_center_configuration} \tab Retrieves the instance ARN and application ARN for the connection\cr
@@ -121,6 +123,7 @@ Defines the public endpoint for the Lake Formation service.
 \link[paws.database:lakeformation_get_data_lake_settings]{get_data_lake_settings} \tab Retrieves the list of the data lake administrators of a Lake Formation-managed data lake\cr
 \link[paws.database:lakeformation_get_effective_permissions_for_path]{get_effective_permissions_for_path} \tab Returns the Lake Formation permissions for a specified table or database resource located at a path in Amazon S3\cr
 \link[paws.database:lakeformation_get_lf_tag]{get_lf_tag} \tab Returns an LF-tag definition\cr
+\link[paws.database:lakeformation_get_lf_tag_expression]{get_lf_tag_expression} \tab Returns the details about the LF-Tag expression\cr
 \link[paws.database:lakeformation_get_query_state]{get_query_state} \tab Returns the state of a query previously submitted\cr
 \link[paws.database:lakeformation_get_query_statistics]{get_query_statistics} \tab Retrieves statistics on the planning and execution of a query\cr
 \link[paws.database:lakeformation_get_resource_lf_tags]{get_resource_lf_tags} \tab Returns the LF-tags applied to a resource\cr
@@ -132,6 +135,7 @@ Defines the public endpoint for the Lake Formation service.
 \link[paws.database:lakeformation_grant_permissions]{grant_permissions} \tab Grants permissions to the principal to access metadata in the Data Catalog and data organized in underlying data storage such as Amazon S3\cr
 \link[paws.database:lakeformation_list_data_cells_filter]{list_data_cells_filter} \tab Lists all the data cell filters on a table\cr
 \link[paws.database:lakeformation_list_lake_formation_opt_ins]{list_lake_formation_opt_ins} \tab Retrieve the current list of resources and principals that are opt in to enforce Lake Formation permissions\cr
+\link[paws.database:lakeformation_list_lf_tag_expressions]{list_lf_tag_expressions} \tab Returns the LF-Tag expressions in caller’s account filtered based on caller's permissions\cr
 \link[paws.database:lakeformation_list_lf_tags]{list_lf_tags} \tab Lists LF-tags that the requester has permission to view\cr
 \link[paws.database:lakeformation_list_permissions]{list_permissions} \tab Returns a list of the principal permissions on the resource, filtered by the permissions of the caller\cr
 \link[paws.database:lakeformation_list_resources]{list_resources} \tab Lists the resources registered to be managed by the Data Catalog\cr
@@ -148,6 +152,7 @@ Defines the public endpoint for the Lake Formation service.
 \link[paws.database:lakeformation_update_data_cells_filter]{update_data_cells_filter} \tab Updates a data cell filter\cr
 \link[paws.database:lakeformation_update_lake_formation_identity_center_configuration]{update_lake_formation_identity_center_configuration} \tab Updates the IAM Identity Center connection parameters\cr
 \link[paws.database:lakeformation_update_lf_tag]{update_lf_tag} \tab Updates the list of possible values for the specified LF-tag key\cr
+\link[paws.database:lakeformation_update_lf_tag_expression]{update_lf_tag_expression} \tab Updates the name of the LF-Tag expression to the new description and expression body provided\cr
 \link[paws.database:lakeformation_update_resource]{update_resource} \tab Updates the data access role used for vending access to the given (registered) resource in Lake Formation\cr
 \link[paws.database:lakeformation_update_table_objects]{update_table_objects} \tab Updates the manifest of Amazon S3 objects that make up the specified governed table\cr
 \link[paws.database:lakeformation_update_table_storage_optimizer]{update_table_storage_optimizer} \tab Updates the configuration of the storage optimizers for a table

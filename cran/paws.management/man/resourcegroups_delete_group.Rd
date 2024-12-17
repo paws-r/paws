@@ -9,7 +9,8 @@ resourcegroups_delete_group(GroupName = NULL, Group = NULL)
 \arguments{
 \item{GroupName}{Deprecated - don't use this parameter. Use \code{Group} instead.}
 
-\item{Group}{The name or the ARN of the resource group to delete.}
+\item{Group}{The name or the Amazon resource name (ARN) of the resource group to
+delete.}
 }
 \description{
 Deletes the specified resource group. Deleting a resource group does not delete any resources that are members of the group; it only deletes the group structure.

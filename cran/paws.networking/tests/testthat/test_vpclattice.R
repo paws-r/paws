@@ -1,5 +1,17 @@
 svc <- paws::vpclattice()
 
+test_that("list_resource_configurations", {
+  expect_error(svc$list_resource_configurations(), NA)
+})
+
+test_that("list_resource_gateways", {
+  expect_error(svc$list_resource_gateways(), NA)
+})
+
+test_that("list_service_network_resource_associations", {
+  expect_error(svc$list_service_network_resource_associations(), NA)
+})
+
 test_that("list_service_network_service_associations", {
   expect_error(svc$list_service_network_service_associations(), NA)
 })

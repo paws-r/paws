@@ -46,7 +46,7 @@ provide is \code{path1}.
 \item For import tasks, the list contains paths in the Amazon S3 bucket
 from which POSIX metadata changes are imported to the FSx for Lustre
 file system. The path can be an S3 bucket or prefix in the format
-\verb{s3://myBucket/myPrefix} (where \code{myPrefix} is optional).
+\verb{s3://bucket-name/prefix} (where \code{prefix} is optional).
 \item For release tasks, the list contains directory or file paths on the
 FSx for Lustre file system from which to release exported files. If
 a directory is specified, files within the directory are released.

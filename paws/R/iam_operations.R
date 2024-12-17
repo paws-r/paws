@@ -959,14 +959,24 @@ iam_create_instance_profile <- function(InstanceProfileName, Path = NULL, Tags =
 #' @usage
 #' iam_create_login_profile(UserName, Password, PasswordResetRequired)
 #'
-#' @param UserName &#91;required&#93; The name of the IAM user to create a password for. The user must already
+#' @param UserName The name of the IAM user to create a password for. The user must already
 #' exist.
+#' 
+#' This parameter is optional. If no user name is included, it defaults to
+#' the principal making the request. When you make this request with root
+#' user credentials, you must use an
+#' [AssumeRoot](https://docs.aws.amazon.com/STS/latest/APIReference/API_AssumeRoot.html)
+#' session to omit the user name.
 #' 
 #' This parameter allows (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
 #' consisting of upper and lowercase alphanumeric characters with no
 #' spaces. You can also include any of the following characters: _+=,.@@-
-#' @param Password &#91;required&#93; The new password for the user.
+#' @param Password The new password for the user.
+#' 
+#' This parameter must be omitted when you make the request with an
+#' [AssumeRoot](https://docs.aws.amazon.com/STS/latest/APIReference/API_AssumeRoot.html)
+#' session. It is required in all other cases.
 #' 
 #' The [regex pattern](https://en.wikipedia.org/wiki/Regex) that is used to
 #' validate this parameter is a string of characters. That string can
@@ -1019,7 +1029,7 @@ iam_create_instance_profile <- function(InstanceProfileName, Path = NULL, Tags =
 #' @rdname iam_create_login_profile
 #'
 #' @aliases iam_create_login_profile
-iam_create_login_profile <- function(UserName, Password, PasswordResetRequired = NULL) {
+iam_create_login_profile <- function(UserName = NULL, Password = NULL, PasswordResetRequired = NULL) {
   op <- new_operation(
     name = "CreateLoginProfile",
     http_method = "POST",
@@ -1043,7 +1053,8 @@ iam_create_login_profile <- function(UserName, Password, PasswordResetRequired =
 #'
 #' @description
 #' Creates an IAM entity to describe an identity provider (IdP) that
-#' supports OpenID Connect (OIDC).
+#' supports [OpenID Connect
+#' (OIDC)](https://openid.net/developers/how-connect-works/).
 #' 
 #' The OIDC provider that you create with this operation can be used as a
 #' principal in a role's trust policy. Such a policy establishes a trust
@@ -2293,7 +2304,13 @@ iam_create_virtual_mfa_device <- function(Path = NULL, VirtualMFADeviceName, Tag
 #' @usage
 #' iam_deactivate_mfa_device(UserName, SerialNumber)
 #'
-#' @param UserName &#91;required&#93; The name of the user whose MFA device you want to deactivate.
+#' @param UserName The name of the user whose MFA device you want to deactivate.
+#' 
+#' This parameter is optional. If no user name is included, it defaults to
+#' the principal making the request. When you make this request with root
+#' user credentials, you must use an
+#' [AssumeRoot](https://docs.aws.amazon.com/STS/latest/APIReference/API_AssumeRoot.html)
+#' session to omit the user name.
 #' 
 #' This parameter allows (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
@@ -2323,7 +2340,7 @@ iam_create_virtual_mfa_device <- function(Path = NULL, VirtualMFADeviceName, Tag
 #' @rdname iam_deactivate_mfa_device
 #'
 #' @aliases iam_deactivate_mfa_device
-iam_deactivate_mfa_device <- function(UserName, SerialNumber) {
+iam_deactivate_mfa_device <- function(UserName = NULL, SerialNumber) {
   op <- new_operation(
     name = "DeactivateMFADevice",
     http_method = "POST",
@@ -2742,7 +2759,13 @@ iam_delete_instance_profile <- function(InstanceProfileName) {
 #' @usage
 #' iam_delete_login_profile(UserName)
 #'
-#' @param UserName &#91;required&#93; The name of the user whose password you want to delete.
+#' @param UserName The name of the user whose password you want to delete.
+#' 
+#' This parameter is optional. If no user name is included, it defaults to
+#' the principal making the request. When you make this request with root
+#' user credentials, you must use an
+#' [AssumeRoot](https://docs.aws.amazon.com/STS/latest/APIReference/API_AssumeRoot.html)
+#' session to omit the user name.
 #' 
 #' This parameter allows (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
@@ -2772,7 +2795,7 @@ iam_delete_instance_profile <- function(InstanceProfileName) {
 #' @rdname iam_delete_login_profile
 #'
 #' @aliases iam_delete_login_profile
-iam_delete_login_profile <- function(UserName) {
+iam_delete_login_profile <- function(UserName = NULL) {
   op <- new_operation(
     name = "DeleteLoginProfile",
     http_method = "POST",
@@ -4050,6 +4073,115 @@ iam_detach_user_policy <- function(UserName, PolicyArn) {
 }
 .iam$operations$detach_user_policy <- iam_detach_user_policy
 
+#' Disables the management of privileged root user credentials across
+#' member accounts in your organization
+#'
+#' @description
+#' Disables the management of privileged root user credentials across
+#' member accounts in your organization. When you disable this feature, the
+#' management account and the delegated admininstrator for IAM can no
+#' longer manage root user credentials for member accounts in your
+#' organization.
+#'
+#' @usage
+#' iam_disable_organizations_root_credentials_management()
+#'
+
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   OrganizationId = "string",
+#'   EnabledFeatures = list(
+#'     "RootCredentialsManagement"|"RootSessions"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$disable_organizations_root_credentials_management()
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname iam_disable_organizations_root_credentials_management
+#'
+#' @aliases iam_disable_organizations_root_credentials_management
+iam_disable_organizations_root_credentials_management <- function() {
+  op <- new_operation(
+    name = "DisableOrganizationsRootCredentialsManagement",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .iam$disable_organizations_root_credentials_management_input()
+  output <- .iam$disable_organizations_root_credentials_management_output()
+  config <- get_config()
+  svc <- .iam$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.iam$operations$disable_organizations_root_credentials_management <- iam_disable_organizations_root_credentials_management
+
+#' Disables root user sessions for privileged tasks across member accounts
+#' in your organization
+#'
+#' @description
+#' Disables root user sessions for privileged tasks across member accounts
+#' in your organization. When you disable this feature, the management
+#' account and the delegated admininstrator for IAM can no longer perform
+#' privileged tasks on member accounts in your organization.
+#'
+#' @usage
+#' iam_disable_organizations_root_sessions()
+#'
+
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   OrganizationId = "string",
+#'   EnabledFeatures = list(
+#'     "RootCredentialsManagement"|"RootSessions"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$disable_organizations_root_sessions()
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname iam_disable_organizations_root_sessions
+#'
+#' @aliases iam_disable_organizations_root_sessions
+iam_disable_organizations_root_sessions <- function() {
+  op <- new_operation(
+    name = "DisableOrganizationsRootSessions",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .iam$disable_organizations_root_sessions_input()
+  output <- .iam$disable_organizations_root_sessions_output()
+  config <- get_config()
+  svc <- .iam$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.iam$operations$disable_organizations_root_sessions <- iam_disable_organizations_root_sessions
+
 #' Enables the specified MFA device and associates it with the specified
 #' IAM user
 #'
@@ -4134,6 +4266,139 @@ iam_enable_mfa_device <- function(UserName, SerialNumber, AuthenticationCode1, A
   return(response)
 }
 .iam$operations$enable_mfa_device <- iam_enable_mfa_device
+
+#' Enables the management of privileged root user credentials across member
+#' accounts in your organization
+#'
+#' @description
+#' Enables the management of privileged root user credentials across member
+#' accounts in your organization. When you enable root credentials
+#' management for [centralized root
+#' access](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_root-user.html#id_root-user-access-management),
+#' the management account and the delegated admininstrator for IAM can
+#' manage root user credentials for member accounts in your organization.
+#' 
+#' Before you enable centralized root access, you must have an account
+#' configured with the following settings:
+#' 
+#' -   You must manage your Amazon Web Services accounts in
+#'     [Organizations](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html).
+#' 
+#' -   Enable trusted access for Identity and Access Management in
+#'     Organizations. For details, see [IAM and
+#'     Organizations](https://docs.aws.amazon.com/organizations/latest/userguide/services-that-can-integrate-ra.html)
+#'     in the *Organizations User Guide*.
+#'
+#' @usage
+#' iam_enable_organizations_root_credentials_management()
+#'
+
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   OrganizationId = "string",
+#'   EnabledFeatures = list(
+#'     "RootCredentialsManagement"|"RootSessions"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$enable_organizations_root_credentials_management()
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname iam_enable_organizations_root_credentials_management
+#'
+#' @aliases iam_enable_organizations_root_credentials_management
+iam_enable_organizations_root_credentials_management <- function() {
+  op <- new_operation(
+    name = "EnableOrganizationsRootCredentialsManagement",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .iam$enable_organizations_root_credentials_management_input()
+  output <- .iam$enable_organizations_root_credentials_management_output()
+  config <- get_config()
+  svc <- .iam$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.iam$operations$enable_organizations_root_credentials_management <- iam_enable_organizations_root_credentials_management
+
+#' Allows the management account or delegated administrator to perform
+#' privileged tasks on member accounts in your organization
+#'
+#' @description
+#' Allows the management account or delegated administrator to perform
+#' privileged tasks on member accounts in your organization. For more
+#' information, see [Centrally manage root access for member
+#' accounts](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_root-user.html#id_root-user-access-management)
+#' in the *Identity and Access Management User Guide*.
+#' 
+#' Before you enable this feature, you must have an account configured with
+#' the following settings:
+#' 
+#' -   You must manage your Amazon Web Services accounts in
+#'     [Organizations](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html).
+#' 
+#' -   Enable trusted access for Identity and Access Management in
+#'     Organizations. For details, see [IAM and
+#'     Organizations](https://docs.aws.amazon.com/organizations/latest/userguide/services-that-can-integrate-ra.html)
+#'     in the *Organizations User Guide*.
+#'
+#' @usage
+#' iam_enable_organizations_root_sessions()
+#'
+
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   OrganizationId = "string",
+#'   EnabledFeatures = list(
+#'     "RootCredentialsManagement"|"RootSessions"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$enable_organizations_root_sessions()
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname iam_enable_organizations_root_sessions
+#'
+#' @aliases iam_enable_organizations_root_sessions
+iam_enable_organizations_root_sessions <- function() {
+  op <- new_operation(
+    name = "EnableOrganizationsRootSessions",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .iam$enable_organizations_root_sessions_input()
+  output <- .iam$enable_organizations_root_sessions_output()
+  config <- get_config()
+  svc <- .iam$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.iam$operations$enable_organizations_root_sessions <- iam_enable_organizations_root_sessions
 
 #' Generates a credential report for the Amazon Web Services account
 #'
@@ -5301,7 +5566,7 @@ iam_get_group <- function(GroupName, Marker = NULL, MaxItems = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "Users"),
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "Users", non_aggregate_keys = list( "Group")),
     stream_api = FALSE
   )
   input <- .iam$get_group_input(GroupName = GroupName, Marker = Marker, MaxItems = MaxItems)
@@ -5529,7 +5794,13 @@ iam_get_instance_profile <- function(InstanceProfileName) {
 #' @usage
 #' iam_get_login_profile(UserName)
 #'
-#' @param UserName &#91;required&#93; The name of the user whose login profile you want to retrieve.
+#' @param UserName The name of the user whose login profile you want to retrieve.
+#' 
+#' This parameter is optional. If no user name is included, it defaults to
+#' the principal making the request. When you make this request with root
+#' user credentials, you must use an
+#' [AssumeRoot](https://docs.aws.amazon.com/STS/latest/APIReference/API_AssumeRoot.html)
+#' session to omit the user name.
 #' 
 #' This parameter allows (through its [regex
 #' pattern](https://en.wikipedia.org/wiki/Regex)) a string of characters
@@ -5571,7 +5842,7 @@ iam_get_instance_profile <- function(InstanceProfileName) {
 #' @rdname iam_get_login_profile
 #'
 #' @aliases iam_get_login_profile
-iam_get_login_profile <- function(UserName) {
+iam_get_login_profile <- function(UserName = NULL) {
   op <- new_operation(
     name = "GetLoginProfile",
     http_method = "POST",
@@ -7139,8 +7410,8 @@ iam_list_access_keys <- function(UserName = NULL, Marker = NULL, MaxItems = NULL
 #' (Note: you can have only one). For information about using an Amazon Web
 #' Services account alias, see [Creating, deleting, and listing an Amazon
 #' Web Services account
-#' alias](https://docs.aws.amazon.com/IAM/latest/UserGuide/console-account-alias.html#CreateAccountAlias)
-#' in the *IAM User Guide*.
+#' alias](https://docs.aws.amazon.com/IAM/latest/UserGuide/account-alias-create.html)
+#' in the *Amazon Web Services Sign-In User Guide*.
 #'
 #' @usage
 #' iam_list_account_aliases(Marker, MaxItems)
@@ -8579,6 +8850,59 @@ iam_list_open_id_connect_providers <- function() {
 }
 .iam$operations$list_open_id_connect_providers <- iam_list_open_id_connect_providers
 
+#' Lists the centralized root access features enabled for your organization
+#'
+#' @description
+#' Lists the centralized root access features enabled for your
+#' organization. For more information, see [Centrally manage root access
+#' for member
+#' accounts](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_root-user.html#id_root-user-access-management).
+#'
+#' @usage
+#' iam_list_organizations_features()
+#'
+
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   OrganizationId = "string",
+#'   EnabledFeatures = list(
+#'     "RootCredentialsManagement"|"RootSessions"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_organizations_features()
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname iam_list_organizations_features
+#'
+#' @aliases iam_list_organizations_features
+iam_list_organizations_features <- function() {
+  op <- new_operation(
+    name = "ListOrganizationsFeatures",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .iam$list_organizations_features_input()
+  output <- .iam$list_organizations_features_output()
+  config <- get_config()
+  svc <- .iam$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.iam$operations$list_organizations_features <- iam_list_organizations_features
+
 #' Lists all the managed policies that are available in your Amazon Web
 #' Services account, including your own customer-defined managed policies
 #' and all Amazon Web Services managed policies
@@ -9473,7 +9797,7 @@ iam_list_saml_providers <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "SAMLProviderList"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .iam$list_saml_providers_input()

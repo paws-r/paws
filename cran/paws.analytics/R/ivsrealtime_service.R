@@ -29,7 +29,7 @@ NULL
 #' 
 #' -   **Composition process** — Composites participants of a stage into a
 #'     single video and forwards it to a set of outputs (e.g., IVS
-#'     channels). Composition endpoints support this process.
+#'     channels). Composition operations support this process.
 #' 
 #' -   **Composition** — Controls the look of the outputs, including how
 #'     participants are positioned in the video.
@@ -43,18 +43,19 @@ NULL
 #' A *tag* is a metadata label that you assign to an AWS resource. A tag
 #' comprises a *key* and a *value*, both set by you. For example, you might
 #' set a tag as `topic:nature` to label a particular video category. See
-#' [Tagging AWS
-#' Resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html)
-#' for more information, including restrictions that apply to tags and "Tag
-#' naming limits and requirements"; Amazon IVS stages has no
-#' service-specific constraints beyond what is documented there.
+#' [Best practices and
+#' strategies](https://docs.aws.amazon.com/tag-editor/latest/userguide/best-practices-and-strats.html)
+#' in *Tagging AWS Resources and Tag Editor* for details, including
+#' restrictions that apply to tags and "Tag naming limits and
+#' requirements"; Amazon IVS stages has no service-specific constraints
+#' beyond what is documented there.
 #' 
 #' Tags can help you identify and organize your AWS resources. For example,
 #' you can use the same tag for different resources to indicate that they
 #' are related. You can also use tags to manage access (see [Access
 #' Tags](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_tags.html)).
 #' 
-#' The Amazon IVS real-time API has these tag-related endpoints:
+#' The Amazon IVS real-time API has these tag-related operations:
 #' [`tag_resource`][ivsrealtime_tag_resource],
 #' [`untag_resource`][ivsrealtime_untag_resource], and
 #' [`list_tags_for_resource`][ivsrealtime_list_tags_for_resource]. The
@@ -146,16 +147,19 @@ NULL
 #' @section Operations:
 #' \tabular{ll}{
 #'  \link[=ivsrealtime_create_encoder_configuration]{create_encoder_configuration} \tab Creates an EncoderConfiguration object\cr
+#'  \link[=ivsrealtime_create_ingest_configuration]{create_ingest_configuration} \tab Creates a new IngestConfiguration resource, used to specify the ingest protocol for a stage\cr
 #'  \link[=ivsrealtime_create_participant_token]{create_participant_token} \tab Creates an additional token for a specified stage\cr
 #'  \link[=ivsrealtime_create_stage]{create_stage} \tab Creates a new stage (and optionally participant tokens)\cr
 #'  \link[=ivsrealtime_create_storage_configuration]{create_storage_configuration} \tab Creates a new storage configuration, used to enable recording to Amazon S3\cr
 #'  \link[=ivsrealtime_delete_encoder_configuration]{delete_encoder_configuration} \tab Deletes an EncoderConfiguration resource\cr
+#'  \link[=ivsrealtime_delete_ingest_configuration]{delete_ingest_configuration} \tab Deletes a specified IngestConfiguration, so it can no longer be used to broadcast\cr
 #'  \link[=ivsrealtime_delete_public_key]{delete_public_key} \tab Deletes the specified public key used to sign stage participant tokens\cr
 #'  \link[=ivsrealtime_delete_stage]{delete_stage} \tab Shuts down and deletes the specified stage (disconnecting all participants)\cr
 #'  \link[=ivsrealtime_delete_storage_configuration]{delete_storage_configuration} \tab Deletes the storage configuration for the specified ARN\cr
-#'  \link[=ivsrealtime_disconnect_participant]{disconnect_participant} \tab Disconnects a specified participant and revokes the participant permanently from a specified stage\cr
+#'  \link[=ivsrealtime_disconnect_participant]{disconnect_participant} \tab Disconnects a specified participant from a specified stage\cr
 #'  \link[=ivsrealtime_get_composition]{get_composition} \tab Get information about the specified Composition resource\cr
 #'  \link[=ivsrealtime_get_encoder_configuration]{get_encoder_configuration} \tab Gets information about the specified EncoderConfiguration resource\cr
+#'  \link[=ivsrealtime_get_ingest_configuration]{get_ingest_configuration} \tab Gets information about the specified IngestConfiguration\cr
 #'  \link[=ivsrealtime_get_participant]{get_participant} \tab Gets information about the specified participant token\cr
 #'  \link[=ivsrealtime_get_public_key]{get_public_key} \tab Gets information for the specified public key\cr
 #'  \link[=ivsrealtime_get_stage]{get_stage} \tab Gets information for the specified stage\cr
@@ -164,6 +168,7 @@ NULL
 #'  \link[=ivsrealtime_import_public_key]{import_public_key} \tab Import a public key to be used for signing stage participant tokens\cr
 #'  \link[=ivsrealtime_list_compositions]{list_compositions} \tab Gets summary information about all Compositions in your account, in the AWS region where the API request is processed\cr
 #'  \link[=ivsrealtime_list_encoder_configurations]{list_encoder_configurations} \tab Gets summary information about all EncoderConfigurations in your account, in the AWS region where the API request is processed\cr
+#'  \link[=ivsrealtime_list_ingest_configurations]{list_ingest_configurations} \tab Lists all IngestConfigurations in your account, in the AWS region where the API request is processed\cr
 #'  \link[=ivsrealtime_list_participant_events]{list_participant_events} \tab Lists events for a specified participant that occurred during a specified stage session\cr
 #'  \link[=ivsrealtime_list_participants]{list_participants} \tab Lists all participants in a specified stage session\cr
 #'  \link[=ivsrealtime_list_public_keys]{list_public_keys} \tab Gets summary information about all public keys in your account, in the AWS region where the API request is processed\cr
@@ -175,6 +180,7 @@ NULL
 #'  \link[=ivsrealtime_stop_composition]{stop_composition} \tab Stops and deletes a Composition resource\cr
 #'  \link[=ivsrealtime_tag_resource]{tag_resource} \tab Adds or updates tags for the AWS resource with the specified ARN\cr
 #'  \link[=ivsrealtime_untag_resource]{untag_resource} \tab Removes tags from the resource with the specified ARN\cr
+#'  \link[=ivsrealtime_update_ingest_configuration]{update_ingest_configuration} \tab Updates a specified IngestConfiguration\cr
 #'  \link[=ivsrealtime_update_stage]{update_stage} \tab Updates a stage’s configuration
 #' }
 #'
@@ -207,7 +213,7 @@ ivsrealtime <- function(config = list(), credentials = list(), endpoint = NULL, 
 
 .ivsrealtime$metadata <- list(
   service_name = "ivsrealtime",
-  endpoints = list("*" = list(endpoint = "ivsrealtime.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "ivsrealtime.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "ivsrealtime.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "ivsrealtime.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "ivsrealtime.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "ivsrealtime.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "ivsrealtime.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "ivsrealtime.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "ivsrealtime.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "ivsrealtime.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "ivsrealtime.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "ivsrealtime.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "ivsrealtime.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "IVS RealTime",
   api_version = "2020-07-14",
   signing_name = "ivs",

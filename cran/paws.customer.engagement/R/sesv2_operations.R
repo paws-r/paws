@@ -514,6 +514,41 @@ sesv2_create_import_job <- function(ImportDestination, ImportDataSource) {
 }
 .sesv2$operations$create_import_job <- sesv2_create_import_job
 
+#' Creates a multi-region endpoint (global-endpoint)
+#'
+#' @description
+#' Creates a multi-region endpoint (global-endpoint).
+#'
+#' See [https://www.paws-r-sdk.com/docs/sesv2_create_multi_region_endpoint/](https://www.paws-r-sdk.com/docs/sesv2_create_multi_region_endpoint/) for full documentation.
+#'
+#' @param EndpointName &#91;required&#93; The name of the multi-region endpoint (global-endpoint).
+#' @param Details &#91;required&#93; Contains details of a multi-region endpoint (global-endpoint) being
+#' created.
+#' @param Tags An array of objects that define the tags (keys and values) to associate
+#' with the multi-region endpoint (global-endpoint).
+#'
+#' @keywords internal
+#'
+#' @rdname sesv2_create_multi_region_endpoint
+sesv2_create_multi_region_endpoint <- function(EndpointName, Details, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateMultiRegionEndpoint",
+    http_method = "POST",
+    http_path = "/v2/email/multi-region-endpoints",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .sesv2$create_multi_region_endpoint_input(EndpointName = EndpointName, Details = Details, Tags = Tags)
+  output <- .sesv2$create_multi_region_endpoint_output()
+  config <- get_config()
+  svc <- .sesv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sesv2$operations$create_multi_region_endpoint <- sesv2_create_multi_region_endpoint
+
 #' Delete an existing configuration set
 #'
 #' @description
@@ -801,6 +836,37 @@ sesv2_delete_email_template <- function(TemplateName) {
   return(response)
 }
 .sesv2$operations$delete_email_template <- sesv2_delete_email_template
+
+#' Deletes a multi-region endpoint (global-endpoint)
+#'
+#' @description
+#' Deletes a multi-region endpoint (global-endpoint).
+#'
+#' See [https://www.paws-r-sdk.com/docs/sesv2_delete_multi_region_endpoint/](https://www.paws-r-sdk.com/docs/sesv2_delete_multi_region_endpoint/) for full documentation.
+#'
+#' @param EndpointName &#91;required&#93; The name of the multi-region endpoint (global-endpoint) to be deleted.
+#'
+#' @keywords internal
+#'
+#' @rdname sesv2_delete_multi_region_endpoint
+sesv2_delete_multi_region_endpoint <- function(EndpointName) {
+  op <- new_operation(
+    name = "DeleteMultiRegionEndpoint",
+    http_method = "DELETE",
+    http_path = "/v2/email/multi-region-endpoints/{EndpointName}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .sesv2$delete_multi_region_endpoint_input(EndpointName = EndpointName)
+  output <- .sesv2$delete_multi_region_endpoint_output()
+  config <- get_config()
+  svc <- .sesv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sesv2$operations$delete_multi_region_endpoint <- sesv2_delete_multi_region_endpoint
 
 #' Removes an email address from the suppression list for your account
 #'
@@ -1154,7 +1220,7 @@ sesv2_get_dedicated_ips <- function(PoolName = NULL, NextToken = NULL, PageSize 
     http_method = "GET",
     http_path = "/v2/email/dedicated-ips",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "PageSize"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .sesv2$get_dedicated_ips_input(PoolName = PoolName, NextToken = NextToken, PageSize = PageSize)
@@ -1492,6 +1558,37 @@ sesv2_get_message_insights <- function(MessageId) {
 }
 .sesv2$operations$get_message_insights <- sesv2_get_message_insights
 
+#' Displays the multi-region endpoint (global-endpoint) configuration
+#'
+#' @description
+#' Displays the multi-region endpoint (global-endpoint) configuration.
+#'
+#' See [https://www.paws-r-sdk.com/docs/sesv2_get_multi_region_endpoint/](https://www.paws-r-sdk.com/docs/sesv2_get_multi_region_endpoint/) for full documentation.
+#'
+#' @param EndpointName &#91;required&#93; The name of the multi-region endpoint (global-endpoint).
+#'
+#' @keywords internal
+#'
+#' @rdname sesv2_get_multi_region_endpoint
+sesv2_get_multi_region_endpoint <- function(EndpointName) {
+  op <- new_operation(
+    name = "GetMultiRegionEndpoint",
+    http_method = "GET",
+    http_path = "/v2/email/multi-region-endpoints/{EndpointName}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .sesv2$get_multi_region_endpoint_input(EndpointName = EndpointName)
+  output <- .sesv2$get_multi_region_endpoint_output()
+  config <- get_config()
+  svc <- .sesv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sesv2$operations$get_multi_region_endpoint <- sesv2_get_multi_region_endpoint
+
 #' Retrieves information about a specific email address that's on the
 #' suppression list for your account
 #'
@@ -1550,7 +1647,7 @@ sesv2_list_configuration_sets <- function(NextToken = NULL, PageSize = NULL) {
     http_method = "GET",
     http_path = "/v2/email/configuration-sets",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "PageSize"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .sesv2$list_configuration_sets_input(NextToken = NextToken, PageSize = PageSize)
@@ -1588,7 +1685,7 @@ sesv2_list_contact_lists <- function(PageSize = NULL, NextToken = NULL) {
     http_method = "GET",
     http_path = "/v2/email/contact-lists",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "PageSize"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .sesv2$list_contact_lists_input(PageSize = PageSize, NextToken = NextToken)
@@ -1630,7 +1727,7 @@ sesv2_list_contacts <- function(ContactListName, Filter = NULL, PageSize = NULL,
     http_method = "POST",
     http_path = "/v2/email/contact-lists/{ContactListName}/contacts/list",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "PageSize"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .sesv2$list_contacts_input(ContactListName = ContactListName, Filter = Filter, PageSize = PageSize, NextToken = NextToken)
@@ -1672,7 +1769,7 @@ sesv2_list_custom_verification_email_templates <- function(NextToken = NULL, Pag
     http_method = "GET",
     http_path = "/v2/email/custom-verification-email-templates",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "PageSize"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .sesv2$list_custom_verification_email_templates_input(NextToken = NextToken, PageSize = PageSize)
@@ -1711,7 +1808,7 @@ sesv2_list_dedicated_ip_pools <- function(NextToken = NULL, PageSize = NULL) {
     http_method = "GET",
     http_path = "/v2/email/dedicated-ip-pools",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "PageSize"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .sesv2$list_dedicated_ip_pools_input(NextToken = NextToken, PageSize = PageSize)
@@ -1754,7 +1851,7 @@ sesv2_list_deliverability_test_reports <- function(NextToken = NULL, PageSize = 
     http_method = "GET",
     http_path = "/v2/email/deliverability-dashboard/test-reports",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "PageSize"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .sesv2$list_deliverability_test_reports_input(NextToken = NextToken, PageSize = PageSize)
@@ -1800,7 +1897,7 @@ sesv2_list_domain_deliverability_campaigns <- function(StartDate, EndDate, Subsc
     http_method = "GET",
     http_path = "/v2/email/deliverability-dashboard/domains/{SubscribedDomain}/campaigns",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "PageSize"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .sesv2$list_domain_deliverability_campaigns_input(StartDate = StartDate, EndDate = EndDate, SubscribedDomain = SubscribedDomain, NextToken = NextToken, PageSize = PageSize)
@@ -1842,7 +1939,7 @@ sesv2_list_email_identities <- function(NextToken = NULL, PageSize = NULL) {
     http_method = "GET",
     http_path = "/v2/email/identities",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "PageSize"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .sesv2$list_email_identities_input(NextToken = NextToken, PageSize = PageSize)
@@ -1883,7 +1980,7 @@ sesv2_list_email_templates <- function(NextToken = NULL, PageSize = NULL) {
     http_method = "GET",
     http_path = "/v2/email/templates",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "PageSize"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .sesv2$list_email_templates_input(NextToken = NextToken, PageSize = PageSize)
@@ -1924,7 +2021,7 @@ sesv2_list_export_jobs <- function(NextToken = NULL, PageSize = NULL, ExportSour
     http_method = "POST",
     http_path = "/v2/email/list-export-jobs",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "PageSize"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .sesv2$list_export_jobs_input(NextToken = NextToken, PageSize = PageSize, ExportSourceType = ExportSourceType, JobStatus = JobStatus)
@@ -1965,7 +2062,7 @@ sesv2_list_import_jobs <- function(ImportDestinationType = NULL, NextToken = NUL
     http_method = "POST",
     http_path = "/v2/email/import-jobs/list",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "PageSize"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .sesv2$list_import_jobs_input(ImportDestinationType = ImportDestinationType, NextToken = NextToken, PageSize = PageSize)
@@ -1977,6 +2074,45 @@ sesv2_list_import_jobs <- function(ImportDestinationType = NULL, NextToken = NUL
   return(response)
 }
 .sesv2$operations$list_import_jobs <- sesv2_list_import_jobs
+
+#' List the multi-region endpoints (global-endpoints)
+#'
+#' @description
+#' List the multi-region endpoints (global-endpoints).
+#'
+#' See [https://www.paws-r-sdk.com/docs/sesv2_list_multi_region_endpoints/](https://www.paws-r-sdk.com/docs/sesv2_list_multi_region_endpoints/) for full documentation.
+#'
+#' @param NextToken A token returned from a previous call to
+#' [`list_multi_region_endpoints`][sesv2_list_multi_region_endpoints] to
+#' indicate the position in the list of multi-region endpoints
+#' (global-endpoints).
+#' @param PageSize The number of results to show in a single call to
+#' [`list_multi_region_endpoints`][sesv2_list_multi_region_endpoints]. If
+#' the number of results is larger than the number you specified in this
+#' parameter, the response includes a `NextToken` element that you can use
+#' to retrieve the next page of results.
+#'
+#' @keywords internal
+#'
+#' @rdname sesv2_list_multi_region_endpoints
+sesv2_list_multi_region_endpoints <- function(NextToken = NULL, PageSize = NULL) {
+  op <- new_operation(
+    name = "ListMultiRegionEndpoints",
+    http_method = "GET",
+    http_path = "/v2/email/multi-region-endpoints",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "PageSize", result_key = "MultiRegionEndpoints"),
+    stream_api = FALSE
+  )
+  input <- .sesv2$list_multi_region_endpoints_input(NextToken = NextToken, PageSize = PageSize)
+  output <- .sesv2$list_multi_region_endpoints_output()
+  config <- get_config()
+  svc <- .sesv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sesv2$operations$list_multi_region_endpoints <- sesv2_list_multi_region_endpoints
 
 #' Lists the recommendations present in your Amazon SES account in the
 #' current Amazon Web Services Region
@@ -2009,7 +2145,7 @@ sesv2_list_recommendations <- function(Filter = NULL, NextToken = NULL, PageSize
     http_method = "POST",
     http_path = "/v2/email/vdm/recommendations",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "PageSize"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .sesv2$list_recommendations_input(Filter = Filter, NextToken = NextToken, PageSize = PageSize)
@@ -2053,7 +2189,7 @@ sesv2_list_suppressed_destinations <- function(Reasons = NULL, StartDate = NULL,
     http_method = "GET",
     http_path = "/v2/email/suppression/addresses",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "PageSize"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .sesv2$list_suppressed_destinations_input(Reasons = Reasons, StartDate = StartDate, EndDate = EndDate, NextToken = NextToken, PageSize = PageSize)
@@ -2304,11 +2440,15 @@ sesv2_put_account_vdm_attributes <- function(VdmAttributes) {
 #' TLS connection can't be established.
 #' @param SendingPoolName The name of the dedicated IP pool to associate with the configuration
 #' set.
+#' @param MaxDeliverySeconds The maximum amount of time, in seconds, that Amazon SES API v2 will
+#' attempt delivery of email. If specified, the value must greater than or
+#' equal to 300 seconds (5 minutes) and less than or equal to 50400 seconds
+#' (840 minutes).
 #'
 #' @keywords internal
 #'
 #' @rdname sesv2_put_configuration_set_delivery_options
-sesv2_put_configuration_set_delivery_options <- function(ConfigurationSetName, TlsPolicy = NULL, SendingPoolName = NULL) {
+sesv2_put_configuration_set_delivery_options <- function(ConfigurationSetName, TlsPolicy = NULL, SendingPoolName = NULL, MaxDeliverySeconds = NULL) {
   op <- new_operation(
     name = "PutConfigurationSetDeliveryOptions",
     http_method = "PUT",
@@ -2317,7 +2457,7 @@ sesv2_put_configuration_set_delivery_options <- function(ConfigurationSetName, T
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .sesv2$put_configuration_set_delivery_options_input(ConfigurationSetName = ConfigurationSetName, TlsPolicy = TlsPolicy, SendingPoolName = SendingPoolName)
+  input <- .sesv2$put_configuration_set_delivery_options_input(ConfigurationSetName = ConfigurationSetName, TlsPolicy = TlsPolicy, SendingPoolName = SendingPoolName, MaxDeliverySeconds = MaxDeliverySeconds)
   output <- .sesv2$put_configuration_set_delivery_options_output()
   config <- get_config()
   svc <- .sesv2$service(config, op)
@@ -2451,11 +2591,12 @@ sesv2_put_configuration_set_suppression_options <- function(ConfigurationSetName
 #'
 #' @param ConfigurationSetName &#91;required&#93; The name of the configuration set.
 #' @param CustomRedirectDomain The domain to use to track open and click events.
+#' @param HttpsPolicy 
 #'
 #' @keywords internal
 #'
 #' @rdname sesv2_put_configuration_set_tracking_options
-sesv2_put_configuration_set_tracking_options <- function(ConfigurationSetName, CustomRedirectDomain = NULL) {
+sesv2_put_configuration_set_tracking_options <- function(ConfigurationSetName, CustomRedirectDomain = NULL, HttpsPolicy = NULL) {
   op <- new_operation(
     name = "PutConfigurationSetTrackingOptions",
     http_method = "PUT",
@@ -2464,7 +2605,7 @@ sesv2_put_configuration_set_tracking_options <- function(ConfigurationSetName, C
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .sesv2$put_configuration_set_tracking_options_input(ConfigurationSetName = ConfigurationSetName, CustomRedirectDomain = CustomRedirectDomain)
+  input <- .sesv2$put_configuration_set_tracking_options_input(ConfigurationSetName = ConfigurationSetName, CustomRedirectDomain = CustomRedirectDomain, HttpsPolicy = HttpsPolicy)
   output <- .sesv2$put_configuration_set_tracking_options_output()
   config <- get_config()
   svc <- .sesv2$service(config, op)
@@ -2934,11 +3075,12 @@ sesv2_put_suppressed_destination <- function(EmailAddress, Reason) {
 #' template message.
 #' @param BulkEmailEntries &#91;required&#93; The list of bulk email entry objects.
 #' @param ConfigurationSetName The name of the configuration set to use when sending the email.
+#' @param EndpointId The ID of the multi-region endpoint (global-endpoint).
 #'
 #' @keywords internal
 #'
 #' @rdname sesv2_send_bulk_email
-sesv2_send_bulk_email <- function(FromEmailAddress = NULL, FromEmailAddressIdentityArn = NULL, ReplyToAddresses = NULL, FeedbackForwardingEmailAddress = NULL, FeedbackForwardingEmailAddressIdentityArn = NULL, DefaultEmailTags = NULL, DefaultContent, BulkEmailEntries, ConfigurationSetName = NULL) {
+sesv2_send_bulk_email <- function(FromEmailAddress = NULL, FromEmailAddressIdentityArn = NULL, ReplyToAddresses = NULL, FeedbackForwardingEmailAddress = NULL, FeedbackForwardingEmailAddressIdentityArn = NULL, DefaultEmailTags = NULL, DefaultContent, BulkEmailEntries, ConfigurationSetName = NULL, EndpointId = NULL) {
   op <- new_operation(
     name = "SendBulkEmail",
     http_method = "POST",
@@ -2947,7 +3089,7 @@ sesv2_send_bulk_email <- function(FromEmailAddress = NULL, FromEmailAddressIdent
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .sesv2$send_bulk_email_input(FromEmailAddress = FromEmailAddress, FromEmailAddressIdentityArn = FromEmailAddressIdentityArn, ReplyToAddresses = ReplyToAddresses, FeedbackForwardingEmailAddress = FeedbackForwardingEmailAddress, FeedbackForwardingEmailAddressIdentityArn = FeedbackForwardingEmailAddressIdentityArn, DefaultEmailTags = DefaultEmailTags, DefaultContent = DefaultContent, BulkEmailEntries = BulkEmailEntries, ConfigurationSetName = ConfigurationSetName)
+  input <- .sesv2$send_bulk_email_input(FromEmailAddress = FromEmailAddress, FromEmailAddressIdentityArn = FromEmailAddressIdentityArn, ReplyToAddresses = ReplyToAddresses, FeedbackForwardingEmailAddress = FeedbackForwardingEmailAddress, FeedbackForwardingEmailAddressIdentityArn = FeedbackForwardingEmailAddressIdentityArn, DefaultEmailTags = DefaultEmailTags, DefaultContent = DefaultContent, BulkEmailEntries = BulkEmailEntries, ConfigurationSetName = ConfigurationSetName, EndpointId = EndpointId)
   output <- .sesv2$send_bulk_email_output()
   config <- get_config()
   svc <- .sesv2$service(config, op)
@@ -3048,13 +3190,14 @@ sesv2_send_custom_verification_email <- function(EmailAddress, TemplateName, Con
 #' correspond to characteristics of the email that you define, so that you
 #' can publish email sending events.
 #' @param ConfigurationSetName The name of the configuration set to use when sending the email.
+#' @param EndpointId The ID of the multi-region endpoint (global-endpoint).
 #' @param ListManagementOptions An object used to specify a list or topic to which an email belongs,
 #' which will be used when a contact chooses to unsubscribe.
 #'
 #' @keywords internal
 #'
 #' @rdname sesv2_send_email
-sesv2_send_email <- function(FromEmailAddress = NULL, FromEmailAddressIdentityArn = NULL, Destination = NULL, ReplyToAddresses = NULL, FeedbackForwardingEmailAddress = NULL, FeedbackForwardingEmailAddressIdentityArn = NULL, Content, EmailTags = NULL, ConfigurationSetName = NULL, ListManagementOptions = NULL) {
+sesv2_send_email <- function(FromEmailAddress = NULL, FromEmailAddressIdentityArn = NULL, Destination = NULL, ReplyToAddresses = NULL, FeedbackForwardingEmailAddress = NULL, FeedbackForwardingEmailAddressIdentityArn = NULL, Content, EmailTags = NULL, ConfigurationSetName = NULL, EndpointId = NULL, ListManagementOptions = NULL) {
   op <- new_operation(
     name = "SendEmail",
     http_method = "POST",
@@ -3063,7 +3206,7 @@ sesv2_send_email <- function(FromEmailAddress = NULL, FromEmailAddressIdentityAr
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .sesv2$send_email_input(FromEmailAddress = FromEmailAddress, FromEmailAddressIdentityArn = FromEmailAddressIdentityArn, Destination = Destination, ReplyToAddresses = ReplyToAddresses, FeedbackForwardingEmailAddress = FeedbackForwardingEmailAddress, FeedbackForwardingEmailAddressIdentityArn = FeedbackForwardingEmailAddressIdentityArn, Content = Content, EmailTags = EmailTags, ConfigurationSetName = ConfigurationSetName, ListManagementOptions = ListManagementOptions)
+  input <- .sesv2$send_email_input(FromEmailAddress = FromEmailAddress, FromEmailAddressIdentityArn = FromEmailAddressIdentityArn, Destination = Destination, ReplyToAddresses = ReplyToAddresses, FeedbackForwardingEmailAddress = FeedbackForwardingEmailAddress, FeedbackForwardingEmailAddressIdentityArn = FeedbackForwardingEmailAddressIdentityArn, Content = Content, EmailTags = EmailTags, ConfigurationSetName = ConfigurationSetName, EndpointId = EndpointId, ListManagementOptions = ListManagementOptions)
   output <- .sesv2$send_email_output()
   config <- get_config()
   svc <- .sesv2$service(config, op)

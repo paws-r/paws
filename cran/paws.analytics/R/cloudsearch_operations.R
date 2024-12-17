@@ -378,7 +378,7 @@ cloudsearch_describe_analysis_schemes <- function(DomainName, AnalysisSchemeName
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "AnalysisSchemes"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .cloudsearch$describe_analysis_schemes_input(DomainName = DomainName, AnalysisSchemeNames = AnalysisSchemeNames, Deployed = Deployed)
@@ -477,7 +477,7 @@ cloudsearch_describe_domains <- function(DomainNames = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "DomainStatusList"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .cloudsearch$describe_domains_input(DomainNames = DomainNames)
@@ -513,7 +513,7 @@ cloudsearch_describe_expressions <- function(DomainName, ExpressionNames = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "Expressions"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .cloudsearch$describe_expressions_input(DomainName = DomainName, ExpressionNames = ExpressionNames, Deployed = Deployed)
@@ -548,7 +548,7 @@ cloudsearch_describe_index_fields <- function(DomainName, FieldNames = NULL, Dep
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "IndexFields"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .cloudsearch$describe_index_fields_input(DomainName = DomainName, FieldNames = FieldNames, Deployed = Deployed)
@@ -647,7 +647,7 @@ cloudsearch_describe_suggesters <- function(DomainName, SuggesterNames = NULL, D
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "Suggesters"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .cloudsearch$describe_suggesters_input(DomainName = DomainName, SuggesterNames = SuggesterNames, Deployed = Deployed)

@@ -526,7 +526,7 @@ dynamodb_batch_get_item <- function(RequestItems, ReturnConsumedCapacity = NULL)
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "RequestItems", output_token = "UnprocessedKeys"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .dynamodb$batch_get_item_input(RequestItems = RequestItems, ReturnConsumedCapacity = ReturnConsumedCapacity)
@@ -1139,6 +1139,11 @@ dynamodb_create_backup <- function(TableName, BackupName) {
 #'         OnDemandThroughputOverride = list(
 #'           MaxReadRequestUnits = 123
 #'         ),
+#'         WarmThroughput = list(
+#'           ReadUnitsPerSecond = 123,
+#'           WriteUnitsPerSecond = 123,
+#'           Status = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"|"ARCHIVING"|"ARCHIVED"
+#'         ),
 #'         GlobalSecondaryIndexes = list(
 #'           list(
 #'             IndexName = "string",
@@ -1147,6 +1152,11 @@ dynamodb_create_backup <- function(TableName, BackupName) {
 #'             ),
 #'             OnDemandThroughputOverride = list(
 #'               MaxReadRequestUnits = 123
+#'             ),
+#'             WarmThroughput = list(
+#'               ReadUnitsPerSecond = 123,
+#'               WriteUnitsPerSecond = 123,
+#'               Status = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"
 #'             )
 #'           )
 #'         ),
@@ -1235,7 +1245,7 @@ dynamodb_create_global_table <- function(GlobalTableName, ReplicationGroup) {
 #' dynamodb_create_table(AttributeDefinitions, TableName, KeySchema,
 #'   LocalSecondaryIndexes, GlobalSecondaryIndexes, BillingMode,
 #'   ProvisionedThroughput, StreamSpecification, SSESpecification, Tags,
-#'   TableClass, DeletionProtectionEnabled, ResourcePolicy,
+#'   TableClass, DeletionProtectionEnabled, WarmThroughput, ResourcePolicy,
 #'   OnDemandThroughput)
 #'
 #' @param AttributeDefinitions &#91;required&#93; An array of attributes that describe the key schema for the table and
@@ -1406,6 +1416,8 @@ dynamodb_create_global_table <- function(GlobalTableName, ReplicationGroup) {
 #' `STANDARD_INFREQUENT_ACCESS`.
 #' @param DeletionProtectionEnabled Indicates whether deletion protection is to be enabled (true) or
 #' disabled (false) on the table.
+#' @param WarmThroughput Represents the warm throughput (in read units per second and write units
+#' per second) for creating a table.
 #' @param ResourcePolicy An Amazon Web Services resource-based policy document in JSON format
 #' that will be attached to the table.
 #' 
@@ -1522,6 +1534,11 @@ dynamodb_create_global_table <- function(GlobalTableName, ReplicationGroup) {
 #'         OnDemandThroughput = list(
 #'           MaxReadRequestUnits = 123,
 #'           MaxWriteRequestUnits = 123
+#'         ),
+#'         WarmThroughput = list(
+#'           ReadUnitsPerSecond = 123,
+#'           WriteUnitsPerSecond = 123,
+#'           Status = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"
 #'         )
 #'       )
 #'     ),
@@ -1545,6 +1562,11 @@ dynamodb_create_global_table <- function(GlobalTableName, ReplicationGroup) {
 #'         OnDemandThroughputOverride = list(
 #'           MaxReadRequestUnits = 123
 #'         ),
+#'         WarmThroughput = list(
+#'           ReadUnitsPerSecond = 123,
+#'           WriteUnitsPerSecond = 123,
+#'           Status = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"|"ARCHIVING"|"ARCHIVED"
+#'         ),
 #'         GlobalSecondaryIndexes = list(
 #'           list(
 #'             IndexName = "string",
@@ -1553,6 +1575,11 @@ dynamodb_create_global_table <- function(GlobalTableName, ReplicationGroup) {
 #'             ),
 #'             OnDemandThroughputOverride = list(
 #'               MaxReadRequestUnits = 123
+#'             ),
+#'             WarmThroughput = list(
+#'               ReadUnitsPerSecond = 123,
+#'               WriteUnitsPerSecond = 123,
+#'               Status = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"
 #'             )
 #'           )
 #'         ),
@@ -1600,7 +1627,13 @@ dynamodb_create_global_table <- function(GlobalTableName, ReplicationGroup) {
 #'     OnDemandThroughput = list(
 #'       MaxReadRequestUnits = 123,
 #'       MaxWriteRequestUnits = 123
-#'     )
+#'     ),
+#'     WarmThroughput = list(
+#'       ReadUnitsPerSecond = 123,
+#'       WriteUnitsPerSecond = 123,
+#'       Status = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"|"ARCHIVING"|"ARCHIVED"
+#'     ),
+#'     MultiRegionConsistency = "EVENTUAL"|"STRONG"
 #'   )
 #' )
 #' ```
@@ -1660,6 +1693,10 @@ dynamodb_create_global_table <- function(GlobalTableName, ReplicationGroup) {
 #'       OnDemandThroughput = list(
 #'         MaxReadRequestUnits = 123,
 #'         MaxWriteRequestUnits = 123
+#'       ),
+#'       WarmThroughput = list(
+#'         ReadUnitsPerSecond = 123,
+#'         WriteUnitsPerSecond = 123
 #'       )
 #'     )
 #'   ),
@@ -1685,6 +1722,10 @@ dynamodb_create_global_table <- function(GlobalTableName, ReplicationGroup) {
 #'   ),
 #'   TableClass = "STANDARD"|"STANDARD_INFREQUENT_ACCESS",
 #'   DeletionProtectionEnabled = TRUE|FALSE,
+#'   WarmThroughput = list(
+#'     ReadUnitsPerSecond = 123,
+#'     WriteUnitsPerSecond = 123
+#'   ),
 #'   ResourcePolicy = "string",
 #'   OnDemandThroughput = list(
 #'     MaxReadRequestUnits = 123,
@@ -1730,7 +1771,7 @@ dynamodb_create_global_table <- function(GlobalTableName, ReplicationGroup) {
 #' @rdname dynamodb_create_table
 #'
 #' @aliases dynamodb_create_table
-dynamodb_create_table <- function(AttributeDefinitions, TableName, KeySchema, LocalSecondaryIndexes = NULL, GlobalSecondaryIndexes = NULL, BillingMode = NULL, ProvisionedThroughput = NULL, StreamSpecification = NULL, SSESpecification = NULL, Tags = NULL, TableClass = NULL, DeletionProtectionEnabled = NULL, ResourcePolicy = NULL, OnDemandThroughput = NULL) {
+dynamodb_create_table <- function(AttributeDefinitions, TableName, KeySchema, LocalSecondaryIndexes = NULL, GlobalSecondaryIndexes = NULL, BillingMode = NULL, ProvisionedThroughput = NULL, StreamSpecification = NULL, SSESpecification = NULL, Tags = NULL, TableClass = NULL, DeletionProtectionEnabled = NULL, WarmThroughput = NULL, ResourcePolicy = NULL, OnDemandThroughput = NULL) {
   op <- new_operation(
     name = "CreateTable",
     http_method = "POST",
@@ -1739,7 +1780,7 @@ dynamodb_create_table <- function(AttributeDefinitions, TableName, KeySchema, Lo
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .dynamodb$create_table_input(AttributeDefinitions = AttributeDefinitions, TableName = TableName, KeySchema = KeySchema, LocalSecondaryIndexes = LocalSecondaryIndexes, GlobalSecondaryIndexes = GlobalSecondaryIndexes, BillingMode = BillingMode, ProvisionedThroughput = ProvisionedThroughput, StreamSpecification = StreamSpecification, SSESpecification = SSESpecification, Tags = Tags, TableClass = TableClass, DeletionProtectionEnabled = DeletionProtectionEnabled, ResourcePolicy = ResourcePolicy, OnDemandThroughput = OnDemandThroughput)
+  input <- .dynamodb$create_table_input(AttributeDefinitions = AttributeDefinitions, TableName = TableName, KeySchema = KeySchema, LocalSecondaryIndexes = LocalSecondaryIndexes, GlobalSecondaryIndexes = GlobalSecondaryIndexes, BillingMode = BillingMode, ProvisionedThroughput = ProvisionedThroughput, StreamSpecification = StreamSpecification, SSESpecification = SSESpecification, Tags = Tags, TableClass = TableClass, DeletionProtectionEnabled = DeletionProtectionEnabled, WarmThroughput = WarmThroughput, ResourcePolicy = ResourcePolicy, OnDemandThroughput = OnDemandThroughput)
   output <- .dynamodb$create_table_output()
   config <- get_config()
   svc <- .dynamodb$service(config, op)
@@ -2502,6 +2543,11 @@ dynamodb_delete_resource_policy <- function(ResourceArn, ExpectedRevisionId = NU
 #'         OnDemandThroughput = list(
 #'           MaxReadRequestUnits = 123,
 #'           MaxWriteRequestUnits = 123
+#'         ),
+#'         WarmThroughput = list(
+#'           ReadUnitsPerSecond = 123,
+#'           WriteUnitsPerSecond = 123,
+#'           Status = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"
 #'         )
 #'       )
 #'     ),
@@ -2525,6 +2571,11 @@ dynamodb_delete_resource_policy <- function(ResourceArn, ExpectedRevisionId = NU
 #'         OnDemandThroughputOverride = list(
 #'           MaxReadRequestUnits = 123
 #'         ),
+#'         WarmThroughput = list(
+#'           ReadUnitsPerSecond = 123,
+#'           WriteUnitsPerSecond = 123,
+#'           Status = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"|"ARCHIVING"|"ARCHIVED"
+#'         ),
 #'         GlobalSecondaryIndexes = list(
 #'           list(
 #'             IndexName = "string",
@@ -2533,6 +2584,11 @@ dynamodb_delete_resource_policy <- function(ResourceArn, ExpectedRevisionId = NU
 #'             ),
 #'             OnDemandThroughputOverride = list(
 #'               MaxReadRequestUnits = 123
+#'             ),
+#'             WarmThroughput = list(
+#'               ReadUnitsPerSecond = 123,
+#'               WriteUnitsPerSecond = 123,
+#'               Status = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"
 #'             )
 #'           )
 #'         ),
@@ -2580,7 +2636,13 @@ dynamodb_delete_resource_policy <- function(ResourceArn, ExpectedRevisionId = NU
 #'     OnDemandThroughput = list(
 #'       MaxReadRequestUnits = 123,
 #'       MaxWriteRequestUnits = 123
-#'     )
+#'     ),
+#'     WarmThroughput = list(
+#'       ReadUnitsPerSecond = 123,
+#'       WriteUnitsPerSecond = 123,
+#'       Status = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"|"ARCHIVING"|"ARCHIVED"
+#'     ),
+#'     MultiRegionConsistency = "EVENTUAL"|"STRONG"
 #'   )
 #' )
 #' ```
@@ -3102,6 +3164,11 @@ dynamodb_describe_export <- function(ExportArn) {
 #'         OnDemandThroughputOverride = list(
 #'           MaxReadRequestUnits = 123
 #'         ),
+#'         WarmThroughput = list(
+#'           ReadUnitsPerSecond = 123,
+#'           WriteUnitsPerSecond = 123,
+#'           Status = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"|"ARCHIVING"|"ARCHIVED"
+#'         ),
 #'         GlobalSecondaryIndexes = list(
 #'           list(
 #'             IndexName = "string",
@@ -3110,6 +3177,11 @@ dynamodb_describe_export <- function(ExportArn) {
 #'             ),
 #'             OnDemandThroughputOverride = list(
 #'               MaxReadRequestUnits = 123
+#'             ),
+#'             WarmThroughput = list(
+#'               ReadUnitsPerSecond = 123,
+#'               WriteUnitsPerSecond = 123,
+#'               Status = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"
 #'             )
 #'           )
 #'         ),
@@ -3412,6 +3484,10 @@ dynamodb_describe_global_table_settings <- function(GlobalTableName) {
 #'           OnDemandThroughput = list(
 #'             MaxReadRequestUnits = 123,
 #'             MaxWriteRequestUnits = 123
+#'           ),
+#'           WarmThroughput = list(
+#'             ReadUnitsPerSecond = 123,
+#'             WriteUnitsPerSecond = 123
 #'           )
 #'         )
 #'       )
@@ -3772,6 +3848,11 @@ dynamodb_describe_limits <- function() {
 #'         OnDemandThroughput = list(
 #'           MaxReadRequestUnits = 123,
 #'           MaxWriteRequestUnits = 123
+#'         ),
+#'         WarmThroughput = list(
+#'           ReadUnitsPerSecond = 123,
+#'           WriteUnitsPerSecond = 123,
+#'           Status = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"
 #'         )
 #'       )
 #'     ),
@@ -3795,6 +3876,11 @@ dynamodb_describe_limits <- function() {
 #'         OnDemandThroughputOverride = list(
 #'           MaxReadRequestUnits = 123
 #'         ),
+#'         WarmThroughput = list(
+#'           ReadUnitsPerSecond = 123,
+#'           WriteUnitsPerSecond = 123,
+#'           Status = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"|"ARCHIVING"|"ARCHIVED"
+#'         ),
 #'         GlobalSecondaryIndexes = list(
 #'           list(
 #'             IndexName = "string",
@@ -3803,6 +3889,11 @@ dynamodb_describe_limits <- function() {
 #'             ),
 #'             OnDemandThroughputOverride = list(
 #'               MaxReadRequestUnits = 123
+#'             ),
+#'             WarmThroughput = list(
+#'               ReadUnitsPerSecond = 123,
+#'               WriteUnitsPerSecond = 123,
+#'               Status = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"
 #'             )
 #'           )
 #'         ),
@@ -3850,7 +3941,13 @@ dynamodb_describe_limits <- function() {
 #'     OnDemandThroughput = list(
 #'       MaxReadRequestUnits = 123,
 #'       MaxWriteRequestUnits = 123
-#'     )
+#'     ),
+#'     WarmThroughput = list(
+#'       ReadUnitsPerSecond = 123,
+#'       WriteUnitsPerSecond = 123,
+#'       Status = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"|"ARCHIVING"|"ARCHIVED"
+#'     ),
+#'     MultiRegionConsistency = "EVENTUAL"|"STRONG"
 #'   )
 #' )
 #' ```
@@ -5130,6 +5227,10 @@ dynamodb_get_resource_policy <- function(ResourceArn) {
 #'           OnDemandThroughput = list(
 #'             MaxReadRequestUnits = 123,
 #'             MaxWriteRequestUnits = 123
+#'           ),
+#'           WarmThroughput = list(
+#'             ReadUnitsPerSecond = 123,
+#'             WriteUnitsPerSecond = 123
 #'           )
 #'         )
 #'       )
@@ -5218,6 +5319,10 @@ dynamodb_get_resource_policy <- function(ResourceArn) {
 #'         OnDemandThroughput = list(
 #'           MaxReadRequestUnits = 123,
 #'           MaxWriteRequestUnits = 123
+#'         ),
+#'         WarmThroughput = list(
+#'           ReadUnitsPerSecond = 123,
+#'           WriteUnitsPerSecond = 123
 #'         )
 #'       )
 #'     )
@@ -5352,7 +5457,7 @@ dynamodb_list_backups <- function(TableName = NULL, Limit = NULL, TimeRangeLower
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "ExclusiveStartBackupArn", output_token = "LastEvaluatedBackupArn", limit_key = "Limit", result_key = "BackupSummaries"),
     stream_api = FALSE
   )
   input <- .dynamodb$list_backups_input(TableName = TableName, Limit = Limit, TimeRangeLowerBound = TimeRangeLowerBound, TimeRangeUpperBound = TimeRangeUpperBound, ExclusiveStartBackupArn = ExclusiveStartBackupArn, BackupType = BackupType)
@@ -5415,7 +5520,7 @@ dynamodb_list_contributor_insights <- function(TableName = NULL, NextToken = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .dynamodb$list_contributor_insights_input(TableName = TableName, NextToken = NextToken, MaxResults = MaxResults)
@@ -5477,7 +5582,7 @@ dynamodb_list_exports <- function(TableArn = NULL, MaxResults = NULL, NextToken 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .dynamodb$list_exports_input(TableArn = TableArn, MaxResults = MaxResults, NextToken = NextToken)
@@ -5638,7 +5743,7 @@ dynamodb_list_imports <- function(TableArn = NULL, PageSize = NULL, NextToken = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "PageSize", output_token = "NextToken"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .dynamodb$list_imports_input(TableArn = TableArn, PageSize = PageSize, NextToken = NextToken)
@@ -5705,7 +5810,7 @@ dynamodb_list_tables <- function(ExclusiveStartTableName = NULL, Limit = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "ExclusiveStartTableName", limit_key = "Limit", output_token = "LastEvaluatedTableName", result_key = "TableNames"),
+    paginator = list(input_token = "ExclusiveStartTableName", output_token = "LastEvaluatedTableName", limit_key = "Limit", result_key = "TableNames"),
     stream_api = FALSE
   )
   input <- .dynamodb$list_tables_input(ExclusiveStartTableName = ExclusiveStartTableName, Limit = Limit)
@@ -5770,7 +5875,7 @@ dynamodb_list_tags_of_resource <- function(ResourceArn, NextToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Tags"),
     stream_api = FALSE
   )
   input <- .dynamodb$list_tags_of_resource_input(ResourceArn = ResourceArn, NextToken = NextToken)
@@ -6901,7 +7006,7 @@ dynamodb_query <- function(TableName, IndexName = NULL, Select = NULL, Attribute
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "ExclusiveStartKey", limit_key = "Limit", output_token = "LastEvaluatedKey", result_key = "Items"),
+    paginator = list(input_token = "ExclusiveStartKey", output_token = "LastEvaluatedKey", limit_key = "Limit", result_key = list("Items", "Count", "ScannedCount"), non_aggregate_keys = list("ConsumedCapacity")),
     stream_api = FALSE
   )
   input <- .dynamodb$query_input(TableName = TableName, IndexName = IndexName, Select = Select, AttributesToGet = AttributesToGet, Limit = Limit, ConsistentRead = ConsistentRead, KeyConditions = KeyConditions, QueryFilter = QueryFilter, ConditionalOperator = ConditionalOperator, ScanIndexForward = ScanIndexForward, ExclusiveStartKey = ExclusiveStartKey, ReturnConsumedCapacity = ReturnConsumedCapacity, ProjectionExpression = ProjectionExpression, FilterExpression = FilterExpression, KeyConditionExpression = KeyConditionExpression, ExpressionAttributeNames = ExpressionAttributeNames, ExpressionAttributeValues = ExpressionAttributeValues)
@@ -7055,6 +7160,11 @@ dynamodb_query <- function(TableName, IndexName = NULL, Select = NULL, Attribute
 #'         OnDemandThroughput = list(
 #'           MaxReadRequestUnits = 123,
 #'           MaxWriteRequestUnits = 123
+#'         ),
+#'         WarmThroughput = list(
+#'           ReadUnitsPerSecond = 123,
+#'           WriteUnitsPerSecond = 123,
+#'           Status = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"
 #'         )
 #'       )
 #'     ),
@@ -7078,6 +7188,11 @@ dynamodb_query <- function(TableName, IndexName = NULL, Select = NULL, Attribute
 #'         OnDemandThroughputOverride = list(
 #'           MaxReadRequestUnits = 123
 #'         ),
+#'         WarmThroughput = list(
+#'           ReadUnitsPerSecond = 123,
+#'           WriteUnitsPerSecond = 123,
+#'           Status = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"|"ARCHIVING"|"ARCHIVED"
+#'         ),
 #'         GlobalSecondaryIndexes = list(
 #'           list(
 #'             IndexName = "string",
@@ -7086,6 +7201,11 @@ dynamodb_query <- function(TableName, IndexName = NULL, Select = NULL, Attribute
 #'             ),
 #'             OnDemandThroughputOverride = list(
 #'               MaxReadRequestUnits = 123
+#'             ),
+#'             WarmThroughput = list(
+#'               ReadUnitsPerSecond = 123,
+#'               WriteUnitsPerSecond = 123,
+#'               Status = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"
 #'             )
 #'           )
 #'         ),
@@ -7133,7 +7253,13 @@ dynamodb_query <- function(TableName, IndexName = NULL, Select = NULL, Attribute
 #'     OnDemandThroughput = list(
 #'       MaxReadRequestUnits = 123,
 #'       MaxWriteRequestUnits = 123
-#'     )
+#'     ),
+#'     WarmThroughput = list(
+#'       ReadUnitsPerSecond = 123,
+#'       WriteUnitsPerSecond = 123,
+#'       Status = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"|"ARCHIVING"|"ARCHIVED"
+#'     ),
+#'     MultiRegionConsistency = "EVENTUAL"|"STRONG"
 #'   )
 #' )
 #' ```
@@ -7166,6 +7292,10 @@ dynamodb_query <- function(TableName, IndexName = NULL, Select = NULL, Attribute
 #'       OnDemandThroughput = list(
 #'         MaxReadRequestUnits = 123,
 #'         MaxWriteRequestUnits = 123
+#'       ),
+#'       WarmThroughput = list(
+#'         ReadUnitsPerSecond = 123,
+#'         WriteUnitsPerSecond = 123
 #'       )
 #'     )
 #'   ),
@@ -7393,6 +7523,11 @@ dynamodb_restore_table_from_backup <- function(TargetTableName, BackupArn, Billi
 #'         OnDemandThroughput = list(
 #'           MaxReadRequestUnits = 123,
 #'           MaxWriteRequestUnits = 123
+#'         ),
+#'         WarmThroughput = list(
+#'           ReadUnitsPerSecond = 123,
+#'           WriteUnitsPerSecond = 123,
+#'           Status = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"
 #'         )
 #'       )
 #'     ),
@@ -7416,6 +7551,11 @@ dynamodb_restore_table_from_backup <- function(TargetTableName, BackupArn, Billi
 #'         OnDemandThroughputOverride = list(
 #'           MaxReadRequestUnits = 123
 #'         ),
+#'         WarmThroughput = list(
+#'           ReadUnitsPerSecond = 123,
+#'           WriteUnitsPerSecond = 123,
+#'           Status = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"|"ARCHIVING"|"ARCHIVED"
+#'         ),
 #'         GlobalSecondaryIndexes = list(
 #'           list(
 #'             IndexName = "string",
@@ -7424,6 +7564,11 @@ dynamodb_restore_table_from_backup <- function(TargetTableName, BackupArn, Billi
 #'             ),
 #'             OnDemandThroughputOverride = list(
 #'               MaxReadRequestUnits = 123
+#'             ),
+#'             WarmThroughput = list(
+#'               ReadUnitsPerSecond = 123,
+#'               WriteUnitsPerSecond = 123,
+#'               Status = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"
 #'             )
 #'           )
 #'         ),
@@ -7471,7 +7616,13 @@ dynamodb_restore_table_from_backup <- function(TargetTableName, BackupArn, Billi
 #'     OnDemandThroughput = list(
 #'       MaxReadRequestUnits = 123,
 #'       MaxWriteRequestUnits = 123
-#'     )
+#'     ),
+#'     WarmThroughput = list(
+#'       ReadUnitsPerSecond = 123,
+#'       WriteUnitsPerSecond = 123,
+#'       Status = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"|"ARCHIVING"|"ARCHIVED"
+#'     ),
+#'     MultiRegionConsistency = "EVENTUAL"|"STRONG"
 #'   )
 #' )
 #' ```
@@ -7509,6 +7660,10 @@ dynamodb_restore_table_from_backup <- function(TargetTableName, BackupArn, Billi
 #'       OnDemandThroughput = list(
 #'         MaxReadRequestUnits = 123,
 #'         MaxWriteRequestUnits = 123
+#'       ),
+#'       WarmThroughput = list(
+#'         ReadUnitsPerSecond = 123,
+#'         WriteUnitsPerSecond = 123
 #'       )
 #'     )
 #'   ),
@@ -8069,7 +8224,7 @@ dynamodb_scan <- function(TableName, IndexName = NULL, AttributesToGet = NULL, L
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "ExclusiveStartKey", limit_key = "Limit", output_token = "LastEvaluatedKey", result_key = "Items"),
+    paginator = list(input_token = "ExclusiveStartKey", output_token = "LastEvaluatedKey", limit_key = "Limit", result_key = list("Items", "Count", "ScannedCount"), non_aggregate_keys = list("ConsumedCapacity")),
     stream_api = FALSE
   )
   input <- .dynamodb$scan_input(TableName = TableName, IndexName = IndexName, AttributesToGet = AttributesToGet, Limit = Limit, Select = Select, ScanFilter = ScanFilter, ConditionalOperator = ConditionalOperator, ExclusiveStartKey = ExclusiveStartKey, ReturnConsumedCapacity = ReturnConsumedCapacity, TotalSegments = TotalSegments, Segment = Segment, ProjectionExpression = ProjectionExpression, FilterExpression = FilterExpression, ExpressionAttributeNames = ExpressionAttributeNames, ExpressionAttributeValues = ExpressionAttributeValues, ConsistentRead = ConsistentRead)
@@ -8089,6 +8244,26 @@ dynamodb_scan <- function(TableName, IndexName = NULL, AttributesToGet = NULL, L
 #' activate these user-defined tags so that they appear on the Billing and
 #' Cost Management console for cost allocation tracking. You can call
 #' TagResource up to five times per second, per account.
+#' 
+#' -   [`tag_resource`][dynamodb_tag_resource] is an asynchronous
+#'     operation. If you issue a
+#'     [`list_tags_of_resource`][dynamodb_list_tags_of_resource] request
+#'     immediately after a [`tag_resource`][dynamodb_tag_resource] request,
+#'     DynamoDB might return your previous tag set, if there was one, or an
+#'     empty tag set. This is because
+#'     [`list_tags_of_resource`][dynamodb_list_tags_of_resource] uses an
+#'     eventually consistent query, and the metadata for your tags or table
+#'     might not be available at that moment. Wait for a few seconds, and
+#'     then try the
+#'     [`list_tags_of_resource`][dynamodb_list_tags_of_resource] request
+#'     again.
+#' 
+#' -   The application or removal of tags using
+#'     [`tag_resource`][dynamodb_tag_resource] and
+#'     [`untag_resource`][dynamodb_untag_resource] APIs is eventually
+#'     consistent.
+#'     [`list_tags_of_resource`][dynamodb_list_tags_of_resource] API will
+#'     only reflect the changes after a few seconds.
 #' 
 #' For an overview on tagging DynamoDB resources, see [Tagging for
 #' DynamoDB](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tagging.html)
@@ -8748,6 +8923,26 @@ dynamodb_transact_write_items <- function(TransactItems, ReturnConsumedCapacity 
 #' can call [`untag_resource`][dynamodb_untag_resource] up to five times
 #' per second, per account.
 #' 
+#' -   [`untag_resource`][dynamodb_untag_resource] is an asynchronous
+#'     operation. If you issue a
+#'     [`list_tags_of_resource`][dynamodb_list_tags_of_resource] request
+#'     immediately after an [`untag_resource`][dynamodb_untag_resource]
+#'     request, DynamoDB might return your previous tag set, if there was
+#'     one, or an empty tag set. This is because
+#'     [`list_tags_of_resource`][dynamodb_list_tags_of_resource] uses an
+#'     eventually consistent query, and the metadata for your tags or table
+#'     might not be available at that moment. Wait for a few seconds, and
+#'     then try the
+#'     [`list_tags_of_resource`][dynamodb_list_tags_of_resource] request
+#'     again.
+#' 
+#' -   The application or removal of tags using
+#'     [`tag_resource`][dynamodb_tag_resource] and
+#'     [`untag_resource`][dynamodb_untag_resource] APIs is eventually
+#'     consistent.
+#'     [`list_tags_of_resource`][dynamodb_list_tags_of_resource] API will
+#'     only reflect the changes after a few seconds.
+#' 
 #' For an overview on tagging DynamoDB resources, see [Tagging for
 #' DynamoDB](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tagging.html)
 #' in the *Amazon DynamoDB Developer Guide*.
@@ -9012,6 +9207,11 @@ dynamodb_update_contributor_insights <- function(TableName, IndexName = NULL, Co
 #'         OnDemandThroughputOverride = list(
 #'           MaxReadRequestUnits = 123
 #'         ),
+#'         WarmThroughput = list(
+#'           ReadUnitsPerSecond = 123,
+#'           WriteUnitsPerSecond = 123,
+#'           Status = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"|"ARCHIVING"|"ARCHIVED"
+#'         ),
 #'         GlobalSecondaryIndexes = list(
 #'           list(
 #'             IndexName = "string",
@@ -9020,6 +9220,11 @@ dynamodb_update_contributor_insights <- function(TableName, IndexName = NULL, Co
 #'             ),
 #'             OnDemandThroughputOverride = list(
 #'               MaxReadRequestUnits = 123
+#'             ),
+#'             WarmThroughput = list(
+#'               ReadUnitsPerSecond = 123,
+#'               WriteUnitsPerSecond = 123,
+#'               Status = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"
 #'             )
 #'           )
 #'         ),
@@ -9964,7 +10169,7 @@ dynamodb_update_kinesis_streaming_destination <- function(TableName, StreamArn, 
 #' dynamodb_update_table(AttributeDefinitions, TableName, BillingMode,
 #'   ProvisionedThroughput, GlobalSecondaryIndexUpdates, StreamSpecification,
 #'   SSESpecification, ReplicaUpdates, TableClass, DeletionProtectionEnabled,
-#'   OnDemandThroughput)
+#'   MultiRegionConsistency, OnDemandThroughput, WarmThroughput)
 #'
 #' @param AttributeDefinitions An array of attributes that describe the key schema for the table and
 #' indexes. If you are adding a new global secondary index to the table,
@@ -10020,9 +10225,31 @@ dynamodb_update_kinesis_streaming_destination <- function(TableName, StreamArn, 
 #' and `STANDARD_INFREQUENT_ACCESS`.
 #' @param DeletionProtectionEnabled Indicates whether deletion protection is to be enabled (true) or
 #' disabled (false) on the table.
+#' @param MultiRegionConsistency Specifies the consistency mode for a new global table. This parameter is
+#' only valid when you create a global table by specifying one or more
+#' [Create](https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_ReplicationGroupUpdate.html#DDB-Type-ReplicationGroupUpdate-Create)
+#' actions in the ReplicaUpdates action list.
+#' 
+#' You can specify one of the following consistency modes:
+#' 
+#' -   `EVENTUAL`: Configures a new global table for multi-Region eventual
+#'     consistency. This is the default consistency mode for global tables.
+#' 
+#' -   `STRONG`: Configures a new global table for multi-Region strong
+#'     consistency (preview).
+#' 
+#'     Multi-Region strong consistency (MRSC) is a new DynamoDB global
+#'     tables capability currently available in preview mode. For more
+#'     information, see [Global tables multi-Region strong
+#'     consistency](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/#multi-region-strong-consistency-gt).
+#' 
+#' If you don't specify this parameter, the global table consistency mode
+#' defaults to `EVENTUAL`.
 #' @param OnDemandThroughput Updates the maximum number of read and write units for the specified
 #' table in on-demand capacity mode. If you use this parameter, you must
 #' specify `MaxReadRequestUnits`, `MaxWriteRequestUnits`, or both.
+#' @param WarmThroughput Represents the warm throughput (in read units per second and write units
+#' per second) for updating a table.
 #'
 #' @return
 #' A list with the following syntax:
@@ -10121,6 +10348,11 @@ dynamodb_update_kinesis_streaming_destination <- function(TableName, StreamArn, 
 #'         OnDemandThroughput = list(
 #'           MaxReadRequestUnits = 123,
 #'           MaxWriteRequestUnits = 123
+#'         ),
+#'         WarmThroughput = list(
+#'           ReadUnitsPerSecond = 123,
+#'           WriteUnitsPerSecond = 123,
+#'           Status = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"
 #'         )
 #'       )
 #'     ),
@@ -10144,6 +10376,11 @@ dynamodb_update_kinesis_streaming_destination <- function(TableName, StreamArn, 
 #'         OnDemandThroughputOverride = list(
 #'           MaxReadRequestUnits = 123
 #'         ),
+#'         WarmThroughput = list(
+#'           ReadUnitsPerSecond = 123,
+#'           WriteUnitsPerSecond = 123,
+#'           Status = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"|"ARCHIVING"|"ARCHIVED"
+#'         ),
 #'         GlobalSecondaryIndexes = list(
 #'           list(
 #'             IndexName = "string",
@@ -10152,6 +10389,11 @@ dynamodb_update_kinesis_streaming_destination <- function(TableName, StreamArn, 
 #'             ),
 #'             OnDemandThroughputOverride = list(
 #'               MaxReadRequestUnits = 123
+#'             ),
+#'             WarmThroughput = list(
+#'               ReadUnitsPerSecond = 123,
+#'               WriteUnitsPerSecond = 123,
+#'               Status = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"
 #'             )
 #'           )
 #'         ),
@@ -10199,7 +10441,13 @@ dynamodb_update_kinesis_streaming_destination <- function(TableName, StreamArn, 
 #'     OnDemandThroughput = list(
 #'       MaxReadRequestUnits = 123,
 #'       MaxWriteRequestUnits = 123
-#'     )
+#'     ),
+#'     WarmThroughput = list(
+#'       ReadUnitsPerSecond = 123,
+#'       WriteUnitsPerSecond = 123,
+#'       Status = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"|"ARCHIVING"|"ARCHIVED"
+#'     ),
+#'     MultiRegionConsistency = "EVENTUAL"|"STRONG"
 #'   )
 #' )
 #' ```
@@ -10230,6 +10478,10 @@ dynamodb_update_kinesis_streaming_destination <- function(TableName, StreamArn, 
 #'         OnDemandThroughput = list(
 #'           MaxReadRequestUnits = 123,
 #'           MaxWriteRequestUnits = 123
+#'         ),
+#'         WarmThroughput = list(
+#'           ReadUnitsPerSecond = 123,
+#'           WriteUnitsPerSecond = 123
 #'         )
 #'       ),
 #'       Create = list(
@@ -10253,6 +10505,10 @@ dynamodb_update_kinesis_streaming_destination <- function(TableName, StreamArn, 
 #'         OnDemandThroughput = list(
 #'           MaxReadRequestUnits = 123,
 #'           MaxWriteRequestUnits = 123
+#'         ),
+#'         WarmThroughput = list(
+#'           ReadUnitsPerSecond = 123,
+#'           WriteUnitsPerSecond = 123
 #'         )
 #'       ),
 #'       Delete = list(
@@ -10322,9 +10578,14 @@ dynamodb_update_kinesis_streaming_destination <- function(TableName, StreamArn, 
 #'   ),
 #'   TableClass = "STANDARD"|"STANDARD_INFREQUENT_ACCESS",
 #'   DeletionProtectionEnabled = TRUE|FALSE,
+#'   MultiRegionConsistency = "EVENTUAL"|"STRONG",
 #'   OnDemandThroughput = list(
 #'     MaxReadRequestUnits = 123,
 #'     MaxWriteRequestUnits = 123
+#'   ),
+#'   WarmThroughput = list(
+#'     ReadUnitsPerSecond = 123,
+#'     WriteUnitsPerSecond = 123
 #'   )
 #' )
 #' ```
@@ -10347,7 +10608,7 @@ dynamodb_update_kinesis_streaming_destination <- function(TableName, StreamArn, 
 #' @rdname dynamodb_update_table
 #'
 #' @aliases dynamodb_update_table
-dynamodb_update_table <- function(AttributeDefinitions = NULL, TableName, BillingMode = NULL, ProvisionedThroughput = NULL, GlobalSecondaryIndexUpdates = NULL, StreamSpecification = NULL, SSESpecification = NULL, ReplicaUpdates = NULL, TableClass = NULL, DeletionProtectionEnabled = NULL, OnDemandThroughput = NULL) {
+dynamodb_update_table <- function(AttributeDefinitions = NULL, TableName, BillingMode = NULL, ProvisionedThroughput = NULL, GlobalSecondaryIndexUpdates = NULL, StreamSpecification = NULL, SSESpecification = NULL, ReplicaUpdates = NULL, TableClass = NULL, DeletionProtectionEnabled = NULL, MultiRegionConsistency = NULL, OnDemandThroughput = NULL, WarmThroughput = NULL) {
   op <- new_operation(
     name = "UpdateTable",
     http_method = "POST",
@@ -10356,7 +10617,7 @@ dynamodb_update_table <- function(AttributeDefinitions = NULL, TableName, Billin
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .dynamodb$update_table_input(AttributeDefinitions = AttributeDefinitions, TableName = TableName, BillingMode = BillingMode, ProvisionedThroughput = ProvisionedThroughput, GlobalSecondaryIndexUpdates = GlobalSecondaryIndexUpdates, StreamSpecification = StreamSpecification, SSESpecification = SSESpecification, ReplicaUpdates = ReplicaUpdates, TableClass = TableClass, DeletionProtectionEnabled = DeletionProtectionEnabled, OnDemandThroughput = OnDemandThroughput)
+  input <- .dynamodb$update_table_input(AttributeDefinitions = AttributeDefinitions, TableName = TableName, BillingMode = BillingMode, ProvisionedThroughput = ProvisionedThroughput, GlobalSecondaryIndexUpdates = GlobalSecondaryIndexUpdates, StreamSpecification = StreamSpecification, SSESpecification = SSESpecification, ReplicaUpdates = ReplicaUpdates, TableClass = TableClass, DeletionProtectionEnabled = DeletionProtectionEnabled, MultiRegionConsistency = MultiRegionConsistency, OnDemandThroughput = OnDemandThroughput, WarmThroughput = WarmThroughput)
   output <- .dynamodb$update_table_output()
   config <- get_config()
   svc <- .dynamodb$service(config, op)

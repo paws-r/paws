@@ -153,7 +153,7 @@ route53recoveryreadiness <- function(config = list(), credentials = list(), endp
 
 .route53recoveryreadiness$metadata <- list(
   service_name = "route53recoveryreadiness",
-  endpoints = list("*" = list(endpoint = "route53-recovery-readiness.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "route53-recovery-readiness.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "route53-recovery-readiness.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "route53-recovery-readiness.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "route53-recovery-readiness.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "route53-recovery-readiness.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "route53-recovery-readiness.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "route53-recovery-readiness.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "route53-recovery-readiness.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "route53-recovery-readiness.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "route53-recovery-readiness.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "route53-recovery-readiness.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "route53-recovery-readiness.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Route53 Recovery Readiness",
   api_version = "2019-12-02",
   signing_name = "route53-recovery-readiness",

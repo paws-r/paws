@@ -144,7 +144,7 @@ servicequotas <- function(config = list(), credentials = list(), endpoint = NULL
 
 .servicequotas$metadata <- list(
   service_name = "servicequotas",
-  endpoints = list("*" = list(endpoint = "servicequotas.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "servicequotas.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "servicequotas.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "servicequotas.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "servicequotas.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "servicequotas.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "servicequotas.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "servicequotas.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "servicequotas.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "servicequotas.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "servicequotas.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "servicequotas.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "servicequotas.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Service Quotas",
   api_version = "2019-06-24",
   signing_name = "servicequotas",

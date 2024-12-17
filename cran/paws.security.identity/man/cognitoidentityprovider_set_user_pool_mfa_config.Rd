@@ -2,21 +2,31 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_set_user_pool_mfa_config}
 \alias{cognitoidentityprovider_set_user_pool_mfa_config}
-\title{Sets the user pool multi-factor authentication (MFA) configuration}
+\title{Sets the user pool multi-factor authentication (MFA) and passkey
+configuration}
 \usage{
 cognitoidentityprovider_set_user_pool_mfa_config(
   UserPoolId,
   SmsMfaConfiguration = NULL,
   SoftwareTokenMfaConfiguration = NULL,
-  MfaConfiguration = NULL
+  EmailMfaConfiguration = NULL,
+  MfaConfiguration = NULL,
+  WebAuthnConfiguration = NULL
 )
 }
 \arguments{
 \item{UserPoolId}{[required] The user pool ID.}
 
-\item{SmsMfaConfiguration}{The SMS text message MFA configuration.}
+\item{SmsMfaConfiguration}{Configures user pool SMS messages for MFA. Sets the message template and
+the SMS message sending configuration for Amazon SNS.}
 
-\item{SoftwareTokenMfaConfiguration}{The software token MFA configuration.}
+\item{SoftwareTokenMfaConfiguration}{Configures a user pool for time-based one-time password (TOTP) MFA.
+Enables or disables TOTP.}
+
+\item{EmailMfaConfiguration}{Configures user pool email messages for MFA. Sets the subject and body
+of the email message template for MFA messages. To activate this
+setting, \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pool-settings-threat-protection.html}{advanced security features}
+must be active in your user pool.}
 
 \item{MfaConfiguration}{The MFA configuration. If you set the MfaConfiguration value to ‘ON’,
 only users who have set up an MFA factor can sign in. To learn more, see
@@ -28,9 +38,13 @@ Valid values include:
 \item \code{OPTIONAL} MFA will be required only for individual users who have
 an MFA factor activated.
 }}
+
+\item{WebAuthnConfiguration}{The configuration of your user pool for passkey, or webauthN,
+authentication and registration. You can set this configuration
+independent of the MFA configuration options in this operation.}
 }
 \description{
-Sets the user pool multi-factor authentication (MFA) configuration.
+Sets the user pool multi-factor authentication (MFA) and passkey configuration.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_set_user_pool_mfa_config/} for full documentation.
 }

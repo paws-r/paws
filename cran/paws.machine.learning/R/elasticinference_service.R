@@ -5,16 +5,9 @@ NULL
 #' Amazon Elastic  Inference
 #'
 #' @description
-#' Elastic Inference public APIs.
+#' Amazon Elastic Inference is no longer available.
 #' 
-#' February 15, 2023: Starting April 15, 2023, AWS will not onboard new
-#' customers to Amazon Elastic Inference (EI), and will help current
-#' customers migrate their workloads to options that offer better price and
-#' performance. After April 15, 2023, new customers will not be able to
-#' launch instances with Amazon EI accelerators in Amazon SageMaker, Amazon
-#' ECS, or Amazon EC2. However, customers who have used Amazon EI at least
-#' once during the past 30-day period are considered current customers and
-#' will be able to continue using the service.
+#' Elastic Inference public APIs.
 #'
 #' @param
 #' config
@@ -99,12 +92,12 @@ NULL
 #'
 #' @section Operations:
 #' \tabular{ll}{
-#'  \link[=elasticinference_describe_accelerator_offerings]{describe_accelerator_offerings} \tab Describes the locations in which a given accelerator type or set of types is present in a given region\cr
-#'  \link[=elasticinference_describe_accelerators]{describe_accelerators} \tab Describes information over a provided set of accelerators belonging to an account\cr
-#'  \link[=elasticinference_describe_accelerator_types]{describe_accelerator_types} \tab Describes the accelerator types available in a given region, as well as their characteristics, such as memory and throughput\cr
-#'  \link[=elasticinference_list_tags_for_resource]{list_tags_for_resource} \tab Returns all tags of an Elastic Inference Accelerator\cr
-#'  \link[=elasticinference_tag_resource]{tag_resource} \tab Adds the specified tags to an Elastic Inference Accelerator\cr
-#'  \link[=elasticinference_untag_resource]{untag_resource} \tab Removes the specified tags from an Elastic Inference Accelerator
+#'  \link[=elasticinference_describe_accelerator_offerings]{describe_accelerator_offerings} \tab Amazon Elastic Inference is no longer available\cr
+#'  \link[=elasticinference_describe_accelerators]{describe_accelerators} \tab Amazon Elastic Inference is no longer available\cr
+#'  \link[=elasticinference_describe_accelerator_types]{describe_accelerator_types} \tab Amazon Elastic Inference is no longer available\cr
+#'  \link[=elasticinference_list_tags_for_resource]{list_tags_for_resource} \tab Amazon Elastic Inference is no longer available\cr
+#'  \link[=elasticinference_tag_resource]{tag_resource} \tab Amazon Elastic Inference is no longer available\cr
+#'  \link[=elasticinference_untag_resource]{untag_resource} \tab Amazon Elastic Inference is no longer available
 #' }
 #'
 #' @return
@@ -136,7 +129,7 @@ elasticinference <- function(config = list(), credentials = list(), endpoint = N
 
 .elasticinference$metadata <- list(
   service_name = "elasticinference",
-  endpoints = list("*" = list(endpoint = "api.elastic-inference.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "api.elastic-inference.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "api.elastic-inference.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "api.elastic-inference.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "api.elastic-inference.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "api.elastic-inference.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "api.elastic-inference.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "api.elastic-inference.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "api.elastic-inference.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "api.elastic-inference.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "api.elastic-inference.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "api.elastic-inference.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "api.elastic-inference.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Elastic Inference",
   api_version = "2017-07-25",
   signing_name = "elastic-inference",

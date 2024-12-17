@@ -10,7 +10,8 @@ elasticache_modify_user(
   AppendAccessString = NULL,
   Passwords = NULL,
   NoPasswordRequired = NULL,
-  AuthenticationMode = NULL
+  AuthenticationMode = NULL,
+  Engine = NULL
 )
 }
 \arguments{
@@ -25,6 +26,8 @@ elasticache_modify_user(
 \item{NoPasswordRequired}{Indicates no password is required for the user.}
 
 \item{AuthenticationMode}{Specifies how to authenticate the user.}
+
+\item{Engine}{The engine for a specific user.}
 }
 \description{
 Changes user password(s) and/or access string.

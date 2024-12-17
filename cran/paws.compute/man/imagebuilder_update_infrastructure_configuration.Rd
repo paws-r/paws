@@ -15,9 +15,10 @@ imagebuilder_update_infrastructure_configuration(
   keyPair = NULL,
   terminateInstanceOnFailure = NULL,
   snsTopicArn = NULL,
-  clientToken,
   resourceTags = NULL,
-  instanceMetadataOptions = NULL
+  instanceMetadataOptions = NULL,
+  placement = NULL,
+  clientToken
 )
 }
 \arguments{
@@ -57,10 +58,6 @@ encrypted using keys from other accounts. The key that is used to
 encrypt the SNS topic must reside in the account that the Image Builder
 service runs under.}
 
-\item{clientToken}{[required] Unique, case-sensitive identifier you provide to ensure idempotency of
-the request. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency}
-in the \emph{Amazon EC2 API Reference}.}
-
 \item{resourceTags}{The tags attached to the resource created by Image Builder.}
 
 \item{instanceMetadataOptions}{The instance metadata options that you can set for the HTTP requests
@@ -73,6 +70,13 @@ in the \emph{Amazon EC2 User Guide} for Linux instances.
 \item \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-options.html}{Configure the instance metadata options}
 in the \emph{Amazon EC2 Windows Guide} for Windows instances.
 }}
+
+\item{placement}{The instance placement settings that define where the instances that are
+launched from your image will run.}
+
+\item{clientToken}{[required] Unique, case-sensitive identifier you provide to ensure idempotency of
+the request. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency}
+in the \emph{Amazon EC2 API Reference}.}
 }
 \description{
 Updates a new infrastructure configuration. An infrastructure configuration defines the environment in which your image will be built and tested.

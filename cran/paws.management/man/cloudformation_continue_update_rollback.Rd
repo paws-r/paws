@@ -21,13 +21,13 @@ using the \verb{AWS::CloudFormation::Stack} resource). Instead, use this
 operation on the parent stack (the stack that contains the
 \verb{AWS::CloudFormation::Stack} resource).}
 
-\item{RoleARN}{The Amazon Resource Name (ARN) of an Identity and Access Management
-(IAM) role that CloudFormation assumes to roll back the stack.
-CloudFormation uses the role's credentials to make calls on your behalf.
-CloudFormation always uses this role for all future operations on the
-stack. Provided that users have permission to operate on the stack,
-CloudFormation uses this role even if the users don't have permission to
-pass it. Ensure that the role grants least permission.
+\item{RoleARN}{The Amazon Resource Name (ARN) of an IAM role that CloudFormation
+assumes to roll back the stack. CloudFormation uses the role's
+credentials to make calls on your behalf. CloudFormation always uses
+this role for all future operations on the stack. Provided that users
+have permission to operate on the stack, CloudFormation uses this role
+even if the users don't have permission to pass it. Ensure that the role
+grants least permission.
 
 If you don't specify a value, CloudFormation uses the role that was
 previously associated with the stack. If no role is available,
@@ -69,7 +69,7 @@ be in one of the following states: \code{DELETE_IN_PROGRESS},
 
 Don't confuse a child stack's name with its corresponding logical ID
 defined in the parent stack. For an example of a continue update
-rollback operation with nested stacks, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-continueupdaterollback.html#nested-stacks}{Using ResourcesToSkip to recover a nested stacks hierarchy}.}
+rollback operation with nested stacks, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-continueupdaterollback.html#nested-stacks}{Continue rolling back from failed nested stack updates}.}
 
 \item{ClientRequestToken}{A unique identifier for this
 \code{\link[=cloudformation_continue_update_rollback]{continue_update_rollback}}

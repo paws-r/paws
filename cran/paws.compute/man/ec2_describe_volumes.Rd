@@ -5,14 +5,22 @@
 \title{Describes the specified EBS volumes or all of your EBS volumes}
 \usage{
 ec2_describe_volumes(
-  Filters = NULL,
   VolumeIds = NULL,
   DryRun = NULL,
-  MaxResults = NULL,
-  NextToken = NULL
+  Filters = NULL,
+  NextToken = NULL,
+  MaxResults = NULL
 )
 }
 \arguments{
+\item{VolumeIds}{The volume IDs. If not specified, then all volumes are included in the
+response.}
+
+\item{DryRun}{Checks whether you have the required permissions for the action, without
+actually making the request, and provides an error response. If you have
+the required permissions, the error response is \code{DryRunOperation}.
+Otherwise, it is \code{UnauthorizedOperation}.}
+
 \item{Filters}{The filters.
 \itemize{
 \item \code{attachment.attach-time} - The time stamp when the attachment
@@ -30,11 +38,15 @@ created.
 \item \code{create-time} - The time stamp when the volume was created.
 \item \code{encrypted} - Indicates whether the volume is encrypted (\code{true} |
 \code{false})
-\item \code{multi-attach-enabled} - Indicates whether the volume is enabled for
-Multi-Attach (\code{true} | \code{false})
 \item \code{fast-restored} - Indicates whether the volume was created from a
 snapshot that is enabled for fast snapshot restore (\code{true} |
 \code{false}).
+\item \code{multi-attach-enabled} - Indicates whether the volume is enabled for
+Multi-Attach (\code{true} | \code{false})
+\item \code{operator.managed} - A Boolean that indicates whether this is a
+managed volume.
+\item \code{operator.principal} - The principal that manages the volume. Only
+valid for managed volumes, where \code{managed} is \code{true}.
 \item \code{size} - The size of the volume, in GiB.
 \item \code{snapshot-id} - The snapshot from which the volume was created.
 \item \code{status} - The state of the volume (\code{creating} | \code{available} |
@@ -52,21 +64,13 @@ regardless of the tag value.
 \code{io2} | \code{st1} | \code{sc1}| \code{standard})
 }}
 
-\item{VolumeIds}{The volume IDs. If not specified, then all volumes are included in the
-response.}
-
-\item{DryRun}{Checks whether you have the required permissions for the action, without
-actually making the request, and provides an error response. If you have
-the required permissions, the error response is \code{DryRunOperation}.
-Otherwise, it is \code{UnauthorizedOperation}.}
+\item{NextToken}{The token returned from a previous paginated request. Pagination
+continues from the end of the items returned by the previous request.}
 
 \item{MaxResults}{The maximum number of items to return for this request. To get the next
 page of items, make another request with the token returned in the
 output. For more information, see
 \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Query-Requests.html#api-pagination}{Pagination}.}
-
-\item{NextToken}{The token returned from a previous paginated request. Pagination
-continues from the end of the items returned by the previous request.}
 }
 \description{
 Describes the specified EBS volumes or all of your EBS volumes.

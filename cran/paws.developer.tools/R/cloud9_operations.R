@@ -31,16 +31,13 @@ NULL
 #' the EC2 instance. To choose an AMI for the instance, you must specify a
 #' valid AMI alias or a valid Amazon EC2 Systems Manager (SSM) path.
 #' 
-#' From December 04, 2023, you will be required to include the `imageId`
-#' parameter for the
-#' [`create_environment_ec2`][cloud9_create_environment_ec2] action. This
-#' change will be reflected across all direct methods of communicating with
-#' the API, such as Amazon Web Services SDK, Amazon Web Services CLI and
-#' Amazon Web Services CloudFormation. This change will only affect direct
-#' API consumers, and not Cloud9 console users.
-#' 
 #' We recommend using Amazon Linux 2023 as the AMI to create your
 #' environment as it is fully supported.
+#' 
+#' From December 16, 2024, Ubuntu 18.04 will be removed from the list of
+#' available `imageIds` for Cloud9. This change is necessary as Ubuntu
+#' 18.04 has ended standard support on May 31, 2023. This change will only
+#' affect direct API consumers, and not Cloud9 console users.
 #' 
 #' Since Ubuntu 18.04 has ended standard support as of May 31, 2023, we
 #' recommend you choose Ubuntu 22.04.
@@ -254,7 +251,7 @@ cloud9_describe_environment_memberships <- function(userArn = NULL, environmentI
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    paginator = list(result_key = "memberships", output_token = "nextToken", input_token = "nextToken", limit_key = "maxResults"),
     stream_api = FALSE
   )
   input <- .cloud9$describe_environment_memberships_input(userArn = userArn, environmentId = environmentId, permissions = permissions, nextToken = nextToken, maxResults = maxResults)
@@ -353,7 +350,7 @@ cloud9_list_environments <- function(nextToken = NULL, maxResults = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    paginator = list(result_key = "environmentIds", output_token = "nextToken", input_token = "nextToken", limit_key = "maxResults"),
     stream_api = FALSE
   )
   input <- .cloud9$list_environments_input(nextToken = nextToken, maxResults = maxResults)

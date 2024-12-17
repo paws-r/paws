@@ -245,7 +245,7 @@ globalaccelerator <- function(config = list(), credentials = list(), endpoint = 
 
 .globalaccelerator$metadata <- list(
   service_name = "globalaccelerator",
-  endpoints = list("*" = list(endpoint = "globalaccelerator.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "globalaccelerator.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "globalaccelerator.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "globalaccelerator.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "globalaccelerator.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "globalaccelerator.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "globalaccelerator.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "globalaccelerator.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "globalaccelerator.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "globalaccelerator.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "globalaccelerator.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "globalaccelerator.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "globalaccelerator.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Global Accelerator",
   api_version = "2018-08-08",
   signing_name = "globalaccelerator",

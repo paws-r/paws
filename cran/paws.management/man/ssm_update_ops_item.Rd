@@ -67,8 +67,7 @@ OpsItems. For example, related OpsItems can include OpsItems with
 similar error messages, impacted resources, or statuses for the impacted
 resource.}
 
-\item{Status}{The OpsItem status. Status can be \code{Open}, \verb{In Progress}, or \code{Resolved}.
-For more information, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-working-with-OpsItems-editing-details.html}{Editing OpsItem details}
+\item{Status}{The OpsItem status. For more information, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-working-with-OpsItems-editing-details.html}{Editing OpsItem details}
 in the \emph{Amazon Web Services Systems Manager User Guide}.}
 
 \item{OpsItemId}{[required] The ID of the OpsItem.}

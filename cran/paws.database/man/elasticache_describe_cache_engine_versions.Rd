@@ -25,7 +25,7 @@ for.
 
 Valid values are: \code{memcached1.4} | \code{memcached1.5} | \code{memcached1.6} |
 \code{redis2.6} | \code{redis2.8} | \code{redis3.2} | \code{redis4.0} | \code{redis5.0} |
-\code{redis6.x} | \code{redis6.2} | \code{redis7}
+\code{redis6.x} | \code{redis6.2} | \code{redis7} | \code{valkey7}
 
 Constraints:
 \itemize{

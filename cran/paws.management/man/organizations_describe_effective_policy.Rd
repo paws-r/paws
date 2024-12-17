@@ -11,9 +11,11 @@ organizations_describe_effective_policy(PolicyType, TargetId = NULL)
 \item{PolicyType}{[required] The type of policy that you want information about. You can specify one
 of the following values:
 \itemize{
-\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out.html}{AISERVICES_OPT_OUT_POLICY}
+\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_declarative.html}{DECLARATIVE_POLICY_EC2}
 \item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_backup.html}{BACKUP_POLICY}
 \item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html}{TAG_POLICY}
+\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_chatbot.html}{CHATBOT_POLICY}
+\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out.html}{AISERVICES_OPT_OUT_POLICY}
 }}
 
 \item{TargetId}{When you're signed in as the management account, specify the ID of the

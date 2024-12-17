@@ -30,6 +30,11 @@ types are:
 \item HSM certificate
 \item Parameter group
 \item Snapshot copy grant
+\item Integration (zero-ETL integration or S3 event integration)
+
+To describe the tags associated with an \code{integration}, don't specify
+\code{ResourceType}, instead specify the \code{ResourceName} of the
+integration.
 }
 
 For more information about Amazon Redshift resource types and

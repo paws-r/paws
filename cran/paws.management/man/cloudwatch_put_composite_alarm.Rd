@@ -44,7 +44,11 @@ Valid Values: ]
 
 \strong{Systems Manager actions:}
 
-\code{arn:aws:ssm:region:account-id:opsitem:severity }}
+\code{arn:aws:ssm:region:account-id:opsitem:severity }
+
+\strong{Start a Amazon Q Developer operational investigation}
+
+\code{arn:aws:aiops:region:account-id:investigation-group:ingestigation-group-id }}
 
 \item{AlarmDescription}{The description for the composite alarm.}
 

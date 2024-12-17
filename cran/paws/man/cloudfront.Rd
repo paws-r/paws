@@ -99,6 +99,7 @@ features, see the \href{https://docs.aws.amazon.com/AmazonCloudFront/latest/Deve
 \tabular{ll}{
 \link[paws.networking:cloudfront_associate_alias]{associate_alias} \tab Associates an alias (also known as a CNAME or an alternate domain name) with a CloudFront distribution\cr
 \link[paws.networking:cloudfront_copy_distribution]{copy_distribution} \tab Creates a staging distribution using the configuration of the provided primary distribution\cr
+\link[paws.networking:cloudfront_create_anycast_ip_list]{create_anycast_ip_list} \tab Creates an Anycast static IP list\cr
 \link[paws.networking:cloudfront_create_cache_policy]{create_cache_policy} \tab Creates a cache policy\cr
 \link[paws.networking:cloudfront_create_cloud_front_origin_access_identity]{create_cloud_front_origin_access_identity} \tab Creates a new origin access identity\cr
 \link[paws.networking:cloudfront_create_continuous_deployment_policy]{create_continuous_deployment_policy} \tab Creates a continuous deployment policy that distributes traffic for a custom domain name to two different CloudFront distributions\cr
@@ -118,6 +119,8 @@ features, see the \href{https://docs.aws.amazon.com/AmazonCloudFront/latest/Deve
 \link[paws.networking:cloudfront_create_response_headers_policy]{create_response_headers_policy} \tab Creates a response headers policy\cr
 \link[paws.networking:cloudfront_create_streaming_distribution]{create_streaming_distribution} \tab This API is deprecated\cr
 \link[paws.networking:cloudfront_create_streaming_distribution_with_tags]{create_streaming_distribution_with_tags} \tab This API is deprecated\cr
+\link[paws.networking:cloudfront_create_vpc_origin]{create_vpc_origin} \tab Create an Amazon CloudFront VPC origin\cr
+\link[paws.networking:cloudfront_delete_anycast_ip_list]{delete_anycast_ip_list} \tab Deletes an Anycast static IP list\cr
 \link[paws.networking:cloudfront_delete_cache_policy]{delete_cache_policy} \tab Deletes a cache policy\cr
 \link[paws.networking:cloudfront_delete_cloud_front_origin_access_identity]{delete_cloud_front_origin_access_identity} \tab Delete an origin access identity\cr
 \link[paws.networking:cloudfront_delete_continuous_deployment_policy]{delete_continuous_deployment_policy} \tab Deletes a continuous deployment policy\cr
@@ -134,8 +137,10 @@ features, see the \href{https://docs.aws.amazon.com/AmazonCloudFront/latest/Deve
 \link[paws.networking:cloudfront_delete_realtime_log_config]{delete_realtime_log_config} \tab Deletes a real-time log configuration\cr
 \link[paws.networking:cloudfront_delete_response_headers_policy]{delete_response_headers_policy} \tab Deletes a response headers policy\cr
 \link[paws.networking:cloudfront_delete_streaming_distribution]{delete_streaming_distribution} \tab Delete a streaming distribution\cr
+\link[paws.networking:cloudfront_delete_vpc_origin]{delete_vpc_origin} \tab Delete an Amazon CloudFront VPC origin\cr
 \link[paws.networking:cloudfront_describe_function]{describe_function} \tab Gets configuration information and metadata about a CloudFront function, but not the function's code\cr
 \link[paws.networking:cloudfront_describe_key_value_store]{describe_key_value_store} \tab Specifies the key value store and its configuration\cr
+\link[paws.networking:cloudfront_get_anycast_ip_list]{get_anycast_ip_list} \tab Gets an Anycast static IP list\cr
 \link[paws.networking:cloudfront_get_cache_policy]{get_cache_policy} \tab Gets a cache policy, including the following metadata:\cr
 \link[paws.networking:cloudfront_get_cache_policy_config]{get_cache_policy_config} \tab Gets a cache policy configuration\cr
 \link[paws.networking:cloudfront_get_cloud_front_origin_access_identity]{get_cloud_front_origin_access_identity} \tab Get the information about an origin access identity\cr
@@ -164,16 +169,20 @@ features, see the \href{https://docs.aws.amazon.com/AmazonCloudFront/latest/Deve
 \link[paws.networking:cloudfront_get_response_headers_policy_config]{get_response_headers_policy_config} \tab Gets a response headers policy configuration\cr
 \link[paws.networking:cloudfront_get_streaming_distribution]{get_streaming_distribution} \tab Gets information about a specified RTMP distribution, including the distribution configuration\cr
 \link[paws.networking:cloudfront_get_streaming_distribution_config]{get_streaming_distribution_config} \tab Get the configuration information about a streaming distribution\cr
+\link[paws.networking:cloudfront_get_vpc_origin]{get_vpc_origin} \tab Get the details of an Amazon CloudFront VPC origin\cr
+\link[paws.networking:cloudfront_list_anycast_ip_lists]{list_anycast_ip_lists} \tab Lists your Anycast static IP lists\cr
 \link[paws.networking:cloudfront_list_cache_policies]{list_cache_policies} \tab Gets a list of cache policies\cr
 \link[paws.networking:cloudfront_list_cloud_front_origin_access_identities]{list_cloud_front_origin_access_identities} \tab Lists origin access identities\cr
 \link[paws.networking:cloudfront_list_conflicting_aliases]{list_conflicting_aliases} \tab Gets a list of aliases (also called CNAMEs or alternate domain names) that conflict or overlap with the provided alias, and the associated CloudFront distributions and Amazon Web Services accounts for each conflicting alias\cr
 \link[paws.networking:cloudfront_list_continuous_deployment_policies]{list_continuous_deployment_policies} \tab Gets a list of the continuous deployment policies in your Amazon Web Services account\cr
 \link[paws.networking:cloudfront_list_distributions]{list_distributions} \tab List CloudFront distributions\cr
+\link[paws.networking:cloudfront_list_distributions_by_anycast_ip_list_id]{list_distributions_by_anycast_ip_list_id} \tab Lists the distributions in your account that are associated with the specified AnycastIpListId\cr
 \link[paws.networking:cloudfront_list_distributions_by_cache_policy_id]{list_distributions_by_cache_policy_id} \tab Gets a list of distribution IDs for distributions that have a cache behavior that's associated with the specified cache policy\cr
 \link[paws.networking:cloudfront_list_distributions_by_key_group]{list_distributions_by_key_group} \tab Gets a list of distribution IDs for distributions that have a cache behavior that references the specified key group\cr
 \link[paws.networking:cloudfront_list_distributions_by_origin_request_policy_id]{list_distributions_by_origin_request_policy_id} \tab Gets a list of distribution IDs for distributions that have a cache behavior that's associated with the specified origin request policy\cr
 \link[paws.networking:cloudfront_list_distributions_by_realtime_log_config]{list_distributions_by_realtime_log_config} \tab Gets a list of distributions that have a cache behavior that's associated with the specified real-time log configuration\cr
 \link[paws.networking:cloudfront_list_distributions_by_response_headers_policy_id]{list_distributions_by_response_headers_policy_id} \tab Gets a list of distribution IDs for distributions that have a cache behavior that's associated with the specified response headers policy\cr
+\link[paws.networking:cloudfront_list_distributions_by_vpc_origin_id]{list_distributions_by_vpc_origin_id} \tab List CloudFront distributions by their VPC origin ID\cr
 \link[paws.networking:cloudfront_list_distributions_by_web_acl_id]{list_distributions_by_web_acl_id} \tab List the distributions that are associated with a specified WAF web ACL\cr
 \link[paws.networking:cloudfront_list_field_level_encryption_configs]{list_field_level_encryption_configs} \tab List all field-level encryption configurations that have been created in CloudFront for this account\cr
 \link[paws.networking:cloudfront_list_field_level_encryption_profiles]{list_field_level_encryption_profiles} \tab Request a list of field-level encryption profiles that have been created in CloudFront for this account\cr
@@ -181,13 +190,14 @@ features, see the \href{https://docs.aws.amazon.com/AmazonCloudFront/latest/Deve
 \link[paws.networking:cloudfront_list_invalidations]{list_invalidations} \tab Lists invalidation batches\cr
 \link[paws.networking:cloudfront_list_key_groups]{list_key_groups} \tab Gets a list of key groups\cr
 \link[paws.networking:cloudfront_list_key_value_stores]{list_key_value_stores} \tab Specifies the key value stores to list\cr
-\link[paws.networking:cloudfront_list_origin_access_controls]{list_origin_access_controls} \tab Gets the list of CloudFront origin access controls in this Amazon Web Services account\cr
+\link[paws.networking:cloudfront_list_origin_access_controls]{list_origin_access_controls} \tab Gets the list of CloudFront origin access controls (OACs) in this Amazon Web Services account\cr
 \link[paws.networking:cloudfront_list_origin_request_policies]{list_origin_request_policies} \tab Gets a list of origin request policies\cr
 \link[paws.networking:cloudfront_list_public_keys]{list_public_keys} \tab List all public keys that have been added to CloudFront for this account\cr
 \link[paws.networking:cloudfront_list_realtime_log_configs]{list_realtime_log_configs} \tab Gets a list of real-time log configurations\cr
 \link[paws.networking:cloudfront_list_response_headers_policies]{list_response_headers_policies} \tab Gets a list of response headers policies\cr
 \link[paws.networking:cloudfront_list_streaming_distributions]{list_streaming_distributions} \tab List streaming distributions\cr
 \link[paws.networking:cloudfront_list_tags_for_resource]{list_tags_for_resource} \tab List tags for a CloudFront resource\cr
+\link[paws.networking:cloudfront_list_vpc_origins]{list_vpc_origins} \tab List the CloudFront VPC origins in your account\cr
 \link[paws.networking:cloudfront_publish_function]{publish_function} \tab Publishes a CloudFront function by copying the function code from the DEVELOPMENT stage to LIVE\cr
 \link[paws.networking:cloudfront_tag_resource]{tag_resource} \tab Add tags to a CloudFront resource\cr
 \link[paws.networking:cloudfront_test_function]{test_function} \tab Tests a CloudFront function\cr
@@ -207,29 +217,16 @@ features, see the \href{https://docs.aws.amazon.com/AmazonCloudFront/latest/Deve
 \link[paws.networking:cloudfront_update_public_key]{update_public_key} \tab Update public key information\cr
 \link[paws.networking:cloudfront_update_realtime_log_config]{update_realtime_log_config} \tab Updates a real-time log configuration\cr
 \link[paws.networking:cloudfront_update_response_headers_policy]{update_response_headers_policy} \tab Updates a response headers policy\cr
-\link[paws.networking:cloudfront_update_streaming_distribution]{update_streaming_distribution} \tab Update a streaming distribution
+\link[paws.networking:cloudfront_update_streaming_distribution]{update_streaming_distribution} \tab Update a streaming distribution\cr
+\link[paws.networking:cloudfront_update_vpc_origin]{update_vpc_origin} \tab Update an Amazon CloudFront VPC origin in your account
 }
 }
 
 \examples{
 \dontrun{
 svc <- cloudfront()
-# Use the following command to create a function.
-svc$create_function(
-  FunctionCode = "function-code.js",
-  FunctionConfig = list(
-    Comment = "my-function-comment",
-    KeyValueStoreAssociations = list(
-      Items = list(
-        list(
-          KeyValueStoreARN = "arn:aws:cloudfront::123456789012:key-value-st..."
-        )
-      ),
-      Quantity = 1L
-    ),
-    Runtime = "cloudfront-js-2.0"
-  ),
-  Name = "my-function-name"
+svc$associate_alias(
+  Foo = 123
 )
 }
 

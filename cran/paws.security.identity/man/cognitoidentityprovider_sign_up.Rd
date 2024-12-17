@@ -9,7 +9,7 @@ cognitoidentityprovider_sign_up(
   ClientId,
   SecretHash = NULL,
   Username,
-  Password,
+  Password = NULL,
   UserAttributes = NULL,
   ValidationData = NULL,
   AnalyticsMetadata = NULL,
@@ -22,13 +22,22 @@ cognitoidentityprovider_sign_up(
 
 \item{SecretHash}{A keyed-hash message authentication code (HMAC) calculated using the
 secret key of a user pool client and username plus the client ID in the
-message.}
+message. For more information about \code{SecretHash}, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/signing-up-users-in-your-app.html#cognito-user-pools-computing-secret-hash}{Computing secret hash values}.}
 
 \item{Username}{[required] The username of the user that you want to sign up. The value of this
 parameter is typically a username, but can be any alias attribute in
 your user pool.}
 
-\item{Password}{[required] The password of the user you want to register.}
+\item{Password}{The password of the user you want to register.
+
+Users can sign up without a password when your user pool supports
+passwordless sign-in with email or SMS OTPs. To create a user with no
+password, omit this parameter or submit a blank value. You can only
+create a passwordless user when passwordless sign-in is available. See
+\href{https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_SignInPolicyType.html}{the SignInPolicyType}
+property of
+\code{\link[=cognitoidentityprovider_create_user_pool]{create_user_pool}} and
+\code{\link[=cognitoidentityprovider_update_user_pool]{update_user_pool}}.}
 
 \item{UserAttributes}{An array of name-value pairs representing user attributes.
 
@@ -55,7 +64,9 @@ for \code{\link[=cognitoidentityprovider_sign_up]{sign_up}} calls.}
 \item{UserContextData}{Contextual data about your user session, such as the device fingerprint,
 IP address, or location. Amazon Cognito advanced security evaluates the
 risk of an authentication event based on the context that your app
-generates and passes to Amazon Cognito when it makes API requests.}
+generates and passes to Amazon Cognito when it makes API requests.
+
+For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-settings-viewing-threat-protection-app.html}{Collecting data for threat protection in applications}.}
 
 \item{ClientMetadata}{A map of custom key-value pairs that you can provide as input for any
 custom workflows that this action triggers.
@@ -74,16 +85,16 @@ specific needs.
 For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-working-with-lambda-triggers.html}{Customizing user pool Workflows with Lambda Triggers}
 in the \emph{Amazon Cognito Developer Guide}.
 
-When you use the ClientMetadata parameter, remember that Amazon Cognito
+When you use the \code{ClientMetadata} parameter, note that Amazon Cognito
 won't do the following:
 \itemize{
-\item Store the ClientMetadata value. This data is available only to
+\item Store the \code{ClientMetadata} value. This data is available only to
 Lambda triggers that are assigned to a user pool to support custom
 workflows. If your user pool configuration doesn't include triggers,
-the ClientMetadata parameter serves no purpose.
-\item Validate the ClientMetadata value.
-\item Encrypt the ClientMetadata value. Don't use Amazon Cognito to
-provide sensitive information.
+the \code{ClientMetadata} parameter serves no purpose.
+\item Validate the \code{ClientMetadata} value.
+\item Encrypt the \code{ClientMetadata} value. Don't send sensitive information
+in this parameter.
 }}
 }
 \description{

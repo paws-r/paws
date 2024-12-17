@@ -8,14 +8,14 @@ for Prometheus resource}
 prometheusservice_tag_resource(resourceArn, tags)
 }
 \arguments{
-\item{resourceArn}{[required] The ARN of the workspace or rule groups namespace to apply tags to.}
+\item{resourceArn}{[required] The ARN of the resource to apply tags to.}
 
 \item{tags}{[required] The list of tag keys and values to associate with the resource.
 
-Keys may not begin with \verb{aws:}.}
+Keys must not begin with \verb{aws:}.}
 }
 \description{
-The \code{\link[=prometheusservice_tag_resource]{tag_resource}} operation associates tags with an Amazon Managed Service for Prometheus resource. The only resources that can be tagged are workspaces and rule groups namespaces.
+The \code{\link[=prometheusservice_tag_resource]{tag_resource}} operation associates tags with an Amazon Managed Service for Prometheus resource. The only resources that can be tagged are rule groups namespaces, scrapers, and workspaces.
 
 See \url{https://www.paws-r-sdk.com/docs/prometheusservice_tag_resource/} for full documentation.
 }

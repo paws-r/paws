@@ -2,7 +2,7 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_delete_user_attributes}
 \alias{cognitoidentityprovider_delete_user_attributes}
-\title{Deletes the attributes for a user}
+\title{Self-deletes attributes for a user}
 \usage{
 cognitoidentityprovider_delete_user_attributes(UserAttributeNames, AccessToken)
 }
@@ -10,14 +10,14 @@ cognitoidentityprovider_delete_user_attributes(UserAttributeNames, AccessToken)
 \item{UserAttributeNames}{[required] An array of strings representing the user attribute names you want to
 delete.
 
-For custom attributes, you must prependattach the \verb{custom:} prefix to
-the front of the attribute name.}
+For custom attributes, you must prepend the \verb{custom:} prefix to the
+attribute name, for example \code{custom:department}.}
 
 \item{AccessToken}{[required] A valid access token that Amazon Cognito issued to the user whose
 attributes you want to delete.}
 }
 \description{
-Deletes the attributes for a user.
+Self-deletes attributes for a user. For example, your application can submit a request to this operation when a user wants to remove their \code{birthdate} attribute value.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_delete_user_attributes/} for full documentation.
 }

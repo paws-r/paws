@@ -13,7 +13,7 @@ cognitoidentityprovider_set_ui_customization(
 )
 }
 \arguments{
-\item{UserPoolId}{[required] The user pool ID for the user pool.}
+\item{UserPoolId}{[required] The ID of the user pool.}
 
 \item{ClientId}{The client ID for the client app.}
 

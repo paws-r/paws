@@ -12,7 +12,7 @@ cognitoidentityprovider_create_resource_server(
 )
 }
 \arguments{
-\item{UserPoolId}{[required] The user pool ID for the user pool.}
+\item{UserPoolId}{[required] The ID of the user pool where you want to create a resource server.}
 
 \item{Identifier}{[required] A unique resource server identifier for the resource server. The
 identifier can be an API friendly name like \code{solar-system-data}. You can
@@ -25,11 +25,13 @@ increase the size of your access tokens.}
 
 \item{Name}{[required] A friendly name for the resource server.}
 
-\item{Scopes}{A list of scopes. Each scope is a key-value map with the keys \code{name} and
-\code{description}.}
+\item{Scopes}{A list of custom scopes. Each scope is a key-value map with the keys
+\code{ScopeName} and \code{ScopeDescription}. The name of a custom scope is a
+combination of \code{ScopeName} and the resource server \code{Name} in this
+request, for example \code{MyResourceServerName/MyScopeName}.}
 }
 \description{
-Creates a new OAuth2.0 resource server and defines custom scopes within it.
+Creates a new OAuth2.0 resource server and defines custom scopes within it. Resource servers are associated with custom scopes and machine-to-machine (M2M) authorization. For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-define-resource-servers.html}{Access control with resource servers}.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_create_resource_server/} for full documentation.
 }

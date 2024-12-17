@@ -9,7 +9,8 @@ recyclebin_list_rules(
   NextToken = NULL,
   ResourceType,
   ResourceTags = NULL,
-  LockState = NULL
+  LockState = NULL,
+  ExcludeResourceTags = NULL
 )
 }
 \arguments{
@@ -25,11 +26,15 @@ Amazon EBS snapshots and EBS-backed AMIs are supported. To list
 retention rules that retain snapshots, specify \code{EBS_SNAPSHOT}. To list
 retention rules that retain EBS-backed AMIs, specify \code{EC2_IMAGE}.}
 
-\item{ResourceTags}{Information about the resource tags used to identify resources that are
-retained by the retention rule.}
+\item{ResourceTags}{[Tag-level retention rules only] Information about the resource tags
+used to identify resources that are retained by the retention rule.}
 
 \item{LockState}{The lock state of the retention rules to list. Only retention rules with
 the specified lock state are returned.}
+
+\item{ExcludeResourceTags}{[Region-level retention rules only] Information about the exclusion
+tags used to identify resources that are to be excluded, or ignored, by
+the retention rule.}
 }
 \description{
 Lists the Recycle Bin retention rules in the Region.

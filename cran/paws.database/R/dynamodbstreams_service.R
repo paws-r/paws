@@ -132,7 +132,7 @@ dynamodbstreams <- function(config = list(), credentials = list(), endpoint = NU
 
 .dynamodbstreams$metadata <- list(
   service_name = "streams.dynamodb",
-  endpoints = list("*" = list(endpoint = "streams.dynamodb.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "streams.dynamodb.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "streams.dynamodb.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "streams.dynamodb.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "streams.dynamodb.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "streams.dynamodb.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "streams.dynamodb.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "streams.dynamodb.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "streams.dynamodb.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "streams.dynamodb.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "streams.dynamodb.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "streams.dynamodb.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "streams.dynamodb.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "DynamoDB Streams",
   api_version = "2012-08-10",
   signing_name = "dynamodb",

@@ -130,7 +130,7 @@ personalizeevents <- function(config = list(), credentials = list(), endpoint = 
 
 .personalizeevents$metadata <- list(
   service_name = "personalizeevents",
-  endpoints = list("*" = list(endpoint = "personalize-events.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "personalize-events.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "personalize-events.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "personalize-events.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "personalize-events.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "personalize-events.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "personalize-events.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "personalize-events.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "personalize-events.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "personalize-events.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "personalize-events.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "personalize-events.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "personalize-events.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Personalize Events",
   api_version = "2018-03-22",
   signing_name = "personalize",

@@ -186,9 +186,15 @@ codebuild_batch_delete_builds <- function(ids) {
 #'         )
 #'       ),
 #'       environment = list(
-#'         type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"MAC_ARM",
+#'         type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"LINUX_EC2"|"ARM_EC2"|"WINDOWS_EC2"|"MAC_ARM",
 #'         image = "string",
-#'         computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB",
+#'         computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB"|"ATTRIBUTE_BASED_COMPUTE",
+#'         computeConfiguration = list(
+#'           vCpu = 123,
+#'           memory = 123,
+#'           disk = 123,
+#'           machineType = "GENERAL"|"NVME"
+#'         ),
 #'         fleet = list(
 #'           fleetArn = "string"
 #'         ),
@@ -473,9 +479,15 @@ codebuild_batch_get_build_batches <- function(ids) {
 #'         )
 #'       ),
 #'       environment = list(
-#'         type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"MAC_ARM",
+#'         type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"LINUX_EC2"|"ARM_EC2"|"WINDOWS_EC2"|"MAC_ARM",
 #'         image = "string",
-#'         computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB",
+#'         computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB"|"ATTRIBUTE_BASED_COMPUTE",
+#'         computeConfiguration = list(
+#'           vCpu = 123,
+#'           memory = 123,
+#'           disk = 123,
+#'           machineType = "GENERAL"|"NVME"
+#'         ),
 #'         fleet = list(
 #'           fleetArn = "string"
 #'         ),
@@ -554,7 +566,13 @@ codebuild_batch_get_build_batches <- function(ids) {
 #'         sessionEnabled = TRUE|FALSE,
 #'         sessionTarget = "string"
 #'       ),
-#'       buildBatchArn = "string"
+#'       buildBatchArn = "string",
+#'       autoRetryConfig = list(
+#'         autoRetryLimit = 123,
+#'         autoRetryNumber = 123,
+#'         nextAutoRetry = "string",
+#'         previousAutoRetry = "string"
+#'       )
 #'     )
 #'   ),
 #'   buildsNotFound = list(
@@ -571,6 +589,18 @@ codebuild_batch_get_build_batches <- function(ids) {
 #'   )
 #' )
 #' ```
+#'
+#' @examples
+#' \dontrun{
+#' # The following example gets information about builds with the specified
+#' # build IDs.
+#' svc$batch_get_builds(
+#'   ids = list(
+#'     "codebuild-demo-project:9b0ac37f-d19e-4254-9079-f47e9a389eEX",
+#'     "codebuild-demo-project:b79a46f7-1473-4636-a23f-da9c45c208EX"
+#'   )
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -627,8 +657,14 @@ codebuild_batch_get_builds <- function(ids) {
 #'         message = "string"
 #'       ),
 #'       baseCapacity = 123,
-#'       environmentType = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"MAC_ARM",
-#'       computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB",
+#'       environmentType = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"LINUX_EC2"|"ARM_EC2"|"WINDOWS_EC2"|"MAC_ARM",
+#'       computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB"|"ATTRIBUTE_BASED_COMPUTE",
+#'       computeConfiguration = list(
+#'         vCpu = 123,
+#'         memory = 123,
+#'         disk = 123,
+#'         machineType = "GENERAL"|"NVME"
+#'       ),
 #'       scalingConfiguration = list(
 #'         scalingType = "TARGET_TRACKING_SCALING",
 #'         targetTrackingScalingConfigs = list(
@@ -648,6 +684,18 @@ codebuild_batch_get_builds <- function(ids) {
 #'         ),
 #'         securityGroupIds = list(
 #'           "string"
+#'         )
+#'       ),
+#'       proxyConfiguration = list(
+#'         defaultBehavior = "ALLOW_ALL"|"DENY_ALL",
+#'         orderedProxyRules = list(
+#'           list(
+#'             type = "DOMAIN"|"IP",
+#'             effect = "ALLOW"|"DENY",
+#'             entities = list(
+#'               "string"
+#'             )
+#'           )
 #'         )
 #'       ),
 #'       imageId = "string",
@@ -803,9 +851,15 @@ codebuild_batch_get_fleets <- function(names) {
 #'         )
 #'       ),
 #'       environment = list(
-#'         type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"MAC_ARM",
+#'         type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"LINUX_EC2"|"ARM_EC2"|"WINDOWS_EC2"|"MAC_ARM",
 #'         image = "string",
-#'         computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB",
+#'         computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB"|"ATTRIBUTE_BASED_COMPUTE",
+#'         computeConfiguration = list(
+#'           vCpu = 123,
+#'           memory = 123,
+#'           disk = 123,
+#'           machineType = "GENERAL"|"NVME"
+#'         ),
 #'         fleet = list(
 #'           fleetArn = "string"
 #'         ),
@@ -848,7 +902,7 @@ codebuild_batch_get_fleets <- function(names) {
 #'         filterGroups = list(
 #'           list(
 #'             list(
-#'               type = "EVENT"|"BASE_REF"|"HEAD_REF"|"ACTOR_ACCOUNT_ID"|"FILE_PATH"|"COMMIT_MESSAGE"|"WORKFLOW_NAME"|"TAG_NAME"|"RELEASE_NAME",
+#'               type = "EVENT"|"BASE_REF"|"HEAD_REF"|"ACTOR_ACCOUNT_ID"|"FILE_PATH"|"COMMIT_MESSAGE"|"WORKFLOW_NAME"|"TAG_NAME"|"RELEASE_NAME"|"REPOSITORY_NAME",
 #'               pattern = "string",
 #'               excludeMatchedPattern = TRUE|FALSE
 #'             )
@@ -862,7 +916,7 @@ codebuild_batch_get_fleets <- function(names) {
 #'         scopeConfiguration = list(
 #'           name = "string",
 #'           domain = "string",
-#'           scope = "GITHUB_ORGANIZATION"|"GITHUB_GLOBAL"
+#'           scope = "GITHUB_ORGANIZATION"|"GITHUB_GLOBAL"|"GITLAB_GROUP"
 #'         )
 #'       ),
 #'       vpcConfig = list(
@@ -915,7 +969,8 @@ codebuild_batch_get_fleets <- function(names) {
 #'       concurrentBuildLimit = 123,
 #'       projectVisibility = "PUBLIC_READ"|"PRIVATE",
 #'       publicProjectAlias = "string",
-#'       resourceAccessRole = "string"
+#'       resourceAccessRole = "string",
+#'       autoRetryLimit = 123
 #'     )
 #'   ),
 #'   projectsNotFound = list(
@@ -1144,8 +1199,8 @@ codebuild_batch_get_reports <- function(reportArns) {
 #'
 #' @usage
 #' codebuild_create_fleet(name, baseCapacity, environmentType, computeType,
-#'   scalingConfiguration, overflowBehavior, vpcConfig, imageId,
-#'   fleetServiceRole, tags)
+#'   computeConfiguration, scalingConfiguration, overflowBehavior, vpcConfig,
+#'   proxyConfiguration, imageId, fleetServiceRole, tags)
 #'
 #' @param name &#91;required&#93; The name of the compute fleet.
 #' @param baseCapacity &#91;required&#93; The initial number of machines allocated to the ﬂeet, which defines the
@@ -1158,11 +1213,23 @@ codebuild_batch_get_reports <- function(reportArns) {
 #'     (Singapore), Asia Pacific (Sydney), EU (Frankfurt), and South
 #'     America (São Paulo).
 #' 
+#' -   The environment type `ARM_EC2` is available only in regions US East
+#'     (N. Virginia), US East (Ohio), US West (Oregon), EU (Ireland), EU
+#'     (Frankfurt), Asia Pacific (Tokyo), Asia Pacific (Singapore), Asia
+#'     Pacific (Sydney), South America (São Paulo), and Asia Pacific
+#'     (Mumbai).
+#' 
 #' -   The environment type `LINUX_CONTAINER` is available only in regions
 #'     US East (N. Virginia), US East (Ohio), US West (Oregon), EU
 #'     (Ireland), EU (Frankfurt), Asia Pacific (Tokyo), Asia Pacific
 #'     (Singapore), Asia Pacific (Sydney), South America (São Paulo), and
 #'     Asia Pacific (Mumbai).
+#' 
+#' -   The environment type `LINUX_EC2` is available only in regions US
+#'     East (N. Virginia), US East (Ohio), US West (Oregon), EU (Ireland),
+#'     EU (Frankfurt), Asia Pacific (Tokyo), Asia Pacific (Singapore), Asia
+#'     Pacific (Sydney), South America (São Paulo), and Asia Pacific
+#'     (Mumbai).
 #' 
 #' -   The environment type `LINUX_GPU_CONTAINER` is available only in
 #'     regions US East (N. Virginia), US East (Ohio), US West (Oregon), EU
@@ -1176,6 +1243,12 @@ codebuild_batch_get_reports <- function(reportArns) {
 #' -   The environment type `MAC_ARM` is available for Large fleets only in
 #'     regions US East (N. Virginia), US East (Ohio), US West (Oregon), and
 #'     Asia Pacific (Sydney).
+#' 
+#' -   The environment type `WINDOWS_EC2` is available only in regions US
+#'     East (N. Virginia), US East (Ohio), US West (Oregon), EU (Ireland),
+#'     EU (Frankfurt), Asia Pacific (Tokyo), Asia Pacific (Singapore), Asia
+#'     Pacific (Sydney), South America (São Paulo), and Asia Pacific
+#'     (Mumbai).
 #' 
 #' -   The environment type `WINDOWS_SERVER_2019_CONTAINER` is available
 #'     only in regions US East (N. Virginia), US East (Ohio), US West
@@ -1194,47 +1267,79 @@ codebuild_batch_get_reports <- function(reportArns) {
 #' @param computeType &#91;required&#93; Information about the compute resources the compute fleet uses.
 #' Available values include:
 #' 
-#' -   `BUILD_GENERAL1_SMALL`: Use up to 3 GB memory and 2 vCPUs for
+#' -   `ATTRIBUTE_BASED_COMPUTE`: Specify the amount of vCPUs, memory, disk
+#'     space, and the type of machine.
+#' 
+#'     If you use `ATTRIBUTE_BASED_COMPUTE`, you must define your
+#'     attributes by using `computeConfiguration`. CodeBuild will select
+#'     the cheapest instance that satisfies your specified attributes. For
+#'     more information, see [Reserved capacity environment
+#'     types](https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-compute-types.html#environment-reserved-capacity.types)
+#'     in the *CodeBuild User Guide*.
+#' 
+#' -   `BUILD_GENERAL1_SMALL`: Use up to 4 GiB memory and 2 vCPUs for
 #'     builds.
 #' 
-#' -   `BUILD_GENERAL1_MEDIUM`: Use up to 7 GB memory and 4 vCPUs for
+#' -   `BUILD_GENERAL1_MEDIUM`: Use up to 8 GiB memory and 4 vCPUs for
 #'     builds.
 #' 
-#' -   `BUILD_GENERAL1_LARGE`: Use up to 16 GB memory and 8 vCPUs for
+#' -   `BUILD_GENERAL1_LARGE`: Use up to 16 GiB memory and 8 vCPUs for
 #'     builds, depending on your environment type.
 #' 
-#' -   `BUILD_GENERAL1_XLARGE`: Use up to 70 GB memory and 36 vCPUs for
+#' -   `BUILD_GENERAL1_XLARGE`: Use up to 72 GiB memory and 36 vCPUs for
 #'     builds, depending on your environment type.
 #' 
-#' -   `BUILD_GENERAL1_2XLARGE`: Use up to 145 GB memory, 72 vCPUs, and 824
-#'     GB of SSD storage for builds. This compute type supports Docker
+#' -   `BUILD_GENERAL1_2XLARGE`: Use up to 144 GiB memory, 72 vCPUs, and
+#'     824 GB of SSD storage for builds. This compute type supports Docker
 #'     images up to 100 GB uncompressed.
+#' 
+#' -   `BUILD_LAMBDA_1GB`: Use up to 1 GiB memory for builds. Only
+#'     available for environment type `LINUX_LAMBDA_CONTAINER` and
+#'     `ARM_LAMBDA_CONTAINER`.
+#' 
+#' -   `BUILD_LAMBDA_2GB`: Use up to 2 GiB memory for builds. Only
+#'     available for environment type `LINUX_LAMBDA_CONTAINER` and
+#'     `ARM_LAMBDA_CONTAINER`.
+#' 
+#' -   `BUILD_LAMBDA_4GB`: Use up to 4 GiB memory for builds. Only
+#'     available for environment type `LINUX_LAMBDA_CONTAINER` and
+#'     `ARM_LAMBDA_CONTAINER`.
+#' 
+#' -   `BUILD_LAMBDA_8GB`: Use up to 8 GiB memory for builds. Only
+#'     available for environment type `LINUX_LAMBDA_CONTAINER` and
+#'     `ARM_LAMBDA_CONTAINER`.
+#' 
+#' -   `BUILD_LAMBDA_10GB`: Use up to 10 GiB memory for builds. Only
+#'     available for environment type `LINUX_LAMBDA_CONTAINER` and
+#'     `ARM_LAMBDA_CONTAINER`.
 #' 
 #' If you use `BUILD_GENERAL1_SMALL`:
 #' 
-#' -   For environment type `LINUX_CONTAINER`, you can use up to 3 GB
+#' -   For environment type `LINUX_CONTAINER`, you can use up to 4 GiB
 #'     memory and 2 vCPUs for builds.
 #' 
-#' -   For environment type `LINUX_GPU_CONTAINER`, you can use up to 16 GB
+#' -   For environment type `LINUX_GPU_CONTAINER`, you can use up to 16 GiB
 #'     memory, 4 vCPUs, and 1 NVIDIA A10G Tensor Core GPU for builds.
 #' 
-#' -   For environment type `ARM_CONTAINER`, you can use up to 4 GB memory
+#' -   For environment type `ARM_CONTAINER`, you can use up to 4 GiB memory
 #'     and 2 vCPUs on ARM-based processors for builds.
 #' 
 #' If you use `BUILD_GENERAL1_LARGE`:
 #' 
-#' -   For environment type `LINUX_CONTAINER`, you can use up to 15 GB
+#' -   For environment type `LINUX_CONTAINER`, you can use up to 16 GiB
 #'     memory and 8 vCPUs for builds.
 #' 
-#' -   For environment type `LINUX_GPU_CONTAINER`, you can use up to 255 GB
-#'     memory, 32 vCPUs, and 4 NVIDIA Tesla V100 GPUs for builds.
+#' -   For environment type `LINUX_GPU_CONTAINER`, you can use up to 255
+#'     GiB memory, 32 vCPUs, and 4 NVIDIA Tesla V100 GPUs for builds.
 #' 
-#' -   For environment type `ARM_CONTAINER`, you can use up to 16 GB memory
-#'     and 8 vCPUs on ARM-based processors for builds.
+#' -   For environment type `ARM_CONTAINER`, you can use up to 16 GiB
+#'     memory and 8 vCPUs on ARM-based processors for builds.
 #' 
-#' For more information, see [Build environment compute
-#' types](https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-compute-types.html)
+#' For more information, see [On-demand environment
+#' types](https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-compute-types.html#environment.types)
 #' in the *CodeBuild User Guide.*
+#' @param computeConfiguration The compute configuration of the compute fleet. This is only required if
+#' `computeType` is set to `ATTRIBUTE_BASED_COMPUTE`.
 #' @param scalingConfiguration The scaling configuration of the compute fleet.
 #' @param overflowBehavior The compute fleet overflow behavior.
 #' 
@@ -1251,6 +1356,7 @@ codebuild_batch_get_reports <- function(reportArns) {
 #'     Web Services services required to create a VPC network
 #'     interface](https://docs.aws.amazon.com/codebuild/latest/userguide/auth-and-access-control-iam-identity-based-access-control.html#customer-managed-policies-example-create-vpc-network-interface).
 #' @param vpcConfig 
+#' @param proxyConfiguration The proxy configuration of the compute fleet.
 #' @param imageId The Amazon Machine Image (AMI) of the compute fleet.
 #' @param fleetServiceRole The service role associated with the compute fleet. For more
 #' information, see [Allow a user to add a permission policy for a fleet
@@ -1282,8 +1388,14 @@ codebuild_batch_get_reports <- function(reportArns) {
 #'       message = "string"
 #'     ),
 #'     baseCapacity = 123,
-#'     environmentType = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"MAC_ARM",
-#'     computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB",
+#'     environmentType = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"LINUX_EC2"|"ARM_EC2"|"WINDOWS_EC2"|"MAC_ARM",
+#'     computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB"|"ATTRIBUTE_BASED_COMPUTE",
+#'     computeConfiguration = list(
+#'       vCpu = 123,
+#'       memory = 123,
+#'       disk = 123,
+#'       machineType = "GENERAL"|"NVME"
+#'     ),
 #'     scalingConfiguration = list(
 #'       scalingType = "TARGET_TRACKING_SCALING",
 #'       targetTrackingScalingConfigs = list(
@@ -1305,6 +1417,18 @@ codebuild_batch_get_reports <- function(reportArns) {
 #'         "string"
 #'       )
 #'     ),
+#'     proxyConfiguration = list(
+#'       defaultBehavior = "ALLOW_ALL"|"DENY_ALL",
+#'       orderedProxyRules = list(
+#'         list(
+#'           type = "DOMAIN"|"IP",
+#'           effect = "ALLOW"|"DENY",
+#'           entities = list(
+#'             "string"
+#'           )
+#'         )
+#'       )
+#'     ),
 #'     imageId = "string",
 #'     fleetServiceRole = "string",
 #'     tags = list(
@@ -1322,8 +1446,14 @@ codebuild_batch_get_reports <- function(reportArns) {
 #' svc$create_fleet(
 #'   name = "string",
 #'   baseCapacity = 123,
-#'   environmentType = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"MAC_ARM",
-#'   computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB",
+#'   environmentType = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"LINUX_EC2"|"ARM_EC2"|"WINDOWS_EC2"|"MAC_ARM",
+#'   computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB"|"ATTRIBUTE_BASED_COMPUTE",
+#'   computeConfiguration = list(
+#'     vCpu = 123,
+#'     memory = 123,
+#'     disk = 123,
+#'     machineType = "GENERAL"|"NVME"
+#'   ),
 #'   scalingConfiguration = list(
 #'     scalingType = "TARGET_TRACKING_SCALING",
 #'     targetTrackingScalingConfigs = list(
@@ -1344,6 +1474,18 @@ codebuild_batch_get_reports <- function(reportArns) {
 #'       "string"
 #'     )
 #'   ),
+#'   proxyConfiguration = list(
+#'     defaultBehavior = "ALLOW_ALL"|"DENY_ALL",
+#'     orderedProxyRules = list(
+#'       list(
+#'         type = "DOMAIN"|"IP",
+#'         effect = "ALLOW"|"DENY",
+#'         entities = list(
+#'           "string"
+#'         )
+#'       )
+#'     )
+#'   ),
 #'   imageId = "string",
 #'   fleetServiceRole = "string",
 #'   tags = list(
@@ -1360,7 +1502,7 @@ codebuild_batch_get_reports <- function(reportArns) {
 #' @rdname codebuild_create_fleet
 #'
 #' @aliases codebuild_create_fleet
-codebuild_create_fleet <- function(name, baseCapacity, environmentType, computeType, scalingConfiguration = NULL, overflowBehavior = NULL, vpcConfig = NULL, imageId = NULL, fleetServiceRole = NULL, tags = NULL) {
+codebuild_create_fleet <- function(name, baseCapacity, environmentType, computeType, computeConfiguration = NULL, scalingConfiguration = NULL, overflowBehavior = NULL, vpcConfig = NULL, proxyConfiguration = NULL, imageId = NULL, fleetServiceRole = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateFleet",
     http_method = "POST",
@@ -1369,7 +1511,7 @@ codebuild_create_fleet <- function(name, baseCapacity, environmentType, computeT
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .codebuild$create_fleet_input(name = name, baseCapacity = baseCapacity, environmentType = environmentType, computeType = computeType, scalingConfiguration = scalingConfiguration, overflowBehavior = overflowBehavior, vpcConfig = vpcConfig, imageId = imageId, fleetServiceRole = fleetServiceRole, tags = tags)
+  input <- .codebuild$create_fleet_input(name = name, baseCapacity = baseCapacity, environmentType = environmentType, computeType = computeType, computeConfiguration = computeConfiguration, scalingConfiguration = scalingConfiguration, overflowBehavior = overflowBehavior, vpcConfig = vpcConfig, proxyConfiguration = proxyConfiguration, imageId = imageId, fleetServiceRole = fleetServiceRole, tags = tags)
   output <- .codebuild$create_fleet_output()
   config <- get_config()
   svc <- .codebuild$service(config, op)
@@ -1389,7 +1531,8 @@ codebuild_create_fleet <- function(name, baseCapacity, environmentType, computeT
 #'   sourceVersion, secondarySourceVersions, artifacts, secondaryArtifacts,
 #'   cache, environment, serviceRole, timeoutInMinutes,
 #'   queuedTimeoutInMinutes, encryptionKey, tags, vpcConfig, badgeEnabled,
-#'   logsConfig, fileSystemLocations, buildBatchConfig, concurrentBuildLimit)
+#'   logsConfig, fileSystemLocations, buildBatchConfig, concurrentBuildLimit,
+#'   autoRetryLimit)
 #'
 #' @param name &#91;required&#93; The name of the build project.
 #' @param description A description that makes the build project easy to identify.
@@ -1471,6 +1614,10 @@ codebuild_create_fleet <- function(name, baseCapacity, environmentType, computeT
 #' New builds are only started if the current number of builds is less than
 #' or equal to this limit. If the current build count meets this limit, new
 #' builds are throttled and are not run.
+#' @param autoRetryLimit The maximum number of additional automatic retries after a failed build.
+#' For example, if the auto-retry limit is set to 2, CodeBuild will call
+#' the [`retry_build`][codebuild_retry_build] API to automatically retry
+#' your build for up to 2 additional times.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1563,9 +1710,15 @@ codebuild_create_fleet <- function(name, baseCapacity, environmentType, computeT
 #'       )
 #'     ),
 #'     environment = list(
-#'       type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"MAC_ARM",
+#'       type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"LINUX_EC2"|"ARM_EC2"|"WINDOWS_EC2"|"MAC_ARM",
 #'       image = "string",
-#'       computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB",
+#'       computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB"|"ATTRIBUTE_BASED_COMPUTE",
+#'       computeConfiguration = list(
+#'         vCpu = 123,
+#'         memory = 123,
+#'         disk = 123,
+#'         machineType = "GENERAL"|"NVME"
+#'       ),
 #'       fleet = list(
 #'         fleetArn = "string"
 #'       ),
@@ -1608,7 +1761,7 @@ codebuild_create_fleet <- function(name, baseCapacity, environmentType, computeT
 #'       filterGroups = list(
 #'         list(
 #'           list(
-#'             type = "EVENT"|"BASE_REF"|"HEAD_REF"|"ACTOR_ACCOUNT_ID"|"FILE_PATH"|"COMMIT_MESSAGE"|"WORKFLOW_NAME"|"TAG_NAME"|"RELEASE_NAME",
+#'             type = "EVENT"|"BASE_REF"|"HEAD_REF"|"ACTOR_ACCOUNT_ID"|"FILE_PATH"|"COMMIT_MESSAGE"|"WORKFLOW_NAME"|"TAG_NAME"|"RELEASE_NAME"|"REPOSITORY_NAME",
 #'             pattern = "string",
 #'             excludeMatchedPattern = TRUE|FALSE
 #'           )
@@ -1622,7 +1775,7 @@ codebuild_create_fleet <- function(name, baseCapacity, environmentType, computeT
 #'       scopeConfiguration = list(
 #'         name = "string",
 #'         domain = "string",
-#'         scope = "GITHUB_ORGANIZATION"|"GITHUB_GLOBAL"
+#'         scope = "GITHUB_ORGANIZATION"|"GITHUB_GLOBAL"|"GITLAB_GROUP"
 #'       )
 #'     ),
 #'     vpcConfig = list(
@@ -1675,7 +1828,8 @@ codebuild_create_fleet <- function(name, baseCapacity, environmentType, computeT
 #'     concurrentBuildLimit = 123,
 #'     projectVisibility = "PUBLIC_READ"|"PRIVATE",
 #'     publicProjectAlias = "string",
-#'     resourceAccessRole = "string"
+#'     resourceAccessRole = "string",
+#'     autoRetryLimit = 123
 #'   )
 #' )
 #' ```
@@ -1768,9 +1922,15 @@ codebuild_create_fleet <- function(name, baseCapacity, environmentType, computeT
 #'     )
 #'   ),
 #'   environment = list(
-#'     type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"MAC_ARM",
+#'     type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"LINUX_EC2"|"ARM_EC2"|"WINDOWS_EC2"|"MAC_ARM",
 #'     image = "string",
-#'     computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB",
+#'     computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB"|"ATTRIBUTE_BASED_COMPUTE",
+#'     computeConfiguration = list(
+#'       vCpu = 123,
+#'       memory = 123,
+#'       disk = 123,
+#'       machineType = "GENERAL"|"NVME"
+#'     ),
 #'     fleet = list(
 #'       fleetArn = "string"
 #'     ),
@@ -1843,7 +2003,8 @@ codebuild_create_fleet <- function(name, baseCapacity, environmentType, computeT
 #'     timeoutInMins = 123,
 #'     batchReportMode = "REPORT_INDIVIDUAL_BUILDS"|"REPORT_AGGREGATED_BATCH"
 #'   ),
-#'   concurrentBuildLimit = 123
+#'   concurrentBuildLimit = 123,
+#'   autoRetryLimit = 123
 #' )
 #' ```
 #'
@@ -1852,7 +2013,7 @@ codebuild_create_fleet <- function(name, baseCapacity, environmentType, computeT
 #' @rdname codebuild_create_project
 #'
 #' @aliases codebuild_create_project
-codebuild_create_project <- function(name, description = NULL, source, secondarySources = NULL, sourceVersion = NULL, secondarySourceVersions = NULL, artifacts, secondaryArtifacts = NULL, cache = NULL, environment, serviceRole, timeoutInMinutes = NULL, queuedTimeoutInMinutes = NULL, encryptionKey = NULL, tags = NULL, vpcConfig = NULL, badgeEnabled = NULL, logsConfig = NULL, fileSystemLocations = NULL, buildBatchConfig = NULL, concurrentBuildLimit = NULL) {
+codebuild_create_project <- function(name, description = NULL, source, secondarySources = NULL, sourceVersion = NULL, secondarySourceVersions = NULL, artifacts, secondaryArtifacts = NULL, cache = NULL, environment, serviceRole, timeoutInMinutes = NULL, queuedTimeoutInMinutes = NULL, encryptionKey = NULL, tags = NULL, vpcConfig = NULL, badgeEnabled = NULL, logsConfig = NULL, fileSystemLocations = NULL, buildBatchConfig = NULL, concurrentBuildLimit = NULL, autoRetryLimit = NULL) {
   op <- new_operation(
     name = "CreateProject",
     http_method = "POST",
@@ -1861,7 +2022,7 @@ codebuild_create_project <- function(name, description = NULL, source, secondary
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .codebuild$create_project_input(name = name, description = description, source = source, secondarySources = secondarySources, sourceVersion = sourceVersion, secondarySourceVersions = secondarySourceVersions, artifacts = artifacts, secondaryArtifacts = secondaryArtifacts, cache = cache, environment = environment, serviceRole = serviceRole, timeoutInMinutes = timeoutInMinutes, queuedTimeoutInMinutes = queuedTimeoutInMinutes, encryptionKey = encryptionKey, tags = tags, vpcConfig = vpcConfig, badgeEnabled = badgeEnabled, logsConfig = logsConfig, fileSystemLocations = fileSystemLocations, buildBatchConfig = buildBatchConfig, concurrentBuildLimit = concurrentBuildLimit)
+  input <- .codebuild$create_project_input(name = name, description = description, source = source, secondarySources = secondarySources, sourceVersion = sourceVersion, secondarySourceVersions = secondarySourceVersions, artifacts = artifacts, secondaryArtifacts = secondaryArtifacts, cache = cache, environment = environment, serviceRole = serviceRole, timeoutInMinutes = timeoutInMinutes, queuedTimeoutInMinutes = queuedTimeoutInMinutes, encryptionKey = encryptionKey, tags = tags, vpcConfig = vpcConfig, badgeEnabled = badgeEnabled, logsConfig = logsConfig, fileSystemLocations = fileSystemLocations, buildBatchConfig = buildBatchConfig, concurrentBuildLimit = concurrentBuildLimit, autoRetryLimit = autoRetryLimit)
   output <- .codebuild$create_project_output()
   config <- get_config()
   svc <- .codebuild$service(config, op)
@@ -2036,7 +2197,7 @@ codebuild_create_report_group <- function(name, type, exportConfig, tags = NULL)
 #'     filterGroups = list(
 #'       list(
 #'         list(
-#'           type = "EVENT"|"BASE_REF"|"HEAD_REF"|"ACTOR_ACCOUNT_ID"|"FILE_PATH"|"COMMIT_MESSAGE"|"WORKFLOW_NAME"|"TAG_NAME"|"RELEASE_NAME",
+#'           type = "EVENT"|"BASE_REF"|"HEAD_REF"|"ACTOR_ACCOUNT_ID"|"FILE_PATH"|"COMMIT_MESSAGE"|"WORKFLOW_NAME"|"TAG_NAME"|"RELEASE_NAME"|"REPOSITORY_NAME",
 #'           pattern = "string",
 #'           excludeMatchedPattern = TRUE|FALSE
 #'         )
@@ -2050,7 +2211,7 @@ codebuild_create_report_group <- function(name, type, exportConfig, tags = NULL)
 #'     scopeConfiguration = list(
 #'       name = "string",
 #'       domain = "string",
-#'       scope = "GITHUB_ORGANIZATION"|"GITHUB_GLOBAL"
+#'       scope = "GITHUB_ORGANIZATION"|"GITHUB_GLOBAL"|"GITLAB_GROUP"
 #'     )
 #'   )
 #' )
@@ -2064,7 +2225,7 @@ codebuild_create_report_group <- function(name, type, exportConfig, tags = NULL)
 #'   filterGroups = list(
 #'     list(
 #'       list(
-#'         type = "EVENT"|"BASE_REF"|"HEAD_REF"|"ACTOR_ACCOUNT_ID"|"FILE_PATH"|"COMMIT_MESSAGE"|"WORKFLOW_NAME"|"TAG_NAME"|"RELEASE_NAME",
+#'         type = "EVENT"|"BASE_REF"|"HEAD_REF"|"ACTOR_ACCOUNT_ID"|"FILE_PATH"|"COMMIT_MESSAGE"|"WORKFLOW_NAME"|"TAG_NAME"|"RELEASE_NAME"|"REPOSITORY_NAME",
 #'         pattern = "string",
 #'         excludeMatchedPattern = TRUE|FALSE
 #'       )
@@ -2075,7 +2236,7 @@ codebuild_create_report_group <- function(name, type, exportConfig, tags = NULL)
 #'   scopeConfiguration = list(
 #'     name = "string",
 #'     domain = "string",
-#'     scope = "GITHUB_ORGANIZATION"|"GITHUB_GLOBAL"
+#'     scope = "GITHUB_ORGANIZATION"|"GITHUB_GLOBAL"|"GITLAB_GROUP"
 #'   )
 #' )
 #' ```
@@ -3131,7 +3292,7 @@ codebuild_list_builds <- function(sortOrder = NULL, nextToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "ids"),
+    paginator = list(output_token = "nextToken", input_token = "nextToken", result_key = "ids"),
     stream_api = FALSE
   )
   input <- .codebuild$list_builds_input(sortOrder = sortOrder, nextToken = nextToken)
@@ -3207,7 +3368,7 @@ codebuild_list_builds_for_project <- function(projectName, sortOrder = NULL, nex
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "ids"),
+    paginator = list(output_token = "nextToken", input_token = "nextToken", result_key = "ids"),
     stream_api = FALSE
   )
   input <- .codebuild$list_builds_for_project_input(projectName = projectName, sortOrder = sortOrder, nextToken = nextToken)
@@ -3356,7 +3517,7 @@ codebuild_list_fleets <- function(nextToken = NULL, maxResults = NULL, sortOrder
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .codebuild$list_fleets_input(nextToken = nextToken, maxResults = maxResults, sortOrder = sortOrder, sortBy = sortBy)
@@ -3437,7 +3598,7 @@ codebuild_list_projects <- function(sortBy = NULL, sortOrder = NULL, nextToken =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "projects"),
+    paginator = list(output_token = "nextToken", input_token = "nextToken", result_key = "projects"),
     stream_api = FALSE
   )
   input <- .codebuild$list_projects_input(sortBy = sortBy, sortOrder = sortOrder, nextToken = nextToken)
@@ -4074,9 +4235,15 @@ codebuild_put_resource_policy <- function(policy, resourceArn) {
 #'       )
 #'     ),
 #'     environment = list(
-#'       type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"MAC_ARM",
+#'       type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"LINUX_EC2"|"ARM_EC2"|"WINDOWS_EC2"|"MAC_ARM",
 #'       image = "string",
-#'       computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB",
+#'       computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB"|"ATTRIBUTE_BASED_COMPUTE",
+#'       computeConfiguration = list(
+#'         vCpu = 123,
+#'         memory = 123,
+#'         disk = 123,
+#'         machineType = "GENERAL"|"NVME"
+#'       ),
 #'       fleet = list(
 #'         fleetArn = "string"
 #'       ),
@@ -4155,7 +4322,13 @@ codebuild_put_resource_policy <- function(policy, resourceArn) {
 #'       sessionEnabled = TRUE|FALSE,
 #'       sessionTarget = "string"
 #'     ),
-#'     buildBatchArn = "string"
+#'     buildBatchArn = "string",
+#'     autoRetryConfig = list(
+#'       autoRetryLimit = 123,
+#'       autoRetryNumber = 123,
+#'       nextAutoRetry = "string",
+#'       previousAutoRetry = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -4325,9 +4498,15 @@ codebuild_retry_build <- function(id = NULL, idempotencyToken = NULL) {
 #'       )
 #'     ),
 #'     environment = list(
-#'       type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"MAC_ARM",
+#'       type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"LINUX_EC2"|"ARM_EC2"|"WINDOWS_EC2"|"MAC_ARM",
 #'       image = "string",
-#'       computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB",
+#'       computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB"|"ATTRIBUTE_BASED_COMPUTE",
+#'       computeConfiguration = list(
+#'         vCpu = 123,
+#'         memory = 123,
+#'         disk = 123,
+#'         machineType = "GENERAL"|"NVME"
+#'       ),
 #'       fleet = list(
 #'         fleetArn = "string"
 #'       ),
@@ -4507,7 +4686,8 @@ codebuild_retry_build_batch <- function(id = NULL, idempotencyToken = NULL, retr
 #'   serviceRoleOverride, privilegedModeOverride, timeoutInMinutesOverride,
 #'   queuedTimeoutInMinutesOverride, encryptionKeyOverride, idempotencyToken,
 #'   logsConfigOverride, registryCredentialOverride,
-#'   imagePullCredentialsTypeOverride, debugSessionEnabled, fleetOverride)
+#'   imagePullCredentialsTypeOverride, debugSessionEnabled, fleetOverride,
+#'   autoRetryLimitOverride)
 #'
 #' @param projectName &#91;required&#93; The name of the CodeBuild build project to start running a build.
 #' @param secondarySourcesOverride An array of `ProjectSource` objects.
@@ -4667,6 +4847,10 @@ codebuild_retry_build_batch <- function(id = NULL, idempotencyToken = NULL, retr
 #' Manager](https://docs.aws.amazon.com/codebuild/latest/userguide/session-manager.html).
 #' @param fleetOverride A ProjectFleet object specified for this build that overrides the one
 #' defined in the build project.
+#' @param autoRetryLimitOverride The maximum number of additional automatic retries after a failed build.
+#' For example, if the auto-retry limit is set to 2, CodeBuild will call
+#' the [`retry_build`][codebuild_retry_build] API to automatically retry
+#' your build for up to 2 additional times.
 #'
 #' @return
 #' A list with the following syntax:
@@ -4782,9 +4966,15 @@ codebuild_retry_build_batch <- function(id = NULL, idempotencyToken = NULL, retr
 #'       )
 #'     ),
 #'     environment = list(
-#'       type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"MAC_ARM",
+#'       type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"LINUX_EC2"|"ARM_EC2"|"WINDOWS_EC2"|"MAC_ARM",
 #'       image = "string",
-#'       computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB",
+#'       computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB"|"ATTRIBUTE_BASED_COMPUTE",
+#'       computeConfiguration = list(
+#'         vCpu = 123,
+#'         memory = 123,
+#'         disk = 123,
+#'         machineType = "GENERAL"|"NVME"
+#'       ),
 #'       fleet = list(
 #'         fleetArn = "string"
 #'       ),
@@ -4863,7 +5053,13 @@ codebuild_retry_build_batch <- function(id = NULL, idempotencyToken = NULL, retr
 #'       sessionEnabled = TRUE|FALSE,
 #'       sessionTarget = "string"
 #'     ),
-#'     buildBatchArn = "string"
+#'     buildBatchArn = "string",
+#'     autoRetryConfig = list(
+#'       autoRetryLimit = 123,
+#'       autoRetryNumber = 123,
+#'       nextAutoRetry = "string",
+#'       previousAutoRetry = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -4951,9 +5147,9 @@ codebuild_retry_build_batch <- function(id = NULL, idempotencyToken = NULL, retr
 #'     context = "string",
 #'     targetUrl = "string"
 #'   ),
-#'   environmentTypeOverride = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"MAC_ARM",
+#'   environmentTypeOverride = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"LINUX_EC2"|"ARM_EC2"|"WINDOWS_EC2"|"MAC_ARM",
 #'   imageOverride = "string",
-#'   computeTypeOverride = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB",
+#'   computeTypeOverride = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB"|"ATTRIBUTE_BASED_COMPUTE",
 #'   certificateOverride = "string",
 #'   cacheOverride = list(
 #'     type = "NO_CACHE"|"S3"|"LOCAL",
@@ -4989,7 +5185,8 @@ codebuild_retry_build_batch <- function(id = NULL, idempotencyToken = NULL, retr
 #'   debugSessionEnabled = TRUE|FALSE,
 #'   fleetOverride = list(
 #'     fleetArn = "string"
-#'   )
+#'   ),
+#'   autoRetryLimitOverride = 123
 #' )
 #' ```
 #'
@@ -4998,7 +5195,7 @@ codebuild_retry_build_batch <- function(id = NULL, idempotencyToken = NULL, retr
 #' @rdname codebuild_start_build
 #'
 #' @aliases codebuild_start_build
-codebuild_start_build <- function(projectName, secondarySourcesOverride = NULL, secondarySourcesVersionOverride = NULL, sourceVersion = NULL, artifactsOverride = NULL, secondaryArtifactsOverride = NULL, environmentVariablesOverride = NULL, sourceTypeOverride = NULL, sourceLocationOverride = NULL, sourceAuthOverride = NULL, gitCloneDepthOverride = NULL, gitSubmodulesConfigOverride = NULL, buildspecOverride = NULL, insecureSslOverride = NULL, reportBuildStatusOverride = NULL, buildStatusConfigOverride = NULL, environmentTypeOverride = NULL, imageOverride = NULL, computeTypeOverride = NULL, certificateOverride = NULL, cacheOverride = NULL, serviceRoleOverride = NULL, privilegedModeOverride = NULL, timeoutInMinutesOverride = NULL, queuedTimeoutInMinutesOverride = NULL, encryptionKeyOverride = NULL, idempotencyToken = NULL, logsConfigOverride = NULL, registryCredentialOverride = NULL, imagePullCredentialsTypeOverride = NULL, debugSessionEnabled = NULL, fleetOverride = NULL) {
+codebuild_start_build <- function(projectName, secondarySourcesOverride = NULL, secondarySourcesVersionOverride = NULL, sourceVersion = NULL, artifactsOverride = NULL, secondaryArtifactsOverride = NULL, environmentVariablesOverride = NULL, sourceTypeOverride = NULL, sourceLocationOverride = NULL, sourceAuthOverride = NULL, gitCloneDepthOverride = NULL, gitSubmodulesConfigOverride = NULL, buildspecOverride = NULL, insecureSslOverride = NULL, reportBuildStatusOverride = NULL, buildStatusConfigOverride = NULL, environmentTypeOverride = NULL, imageOverride = NULL, computeTypeOverride = NULL, certificateOverride = NULL, cacheOverride = NULL, serviceRoleOverride = NULL, privilegedModeOverride = NULL, timeoutInMinutesOverride = NULL, queuedTimeoutInMinutesOverride = NULL, encryptionKeyOverride = NULL, idempotencyToken = NULL, logsConfigOverride = NULL, registryCredentialOverride = NULL, imagePullCredentialsTypeOverride = NULL, debugSessionEnabled = NULL, fleetOverride = NULL, autoRetryLimitOverride = NULL) {
   op <- new_operation(
     name = "StartBuild",
     http_method = "POST",
@@ -5007,7 +5204,7 @@ codebuild_start_build <- function(projectName, secondarySourcesOverride = NULL, 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .codebuild$start_build_input(projectName = projectName, secondarySourcesOverride = secondarySourcesOverride, secondarySourcesVersionOverride = secondarySourcesVersionOverride, sourceVersion = sourceVersion, artifactsOverride = artifactsOverride, secondaryArtifactsOverride = secondaryArtifactsOverride, environmentVariablesOverride = environmentVariablesOverride, sourceTypeOverride = sourceTypeOverride, sourceLocationOverride = sourceLocationOverride, sourceAuthOverride = sourceAuthOverride, gitCloneDepthOverride = gitCloneDepthOverride, gitSubmodulesConfigOverride = gitSubmodulesConfigOverride, buildspecOverride = buildspecOverride, insecureSslOverride = insecureSslOverride, reportBuildStatusOverride = reportBuildStatusOverride, buildStatusConfigOverride = buildStatusConfigOverride, environmentTypeOverride = environmentTypeOverride, imageOverride = imageOverride, computeTypeOverride = computeTypeOverride, certificateOverride = certificateOverride, cacheOverride = cacheOverride, serviceRoleOverride = serviceRoleOverride, privilegedModeOverride = privilegedModeOverride, timeoutInMinutesOverride = timeoutInMinutesOverride, queuedTimeoutInMinutesOverride = queuedTimeoutInMinutesOverride, encryptionKeyOverride = encryptionKeyOverride, idempotencyToken = idempotencyToken, logsConfigOverride = logsConfigOverride, registryCredentialOverride = registryCredentialOverride, imagePullCredentialsTypeOverride = imagePullCredentialsTypeOverride, debugSessionEnabled = debugSessionEnabled, fleetOverride = fleetOverride)
+  input <- .codebuild$start_build_input(projectName = projectName, secondarySourcesOverride = secondarySourcesOverride, secondarySourcesVersionOverride = secondarySourcesVersionOverride, sourceVersion = sourceVersion, artifactsOverride = artifactsOverride, secondaryArtifactsOverride = secondaryArtifactsOverride, environmentVariablesOverride = environmentVariablesOverride, sourceTypeOverride = sourceTypeOverride, sourceLocationOverride = sourceLocationOverride, sourceAuthOverride = sourceAuthOverride, gitCloneDepthOverride = gitCloneDepthOverride, gitSubmodulesConfigOverride = gitSubmodulesConfigOverride, buildspecOverride = buildspecOverride, insecureSslOverride = insecureSslOverride, reportBuildStatusOverride = reportBuildStatusOverride, buildStatusConfigOverride = buildStatusConfigOverride, environmentTypeOverride = environmentTypeOverride, imageOverride = imageOverride, computeTypeOverride = computeTypeOverride, certificateOverride = certificateOverride, cacheOverride = cacheOverride, serviceRoleOverride = serviceRoleOverride, privilegedModeOverride = privilegedModeOverride, timeoutInMinutesOverride = timeoutInMinutesOverride, queuedTimeoutInMinutesOverride = queuedTimeoutInMinutesOverride, encryptionKeyOverride = encryptionKeyOverride, idempotencyToken = idempotencyToken, logsConfigOverride = logsConfigOverride, registryCredentialOverride = registryCredentialOverride, imagePullCredentialsTypeOverride = imagePullCredentialsTypeOverride, debugSessionEnabled = debugSessionEnabled, fleetOverride = fleetOverride, autoRetryLimitOverride = autoRetryLimitOverride)
   output <- .codebuild$start_build_output()
   config <- get_config()
   svc <- .codebuild$service(config, op)
@@ -5291,9 +5488,15 @@ codebuild_start_build <- function(projectName, secondarySourcesOverride = NULL, 
 #'       )
 #'     ),
 #'     environment = list(
-#'       type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"MAC_ARM",
+#'       type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"LINUX_EC2"|"ARM_EC2"|"WINDOWS_EC2"|"MAC_ARM",
 #'       image = "string",
-#'       computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB",
+#'       computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB"|"ATTRIBUTE_BASED_COMPUTE",
+#'       computeConfiguration = list(
+#'         vCpu = 123,
+#'         memory = 123,
+#'         disk = 123,
+#'         machineType = "GENERAL"|"NVME"
+#'       ),
 #'       fleet = list(
 #'         fleetArn = "string"
 #'       ),
@@ -5495,9 +5698,9 @@ codebuild_start_build <- function(projectName, secondarySourcesOverride = NULL, 
 #'   buildspecOverride = "string",
 #'   insecureSslOverride = TRUE|FALSE,
 #'   reportBuildBatchStatusOverride = TRUE|FALSE,
-#'   environmentTypeOverride = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"MAC_ARM",
+#'   environmentTypeOverride = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"LINUX_EC2"|"ARM_EC2"|"WINDOWS_EC2"|"MAC_ARM",
 #'   imageOverride = "string",
-#'   computeTypeOverride = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB",
+#'   computeTypeOverride = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB"|"ATTRIBUTE_BASED_COMPUTE",
 #'   certificateOverride = "string",
 #'   cacheOverride = list(
 #'     type = "NO_CACHE"|"S3"|"LOCAL",
@@ -5694,9 +5897,15 @@ codebuild_start_build_batch <- function(projectName, secondarySourcesOverride = 
 #'       )
 #'     ),
 #'     environment = list(
-#'       type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"MAC_ARM",
+#'       type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"LINUX_EC2"|"ARM_EC2"|"WINDOWS_EC2"|"MAC_ARM",
 #'       image = "string",
-#'       computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB",
+#'       computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB"|"ATTRIBUTE_BASED_COMPUTE",
+#'       computeConfiguration = list(
+#'         vCpu = 123,
+#'         memory = 123,
+#'         disk = 123,
+#'         machineType = "GENERAL"|"NVME"
+#'       ),
 #'       fleet = list(
 #'         fleetArn = "string"
 #'       ),
@@ -5775,7 +5984,13 @@ codebuild_start_build_batch <- function(projectName, secondarySourcesOverride = 
 #'       sessionEnabled = TRUE|FALSE,
 #'       sessionTarget = "string"
 #'     ),
-#'     buildBatchArn = "string"
+#'     buildBatchArn = "string",
+#'     autoRetryConfig = list(
+#'       autoRetryLimit = 123,
+#'       autoRetryNumber = 123,
+#'       nextAutoRetry = "string",
+#'       previousAutoRetry = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -5934,9 +6149,15 @@ codebuild_stop_build <- function(id) {
 #'       )
 #'     ),
 #'     environment = list(
-#'       type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"MAC_ARM",
+#'       type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"LINUX_EC2"|"ARM_EC2"|"WINDOWS_EC2"|"MAC_ARM",
 #'       image = "string",
-#'       computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB",
+#'       computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB"|"ATTRIBUTE_BASED_COMPUTE",
+#'       computeConfiguration = list(
+#'         vCpu = 123,
+#'         memory = 123,
+#'         disk = 123,
+#'         machineType = "GENERAL"|"NVME"
+#'       ),
 #'       fleet = list(
 #'         fleetArn = "string"
 #'       ),
@@ -6097,8 +6318,8 @@ codebuild_stop_build_batch <- function(id) {
 #'
 #' @usage
 #' codebuild_update_fleet(arn, baseCapacity, environmentType, computeType,
-#'   scalingConfiguration, overflowBehavior, vpcConfig, imageId,
-#'   fleetServiceRole, tags)
+#'   computeConfiguration, scalingConfiguration, overflowBehavior, vpcConfig,
+#'   proxyConfiguration, imageId, fleetServiceRole, tags)
 #'
 #' @param arn &#91;required&#93; The ARN of the compute fleet.
 #' @param baseCapacity The initial number of machines allocated to the compute ﬂeet, which
@@ -6111,11 +6332,23 @@ codebuild_stop_build_batch <- function(id) {
 #'     (Singapore), Asia Pacific (Sydney), EU (Frankfurt), and South
 #'     America (São Paulo).
 #' 
+#' -   The environment type `ARM_EC2` is available only in regions US East
+#'     (N. Virginia), US East (Ohio), US West (Oregon), EU (Ireland), EU
+#'     (Frankfurt), Asia Pacific (Tokyo), Asia Pacific (Singapore), Asia
+#'     Pacific (Sydney), South America (São Paulo), and Asia Pacific
+#'     (Mumbai).
+#' 
 #' -   The environment type `LINUX_CONTAINER` is available only in regions
 #'     US East (N. Virginia), US East (Ohio), US West (Oregon), EU
 #'     (Ireland), EU (Frankfurt), Asia Pacific (Tokyo), Asia Pacific
 #'     (Singapore), Asia Pacific (Sydney), South America (São Paulo), and
 #'     Asia Pacific (Mumbai).
+#' 
+#' -   The environment type `LINUX_EC2` is available only in regions US
+#'     East (N. Virginia), US East (Ohio), US West (Oregon), EU (Ireland),
+#'     EU (Frankfurt), Asia Pacific (Tokyo), Asia Pacific (Singapore), Asia
+#'     Pacific (Sydney), South America (São Paulo), and Asia Pacific
+#'     (Mumbai).
 #' 
 #' -   The environment type `LINUX_GPU_CONTAINER` is available only in
 #'     regions US East (N. Virginia), US East (Ohio), US West (Oregon), EU
@@ -6129,6 +6362,12 @@ codebuild_stop_build_batch <- function(id) {
 #' -   The environment type `MAC_ARM` is available for Large fleets only in
 #'     regions US East (N. Virginia), US East (Ohio), US West (Oregon), and
 #'     Asia Pacific (Sydney).
+#' 
+#' -   The environment type `WINDOWS_EC2` is available only in regions US
+#'     East (N. Virginia), US East (Ohio), US West (Oregon), EU (Ireland),
+#'     EU (Frankfurt), Asia Pacific (Tokyo), Asia Pacific (Singapore), Asia
+#'     Pacific (Sydney), South America (São Paulo), and Asia Pacific
+#'     (Mumbai).
 #' 
 #' -   The environment type `WINDOWS_SERVER_2019_CONTAINER` is available
 #'     only in regions US East (N. Virginia), US East (Ohio), US West
@@ -6147,47 +6386,79 @@ codebuild_stop_build_batch <- function(id) {
 #' @param computeType Information about the compute resources the compute fleet uses.
 #' Available values include:
 #' 
-#' -   `BUILD_GENERAL1_SMALL`: Use up to 3 GB memory and 2 vCPUs for
+#' -   `ATTRIBUTE_BASED_COMPUTE`: Specify the amount of vCPUs, memory, disk
+#'     space, and the type of machine.
+#' 
+#'     If you use `ATTRIBUTE_BASED_COMPUTE`, you must define your
+#'     attributes by using `computeConfiguration`. CodeBuild will select
+#'     the cheapest instance that satisfies your specified attributes. For
+#'     more information, see [Reserved capacity environment
+#'     types](https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-compute-types.html#environment-reserved-capacity.types)
+#'     in the *CodeBuild User Guide*.
+#' 
+#' -   `BUILD_GENERAL1_SMALL`: Use up to 4 GiB memory and 2 vCPUs for
 #'     builds.
 #' 
-#' -   `BUILD_GENERAL1_MEDIUM`: Use up to 7 GB memory and 4 vCPUs for
+#' -   `BUILD_GENERAL1_MEDIUM`: Use up to 8 GiB memory and 4 vCPUs for
 #'     builds.
 #' 
-#' -   `BUILD_GENERAL1_LARGE`: Use up to 16 GB memory and 8 vCPUs for
+#' -   `BUILD_GENERAL1_LARGE`: Use up to 16 GiB memory and 8 vCPUs for
 #'     builds, depending on your environment type.
 #' 
-#' -   `BUILD_GENERAL1_XLARGE`: Use up to 70 GB memory and 36 vCPUs for
+#' -   `BUILD_GENERAL1_XLARGE`: Use up to 72 GiB memory and 36 vCPUs for
 #'     builds, depending on your environment type.
 #' 
-#' -   `BUILD_GENERAL1_2XLARGE`: Use up to 145 GB memory, 72 vCPUs, and 824
-#'     GB of SSD storage for builds. This compute type supports Docker
+#' -   `BUILD_GENERAL1_2XLARGE`: Use up to 144 GiB memory, 72 vCPUs, and
+#'     824 GB of SSD storage for builds. This compute type supports Docker
 #'     images up to 100 GB uncompressed.
+#' 
+#' -   `BUILD_LAMBDA_1GB`: Use up to 1 GiB memory for builds. Only
+#'     available for environment type `LINUX_LAMBDA_CONTAINER` and
+#'     `ARM_LAMBDA_CONTAINER`.
+#' 
+#' -   `BUILD_LAMBDA_2GB`: Use up to 2 GiB memory for builds. Only
+#'     available for environment type `LINUX_LAMBDA_CONTAINER` and
+#'     `ARM_LAMBDA_CONTAINER`.
+#' 
+#' -   `BUILD_LAMBDA_4GB`: Use up to 4 GiB memory for builds. Only
+#'     available for environment type `LINUX_LAMBDA_CONTAINER` and
+#'     `ARM_LAMBDA_CONTAINER`.
+#' 
+#' -   `BUILD_LAMBDA_8GB`: Use up to 8 GiB memory for builds. Only
+#'     available for environment type `LINUX_LAMBDA_CONTAINER` and
+#'     `ARM_LAMBDA_CONTAINER`.
+#' 
+#' -   `BUILD_LAMBDA_10GB`: Use up to 10 GiB memory for builds. Only
+#'     available for environment type `LINUX_LAMBDA_CONTAINER` and
+#'     `ARM_LAMBDA_CONTAINER`.
 #' 
 #' If you use `BUILD_GENERAL1_SMALL`:
 #' 
-#' -   For environment type `LINUX_CONTAINER`, you can use up to 3 GB
+#' -   For environment type `LINUX_CONTAINER`, you can use up to 4 GiB
 #'     memory and 2 vCPUs for builds.
 #' 
-#' -   For environment type `LINUX_GPU_CONTAINER`, you can use up to 16 GB
+#' -   For environment type `LINUX_GPU_CONTAINER`, you can use up to 16 GiB
 #'     memory, 4 vCPUs, and 1 NVIDIA A10G Tensor Core GPU for builds.
 #' 
-#' -   For environment type `ARM_CONTAINER`, you can use up to 4 GB memory
+#' -   For environment type `ARM_CONTAINER`, you can use up to 4 GiB memory
 #'     and 2 vCPUs on ARM-based processors for builds.
 #' 
 #' If you use `BUILD_GENERAL1_LARGE`:
 #' 
-#' -   For environment type `LINUX_CONTAINER`, you can use up to 15 GB
+#' -   For environment type `LINUX_CONTAINER`, you can use up to 16 GiB
 #'     memory and 8 vCPUs for builds.
 #' 
-#' -   For environment type `LINUX_GPU_CONTAINER`, you can use up to 255 GB
-#'     memory, 32 vCPUs, and 4 NVIDIA Tesla V100 GPUs for builds.
+#' -   For environment type `LINUX_GPU_CONTAINER`, you can use up to 255
+#'     GiB memory, 32 vCPUs, and 4 NVIDIA Tesla V100 GPUs for builds.
 #' 
-#' -   For environment type `ARM_CONTAINER`, you can use up to 16 GB memory
-#'     and 8 vCPUs on ARM-based processors for builds.
+#' -   For environment type `ARM_CONTAINER`, you can use up to 16 GiB
+#'     memory and 8 vCPUs on ARM-based processors for builds.
 #' 
-#' For more information, see [Build environment compute
-#' types](https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-compute-types.html)
+#' For more information, see [On-demand environment
+#' types](https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-compute-types.html#environment.types)
 #' in the *CodeBuild User Guide.*
+#' @param computeConfiguration The compute configuration of the compute fleet. This is only required if
+#' `computeType` is set to `ATTRIBUTE_BASED_COMPUTE`.
 #' @param scalingConfiguration The scaling configuration of the compute fleet.
 #' @param overflowBehavior The compute fleet overflow behavior.
 #' 
@@ -6204,6 +6475,7 @@ codebuild_stop_build_batch <- function(id) {
 #'     Web Services services required to create a VPC network
 #'     interface](https://docs.aws.amazon.com/codebuild/latest/userguide/auth-and-access-control-iam-identity-based-access-control.html#customer-managed-policies-example-create-vpc-network-interface).
 #' @param vpcConfig 
+#' @param proxyConfiguration The proxy configuration of the compute fleet.
 #' @param imageId The Amazon Machine Image (AMI) of the compute fleet.
 #' @param fleetServiceRole The service role associated with the compute fleet. For more
 #' information, see [Allow a user to add a permission policy for a fleet
@@ -6235,8 +6507,14 @@ codebuild_stop_build_batch <- function(id) {
 #'       message = "string"
 #'     ),
 #'     baseCapacity = 123,
-#'     environmentType = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"MAC_ARM",
-#'     computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB",
+#'     environmentType = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"LINUX_EC2"|"ARM_EC2"|"WINDOWS_EC2"|"MAC_ARM",
+#'     computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB"|"ATTRIBUTE_BASED_COMPUTE",
+#'     computeConfiguration = list(
+#'       vCpu = 123,
+#'       memory = 123,
+#'       disk = 123,
+#'       machineType = "GENERAL"|"NVME"
+#'     ),
 #'     scalingConfiguration = list(
 #'       scalingType = "TARGET_TRACKING_SCALING",
 #'       targetTrackingScalingConfigs = list(
@@ -6258,6 +6536,18 @@ codebuild_stop_build_batch <- function(id) {
 #'         "string"
 #'       )
 #'     ),
+#'     proxyConfiguration = list(
+#'       defaultBehavior = "ALLOW_ALL"|"DENY_ALL",
+#'       orderedProxyRules = list(
+#'         list(
+#'           type = "DOMAIN"|"IP",
+#'           effect = "ALLOW"|"DENY",
+#'           entities = list(
+#'             "string"
+#'           )
+#'         )
+#'       )
+#'     ),
 #'     imageId = "string",
 #'     fleetServiceRole = "string",
 #'     tags = list(
@@ -6275,8 +6565,14 @@ codebuild_stop_build_batch <- function(id) {
 #' svc$update_fleet(
 #'   arn = "string",
 #'   baseCapacity = 123,
-#'   environmentType = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"MAC_ARM",
-#'   computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB",
+#'   environmentType = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"LINUX_EC2"|"ARM_EC2"|"WINDOWS_EC2"|"MAC_ARM",
+#'   computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB"|"ATTRIBUTE_BASED_COMPUTE",
+#'   computeConfiguration = list(
+#'     vCpu = 123,
+#'     memory = 123,
+#'     disk = 123,
+#'     machineType = "GENERAL"|"NVME"
+#'   ),
 #'   scalingConfiguration = list(
 #'     scalingType = "TARGET_TRACKING_SCALING",
 #'     targetTrackingScalingConfigs = list(
@@ -6297,6 +6593,18 @@ codebuild_stop_build_batch <- function(id) {
 #'       "string"
 #'     )
 #'   ),
+#'   proxyConfiguration = list(
+#'     defaultBehavior = "ALLOW_ALL"|"DENY_ALL",
+#'     orderedProxyRules = list(
+#'       list(
+#'         type = "DOMAIN"|"IP",
+#'         effect = "ALLOW"|"DENY",
+#'         entities = list(
+#'           "string"
+#'         )
+#'       )
+#'     )
+#'   ),
 #'   imageId = "string",
 #'   fleetServiceRole = "string",
 #'   tags = list(
@@ -6313,7 +6621,7 @@ codebuild_stop_build_batch <- function(id) {
 #' @rdname codebuild_update_fleet
 #'
 #' @aliases codebuild_update_fleet
-codebuild_update_fleet <- function(arn, baseCapacity = NULL, environmentType = NULL, computeType = NULL, scalingConfiguration = NULL, overflowBehavior = NULL, vpcConfig = NULL, imageId = NULL, fleetServiceRole = NULL, tags = NULL) {
+codebuild_update_fleet <- function(arn, baseCapacity = NULL, environmentType = NULL, computeType = NULL, computeConfiguration = NULL, scalingConfiguration = NULL, overflowBehavior = NULL, vpcConfig = NULL, proxyConfiguration = NULL, imageId = NULL, fleetServiceRole = NULL, tags = NULL) {
   op <- new_operation(
     name = "UpdateFleet",
     http_method = "POST",
@@ -6322,7 +6630,7 @@ codebuild_update_fleet <- function(arn, baseCapacity = NULL, environmentType = N
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .codebuild$update_fleet_input(arn = arn, baseCapacity = baseCapacity, environmentType = environmentType, computeType = computeType, scalingConfiguration = scalingConfiguration, overflowBehavior = overflowBehavior, vpcConfig = vpcConfig, imageId = imageId, fleetServiceRole = fleetServiceRole, tags = tags)
+  input <- .codebuild$update_fleet_input(arn = arn, baseCapacity = baseCapacity, environmentType = environmentType, computeType = computeType, computeConfiguration = computeConfiguration, scalingConfiguration = scalingConfiguration, overflowBehavior = overflowBehavior, vpcConfig = vpcConfig, proxyConfiguration = proxyConfiguration, imageId = imageId, fleetServiceRole = fleetServiceRole, tags = tags)
   output <- .codebuild$update_fleet_output()
   config <- get_config()
   svc <- .codebuild$service(config, op)
@@ -6342,7 +6650,8 @@ codebuild_update_fleet <- function(arn, baseCapacity = NULL, environmentType = N
 #'   sourceVersion, secondarySourceVersions, artifacts, secondaryArtifacts,
 #'   cache, environment, serviceRole, timeoutInMinutes,
 #'   queuedTimeoutInMinutes, encryptionKey, tags, vpcConfig, badgeEnabled,
-#'   logsConfig, fileSystemLocations, buildBatchConfig, concurrentBuildLimit)
+#'   logsConfig, fileSystemLocations, buildBatchConfig, concurrentBuildLimit,
+#'   autoRetryLimit)
 #'
 #' @param name &#91;required&#93; The name of the build project.
 #' 
@@ -6428,6 +6737,10 @@ codebuild_update_fleet <- function(arn, baseCapacity = NULL, environmentType = N
 #' builds are throttled and are not run.
 #' 
 #' To remove this limit, set this value to -1.
+#' @param autoRetryLimit The maximum number of additional automatic retries after a failed build.
+#' For example, if the auto-retry limit is set to 2, CodeBuild will call
+#' the [`retry_build`][codebuild_retry_build] API to automatically retry
+#' your build for up to 2 additional times.
 #'
 #' @return
 #' A list with the following syntax:
@@ -6520,9 +6833,15 @@ codebuild_update_fleet <- function(arn, baseCapacity = NULL, environmentType = N
 #'       )
 #'     ),
 #'     environment = list(
-#'       type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"MAC_ARM",
+#'       type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"LINUX_EC2"|"ARM_EC2"|"WINDOWS_EC2"|"MAC_ARM",
 #'       image = "string",
-#'       computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB",
+#'       computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB"|"ATTRIBUTE_BASED_COMPUTE",
+#'       computeConfiguration = list(
+#'         vCpu = 123,
+#'         memory = 123,
+#'         disk = 123,
+#'         machineType = "GENERAL"|"NVME"
+#'       ),
 #'       fleet = list(
 #'         fleetArn = "string"
 #'       ),
@@ -6565,7 +6884,7 @@ codebuild_update_fleet <- function(arn, baseCapacity = NULL, environmentType = N
 #'       filterGroups = list(
 #'         list(
 #'           list(
-#'             type = "EVENT"|"BASE_REF"|"HEAD_REF"|"ACTOR_ACCOUNT_ID"|"FILE_PATH"|"COMMIT_MESSAGE"|"WORKFLOW_NAME"|"TAG_NAME"|"RELEASE_NAME",
+#'             type = "EVENT"|"BASE_REF"|"HEAD_REF"|"ACTOR_ACCOUNT_ID"|"FILE_PATH"|"COMMIT_MESSAGE"|"WORKFLOW_NAME"|"TAG_NAME"|"RELEASE_NAME"|"REPOSITORY_NAME",
 #'             pattern = "string",
 #'             excludeMatchedPattern = TRUE|FALSE
 #'           )
@@ -6579,7 +6898,7 @@ codebuild_update_fleet <- function(arn, baseCapacity = NULL, environmentType = N
 #'       scopeConfiguration = list(
 #'         name = "string",
 #'         domain = "string",
-#'         scope = "GITHUB_ORGANIZATION"|"GITHUB_GLOBAL"
+#'         scope = "GITHUB_ORGANIZATION"|"GITHUB_GLOBAL"|"GITLAB_GROUP"
 #'       )
 #'     ),
 #'     vpcConfig = list(
@@ -6632,7 +6951,8 @@ codebuild_update_fleet <- function(arn, baseCapacity = NULL, environmentType = N
 #'     concurrentBuildLimit = 123,
 #'     projectVisibility = "PUBLIC_READ"|"PRIVATE",
 #'     publicProjectAlias = "string",
-#'     resourceAccessRole = "string"
+#'     resourceAccessRole = "string",
+#'     autoRetryLimit = 123
 #'   )
 #' )
 #' ```
@@ -6725,9 +7045,15 @@ codebuild_update_fleet <- function(arn, baseCapacity = NULL, environmentType = N
 #'     )
 #'   ),
 #'   environment = list(
-#'     type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"MAC_ARM",
+#'     type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"LINUX_EC2"|"ARM_EC2"|"WINDOWS_EC2"|"MAC_ARM",
 #'     image = "string",
-#'     computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB",
+#'     computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB"|"ATTRIBUTE_BASED_COMPUTE",
+#'     computeConfiguration = list(
+#'       vCpu = 123,
+#'       memory = 123,
+#'       disk = 123,
+#'       machineType = "GENERAL"|"NVME"
+#'     ),
 #'     fleet = list(
 #'       fleetArn = "string"
 #'     ),
@@ -6800,7 +7126,8 @@ codebuild_update_fleet <- function(arn, baseCapacity = NULL, environmentType = N
 #'     timeoutInMins = 123,
 #'     batchReportMode = "REPORT_INDIVIDUAL_BUILDS"|"REPORT_AGGREGATED_BATCH"
 #'   ),
-#'   concurrentBuildLimit = 123
+#'   concurrentBuildLimit = 123,
+#'   autoRetryLimit = 123
 #' )
 #' ```
 #'
@@ -6809,7 +7136,7 @@ codebuild_update_fleet <- function(arn, baseCapacity = NULL, environmentType = N
 #' @rdname codebuild_update_project
 #'
 #' @aliases codebuild_update_project
-codebuild_update_project <- function(name, description = NULL, source = NULL, secondarySources = NULL, sourceVersion = NULL, secondarySourceVersions = NULL, artifacts = NULL, secondaryArtifacts = NULL, cache = NULL, environment = NULL, serviceRole = NULL, timeoutInMinutes = NULL, queuedTimeoutInMinutes = NULL, encryptionKey = NULL, tags = NULL, vpcConfig = NULL, badgeEnabled = NULL, logsConfig = NULL, fileSystemLocations = NULL, buildBatchConfig = NULL, concurrentBuildLimit = NULL) {
+codebuild_update_project <- function(name, description = NULL, source = NULL, secondarySources = NULL, sourceVersion = NULL, secondarySourceVersions = NULL, artifacts = NULL, secondaryArtifacts = NULL, cache = NULL, environment = NULL, serviceRole = NULL, timeoutInMinutes = NULL, queuedTimeoutInMinutes = NULL, encryptionKey = NULL, tags = NULL, vpcConfig = NULL, badgeEnabled = NULL, logsConfig = NULL, fileSystemLocations = NULL, buildBatchConfig = NULL, concurrentBuildLimit = NULL, autoRetryLimit = NULL) {
   op <- new_operation(
     name = "UpdateProject",
     http_method = "POST",
@@ -6818,7 +7145,7 @@ codebuild_update_project <- function(name, description = NULL, source = NULL, se
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .codebuild$update_project_input(name = name, description = description, source = source, secondarySources = secondarySources, sourceVersion = sourceVersion, secondarySourceVersions = secondarySourceVersions, artifacts = artifacts, secondaryArtifacts = secondaryArtifacts, cache = cache, environment = environment, serviceRole = serviceRole, timeoutInMinutes = timeoutInMinutes, queuedTimeoutInMinutes = queuedTimeoutInMinutes, encryptionKey = encryptionKey, tags = tags, vpcConfig = vpcConfig, badgeEnabled = badgeEnabled, logsConfig = logsConfig, fileSystemLocations = fileSystemLocations, buildBatchConfig = buildBatchConfig, concurrentBuildLimit = concurrentBuildLimit)
+  input <- .codebuild$update_project_input(name = name, description = description, source = source, secondarySources = secondarySources, sourceVersion = sourceVersion, secondarySourceVersions = secondarySourceVersions, artifacts = artifacts, secondaryArtifacts = secondaryArtifacts, cache = cache, environment = environment, serviceRole = serviceRole, timeoutInMinutes = timeoutInMinutes, queuedTimeoutInMinutes = queuedTimeoutInMinutes, encryptionKey = encryptionKey, tags = tags, vpcConfig = vpcConfig, badgeEnabled = badgeEnabled, logsConfig = logsConfig, fileSystemLocations = fileSystemLocations, buildBatchConfig = buildBatchConfig, concurrentBuildLimit = concurrentBuildLimit, autoRetryLimit = autoRetryLimit)
   output <- .codebuild$update_project_output()
   config <- get_config()
   svc <- .codebuild$service(config, op)
@@ -7059,7 +7386,7 @@ codebuild_update_report_group <- function(arn, exportConfig = NULL, tags = NULL)
 #'     filterGroups = list(
 #'       list(
 #'         list(
-#'           type = "EVENT"|"BASE_REF"|"HEAD_REF"|"ACTOR_ACCOUNT_ID"|"FILE_PATH"|"COMMIT_MESSAGE"|"WORKFLOW_NAME"|"TAG_NAME"|"RELEASE_NAME",
+#'           type = "EVENT"|"BASE_REF"|"HEAD_REF"|"ACTOR_ACCOUNT_ID"|"FILE_PATH"|"COMMIT_MESSAGE"|"WORKFLOW_NAME"|"TAG_NAME"|"RELEASE_NAME"|"REPOSITORY_NAME",
 #'           pattern = "string",
 #'           excludeMatchedPattern = TRUE|FALSE
 #'         )
@@ -7073,7 +7400,7 @@ codebuild_update_report_group <- function(arn, exportConfig = NULL, tags = NULL)
 #'     scopeConfiguration = list(
 #'       name = "string",
 #'       domain = "string",
-#'       scope = "GITHUB_ORGANIZATION"|"GITHUB_GLOBAL"
+#'       scope = "GITHUB_ORGANIZATION"|"GITHUB_GLOBAL"|"GITLAB_GROUP"
 #'     )
 #'   )
 #' )
@@ -7088,7 +7415,7 @@ codebuild_update_report_group <- function(arn, exportConfig = NULL, tags = NULL)
 #'   filterGroups = list(
 #'     list(
 #'       list(
-#'         type = "EVENT"|"BASE_REF"|"HEAD_REF"|"ACTOR_ACCOUNT_ID"|"FILE_PATH"|"COMMIT_MESSAGE"|"WORKFLOW_NAME"|"TAG_NAME"|"RELEASE_NAME",
+#'         type = "EVENT"|"BASE_REF"|"HEAD_REF"|"ACTOR_ACCOUNT_ID"|"FILE_PATH"|"COMMIT_MESSAGE"|"WORKFLOW_NAME"|"TAG_NAME"|"RELEASE_NAME"|"REPOSITORY_NAME",
 #'         pattern = "string",
 #'         excludeMatchedPattern = TRUE|FALSE
 #'       )

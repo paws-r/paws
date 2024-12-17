@@ -9,7 +9,8 @@ workmail_delete_organization(
   ClientToken = NULL,
   OrganizationId,
   DeleteDirectory,
-  ForceDelete = NULL
+  ForceDelete = NULL,
+  DeleteIdentityCenterApplication = NULL
 )
 }
 \arguments{
@@ -22,6 +23,9 @@ organization.}
 
 \item{ForceDelete}{Deletes a WorkMail organization even if the organization has enabled
 users.}
+
+\item{DeleteIdentityCenterApplication}{Deletes IAM Identity Center application for WorkMail. This action does
+not affect authentication settings for any organization.}
 }
 \description{
 Deletes an WorkMail organization and all underlying AWS resources managed by WorkMail as part of the organization. You can choose whether to delete the associated directory. For more information, see \href{https://docs.aws.amazon.com/workmail/latest/adminguide/delete_organization.html}{Removing an organization} in the \emph{WorkMail Administrator Guide}.

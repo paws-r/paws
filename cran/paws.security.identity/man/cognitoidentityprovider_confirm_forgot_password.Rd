@@ -2,7 +2,8 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_confirm_forgot_password}
 \alias{cognitoidentityprovider_confirm_forgot_password}
-\title{Allows a user to enter a confirmation code to reset a forgotten password}
+\title{This public API operation accepts a confirmation code that Amazon
+Cognito sent to a user and accepts a new password for that user}
 \usage{
 cognitoidentityprovider_confirm_forgot_password(
   ClientId,
@@ -16,7 +17,10 @@ cognitoidentityprovider_confirm_forgot_password(
 )
 }
 \arguments{
-\item{ClientId}{[required] The app client ID of the app associated with the user pool.}
+\item{ClientId}{[required] The ID of the app client where the user wants to reset their password.
+This parameter is an identifier of the client application that users are
+resetting their password from, but this operation resets users'
+passwords for all app clients in the user pool.}
 
 \item{SecretHash}{A keyed-hash message authentication code (HMAC) calculated using the
 secret key of a user pool client and username plus the client ID in the
@@ -28,9 +32,10 @@ their alias attributes. If \code{username} isn't an alias attribute in your
 user pool, this value must be the \code{sub} of a local user or the username
 of a user from a third-party IdP.}
 
-\item{ConfirmationCode}{[required] The confirmation code from your user's request to reset their password.
-For more information, see
-\code{\link[=cognitoidentityprovider_forgot_password]{forgot_password}}.}
+\item{ConfirmationCode}{[required] The confirmation code that your user pool sent in response to an
+\code{\link[=cognitoidentityprovider_admin_reset_user_password]{admin_reset_user_password}}
+or a \code{\link[=cognitoidentityprovider_forgot_password]{forgot_password}}
+request.}
 
 \item{Password}{[required] The new password that your user wants to set.}
 
@@ -41,7 +46,9 @@ calls.}
 \item{UserContextData}{Contextual data about your user session, such as the device fingerprint,
 IP address, or location. Amazon Cognito advanced security evaluates the
 risk of an authentication event based on the context that your app
-generates and passes to Amazon Cognito when it makes API requests.}
+generates and passes to Amazon Cognito when it makes API requests.
+
+For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-settings-viewing-threat-protection-app.html}{Collecting data for threat protection in applications}.}
 
 \item{ClientMetadata}{A map of custom key-value pairs that you can provide as input for any
 custom workflows that this action triggers.
@@ -59,20 +66,20 @@ to enhance your workflow for your specific needs.
 For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-working-with-lambda-triggers.html}{Customizing user pool Workflows with Lambda Triggers}
 in the \emph{Amazon Cognito Developer Guide}.
 
-When you use the ClientMetadata parameter, remember that Amazon Cognito
+When you use the \code{ClientMetadata} parameter, note that Amazon Cognito
 won't do the following:
 \itemize{
-\item Store the ClientMetadata value. This data is available only to
+\item Store the \code{ClientMetadata} value. This data is available only to
 Lambda triggers that are assigned to a user pool to support custom
 workflows. If your user pool configuration doesn't include triggers,
-the ClientMetadata parameter serves no purpose.
-\item Validate the ClientMetadata value.
-\item Encrypt the ClientMetadata value. Don't use Amazon Cognito to
-provide sensitive information.
+the \code{ClientMetadata} parameter serves no purpose.
+\item Validate the \code{ClientMetadata} value.
+\item Encrypt the \code{ClientMetadata} value. Don't send sensitive information
+in this parameter.
 }}
 }
 \description{
-Allows a user to enter a confirmation code to reset a forgotten password.
+This public API operation accepts a confirmation code that Amazon Cognito sent to a user and accepts a new password for that user.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_confirm_forgot_password/} for full documentation.
 }

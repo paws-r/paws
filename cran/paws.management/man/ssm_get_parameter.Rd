@@ -15,7 +15,7 @@ the full ARN.
 To query by parameter label, use \code{"Name": "name:label"}. To query by
 parameter version, use \code{"Name": "name:version"}.
 
-For more information about shared parameters, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/}{Working with shared parameters}
+For more information about shared parameters, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-shared-parameters.html}{Working with shared parameters}
 in the \emph{Amazon Web Services Systems Manager User Guide}.}
 
 \item{WithDecryption}{Return decrypted values for secure string parameters. This flag is

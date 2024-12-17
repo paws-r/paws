@@ -8,10 +8,11 @@ datazone_create_data_source(
   assetFormsInput = NULL,
   clientToken = NULL,
   configuration = NULL,
+  connectionIdentifier = NULL,
   description = NULL,
   domainIdentifier,
   enableSetting = NULL,
-  environmentIdentifier,
+  environmentIdentifier = NULL,
   name,
   projectIdentifier,
   publishOnImport = NULL,
@@ -30,13 +31,15 @@ idempotency of the request.}
 \item{configuration}{Specifies the configuration of the data source. It can be set to either
 \code{glueRunConfiguration} or \code{redshiftRunConfiguration}.}
 
+\item{connectionIdentifier}{The ID of the connection.}
+
 \item{description}{The description of the data source.}
 
 \item{domainIdentifier}{[required] The ID of the Amazon DataZone domain where the data source is created.}
 
 \item{enableSetting}{Specifies whether the data source is enabled.}
 
-\item{environmentIdentifier}{[required] The unique identifier of the Amazon DataZone environment to which the
+\item{environmentIdentifier}{The unique identifier of the Amazon DataZone environment to which the
 data source publishes assets.}
 
 \item{name}{[required] The name of the data source.}

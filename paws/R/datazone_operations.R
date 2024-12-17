@@ -107,7 +107,16 @@ datazone_accept_predictions <- function(acceptChoices = NULL, acceptRule = NULL,
 #'   createdBy = "string",
 #'   decisionComment = "string",
 #'   domainId = "string",
+#'   existingSubscriptionId = "string",
 #'   id = "string",
+#'   metadataForms = list(
+#'     list(
+#'       content = "string",
+#'       formName = "string",
+#'       typeName = "string",
+#'       typeRevision = "string"
+#'     )
+#'   ),
 #'   requestReason = "string",
 #'   reviewerId = "string",
 #'   status = "PENDING"|"ACCEPTED"|"REJECTED",
@@ -319,6 +328,7 @@ datazone_add_entity_owner <- function(clientToken = NULL, domainIdentifier, enti
 #'       includeChildDomainUnits = TRUE|FALSE
 #'     ),
 #'     createEnvironment = list(),
+#'     createEnvironmentFromBlueprint = list(),
 #'     createEnvironmentProfile = list(
 #'       domainUnitId = "string"
 #'     ),
@@ -331,6 +341,12 @@ datazone_add_entity_owner <- function(clientToken = NULL, domainIdentifier, enti
 #'     createProject = list(
 #'       includeChildDomainUnits = TRUE|FALSE
 #'     ),
+#'     createProjectFromProjectProfile = list(
+#'       includeChildDomainUnits = TRUE|FALSE,
+#'       projectProfiles = list(
+#'         "string"
+#'       )
+#'     ),
 #'     delegateCreateEnvironmentProfile = list(),
 #'     overrideDomainUnitOwners = list(
 #'       includeChildDomainUnits = TRUE|FALSE
@@ -342,7 +358,7 @@ datazone_add_entity_owner <- function(clientToken = NULL, domainIdentifier, enti
 #'   domainIdentifier = "string",
 #'   entityIdentifier = "string",
 #'   entityType = "DOMAIN_UNIT"|"ENVIRONMENT_BLUEPRINT_CONFIGURATION"|"ENVIRONMENT_PROFILE",
-#'   policyType = "CREATE_DOMAIN_UNIT"|"OVERRIDE_DOMAIN_UNIT_OWNERS"|"ADD_TO_PROJECT_MEMBER_POOL"|"OVERRIDE_PROJECT_OWNERS"|"CREATE_GLOSSARY"|"CREATE_FORM_TYPE"|"CREATE_ASSET_TYPE"|"CREATE_PROJECT"|"CREATE_ENVIRONMENT_PROFILE"|"DELEGATE_CREATE_ENVIRONMENT_PROFILE"|"CREATE_ENVIRONMENT",
+#'   policyType = "CREATE_DOMAIN_UNIT"|"OVERRIDE_DOMAIN_UNIT_OWNERS"|"ADD_TO_PROJECT_MEMBER_POOL"|"OVERRIDE_PROJECT_OWNERS"|"CREATE_GLOSSARY"|"CREATE_FORM_TYPE"|"CREATE_ASSET_TYPE"|"CREATE_PROJECT"|"CREATE_ENVIRONMENT_PROFILE"|"DELEGATE_CREATE_ENVIRONMENT_PROFILE"|"CREATE_ENVIRONMENT"|"CREATE_ENVIRONMENT_FROM_BLUEPRINT"|"CREATE_PROJECT_FROM_PROJECT_PROFILE",
 #'   principal = list(
 #'     domainUnit = list(
 #'       domainUnitDesignation = "OWNER",
@@ -355,7 +371,7 @@ datazone_add_entity_owner <- function(clientToken = NULL, domainIdentifier, enti
 #'       groupIdentifier = "string"
 #'     ),
 #'     project = list(
-#'       projectDesignation = "OWNER"|"CONTRIBUTOR",
+#'       projectDesignation = "OWNER"|"CONTRIBUTOR"|"PROJECT_CATALOG_STEWARD",
 #'       projectGrantFilter = list(
 #'         domainUnitFilter = list(
 #'           domainUnit = "string",
@@ -1195,6 +1211,363 @@ datazone_create_asset_type <- function(description = NULL, domainIdentifier, for
 }
 .datazone$operations$create_asset_type <- datazone_create_asset_type
 
+#' Creates a new connection
+#'
+#' @description
+#' Creates a new connection. In Amazon DataZone, a connection enables you
+#' to connect your resources (domains, projects, and environments) to
+#' external resources and services.
+#'
+#' @usage
+#' datazone_create_connection(awsLocation, clientToken, description,
+#'   domainIdentifier, environmentIdentifier, name, props)
+#'
+#' @param awsLocation The location where the connection is created.
+#' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
+#' idempotency of the request.
+#' @param description A connection description.
+#' @param domainIdentifier &#91;required&#93; The ID of the domain where the connection is created.
+#' @param environmentIdentifier &#91;required&#93; The ID of the environment where the connection is created.
+#' @param name &#91;required&#93; The connection name.
+#' @param props The connection props.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   connectionId = "string",
+#'   description = "string",
+#'   domainId = "string",
+#'   domainUnitId = "string",
+#'   environmentId = "string",
+#'   name = "string",
+#'   physicalEndpoints = list(
+#'     list(
+#'       awsLocation = list(
+#'         accessRole = "string",
+#'         awsAccountId = "string",
+#'         awsRegion = "string",
+#'         iamConnectionId = "string"
+#'       ),
+#'       glueConnection = list(
+#'         athenaProperties = list(
+#'           "string"
+#'         ),
+#'         authenticationConfiguration = list(
+#'           authenticationType = "BASIC"|"OAUTH2"|"CUSTOM",
+#'           oAuth2Properties = list(
+#'             authorizationCodeProperties = list(
+#'               authorizationCode = "string",
+#'               redirectUri = "string"
+#'             ),
+#'             oAuth2ClientApplication = list(
+#'               aWSManagedClientApplicationReference = "string",
+#'               userManagedClientApplicationClientId = "string"
+#'             ),
+#'             oAuth2Credentials = list(
+#'               accessToken = "string",
+#'               jwtToken = "string",
+#'               refreshToken = "string",
+#'               userManagedClientApplicationClientSecret = "string"
+#'             ),
+#'             oAuth2GrantType = "AUTHORIZATION_CODE"|"CLIENT_CREDENTIALS"|"JWT_BEARER",
+#'             tokenUrl = "string",
+#'             tokenUrlParametersMap = list(
+#'               "string"
+#'             )
+#'           ),
+#'           secretArn = "string"
+#'         ),
+#'         compatibleComputeEnvironments = list(
+#'           "SPARK"|"ATHENA"|"PYTHON"
+#'         ),
+#'         connectionProperties = list(
+#'           "string"
+#'         ),
+#'         connectionSchemaVersion = 123,
+#'         connectionType = "ATHENA"|"BIGQUERY"|"DATABRICKS"|"DOCUMENTDB"|"DYNAMODB"|"HYPERPOD"|"IAM"|"MYSQL"|"OPENSEARCH"|"ORACLE"|"POSTGRESQL"|"REDSHIFT"|"SAPHANA"|"SNOWFLAKE"|"SPARK"|"SQLSERVER"|"TERADATA"|"VERTICA"|"WORKFLOWS_MWAA",
+#'         creationTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         description = "string",
+#'         lastConnectionValidationTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         lastUpdatedBy = "string",
+#'         lastUpdatedTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         matchCriteria = list(
+#'           "string"
+#'         ),
+#'         name = "string",
+#'         physicalConnectionRequirements = list(
+#'           availabilityZone = "string",
+#'           securityGroupIdList = list(
+#'             "string"
+#'           ),
+#'           subnetId = "string",
+#'           subnetIdList = list(
+#'             "string"
+#'           )
+#'         ),
+#'         pythonProperties = list(
+#'           "string"
+#'         ),
+#'         sparkProperties = list(
+#'           "string"
+#'         ),
+#'         status = "CREATING"|"CREATE_FAILED"|"DELETING"|"DELETE_FAILED"|"READY"|"UPDATING"|"UPDATE_FAILED"|"DELETED",
+#'         statusReason = "string"
+#'       ),
+#'       glueConnectionName = "string",
+#'       host = "string",
+#'       port = 123,
+#'       protocol = "ATHENA"|"GLUE_INTERACTIVE_SESSION"|"HTTPS"|"JDBC"|"LIVY"|"ODBC"|"PRISM",
+#'       stage = "string"
+#'     )
+#'   ),
+#'   projectId = "string",
+#'   props = list(
+#'     athenaProperties = list(
+#'       workgroupName = "string"
+#'     ),
+#'     glueProperties = list(
+#'       errorMessage = "string",
+#'       status = "CREATING"|"CREATE_FAILED"|"DELETING"|"DELETE_FAILED"|"READY"|"UPDATING"|"UPDATE_FAILED"|"DELETED"
+#'     ),
+#'     hyperPodProperties = list(
+#'       clusterArn = "string",
+#'       clusterName = "string",
+#'       orchestrator = "EKS"|"SLURM"
+#'     ),
+#'     iamProperties = list(
+#'       environmentId = "string",
+#'       glueLineageSyncEnabled = TRUE|FALSE
+#'     ),
+#'     redshiftProperties = list(
+#'       credentials = list(
+#'         secretArn = "string",
+#'         usernamePassword = list(
+#'           password = "string",
+#'           username = "string"
+#'         )
+#'       ),
+#'       databaseName = "string",
+#'       isProvisionedSecret = TRUE|FALSE,
+#'       jdbcIamUrl = "string",
+#'       jdbcUrl = "string",
+#'       lineageSync = list(
+#'         enabled = TRUE|FALSE,
+#'         lineageJobId = "string",
+#'         schedule = list(
+#'           schedule = "string"
+#'         )
+#'       ),
+#'       redshiftTempDir = "string",
+#'       status = "CREATING"|"CREATE_FAILED"|"DELETING"|"DELETE_FAILED"|"READY"|"UPDATING"|"UPDATE_FAILED"|"DELETED",
+#'       storage = list(
+#'         clusterName = "string",
+#'         workgroupName = "string"
+#'       )
+#'     ),
+#'     sparkEmrProperties = list(
+#'       computeArn = "string",
+#'       credentials = list(
+#'         password = "string",
+#'         username = "string"
+#'       ),
+#'       credentialsExpiration = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       governanceType = "AWS_MANAGED"|"USER_MANAGED",
+#'       instanceProfileArn = "string",
+#'       javaVirtualEnv = "string",
+#'       livyEndpoint = "string",
+#'       logUri = "string",
+#'       pythonVirtualEnv = "string",
+#'       runtimeRole = "string",
+#'       trustedCertificatesS3Uri = "string"
+#'     ),
+#'     sparkGlueProperties = list(
+#'       additionalArgs = list(
+#'         connection = "string"
+#'       ),
+#'       glueConnectionName = "string",
+#'       glueVersion = "string",
+#'       idleTimeout = 123,
+#'       javaVirtualEnv = "string",
+#'       numberOfWorkers = 123,
+#'       pythonVirtualEnv = "string",
+#'       workerType = "string"
+#'     )
+#'   ),
+#'   type = "ATHENA"|"BIGQUERY"|"DATABRICKS"|"DOCUMENTDB"|"DYNAMODB"|"HYPERPOD"|"IAM"|"MYSQL"|"OPENSEARCH"|"ORACLE"|"POSTGRESQL"|"REDSHIFT"|"SAPHANA"|"SNOWFLAKE"|"SPARK"|"SQLSERVER"|"TERADATA"|"VERTICA"|"WORKFLOWS_MWAA"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_connection(
+#'   awsLocation = list(
+#'     accessRole = "string",
+#'     awsAccountId = "string",
+#'     awsRegion = "string",
+#'     iamConnectionId = "string"
+#'   ),
+#'   clientToken = "string",
+#'   description = "string",
+#'   domainIdentifier = "string",
+#'   environmentIdentifier = "string",
+#'   name = "string",
+#'   props = list(
+#'     athenaProperties = list(
+#'       workgroupName = "string"
+#'     ),
+#'     glueProperties = list(
+#'       glueConnectionInput = list(
+#'         athenaProperties = list(
+#'           "string"
+#'         ),
+#'         authenticationConfiguration = list(
+#'           authenticationType = "BASIC"|"OAUTH2"|"CUSTOM",
+#'           basicAuthenticationCredentials = list(
+#'             password = "string",
+#'             userName = "string"
+#'           ),
+#'           customAuthenticationCredentials = list(
+#'             "string"
+#'           ),
+#'           kmsKeyArn = "string",
+#'           oAuth2Properties = list(
+#'             authorizationCodeProperties = list(
+#'               authorizationCode = "string",
+#'               redirectUri = "string"
+#'             ),
+#'             oAuth2ClientApplication = list(
+#'               aWSManagedClientApplicationReference = "string",
+#'               userManagedClientApplicationClientId = "string"
+#'             ),
+#'             oAuth2Credentials = list(
+#'               accessToken = "string",
+#'               jwtToken = "string",
+#'               refreshToken = "string",
+#'               userManagedClientApplicationClientSecret = "string"
+#'             ),
+#'             oAuth2GrantType = "AUTHORIZATION_CODE"|"CLIENT_CREDENTIALS"|"JWT_BEARER",
+#'             tokenUrl = "string",
+#'             tokenUrlParametersMap = list(
+#'               "string"
+#'             )
+#'           ),
+#'           secretArn = "string"
+#'         ),
+#'         connectionProperties = list(
+#'           "string"
+#'         ),
+#'         connectionType = "SNOWFLAKE"|"BIGQUERY"|"DOCUMENTDB"|"DYNAMODB"|"MYSQL"|"OPENSEARCH"|"ORACLE"|"POSTGRESQL"|"REDSHIFT"|"SAPHANA"|"SQLSERVER"|"TERADATA"|"VERTICA",
+#'         description = "string",
+#'         matchCriteria = "string",
+#'         name = "string",
+#'         physicalConnectionRequirements = list(
+#'           availabilityZone = "string",
+#'           securityGroupIdList = list(
+#'             "string"
+#'           ),
+#'           subnetId = "string",
+#'           subnetIdList = list(
+#'             "string"
+#'           )
+#'         ),
+#'         pythonProperties = list(
+#'           "string"
+#'         ),
+#'         sparkProperties = list(
+#'           "string"
+#'         ),
+#'         validateCredentials = TRUE|FALSE,
+#'         validateForComputeEnvironments = list(
+#'           "SPARK"|"ATHENA"|"PYTHON"
+#'         )
+#'       )
+#'     ),
+#'     hyperPodProperties = list(
+#'       clusterName = "string"
+#'     ),
+#'     iamProperties = list(
+#'       glueLineageSyncEnabled = TRUE|FALSE
+#'     ),
+#'     redshiftProperties = list(
+#'       credentials = list(
+#'         secretArn = "string",
+#'         usernamePassword = list(
+#'           password = "string",
+#'           username = "string"
+#'         )
+#'       ),
+#'       databaseName = "string",
+#'       host = "string",
+#'       lineageSync = list(
+#'         enabled = TRUE|FALSE,
+#'         schedule = list(
+#'           schedule = "string"
+#'         )
+#'       ),
+#'       port = 123,
+#'       storage = list(
+#'         clusterName = "string",
+#'         workgroupName = "string"
+#'       )
+#'     ),
+#'     sparkEmrProperties = list(
+#'       computeArn = "string",
+#'       instanceProfileArn = "string",
+#'       javaVirtualEnv = "string",
+#'       logUri = "string",
+#'       pythonVirtualEnv = "string",
+#'       runtimeRole = "string",
+#'       trustedCertificatesS3Uri = "string"
+#'     ),
+#'     sparkGlueProperties = list(
+#'       additionalArgs = list(
+#'         connection = "string"
+#'       ),
+#'       glueConnectionName = "string",
+#'       glueVersion = "string",
+#'       idleTimeout = 123,
+#'       javaVirtualEnv = "string",
+#'       numberOfWorkers = 123,
+#'       pythonVirtualEnv = "string",
+#'       workerType = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname datazone_create_connection
+#'
+#' @aliases datazone_create_connection
+datazone_create_connection <- function(awsLocation = NULL, clientToken = NULL, description = NULL, domainIdentifier, environmentIdentifier, name, props = NULL) {
+  op <- new_operation(
+    name = "CreateConnection",
+    http_method = "POST",
+    http_path = "/v2/domains/{domainIdentifier}/connections",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .datazone$create_connection_input(awsLocation = awsLocation, clientToken = clientToken, description = description, domainIdentifier = domainIdentifier, environmentIdentifier = environmentIdentifier, name = name, props = props)
+  output <- .datazone$create_connection_output()
+  config <- get_config()
+  svc <- .datazone$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.datazone$operations$create_connection <- datazone_create_connection
+
 #' Creates a data product
 #'
 #' @description
@@ -1438,9 +1811,9 @@ datazone_create_data_product_revision <- function(clientToken = NULL, descriptio
 #'
 #' @usage
 #' datazone_create_data_source(assetFormsInput, clientToken, configuration,
-#'   description, domainIdentifier, enableSetting, environmentIdentifier,
-#'   name, projectIdentifier, publishOnImport, recommendation, schedule,
-#'   type)
+#'   connectionIdentifier, description, domainIdentifier, enableSetting,
+#'   environmentIdentifier, name, projectIdentifier, publishOnImport,
+#'   recommendation, schedule, type)
 #'
 #' @param assetFormsInput The metadata forms that are to be attached to the assets that this data
 #' source works with.
@@ -1448,10 +1821,11 @@ datazone_create_data_product_revision <- function(clientToken = NULL, descriptio
 #' idempotency of the request.
 #' @param configuration Specifies the configuration of the data source. It can be set to either
 #' `glueRunConfiguration` or `redshiftRunConfiguration`.
+#' @param connectionIdentifier The ID of the connection.
 #' @param description The description of the data source.
 #' @param domainIdentifier &#91;required&#93; The ID of the Amazon DataZone domain where the data source is created.
 #' @param enableSetting Specifies whether the data source is enabled.
-#' @param environmentIdentifier &#91;required&#93; The unique identifier of the Amazon DataZone environment to which the
+#' @param environmentIdentifier The unique identifier of the Amazon DataZone environment to which the
 #' data source publishes assets.
 #' @param name &#91;required&#93; The name of the data source.
 #' @param projectIdentifier &#91;required&#93; The identifier of the Amazon DataZone project in which you want to add
@@ -1479,6 +1853,7 @@ datazone_create_data_product_revision <- function(clientToken = NULL, descriptio
 #'     glueRunConfiguration = list(
 #'       accountId = "string",
 #'       autoImportDataQualityResult = TRUE|FALSE,
+#'       catalogName = "string",
 #'       dataAccessRole = "string",
 #'       region = "string",
 #'       relationalFilterConfigurations = list(
@@ -1521,8 +1896,18 @@ datazone_create_data_product_revision <- function(clientToken = NULL, descriptio
 #'           schemaName = "string"
 #'         )
 #'       )
+#'     ),
+#'     sageMakerRunConfiguration = list(
+#'       accountId = "string",
+#'       region = "string",
+#'       trackingAssets = list(
+#'         list(
+#'           "string"
+#'         )
+#'       )
 #'     )
 #'   ),
+#'   connectionId = "string",
 #'   createdAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
@@ -1576,6 +1961,7 @@ datazone_create_data_product_revision <- function(clientToken = NULL, descriptio
 #'   configuration = list(
 #'     glueRunConfiguration = list(
 #'       autoImportDataQualityResult = TRUE|FALSE,
+#'       catalogName = "string",
 #'       dataAccessRole = "string",
 #'       relationalFilterConfigurations = list(
 #'         list(
@@ -1615,8 +2001,16 @@ datazone_create_data_product_revision <- function(clientToken = NULL, descriptio
 #'           schemaName = "string"
 #'         )
 #'       )
+#'     ),
+#'     sageMakerRunConfiguration = list(
+#'       trackingAssets = list(
+#'         list(
+#'           "string"
+#'         )
+#'       )
 #'     )
 #'   ),
+#'   connectionIdentifier = "string",
 #'   description = "string",
 #'   domainIdentifier = "string",
 #'   enableSetting = "ENABLED"|"DISABLED",
@@ -1640,7 +2034,7 @@ datazone_create_data_product_revision <- function(clientToken = NULL, descriptio
 #' @rdname datazone_create_data_source
 #'
 #' @aliases datazone_create_data_source
-datazone_create_data_source <- function(assetFormsInput = NULL, clientToken = NULL, configuration = NULL, description = NULL, domainIdentifier, enableSetting = NULL, environmentIdentifier, name, projectIdentifier, publishOnImport = NULL, recommendation = NULL, schedule = NULL, type) {
+datazone_create_data_source <- function(assetFormsInput = NULL, clientToken = NULL, configuration = NULL, connectionIdentifier = NULL, description = NULL, domainIdentifier, enableSetting = NULL, environmentIdentifier = NULL, name, projectIdentifier, publishOnImport = NULL, recommendation = NULL, schedule = NULL, type) {
   op <- new_operation(
     name = "CreateDataSource",
     http_method = "POST",
@@ -1649,7 +2043,7 @@ datazone_create_data_source <- function(assetFormsInput = NULL, clientToken = NU
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$create_data_source_input(assetFormsInput = assetFormsInput, clientToken = clientToken, configuration = configuration, description = description, domainIdentifier = domainIdentifier, enableSetting = enableSetting, environmentIdentifier = environmentIdentifier, name = name, projectIdentifier = projectIdentifier, publishOnImport = publishOnImport, recommendation = recommendation, schedule = schedule, type = type)
+  input <- .datazone$create_data_source_input(assetFormsInput = assetFormsInput, clientToken = clientToken, configuration = configuration, connectionIdentifier = connectionIdentifier, description = description, domainIdentifier = domainIdentifier, enableSetting = enableSetting, environmentIdentifier = environmentIdentifier, name = name, projectIdentifier = projectIdentifier, publishOnImport = publishOnImport, recommendation = recommendation, schedule = schedule, type = type)
   output <- .datazone$create_data_source_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -1666,7 +2060,7 @@ datazone_create_data_source <- function(assetFormsInput = NULL, clientToken = NU
 #'
 #' @usage
 #' datazone_create_domain(clientToken, description, domainExecutionRole,
-#'   kmsKeyIdentifier, name, singleSignOn, tags)
+#'   domainVersion, kmsKeyIdentifier, name, serviceRole, singleSignOn, tags)
 #'
 #' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
 #' idempotency of the request.
@@ -1674,10 +2068,12 @@ datazone_create_data_source <- function(assetFormsInput = NULL, clientToken = NU
 #' @param domainExecutionRole &#91;required&#93; The domain execution role that is created when an Amazon DataZone domain
 #' is created. The domain execution role is created in the Amazon Web
 #' Services account that houses the Amazon DataZone domain.
+#' @param domainVersion The version of the domain that is created.
 #' @param kmsKeyIdentifier The identifier of the Amazon Web Services Key Management Service (KMS)
 #' key that is used to encrypt the Amazon DataZone domain, metadata, and
 #' reporting data.
 #' @param name &#91;required&#93; The name of the Amazon DataZone domain.
+#' @param serviceRole The service role of the domain that is created.
 #' @param singleSignOn The single-sign on configuration of the Amazon DataZone domain.
 #' @param tags The tags specified for the Amazon DataZone domain.
 #'
@@ -1688,11 +2084,13 @@ datazone_create_data_source <- function(assetFormsInput = NULL, clientToken = NU
 #'   arn = "string",
 #'   description = "string",
 #'   domainExecutionRole = "string",
+#'   domainVersion = "V1"|"V2",
 #'   id = "string",
 #'   kmsKeyIdentifier = "string",
 #'   name = "string",
 #'   portalUrl = "string",
 #'   rootDomainUnitId = "string",
+#'   serviceRole = "string",
 #'   singleSignOn = list(
 #'     type = "IAM_IDC"|"DISABLED",
 #'     userAssignment = "AUTOMATIC"|"MANUAL"
@@ -1710,8 +2108,10 @@ datazone_create_data_source <- function(assetFormsInput = NULL, clientToken = NU
 #'   clientToken = "string",
 #'   description = "string",
 #'   domainExecutionRole = "string",
+#'   domainVersion = "V1"|"V2",
 #'   kmsKeyIdentifier = "string",
 #'   name = "string",
+#'   serviceRole = "string",
 #'   singleSignOn = list(
 #'     type = "IAM_IDC"|"DISABLED",
 #'     userAssignment = "AUTOMATIC"|"MANUAL"
@@ -1727,7 +2127,7 @@ datazone_create_data_source <- function(assetFormsInput = NULL, clientToken = NU
 #' @rdname datazone_create_domain
 #'
 #' @aliases datazone_create_domain
-datazone_create_domain <- function(clientToken = NULL, description = NULL, domainExecutionRole, kmsKeyIdentifier = NULL, name, singleSignOn = NULL, tags = NULL) {
+datazone_create_domain <- function(clientToken = NULL, description = NULL, domainExecutionRole, domainVersion = NULL, kmsKeyIdentifier = NULL, name, serviceRole = NULL, singleSignOn = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateDomain",
     http_method = "POST",
@@ -1736,7 +2136,7 @@ datazone_create_domain <- function(clientToken = NULL, description = NULL, domai
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$create_domain_input(clientToken = clientToken, description = description, domainExecutionRole = domainExecutionRole, kmsKeyIdentifier = kmsKeyIdentifier, name = name, singleSignOn = singleSignOn, tags = tags)
+  input <- .datazone$create_domain_input(clientToken = clientToken, description = description, domainExecutionRole = domainExecutionRole, domainVersion = domainVersion, kmsKeyIdentifier = kmsKeyIdentifier, name = name, serviceRole = serviceRole, singleSignOn = singleSignOn, tags = tags)
   output <- .datazone$create_domain_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -1832,17 +2232,20 @@ datazone_create_domain_unit <- function(clientToken = NULL, description = NULL, 
 #' Create an Amazon DataZone environment.
 #'
 #' @usage
-#' datazone_create_environment(description, domainIdentifier,
-#'   environmentAccountIdentifier, environmentAccountRegion,
-#'   environmentBlueprintIdentifier, environmentProfileIdentifier,
-#'   glossaryTerms, name, projectIdentifier, userParameters)
+#' datazone_create_environment(deploymentOrder, description,
+#'   domainIdentifier, environmentAccountIdentifier,
+#'   environmentAccountRegion, environmentBlueprintIdentifier,
+#'   environmentConfigurationId, environmentProfileIdentifier, glossaryTerms,
+#'   name, projectIdentifier, userParameters)
 #'
+#' @param deploymentOrder The deployment order of the environment.
 #' @param description The description of the Amazon DataZone environment.
 #' @param domainIdentifier &#91;required&#93; The identifier of the Amazon DataZone domain in which the environment is
 #' created.
 #' @param environmentAccountIdentifier The ID of the account in which the environment is being created.
 #' @param environmentAccountRegion The region of the account in which the environment is being created.
 #' @param environmentBlueprintIdentifier The ID of the blueprint with which the environment is being created.
+#' @param environmentConfigurationId The configuration ID of the environment.
 #' @param environmentProfileIdentifier &#91;required&#93; The identifier of the environment profile that is used to create this
 #' Amazon DataZone environment.
 #' @param glossaryTerms The glossary terms that can be used in this Amazon DataZone environment.
@@ -1934,11 +2337,13 @@ datazone_create_domain_unit <- function(clientToken = NULL, description = NULL, 
 #' @section Request syntax:
 #' ```
 #' svc$create_environment(
+#'   deploymentOrder = 123,
 #'   description = "string",
 #'   domainIdentifier = "string",
 #'   environmentAccountIdentifier = "string",
 #'   environmentAccountRegion = "string",
 #'   environmentBlueprintIdentifier = "string",
+#'   environmentConfigurationId = "string",
 #'   environmentProfileIdentifier = "string",
 #'   glossaryTerms = list(
 #'     "string"
@@ -1959,7 +2364,7 @@ datazone_create_domain_unit <- function(clientToken = NULL, description = NULL, 
 #' @rdname datazone_create_environment
 #'
 #' @aliases datazone_create_environment
-datazone_create_environment <- function(description = NULL, domainIdentifier, environmentAccountIdentifier = NULL, environmentAccountRegion = NULL, environmentBlueprintIdentifier = NULL, environmentProfileIdentifier, glossaryTerms = NULL, name, projectIdentifier, userParameters = NULL) {
+datazone_create_environment <- function(deploymentOrder = NULL, description = NULL, domainIdentifier, environmentAccountIdentifier = NULL, environmentAccountRegion = NULL, environmentBlueprintIdentifier = NULL, environmentConfigurationId = NULL, environmentProfileIdentifier, glossaryTerms = NULL, name, projectIdentifier, userParameters = NULL) {
   op <- new_operation(
     name = "CreateEnvironment",
     http_method = "POST",
@@ -1968,7 +2373,7 @@ datazone_create_environment <- function(description = NULL, domainIdentifier, en
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$create_environment_input(description = description, domainIdentifier = domainIdentifier, environmentAccountIdentifier = environmentAccountIdentifier, environmentAccountRegion = environmentAccountRegion, environmentBlueprintIdentifier = environmentBlueprintIdentifier, environmentProfileIdentifier = environmentProfileIdentifier, glossaryTerms = glossaryTerms, name = name, projectIdentifier = projectIdentifier, userParameters = userParameters)
+  input <- .datazone$create_environment_input(deploymentOrder = deploymentOrder, description = description, domainIdentifier = domainIdentifier, environmentAccountIdentifier = environmentAccountIdentifier, environmentAccountRegion = environmentAccountRegion, environmentBlueprintIdentifier = environmentBlueprintIdentifier, environmentConfigurationId = environmentConfigurationId, environmentProfileIdentifier = environmentProfileIdentifier, glossaryTerms = glossaryTerms, name = name, projectIdentifier = projectIdentifier, userParameters = userParameters)
   output <- .datazone$create_environment_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -2506,7 +2911,7 @@ datazone_create_listing_change_set <- function(action, clientToken = NULL, domai
 #'
 #' @usage
 #' datazone_create_project(description, domainIdentifier, domainUnitId,
-#'   glossaryTerms, name)
+#'   glossaryTerms, name, projectProfileId, userParameters)
 #'
 #' @param description The description of the Amazon DataZone project.
 #' @param domainIdentifier &#91;required&#93; The ID of the Amazon DataZone domain in which this project is created.
@@ -2515,6 +2920,8 @@ datazone_create_listing_change_set <- function(action, clientToken = NULL, domai
 #' level.
 #' @param glossaryTerms The glossary terms that can be used in this Amazon DataZone project.
 #' @param name &#91;required&#93; The name of the Amazon DataZone project.
+#' @param projectProfileId The ID of the project profile.
+#' @param userParameters The user parameters of the project.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2527,6 +2934,17 @@ datazone_create_listing_change_set <- function(action, clientToken = NULL, domai
 #'   description = "string",
 #'   domainId = "string",
 #'   domainUnitId = "string",
+#'   environmentDeploymentDetails = list(
+#'     environmentFailureReasons = list(
+#'       list(
+#'         list(
+#'           code = "string",
+#'           message = "string"
+#'         )
+#'       )
+#'     ),
+#'     overallDeploymentStatus = "PENDING_DEPLOYMENT"|"IN_PROGRESS"|"SUCCESSFUL"|"FAILED_VALIDATION"|"FAILED_DEPLOYMENT"
+#'   ),
 #'   failureReasons = list(
 #'     list(
 #'       code = "string",
@@ -2541,7 +2959,19 @@ datazone_create_listing_change_set <- function(action, clientToken = NULL, domai
 #'     "2015-01-01"
 #'   ),
 #'   name = "string",
-#'   projectStatus = "ACTIVE"|"DELETING"|"DELETE_FAILED"
+#'   projectProfileId = "string",
+#'   projectStatus = "ACTIVE"|"DELETING"|"DELETE_FAILED",
+#'   userParameters = list(
+#'     list(
+#'       environmentConfigurationName = "string",
+#'       environmentParameters = list(
+#'         list(
+#'           name = "string",
+#'           value = "string"
+#'         )
+#'       )
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -2554,7 +2984,19 @@ datazone_create_listing_change_set <- function(action, clientToken = NULL, domai
 #'   glossaryTerms = list(
 #'     "string"
 #'   ),
-#'   name = "string"
+#'   name = "string",
+#'   projectProfileId = "string",
+#'   userParameters = list(
+#'     list(
+#'       environmentConfigurationName = "string",
+#'       environmentParameters = list(
+#'         list(
+#'           name = "string",
+#'           value = "string"
+#'         )
+#'       )
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -2563,7 +3005,7 @@ datazone_create_listing_change_set <- function(action, clientToken = NULL, domai
 #' @rdname datazone_create_project
 #'
 #' @aliases datazone_create_project
-datazone_create_project <- function(description = NULL, domainIdentifier, domainUnitId = NULL, glossaryTerms = NULL, name) {
+datazone_create_project <- function(description = NULL, domainIdentifier, domainUnitId = NULL, glossaryTerms = NULL, name, projectProfileId = NULL, userParameters = NULL) {
   op <- new_operation(
     name = "CreateProject",
     http_method = "POST",
@@ -2572,7 +3014,7 @@ datazone_create_project <- function(description = NULL, domainIdentifier, domain
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$create_project_input(description = description, domainIdentifier = domainIdentifier, domainUnitId = domainUnitId, glossaryTerms = glossaryTerms, name = name)
+  input <- .datazone$create_project_input(description = description, domainIdentifier = domainIdentifier, domainUnitId = domainUnitId, glossaryTerms = glossaryTerms, name = name, projectProfileId = projectProfileId, userParameters = userParameters)
   output <- .datazone$create_project_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -2603,7 +3045,7 @@ datazone_create_project <- function(description = NULL, domainIdentifier, domain
 #' @section Request syntax:
 #' ```
 #' svc$create_project_membership(
-#'   designation = "PROJECT_OWNER"|"PROJECT_CONTRIBUTOR",
+#'   designation = "PROJECT_OWNER"|"PROJECT_CONTRIBUTOR"|"PROJECT_CATALOG_VIEWER"|"PROJECT_CATALOG_CONSUMER"|"PROJECT_CATALOG_STEWARD",
 #'   domainIdentifier = "string",
 #'   member = list(
 #'     groupIdentifier = "string",
@@ -2637,6 +3079,288 @@ datazone_create_project_membership <- function(designation, domainIdentifier, me
 }
 .datazone$operations$create_project_membership <- datazone_create_project_membership
 
+#' Creates a project profile
+#'
+#' @description
+#' Creates a project profile.
+#'
+#' @usage
+#' datazone_create_project_profile(description, domainIdentifier,
+#'   domainUnitIdentifier, environmentConfigurations, name, status)
+#'
+#' @param description A description of a project profile.
+#' @param domainIdentifier &#91;required&#93; A domain ID of the project profile.
+#' @param domainUnitIdentifier A domain unit ID of the project profile.
+#' @param environmentConfigurations Environment configurations of the project profile.
+#' @param name &#91;required&#93; Project profile name.
+#' @param status Project profile status.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   createdBy = "string",
+#'   description = "string",
+#'   domainId = "string",
+#'   domainUnitId = "string",
+#'   environmentConfigurations = list(
+#'     list(
+#'       awsAccount = list(
+#'         awsAccountId = "string",
+#'         awsAccountIdPath = "string"
+#'       ),
+#'       awsRegion = list(
+#'         regionName = "string",
+#'         regionNamePath = "string"
+#'       ),
+#'       configurationParameters = list(
+#'         parameterOverrides = list(
+#'           list(
+#'             isEditable = TRUE|FALSE,
+#'             name = "string",
+#'             value = "string"
+#'           )
+#'         ),
+#'         resolvedParameters = list(
+#'           list(
+#'             isEditable = TRUE|FALSE,
+#'             name = "string",
+#'             value = "string"
+#'           )
+#'         ),
+#'         ssmPath = "string"
+#'       ),
+#'       deploymentMode = "ON_CREATE"|"ON_DEMAND",
+#'       deploymentOrder = 123,
+#'       description = "string",
+#'       environmentBlueprintId = "string",
+#'       id = "string",
+#'       name = "string"
+#'     )
+#'   ),
+#'   id = "string",
+#'   lastUpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   name = "string",
+#'   status = "ENABLED"|"DISABLED"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_project_profile(
+#'   description = "string",
+#'   domainIdentifier = "string",
+#'   domainUnitIdentifier = "string",
+#'   environmentConfigurations = list(
+#'     list(
+#'       awsAccount = list(
+#'         awsAccountId = "string",
+#'         awsAccountIdPath = "string"
+#'       ),
+#'       awsRegion = list(
+#'         regionName = "string",
+#'         regionNamePath = "string"
+#'       ),
+#'       configurationParameters = list(
+#'         parameterOverrides = list(
+#'           list(
+#'             isEditable = TRUE|FALSE,
+#'             name = "string",
+#'             value = "string"
+#'           )
+#'         ),
+#'         resolvedParameters = list(
+#'           list(
+#'             isEditable = TRUE|FALSE,
+#'             name = "string",
+#'             value = "string"
+#'           )
+#'         ),
+#'         ssmPath = "string"
+#'       ),
+#'       deploymentMode = "ON_CREATE"|"ON_DEMAND",
+#'       deploymentOrder = 123,
+#'       description = "string",
+#'       environmentBlueprintId = "string",
+#'       id = "string",
+#'       name = "string"
+#'     )
+#'   ),
+#'   name = "string",
+#'   status = "ENABLED"|"DISABLED"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname datazone_create_project_profile
+#'
+#' @aliases datazone_create_project_profile
+datazone_create_project_profile <- function(description = NULL, domainIdentifier, domainUnitIdentifier = NULL, environmentConfigurations = NULL, name, status = NULL) {
+  op <- new_operation(
+    name = "CreateProjectProfile",
+    http_method = "POST",
+    http_path = "/v2/domains/{domainIdentifier}/project-profiles",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .datazone$create_project_profile_input(description = description, domainIdentifier = domainIdentifier, domainUnitIdentifier = domainUnitIdentifier, environmentConfigurations = environmentConfigurations, name = name, status = status)
+  output <- .datazone$create_project_profile_output()
+  config <- get_config()
+  svc <- .datazone$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.datazone$operations$create_project_profile <- datazone_create_project_profile
+
+#' Creates a rule in Amazon DataZone
+#'
+#' @description
+#' Creates a rule in Amazon DataZone. A rule is a formal agreement that
+#' enforces specific requirements across user workflows (e.g., publishing
+#' assets to the catalog, requesting subscriptions, creating projects)
+#' within the Amazon DataZone data portal. These rules help maintain
+#' consistency, ensure compliance, and uphold governance standards in data
+#' management processes. For instance, a metadata enforcement rule can
+#' specify the required information for creating a subscription request or
+#' publishing a data asset to the catalog, ensuring alignment with
+#' organizational standards.
+#'
+#' @usage
+#' datazone_create_rule(action, clientToken, description, detail,
+#'   domainIdentifier, name, scope, target)
+#'
+#' @param action &#91;required&#93; The action of the rule.
+#' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
+#' idempotency of the request.
+#' @param description The description of the rule.
+#' @param detail &#91;required&#93; The detail of the rule.
+#' @param domainIdentifier &#91;required&#93; The ID of the domain where the rule is created.
+#' @param name &#91;required&#93; The name of the rule.
+#' @param scope &#91;required&#93; The scope of the rule.
+#' @param target &#91;required&#93; The target of the rule.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   action = "CREATE_SUBSCRIPTION_REQUEST",
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   createdBy = "string",
+#'   description = "string",
+#'   detail = list(
+#'     metadataFormEnforcementDetail = list(
+#'       requiredMetadataForms = list(
+#'         list(
+#'           typeIdentifier = "string",
+#'           typeRevision = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   identifier = "string",
+#'   name = "string",
+#'   ruleType = "METADATA_FORM_ENFORCEMENT",
+#'   scope = list(
+#'     assetType = list(
+#'       selectionMode = "ALL"|"SPECIFIC",
+#'       specificAssetTypes = list(
+#'         "string"
+#'       )
+#'     ),
+#'     dataProduct = TRUE|FALSE,
+#'     project = list(
+#'       selectionMode = "ALL"|"SPECIFIC",
+#'       specificProjects = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   target = list(
+#'     domainUnitTarget = list(
+#'       domainUnitId = "string",
+#'       includeChildDomainUnits = TRUE|FALSE
+#'     )
+#'   ),
+#'   targetType = "DOMAIN_UNIT"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_rule(
+#'   action = "CREATE_SUBSCRIPTION_REQUEST",
+#'   clientToken = "string",
+#'   description = "string",
+#'   detail = list(
+#'     metadataFormEnforcementDetail = list(
+#'       requiredMetadataForms = list(
+#'         list(
+#'           typeIdentifier = "string",
+#'           typeRevision = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   domainIdentifier = "string",
+#'   name = "string",
+#'   scope = list(
+#'     assetType = list(
+#'       selectionMode = "ALL"|"SPECIFIC",
+#'       specificAssetTypes = list(
+#'         "string"
+#'       )
+#'     ),
+#'     dataProduct = TRUE|FALSE,
+#'     project = list(
+#'       selectionMode = "ALL"|"SPECIFIC",
+#'       specificProjects = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   target = list(
+#'     domainUnitTarget = list(
+#'       domainUnitId = "string",
+#'       includeChildDomainUnits = TRUE|FALSE
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname datazone_create_rule
+#'
+#' @aliases datazone_create_rule
+datazone_create_rule <- function(action, clientToken = NULL, description = NULL, detail, domainIdentifier, name, scope, target) {
+  op <- new_operation(
+    name = "CreateRule",
+    http_method = "POST",
+    http_path = "/v2/domains/{domainIdentifier}/rules",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .datazone$create_rule_input(action = action, clientToken = clientToken, description = description, detail = detail, domainIdentifier = domainIdentifier, name = name, scope = scope, target = target)
+  output <- .datazone$create_rule_output()
+  config <- get_config()
+  svc <- .datazone$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.datazone$operations$create_rule <- datazone_create_rule
+
 #' Creates a subsscription grant in Amazon DataZone
 #'
 #' @description
@@ -2654,7 +3378,7 @@ datazone_create_project_membership <- function(designation, domainIdentifier, me
 #' created.
 #' @param environmentIdentifier &#91;required&#93; The ID of the environment in which the subscription grant is created.
 #' @param grantedEntity &#91;required&#93; The entity to which the subscription is to be granted.
-#' @param subscriptionTargetIdentifier &#91;required&#93; The ID of the subscription target for which the subscription grant is
+#' @param subscriptionTargetIdentifier The ID of the subscription target for which the subscription grant is
 #' created.
 #'
 #' @return
@@ -2735,7 +3459,7 @@ datazone_create_project_membership <- function(designation, domainIdentifier, me
 #' @rdname datazone_create_subscription_grant
 #'
 #' @aliases datazone_create_subscription_grant
-datazone_create_subscription_grant <- function(assetTargetNames = NULL, clientToken = NULL, domainIdentifier, environmentIdentifier, grantedEntity, subscriptionTargetIdentifier) {
+datazone_create_subscription_grant <- function(assetTargetNames = NULL, clientToken = NULL, domainIdentifier, environmentIdentifier, grantedEntity, subscriptionTargetIdentifier = NULL) {
   op <- new_operation(
     name = "CreateSubscriptionGrant",
     http_method = "POST",
@@ -2761,12 +3485,13 @@ datazone_create_subscription_grant <- function(assetTargetNames = NULL, clientTo
 #'
 #' @usage
 #' datazone_create_subscription_request(clientToken, domainIdentifier,
-#'   requestReason, subscribedListings, subscribedPrincipals)
+#'   metadataForms, requestReason, subscribedListings, subscribedPrincipals)
 #'
 #' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
 #' idempotency of the request.
 #' @param domainIdentifier &#91;required&#93; The ID of the Amazon DataZone domain in which the subscription request
 #' is created.
+#' @param metadataForms The metadata form included in the subscription request.
 #' @param requestReason &#91;required&#93; The reason for the subscription request.
 #' @param subscribedListings &#91;required&#93; The published asset for which the subscription grant is to be created.
 #' @param subscribedPrincipals &#91;required&#93; The Amazon DataZone principals for whom the subscription request is
@@ -2782,7 +3507,16 @@ datazone_create_subscription_grant <- function(assetTargetNames = NULL, clientTo
 #'   createdBy = "string",
 #'   decisionComment = "string",
 #'   domainId = "string",
+#'   existingSubscriptionId = "string",
 #'   id = "string",
+#'   metadataForms = list(
+#'     list(
+#'       content = "string",
+#'       formName = "string",
+#'       typeName = "string",
+#'       typeRevision = "string"
+#'     )
+#'   ),
 #'   requestReason = "string",
 #'   reviewerId = "string",
 #'   status = "PENDING"|"ACCEPTED"|"REJECTED",
@@ -2857,6 +3591,14 @@ datazone_create_subscription_grant <- function(assetTargetNames = NULL, clientTo
 #' svc$create_subscription_request(
 #'   clientToken = "string",
 #'   domainIdentifier = "string",
+#'   metadataForms = list(
+#'     list(
+#'       content = "string",
+#'       formName = "string",
+#'       typeIdentifier = "string",
+#'       typeRevision = "string"
+#'     )
+#'   ),
 #'   requestReason = "string",
 #'   subscribedListings = list(
 #'     list(
@@ -2878,7 +3620,7 @@ datazone_create_subscription_grant <- function(assetTargetNames = NULL, clientTo
 #' @rdname datazone_create_subscription_request
 #'
 #' @aliases datazone_create_subscription_request
-datazone_create_subscription_request <- function(clientToken = NULL, domainIdentifier, requestReason, subscribedListings, subscribedPrincipals) {
+datazone_create_subscription_request <- function(clientToken = NULL, domainIdentifier, metadataForms = NULL, requestReason, subscribedListings, subscribedPrincipals) {
   op <- new_operation(
     name = "CreateSubscriptionRequest",
     http_method = "POST",
@@ -2887,7 +3629,7 @@ datazone_create_subscription_request <- function(clientToken = NULL, domainIdent
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$create_subscription_request_input(clientToken = clientToken, domainIdentifier = domainIdentifier, requestReason = requestReason, subscribedListings = subscribedListings, subscribedPrincipals = subscribedPrincipals)
+  input <- .datazone$create_subscription_request_input(clientToken = clientToken, domainIdentifier = domainIdentifier, metadataForms = metadataForms, requestReason = requestReason, subscribedListings = subscribedListings, subscribedPrincipals = subscribedPrincipals)
   output <- .datazone$create_subscription_request_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -3217,6 +3959,59 @@ datazone_delete_asset_type <- function(domainIdentifier, identifier) {
 }
 .datazone$operations$delete_asset_type <- datazone_delete_asset_type
 
+#' Deletes and connection
+#'
+#' @description
+#' Deletes and connection. In Amazon DataZone, a connection enables you to
+#' connect your resources (domains, projects, and environments) to external
+#' resources and services.
+#'
+#' @usage
+#' datazone_delete_connection(domainIdentifier, identifier)
+#'
+#' @param domainIdentifier &#91;required&#93; The ID of the domain where the connection is deleted.
+#' @param identifier &#91;required&#93; The ID of the connection that is deleted.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   status = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_connection(
+#'   domainIdentifier = "string",
+#'   identifier = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname datazone_delete_connection
+#'
+#' @aliases datazone_delete_connection
+datazone_delete_connection <- function(domainIdentifier, identifier) {
+  op <- new_operation(
+    name = "DeleteConnection",
+    http_method = "DELETE",
+    http_path = "/v2/domains/{domainIdentifier}/connections/{identifier}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .datazone$delete_connection_input(domainIdentifier = domainIdentifier, identifier = identifier)
+  output <- .datazone$delete_connection_output()
+  config <- get_config()
+  svc <- .datazone$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.datazone$operations$delete_connection <- datazone_delete_connection
+
 #' Deletes a data product in Amazon DataZone
 #'
 #' @description
@@ -3297,6 +4092,7 @@ datazone_delete_data_product <- function(domainIdentifier, identifier) {
 #'     glueRunConfiguration = list(
 #'       accountId = "string",
 #'       autoImportDataQualityResult = TRUE|FALSE,
+#'       catalogName = "string",
 #'       dataAccessRole = "string",
 #'       region = "string",
 #'       relationalFilterConfigurations = list(
@@ -3339,8 +4135,18 @@ datazone_delete_data_product <- function(domainIdentifier, identifier) {
 #'           schemaName = "string"
 #'         )
 #'       )
+#'     ),
+#'     sageMakerRunConfiguration = list(
+#'       accountId = "string",
+#'       region = "string",
+#'       trackingAssets = list(
+#'         list(
+#'           "string"
+#'         )
+#'       )
 #'     )
 #'   ),
+#'   connectionId = "string",
 #'   createdAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
@@ -4018,6 +4824,106 @@ datazone_delete_project_membership <- function(domainIdentifier, member, project
 }
 .datazone$operations$delete_project_membership <- datazone_delete_project_membership
 
+#' Deletes a project profile
+#'
+#' @description
+#' Deletes a project profile.
+#'
+#' @usage
+#' datazone_delete_project_profile(domainIdentifier, identifier)
+#'
+#' @param domainIdentifier &#91;required&#93; The ID of the domain where a project profile is deleted.
+#' @param identifier &#91;required&#93; The ID of the project profile that is deleted.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_project_profile(
+#'   domainIdentifier = "string",
+#'   identifier = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname datazone_delete_project_profile
+#'
+#' @aliases datazone_delete_project_profile
+datazone_delete_project_profile <- function(domainIdentifier, identifier) {
+  op <- new_operation(
+    name = "DeleteProjectProfile",
+    http_method = "DELETE",
+    http_path = "/v2/domains/{domainIdentifier}/project-profiles/{identifier}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .datazone$delete_project_profile_input(domainIdentifier = domainIdentifier, identifier = identifier)
+  output <- .datazone$delete_project_profile_output()
+  config <- get_config()
+  svc <- .datazone$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.datazone$operations$delete_project_profile <- datazone_delete_project_profile
+
+#' Deletes a rule in Amazon DataZone
+#'
+#' @description
+#' Deletes a rule in Amazon DataZone. A rule is a formal agreement that
+#' enforces specific requirements across user workflows (e.g., publishing
+#' assets to the catalog, requesting subscriptions, creating projects)
+#' within the Amazon DataZone data portal. These rules help maintain
+#' consistency, ensure compliance, and uphold governance standards in data
+#' management processes. For instance, a metadata enforcement rule can
+#' specify the required information for creating a subscription request or
+#' publishing a data asset to the catalog, ensuring alignment with
+#' organizational standards.
+#'
+#' @usage
+#' datazone_delete_rule(domainIdentifier, identifier)
+#'
+#' @param domainIdentifier &#91;required&#93; The ID of the domain that where the rule is to be deleted.
+#' @param identifier &#91;required&#93; The ID of the rule that is to be deleted.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_rule(
+#'   domainIdentifier = "string",
+#'   identifier = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname datazone_delete_rule
+#'
+#' @aliases datazone_delete_rule
+datazone_delete_rule <- function(domainIdentifier, identifier) {
+  op <- new_operation(
+    name = "DeleteRule",
+    http_method = "DELETE",
+    http_path = "/v2/domains/{domainIdentifier}/rules/{identifier}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .datazone$delete_rule_input(domainIdentifier = domainIdentifier, identifier = identifier)
+  output <- .datazone$delete_rule_output()
+  config <- get_config()
+  svc <- .datazone$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.datazone$operations$delete_rule <- datazone_delete_rule
+
 #' Deletes and subscription grant in Amazon DataZone
 #'
 #' @description
@@ -4630,6 +5536,237 @@ datazone_get_asset_type <- function(domainIdentifier, identifier, revision = NUL
 }
 .datazone$operations$get_asset_type <- datazone_get_asset_type
 
+#' Gets a connection
+#'
+#' @description
+#' Gets a connection. In Amazon DataZone, a connection enables you to
+#' connect your resources (domains, projects, and environments) to external
+#' resources and services.
+#'
+#' @usage
+#' datazone_get_connection(domainIdentifier, identifier, withSecret)
+#'
+#' @param domainIdentifier &#91;required&#93; The ID of the domain where we get the connection.
+#' @param identifier &#91;required&#93; The connection ID.
+#' @param withSecret Specifies whether a connection has a secret.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   connectionCredentials = list(
+#'     accessKeyId = "string",
+#'     expiration = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     secretAccessKey = "string",
+#'     sessionToken = "string"
+#'   ),
+#'   connectionId = "string",
+#'   description = "string",
+#'   domainId = "string",
+#'   domainUnitId = "string",
+#'   environmentId = "string",
+#'   environmentUserRole = "string",
+#'   name = "string",
+#'   physicalEndpoints = list(
+#'     list(
+#'       awsLocation = list(
+#'         accessRole = "string",
+#'         awsAccountId = "string",
+#'         awsRegion = "string",
+#'         iamConnectionId = "string"
+#'       ),
+#'       glueConnection = list(
+#'         athenaProperties = list(
+#'           "string"
+#'         ),
+#'         authenticationConfiguration = list(
+#'           authenticationType = "BASIC"|"OAUTH2"|"CUSTOM",
+#'           oAuth2Properties = list(
+#'             authorizationCodeProperties = list(
+#'               authorizationCode = "string",
+#'               redirectUri = "string"
+#'             ),
+#'             oAuth2ClientApplication = list(
+#'               aWSManagedClientApplicationReference = "string",
+#'               userManagedClientApplicationClientId = "string"
+#'             ),
+#'             oAuth2Credentials = list(
+#'               accessToken = "string",
+#'               jwtToken = "string",
+#'               refreshToken = "string",
+#'               userManagedClientApplicationClientSecret = "string"
+#'             ),
+#'             oAuth2GrantType = "AUTHORIZATION_CODE"|"CLIENT_CREDENTIALS"|"JWT_BEARER",
+#'             tokenUrl = "string",
+#'             tokenUrlParametersMap = list(
+#'               "string"
+#'             )
+#'           ),
+#'           secretArn = "string"
+#'         ),
+#'         compatibleComputeEnvironments = list(
+#'           "SPARK"|"ATHENA"|"PYTHON"
+#'         ),
+#'         connectionProperties = list(
+#'           "string"
+#'         ),
+#'         connectionSchemaVersion = 123,
+#'         connectionType = "ATHENA"|"BIGQUERY"|"DATABRICKS"|"DOCUMENTDB"|"DYNAMODB"|"HYPERPOD"|"IAM"|"MYSQL"|"OPENSEARCH"|"ORACLE"|"POSTGRESQL"|"REDSHIFT"|"SAPHANA"|"SNOWFLAKE"|"SPARK"|"SQLSERVER"|"TERADATA"|"VERTICA"|"WORKFLOWS_MWAA",
+#'         creationTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         description = "string",
+#'         lastConnectionValidationTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         lastUpdatedBy = "string",
+#'         lastUpdatedTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         matchCriteria = list(
+#'           "string"
+#'         ),
+#'         name = "string",
+#'         physicalConnectionRequirements = list(
+#'           availabilityZone = "string",
+#'           securityGroupIdList = list(
+#'             "string"
+#'           ),
+#'           subnetId = "string",
+#'           subnetIdList = list(
+#'             "string"
+#'           )
+#'         ),
+#'         pythonProperties = list(
+#'           "string"
+#'         ),
+#'         sparkProperties = list(
+#'           "string"
+#'         ),
+#'         status = "CREATING"|"CREATE_FAILED"|"DELETING"|"DELETE_FAILED"|"READY"|"UPDATING"|"UPDATE_FAILED"|"DELETED",
+#'         statusReason = "string"
+#'       ),
+#'       glueConnectionName = "string",
+#'       host = "string",
+#'       port = 123,
+#'       protocol = "ATHENA"|"GLUE_INTERACTIVE_SESSION"|"HTTPS"|"JDBC"|"LIVY"|"ODBC"|"PRISM",
+#'       stage = "string"
+#'     )
+#'   ),
+#'   projectId = "string",
+#'   props = list(
+#'     athenaProperties = list(
+#'       workgroupName = "string"
+#'     ),
+#'     glueProperties = list(
+#'       errorMessage = "string",
+#'       status = "CREATING"|"CREATE_FAILED"|"DELETING"|"DELETE_FAILED"|"READY"|"UPDATING"|"UPDATE_FAILED"|"DELETED"
+#'     ),
+#'     hyperPodProperties = list(
+#'       clusterArn = "string",
+#'       clusterName = "string",
+#'       orchestrator = "EKS"|"SLURM"
+#'     ),
+#'     iamProperties = list(
+#'       environmentId = "string",
+#'       glueLineageSyncEnabled = TRUE|FALSE
+#'     ),
+#'     redshiftProperties = list(
+#'       credentials = list(
+#'         secretArn = "string",
+#'         usernamePassword = list(
+#'           password = "string",
+#'           username = "string"
+#'         )
+#'       ),
+#'       databaseName = "string",
+#'       isProvisionedSecret = TRUE|FALSE,
+#'       jdbcIamUrl = "string",
+#'       jdbcUrl = "string",
+#'       lineageSync = list(
+#'         enabled = TRUE|FALSE,
+#'         lineageJobId = "string",
+#'         schedule = list(
+#'           schedule = "string"
+#'         )
+#'       ),
+#'       redshiftTempDir = "string",
+#'       status = "CREATING"|"CREATE_FAILED"|"DELETING"|"DELETE_FAILED"|"READY"|"UPDATING"|"UPDATE_FAILED"|"DELETED",
+#'       storage = list(
+#'         clusterName = "string",
+#'         workgroupName = "string"
+#'       )
+#'     ),
+#'     sparkEmrProperties = list(
+#'       computeArn = "string",
+#'       credentials = list(
+#'         password = "string",
+#'         username = "string"
+#'       ),
+#'       credentialsExpiration = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       governanceType = "AWS_MANAGED"|"USER_MANAGED",
+#'       instanceProfileArn = "string",
+#'       javaVirtualEnv = "string",
+#'       livyEndpoint = "string",
+#'       logUri = "string",
+#'       pythonVirtualEnv = "string",
+#'       runtimeRole = "string",
+#'       trustedCertificatesS3Uri = "string"
+#'     ),
+#'     sparkGlueProperties = list(
+#'       additionalArgs = list(
+#'         connection = "string"
+#'       ),
+#'       glueConnectionName = "string",
+#'       glueVersion = "string",
+#'       idleTimeout = 123,
+#'       javaVirtualEnv = "string",
+#'       numberOfWorkers = 123,
+#'       pythonVirtualEnv = "string",
+#'       workerType = "string"
+#'     )
+#'   ),
+#'   type = "ATHENA"|"BIGQUERY"|"DATABRICKS"|"DOCUMENTDB"|"DYNAMODB"|"HYPERPOD"|"IAM"|"MYSQL"|"OPENSEARCH"|"ORACLE"|"POSTGRESQL"|"REDSHIFT"|"SAPHANA"|"SNOWFLAKE"|"SPARK"|"SQLSERVER"|"TERADATA"|"VERTICA"|"WORKFLOWS_MWAA"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_connection(
+#'   domainIdentifier = "string",
+#'   identifier = "string",
+#'   withSecret = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname datazone_get_connection
+#'
+#' @aliases datazone_get_connection
+datazone_get_connection <- function(domainIdentifier, identifier, withSecret = NULL) {
+  op <- new_operation(
+    name = "GetConnection",
+    http_method = "GET",
+    http_path = "/v2/domains/{domainIdentifier}/connections/{identifier}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .datazone$get_connection_input(domainIdentifier = domainIdentifier, identifier = identifier, withSecret = withSecret)
+  output <- .datazone$get_connection_output()
+  config <- get_config()
+  svc <- .datazone$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.datazone$operations$get_connection <- datazone_get_connection
+
 #' Gets the data product
 #'
 #' @description
@@ -4745,6 +5882,7 @@ datazone_get_data_product <- function(domainIdentifier, identifier, revision = N
 #'     glueRunConfiguration = list(
 #'       accountId = "string",
 #'       autoImportDataQualityResult = TRUE|FALSE,
+#'       catalogName = "string",
 #'       dataAccessRole = "string",
 #'       region = "string",
 #'       relationalFilterConfigurations = list(
@@ -4787,8 +5925,18 @@ datazone_get_data_product <- function(domainIdentifier, identifier, revision = N
 #'           schemaName = "string"
 #'         )
 #'       )
+#'     ),
+#'     sageMakerRunConfiguration = list(
+#'       accountId = "string",
+#'       region = "string",
+#'       trackingAssets = list(
+#'         list(
+#'           "string"
+#'         )
+#'       )
 #'     )
 #'   ),
+#'   connectionId = "string",
 #'   createdAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
@@ -4908,6 +6056,9 @@ datazone_get_data_source <- function(domainIdentifier, identifier) {
 #'     errorType = "ACCESS_DENIED_EXCEPTION"|"CONFLICT_EXCEPTION"|"INTERNAL_SERVER_EXCEPTION"|"RESOURCE_NOT_FOUND_EXCEPTION"|"SERVICE_QUOTA_EXCEEDED_EXCEPTION"|"THROTTLING_EXCEPTION"|"VALIDATION_EXCEPTION"
 #'   ),
 #'   id = "string",
+#'   lineageSummary = list(
+#'     importStatus = "IN_PROGRESS"|"SUCCESS"|"FAILED"|"PARTIALLY_SUCCEEDED"
+#'   ),
 #'   projectId = "string",
 #'   runStatisticsForAssets = list(
 #'     added = 123,
@@ -4982,6 +6133,7 @@ datazone_get_data_source_run <- function(domainIdentifier, identifier) {
 #'   ),
 #'   description = "string",
 #'   domainExecutionRole = "string",
+#'   domainVersion = "V1"|"V2",
 #'   id = "string",
 #'   kmsKeyIdentifier = "string",
 #'   lastUpdatedAt = as.POSIXct(
@@ -4990,6 +6142,7 @@ datazone_get_data_source_run <- function(domainIdentifier, identifier) {
 #'   name = "string",
 #'   portalUrl = "string",
 #'   rootDomainUnitId = "string",
+#'   serviceRole = "string",
 #'   singleSignOn = list(
 #'     type = "IAM_IDC"|"DISABLED",
 #'     userAssignment = "AUTOMATIC"|"MANUAL"
@@ -5399,6 +6552,7 @@ datazone_get_environment_blueprint <- function(domainIdentifier, identifier) {
 #'     "string"
 #'   ),
 #'   environmentBlueprintId = "string",
+#'   environmentRolePermissionBoundary = "string",
 #'   manageAccessRoleArn = "string",
 #'   provisioningConfigurations = list(
 #'     list(
@@ -5907,6 +7061,153 @@ datazone_get_iam_portal_login_url <- function(domainIdentifier) {
 }
 .datazone$operations$get_iam_portal_login_url <- datazone_get_iam_portal_login_url
 
+#' The details of the job run
+#'
+#' @description
+#' The details of the job run.
+#'
+#' @usage
+#' datazone_get_job_run(domainIdentifier, identifier)
+#'
+#' @param domainIdentifier &#91;required&#93; The ID of the domain.
+#' @param identifier &#91;required&#93; The ID of the job run.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   createdBy = "string",
+#'   details = list(
+#'     lineageRunDetails = list(
+#'       sqlQueryRunDetails = list(
+#'         errorMessages = list(
+#'           "string"
+#'         ),
+#'         numQueriesFailed = 123,
+#'         queryEndTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         queryStartTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         totalQueriesProcessed = 123
+#'       )
+#'     )
+#'   ),
+#'   domainId = "string",
+#'   endTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   error = list(
+#'     message = "string"
+#'   ),
+#'   id = "string",
+#'   jobId = "string",
+#'   jobType = "LINEAGE",
+#'   runMode = "SCHEDULED"|"ON_DEMAND",
+#'   startTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   status = "SCHEDULED"|"IN_PROGRESS"|"SUCCESS"|"PARTIALLY_SUCCEEDED"|"FAILED"|"ABORTED"|"TIMED_OUT"|"CANCELED"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_job_run(
+#'   domainIdentifier = "string",
+#'   identifier = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname datazone_get_job_run
+#'
+#' @aliases datazone_get_job_run
+datazone_get_job_run <- function(domainIdentifier, identifier) {
+  op <- new_operation(
+    name = "GetJobRun",
+    http_method = "GET",
+    http_path = "/v2/domains/{domainIdentifier}/jobRuns/{identifier}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .datazone$get_job_run_input(domainIdentifier = domainIdentifier, identifier = identifier)
+  output <- .datazone$get_job_run_output()
+  config <- get_config()
+  svc <- .datazone$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.datazone$operations$get_job_run <- datazone_get_job_run
+
+#' Describes the lineage event
+#'
+#' @description
+#' Describes the lineage event.
+#'
+#' @usage
+#' datazone_get_lineage_event(domainIdentifier, identifier)
+#'
+#' @param domainIdentifier &#91;required&#93; The ID of the domain.
+#' @param identifier &#91;required&#93; The ID of the lineage event.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   createdBy = "string",
+#'   domainId = "string",
+#'   event = raw,
+#'   eventTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   id = "string",
+#'   processingStatus = "REQUESTED"|"PROCESSING"|"SUCCESS"|"FAILED"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_lineage_event(
+#'   domainIdentifier = "string",
+#'   identifier = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname datazone_get_lineage_event
+#'
+#' @aliases datazone_get_lineage_event
+datazone_get_lineage_event <- function(domainIdentifier, identifier) {
+  op <- new_operation(
+    name = "GetLineageEvent",
+    http_method = "GET",
+    http_path = "/v2/domains/{domainIdentifier}/lineage/events/{identifier}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .datazone$get_lineage_event_input(domainIdentifier = domainIdentifier, identifier = identifier)
+  output <- .datazone$get_lineage_event_output()
+  config <- get_config()
+  svc <- .datazone$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.datazone$operations$get_lineage_event <- datazone_get_lineage_event
+
 #' Gets the data lineage node
 #'
 #' @description
@@ -6220,6 +7521,17 @@ datazone_get_metadata_generation_run <- function(domainIdentifier, identifier) {
 #'   description = "string",
 #'   domainId = "string",
 #'   domainUnitId = "string",
+#'   environmentDeploymentDetails = list(
+#'     environmentFailureReasons = list(
+#'       list(
+#'         list(
+#'           code = "string",
+#'           message = "string"
+#'         )
+#'       )
+#'     ),
+#'     overallDeploymentStatus = "PENDING_DEPLOYMENT"|"IN_PROGRESS"|"SUCCESSFUL"|"FAILED_VALIDATION"|"FAILED_DEPLOYMENT"
+#'   ),
 #'   failureReasons = list(
 #'     list(
 #'       code = "string",
@@ -6234,7 +7546,19 @@ datazone_get_metadata_generation_run <- function(domainIdentifier, identifier) {
 #'     "2015-01-01"
 #'   ),
 #'   name = "string",
-#'   projectStatus = "ACTIVE"|"DELETING"|"DELETE_FAILED"
+#'   projectProfileId = "string",
+#'   projectStatus = "ACTIVE"|"DELETING"|"DELETE_FAILED",
+#'   userParameters = list(
+#'     list(
+#'       environmentConfigurationName = "string",
+#'       environmentParameters = list(
+#'         list(
+#'           name = "string",
+#'           value = "string"
+#'         )
+#'       )
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -6269,6 +7593,211 @@ datazone_get_project <- function(domainIdentifier, identifier) {
   return(response)
 }
 .datazone$operations$get_project <- datazone_get_project
+
+#' The details of the project profile
+#'
+#' @description
+#' The details of the project profile.
+#'
+#' @usage
+#' datazone_get_project_profile(domainIdentifier, identifier)
+#'
+#' @param domainIdentifier &#91;required&#93; The ID of the domain.
+#' @param identifier &#91;required&#93; The ID of the project profile.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   createdBy = "string",
+#'   description = "string",
+#'   domainId = "string",
+#'   domainUnitId = "string",
+#'   environmentConfigurations = list(
+#'     list(
+#'       awsAccount = list(
+#'         awsAccountId = "string",
+#'         awsAccountIdPath = "string"
+#'       ),
+#'       awsRegion = list(
+#'         regionName = "string",
+#'         regionNamePath = "string"
+#'       ),
+#'       configurationParameters = list(
+#'         parameterOverrides = list(
+#'           list(
+#'             isEditable = TRUE|FALSE,
+#'             name = "string",
+#'             value = "string"
+#'           )
+#'         ),
+#'         resolvedParameters = list(
+#'           list(
+#'             isEditable = TRUE|FALSE,
+#'             name = "string",
+#'             value = "string"
+#'           )
+#'         ),
+#'         ssmPath = "string"
+#'       ),
+#'       deploymentMode = "ON_CREATE"|"ON_DEMAND",
+#'       deploymentOrder = 123,
+#'       description = "string",
+#'       environmentBlueprintId = "string",
+#'       id = "string",
+#'       name = "string"
+#'     )
+#'   ),
+#'   id = "string",
+#'   lastUpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   name = "string",
+#'   status = "ENABLED"|"DISABLED"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_project_profile(
+#'   domainIdentifier = "string",
+#'   identifier = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname datazone_get_project_profile
+#'
+#' @aliases datazone_get_project_profile
+datazone_get_project_profile <- function(domainIdentifier, identifier) {
+  op <- new_operation(
+    name = "GetProjectProfile",
+    http_method = "GET",
+    http_path = "/v2/domains/{domainIdentifier}/project-profiles/{identifier}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .datazone$get_project_profile_input(domainIdentifier = domainIdentifier, identifier = identifier)
+  output <- .datazone$get_project_profile_output()
+  config <- get_config()
+  svc <- .datazone$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.datazone$operations$get_project_profile <- datazone_get_project_profile
+
+#' Gets the details of a rule in Amazon DataZone
+#'
+#' @description
+#' Gets the details of a rule in Amazon DataZone. A rule is a formal
+#' agreement that enforces specific requirements across user workflows
+#' (e.g., publishing assets to the catalog, requesting subscriptions,
+#' creating projects) within the Amazon DataZone data portal. These rules
+#' help maintain consistency, ensure compliance, and uphold governance
+#' standards in data management processes. For instance, a metadata
+#' enforcement rule can specify the required information for creating a
+#' subscription request or publishing a data asset to the catalog, ensuring
+#' alignment with organizational standards.
+#'
+#' @usage
+#' datazone_get_rule(domainIdentifier, identifier, revision)
+#'
+#' @param domainIdentifier &#91;required&#93; The ID of the domain where the [`get_rule`][datazone_get_rule] action is
+#' to be invoked.
+#' @param identifier &#91;required&#93; The ID of the rule.
+#' @param revision The revision of the rule.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   action = "CREATE_SUBSCRIPTION_REQUEST",
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   createdBy = "string",
+#'   description = "string",
+#'   detail = list(
+#'     metadataFormEnforcementDetail = list(
+#'       requiredMetadataForms = list(
+#'         list(
+#'           typeIdentifier = "string",
+#'           typeRevision = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   identifier = "string",
+#'   lastUpdatedBy = "string",
+#'   name = "string",
+#'   revision = "string",
+#'   ruleType = "METADATA_FORM_ENFORCEMENT",
+#'   scope = list(
+#'     assetType = list(
+#'       selectionMode = "ALL"|"SPECIFIC",
+#'       specificAssetTypes = list(
+#'         "string"
+#'       )
+#'     ),
+#'     dataProduct = TRUE|FALSE,
+#'     project = list(
+#'       selectionMode = "ALL"|"SPECIFIC",
+#'       specificProjects = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   target = list(
+#'     domainUnitTarget = list(
+#'       domainUnitId = "string",
+#'       includeChildDomainUnits = TRUE|FALSE
+#'     )
+#'   ),
+#'   targetType = "DOMAIN_UNIT",
+#'   updatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_rule(
+#'   domainIdentifier = "string",
+#'   identifier = "string",
+#'   revision = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname datazone_get_rule
+#'
+#' @aliases datazone_get_rule
+datazone_get_rule <- function(domainIdentifier, identifier, revision = NULL) {
+  op <- new_operation(
+    name = "GetRule",
+    http_method = "GET",
+    http_path = "/v2/domains/{domainIdentifier}/rules/{identifier}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .datazone$get_rule_input(domainIdentifier = domainIdentifier, identifier = identifier, revision = revision)
+  output <- .datazone$get_rule_output()
+  config <- get_config()
+  svc <- .datazone$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.datazone$operations$get_rule <- datazone_get_rule
 
 #' Gets a subscription in Amazon DataZone
 #'
@@ -6505,7 +8034,16 @@ datazone_get_subscription_grant <- function(domainIdentifier, identifier) {
 #'   createdBy = "string",
 #'   decisionComment = "string",
 #'   domainId = "string",
+#'   existingSubscriptionId = "string",
 #'   id = "string",
+#'   metadataForms = list(
+#'     list(
+#'       content = "string",
+#'       formName = "string",
+#'       typeName = "string",
+#'       typeRevision = "string"
+#'     )
+#'   ),
 #'   requestReason = "string",
 #'   reviewerId = "string",
 #'   status = "PENDING"|"ACCEPTED"|"REJECTED",
@@ -6994,6 +8532,254 @@ datazone_list_asset_revisions <- function(domainIdentifier, identifier, maxResul
 }
 .datazone$operations$list_asset_revisions <- datazone_list_asset_revisions
 
+#' Lists connections
+#'
+#' @description
+#' Lists connections. In Amazon DataZone, a connection enables you to
+#' connect your resources (domains, projects, and environments) to external
+#' resources and services.
+#'
+#' @usage
+#' datazone_list_connections(domainIdentifier, environmentIdentifier,
+#'   maxResults, name, nextToken, projectIdentifier, sortBy, sortOrder, type)
+#'
+#' @param domainIdentifier &#91;required&#93; The ID of the domain where you want to list connections.
+#' @param environmentIdentifier The ID of the environment where you want to list connections.
+#' @param maxResults The maximum number of connections to return in a single call to
+#' ListConnections. When the number of connections to be listed is greater
+#' than the value of MaxResults, the response contains a NextToken value
+#' that you can use in a subsequent call to ListConnections to list the
+#' next set of connections.
+#' @param name The name of the connection.
+#' @param nextToken When the number of connections is greater than the default value for the
+#' MaxResults parameter, or if you explicitly specify a value for
+#' MaxResults that is less than the number of connections, the response
+#' includes a pagination token named NextToken. You can specify this
+#' NextToken value in a subsequent call to ListConnections to list the next
+#' set of connections.
+#' @param projectIdentifier &#91;required&#93; The ID of the project where you want to list connections.
+#' @param sortBy Specifies how you want to sort the listed connections.
+#' @param sortOrder Specifies the sort order for the listed connections.
+#' @param type The type of connection.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   items = list(
+#'     list(
+#'       connectionId = "string",
+#'       domainId = "string",
+#'       domainUnitId = "string",
+#'       environmentId = "string",
+#'       name = "string",
+#'       physicalEndpoints = list(
+#'         list(
+#'           awsLocation = list(
+#'             accessRole = "string",
+#'             awsAccountId = "string",
+#'             awsRegion = "string",
+#'             iamConnectionId = "string"
+#'           ),
+#'           glueConnection = list(
+#'             athenaProperties = list(
+#'               "string"
+#'             ),
+#'             authenticationConfiguration = list(
+#'               authenticationType = "BASIC"|"OAUTH2"|"CUSTOM",
+#'               oAuth2Properties = list(
+#'                 authorizationCodeProperties = list(
+#'                   authorizationCode = "string",
+#'                   redirectUri = "string"
+#'                 ),
+#'                 oAuth2ClientApplication = list(
+#'                   aWSManagedClientApplicationReference = "string",
+#'                   userManagedClientApplicationClientId = "string"
+#'                 ),
+#'                 oAuth2Credentials = list(
+#'                   accessToken = "string",
+#'                   jwtToken = "string",
+#'                   refreshToken = "string",
+#'                   userManagedClientApplicationClientSecret = "string"
+#'                 ),
+#'                 oAuth2GrantType = "AUTHORIZATION_CODE"|"CLIENT_CREDENTIALS"|"JWT_BEARER",
+#'                 tokenUrl = "string",
+#'                 tokenUrlParametersMap = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               secretArn = "string"
+#'             ),
+#'             compatibleComputeEnvironments = list(
+#'               "SPARK"|"ATHENA"|"PYTHON"
+#'             ),
+#'             connectionProperties = list(
+#'               "string"
+#'             ),
+#'             connectionSchemaVersion = 123,
+#'             connectionType = "ATHENA"|"BIGQUERY"|"DATABRICKS"|"DOCUMENTDB"|"DYNAMODB"|"HYPERPOD"|"IAM"|"MYSQL"|"OPENSEARCH"|"ORACLE"|"POSTGRESQL"|"REDSHIFT"|"SAPHANA"|"SNOWFLAKE"|"SPARK"|"SQLSERVER"|"TERADATA"|"VERTICA"|"WORKFLOWS_MWAA",
+#'             creationTime = as.POSIXct(
+#'               "2015-01-01"
+#'             ),
+#'             description = "string",
+#'             lastConnectionValidationTime = as.POSIXct(
+#'               "2015-01-01"
+#'             ),
+#'             lastUpdatedBy = "string",
+#'             lastUpdatedTime = as.POSIXct(
+#'               "2015-01-01"
+#'             ),
+#'             matchCriteria = list(
+#'               "string"
+#'             ),
+#'             name = "string",
+#'             physicalConnectionRequirements = list(
+#'               availabilityZone = "string",
+#'               securityGroupIdList = list(
+#'                 "string"
+#'               ),
+#'               subnetId = "string",
+#'               subnetIdList = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             pythonProperties = list(
+#'               "string"
+#'             ),
+#'             sparkProperties = list(
+#'               "string"
+#'             ),
+#'             status = "CREATING"|"CREATE_FAILED"|"DELETING"|"DELETE_FAILED"|"READY"|"UPDATING"|"UPDATE_FAILED"|"DELETED",
+#'             statusReason = "string"
+#'           ),
+#'           glueConnectionName = "string",
+#'           host = "string",
+#'           port = 123,
+#'           protocol = "ATHENA"|"GLUE_INTERACTIVE_SESSION"|"HTTPS"|"JDBC"|"LIVY"|"ODBC"|"PRISM",
+#'           stage = "string"
+#'         )
+#'       ),
+#'       projectId = "string",
+#'       props = list(
+#'         athenaProperties = list(
+#'           workgroupName = "string"
+#'         ),
+#'         glueProperties = list(
+#'           errorMessage = "string",
+#'           status = "CREATING"|"CREATE_FAILED"|"DELETING"|"DELETE_FAILED"|"READY"|"UPDATING"|"UPDATE_FAILED"|"DELETED"
+#'         ),
+#'         hyperPodProperties = list(
+#'           clusterArn = "string",
+#'           clusterName = "string",
+#'           orchestrator = "EKS"|"SLURM"
+#'         ),
+#'         iamProperties = list(
+#'           environmentId = "string",
+#'           glueLineageSyncEnabled = TRUE|FALSE
+#'         ),
+#'         redshiftProperties = list(
+#'           credentials = list(
+#'             secretArn = "string",
+#'             usernamePassword = list(
+#'               password = "string",
+#'               username = "string"
+#'             )
+#'           ),
+#'           databaseName = "string",
+#'           isProvisionedSecret = TRUE|FALSE,
+#'           jdbcIamUrl = "string",
+#'           jdbcUrl = "string",
+#'           lineageSync = list(
+#'             enabled = TRUE|FALSE,
+#'             lineageJobId = "string",
+#'             schedule = list(
+#'               schedule = "string"
+#'             )
+#'           ),
+#'           redshiftTempDir = "string",
+#'           status = "CREATING"|"CREATE_FAILED"|"DELETING"|"DELETE_FAILED"|"READY"|"UPDATING"|"UPDATE_FAILED"|"DELETED",
+#'           storage = list(
+#'             clusterName = "string",
+#'             workgroupName = "string"
+#'           )
+#'         ),
+#'         sparkEmrProperties = list(
+#'           computeArn = "string",
+#'           credentials = list(
+#'             password = "string",
+#'             username = "string"
+#'           ),
+#'           credentialsExpiration = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           governanceType = "AWS_MANAGED"|"USER_MANAGED",
+#'           instanceProfileArn = "string",
+#'           javaVirtualEnv = "string",
+#'           livyEndpoint = "string",
+#'           logUri = "string",
+#'           pythonVirtualEnv = "string",
+#'           runtimeRole = "string",
+#'           trustedCertificatesS3Uri = "string"
+#'         ),
+#'         sparkGlueProperties = list(
+#'           additionalArgs = list(
+#'             connection = "string"
+#'           ),
+#'           glueConnectionName = "string",
+#'           glueVersion = "string",
+#'           idleTimeout = 123,
+#'           javaVirtualEnv = "string",
+#'           numberOfWorkers = 123,
+#'           pythonVirtualEnv = "string",
+#'           workerType = "string"
+#'         )
+#'       ),
+#'       type = "ATHENA"|"BIGQUERY"|"DATABRICKS"|"DOCUMENTDB"|"DYNAMODB"|"HYPERPOD"|"IAM"|"MYSQL"|"OPENSEARCH"|"ORACLE"|"POSTGRESQL"|"REDSHIFT"|"SAPHANA"|"SNOWFLAKE"|"SPARK"|"SQLSERVER"|"TERADATA"|"VERTICA"|"WORKFLOWS_MWAA"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_connections(
+#'   domainIdentifier = "string",
+#'   environmentIdentifier = "string",
+#'   maxResults = 123,
+#'   name = "string",
+#'   nextToken = "string",
+#'   projectIdentifier = "string",
+#'   sortBy = "NAME",
+#'   sortOrder = "ASCENDING"|"DESCENDING",
+#'   type = "ATHENA"|"BIGQUERY"|"DATABRICKS"|"DOCUMENTDB"|"DYNAMODB"|"HYPERPOD"|"IAM"|"MYSQL"|"OPENSEARCH"|"ORACLE"|"POSTGRESQL"|"REDSHIFT"|"SAPHANA"|"SNOWFLAKE"|"SPARK"|"SQLSERVER"|"TERADATA"|"VERTICA"|"WORKFLOWS_MWAA"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname datazone_list_connections
+#'
+#' @aliases datazone_list_connections
+datazone_list_connections <- function(domainIdentifier, environmentIdentifier = NULL, maxResults = NULL, name = NULL, nextToken = NULL, projectIdentifier, sortBy = NULL, sortOrder = NULL, type = NULL) {
+  op <- new_operation(
+    name = "ListConnections",
+    http_method = "GET",
+    http_path = "/v2/domains/{domainIdentifier}/connections",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
+    stream_api = FALSE
+  )
+  input <- .datazone$list_connections_input(domainIdentifier = domainIdentifier, environmentIdentifier = environmentIdentifier, maxResults = maxResults, name = name, nextToken = nextToken, projectIdentifier = projectIdentifier, sortBy = sortBy, sortOrder = sortOrder, type = type)
+  output <- .datazone$list_connections_output()
+  config <- get_config()
+  svc <- .datazone$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.datazone$operations$list_connections <- datazone_list_connections
+
 #' Lists data product revisions
 #'
 #' @description
@@ -7119,6 +8905,11 @@ datazone_list_data_product_revisions <- function(domainIdentifier, identifier, m
 #'         errorDetail = "string",
 #'         errorType = "ACCESS_DENIED_EXCEPTION"|"CONFLICT_EXCEPTION"|"INTERNAL_SERVER_EXCEPTION"|"RESOURCE_NOT_FOUND_EXCEPTION"|"SERVICE_QUOTA_EXCEEDED_EXCEPTION"|"THROTTLING_EXCEPTION"|"VALIDATION_EXCEPTION"
 #'       ),
+#'       lineageSummary = list(
+#'         errorMessage = "string",
+#'         eventId = "string",
+#'         eventStatus = "REQUESTED"|"PROCESSING"|"SUCCESS"|"FAILED"
+#'       ),
 #'       projectId = "string",
 #'       technicalDescription = "string",
 #'       technicalName = "string",
@@ -7209,6 +9000,9 @@ datazone_list_data_source_run_activities <- function(domainIdentifier, identifie
 #'         errorType = "ACCESS_DENIED_EXCEPTION"|"CONFLICT_EXCEPTION"|"INTERNAL_SERVER_EXCEPTION"|"RESOURCE_NOT_FOUND_EXCEPTION"|"SERVICE_QUOTA_EXCEEDED_EXCEPTION"|"THROTTLING_EXCEPTION"|"VALIDATION_EXCEPTION"
 #'       ),
 #'       id = "string",
+#'       lineageSummary = list(
+#'         importStatus = "IN_PROGRESS"|"SUCCESS"|"FAILED"|"PARTIALLY_SUCCEEDED"
+#'       ),
 #'       projectId = "string",
 #'       runStatisticsForAssets = list(
 #'         added = 123,
@@ -7275,9 +9069,11 @@ datazone_list_data_source_runs <- function(dataSourceIdentifier, domainIdentifie
 #' Lists data sources in Amazon DataZone.
 #'
 #' @usage
-#' datazone_list_data_sources(domainIdentifier, environmentIdentifier,
-#'   maxResults, name, nextToken, projectIdentifier, status, type)
+#' datazone_list_data_sources(connectionIdentifier, domainIdentifier,
+#'   environmentIdentifier, maxResults, name, nextToken, projectIdentifier,
+#'   status, type)
 #'
+#' @param connectionIdentifier The ID of the connection.
 #' @param domainIdentifier &#91;required&#93; The identifier of the Amazon DataZone domain in which to list the data
 #' sources.
 #' @param environmentIdentifier The identifier of the environment in which to list the data sources.
@@ -7305,10 +9101,12 @@ datazone_list_data_source_runs <- function(dataSourceIdentifier, domainIdentifie
 #' list(
 #'   items = list(
 #'     list(
+#'       connectionId = "string",
 #'       createdAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
 #'       dataSourceId = "string",
+#'       description = "string",
 #'       domainId = "string",
 #'       enableSetting = "ENABLED"|"DISABLED",
 #'       environmentId = "string",
@@ -7340,6 +9138,7 @@ datazone_list_data_source_runs <- function(dataSourceIdentifier, domainIdentifie
 #' @section Request syntax:
 #' ```
 #' svc$list_data_sources(
+#'   connectionIdentifier = "string",
 #'   domainIdentifier = "string",
 #'   environmentIdentifier = "string",
 #'   maxResults = 123,
@@ -7356,7 +9155,7 @@ datazone_list_data_source_runs <- function(dataSourceIdentifier, domainIdentifie
 #' @rdname datazone_list_data_sources
 #'
 #' @aliases datazone_list_data_sources
-datazone_list_data_sources <- function(domainIdentifier, environmentIdentifier = NULL, maxResults = NULL, name = NULL, nextToken = NULL, projectIdentifier, status = NULL, type = NULL) {
+datazone_list_data_sources <- function(connectionIdentifier = NULL, domainIdentifier, environmentIdentifier = NULL, maxResults = NULL, name = NULL, nextToken = NULL, projectIdentifier, status = NULL, type = NULL) {
   op <- new_operation(
     name = "ListDataSources",
     http_method = "GET",
@@ -7365,7 +9164,7 @@ datazone_list_data_sources <- function(domainIdentifier, environmentIdentifier =
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
     stream_api = FALSE
   )
-  input <- .datazone$list_data_sources_input(domainIdentifier = domainIdentifier, environmentIdentifier = environmentIdentifier, maxResults = maxResults, name = name, nextToken = nextToken, projectIdentifier = projectIdentifier, status = status, type = type)
+  input <- .datazone$list_data_sources_input(connectionIdentifier = connectionIdentifier, domainIdentifier = domainIdentifier, environmentIdentifier = environmentIdentifier, maxResults = maxResults, name = name, nextToken = nextToken, projectIdentifier = projectIdentifier, status = status, type = type)
   output <- .datazone$list_data_sources_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -7479,6 +9278,7 @@ datazone_list_domain_units_for_parent <- function(domainIdentifier, maxResults =
 #'         "2015-01-01"
 #'       ),
 #'       description = "string",
+#'       domainVersion = "V1"|"V2",
 #'       id = "string",
 #'       lastUpdatedAt = as.POSIXct(
 #'         "2015-01-01"
@@ -7728,6 +9528,7 @@ datazone_list_environment_actions <- function(domainIdentifier, environmentIdent
 #'         "string"
 #'       ),
 #'       environmentBlueprintId = "string",
+#'       environmentRolePermissionBoundary = "string",
 #'       manageAccessRoleArn = "string",
 #'       provisioningConfigurations = list(
 #'         list(
@@ -8082,6 +9883,209 @@ datazone_list_environments <- function(awsAccountId = NULL, awsAccountRegion = N
 }
 .datazone$operations$list_environments <- datazone_list_environments
 
+#' Lists job runs
+#'
+#' @description
+#' Lists job runs.
+#'
+#' @usage
+#' datazone_list_job_runs(domainIdentifier, jobIdentifier, maxResults,
+#'   nextToken, sortOrder, status)
+#'
+#' @param domainIdentifier &#91;required&#93; The ID of the domain where you want to list job runs.
+#' @param jobIdentifier &#91;required&#93; The ID of the job run.
+#' @param maxResults The maximum number of job runs to return in a single call to
+#' ListJobRuns. When the number of job runs to be listed is greater than
+#' the value of MaxResults, the response contains a NextToken value that
+#' you can use in a subsequent call to ListJobRuns to list the next set of
+#' job runs.
+#' @param nextToken When the number of job runs is greater than the default value for the
+#' MaxResults parameter, or if you explicitly specify a value for
+#' MaxResults that is less than the number of job runs, the response
+#' includes a pagination token named NextToken. You can specify this
+#' NextToken value in a subsequent call to ListJobRuns to list the next set
+#' of job runs.
+#' @param sortOrder Specifies the order in which job runs are to be sorted.
+#' @param status The status of a job run.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   items = list(
+#'     list(
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       createdBy = "string",
+#'       domainId = "string",
+#'       endTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       error = list(
+#'         message = "string"
+#'       ),
+#'       jobId = "string",
+#'       jobType = "LINEAGE",
+#'       runId = "string",
+#'       runMode = "SCHEDULED"|"ON_DEMAND",
+#'       startTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       status = "SCHEDULED"|"IN_PROGRESS"|"SUCCESS"|"PARTIALLY_SUCCEEDED"|"FAILED"|"ABORTED"|"TIMED_OUT"|"CANCELED"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_job_runs(
+#'   domainIdentifier = "string",
+#'   jobIdentifier = "string",
+#'   maxResults = 123,
+#'   nextToken = "string",
+#'   sortOrder = "ASCENDING"|"DESCENDING",
+#'   status = "SCHEDULED"|"IN_PROGRESS"|"SUCCESS"|"PARTIALLY_SUCCEEDED"|"FAILED"|"ABORTED"|"TIMED_OUT"|"CANCELED"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname datazone_list_job_runs
+#'
+#' @aliases datazone_list_job_runs
+datazone_list_job_runs <- function(domainIdentifier, jobIdentifier, maxResults = NULL, nextToken = NULL, sortOrder = NULL, status = NULL) {
+  op <- new_operation(
+    name = "ListJobRuns",
+    http_method = "GET",
+    http_path = "/v2/domains/{domainIdentifier}/jobs/{jobIdentifier}/runs",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
+    stream_api = FALSE
+  )
+  input <- .datazone$list_job_runs_input(domainIdentifier = domainIdentifier, jobIdentifier = jobIdentifier, maxResults = maxResults, nextToken = nextToken, sortOrder = sortOrder, status = status)
+  output <- .datazone$list_job_runs_output()
+  config <- get_config()
+  svc <- .datazone$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.datazone$operations$list_job_runs <- datazone_list_job_runs
+
+#' Lists lineage events
+#'
+#' @description
+#' Lists lineage events.
+#'
+#' @usage
+#' datazone_list_lineage_events(domainIdentifier, maxResults, nextToken,
+#'   processingStatus, sortOrder, timestampAfter, timestampBefore)
+#'
+#' @param domainIdentifier &#91;required&#93; The ID of the domain where you want to list lineage events.
+#' @param maxResults The maximum number of lineage events to return in a single call to
+#' ListLineageEvents. When the number of lineage events to be listed is
+#' greater than the value of MaxResults, the response contains a NextToken
+#' value that you can use in a subsequent call to ListLineageEvents to list
+#' the next set of lineage events.
+#' @param nextToken When the number of lineage events is greater than the default value for
+#' the MaxResults parameter, or if you explicitly specify a value for
+#' MaxResults that is less than the number of lineage events, the response
+#' includes a pagination token named NextToken. You can specify this
+#' NextToken value in a subsequent call to ListLineageEvents to list the
+#' next set of lineage events.
+#' @param processingStatus The processing status of a lineage event.
+#' @param sortOrder The sort order of the lineage events.
+#' @param timestampAfter The after timestamp of a lineage event.
+#' @param timestampBefore The before timestamp of a lineage event.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   items = list(
+#'     list(
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       createdBy = "string",
+#'       domainId = "string",
+#'       eventSummary = list(
+#'         openLineageRunEventSummary = list(
+#'           eventType = "START"|"RUNNING"|"COMPLETE"|"ABORT"|"FAIL"|"OTHER",
+#'           inputs = list(
+#'             list(
+#'               name = "string",
+#'               namespace = "string"
+#'             )
+#'           ),
+#'           job = list(
+#'             name = "string",
+#'             namespace = "string"
+#'           ),
+#'           outputs = list(
+#'             list(
+#'               name = "string",
+#'               namespace = "string"
+#'             )
+#'           ),
+#'           runId = "string"
+#'         )
+#'       ),
+#'       eventTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       id = "string",
+#'       processingStatus = "REQUESTED"|"PROCESSING"|"SUCCESS"|"FAILED"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_lineage_events(
+#'   domainIdentifier = "string",
+#'   maxResults = 123,
+#'   nextToken = "string",
+#'   processingStatus = "REQUESTED"|"PROCESSING"|"SUCCESS"|"FAILED",
+#'   sortOrder = "ASCENDING"|"DESCENDING",
+#'   timestampAfter = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   timestampBefore = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname datazone_list_lineage_events
+#'
+#' @aliases datazone_list_lineage_events
+datazone_list_lineage_events <- function(domainIdentifier, maxResults = NULL, nextToken = NULL, processingStatus = NULL, sortOrder = NULL, timestampAfter = NULL, timestampBefore = NULL) {
+  op <- new_operation(
+    name = "ListLineageEvents",
+    http_method = "GET",
+    http_path = "/v2/domains/{domainIdentifier}/lineage/events",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
+    stream_api = FALSE
+  )
+  input <- .datazone$list_lineage_events_input(domainIdentifier = domainIdentifier, maxResults = maxResults, nextToken = nextToken, processingStatus = processingStatus, sortOrder = sortOrder, timestampAfter = timestampAfter, timestampBefore = timestampBefore)
+  output <- .datazone$list_lineage_events_output()
+  config <- get_config()
+  svc <- .datazone$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.datazone$operations$list_lineage_events <- datazone_list_lineage_events
+
 #' Lists the history of the specified data lineage node
 #'
 #' @description
@@ -8432,6 +10436,7 @@ datazone_list_notifications <- function(afterTimestamp = NULL, beforeTimestamp =
 #'           includeChildDomainUnits = TRUE|FALSE
 #'         ),
 #'         createEnvironment = list(),
+#'         createEnvironmentFromBlueprint = list(),
 #'         createEnvironmentProfile = list(
 #'           domainUnitId = "string"
 #'         ),
@@ -8443,6 +10448,12 @@ datazone_list_notifications <- function(afterTimestamp = NULL, beforeTimestamp =
 #'         ),
 #'         createProject = list(
 #'           includeChildDomainUnits = TRUE|FALSE
+#'         ),
+#'         createProjectFromProjectProfile = list(
+#'           includeChildDomainUnits = TRUE|FALSE,
+#'           projectProfiles = list(
+#'             "string"
+#'           )
 #'         ),
 #'         delegateCreateEnvironmentProfile = list(),
 #'         overrideDomainUnitOwners = list(
@@ -8464,7 +10475,7 @@ datazone_list_notifications <- function(afterTimestamp = NULL, beforeTimestamp =
 #'           groupIdentifier = "string"
 #'         ),
 #'         project = list(
-#'           projectDesignation = "OWNER"|"CONTRIBUTOR",
+#'           projectDesignation = "OWNER"|"CONTRIBUTOR"|"PROJECT_CATALOG_STEWARD",
 #'           projectGrantFilter = list(
 #'             domainUnitFilter = list(
 #'               domainUnit = "string",
@@ -8492,7 +10503,7 @@ datazone_list_notifications <- function(afterTimestamp = NULL, beforeTimestamp =
 #'   entityType = "DOMAIN_UNIT"|"ENVIRONMENT_BLUEPRINT_CONFIGURATION"|"ENVIRONMENT_PROFILE",
 #'   maxResults = 123,
 #'   nextToken = "string",
-#'   policyType = "CREATE_DOMAIN_UNIT"|"OVERRIDE_DOMAIN_UNIT_OWNERS"|"ADD_TO_PROJECT_MEMBER_POOL"|"OVERRIDE_PROJECT_OWNERS"|"CREATE_GLOSSARY"|"CREATE_FORM_TYPE"|"CREATE_ASSET_TYPE"|"CREATE_PROJECT"|"CREATE_ENVIRONMENT_PROFILE"|"DELEGATE_CREATE_ENVIRONMENT_PROFILE"|"CREATE_ENVIRONMENT"
+#'   policyType = "CREATE_DOMAIN_UNIT"|"OVERRIDE_DOMAIN_UNIT_OWNERS"|"ADD_TO_PROJECT_MEMBER_POOL"|"OVERRIDE_PROJECT_OWNERS"|"CREATE_GLOSSARY"|"CREATE_FORM_TYPE"|"CREATE_ASSET_TYPE"|"CREATE_PROJECT"|"CREATE_ENVIRONMENT_PROFILE"|"DELEGATE_CREATE_ENVIRONMENT_PROFILE"|"CREATE_ENVIRONMENT"|"CREATE_ENVIRONMENT_FROM_BLUEPRINT"|"CREATE_PROJECT_FROM_PROJECT_PROFILE"
 #' )
 #' ```
 #'
@@ -8555,7 +10566,7 @@ datazone_list_policy_grants <- function(domainIdentifier, entityIdentifier, enti
 #' list(
 #'   members = list(
 #'     list(
-#'       designation = "PROJECT_OWNER"|"PROJECT_CONTRIBUTOR",
+#'       designation = "PROJECT_OWNER"|"PROJECT_CONTRIBUTOR"|"PROJECT_CATALOG_VIEWER"|"PROJECT_CATALOG_CONSUMER"|"PROJECT_CATALOG_STEWARD",
 #'       memberDetails = list(
 #'         group = list(
 #'           groupId = "string"
@@ -8605,6 +10616,92 @@ datazone_list_project_memberships <- function(domainIdentifier, maxResults = NUL
   return(response)
 }
 .datazone$operations$list_project_memberships <- datazone_list_project_memberships
+
+#' Lists project profiles
+#'
+#' @description
+#' Lists project profiles.
+#'
+#' @usage
+#' datazone_list_project_profiles(domainIdentifier, maxResults, name,
+#'   nextToken, sortBy, sortOrder)
+#'
+#' @param domainIdentifier &#91;required&#93; The ID of the domain where you want to list project profiles.
+#' @param maxResults The maximum number of project profiles to return in a single call to
+#' ListProjectProfiles. When the number of project profiles to be listed is
+#' greater than the value of MaxResults, the response contains a NextToken
+#' value that you can use in a subsequent call to ListProjectProfiles to
+#' list the next set of project profiles.
+#' @param name The name of a project profile.
+#' @param nextToken When the number of project profiles is greater than the default value
+#' for the MaxResults parameter, or if you explicitly specify a value for
+#' MaxResults that is less than the number of project profiles, the
+#' response includes a pagination token named NextToken. You can specify
+#' this NextToken value in a subsequent call to ListProjectProfiles to list
+#' the next set of project profiles.
+#' @param sortBy Specifies by what to sort project profiles.
+#' @param sortOrder Specifies the sort order of the project profiles.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   items = list(
+#'     list(
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       createdBy = "string",
+#'       description = "string",
+#'       domainId = "string",
+#'       domainUnitId = "string",
+#'       id = "string",
+#'       lastUpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       name = "string",
+#'       status = "ENABLED"|"DISABLED"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_project_profiles(
+#'   domainIdentifier = "string",
+#'   maxResults = 123,
+#'   name = "string",
+#'   nextToken = "string",
+#'   sortBy = "NAME",
+#'   sortOrder = "ASCENDING"|"DESCENDING"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname datazone_list_project_profiles
+#'
+#' @aliases datazone_list_project_profiles
+datazone_list_project_profiles <- function(domainIdentifier, maxResults = NULL, name = NULL, nextToken = NULL, sortBy = NULL, sortOrder = NULL) {
+  op <- new_operation(
+    name = "ListProjectProfiles",
+    http_method = "GET",
+    http_path = "/v2/domains/{domainIdentifier}/project-profiles",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
+    stream_api = FALSE
+  )
+  input <- .datazone$list_project_profiles_input(domainIdentifier = domainIdentifier, maxResults = maxResults, name = name, nextToken = nextToken, sortBy = sortBy, sortOrder = sortOrder)
+  output <- .datazone$list_project_profiles_output()
+  config <- get_config()
+  svc <- .datazone$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.datazone$operations$list_project_profiles <- datazone_list_project_profiles
 
 #' Lists Amazon DataZone projects
 #'
@@ -8699,6 +10796,133 @@ datazone_list_projects <- function(domainIdentifier, groupIdentifier = NULL, max
   return(response)
 }
 .datazone$operations$list_projects <- datazone_list_projects
+
+#' Lists existing rules
+#'
+#' @description
+#' Lists existing rules. In Amazon DataZone, a rule is a formal agreement
+#' that enforces specific requirements across user workflows (e.g.,
+#' publishing assets to the catalog, requesting subscriptions, creating
+#' projects) within the Amazon DataZone data portal. These rules help
+#' maintain consistency, ensure compliance, and uphold governance standards
+#' in data management processes. For instance, a metadata enforcement rule
+#' can specify the required information for creating a subscription request
+#' or publishing a data asset to the catalog, ensuring alignment with
+#' organizational standards.
+#'
+#' @usage
+#' datazone_list_rules(action, assetTypes, dataProduct, domainIdentifier,
+#'   includeCascaded, maxResults, nextToken, projectIds, ruleType,
+#'   targetIdentifier, targetType)
+#'
+#' @param action The action of the rule.
+#' @param assetTypes The asset types of the rule.
+#' @param dataProduct The data product of the rule.
+#' @param domainIdentifier &#91;required&#93; The ID of the domain in which the rules are to be listed.
+#' @param includeCascaded Specifies whether to include cascading rules in the results.
+#' @param maxResults The maximum number of rules to return in a single call to
+#' [`list_rules`][datazone_list_rules]. When the number of rules to be
+#' listed is greater than the value of `MaxResults`, the response contains
+#' a `NextToken` value that you can use in a subsequent call to
+#' [`list_rules`][datazone_list_rules] to list the next set of rules.
+#' @param nextToken When the number of rules is greater than the default value for the
+#' `MaxResults` parameter, or if you explicitly specify a value for
+#' `MaxResults` that is less than the number of rules, the response
+#' includes a pagination token named `NextToken`. You can specify this
+#' `NextToken` value in a subsequent call to
+#' [`list_rules`][datazone_list_rules] to list the next set of rules.
+#' @param projectIds The IDs of projects in which rules are to be listed.
+#' @param ruleType The type of the rule.
+#' @param targetIdentifier &#91;required&#93; The target ID of the rule.
+#' @param targetType &#91;required&#93; The target type of the rule.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   items = list(
+#'     list(
+#'       action = "CREATE_SUBSCRIPTION_REQUEST",
+#'       identifier = "string",
+#'       lastUpdatedBy = "string",
+#'       name = "string",
+#'       revision = "string",
+#'       ruleType = "METADATA_FORM_ENFORCEMENT",
+#'       scope = list(
+#'         assetType = list(
+#'           selectionMode = "ALL"|"SPECIFIC",
+#'           specificAssetTypes = list(
+#'             "string"
+#'           )
+#'         ),
+#'         dataProduct = TRUE|FALSE,
+#'         project = list(
+#'           selectionMode = "ALL"|"SPECIFIC",
+#'           specificProjects = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       target = list(
+#'         domainUnitTarget = list(
+#'           domainUnitId = "string",
+#'           includeChildDomainUnits = TRUE|FALSE
+#'         )
+#'       ),
+#'       targetType = "DOMAIN_UNIT",
+#'       updatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_rules(
+#'   action = "CREATE_SUBSCRIPTION_REQUEST",
+#'   assetTypes = list(
+#'     "string"
+#'   ),
+#'   dataProduct = TRUE|FALSE,
+#'   domainIdentifier = "string",
+#'   includeCascaded = TRUE|FALSE,
+#'   maxResults = 123,
+#'   nextToken = "string",
+#'   projectIds = list(
+#'     "string"
+#'   ),
+#'   ruleType = "METADATA_FORM_ENFORCEMENT",
+#'   targetIdentifier = "string",
+#'   targetType = "DOMAIN_UNIT"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname datazone_list_rules
+#'
+#' @aliases datazone_list_rules
+datazone_list_rules <- function(action = NULL, assetTypes = NULL, dataProduct = NULL, domainIdentifier, includeCascaded = NULL, maxResults = NULL, nextToken = NULL, projectIds = NULL, ruleType = NULL, targetIdentifier, targetType) {
+  op <- new_operation(
+    name = "ListRules",
+    http_method = "GET",
+    http_path = "/v2/domains/{domainIdentifier}/list-rules/{targetType}/{targetIdentifier}",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
+    stream_api = FALSE
+  )
+  input <- .datazone$list_rules_input(action = action, assetTypes = assetTypes, dataProduct = dataProduct, domainIdentifier = domainIdentifier, includeCascaded = includeCascaded, maxResults = maxResults, nextToken = nextToken, projectIds = projectIds, ruleType = ruleType, targetIdentifier = targetIdentifier, targetType = targetType)
+  output <- .datazone$list_rules_output()
+  config <- get_config()
+  svc <- .datazone$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.datazone$operations$list_rules <- datazone_list_rules
 
 #' Lists subscription grants
 #'
@@ -8876,7 +11100,15 @@ datazone_list_subscription_grants <- function(domainIdentifier, environmentId = 
 #'       createdBy = "string",
 #'       decisionComment = "string",
 #'       domainId = "string",
+#'       existingSubscriptionId = "string",
 #'       id = "string",
+#'       metadataFormsSummary = list(
+#'         list(
+#'           formName = "string",
+#'           typeName = "string",
+#'           typeRevision = "string"
+#'         )
+#'       ),
 #'       requestReason = "string",
 #'       reviewerId = "string",
 #'       status = "PENDING"|"ACCEPTED"|"REJECTED",
@@ -9408,7 +11640,13 @@ datazone_list_time_series_data_points <- function(domainIdentifier, endedAt = NU
 #' event are supported as events.
 #'
 #' @return
-#' An empty list.
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   domainId = "string",
+#'   id = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -9537,12 +11775,14 @@ datazone_post_time_series_data_points <- function(clientToken = NULL, domainIden
 #'
 #' @usage
 #' datazone_put_environment_blueprint_configuration(domainIdentifier,
-#'   enabledRegions, environmentBlueprintIdentifier, manageAccessRoleArn,
+#'   enabledRegions, environmentBlueprintIdentifier,
+#'   environmentRolePermissionBoundary, manageAccessRoleArn,
 #'   provisioningConfigurations, provisioningRoleArn, regionalParameters)
 #'
 #' @param domainIdentifier &#91;required&#93; The identifier of the Amazon DataZone domain.
 #' @param enabledRegions &#91;required&#93; Specifies the enabled Amazon Web Services Regions.
 #' @param environmentBlueprintIdentifier &#91;required&#93; The identifier of the environment blueprint.
+#' @param environmentRolePermissionBoundary The environment role permissions boundary.
 #' @param manageAccessRoleArn The ARN of the manage access role.
 #' @param provisioningConfigurations The provisioning configuration of a blueprint.
 #' @param provisioningRoleArn The ARN of the provisioning role.
@@ -9560,6 +11800,7 @@ datazone_post_time_series_data_points <- function(clientToken = NULL, domainIden
 #'     "string"
 #'   ),
 #'   environmentBlueprintId = "string",
+#'   environmentRolePermissionBoundary = "string",
 #'   manageAccessRoleArn = "string",
 #'   provisioningConfigurations = list(
 #'     list(
@@ -9591,6 +11832,7 @@ datazone_post_time_series_data_points <- function(clientToken = NULL, domainIden
 #'     "string"
 #'   ),
 #'   environmentBlueprintIdentifier = "string",
+#'   environmentRolePermissionBoundary = "string",
 #'   manageAccessRoleArn = "string",
 #'   provisioningConfigurations = list(
 #'     list(
@@ -9616,7 +11858,7 @@ datazone_post_time_series_data_points <- function(clientToken = NULL, domainIden
 #' @rdname datazone_put_environment_blueprint_configuration
 #'
 #' @aliases datazone_put_environment_blueprint_configuration
-datazone_put_environment_blueprint_configuration <- function(domainIdentifier, enabledRegions, environmentBlueprintIdentifier, manageAccessRoleArn = NULL, provisioningConfigurations = NULL, provisioningRoleArn = NULL, regionalParameters = NULL) {
+datazone_put_environment_blueprint_configuration <- function(domainIdentifier, enabledRegions, environmentBlueprintIdentifier, environmentRolePermissionBoundary = NULL, manageAccessRoleArn = NULL, provisioningConfigurations = NULL, provisioningRoleArn = NULL, regionalParameters = NULL) {
   op <- new_operation(
     name = "PutEnvironmentBlueprintConfiguration",
     http_method = "PUT",
@@ -9625,7 +11867,7 @@ datazone_put_environment_blueprint_configuration <- function(domainIdentifier, e
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$put_environment_blueprint_configuration_input(domainIdentifier = domainIdentifier, enabledRegions = enabledRegions, environmentBlueprintIdentifier = environmentBlueprintIdentifier, manageAccessRoleArn = manageAccessRoleArn, provisioningConfigurations = provisioningConfigurations, provisioningRoleArn = provisioningRoleArn, regionalParameters = regionalParameters)
+  input <- .datazone$put_environment_blueprint_configuration_input(domainIdentifier = domainIdentifier, enabledRegions = enabledRegions, environmentBlueprintIdentifier = environmentBlueprintIdentifier, environmentRolePermissionBoundary = environmentRolePermissionBoundary, manageAccessRoleArn = manageAccessRoleArn, provisioningConfigurations = provisioningConfigurations, provisioningRoleArn = provisioningRoleArn, regionalParameters = regionalParameters)
   output <- .datazone$put_environment_blueprint_configuration_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -9737,7 +11979,16 @@ datazone_reject_predictions <- function(clientToken = NULL, domainIdentifier, id
 #'   createdBy = "string",
 #'   decisionComment = "string",
 #'   domainId = "string",
+#'   existingSubscriptionId = "string",
 #'   id = "string",
+#'   metadataForms = list(
+#'     list(
+#'       content = "string",
+#'       formName = "string",
+#'       typeName = "string",
+#'       typeRevision = "string"
+#'     )
+#'   ),
 #'   requestReason = "string",
 #'   reviewerId = "string",
 #'   status = "PENDING"|"ACCEPTED"|"REJECTED",
@@ -9928,7 +12179,7 @@ datazone_remove_entity_owner <- function(clientToken = NULL, domainIdentifier, e
 #'   domainIdentifier = "string",
 #'   entityIdentifier = "string",
 #'   entityType = "DOMAIN_UNIT"|"ENVIRONMENT_BLUEPRINT_CONFIGURATION"|"ENVIRONMENT_PROFILE",
-#'   policyType = "CREATE_DOMAIN_UNIT"|"OVERRIDE_DOMAIN_UNIT_OWNERS"|"ADD_TO_PROJECT_MEMBER_POOL"|"OVERRIDE_PROJECT_OWNERS"|"CREATE_GLOSSARY"|"CREATE_FORM_TYPE"|"CREATE_ASSET_TYPE"|"CREATE_PROJECT"|"CREATE_ENVIRONMENT_PROFILE"|"DELEGATE_CREATE_ENVIRONMENT_PROFILE"|"CREATE_ENVIRONMENT",
+#'   policyType = "CREATE_DOMAIN_UNIT"|"OVERRIDE_DOMAIN_UNIT_OWNERS"|"ADD_TO_PROJECT_MEMBER_POOL"|"OVERRIDE_PROJECT_OWNERS"|"CREATE_GLOSSARY"|"CREATE_FORM_TYPE"|"CREATE_ASSET_TYPE"|"CREATE_PROJECT"|"CREATE_ENVIRONMENT_PROFILE"|"DELEGATE_CREATE_ENVIRONMENT_PROFILE"|"CREATE_ENVIRONMENT"|"CREATE_ENVIRONMENT_FROM_BLUEPRINT"|"CREATE_PROJECT_FROM_PROJECT_PROFILE",
 #'   principal = list(
 #'     domainUnit = list(
 #'       domainUnitDesignation = "OWNER",
@@ -9941,7 +12192,7 @@ datazone_remove_entity_owner <- function(clientToken = NULL, domainIdentifier, e
 #'       groupIdentifier = "string"
 #'     ),
 #'     project = list(
-#'       projectDesignation = "OWNER"|"CONTRIBUTOR",
+#'       projectDesignation = "OWNER"|"CONTRIBUTOR"|"PROJECT_CATALOG_STEWARD",
 #'       projectGrantFilter = list(
 #'         domainUnitFilter = list(
 #'           domainUnit = "string",
@@ -11296,6 +13547,291 @@ datazone_update_asset_filter <- function(assetIdentifier, configuration = NULL, 
 }
 .datazone$operations$update_asset_filter <- datazone_update_asset_filter
 
+#' Updates a connection
+#'
+#' @description
+#' Updates a connection. In Amazon DataZone, a connection enables you to
+#' connect your resources (domains, projects, and environments) to external
+#' resources and services.
+#'
+#' @usage
+#' datazone_update_connection(awsLocation, description, domainIdentifier,
+#'   identifier, props)
+#'
+#' @param awsLocation The location where a connection is to be updated.
+#' @param description The description of a connection.
+#' @param domainIdentifier &#91;required&#93; The ID of the domain where a connection is to be updated.
+#' @param identifier &#91;required&#93; The ID of the connection to be updated.
+#' @param props The connection props.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   connectionId = "string",
+#'   description = "string",
+#'   domainId = "string",
+#'   domainUnitId = "string",
+#'   environmentId = "string",
+#'   name = "string",
+#'   physicalEndpoints = list(
+#'     list(
+#'       awsLocation = list(
+#'         accessRole = "string",
+#'         awsAccountId = "string",
+#'         awsRegion = "string",
+#'         iamConnectionId = "string"
+#'       ),
+#'       glueConnection = list(
+#'         athenaProperties = list(
+#'           "string"
+#'         ),
+#'         authenticationConfiguration = list(
+#'           authenticationType = "BASIC"|"OAUTH2"|"CUSTOM",
+#'           oAuth2Properties = list(
+#'             authorizationCodeProperties = list(
+#'               authorizationCode = "string",
+#'               redirectUri = "string"
+#'             ),
+#'             oAuth2ClientApplication = list(
+#'               aWSManagedClientApplicationReference = "string",
+#'               userManagedClientApplicationClientId = "string"
+#'             ),
+#'             oAuth2Credentials = list(
+#'               accessToken = "string",
+#'               jwtToken = "string",
+#'               refreshToken = "string",
+#'               userManagedClientApplicationClientSecret = "string"
+#'             ),
+#'             oAuth2GrantType = "AUTHORIZATION_CODE"|"CLIENT_CREDENTIALS"|"JWT_BEARER",
+#'             tokenUrl = "string",
+#'             tokenUrlParametersMap = list(
+#'               "string"
+#'             )
+#'           ),
+#'           secretArn = "string"
+#'         ),
+#'         compatibleComputeEnvironments = list(
+#'           "SPARK"|"ATHENA"|"PYTHON"
+#'         ),
+#'         connectionProperties = list(
+#'           "string"
+#'         ),
+#'         connectionSchemaVersion = 123,
+#'         connectionType = "ATHENA"|"BIGQUERY"|"DATABRICKS"|"DOCUMENTDB"|"DYNAMODB"|"HYPERPOD"|"IAM"|"MYSQL"|"OPENSEARCH"|"ORACLE"|"POSTGRESQL"|"REDSHIFT"|"SAPHANA"|"SNOWFLAKE"|"SPARK"|"SQLSERVER"|"TERADATA"|"VERTICA"|"WORKFLOWS_MWAA",
+#'         creationTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         description = "string",
+#'         lastConnectionValidationTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         lastUpdatedBy = "string",
+#'         lastUpdatedTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         matchCriteria = list(
+#'           "string"
+#'         ),
+#'         name = "string",
+#'         physicalConnectionRequirements = list(
+#'           availabilityZone = "string",
+#'           securityGroupIdList = list(
+#'             "string"
+#'           ),
+#'           subnetId = "string",
+#'           subnetIdList = list(
+#'             "string"
+#'           )
+#'         ),
+#'         pythonProperties = list(
+#'           "string"
+#'         ),
+#'         sparkProperties = list(
+#'           "string"
+#'         ),
+#'         status = "CREATING"|"CREATE_FAILED"|"DELETING"|"DELETE_FAILED"|"READY"|"UPDATING"|"UPDATE_FAILED"|"DELETED",
+#'         statusReason = "string"
+#'       ),
+#'       glueConnectionName = "string",
+#'       host = "string",
+#'       port = 123,
+#'       protocol = "ATHENA"|"GLUE_INTERACTIVE_SESSION"|"HTTPS"|"JDBC"|"LIVY"|"ODBC"|"PRISM",
+#'       stage = "string"
+#'     )
+#'   ),
+#'   projectId = "string",
+#'   props = list(
+#'     athenaProperties = list(
+#'       workgroupName = "string"
+#'     ),
+#'     glueProperties = list(
+#'       errorMessage = "string",
+#'       status = "CREATING"|"CREATE_FAILED"|"DELETING"|"DELETE_FAILED"|"READY"|"UPDATING"|"UPDATE_FAILED"|"DELETED"
+#'     ),
+#'     hyperPodProperties = list(
+#'       clusterArn = "string",
+#'       clusterName = "string",
+#'       orchestrator = "EKS"|"SLURM"
+#'     ),
+#'     iamProperties = list(
+#'       environmentId = "string",
+#'       glueLineageSyncEnabled = TRUE|FALSE
+#'     ),
+#'     redshiftProperties = list(
+#'       credentials = list(
+#'         secretArn = "string",
+#'         usernamePassword = list(
+#'           password = "string",
+#'           username = "string"
+#'         )
+#'       ),
+#'       databaseName = "string",
+#'       isProvisionedSecret = TRUE|FALSE,
+#'       jdbcIamUrl = "string",
+#'       jdbcUrl = "string",
+#'       lineageSync = list(
+#'         enabled = TRUE|FALSE,
+#'         lineageJobId = "string",
+#'         schedule = list(
+#'           schedule = "string"
+#'         )
+#'       ),
+#'       redshiftTempDir = "string",
+#'       status = "CREATING"|"CREATE_FAILED"|"DELETING"|"DELETE_FAILED"|"READY"|"UPDATING"|"UPDATE_FAILED"|"DELETED",
+#'       storage = list(
+#'         clusterName = "string",
+#'         workgroupName = "string"
+#'       )
+#'     ),
+#'     sparkEmrProperties = list(
+#'       computeArn = "string",
+#'       credentials = list(
+#'         password = "string",
+#'         username = "string"
+#'       ),
+#'       credentialsExpiration = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       governanceType = "AWS_MANAGED"|"USER_MANAGED",
+#'       instanceProfileArn = "string",
+#'       javaVirtualEnv = "string",
+#'       livyEndpoint = "string",
+#'       logUri = "string",
+#'       pythonVirtualEnv = "string",
+#'       runtimeRole = "string",
+#'       trustedCertificatesS3Uri = "string"
+#'     ),
+#'     sparkGlueProperties = list(
+#'       additionalArgs = list(
+#'         connection = "string"
+#'       ),
+#'       glueConnectionName = "string",
+#'       glueVersion = "string",
+#'       idleTimeout = 123,
+#'       javaVirtualEnv = "string",
+#'       numberOfWorkers = 123,
+#'       pythonVirtualEnv = "string",
+#'       workerType = "string"
+#'     )
+#'   ),
+#'   type = "ATHENA"|"BIGQUERY"|"DATABRICKS"|"DOCUMENTDB"|"DYNAMODB"|"HYPERPOD"|"IAM"|"MYSQL"|"OPENSEARCH"|"ORACLE"|"POSTGRESQL"|"REDSHIFT"|"SAPHANA"|"SNOWFLAKE"|"SPARK"|"SQLSERVER"|"TERADATA"|"VERTICA"|"WORKFLOWS_MWAA"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_connection(
+#'   awsLocation = list(
+#'     accessRole = "string",
+#'     awsAccountId = "string",
+#'     awsRegion = "string",
+#'     iamConnectionId = "string"
+#'   ),
+#'   description = "string",
+#'   domainIdentifier = "string",
+#'   identifier = "string",
+#'   props = list(
+#'     athenaProperties = list(
+#'       workgroupName = "string"
+#'     ),
+#'     glueProperties = list(
+#'       glueConnectionInput = list(
+#'         authenticationConfiguration = list(
+#'           basicAuthenticationCredentials = list(
+#'             password = "string",
+#'             userName = "string"
+#'           ),
+#'           secretArn = "string"
+#'         ),
+#'         connectionProperties = list(
+#'           "string"
+#'         ),
+#'         description = "string"
+#'       )
+#'     ),
+#'     iamProperties = list(
+#'       glueLineageSyncEnabled = TRUE|FALSE
+#'     ),
+#'     redshiftProperties = list(
+#'       credentials = list(
+#'         secretArn = "string",
+#'         usernamePassword = list(
+#'           password = "string",
+#'           username = "string"
+#'         )
+#'       ),
+#'       databaseName = "string",
+#'       host = "string",
+#'       lineageSync = list(
+#'         enabled = TRUE|FALSE,
+#'         schedule = list(
+#'           schedule = "string"
+#'         )
+#'       ),
+#'       port = 123,
+#'       storage = list(
+#'         clusterName = "string",
+#'         workgroupName = "string"
+#'       )
+#'     ),
+#'     sparkEmrProperties = list(
+#'       computeArn = "string",
+#'       instanceProfileArn = "string",
+#'       javaVirtualEnv = "string",
+#'       logUri = "string",
+#'       pythonVirtualEnv = "string",
+#'       runtimeRole = "string",
+#'       trustedCertificatesS3Uri = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname datazone_update_connection
+#'
+#' @aliases datazone_update_connection
+datazone_update_connection <- function(awsLocation = NULL, description = NULL, domainIdentifier, identifier, props = NULL) {
+  op <- new_operation(
+    name = "UpdateConnection",
+    http_method = "PATCH",
+    http_path = "/v2/domains/{domainIdentifier}/connections/{identifier}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .datazone$update_connection_input(awsLocation = awsLocation, description = description, domainIdentifier = domainIdentifier, identifier = identifier, props = props)
+  output <- .datazone$update_connection_output()
+  config <- get_config()
+  svc <- .datazone$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.datazone$operations$update_connection <- datazone_update_connection
+
 #' Updates the specified data source in Amazon DataZone
 #'
 #' @description
@@ -11343,6 +13879,7 @@ datazone_update_asset_filter <- function(assetIdentifier, configuration = NULL, 
 #'     glueRunConfiguration = list(
 #'       accountId = "string",
 #'       autoImportDataQualityResult = TRUE|FALSE,
+#'       catalogName = "string",
 #'       dataAccessRole = "string",
 #'       region = "string",
 #'       relationalFilterConfigurations = list(
@@ -11385,8 +13922,18 @@ datazone_update_asset_filter <- function(assetIdentifier, configuration = NULL, 
 #'           schemaName = "string"
 #'         )
 #'       )
+#'     ),
+#'     sageMakerRunConfiguration = list(
+#'       accountId = "string",
+#'       region = "string",
+#'       trackingAssets = list(
+#'         list(
+#'           "string"
+#'         )
+#'       )
 #'     )
 #'   ),
+#'   connectionId = "string",
 #'   createdAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
@@ -11462,6 +14009,7 @@ datazone_update_asset_filter <- function(assetIdentifier, configuration = NULL, 
 #'   configuration = list(
 #'     glueRunConfiguration = list(
 #'       autoImportDataQualityResult = TRUE|FALSE,
+#'       catalogName = "string",
 #'       dataAccessRole = "string",
 #'       relationalFilterConfigurations = list(
 #'         list(
@@ -11499,6 +14047,13 @@ datazone_update_asset_filter <- function(assetIdentifier, configuration = NULL, 
 #'             )
 #'           ),
 #'           schemaName = "string"
+#'         )
+#'       )
+#'     ),
+#'     sageMakerRunConfiguration = list(
+#'       trackingAssets = list(
+#'         list(
+#'           "string"
 #'         )
 #'       )
 #'     )
@@ -11551,7 +14106,7 @@ datazone_update_data_source <- function(assetFormsInput = NULL, configuration = 
 #'
 #' @usage
 #' datazone_update_domain(clientToken, description, domainExecutionRole,
-#'   identifier, name, singleSignOn)
+#'   identifier, name, serviceRole, singleSignOn)
 #'
 #' @param clientToken A unique, case-sensitive identifier that is provided to ensure the
 #' idempotency of the request.
@@ -11562,6 +14117,7 @@ datazone_update_data_source <- function(assetFormsInput = NULL, configuration = 
 #' @param identifier &#91;required&#93; The ID of the Amazon Web Services domain that is to be updated.
 #' @param name The name to be updated as part of the
 #' [`update_domain`][datazone_update_domain] action.
+#' @param serviceRole The service role of the domain.
 #' @param singleSignOn The single sign-on option to be updated as part of the
 #' [`update_domain`][datazone_update_domain] action.
 #'
@@ -11577,6 +14133,7 @@ datazone_update_data_source <- function(assetFormsInput = NULL, configuration = 
 #'   ),
 #'   name = "string",
 #'   rootDomainUnitId = "string",
+#'   serviceRole = "string",
 #'   singleSignOn = list(
 #'     type = "IAM_IDC"|"DISABLED",
 #'     userAssignment = "AUTOMATIC"|"MANUAL"
@@ -11592,6 +14149,7 @@ datazone_update_data_source <- function(assetFormsInput = NULL, configuration = 
 #'   domainExecutionRole = "string",
 #'   identifier = "string",
 #'   name = "string",
+#'   serviceRole = "string",
 #'   singleSignOn = list(
 #'     type = "IAM_IDC"|"DISABLED",
 #'     userAssignment = "AUTOMATIC"|"MANUAL"
@@ -11604,7 +14162,7 @@ datazone_update_data_source <- function(assetFormsInput = NULL, configuration = 
 #' @rdname datazone_update_domain
 #'
 #' @aliases datazone_update_domain
-datazone_update_domain <- function(clientToken = NULL, description = NULL, domainExecutionRole = NULL, identifier, name = NULL, singleSignOn = NULL) {
+datazone_update_domain <- function(clientToken = NULL, description = NULL, domainExecutionRole = NULL, identifier, name = NULL, serviceRole = NULL, singleSignOn = NULL) {
   op <- new_operation(
     name = "UpdateDomain",
     http_method = "PUT",
@@ -11613,7 +14171,7 @@ datazone_update_domain <- function(clientToken = NULL, description = NULL, domai
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$update_domain_input(clientToken = clientToken, description = description, domainExecutionRole = domainExecutionRole, identifier = identifier, name = name, singleSignOn = singleSignOn)
+  input <- .datazone$update_domain_input(clientToken = clientToken, description = description, domainExecutionRole = domainExecutionRole, identifier = identifier, name = name, serviceRole = serviceRole, singleSignOn = singleSignOn)
   output <- .datazone$update_domain_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -12235,12 +14793,13 @@ datazone_update_group_profile <- function(domainIdentifier, groupIdentifier, sta
 #' Updates the specified project in Amazon DataZone.
 #'
 #' @usage
-#' datazone_update_project(description, domainIdentifier, glossaryTerms,
-#'   identifier, name)
+#' datazone_update_project(description, domainIdentifier,
+#'   environmentDeploymentDetails, glossaryTerms, identifier, name)
 #'
 #' @param description The description to be updated as part of the
 #' [`update_project`][datazone_update_project] action.
 #' @param domainIdentifier &#91;required&#93; The ID of the Amazon DataZone domain where a project is being updated.
+#' @param environmentDeploymentDetails The environment deployment details of the project.
 #' @param glossaryTerms The glossary terms to be updated as part of the
 #' [`update_project`][datazone_update_project] action.
 #' @param identifier &#91;required&#93; The identifier of the project that is to be updated.
@@ -12258,6 +14817,17 @@ datazone_update_group_profile <- function(domainIdentifier, groupIdentifier, sta
 #'   description = "string",
 #'   domainId = "string",
 #'   domainUnitId = "string",
+#'   environmentDeploymentDetails = list(
+#'     environmentFailureReasons = list(
+#'       list(
+#'         list(
+#'           code = "string",
+#'           message = "string"
+#'         )
+#'       )
+#'     ),
+#'     overallDeploymentStatus = "PENDING_DEPLOYMENT"|"IN_PROGRESS"|"SUCCESSFUL"|"FAILED_VALIDATION"|"FAILED_DEPLOYMENT"
+#'   ),
 #'   failureReasons = list(
 #'     list(
 #'       code = "string",
@@ -12272,7 +14842,19 @@ datazone_update_group_profile <- function(domainIdentifier, groupIdentifier, sta
 #'     "2015-01-01"
 #'   ),
 #'   name = "string",
-#'   projectStatus = "ACTIVE"|"DELETING"|"DELETE_FAILED"
+#'   projectProfileId = "string",
+#'   projectStatus = "ACTIVE"|"DELETING"|"DELETE_FAILED",
+#'   userParameters = list(
+#'     list(
+#'       environmentConfigurationName = "string",
+#'       environmentParameters = list(
+#'         list(
+#'           name = "string",
+#'           value = "string"
+#'         )
+#'       )
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -12281,6 +14863,17 @@ datazone_update_group_profile <- function(domainIdentifier, groupIdentifier, sta
 #' svc$update_project(
 #'   description = "string",
 #'   domainIdentifier = "string",
+#'   environmentDeploymentDetails = list(
+#'     environmentFailureReasons = list(
+#'       list(
+#'         list(
+#'           code = "string",
+#'           message = "string"
+#'         )
+#'       )
+#'     ),
+#'     overallDeploymentStatus = "PENDING_DEPLOYMENT"|"IN_PROGRESS"|"SUCCESSFUL"|"FAILED_VALIDATION"|"FAILED_DEPLOYMENT"
+#'   ),
 #'   glossaryTerms = list(
 #'     "string"
 #'   ),
@@ -12294,7 +14887,7 @@ datazone_update_group_profile <- function(domainIdentifier, groupIdentifier, sta
 #' @rdname datazone_update_project
 #'
 #' @aliases datazone_update_project
-datazone_update_project <- function(description = NULL, domainIdentifier, glossaryTerms = NULL, identifier, name = NULL) {
+datazone_update_project <- function(description = NULL, domainIdentifier, environmentDeploymentDetails = NULL, glossaryTerms = NULL, identifier, name = NULL) {
   op <- new_operation(
     name = "UpdateProject",
     http_method = "PATCH",
@@ -12303,7 +14896,7 @@ datazone_update_project <- function(description = NULL, domainIdentifier, glossa
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$update_project_input(description = description, domainIdentifier = domainIdentifier, glossaryTerms = glossaryTerms, identifier = identifier, name = name)
+  input <- .datazone$update_project_input(description = description, domainIdentifier = domainIdentifier, environmentDeploymentDetails = environmentDeploymentDetails, glossaryTerms = glossaryTerms, identifier = identifier, name = name)
   output <- .datazone$update_project_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -12312,6 +14905,287 @@ datazone_update_project <- function(description = NULL, domainIdentifier, glossa
   return(response)
 }
 .datazone$operations$update_project <- datazone_update_project
+
+#' Updates a project profile
+#'
+#' @description
+#' Updates a project profile.
+#'
+#' @usage
+#' datazone_update_project_profile(description, domainIdentifier,
+#'   domainUnitIdentifier, environmentConfigurations, identifier, name,
+#'   status)
+#'
+#' @param description The description of a project profile.
+#' @param domainIdentifier &#91;required&#93; The ID of the domain where a project profile is to be updated.
+#' @param domainUnitIdentifier The ID of the domain unit where a project profile is to be updated.
+#' @param environmentConfigurations The environment configurations of a project profile.
+#' @param identifier &#91;required&#93; The ID of a project profile that is to be updated.
+#' @param name The name of a project profile.
+#' @param status The status of a project profile.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   createdBy = "string",
+#'   description = "string",
+#'   domainId = "string",
+#'   domainUnitId = "string",
+#'   environmentConfigurations = list(
+#'     list(
+#'       awsAccount = list(
+#'         awsAccountId = "string",
+#'         awsAccountIdPath = "string"
+#'       ),
+#'       awsRegion = list(
+#'         regionName = "string",
+#'         regionNamePath = "string"
+#'       ),
+#'       configurationParameters = list(
+#'         parameterOverrides = list(
+#'           list(
+#'             isEditable = TRUE|FALSE,
+#'             name = "string",
+#'             value = "string"
+#'           )
+#'         ),
+#'         resolvedParameters = list(
+#'           list(
+#'             isEditable = TRUE|FALSE,
+#'             name = "string",
+#'             value = "string"
+#'           )
+#'         ),
+#'         ssmPath = "string"
+#'       ),
+#'       deploymentMode = "ON_CREATE"|"ON_DEMAND",
+#'       deploymentOrder = 123,
+#'       description = "string",
+#'       environmentBlueprintId = "string",
+#'       id = "string",
+#'       name = "string"
+#'     )
+#'   ),
+#'   id = "string",
+#'   lastUpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   name = "string",
+#'   status = "ENABLED"|"DISABLED"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_project_profile(
+#'   description = "string",
+#'   domainIdentifier = "string",
+#'   domainUnitIdentifier = "string",
+#'   environmentConfigurations = list(
+#'     list(
+#'       awsAccount = list(
+#'         awsAccountId = "string",
+#'         awsAccountIdPath = "string"
+#'       ),
+#'       awsRegion = list(
+#'         regionName = "string",
+#'         regionNamePath = "string"
+#'       ),
+#'       configurationParameters = list(
+#'         parameterOverrides = list(
+#'           list(
+#'             isEditable = TRUE|FALSE,
+#'             name = "string",
+#'             value = "string"
+#'           )
+#'         ),
+#'         resolvedParameters = list(
+#'           list(
+#'             isEditable = TRUE|FALSE,
+#'             name = "string",
+#'             value = "string"
+#'           )
+#'         ),
+#'         ssmPath = "string"
+#'       ),
+#'       deploymentMode = "ON_CREATE"|"ON_DEMAND",
+#'       deploymentOrder = 123,
+#'       description = "string",
+#'       environmentBlueprintId = "string",
+#'       id = "string",
+#'       name = "string"
+#'     )
+#'   ),
+#'   identifier = "string",
+#'   name = "string",
+#'   status = "ENABLED"|"DISABLED"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname datazone_update_project_profile
+#'
+#' @aliases datazone_update_project_profile
+datazone_update_project_profile <- function(description = NULL, domainIdentifier, domainUnitIdentifier = NULL, environmentConfigurations = NULL, identifier, name = NULL, status = NULL) {
+  op <- new_operation(
+    name = "UpdateProjectProfile",
+    http_method = "PATCH",
+    http_path = "/v2/domains/{domainIdentifier}/project-profiles/{identifier}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .datazone$update_project_profile_input(description = description, domainIdentifier = domainIdentifier, domainUnitIdentifier = domainUnitIdentifier, environmentConfigurations = environmentConfigurations, identifier = identifier, name = name, status = status)
+  output <- .datazone$update_project_profile_output()
+  config <- get_config()
+  svc <- .datazone$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.datazone$operations$update_project_profile <- datazone_update_project_profile
+
+#' Updates a rule
+#'
+#' @description
+#' Updates a rule. In Amazon DataZone, a rule is a formal agreement that
+#' enforces specific requirements across user workflows (e.g., publishing
+#' assets to the catalog, requesting subscriptions, creating projects)
+#' within the Amazon DataZone data portal. These rules help maintain
+#' consistency, ensure compliance, and uphold governance standards in data
+#' management processes. For instance, a metadata enforcement rule can
+#' specify the required information for creating a subscription request or
+#' publishing a data asset to the catalog, ensuring alignment with
+#' organizational standards.
+#'
+#' @usage
+#' datazone_update_rule(description, detail, domainIdentifier, identifier,
+#'   includeChildDomainUnits, name, scope)
+#'
+#' @param description The description of the rule.
+#' @param detail The detail of the rule.
+#' @param domainIdentifier &#91;required&#93; The ID of the domain in which a rule is to be updated.
+#' @param identifier &#91;required&#93; The ID of the rule that is to be updated
+#' @param includeChildDomainUnits Specifies whether to update this rule in the child domain units.
+#' @param name The name of the rule.
+#' @param scope The scrope of the rule.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   action = "CREATE_SUBSCRIPTION_REQUEST",
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   createdBy = "string",
+#'   description = "string",
+#'   detail = list(
+#'     metadataFormEnforcementDetail = list(
+#'       requiredMetadataForms = list(
+#'         list(
+#'           typeIdentifier = "string",
+#'           typeRevision = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   identifier = "string",
+#'   lastUpdatedBy = "string",
+#'   name = "string",
+#'   revision = "string",
+#'   ruleType = "METADATA_FORM_ENFORCEMENT",
+#'   scope = list(
+#'     assetType = list(
+#'       selectionMode = "ALL"|"SPECIFIC",
+#'       specificAssetTypes = list(
+#'         "string"
+#'       )
+#'     ),
+#'     dataProduct = TRUE|FALSE,
+#'     project = list(
+#'       selectionMode = "ALL"|"SPECIFIC",
+#'       specificProjects = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   target = list(
+#'     domainUnitTarget = list(
+#'       domainUnitId = "string",
+#'       includeChildDomainUnits = TRUE|FALSE
+#'     )
+#'   ),
+#'   updatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_rule(
+#'   description = "string",
+#'   detail = list(
+#'     metadataFormEnforcementDetail = list(
+#'       requiredMetadataForms = list(
+#'         list(
+#'           typeIdentifier = "string",
+#'           typeRevision = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   domainIdentifier = "string",
+#'   identifier = "string",
+#'   includeChildDomainUnits = TRUE|FALSE,
+#'   name = "string",
+#'   scope = list(
+#'     assetType = list(
+#'       selectionMode = "ALL"|"SPECIFIC",
+#'       specificAssetTypes = list(
+#'         "string"
+#'       )
+#'     ),
+#'     dataProduct = TRUE|FALSE,
+#'     project = list(
+#'       selectionMode = "ALL"|"SPECIFIC",
+#'       specificProjects = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname datazone_update_rule
+#'
+#' @aliases datazone_update_rule
+datazone_update_rule <- function(description = NULL, detail = NULL, domainIdentifier, identifier, includeChildDomainUnits = NULL, name = NULL, scope = NULL) {
+  op <- new_operation(
+    name = "UpdateRule",
+    http_method = "PATCH",
+    http_path = "/v2/domains/{domainIdentifier}/rules/{identifier}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .datazone$update_rule_input(description = description, detail = detail, domainIdentifier = domainIdentifier, identifier = identifier, includeChildDomainUnits = includeChildDomainUnits, name = name, scope = scope)
+  output <- .datazone$update_rule_output()
+  config <- get_config()
+  svc <- .datazone$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.datazone$operations$update_rule <- datazone_update_rule
 
 #' Updates the status of the specified subscription grant status in Amazon
 #' DataZone
@@ -12454,7 +15328,16 @@ datazone_update_subscription_grant_status <- function(assetIdentifier, domainIde
 #'   createdBy = "string",
 #'   decisionComment = "string",
 #'   domainId = "string",
+#'   existingSubscriptionId = "string",
 #'   id = "string",
+#'   metadataForms = list(
+#'     list(
+#'       content = "string",
+#'       formName = "string",
+#'       typeName = "string",
+#'       typeRevision = "string"
+#'     )
+#'   ),
 #'   requestReason = "string",
 #'   reviewerId = "string",
 #'   status = "PENDING"|"ACCEPTED"|"REJECTED",

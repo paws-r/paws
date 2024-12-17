@@ -12,7 +12,9 @@ efs_describe_replication_configurations(
 }
 \arguments{
 \item{FileSystemId}{You can retrieve the replication configuration for a specific file
-system by providing its file system ID.}
+system by providing its file system ID. For cross-account,cross-region
+replication, an account can only describe the replication configuration
+for a file system in its own Region.}
 
 \item{NextToken}{\code{NextToken} is present if the response is paginated. You can use
 \code{NextToken} in a subsequent request to fetch the next page of output.}

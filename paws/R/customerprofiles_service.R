@@ -5,6 +5,12 @@ NULL
 #' Amazon Connect Customer Profiles
 #'
 #' @description
+#' -   [Customer Profiles
+#'     actions](https://docs.aws.amazon.com/connect/latest/APIReference/API_Operations_Amazon_Connect_Customer_Profiles.html)
+#' 
+#' -   [Customer Profiles data
+#'     types](https://docs.aws.amazon.com/connect/latest/APIReference/API_Types_Amazon_Connect_Customer_Profiles.html)
+#' 
 #' Amazon Connect Customer Profiles is a unified customer profile for your
 #' contact center that has pre-built connectors powered by AppFlow that
 #' make it easy to combine customer information from third party
@@ -101,19 +107,27 @@ NULL
 #' @section Operations:
 #' \tabular{ll}{
 #'  \link[=customerprofiles_add_profile_key]{add_profile_key} \tab Associates a new key value with a specific profile, such as a Contact Record ContactId\cr
+#'  \link[=customerprofiles_batch_get_calculated_attribute_for_profile]{batch_get_calculated_attribute_for_profile} \tab Fetch the possible attribute values given the attribute name\cr
+#'  \link[=customerprofiles_batch_get_profile]{batch_get_profile} \tab Get a batch of profiles\cr
 #'  \link[=customerprofiles_create_calculated_attribute_definition]{create_calculated_attribute_definition} \tab Creates a new calculated attribute definition\cr
 #'  \link[=customerprofiles_create_domain]{create_domain} \tab Creates a domain, which is a container for all customer data, such as customer profile attributes, object types, profile keys, and encryption keys\cr
 #'  \link[=customerprofiles_create_event_stream]{create_event_stream} \tab Creates an event stream, which is a subscription to real-time events, such as when profiles are created and updated through Amazon Connect Customer Profiles\cr
+#'  \link[=customerprofiles_create_event_trigger]{create_event_trigger} \tab Creates an event trigger, which specifies the rules when to perform action based on customer's ingested data\cr
 #'  \link[=customerprofiles_create_integration_workflow]{create_integration_workflow} \tab Creates an integration workflow\cr
 #'  \link[=customerprofiles_create_profile]{create_profile} \tab Creates a standard profile\cr
+#'  \link[=customerprofiles_create_segment_definition]{create_segment_definition} \tab Creates a segment definition associated to the given domain\cr
+#'  \link[=customerprofiles_create_segment_estimate]{create_segment_estimate} \tab Creates a segment estimate query\cr
+#'  \link[=customerprofiles_create_segment_snapshot]{create_segment_snapshot} \tab Triggers a job to export a segment to a specified destination\cr
 #'  \link[=customerprofiles_delete_calculated_attribute_definition]{delete_calculated_attribute_definition} \tab Deletes an existing calculated attribute definition\cr
 #'  \link[=customerprofiles_delete_domain]{delete_domain} \tab Deletes a specific domain and all of its customer data, such as customer profile attributes and their related objects\cr
 #'  \link[=customerprofiles_delete_event_stream]{delete_event_stream} \tab Disables and deletes the specified event stream\cr
+#'  \link[=customerprofiles_delete_event_trigger]{delete_event_trigger} \tab Disable and deletes the Event Trigger\cr
 #'  \link[=customerprofiles_delete_integration]{delete_integration} \tab Removes an integration from a specific domain\cr
 #'  \link[=customerprofiles_delete_profile]{delete_profile} \tab Deletes the standard customer profile and all data pertaining to the profile\cr
 #'  \link[=customerprofiles_delete_profile_key]{delete_profile_key} \tab Removes a searchable key from a customer profile\cr
 #'  \link[=customerprofiles_delete_profile_object]{delete_profile_object} \tab Removes an object associated with a profile of a given ProfileObjectType\cr
 #'  \link[=customerprofiles_delete_profile_object_type]{delete_profile_object_type} \tab Removes a ProfileObjectType from a specific domain as well as removes all the ProfileObjects of that type\cr
+#'  \link[=customerprofiles_delete_segment_definition]{delete_segment_definition} \tab Deletes a segment definition from the domain\cr
 #'  \link[=customerprofiles_delete_workflow]{delete_workflow} \tab Deletes the specified workflow and all its corresponding resources\cr
 #'  \link[=customerprofiles_detect_profile_object_type]{detect_profile_object_type} \tab The process of detecting profile object type mapping by using given objects\cr
 #'  \link[=customerprofiles_get_auto_merging_preview]{get_auto_merging_preview} \tab Tests the auto-merging settings of your Identity Resolution Job without merging your data\cr
@@ -121,11 +135,16 @@ NULL
 #'  \link[=customerprofiles_get_calculated_attribute_for_profile]{get_calculated_attribute_for_profile} \tab Retrieve a calculated attribute for a customer profile\cr
 #'  \link[=customerprofiles_get_domain]{get_domain} \tab Returns information about a specific domain\cr
 #'  \link[=customerprofiles_get_event_stream]{get_event_stream} \tab Returns information about the specified event stream in a specific domain\cr
+#'  \link[=customerprofiles_get_event_trigger]{get_event_trigger} \tab Get a specific Event Trigger from the domain\cr
 #'  \link[=customerprofiles_get_identity_resolution_job]{get_identity_resolution_job} \tab Returns information about an Identity Resolution Job in a specific domain\cr
 #'  \link[=customerprofiles_get_integration]{get_integration} \tab Returns an integration for a domain\cr
 #'  \link[=customerprofiles_get_matches]{get_matches} \tab Before calling this API, use CreateDomain or UpdateDomain to enable identity resolution: set Matching to true\cr
 #'  \link[=customerprofiles_get_profile_object_type]{get_profile_object_type} \tab Returns the object types for a specific domain\cr
 #'  \link[=customerprofiles_get_profile_object_type_template]{get_profile_object_type_template} \tab Returns the template information for a specific object type\cr
+#'  \link[=customerprofiles_get_segment_definition]{get_segment_definition} \tab Gets a segment definition from the domain\cr
+#'  \link[=customerprofiles_get_segment_estimate]{get_segment_estimate} \tab Gets the result of a segment estimate query\cr
+#'  \link[=customerprofiles_get_segment_membership]{get_segment_membership} \tab Determines if the given profiles are within a segment\cr
+#'  \link[=customerprofiles_get_segment_snapshot]{get_segment_snapshot} \tab Retrieve the latest status of a segment snapshot\cr
 #'  \link[=customerprofiles_get_similar_profiles]{get_similar_profiles} \tab Returns a set of profiles that belong to the same matching group using the matchId or profileId\cr
 #'  \link[=customerprofiles_get_workflow]{get_workflow} \tab Get details of specified workflow\cr
 #'  \link[=customerprofiles_get_workflow_steps]{get_workflow_steps} \tab Get granular list of steps in workflow\cr
@@ -134,12 +153,16 @@ NULL
 #'  \link[=customerprofiles_list_calculated_attributes_for_profile]{list_calculated_attributes_for_profile} \tab Retrieve a list of calculated attributes for a customer profile\cr
 #'  \link[=customerprofiles_list_domains]{list_domains} \tab Returns a list of all the domains for an AWS account that have been created\cr
 #'  \link[=customerprofiles_list_event_streams]{list_event_streams} \tab Returns a list of all the event streams in a specific domain\cr
+#'  \link[=customerprofiles_list_event_triggers]{list_event_triggers} \tab List all Event Triggers under a domain\cr
 #'  \link[=customerprofiles_list_identity_resolution_jobs]{list_identity_resolution_jobs} \tab Lists all of the Identity Resolution Jobs in your domain\cr
 #'  \link[=customerprofiles_list_integrations]{list_integrations} \tab Lists all of the integrations in your domain\cr
+#'  \link[=customerprofiles_list_object_type_attributes]{list_object_type_attributes} \tab Fetch the possible attribute values given the attribute name\cr
+#'  \link[=customerprofiles_list_profile_attribute_values]{list_profile_attribute_values} \tab Fetch the possible attribute values given the attribute name\cr
 #'  \link[=customerprofiles_list_profile_objects]{list_profile_objects} \tab Returns a list of objects associated with a profile of a given ProfileObjectType\cr
 #'  \link[=customerprofiles_list_profile_object_types]{list_profile_object_types} \tab Lists all of the templates available within the service\cr
 #'  \link[=customerprofiles_list_profile_object_type_templates]{list_profile_object_type_templates} \tab Lists all of the template information for object types\cr
 #'  \link[=customerprofiles_list_rule_based_matches]{list_rule_based_matches} \tab Returns a set of MatchIds that belong to the given domain\cr
+#'  \link[=customerprofiles_list_segment_definitions]{list_segment_definitions} \tab Lists all segment definitions under a domain\cr
 #'  \link[=customerprofiles_list_tags_for_resource]{list_tags_for_resource} \tab Displays the tags associated with an Amazon Connect Customer Profiles resource\cr
 #'  \link[=customerprofiles_list_workflows]{list_workflows} \tab Query to list all workflows\cr
 #'  \link[=customerprofiles_merge_profiles]{merge_profiles} \tab Runs an AWS Lambda job that does the following:\cr
@@ -151,6 +174,7 @@ NULL
 #'  \link[=customerprofiles_untag_resource]{untag_resource} \tab Removes one or more tags from the specified Amazon Connect Customer Profiles resource\cr
 #'  \link[=customerprofiles_update_calculated_attribute_definition]{update_calculated_attribute_definition} \tab Updates an existing calculated attribute definition\cr
 #'  \link[=customerprofiles_update_domain]{update_domain} \tab Updates the properties of a domain, including creating or selecting a dead letter queue or an encryption key\cr
+#'  \link[=customerprofiles_update_event_trigger]{update_event_trigger} \tab Update the properties of an Event Trigger\cr
 #'  \link[=customerprofiles_update_profile]{update_profile} \tab Updates the properties of a profile
 #' }
 #'
@@ -183,7 +207,7 @@ customerprofiles <- function(config = list(), credentials = list(), endpoint = N
 
 .customerprofiles$metadata <- list(
   service_name = "customerprofiles",
-  endpoints = list("*" = list(endpoint = "profile.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "profile.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "profile.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "profile.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "profile.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "profile.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "profile.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "profile.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "profile.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "profile.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "profile.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "profile.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "profile.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Customer Profiles",
   api_version = "2020-08-15",
   signing_name = "profile",

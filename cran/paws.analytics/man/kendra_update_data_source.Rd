@@ -34,8 +34,8 @@ to your data source. For more information, see \href{https://docs.aws.amazon.com
 
 \item{Schedule}{The sync schedule you want to update for the data source connector.}
 
-\item{RoleArn}{The Amazon Resource Name (ARN) of a role with permission to access the
-data source and required resources. For more information, see \href{https://docs.aws.amazon.com/kendra/latest/dg/iam-roles.html}{IAM roles for Amazon Kendra}.}
+\item{RoleArn}{The Amazon Resource Name (ARN) of an IAM role with permission to access
+the data source and required resources. For more information, see \href{https://docs.aws.amazon.com/kendra/latest/dg/iam-roles.html}{IAM roles for Amazon Kendra}.}
 
 \item{LanguageCode}{The code for a language you want to update for the data source
 connector. This allows you to support a language for all documents when

@@ -153,13 +153,21 @@ eventbridge_create_archive <- function(ArchiveName, EventSourceArn, Description 
 #' @param AuthorizationType &#91;required&#93; The type of authorization to use for the connection.
 #' 
 #' OAUTH tokens are refreshed when a 401 or 407 response is returned.
-#' @param AuthParameters &#91;required&#93; A `CreateConnectionAuthRequestParameters` object that contains the
-#' authorization parameters to use to authorize with the endpoint.
+#' @param AuthParameters &#91;required&#93; The authorization parameters to use to authorize with the endpoint.
+#' 
+#' You must include only authorization parameters for the
+#' `AuthorizationType` you specify.
+#' @param InvocationConnectivityParameters For connections to private resource endpoints, the parameters to use for
+#' invoking the resource endpoint.
+#' 
+#' For more information, see [Connecting to private
+#' resources](https://docs.aws.amazon.com/eventbridge/latest/userguide/) in
+#' the *Amazon EventBridge User Guide* .
 #'
 #' @keywords internal
 #'
 #' @rdname eventbridge_create_connection
-eventbridge_create_connection <- function(Name, Description = NULL, AuthorizationType, AuthParameters) {
+eventbridge_create_connection <- function(Name, Description = NULL, AuthorizationType, AuthParameters, InvocationConnectivityParameters = NULL) {
   op <- new_operation(
     name = "CreateConnection",
     http_method = "POST",
@@ -168,7 +176,7 @@ eventbridge_create_connection <- function(Name, Description = NULL, Authorizatio
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .eventbridge$create_connection_input(Name = Name, Description = Description, AuthorizationType = AuthorizationType, AuthParameters = AuthParameters)
+  input <- .eventbridge$create_connection_input(Name = Name, Description = Description, AuthorizationType = AuthorizationType, AuthParameters = AuthParameters, InvocationConnectivityParameters = InvocationConnectivityParameters)
   output <- .eventbridge$create_connection_output()
   config <- get_config()
   svc <- .eventbridge$service(config, op)
@@ -987,8 +995,15 @@ eventbridge_enable_rule <- function(Name, EventBusName = NULL) {
 #' @param NamePrefix A name prefix to filter results returned. Only API destinations with a
 #' name that starts with the prefix are returned.
 #' @param ConnectionArn The ARN of the connection specified for the API destination.
-#' @param NextToken The token returned by a previous call to retrieve the next set of
-#' results.
+#' @param NextToken The token returned by a previous call, which you can use to retrieve the
+#' next set of results.
+#' 
+#' The value of `nextToken` is a unique pagination token for each page. To
+#' retrieve the next page of results, make the call again using the
+#' returned token. Keep all other arguments unchanged.
+#' 
+#' Using an expired pagination token results in an `HTTP 400 InvalidToken`
+#' error.
 #' @param Limit The maximum number of API destinations to include in the response.
 #'
 #' @keywords internal
@@ -1024,8 +1039,15 @@ eventbridge_list_api_destinations <- function(NamePrefix = NULL, ConnectionArn =
 #' that match the prefix are returned.
 #' @param EventSourceArn The ARN of the event source associated with the archive.
 #' @param State The state of the archive.
-#' @param NextToken The token returned by a previous call to retrieve the next set of
-#' results.
+#' @param NextToken The token returned by a previous call, which you can use to retrieve the
+#' next set of results.
+#' 
+#' The value of `nextToken` is a unique pagination token for each page. To
+#' retrieve the next page of results, make the call again using the
+#' returned token. Keep all other arguments unchanged.
+#' 
+#' Using an expired pagination token results in an `HTTP 400 InvalidToken`
+#' error.
 #' @param Limit The maximum number of results to return.
 #'
 #' @keywords internal
@@ -1060,8 +1082,15 @@ eventbridge_list_archives <- function(NamePrefix = NULL, EventSourceArn = NULL, 
 #' @param NamePrefix A name prefix to filter results returned. Only connections with a name
 #' that starts with the prefix are returned.
 #' @param ConnectionState The state of the connection.
-#' @param NextToken The token returned by a previous call to retrieve the next set of
-#' results.
+#' @param NextToken The token returned by a previous call, which you can use to retrieve the
+#' next set of results.
+#' 
+#' The value of `nextToken` is a unique pagination token for each page. To
+#' retrieve the next page of results, make the call again using the
+#' returned token. Keep all other arguments unchanged.
+#' 
+#' Using an expired pagination token results in an `HTTP 400 InvalidToken`
+#' error.
 #' @param Limit The maximum number of connections to return.
 #'
 #' @keywords internal
@@ -1098,11 +1127,15 @@ eventbridge_list_connections <- function(NamePrefix = NULL, ConnectionState = NU
 #' with "ABC" in the name.
 #' @param HomeRegion The primary Region of the endpoints associated with this account. For
 #' example `"HomeRegion": "us-east-1"`.
-#' @param NextToken If `nextToken` is returned, there are more results available. The value
-#' of `nextToken` is a unique pagination token for each page. Make the call
-#' again using the returned token to retrieve the next page. Keep all other
-#' arguments unchanged. Each pagination token expires after 24 hours. Using
-#' an expired pagination token will return an HTTP 400 InvalidToken error.
+#' @param NextToken The token returned by a previous call, which you can use to retrieve the
+#' next set of results.
+#' 
+#' The value of `nextToken` is a unique pagination token for each page. To
+#' retrieve the next page of results, make the call again using the
+#' returned token. Keep all other arguments unchanged.
+#' 
+#' Using an expired pagination token results in an `HTTP 400 InvalidToken`
+#' error.
 #' @param MaxResults The maximum number of results returned by the call.
 #'
 #' @keywords internal
@@ -1137,8 +1170,15 @@ eventbridge_list_endpoints <- function(NamePrefix = NULL, HomeRegion = NULL, Nex
 #'
 #' @param NamePrefix Specifying this limits the results to only those event buses with names
 #' that start with the specified prefix.
-#' @param NextToken The token returned by a previous call to retrieve the next set of
-#' results.
+#' @param NextToken The token returned by a previous call, which you can use to retrieve the
+#' next set of results.
+#' 
+#' The value of `nextToken` is a unique pagination token for each page. To
+#' retrieve the next page of results, make the call again using the
+#' returned token. Keep all other arguments unchanged.
+#' 
+#' Using an expired pagination token results in an `HTTP 400 InvalidToken`
+#' error.
 #' @param Limit Specifying this limits the number of results returned by this operation.
 #' The operation also returns a NextToken which you can use in a subsequent
 #' operation to retrieve the next set of results.
@@ -1175,8 +1215,15 @@ eventbridge_list_event_buses <- function(NamePrefix = NULL, NextToken = NULL, Li
 #'
 #' @param NamePrefix Specifying this limits the results to only those partner event sources
 #' with names that start with the specified prefix.
-#' @param NextToken The token returned by a previous call to retrieve the next set of
-#' results.
+#' @param NextToken The token returned by a previous call, which you can use to retrieve the
+#' next set of results.
+#' 
+#' The value of `nextToken` is a unique pagination token for each page. To
+#' retrieve the next page of results, make the call again using the
+#' returned token. Keep all other arguments unchanged.
+#' 
+#' Using an expired pagination token results in an `HTTP 400 InvalidToken`
+#' error.
 #' @param Limit Specifying this limits the number of results returned by this operation.
 #' The operation also returns a NextToken which you can use in a subsequent
 #' operation to retrieve the next set of results.
@@ -1214,8 +1261,15 @@ eventbridge_list_event_sources <- function(NamePrefix = NULL, NextToken = NULL, 
 #'
 #' @param EventSourceName &#91;required&#93; The name of the partner event source to display account information
 #' about.
-#' @param NextToken The token returned by a previous call to this operation. Specifying this
-#' retrieves the next set of results.
+#' @param NextToken The token returned by a previous call, which you can use to retrieve the
+#' next set of results.
+#' 
+#' The value of `nextToken` is a unique pagination token for each page. To
+#' retrieve the next page of results, make the call again using the
+#' returned token. Keep all other arguments unchanged.
+#' 
+#' Using an expired pagination token results in an `HTTP 400 InvalidToken`
+#' error.
 #' @param Limit Specifying this limits the number of results returned by this operation.
 #' The operation also returns a NextToken which you can use in a subsequent
 #' operation to retrieve the next set of results.
@@ -1252,8 +1306,15 @@ eventbridge_list_partner_event_source_accounts <- function(EventSourceName, Next
 #'
 #' @param NamePrefix &#91;required&#93; If you specify this, the results are limited to only those partner event
 #' sources that start with the string you specify.
-#' @param NextToken The token returned by a previous call to this operation. Specifying this
-#' retrieves the next set of results.
+#' @param NextToken The token returned by a previous call, which you can use to retrieve the
+#' next set of results.
+#' 
+#' The value of `nextToken` is a unique pagination token for each page. To
+#' retrieve the next page of results, make the call again using the
+#' returned token. Keep all other arguments unchanged.
+#' 
+#' Using an expired pagination token results in an `HTTP 400 InvalidToken`
+#' error.
 #' @param Limit pecifying this limits the number of results returned by this operation.
 #' The operation also returns a NextToken which you can use in a subsequent
 #' operation to retrieve the next set of results.
@@ -1291,8 +1352,15 @@ eventbridge_list_partner_event_sources <- function(NamePrefix, NextToken = NULL,
 #' that match the prefix are returned.
 #' @param State The state of the replay.
 #' @param EventSourceArn The ARN of the archive from which the events are replayed.
-#' @param NextToken The token returned by a previous call to retrieve the next set of
-#' results.
+#' @param NextToken The token returned by a previous call, which you can use to retrieve the
+#' next set of results.
+#' 
+#' The value of `nextToken` is a unique pagination token for each page. To
+#' retrieve the next page of results, make the call again using the
+#' returned token. Keep all other arguments unchanged.
+#' 
+#' Using an expired pagination token results in an `HTTP 400 InvalidToken`
+#' error.
 #' @param Limit The maximum number of replays to retrieve.
 #'
 #' @keywords internal
@@ -1327,8 +1395,15 @@ eventbridge_list_replays <- function(NamePrefix = NULL, State = NULL, EventSourc
 #' @param TargetArn &#91;required&#93; The Amazon Resource Name (ARN) of the target resource.
 #' @param EventBusName The name or ARN of the event bus to list rules for. If you omit this,
 #' the default event bus is used.
-#' @param NextToken The token returned by a previous call to retrieve the next set of
-#' results.
+#' @param NextToken The token returned by a previous call, which you can use to retrieve the
+#' next set of results.
+#' 
+#' The value of `nextToken` is a unique pagination token for each page. To
+#' retrieve the next page of results, make the call again using the
+#' returned token. Keep all other arguments unchanged.
+#' 
+#' Using an expired pagination token results in an `HTTP 400 InvalidToken`
+#' error.
 #' @param Limit The maximum number of results to return.
 #'
 #' @keywords internal
@@ -1340,7 +1415,7 @@ eventbridge_list_rule_names_by_target <- function(TargetArn, EventBusName = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "Limit", result_key = "RuleNames"),
     stream_api = FALSE
   )
   input <- .eventbridge$list_rule_names_by_target_input(TargetArn = TargetArn, EventBusName = EventBusName, NextToken = NextToken, Limit = Limit)
@@ -1363,8 +1438,15 @@ eventbridge_list_rule_names_by_target <- function(TargetArn, EventBusName = NULL
 #' @param NamePrefix The prefix matching the rule name.
 #' @param EventBusName The name or ARN of the event bus to list the rules for. If you omit
 #' this, the default event bus is used.
-#' @param NextToken The token returned by a previous call to retrieve the next set of
-#' results.
+#' @param NextToken The token returned by a previous call, which you can use to retrieve the
+#' next set of results.
+#' 
+#' The value of `nextToken` is a unique pagination token for each page. To
+#' retrieve the next page of results, make the call again using the
+#' returned token. Keep all other arguments unchanged.
+#' 
+#' Using an expired pagination token results in an `HTTP 400 InvalidToken`
+#' error.
 #' @param Limit The maximum number of results to return.
 #'
 #' @keywords internal
@@ -1376,7 +1458,7 @@ eventbridge_list_rules <- function(NamePrefix = NULL, EventBusName = NULL, NextT
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "Limit", result_key = "Rules"),
     stream_api = FALSE
   )
   input <- .eventbridge$list_rules_input(NamePrefix = NamePrefix, EventBusName = EventBusName, NextToken = NextToken, Limit = Limit)
@@ -1430,8 +1512,15 @@ eventbridge_list_tags_for_resource <- function(ResourceARN) {
 #' @param Rule &#91;required&#93; The name of the rule.
 #' @param EventBusName The name or ARN of the event bus associated with the rule. If you omit
 #' this, the default event bus is used.
-#' @param NextToken The token returned by a previous call to retrieve the next set of
-#' results.
+#' @param NextToken The token returned by a previous call, which you can use to retrieve the
+#' next set of results.
+#' 
+#' The value of `nextToken` is a unique pagination token for each page. To
+#' retrieve the next page of results, make the call again using the
+#' returned token. Keep all other arguments unchanged.
+#' 
+#' Using an expired pagination token results in an `HTTP 400 InvalidToken`
+#' error.
 #' @param Limit The maximum number of results to return.
 #'
 #' @keywords internal
@@ -1443,7 +1532,7 @@ eventbridge_list_targets_by_rule <- function(Rule, EventBusName = NULL, NextToke
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "Limit", result_key = "Targets"),
     stream_api = FALSE
   )
   input <- .eventbridge$list_targets_by_rule_input(Rule = Rule, EventBusName = EventBusName, NextToken = NextToken, Limit = Limit)
@@ -1532,7 +1621,7 @@ eventbridge_put_partner_events <- function(Entries) {
 #' bus
 #'
 #' @description
-#' Running [`put_permission`][eventbridge_put_permission] permits the specified Amazon Web Services account or Amazon Web Services organization to put events to the specified *event bus*. Amazon EventBridge (CloudWatch Events) rules in your account are triggered by these events arriving to an event bus in your account.
+#' Running [`put_permission`][eventbridge_put_permission] permits the specified Amazon Web Services account or Amazon Web Services organization to put events to the specified *event bus*. Amazon EventBridge rules in your account are triggered by these events arriving to an event bus in your account.
 #'
 #' See [https://www.paws-r-sdk.com/docs/eventbridge_put_permission/](https://www.paws-r-sdk.com/docs/eventbridge_put_permission/) for full documentation.
 #'
@@ -1909,7 +1998,7 @@ eventbridge_test_event_pattern <- function(EventPattern, Event) {
 #' Removes one or more tags from the specified EventBridge resource
 #'
 #' @description
-#' Removes one or more tags from the specified EventBridge resource. In Amazon EventBridge (CloudWatch Events), rules and event buses can be tagged.
+#' Removes one or more tags from the specified EventBridge resource. In Amazon EventBridge, rules and event buses can be tagged.
 #'
 #' See [https://www.paws-r-sdk.com/docs/eventbridge_untag_resource/](https://www.paws-r-sdk.com/docs/eventbridge_untag_resource/) for full documentation.
 #'
@@ -2020,11 +2109,17 @@ eventbridge_update_archive <- function(ArchiveName, Description = NULL, EventPat
 #' @param Description A description for the connection.
 #' @param AuthorizationType The type of authorization to use for the connection.
 #' @param AuthParameters The authorization parameters to use for the connection.
+#' @param InvocationConnectivityParameters For connections to private resource endpoints, the parameters to use for
+#' invoking the resource endpoint.
+#' 
+#' For more information, see [Connecting to private
+#' resources](https://docs.aws.amazon.com/eventbridge/latest/userguide/) in
+#' the *Amazon EventBridge User Guide* .
 #'
 #' @keywords internal
 #'
 #' @rdname eventbridge_update_connection
-eventbridge_update_connection <- function(Name, Description = NULL, AuthorizationType = NULL, AuthParameters = NULL) {
+eventbridge_update_connection <- function(Name, Description = NULL, AuthorizationType = NULL, AuthParameters = NULL, InvocationConnectivityParameters = NULL) {
   op <- new_operation(
     name = "UpdateConnection",
     http_method = "POST",
@@ -2033,7 +2128,7 @@ eventbridge_update_connection <- function(Name, Description = NULL, Authorizatio
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .eventbridge$update_connection_input(Name = Name, Description = Description, AuthorizationType = AuthorizationType, AuthParameters = AuthParameters)
+  input <- .eventbridge$update_connection_input(Name = Name, Description = Description, AuthorizationType = AuthorizationType, AuthParameters = AuthParameters, InvocationConnectivityParameters = InvocationConnectivityParameters)
   output <- .eventbridge$update_connection_output()
   config <- get_config()
   svc <- .eventbridge$service(config, op)

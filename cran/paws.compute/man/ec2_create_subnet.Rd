@@ -12,12 +12,12 @@ ec2_create_subnet(
   Ipv6CidrBlock = NULL,
   OutpostArn = NULL,
   VpcId,
-  DryRun = NULL,
   Ipv6Native = NULL,
   Ipv4IpamPoolId = NULL,
   Ipv4NetmaskLength = NULL,
   Ipv6IpamPoolId = NULL,
-  Ipv6NetmaskLength = NULL
+  Ipv6NetmaskLength = NULL,
+  DryRun = NULL
 )
 }
 \arguments{
@@ -53,11 +53,6 @@ ARN, you must also specify the Availability Zone of the Outpost subnet.}
 
 \item{VpcId}{[required] The ID of the VPC.}
 
-\item{DryRun}{Checks whether you have the required permissions for the action, without
-actually making the request, and provides an error response. If you have
-the required permissions, the error response is \code{DryRunOperation}.
-Otherwise, it is \code{UnauthorizedOperation}.}
-
 \item{Ipv6Native}{Indicates whether to create an IPv6 only subnet.}
 
 \item{Ipv4IpamPoolId}{An IPv4 IPAM pool ID for the subnet.}
@@ -67,6 +62,11 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{Ipv6IpamPoolId}{An IPv6 IPAM pool ID for the subnet.}
 
 \item{Ipv6NetmaskLength}{An IPv6 netmask length for the subnet.}
+
+\item{DryRun}{Checks whether you have the required permissions for the action, without
+actually making the request, and provides an error response. If you have
+the required permissions, the error response is \code{DryRunOperation}.
+Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
 Creates a subnet in the specified VPC. For an IPv4 only subnet, specify an IPv4 CIDR block. If the VPC has an IPv6 CIDR block, you can create an IPv6 only subnet or a dual stack subnet instead. For an IPv6 only subnet, specify an IPv6 CIDR block. For a dual stack subnet, specify both an IPv4 CIDR block and an IPv6 CIDR block.

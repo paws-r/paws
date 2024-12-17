@@ -5,10 +5,13 @@
 \title{Represents a domain name that is contained in a simpler, more intuitive
 URL that can be called}
 \usage{
-apigateway_get_domain_name(domainName)
+apigateway_get_domain_name(domainName, domainNameId = NULL)
 }
 \arguments{
 \item{domainName}{[required] The name of the DomainName resource.}
+
+\item{domainNameId}{The identifier for the domain name resource. Supported only for private
+custom domain names.}
 }
 \description{
 Represents a domain name that is contained in a simpler, more intuitive URL that can be called.

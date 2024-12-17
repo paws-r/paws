@@ -101,13 +101,14 @@ NULL
 #' @examples
 #' \dontrun{
 #' svc <- docdbelastic()
-#' svc$copy_cluster_snapshot(
+#' svc$apply_pending_maintenance_action(
 #'   Foo = 123
 #' )
 #' }
 #'
 #' @section Operations:
 #' \tabular{ll}{
+#'  \link[=docdbelastic_apply_pending_maintenance_action]{apply_pending_maintenance_action} \tab The type of pending maintenance action to be applied to the resource\cr
 #'  \link[=docdbelastic_copy_cluster_snapshot]{copy_cluster_snapshot} \tab Copies a snapshot of an elastic cluster\cr
 #'  \link[=docdbelastic_create_cluster]{create_cluster} \tab Creates a new Amazon DocumentDB elastic cluster and returns its cluster structure\cr
 #'  \link[=docdbelastic_create_cluster_snapshot]{create_cluster_snapshot} \tab Creates a snapshot of an elastic cluster\cr
@@ -115,8 +116,10 @@ NULL
 #'  \link[=docdbelastic_delete_cluster_snapshot]{delete_cluster_snapshot} \tab Delete an elastic cluster snapshot\cr
 #'  \link[=docdbelastic_get_cluster]{get_cluster} \tab Returns information about a specific elastic cluster\cr
 #'  \link[=docdbelastic_get_cluster_snapshot]{get_cluster_snapshot} \tab Returns information about a specific elastic cluster snapshot\cr
+#'  \link[=docdbelastic_get_pending_maintenance_action]{get_pending_maintenance_action} \tab Retrieves all maintenance actions that are pending\cr
 #'  \link[=docdbelastic_list_clusters]{list_clusters} \tab Returns information about provisioned Amazon DocumentDB elastic clusters\cr
 #'  \link[=docdbelastic_list_cluster_snapshots]{list_cluster_snapshots} \tab Returns information about snapshots for a specified elastic cluster\cr
+#'  \link[=docdbelastic_list_pending_maintenance_actions]{list_pending_maintenance_actions} \tab Retrieves a list of all maintenance actions that are pending\cr
 #'  \link[=docdbelastic_list_tags_for_resource]{list_tags_for_resource} \tab Lists all tags on a elastic cluster resource\cr
 #'  \link[=docdbelastic_restore_cluster_from_snapshot]{restore_cluster_from_snapshot} \tab Restores an elastic cluster from a snapshot\cr
 #'  \link[=docdbelastic_start_cluster]{start_cluster} \tab Restarts the stopped elastic cluster that is specified by clusterARN\cr
@@ -155,7 +158,7 @@ docdbelastic <- function(config = list(), credentials = list(), endpoint = NULL,
 
 .docdbelastic$metadata <- list(
   service_name = "docdbelastic",
-  endpoints = list("*" = list(endpoint = "docdb-elastic.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "docdb-elastic.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "docdb-elastic.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "docdb-elastic.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "docdb-elastic.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "docdb-elastic.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "docdb-elastic.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "docdb-elastic.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "docdb-elastic.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "docdb-elastic.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "docdb-elastic.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "docdb-elastic.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "docdb-elastic.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "DocDB Elastic",
   api_version = "2022-11-28",
   signing_name = "docdb-elastic",

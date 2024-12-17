@@ -14,6 +14,7 @@ sesv2_send_email(
   Content,
   EmailTags = NULL,
   ConfigurationSetName = NULL,
+  EndpointId = NULL,
   ListManagementOptions = NULL
 )
 }
@@ -70,6 +71,8 @@ correspond to characteristics of the email that you define, so that you
 can publish email sending events.}
 
 \item{ConfigurationSetName}{The name of the configuration set to use when sending the email.}
+
+\item{EndpointId}{The ID of the multi-region endpoint (global-endpoint).}
 
 \item{ListManagementOptions}{An object used to specify a list or topic to which an email belongs,
 which will be used when a contact chooses to unsubscribe.}

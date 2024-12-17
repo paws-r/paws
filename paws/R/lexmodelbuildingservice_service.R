@@ -169,7 +169,7 @@ lexmodelbuildingservice <- function(config = list(), credentials = list(), endpo
 
 .lexmodelbuildingservice$metadata <- list(
   service_name = "models.lex",
-  endpoints = list("*" = list(endpoint = "models.lex.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "models.lex.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "models.lex.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "models.lex.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "models.lex.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "models.lex.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "models.lex.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "models.lex.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "models.lex.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "models.lex.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "models.lex.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "models.lex.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "models.lex.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Lex Model Building Service",
   api_version = "2017-04-19",
   signing_name = "lex",

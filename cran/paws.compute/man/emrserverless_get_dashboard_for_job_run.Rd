@@ -8,7 +8,8 @@ for a job run}
 emrserverless_get_dashboard_for_job_run(
   applicationId,
   jobRunId,
-  attempt = NULL
+  attempt = NULL,
+  accessSystemProfileLogs = NULL
 )
 }
 \arguments{
@@ -18,6 +19,9 @@ emrserverless_get_dashboard_for_job_run(
 
 \item{attempt}{An optimal parameter that indicates the amount of attempts for the job.
 If not specified, this value defaults to the attempt of the latest job.}
+
+\item{accessSystemProfileLogs}{Allows access to system profile logs for Lake Formation-enabled jobs.
+Default is false.}
 }
 \description{
 Creates and returns a URL that you can use to access the application UIs for a job run.

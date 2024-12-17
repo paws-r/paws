@@ -42,6 +42,7 @@ rds_restore_db_instance_from_s3(
   S3BucketName,
   S3Prefix = NULL,
   S3IngestionRoleArn,
+  DatabaseInsightsMode = NULL,
   EnablePerformanceInsights = NULL,
   PerformanceInsightsKMSKeyId = NULL,
   PerformanceInsightsRetentionPeriod = NULL,
@@ -312,6 +313,8 @@ file.}
 trust policy and a permissions policy that allows Amazon RDS to access
 your Amazon S3 bucket. For information about this role, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/MySQL.Procedural.Importing.html#MySQL.Procedural.Importing.Enabling.IAM}{Creating an IAM role manually}
 in the \emph{Amazon RDS User Guide.}}
+
+\item{DatabaseInsightsMode}{Specifies the mode of Database Insights to enable for the instance.}
 
 \item{EnablePerformanceInsights}{Specifies whether to enable Performance Insights for the DB instance.
 

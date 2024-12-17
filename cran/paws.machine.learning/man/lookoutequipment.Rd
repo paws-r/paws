@@ -151,13 +151,8 @@ for use in predictive maintenance.
 \examples{
 \dontrun{
 svc <- lookoutequipment()
-# 
-svc$create_retraining_scheduler(
-  ClientToken = "sample-client-token",
-  LookbackWindow = "P360D",
-  ModelName = "sample-model",
-  PromoteMode = "MANUAL",
-  RetrainingFrequency = "P1M"
+svc$create_dataset(
+  Foo = 123
 )
 }
 

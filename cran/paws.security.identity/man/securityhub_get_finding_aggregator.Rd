@@ -2,7 +2,7 @@
 % Please edit documentation in R/securityhub_operations.R
 \name{securityhub_get_finding_aggregator}
 \alias{securityhub_get_finding_aggregator}
-\title{Returns the current finding aggregation configuration}
+\title{The aggregation Region is now called the home Region}
 \usage{
 securityhub_get_finding_aggregator(FindingAggregatorArn)
 }
@@ -12,7 +12,7 @@ ARN, use
 \code{\link[=securityhub_list_finding_aggregators]{list_finding_aggregators}}.}
 }
 \description{
-Returns the current finding aggregation configuration.
+The \emph{aggregation Region} is now called the \emph{home Region}.
 
 See \url{https://www.paws-r-sdk.com/docs/securityhub_get_finding_aggregator/} for full documentation.
 }

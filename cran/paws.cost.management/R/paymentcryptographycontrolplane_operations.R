@@ -455,10 +455,11 @@ paymentcryptographycontrolplane_import_key <- function(KeyMaterial, KeyCheckValu
 #' account and Amazon Web Services Region
 #'
 #' @description
-#' Lists the aliases for all keys in the caller's Amazon Web Services account and Amazon Web Services Region. You can filter the list of aliases. For more information, see [Using aliases](https://docs.aws.amazon.com/payment-cryptography/latest/userguide/keys-managealias.html) in the *Amazon Web Services Payment Cryptography User Guide*.
+#' Lists the aliases for all keys in the caller's Amazon Web Services account and Amazon Web Services Region. You can filter the aliases by `keyARN`. For more information, see [Using aliases](https://docs.aws.amazon.com/payment-cryptography/latest/userguide/keys-managealias.html) in the *Amazon Web Services Payment Cryptography User Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/paymentcryptographycontrolplane_list_aliases/](https://www.paws-r-sdk.com/docs/paymentcryptographycontrolplane_list_aliases/) for full documentation.
 #'
+#' @param KeyArn The `keyARN` for which you want to list all aliases.
 #' @param NextToken Use this parameter in a subsequent request after you receive a response
 #' with truncated results. Set it to the value of `NextToken` from the
 #' truncated response you just received.
@@ -473,7 +474,7 @@ paymentcryptographycontrolplane_import_key <- function(KeyMaterial, KeyCheckValu
 #' @keywords internal
 #'
 #' @rdname paymentcryptographycontrolplane_list_aliases
-paymentcryptographycontrolplane_list_aliases <- function(NextToken = NULL, MaxResults = NULL) {
+paymentcryptographycontrolplane_list_aliases <- function(KeyArn = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListAliases",
     http_method = "POST",
@@ -482,7 +483,7 @@ paymentcryptographycontrolplane_list_aliases <- function(NextToken = NULL, MaxRe
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Aliases"),
     stream_api = FALSE
   )
-  input <- .paymentcryptographycontrolplane$list_aliases_input(NextToken = NextToken, MaxResults = MaxResults)
+  input <- .paymentcryptographycontrolplane$list_aliases_input(KeyArn = KeyArn, NextToken = NextToken, MaxResults = MaxResults)
   output <- .paymentcryptographycontrolplane$list_aliases_output()
   config <- get_config()
   svc <- .paymentcryptographycontrolplane$service(config, op)

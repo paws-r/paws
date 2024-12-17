@@ -3,6 +3,102 @@
 #' @include verifiedpermissions_service.R
 NULL
 
+#' Retrieves information about a group (batch) of policies
+#'
+#' @description
+#' Retrieves information about a group (batch) of policies.
+#' 
+#' The [`batch_get_policy`][verifiedpermissions_batch_get_policy] operation
+#' doesn't have its own IAM permission. To authorize this operation for
+#' Amazon Web Services principals, include the permission
+#' `verifiedpermissions:GetPolicy` in their IAM policies.
+#'
+#' @usage
+#' verifiedpermissions_batch_get_policy(requests)
+#'
+#' @param requests &#91;required&#93; An array of up to 100 policies you want information about.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   results = list(
+#'     list(
+#'       policyStoreId = "string",
+#'       policyId = "string",
+#'       policyType = "STATIC"|"TEMPLATE_LINKED",
+#'       definition = list(
+#'         static = list(
+#'           description = "string",
+#'           statement = "string"
+#'         ),
+#'         templateLinked = list(
+#'           policyTemplateId = "string",
+#'           principal = list(
+#'             entityType = "string",
+#'             entityId = "string"
+#'           ),
+#'           resource = list(
+#'             entityType = "string",
+#'             entityId = "string"
+#'           )
+#'         )
+#'       ),
+#'       createdDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastUpdatedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   errors = list(
+#'     list(
+#'       code = "POLICY_STORE_NOT_FOUND"|"POLICY_NOT_FOUND",
+#'       policyStoreId = "string",
+#'       policyId = "string",
+#'       message = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$batch_get_policy(
+#'   requests = list(
+#'     list(
+#'       policyStoreId = "string",
+#'       policyId = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname verifiedpermissions_batch_get_policy
+#'
+#' @aliases verifiedpermissions_batch_get_policy
+verifiedpermissions_batch_get_policy <- function(requests) {
+  op <- new_operation(
+    name = "BatchGetPolicy",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .verifiedpermissions$batch_get_policy_input(requests = requests)
+  output <- .verifiedpermissions$batch_get_policy_output()
+  config <- get_config()
+  svc <- .verifiedpermissions$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.verifiedpermissions$operations$batch_get_policy <- verifiedpermissions_batch_get_policy
+
 #' Makes a series of decisions about multiple authorization requests for
 #' one principal or resource
 #'
@@ -83,7 +179,9 @@ NULL
 #'               ),
 #'               record = list(
 #'                 list()
-#'               )
+#'               ),
+#'               ipaddr = "string",
+#'               decimal = "string"
 #'             )
 #'           )
 #'         )
@@ -129,7 +227,9 @@ NULL
 #'             ),
 #'             record = list(
 #'               list()
-#'             )
+#'             ),
+#'             ipaddr = "string",
+#'             decimal = "string"
 #'           )
 #'         ),
 #'         parents = list(
@@ -170,7 +270,9 @@ NULL
 #'             ),
 #'             record = list(
 #'               list()
-#'             )
+#'             ),
+#'             ipaddr = "string",
+#'             decimal = "string"
 #'           )
 #'         )
 #'       )
@@ -305,7 +407,9 @@ verifiedpermissions_batch_is_authorized <- function(policyStoreId, entities = NU
 #'               ),
 #'               record = list(
 #'                 list()
-#'               )
+#'               ),
+#'               ipaddr = "string",
+#'               decimal = "string"
 #'             )
 #'           )
 #'         )
@@ -353,7 +457,9 @@ verifiedpermissions_batch_is_authorized <- function(policyStoreId, entities = NU
 #'             ),
 #'             record = list(
 #'               list()
-#'             )
+#'             ),
+#'             ipaddr = "string",
+#'             decimal = "string"
 #'           )
 #'         ),
 #'         parents = list(
@@ -390,7 +496,9 @@ verifiedpermissions_batch_is_authorized <- function(policyStoreId, entities = NU
 #'             ),
 #'             record = list(
 #'               list()
-#'             )
+#'             ),
+#'             ipaddr = "string",
+#'             decimal = "string"
 #'           )
 #'         )
 #'       )
@@ -456,7 +564,7 @@ verifiedpermissions_batch_is_authorized_with_token <- function(policyStoreId, id
 #'     `MyCorp::User::us-east-1_EXAMPLE|a1b2c3d4-5678-90ab-cdef-EXAMPLE11111`.
 #' 
 #' -   OpenID Connect (OIDC) provider:
-#'     `Namespace::[Entity type]::[principalIdClaim]|[user principal attribute]`,
+#'     `Namespace::[Entity type]::[entityIdPrefix]|[user principal attribute]`,
 #'     for example
 #'     `MyCorp::User::MyOIDCProvider|a1b2c3d4-5678-90ab-cdef-EXAMPLE22222`.
 #' 
@@ -1564,7 +1672,9 @@ verifiedpermissions_get_schema <- function(policyStoreId) {
 #'         ),
 #'         record = list(
 #'           list()
-#'         )
+#'         ),
+#'         ipaddr = "string",
+#'         decimal = "string"
 #'       )
 #'     )
 #'   ),
@@ -1589,7 +1699,9 @@ verifiedpermissions_get_schema <- function(policyStoreId) {
 #'             ),
 #'             record = list(
 #'               list()
-#'             )
+#'             ),
+#'             ipaddr = "string",
+#'             decimal = "string"
 #'           )
 #'         ),
 #'         parents = list(
@@ -1641,9 +1753,6 @@ verifiedpermissions_is_authorized <- function(policyStoreId, principal = NULL, a
 #' evaluated against all matching policies in the specified policy store.
 #' The result of the decision is either `Allow` or `Deny`, along with a
 #' list of the policies that resulted in the decision.
-#' 
-#' At this time, Verified Permissions accepts tokens from only Amazon
-#' Cognito.
 #' 
 #' Verified Permissions validates each token that is specified in a request
 #' by checking its expiration date and its signature.
@@ -1745,7 +1854,9 @@ verifiedpermissions_is_authorized <- function(policyStoreId, principal = NULL, a
 #'         ),
 #'         record = list(
 #'           list()
-#'         )
+#'         ),
+#'         ipaddr = "string",
+#'         decimal = "string"
 #'       )
 #'     )
 #'   ),
@@ -1770,7 +1881,9 @@ verifiedpermissions_is_authorized <- function(policyStoreId, principal = NULL, a
 #'             ),
 #'             record = list(
 #'               list()
-#'             )
+#'             ),
+#'             ipaddr = "string",
+#'             decimal = "string"
 #'           )
 #'         ),
 #'         parents = list(
@@ -2340,11 +2453,6 @@ verifiedpermissions_put_schema <- function(policyStoreId, definition) {
 #' @param identitySourceId &#91;required&#93; Specifies the ID of the identity source that you want to update.
 #' @param updateConfiguration &#91;required&#93; Specifies the details required to communicate with the identity provider
 #' (IdP) associated with this identity source.
-#' 
-#' At this time, the only valid member of this structure is a Amazon
-#' Cognito user pool configuration.
-#' 
-#' You must specify a `userPoolArn`, and optionally, a `ClientId`.
 #' @param principalEntityType Specifies the data type of principals generated for identities
 #' authenticated by the identity source.
 #'

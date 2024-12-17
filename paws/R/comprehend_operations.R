@@ -3909,7 +3909,7 @@ comprehend_list_datasets <- function(FlywheelArn = NULL, Filter = NULL, NextToke
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .comprehend$list_datasets_input(FlywheelArn = FlywheelArn, Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
@@ -4019,7 +4019,7 @@ comprehend_list_document_classification_jobs <- function(Filter = NULL, NextToke
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "DocumentClassificationJobPropertiesList"),
     stream_api = FALSE
   )
   input <- .comprehend$list_document_classification_jobs_input(Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
@@ -4084,7 +4084,7 @@ comprehend_list_document_classifier_summaries <- function(NextToken = NULL, MaxR
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .comprehend$list_document_classifier_summaries_input(NextToken = NextToken, MaxResults = MaxResults)
@@ -4234,7 +4234,7 @@ comprehend_list_document_classifiers <- function(Filter = NULL, NextToken = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "DocumentClassifierPropertiesList"),
     stream_api = FALSE
   )
   input <- .comprehend$list_document_classifiers_input(Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
@@ -4342,7 +4342,7 @@ comprehend_list_dominant_language_detection_jobs <- function(Filter = NULL, Next
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "DominantLanguageDetectionJobPropertiesList"),
     stream_api = FALSE
   )
   input <- .comprehend$list_dominant_language_detection_jobs_input(Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
@@ -4537,7 +4537,7 @@ comprehend_list_entities_detection_jobs <- function(Filter = NULL, NextToken = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "EntitiesDetectionJobPropertiesList"),
     stream_api = FALSE
   )
   input <- .comprehend$list_entities_detection_jobs_input(Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
@@ -4602,7 +4602,7 @@ comprehend_list_entity_recognizer_summaries <- function(NextToken = NULL, MaxRes
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .comprehend$list_entity_recognizer_summaries_input(NextToken = NextToken, MaxResults = MaxResults)
@@ -4764,7 +4764,7 @@ comprehend_list_entity_recognizers <- function(Filter = NULL, NextToken = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "EntityRecognizerPropertiesList"),
     stream_api = FALSE
   )
   input <- .comprehend$list_entity_recognizers_input(Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
@@ -4863,7 +4863,7 @@ comprehend_list_events_detection_jobs <- function(Filter = NULL, NextToken = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .comprehend$list_events_detection_jobs_input(Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
@@ -4958,7 +4958,7 @@ comprehend_list_flywheel_iteration_history <- function(FlywheelArn, Filter = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .comprehend$list_flywheel_iteration_history_input(FlywheelArn = FlywheelArn, Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
@@ -5038,7 +5038,7 @@ comprehend_list_flywheels <- function(Filter = NULL, NextToken = NULL, MaxResult
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .comprehend$list_flywheels_input(Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
@@ -5145,7 +5145,7 @@ comprehend_list_key_phrases_detection_jobs <- function(Filter = NULL, NextToken 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "KeyPhrasesDetectionJobPropertiesList"),
     stream_api = FALSE
   )
   input <- .comprehend$list_key_phrases_detection_jobs_input(Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
@@ -5356,7 +5356,7 @@ comprehend_list_sentiment_detection_jobs <- function(Filter = NULL, NextToken = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "SentimentDetectionJobPropertiesList"),
     stream_api = FALSE
   )
   input <- .comprehend$list_sentiment_detection_jobs_input(Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
@@ -5520,7 +5520,7 @@ comprehend_list_targeted_sentiment_detection_jobs <- function(Filter = NULL, Nex
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .comprehend$list_targeted_sentiment_detection_jobs_input(Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
@@ -5626,7 +5626,7 @@ comprehend_list_topics_detection_jobs <- function(Filter = NULL, NextToken = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(result_key = "TopicsDetectionJobPropertiesList", output_token = "NextToken", input_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .comprehend$list_topics_detection_jobs_input(Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)

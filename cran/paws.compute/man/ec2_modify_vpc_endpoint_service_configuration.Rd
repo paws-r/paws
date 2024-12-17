@@ -2,7 +2,8 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_modify_vpc_endpoint_service_configuration}
 \alias{ec2_modify_vpc_endpoint_service_configuration}
-\title{Modifies the attributes of your VPC endpoint service configuration}
+\title{Modifies the attributes of the specified VPC endpoint service
+configuration}
 \usage{
 ec2_modify_vpc_endpoint_service_configuration(
   DryRun = NULL,
@@ -15,7 +16,9 @@ ec2_modify_vpc_endpoint_service_configuration(
   AddGatewayLoadBalancerArns = NULL,
   RemoveGatewayLoadBalancerArns = NULL,
   AddSupportedIpAddressTypes = NULL,
-  RemoveSupportedIpAddressTypes = NULL
+  RemoveSupportedIpAddressTypes = NULL,
+  AddSupportedRegions = NULL,
+  RemoveSupportedRegions = NULL
 )
 }
 \arguments{
@@ -32,27 +35,31 @@ endpoint service.}
 \item{RemovePrivateDnsName}{(Interface endpoint configuration) Removes the private DNS name of the
 endpoint service.}
 
-\item{AcceptanceRequired}{Indicates whether requests to create an endpoint to your service must be
+\item{AcceptanceRequired}{Indicates whether requests to create an endpoint to the service must be
 accepted.}
 
-\item{AddNetworkLoadBalancerArns}{The Amazon Resource Names (ARNs) of Network Load Balancers to add to
-your service configuration.}
+\item{AddNetworkLoadBalancerArns}{The Amazon Resource Names (ARNs) of Network Load Balancers to add to the
+service configuration.}
 
 \item{RemoveNetworkLoadBalancerArns}{The Amazon Resource Names (ARNs) of Network Load Balancers to remove
-from your service configuration.}
+from the service configuration.}
 
-\item{AddGatewayLoadBalancerArns}{The Amazon Resource Names (ARNs) of Gateway Load Balancers to add to
-your service configuration.}
+\item{AddGatewayLoadBalancerArns}{The Amazon Resource Names (ARNs) of Gateway Load Balancers to add to the
+service configuration.}
 
 \item{RemoveGatewayLoadBalancerArns}{The Amazon Resource Names (ARNs) of Gateway Load Balancers to remove
-from your service configuration.}
+from the service configuration.}
 
-\item{AddSupportedIpAddressTypes}{The IP address types to add to your service configuration.}
+\item{AddSupportedIpAddressTypes}{The IP address types to add to the service configuration.}
 
-\item{RemoveSupportedIpAddressTypes}{The IP address types to remove from your service configuration.}
+\item{RemoveSupportedIpAddressTypes}{The IP address types to remove from the service configuration.}
+
+\item{AddSupportedRegions}{The supported Regions to add to the service configuration.}
+
+\item{RemoveSupportedRegions}{The supported Regions to remove from the service configuration.}
 }
 \description{
-Modifies the attributes of your VPC endpoint service configuration. You can change the Network Load Balancers or Gateway Load Balancers for your service, and you can specify whether acceptance is required for requests to connect to your endpoint service through an interface VPC endpoint.
+Modifies the attributes of the specified VPC endpoint service configuration.
 
 See \url{https://www.paws-r-sdk.com/docs/ec2_modify_vpc_endpoint_service_configuration/} for full documentation.
 }

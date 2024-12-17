@@ -536,8 +536,8 @@ redshift_create_authentication_profile <- function(AuthenticationProfileName, Au
 #' Clusters](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#how-many-nodes)
 #' in the *Amazon Redshift Cluster Management Guide*.
 #' 
-#' Valid Values: `dc2.large` | `dc2.8xlarge` | `ra3.xlplus` | `ra3.4xlarge`
-#' | `ra3.16xlarge`
+#' Valid Values: `dc2.large` | `dc2.8xlarge` | `ra3.large` | `ra3.xlplus` |
+#' `ra3.4xlarge` | `ra3.16xlarge`
 #' @param MasterUsername &#91;required&#93; The user name associated with the admin user account for the cluster
 #' that is being created.
 #' 
@@ -1206,6 +1206,55 @@ redshift_create_hsm_configuration <- function(HsmConfigurationIdentifier, Descri
   return(response)
 }
 .redshift$operations$create_hsm_configuration <- redshift_create_hsm_configuration
+
+#' Creates a zero-ETL integration or S3 event integration with Amazon
+#' Redshift
+#'
+#' @description
+#' Creates a zero-ETL integration or S3 event integration with Amazon Redshift.
+#'
+#' See [https://www.paws-r-sdk.com/docs/redshift_create_integration/](https://www.paws-r-sdk.com/docs/redshift_create_integration/) for full documentation.
+#'
+#' @param SourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the database to use as the source for
+#' replication.
+#' @param TargetArn &#91;required&#93; The Amazon Resource Name (ARN) of the Amazon Redshift data warehouse to
+#' use as the target for replication.
+#' @param IntegrationName &#91;required&#93; The name of the integration.
+#' @param KMSKeyId An Key Management Service (KMS) key identifier for the key to use to
+#' encrypt the integration. If you don't specify an encryption key, the
+#' default Amazon Web Services owned key is used.
+#' @param TagList A list of tags.
+#' @param AdditionalEncryptionContext An optional set of non-secret key–value pairs that contains additional
+#' contextual information about the data. For more information, see
+#' [Encryption
+#' context](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context)
+#' in the *Amazon Web Services Key Management Service Developer Guide*.
+#' 
+#' You can only include this parameter if you specify the `KMSKeyId`
+#' parameter.
+#' @param Description A description of the integration.
+#'
+#' @keywords internal
+#'
+#' @rdname redshift_create_integration
+redshift_create_integration <- function(SourceArn, TargetArn, IntegrationName, KMSKeyId = NULL, TagList = NULL, AdditionalEncryptionContext = NULL, Description = NULL) {
+  op <- new_operation(
+    name = "CreateIntegration",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .redshift$create_integration_input(SourceArn = SourceArn, TargetArn = TargetArn, IntegrationName = IntegrationName, KMSKeyId = KMSKeyId, TagList = TagList, AdditionalEncryptionContext = AdditionalEncryptionContext, Description = Description)
+  output <- .redshift$create_integration_output()
+  config <- get_config()
+  svc <- .redshift$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshift$operations$create_integration <- redshift_create_integration
 
 #' Creates an Amazon Redshift application for use with IAM Identity Center
 #'
@@ -1908,6 +1957,38 @@ redshift_delete_hsm_configuration <- function(HsmConfigurationIdentifier) {
 }
 .redshift$operations$delete_hsm_configuration <- redshift_delete_hsm_configuration
 
+#' Deletes a zero-ETL integration or S3 event integration with Amazon
+#' Redshift
+#'
+#' @description
+#' Deletes a zero-ETL integration or S3 event integration with Amazon Redshift.
+#'
+#' See [https://www.paws-r-sdk.com/docs/redshift_delete_integration/](https://www.paws-r-sdk.com/docs/redshift_delete_integration/) for full documentation.
+#'
+#' @param IntegrationArn &#91;required&#93; The unique identifier of the integration to delete.
+#'
+#' @keywords internal
+#'
+#' @rdname redshift_delete_integration
+redshift_delete_integration <- function(IntegrationArn) {
+  op <- new_operation(
+    name = "DeleteIntegration",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .redshift$delete_integration_input(IntegrationArn = IntegrationArn)
+  output <- .redshift$delete_integration_output()
+  config <- get_config()
+  svc <- .redshift$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshift$operations$delete_integration <- redshift_delete_integration
+
 #' Deletes a partner integration from a cluster
 #'
 #' @description
@@ -2163,6 +2244,41 @@ redshift_delete_usage_limit <- function(UsageLimitId) {
 }
 .redshift$operations$delete_usage_limit <- redshift_delete_usage_limit
 
+#' Deregisters a cluster or serverless namespace from the Amazon Web
+#' Services Glue Data Catalog
+#'
+#' @description
+#' Deregisters a cluster or serverless namespace from the Amazon Web Services Glue Data Catalog.
+#'
+#' See [https://www.paws-r-sdk.com/docs/redshift_deregister_namespace/](https://www.paws-r-sdk.com/docs/redshift_deregister_namespace/) for full documentation.
+#'
+#' @param NamespaceIdentifier &#91;required&#93; The unique identifier of the cluster or serverless namespace that you
+#' want to deregister.
+#' @param ConsumerIdentifiers &#91;required&#93; An array containing the ID of the consumer account that you want to
+#' deregister the cluster or serverless namespace from.
+#'
+#' @keywords internal
+#'
+#' @rdname redshift_deregister_namespace
+redshift_deregister_namespace <- function(NamespaceIdentifier, ConsumerIdentifiers) {
+  op <- new_operation(
+    name = "DeregisterNamespace",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .redshift$deregister_namespace_input(NamespaceIdentifier = NamespaceIdentifier, ConsumerIdentifiers = ConsumerIdentifiers)
+  output <- .redshift$deregister_namespace_output()
+  config <- get_config()
+  svc <- .redshift$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshift$operations$deregister_namespace <- redshift_deregister_namespace
+
 #' Returns a list of attributes attached to an account
 #'
 #' @description
@@ -2329,7 +2445,7 @@ redshift_describe_cluster_parameter_groups <- function(ParameterGroupName = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "ParameterGroups"),
+    paginator = list(input_token = "Marker", output_token = "Marker", limit_key = "MaxRecords", result_key = "ParameterGroups"),
     stream_api = FALSE
   )
   input <- .redshift$describe_cluster_parameter_groups_input(ParameterGroupName = ParameterGroupName, MaxRecords = MaxRecords, Marker = Marker, TagKeys = TagKeys, TagValues = TagValues)
@@ -2384,7 +2500,7 @@ redshift_describe_cluster_parameters <- function(ParameterGroupName, Source = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "Parameters"),
+    paginator = list(input_token = "Marker", output_token = "Marker", limit_key = "MaxRecords", result_key = "Parameters"),
     stream_api = FALSE
   )
   input <- .redshift$describe_cluster_parameters_input(ParameterGroupName = ParameterGroupName, Source = Source, MaxRecords = MaxRecords, Marker = Marker)
@@ -2451,7 +2567,7 @@ redshift_describe_cluster_security_groups <- function(ClusterSecurityGroupName =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "ClusterSecurityGroups"),
+    paginator = list(input_token = "Marker", output_token = "Marker", limit_key = "MaxRecords", result_key = "ClusterSecurityGroups"),
     stream_api = FALSE
   )
   input <- .redshift$describe_cluster_security_groups_input(ClusterSecurityGroupName = ClusterSecurityGroupName, MaxRecords = MaxRecords, Marker = Marker, TagKeys = TagKeys, TagValues = TagValues)
@@ -2554,7 +2670,7 @@ redshift_describe_cluster_snapshots <- function(ClusterIdentifier = NULL, Snapsh
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "Snapshots"),
+    paginator = list(input_token = "Marker", output_token = "Marker", limit_key = "MaxRecords", result_key = "Snapshots"),
     stream_api = FALSE
   )
   input <- .redshift$describe_cluster_snapshots_input(ClusterIdentifier = ClusterIdentifier, SnapshotIdentifier = SnapshotIdentifier, SnapshotArn = SnapshotArn, SnapshotType = SnapshotType, StartTime = StartTime, EndTime = EndTime, MaxRecords = MaxRecords, Marker = Marker, OwnerAccount = OwnerAccount, TagKeys = TagKeys, TagValues = TagValues, ClusterExists = ClusterExists, SortingEntities = SortingEntities)
@@ -2615,7 +2731,7 @@ redshift_describe_cluster_subnet_groups <- function(ClusterSubnetGroupName = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "ClusterSubnetGroups"),
+    paginator = list(input_token = "Marker", output_token = "Marker", limit_key = "MaxRecords", result_key = "ClusterSubnetGroups"),
     stream_api = FALSE
   )
   input <- .redshift$describe_cluster_subnet_groups_input(ClusterSubnetGroupName = ClusterSubnetGroupName, MaxRecords = MaxRecords, Marker = Marker, TagKeys = TagKeys, TagValues = TagValues)
@@ -2713,7 +2829,7 @@ redshift_describe_cluster_versions <- function(ClusterVersion = NULL, ClusterPar
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "ClusterVersions"),
+    paginator = list(input_token = "Marker", output_token = "Marker", limit_key = "MaxRecords", result_key = "ClusterVersions"),
     stream_api = FALSE
   )
   input <- .redshift$describe_cluster_versions_input(ClusterVersion = ClusterVersion, ClusterParameterGroupFamily = ClusterParameterGroupFamily, MaxRecords = MaxRecords, Marker = Marker)
@@ -2780,7 +2896,7 @@ redshift_describe_clusters <- function(ClusterIdentifier = NULL, MaxRecords = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "Clusters"),
+    paginator = list(input_token = "Marker", output_token = "Marker", limit_key = "MaxRecords", result_key = "Clusters"),
     stream_api = FALSE
   )
   input <- .redshift$describe_clusters_input(ClusterIdentifier = ClusterIdentifier, MaxRecords = MaxRecords, Marker = Marker, TagKeys = TagKeys, TagValues = TagValues)
@@ -3003,7 +3119,7 @@ redshift_describe_default_cluster_parameters <- function(ParameterGroupFamily, M
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "DefaultClusterParameters.Marker", result_key = "DefaultClusterParameters.Parameters"),
+    paginator = list(input_token = "Marker", output_token = "DefaultClusterParameters.Marker", limit_key = "MaxRecords", result_key = "DefaultClusterParameters.Parameters"),
     stream_api = FALSE
   )
   input <- .redshift$describe_default_cluster_parameters_input(ParameterGroupFamily = ParameterGroupFamily, MaxRecords = MaxRecords, Marker = Marker)
@@ -3191,7 +3307,7 @@ redshift_describe_event_subscriptions <- function(SubscriptionName = NULL, MaxRe
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "EventSubscriptionsList"),
+    paginator = list(input_token = "Marker", output_token = "Marker", limit_key = "MaxRecords", result_key = "EventSubscriptionsList"),
     stream_api = FALSE
   )
   input <- .redshift$describe_event_subscriptions_input(SubscriptionName = SubscriptionName, MaxRecords = MaxRecords, Marker = Marker, TagKeys = TagKeys, TagValues = TagValues)
@@ -3289,7 +3405,7 @@ redshift_describe_events <- function(SourceIdentifier = NULL, SourceType = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "Events"),
+    paginator = list(input_token = "Marker", output_token = "Marker", limit_key = "MaxRecords", result_key = "Events"),
     stream_api = FALSE
   )
   input <- .redshift$describe_events_input(SourceIdentifier = SourceIdentifier, SourceType = SourceType, StartTime = StartTime, EndTime = EndTime, Duration = Duration, MaxRecords = MaxRecords, Marker = Marker)
@@ -3352,7 +3468,7 @@ redshift_describe_hsm_client_certificates <- function(HsmClientCertificateIdenti
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "HsmClientCertificates"),
+    paginator = list(input_token = "Marker", output_token = "Marker", limit_key = "MaxRecords", result_key = "HsmClientCertificates"),
     stream_api = FALSE
   )
   input <- .redshift$describe_hsm_client_certificates_input(HsmClientCertificateIdentifier = HsmClientCertificateIdentifier, MaxRecords = MaxRecords, Marker = Marker, TagKeys = TagKeys, TagValues = TagValues)
@@ -3416,7 +3532,7 @@ redshift_describe_hsm_configurations <- function(HsmConfigurationIdentifier = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "HsmConfigurations"),
+    paginator = list(input_token = "Marker", output_token = "Marker", limit_key = "MaxRecords", result_key = "HsmConfigurations"),
     stream_api = FALSE
   )
   input <- .redshift$describe_hsm_configurations_input(HsmConfigurationIdentifier = HsmConfigurationIdentifier, MaxRecords = MaxRecords, Marker = Marker, TagKeys = TagKeys, TagValues = TagValues)
@@ -3476,6 +3592,52 @@ redshift_describe_inbound_integrations <- function(IntegrationArn = NULL, Target
   return(response)
 }
 .redshift$operations$describe_inbound_integrations <- redshift_describe_inbound_integrations
+
+#' Describes one or more zero-ETL or S3 event integrations with Amazon
+#' Redshift
+#'
+#' @description
+#' Describes one or more zero-ETL or S3 event integrations with Amazon Redshift.
+#'
+#' See [https://www.paws-r-sdk.com/docs/redshift_describe_integrations/](https://www.paws-r-sdk.com/docs/redshift_describe_integrations/) for full documentation.
+#'
+#' @param IntegrationArn The unique identifier of the integration.
+#' @param MaxRecords The maximum number of response records to return in each call. If the
+#' number of remaining response records exceeds the specified `MaxRecords`
+#' value, a value is returned in a `marker` field of the response. You can
+#' retrieve the next set of records by retrying the command with the
+#' returned marker value.
+#' 
+#' Default: `100`
+#' 
+#' Constraints: minimum 20, maximum 100.
+#' @param Marker An optional pagination token provided by a previous
+#' [`describe_integrations`][redshift_describe_integrations] request. If
+#' this parameter is specified, the response includes only records beyond
+#' the marker, up to the value specified by `MaxRecords`.
+#' @param Filters A filter that specifies one or more resources to return.
+#'
+#' @keywords internal
+#'
+#' @rdname redshift_describe_integrations
+redshift_describe_integrations <- function(IntegrationArn = NULL, MaxRecords = NULL, Marker = NULL, Filters = NULL) {
+  op <- new_operation(
+    name = "DescribeIntegrations",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "Integrations"),
+    stream_api = FALSE
+  )
+  input <- .redshift$describe_integrations_input(IntegrationArn = IntegrationArn, MaxRecords = MaxRecords, Marker = Marker, Filters = Filters)
+  output <- .redshift$describe_integrations_output()
+  config <- get_config()
+  svc <- .redshift$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshift$operations$describe_integrations <- redshift_describe_integrations
 
 #' Describes whether information, such as queries and connection attempts,
 #' is being logged for the specified Amazon Redshift cluster
@@ -3616,7 +3778,7 @@ redshift_describe_orderable_cluster_options <- function(ClusterVersion = NULL, N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "OrderableClusterOptions"),
+    paginator = list(input_token = "Marker", output_token = "Marker", limit_key = "MaxRecords", result_key = "OrderableClusterOptions"),
     stream_api = FALSE
   )
   input <- .redshift$describe_orderable_cluster_options_input(ClusterVersion = ClusterVersion, NodeType = NodeType, MaxRecords = MaxRecords, Marker = Marker)
@@ -3793,7 +3955,7 @@ redshift_describe_reserved_node_offerings <- function(ReservedNodeOfferingId = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "ReservedNodeOfferings"),
+    paginator = list(input_token = "Marker", output_token = "Marker", limit_key = "MaxRecords", result_key = "ReservedNodeOfferings"),
     stream_api = FALSE
   )
   input <- .redshift$describe_reserved_node_offerings_input(ReservedNodeOfferingId = ReservedNodeOfferingId, MaxRecords = MaxRecords, Marker = Marker)
@@ -3840,7 +4002,7 @@ redshift_describe_reserved_nodes <- function(ReservedNodeId = NULL, MaxRecords =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "ReservedNodes"),
+    paginator = list(input_token = "Marker", output_token = "Marker", limit_key = "MaxRecords", result_key = "ReservedNodes"),
     stream_api = FALSE
   )
   input <- .redshift$describe_reserved_nodes_input(ReservedNodeId = ReservedNodeId, MaxRecords = MaxRecords, Marker = Marker)
@@ -4160,6 +4322,12 @@ redshift_describe_table_restore_status <- function(ClusterIdentifier = NULL, Tab
 #' 
 #' -   Snapshot copy grant
 #' 
+#' -   Integration (zero-ETL integration or S3 event integration)
+#' 
+#'     To describe the tags associated with an `integration`, don't specify
+#'     `ResourceType`, instead specify the `ResourceName` of the
+#'     integration.
+#' 
 #' For more information about Amazon Redshift resource types and
 #' constructing ARNs, go to [Specifying Policy Elements: Actions, Effects,
 #' Resources, and
@@ -4404,23 +4572,10 @@ redshift_disassociate_data_share_consumer <- function(DataShareArn, Disassociate
 #' -   The cluster must have read bucket and put object permissions
 #' @param S3KeyPrefix The prefix applied to the log file names.
 #' 
-#' Constraints:
-#' 
-#' -   Cannot exceed 512 characters
-#' 
-#' -   Cannot contain spaces( ), double quotes ("), single quotes ('), a
-#'     backslash (\\), or control characters. The hexadecimal codes for
-#'     invalid characters are:
-#' 
-#'     -   x00 to x20
-#' 
-#'     -   x22
-#' 
-#'     -   x27
-#' 
-#'     -   x5c
-#' 
-#'     -   x7f or larger
+#' Valid characters are any letter from any language, any whitespace
+#' character, any numeric character, and the following characters:
+#' underscore (`_`), period (`.`), colon (`:`), slash (`/`), equal (`=`),
+#' plus (`+`), backslash (`\`), hyphen (`-`), at symbol (`@@`).
 #' @param LogDestinationType The log destination type. An enum with possible values of `s3` and
 #' `cloudwatch`.
 #' @param LogExports The collection of exported log types. Possible values are
@@ -4948,8 +5103,8 @@ redshift_modify_authentication_profile <- function(AuthenticationProfileName, Au
 #' in Amazon Redshift](https://docs.aws.amazon.com/redshift/latest/mgmt/)
 #' in the *Amazon Redshift Cluster Management Guide*.
 #' 
-#' Valid Values: `dc2.large` | `dc2.8xlarge` | `ra3.xlplus` | `ra3.4xlarge`
-#' | `ra3.16xlarge`
+#' Valid Values: `dc2.large` | `dc2.8xlarge` | `ra3.large` | `ra3.xlplus` |
+#' `ra3.4xlarge` | `ra3.16xlarge`
 #' @param NumberOfNodes The new number of nodes of the cluster. If you specify a new number of
 #' nodes, you must also specify the node type parameter.
 #' 
@@ -5563,6 +5718,40 @@ redshift_modify_event_subscription <- function(SubscriptionName, SnsTopicArn = N
 }
 .redshift$operations$modify_event_subscription <- redshift_modify_event_subscription
 
+#' Modifies a zero-ETL integration or S3 event integration with Amazon
+#' Redshift
+#'
+#' @description
+#' Modifies a zero-ETL integration or S3 event integration with Amazon Redshift.
+#'
+#' See [https://www.paws-r-sdk.com/docs/redshift_modify_integration/](https://www.paws-r-sdk.com/docs/redshift_modify_integration/) for full documentation.
+#'
+#' @param IntegrationArn &#91;required&#93; The unique identifier of the integration to modify.
+#' @param Description A new description for the integration.
+#' @param IntegrationName A new name for the integration.
+#'
+#' @keywords internal
+#'
+#' @rdname redshift_modify_integration
+redshift_modify_integration <- function(IntegrationArn, Description = NULL, IntegrationName = NULL) {
+  op <- new_operation(
+    name = "ModifyIntegration",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .redshift$modify_integration_input(IntegrationArn = IntegrationArn, Description = Description, IntegrationName = IntegrationName)
+  output <- .redshift$modify_integration_output()
+  config <- get_config()
+  svc <- .redshift$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshift$operations$modify_integration <- redshift_modify_integration
+
 #' Changes an existing Amazon Redshift IAM Identity Center application
 #'
 #' @description
@@ -5912,6 +6101,41 @@ redshift_reboot_cluster <- function(ClusterIdentifier) {
   return(response)
 }
 .redshift$operations$reboot_cluster <- redshift_reboot_cluster
+
+#' Registers a cluster or serverless namespace to the Amazon Web Services
+#' Glue Data Catalog
+#'
+#' @description
+#' Registers a cluster or serverless namespace to the Amazon Web Services Glue Data Catalog.
+#'
+#' See [https://www.paws-r-sdk.com/docs/redshift_register_namespace/](https://www.paws-r-sdk.com/docs/redshift_register_namespace/) for full documentation.
+#'
+#' @param NamespaceIdentifier &#91;required&#93; The unique identifier of the cluster or serverless namespace that you
+#' want to register.
+#' @param ConsumerIdentifiers &#91;required&#93; An array containing the ID of the consumer account that you want to
+#' register the namespace to.
+#'
+#' @keywords internal
+#'
+#' @rdname redshift_register_namespace
+redshift_register_namespace <- function(NamespaceIdentifier, ConsumerIdentifiers) {
+  op <- new_operation(
+    name = "RegisterNamespace",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .redshift$register_namespace_input(NamespaceIdentifier = NamespaceIdentifier, ConsumerIdentifiers = ConsumerIdentifiers)
+  output <- .redshift$register_namespace_output()
+  config <- get_config()
+  svc <- .redshift$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshift$operations$register_namespace <- redshift_register_namespace
 
 #' From a datashare consumer account, rejects the specified datashare
 #'

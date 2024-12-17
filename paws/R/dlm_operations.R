@@ -121,7 +121,7 @@ NULL
 #'       "VOLUME"|"INSTANCE"
 #'     ),
 #'     ResourceLocations = list(
-#'       "CLOUD"|"OUTPOST"
+#'       "CLOUD"|"OUTPOST"|"LOCAL_ZONE"
 #'     ),
 #'     TargetTags = list(
 #'       list(
@@ -146,7 +146,7 @@ NULL
 #'           )
 #'         ),
 #'         CreateRule = list(
-#'           Location = "CLOUD"|"OUTPOST_LOCAL",
+#'           Location = "CLOUD"|"OUTPOST_LOCAL"|"LOCAL_ZONE",
 #'           Interval = 123,
 #'           IntervalUnit = "HOURS",
 #'           Times = list(
@@ -514,7 +514,7 @@ dlm_get_lifecycle_policies <- function(PolicyIds = NULL, State = NULL, ResourceT
 #'         "VOLUME"|"INSTANCE"
 #'       ),
 #'       ResourceLocations = list(
-#'         "CLOUD"|"OUTPOST"
+#'         "CLOUD"|"OUTPOST"|"LOCAL_ZONE"
 #'       ),
 #'       TargetTags = list(
 #'         list(
@@ -539,7 +539,7 @@ dlm_get_lifecycle_policies <- function(PolicyIds = NULL, State = NULL, ResourceT
 #'             )
 #'           ),
 #'           CreateRule = list(
-#'             Location = "CLOUD"|"OUTPOST_LOCAL",
+#'             Location = "CLOUD"|"OUTPOST_LOCAL"|"LOCAL_ZONE",
 #'             Interval = 123,
 #'             IntervalUnit = "HOURS",
 #'             Times = list(
@@ -939,7 +939,7 @@ dlm_untag_resource <- function(ResourceArn, TagKeys) {
 #'       "VOLUME"|"INSTANCE"
 #'     ),
 #'     ResourceLocations = list(
-#'       "CLOUD"|"OUTPOST"
+#'       "CLOUD"|"OUTPOST"|"LOCAL_ZONE"
 #'     ),
 #'     TargetTags = list(
 #'       list(
@@ -964,7 +964,7 @@ dlm_untag_resource <- function(ResourceArn, TagKeys) {
 #'           )
 #'         ),
 #'         CreateRule = list(
-#'           Location = "CLOUD"|"OUTPOST_LOCAL",
+#'           Location = "CLOUD"|"OUTPOST_LOCAL"|"LOCAL_ZONE",
 #'           Interval = 123,
 #'           IntervalUnit = "HOURS",
 #'           Times = list(

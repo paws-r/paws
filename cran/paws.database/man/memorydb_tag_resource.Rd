@@ -8,7 +8,7 @@ memorydb_tag_resource(ResourceArn, Tags)
 }
 \arguments{
 \item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the resource to which the tags are to
-be added}
+be added.}
 
 \item{Tags}{[required] A list of tags to be added to this resource. A tag is a key-value pair.
 A tag key must be accompanied by a tag value, although null is accepted.}

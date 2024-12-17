@@ -2,9 +2,14 @@
 % Please edit documentation in R/cloudwatch_operations.R
 \name{cloudwatch_put_metric_data}
 \alias{cloudwatch_put_metric_data}
-\title{Publishes metric data points to Amazon CloudWatch}
+\title{Publishes metric data to Amazon CloudWatch}
 \usage{
-cloudwatch_put_metric_data(Namespace, MetricData)
+cloudwatch_put_metric_data(
+  Namespace,
+  MetricData = NULL,
+  EntityMetricData = NULL,
+  StrictEntityValidation = NULL
+)
 }
 \arguments{
 \item{Namespace}{[required] The namespace for the metric data. You can use ASCII characters for the
@@ -13,11 +18,56 @@ namespace, except for control characters which are not supported.
 To avoid conflicts with Amazon Web Services service namespaces, you
 should not specify a namespace that begins with \verb{AWS/}}
 
-\item{MetricData}{[required] The data for the metric. The array can include no more than 1000 metrics
-per call.}
+\item{MetricData}{The data for the metrics. Use this parameter if your metrics do not
+contain associated entities. The array can include no more than 1000
+metrics per call.
+
+The limit of metrics allowed, 1000, is the sum of both
+\code{EntityMetricData} and \code{MetricData} metrics.}
+
+\item{EntityMetricData}{Data for metrics that contain associated entity information. You can
+include up to two \code{EntityMetricData} objects, each of which can contain
+a single \code{Entity} and associated metrics.
+
+The limit of metrics allowed, 1000, is the sum of both
+\code{EntityMetricData} and \code{MetricData} metrics.}
+
+\item{StrictEntityValidation}{Whether to accept valid metric data when an invalid entity is sent.
+\itemize{
+\item When set to \code{true}: Any validation error (for entity or metric data)
+will fail the entire request, and no data will be ingested. The
+failed operation will return a 400 result with the error.
+\item When set to \code{false}: Validation errors in the entity will not
+associate the metric with the entity, but the metric data will still
+be accepted and ingested. Validation errors in the metric data will
+fail the entire request, and no data will be ingested.
+
+In the case of an invalid entity, the operation will return a \code{200}
+status, but an additional response header will contain information
+about the validation errors. The new header,
+\code{X-Amzn-Failure-Message} is an enumeration of the following values:
+\itemize{
+\item \code{InvalidEntity} - The provided entity is invalid.
+\item \code{InvalidKeyAttributes} - The provided \code{KeyAttributes} of an
+entity is invalid.
+\item \code{InvalidAttributes} - The provided \code{Attributes} of an entity is
+invalid.
+\item \code{InvalidTypeValue} - The provided \code{Type} in the \code{KeyAttributes}
+of an entity is invalid.
+\item \code{EntitySizeTooLarge} - The number of \code{EntityMetricData} objects
+allowed is 2.
+\item \code{MissingRequiredFields} - There are missing required fields in
+the \code{KeyAttributes} for the provided \code{Type}.
+}
+
+For details of the requirements for specifying an entity, see How to
+add related information to telemetry in the \emph{CloudWatch User Guide}.
+}
+
+This parameter is \emph{required} when \code{EntityMetricData} is included.}
 }
 \description{
-Publishes metric data points to Amazon CloudWatch. CloudWatch associates the data points with the specified metric. If the specified metric does not exist, CloudWatch creates the metric. When CloudWatch creates a metric, it can take up to fifteen minutes for the metric to appear in calls to \code{\link[=cloudwatch_list_metrics]{list_metrics}}.
+Publishes metric data to Amazon CloudWatch. CloudWatch associates the data with the specified metric. If the specified metric does not exist, CloudWatch creates the metric. When CloudWatch creates a metric, it can take up to fifteen minutes for the metric to appear in calls to \code{\link[=cloudwatch_list_metrics]{list_metrics}}.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudwatch_put_metric_data/} for full documentation.
 }

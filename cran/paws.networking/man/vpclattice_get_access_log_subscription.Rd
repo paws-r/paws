@@ -7,7 +7,7 @@
 vpclattice_get_access_log_subscription(accessLogSubscriptionIdentifier)
 }
 \arguments{
-\item{accessLogSubscriptionIdentifier}{[required] The ID or Amazon Resource Name (ARN) of the access log subscription.}
+\item{accessLogSubscriptionIdentifier}{[required] The ID or ARN of the access log subscription.}
 }
 \description{
 Retrieves information about the specified access log subscription.

@@ -14,7 +14,7 @@ memorydb_describe_clusters(
 )
 }
 \arguments{
-\item{ClusterName}{The name of the cluster}
+\item{ClusterName}{The name of the cluster.}
 
 \item{MaxResults}{The maximum number of records to include in the response. If more
 records exist than the specified MaxResults value, a token is included

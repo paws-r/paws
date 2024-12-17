@@ -167,6 +167,7 @@ NULL
 #'  \link[=applicationautoscaling_describe_scaling_activities]{describe_scaling_activities} \tab Provides descriptive information about the scaling activities in the specified namespace from the previous six weeks\cr
 #'  \link[=applicationautoscaling_describe_scaling_policies]{describe_scaling_policies} \tab Describes the Application Auto Scaling scaling policies for the specified service namespace\cr
 #'  \link[=applicationautoscaling_describe_scheduled_actions]{describe_scheduled_actions} \tab Describes the Application Auto Scaling scheduled actions for the specified service namespace\cr
+#'  \link[=applicationautoscaling_get_predictive_scaling_forecast]{get_predictive_scaling_forecast} \tab Retrieves the forecast data for a predictive scaling policy\cr
 #'  \link[=applicationautoscaling_list_tags_for_resource]{list_tags_for_resource} \tab Returns all the tags on the specified Application Auto Scaling scalable target\cr
 #'  \link[=applicationautoscaling_put_scaling_policy]{put_scaling_policy} \tab Creates or updates a scaling policy for an Application Auto Scaling scalable target\cr
 #'  \link[=applicationautoscaling_put_scheduled_action]{put_scheduled_action} \tab Creates or updates a scheduled action for an Application Auto Scaling scalable target\cr
@@ -204,7 +205,7 @@ applicationautoscaling <- function(config = list(), credentials = list(), endpoi
 
 .applicationautoscaling$metadata <- list(
   service_name = "autoscaling",
-  endpoints = list("*" = list(endpoint = "application-autoscaling.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "application-autoscaling.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "application-autoscaling.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "application-autoscaling.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "application-autoscaling.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "application-autoscaling.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "application-autoscaling.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "application-autoscaling.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "application-autoscaling.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "application-autoscaling.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "application-autoscaling.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "application-autoscaling.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "application-autoscaling.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Application Auto Scaling",
   api_version = "2016-02-06",
   signing_name = "application-autoscaling",

@@ -24,6 +24,10 @@ test_that("list_open_id_connect_providers", {
   expect_error(svc$list_open_id_connect_providers(), NA)
 })
 
+test_that("list_organizations_features", {
+  expect_error(svc$list_organizations_features(), NA)
+})
+
 test_that("list_policies", {
   expect_error(svc$list_policies(), NA)
 })

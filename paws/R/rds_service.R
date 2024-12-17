@@ -132,8 +132,11 @@ NULL
 #' @examples
 #' \dontrun{
 #' svc <- rds()
-#' svc$add_role_to_db_cluster(
-#'   Foo = 123
+#' # This example add a source identifier to an event notification
+#' # subscription.
+#' svc$add_source_identifier_to_subscription(
+#'   SourceIdentifier = "mymysqlinstance",
+#'   SubscriptionName = "mymysqleventsubscription"
 #' )
 #' }
 #'
@@ -333,7 +336,7 @@ rds <- function(config = list(), credentials = list(), endpoint = NULL, region =
 
 .rds$metadata <- list(
   service_name = "rds",
-  endpoints = list("*" = list(endpoint = "rds.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "rds.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "rds.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "rds.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "rds.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "rds.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "rds.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "rds.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "rds.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "rds.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "rds.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "rds.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "rds.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "RDS",
   api_version = "2014-10-31",
   signing_name = "rds",

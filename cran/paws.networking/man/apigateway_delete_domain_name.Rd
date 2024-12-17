@@ -4,10 +4,13 @@
 \alias{apigateway_delete_domain_name}
 \title{Deletes the DomainName resource}
 \usage{
-apigateway_delete_domain_name(domainName)
+apigateway_delete_domain_name(domainName, domainNameId = NULL)
 }
 \arguments{
 \item{domainName}{[required] The name of the DomainName resource to be deleted.}
+
+\item{domainNameId}{The identifier for the domain name resource. Supported only for private
+custom domain names.}
 }
 \description{
 Deletes the DomainName resource.

@@ -21,6 +21,8 @@ NULL
 #' @param DbUser The database user name. This parameter is required when connecting to a
 #' cluster as a database user and authenticating using temporary
 #' credentials.
+#' @param ResultFormat The data format of the result of the SQL statement. If no format is
+#' specified, the default is JSON.
 #' @param SecretArn The name or ARN of the secret that enables access to the database. This
 #' parameter is required when authenticating using Secrets Manager.
 #' @param SessionId The session identifier of the query.
@@ -41,7 +43,7 @@ NULL
 #' @keywords internal
 #'
 #' @rdname redshiftdataapiservice_batch_execute_statement
-redshiftdataapiservice_batch_execute_statement <- function(ClientToken = NULL, ClusterIdentifier = NULL, Database = NULL, DbUser = NULL, SecretArn = NULL, SessionId = NULL, SessionKeepAliveSeconds = NULL, Sqls, StatementName = NULL, WithEvent = NULL, WorkgroupName = NULL) {
+redshiftdataapiservice_batch_execute_statement <- function(ClientToken = NULL, ClusterIdentifier = NULL, Database = NULL, DbUser = NULL, ResultFormat = NULL, SecretArn = NULL, SessionId = NULL, SessionKeepAliveSeconds = NULL, Sqls, StatementName = NULL, WithEvent = NULL, WorkgroupName = NULL) {
   op <- new_operation(
     name = "BatchExecuteStatement",
     http_method = "POST",
@@ -50,7 +52,7 @@ redshiftdataapiservice_batch_execute_statement <- function(ClientToken = NULL, C
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .redshiftdataapiservice$batch_execute_statement_input(ClientToken = ClientToken, ClusterIdentifier = ClusterIdentifier, Database = Database, DbUser = DbUser, SecretArn = SecretArn, SessionId = SessionId, SessionKeepAliveSeconds = SessionKeepAliveSeconds, Sqls = Sqls, StatementName = StatementName, WithEvent = WithEvent, WorkgroupName = WorkgroupName)
+  input <- .redshiftdataapiservice$batch_execute_statement_input(ClientToken = ClientToken, ClusterIdentifier = ClusterIdentifier, Database = Database, DbUser = DbUser, ResultFormat = ResultFormat, SecretArn = SecretArn, SessionId = SessionId, SessionKeepAliveSeconds = SessionKeepAliveSeconds, Sqls = Sqls, StatementName = StatementName, WithEvent = WithEvent, WorkgroupName = WorkgroupName)
   output <- .redshiftdataapiservice$batch_execute_statement_output()
   config <- get_config()
   svc <- .redshiftdataapiservice$service(config, op)
@@ -214,6 +216,8 @@ redshiftdataapiservice_describe_table <- function(ClusterIdentifier = NULL, Conn
 #' cluster as a database user and authenticating using temporary
 #' credentials.
 #' @param Parameters The parameters for the SQL statement.
+#' @param ResultFormat The data format of the result of the SQL statement. If no format is
+#' specified, the default is JSON.
 #' @param SecretArn The name or ARN of the secret that enables access to the database. This
 #' parameter is required when authenticating using Secrets Manager.
 #' @param SessionId The session identifier of the query.
@@ -232,7 +236,7 @@ redshiftdataapiservice_describe_table <- function(ClusterIdentifier = NULL, Conn
 #' @keywords internal
 #'
 #' @rdname redshiftdataapiservice_execute_statement
-redshiftdataapiservice_execute_statement <- function(ClientToken = NULL, ClusterIdentifier = NULL, Database = NULL, DbUser = NULL, Parameters = NULL, SecretArn = NULL, SessionId = NULL, SessionKeepAliveSeconds = NULL, Sql, StatementName = NULL, WithEvent = NULL, WorkgroupName = NULL) {
+redshiftdataapiservice_execute_statement <- function(ClientToken = NULL, ClusterIdentifier = NULL, Database = NULL, DbUser = NULL, Parameters = NULL, ResultFormat = NULL, SecretArn = NULL, SessionId = NULL, SessionKeepAliveSeconds = NULL, Sql, StatementName = NULL, WithEvent = NULL, WorkgroupName = NULL) {
   op <- new_operation(
     name = "ExecuteStatement",
     http_method = "POST",
@@ -241,7 +245,7 @@ redshiftdataapiservice_execute_statement <- function(ClientToken = NULL, Cluster
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .redshiftdataapiservice$execute_statement_input(ClientToken = ClientToken, ClusterIdentifier = ClusterIdentifier, Database = Database, DbUser = DbUser, Parameters = Parameters, SecretArn = SecretArn, SessionId = SessionId, SessionKeepAliveSeconds = SessionKeepAliveSeconds, Sql = Sql, StatementName = StatementName, WithEvent = WithEvent, WorkgroupName = WorkgroupName)
+  input <- .redshiftdataapiservice$execute_statement_input(ClientToken = ClientToken, ClusterIdentifier = ClusterIdentifier, Database = Database, DbUser = DbUser, Parameters = Parameters, ResultFormat = ResultFormat, SecretArn = SecretArn, SessionId = SessionId, SessionKeepAliveSeconds = SessionKeepAliveSeconds, Sql = Sql, StatementName = StatementName, WithEvent = WithEvent, WorkgroupName = WorkgroupName)
   output <- .redshiftdataapiservice$execute_statement_output()
   config <- get_config()
   svc <- .redshiftdataapiservice$service(config, op)
@@ -251,10 +255,10 @@ redshiftdataapiservice_execute_statement <- function(ClientToken = NULL, Cluster
 }
 .redshiftdataapiservice$operations$execute_statement <- redshiftdataapiservice_execute_statement
 
-#' Fetches the temporarily cached result of an SQL statement
+#' Fetches the temporarily cached result of an SQL statement in JSON format
 #'
 #' @description
-#' Fetches the temporarily cached result of an SQL statement. A token is returned to page through the statement results.
+#' Fetches the temporarily cached result of an SQL statement in JSON format. The [`execute_statement`][redshiftdataapiservice_execute_statement] or [`batch_execute_statement`][redshiftdataapiservice_batch_execute_statement] operation that ran the SQL statement must have specified `ResultFormat` as `JSON` , or let the format default to JSON. A token is returned to page through the statement results.
 #'
 #' See [https://www.paws-r-sdk.com/docs/redshiftdataapiservice_get_statement_result/](https://www.paws-r-sdk.com/docs/redshiftdataapiservice_get_statement_result/) for full documentation.
 #'
@@ -293,6 +297,49 @@ redshiftdataapiservice_get_statement_result <- function(Id, NextToken = NULL) {
   return(response)
 }
 .redshiftdataapiservice$operations$get_statement_result <- redshiftdataapiservice_get_statement_result
+
+#' Fetches the temporarily cached result of an SQL statement in CSV format
+#'
+#' @description
+#' Fetches the temporarily cached result of an SQL statement in CSV format. The [`execute_statement`][redshiftdataapiservice_execute_statement] or [`batch_execute_statement`][redshiftdataapiservice_batch_execute_statement] operation that ran the SQL statement must have specified `ResultFormat` as `CSV`. A token is returned to page through the statement results.
+#'
+#' See [https://www.paws-r-sdk.com/docs/redshiftdataapiservice_get_statement_result_v2/](https://www.paws-r-sdk.com/docs/redshiftdataapiservice_get_statement_result_v2/) for full documentation.
+#'
+#' @param Id &#91;required&#93; The identifier of the SQL statement whose results are to be fetched.
+#' This value is a universally unique identifier (UUID) generated by Amazon
+#' Redshift Data API. A suffix indicates then number of the SQL statement.
+#' For example, `d9b6c0c9-0747-4bf4-b142-e8883122f766:2` has a suffix of
+#' `:2` that indicates the second SQL statement of a batch query. This
+#' identifier is returned by `BatchExecuteStatment`, `ExecuteStatment`, and
+#' [`list_statements`][redshiftdataapiservice_list_statements].
+#' @param NextToken A value that indicates the starting point for the next set of response
+#' records in a subsequent request. If a value is returned in a response,
+#' you can retrieve the next set of records by providing this returned
+#' NextToken value in the next NextToken parameter and retrying the
+#' command. If the NextToken field is empty, all response records have been
+#' retrieved for the request.
+#'
+#' @keywords internal
+#'
+#' @rdname redshiftdataapiservice_get_statement_result_v2
+redshiftdataapiservice_get_statement_result_v2 <- function(Id, NextToken = NULL) {
+  op <- new_operation(
+    name = "GetStatementResultV2",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Records"),
+    stream_api = FALSE
+  )
+  input <- .redshiftdataapiservice$get_statement_result_v2_input(Id = Id, NextToken = NextToken)
+  output <- .redshiftdataapiservice$get_statement_result_v2_output()
+  config <- get_config()
+  svc <- .redshiftdataapiservice$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshiftdataapiservice$operations$get_statement_result_v2 <- redshiftdataapiservice_get_statement_result_v2
 
 #' List the databases in a cluster
 #'

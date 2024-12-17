@@ -5,24 +5,24 @@
 \title{Exports a running or stopped instance to an Amazon S3 bucket}
 \usage{
 ec2_create_instance_export_task(
+  TagSpecifications = NULL,
   Description = NULL,
-  ExportToS3Task,
   InstanceId,
   TargetEnvironment,
-  TagSpecifications = NULL
+  ExportToS3Task
 )
 }
 \arguments{
+\item{TagSpecifications}{The tags to apply to the export instance task during creation.}
+
 \item{Description}{A description for the conversion task or the resource being exported.
 The maximum length is 255 characters.}
-
-\item{ExportToS3Task}{[required] The format and location for an export instance task.}
 
 \item{InstanceId}{[required] The ID of the instance.}
 
 \item{TargetEnvironment}{[required] The target virtualization environment.}
 
-\item{TagSpecifications}{The tags to apply to the export instance task during creation.}
+\item{ExportToS3Task}{[required] The format and location for an export instance task.}
 }
 \description{
 Exports a running or stopped instance to an Amazon S3 bucket.

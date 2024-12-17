@@ -9,13 +9,17 @@ pinpointsmsvoicev2_describe_phone_numbers(
   PhoneNumberIds = NULL,
   Filters = NULL,
   NextToken = NULL,
-  MaxResults = NULL
+  MaxResults = NULL,
+  Owner = NULL
 )
 }
 \arguments{
 \item{PhoneNumberIds}{The unique identifier of phone numbers to find information about. This
 is an array of strings that can be either the PhoneNumberId or
-PhoneNumberArn.}
+PhoneNumberArn.
+
+If you are using a shared AWS End User Messaging SMS and Voice resource
+then you must use the full Amazon Resource Name(ARN).}
 
 \item{Filters}{An array of PhoneNumberFilter objects to filter the results.}
 
@@ -23,6 +27,10 @@ PhoneNumberArn.}
 need to supply a value for this field in the initial request.}
 
 \item{MaxResults}{The maximum number of results to return per each request.}
+
+\item{Owner}{Use \code{SELF} to filter the list of phone numbers to ones your account owns
+or use \code{SHARED} to filter on phone numbers shared with your account. The
+\code{Owner} and \code{PhoneNumberIds} parameters can't be used at the same time.}
 }
 \description{
 Describes the specified origination phone number, or all the phone numbers in your account.

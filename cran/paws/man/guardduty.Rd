@@ -127,7 +127,7 @@ see the \emph{\href{https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guar
 \link[paws.security.identity:guardduty_create_ip_set]{create_ip_set} \tab Creates a new IPSet, which is called a trusted IP list in the console user interface\cr
 \link[paws.security.identity:guardduty_create_malware_protection_plan]{create_malware_protection_plan} \tab Creates a new Malware Protection plan for the protected resource\cr
 \link[paws.security.identity:guardduty_create_members]{create_members} \tab Creates member accounts of the current Amazon Web Services account by specifying a list of Amazon Web Services account IDs\cr
-\link[paws.security.identity:guardduty_create_publishing_destination]{create_publishing_destination} \tab Creates a publishing destination to export findings to\cr
+\link[paws.security.identity:guardduty_create_publishing_destination]{create_publishing_destination} \tab Creates a publishing destination where you can export your GuardDuty findings\cr
 \link[paws.security.identity:guardduty_create_sample_findings]{create_sample_findings} \tab Generates sample findings of types specified by the list of finding types\cr
 \link[paws.security.identity:guardduty_create_threat_intel_set]{create_threat_intel_set} \tab Creates a new ThreatIntelSet\cr
 \link[paws.security.identity:guardduty_decline_invitations]{decline_invitations} \tab Declines invitations sent to the current member account by Amazon Web Services accounts specified by their account IDs\cr
@@ -149,10 +149,10 @@ see the \emph{\href{https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guar
 \link[paws.security.identity:guardduty_enable_organization_admin_account]{enable_organization_admin_account} \tab Designates an Amazon Web Services account within the organization as your GuardDuty delegated administrator\cr
 \link[paws.security.identity:guardduty_get_administrator_account]{get_administrator_account} \tab Provides the details of the GuardDuty administrator account associated with the current GuardDuty member account\cr
 \link[paws.security.identity:guardduty_get_coverage_statistics]{get_coverage_statistics} \tab Retrieves aggregated statistics for your account\cr
-\link[paws.security.identity:guardduty_get_detector]{get_detector} \tab Retrieves an Amazon GuardDuty detector specified by the detectorId\cr
+\link[paws.security.identity:guardduty_get_detector]{get_detector} \tab Retrieves a GuardDuty detector specified by the detectorId\cr
 \link[paws.security.identity:guardduty_get_filter]{get_filter} \tab Returns the details of the filter specified by the filter name\cr
 \link[paws.security.identity:guardduty_get_findings]{get_findings} \tab Describes Amazon GuardDuty findings specified by finding IDs\cr
-\link[paws.security.identity:guardduty_get_findings_statistics]{get_findings_statistics} \tab Lists Amazon GuardDuty findings statistics for the specified detector ID\cr
+\link[paws.security.identity:guardduty_get_findings_statistics]{get_findings_statistics} \tab Lists GuardDuty findings statistics for the specified detector ID\cr
 \link[paws.security.identity:guardduty_get_invitations_count]{get_invitations_count} \tab Returns the count of all GuardDuty membership invitations that were sent to the current member account except the currently accepted invitation\cr
 \link[paws.security.identity:guardduty_get_ip_set]{get_ip_set} \tab Retrieves the IPSet specified by the ipSetId\cr
 \link[paws.security.identity:guardduty_get_malware_protection_plan]{get_malware_protection_plan} \tab Retrieves the Malware Protection plan details associated with a Malware Protection plan ID\cr

@@ -100,16 +100,21 @@ a current list of supported Regions and endpoints, see \href{https://docs.aws.am
 \tabular{ll}{
 \link[paws.analytics:opensearchservice_accept_inbound_connection]{accept_inbound_connection} \tab Allows the destination Amazon OpenSearch Service domain owner to accept an inbound cross-cluster search connection request\cr
 \link[paws.analytics:opensearchservice_add_data_source]{add_data_source} \tab Creates a new direct-query data source to the specified domain\cr
-\link[paws.analytics:opensearchservice_add_tags]{add_tags} \tab Attaches tags to an existing Amazon OpenSearch Service domain\cr
+\link[paws.analytics:opensearchservice_add_direct_query_data_source]{add_direct_query_data_source} \tab Adds a new data source in Amazon OpenSearch Service so that you can perform direct queries on external data\cr
+\link[paws.analytics:opensearchservice_add_tags]{add_tags} \tab Attaches tags to an existing Amazon OpenSearch Service domain, data source, or application\cr
 \link[paws.analytics:opensearchservice_associate_package]{associate_package} \tab Associates a package with an Amazon OpenSearch Service domain\cr
+\link[paws.analytics:opensearchservice_associate_packages]{associate_packages} \tab Operation in the Amazon OpenSearch Service API for associating multiple packages with a domain simultaneously\cr
 \link[paws.analytics:opensearchservice_authorize_vpc_endpoint_access]{authorize_vpc_endpoint_access} \tab Provides access to an Amazon OpenSearch Service domain through the use of an interface VPC endpoint\cr
 \link[paws.analytics:opensearchservice_cancel_domain_config_change]{cancel_domain_config_change} \tab Cancels a pending configuration change on an Amazon OpenSearch Service domain\cr
 \link[paws.analytics:opensearchservice_cancel_service_software_update]{cancel_service_software_update} \tab Cancels a scheduled service software update for an Amazon OpenSearch Service domain\cr
+\link[paws.analytics:opensearchservice_create_application]{create_application} \tab Creates an OpenSearch Application\cr
 \link[paws.analytics:opensearchservice_create_domain]{create_domain} \tab Creates an Amazon OpenSearch Service domain\cr
 \link[paws.analytics:opensearchservice_create_outbound_connection]{create_outbound_connection} \tab Creates a new cross-cluster search connection from a source Amazon OpenSearch Service domain to a destination domain\cr
 \link[paws.analytics:opensearchservice_create_package]{create_package} \tab Creates a package for use with Amazon OpenSearch Service domains\cr
 \link[paws.analytics:opensearchservice_create_vpc_endpoint]{create_vpc_endpoint} \tab Creates an Amazon OpenSearch Service-managed VPC endpoint\cr
+\link[paws.analytics:opensearchservice_delete_application]{delete_application} \tab Deletes an existing OpenSearch Application\cr
 \link[paws.analytics:opensearchservice_delete_data_source]{delete_data_source} \tab Deletes a direct-query data source\cr
+\link[paws.analytics:opensearchservice_delete_direct_query_data_source]{delete_direct_query_data_source} \tab Deletes a previously configured direct query data source from Amazon OpenSearch Service\cr
 \link[paws.analytics:opensearchservice_delete_domain]{delete_domain} \tab Deletes an Amazon OpenSearch Service domain and all of its data\cr
 \link[paws.analytics:opensearchservice_delete_inbound_connection]{delete_inbound_connection} \tab Allows the destination Amazon OpenSearch Service domain owner to delete an existing inbound cross-cluster search connection\cr
 \link[paws.analytics:opensearchservice_delete_outbound_connection]{delete_outbound_connection} \tab Allows the source Amazon OpenSearch Service domain owner to delete an existing outbound cross-cluster search connection\cr
@@ -131,33 +136,41 @@ a current list of supported Regions and endpoints, see \href{https://docs.aws.am
 \link[paws.analytics:opensearchservice_describe_reserved_instances]{describe_reserved_instances} \tab Describes the Amazon OpenSearch Service instances that you have reserved in a given Region\cr
 \link[paws.analytics:opensearchservice_describe_vpc_endpoints]{describe_vpc_endpoints} \tab Describes one or more Amazon OpenSearch Service-managed VPC endpoints\cr
 \link[paws.analytics:opensearchservice_dissociate_package]{dissociate_package} \tab Removes a package from the specified Amazon OpenSearch Service domain\cr
+\link[paws.analytics:opensearchservice_dissociate_packages]{dissociate_packages} \tab Dissociates multiple packages from a domain simulatneously\cr
+\link[paws.analytics:opensearchservice_get_application]{get_application} \tab Check the configuration and status of an existing OpenSearch Application\cr
 \link[paws.analytics:opensearchservice_get_compatible_versions]{get_compatible_versions} \tab Returns a map of OpenSearch or Elasticsearch versions and the versions you can upgrade them to\cr
 \link[paws.analytics:opensearchservice_get_data_source]{get_data_source} \tab Retrieves information about a direct query data source\cr
+\link[paws.analytics:opensearchservice_get_direct_query_data_source]{get_direct_query_data_source} \tab Returns detailed configuration information for a specific direct query data source in Amazon OpenSearch Service\cr
 \link[paws.analytics:opensearchservice_get_domain_maintenance_status]{get_domain_maintenance_status} \tab The status of the maintenance action\cr
 \link[paws.analytics:opensearchservice_get_package_version_history]{get_package_version_history} \tab Returns a list of Amazon OpenSearch Service package versions, along with their creation time, commit message, and plugin properties (if the package is a zip plugin package)\cr
 \link[paws.analytics:opensearchservice_get_upgrade_history]{get_upgrade_history} \tab Retrieves the complete history of the last 10 upgrades performed on an Amazon OpenSearch Service domain\cr
 \link[paws.analytics:opensearchservice_get_upgrade_status]{get_upgrade_status} \tab Returns the most recent status of the last upgrade or upgrade eligibility check performed on an Amazon OpenSearch Service domain\cr
+\link[paws.analytics:opensearchservice_list_applications]{list_applications} \tab List all OpenSearch Applications under your account\cr
 \link[paws.analytics:opensearchservice_list_data_sources]{list_data_sources} \tab Lists direct-query data sources for a specific domain\cr
+\link[paws.analytics:opensearchservice_list_direct_query_data_sources]{list_direct_query_data_sources} \tab Lists an inventory of all the direct query data sources that you have configured within Amazon OpenSearch Service\cr
 \link[paws.analytics:opensearchservice_list_domain_maintenances]{list_domain_maintenances} \tab A list of maintenance actions for the domain\cr
 \link[paws.analytics:opensearchservice_list_domain_names]{list_domain_names} \tab Returns the names of all Amazon OpenSearch Service domains owned by the current user in the active Region\cr
 \link[paws.analytics:opensearchservice_list_domains_for_package]{list_domains_for_package} \tab Lists all Amazon OpenSearch Service domains associated with a given package\cr
 \link[paws.analytics:opensearchservice_list_instance_type_details]{list_instance_type_details} \tab Lists all instance types and available features for a given OpenSearch or Elasticsearch version\cr
 \link[paws.analytics:opensearchservice_list_packages_for_domain]{list_packages_for_domain} \tab Lists all packages associated with an Amazon OpenSearch Service domain\cr
 \link[paws.analytics:opensearchservice_list_scheduled_actions]{list_scheduled_actions} \tab Retrieves a list of configuration changes that are scheduled for a domain\cr
-\link[paws.analytics:opensearchservice_list_tags]{list_tags} \tab Returns all resource tags for an Amazon OpenSearch Service domain\cr
+\link[paws.analytics:opensearchservice_list_tags]{list_tags} \tab Returns all resource tags for an Amazon OpenSearch Service domain, data source, or application\cr
 \link[paws.analytics:opensearchservice_list_versions]{list_versions} \tab Lists all versions of OpenSearch and Elasticsearch that Amazon OpenSearch Service supports\cr
 \link[paws.analytics:opensearchservice_list_vpc_endpoint_access]{list_vpc_endpoint_access} \tab Retrieves information about each Amazon Web Services principal that is allowed to access a given Amazon OpenSearch Service domain through the use of an interface VPC endpoint\cr
 \link[paws.analytics:opensearchservice_list_vpc_endpoints]{list_vpc_endpoints} \tab Retrieves all Amazon OpenSearch Service-managed VPC endpoints in the current Amazon Web Services account and Region\cr
 \link[paws.analytics:opensearchservice_list_vpc_endpoints_for_domain]{list_vpc_endpoints_for_domain} \tab Retrieves all Amazon OpenSearch Service-managed VPC endpoints associated with a particular domain\cr
 \link[paws.analytics:opensearchservice_purchase_reserved_instance_offering]{purchase_reserved_instance_offering} \tab Allows you to purchase Amazon OpenSearch Service Reserved Instances\cr
 \link[paws.analytics:opensearchservice_reject_inbound_connection]{reject_inbound_connection} \tab Allows the remote Amazon OpenSearch Service domain owner to reject an inbound cross-cluster connection request\cr
-\link[paws.analytics:opensearchservice_remove_tags]{remove_tags} \tab Removes the specified set of tags from an Amazon OpenSearch Service domain\cr
+\link[paws.analytics:opensearchservice_remove_tags]{remove_tags} \tab Removes the specified set of tags from an Amazon OpenSearch Service domain, data source, or application\cr
 \link[paws.analytics:opensearchservice_revoke_vpc_endpoint_access]{revoke_vpc_endpoint_access} \tab Revokes access to an Amazon OpenSearch Service domain that was provided through an interface VPC endpoint\cr
 \link[paws.analytics:opensearchservice_start_domain_maintenance]{start_domain_maintenance} \tab Starts the node maintenance process on the data node\cr
 \link[paws.analytics:opensearchservice_start_service_software_update]{start_service_software_update} \tab Schedules a service software update for an Amazon OpenSearch Service domain\cr
+\link[paws.analytics:opensearchservice_update_application]{update_application} \tab Update the OpenSearch Application\cr
 \link[paws.analytics:opensearchservice_update_data_source]{update_data_source} \tab Updates a direct-query data source\cr
+\link[paws.analytics:opensearchservice_update_direct_query_data_source]{update_direct_query_data_source} \tab Updates the configuration or properties of an existing direct query data source in Amazon OpenSearch Service\cr
 \link[paws.analytics:opensearchservice_update_domain_config]{update_domain_config} \tab Modifies the cluster configuration of the specified Amazon OpenSearch Service domain\cr
 \link[paws.analytics:opensearchservice_update_package]{update_package} \tab Updates a package for use with Amazon OpenSearch Service domains\cr
+\link[paws.analytics:opensearchservice_update_package_scope]{update_package_scope} \tab Updates the scope of a package\cr
 \link[paws.analytics:opensearchservice_update_scheduled_action]{update_scheduled_action} \tab Reschedules a planned domain configuration change for a later time\cr
 \link[paws.analytics:opensearchservice_update_vpc_endpoint]{update_vpc_endpoint} \tab Modifies an Amazon OpenSearch Service-managed interface VPC endpoint\cr
 \link[paws.analytics:opensearchservice_upgrade_domain]{upgrade_domain} \tab Allows you to either upgrade your Amazon OpenSearch Service domain or perform an upgrade eligibility check to a compatible version of OpenSearch or Elasticsearch

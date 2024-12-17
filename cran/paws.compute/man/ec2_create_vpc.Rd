@@ -6,17 +6,17 @@
 \usage{
 ec2_create_vpc(
   CidrBlock = NULL,
-  AmazonProvidedIpv6CidrBlock = NULL,
   Ipv6Pool = NULL,
   Ipv6CidrBlock = NULL,
   Ipv4IpamPoolId = NULL,
   Ipv4NetmaskLength = NULL,
   Ipv6IpamPoolId = NULL,
   Ipv6NetmaskLength = NULL,
+  Ipv6CidrBlockNetworkBorderGroup = NULL,
+  TagSpecifications = NULL,
   DryRun = NULL,
   InstanceTenancy = NULL,
-  Ipv6CidrBlockNetworkBorderGroup = NULL,
-  TagSpecifications = NULL
+  AmazonProvidedIpv6CidrBlock = NULL
 )
 }
 \arguments{
@@ -24,10 +24,6 @@ ec2_create_vpc(
 \verb{10.0.0.0/16}. We modify the specified CIDR block to its canonical form;
 for example, if you specify \verb{100.68.0.18/18}, we modify it to
 \verb{100.68.0.0/18}.}
-
-\item{AmazonProvidedIpv6CidrBlock}{Requests an Amazon-provided IPv6 CIDR block with a /56 prefix length for
-the VPC. You cannot specify the range of IP addresses, or the size of
-the CIDR block.}
 
 \item{Ipv6Pool}{The ID of an IPv6 address pool from which to allocate the IPv6 CIDR
 block.}
@@ -59,6 +55,14 @@ from an Amazon VPC IP Address Manager (IPAM) pool. For more information
 about IPAM, see \href{https://docs.aws.amazon.com/vpc/latest/ipam/}{What is IPAM?} in the \emph{Amazon VPC
 IPAM User Guide}.}
 
+\item{Ipv6CidrBlockNetworkBorderGroup}{The name of the location from which we advertise the IPV6 CIDR block.
+Use this parameter to limit the address to this location.
+
+You must set \code{AmazonProvidedIpv6CidrBlock} to \code{true} to use this
+parameter.}
+
+\item{TagSpecifications}{The tags to assign to the VPC.}
+
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
@@ -76,13 +80,9 @@ the \code{default} or \code{dedicated} values only.
 
 Default: \code{default}}
 
-\item{Ipv6CidrBlockNetworkBorderGroup}{The name of the location from which we advertise the IPV6 CIDR block.
-Use this parameter to limit the address to this location.
-
-You must set \code{AmazonProvidedIpv6CidrBlock} to \code{true} to use this
-parameter.}
-
-\item{TagSpecifications}{The tags to assign to the VPC.}
+\item{AmazonProvidedIpv6CidrBlock}{Requests an Amazon-provided IPv6 CIDR block with a /56 prefix length for
+the VPC. You cannot specify the range of IP addresses, or the size of
+the CIDR block.}
 }
 \description{
 Creates a VPC with the specified CIDR blocks. For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/vpc-ip-addressing.html}{IP addressing for your VPCs and subnets} in the \emph{Amazon VPC User Guide}.

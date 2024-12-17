@@ -196,6 +196,9 @@ cloudfront_associate_alias <- function(TargetDistributionId, Alias) {
 #'               OriginReadTimeout = 123,
 #'               OriginKeepaliveTimeout = 123
 #'             ),
+#'             VpcOriginConfig = list(
+#'               VpcOriginId = "string"
+#'             ),
 #'             ConnectionAttempts = 123,
 #'             ConnectionTimeout = 123,
 #'             OriginShield = list(
@@ -226,7 +229,8 @@ cloudfront_associate_alias <- function(TargetDistributionId, Alias) {
 #'                   OriginId = "string"
 #'                 )
 #'               )
-#'             )
+#'             ),
+#'             SelectionCriteria = "default"|"media-quality-based"
 #'           )
 #'         )
 #'       ),
@@ -285,6 +289,9 @@ cloudfront_associate_alias <- function(TargetDistributionId, Alias) {
 #'         CachePolicyId = "string",
 #'         OriginRequestPolicyId = "string",
 #'         ResponseHeadersPolicyId = "string",
+#'         GrpcConfig = list(
+#'           Enabled = TRUE|FALSE
+#'         ),
 #'         ForwardedValues = list(
 #'           QueryString = TRUE|FALSE,
 #'           Cookies = list(
@@ -372,6 +379,9 @@ cloudfront_associate_alias <- function(TargetDistributionId, Alias) {
 #'             CachePolicyId = "string",
 #'             OriginRequestPolicyId = "string",
 #'             ResponseHeadersPolicyId = "string",
+#'             GrpcConfig = list(
+#'               Enabled = TRUE|FALSE
+#'             ),
 #'             ForwardedValues = list(
 #'               QueryString = TRUE|FALSE,
 #'               Cookies = list(
@@ -444,7 +454,8 @@ cloudfront_associate_alias <- function(TargetDistributionId, Alias) {
 #'       HttpVersion = "http1.1"|"http2"|"http3"|"http2and3",
 #'       IsIPV6Enabled = TRUE|FALSE,
 #'       ContinuousDeploymentPolicyId = "string",
-#'       Staging = TRUE|FALSE
+#'       Staging = TRUE|FALSE,
+#'       AnycastIpListId = "string"
 #'     ),
 #'     AliasICPRecordals = list(
 #'       list(
@@ -492,6 +503,80 @@ cloudfront_copy_distribution <- function(PrimaryDistributionId, Staging = NULL, 
   return(response)
 }
 .cloudfront$operations$copy_distribution <- cloudfront_copy_distribution
+
+#' Creates an Anycast static IP list
+#'
+#' @description
+#' Creates an Anycast static IP list.
+#'
+#' @usage
+#' cloudfront_create_anycast_ip_list(Name, IpCount, Tags)
+#'
+#' @param Name &#91;required&#93; Name of the Anycast static IP list.
+#' @param IpCount &#91;required&#93; The number of static IP addresses that are allocated to the Anycast
+#' static IP list.
+#' @param Tags 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AnycastIpList = list(
+#'     Id = "string",
+#'     Name = "string",
+#'     Status = "string",
+#'     Arn = "string",
+#'     AnycastIps = list(
+#'       "string"
+#'     ),
+#'     IpCount = 123,
+#'     LastModifiedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   ),
+#'   ETag = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_anycast_ip_list(
+#'   Name = "string",
+#'   IpCount = 123,
+#'   Tags = list(
+#'     Items = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_create_anycast_ip_list
+#'
+#' @aliases cloudfront_create_anycast_ip_list
+cloudfront_create_anycast_ip_list <- function(Name, IpCount, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateAnycastIpList",
+    http_method = "POST",
+    http_path = "/2020-05-31/anycast-ip-list",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudfront$create_anycast_ip_list_input(Name = Name, IpCount = IpCount, Tags = Tags)
+  output <- .cloudfront$create_anycast_ip_list_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$create_anycast_ip_list <- cloudfront_create_anycast_ip_list
 
 #' Creates a cache policy
 #'
@@ -925,6 +1010,9 @@ cloudfront_create_continuous_deployment_policy <- function(ContinuousDeploymentP
 #'               OriginReadTimeout = 123,
 #'               OriginKeepaliveTimeout = 123
 #'             ),
+#'             VpcOriginConfig = list(
+#'               VpcOriginId = "string"
+#'             ),
 #'             ConnectionAttempts = 123,
 #'             ConnectionTimeout = 123,
 #'             OriginShield = list(
@@ -955,7 +1043,8 @@ cloudfront_create_continuous_deployment_policy <- function(ContinuousDeploymentP
 #'                   OriginId = "string"
 #'                 )
 #'               )
-#'             )
+#'             ),
+#'             SelectionCriteria = "default"|"media-quality-based"
 #'           )
 #'         )
 #'       ),
@@ -1014,6 +1103,9 @@ cloudfront_create_continuous_deployment_policy <- function(ContinuousDeploymentP
 #'         CachePolicyId = "string",
 #'         OriginRequestPolicyId = "string",
 #'         ResponseHeadersPolicyId = "string",
+#'         GrpcConfig = list(
+#'           Enabled = TRUE|FALSE
+#'         ),
 #'         ForwardedValues = list(
 #'           QueryString = TRUE|FALSE,
 #'           Cookies = list(
@@ -1101,6 +1193,9 @@ cloudfront_create_continuous_deployment_policy <- function(ContinuousDeploymentP
 #'             CachePolicyId = "string",
 #'             OriginRequestPolicyId = "string",
 #'             ResponseHeadersPolicyId = "string",
+#'             GrpcConfig = list(
+#'               Enabled = TRUE|FALSE
+#'             ),
 #'             ForwardedValues = list(
 #'               QueryString = TRUE|FALSE,
 #'               Cookies = list(
@@ -1173,7 +1268,8 @@ cloudfront_create_continuous_deployment_policy <- function(ContinuousDeploymentP
 #'       HttpVersion = "http1.1"|"http2"|"http3"|"http2and3",
 #'       IsIPV6Enabled = TRUE|FALSE,
 #'       ContinuousDeploymentPolicyId = "string",
-#'       Staging = TRUE|FALSE
+#'       Staging = TRUE|FALSE,
+#'       AnycastIpListId = "string"
 #'     ),
 #'     AliasICPRecordals = list(
 #'       list(
@@ -1231,6 +1327,9 @@ cloudfront_create_continuous_deployment_policy <- function(ContinuousDeploymentP
 #'             OriginReadTimeout = 123,
 #'             OriginKeepaliveTimeout = 123
 #'           ),
+#'           VpcOriginConfig = list(
+#'             VpcOriginId = "string"
+#'           ),
 #'           ConnectionAttempts = 123,
 #'           ConnectionTimeout = 123,
 #'           OriginShield = list(
@@ -1261,7 +1360,8 @@ cloudfront_create_continuous_deployment_policy <- function(ContinuousDeploymentP
 #'                 OriginId = "string"
 #'               )
 #'             )
-#'           )
+#'           ),
+#'           SelectionCriteria = "default"|"media-quality-based"
 #'         )
 #'       )
 #'     ),
@@ -1320,6 +1420,9 @@ cloudfront_create_continuous_deployment_policy <- function(ContinuousDeploymentP
 #'       CachePolicyId = "string",
 #'       OriginRequestPolicyId = "string",
 #'       ResponseHeadersPolicyId = "string",
+#'       GrpcConfig = list(
+#'         Enabled = TRUE|FALSE
+#'       ),
 #'       ForwardedValues = list(
 #'         QueryString = TRUE|FALSE,
 #'         Cookies = list(
@@ -1407,6 +1510,9 @@ cloudfront_create_continuous_deployment_policy <- function(ContinuousDeploymentP
 #'           CachePolicyId = "string",
 #'           OriginRequestPolicyId = "string",
 #'           ResponseHeadersPolicyId = "string",
+#'           GrpcConfig = list(
+#'             Enabled = TRUE|FALSE
+#'           ),
 #'           ForwardedValues = list(
 #'             QueryString = TRUE|FALSE,
 #'             Cookies = list(
@@ -1479,7 +1585,8 @@ cloudfront_create_continuous_deployment_policy <- function(ContinuousDeploymentP
 #'     HttpVersion = "http1.1"|"http2"|"http3"|"http2and3",
 #'     IsIPV6Enabled = TRUE|FALSE,
 #'     ContinuousDeploymentPolicyId = "string",
-#'     Staging = TRUE|FALSE
+#'     Staging = TRUE|FALSE,
+#'     AnycastIpListId = "string"
 #'   )
 #' )
 #' ```
@@ -1607,6 +1714,9 @@ cloudfront_create_distribution <- function(DistributionConfig) {
 #'               OriginReadTimeout = 123,
 #'               OriginKeepaliveTimeout = 123
 #'             ),
+#'             VpcOriginConfig = list(
+#'               VpcOriginId = "string"
+#'             ),
 #'             ConnectionAttempts = 123,
 #'             ConnectionTimeout = 123,
 #'             OriginShield = list(
@@ -1637,7 +1747,8 @@ cloudfront_create_distribution <- function(DistributionConfig) {
 #'                   OriginId = "string"
 #'                 )
 #'               )
-#'             )
+#'             ),
+#'             SelectionCriteria = "default"|"media-quality-based"
 #'           )
 #'         )
 #'       ),
@@ -1696,6 +1807,9 @@ cloudfront_create_distribution <- function(DistributionConfig) {
 #'         CachePolicyId = "string",
 #'         OriginRequestPolicyId = "string",
 #'         ResponseHeadersPolicyId = "string",
+#'         GrpcConfig = list(
+#'           Enabled = TRUE|FALSE
+#'         ),
 #'         ForwardedValues = list(
 #'           QueryString = TRUE|FALSE,
 #'           Cookies = list(
@@ -1783,6 +1897,9 @@ cloudfront_create_distribution <- function(DistributionConfig) {
 #'             CachePolicyId = "string",
 #'             OriginRequestPolicyId = "string",
 #'             ResponseHeadersPolicyId = "string",
+#'             GrpcConfig = list(
+#'               Enabled = TRUE|FALSE
+#'             ),
 #'             ForwardedValues = list(
 #'               QueryString = TRUE|FALSE,
 #'               Cookies = list(
@@ -1855,7 +1972,8 @@ cloudfront_create_distribution <- function(DistributionConfig) {
 #'       HttpVersion = "http1.1"|"http2"|"http3"|"http2and3",
 #'       IsIPV6Enabled = TRUE|FALSE,
 #'       ContinuousDeploymentPolicyId = "string",
-#'       Staging = TRUE|FALSE
+#'       Staging = TRUE|FALSE,
+#'       AnycastIpListId = "string"
 #'     ),
 #'     AliasICPRecordals = list(
 #'       list(
@@ -1914,6 +2032,9 @@ cloudfront_create_distribution <- function(DistributionConfig) {
 #'               OriginReadTimeout = 123,
 #'               OriginKeepaliveTimeout = 123
 #'             ),
+#'             VpcOriginConfig = list(
+#'               VpcOriginId = "string"
+#'             ),
 #'             ConnectionAttempts = 123,
 #'             ConnectionTimeout = 123,
 #'             OriginShield = list(
@@ -1944,7 +2065,8 @@ cloudfront_create_distribution <- function(DistributionConfig) {
 #'                   OriginId = "string"
 #'                 )
 #'               )
-#'             )
+#'             ),
+#'             SelectionCriteria = "default"|"media-quality-based"
 #'           )
 #'         )
 #'       ),
@@ -2003,6 +2125,9 @@ cloudfront_create_distribution <- function(DistributionConfig) {
 #'         CachePolicyId = "string",
 #'         OriginRequestPolicyId = "string",
 #'         ResponseHeadersPolicyId = "string",
+#'         GrpcConfig = list(
+#'           Enabled = TRUE|FALSE
+#'         ),
 #'         ForwardedValues = list(
 #'           QueryString = TRUE|FALSE,
 #'           Cookies = list(
@@ -2090,6 +2215,9 @@ cloudfront_create_distribution <- function(DistributionConfig) {
 #'             CachePolicyId = "string",
 #'             OriginRequestPolicyId = "string",
 #'             ResponseHeadersPolicyId = "string",
+#'             GrpcConfig = list(
+#'               Enabled = TRUE|FALSE
+#'             ),
 #'             ForwardedValues = list(
 #'               QueryString = TRUE|FALSE,
 #'               Cookies = list(
@@ -2162,7 +2290,8 @@ cloudfront_create_distribution <- function(DistributionConfig) {
 #'       HttpVersion = "http1.1"|"http2"|"http3"|"http2and3",
 #'       IsIPV6Enabled = TRUE|FALSE,
 #'       ContinuousDeploymentPolicyId = "string",
-#'       Staging = TRUE|FALSE
+#'       Staging = TRUE|FALSE,
+#'       AnycastIpListId = "string"
 #'     ),
 #'     Tags = list(
 #'       Items = list(
@@ -2496,27 +2625,6 @@ cloudfront_create_field_level_encryption_profile <- function(FieldLevelEncryptio
 #' )
 #' ```
 #'
-#' @examples
-#' \dontrun{
-#' # Use the following command to create a function.
-#' svc$create_function(
-#'   FunctionCode = "function-code.js",
-#'   FunctionConfig = list(
-#'     Comment = "my-function-comment",
-#'     KeyValueStoreAssociations = list(
-#'       Items = list(
-#'         list(
-#'           KeyValueStoreARN = "arn:aws:cloudfront::123456789012:key-value-st..."
-#'         )
-#'       ),
-#'       Quantity = 1L
-#'     ),
-#'     Runtime = "cloudfront-js-2.0"
-#'   ),
-#'   Name = "my-function-name"
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname cloudfront_create_function
@@ -2750,19 +2858,6 @@ cloudfront_create_key_group <- function(KeyGroupConfig) {
 #' )
 #' ```
 #'
-#' @examples
-#' \dontrun{
-#' # Use the following command to create a KeyValueStore.
-#' svc$create_key_value_store(
-#'   Comment = "my-key-valuestore-comment",
-#'   ImportSource = list(
-#'     SourceARN = "arn:aws:s3:::my-bucket/validJSON.json",
-#'     SourceType = "S3"
-#'   ),
-#'   Name = "my-keyvaluestore-name"
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname cloudfront_create_key_value_store
@@ -2772,7 +2867,7 @@ cloudfront_create_key_value_store <- function(Name, Comment = NULL, ImportSource
   op <- new_operation(
     name = "CreateKeyValueStore",
     http_method = "POST",
-    http_path = "/2020-05-31/key-value-store/",
+    http_path = "/2020-05-31/key-value-store",
     host_prefix = "",
     paginator = list(),
     stream_api = FALSE
@@ -2840,7 +2935,7 @@ cloudfront_create_monitoring_subscription <- function(DistributionId, Monitoring
   op <- new_operation(
     name = "CreateMonitoringSubscription",
     http_method = "POST",
-    http_path = "/2020-05-31/distributions/{DistributionId}/monitoring-subscription/",
+    http_path = "/2020-05-31/distributions/{DistributionId}/monitoring-subscription",
     host_prefix = "",
     paginator = list(),
     stream_api = FALSE
@@ -3758,6 +3853,148 @@ cloudfront_create_streaming_distribution_with_tags <- function(StreamingDistribu
 }
 .cloudfront$operations$create_streaming_distribution_with_tags <- cloudfront_create_streaming_distribution_with_tags
 
+#' Create an Amazon CloudFront VPC origin
+#'
+#' @description
+#' Create an Amazon CloudFront VPC origin.
+#'
+#' @usage
+#' cloudfront_create_vpc_origin(VpcOriginEndpointConfig, Tags)
+#'
+#' @param VpcOriginEndpointConfig &#91;required&#93; The VPC origin endpoint configuration.
+#' @param Tags 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   VpcOrigin = list(
+#'     Id = "string",
+#'     Arn = "string",
+#'     Status = "string",
+#'     CreatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastModifiedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     VpcOriginEndpointConfig = list(
+#'       Name = "string",
+#'       Arn = "string",
+#'       HTTPPort = 123,
+#'       HTTPSPort = 123,
+#'       OriginProtocolPolicy = "http-only"|"match-viewer"|"https-only",
+#'       OriginSslProtocols = list(
+#'         Quantity = 123,
+#'         Items = list(
+#'           "SSLv3"|"TLSv1"|"TLSv1.1"|"TLSv1.2"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   Location = "string",
+#'   ETag = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_vpc_origin(
+#'   VpcOriginEndpointConfig = list(
+#'     Name = "string",
+#'     Arn = "string",
+#'     HTTPPort = 123,
+#'     HTTPSPort = 123,
+#'     OriginProtocolPolicy = "http-only"|"match-viewer"|"https-only",
+#'     OriginSslProtocols = list(
+#'       Quantity = 123,
+#'       Items = list(
+#'         "SSLv3"|"TLSv1"|"TLSv1.1"|"TLSv1.2"
+#'       )
+#'     )
+#'   ),
+#'   Tags = list(
+#'     Items = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_create_vpc_origin
+#'
+#' @aliases cloudfront_create_vpc_origin
+cloudfront_create_vpc_origin <- function(VpcOriginEndpointConfig, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateVpcOrigin",
+    http_method = "POST",
+    http_path = "/2020-05-31/vpc-origin",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudfront$create_vpc_origin_input(VpcOriginEndpointConfig = VpcOriginEndpointConfig, Tags = Tags)
+  output <- .cloudfront$create_vpc_origin_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$create_vpc_origin <- cloudfront_create_vpc_origin
+
+#' Deletes an Anycast static IP list
+#'
+#' @description
+#' Deletes an Anycast static IP list.
+#'
+#' @usage
+#' cloudfront_delete_anycast_ip_list(Id, IfMatch)
+#'
+#' @param Id &#91;required&#93; The ID of the Anycast static IP list.
+#' @param IfMatch &#91;required&#93; The current version (`ETag` value) of the Anycast static IP list that
+#' you are deleting.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_anycast_ip_list(
+#'   Id = "string",
+#'   IfMatch = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_delete_anycast_ip_list
+#'
+#' @aliases cloudfront_delete_anycast_ip_list
+cloudfront_delete_anycast_ip_list <- function(Id, IfMatch) {
+  op <- new_operation(
+    name = "DeleteAnycastIpList",
+    http_method = "DELETE",
+    http_path = "/2020-05-31/anycast-ip-list/{Id}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudfront$delete_anycast_ip_list_input(Id = Id, IfMatch = IfMatch)
+  output <- .cloudfront$delete_anycast_ip_list_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$delete_anycast_ip_list <- cloudfront_delete_anycast_ip_list
+
 #' Deletes a cache policy
 #'
 #' @description
@@ -4198,15 +4435,6 @@ cloudfront_delete_key_group <- function(Id, IfMatch = NULL) {
 #' )
 #' ```
 #'
-#' @examples
-#' \dontrun{
-#' # Use the following command to delete a KeyValueStore.
-#' svc$delete_key_value_store(
-#'   IfMatch = "ETVPDKIKX0DER",
-#'   Name = "my-keyvaluestore-name"
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname cloudfront_delete_key_value_store
@@ -4262,7 +4490,7 @@ cloudfront_delete_monitoring_subscription <- function(DistributionId) {
   op <- new_operation(
     name = "DeleteMonitoringSubscription",
     http_method = "DELETE",
-    http_path = "/2020-05-31/distributions/{DistributionId}/monitoring-subscription/",
+    http_path = "/2020-05-31/distributions/{DistributionId}/monitoring-subscription",
     host_prefix = "",
     paginator = list(),
     stream_api = FALSE
@@ -4480,7 +4708,7 @@ cloudfront_delete_realtime_log_config <- function(Name = NULL, ARN = NULL) {
   op <- new_operation(
     name = "DeleteRealtimeLogConfig",
     http_method = "POST",
-    http_path = "/2020-05-31/delete-realtime-log-config/",
+    http_path = "/2020-05-31/delete-realtime-log-config",
     host_prefix = "",
     paginator = list(),
     stream_api = FALSE
@@ -4648,6 +4876,81 @@ cloudfront_delete_streaming_distribution <- function(Id, IfMatch = NULL) {
 }
 .cloudfront$operations$delete_streaming_distribution <- cloudfront_delete_streaming_distribution
 
+#' Delete an Amazon CloudFront VPC origin
+#'
+#' @description
+#' Delete an Amazon CloudFront VPC origin.
+#'
+#' @usage
+#' cloudfront_delete_vpc_origin(Id, IfMatch)
+#'
+#' @param Id &#91;required&#93; The VPC origin ID.
+#' @param IfMatch &#91;required&#93; The VPC origin to delete, if a match occurs.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   VpcOrigin = list(
+#'     Id = "string",
+#'     Arn = "string",
+#'     Status = "string",
+#'     CreatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastModifiedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     VpcOriginEndpointConfig = list(
+#'       Name = "string",
+#'       Arn = "string",
+#'       HTTPPort = 123,
+#'       HTTPSPort = 123,
+#'       OriginProtocolPolicy = "http-only"|"match-viewer"|"https-only",
+#'       OriginSslProtocols = list(
+#'         Quantity = 123,
+#'         Items = list(
+#'           "SSLv3"|"TLSv1"|"TLSv1.1"|"TLSv1.2"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   ETag = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_vpc_origin(
+#'   Id = "string",
+#'   IfMatch = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_delete_vpc_origin
+#'
+#' @aliases cloudfront_delete_vpc_origin
+cloudfront_delete_vpc_origin <- function(Id, IfMatch) {
+  op <- new_operation(
+    name = "DeleteVpcOrigin",
+    http_method = "DELETE",
+    http_path = "/2020-05-31/vpc-origin/{Id}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudfront$delete_vpc_origin_input(Id = Id, IfMatch = IfMatch)
+  output <- .cloudfront$delete_vpc_origin_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$delete_vpc_origin <- cloudfront_delete_vpc_origin
+
 #' Gets configuration information and metadata about a CloudFront function,
 #' but not the function's code
 #'
@@ -4767,14 +5070,6 @@ cloudfront_describe_function <- function(Name, Stage = NULL) {
 #' )
 #' ```
 #'
-#' @examples
-#' \dontrun{
-#' # Use the following command to describe a KeyValueStore.
-#' svc$describe_key_value_store(
-#'   Name = "my-keyvaluestore-name"
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname cloudfront_describe_key_value_store
@@ -4798,6 +5093,68 @@ cloudfront_describe_key_value_store <- function(Name) {
   return(response)
 }
 .cloudfront$operations$describe_key_value_store <- cloudfront_describe_key_value_store
+
+#' Gets an Anycast static IP list
+#'
+#' @description
+#' Gets an Anycast static IP list.
+#'
+#' @usage
+#' cloudfront_get_anycast_ip_list(Id)
+#'
+#' @param Id &#91;required&#93; The ID of the Anycast static IP list.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AnycastIpList = list(
+#'     Id = "string",
+#'     Name = "string",
+#'     Status = "string",
+#'     Arn = "string",
+#'     AnycastIps = list(
+#'       "string"
+#'     ),
+#'     IpCount = 123,
+#'     LastModifiedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   ),
+#'   ETag = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_anycast_ip_list(
+#'   Id = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_get_anycast_ip_list
+#'
+#' @aliases cloudfront_get_anycast_ip_list
+cloudfront_get_anycast_ip_list <- function(Id) {
+  op <- new_operation(
+    name = "GetAnycastIpList",
+    http_method = "GET",
+    http_path = "/2020-05-31/anycast-ip-list/{Id}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudfront$get_anycast_ip_list_input(Id = Id)
+  output <- .cloudfront$get_anycast_ip_list_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$get_anycast_ip_list <- cloudfront_get_anycast_ip_list
 
 #' Gets a cache policy, including the following metadata:
 #'
@@ -5367,6 +5724,9 @@ cloudfront_get_continuous_deployment_policy_config <- function(Id) {
 #'               OriginReadTimeout = 123,
 #'               OriginKeepaliveTimeout = 123
 #'             ),
+#'             VpcOriginConfig = list(
+#'               VpcOriginId = "string"
+#'             ),
 #'             ConnectionAttempts = 123,
 #'             ConnectionTimeout = 123,
 #'             OriginShield = list(
@@ -5397,7 +5757,8 @@ cloudfront_get_continuous_deployment_policy_config <- function(Id) {
 #'                   OriginId = "string"
 #'                 )
 #'               )
-#'             )
+#'             ),
+#'             SelectionCriteria = "default"|"media-quality-based"
 #'           )
 #'         )
 #'       ),
@@ -5456,6 +5817,9 @@ cloudfront_get_continuous_deployment_policy_config <- function(Id) {
 #'         CachePolicyId = "string",
 #'         OriginRequestPolicyId = "string",
 #'         ResponseHeadersPolicyId = "string",
+#'         GrpcConfig = list(
+#'           Enabled = TRUE|FALSE
+#'         ),
 #'         ForwardedValues = list(
 #'           QueryString = TRUE|FALSE,
 #'           Cookies = list(
@@ -5543,6 +5907,9 @@ cloudfront_get_continuous_deployment_policy_config <- function(Id) {
 #'             CachePolicyId = "string",
 #'             OriginRequestPolicyId = "string",
 #'             ResponseHeadersPolicyId = "string",
+#'             GrpcConfig = list(
+#'               Enabled = TRUE|FALSE
+#'             ),
 #'             ForwardedValues = list(
 #'               QueryString = TRUE|FALSE,
 #'               Cookies = list(
@@ -5615,7 +5982,8 @@ cloudfront_get_continuous_deployment_policy_config <- function(Id) {
 #'       HttpVersion = "http1.1"|"http2"|"http3"|"http2and3",
 #'       IsIPV6Enabled = TRUE|FALSE,
 #'       ContinuousDeploymentPolicyId = "string",
-#'       Staging = TRUE|FALSE
+#'       Staging = TRUE|FALSE,
+#'       AnycastIpListId = "string"
 #'     ),
 #'     AliasICPRecordals = list(
 #'       list(
@@ -5715,6 +6083,9 @@ cloudfront_get_distribution <- function(Id) {
 #'             OriginReadTimeout = 123,
 #'             OriginKeepaliveTimeout = 123
 #'           ),
+#'           VpcOriginConfig = list(
+#'             VpcOriginId = "string"
+#'           ),
 #'           ConnectionAttempts = 123,
 #'           ConnectionTimeout = 123,
 #'           OriginShield = list(
@@ -5745,7 +6116,8 @@ cloudfront_get_distribution <- function(Id) {
 #'                 OriginId = "string"
 #'               )
 #'             )
-#'           )
+#'           ),
+#'           SelectionCriteria = "default"|"media-quality-based"
 #'         )
 #'       )
 #'     ),
@@ -5804,6 +6176,9 @@ cloudfront_get_distribution <- function(Id) {
 #'       CachePolicyId = "string",
 #'       OriginRequestPolicyId = "string",
 #'       ResponseHeadersPolicyId = "string",
+#'       GrpcConfig = list(
+#'         Enabled = TRUE|FALSE
+#'       ),
 #'       ForwardedValues = list(
 #'         QueryString = TRUE|FALSE,
 #'         Cookies = list(
@@ -5891,6 +6266,9 @@ cloudfront_get_distribution <- function(Id) {
 #'           CachePolicyId = "string",
 #'           OriginRequestPolicyId = "string",
 #'           ResponseHeadersPolicyId = "string",
+#'           GrpcConfig = list(
+#'             Enabled = TRUE|FALSE
+#'           ),
 #'           ForwardedValues = list(
 #'             QueryString = TRUE|FALSE,
 #'             Cookies = list(
@@ -5963,7 +6341,8 @@ cloudfront_get_distribution <- function(Id) {
 #'     HttpVersion = "http1.1"|"http2"|"http3"|"http2and3",
 #'     IsIPV6Enabled = TRUE|FALSE,
 #'     ContinuousDeploymentPolicyId = "string",
-#'     Staging = TRUE|FALSE
+#'     Staging = TRUE|FALSE,
+#'     AnycastIpListId = "string"
 #'   ),
 #'   ETag = "string"
 #' )
@@ -6611,7 +6990,7 @@ cloudfront_get_monitoring_subscription <- function(DistributionId) {
   op <- new_operation(
     name = "GetMonitoringSubscription",
     http_method = "GET",
-    http_path = "/2020-05-31/distributions/{DistributionId}/monitoring-subscription/",
+    http_path = "/2020-05-31/distributions/{DistributionId}/monitoring-subscription",
     host_prefix = "",
     paginator = list(),
     stream_api = FALSE
@@ -7118,7 +7497,7 @@ cloudfront_get_realtime_log_config <- function(Name = NULL, ARN = NULL) {
   op <- new_operation(
     name = "GetRealtimeLogConfig",
     http_method = "POST",
-    http_path = "/2020-05-31/get-realtime-log-config/",
+    http_path = "/2020-05-31/get-realtime-log-config",
     host_prefix = "",
     paginator = list(),
     stream_api = FALSE
@@ -7621,6 +8000,152 @@ cloudfront_get_streaming_distribution_config <- function(Id) {
 }
 .cloudfront$operations$get_streaming_distribution_config <- cloudfront_get_streaming_distribution_config
 
+#' Get the details of an Amazon CloudFront VPC origin
+#'
+#' @description
+#' Get the details of an Amazon CloudFront VPC origin.
+#'
+#' @usage
+#' cloudfront_get_vpc_origin(Id)
+#'
+#' @param Id &#91;required&#93; The VPC origin ID.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   VpcOrigin = list(
+#'     Id = "string",
+#'     Arn = "string",
+#'     Status = "string",
+#'     CreatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastModifiedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     VpcOriginEndpointConfig = list(
+#'       Name = "string",
+#'       Arn = "string",
+#'       HTTPPort = 123,
+#'       HTTPSPort = 123,
+#'       OriginProtocolPolicy = "http-only"|"match-viewer"|"https-only",
+#'       OriginSslProtocols = list(
+#'         Quantity = 123,
+#'         Items = list(
+#'           "SSLv3"|"TLSv1"|"TLSv1.1"|"TLSv1.2"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   ETag = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_vpc_origin(
+#'   Id = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_get_vpc_origin
+#'
+#' @aliases cloudfront_get_vpc_origin
+cloudfront_get_vpc_origin <- function(Id) {
+  op <- new_operation(
+    name = "GetVpcOrigin",
+    http_method = "GET",
+    http_path = "/2020-05-31/vpc-origin/{Id}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudfront$get_vpc_origin_input(Id = Id)
+  output <- .cloudfront$get_vpc_origin_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$get_vpc_origin <- cloudfront_get_vpc_origin
+
+#' Lists your Anycast static IP lists
+#'
+#' @description
+#' Lists your Anycast static IP lists.
+#'
+#' @usage
+#' cloudfront_list_anycast_ip_lists(Marker, MaxItems)
+#'
+#' @param Marker Use this field when paginating results to indicate where to begin in
+#' your list. The response includes items in the list that occur after the
+#' marker. To get the next page of the list, set this field's value to the
+#' value of `NextMarker` from the current page's response.
+#' @param MaxItems The maximum number of Anycast static IP lists that you want returned in
+#' the response.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AnycastIpLists = list(
+#'     Items = list(
+#'       list(
+#'         Id = "string",
+#'         Name = "string",
+#'         Status = "string",
+#'         Arn = "string",
+#'         IpCount = 123,
+#'         LastModifiedTime = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     ),
+#'     Marker = "string",
+#'     NextMarker = "string",
+#'     MaxItems = 123,
+#'     IsTruncated = TRUE|FALSE,
+#'     Quantity = 123
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_anycast_ip_lists(
+#'   Marker = "string",
+#'   MaxItems = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_list_anycast_ip_lists
+#'
+#' @aliases cloudfront_list_anycast_ip_lists
+cloudfront_list_anycast_ip_lists <- function(Marker = NULL, MaxItems = NULL) {
+  op <- new_operation(
+    name = "ListAnycastIpLists",
+    http_method = "GET",
+    http_path = "/2020-05-31/anycast-ip-list",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudfront$list_anycast_ip_lists_input(Marker = Marker, MaxItems = MaxItems)
+  output <- .cloudfront$list_anycast_ip_lists_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$list_anycast_ip_lists <- cloudfront_list_anycast_ip_lists
+
 #' Gets a list of cache policies
 #'
 #' @description
@@ -7805,7 +8330,7 @@ cloudfront_list_cloud_front_origin_access_identities <- function(Marker = NULL, 
     http_method = "GET",
     http_path = "/2020-05-31/origin-access-identity/cloudfront",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "CloudFrontOriginAccessIdentityList.IsTruncated", output_token = "CloudFrontOriginAccessIdentityList.NextMarker", result_key = "CloudFrontOriginAccessIdentityList.Items"),
+    paginator = list(input_token = "Marker", output_token = "CloudFrontOriginAccessIdentityList.NextMarker", limit_key = "MaxItems", more_results = "CloudFrontOriginAccessIdentityList.IsTruncated", result_key = "CloudFrontOriginAccessIdentityList.Items"),
     stream_api = FALSE
   )
   input <- .cloudfront$list_cloud_front_origin_access_identities_input(Marker = Marker, MaxItems = MaxItems)
@@ -8097,6 +8622,9 @@ cloudfront_list_continuous_deployment_policies <- function(Marker = NULL, MaxIte
 #'                 OriginReadTimeout = 123,
 #'                 OriginKeepaliveTimeout = 123
 #'               ),
+#'               VpcOriginConfig = list(
+#'                 VpcOriginId = "string"
+#'               ),
 #'               ConnectionAttempts = 123,
 #'               ConnectionTimeout = 123,
 #'               OriginShield = list(
@@ -8127,7 +8655,8 @@ cloudfront_list_continuous_deployment_policies <- function(Marker = NULL, MaxIte
 #'                     OriginId = "string"
 #'                   )
 #'                 )
-#'               )
+#'               ),
+#'               SelectionCriteria = "default"|"media-quality-based"
 #'             )
 #'           )
 #'         ),
@@ -8186,6 +8715,9 @@ cloudfront_list_continuous_deployment_policies <- function(Marker = NULL, MaxIte
 #'           CachePolicyId = "string",
 #'           OriginRequestPolicyId = "string",
 #'           ResponseHeadersPolicyId = "string",
+#'           GrpcConfig = list(
+#'             Enabled = TRUE|FALSE
+#'           ),
 #'           ForwardedValues = list(
 #'             QueryString = TRUE|FALSE,
 #'             Cookies = list(
@@ -8273,6 +8805,9 @@ cloudfront_list_continuous_deployment_policies <- function(Marker = NULL, MaxIte
 #'               CachePolicyId = "string",
 #'               OriginRequestPolicyId = "string",
 #'               ResponseHeadersPolicyId = "string",
+#'               GrpcConfig = list(
+#'                 Enabled = TRUE|FALSE
+#'               ),
 #'               ForwardedValues = list(
 #'                 QueryString = TRUE|FALSE,
 #'                 Cookies = list(
@@ -8344,7 +8879,8 @@ cloudfront_list_continuous_deployment_policies <- function(Marker = NULL, MaxIte
 #'             ICPRecordalStatus = "APPROVED"|"SUSPENDED"|"PENDING"
 #'           )
 #'         ),
-#'         Staging = TRUE|FALSE
+#'         Staging = TRUE|FALSE,
+#'         AnycastIpListId = "string"
 #'       )
 #'     )
 #'   )
@@ -8370,7 +8906,7 @@ cloudfront_list_distributions <- function(Marker = NULL, MaxItems = NULL) {
     http_method = "GET",
     http_path = "/2020-05-31/distribution",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "DistributionList.IsTruncated", output_token = "DistributionList.NextMarker", result_key = "DistributionList.Items"),
+    paginator = list(input_token = "Marker", output_token = "DistributionList.NextMarker", limit_key = "MaxItems", more_results = "DistributionList.IsTruncated", result_key = "DistributionList.Items"),
     stream_api = FALSE
   )
   input <- .cloudfront$list_distributions_input(Marker = Marker, MaxItems = MaxItems)
@@ -8382,6 +8918,380 @@ cloudfront_list_distributions <- function(Marker = NULL, MaxItems = NULL) {
   return(response)
 }
 .cloudfront$operations$list_distributions <- cloudfront_list_distributions
+
+#' Lists the distributions in your account that are associated with the
+#' specified AnycastIpListId
+#'
+#' @description
+#' Lists the distributions in your account that are associated with the
+#' specified `AnycastIpListId`.
+#'
+#' @usage
+#' cloudfront_list_distributions_by_anycast_ip_list_id(Marker, MaxItems,
+#'   AnycastIpListId)
+#'
+#' @param Marker Use this field when paginating results to indicate where to begin in
+#' your list. The response includes items in the list that occur after the
+#' marker. To get the next page of the list, set this field's value to the
+#' value of `NextMarker` from the current page's response.
+#' @param MaxItems The maximum number of distributions that you want returned in the
+#' response.
+#' @param AnycastIpListId &#91;required&#93; The ID of the Anycast static IP list.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DistributionList = list(
+#'     Marker = "string",
+#'     NextMarker = "string",
+#'     MaxItems = 123,
+#'     IsTruncated = TRUE|FALSE,
+#'     Quantity = 123,
+#'     Items = list(
+#'       list(
+#'         Id = "string",
+#'         ARN = "string",
+#'         Status = "string",
+#'         LastModifiedTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         DomainName = "string",
+#'         Aliases = list(
+#'           Quantity = 123,
+#'           Items = list(
+#'             "string"
+#'           )
+#'         ),
+#'         Origins = list(
+#'           Quantity = 123,
+#'           Items = list(
+#'             list(
+#'               Id = "string",
+#'               DomainName = "string",
+#'               OriginPath = "string",
+#'               CustomHeaders = list(
+#'                 Quantity = 123,
+#'                 Items = list(
+#'                   list(
+#'                     HeaderName = "string",
+#'                     HeaderValue = "string"
+#'                   )
+#'                 )
+#'               ),
+#'               S3OriginConfig = list(
+#'                 OriginAccessIdentity = "string"
+#'               ),
+#'               CustomOriginConfig = list(
+#'                 HTTPPort = 123,
+#'                 HTTPSPort = 123,
+#'                 OriginProtocolPolicy = "http-only"|"match-viewer"|"https-only",
+#'                 OriginSslProtocols = list(
+#'                   Quantity = 123,
+#'                   Items = list(
+#'                     "SSLv3"|"TLSv1"|"TLSv1.1"|"TLSv1.2"
+#'                   )
+#'                 ),
+#'                 OriginReadTimeout = 123,
+#'                 OriginKeepaliveTimeout = 123
+#'               ),
+#'               VpcOriginConfig = list(
+#'                 VpcOriginId = "string"
+#'               ),
+#'               ConnectionAttempts = 123,
+#'               ConnectionTimeout = 123,
+#'               OriginShield = list(
+#'                 Enabled = TRUE|FALSE,
+#'                 OriginShieldRegion = "string"
+#'               ),
+#'               OriginAccessControlId = "string"
+#'             )
+#'           )
+#'         ),
+#'         OriginGroups = list(
+#'           Quantity = 123,
+#'           Items = list(
+#'             list(
+#'               Id = "string",
+#'               FailoverCriteria = list(
+#'                 StatusCodes = list(
+#'                   Quantity = 123,
+#'                   Items = list(
+#'                     123
+#'                   )
+#'                 )
+#'               ),
+#'               Members = list(
+#'                 Quantity = 123,
+#'                 Items = list(
+#'                   list(
+#'                     OriginId = "string"
+#'                   )
+#'                 )
+#'               ),
+#'               SelectionCriteria = "default"|"media-quality-based"
+#'             )
+#'           )
+#'         ),
+#'         DefaultCacheBehavior = list(
+#'           TargetOriginId = "string",
+#'           TrustedSigners = list(
+#'             Enabled = TRUE|FALSE,
+#'             Quantity = 123,
+#'             Items = list(
+#'               "string"
+#'             )
+#'           ),
+#'           TrustedKeyGroups = list(
+#'             Enabled = TRUE|FALSE,
+#'             Quantity = 123,
+#'             Items = list(
+#'               "string"
+#'             )
+#'           ),
+#'           ViewerProtocolPolicy = "allow-all"|"https-only"|"redirect-to-https",
+#'           AllowedMethods = list(
+#'             Quantity = 123,
+#'             Items = list(
+#'               "GET"|"HEAD"|"POST"|"PUT"|"PATCH"|"OPTIONS"|"DELETE"
+#'             ),
+#'             CachedMethods = list(
+#'               Quantity = 123,
+#'               Items = list(
+#'                 "GET"|"HEAD"|"POST"|"PUT"|"PATCH"|"OPTIONS"|"DELETE"
+#'               )
+#'             )
+#'           ),
+#'           SmoothStreaming = TRUE|FALSE,
+#'           Compress = TRUE|FALSE,
+#'           LambdaFunctionAssociations = list(
+#'             Quantity = 123,
+#'             Items = list(
+#'               list(
+#'                 LambdaFunctionARN = "string",
+#'                 EventType = "viewer-request"|"viewer-response"|"origin-request"|"origin-response",
+#'                 IncludeBody = TRUE|FALSE
+#'               )
+#'             )
+#'           ),
+#'           FunctionAssociations = list(
+#'             Quantity = 123,
+#'             Items = list(
+#'               list(
+#'                 FunctionARN = "string",
+#'                 EventType = "viewer-request"|"viewer-response"|"origin-request"|"origin-response"
+#'               )
+#'             )
+#'           ),
+#'           FieldLevelEncryptionId = "string",
+#'           RealtimeLogConfigArn = "string",
+#'           CachePolicyId = "string",
+#'           OriginRequestPolicyId = "string",
+#'           ResponseHeadersPolicyId = "string",
+#'           GrpcConfig = list(
+#'             Enabled = TRUE|FALSE
+#'           ),
+#'           ForwardedValues = list(
+#'             QueryString = TRUE|FALSE,
+#'             Cookies = list(
+#'               Forward = "none"|"whitelist"|"all",
+#'               WhitelistedNames = list(
+#'                 Quantity = 123,
+#'                 Items = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             ),
+#'             Headers = list(
+#'               Quantity = 123,
+#'               Items = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             QueryStringCacheKeys = list(
+#'               Quantity = 123,
+#'               Items = list(
+#'                 "string"
+#'               )
+#'             )
+#'           ),
+#'           MinTTL = 123,
+#'           DefaultTTL = 123,
+#'           MaxTTL = 123
+#'         ),
+#'         CacheBehaviors = list(
+#'           Quantity = 123,
+#'           Items = list(
+#'             list(
+#'               PathPattern = "string",
+#'               TargetOriginId = "string",
+#'               TrustedSigners = list(
+#'                 Enabled = TRUE|FALSE,
+#'                 Quantity = 123,
+#'                 Items = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               TrustedKeyGroups = list(
+#'                 Enabled = TRUE|FALSE,
+#'                 Quantity = 123,
+#'                 Items = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               ViewerProtocolPolicy = "allow-all"|"https-only"|"redirect-to-https",
+#'               AllowedMethods = list(
+#'                 Quantity = 123,
+#'                 Items = list(
+#'                   "GET"|"HEAD"|"POST"|"PUT"|"PATCH"|"OPTIONS"|"DELETE"
+#'                 ),
+#'                 CachedMethods = list(
+#'                   Quantity = 123,
+#'                   Items = list(
+#'                     "GET"|"HEAD"|"POST"|"PUT"|"PATCH"|"OPTIONS"|"DELETE"
+#'                   )
+#'                 )
+#'               ),
+#'               SmoothStreaming = TRUE|FALSE,
+#'               Compress = TRUE|FALSE,
+#'               LambdaFunctionAssociations = list(
+#'                 Quantity = 123,
+#'                 Items = list(
+#'                   list(
+#'                     LambdaFunctionARN = "string",
+#'                     EventType = "viewer-request"|"viewer-response"|"origin-request"|"origin-response",
+#'                     IncludeBody = TRUE|FALSE
+#'                   )
+#'                 )
+#'               ),
+#'               FunctionAssociations = list(
+#'                 Quantity = 123,
+#'                 Items = list(
+#'                   list(
+#'                     FunctionARN = "string",
+#'                     EventType = "viewer-request"|"viewer-response"|"origin-request"|"origin-response"
+#'                   )
+#'                 )
+#'               ),
+#'               FieldLevelEncryptionId = "string",
+#'               RealtimeLogConfigArn = "string",
+#'               CachePolicyId = "string",
+#'               OriginRequestPolicyId = "string",
+#'               ResponseHeadersPolicyId = "string",
+#'               GrpcConfig = list(
+#'                 Enabled = TRUE|FALSE
+#'               ),
+#'               ForwardedValues = list(
+#'                 QueryString = TRUE|FALSE,
+#'                 Cookies = list(
+#'                   Forward = "none"|"whitelist"|"all",
+#'                   WhitelistedNames = list(
+#'                     Quantity = 123,
+#'                     Items = list(
+#'                       "string"
+#'                     )
+#'                   )
+#'                 ),
+#'                 Headers = list(
+#'                   Quantity = 123,
+#'                   Items = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 QueryStringCacheKeys = list(
+#'                   Quantity = 123,
+#'                   Items = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
+#'               MinTTL = 123,
+#'               DefaultTTL = 123,
+#'               MaxTTL = 123
+#'             )
+#'           )
+#'         ),
+#'         CustomErrorResponses = list(
+#'           Quantity = 123,
+#'           Items = list(
+#'             list(
+#'               ErrorCode = 123,
+#'               ResponsePagePath = "string",
+#'               ResponseCode = "string",
+#'               ErrorCachingMinTTL = 123
+#'             )
+#'           )
+#'         ),
+#'         Comment = "string",
+#'         PriceClass = "PriceClass_100"|"PriceClass_200"|"PriceClass_All",
+#'         Enabled = TRUE|FALSE,
+#'         ViewerCertificate = list(
+#'           CloudFrontDefaultCertificate = TRUE|FALSE,
+#'           IAMCertificateId = "string",
+#'           ACMCertificateArn = "string",
+#'           SSLSupportMethod = "sni-only"|"vip"|"static-ip",
+#'           MinimumProtocolVersion = "SSLv3"|"TLSv1"|"TLSv1_2016"|"TLSv1.1_2016"|"TLSv1.2_2018"|"TLSv1.2_2019"|"TLSv1.2_2021",
+#'           Certificate = "string",
+#'           CertificateSource = "cloudfront"|"iam"|"acm"
+#'         ),
+#'         Restrictions = list(
+#'           GeoRestriction = list(
+#'             RestrictionType = "blacklist"|"whitelist"|"none",
+#'             Quantity = 123,
+#'             Items = list(
+#'               "string"
+#'             )
+#'           )
+#'         ),
+#'         WebACLId = "string",
+#'         HttpVersion = "http1.1"|"http2"|"http3"|"http2and3",
+#'         IsIPV6Enabled = TRUE|FALSE,
+#'         AliasICPRecordals = list(
+#'           list(
+#'             CNAME = "string",
+#'             ICPRecordalStatus = "APPROVED"|"SUSPENDED"|"PENDING"
+#'           )
+#'         ),
+#'         Staging = TRUE|FALSE,
+#'         AnycastIpListId = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_distributions_by_anycast_ip_list_id(
+#'   Marker = "string",
+#'   MaxItems = "string",
+#'   AnycastIpListId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_list_distributions_by_anycast_ip_list_id
+#'
+#' @aliases cloudfront_list_distributions_by_anycast_ip_list_id
+cloudfront_list_distributions_by_anycast_ip_list_id <- function(Marker = NULL, MaxItems = NULL, AnycastIpListId) {
+  op <- new_operation(
+    name = "ListDistributionsByAnycastIpListId",
+    http_method = "GET",
+    http_path = "/2020-05-31/distributionsByAnycastIpListId/{AnycastIpListId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudfront$list_distributions_by_anycast_ip_list_id_input(Marker = Marker, MaxItems = MaxItems, AnycastIpListId = AnycastIpListId)
+  output <- .cloudfront$list_distributions_by_anycast_ip_list_id_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$list_distributions_by_anycast_ip_list_id <- cloudfront_list_distributions_by_anycast_ip_list_id
 
 #' Gets a list of distribution IDs for distributions that have a cache
 #' behavior that's associated with the specified cache policy
@@ -8704,6 +9614,9 @@ cloudfront_list_distributions_by_origin_request_policy_id <- function(Marker = N
 #'                 OriginReadTimeout = 123,
 #'                 OriginKeepaliveTimeout = 123
 #'               ),
+#'               VpcOriginConfig = list(
+#'                 VpcOriginId = "string"
+#'               ),
 #'               ConnectionAttempts = 123,
 #'               ConnectionTimeout = 123,
 #'               OriginShield = list(
@@ -8734,7 +9647,8 @@ cloudfront_list_distributions_by_origin_request_policy_id <- function(Marker = N
 #'                     OriginId = "string"
 #'                   )
 #'                 )
-#'               )
+#'               ),
+#'               SelectionCriteria = "default"|"media-quality-based"
 #'             )
 #'           )
 #'         ),
@@ -8793,6 +9707,9 @@ cloudfront_list_distributions_by_origin_request_policy_id <- function(Marker = N
 #'           CachePolicyId = "string",
 #'           OriginRequestPolicyId = "string",
 #'           ResponseHeadersPolicyId = "string",
+#'           GrpcConfig = list(
+#'             Enabled = TRUE|FALSE
+#'           ),
 #'           ForwardedValues = list(
 #'             QueryString = TRUE|FALSE,
 #'             Cookies = list(
@@ -8880,6 +9797,9 @@ cloudfront_list_distributions_by_origin_request_policy_id <- function(Marker = N
 #'               CachePolicyId = "string",
 #'               OriginRequestPolicyId = "string",
 #'               ResponseHeadersPolicyId = "string",
+#'               GrpcConfig = list(
+#'                 Enabled = TRUE|FALSE
+#'               ),
 #'               ForwardedValues = list(
 #'                 QueryString = TRUE|FALSE,
 #'                 Cookies = list(
@@ -8951,7 +9871,8 @@ cloudfront_list_distributions_by_origin_request_policy_id <- function(Marker = N
 #'             ICPRecordalStatus = "APPROVED"|"SUSPENDED"|"PENDING"
 #'           )
 #'         ),
-#'         Staging = TRUE|FALSE
+#'         Staging = TRUE|FALSE,
+#'         AnycastIpListId = "string"
 #'       )
 #'     )
 #'   )
@@ -8977,7 +9898,7 @@ cloudfront_list_distributions_by_realtime_log_config <- function(Marker = NULL, 
   op <- new_operation(
     name = "ListDistributionsByRealtimeLogConfig",
     http_method = "POST",
-    http_path = "/2020-05-31/distributionsByRealtimeLogConfig/",
+    http_path = "/2020-05-31/distributionsByRealtimeLogConfig",
     host_prefix = "",
     paginator = list(),
     stream_api = FALSE
@@ -9070,6 +9991,69 @@ cloudfront_list_distributions_by_response_headers_policy_id <- function(Marker =
 }
 .cloudfront$operations$list_distributions_by_response_headers_policy_id <- cloudfront_list_distributions_by_response_headers_policy_id
 
+#' List CloudFront distributions by their VPC origin ID
+#'
+#' @description
+#' List CloudFront distributions by their VPC origin ID.
+#'
+#' @usage
+#' cloudfront_list_distributions_by_vpc_origin_id(Marker, MaxItems,
+#'   VpcOriginId)
+#'
+#' @param Marker The marker associated with the VPC origin distributions list.
+#' @param MaxItems The maximum number of items included in the list.
+#' @param VpcOriginId &#91;required&#93; The VPC origin ID.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DistributionIdList = list(
+#'     Marker = "string",
+#'     NextMarker = "string",
+#'     MaxItems = 123,
+#'     IsTruncated = TRUE|FALSE,
+#'     Quantity = 123,
+#'     Items = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_distributions_by_vpc_origin_id(
+#'   Marker = "string",
+#'   MaxItems = "string",
+#'   VpcOriginId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_list_distributions_by_vpc_origin_id
+#'
+#' @aliases cloudfront_list_distributions_by_vpc_origin_id
+cloudfront_list_distributions_by_vpc_origin_id <- function(Marker = NULL, MaxItems = NULL, VpcOriginId) {
+  op <- new_operation(
+    name = "ListDistributionsByVpcOriginId",
+    http_method = "GET",
+    http_path = "/2020-05-31/distributionsByVpcOriginId/{VpcOriginId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudfront$list_distributions_by_vpc_origin_id_input(Marker = Marker, MaxItems = MaxItems, VpcOriginId = VpcOriginId)
+  output <- .cloudfront$list_distributions_by_vpc_origin_id_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$list_distributions_by_vpc_origin_id <- cloudfront_list_distributions_by_vpc_origin_id
+
 #' List the distributions that are associated with a specified WAF web ACL
 #'
 #' @description
@@ -9153,6 +10137,9 @@ cloudfront_list_distributions_by_response_headers_policy_id <- function(Marker =
 #'                 OriginReadTimeout = 123,
 #'                 OriginKeepaliveTimeout = 123
 #'               ),
+#'               VpcOriginConfig = list(
+#'                 VpcOriginId = "string"
+#'               ),
 #'               ConnectionAttempts = 123,
 #'               ConnectionTimeout = 123,
 #'               OriginShield = list(
@@ -9183,7 +10170,8 @@ cloudfront_list_distributions_by_response_headers_policy_id <- function(Marker =
 #'                     OriginId = "string"
 #'                   )
 #'                 )
-#'               )
+#'               ),
+#'               SelectionCriteria = "default"|"media-quality-based"
 #'             )
 #'           )
 #'         ),
@@ -9242,6 +10230,9 @@ cloudfront_list_distributions_by_response_headers_policy_id <- function(Marker =
 #'           CachePolicyId = "string",
 #'           OriginRequestPolicyId = "string",
 #'           ResponseHeadersPolicyId = "string",
+#'           GrpcConfig = list(
+#'             Enabled = TRUE|FALSE
+#'           ),
 #'           ForwardedValues = list(
 #'             QueryString = TRUE|FALSE,
 #'             Cookies = list(
@@ -9329,6 +10320,9 @@ cloudfront_list_distributions_by_response_headers_policy_id <- function(Marker =
 #'               CachePolicyId = "string",
 #'               OriginRequestPolicyId = "string",
 #'               ResponseHeadersPolicyId = "string",
+#'               GrpcConfig = list(
+#'                 Enabled = TRUE|FALSE
+#'               ),
 #'               ForwardedValues = list(
 #'                 QueryString = TRUE|FALSE,
 #'                 Cookies = list(
@@ -9400,7 +10394,8 @@ cloudfront_list_distributions_by_response_headers_policy_id <- function(Marker =
 #'             ICPRecordalStatus = "APPROVED"|"SUSPENDED"|"PENDING"
 #'           )
 #'         ),
-#'         Staging = TRUE|FALSE
+#'         Staging = TRUE|FALSE,
+#'         AnycastIpListId = "string"
 #'       )
 #'     )
 #'   )
@@ -9787,7 +10782,7 @@ cloudfront_list_invalidations <- function(DistributionId, Marker = NULL, MaxItem
     http_method = "GET",
     http_path = "/2020-05-31/distribution/{DistributionId}/invalidation",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "InvalidationList.IsTruncated", output_token = "InvalidationList.NextMarker", result_key = "InvalidationList.Items"),
+    paginator = list(input_token = "Marker", output_token = "InvalidationList.NextMarker", limit_key = "MaxItems", more_results = "InvalidationList.IsTruncated", result_key = "InvalidationList.Items"),
     stream_api = FALSE
   )
   input <- .cloudfront$list_invalidations_input(DistributionId = DistributionId, Marker = Marker, MaxItems = MaxItems)
@@ -9928,17 +10923,6 @@ cloudfront_list_key_groups <- function(Marker = NULL, MaxItems = NULL) {
 #' )
 #' ```
 #'
-#' @examples
-#' \dontrun{
-#' # The following command retrieves a list of KeyValueStores with READY
-#' # status.
-#' svc$list_key_value_stores(
-#'   Marker = "",
-#'   MaxItems = "100",
-#'   Status = "READY"
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname cloudfront_list_key_value_stores
@@ -9963,12 +10947,12 @@ cloudfront_list_key_value_stores <- function(Marker = NULL, MaxItems = NULL, Sta
 }
 .cloudfront$operations$list_key_value_stores <- cloudfront_list_key_value_stores
 
-#' Gets the list of CloudFront origin access controls in this Amazon Web
-#' Services account
+#' Gets the list of CloudFront origin access controls (OACs) in this Amazon
+#' Web Services account
 #'
 #' @description
-#' Gets the list of CloudFront origin access controls in this Amazon Web
-#' Services account.
+#' Gets the list of CloudFront origin access controls (OACs) in this Amazon
+#' Web Services account.
 #' 
 #' You can optionally specify the maximum number of items to receive in the
 #' response. If the total number of items in the list exceeds the maximum
@@ -9976,6 +10960,11 @@ cloudfront_list_key_value_stores <- function(Marker = NULL, MaxItems = NULL, Sta
 #' get the next page of items, send another request that specifies the
 #' `NextMarker` value from the current response as the `Marker` value in
 #' the next request.
+#' 
+#' If you're not using origin access controls for your Amazon Web Services
+#' account, the
+#' [`list_origin_access_controls`][cloudfront_list_origin_access_controls]
+#' operation doesn't return the `Items` element in the response.
 #'
 #' @usage
 #' cloudfront_list_origin_access_controls(Marker, MaxItems)
@@ -10224,7 +11213,7 @@ cloudfront_list_public_keys <- function(Marker = NULL, MaxItems = NULL) {
     http_method = "GET",
     http_path = "/2020-05-31/public-key",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "Marker", output_token = "PublicKeyList.NextMarker", limit_key = "MaxItems", result_key = "PublicKeyList.Items"),
     stream_api = FALSE
   )
   input <- .cloudfront$list_public_keys_input(Marker = Marker, MaxItems = MaxItems)
@@ -10574,7 +11563,7 @@ cloudfront_list_streaming_distributions <- function(Marker = NULL, MaxItems = NU
     http_method = "GET",
     http_path = "/2020-05-31/streaming-distribution",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "StreamingDistributionList.IsTruncated", output_token = "StreamingDistributionList.NextMarker", result_key = "StreamingDistributionList.Items"),
+    paginator = list(input_token = "Marker", output_token = "StreamingDistributionList.NextMarker", limit_key = "MaxItems", more_results = "StreamingDistributionList.IsTruncated", result_key = "StreamingDistributionList.Items"),
     stream_api = FALSE
   )
   input <- .cloudfront$list_streaming_distributions_input(Marker = Marker, MaxItems = MaxItems)
@@ -10645,6 +11634,78 @@ cloudfront_list_tags_for_resource <- function(Resource) {
   return(response)
 }
 .cloudfront$operations$list_tags_for_resource <- cloudfront_list_tags_for_resource
+
+#' List the CloudFront VPC origins in your account
+#'
+#' @description
+#' List the CloudFront VPC origins in your account.
+#'
+#' @usage
+#' cloudfront_list_vpc_origins(Marker, MaxItems)
+#'
+#' @param Marker The marker associated with the VPC origins list.
+#' @param MaxItems The maximum number of items included in the list.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   VpcOriginList = list(
+#'     Marker = "string",
+#'     NextMarker = "string",
+#'     MaxItems = 123,
+#'     IsTruncated = TRUE|FALSE,
+#'     Quantity = 123,
+#'     Items = list(
+#'       list(
+#'         Id = "string",
+#'         Name = "string",
+#'         Status = "string",
+#'         CreatedTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         LastModifiedTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         Arn = "string",
+#'         OriginEndpointArn = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_vpc_origins(
+#'   Marker = "string",
+#'   MaxItems = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_list_vpc_origins
+#'
+#' @aliases cloudfront_list_vpc_origins
+cloudfront_list_vpc_origins <- function(Marker = NULL, MaxItems = NULL) {
+  op <- new_operation(
+    name = "ListVpcOrigins",
+    http_method = "GET",
+    http_path = "/2020-05-31/vpc-origin",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudfront$list_vpc_origins_input(Marker = Marker, MaxItems = MaxItems)
+  output <- .cloudfront$list_vpc_origins_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$list_vpc_origins <- cloudfront_list_vpc_origins
 
 #' Publishes a CloudFront function by copying the function code from the
 #' DEVELOPMENT stage to LIVE
@@ -11320,14 +12381,14 @@ cloudfront_update_continuous_deployment_policy <- function(ContinuousDeploymentP
 #'     response. Note the following important requirements and
 #'     restrictions:
 #' 
-#'     -   You must rename the `ETag` field to `IfMatch`, leaving the value
-#'         unchanged. (Set the value of `IfMatch` to the value of `ETag`,
-#'         then remove the `ETag` field.)
+#'     -   You must copy the `ETag` field value from the response. (You'll
+#'         use it for the `IfMatch` parameter in your request.) Then,
+#'         remove the `ETag` field from the distribution configuration.
 #' 
 #'     -   You can't change the value of `CallerReference`.
 #' 
 #' 3.  Submit an [`update_distribution`][cloudfront_update_distribution]
-#'     request, providing the distribution configuration. The new
+#'     request, providing the updated distribution configuration. The new
 #'     configuration replaces the existing configuration. The values that
 #'     you specify in an
 #'     [`update_distribution`][cloudfront_update_distribution] request are
@@ -11427,6 +12488,9 @@ cloudfront_update_continuous_deployment_policy <- function(ContinuousDeploymentP
 #'               OriginReadTimeout = 123,
 #'               OriginKeepaliveTimeout = 123
 #'             ),
+#'             VpcOriginConfig = list(
+#'               VpcOriginId = "string"
+#'             ),
 #'             ConnectionAttempts = 123,
 #'             ConnectionTimeout = 123,
 #'             OriginShield = list(
@@ -11457,7 +12521,8 @@ cloudfront_update_continuous_deployment_policy <- function(ContinuousDeploymentP
 #'                   OriginId = "string"
 #'                 )
 #'               )
-#'             )
+#'             ),
+#'             SelectionCriteria = "default"|"media-quality-based"
 #'           )
 #'         )
 #'       ),
@@ -11516,6 +12581,9 @@ cloudfront_update_continuous_deployment_policy <- function(ContinuousDeploymentP
 #'         CachePolicyId = "string",
 #'         OriginRequestPolicyId = "string",
 #'         ResponseHeadersPolicyId = "string",
+#'         GrpcConfig = list(
+#'           Enabled = TRUE|FALSE
+#'         ),
 #'         ForwardedValues = list(
 #'           QueryString = TRUE|FALSE,
 #'           Cookies = list(
@@ -11603,6 +12671,9 @@ cloudfront_update_continuous_deployment_policy <- function(ContinuousDeploymentP
 #'             CachePolicyId = "string",
 #'             OriginRequestPolicyId = "string",
 #'             ResponseHeadersPolicyId = "string",
+#'             GrpcConfig = list(
+#'               Enabled = TRUE|FALSE
+#'             ),
 #'             ForwardedValues = list(
 #'               QueryString = TRUE|FALSE,
 #'               Cookies = list(
@@ -11675,7 +12746,8 @@ cloudfront_update_continuous_deployment_policy <- function(ContinuousDeploymentP
 #'       HttpVersion = "http1.1"|"http2"|"http3"|"http2and3",
 #'       IsIPV6Enabled = TRUE|FALSE,
 #'       ContinuousDeploymentPolicyId = "string",
-#'       Staging = TRUE|FALSE
+#'       Staging = TRUE|FALSE,
+#'       AnycastIpListId = "string"
 #'     ),
 #'     AliasICPRecordals = list(
 #'       list(
@@ -11732,6 +12804,9 @@ cloudfront_update_continuous_deployment_policy <- function(ContinuousDeploymentP
 #'             OriginReadTimeout = 123,
 #'             OriginKeepaliveTimeout = 123
 #'           ),
+#'           VpcOriginConfig = list(
+#'             VpcOriginId = "string"
+#'           ),
 #'           ConnectionAttempts = 123,
 #'           ConnectionTimeout = 123,
 #'           OriginShield = list(
@@ -11762,7 +12837,8 @@ cloudfront_update_continuous_deployment_policy <- function(ContinuousDeploymentP
 #'                 OriginId = "string"
 #'               )
 #'             )
-#'           )
+#'           ),
+#'           SelectionCriteria = "default"|"media-quality-based"
 #'         )
 #'       )
 #'     ),
@@ -11821,6 +12897,9 @@ cloudfront_update_continuous_deployment_policy <- function(ContinuousDeploymentP
 #'       CachePolicyId = "string",
 #'       OriginRequestPolicyId = "string",
 #'       ResponseHeadersPolicyId = "string",
+#'       GrpcConfig = list(
+#'         Enabled = TRUE|FALSE
+#'       ),
 #'       ForwardedValues = list(
 #'         QueryString = TRUE|FALSE,
 #'         Cookies = list(
@@ -11908,6 +12987,9 @@ cloudfront_update_continuous_deployment_policy <- function(ContinuousDeploymentP
 #'           CachePolicyId = "string",
 #'           OriginRequestPolicyId = "string",
 #'           ResponseHeadersPolicyId = "string",
+#'           GrpcConfig = list(
+#'             Enabled = TRUE|FALSE
+#'           ),
 #'           ForwardedValues = list(
 #'             QueryString = TRUE|FALSE,
 #'             Cookies = list(
@@ -11980,7 +13062,8 @@ cloudfront_update_continuous_deployment_policy <- function(ContinuousDeploymentP
 #'     HttpVersion = "http1.1"|"http2"|"http3"|"http2and3",
 #'     IsIPV6Enabled = TRUE|FALSE,
 #'     ContinuousDeploymentPolicyId = "string",
-#'     Staging = TRUE|FALSE
+#'     Staging = TRUE|FALSE,
+#'     AnycastIpListId = "string"
 #'   ),
 #'   Id = "string",
 #'   IfMatch = "string"
@@ -12133,6 +13216,9 @@ cloudfront_update_distribution <- function(DistributionConfig, Id, IfMatch = NUL
 #'               OriginReadTimeout = 123,
 #'               OriginKeepaliveTimeout = 123
 #'             ),
+#'             VpcOriginConfig = list(
+#'               VpcOriginId = "string"
+#'             ),
 #'             ConnectionAttempts = 123,
 #'             ConnectionTimeout = 123,
 #'             OriginShield = list(
@@ -12163,7 +13249,8 @@ cloudfront_update_distribution <- function(DistributionConfig, Id, IfMatch = NUL
 #'                   OriginId = "string"
 #'                 )
 #'               )
-#'             )
+#'             ),
+#'             SelectionCriteria = "default"|"media-quality-based"
 #'           )
 #'         )
 #'       ),
@@ -12222,6 +13309,9 @@ cloudfront_update_distribution <- function(DistributionConfig, Id, IfMatch = NUL
 #'         CachePolicyId = "string",
 #'         OriginRequestPolicyId = "string",
 #'         ResponseHeadersPolicyId = "string",
+#'         GrpcConfig = list(
+#'           Enabled = TRUE|FALSE
+#'         ),
 #'         ForwardedValues = list(
 #'           QueryString = TRUE|FALSE,
 #'           Cookies = list(
@@ -12309,6 +13399,9 @@ cloudfront_update_distribution <- function(DistributionConfig, Id, IfMatch = NUL
 #'             CachePolicyId = "string",
 #'             OriginRequestPolicyId = "string",
 #'             ResponseHeadersPolicyId = "string",
+#'             GrpcConfig = list(
+#'               Enabled = TRUE|FALSE
+#'             ),
 #'             ForwardedValues = list(
 #'               QueryString = TRUE|FALSE,
 #'               Cookies = list(
@@ -12381,7 +13474,8 @@ cloudfront_update_distribution <- function(DistributionConfig, Id, IfMatch = NUL
 #'       HttpVersion = "http1.1"|"http2"|"http3"|"http2and3",
 #'       IsIPV6Enabled = TRUE|FALSE,
 #'       ContinuousDeploymentPolicyId = "string",
-#'       Staging = TRUE|FALSE
+#'       Staging = TRUE|FALSE,
+#'       AnycastIpListId = "string"
 #'     ),
 #'     AliasICPRecordals = list(
 #'       list(
@@ -12726,28 +13820,6 @@ cloudfront_update_field_level_encryption_profile <- function(FieldLevelEncryptio
 #' )
 #' ```
 #'
-#' @examples
-#' \dontrun{
-#' # Use the following command to update a function.
-#' svc$update_function(
-#'   FunctionCode = "function-code-changed.js",
-#'   FunctionConfig = list(
-#'     Comment = "my-changed-comment",
-#'     KeyValueStoreAssociations = list(
-#'       Items = list(
-#'         list(
-#'           KeyValueStoreARN = "arn:aws:cloudfront::123456789012:key-value-st..."
-#'         )
-#'       ),
-#'       Quantity = 1L
-#'     ),
-#'     Runtime = "cloudfront-js-2.0"
-#'   ),
-#'   IfMatch = "ETVPDKIKX0DER",
-#'   Name = "my-function-name"
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname cloudfront_update_function
@@ -12898,16 +13970,6 @@ cloudfront_update_key_group <- function(KeyGroupConfig, Id, IfMatch = NULL) {
 #'   IfMatch = "string"
 #' )
 #' ```
-#'
-#' @examples
-#' \dontrun{
-#' # Use the following command to update a KeyValueStore.
-#' svc$update_key_value_store(
-#'   Comment = "my-changed-comment",
-#'   IfMatch = "ETVPDKIKX0DER",
-#'   Name = "my-keyvaluestore-name"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -13316,7 +14378,7 @@ cloudfront_update_realtime_log_config <- function(EndPoints = NULL, Fields = NUL
   op <- new_operation(
     name = "UpdateRealtimeLogConfig",
     http_method = "PUT",
-    http_path = "/2020-05-31/realtime-log-config/",
+    http_path = "/2020-05-31/realtime-log-config",
     host_prefix = "",
     paginator = list(),
     stream_api = FALSE
@@ -13711,3 +14773,92 @@ cloudfront_update_streaming_distribution <- function(StreamingDistributionConfig
   return(response)
 }
 .cloudfront$operations$update_streaming_distribution <- cloudfront_update_streaming_distribution
+
+#' Update an Amazon CloudFront VPC origin in your account
+#'
+#' @description
+#' Update an Amazon CloudFront VPC origin in your account.
+#'
+#' @usage
+#' cloudfront_update_vpc_origin(VpcOriginEndpointConfig, Id, IfMatch)
+#'
+#' @param VpcOriginEndpointConfig &#91;required&#93; The VPC origin endpoint configuration.
+#' @param Id &#91;required&#93; The VPC origin ID.
+#' @param IfMatch &#91;required&#93; The VPC origin to update, if a match occurs.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   VpcOrigin = list(
+#'     Id = "string",
+#'     Arn = "string",
+#'     Status = "string",
+#'     CreatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastModifiedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     VpcOriginEndpointConfig = list(
+#'       Name = "string",
+#'       Arn = "string",
+#'       HTTPPort = 123,
+#'       HTTPSPort = 123,
+#'       OriginProtocolPolicy = "http-only"|"match-viewer"|"https-only",
+#'       OriginSslProtocols = list(
+#'         Quantity = 123,
+#'         Items = list(
+#'           "SSLv3"|"TLSv1"|"TLSv1.1"|"TLSv1.2"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   ETag = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_vpc_origin(
+#'   VpcOriginEndpointConfig = list(
+#'     Name = "string",
+#'     Arn = "string",
+#'     HTTPPort = 123,
+#'     HTTPSPort = 123,
+#'     OriginProtocolPolicy = "http-only"|"match-viewer"|"https-only",
+#'     OriginSslProtocols = list(
+#'       Quantity = 123,
+#'       Items = list(
+#'         "SSLv3"|"TLSv1"|"TLSv1.1"|"TLSv1.2"
+#'       )
+#'     )
+#'   ),
+#'   Id = "string",
+#'   IfMatch = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_update_vpc_origin
+#'
+#' @aliases cloudfront_update_vpc_origin
+cloudfront_update_vpc_origin <- function(VpcOriginEndpointConfig, Id, IfMatch) {
+  op <- new_operation(
+    name = "UpdateVpcOrigin",
+    http_method = "PUT",
+    http_path = "/2020-05-31/vpc-origin/{Id}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudfront$update_vpc_origin_input(VpcOriginEndpointConfig = VpcOriginEndpointConfig, Id = Id, IfMatch = IfMatch)
+  output <- .cloudfront$update_vpc_origin_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$update_vpc_origin <- cloudfront_update_vpc_origin

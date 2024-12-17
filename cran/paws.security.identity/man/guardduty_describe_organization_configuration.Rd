@@ -12,8 +12,12 @@ guardduty_describe_organization_configuration(
 )
 }
 \arguments{
-\item{DetectorId}{[required] The ID of the detector to retrieve information about the delegated
-administrator from.}
+\item{DetectorId}{[required] The detector ID of the delegated administrator for which you need to
+retrieve the information.
+
+To find the \code{detectorId} in the current Region, see the Settings page in
+the GuardDuty console, or run the
+\code{\link[=guardduty_list_detectors]{list_detectors}} API.}
 
 \item{MaxResults}{You can use this parameter to indicate the maximum number of items that
 you want in the response.}

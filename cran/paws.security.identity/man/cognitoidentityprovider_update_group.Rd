@@ -15,7 +15,7 @@ cognitoidentityprovider_update_group(
 \arguments{
 \item{GroupName}{[required] The name of the group.}
 
-\item{UserPoolId}{[required] The user pool ID for the user pool.}
+\item{UserPoolId}{[required] The ID of the user pool.}
 
 \item{Description}{A string containing the new description of the group.}
 

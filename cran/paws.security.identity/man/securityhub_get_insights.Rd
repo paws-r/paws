@@ -11,7 +11,7 @@ securityhub_get_insights(
 )
 }
 \arguments{
-\item{InsightArns}{The ARNs of the insights to describe. If you do not provide any insight
+\item{InsightArns}{The ARNs of the insights to describe. If you don't provide any insight
 ARNs, then \code{\link[=securityhub_get_insights]{get_insights}} returns all of
 your custom insights. It does not return any managed insights.}
 

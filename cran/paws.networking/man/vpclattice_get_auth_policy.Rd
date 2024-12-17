@@ -8,7 +8,7 @@ service network}
 vpclattice_get_auth_policy(resourceIdentifier)
 }
 \arguments{
-\item{resourceIdentifier}{[required] The ID or Amazon Resource Name (ARN) of the service network or service.}
+\item{resourceIdentifier}{[required] The ID or ARN of the service network or service.}
 }
 \description{
 Retrieves information about the auth policy for the specified service or service network.

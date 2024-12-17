@@ -63,19 +63,19 @@ NULL
 
 .cognitoidentity$get_credentials_for_identity_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(IdentityId = structure(logical(0), tags = list(type = "string")), Logins = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), CustomRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(IdentityId = structure(logical(0), tags = list(type = "string")), Logins = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "map")), CustomRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .cognitoidentity$get_credentials_for_identity_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(IdentityId = structure(logical(0), tags = list(type = "string")), Credentials = structure(list(AccessKeyId = structure(logical(0), tags = list(type = "string")), SecretKey = structure(logical(0), tags = list(type = "string")), SessionToken = structure(logical(0), tags = list(type = "string")), Expiration = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(IdentityId = structure(logical(0), tags = list(type = "string")), Credentials = structure(list(AccessKeyId = structure(logical(0), tags = list(type = "string")), SecretKey = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), SessionToken = structure(logical(0), tags = list(type = "string")), Expiration = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .cognitoidentity$get_id_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AccountId = structure(logical(0), tags = list(type = "string")), IdentityPoolId = structure(logical(0), tags = list(type = "string")), Logins = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  shape <- structure(list(AccountId = structure(logical(0), tags = list(type = "string")), IdentityPoolId = structure(logical(0), tags = list(type = "string")), Logins = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "map"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -99,25 +99,25 @@ NULL
 
 .cognitoidentity$get_open_id_token_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(IdentityId = structure(logical(0), tags = list(type = "string")), Logins = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  shape <- structure(list(IdentityId = structure(logical(0), tags = list(type = "string")), Logins = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "map"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .cognitoidentity$get_open_id_token_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(IdentityId = structure(logical(0), tags = list(type = "string")), Token = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(IdentityId = structure(logical(0), tags = list(type = "string")), Token = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .cognitoidentity$get_open_id_token_for_developer_identity_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(IdentityPoolId = structure(logical(0), tags = list(type = "string")), IdentityId = structure(logical(0), tags = list(type = "string")), Logins = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), PrincipalTags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), TokenDuration = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))
+  shape <- structure(list(IdentityPoolId = structure(logical(0), tags = list(type = "string")), IdentityId = structure(logical(0), tags = list(type = "string")), Logins = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "map")), PrincipalTags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), TokenDuration = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .cognitoidentity$get_open_id_token_for_developer_identity_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(IdentityId = structure(logical(0), tags = list(type = "string")), Token = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(IdentityId = structure(logical(0), tags = list(type = "string")), Token = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -239,7 +239,7 @@ NULL
 
 .cognitoidentity$unlink_identity_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(IdentityId = structure(logical(0), tags = list(type = "string")), Logins = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), LoginsToRemove = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(IdentityId = structure(logical(0), tags = list(type = "string")), Logins = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "map")), LoginsToRemove = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

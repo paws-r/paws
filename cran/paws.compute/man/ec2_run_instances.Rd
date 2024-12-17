@@ -22,15 +22,6 @@ ec2_run_instances(
   SecurityGroups = NULL,
   SubnetId = NULL,
   UserData = NULL,
-  AdditionalInfo = NULL,
-  ClientToken = NULL,
-  DisableApiTermination = NULL,
-  DryRun = NULL,
-  EbsOptimized = NULL,
-  IamInstanceProfile = NULL,
-  InstanceInitiatedShutdownBehavior = NULL,
-  NetworkInterfaces = NULL,
-  PrivateIpAddress = NULL,
   ElasticGpuSpecification = NULL,
   ElasticInferenceAccelerators = NULL,
   TagSpecifications = NULL,
@@ -46,7 +37,18 @@ ec2_run_instances(
   PrivateDnsNameOptions = NULL,
   MaintenanceOptions = NULL,
   DisableApiStop = NULL,
-  EnablePrimaryIpv6 = NULL
+  EnablePrimaryIpv6 = NULL,
+  NetworkPerformanceOptions = NULL,
+  Operator = NULL,
+  DryRun = NULL,
+  DisableApiTermination = NULL,
+  InstanceInitiatedShutdownBehavior = NULL,
+  PrivateIpAddress = NULL,
+  ClientToken = NULL,
+  AdditionalInfo = NULL,
+  NetworkInterfaces = NULL,
+  IamInstanceProfile = NULL,
+  EbsOptimized = NULL
 )
 }
 \arguments{
@@ -146,69 +148,13 @@ base64-encoded. Depending on the tool or SDK that you're using, the
 base64-encoding might be performed for you. For more information, see
 \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/}{Work with instance user data}.}
 
-\item{AdditionalInfo}{Reserved.}
-
-\item{ClientToken}{Unique, case-sensitive identifier you provide to ensure the idempotency
-of the request. If you do not specify a client token, a randomly
-generated token is used for the request to ensure idempotency.
-
-For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring Idempotency}.
-
-Constraints: Maximum 64 ASCII characters}
-
-\item{DisableApiTermination}{If you set this parameter to \code{true}, you can't terminate the instance
-using the Amazon EC2 console, CLI, or API; otherwise, you can. To change
-this attribute after launch, use
-\code{\link[=ec2_modify_instance_attribute]{modify_instance_attribute}}.
-Alternatively, if you set \code{InstanceInitiatedShutdownBehavior} to
-\code{terminate}, you can terminate the instance by running the shutdown
-command from the instance.
-
-Default: \code{false}}
-
-\item{DryRun}{Checks whether you have the required permissions for the action, without
-actually making the request, and provides an error response. If you have
-the required permissions, the error response is \code{DryRunOperation}.
-Otherwise, it is \code{UnauthorizedOperation}.}
-
-\item{EbsOptimized}{Indicates whether the instance is optimized for Amazon EBS I/O. This
-optimization provides dedicated throughput to Amazon EBS and an
-optimized configuration stack to provide optimal Amazon EBS I/O
-performance. This optimization isn't available with all instance types.
-Additional usage charges apply when using an EBS-optimized instance.
-
-Default: \code{false}}
-
-\item{IamInstanceProfile}{The name or Amazon Resource Name (ARN) of an IAM instance profile.}
-
-\item{InstanceInitiatedShutdownBehavior}{Indicates whether an instance stops or terminates when you initiate
-shutdown from the instance (using the operating system command for
-system shutdown).
-
-Default: \code{stop}}
-
-\item{NetworkInterfaces}{The network interfaces to associate with the instance.}
-
-\item{PrivateIpAddress}{The primary IPv4 address. You must specify a value from the IPv4 address
-range of the subnet.
-
-Only one private IP address can be designated as primary. You can't
-specify this option if you've specified the option to designate a
-private IP address as the primary IP address in a network interface
-specification. You cannot specify this option if you're launching more
-than one instance in the request.
-
-You cannot specify this option and the network interfaces option in the
-same request.}
-
 \item{ElasticGpuSpecification}{An elastic GPU to associate with the instance.
 
 Amazon Elastic Graphics reached end of life on January 8, 2024.}
 
 \item{ElasticInferenceAccelerators}{An elastic inference accelerator to associate with the instance.
 
-Amazon Elastic Inference (EI) is no longer available to new customers.
-For more information, see \href{https://aws.amazon.com/sagemaker-ai/deploy/}{Amazon Elastic Inference FAQs}.}
+Amazon Elastic Inference is no longer available.}
 
 \item{TagSpecifications}{The tags to apply to the resources that are created during instance
 launch.
@@ -252,7 +198,7 @@ in the \emph{Amazon EC2 User Guide}.}
 not specify this parameter, the instance's Capacity Reservation
 preference defaults to \code{open}, which enables it to run in any open
 Capacity Reservation that has matching attributes (instance type,
-platform, Availability Zone).}
+platform, Availability Zone, and tenancy).}
 
 \item{HibernationOptions}{Indicates whether an instance is enabled for hibernation. This parameter
 is valid only if the instance meets the \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/hibernating-prerequisites.html}{hibernation prerequisites}.
@@ -297,6 +243,65 @@ terminated or the network interface is detached. If you have multiple
 IPv6 addresses associated with an ENI attached to your instance and you
 enable a primary IPv6 address, the first IPv6 GUA address associated
 with the ENI becomes the primary IPv6 address.}
+
+\item{NetworkPerformanceOptions}{Contains settings for the network performance options for the instance.}
+
+\item{Operator}{Reserved for internal use.}
+
+\item{DryRun}{Checks whether you have the required permissions for the operation,
+without actually making the request, and provides an error response. If
+you have the required permissions, the error response is
+\code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
+
+\item{DisableApiTermination}{If you set this parameter to \code{true}, you can't terminate the instance
+using the Amazon EC2 console, CLI, or API; otherwise, you can. To change
+this attribute after launch, use
+\code{\link[=ec2_modify_instance_attribute]{modify_instance_attribute}}.
+Alternatively, if you set \code{InstanceInitiatedShutdownBehavior} to
+\code{terminate}, you can terminate the instance by running the shutdown
+command from the instance.
+
+Default: \code{false}}
+
+\item{InstanceInitiatedShutdownBehavior}{Indicates whether an instance stops or terminates when you initiate
+shutdown from the instance (using the operating system command for
+system shutdown).
+
+Default: \code{stop}}
+
+\item{PrivateIpAddress}{The primary IPv4 address. You must specify a value from the IPv4 address
+range of the subnet.
+
+Only one private IP address can be designated as primary. You can't
+specify this option if you've specified the option to designate a
+private IP address as the primary IP address in a network interface
+specification. You cannot specify this option if you're launching more
+than one instance in the request.
+
+You cannot specify this option and the network interfaces option in the
+same request.}
+
+\item{ClientToken}{Unique, case-sensitive identifier you provide to ensure the idempotency
+of the request. If you do not specify a client token, a randomly
+generated token is used for the request to ensure idempotency.
+
+For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring Idempotency}.
+
+Constraints: Maximum 64 ASCII characters}
+
+\item{AdditionalInfo}{Reserved.}
+
+\item{NetworkInterfaces}{The network interfaces to associate with the instance.}
+
+\item{IamInstanceProfile}{The name or Amazon Resource Name (ARN) of an IAM instance profile.}
+
+\item{EbsOptimized}{Indicates whether the instance is optimized for Amazon EBS I/O. This
+optimization provides dedicated throughput to Amazon EBS and an
+optimized configuration stack to provide optimal Amazon EBS I/O
+performance. This optimization isn't available with all instance types.
+Additional usage charges apply when using an EBS-optimized instance.
+
+Default: \code{false}}
 }
 \description{
 Launches the specified number of instances using an AMI for which you have permissions.

@@ -2,17 +2,17 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_delete_identity_provider}
 \alias{cognitoidentityprovider_delete_identity_provider}
-\title{Deletes an IdP for a user pool}
+\title{Deletes a user pool identity provider (IdP)}
 \usage{
 cognitoidentityprovider_delete_identity_provider(UserPoolId, ProviderName)
 }
 \arguments{
-\item{UserPoolId}{[required] The user pool ID.}
+\item{UserPoolId}{[required] The ID of the user pool where you want to delete the identity provider.}
 
-\item{ProviderName}{[required] The IdP name.}
+\item{ProviderName}{[required] The name of the IdP that you want to delete.}
 }
 \description{
-Deletes an IdP for a user pool.
+Deletes a user pool identity provider (IdP). After you delete an IdP, users can no longer sign in to your user pool through that IdP. For more information about user pool IdPs, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-identity-federation.html}{Third-party IdP sign-in}.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_delete_identity_provider/} for full documentation.
 }

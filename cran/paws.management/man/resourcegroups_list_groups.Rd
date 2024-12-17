@@ -19,6 +19,7 @@ any resource group with a \code{ResourceTypeFilter} that includes
 groups that have the specified configuration types attached. The
 current supported values are:
 \itemize{
+\item \verb{AWS::ResourceGroups::ApplicationGroup}
 \item \verb{AWS::AppRegistry::Application}
 \item \verb{AWS::AppRegistry::ApplicationResourceGroups}
 \item \verb{AWS::CloudFormation::Stack}

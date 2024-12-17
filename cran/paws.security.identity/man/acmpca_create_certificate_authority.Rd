@@ -18,10 +18,10 @@ acmpca_create_certificate_authority(
 \item{CertificateAuthorityConfiguration}{[required] Name and bit size of the private key algorithm, the name of the signing
 algorithm, and X.500 certificate subject information.}
 
-\item{RevocationConfiguration}{Contains information to enable Online Certificate Status Protocol (OCSP)
-support, to enable a certificate revocation list (CRL), to enable both,
-or to enable neither. The default is for both certificate validation
-mechanisms to be disabled.
+\item{RevocationConfiguration}{Contains information to enable support for Online Certificate Status
+Protocol (OCSP), certificate revocation list (CRL), both protocols, or
+neither. By default, both certificate validation mechanisms are
+disabled.
 
 The following requirements apply to revocation configurations.
 \itemize{

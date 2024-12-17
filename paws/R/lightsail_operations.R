@@ -6539,7 +6539,7 @@ lightsail_get_active_names <- function(pageToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "pageToken", output_token = "nextPageToken", result_key = "activeNames"),
     stream_api = FALSE
   )
   input <- .lightsail$get_active_names_input(pageToken = pageToken)
@@ -6805,7 +6805,7 @@ lightsail_get_blueprints <- function(includeInactive = NULL, pageToken = NULL, a
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "pageToken", output_token = "nextPageToken", result_key = "blueprints"),
     stream_api = FALSE
   )
   input <- .lightsail$get_blueprints_input(includeInactive = includeInactive, pageToken = pageToken, appCategory = appCategory)
@@ -7299,7 +7299,7 @@ lightsail_get_bundles <- function(includeInactive = NULL, pageToken = NULL, appC
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "pageToken", output_token = "nextPageToken", result_key = "bundles"),
     stream_api = FALSE
   )
   input <- .lightsail$get_bundles_input(includeInactive = includeInactive, pageToken = pageToken, appCategory = appCategory)
@@ -7555,7 +7555,7 @@ lightsail_get_cloud_formation_stack_records <- function(pageToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "pageToken", output_token = "nextPageToken", result_key = "cloudFormationStackRecords"),
     stream_api = FALSE
   )
   input <- .lightsail$get_cloud_formation_stack_records_input(pageToken = pageToken)
@@ -8698,7 +8698,7 @@ lightsail_get_disk_snapshots <- function(pageToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "pageToken", output_token = "nextPageToken", result_key = "diskSnapshots"),
     stream_api = FALSE
   )
   input <- .lightsail$get_disk_snapshots_input(pageToken = pageToken)
@@ -8795,7 +8795,7 @@ lightsail_get_disks <- function(pageToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "pageToken", output_token = "nextPageToken", result_key = "disks"),
     stream_api = FALSE
   )
   input <- .lightsail$get_disks_input(pageToken = pageToken)
@@ -9432,7 +9432,7 @@ lightsail_get_domains <- function(pageToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "pageToken", output_token = "nextPageToken", result_key = "domains"),
     stream_api = FALSE
   )
   input <- .lightsail$get_domains_input(pageToken = pageToken)
@@ -9538,7 +9538,7 @@ lightsail_get_export_snapshot_records <- function(pageToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "pageToken", output_token = "nextPageToken", result_key = "exportSnapshotRecords"),
     stream_api = FALSE
   )
   input <- .lightsail$get_export_snapshot_records_input(pageToken = pageToken)
@@ -10338,7 +10338,7 @@ lightsail_get_instance_snapshots <- function(pageToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "pageToken", output_token = "nextPageToken", result_key = "instanceSnapshots"),
     stream_api = FALSE
   )
   input <- .lightsail$get_instance_snapshots_input(pageToken = pageToken)
@@ -10571,7 +10571,7 @@ lightsail_get_instances <- function(pageToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "pageToken", output_token = "nextPageToken", result_key = "instances"),
     stream_api = FALSE
   )
   input <- .lightsail$get_instances_input(pageToken = pageToken)
@@ -10718,7 +10718,7 @@ lightsail_get_key_pairs <- function(pageToken = NULL, includeDefaultKeyPair = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "pageToken", output_token = "nextPageToken", result_key = "keyPairs"),
     stream_api = FALSE
   )
   input <- .lightsail$get_key_pairs_input(pageToken = pageToken, includeDefaultKeyPair = includeDefaultKeyPair)
@@ -11341,7 +11341,7 @@ lightsail_get_load_balancers <- function(pageToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "pageToken", output_token = "nextPageToken", result_key = "loadBalancers"),
     stream_api = FALSE
   )
   input <- .lightsail$get_load_balancers_input(pageToken = pageToken)
@@ -11494,7 +11494,7 @@ lightsail_get_operations <- function(pageToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "pageToken", output_token = "nextPageToken", result_key = "operations"),
     stream_api = FALSE
   )
   input <- .lightsail$get_operations_input(pageToken = pageToken)
@@ -11828,7 +11828,7 @@ lightsail_get_relational_database_blueprints <- function(pageToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "pageToken", output_token = "nextPageToken", result_key = "blueprints"),
     stream_api = FALSE
   )
   input <- .lightsail$get_relational_database_blueprints_input(pageToken = pageToken)
@@ -11903,7 +11903,7 @@ lightsail_get_relational_database_bundles <- function(pageToken = NULL, includeI
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "pageToken", output_token = "nextPageToken", result_key = "bundles"),
     stream_api = FALSE
   )
   input <- .lightsail$get_relational_database_bundles_input(pageToken = pageToken, includeInactive = includeInactive)
@@ -11980,7 +11980,7 @@ lightsail_get_relational_database_events <- function(relationalDatabaseName, dur
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "pageToken", output_token = "nextPageToken", result_key = "relationalDatabaseEvents"),
     stream_api = FALSE
   )
   input <- .lightsail$get_relational_database_events_input(relationalDatabaseName = relationalDatabaseName, durationInMinutes = durationInMinutes, pageToken = pageToken)
@@ -12469,7 +12469,7 @@ lightsail_get_relational_database_parameters <- function(relationalDatabaseName,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "pageToken", output_token = "nextPageToken", result_key = "parameters"),
     stream_api = FALSE
   )
   input <- .lightsail$get_relational_database_parameters_input(relationalDatabaseName = relationalDatabaseName, pageToken = pageToken)
@@ -12633,7 +12633,7 @@ lightsail_get_relational_database_snapshots <- function(pageToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "pageToken", output_token = "nextPageToken", result_key = "relationalDatabaseSnapshots"),
     stream_api = FALSE
   )
   input <- .lightsail$get_relational_database_snapshots_input(pageToken = pageToken)
@@ -12749,7 +12749,7 @@ lightsail_get_relational_databases <- function(pageToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "pageToken", output_token = "nextPageToken", result_key = "relationalDatabases"),
     stream_api = FALSE
   )
   input <- .lightsail$get_relational_databases_input(pageToken = pageToken)
@@ -12982,7 +12982,7 @@ lightsail_get_static_ips <- function(pageToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "pageToken", output_token = "nextPageToken", result_key = "staticIps"),
     stream_api = FALSE
   )
   input <- .lightsail$get_static_ips_input(pageToken = pageToken)

@@ -11,12 +11,16 @@ licensemanagerusersubscriptions_list_instances(
 )
 }
 \arguments{
-\item{Filters}{An array of structures that you can use to filter the results to those
-that match one or more sets of key-value pairs that you specify.}
+\item{Filters}{You can use the following filters to streamline results:
+\itemize{
+\item Status
+\item InstanceId
+}}
 
-\item{MaxResults}{Maximum number of results to return in a single call.}
+\item{MaxResults}{The maximum number of results to return from a single request.}
 
-\item{NextToken}{Token for the next set of results.}
+\item{NextToken}{A token to specify where to start paginating. This is the nextToken from
+a previously truncated response.}
 }
 \description{
 Lists the EC2 instances providing user-based subscriptions.

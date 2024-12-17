@@ -16,8 +16,12 @@ guardduty_create_filter(
 )
 }
 \arguments{
-\item{DetectorId}{[required] The ID of the detector belonging to the GuardDuty account that you want
-to create a filter for.}
+\item{DetectorId}{[required] The detector ID associated with the GuardDuty account for which you want
+to create a filter.
+
+To find the \code{detectorId} in the current Region, see the Settings page in
+the GuardDuty console, or run the
+\code{\link[=guardduty_list_detectors]{list_detectors}} API.}
 
 \item{Name}{[required] The name of the filter. Valid characters include period (.), underscore
 (_), dash (-), and alphanumeric characters. A whitespace is considered
@@ -54,10 +58,12 @@ condition:
 \itemize{
 \item \strong{Low}: \verb{["1", "2", "3"]}
 \item \strong{Medium}: \verb{["4", "5", "6"]}
-\item \strong{High}: \verb{["7", "8", "9"]}
+\item \strong{High}: \verb{["7", "8"]}
+\item \strong{Critical}: \verb{["9", "10"]}
 }
 
-For more information, see \href{https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_findings.html#guardduty_findings-severity}{Severity levels for GuardDuty findings}.
+For more information, see \href{https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_findings-severity.html}{Findings severity levels}
+in the \emph{Amazon GuardDuty User Guide}.
 \item type
 \item updatedAt
 

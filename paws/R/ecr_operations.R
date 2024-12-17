@@ -582,7 +582,7 @@ ecr_create_pull_through_cache_rule <- function(ecrRepositoryPrefix, upstreamRegi
 #'       scanOnPush = TRUE|FALSE
 #'     ),
 #'     encryptionConfiguration = list(
-#'       encryptionType = "AES256"|"KMS",
+#'       encryptionType = "AES256"|"KMS"|"KMS_DSSE",
 #'       kmsKey = "string"
 #'     )
 #'   )
@@ -605,7 +605,7 @@ ecr_create_pull_through_cache_rule <- function(ecrRepositoryPrefix, upstreamRegi
 #'     scanOnPush = TRUE|FALSE
 #'   ),
 #'   encryptionConfiguration = list(
-#'     encryptionType = "AES256"|"KMS",
+#'     encryptionType = "AES256"|"KMS"|"KMS_DSSE",
 #'     kmsKey = "string"
 #'   )
 #' )
@@ -707,7 +707,7 @@ ecr_create_repository <- function(registryId = NULL, repositoryName, tags = NULL
 #'     prefix = "string",
 #'     description = "string",
 #'     encryptionConfiguration = list(
-#'       encryptionType = "AES256"|"KMS",
+#'       encryptionType = "AES256"|"KMS"|"KMS_DSSE",
 #'       kmsKey = "string"
 #'     ),
 #'     resourceTags = list(
@@ -739,7 +739,7 @@ ecr_create_repository <- function(registryId = NULL, repositoryName, tags = NULL
 #'   prefix = "string",
 #'   description = "string",
 #'   encryptionConfiguration = list(
-#'     encryptionType = "AES256"|"KMS",
+#'     encryptionType = "AES256"|"KMS"|"KMS_DSSE",
 #'     kmsKey = "string"
 #'   ),
 #'   resourceTags = list(
@@ -757,31 +757,6 @@ ecr_create_repository <- function(registryId = NULL, repositoryName, tags = NULL
 #'   customRoleArn = "string"
 #' )
 #' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example creates a repository creation template.
-#' svc$create_repository_creation_template(
-#'   appliedFor = list(
-#'     "REPLICATION",
-#'     "PULL_THROUGH_CACHE"
-#'   ),
-#'   description = "Repos for testing images",
-#'   encryptionConfiguration = list(
-#'     encryptionType = "AES256"
-#'   ),
-#'   imageTagMutability = "MUTABLE",
-#'   lifecyclePolicy = "\{\r\n    \"rules\": [\r\n        \{\r\n            \"ruleP...",
-#'   prefix = "eng/test",
-#'   repositoryPolicy = "\{\r\n  "Version": "2012-10-17",\r\n  "Statement": [\r...",
-#'   resourceTags = list(
-#'     list(
-#'       Key = "environment",
-#'       Value = "test"
-#'     )
-#'   )
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -1009,7 +984,7 @@ ecr_delete_registry_policy <- function() {
 #'       scanOnPush = TRUE|FALSE
 #'     ),
 #'     encryptionConfiguration = list(
-#'       encryptionType = "AES256"|"KMS",
+#'       encryptionType = "AES256"|"KMS"|"KMS_DSSE",
 #'       kmsKey = "string"
 #'     )
 #'   )
@@ -1080,7 +1055,7 @@ ecr_delete_repository <- function(registryId = NULL, repositoryName, force = NUL
 #'     prefix = "string",
 #'     description = "string",
 #'     encryptionConfiguration = list(
-#'       encryptionType = "AES256"|"KMS",
+#'       encryptionType = "AES256"|"KMS"|"KMS_DSSE",
 #'       kmsKey = "string"
 #'     ),
 #'     resourceTags = list(
@@ -1112,14 +1087,6 @@ ecr_delete_repository <- function(registryId = NULL, repositoryName, force = NUL
 #'   prefix = "string"
 #' )
 #' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example deletes a repository creation template.
-#' svc$delete_repository_creation_template(
-#'   prefix = "eng"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -1396,7 +1363,8 @@ ecr_describe_image_replication_status <- function(repositoryName, imageId, regis
 #'               packageManager = "string",
 #'               release = "string",
 #'               sourceLayerHash = "string",
-#'               version = "string"
+#'               version = "string",
+#'               fixedInVersion = "string"
 #'             )
 #'           )
 #'         ),
@@ -1452,7 +1420,9 @@ ecr_describe_image_replication_status <- function(repositoryName, imageId, regis
 #'         type = "string",
 #'         updatedAt = as.POSIXct(
 #'           "2015-01-01"
-#'         )
+#'         ),
+#'         fixAvailable = "string",
+#'         exploitAvailable = "string"
 #'       )
 #'     )
 #'   ),
@@ -1611,7 +1581,7 @@ ecr_describe_images <- function(registryId = NULL, repositoryName, imageIds = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "imageDetails"),
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "imageDetails"),
     stream_api = FALSE
   )
   input <- .ecr$describe_images_input(registryId = registryId, repositoryName = repositoryName, imageIds = imageIds, nextToken = nextToken, maxResults = maxResults, filter = filter)
@@ -1838,7 +1808,7 @@ ecr_describe_registry <- function() {
 #'         scanOnPush = TRUE|FALSE
 #'       ),
 #'       encryptionConfiguration = list(
-#'         encryptionType = "AES256"|"KMS",
+#'         encryptionType = "AES256"|"KMS"|"KMS_DSSE",
 #'         kmsKey = "string"
 #'       )
 #'     )
@@ -1877,7 +1847,7 @@ ecr_describe_repositories <- function(registryId = NULL, repositoryNames = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "repositories"),
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "repositories"),
     stream_api = FALSE
   )
   input <- .ecr$describe_repositories_input(registryId = registryId, repositoryNames = repositoryNames, nextToken = nextToken, maxResults = maxResults)
@@ -1935,7 +1905,7 @@ ecr_describe_repositories <- function(registryId = NULL, repositoryNames = NULL,
 #'       prefix = "string",
 #'       description = "string",
 #'       encryptionConfiguration = list(
-#'         encryptionType = "AES256"|"KMS",
+#'         encryptionType = "AES256"|"KMS"|"KMS_DSSE",
 #'         kmsKey = "string"
 #'       ),
 #'       resourceTags = list(
@@ -1973,18 +1943,6 @@ ecr_describe_repositories <- function(registryId = NULL, repositoryNames = NULL,
 #'   maxResults = 123
 #' )
 #' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example describes the contents of a repository creation template.
-#' svc$describe_repository_creation_templates(
-#'   maxResults = 123L,
-#'   nextToken = "",
-#'   prefixes = list(
-#'     "eng"
-#'   )
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -2106,12 +2064,6 @@ ecr_get_account_setting <- function(name) {
 #'   )
 #' )
 #' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example gets an authorization token for your default registry.
-#' svc$get_authorization_token()
-#' }
 #'
 #' @keywords internal
 #'
@@ -2696,7 +2648,7 @@ ecr_list_images <- function(registryId = NULL, repositoryName, nextToken = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "imageIds"),
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "imageIds"),
     stream_api = FALSE
   )
   input <- .ecr$list_images_input(registryId = registryId, repositoryName = repositoryName, nextToken = nextToken, maxResults = maxResults, filter = filter)
@@ -3772,7 +3724,7 @@ ecr_update_pull_through_cache_rule <- function(registryId = NULL, ecrRepositoryP
 #'     prefix = "string",
 #'     description = "string",
 #'     encryptionConfiguration = list(
-#'       encryptionType = "AES256"|"KMS",
+#'       encryptionType = "AES256"|"KMS"|"KMS_DSSE",
 #'       kmsKey = "string"
 #'     ),
 #'     resourceTags = list(
@@ -3804,7 +3756,7 @@ ecr_update_pull_through_cache_rule <- function(registryId = NULL, ecrRepositoryP
 #'   prefix = "string",
 #'   description = "string",
 #'   encryptionConfiguration = list(
-#'     encryptionType = "AES256"|"KMS",
+#'     encryptionType = "AES256"|"KMS"|"KMS_DSSE",
 #'     kmsKey = "string"
 #'   ),
 #'   resourceTags = list(
@@ -3822,23 +3774,6 @@ ecr_update_pull_through_cache_rule <- function(registryId = NULL, ecrRepositoryP
 #'   customRoleArn = "string"
 #' )
 #' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example updates a repository creation template.
-#' svc$update_repository_creation_template(
-#'   appliedFor = list(
-#'     "REPLICATION"
-#'   ),
-#'   prefix = "eng/test",
-#'   resourceTags = list(
-#'     list(
-#'       Key = "environment",
-#'       Value = "test"
-#'     )
-#'   )
-#' )
-#' }
 #'
 #' @keywords internal
 #'

@@ -8,7 +8,8 @@ eventbridge_update_connection(
   Name,
   Description = NULL,
   AuthorizationType = NULL,
-  AuthParameters = NULL
+  AuthParameters = NULL,
+  InvocationConnectivityParameters = NULL
 )
 }
 \arguments{
@@ -19,6 +20,12 @@ eventbridge_update_connection(
 \item{AuthorizationType}{The type of authorization to use for the connection.}
 
 \item{AuthParameters}{The authorization parameters to use for the connection.}
+
+\item{InvocationConnectivityParameters}{For connections to private resource endpoints, the parameters to use for
+invoking the resource endpoint.
+
+For more information, see \href{https://docs.aws.amazon.com/eventbridge/latest/userguide/}{Connecting to private resources} in
+the \emph{Amazon EventBridge User Guide} .}
 }
 \description{
 Updates settings for a connection.

@@ -2,8 +2,7 @@
 % Please edit documentation in R/vpclattice_operations.R
 \name{vpclattice_list_service_networks}
 \alias{vpclattice_list_service_networks}
-\title{Lists the service networks owned by the caller account or shared with
-the caller account}
+\title{Lists the service networks owned by or shared with this account}
 \usage{
 vpclattice_list_service_networks(maxResults = NULL, nextToken = NULL)
 }
@@ -13,7 +12,7 @@ vpclattice_list_service_networks(maxResults = NULL, nextToken = NULL)
 \item{nextToken}{A pagination token for the next page of results.}
 }
 \description{
-Lists the service networks owned by the caller account or shared with the caller account. Also includes the account ID in the ARN to show which account owns the service network.
+Lists the service networks owned by or shared with this account. The account ID in the ARN shows which account owns the service network.
 
 See \url{https://www.paws-r-sdk.com/docs/vpclattice_list_service_networks/} for full documentation.
 }

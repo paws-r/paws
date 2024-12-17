@@ -41,7 +41,7 @@ NULL
 #' sagemakerruntime_invoke_endpoint(EndpointName, Body, ContentType,
 #'   Accept, CustomAttributes, TargetModel, TargetVariant,
 #'   TargetContainerHostname, InferenceId, EnableExplanations,
-#'   InferenceComponentName)
+#'   InferenceComponentName, SessionId)
 #'
 #' @param EndpointName &#91;required&#93; The name of the endpoint that you specified when you created the
 #' endpoint using the
@@ -97,6 +97,21 @@ NULL
 #' section in the developer guide for more information.
 #' @param InferenceComponentName If the endpoint hosts one or more inference components, this parameter
 #' specifies the name of inference component to invoke.
+#' @param SessionId Creates a stateful session or identifies an existing one. You can do one
+#' of the following:
+#' 
+#' -   Create a stateful session by specifying the value `NEW_SESSION`.
+#' 
+#' -   Send your request to an existing stateful session by specifying the
+#'     ID of that session.
+#' 
+#' With a stateful session, you can send multiple requests to a stateful
+#' model. When you create a session with a stateful model, the model must
+#' create the session ID and set the expiration time. The model must also
+#' provide that information in the response to your request. You can get
+#' the ID and timestamp from the `NewSessionId` response parameter. For any
+#' subsequent request where you specify that session ID, SageMaker routes
+#' the request to the same instance that supports the session.
 #'
 #' @return
 #' A list with the following syntax:
@@ -105,7 +120,9 @@ NULL
 #'   Body = raw,
 #'   ContentType = "string",
 #'   InvokedProductionVariant = "string",
-#'   CustomAttributes = "string"
+#'   CustomAttributes = "string",
+#'   NewSessionId = "string",
+#'   ClosedSessionId = "string"
 #' )
 #' ```
 #'
@@ -122,7 +139,8 @@ NULL
 #'   TargetContainerHostname = "string",
 #'   InferenceId = "string",
 #'   EnableExplanations = "string",
-#'   InferenceComponentName = "string"
+#'   InferenceComponentName = "string",
+#'   SessionId = "string"
 #' )
 #' ```
 #'
@@ -131,7 +149,7 @@ NULL
 #' @rdname sagemakerruntime_invoke_endpoint
 #'
 #' @aliases sagemakerruntime_invoke_endpoint
-sagemakerruntime_invoke_endpoint <- function(EndpointName, Body, ContentType = NULL, Accept = NULL, CustomAttributes = NULL, TargetModel = NULL, TargetVariant = NULL, TargetContainerHostname = NULL, InferenceId = NULL, EnableExplanations = NULL, InferenceComponentName = NULL) {
+sagemakerruntime_invoke_endpoint <- function(EndpointName, Body, ContentType = NULL, Accept = NULL, CustomAttributes = NULL, TargetModel = NULL, TargetVariant = NULL, TargetContainerHostname = NULL, InferenceId = NULL, EnableExplanations = NULL, InferenceComponentName = NULL, SessionId = NULL) {
   op <- new_operation(
     name = "InvokeEndpoint",
     http_method = "POST",
@@ -140,7 +158,7 @@ sagemakerruntime_invoke_endpoint <- function(EndpointName, Body, ContentType = N
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .sagemakerruntime$invoke_endpoint_input(EndpointName = EndpointName, Body = Body, ContentType = ContentType, Accept = Accept, CustomAttributes = CustomAttributes, TargetModel = TargetModel, TargetVariant = TargetVariant, TargetContainerHostname = TargetContainerHostname, InferenceId = InferenceId, EnableExplanations = EnableExplanations, InferenceComponentName = InferenceComponentName)
+  input <- .sagemakerruntime$invoke_endpoint_input(EndpointName = EndpointName, Body = Body, ContentType = ContentType, Accept = Accept, CustomAttributes = CustomAttributes, TargetModel = TargetModel, TargetVariant = TargetVariant, TargetContainerHostname = TargetContainerHostname, InferenceId = InferenceId, EnableExplanations = EnableExplanations, InferenceComponentName = InferenceComponentName, SessionId = SessionId)
   output <- .sagemakerruntime$invoke_endpoint_output()
   config <- get_config()
   svc <- .sagemakerruntime$service(config, op)
@@ -309,7 +327,7 @@ sagemakerruntime_invoke_endpoint_async <- function(EndpointName, ContentType = N
 #' @usage
 #' sagemakerruntime_invoke_endpoint_with_response_stream(EndpointName,
 #'   Body, ContentType, Accept, CustomAttributes, TargetVariant,
-#'   TargetContainerHostname, InferenceId, InferenceComponentName)
+#'   TargetContainerHostname, InferenceId, InferenceComponentName, SessionId)
 #'
 #' @param EndpointName &#91;required&#93; The name of the endpoint that you specified when you created the
 #' endpoint using the
@@ -357,6 +375,15 @@ sagemakerruntime_invoke_endpoint_async <- function(EndpointName, ContentType = N
 #' @param InferenceComponentName If the endpoint hosts one or more inference components, this parameter
 #' specifies the name of inference component to invoke for a streaming
 #' response.
+#' @param SessionId The ID of a stateful session to handle your request.
+#' 
+#' You can't create a stateful session by using the
+#' [`invoke_endpoint_with_response_stream`][sagemakerruntime_invoke_endpoint_with_response_stream]
+#' action. Instead, you can create one by using the
+#' [`invoke_endpoint`][sagemakerruntime_invoke_endpoint] action. In your
+#' request, you specify `NEW_SESSION` for the `SessionId` request
+#' parameter. The response to that request provides the session ID for the
+#' `NewSessionId` response parameter.
 #'
 #' @return
 #' A list with the following syntax:
@@ -391,7 +418,8 @@ sagemakerruntime_invoke_endpoint_async <- function(EndpointName, ContentType = N
 #'   TargetVariant = "string",
 #'   TargetContainerHostname = "string",
 #'   InferenceId = "string",
-#'   InferenceComponentName = "string"
+#'   InferenceComponentName = "string",
+#'   SessionId = "string"
 #' )
 #' ```
 #'
@@ -400,7 +428,7 @@ sagemakerruntime_invoke_endpoint_async <- function(EndpointName, ContentType = N
 #' @rdname sagemakerruntime_invoke_endpoint_with_response_stream
 #'
 #' @aliases sagemakerruntime_invoke_endpoint_with_response_stream
-sagemakerruntime_invoke_endpoint_with_response_stream <- function(EndpointName, Body, ContentType = NULL, Accept = NULL, CustomAttributes = NULL, TargetVariant = NULL, TargetContainerHostname = NULL, InferenceId = NULL, InferenceComponentName = NULL) {
+sagemakerruntime_invoke_endpoint_with_response_stream <- function(EndpointName, Body, ContentType = NULL, Accept = NULL, CustomAttributes = NULL, TargetVariant = NULL, TargetContainerHostname = NULL, InferenceId = NULL, InferenceComponentName = NULL, SessionId = NULL) {
   op <- new_operation(
     name = "InvokeEndpointWithResponseStream",
     http_method = "POST",
@@ -409,7 +437,7 @@ sagemakerruntime_invoke_endpoint_with_response_stream <- function(EndpointName, 
     paginator = list(),
     stream_api = TRUE
   )
-  input <- .sagemakerruntime$invoke_endpoint_with_response_stream_input(EndpointName = EndpointName, Body = Body, ContentType = ContentType, Accept = Accept, CustomAttributes = CustomAttributes, TargetVariant = TargetVariant, TargetContainerHostname = TargetContainerHostname, InferenceId = InferenceId, InferenceComponentName = InferenceComponentName)
+  input <- .sagemakerruntime$invoke_endpoint_with_response_stream_input(EndpointName = EndpointName, Body = Body, ContentType = ContentType, Accept = Accept, CustomAttributes = CustomAttributes, TargetVariant = TargetVariant, TargetContainerHostname = TargetContainerHostname, InferenceId = InferenceId, InferenceComponentName = InferenceComponentName, SessionId = SessionId)
   output <- .sagemakerruntime$invoke_endpoint_with_response_stream_output()
   config <- get_config()
   svc <- .sagemakerruntime$service(config, op)

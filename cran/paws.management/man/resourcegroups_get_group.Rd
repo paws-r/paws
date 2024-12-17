@@ -9,7 +9,8 @@ resourcegroups_get_group(GroupName = NULL, Group = NULL)
 \arguments{
 \item{GroupName}{Deprecated - don't use this parameter. Use \code{Group} instead.}
 
-\item{Group}{The name or the ARN of the resource group to retrieve.}
+\item{Group}{The name or the Amazon resource name (ARN) of the resource group to
+retrieve.}
 }
 \description{
 Returns information about a specified resource group.

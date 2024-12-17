@@ -1003,7 +1003,7 @@ detective_list_datasource_packages <- function(GraphArn, NextToken = NULL, MaxRe
     http_method = "POST",
     http_path = "/graph/datasources/list",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .detective$list_datasource_packages_input(GraphArn = GraphArn, NextToken = NextToken, MaxResults = MaxResults)
@@ -1073,7 +1073,7 @@ detective_list_graphs <- function(NextToken = NULL, MaxResults = NULL) {
     http_method = "POST",
     http_path = "/graphs/list",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .detective$list_graphs_input(NextToken = NextToken, MaxResults = MaxResults)
@@ -1402,7 +1402,7 @@ detective_list_invitations <- function(NextToken = NULL, MaxResults = NULL) {
     http_method = "POST",
     http_path = "/invitations/list",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .detective$list_invitations_input(NextToken = NextToken, MaxResults = MaxResults)
@@ -1504,7 +1504,7 @@ detective_list_members <- function(GraphArn, NextToken = NULL, MaxResults = NULL
     http_method = "POST",
     http_path = "/graph/members/list",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .detective$list_members_input(GraphArn = GraphArn, NextToken = NextToken, MaxResults = MaxResults)
@@ -1568,7 +1568,7 @@ detective_list_organization_admin_accounts <- function(NextToken = NULL, MaxResu
     http_method = "POST",
     http_path = "/orgs/adminAccountslist",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .detective$list_organization_admin_accounts_input(NextToken = NextToken, MaxResults = MaxResults)

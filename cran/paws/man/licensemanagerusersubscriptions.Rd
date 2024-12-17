@@ -97,15 +97,21 @@ instances.
 
 \tabular{ll}{
 \link[paws.management:licensemanagerusersubscriptions_associate_user]{associate_user} \tab Associates the user to an EC2 instance to utilize user-based subscriptions\cr
-\link[paws.management:licensemanagerusersubscriptions_deregister_identity_provider]{deregister_identity_provider} \tab Deregisters the identity provider from providing user-based subscriptions\cr
+\link[paws.management:licensemanagerusersubscriptions_create_license_server_endpoint]{create_license_server_endpoint} \tab Creates a network endpoint for the Remote Desktop Services (RDS) license server\cr
+\link[paws.management:licensemanagerusersubscriptions_delete_license_server_endpoint]{delete_license_server_endpoint} \tab Deletes a LicenseServerEndpoint resource\cr
+\link[paws.management:licensemanagerusersubscriptions_deregister_identity_provider]{deregister_identity_provider} \tab Deregisters the Active Directory identity provider from License Manager user-based subscriptions\cr
 \link[paws.management:licensemanagerusersubscriptions_disassociate_user]{disassociate_user} \tab Disassociates the user from an EC2 instance providing user-based subscriptions\cr
-\link[paws.management:licensemanagerusersubscriptions_list_identity_providers]{list_identity_providers} \tab Lists the identity providers for user-based subscriptions\cr
+\link[paws.management:licensemanagerusersubscriptions_list_identity_providers]{list_identity_providers} \tab Lists the Active Directory identity providers for user-based subscriptions\cr
 \link[paws.management:licensemanagerusersubscriptions_list_instances]{list_instances} \tab Lists the EC2 instances providing user-based subscriptions\cr
+\link[paws.management:licensemanagerusersubscriptions_list_license_server_endpoints]{list_license_server_endpoints} \tab List the Remote Desktop Services (RDS) License Server endpoints\cr
 \link[paws.management:licensemanagerusersubscriptions_list_product_subscriptions]{list_product_subscriptions} \tab Lists the user-based subscription products available from an identity provider\cr
+\link[paws.management:licensemanagerusersubscriptions_list_tags_for_resource]{list_tags_for_resource} \tab Returns the list of tags for the specified resource\cr
 \link[paws.management:licensemanagerusersubscriptions_list_user_associations]{list_user_associations} \tab Lists user associations for an identity provider\cr
 \link[paws.management:licensemanagerusersubscriptions_register_identity_provider]{register_identity_provider} \tab Registers an identity provider for user-based subscriptions\cr
 \link[paws.management:licensemanagerusersubscriptions_start_product_subscription]{start_product_subscription} \tab Starts a product subscription for a user with the specified identity provider\cr
 \link[paws.management:licensemanagerusersubscriptions_stop_product_subscription]{stop_product_subscription} \tab Stops a product subscription for a user with the specified identity provider\cr
+\link[paws.management:licensemanagerusersubscriptions_tag_resource]{tag_resource} \tab Adds tags to a resource\cr
+\link[paws.management:licensemanagerusersubscriptions_untag_resource]{untag_resource} \tab Removes tags from a resource\cr
 \link[paws.management:licensemanagerusersubscriptions_update_identity_provider_settings]{update_identity_provider_settings} \tab Updates additional product configuration settings for the registered identity provider
 }
 }

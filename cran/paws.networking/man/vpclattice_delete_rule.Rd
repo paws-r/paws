@@ -7,11 +7,11 @@
 vpclattice_delete_rule(listenerIdentifier, ruleIdentifier, serviceIdentifier)
 }
 \arguments{
-\item{listenerIdentifier}{[required] The ID or Amazon Resource Name (ARN) of the listener.}
+\item{listenerIdentifier}{[required] The ID or ARN of the listener.}
 
-\item{ruleIdentifier}{[required] The ID or Amazon Resource Name (ARN) of the rule.}
+\item{ruleIdentifier}{[required] The ID or ARN of the rule.}
 
-\item{serviceIdentifier}{[required] The ID or Amazon Resource Name (ARN) of the service.}
+\item{serviceIdentifier}{[required] The ID or ARN of the service.}
 }
 \description{
 Deletes a listener rule. Each listener has a default rule for checking connection requests, but you can define additional rules. Each rule consists of a priority, one or more actions, and one or more conditions. You can delete additional listener rules, but you cannot delete the default rule.

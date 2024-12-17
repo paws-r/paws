@@ -7,7 +7,7 @@
 configservice_delete_delivery_channel(DeliveryChannelName)
 }
 \arguments{
-\item{DeliveryChannelName}{[required] The name of the delivery channel to delete.}
+\item{DeliveryChannelName}{[required] The name of the delivery channel that you want to delete.}
 }
 \description{
 Deletes the delivery channel.

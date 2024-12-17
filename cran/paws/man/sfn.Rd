@@ -151,7 +151,7 @@ action \code{startSyncExecution} and specify its parameter as
 \link[paws.application.integration:sfn_update_map_run]{update_map_run} \tab Updates an in-progress Map Run's configuration to include changes to the settings that control maximum concurrency and Map Run failure\cr
 \link[paws.application.integration:sfn_update_state_machine]{update_state_machine} \tab Updates an existing state machine by modifying its definition, roleArn, loggingConfiguration, or EncryptionConfiguration\cr
 \link[paws.application.integration:sfn_update_state_machine_alias]{update_state_machine_alias} \tab Updates the configuration of an existing state machine alias by modifying its description or routingConfiguration\cr
-\link[paws.application.integration:sfn_validate_state_machine_definition]{validate_state_machine_definition} \tab Validates the syntax of a state machine definition
+\link[paws.application.integration:sfn_validate_state_machine_definition]{validate_state_machine_definition} \tab Validates the syntax of a state machine definition specified in Amazon States Language (ASL), a JSON-based, structured language
 }
 }
 

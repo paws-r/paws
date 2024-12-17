@@ -30,7 +30,7 @@ If you don't specify the \code{maxResults} parameter, this operation returns
 a maximum of 30 items by default.}
 }
 \description{
-Returns the event types that meet the specified filter criteria. You can use this API operation to find information about the Health event, such as the category, Amazon Web Service, and event code. The metadata for each event appears in the \href{https://docs.aws.amazon.com/health/latest/APIReference/API_EventType.html}{EventType} object.
+Returns the event types that meet the specified filter criteria. You can use this API operation to find information about the Health event, such as the category, Amazon Web Services service, and event code. The metadata for each event appears in the \href{https://docs.aws.amazon.com/health/latest/APIReference/API_EventType.html}{EventType} object.
 
 See \url{https://www.paws-r-sdk.com/docs/health_describe_event_types/} for full documentation.
 }

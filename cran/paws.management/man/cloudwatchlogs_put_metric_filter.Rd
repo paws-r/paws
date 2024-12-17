@@ -9,7 +9,8 @@ cloudwatchlogs_put_metric_filter(
   logGroupName,
   filterName,
   filterPattern,
-  metricTransformations
+  metricTransformations,
+  applyOnTransformedLogs = NULL
 )
 }
 \arguments{
@@ -20,6 +21,15 @@ cloudwatchlogs_put_metric_filter(
 \item{filterPattern}{[required] A filter pattern for extracting metric data out of ingested log events.}
 
 \item{metricTransformations}{[required] A collection of information that defines how metric data gets emitted.}
+
+\item{applyOnTransformedLogs}{This parameter is valid only for log groups that have an active log
+transformer. For more information about log transformers, see
+\code{\link[=cloudwatchlogs_put_transformer]{put_transformer}}.
+
+If the log group uses either a log-group level or account-level
+transformer, and you specify \code{true}, the metric filter will be applied
+on the transformed version of the log events instead of the original
+ingested log events.}
 }
 \description{
 Creates or updates a metric filter and associates it with the specified log group. With metric filters, you can configure rules to extract metric data from log events ingested through \code{\link[=cloudwatchlogs_put_log_events]{put_log_events}}.

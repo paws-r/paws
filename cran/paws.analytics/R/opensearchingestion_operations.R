@@ -233,7 +233,7 @@ opensearchingestion_list_pipelines <- function(MaxResults = NULL, NextToken = NU
     http_method = "GET",
     http_path = "/2022-01-01/osis/listPipelines",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .opensearchingestion$list_pipelines_input(MaxResults = MaxResults, NextToken = NextToken)

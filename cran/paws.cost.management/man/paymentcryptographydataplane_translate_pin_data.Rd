@@ -20,12 +20,13 @@ paymentcryptographydataplane_translate_pin_data(
 \item{IncomingKeyIdentifier}{[required] The \code{keyARN} of the encryption key under which incoming PIN block data
 is encrypted. This key type can be PEK or BDK.
 
-When a WrappedKeyBlock is provided, this value will be the identifier to
-the key wrapping key for PIN block. Otherwise, it is the key identifier
-used to perform the operation.}
+For dynamic keys, it is the \code{keyARN} of KEK of the TR-31 wrapped PEK.
+For ECDH, it is the \code{keyARN} of the asymmetric ECC key.}
 
 \item{OutgoingKeyIdentifier}{[required] The \code{keyARN} of the encryption key for encrypting outgoing PIN block
-data. This key type can be PEK or BDK.}
+data. This key type can be PEK or BDK.
+
+For ECDH, it is the \code{keyARN} of the asymmetric ECC key.}
 
 \item{IncomingTranslationAttributes}{[required] The format of the incoming PIN block data for translation within Amazon
 Web Services Payment Cryptography.}

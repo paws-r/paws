@@ -99,6 +99,7 @@ related to your training run.
 \section{Operations}{
 
 \tabular{ll}{
+\link[paws.machine.learning:sagemakermetrics_batch_get_metrics]{batch_get_metrics} \tab Used to retrieve training metrics from SageMaker\cr
 \link[paws.machine.learning:sagemakermetrics_batch_put_metrics]{batch_put_metrics} \tab Used to ingest training metrics into SageMaker
 }
 }
@@ -106,7 +107,7 @@ related to your training run.
 \examples{
 \dontrun{
 svc <- sagemakermetrics()
-svc$batch_put_metrics(
+svc$batch_get_metrics(
   Foo = 123
 )
 }

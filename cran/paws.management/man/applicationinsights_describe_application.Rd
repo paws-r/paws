@@ -9,7 +9,7 @@ applicationinsights_describe_application(ResourceGroupName, AccountId = NULL)
 \arguments{
 \item{ResourceGroupName}{[required] The name of the resource group.}
 
-\item{AccountId}{The AWS account ID for the resource group owner.}
+\item{AccountId}{The Amazon Web Services account ID for the resource group owner.}
 }
 \description{
 Describes the application.

@@ -122,6 +122,7 @@ NULL
 #'  \link[=kinesis_split_shard]{split_shard} \tab Splits a shard into two new shards in the Kinesis data stream, to increase the stream's capacity to ingest and transport data\cr
 #'  \link[=kinesis_start_stream_encryption]{start_stream_encryption} \tab Enables or updates server-side encryption using an Amazon Web Services KMS key for a specified stream\cr
 #'  \link[=kinesis_stop_stream_encryption]{stop_stream_encryption} \tab Disables server-side encryption for a specified stream\cr
+#'  \link[=kinesis_subscribe_to_shard]{subscribe_to_shard} \tab This operation establishes an HTTP/2 connection between the consumer you specify in the ConsumerARN parameter and the shard you specify in the ShardId parameter\cr
 #'  \link[=kinesis_update_shard_count]{update_shard_count} \tab Updates the shard count of the specified stream to the specified number of shards\cr
 #'  \link[=kinesis_update_stream_mode]{update_stream_mode} \tab Updates the capacity mode of the data stream
 #' }
@@ -155,7 +156,7 @@ kinesis <- function(config = list(), credentials = list(), endpoint = NULL, regi
 
 .kinesis$metadata <- list(
   service_name = "kinesis",
-  endpoints = list("*" = list(endpoint = "kinesis.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "kinesis.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "kinesis.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "kinesis.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "kinesis.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "kinesis.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "kinesis.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "kinesis.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "kinesis.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "kinesis.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "kinesis.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "kinesis.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "kinesis.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Kinesis",
   api_version = "2013-12-02",
   signing_name = "kinesis",

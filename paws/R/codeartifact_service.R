@@ -436,7 +436,7 @@ codeartifact <- function(config = list(), credentials = list(), endpoint = NULL,
 
 .codeartifact$metadata <- list(
   service_name = "codeartifact",
-  endpoints = list("*" = list(endpoint = "codeartifact.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "codeartifact.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "codeartifact.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "codeartifact.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "codeartifact.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "codeartifact.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "codeartifact.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "codeartifact.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "codeartifact.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "codeartifact.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "codeartifact.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "codeartifact.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "codeartifact.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "codeartifact",
   api_version = "2018-09-22",
   signing_name = "codeartifact",

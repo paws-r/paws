@@ -2,17 +2,26 @@
 % Please edit documentation in R/configservice_operations.R
 \name{configservice_describe_configuration_recorders}
 \alias{configservice_describe_configuration_recorders}
-\title{Returns the details for the specified configuration recorders}
+\title{Returns details for the configuration recorder you specify}
 \usage{
 configservice_describe_configuration_recorders(
-  ConfigurationRecorderNames = NULL
+  ConfigurationRecorderNames = NULL,
+  ServicePrincipal = NULL,
+  Arn = NULL
 )
 }
 \arguments{
-\item{ConfigurationRecorderNames}{A list of configuration recorder names.}
+\item{ConfigurationRecorderNames}{A list of names of the configuration recorders that you want to specify.}
+
+\item{ServicePrincipal}{For service-linked configuration recorders, you can use the service
+principal of the linked Amazon Web Services service to specify the
+configuration recorder.}
+
+\item{Arn}{The Amazon Resource Name (ARN) of the configuration recorder that you
+want to specify.}
 }
 \description{
-Returns the details for the specified configuration recorders. If the configuration recorder is not specified, this action returns the details for all configuration recorders associated with the account.
+Returns details for the configuration recorder you specify.
 
 See \url{https://www.paws-r-sdk.com/docs/configservice_describe_configuration_recorders/} for full documentation.
 }

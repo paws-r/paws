@@ -21,7 +21,11 @@ access is being removed.}
 
 \item{AccessGroupId}{The ID of the Active Directory group for which to revoke access.}
 
-\item{RevokeAllGroups}{Indicates whether access should be revoked for all clients.}
+\item{RevokeAllGroups}{Indicates whether access should be revoked for all groups for a single
+\code{TargetNetworkCidr} that earlier authorized ingress for all groups using
+\code{AuthorizeAllGroups}. This does not impact other authorization rules
+that allowed ingress to the same \code{TargetNetworkCidr} with a specific
+\code{AccessGroupId}.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have

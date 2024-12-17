@@ -161,7 +161,7 @@ backupgateway <- function(config = list(), credentials = list(), endpoint = NULL
 
 .backupgateway$metadata <- list(
   service_name = "backupgateway",
-  endpoints = list("*" = list(endpoint = "backup-gateway.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "backup-gateway.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "backup-gateway.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "backup-gateway.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "backup-gateway.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "backup-gateway.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "backup-gateway.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "backup-gateway.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "backup-gateway.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "backup-gateway.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "backup-gateway.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "backup-gateway.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "backup-gateway.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Backup Gateway",
   api_version = "2021-01-01",
   signing_name = "backup-gateway",

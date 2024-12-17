@@ -127,7 +127,7 @@ NULL
 #'  \link[=inspector2_list_cis_scan_results_aggregated_by_checks]{list_cis_scan_results_aggregated_by_checks} \tab Lists scan results aggregated by checks\cr
 #'  \link[=inspector2_list_cis_scan_results_aggregated_by_target_resource]{list_cis_scan_results_aggregated_by_target_resource} \tab Lists scan results aggregated by a target resource\cr
 #'  \link[=inspector2_list_cis_scans]{list_cis_scans} \tab Returns a CIS scan list\cr
-#'  \link[=inspector2_list_coverage]{list_coverage} \tab Lists coverage details for you environment\cr
+#'  \link[=inspector2_list_coverage]{list_coverage} \tab Lists coverage details for your environment\cr
 #'  \link[=inspector2_list_coverage_statistics]{list_coverage_statistics} \tab Lists Amazon Inspector coverage statistics for your environment\cr
 #'  \link[=inspector2_list_delegated_admin_accounts]{list_delegated_admin_accounts} \tab Lists information about the Amazon Inspector delegated administrator of your organization\cr
 #'  \link[=inspector2_list_filters]{list_filters} \tab Lists the filters associated with your account\cr
@@ -182,7 +182,7 @@ inspector2 <- function(config = list(), credentials = list(), endpoint = NULL, r
 
 .inspector2$metadata <- list(
   service_name = "inspector2",
-  endpoints = list("*" = list(endpoint = "inspector2.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "inspector2.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "inspector2.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "inspector2.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "inspector2.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "inspector2.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "inspector2.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "inspector2.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "inspector2.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "inspector2.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "inspector2.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "inspector2.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "inspector2.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Inspector2",
   api_version = "2020-06-08",
   signing_name = "inspector2",

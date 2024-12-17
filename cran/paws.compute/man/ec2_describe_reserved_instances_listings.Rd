@@ -6,12 +6,16 @@
 Instance Marketplace}
 \usage{
 ec2_describe_reserved_instances_listings(
-  Filters = NULL,
   ReservedInstancesId = NULL,
-  ReservedInstancesListingId = NULL
+  ReservedInstancesListingId = NULL,
+  Filters = NULL
 )
 }
 \arguments{
+\item{ReservedInstancesId}{One or more Reserved Instance IDs.}
+
+\item{ReservedInstancesListingId}{One or more Reserved Instance listing IDs.}
+
 \item{Filters}{One or more filters.
 \itemize{
 \item \code{reserved-instances-id} - The ID of the Reserved Instances.
@@ -21,10 +25,6 @@ listing.
 \code{active} | \code{cancelled} | \code{closed}).
 \item \code{status-message} - The reason for the status.
 }}
-
-\item{ReservedInstancesId}{One or more Reserved Instance IDs.}
-
-\item{ReservedInstancesListingId}{One or more Reserved Instance listing IDs.}
 }
 \description{
 Describes your account's Reserved Instance listings in the Reserved Instance Marketplace.

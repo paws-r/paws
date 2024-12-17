@@ -14,7 +14,13 @@ connect_batch_get_flow_association(
 \item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can \href{https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html}{find the instance ID}
 in the Amazon Resource Name (ARN) of the instance.}
 
-\item{ResourceIds}{[required] A list of resource identifiers to retrieve flow associations.}
+\item{ResourceIds}{[required] A list of resource identifiers to retrieve flow associations.
+\itemize{
+\item Amazon Web Services End User Messaging SMS phone number ARN when
+using \code{SMS_PHONE_NUMBER}
+\item Amazon Web Services End User Messaging Social phone number ARN when
+using \code{WHATSAPP_MESSAGING_PHONE_NUMBER}
+}}
 
 \item{ResourceType}{The type of resource association.}
 }

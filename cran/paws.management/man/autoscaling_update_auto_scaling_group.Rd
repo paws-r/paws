@@ -27,7 +27,11 @@ autoscaling_update_auto_scaling_group(
   Context = NULL,
   DesiredCapacityType = NULL,
   DefaultInstanceWarmup = NULL,
-  InstanceMaintenancePolicy = NULL
+  InstanceMaintenancePolicy = NULL,
+  AvailabilityZoneDistribution = NULL,
+  AvailabilityZoneImpairmentPolicy = NULL,
+  SkipZonalShiftValidation = NULL,
+  CapacityReservationSpecification = NULL
 )
 }
 \arguments{
@@ -86,7 +90,9 @@ after they enter the \code{InService} state. For more information, see \href{htt
 in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 
 \item{PlacementGroup}{The name of an existing placement group into which to launch your
-instances. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html}{Placement groups}
+instances. To remove the placement group setting, pass an empty string
+for \code{placement-group}. For more information about placement groups, see
+\href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html}{Placement groups}
 in the \emph{Amazon EC2 User Guide for Linux Instances}.
 
 A \emph{cluster} placement group is a logical grouping of instances within a
@@ -163,6 +169,17 @@ nominal value.}
 
 \item{InstanceMaintenancePolicy}{An instance maintenance policy. For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-instance-maintenance-policy.html}{Set instance maintenance policy}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.}
+
+\item{AvailabilityZoneDistribution}{The instance capacity distribution across Availability Zones.}
+
+\item{AvailabilityZoneImpairmentPolicy}{The policy for Availability Zone impairment.}
+
+\item{SkipZonalShiftValidation}{If you enable zonal shift with cross-zone disabled load balancers,
+capacity could become imbalanced across Availability Zones. To skip the
+validation, specify \code{true}. For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-zonal-shift.html}{Auto Scaling group zonal shift}
+in the \emph{Amazon EC2 Auto Scaling User Guide}.}
+
+\item{CapacityReservationSpecification}{The capacity reservation specification for the Auto Scaling group.}
 }
 \description{
 \strong{We strongly recommend that all Auto Scaling groups use launch templates to ensure full functionality for Amazon EC2 Auto Scaling and Amazon EC2.}

@@ -131,12 +131,13 @@ specific IT standards.
 \link[=imagebuilder_get_infrastructure_configuration]{get_infrastructure_configuration} \tab Gets an infrastructure configuration\cr
 \link[=imagebuilder_get_lifecycle_execution]{get_lifecycle_execution} \tab Get the runtime information that was logged for a specific runtime instance of the lifecycle policy\cr
 \link[=imagebuilder_get_lifecycle_policy]{get_lifecycle_policy} \tab Get details for the specified image lifecycle policy\cr
+\link[=imagebuilder_get_marketplace_resource]{get_marketplace_resource} \tab Verify the subscription and perform resource dependency checks on the requested Amazon Web Services Marketplace resource\cr
 \link[=imagebuilder_get_workflow]{get_workflow} \tab Get a workflow resource object\cr
 \link[=imagebuilder_get_workflow_execution]{get_workflow_execution} \tab Get the runtime information that was logged for a specific runtime instance of the workflow\cr
 \link[=imagebuilder_get_workflow_step_execution]{get_workflow_step_execution} \tab Get the runtime information that was logged for a specific runtime instance of the workflow step\cr
 \link[=imagebuilder_import_component]{import_component} \tab Imports a component and transforms its data into a component document\cr
 \link[=imagebuilder_import_vm_image]{import_vm_image} \tab When you export your virtual machine (VM) from its virtualization environment, that process creates a set of one or more disk container files that act as snapshots of your VM’s environment, settings, and data\cr
-\link[=imagebuilder_list_component_build_versions]{list_component_build_versions} \tab Returns the list of component build versions for the specified semantic version\cr
+\link[=imagebuilder_list_component_build_versions]{list_component_build_versions} \tab Returns the list of component build versions for the specified component version Amazon Resource Name (ARN)\cr
 \link[=imagebuilder_list_components]{list_components} \tab Returns the list of components that can be filtered by name, or by using the listed filters to streamline results\cr
 \link[=imagebuilder_list_container_recipes]{list_container_recipes} \tab Returns a list of container recipes\cr
 \link[=imagebuilder_list_distribution_configurations]{list_distribution_configurations} \tab Returns a list of distribution configurations\cr

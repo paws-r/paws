@@ -2,12 +2,13 @@
 % Please edit documentation in R/bedrock_operations.R
 \name{bedrock_list_evaluation_jobs}
 \alias{bedrock_list_evaluation_jobs}
-\title{Lists model evaluation jobs}
+\title{Lists all existing evaluation jobs}
 \usage{
 bedrock_list_evaluation_jobs(
   creationTimeAfter = NULL,
   creationTimeBefore = NULL,
   statusEquals = NULL,
+  applicationTypeEquals = NULL,
   nameContains = NULL,
   maxResults = NULL,
   nextToken = NULL,
@@ -16,27 +17,31 @@ bedrock_list_evaluation_jobs(
 )
 }
 \arguments{
-\item{creationTimeAfter}{A filter that includes model evaluation jobs created after the time
-specified.}
+\item{creationTimeAfter}{A filter to only list evaluation jobs created after a specified time.}
 
-\item{creationTimeBefore}{A filter that includes model evaluation jobs created prior to the time
-specified.}
+\item{creationTimeBefore}{A filter to only list evaluation jobs created before a specified time.}
 
-\item{statusEquals}{Only return jobs where the status condition is met.}
+\item{statusEquals}{A filter to only list evaluation jobs that are of a certain status.}
 
-\item{nameContains}{Query parameter string for model evaluation job names.}
+\item{applicationTypeEquals}{A filter to only list evaluation jobs that are either model evaluations
+or knowledge base evaluations.}
+
+\item{nameContains}{A filter to only list evaluation jobs that contain a specified string in
+the job name.}
 
 \item{maxResults}{The maximum number of results to return.}
 
 \item{nextToken}{Continuation token from the previous response, for Amazon Bedrock to
 list the next set of results.}
 
-\item{sortBy}{Allows you to sort model evaluation jobs by when they were created.}
+\item{sortBy}{Specifies a creation time to sort the list of evaluation jobs by when
+they were created.}
 
-\item{sortOrder}{How you want the order of jobs sorted.}
+\item{sortOrder}{Specifies whether to sort the list of evaluation jobs by either
+ascending or descending order.}
 }
 \description{
-Lists model evaluation jobs.
+Lists all existing evaluation jobs.
 
 See \url{https://www.paws-r-sdk.com/docs/bedrock_list_evaluation_jobs/} for full documentation.
 }

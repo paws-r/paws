@@ -2,7 +2,7 @@
 % Please edit documentation in R/recyclebin_operations.R
 \name{recyclebin_lock_rule}
 \alias{recyclebin_lock_rule}
-\title{Locks a retention rule}
+\title{Locks a Region-level retention rule}
 \usage{
 recyclebin_lock_rule(Identifier, LockConfiguration)
 }
@@ -12,7 +12,7 @@ recyclebin_lock_rule(Identifier, LockConfiguration)
 \item{LockConfiguration}{[required] Information about the retention rule lock configuration.}
 }
 \description{
-Locks a retention rule. A locked retention rule can't be modified or deleted.
+Locks a Region-level retention rule. A locked retention rule can't be modified or deleted.
 
 See \url{https://www.paws-r-sdk.com/docs/recyclebin_lock_rule/} for full documentation.
 }

@@ -546,7 +546,7 @@ mq_list_brokers <- function(MaxResults = NULL, NextToken = NULL) {
     http_method = "GET",
     http_path = "/v1/brokers",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "BrokerSummaries"),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "BrokerSummaries"),
     stream_api = FALSE
   )
   input <- .mq$list_brokers_input(MaxResults = MaxResults, NextToken = NextToken)

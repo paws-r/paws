@@ -9,7 +9,9 @@ datazone_create_project(
   domainIdentifier,
   domainUnitId = NULL,
   glossaryTerms = NULL,
-  name
+  name,
+  projectProfileId = NULL,
+  userParameters = NULL
 )
 }
 \arguments{
@@ -24,6 +26,10 @@ level.}
 \item{glossaryTerms}{The glossary terms that can be used in this Amazon DataZone project.}
 
 \item{name}{[required] The name of the Amazon DataZone project.}
+
+\item{projectProfileId}{The ID of the project profile.}
+
+\item{userParameters}{The user parameters of the project.}
 }
 \description{
 Creates an Amazon DataZone project.

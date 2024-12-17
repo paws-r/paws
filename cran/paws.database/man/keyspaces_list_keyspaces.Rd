@@ -2,7 +2,7 @@
 % Please edit documentation in R/keyspaces_operations.R
 \name{keyspaces_list_keyspaces}
 \alias{keyspaces_list_keyspaces}
-\title{Returns a list of keyspaces}
+\title{The ListKeyspaces operation returns a list of keyspaces}
 \usage{
 keyspaces_list_keyspaces(nextToken = NULL, maxResults = NULL)
 }
@@ -16,7 +16,7 @@ number of keyspaces available is more than the value specified, a
 \code{NextToken} value as an argument of a subsequent API invocation.}
 }
 \description{
-Returns a list of keyspaces.
+The \code{\link[=keyspaces_list_keyspaces]{list_keyspaces}} operation returns a list of keyspaces.
 
 See \url{https://www.paws-r-sdk.com/docs/keyspaces_list_keyspaces/} for full documentation.
 }

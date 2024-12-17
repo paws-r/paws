@@ -2,15 +2,16 @@
 % Please edit documentation in R/bedrock_operations.R
 \name{bedrock_batch_delete_evaluation_job}
 \alias{bedrock_batch_delete_evaluation_job}
-\title{Creates a batch deletion job}
+\title{Deletes a batch of evaluation jobs}
 \usage{
 bedrock_batch_delete_evaluation_job(jobIdentifiers)
 }
 \arguments{
-\item{jobIdentifiers}{[required] An array of model evaluation job ARNs to be deleted.}
+\item{jobIdentifiers}{[required] A list of one or more evaluation job Amazon Resource Names (ARNs) you
+want to delete.}
 }
 \description{
-Creates a batch deletion job. A model evaluation job can only be deleted if it has following status \code{FAILED}, \code{COMPLETED}, and \code{STOPPED}. You can request up to 25 model evaluation jobs be deleted in a single request.
+Deletes a batch of evaluation jobs. An evaluation job can only be deleted if it has following status \code{FAILED}, \code{COMPLETED}, and \code{STOPPED}. You can request up to 25 model evaluation jobs be deleted in a single request.
 
 See \url{https://www.paws-r-sdk.com/docs/bedrock_batch_delete_evaluation_job/} for full documentation.
 }

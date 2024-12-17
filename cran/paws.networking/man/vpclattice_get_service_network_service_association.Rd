@@ -10,7 +10,7 @@ vpclattice_get_service_network_service_association(
 )
 }
 \arguments{
-\item{serviceNetworkServiceAssociationIdentifier}{[required] The ID or Amazon Resource Name (ARN) of the association.}
+\item{serviceNetworkServiceAssociationIdentifier}{[required] The ID or ARN of the association.}
 }
 \description{
 Retrieves information about the specified association between a service network and a service.

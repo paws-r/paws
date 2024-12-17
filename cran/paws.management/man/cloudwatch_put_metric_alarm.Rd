@@ -124,7 +124,11 @@ Name (ARN). Valid values:
 \itemize{
 \item \code{arn:aws:ssm:region:account-id:opsitem:severity#CATEGORY=category-name }
 \item \code{arn:aws:ssm-incidents::account-id:responseplan/response-plan-name }
-}}
+}
+
+\strong{Start a Amazon Q Developer operational investigation}
+
+\code{arn:aws:aiops:region:account-id:investigation-group:ingestigation-group-id }}
 
 \item{InsufficientDataActions}{The actions to execute when this alarm transitions to the
 \code{INSUFFICIENT_DATA} state from any other state. Each action is specified
@@ -335,7 +339,11 @@ access or change only resources with certain tag values.
 If you are using this operation to update an existing alarm, any tags
 you specify in this parameter are ignored. To change the tags of an
 existing alarm, use \code{\link[=cloudwatch_tag_resource]{tag_resource}} or
-\code{\link[=cloudwatch_untag_resource]{untag_resource}}.}
+\code{\link[=cloudwatch_untag_resource]{untag_resource}}.
+
+To use this field to set tags for an alarm when you create it, you must
+be signed on with both the \code{cloudwatch:PutMetricAlarm} and
+\code{cloudwatch:TagResource} permissions.}
 
 \item{ThresholdMetricId}{If this is an alarm based on an anomaly detection model, make this value
 match the ID of the \code{ANOMALY_DETECTION_BAND} function.

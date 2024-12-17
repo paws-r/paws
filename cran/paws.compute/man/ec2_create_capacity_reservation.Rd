@@ -20,15 +20,22 @@ ec2_create_capacity_reservation(
   TagSpecifications = NULL,
   DryRun = NULL,
   OutpostArn = NULL,
-  PlacementGroupArn = NULL
+  PlacementGroupArn = NULL,
+  StartDate = NULL,
+  CommitmentDuration = NULL,
+  DeliveryPreference = NULL
 )
 }
 \arguments{
 \item{ClientToken}{Unique, case-sensitive identifier that you provide to ensure the
 idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensure Idempotency}.}
 
-\item{InstanceType}{[required] The instance type for which to reserve capacity. For more information,
-see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html}{Instance types}
+\item{InstanceType}{[required] The instance type for which to reserve capacity.
+
+You can request future-dated Capacity Reservations for instance types in
+the C, M, R, I, and T instance families only.
+
+For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html}{Instance types}
 in the \emph{Amazon EC2 User Guide}.}
 
 \item{InstancePlatform}{[required] The type of operating system for which to reserve capacity.}
@@ -48,6 +55,11 @@ hardware that is dedicated to a single Amazon Web Services account.
 }}
 
 \item{InstanceCount}{[required] The number of instances for which to reserve capacity.
+
+You can request future-dated Capacity Reservations for an instance count
+with a minimum of 100 VPUs. For example, if you request a future-dated
+Capacity Reservation for \code{m5.xlarge} instances, you must request at
+least 25 instances (\emph{25 * m5.xlarge = 100 vCPUs}).
 
 Valid range: 1 - 1000}
 
@@ -70,7 +82,10 @@ You must provide an \code{EndDate} value if \code{EndDateType} is \code{limited}
 If the \code{EndDateType} is \code{limited}, the Capacity Reservation is cancelled
 within an hour from the specified time. For example, if you specify
 5/31/2019, 13:30:55, the Capacity Reservation is guaranteed to end
-between 13:30:55 and 14:30:55 on 5/31/2019.}
+between 13:30:55 and 14:30:55 on 5/31/2019.
+
+If you are requesting a future-dated Capacity Reservation, you can't
+specify an end date and time that is within the commitment duration.}
 
 \item{EndDateType}{Indicates the way in which the Capacity Reservation ends. A Capacity
 Reservation can have one of the following end types:
@@ -97,6 +112,9 @@ Zone), and explicitly target the Capacity Reservation. This ensures
 that only permitted instances can use the reserved capacity.
 }
 
+If you are requesting a future-dated Capacity Reservation, you must
+specify \code{targeted}.
+
 Default: \code{open}}
 
 \item{TagSpecifications}{The tags to apply to the Capacity Reservation during launch.}
@@ -106,15 +124,50 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
-\item{OutpostArn}{The Amazon Resource Name (ARN) of the Outpost on which to create the
+\item{OutpostArn}{Not supported for future-dated Capacity Reservations.
+
+The Amazon Resource Name (ARN) of the Outpost on which to create the
 Capacity Reservation.}
 
-\item{PlacementGroupArn}{The Amazon Resource Name (ARN) of the cluster placement group in which
+\item{PlacementGroupArn}{Not supported for future-dated Capacity Reservations.
+
+The Amazon Resource Name (ARN) of the cluster placement group in which
 to create the Capacity Reservation. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/cr-cpg.html}{Capacity Reservations for cluster placement groups}
 in the \emph{Amazon EC2 User Guide}.}
+
+\item{StartDate}{Required for future-dated Capacity Reservations only. To create a
+Capacity Reservation for immediate use, omit this parameter.
+
+The date and time at which the future-dated Capacity Reservation should
+become available for use, in the ISO8601 format in the UTC time zone
+(\code{YYYY-MM-DDThh:mm:ss.sssZ}).
+
+You can request a future-dated Capacity Reservation between 5 and 120
+days in advance.}
+
+\item{CommitmentDuration}{Required for future-dated Capacity Reservations only. To create a
+Capacity Reservation for immediate use, omit this parameter.
+
+Specify a commitment duration, in seconds, for the future-dated Capacity
+Reservation.
+
+The commitment duration is a minimum duration for which you commit to
+having the future-dated Capacity Reservation in the \code{active} state in
+your account after it has been delivered.
+
+For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/cr-concepts.html#cr-commitment-duration}{Commitment duration}.}
+
+\item{DeliveryPreference}{Required for future-dated Capacity Reservations only. To create a
+Capacity Reservation for immediate use, omit this parameter.
+
+Indicates that the requested capacity will be delivered in addition to
+any running instances or reserved capacity that you have in your account
+at the requested date and time.
+
+The only supported value is \code{incremental}.}
 }
 \description{
-Creates a new Capacity Reservation with the specified attributes.
+Creates a new Capacity Reservation with the specified attributes. Capacity Reservations enable you to reserve capacity for your Amazon EC2 instances in a specific Availability Zone for any duration.
 
 See \url{https://www.paws-r-sdk.com/docs/ec2_create_capacity_reservation/} for full documentation.
 }

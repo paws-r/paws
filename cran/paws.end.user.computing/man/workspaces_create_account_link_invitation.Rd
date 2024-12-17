@@ -9,8 +9,8 @@ workspaces_create_account_link_invitation(TargetAccountId, ClientToken = NULL)
 \arguments{
 \item{TargetAccountId}{[required] The identifier of the target account.}
 
-\item{ClientToken}{A string of up to 64 ASCII characters that Amazon EFS uses to ensure
-idempotent creation.}
+\item{ClientToken}{A string of up to 64 ASCII characters that Amazon WorkSpaces uses to
+ensure idempotent creation.}
 }
 \description{
 Creates the account link invitation.

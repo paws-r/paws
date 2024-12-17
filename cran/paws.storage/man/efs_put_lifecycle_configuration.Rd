@@ -12,7 +12,7 @@ efs_put_lifecycle_configuration(FileSystemId, LifecyclePolicies)
 
 \item{LifecyclePolicies}{[required] An array of \code{LifecyclePolicy} objects that define the file system's
 \code{LifecycleConfiguration} object. A \code{LifecycleConfiguration} object
-informs EFS Lifecycle management of the following:
+informs lifecycle management of the following:
 \itemize{
 \item \strong{\code{TransitionToIA}} – When to move files in the file system from
 primary storage (Standard storage class) into the Infrequent Access
@@ -26,7 +26,7 @@ transitioning into IA storage. Therefore, TransitionToArchive must
 either not be set or must be later than TransitionToIA.
 
 The Archive storage class is available only for file systems that
-use the Elastic Throughput mode and the General Purpose Performance
+use the Elastic throughput mode and the General Purpose performance
 mode.
 \item \strong{\code{TransitionToPrimaryStorageClass}} – Whether to move files in the
 file system back to primary storage (Standard storage class) after

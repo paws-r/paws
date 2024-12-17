@@ -65,7 +65,7 @@ even the most demanding and volatile workloads. Amazon Redshift
 Serverless lets you focus on using your data to acquire new insights for
 your business and customers.
 
-To learn more about Amazon Redshift Serverless, see \href{https://docs.aws.amazon.com/redshift/latest/mgmt/serverless-whatis.html}{What is Amazon Redshift Serverless}.
+To learn more about Amazon Redshift Serverless, see \href{https://docs.aws.amazon.com/redshift/latest/mgmt/serverless-whatis.html}{What is Amazon Redshift Serverless?}.
 }
 \section{Service syntax}{
 
@@ -137,6 +137,7 @@ To learn more about Amazon Redshift Serverless, see \href{https://docs.aws.amazo
 \link[paws.database:redshiftserverless_get_workgroup]{get_workgroup} \tab Returns information about a specific workgroup\cr
 \link[paws.database:redshiftserverless_list_custom_domain_associations]{list_custom_domain_associations} \tab Lists custom domain associations for Amazon Redshift Serverless\cr
 \link[paws.database:redshiftserverless_list_endpoint_access]{list_endpoint_access} \tab Returns an array of EndpointAccess objects and relevant information\cr
+\link[paws.database:redshiftserverless_list_managed_workgroups]{list_managed_workgroups} \tab Returns information about a list of specified managed workgroups in your account\cr
 \link[paws.database:redshiftserverless_list_namespaces]{list_namespaces} \tab Returns information about a list of specified namespaces\cr
 \link[paws.database:redshiftserverless_list_recovery_points]{list_recovery_points} \tab Returns an array of recovery points\cr
 \link[paws.database:redshiftserverless_list_scheduled_actions]{list_scheduled_actions} \tab Returns a list of scheduled actions\cr

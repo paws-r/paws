@@ -4,15 +4,15 @@
 \alias{ec2_detach_network_interface}
 \title{Detaches a network interface from an instance}
 \usage{
-ec2_detach_network_interface(AttachmentId, DryRun = NULL, Force = NULL)
+ec2_detach_network_interface(DryRun = NULL, AttachmentId, Force = NULL)
 }
 \arguments{
-\item{AttachmentId}{[required] The ID of the attachment.}
-
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
+
+\item{AttachmentId}{[required] The ID of the attachment.}
 
 \item{Force}{Specifies whether to force a detachment.
 \itemize{

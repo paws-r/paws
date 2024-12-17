@@ -13,7 +13,8 @@ cognitoidentityprovider_admin_update_auth_event_feedback(
 )
 }
 \arguments{
-\item{UserPoolId}{[required] The user pool ID.}
+\item{UserPoolId}{[required] The ID of the user pool where you want to submit authentication-event
+feedback.}
 
 \item{Username}{[required] The username of the user that you want to query or modify. The value of
 this parameter is typically your user's username, but it can be any of
@@ -21,7 +22,9 @@ their alias attributes. If \code{username} isn't an alias attribute in your
 user pool, this value must be the \code{sub} of a local user or the username
 of a user from a third-party IdP.}
 
-\item{EventId}{[required] The authentication event ID.}
+\item{EventId}{[required] The authentication event ID. To query authentication events for a user,
+see
+\code{\link[=cognitoidentityprovider_admin_list_user_auth_events]{admin_list_user_auth_events}}.}
 
 \item{FeedbackValue}{[required] The authentication event feedback value. When you provide a
 \code{FeedbackValue} value of \code{valid}, you tell Amazon Cognito that you trust
@@ -31,7 +34,7 @@ Cognito that you don't trust a user session, or you don't believe that
 Amazon Cognito evaluated a high-enough risk level.}
 }
 \description{
-Provides feedback for an authentication event indicating if it was from a valid user. This feedback is used for improving the risk evaluation decision for the user pool as part of Amazon Cognito advanced security.
+Provides feedback for an authentication event indicating if it was from a valid user. This feedback is used for improving the risk evaluation decision for the user pool as part of Amazon Cognito threat protection. To train the threat-protection model to recognize trusted and untrusted sign-in characteristics, configure threat protection in audit-only mode and provide a mechanism for users or administrators to submit feedback. Your feedback can tell Amazon Cognito that a risk rating was assigned at a level you don't agree with.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_admin_update_auth_event_feedback/} for full documentation.
 }

@@ -303,6 +303,18 @@ NULL
   return(populate(args, shape))
 }
 
+.directoryservice$describe_directory_data_access_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(DirectoryId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.directoryservice$describe_directory_data_access_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(DataAccessStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .directoryservice$describe_domain_controllers_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(DirectoryId = structure(logical(0), tags = list(type = "string")), DomainControllerIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string")), Limit = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
@@ -423,6 +435,18 @@ NULL
   return(populate(args, shape))
 }
 
+.directoryservice$disable_directory_data_access_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(DirectoryId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.directoryservice$disable_directory_data_access_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .directoryservice$disable_ldaps_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(DirectoryId = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -466,6 +490,18 @@ NULL
 }
 
 .directoryservice$enable_client_authentication_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.directoryservice$enable_directory_data_access_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(DirectoryId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.directoryservice$enable_directory_data_access_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(), tags = list(type = "structure"))
   return(populate(args, shape))

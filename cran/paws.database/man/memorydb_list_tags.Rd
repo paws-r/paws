@@ -8,10 +8,10 @@ memorydb_list_tags(ResourceArn)
 }
 \arguments{
 \item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the resource for which you want the
-list of tags}
+list of tags.}
 }
 \description{
-Lists all tags currently on a named resource. A tag is a key-value pair where the key and value are case-sensitive. You can use tags to categorize and track your MemoryDB resources. For more information, see \href{https://docs.aws.amazon.com/memorydb/latest/devguide/}{Tagging your MemoryDB resources}
+Lists all tags currently on a named resource. A tag is a key-value pair where the key and value are case-sensitive. You can use tags to categorize and track your MemoryDB resources. For more information, see \href{https://docs.aws.amazon.com/memorydb/latest/devguide/}{Tagging your MemoryDB resources}.
 
 See \url{https://www.paws-r-sdk.com/docs/memorydb_list_tags/} for full documentation.
 }

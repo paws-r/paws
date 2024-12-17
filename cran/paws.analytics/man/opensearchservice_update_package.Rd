@@ -8,7 +8,9 @@ opensearchservice_update_package(
   PackageID,
   PackageSource,
   PackageDescription = NULL,
-  CommitMessage = NULL
+  CommitMessage = NULL,
+  PackageConfiguration = NULL,
+  PackageEncryptionOptions = NULL
 )
 }
 \arguments{
@@ -20,6 +22,10 @@ opensearchservice_update_package(
 
 \item{CommitMessage}{Commit message for the updated file, which is shown as part of
 \code{GetPackageVersionHistoryResponse}.}
+
+\item{PackageConfiguration}{The updated configuration details for a package.}
+
+\item{PackageEncryptionOptions}{Encryption options for a package.}
 }
 \description{
 Updates a package for use with Amazon OpenSearch Service domains. For more information, see \href{https://docs.aws.amazon.com/opensearch-service/latest/developerguide/custom-packages.html}{Custom packages for Amazon OpenSearch Service}.

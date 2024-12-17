@@ -85,7 +85,7 @@ cloudhsmv2_copy_backup_to_region <- function(DestinationRegion, BackupId, TagLis
 #'
 #' @usage
 #' cloudhsmv2_create_cluster(BackupRetentionPolicy, HsmType,
-#'   SourceBackupId, SubnetIds, TagList, Mode)
+#'   SourceBackupId, SubnetIds, NetworkType, TagList, Mode)
 #'
 #' @param BackupRetentionPolicy A policy that defines how the service retains backups.
 #' @param HsmType &#91;required&#93; The type of HSM to use in the cluster. The allowed values are
@@ -102,6 +102,8 @@ cloudhsmv2_copy_backup_to_region <- function(DestinationRegion, BackupId, TagLis
 #' -   All subnets must be in the same virtual private cloud (VPC).
 #' 
 #' -   You can specify only one subnet per Availability Zone.
+#' @param NetworkType The NetworkType to create a cluster with. The allowed values are `IPV4`
+#' and `DUALSTACK`.
 #' @param TagList Tags to apply to the CloudHSM cluster during creation.
 #' @param Mode The mode to use in the cluster. The allowed values are `FIPS` and
 #' `NON_FIPS`.
@@ -127,6 +129,7 @@ cloudhsmv2_copy_backup_to_region <- function(DestinationRegion, BackupId, TagLis
 #'         SubnetId = "string",
 #'         EniId = "string",
 #'         EniIp = "string",
+#'         EniIpV6 = "string",
 #'         HsmId = "string",
 #'         State = "CREATE_IN_PROGRESS"|"ACTIVE"|"DEGRADED"|"DELETE_IN_PROGRESS"|"DELETED",
 #'         StateMessage = "string"
@@ -136,12 +139,13 @@ cloudhsmv2_copy_backup_to_region <- function(DestinationRegion, BackupId, TagLis
 #'     PreCoPassword = "string",
 #'     SecurityGroup = "string",
 #'     SourceBackupId = "string",
-#'     State = "CREATE_IN_PROGRESS"|"UNINITIALIZED"|"INITIALIZE_IN_PROGRESS"|"INITIALIZED"|"ACTIVE"|"UPDATE_IN_PROGRESS"|"DELETE_IN_PROGRESS"|"DELETED"|"DEGRADED",
+#'     State = "CREATE_IN_PROGRESS"|"UNINITIALIZED"|"INITIALIZE_IN_PROGRESS"|"INITIALIZED"|"ACTIVE"|"UPDATE_IN_PROGRESS"|"MODIFY_IN_PROGRESS"|"ROLLBACK_IN_PROGRESS"|"DELETE_IN_PROGRESS"|"DELETED"|"DEGRADED",
 #'     StateMessage = "string",
 #'     SubnetMapping = list(
 #'       "string"
 #'     ),
 #'     VpcId = "string",
+#'     NetworkType = "IPV4"|"DUALSTACK",
 #'     Certificates = list(
 #'       ClusterCsr = "string",
 #'       HsmCertificate = "string",
@@ -172,6 +176,7 @@ cloudhsmv2_copy_backup_to_region <- function(DestinationRegion, BackupId, TagLis
 #'   SubnetIds = list(
 #'     "string"
 #'   ),
+#'   NetworkType = "IPV4"|"DUALSTACK",
 #'   TagList = list(
 #'     list(
 #'       Key = "string",
@@ -187,7 +192,7 @@ cloudhsmv2_copy_backup_to_region <- function(DestinationRegion, BackupId, TagLis
 #' @rdname cloudhsmv2_create_cluster
 #'
 #' @aliases cloudhsmv2_create_cluster
-cloudhsmv2_create_cluster <- function(BackupRetentionPolicy = NULL, HsmType, SourceBackupId = NULL, SubnetIds, TagList = NULL, Mode = NULL) {
+cloudhsmv2_create_cluster <- function(BackupRetentionPolicy = NULL, HsmType, SourceBackupId = NULL, SubnetIds, NetworkType = NULL, TagList = NULL, Mode = NULL) {
   op <- new_operation(
     name = "CreateCluster",
     http_method = "POST",
@@ -196,7 +201,7 @@ cloudhsmv2_create_cluster <- function(BackupRetentionPolicy = NULL, HsmType, Sou
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .cloudhsmv2$create_cluster_input(BackupRetentionPolicy = BackupRetentionPolicy, HsmType = HsmType, SourceBackupId = SourceBackupId, SubnetIds = SubnetIds, TagList = TagList, Mode = Mode)
+  input <- .cloudhsmv2$create_cluster_input(BackupRetentionPolicy = BackupRetentionPolicy, HsmType = HsmType, SourceBackupId = SourceBackupId, SubnetIds = SubnetIds, NetworkType = NetworkType, TagList = TagList, Mode = Mode)
   output <- .cloudhsmv2$create_cluster_output()
   config <- get_config()
   svc <- .cloudhsmv2$service(config, op)
@@ -239,6 +244,7 @@ cloudhsmv2_create_cluster <- function(BackupRetentionPolicy = NULL, HsmType, Sou
 #'     SubnetId = "string",
 #'     EniId = "string",
 #'     EniIp = "string",
+#'     EniIpV6 = "string",
 #'     HsmId = "string",
 #'     State = "CREATE_IN_PROGRESS"|"ACTIVE"|"DEGRADED"|"DELETE_IN_PROGRESS"|"DELETED",
 #'     StateMessage = "string"
@@ -398,6 +404,7 @@ cloudhsmv2_delete_backup <- function(BackupId) {
 #'         SubnetId = "string",
 #'         EniId = "string",
 #'         EniIp = "string",
+#'         EniIpV6 = "string",
 #'         HsmId = "string",
 #'         State = "CREATE_IN_PROGRESS"|"ACTIVE"|"DEGRADED"|"DELETE_IN_PROGRESS"|"DELETED",
 #'         StateMessage = "string"
@@ -407,12 +414,13 @@ cloudhsmv2_delete_backup <- function(BackupId) {
 #'     PreCoPassword = "string",
 #'     SecurityGroup = "string",
 #'     SourceBackupId = "string",
-#'     State = "CREATE_IN_PROGRESS"|"UNINITIALIZED"|"INITIALIZE_IN_PROGRESS"|"INITIALIZED"|"ACTIVE"|"UPDATE_IN_PROGRESS"|"DELETE_IN_PROGRESS"|"DELETED"|"DEGRADED",
+#'     State = "CREATE_IN_PROGRESS"|"UNINITIALIZED"|"INITIALIZE_IN_PROGRESS"|"INITIALIZED"|"ACTIVE"|"UPDATE_IN_PROGRESS"|"MODIFY_IN_PROGRESS"|"ROLLBACK_IN_PROGRESS"|"DELETE_IN_PROGRESS"|"DELETED"|"DEGRADED",
 #'     StateMessage = "string",
 #'     SubnetMapping = list(
 #'       "string"
 #'     ),
 #'     VpcId = "string",
+#'     NetworkType = "IPV4"|"DUALSTACK",
 #'     Certificates = list(
 #'       ClusterCsr = "string",
 #'       HsmCertificate = "string",
@@ -709,7 +717,7 @@ cloudhsmv2_describe_backups <- function(NextToken = NULL, MaxResults = NULL, Fil
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(result_key = "Backups", output_token = "NextToken", input_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .cloudhsmv2$describe_backups_input(NextToken = NextToken, MaxResults = MaxResults, Filters = Filters, Shared = Shared, SortAscending = SortAscending)
@@ -780,6 +788,7 @@ cloudhsmv2_describe_backups <- function(NextToken = NULL, MaxResults = NULL, Fil
 #'           SubnetId = "string",
 #'           EniId = "string",
 #'           EniIp = "string",
+#'           EniIpV6 = "string",
 #'           HsmId = "string",
 #'           State = "CREATE_IN_PROGRESS"|"ACTIVE"|"DEGRADED"|"DELETE_IN_PROGRESS"|"DELETED",
 #'           StateMessage = "string"
@@ -789,12 +798,13 @@ cloudhsmv2_describe_backups <- function(NextToken = NULL, MaxResults = NULL, Fil
 #'       PreCoPassword = "string",
 #'       SecurityGroup = "string",
 #'       SourceBackupId = "string",
-#'       State = "CREATE_IN_PROGRESS"|"UNINITIALIZED"|"INITIALIZE_IN_PROGRESS"|"INITIALIZED"|"ACTIVE"|"UPDATE_IN_PROGRESS"|"DELETE_IN_PROGRESS"|"DELETED"|"DEGRADED",
+#'       State = "CREATE_IN_PROGRESS"|"UNINITIALIZED"|"INITIALIZE_IN_PROGRESS"|"INITIALIZED"|"ACTIVE"|"UPDATE_IN_PROGRESS"|"MODIFY_IN_PROGRESS"|"ROLLBACK_IN_PROGRESS"|"DELETE_IN_PROGRESS"|"DELETED"|"DEGRADED",
 #'       StateMessage = "string",
 #'       SubnetMapping = list(
 #'         "string"
 #'       ),
 #'       VpcId = "string",
+#'       NetworkType = "IPV4"|"DUALSTACK",
 #'       Certificates = list(
 #'         ClusterCsr = "string",
 #'         HsmCertificate = "string",
@@ -839,7 +849,7 @@ cloudhsmv2_describe_clusters <- function(Filters = NULL, NextToken = NULL, MaxRe
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(result_key = "Clusters", output_token = "NextToken", input_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .cloudhsmv2$describe_clusters_input(Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
@@ -936,7 +946,7 @@ cloudhsmv2_get_resource_policy <- function(ResourceArn = NULL) {
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   State = "CREATE_IN_PROGRESS"|"UNINITIALIZED"|"INITIALIZE_IN_PROGRESS"|"INITIALIZED"|"ACTIVE"|"UPDATE_IN_PROGRESS"|"DELETE_IN_PROGRESS"|"DELETED"|"DEGRADED",
+#'   State = "CREATE_IN_PROGRESS"|"UNINITIALIZED"|"INITIALIZE_IN_PROGRESS"|"INITIALIZED"|"ACTIVE"|"UPDATE_IN_PROGRESS"|"MODIFY_IN_PROGRESS"|"ROLLBACK_IN_PROGRESS"|"DELETE_IN_PROGRESS"|"DELETED"|"DEGRADED",
 #'   StateMessage = "string"
 #' )
 #' ```
@@ -1035,7 +1045,7 @@ cloudhsmv2_list_tags <- function(ResourceId, NextToken = NULL, MaxResults = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(result_key = "TagList", output_token = "NextToken", input_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .cloudhsmv2$list_tags_input(ResourceId = ResourceId, NextToken = NextToken, MaxResults = MaxResults)
@@ -1168,6 +1178,7 @@ cloudhsmv2_modify_backup_attributes <- function(BackupId, NeverExpires) {
 #'         SubnetId = "string",
 #'         EniId = "string",
 #'         EniIp = "string",
+#'         EniIpV6 = "string",
 #'         HsmId = "string",
 #'         State = "CREATE_IN_PROGRESS"|"ACTIVE"|"DEGRADED"|"DELETE_IN_PROGRESS"|"DELETED",
 #'         StateMessage = "string"
@@ -1177,12 +1188,13 @@ cloudhsmv2_modify_backup_attributes <- function(BackupId, NeverExpires) {
 #'     PreCoPassword = "string",
 #'     SecurityGroup = "string",
 #'     SourceBackupId = "string",
-#'     State = "CREATE_IN_PROGRESS"|"UNINITIALIZED"|"INITIALIZE_IN_PROGRESS"|"INITIALIZED"|"ACTIVE"|"UPDATE_IN_PROGRESS"|"DELETE_IN_PROGRESS"|"DELETED"|"DEGRADED",
+#'     State = "CREATE_IN_PROGRESS"|"UNINITIALIZED"|"INITIALIZE_IN_PROGRESS"|"INITIALIZED"|"ACTIVE"|"UPDATE_IN_PROGRESS"|"MODIFY_IN_PROGRESS"|"ROLLBACK_IN_PROGRESS"|"DELETE_IN_PROGRESS"|"DELETED"|"DEGRADED",
 #'     StateMessage = "string",
 #'     SubnetMapping = list(
 #'       "string"
 #'     ),
 #'     VpcId = "string",
+#'     NetworkType = "IPV4"|"DUALSTACK",
 #'     Certificates = list(
 #'       ClusterCsr = "string",
 #'       HsmCertificate = "string",

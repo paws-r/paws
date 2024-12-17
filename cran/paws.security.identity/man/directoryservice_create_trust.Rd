@@ -22,8 +22,8 @@ establish the trust relationship.}
 \item{RemoteDomainName}{[required] The Fully Qualified Domain Name (FQDN) of the external domain for which
 to create the trust relationship.}
 
-\item{TrustPassword}{[required] The trust password. The must be the same password that was used when
-creating the trust relationship on the external domain.}
+\item{TrustPassword}{[required] The trust password. The trust password must be the same password that
+was used when creating the trust relationship on the external domain.}
 
 \item{TrustDirection}{[required] The direction of the trust relationship.}
 

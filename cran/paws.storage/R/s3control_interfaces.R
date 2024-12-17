@@ -801,7 +801,7 @@ NULL
 
 .s3control$list_storage_lens_configurations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), StorageLensConfigurationList = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), StorageLensArn = structure(logical(0), tags = list(type = "string")), HomeRegion = structure(logical(0), tags = list(type = "string")), IsEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(locationName = "StorageLensConfiguration", type = "structure"))), tags = list(locationNameList = "StorageLensConfiguration", type = "list", flattened = TRUE))), tags = list(type = "structure"))
+  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), StorageLensConfigurationList = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), StorageLensArn = structure(logical(0), tags = list(type = "string")), HomeRegion = structure(logical(0), tags = list(type = "string")), IsEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(locationName = "StorageLensConfiguration", type = "structure"))), tags = list(locationNameList = "StorageLensConfiguration", locationName = "StorageLensConfiguration", type = "list", flattened = TRUE))), tags = list(type = "structure", locationName = "ListStorageLensConfigurationResult"))
   return(populate(args, shape))
 }
 
@@ -813,7 +813,7 @@ NULL
 
 .s3control$list_storage_lens_groups_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), StorageLensGroupList = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), StorageLensGroupArn = structure(logical(0), tags = list(type = "string")), HomeRegion = structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "StorageLensGroup", type = "structure"))), tags = list(locationNameList = "StorageLensGroup", type = "list", flattened = TRUE))), tags = list(type = "structure"))
+  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), StorageLensGroupList = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), StorageLensGroupArn = structure(logical(0), tags = list(type = "string")), HomeRegion = structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "StorageLensGroup", type = "structure"))), tags = list(locationNameList = "StorageLensGroup", locationName = "StorageLensGroup", type = "list", flattened = TRUE))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

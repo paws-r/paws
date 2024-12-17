@@ -2,7 +2,7 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_create_user_pool_client}
 \alias{cognitoidentityprovider_create_user_pool_client}
-\title{Creates the user pool client}
+\title{Creates an app client in a user pool}
 \usage{
 cognitoidentityprovider_create_user_pool_client(
   UserPoolId,
@@ -30,13 +30,13 @@ cognitoidentityprovider_create_user_pool_client(
 )
 }
 \arguments{
-\item{UserPoolId}{[required] The user pool ID for the user pool where you want to create a user pool
-client.}
+\item{UserPoolId}{[required] The ID of the user pool where you want to create an app client.}
 
-\item{ClientName}{[required] The client name for the user pool client you would like to create.}
+\item{ClientName}{[required] A friendly name for the app client that you want to create.}
 
-\item{GenerateSecret}{Boolean to specify whether you want to generate a secret for the user
-pool client being created.}
+\item{GenerateSecret}{When \code{true}, generates a client secret for the app client. Client
+secrets are used with server-side and machine-to-machine applications.
+For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-settings-client-apps.html#user-pool-settings-client-app-client-types}{App client types}.}
 
 \item{RefreshTokenValidity}{The refresh token time limit. After this limit expires, your user can't
 use their refresh token. To specify the time unit for
@@ -85,25 +85,25 @@ The default time unit for \code{IdTokenValidity} in an API request is hours.
 If you don't specify otherwise in the configuration of your app client,
 your ID tokens are valid for one hour.}
 
-\item{TokenValidityUnits}{The units in which the validity times are represented. The default unit
-for RefreshToken is days, and default for ID and access tokens are
+\item{TokenValidityUnits}{The units that validity times are represented in. The default unit for
+refresh tokens is days, and the default for ID and access tokens are
 hours.}
 
-\item{ReadAttributes}{The list of user attributes that you want your app client to have
-read-only access to. After your user authenticates in your app, their
-access token authorizes them to read their own attribute value for any
-attribute in this list. An example of this kind of activity is when your
-user selects a link to view their profile information. Your app makes a
+\item{ReadAttributes}{The list of user attributes that you want your app client to have read
+access to. After your user authenticates in your app, their access token
+authorizes them to read their own attribute value for any attribute in
+this list. An example of this kind of activity is when your user selects
+a link to view their profile information. Your app makes a
 \code{\link[=cognitoidentityprovider_get_user]{get_user}} API request to retrieve
 and display your user's profile data.
 
 When you don't specify the \code{ReadAttributes} for your app client, your
 app can read the values of \code{email_verified}, \code{phone_number_verified},
-and the Standard attributes of your user pool. When your user pool has
-read access to these default attributes, \code{ReadAttributes} doesn't return
-any information. Amazon Cognito only populates \code{ReadAttributes} in the
-API response if you have specified your own custom set of read
-attributes.}
+and the Standard attributes of your user pool. When your user pool app
+client has read access to these default attributes, \code{ReadAttributes}
+doesn't return any information. Amazon Cognito only populates
+\code{ReadAttributes} in the API response if you have specified your own
+custom set of read attributes.}
 
 \item{WriteAttributes}{The list of user attributes that you want your app client to have write
 access to. After your user authenticates in your app, their access token
@@ -140,6 +140,14 @@ supports \code{ALLOW_REFRESH_TOKEN_AUTH}, \code{ALLOW_USER_SRP_AUTH}, and
 
 Valid values include:
 \itemize{
+\item \code{ALLOW_USER_AUTH}: Enable selection-based sign-in with \code{USER_AUTH}.
+This setting covers username-password, secure remote password (SRP),
+passwordless, and passkey authentication. This authentiation flow
+can do username-password and SRP authentication without other
+\code{ExplicitAuthFlows} permitting them. For example users can complete
+an SRP challenge through \code{USER_AUTH} without the flow
+\code{USER_SRP_AUTH} being active for the app client. This flow doesn't
+include \code{CUSTOM_AUTH}.
 \item \code{ALLOW_ADMIN_USER_PASSWORD_AUTH}: Enable admin based user password
 authentication flow \code{ADMIN_USER_PASSWORD_AUTH}. This setting
 replaces the \code{ADMIN_NO_SRP_AUTH} setting. With this authentication
@@ -164,14 +172,22 @@ as values that begin with \code{ALLOW_}, like \code{ALLOW_USER_SRP_AUTH}.}
 supported on this client. The following are supported: \code{COGNITO},
 \code{Facebook}, \code{Google}, \code{SignInWithApple}, and \code{LoginWithAmazon}. You can
 also specify the names that you configured for the SAML and OIDC IdPs in
-your user pool, for example \code{MySAMLIdP} or \code{MyOIDCIdP}.}
+your user pool, for example \code{MySAMLIdP} or \code{MyOIDCIdP}.
+
+This setting applies to providers that you can access with \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-managed-login.html}{managed login}.
+The removal of \code{COGNITO} from this list doesn't prevent authentication
+operations for local users with the user pools API in an Amazon Web
+Services SDK. The only way to prevent API-based authentication is to
+block access with a \href{https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-waf.html}{WAF rule}.}
 
 \item{CallbackURLs}{A list of allowed redirect (callback) URLs for the IdPs.
 
 A redirect URI must:
 \itemize{
 \item Be an absolute URI.
-\item Be registered with the authorization server.
+\item Be registered with the authorization server. Amazon Cognito doesn't
+accept authorization requests with \code{redirect_uri} values that aren't
+in the list of \code{CallbackURLs} that you provide in this parameter.
 \item Not include a fragment component.
 }
 
@@ -182,25 +198,12 @@ testing purposes only.
 
 App callback URLs such as myapp://example are also supported.}
 
-\item{LogoutURLs}{A list of allowed logout URLs for the IdPs.}
+\item{LogoutURLs}{A list of allowed logout URLs for managed login authentication. For more
+information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/logout-endpoint.html}{Logout endpoint}.}
 
 \item{DefaultRedirectURI}{The default redirect URI. In app clients with one assigned IdP, replaces
 \code{redirect_uri} in authentication requests. Must be in the \code{CallbackURLs}
-list.
-
-A redirect URI must:
-\itemize{
-\item Be an absolute URI.
-\item Be registered with the authorization server.
-\item Not include a fragment component.
-}
-
-For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-settings-client-apps.html#cognito-user-pools-app-idp-settings-about}{Default redirect URI}.
-
-Amazon Cognito requires HTTPS over HTTP except for http://localhost for
-testing purposes only.
-
-App callback URLs such as myapp://example are also supported.}
+list.}
 
 \item{AllowedOAuthFlows}{The OAuth grant types that you want your app client to generate. To
 create an app client that generates client credentials grants, you must
@@ -222,10 +225,13 @@ directly to your user.
 Issue the access token from the \verb{/oauth2/token} endpoint directly to a
 non-person user using a combination of the client ID and client secret.}
 
-\item{AllowedOAuthScopes}{The allowed OAuth scopes. Possible values provided by OAuth are \code{phone},
-\code{email}, \code{openid}, and \code{profile}. Possible values provided by Amazon Web
-Services are \code{aws.cognito.signin.user.admin}. Custom scopes created in
-Resource Servers are also supported.}
+\item{AllowedOAuthScopes}{The OAuth 2.0 scopes that you want to permit your app client to
+authorize. Scopes govern access control to user pool self-service API
+operations, user data from the \code{userInfo} endpoint, and third-party
+APIs. Possible values provided by OAuth are \code{phone}, \code{email}, \code{openid},
+and \code{profile}. Possible values provided by Amazon Web Services are
+\code{aws.cognito.signin.user.admin}. Custom scopes created in Resource
+Servers are also supported.}
 
 \item{AllowedOAuthFlowsUserPoolClient}{Set to \code{true} to use OAuth 2.0 features in your user pool app client.
 
@@ -252,10 +258,9 @@ defaults to \code{false}.}
 them to your Amazon Pinpoint campaign.
 
 In Amazon Web Services Regions where Amazon Pinpoint isn't available,
-user pools only support sending events to Amazon Pinpoint projects in
-Amazon Web Services Region us-east-1. In Regions where Amazon Pinpoint
-is available, user pools support sending events to Amazon Pinpoint
-projects within that same Region.}
+user pools might not have access to analytics or might be configurable
+with campaigns in the US East (N. Virginia) Region. For more
+information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-pinpoint-integration.html}{Using Amazon Pinpoint analytics}.}
 
 \item{PreventUserExistenceErrors}{Errors and responses that you want Amazon Cognito APIs to return during
 authentication, account confirmation, and password recovery when the
@@ -297,7 +302,7 @@ of that session token. Your user pool native user must respond to each
 authentication challenge before the session expires.}
 }
 \description{
-Creates the user pool client.
+Creates an app client in a user pool. This operation sets basic and advanced configuration options. You can create an app client in the Amazon Cognito console to your preferences and use the output of \code{\link[=cognitoidentityprovider_describe_user_pool_client]{describe_user_pool_client}} to generate requests from that baseline.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_create_user_pool_client/} for full documentation.
 }

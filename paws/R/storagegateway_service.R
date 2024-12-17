@@ -7,6 +7,11 @@ NULL
 #' @description
 #' Storage Gateway Service
 #' 
+#' Amazon FSx File Gateway is no longer available to new customers.
+#' Existing customers of FSx File Gateway can continue to use the service
+#' normally. For capabilities similar to FSx File Gateway, visit [this blog
+#' post](https://aws.amazon.com/blogs/storage/switch-your-file-share-access-from-amazon-fsx-file-gateway-to-amazon-fsx-for-windows-file-server/).
+#' 
 #' Storage Gateway is the service that connects an on-premises software
 #' appliance with cloud-based storage to provide seamless and secure
 #' integration between an organization's on-premises IT environment and the
@@ -280,7 +285,7 @@ storagegateway <- function(config = list(), credentials = list(), endpoint = NUL
 
 .storagegateway$metadata <- list(
   service_name = "storagegateway",
-  endpoints = list("*" = list(endpoint = "storagegateway.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "storagegateway.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "storagegateway.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "storagegateway.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "storagegateway.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "storagegateway.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "storagegateway.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "storagegateway.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "storagegateway.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "storagegateway.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "storagegateway.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "storagegateway.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "storagegateway.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Storage Gateway",
   api_version = "2013-06-30",
   signing_name = "storagegateway",

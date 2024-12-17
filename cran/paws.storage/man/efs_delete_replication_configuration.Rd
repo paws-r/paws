@@ -4,10 +4,28 @@
 \alias{efs_delete_replication_configuration}
 \title{Deletes a replication configuration}
 \usage{
-efs_delete_replication_configuration(SourceFileSystemId)
+efs_delete_replication_configuration(SourceFileSystemId, DeletionMode = NULL)
 }
 \arguments{
 \item{SourceFileSystemId}{[required] The ID of the source file system in the replication configuration.}
+
+\item{DeletionMode}{When replicating across Amazon Web Services accounts or across Amazon
+Web Services Regions, Amazon EFS deletes the replication configuration
+from both the source and destination account or Region
+(\code{ALL_CONFIGURATIONS}) by default. If there's a configuration or
+permissions issue that prevents Amazon EFS from deleting the replication
+configuration from both sides, you can use the
+\code{LOCAL_CONFIGURATION_ONLY} mode to delete the replication configuration
+from only the local side (the account or Region from which the delete is
+performed).
+
+Only use the \code{LOCAL_CONFIGURATION_ONLY} mode in the case that Amazon EFS
+is unable to delete the replication configuration in both the source and
+destination account or Region. Deleting the local configuration leaves
+the configuration in the other account or Region unrecoverable.
+
+Additionally, do not use this mode for same-account, same-region
+replication as doing so results in a BadRequest exception error.}
 }
 \description{
 Deletes a replication configuration. Deleting a replication configuration ends the replication process. After a replication configuration is deleted, the destination file system becomes \code{Writeable} and its replication overwrite protection is re-enabled. For more information, see \href{https://docs.aws.amazon.com/efs/latest/ug/delete-replications.html}{Delete a replication configuration}.

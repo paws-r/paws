@@ -33,8 +33,8 @@ extension version.}
 The configuration data must be formatted as JSON, and validate against
 the schema returned in the \code{ConfigurationSchema} response element of
 \code{\link[=cloudformation_describe_type]{describe_type}}. For more information,
-see \href{https://docs.aws.amazon.com/cloudformation-cli/latest/userguide/resource-type-model.html#resource-type-howto-configuration}{Defining account-level configuration data for an extension}
-in the \emph{CloudFormation CLI User Guide}.}
+see \href{https://docs.aws.amazon.com/cloudformation-cli/latest/userguide/resource-type-model.html#resource-type-howto-configuration}{Defining the account-level configuration of an extension}
+in the \emph{CloudFormation Command Line Interface (CLI) User Guide}.}
 
 \item{ConfigurationAlias}{An alias by which to refer to this extension configuration data.
 

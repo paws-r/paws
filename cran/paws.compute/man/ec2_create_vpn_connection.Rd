@@ -10,9 +10,9 @@ ec2_create_vpn_connection(
   Type,
   VpnGatewayId = NULL,
   TransitGatewayId = NULL,
+  TagSpecifications = NULL,
   DryRun = NULL,
-  Options = NULL,
-  TagSpecifications = NULL
+  Options = NULL
 )
 }
 \arguments{
@@ -26,14 +26,14 @@ gateway, you cannot specify a transit gateway.}
 \item{TransitGatewayId}{The ID of the transit gateway. If you specify a transit gateway, you
 cannot specify a virtual private gateway.}
 
+\item{TagSpecifications}{The tags to apply to the VPN connection.}
+
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{Options}{The options for the VPN connection.}
-
-\item{TagSpecifications}{The tags to apply to the VPN connection.}
 }
 \description{
 Creates a VPN connection between an existing virtual private gateway or transit gateway and a customer gateway. The supported connection type is \code{ipsec.1}.

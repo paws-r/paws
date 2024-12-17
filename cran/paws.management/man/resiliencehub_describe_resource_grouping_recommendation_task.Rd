@@ -17,7 +17,7 @@ arn:\code{partition}:resiliencehub:\code{region}:\code{account}:app/\code{app-id
 information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}
 in the \emph{Amazon Web Services General Reference} guide.}
 
-\item{groupingId}{Indicates the identifier of the grouping recommendation task.}
+\item{groupingId}{Identifier of the grouping recommendation task.}
 }
 \description{
 Describes the resource grouping recommendation tasks run by Resilience Hub for your application.

@@ -65,7 +65,7 @@ efs_create_access_point <- function(ClientToken, Tags = NULL, FileSystemId, Posi
 #'
 #' @param CreationToken &#91;required&#93; A string of up to 64 ASCII characters. Amazon EFS uses this to ensure
 #' idempotent creation.
-#' @param PerformanceMode The Performance mode of the file system. We recommend `generalPurpose`
+#' @param PerformanceMode The performance mode of the file system. We recommend `generalPurpose`
 #' performance mode for all file systems. File systems using the `maxIO`
 #' performance mode can scale to higher levels of aggregate throughput and
 #' operations per second with a tradeoff of slightly higher latencies for
@@ -124,12 +124,12 @@ efs_create_access_point <- function(ClientToken, Tags = NULL, FileSystemId, Posi
 #' EFS quotas that you can
 #' increase](https://docs.aws.amazon.com/efs/latest/ug/limits.html#soft-limits)
 #' in the *Amazon EFS User Guide*.
-#' @param AvailabilityZoneName Used to create a One Zone file system. It specifies the Amazon Web
-#' Services Availability Zone in which to create the file system. Use the
-#' format `us-east-1a` to specify the Availability Zone. For more
-#' information about One Zone file systems, see [Using EFS storage
-#' classes](https://docs.aws.amazon.com/efs/latest/ug/) in the *Amazon EFS
-#' User Guide*.
+#' @param AvailabilityZoneName For One Zone file systems, specify the Amazon Web Services Availability
+#' Zone in which to create the file system. Use the format `us-east-1a` to
+#' specify the Availability Zone. For more information about One Zone file
+#' systems, see [EFS file system
+#' types](https://docs.aws.amazon.com/efs/latest/ug/#file-system-type) in
+#' the *Amazon EFS User Guide*.
 #' 
 #' One Zone file systems are not available in all Availability Zones in
 #' Amazon Web Services Regions where Amazon EFS is available.
@@ -211,11 +211,11 @@ efs_create_mount_target <- function(FileSystemId, SubnetId, IpAddress = NULL, Se
 }
 .efs$operations$create_mount_target <- efs_create_mount_target
 
-#' Creates a replication configuration that replicates an existing EFS file
-#' system to a new, read-only file system
+#' Creates a replication configuration to either a new or existing EFS file
+#' system
 #'
 #' @description
-#' Creates a replication configuration that replicates an existing EFS file system to a new, read-only file system. For more information, see [Amazon EFS replication](https://docs.aws.amazon.com/efs/latest/ug/efs-replication.html) in the *Amazon EFS User Guide*. The replication configuration specifies the following:
+#' Creates a replication configuration to either a new or existing EFS file system. For more information, see [Amazon EFS replication](https://docs.aws.amazon.com/efs/latest/ug/efs-replication.html) in the *Amazon EFS User Guide*. The replication configuration specifies the following:
 #'
 #' See [https://www.paws-r-sdk.com/docs/efs_create_replication_configuration/](https://www.paws-r-sdk.com/docs/efs_create_replication_configuration/) for full documentation.
 #'
@@ -413,11 +413,28 @@ efs_delete_mount_target <- function(MountTargetId) {
 #' See [https://www.paws-r-sdk.com/docs/efs_delete_replication_configuration/](https://www.paws-r-sdk.com/docs/efs_delete_replication_configuration/) for full documentation.
 #'
 #' @param SourceFileSystemId &#91;required&#93; The ID of the source file system in the replication configuration.
+#' @param DeletionMode When replicating across Amazon Web Services accounts or across Amazon
+#' Web Services Regions, Amazon EFS deletes the replication configuration
+#' from both the source and destination account or Region
+#' (`ALL_CONFIGURATIONS`) by default. If there's a configuration or
+#' permissions issue that prevents Amazon EFS from deleting the replication
+#' configuration from both sides, you can use the
+#' `LOCAL_CONFIGURATION_ONLY` mode to delete the replication configuration
+#' from only the local side (the account or Region from which the delete is
+#' performed).
+#' 
+#' Only use the `LOCAL_CONFIGURATION_ONLY` mode in the case that Amazon EFS
+#' is unable to delete the replication configuration in both the source and
+#' destination account or Region. Deleting the local configuration leaves
+#' the configuration in the other account or Region unrecoverable.
+#' 
+#' Additionally, do not use this mode for same-account, same-region
+#' replication as doing so results in a BadRequest exception error.
 #'
 #' @keywords internal
 #'
 #' @rdname efs_delete_replication_configuration
-efs_delete_replication_configuration <- function(SourceFileSystemId) {
+efs_delete_replication_configuration <- function(SourceFileSystemId, DeletionMode = NULL) {
   op <- new_operation(
     name = "DeleteReplicationConfiguration",
     http_method = "DELETE",
@@ -426,7 +443,7 @@ efs_delete_replication_configuration <- function(SourceFileSystemId) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .efs$delete_replication_configuration_input(SourceFileSystemId = SourceFileSystemId)
+  input <- .efs$delete_replication_configuration_input(SourceFileSystemId = SourceFileSystemId, DeletionMode = DeletionMode)
   output <- .efs$delete_replication_configuration_output()
   config <- get_config()
   svc <- .efs$service(config, op)
@@ -776,7 +793,9 @@ efs_describe_mount_targets <- function(MaxItems = NULL, Marker = NULL, FileSyste
 #' See [https://www.paws-r-sdk.com/docs/efs_describe_replication_configurations/](https://www.paws-r-sdk.com/docs/efs_describe_replication_configurations/) for full documentation.
 #'
 #' @param FileSystemId You can retrieve the replication configuration for a specific file
-#' system by providing its file system ID.
+#' system by providing its file system ID. For cross-account,cross-region
+#' replication, an account can only describe the replication configuration
+#' for a file system in its own Region.
 #' @param NextToken `NextToken` is present if the response is paginated. You can use
 #' `NextToken` in a subsequent request to fetch the next page of output.
 #' @param MaxResults (Optional) To limit the number of objects returned in a response, you
@@ -867,7 +886,7 @@ efs_list_tags_for_resource <- function(ResourceId, MaxResults = NULL, NextToken 
     http_method = "GET",
     http_path = "/2015-02-01/resource-tags/{ResourceId}",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .efs$list_tags_for_resource_input(ResourceId = ResourceId, MaxResults = MaxResults, NextToken = NextToken)
@@ -989,7 +1008,7 @@ efs_put_backup_policy <- function(FileSystemId, BackupPolicy) {
 #' Applies an Amazon EFS FileSystemPolicy to an Amazon EFS file system
 #'
 #' @description
-#' Applies an Amazon EFS `FileSystemPolicy` to an Amazon EFS file system. A file system policy is an IAM resource-based policy and can contain multiple policy statements. A file system always has exactly one file system policy, which can be the default policy or an explicit policy set or updated using this API operation. EFS file system policies have a 20,000 character limit. When an explicit policy is set, it overrides the default policy. For more information about the default file system policy, see [Default EFS File System Policy](https://docs.aws.amazon.com/efs/latest/ug/iam-access-control-nfs-efs.html#default-filesystempolicy).
+#' Applies an Amazon EFS `FileSystemPolicy` to an Amazon EFS file system. A file system policy is an IAM resource-based policy and can contain multiple policy statements. A file system always has exactly one file system policy, which can be the default policy or an explicit policy set or updated using this API operation. EFS file system policies have a 20,000 character limit. When an explicit policy is set, it overrides the default policy. For more information about the default file system policy, see [Default EFS file system policy](https://docs.aws.amazon.com/efs/latest/ug/iam-access-control-nfs-efs.html#default-filesystempolicy).
 #'
 #' See [https://www.paws-r-sdk.com/docs/efs_put_file_system_policy/](https://www.paws-r-sdk.com/docs/efs_put_file_system_policy/) for full documentation.
 #'
@@ -998,8 +1017,8 @@ efs_put_backup_policy <- function(FileSystemId, BackupPolicy) {
 #' @param Policy &#91;required&#93; The `FileSystemPolicy` that you're creating. Accepts a JSON formatted
 #' policy definition. EFS file system policies have a 20,000 character
 #' limit. To find out more about the elements that make up a file system
-#' policy, see [EFS Resource-based
-#' Policies](https://docs.aws.amazon.com/efs/latest/ug/creating-using-create-fs.html#access-control-manage-access-intro-resource-policies).
+#' policy, see [Resource-based policies within Amazon
+#' EFS](https://docs.aws.amazon.com/efs/latest/ug/security_iam_service-with-iam.html#security_iam_service-with-iam-resource-based-policies).
 #' @param BypassPolicyLockoutSafetyCheck (Optional) A boolean that specifies whether or not to bypass the
 #' `FileSystemPolicy` lockout safety check. The lockout safety check
 #' determines whether the policy in the request will lock out, or prevent,
@@ -1043,7 +1062,7 @@ efs_put_file_system_policy <- function(FileSystemId, Policy, BypassPolicyLockout
 #' `LifecycleConfiguration` object (String).
 #' @param LifecyclePolicies &#91;required&#93; An array of `LifecyclePolicy` objects that define the file system's
 #' `LifecycleConfiguration` object. A `LifecycleConfiguration` object
-#' informs EFS Lifecycle management of the following:
+#' informs lifecycle management of the following:
 #' 
 #' -   **`TransitionToIA`** – When to move files in the file system from
 #'     primary storage (Standard storage class) into the Infrequent Access
@@ -1058,7 +1077,7 @@ efs_put_file_system_policy <- function(FileSystemId, Policy, BypassPolicyLockout
 #'     either not be set or must be later than TransitionToIA.
 #' 
 #'     The Archive storage class is available only for file systems that
-#'     use the Elastic Throughput mode and the General Purpose Performance
+#'     use the Elastic throughput mode and the General Purpose performance
 #'     mode.
 #' 
 #' -   **`TransitionToPrimaryStorageClass`** – Whether to move files in the
@@ -1227,8 +1246,8 @@ efs_update_file_system <- function(FileSystemId, ThroughputMode = NULL, Provisio
 #'     read-only and is only modified only by EFS replication.
 #' 
 #' If the replication configuration is deleted, the file system's
-#' replication overwrite protection is re-enabled, the file system becomes
-#' writeable.
+#' replication overwrite protection is re-enabled and the file system
+#' becomes writeable.
 #'
 #' @keywords internal
 #'

@@ -12,7 +12,8 @@ securitylake_create_data_lake_exception_subscription(
 )
 }
 \arguments{
-\item{exceptionTimeToLive}{The expiration period and time-to-live (TTL).}
+\item{exceptionTimeToLive}{The expiration period and time-to-live (TTL). It is the duration of time
+until which the exception message remains.}
 
 \item{notificationEndpoint}{[required] The Amazon Web Services account where you want to receive exception
 notifications.}
@@ -20,7 +21,7 @@ notifications.}
 \item{subscriptionProtocol}{[required] The subscription protocol to which exception notifications are posted.}
 }
 \description{
-Creates the specified notification subscription in Amazon Security Lake for the organization you specify.
+Creates the specified notification subscription in Amazon Security Lake for the organization you specify. The notification subscription is created for exceptions that cannot be resolved by Security Lake automatically.
 
 See \url{https://www.paws-r-sdk.com/docs/securitylake_create_data_lake_exception_subscription/} for full documentation.
 }

@@ -102,7 +102,8 @@ NULL
 #'  \link[=redshiftdataapiservice_describe_statement]{describe_statement} \tab Describes the details about a specific instance when a query was run by the Amazon Redshift Data API\cr
 #'  \link[=redshiftdataapiservice_describe_table]{describe_table} \tab Describes the detailed information about a table from metadata in the cluster\cr
 #'  \link[=redshiftdataapiservice_execute_statement]{execute_statement} \tab Runs an SQL statement, which can be data manipulation language (DML) or data definition language (DDL)\cr
-#'  \link[=redshiftdataapiservice_get_statement_result]{get_statement_result} \tab Fetches the temporarily cached result of an SQL statement\cr
+#'  \link[=redshiftdataapiservice_get_statement_result]{get_statement_result} \tab Fetches the temporarily cached result of an SQL statement in JSON format\cr
+#'  \link[=redshiftdataapiservice_get_statement_result_v2]{get_statement_result_v2} \tab Fetches the temporarily cached result of an SQL statement in CSV format\cr
 #'  \link[=redshiftdataapiservice_list_databases]{list_databases} \tab List the databases in a cluster\cr
 #'  \link[=redshiftdataapiservice_list_schemas]{list_schemas} \tab Lists the schemas in a database\cr
 #'  \link[=redshiftdataapiservice_list_statements]{list_statements} \tab List of SQL statements\cr
@@ -138,7 +139,7 @@ redshiftdataapiservice <- function(config = list(), credentials = list(), endpoi
 
 .redshiftdataapiservice$metadata <- list(
   service_name = "redshiftdataapiservice",
-  endpoints = list("*" = list(endpoint = "redshift-data.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "redshift-data.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "redshift-data.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "redshift-data.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "redshift-data.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "redshift-data.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "redshift-data.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "redshift-data.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "redshift-data.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "redshift-data.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "redshift-data.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "redshift-data.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "redshift-data.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Redshift Data",
   api_version = "2019-12-20",
   signing_name = "redshift-data",

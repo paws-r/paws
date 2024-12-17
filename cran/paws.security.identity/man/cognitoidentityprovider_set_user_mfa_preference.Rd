@@ -8,13 +8,23 @@ including which MFA factors are activated and if any are preferred}
 cognitoidentityprovider_set_user_mfa_preference(
   SMSMfaSettings = NULL,
   SoftwareTokenMfaSettings = NULL,
+  EmailMfaSettings = NULL,
   AccessToken
 )
 }
 \arguments{
-\item{SMSMfaSettings}{The SMS text message multi-factor authentication (MFA) settings.}
+\item{SMSMfaSettings}{User preferences for SMS message MFA. Activates or deactivates SMS MFA
+and sets it as the preferred MFA method when multiple methods are
+available.}
 
-\item{SoftwareTokenMfaSettings}{The time-based one-time password (TOTP) software token MFA settings.}
+\item{SoftwareTokenMfaSettings}{User preferences for time-based one-time password (TOTP) MFA. Activates
+or deactivates TOTP MFA and sets it as the preferred MFA method when
+multiple methods are available.}
+
+\item{EmailMfaSettings}{User preferences for email message MFA. Activates or deactivates email
+MFA and sets it as the preferred MFA method when multiple methods are
+available. To activate this setting, \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pool-settings-threat-protection.html}{advanced security features}
+must be active in your user pool.}
 
 \item{AccessToken}{[required] A valid access token that Amazon Cognito issued to the user whose MFA
 preference you want to set.}

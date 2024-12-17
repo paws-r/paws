@@ -156,11 +156,11 @@ emrserverless <- function(config = list(), credentials = list(), endpoint = NULL
 
 .emrserverless$metadata <- list(
   service_name = "emrserverless",
-  endpoints = list("*" = list(endpoint = "emr-serverless.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "emr-serverless.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "emr-serverless.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "emr-serverless.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "emr-serverless.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "emr-serverless.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "emr-serverless.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "emr-serverless.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "emr-serverless.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "emr-serverless.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "emr-serverless.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "emr-serverless.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "emr-serverless.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "EMR Serverless",
   api_version = "2021-07-13",
   signing_name = "emr-serverless",
-  json_version = "1.1",
+  json_version = "",
   target_prefix = ""
 )
 

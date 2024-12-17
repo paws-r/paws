@@ -13,10 +13,16 @@ guardduty_update_organization_configuration(
 )
 }
 \arguments{
-\item{DetectorId}{[required] The ID of the detector that configures the delegated administrator.}
+\item{DetectorId}{[required] The ID of the detector that configures the delegated administrator.
 
-\item{AutoEnable}{Represents whether or not to automatically enable member accounts in the
-organization.
+To find the \code{detectorId} in the current Region, see the Settings page in
+the GuardDuty console, or run the
+\code{\link[=guardduty_list_detectors]{list_detectors}} API.}
+
+\item{AutoEnable}{Represents whether to automatically enable member accounts in the
+organization. This applies to only new member accounts, not the existing
+member accounts. When a new account joins the organization, the chosen
+features will be enabled for them by default.
 
 Even though this is still supported, we recommend using
 \code{AutoEnableOrganizationMembers} to achieve the similar results. You must

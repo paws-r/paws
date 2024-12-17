@@ -13,7 +13,8 @@ resourcegroups_update_group_query(
 \arguments{
 \item{GroupName}{Don't use this parameter. Use \code{Group} instead.}
 
-\item{Group}{The name or the ARN of the resource group to query.}
+\item{Group}{The name or the Amazon resource name (ARN) of the resource group to
+query.}
 
 \item{ResourceQuery}{[required] The resource query to determine which Amazon Web Services resources are
 members of this resource group.

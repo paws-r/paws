@@ -5,13 +5,26 @@
 \title{Describes the specified Dedicated Hosts or all your Dedicated Hosts}
 \usage{
 ec2_describe_hosts(
-  Filter = NULL,
   HostIds = NULL,
+  NextToken = NULL,
   MaxResults = NULL,
-  NextToken = NULL
+  Filter = NULL
 )
 }
 \arguments{
+\item{HostIds}{The IDs of the Dedicated Hosts. The IDs are used for targeted instance
+launches.}
+
+\item{NextToken}{The token to use to retrieve the next page of results.}
+
+\item{MaxResults}{The maximum number of results to return for the request in a single
+page. The remaining results can be seen by sending another request with
+the returned \code{nextToken} value. This value can be between 5 and 500. If
+\code{maxResults} is given a larger value than 500, you receive an error.
+
+You cannot specify this parameter and the host IDs parameter in the same
+request.}
+
 \item{Filter}{The filters.
 \itemize{
 \item \code{auto-placement} - Whether auto-placement is enabled or disabled
@@ -30,19 +43,6 @@ configured to support.
 filter to find all resources assigned a tag with a specific key,
 regardless of the tag value.
 }}
-
-\item{HostIds}{The IDs of the Dedicated Hosts. The IDs are used for targeted instance
-launches.}
-
-\item{MaxResults}{The maximum number of results to return for the request in a single
-page. The remaining results can be seen by sending another request with
-the returned \code{nextToken} value. This value can be between 5 and 500. If
-\code{maxResults} is given a larger value than 500, you receive an error.
-
-You cannot specify this parameter and the host IDs parameter in the same
-request.}
-
-\item{NextToken}{The token to use to retrieve the next page of results.}
 }
 \description{
 Describes the specified Dedicated Hosts or all your Dedicated Hosts.

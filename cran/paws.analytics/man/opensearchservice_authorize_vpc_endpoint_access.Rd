@@ -5,12 +5,18 @@
 \title{Provides access to an Amazon OpenSearch Service domain through the use
 of an interface VPC endpoint}
 \usage{
-opensearchservice_authorize_vpc_endpoint_access(DomainName, Account)
+opensearchservice_authorize_vpc_endpoint_access(
+  DomainName,
+  Account = NULL,
+  Service = NULL
+)
 }
 \arguments{
 \item{DomainName}{[required] The name of the OpenSearch Service domain to provide access to.}
 
-\item{Account}{[required] The Amazon Web Services account ID to grant access to.}
+\item{Account}{The Amazon Web Services account ID to grant access to.}
+
+\item{Service}{The Amazon Web Services service SP to grant access to.}
 }
 \description{
 Provides access to an Amazon OpenSearch Service domain through the use of an interface VPC endpoint.

@@ -15,3 +15,11 @@ test_that("list_groups", {
 test_that("list_groups", {
   expect_error(svc$list_groups(MaxResults = 20), NA)
 })
+
+test_that("list_tag_sync_tasks", {
+  expect_error(svc$list_tag_sync_tasks(), NA)
+})
+
+test_that("list_tag_sync_tasks", {
+  expect_error(svc$list_tag_sync_tasks(MaxResults = 20), NA)
+})

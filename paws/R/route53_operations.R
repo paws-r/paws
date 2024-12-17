@@ -131,7 +131,7 @@ route53_activate_key_signing_key <- function(HostedZoneId, Name) {
 #' svc$associate_vpc_with_hosted_zone(
 #'   HostedZoneId = "string",
 #'   VPC = list(
-#'     VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"eu-central-2"|"ap-east-1"|"me-south-1"|"us-gov-west-1"|"us-gov-east-1"|"us-iso-east-1"|"us-iso-west-1"|"us-isob-east-1"|"me-central-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-southeast-3"|"ap-south-1"|"ap-south-2"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"ca-central-1"|"cn-north-1"|"af-south-1"|"eu-south-1"|"eu-south-2"|"ap-southeast-4"|"il-central-1"|"ca-west-1"|"ap-southeast-5",
+#'     VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"eu-central-2"|"ap-east-1"|"me-south-1"|"us-gov-west-1"|"us-gov-east-1"|"us-iso-east-1"|"us-iso-west-1"|"us-isob-east-1"|"me-central-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-southeast-3"|"ap-south-1"|"ap-south-2"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"ca-central-1"|"cn-north-1"|"cn-northwest-1"|"af-south-1"|"eu-south-1"|"eu-south-2"|"ap-southeast-4"|"il-central-1"|"ca-west-1"|"ap-southeast-5",
 #'     VPCId = "string"
 #'   ),
 #'   Comment = "string"
@@ -408,7 +408,7 @@ route53_change_cidr_collection <- function(Id, CollectionVersion = NULL, Changes
 #'         Action = "CREATE"|"DELETE"|"UPSERT",
 #'         ResourceRecordSet = list(
 #'           Name = "string",
-#'           Type = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS",
+#'           Type = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS"|"TLSA"|"SSHFP"|"SVCB"|"HTTPS",
 #'           SetIdentifier = "string",
 #'           Weight = 123,
 #'           Region = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"ca-central-1"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"eu-central-2"|"ap-southeast-1"|"ap-southeast-2"|"ap-southeast-3"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"cn-north-1"|"cn-northwest-1"|"ap-east-1"|"me-south-1"|"me-central-1"|"ap-south-1"|"ap-south-2"|"af-south-1"|"eu-south-1"|"eu-south-2"|"ap-southeast-4"|"il-central-1"|"ca-west-1"|"ap-southeast-5",
@@ -1443,7 +1443,7 @@ route53_create_health_check <- function(CallerReference, HealthCheckConfig) {
 #'     )
 #'   ),
 #'   VPC = list(
-#'     VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"eu-central-2"|"ap-east-1"|"me-south-1"|"us-gov-west-1"|"us-gov-east-1"|"us-iso-east-1"|"us-iso-west-1"|"us-isob-east-1"|"me-central-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-southeast-3"|"ap-south-1"|"ap-south-2"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"ca-central-1"|"cn-north-1"|"af-south-1"|"eu-south-1"|"eu-south-2"|"ap-southeast-4"|"il-central-1"|"ca-west-1"|"ap-southeast-5",
+#'     VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"eu-central-2"|"ap-east-1"|"me-south-1"|"us-gov-west-1"|"us-gov-east-1"|"us-iso-east-1"|"us-iso-west-1"|"us-isob-east-1"|"me-central-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-southeast-3"|"ap-south-1"|"ap-south-2"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"ca-central-1"|"cn-north-1"|"cn-northwest-1"|"af-south-1"|"eu-south-1"|"eu-south-2"|"ap-southeast-4"|"il-central-1"|"ca-west-1"|"ap-southeast-5",
 #'     VPCId = "string"
 #'   ),
 #'   Location = "string"
@@ -1455,7 +1455,7 @@ route53_create_health_check <- function(CallerReference, HealthCheckConfig) {
 #' svc$create_hosted_zone(
 #'   Name = "string",
 #'   VPC = list(
-#'     VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"eu-central-2"|"ap-east-1"|"me-south-1"|"us-gov-west-1"|"us-gov-east-1"|"us-iso-east-1"|"us-iso-west-1"|"us-isob-east-1"|"me-central-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-southeast-3"|"ap-south-1"|"ap-south-2"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"ca-central-1"|"cn-north-1"|"af-south-1"|"eu-south-1"|"eu-south-2"|"ap-southeast-4"|"il-central-1"|"ca-west-1"|"ap-southeast-5",
+#'     VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"eu-central-2"|"ap-east-1"|"me-south-1"|"us-gov-west-1"|"us-gov-east-1"|"us-iso-east-1"|"us-iso-west-1"|"us-isob-east-1"|"me-central-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-southeast-3"|"ap-south-1"|"ap-south-2"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"ca-central-1"|"cn-north-1"|"cn-northwest-1"|"af-south-1"|"eu-south-1"|"eu-south-2"|"ap-southeast-4"|"il-central-1"|"ca-west-1"|"ap-southeast-5",
 #'     VPCId = "string"
 #'   ),
 #'   CallerReference = "string",
@@ -1671,11 +1671,12 @@ route53_create_key_signing_key <- function(CallerReference, HostedZoneId, KeyMan
 #' 
 #' 2.  Create a CloudWatch Logs resource policy, and give it the
 #'     permissions that Route 53 needs to create log streams and to send
-#'     query logs to log streams. For the value of `Resource`, specify the
-#'     ARN for the log group that you created in the previous step. To use
-#'     the same resource policy for all the CloudWatch Logs log groups that
-#'     you created for query logging configurations, replace the hosted
-#'     zone name with `*`, for example:
+#'     query logs to log streams. You must create the CloudWatch Logs
+#'     resource policy in the us-east-1 region. For the value of
+#'     `Resource`, specify the ARN for the log group that you created in
+#'     the previous step. To use the same resource policy for all the
+#'     CloudWatch Logs log groups that you created for query logging
+#'     configurations, replace the hosted zone name with `*`, for example:
 #' 
 #'     `arn:aws:logs:us-east-1:123412341234:log-group:/aws/route53/*`
 #' 
@@ -1967,7 +1968,7 @@ route53_create_reusable_delegation_set <- function(CallerReference, HostedZoneId
 #'     Id = "string",
 #'     Version = 123,
 #'     Name = "string",
-#'     Type = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS",
+#'     Type = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS"|"TLSA"|"SSHFP"|"SVCB"|"HTTPS",
 #'     Document = "string",
 #'     Comment = "string"
 #'   ),
@@ -2063,7 +2064,7 @@ route53_create_traffic_policy <- function(Name, Document, Comment = NULL) {
 #'     Message = "string",
 #'     TrafficPolicyId = "string",
 #'     TrafficPolicyVersion = 123,
-#'     TrafficPolicyType = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS"
+#'     TrafficPolicyType = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS"|"TLSA"|"SSHFP"|"SVCB"|"HTTPS"
 #'   ),
 #'   Location = "string"
 #' )
@@ -2137,7 +2138,7 @@ route53_create_traffic_policy_instance <- function(HostedZoneId, Name, TTL, Traf
 #'     Id = "string",
 #'     Version = 123,
 #'     Name = "string",
-#'     Type = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS",
+#'     Type = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS"|"TLSA"|"SSHFP"|"SVCB"|"HTTPS",
 #'     Document = "string",
 #'     Comment = "string"
 #'   ),
@@ -2213,7 +2214,7 @@ route53_create_traffic_policy_version <- function(Id, Document, Comment = NULL) 
 #' list(
 #'   HostedZoneId = "string",
 #'   VPC = list(
-#'     VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"eu-central-2"|"ap-east-1"|"me-south-1"|"us-gov-west-1"|"us-gov-east-1"|"us-iso-east-1"|"us-iso-west-1"|"us-isob-east-1"|"me-central-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-southeast-3"|"ap-south-1"|"ap-south-2"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"ca-central-1"|"cn-north-1"|"af-south-1"|"eu-south-1"|"eu-south-2"|"ap-southeast-4"|"il-central-1"|"ca-west-1"|"ap-southeast-5",
+#'     VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"eu-central-2"|"ap-east-1"|"me-south-1"|"us-gov-west-1"|"us-gov-east-1"|"us-iso-east-1"|"us-iso-west-1"|"us-isob-east-1"|"me-central-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-southeast-3"|"ap-south-1"|"ap-south-2"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"ca-central-1"|"cn-north-1"|"cn-northwest-1"|"af-south-1"|"eu-south-1"|"eu-south-2"|"ap-southeast-4"|"il-central-1"|"ca-west-1"|"ap-southeast-5",
 #'     VPCId = "string"
 #'   )
 #' )
@@ -2224,7 +2225,7 @@ route53_create_traffic_policy_version <- function(Id, Document, Comment = NULL) 
 #' svc$create_vpc_association_authorization(
 #'   HostedZoneId = "string",
 #'   VPC = list(
-#'     VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"eu-central-2"|"ap-east-1"|"me-south-1"|"us-gov-west-1"|"us-gov-east-1"|"us-iso-east-1"|"us-iso-west-1"|"us-isob-east-1"|"me-central-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-southeast-3"|"ap-south-1"|"ap-south-2"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"ca-central-1"|"cn-north-1"|"af-south-1"|"eu-south-1"|"eu-south-2"|"ap-southeast-4"|"il-central-1"|"ca-west-1"|"ap-southeast-5",
+#'     VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"eu-central-2"|"ap-east-1"|"me-south-1"|"us-gov-west-1"|"us-gov-east-1"|"us-iso-east-1"|"us-iso-west-1"|"us-isob-east-1"|"me-central-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-southeast-3"|"ap-south-1"|"ap-south-2"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"ca-central-1"|"cn-north-1"|"cn-northwest-1"|"af-south-1"|"eu-south-1"|"eu-south-2"|"ap-southeast-4"|"il-central-1"|"ca-west-1"|"ap-southeast-5",
 #'     VPCId = "string"
 #'   )
 #' )
@@ -2850,7 +2851,7 @@ route53_delete_traffic_policy_instance <- function(Id) {
 #' svc$delete_vpc_association_authorization(
 #'   HostedZoneId = "string",
 #'   VPC = list(
-#'     VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"eu-central-2"|"ap-east-1"|"me-south-1"|"us-gov-west-1"|"us-gov-east-1"|"us-iso-east-1"|"us-iso-west-1"|"us-isob-east-1"|"me-central-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-southeast-3"|"ap-south-1"|"ap-south-2"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"ca-central-1"|"cn-north-1"|"af-south-1"|"eu-south-1"|"eu-south-2"|"ap-southeast-4"|"il-central-1"|"ca-west-1"|"ap-southeast-5",
+#'     VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"eu-central-2"|"ap-east-1"|"me-south-1"|"us-gov-west-1"|"us-gov-east-1"|"us-iso-east-1"|"us-iso-west-1"|"us-isob-east-1"|"me-central-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-southeast-3"|"ap-south-1"|"ap-south-2"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"ca-central-1"|"cn-north-1"|"cn-northwest-1"|"af-south-1"|"eu-south-1"|"eu-south-2"|"ap-southeast-4"|"il-central-1"|"ca-west-1"|"ap-southeast-5",
 #'     VPCId = "string"
 #'   )
 #' )
@@ -3014,7 +3015,7 @@ route53_disable_hosted_zone_dnssec <- function(HostedZoneId) {
 #' svc$disassociate_vpc_from_hosted_zone(
 #'   HostedZoneId = "string",
 #'   VPC = list(
-#'     VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"eu-central-2"|"ap-east-1"|"me-south-1"|"us-gov-west-1"|"us-gov-east-1"|"us-iso-east-1"|"us-iso-west-1"|"us-isob-east-1"|"me-central-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-southeast-3"|"ap-south-1"|"ap-south-2"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"ca-central-1"|"cn-north-1"|"af-south-1"|"eu-south-1"|"eu-south-2"|"ap-southeast-4"|"il-central-1"|"ca-west-1"|"ap-southeast-5",
+#'     VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"eu-central-2"|"ap-east-1"|"me-south-1"|"us-gov-west-1"|"us-gov-east-1"|"us-iso-east-1"|"us-iso-west-1"|"us-isob-east-1"|"me-central-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-southeast-3"|"ap-south-1"|"ap-south-2"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"ca-central-1"|"cn-north-1"|"cn-northwest-1"|"af-south-1"|"eu-south-1"|"eu-south-2"|"ap-southeast-4"|"il-central-1"|"ca-west-1"|"ap-southeast-5",
 #'     VPCId = "string"
 #'   ),
 #'   Comment = "string"
@@ -3790,6 +3791,12 @@ route53_get_health_check_status <- function(HealthCheckId) {
 #' @description
 #' Gets information about a specified hosted zone including the four name
 #' servers assigned to the hosted zone.
+#' 
+#' `` returns the VPCs associated with the specified hosted zone and does
+#' not reflect the VPC associations by Route 53 Profiles. To get the
+#' associations to a Profile, call the
+#' [ListProfileAssociations](https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53profiles_ListProfileAssociations.html)
+#' API.
 #'
 #' @usage
 #' route53_get_hosted_zone(Id)
@@ -3823,7 +3830,7 @@ route53_get_health_check_status <- function(HealthCheckId) {
 #'   ),
 #'   VPCs = list(
 #'     list(
-#'       VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"eu-central-2"|"ap-east-1"|"me-south-1"|"us-gov-west-1"|"us-gov-east-1"|"us-iso-east-1"|"us-iso-west-1"|"us-isob-east-1"|"me-central-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-southeast-3"|"ap-south-1"|"ap-south-2"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"ca-central-1"|"cn-north-1"|"af-south-1"|"eu-south-1"|"eu-south-2"|"ap-southeast-4"|"il-central-1"|"ca-west-1"|"ap-southeast-5",
+#'       VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"eu-central-2"|"ap-east-1"|"me-south-1"|"us-gov-west-1"|"us-gov-east-1"|"us-iso-east-1"|"us-iso-west-1"|"us-isob-east-1"|"me-central-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-southeast-3"|"ap-south-1"|"ap-south-2"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"ca-central-1"|"cn-north-1"|"cn-northwest-1"|"af-south-1"|"eu-south-1"|"eu-south-2"|"ap-southeast-4"|"il-central-1"|"ca-west-1"|"ap-southeast-5",
 #'       VPCId = "string"
 #'     )
 #'   )
@@ -4192,7 +4199,7 @@ route53_get_reusable_delegation_set_limit <- function(Type, DelegationSetId) {
 #'     Id = "string",
 #'     Version = 123,
 #'     Name = "string",
-#'     Type = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS",
+#'     Type = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS"|"TLSA"|"SSHFP"|"SVCB"|"HTTPS",
 #'     Document = "string",
 #'     Comment = "string"
 #'   )
@@ -4266,7 +4273,7 @@ route53_get_traffic_policy <- function(Id, Version) {
 #'     Message = "string",
 #'     TrafficPolicyId = "string",
 #'     TrafficPolicyVersion = 123,
-#'     TrafficPolicyType = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS"
+#'     TrafficPolicyType = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS"|"TLSA"|"SSHFP"|"SVCB"|"HTTPS"
 #'   )
 #' )
 #' ```
@@ -4758,7 +4765,7 @@ route53_list_health_checks <- function(Marker = NULL, MaxItems = NULL) {
     http_method = "GET",
     http_path = "/2013-04-01/healthcheck",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "NextMarker", result_key = "HealthChecks"),
+    paginator = list(input_token = "Marker", output_token = "NextMarker", more_results = "IsTruncated", limit_key = "MaxItems", result_key = "HealthChecks"),
     stream_api = FALSE
   )
   input <- .route53$list_health_checks_input(Marker = Marker, MaxItems = MaxItems)
@@ -4855,7 +4862,7 @@ route53_list_hosted_zones <- function(Marker = NULL, MaxItems = NULL, Delegation
     http_method = "GET",
     http_path = "/2013-04-01/hostedzone",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "NextMarker", result_key = "HostedZones"),
+    paginator = list(input_token = "Marker", output_token = "NextMarker", more_results = "IsTruncated", limit_key = "MaxItems", result_key = "HostedZones"),
     stream_api = FALSE
   )
   input <- .route53$list_hosted_zones_input(Marker = Marker, MaxItems = MaxItems, DelegationSetId = DelegationSetId, HostedZoneType = HostedZoneType)
@@ -5042,6 +5049,13 @@ route53_list_hosted_zones_by_name <- function(DNSName = NULL, HostedZoneId = NUL
 #'     hosted zone was created by Amazon Elastic File System (Amazon EFS),
 #'     the value of `Owner` is `efs.amazonaws.com`.
 #' 
+#' [`list_hosted_zones_by_vpc`][route53_list_hosted_zones_by_vpc] returns
+#' the hosted zones associated with the specified VPC and does not reflect
+#' the hosted zone associations to VPCs via Route 53 Profiles. To get the
+#' associations to a Profile, call the
+#' [ListProfileResourceAssociations](https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53profiles_ListProfileResourceAssociations.html)
+#' API.
+#' 
 #' When listing private hosted zones, the hosted zone and the Amazon VPC
 #' must belong to the same partition where the hosted zones were created. A
 #' partition is a group of Amazon Web Services Regions. Each Amazon Web
@@ -5104,7 +5118,7 @@ route53_list_hosted_zones_by_name <- function(DNSName = NULL, HostedZoneId = NUL
 #' ```
 #' svc$list_hosted_zones_by_vpc(
 #'   VPCId = "string",
-#'   VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"eu-central-2"|"ap-east-1"|"me-south-1"|"us-gov-west-1"|"us-gov-east-1"|"us-iso-east-1"|"us-iso-west-1"|"us-isob-east-1"|"me-central-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-southeast-3"|"ap-south-1"|"ap-south-2"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"ca-central-1"|"cn-north-1"|"af-south-1"|"eu-south-1"|"eu-south-2"|"ap-southeast-4"|"il-central-1"|"ca-west-1"|"ap-southeast-5",
+#'   VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"eu-central-2"|"ap-east-1"|"me-south-1"|"us-gov-west-1"|"us-gov-east-1"|"us-iso-east-1"|"us-iso-west-1"|"us-isob-east-1"|"me-central-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-southeast-3"|"ap-south-1"|"ap-south-2"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"ca-central-1"|"cn-north-1"|"cn-northwest-1"|"af-south-1"|"eu-south-1"|"eu-south-2"|"ap-southeast-4"|"il-central-1"|"ca-west-1"|"ap-southeast-5",
 #'   MaxItems = "string",
 #'   NextToken = "string"
 #' )
@@ -5363,7 +5377,7 @@ route53_list_query_logging_configs <- function(HostedZoneId = NULL, NextToken = 
 #'   ResourceRecordSets = list(
 #'     list(
 #'       Name = "string",
-#'       Type = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS",
+#'       Type = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS"|"TLSA"|"SSHFP"|"SVCB"|"HTTPS",
 #'       SetIdentifier = "string",
 #'       Weight = 123,
 #'       Region = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"ca-central-1"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"eu-central-2"|"ap-southeast-1"|"ap-southeast-2"|"ap-southeast-3"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"cn-north-1"|"cn-northwest-1"|"ap-east-1"|"me-south-1"|"me-central-1"|"ap-south-1"|"ap-south-2"|"af-south-1"|"eu-south-1"|"eu-south-2"|"ap-southeast-4"|"il-central-1"|"ca-west-1"|"ap-southeast-5",
@@ -5404,7 +5418,7 @@ route53_list_query_logging_configs <- function(HostedZoneId = NULL, NextToken = 
 #'   ),
 #'   IsTruncated = TRUE|FALSE,
 #'   NextRecordName = "string",
-#'   NextRecordType = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS",
+#'   NextRecordType = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS"|"TLSA"|"SSHFP"|"SVCB"|"HTTPS",
 #'   NextRecordIdentifier = "string",
 #'   MaxItems = "string"
 #' )
@@ -5415,7 +5429,7 @@ route53_list_query_logging_configs <- function(HostedZoneId = NULL, NextToken = 
 #' svc$list_resource_record_sets(
 #'   HostedZoneId = "string",
 #'   StartRecordName = "string",
-#'   StartRecordType = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS",
+#'   StartRecordType = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS"|"TLSA"|"SSHFP"|"SVCB"|"HTTPS",
 #'   StartRecordIdentifier = "string",
 #'   MaxItems = "string"
 #' )
@@ -5432,7 +5446,7 @@ route53_list_resource_record_sets <- function(HostedZoneId, StartRecordName = NU
     http_method = "GET",
     http_path = "/2013-04-01/hostedzone/{Id}/rrset",
     host_prefix = "",
-    paginator = list(input_token = list("StartRecordName", "StartRecordType", "StartRecordIdentifier"), limit_key = "MaxItems", more_results = "IsTruncated", output_token = c("NextRecordName", "NextRecordType", "NextRecordIdentifier" ), result_key = "ResourceRecordSets"),
+    paginator = list(more_results = "IsTruncated", limit_key = "MaxItems", result_key = "ResourceRecordSets", input_token = list("StartRecordName", "StartRecordType", "StartRecordIdentifier"), output_token = c("NextRecordName", "NextRecordType", "NextRecordIdentifier")),
     stream_api = FALSE
   )
   input <- .route53$list_resource_record_sets_input(HostedZoneId = HostedZoneId, StartRecordName = StartRecordName, StartRecordType = StartRecordType, StartRecordIdentifier = StartRecordIdentifier, MaxItems = MaxItems)
@@ -5706,7 +5720,7 @@ route53_list_tags_for_resources <- function(ResourceType, ResourceIds) {
 #'     list(
 #'       Id = "string",
 #'       Name = "string",
-#'       Type = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS",
+#'       Type = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS"|"TLSA"|"SSHFP"|"SVCB"|"HTTPS",
 #'       LatestVersion = 123,
 #'       TrafficPolicyCount = 123
 #'     )
@@ -5827,12 +5841,12 @@ route53_list_traffic_policies <- function(TrafficPolicyIdMarker = NULL, MaxItems
 #'       Message = "string",
 #'       TrafficPolicyId = "string",
 #'       TrafficPolicyVersion = 123,
-#'       TrafficPolicyType = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS"
+#'       TrafficPolicyType = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS"|"TLSA"|"SSHFP"|"SVCB"|"HTTPS"
 #'     )
 #'   ),
 #'   HostedZoneIdMarker = "string",
 #'   TrafficPolicyInstanceNameMarker = "string",
-#'   TrafficPolicyInstanceTypeMarker = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS",
+#'   TrafficPolicyInstanceTypeMarker = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS"|"TLSA"|"SSHFP"|"SVCB"|"HTTPS",
 #'   IsTruncated = TRUE|FALSE,
 #'   MaxItems = "string"
 #' )
@@ -5843,7 +5857,7 @@ route53_list_traffic_policies <- function(TrafficPolicyIdMarker = NULL, MaxItems
 #' svc$list_traffic_policy_instances(
 #'   HostedZoneIdMarker = "string",
 #'   TrafficPolicyInstanceNameMarker = "string",
-#'   TrafficPolicyInstanceTypeMarker = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS",
+#'   TrafficPolicyInstanceTypeMarker = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS"|"TLSA"|"SSHFP"|"SVCB"|"HTTPS",
 #'   MaxItems = "string"
 #' )
 #' ```
@@ -5942,11 +5956,11 @@ route53_list_traffic_policy_instances <- function(HostedZoneIdMarker = NULL, Tra
 #'       Message = "string",
 #'       TrafficPolicyId = "string",
 #'       TrafficPolicyVersion = 123,
-#'       TrafficPolicyType = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS"
+#'       TrafficPolicyType = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS"|"TLSA"|"SSHFP"|"SVCB"|"HTTPS"
 #'     )
 #'   ),
 #'   TrafficPolicyInstanceNameMarker = "string",
-#'   TrafficPolicyInstanceTypeMarker = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS",
+#'   TrafficPolicyInstanceTypeMarker = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS"|"TLSA"|"SSHFP"|"SVCB"|"HTTPS",
 #'   IsTruncated = TRUE|FALSE,
 #'   MaxItems = "string"
 #' )
@@ -5957,7 +5971,7 @@ route53_list_traffic_policy_instances <- function(HostedZoneIdMarker = NULL, Tra
 #' svc$list_traffic_policy_instances_by_hosted_zone(
 #'   HostedZoneId = "string",
 #'   TrafficPolicyInstanceNameMarker = "string",
-#'   TrafficPolicyInstanceTypeMarker = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS",
+#'   TrafficPolicyInstanceTypeMarker = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS"|"TLSA"|"SSHFP"|"SVCB"|"HTTPS",
 #'   MaxItems = "string"
 #' )
 #' ```
@@ -6077,12 +6091,12 @@ route53_list_traffic_policy_instances_by_hosted_zone <- function(HostedZoneId, T
 #'       Message = "string",
 #'       TrafficPolicyId = "string",
 #'       TrafficPolicyVersion = 123,
-#'       TrafficPolicyType = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS"
+#'       TrafficPolicyType = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS"|"TLSA"|"SSHFP"|"SVCB"|"HTTPS"
 #'     )
 #'   ),
 #'   HostedZoneIdMarker = "string",
 #'   TrafficPolicyInstanceNameMarker = "string",
-#'   TrafficPolicyInstanceTypeMarker = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS",
+#'   TrafficPolicyInstanceTypeMarker = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS"|"TLSA"|"SSHFP"|"SVCB"|"HTTPS",
 #'   IsTruncated = TRUE|FALSE,
 #'   MaxItems = "string"
 #' )
@@ -6095,7 +6109,7 @@ route53_list_traffic_policy_instances_by_hosted_zone <- function(HostedZoneId, T
 #'   TrafficPolicyVersion = 123,
 #'   HostedZoneIdMarker = "string",
 #'   TrafficPolicyInstanceNameMarker = "string",
-#'   TrafficPolicyInstanceTypeMarker = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS",
+#'   TrafficPolicyInstanceTypeMarker = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS"|"TLSA"|"SSHFP"|"SVCB"|"HTTPS",
 #'   MaxItems = "string"
 #' )
 #' ```
@@ -6167,7 +6181,7 @@ route53_list_traffic_policy_instances_by_policy <- function(TrafficPolicyId, Tra
 #'       Id = "string",
 #'       Version = 123,
 #'       Name = "string",
-#'       Type = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS",
+#'       Type = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS"|"TLSA"|"SSHFP"|"SVCB"|"HTTPS",
 #'       Document = "string",
 #'       Comment = "string"
 #'     )
@@ -6249,7 +6263,7 @@ route53_list_traffic_policy_versions <- function(Id, TrafficPolicyVersionMarker 
 #'   NextToken = "string",
 #'   VPCs = list(
 #'     list(
-#'       VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"eu-central-2"|"ap-east-1"|"me-south-1"|"us-gov-west-1"|"us-gov-east-1"|"us-iso-east-1"|"us-iso-west-1"|"us-isob-east-1"|"me-central-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-southeast-3"|"ap-south-1"|"ap-south-2"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"ca-central-1"|"cn-north-1"|"af-south-1"|"eu-south-1"|"eu-south-2"|"ap-southeast-4"|"il-central-1"|"ca-west-1"|"ap-southeast-5",
+#'       VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"eu-central-2"|"ap-east-1"|"me-south-1"|"us-gov-west-1"|"us-gov-east-1"|"us-iso-east-1"|"us-iso-west-1"|"us-isob-east-1"|"me-central-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-southeast-3"|"ap-south-1"|"ap-south-2"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"ca-central-1"|"cn-north-1"|"cn-northwest-1"|"af-south-1"|"eu-south-1"|"eu-south-2"|"ap-southeast-4"|"il-central-1"|"ca-west-1"|"ap-southeast-5",
 #'       VPCId = "string"
 #'     )
 #'   )
@@ -6276,7 +6290,7 @@ route53_list_vpc_association_authorizations <- function(HostedZoneId, NextToken 
     http_method = "GET",
     http_path = "/2013-04-01/hostedzone/{Id}/authorizevpcassociation",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", non_aggregate_keys = list( "HostedZoneId"), result_key = list("VPCs")),
     stream_api = FALSE
   )
   input <- .route53$list_vpc_association_authorizations_input(HostedZoneId = HostedZoneId, NextToken = NextToken, MaxResults = MaxResults)
@@ -6342,7 +6356,7 @@ route53_list_vpc_association_authorizations <- function(HostedZoneId, NextToken 
 #' list(
 #'   Nameserver = "string",
 #'   RecordName = "string",
-#'   RecordType = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS",
+#'   RecordType = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS"|"TLSA"|"SSHFP"|"SVCB"|"HTTPS",
 #'   RecordData = list(
 #'     "string"
 #'   ),
@@ -6356,7 +6370,7 @@ route53_list_vpc_association_authorizations <- function(HostedZoneId, NextToken 
 #' svc$test_dns_answer(
 #'   HostedZoneId = "string",
 #'   RecordName = "string",
-#'   RecordType = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS",
+#'   RecordType = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS"|"TLSA"|"SSHFP"|"SVCB"|"HTTPS",
 #'   ResolverIP = "string",
 #'   EDNS0ClientSubnetIP = "string",
 #'   EDNS0ClientSubnetMask = "string"
@@ -6881,7 +6895,7 @@ route53_update_hosted_zone_comment <- function(Id, Comment = NULL) {
 #'     Id = "string",
 #'     Version = 123,
 #'     Name = "string",
-#'     Type = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS",
+#'     Type = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS"|"TLSA"|"SSHFP"|"SVCB"|"HTTPS",
 #'     Document = "string",
 #'     Comment = "string"
 #'   )
@@ -6982,7 +6996,7 @@ route53_update_traffic_policy_comment <- function(Id, Version, Comment) {
 #'     Message = "string",
 #'     TrafficPolicyId = "string",
 #'     TrafficPolicyVersion = 123,
-#'     TrafficPolicyType = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS"
+#'     TrafficPolicyType = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS"|"TLSA"|"SSHFP"|"SVCB"|"HTTPS"
 #'   )
 #' )
 #' ```

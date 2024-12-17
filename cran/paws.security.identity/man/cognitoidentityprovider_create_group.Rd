@@ -13,13 +13,19 @@ cognitoidentityprovider_create_group(
 )
 }
 \arguments{
-\item{GroupName}{[required] The name of the group. Must be unique.}
+\item{GroupName}{[required] A name for the group. This name must be unique in your user pool.}
 
-\item{UserPoolId}{[required] The user pool ID for the user pool.}
+\item{UserPoolId}{[required] The ID of the user pool where you want to create a user group.}
 
-\item{Description}{A string containing the description of the group.}
+\item{Description}{A description of the group that you're creating.}
 
-\item{RoleArn}{The role Amazon Resource Name (ARN) for the group.}
+\item{RoleArn}{The Amazon Resource Name (ARN) for the IAM role that you want to
+associate with the group. A group role primarily declares a preferred
+role for the credentials that you get from an identity pool. Amazon
+Cognito ID tokens have a \code{cognito:preferred_role} claim that presents
+the highest-precedence group that a user belongs to. Both ID and access
+tokens also contain a \code{cognito:groups} claim that list all the groups
+that a user is a member of.}
 
 \item{Precedence}{A non-negative integer value that specifies the precedence of this group
 relative to the other groups that a user can belong to in the user pool.
@@ -40,7 +46,7 @@ The default \code{Precedence} value is null. The maximum \code{Precedence} value
 is \code{2^31-1}.}
 }
 \description{
-Creates a new group in the specified user pool.
+Creates a new group in the specified user pool. For more information about user pool groups see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-user-groups.html}{Adding groups to a user pool}.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_create_group/} for full documentation.
 }

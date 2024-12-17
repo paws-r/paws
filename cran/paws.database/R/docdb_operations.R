@@ -2052,7 +2052,7 @@ docdb_list_tags_for_resource <- function(ResourceName, Filters = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "TagList"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .docdb$list_tags_for_resource_input(ResourceName = ResourceName, Filters = Filters)

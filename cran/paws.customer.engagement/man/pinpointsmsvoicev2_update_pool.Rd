@@ -17,7 +17,10 @@ pinpointsmsvoicev2_update_pool(
 }
 \arguments{
 \item{PoolId}{[required] The unique identifier of the pool to update. Valid values are either the
-PoolId or PoolArn.}
+PoolId or PoolArn.
+
+If you are using a shared AWS End User Messaging SMS and Voice resource
+then you must use the full Amazon Resource Name(ARN).}
 
 \item{TwoWayEnabled}{By default this is set to false. When set to true you can receive
 incoming text messages from your end recipients.}
@@ -35,7 +38,10 @@ you're responsible for responding to HELP and STOP requests. You're also
 responsible for tracking and honoring opt-out requests.}
 
 \item{OptOutListName}{The OptOutList to associate with the pool. Valid values are either
-OptOutListName or OptOutListArn.}
+OptOutListName or OptOutListArn.
+
+If you are using a shared AWS End User Messaging SMS and Voice resource
+then you must use the full Amazon Resource Name(ARN).}
 
 \item{SharedRoutesEnabled}{Indicates whether shared routes are enabled for the pool.}
 

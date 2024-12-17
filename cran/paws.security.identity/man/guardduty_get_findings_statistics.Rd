@@ -2,24 +2,43 @@
 % Please edit documentation in R/guardduty_operations.R
 \name{guardduty_get_findings_statistics}
 \alias{guardduty_get_findings_statistics}
-\title{Lists Amazon GuardDuty findings statistics for the specified detector ID}
+\title{Lists GuardDuty findings statistics for the specified detector ID}
 \usage{
 guardduty_get_findings_statistics(
   DetectorId,
-  FindingStatisticTypes,
-  FindingCriteria = NULL
+  FindingStatisticTypes = NULL,
+  FindingCriteria = NULL,
+  GroupBy = NULL,
+  OrderBy = NULL,
+  MaxResults = NULL
 )
 }
 \arguments{
-\item{DetectorId}{[required] The ID of the detector that specifies the GuardDuty service whose
-findings' statistics you want to retrieve.}
+\item{DetectorId}{[required] The ID of the detector whose findings statistics you want to retrieve.
 
-\item{FindingStatisticTypes}{[required] The types of finding statistics to retrieve.}
+To find the \code{detectorId} in the current Region, see the Settings page in
+the GuardDuty console, or run the
+\code{\link[=guardduty_list_detectors]{list_detectors}} API.}
+
+\item{FindingStatisticTypes}{The types of finding statistics to retrieve.}
 
 \item{FindingCriteria}{Represents the criteria that is used for querying findings.}
+
+\item{GroupBy}{Displays the findings statistics grouped by one of the listed valid
+values.}
+
+\item{OrderBy}{Displays the sorted findings in the requested order. The default value
+of \code{orderBy} is \code{DESC}.
+
+You can use this parameter only with the \code{groupBy} parameter.}
+
+\item{MaxResults}{The maximum number of results to be returned in the response. The
+default value is 25.
+
+You can use this parameter only with the \code{groupBy} parameter.}
 }
 \description{
-Lists Amazon GuardDuty findings statistics for the specified detector ID.
+Lists GuardDuty findings statistics for the specified detector ID.
 
 See \url{https://www.paws-r-sdk.com/docs/guardduty_get_findings_statistics/} for full documentation.
 }

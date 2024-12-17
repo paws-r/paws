@@ -2689,10 +2689,26 @@ glue_batch_get_partition <- function(CatalogId = NULL, DatabaseName, TableName, 
 #'       databaseName = "string",
 #'       tableName = "string",
 #'       tableOptimizer = list(
-#'         type = "compaction",
+#'         type = "compaction"|"retention"|"orphan_file_deletion",
 #'         configuration = list(
 #'           roleArn = "string",
-#'           enabled = TRUE|FALSE
+#'           enabled = TRUE|FALSE,
+#'           vpcConfiguration = list(
+#'             glueConnectionName = "string"
+#'           ),
+#'           retentionConfiguration = list(
+#'             icebergConfiguration = list(
+#'               snapshotRetentionPeriodInDays = 123,
+#'               numberOfSnapshotsToRetain = 123,
+#'               cleanExpiredFiles = TRUE|FALSE
+#'             )
+#'           ),
+#'           orphanFileDeletionConfiguration = list(
+#'             icebergConfiguration = list(
+#'               orphanFileRetentionPeriodInDays = 123,
+#'               location = "string"
+#'             )
+#'           )
 #'         ),
 #'         lastRun = list(
 #'           eventType = "starting"|"completed"|"failed"|"in_progress",
@@ -2708,7 +2724,31 @@ glue_batch_get_partition <- function(CatalogId = NULL, DatabaseName, TableName, 
 #'             NumberOfDpus = "string",
 #'             JobDurationInHour = "string"
 #'           ),
-#'           error = "string"
+#'           error = "string",
+#'           compactionMetrics = list(
+#'             IcebergMetrics = list(
+#'               NumberOfBytesCompacted = 123,
+#'               NumberOfFilesCompacted = 123,
+#'               NumberOfDpus = 123,
+#'               JobDurationInHour = 123.0
+#'             )
+#'           ),
+#'           retentionMetrics = list(
+#'             IcebergMetrics = list(
+#'               NumberOfDataFilesDeleted = 123,
+#'               NumberOfManifestFilesDeleted = 123,
+#'               NumberOfManifestListsDeleted = 123,
+#'               NumberOfDpus = 123,
+#'               JobDurationInHour = 123.0
+#'             )
+#'           ),
+#'           orphanFileDeletionMetrics = list(
+#'             IcebergMetrics = list(
+#'               NumberOfOrphanFilesDeleted = 123,
+#'               NumberOfDpus = 123,
+#'               JobDurationInHour = 123.0
+#'             )
+#'           )
 #'         )
 #'       )
 #'     )
@@ -2722,7 +2762,7 @@ glue_batch_get_partition <- function(CatalogId = NULL, DatabaseName, TableName, 
 #'       catalogId = "string",
 #'       databaseName = "string",
 #'       tableName = "string",
-#'       type = "compaction"
+#'       type = "compaction"|"retention"|"orphan_file_deletion"
 #'     )
 #'   )
 #' )
@@ -2736,7 +2776,7 @@ glue_batch_get_partition <- function(CatalogId = NULL, DatabaseName, TableName, 
 #'       catalogId = "string",
 #'       databaseName = "string",
 #'       tableName = "string",
-#'       type = "compaction"
+#'       type = "compaction"|"retention"|"orphan_file_deletion"
 #'     )
 #'   )
 #' )
@@ -3809,6 +3849,102 @@ glue_create_blueprint <- function(Name, Description = NULL, BlueprintLocation, T
 }
 .glue$operations$create_blueprint <- glue_create_blueprint
 
+#' Creates a new catalog in the Glue Data Catalog
+#'
+#' @description
+#' Creates a new catalog in the Glue Data Catalog.
+#'
+#' @usage
+#' glue_create_catalog(Name, CatalogInput, Tags)
+#'
+#' @param Name &#91;required&#93; The name of the catalog to create.
+#' @param CatalogInput &#91;required&#93; A `CatalogInput` object that defines the metadata for the catalog.
+#' @param Tags A map array of key-value pairs, not more than 50 pairs. Each key is a
+#' UTF-8 string, not less than 1 or more than 128 bytes long. Each value is
+#' a UTF-8 string, not more than 256 bytes long. The tags you assign to the
+#' catalog.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_catalog(
+#'   Name = "string",
+#'   CatalogInput = list(
+#'     Description = "string",
+#'     FederatedCatalog = list(
+#'       Identifier = "string",
+#'       ConnectionName = "string"
+#'     ),
+#'     Parameters = list(
+#'       "string"
+#'     ),
+#'     TargetRedshiftCatalog = list(
+#'       CatalogArn = "string"
+#'     ),
+#'     CatalogProperties = list(
+#'       DataLakeAccessProperties = list(
+#'         DataLakeAccess = TRUE|FALSE,
+#'         DataTransferRole = "string",
+#'         KmsKey = "string",
+#'         CatalogType = "string"
+#'       ),
+#'       CustomProperties = list(
+#'         "string"
+#'       )
+#'     ),
+#'     CreateTableDefaultPermissions = list(
+#'       list(
+#'         Principal = list(
+#'           DataLakePrincipalIdentifier = "string"
+#'         ),
+#'         Permissions = list(
+#'           "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"
+#'         )
+#'       )
+#'     ),
+#'     CreateDatabaseDefaultPermissions = list(
+#'       list(
+#'         Principal = list(
+#'           DataLakePrincipalIdentifier = "string"
+#'         ),
+#'         Permissions = list(
+#'           "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_create_catalog
+#'
+#' @aliases glue_create_catalog
+glue_create_catalog <- function(Name, CatalogInput, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateCatalog",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$create_catalog_input(Name = Name, CatalogInput = CatalogInput, Tags = Tags)
+  output <- .glue$create_catalog_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$create_catalog <- glue_create_catalog
+
 #' Creates a classifier in the user's account
 #'
 #' @description
@@ -3889,6 +4025,73 @@ glue_create_classifier <- function(GrokClassifier = NULL, XMLClassifier = NULL, 
 }
 .glue$operations$create_classifier <- glue_create_classifier
 
+#' Creates settings for a column statistics task
+#'
+#' @description
+#' Creates settings for a column statistics task.
+#'
+#' @usage
+#' glue_create_column_statistics_task_settings(DatabaseName, TableName,
+#'   Role, Schedule, ColumnNameList, SampleSize, CatalogID,
+#'   SecurityConfiguration, Tags)
+#'
+#' @param DatabaseName &#91;required&#93; The name of the database where the table resides.
+#' @param TableName &#91;required&#93; The name of the table for which to generate column statistics.
+#' @param Role &#91;required&#93; The role used for running the column statistics.
+#' @param Schedule A schedule for running the column statistics, specified in CRON syntax.
+#' @param ColumnNameList A list of column names for which to run statistics.
+#' @param SampleSize The percentage of data to sample.
+#' @param CatalogID The ID of the Data Catalog in which the database resides.
+#' @param SecurityConfiguration Name of the security configuration that is used to encrypt CloudWatch
+#' logs.
+#' @param Tags A map of tags.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_column_statistics_task_settings(
+#'   DatabaseName = "string",
+#'   TableName = "string",
+#'   Role = "string",
+#'   Schedule = "string",
+#'   ColumnNameList = list(
+#'     "string"
+#'   ),
+#'   SampleSize = 123.0,
+#'   CatalogID = "string",
+#'   SecurityConfiguration = "string",
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_create_column_statistics_task_settings
+#'
+#' @aliases glue_create_column_statistics_task_settings
+glue_create_column_statistics_task_settings <- function(DatabaseName, TableName, Role, Schedule = NULL, ColumnNameList = NULL, SampleSize = NULL, CatalogID = NULL, SecurityConfiguration = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateColumnStatisticsTaskSettings",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$create_column_statistics_task_settings_input(DatabaseName = DatabaseName, TableName = TableName, Role = Role, Schedule = Schedule, ColumnNameList = ColumnNameList, SampleSize = SampleSize, CatalogID = CatalogID, SecurityConfiguration = SecurityConfiguration, Tags = Tags)
+  output <- .glue$create_column_statistics_task_settings_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$create_column_statistics_task_settings <- glue_create_column_statistics_task_settings
+
 #' Creates a connection definition in the Data Catalog
 #'
 #' @description
@@ -3920,11 +4123,20 @@ glue_create_classifier <- function(GrokClassifier = NULL, XMLClassifier = NULL, 
 #'   ConnectionInput = list(
 #'     Name = "string",
 #'     Description = "string",
-#'     ConnectionType = "JDBC"|"SFTP"|"MONGODB"|"KAFKA"|"NETWORK"|"MARKETPLACE"|"CUSTOM"|"SALESFORCE"|"VIEW_VALIDATION_REDSHIFT"|"VIEW_VALIDATION_ATHENA",
+#'     ConnectionType = "JDBC"|"SFTP"|"MONGODB"|"KAFKA"|"NETWORK"|"MARKETPLACE"|"CUSTOM"|"SALESFORCE"|"VIEW_VALIDATION_REDSHIFT"|"VIEW_VALIDATION_ATHENA"|"GOOGLEADS"|"GOOGLESHEETS"|"GOOGLEANALYTICS4"|"SERVICENOW"|"MARKETO"|"SAPODATA"|"ZENDESK"|"JIRACLOUD"|"NETSUITEERP"|"HUBSPOT"|"FACEBOOKADS"|"INSTAGRAMADS"|"ZOHOCRM"|"SALESFORCEPARDOT"|"SALESFORCEMARKETINGCLOUD"|"SLACK"|"STRIPE"|"INTERCOM"|"SNAPCHATADS",
 #'     MatchCriteria = list(
 #'       "string"
 #'     ),
 #'     ConnectionProperties = list(
+#'       "string"
+#'     ),
+#'     SparkProperties = list(
+#'       "string"
+#'     ),
+#'     AthenaProperties = list(
+#'       "string"
+#'     ),
+#'     PythonProperties = list(
 #'       "string"
 #'     ),
 #'     PhysicalConnectionRequirements = list(
@@ -3935,8 +4147,7 @@ glue_create_classifier <- function(GrokClassifier = NULL, XMLClassifier = NULL, 
 #'       AvailabilityZone = "string"
 #'     ),
 #'     AuthenticationConfiguration = list(
-#'       AuthenticationType = "BASIC"|"OAUTH2"|"CUSTOM",
-#'       SecretArn = "string",
+#'       AuthenticationType = "BASIC"|"OAUTH2"|"CUSTOM"|"IAM",
 #'       OAuth2Properties = list(
 #'         OAuth2GrantType = "AUTHORIZATION_CODE"|"CLIENT_CREDENTIALS"|"JWT_BEARER",
 #'         OAuth2ClientApplication = list(
@@ -3950,10 +4161,28 @@ glue_create_classifier <- function(GrokClassifier = NULL, XMLClassifier = NULL, 
 #'         AuthorizationCodeProperties = list(
 #'           AuthorizationCode = "string",
 #'           RedirectUri = "string"
+#'         ),
+#'         OAuth2Credentials = list(
+#'           UserManagedClientApplicationClientSecret = "string",
+#'           AccessToken = "string",
+#'           RefreshToken = "string",
+#'           JwtToken = "string"
 #'         )
+#'       ),
+#'       SecretArn = "string",
+#'       KmsKeyArn = "string",
+#'       BasicAuthenticationCredentials = list(
+#'         Username = "string",
+#'         Password = "string"
+#'       ),
+#'       CustomAuthenticationCredentials = list(
+#'         "string"
 #'       )
 #'     ),
-#'     ValidateCredentials = TRUE|FALSE
+#'     ValidateCredentials = TRUE|FALSE,
+#'     ValidateForComputeEnvironments = list(
+#'       "SPARK"|"ATHENA"|"PYTHON"
+#'     )
 #'   ),
 #'   Tags = list(
 #'     "string"
@@ -4579,6 +4808,261 @@ glue_create_dev_endpoint <- function(EndpointName, RoleArn, SecurityGroupIds = N
 }
 .glue$operations$create_dev_endpoint <- glue_create_dev_endpoint
 
+#' Creates a Zero-ETL integration in the caller's account between two
+#' resources with Amazon Resource Names (ARNs): the SourceArn and TargetArn
+#'
+#' @description
+#' Creates a Zero-ETL integration in the caller's account between two
+#' resources with Amazon Resource Names (ARNs): the `SourceArn` and
+#' `TargetArn`.
+#'
+#' @usage
+#' glue_create_integration(IntegrationName, SourceArn, TargetArn,
+#'   Description, DataFilter, KmsKeyId, AdditionalEncryptionContext, Tags)
+#'
+#' @param IntegrationName &#91;required&#93; A unique name for an integration in Glue.
+#' @param SourceArn &#91;required&#93; The ARN of the source resource for the integration.
+#' @param TargetArn &#91;required&#93; The ARN of the target resource for the integration.
+#' @param Description A description of the integration.
+#' @param DataFilter Selects source tables for the integration using Maxwell filter syntax.
+#' @param KmsKeyId The ARN of a KMS key used for encrypting the channel.
+#' @param AdditionalEncryptionContext An optional set of non-secret key–value pairs that contains additional
+#' contextual information for encryption. This can only be provided if
+#' `KMSKeyId` is provided.
+#' @param Tags Metadata assigned to the resource consisting of a list of key-value
+#' pairs.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SourceArn = "string",
+#'   TargetArn = "string",
+#'   IntegrationName = "string",
+#'   Description = "string",
+#'   IntegrationArn = "string",
+#'   KmsKeyId = "string",
+#'   AdditionalEncryptionContext = list(
+#'     "string"
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   ),
+#'   Status = "CREATING"|"ACTIVE"|"MODIFYING"|"FAILED"|"DELETING"|"SYNCING"|"NEEDS_ATTENTION",
+#'   CreateTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Errors = list(
+#'     list(
+#'       ErrorCode = "string",
+#'       ErrorMessage = "string"
+#'     )
+#'   ),
+#'   DataFilter = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_integration(
+#'   IntegrationName = "string",
+#'   SourceArn = "string",
+#'   TargetArn = "string",
+#'   Description = "string",
+#'   DataFilter = "string",
+#'   KmsKeyId = "string",
+#'   AdditionalEncryptionContext = list(
+#'     "string"
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_create_integration
+#'
+#' @aliases glue_create_integration
+glue_create_integration <- function(IntegrationName, SourceArn, TargetArn, Description = NULL, DataFilter = NULL, KmsKeyId = NULL, AdditionalEncryptionContext = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateIntegration",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$create_integration_input(IntegrationName = IntegrationName, SourceArn = SourceArn, TargetArn = TargetArn, Description = Description, DataFilter = DataFilter, KmsKeyId = KmsKeyId, AdditionalEncryptionContext = AdditionalEncryptionContext, Tags = Tags)
+  output <- .glue$create_integration_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$create_integration <- glue_create_integration
+
+#' This API can be used for setting up the ResourceProperty of the Glue
+#' connection (for the source) or Glue database ARN (for the target)
+#'
+#' @description
+#' This API can be used for setting up the `ResourceProperty` of the Glue
+#' connection (for the source) or Glue database ARN (for the target). These
+#' properties can include the role to access the connection or database. To
+#' set both source and target properties the same API needs to be invoked
+#' with the Glue connection ARN as `ResourceArn` with
+#' `SourceProcessingProperties` and the Glue database ARN as `ResourceArn`
+#' with `TargetProcessingProperties` respectively.
+#'
+#' @usage
+#' glue_create_integration_resource_property(ResourceArn,
+#'   SourceProcessingProperties, TargetProcessingProperties)
+#'
+#' @param ResourceArn &#91;required&#93; The connection ARN of the source, or the database ARN of the target.
+#' @param SourceProcessingProperties The resource properties associated with the integration source.
+#' @param TargetProcessingProperties The resource properties associated with the integration target.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResourceArn = "string",
+#'   SourceProcessingProperties = list(
+#'     RoleArn = "string"
+#'   ),
+#'   TargetProcessingProperties = list(
+#'     RoleArn = "string",
+#'     KmsArn = "string",
+#'     ConnectionName = "string",
+#'     EventBusArn = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_integration_resource_property(
+#'   ResourceArn = "string",
+#'   SourceProcessingProperties = list(
+#'     RoleArn = "string"
+#'   ),
+#'   TargetProcessingProperties = list(
+#'     RoleArn = "string",
+#'     KmsArn = "string",
+#'     ConnectionName = "string",
+#'     EventBusArn = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_create_integration_resource_property
+#'
+#' @aliases glue_create_integration_resource_property
+glue_create_integration_resource_property <- function(ResourceArn, SourceProcessingProperties = NULL, TargetProcessingProperties = NULL) {
+  op <- new_operation(
+    name = "CreateIntegrationResourceProperty",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$create_integration_resource_property_input(ResourceArn = ResourceArn, SourceProcessingProperties = SourceProcessingProperties, TargetProcessingProperties = TargetProcessingProperties)
+  output <- .glue$create_integration_resource_property_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$create_integration_resource_property <- glue_create_integration_resource_property
+
+#' This API is used to provide optional override properties for the the
+#' tables that need to be replicated
+#'
+#' @description
+#' This API is used to provide optional override properties for the the
+#' tables that need to be replicated. These properties can include
+#' properties for filtering and partitioning for the source and target
+#' tables. To set both source and target properties the same API need to be
+#' invoked with the Glue connection ARN as `ResourceArn` with
+#' `SourceTableConfig`, and the Glue database ARN as `ResourceArn` with
+#' `TargetTableConfig` respectively.
+#'
+#' @usage
+#' glue_create_integration_table_properties(ResourceArn, TableName,
+#'   SourceTableConfig, TargetTableConfig)
+#'
+#' @param ResourceArn &#91;required&#93; The connection ARN of the source, or the database ARN of the target.
+#' @param TableName &#91;required&#93; The name of the table to be replicated.
+#' @param SourceTableConfig A structure for the source table configuration.
+#' @param TargetTableConfig A structure for the target table configuration.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_integration_table_properties(
+#'   ResourceArn = "string",
+#'   TableName = "string",
+#'   SourceTableConfig = list(
+#'     Fields = list(
+#'       "string"
+#'     ),
+#'     FilterPredicate = "string",
+#'     PrimaryKey = list(
+#'       "string"
+#'     ),
+#'     RecordUpdateField = "string"
+#'   ),
+#'   TargetTableConfig = list(
+#'     UnnestSpec = "TOPLEVEL"|"FULL"|"NOUNNEST",
+#'     PartitionSpec = list(
+#'       list(
+#'         FieldName = "string",
+#'         FunctionSpec = "string"
+#'       )
+#'     ),
+#'     TargetTableName = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_create_integration_table_properties
+#'
+#' @aliases glue_create_integration_table_properties
+glue_create_integration_table_properties <- function(ResourceArn, TableName, SourceTableConfig = NULL, TargetTableConfig = NULL) {
+  op <- new_operation(
+    name = "CreateIntegrationTableProperties",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$create_integration_table_properties_input(ResourceArn = ResourceArn, TableName = TableName, SourceTableConfig = SourceTableConfig, TargetTableConfig = TargetTableConfig)
+  output <- .glue$create_integration_table_properties_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$create_integration_table_properties <- glue_create_integration_table_properties
+
 #' Creates a new job definition
 #'
 #' @description
@@ -4720,45 +5204,45 @@ glue_create_dev_endpoint <- function(EndpointName, RoleArn, SecurityGroupIds = N
 #' value Z.2X for Ray jobs.
 #' 
 #' -   For the `G.1X` worker type, each worker maps to 1 DPU (4 vCPUs, 16
-#'     GB of memory) with 84GB disk (approximately 34GB free), and provides
-#'     1 executor per worker. We recommend this worker type for workloads
-#'     such as data transforms, joins, and queries, to offers a scalable
-#'     and cost effective way to run most jobs.
+#'     GB of memory) with 94GB disk, and provides 1 executor per worker. We
+#'     recommend this worker type for workloads such as data transforms,
+#'     joins, and queries, to offers a scalable and cost effective way to
+#'     run most jobs.
 #' 
 #' -   For the `G.2X` worker type, each worker maps to 2 DPU (8 vCPUs, 32
-#'     GB of memory) with 128GB disk (approximately 77GB free), and
-#'     provides 1 executor per worker. We recommend this worker type for
-#'     workloads such as data transforms, joins, and queries, to offers a
-#'     scalable and cost effective way to run most jobs.
+#'     GB of memory) with 138GB disk, and provides 1 executor per worker.
+#'     We recommend this worker type for workloads such as data transforms,
+#'     joins, and queries, to offers a scalable and cost effective way to
+#'     run most jobs.
 #' 
 #' -   For the `G.4X` worker type, each worker maps to 4 DPU (16 vCPUs, 64
-#'     GB of memory) with 256GB disk (approximately 235GB free), and
-#'     provides 1 executor per worker. We recommend this worker type for
-#'     jobs whose workloads contain your most demanding transforms,
-#'     aggregations, joins, and queries. This worker type is available only
-#'     for Glue version 3.0 or later Spark ETL jobs in the following Amazon
-#'     Web Services Regions: US East (Ohio), US East (N. Virginia), US West
-#'     (Oregon), Asia Pacific (Singapore), Asia Pacific (Sydney), Asia
-#'     Pacific (Tokyo), Canada (Central), Europe (Frankfurt), Europe
-#'     (Ireland), and Europe (Stockholm).
+#'     GB of memory) with 256GB disk, and provides 1 executor per worker.
+#'     We recommend this worker type for jobs whose workloads contain your
+#'     most demanding transforms, aggregations, joins, and queries. This
+#'     worker type is available only for Glue version 3.0 or later Spark
+#'     ETL jobs in the following Amazon Web Services Regions: US East
+#'     (Ohio), US East (N. Virginia), US West (Oregon), Asia Pacific
+#'     (Singapore), Asia Pacific (Sydney), Asia Pacific (Tokyo), Canada
+#'     (Central), Europe (Frankfurt), Europe (Ireland), and Europe
+#'     (Stockholm).
 #' 
 #' -   For the `G.8X` worker type, each worker maps to 8 DPU (32 vCPUs, 128
-#'     GB of memory) with 512GB disk (approximately 487GB free), and
-#'     provides 1 executor per worker. We recommend this worker type for
-#'     jobs whose workloads contain your most demanding transforms,
-#'     aggregations, joins, and queries. This worker type is available only
-#'     for Glue version 3.0 or later Spark ETL jobs, in the same Amazon Web
-#'     Services Regions as supported for the `G.4X` worker type.
+#'     GB of memory) with 512GB disk, and provides 1 executor per worker.
+#'     We recommend this worker type for jobs whose workloads contain your
+#'     most demanding transforms, aggregations, joins, and queries. This
+#'     worker type is available only for Glue version 3.0 or later Spark
+#'     ETL jobs, in the same Amazon Web Services Regions as supported for
+#'     the `G.4X` worker type.
 #' 
 #' -   For the `G.025X` worker type, each worker maps to 0.25 DPU (2 vCPUs,
-#'     4 GB of memory) with 84GB disk (approximately 34GB free), and
-#'     provides 1 executor per worker. We recommend this worker type for
-#'     low volume streaming jobs. This worker type is only available for
-#'     Glue version 3.0 streaming jobs.
+#'     4 GB of memory) with 84GB disk, and provides 1 executor per worker.
+#'     We recommend this worker type for low volume streaming jobs. This
+#'     worker type is only available for Glue version 3.0 or later
+#'     streaming jobs.
 #' 
 #' -   For the `Z.2X` worker type, each worker maps to 2 M-DPU (8vCPUs, 64
-#'     GB of memory) with 128 GB disk (approximately 120GB free), and
-#'     provides up to 8 Ray workers based on the autoscaler.
+#'     GB of memory) with 128 GB disk, and provides up to 8 Ray workers
+#'     based on the autoscaler.
 #' @param CodeGenConfigurationNodes The representation of a directed acyclic graph on which both the Glue
 #' Studio visual component and Glue Studio code generation is based.
 #' @param ExecutionClass Indicates whether the job is run with a standard or flexible execution
@@ -6983,6 +7467,10 @@ glue_create_script <- function(DagNodes = NULL, DagEdges = NULL, Language = NULL
 #'     JobBookmarksEncryption = list(
 #'       JobBookmarksEncryptionMode = "DISABLED"|"CSE-KMS",
 #'       KmsKeyArn = "string"
+#'     ),
+#'     DataQualityEncryption = list(
+#'       DataQualityEncryptionMode = "DISABLED"|"SSE-KMS",
+#'       KmsKeyArn = "string"
 #'     )
 #'   )
 #' )
@@ -7044,39 +7532,39 @@ glue_create_security_configuration <- function(Name, EncryptionConfiguration) {
 #' Z.2X for Ray notebooks.
 #' 
 #' -   For the `G.1X` worker type, each worker maps to 1 DPU (4 vCPUs, 16
-#'     GB of memory) with 84GB disk (approximately 34GB free), and provides
-#'     1 executor per worker. We recommend this worker type for workloads
-#'     such as data transforms, joins, and queries, to offers a scalable
-#'     and cost effective way to run most jobs.
+#'     GB of memory) with 94GB disk, and provides 1 executor per worker. We
+#'     recommend this worker type for workloads such as data transforms,
+#'     joins, and queries, to offers a scalable and cost effective way to
+#'     run most jobs.
 #' 
 #' -   For the `G.2X` worker type, each worker maps to 2 DPU (8 vCPUs, 32
-#'     GB of memory) with 128GB disk (approximately 77GB free), and
-#'     provides 1 executor per worker. We recommend this worker type for
-#'     workloads such as data transforms, joins, and queries, to offers a
-#'     scalable and cost effective way to run most jobs.
+#'     GB of memory) with 138GB disk, and provides 1 executor per worker.
+#'     We recommend this worker type for workloads such as data transforms,
+#'     joins, and queries, to offers a scalable and cost effective way to
+#'     run most jobs.
 #' 
 #' -   For the `G.4X` worker type, each worker maps to 4 DPU (16 vCPUs, 64
-#'     GB of memory) with 256GB disk (approximately 235GB free), and
-#'     provides 1 executor per worker. We recommend this worker type for
-#'     jobs whose workloads contain your most demanding transforms,
-#'     aggregations, joins, and queries. This worker type is available only
-#'     for Glue version 3.0 or later Spark ETL jobs in the following Amazon
-#'     Web Services Regions: US East (Ohio), US East (N. Virginia), US West
-#'     (Oregon), Asia Pacific (Singapore), Asia Pacific (Sydney), Asia
-#'     Pacific (Tokyo), Canada (Central), Europe (Frankfurt), Europe
-#'     (Ireland), and Europe (Stockholm).
+#'     GB of memory) with 256GB disk, and provides 1 executor per worker.
+#'     We recommend this worker type for jobs whose workloads contain your
+#'     most demanding transforms, aggregations, joins, and queries. This
+#'     worker type is available only for Glue version 3.0 or later Spark
+#'     ETL jobs in the following Amazon Web Services Regions: US East
+#'     (Ohio), US East (N. Virginia), US West (Oregon), Asia Pacific
+#'     (Singapore), Asia Pacific (Sydney), Asia Pacific (Tokyo), Canada
+#'     (Central), Europe (Frankfurt), Europe (Ireland), and Europe
+#'     (Stockholm).
 #' 
 #' -   For the `G.8X` worker type, each worker maps to 8 DPU (32 vCPUs, 128
-#'     GB of memory) with 512GB disk (approximately 487GB free), and
-#'     provides 1 executor per worker. We recommend this worker type for
-#'     jobs whose workloads contain your most demanding transforms,
-#'     aggregations, joins, and queries. This worker type is available only
-#'     for Glue version 3.0 or later Spark ETL jobs, in the same Amazon Web
-#'     Services Regions as supported for the `G.4X` worker type.
+#'     GB of memory) with 512GB disk, and provides 1 executor per worker.
+#'     We recommend this worker type for jobs whose workloads contain your
+#'     most demanding transforms, aggregations, joins, and queries. This
+#'     worker type is available only for Glue version 3.0 or later Spark
+#'     ETL jobs, in the same Amazon Web Services Regions as supported for
+#'     the `G.4X` worker type.
 #' 
 #' -   For the `Z.2X` worker type, each worker maps to 2 M-DPU (8vCPUs, 64
-#'     GB of memory) with 128 GB disk (approximately 120GB free), and
-#'     provides up to 8 Ray workers based on the autoscaler.
+#'     GB of memory) with 128 GB disk, and provides up to 8 Ray workers
+#'     based on the autoscaler.
 #' @param SecurityConfiguration The name of the SecurityConfiguration structure to be used with the
 #' session
 #' @param GlueVersion The Glue version determines the versions of Apache Spark and Python that
@@ -7366,8 +7854,7 @@ glue_create_table <- function(CatalogId = NULL, DatabaseName, TableInput, Partit
 #' Creates a new table optimizer for a specific function
 #'
 #' @description
-#' Creates a new table optimizer for a specific function. `compaction` is
-#' the only currently supported optimizer type.
+#' Creates a new table optimizer for a specific function.
 #'
 #' @usage
 #' glue_create_table_optimizer(CatalogId, DatabaseName, TableName, Type,
@@ -7376,8 +7863,7 @@ glue_create_table <- function(CatalogId = NULL, DatabaseName, TableInput, Partit
 #' @param CatalogId &#91;required&#93; The Catalog ID of the table.
 #' @param DatabaseName &#91;required&#93; The name of the database in the catalog in which the table resides.
 #' @param TableName &#91;required&#93; The name of the table.
-#' @param Type &#91;required&#93; The type of table optimizer. Currently, the only valid value is
-#' `compaction`.
+#' @param Type &#91;required&#93; The type of table optimizer.
 #' @param TableOptimizerConfiguration &#91;required&#93; A `TableOptimizerConfiguration` object representing the configuration of
 #' a table optimizer.
 #'
@@ -7390,10 +7876,26 @@ glue_create_table <- function(CatalogId = NULL, DatabaseName, TableInput, Partit
 #'   CatalogId = "string",
 #'   DatabaseName = "string",
 #'   TableName = "string",
-#'   Type = "compaction",
+#'   Type = "compaction"|"retention"|"orphan_file_deletion",
 #'   TableOptimizerConfiguration = list(
 #'     roleArn = "string",
-#'     enabled = TRUE|FALSE
+#'     enabled = TRUE|FALSE,
+#'     vpcConfiguration = list(
+#'       glueConnectionName = "string"
+#'     ),
+#'     retentionConfiguration = list(
+#'       icebergConfiguration = list(
+#'         snapshotRetentionPeriodInDays = 123,
+#'         numberOfSnapshotsToRetain = 123,
+#'         cleanExpiredFiles = TRUE|FALSE
+#'       )
+#'     ),
+#'     orphanFileDeletionConfiguration = list(
+#'       icebergConfiguration = list(
+#'         orphanFileRetentionPeriodInDays = 123,
+#'         location = "string"
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -7426,6 +7928,11 @@ glue_create_table_optimizer <- function(CatalogId, DatabaseName, TableName, Type
 #'
 #' @description
 #' Creates a new trigger.
+#' 
+#' Job arguments may be logged. Do not pass plaintext secrets as arguments.
+#' Retrieve secrets from a Glue Connection, Amazon Web Services Secrets
+#' Manager or other secret management mechanism if you intend to keep them
+#' within the Job.
 #'
 #' @usage
 #' glue_create_trigger(Name, WorkflowName, Type, Schedule, Predicate,
@@ -7688,6 +8195,11 @@ glue_create_user_defined_function <- function(CatalogId = NULL, DatabaseName, Fu
 #' @param Description A description of the workflow.
 #' @param DefaultRunProperties A collection of properties to be used as part of each execution of the
 #' workflow.
+#' 
+#' Run properties may be logged. Do not pass plaintext secrets as
+#' properties. Retrieve secrets from a Glue Connection, Amazon Web Services
+#' Secrets Manager or other secret management mechanism if you intend to
+#' use them within the workflow run.
 #' @param Tags The tags to be used with this workflow.
 #' @param MaxConcurrentRuns You can use this parameter to prevent unwanted multiple updates to data,
 #' to control costs, or in some cases, to prevent exceeding the maximum
@@ -7790,6 +8302,68 @@ glue_delete_blueprint <- function(Name) {
   return(response)
 }
 .glue$operations$delete_blueprint <- glue_delete_blueprint
+
+#' Removes the specified catalog from the Glue Data Catalog
+#'
+#' @description
+#' Removes the specified catalog from the Glue Data Catalog.
+#' 
+#' After completing this operation, you no longer have access to the
+#' databases, tables (and all table versions and partitions that might
+#' belong to the tables) and the user-defined functions in the deleted
+#' catalog. Glue deletes these "orphaned" resources asynchronously in a
+#' timely manner, at the discretion of the service.
+#' 
+#' To ensure the immediate deletion of all related resources before calling
+#' the [`delete_catalog`][glue_delete_catalog] operation, use
+#' [`delete_table_version`][glue_delete_table_version] (or
+#' [`batch_delete_table_version`][glue_batch_delete_table_version]),
+#' [`delete_partition`][glue_delete_partition] (or
+#' [`batch_delete_partition`][glue_batch_delete_partition]),
+#' [`delete_table`][glue_delete_table] (or
+#' [`batch_delete_table`][glue_batch_delete_table]),
+#' [`delete_user_defined_function`][glue_delete_user_defined_function] and
+#' [`delete_database`][glue_delete_database] to delete any resources that
+#' belong to the catalog.
+#'
+#' @usage
+#' glue_delete_catalog(CatalogId)
+#'
+#' @param CatalogId &#91;required&#93; The ID of the catalog.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_catalog(
+#'   CatalogId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_delete_catalog
+#'
+#' @aliases glue_delete_catalog
+glue_delete_catalog <- function(CatalogId) {
+  op <- new_operation(
+    name = "DeleteCatalog",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$delete_catalog_input(CatalogId = CatalogId)
+  output <- .glue$delete_catalog_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$delete_catalog <- glue_delete_catalog
 
 #' Removes a classifier from the Data Catalog
 #'
@@ -7948,6 +8522,52 @@ glue_delete_column_statistics_for_table <- function(CatalogId = NULL, DatabaseNa
   return(response)
 }
 .glue$operations$delete_column_statistics_for_table <- glue_delete_column_statistics_for_table
+
+#' Deletes settings for a column statistics task
+#'
+#' @description
+#' Deletes settings for a column statistics task.
+#'
+#' @usage
+#' glue_delete_column_statistics_task_settings(DatabaseName, TableName)
+#'
+#' @param DatabaseName &#91;required&#93; The name of the database where the table resides.
+#' @param TableName &#91;required&#93; The name of the table for which to delete column statistics.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_column_statistics_task_settings(
+#'   DatabaseName = "string",
+#'   TableName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_delete_column_statistics_task_settings
+#'
+#' @aliases glue_delete_column_statistics_task_settings
+glue_delete_column_statistics_task_settings <- function(DatabaseName, TableName) {
+  op <- new_operation(
+    name = "DeleteColumnStatisticsTaskSettings",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$delete_column_statistics_task_settings_input(DatabaseName = DatabaseName, TableName = TableName)
+  output <- .glue$delete_column_statistics_task_settings_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$delete_column_statistics_task_settings <- glue_delete_column_statistics_task_settings
 
 #' Deletes a connection from the Data Catalog
 #'
@@ -8243,6 +8863,128 @@ glue_delete_dev_endpoint <- function(EndpointName) {
   return(response)
 }
 .glue$operations$delete_dev_endpoint <- glue_delete_dev_endpoint
+
+#' Deletes the specified Zero-ETL integration
+#'
+#' @description
+#' Deletes the specified Zero-ETL integration.
+#'
+#' @usage
+#' glue_delete_integration(IntegrationIdentifier)
+#'
+#' @param IntegrationIdentifier &#91;required&#93; The Amazon Resource Name (ARN) for the integration.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SourceArn = "string",
+#'   TargetArn = "string",
+#'   IntegrationName = "string",
+#'   Description = "string",
+#'   IntegrationArn = "string",
+#'   KmsKeyId = "string",
+#'   AdditionalEncryptionContext = list(
+#'     "string"
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   ),
+#'   Status = "CREATING"|"ACTIVE"|"MODIFYING"|"FAILED"|"DELETING"|"SYNCING"|"NEEDS_ATTENTION",
+#'   CreateTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Errors = list(
+#'     list(
+#'       ErrorCode = "string",
+#'       ErrorMessage = "string"
+#'     )
+#'   ),
+#'   DataFilter = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_integration(
+#'   IntegrationIdentifier = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_delete_integration
+#'
+#' @aliases glue_delete_integration
+glue_delete_integration <- function(IntegrationIdentifier) {
+  op <- new_operation(
+    name = "DeleteIntegration",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$delete_integration_input(IntegrationIdentifier = IntegrationIdentifier)
+  output <- .glue$delete_integration_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$delete_integration <- glue_delete_integration
+
+#' Deletes the table properties that have been created for the tables that
+#' need to be replicated
+#'
+#' @description
+#' Deletes the table properties that have been created for the tables that
+#' need to be replicated.
+#'
+#' @usage
+#' glue_delete_integration_table_properties(ResourceArn, TableName)
+#'
+#' @param ResourceArn &#91;required&#93; The connection ARN of the source, or the database ARN of the target.
+#' @param TableName &#91;required&#93; The name of the table to be replicated.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_integration_table_properties(
+#'   ResourceArn = "string",
+#'   TableName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_delete_integration_table_properties
+#'
+#' @aliases glue_delete_integration_table_properties
+glue_delete_integration_table_properties <- function(ResourceArn, TableName) {
+  op <- new_operation(
+    name = "DeleteIntegrationTableProperties",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$delete_integration_table_properties_input(ResourceArn = ResourceArn, TableName = TableName)
+  output <- .glue$delete_integration_table_properties_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$delete_integration_table_properties <- glue_delete_integration_table_properties
 
 #' Deletes a specified job definition
 #'
@@ -8898,7 +9640,7 @@ glue_delete_table <- function(CatalogId = NULL, DatabaseName, Name, TransactionI
 #'   CatalogId = "string",
 #'   DatabaseName = "string",
 #'   TableName = "string",
-#'   Type = "compaction"
+#'   Type = "compaction"|"retention"|"orphan_file_deletion"
 #' )
 #' ```
 #'
@@ -9173,6 +9915,594 @@ glue_delete_workflow <- function(Name) {
 }
 .glue$operations$delete_workflow <- glue_delete_workflow
 
+#' The DescribeConnectionType API provides full details of the supported
+#' options for a given connection type in Glue
+#'
+#' @description
+#' The [`describe_connection_type`][glue_describe_connection_type] API
+#' provides full details of the supported options for a given connection
+#' type in Glue.
+#'
+#' @usage
+#' glue_describe_connection_type(ConnectionType)
+#'
+#' @param ConnectionType &#91;required&#93; The name of the connection type to be described.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ConnectionType = "string",
+#'   Description = "string",
+#'   Capabilities = list(
+#'     SupportedAuthenticationTypes = list(
+#'       "BASIC"|"OAUTH2"|"CUSTOM"|"IAM"
+#'     ),
+#'     SupportedDataOperations = list(
+#'       "READ"|"WRITE"
+#'     ),
+#'     SupportedComputeEnvironments = list(
+#'       "SPARK"|"ATHENA"|"PYTHON"
+#'     )
+#'   ),
+#'   ConnectionProperties = list(
+#'     list(
+#'       Name = "string",
+#'       Description = "string",
+#'       Required = TRUE|FALSE,
+#'       DefaultValue = "string",
+#'       PropertyTypes = list(
+#'         "USER_INPUT"|"SECRET"|"READ_ONLY"|"UNUSED"|"SECRET_OR_USER_INPUT"
+#'       ),
+#'       AllowedValues = list(
+#'         list(
+#'           Description = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       DataOperationScopes = list(
+#'         "READ"|"WRITE"
+#'       )
+#'     )
+#'   ),
+#'   ConnectionOptions = list(
+#'     list(
+#'       Name = "string",
+#'       Description = "string",
+#'       Required = TRUE|FALSE,
+#'       DefaultValue = "string",
+#'       PropertyTypes = list(
+#'         "USER_INPUT"|"SECRET"|"READ_ONLY"|"UNUSED"|"SECRET_OR_USER_INPUT"
+#'       ),
+#'       AllowedValues = list(
+#'         list(
+#'           Description = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       DataOperationScopes = list(
+#'         "READ"|"WRITE"
+#'       )
+#'     )
+#'   ),
+#'   AuthenticationConfiguration = list(
+#'     AuthenticationType = list(
+#'       Name = "string",
+#'       Description = "string",
+#'       Required = TRUE|FALSE,
+#'       DefaultValue = "string",
+#'       PropertyTypes = list(
+#'         "USER_INPUT"|"SECRET"|"READ_ONLY"|"UNUSED"|"SECRET_OR_USER_INPUT"
+#'       ),
+#'       AllowedValues = list(
+#'         list(
+#'           Description = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       DataOperationScopes = list(
+#'         "READ"|"WRITE"
+#'       )
+#'     ),
+#'     SecretArn = list(
+#'       Name = "string",
+#'       Description = "string",
+#'       Required = TRUE|FALSE,
+#'       DefaultValue = "string",
+#'       PropertyTypes = list(
+#'         "USER_INPUT"|"SECRET"|"READ_ONLY"|"UNUSED"|"SECRET_OR_USER_INPUT"
+#'       ),
+#'       AllowedValues = list(
+#'         list(
+#'           Description = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       DataOperationScopes = list(
+#'         "READ"|"WRITE"
+#'       )
+#'     ),
+#'     OAuth2Properties = list(
+#'       list(
+#'         Name = "string",
+#'         Description = "string",
+#'         Required = TRUE|FALSE,
+#'         DefaultValue = "string",
+#'         PropertyTypes = list(
+#'           "USER_INPUT"|"SECRET"|"READ_ONLY"|"UNUSED"|"SECRET_OR_USER_INPUT"
+#'         ),
+#'         AllowedValues = list(
+#'           list(
+#'             Description = "string",
+#'             Value = "string"
+#'           )
+#'         ),
+#'         DataOperationScopes = list(
+#'           "READ"|"WRITE"
+#'         )
+#'       )
+#'     ),
+#'     BasicAuthenticationProperties = list(
+#'       list(
+#'         Name = "string",
+#'         Description = "string",
+#'         Required = TRUE|FALSE,
+#'         DefaultValue = "string",
+#'         PropertyTypes = list(
+#'           "USER_INPUT"|"SECRET"|"READ_ONLY"|"UNUSED"|"SECRET_OR_USER_INPUT"
+#'         ),
+#'         AllowedValues = list(
+#'           list(
+#'             Description = "string",
+#'             Value = "string"
+#'           )
+#'         ),
+#'         DataOperationScopes = list(
+#'           "READ"|"WRITE"
+#'         )
+#'       )
+#'     ),
+#'     CustomAuthenticationProperties = list(
+#'       list(
+#'         Name = "string",
+#'         Description = "string",
+#'         Required = TRUE|FALSE,
+#'         DefaultValue = "string",
+#'         PropertyTypes = list(
+#'           "USER_INPUT"|"SECRET"|"READ_ONLY"|"UNUSED"|"SECRET_OR_USER_INPUT"
+#'         ),
+#'         AllowedValues = list(
+#'           list(
+#'             Description = "string",
+#'             Value = "string"
+#'           )
+#'         ),
+#'         DataOperationScopes = list(
+#'           "READ"|"WRITE"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   ComputeEnvironmentConfigurations = list(
+#'     list(
+#'       Name = "string",
+#'       Description = "string",
+#'       ComputeEnvironment = "SPARK"|"ATHENA"|"PYTHON",
+#'       SupportedAuthenticationTypes = list(
+#'         "BASIC"|"OAUTH2"|"CUSTOM"|"IAM"
+#'       ),
+#'       ConnectionOptions = list(
+#'         list(
+#'           Name = "string",
+#'           Description = "string",
+#'           Required = TRUE|FALSE,
+#'           DefaultValue = "string",
+#'           PropertyTypes = list(
+#'             "USER_INPUT"|"SECRET"|"READ_ONLY"|"UNUSED"|"SECRET_OR_USER_INPUT"
+#'           ),
+#'           AllowedValues = list(
+#'             list(
+#'               Description = "string",
+#'               Value = "string"
+#'             )
+#'           ),
+#'           DataOperationScopes = list(
+#'             "READ"|"WRITE"
+#'           )
+#'         )
+#'       ),
+#'       ConnectionPropertyNameOverrides = list(
+#'         "string"
+#'       ),
+#'       ConnectionOptionNameOverrides = list(
+#'         "string"
+#'       ),
+#'       ConnectionPropertiesRequiredOverrides = list(
+#'         "string"
+#'       ),
+#'       PhysicalConnectionPropertiesRequired = TRUE|FALSE
+#'     )
+#'   ),
+#'   PhysicalConnectionRequirements = list(
+#'     list(
+#'       Name = "string",
+#'       Description = "string",
+#'       Required = TRUE|FALSE,
+#'       DefaultValue = "string",
+#'       PropertyTypes = list(
+#'         "USER_INPUT"|"SECRET"|"READ_ONLY"|"UNUSED"|"SECRET_OR_USER_INPUT"
+#'       ),
+#'       AllowedValues = list(
+#'         list(
+#'           Description = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       DataOperationScopes = list(
+#'         "READ"|"WRITE"
+#'       )
+#'     )
+#'   ),
+#'   AthenaConnectionProperties = list(
+#'     list(
+#'       Name = "string",
+#'       Description = "string",
+#'       Required = TRUE|FALSE,
+#'       DefaultValue = "string",
+#'       PropertyTypes = list(
+#'         "USER_INPUT"|"SECRET"|"READ_ONLY"|"UNUSED"|"SECRET_OR_USER_INPUT"
+#'       ),
+#'       AllowedValues = list(
+#'         list(
+#'           Description = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       DataOperationScopes = list(
+#'         "READ"|"WRITE"
+#'       )
+#'     )
+#'   ),
+#'   PythonConnectionProperties = list(
+#'     list(
+#'       Name = "string",
+#'       Description = "string",
+#'       Required = TRUE|FALSE,
+#'       DefaultValue = "string",
+#'       PropertyTypes = list(
+#'         "USER_INPUT"|"SECRET"|"READ_ONLY"|"UNUSED"|"SECRET_OR_USER_INPUT"
+#'       ),
+#'       AllowedValues = list(
+#'         list(
+#'           Description = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       DataOperationScopes = list(
+#'         "READ"|"WRITE"
+#'       )
+#'     )
+#'   ),
+#'   SparkConnectionProperties = list(
+#'     list(
+#'       Name = "string",
+#'       Description = "string",
+#'       Required = TRUE|FALSE,
+#'       DefaultValue = "string",
+#'       PropertyTypes = list(
+#'         "USER_INPUT"|"SECRET"|"READ_ONLY"|"UNUSED"|"SECRET_OR_USER_INPUT"
+#'       ),
+#'       AllowedValues = list(
+#'         list(
+#'           Description = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       DataOperationScopes = list(
+#'         "READ"|"WRITE"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_connection_type(
+#'   ConnectionType = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_describe_connection_type
+#'
+#' @aliases glue_describe_connection_type
+glue_describe_connection_type <- function(ConnectionType) {
+  op <- new_operation(
+    name = "DescribeConnectionType",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$describe_connection_type_input(ConnectionType = ConnectionType)
+  output <- .glue$describe_connection_type_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$describe_connection_type <- glue_describe_connection_type
+
+#' Provides details regarding the entity used with the connection type,
+#' with a description of the data model for each field in the selected
+#' entity
+#'
+#' @description
+#' Provides details regarding the entity used with the connection type,
+#' with a description of the data model for each field in the selected
+#' entity.
+#' 
+#' The response includes all the fields which make up the entity.
+#'
+#' @usage
+#' glue_describe_entity(ConnectionName, CatalogId, EntityName, NextToken,
+#'   DataStoreApiVersion)
+#'
+#' @param ConnectionName &#91;required&#93; The name of the connection that contains the connection type
+#' credentials.
+#' @param CatalogId The catalog ID of the catalog that contains the connection. This can be
+#' null, By default, the Amazon Web Services Account ID is the catalog ID.
+#' @param EntityName &#91;required&#93; The name of the entity that you want to describe from the connection
+#' type.
+#' @param NextToken A continuation token, included if this is a continuation call.
+#' @param DataStoreApiVersion The version of the API used for the data store.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Fields = list(
+#'     list(
+#'       FieldName = "string",
+#'       Label = "string",
+#'       Description = "string",
+#'       FieldType = "INT"|"SMALLINT"|"BIGINT"|"FLOAT"|"LONG"|"DATE"|"BOOLEAN"|"MAP"|"ARRAY"|"STRING"|"TIMESTAMP"|"DECIMAL"|"BYTE"|"SHORT"|"DOUBLE"|"STRUCT",
+#'       IsPrimaryKey = TRUE|FALSE,
+#'       IsNullable = TRUE|FALSE,
+#'       IsRetrievable = TRUE|FALSE,
+#'       IsFilterable = TRUE|FALSE,
+#'       IsPartitionable = TRUE|FALSE,
+#'       IsCreateable = TRUE|FALSE,
+#'       IsUpdateable = TRUE|FALSE,
+#'       IsUpsertable = TRUE|FALSE,
+#'       IsDefaultOnCreate = TRUE|FALSE,
+#'       SupportedValues = list(
+#'         "string"
+#'       ),
+#'       SupportedFilterOperators = list(
+#'         "LESS_THAN"|"GREATER_THAN"|"BETWEEN"|"EQUAL_TO"|"NOT_EQUAL_TO"|"GREATER_THAN_OR_EQUAL_TO"|"LESS_THAN_OR_EQUAL_TO"|"CONTAINS"|"ORDER_BY"
+#'       ),
+#'       ParentField = "string",
+#'       NativeDataType = "string",
+#'       CustomProperties = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_entity(
+#'   ConnectionName = "string",
+#'   CatalogId = "string",
+#'   EntityName = "string",
+#'   NextToken = "string",
+#'   DataStoreApiVersion = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_describe_entity
+#'
+#' @aliases glue_describe_entity
+glue_describe_entity <- function(ConnectionName, CatalogId = NULL, EntityName, NextToken = NULL, DataStoreApiVersion = NULL) {
+  op <- new_operation(
+    name = "DescribeEntity",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Fields"),
+    stream_api = FALSE
+  )
+  input <- .glue$describe_entity_input(ConnectionName = ConnectionName, CatalogId = CatalogId, EntityName = EntityName, NextToken = NextToken, DataStoreApiVersion = DataStoreApiVersion)
+  output <- .glue$describe_entity_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$describe_entity <- glue_describe_entity
+
+#' Returns a list of inbound integrations for the specified integration
+#'
+#' @description
+#' Returns a list of inbound integrations for the specified integration.
+#'
+#' @usage
+#' glue_describe_inbound_integrations(IntegrationArn, Marker, MaxRecords,
+#'   TargetArn)
+#'
+#' @param IntegrationArn The Amazon Resource Name (ARN) of the integration.
+#' @param Marker A token to specify where to start paginating. This is the marker from a
+#' previously truncated response.
+#' @param MaxRecords The total number of items to return in the output.
+#' @param TargetArn The Amazon Resource Name (ARN) of the target resource in the
+#' integration.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   InboundIntegrations = list(
+#'     list(
+#'       SourceArn = "string",
+#'       TargetArn = "string",
+#'       IntegrationArn = "string",
+#'       Status = "CREATING"|"ACTIVE"|"MODIFYING"|"FAILED"|"DELETING"|"SYNCING"|"NEEDS_ATTENTION",
+#'       CreateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Errors = list(
+#'         list(
+#'           ErrorCode = "string",
+#'           ErrorMessage = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   Marker = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_inbound_integrations(
+#'   IntegrationArn = "string",
+#'   Marker = "string",
+#'   MaxRecords = 123,
+#'   TargetArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_describe_inbound_integrations
+#'
+#' @aliases glue_describe_inbound_integrations
+glue_describe_inbound_integrations <- function(IntegrationArn = NULL, Marker = NULL, MaxRecords = NULL, TargetArn = NULL) {
+  op <- new_operation(
+    name = "DescribeInboundIntegrations",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$describe_inbound_integrations_input(IntegrationArn = IntegrationArn, Marker = Marker, MaxRecords = MaxRecords, TargetArn = TargetArn)
+  output <- .glue$describe_inbound_integrations_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$describe_inbound_integrations <- glue_describe_inbound_integrations
+
+#' The API is used to retrieve a list of integrations
+#'
+#' @description
+#' The API is used to retrieve a list of integrations.
+#'
+#' @usage
+#' glue_describe_integrations(IntegrationIdentifier, Marker, MaxRecords,
+#'   Filters)
+#'
+#' @param IntegrationIdentifier The Amazon Resource Name (ARN) for the integration.
+#' @param Marker A value that indicates the starting point for the next set of response
+#' records in a subsequent request.
+#' @param MaxRecords The total number of items to return in the output.
+#' @param Filters A list of key and values, to filter down the results. Supported keys are
+#' "Status", "IntegrationName", and "SourceArn". IntegrationName is limited
+#' to only one value.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Integrations = list(
+#'     list(
+#'       SourceArn = "string",
+#'       TargetArn = "string",
+#'       Description = "string",
+#'       IntegrationName = "string",
+#'       IntegrationArn = "string",
+#'       KmsKeyId = "string",
+#'       AdditionalEncryptionContext = list(
+#'         "string"
+#'       ),
+#'       Tags = list(
+#'         list(
+#'           key = "string",
+#'           value = "string"
+#'         )
+#'       ),
+#'       Status = "CREATING"|"ACTIVE"|"MODIFYING"|"FAILED"|"DELETING"|"SYNCING"|"NEEDS_ATTENTION",
+#'       CreateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Errors = list(
+#'         list(
+#'           ErrorCode = "string",
+#'           ErrorMessage = "string"
+#'         )
+#'       ),
+#'       DataFilter = "string"
+#'     )
+#'   ),
+#'   Marker = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_integrations(
+#'   IntegrationIdentifier = "string",
+#'   Marker = "string",
+#'   MaxRecords = 123,
+#'   Filters = list(
+#'     list(
+#'       Name = "string",
+#'       Values = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_describe_integrations
+#'
+#' @aliases glue_describe_integrations
+glue_describe_integrations <- function(IntegrationIdentifier = NULL, Marker = NULL, MaxRecords = NULL, Filters = NULL) {
+  op <- new_operation(
+    name = "DescribeIntegrations",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$describe_integrations_input(IntegrationIdentifier = IntegrationIdentifier, Marker = Marker, MaxRecords = MaxRecords, Filters = Filters)
+  output <- .glue$describe_integrations_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$describe_integrations <- glue_describe_integrations
+
 #' Retrieves the details of a blueprint
 #'
 #' @description
@@ -9373,7 +10703,7 @@ glue_get_blueprint_runs <- function(BlueprintName, NextToken = NULL, MaxResults 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .glue$get_blueprint_runs_input(BlueprintName = BlueprintName, NextToken = NextToken, MaxResults = MaxResults)
@@ -9385,6 +10715,112 @@ glue_get_blueprint_runs <- function(BlueprintName, NextToken = NULL, MaxResults 
   return(response)
 }
 .glue$operations$get_blueprint_runs <- glue_get_blueprint_runs
+
+#' The name of the Catalog to retrieve
+#'
+#' @description
+#' The name of the Catalog to retrieve. This should be all lowercase.
+#'
+#' @usage
+#' glue_get_catalog(CatalogId)
+#'
+#' @param CatalogId &#91;required&#93; The ID of the parent catalog in which the catalog resides. If none is
+#' provided, the Amazon Web Services Account Number is used by default.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Catalog = list(
+#'     CatalogId = "string",
+#'     Name = "string",
+#'     ResourceArn = "string",
+#'     Description = "string",
+#'     Parameters = list(
+#'       "string"
+#'     ),
+#'     CreateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     UpdateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     TargetRedshiftCatalog = list(
+#'       CatalogArn = "string"
+#'     ),
+#'     FederatedCatalog = list(
+#'       Identifier = "string",
+#'       ConnectionName = "string"
+#'     ),
+#'     CatalogProperties = list(
+#'       DataLakeAccessProperties = list(
+#'         DataLakeAccess = TRUE|FALSE,
+#'         DataTransferRole = "string",
+#'         KmsKey = "string",
+#'         ManagedWorkgroupName = "string",
+#'         ManagedWorkgroupStatus = "string",
+#'         RedshiftDatabaseName = "string",
+#'         StatusMessage = "string",
+#'         CatalogType = "string"
+#'       ),
+#'       CustomProperties = list(
+#'         "string"
+#'       )
+#'     ),
+#'     CreateTableDefaultPermissions = list(
+#'       list(
+#'         Principal = list(
+#'           DataLakePrincipalIdentifier = "string"
+#'         ),
+#'         Permissions = list(
+#'           "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"
+#'         )
+#'       )
+#'     ),
+#'     CreateDatabaseDefaultPermissions = list(
+#'       list(
+#'         Principal = list(
+#'           DataLakePrincipalIdentifier = "string"
+#'         ),
+#'         Permissions = list(
+#'           "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_catalog(
+#'   CatalogId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_get_catalog
+#'
+#' @aliases glue_get_catalog
+glue_get_catalog <- function(CatalogId) {
+  op <- new_operation(
+    name = "GetCatalog",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$get_catalog_input(CatalogId = CatalogId)
+  output <- .glue$get_catalog_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$get_catalog <- glue_get_catalog
 
 #' Retrieves the status of a migration operation
 #'
@@ -9441,6 +10877,125 @@ glue_get_catalog_import_status <- function(CatalogId = NULL) {
   return(response)
 }
 .glue$operations$get_catalog_import_status <- glue_get_catalog_import_status
+
+#' Retrieves all catalogs defined in a catalog in the Glue Data Catalog
+#'
+#' @description
+#' Retrieves all catalogs defined in a catalog in the Glue Data Catalog.
+#' For a Redshift-federated catalog use case, this operation returns the
+#' list of catalogs mapped to Redshift databases in the Redshift namespace
+#' catalog.
+#'
+#' @usage
+#' glue_get_catalogs(ParentCatalogId, NextToken, MaxResults, Recursive)
+#'
+#' @param ParentCatalogId The ID of the parent catalog in which the catalog resides. If none is
+#' provided, the Amazon Web Services Account Number is used by default.
+#' @param NextToken A continuation token, if this is a continuation call.
+#' @param MaxResults The maximum number of catalogs to return in one response.
+#' @param Recursive When specified as true, iterates through the account and returns all
+#' catalog resources (including top-level resources and child resources)
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CatalogList = list(
+#'     list(
+#'       CatalogId = "string",
+#'       Name = "string",
+#'       ResourceArn = "string",
+#'       Description = "string",
+#'       Parameters = list(
+#'         "string"
+#'       ),
+#'       CreateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       UpdateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       TargetRedshiftCatalog = list(
+#'         CatalogArn = "string"
+#'       ),
+#'       FederatedCatalog = list(
+#'         Identifier = "string",
+#'         ConnectionName = "string"
+#'       ),
+#'       CatalogProperties = list(
+#'         DataLakeAccessProperties = list(
+#'           DataLakeAccess = TRUE|FALSE,
+#'           DataTransferRole = "string",
+#'           KmsKey = "string",
+#'           ManagedWorkgroupName = "string",
+#'           ManagedWorkgroupStatus = "string",
+#'           RedshiftDatabaseName = "string",
+#'           StatusMessage = "string",
+#'           CatalogType = "string"
+#'         ),
+#'         CustomProperties = list(
+#'           "string"
+#'         )
+#'       ),
+#'       CreateTableDefaultPermissions = list(
+#'         list(
+#'           Principal = list(
+#'             DataLakePrincipalIdentifier = "string"
+#'           ),
+#'           Permissions = list(
+#'             "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"
+#'           )
+#'         )
+#'       ),
+#'       CreateDatabaseDefaultPermissions = list(
+#'         list(
+#'           Principal = list(
+#'             DataLakePrincipalIdentifier = "string"
+#'           ),
+#'           Permissions = list(
+#'             "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_catalogs(
+#'   ParentCatalogId = "string",
+#'   NextToken = "string",
+#'   MaxResults = 123,
+#'   Recursive = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_get_catalogs
+#'
+#' @aliases glue_get_catalogs
+glue_get_catalogs <- function(ParentCatalogId = NULL, NextToken = NULL, MaxResults = NULL, Recursive = NULL) {
+  op <- new_operation(
+    name = "GetCatalogs",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$get_catalogs_input(ParentCatalogId = ParentCatalogId, NextToken = NextToken, MaxResults = MaxResults, Recursive = Recursive)
+  output <- .glue$get_catalogs_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$get_catalogs <- glue_get_catalogs
 
 #' Retrieve a classifier by name
 #'
@@ -9652,7 +11207,7 @@ glue_get_classifiers <- function(MaxResults = NULL, NextToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(result_key = "Classifiers", output_token = "NextToken", input_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .glue$get_classifiers_input(MaxResults = MaxResults, NextToken = NextToken)
@@ -9963,6 +11518,7 @@ glue_get_column_statistics_for_table <- function(CatalogId = NULL, DatabaseName,
 #'     SecurityConfiguration = "string",
 #'     NumberOfWorkers = 123,
 #'     WorkerType = "string",
+#'     ComputationType = "FULL"|"INCREMENTAL",
 #'     Status = "STARTING"|"RUNNING"|"SUCCEEDED"|"FAILED"|"STOPPED",
 #'     CreationTime = as.POSIXct(
 #'       "2015-01-01"
@@ -10047,6 +11603,7 @@ glue_get_column_statistics_task_run <- function(ColumnStatisticsTaskRunId) {
 #'       SecurityConfiguration = "string",
 #'       NumberOfWorkers = 123,
 #'       WorkerType = "string",
+#'       ComputationType = "FULL"|"INCREMENTAL",
 #'       Status = "STARTING"|"RUNNING"|"SUCCEEDED"|"FAILED"|"STOPPED",
 #'       CreationTime = as.POSIXct(
 #'         "2015-01-01"
@@ -10089,7 +11646,7 @@ glue_get_column_statistics_task_runs <- function(DatabaseName, TableName, MaxRes
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .glue$get_column_statistics_task_runs_input(DatabaseName = DatabaseName, TableName = TableName, MaxResults = MaxResults, NextToken = NextToken)
@@ -10102,13 +11659,89 @@ glue_get_column_statistics_task_runs <- function(DatabaseName, TableName, MaxRes
 }
 .glue$operations$get_column_statistics_task_runs <- glue_get_column_statistics_task_runs
 
+#' Gets settings for a column statistics task
+#'
+#' @description
+#' Gets settings for a column statistics task.
+#'
+#' @usage
+#' glue_get_column_statistics_task_settings(DatabaseName, TableName)
+#'
+#' @param DatabaseName &#91;required&#93; The name of the database where the table resides.
+#' @param TableName &#91;required&#93; The name of the table for which to retrieve column statistics.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ColumnStatisticsTaskSettings = list(
+#'     DatabaseName = "string",
+#'     TableName = "string",
+#'     Schedule = list(
+#'       ScheduleExpression = "string",
+#'       State = "SCHEDULED"|"NOT_SCHEDULED"|"TRANSITIONING"
+#'     ),
+#'     ColumnNameList = list(
+#'       "string"
+#'     ),
+#'     CatalogID = "string",
+#'     Role = "string",
+#'     SampleSize = 123.0,
+#'     SecurityConfiguration = "string",
+#'     ScheduleType = "CRON"|"AUTO",
+#'     SettingSource = "CATALOG"|"TABLE",
+#'     LastExecutionAttempt = list(
+#'       Status = "FAILED"|"STARTED",
+#'       ColumnStatisticsTaskRunId = "string",
+#'       ExecutionTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ErrorMessage = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_column_statistics_task_settings(
+#'   DatabaseName = "string",
+#'   TableName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_get_column_statistics_task_settings
+#'
+#' @aliases glue_get_column_statistics_task_settings
+glue_get_column_statistics_task_settings <- function(DatabaseName, TableName) {
+  op <- new_operation(
+    name = "GetColumnStatisticsTaskSettings",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$get_column_statistics_task_settings_input(DatabaseName = DatabaseName, TableName = TableName)
+  output <- .glue$get_column_statistics_task_settings_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$get_column_statistics_task_settings <- glue_get_column_statistics_task_settings
+
 #' Retrieves a connection definition from the Data Catalog
 #'
 #' @description
 #' Retrieves a connection definition from the Data Catalog.
 #'
 #' @usage
-#' glue_get_connection(CatalogId, Name, HidePassword)
+#' glue_get_connection(CatalogId, Name, HidePassword,
+#'   ApplyOverrideForComputeEnvironment)
 #'
 #' @param CatalogId The ID of the Data Catalog in which the connection resides. If none is
 #' provided, the Amazon Web Services account ID is used by default.
@@ -10119,6 +11752,8 @@ glue_get_column_statistics_task_runs <- function(DatabaseName, TableName, MaxRes
 #' the caller might not have permission to use the KMS key to decrypt the
 #' password, but it does have permission to access the rest of the
 #' connection properties.
+#' @param ApplyOverrideForComputeEnvironment For connections that may be used in multiple services, specifies
+#' returning properties for the specified compute environment.
 #'
 #' @return
 #' A list with the following syntax:
@@ -10127,11 +11762,20 @@ glue_get_column_statistics_task_runs <- function(DatabaseName, TableName, MaxRes
 #'   Connection = list(
 #'     Name = "string",
 #'     Description = "string",
-#'     ConnectionType = "JDBC"|"SFTP"|"MONGODB"|"KAFKA"|"NETWORK"|"MARKETPLACE"|"CUSTOM"|"SALESFORCE"|"VIEW_VALIDATION_REDSHIFT"|"VIEW_VALIDATION_ATHENA",
+#'     ConnectionType = "JDBC"|"SFTP"|"MONGODB"|"KAFKA"|"NETWORK"|"MARKETPLACE"|"CUSTOM"|"SALESFORCE"|"VIEW_VALIDATION_REDSHIFT"|"VIEW_VALIDATION_ATHENA"|"GOOGLEADS"|"GOOGLESHEETS"|"GOOGLEANALYTICS4"|"SERVICENOW"|"MARKETO"|"SAPODATA"|"ZENDESK"|"JIRACLOUD"|"NETSUITEERP"|"HUBSPOT"|"FACEBOOKADS"|"INSTAGRAMADS"|"ZOHOCRM"|"SALESFORCEPARDOT"|"SALESFORCEMARKETINGCLOUD"|"SLACK"|"STRIPE"|"INTERCOM"|"SNAPCHATADS",
 #'     MatchCriteria = list(
 #'       "string"
 #'     ),
 #'     ConnectionProperties = list(
+#'       "string"
+#'     ),
+#'     SparkProperties = list(
+#'       "string"
+#'     ),
+#'     AthenaProperties = list(
+#'       "string"
+#'     ),
+#'     PythonProperties = list(
 #'       "string"
 #'     ),
 #'     PhysicalConnectionRequirements = list(
@@ -10154,7 +11798,7 @@ glue_get_column_statistics_task_runs <- function(DatabaseName, TableName, MaxRes
 #'       "2015-01-01"
 #'     ),
 #'     AuthenticationConfiguration = list(
-#'       AuthenticationType = "BASIC"|"OAUTH2"|"CUSTOM",
+#'       AuthenticationType = "BASIC"|"OAUTH2"|"CUSTOM"|"IAM",
 #'       SecretArn = "string",
 #'       OAuth2Properties = list(
 #'         OAuth2GrantType = "AUTHORIZATION_CODE"|"CLIENT_CREDENTIALS"|"JWT_BEARER",
@@ -10167,6 +11811,10 @@ glue_get_column_statistics_task_runs <- function(DatabaseName, TableName, MaxRes
 #'           "string"
 #'         )
 #'       )
+#'     ),
+#'     ConnectionSchemaVersion = 123,
+#'     CompatibleComputeEnvironments = list(
+#'       "SPARK"|"ATHENA"|"PYTHON"
 #'     )
 #'   )
 #' )
@@ -10177,7 +11825,8 @@ glue_get_column_statistics_task_runs <- function(DatabaseName, TableName, MaxRes
 #' svc$get_connection(
 #'   CatalogId = "string",
 #'   Name = "string",
-#'   HidePassword = TRUE|FALSE
+#'   HidePassword = TRUE|FALSE,
+#'   ApplyOverrideForComputeEnvironment = "SPARK"|"ATHENA"|"PYTHON"
 #' )
 #' ```
 #'
@@ -10186,7 +11835,7 @@ glue_get_column_statistics_task_runs <- function(DatabaseName, TableName, MaxRes
 #' @rdname glue_get_connection
 #'
 #' @aliases glue_get_connection
-glue_get_connection <- function(CatalogId = NULL, Name, HidePassword = NULL) {
+glue_get_connection <- function(CatalogId = NULL, Name, HidePassword = NULL, ApplyOverrideForComputeEnvironment = NULL) {
   op <- new_operation(
     name = "GetConnection",
     http_method = "POST",
@@ -10195,7 +11844,7 @@ glue_get_connection <- function(CatalogId = NULL, Name, HidePassword = NULL) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .glue$get_connection_input(CatalogId = CatalogId, Name = Name, HidePassword = HidePassword)
+  input <- .glue$get_connection_input(CatalogId = CatalogId, Name = Name, HidePassword = HidePassword, ApplyOverrideForComputeEnvironment = ApplyOverrideForComputeEnvironment)
   output <- .glue$get_connection_output()
   config <- get_config()
   svc <- .glue$service(config, op)
@@ -10234,11 +11883,20 @@ glue_get_connection <- function(CatalogId = NULL, Name, HidePassword = NULL) {
 #'     list(
 #'       Name = "string",
 #'       Description = "string",
-#'       ConnectionType = "JDBC"|"SFTP"|"MONGODB"|"KAFKA"|"NETWORK"|"MARKETPLACE"|"CUSTOM"|"SALESFORCE"|"VIEW_VALIDATION_REDSHIFT"|"VIEW_VALIDATION_ATHENA",
+#'       ConnectionType = "JDBC"|"SFTP"|"MONGODB"|"KAFKA"|"NETWORK"|"MARKETPLACE"|"CUSTOM"|"SALESFORCE"|"VIEW_VALIDATION_REDSHIFT"|"VIEW_VALIDATION_ATHENA"|"GOOGLEADS"|"GOOGLESHEETS"|"GOOGLEANALYTICS4"|"SERVICENOW"|"MARKETO"|"SAPODATA"|"ZENDESK"|"JIRACLOUD"|"NETSUITEERP"|"HUBSPOT"|"FACEBOOKADS"|"INSTAGRAMADS"|"ZOHOCRM"|"SALESFORCEPARDOT"|"SALESFORCEMARKETINGCLOUD"|"SLACK"|"STRIPE"|"INTERCOM"|"SNAPCHATADS",
 #'       MatchCriteria = list(
 #'         "string"
 #'       ),
 #'       ConnectionProperties = list(
+#'         "string"
+#'       ),
+#'       SparkProperties = list(
+#'         "string"
+#'       ),
+#'       AthenaProperties = list(
+#'         "string"
+#'       ),
+#'       PythonProperties = list(
 #'         "string"
 #'       ),
 #'       PhysicalConnectionRequirements = list(
@@ -10261,7 +11919,7 @@ glue_get_connection <- function(CatalogId = NULL, Name, HidePassword = NULL) {
 #'         "2015-01-01"
 #'       ),
 #'       AuthenticationConfiguration = list(
-#'         AuthenticationType = "BASIC"|"OAUTH2"|"CUSTOM",
+#'         AuthenticationType = "BASIC"|"OAUTH2"|"CUSTOM"|"IAM",
 #'         SecretArn = "string",
 #'         OAuth2Properties = list(
 #'           OAuth2GrantType = "AUTHORIZATION_CODE"|"CLIENT_CREDENTIALS"|"JWT_BEARER",
@@ -10274,6 +11932,10 @@ glue_get_connection <- function(CatalogId = NULL, Name, HidePassword = NULL) {
 #'             "string"
 #'           )
 #'         )
+#'       ),
+#'       ConnectionSchemaVersion = 123,
+#'       CompatibleComputeEnvironments = list(
+#'         "SPARK"|"ATHENA"|"PYTHON"
 #'       )
 #'     )
 #'   ),
@@ -10289,7 +11951,8 @@ glue_get_connection <- function(CatalogId = NULL, Name, HidePassword = NULL) {
 #'     MatchCriteria = list(
 #'       "string"
 #'     ),
-#'     ConnectionType = "JDBC"|"SFTP"|"MONGODB"|"KAFKA"|"NETWORK"|"MARKETPLACE"|"CUSTOM"|"SALESFORCE"|"VIEW_VALIDATION_REDSHIFT"|"VIEW_VALIDATION_ATHENA"
+#'     ConnectionType = "JDBC"|"SFTP"|"MONGODB"|"KAFKA"|"NETWORK"|"MARKETPLACE"|"CUSTOM"|"SALESFORCE"|"VIEW_VALIDATION_REDSHIFT"|"VIEW_VALIDATION_ATHENA"|"GOOGLEADS"|"GOOGLESHEETS"|"GOOGLEANALYTICS4"|"SERVICENOW"|"MARKETO"|"SAPODATA"|"ZENDESK"|"JIRACLOUD"|"NETSUITEERP"|"HUBSPOT"|"FACEBOOKADS"|"INSTAGRAMADS"|"ZOHOCRM"|"SALESFORCEPARDOT"|"SALESFORCEMARKETINGCLOUD"|"SLACK"|"STRIPE"|"INTERCOM"|"SNAPCHATADS",
+#'     ConnectionSchemaVersion = 123
 #'   ),
 #'   HidePassword = TRUE|FALSE,
 #'   NextToken = "string",
@@ -10308,7 +11971,7 @@ glue_get_connections <- function(CatalogId = NULL, Filter = NULL, HidePassword =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(result_key = "ConnectionList", output_token = "NextToken", input_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .glue$get_connections_input(CatalogId = CatalogId, Filter = Filter, HidePassword = HidePassword, NextToken = NextToken, MaxResults = MaxResults)
@@ -10557,7 +12220,7 @@ glue_get_crawler_metrics <- function(CrawlerNameList = NULL, MaxResults = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(result_key = "CrawlerMetricsList", output_token = "NextToken", input_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .glue$get_crawler_metrics_input(CrawlerNameList = CrawlerNameList, MaxResults = MaxResults, NextToken = NextToken)
@@ -10744,7 +12407,7 @@ glue_get_crawlers <- function(MaxResults = NULL, NextToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(result_key = "Crawlers", output_token = "NextToken", input_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .glue$get_crawlers_input(MaxResults = MaxResults, NextToken = NextToken)
@@ -11528,7 +13191,7 @@ glue_get_databases <- function(CatalogId = NULL, NextToken = NULL, MaxResults = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(result_key = "DatabaseList", output_token = "NextToken", input_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .glue$get_databases_input(CatalogId = CatalogId, NextToken = NextToken, MaxResults = MaxResults, ResourceShareType = ResourceShareType, AttributesToGet = AttributesToGet)
@@ -11784,7 +13447,7 @@ glue_get_dev_endpoints <- function(MaxResults = NULL, NextToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(result_key = "DevEndpoints", output_token = "NextToken", input_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .glue$get_dev_endpoints_input(MaxResults = MaxResults, NextToken = NextToken)
@@ -11796,6 +13459,231 @@ glue_get_dev_endpoints <- function(MaxResults = NULL, NextToken = NULL) {
   return(response)
 }
 .glue$operations$get_dev_endpoints <- glue_get_dev_endpoints
+
+#' This API is used to query preview data from a given connection type or
+#' from a native Amazon S3 based Glue Data Catalog
+#'
+#' @description
+#' This API is used to query preview data from a given connection type or
+#' from a native Amazon S3 based Glue Data Catalog.
+#' 
+#' Returns records as an array of JSON blobs. Each record is formatted
+#' using Jackson JsonNode based on the field type defined by the
+#' [`describe_entity`][glue_describe_entity] API.
+#' 
+#' Spark connectors generate schemas according to the same data type
+#' mapping as in the [`describe_entity`][glue_describe_entity] API. Spark
+#' connectors convert data to the appropriate data types matching the
+#' schema when returning rows.
+#'
+#' @usage
+#' glue_get_entity_records(ConnectionName, CatalogId, EntityName,
+#'   NextToken, DataStoreApiVersion, ConnectionOptions, FilterPredicate,
+#'   Limit, OrderBy, SelectedFields)
+#'
+#' @param ConnectionName The name of the connection that contains the connection type
+#' credentials.
+#' @param CatalogId The catalog ID of the catalog that contains the connection. This can be
+#' null, By default, the Amazon Web Services Account ID is the catalog ID.
+#' @param EntityName &#91;required&#93; Name of the entity that we want to query the preview data from the given
+#' connection type.
+#' @param NextToken A continuation token, included if this is a continuation call.
+#' @param DataStoreApiVersion The API version of the SaaS connector.
+#' @param ConnectionOptions Connector options that are required to query the data.
+#' @param FilterPredicate A filter predicate that you can apply in the query request.
+#' @param Limit &#91;required&#93; Limits the number of records fetched with the request.
+#' @param OrderBy A parameter that orders the response preview data.
+#' @param SelectedFields List of fields that we want to fetch as part of preview data.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Records = list(
+#'     list()
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_entity_records(
+#'   ConnectionName = "string",
+#'   CatalogId = "string",
+#'   EntityName = "string",
+#'   NextToken = "string",
+#'   DataStoreApiVersion = "string",
+#'   ConnectionOptions = list(
+#'     "string"
+#'   ),
+#'   FilterPredicate = "string",
+#'   Limit = 123,
+#'   OrderBy = "string",
+#'   SelectedFields = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_get_entity_records
+#'
+#' @aliases glue_get_entity_records
+glue_get_entity_records <- function(ConnectionName = NULL, CatalogId = NULL, EntityName, NextToken = NULL, DataStoreApiVersion = NULL, ConnectionOptions = NULL, FilterPredicate = NULL, Limit, OrderBy = NULL, SelectedFields = NULL) {
+  op <- new_operation(
+    name = "GetEntityRecords",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$get_entity_records_input(ConnectionName = ConnectionName, CatalogId = CatalogId, EntityName = EntityName, NextToken = NextToken, DataStoreApiVersion = DataStoreApiVersion, ConnectionOptions = ConnectionOptions, FilterPredicate = FilterPredicate, Limit = Limit, OrderBy = OrderBy, SelectedFields = SelectedFields)
+  output <- .glue$get_entity_records_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$get_entity_records <- glue_get_entity_records
+
+#' This API is used for fetching the ResourceProperty of the Glue
+#' connection (for the source) or Glue database ARN (for the target)
+#'
+#' @description
+#' This API is used for fetching the `ResourceProperty` of the Glue
+#' connection (for the source) or Glue database ARN (for the target)
+#'
+#' @usage
+#' glue_get_integration_resource_property(ResourceArn)
+#'
+#' @param ResourceArn &#91;required&#93; The connection ARN of the source, or the database ARN of the target.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResourceArn = "string",
+#'   SourceProcessingProperties = list(
+#'     RoleArn = "string"
+#'   ),
+#'   TargetProcessingProperties = list(
+#'     RoleArn = "string",
+#'     KmsArn = "string",
+#'     ConnectionName = "string",
+#'     EventBusArn = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_integration_resource_property(
+#'   ResourceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_get_integration_resource_property
+#'
+#' @aliases glue_get_integration_resource_property
+glue_get_integration_resource_property <- function(ResourceArn) {
+  op <- new_operation(
+    name = "GetIntegrationResourceProperty",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$get_integration_resource_property_input(ResourceArn = ResourceArn)
+  output <- .glue$get_integration_resource_property_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$get_integration_resource_property <- glue_get_integration_resource_property
+
+#' This API is used to retrieve optional override properties for the tables
+#' that need to be replicated
+#'
+#' @description
+#' This API is used to retrieve optional override properties for the tables
+#' that need to be replicated. These properties can include properties for
+#' filtering and partition for source and target tables.
+#'
+#' @usage
+#' glue_get_integration_table_properties(ResourceArn, TableName)
+#'
+#' @param ResourceArn &#91;required&#93; The connection ARN of the source, or the database ARN of the target.
+#' @param TableName &#91;required&#93; The name of the table to be replicated.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResourceArn = "string",
+#'   TableName = "string",
+#'   SourceTableConfig = list(
+#'     Fields = list(
+#'       "string"
+#'     ),
+#'     FilterPredicate = "string",
+#'     PrimaryKey = list(
+#'       "string"
+#'     ),
+#'     RecordUpdateField = "string"
+#'   ),
+#'   TargetTableConfig = list(
+#'     UnnestSpec = "TOPLEVEL"|"FULL"|"NOUNNEST",
+#'     PartitionSpec = list(
+#'       list(
+#'         FieldName = "string",
+#'         FunctionSpec = "string"
+#'       )
+#'     ),
+#'     TargetTableName = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_integration_table_properties(
+#'   ResourceArn = "string",
+#'   TableName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_get_integration_table_properties
+#'
+#' @aliases glue_get_integration_table_properties
+glue_get_integration_table_properties <- function(ResourceArn, TableName) {
+  op <- new_operation(
+    name = "GetIntegrationTableProperties",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$get_integration_table_properties_input(ResourceArn = ResourceArn, TableName = TableName)
+  output <- .glue$get_integration_table_properties_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$get_integration_table_properties <- glue_get_integration_table_properties
 
 #' Retrieves an existing job definition
 #'
@@ -13378,7 +15266,7 @@ glue_get_job_bookmark <- function(JobName, RunId = NULL) {
 #'
 #' @description
 #' Retrieves the metadata for a given job run. Job run history is
-#' accessible for 90 days for your workflow and job run.
+#' accessible for 365 days for your workflow and job run.
 #'
 #' @usage
 #' glue_get_job_run(JobName, RunId, PredecessorsIncluded)
@@ -13477,6 +15365,9 @@ glue_get_job_run <- function(JobName, RunId, PredecessorsIncluded = NULL) {
 #'
 #' @description
 #' Retrieves metadata for all runs of a given job definition.
+#' 
+#' [`get_job_runs`][glue_get_job_runs] returns the job runs in
+#' chronological order, with the newest jobs returned first.
 #'
 #' @usage
 #' glue_get_job_runs(JobName, NextToken, MaxResults)
@@ -13561,7 +15452,7 @@ glue_get_job_runs <- function(JobName, NextToken = NULL, MaxResults = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "JobRuns"),
+    paginator = list(result_key = "JobRuns", output_token = "NextToken", input_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .glue$get_job_runs_input(JobName = JobName, NextToken = NextToken, MaxResults = MaxResults)
@@ -15073,7 +16964,7 @@ glue_get_jobs <- function(NextToken = NULL, MaxResults = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Jobs"),
+    paginator = list(result_key = "Jobs", output_token = "NextToken", input_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .glue$get_jobs_input(NextToken = NextToken, MaxResults = MaxResults)
@@ -15277,7 +17168,7 @@ glue_get_ml_task_runs <- function(TransformId, NextToken = NULL, MaxResults = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .glue$get_ml_task_runs_input(TransformId = TransformId, NextToken = NextToken, MaxResults = MaxResults, Filter = Filter, Sort = Sort)
@@ -15567,7 +17458,7 @@ glue_get_ml_transforms <- function(NextToken = NULL, MaxResults = NULL, Filter =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .glue$get_ml_transforms_input(NextToken = NextToken, MaxResults = MaxResults, Filter = Filter, Sort = Sort)
@@ -16126,7 +18017,7 @@ glue_get_partitions <- function(CatalogId = NULL, DatabaseName, TableName, Expre
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(result_key = "Partitions", output_token = "NextToken", input_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .glue$get_partitions_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, Expression = Expression, NextToken = NextToken, Segment = Segment, MaxResults = MaxResults, ExcludeColumnSchema = ExcludeColumnSchema, TransactionId = TransactionId, QueryAsOfTime = QueryAsOfTime)
@@ -16772,6 +18663,10 @@ glue_get_schema_versions_diff <- function(SchemaId, FirstSchemaVersionNumber, Se
 #'       JobBookmarksEncryption = list(
 #'         JobBookmarksEncryptionMode = "DISABLED"|"CSE-KMS",
 #'         KmsKeyArn = "string"
+#'       ),
+#'       DataQualityEncryption = list(
+#'         DataQualityEncryptionMode = "DISABLED"|"SSE-KMS",
+#'         KmsKeyArn = "string"
 #'       )
 #'     )
 #'   )
@@ -16843,6 +18738,10 @@ glue_get_security_configuration <- function(Name) {
 #'         ),
 #'         JobBookmarksEncryption = list(
 #'           JobBookmarksEncryptionMode = "DISABLED"|"CSE-KMS",
+#'           KmsKeyArn = "string"
+#'         ),
+#'         DataQualityEncryption = list(
+#'           DataQualityEncryptionMode = "DISABLED"|"SSE-KMS",
 #'           KmsKeyArn = "string"
 #'         )
 #'       )
@@ -17294,10 +19193,26 @@ glue_get_table <- function(CatalogId = NULL, DatabaseName, Name, TransactionId =
 #'   DatabaseName = "string",
 #'   TableName = "string",
 #'   TableOptimizer = list(
-#'     type = "compaction",
+#'     type = "compaction"|"retention"|"orphan_file_deletion",
 #'     configuration = list(
 #'       roleArn = "string",
-#'       enabled = TRUE|FALSE
+#'       enabled = TRUE|FALSE,
+#'       vpcConfiguration = list(
+#'         glueConnectionName = "string"
+#'       ),
+#'       retentionConfiguration = list(
+#'         icebergConfiguration = list(
+#'           snapshotRetentionPeriodInDays = 123,
+#'           numberOfSnapshotsToRetain = 123,
+#'           cleanExpiredFiles = TRUE|FALSE
+#'         )
+#'       ),
+#'       orphanFileDeletionConfiguration = list(
+#'         icebergConfiguration = list(
+#'           orphanFileRetentionPeriodInDays = 123,
+#'           location = "string"
+#'         )
+#'       )
 #'     ),
 #'     lastRun = list(
 #'       eventType = "starting"|"completed"|"failed"|"in_progress",
@@ -17313,7 +19228,31 @@ glue_get_table <- function(CatalogId = NULL, DatabaseName, Name, TransactionId =
 #'         NumberOfDpus = "string",
 #'         JobDurationInHour = "string"
 #'       ),
-#'       error = "string"
+#'       error = "string",
+#'       compactionMetrics = list(
+#'         IcebergMetrics = list(
+#'           NumberOfBytesCompacted = 123,
+#'           NumberOfFilesCompacted = 123,
+#'           NumberOfDpus = 123,
+#'           JobDurationInHour = 123.0
+#'         )
+#'       ),
+#'       retentionMetrics = list(
+#'         IcebergMetrics = list(
+#'           NumberOfDataFilesDeleted = 123,
+#'           NumberOfManifestFilesDeleted = 123,
+#'           NumberOfManifestListsDeleted = 123,
+#'           NumberOfDpus = 123,
+#'           JobDurationInHour = 123.0
+#'         )
+#'       ),
+#'       orphanFileDeletionMetrics = list(
+#'         IcebergMetrics = list(
+#'           NumberOfOrphanFilesDeleted = 123,
+#'           NumberOfDpus = 123,
+#'           JobDurationInHour = 123.0
+#'         )
+#'       )
 #'     )
 #'   )
 #' )
@@ -17325,7 +19264,7 @@ glue_get_table <- function(CatalogId = NULL, DatabaseName, Name, TransactionId =
 #'   CatalogId = "string",
 #'   DatabaseName = "string",
 #'   TableName = "string",
-#'   Type = "compaction"
+#'   Type = "compaction"|"retention"|"orphan_file_deletion"
 #' )
 #' ```
 #'
@@ -17793,7 +19732,7 @@ glue_get_table_versions <- function(CatalogId = NULL, DatabaseName, TableName, N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(result_key = "TableVersions", output_token = "NextToken", input_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .glue$get_table_versions_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, NextToken = NextToken, MaxResults = MaxResults)
@@ -18044,7 +19983,7 @@ glue_get_tables <- function(CatalogId = NULL, DatabaseName, Expression = NULL, N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(result_key = "TableList", output_token = "NextToken", input_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .glue$get_tables_input(CatalogId = CatalogId, DatabaseName = DatabaseName, Expression = Expression, NextToken = NextToken, MaxResults = MaxResults, TransactionId = TransactionId, QueryAsOfTime = QueryAsOfTime, IncludeStatusDetails = IncludeStatusDetails, AttributesToGet = AttributesToGet)
@@ -18279,7 +20218,7 @@ glue_get_triggers <- function(NextToken = NULL, DependentJobName = NULL, MaxResu
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Triggers"),
+    paginator = list(result_key = "Triggers", output_token = "NextToken", input_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .glue$get_triggers_input(NextToken = NextToken, DependentJobName = DependentJobName, MaxResults = MaxResults)
@@ -18724,7 +20663,7 @@ glue_get_unfiltered_partitions_metadata <- function(Region = NULL, CatalogId, Da
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .glue$get_unfiltered_partitions_metadata_input(Region = Region, CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, Expression = Expression, AuditContext = AuditContext, SupportedPermissionTypes = SupportedPermissionTypes, NextToken = NextToken, Segment = Segment, MaxResults = MaxResults, QuerySessionContext = QuerySessionContext)
@@ -19274,7 +21213,7 @@ glue_get_user_defined_functions <- function(CatalogId = NULL, DatabaseName = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(result_key = "UserDefinedFunctions", output_token = "NextToken", input_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .glue$get_user_defined_functions_input(CatalogId = CatalogId, DatabaseName = DatabaseName, Pattern = Pattern, NextToken = NextToken, MaxResults = MaxResults)
@@ -20241,7 +22180,7 @@ glue_list_column_statistics_task_runs <- function(MaxResults = NULL, NextToken =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .glue$list_column_statistics_task_runs_input(MaxResults = MaxResults, NextToken = NextToken)
@@ -20253,6 +22192,80 @@ glue_list_column_statistics_task_runs <- function(MaxResults = NULL, NextToken =
   return(response)
 }
 .glue$operations$list_column_statistics_task_runs <- glue_list_column_statistics_task_runs
+
+#' The ListConnectionTypes API provides a discovery mechanism to learn
+#' available connection types in Glue
+#'
+#' @description
+#' The [`list_connection_types`][glue_list_connection_types] API provides a
+#' discovery mechanism to learn available connection types in Glue. The
+#' response contains a list of connection types with high-level details of
+#' what is supported for each connection type. The connection types listed
+#' are the set of supported options for the `ConnectionType` value in the
+#' [`create_connection`][glue_create_connection] API.
+#'
+#' @usage
+#' glue_list_connection_types(MaxResults, NextToken)
+#'
+#' @param MaxResults The maximum number of results to return.
+#' @param NextToken A continuation token, if this is a continuation call.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ConnectionTypes = list(
+#'     list(
+#'       ConnectionType = "JDBC"|"SFTP"|"MONGODB"|"KAFKA"|"NETWORK"|"MARKETPLACE"|"CUSTOM"|"SALESFORCE"|"VIEW_VALIDATION_REDSHIFT"|"VIEW_VALIDATION_ATHENA"|"GOOGLEADS"|"GOOGLESHEETS"|"GOOGLEANALYTICS4"|"SERVICENOW"|"MARKETO"|"SAPODATA"|"ZENDESK"|"JIRACLOUD"|"NETSUITEERP"|"HUBSPOT"|"FACEBOOKADS"|"INSTAGRAMADS"|"ZOHOCRM"|"SALESFORCEPARDOT"|"SALESFORCEMARKETINGCLOUD"|"SLACK"|"STRIPE"|"INTERCOM"|"SNAPCHATADS",
+#'       Description = "string",
+#'       Capabilities = list(
+#'         SupportedAuthenticationTypes = list(
+#'           "BASIC"|"OAUTH2"|"CUSTOM"|"IAM"
+#'         ),
+#'         SupportedDataOperations = list(
+#'           "READ"|"WRITE"
+#'         ),
+#'         SupportedComputeEnvironments = list(
+#'           "SPARK"|"ATHENA"|"PYTHON"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_connection_types(
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_list_connection_types
+#'
+#' @aliases glue_list_connection_types
+glue_list_connection_types <- function(MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListConnectionTypes",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ConnectionTypes"),
+    stream_api = FALSE
+  )
+  input <- .glue$list_connection_types_input(MaxResults = MaxResults, NextToken = NextToken)
+  output <- .glue$list_connection_types_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$list_connection_types <- glue_list_connection_types
 
 #' Retrieves the names of all crawler resources in this Amazon Web Services
 #' account, or the resources with the specified tag
@@ -20308,7 +22321,7 @@ glue_list_crawlers <- function(MaxResults = NULL, NextToken = NULL, Tags = NULL)
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .glue$list_crawlers_input(MaxResults = MaxResults, NextToken = NextToken, Tags = Tags)
@@ -20469,7 +22482,7 @@ glue_list_custom_entity_types <- function(NextToken = NULL, MaxResults = NULL, T
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .glue$list_custom_entity_types_input(NextToken = NextToken, MaxResults = MaxResults, Tags = Tags)
@@ -20563,7 +22576,7 @@ glue_list_data_quality_results <- function(Filter = NULL, NextToken = NULL, MaxR
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .glue$list_data_quality_results_input(Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
@@ -20655,7 +22668,7 @@ glue_list_data_quality_rule_recommendation_runs <- function(Filter = NULL, NextT
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .glue$list_data_quality_rule_recommendation_runs_input(Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
@@ -20749,7 +22762,7 @@ glue_list_data_quality_ruleset_evaluation_runs <- function(Filter = NULL, NextTo
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .glue$list_data_quality_ruleset_evaluation_runs_input(Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
@@ -20847,7 +22860,7 @@ glue_list_data_quality_rulesets <- function(NextToken = NULL, MaxResults = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .glue$list_data_quality_rulesets_input(NextToken = NextToken, MaxResults = MaxResults, Filter = Filter, Tags = Tags)
@@ -21090,7 +23103,7 @@ glue_list_dev_endpoints <- function(NextToken = NULL, MaxResults = NULL, Tags = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .glue$list_dev_endpoints_input(NextToken = NextToken, MaxResults = MaxResults, Tags = Tags)
@@ -21102,6 +23115,80 @@ glue_list_dev_endpoints <- function(NextToken = NULL, MaxResults = NULL, Tags = 
   return(response)
 }
 .glue$operations$list_dev_endpoints <- glue_list_dev_endpoints
+
+#' Returns the available entities supported by the connection type
+#'
+#' @description
+#' Returns the available entities supported by the connection type.
+#'
+#' @usage
+#' glue_list_entities(ConnectionName, CatalogId, ParentEntityName,
+#'   NextToken, DataStoreApiVersion)
+#'
+#' @param ConnectionName A name for the connection that has required credentials to query any
+#' connection type.
+#' @param CatalogId The catalog ID of the catalog that contains the connection. This can be
+#' null, By default, the Amazon Web Services Account ID is the catalog ID.
+#' @param ParentEntityName Name of the parent entity for which you want to list the children. This
+#' parameter takes a fully-qualified path of the entity in order to list
+#' the child entities.
+#' @param NextToken A continuation token, included if this is a continuation call.
+#' @param DataStoreApiVersion The API version of the SaaS connector.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Entities = list(
+#'     list(
+#'       EntityName = "string",
+#'       Label = "string",
+#'       IsParentEntity = TRUE|FALSE,
+#'       Description = "string",
+#'       Category = "string",
+#'       CustomProperties = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_entities(
+#'   ConnectionName = "string",
+#'   CatalogId = "string",
+#'   ParentEntityName = "string",
+#'   NextToken = "string",
+#'   DataStoreApiVersion = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_list_entities
+#'
+#' @aliases glue_list_entities
+glue_list_entities <- function(ConnectionName = NULL, CatalogId = NULL, ParentEntityName = NULL, NextToken = NULL, DataStoreApiVersion = NULL) {
+  op <- new_operation(
+    name = "ListEntities",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Entities"),
+    stream_api = FALSE
+  )
+  input <- .glue$list_entities_input(ConnectionName = ConnectionName, CatalogId = CatalogId, ParentEntityName = ParentEntityName, NextToken = NextToken, DataStoreApiVersion = DataStoreApiVersion)
+  output <- .glue$list_entities_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$list_entities <- glue_list_entities
 
 #' Retrieves the names of all job resources in this Amazon Web Services
 #' account, or the resources with the specified tag
@@ -21253,7 +23340,7 @@ glue_list_ml_transforms <- function(NextToken = NULL, MaxResults = NULL, Filter 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .glue$list_ml_transforms_input(NextToken = NextToken, MaxResults = MaxResults, Filter = Filter, Sort = Sort, Tags = Tags)
@@ -21570,7 +23657,7 @@ glue_list_sessions <- function(NextToken = NULL, MaxResults = NULL, Tags = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .glue$list_sessions_input(NextToken = NextToken, MaxResults = MaxResults, Tags = Tags, RequestOrigin = RequestOrigin)
@@ -21670,8 +23757,7 @@ glue_list_statements <- function(SessionId, RequestOrigin = NULL, NextToken = NU
 #' @param CatalogId &#91;required&#93; The Catalog ID of the table.
 #' @param DatabaseName &#91;required&#93; The name of the database in the catalog in which the table resides.
 #' @param TableName &#91;required&#93; The name of the table.
-#' @param Type &#91;required&#93; The type of table optimizer. Currently, the only valid value is
-#' `compaction`.
+#' @param Type &#91;required&#93; The type of table optimizer.
 #' @param MaxResults The maximum number of optimizer runs to return on each call.
 #' @param NextToken A continuation token, if this is a continuation call.
 #'
@@ -21698,7 +23784,31 @@ glue_list_statements <- function(SessionId, RequestOrigin = NULL, NextToken = NU
 #'         NumberOfDpus = "string",
 #'         JobDurationInHour = "string"
 #'       ),
-#'       error = "string"
+#'       error = "string",
+#'       compactionMetrics = list(
+#'         IcebergMetrics = list(
+#'           NumberOfBytesCompacted = 123,
+#'           NumberOfFilesCompacted = 123,
+#'           NumberOfDpus = 123,
+#'           JobDurationInHour = 123.0
+#'         )
+#'       ),
+#'       retentionMetrics = list(
+#'         IcebergMetrics = list(
+#'           NumberOfDataFilesDeleted = 123,
+#'           NumberOfManifestFilesDeleted = 123,
+#'           NumberOfManifestListsDeleted = 123,
+#'           NumberOfDpus = 123,
+#'           JobDurationInHour = 123.0
+#'         )
+#'       ),
+#'       orphanFileDeletionMetrics = list(
+#'         IcebergMetrics = list(
+#'           NumberOfOrphanFilesDeleted = 123,
+#'           NumberOfDpus = 123,
+#'           JobDurationInHour = 123.0
+#'         )
+#'       )
 #'     )
 #'   )
 #' )
@@ -21710,7 +23820,7 @@ glue_list_statements <- function(SessionId, RequestOrigin = NULL, NextToken = NU
 #'   CatalogId = "string",
 #'   DatabaseName = "string",
 #'   TableName = "string",
-#'   Type = "compaction",
+#'   Type = "compaction"|"retention"|"orphan_file_deletion",
 #'   MaxResults = 123,
 #'   NextToken = "string"
 #' )
@@ -21727,7 +23837,7 @@ glue_list_table_optimizer_runs <- function(CatalogId, DatabaseName, TableName, T
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TableOptimizerRuns"),
     stream_api = FALSE
   )
   input <- .glue$list_table_optimizer_runs_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, Type = Type, MaxResults = MaxResults, NextToken = NextToken)
@@ -21927,6 +24037,87 @@ glue_list_workflows <- function(NextToken = NULL, MaxResults = NULL) {
   return(response)
 }
 .glue$operations$list_workflows <- glue_list_workflows
+
+#' Modifies a Zero-ETL integration in the caller's account
+#'
+#' @description
+#' Modifies a Zero-ETL integration in the caller's account.
+#'
+#' @usage
+#' glue_modify_integration(IntegrationIdentifier, Description, DataFilter,
+#'   IntegrationName)
+#'
+#' @param IntegrationIdentifier &#91;required&#93; The Amazon Resource Name (ARN) for the integration.
+#' @param Description A description of the integration.
+#' @param DataFilter Selects source tables for the integration using Maxwell filter syntax.
+#' @param IntegrationName A unique name for an integration in Glue.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SourceArn = "string",
+#'   TargetArn = "string",
+#'   IntegrationName = "string",
+#'   Description = "string",
+#'   IntegrationArn = "string",
+#'   KmsKeyId = "string",
+#'   AdditionalEncryptionContext = list(
+#'     "string"
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   ),
+#'   Status = "CREATING"|"ACTIVE"|"MODIFYING"|"FAILED"|"DELETING"|"SYNCING"|"NEEDS_ATTENTION",
+#'   CreateTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Errors = list(
+#'     list(
+#'       ErrorCode = "string",
+#'       ErrorMessage = "string"
+#'     )
+#'   ),
+#'   DataFilter = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$modify_integration(
+#'   IntegrationIdentifier = "string",
+#'   Description = "string",
+#'   DataFilter = "string",
+#'   IntegrationName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_modify_integration
+#'
+#' @aliases glue_modify_integration
+glue_modify_integration <- function(IntegrationIdentifier, Description = NULL, DataFilter = NULL, IntegrationName = NULL) {
+  op <- new_operation(
+    name = "ModifyIntegration",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$modify_integration_input(IntegrationIdentifier = IntegrationIdentifier, Description = Description, DataFilter = DataFilter, IntegrationName = IntegrationName)
+  output <- .glue$modify_integration_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$modify_integration <- glue_modify_integration
 
 #' Sets the security configuration for a specified catalog
 #'
@@ -22197,6 +24388,11 @@ glue_put_schema_version_metadata <- function(SchemaId = NULL, SchemaVersionNumbe
 #' @param RunId &#91;required&#93; The ID of the workflow run for which the run properties should be
 #' updated.
 #' @param RunProperties &#91;required&#93; The properties to put for the specified run.
+#' 
+#' Run properties may be logged. Do not pass plaintext secrets as
+#' properties. Retrieve secrets from a Glue Connection, Amazon Web Services
+#' Secrets Manager or other secret management mechanism if you intend to
+#' use them within the workflow run.
 #'
 #' @return
 #' An empty list.
@@ -22925,7 +25121,7 @@ glue_search_tables <- function(CatalogId = NULL, NextToken = NULL, Filters = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .glue$search_tables_input(CatalogId = CatalogId, NextToken = NextToken, Filters = Filters, SearchText = SearchText, SortCriteria = SortCriteria, MaxResults = MaxResults, ResourceShareType = ResourceShareType, IncludeStatusDetails = IncludeStatusDetails)
@@ -23058,6 +25254,53 @@ glue_start_column_statistics_task_run <- function(DatabaseName, TableName, Colum
   return(response)
 }
 .glue$operations$start_column_statistics_task_run <- glue_start_column_statistics_task_run
+
+#' Starts a column statistics task run schedule
+#'
+#' @description
+#' Starts a column statistics task run schedule.
+#'
+#' @usage
+#' glue_start_column_statistics_task_run_schedule(DatabaseName, TableName)
+#'
+#' @param DatabaseName &#91;required&#93; The name of the database where the table resides.
+#' @param TableName &#91;required&#93; The name of the table for which to start a column statistic task run
+#' schedule.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$start_column_statistics_task_run_schedule(
+#'   DatabaseName = "string",
+#'   TableName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_start_column_statistics_task_run_schedule
+#'
+#' @aliases glue_start_column_statistics_task_run_schedule
+glue_start_column_statistics_task_run_schedule <- function(DatabaseName, TableName) {
+  op <- new_operation(
+    name = "StartColumnStatisticsTaskRunSchedule",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$start_column_statistics_task_run_schedule_input(DatabaseName = DatabaseName, TableName = TableName)
+  output <- .glue$start_column_statistics_task_run_schedule_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$start_column_statistics_task_run_schedule <- glue_start_column_statistics_task_run_schedule
 
 #' Starts a crawl using the specified crawler, regardless of what is
 #' scheduled
@@ -23582,45 +25825,45 @@ glue_start_import_labels_task_run <- function(TransformId, InputS3Path, ReplaceA
 #' value Z.2X for Ray jobs.
 #' 
 #' -   For the `G.1X` worker type, each worker maps to 1 DPU (4 vCPUs, 16
-#'     GB of memory) with 84GB disk (approximately 34GB free), and provides
-#'     1 executor per worker. We recommend this worker type for workloads
-#'     such as data transforms, joins, and queries, to offers a scalable
-#'     and cost effective way to run most jobs.
+#'     GB of memory) with 94GB disk, and provides 1 executor per worker. We
+#'     recommend this worker type for workloads such as data transforms,
+#'     joins, and queries, to offers a scalable and cost effective way to
+#'     run most jobs.
 #' 
 #' -   For the `G.2X` worker type, each worker maps to 2 DPU (8 vCPUs, 32
-#'     GB of memory) with 128GB disk (approximately 77GB free), and
-#'     provides 1 executor per worker. We recommend this worker type for
-#'     workloads such as data transforms, joins, and queries, to offers a
-#'     scalable and cost effective way to run most jobs.
+#'     GB of memory) with 138GB disk, and provides 1 executor per worker.
+#'     We recommend this worker type for workloads such as data transforms,
+#'     joins, and queries, to offers a scalable and cost effective way to
+#'     run most jobs.
 #' 
 #' -   For the `G.4X` worker type, each worker maps to 4 DPU (16 vCPUs, 64
-#'     GB of memory) with 256GB disk (approximately 235GB free), and
-#'     provides 1 executor per worker. We recommend this worker type for
-#'     jobs whose workloads contain your most demanding transforms,
-#'     aggregations, joins, and queries. This worker type is available only
-#'     for Glue version 3.0 or later Spark ETL jobs in the following Amazon
-#'     Web Services Regions: US East (Ohio), US East (N. Virginia), US West
-#'     (Oregon), Asia Pacific (Singapore), Asia Pacific (Sydney), Asia
-#'     Pacific (Tokyo), Canada (Central), Europe (Frankfurt), Europe
-#'     (Ireland), and Europe (Stockholm).
+#'     GB of memory) with 256GB disk, and provides 1 executor per worker.
+#'     We recommend this worker type for jobs whose workloads contain your
+#'     most demanding transforms, aggregations, joins, and queries. This
+#'     worker type is available only for Glue version 3.0 or later Spark
+#'     ETL jobs in the following Amazon Web Services Regions: US East
+#'     (Ohio), US East (N. Virginia), US West (Oregon), Asia Pacific
+#'     (Singapore), Asia Pacific (Sydney), Asia Pacific (Tokyo), Canada
+#'     (Central), Europe (Frankfurt), Europe (Ireland), and Europe
+#'     (Stockholm).
 #' 
 #' -   For the `G.8X` worker type, each worker maps to 8 DPU (32 vCPUs, 128
-#'     GB of memory) with 512GB disk (approximately 487GB free), and
-#'     provides 1 executor per worker. We recommend this worker type for
-#'     jobs whose workloads contain your most demanding transforms,
-#'     aggregations, joins, and queries. This worker type is available only
-#'     for Glue version 3.0 or later Spark ETL jobs, in the same Amazon Web
-#'     Services Regions as supported for the `G.4X` worker type.
+#'     GB of memory) with 512GB disk, and provides 1 executor per worker.
+#'     We recommend this worker type for jobs whose workloads contain your
+#'     most demanding transforms, aggregations, joins, and queries. This
+#'     worker type is available only for Glue version 3.0 or later Spark
+#'     ETL jobs, in the same Amazon Web Services Regions as supported for
+#'     the `G.4X` worker type.
 #' 
 #' -   For the `G.025X` worker type, each worker maps to 0.25 DPU (2 vCPUs,
-#'     4 GB of memory) with 84GB disk (approximately 34GB free), and
-#'     provides 1 executor per worker. We recommend this worker type for
-#'     low volume streaming jobs. This worker type is only available for
-#'     Glue version 3.0 streaming jobs.
+#'     4 GB of memory) with 84GB disk, and provides 1 executor per worker.
+#'     We recommend this worker type for low volume streaming jobs. This
+#'     worker type is only available for Glue version 3.0 or later
+#'     streaming jobs.
 #' 
 #' -   For the `Z.2X` worker type, each worker maps to 2 M-DPU (8vCPUs, 64
-#'     GB of memory) with 128 GB disk (approximately 120GB free), and
-#'     provides up to 8 Ray workers based on the autoscaler.
+#'     GB of memory) with 128 GB disk, and provides up to 8 Ray workers
+#'     based on the autoscaler.
 #' @param NumberOfWorkers The number of workers of a defined `workerType` that are allocated when
 #' a job runs.
 #' @param ExecutionClass Indicates whether the job is run with a standard or flexible execution
@@ -23880,6 +26123,11 @@ glue_start_trigger <- function(Name) {
 #'
 #' @param Name &#91;required&#93; The name of the workflow to start.
 #' @param RunProperties The workflow run properties for the new workflow run.
+#' 
+#' Run properties may be logged. Do not pass plaintext secrets as
+#' properties. Retrieve secrets from a Glue Connection, Amazon Web Services
+#' Secrets Manager or other secret management mechanism if you intend to
+#' use them within the workflow run.
 #'
 #' @return
 #' A list with the following syntax:
@@ -23968,6 +26216,53 @@ glue_stop_column_statistics_task_run <- function(DatabaseName, TableName) {
   return(response)
 }
 .glue$operations$stop_column_statistics_task_run <- glue_stop_column_statistics_task_run
+
+#' Stops a column statistics task run schedule
+#'
+#' @description
+#' Stops a column statistics task run schedule.
+#'
+#' @usage
+#' glue_stop_column_statistics_task_run_schedule(DatabaseName, TableName)
+#'
+#' @param DatabaseName &#91;required&#93; The name of the database where the table resides.
+#' @param TableName &#91;required&#93; The name of the table for which to stop a column statistic task run
+#' schedule.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$stop_column_statistics_task_run_schedule(
+#'   DatabaseName = "string",
+#'   TableName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_stop_column_statistics_task_run_schedule
+#'
+#' @aliases glue_stop_column_statistics_task_run_schedule
+glue_stop_column_statistics_task_run_schedule <- function(DatabaseName, TableName) {
+  op <- new_operation(
+    name = "StopColumnStatisticsTaskRunSchedule",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$stop_column_statistics_task_run_schedule_input(DatabaseName = DatabaseName, TableName = TableName)
+  output <- .glue$stop_column_statistics_task_run_schedule_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$stop_column_statistics_task_run_schedule <- glue_stop_column_statistics_task_run_schedule
 
 #' If the specified crawler is running, stops the crawl
 #'
@@ -24259,6 +26554,102 @@ glue_tag_resource <- function(ResourceArn, TagsToAdd) {
 }
 .glue$operations$tag_resource <- glue_tag_resource
 
+#' Tests a connection to a service to validate the service credentials that
+#' you provide
+#'
+#' @description
+#' Tests a connection to a service to validate the service credentials that
+#' you provide.
+#' 
+#' You can either provide an existing connection name or a
+#' `TestConnectionInput` for testing a non-existing connection input.
+#' Providing both at the same time will cause an error.
+#' 
+#' If the action is successful, the service sends back an HTTP 200
+#' response.
+#'
+#' @usage
+#' glue_test_connection(ConnectionName, CatalogId, TestConnectionInput)
+#'
+#' @param ConnectionName Optional. The name of the connection to test. If only name is provided,
+#' the operation will get the connection and use that for testing.
+#' @param CatalogId The catalog ID where the connection resides.
+#' @param TestConnectionInput A structure that is used to specify testing a connection to a service.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$test_connection(
+#'   ConnectionName = "string",
+#'   CatalogId = "string",
+#'   TestConnectionInput = list(
+#'     ConnectionType = "JDBC"|"SFTP"|"MONGODB"|"KAFKA"|"NETWORK"|"MARKETPLACE"|"CUSTOM"|"SALESFORCE"|"VIEW_VALIDATION_REDSHIFT"|"VIEW_VALIDATION_ATHENA"|"GOOGLEADS"|"GOOGLESHEETS"|"GOOGLEANALYTICS4"|"SERVICENOW"|"MARKETO"|"SAPODATA"|"ZENDESK"|"JIRACLOUD"|"NETSUITEERP"|"HUBSPOT"|"FACEBOOKADS"|"INSTAGRAMADS"|"ZOHOCRM"|"SALESFORCEPARDOT"|"SALESFORCEMARKETINGCLOUD"|"SLACK"|"STRIPE"|"INTERCOM"|"SNAPCHATADS",
+#'     ConnectionProperties = list(
+#'       "string"
+#'     ),
+#'     AuthenticationConfiguration = list(
+#'       AuthenticationType = "BASIC"|"OAUTH2"|"CUSTOM"|"IAM",
+#'       OAuth2Properties = list(
+#'         OAuth2GrantType = "AUTHORIZATION_CODE"|"CLIENT_CREDENTIALS"|"JWT_BEARER",
+#'         OAuth2ClientApplication = list(
+#'           UserManagedClientApplicationClientId = "string",
+#'           AWSManagedClientApplicationReference = "string"
+#'         ),
+#'         TokenUrl = "string",
+#'         TokenUrlParametersMap = list(
+#'           "string"
+#'         ),
+#'         AuthorizationCodeProperties = list(
+#'           AuthorizationCode = "string",
+#'           RedirectUri = "string"
+#'         ),
+#'         OAuth2Credentials = list(
+#'           UserManagedClientApplicationClientSecret = "string",
+#'           AccessToken = "string",
+#'           RefreshToken = "string",
+#'           JwtToken = "string"
+#'         )
+#'       ),
+#'       SecretArn = "string",
+#'       KmsKeyArn = "string",
+#'       BasicAuthenticationCredentials = list(
+#'         Username = "string",
+#'         Password = "string"
+#'       ),
+#'       CustomAuthenticationCredentials = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_test_connection
+#'
+#' @aliases glue_test_connection
+glue_test_connection <- function(ConnectionName = NULL, CatalogId = NULL, TestConnectionInput = NULL) {
+  op <- new_operation(
+    name = "TestConnection",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$test_connection_input(ConnectionName = ConnectionName, CatalogId = CatalogId, TestConnectionInput = TestConnectionInput)
+  output <- .glue$test_connection_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$test_connection <- glue_test_connection
+
 #' Removes tags from a resource
 #'
 #' @description
@@ -24360,6 +26751,96 @@ glue_update_blueprint <- function(Name, Description = NULL, BlueprintLocation) {
   return(response)
 }
 .glue$operations$update_blueprint <- glue_update_blueprint
+
+#' Updates an existing catalog's properties in the Glue Data Catalog
+#'
+#' @description
+#' Updates an existing catalog's properties in the Glue Data Catalog.
+#'
+#' @usage
+#' glue_update_catalog(CatalogId, CatalogInput)
+#'
+#' @param CatalogId &#91;required&#93; The ID of the catalog.
+#' @param CatalogInput &#91;required&#93; A `CatalogInput` object specifying the new properties of an existing
+#' catalog.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_catalog(
+#'   CatalogId = "string",
+#'   CatalogInput = list(
+#'     Description = "string",
+#'     FederatedCatalog = list(
+#'       Identifier = "string",
+#'       ConnectionName = "string"
+#'     ),
+#'     Parameters = list(
+#'       "string"
+#'     ),
+#'     TargetRedshiftCatalog = list(
+#'       CatalogArn = "string"
+#'     ),
+#'     CatalogProperties = list(
+#'       DataLakeAccessProperties = list(
+#'         DataLakeAccess = TRUE|FALSE,
+#'         DataTransferRole = "string",
+#'         KmsKey = "string",
+#'         CatalogType = "string"
+#'       ),
+#'       CustomProperties = list(
+#'         "string"
+#'       )
+#'     ),
+#'     CreateTableDefaultPermissions = list(
+#'       list(
+#'         Principal = list(
+#'           DataLakePrincipalIdentifier = "string"
+#'         ),
+#'         Permissions = list(
+#'           "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"
+#'         )
+#'       )
+#'     ),
+#'     CreateDatabaseDefaultPermissions = list(
+#'       list(
+#'         Principal = list(
+#'           DataLakePrincipalIdentifier = "string"
+#'         ),
+#'         Permissions = list(
+#'           "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_update_catalog
+#'
+#' @aliases glue_update_catalog
+glue_update_catalog <- function(CatalogId, CatalogInput) {
+  op <- new_operation(
+    name = "UpdateCatalog",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$update_catalog_input(CatalogId = CatalogId, CatalogInput = CatalogInput)
+  output <- .glue$update_catalog_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$update_catalog <- glue_update_catalog
 
 #' Modifies an existing classifier (a GrokClassifier, an XMLClassifier, a
 #' JsonClassifier, or a CsvClassifier, depending on which field is present)
@@ -24822,6 +27303,69 @@ glue_update_column_statistics_for_table <- function(CatalogId = NULL, DatabaseNa
 }
 .glue$operations$update_column_statistics_for_table <- glue_update_column_statistics_for_table
 
+#' Updates settings for a column statistics task
+#'
+#' @description
+#' Updates settings for a column statistics task.
+#'
+#' @usage
+#' glue_update_column_statistics_task_settings(DatabaseName, TableName,
+#'   Role, Schedule, ColumnNameList, SampleSize, CatalogID,
+#'   SecurityConfiguration)
+#'
+#' @param DatabaseName &#91;required&#93; The name of the database where the table resides.
+#' @param TableName &#91;required&#93; The name of the table for which to generate column statistics.
+#' @param Role The role used for running the column statistics.
+#' @param Schedule A schedule for running the column statistics, specified in CRON syntax.
+#' @param ColumnNameList A list of column names for which to run statistics.
+#' @param SampleSize The percentage of data to sample.
+#' @param CatalogID The ID of the Data Catalog in which the database resides.
+#' @param SecurityConfiguration Name of the security configuration that is used to encrypt CloudWatch
+#' logs.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_column_statistics_task_settings(
+#'   DatabaseName = "string",
+#'   TableName = "string",
+#'   Role = "string",
+#'   Schedule = "string",
+#'   ColumnNameList = list(
+#'     "string"
+#'   ),
+#'   SampleSize = 123.0,
+#'   CatalogID = "string",
+#'   SecurityConfiguration = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_update_column_statistics_task_settings
+#'
+#' @aliases glue_update_column_statistics_task_settings
+glue_update_column_statistics_task_settings <- function(DatabaseName, TableName, Role = NULL, Schedule = NULL, ColumnNameList = NULL, SampleSize = NULL, CatalogID = NULL, SecurityConfiguration = NULL) {
+  op <- new_operation(
+    name = "UpdateColumnStatisticsTaskSettings",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$update_column_statistics_task_settings_input(DatabaseName = DatabaseName, TableName = TableName, Role = Role, Schedule = Schedule, ColumnNameList = ColumnNameList, SampleSize = SampleSize, CatalogID = CatalogID, SecurityConfiguration = SecurityConfiguration)
+  output <- .glue$update_column_statistics_task_settings_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$update_column_statistics_task_settings <- glue_update_column_statistics_task_settings
+
 #' Updates a connection definition in the Data Catalog
 #'
 #' @description
@@ -24846,11 +27390,20 @@ glue_update_column_statistics_for_table <- function(CatalogId = NULL, DatabaseNa
 #'   ConnectionInput = list(
 #'     Name = "string",
 #'     Description = "string",
-#'     ConnectionType = "JDBC"|"SFTP"|"MONGODB"|"KAFKA"|"NETWORK"|"MARKETPLACE"|"CUSTOM"|"SALESFORCE"|"VIEW_VALIDATION_REDSHIFT"|"VIEW_VALIDATION_ATHENA",
+#'     ConnectionType = "JDBC"|"SFTP"|"MONGODB"|"KAFKA"|"NETWORK"|"MARKETPLACE"|"CUSTOM"|"SALESFORCE"|"VIEW_VALIDATION_REDSHIFT"|"VIEW_VALIDATION_ATHENA"|"GOOGLEADS"|"GOOGLESHEETS"|"GOOGLEANALYTICS4"|"SERVICENOW"|"MARKETO"|"SAPODATA"|"ZENDESK"|"JIRACLOUD"|"NETSUITEERP"|"HUBSPOT"|"FACEBOOKADS"|"INSTAGRAMADS"|"ZOHOCRM"|"SALESFORCEPARDOT"|"SALESFORCEMARKETINGCLOUD"|"SLACK"|"STRIPE"|"INTERCOM"|"SNAPCHATADS",
 #'     MatchCriteria = list(
 #'       "string"
 #'     ),
 #'     ConnectionProperties = list(
+#'       "string"
+#'     ),
+#'     SparkProperties = list(
+#'       "string"
+#'     ),
+#'     AthenaProperties = list(
+#'       "string"
+#'     ),
+#'     PythonProperties = list(
 #'       "string"
 #'     ),
 #'     PhysicalConnectionRequirements = list(
@@ -24861,8 +27414,7 @@ glue_update_column_statistics_for_table <- function(CatalogId = NULL, DatabaseNa
 #'       AvailabilityZone = "string"
 #'     ),
 #'     AuthenticationConfiguration = list(
-#'       AuthenticationType = "BASIC"|"OAUTH2"|"CUSTOM",
-#'       SecretArn = "string",
+#'       AuthenticationType = "BASIC"|"OAUTH2"|"CUSTOM"|"IAM",
 #'       OAuth2Properties = list(
 #'         OAuth2GrantType = "AUTHORIZATION_CODE"|"CLIENT_CREDENTIALS"|"JWT_BEARER",
 #'         OAuth2ClientApplication = list(
@@ -24876,10 +27428,28 @@ glue_update_column_statistics_for_table <- function(CatalogId = NULL, DatabaseNa
 #'         AuthorizationCodeProperties = list(
 #'           AuthorizationCode = "string",
 #'           RedirectUri = "string"
+#'         ),
+#'         OAuth2Credentials = list(
+#'           UserManagedClientApplicationClientSecret = "string",
+#'           AccessToken = "string",
+#'           RefreshToken = "string",
+#'           JwtToken = "string"
 #'         )
+#'       ),
+#'       SecretArn = "string",
+#'       KmsKeyArn = "string",
+#'       BasicAuthenticationCredentials = list(
+#'         Username = "string",
+#'         Password = "string"
+#'       ),
+#'       CustomAuthenticationCredentials = list(
+#'         "string"
 #'       )
 #'     ),
-#'     ValidateCredentials = TRUE|FALSE
+#'     ValidateCredentials = TRUE|FALSE,
+#'     ValidateForComputeEnvironments = list(
+#'       "SPARK"|"ATHENA"|"PYTHON"
+#'     )
 #'   )
 #' )
 #' ```
@@ -25358,6 +27928,160 @@ glue_update_dev_endpoint <- function(EndpointName, PublicKey = NULL, AddPublicKe
   return(response)
 }
 .glue$operations$update_dev_endpoint <- glue_update_dev_endpoint
+
+#' This API can be used for updating the ResourceProperty of the Glue
+#' connection (for the source) or Glue database ARN (for the target)
+#'
+#' @description
+#' This API can be used for updating the `ResourceProperty` of the Glue
+#' connection (for the source) or Glue database ARN (for the target). These
+#' properties can include the role to access the connection or database.
+#' Since the same resource can be used across multiple integrations,
+#' updating resource properties will impact all the integrations using it.
+#'
+#' @usage
+#' glue_update_integration_resource_property(ResourceArn,
+#'   SourceProcessingProperties, TargetProcessingProperties)
+#'
+#' @param ResourceArn &#91;required&#93; The connection ARN of the source, or the database ARN of the target.
+#' @param SourceProcessingProperties The resource properties associated with the integration source.
+#' @param TargetProcessingProperties The resource properties associated with the integration target.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResourceArn = "string",
+#'   SourceProcessingProperties = list(
+#'     RoleArn = "string"
+#'   ),
+#'   TargetProcessingProperties = list(
+#'     RoleArn = "string",
+#'     KmsArn = "string",
+#'     ConnectionName = "string",
+#'     EventBusArn = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_integration_resource_property(
+#'   ResourceArn = "string",
+#'   SourceProcessingProperties = list(
+#'     RoleArn = "string"
+#'   ),
+#'   TargetProcessingProperties = list(
+#'     RoleArn = "string",
+#'     KmsArn = "string",
+#'     ConnectionName = "string",
+#'     EventBusArn = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_update_integration_resource_property
+#'
+#' @aliases glue_update_integration_resource_property
+glue_update_integration_resource_property <- function(ResourceArn, SourceProcessingProperties = NULL, TargetProcessingProperties = NULL) {
+  op <- new_operation(
+    name = "UpdateIntegrationResourceProperty",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$update_integration_resource_property_input(ResourceArn = ResourceArn, SourceProcessingProperties = SourceProcessingProperties, TargetProcessingProperties = TargetProcessingProperties)
+  output <- .glue$update_integration_resource_property_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$update_integration_resource_property <- glue_update_integration_resource_property
+
+#' This API is used to provide optional override properties for the tables
+#' that need to be replicated
+#'
+#' @description
+#' This API is used to provide optional override properties for the tables
+#' that need to be replicated. These properties can include properties for
+#' filtering and partitioning for the source and target tables. To set both
+#' source and target properties the same API need to be invoked with the
+#' Glue connection ARN as `ResourceArn` with `SourceTableConfig`, and the
+#' Glue database ARN as `ResourceArn` with `TargetTableConfig`
+#' respectively.
+#' 
+#' The override will be reflected across all the integrations using same
+#' `ResourceArn` and source table.
+#'
+#' @usage
+#' glue_update_integration_table_properties(ResourceArn, TableName,
+#'   SourceTableConfig, TargetTableConfig)
+#'
+#' @param ResourceArn &#91;required&#93; The connection ARN of the source, or the database ARN of the target.
+#' @param TableName &#91;required&#93; The name of the table to be replicated.
+#' @param SourceTableConfig A structure for the source table configuration.
+#' @param TargetTableConfig A structure for the target table configuration.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_integration_table_properties(
+#'   ResourceArn = "string",
+#'   TableName = "string",
+#'   SourceTableConfig = list(
+#'     Fields = list(
+#'       "string"
+#'     ),
+#'     FilterPredicate = "string",
+#'     PrimaryKey = list(
+#'       "string"
+#'     ),
+#'     RecordUpdateField = "string"
+#'   ),
+#'   TargetTableConfig = list(
+#'     UnnestSpec = "TOPLEVEL"|"FULL"|"NOUNNEST",
+#'     PartitionSpec = list(
+#'       list(
+#'         FieldName = "string",
+#'         FunctionSpec = "string"
+#'       )
+#'     ),
+#'     TargetTableName = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname glue_update_integration_table_properties
+#'
+#' @aliases glue_update_integration_table_properties
+glue_update_integration_table_properties <- function(ResourceArn, TableName, SourceTableConfig = NULL, TargetTableConfig = NULL) {
+  op <- new_operation(
+    name = "UpdateIntegrationTableProperties",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .glue$update_integration_table_properties_input(ResourceArn = ResourceArn, TableName = TableName, SourceTableConfig = SourceTableConfig, TargetTableConfig = TargetTableConfig)
+  output <- .glue$update_integration_table_properties_output()
+  config <- get_config()
+  svc <- .glue$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.glue$operations$update_integration_table_properties <- glue_update_integration_table_properties
 
 #' Updates an existing job definition
 #'
@@ -27596,8 +30320,7 @@ glue_update_table <- function(CatalogId = NULL, DatabaseName, TableInput, SkipAr
 #' @param CatalogId &#91;required&#93; The Catalog ID of the table.
 #' @param DatabaseName &#91;required&#93; The name of the database in the catalog in which the table resides.
 #' @param TableName &#91;required&#93; The name of the table.
-#' @param Type &#91;required&#93; The type of table optimizer. Currently, the only valid value is
-#' `compaction`.
+#' @param Type &#91;required&#93; The type of table optimizer.
 #' @param TableOptimizerConfiguration &#91;required&#93; A `TableOptimizerConfiguration` object representing the configuration of
 #' a table optimizer.
 #'
@@ -27610,10 +30333,26 @@ glue_update_table <- function(CatalogId = NULL, DatabaseName, TableInput, SkipAr
 #'   CatalogId = "string",
 #'   DatabaseName = "string",
 #'   TableName = "string",
-#'   Type = "compaction",
+#'   Type = "compaction"|"retention"|"orphan_file_deletion",
 #'   TableOptimizerConfiguration = list(
 #'     roleArn = "string",
-#'     enabled = TRUE|FALSE
+#'     enabled = TRUE|FALSE,
+#'     vpcConfiguration = list(
+#'       glueConnectionName = "string"
+#'     ),
+#'     retentionConfiguration = list(
+#'       icebergConfiguration = list(
+#'         snapshotRetentionPeriodInDays = 123,
+#'         numberOfSnapshotsToRetain = 123,
+#'         cleanExpiredFiles = TRUE|FALSE
+#'       )
+#'     ),
+#'     orphanFileDeletionConfiguration = list(
+#'       icebergConfiguration = list(
+#'         orphanFileRetentionPeriodInDays = 123,
+#'         location = "string"
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -27646,6 +30385,11 @@ glue_update_table_optimizer <- function(CatalogId, DatabaseName, TableName, Type
 #'
 #' @description
 #' Updates a trigger definition.
+#' 
+#' Job arguments may be logged. Do not pass plaintext secrets as arguments.
+#' Retrieve secrets from a Glue Connection, Amazon Web Services Secrets
+#' Manager or other secret management mechanism if you intend to keep them
+#' within the Job.
 #'
 #' @usage
 #' glue_update_trigger(Name, TriggerUpdate)
@@ -27919,6 +30663,11 @@ glue_update_user_defined_function <- function(CatalogId = NULL, DatabaseName, Fu
 #' @param Description The description of the workflow.
 #' @param DefaultRunProperties A collection of properties to be used as part of each execution of the
 #' workflow.
+#' 
+#' Run properties may be logged. Do not pass plaintext secrets as
+#' properties. Retrieve secrets from a Glue Connection, Amazon Web Services
+#' Secrets Manager or other secret management mechanism if you intend to
+#' use them within the workflow run.
 #' @param MaxConcurrentRuns You can use this parameter to prevent unwanted multiple updates to data,
 #' to control costs, or in some cases, to prevent exceeding the maximum
 #' number of concurrent runs of any of the component jobs. If you leave

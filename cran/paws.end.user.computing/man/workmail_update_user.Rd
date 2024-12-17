@@ -21,7 +21,8 @@ workmail_update_user(
   ZipCode = NULL,
   Department = NULL,
   Country = NULL,
-  Office = NULL
+  Office = NULL,
+  IdentityProviderUserId = NULL
 )
 }
 \arguments{
@@ -62,13 +63,17 @@ You cannot pass \emph{SYSTEM_USER} or \emph{RESOURCE}.}
 
 \item{Company}{Updates the user's company.}
 
-\item{ZipCode}{Updates the user's zipcode.}
+\item{ZipCode}{Updates the user's zip code.}
 
 \item{Department}{Updates the user's department.}
 
 \item{Country}{Updates the user's country.}
 
 \item{Office}{Updates the user's office.}
+
+\item{IdentityProviderUserId}{User ID from the IAM Identity Center. If this parameter is empty it will
+be updated automatically when the user logs in for the first time to the
+mailbox associated with WorkMail.}
 }
 \description{
 Updates data for the user. To have the latest information, it must be preceded by a \code{\link[=workmail_describe_user]{describe_user}} call. The dataset in the request should be the one expected when performing another \code{\link[=workmail_describe_user]{describe_user}} call.

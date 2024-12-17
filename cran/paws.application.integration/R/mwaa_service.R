@@ -40,6 +40,8 @@ NULL
 #' 
 #'     -   [`create_web_login_token`][mwaa_create_web_login_token]
 #' 
+#'     -   [`invoke_rest_api`][mwaa_invoke_rest_api]
+#' 
 #' **Regions**
 #' 
 #' For a list of supported regions, see [Amazon MWAA endpoints and
@@ -130,10 +132,11 @@ NULL
 #' @section Operations:
 #' \tabular{ll}{
 #'  \link[=mwaa_create_cli_token]{create_cli_token} \tab Creates a CLI token for the Airflow CLI\cr
-#'  \link[=mwaa_create_environment]{create_environment} \tab Creates an Amazon Managed Workflows for Apache Airflow (MWAA) environment\cr
+#'  \link[=mwaa_create_environment]{create_environment} \tab Creates an Amazon Managed Workflows for Apache Airflow (Amazon MWAA) environment\cr
 #'  \link[=mwaa_create_web_login_token]{create_web_login_token} \tab Creates a web login token for the Airflow Web UI\cr
-#'  \link[=mwaa_delete_environment]{delete_environment} \tab Deletes an Amazon Managed Workflows for Apache Airflow (MWAA) environment\cr
+#'  \link[=mwaa_delete_environment]{delete_environment} \tab Deletes an Amazon Managed Workflows for Apache Airflow (Amazon MWAA) environment\cr
 #'  \link[=mwaa_get_environment]{get_environment} \tab Describes an Amazon Managed Workflows for Apache Airflow (MWAA) environment\cr
+#'  \link[=mwaa_invoke_rest_api]{invoke_rest_api} \tab Invokes the Apache Airflow REST API on the webserver with the specified inputs\cr
 #'  \link[=mwaa_list_environments]{list_environments} \tab Lists the Amazon Managed Workflows for Apache Airflow (MWAA) environments\cr
 #'  \link[=mwaa_list_tags_for_resource]{list_tags_for_resource} \tab Lists the key-value tag pairs associated to the Amazon Managed Workflows for Apache Airflow (MWAA) environment\cr
 #'  \link[=mwaa_publish_metrics]{publish_metrics} \tab Internal only\cr
@@ -171,7 +174,7 @@ mwaa <- function(config = list(), credentials = list(), endpoint = NULL, region 
 
 .mwaa$metadata <- list(
   service_name = "mwaa",
-  endpoints = list("*" = list(endpoint = "airflow.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "airflow.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "airflow.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "airflow.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "airflow.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "airflow.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "airflow.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "airflow.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "airflow.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "airflow.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "airflow.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "airflow.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "airflow.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "MWAA",
   api_version = "2020-07-01",
   signing_name = "airflow",

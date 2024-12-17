@@ -742,8 +742,11 @@ costexplorer_describe_cost_category_definition <- function(CostCategoryArn, Effe
 #'           Service = "string",
 #'           Region = "string",
 #'           LinkedAccount = "string",
+#'           LinkedAccountName = "string",
 #'           UsageType = "string",
-#'           LinkedAccountName = "string"
+#'           Impact = list(
+#'             Contribution = 123.0
+#'           )
 #'         )
 #'       ),
 #'       AnomalyScore = list(
@@ -1101,6 +1104,120 @@ costexplorer_get_approximate_usage_records <- function(Granularity, Services = N
   return(response)
 }
 .costexplorer$operations$get_approximate_usage_records <- costexplorer_get_approximate_usage_records
+
+#' Retrieves a commitment purchase analysis result based on the AnalysisId
+#'
+#' @description
+#' Retrieves a commitment purchase analysis result based on the
+#' `AnalysisId`.
+#'
+#' @usage
+#' costexplorer_get_commitment_purchase_analysis(AnalysisId)
+#'
+#' @param AnalysisId &#91;required&#93; The analysis ID that's associated with the commitment purchase analysis.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EstimatedCompletionTime = "string",
+#'   AnalysisCompletionTime = "string",
+#'   AnalysisStartedTime = "string",
+#'   AnalysisId = "string",
+#'   AnalysisStatus = "SUCCEEDED"|"PROCESSING"|"FAILED",
+#'   ErrorCode = "NO_USAGE_FOUND"|"INTERNAL_FAILURE"|"INVALID_SAVINGS_PLANS_TO_ADD"|"INVALID_SAVINGS_PLANS_TO_EXCLUDE"|"INVALID_ACCOUNT_ID",
+#'   AnalysisDetails = list(
+#'     SavingsPlansPurchaseAnalysisDetails = list(
+#'       CurrencyCode = "string",
+#'       LookbackPeriodInHours = "string",
+#'       CurrentAverageCoverage = "string",
+#'       CurrentAverageHourlyOnDemandSpend = "string",
+#'       CurrentMaximumHourlyOnDemandSpend = "string",
+#'       CurrentMinimumHourlyOnDemandSpend = "string",
+#'       CurrentOnDemandSpend = "string",
+#'       ExistingHourlyCommitment = "string",
+#'       HourlyCommitmentToPurchase = "string",
+#'       EstimatedAverageCoverage = "string",
+#'       EstimatedAverageUtilization = "string",
+#'       EstimatedMonthlySavingsAmount = "string",
+#'       EstimatedOnDemandCost = "string",
+#'       EstimatedOnDemandCostWithCurrentCommitment = "string",
+#'       EstimatedROI = "string",
+#'       EstimatedSavingsAmount = "string",
+#'       EstimatedSavingsPercentage = "string",
+#'       EstimatedCommitmentCost = "string",
+#'       LatestUsageTimestamp = "string",
+#'       UpfrontCost = "string",
+#'       AdditionalMetadata = "string",
+#'       MetricsOverLookbackPeriod = list(
+#'         list(
+#'           StartTime = "string",
+#'           EstimatedOnDemandCost = "string",
+#'           CurrentCoverage = "string",
+#'           EstimatedCoverage = "string",
+#'           EstimatedNewCommitmentUtilization = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   CommitmentPurchaseAnalysisConfiguration = list(
+#'     SavingsPlansPurchaseAnalysisConfiguration = list(
+#'       AccountScope = "PAYER"|"LINKED",
+#'       AccountId = "string",
+#'       AnalysisType = "MAX_SAVINGS"|"CUSTOM_COMMITMENT",
+#'       SavingsPlansToAdd = list(
+#'         list(
+#'           PaymentOption = "NO_UPFRONT"|"PARTIAL_UPFRONT"|"ALL_UPFRONT"|"LIGHT_UTILIZATION"|"MEDIUM_UTILIZATION"|"HEAVY_UTILIZATION",
+#'           SavingsPlansType = "COMPUTE_SP"|"EC2_INSTANCE_SP"|"SAGEMAKER_SP",
+#'           Region = "string",
+#'           InstanceFamily = "string",
+#'           TermInYears = "ONE_YEAR"|"THREE_YEARS",
+#'           SavingsPlansCommitment = 123.0,
+#'           OfferingId = "string"
+#'         )
+#'       ),
+#'       SavingsPlansToExclude = list(
+#'         "string"
+#'       ),
+#'       LookBackTimePeriod = list(
+#'         Start = "string",
+#'         End = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_commitment_purchase_analysis(
+#'   AnalysisId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname costexplorer_get_commitment_purchase_analysis
+#'
+#' @aliases costexplorer_get_commitment_purchase_analysis
+costexplorer_get_commitment_purchase_analysis <- function(AnalysisId) {
+  op <- new_operation(
+    name = "GetCommitmentPurchaseAnalysis",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .costexplorer$get_commitment_purchase_analysis_input(AnalysisId = AnalysisId)
+  output <- .costexplorer$get_commitment_purchase_analysis_output()
+  config <- get_config()
+  svc <- .costexplorer$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.costexplorer$operations$get_commitment_purchase_analysis <- costexplorer_get_commitment_purchase_analysis
 
 #' Retrieves cost and usage metrics for your account
 #'
@@ -1902,10 +2019,11 @@ costexplorer_get_cost_forecast <- function(TimePeriod, Metric, Granularity, Filt
 #'     with. Possible values are the following:
 #' 
 #'     \- Amazon Web Services(Amazon Web Services): The entity that sells
-#'     Amazon Web Services.
+#'     Amazon Web Services services.
 #' 
 #'     \- AISPL (Amazon Internet Services Pvt. Ltd.): The local Indian
-#'     entity that's an acting reseller for Amazon Web Services in India.
+#'     entity that's an acting reseller for Amazon Web Services services in
+#'     India.
 #' 
 #'     \- Amazon Web Services Marketplace: The entity that supports the
 #'     sale of solutions that are built on Amazon Web Services by
@@ -2628,7 +2746,17 @@ costexplorer_get_reservation_coverage <- function(TimePeriod, GroupBy = NULL, Gr
 #'           EstimatedMonthlyOnDemandCost = "string",
 #'           EstimatedReservationCostForLookbackPeriod = "string",
 #'           UpfrontCost = "string",
-#'           RecurringStandardMonthlyCost = "string"
+#'           RecurringStandardMonthlyCost = "string",
+#'           ReservedCapacityDetails = list(
+#'             DynamoDBCapacityDetails = list(
+#'               CapacityUnits = "string",
+#'               Region = "string"
+#'             )
+#'           ),
+#'           RecommendedNumberOfCapacityUnitsToPurchase = "string",
+#'           MinimumNumberOfCapacityUnitsUsedPerHour = "string",
+#'           MaximumNumberOfCapacityUnitsUsedPerHour = "string",
+#'           AverageNumberOfCapacityUnitsUsedPerHour = "string"
 #'         )
 #'       ),
 #'       RecommendationSummary = list(
@@ -2770,6 +2898,12 @@ costexplorer_get_reservation_purchase_recommendation <- function(AccountId = NUL
 #' -   REGION
 #' 
 #' -   SERVICE
+#' 
+#'     If not specified, the `SERVICE` filter defaults to Amazon Elastic
+#'     Compute Cloud - Compute. Supported values for `SERVICE` are Amazon
+#'     Elastic Compute Cloud - Compute, Amazon Relational Database Service,
+#'     Amazon ElastiCache, Amazon Redshift, and Amazon Elasticsearch
+#'     Service. The value for the `SERVICE` filter should not exceed "1".
 #' 
 #' -   SCOPE
 #' 
@@ -3519,7 +3653,7 @@ costexplorer_get_savings_plans_coverage <- function(TimePeriod, GroupBy = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .costexplorer$get_savings_plans_coverage_input(TimePeriod = TimePeriod, GroupBy = GroupBy, Granularity = Granularity, Filter = Filter, Metrics = Metrics, NextToken = NextToken, MaxResults = MaxResults, SortBy = SortBy)
@@ -4076,7 +4210,7 @@ costexplorer_get_savings_plans_utilization_details <- function(TimePeriod, Filte
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .costexplorer$get_savings_plans_utilization_details_input(TimePeriod = TimePeriod, Filter = Filter, DataType = DataType, NextToken = NextToken, MaxResults = MaxResults, SortBy = SortBy)
@@ -4419,6 +4553,100 @@ costexplorer_get_usage_forecast <- function(TimePeriod, Metric, Granularity, Fil
 }
 .costexplorer$operations$get_usage_forecast <- costexplorer_get_usage_forecast
 
+#' Lists the commitment purchase analyses for your account
+#'
+#' @description
+#' Lists the commitment purchase analyses for your account.
+#'
+#' @usage
+#' costexplorer_list_commitment_purchase_analyses(AnalysisStatus,
+#'   NextPageToken, PageSize, AnalysisIds)
+#'
+#' @param AnalysisStatus The status of the analysis.
+#' @param NextPageToken The token to retrieve the next set of results.
+#' @param PageSize The number of analyses that you want returned in a single response
+#' object.
+#' @param AnalysisIds The analysis IDs associated with the commitment purchase analyses.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AnalysisSummaryList = list(
+#'     list(
+#'       EstimatedCompletionTime = "string",
+#'       AnalysisCompletionTime = "string",
+#'       AnalysisStartedTime = "string",
+#'       AnalysisStatus = "SUCCEEDED"|"PROCESSING"|"FAILED",
+#'       ErrorCode = "NO_USAGE_FOUND"|"INTERNAL_FAILURE"|"INVALID_SAVINGS_PLANS_TO_ADD"|"INVALID_SAVINGS_PLANS_TO_EXCLUDE"|"INVALID_ACCOUNT_ID",
+#'       AnalysisId = "string",
+#'       CommitmentPurchaseAnalysisConfiguration = list(
+#'         SavingsPlansPurchaseAnalysisConfiguration = list(
+#'           AccountScope = "PAYER"|"LINKED",
+#'           AccountId = "string",
+#'           AnalysisType = "MAX_SAVINGS"|"CUSTOM_COMMITMENT",
+#'           SavingsPlansToAdd = list(
+#'             list(
+#'               PaymentOption = "NO_UPFRONT"|"PARTIAL_UPFRONT"|"ALL_UPFRONT"|"LIGHT_UTILIZATION"|"MEDIUM_UTILIZATION"|"HEAVY_UTILIZATION",
+#'               SavingsPlansType = "COMPUTE_SP"|"EC2_INSTANCE_SP"|"SAGEMAKER_SP",
+#'               Region = "string",
+#'               InstanceFamily = "string",
+#'               TermInYears = "ONE_YEAR"|"THREE_YEARS",
+#'               SavingsPlansCommitment = 123.0,
+#'               OfferingId = "string"
+#'             )
+#'           ),
+#'           SavingsPlansToExclude = list(
+#'             "string"
+#'           ),
+#'           LookBackTimePeriod = list(
+#'             Start = "string",
+#'             End = "string"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextPageToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_commitment_purchase_analyses(
+#'   AnalysisStatus = "SUCCEEDED"|"PROCESSING"|"FAILED",
+#'   NextPageToken = "string",
+#'   PageSize = 123,
+#'   AnalysisIds = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname costexplorer_list_commitment_purchase_analyses
+#'
+#' @aliases costexplorer_list_commitment_purchase_analyses
+costexplorer_list_commitment_purchase_analyses <- function(AnalysisStatus = NULL, NextPageToken = NULL, PageSize = NULL, AnalysisIds = NULL) {
+  op <- new_operation(
+    name = "ListCommitmentPurchaseAnalyses",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .costexplorer$list_commitment_purchase_analyses_input(AnalysisStatus = AnalysisStatus, NextPageToken = NextPageToken, PageSize = PageSize, AnalysisIds = AnalysisIds)
+  output <- .costexplorer$list_commitment_purchase_analyses_output()
+  config <- get_config()
+  svc <- .costexplorer$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.costexplorer$operations$list_commitment_purchase_analyses <- costexplorer_list_commitment_purchase_analyses
+
 #' Retrieves a list of your historical cost allocation tag backfill
 #' requests
 #'
@@ -4471,7 +4699,7 @@ costexplorer_list_cost_allocation_tag_backfill_history <- function(NextToken = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .costexplorer$list_cost_allocation_tag_backfill_history_input(NextToken = NextToken, MaxResults = MaxResults)
@@ -4549,7 +4777,7 @@ costexplorer_list_cost_allocation_tags <- function(Status = NULL, TagKeys = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .costexplorer$list_cost_allocation_tags_input(Status = Status, TagKeys = TagKeys, Type = Type, NextToken = NextToken, MaxResults = MaxResults)
@@ -4634,7 +4862,7 @@ costexplorer_list_cost_category_definitions <- function(EffectiveOn = NULL, Next
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .costexplorer$list_cost_category_definitions_input(EffectiveOn = EffectiveOn, NextToken = NextToken, MaxResults = MaxResults)
@@ -4826,6 +5054,85 @@ costexplorer_provide_anomaly_feedback <- function(AnomalyId, Feedback) {
   return(response)
 }
 .costexplorer$operations$provide_anomaly_feedback <- costexplorer_provide_anomaly_feedback
+
+#' Specifies the parameters of a planned commitment purchase and starts the
+#' generation of the analysis
+#'
+#' @description
+#' Specifies the parameters of a planned commitment purchase and starts the
+#' generation of the analysis. This enables you to estimate the cost,
+#' coverage, and utilization impact of your planned commitment purchases.
+#'
+#' @usage
+#' costexplorer_start_commitment_purchase_analysis(
+#'   CommitmentPurchaseAnalysisConfiguration)
+#'
+#' @param CommitmentPurchaseAnalysisConfiguration &#91;required&#93; The configuration for the commitment purchase analysis.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AnalysisId = "string",
+#'   AnalysisStartedTime = "string",
+#'   EstimatedCompletionTime = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$start_commitment_purchase_analysis(
+#'   CommitmentPurchaseAnalysisConfiguration = list(
+#'     SavingsPlansPurchaseAnalysisConfiguration = list(
+#'       AccountScope = "PAYER"|"LINKED",
+#'       AccountId = "string",
+#'       AnalysisType = "MAX_SAVINGS"|"CUSTOM_COMMITMENT",
+#'       SavingsPlansToAdd = list(
+#'         list(
+#'           PaymentOption = "NO_UPFRONT"|"PARTIAL_UPFRONT"|"ALL_UPFRONT"|"LIGHT_UTILIZATION"|"MEDIUM_UTILIZATION"|"HEAVY_UTILIZATION",
+#'           SavingsPlansType = "COMPUTE_SP"|"EC2_INSTANCE_SP"|"SAGEMAKER_SP",
+#'           Region = "string",
+#'           InstanceFamily = "string",
+#'           TermInYears = "ONE_YEAR"|"THREE_YEARS",
+#'           SavingsPlansCommitment = 123.0,
+#'           OfferingId = "string"
+#'         )
+#'       ),
+#'       SavingsPlansToExclude = list(
+#'         "string"
+#'       ),
+#'       LookBackTimePeriod = list(
+#'         Start = "string",
+#'         End = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname costexplorer_start_commitment_purchase_analysis
+#'
+#' @aliases costexplorer_start_commitment_purchase_analysis
+costexplorer_start_commitment_purchase_analysis <- function(CommitmentPurchaseAnalysisConfiguration) {
+  op <- new_operation(
+    name = "StartCommitmentPurchaseAnalysis",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .costexplorer$start_commitment_purchase_analysis_input(CommitmentPurchaseAnalysisConfiguration = CommitmentPurchaseAnalysisConfiguration)
+  output <- .costexplorer$start_commitment_purchase_analysis_output()
+  config <- get_config()
+  svc <- .costexplorer$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.costexplorer$operations$start_commitment_purchase_analysis <- costexplorer_start_commitment_purchase_analysis
 
 #' Request a cost allocation tag backfill
 #'

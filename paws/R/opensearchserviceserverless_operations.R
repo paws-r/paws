@@ -549,10 +549,13 @@ opensearchserviceserverless_create_lifecycle_policy <- function(clientToken = NU
 #'
 #' @usage
 #' opensearchserviceserverless_create_security_config(clientToken,
-#'   description, name, samlOptions, type)
+#'   description, iamIdentityCenterOptions, name, samlOptions, type)
 #'
 #' @param clientToken Unique, case-sensitive identifier to ensure idempotency of the request.
 #' @param description A description of the security configuration.
+#' @param iamIdentityCenterOptions Describes IAM Identity Center options in the form of a key-value map.
+#' This field is required if you specify iamidentitycenter for the type
+#' parameter.
 #' @param name &#91;required&#93; The name of the security configuration.
 #' @param samlOptions Describes SAML options in in the form of a key-value map. This field is
 #' required if you specify `saml` for the `type` parameter.
@@ -566,6 +569,14 @@ opensearchserviceserverless_create_lifecycle_policy <- function(clientToken = NU
 #'     configVersion = "string",
 #'     createdDate = 123,
 #'     description = "string",
+#'     iamIdentityCenterOptions = list(
+#'       applicationArn = "string",
+#'       applicationDescription = "string",
+#'       applicationName = "string",
+#'       groupAttribute = "GroupId"|"GroupName",
+#'       instanceArn = "string",
+#'       userAttribute = "UserId"|"UserName"|"Email"
+#'     ),
 #'     id = "string",
 #'     lastModifiedDate = 123,
 #'     samlOptions = list(
@@ -574,7 +585,7 @@ opensearchserviceserverless_create_lifecycle_policy <- function(clientToken = NU
 #'       sessionTimeout = 123,
 #'       userAttribute = "string"
 #'     ),
-#'     type = "saml"
+#'     type = "saml"|"iamidentitycenter"
 #'   )
 #' )
 #' ```
@@ -584,6 +595,11 @@ opensearchserviceserverless_create_lifecycle_policy <- function(clientToken = NU
 #' svc$create_security_config(
 #'   clientToken = "string",
 #'   description = "string",
+#'   iamIdentityCenterOptions = list(
+#'     groupAttribute = "GroupId"|"GroupName",
+#'     instanceArn = "string",
+#'     userAttribute = "UserId"|"UserName"|"Email"
+#'   ),
 #'   name = "string",
 #'   samlOptions = list(
 #'     groupAttribute = "string",
@@ -591,7 +607,7 @@ opensearchserviceserverless_create_lifecycle_policy <- function(clientToken = NU
 #'     sessionTimeout = 123,
 #'     userAttribute = "string"
 #'   ),
-#'   type = "saml"
+#'   type = "saml"|"iamidentitycenter"
 #' )
 #' ```
 #'
@@ -600,7 +616,7 @@ opensearchserviceserverless_create_lifecycle_policy <- function(clientToken = NU
 #' @rdname opensearchserviceserverless_create_security_config
 #'
 #' @aliases opensearchserviceserverless_create_security_config
-opensearchserviceserverless_create_security_config <- function(clientToken = NULL, description = NULL, name, samlOptions = NULL, type) {
+opensearchserviceserverless_create_security_config <- function(clientToken = NULL, description = NULL, iamIdentityCenterOptions = NULL, name, samlOptions = NULL, type) {
   op <- new_operation(
     name = "CreateSecurityConfig",
     http_method = "POST",
@@ -609,7 +625,7 @@ opensearchserviceserverless_create_security_config <- function(clientToken = NUL
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .opensearchserviceserverless$create_security_config_input(clientToken = clientToken, description = description, name = name, samlOptions = samlOptions, type = type)
+  input <- .opensearchserviceserverless$create_security_config_input(clientToken = clientToken, description = description, iamIdentityCenterOptions = iamIdentityCenterOptions, name = name, samlOptions = samlOptions, type = type)
   output <- .opensearchserviceserverless$create_security_config_output()
   config <- get_config()
   svc <- .opensearchserviceserverless$service(config, op)
@@ -1283,6 +1299,14 @@ opensearchserviceserverless_get_policies_stats <- function() {
 #'     configVersion = "string",
 #'     createdDate = 123,
 #'     description = "string",
+#'     iamIdentityCenterOptions = list(
+#'       applicationArn = "string",
+#'       applicationDescription = "string",
+#'       applicationName = "string",
+#'       groupAttribute = "GroupId"|"GroupName",
+#'       instanceArn = "string",
+#'       userAttribute = "UserId"|"UserName"|"Email"
+#'     ),
 #'     id = "string",
 #'     lastModifiedDate = 123,
 #'     samlOptions = list(
@@ -1291,7 +1315,7 @@ opensearchserviceserverless_get_policies_stats <- function() {
 #'       sessionTimeout = 123,
 #'       userAttribute = "string"
 #'     ),
-#'     type = "saml"
+#'     type = "saml"|"iamidentitycenter"
 #'   )
 #' )
 #' ```
@@ -1456,7 +1480,7 @@ opensearchserviceserverless_list_access_policies <- function(maxResults = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .opensearchserviceserverless$list_access_policies_input(maxResults = maxResults, nextToken = nextToken, resource = resource, type = type)
@@ -1532,7 +1556,7 @@ opensearchserviceserverless_list_collections <- function(collectionFilters = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .opensearchserviceserverless$list_collections_input(collectionFilters = collectionFilters, maxResults = maxResults, nextToken = nextToken)
@@ -1610,7 +1634,7 @@ opensearchserviceserverless_list_lifecycle_policies <- function(maxResults = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .opensearchserviceserverless$list_lifecycle_policies_input(maxResults = maxResults, nextToken = nextToken, resources = resources, type = type)
@@ -1659,7 +1683,7 @@ opensearchserviceserverless_list_lifecycle_policies <- function(maxResults = NUL
 #'       description = "string",
 #'       id = "string",
 #'       lastModifiedDate = 123,
-#'       type = "saml"
+#'       type = "saml"|"iamidentitycenter"
 #'     )
 #'   )
 #' )
@@ -1670,7 +1694,7 @@ opensearchserviceserverless_list_lifecycle_policies <- function(maxResults = NUL
 #' svc$list_security_configs(
 #'   maxResults = 123,
 #'   nextToken = "string",
-#'   type = "saml"
+#'   type = "saml"|"iamidentitycenter"
 #' )
 #' ```
 #'
@@ -1685,7 +1709,7 @@ opensearchserviceserverless_list_security_configs <- function(maxResults = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .opensearchserviceserverless$list_security_configs_input(maxResults = maxResults, nextToken = nextToken, type = type)
@@ -1763,7 +1787,7 @@ opensearchserviceserverless_list_security_policies <- function(maxResults = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .opensearchserviceserverless$list_security_policies_input(maxResults = maxResults, nextToken = nextToken, resource = resource, type = type)
@@ -1897,7 +1921,7 @@ opensearchserviceserverless_list_vpc_endpoints <- function(maxResults = NULL, ne
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .opensearchserviceserverless$list_vpc_endpoints_input(maxResults = maxResults, nextToken = nextToken, vpcEndpointFilters = vpcEndpointFilters)
@@ -2294,7 +2318,8 @@ opensearchserviceserverless_update_lifecycle_policy <- function(clientToken = NU
 #'
 #' @usage
 #' opensearchserviceserverless_update_security_config(clientToken,
-#'   configVersion, description, id, samlOptions)
+#'   configVersion, description, iamIdentityCenterOptionsUpdates, id,
+#'   samlOptions)
 #'
 #' @param clientToken Unique, case-sensitive identifier to ensure idempotency of the request.
 #' @param configVersion &#91;required&#93; The version of the security configuration to be updated. You can find
@@ -2302,6 +2327,7 @@ opensearchserviceserverless_update_lifecycle_policy <- function(clientToken = NU
 #' [`get_security_policy`][opensearchserviceserverless_get_security_policy]
 #' command.
 #' @param description A description of the security configuration.
+#' @param iamIdentityCenterOptionsUpdates Describes IAM Identity Center options in the form of a key-value map.
 #' @param id &#91;required&#93; The security configuration identifier. For SAML the ID will be
 #' `saml/<accountId>/<idpProviderName>`. For example,
 #' `saml/123456789123/OKTADev`.
@@ -2315,6 +2341,14 @@ opensearchserviceserverless_update_lifecycle_policy <- function(clientToken = NU
 #'     configVersion = "string",
 #'     createdDate = 123,
 #'     description = "string",
+#'     iamIdentityCenterOptions = list(
+#'       applicationArn = "string",
+#'       applicationDescription = "string",
+#'       applicationName = "string",
+#'       groupAttribute = "GroupId"|"GroupName",
+#'       instanceArn = "string",
+#'       userAttribute = "UserId"|"UserName"|"Email"
+#'     ),
 #'     id = "string",
 #'     lastModifiedDate = 123,
 #'     samlOptions = list(
@@ -2323,7 +2357,7 @@ opensearchserviceserverless_update_lifecycle_policy <- function(clientToken = NU
 #'       sessionTimeout = 123,
 #'       userAttribute = "string"
 #'     ),
-#'     type = "saml"
+#'     type = "saml"|"iamidentitycenter"
 #'   )
 #' )
 #' ```
@@ -2334,6 +2368,10 @@ opensearchserviceserverless_update_lifecycle_policy <- function(clientToken = NU
 #'   clientToken = "string",
 #'   configVersion = "string",
 #'   description = "string",
+#'   iamIdentityCenterOptionsUpdates = list(
+#'     groupAttribute = "GroupId"|"GroupName",
+#'     userAttribute = "UserId"|"UserName"|"Email"
+#'   ),
 #'   id = "string",
 #'   samlOptions = list(
 #'     groupAttribute = "string",
@@ -2349,7 +2387,7 @@ opensearchserviceserverless_update_lifecycle_policy <- function(clientToken = NU
 #' @rdname opensearchserviceserverless_update_security_config
 #'
 #' @aliases opensearchserviceserverless_update_security_config
-opensearchserviceserverless_update_security_config <- function(clientToken = NULL, configVersion, description = NULL, id, samlOptions = NULL) {
+opensearchserviceserverless_update_security_config <- function(clientToken = NULL, configVersion, description = NULL, iamIdentityCenterOptionsUpdates = NULL, id, samlOptions = NULL) {
   op <- new_operation(
     name = "UpdateSecurityConfig",
     http_method = "POST",
@@ -2358,7 +2396,7 @@ opensearchserviceserverless_update_security_config <- function(clientToken = NUL
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .opensearchserviceserverless$update_security_config_input(clientToken = clientToken, configVersion = configVersion, description = description, id = id, samlOptions = samlOptions)
+  input <- .opensearchserviceserverless$update_security_config_input(clientToken = clientToken, configVersion = configVersion, description = description, iamIdentityCenterOptionsUpdates = iamIdentityCenterOptionsUpdates, id = id, samlOptions = samlOptions)
   output <- .opensearchserviceserverless$update_security_config_output()
   config <- get_config()
   svc <- .opensearchserviceserverless$service(config, op)

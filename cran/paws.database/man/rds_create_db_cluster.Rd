@@ -47,19 +47,20 @@ rds_create_db_cluster(
   AutoMinorVersionUpgrade = NULL,
   MonitoringInterval = NULL,
   MonitoringRoleArn = NULL,
+  DatabaseInsightsMode = NULL,
   EnablePerformanceInsights = NULL,
   PerformanceInsightsKMSKeyId = NULL,
   PerformanceInsightsRetentionPeriod = NULL,
   EnableLimitlessDatabase = NULL,
   ServerlessV2ScalingConfiguration = NULL,
   NetworkType = NULL,
+  ClusterScalabilityType = NULL,
   DBSystemId = NULL,
   ManageMasterUserPassword = NULL,
   MasterUserSecretKmsKeyId = NULL,
   EnableLocalWriteForwarding = NULL,
   CACertificateIdentifier = NULL,
-  EngineLifecycleSupport = NULL,
-  SourceRegion = NULL
+  EngineLifecycleSupport = NULL
 )
 }
 \arguments{
@@ -356,19 +357,17 @@ specifying \code{PreSignedUrl} manually. Specifying \code{SourceRegion}
 autogenerates a presigned URL that is a valid request for the operation
 that can run in the source Amazon Web Services Region.
 
-Valid for Cluster Type: Aurora DB clusters only
-
-If you supply a value for this operation's \code{SourceRegion} parameter, a
-pre-signed URL will be calculated on your behalf.}
+Valid for Cluster Type: Aurora DB clusters only}
 
 \item{EnableIAMDatabaseAuthentication}{Specifies whether to enable mapping of Amazon Web Services Identity and
 Access Management (IAM) accounts to database accounts. By default,
 mapping isn't enabled.
 
 For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.IAMDBAuth.html}{IAM Database Authentication}
-in the \emph{Amazon Aurora User Guide}.
+in the \emph{Amazon Aurora User Guide} or \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html}{IAM database authentication for MariaDB, MySQL, and PostgreSQL}
+in the \emph{Amazon RDS User Guide}.
 
-Valid for Cluster Type: Aurora DB clusters only}
+Valid for Cluster Type: Aurora DB clusters and Multi-AZ DB clusters}
 
 \item{BacktrackWindow}{The target backtrack window, in seconds. To disable backtracking, set
 this value to \code{0}.
@@ -622,6 +621,8 @@ If \code{MonitoringInterval} is set to a value other than \code{0}, supply a
 
 Valid for Cluster Type: Multi-AZ DB clusters only}
 
+\item{DatabaseInsightsMode}{Specifies the mode of Database Insights to enable for the cluster.}
+
 \item{EnablePerformanceInsights}{Specifies whether to turn on Performance Insights for the DB cluster.
 
 For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PerfInsights.html}{Using Amazon Performance Insights}
@@ -663,7 +664,10 @@ RDS issues an error.}
 \item{EnableLimitlessDatabase}{Specifies whether to enable Aurora Limitless Database. You must enable
 Aurora Limitless Database to create a DB shard group.
 
-Valid for: Aurora DB clusters only}
+Valid for: Aurora DB clusters only
+
+This setting is no longer used. Instead use the \code{ClusterScalabilityType}
+setting.}
 
 \item{ServerlessV2ScalingConfiguration}{}
 
@@ -679,6 +683,15 @@ in the \emph{Amazon Aurora User Guide.}
 Valid for Cluster Type: Aurora DB clusters only
 
 Valid Values: \code{IPV4 | DUAL}}
+
+\item{ClusterScalabilityType}{Specifies the scalability mode of the Aurora DB cluster. When set to
+\code{limitless}, the cluster operates as an Aurora Limitless Database. When
+set to \code{standard} (the default), the cluster uses normal DB instance
+creation.
+
+Valid for: Aurora DB clusters only
+
+You can't modify this setting after you create the DB cluster.}
 
 \item{DBSystemId}{Reserved for future use.}
 
@@ -749,7 +762,7 @@ major engine version on your DB cluster past the end of standard support
 for that engine version. For more information, see the following
 sections:
 \itemize{
-\item Amazon Aurora (PostgreSQL only) - \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/extended-support.html}{Using Amazon RDS Extended Support}
+\item Amazon Aurora - \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/extended-support.html}{Using Amazon RDS Extended Support}
 in the \emph{Amazon Aurora User Guide}
 \item Amazon RDS - \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/extended-support.html}{Using Amazon RDS Extended Support}
 in the \emph{Amazon RDS User Guide}
@@ -761,8 +774,6 @@ Valid Values:
 \code{open-source-rds-extended-support | open-source-rds-extended-support-disabled}
 
 Default: \code{open-source-rds-extended-support}}
-
-\item{SourceRegion}{The ID of the region that contains the source for the read replica.}
 }
 \description{
 Creates a new Amazon Aurora DB cluster or Multi-AZ DB cluster.

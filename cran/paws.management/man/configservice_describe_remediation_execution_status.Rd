@@ -14,7 +14,7 @@ configservice_describe_remediation_execution_status(
 )
 }
 \arguments{
-\item{ConfigRuleName}{[required] A list of Config rule names.}
+\item{ConfigRuleName}{[required] The name of the Config rule.}
 
 \item{ResourceKeys}{A list of resource keys to be processed with the current request. Each
 element in the list consists of the resource type and resource ID.}

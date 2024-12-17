@@ -7,7 +7,11 @@
 guardduty_get_filter(DetectorId, FilterName)
 }
 \arguments{
-\item{DetectorId}{[required] The unique ID of the detector that the filter is associated with.}
+\item{DetectorId}{[required] The unique ID of the detector that is associated with this filter.
+
+To find the \code{detectorId} in the current Region, see the Settings page in
+the GuardDuty console, or run the
+\code{\link[=guardduty_list_detectors]{list_detectors}} API.}
 
 \item{FilterName}{[required] The name of the filter you want to get.}
 }

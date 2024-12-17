@@ -7,7 +7,8 @@
 timestreamquery_execute_scheduled_query(
   ScheduledQueryArn,
   InvocationTime,
-  ClientToken = NULL
+  ClientToken = NULL,
+  QueryInsights = NULL
 )
 }
 \arguments{
@@ -17,6 +18,12 @@ timestreamquery_execute_scheduled_query(
 timestamp.}
 
 \item{ClientToken}{Not used.}
+
+\item{QueryInsights}{Encapsulates settings for enabling \code{QueryInsights}.
+
+Enabling \code{QueryInsights} returns insights and metrics as a part of the
+Amazon SNS notification for the query that you executed. You can use
+\code{QueryInsights} to tune your query performance and cost.}
 }
 \description{
 You can use this API to run a scheduled query manually.

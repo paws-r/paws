@@ -520,11 +520,11 @@ wafv2_delete_api_key <- function(Scope, APIKey) {
 }
 .wafv2$operations$delete_api_key <- wafv2_delete_api_key
 
-#' Deletes all rule groups that are managed by Firewall Manager for the
-#' specified web ACL
+#' Deletes all rule groups that are managed by Firewall Manager from the
+#' specified WebACL
 #'
 #' @description
-#' Deletes all rule groups that are managed by Firewall Manager for the specified web ACL.
+#' Deletes all rule groups that are managed by Firewall Manager from the specified WebACL.
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafv2_delete_firewall_manager_rule_groups/](https://www.paws-r-sdk.com/docs/wafv2_delete_firewall_manager_rule_groups/) for full documentation.
 #'

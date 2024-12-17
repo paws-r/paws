@@ -4,7 +4,7 @@
 \alias{ec2_attach_classic_link_vpc}
 \title{This action is deprecated}
 \usage{
-ec2_attach_classic_link_vpc(DryRun = NULL, Groups, InstanceId, VpcId)
+ec2_attach_classic_link_vpc(DryRun = NULL, InstanceId, VpcId, Groups)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -12,12 +12,12 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
-\item{Groups}{[required] The IDs of the security groups. You cannot specify security groups from
-a different VPC.}
-
 \item{InstanceId}{[required] The ID of the EC2-Classic instance.}
 
 \item{VpcId}{[required] The ID of the ClassicLink-enabled VPC.}
+
+\item{Groups}{[required] The IDs of the security groups. You cannot specify security groups from
+a different VPC.}
 }
 \description{
 This action is deprecated.

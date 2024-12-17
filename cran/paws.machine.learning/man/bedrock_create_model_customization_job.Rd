@@ -17,8 +17,9 @@ bedrock_create_model_customization_job(
   trainingDataConfig,
   validationDataConfig = NULL,
   outputDataConfig,
-  hyperParameters,
-  vpcConfig = NULL
+  hyperParameters = NULL,
+  vpcConfig = NULL,
+  customizationConfig = NULL
 )
 }
 \arguments{
@@ -54,12 +55,14 @@ error. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/de
 
 \item{outputDataConfig}{[required] S3 location for the output data.}
 
-\item{hyperParameters}{[required] Parameters related to tuning the model. For details on the format for
+\item{hyperParameters}{Parameters related to tuning the model. For details on the format for
 different models, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/custom-models-hp.html}{Custom model hyperparameters}.}
 
-\item{vpcConfig}{VPC configuration (optional). Configuration parameters for the private
-Virtual Private Cloud (VPC) that contains the resources you are using
-for this job.}
+\item{vpcConfig}{The configuration of the Virtual Private Cloud (VPC) that contains the
+resources that you're using for this job. For more information, see
+\href{https://docs.aws.amazon.com/bedrock/latest/userguide/vpc-model-customization.html}{Protect your model customization jobs using a VPC}.}
+
+\item{customizationConfig}{The customization configuration for the model customization job.}
 }
 \description{
 Creates a fine-tuning job to customize a base model.

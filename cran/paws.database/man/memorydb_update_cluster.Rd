@@ -15,6 +15,7 @@ memorydb_update_cluster(
   SnapshotWindow = NULL,
   SnapshotRetentionLimit = NULL,
   NodeType = NULL,
+  Engine = NULL,
   EngineVersion = NULL,
   ReplicaConfiguration = NULL,
   ShardConfiguration = NULL,
@@ -22,11 +23,11 @@ memorydb_update_cluster(
 )
 }
 \arguments{
-\item{ClusterName}{[required] The name of the cluster to update}
+\item{ClusterName}{[required] The name of the cluster to update.}
 
-\item{Description}{The description of the cluster to update}
+\item{Description}{The description of the cluster to update.}
 
-\item{SecurityGroupIds}{The SecurityGroupIds to update}
+\item{SecurityGroupIds}{The SecurityGroupIds to update.}
 
 \item{MaintenanceWindow}{Specifies the weekly time range during which maintenance on the cluster
 is performed. It is specified as a range in the format
@@ -46,12 +47,12 @@ Valid values for \code{ddd} are:
 
 Example: \code{sun:23:00-mon:01:30}}
 
-\item{SnsTopicArn}{The SNS topic ARN to update}
+\item{SnsTopicArn}{The SNS topic ARN to update.}
 
 \item{SnsTopicStatus}{The status of the Amazon SNS notification topic. Notifications are sent
 only if the status is active.}
 
-\item{ParameterGroupName}{The name of the parameter group to update}
+\item{ParameterGroupName}{The name of the parameter group to update.}
 
 \item{SnapshotWindow}{The daily time range (in UTC) during which MemoryDB begins taking a
 daily snapshot of your cluster.}
@@ -63,17 +64,19 @@ for 5 days before being deleted.}
 
 \item{NodeType}{A valid node type that you want to scale this cluster up or down to.}
 
+\item{Engine}{The name of the engine to be used for the cluster.}
+
 \item{EngineVersion}{The upgraded version of the engine to be run on the nodes. You can
 upgrade to a newer engine version, but you cannot downgrade to an
 earlier engine version. If you want to use an earlier engine version,
 you must delete the existing cluster and create it anew with the earlier
 engine version.}
 
-\item{ReplicaConfiguration}{The number of replicas that will reside in each shard}
+\item{ReplicaConfiguration}{The number of replicas that will reside in each shard.}
 
-\item{ShardConfiguration}{The number of shards in the cluster}
+\item{ShardConfiguration}{The number of shards in the cluster.}
 
-\item{ACLName}{The Access Control List that is associated with the cluster}
+\item{ACLName}{The Access Control List that is associated with the cluster.}
 }
 \description{
 Modifies the settings for a cluster. You can use this operation to change one or more cluster configuration settings by specifying the settings and the new values.

@@ -24,10 +24,9 @@ in the Amazon Resource Name (ARN) of the instance.}
 
 \item{ContactFlowId}{[required] The identifier of the flow for initiating the chat. To see the
 ContactFlowId in the Amazon Connect admin website, on the navigation
-menu go to \strong{Routing}, \strong{Contact Flows}. Choose the flow. On the flow
-page, under the name of the flow, choose \strong{Show additional flow
-information}. The ContactFlowId is the last part of the ARN, shown here
-in bold:
+menu go to \strong{Routing}, \strong{Flows}. Choose the flow. On the flow page,
+under the name of the flow, choose \strong{Show additional flow information}.
+The ContactFlowId is the last part of the ARN, shown here in bold:
 
 arn:aws:connect:us-west-2:xxxxxxxxxxxx:instance/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/contact-flow/\strong{846ec553-a005-41c0-8341-xxxxxxxxxxxx}}
 

@@ -12,10 +12,10 @@ NULL
 #'
 #' @param CertificateAuthorityConfiguration &#91;required&#93; Name and bit size of the private key algorithm, the name of the signing
 #' algorithm, and X.500 certificate subject information.
-#' @param RevocationConfiguration Contains information to enable Online Certificate Status Protocol (OCSP)
-#' support, to enable a certificate revocation list (CRL), to enable both,
-#' or to enable neither. The default is for both certificate validation
-#' mechanisms to be disabled.
+#' @param RevocationConfiguration Contains information to enable support for Online Certificate Status
+#' Protocol (OCSP), certificate revocation list (CRL), both protocols, or
+#' neither. By default, both certificate validation mechanisms are
+#' disabled.
 #' 
 #' The following requirements apply to revocation configurations.
 #' 
@@ -100,10 +100,10 @@ acmpca_create_certificate_authority <- function(CertificateAuthorityConfiguratio
 .acmpca$operations$create_certificate_authority <- acmpca_create_certificate_authority
 
 #' Creates an audit report that lists every time that your CA private key
-#' is used
+#' is used to issue a certificate
 #'
 #' @description
-#' Creates an audit report that lists every time that your CA private key is used. The report is saved in the Amazon S3 bucket that you specify on input. The [`issue_certificate`][acmpca_issue_certificate] and [`revoke_certificate`][acmpca_revoke_certificate] actions use the private key.
+#' Creates an audit report that lists every time that your CA private key is used to issue a certificate. The [`issue_certificate`][acmpca_issue_certificate] and [`revoke_certificate`][acmpca_revoke_certificate] actions use the private key.
 #'
 #' See [https://www.paws-r-sdk.com/docs/acmpca_create_certificate_authority_audit_report/](https://www.paws-r-sdk.com/docs/acmpca_create_certificate_authority_audit_report/) for full documentation.
 #'
@@ -722,7 +722,7 @@ acmpca_list_certificate_authorities <- function(MaxResults = NULL, NextToken = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "CertificateAuthorities"),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "CertificateAuthorities"),
     stream_api = FALSE
   )
   input <- .acmpca$list_certificate_authorities_input(MaxResults = MaxResults, NextToken = NextToken, ResourceOwner = ResourceOwner)
@@ -769,7 +769,7 @@ acmpca_list_permissions <- function(MaxResults = NULL, NextToken = NULL, Certifi
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Permissions"),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Permissions"),
     stream_api = FALSE
   )
   input <- .acmpca$list_permissions_input(MaxResults = MaxResults, NextToken = NextToken, CertificateAuthorityArn = CertificateAuthorityArn)
@@ -813,7 +813,7 @@ acmpca_list_tags <- function(MaxResults = NULL, NextToken = NULL, CertificateAut
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Tags"),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Tags"),
     stream_api = FALSE
   )
   input <- .acmpca$list_tags_input(MaxResults = MaxResults, NextToken = NextToken, CertificateAuthorityArn = CertificateAuthorityArn)
@@ -1035,10 +1035,10 @@ acmpca_untag_certificate_authority <- function(CertificateAuthorityArn, Tags) {
 #' to be revoked. This must be of the form:
 #' 
 #' `arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 `
-#' @param RevocationConfiguration Contains information to enable Online Certificate Status Protocol (OCSP)
-#' support, to enable a certificate revocation list (CRL), to enable both,
-#' or to enable neither. If this parameter is not supplied, existing
-#' capibilites remain unchanged. For more information, see the
+#' @param RevocationConfiguration Contains information to enable support for Online Certificate Status
+#' Protocol (OCSP), certificate revocation list (CRL), both protocols, or
+#' neither. If you don't supply this parameter, existing capibilites remain
+#' unchanged. For more information, see the
 #' [OcspConfiguration](https://docs.aws.amazon.com/privateca/latest/APIReference/API_OcspConfiguration.html)
 #' and
 #' [CrlConfiguration](https://docs.aws.amazon.com/privateca/latest/APIReference/API_CrlConfiguration.html)
@@ -1061,6 +1061,21 @@ acmpca_untag_certificate_authority <- function(CertificateAuthorityArn, Tags) {
 #' 
 #' -   In a CRL or OCSP configuration, the value of a CNAME parameter must
 #'     not include a protocol prefix such as "http://" or "https://".
+#' 
+#' If you update the `S3BucketName` of
+#' [CrlConfiguration](https://docs.aws.amazon.com/privateca/latest/APIReference/API_CrlConfiguration.html),
+#' you can break revocation for existing certificates. In other words, if
+#' you call
+#' [`update_certificate_authority`][acmpca_update_certificate_authority] to
+#' update the CRL configuration's S3 bucket name, Amazon Web Services
+#' Private CA only writes CRLs to the new S3 bucket. Certificates issued
+#' prior to this point will have the old S3 bucket name in your CRL
+#' Distribution Point (CDP) extension, essentially breaking revocation. If
+#' you must update the S3 bucket, you'll need to reissue old certificates
+#' to keep the revocation working. Alternatively, you can use a
+#' [CustomCname](https://docs.aws.amazon.com/privateca/latest/APIReference/API_CrlConfiguration.html#privateca-Type-CrlConfiguration-CustomCname)
+#' in your CRL configuration if you might need to change the S3 bucket name
+#' in the future.
 #' @param Status Status of your private CA.
 #'
 #' @keywords internal

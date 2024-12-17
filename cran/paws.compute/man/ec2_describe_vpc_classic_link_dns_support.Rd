@@ -5,12 +5,14 @@
 \title{This action is deprecated}
 \usage{
 ec2_describe_vpc_classic_link_dns_support(
+  VpcIds = NULL,
   MaxResults = NULL,
-  NextToken = NULL,
-  VpcIds = NULL
+  NextToken = NULL
 )
 }
 \arguments{
+\item{VpcIds}{The IDs of the VPCs.}
+
 \item{MaxResults}{The maximum number of items to return for this request. To get the next
 page of items, make another request with the token returned in the
 output. For more information, see
@@ -18,8 +20,6 @@ output. For more information, see
 
 \item{NextToken}{The token returned from a previous paginated request. Pagination
 continues from the end of the items returned by the previous request.}
-
-\item{VpcIds}{The IDs of the VPCs.}
 }
 \description{
 This action is deprecated.

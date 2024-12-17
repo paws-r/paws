@@ -14,8 +14,12 @@ guardduty_invite_members(
 )
 }
 \arguments{
-\item{DetectorId}{[required] The unique ID of the detector of the GuardDuty account that you want to
-invite members with.}
+\item{DetectorId}{[required] The unique ID of the detector of the GuardDuty account with which you
+want to invite members.
+
+To find the \code{detectorId} in the current Region, see the Settings page in
+the GuardDuty console, or run the
+\code{\link[=guardduty_list_detectors]{list_detectors}} API.}
 
 \item{AccountIds}{[required] A list of account IDs of the accounts that you want to invite to
 GuardDuty as members.}

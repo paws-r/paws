@@ -2,7 +2,7 @@
 % Please edit documentation in R/vpclattice_operations.R
 \name{vpclattice_list_access_log_subscriptions}
 \alias{vpclattice_list_access_log_subscriptions}
-\title{Lists all access log subscriptions for the specified service network or
+\title{Lists the access log subscriptions for the specified service network or
 service}
 \usage{
 vpclattice_list_access_log_subscriptions(
@@ -16,10 +16,10 @@ vpclattice_list_access_log_subscriptions(
 
 \item{nextToken}{A pagination token for the next page of results.}
 
-\item{resourceIdentifier}{[required] The ID or Amazon Resource Name (ARN) of the service network or service.}
+\item{resourceIdentifier}{[required] The ID or ARN of the service network or service.}
 }
 \description{
-Lists all access log subscriptions for the specified service network or service.
+Lists the access log subscriptions for the specified service network or service.
 
 See \url{https://www.paws-r-sdk.com/docs/vpclattice_list_access_log_subscriptions/} for full documentation.
 }

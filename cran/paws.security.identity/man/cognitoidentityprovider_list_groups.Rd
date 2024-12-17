@@ -7,7 +7,7 @@
 cognitoidentityprovider_list_groups(UserPoolId, Limit = NULL, NextToken = NULL)
 }
 \arguments{
-\item{UserPoolId}{[required] The user pool ID for the user pool.}
+\item{UserPoolId}{[required] The ID of the user pool.}
 
 \item{Limit}{The limit of the request to list groups.}
 

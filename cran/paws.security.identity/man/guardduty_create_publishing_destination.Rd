@@ -2,7 +2,8 @@
 % Please edit documentation in R/guardduty_operations.R
 \name{guardduty_create_publishing_destination}
 \alias{guardduty_create_publishing_destination}
-\title{Creates a publishing destination to export findings to}
+\title{Creates a publishing destination where you can export your GuardDuty
+findings}
 \usage{
 guardduty_create_publishing_destination(
   DetectorId,
@@ -13,7 +14,11 @@ guardduty_create_publishing_destination(
 }
 \arguments{
 \item{DetectorId}{[required] The ID of the GuardDuty detector associated with the publishing
-destination.}
+destination.
+
+To find the \code{detectorId} in the current Region, see the Settings page in
+the GuardDuty console, or run the
+\code{\link[=guardduty_list_detectors]{list_detectors}} API.}
 
 \item{DestinationType}{[required] The type of resource for the publishing destination. Currently only
 Amazon S3 buckets are supported.}
@@ -24,7 +29,7 @@ destination and the KMS key used for encryption.}
 \item{ClientToken}{The idempotency token for the request.}
 }
 \description{
-Creates a publishing destination to export findings to. The resource to export findings to must exist before you use this operation.
+Creates a publishing destination where you can export your GuardDuty findings. Before you start exporting the findings, the destination resource must exist.
 
 See \url{https://www.paws-r-sdk.com/docs/guardduty_create_publishing_destination/} for full documentation.
 }

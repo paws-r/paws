@@ -6,22 +6,22 @@
 \usage{
 ec2_modify_instance_attribute(
   SourceDestCheck = NULL,
+  DisableApiStop = NULL,
+  DryRun = NULL,
+  InstanceId,
   Attribute = NULL,
+  Value = NULL,
   BlockDeviceMappings = NULL,
   DisableApiTermination = NULL,
-  DryRun = NULL,
-  EbsOptimized = NULL,
-  EnaSupport = NULL,
-  Groups = NULL,
-  InstanceId,
-  InstanceInitiatedShutdownBehavior = NULL,
   InstanceType = NULL,
   Kernel = NULL,
   Ramdisk = NULL,
-  SriovNetSupport = NULL,
   UserData = NULL,
-  Value = NULL,
-  DisableApiStop = NULL
+  InstanceInitiatedShutdownBehavior = NULL,
+  Groups = NULL,
+  EbsOptimized = NULL,
+  SriovNetSupport = NULL,
+  EnaSupport = NULL
 )
 }
 \arguments{
@@ -32,6 +32,16 @@ otherwise, they are disabled. The default value is \code{true}. You must
 disable source/destination checks if the instance runs services such as
 network address translation, routing, or firewalls.}
 
+\item{DisableApiStop}{Indicates whether an instance is enabled for stop protection. For more
+information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-stop-protection.html}{Enable stop protection for your instance}.}
+
+\item{DryRun}{Checks whether you have the required permissions for the operation,
+without actually making the request, and provides an error response. If
+you have the required permissions, the error response is
+\code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
+
+\item{InstanceId}{[required] The ID of the instance.}
+
 \item{Attribute}{The name of the attribute to modify.
 
 You can modify the following attributes only: \code{disableApiTermination} |
@@ -39,6 +49,10 @@ You can modify the following attributes only: \code{disableApiTermination} |
 \code{instanceInitiatedShutdownBehavior} | \code{blockDeviceMapping} | \code{userData}
 | \code{sourceDestCheck} | \code{groupSet} | \code{ebsOptimized} | \code{sriovNetSupport} |
 \code{enaSupport} | \code{nvmeSupport} | \code{disableApiStop} | \code{enclaveOptions}}
+
+\item{Value}{A new value for the attribute. Use only with the \code{kernel}, \code{ramdisk},
+\code{userData}, \code{disableApiTermination}, or
+\code{instanceInitiatedShutdownBehavior} attribute.}
 
 \item{BlockDeviceMappings}{Modifies the \code{DeleteOnTermination} attribute for volumes that are
 currently attached. The volume must be owned by the caller. If no value
@@ -55,32 +69,6 @@ in the \emph{Amazon EC2 User Guide}.}
 Amazon EC2 console, CLI, or API; otherwise, you can. You cannot use this
 parameter for Spot Instances.}
 
-\item{DryRun}{Checks whether you have the required permissions for the action, without
-actually making the request, and provides an error response. If you have
-the required permissions, the error response is \code{DryRunOperation}.
-Otherwise, it is \code{UnauthorizedOperation}.}
-
-\item{EbsOptimized}{Specifies whether the instance is optimized for Amazon EBS I/O. This
-optimization provides dedicated throughput to Amazon EBS and an
-optimized configuration stack to provide optimal EBS I/O performance.
-This optimization isn't available with all instance types. Additional
-usage charges apply when using an EBS Optimized instance.}
-
-\item{EnaSupport}{Set to \code{true} to enable enhanced networking with ENA for the instance.
-
-This option is supported only for HVM instances. Specifying this option
-with a PV instance can make it unreachable.}
-
-\item{Groups}{Replaces the security groups of the instance with the specified security
-groups. You must specify the ID of at least one security group, even if
-it's just the default security group for the VPC.}
-
-\item{InstanceId}{[required] The ID of the instance.}
-
-\item{InstanceInitiatedShutdownBehavior}{Specifies whether an instance stops or terminates when you initiate
-shutdown from the instance (using the operating system command for
-system shutdown).}
-
 \item{InstanceType}{Changes the instance type to the specified value. For more information,
 see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html}{Instance types}
 in the \emph{Amazon EC2 User Guide}. If the instance type is not valid, the
@@ -96,6 +84,25 @@ that you use PV-GRUB instead of kernels and RAM disks. For more
 information, see
 \href{https://docs.aws.amazon.com/linux/al2/ug/UserProvidedKernels.html}{PV-GRUB}.}
 
+\item{UserData}{Changes the instance's user data to the specified value. User data must
+be base64-encoded. Depending on the tool or SDK that you're using, the
+base64-encoding might be performed for you. For more information, see
+\href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/}{Work with instance user data}.}
+
+\item{InstanceInitiatedShutdownBehavior}{Specifies whether an instance stops or terminates when you initiate
+shutdown from the instance (using the operating system command for
+system shutdown).}
+
+\item{Groups}{Replaces the security groups of the instance with the specified security
+groups. You must specify the ID of at least one security group, even if
+it's just the default security group for the VPC.}
+
+\item{EbsOptimized}{Specifies whether the instance is optimized for Amazon EBS I/O. This
+optimization provides dedicated throughput to Amazon EBS and an
+optimized configuration stack to provide optimal EBS I/O performance.
+This optimization isn't available with all instance types. Additional
+usage charges apply when using an EBS Optimized instance.}
+
 \item{SriovNetSupport}{Set to \code{simple} to enable enhanced networking with the Intel 82599
 Virtual Function interface for the instance.
 
@@ -105,17 +112,10 @@ Virtual Function interface at this time.
 This option is supported only for HVM instances. Specifying this option
 with a PV instance can make it unreachable.}
 
-\item{UserData}{Changes the instance's user data to the specified value. User data must
-be base64-encoded. Depending on the tool or SDK that you're using, the
-base64-encoding might be performed for you. For more information, see
-\href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/}{Work with instance user data}.}
+\item{EnaSupport}{Set to \code{true} to enable enhanced networking with ENA for the instance.
 
-\item{Value}{A new value for the attribute. Use only with the \code{kernel}, \code{ramdisk},
-\code{userData}, \code{disableApiTermination}, or
-\code{instanceInitiatedShutdownBehavior} attribute.}
-
-\item{DisableApiStop}{Indicates whether an instance is enabled for stop protection. For more
-information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-stop-protection.html}{Enable stop protection for your instance}.}
+This option is supported only for HVM instances. Specifying this option
+with a PV instance can make it unreachable.}
 }
 \description{
 Modifies the specified attribute of the specified instance. You can specify only one attribute at a time.

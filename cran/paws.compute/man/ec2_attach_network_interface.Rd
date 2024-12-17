@@ -5,32 +5,32 @@
 \title{Attaches a network interface to an instance}
 \usage{
 ec2_attach_network_interface(
-  DeviceIndex,
-  DryRun = NULL,
-  InstanceId,
-  NetworkInterfaceId,
   NetworkCardIndex = NULL,
-  EnaSrdSpecification = NULL
+  EnaSrdSpecification = NULL,
+  DryRun = NULL,
+  NetworkInterfaceId,
+  InstanceId,
+  DeviceIndex
 )
 }
 \arguments{
-\item{DeviceIndex}{[required] The index of the device for the network interface attachment.}
-
-\item{DryRun}{Checks whether you have the required permissions for the action, without
-actually making the request, and provides an error response. If you have
-the required permissions, the error response is \code{DryRunOperation}.
-Otherwise, it is \code{UnauthorizedOperation}.}
-
-\item{InstanceId}{[required] The ID of the instance.}
-
-\item{NetworkInterfaceId}{[required] The ID of the network interface.}
-
 \item{NetworkCardIndex}{The index of the network card. Some instance types support multiple
 network cards. The primary network interface must be assigned to network
 card index 0. The default is network card index 0.}
 
 \item{EnaSrdSpecification}{Configures ENA Express for the network interface that this action
 attaches to the instance.}
+
+\item{DryRun}{Checks whether you have the required permissions for the action, without
+actually making the request, and provides an error response. If you have
+the required permissions, the error response is \code{DryRunOperation}.
+Otherwise, it is \code{UnauthorizedOperation}.}
+
+\item{NetworkInterfaceId}{[required] The ID of the network interface.}
+
+\item{InstanceId}{[required] The ID of the instance.}
+
+\item{DeviceIndex}{[required] The index of the device for the network interface attachment.}
 }
 \description{
 Attaches a network interface to an instance.

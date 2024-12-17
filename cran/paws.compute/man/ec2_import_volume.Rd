@@ -2,33 +2,32 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_import_volume}
 \alias{ec2_import_volume}
-\title{Creates an import volume task using metadata from the specified disk
-image}
+\title{This API action supports only single-volume VMs}
 \usage{
 ec2_import_volume(
-  AvailabilityZone,
-  Description = NULL,
   DryRun = NULL,
+  AvailabilityZone,
   Image,
+  Description = NULL,
   Volume
 )
 }
 \arguments{
-\item{AvailabilityZone}{[required] The Availability Zone for the resulting EBS volume.}
-
-\item{Description}{A description of the volume.}
-
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
+\item{AvailabilityZone}{[required] The Availability Zone for the resulting EBS volume.}
+
 \item{Image}{[required] The disk image.}
+
+\item{Description}{A description of the volume.}
 
 \item{Volume}{[required] The volume size.}
 }
 \description{
-Creates an import volume task using metadata from the specified disk image.
+This API action supports only single-volume VMs. To import multi-volume VMs, use \code{\link[=ec2_import_image]{import_image}} instead. To import a disk to a snapshot, use \code{\link[=ec2_import_snapshot]{import_snapshot}} instead.
 
 See \url{https://www.paws-r-sdk.com/docs/ec2_import_volume/} for full documentation.
 }

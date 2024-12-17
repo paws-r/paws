@@ -2,7 +2,7 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_get_bucket_accelerate_configuration}
 \alias{s3_get_bucket_accelerate_configuration}
-\title{This operation is not supported by directory buckets}
+\title{This operation is not supported for directory buckets}
 \usage{
 s3_get_bucket_accelerate_configuration(
   Bucket,
@@ -21,7 +21,7 @@ with the HTTP status code \verb{403 Forbidden} (access denied).}
 \item{RequestPayer}{}
 }
 \description{
-This operation is not supported by directory buckets.
+This operation is not supported for directory buckets.
 
 See \url{https://www.paws-r-sdk.com/docs/s3_get_bucket_accelerate_configuration/} for full documentation.
 }

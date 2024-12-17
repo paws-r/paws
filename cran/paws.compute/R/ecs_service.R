@@ -126,6 +126,8 @@ NULL
 #'  \link[=ecs_describe_capacity_providers]{describe_capacity_providers} \tab Describes one or more of your capacity providers\cr
 #'  \link[=ecs_describe_clusters]{describe_clusters} \tab Describes one or more of your clusters\cr
 #'  \link[=ecs_describe_container_instances]{describe_container_instances} \tab Describes one or more container instances\cr
+#'  \link[=ecs_describe_service_deployments]{describe_service_deployments} \tab Describes one or more of your service deployments\cr
+#'  \link[=ecs_describe_service_revisions]{describe_service_revisions} \tab Describes one or more service revisions\cr
 #'  \link[=ecs_describe_services]{describe_services} \tab Describes the specified services running in your cluster\cr
 #'  \link[=ecs_describe_task_definition]{describe_task_definition} \tab Describes a task definition\cr
 #'  \link[=ecs_describe_tasks]{describe_tasks} \tab Describes a specified task or tasks\cr
@@ -137,6 +139,7 @@ NULL
 #'  \link[=ecs_list_attributes]{list_attributes} \tab Lists the attributes for Amazon ECS resources within a specified target type and cluster\cr
 #'  \link[=ecs_list_clusters]{list_clusters} \tab Returns a list of existing clusters\cr
 #'  \link[=ecs_list_container_instances]{list_container_instances} \tab Returns a list of container instances in a specified cluster\cr
+#'  \link[=ecs_list_service_deployments]{list_service_deployments} \tab This operation lists all the service deployments that meet the specified filter criteria\cr
 #'  \link[=ecs_list_services]{list_services} \tab Returns a list of services\cr
 #'  \link[=ecs_list_services_by_namespace]{list_services_by_namespace} \tab This operation lists all of the services that are associated with a Cloud Map namespace\cr
 #'  \link[=ecs_list_tags_for_resource]{list_tags_for_resource} \tab List the tags for an Amazon ECS resource\cr
@@ -197,7 +200,7 @@ ecs <- function(config = list(), credentials = list(), endpoint = NULL, region =
 
 .ecs$metadata <- list(
   service_name = "ecs",
-  endpoints = list("*" = list(endpoint = "ecs.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "ecs.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "ecs.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "ecs.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "ecs.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "ecs.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "ecs.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "ecs.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "ecs.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "ecs.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "ecs.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "ecs.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "ecs.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "ECS",
   api_version = "2014-11-13",
   signing_name = "ecs",

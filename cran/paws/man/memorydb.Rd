@@ -99,12 +99,14 @@ structures, APIs, and commands.
 \link[paws.database:memorydb_copy_snapshot]{copy_snapshot} \tab Makes a copy of an existing snapshot\cr
 \link[paws.database:memorydb_create_acl]{create_acl} \tab Creates an Access Control List\cr
 \link[paws.database:memorydb_create_cluster]{create_cluster} \tab Creates a cluster\cr
+\link[paws.database:memorydb_create_multi_region_cluster]{create_multi_region_cluster} \tab Creates a new multi-Region cluster\cr
 \link[paws.database:memorydb_create_parameter_group]{create_parameter_group} \tab Creates a new MemoryDB parameter group\cr
 \link[paws.database:memorydb_create_snapshot]{create_snapshot} \tab Creates a copy of an entire cluster at a specific moment in time\cr
 \link[paws.database:memorydb_create_subnet_group]{create_subnet_group} \tab Creates a subnet group\cr
 \link[paws.database:memorydb_create_user]{create_user} \tab Creates a MemoryDB user\cr
 \link[paws.database:memorydb_delete_acl]{delete_acl} \tab Deletes an Access Control List\cr
 \link[paws.database:memorydb_delete_cluster]{delete_cluster} \tab Deletes a cluster\cr
+\link[paws.database:memorydb_delete_multi_region_cluster]{delete_multi_region_cluster} \tab Deletes an existing multi-Region cluster\cr
 \link[paws.database:memorydb_delete_parameter_group]{delete_parameter_group} \tab Deletes the specified parameter group\cr
 \link[paws.database:memorydb_delete_snapshot]{delete_snapshot} \tab Deletes an existing snapshot\cr
 \link[paws.database:memorydb_delete_subnet_group]{delete_subnet_group} \tab Deletes a subnet group\cr
@@ -113,6 +115,7 @@ structures, APIs, and commands.
 \link[paws.database:memorydb_describe_clusters]{describe_clusters} \tab Returns information about all provisioned clusters if no cluster identifier is specified, or about a specific cluster if a cluster name is supplied\cr
 \link[paws.database:memorydb_describe_engine_versions]{describe_engine_versions} \tab Returns a list of the available Redis OSS engine versions\cr
 \link[paws.database:memorydb_describe_events]{describe_events} \tab Returns events related to clusters, security groups, and parameter groups\cr
+\link[paws.database:memorydb_describe_multi_region_clusters]{describe_multi_region_clusters} \tab Returns details about one or more multi-Region clusters\cr
 \link[paws.database:memorydb_describe_parameter_groups]{describe_parameter_groups} \tab Returns a list of parameter group descriptions\cr
 \link[paws.database:memorydb_describe_parameters]{describe_parameters} \tab Returns the detailed parameter list for a particular parameter group\cr
 \link[paws.database:memorydb_describe_reserved_nodes]{describe_reserved_nodes} \tab Returns information about reserved nodes for this account, or about a specified reserved node\cr
@@ -122,6 +125,7 @@ structures, APIs, and commands.
 \link[paws.database:memorydb_describe_subnet_groups]{describe_subnet_groups} \tab Returns a list of subnet group descriptions\cr
 \link[paws.database:memorydb_describe_users]{describe_users} \tab Returns a list of users\cr
 \link[paws.database:memorydb_failover_shard]{failover_shard} \tab Used to failover a shard\cr
+\link[paws.database:memorydb_list_allowed_multi_region_cluster_updates]{list_allowed_multi_region_cluster_updates} \tab Lists the allowed updates for a multi-Region cluster\cr
 \link[paws.database:memorydb_list_allowed_node_type_updates]{list_allowed_node_type_updates} \tab Lists all available node types that you can scale to from your cluster's current node type\cr
 \link[paws.database:memorydb_list_tags]{list_tags} \tab Lists all tags currently on a named resource\cr
 \link[paws.database:memorydb_purchase_reserved_nodes_offering]{purchase_reserved_nodes_offering} \tab Allows you to purchase a reserved node offering\cr
@@ -130,6 +134,7 @@ structures, APIs, and commands.
 \link[paws.database:memorydb_untag_resource]{untag_resource} \tab Use this operation to remove tags on a resource\cr
 \link[paws.database:memorydb_update_acl]{update_acl} \tab Changes the list of users that belong to the Access Control List\cr
 \link[paws.database:memorydb_update_cluster]{update_cluster} \tab Modifies the settings for a cluster\cr
+\link[paws.database:memorydb_update_multi_region_cluster]{update_multi_region_cluster} \tab Updates the configuration of an existing multi-Region cluster\cr
 \link[paws.database:memorydb_update_parameter_group]{update_parameter_group} \tab Updates the parameters of a parameter group\cr
 \link[paws.database:memorydb_update_subnet_group]{update_subnet_group} \tab Updates a subnet group\cr
 \link[paws.database:memorydb_update_user]{update_user} \tab Changes user password(s) and/or access string

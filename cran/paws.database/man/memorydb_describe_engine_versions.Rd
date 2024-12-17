@@ -5,6 +5,7 @@
 \title{Returns a list of the available Redis OSS engine versions}
 \usage{
 memorydb_describe_engine_versions(
+  Engine = NULL,
   EngineVersion = NULL,
   ParameterGroupFamily = NULL,
   MaxResults = NULL,
@@ -13,6 +14,8 @@ memorydb_describe_engine_versions(
 )
 }
 \arguments{
+\item{Engine}{The name of the engine for which to list available versions.}
+
 \item{EngineVersion}{The Redis OSS engine version}
 
 \item{ParameterGroupFamily}{The name of a specific parameter group family to return details for.}

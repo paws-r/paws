@@ -148,6 +148,7 @@ scaling.
 \link[paws.management:applicationautoscaling_describe_scaling_activities]{describe_scaling_activities} \tab Provides descriptive information about the scaling activities in the specified namespace from the previous six weeks\cr
 \link[paws.management:applicationautoscaling_describe_scaling_policies]{describe_scaling_policies} \tab Describes the Application Auto Scaling scaling policies for the specified service namespace\cr
 \link[paws.management:applicationautoscaling_describe_scheduled_actions]{describe_scheduled_actions} \tab Describes the Application Auto Scaling scheduled actions for the specified service namespace\cr
+\link[paws.management:applicationautoscaling_get_predictive_scaling_forecast]{get_predictive_scaling_forecast} \tab Retrieves the forecast data for a predictive scaling policy\cr
 \link[paws.management:applicationautoscaling_list_tags_for_resource]{list_tags_for_resource} \tab Returns all the tags on the specified Application Auto Scaling scalable target\cr
 \link[paws.management:applicationautoscaling_put_scaling_policy]{put_scaling_policy} \tab Creates or updates a scaling policy for an Application Auto Scaling scalable target\cr
 \link[paws.management:applicationautoscaling_put_scheduled_action]{put_scheduled_action} \tab Creates or updates a scheduled action for an Application Auto Scaling scalable target\cr

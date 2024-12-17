@@ -2,15 +2,17 @@
 % Please edit documentation in R/opensearchservice_operations.R
 \name{opensearchservice_list_tags}
 \alias{opensearchservice_list_tags}
-\title{Returns all resource tags for an Amazon OpenSearch Service domain}
+\title{Returns all resource tags for an Amazon OpenSearch Service domain, data
+source, or application}
 \usage{
 opensearchservice_list_tags(ARN)
 }
 \arguments{
-\item{ARN}{[required] Amazon Resource Name (ARN) for the domain to view tags for.}
+\item{ARN}{[required] Amazon Resource Name (ARN) for the domain, data source, or application
+to view tags for.}
 }
 \description{
-Returns all resource tags for an Amazon OpenSearch Service domain. For more information, see \href{https://docs.aws.amazon.com/opensearch-service/latest/developerguide/managedomains-awsresourcetagging.html}{Tagging Amazon OpenSearch Service domains}.
+Returns all resource tags for an Amazon OpenSearch Service domain, data source, or application. For more information, see \href{https://docs.aws.amazon.com/opensearch-service/latest/developerguide/managedomains-awsresourcetagging.html}{Tagging Amazon OpenSearch Service resources}.
 
 See \url{https://www.paws-r-sdk.com/docs/opensearchservice_list_tags/} for full documentation.
 }

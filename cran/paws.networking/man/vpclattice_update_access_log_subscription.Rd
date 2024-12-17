@@ -10,7 +10,7 @@ vpclattice_update_access_log_subscription(
 )
 }
 \arguments{
-\item{accessLogSubscriptionIdentifier}{[required] The ID or Amazon Resource Name (ARN) of the access log subscription.}
+\item{accessLogSubscriptionIdentifier}{[required] The ID or ARN of the access log subscription.}
 
 \item{destinationArn}{[required] The Amazon Resource Name (ARN) of the access log destination.}
 }

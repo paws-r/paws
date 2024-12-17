@@ -9,7 +9,9 @@ ec2_modify_ipam_resource_discovery(
   IpamResourceDiscoveryId,
   Description = NULL,
   AddOperatingRegions = NULL,
-  RemoveOperatingRegions = NULL
+  RemoveOperatingRegions = NULL,
+  AddOrganizationalUnitExclusions = NULL,
+  RemoveOrganizationalUnitExclusions = NULL
 )
 }
 \arguments{
@@ -28,6 +30,20 @@ address CIDRs. IPAM only discovers and monitors resources in the Amazon
 Web Services Regions you select as operating Regions.}
 
 \item{RemoveOperatingRegions}{Remove operating Regions.}
+
+\item{AddOrganizationalUnitExclusions}{Add an Organizational Unit (OU) exclusion to your IPAM. If your IPAM is
+integrated with Amazon Web Services Organizations and you add an
+organizational unit (OU) exclusion, IPAM will not manage the IP
+addresses in accounts in that OU exclusion. There is a limit on the
+number of exclusions you can create. For more information, see \href{https://docs.aws.amazon.com/vpc/latest/ipam/quotas-ipam.html}{Quotas for your IPAM} in
+the \emph{Amazon VPC IPAM User Guide}.}
+
+\item{RemoveOrganizationalUnitExclusions}{Remove an Organizational Unit (OU) exclusion to your IPAM. If your IPAM
+is integrated with Amazon Web Services Organizations and you add an
+organizational unit (OU) exclusion, IPAM will not manage the IP
+addresses in accounts in that OU exclusion. There is a limit on the
+number of exclusions you can create. For more information, see \href{https://docs.aws.amazon.com/vpc/latest/ipam/quotas-ipam.html}{Quotas for your IPAM} in
+the \emph{Amazon VPC IPAM User Guide}.}
 }
 \description{
 Modifies a resource discovery. A resource discovery is an IPAM component that enables IPAM to manage and monitor resources that belong to the owning account.

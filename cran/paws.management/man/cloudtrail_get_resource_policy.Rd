@@ -3,17 +3,25 @@
 \name{cloudtrail_get_resource_policy}
 \alias{cloudtrail_get_resource_policy}
 \title{Retrieves the JSON text of the resource-based policy document attached
-to the CloudTrail channel}
+to the CloudTrail event data store, dashboard, or channel}
 \usage{
 cloudtrail_get_resource_policy(ResourceArn)
 }
 \arguments{
-\item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the CloudTrail channel attached to the
-resource-based policy. The following is the format of a resource ARN:
-\code{arn:aws:cloudtrail:us-east-2:123456789012:channel/MyChannel}.}
+\item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the CloudTrail event data store,
+dashboard, or channel attached to the resource-based policy.
+
+Example event data store ARN format:
+\verb{arn:aws:cloudtrail:us-east-2:123456789012:eventdatastore/EXAMPLE-f852-4e8f-8bd1-bcf6cEXAMPLE}
+
+Example dashboard ARN format:
+\code{arn:aws:cloudtrail:us-east-1:123456789012:dashboard/exampleDash}
+
+Example channel ARN format:
+\code{arn:aws:cloudtrail:us-east-2:123456789012:channel/01234567890}}
 }
 \description{
-Retrieves the JSON text of the resource-based policy document attached to the CloudTrail channel.
+Retrieves the JSON text of the resource-based policy document attached to the CloudTrail event data store, dashboard, or channel.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudtrail_get_resource_policy/} for full documentation.
 }

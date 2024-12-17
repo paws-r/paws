@@ -513,7 +513,7 @@ emr_describe_job_flows <- function(CreatedAfter = NULL, CreatedBefore = NULL, Jo
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "JobFlows"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .emr$describe_job_flows_input(CreatedAfter = CreatedAfter, CreatedBefore = CreatedBefore, JobFlowIds = JobFlowIds, JobFlowStates = JobFlowStates)
@@ -1142,7 +1142,7 @@ emr_list_release_labels <- function(Filters = NULL, NextToken = NULL, MaxResults
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .emr$list_release_labels_input(Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
@@ -1321,7 +1321,7 @@ emr_list_supported_instance_types <- function(ReleaseLabel, Marker = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", output_token = "Marker"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .emr$list_supported_instance_types_input(ReleaseLabel = ReleaseLabel, Marker = Marker)

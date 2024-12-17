@@ -12,7 +12,8 @@ ec2_modify_verified_access_trust_provider(
   Description = NULL,
   DryRun = NULL,
   ClientToken = NULL,
-  SseSpecification = NULL
+  SseSpecification = NULL,
+  NativeApplicationOidcOptions = NULL
 )
 }
 \arguments{
@@ -35,6 +36,8 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 your modification request. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency}.}
 
 \item{SseSpecification}{The options for server side encryption.}
+
+\item{NativeApplicationOidcOptions}{The OpenID Connect (OIDC) options.}
 }
 \description{
 Modifies the configuration of the specified Amazon Web Services Verified Access trust provider.

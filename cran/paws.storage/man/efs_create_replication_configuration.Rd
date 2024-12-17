@@ -2,8 +2,8 @@
 % Please edit documentation in R/efs_operations.R
 \name{efs_create_replication_configuration}
 \alias{efs_create_replication_configuration}
-\title{Creates a replication configuration that replicates an existing EFS file
-system to a new, read-only file system}
+\title{Creates a replication configuration to either a new or existing EFS file
+system}
 \usage{
 efs_create_replication_configuration(SourceFileSystemId, Destinations)
 }
@@ -16,7 +16,7 @@ another replication configuration.}
 configuration object is supported.}
 }
 \description{
-Creates a replication configuration that replicates an existing EFS file system to a new, read-only file system. For more information, see \href{https://docs.aws.amazon.com/efs/latest/ug/efs-replication.html}{Amazon EFS replication} in the \emph{Amazon EFS User Guide}. The replication configuration specifies the following:
+Creates a replication configuration to either a new or existing EFS file system. For more information, see \href{https://docs.aws.amazon.com/efs/latest/ug/efs-replication.html}{Amazon EFS replication} in the \emph{Amazon EFS User Guide}. The replication configuration specifies the following:
 
 See \url{https://www.paws-r-sdk.com/docs/efs_create_replication_configuration/} for full documentation.
 }

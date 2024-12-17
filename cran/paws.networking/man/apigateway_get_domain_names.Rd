@@ -4,13 +4,19 @@
 \alias{apigateway_get_domain_names}
 \title{Represents a collection of DomainName resources}
 \usage{
-apigateway_get_domain_names(position = NULL, limit = NULL)
+apigateway_get_domain_names(
+  position = NULL,
+  limit = NULL,
+  resourceOwner = NULL
+)
 }
 \arguments{
 \item{position}{The current pagination position in the paged result set.}
 
 \item{limit}{The maximum number of returned results per page. The default value is 25
 and the maximum value is 500.}
+
+\item{resourceOwner}{The owner of the domain name access association.}
 }
 \description{
 Represents a collection of DomainName resources.

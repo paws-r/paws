@@ -3,11 +3,10 @@
 #' @include elasticinference_service.R
 NULL
 
-#' Describes the locations in which a given accelerator type or set of
-#' types is present in a given region
+#' Amazon Elastic Inference is no longer available
 #'
 #' @description
-#' Describes the locations in which a given accelerator type or set of types is present in a given region.
+#' Amazon Elastic Inference is no longer available.
 #'
 #' See [https://www.paws-r-sdk.com/docs/elasticinference_describe_accelerator_offerings/](https://www.paws-r-sdk.com/docs/elasticinference_describe_accelerator_offerings/) for full documentation.
 #'
@@ -41,11 +40,10 @@ elasticinference_describe_accelerator_offerings <- function(locationType, accele
 }
 .elasticinference$operations$describe_accelerator_offerings <- elasticinference_describe_accelerator_offerings
 
-#' Describes the accelerator types available in a given region, as well as
-#' their characteristics, such as memory and throughput
+#' Amazon Elastic Inference is no longer available
 #'
 #' @description
-#' Describes the accelerator types available in a given region, as well as their characteristics, such as memory and throughput.
+#' Amazon Elastic Inference is no longer available.
 #'
 #' See [https://www.paws-r-sdk.com/docs/elasticinference_describe_accelerator_types/](https://www.paws-r-sdk.com/docs/elasticinference_describe_accelerator_types/) for full documentation.
 #'
@@ -73,11 +71,10 @@ elasticinference_describe_accelerator_types <- function() {
 }
 .elasticinference$operations$describe_accelerator_types <- elasticinference_describe_accelerator_types
 
-#' Describes information over a provided set of accelerators belonging to
-#' an account
+#' Amazon Elastic Inference is no longer available
 #'
 #' @description
-#' Describes information over a provided set of accelerators belonging to an account.
+#' Amazon Elastic Inference is no longer available.
 #'
 #' See [https://www.paws-r-sdk.com/docs/elasticinference_describe_accelerators/](https://www.paws-r-sdk.com/docs/elasticinference_describe_accelerators/) for full documentation.
 #'
@@ -117,10 +114,10 @@ elasticinference_describe_accelerators <- function(acceleratorIds = NULL, filter
 }
 .elasticinference$operations$describe_accelerators <- elasticinference_describe_accelerators
 
-#' Returns all tags of an Elastic Inference Accelerator
+#' Amazon Elastic Inference is no longer available
 #'
 #' @description
-#' Returns all tags of an Elastic Inference Accelerator.
+#' Amazon Elastic Inference is no longer available.
 #'
 #' See [https://www.paws-r-sdk.com/docs/elasticinference_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/elasticinference_list_tags_for_resource/) for full documentation.
 #'
@@ -148,10 +145,10 @@ elasticinference_list_tags_for_resource <- function(resourceArn) {
 }
 .elasticinference$operations$list_tags_for_resource <- elasticinference_list_tags_for_resource
 
-#' Adds the specified tags to an Elastic Inference Accelerator
+#' Amazon Elastic Inference is no longer available
 #'
 #' @description
-#' Adds the specified tags to an Elastic Inference Accelerator.
+#' Amazon Elastic Inference is no longer available.
 #'
 #' See [https://www.paws-r-sdk.com/docs/elasticinference_tag_resource/](https://www.paws-r-sdk.com/docs/elasticinference_tag_resource/) for full documentation.
 #'
@@ -180,10 +177,10 @@ elasticinference_tag_resource <- function(resourceArn, tags) {
 }
 .elasticinference$operations$tag_resource <- elasticinference_tag_resource
 
-#' Removes the specified tags from an Elastic Inference Accelerator
+#' Amazon Elastic Inference is no longer available
 #'
 #' @description
-#' Removes the specified tags from an Elastic Inference Accelerator.
+#' Amazon Elastic Inference is no longer available.
 #'
 #' See [https://www.paws-r-sdk.com/docs/elasticinference_untag_resource/](https://www.paws-r-sdk.com/docs/elasticinference_untag_resource/) for full documentation.
 #'

@@ -141,7 +141,7 @@ performance, and operational health.
 \link[paws.management:cloudwatch_put_insight_rule]{put_insight_rule} \tab Creates a Contributor Insights rule\cr
 \link[paws.management:cloudwatch_put_managed_insight_rules]{put_managed_insight_rules} \tab Creates a managed Contributor Insights rule for a specified Amazon Web Services resource\cr
 \link[paws.management:cloudwatch_put_metric_alarm]{put_metric_alarm} \tab Creates or updates an alarm and associates it with the specified metric, metric math expression, anomaly detection model, or Metrics Insights query\cr
-\link[paws.management:cloudwatch_put_metric_data]{put_metric_data} \tab Publishes metric data points to Amazon CloudWatch\cr
+\link[paws.management:cloudwatch_put_metric_data]{put_metric_data} \tab Publishes metric data to Amazon CloudWatch\cr
 \link[paws.management:cloudwatch_put_metric_stream]{put_metric_stream} \tab Creates or updates a metric stream\cr
 \link[paws.management:cloudwatch_set_alarm_state]{set_alarm_state} \tab Temporarily sets the state of an alarm for testing purposes\cr
 \link[paws.management:cloudwatch_start_metric_streams]{start_metric_streams} \tab Starts the streaming of metrics for one or more of your metric streams\cr

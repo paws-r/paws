@@ -155,6 +155,7 @@ mutating (create and update) operations.
 \section{Operations}{
 
 \tabular{ll}{
+\link[paws.security.identity:verifiedpermissions_batch_get_policy]{batch_get_policy} \tab Retrieves information about a group (batch) of policies\cr
 \link[paws.security.identity:verifiedpermissions_batch_is_authorized]{batch_is_authorized} \tab Makes a series of decisions about multiple authorization requests for one principal or resource\cr
 \link[paws.security.identity:verifiedpermissions_batch_is_authorized_with_token]{batch_is_authorized_with_token} \tab Makes a series of decisions about multiple authorization requests for one token\cr
 \link[paws.security.identity:verifiedpermissions_create_identity_source]{create_identity_source} \tab Adds an identity source to a policy store–an Amazon Cognito user pool or OpenID Connect (OIDC) identity provider (IdP)\cr
@@ -187,7 +188,7 @@ mutating (create and update) operations.
 \examples{
 \dontrun{
 svc <- verifiedpermissions()
-svc$batch_is_authorized(
+svc$batch_get_policy(
   Foo = 123
 )
 }

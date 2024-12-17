@@ -20,6 +20,7 @@ opensearchservice_create_domain(
   LogPublishingOptions = NULL,
   DomainEndpointOptions = NULL,
   AdvancedSecurityOptions = NULL,
+  IdentityCenterOptions = NULL,
   TagList = NULL,
   AutoTuneOptions = NULL,
   OffPeakWindowOptions = NULL,
@@ -96,6 +97,8 @@ For more information, see \href{https://docs.aws.amazon.com/opensearch-service/l
 HTTPS for all traffic.}
 
 \item{AdvancedSecurityOptions}{Options for fine-grained access control.}
+
+\item{IdentityCenterOptions}{Options for IAM Identity Center Option control for the domain.}
 
 \item{TagList}{List of tags to add to the domain upon creation.}
 

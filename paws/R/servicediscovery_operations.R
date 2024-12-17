@@ -566,11 +566,12 @@ servicediscovery_delete_namespace <- function(Id) {
 }
 .servicediscovery$operations$delete_namespace <- servicediscovery_delete_namespace
 
-#' Deletes a specified service
+#' Deletes a specified service and all associated service attributes
 #'
 #' @description
-#' Deletes a specified service. If the service still contains one or more
-#' registered instances, the request fails.
+#' Deletes a specified service and all associated service attributes. If
+#' the service still contains one or more registered instances, the request
+#' fails.
 #'
 #' @usage
 #' servicediscovery_delete_service(Id)
@@ -618,6 +619,54 @@ servicediscovery_delete_service <- function(Id) {
   return(response)
 }
 .servicediscovery$operations$delete_service <- servicediscovery_delete_service
+
+#' Deletes specific attributes associated with a service
+#'
+#' @description
+#' Deletes specific attributes associated with a service.
+#'
+#' @usage
+#' servicediscovery_delete_service_attributes(ServiceId, Attributes)
+#'
+#' @param ServiceId &#91;required&#93; The ID of the service from which the attributes will be deleted.
+#' @param Attributes &#91;required&#93; A list of keys corresponding to each attribute that you want to delete.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_service_attributes(
+#'   ServiceId = "string",
+#'   Attributes = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname servicediscovery_delete_service_attributes
+#'
+#' @aliases servicediscovery_delete_service_attributes
+servicediscovery_delete_service_attributes <- function(ServiceId, Attributes) {
+  op <- new_operation(
+    name = "DeleteServiceAttributes",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .servicediscovery$delete_service_attributes_input(ServiceId = ServiceId, Attributes = Attributes)
+  output <- .servicediscovery$delete_service_attributes_output()
+  config <- get_config()
+  svc <- .servicediscovery$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.servicediscovery$operations$delete_service_attributes <- servicediscovery_delete_service_attributes
 
 #' Deletes the Amazon Route 53 DNS records and health check, if any, that
 #' Cloud Map created for the specified instance
@@ -838,16 +887,6 @@ servicediscovery_discover_instances <- function(NamespaceName, ServiceName, MaxR
 #' )
 #' ```
 #'
-#' @examples
-#' \dontrun{
-#' # The following example discovers the revision ID for a registered
-#' # instance.
-#' svc$discover_instances_revision(
-#'   NamespaceName = "example-namespace",
-#'   ServiceName = "example-service"
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname servicediscovery_discover_instances_revision
@@ -1020,7 +1059,7 @@ servicediscovery_get_instances_health_status <- function(ServiceId, Instances = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .servicediscovery$get_instances_health_status_input(ServiceId = ServiceId, Instances = Instances, MaxResults = MaxResults, NextToken = NextToken)
@@ -1278,6 +1317,60 @@ servicediscovery_get_service <- function(Id) {
 }
 .servicediscovery$operations$get_service <- servicediscovery_get_service
 
+#' Returns the attributes associated with a specified service
+#'
+#' @description
+#' Returns the attributes associated with a specified service.
+#'
+#' @usage
+#' servicediscovery_get_service_attributes(ServiceId)
+#'
+#' @param ServiceId &#91;required&#93; The ID of the service that you want to get attributes for.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ServiceAttributes = list(
+#'     ServiceArn = "string",
+#'     Attributes = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_service_attributes(
+#'   ServiceId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname servicediscovery_get_service_attributes
+#'
+#' @aliases servicediscovery_get_service_attributes
+servicediscovery_get_service_attributes <- function(ServiceId) {
+  op <- new_operation(
+    name = "GetServiceAttributes",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .servicediscovery$get_service_attributes_input(ServiceId = ServiceId)
+  output <- .servicediscovery$get_service_attributes_output()
+  config <- get_config()
+  svc <- .servicediscovery$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.servicediscovery$operations$get_service_attributes <- servicediscovery_get_service_attributes
+
 #' Lists summary information about the instances that you registered by
 #' using a specified service
 #'
@@ -1345,7 +1438,7 @@ servicediscovery_list_instances <- function(ServiceId, NextToken = NULL, MaxResu
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(result_key = "Instances", output_token = "NextToken", input_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .servicediscovery$list_instances_input(ServiceId = ServiceId, NextToken = NextToken, MaxResults = MaxResults)
@@ -1457,7 +1550,7 @@ servicediscovery_list_namespaces <- function(NextToken = NULL, MaxResults = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(result_key = "Namespaces", output_token = "NextToken", input_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .servicediscovery$list_namespaces_input(NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
@@ -1562,7 +1655,7 @@ servicediscovery_list_operations <- function(NextToken = NULL, MaxResults = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(result_key = "Operations", output_token = "NextToken", input_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .servicediscovery$list_operations_input(NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
@@ -1681,7 +1774,7 @@ servicediscovery_list_services <- function(NextToken = NULL, MaxResults = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(result_key = "Services", output_token = "NextToken", input_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .servicediscovery$list_services_input(NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
@@ -2177,17 +2270,6 @@ servicediscovery_untag_resource <- function(ResourceARN, TagKeys) {
 #' )
 #' ```
 #'
-#' @examples
-#' \dontrun{
-#' # The following example updates the description of a HTTP namespace.
-#' svc$update_http_namespace(
-#'   Id = "ns-vh4nbmEXAMPLE",
-#'   Namespace = list(
-#'     Description = "The updated namespace description."
-#'   )
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname servicediscovery_update_http_namespace
@@ -2329,28 +2411,6 @@ servicediscovery_update_instance_custom_health_status <- function(ServiceId, Ins
 #' )
 #' ```
 #'
-#' @examples
-#' \dontrun{
-#' # The following example updates the description of a private DNS
-#' # namespace.
-#' svc$update_private_dns_namespace(
-#'   Id = "ns-bk3aEXAMPLE",
-#'   Namespace = list(
-#'     Description = "The updated namespace description."
-#'   ),
-#'   UpdaterRequestId = ""
-#' )
-#' 
-#' # The following example updates the description of a public DNS namespace.
-#' svc$update_private_dns_namespace(
-#'   Id = "ns-bk3aEXAMPLE",
-#'   Namespace = list(
-#'     Description = "The updated namespace description."
-#'   ),
-#'   UpdaterRequestId = ""
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname servicediscovery_update_private_dns_namespace
@@ -2473,7 +2533,8 @@ servicediscovery_update_public_dns_namespace <- function(Id, UpdaterRequestId = 
 #' servicediscovery_update_service(Id, Service)
 #'
 #' @param Id &#91;required&#93; The ID of the service that you want to update.
-#' @param Service &#91;required&#93; A complex type that contains the new settings for the service.
+#' @param Service &#91;required&#93; A complex type that contains the new settings for the service. You can
+#' specify a maximum of 30 attributes (key-value pairs).
 #'
 #' @return
 #' A list with the following syntax:
@@ -2553,3 +2614,53 @@ servicediscovery_update_service <- function(Id, Service) {
   return(response)
 }
 .servicediscovery$operations$update_service <- servicediscovery_update_service
+
+#' Submits a request to update a specified service to add service-level
+#' attributes
+#'
+#' @description
+#' Submits a request to update a specified service to add service-level
+#' attributes.
+#'
+#' @usage
+#' servicediscovery_update_service_attributes(ServiceId, Attributes)
+#'
+#' @param ServiceId &#91;required&#93; The ID of the service that you want to update.
+#' @param Attributes &#91;required&#93; A string map that contains attribute key-value pairs.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_service_attributes(
+#'   ServiceId = "string",
+#'   Attributes = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname servicediscovery_update_service_attributes
+#'
+#' @aliases servicediscovery_update_service_attributes
+servicediscovery_update_service_attributes <- function(ServiceId, Attributes) {
+  op <- new_operation(
+    name = "UpdateServiceAttributes",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .servicediscovery$update_service_attributes_input(ServiceId = ServiceId, Attributes = Attributes)
+  output <- .servicediscovery$update_service_attributes_output()
+  config <- get_config()
+  svc <- .servicediscovery$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.servicediscovery$operations$update_service_attributes <- servicediscovery_update_service_attributes

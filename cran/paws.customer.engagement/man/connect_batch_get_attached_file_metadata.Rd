@@ -16,9 +16,11 @@ connect_batch_get_attached_file_metadata(
 
 \item{InstanceId}{[required] The unique identifier of the Connect instance.}
 
-\item{AssociatedResourceArn}{[required] The resource to which the attached file is (being) uploaded to.
-\href{https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_CreateCase.html}{Cases}
-are the only current supported resource.
+\item{AssociatedResourceArn}{[required] The resource to which the attached file is (being) uploaded to. The
+supported resources are
+\href{https://docs.aws.amazon.com/connect/latest/adminguide/cases.html}{Cases}
+and
+\href{https://docs.aws.amazon.com/connect/latest/adminguide/setup-email-channel.html}{Email}.
 
 This value must be a valid ARN.}
 }

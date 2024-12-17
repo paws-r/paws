@@ -18,16 +18,20 @@ their alias attributes. If \code{username} isn't an alias attribute in your
 user pool, this value must be the \code{sub} of a local user or the username
 of a user from a third-party IdP.}
 
-\item{UserPoolId}{[required] The user pool ID for the user pool.}
+\item{UserPoolId}{[required] The ID of the user pool where you want to view a user's groups.}
 
-\item{Limit}{The limit of the request to list groups.}
+\item{Limit}{The maximum number of groups that you want Amazon Cognito to return in
+the response.}
 
-\item{NextToken}{An identifier that was returned from the previous call to this
-operation, which can be used to return the next set of items in the
-list.}
+\item{NextToken}{This API operation returns a limited number of results. The pagination
+token is an identifier that you can present in an additional API request
+with the same parameters. When you include the pagination token, Amazon
+Cognito returns the next set of items after the current list. Subsequent
+requests return a new pagination token. By use of this token, you can
+paginate through the full list of items.}
 }
 \description{
-Lists the groups that a user belongs to.
+Lists the groups that a user belongs to. User pool groups are identifiers that you can reference from the contents of ID and access tokens, and set preferred IAM roles for identity-pool authentication. For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-user-groups.html}{Adding groups to a user pool}.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_admin_list_groups_for_user/} for full documentation.
 }

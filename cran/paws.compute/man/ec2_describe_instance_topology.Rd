@@ -16,10 +16,10 @@ ec2_describe_instance_topology(
 )
 }
 \arguments{
-\item{DryRun}{Checks whether you have the required permissions for the action, without
-actually making the request, and provides an error response. If you have
-the required permissions, the error response is \code{DryRunOperation}.
-Otherwise, it is \code{UnauthorizedOperation}.}
+\item{DryRun}{Checks whether you have the required permissions for the operation,
+without actually making the request, and provides an error response. If
+you have the required permissions, the error response is
+\code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{NextToken}{The token returned from a previous paginated request. Pagination
 continues from the end of the items returned by the previous request.}

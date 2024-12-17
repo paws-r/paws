@@ -1163,7 +1163,7 @@ clouddirectory_list_applied_schema_arns <- function(DirectoryArn, SchemaArn = NU
     http_method = "POST",
     http_path = "/amazonclouddirectory/2017-01-11/schema/applied",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(result_key = "SchemaArns", output_token = "NextToken", input_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .clouddirectory$list_applied_schema_arns_input(DirectoryArn = DirectoryArn, SchemaArn = SchemaArn, NextToken = NextToken, MaxResults = MaxResults)
@@ -1198,7 +1198,7 @@ clouddirectory_list_attached_indices <- function(DirectoryArn, TargetReference, 
     http_method = "POST",
     http_path = "/amazonclouddirectory/2017-01-11/object/indices",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(result_key = "IndexAttachments", output_token = "NextToken", input_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .clouddirectory$list_attached_indices_input(DirectoryArn = DirectoryArn, TargetReference = TargetReference, NextToken = NextToken, MaxResults = MaxResults, ConsistencyLevel = ConsistencyLevel)
@@ -1231,7 +1231,7 @@ clouddirectory_list_development_schema_arns <- function(NextToken = NULL, MaxRes
     http_method = "POST",
     http_path = "/amazonclouddirectory/2017-01-11/schema/development",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(result_key = "SchemaArns", output_token = "NextToken", input_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .clouddirectory$list_development_schema_arns_input(NextToken = NextToken, MaxResults = MaxResults)
@@ -1265,7 +1265,7 @@ clouddirectory_list_directories <- function(NextToken = NULL, MaxResults = NULL,
     http_method = "POST",
     http_path = "/amazonclouddirectory/2017-01-11/directory/list",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(result_key = "Directories", output_token = "NextToken", input_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .clouddirectory$list_directories_input(NextToken = NextToken, MaxResults = MaxResults, state = state)
@@ -1299,7 +1299,7 @@ clouddirectory_list_facet_attributes <- function(SchemaArn, Name, NextToken = NU
     http_method = "POST",
     http_path = "/amazonclouddirectory/2017-01-11/facet/attributes",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(result_key = "Attributes", output_token = "NextToken", input_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .clouddirectory$list_facet_attributes_input(SchemaArn = SchemaArn, Name = Name, NextToken = NextToken, MaxResults = MaxResults)
@@ -1332,7 +1332,7 @@ clouddirectory_list_facet_names <- function(SchemaArn, NextToken = NULL, MaxResu
     http_method = "POST",
     http_path = "/amazonclouddirectory/2017-01-11/facet/list",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(result_key = "FacetNames", output_token = "NextToken", input_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .clouddirectory$list_facet_names_input(SchemaArn = SchemaArn, NextToken = NextToken, MaxResults = MaxResults)
@@ -1375,7 +1375,7 @@ clouddirectory_list_incoming_typed_links <- function(DirectoryArn, ObjectReferen
     http_method = "POST",
     http_path = "/amazonclouddirectory/2017-01-11/typedlink/incoming",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "LinkSpecifiers"),
     stream_api = FALSE
   )
   input <- .clouddirectory$list_incoming_typed_links_input(DirectoryArn = DirectoryArn, ObjectReference = ObjectReference, FilterAttributeRanges = FilterAttributeRanges, FilterTypedLink = FilterTypedLink, NextToken = NextToken, MaxResults = MaxResults, ConsistencyLevel = ConsistencyLevel)
@@ -1414,7 +1414,7 @@ clouddirectory_list_index <- function(DirectoryArn, RangesOnIndexedValues = NULL
     http_method = "POST",
     http_path = "/amazonclouddirectory/2017-01-11/index/targets",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(result_key = "IndexAttachments", output_token = "NextToken", input_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .clouddirectory$list_index_input(DirectoryArn = DirectoryArn, RangesOnIndexedValues = RangesOnIndexedValues, IndexReference = IndexReference, MaxResults = MaxResults, NextToken = NextToken, ConsistencyLevel = ConsistencyLevel)
@@ -1448,7 +1448,7 @@ clouddirectory_list_managed_schema_arns <- function(SchemaArn = NULL, NextToken 
     http_method = "POST",
     http_path = "/amazonclouddirectory/2017-01-11/schema/managed",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "SchemaArns"),
     stream_api = FALSE
   )
   input <- .clouddirectory$list_managed_schema_arns_input(SchemaArn = SchemaArn, NextToken = NextToken, MaxResults = MaxResults)
@@ -1490,7 +1490,7 @@ clouddirectory_list_object_attributes <- function(DirectoryArn, ObjectReference,
     http_method = "POST",
     http_path = "/amazonclouddirectory/2017-01-11/object/attributes",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(result_key = "Attributes", output_token = "NextToken", input_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .clouddirectory$list_object_attributes_input(DirectoryArn = DirectoryArn, ObjectReference = ObjectReference, NextToken = NextToken, MaxResults = MaxResults, ConsistencyLevel = ConsistencyLevel, FacetFilter = FacetFilter)
@@ -1531,7 +1531,7 @@ clouddirectory_list_object_children <- function(DirectoryArn, ObjectReference, N
     http_method = "POST",
     http_path = "/amazonclouddirectory/2017-01-11/object/children",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .clouddirectory$list_object_children_input(DirectoryArn = DirectoryArn, ObjectReference = ObjectReference, NextToken = NextToken, MaxResults = MaxResults, ConsistencyLevel = ConsistencyLevel)
@@ -1567,7 +1567,7 @@ clouddirectory_list_object_parent_paths <- function(DirectoryArn, ObjectReferenc
     http_method = "POST",
     http_path = "/amazonclouddirectory/2017-01-11/object/parentpaths",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(result_key = "PathToObjectIdentifiersList", output_token = "NextToken", input_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .clouddirectory$list_object_parent_paths_input(DirectoryArn = DirectoryArn, ObjectReference = ObjectReference, NextToken = NextToken, MaxResults = MaxResults)
@@ -1610,7 +1610,7 @@ clouddirectory_list_object_parents <- function(DirectoryArn, ObjectReference, Ne
     http_method = "POST",
     http_path = "/amazonclouddirectory/2017-01-11/object/parent",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .clouddirectory$list_object_parents_input(DirectoryArn = DirectoryArn, ObjectReference = ObjectReference, NextToken = NextToken, MaxResults = MaxResults, ConsistencyLevel = ConsistencyLevel, IncludeAllLinksToEachParent = IncludeAllLinksToEachParent)
@@ -1649,7 +1649,7 @@ clouddirectory_list_object_policies <- function(DirectoryArn, ObjectReference, N
     http_method = "POST",
     http_path = "/amazonclouddirectory/2017-01-11/object/policy",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(result_key = "AttachedPolicyIds", output_token = "NextToken", input_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .clouddirectory$list_object_policies_input(DirectoryArn = DirectoryArn, ObjectReference = ObjectReference, NextToken = NextToken, MaxResults = MaxResults, ConsistencyLevel = ConsistencyLevel)
@@ -1692,7 +1692,7 @@ clouddirectory_list_outgoing_typed_links <- function(DirectoryArn, ObjectReferen
     http_method = "POST",
     http_path = "/amazonclouddirectory/2017-01-11/typedlink/outgoing",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TypedLinkSpecifiers"),
     stream_api = FALSE
   )
   input <- .clouddirectory$list_outgoing_typed_links_input(DirectoryArn = DirectoryArn, ObjectReference = ObjectReference, FilterAttributeRanges = FilterAttributeRanges, FilterTypedLink = FilterTypedLink, NextToken = NextToken, MaxResults = MaxResults, ConsistencyLevel = ConsistencyLevel)
@@ -1731,7 +1731,7 @@ clouddirectory_list_policy_attachments <- function(DirectoryArn, PolicyReference
     http_method = "POST",
     http_path = "/amazonclouddirectory/2017-01-11/policy/attachment",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(result_key = "ObjectIdentifiers", output_token = "NextToken", input_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .clouddirectory$list_policy_attachments_input(DirectoryArn = DirectoryArn, PolicyReference = PolicyReference, NextToken = NextToken, MaxResults = MaxResults, ConsistencyLevel = ConsistencyLevel)
@@ -1767,7 +1767,7 @@ clouddirectory_list_published_schema_arns <- function(SchemaArn = NULL, NextToke
     http_method = "POST",
     http_path = "/amazonclouddirectory/2017-01-11/schema/published",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(result_key = "SchemaArns", output_token = "NextToken", input_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .clouddirectory$list_published_schema_arns_input(SchemaArn = SchemaArn, NextToken = NextToken, MaxResults = MaxResults)
@@ -1803,7 +1803,7 @@ clouddirectory_list_tags_for_resource <- function(ResourceArn, NextToken = NULL,
     http_method = "POST",
     http_path = "/amazonclouddirectory/2017-01-11/tags",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(result_key = "Tags", output_token = "NextToken", input_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .clouddirectory$list_tags_for_resource_input(ResourceArn = ResourceArn, NextToken = NextToken, MaxResults = MaxResults)
@@ -1839,7 +1839,7 @@ clouddirectory_list_typed_link_facet_attributes <- function(SchemaArn, Name, Nex
     http_method = "POST",
     http_path = "/amazonclouddirectory/2017-01-11/typedlink/facet/attributes",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(result_key = "Attributes", output_token = "NextToken", input_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .clouddirectory$list_typed_link_facet_attributes_input(SchemaArn = SchemaArn, Name = Name, NextToken = NextToken, MaxResults = MaxResults)
@@ -1874,7 +1874,7 @@ clouddirectory_list_typed_link_facet_names <- function(SchemaArn, NextToken = NU
     http_method = "POST",
     http_path = "/amazonclouddirectory/2017-01-11/typedlink/facet/list",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(result_key = "FacetNames", output_token = "NextToken", input_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .clouddirectory$list_typed_link_facet_names_input(SchemaArn = SchemaArn, NextToken = NextToken, MaxResults = MaxResults)
@@ -1911,7 +1911,7 @@ clouddirectory_lookup_policy <- function(DirectoryArn, ObjectReference, NextToke
     http_method = "POST",
     http_path = "/amazonclouddirectory/2017-01-11/policy/lookup",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(result_key = "PolicyToPathList", output_token = "NextToken", input_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .clouddirectory$lookup_policy_input(DirectoryArn = DirectoryArn, ObjectReference = ObjectReference, NextToken = NextToken, MaxResults = MaxResults)

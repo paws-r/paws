@@ -3,16 +3,18 @@
 \name{ec2_import_key_pair}
 \alias{ec2_import_key_pair}
 \title{Imports the public key from an RSA or ED25519 key pair that you created
-with a third-party tool}
+using a third-party tool}
 \usage{
 ec2_import_key_pair(
+  TagSpecifications = NULL,
   DryRun = NULL,
   KeyName,
-  PublicKeyMaterial,
-  TagSpecifications = NULL
+  PublicKeyMaterial
 )
 }
 \arguments{
+\item{TagSpecifications}{The tags to apply to the imported key pair.}
+
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
@@ -20,13 +22,10 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{KeyName}{[required] A unique name for the key pair.}
 
-\item{PublicKeyMaterial}{[required] The public key. For API calls, the text must be base64-encoded. For
-command line tools, base64 encoding is performed for you.}
-
-\item{TagSpecifications}{The tags to apply to the imported key pair.}
+\item{PublicKeyMaterial}{[required] The public key.}
 }
 \description{
-Imports the public key from an RSA or ED25519 key pair that you created with a third-party tool. Compare this with \code{\link[=ec2_create_key_pair]{create_key_pair}}, in which Amazon Web Services creates the key pair and gives the keys to you (Amazon Web Services keeps a copy of the public key). With ImportKeyPair, you create the key pair and give Amazon Web Services just the public key. The private key is never transferred between you and Amazon Web Services.
+Imports the public key from an RSA or ED25519 key pair that you created using a third-party tool. You give Amazon Web Services only the public key. The private key is never transferred between you and Amazon Web Services.
 
 See \url{https://www.paws-r-sdk.com/docs/ec2_import_key_pair/} for full documentation.
 }

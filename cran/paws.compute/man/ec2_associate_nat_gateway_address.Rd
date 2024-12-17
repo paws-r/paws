@@ -26,7 +26,7 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
-Associates Elastic IP addresses (EIPs) and private IPv4 addresses with a public NAT gateway. For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html#nat-gateway-working-with}{Work with NAT gateways} in the \emph{Amazon VPC User Guide}.
+Associates Elastic IP addresses (EIPs) and private IPv4 addresses with a public NAT gateway. For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/nat-gateway-working-with.html}{Work with NAT gateways} in the \emph{Amazon VPC User Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/ec2_associate_nat_gateway_address/} for full documentation.
 }

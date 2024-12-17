@@ -15,7 +15,7 @@ vpclattice_list_listeners(
 
 \item{nextToken}{A pagination token for the next page of results.}
 
-\item{serviceIdentifier}{[required] The ID or Amazon Resource Name (ARN) of the service.}
+\item{serviceIdentifier}{[required] The ID or ARN of the service.}
 }
 \description{
 Lists the listeners for the specified service.

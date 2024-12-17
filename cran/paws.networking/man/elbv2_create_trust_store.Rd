@@ -15,8 +15,7 @@ elbv2_create_trust_store(
 \arguments{
 \item{Name}{[required] The name of the trust store.
 
-This name must be unique per region and cannot be changed after
-creation.}
+This name must be unique per region and can't be changed after creation.}
 
 \item{CaCertificatesBundleS3Bucket}{[required] The Amazon S3 bucket for the ca certificates bundle.}
 

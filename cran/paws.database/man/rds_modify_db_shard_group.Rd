@@ -4,7 +4,12 @@
 \alias{rds_modify_db_shard_group}
 \title{Modifies the settings of an Aurora Limitless Database DB shard group}
 \usage{
-rds_modify_db_shard_group(DBShardGroupIdentifier, MaxACU = NULL, MinACU = NULL)
+rds_modify_db_shard_group(
+  DBShardGroupIdentifier,
+  MaxACU = NULL,
+  MinACU = NULL,
+  ComputeRedundancy = NULL
+)
 }
 \arguments{
 \item{DBShardGroupIdentifier}{[required] The name of the DB shard group to modify.}
@@ -14,6 +19,17 @@ rds_modify_db_shard_group(DBShardGroupIdentifier, MaxACU = NULL, MinACU = NULL)
 
 \item{MinACU}{The minimum capacity of the DB shard group in Aurora capacity units
 (ACUs).}
+
+\item{ComputeRedundancy}{Specifies whether to create standby DB shard groups for the DB shard
+group. Valid values are the following:
+\itemize{
+\item 0 - Creates a DB shard group without a standby DB shard group. This
+is the default value.
+\item 1 - Creates a DB shard group with a standby DB shard group in a
+different Availability Zone (AZ).
+\item 2 - Creates a DB shard group with two standby DB shard groups in two
+different AZs.
+}}
 }
 \description{
 Modifies the settings of an Aurora Limitless Database DB shard group. You can change one or more settings by specifying these parameters and the new values in the request.

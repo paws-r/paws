@@ -13,7 +13,8 @@ workmail_create_user(
   Role = NULL,
   FirstName = NULL,
   LastName = NULL,
-  HiddenFromGlobalAddressList = NULL
+  HiddenFromGlobalAddressList = NULL,
+  IdentityProviderUserId = NULL
 )
 }
 \arguments{
@@ -38,6 +39,10 @@ selected.}
 
 \item{HiddenFromGlobalAddressList}{If this parameter is enabled, the user will be hidden from the address
 book.}
+
+\item{IdentityProviderUserId}{User ID from the IAM Identity Center. If this parameter is empty it will
+be updated automatically when the user logs in for the first time to the
+mailbox associated with WorkMail.}
 }
 \description{
 Creates a user who can be used in WorkMail by calling the \code{\link[=workmail_register_to_work_mail]{register_to_work_mail}} operation.

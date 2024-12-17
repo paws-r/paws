@@ -2,8 +2,7 @@
 % Please edit documentation in R/elasticinference_operations.R
 \name{elasticinference_describe_accelerator_offerings}
 \alias{elasticinference_describe_accelerator_offerings}
-\title{Describes the locations in which a given accelerator type or set of
-types is present in a given region}
+\title{Amazon Elastic Inference is no longer available}
 \usage{
 elasticinference_describe_accelerator_offerings(
   locationType,
@@ -21,7 +20,7 @@ availability zone level returning the availability zone id.}
 \item{acceleratorTypes}{The list of accelerator types to describe.}
 }
 \description{
-Describes the locations in which a given accelerator type or set of types is present in a given region.
+Amazon Elastic Inference is no longer available.
 
 See \url{https://www.paws-r-sdk.com/docs/elasticinference_describe_accelerator_offerings/} for full documentation.
 }

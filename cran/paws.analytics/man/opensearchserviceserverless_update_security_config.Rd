@@ -8,6 +8,7 @@ opensearchserviceserverless_update_security_config(
   clientToken = NULL,
   configVersion,
   description = NULL,
+  iamIdentityCenterOptionsUpdates = NULL,
   id,
   samlOptions = NULL
 )
@@ -21,6 +22,8 @@ the most recent version of a security configuration using the
 command.}
 
 \item{description}{A description of the security configuration.}
+
+\item{iamIdentityCenterOptionsUpdates}{Describes IAM Identity Center options in the form of a key-value map.}
 
 \item{id}{[required] The security configuration identifier. For SAML the ID will be
 \verb{saml/<accountId>/<idpProviderName>}. For example,

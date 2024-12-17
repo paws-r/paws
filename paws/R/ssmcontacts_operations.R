@@ -45,6 +45,17 @@ NULL
 #' )
 #' ```
 #'
+#' @examples
+#' \dontrun{
+#' # The following accept-page operation uses an accept code sent to the
+#' # contact channel to accept a page.
+#' svc$accept_page(
+#'   AcceptCode = "425440",
+#'   AcceptType = "READ",
+#'   PageId = "arn:aws:ssm-contacts:us-east-2:682428703967:page/akuam/94ea0c7b..."
+#' )
+#' }
+#'
 #' @keywords internal
 #'
 #' @rdname ssmcontacts_accept_page
@@ -91,6 +102,16 @@ ssmcontacts_accept_page <- function(PageId, ContactChannelId = NULL, AcceptType,
 #'   ActivationCode = "string"
 #' )
 #' ```
+#'
+#' @examples
+#' \dontrun{
+#' # The following activate-contact-channel example activates a contact
+#' # channel and makes it usable as part of an incident.
+#' svc$activate_contact_channel(
+#'   ActivationCode = "466136",
+#'   ContactChannelId = "arn:aws:ssm-contacts:us-east-2:111122223333:contact-c..."
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -188,6 +209,23 @@ ssmcontacts_activate_contact_channel <- function(ContactChannelId, ActivationCod
 #' )
 #' ```
 #'
+#' @examples
+#' \dontrun{
+#' # The following create-contact example creates a contact in your
+#' # environment with a blank plan. The plan can be updated after creating
+#' # contact channels. Use the create-contact-channel operation with the
+#' # output ARN of this command. After you have created contact channels for
+#' # this contact use update-contact to update the plan.
+#' svc$create_contact(
+#'   Alias = "akuam",
+#'   DisplayName = "Akua Mansa",
+#'   Plan = list(
+#'     Stages = list()
+#'   ),
+#'   Type = "PERSONAL"
+#' )
+#' }
+#'
 #' @keywords internal
 #'
 #' @rdname ssmcontacts_create_contact
@@ -269,6 +307,20 @@ ssmcontacts_create_contact <- function(Alias, DisplayName = NULL, Type, Plan, Ta
 #'   IdempotencyToken = "string"
 #' )
 #' ```
+#'
+#' @examples
+#' \dontrun{
+#' # Creates a contact channel of type SMS for the contact Akua Mansa.
+#' # Contact channels can be created of type SMS, EMAIL, or VOICE.
+#' svc$create_contact_channel(
+#'   ContactId = "arn:aws:ssm-contacts:us-east-1:111122223333:contact/akuam",
+#'   DeliveryAddress = list(
+#'     SimpleAddress = "+15005550199"
+#'   ),
+#'   Name = "akuas sms-test",
+#'   Type = "SMS"
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -516,6 +568,18 @@ ssmcontacts_create_rotation_override <- function(RotationId, NewContactIds, Star
 #' )
 #' ```
 #'
+#' @examples
+#' \dontrun{
+#' # The following `deactivate-contact-channel` example deactivates a
+#' # contact channel. Deactivating a contact channel means the contact
+#' # channel will no longer be paged during an incident. You can also
+#' # reactivate a contact channel at any time using the
+#' # activate-contact-channel operation.
+#' svc$deactivate_contact_channel(
+#'   ContactChannelId = "arn:aws:ssm-contacts:us-east-2:111122223333:contact-c..."
+#' )
+#' }
+#'
 #' @keywords internal
 #'
 #' @rdname ssmcontacts_deactivate_contact_channel
@@ -563,6 +627,15 @@ ssmcontacts_deactivate_contact_channel <- function(ContactChannelId) {
 #'   ContactId = "string"
 #' )
 #' ```
+#'
+#' @examples
+#' \dontrun{
+#' # The following delete-contact example deletes a contact. The contact will
+#' # no longer be reachable from any escalation plan that refers to them.
+#' svc$delete_contact(
+#'   ContactId = "arn:aws:ssm-contacts:us-east-1:111122223333:contact/alejr"
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -612,6 +685,16 @@ ssmcontacts_delete_contact <- function(ContactId) {
 #'   ContactChannelId = "string"
 #' )
 #' ```
+#'
+#' @examples
+#' \dontrun{
+#' # The following delete-contact-channel example deletes a contact channel.
+#' # Deleting a contact channel ensures the contact channel will not be paged
+#' # during an incident.
+#' svc$delete_contact_channel(
+#'   ContactChannelId = "arn:aws:ssm-contacts:us-east-1:111122223333:contact-c..."
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -771,6 +854,16 @@ ssmcontacts_delete_rotation_override <- function(RotationId, RotationOverrideId)
 #' )
 #' ```
 #'
+#' @examples
+#' \dontrun{
+#' # The following describe-engagement example lists the details of an
+#' # engagement to a contact or escalation plan. The subject and content are
+#' # sent to the contact channels.
+#' svc$describe_engagement(
+#'   EngagementId = "arn:aws:ssm-contacts:us-east-2:111122223333:engagement/ex..."
+#' )
+#' }
+#'
 #' @keywords internal
 #'
 #' @rdname ssmcontacts_describe_engagement
@@ -836,6 +929,15 @@ ssmcontacts_describe_engagement <- function(EngagementId) {
 #'   PageId = "string"
 #' )
 #' ```
+#'
+#' @examples
+#' \dontrun{
+#' # The following describe-page example lists details of a page to a contact
+#' # channel. The page will include the subject and content provided.
+#' svc$describe_page(
+#'   PageId = "arn:aws:ssm-contacts:us-east-2:111122223333:page/akuam/ad0052bd..."
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -911,6 +1013,19 @@ ssmcontacts_describe_page <- function(PageId) {
 #' )
 #' ```
 #'
+#' @examples
+#' \dontrun{
+#' # The following get-contact example describes a contact.
+#' svc$get_contact(
+#'   ContactId = "arn:aws:ssm-contacts:us-east-2:111122223333:contact/akuam"
+#' )
+#' 
+#' # The following get-contact example describes an escalation plan.
+#' svc$get_contact(
+#'   ContactId = "arn:aws:ssm-contacts:us-east-2:111122223333:contact/example_escalation"
+#' )
+#' }
+#'
 #' @keywords internal
 #'
 #' @rdname ssmcontacts_get_contact
@@ -968,6 +1083,15 @@ ssmcontacts_get_contact <- function(ContactId) {
 #' )
 #' ```
 #'
+#' @examples
+#' \dontrun{
+#' # The following get-contact-channel example lists the details of a contact
+#' # channel.
+#' svc$get_contact_channel(
+#'   ContactChannelId = "arn:aws:ssm-contacts:us-east-2:111122223333:contact-c..."
+#' )
+#' }
+#'
 #' @keywords internal
 #'
 #' @rdname ssmcontacts_get_contact_channel
@@ -1019,6 +1143,15 @@ ssmcontacts_get_contact_channel <- function(ContactChannelId) {
 #'   ContactArn = "string"
 #' )
 #' ```
+#'
+#' @examples
+#' \dontrun{
+#' # The following get-contact-policy example lists the resource policies
+#' # associated with the specified contact.
+#' svc$get_contact_policy(
+#'   ContactArn = "arn:aws:ssm-contacts:us-east-1:111122223333:contact/akuam"
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -1251,6 +1384,15 @@ ssmcontacts_get_rotation_override <- function(RotationId, RotationOverrideId) {
 #' )
 #' ```
 #'
+#' @examples
+#' \dontrun{
+#' # The following list-contact-channels example lists the available contact
+#' # channels of the specified contact.
+#' svc$list_contact_channels(
+#'   ContactId = "arn:aws:ssm-contacts:us-east-2:111122223333:contact/akuam"
+#' )
+#' }
+#'
 #' @keywords internal
 #'
 #' @rdname ssmcontacts_list_contact_channels
@@ -1315,6 +1457,13 @@ ssmcontacts_list_contact_channels <- function(ContactId, NextToken = NULL, MaxRe
 #'   Type = "PERSONAL"|"ESCALATION"|"ONCALL_SCHEDULE"
 #' )
 #' ```
+#'
+#' @examples
+#' \dontrun{
+#' # The following list-contacts example lists the contacts and escalation
+#' # plans in your account.
+#' svc$list_contacts()
+#' }
 #'
 #' @keywords internal
 #'
@@ -1394,6 +1543,13 @@ ssmcontacts_list_contacts <- function(NextToken = NULL, MaxResults = NULL, Alias
 #' )
 #' ```
 #'
+#' @examples
+#' \dontrun{
+#' # The following list-engagements example lists engagements to escalation
+#' # plans and contacts. You can also list engagements for a single incident.
+#' svc$list_engagements()
+#' }
+#'
 #' @keywords internal
 #'
 #' @rdname ssmcontacts_list_engagements
@@ -1459,6 +1615,15 @@ ssmcontacts_list_engagements <- function(NextToken = NULL, MaxResults = NULL, In
 #'   MaxResults = 123
 #' )
 #' ```
+#'
+#' @examples
+#' \dontrun{
+#' # The following command-name example lists whether a page was received or
+#' # not by a contact.
+#' svc$list_page_receipts(
+#'   PageId = "arn:aws:ssm-contacts:us-east-2:111122223333:page/akuam/94ea0c7b..."
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -1596,6 +1761,15 @@ ssmcontacts_list_page_resolutions <- function(NextToken = NULL, PageId) {
 #' )
 #' ```
 #'
+#' @examples
+#' \dontrun{
+#' # The following list-pages-by-contact example lists all pages to the
+#' # specified contact.
+#' svc$list_pages_by_contact(
+#'   ContactId = "arn:aws:ssm-contacts:us-east-2:111122223333:contact/akuam"
+#' )
+#' }
+#'
 #' @keywords internal
 #'
 #' @rdname ssmcontacts_list_pages_by_contact
@@ -1670,6 +1844,15 @@ ssmcontacts_list_pages_by_contact <- function(ContactId, NextToken = NULL, MaxRe
 #'   MaxResults = 123
 #' )
 #' ```
+#'
+#' @examples
+#' \dontrun{
+#' # The following list-pages-by-engagement example lists the pages that
+#' # occurred while engaging the defined engagement plan.
+#' svc$list_pages_by_engagement(
+#'   EngagementId = "arn:aws:ssm-contacts:us-east-2:111122223333:engagement/ak..."
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -2169,6 +2352,15 @@ ssmcontacts_list_rotations <- function(RotationNamePrefix = NULL, NextToken = NU
 #' )
 #' ```
 #'
+#' @examples
+#' \dontrun{
+#' # The following list-tags-for-resource example lists the tags of the
+#' # specified contact.
+#' svc$list_tags_for_resource(
+#'   ResourceARN = "arn:aws:ssm-contacts:us-east-1:111122223333:contact/akuam"
+#' )
+#' }
+#'
 #' @keywords internal
 #'
 #' @rdname ssmcontacts_list_tags_for_resource
@@ -2219,6 +2411,17 @@ ssmcontacts_list_tags_for_resource <- function(ResourceARN) {
 #' )
 #' ```
 #'
+#' @examples
+#' \dontrun{
+#' # The following put-contact-policy example adds a resource policy to the
+#' # contact Akua that shares the contact and related engagements with the
+#' # principal.
+#' svc$put_contact_policy(
+#'   ContactArn = "arn:aws:ssm-contacts:us-east-1:111122223333:contact/akuam",
+#'   Policy = "\{\"Version\":\"2012-10-17\",\"Statement\":[\{\"Sid\":\"ExampleResourcePol..."
+#' )
+#' }
+#'
 #' @keywords internal
 #'
 #' @rdname ssmcontacts_put_contact_policy
@@ -2265,6 +2468,15 @@ ssmcontacts_put_contact_policy <- function(ContactArn, Policy) {
 #'   ContactChannelId = "string"
 #' )
 #' ```
+#'
+#' @examples
+#' \dontrun{
+#' # The following send-activation-code example sends an activation code and
+#' # message to the specified contact channel.
+#' svc$send_activation_code(
+#'   ContactChannelId = "arn:aws:ssm-contacts:us-east-1:111122223333:contact-c..."
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -2336,6 +2548,35 @@ ssmcontacts_send_activation_code <- function(ContactChannelId) {
 #' )
 #' ```
 #'
+#' @examples
+#' \dontrun{
+#' # The following start-engagement pages contact's contact channels. Sender,
+#' # subject, public-subject, and public-content are all free from fields.
+#' # Incident Manager sends the subject and content to the provided VOICE or
+#' # EMAIL contact channels. Incident Manager sends the public-subject and
+#' # public-content to the provided SMS contact channels. Sender is used to
+#' # track who started the engagement.
+#' svc$start_engagement(
+#'   ContactId = "arn:aws:ssm-contacts:us-east-2:111122223333:contact/akuam",
+#'   Content = "Testing engagements",
+#'   PublicContent = "Testing engagements",
+#'   PublicSubject = "test",
+#'   Sender = "tester",
+#'   Subject = "test"
+#' )
+#' 
+#' # The following start-engagement engages contact's through an escalation
+#' # plan. Each contact is paged according to their engagement plan.
+#' svc$start_engagement(
+#'   ContactId = "arn:aws:ssm-contacts:us-east-2:111122223333:contact/example_escalation",
+#'   Content = "Testing engagements",
+#'   PublicContent = "Testing engagements",
+#'   PublicSubject = "test",
+#'   Sender = "tester",
+#'   Subject = "test"
+#' )
+#' }
+#'
 #' @keywords internal
 #'
 #' @rdname ssmcontacts_start_engagement
@@ -2383,6 +2624,15 @@ ssmcontacts_start_engagement <- function(ContactId, Sender, Subject, Content, Pu
 #'   Reason = "string"
 #' )
 #' ```
+#'
+#' @examples
+#' \dontrun{
+#' # The following stop-engagement example stops an engagement from paging
+#' # further contacts and contact channels.
+#' svc$stop_engagement(
+#'   EngagementId = "arn:aws:ssm-contacts:us-east-2:111122223333:engagement/ex..."
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -2436,6 +2686,21 @@ ssmcontacts_stop_engagement <- function(EngagementId, Reason = NULL) {
 #' )
 #' ```
 #'
+#' @examples
+#' \dontrun{
+#' # The following tag-resource example tags a specified contact with the
+#' # provided tag key value pair.
+#' svc$tag_resource(
+#'   ResourceARN = "arn:aws:ssm-contacts:us-east-1:111122223333:contact/akuam",
+#'   Tags = list(
+#'     list(
+#'       Key = "group1",
+#'       Value = "1"
+#'     )
+#'   )
+#' )
+#' }
+#'
 #' @keywords internal
 #'
 #' @rdname ssmcontacts_tag_resource
@@ -2483,6 +2748,18 @@ ssmcontacts_tag_resource <- function(ResourceARN, Tags) {
 #'   )
 #' )
 #' ```
+#'
+#' @examples
+#' \dontrun{
+#' # The following untag-resource example removes the group1 tag from the
+#' # specified contact.
+#' svc$untag_resource(
+#'   ResourceARN = "arn:aws:ssm-contacts:us-east-1:111122223333:contact/akuam",
+#'   TagKeys = list(
+#'     "group1"
+#'   )
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -2556,6 +2833,53 @@ ssmcontacts_untag_resource <- function(ResourceARN, TagKeys) {
 #' )
 #' ```
 #'
+#' @examples
+#' \dontrun{
+#' # The following update-contact example updates the engagement plan of the
+#' # contact Akua to include the three types of contacts channels. This is
+#' # done after creating contact channels for Akua.
+#' svc$update_contact(
+#'   ContactId = "arn:aws:ssm-contacts:us-east-2:111122223333:contact/akuam",
+#'   Plan = list(
+#'     Stages = list(
+#'       list(
+#'         DurationInMinutes = 5L,
+#'         Targets = list(
+#'           list(
+#'             ChannelTargetInfo = list(
+#'               ContactChannelId = "arn:aws:ssm-contacts:us-east-2:1111222233...",
+#'               RetryIntervalInMinutes = 1L
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       list(
+#'         DurationInMinutes = 5L,
+#'         Targets = list(
+#'           list(
+#'             ChannelTargetInfo = list(
+#'               ContactChannelId = "arn:aws:ssm-contacts:us-east-2:1111222233...",
+#'               RetryIntervalInMinutes = 1L
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       list(
+#'         DurationInMinutes = 5L,
+#'         Targets = list(
+#'           list(
+#'             ChannelTargetInfo = list(
+#'               ContactChannelId = "arn:aws:ssm-contacts:us-east-2:1111222233...",
+#'               RetryIntervalInMinutes = 1L
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' }
+#'
 #' @keywords internal
 #'
 #' @rdname ssmcontacts_update_contact
@@ -2608,6 +2932,19 @@ ssmcontacts_update_contact <- function(ContactId, DisplayName = NULL, Plan = NUL
 #'   )
 #' )
 #' ```
+#'
+#' @examples
+#' \dontrun{
+#' # The following update-contact-channel example updates the name and
+#' # delivery address of a contact channel.
+#' svc$update_contact_channel(
+#'   ContactChannelId = "arn:aws:ssm-contacts:us-east-2:111122223333:contact-c...",
+#'   DeliveryAddress = list(
+#'     SimpleAddress = "+15005550198"
+#'   ),
+#'   Name = "akuas voice channel"
+#' )
+#' }
 #'
 #' @keywords internal
 #'

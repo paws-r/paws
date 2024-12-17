@@ -3,10 +3,16 @@
 #' @include securityhub_service.R
 NULL
 
-#' Accepts the invitation to be a member account and be monitored by the
-#' Security Hub administrator account that the invitation was sent from
+#' We recommend using Organizations instead of Security Hub invitations to
+#' manage your member accounts
 #'
 #' @description
+#' We recommend using Organizations instead of Security Hub invitations to
+#' manage your member accounts. For information, see [Managing Security Hub
+#' administrator and member accounts with
+#' Organizations](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-accounts-orgs.html)
+#' in the *Security Hub User Guide*.
+#' 
 #' Accepts the invitation to be a member account and be monitored by the
 #' Security Hub administrator account that the invitation was sent from.
 #' 
@@ -36,18 +42,6 @@ NULL
 #'   InvitationId = "string"
 #' )
 #' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example demonstrates how an account can accept an
-#' # invitation from the Security Hub administrator account to be a member
-#' # account. This operation is applicable only to member accounts that are
-#' # not added through AWS Organizations.
-#' svc$accept_administrator_invitation(
-#'   AdministratorId = "123456789012",
-#'   InvitationId = "7ab938c5d52d7904ad09f9e7c20cc4eb"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -181,17 +175,6 @@ securityhub_accept_invitation <- function(MasterId, InvitationId) {
 #' )
 #' ```
 #'
-#' @examples
-#' \dontrun{
-#' # The following example deletes the specified automation rules.
-#' svc$batch_delete_automation_rules(
-#'   AutomationRulesArns = list(
-#'     "arn:aws:securityhub:us-east-1:123456789012:automation-rule/a1b2c3d4-56...",
-#'     "arn:aws:securityhub:us-east-1:123456789012:automation-rule/a1b2c3d4-56..."
-#'   )
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname securityhub_batch_delete_automation_rules
@@ -260,16 +243,6 @@ securityhub_batch_delete_automation_rules <- function(AutomationRulesArns) {
 #'   )
 #' )
 #' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example disables a security standard in Security Hub.
-#' svc$batch_disable_standards(
-#'   StandardsSubscriptionArns = list(
-#'     "arn:aws:securityhub:us-west-1:123456789012:subscription/pci-dss/v/3.2.1"
-#'   )
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -344,20 +317,6 @@ securityhub_batch_disable_standards <- function(StandardsSubscriptionArns) {
 #'   )
 #' )
 #' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example enables the security standard specified by the
-#' # StandardArn. You can use this operation to enable one or more Security
-#' # Hub standards.
-#' svc$batch_enable_standards(
-#'   StandardsSubscriptionRequests = list(
-#'     list(
-#'       StandardsArn = "arn:aws:securityhub:us-west-1::standards/pci-dss/v/3.2.1"
-#'     )
-#'   )
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -728,17 +687,6 @@ securityhub_batch_enable_standards <- function(StandardsSubscriptionRequests) {
 #' )
 #' ```
 #'
-#' @examples
-#' \dontrun{
-#' # The following example updates the specified automation rules.
-#' svc$batch_get_automation_rules(
-#'   AutomationRulesArns = list(
-#'     "arn:aws:securityhub:us-east-1:123456789012:automation-rule/a1b2c3d4-56...",
-#'     "arn:aws:securityhub:us-east-1:123456789012:automation-rule/a1b2c3d4-56..."
-#'   )
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname securityhub_batch_get_automation_rules
@@ -827,26 +775,6 @@ securityhub_batch_get_automation_rules <- function(AutomationRulesArns) {
 #'   )
 #' )
 #' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This operation provides details about configuration associations for a
-#' # batch of target accounts, organizational units, or the root.
-#' svc$batch_get_configuration_policy_associations(
-#'   ConfigurationPolicyAssociationIdentifiers = list(
-#'     list(
-#'       Target = list(
-#'         AccountId = "111122223333"
-#'       )
-#'     ),
-#'     list(
-#'       Target = list(
-#'         RootId = "r-f6g7h8i9j0example"
-#'       )
-#'     )
-#'   )
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -943,18 +871,6 @@ securityhub_batch_get_configuration_policy_associations <- function(Configuratio
 #' )
 #' ```
 #'
-#' @examples
-#' \dontrun{
-#' # The following example gets details for the specified controls in the
-#' # current AWS account and AWS Region.
-#' svc$batch_get_security_controls(
-#'   SecurityControlIds = list(
-#'     "ACM.1",
-#'     "APIGateway.1"
-#'   )
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname securityhub_batch_get_security_controls
@@ -1044,24 +960,6 @@ securityhub_batch_get_security_controls <- function(SecurityControlIds) {
 #'   )
 #' )
 #' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example retrieves the enablement status of the specified
-#' # controls in the specified standards.
-#' svc$batch_get_standards_control_associations(
-#'   StandardsControlAssociationIds = list(
-#'     list(
-#'       SecurityControlId = "CloudTrail.1",
-#'       StandardsArn = "arn:aws:securityhub:::ruleset/cis-aws-foundations-benchmark/v/1.2.0"
-#'     ),
-#'     list(
-#'       SecurityControlId = "CloudWatch.12",
-#'       StandardsArn = "arn:aws:securityhub:::ruleset/cis-aws-foundations-benchmark/v/1.2.0"
-#'     )
-#'   )
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -5655,49 +5553,102 @@ securityhub_batch_get_standards_control_associations <- function(StandardsContro
 #'         )
 #'       ),
 #'       ProcessedAt = "string",
-#'       AwsAccountName = "string"
+#'       AwsAccountName = "string",
+#'       Detection = list(
+#'         Sequence = list(
+#'           Uid = "string",
+#'           Actors = list(
+#'             list(
+#'               Id = "string",
+#'               User = list(
+#'                 Name = "string",
+#'                 Uid = "string",
+#'                 Type = "string",
+#'                 CredentialUid = "string",
+#'                 Account = list(
+#'                   Uid = "string",
+#'                   Name = "string"
+#'                 )
+#'               ),
+#'               Session = list(
+#'                 Uid = "string",
+#'                 MfaStatus = "ENABLED"|"DISABLED",
+#'                 CreatedTime = 123,
+#'                 Issuer = "string"
+#'               )
+#'             )
+#'           ),
+#'           Endpoints = list(
+#'             list(
+#'               Id = "string",
+#'               Ip = "string",
+#'               Domain = "string",
+#'               Port = 123,
+#'               Location = list(
+#'                 City = "string",
+#'                 Country = "string",
+#'                 Lat = 123.0,
+#'                 Lon = 123.0
+#'               ),
+#'               AutonomousSystem = list(
+#'                 Name = "string",
+#'                 Number = 123
+#'               ),
+#'               Connection = list(
+#'                 Direction = "INBOUND"|"OUTBOUND"
+#'               )
+#'             )
+#'           ),
+#'           Signals = list(
+#'             list(
+#'               Type = "string",
+#'               Id = "string",
+#'               Title = "string",
+#'               ProductArn = "string",
+#'               ResourceIds = list(
+#'                 "string"
+#'               ),
+#'               SignalIndicators = list(
+#'                 list(
+#'                   Key = "string",
+#'                   Values = list(
+#'                     "string"
+#'                   ),
+#'                   Title = "string",
+#'                   Type = "string"
+#'                 )
+#'               ),
+#'               Name = "string",
+#'               CreatedAt = 123,
+#'               UpdatedAt = 123,
+#'               FirstSeenAt = 123,
+#'               LastSeenAt = 123,
+#'               Severity = 123.0,
+#'               Count = 123,
+#'               ActorIds = list(
+#'                 "string"
+#'               ),
+#'               EndpointIds = list(
+#'                 "string"
+#'               )
+#'             )
+#'           ),
+#'           SequenceIndicators = list(
+#'             list(
+#'               Key = "string",
+#'               Values = list(
+#'                 "string"
+#'               ),
+#'               Title = "string",
+#'               Type = "string"
+#'             )
+#'           )
+#'         )
+#'       )
 #'     )
 #'   )
 #' )
 #' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example imports findings from a third party provider to
-#' # Security Hub.
-#' svc$batch_import_findings(
-#'   Findings = list(
-#'     list(
-#'       AwsAccountId = "123456789012",
-#'       CreatedAt = "2020-05-27T17:05:54.832Z",
-#'       Description = "Vulnerability in a CloudTrail trail",
-#'       FindingProviderFields = list(
-#'         Severity = list(
-#'           Label = "LOW",
-#'           Original = "10"
-#'         ),
-#'         Types = list(
-#'           "Software and Configuration Checks/Vulnerabilities/CVE"
-#'         )
-#'       ),
-#'       GeneratorId = "TestGeneratorId",
-#'       Id = "Id1",
-#'       ProductArn = "arn:aws:securityhub:us-west-1:123456789012:product/123456789012/default",
-#'       Resources = list(
-#'         list(
-#'           Id = "arn:aws:cloudtrail:us-west-1:123456789012:trail/TrailName",
-#'           Partition = "aws",
-#'           Region = "us-west-1",
-#'           Type = "AwsCloudTrailTrail"
-#'         )
-#'       ),
-#'       SchemaVersion = "2018-10-08",
-#'       Title = "CloudTrail trail vulnerability",
-#'       UpdatedAt = "2020-06-02T16:05:54.832Z"
-#'     )
-#'   )
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -6063,24 +6014,6 @@ securityhub_batch_import_findings <- function(Findings) {
 #' )
 #' ```
 #'
-#' @examples
-#' \dontrun{
-#' # The following example updates the specified automation rules.
-#' svc$batch_update_automation_rules(
-#'   UpdateAutomationRulesRequestItems = list(
-#'     list(
-#'       RuleArn = "arn:aws:securityhub:us-east-1:123456789012:automation-rule...",
-#'       RuleOrder = 15L,
-#'       RuleStatus = "ENABLED"
-#'     ),
-#'     list(
-#'       RuleArn = "arn:aws:securityhub:us-east-1:123456789012:automation-rule...",
-#'       RuleStatus = "DISABLED"
-#'     )
-#'   )
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname securityhub_batch_update_automation_rules
@@ -6116,7 +6049,7 @@ securityhub_batch_update_automation_rules <- function(UpdateAutomationRulesReque
 #' for their account.
 #' 
 #' Updates from
-#' [`batch_update_findings`][securityhub_batch_update_findings] do not
+#' [`batch_update_findings`][securityhub_batch_update_findings] don't
 #' affect the value of `UpdatedAt` for a finding.
 #' 
 #' Administrator and member accounts can use
@@ -6269,50 +6202,6 @@ securityhub_batch_update_automation_rules <- function(UpdateAutomationRulesReque
 #' )
 #' ```
 #'
-#' @examples
-#' \dontrun{
-#' # The following example updates Security Hub findings. The finding
-#' # identifier parameter specifies which findings to update. Only specific
-#' # finding fields can be updated with this operation.
-#' svc$batch_update_findings(
-#'   Confidence = 80L,
-#'   Criticality = 80L,
-#'   FindingIdentifiers = list(
-#'     list(
-#'       Id = "arn:aws:securityhub:us-west-1:123456789012:subscription/pci-dss...",
-#'       ProductArn = "arn:aws:securityhub:us-west-1::product/aws/securityhub"
-#'     ),
-#'     list(
-#'       Id = "arn:aws:securityhub:us-west-1:123456789012:subscription/pci-dss...",
-#'       ProductArn = "arn:aws:securityhub:us-west-1::product/aws/securityhub"
-#'     )
-#'   ),
-#'   Note = list(
-#'     Text = "Known issue that is not a risk.",
-#'     UpdatedBy = "user1"
-#'   ),
-#'   RelatedFindings = list(
-#'     list(
-#'       Id = "arn:aws:securityhub:us-west-1:123456789012:subscription/pci-dss...",
-#'       ProductArn = "arn:aws:securityhub:us-west-1::product/aws/securityhub"
-#'     )
-#'   ),
-#'   Severity = list(
-#'     Label = "LOW"
-#'   ),
-#'   Types = list(
-#'     "Software and Configuration Checks/Vulnerabilities/CVE"
-#'   ),
-#'   UserDefinedFields = list(
-#'     reviewedByCio = "true"
-#'   ),
-#'   VerificationState = "TRUE_POSITIVE",
-#'   Workflow = list(
-#'     Status = "RESOLVED"
-#'   )
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname securityhub_batch_update_findings
@@ -6384,29 +6273,6 @@ securityhub_batch_update_findings <- function(FindingIdentifiers, Note = NULL, S
 #' )
 #' ```
 #'
-#' @examples
-#' \dontrun{
-#' # The following example disables CloudWatch.12 in CIS AWS Foundations
-#' # Benchmark v1.2.0. The example returns an error for CloudTrail.1 because
-#' # an invalid standard ARN is provided.
-#' svc$batch_update_standards_control_associations(
-#'   StandardsControlAssociationUpdates = list(
-#'     list(
-#'       AssociationStatus = "DISABLED",
-#'       SecurityControlId = "CloudTrail.1",
-#'       StandardsArn = "arn:aws:securityhub:::ruleset/sample-standard/v/1.1.0",
-#'       UpdatedReason = "Not relevant to environment"
-#'     ),
-#'     list(
-#'       AssociationStatus = "DISABLED",
-#'       SecurityControlId = "CloudWatch.12",
-#'       StandardsArn = "arn:aws:securityhub:::ruleset/cis-aws-foundations-benchmark/v/1.2.0",
-#'       UpdatedReason = "Not relevant to environment"
-#'     )
-#'   )
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname securityhub_batch_update_standards_control_associations
@@ -6463,18 +6329,6 @@ securityhub_batch_update_standards_control_associations <- function(StandardsCon
 #'   Id = "string"
 #' )
 #' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example creates a custom action target in Security Hub.
-#' # Custom actions on findings and insights automatically trigger actions in
-#' # Amazon CloudWatch Events.
-#' svc$create_action_target(
-#'   Description = "Action to send the finding for remediation tracking",
-#'   Id = "Remediation",
-#'   Name = "Send to remediation"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -6849,67 +6703,6 @@ securityhub_create_action_target <- function(Name, Description, Id) {
 #' )
 #' ```
 #'
-#' @examples
-#' \dontrun{
-#' # The following example creates an automation rule.
-#' svc$create_automation_rule(
-#'   Actions = list(
-#'     list(
-#'       FindingFieldsUpdate = list(
-#'         Note = list(
-#'           Text = "This is a critical S3 bucket, please look into this ASAP",
-#'           UpdatedBy = "test-user"
-#'         ),
-#'         Severity = list(
-#'           Label = "CRITICAL"
-#'         )
-#'       ),
-#'       Type = "FINDING_FIELDS_UPDATE"
-#'     )
-#'   ),
-#'   Criteria = list(
-#'     ComplianceStatus = list(
-#'       list(
-#'         Comparison = "EQUALS",
-#'         Value = "FAILED"
-#'       )
-#'     ),
-#'     ProductName = list(
-#'       list(
-#'         Comparison = "EQUALS",
-#'         Value = "Security Hub"
-#'       )
-#'     ),
-#'     RecordState = list(
-#'       list(
-#'         Comparison = "EQUALS",
-#'         Value = "ACTIVE"
-#'       )
-#'     ),
-#'     ResourceId = list(
-#'       list(
-#'         Comparison = "EQUALS",
-#'         Value = "arn:aws:s3:::examplebucket/developers/design_info.doc"
-#'       )
-#'     ),
-#'     WorkflowStatus = list(
-#'       list(
-#'         Comparison = "EQUALS",
-#'         Value = "NEW"
-#'       )
-#'     )
-#'   ),
-#'   Description = "Elevate finding severity to Critical for important resources",
-#'   IsTerminal = FALSE,
-#'   RuleName = "Elevate severity for important resources",
-#'   RuleOrder = 1L,
-#'   RuleStatus = "ENABLED",
-#'   Tags = list(
-#'     `important-resources-rule` = "s3-bucket"
-#'   )
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname securityhub_create_automation_rule
@@ -7074,42 +6867,6 @@ securityhub_create_automation_rule <- function(Tags = NULL, RuleStatus = NULL, R
 #' )
 #' ```
 #'
-#' @examples
-#' \dontrun{
-#' # This operation creates a configuration policy in Security Hub.
-#' svc$create_configuration_policy(
-#'   ConfigurationPolicy = list(
-#'     SecurityHub = list(
-#'       EnabledStandardIdentifiers = list(
-#'         "arn:aws:securityhub:us-east-1::standards/aws-foundational-security...",
-#'         "arn:aws:securityhub:::ruleset/cis-aws-foundations-benchmark/v/1.2.0"
-#'       ),
-#'       SecurityControlsConfiguration = list(
-#'         DisabledSecurityControlIdentifiers = list(
-#'           "CloudWatch.1"
-#'         ),
-#'         SecurityControlCustomParameters = list(
-#'           list(
-#'             Parameters = list(
-#'               daysToExpiration = list(
-#'                 Value = list(
-#'                   Integer = 14L
-#'                 ),
-#'                 ValueType = "CUSTOM"
-#'               )
-#'             ),
-#'             SecurityControlId = "ACM.1"
-#'           )
-#'         )
-#'       ),
-#'       ServiceEnabled = TRUE
-#'     )
-#'   ),
-#'   Description = "Configuration policy for testing FSBP and CIS",
-#'   Name = "TestConfigurationPolicy"
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname securityhub_create_configuration_policy
@@ -7134,15 +6891,17 @@ securityhub_create_configuration_policy <- function(Name, Description = NULL, Co
 }
 .securityhub$operations$create_configuration_policy <- securityhub_create_configuration_policy
 
-#' Used to enable finding aggregation
+#' The aggregation Region is now called the home Region
 #'
 #' @description
-#' Used to enable finding aggregation. Must be called from the aggregation
-#' Region.
+#' The *aggregation Region* is now called the *home Region*.
 #' 
-#' For more details about cross-Region replication, see [Configuring
-#' finding
-#' aggregation](https://docs.aws.amazon.com/securityhub/latest/userguide/finding-aggregation.html)
+#' Used to enable cross-Region aggregation. This operation can be invoked
+#' from the home Region only.
+#' 
+#' For information about how cross-Region aggregation works, see
+#' [Understanding cross-Region aggregation in Security
+#' Hub](https://docs.aws.amazon.com/securityhub/latest/userguide/finding-aggregation.html)
 #' in the *Security Hub User Guide*.
 #'
 #' @usage
@@ -7176,12 +6935,12 @@ securityhub_create_configuration_policy <- function(Name, Description = NULL, Co
 #' -   `NO_REGIONS` - Aggregates no data because no Regions are selected as
 #'     linked Regions.
 #' @param Regions If `RegionLinkingMode` is `ALL_REGIONS_EXCEPT_SPECIFIED`, then this is a
-#' space-separated list of Regions that do not aggregate findings to the
-#' aggregation Region.
+#' space-separated list of Regions that don't replicate and send findings
+#' to the home Region.
 #' 
 #' If `RegionLinkingMode` is `SPECIFIED_REGIONS`, then this is a
-#' space-separated list of Regions that do aggregate findings to the
-#' aggregation Region.
+#' space-separated list of Regions that do replicate and send findings to
+#' the home Region.
 #' 
 #' An `InvalidInputException` error results if you populate this field
 #' while `RegionLinkingMode` is `NO_REGIONS`.
@@ -7208,19 +6967,6 @@ securityhub_create_configuration_policy <- function(Name, Description = NULL, Co
 #'   )
 #' )
 #' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example creates a finding aggregator. This is required to
-#' # enable cross-Region aggregation.
-#' svc$create_finding_aggregator(
-#'   RegionLinkingMode = "SPECIFIED_REGIONS",
-#'   Regions = list(
-#'     "us-west-1",
-#'     "us-west-2"
-#'   )
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -7980,30 +7726,6 @@ securityhub_create_finding_aggregator <- function(RegionLinkingMode, Regions = N
 #' )
 #' ```
 #'
-#' @examples
-#' \dontrun{
-#' # The following example creates a custom insight in Security Hub. An
-#' # insight is a collection of findings that relate to a security issue.
-#' svc$create_insight(
-#'   Filters = list(
-#'     ResourceType = list(
-#'       list(
-#'         Comparison = "EQUALS",
-#'         Value = "AwsIamRole"
-#'       )
-#'     ),
-#'     SeverityLabel = list(
-#'       list(
-#'         Comparison = "EQUALS",
-#'         Value = "CRITICAL"
-#'       )
-#'     )
-#'   ),
-#'   GroupByAttribute = "ResourceId",
-#'   Name = "Critical role findings"
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname securityhub_create_insight
@@ -8062,7 +7784,7 @@ securityhub_create_insight <- function(Name, Filters, GroupByAttribute) {
 #' owner accepts the invitation, the account becomes a member account in
 #' Security Hub.
 #' 
-#' Accounts that are managed using Organizations do not receive an
+#' Accounts that are managed using Organizations don't receive an
 #' invitation. They automatically become a member account in Security Hub.
 #' 
 #' -   If the organization account does not have Security Hub enabled, then
@@ -8116,24 +7838,6 @@ securityhub_create_insight <- function(Name, Filters, GroupByAttribute) {
 #' )
 #' ```
 #'
-#' @examples
-#' \dontrun{
-#' # The following example creates a member association between the specified
-#' # accounts and the administrator account (the account that makes the
-#' # request). This operation is used to add accounts that aren't part of an
-#' # organization.
-#' svc$create_members(
-#'   AccountDetails = list(
-#'     list(
-#'       AccountId = "123456789012"
-#'     ),
-#'     list(
-#'       AccountId = "111122223333"
-#'     )
-#'   )
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname securityhub_create_members
@@ -8158,16 +7862,24 @@ securityhub_create_members <- function(AccountDetails) {
 }
 .securityhub$operations$create_members <- securityhub_create_members
 
-#' Declines invitations to become a member account
+#' We recommend using Organizations instead of Security Hub invitations to
+#' manage your member accounts
 #'
 #' @description
-#' Declines invitations to become a member account.
+#' We recommend using Organizations instead of Security Hub invitations to
+#' manage your member accounts. For information, see [Managing Security Hub
+#' administrator and member accounts with
+#' Organizations](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-accounts-orgs.html)
+#' in the *Security Hub User Guide*.
+#' 
+#' Declines invitations to become a Security Hub member account.
 #' 
 #' A prospective member account uses this operation to decline an
 #' invitation to become a member.
 #' 
-#' This operation is only called by member accounts that aren't part of an
-#' organization. Organization accounts don't receive invitations.
+#' Only member accounts that aren't part of an Amazon Web Services
+#' organization should use this operation. Organization accounts don't
+#' receive invitations.
 #'
 #' @usage
 #' securityhub_decline_invitations(AccountIds)
@@ -8196,19 +7908,6 @@ securityhub_create_members <- function(AccountDetails) {
 #'   )
 #' )
 #' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example declines an invitation from the Security Hub
-#' # administrator account to become a member account. The invited account
-#' # makes the request.
-#' svc$decline_invitations(
-#'   AccountIds = list(
-#'     "123456789012",
-#'     "111122223333"
-#'   )
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -8263,17 +7962,6 @@ securityhub_decline_invitations <- function(AccountIds) {
 #' )
 #' ```
 #'
-#' @examples
-#' \dontrun{
-#' # The following example deletes a custom action target that triggers
-#' # target actions in Amazon CloudWatch Events. Deleting a custom action
-#' # target doesn't affect findings or insights that were already sent to
-#' # CloudWatch Events based on the custom action.
-#' svc$delete_action_target(
-#'   ActionTargetArn = "arn:aws:securityhub:us-west-1:123456789012:action/custom/Remediation"
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname securityhub_delete_action_target
@@ -8324,14 +8012,6 @@ securityhub_delete_action_target <- function(ActionTargetArn) {
 #' )
 #' ```
 #'
-#' @examples
-#' \dontrun{
-#' # This operation deletes the specified configuration policy.
-#' svc$delete_configuration_policy(
-#'   Identifier = "arn:aws:securityhub:us-east-1:123456789012:configuration-po..."
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname securityhub_delete_configuration_policy
@@ -8356,15 +8036,19 @@ securityhub_delete_configuration_policy <- function(Identifier) {
 }
 .securityhub$operations$delete_configuration_policy <- securityhub_delete_configuration_policy
 
-#' Deletes a finding aggregator
+#' The aggregation Region is now called the home Region
 #'
 #' @description
-#' Deletes a finding aggregator. When you delete the finding aggregator,
-#' you stop finding aggregation.
+#' The *aggregation Region* is now called the *home Region*.
 #' 
-#' When you stop finding aggregation, findings that were already aggregated
-#' to the aggregation Region are still visible from the aggregation Region.
-#' New findings and finding updates are not aggregated.
+#' Deletes a finding aggregator. When you delete the finding aggregator,
+#' you stop cross-Region aggregation. Finding replication stops occurring
+#' from the linked Regions to the home Region.
+#' 
+#' When you stop cross-Region aggregation, findings that were already
+#' replicated and sent to the home Region are still visible from the home
+#' Region. However, new findings and finding updates are no longer
+#' replicated and sent to the home Region.
 #'
 #' @usage
 #' securityhub_delete_finding_aggregator(FindingAggregatorArn)
@@ -8381,16 +8065,6 @@ securityhub_delete_configuration_policy <- function(Identifier) {
 #'   FindingAggregatorArn = "string"
 #' )
 #' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example deletes a finding aggregator in Security Hub.
-#' # Deleting the finding aggregator stops cross-Region aggregation. This
-#' # operation produces no output.
-#' svc$delete_finding_aggregator(
-#'   FindingAggregatorArn = "arn:aws:securityhub:us-east-1:123456789012:findin..."
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -8441,14 +8115,6 @@ securityhub_delete_finding_aggregator <- function(FindingAggregatorArn) {
 #' )
 #' ```
 #'
-#' @examples
-#' \dontrun{
-#' # The following example deletes a custom insight in Security Hub.
-#' svc$delete_insight(
-#'   InsightArn = "arn:aws:securityhub:us-west-1:123456789012:insight/12345678..."
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname securityhub_delete_insight
@@ -8473,19 +8139,24 @@ securityhub_delete_insight <- function(InsightArn) {
 }
 .securityhub$operations$delete_insight <- securityhub_delete_insight
 
-#' Deletes invitations received by the Amazon Web Services account to
-#' become a member account
+#' We recommend using Organizations instead of Security Hub invitations to
+#' manage your member accounts
 #'
 #' @description
-#' Deletes invitations received by the Amazon Web Services account to
-#' become a member account.
+#' We recommend using Organizations instead of Security Hub invitations to
+#' manage your member accounts. For information, see [Managing Security Hub
+#' administrator and member accounts with
+#' Organizations](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-accounts-orgs.html)
+#' in the *Security Hub User Guide*.
+#' 
+#' Deletes invitations to become a Security Hub member account.
 #' 
 #' A Security Hub administrator account can use this operation to delete
-#' invitations sent to one or more member accounts.
+#' invitations sent to one or more prospective member accounts.
 #' 
 #' This operation is only used to delete invitations that are sent to
-#' member accounts that aren't part of an organization. Organization
-#' accounts don't receive invitations.
+#' prospective member accounts that aren't part of an Amazon Web Services
+#' organization. Organization accounts don't receive invitations.
 #'
 #' @usage
 #' securityhub_delete_invitations(AccountIds)
@@ -8514,19 +8185,6 @@ securityhub_delete_insight <- function(InsightArn) {
 #'   )
 #' )
 #' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example deletes an invitation sent by the Security Hub
-#' # administrator account to a prospective member account. This operation is
-#' # used only for invitations sent to accounts that aren't part of an
-#' # organization. Organization accounts don't receive invitations.
-#' svc$delete_invitations(
-#'   AccountIds = list(
-#'     "123456789012"
-#'   )
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -8587,19 +8245,6 @@ securityhub_delete_invitations <- function(AccountIds) {
 #'   )
 #' )
 #' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example deletes the specified member account from Security
-#' # Hub. This operation can be used to delete member accounts that are part
-#' # of an organization or that were invited manually.
-#' svc$delete_members(
-#'   AccountIds = list(
-#'     "123456789111",
-#'     "123456789222"
-#'   )
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -8673,18 +8318,6 @@ securityhub_delete_members <- function(AccountIds) {
 #' )
 #' ```
 #'
-#' @examples
-#' \dontrun{
-#' # The following example returns a list of custom action targets. You use
-#' # custom actions on findings and insights in Security Hub to trigger
-#' # target actions in Amazon CloudWatch Events.
-#' svc$describe_action_targets(
-#'   ActionTargetArns = list(
-#'     "arn:aws:securityhub:us-west-1:123456789012:action/custom/Remediation"
-#'   )
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname securityhub_describe_action_targets
@@ -8738,16 +8371,6 @@ securityhub_describe_action_targets <- function(ActionTargetArns = NULL, NextTok
 #'   HubArn = "string"
 #' )
 #' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example returns details about the Hub resource in the
-#' # calling account. The Hub resource represents the implementation of  the
-#' # AWS Security Hub service in the calling account.
-#' svc$describe_hub(
-#'   HubArn = "arn:aws:securityhub:us-west-1:123456789012:hub/default"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -8806,14 +8429,6 @@ securityhub_describe_hub <- function(HubArn = NULL) {
 #' svc$describe_organization_configuration()
 #' ```
 #'
-#' @examples
-#' \dontrun{
-#' # This operation provides information about the way your organization is
-#' # configured in Security Hub. Only a Security Hub administrator account
-#' # can invoke this operation.
-#' svc$describe_organization_configuration()
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname securityhub_describe_organization_configuration
@@ -8846,8 +8461,8 @@ securityhub_describe_organization_configuration <- function() {
 #' You can optionally provide an integration ARN. If you provide an
 #' integration ARN, then the results only include that integration.
 #' 
-#' If you do not provide an integration ARN, then the results include all
-#' of the available product integrations.
+#' If you don't provide an integration ARN, then the results include all of
+#' the available product integrations.
 #'
 #' @usage
 #' securityhub_describe_products(NextToken, MaxResults, ProductArn)
@@ -8895,17 +8510,6 @@ securityhub_describe_organization_configuration <- function() {
 #'   ProductArn = "string"
 #' )
 #' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example returns details about AWS services and third-party
-#' # products that Security Hub integrates with.
-#' svc$describe_products(
-#'   MaxResults = 1L,
-#'   NextToken = "NULL",
-#'   ProductArn = "arn:aws:securityhub:us-east-1:517716713836:product/crowdstr..."
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -8978,13 +8582,6 @@ securityhub_describe_products <- function(NextToken = NULL, MaxResults = NULL, P
 #'   MaxResults = 123
 #' )
 #' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example returns a list of available security standards in
-#' # Security Hub.
-#' svc$describe_standards()
-#' }
 #'
 #' @keywords internal
 #'
@@ -9070,18 +8667,6 @@ securityhub_describe_standards <- function(NextToken = NULL, MaxResults = NULL) 
 #' )
 #' ```
 #'
-#' @examples
-#' \dontrun{
-#' # The following example returns a list of security controls and control
-#' # details that apply to a specified security standard. The list includes
-#' # controls that are enabled and disabled in the standard.
-#' svc$describe_standards_controls(
-#'   MaxResults = 2L,
-#'   NextToken = "NULL",
-#'   StandardsSubscriptionArn = "arn:aws:securityhub:us-west-1:123456789012:su..."
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname securityhub_describe_standards_controls
@@ -9128,16 +8713,6 @@ securityhub_describe_standards_controls <- function(StandardsSubscriptionArn, Ne
 #' )
 #' ```
 #'
-#' @examples
-#' \dontrun{
-#' # The following example ends an integration between Security Hub and the
-#' # specified product that sends findings to Security Hub. After the
-#' # integration ends, the product no longer sends findings to Security  Hub.
-#' svc$disable_import_findings_for_product(
-#'   ProductSubscriptionArn = "arn:aws:securityhub:us-east-1:517716713836:prod..."
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname securityhub_disable_import_findings_for_product
@@ -9183,16 +8758,6 @@ securityhub_disable_import_findings_for_product <- function(ProductSubscriptionA
 #'   AdminAccountId = "string"
 #' )
 #' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example removes the Security Hub administrator account in
-#' # the Region from which the operation was executed. This operation doesn't
-#' # remove the delegated administrator account in AWS Organizations.
-#' svc$disable_organization_admin_account(
-#'   AdminAccountId = "123456789012"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -9250,13 +8815,6 @@ securityhub_disable_organization_admin_account <- function(AdminAccountId) {
 #' svc$disable_security_hub()
 #' ```
 #'
-#' @examples
-#' \dontrun{
-#' # The following example deactivates Security Hub for the current account
-#' # and Region.
-#' svc$disable_security_hub()
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname securityhub_disable_security_hub
@@ -9304,13 +8862,6 @@ securityhub_disable_security_hub <- function() {
 #' ```
 #' svc$disassociate_from_administrator_account()
 #' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example dissociates the requesting account from its
-#' # associated administrator account.
-#' svc$disassociate_from_administrator_account()
-#' }
 #'
 #' @keywords internal
 #'
@@ -9427,18 +8978,6 @@ securityhub_disassociate_from_master_account <- function() {
 #' )
 #' ```
 #'
-#' @examples
-#' \dontrun{
-#' # The following example dissociates the specified member accounts from the
-#' # associated administrator account.
-#' svc$disassociate_members(
-#'   AccountIds = list(
-#'     "123456789012",
-#'     "111122223333"
-#'   )
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname securityhub_disassociate_members
@@ -9492,15 +9031,6 @@ securityhub_disassociate_members <- function(AccountIds) {
 #' )
 #' ```
 #'
-#' @examples
-#' \dontrun{
-#' # The following example activates an integration between Security Hub and
-#' # a third party partner product that sends findings to Security Hub.
-#' svc$enable_import_findings_for_product(
-#'   ProductArn = "arn:aws:securityhub:us-east-1:517716713836:product/crowdstr..."
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname securityhub_enable_import_findings_for_product
@@ -9546,16 +9076,6 @@ securityhub_enable_import_findings_for_product <- function(ProductArn) {
 #'   AdminAccountId = "string"
 #' )
 #' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example designates the specified account as the Security
-#' # Hub administrator account. The requesting account must be the
-#' # organization management account.
-#' svc$enable_organization_admin_account(
-#'   AdminAccountId = "123456789012"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -9623,7 +9143,7 @@ securityhub_enable_organization_admin_account <- function(AdminAccountId) {
 #'
 #' @param Tags The tags to add to the hub resource when you enable Security Hub.
 #' @param EnableDefaultStandards Whether to enable the security standards that Security Hub has
-#' designated as automatically enabled. If you do not provide a value for
+#' designated as automatically enabled. If you don't provide a value for
 #' `EnableDefaultStandards`, it is set to `true`. To not enable the
 #' automatically enabled standards, set `EnableDefaultStandards` to
 #' `false`.
@@ -9655,22 +9175,6 @@ securityhub_enable_organization_admin_account <- function(AdminAccountId) {
 #'   ControlFindingGenerator = "STANDARD_CONTROL"|"SECURITY_CONTROL"
 #' )
 #' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example activates the Security Hub service in the
-#' # requesting AWS account. The service is activated in the current AWS
-#' # Region or the Region that you specify in the request. Some standards are
-#' # automatically turned on in your account unless you opt out. To determine
-#' # which standards are automatically turned on, see the Security Hub
-#' # documentation.
-#' svc$enable_security_hub(
-#'   EnableDefaultStandards = TRUE,
-#'   Tags = list(
-#'     Department = "Security"
-#'   )
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -9730,13 +9234,6 @@ securityhub_enable_security_hub <- function(Tags = NULL, EnableDefaultStandards 
 #' ```
 #' svc$get_administrator_account()
 #' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example provides details about the Security Hub
-#' # administrator account for the requesting member account.
-#' svc$get_administrator_account()
-#' }
 #'
 #' @keywords internal
 #'
@@ -9840,15 +9337,6 @@ securityhub_get_administrator_account <- function() {
 #' )
 #' ```
 #'
-#' @examples
-#' \dontrun{
-#' # This operation provides details about the specified configuration
-#' # policy.
-#' svc$get_configuration_policy(
-#'   Identifier = "arn:aws:securityhub:us-east-1:123456789012:configuration-po..."
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname securityhub_get_configuration_policy
@@ -9914,17 +9402,6 @@ securityhub_get_configuration_policy <- function(Identifier) {
 #'   )
 #' )
 #' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This operation provides details about configuration associations for a
-#' # specific target account, organizational unit, or the root.
-#' svc$get_configuration_policy_association(
-#'   Target = list(
-#'     AccountId = "111122223333"
-#'   )
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -10002,17 +9479,6 @@ securityhub_get_configuration_policy_association <- function(Target) {
 #' )
 #' ```
 #'
-#' @examples
-#' \dontrun{
-#' # The following example returns a list of Security Hub standards that are
-#' # currently enabled in your account.
-#' svc$get_enabled_standards(
-#'   StandardsSubscriptionArns = list(
-#'     "arn:aws:securityhub:us-west-1:123456789012:subscription/pci-dss/v/3.2.1"
-#'   )
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname securityhub_get_enabled_standards
@@ -10024,7 +9490,7 @@ securityhub_get_enabled_standards <- function(StandardsSubscriptionArns = NULL, 
     http_method = "POST",
     http_path = "/standards/get",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "StandardsSubscriptions"),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "StandardsSubscriptions"),
     stream_api = FALSE
   )
   input <- .securityhub$get_enabled_standards_input(StandardsSubscriptionArns = StandardsSubscriptionArns, NextToken = NextToken, MaxResults = MaxResults)
@@ -10037,10 +9503,14 @@ securityhub_get_enabled_standards <- function(StandardsSubscriptionArns = NULL, 
 }
 .securityhub$operations$get_enabled_standards <- securityhub_get_enabled_standards
 
-#' Returns the current finding aggregation configuration
+#' The aggregation Region is now called the home Region
 #'
 #' @description
-#' Returns the current finding aggregation configuration.
+#' The *aggregation Region* is now called the *home Region*.
+#' 
+#' Returns the current configuration in the calling account for
+#' cross-Region aggregation. A finding aggregator is a resource that
+#' establishes the home Region and any linked Regions.
 #'
 #' @usage
 #' securityhub_get_finding_aggregator(FindingAggregatorArn)
@@ -10068,15 +9538,6 @@ securityhub_get_enabled_standards <- function(StandardsSubscriptionArns = NULL, 
 #'   FindingAggregatorArn = "string"
 #' )
 #' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example returns cross-Region aggregation details for the
-#' # requesting account.
-#' svc$get_finding_aggregator(
-#'   FindingAggregatorArn = "arn:aws:securityhub:us-east-1:123456789012:findin..."
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -10238,22 +9699,6 @@ securityhub_get_finding_aggregator <- function(FindingAggregatorArn) {
 #' )
 #' ```
 #'
-#' @examples
-#' \dontrun{
-#' # The following example retrieves the history of the specified finding
-#' # during the specified time frame. If the time frame permits, Security Hub
-#' # returns finding history for the last 90 days.
-#' svc$get_finding_history(
-#'   EndTime = "2021-09-31T15:53:35.573Z",
-#'   FindingIdentifier = list(
-#'     Id = "a1b2c3d4-5678-90ab-cdef-EXAMPLE11111",
-#'     ProductArn = "arn:aws:securityhub:us-west-2:123456789012:product/123456789012/default"
-#'   ),
-#'   MaxResults = 2L,
-#'   StartTime = "2021-09-30T15:53:35.573Z"
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname securityhub_get_finding_history
@@ -10283,10 +9728,10 @@ securityhub_get_finding_history <- function(FindingIdentifier, StartTime = NULL,
 #' @description
 #' Returns a list of findings that match the specified criteria.
 #' 
-#' If finding aggregation is enabled, then when you call
-#' [`get_findings`][securityhub_get_findings] from the aggregation Region,
-#' the results include all of the matching findings from both the
-#' aggregation Region and the linked Regions.
+#' If cross-Region aggregation is enabled, then when you call
+#' [`get_findings`][securityhub_get_findings] from the home Region, the
+#' results include all of the matching findings from both the home Region
+#' and linked Regions.
 #'
 #' @usage
 #' securityhub_get_findings(Filters, SortCriteria, NextToken, MaxResults)
@@ -14795,7 +14240,98 @@ securityhub_get_finding_history <- function(FindingIdentifier, StartTime = NULL,
 #'         )
 #'       ),
 #'       ProcessedAt = "string",
-#'       AwsAccountName = "string"
+#'       AwsAccountName = "string",
+#'       Detection = list(
+#'         Sequence = list(
+#'           Uid = "string",
+#'           Actors = list(
+#'             list(
+#'               Id = "string",
+#'               User = list(
+#'                 Name = "string",
+#'                 Uid = "string",
+#'                 Type = "string",
+#'                 CredentialUid = "string",
+#'                 Account = list(
+#'                   Uid = "string",
+#'                   Name = "string"
+#'                 )
+#'               ),
+#'               Session = list(
+#'                 Uid = "string",
+#'                 MfaStatus = "ENABLED"|"DISABLED",
+#'                 CreatedTime = 123,
+#'                 Issuer = "string"
+#'               )
+#'             )
+#'           ),
+#'           Endpoints = list(
+#'             list(
+#'               Id = "string",
+#'               Ip = "string",
+#'               Domain = "string",
+#'               Port = 123,
+#'               Location = list(
+#'                 City = "string",
+#'                 Country = "string",
+#'                 Lat = 123.0,
+#'                 Lon = 123.0
+#'               ),
+#'               AutonomousSystem = list(
+#'                 Name = "string",
+#'                 Number = 123
+#'               ),
+#'               Connection = list(
+#'                 Direction = "INBOUND"|"OUTBOUND"
+#'               )
+#'             )
+#'           ),
+#'           Signals = list(
+#'             list(
+#'               Type = "string",
+#'               Id = "string",
+#'               Title = "string",
+#'               ProductArn = "string",
+#'               ResourceIds = list(
+#'                 "string"
+#'               ),
+#'               SignalIndicators = list(
+#'                 list(
+#'                   Key = "string",
+#'                   Values = list(
+#'                     "string"
+#'                   ),
+#'                   Title = "string",
+#'                   Type = "string"
+#'                 )
+#'               ),
+#'               Name = "string",
+#'               CreatedAt = 123,
+#'               UpdatedAt = 123,
+#'               FirstSeenAt = 123,
+#'               LastSeenAt = 123,
+#'               Severity = 123.0,
+#'               Count = 123,
+#'               ActorIds = list(
+#'                 "string"
+#'               ),
+#'               EndpointIds = list(
+#'                 "string"
+#'               )
+#'             )
+#'           ),
+#'           SequenceIndicators = list(
+#'             list(
+#'               Key = "string",
+#'               Values = list(
+#'                 "string"
+#'               ),
+#'               Title = "string",
+#'               Type = "string"
+#'             )
+#'           )
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -15512,23 +15048,6 @@ securityhub_get_finding_history <- function(FindingIdentifier, StartTime = NULL,
 #' )
 #' ```
 #'
-#' @examples
-#' \dontrun{
-#' # The following example returns a filtered and sorted list of Security Hub
-#' # findings.
-#' svc$get_findings(
-#'   Filters = list(
-#'     AwsAccountId = list(
-#'       list(
-#'         Comparison = "PREFIX",
-#'         Value = "123456789012"
-#'       )
-#'     )
-#'   ),
-#'   MaxResults = 1L
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname securityhub_get_findings
@@ -15540,7 +15059,7 @@ securityhub_get_findings <- function(Filters = NULL, SortCriteria = NULL, NextTo
     http_method = "POST",
     http_path = "/findings",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Findings"),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Findings"),
     stream_api = FALSE
   )
   input <- .securityhub$get_findings_input(Filters = Filters, SortCriteria = SortCriteria, NextToken = NextToken, MaxResults = MaxResults)
@@ -15589,15 +15108,6 @@ securityhub_get_findings <- function(Filters = NULL, SortCriteria = NULL, NextTo
 #' )
 #' ```
 #'
-#' @examples
-#' \dontrun{
-#' # The following example returns the results of the Security Hub insight
-#' # specified by the insight ARN.
-#' svc$get_insight_results(
-#'   InsightArn = "arn:aws:securityhub:us-west-1:123456789012:insight/12345678..."
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname securityhub_get_insight_results
@@ -15630,7 +15140,7 @@ securityhub_get_insight_results <- function(InsightArn) {
 #' @usage
 #' securityhub_get_insights(InsightArns, NextToken, MaxResults)
 #'
-#' @param InsightArns The ARNs of the insights to describe. If you do not provide any insight
+#' @param InsightArns The ARNs of the insights to describe. If you don't provide any insight
 #' ARNs, then [`get_insights`][securityhub_get_insights] returns all of
 #' your custom insights. It does not return any managed insights.
 #' @param NextToken The token that is required for pagination. On your first call to the
@@ -16364,17 +15874,6 @@ securityhub_get_insight_results <- function(InsightArn) {
 #' )
 #' ```
 #'
-#' @examples
-#' \dontrun{
-#' # The following example returns details of the Security Hub insight with
-#' # the specified ARN.
-#' svc$get_insights(
-#'   InsightArns = list(
-#'     "arn:aws:securityhub:us-west-1:123456789012:insight/123456789012/custom..."
-#'   )
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname securityhub_get_insights
@@ -16386,7 +15885,7 @@ securityhub_get_insights <- function(InsightArns = NULL, NextToken = NULL, MaxRe
     http_method = "POST",
     http_path = "/insights/get",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Insights"),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Insights"),
     stream_api = FALSE
   )
   input <- .securityhub$get_insights_input(InsightArns = InsightArns, NextToken = NextToken, MaxResults = MaxResults)
@@ -16399,13 +15898,18 @@ securityhub_get_insights <- function(InsightArns = NULL, NextToken = NULL, MaxRe
 }
 .securityhub$operations$get_insights <- securityhub_get_insights
 
-#' Returns the count of all Security Hub membership invitations that were
-#' sent to the current member account, not including the currently accepted
-#' invitation
+#' We recommend using Organizations instead of Security Hub invitations to
+#' manage your member accounts
 #'
 #' @description
+#' We recommend using Organizations instead of Security Hub invitations to
+#' manage your member accounts. For information, see [Managing Security Hub
+#' administrator and member accounts with
+#' Organizations](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-accounts-orgs.html)
+#' in the *Security Hub User Guide*.
+#' 
 #' Returns the count of all Security Hub membership invitations that were
-#' sent to the current member account, not including the currently accepted
+#' sent to the calling member account, not including the currently accepted
 #' invitation.
 #'
 #' @usage
@@ -16425,16 +15929,6 @@ securityhub_get_insights <- function(InsightArns = NULL, NextToken = NULL, MaxRe
 #' ```
 #' svc$get_invitations_count()
 #' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example returns a count of invitations that the Security
-#' # Hub administrator sent to the current member account, not including the
-#' # currently accepted invitation.
-#' # 
-#' # 
-#' svc$get_invitations_count()
-#' }
 #'
 #' @keywords internal
 #'
@@ -16590,21 +16084,6 @@ securityhub_get_master_account <- function() {
 #' )
 #' ```
 #'
-#' @examples
-#' \dontrun{
-#' # The following example returns details for the Security Hub member
-#' # accounts with the specified AWS account IDs. An administrator account
-#' # may be the delegated Security Hub administrator account for an
-#' # organization or an administrator account that enabled Security Hub
-#' # manually. The Security Hub administrator must call this operation.
-#' svc$get_members(
-#'   AccountIds = list(
-#'     "444455556666",
-#'     "777788889999"
-#'   )
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname securityhub_get_members
@@ -16723,15 +16202,6 @@ securityhub_get_members <- function(AccountIds) {
 #' )
 #' ```
 #'
-#' @examples
-#' \dontrun{
-#' # The following example retrieves definition details for the specified
-#' # security control.
-#' svc$get_security_control_definition(
-#'   SecurityControlId = "EC2.4"
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname securityhub_get_security_control_definition
@@ -16756,15 +16226,22 @@ securityhub_get_security_control_definition <- function(SecurityControlId) {
 }
 .securityhub$operations$get_security_control_definition <- securityhub_get_security_control_definition
 
-#' Invites other Amazon Web Services accounts to become member accounts for
-#' the Security Hub administrator account that the invitation is sent from
+#' We recommend using Organizations instead of Security Hub invitations to
+#' manage your member accounts
 #'
 #' @description
+#' We recommend using Organizations instead of Security Hub invitations to
+#' manage your member accounts. For information, see [Managing Security Hub
+#' administrator and member accounts with
+#' Organizations](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-accounts-orgs.html)
+#' in the *Security Hub User Guide*.
+#' 
 #' Invites other Amazon Web Services accounts to become member accounts for
 #' the Security Hub administrator account that the invitation is sent from.
 #' 
-#' This operation is only used to invite accounts that do not belong to an
-#' organization. Organization accounts do not receive invitations.
+#' This operation is only used to invite accounts that don't belong to an
+#' Amazon Web Services organization. Organization accounts don't receive
+#' invitations.
 #' 
 #' Before you can use this action to invite a member, you must first use
 #' the [`create_members`][securityhub_create_members] action to create the
@@ -16772,7 +16249,7 @@ securityhub_get_security_control_definition <- function(SecurityControlId) {
 #' 
 #' When the account owner enables Security Hub and accepts the invitation
 #' to become a member account, the administrator account can view the
-#' findings generated from the member account.
+#' findings generated in the member account.
 #'
 #' @usage
 #' securityhub_invite_members(AccountIds)
@@ -16801,20 +16278,6 @@ securityhub_get_security_control_definition <- function(SecurityControlId) {
 #'   )
 #' )
 #' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example invites the specified AWS accounts to become
-#' # member accounts associated with the calling Security Hub administrator
-#' # account. You only use this operation to invite accounts that don't
-#' # belong to an AWS Organizations organization.
-#' svc$invite_members(
-#'   AccountIds = list(
-#'     "111122223333",
-#'     "444455556666"
-#'   )
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -16887,16 +16350,6 @@ securityhub_invite_members <- function(AccountIds) {
 #'   MaxResults = 123
 #' )
 #' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example lists automation rules and rule metadata in the
-#' # calling account.
-#' svc$list_automation_rules(
-#'   MaxResults = 2L,
-#'   NextToken = "example-token"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -16979,16 +16432,6 @@ securityhub_list_automation_rules <- function(NextToken = NULL, MaxResults = NUL
 #'   MaxResults = 123
 #' )
 #' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This operation provides a list of your configuration policies, including
-#' # metadata for each policy.
-#' svc$list_configuration_policies(
-#'   MaxResults = 1L,
-#'   NextToken = "U1FsdGVkX19nBV2zoh+Gou9NgnulLJHWpn9xnG4hqSOhvw3o2JqjI86QDxdf"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -17082,20 +16525,6 @@ securityhub_list_configuration_policies <- function(NextToken = NULL, MaxResults
 #' )
 #' ```
 #'
-#' @examples
-#' \dontrun{
-#' # This operation lists all of the associations between targets and
-#' # configuration policies or self-managed behavior. Targets can include
-#' # accounts, organizational units, or the root.
-#' svc$list_configuration_policy_associations(
-#'   Filters = list(
-#'     AssociationType = "APPLIED"
-#'   ),
-#'   MaxResults = 1L,
-#'   NextToken = "U1FsdGVkX19nBV2zoh+Gou9NgnulLJHWpn9xnG4hqSOhvw3o2JqjI86QDxdf"
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname securityhub_list_configuration_policy_associations
@@ -17158,14 +16587,6 @@ securityhub_list_configuration_policy_associations <- function(NextToken = NULL,
 #' )
 #' ```
 #'
-#' @examples
-#' \dontrun{
-#' # The following example returns a list of subscription Amazon Resource
-#' # Names (ARNs) for the product integrations that you have currently
-#' # enabled in Security Hub.
-#' svc$list_enabled_products_for_import()
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname securityhub_list_enabled_products_for_import
@@ -17177,7 +16598,7 @@ securityhub_list_enabled_products_for_import <- function(NextToken = NULL, MaxRe
     http_method = "GET",
     http_path = "/productSubscriptions",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ProductSubscriptions"),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ProductSubscriptions"),
     stream_api = FALSE
   )
   input <- .securityhub$list_enabled_products_for_import_input(NextToken = NextToken, MaxResults = MaxResults)
@@ -17190,14 +16611,14 @@ securityhub_list_enabled_products_for_import <- function(NextToken = NULL, MaxRe
 }
 .securityhub$operations$list_enabled_products_for_import <- securityhub_list_enabled_products_for_import
 
-#' If finding aggregation is enabled, then ListFindingAggregators returns
-#' the ARN of the finding aggregator
+#' If cross-Region aggregation is enabled, then ListFindingAggregators
+#' returns the Amazon Resource Name (ARN) of the finding aggregator
 #'
 #' @description
-#' If finding aggregation is enabled, then
+#' If cross-Region aggregation is enabled, then
 #' [`list_finding_aggregators`][securityhub_list_finding_aggregators]
-#' returns the ARN of the finding aggregator. You can run this operation
-#' from any Region.
+#' returns the Amazon Resource Name (ARN) of the finding aggregator. You
+#' can run this operation from any Amazon Web Services Region.
 #'
 #' @usage
 #' securityhub_list_finding_aggregators(NextToken, MaxResults)
@@ -17228,13 +16649,6 @@ securityhub_list_enabled_products_for_import <- function(NextToken = NULL, MaxRe
 #' )
 #' ```
 #'
-#' @examples
-#' \dontrun{
-#' # The following example disables the specified control in the specified
-#' # security standard.
-#' svc$list_finding_aggregators()
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname securityhub_list_finding_aggregators
@@ -17259,16 +16673,22 @@ securityhub_list_finding_aggregators <- function(NextToken = NULL, MaxResults = 
 }
 .securityhub$operations$list_finding_aggregators <- securityhub_list_finding_aggregators
 
-#' Lists all Security Hub membership invitations that were sent to the
-#' current Amazon Web Services account
+#' We recommend using Organizations instead of Security Hub invitations to
+#' manage your member accounts
 #'
 #' @description
-#' Lists all Security Hub membership invitations that were sent to the
-#' current Amazon Web Services account.
+#' We recommend using Organizations instead of Security Hub invitations to
+#' manage your member accounts. For information, see [Managing Security Hub
+#' administrator and member accounts with
+#' Organizations](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-accounts-orgs.html)
+#' in the *Security Hub User Guide*.
 #' 
-#' This operation is only used by accounts that are managed by invitation.
-#' Accounts that are managed using the integration with Organizations do
-#' not receive invitations.
+#' Lists all Security Hub membership invitations that were sent to the
+#' calling account.
+#' 
+#' Only accounts that are managed by invitation can use this operation.
+#' Accounts that are managed using the integration with Organizations don't
+#' receive invitations.
 #'
 #' @usage
 #' securityhub_list_invitations(MaxResults, NextToken)
@@ -17308,15 +16728,6 @@ securityhub_list_finding_aggregators <- function(NextToken = NULL, MaxResults = 
 #' )
 #' ```
 #'
-#' @examples
-#' \dontrun{
-#' # The following example returns a list of Security Hub member invitations
-#' # sent to the calling AWS account. Only accounts that are invited manually
-#' # use this operation. It's not for use by accounts that are managed
-#' # through AWS Organizations.
-#' svc$list_invitations()
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname securityhub_list_invitations
@@ -17328,7 +16739,7 @@ securityhub_list_invitations <- function(MaxResults = NULL, NextToken = NULL) {
     http_method = "GET",
     http_path = "/invitations",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Invitations"),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Invitations"),
     stream_api = FALSE
   )
   input <- .securityhub$list_invitations_input(MaxResults = MaxResults, NextToken = NextToken)
@@ -17405,15 +16816,6 @@ securityhub_list_invitations <- function(MaxResults = NULL, NextToken = NULL) {
 #' )
 #' ```
 #'
-#' @examples
-#' \dontrun{
-#' # The following example returns details about member accounts for the
-#' # calling Security Hub administrator account. The response includes member
-#' # accounts that are managed through AWS Organizations and those that were
-#' # invited manually.
-#' svc$list_members()
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname securityhub_list_members
@@ -17425,7 +16827,7 @@ securityhub_list_members <- function(OnlyAssociated = NULL, MaxResults = NULL, N
     http_method = "GET",
     http_path = "/members",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Members"),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Members"),
     stream_api = FALSE
   )
   input <- .securityhub$list_members_input(OnlyAssociated = OnlyAssociated, MaxResults = MaxResults, NextToken = NextToken)
@@ -17475,14 +16877,6 @@ securityhub_list_members <- function(OnlyAssociated = NULL, MaxResults = NULL, N
 #'   NextToken = "string"
 #' )
 #' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example lists the Security  Hub administrator accounts for
-#' # an organization. Only the organization management account can call this
-#' # operation.
-#' svc$list_organization_admin_accounts()
-#' }
 #'
 #' @keywords internal
 #'
@@ -17613,17 +17007,6 @@ securityhub_list_organization_admin_accounts <- function(MaxResults = NULL, Next
 #' )
 #' ```
 #'
-#' @examples
-#' \dontrun{
-#' # The following example lists security controls that apply to a specified
-#' # Security Hub standard.
-#' svc$list_security_control_definitions(
-#'   MaxResults = 3L,
-#'   NextToken = "NULL",
-#'   StandardsArn = "arn:aws:securityhub:::standards/aws-foundational-security..."
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname securityhub_list_security_control_definitions
@@ -17706,16 +17089,6 @@ securityhub_list_security_control_definitions <- function(StandardsArn = NULL, N
 #' )
 #' ```
 #'
-#' @examples
-#' \dontrun{
-#' # The following example specifies whether a control is currently enabled
-#' # or disabled in each enabled standard in the calling account. The
-#' # response also provides other details about the control.
-#' svc$list_standards_control_associations(
-#'   SecurityControlId = "S3.1"
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname securityhub_list_standards_control_associations
@@ -17766,15 +17139,6 @@ securityhub_list_standards_control_associations <- function(SecurityControlId, N
 #'   ResourceArn = "string"
 #' )
 #' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example returns a list of tags associated with the
-#' # specified resource.
-#' svc$list_tags_for_resource(
-#'   ResourceArn = "arn:aws:securityhub:us-west-1:123456789012:hub/default"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -17847,18 +17211,6 @@ securityhub_list_tags_for_resource <- function(ResourceArn) {
 #' )
 #' ```
 #'
-#' @examples
-#' \dontrun{
-#' # This operation associates a configuration policy or self-managed
-#' # behavior with the target account, organizational unit, or the root.
-#' svc$start_configuration_policy_association(
-#'   ConfigurationPolicyIdentifier = "arn:aws:securityhub:us-east-1:1234567890...",
-#'   Target = list(
-#'     AccountId = "111122223333"
-#'   )
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname securityhub_start_configuration_policy_association
@@ -17920,18 +17272,6 @@ securityhub_start_configuration_policy_association <- function(ConfigurationPoli
 #' )
 #' ```
 #'
-#' @examples
-#' \dontrun{
-#' # This operation disassociates a configuration policy or self-managed
-#' # behavior from the target account, organizational unit, or the root.
-#' svc$start_configuration_policy_disassociation(
-#'   ConfigurationPolicyIdentifier = "SELF_MANAGED_SECURITY_HUB",
-#'   Target = list(
-#'     RootId = "r-f6g7h8i9j0example"
-#'   )
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname securityhub_start_configuration_policy_disassociation
@@ -17982,19 +17322,6 @@ securityhub_start_configuration_policy_disassociation <- function(Target = NULL,
 #' )
 #' ```
 #'
-#' @examples
-#' \dontrun{
-#' # The following example adds the 'Department' and 'Area' tags to the
-#' # specified resource.
-#' svc$tag_resource(
-#'   ResourceArn = "arn:aws:securityhub:us-west-1:123456789012:hub/default",
-#'   Tags = list(
-#'     Area = "USMidwest",
-#'     Department = "Operations"
-#'   )
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname securityhub_tag_resource
@@ -18043,18 +17370,6 @@ securityhub_tag_resource <- function(ResourceArn, Tags) {
 #'   )
 #' )
 #' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example removes the 'Department' tag from the specified
-#' # resource.
-#' svc$untag_resource(
-#'   ResourceArn = "arn:aws:securityhub:us-west-1:123456789012:hub/default",
-#'   TagKeys = list(
-#'     "Department"
-#'   )
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -18105,18 +17420,6 @@ securityhub_untag_resource <- function(ResourceArn, TagKeys) {
 #'   Description = "string"
 #' )
 #' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example updates the name and description of a custom
-#' # action target in Security Hub. You can create custom actions to
-#' # automatically respond to Security Hub findings using Amazon EventBridge.
-#' svc$update_action_target(
-#'   ActionTargetArn = "arn:aws:securityhub:us-west-1:123456789012:action/custom/Remediation",
-#'   Description = "Sends specified findings to customer service chat",
-#'   Name = "Chat custom action"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -18284,45 +17587,6 @@ securityhub_update_action_target <- function(ActionTargetArn, Name = NULL, Descr
 #' )
 #' ```
 #'
-#' @examples
-#' \dontrun{
-#' # This operation updates the specified configuration policy.
-#' svc$update_configuration_policy(
-#'   ConfigurationPolicy = list(
-#'     SecurityHub = list(
-#'       EnabledStandardIdentifiers = list(
-#'         "arn:aws:securityhub:us-east-1::standards/aws-foundational-security...",
-#'         "arn:aws:securityhub:::ruleset/cis-aws-foundations-benchmark/v/1.2.0"
-#'       ),
-#'       SecurityControlsConfiguration = list(
-#'         DisabledSecurityControlIdentifiers = list(
-#'           "CloudWatch.1",
-#'           "CloudWatch.2"
-#'         ),
-#'         SecurityControlCustomParameters = list(
-#'           list(
-#'             Parameters = list(
-#'               daysToExpiration = list(
-#'                 Value = list(
-#'                   Integer = 21L
-#'                 ),
-#'                 ValueType = "CUSTOM"
-#'               )
-#'             ),
-#'             SecurityControlId = "ACM.1"
-#'           )
-#'         )
-#'       ),
-#'       ServiceEnabled = TRUE
-#'     )
-#'   ),
-#'   Description = "Updated configuration policy for testing FSBP and CIS",
-#'   Identifier = "arn:aws:securityhub:us-east-1:123456789012:configuration-po...",
-#'   Name = "TestConfigurationPolicy",
-#'   UpdatedReason = "Enabling ACM.2"
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname securityhub_update_configuration_policy
@@ -18347,17 +17611,17 @@ securityhub_update_configuration_policy <- function(Identifier, Name = NULL, Des
 }
 .securityhub$operations$update_configuration_policy <- securityhub_update_configuration_policy
 
-#' Updates the finding aggregation configuration
+#' The aggregation Region is now called the home Region
 #'
 #' @description
-#' Updates the finding aggregation configuration. Used to update the Region
-#' linking mode and the list of included or excluded Regions. You cannot
-#' use [`update_finding_aggregator`][securityhub_update_finding_aggregator]
-#' to change the aggregation Region.
+#' The *aggregation Region* is now called the *home Region*.
 #' 
-#' You must run
-#' [`update_finding_aggregator`][securityhub_update_finding_aggregator]
-#' from the current aggregation Region.
+#' Updates cross-Region aggregation settings. You can use this operation to
+#' update the Region linking mode and the list of included or excluded
+#' Amazon Web Services Regions. However, you can't use this operation to
+#' change the home Region.
+#' 
+#' You can invoke this operation from the current home Region only.
 #'
 #' @usage
 #' securityhub_update_finding_aggregator(FindingAggregatorArn,
@@ -18393,12 +17657,12 @@ securityhub_update_configuration_policy <- function(Identifier, Name = NULL, Des
 #' -   `NO_REGIONS` - Aggregates no data because no Regions are selected as
 #'     linked Regions.
 #' @param Regions If `RegionLinkingMode` is `ALL_REGIONS_EXCEPT_SPECIFIED`, then this is a
-#' space-separated list of Regions that do not aggregate findings to the
-#' aggregation Region.
+#' space-separated list of Regions that don't replicate and send findings
+#' to the home Region.
 #' 
 #' If `RegionLinkingMode` is `SPECIFIED_REGIONS`, then this is a
-#' space-separated list of Regions that do aggregate findings to the
-#' aggregation Region.
+#' space-separated list of Regions that do replicate and send findings to
+#' the home Region.
 #' 
 #' An `InvalidInputException` error results if you populate this field
 #' while `RegionLinkingMode` is `NO_REGIONS`.
@@ -18426,22 +17690,6 @@ securityhub_update_configuration_policy <- function(Identifier, Name = NULL, Des
 #'   )
 #' )
 #' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example updates the cross-Region aggregation
-#' # configuration. You use this operation to change the list of linked
-#' # Regions and the treatment of new Regions. However, you cannot use this
-#' # operation to change the aggregation Region.
-#' svc$update_finding_aggregator(
-#'   FindingAggregatorArn = "arn:aws:securityhub:us-east-1:123456789012:findin...",
-#'   RegionLinkingMode = "SPECIFIED_REGIONS",
-#'   Regions = list(
-#'     "us-west-1",
-#'     "us-west-2"
-#'   )
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -19951,29 +19199,6 @@ securityhub_update_findings <- function(Filters, Note = NULL, RecordState = NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \dontrun{
-#' # The following example updates the specified Security Hub insight.
-#' svc$update_insight(
-#'   Filters = list(
-#'     ResourceType = list(
-#'       list(
-#'         Comparison = "EQUALS",
-#'         Value = "AwsIamRole"
-#'       )
-#'     ),
-#'     SeverityLabel = list(
-#'       list(
-#'         Comparison = "EQUALS",
-#'         Value = "HIGH"
-#'       )
-#'     )
-#'   ),
-#'   InsightArn = "arn:aws:securityhub:us-west-1:123456789012:insight/12345678...",
-#'   Name = "High severity role findings"
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname securityhub_update_insight
@@ -20053,20 +19278,6 @@ securityhub_update_insight <- function(InsightArn, Name = NULL, Filters = NULL, 
 #' )
 #' ```
 #'
-#' @examples
-#' \dontrun{
-#' # This operation updates the way your organization is configured in
-#' # Security Hub. Only a Security Hub administrator account can invoke this
-#' # operation.
-#' svc$update_organization_configuration(
-#'   AutoEnable = FALSE,
-#'   AutoEnableStandards = "NONE",
-#'   OrganizationConfiguration = list(
-#'     ConfigurationType = "CENTRAL"
-#'   )
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname securityhub_update_organization_configuration
@@ -20138,24 +19349,6 @@ securityhub_update_organization_configuration <- function(AutoEnable, AutoEnable
 #' )
 #' ```
 #'
-#' @examples
-#' \dontrun{
-#' # The following example updates the specified security control.
-#' # Specifically, this example updates control parameters.
-#' svc$update_security_control(
-#'   LastUpdateReason = "Comply with internal requirements",
-#'   Parameters = list(
-#'     maxCredentialUsageAge = list(
-#'       Value = list(
-#'         Integer = 15L
-#'       ),
-#'       ValueType = "CUSTOM"
-#'     )
-#'   ),
-#'   SecurityControlId = "ACM.1"
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname securityhub_update_security_control
@@ -20218,17 +19411,6 @@ securityhub_update_security_control <- function(SecurityControlId, Parameters, L
 #' )
 #' ```
 #'
-#' @examples
-#' \dontrun{
-#' # The following example updates Security Hub settings to turn on
-#' # consolidated control findings, and to automatically enable new controls
-#' # in enabled standards.
-#' svc$update_security_hub_configuration(
-#'   AutoEnableControls = TRUE,
-#'   ControlFindingGenerator = "SECURITY_CONTROL"
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname securityhub_update_security_hub_configuration
@@ -20280,17 +19462,6 @@ securityhub_update_security_hub_configuration <- function(AutoEnableControls = N
 #'   DisabledReason = "string"
 #' )
 #' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example disables the specified control in the specified
-#' # security standard.
-#' svc$update_standards_control(
-#'   ControlStatus = "DISABLED",
-#'   DisabledReason = "Not applicable to my service",
-#'   StandardsControlArn = "arn:aws:securityhub:us-west-1:123456789012:control..."
-#' )
-#' }
 #'
 #' @keywords internal
 #'

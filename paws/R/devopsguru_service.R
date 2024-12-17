@@ -172,7 +172,7 @@ devopsguru <- function(config = list(), credentials = list(), endpoint = NULL, r
 
 .devopsguru$metadata <- list(
   service_name = "devopsguru",
-  endpoints = list("*" = list(endpoint = "devops-guru.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "devops-guru.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "devops-guru.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "devops-guru.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "devops-guru.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "devops-guru.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "devops-guru.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "devops-guru.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "devops-guru.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "devops-guru.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "devops-guru.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "devops-guru.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "devops-guru.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "DevOps Guru",
   api_version = "2020-12-01",
   signing_name = "devops-guru",

@@ -17,7 +17,7 @@ arn:\code{partition}:resiliencehub:\code{region}:\code{account}:app-assessment/\
 For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}
 in the \emph{Amazon Web Services General Reference} guide.}
 
-\item{maxResults}{Indicates the maximum number of compliance drifts requested.}
+\item{maxResults}{Maximum number of compliance drifts requested.}
 
 \item{nextToken}{Null, or the token from a previous call to get the next set of results.}
 }

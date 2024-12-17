@@ -15,7 +15,7 @@ securityhub_enable_security_hub(
 \item{Tags}{The tags to add to the hub resource when you enable Security Hub.}
 
 \item{EnableDefaultStandards}{Whether to enable the security standards that Security Hub has
-designated as automatically enabled. If you do not provide a value for
+designated as automatically enabled. If you don't provide a value for
 \code{EnableDefaultStandards}, it is set to \code{true}. To not enable the
 automatically enabled standards, set \code{EnableDefaultStandards} to
 \code{false}.}

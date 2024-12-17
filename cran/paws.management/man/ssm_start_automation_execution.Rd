@@ -17,7 +17,8 @@ ssm_start_automation_execution(
   MaxErrors = NULL,
   TargetLocations = NULL,
   Tags = NULL,
-  AlarmConfiguration = NULL
+  AlarmConfiguration = NULL,
+  TargetLocationsURL = NULL
 )
 }
 \arguments{
@@ -42,14 +43,20 @@ Auto and Interactive. The default mode is Auto.}
 rate-controlled execution. Required if you specify targets.}
 
 \item{Targets}{A key-value mapping to target resources. Required if you specify
-TargetParameterName.}
+TargetParameterName.
+
+If both this parameter and the \code{TargetLocation:Targets} parameter are
+supplied, \code{TargetLocation:Targets} takes precedence.}
 
 \item{TargetMaps}{A key-value mapping of document parameters to target resources. Both
 Targets and TargetMaps can't be specified together.}
 
 \item{MaxConcurrency}{The maximum number of targets allowed to run this task in parallel. You
 can specify a number, such as 10, or a percentage, such as 10\%. The
-default value is \code{10}.}
+default value is \code{10}.
+
+If both this parameter and the \code{TargetLocation:TargetsMaxConcurrency}
+are supplied, \code{TargetLocation:TargetsMaxConcurrency} takes precedence.}
 
 \item{MaxErrors}{The number of errors that are allowed before the system stops running
 the automation on additional targets. You can specify either an absolute
@@ -65,13 +72,16 @@ Executions that are already running an automation when max-errors is
 reached are allowed to complete, but some of these executions may fail
 as well. If you need to ensure that there won't be more than max-errors
 failed executions, set max-concurrency to 1 so the executions proceed
-one at a time.}
+one at a time.
+
+If this parameter and the \code{TargetLocation:TargetsMaxErrors} parameter
+are both supplied, \code{TargetLocation:TargetsMaxErrors} takes precedence.}
 
 \item{TargetLocations}{A location is a combination of Amazon Web Services Regions and/or Amazon
 Web Services accounts where you want to run the automation. Use this
 operation to start an automation in multiple Amazon Web Services Regions
 and multiple Amazon Web Services accounts. For more information, see
-\href{https://docs.aws.amazon.com/systems-manager/latest/userguide/running-automations-multiple-accounts-regions.html}{Running Automation workflows in multiple Amazon Web Services Regions and Amazon Web Services accounts}
+\href{https://docs.aws.amazon.com/systems-manager/latest/userguide/running-automations-multiple-accounts-regions.html}{Running automations in multiple Amazon Web Services Regions and accounts}
 in the \emph{Amazon Web Services Systems Manager User Guide}.}
 
 \item{Tags}{Optional metadata that you assign to a resource. You can specify a
@@ -89,6 +99,10 @@ To add tags to an existing automation, use the
 \code{\link[=ssm_add_tags_to_resource]{add_tags_to_resource}} operation.}
 
 \item{AlarmConfiguration}{The CloudWatch alarm you want to apply to your automation.}
+
+\item{TargetLocationsURL}{Specify a publicly accessible URL for a file that contains the
+\code{TargetLocations} body. Currently, only files in presigned Amazon S3
+buckets are supported.}
 }
 \description{
 Initiates execution of an Automation runbook.

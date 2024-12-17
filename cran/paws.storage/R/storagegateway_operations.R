@@ -45,6 +45,11 @@ NULL
 #' is critical to all later functions of the gateway and cannot be changed
 #' after activation. The default value is `CACHED`.
 #' 
+#' Amazon FSx File Gateway is no longer available to new customers.
+#' Existing customers of FSx File Gateway can continue to use the service
+#' normally. For capabilities similar to FSx File Gateway, visit [this blog
+#' post](https://aws.amazon.com/blogs/storage/switch-your-file-share-access-from-amazon-fsx-file-gateway-to-amazon-fsx-for-windows-file-server/).
+#' 
 #' Valid Values: `STORED` | `CACHED` | `VTL` | `FILE_S3` | `FILE_FSX_SMB`
 #' @param TapeDriveType The value that indicates the type of tape drive to use for tape gateway.
 #' This field is optional.
@@ -529,14 +534,39 @@ storagegateway_create_cachedi_scsi_volume <- function(GatewayARN, VolumeSizeInBy
 #' @param NFSFileShareDefaults File share default values. Optional.
 #' @param GatewayARN &#91;required&#93; The Amazon Resource Name (ARN) of the S3 File Gateway on which you want
 #' to create a file share.
-#' @param KMSEncrypted Set to `true` to use Amazon S3 server-side encryption with your own KMS
-#' key, or `false` to use a key managed by Amazon S3. Optional.
+#' @param EncryptionType A value that specifies the type of server-side encryption that the file
+#' share will use for the data that it stores in Amazon S3.
+#' 
+#' We recommend using `EncryptionType` instead of `KMSEncrypted` to set the
+#' file share encryption method. You do not need to provide values for both
+#' parameters.
+#' 
+#' If values for both parameters exist in the same request, then the
+#' specified encryption methods must not conflict. For example, if
+#' `EncryptionType` is `SseS3`, then `KMSEncrypted` must be `false`. If
+#' `EncryptionType` is `SseKms` or `DsseKms`, then `KMSEncrypted` must be
+#' `true`.
+#' @param KMSEncrypted Optional. Set to `true` to use Amazon S3 server-side encryption with
+#' your own KMS key (SSE-KMS), or `false` to use a key managed by Amazon S3
+#' (SSE-S3). To use dual-layer encryption (DSSE-KMS), set the
+#' `EncryptionType` parameter instead.
+#' 
+#' We recommend using `EncryptionType` instead of `KMSEncrypted` to set the
+#' file share encryption method. You do not need to provide values for both
+#' parameters.
+#' 
+#' If values for both parameters exist in the same request, then the
+#' specified encryption methods must not conflict. For example, if
+#' `EncryptionType` is `SseS3`, then `KMSEncrypted` must be `false`. If
+#' `EncryptionType` is `SseKms` or `DsseKms`, then `KMSEncrypted` must be
+#' `true`.
 #' 
 #' Valid Values: `true` | `false`
-#' @param KMSKey The Amazon Resource Name (ARN) of a symmetric customer master key (CMK)
-#' used for Amazon S3 server-side encryption. Storage Gateway does not
-#' support asymmetric CMKs. This value can only be set when `KMSEncrypted`
-#' is `true`. Optional.
+#' @param KMSKey Optional. The Amazon Resource Name (ARN) of a symmetric customer master
+#' key (CMK) used for Amazon S3 server-side encryption. Storage Gateway
+#' does not support asymmetric CMKs. This value must be set if
+#' `KMSEncrypted` is `true`, or if `EncryptionType` is `SseKms` or
+#' `DsseKms`.
 #' @param Role &#91;required&#93; The ARN of the Identity and Access Management (IAM) role that an S3 File
 #' Gateway assumes when it accesses the underlying storage.
 #' @param LocationARN &#91;required&#93; A custom ARN for the backend storage used for storing data for file
@@ -548,7 +578,7 @@ storagegateway_create_cachedi_scsi_volume <- function(GatewayARN, VolumeSizeInBy
 #' 
 #' Bucket ARN:
 #' 
-#' `arn:aws:s3:::my-bucket/prefix/`
+#' `arn:aws:s3:::amzn-s3-demo-bucket/prefix/`
 #' 
 #' Access point ARN:
 #' 
@@ -612,6 +642,9 @@ storagegateway_create_cachedi_scsi_volume <- function(GatewayARN, VolumeSizeInBy
 #' 
 #' `FileShareName` must be set if an S3 prefix name is set in
 #' `LocationARN`, or if an access point or access point alias is used.
+#' 
+#' A valid NFS file share name can only contain the following characters:
+#' `a`-`z`, `A`-`Z`, `0`-`9`, `-`, `.`, and `_`.
 #' @param CacheAttributes Specifies refresh cache information for the file share.
 #' @param NotificationPolicy The notification policy of the file share. `SettlingTimeInSeconds`
 #' controls the number of seconds to wait after the last point in time a
@@ -622,6 +655,10 @@ storagegateway_create_cachedi_scsi_volume <- function(GatewayARN, VolumeSizeInBy
 #' 
 #' `SettlingTimeInSeconds` has no effect on the timing of the object
 #' uploading to Amazon S3, only the timing of the notification.
+#' 
+#' This setting is not meant to specify an exact time at which the
+#' notification will be sent. In some cases, the gateway might require more
+#' than the specified delay time to generate and send notifications.
 #' 
 #' The following example sets `NotificationPolicy` on with
 #' `SettlingTimeInSeconds` set to 60.
@@ -648,7 +685,7 @@ storagegateway_create_cachedi_scsi_volume <- function(GatewayARN, VolumeSizeInBy
 #' @keywords internal
 #'
 #' @rdname storagegateway_create_nfs_file_share
-storagegateway_create_nfs_file_share <- function(ClientToken, NFSFileShareDefaults = NULL, GatewayARN, KMSEncrypted = NULL, KMSKey = NULL, Role, LocationARN, DefaultStorageClass = NULL, ObjectACL = NULL, ClientList = NULL, Squash = NULL, ReadOnly = NULL, GuessMIMETypeEnabled = NULL, RequesterPays = NULL, Tags = NULL, FileShareName = NULL, CacheAttributes = NULL, NotificationPolicy = NULL, VPCEndpointDNSName = NULL, BucketRegion = NULL, AuditDestinationARN = NULL) {
+storagegateway_create_nfs_file_share <- function(ClientToken, NFSFileShareDefaults = NULL, GatewayARN, EncryptionType = NULL, KMSEncrypted = NULL, KMSKey = NULL, Role, LocationARN, DefaultStorageClass = NULL, ObjectACL = NULL, ClientList = NULL, Squash = NULL, ReadOnly = NULL, GuessMIMETypeEnabled = NULL, RequesterPays = NULL, Tags = NULL, FileShareName = NULL, CacheAttributes = NULL, NotificationPolicy = NULL, VPCEndpointDNSName = NULL, BucketRegion = NULL, AuditDestinationARN = NULL) {
   op <- new_operation(
     name = "CreateNFSFileShare",
     http_method = "POST",
@@ -657,7 +694,7 @@ storagegateway_create_nfs_file_share <- function(ClientToken, NFSFileShareDefaul
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .storagegateway$create_nfs_file_share_input(ClientToken = ClientToken, NFSFileShareDefaults = NFSFileShareDefaults, GatewayARN = GatewayARN, KMSEncrypted = KMSEncrypted, KMSKey = KMSKey, Role = Role, LocationARN = LocationARN, DefaultStorageClass = DefaultStorageClass, ObjectACL = ObjectACL, ClientList = ClientList, Squash = Squash, ReadOnly = ReadOnly, GuessMIMETypeEnabled = GuessMIMETypeEnabled, RequesterPays = RequesterPays, Tags = Tags, FileShareName = FileShareName, CacheAttributes = CacheAttributes, NotificationPolicy = NotificationPolicy, VPCEndpointDNSName = VPCEndpointDNSName, BucketRegion = BucketRegion, AuditDestinationARN = AuditDestinationARN)
+  input <- .storagegateway$create_nfs_file_share_input(ClientToken = ClientToken, NFSFileShareDefaults = NFSFileShareDefaults, GatewayARN = GatewayARN, EncryptionType = EncryptionType, KMSEncrypted = KMSEncrypted, KMSKey = KMSKey, Role = Role, LocationARN = LocationARN, DefaultStorageClass = DefaultStorageClass, ObjectACL = ObjectACL, ClientList = ClientList, Squash = Squash, ReadOnly = ReadOnly, GuessMIMETypeEnabled = GuessMIMETypeEnabled, RequesterPays = RequesterPays, Tags = Tags, FileShareName = FileShareName, CacheAttributes = CacheAttributes, NotificationPolicy = NotificationPolicy, VPCEndpointDNSName = VPCEndpointDNSName, BucketRegion = BucketRegion, AuditDestinationARN = AuditDestinationARN)
   output <- .storagegateway$create_nfs_file_share_output()
   config <- get_config()
   svc <- .storagegateway$service(config, op)
@@ -678,14 +715,39 @@ storagegateway_create_nfs_file_share <- function(ClientToken, NFSFileShareDefaul
 #' @param ClientToken &#91;required&#93; A unique string value that you supply that is used by S3 File Gateway to
 #' ensure idempotent file share creation.
 #' @param GatewayARN &#91;required&#93; The ARN of the S3 File Gateway on which you want to create a file share.
-#' @param KMSEncrypted Set to `true` to use Amazon S3 server-side encryption with your own KMS
-#' key, or `false` to use a key managed by Amazon S3. Optional.
+#' @param EncryptionType A value that specifies the type of server-side encryption that the file
+#' share will use for the data that it stores in Amazon S3.
+#' 
+#' We recommend using `EncryptionType` instead of `KMSEncrypted` to set the
+#' file share encryption method. You do not need to provide values for both
+#' parameters.
+#' 
+#' If values for both parameters exist in the same request, then the
+#' specified encryption methods must not conflict. For example, if
+#' `EncryptionType` is `SseS3`, then `KMSEncrypted` must be `false`. If
+#' `EncryptionType` is `SseKms` or `DsseKms`, then `KMSEncrypted` must be
+#' `true`.
+#' @param KMSEncrypted Optional. Set to `true` to use Amazon S3 server-side encryption with
+#' your own KMS key (SSE-KMS), or `false` to use a key managed by Amazon S3
+#' (SSE-S3). To use dual-layer encryption (DSSE-KMS), set the
+#' `EncryptionType` parameter instead.
+#' 
+#' We recommend using `EncryptionType` instead of `KMSEncrypted` to set the
+#' file share encryption method. You do not need to provide values for both
+#' parameters.
+#' 
+#' If values for both parameters exist in the same request, then the
+#' specified encryption methods must not conflict. For example, if
+#' `EncryptionType` is `SseS3`, then `KMSEncrypted` must be `false`. If
+#' `EncryptionType` is `SseKms` or `DsseKms`, then `KMSEncrypted` must be
+#' `true`.
 #' 
 #' Valid Values: `true` | `false`
-#' @param KMSKey The Amazon Resource Name (ARN) of a symmetric customer master key (CMK)
-#' used for Amazon S3 server-side encryption. Storage Gateway does not
-#' support asymmetric CMKs. This value can only be set when `KMSEncrypted`
-#' is `true`. Optional.
+#' @param KMSKey Optional. The Amazon Resource Name (ARN) of a symmetric customer master
+#' key (CMK) used for Amazon S3 server-side encryption. Storage Gateway
+#' does not support asymmetric CMKs. This value must be set if
+#' `KMSEncrypted` is `true`, or if `EncryptionType` is `SseKms` or
+#' `DsseKms`.
 #' @param Role &#91;required&#93; The ARN of the Identity and Access Management (IAM) role that an S3 File
 #' Gateway assumes when it accesses the underlying storage.
 #' @param LocationARN &#91;required&#93; A custom ARN for the backend storage used for storing data for file
@@ -697,7 +759,7 @@ storagegateway_create_nfs_file_share <- function(ClientToken, NFSFileShareDefaul
 #' 
 #' Bucket ARN:
 #' 
-#' `arn:aws:s3:::my-bucket/prefix/`
+#' `arn:aws:s3:::amzn-s3-demo-bucket/prefix/`
 #' 
 #' Access point ARN:
 #' 
@@ -743,10 +805,9 @@ storagegateway_create_nfs_file_share <- function(ClientToken, NFSFileShareDefaul
 #' file share. Set it to `false` to map file and directory permissions to
 #' the POSIX permissions.
 #' 
-#' For more information, see [Using Microsoft Windows ACLs to control
-#' access to an SMB file
-#' share](https://docs.aws.amazon.com/storagegateway/) in the *Storage
-#' Gateway User Guide*.
+#' For more information, see [Using Windows ACLs to limit SMB file share
+#' access](https://docs.aws.amazon.com/filegateway/latest/files3/smb-acl.html)
+#' in the *Amazon S3 File Gateway User Guide*.
 #' 
 #' Valid Values: `true` | `false`
 #' @param AccessBasedEnumeration The files and folders on this share will only be visible to users with
@@ -788,6 +849,10 @@ storagegateway_create_nfs_file_share <- function(ClientToken, NFSFileShareDefaul
 #' 
 #' `FileShareName` must be set if an S3 prefix name is set in
 #' `LocationARN`, or if an access point or access point alias is used.
+#' 
+#' A valid SMB file share name cannot contain the following characters:
+#' `[`,`]`,`#`,`;`,`<`,`>`,`:`,`\"`,`\`,`/`,`|`,`?`,`*`,`+`, or ASCII
+#' control characters `1-31`.
 #' @param CacheAttributes Specifies refresh cache information for the file share.
 #' @param NotificationPolicy The notification policy of the file share. `SettlingTimeInSeconds`
 #' controls the number of seconds to wait after the last point in time a
@@ -798,6 +863,10 @@ storagegateway_create_nfs_file_share <- function(ClientToken, NFSFileShareDefaul
 #' 
 #' `SettlingTimeInSeconds` has no effect on the timing of the object
 #' uploading to Amazon S3, only the timing of the notification.
+#' 
+#' This setting is not meant to specify an exact time at which the
+#' notification will be sent. In some cases, the gateway might require more
+#' than the specified delay time to generate and send notifications.
 #' 
 #' The following example sets `NotificationPolicy` on with
 #' `SettlingTimeInSeconds` set to 60.
@@ -831,7 +900,7 @@ storagegateway_create_nfs_file_share <- function(ClientToken, NFSFileShareDefaul
 #' @keywords internal
 #'
 #' @rdname storagegateway_create_smb_file_share
-storagegateway_create_smb_file_share <- function(ClientToken, GatewayARN, KMSEncrypted = NULL, KMSKey = NULL, Role, LocationARN, DefaultStorageClass = NULL, ObjectACL = NULL, ReadOnly = NULL, GuessMIMETypeEnabled = NULL, RequesterPays = NULL, SMBACLEnabled = NULL, AccessBasedEnumeration = NULL, AdminUserList = NULL, ValidUserList = NULL, InvalidUserList = NULL, AuditDestinationARN = NULL, Authentication = NULL, CaseSensitivity = NULL, Tags = NULL, FileShareName = NULL, CacheAttributes = NULL, NotificationPolicy = NULL, VPCEndpointDNSName = NULL, BucketRegion = NULL, OplocksEnabled = NULL) {
+storagegateway_create_smb_file_share <- function(ClientToken, GatewayARN, EncryptionType = NULL, KMSEncrypted = NULL, KMSKey = NULL, Role, LocationARN, DefaultStorageClass = NULL, ObjectACL = NULL, ReadOnly = NULL, GuessMIMETypeEnabled = NULL, RequesterPays = NULL, SMBACLEnabled = NULL, AccessBasedEnumeration = NULL, AdminUserList = NULL, ValidUserList = NULL, InvalidUserList = NULL, AuditDestinationARN = NULL, Authentication = NULL, CaseSensitivity = NULL, Tags = NULL, FileShareName = NULL, CacheAttributes = NULL, NotificationPolicy = NULL, VPCEndpointDNSName = NULL, BucketRegion = NULL, OplocksEnabled = NULL) {
   op <- new_operation(
     name = "CreateSMBFileShare",
     http_method = "POST",
@@ -840,7 +909,7 @@ storagegateway_create_smb_file_share <- function(ClientToken, GatewayARN, KMSEnc
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .storagegateway$create_smb_file_share_input(ClientToken = ClientToken, GatewayARN = GatewayARN, KMSEncrypted = KMSEncrypted, KMSKey = KMSKey, Role = Role, LocationARN = LocationARN, DefaultStorageClass = DefaultStorageClass, ObjectACL = ObjectACL, ReadOnly = ReadOnly, GuessMIMETypeEnabled = GuessMIMETypeEnabled, RequesterPays = RequesterPays, SMBACLEnabled = SMBACLEnabled, AccessBasedEnumeration = AccessBasedEnumeration, AdminUserList = AdminUserList, ValidUserList = ValidUserList, InvalidUserList = InvalidUserList, AuditDestinationARN = AuditDestinationARN, Authentication = Authentication, CaseSensitivity = CaseSensitivity, Tags = Tags, FileShareName = FileShareName, CacheAttributes = CacheAttributes, NotificationPolicy = NotificationPolicy, VPCEndpointDNSName = VPCEndpointDNSName, BucketRegion = BucketRegion, OplocksEnabled = OplocksEnabled)
+  input <- .storagegateway$create_smb_file_share_input(ClientToken = ClientToken, GatewayARN = GatewayARN, EncryptionType = EncryptionType, KMSEncrypted = KMSEncrypted, KMSKey = KMSKey, Role = Role, LocationARN = LocationARN, DefaultStorageClass = DefaultStorageClass, ObjectACL = ObjectACL, ReadOnly = ReadOnly, GuessMIMETypeEnabled = GuessMIMETypeEnabled, RequesterPays = RequesterPays, SMBACLEnabled = SMBACLEnabled, AccessBasedEnumeration = AccessBasedEnumeration, AdminUserList = AdminUserList, ValidUserList = ValidUserList, InvalidUserList = InvalidUserList, AuditDestinationARN = AuditDestinationARN, Authentication = Authentication, CaseSensitivity = CaseSensitivity, Tags = Tags, FileShareName = FileShareName, CacheAttributes = CacheAttributes, NotificationPolicy = NotificationPolicy, VPCEndpointDNSName = VPCEndpointDNSName, BucketRegion = BucketRegion, OplocksEnabled = OplocksEnabled)
   output <- .storagegateway$create_smb_file_share_output()
   config <- get_config()
   svc <- .storagegateway$service(config, op)
@@ -1682,7 +1751,7 @@ storagegateway_describe_cachedi_scsi_volumes <- function(VolumeARNs) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "CachediSCSIVolumes"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .storagegateway$describe_cachedi_scsi_volumes_input(VolumeARNs = VolumeARNs)
@@ -1980,7 +2049,7 @@ storagegateway_describe_storedi_scsi_volumes <- function(VolumeARNs) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "StorediSCSIVolumes"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .storagegateway$describe_storedi_scsi_volumes_input(VolumeARNs = VolumeARNs)
@@ -2535,7 +2604,7 @@ storagegateway_list_local_disks <- function(GatewayARN) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "Disks"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .storagegateway$list_local_disks_input(GatewayARN = GatewayARN)
@@ -2708,7 +2777,7 @@ storagegateway_list_volume_recovery_points <- function(GatewayARN) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "VolumeRecoveryPointInfos"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .storagegateway$list_volume_recovery_points_input(GatewayARN = GatewayARN)
@@ -3424,7 +3493,11 @@ storagegateway_update_gateway_software_now <- function(GatewayARN) {
 #' `ALL_VERSIONS` - Enables regular gateway maintenance updates.
 #' 
 #' `EMERGENCY_VERSIONS_ONLY` - Disables regular gateway maintenance
-#' updates.
+#' updates. The gateway will still receive emergency version updates on
+#' rare occasions if necessary to remedy highly critical security or
+#' durability issues. You will be notified before an emergency version
+#' update is applied. These updates are applied during your gateway's
+#' scheduled maintenance window.
 #'
 #' @keywords internal
 #'
@@ -3456,14 +3529,39 @@ storagegateway_update_maintenance_start_time <- function(GatewayARN, HourOfDay =
 #' See [https://www.paws-r-sdk.com/docs/storagegateway_update_nfs_file_share/](https://www.paws-r-sdk.com/docs/storagegateway_update_nfs_file_share/) for full documentation.
 #'
 #' @param FileShareARN &#91;required&#93; The Amazon Resource Name (ARN) of the file share to be updated.
-#' @param KMSEncrypted Set to `true` to use Amazon S3 server-side encryption with your own KMS
-#' key, or `false` to use a key managed by Amazon S3. Optional.
+#' @param EncryptionType A value that specifies the type of server-side encryption that the file
+#' share will use for the data that it stores in Amazon S3.
+#' 
+#' We recommend using `EncryptionType` instead of `KMSEncrypted` to set the
+#' file share encryption method. You do not need to provide values for both
+#' parameters.
+#' 
+#' If values for both parameters exist in the same request, then the
+#' specified encryption methods must not conflict. For example, if
+#' `EncryptionType` is `SseS3`, then `KMSEncrypted` must be `false`. If
+#' `EncryptionType` is `SseKms` or `DsseKms`, then `KMSEncrypted` must be
+#' `true`.
+#' @param KMSEncrypted Optional. Set to `true` to use Amazon S3 server-side encryption with
+#' your own KMS key (SSE-KMS), or `false` to use a key managed by Amazon S3
+#' (SSE-S3). To use dual-layer encryption (DSSE-KMS), set the
+#' `EncryptionType` parameter instead.
+#' 
+#' We recommend using `EncryptionType` instead of `KMSEncrypted` to set the
+#' file share encryption method. You do not need to provide values for both
+#' parameters.
+#' 
+#' If values for both parameters exist in the same request, then the
+#' specified encryption methods must not conflict. For example, if
+#' `EncryptionType` is `SseS3`, then `KMSEncrypted` must be `false`. If
+#' `EncryptionType` is `SseKms` or `DsseKms`, then `KMSEncrypted` must be
+#' `true`.
 #' 
 #' Valid Values: `true` | `false`
-#' @param KMSKey The Amazon Resource Name (ARN) of a symmetric customer master key (CMK)
-#' used for Amazon S3 server-side encryption. Storage Gateway does not
-#' support asymmetric CMKs. This value can only be set when `KMSEncrypted`
-#' is `true`. Optional.
+#' @param KMSKey Optional. The Amazon Resource Name (ARN) of a symmetric customer master
+#' key (CMK) used for Amazon S3 server-side encryption. Storage Gateway
+#' does not support asymmetric CMKs. This value must be set if
+#' `KMSEncrypted` is `true`, or if `EncryptionType` is `SseKms` or
+#' `DsseKms`.
 #' @param NFSFileShareDefaults The default values for the file share. Optional.
 #' @param DefaultStorageClass The default storage class for objects put into an Amazon S3 bucket by
 #' the S3 File Gateway. The default value is `S3_STANDARD`. Optional.
@@ -3507,6 +3605,9 @@ storagegateway_update_maintenance_start_time <- function(GatewayARN, HourOfDay =
 #' 
 #' `FileShareName` must be set if an S3 prefix name is set in
 #' `LocationARN`, or if an access point or access point alias is used.
+#' 
+#' A valid NFS file share name can only contain the following characters:
+#' `a`-`z`, `A`-`Z`, `0`-`9`, `-`, `.`, and `_`.
 #' @param CacheAttributes Specifies refresh cache information for the file share.
 #' @param NotificationPolicy The notification policy of the file share. `SettlingTimeInSeconds`
 #' controls the number of seconds to wait after the last point in time a
@@ -3517,6 +3618,10 @@ storagegateway_update_maintenance_start_time <- function(GatewayARN, HourOfDay =
 #' 
 #' `SettlingTimeInSeconds` has no effect on the timing of the object
 #' uploading to Amazon S3, only the timing of the notification.
+#' 
+#' This setting is not meant to specify an exact time at which the
+#' notification will be sent. In some cases, the gateway might require more
+#' than the specified delay time to generate and send notifications.
 #' 
 #' The following example sets `NotificationPolicy` on with
 #' `SettlingTimeInSeconds` set to 60.
@@ -3531,7 +3636,7 @@ storagegateway_update_maintenance_start_time <- function(GatewayARN, HourOfDay =
 #' @keywords internal
 #'
 #' @rdname storagegateway_update_nfs_file_share
-storagegateway_update_nfs_file_share <- function(FileShareARN, KMSEncrypted = NULL, KMSKey = NULL, NFSFileShareDefaults = NULL, DefaultStorageClass = NULL, ObjectACL = NULL, ClientList = NULL, Squash = NULL, ReadOnly = NULL, GuessMIMETypeEnabled = NULL, RequesterPays = NULL, FileShareName = NULL, CacheAttributes = NULL, NotificationPolicy = NULL, AuditDestinationARN = NULL) {
+storagegateway_update_nfs_file_share <- function(FileShareARN, EncryptionType = NULL, KMSEncrypted = NULL, KMSKey = NULL, NFSFileShareDefaults = NULL, DefaultStorageClass = NULL, ObjectACL = NULL, ClientList = NULL, Squash = NULL, ReadOnly = NULL, GuessMIMETypeEnabled = NULL, RequesterPays = NULL, FileShareName = NULL, CacheAttributes = NULL, NotificationPolicy = NULL, AuditDestinationARN = NULL) {
   op <- new_operation(
     name = "UpdateNFSFileShare",
     http_method = "POST",
@@ -3540,7 +3645,7 @@ storagegateway_update_nfs_file_share <- function(FileShareARN, KMSEncrypted = NU
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .storagegateway$update_nfs_file_share_input(FileShareARN = FileShareARN, KMSEncrypted = KMSEncrypted, KMSKey = KMSKey, NFSFileShareDefaults = NFSFileShareDefaults, DefaultStorageClass = DefaultStorageClass, ObjectACL = ObjectACL, ClientList = ClientList, Squash = Squash, ReadOnly = ReadOnly, GuessMIMETypeEnabled = GuessMIMETypeEnabled, RequesterPays = RequesterPays, FileShareName = FileShareName, CacheAttributes = CacheAttributes, NotificationPolicy = NotificationPolicy, AuditDestinationARN = AuditDestinationARN)
+  input <- .storagegateway$update_nfs_file_share_input(FileShareARN = FileShareARN, EncryptionType = EncryptionType, KMSEncrypted = KMSEncrypted, KMSKey = KMSKey, NFSFileShareDefaults = NFSFileShareDefaults, DefaultStorageClass = DefaultStorageClass, ObjectACL = ObjectACL, ClientList = ClientList, Squash = Squash, ReadOnly = ReadOnly, GuessMIMETypeEnabled = GuessMIMETypeEnabled, RequesterPays = RequesterPays, FileShareName = FileShareName, CacheAttributes = CacheAttributes, NotificationPolicy = NotificationPolicy, AuditDestinationARN = AuditDestinationARN)
   output <- .storagegateway$update_nfs_file_share_output()
   config <- get_config()
   svc <- .storagegateway$service(config, op)
@@ -3559,14 +3664,39 @@ storagegateway_update_nfs_file_share <- function(FileShareARN, KMSEncrypted = NU
 #'
 #' @param FileShareARN &#91;required&#93; The Amazon Resource Name (ARN) of the SMB file share that you want to
 #' update.
-#' @param KMSEncrypted Set to `true` to use Amazon S3 server-side encryption with your own KMS
-#' key, or `false` to use a key managed by Amazon S3. Optional.
+#' @param EncryptionType A value that specifies the type of server-side encryption that the file
+#' share will use for the data that it stores in Amazon S3.
+#' 
+#' We recommend using `EncryptionType` instead of `KMSEncrypted` to set the
+#' file share encryption method. You do not need to provide values for both
+#' parameters.
+#' 
+#' If values for both parameters exist in the same request, then the
+#' specified encryption methods must not conflict. For example, if
+#' `EncryptionType` is `SseS3`, then `KMSEncrypted` must be `false`. If
+#' `EncryptionType` is `SseKms` or `DsseKms`, then `KMSEncrypted` must be
+#' `true`.
+#' @param KMSEncrypted Optional. Set to `true` to use Amazon S3 server-side encryption with
+#' your own KMS key (SSE-KMS), or `false` to use a key managed by Amazon S3
+#' (SSE-S3). To use dual-layer encryption (DSSE-KMS), set the
+#' `EncryptionType` parameter instead.
+#' 
+#' We recommend using `EncryptionType` instead of `KMSEncrypted` to set the
+#' file share encryption method. You do not need to provide values for both
+#' parameters.
+#' 
+#' If values for both parameters exist in the same request, then the
+#' specified encryption methods must not conflict. For example, if
+#' `EncryptionType` is `SseS3`, then `KMSEncrypted` must be `false`. If
+#' `EncryptionType` is `SseKms` or `DsseKms`, then `KMSEncrypted` must be
+#' `true`.
 #' 
 #' Valid Values: `true` | `false`
-#' @param KMSKey The Amazon Resource Name (ARN) of a symmetric customer master key (CMK)
-#' used for Amazon S3 server-side encryption. Storage Gateway does not
-#' support asymmetric CMKs. This value can only be set when `KMSEncrypted`
-#' is `true`. Optional.
+#' @param KMSKey Optional. The Amazon Resource Name (ARN) of a symmetric customer master
+#' key (CMK) used for Amazon S3 server-side encryption. Storage Gateway
+#' does not support asymmetric CMKs. This value must be set if
+#' `KMSEncrypted` is `true`, or if `EncryptionType` is `SseKms` or
+#' `DsseKms`.
 #' @param DefaultStorageClass The default storage class for objects put into an Amazon S3 bucket by
 #' the S3 File Gateway. The default value is `S3_STANDARD`. Optional.
 #' 
@@ -3598,10 +3728,9 @@ storagegateway_update_nfs_file_share <- function(FileShareARN, KMSEncrypted = NU
 #' file share. Set it to `false` to map file and directory permissions to
 #' the POSIX permissions.
 #' 
-#' For more information, see [Using Microsoft Windows ACLs to control
-#' access to an SMB file
-#' share](https://docs.aws.amazon.com/storagegateway/) in the *Storage
-#' Gateway User Guide*.
+#' For more information, see [Using Windows ACLs to limit SMB file share
+#' access](https://docs.aws.amazon.com/filegateway/latest/files3/smb-acl.html)
+#' in the *Amazon S3 File Gateway User Guide*.
 #' 
 #' Valid Values: `true` | `false`
 #' @param AccessBasedEnumeration The files and folders on this share will only be visible to users with
@@ -3630,6 +3759,10 @@ storagegateway_update_nfs_file_share <- function(FileShareARN, KMSEncrypted = NU
 #' 
 #' `FileShareName` must be set if an S3 prefix name is set in
 #' `LocationARN`, or if an access point or access point alias is used.
+#' 
+#' A valid SMB file share name cannot contain the following characters:
+#' `[`,`]`,`#`,`;`,`<`,`>`,`:`,`\"`,`\`,`/`,`|`,`?`,`*`,`+`, or ASCII
+#' control characters `1-31`.
 #' @param CacheAttributes Specifies refresh cache information for the file share.
 #' @param NotificationPolicy The notification policy of the file share. `SettlingTimeInSeconds`
 #' controls the number of seconds to wait after the last point in time a
@@ -3640,6 +3773,10 @@ storagegateway_update_nfs_file_share <- function(FileShareARN, KMSEncrypted = NU
 #' 
 #' `SettlingTimeInSeconds` has no effect on the timing of the object
 #' uploading to Amazon S3, only the timing of the notification.
+#' 
+#' This setting is not meant to specify an exact time at which the
+#' notification will be sent. In some cases, the gateway might require more
+#' than the specified delay time to generate and send notifications.
 #' 
 #' The following example sets `NotificationPolicy` on with
 #' `SettlingTimeInSeconds` set to 60.
@@ -3661,7 +3798,7 @@ storagegateway_update_nfs_file_share <- function(FileShareARN, KMSEncrypted = NU
 #' @keywords internal
 #'
 #' @rdname storagegateway_update_smb_file_share
-storagegateway_update_smb_file_share <- function(FileShareARN, KMSEncrypted = NULL, KMSKey = NULL, DefaultStorageClass = NULL, ObjectACL = NULL, ReadOnly = NULL, GuessMIMETypeEnabled = NULL, RequesterPays = NULL, SMBACLEnabled = NULL, AccessBasedEnumeration = NULL, AdminUserList = NULL, ValidUserList = NULL, InvalidUserList = NULL, AuditDestinationARN = NULL, CaseSensitivity = NULL, FileShareName = NULL, CacheAttributes = NULL, NotificationPolicy = NULL, OplocksEnabled = NULL) {
+storagegateway_update_smb_file_share <- function(FileShareARN, EncryptionType = NULL, KMSEncrypted = NULL, KMSKey = NULL, DefaultStorageClass = NULL, ObjectACL = NULL, ReadOnly = NULL, GuessMIMETypeEnabled = NULL, RequesterPays = NULL, SMBACLEnabled = NULL, AccessBasedEnumeration = NULL, AdminUserList = NULL, ValidUserList = NULL, InvalidUserList = NULL, AuditDestinationARN = NULL, CaseSensitivity = NULL, FileShareName = NULL, CacheAttributes = NULL, NotificationPolicy = NULL, OplocksEnabled = NULL) {
   op <- new_operation(
     name = "UpdateSMBFileShare",
     http_method = "POST",
@@ -3670,7 +3807,7 @@ storagegateway_update_smb_file_share <- function(FileShareARN, KMSEncrypted = NU
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .storagegateway$update_smb_file_share_input(FileShareARN = FileShareARN, KMSEncrypted = KMSEncrypted, KMSKey = KMSKey, DefaultStorageClass = DefaultStorageClass, ObjectACL = ObjectACL, ReadOnly = ReadOnly, GuessMIMETypeEnabled = GuessMIMETypeEnabled, RequesterPays = RequesterPays, SMBACLEnabled = SMBACLEnabled, AccessBasedEnumeration = AccessBasedEnumeration, AdminUserList = AdminUserList, ValidUserList = ValidUserList, InvalidUserList = InvalidUserList, AuditDestinationARN = AuditDestinationARN, CaseSensitivity = CaseSensitivity, FileShareName = FileShareName, CacheAttributes = CacheAttributes, NotificationPolicy = NotificationPolicy, OplocksEnabled = OplocksEnabled)
+  input <- .storagegateway$update_smb_file_share_input(FileShareARN = FileShareARN, EncryptionType = EncryptionType, KMSEncrypted = KMSEncrypted, KMSKey = KMSKey, DefaultStorageClass = DefaultStorageClass, ObjectACL = ObjectACL, ReadOnly = ReadOnly, GuessMIMETypeEnabled = GuessMIMETypeEnabled, RequesterPays = RequesterPays, SMBACLEnabled = SMBACLEnabled, AccessBasedEnumeration = AccessBasedEnumeration, AdminUserList = AdminUserList, ValidUserList = ValidUserList, InvalidUserList = InvalidUserList, AuditDestinationARN = AuditDestinationARN, CaseSensitivity = CaseSensitivity, FileShareName = FileShareName, CacheAttributes = CacheAttributes, NotificationPolicy = NotificationPolicy, OplocksEnabled = OplocksEnabled)
   output <- .storagegateway$update_smb_file_share_output()
   config <- get_config()
   svc <- .storagegateway$service(config, op)

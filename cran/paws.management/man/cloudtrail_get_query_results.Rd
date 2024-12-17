@@ -8,7 +8,8 @@ cloudtrail_get_query_results(
   EventDataStore = NULL,
   QueryId,
   NextToken = NULL,
-  MaxQueryResults = NULL
+  MaxQueryResults = NULL,
+  EventDataStoreOwnerAccountId = NULL
 )
 }
 \arguments{
@@ -20,6 +21,8 @@ the query was run.}
 \item{NextToken}{A token you can use to get the next page of query results.}
 
 \item{MaxQueryResults}{The maximum number of query results to display on a single page.}
+
+\item{EventDataStoreOwnerAccountId}{The account ID of the event data store owner.}
 }
 \description{
 Gets event data results of a query. You must specify the \code{QueryID} value returned by the \code{\link[=cloudtrail_start_query]{start_query}} operation.

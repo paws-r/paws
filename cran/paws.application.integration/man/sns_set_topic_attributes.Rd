@@ -126,6 +126,8 @@ confirmation messages sent by Amazon SNS. By default,
 
 The following attribute applies only to \href{https://docs.aws.amazon.com/sns/latest/dg/sns-fifo-topics.html}{FIFO topics}:
 \itemize{
+\item \code{ArchivePolicy} – The policy that sets the retention period for
+messages stored in the message archive of an Amazon SNS FIFO topic.
 \item \code{ContentBasedDeduplication} – Enables content-based deduplication
 for FIFO topics.
 \itemize{

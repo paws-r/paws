@@ -1,5 +1,9 @@
 svc <- paws::cloudfront()
 
+test_that("list_anycast_ip_lists", {
+  expect_error(svc$list_anycast_ip_lists(), NA)
+})
+
 test_that("list_cache_policies", {
   expect_error(svc$list_cache_policies(), NA)
 })
@@ -62,4 +66,8 @@ test_that("list_response_headers_policies", {
 
 test_that("list_streaming_distributions", {
   expect_error(svc$list_streaming_distributions(), NA)
+})
+
+test_that("list_vpc_origins", {
+  expect_error(svc$list_vpc_origins(), NA)
 })

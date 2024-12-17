@@ -158,13 +158,12 @@ about CloudTrail, including enabling it and find your log files, see the
 \examples{
 \dontrun{
 svc <- secretsmanager()
-# The following example gets the values for three secrets.
-svc$batch_get_secret_value(
-  SecretIdList = list(
-    "MySecret1",
-    "MySecret2",
-    "MySecret3"
-  )
+# The following example shows how to cancel rotation for a secret. The
+# operation sets the RotationEnabled field to false and cancels all
+# scheduled rotations. To resume scheduled rotations, you must re-enable
+# rotation by calling the rotate-secret operation.
+svc$cancel_rotate_secret(
+  SecretId = "MyTestDatabaseSecret"
 )
 }
 

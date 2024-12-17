@@ -4,10 +4,15 @@
 \alias{athena_delete_data_catalog}
 \title{Deletes a data catalog}
 \usage{
-athena_delete_data_catalog(Name)
+athena_delete_data_catalog(Name, DeleteCatalogOnly = NULL)
 }
 \arguments{
 \item{Name}{[required] The name of the data catalog to delete.}
+
+\item{DeleteCatalogOnly}{Deletes the Athena Data Catalog. You can only use this with the
+\code{FEDERATED} catalogs. You usually perform this before registering the
+connector with Glue Data Catalog. After deletion, you will have to
+manage the Glue Connection and Lambda function.}
 }
 \description{
 Deletes a data catalog.

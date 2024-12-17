@@ -11,8 +11,8 @@ NULL
 #' See [https://www.paws-r-sdk.com/docs/workspaces_accept_account_link_invitation/](https://www.paws-r-sdk.com/docs/workspaces_accept_account_link_invitation/) for full documentation.
 #'
 #' @param LinkId &#91;required&#93; The identifier of the account link.
-#' @param ClientToken A string of up to 64 ASCII characters that Amazon EFS uses to ensure
-#' idempotent creation.
+#' @param ClientToken A string of up to 64 ASCII characters that Amazon WorkSpaces uses to
+#' ensure idempotent creation.
 #'
 #' @keywords internal
 #'
@@ -210,8 +210,8 @@ workspaces_copy_workspace_image <- function(Name, Description = NULL, SourceImag
 #' See [https://www.paws-r-sdk.com/docs/workspaces_create_account_link_invitation/](https://www.paws-r-sdk.com/docs/workspaces_create_account_link_invitation/) for full documentation.
 #'
 #' @param TargetAccountId &#91;required&#93; The identifier of the target account.
-#' @param ClientToken A string of up to 64 ASCII characters that Amazon EFS uses to ensure
-#' idempotent creation.
+#' @param ClientToken A string of up to 64 ASCII characters that Amazon WorkSpaces uses to
+#' ensure idempotent creation.
 #'
 #' @keywords internal
 #'
@@ -601,8 +601,8 @@ workspaces_create_workspaces_pool <- function(PoolName, Description, BundleId, D
 #' See [https://www.paws-r-sdk.com/docs/workspaces_delete_account_link_invitation/](https://www.paws-r-sdk.com/docs/workspaces_delete_account_link_invitation/) for full documentation.
 #'
 #' @param LinkId &#91;required&#93; The identifier of the account link.
-#' @param ClientToken A string of up to 64 ASCII characters that Amazon EFS uses to ensure
-#' idempotent creation.
+#' @param ClientToken A string of up to 64 ASCII characters that Amazon WorkSpaces uses to
+#' ensure idempotent creation.
 #'
 #' @keywords internal
 #'
@@ -969,7 +969,7 @@ workspaces_describe_account_modifications <- function(NextToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "AccountModifications"),
     stream_api = FALSE
   )
   input <- .workspaces$describe_account_modifications_input(NextToken = NextToken)
@@ -1005,7 +1005,7 @@ workspaces_describe_application_associations <- function(MaxResults = NULL, Next
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .workspaces$describe_application_associations_input(MaxResults = MaxResults, NextToken = NextToken, ApplicationId = ApplicationId, AssociatedResourceTypes = AssociatedResourceTypes)
@@ -1044,7 +1044,7 @@ workspaces_describe_applications <- function(ApplicationIds = NULL, ComputeTypeN
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .workspaces$describe_applications_input(ApplicationIds = ApplicationIds, ComputeTypeNames = ComputeTypeNames, LicenseType = LicenseType, OperatingSystemNames = OperatingSystemNames, Owner = Owner, MaxResults = MaxResults, NextToken = NextToken)
@@ -1314,7 +1314,7 @@ workspaces_describe_ip_groups <- function(GroupIds = NULL, NextToken = NULL, Max
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Result"),
     stream_api = FALSE
   )
   input <- .workspaces$describe_ip_groups_input(GroupIds = GroupIds, NextToken = NextToken, MaxResults = MaxResults)
@@ -1529,7 +1529,7 @@ workspaces_describe_workspace_images <- function(ImageIds = NULL, ImageType = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Images"),
     stream_api = FALSE
   )
   input <- .workspaces$describe_workspace_images_input(ImageIds = ImageIds, ImageType = ImageType, NextToken = NextToken, MaxResults = MaxResults)
@@ -1610,7 +1610,7 @@ workspaces_describe_workspaces <- function(WorkspaceIds = NULL, DirectoryId = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "Workspaces"),
+    paginator = list(limit_key = "Limit", input_token = "NextToken", output_token = "NextToken", result_key = "Workspaces"),
     stream_api = FALSE
   )
   input <- .workspaces$describe_workspaces_input(WorkspaceIds = WorkspaceIds, DirectoryId = DirectoryId, UserName = UserName, BundleId = BundleId, Limit = Limit, NextToken = NextToken, WorkspaceName = WorkspaceName)
@@ -1643,7 +1643,7 @@ workspaces_describe_workspaces_connection_status <- function(WorkspaceIds = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "WorkspacesConnectionStatus"),
     stream_api = FALSE
   )
   input <- .workspaces$describe_workspaces_connection_status_input(WorkspaceIds = WorkspaceIds, NextToken = NextToken)
@@ -1904,10 +1904,9 @@ workspaces_import_client_branding <- function(ResourceId, DeviceTypeWindows = NU
 #' @param Ec2ImageId &#91;required&#93; The identifier of the EC2 image.
 #' @param IngestionProcess &#91;required&#93; The ingestion process to be used when importing the image, depending on
 #' which protocol you want to use for your BYOL Workspace image, either
-#' PCoIP, WorkSpaces Streaming Protocol (WSP), or bring your own protocol
-#' (BYOP). To use WSP, specify a value that ends in `_WSP`. To use PCoIP,
-#' specify a value that does not end in `_WSP`. To use BYOP, specify a
-#' value that ends in `_BYOP`.
+#' PCoIP, WSP, or bring your own protocol (BYOP). To use DCV, specify a
+#' value that ends in `_WSP`. To use PCoIP, specify a value that does not
+#' end in `_WSP`. To use BYOP, specify a value that ends in `_BYOP`.
 #' 
 #' For non-GPU-enabled bundles (bundles other than Graphics or
 #' GraphicsPro), specify `BYOL_REGULAR`, `BYOL_REGULAR_WSP`, or
@@ -1929,9 +1928,10 @@ workspaces_import_client_branding <- function(ResourceId, DeviceTypeWindows = NU
 #' -   Although this parameter is an array, only one item is allowed at
 #'     this time.
 #' 
-#' -   During the image import process, non-GPU WSP WorkSpaces with Windows
-#'     11 support only `Microsoft_Office_2019`. GPU WSP WorkSpaces with
-#'     Windows 11 do not support Office installation.
+#' -   During the image import process, non-GPU DCV (formerly WSP)
+#'     WorkSpaces with Windows 11 support only `Microsoft_Office_2019`. GPU
+#'     DCV (formerly WSP) WorkSpaces with Windows 11 do not support Office
+#'     installation.
 #'
 #' @keywords internal
 #'
@@ -2014,7 +2014,7 @@ workspaces_list_available_management_cidr_ranges <- function(ManagementCidrRange
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ManagementCidrRanges"),
     stream_api = FALSE
   )
   input <- .workspaces$list_available_management_cidr_ranges_input(ManagementCidrRangeConstraint = ManagementCidrRangeConstraint, MaxResults = MaxResults, NextToken = NextToken)

@@ -7,7 +7,7 @@
 memorydb_delete_subnet_group(SubnetGroupName)
 }
 \arguments{
-\item{SubnetGroupName}{[required] The name of the subnet group to delete}
+\item{SubnetGroupName}{[required] The name of the subnet group to delete.}
 }
 \description{
 Deletes a subnet group. You cannot delete a default subnet group or one that is associated with any clusters.

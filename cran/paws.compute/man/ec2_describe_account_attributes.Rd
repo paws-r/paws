@@ -4,15 +4,15 @@
 \alias{ec2_describe_account_attributes}
 \title{Describes attributes of your Amazon Web Services account}
 \usage{
-ec2_describe_account_attributes(AttributeNames = NULL, DryRun = NULL)
+ec2_describe_account_attributes(DryRun = NULL, AttributeNames = NULL)
 }
 \arguments{
-\item{AttributeNames}{The account attribute names.}
-
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
+
+\item{AttributeNames}{The account attribute names.}
 }
 \description{
 Describes attributes of your Amazon Web Services account. The following are the supported account attributes:

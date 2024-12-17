@@ -8,6 +8,7 @@ vpclattice_create_service_network(
   authType = NULL,
   clientToken = NULL,
   name,
+  sharingConfig = NULL,
   tags = NULL
 )
 }
@@ -30,6 +31,8 @@ identical, the retry fails.}
 The valid characters are a-z, 0-9, and hyphens (-). You can't use a
 hyphen as the first or last character, or immediately after another
 hyphen.}
+
+\item{sharingConfig}{Specify if the service network should be enabled for sharing.}
 
 \item{tags}{The tags for the service network.}
 }

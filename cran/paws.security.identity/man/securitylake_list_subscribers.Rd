@@ -2,7 +2,7 @@
 % Please edit documentation in R/securitylake_operations.R
 \name{securitylake_list_subscribers}
 \alias{securitylake_list_subscribers}
-\title{List all subscribers for the specific Amazon Security Lake account ID}
+\title{Lists all subscribers for the specific Amazon Security Lake account ID}
 \usage{
 securitylake_list_subscribers(maxResults = NULL, nextToken = NULL)
 }
@@ -13,7 +13,7 @@ securitylake_list_subscribers(maxResults = NULL, nextToken = NULL)
 repeat the call using the returned token to retrieve the next page.}
 }
 \description{
-List all subscribers for the specific Amazon Security Lake account ID. You can retrieve a list of subscriptions associated with a specific organization or Amazon Web Services account.
+Lists all subscribers for the specific Amazon Security Lake account ID. You can retrieve a list of subscriptions associated with a specific organization or Amazon Web Services account.
 
 See \url{https://www.paws-r-sdk.com/docs/securitylake_list_subscribers/} for full documentation.
 }

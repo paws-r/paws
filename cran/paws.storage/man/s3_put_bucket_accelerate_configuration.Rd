@@ -2,7 +2,7 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_put_bucket_accelerate_configuration}
 \alias{s3_put_bucket_accelerate_configuration}
-\title{This operation is not supported by directory buckets}
+\title{This operation is not supported for directory buckets}
 \usage{
 s3_put_bucket_accelerate_configuration(
   Bucket,
@@ -32,7 +32,7 @@ If you provide an individual checksum, Amazon S3 ignores any provided
 \code{ChecksumAlgorithm} parameter.}
 }
 \description{
-This operation is not supported by directory buckets.
+This operation is not supported for directory buckets.
 
 See \url{https://www.paws-r-sdk.com/docs/s3_put_bucket_accelerate_configuration/} for full documentation.
 }

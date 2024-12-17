@@ -3633,7 +3633,7 @@ backup_list_backup_job_summaries <- function(AccountId = NULL, State = NULL, Res
     http_method = "GET",
     http_path = "/audit/backup-job-summaries",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .backup$list_backup_job_summaries_input(AccountId = AccountId, State = State, ResourceType = ResourceType, MessageCategory = MessageCategory, AggregationPeriod = AggregationPeriod, MaxResults = MaxResults, NextToken = NextToken)
@@ -4350,7 +4350,7 @@ backup_list_copy_job_summaries <- function(AccountId = NULL, State = NULL, Resou
     http_method = "GET",
     http_path = "/audit/copy-job-summaries",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .backup$list_copy_job_summaries_input(AccountId = AccountId, State = State, ResourceType = ResourceType, MessageCategory = MessageCategory, AggregationPeriod = AggregationPeriod, MaxResults = MaxResults, NextToken = NextToken)
@@ -4594,7 +4594,7 @@ backup_list_frameworks <- function(MaxResults = NULL, NextToken = NULL) {
     http_method = "GET",
     http_path = "/audit/frameworks",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .backup$list_frameworks_input(MaxResults = MaxResults, NextToken = NextToken)
@@ -5234,7 +5234,7 @@ backup_list_report_jobs <- function(ByReportPlanName = NULL, ByCreationBefore = 
     http_method = "GET",
     http_path = "/audit/report-jobs",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .backup$list_report_jobs_input(ByReportPlanName = ByReportPlanName, ByCreationBefore = ByCreationBefore, ByCreationAfter = ByCreationAfter, ByStatus = ByStatus, MaxResults = MaxResults, NextToken = NextToken)
@@ -5330,7 +5330,7 @@ backup_list_report_plans <- function(MaxResults = NULL, NextToken = NULL) {
     http_method = "GET",
     http_path = "/audit/report-plans",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .backup$list_report_plans_input(MaxResults = MaxResults, NextToken = NextToken)
@@ -5451,7 +5451,7 @@ backup_list_restore_job_summaries <- function(AccountId = NULL, State = NULL, Re
     http_method = "GET",
     http_path = "/audit/restore-job-summaries",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .backup$list_restore_job_summaries_input(AccountId = AccountId, State = State, ResourceType = ResourceType, AggregationPeriod = AggregationPeriod, MaxResults = MaxResults, NextToken = NextToken)
@@ -5915,7 +5915,7 @@ backup_list_tags <- function(ResourceArn, NextToken = NULL, MaxResults = NULL) {
     http_method = "GET",
     http_path = "/tags/{resourceArn}/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .backup$list_tags_input(ResourceArn = ResourceArn, NextToken = NextToken, MaxResults = MaxResults)

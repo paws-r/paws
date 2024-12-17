@@ -42,11 +42,8 @@ This option is only available for IPAM IPv4 pools in the public
 scope.
 }
 
-If you do not choose a locale, resources in Regions others than the
-IPAM's home region cannot use CIDRs from this pool.
-
 Possible values: Any Amazon Web Services Region or supported Amazon Web
-Services Local Zone.}
+Services Local Zone. Default is \code{none} and means any locale.}
 
 \item{SourceIpamPoolId}{The ID of the source IPAM pool. Use this option to create a pool within
 an existing pool. Note that the CIDR you provision for the pool within
@@ -70,8 +67,9 @@ them only.
 
 A locale must be set on the pool for this feature to work.}
 
-\item{PubliclyAdvertisable}{Determines if the pool is publicly advertisable. This option is not
-available for pools with AddressFamily set to \code{ipv4}.}
+\item{PubliclyAdvertisable}{Determines if the pool is publicly advertisable. The request can only
+contain \code{PubliclyAdvertisable} if \code{AddressFamily} is \code{ipv6} and
+\code{PublicIpSource} is \code{byoip}.}
 
 \item{AllocationMinNetmaskLength}{The minimum netmask length required for CIDR allocations in this IPAM
 pool to be compliant. The minimum netmask length must be less than the

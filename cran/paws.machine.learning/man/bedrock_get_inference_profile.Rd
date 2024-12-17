@@ -7,10 +7,10 @@
 bedrock_get_inference_profile(inferenceProfileIdentifier)
 }
 \arguments{
-\item{inferenceProfileIdentifier}{[required] The unique identifier of the inference profile.}
+\item{inferenceProfileIdentifier}{[required] The ID or Amazon Resource Name (ARN) of the inference profile.}
 }
 \description{
-Gets information about an inference profile. For more information, see the Amazon Bedrock User Guide.
+Gets information about an inference profile. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/cross-region-inference.html}{Increase throughput and resilience with cross-region inference in Amazon Bedrock}. in the Amazon Bedrock User Guide.
 
 See \url{https://www.paws-r-sdk.com/docs/bedrock_get_inference_profile/} for full documentation.
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/elasticinference_operations.R
 \name{elasticinference_untag_resource}
 \alias{elasticinference_untag_resource}
-\title{Removes the specified tags from an Elastic Inference Accelerator}
+\title{Amazon Elastic Inference is no longer available}
 \usage{
 elasticinference_untag_resource(resourceArn, tagKeys)
 }
@@ -12,7 +12,7 @@ elasticinference_untag_resource(resourceArn, tagKeys)
 \item{tagKeys}{[required] The list of tags to remove from the Elastic Inference Accelerator.}
 }
 \description{
-Removes the specified tags from an Elastic Inference Accelerator.
+Amazon Elastic Inference is no longer available.
 
 See \url{https://www.paws-r-sdk.com/docs/elasticinference_untag_resource/} for full documentation.
 }

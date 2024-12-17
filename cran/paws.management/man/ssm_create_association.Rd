@@ -80,7 +80,7 @@ tags, Amazon Web Services resource groups, all managed nodes in an
 Amazon Web Services account, or individual managed node IDs. You can
 target all managed nodes in an Amazon Web Services account by specifying
 the \code{InstanceIds} key with a value of \code{*}. For more information about
-choosing targets for an association, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-state-manager-targets-and-rate-controls.html}{About targets and rate controls in State Manager associations}
+choosing targets for an association, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-state-manager-targets-and-rate-controls.html}{Understanding targets and rate controls in State Manager associations}
 in the \emph{Amazon Web Services Systems Manager User Guide}.}
 
 \item{ScheduleExpression}{A cron expression when the association will be applied to the targets.}

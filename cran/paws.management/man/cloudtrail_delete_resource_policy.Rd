@@ -2,18 +2,26 @@
 % Please edit documentation in R/cloudtrail_operations.R
 \name{cloudtrail_delete_resource_policy}
 \alias{cloudtrail_delete_resource_policy}
-\title{Deletes the resource-based policy attached to the CloudTrail channel}
+\title{Deletes the resource-based policy attached to the CloudTrail event data
+store, dashboard, or channel}
 \usage{
 cloudtrail_delete_resource_policy(ResourceArn)
 }
 \arguments{
-\item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the CloudTrail channel you're deleting
-the resource-based policy from. The following is the format of a
-resource ARN:
-\code{arn:aws:cloudtrail:us-east-2:123456789012:channel/MyChannel}.}
+\item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the CloudTrail event data store,
+dashboard, or channel you're deleting the resource-based policy from.
+
+Example event data store ARN format:
+\verb{arn:aws:cloudtrail:us-east-2:123456789012:eventdatastore/EXAMPLE-f852-4e8f-8bd1-bcf6cEXAMPLE}
+
+Example dashboard ARN format:
+\code{arn:aws:cloudtrail:us-east-1:123456789012:dashboard/exampleDash}
+
+Example channel ARN format:
+\code{arn:aws:cloudtrail:us-east-2:123456789012:channel/01234567890}}
 }
 \description{
-Deletes the resource-based policy attached to the CloudTrail channel.
+Deletes the resource-based policy attached to the CloudTrail event data store, dashboard, or channel.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudtrail_delete_resource_policy/} for full documentation.
 }

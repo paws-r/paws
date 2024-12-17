@@ -13,6 +13,10 @@ NULL
 #' For more information about Cloud9, see the [Cloud9 User
 #' Guide](https://docs.aws.amazon.com/cloud9/latest/user-guide/).
 #' 
+#' Cloud9 is no longer available to new customers. Existing customers of
+#' Cloud9 can continue to use the service as normal. [Learn
+#' more"](https://aws.amazon.com/blogs/devops/how-to-migrate-from-aws-cloud9-to-aws-ide-toolkits-or-aws-cloudshell/)
+#' 
 #' Cloud9 supports these operations:
 #' 
 #' -   [`create_environment_ec2`][cloud9_create_environment_ec2]: Creates
@@ -137,7 +141,6 @@ NULL
 #'   name = "my-demo-environment",
 #'   automaticStopTimeMinutes = 60L,
 #'   description = "This is my demonstration environment.",
-#'   imageId = "amazonlinux-2023-x86_64",
 #'   instanceType = "t2.micro",
 #'   ownerArn = "arn:aws:iam::123456789012:user/MyDemoUser",
 #'   subnetId = "subnet-6300cd1b"
@@ -190,7 +193,7 @@ cloud9 <- function(config = list(), credentials = list(), endpoint = NULL, regio
 
 .cloud9$metadata <- list(
   service_name = "cloud9",
-  endpoints = list("*" = list(endpoint = "cloud9.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "cloud9.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "cloud9.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "cloud9.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "cloud9.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "cloud9.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "cloud9.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "cloud9.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "cloud9.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "cloud9.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "cloud9.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "cloud9.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "cloud9.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Cloud9",
   api_version = "2017-09-23",
   signing_name = "cloud9",

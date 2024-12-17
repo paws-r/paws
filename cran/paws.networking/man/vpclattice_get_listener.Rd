@@ -8,9 +8,9 @@ service}
 vpclattice_get_listener(listenerIdentifier, serviceIdentifier)
 }
 \arguments{
-\item{listenerIdentifier}{[required] The ID or Amazon Resource Name (ARN) of the listener.}
+\item{listenerIdentifier}{[required] The ID or ARN of the listener.}
 
-\item{serviceIdentifier}{[required] The ID or Amazon Resource Name (ARN) of the service.}
+\item{serviceIdentifier}{[required] The ID or ARN of the service.}
 }
 \description{
 Retrieves information about the specified listener for the specified service.

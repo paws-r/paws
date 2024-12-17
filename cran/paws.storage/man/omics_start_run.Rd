@@ -10,6 +10,8 @@ omics_start_run(
   runId = NULL,
   roleArn,
   name = NULL,
+  cacheId = NULL,
+  cacheBehavior = NULL,
   runGroupId = NULL,
   priority = NULL,
   parameters = NULL,
@@ -34,6 +36,14 @@ omics_start_run(
 
 \item{name}{A name for the run.}
 
+\item{cacheId}{Identifier of the cache associated with this run. If you don't specify a
+cache ID, no task outputs are cached for this run.}
+
+\item{cacheBehavior}{The cache behavior for the run. You specify this value if you want to
+override the default behavior for the cache. You had set the default
+value when you created the cache. For more information, see \href{https://docs.aws.amazon.com/omics/latest/dev/how-run-cache.html#run-cache-behavior}{Run cache behavior}
+in the AWS HealthOmics User Guide.}
+
 \item{runGroupId}{The run's group ID.}
 
 \item{priority}{A priority for the run.}
@@ -53,7 +63,18 @@ enter).}
 \item{requestId}{[required] To ensure that requests don't run multiple times, specify a unique ID
 for each request.}
 
-\item{retentionMode}{The retention mode for the run.}
+\item{retentionMode}{The retention mode for the run. The default value is RETAIN.
+
+HealthOmics stores a fixed number of runs that are available to the
+console and API. In the default mode (RETAIN), you need to remove runs
+manually when the number of run exceeds the maximum. If you set the
+retention mode to \code{REMOVE}, HealthOmics automatically removes runs (that
+have mode set to REMOVE) when the number of run exceeds the maximum. All
+run logs are available in CloudWatch logs, if you need information about
+a run that is no longer available to the API.
+
+For more information about retention mode, see \href{https://docs.aws.amazon.com/omics/latest/dev/starting-a-run.html}{Specifying run retention mode}
+in the \emph{AWS HealthOmics User Guide}.}
 
 \item{storageType}{The run's storage type. By default, the run uses STATIC storage type,
 which allocates a fixed amount of storage. If you set the storage type

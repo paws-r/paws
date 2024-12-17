@@ -23,11 +23,13 @@ cognitoidentityprovider_update_user_pool(
   UserPoolTags = NULL,
   AdminCreateUserConfig = NULL,
   UserPoolAddOns = NULL,
-  AccountRecoverySetting = NULL
+  AccountRecoverySetting = NULL,
+  PoolName = NULL,
+  UserPoolTier = NULL
 )
 }
 \arguments{
-\item{UserPoolId}{[required] The user pool ID for the user pool you want to update.}
+\item{UserPoolId}{[required] The ID of the user pool you want to update.}
 
 \item{Policies}{A container with the policies you want to update in a user pool.}
 
@@ -125,6 +127,13 @@ password recovery mechanism if the user also has SMS multi-factor
 authentication (MFA) activated. In the absence of this setting, Amazon
 Cognito uses the legacy behavior to determine the recovery method where
 SMS is preferred through email.}
+
+\item{PoolName}{The updated name of your user pool.}
+
+\item{UserPoolTier}{The user pool \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-sign-in-feature-plans.html}{feature plan},
+or tier. This parameter determines the eligibility of the user pool for
+features like managed login, access-token customization, and threat
+protection. Defaults to \code{ESSENTIALS}.}
 }
 \description{
 This action might generate an SMS text message. Starting June 1, 2021, US telecom carriers require you to register an origination phone number before you can send SMS messages to US phone numbers. If you use SMS text messages in Amazon Cognito, you must register a phone number with Amazon Pinpoint. Amazon Cognito uses the registered number automatically. Otherwise, Amazon Cognito users who must receive SMS messages might not be able to sign up, activate their accounts, or sign in.

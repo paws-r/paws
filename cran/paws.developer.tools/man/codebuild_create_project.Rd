@@ -25,7 +25,8 @@ codebuild_create_project(
   logsConfig = NULL,
   fileSystemLocations = NULL,
   buildBatchConfig = NULL,
-  concurrentBuildLimit = NULL
+  concurrentBuildLimit = NULL,
+  autoRetryLimit = NULL
 )
 }
 \arguments{
@@ -125,6 +126,11 @@ project.
 New builds are only started if the current number of builds is less than
 or equal to this limit. If the current build count meets this limit, new
 builds are throttled and are not run.}
+
+\item{autoRetryLimit}{The maximum number of additional automatic retries after a failed build.
+For example, if the auto-retry limit is set to 2, CodeBuild will call
+the \code{\link[=codebuild_retry_build]{retry_build}} API to automatically retry
+your build for up to 2 additional times.}
 }
 \description{
 Creates a build project.

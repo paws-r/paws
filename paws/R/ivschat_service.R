@@ -49,18 +49,19 @@ NULL
 #' A *tag* is a metadata label that you assign to an AWS resource. A tag
 #' comprises a *key* and a *value*, both set by you. For example, you might
 #' set a tag as `topic:nature` to label a particular video category. See
-#' [Tagging AWS
-#' Resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html)
-#' for more information, including restrictions that apply to tags and "Tag
-#' naming limits and requirements"; Amazon IVS Chat has no service-specific
-#' constraints beyond what is documented there.
+#' [Best practices and
+#' strategies](https://docs.aws.amazon.com/tag-editor/latest/userguide/best-practices-and-strats.html)
+#' in *Tagging Amazon Web Services Resources and Tag Editor* for details,
+#' including restrictions that apply to tags and "Tag naming limits and
+#' requirements"; Amazon IVS Chat has no service-specific constraints
+#' beyond what is documented there.
 #' 
 #' Tags can help you identify and organize your AWS resources. For example,
 #' you can use the same tag for different resources to indicate that they
 #' are related. You can also use tags to manage access (see [Access
 #' Tags](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_tags.html)).
 #' 
-#' The Amazon IVS Chat API has these tag-related endpoints:
+#' The Amazon IVS Chat API has these tag-related operations:
 #' [`tag_resource`][ivschat_tag_resource],
 #' [`untag_resource`][ivschat_untag_resource], and
 #' [`list_tags_for_resource`][ivschat_list_tags_for_resource]. The
@@ -82,7 +83,7 @@ NULL
 #' 
 #' Users (viewers) connect to a room using secure access tokens that you
 #' create using the [`create_chat_token`][ivschat_create_chat_token]
-#' endpoint through the AWS SDK. You call CreateChatToken for every user’s
+#' operation through the AWS SDK. You call CreateChatToken for every user’s
 #' chat session, passing identity and authorization information about the
 #' user.
 #' 
@@ -249,7 +250,7 @@ ivschat <- function(config = list(), credentials = list(), endpoint = NULL, regi
 
 .ivschat$metadata <- list(
   service_name = "ivschat",
-  endpoints = list("*" = list(endpoint = "ivschat.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "ivschat.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "ivschat.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "ivschat.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "ivschat.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "ivschat.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "ivschat.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "ivschat.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "ivschat.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "ivschat.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "ivschat.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "ivschat.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "ivschat.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "ivschat",
   api_version = "2020-07-14",
   signing_name = "ivschat",

@@ -12,7 +12,8 @@ fis_update_experiment_template(
   actions = NULL,
   roleArn = NULL,
   logConfiguration = NULL,
-  experimentOptions = NULL
+  experimentOptions = NULL,
+  experimentReportConfiguration = NULL
 )
 }
 \arguments{
@@ -32,6 +33,8 @@ service permission to perform service actions on your behalf.}
 \item{logConfiguration}{The configuration for experiment logging.}
 
 \item{experimentOptions}{The experiment options for the experiment template.}
+
+\item{experimentReportConfiguration}{The experiment report configuration for the experiment template.}
 }
 \description{
 Updates the specified experiment template.

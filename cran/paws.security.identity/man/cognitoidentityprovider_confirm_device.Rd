@@ -2,7 +2,7 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_confirm_device}
 \alias{cognitoidentityprovider_confirm_device}
-\title{Confirms tracking of the device}
+\title{Confirms a device that a user wants to remember}
 \usage{
 cognitoidentityprovider_confirm_device(
   AccessToken,
@@ -15,14 +15,15 @@ cognitoidentityprovider_confirm_device(
 \item{AccessToken}{[required] A valid access token that Amazon Cognito issued to the user whose device
 you want to confirm.}
 
-\item{DeviceKey}{[required] The device key.}
+\item{DeviceKey}{[required] The unique identifier, or device key, of the device that you want to
+update the status for.}
 
 \item{DeviceSecretVerifierConfig}{The configuration of the device secret verifier.}
 
-\item{DeviceName}{The device name.}
+\item{DeviceName}{A friendly name for the device, for example \code{MyMobilePhone}.}
 }
 \description{
-Confirms tracking of the device. This API call is the call that begins device tracking. For more information about device authentication, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/amazon-cognito-user-pools-device-tracking.html}{Working with user devices in your user pool}.
+Confirms a device that a user wants to remember. A remembered device is a "Remember me on this device" option for user pools that perform authentication with the device key of a trusted device in the back end, instead of a user-provided MFA code. For more information about device authentication, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/amazon-cognito-user-pools-device-tracking.html}{Working with user devices in your user pool}.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_confirm_device/} for full documentation.
 }

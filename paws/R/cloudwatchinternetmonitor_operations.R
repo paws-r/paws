@@ -578,7 +578,7 @@ cloudwatchinternetmonitor_get_query_results <- function(MonitorName, QueryId, Ne
     http_method = "GET",
     http_path = "/v20210603/Monitors/{MonitorName}/Queries/{QueryId}/Results",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .cloudwatchinternetmonitor$get_query_results_input(MonitorName = MonitorName, QueryId = QueryId, NextToken = NextToken, MaxResults = MaxResults)
@@ -1091,8 +1091,13 @@ cloudwatchinternetmonitor_list_tags_for_resource <- function(ResourceArn) {
 #' 
 #' -   `OVERALL_TRAFFIC_SUGGESTIONS_DETAILS`: Provides TTFB, using a 30-day
 #'     weighted average, for each top location, for a proposed Amazon Web
-#'     Services location. Must provide a Amazon Web Services location to
+#'     Services location. Must provide an Amazon Web Services location to
 #'     search.
+#' 
+#' -   `ROUTING_SUGGESTIONS`: Provides the predicted average round-trip
+#'     time (RTT) from an IP prefix toward an Amazon Web Services location
+#'     for a DNS resolver. The RTT is calculated at one hour intervals,
+#'     over a one hour period.
 #' 
 #' For lists of the fields returned with each query type and more
 #' information about how each type of query is performed, see [Using the
@@ -1134,7 +1139,7 @@ cloudwatchinternetmonitor_list_tags_for_resource <- function(ResourceArn) {
 #'   EndTime = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   QueryType = "MEASUREMENTS"|"TOP_LOCATIONS"|"TOP_LOCATION_DETAILS"|"OVERALL_TRAFFIC_SUGGESTIONS"|"OVERALL_TRAFFIC_SUGGESTIONS_DETAILS",
+#'   QueryType = "MEASUREMENTS"|"TOP_LOCATIONS"|"TOP_LOCATION_DETAILS"|"OVERALL_TRAFFIC_SUGGESTIONS"|"OVERALL_TRAFFIC_SUGGESTIONS_DETAILS"|"ROUTING_SUGGESTIONS",
 #'   FilterParameters = list(
 #'     list(
 #'       Field = "string",

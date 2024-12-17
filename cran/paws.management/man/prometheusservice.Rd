@@ -139,6 +139,7 @@ to work within your Prometheus workspace.
 \link[=prometheusservice_tag_resource]{tag_resource} \tab The TagResource operation associates tags with an Amazon Managed Service for Prometheus resource\cr
 \link[=prometheusservice_untag_resource]{untag_resource} \tab Removes the specified tags from an Amazon Managed Service for Prometheus resource\cr
 \link[=prometheusservice_update_logging_configuration]{update_logging_configuration} \tab Updates the log group ARN or the workspace ID of the current logging configuration\cr
+\link[=prometheusservice_update_scraper]{update_scraper} \tab Updates an existing scraper\cr
 \link[=prometheusservice_update_workspace_alias]{update_workspace_alias} \tab Updates the alias of an existing workspace
 }
 }

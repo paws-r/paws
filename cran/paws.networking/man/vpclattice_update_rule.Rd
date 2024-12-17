@@ -2,7 +2,7 @@
 % Please edit documentation in R/vpclattice_operations.R
 \name{vpclattice_update_rule}
 \alias{vpclattice_update_rule}
-\title{Updates a rule for the listener}
+\title{Updates a specified rule for the listener}
 \usage{
 vpclattice_update_rule(
   action = NULL,
@@ -16,19 +16,19 @@ vpclattice_update_rule(
 \arguments{
 \item{action}{Information about the action for the specified listener rule.}
 
-\item{listenerIdentifier}{[required] The ID or Amazon Resource Name (ARN) of the listener.}
+\item{listenerIdentifier}{[required] The ID or ARN of the listener.}
 
 \item{match}{The rule match.}
 
 \item{priority}{The rule priority. A listener can't have multiple rules with the same
 priority.}
 
-\item{ruleIdentifier}{[required] The ID or Amazon Resource Name (ARN) of the rule.}
+\item{ruleIdentifier}{[required] The ID or ARN of the rule.}
 
-\item{serviceIdentifier}{[required] The ID or Amazon Resource Name (ARN) of the service.}
+\item{serviceIdentifier}{[required] The ID or ARN of the service.}
 }
 \description{
-Updates a rule for the listener. You can't modify a default listener rule. To modify a default listener rule, use \code{\link[=vpclattice_update_listener]{update_listener}}.
+Updates a specified rule for the listener. You can't modify a default listener rule. To modify a default listener rule, use \code{\link[=vpclattice_update_listener]{update_listener}}.
 
 See \url{https://www.paws-r-sdk.com/docs/vpclattice_update_rule/} for full documentation.
 }

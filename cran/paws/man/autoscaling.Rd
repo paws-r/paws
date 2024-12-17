@@ -102,7 +102,7 @@ and the \href{https://docs.aws.amazon.com/autoscaling/ec2/APIReference/Welcome.h
 
 \tabular{ll}{
 \link[paws.management:autoscaling_attach_instances]{attach_instances} \tab Attaches one or more EC2 instances to the specified Auto Scaling group\cr
-\link[paws.management:autoscaling_attach_load_balancers]{attach_load_balancers} \tab This API operation is superseded by AttachTrafficSources, which can attach multiple traffic sources types\cr
+\link[paws.management:autoscaling_attach_load_balancers]{attach_load_balancers} \tab This API operation is superseded by https://docs\cr
 \link[paws.management:autoscaling_attach_load_balancer_target_groups]{attach_load_balancer_target_groups} \tab This API operation is superseded by AttachTrafficSources, which can attach multiple traffic sources types\cr
 \link[paws.management:autoscaling_attach_traffic_sources]{attach_traffic_sources} \tab Attaches one or more traffic sources to the specified Auto Scaling group\cr
 \link[paws.management:autoscaling_batch_delete_scheduled_action]{batch_delete_scheduled_action} \tab Deletes one or more scheduled actions for the specified Auto Scaling group\cr

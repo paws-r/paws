@@ -5,42 +5,20 @@
 \title{Allocates a Dedicated Host to your account}
 \usage{
 ec2_allocate_hosts(
-  AutoPlacement = NULL,
-  AvailabilityZone,
-  ClientToken = NULL,
-  InstanceType = NULL,
   InstanceFamily = NULL,
-  Quantity = NULL,
   TagSpecifications = NULL,
   HostRecovery = NULL,
   OutpostArn = NULL,
   HostMaintenance = NULL,
-  AssetIds = NULL
+  AssetIds = NULL,
+  AutoPlacement = NULL,
+  ClientToken = NULL,
+  InstanceType = NULL,
+  Quantity = NULL,
+  AvailabilityZone
 )
 }
 \arguments{
-\item{AutoPlacement}{Indicates whether the host accepts any untargeted instance launches that
-match its instance type configuration, or if it only accepts Host
-tenancy instance launches that specify its unique host ID. For more
-information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/#dedicated-hosts-understanding}{Understanding auto-placement and affinity}
-in the \emph{Amazon EC2 User Guide}.
-
-Default: \code{off}}
-
-\item{AvailabilityZone}{[required] The Availability Zone in which to allocate the Dedicated Host.}
-
-\item{ClientToken}{Unique, case-sensitive identifier that you provide to ensure the
-idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring Idempotency}.}
-
-\item{InstanceType}{Specifies the instance type to be supported by the Dedicated Hosts. If
-you specify an instance type, the Dedicated Hosts support instances of
-the specified instance type only.
-
-If you want the Dedicated Hosts to support multiple instance types in a
-specific instance family, omit this parameter and specify
-\strong{InstanceFamily} instead. You cannot specify \strong{InstanceType} and
-\strong{InstanceFamily} in the same request.}
-
 \item{InstanceFamily}{Specifies the instance family to be supported by the Dedicated Hosts. If
 you specify an instance family, the Dedicated Hosts support multiple
 instance types within that instance family.
@@ -49,14 +27,6 @@ If you want the Dedicated Hosts to support a specific instance type
 only, omit this parameter and specify \strong{InstanceType} instead. You
 cannot specify \strong{InstanceFamily} and \strong{InstanceType} in the same
 request.}
-
-\item{Quantity}{The number of Dedicated Hosts to allocate to your account with these
-parameters. If you are allocating the Dedicated Hosts on an Outpost, and
-you specify \strong{AssetIds}, you can omit this parameter. In this case,
-Amazon EC2 allocates a Dedicated Host on each specified hardware asset.
-If you specify both \strong{AssetIds} and \strong{Quantity}, then the value that
-you specify for \strong{Quantity} must be equal to the number of asset IDs
-specified.}
 
 \item{TagSpecifications}{The tags to apply to the Dedicated Host during creation.}
 
@@ -90,6 +60,36 @@ hardware asset.
 \item If you specify both \strong{AssetIds} and \strong{Quantity}, then the value
 for \strong{Quantity} must be equal to the number of asset IDs specified.
 }}
+
+\item{AutoPlacement}{Indicates whether the host accepts any untargeted instance launches that
+match its instance type configuration, or if it only accepts Host
+tenancy instance launches that specify its unique host ID. For more
+information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/#dedicated-hosts-understanding}{Understanding auto-placement and affinity}
+in the \emph{Amazon EC2 User Guide}.
+
+Default: \code{off}}
+
+\item{ClientToken}{Unique, case-sensitive identifier that you provide to ensure the
+idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring Idempotency}.}
+
+\item{InstanceType}{Specifies the instance type to be supported by the Dedicated Hosts. If
+you specify an instance type, the Dedicated Hosts support instances of
+the specified instance type only.
+
+If you want the Dedicated Hosts to support multiple instance types in a
+specific instance family, omit this parameter and specify
+\strong{InstanceFamily} instead. You cannot specify \strong{InstanceType} and
+\strong{InstanceFamily} in the same request.}
+
+\item{Quantity}{The number of Dedicated Hosts to allocate to your account with these
+parameters. If you are allocating the Dedicated Hosts on an Outpost, and
+you specify \strong{AssetIds}, you can omit this parameter. In this case,
+Amazon EC2 allocates a Dedicated Host on each specified hardware asset.
+If you specify both \strong{AssetIds} and \strong{Quantity}, then the value that
+you specify for \strong{Quantity} must be equal to the number of asset IDs
+specified.}
+
+\item{AvailabilityZone}{[required] The Availability Zone in which to allocate the Dedicated Host.}
 }
 \description{
 Allocates a Dedicated Host to your account. At a minimum, specify the supported instance type or instance family, the Availability Zone in which to allocate the host, and the number of hosts to allocate.

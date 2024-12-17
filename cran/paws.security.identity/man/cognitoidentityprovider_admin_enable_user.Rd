@@ -2,12 +2,13 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_admin_enable_user}
 \alias{cognitoidentityprovider_admin_enable_user}
-\title{Enables the specified user as an administrator}
+\title{Activate sign-in for a user profile that previously had sign-in access
+disabled}
 \usage{
 cognitoidentityprovider_admin_enable_user(UserPoolId, Username)
 }
 \arguments{
-\item{UserPoolId}{[required] The user pool ID for the user pool where you want to enable the user.}
+\item{UserPoolId}{[required] The ID of the user pool where you want to activate sign-in for the user.}
 
 \item{Username}{[required] The username of the user that you want to query or modify. The value of
 this parameter is typically your user's username, but it can be any of
@@ -16,7 +17,7 @@ user pool, this value must be the \code{sub} of a local user or the username
 of a user from a third-party IdP.}
 }
 \description{
-Enables the specified user as an administrator. Works on any user.
+Activate sign-in for a user profile that previously had sign-in access disabled.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_admin_enable_user/} for full documentation.
 }

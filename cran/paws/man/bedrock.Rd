@@ -90,10 +90,12 @@ evaluating Amazon Bedrock models.
 \section{Operations}{
 
 \tabular{ll}{
-\link[paws.machine.learning:bedrock_batch_delete_evaluation_job]{batch_delete_evaluation_job} \tab Creates a batch deletion job\cr
-\link[paws.machine.learning:bedrock_create_evaluation_job]{create_evaluation_job} \tab API operation for creating and managing Amazon Bedrock automatic model evaluation jobs and model evaluation jobs that use human workers\cr
+\link[paws.machine.learning:bedrock_batch_delete_evaluation_job]{batch_delete_evaluation_job} \tab Deletes a batch of evaluation jobs\cr
+\link[paws.machine.learning:bedrock_create_evaluation_job]{create_evaluation_job} \tab Creates an evaluation job\cr
 \link[paws.machine.learning:bedrock_create_guardrail]{create_guardrail} \tab Creates a guardrail to block topics and to implement safeguards for your generative AI applications\cr
 \link[paws.machine.learning:bedrock_create_guardrail_version]{create_guardrail_version} \tab Creates a version of the guardrail\cr
+\link[paws.machine.learning:bedrock_create_inference_profile]{create_inference_profile} \tab Creates an application inference profile to track metrics and costs when invoking a model\cr
+\link[paws.machine.learning:bedrock_create_marketplace_model_endpoint]{create_marketplace_model_endpoint} \tab Creates an endpoint for a model from Amazon Bedrock Marketplace\cr
 \link[paws.machine.learning:bedrock_create_model_copy_job]{create_model_copy_job} \tab Copies a model to another region so that it can be used there\cr
 \link[paws.machine.learning:bedrock_create_model_customization_job]{create_model_customization_job} \tab Creates a fine-tuning job to customize a base model\cr
 \link[paws.machine.learning:bedrock_create_model_import_job]{create_model_import_job} \tab Creates a model import job to import model that you have customized in other environments, such as Amazon SageMaker\cr
@@ -102,39 +104,48 @@ evaluating Amazon Bedrock models.
 \link[paws.machine.learning:bedrock_delete_custom_model]{delete_custom_model} \tab Deletes a custom model that you created earlier\cr
 \link[paws.machine.learning:bedrock_delete_guardrail]{delete_guardrail} \tab Deletes a guardrail\cr
 \link[paws.machine.learning:bedrock_delete_imported_model]{delete_imported_model} \tab Deletes a custom model that you imported earlier\cr
+\link[paws.machine.learning:bedrock_delete_inference_profile]{delete_inference_profile} \tab Deletes an application inference profile\cr
+\link[paws.machine.learning:bedrock_delete_marketplace_model_endpoint]{delete_marketplace_model_endpoint} \tab Deletes an endpoint for a model from Amazon Bedrock Marketplace\cr
 \link[paws.machine.learning:bedrock_delete_model_invocation_logging_configuration]{delete_model_invocation_logging_configuration} \tab Delete the invocation logging\cr
 \link[paws.machine.learning:bedrock_delete_provisioned_model_throughput]{delete_provisioned_model_throughput} \tab Deletes a Provisioned Throughput\cr
+\link[paws.machine.learning:bedrock_deregister_marketplace_model_endpoint]{deregister_marketplace_model_endpoint} \tab Deregisters an endpoint for a model from Amazon Bedrock Marketplace\cr
 \link[paws.machine.learning:bedrock_get_custom_model]{get_custom_model} \tab Get the properties associated with a Amazon Bedrock custom model that you have created\cr
-\link[paws.machine.learning:bedrock_get_evaluation_job]{get_evaluation_job} \tab Retrieves the properties associated with a model evaluation job, including the status of the job\cr
+\link[paws.machine.learning:bedrock_get_evaluation_job]{get_evaluation_job} \tab Gets information about an evaluation job, such as the status of the job\cr
 \link[paws.machine.learning:bedrock_get_foundation_model]{get_foundation_model} \tab Get details about a Amazon Bedrock foundation model\cr
 \link[paws.machine.learning:bedrock_get_guardrail]{get_guardrail} \tab Gets details about a guardrail\cr
 \link[paws.machine.learning:bedrock_get_imported_model]{get_imported_model} \tab Gets properties associated with a customized model you imported\cr
 \link[paws.machine.learning:bedrock_get_inference_profile]{get_inference_profile} \tab Gets information about an inference profile\cr
+\link[paws.machine.learning:bedrock_get_marketplace_model_endpoint]{get_marketplace_model_endpoint} \tab Retrieves details about a specific endpoint for a model from Amazon Bedrock Marketplace\cr
 \link[paws.machine.learning:bedrock_get_model_copy_job]{get_model_copy_job} \tab Retrieves information about a model copy job\cr
 \link[paws.machine.learning:bedrock_get_model_customization_job]{get_model_customization_job} \tab Retrieves the properties associated with a model-customization job, including the status of the job\cr
 \link[paws.machine.learning:bedrock_get_model_import_job]{get_model_import_job} \tab Retrieves the properties associated with import model job, including the status of the job\cr
 \link[paws.machine.learning:bedrock_get_model_invocation_job]{get_model_invocation_job} \tab Gets details about a batch inference job\cr
 \link[paws.machine.learning:bedrock_get_model_invocation_logging_configuration]{get_model_invocation_logging_configuration} \tab Get the current configuration values for model invocation logging\cr
+\link[paws.machine.learning:bedrock_get_prompt_router]{get_prompt_router} \tab Retrieves details about a prompt router\cr
 \link[paws.machine.learning:bedrock_get_provisioned_model_throughput]{get_provisioned_model_throughput} \tab Returns details for a Provisioned Throughput\cr
 \link[paws.machine.learning:bedrock_list_custom_models]{list_custom_models} \tab Returns a list of the custom models that you have created with the CreateModelCustomizationJob operation\cr
-\link[paws.machine.learning:bedrock_list_evaluation_jobs]{list_evaluation_jobs} \tab Lists model evaluation jobs\cr
+\link[paws.machine.learning:bedrock_list_evaluation_jobs]{list_evaluation_jobs} \tab Lists all existing evaluation jobs\cr
 \link[paws.machine.learning:bedrock_list_foundation_models]{list_foundation_models} \tab Lists Amazon Bedrock foundation models that you can use\cr
 \link[paws.machine.learning:bedrock_list_guardrails]{list_guardrails} \tab Lists details about all the guardrails in an account\cr
 \link[paws.machine.learning:bedrock_list_imported_models]{list_imported_models} \tab Returns a list of models you've imported\cr
 \link[paws.machine.learning:bedrock_list_inference_profiles]{list_inference_profiles} \tab Returns a list of inference profiles that you can use\cr
+\link[paws.machine.learning:bedrock_list_marketplace_model_endpoints]{list_marketplace_model_endpoints} \tab Lists the endpoints for models from Amazon Bedrock Marketplace in your Amazon Web Services account\cr
 \link[paws.machine.learning:bedrock_list_model_copy_jobs]{list_model_copy_jobs} \tab Returns a list of model copy jobs that you have submitted\cr
 \link[paws.machine.learning:bedrock_list_model_customization_jobs]{list_model_customization_jobs} \tab Returns a list of model customization jobs that you have submitted\cr
 \link[paws.machine.learning:bedrock_list_model_import_jobs]{list_model_import_jobs} \tab Returns a list of import jobs you've submitted\cr
 \link[paws.machine.learning:bedrock_list_model_invocation_jobs]{list_model_invocation_jobs} \tab Lists all batch inference jobs in the account\cr
+\link[paws.machine.learning:bedrock_list_prompt_routers]{list_prompt_routers} \tab Retrieves a list of prompt routers\cr
 \link[paws.machine.learning:bedrock_list_provisioned_model_throughputs]{list_provisioned_model_throughputs} \tab Lists the Provisioned Throughputs in the account\cr
 \link[paws.machine.learning:bedrock_list_tags_for_resource]{list_tags_for_resource} \tab List the tags associated with the specified resource\cr
 \link[paws.machine.learning:bedrock_put_model_invocation_logging_configuration]{put_model_invocation_logging_configuration} \tab Set the configuration values for model invocation logging\cr
-\link[paws.machine.learning:bedrock_stop_evaluation_job]{stop_evaluation_job} \tab Stops an in progress model evaluation job\cr
+\link[paws.machine.learning:bedrock_register_marketplace_model_endpoint]{register_marketplace_model_endpoint} \tab Registers an existing Amazon SageMaker endpoint with Amazon Bedrock Marketplace, allowing it to be used with Amazon Bedrock APIs\cr
+\link[paws.machine.learning:bedrock_stop_evaluation_job]{stop_evaluation_job} \tab Stops an evaluation job that is current being created or running\cr
 \link[paws.machine.learning:bedrock_stop_model_customization_job]{stop_model_customization_job} \tab Stops an active model customization job\cr
 \link[paws.machine.learning:bedrock_stop_model_invocation_job]{stop_model_invocation_job} \tab Stops a batch inference job\cr
 \link[paws.machine.learning:bedrock_tag_resource]{tag_resource} \tab Associate tags with a resource\cr
 \link[paws.machine.learning:bedrock_untag_resource]{untag_resource} \tab Remove one or more tags from a resource\cr
 \link[paws.machine.learning:bedrock_update_guardrail]{update_guardrail} \tab Updates a guardrail with the values you specify\cr
+\link[paws.machine.learning:bedrock_update_marketplace_model_endpoint]{update_marketplace_model_endpoint} \tab Updates the configuration of an existing endpoint for a model from Amazon Bedrock Marketplace\cr
 \link[paws.machine.learning:bedrock_update_provisioned_model_throughput]{update_provisioned_model_throughput} \tab Updates the name or associated model for a Provisioned Throughput
 }
 }

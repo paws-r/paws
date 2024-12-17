@@ -90,22 +90,6 @@ NULL
 #' )
 #' ```
 #'
-#' @examples
-#' \dontrun{
-#' # This operation associates one or more faces with an existing UserID.
-#' svc$associate_faces(
-#'   ClientRequestToken = "550e8400-e29b-41d4-a716-446655440002",
-#'   CollectionId = "MyCollection",
-#'   FaceIds = list(
-#'     "f5817d37-94f6-4335-bfee-6cf79a3d806e",
-#'     "851cb847-dccc-4fea-9309-9f4805967855",
-#'     "35ebbb41-7f67-4263-908d-dd0ecba05ab9"
-#'   ),
-#'   UserId = "DemoUser",
-#'   UserMatchThreshold = 70L
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname rekognition_associate_faces
@@ -495,26 +479,6 @@ rekognition_compare_faces <- function(SourceImage, TargetImage, SimilarityThresh
 #' )
 #' ```
 #'
-#' @examples
-#' \dontrun{
-#' # Copies a version of an Amazon Rekognition Custom Labels model from a
-#' # source project to a destination project.
-#' svc$copy_project_version(
-#'   DestinationProjectArn = "arn:aws:rekognition:us-east-1:555555555555:proje...",
-#'   KmsKeyId = "arn:1234abcd-12ab-34cd-56ef-1234567890ab",
-#'   OutputConfig = list(
-#'     S3Bucket = "bucket-name",
-#'     S3KeyPrefix = "path_to_folder"
-#'   ),
-#'   SourceProjectArn = "arn:aws:rekognition:us-east-1:111122223333:project/So...",
-#'   SourceProjectVersionArn = "arn:aws:rekognition:us-east-1:111122223333:pro...",
-#'   Tags = list(
-#'     key1 = "val1"
-#'   ),
-#'   VersionName = "DestinationVersionName_cross_account"
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname rekognition_copy_project_version
@@ -700,24 +664,6 @@ rekognition_create_collection <- function(CollectionId, Tags = NULL) {
 #' )
 #' ```
 #'
-#' @examples
-#' \dontrun{
-#' # Creates an Amazon Rekognition Custom Labels dataset with a manifest file
-#' # stored in an Amazon S3 bucket.
-#' svc$create_dataset(
-#'   DatasetSource = list(
-#'     GroundTruthManifest = list(
-#'       S3Object = list(
-#'         Bucket = "my-bucket",
-#'         Name = "datasets/flowers_training/manifests/output/output.manifest"
-#'       )
-#'     )
-#'   ),
-#'   DatasetType = "TRAIN",
-#'   ProjectArn = "arn:aws:rekognition:us-east-1:111122223333:project/my-project/1690474772815"
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname rekognition_create_dataset
@@ -864,14 +810,6 @@ rekognition_create_face_liveness_session <- function(KmsKeyId = NULL, Settings =
 #'   )
 #' )
 #' ```
-#'
-#' @examples
-#' \dontrun{
-#' # Creates an Amazon Rekognition Custom Labels project.
-#' svc$create_project(
-#'   ProjectName = "my-project"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -1038,19 +976,6 @@ rekognition_create_project <- function(ProjectName, Feature = NULL, AutoUpdate =
 #'   )
 #' )
 #' ```
-#'
-#' @examples
-#' \dontrun{
-#' # Trains a version of an Amazon Rekognition Custom Labels model.
-#' svc$create_project_version(
-#'   OutputConfig = list(
-#'     S3Bucket = "output_bucket",
-#'     S3KeyPrefix = "output_folder"
-#'   ),
-#'   ProjectArn = "arn:aws:rekognition:us-east-1:111122223333:project/my-project/1690474772815",
-#'   VersionName = "1"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -1302,15 +1227,6 @@ rekognition_create_stream_processor <- function(Input, Output, Name, Settings, R
 #' )
 #' ```
 #'
-#' @examples
-#' \dontrun{
-#' # Creates a new User within a collection specified by CollectionId.
-#' svc$create_user(
-#'   CollectionId = "MyCollection",
-#'   UserId = "DemoUser"
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname rekognition_create_user
@@ -1431,14 +1347,6 @@ rekognition_delete_collection <- function(CollectionId) {
 #'   DatasetArn = "string"
 #' )
 #' ```
-#'
-#' @examples
-#' \dontrun{
-#' # Deletes an Amazon Rekognition Custom Labels dataset.
-#' svc$delete_dataset(
-#'   DatasetArn = "arn:aws:rekognition:us-east-1:111122223333:project/my-proje..."
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -1581,14 +1489,6 @@ rekognition_delete_faces <- function(CollectionId, FaceIds) {
 #' )
 #' ```
 #'
-#' @examples
-#' \dontrun{
-#' # Deletes an Amazon Rekognition Custom Labels projects.
-#' svc$delete_project(
-#'   ProjectArn = "arn:aws:rekognition:us-east-1:111122223333:project/my-project/1690405809285"
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname rekognition_delete_project
@@ -1648,17 +1548,6 @@ rekognition_delete_project <- function(ProjectArn) {
 #'   PolicyRevisionId = "string"
 #' )
 #' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This operation deletes a revision of an existing project policy from an
-#' # Amazon Rekognition Custom Labels project.
-#' svc$delete_project_policy(
-#'   PolicyName = "testPolicy1",
-#'   PolicyRevisionId = "3b274c25e9203a56a99e00e3ff205fbc",
-#'   ProjectArn = "arn:aws:rekognition:us-east-1:111122223333:project/SourceProject/1656557123456"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -1722,14 +1611,6 @@ rekognition_delete_project_policy <- function(ProjectArn, PolicyName, PolicyRevi
 #'   ProjectVersionArn = "string"
 #' )
 #' ```
-#'
-#' @examples
-#' \dontrun{
-#' # Deletes a version of an Amazon Rekognition Custom Labels model.
-#' svc$delete_project_version(
-#'   ProjectVersionArn = "arn:aws:rekognition:us-east-1:111122223333:project/m..."
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -1837,16 +1718,6 @@ rekognition_delete_stream_processor <- function(Name) {
 #'   ClientRequestToken = "string"
 #' )
 #' ```
-#'
-#' @examples
-#' \dontrun{
-#' # Deletes the specified UserID within the collection.
-#' svc$delete_user(
-#'   ClientRequestToken = "550e8400-e29b-41d4-a716-446655440001",
-#'   CollectionId = "MyCollection",
-#'   UserId = "DemoUser"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -1980,14 +1851,6 @@ rekognition_describe_collection <- function(CollectionId) {
 #'   DatasetArn = "string"
 #' )
 #' ```
-#'
-#' @examples
-#' \dontrun{
-#' # Describes an Amazon Rekognition Custom Labels dataset.
-#' svc$describe_dataset(
-#'   DatasetArn = "arn:aws:rekognition:us-east-1:111122223333:project/my-proje..."
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -2195,17 +2058,6 @@ rekognition_describe_dataset <- function(DatasetArn) {
 #' )
 #' ```
 #'
-#' @examples
-#' \dontrun{
-#' # Describes a version of an Amazon Rekognition Custom Labels model.
-#' svc$describe_project_versions(
-#'   ProjectArn = "arn:aws:rekognition:us-east-1:111122223333:project/my-project/1690474772815",
-#'   VersionNames = list(
-#'     "1"
-#'   )
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname rekognition_describe_project_versions
@@ -2298,16 +2150,6 @@ rekognition_describe_project_versions <- function(ProjectArn, VersionNames = NUL
 #'   )
 #' )
 #' ```
-#'
-#' @examples
-#' \dontrun{
-#' # Describes an Amazon Rekognition Custom Labels projects.
-#' svc$describe_projects(
-#'   ProjectNames = list(
-#'     "my-project"
-#'   )
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -2562,23 +2404,6 @@ rekognition_describe_stream_processor <- function(Name) {
 #'   MinConfidence = 123.0
 #' )
 #' ```
-#'
-#' @examples
-#' \dontrun{
-#' # Detects custom labels in an image with an Amazon Rekognition Custom
-#' # Labels model
-#' svc$detect_custom_labels(
-#'   Image = list(
-#'     S3Object = list(
-#'       Bucket = "custom-labels-console-us-east-1-1111111111",
-#'       Name = "assets/flowers_1_test_dataset/camellia4.jpg"
-#'     )
-#'   ),
-#'   MaxResults = 100L,
-#'   MinConfidence = 50L,
-#'   ProjectVersionArn = "arn:aws:rekognition:us-east-1:111122223333:project/m..."
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -3622,21 +3447,6 @@ rekognition_detect_text <- function(Image, Filters = NULL) {
 #' )
 #' ```
 #'
-#' @examples
-#' \dontrun{
-#' # Removes the association between a Face supplied in an array of FaceIds
-#' # and the User.
-#' svc$disassociate_faces(
-#'   ClientRequestToken = "550e8400-e29b-41d4-a716-446655440003",
-#'   CollectionId = "MyCollection",
-#'   FaceIds = list(
-#'     "f5817d37-94f6-4335-bfee-6cf79a3d806e",
-#'     "c92265d4-5f9c-43af-a58e-12be0ce02bc3"
-#'   ),
-#'   UserId = "DemoUser"
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname rekognition_disassociate_faces
@@ -3707,22 +3517,6 @@ rekognition_disassociate_faces <- function(CollectionId, UserId, ClientRequestTo
 #'   )
 #' )
 #' ```
-#'
-#' @examples
-#' \dontrun{
-#' # Distributes an Amazon Rekognition Custom Labels training dataset to a
-#' # test dataset.
-#' svc$distribute_dataset_entries(
-#'   Datasets = list(
-#'     list(
-#'       Arn = "arn:aws:rekognition:us-east-1:111122223333:project/my-proj-2/d..."
-#'     ),
-#'     list(
-#'       Arn = "arn:aws:rekognition:us-east-1:111122223333:project/my-proj-2/d..."
-#'     )
-#'   )
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -4042,7 +3836,7 @@ rekognition_get_celebrity_recognition <- function(JobId, MaxResults = NULL, Next
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .rekognition$get_celebrity_recognition_input(JobId = JobId, MaxResults = MaxResults, NextToken = NextToken, SortBy = SortBy)
@@ -4206,7 +4000,7 @@ rekognition_get_content_moderation <- function(JobId, MaxResults = NULL, NextTok
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .rekognition$get_content_moderation_input(JobId = JobId, MaxResults = MaxResults, NextToken = NextToken, SortBy = SortBy, AggregateBy = AggregateBy)
@@ -4396,7 +4190,7 @@ rekognition_get_face_detection <- function(JobId, MaxResults = NULL, NextToken =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .rekognition$get_face_detection_input(JobId = JobId, MaxResults = MaxResults, NextToken = NextToken)
@@ -4721,7 +4515,7 @@ rekognition_get_face_search <- function(JobId, MaxResults = NULL, NextToken = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .rekognition$get_face_search_input(JobId = JobId, MaxResults = MaxResults, NextToken = NextToken, SortBy = SortBy)
@@ -4947,7 +4741,7 @@ rekognition_get_label_detection <- function(JobId, MaxResults = NULL, NextToken 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .rekognition$get_label_detection_input(JobId = JobId, MaxResults = MaxResults, NextToken = NextToken, SortBy = SortBy, AggregateBy = AggregateBy)
@@ -5033,14 +4827,6 @@ rekognition_get_label_detection <- function(JobId, MaxResults = NULL, NextToken 
 #'   JobId = "string"
 #' )
 #' ```
-#'
-#' @examples
-#' \dontrun{
-#' # Retrieves the results for a given media analysis job.
-#' svc$get_media_analysis_job(
-#'   JobId = "861a0645d98ef88efb75477628c011c04942d9d5f58faf2703c393c8cf8c1537"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -5269,7 +5055,7 @@ rekognition_get_person_tracking <- function(JobId, MaxResults = NULL, NextToken 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .rekognition$get_person_tracking_input(JobId = JobId, MaxResults = MaxResults, NextToken = NextToken, SortBy = SortBy)
@@ -5427,7 +5213,7 @@ rekognition_get_segment_detection <- function(JobId, MaxResults = NULL, NextToke
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .rekognition$get_segment_detection_input(JobId = JobId, MaxResults = MaxResults, NextToken = NextToken)
@@ -5566,7 +5352,7 @@ rekognition_get_text_detection <- function(JobId, MaxResults = NULL, NextToken =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .rekognition$get_text_detection_input(JobId = JobId, MaxResults = MaxResults, NextToken = NextToken)
@@ -6056,7 +5842,7 @@ rekognition_list_collections <- function(NextToken = NULL, MaxResults = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "CollectionIds"),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = list("CollectionIds", "FaceModelVersions")),
     stream_api = FALSE
   )
   input <- .rekognition$list_collections_input(NextToken = NextToken, MaxResults = MaxResults)
@@ -6147,23 +5933,6 @@ rekognition_list_collections <- function(NextToken = NULL, MaxResults = NULL) {
 #' )
 #' ```
 #'
-#' @examples
-#' \dontrun{
-#' # Lists the JSON line entries in an Amazon Rekognition Custom Labels
-#' # dataset.
-#' svc$list_dataset_entries(
-#'   ContainsLabels = list(
-#'     "camellia"
-#'   ),
-#'   DatasetArn = "arn:aws:rekognition:us-east-1:111122223333:project/my-proj-...",
-#'   HasErrors = TRUE,
-#'   Labeled = TRUE,
-#'   MaxResults = 100L,
-#'   NextToken = "",
-#'   SourceRefContains = "camellia4.jpg"
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname rekognition_list_dataset_entries
@@ -6238,17 +6007,6 @@ rekognition_list_dataset_entries <- function(DatasetArn, ContainsLabels = NULL, 
 #'   MaxResults = 123
 #' )
 #' ```
-#'
-#' @examples
-#' \dontrun{
-#' # Lists the JSON line entries in an Amazon Rekognition Custom Labels
-#' # dataset.
-#' svc$list_dataset_labels(
-#'   DatasetArn = "arn:aws:rekognition:us-east-1:111122223333:project/my-proj-...",
-#'   MaxResults = 100L,
-#'   NextToken = ""
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -6359,7 +6117,7 @@ rekognition_list_faces <- function(CollectionId, NextToken = NULL, MaxResults = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Faces"),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Faces", non_aggregate_keys = list("FaceModelVersion")),
     stream_api = FALSE
   )
   input <- .rekognition$list_faces_input(CollectionId = CollectionId, NextToken = NextToken, MaxResults = MaxResults, UserId = UserId, FaceIds = FaceIds)
@@ -6455,14 +6213,6 @@ rekognition_list_faces <- function(CollectionId, NextToken = NULL, MaxResults = 
 #' )
 #' ```
 #'
-#' @examples
-#' \dontrun{
-#' # Returns a list of media analysis jobs.
-#' svc$list_media_analysis_jobs(
-#'   MaxResults = 10L
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname rekognition_list_media_analysis_jobs
@@ -6474,7 +6224,7 @@ rekognition_list_media_analysis_jobs <- function(NextToken = NULL, MaxResults = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .rekognition$list_media_analysis_jobs_input(NextToken = NextToken, MaxResults = MaxResults)
@@ -6544,17 +6294,6 @@ rekognition_list_media_analysis_jobs <- function(NextToken = NULL, MaxResults = 
 #'   MaxResults = 123
 #' )
 #' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This operation lists the project policies that are attached to an Amazon
-#' # Rekognition Custom Labels project.
-#' svc$list_project_policies(
-#'   MaxResults = 5L,
-#'   NextToken = "",
-#'   ProjectArn = "arn:aws:rekognition:us-east-1:111122223333:project/my-sdk-p..."
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -6630,7 +6369,7 @@ rekognition_list_stream_processors <- function(NextToken = NULL, MaxResults = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(result_key = "StreamProcessors", output_token = "NextToken", input_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .rekognition$list_stream_processors_input(NextToken = NextToken, MaxResults = MaxResults)
@@ -6740,14 +6479,6 @@ rekognition_list_tags_for_resource <- function(ResourceArn) {
 #' )
 #' ```
 #'
-#' @examples
-#' \dontrun{
-#' # Returns metadata of the User such as UserID in the specified collection.
-#' svc$list_users(
-#'   CollectionId = "MyCollection"
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname rekognition_list_users
@@ -6837,18 +6568,6 @@ rekognition_list_users <- function(CollectionId, MaxResults = NULL, NextToken = 
 #'   PolicyDocument = "string"
 #' )
 #' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This operation attaches a project policy to a Amazon Rekognition Custom
-#' # Labels project in a trusting AWS account.
-#' svc$put_project_policy(
-#'   PolicyDocument = "'\{"Version":"2012-10-17","Statement":[\{"Effect":"ALLOW"...",
-#'   PolicyName = "SamplePolicy",
-#'   PolicyRevisionId = "0123456789abcdef",
-#'   ProjectArn = "arn:aws:rekognition:us-east-1:111122223333:project/my-sdk-p..."
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -7405,17 +7124,6 @@ rekognition_search_faces_by_image <- function(CollectionId, Image, MaxFaces = NU
 #' )
 #' ```
 #'
-#' @examples
-#' \dontrun{
-#' # Searches for UserIDs within a collection based on a FaceId or UserId.
-#' svc$search_users(
-#'   CollectionId = "MyCollection",
-#'   MaxUsers = 2L,
-#'   UserId = "DemoUser",
-#'   UserMatchThreshold = 70L
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname rekognition_search_users
@@ -7665,23 +7373,6 @@ rekognition_search_users <- function(CollectionId, UserId = NULL, FaceId = NULL,
 #'   QualityFilter = "NONE"|"AUTO"|"LOW"|"MEDIUM"|"HIGH"
 #' )
 #' ```
-#'
-#' @examples
-#' \dontrun{
-#' # Searches for UserIDs using a supplied image.
-#' svc$search_users_by_image(
-#'   CollectionId = "MyCollection",
-#'   Image = list(
-#'     S3Object = list(
-#'       Bucket = "bucket",
-#'       Name = "input.jpg"
-#'     )
-#'   ),
-#'   MaxUsers = 2L,
-#'   QualityFilter = "MEDIUM",
-#'   UserMatchThreshold = 70L
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -8314,30 +8005,6 @@ rekognition_start_label_detection <- function(Video, ClientRequestToken = NULL, 
 #' )
 #' ```
 #'
-#' @examples
-#' \dontrun{
-#' # Initiates a new media analysis job.
-#' svc$start_media_analysis_job(
-#'   Input = list(
-#'     S3Object = list(
-#'       Bucket = "input-bucket",
-#'       Name = "input-manifest.json"
-#'     )
-#'   ),
-#'   JobName = "job-name",
-#'   OperationsConfig = list(
-#'     DetectModerationLabels = list(
-#'       MinConfidence = 50L,
-#'       ProjectVersion = "arn:aws:rekognition:us-east-1:111122223333:project/..."
-#'     )
-#'   ),
-#'   OutputConfig = list(
-#'     S3Bucket = "output-bucket",
-#'     S3KeyPrefix = "output-location"
-#'   )
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname rekognition_start_media_analysis_job
@@ -8503,16 +8170,6 @@ rekognition_start_person_tracking <- function(Video, ClientRequestToken = NULL, 
 #'   MaxInferenceUnits = 123
 #' )
 #' ```
-#'
-#' @examples
-#' \dontrun{
-#' # Starts a version of an Amazon Rekognition Custom Labels model.
-#' svc$start_project_version(
-#'   MaxInferenceUnits = 1L,
-#'   MinInferenceUnits = 1L,
-#'   ProjectVersionArn = "arn:aws:rekognition:us-east-1:111122223333:project/m..."
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -8884,14 +8541,6 @@ rekognition_start_text_detection <- function(Video, ClientRequestToken = NULL, N
 #' )
 #' ```
 #'
-#' @examples
-#' \dontrun{
-#' # Stops a version of an Amazon Rekognition Custom Labels model.
-#' svc$stop_project_version(
-#'   ProjectVersionArn = "arn:aws:rekognition:us-east-1:111122223333:project/m..."
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname rekognition_stop_project_version
@@ -9129,17 +8778,6 @@ rekognition_untag_resource <- function(ResourceArn, TagKeys) {
 #'   )
 #' )
 #' ```
-#'
-#' @examples
-#' \dontrun{
-#' # Adds dataset entries to an Amazon Rekognition Custom Labels dataset.
-#' svc$update_dataset_entries(
-#'   Changes = list(
-#'     GroundTruth = "\{\"source-ref\":\"s3://custom-labels-console-us-east-1-1111..."
-#'   ),
-#'   DatasetArn = "arn:aws:rekognition:us-east-1:111122223333:project/my-proj-..."
-#' )
-#' }
 #'
 #' @keywords internal
 #'

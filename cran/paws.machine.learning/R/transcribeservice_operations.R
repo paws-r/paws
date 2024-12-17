@@ -970,7 +970,7 @@ transcribeservice_list_call_analytics_categories <- function(NextToken = NULL, M
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .transcribeservice$list_call_analytics_categories_input(NextToken = NextToken, MaxResults = MaxResults)
@@ -1016,7 +1016,7 @@ transcribeservice_list_call_analytics_jobs <- function(Status = NULL, JobNameCon
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .transcribeservice$list_call_analytics_jobs_input(Status = Status, JobNameContains = JobNameContains, NextToken = NextToken, MaxResults = MaxResults)
@@ -1062,7 +1062,7 @@ transcribeservice_list_language_models <- function(StatusEquals = NULL, NameCont
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .transcribeservice$list_language_models_input(StatusEquals = StatusEquals, NameContains = NameContains, NextToken = NextToken, MaxResults = MaxResults)
@@ -1108,7 +1108,7 @@ transcribeservice_list_medical_scribe_jobs <- function(Status = NULL, JobNameCon
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .transcribeservice$list_medical_scribe_jobs_input(Status = Status, JobNameContains = JobNameContains, NextToken = NextToken, MaxResults = MaxResults)
@@ -1155,7 +1155,7 @@ transcribeservice_list_medical_transcription_jobs <- function(Status = NULL, Job
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .transcribeservice$list_medical_transcription_jobs_input(Status = Status, JobNameContains = JobNameContains, NextToken = NextToken, MaxResults = MaxResults)
@@ -1203,7 +1203,7 @@ transcribeservice_list_medical_vocabularies <- function(NextToken = NULL, MaxRes
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .transcribeservice$list_medical_vocabularies_input(NextToken = NextToken, MaxResults = MaxResults, StateEquals = StateEquals, NameContains = NameContains)
@@ -1290,7 +1290,7 @@ transcribeservice_list_transcription_jobs <- function(Status = NULL, JobNameCont
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .transcribeservice$list_transcription_jobs_input(Status = Status, JobNameContains = JobNameContains, NextToken = NextToken, MaxResults = MaxResults)
@@ -1336,7 +1336,7 @@ transcribeservice_list_vocabularies <- function(NextToken = NULL, MaxResults = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .transcribeservice$list_vocabularies_input(NextToken = NextToken, MaxResults = MaxResults, StateEquals = StateEquals, NameContains = NameContains)
@@ -1380,7 +1380,7 @@ transcribeservice_list_vocabulary_filters <- function(NextToken = NULL, MaxResul
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .transcribeservice$list_vocabulary_filters_input(NextToken = NextToken, MaxResults = MaxResults, NameContains = NameContains)

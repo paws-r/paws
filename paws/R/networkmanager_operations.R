@@ -25,9 +25,12 @@ NULL
 #'     CoreNetworkArn = "string",
 #'     AttachmentId = "string",
 #'     OwnerAccountId = "string",
-#'     AttachmentType = "CONNECT"|"SITE_TO_SITE_VPN"|"VPC"|"TRANSIT_GATEWAY_ROUTE_TABLE",
+#'     AttachmentType = "CONNECT"|"SITE_TO_SITE_VPN"|"VPC"|"DIRECT_CONNECT_GATEWAY"|"TRANSIT_GATEWAY_ROUTE_TABLE",
 #'     State = "REJECTED"|"PENDING_ATTACHMENT_ACCEPTANCE"|"CREATING"|"FAILED"|"AVAILABLE"|"UPDATING"|"PENDING_NETWORK_UPDATE"|"PENDING_TAG_ACCEPTANCE"|"DELETING",
 #'     EdgeLocation = "string",
+#'     EdgeLocations = list(
+#'       "string"
+#'     ),
 #'     ResourceArn = "string",
 #'     AttachmentPolicyRuleNumber = 123,
 #'     SegmentName = "string",
@@ -66,7 +69,7 @@ NULL
 #'     ),
 #'     LastModificationErrors = list(
 #'       list(
-#'         Code = "VPC_NOT_FOUND"|"SUBNET_NOT_FOUND"|"SUBNET_DUPLICATED_IN_AVAILABILITY_ZONE"|"SUBNET_NO_FREE_ADDRESSES"|"SUBNET_UNSUPPORTED_AVAILABILITY_ZONE"|"SUBNET_NO_IPV6_CIDRS"|"VPN_CONNECTION_NOT_FOUND"|"MAXIMUM_NO_ENCAP_LIMIT_EXCEEDED",
+#'         Code = "VPC_NOT_FOUND"|"SUBNET_NOT_FOUND"|"SUBNET_DUPLICATED_IN_AVAILABILITY_ZONE"|"SUBNET_NO_FREE_ADDRESSES"|"SUBNET_UNSUPPORTED_AVAILABILITY_ZONE"|"SUBNET_NO_IPV6_CIDRS"|"VPN_CONNECTION_NOT_FOUND"|"MAXIMUM_NO_ENCAP_LIMIT_EXCEEDED"|"DIRECT_CONNECT_GATEWAY_NOT_FOUND"|"DIRECT_CONNECT_GATEWAY_EXISTING_ATTACHMENTS"|"DIRECT_CONNECT_GATEWAY_NO_PRIVATE_VIF",
 #'         Message = "string",
 #'         ResourceArn = "string",
 #'         RequestId = "string"
@@ -414,9 +417,12 @@ networkmanager_associate_transit_gateway_connect_peer <- function(GlobalNetworkI
 #'       CoreNetworkArn = "string",
 #'       AttachmentId = "string",
 #'       OwnerAccountId = "string",
-#'       AttachmentType = "CONNECT"|"SITE_TO_SITE_VPN"|"VPC"|"TRANSIT_GATEWAY_ROUTE_TABLE",
+#'       AttachmentType = "CONNECT"|"SITE_TO_SITE_VPN"|"VPC"|"DIRECT_CONNECT_GATEWAY"|"TRANSIT_GATEWAY_ROUTE_TABLE",
 #'       State = "REJECTED"|"PENDING_ATTACHMENT_ACCEPTANCE"|"CREATING"|"FAILED"|"AVAILABLE"|"UPDATING"|"PENDING_NETWORK_UPDATE"|"PENDING_TAG_ACCEPTANCE"|"DELETING",
 #'       EdgeLocation = "string",
+#'       EdgeLocations = list(
+#'         "string"
+#'       ),
 #'       ResourceArn = "string",
 #'       AttachmentPolicyRuleNumber = 123,
 #'       SegmentName = "string",
@@ -455,7 +461,7 @@ networkmanager_associate_transit_gateway_connect_peer <- function(GlobalNetworkI
 #'       ),
 #'       LastModificationErrors = list(
 #'         list(
-#'           Code = "VPC_NOT_FOUND"|"SUBNET_NOT_FOUND"|"SUBNET_DUPLICATED_IN_AVAILABILITY_ZONE"|"SUBNET_NO_FREE_ADDRESSES"|"SUBNET_UNSUPPORTED_AVAILABILITY_ZONE"|"SUBNET_NO_IPV6_CIDRS"|"VPN_CONNECTION_NOT_FOUND"|"MAXIMUM_NO_ENCAP_LIMIT_EXCEEDED",
+#'           Code = "VPC_NOT_FOUND"|"SUBNET_NOT_FOUND"|"SUBNET_DUPLICATED_IN_AVAILABILITY_ZONE"|"SUBNET_NO_FREE_ADDRESSES"|"SUBNET_UNSUPPORTED_AVAILABILITY_ZONE"|"SUBNET_NO_IPV6_CIDRS"|"VPN_CONNECTION_NOT_FOUND"|"MAXIMUM_NO_ENCAP_LIMIT_EXCEEDED"|"DIRECT_CONNECT_GATEWAY_NOT_FOUND"|"DIRECT_CONNECT_GATEWAY_EXISTING_ATTACHMENTS"|"DIRECT_CONNECT_GATEWAY_NO_PRIVATE_VIF",
 #'           Message = "string",
 #'           ResourceArn = "string",
 #'           RequestId = "string"
@@ -961,6 +967,132 @@ networkmanager_create_device <- function(GlobalNetworkId, AWSLocation = NULL, De
 }
 .networkmanager$operations$create_device <- networkmanager_create_device
 
+#' Creates an Amazon Web Services Direct Connect gateway attachment
+#'
+#' @description
+#' Creates an Amazon Web Services Direct Connect gateway attachment
+#'
+#' @usage
+#' networkmanager_create_direct_connect_gateway_attachment(CoreNetworkId,
+#'   DirectConnectGatewayArn, EdgeLocations, Tags, ClientToken)
+#'
+#' @param CoreNetworkId &#91;required&#93; The ID of the Cloud WAN core network that the Direct Connect gateway
+#' attachment should be attached to.
+#' @param DirectConnectGatewayArn &#91;required&#93; The ARN of the Direct Connect gateway attachment.
+#' @param EdgeLocations &#91;required&#93; One or more core network edge locations that the Direct Connect gateway
+#' attachment is associated with.
+#' @param Tags The key value tags to apply to the Direct Connect gateway attachment
+#' during creation.
+#' @param ClientToken client token
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DirectConnectGatewayAttachment = list(
+#'     Attachment = list(
+#'       CoreNetworkId = "string",
+#'       CoreNetworkArn = "string",
+#'       AttachmentId = "string",
+#'       OwnerAccountId = "string",
+#'       AttachmentType = "CONNECT"|"SITE_TO_SITE_VPN"|"VPC"|"DIRECT_CONNECT_GATEWAY"|"TRANSIT_GATEWAY_ROUTE_TABLE",
+#'       State = "REJECTED"|"PENDING_ATTACHMENT_ACCEPTANCE"|"CREATING"|"FAILED"|"AVAILABLE"|"UPDATING"|"PENDING_NETWORK_UPDATE"|"PENDING_TAG_ACCEPTANCE"|"DELETING",
+#'       EdgeLocation = "string",
+#'       EdgeLocations = list(
+#'         "string"
+#'       ),
+#'       ResourceArn = "string",
+#'       AttachmentPolicyRuleNumber = 123,
+#'       SegmentName = "string",
+#'       NetworkFunctionGroupName = "string",
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       ProposedSegmentChange = list(
+#'         Tags = list(
+#'           list(
+#'             Key = "string",
+#'             Value = "string"
+#'           )
+#'         ),
+#'         AttachmentPolicyRuleNumber = 123,
+#'         SegmentName = "string"
+#'       ),
+#'       ProposedNetworkFunctionGroupChange = list(
+#'         Tags = list(
+#'           list(
+#'             Key = "string",
+#'             Value = "string"
+#'           )
+#'         ),
+#'         AttachmentPolicyRuleNumber = 123,
+#'         NetworkFunctionGroupName = "string"
+#'       ),
+#'       CreatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       UpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastModificationErrors = list(
+#'         list(
+#'           Code = "VPC_NOT_FOUND"|"SUBNET_NOT_FOUND"|"SUBNET_DUPLICATED_IN_AVAILABILITY_ZONE"|"SUBNET_NO_FREE_ADDRESSES"|"SUBNET_UNSUPPORTED_AVAILABILITY_ZONE"|"SUBNET_NO_IPV6_CIDRS"|"VPN_CONNECTION_NOT_FOUND"|"MAXIMUM_NO_ENCAP_LIMIT_EXCEEDED"|"DIRECT_CONNECT_GATEWAY_NOT_FOUND"|"DIRECT_CONNECT_GATEWAY_EXISTING_ATTACHMENTS"|"DIRECT_CONNECT_GATEWAY_NO_PRIVATE_VIF",
+#'           Message = "string",
+#'           ResourceArn = "string",
+#'           RequestId = "string"
+#'         )
+#'       )
+#'     ),
+#'     DirectConnectGatewayArn = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_direct_connect_gateway_attachment(
+#'   CoreNetworkId = "string",
+#'   DirectConnectGatewayArn = "string",
+#'   EdgeLocations = list(
+#'     "string"
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   ClientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname networkmanager_create_direct_connect_gateway_attachment
+#'
+#' @aliases networkmanager_create_direct_connect_gateway_attachment
+networkmanager_create_direct_connect_gateway_attachment <- function(CoreNetworkId, DirectConnectGatewayArn, EdgeLocations, Tags = NULL, ClientToken = NULL) {
+  op <- new_operation(
+    name = "CreateDirectConnectGatewayAttachment",
+    http_method = "POST",
+    http_path = "/direct-connect-gateway-attachments",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .networkmanager$create_direct_connect_gateway_attachment_input(CoreNetworkId = CoreNetworkId, DirectConnectGatewayArn = DirectConnectGatewayArn, EdgeLocations = EdgeLocations, Tags = Tags, ClientToken = ClientToken)
+  output <- .networkmanager$create_direct_connect_gateway_attachment_output()
+  config <- get_config()
+  svc <- .networkmanager$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkmanager$operations$create_direct_connect_gateway_attachment <- networkmanager_create_direct_connect_gateway_attachment
+
 #' Creates a new, empty global network
 #'
 #' @description
@@ -1254,9 +1386,12 @@ networkmanager_create_site <- function(GlobalNetworkId, Description = NULL, Loca
 #'       CoreNetworkArn = "string",
 #'       AttachmentId = "string",
 #'       OwnerAccountId = "string",
-#'       AttachmentType = "CONNECT"|"SITE_TO_SITE_VPN"|"VPC"|"TRANSIT_GATEWAY_ROUTE_TABLE",
+#'       AttachmentType = "CONNECT"|"SITE_TO_SITE_VPN"|"VPC"|"DIRECT_CONNECT_GATEWAY"|"TRANSIT_GATEWAY_ROUTE_TABLE",
 #'       State = "REJECTED"|"PENDING_ATTACHMENT_ACCEPTANCE"|"CREATING"|"FAILED"|"AVAILABLE"|"UPDATING"|"PENDING_NETWORK_UPDATE"|"PENDING_TAG_ACCEPTANCE"|"DELETING",
 #'       EdgeLocation = "string",
+#'       EdgeLocations = list(
+#'         "string"
+#'       ),
 #'       ResourceArn = "string",
 #'       AttachmentPolicyRuleNumber = 123,
 #'       SegmentName = "string",
@@ -1295,7 +1430,7 @@ networkmanager_create_site <- function(GlobalNetworkId, Description = NULL, Loca
 #'       ),
 #'       LastModificationErrors = list(
 #'         list(
-#'           Code = "VPC_NOT_FOUND"|"SUBNET_NOT_FOUND"|"SUBNET_DUPLICATED_IN_AVAILABILITY_ZONE"|"SUBNET_NO_FREE_ADDRESSES"|"SUBNET_UNSUPPORTED_AVAILABILITY_ZONE"|"SUBNET_NO_IPV6_CIDRS"|"VPN_CONNECTION_NOT_FOUND"|"MAXIMUM_NO_ENCAP_LIMIT_EXCEEDED",
+#'           Code = "VPC_NOT_FOUND"|"SUBNET_NOT_FOUND"|"SUBNET_DUPLICATED_IN_AVAILABILITY_ZONE"|"SUBNET_NO_FREE_ADDRESSES"|"SUBNET_UNSUPPORTED_AVAILABILITY_ZONE"|"SUBNET_NO_IPV6_CIDRS"|"VPN_CONNECTION_NOT_FOUND"|"MAXIMUM_NO_ENCAP_LIMIT_EXCEEDED"|"DIRECT_CONNECT_GATEWAY_NOT_FOUND"|"DIRECT_CONNECT_GATEWAY_EXISTING_ATTACHMENTS"|"DIRECT_CONNECT_GATEWAY_NO_PRIVATE_VIF",
 #'           Message = "string",
 #'           ResourceArn = "string",
 #'           RequestId = "string"
@@ -1466,9 +1601,12 @@ networkmanager_create_transit_gateway_peering <- function(CoreNetworkId, Transit
 #'       CoreNetworkArn = "string",
 #'       AttachmentId = "string",
 #'       OwnerAccountId = "string",
-#'       AttachmentType = "CONNECT"|"SITE_TO_SITE_VPN"|"VPC"|"TRANSIT_GATEWAY_ROUTE_TABLE",
+#'       AttachmentType = "CONNECT"|"SITE_TO_SITE_VPN"|"VPC"|"DIRECT_CONNECT_GATEWAY"|"TRANSIT_GATEWAY_ROUTE_TABLE",
 #'       State = "REJECTED"|"PENDING_ATTACHMENT_ACCEPTANCE"|"CREATING"|"FAILED"|"AVAILABLE"|"UPDATING"|"PENDING_NETWORK_UPDATE"|"PENDING_TAG_ACCEPTANCE"|"DELETING",
 #'       EdgeLocation = "string",
+#'       EdgeLocations = list(
+#'         "string"
+#'       ),
 #'       ResourceArn = "string",
 #'       AttachmentPolicyRuleNumber = 123,
 #'       SegmentName = "string",
@@ -1507,7 +1645,7 @@ networkmanager_create_transit_gateway_peering <- function(CoreNetworkId, Transit
 #'       ),
 #'       LastModificationErrors = list(
 #'         list(
-#'           Code = "VPC_NOT_FOUND"|"SUBNET_NOT_FOUND"|"SUBNET_DUPLICATED_IN_AVAILABILITY_ZONE"|"SUBNET_NO_FREE_ADDRESSES"|"SUBNET_UNSUPPORTED_AVAILABILITY_ZONE"|"SUBNET_NO_IPV6_CIDRS"|"VPN_CONNECTION_NOT_FOUND"|"MAXIMUM_NO_ENCAP_LIMIT_EXCEEDED",
+#'           Code = "VPC_NOT_FOUND"|"SUBNET_NOT_FOUND"|"SUBNET_DUPLICATED_IN_AVAILABILITY_ZONE"|"SUBNET_NO_FREE_ADDRESSES"|"SUBNET_UNSUPPORTED_AVAILABILITY_ZONE"|"SUBNET_NO_IPV6_CIDRS"|"VPN_CONNECTION_NOT_FOUND"|"MAXIMUM_NO_ENCAP_LIMIT_EXCEEDED"|"DIRECT_CONNECT_GATEWAY_NOT_FOUND"|"DIRECT_CONNECT_GATEWAY_EXISTING_ATTACHMENTS"|"DIRECT_CONNECT_GATEWAY_NO_PRIVATE_VIF",
 #'           Message = "string",
 #'           ResourceArn = "string",
 #'           RequestId = "string"
@@ -1585,9 +1723,12 @@ networkmanager_create_transit_gateway_route_table_attachment <- function(Peering
 #'       CoreNetworkArn = "string",
 #'       AttachmentId = "string",
 #'       OwnerAccountId = "string",
-#'       AttachmentType = "CONNECT"|"SITE_TO_SITE_VPN"|"VPC"|"TRANSIT_GATEWAY_ROUTE_TABLE",
+#'       AttachmentType = "CONNECT"|"SITE_TO_SITE_VPN"|"VPC"|"DIRECT_CONNECT_GATEWAY"|"TRANSIT_GATEWAY_ROUTE_TABLE",
 #'       State = "REJECTED"|"PENDING_ATTACHMENT_ACCEPTANCE"|"CREATING"|"FAILED"|"AVAILABLE"|"UPDATING"|"PENDING_NETWORK_UPDATE"|"PENDING_TAG_ACCEPTANCE"|"DELETING",
 #'       EdgeLocation = "string",
+#'       EdgeLocations = list(
+#'         "string"
+#'       ),
 #'       ResourceArn = "string",
 #'       AttachmentPolicyRuleNumber = 123,
 #'       SegmentName = "string",
@@ -1626,7 +1767,7 @@ networkmanager_create_transit_gateway_route_table_attachment <- function(Peering
 #'       ),
 #'       LastModificationErrors = list(
 #'         list(
-#'           Code = "VPC_NOT_FOUND"|"SUBNET_NOT_FOUND"|"SUBNET_DUPLICATED_IN_AVAILABILITY_ZONE"|"SUBNET_NO_FREE_ADDRESSES"|"SUBNET_UNSUPPORTED_AVAILABILITY_ZONE"|"SUBNET_NO_IPV6_CIDRS"|"VPN_CONNECTION_NOT_FOUND"|"MAXIMUM_NO_ENCAP_LIMIT_EXCEEDED",
+#'           Code = "VPC_NOT_FOUND"|"SUBNET_NOT_FOUND"|"SUBNET_DUPLICATED_IN_AVAILABILITY_ZONE"|"SUBNET_NO_FREE_ADDRESSES"|"SUBNET_UNSUPPORTED_AVAILABILITY_ZONE"|"SUBNET_NO_IPV6_CIDRS"|"VPN_CONNECTION_NOT_FOUND"|"MAXIMUM_NO_ENCAP_LIMIT_EXCEEDED"|"DIRECT_CONNECT_GATEWAY_NOT_FOUND"|"DIRECT_CONNECT_GATEWAY_EXISTING_ATTACHMENTS"|"DIRECT_CONNECT_GATEWAY_NO_PRIVATE_VIF",
 #'           Message = "string",
 #'           ResourceArn = "string",
 #'           RequestId = "string"
@@ -1709,9 +1850,12 @@ networkmanager_create_vpc_attachment <- function(CoreNetworkId, VpcArn, SubnetAr
 #'     CoreNetworkArn = "string",
 #'     AttachmentId = "string",
 #'     OwnerAccountId = "string",
-#'     AttachmentType = "CONNECT"|"SITE_TO_SITE_VPN"|"VPC"|"TRANSIT_GATEWAY_ROUTE_TABLE",
+#'     AttachmentType = "CONNECT"|"SITE_TO_SITE_VPN"|"VPC"|"DIRECT_CONNECT_GATEWAY"|"TRANSIT_GATEWAY_ROUTE_TABLE",
 #'     State = "REJECTED"|"PENDING_ATTACHMENT_ACCEPTANCE"|"CREATING"|"FAILED"|"AVAILABLE"|"UPDATING"|"PENDING_NETWORK_UPDATE"|"PENDING_TAG_ACCEPTANCE"|"DELETING",
 #'     EdgeLocation = "string",
+#'     EdgeLocations = list(
+#'       "string"
+#'     ),
 #'     ResourceArn = "string",
 #'     AttachmentPolicyRuleNumber = 123,
 #'     SegmentName = "string",
@@ -1750,7 +1894,7 @@ networkmanager_create_vpc_attachment <- function(CoreNetworkId, VpcArn, SubnetAr
 #'     ),
 #'     LastModificationErrors = list(
 #'       list(
-#'         Code = "VPC_NOT_FOUND"|"SUBNET_NOT_FOUND"|"SUBNET_DUPLICATED_IN_AVAILABILITY_ZONE"|"SUBNET_NO_FREE_ADDRESSES"|"SUBNET_UNSUPPORTED_AVAILABILITY_ZONE"|"SUBNET_NO_IPV6_CIDRS"|"VPN_CONNECTION_NOT_FOUND"|"MAXIMUM_NO_ENCAP_LIMIT_EXCEEDED",
+#'         Code = "VPC_NOT_FOUND"|"SUBNET_NOT_FOUND"|"SUBNET_DUPLICATED_IN_AVAILABILITY_ZONE"|"SUBNET_NO_FREE_ADDRESSES"|"SUBNET_UNSUPPORTED_AVAILABILITY_ZONE"|"SUBNET_NO_IPV6_CIDRS"|"VPN_CONNECTION_NOT_FOUND"|"MAXIMUM_NO_ENCAP_LIMIT_EXCEEDED"|"DIRECT_CONNECT_GATEWAY_NOT_FOUND"|"DIRECT_CONNECT_GATEWAY_EXISTING_ATTACHMENTS"|"DIRECT_CONNECT_GATEWAY_NO_PRIVATE_VIF",
 #'         Message = "string",
 #'         ResourceArn = "string",
 #'         RequestId = "string"
@@ -2974,9 +3118,12 @@ networkmanager_execute_core_network_change_set <- function(CoreNetworkId, Policy
 #'       CoreNetworkArn = "string",
 #'       AttachmentId = "string",
 #'       OwnerAccountId = "string",
-#'       AttachmentType = "CONNECT"|"SITE_TO_SITE_VPN"|"VPC"|"TRANSIT_GATEWAY_ROUTE_TABLE",
+#'       AttachmentType = "CONNECT"|"SITE_TO_SITE_VPN"|"VPC"|"DIRECT_CONNECT_GATEWAY"|"TRANSIT_GATEWAY_ROUTE_TABLE",
 #'       State = "REJECTED"|"PENDING_ATTACHMENT_ACCEPTANCE"|"CREATING"|"FAILED"|"AVAILABLE"|"UPDATING"|"PENDING_NETWORK_UPDATE"|"PENDING_TAG_ACCEPTANCE"|"DELETING",
 #'       EdgeLocation = "string",
+#'       EdgeLocations = list(
+#'         "string"
+#'       ),
 #'       ResourceArn = "string",
 #'       AttachmentPolicyRuleNumber = 123,
 #'       SegmentName = "string",
@@ -3015,7 +3162,7 @@ networkmanager_execute_core_network_change_set <- function(CoreNetworkId, Policy
 #'       ),
 #'       LastModificationErrors = list(
 #'         list(
-#'           Code = "VPC_NOT_FOUND"|"SUBNET_NOT_FOUND"|"SUBNET_DUPLICATED_IN_AVAILABILITY_ZONE"|"SUBNET_NO_FREE_ADDRESSES"|"SUBNET_UNSUPPORTED_AVAILABILITY_ZONE"|"SUBNET_NO_IPV6_CIDRS"|"VPN_CONNECTION_NOT_FOUND"|"MAXIMUM_NO_ENCAP_LIMIT_EXCEEDED",
+#'           Code = "VPC_NOT_FOUND"|"SUBNET_NOT_FOUND"|"SUBNET_DUPLICATED_IN_AVAILABILITY_ZONE"|"SUBNET_NO_FREE_ADDRESSES"|"SUBNET_UNSUPPORTED_AVAILABILITY_ZONE"|"SUBNET_NO_IPV6_CIDRS"|"VPN_CONNECTION_NOT_FOUND"|"MAXIMUM_NO_ENCAP_LIMIT_EXCEEDED"|"DIRECT_CONNECT_GATEWAY_NOT_FOUND"|"DIRECT_CONNECT_GATEWAY_EXISTING_ATTACHMENTS"|"DIRECT_CONNECT_GATEWAY_NO_PRIVATE_VIF",
 #'           Message = "string",
 #'           ResourceArn = "string",
 #'           RequestId = "string"
@@ -3862,6 +4009,116 @@ networkmanager_get_devices <- function(GlobalNetworkId, DeviceIds = NULL, SiteId
   return(response)
 }
 .networkmanager$operations$get_devices <- networkmanager_get_devices
+
+#' Returns information about a specific Amazon Web Services Direct Connect
+#' gateway attachment
+#'
+#' @description
+#' Returns information about a specific Amazon Web Services Direct Connect
+#' gateway attachment.
+#'
+#' @usage
+#' networkmanager_get_direct_connect_gateway_attachment(AttachmentId)
+#'
+#' @param AttachmentId &#91;required&#93; The ID of the Direct Connect gateway attachment that you want to see
+#' details about.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DirectConnectGatewayAttachment = list(
+#'     Attachment = list(
+#'       CoreNetworkId = "string",
+#'       CoreNetworkArn = "string",
+#'       AttachmentId = "string",
+#'       OwnerAccountId = "string",
+#'       AttachmentType = "CONNECT"|"SITE_TO_SITE_VPN"|"VPC"|"DIRECT_CONNECT_GATEWAY"|"TRANSIT_GATEWAY_ROUTE_TABLE",
+#'       State = "REJECTED"|"PENDING_ATTACHMENT_ACCEPTANCE"|"CREATING"|"FAILED"|"AVAILABLE"|"UPDATING"|"PENDING_NETWORK_UPDATE"|"PENDING_TAG_ACCEPTANCE"|"DELETING",
+#'       EdgeLocation = "string",
+#'       EdgeLocations = list(
+#'         "string"
+#'       ),
+#'       ResourceArn = "string",
+#'       AttachmentPolicyRuleNumber = 123,
+#'       SegmentName = "string",
+#'       NetworkFunctionGroupName = "string",
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       ProposedSegmentChange = list(
+#'         Tags = list(
+#'           list(
+#'             Key = "string",
+#'             Value = "string"
+#'           )
+#'         ),
+#'         AttachmentPolicyRuleNumber = 123,
+#'         SegmentName = "string"
+#'       ),
+#'       ProposedNetworkFunctionGroupChange = list(
+#'         Tags = list(
+#'           list(
+#'             Key = "string",
+#'             Value = "string"
+#'           )
+#'         ),
+#'         AttachmentPolicyRuleNumber = 123,
+#'         NetworkFunctionGroupName = "string"
+#'       ),
+#'       CreatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       UpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastModificationErrors = list(
+#'         list(
+#'           Code = "VPC_NOT_FOUND"|"SUBNET_NOT_FOUND"|"SUBNET_DUPLICATED_IN_AVAILABILITY_ZONE"|"SUBNET_NO_FREE_ADDRESSES"|"SUBNET_UNSUPPORTED_AVAILABILITY_ZONE"|"SUBNET_NO_IPV6_CIDRS"|"VPN_CONNECTION_NOT_FOUND"|"MAXIMUM_NO_ENCAP_LIMIT_EXCEEDED"|"DIRECT_CONNECT_GATEWAY_NOT_FOUND"|"DIRECT_CONNECT_GATEWAY_EXISTING_ATTACHMENTS"|"DIRECT_CONNECT_GATEWAY_NO_PRIVATE_VIF",
+#'           Message = "string",
+#'           ResourceArn = "string",
+#'           RequestId = "string"
+#'         )
+#'       )
+#'     ),
+#'     DirectConnectGatewayArn = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_direct_connect_gateway_attachment(
+#'   AttachmentId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname networkmanager_get_direct_connect_gateway_attachment
+#'
+#' @aliases networkmanager_get_direct_connect_gateway_attachment
+networkmanager_get_direct_connect_gateway_attachment <- function(AttachmentId) {
+  op <- new_operation(
+    name = "GetDirectConnectGatewayAttachment",
+    http_method = "GET",
+    http_path = "/direct-connect-gateway-attachments/{attachmentId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .networkmanager$get_direct_connect_gateway_attachment_input(AttachmentId = AttachmentId)
+  output <- .networkmanager$get_direct_connect_gateway_attachment_output()
+  config <- get_config()
+  svc <- .networkmanager$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkmanager$operations$get_direct_connect_gateway_attachment <- networkmanager_get_direct_connect_gateway_attachment
 
 #' Gets the link associations for a device or a link
 #'
@@ -4782,9 +5039,12 @@ networkmanager_get_route_analysis <- function(GlobalNetworkId, RouteAnalysisId) 
 #'       CoreNetworkArn = "string",
 #'       AttachmentId = "string",
 #'       OwnerAccountId = "string",
-#'       AttachmentType = "CONNECT"|"SITE_TO_SITE_VPN"|"VPC"|"TRANSIT_GATEWAY_ROUTE_TABLE",
+#'       AttachmentType = "CONNECT"|"SITE_TO_SITE_VPN"|"VPC"|"DIRECT_CONNECT_GATEWAY"|"TRANSIT_GATEWAY_ROUTE_TABLE",
 #'       State = "REJECTED"|"PENDING_ATTACHMENT_ACCEPTANCE"|"CREATING"|"FAILED"|"AVAILABLE"|"UPDATING"|"PENDING_NETWORK_UPDATE"|"PENDING_TAG_ACCEPTANCE"|"DELETING",
 #'       EdgeLocation = "string",
+#'       EdgeLocations = list(
+#'         "string"
+#'       ),
 #'       ResourceArn = "string",
 #'       AttachmentPolicyRuleNumber = 123,
 #'       SegmentName = "string",
@@ -4823,7 +5083,7 @@ networkmanager_get_route_analysis <- function(GlobalNetworkId, RouteAnalysisId) 
 #'       ),
 #'       LastModificationErrors = list(
 #'         list(
-#'           Code = "VPC_NOT_FOUND"|"SUBNET_NOT_FOUND"|"SUBNET_DUPLICATED_IN_AVAILABILITY_ZONE"|"SUBNET_NO_FREE_ADDRESSES"|"SUBNET_UNSUPPORTED_AVAILABILITY_ZONE"|"SUBNET_NO_IPV6_CIDRS"|"VPN_CONNECTION_NOT_FOUND"|"MAXIMUM_NO_ENCAP_LIMIT_EXCEEDED",
+#'           Code = "VPC_NOT_FOUND"|"SUBNET_NOT_FOUND"|"SUBNET_DUPLICATED_IN_AVAILABILITY_ZONE"|"SUBNET_NO_FREE_ADDRESSES"|"SUBNET_UNSUPPORTED_AVAILABILITY_ZONE"|"SUBNET_NO_IPV6_CIDRS"|"VPN_CONNECTION_NOT_FOUND"|"MAXIMUM_NO_ENCAP_LIMIT_EXCEEDED"|"DIRECT_CONNECT_GATEWAY_NOT_FOUND"|"DIRECT_CONNECT_GATEWAY_EXISTING_ATTACHMENTS"|"DIRECT_CONNECT_GATEWAY_NO_PRIVATE_VIF",
 #'           Message = "string",
 #'           ResourceArn = "string",
 #'           RequestId = "string"
@@ -5189,9 +5449,12 @@ networkmanager_get_transit_gateway_registrations <- function(GlobalNetworkId, Tr
 #'       CoreNetworkArn = "string",
 #'       AttachmentId = "string",
 #'       OwnerAccountId = "string",
-#'       AttachmentType = "CONNECT"|"SITE_TO_SITE_VPN"|"VPC"|"TRANSIT_GATEWAY_ROUTE_TABLE",
+#'       AttachmentType = "CONNECT"|"SITE_TO_SITE_VPN"|"VPC"|"DIRECT_CONNECT_GATEWAY"|"TRANSIT_GATEWAY_ROUTE_TABLE",
 #'       State = "REJECTED"|"PENDING_ATTACHMENT_ACCEPTANCE"|"CREATING"|"FAILED"|"AVAILABLE"|"UPDATING"|"PENDING_NETWORK_UPDATE"|"PENDING_TAG_ACCEPTANCE"|"DELETING",
 #'       EdgeLocation = "string",
+#'       EdgeLocations = list(
+#'         "string"
+#'       ),
 #'       ResourceArn = "string",
 #'       AttachmentPolicyRuleNumber = 123,
 #'       SegmentName = "string",
@@ -5230,7 +5493,7 @@ networkmanager_get_transit_gateway_registrations <- function(GlobalNetworkId, Tr
 #'       ),
 #'       LastModificationErrors = list(
 #'         list(
-#'           Code = "VPC_NOT_FOUND"|"SUBNET_NOT_FOUND"|"SUBNET_DUPLICATED_IN_AVAILABILITY_ZONE"|"SUBNET_NO_FREE_ADDRESSES"|"SUBNET_UNSUPPORTED_AVAILABILITY_ZONE"|"SUBNET_NO_IPV6_CIDRS"|"VPN_CONNECTION_NOT_FOUND"|"MAXIMUM_NO_ENCAP_LIMIT_EXCEEDED",
+#'           Code = "VPC_NOT_FOUND"|"SUBNET_NOT_FOUND"|"SUBNET_DUPLICATED_IN_AVAILABILITY_ZONE"|"SUBNET_NO_FREE_ADDRESSES"|"SUBNET_UNSUPPORTED_AVAILABILITY_ZONE"|"SUBNET_NO_IPV6_CIDRS"|"VPN_CONNECTION_NOT_FOUND"|"MAXIMUM_NO_ENCAP_LIMIT_EXCEEDED"|"DIRECT_CONNECT_GATEWAY_NOT_FOUND"|"DIRECT_CONNECT_GATEWAY_EXISTING_ATTACHMENTS"|"DIRECT_CONNECT_GATEWAY_NO_PRIVATE_VIF",
 #'           Message = "string",
 #'           ResourceArn = "string",
 #'           RequestId = "string"
@@ -5294,9 +5557,12 @@ networkmanager_get_transit_gateway_route_table_attachment <- function(Attachment
 #'       CoreNetworkArn = "string",
 #'       AttachmentId = "string",
 #'       OwnerAccountId = "string",
-#'       AttachmentType = "CONNECT"|"SITE_TO_SITE_VPN"|"VPC"|"TRANSIT_GATEWAY_ROUTE_TABLE",
+#'       AttachmentType = "CONNECT"|"SITE_TO_SITE_VPN"|"VPC"|"DIRECT_CONNECT_GATEWAY"|"TRANSIT_GATEWAY_ROUTE_TABLE",
 #'       State = "REJECTED"|"PENDING_ATTACHMENT_ACCEPTANCE"|"CREATING"|"FAILED"|"AVAILABLE"|"UPDATING"|"PENDING_NETWORK_UPDATE"|"PENDING_TAG_ACCEPTANCE"|"DELETING",
 #'       EdgeLocation = "string",
+#'       EdgeLocations = list(
+#'         "string"
+#'       ),
 #'       ResourceArn = "string",
 #'       AttachmentPolicyRuleNumber = 123,
 #'       SegmentName = "string",
@@ -5335,7 +5601,7 @@ networkmanager_get_transit_gateway_route_table_attachment <- function(Attachment
 #'       ),
 #'       LastModificationErrors = list(
 #'         list(
-#'           Code = "VPC_NOT_FOUND"|"SUBNET_NOT_FOUND"|"SUBNET_DUPLICATED_IN_AVAILABILITY_ZONE"|"SUBNET_NO_FREE_ADDRESSES"|"SUBNET_UNSUPPORTED_AVAILABILITY_ZONE"|"SUBNET_NO_IPV6_CIDRS"|"VPN_CONNECTION_NOT_FOUND"|"MAXIMUM_NO_ENCAP_LIMIT_EXCEEDED",
+#'           Code = "VPC_NOT_FOUND"|"SUBNET_NOT_FOUND"|"SUBNET_DUPLICATED_IN_AVAILABILITY_ZONE"|"SUBNET_NO_FREE_ADDRESSES"|"SUBNET_UNSUPPORTED_AVAILABILITY_ZONE"|"SUBNET_NO_IPV6_CIDRS"|"VPN_CONNECTION_NOT_FOUND"|"MAXIMUM_NO_ENCAP_LIMIT_EXCEEDED"|"DIRECT_CONNECT_GATEWAY_NOT_FOUND"|"DIRECT_CONNECT_GATEWAY_EXISTING_ATTACHMENTS"|"DIRECT_CONNECT_GATEWAY_NO_PRIVATE_VIF",
 #'           Message = "string",
 #'           ResourceArn = "string",
 #'           RequestId = "string"
@@ -5410,9 +5676,12 @@ networkmanager_get_vpc_attachment <- function(AttachmentId) {
 #'       CoreNetworkArn = "string",
 #'       AttachmentId = "string",
 #'       OwnerAccountId = "string",
-#'       AttachmentType = "CONNECT"|"SITE_TO_SITE_VPN"|"VPC"|"TRANSIT_GATEWAY_ROUTE_TABLE",
+#'       AttachmentType = "CONNECT"|"SITE_TO_SITE_VPN"|"VPC"|"DIRECT_CONNECT_GATEWAY"|"TRANSIT_GATEWAY_ROUTE_TABLE",
 #'       State = "REJECTED"|"PENDING_ATTACHMENT_ACCEPTANCE"|"CREATING"|"FAILED"|"AVAILABLE"|"UPDATING"|"PENDING_NETWORK_UPDATE"|"PENDING_TAG_ACCEPTANCE"|"DELETING",
 #'       EdgeLocation = "string",
+#'       EdgeLocations = list(
+#'         "string"
+#'       ),
 #'       ResourceArn = "string",
 #'       AttachmentPolicyRuleNumber = 123,
 #'       SegmentName = "string",
@@ -5451,7 +5720,7 @@ networkmanager_get_vpc_attachment <- function(AttachmentId) {
 #'       ),
 #'       LastModificationErrors = list(
 #'         list(
-#'           Code = "VPC_NOT_FOUND"|"SUBNET_NOT_FOUND"|"SUBNET_DUPLICATED_IN_AVAILABILITY_ZONE"|"SUBNET_NO_FREE_ADDRESSES"|"SUBNET_UNSUPPORTED_AVAILABILITY_ZONE"|"SUBNET_NO_IPV6_CIDRS"|"VPN_CONNECTION_NOT_FOUND"|"MAXIMUM_NO_ENCAP_LIMIT_EXCEEDED",
+#'           Code = "VPC_NOT_FOUND"|"SUBNET_NOT_FOUND"|"SUBNET_DUPLICATED_IN_AVAILABILITY_ZONE"|"SUBNET_NO_FREE_ADDRESSES"|"SUBNET_UNSUPPORTED_AVAILABILITY_ZONE"|"SUBNET_NO_IPV6_CIDRS"|"VPN_CONNECTION_NOT_FOUND"|"MAXIMUM_NO_ENCAP_LIMIT_EXCEEDED"|"DIRECT_CONNECT_GATEWAY_NOT_FOUND"|"DIRECT_CONNECT_GATEWAY_EXISTING_ATTACHMENTS"|"DIRECT_CONNECT_GATEWAY_NO_PRIVATE_VIF",
 #'           Message = "string",
 #'           ResourceArn = "string",
 #'           RequestId = "string"
@@ -5467,7 +5736,7 @@ networkmanager_get_vpc_attachment <- function(AttachmentId) {
 #' ```
 #' svc$list_attachments(
 #'   CoreNetworkId = "string",
-#'   AttachmentType = "CONNECT"|"SITE_TO_SITE_VPN"|"VPC"|"TRANSIT_GATEWAY_ROUTE_TABLE",
+#'   AttachmentType = "CONNECT"|"SITE_TO_SITE_VPN"|"VPC"|"DIRECT_CONNECT_GATEWAY"|"TRANSIT_GATEWAY_ROUTE_TABLE",
 #'   EdgeLocation = "string",
 #'   State = "REJECTED"|"PENDING_ATTACHMENT_ACCEPTANCE"|"CREATING"|"FAILED"|"AVAILABLE"|"UPDATING"|"PENDING_NETWORK_UPDATE"|"PENDING_TAG_ACCEPTANCE"|"DELETING",
 #'   MaxResults = 123,
@@ -6127,9 +6396,12 @@ networkmanager_register_transit_gateway <- function(GlobalNetworkId, TransitGate
 #'     CoreNetworkArn = "string",
 #'     AttachmentId = "string",
 #'     OwnerAccountId = "string",
-#'     AttachmentType = "CONNECT"|"SITE_TO_SITE_VPN"|"VPC"|"TRANSIT_GATEWAY_ROUTE_TABLE",
+#'     AttachmentType = "CONNECT"|"SITE_TO_SITE_VPN"|"VPC"|"DIRECT_CONNECT_GATEWAY"|"TRANSIT_GATEWAY_ROUTE_TABLE",
 #'     State = "REJECTED"|"PENDING_ATTACHMENT_ACCEPTANCE"|"CREATING"|"FAILED"|"AVAILABLE"|"UPDATING"|"PENDING_NETWORK_UPDATE"|"PENDING_TAG_ACCEPTANCE"|"DELETING",
 #'     EdgeLocation = "string",
+#'     EdgeLocations = list(
+#'       "string"
+#'     ),
 #'     ResourceArn = "string",
 #'     AttachmentPolicyRuleNumber = 123,
 #'     SegmentName = "string",
@@ -6168,7 +6440,7 @@ networkmanager_register_transit_gateway <- function(GlobalNetworkId, TransitGate
 #'     ),
 #'     LastModificationErrors = list(
 #'       list(
-#'         Code = "VPC_NOT_FOUND"|"SUBNET_NOT_FOUND"|"SUBNET_DUPLICATED_IN_AVAILABILITY_ZONE"|"SUBNET_NO_FREE_ADDRESSES"|"SUBNET_UNSUPPORTED_AVAILABILITY_ZONE"|"SUBNET_NO_IPV6_CIDRS"|"VPN_CONNECTION_NOT_FOUND"|"MAXIMUM_NO_ENCAP_LIMIT_EXCEEDED",
+#'         Code = "VPC_NOT_FOUND"|"SUBNET_NOT_FOUND"|"SUBNET_DUPLICATED_IN_AVAILABILITY_ZONE"|"SUBNET_NO_FREE_ADDRESSES"|"SUBNET_UNSUPPORTED_AVAILABILITY_ZONE"|"SUBNET_NO_IPV6_CIDRS"|"VPN_CONNECTION_NOT_FOUND"|"MAXIMUM_NO_ENCAP_LIMIT_EXCEEDED"|"DIRECT_CONNECT_GATEWAY_NOT_FOUND"|"DIRECT_CONNECT_GATEWAY_EXISTING_ATTACHMENTS"|"DIRECT_CONNECT_GATEWAY_NO_PRIVATE_VIF",
 #'         Message = "string",
 #'         ResourceArn = "string",
 #'         RequestId = "string"
@@ -6873,6 +7145,124 @@ networkmanager_update_device <- function(GlobalNetworkId, DeviceId, AWSLocation 
 }
 .networkmanager$operations$update_device <- networkmanager_update_device
 
+#' Updates the edge locations associated with an Amazon Web Services Direct
+#' Connect gateway attachment
+#'
+#' @description
+#' Updates the edge locations associated with an Amazon Web Services Direct
+#' Connect gateway attachment.
+#'
+#' @usage
+#' networkmanager_update_direct_connect_gateway_attachment(AttachmentId,
+#'   EdgeLocations)
+#'
+#' @param AttachmentId &#91;required&#93; The ID of the Direct Connect gateway attachment for the updated edge
+#' locations.
+#' @param EdgeLocations One or more edge locations to update for the Direct Connect gateway
+#' attachment. The updated array of edge locations overwrites the previous
+#' array of locations. `EdgeLocations` is only used for Direct Connect
+#' gateway attachments.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DirectConnectGatewayAttachment = list(
+#'     Attachment = list(
+#'       CoreNetworkId = "string",
+#'       CoreNetworkArn = "string",
+#'       AttachmentId = "string",
+#'       OwnerAccountId = "string",
+#'       AttachmentType = "CONNECT"|"SITE_TO_SITE_VPN"|"VPC"|"DIRECT_CONNECT_GATEWAY"|"TRANSIT_GATEWAY_ROUTE_TABLE",
+#'       State = "REJECTED"|"PENDING_ATTACHMENT_ACCEPTANCE"|"CREATING"|"FAILED"|"AVAILABLE"|"UPDATING"|"PENDING_NETWORK_UPDATE"|"PENDING_TAG_ACCEPTANCE"|"DELETING",
+#'       EdgeLocation = "string",
+#'       EdgeLocations = list(
+#'         "string"
+#'       ),
+#'       ResourceArn = "string",
+#'       AttachmentPolicyRuleNumber = 123,
+#'       SegmentName = "string",
+#'       NetworkFunctionGroupName = "string",
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       ProposedSegmentChange = list(
+#'         Tags = list(
+#'           list(
+#'             Key = "string",
+#'             Value = "string"
+#'           )
+#'         ),
+#'         AttachmentPolicyRuleNumber = 123,
+#'         SegmentName = "string"
+#'       ),
+#'       ProposedNetworkFunctionGroupChange = list(
+#'         Tags = list(
+#'           list(
+#'             Key = "string",
+#'             Value = "string"
+#'           )
+#'         ),
+#'         AttachmentPolicyRuleNumber = 123,
+#'         NetworkFunctionGroupName = "string"
+#'       ),
+#'       CreatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       UpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastModificationErrors = list(
+#'         list(
+#'           Code = "VPC_NOT_FOUND"|"SUBNET_NOT_FOUND"|"SUBNET_DUPLICATED_IN_AVAILABILITY_ZONE"|"SUBNET_NO_FREE_ADDRESSES"|"SUBNET_UNSUPPORTED_AVAILABILITY_ZONE"|"SUBNET_NO_IPV6_CIDRS"|"VPN_CONNECTION_NOT_FOUND"|"MAXIMUM_NO_ENCAP_LIMIT_EXCEEDED"|"DIRECT_CONNECT_GATEWAY_NOT_FOUND"|"DIRECT_CONNECT_GATEWAY_EXISTING_ATTACHMENTS"|"DIRECT_CONNECT_GATEWAY_NO_PRIVATE_VIF",
+#'           Message = "string",
+#'           ResourceArn = "string",
+#'           RequestId = "string"
+#'         )
+#'       )
+#'     ),
+#'     DirectConnectGatewayArn = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_direct_connect_gateway_attachment(
+#'   AttachmentId = "string",
+#'   EdgeLocations = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname networkmanager_update_direct_connect_gateway_attachment
+#'
+#' @aliases networkmanager_update_direct_connect_gateway_attachment
+networkmanager_update_direct_connect_gateway_attachment <- function(AttachmentId, EdgeLocations = NULL) {
+  op <- new_operation(
+    name = "UpdateDirectConnectGatewayAttachment",
+    http_method = "PATCH",
+    http_path = "/direct-connect-gateway-attachments/{attachmentId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .networkmanager$update_direct_connect_gateway_attachment_input(AttachmentId = AttachmentId, EdgeLocations = EdgeLocations)
+  output <- .networkmanager$update_direct_connect_gateway_attachment_output()
+  config <- get_config()
+  svc <- .networkmanager$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkmanager$operations$update_direct_connect_gateway_attachment <- networkmanager_update_direct_connect_gateway_attachment
+
 #' Updates an existing global network
 #'
 #' @description
@@ -7205,9 +7595,12 @@ networkmanager_update_site <- function(GlobalNetworkId, SiteId, Description = NU
 #'       CoreNetworkArn = "string",
 #'       AttachmentId = "string",
 #'       OwnerAccountId = "string",
-#'       AttachmentType = "CONNECT"|"SITE_TO_SITE_VPN"|"VPC"|"TRANSIT_GATEWAY_ROUTE_TABLE",
+#'       AttachmentType = "CONNECT"|"SITE_TO_SITE_VPN"|"VPC"|"DIRECT_CONNECT_GATEWAY"|"TRANSIT_GATEWAY_ROUTE_TABLE",
 #'       State = "REJECTED"|"PENDING_ATTACHMENT_ACCEPTANCE"|"CREATING"|"FAILED"|"AVAILABLE"|"UPDATING"|"PENDING_NETWORK_UPDATE"|"PENDING_TAG_ACCEPTANCE"|"DELETING",
 #'       EdgeLocation = "string",
+#'       EdgeLocations = list(
+#'         "string"
+#'       ),
 #'       ResourceArn = "string",
 #'       AttachmentPolicyRuleNumber = 123,
 #'       SegmentName = "string",
@@ -7246,7 +7639,7 @@ networkmanager_update_site <- function(GlobalNetworkId, SiteId, Description = NU
 #'       ),
 #'       LastModificationErrors = list(
 #'         list(
-#'           Code = "VPC_NOT_FOUND"|"SUBNET_NOT_FOUND"|"SUBNET_DUPLICATED_IN_AVAILABILITY_ZONE"|"SUBNET_NO_FREE_ADDRESSES"|"SUBNET_UNSUPPORTED_AVAILABILITY_ZONE"|"SUBNET_NO_IPV6_CIDRS"|"VPN_CONNECTION_NOT_FOUND"|"MAXIMUM_NO_ENCAP_LIMIT_EXCEEDED",
+#'           Code = "VPC_NOT_FOUND"|"SUBNET_NOT_FOUND"|"SUBNET_DUPLICATED_IN_AVAILABILITY_ZONE"|"SUBNET_NO_FREE_ADDRESSES"|"SUBNET_UNSUPPORTED_AVAILABILITY_ZONE"|"SUBNET_NO_IPV6_CIDRS"|"VPN_CONNECTION_NOT_FOUND"|"MAXIMUM_NO_ENCAP_LIMIT_EXCEEDED"|"DIRECT_CONNECT_GATEWAY_NOT_FOUND"|"DIRECT_CONNECT_GATEWAY_EXISTING_ATTACHMENTS"|"DIRECT_CONNECT_GATEWAY_NO_PRIVATE_VIF",
 #'           Message = "string",
 #'           ResourceArn = "string",
 #'           RequestId = "string"

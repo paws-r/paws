@@ -123,12 +123,13 @@ released into production.
 \link[paws.management:resiliencehub_describe_app_version_resources_resolution_status]{describe_app_version_resources_resolution_status} \tab Returns the resolution status for the specified resolution identifier for an application version\cr
 \link[paws.management:resiliencehub_describe_app_version_template]{describe_app_version_template} \tab Describes details about an Resilience Hub application\cr
 \link[paws.management:resiliencehub_describe_draft_app_version_resources_import_status]{describe_draft_app_version_resources_import_status} \tab Describes the status of importing resources to an application version\cr
+\link[paws.management:resiliencehub_describe_metrics_export]{describe_metrics_export} \tab Describes the metrics of the application configuration being exported\cr
 \link[paws.management:resiliencehub_describe_resiliency_policy]{describe_resiliency_policy} \tab Describes a specified resiliency policy for an Resilience Hub application\cr
 \link[paws.management:resiliencehub_describe_resource_grouping_recommendation_task]{describe_resource_grouping_recommendation_task} \tab Describes the resource grouping recommendation tasks run by Resilience Hub for your application\cr
 \link[paws.management:resiliencehub_import_resources_to_draft_app_version]{import_resources_to_draft_app_version} \tab Imports resources to Resilience Hub application draft version from different input sources\cr
 \link[paws.management:resiliencehub_list_alarm_recommendations]{list_alarm_recommendations} \tab Lists the alarm recommendations for an Resilience Hub application\cr
 \link[paws.management:resiliencehub_list_app_assessment_compliance_drifts]{list_app_assessment_compliance_drifts} \tab List of compliance drifts that were detected while running an assessment\cr
-\link[paws.management:resiliencehub_list_app_assessment_resource_drifts]{list_app_assessment_resource_drifts} \tab Indicates the list of resource drifts that were detected while running an assessment\cr
+\link[paws.management:resiliencehub_list_app_assessment_resource_drifts]{list_app_assessment_resource_drifts} \tab List of resource drifts that were detected while running an assessment\cr
 \link[paws.management:resiliencehub_list_app_assessments]{list_app_assessments} \tab Lists the assessments for an Resilience Hub application\cr
 \link[paws.management:resiliencehub_list_app_component_compliances]{list_app_component_compliances} \tab Lists the compliances for an Resilience Hub Application Component\cr
 \link[paws.management:resiliencehub_list_app_component_recommendations]{list_app_component_recommendations} \tab Lists the recommendations for an Resilience Hub Application Component\cr
@@ -138,6 +139,7 @@ released into production.
 \link[paws.management:resiliencehub_list_app_version_resource_mappings]{list_app_version_resource_mappings} \tab Lists how the resources in an application version are mapped/sourced from\cr
 \link[paws.management:resiliencehub_list_app_version_resources]{list_app_version_resources} \tab Lists all the resources in an Resilience Hub application\cr
 \link[paws.management:resiliencehub_list_app_versions]{list_app_versions} \tab Lists the different versions for the Resilience Hub applications\cr
+\link[paws.management:resiliencehub_list_metrics]{list_metrics} \tab Lists the metrics that can be exported\cr
 \link[paws.management:resiliencehub_list_recommendation_templates]{list_recommendation_templates} \tab Lists the recommendation templates for the Resilience Hub applications\cr
 \link[paws.management:resiliencehub_list_resiliency_policies]{list_resiliency_policies} \tab Lists the resiliency policies for the Resilience Hub applications\cr
 \link[paws.management:resiliencehub_list_resource_grouping_recommendations]{list_resource_grouping_recommendations} \tab Lists the resource grouping recommendations suggested by Resilience Hub for your application\cr
@@ -152,6 +154,7 @@ released into production.
 \link[paws.management:resiliencehub_remove_draft_app_version_resource_mappings]{remove_draft_app_version_resource_mappings} \tab Removes resource mappings from a draft application version\cr
 \link[paws.management:resiliencehub_resolve_app_version_resources]{resolve_app_version_resources} \tab Resolves the resources for an application version\cr
 \link[paws.management:resiliencehub_start_app_assessment]{start_app_assessment} \tab Creates a new application assessment for an application\cr
+\link[paws.management:resiliencehub_start_metrics_export]{start_metrics_export} \tab Initiates the export task of metrics\cr
 \link[paws.management:resiliencehub_start_resource_grouping_recommendation_task]{start_resource_grouping_recommendation_task} \tab Starts grouping recommendation task\cr
 \link[paws.management:resiliencehub_tag_resource]{tag_resource} \tab Applies one or more tags to a resource\cr
 \link[paws.management:resiliencehub_untag_resource]{untag_resource} \tab Removes one or more tags from a resource\cr

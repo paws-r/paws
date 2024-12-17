@@ -28,20 +28,10 @@ Constraints:
 
 \item{S3KeyPrefix}{The prefix applied to the log file names.
 
-Constraints:
-\itemize{
-\item Cannot exceed 512 characters
-\item Cannot contain spaces( ), double quotes ("), single quotes ('), a
-backslash (\\), or control characters. The hexadecimal codes for
-invalid characters are:
-\itemize{
-\item x00 to x20
-\item x22
-\item x27
-\item x5c
-\item x7f or larger
-}
-}}
+Valid characters are any letter from any language, any whitespace
+character, any numeric character, and the following characters:
+underscore (\verb{_}), period (\code{.}), colon (\code{:}), slash (\code{/}), equal (\code{=}),
+plus (\code{+}), backslash (\verb{\\}), hyphen (\code{-}), at symbol (\code{@}).}
 
 \item{LogDestinationType}{The log destination type. An enum with possible values of \code{s3} and
 \code{cloudwatch}.}

@@ -29,8 +29,10 @@ NULL
 #' For installation instructions, see [Tools for Amazon Web
 #' Services](https://aws.amazon.com/developer/tools/).
 #' 
-#' For a list of Region-specific endpoints that Lambda supports, see Lambda
-#' endpoints and quotas in the *Amazon Web Services General Reference.*.
+#' For a list of Region-specific endpoints that Lambda supports, see
+#' [Lambda endpoints and
+#' quotas](https://docs.aws.amazon.com/general/latest/gr/lambda-service.html)
+#' in the *Amazon Web Services General Reference.*.
 #' 
 #' When making the API calls, you will need to authenticate your request by
 #' providing a signature. Lambda supports signature version 4. For more
@@ -158,15 +160,21 @@ NULL
 #' @examples
 #' \dontrun{
 #' svc <- lambda()
+#' # The following example grants permission for the account 223456789012 to
+#' # use version 1 of a layer named my-layer.
 #' svc$add_layer_version_permission(
-#'   Foo = 123
+#'   Action = "lambda:GetLayerVersion",
+#'   LayerName = "my-layer",
+#'   Principal = "223456789012",
+#'   StatementId = "xaccount",
+#'   VersionNumber = 1L
 #' )
 #' }
 #'
 #' @section Operations:
 #' \tabular{ll}{
 #'  \link[=lambda_add_layer_version_permission]{add_layer_version_permission} \tab Adds permissions to the resource-based policy of a version of an Lambda layer\cr
-#'  \link[=lambda_add_permission]{add_permission} \tab Grants an Amazon Web Servicesservice, Amazon Web Services account, or Amazon Web Services organization permission to use a function\cr
+#'  \link[=lambda_add_permission]{add_permission} \tab Grants a principal permission to use a function\cr
 #'  \link[=lambda_create_alias]{create_alias} \tab Creates an alias for a Lambda function version\cr
 #'  \link[=lambda_create_code_signing_config]{create_code_signing_config} \tab Creates a code signing configuration\cr
 #'  \link[=lambda_create_event_source_mapping]{create_event_source_mapping} \tab Creates a mapping between an event source and an Lambda function\cr
@@ -212,7 +220,7 @@ NULL
 #'  \link[=lambda_list_layers]{list_layers} \tab Lists Lambda layers and shows information about the latest version of each\cr
 #'  \link[=lambda_list_layer_versions]{list_layer_versions} \tab Lists the versions of an Lambda layer\cr
 #'  \link[=lambda_list_provisioned_concurrency_configs]{list_provisioned_concurrency_configs} \tab Retrieves a list of provisioned concurrency configurations for a function\cr
-#'  \link[=lambda_list_tags]{list_tags} \tab Returns a function's tags\cr
+#'  \link[=lambda_list_tags]{list_tags} \tab Returns a function, event source mapping, or code signing configuration's tags\cr
 #'  \link[=lambda_list_versions_by_function]{list_versions_by_function} \tab Returns a list of versions, with the version-specific configuration of each\cr
 #'  \link[=lambda_publish_layer_version]{publish_layer_version} \tab Creates an Lambda layer from a ZIP archive\cr
 #'  \link[=lambda_publish_version]{publish_version} \tab Creates a version from the current code and configuration of a function\cr
@@ -223,9 +231,9 @@ NULL
 #'  \link[=lambda_put_provisioned_concurrency_config]{put_provisioned_concurrency_config} \tab Adds a provisioned concurrency configuration to a function's alias or version\cr
 #'  \link[=lambda_put_runtime_management_config]{put_runtime_management_config} \tab Sets the runtime management configuration for a function's version\cr
 #'  \link[=lambda_remove_layer_version_permission]{remove_layer_version_permission} \tab Removes a statement from the permissions policy for a version of an Lambda layer\cr
-#'  \link[=lambda_remove_permission]{remove_permission} \tab Revokes function-use permission from an Amazon Web Servicesservice or another Amazon Web Services account\cr
-#'  \link[=lambda_tag_resource]{tag_resource} \tab Adds tags to a function\cr
-#'  \link[=lambda_untag_resource]{untag_resource} \tab Removes tags from a function\cr
+#'  \link[=lambda_remove_permission]{remove_permission} \tab Revokes function-use permission from an Amazon Web Services service or another Amazon Web Services account\cr
+#'  \link[=lambda_tag_resource]{tag_resource} \tab Adds tags to a function, event source mapping, or code signing configuration\cr
+#'  \link[=lambda_untag_resource]{untag_resource} \tab Removes tags from a function, event source mapping, or code signing configuration\cr
 #'  \link[=lambda_update_alias]{update_alias} \tab Updates the configuration of a Lambda function alias\cr
 #'  \link[=lambda_update_code_signing_config]{update_code_signing_config} \tab Update the code signing configuration\cr
 #'  \link[=lambda_update_event_source_mapping]{update_event_source_mapping} \tab Updates an event source mapping\cr
@@ -264,7 +272,7 @@ lambda <- function(config = list(), credentials = list(), endpoint = NULL, regio
 
 .lambda$metadata <- list(
   service_name = "lambda",
-  endpoints = list("*" = list(endpoint = "lambda.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "lambda.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "lambda.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "lambda.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "lambda.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "lambda.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "lambda.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "lambda.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "lambda.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "lambda.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "lambda.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "lambda.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "lambda.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Lambda",
   api_version = "2015-03-31",
   signing_name = "lambda",

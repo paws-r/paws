@@ -15,6 +15,18 @@ NULL
   return(populate(args, shape))
 }
 
+.workspacesweb$associate_data_protection_settings_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(dataProtectionSettingsArn = structure(logical(0), tags = list(location = "querystring", locationName = "dataProtectionSettingsArn", type = "string")), portalArn = structure(logical(0), tags = list(location = "uri", locationName = "portalArn", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.workspacesweb$associate_data_protection_settings_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(dataProtectionSettingsArn = structure(logical(0), tags = list(type = "string")), portalArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .workspacesweb$associate_ip_access_settings_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(ipAccessSettingsArn = structure(logical(0), tags = list(location = "querystring", locationName = "ipAccessSettingsArn", type = "string")), portalArn = structure(logical(0), tags = list(location = "uri", locationName = "portalArn", type = "string"))), tags = list(type = "structure"))
@@ -84,6 +96,18 @@ NULL
 .workspacesweb$create_browser_settings_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(browserSettingsArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.workspacesweb$create_data_protection_settings_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(additionalEncryptionContext = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), customerManagedKey = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), displayName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), inlineRedactionConfiguration = structure(list(globalConfidenceLevel = structure(logical(0), tags = list(type = "integer", box = TRUE)), globalEnforcedUrls = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "list")), globalExemptUrls = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "list")), inlineRedactionPatterns = structure(list(structure(list(builtInPatternId = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), confidenceLevel = structure(logical(0), tags = list(type = "integer", box = TRUE)), customPattern = structure(list(keywordRegex = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), patternDescription = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), patternName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), patternRegex = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), enforcedUrls = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "list")), exemptUrls = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "list")), redactionPlaceHolder = structure(list(redactionPlaceHolderText = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), redactionPlaceHolderType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Value = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure", sensitive = TRUE))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.workspacesweb$create_data_protection_settings_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(dataProtectionSettingsArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -178,6 +202,18 @@ NULL
 }
 
 .workspacesweb$delete_browser_settings_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.workspacesweb$delete_data_protection_settings_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(dataProtectionSettingsArn = structure(logical(0), tags = list(location = "uri", locationName = "dataProtectionSettingsArn", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.workspacesweb$delete_data_protection_settings_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(), tags = list(type = "structure"))
   return(populate(args, shape))
@@ -279,6 +315,18 @@ NULL
   return(populate(args, shape))
 }
 
+.workspacesweb$disassociate_data_protection_settings_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(portalArn = structure(logical(0), tags = list(location = "uri", locationName = "portalArn", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.workspacesweb$disassociate_data_protection_settings_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .workspacesweb$disassociate_ip_access_settings_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(portalArn = structure(logical(0), tags = list(location = "uri", locationName = "portalArn", type = "string"))), tags = list(type = "structure"))
@@ -339,6 +387,18 @@ NULL
   return(populate(args, shape))
 }
 
+.workspacesweb$expire_session_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(portalId = structure(logical(0), tags = list(location = "uri", locationName = "portalId", type = "string")), sessionId = structure(logical(0), tags = list(location = "uri", locationName = "sessionId", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.workspacesweb$expire_session_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .workspacesweb$get_browser_settings_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(browserSettingsArn = structure(logical(0), tags = list(location = "uri", locationName = "browserSettingsArn", type = "string"))), tags = list(type = "structure"))
@@ -348,6 +408,18 @@ NULL
 .workspacesweb$get_browser_settings_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(browserSettings = structure(list(additionalEncryptionContext = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), associatedPortalArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), browserPolicy = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), browserSettingsArn = structure(logical(0), tags = list(type = "string")), customerManagedKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.workspacesweb$get_data_protection_settings_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(dataProtectionSettingsArn = structure(logical(0), tags = list(location = "uri", locationName = "dataProtectionSettingsArn", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.workspacesweb$get_data_protection_settings_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(dataProtectionSettings = structure(list(additionalEncryptionContext = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), associatedPortalArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), creationDate = structure(logical(0), tags = list(type = "timestamp")), customerManagedKey = structure(logical(0), tags = list(type = "string")), dataProtectionSettingsArn = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), displayName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), inlineRedactionConfiguration = structure(list(globalConfidenceLevel = structure(logical(0), tags = list(type = "integer", box = TRUE)), globalEnforcedUrls = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "list")), globalExemptUrls = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "list")), inlineRedactionPatterns = structure(list(structure(list(builtInPatternId = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), confidenceLevel = structure(logical(0), tags = list(type = "integer", box = TRUE)), customPattern = structure(list(keywordRegex = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), patternDescription = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), patternName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), patternRegex = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), enforcedUrls = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "list")), exemptUrls = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "list")), redactionPlaceHolder = structure(list(redactionPlaceHolderText = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), redactionPlaceHolderType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -395,7 +467,7 @@ NULL
 
 .workspacesweb$get_portal_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(portal = structure(list(additionalEncryptionContext = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), authenticationType = structure(logical(0), tags = list(type = "string")), browserSettingsArn = structure(logical(0), tags = list(type = "string")), browserType = structure(logical(0), tags = list(type = "string")), creationDate = structure(logical(0), tags = list(type = "timestamp")), customerManagedKey = structure(logical(0), tags = list(type = "string")), displayName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), instanceType = structure(logical(0), tags = list(type = "string")), ipAccessSettingsArn = structure(logical(0), tags = list(type = "string")), maxConcurrentSessions = structure(logical(0), tags = list(type = "integer", box = TRUE)), networkSettingsArn = structure(logical(0), tags = list(type = "string")), portalArn = structure(logical(0), tags = list(type = "string")), portalEndpoint = structure(logical(0), tags = list(type = "string")), portalStatus = structure(logical(0), tags = list(type = "string")), rendererType = structure(logical(0), tags = list(type = "string")), statusReason = structure(logical(0), tags = list(type = "string")), trustStoreArn = structure(logical(0), tags = list(type = "string")), userAccessLoggingSettingsArn = structure(logical(0), tags = list(type = "string")), userSettingsArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(portal = structure(list(additionalEncryptionContext = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), authenticationType = structure(logical(0), tags = list(type = "string")), browserSettingsArn = structure(logical(0), tags = list(type = "string")), browserType = structure(logical(0), tags = list(type = "string")), creationDate = structure(logical(0), tags = list(type = "timestamp")), customerManagedKey = structure(logical(0), tags = list(type = "string")), dataProtectionSettingsArn = structure(logical(0), tags = list(type = "string")), displayName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), instanceType = structure(logical(0), tags = list(type = "string")), ipAccessSettingsArn = structure(logical(0), tags = list(type = "string")), maxConcurrentSessions = structure(logical(0), tags = list(type = "integer", box = TRUE)), networkSettingsArn = structure(logical(0), tags = list(type = "string")), portalArn = structure(logical(0), tags = list(type = "string")), portalEndpoint = structure(logical(0), tags = list(type = "string")), portalStatus = structure(logical(0), tags = list(type = "string")), rendererType = structure(logical(0), tags = list(type = "string")), statusReason = structure(logical(0), tags = list(type = "string")), trustStoreArn = structure(logical(0), tags = list(type = "string")), userAccessLoggingSettingsArn = structure(logical(0), tags = list(type = "string")), userSettingsArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -408,6 +480,18 @@ NULL
 .workspacesweb$get_portal_service_provider_metadata_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(portalArn = structure(logical(0), tags = list(type = "string")), serviceProviderSamlMetadata = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.workspacesweb$get_session_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(portalId = structure(logical(0), tags = list(location = "uri", locationName = "portalId", type = "string")), sessionId = structure(logical(0), tags = list(location = "uri", locationName = "sessionId", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.workspacesweb$get_session_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(session = structure(list(clientIpAddresses = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "list")), endTime = structure(logical(0), tags = list(type = "timestamp")), portalArn = structure(logical(0), tags = list(type = "string")), sessionId = structure(logical(0), tags = list(type = "string")), startTime = structure(logical(0), tags = list(type = "timestamp")), status = structure(logical(0), tags = list(type = "string")), username = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -471,6 +555,18 @@ NULL
   return(populate(args, shape))
 }
 
+.workspacesweb$list_data_protection_settings_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.workspacesweb$list_data_protection_settings_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(dataProtectionSettings = structure(list(structure(list(creationDate = structure(logical(0), tags = list(type = "timestamp")), dataProtectionSettingsArn = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), displayName = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .workspacesweb$list_identity_providers_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), portalArn = structure(logical(0), tags = list(location = "uri", locationName = "portalArn", type = "string"))), tags = list(type = "structure"))
@@ -515,7 +611,19 @@ NULL
 
 .workspacesweb$list_portals_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), portals = structure(list(structure(list(authenticationType = structure(logical(0), tags = list(type = "string")), browserSettingsArn = structure(logical(0), tags = list(type = "string")), browserType = structure(logical(0), tags = list(type = "string")), creationDate = structure(logical(0), tags = list(type = "timestamp")), displayName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), instanceType = structure(logical(0), tags = list(type = "string")), ipAccessSettingsArn = structure(logical(0), tags = list(type = "string")), maxConcurrentSessions = structure(logical(0), tags = list(type = "integer", box = TRUE)), networkSettingsArn = structure(logical(0), tags = list(type = "string")), portalArn = structure(logical(0), tags = list(type = "string")), portalEndpoint = structure(logical(0), tags = list(type = "string")), portalStatus = structure(logical(0), tags = list(type = "string")), rendererType = structure(logical(0), tags = list(type = "string")), trustStoreArn = structure(logical(0), tags = list(type = "string")), userAccessLoggingSettingsArn = structure(logical(0), tags = list(type = "string")), userSettingsArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), portals = structure(list(structure(list(authenticationType = structure(logical(0), tags = list(type = "string")), browserSettingsArn = structure(logical(0), tags = list(type = "string")), browserType = structure(logical(0), tags = list(type = "string")), creationDate = structure(logical(0), tags = list(type = "timestamp")), dataProtectionSettingsArn = structure(logical(0), tags = list(type = "string")), displayName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), instanceType = structure(logical(0), tags = list(type = "string")), ipAccessSettingsArn = structure(logical(0), tags = list(type = "string")), maxConcurrentSessions = structure(logical(0), tags = list(type = "integer", box = TRUE)), networkSettingsArn = structure(logical(0), tags = list(type = "string")), portalArn = structure(logical(0), tags = list(type = "string")), portalEndpoint = structure(logical(0), tags = list(type = "string")), portalStatus = structure(logical(0), tags = list(type = "string")), rendererType = structure(logical(0), tags = list(type = "string")), trustStoreArn = structure(logical(0), tags = list(type = "string")), userAccessLoggingSettingsArn = structure(logical(0), tags = list(type = "string")), userSettingsArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.workspacesweb$list_sessions_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), portalId = structure(logical(0), tags = list(location = "uri", locationName = "portalId", type = "string")), sessionId = structure(logical(0), tags = list(location = "querystring", locationName = "sessionId", type = "string")), sortBy = structure(logical(0), tags = list(location = "querystring", locationName = "sortBy", type = "string")), status = structure(logical(0), tags = list(location = "querystring", locationName = "status", type = "string")), username = structure(logical(0), tags = list(location = "querystring", locationName = "username", type = "string", sensitive = TRUE))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.workspacesweb$list_sessions_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), sessions = structure(list(structure(list(endTime = structure(logical(0), tags = list(type = "timestamp")), portalArn = structure(logical(0), tags = list(type = "string")), sessionId = structure(logical(0), tags = list(type = "string")), startTime = structure(logical(0), tags = list(type = "timestamp")), status = structure(logical(0), tags = list(type = "string")), username = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -615,6 +723,18 @@ NULL
   return(populate(args, shape))
 }
 
+.workspacesweb$update_data_protection_settings_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), dataProtectionSettingsArn = structure(logical(0), tags = list(location = "uri", locationName = "dataProtectionSettingsArn", type = "string")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), displayName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), inlineRedactionConfiguration = structure(list(globalConfidenceLevel = structure(logical(0), tags = list(type = "integer", box = TRUE)), globalEnforcedUrls = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "list")), globalExemptUrls = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "list")), inlineRedactionPatterns = structure(list(structure(list(builtInPatternId = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), confidenceLevel = structure(logical(0), tags = list(type = "integer", box = TRUE)), customPattern = structure(list(keywordRegex = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), patternDescription = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), patternName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), patternRegex = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), enforcedUrls = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "list")), exemptUrls = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "list")), redactionPlaceHolder = structure(list(redactionPlaceHolderText = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), redactionPlaceHolderType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.workspacesweb$update_data_protection_settings_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(dataProtectionSettings = structure(list(additionalEncryptionContext = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), associatedPortalArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), creationDate = structure(logical(0), tags = list(type = "timestamp")), customerManagedKey = structure(logical(0), tags = list(type = "string")), dataProtectionSettingsArn = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), displayName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), inlineRedactionConfiguration = structure(list(globalConfidenceLevel = structure(logical(0), tags = list(type = "integer", box = TRUE)), globalEnforcedUrls = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "list")), globalExemptUrls = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "list")), inlineRedactionPatterns = structure(list(structure(list(builtInPatternId = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), confidenceLevel = structure(logical(0), tags = list(type = "integer", box = TRUE)), customPattern = structure(list(keywordRegex = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), patternDescription = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), patternName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), patternRegex = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), enforcedUrls = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "list")), exemptUrls = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "list")), redactionPlaceHolder = structure(list(redactionPlaceHolderText = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), redactionPlaceHolderType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .workspacesweb$update_identity_provider_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), identityProviderArn = structure(logical(0), tags = list(location = "uri", locationName = "identityProviderArn", type = "string")), identityProviderDetails = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), identityProviderName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), identityProviderType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -659,7 +779,7 @@ NULL
 
 .workspacesweb$update_portal_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(portal = structure(list(additionalEncryptionContext = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), authenticationType = structure(logical(0), tags = list(type = "string")), browserSettingsArn = structure(logical(0), tags = list(type = "string")), browserType = structure(logical(0), tags = list(type = "string")), creationDate = structure(logical(0), tags = list(type = "timestamp")), customerManagedKey = structure(logical(0), tags = list(type = "string")), displayName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), instanceType = structure(logical(0), tags = list(type = "string")), ipAccessSettingsArn = structure(logical(0), tags = list(type = "string")), maxConcurrentSessions = structure(logical(0), tags = list(type = "integer", box = TRUE)), networkSettingsArn = structure(logical(0), tags = list(type = "string")), portalArn = structure(logical(0), tags = list(type = "string")), portalEndpoint = structure(logical(0), tags = list(type = "string")), portalStatus = structure(logical(0), tags = list(type = "string")), rendererType = structure(logical(0), tags = list(type = "string")), statusReason = structure(logical(0), tags = list(type = "string")), trustStoreArn = structure(logical(0), tags = list(type = "string")), userAccessLoggingSettingsArn = structure(logical(0), tags = list(type = "string")), userSettingsArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(portal = structure(list(additionalEncryptionContext = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), authenticationType = structure(logical(0), tags = list(type = "string")), browserSettingsArn = structure(logical(0), tags = list(type = "string")), browserType = structure(logical(0), tags = list(type = "string")), creationDate = structure(logical(0), tags = list(type = "timestamp")), customerManagedKey = structure(logical(0), tags = list(type = "string")), dataProtectionSettingsArn = structure(logical(0), tags = list(type = "string")), displayName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), instanceType = structure(logical(0), tags = list(type = "string")), ipAccessSettingsArn = structure(logical(0), tags = list(type = "string")), maxConcurrentSessions = structure(logical(0), tags = list(type = "integer", box = TRUE)), networkSettingsArn = structure(logical(0), tags = list(type = "string")), portalArn = structure(logical(0), tags = list(type = "string")), portalEndpoint = structure(logical(0), tags = list(type = "string")), portalStatus = structure(logical(0), tags = list(type = "string")), rendererType = structure(logical(0), tags = list(type = "string")), statusReason = structure(logical(0), tags = list(type = "string")), trustStoreArn = structure(logical(0), tags = list(type = "string")), userAccessLoggingSettingsArn = structure(logical(0), tags = list(type = "string")), userSettingsArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

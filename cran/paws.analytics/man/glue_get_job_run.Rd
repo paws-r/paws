@@ -14,7 +14,7 @@ glue_get_job_run(JobName, RunId, PredecessorsIncluded = NULL)
 \item{PredecessorsIncluded}{True if a list of predecessor runs should be returned.}
 }
 \description{
-Retrieves the metadata for a given job run. Job run history is accessible for 90 days for your workflow and job run.
+Retrieves the metadata for a given job run. Job run history is accessible for 365 days for your workflow and job run.
 
 See \url{https://www.paws-r-sdk.com/docs/glue_get_job_run/} for full documentation.
 }

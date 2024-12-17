@@ -2506,7 +2506,7 @@ finspace_list_kx_changesets <- function(environmentId, databaseName, nextToken =
     http_method = "GET",
     http_path = "/kx/environments/{environmentId}/databases/{databaseName}/changesets",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .finspace$list_kx_changesets_input(environmentId = environmentId, databaseName = databaseName, nextToken = nextToken, maxResults = maxResults)
@@ -2572,7 +2572,7 @@ finspace_list_kx_cluster_nodes <- function(environmentId, clusterName, nextToken
     http_method = "GET",
     http_path = "/kx/environments/{environmentId}/clusters/{clusterName}/nodes",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .finspace$list_kx_cluster_nodes_input(environmentId = environmentId, clusterName = clusterName, nextToken = nextToken, maxResults = maxResults)
@@ -2749,7 +2749,7 @@ finspace_list_kx_databases <- function(environmentId, nextToken = NULL, maxResul
     http_method = "GET",
     http_path = "/kx/environments/{environmentId}/databases",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .finspace$list_kx_databases_input(environmentId = environmentId, nextToken = nextToken, maxResults = maxResults)
@@ -2857,7 +2857,7 @@ finspace_list_kx_dataviews <- function(environmentId, databaseName, nextToken = 
     http_method = "GET",
     http_path = "/kx/environments/{environmentId}/databases/{databaseName}/dataviews",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .finspace$list_kx_dataviews_input(environmentId = environmentId, databaseName = databaseName, nextToken = nextToken, maxResults = maxResults)
@@ -3031,7 +3031,7 @@ finspace_list_kx_scaling_groups <- function(environmentId, maxResults = NULL, ne
     http_method = "GET",
     http_path = "/kx/environments/{environmentId}/scalingGroups",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .finspace$list_kx_scaling_groups_input(environmentId = environmentId, maxResults = maxResults, nextToken = nextToken)

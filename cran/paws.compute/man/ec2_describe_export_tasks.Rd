@@ -5,12 +5,12 @@
 \title{Describes the specified export instance tasks or all of your export
 instance tasks}
 \usage{
-ec2_describe_export_tasks(ExportTaskIds = NULL, Filters = NULL)
+ec2_describe_export_tasks(Filters = NULL, ExportTaskIds = NULL)
 }
 \arguments{
-\item{ExportTaskIds}{The export task IDs.}
-
 \item{Filters}{the filters for the export tasks.}
+
+\item{ExportTaskIds}{The export task IDs.}
 }
 \description{
 Describes the specified export instance tasks or all of your export instance tasks.

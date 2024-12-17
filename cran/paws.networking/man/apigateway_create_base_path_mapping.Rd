@@ -6,6 +6,7 @@
 \usage{
 apigateway_create_base_path_mapping(
   domainName,
+  domainNameId = NULL,
   basePath = NULL,
   restApiId,
   stage = NULL
@@ -13,6 +14,9 @@ apigateway_create_base_path_mapping(
 }
 \arguments{
 \item{domainName}{[required] The domain name of the BasePathMapping resource to create.}
+
+\item{domainNameId}{The identifier for the domain name resource. Supported only for private
+custom domain names.}
 
 \item{basePath}{The base path name that callers of the API must provide as part of the
 URL after the domain name. This value must be unique for all of the

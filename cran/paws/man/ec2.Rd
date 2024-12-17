@@ -91,6 +91,7 @@ programmatically. For more information, see the \href{https://docs.aws.amazon.co
 
 \tabular{ll}{
 \link[paws.compute:ec2_accept_address_transfer]{accept_address_transfer} \tab Accepts an Elastic IP address transfer\cr
+\link[paws.compute:ec2_accept_capacity_reservation_billing_ownership]{accept_capacity_reservation_billing_ownership} \tab Accepts a request to assign billing of the available capacity of a shared Capacity Reservation to your account\cr
 \link[paws.compute:ec2_accept_reserved_instances_exchange_quote]{accept_reserved_instances_exchange_quote} \tab Accepts the Convertible Reserved Instance exchange quote described in the GetReservedInstancesExchangeQuote call\cr
 \link[paws.compute:ec2_accept_transit_gateway_multicast_domain_associations]{accept_transit_gateway_multicast_domain_associations} \tab Accepts a request to associate subnets with a transit gateway multicast domain\cr
 \link[paws.compute:ec2_accept_transit_gateway_peering_attachment]{accept_transit_gateway_peering_attachment} \tab Accepts a transit gateway peering attachment request\cr
@@ -106,6 +107,7 @@ programmatically. For more information, see the \href{https://docs.aws.amazon.co
 \link[paws.compute:ec2_assign_private_ip_addresses]{assign_private_ip_addresses} \tab Assigns one or more secondary private IP addresses to the specified network interface\cr
 \link[paws.compute:ec2_assign_private_nat_gateway_address]{assign_private_nat_gateway_address} \tab Assigns private IPv4 addresses to a private NAT gateway\cr
 \link[paws.compute:ec2_associate_address]{associate_address} \tab Associates an Elastic IP address, or carrier IP address (for instances that are in subnets in Wavelength Zones) with an instance or a network interface\cr
+\link[paws.compute:ec2_associate_capacity_reservation_billing_owner]{associate_capacity_reservation_billing_owner} \tab Initiates a request to assign billing of the unused capacity of a shared Capacity Reservation to a consumer account that is consolidated under the same Amazon Web Services organizations payer account\cr
 \link[paws.compute:ec2_associate_client_vpn_target_network]{associate_client_vpn_target_network} \tab Associates a target network with a Client VPN endpoint\cr
 \link[paws.compute:ec2_associate_dhcp_options]{associate_dhcp_options} \tab Associates a set of DHCP options (that you've previously created) with the specified VPC, or associates no DHCP options with the VPC\cr
 \link[paws.compute:ec2_associate_enclave_certificate_iam_role]{associate_enclave_certificate_iam_role} \tab Associates an Identity and Access Management (IAM) role with an Certificate Manager (ACM) certificate\cr
@@ -115,6 +117,7 @@ programmatically. For more information, see the \href{https://docs.aws.amazon.co
 \link[paws.compute:ec2_associate_ipam_resource_discovery]{associate_ipam_resource_discovery} \tab Associates an IPAM resource discovery with an Amazon VPC IPAM\cr
 \link[paws.compute:ec2_associate_nat_gateway_address]{associate_nat_gateway_address} \tab Associates Elastic IP addresses (EIPs) and private IPv4 addresses with a public NAT gateway\cr
 \link[paws.compute:ec2_associate_route_table]{associate_route_table} \tab Associates a subnet in your VPC or an internet gateway or virtual private gateway attached to your VPC with a route table in your VPC\cr
+\link[paws.compute:ec2_associate_security_group_vpc]{associate_security_group_vpc} \tab Associates a security group with another VPC in the same Region\cr
 \link[paws.compute:ec2_associate_subnet_cidr_block]{associate_subnet_cidr_block} \tab Associates a CIDR block with your subnet\cr
 \link[paws.compute:ec2_associate_transit_gateway_multicast_domain]{associate_transit_gateway_multicast_domain} \tab Associates the specified subnets and transit gateway attachments with the specified transit gateway multicast domain\cr
 \link[paws.compute:ec2_associate_transit_gateway_policy_table]{associate_transit_gateway_policy_table} \tab Associates the specified transit gateway attachment with a transit gateway policy table\cr
@@ -126,7 +129,7 @@ programmatically. For more information, see the \href{https://docs.aws.amazon.co
 \link[paws.compute:ec2_attach_network_interface]{attach_network_interface} \tab Attaches a network interface to an instance\cr
 \link[paws.compute:ec2_attach_verified_access_trust_provider]{attach_verified_access_trust_provider} \tab Attaches the specified Amazon Web Services Verified Access trust provider to the specified Amazon Web Services Verified Access instance\cr
 \link[paws.compute:ec2_attach_volume]{attach_volume} \tab Attaches an EBS volume to a running or stopped instance and exposes it to the instance with the specified device name\cr
-\link[paws.compute:ec2_attach_vpn_gateway]{attach_vpn_gateway} \tab Attaches a virtual private gateway to a VPC\cr
+\link[paws.compute:ec2_attach_vpn_gateway]{attach_vpn_gateway} \tab Attaches an available virtual private gateway to a VPC\cr
 \link[paws.compute:ec2_authorize_client_vpn_ingress]{authorize_client_vpn_ingress} \tab Adds an ingress authorization rule to a Client VPN endpoint\cr
 \link[paws.compute:ec2_authorize_security_group_egress]{authorize_security_group_egress} \tab Adds the specified outbound (egress) rules to a security group\cr
 \link[paws.compute:ec2_authorize_security_group_ingress]{authorize_security_group_ingress} \tab Adds the specified inbound (ingress) rules to a security group\cr
@@ -135,6 +138,7 @@ programmatically. For more information, see the \href{https://docs.aws.amazon.co
 \link[paws.compute:ec2_cancel_capacity_reservation]{cancel_capacity_reservation} \tab Cancels the specified Capacity Reservation, releases the reserved capacity, and changes the Capacity Reservation's state to cancelled\cr
 \link[paws.compute:ec2_cancel_capacity_reservation_fleets]{cancel_capacity_reservation_fleets} \tab Cancels one or more Capacity Reservation Fleets\cr
 \link[paws.compute:ec2_cancel_conversion_task]{cancel_conversion_task} \tab Cancels an active conversion task\cr
+\link[paws.compute:ec2_cancel_declarative_policies_report]{cancel_declarative_policies_report} \tab Cancels the generation of an account status report\cr
 \link[paws.compute:ec2_cancel_export_task]{cancel_export_task} \tab Cancels an active export task\cr
 \link[paws.compute:ec2_cancel_image_launch_permission]{cancel_image_launch_permission} \tab Removes your Amazon Web Services account from the launch permissions for the specified AMI\cr
 \link[paws.compute:ec2_cancel_import_task]{cancel_import_task} \tab Cancels an in-process import virtual machine or import snapshot task\cr
@@ -146,7 +150,7 @@ programmatically. For more information, see the \href{https://docs.aws.amazon.co
 \link[paws.compute:ec2_copy_image]{copy_image} \tab Initiates an AMI copy operation\cr
 \link[paws.compute:ec2_copy_snapshot]{copy_snapshot} \tab Copies a point-in-time snapshot of an EBS volume and stores it in Amazon S3\cr
 \link[paws.compute:ec2_create_capacity_reservation]{create_capacity_reservation} \tab Creates a new Capacity Reservation with the specified attributes\cr
-\link[paws.compute:ec2_create_capacity_reservation_by_splitting]{create_capacity_reservation_by_splitting} \tab Create a new Capacity Reservation by splitting the available capacity of the source Capacity Reservation\cr
+\link[paws.compute:ec2_create_capacity_reservation_by_splitting]{create_capacity_reservation_by_splitting} \tab Create a new Capacity Reservation by splitting the capacity of the source Capacity Reservation\cr
 \link[paws.compute:ec2_create_capacity_reservation_fleet]{create_capacity_reservation_fleet} \tab Creates a Capacity Reservation Fleet\cr
 \link[paws.compute:ec2_create_carrier_gateway]{create_carrier_gateway} \tab Creates a carrier gateway\cr
 \link[paws.compute:ec2_create_client_vpn_endpoint]{create_client_vpn_endpoint} \tab Creates a Client VPN endpoint\cr
@@ -171,7 +175,7 @@ programmatically. For more information, see the \href{https://docs.aws.amazon.co
 \link[paws.compute:ec2_create_ipam_pool]{create_ipam_pool} \tab Create an IP address pool for Amazon VPC IP Address Manager (IPAM)\cr
 \link[paws.compute:ec2_create_ipam_resource_discovery]{create_ipam_resource_discovery} \tab Creates an IPAM resource discovery\cr
 \link[paws.compute:ec2_create_ipam_scope]{create_ipam_scope} \tab Create an IPAM scope\cr
-\link[paws.compute:ec2_create_key_pair]{create_key_pair} \tab Creates an ED25519 or 2048-bit RSA key pair with the specified name and in the specified PEM or PPK format\cr
+\link[paws.compute:ec2_create_key_pair]{create_key_pair} \tab Creates an ED25519 or 2048-bit RSA key pair with the specified name and in the specified format\cr
 \link[paws.compute:ec2_create_launch_template]{create_launch_template} \tab Creates a launch template\cr
 \link[paws.compute:ec2_create_launch_template_version]{create_launch_template_version} \tab Creates a new version of a launch template\cr
 \link[paws.compute:ec2_create_local_gateway_route]{create_local_gateway_route} \tab Creates a static route for the specified local gateway route table\cr
@@ -195,7 +199,7 @@ programmatically. For more information, see the \href{https://docs.aws.amazon.co
 \link[paws.compute:ec2_create_route_table]{create_route_table} \tab Creates a route table for the specified VPC\cr
 \link[paws.compute:ec2_create_security_group]{create_security_group} \tab Creates a security group\cr
 \link[paws.compute:ec2_create_snapshot]{create_snapshot} \tab Creates a snapshot of an EBS volume and stores it in Amazon S3\cr
-\link[paws.compute:ec2_create_snapshots]{create_snapshots} \tab Creates crash-consistent snapshots of multiple EBS volumes and stores the data in S3\cr
+\link[paws.compute:ec2_create_snapshots]{create_snapshots} \tab Creates crash-consistent snapshots of multiple EBS volumes attached to an Amazon EC2 instance\cr
 \link[paws.compute:ec2_create_spot_datafeed_subscription]{create_spot_datafeed_subscription} \tab Creates a data feed for Spot Instances, enabling you to view Spot Instance usage logs\cr
 \link[paws.compute:ec2_create_store_image_task]{create_store_image_task} \tab Stores an AMI as a single object in an Amazon S3 bucket\cr
 \link[paws.compute:ec2_create_subnet]{create_subnet} \tab Creates a subnet in the specified VPC\cr
@@ -222,6 +226,7 @@ programmatically. For more information, see the \href{https://docs.aws.amazon.co
 \link[paws.compute:ec2_create_verified_access_trust_provider]{create_verified_access_trust_provider} \tab A trust provider is a third-party entity that creates, maintains, and manages identity information for users and devices\cr
 \link[paws.compute:ec2_create_volume]{create_volume} \tab Creates an EBS volume that can be attached to an instance in the same Availability Zone\cr
 \link[paws.compute:ec2_create_vpc]{create_vpc} \tab Creates a VPC with the specified CIDR blocks\cr
+\link[paws.compute:ec2_create_vpc_block_public_access_exclusion]{create_vpc_block_public_access_exclusion} \tab Create a VPC Block Public Access (BPA) exclusion\cr
 \link[paws.compute:ec2_create_vpc_endpoint]{create_vpc_endpoint} \tab Creates a VPC endpoint\cr
 \link[paws.compute:ec2_create_vpc_endpoint_connection_notification]{create_vpc_endpoint_connection_notification} \tab Creates a connection notification for a specified VPC endpoint or VPC endpoint service\cr
 \link[paws.compute:ec2_create_vpc_endpoint_service_configuration]{create_vpc_endpoint_service_configuration} \tab Creates a VPC endpoint service to which service consumers (Amazon Web Services accounts, users, and IAM roles) can connect\cr
@@ -297,6 +302,7 @@ programmatically. For more information, see the \href{https://docs.aws.amazon.co
 \link[paws.compute:ec2_delete_verified_access_trust_provider]{delete_verified_access_trust_provider} \tab Delete an Amazon Web Services Verified Access trust provider\cr
 \link[paws.compute:ec2_delete_volume]{delete_volume} \tab Deletes the specified EBS volume\cr
 \link[paws.compute:ec2_delete_vpc]{delete_vpc} \tab Deletes the specified VPC\cr
+\link[paws.compute:ec2_delete_vpc_block_public_access_exclusion]{delete_vpc_block_public_access_exclusion} \tab Delete a VPC Block Public Access (BPA) exclusion\cr
 \link[paws.compute:ec2_delete_vpc_endpoint_connection_notifications]{delete_vpc_endpoint_connection_notifications} \tab Deletes the specified VPC endpoint connection notifications\cr
 \link[paws.compute:ec2_delete_vpc_endpoints]{delete_vpc_endpoints} \tab Deletes the specified VPC endpoints\cr
 \link[paws.compute:ec2_delete_vpc_endpoint_service_configurations]{delete_vpc_endpoint_service_configurations} \tab Deletes the specified VPC endpoint service configurations\cr
@@ -321,7 +327,10 @@ programmatically. For more information, see the \href{https://docs.aws.amazon.co
 \link[paws.compute:ec2_describe_aws_network_performance_metric_subscriptions]{describe_aws_network_performance_metric_subscriptions} \tab Describes the current Infrastructure Performance metric subscriptions\cr
 \link[paws.compute:ec2_describe_bundle_tasks]{describe_bundle_tasks} \tab Describes the specified bundle tasks or all of your bundle tasks\cr
 \link[paws.compute:ec2_describe_byoip_cidrs]{describe_byoip_cidrs} \tab Describes the IP address ranges that were specified in calls to ProvisionByoipCidr\cr
+\link[paws.compute:ec2_describe_capacity_block_extension_history]{describe_capacity_block_extension_history} \tab Describes the events for the specified Capacity Block extension during the specified time\cr
+\link[paws.compute:ec2_describe_capacity_block_extension_offerings]{describe_capacity_block_extension_offerings} \tab Describes Capacity Block extension offerings available for purchase in the Amazon Web Services Region that you're currently using\cr
 \link[paws.compute:ec2_describe_capacity_block_offerings]{describe_capacity_block_offerings} \tab Describes Capacity Block offerings available for purchase in the Amazon Web Services Region that you're currently using\cr
+\link[paws.compute:ec2_describe_capacity_reservation_billing_requests]{describe_capacity_reservation_billing_requests} \tab Describes a request to assign the billing of the unused capacity of a Capacity Reservation\cr
 \link[paws.compute:ec2_describe_capacity_reservation_fleets]{describe_capacity_reservation_fleets} \tab Describes one or more Capacity Reservation Fleets\cr
 \link[paws.compute:ec2_describe_capacity_reservations]{describe_capacity_reservations} \tab Describes one or more of your Capacity Reservations\cr
 \link[paws.compute:ec2_describe_carrier_gateways]{describe_carrier_gateways} \tab Describes one or more of your carrier gateways\cr
@@ -334,6 +343,7 @@ programmatically. For more information, see the \href{https://docs.aws.amazon.co
 \link[paws.compute:ec2_describe_coip_pools]{describe_coip_pools} \tab Describes the specified customer-owned address pools or all of your customer-owned address pools\cr
 \link[paws.compute:ec2_describe_conversion_tasks]{describe_conversion_tasks} \tab Describes the specified conversion tasks or all your conversion tasks\cr
 \link[paws.compute:ec2_describe_customer_gateways]{describe_customer_gateways} \tab Describes one or more of your VPN customer gateways\cr
+\link[paws.compute:ec2_describe_declarative_policies_reports]{describe_declarative_policies_reports} \tab Describes the metadata of an account status report, including the status of the report\cr
 \link[paws.compute:ec2_describe_dhcp_options]{describe_dhcp_options} \tab Describes your DHCP option sets\cr
 \link[paws.compute:ec2_describe_egress_only_internet_gateways]{describe_egress_only_internet_gateways} \tab Describes your egress-only internet gateways\cr
 \link[paws.compute:ec2_describe_elastic_gpus]{describe_elastic_gpus} \tab Amazon Elastic Graphics reached end of life on January 8, 2024\cr
@@ -362,6 +372,7 @@ programmatically. For more information, see the \href{https://docs.aws.amazon.co
 \link[paws.compute:ec2_describe_instance_credit_specifications]{describe_instance_credit_specifications} \tab Describes the credit option for CPU usage of the specified burstable performance instances\cr
 \link[paws.compute:ec2_describe_instance_event_notification_attributes]{describe_instance_event_notification_attributes} \tab Describes the tag keys that are registered to appear in scheduled event notifications for resources in the current Region\cr
 \link[paws.compute:ec2_describe_instance_event_windows]{describe_instance_event_windows} \tab Describes the specified event windows or all event windows\cr
+\link[paws.compute:ec2_describe_instance_image_metadata]{describe_instance_image_metadata} \tab Describes the AMI that was used to launch an instance, even if the AMI is deprecated, deregistered, made private (no longer public or shared with your account), or not allowed\cr
 \link[paws.compute:ec2_describe_instances]{describe_instances} \tab Describes the specified instances or all instances\cr
 \link[paws.compute:ec2_describe_instance_status]{describe_instance_status} \tab Describes the status of the specified instances or all of your instances\cr
 \link[paws.compute:ec2_describe_instance_topology]{describe_instance_topology} \tab Describes a tree-based hierarchy that represents the physical host placement of your EC2 instances within an Availability Zone or Local Zone\cr
@@ -411,9 +422,10 @@ programmatically. For more information, see the \href{https://docs.aws.amazon.co
 \link[paws.compute:ec2_describe_route_tables]{describe_route_tables} \tab Describes your route tables\cr
 \link[paws.compute:ec2_describe_scheduled_instance_availability]{describe_scheduled_instance_availability} \tab Finds available schedules that meet the specified criteria\cr
 \link[paws.compute:ec2_describe_scheduled_instances]{describe_scheduled_instances} \tab Describes the specified Scheduled Instances or all your Scheduled Instances\cr
-\link[paws.compute:ec2_describe_security_group_references]{describe_security_group_references} \tab Describes the VPCs on the other side of a VPC peering connection that are referencing the security groups you've specified in this request\cr
+\link[paws.compute:ec2_describe_security_group_references]{describe_security_group_references} \tab Describes the VPCs on the other side of a VPC peering or Transit Gateway connection that are referencing the security groups you've specified in this request\cr
 \link[paws.compute:ec2_describe_security_group_rules]{describe_security_group_rules} \tab Describes one or more of your security group rules\cr
 \link[paws.compute:ec2_describe_security_groups]{describe_security_groups} \tab Describes the specified security groups or all of your security groups\cr
+\link[paws.compute:ec2_describe_security_group_vpc_associations]{describe_security_group_vpc_associations} \tab Describes security group VPC associations made with AssociateSecurityGroupVpc\cr
 \link[paws.compute:ec2_describe_snapshot_attribute]{describe_snapshot_attribute} \tab Describes the specified attribute of the specified snapshot\cr
 \link[paws.compute:ec2_describe_snapshots]{describe_snapshots} \tab Describes the specified EBS snapshots available to you or all of the EBS snapshots available to you\cr
 \link[paws.compute:ec2_describe_snapshot_tier_status]{describe_snapshot_tier_status} \tab Describes the storage tier status of one or more Amazon EBS snapshots\cr
@@ -423,7 +435,7 @@ programmatically. For more information, see the \href{https://docs.aws.amazon.co
 \link[paws.compute:ec2_describe_spot_fleet_requests]{describe_spot_fleet_requests} \tab Describes your Spot Fleet requests\cr
 \link[paws.compute:ec2_describe_spot_instance_requests]{describe_spot_instance_requests} \tab Describes the specified Spot Instance requests\cr
 \link[paws.compute:ec2_describe_spot_price_history]{describe_spot_price_history} \tab Describes the Spot price history\cr
-\link[paws.compute:ec2_describe_stale_security_groups]{describe_stale_security_groups} \tab Describes the stale security group rules for security groups in a specified VPC\cr
+\link[paws.compute:ec2_describe_stale_security_groups]{describe_stale_security_groups} \tab Describes the stale security group rules for security groups referenced across a VPC peering connection, transit gateway connection, or with a security group VPC association\cr
 \link[paws.compute:ec2_describe_store_image_tasks]{describe_store_image_tasks} \tab Describes the progress of the AMI store tasks\cr
 \link[paws.compute:ec2_describe_subnets]{describe_subnets} \tab Describes your subnets\cr
 \link[paws.compute:ec2_describe_tags]{describe_tags} \tab Describes the specified tags for your EC2 resources\cr
@@ -452,8 +464,11 @@ programmatically. For more information, see the \href{https://docs.aws.amazon.co
 \link[paws.compute:ec2_describe_volumes_modifications]{describe_volumes_modifications} \tab Describes the most recent volume modification request for the specified EBS volumes\cr
 \link[paws.compute:ec2_describe_volume_status]{describe_volume_status} \tab Describes the status of the specified volumes\cr
 \link[paws.compute:ec2_describe_vpc_attribute]{describe_vpc_attribute} \tab Describes the specified attribute of the specified VPC\cr
+\link[paws.compute:ec2_describe_vpc_block_public_access_exclusions]{describe_vpc_block_public_access_exclusions} \tab Describe VPC Block Public Access (BPA) exclusions\cr
+\link[paws.compute:ec2_describe_vpc_block_public_access_options]{describe_vpc_block_public_access_options} \tab Describe VPC Block Public Access (BPA) options\cr
 \link[paws.compute:ec2_describe_vpc_classic_link]{describe_vpc_classic_link} \tab This action is deprecated\cr
 \link[paws.compute:ec2_describe_vpc_classic_link_dns_support]{describe_vpc_classic_link_dns_support} \tab This action is deprecated\cr
+\link[paws.compute:ec2_describe_vpc_endpoint_associations]{describe_vpc_endpoint_associations} \tab Describes the VPC resources, VPC endpoint services, Amazon Lattice services, or service networks associated with the VPC endpoint\cr
 \link[paws.compute:ec2_describe_vpc_endpoint_connection_notifications]{describe_vpc_endpoint_connection_notifications} \tab Describes the connection notifications for VPC endpoints and VPC endpoint services\cr
 \link[paws.compute:ec2_describe_vpc_endpoint_connections]{describe_vpc_endpoint_connections} \tab Describes the VPC endpoint connections to your VPC endpoint services, including any endpoints that are pending your acceptance\cr
 \link[paws.compute:ec2_describe_vpc_endpoints]{describe_vpc_endpoints} \tab Describes your VPC endpoints\cr
@@ -471,6 +486,7 @@ programmatically. For more information, see the \href{https://docs.aws.amazon.co
 \link[paws.compute:ec2_detach_volume]{detach_volume} \tab Detaches an EBS volume from an instance\cr
 \link[paws.compute:ec2_detach_vpn_gateway]{detach_vpn_gateway} \tab Detaches a virtual private gateway from a VPC\cr
 \link[paws.compute:ec2_disable_address_transfer]{disable_address_transfer} \tab Disables Elastic IP address transfer\cr
+\link[paws.compute:ec2_disable_allowed_images_settings]{disable_allowed_images_settings} \tab Disables Allowed AMIs for your account in the specified Amazon Web Services Region\cr
 \link[paws.compute:ec2_disable_aws_network_performance_metric_subscription]{disable_aws_network_performance_metric_subscription} \tab Disables Infrastructure Performance metric subscriptions\cr
 \link[paws.compute:ec2_disable_ebs_encryption_by_default]{disable_ebs_encryption_by_default} \tab Disables EBS encryption by default for your account in the current Region\cr
 \link[paws.compute:ec2_disable_fast_launch]{disable_fast_launch} \tab Discontinue Windows fast launch for a Windows AMI, and clean up existing pre-provisioned snapshots\cr
@@ -487,6 +503,7 @@ programmatically. For more information, see the \href{https://docs.aws.amazon.co
 \link[paws.compute:ec2_disable_vpc_classic_link]{disable_vpc_classic_link} \tab This action is deprecated\cr
 \link[paws.compute:ec2_disable_vpc_classic_link_dns_support]{disable_vpc_classic_link_dns_support} \tab This action is deprecated\cr
 \link[paws.compute:ec2_disassociate_address]{disassociate_address} \tab Disassociates an Elastic IP address from the instance or network interface it's associated with\cr
+\link[paws.compute:ec2_disassociate_capacity_reservation_billing_owner]{disassociate_capacity_reservation_billing_owner} \tab Cancels a pending request to assign billing of the unused capacity of a Capacity Reservation to a consumer account, or revokes a request that has already been accepted\cr
 \link[paws.compute:ec2_disassociate_client_vpn_target_network]{disassociate_client_vpn_target_network} \tab Disassociates a target network from the specified Client VPN endpoint\cr
 \link[paws.compute:ec2_disassociate_enclave_certificate_iam_role]{disassociate_enclave_certificate_iam_role} \tab Disassociates an IAM role from an Certificate Manager (ACM) certificate\cr
 \link[paws.compute:ec2_disassociate_iam_instance_profile]{disassociate_iam_instance_profile} \tab Disassociates an IAM instance profile from a running or stopped instance\cr
@@ -495,6 +512,7 @@ programmatically. For more information, see the \href{https://docs.aws.amazon.co
 \link[paws.compute:ec2_disassociate_ipam_resource_discovery]{disassociate_ipam_resource_discovery} \tab Disassociates a resource discovery from an Amazon VPC IPAM\cr
 \link[paws.compute:ec2_disassociate_nat_gateway_address]{disassociate_nat_gateway_address} \tab Disassociates secondary Elastic IP addresses (EIPs) from a public NAT gateway\cr
 \link[paws.compute:ec2_disassociate_route_table]{disassociate_route_table} \tab Disassociates a subnet or gateway from a route table\cr
+\link[paws.compute:ec2_disassociate_security_group_vpc]{disassociate_security_group_vpc} \tab Disassociates a security group from a VPC\cr
 \link[paws.compute:ec2_disassociate_subnet_cidr_block]{disassociate_subnet_cidr_block} \tab Disassociates a CIDR block from a subnet\cr
 \link[paws.compute:ec2_disassociate_transit_gateway_multicast_domain]{disassociate_transit_gateway_multicast_domain} \tab Disassociates the specified subnets from the transit gateway multicast domain\cr
 \link[paws.compute:ec2_disassociate_transit_gateway_policy_table]{disassociate_transit_gateway_policy_table} \tab Removes the association between an an attachment and a policy table\cr
@@ -502,6 +520,7 @@ programmatically. For more information, see the \href{https://docs.aws.amazon.co
 \link[paws.compute:ec2_disassociate_trunk_interface]{disassociate_trunk_interface} \tab Removes an association between a branch network interface with a trunk network interface\cr
 \link[paws.compute:ec2_disassociate_vpc_cidr_block]{disassociate_vpc_cidr_block} \tab Disassociates a CIDR block from a VPC\cr
 \link[paws.compute:ec2_enable_address_transfer]{enable_address_transfer} \tab Enables Elastic IP address transfer\cr
+\link[paws.compute:ec2_enable_allowed_images_settings]{enable_allowed_images_settings} \tab Enables Allowed AMIs for your account in the specified Amazon Web Services Region\cr
 \link[paws.compute:ec2_enable_aws_network_performance_metric_subscription]{enable_aws_network_performance_metric_subscription} \tab Enables Infrastructure Performance subscriptions\cr
 \link[paws.compute:ec2_enable_ebs_encryption_by_default]{enable_ebs_encryption_by_default} \tab Enables EBS encryption by default for your account in the current Region\cr
 \link[paws.compute:ec2_enable_fast_launch]{enable_fast_launch} \tab When you enable Windows fast launch for a Windows AMI, images are pre-provisioned, using snapshots to launch instances up to 65\% faster\cr
@@ -523,6 +542,8 @@ programmatically. For more information, see the \href{https://docs.aws.amazon.co
 \link[paws.compute:ec2_export_client_vpn_client_configuration]{export_client_vpn_client_configuration} \tab Downloads the contents of the Client VPN endpoint configuration file for the specified Client VPN endpoint\cr
 \link[paws.compute:ec2_export_image]{export_image} \tab Exports an Amazon Machine Image (AMI) to a VM file\cr
 \link[paws.compute:ec2_export_transit_gateway_routes]{export_transit_gateway_routes} \tab Exports routes from the specified transit gateway route table to the specified S3 bucket\cr
+\link[paws.compute:ec2_export_verified_access_instance_client_configuration]{export_verified_access_instance_client_configuration} \tab Exports the client configuration for a Verified Access instance\cr
+\link[paws.compute:ec2_get_allowed_images_settings]{get_allowed_images_settings} \tab Gets the current state of the Allowed AMIs setting and the list of Allowed AMIs criteria at the account level in the specified Region\cr
 \link[paws.compute:ec2_get_associated_enclave_certificate_iam_roles]{get_associated_enclave_certificate_iam_roles} \tab Returns the IAM roles that are associated with the specified ACM (ACM) certificate\cr
 \link[paws.compute:ec2_get_associated_ipv_6_pool_cidrs]{get_associated_ipv_6_pool_cidrs} \tab Gets information about the IPv6 CIDR block associations for a specified IPv6 address pool\cr
 \link[paws.compute:ec2_get_aws_network_performance_data]{get_aws_network_performance_data} \tab Gets network performance data\cr
@@ -530,6 +551,7 @@ programmatically. For more information, see the \href{https://docs.aws.amazon.co
 \link[paws.compute:ec2_get_coip_pool_usage]{get_coip_pool_usage} \tab Describes the allocations from the specified customer-owned address pool\cr
 \link[paws.compute:ec2_get_console_output]{get_console_output} \tab Gets the console output for the specified instance\cr
 \link[paws.compute:ec2_get_console_screenshot]{get_console_screenshot} \tab Retrieve a JPG-format screenshot of a running instance to help with troubleshooting\cr
+\link[paws.compute:ec2_get_declarative_policies_report_summary]{get_declarative_policies_report_summary} \tab Retrieves a summary of the account status report\cr
 \link[paws.compute:ec2_get_default_credit_specification]{get_default_credit_specification} \tab Describes the default credit option for CPU usage of a burstable performance instance family\cr
 \link[paws.compute:ec2_get_ebs_default_kms_key_id]{get_ebs_default_kms_key_id} \tab Describes the default KMS key for EBS encryption by default for your account in this Region\cr
 \link[paws.compute:ec2_get_ebs_encryption_by_default]{get_ebs_encryption_by_default} \tab Describes whether EBS encryption by default is enabled for your account in the current Region\cr
@@ -568,16 +590,17 @@ programmatically. For more information, see the \href{https://docs.aws.amazon.co
 \link[paws.compute:ec2_get_transit_gateway_route_table_associations]{get_transit_gateway_route_table_associations} \tab Gets information about the associations for the specified transit gateway route table\cr
 \link[paws.compute:ec2_get_transit_gateway_route_table_propagations]{get_transit_gateway_route_table_propagations} \tab Gets information about the route table propagations for the specified transit gateway route table\cr
 \link[paws.compute:ec2_get_verified_access_endpoint_policy]{get_verified_access_endpoint_policy} \tab Get the Verified Access policy associated with the endpoint\cr
+\link[paws.compute:ec2_get_verified_access_endpoint_targets]{get_verified_access_endpoint_targets} \tab Gets the targets for the specified network CIDR endpoint for Verified Access\cr
 \link[paws.compute:ec2_get_verified_access_group_policy]{get_verified_access_group_policy} \tab Shows the contents of the Verified Access policy associated with the group\cr
 \link[paws.compute:ec2_get_vpn_connection_device_sample_configuration]{get_vpn_connection_device_sample_configuration} \tab Download an Amazon Web Services-provided sample configuration file to be used with the customer gateway device specified for your Site-to-Site VPN connection\cr
 \link[paws.compute:ec2_get_vpn_connection_device_types]{get_vpn_connection_device_types} \tab Obtain a list of customer gateway devices for which sample configuration files can be provided\cr
 \link[paws.compute:ec2_get_vpn_tunnel_replacement_status]{get_vpn_tunnel_replacement_status} \tab Get details of available tunnel endpoint maintenance\cr
 \link[paws.compute:ec2_import_client_vpn_client_certificate_revocation_list]{import_client_vpn_client_certificate_revocation_list} \tab Uploads a client certificate revocation list to the specified Client VPN endpoint\cr
 \link[paws.compute:ec2_import_image]{import_image} \tab To import your virtual machines (VMs) with a console-based experience, you can use the Import virtual machine images to Amazon Web Services template in the Migration Hub Orchestrator console\cr
-\link[paws.compute:ec2_import_instance]{import_instance} \tab We recommend that you use the ImportImage API\cr
-\link[paws.compute:ec2_import_key_pair]{import_key_pair} \tab Imports the public key from an RSA or ED25519 key pair that you created with a third-party tool\cr
+\link[paws.compute:ec2_import_instance]{import_instance} \tab We recommend that you use the ImportImage API instead\cr
+\link[paws.compute:ec2_import_key_pair]{import_key_pair} \tab Imports the public key from an RSA or ED25519 key pair that you created using a third-party tool\cr
 \link[paws.compute:ec2_import_snapshot]{import_snapshot} \tab Imports a disk into an EBS snapshot\cr
-\link[paws.compute:ec2_import_volume]{import_volume} \tab Creates an import volume task using metadata from the specified disk image\cr
+\link[paws.compute:ec2_import_volume]{import_volume} \tab This API action supports only single-volume VMs\cr
 \link[paws.compute:ec2_list_images_in_recycle_bin]{list_images_in_recycle_bin} \tab Lists one or more AMIs that are currently in the Recycle Bin\cr
 \link[paws.compute:ec2_list_snapshots_in_recycle_bin]{list_snapshots_in_recycle_bin} \tab Lists one or more snapshots that are currently in the Recycle Bin\cr
 \link[paws.compute:ec2_lock_snapshot]{lock_snapshot} \tab Locks an Amazon EBS snapshot in either governance or compliance mode to protect it against accidental or malicious deletions for a specific duration\cr
@@ -596,12 +619,14 @@ programmatically. For more information, see the \href{https://docs.aws.amazon.co
 \link[paws.compute:ec2_modify_image_attribute]{modify_image_attribute} \tab Modifies the specified attribute of the specified AMI\cr
 \link[paws.compute:ec2_modify_instance_attribute]{modify_instance_attribute} \tab Modifies the specified attribute of the specified instance\cr
 \link[paws.compute:ec2_modify_instance_capacity_reservation_attributes]{modify_instance_capacity_reservation_attributes} \tab Modifies the Capacity Reservation settings for a stopped instance\cr
+\link[paws.compute:ec2_modify_instance_cpu_options]{modify_instance_cpu_options} \tab By default, all vCPUs for the instance type are active when you launch an instance\cr
 \link[paws.compute:ec2_modify_instance_credit_specification]{modify_instance_credit_specification} \tab Modifies the credit option for CPU usage on a running or stopped burstable performance instance\cr
 \link[paws.compute:ec2_modify_instance_event_start_time]{modify_instance_event_start_time} \tab Modifies the start time for a scheduled Amazon EC2 instance event\cr
 \link[paws.compute:ec2_modify_instance_event_window]{modify_instance_event_window} \tab Modifies the specified event window\cr
 \link[paws.compute:ec2_modify_instance_maintenance_options]{modify_instance_maintenance_options} \tab Modifies the recovery behavior of your instance to disable simplified automatic recovery or set the recovery behavior to default\cr
 \link[paws.compute:ec2_modify_instance_metadata_defaults]{modify_instance_metadata_defaults} \tab Modifies the default instance metadata service (IMDS) settings at the account level in the specified Amazon Web Services Region\cr
 \link[paws.compute:ec2_modify_instance_metadata_options]{modify_instance_metadata_options} \tab Modify the instance metadata parameters on a running or stopped instance\cr
+\link[paws.compute:ec2_modify_instance_network_performance_options]{modify_instance_network_performance_options} \tab Change the configuration of the network performance options for an existing instance\cr
 \link[paws.compute:ec2_modify_instance_placement]{modify_instance_placement} \tab Modifies the placement attributes for a specified instance\cr
 \link[paws.compute:ec2_modify_ipam]{modify_ipam} \tab Modify the configurations of an IPAM\cr
 \link[paws.compute:ec2_modify_ipam_pool]{modify_ipam_pool} \tab Modify the configurations of an IPAM pool\cr
@@ -635,9 +660,11 @@ programmatically. For more information, see the \href{https://docs.aws.amazon.co
 \link[paws.compute:ec2_modify_volume]{modify_volume} \tab You can modify several parameters of an existing EBS volume, including volume size, volume type, and IOPS capacity\cr
 \link[paws.compute:ec2_modify_volume_attribute]{modify_volume_attribute} \tab Modifies a volume attribute\cr
 \link[paws.compute:ec2_modify_vpc_attribute]{modify_vpc_attribute} \tab Modifies the specified attribute of the specified VPC\cr
+\link[paws.compute:ec2_modify_vpc_block_public_access_exclusion]{modify_vpc_block_public_access_exclusion} \tab Modify VPC Block Public Access (BPA) exclusions\cr
+\link[paws.compute:ec2_modify_vpc_block_public_access_options]{modify_vpc_block_public_access_options} \tab Modify VPC Block Public Access (BPA) options\cr
 \link[paws.compute:ec2_modify_vpc_endpoint]{modify_vpc_endpoint} \tab Modifies attributes of a specified VPC endpoint\cr
 \link[paws.compute:ec2_modify_vpc_endpoint_connection_notification]{modify_vpc_endpoint_connection_notification} \tab Modifies a connection notification for VPC endpoint or VPC endpoint service\cr
-\link[paws.compute:ec2_modify_vpc_endpoint_service_configuration]{modify_vpc_endpoint_service_configuration} \tab Modifies the attributes of your VPC endpoint service configuration\cr
+\link[paws.compute:ec2_modify_vpc_endpoint_service_configuration]{modify_vpc_endpoint_service_configuration} \tab Modifies the attributes of the specified VPC endpoint service configuration\cr
 \link[paws.compute:ec2_modify_vpc_endpoint_service_payer_responsibility]{modify_vpc_endpoint_service_payer_responsibility} \tab Modifies the payer responsibility for your VPC endpoint service\cr
 \link[paws.compute:ec2_modify_vpc_endpoint_service_permissions]{modify_vpc_endpoint_service_permissions} \tab Modifies the permissions for your VPC endpoint service\cr
 \link[paws.compute:ec2_modify_vpc_peering_connection_options]{modify_vpc_peering_connection_options} \tab Modifies the VPC peering connection options on one side of a VPC peering connection\cr
@@ -655,6 +682,7 @@ programmatically. For more information, see the \href{https://docs.aws.amazon.co
 \link[paws.compute:ec2_provision_ipam_pool_cidr]{provision_ipam_pool_cidr} \tab Provision a CIDR to an IPAM pool\cr
 \link[paws.compute:ec2_provision_public_ipv_4_pool_cidr]{provision_public_ipv_4_pool_cidr} \tab Provision a CIDR to a public IPv4 pool\cr
 \link[paws.compute:ec2_purchase_capacity_block]{purchase_capacity_block} \tab Purchase the Capacity Block for use with your account\cr
+\link[paws.compute:ec2_purchase_capacity_block_extension]{purchase_capacity_block_extension} \tab Purchase the Capacity Block extension for use with your account\cr
 \link[paws.compute:ec2_purchase_host_reservation]{purchase_host_reservation} \tab Purchase a reservation with configurations that match those of your Dedicated Host\cr
 \link[paws.compute:ec2_purchase_reserved_instances_offering]{purchase_reserved_instances_offering} \tab Purchases a Reserved Instance for use with your account\cr
 \link[paws.compute:ec2_purchase_scheduled_instances]{purchase_scheduled_instances} \tab You can no longer purchase Scheduled Instances\cr
@@ -663,6 +691,7 @@ programmatically. For more information, see the \href{https://docs.aws.amazon.co
 \link[paws.compute:ec2_register_instance_event_notification_attributes]{register_instance_event_notification_attributes} \tab Registers a set of tag keys to include in scheduled event notifications for your resources\cr
 \link[paws.compute:ec2_register_transit_gateway_multicast_group_members]{register_transit_gateway_multicast_group_members} \tab Registers members (network interfaces) with the transit gateway multicast group\cr
 \link[paws.compute:ec2_register_transit_gateway_multicast_group_sources]{register_transit_gateway_multicast_group_sources} \tab Registers sources (network interfaces) with the specified transit gateway multicast group\cr
+\link[paws.compute:ec2_reject_capacity_reservation_billing_ownership]{reject_capacity_reservation_billing_ownership} \tab Rejects a request to assign billing of the available capacity of a shared Capacity Reservation to your account\cr
 \link[paws.compute:ec2_reject_transit_gateway_multicast_domain_associations]{reject_transit_gateway_multicast_domain_associations} \tab Rejects a request to associate cross-account subnets with a transit gateway multicast domain\cr
 \link[paws.compute:ec2_reject_transit_gateway_peering_attachment]{reject_transit_gateway_peering_attachment} \tab Rejects a transit gateway peering attachment request\cr
 \link[paws.compute:ec2_reject_transit_gateway_vpc_attachment]{reject_transit_gateway_vpc_attachment} \tab Rejects a request to attach a VPC to a transit gateway\cr
@@ -672,6 +701,7 @@ programmatically. For more information, see the \href{https://docs.aws.amazon.co
 \link[paws.compute:ec2_release_hosts]{release_hosts} \tab When you no longer want to use an On-Demand Dedicated Host it can be released\cr
 \link[paws.compute:ec2_release_ipam_pool_allocation]{release_ipam_pool_allocation} \tab Release an allocation within an IPAM pool\cr
 \link[paws.compute:ec2_replace_iam_instance_profile_association]{replace_iam_instance_profile_association} \tab Replaces an IAM instance profile for the specified running instance\cr
+\link[paws.compute:ec2_replace_image_criteria_in_allowed_images_settings]{replace_image_criteria_in_allowed_images_settings} \tab Sets or replaces the criteria for Allowed AMIs\cr
 \link[paws.compute:ec2_replace_network_acl_association]{replace_network_acl_association} \tab Changes which network ACL a subnet is associated with\cr
 \link[paws.compute:ec2_replace_network_acl_entry]{replace_network_acl_entry} \tab Replaces an entry (rule) in a network ACL\cr
 \link[paws.compute:ec2_replace_route]{replace_route} \tab Replaces an existing route within a route table in a VPC\cr
@@ -702,6 +732,7 @@ programmatically. For more information, see the \href{https://docs.aws.amazon.co
 \link[paws.compute:ec2_search_transit_gateway_multicast_groups]{search_transit_gateway_multicast_groups} \tab Searches one or more transit gateway multicast groups and returns the group membership information\cr
 \link[paws.compute:ec2_search_transit_gateway_routes]{search_transit_gateway_routes} \tab Searches for routes in the specified transit gateway route table\cr
 \link[paws.compute:ec2_send_diagnostic_interrupt]{send_diagnostic_interrupt} \tab Sends a diagnostic interrupt to the specified Amazon EC2 instance to trigger a kernel panic (on Linux instances), or a blue screen/stop error (on Windows instances)\cr
+\link[paws.compute:ec2_start_declarative_policies_report]{start_declarative_policies_report} \tab Generates an account status report\cr
 \link[paws.compute:ec2_start_instances]{start_instances} \tab Starts an Amazon EBS-backed instance that you've previously stopped\cr
 \link[paws.compute:ec2_start_network_insights_access_scope_analysis]{start_network_insights_access_scope_analysis} \tab Starts analyzing the specified Network Access Scope\cr
 \link[paws.compute:ec2_start_network_insights_analysis]{start_network_insights_analysis} \tab Starts analyzing the specified path\cr
@@ -723,8 +754,11 @@ programmatically. For more information, see the \href{https://docs.aws.amazon.co
 \examples{
 \dontrun{
 svc <- ec2()
-# This example allocates an Elastic IP address.
-svc$allocate_address()
+# This example allocates an Elastic IP address to use with an instance in
+# a VPC.
+svc$allocate_address(
+  Domain = "vpc"
+)
 }
 
 }

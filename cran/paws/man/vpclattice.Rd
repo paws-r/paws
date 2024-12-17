@@ -102,39 +102,54 @@ more information, see the \href{https://docs.aws.amazon.com/vpc-lattice/latest/u
 \link[paws.networking:vpclattice_batch_update_rule]{batch_update_rule} \tab Updates the listener rules in a batch\cr
 \link[paws.networking:vpclattice_create_access_log_subscription]{create_access_log_subscription} \tab Enables access logs to be sent to Amazon CloudWatch, Amazon S3, and Amazon Kinesis Data Firehose\cr
 \link[paws.networking:vpclattice_create_listener]{create_listener} \tab Creates a listener for a service\cr
+\link[paws.networking:vpclattice_create_resource_configuration]{create_resource_configuration} \tab Creates a resource configuration\cr
+\link[paws.networking:vpclattice_create_resource_gateway]{create_resource_gateway} \tab Creates a resource gateway\cr
 \link[paws.networking:vpclattice_create_rule]{create_rule} \tab Creates a listener rule\cr
 \link[paws.networking:vpclattice_create_service]{create_service} \tab Creates a service\cr
 \link[paws.networking:vpclattice_create_service_network]{create_service_network} \tab Creates a service network\cr
-\link[paws.networking:vpclattice_create_service_network_service_association]{create_service_network_service_association} \tab Associates a service with a service network\cr
+\link[paws.networking:vpclattice_create_service_network_resource_association]{create_service_network_resource_association} \tab Associates the specified service network with the specified resource configuration\cr
+\link[paws.networking:vpclattice_create_service_network_service_association]{create_service_network_service_association} \tab Associates the specified service with the specified service network\cr
 \link[paws.networking:vpclattice_create_service_network_vpc_association]{create_service_network_vpc_association} \tab Associates a VPC with a service network\cr
 \link[paws.networking:vpclattice_create_target_group]{create_target_group} \tab Creates a target group\cr
 \link[paws.networking:vpclattice_delete_access_log_subscription]{delete_access_log_subscription} \tab Deletes the specified access log subscription\cr
 \link[paws.networking:vpclattice_delete_auth_policy]{delete_auth_policy} \tab Deletes the specified auth policy\cr
 \link[paws.networking:vpclattice_delete_listener]{delete_listener} \tab Deletes the specified listener\cr
+\link[paws.networking:vpclattice_delete_resource_configuration]{delete_resource_configuration} \tab Deletes the specified resource configuration\cr
+\link[paws.networking:vpclattice_delete_resource_endpoint_association]{delete_resource_endpoint_association} \tab Disassociates the resource configuration from the resource VPC endpoint\cr
+\link[paws.networking:vpclattice_delete_resource_gateway]{delete_resource_gateway} \tab Deletes the specified resource gateway\cr
 \link[paws.networking:vpclattice_delete_resource_policy]{delete_resource_policy} \tab Deletes the specified resource policy\cr
 \link[paws.networking:vpclattice_delete_rule]{delete_rule} \tab Deletes a listener rule\cr
 \link[paws.networking:vpclattice_delete_service]{delete_service} \tab Deletes a service\cr
 \link[paws.networking:vpclattice_delete_service_network]{delete_service_network} \tab Deletes a service network\cr
-\link[paws.networking:vpclattice_delete_service_network_service_association]{delete_service_network_service_association} \tab Deletes the association between a specified service and the specific service network\cr
+\link[paws.networking:vpclattice_delete_service_network_resource_association]{delete_service_network_resource_association} \tab Deletes the association between a service network and a resource configuration\cr
+\link[paws.networking:vpclattice_delete_service_network_service_association]{delete_service_network_service_association} \tab Deletes the association between a service and a service network\cr
 \link[paws.networking:vpclattice_delete_service_network_vpc_association]{delete_service_network_vpc_association} \tab Disassociates the VPC from the service network\cr
 \link[paws.networking:vpclattice_delete_target_group]{delete_target_group} \tab Deletes a target group\cr
 \link[paws.networking:vpclattice_deregister_targets]{deregister_targets} \tab Deregisters the specified targets from the specified target group\cr
 \link[paws.networking:vpclattice_get_access_log_subscription]{get_access_log_subscription} \tab Retrieves information about the specified access log subscription\cr
 \link[paws.networking:vpclattice_get_auth_policy]{get_auth_policy} \tab Retrieves information about the auth policy for the specified service or service network\cr
 \link[paws.networking:vpclattice_get_listener]{get_listener} \tab Retrieves information about the specified listener for the specified service\cr
-\link[paws.networking:vpclattice_get_resource_policy]{get_resource_policy} \tab Retrieves information about the resource policy\cr
-\link[paws.networking:vpclattice_get_rule]{get_rule} \tab Retrieves information about listener rules\cr
+\link[paws.networking:vpclattice_get_resource_configuration]{get_resource_configuration} \tab Retrieves information about the specified resource configuration\cr
+\link[paws.networking:vpclattice_get_resource_gateway]{get_resource_gateway} \tab Retrieves information about the specified resource gateway\cr
+\link[paws.networking:vpclattice_get_resource_policy]{get_resource_policy} \tab Retrieves information about the specified resource policy\cr
+\link[paws.networking:vpclattice_get_rule]{get_rule} \tab Retrieves information about the specified listener rules\cr
 \link[paws.networking:vpclattice_get_service]{get_service} \tab Retrieves information about the specified service\cr
 \link[paws.networking:vpclattice_get_service_network]{get_service_network} \tab Retrieves information about the specified service network\cr
+\link[paws.networking:vpclattice_get_service_network_resource_association]{get_service_network_resource_association} \tab Retrieves information about the specified association between a service network and a resource configuration\cr
 \link[paws.networking:vpclattice_get_service_network_service_association]{get_service_network_service_association} \tab Retrieves information about the specified association between a service network and a service\cr
-\link[paws.networking:vpclattice_get_service_network_vpc_association]{get_service_network_vpc_association} \tab Retrieves information about the association between a service network and a VPC\cr
+\link[paws.networking:vpclattice_get_service_network_vpc_association]{get_service_network_vpc_association} \tab Retrieves information about the specified association between a service network and a VPC\cr
 \link[paws.networking:vpclattice_get_target_group]{get_target_group} \tab Retrieves information about the specified target group\cr
-\link[paws.networking:vpclattice_list_access_log_subscriptions]{list_access_log_subscriptions} \tab Lists all access log subscriptions for the specified service network or service\cr
+\link[paws.networking:vpclattice_list_access_log_subscriptions]{list_access_log_subscriptions} \tab Lists the access log subscriptions for the specified service network or service\cr
 \link[paws.networking:vpclattice_list_listeners]{list_listeners} \tab Lists the listeners for the specified service\cr
-\link[paws.networking:vpclattice_list_rules]{list_rules} \tab Lists the rules for the listener\cr
-\link[paws.networking:vpclattice_list_service_networks]{list_service_networks} \tab Lists the service networks owned by the caller account or shared with the caller account\cr
-\link[paws.networking:vpclattice_list_service_network_service_associations]{list_service_network_service_associations} \tab Lists the associations between the service network and the service\cr
-\link[paws.networking:vpclattice_list_service_network_vpc_associations]{list_service_network_vpc_associations} \tab Lists the service network and VPC associations\cr
+\link[paws.networking:vpclattice_list_resource_configurations]{list_resource_configurations} \tab Lists the resource configurations owned by or shared with this account\cr
+\link[paws.networking:vpclattice_list_resource_endpoint_associations]{list_resource_endpoint_associations} \tab Lists the associations for the specified VPC endpoint\cr
+\link[paws.networking:vpclattice_list_resource_gateways]{list_resource_gateways} \tab Lists the resource gateways that you own or that were shared with you\cr
+\link[paws.networking:vpclattice_list_rules]{list_rules} \tab Lists the rules for the specified listener\cr
+\link[paws.networking:vpclattice_list_service_network_resource_associations]{list_service_network_resource_associations} \tab Lists the associations between a service network and a resource configuration\cr
+\link[paws.networking:vpclattice_list_service_networks]{list_service_networks} \tab Lists the service networks owned by or shared with this account\cr
+\link[paws.networking:vpclattice_list_service_network_service_associations]{list_service_network_service_associations} \tab Lists the associations between a service network and a service\cr
+\link[paws.networking:vpclattice_list_service_network_vpc_associations]{list_service_network_vpc_associations} \tab Lists the associations between a service network and a VPC\cr
+\link[paws.networking:vpclattice_list_service_network_vpc_endpoint_associations]{list_service_network_vpc_endpoint_associations} \tab Lists the associations between a service network and a VPC endpoint\cr
 \link[paws.networking:vpclattice_list_services]{list_services} \tab Lists the services owned by the caller account or shared with the caller account\cr
 \link[paws.networking:vpclattice_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags for the specified resource\cr
 \link[paws.networking:vpclattice_list_target_groups]{list_target_groups} \tab Lists your target groups\cr
@@ -146,7 +161,9 @@ more information, see the \href{https://docs.aws.amazon.com/vpc-lattice/latest/u
 \link[paws.networking:vpclattice_untag_resource]{untag_resource} \tab Removes the specified tags from the specified resource\cr
 \link[paws.networking:vpclattice_update_access_log_subscription]{update_access_log_subscription} \tab Updates the specified access log subscription\cr
 \link[paws.networking:vpclattice_update_listener]{update_listener} \tab Updates the specified listener for the specified service\cr
-\link[paws.networking:vpclattice_update_rule]{update_rule} \tab Updates a rule for the listener\cr
+\link[paws.networking:vpclattice_update_resource_configuration]{update_resource_configuration} \tab Updates the specified resource configuration\cr
+\link[paws.networking:vpclattice_update_resource_gateway]{update_resource_gateway} \tab Updates the specified resource gateway\cr
+\link[paws.networking:vpclattice_update_rule]{update_rule} \tab Updates a specified rule for the listener\cr
 \link[paws.networking:vpclattice_update_service]{update_service} \tab Updates the specified service\cr
 \link[paws.networking:vpclattice_update_service_network]{update_service_network} \tab Updates the specified service network\cr
 \link[paws.networking:vpclattice_update_service_network_vpc_association]{update_service_network_vpc_association} \tab Updates the service network and VPC association\cr

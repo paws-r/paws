@@ -11,7 +11,10 @@ s3_delete_object(
   VersionId = NULL,
   RequestPayer = NULL,
   BypassGovernanceRetention = NULL,
-  ExpectedBucketOwner = NULL
+  ExpectedBucketOwner = NULL,
+  IfMatch = NULL,
+  IfMatchLastModifiedTime = NULL,
+  IfMatchSize = NULL
 )
 }
 \arguments{
@@ -19,10 +22,10 @@ s3_delete_object(
 
 \strong{Directory buckets} - When you use this operation with a directory
 bucket, you must use virtual-hosted-style requests in the format
-\code{ Bucket_name.s3express-az_id.region.amazonaws.com}. Path-style requests
-are not supported. Directory bucket names must be unique in the chosen
-Availability Zone. Bucket names must follow the format
-\code{ bucket_base_name--az-id--x-s3} (for example,
+\code{ Bucket-name.s3express-zone-id.region-code.amazonaws.com}. Path-style
+requests are not supported. Directory bucket names must be unique in the
+chosen Zone (Availability Zone or Local Zone). Bucket names must follow
+the format \code{ bucket-base-name--zone-id--x-s3} (for example,
 \code{ DOC-EXAMPLE-BUCKET--usw2-az1--x-s3}). For information about bucket
 naming restrictions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html}{Directory bucket naming rules}
 in the \emph{Amazon S3 User Guide}.
@@ -75,9 +78,39 @@ This functionality is not supported for directory buckets.}
 \item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the account ID that you
 provide does not match the actual owner of the bucket, the request fails
 with the HTTP status code \verb{403 Forbidden} (access denied).}
+
+\item{IfMatch}{The \code{If-Match} header field makes the request method conditional on
+ETags. If the ETag value does not match, the operation returns a
+\verb{412 Precondition Failed} error. If the ETag matches or if the object
+doesn't exist, the operation will return a
+\verb{204 Success (No Content) response}.
+
+For more information about conditional requests, see RFC 7232.
+
+This functionality is only supported for directory buckets.}
+
+\item{IfMatchLastModifiedTime}{If present, the object is deleted only if its modification times matches
+the provided \code{Timestamp}. If the \code{Timestamp} values do not match, the
+operation returns a \verb{412 Precondition Failed} error. If the \code{Timestamp}
+matches or if the object doesn’t exist, the operation returns a
+\verb{204 Success (No Content)} response.
+
+This functionality is only supported for directory buckets.}
+
+\item{IfMatchSize}{If present, the object is deleted only if its size matches the provided
+size in bytes. If the \code{Size} value does not match, the operation returns
+a \verb{412 Precondition Failed} error. If the \code{Size} matches or if the
+object doesn’t exist, the operation returns a \verb{204 Success (No Content)}
+response.
+
+This functionality is only supported for directory buckets.
+
+You can use the \code{If-Match}, \verb{x-amz-if-match-last-modified-time} and
+\verb{x-amz-if-match-size} conditional headers in conjunction with each-other
+or individually.}
 }
 \description{
-Removes an object from a bucket. The behavior depends on the bucket's versioning state. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/DeletingObjects.html#DeletingObjects-best-practices}{Best practices to consider before deleting an object}.
+Removes an object from a bucket. The behavior depends on the bucket's versioning state:
 
 See \url{https://www.paws-r-sdk.com/docs/s3_delete_object/} for full documentation.
 }

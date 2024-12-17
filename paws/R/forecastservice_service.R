@@ -184,7 +184,7 @@ forecastservice <- function(config = list(), credentials = list(), endpoint = NU
 
 .forecastservice$metadata <- list(
   service_name = "forecastservice",
-  endpoints = list("*" = list(endpoint = "forecast.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "forecast.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "forecast.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "forecast.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "forecast.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "forecast.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "forecast.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "forecast.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "forecast.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "forecast.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "forecast.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "forecast.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "forecast.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "forecast",
   api_version = "2018-06-26",
   signing_name = "forecast",

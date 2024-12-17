@@ -5,14 +5,29 @@
 \title{Describes the specified Spot Instance requests}
 \usage{
 ec2_describe_spot_instance_requests(
-  Filters = NULL,
+  NextToken = NULL,
+  MaxResults = NULL,
   DryRun = NULL,
   SpotInstanceRequestIds = NULL,
-  NextToken = NULL,
-  MaxResults = NULL
+  Filters = NULL
 )
 }
 \arguments{
+\item{NextToken}{The token returned from a previous paginated request. Pagination
+continues from the end of the items returned by the previous request.}
+
+\item{MaxResults}{The maximum number of items to return for this request. To get the next
+page of items, make another request with the token returned in the
+output. For more information, see
+\href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Query-Requests.html#api-pagination}{Pagination}.}
+
+\item{DryRun}{Checks whether you have the required permissions for the action, without
+actually making the request, and provides an error response. If you have
+the required permissions, the error response is \code{DryRunOperation}.
+Otherwise, it is \code{UnauthorizedOperation}.}
+
+\item{SpotInstanceRequestIds}{The IDs of the Spot Instance requests.}
+
 \item{Filters}{The filters.
 \itemize{
 \item \code{availability-zone-group} - The Availability Zone group.
@@ -92,21 +107,6 @@ regardless of the tag value.
 \item \code{valid-from} - The start date of the request.
 \item \code{valid-until} - The end date of the request.
 }}
-
-\item{DryRun}{Checks whether you have the required permissions for the action, without
-actually making the request, and provides an error response. If you have
-the required permissions, the error response is \code{DryRunOperation}.
-Otherwise, it is \code{UnauthorizedOperation}.}
-
-\item{SpotInstanceRequestIds}{The IDs of the Spot Instance requests.}
-
-\item{NextToken}{The token returned from a previous paginated request. Pagination
-continues from the end of the items returned by the previous request.}
-
-\item{MaxResults}{The maximum number of items to return for this request. To get the next
-page of items, make another request with the token returned in the
-output. For more information, see
-\href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Query-Requests.html#api-pagination}{Pagination}.}
 }
 \description{
 Describes the specified Spot Instance requests.

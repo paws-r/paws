@@ -17,8 +17,8 @@ NULL
 #' information about ARNs, see [Amazon Resource Names
 #' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *Amazon Web Services General Reference* guide.
-#' @param entries &#91;required&#93; Indicates the list of resource grouping recommendations you want to
-#' include in your application.
+#' @param entries &#91;required&#93; List of resource grouping recommendations you want to include in your
+#' application.
 #'
 #' @keywords internal
 #'
@@ -130,6 +130,11 @@ resiliencehub_batch_update_recommendation_status <- function(appArn, requestEntr
 #' See [https://www.paws-r-sdk.com/docs/resiliencehub_create_app/](https://www.paws-r-sdk.com/docs/resiliencehub_create_app/) for full documentation.
 #'
 #' @param assessmentSchedule Assessment execution schedule with 'Daily' or 'Disabled' values.
+#' @param awsApplicationArn Amazon Resource Name (ARN) of Resource Groups group that is integrated
+#' with an AppRegistry application. For more information about ARNs, see
+#' [Amazon Resource Names
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
+#' in the *Amazon Web Services General Reference* guide.
 #' @param clientToken Used for an idempotency token. A client token is a unique,
 #' case-sensitive string of up to 64 ASCII characters. You should not reuse
 #' the same client token for other API requests.
@@ -153,7 +158,7 @@ resiliencehub_batch_update_recommendation_status <- function(appArn, requestEntr
 #' @keywords internal
 #'
 #' @rdname resiliencehub_create_app
-resiliencehub_create_app <- function(assessmentSchedule = NULL, clientToken = NULL, description = NULL, eventSubscriptions = NULL, name, permissionModel = NULL, policyArn = NULL, tags = NULL) {
+resiliencehub_create_app <- function(assessmentSchedule = NULL, awsApplicationArn = NULL, clientToken = NULL, description = NULL, eventSubscriptions = NULL, name, permissionModel = NULL, policyArn = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateApp",
     http_method = "POST",
@@ -162,7 +167,7 @@ resiliencehub_create_app <- function(assessmentSchedule = NULL, clientToken = NU
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .resiliencehub$create_app_input(assessmentSchedule = assessmentSchedule, clientToken = clientToken, description = description, eventSubscriptions = eventSubscriptions, name = name, permissionModel = permissionModel, policyArn = policyArn, tags = tags)
+  input <- .resiliencehub$create_app_input(assessmentSchedule = assessmentSchedule, awsApplicationArn = awsApplicationArn, clientToken = clientToken, description = description, eventSubscriptions = eventSubscriptions, name = name, permissionModel = permissionModel, policyArn = policyArn, tags = tags)
   output <- .resiliencehub$create_app_output()
   config <- get_config()
   svc <- .resiliencehub$service(config, op)
@@ -351,8 +356,8 @@ resiliencehub_create_recommendation_template <- function(assessmentArn, bucketNa
 #' resilience policy data can be stored.
 #' @param policy &#91;required&#93; The type of resiliency policy to be created, including the recovery time
 #' objective (RTO) and recovery point objective (RPO) in seconds.
-#' @param policyDescription The description for the policy.
-#' @param policyName &#91;required&#93; The name of the policy
+#' @param policyDescription Description of the resiliency policy.
+#' @param policyName &#91;required&#93; Name of the resiliency policy.
 #' @param tags Tags assigned to the resource. A tag is a label that you assign to an
 #' Amazon Web Services resource. Each tag consists of a key/value pair.
 #' @param tier &#91;required&#93; The tier for this resiliency policy, ranging from the highest severity
@@ -966,6 +971,37 @@ resiliencehub_describe_draft_app_version_resources_import_status <- function(app
 }
 .resiliencehub$operations$describe_draft_app_version_resources_import_status <- resiliencehub_describe_draft_app_version_resources_import_status
 
+#' Describes the metrics of the application configuration being exported
+#'
+#' @description
+#' Describes the metrics of the application configuration being exported.
+#'
+#' See [https://www.paws-r-sdk.com/docs/resiliencehub_describe_metrics_export/](https://www.paws-r-sdk.com/docs/resiliencehub_describe_metrics_export/) for full documentation.
+#'
+#' @param metricsExportId &#91;required&#93; Identifier of the metrics export task.
+#'
+#' @keywords internal
+#'
+#' @rdname resiliencehub_describe_metrics_export
+resiliencehub_describe_metrics_export <- function(metricsExportId) {
+  op <- new_operation(
+    name = "DescribeMetricsExport",
+    http_method = "POST",
+    http_path = "/describe-metrics-export",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .resiliencehub$describe_metrics_export_input(metricsExportId = metricsExportId)
+  output <- .resiliencehub$describe_metrics_export_output()
+  config <- get_config()
+  svc <- .resiliencehub$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.resiliencehub$operations$describe_metrics_export <- resiliencehub_describe_metrics_export
+
 #' Describes a specified resiliency policy for an Resilience Hub
 #' application
 #'
@@ -1017,7 +1053,7 @@ resiliencehub_describe_resiliency_policy <- function(policyArn) {
 #' information about ARNs, see [Amazon Resource Names
 #' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *Amazon Web Services General Reference* guide.
-#' @param groupingId Indicates the identifier of the grouping recommendation task.
+#' @param groupingId Identifier of the grouping recommendation task.
 #'
 #' @keywords internal
 #'
@@ -1111,7 +1147,7 @@ resiliencehub_list_alarm_recommendations <- function(assessmentArn, maxResults =
     http_method = "POST",
     http_path = "/list-alarm-recommendations",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .resiliencehub$list_alarm_recommendations_input(assessmentArn = assessmentArn, maxResults = maxResults, nextToken = nextToken)
@@ -1137,7 +1173,7 @@ resiliencehub_list_alarm_recommendations <- function(assessmentArn, maxResults =
 #' For more information about ARNs, see [Amazon Resource Names
 #' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *Amazon Web Services General Reference* guide.
-#' @param maxResults Indicates the maximum number of compliance drifts requested.
+#' @param maxResults Maximum number of compliance drifts requested.
 #' @param nextToken Null, or the token from a previous call to get the next set of results.
 #'
 #' @keywords internal
@@ -1149,7 +1185,7 @@ resiliencehub_list_app_assessment_compliance_drifts <- function(assessmentArn, m
     http_method = "POST",
     http_path = "/list-app-assessment-compliance-drifts",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .resiliencehub$list_app_assessment_compliance_drifts_input(assessmentArn = assessmentArn, maxResults = maxResults, nextToken = nextToken)
@@ -1162,11 +1198,10 @@ resiliencehub_list_app_assessment_compliance_drifts <- function(assessmentArn, m
 }
 .resiliencehub$operations$list_app_assessment_compliance_drifts <- resiliencehub_list_app_assessment_compliance_drifts
 
-#' Indicates the list of resource drifts that were detected while running
-#' an assessment
+#' List of resource drifts that were detected while running an assessment
 #'
 #' @description
-#' Indicates the list of resource drifts that were detected while running an assessment.
+#' List of resource drifts that were detected while running an assessment.
 #'
 #' See [https://www.paws-r-sdk.com/docs/resiliencehub_list_app_assessment_resource_drifts/](https://www.paws-r-sdk.com/docs/resiliencehub_list_app_assessment_resource_drifts/) for full documentation.
 #'
@@ -1176,10 +1211,9 @@ resiliencehub_list_app_assessment_compliance_drifts <- function(assessmentArn, m
 #' For more information about ARNs, see [Amazon Resource Names
 #' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *Amazon Web Services General Reference* guide.
-#' @param maxResults Indicates the maximum number of drift results to include in the
-#' response. If more results exist than the specified `MaxResults` value, a
-#' token is included in the response so that the remaining results can be
-#' retrieved.
+#' @param maxResults Maximum number of drift results to include in the response. If more
+#' results exist than the specified `MaxResults` value, a token is included
+#' in the response so that the remaining results can be retrieved.
 #' @param nextToken Null, or the token from a previous call to get the next set of results.
 #'
 #' @keywords internal
@@ -1238,7 +1272,7 @@ resiliencehub_list_app_assessments <- function(appArn = NULL, assessmentName = N
     http_method = "GET",
     http_path = "/list-app-assessments",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .resiliencehub$list_app_assessments_input(appArn = appArn, assessmentName = assessmentName, assessmentStatus = assessmentStatus, complianceStatus = complianceStatus, invoker = invoker, maxResults = maxResults, nextToken = nextToken, reverseOrder = reverseOrder)
@@ -1278,7 +1312,7 @@ resiliencehub_list_app_component_compliances <- function(assessmentArn, maxResul
     http_method = "POST",
     http_path = "/list-app-component-compliances",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .resiliencehub$list_app_component_compliances_input(assessmentArn = assessmentArn, maxResults = maxResults, nextToken = nextToken)
@@ -1318,7 +1352,7 @@ resiliencehub_list_app_component_recommendations <- function(assessmentArn, maxR
     http_method = "POST",
     http_path = "/list-app-component-recommendations",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .resiliencehub$list_app_component_recommendations_input(assessmentArn = assessmentArn, maxResults = maxResults, nextToken = nextToken)
@@ -1358,7 +1392,7 @@ resiliencehub_list_app_input_sources <- function(appArn, appVersion, maxResults 
     http_method = "POST",
     http_path = "/list-app-input-sources",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .resiliencehub$list_app_input_sources_input(appArn = appArn, appVersion = appVersion, maxResults = maxResults, nextToken = nextToken)
@@ -1398,7 +1432,7 @@ resiliencehub_list_app_version_app_components <- function(appArn, appVersion, ma
     http_method = "POST",
     http_path = "/list-app-version-app-components",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .resiliencehub$list_app_version_app_components_input(appArn = appArn, appVersion = appVersion, maxResults = maxResults, nextToken = nextToken)
@@ -1440,7 +1474,7 @@ resiliencehub_list_app_version_resource_mappings <- function(appArn, appVersion,
     http_method = "POST",
     http_path = "/list-app-version-resource-mappings",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .resiliencehub$list_app_version_resource_mappings_input(appArn = appArn, appVersion = appVersion, maxResults = maxResults, nextToken = nextToken)
@@ -1482,7 +1516,7 @@ resiliencehub_list_app_version_resources <- function(appArn, appVersion, maxResu
     http_method = "POST",
     http_path = "/list-app-version-resources",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .resiliencehub$list_app_version_resources_input(appArn = appArn, appVersion = appVersion, maxResults = maxResults, nextToken = nextToken, resolutionId = resolutionId)
@@ -1524,7 +1558,7 @@ resiliencehub_list_app_versions <- function(appArn, endTime = NULL, maxResults =
     http_method = "POST",
     http_path = "/list-app-versions",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .resiliencehub$list_app_versions_input(appArn = appArn, endTime = endTime, maxResults = maxResults, nextToken = nextToken, startTime = startTime)
@@ -1550,8 +1584,13 @@ resiliencehub_list_app_versions <- function(appArn, endTime = NULL, maxResults =
 #' information about ARNs, see [Amazon Resource Names
 #' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *Amazon Web Services General Reference* guide.
-#' @param fromLastAssessmentTime Indicates the lower limit of the range that is used to filter
-#' applications based on their last assessment times.
+#' @param awsApplicationArn Amazon Resource Name (ARN) of Resource Groups group that is integrated
+#' with an AppRegistry application. For more information about ARNs, see
+#' [Amazon Resource Names
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
+#' in the *Amazon Web Services General Reference* guide.
+#' @param fromLastAssessmentTime Lower limit of the range that is used to filter applications based on
+#' their last assessment times.
 #' @param maxResults Maximum number of results to include in the response. If more results
 #' exist than the specified `MaxResults` value, a token is included in the
 #' response so that the remaining results can be retrieved.
@@ -1561,22 +1600,22 @@ resiliencehub_list_app_versions <- function(appArn, endTime = NULL, maxResults =
 #' `lastAppComplianceEvaluationTime` field. By default, application list is
 #' sorted in ascending order. To sort the application list in descending
 #' order, set this field to `True`.
-#' @param toLastAssessmentTime Indicates the upper limit of the range that is used to filter the
-#' applications based on their last assessment times.
+#' @param toLastAssessmentTime Upper limit of the range that is used to filter the applications based
+#' on their last assessment times.
 #'
 #' @keywords internal
 #'
 #' @rdname resiliencehub_list_apps
-resiliencehub_list_apps <- function(appArn = NULL, fromLastAssessmentTime = NULL, maxResults = NULL, name = NULL, nextToken = NULL, reverseOrder = NULL, toLastAssessmentTime = NULL) {
+resiliencehub_list_apps <- function(appArn = NULL, awsApplicationArn = NULL, fromLastAssessmentTime = NULL, maxResults = NULL, name = NULL, nextToken = NULL, reverseOrder = NULL, toLastAssessmentTime = NULL) {
   op <- new_operation(
     name = "ListApps",
     http_method = "GET",
     http_path = "/list-apps",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
-  input <- .resiliencehub$list_apps_input(appArn = appArn, fromLastAssessmentTime = fromLastAssessmentTime, maxResults = maxResults, name = name, nextToken = nextToken, reverseOrder = reverseOrder, toLastAssessmentTime = toLastAssessmentTime)
+  input <- .resiliencehub$list_apps_input(appArn = appArn, awsApplicationArn = awsApplicationArn, fromLastAssessmentTime = fromLastAssessmentTime, maxResults = maxResults, name = name, nextToken = nextToken, reverseOrder = reverseOrder, toLastAssessmentTime = toLastAssessmentTime)
   output <- .resiliencehub$list_apps_output()
   config <- get_config()
   svc <- .resiliencehub$service(config, op)
@@ -1585,6 +1624,46 @@ resiliencehub_list_apps <- function(appArn = NULL, fromLastAssessmentTime = NULL
   return(response)
 }
 .resiliencehub$operations$list_apps <- resiliencehub_list_apps
+
+#' Lists the metrics that can be exported
+#'
+#' @description
+#' Lists the metrics that can be exported.
+#'
+#' See [https://www.paws-r-sdk.com/docs/resiliencehub_list_metrics/](https://www.paws-r-sdk.com/docs/resiliencehub_list_metrics/) for full documentation.
+#'
+#' @param conditions Indicates the list of all the conditions that were applied on the
+#' metrics.
+#' @param dataSource Indicates the data source of the metrics.
+#' @param fields Indicates the list of fields in the data source.
+#' @param maxResults Maximum number of results to include in the response. If more results
+#' exist than the specified `MaxResults` value, a token is included in the
+#' response so that the remaining results can be retrieved.
+#' @param nextToken Null, or the token from a previous call to get the next set of results.
+#' @param sorts (Optional) Indicates the order in which you want to sort the fields in
+#' the metrics. By default, the fields are sorted in the ascending order.
+#'
+#' @keywords internal
+#'
+#' @rdname resiliencehub_list_metrics
+resiliencehub_list_metrics <- function(conditions = NULL, dataSource = NULL, fields = NULL, maxResults = NULL, nextToken = NULL, sorts = NULL) {
+  op <- new_operation(
+    name = "ListMetrics",
+    http_method = "POST",
+    http_path = "/list-metrics",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "rows"),
+    stream_api = FALSE
+  )
+  input <- .resiliencehub$list_metrics_input(conditions = conditions, dataSource = dataSource, fields = fields, maxResults = maxResults, nextToken = nextToken, sorts = sorts)
+  output <- .resiliencehub$list_metrics_output()
+  config <- get_config()
+  svc <- .resiliencehub$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.resiliencehub$operations$list_metrics <- resiliencehub_list_metrics
 
 #' Lists the recommendation templates for the Resilience Hub applications
 #'
@@ -1618,7 +1697,7 @@ resiliencehub_list_recommendation_templates <- function(assessmentArn = NULL, ma
     http_method = "GET",
     http_path = "/list-recommendation-templates",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .resiliencehub$list_recommendation_templates_input(assessmentArn = assessmentArn, maxResults = maxResults, name = name, nextToken = nextToken, recommendationTemplateArn = recommendationTemplateArn, reverseOrder = reverseOrder, status = status)
@@ -1642,7 +1721,7 @@ resiliencehub_list_recommendation_templates <- function(assessmentArn = NULL, ma
 #' exist than the specified `MaxResults` value, a token is included in the
 #' response so that the remaining results can be retrieved.
 #' @param nextToken Null, or the token from a previous call to get the next set of results.
-#' @param policyName The name of the policy
+#' @param policyName Name of the resiliency policy.
 #'
 #' @keywords internal
 #'
@@ -1653,7 +1732,7 @@ resiliencehub_list_resiliency_policies <- function(maxResults = NULL, nextToken 
     http_method = "GET",
     http_path = "/list-resiliency-policies",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .resiliencehub$list_resiliency_policies_input(maxResults = maxResults, nextToken = nextToken, policyName = policyName)
@@ -1734,7 +1813,7 @@ resiliencehub_list_sop_recommendations <- function(assessmentArn, maxResults = N
     http_method = "POST",
     http_path = "/list-sop-recommendations",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .resiliencehub$list_sop_recommendations_input(assessmentArn = assessmentArn, maxResults = maxResults, nextToken = nextToken)
@@ -1769,7 +1848,7 @@ resiliencehub_list_suggested_resiliency_policies <- function(maxResults = NULL, 
     http_method = "GET",
     http_path = "/list-suggested-resiliency-policies",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .resiliencehub$list_suggested_resiliency_policies_input(maxResults = maxResults, nextToken = nextToken)
@@ -1841,7 +1920,7 @@ resiliencehub_list_test_recommendations <- function(assessmentArn, maxResults = 
     http_method = "POST",
     http_path = "/list-test-recommendations",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .resiliencehub$list_test_recommendations_input(assessmentArn = assessmentArn, maxResults = maxResults, nextToken = nextToken)
@@ -1883,7 +1962,7 @@ resiliencehub_list_unsupported_app_version_resources <- function(appArn, appVers
     http_method = "POST",
     http_path = "/list-unsupported-app-version-resources",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .resiliencehub$list_unsupported_app_version_resources_input(appArn = appArn, appVersion = appVersion, maxResults = maxResults, nextToken = nextToken, resolutionId = resolutionId)
@@ -2205,8 +2284,8 @@ resiliencehub_put_draft_app_version_template <- function(appArn, appTemplateBody
 #' information about ARNs, see [Amazon Resource Names
 #' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *Amazon Web Services General Reference* guide.
-#' @param entries &#91;required&#93; Indicates the list of resource grouping recommendations you have
-#' selected to exclude from your application.
+#' @param entries &#91;required&#93; List of resource grouping recommendations you have selected to exclude
+#' from your application.
 #'
 #' @keywords internal
 #'
@@ -2359,6 +2438,41 @@ resiliencehub_start_app_assessment <- function(appArn, appVersion, assessmentNam
   return(response)
 }
 .resiliencehub$operations$start_app_assessment <- resiliencehub_start_app_assessment
+
+#' Initiates the export task of metrics
+#'
+#' @description
+#' Initiates the export task of metrics.
+#'
+#' See [https://www.paws-r-sdk.com/docs/resiliencehub_start_metrics_export/](https://www.paws-r-sdk.com/docs/resiliencehub_start_metrics_export/) for full documentation.
+#'
+#' @param bucketName (Optional) Specifies the name of the Amazon Simple Storage Service
+#' bucket where the exported metrics will be stored.
+#' @param clientToken Used for an idempotency token. A client token is a unique,
+#' case-sensitive string of up to 64 ASCII characters. You should not reuse
+#' the same client token for other API requests.
+#'
+#' @keywords internal
+#'
+#' @rdname resiliencehub_start_metrics_export
+resiliencehub_start_metrics_export <- function(bucketName = NULL, clientToken = NULL) {
+  op <- new_operation(
+    name = "StartMetricsExport",
+    http_method = "POST",
+    http_path = "/start-metrics-export",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .resiliencehub$start_metrics_export_input(bucketName = bucketName, clientToken = clientToken)
+  output <- .resiliencehub$start_metrics_export_output()
+  config <- get_config()
+  svc <- .resiliencehub$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.resiliencehub$operations$start_metrics_export <- resiliencehub_start_metrics_export
 
 #' Starts grouping recommendation task
 #'
@@ -2663,16 +2777,16 @@ resiliencehub_update_app_version_resource <- function(additionalInfo = NULL, app
 #'
 #' @param dataLocationConstraint Specifies a high-level geographical location constraint for where your
 #' resilience policy data can be stored.
-#' @param policy The type of resiliency policy to be created, including the recovery time
-#' objective (RTO) and recovery point objective (RPO) in seconds.
+#' @param policy Resiliency policy to be created, including the recovery time objective
+#' (RTO) and recovery point objective (RPO) in seconds.
 #' @param policyArn &#91;required&#93; Amazon Resource Name (ARN) of the resiliency policy. The format for this
 #' ARN is:
 #' arn:`partition`:resiliencehub:`region`:`account`:resiliency-policy/`policy-id`.
 #' For more information about ARNs, see [Amazon Resource Names
 #' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *Amazon Web Services General Reference* guide.
-#' @param policyDescription The description for the policy.
-#' @param policyName The name of the policy
+#' @param policyDescription Description of the resiliency policy.
+#' @param policyName Name of the resiliency policy.
 #' @param tier The tier for this resiliency policy, ranging from the highest severity
 #' (`MissionCritical`) to lowest (`NonCritical`).
 #'

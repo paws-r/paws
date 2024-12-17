@@ -16,7 +16,9 @@ dynamodb_update_table(
   ReplicaUpdates = NULL,
   TableClass = NULL,
   DeletionProtectionEnabled = NULL,
-  OnDemandThroughput = NULL
+  MultiRegionConsistency = NULL,
+  OnDemandThroughput = NULL,
+  WarmThroughput = NULL
 )
 }
 \arguments{
@@ -79,9 +81,32 @@ and \code{STANDARD_INFREQUENT_ACCESS}.}
 \item{DeletionProtectionEnabled}{Indicates whether deletion protection is to be enabled (true) or
 disabled (false) on the table.}
 
+\item{MultiRegionConsistency}{Specifies the consistency mode for a new global table. This parameter is
+only valid when you create a global table by specifying one or more
+\href{https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_ReplicationGroupUpdate.html#DDB-Type-ReplicationGroupUpdate-Create}{Create}
+actions in the ReplicaUpdates action list.
+
+You can specify one of the following consistency modes:
+\itemize{
+\item \code{EVENTUAL}: Configures a new global table for multi-Region eventual
+consistency. This is the default consistency mode for global tables.
+\item \code{STRONG}: Configures a new global table for multi-Region strong
+consistency (preview).
+
+Multi-Region strong consistency (MRSC) is a new DynamoDB global
+tables capability currently available in preview mode. For more
+information, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/#multi-region-strong-consistency-gt}{Global tables multi-Region strong consistency}.
+}
+
+If you don't specify this parameter, the global table consistency mode
+defaults to \code{EVENTUAL}.}
+
 \item{OnDemandThroughput}{Updates the maximum number of read and write units for the specified
 table in on-demand capacity mode. If you use this parameter, you must
 specify \code{MaxReadRequestUnits}, \code{MaxWriteRequestUnits}, or both.}
+
+\item{WarmThroughput}{Represents the warm throughput (in read units per second and write units
+per second) for updating a table.}
 }
 \description{
 Modifies the provisioned throughput settings, global secondary indexes, or DynamoDB Streams settings for a given table.

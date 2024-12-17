@@ -16,7 +16,7 @@ the user resides.}
 \item{NewPassword}{[required] The new password that will be reset.}
 }
 \description{
-Resets the password for any user in your Managed Microsoft AD or Simple AD directory.
+Resets the password for any user in your Managed Microsoft AD or Simple AD directory. Disabled users will become enabled and can be authenticated following the API call.
 
 See \url{https://www.paws-r-sdk.com/docs/directoryservice_reset_user_password/} for full documentation.
 }

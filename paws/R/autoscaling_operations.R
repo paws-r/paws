@@ -179,13 +179,12 @@ autoscaling_attach_load_balancer_target_groups <- function(AutoScalingGroupName,
 }
 .autoscaling$operations$attach_load_balancer_target_groups <- autoscaling_attach_load_balancer_target_groups
 
-#' This API operation is superseded by AttachTrafficSources, which can
-#' attach multiple traffic sources types
+#' This API operation is superseded by https://docs
 #'
 #' @description
 #' This API operation is superseded by
-#' [`attach_traffic_sources`][autoscaling_attach_traffic_sources], which
-#' can attach multiple traffic sources types. We recommend using
+#' <https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_AttachTrafficSources.html>,
+#' which can attach multiple traffic sources types. We recommend using
 #' [`attach_traffic_sources`][autoscaling_attach_traffic_sources] to
 #' simplify how you manage traffic sources. However, we continue to support
 #' [`attach_load_balancers`][autoscaling_attach_load_balancers]. You can
@@ -299,11 +298,18 @@ autoscaling_attach_load_balancers <- function(AutoScalingGroupName, LoadBalancer
 #' [`detach_traffic_sources`][autoscaling_detach_traffic_sources] API.
 #'
 #' @usage
-#' autoscaling_attach_traffic_sources(AutoScalingGroupName, TrafficSources)
+#' autoscaling_attach_traffic_sources(AutoScalingGroupName, TrafficSources,
+#'   SkipZonalShiftValidation)
 #'
 #' @param AutoScalingGroupName &#91;required&#93; The name of the Auto Scaling group.
 #' @param TrafficSources &#91;required&#93; The unique identifiers of one or more traffic sources. You can specify
 #' up to 10 traffic sources.
+#' @param SkipZonalShiftValidation If you enable zonal shift with cross-zone disabled load balancers,
+#' capacity could become imbalanced across Availability Zones. To skip the
+#' validation, specify `true`. For more information, see [Auto Scaling
+#' group zonal
+#' shift](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-zonal-shift.html)
+#' in the *Amazon EC2 Auto Scaling User Guide*.
 #'
 #' @return
 #' An empty list.
@@ -317,7 +323,8 @@ autoscaling_attach_load_balancers <- function(AutoScalingGroupName, LoadBalancer
 #'       Identifier = "string",
 #'       Type = "string"
 #'     )
-#'   )
+#'   ),
+#'   SkipZonalShiftValidation = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -340,7 +347,7 @@ autoscaling_attach_load_balancers <- function(AutoScalingGroupName, LoadBalancer
 #' @rdname autoscaling_attach_traffic_sources
 #'
 #' @aliases autoscaling_attach_traffic_sources
-autoscaling_attach_traffic_sources <- function(AutoScalingGroupName, TrafficSources) {
+autoscaling_attach_traffic_sources <- function(AutoScalingGroupName, TrafficSources, SkipZonalShiftValidation = NULL) {
   op <- new_operation(
     name = "AttachTrafficSources",
     http_method = "POST",
@@ -349,7 +356,7 @@ autoscaling_attach_traffic_sources <- function(AutoScalingGroupName, TrafficSour
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .autoscaling$attach_traffic_sources_input(AutoScalingGroupName = AutoScalingGroupName, TrafficSources = TrafficSources)
+  input <- .autoscaling$attach_traffic_sources_input(AutoScalingGroupName = AutoScalingGroupName, TrafficSources = TrafficSources, SkipZonalShiftValidation = SkipZonalShiftValidation)
   output <- .autoscaling$attach_traffic_sources_output()
   config <- get_config()
   svc <- .autoscaling$service(config, op)
@@ -709,7 +716,9 @@ autoscaling_complete_lifecycle_action <- function(LifecycleHookName, AutoScaling
 #'   TerminationPolicies, NewInstancesProtectedFromScaleIn,
 #'   CapacityRebalance, LifecycleHookSpecificationList, Tags,
 #'   ServiceLinkedRoleARN, MaxInstanceLifetime, Context, DesiredCapacityType,
-#'   DefaultInstanceWarmup, TrafficSources, InstanceMaintenancePolicy)
+#'   DefaultInstanceWarmup, TrafficSources, InstanceMaintenancePolicy,
+#'   AvailabilityZoneDistribution, AvailabilityZoneImpairmentPolicy,
+#'   SkipZonalShiftValidation, CapacityReservationSpecification)
 #'
 #' @param AutoScalingGroupName &#91;required&#93; The name of the Auto Scaling group. This name must be unique per Region
 #' per account.
@@ -914,6 +923,15 @@ autoscaling_complete_lifecycle_action <- function(LifecycleHookName, AutoScaling
 #' maintenance
 #' policy](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-instance-maintenance-policy.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
+#' @param AvailabilityZoneDistribution The instance capacity distribution across Availability Zones.
+#' @param AvailabilityZoneImpairmentPolicy The policy for Availability Zone impairment.
+#' @param SkipZonalShiftValidation If you enable zonal shift with cross-zone disabled load balancers,
+#' capacity could become imbalanced across Availability Zones. To skip the
+#' validation, specify `true`. For more information, see [Auto Scaling
+#' group zonal
+#' shift](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-zonal-shift.html)
+#' in the *Amazon EC2 Auto Scaling User Guide*.
+#' @param CapacityReservationSpecification The capacity reservation specification for the Auto Scaling group.
 #'
 #' @return
 #' An empty list.
@@ -1011,6 +1029,15 @@ autoscaling_complete_lifecycle_action <- function(LifecycleHookName, AutoScaling
 #'             ),
 #'             AllowedInstanceTypes = list(
 #'               "string"
+#'             ),
+#'             BaselinePerformanceFactors = list(
+#'               Cpu = list(
+#'                 References = list(
+#'                   list(
+#'                     InstanceFamily = "string"
+#'                   )
+#'                 )
+#'               )
 #'             )
 #'           )
 #'         )
@@ -1082,6 +1109,25 @@ autoscaling_complete_lifecycle_action <- function(LifecycleHookName, AutoScaling
 #'   InstanceMaintenancePolicy = list(
 #'     MinHealthyPercentage = 123,
 #'     MaxHealthyPercentage = 123
+#'   ),
+#'   AvailabilityZoneDistribution = list(
+#'     CapacityDistributionStrategy = "balanced-only"|"balanced-best-effort"
+#'   ),
+#'   AvailabilityZoneImpairmentPolicy = list(
+#'     ZonalShiftEnabled = TRUE|FALSE,
+#'     ImpairedZoneHealthCheckBehavior = "ReplaceUnhealthy"|"IgnoreUnhealthy"
+#'   ),
+#'   SkipZonalShiftValidation = TRUE|FALSE,
+#'   CapacityReservationSpecification = list(
+#'     CapacityReservationPreference = "capacity-reservations-only"|"capacity-reservations-first"|"none"|"default",
+#'     CapacityReservationTarget = list(
+#'       CapacityReservationIds = list(
+#'         "string"
+#'       ),
+#'       CapacityReservationResourceGroupArns = list(
+#'         "string"
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -1207,7 +1253,7 @@ autoscaling_complete_lifecycle_action <- function(LifecycleHookName, AutoScaling
 #' @rdname autoscaling_create_auto_scaling_group
 #'
 #' @aliases autoscaling_create_auto_scaling_group
-autoscaling_create_auto_scaling_group <- function(AutoScalingGroupName, LaunchConfigurationName = NULL, LaunchTemplate = NULL, MixedInstancesPolicy = NULL, InstanceId = NULL, MinSize, MaxSize, DesiredCapacity = NULL, DefaultCooldown = NULL, AvailabilityZones = NULL, LoadBalancerNames = NULL, TargetGroupARNs = NULL, HealthCheckType = NULL, HealthCheckGracePeriod = NULL, PlacementGroup = NULL, VPCZoneIdentifier = NULL, TerminationPolicies = NULL, NewInstancesProtectedFromScaleIn = NULL, CapacityRebalance = NULL, LifecycleHookSpecificationList = NULL, Tags = NULL, ServiceLinkedRoleARN = NULL, MaxInstanceLifetime = NULL, Context = NULL, DesiredCapacityType = NULL, DefaultInstanceWarmup = NULL, TrafficSources = NULL, InstanceMaintenancePolicy = NULL) {
+autoscaling_create_auto_scaling_group <- function(AutoScalingGroupName, LaunchConfigurationName = NULL, LaunchTemplate = NULL, MixedInstancesPolicy = NULL, InstanceId = NULL, MinSize, MaxSize, DesiredCapacity = NULL, DefaultCooldown = NULL, AvailabilityZones = NULL, LoadBalancerNames = NULL, TargetGroupARNs = NULL, HealthCheckType = NULL, HealthCheckGracePeriod = NULL, PlacementGroup = NULL, VPCZoneIdentifier = NULL, TerminationPolicies = NULL, NewInstancesProtectedFromScaleIn = NULL, CapacityRebalance = NULL, LifecycleHookSpecificationList = NULL, Tags = NULL, ServiceLinkedRoleARN = NULL, MaxInstanceLifetime = NULL, Context = NULL, DesiredCapacityType = NULL, DefaultInstanceWarmup = NULL, TrafficSources = NULL, InstanceMaintenancePolicy = NULL, AvailabilityZoneDistribution = NULL, AvailabilityZoneImpairmentPolicy = NULL, SkipZonalShiftValidation = NULL, CapacityReservationSpecification = NULL) {
   op <- new_operation(
     name = "CreateAutoScalingGroup",
     http_method = "POST",
@@ -1216,7 +1262,7 @@ autoscaling_create_auto_scaling_group <- function(AutoScalingGroupName, LaunchCo
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .autoscaling$create_auto_scaling_group_input(AutoScalingGroupName = AutoScalingGroupName, LaunchConfigurationName = LaunchConfigurationName, LaunchTemplate = LaunchTemplate, MixedInstancesPolicy = MixedInstancesPolicy, InstanceId = InstanceId, MinSize = MinSize, MaxSize = MaxSize, DesiredCapacity = DesiredCapacity, DefaultCooldown = DefaultCooldown, AvailabilityZones = AvailabilityZones, LoadBalancerNames = LoadBalancerNames, TargetGroupARNs = TargetGroupARNs, HealthCheckType = HealthCheckType, HealthCheckGracePeriod = HealthCheckGracePeriod, PlacementGroup = PlacementGroup, VPCZoneIdentifier = VPCZoneIdentifier, TerminationPolicies = TerminationPolicies, NewInstancesProtectedFromScaleIn = NewInstancesProtectedFromScaleIn, CapacityRebalance = CapacityRebalance, LifecycleHookSpecificationList = LifecycleHookSpecificationList, Tags = Tags, ServiceLinkedRoleARN = ServiceLinkedRoleARN, MaxInstanceLifetime = MaxInstanceLifetime, Context = Context, DesiredCapacityType = DesiredCapacityType, DefaultInstanceWarmup = DefaultInstanceWarmup, TrafficSources = TrafficSources, InstanceMaintenancePolicy = InstanceMaintenancePolicy)
+  input <- .autoscaling$create_auto_scaling_group_input(AutoScalingGroupName = AutoScalingGroupName, LaunchConfigurationName = LaunchConfigurationName, LaunchTemplate = LaunchTemplate, MixedInstancesPolicy = MixedInstancesPolicy, InstanceId = InstanceId, MinSize = MinSize, MaxSize = MaxSize, DesiredCapacity = DesiredCapacity, DefaultCooldown = DefaultCooldown, AvailabilityZones = AvailabilityZones, LoadBalancerNames = LoadBalancerNames, TargetGroupARNs = TargetGroupARNs, HealthCheckType = HealthCheckType, HealthCheckGracePeriod = HealthCheckGracePeriod, PlacementGroup = PlacementGroup, VPCZoneIdentifier = VPCZoneIdentifier, TerminationPolicies = TerminationPolicies, NewInstancesProtectedFromScaleIn = NewInstancesProtectedFromScaleIn, CapacityRebalance = CapacityRebalance, LifecycleHookSpecificationList = LifecycleHookSpecificationList, Tags = Tags, ServiceLinkedRoleARN = ServiceLinkedRoleARN, MaxInstanceLifetime = MaxInstanceLifetime, Context = Context, DesiredCapacityType = DesiredCapacityType, DefaultInstanceWarmup = DefaultInstanceWarmup, TrafficSources = TrafficSources, InstanceMaintenancePolicy = InstanceMaintenancePolicy, AvailabilityZoneDistribution = AvailabilityZoneDistribution, AvailabilityZoneImpairmentPolicy = AvailabilityZoneImpairmentPolicy, SkipZonalShiftValidation = SkipZonalShiftValidation, CapacityReservationSpecification = CapacityReservationSpecification)
   output <- .autoscaling$create_auto_scaling_group_output()
   config <- get_config()
   svc <- .autoscaling$service(config, op)
@@ -2326,6 +2372,15 @@ autoscaling_describe_adjustment_types <- function() {
 #'                 ),
 #'                 AllowedInstanceTypes = list(
 #'                   "string"
+#'                 ),
+#'                 BaselinePerformanceFactors = list(
+#'                   Cpu = list(
+#'                     References = list(
+#'                       list(
+#'                         InstanceFamily = "string"
+#'                       )
+#'                     )
+#'                   )
 #'                 )
 #'               )
 #'             )
@@ -2429,6 +2484,24 @@ autoscaling_describe_adjustment_types <- function() {
 #'       InstanceMaintenancePolicy = list(
 #'         MinHealthyPercentage = 123,
 #'         MaxHealthyPercentage = 123
+#'       ),
+#'       AvailabilityZoneDistribution = list(
+#'         CapacityDistributionStrategy = "balanced-only"|"balanced-best-effort"
+#'       ),
+#'       AvailabilityZoneImpairmentPolicy = list(
+#'         ZonalShiftEnabled = TRUE|FALSE,
+#'         ImpairedZoneHealthCheckBehavior = "ReplaceUnhealthy"|"IgnoreUnhealthy"
+#'       ),
+#'       CapacityReservationSpecification = list(
+#'         CapacityReservationPreference = "capacity-reservations-only"|"capacity-reservations-first"|"none"|"default",
+#'         CapacityReservationTarget = list(
+#'           CapacityReservationIds = list(
+#'             "string"
+#'           ),
+#'           CapacityReservationResourceGroupArns = list(
+#'             "string"
+#'           )
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -2476,7 +2549,7 @@ autoscaling_describe_auto_scaling_groups <- function(AutoScalingGroupNames = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken", result_key = "AutoScalingGroups"),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxRecords", result_key = "AutoScalingGroups"),
     stream_api = FALSE
   )
   input <- .autoscaling$describe_auto_scaling_groups_input(AutoScalingGroupNames = AutoScalingGroupNames, NextToken = NextToken, MaxRecords = MaxRecords, Filters = Filters)
@@ -2568,7 +2641,7 @@ autoscaling_describe_auto_scaling_instances <- function(InstanceIds = NULL, MaxR
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken", result_key = "AutoScalingInstances"),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxRecords", result_key = "AutoScalingInstances"),
     stream_api = FALSE
   )
   input <- .autoscaling$describe_auto_scaling_instances_input(InstanceIds = InstanceIds, MaxRecords = MaxRecords, NextToken = NextToken)
@@ -2675,7 +2748,7 @@ autoscaling_describe_auto_scaling_notification_types <- function() {
 #'     list(
 #'       InstanceRefreshId = "string",
 #'       AutoScalingGroupName = "string",
-#'       Status = "Pending"|"InProgress"|"Successful"|"Failed"|"Cancelling"|"Cancelled"|"RollbackInProgress"|"RollbackFailed"|"RollbackSuccessful",
+#'       Status = "Pending"|"InProgress"|"Successful"|"Failed"|"Cancelling"|"Cancelled"|"RollbackInProgress"|"RollbackFailed"|"RollbackSuccessful"|"Baking",
 #'       StatusReason = "string",
 #'       StartTime = as.POSIXct(
 #'         "2015-01-01"
@@ -2711,7 +2784,8 @@ autoscaling_describe_auto_scaling_notification_types <- function() {
 #'             "string"
 #'           )
 #'         ),
-#'         MaxHealthyPercentage = 123
+#'         MaxHealthyPercentage = 123,
+#'         BakeTime = 123
 #'       ),
 #'       DesiredConfiguration = list(
 #'         LaunchTemplate = list(
@@ -2802,6 +2876,15 @@ autoscaling_describe_auto_scaling_notification_types <- function() {
 #'                   ),
 #'                   AllowedInstanceTypes = list(
 #'                     "string"
+#'                   ),
+#'                   BaselinePerformanceFactors = list(
+#'                     Cpu = list(
+#'                       References = list(
+#'                         list(
+#'                           InstanceFamily = "string"
+#'                         )
+#'                       )
+#'                     )
 #'                   )
 #'                 )
 #'               )
@@ -2873,7 +2956,7 @@ autoscaling_describe_instance_refreshes <- function(AutoScalingGroupName, Instan
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .autoscaling$describe_instance_refreshes_input(AutoScalingGroupName = AutoScalingGroupName, InstanceRefreshIds = InstanceRefreshIds, NextToken = NextToken, MaxRecords = MaxRecords)
@@ -2997,7 +3080,7 @@ autoscaling_describe_launch_configurations <- function(LaunchConfigurationNames 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken", result_key = "LaunchConfigurations"),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxRecords", result_key = "LaunchConfigurations"),
     stream_api = FALSE
   )
   input <- .autoscaling$describe_launch_configurations_input(LaunchConfigurationNames = LaunchConfigurationNames, NextToken = NextToken, MaxRecords = MaxRecords)
@@ -3252,7 +3335,7 @@ autoscaling_describe_load_balancer_target_groups <- function(AutoScalingGroupNam
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken"),
+    paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken", result_key = "LoadBalancerTargetGroups"),
     stream_api = FALSE
   )
   input <- .autoscaling$describe_load_balancer_target_groups_input(AutoScalingGroupName = AutoScalingGroupName, NextToken = NextToken, MaxRecords = MaxRecords)
@@ -3371,7 +3454,7 @@ autoscaling_describe_load_balancers <- function(AutoScalingGroupName, NextToken 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken"),
+    paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken", result_key = "LoadBalancers"),
     stream_api = FALSE
   )
   input <- .autoscaling$describe_load_balancers_input(AutoScalingGroupName = AutoScalingGroupName, NextToken = NextToken, MaxRecords = MaxRecords)
@@ -3508,7 +3591,7 @@ autoscaling_describe_notification_configurations <- function(AutoScalingGroupNam
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken", result_key = "NotificationConfigurations"),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxRecords", result_key = "NotificationConfigurations"),
     stream_api = FALSE
   )
   input <- .autoscaling$describe_notification_configurations_input(AutoScalingGroupNames = AutoScalingGroupNames, NextToken = NextToken, MaxRecords = MaxRecords)
@@ -3590,6 +3673,7 @@ autoscaling_describe_notification_configurations <- function(AutoScalingGroupNam
 #'           ),
 #'           Statistic = "Average"|"Minimum"|"Maximum"|"SampleCount"|"Sum",
 #'           Unit = "string",
+#'           Period = 123,
 #'           Metrics = list(
 #'             list(
 #'               Id = "string",
@@ -3606,9 +3690,11 @@ autoscaling_describe_notification_configurations <- function(AutoScalingGroupNam
 #'                   )
 #'                 ),
 #'                 Stat = "string",
-#'                 Unit = "string"
+#'                 Unit = "string",
+#'                 Period = 123
 #'               ),
 #'               Label = "string",
+#'               Period = 123,
 #'               ReturnData = TRUE|FALSE
 #'             )
 #'           )
@@ -3753,7 +3839,7 @@ autoscaling_describe_policies <- function(AutoScalingGroupName = NULL, PolicyNam
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken", result_key = "ScalingPolicies"),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxRecords", result_key = "ScalingPolicies"),
     stream_api = FALSE
   )
   input <- .autoscaling$describe_policies_input(AutoScalingGroupName = AutoScalingGroupName, PolicyNames = PolicyNames, PolicyTypes = PolicyTypes, NextToken = NextToken, MaxRecords = MaxRecords)
@@ -3865,7 +3951,7 @@ autoscaling_describe_scaling_activities <- function(ActivityIds = NULL, AutoScal
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken", result_key = "Activities"),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxRecords", result_key = "Activities"),
     stream_api = FALSE
   )
   input <- .autoscaling$describe_scaling_activities_input(ActivityIds = ActivityIds, AutoScalingGroupName = AutoScalingGroupName, IncludeDeletedGroups = IncludeDeletedGroups, MaxRecords = MaxRecords, NextToken = NextToken)
@@ -4033,7 +4119,7 @@ autoscaling_describe_scheduled_actions <- function(AutoScalingGroupName = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken", result_key = "ScheduledUpdateGroupActions"),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxRecords", result_key = "ScheduledUpdateGroupActions"),
     stream_api = FALSE
   )
   input <- .autoscaling$describe_scheduled_actions_input(AutoScalingGroupName = AutoScalingGroupName, ScheduledActionNames = ScheduledActionNames, StartTime = StartTime, EndTime = EndTime, NextToken = NextToken, MaxRecords = MaxRecords)
@@ -4133,7 +4219,7 @@ autoscaling_describe_tags <- function(Filters = NULL, NextToken = NULL, MaxRecor
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken", result_key = "Tags"),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxRecords", result_key = "Tags"),
     stream_api = FALSE
   )
   input <- .autoscaling$describe_tags_input(Filters = Filters, NextToken = NextToken, MaxRecords = MaxRecords)
@@ -4283,7 +4369,7 @@ autoscaling_describe_traffic_sources <- function(AutoScalingGroupName, TrafficSo
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .autoscaling$describe_traffic_sources_input(AutoScalingGroupName = AutoScalingGroupName, TrafficSourceType = TrafficSourceType, NextToken = NextToken, MaxRecords = MaxRecords)
@@ -5867,6 +5953,7 @@ autoscaling_put_notification_configuration <- function(AutoScalingGroupName, Top
 #'       ),
 #'       Statistic = "Average"|"Minimum"|"Maximum"|"SampleCount"|"Sum",
 #'       Unit = "string",
+#'       Period = 123,
 #'       Metrics = list(
 #'         list(
 #'           Id = "string",
@@ -5883,9 +5970,11 @@ autoscaling_put_notification_configuration <- function(AutoScalingGroupName, Top
 #'               )
 #'             ),
 #'             Stat = "string",
-#'             Unit = "string"
+#'             Unit = "string",
+#'             Period = 123
 #'           ),
 #'           Label = "string",
+#'           Period = 123,
 #'           ReturnData = TRUE|FALSE
 #'         )
 #'       )
@@ -6835,6 +6924,8 @@ autoscaling_set_instance_protection <- function(InstanceIds, AutoScalingGroupNam
 #' -   CloudWatch alarms
 #' 
 #' -   Skip matching
+#' 
+#' -   Bake time
 #'
 #' @return
 #' A list with the following syntax:
@@ -6938,6 +7029,15 @@ autoscaling_set_instance_protection <- function(InstanceIds, AutoScalingGroupNam
 #'               ),
 #'               AllowedInstanceTypes = list(
 #'                 "string"
+#'               ),
+#'               BaselinePerformanceFactors = list(
+#'                 Cpu = list(
+#'                   References = list(
+#'                     list(
+#'                       InstanceFamily = "string"
+#'                     )
+#'                   )
+#'                 )
 #'               )
 #'             )
 #'           )
@@ -6969,7 +7069,8 @@ autoscaling_set_instance_protection <- function(InstanceIds, AutoScalingGroupNam
 #'         "string"
 #'       )
 #'     ),
-#'     MaxHealthyPercentage = 123
+#'     MaxHealthyPercentage = 123,
+#'     BakeTime = 123
 #'   )
 #' )
 #' ```
@@ -6994,7 +7095,6 @@ autoscaling_set_instance_protection <- function(InstanceIds, AutoScalingGroupNam
 #'     ),
 #'     AutoRollback = TRUE,
 #'     InstanceWarmup = 200L,
-#'     MaxHealthyPercentage = 120L,
 #'     MinHealthyPercentage = 90L
 #'   )
 #' )
@@ -7277,7 +7377,9 @@ autoscaling_terminate_instance_in_auto_scaling_group <- function(InstanceId, Sho
 #'   VPCZoneIdentifier, TerminationPolicies,
 #'   NewInstancesProtectedFromScaleIn, ServiceLinkedRoleARN,
 #'   MaxInstanceLifetime, CapacityRebalance, Context, DesiredCapacityType,
-#'   DefaultInstanceWarmup, InstanceMaintenancePolicy)
+#'   DefaultInstanceWarmup, InstanceMaintenancePolicy,
+#'   AvailabilityZoneDistribution, AvailabilityZoneImpairmentPolicy,
+#'   SkipZonalShiftValidation, CapacityReservationSpecification)
 #'
 #' @param AutoScalingGroupName &#91;required&#93; The name of the Auto Scaling group.
 #' @param LaunchConfigurationName The name of the launch configuration. If you specify
@@ -7329,7 +7431,9 @@ autoscaling_terminate_instance_in_auto_scaling_group <- function(InstanceId, Sho
 #' group](https://docs.aws.amazon.com/autoscaling/ec2/userguide/health-check-grace-period.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
 #' @param PlacementGroup The name of an existing placement group into which to launch your
-#' instances. For more information, see [Placement
+#' instances. To remove the placement group setting, pass an empty string
+#' for `placement-group`. For more information about placement groups, see
+#' [Placement
 #' groups](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html)
 #' in the *Amazon EC2 User Guide for Linux Instances*.
 #' 
@@ -7408,6 +7512,15 @@ autoscaling_terminate_instance_in_auto_scaling_group <- function(InstanceId, Sho
 #' maintenance
 #' policy](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-instance-maintenance-policy.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
+#' @param AvailabilityZoneDistribution The instance capacity distribution across Availability Zones.
+#' @param AvailabilityZoneImpairmentPolicy The policy for Availability Zone impairment.
+#' @param SkipZonalShiftValidation If you enable zonal shift with cross-zone disabled load balancers,
+#' capacity could become imbalanced across Availability Zones. To skip the
+#' validation, specify `true`. For more information, see [Auto Scaling
+#' group zonal
+#' shift](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-zonal-shift.html)
+#' in the *Amazon EC2 Auto Scaling User Guide*.
+#' @param CapacityReservationSpecification The capacity reservation specification for the Auto Scaling group.
 #'
 #' @return
 #' An empty list.
@@ -7505,6 +7618,15 @@ autoscaling_terminate_instance_in_auto_scaling_group <- function(InstanceId, Sho
 #'             ),
 #'             AllowedInstanceTypes = list(
 #'               "string"
+#'             ),
+#'             BaselinePerformanceFactors = list(
+#'               Cpu = list(
+#'                 References = list(
+#'                   list(
+#'                     InstanceFamily = "string"
+#'                   )
+#'                 )
+#'               )
 #'             )
 #'           )
 #'         )
@@ -7543,6 +7665,25 @@ autoscaling_terminate_instance_in_auto_scaling_group <- function(InstanceId, Sho
 #'   InstanceMaintenancePolicy = list(
 #'     MinHealthyPercentage = 123,
 #'     MaxHealthyPercentage = 123
+#'   ),
+#'   AvailabilityZoneDistribution = list(
+#'     CapacityDistributionStrategy = "balanced-only"|"balanced-best-effort"
+#'   ),
+#'   AvailabilityZoneImpairmentPolicy = list(
+#'     ZonalShiftEnabled = TRUE|FALSE,
+#'     ImpairedZoneHealthCheckBehavior = "ReplaceUnhealthy"|"IgnoreUnhealthy"
+#'   ),
+#'   SkipZonalShiftValidation = TRUE|FALSE,
+#'   CapacityReservationSpecification = list(
+#'     CapacityReservationPreference = "capacity-reservations-only"|"capacity-reservations-first"|"none"|"default",
+#'     CapacityReservationTarget = list(
+#'       CapacityReservationIds = list(
+#'         "string"
+#'       ),
+#'       CapacityReservationResourceGroupArns = list(
+#'         "string"
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -7567,7 +7708,7 @@ autoscaling_terminate_instance_in_auto_scaling_group <- function(InstanceId, Sho
 #' @rdname autoscaling_update_auto_scaling_group
 #'
 #' @aliases autoscaling_update_auto_scaling_group
-autoscaling_update_auto_scaling_group <- function(AutoScalingGroupName, LaunchConfigurationName = NULL, LaunchTemplate = NULL, MixedInstancesPolicy = NULL, MinSize = NULL, MaxSize = NULL, DesiredCapacity = NULL, DefaultCooldown = NULL, AvailabilityZones = NULL, HealthCheckType = NULL, HealthCheckGracePeriod = NULL, PlacementGroup = NULL, VPCZoneIdentifier = NULL, TerminationPolicies = NULL, NewInstancesProtectedFromScaleIn = NULL, ServiceLinkedRoleARN = NULL, MaxInstanceLifetime = NULL, CapacityRebalance = NULL, Context = NULL, DesiredCapacityType = NULL, DefaultInstanceWarmup = NULL, InstanceMaintenancePolicy = NULL) {
+autoscaling_update_auto_scaling_group <- function(AutoScalingGroupName, LaunchConfigurationName = NULL, LaunchTemplate = NULL, MixedInstancesPolicy = NULL, MinSize = NULL, MaxSize = NULL, DesiredCapacity = NULL, DefaultCooldown = NULL, AvailabilityZones = NULL, HealthCheckType = NULL, HealthCheckGracePeriod = NULL, PlacementGroup = NULL, VPCZoneIdentifier = NULL, TerminationPolicies = NULL, NewInstancesProtectedFromScaleIn = NULL, ServiceLinkedRoleARN = NULL, MaxInstanceLifetime = NULL, CapacityRebalance = NULL, Context = NULL, DesiredCapacityType = NULL, DefaultInstanceWarmup = NULL, InstanceMaintenancePolicy = NULL, AvailabilityZoneDistribution = NULL, AvailabilityZoneImpairmentPolicy = NULL, SkipZonalShiftValidation = NULL, CapacityReservationSpecification = NULL) {
   op <- new_operation(
     name = "UpdateAutoScalingGroup",
     http_method = "POST",
@@ -7576,7 +7717,7 @@ autoscaling_update_auto_scaling_group <- function(AutoScalingGroupName, LaunchCo
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .autoscaling$update_auto_scaling_group_input(AutoScalingGroupName = AutoScalingGroupName, LaunchConfigurationName = LaunchConfigurationName, LaunchTemplate = LaunchTemplate, MixedInstancesPolicy = MixedInstancesPolicy, MinSize = MinSize, MaxSize = MaxSize, DesiredCapacity = DesiredCapacity, DefaultCooldown = DefaultCooldown, AvailabilityZones = AvailabilityZones, HealthCheckType = HealthCheckType, HealthCheckGracePeriod = HealthCheckGracePeriod, PlacementGroup = PlacementGroup, VPCZoneIdentifier = VPCZoneIdentifier, TerminationPolicies = TerminationPolicies, NewInstancesProtectedFromScaleIn = NewInstancesProtectedFromScaleIn, ServiceLinkedRoleARN = ServiceLinkedRoleARN, MaxInstanceLifetime = MaxInstanceLifetime, CapacityRebalance = CapacityRebalance, Context = Context, DesiredCapacityType = DesiredCapacityType, DefaultInstanceWarmup = DefaultInstanceWarmup, InstanceMaintenancePolicy = InstanceMaintenancePolicy)
+  input <- .autoscaling$update_auto_scaling_group_input(AutoScalingGroupName = AutoScalingGroupName, LaunchConfigurationName = LaunchConfigurationName, LaunchTemplate = LaunchTemplate, MixedInstancesPolicy = MixedInstancesPolicy, MinSize = MinSize, MaxSize = MaxSize, DesiredCapacity = DesiredCapacity, DefaultCooldown = DefaultCooldown, AvailabilityZones = AvailabilityZones, HealthCheckType = HealthCheckType, HealthCheckGracePeriod = HealthCheckGracePeriod, PlacementGroup = PlacementGroup, VPCZoneIdentifier = VPCZoneIdentifier, TerminationPolicies = TerminationPolicies, NewInstancesProtectedFromScaleIn = NewInstancesProtectedFromScaleIn, ServiceLinkedRoleARN = ServiceLinkedRoleARN, MaxInstanceLifetime = MaxInstanceLifetime, CapacityRebalance = CapacityRebalance, Context = Context, DesiredCapacityType = DesiredCapacityType, DefaultInstanceWarmup = DefaultInstanceWarmup, InstanceMaintenancePolicy = InstanceMaintenancePolicy, AvailabilityZoneDistribution = AvailabilityZoneDistribution, AvailabilityZoneImpairmentPolicy = AvailabilityZoneImpairmentPolicy, SkipZonalShiftValidation = SkipZonalShiftValidation, CapacityReservationSpecification = CapacityReservationSpecification)
   output <- .autoscaling$update_auto_scaling_group_output()
   config <- get_config()
   svc <- .autoscaling$service(config, op)

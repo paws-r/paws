@@ -6,16 +6,14 @@
 in the Reserved Instance Marketplace}
 \usage{
 ec2_create_reserved_instances_listing(
-  ClientToken,
+  ReservedInstancesId,
   InstanceCount,
   PriceSchedules,
-  ReservedInstancesId
+  ClientToken
 )
 }
 \arguments{
-\item{ClientToken}{[required] Unique, case-sensitive identifier you provide to ensure idempotency of
-your listings. This helps avoid duplicate listings. For more
-information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring Idempotency}.}
+\item{ReservedInstancesId}{[required] The ID of the active Standard Reserved Instance.}
 
 \item{InstanceCount}{[required] The number of instances that are a part of a Reserved Instance account
 to be listed in the Reserved Instance Marketplace. This number should be
@@ -25,7 +23,9 @@ Instance ID specified in this call.}
 \item{PriceSchedules}{[required] A list specifying the price of the Standard Reserved Instance for each
 month remaining in the Reserved Instance term.}
 
-\item{ReservedInstancesId}{[required] The ID of the active Standard Reserved Instance.}
+\item{ClientToken}{[required] Unique, case-sensitive identifier you provide to ensure idempotency of
+your listings. This helps avoid duplicate listings. For more
+information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring Idempotency}.}
 }
 \description{
 Creates a listing for Amazon EC2 Standard Reserved Instances to be sold in the Reserved Instance Marketplace. You can submit one Standard Reserved Instance listing at a time. To get a list of your Standard Reserved Instances, you can use the \code{\link[=ec2_describe_reserved_instances]{describe_reserved_instances}} operation.

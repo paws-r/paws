@@ -133,6 +133,7 @@ including how to download and install them, see \href{https://aws.amazon.com/dev
 \link[paws.security.identity:directoryservice_describe_client_authentication_settings]{describe_client_authentication_settings} \tab Retrieves information about the type of client authentication for the specified directory, if the type is specified\cr
 \link[paws.security.identity:directoryservice_describe_conditional_forwarders]{describe_conditional_forwarders} \tab Obtains information about the conditional forwarders for this account\cr
 \link[paws.security.identity:directoryservice_describe_directories]{describe_directories} \tab Obtains information about the directories that belong to this account\cr
+\link[paws.security.identity:directoryservice_describe_directory_data_access]{describe_directory_data_access} \tab Obtains status of directory data access enablement through the Directory Service Data API for the specified directory\cr
 \link[paws.security.identity:directoryservice_describe_domain_controllers]{describe_domain_controllers} \tab Provides information about any domain controllers in your directory\cr
 \link[paws.security.identity:directoryservice_describe_event_topics]{describe_event_topics} \tab Obtains information about which Amazon SNS topics receive status messages from the specified directory\cr
 \link[paws.security.identity:directoryservice_describe_ldaps_settings]{describe_ldaps_settings} \tab Describes the status of LDAP security for the specified directory\cr
@@ -143,10 +144,12 @@ including how to download and install them, see \href{https://aws.amazon.com/dev
 \link[paws.security.identity:directoryservice_describe_trusts]{describe_trusts} \tab Obtains information about the trust relationships for this account\cr
 \link[paws.security.identity:directoryservice_describe_update_directory]{describe_update_directory} \tab Describes the updates of a directory for a particular update type\cr
 \link[paws.security.identity:directoryservice_disable_client_authentication]{disable_client_authentication} \tab Disables alternative client authentication methods for the specified directory\cr
+\link[paws.security.identity:directoryservice_disable_directory_data_access]{disable_directory_data_access} \tab Deactivates access to directory data via the Directory Service Data API for the specified directory\cr
 \link[paws.security.identity:directoryservice_disable_ldaps]{disable_ldaps} \tab Deactivates LDAP secure calls for the specified directory\cr
 \link[paws.security.identity:directoryservice_disable_radius]{disable_radius} \tab Disables multi-factor authentication (MFA) with the Remote Authentication Dial In User Service (RADIUS) server for an AD Connector or Microsoft AD directory\cr
 \link[paws.security.identity:directoryservice_disable_sso]{disable_sso} \tab Disables single-sign on for a directory\cr
 \link[paws.security.identity:directoryservice_enable_client_authentication]{enable_client_authentication} \tab Enables alternative client authentication methods for the specified directory\cr
+\link[paws.security.identity:directoryservice_enable_directory_data_access]{enable_directory_data_access} \tab Enables access to directory data via the Directory Service Data API for the specified directory\cr
 \link[paws.security.identity:directoryservice_enable_ldaps]{enable_ldaps} \tab Activates the switch for the specific directory to always use LDAP secure calls\cr
 \link[paws.security.identity:directoryservice_enable_radius]{enable_radius} \tab Enables multi-factor authentication (MFA) with the Remote Authentication Dial In User Service (RADIUS) server for an AD Connector or Microsoft AD directory\cr
 \link[paws.security.identity:directoryservice_enable_sso]{enable_sso} \tab Enables single sign-on for a directory\cr

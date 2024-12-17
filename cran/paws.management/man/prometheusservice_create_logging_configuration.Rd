@@ -16,7 +16,7 @@ prometheusservice_create_logging_configuration(
 the request. Case-sensitive.}
 
 \item{logGroupArn}{[required] The ARN of the CloudWatch log group to which the vended log data will be
-published. This log group must exist prior to calling this API.}
+published. This log group must exist prior to calling this operation.}
 
 \item{workspaceId}{[required] The ID of the workspace to create the logging configuration for.}
 }

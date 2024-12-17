@@ -122,6 +122,7 @@ access on a selective basis using the IAM model.
 \link[paws.end.user.computing:workmail_create_alias]{create_alias} \tab Adds an alias to the set of a given member (user or group) of WorkMail\cr
 \link[paws.end.user.computing:workmail_create_availability_configuration]{create_availability_configuration} \tab Creates an AvailabilityConfiguration for the given WorkMail organization and domain\cr
 \link[paws.end.user.computing:workmail_create_group]{create_group} \tab Creates a group that can be used in WorkMail by calling the RegisterToWorkMail operation\cr
+\link[paws.end.user.computing:workmail_create_identity_center_application]{create_identity_center_application} \tab Creates the WorkMail application in IAM Identity Center that can be used later in the WorkMail - IdC integration\cr
 \link[paws.end.user.computing:workmail_create_impersonation_role]{create_impersonation_role} \tab Creates an impersonation role for the given WorkMail organization\cr
 \link[paws.end.user.computing:workmail_create_mobile_device_access_rule]{create_mobile_device_access_rule} \tab Creates a new mobile device access rule for the specified WorkMail organization\cr
 \link[paws.end.user.computing:workmail_create_organization]{create_organization} \tab Creates a new WorkMail organization\cr
@@ -132,11 +133,14 @@ access on a selective basis using the IAM model.
 \link[paws.end.user.computing:workmail_delete_availability_configuration]{delete_availability_configuration} \tab Deletes the AvailabilityConfiguration for the given WorkMail organization and domain\cr
 \link[paws.end.user.computing:workmail_delete_email_monitoring_configuration]{delete_email_monitoring_configuration} \tab Deletes the email monitoring configuration for a specified organization\cr
 \link[paws.end.user.computing:workmail_delete_group]{delete_group} \tab Deletes a group from WorkMail\cr
+\link[paws.end.user.computing:workmail_delete_identity_center_application]{delete_identity_center_application} \tab Deletes the IAM Identity Center application from WorkMail\cr
+\link[paws.end.user.computing:workmail_delete_identity_provider_configuration]{delete_identity_provider_configuration} \tab Disables the integration between IdC and WorkMail\cr
 \link[paws.end.user.computing:workmail_delete_impersonation_role]{delete_impersonation_role} \tab Deletes an impersonation role for the given WorkMail organization\cr
 \link[paws.end.user.computing:workmail_delete_mailbox_permissions]{delete_mailbox_permissions} \tab Deletes permissions granted to a member (user or group)\cr
 \link[paws.end.user.computing:workmail_delete_mobile_device_access_override]{delete_mobile_device_access_override} \tab Deletes the mobile device access override for the given WorkMail organization, user, and device\cr
 \link[paws.end.user.computing:workmail_delete_mobile_device_access_rule]{delete_mobile_device_access_rule} \tab Deletes a mobile device access rule for the specified WorkMail organization\cr
 \link[paws.end.user.computing:workmail_delete_organization]{delete_organization} \tab Deletes an WorkMail organization and all underlying AWS resources managed by WorkMail as part of the organization\cr
+\link[paws.end.user.computing:workmail_delete_personal_access_token]{delete_personal_access_token} \tab Deletes the Personal Access Token from the provided WorkMail Organization\cr
 \link[paws.end.user.computing:workmail_delete_resource]{delete_resource} \tab Deletes the specified resource\cr
 \link[paws.end.user.computing:workmail_delete_retention_policy]{delete_retention_policy} \tab Deletes the specified retention policy from the specified organization\cr
 \link[paws.end.user.computing:workmail_delete_user]{delete_user} \tab Deletes a user from WorkMail and all subsequent systems\cr
@@ -145,6 +149,7 @@ access on a selective basis using the IAM model.
 \link[paws.end.user.computing:workmail_describe_email_monitoring_configuration]{describe_email_monitoring_configuration} \tab Describes the current email monitoring configuration for a specified organization\cr
 \link[paws.end.user.computing:workmail_describe_entity]{describe_entity} \tab Returns basic details about an entity in WorkMail\cr
 \link[paws.end.user.computing:workmail_describe_group]{describe_group} \tab Returns the data available for the group\cr
+\link[paws.end.user.computing:workmail_describe_identity_provider_configuration]{describe_identity_provider_configuration} \tab Returns detailed information on the current IdC setup for the WorkMail organization\cr
 \link[paws.end.user.computing:workmail_describe_inbound_dmarc_settings]{describe_inbound_dmarc_settings} \tab Lists the settings in a DMARC policy for a specified organization\cr
 \link[paws.end.user.computing:workmail_describe_mailbox_export_job]{describe_mailbox_export_job} \tab Describes the current status of a mailbox export job\cr
 \link[paws.end.user.computing:workmail_describe_organization]{describe_organization} \tab Provides more information regarding a given organization based on its identifier\cr
@@ -160,6 +165,7 @@ access on a selective basis using the IAM model.
 \link[paws.end.user.computing:workmail_get_mail_domain]{get_mail_domain} \tab Gets details for a mail domain, including domain records required to configure your domain with recommended security\cr
 \link[paws.end.user.computing:workmail_get_mobile_device_access_effect]{get_mobile_device_access_effect} \tab Simulates the effect of the mobile device access rules for the given attributes of a sample access event\cr
 \link[paws.end.user.computing:workmail_get_mobile_device_access_override]{get_mobile_device_access_override} \tab Gets the mobile device access override for the given WorkMail organization, user, and device\cr
+\link[paws.end.user.computing:workmail_get_personal_access_token_metadata]{get_personal_access_token_metadata} \tab Requests details of a specific Personal Access Token within the WorkMail organization\cr
 \link[paws.end.user.computing:workmail_list_access_control_rules]{list_access_control_rules} \tab Lists the access control rules for the specified organization\cr
 \link[paws.end.user.computing:workmail_list_aliases]{list_aliases} \tab Creates a paginated call to list the aliases associated with a given entity\cr
 \link[paws.end.user.computing:workmail_list_availability_configurations]{list_availability_configurations} \tab List all the AvailabilityConfiguration's for the given WorkMail organization\cr
@@ -173,12 +179,14 @@ access on a selective basis using the IAM model.
 \link[paws.end.user.computing:workmail_list_mobile_device_access_overrides]{list_mobile_device_access_overrides} \tab Lists all the mobile device access overrides for any given combination of WorkMail organization, user, or device\cr
 \link[paws.end.user.computing:workmail_list_mobile_device_access_rules]{list_mobile_device_access_rules} \tab Lists the mobile device access rules for the specified WorkMail organization\cr
 \link[paws.end.user.computing:workmail_list_organizations]{list_organizations} \tab Returns summaries of the customer's organizations\cr
+\link[paws.end.user.computing:workmail_list_personal_access_tokens]{list_personal_access_tokens} \tab Returns a summary of your Personal Access Tokens\cr
 \link[paws.end.user.computing:workmail_list_resource_delegates]{list_resource_delegates} \tab Lists the delegates associated with a resource\cr
 \link[paws.end.user.computing:workmail_list_resources]{list_resources} \tab Returns summaries of the organization's resources\cr
 \link[paws.end.user.computing:workmail_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags applied to an WorkMail organization resource\cr
 \link[paws.end.user.computing:workmail_list_users]{list_users} \tab Returns summaries of the organization's users\cr
 \link[paws.end.user.computing:workmail_put_access_control_rule]{put_access_control_rule} \tab Adds a new access control rule for the specified organization\cr
 \link[paws.end.user.computing:workmail_put_email_monitoring_configuration]{put_email_monitoring_configuration} \tab Creates or updates the email monitoring configuration for a specified organization\cr
+\link[paws.end.user.computing:workmail_put_identity_provider_configuration]{put_identity_provider_configuration} \tab Enables integration between IAM Identity Center (IdC) and WorkMail to proxy authentication requests for mailbox users\cr
 \link[paws.end.user.computing:workmail_put_inbound_dmarc_settings]{put_inbound_dmarc_settings} \tab Enables or disables a DMARC policy for a given organization\cr
 \link[paws.end.user.computing:workmail_put_mailbox_permissions]{put_mailbox_permissions} \tab Sets permissions for a user, group, or resource\cr
 \link[paws.end.user.computing:workmail_put_mobile_device_access_override]{put_mobile_device_access_override} \tab Creates or updates a mobile device access override for the given WorkMail organization, user, and device\cr
@@ -192,7 +200,7 @@ access on a selective basis using the IAM model.
 \link[paws.end.user.computing:workmail_untag_resource]{untag_resource} \tab Untags the specified tags from the specified WorkMail organization resource\cr
 \link[paws.end.user.computing:workmail_update_availability_configuration]{update_availability_configuration} \tab Updates an existing AvailabilityConfiguration for the given WorkMail organization and domain\cr
 \link[paws.end.user.computing:workmail_update_default_mail_domain]{update_default_mail_domain} \tab Updates the default mail domain for an organization\cr
-\link[paws.end.user.computing:workmail_update_group]{update_group} \tab Updates attibutes in a group\cr
+\link[paws.end.user.computing:workmail_update_group]{update_group} \tab Updates attributes in a group\cr
 \link[paws.end.user.computing:workmail_update_impersonation_role]{update_impersonation_role} \tab Updates an impersonation role for the given WorkMail organization\cr
 \link[paws.end.user.computing:workmail_update_mailbox_quota]{update_mailbox_quota} \tab Updates a user's current mailbox quota for a specified organization and user\cr
 \link[paws.end.user.computing:workmail_update_mobile_device_access_rule]{update_mobile_device_access_rule} \tab Updates a mobile device access rule for the specified WorkMail organization\cr

@@ -2,17 +2,17 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_delete_group}
 \alias{cognitoidentityprovider_delete_group}
-\title{Deletes a group}
+\title{Deletes a group from the specified user pool}
 \usage{
 cognitoidentityprovider_delete_group(GroupName, UserPoolId)
 }
 \arguments{
-\item{GroupName}{[required] The name of the group.}
+\item{GroupName}{[required] The name of the group that you want to delete.}
 
-\item{UserPoolId}{[required] The user pool ID for the user pool.}
+\item{UserPoolId}{[required] The ID of the user pool where you want to delete the group.}
 }
 \description{
-Deletes a group.
+Deletes a group from the specified user pool. When you delete a group, that group no longer contributes to users' \code{cognito:preferred_group} or \code{cognito:groups} claims, and no longer influence access-control decision that are based on group membership. For more information about user pool groups, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-user-groups.html}{Adding groups to a user pool}.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_delete_group/} for full documentation.
 }

@@ -15,11 +15,12 @@ NULL
 #' @param video Video configuration. Default: video resolution 1280x720, bitrate 2500
 #' kbps, 30 fps.
 #' @param tags Tags attached to the resource. Array of maps, each of the form
-#' `string:string (key:value)`. See [Tagging AWS
-#' Resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html)
-#' for details, including restrictions that apply to tags and "Tag naming
-#' limits and requirements"; Amazon IVS has no constraints on tags beyond
-#' what is documented there.
+#' `string:string (key:value)`. See [Best practices and
+#' strategies](https://docs.aws.amazon.com/tag-editor/latest/userguide/best-practices-and-strats.html)
+#' in *Tagging AWS Resources and Tag Editor* for details, including
+#' restrictions that apply to tags and "Tag naming limits and
+#' requirements"; Amazon IVS has no constraints on tags beyond what is
+#' documented there.
 #'
 #' @return
 #' A list with the following syntax:
@@ -80,6 +81,106 @@ ivsrealtime_create_encoder_configuration <- function(name = NULL, video = NULL, 
   return(response)
 }
 .ivsrealtime$operations$create_encoder_configuration <- ivsrealtime_create_encoder_configuration
+
+#' Creates a new IngestConfiguration resource, used to specify the ingest
+#' protocol for a stage
+#'
+#' @description
+#' Creates a new IngestConfiguration resource, used to specify the ingest
+#' protocol for a stage.
+#'
+#' @usage
+#' ivsrealtime_create_ingest_configuration(name, stageArn, userId,
+#'   attributes, ingestProtocol, insecureIngest, tags)
+#'
+#' @param name Optional name that can be specified for the IngestConfiguration being
+#' created.
+#' @param stageArn ARN of the stage with which the IngestConfiguration is associated.
+#' @param userId Customer-assigned name to help identify the participant using the
+#' IngestConfiguration; this can be used to link a participant to a user in
+#' the customer’s own systems. This can be any UTF-8 encoded text. *This
+#' field is exposed to all stage participants and should not be used for
+#' personally identifying, confidential, or sensitive information.*
+#' @param attributes Application-provided attributes to store in the IngestConfiguration and
+#' attach to a stage. Map keys and values can contain UTF-8 encoded text.
+#' The maximum length of this field is 1 KB total. *This field is exposed
+#' to all stage participants and should not be used for personally
+#' identifying, confidential, or sensitive information.*
+#' @param ingestProtocol &#91;required&#93; Type of ingest protocol that the user employs to broadcast. If this is
+#' set to `RTMP`, `insecureIngest` must be set to `true`.
+#' @param insecureIngest Whether the stage allows insecure RTMP ingest. This must be set to
+#' `true`, if `ingestProtocol` is set to `RTMP`. Default: `false`.
+#' @param tags Tags attached to the resource. Array of maps, each of the form
+#' `string:string (key:value)`. See [Best practices and
+#' strategies](https://docs.aws.amazon.com/tag-editor/latest/userguide/best-practices-and-strats.html)
+#' in *Tagging AWS Resources and Tag Editor* for details, including
+#' restrictions that apply to tags and "Tag naming limits and
+#' requirements"; Amazon IVS has no constraints on tags beyond what is
+#' documented there.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ingestConfiguration = list(
+#'     name = "string",
+#'     arn = "string",
+#'     ingestProtocol = "RTMP"|"RTMPS",
+#'     streamKey = "string",
+#'     stageArn = "string",
+#'     participantId = "string",
+#'     state = "ACTIVE"|"INACTIVE",
+#'     userId = "string",
+#'     attributes = list(
+#'       "string"
+#'     ),
+#'     tags = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_ingest_configuration(
+#'   name = "string",
+#'   stageArn = "string",
+#'   userId = "string",
+#'   attributes = list(
+#'     "string"
+#'   ),
+#'   ingestProtocol = "RTMP"|"RTMPS",
+#'   insecureIngest = TRUE|FALSE,
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ivsrealtime_create_ingest_configuration
+#'
+#' @aliases ivsrealtime_create_ingest_configuration
+ivsrealtime_create_ingest_configuration <- function(name = NULL, stageArn = NULL, userId = NULL, attributes = NULL, ingestProtocol, insecureIngest = NULL, tags = NULL) {
+  op <- new_operation(
+    name = "CreateIngestConfiguration",
+    http_method = "POST",
+    http_path = "/CreateIngestConfiguration",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ivsrealtime$create_ingest_configuration_input(name = name, stageArn = stageArn, userId = userId, attributes = attributes, ingestProtocol = ingestProtocol, insecureIngest = insecureIngest, tags = tags)
+  output <- .ivsrealtime$create_ingest_configuration_output()
+  config <- get_config()
+  svc <- .ivsrealtime$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ivsrealtime$operations$create_ingest_configuration <- ivsrealtime_create_ingest_configuration
 
 #' Creates an additional token for a specified stage
 #'
@@ -184,11 +285,12 @@ ivsrealtime_create_participant_token <- function(stageArn, duration = NULL, user
 #' @param participantTokenConfigurations Array of participant token configuration objects to attach to the new
 #' stage.
 #' @param tags Tags attached to the resource. Array of maps, each of the form
-#' `string:string (key:value)`. See [Tagging AWS
-#' Resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html)
-#' for details, including restrictions that apply to tags and "Tag naming
-#' limits and requirements"; Amazon IVS has no constraints on tags beyond
-#' what is documented there.
+#' `string:string (key:value)`. See [Best practices and
+#' strategies](https://docs.aws.amazon.com/tag-editor/latest/userguide/best-practices-and-strats.html)
+#' in *Tagging AWS Resources and Tag Editor* for details, including
+#' restrictions that apply to tags and "Tag naming limits and
+#' requirements"; Amazon IVS has no constraints on tags beyond what is
+#' documented there.
 #' @param autoParticipantRecordingConfiguration Configuration object for individual participant recording, to attach to
 #' the new stage.
 #'
@@ -206,12 +308,21 @@ ivsrealtime_create_participant_token <- function(stageArn, duration = NULL, user
 #'     autoParticipantRecordingConfiguration = list(
 #'       storageConfigurationArn = "string",
 #'       mediaTypes = list(
-#'         "AUDIO_VIDEO"|"AUDIO_ONLY"
+#'         "AUDIO_VIDEO"|"AUDIO_ONLY"|"NONE"
+#'       ),
+#'       thumbnailConfiguration = list(
+#'         targetIntervalSeconds = 123,
+#'         storage = list(
+#'           "SEQUENTIAL"|"LATEST"
+#'         ),
+#'         recordingMode = "INTERVAL"|"DISABLED"
 #'       )
 #'     ),
 #'     endpoints = list(
 #'       events = "string",
-#'       whip = "string"
+#'       whip = "string",
+#'       rtmp = "string",
+#'       rtmps = "string"
 #'     )
 #'   ),
 #'   participantTokens = list(
@@ -256,7 +367,14 @@ ivsrealtime_create_participant_token <- function(stageArn, duration = NULL, user
 #'   autoParticipantRecordingConfiguration = list(
 #'     storageConfigurationArn = "string",
 #'     mediaTypes = list(
-#'       "AUDIO_VIDEO"|"AUDIO_ONLY"
+#'       "AUDIO_VIDEO"|"AUDIO_ONLY"|"NONE"
+#'     ),
+#'     thumbnailConfiguration = list(
+#'       targetIntervalSeconds = 123,
+#'       storage = list(
+#'         "SEQUENTIAL"|"LATEST"
+#'       ),
+#'       recordingMode = "INTERVAL"|"DISABLED"
 #'     )
 #'   )
 #' )
@@ -302,11 +420,12 @@ ivsrealtime_create_stage <- function(name = NULL, participantTokenConfigurations
 #' @param s3 &#91;required&#93; A complex type that contains a storage configuration for where recorded
 #' video will be stored.
 #' @param tags Tags attached to the resource. Array of maps, each of the form
-#' `string:string (key:value)`. See [Tagging AWS
-#' Resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html)
-#' for details, including restrictions that apply to tags and "Tag naming
-#' limits and requirements"; Amazon IVS has no constraints on tags beyond
-#' what is documented there.
+#' `string:string (key:value)`. See [Best practices and
+#' strategies](https://docs.aws.amazon.com/tag-editor/latest/userguide/best-practices-and-strats.html)
+#' in *Tagging AWS Resources and Tag Editor* for details, including
+#' restrictions that apply to tags and "Tag naming limits and
+#' requirements"; Amazon IVS has no constraints on tags beyond what is
+#' documented there.
 #'
 #' @return
 #' A list with the following syntax:
@@ -407,6 +526,58 @@ ivsrealtime_delete_encoder_configuration <- function(arn) {
 }
 .ivsrealtime$operations$delete_encoder_configuration <- ivsrealtime_delete_encoder_configuration
 
+#' Deletes a specified IngestConfiguration, so it can no longer be used to
+#' broadcast
+#'
+#' @description
+#' Deletes a specified IngestConfiguration, so it can no longer be used to
+#' broadcast. An IngestConfiguration cannot be deleted if the publisher is
+#' actively streaming to a stage, unless `force` is set to `true`.
+#'
+#' @usage
+#' ivsrealtime_delete_ingest_configuration(arn, force)
+#'
+#' @param arn &#91;required&#93; ARN of the IngestConfiguration.
+#' @param force Optional field to force deletion of the IngestConfiguration. If this is
+#' set to `true` when a participant is actively publishing, the participant
+#' is disconnected from the stage, followed by deletion of the
+#' IngestConfiguration. Default: `false`.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_ingest_configuration(
+#'   arn = "string",
+#'   force = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ivsrealtime_delete_ingest_configuration
+#'
+#' @aliases ivsrealtime_delete_ingest_configuration
+ivsrealtime_delete_ingest_configuration <- function(arn, force = NULL) {
+  op <- new_operation(
+    name = "DeleteIngestConfiguration",
+    http_method = "POST",
+    http_path = "/DeleteIngestConfiguration",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ivsrealtime$delete_ingest_configuration_input(arn = arn, force = force)
+  output <- .ivsrealtime$delete_ingest_configuration_output()
+  config <- get_config()
+  svc <- .ivsrealtime$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ivsrealtime$operations$delete_ingest_configuration <- ivsrealtime_delete_ingest_configuration
+
 #' Deletes the specified public key used to sign stage participant tokens
 #'
 #' @description
@@ -458,7 +629,9 @@ ivsrealtime_delete_public_key <- function(arn) {
 #'
 #' @description
 #' Shuts down and deletes the specified stage (disconnecting all
-#' participants).
+#' participants). This operation also removes the `stageArn` from the
+#' associated IngestConfiguration, if there are participants using the
+#' IngestConfiguration to publish to the stage.
 #'
 #' @usage
 #' ivsrealtime_delete_stage(arn)
@@ -549,20 +722,24 @@ ivsrealtime_delete_storage_configuration <- function(arn) {
 }
 .ivsrealtime$operations$delete_storage_configuration <- ivsrealtime_delete_storage_configuration
 
-#' Disconnects a specified participant and revokes the participant
-#' permanently from a specified stage
+#' Disconnects a specified participant from a specified stage
 #'
 #' @description
-#' Disconnects a specified participant and revokes the participant
-#' permanently from a specified stage.
+#' Disconnects a specified participant from a specified stage. If the
+#' participant is publishing using an IngestConfiguration,
+#' DisconnectParticipant also updates the `stageArn` in the
+#' IngestConfiguration to be an empty string.
 #'
 #' @usage
 #' ivsrealtime_disconnect_participant(stageArn, participantId, reason)
 #'
 #' @param stageArn &#91;required&#93; ARN of the stage to which the participant is attached.
-#' @param participantId &#91;required&#93; Identifier of the participant to be disconnected. This is assigned by
-#' IVS and returned by
-#' [`create_participant_token`][ivsrealtime_create_participant_token].
+#' @param participantId &#91;required&#93; Identifier of the participant to be disconnected. IVS assigns this; it
+#' is returned by
+#' [`create_participant_token`][ivsrealtime_create_participant_token] (for
+#' streams using WebRTC ingest) or
+#' [`create_ingest_configuration`][ivsrealtime_create_ingest_configuration]
+#' (for streams using RTMP ingest).
 #' @param reason Description of why this participant is being disconnected.
 #'
 #' @return
@@ -663,6 +840,14 @@ ivsrealtime_disconnect_participant <- function(stageArn, participantId, reason =
 #'             ),
 #'             recordingConfiguration = list(
 #'               format = "HLS"
+#'             ),
+#'             thumbnailConfigurations = list(
+#'               list(
+#'                 targetIntervalSeconds = 123,
+#'                 storage = list(
+#'                   "SEQUENTIAL"|"LATEST"
+#'                 )
+#'               )
 #'             )
 #'           )
 #'         ),
@@ -778,6 +963,70 @@ ivsrealtime_get_encoder_configuration <- function(arn) {
 }
 .ivsrealtime$operations$get_encoder_configuration <- ivsrealtime_get_encoder_configuration
 
+#' Gets information about the specified IngestConfiguration
+#'
+#' @description
+#' Gets information about the specified IngestConfiguration.
+#'
+#' @usage
+#' ivsrealtime_get_ingest_configuration(arn)
+#'
+#' @param arn &#91;required&#93; ARN of the ingest for which the information is to be retrieved.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ingestConfiguration = list(
+#'     name = "string",
+#'     arn = "string",
+#'     ingestProtocol = "RTMP"|"RTMPS",
+#'     streamKey = "string",
+#'     stageArn = "string",
+#'     participantId = "string",
+#'     state = "ACTIVE"|"INACTIVE",
+#'     userId = "string",
+#'     attributes = list(
+#'       "string"
+#'     ),
+#'     tags = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_ingest_configuration(
+#'   arn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ivsrealtime_get_ingest_configuration
+#'
+#' @aliases ivsrealtime_get_ingest_configuration
+ivsrealtime_get_ingest_configuration <- function(arn) {
+  op <- new_operation(
+    name = "GetIngestConfiguration",
+    http_method = "POST",
+    http_path = "/GetIngestConfiguration",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ivsrealtime$get_ingest_configuration_input(arn = arn)
+  output <- .ivsrealtime$get_ingest_configuration_output()
+  config <- get_config()
+  svc <- .ivsrealtime$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ivsrealtime$operations$get_ingest_configuration <- ivsrealtime_get_ingest_configuration
+
 #' Gets information about the specified participant token
 #'
 #' @description
@@ -815,7 +1064,8 @@ ivsrealtime_get_encoder_configuration <- function(arn) {
 #'     sdkVersion = "string",
 #'     recordingS3BucketName = "string",
 #'     recordingS3Prefix = "string",
-#'     recordingState = "STARTING"|"ACTIVE"|"STOPPING"|"STOPPED"|"FAILED"|"DISABLED"
+#'     recordingState = "STARTING"|"ACTIVE"|"STOPPING"|"STOPPED"|"FAILED"|"DISABLED",
+#'     protocol = "UNKNOWN"|"WHIP"|"RTMP"|"RTMPS"
 #'   )
 #' )
 #' ```
@@ -934,12 +1184,21 @@ ivsrealtime_get_public_key <- function(arn) {
 #'     autoParticipantRecordingConfiguration = list(
 #'       storageConfigurationArn = "string",
 #'       mediaTypes = list(
-#'         "AUDIO_VIDEO"|"AUDIO_ONLY"
+#'         "AUDIO_VIDEO"|"AUDIO_ONLY"|"NONE"
+#'       ),
+#'       thumbnailConfiguration = list(
+#'         targetIntervalSeconds = 123,
+#'         storage = list(
+#'           "SEQUENTIAL"|"LATEST"
+#'         ),
+#'         recordingMode = "INTERVAL"|"DISABLED"
 #'       )
 #'     ),
 #'     endpoints = list(
 #'       events = "string",
-#'       whip = "string"
+#'       whip = "string",
+#'       rtmp = "string",
+#'       rtmps = "string"
 #'     )
 #'   )
 #' )
@@ -1104,11 +1363,12 @@ ivsrealtime_get_storage_configuration <- function(arn) {
 #' @param publicKeyMaterial &#91;required&#93; The content of the public key to be imported.
 #' @param name Name of the public key to be imported.
 #' @param tags Tags attached to the resource. Array of maps, each of the form
-#' `string:string (key:value)`. See [Tagging AWS
-#' Resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html)
-#' for details, including restrictions that apply to tags and "Tag naming
-#' limits and requirements"; Amazon IVS has no constraints on tags beyond
-#' what is documented there.
+#' `string:string (key:value)`. See [Best practices and
+#' strategies](https://docs.aws.amazon.com/tag-editor/latest/userguide/best-practices-and-strats.html)
+#' in *Tagging AWS Resources and Tag Editor* for details, including
+#' restrictions that apply to tags and "Tag naming limits and
+#' requirements"; Amazon IVS has no constraints on tags beyond what is
+#' documented there.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1236,7 +1496,7 @@ ivsrealtime_list_compositions <- function(filterByStageArn = NULL, filterByEncod
     http_method = "POST",
     http_path = "/ListCompositions",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .ivsrealtime$list_compositions_input(filterByStageArn = filterByStageArn, filterByEncoderConfigurationArn = filterByEncoderConfigurationArn, nextToken = nextToken, maxResults = maxResults)
@@ -1299,7 +1559,7 @@ ivsrealtime_list_encoder_configurations <- function(nextToken = NULL, maxResults
     http_method = "POST",
     http_path = "/ListEncoderConfigurations",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .ivsrealtime$list_encoder_configurations_input(nextToken = nextToken, maxResults = maxResults)
@@ -1311,6 +1571,78 @@ ivsrealtime_list_encoder_configurations <- function(nextToken = NULL, maxResults
   return(response)
 }
 .ivsrealtime$operations$list_encoder_configurations <- ivsrealtime_list_encoder_configurations
+
+#' Lists all IngestConfigurations in your account, in the AWS region where
+#' the API request is processed
+#'
+#' @description
+#' Lists all IngestConfigurations in your account, in the AWS region where
+#' the API request is processed.
+#'
+#' @usage
+#' ivsrealtime_list_ingest_configurations(filterByStageArn, filterByState,
+#'   nextToken, maxResults)
+#'
+#' @param filterByStageArn Filters the response list to match the specified stage ARN. Only one
+#' filter (by stage ARN or by state) can be used at a time.
+#' @param filterByState Filters the response list to match the specified state. Only one filter
+#' (by stage ARN or by state) can be used at a time.
+#' @param nextToken The first IngestConfiguration to retrieve. This is used for pagination;
+#' see the `nextToken` response field.
+#' @param maxResults Maximum number of results to return. Default: 50.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ingestConfigurations = list(
+#'     list(
+#'       name = "string",
+#'       arn = "string",
+#'       ingestProtocol = "RTMP"|"RTMPS",
+#'       stageArn = "string",
+#'       participantId = "string",
+#'       state = "ACTIVE"|"INACTIVE",
+#'       userId = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_ingest_configurations(
+#'   filterByStageArn = "string",
+#'   filterByState = "ACTIVE"|"INACTIVE",
+#'   nextToken = "string",
+#'   maxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ivsrealtime_list_ingest_configurations
+#'
+#' @aliases ivsrealtime_list_ingest_configurations
+ivsrealtime_list_ingest_configurations <- function(filterByStageArn = NULL, filterByState = NULL, nextToken = NULL, maxResults = NULL) {
+  op <- new_operation(
+    name = "ListIngestConfigurations",
+    http_method = "POST",
+    http_path = "/ListIngestConfigurations",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "ingestConfigurations"),
+    stream_api = FALSE
+  )
+  input <- .ivsrealtime$list_ingest_configurations_input(filterByStageArn = filterByStageArn, filterByState = filterByState, nextToken = nextToken, maxResults = maxResults)
+  output <- .ivsrealtime$list_ingest_configurations_output()
+  config <- get_config()
+  svc <- .ivsrealtime$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ivsrealtime$operations$list_ingest_configurations <- ivsrealtime_list_ingest_configurations
 
 #' Lists events for a specified participant that occurred during a
 #' specified stage session
@@ -1344,7 +1676,7 @@ ivsrealtime_list_encoder_configurations <- function(nextToken = NULL, maxResults
 #'         "2015-01-01"
 #'       ),
 #'       remoteParticipantId = "string",
-#'       errorCode = "INSUFFICIENT_CAPABILITIES"|"QUOTA_EXCEEDED"|"PUBLISHER_NOT_FOUND"
+#'       errorCode = "INSUFFICIENT_CAPABILITIES"|"QUOTA_EXCEEDED"|"PUBLISHER_NOT_FOUND"|"BITRATE_EXCEEDED"|"RESOLUTION_EXCEEDED"|"STREAM_DURATION_EXCEEDED"|"INVALID_AUDIO_CODEC"|"INVALID_VIDEO_CODEC"|"INVALID_PROTOCOL"|"INVALID_STREAM_KEY"|"REUSE_OF_STREAM_KEY"|"B_FRAME_PRESENT"|"INVALID_INPUT"|"INTERNAL_SERVER_EXCEPTION"
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -1373,7 +1705,7 @@ ivsrealtime_list_participant_events <- function(stageArn, sessionId, participant
     http_method = "POST",
     http_path = "/ListParticipantEvents",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .ivsrealtime$list_participant_events_input(stageArn = stageArn, sessionId = sessionId, participantId = participantId, nextToken = nextToken, maxResults = maxResults)
@@ -1464,7 +1796,7 @@ ivsrealtime_list_participants <- function(stageArn, sessionId, filterByUserId = 
     http_method = "POST",
     http_path = "/ListParticipants",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .ivsrealtime$list_participants_input(stageArn = stageArn, sessionId = sessionId, filterByUserId = filterByUserId, filterByPublished = filterByPublished, filterByState = filterByState, nextToken = nextToken, maxResults = maxResults, filterByRecordingState = filterByRecordingState)
@@ -1592,7 +1924,7 @@ ivsrealtime_list_stage_sessions <- function(stageArn, nextToken = NULL, maxResul
     http_method = "POST",
     http_path = "/ListStageSessions",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .ivsrealtime$list_stage_sessions_input(stageArn = stageArn, nextToken = nextToken, maxResults = maxResults)
@@ -1656,7 +1988,7 @@ ivsrealtime_list_stages <- function(nextToken = NULL, maxResults = NULL) {
     http_method = "POST",
     http_path = "/ListStages",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .ivsrealtime$list_stages_input(nextToken = nextToken, maxResults = maxResults)
@@ -1723,7 +2055,7 @@ ivsrealtime_list_storage_configurations <- function(nextToken = NULL, maxResults
     http_method = "POST",
     http_path = "/ListStorageConfigurations",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .ivsrealtime$list_storage_configurations_input(nextToken = nextToken, maxResults = maxResults)
@@ -1794,7 +2126,7 @@ ivsrealtime_list_tags_for_resource <- function(resourceArn) {
 #' Starts a Composition from a stage based on the configuration provided in
 #' the request.
 #' 
-#' A Composition is an ephemeral resource that exists after this endpoint
+#' A Composition is an ephemeral resource that exists after this operation
 #' returns successfully. Composition stops and the resource is deleted:
 #' 
 #' -   When [`stop_composition`][ivsrealtime_stop_composition] is called.
@@ -1820,11 +2152,12 @@ ivsrealtime_list_tags_for_resource <- function(resourceArn) {
 #' @param layout Layout object to configure composition parameters.
 #' @param destinations &#91;required&#93; Array of destination configuration.
 #' @param tags Tags attached to the resource. Array of maps, each of the form
-#' `string:string (key:value)`. See [Tagging AWS
-#' Resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html)
-#' for details, including restrictions that apply to tags and "Tag naming
-#' limits and requirements"; Amazon IVS has no constraints on tags beyond
-#' what is documented there.
+#' `string:string (key:value)`. See [Best practices and
+#' strategies](https://docs.aws.amazon.com/tag-editor/latest/userguide/best-practices-and-strats.html)
+#' in *Tagging AWS Resources and Tag Editor* for details, including
+#' restrictions that apply to tags and "Tag naming limits and
+#' requirements"; Amazon IVS has no constraints on tags beyond what is
+#' documented there.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1878,6 +2211,14 @@ ivsrealtime_list_tags_for_resource <- function(resourceArn) {
 #'             ),
 #'             recordingConfiguration = list(
 #'               format = "HLS"
+#'             ),
+#'             thumbnailConfigurations = list(
+#'               list(
+#'                 targetIntervalSeconds = 123,
+#'                 storage = list(
+#'                   "SEQUENTIAL"|"LATEST"
+#'                 )
+#'               )
 #'             )
 #'           )
 #'         ),
@@ -1941,6 +2282,14 @@ ivsrealtime_list_tags_for_resource <- function(resourceArn) {
 #'         ),
 #'         recordingConfiguration = list(
 #'           format = "HLS"
+#'         ),
+#'         thumbnailConfigurations = list(
+#'           list(
+#'             targetIntervalSeconds = 123,
+#'             storage = list(
+#'               "SEQUENTIAL"|"LATEST"
+#'             )
+#'           )
 #'         )
 #'       )
 #'     )
@@ -2030,10 +2379,11 @@ ivsrealtime_stop_composition <- function(arn) {
 #'
 #' @param resourceArn &#91;required&#93; The ARN of the resource to be tagged. The ARN must be URL-encoded.
 #' @param tags &#91;required&#93; Array of tags to be added or updated. Array of maps, each of the form
-#' `string:string (key:value)`. See [Tagging AWS
-#' Resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html)
-#' for details, including restrictions that apply to tags and "Tag naming
-#' limits and requirements"; Amazon IVS has no constraints beyond what is
+#' `string:string (key:value)`. See [Best practices and
+#' strategies](https://docs.aws.amazon.com/tag-editor/latest/userguide/best-practices-and-strats.html)
+#' in *Tagging AWS Resources and Tag Editor* for details, including
+#' restrictions that apply to tags and "Tag naming limits and
+#' requirements"; Amazon IVS has no constraints on tags beyond what is
 #' documented there.
 #'
 #' @return
@@ -2083,10 +2433,11 @@ ivsrealtime_tag_resource <- function(resourceArn, tags) {
 #'
 #' @param resourceArn &#91;required&#93; The ARN of the resource to be untagged. The ARN must be URL-encoded.
 #' @param tagKeys &#91;required&#93; Array of tags to be removed. Array of maps, each of the form
-#' `string:string (key:value)`. See [Tagging AWS
-#' Resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html)
-#' for details, including restrictions that apply to tags and "Tag naming
-#' limits and requirements"; Amazon IVS has no constraints beyond what is
+#' `string:string (key:value)`. See [Best practices and
+#' strategies](https://docs.aws.amazon.com/tag-editor/latest/userguide/best-practices-and-strats.html)
+#' in *Tagging AWS Resources and Tag Editor* for details, including
+#' restrictions that apply to tags and "Tag naming limits and
+#' requirements"; Amazon IVS has no constraints on tags beyond what is
 #' documented there.
 #'
 #' @return
@@ -2126,6 +2477,75 @@ ivsrealtime_untag_resource <- function(resourceArn, tagKeys) {
 }
 .ivsrealtime$operations$untag_resource <- ivsrealtime_untag_resource
 
+#' Updates a specified IngestConfiguration
+#'
+#' @description
+#' Updates a specified IngestConfiguration. Only the stage ARN attached to
+#' the IngestConfiguration can be updated. An IngestConfiguration that is
+#' active cannot be updated.
+#'
+#' @usage
+#' ivsrealtime_update_ingest_configuration(arn, stageArn)
+#'
+#' @param arn &#91;required&#93; ARN of the IngestConfiguration, for which the related stage ARN needs to
+#' be updated.
+#' @param stageArn Stage ARN that needs to be updated.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ingestConfiguration = list(
+#'     name = "string",
+#'     arn = "string",
+#'     ingestProtocol = "RTMP"|"RTMPS",
+#'     streamKey = "string",
+#'     stageArn = "string",
+#'     participantId = "string",
+#'     state = "ACTIVE"|"INACTIVE",
+#'     userId = "string",
+#'     attributes = list(
+#'       "string"
+#'     ),
+#'     tags = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_ingest_configuration(
+#'   arn = "string",
+#'   stageArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ivsrealtime_update_ingest_configuration
+#'
+#' @aliases ivsrealtime_update_ingest_configuration
+ivsrealtime_update_ingest_configuration <- function(arn, stageArn = NULL) {
+  op <- new_operation(
+    name = "UpdateIngestConfiguration",
+    http_method = "POST",
+    http_path = "/UpdateIngestConfiguration",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ivsrealtime$update_ingest_configuration_input(arn = arn, stageArn = stageArn)
+  output <- .ivsrealtime$update_ingest_configuration_output()
+  config <- get_config()
+  svc <- .ivsrealtime$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ivsrealtime$operations$update_ingest_configuration <- ivsrealtime_update_ingest_configuration
+
 #' Updates a stage’s configuration
 #'
 #' @description
@@ -2154,12 +2574,21 @@ ivsrealtime_untag_resource <- function(resourceArn, tagKeys) {
 #'     autoParticipantRecordingConfiguration = list(
 #'       storageConfigurationArn = "string",
 #'       mediaTypes = list(
-#'         "AUDIO_VIDEO"|"AUDIO_ONLY"
+#'         "AUDIO_VIDEO"|"AUDIO_ONLY"|"NONE"
+#'       ),
+#'       thumbnailConfiguration = list(
+#'         targetIntervalSeconds = 123,
+#'         storage = list(
+#'           "SEQUENTIAL"|"LATEST"
+#'         ),
+#'         recordingMode = "INTERVAL"|"DISABLED"
 #'       )
 #'     ),
 #'     endpoints = list(
 #'       events = "string",
-#'       whip = "string"
+#'       whip = "string",
+#'       rtmp = "string",
+#'       rtmps = "string"
 #'     )
 #'   )
 #' )
@@ -2173,7 +2602,14 @@ ivsrealtime_untag_resource <- function(resourceArn, tagKeys) {
 #'   autoParticipantRecordingConfiguration = list(
 #'     storageConfigurationArn = "string",
 #'     mediaTypes = list(
-#'       "AUDIO_VIDEO"|"AUDIO_ONLY"
+#'       "AUDIO_VIDEO"|"AUDIO_ONLY"|"NONE"
+#'     ),
+#'     thumbnailConfiguration = list(
+#'       targetIntervalSeconds = 123,
+#'       storage = list(
+#'         "SEQUENTIAL"|"LATEST"
+#'       ),
+#'       recordingMode = "INTERVAL"|"DISABLED"
 #'     )
 #'   )
 #' )

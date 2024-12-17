@@ -2,7 +2,7 @@
 % Please edit documentation in R/securitylake_operations.R
 \name{securitylake_list_log_sources}
 \alias{securitylake_list_log_sources}
-\title{Retrieves the log sources in the current Amazon Web Services Region}
+\title{Retrieves the log sources}
 \usage{
 securitylake_list_log_sources(
   accounts = NULL,
@@ -26,7 +26,7 @@ repeat the call using the returned token to retrieve the next page.}
 \item{sources}{The list of sources for which log sources are displayed.}
 }
 \description{
-Retrieves the log sources in the current Amazon Web Services Region.
+Retrieves the log sources.
 
 See \url{https://www.paws-r-sdk.com/docs/securitylake_list_log_sources/} for full documentation.
 }

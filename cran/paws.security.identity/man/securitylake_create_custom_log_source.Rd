@@ -13,7 +13,7 @@ securitylake_create_custom_log_source(
 )
 }
 \arguments{
-\item{configuration}{[required] The configuration for the third-party custom source.}
+\item{configuration}{[required] The configuration used for the third-party custom source.}
 
 \item{eventClasses}{The Open Cybersecurity Schema Framework (OCSF) event classes which
 describes the type of data that the custom source will send to Security
@@ -51,7 +51,12 @@ Lake. The supported event classes are:
 }}
 
 \item{sourceName}{[required] Specify the name for a third-party custom source. This must be a
-Regionally unique value.}
+Regionally unique value. The \code{sourceName} you enter here, is used in the
+\code{LogProviderRole} name which follows the convention
+\verb{AmazonSecurityLake-Provider-\{name of the custom source\}-\{region\}}. You
+must use a \code{CustomLogSource} name that is shorter than or equal to 20
+characters. This ensures that the \code{LogProviderRole} name is below the 64
+character limit.}
 
 \item{sourceVersion}{Specify the source version for the third-party custom source, to limit
 log collection to a specific version of custom data source.}

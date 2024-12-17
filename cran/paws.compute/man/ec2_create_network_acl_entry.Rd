@@ -6,42 +6,31 @@
 number}
 \usage{
 ec2_create_network_acl_entry(
-  CidrBlock = NULL,
   DryRun = NULL,
-  Egress,
-  IcmpTypeCode = NULL,
-  Ipv6CidrBlock = NULL,
   NetworkAclId,
-  PortRange = NULL,
+  RuleNumber,
   Protocol,
   RuleAction,
-  RuleNumber
+  Egress,
+  CidrBlock = NULL,
+  Ipv6CidrBlock = NULL,
+  IcmpTypeCode = NULL,
+  PortRange = NULL
 )
 }
 \arguments{
-\item{CidrBlock}{The IPv4 network range to allow or deny, in CIDR notation (for example
-\verb{172.16.0.0/24}). We modify the specified CIDR block to its canonical
-form; for example, if you specify \verb{100.68.0.18/18}, we modify it to
-\verb{100.68.0.0/18}.}
-
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
-\item{Egress}{[required] Indicates whether this is an egress rule (rule is applied to traffic
-leaving the subnet).}
-
-\item{IcmpTypeCode}{ICMP protocol: The ICMP or ICMPv6 type and code. Required if specifying
-protocol 1 (ICMP) or protocol 58 (ICMPv6) with an IPv6 CIDR block.}
-
-\item{Ipv6CidrBlock}{The IPv6 network range to allow or deny, in CIDR notation (for example
-\verb{2001:db8:1234:1a00::/64}).}
-
 \item{NetworkAclId}{[required] The ID of the network ACL.}
 
-\item{PortRange}{TCP or UDP protocols: The range of ports the rule applies to. Required
-if specifying protocol 6 (TCP) or 17 (UDP).}
+\item{RuleNumber}{[required] The rule number for the entry (for example, 100). ACL entries are
+processed in ascending order by rule number.
+
+Constraints: Positive integer from 1 to 32766. The range 32767 to 65535
+is reserved for internal use.}
 
 \item{Protocol}{[required] The protocol number. A value of "-1" means all protocols. If you specify
 "-1" or a protocol number other than "6" (TCP), "17" (UDP), or "1"
@@ -54,11 +43,22 @@ type and code.}
 
 \item{RuleAction}{[required] Indicates whether to allow or deny the traffic that matches the rule.}
 
-\item{RuleNumber}{[required] The rule number for the entry (for example, 100). ACL entries are
-processed in ascending order by rule number.
+\item{Egress}{[required] Indicates whether this is an egress rule (rule is applied to traffic
+leaving the subnet).}
 
-Constraints: Positive integer from 1 to 32766. The range 32767 to 65535
-is reserved for internal use.}
+\item{CidrBlock}{The IPv4 network range to allow or deny, in CIDR notation (for example
+\verb{172.16.0.0/24}). We modify the specified CIDR block to its canonical
+form; for example, if you specify \verb{100.68.0.18/18}, we modify it to
+\verb{100.68.0.0/18}.}
+
+\item{Ipv6CidrBlock}{The IPv6 network range to allow or deny, in CIDR notation (for example
+\verb{2001:db8:1234:1a00::/64}).}
+
+\item{IcmpTypeCode}{ICMP protocol: The ICMP or ICMPv6 type and code. Required if specifying
+protocol 1 (ICMP) or protocol 58 (ICMPv6) with an IPv6 CIDR block.}
+
+\item{PortRange}{TCP or UDP protocols: The range of ports the rule applies to. Required
+if specifying protocol 6 (TCP) or 17 (UDP).}
 }
 \description{
 Creates an entry (a rule) in a network ACL with the specified rule number. Each network ACL has a set of numbered ingress rules and a separate set of numbered egress rules. When determining whether a packet should be allowed in or out of a subnet associated with the ACL, we process the entries in the ACL according to the rule numbers, in ascending order. Each network ACL has a set of ingress rules and a separate set of egress rules.

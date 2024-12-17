@@ -8,8 +8,8 @@ resource group}
 resourcegroups_get_group_configuration(Group = NULL)
 }
 \arguments{
-\item{Group}{The name or the ARN of the resource group for which you want to retrive
-the service configuration.}
+\item{Group}{The name or the Amazon resource name (ARN) of the resource group for
+which you want to retrive the service configuration.}
 }
 \description{
 Retrieves the service configuration associated with the specified resource group. For details about the service configuration syntax, see \href{https://docs.aws.amazon.com/ARG/latest/userguide/about-slg.html}{Service configurations for Resource Groups}.

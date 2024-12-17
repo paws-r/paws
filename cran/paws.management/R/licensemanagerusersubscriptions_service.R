@@ -93,15 +93,21 @@ NULL
 #' @section Operations:
 #' \tabular{ll}{
 #'  \link[=licensemanagerusersubscriptions_associate_user]{associate_user} \tab Associates the user to an EC2 instance to utilize user-based subscriptions\cr
-#'  \link[=licensemanagerusersubscriptions_deregister_identity_provider]{deregister_identity_provider} \tab Deregisters the identity provider from providing user-based subscriptions\cr
+#'  \link[=licensemanagerusersubscriptions_create_license_server_endpoint]{create_license_server_endpoint} \tab Creates a network endpoint for the Remote Desktop Services (RDS) license server\cr
+#'  \link[=licensemanagerusersubscriptions_delete_license_server_endpoint]{delete_license_server_endpoint} \tab Deletes a LicenseServerEndpoint resource\cr
+#'  \link[=licensemanagerusersubscriptions_deregister_identity_provider]{deregister_identity_provider} \tab Deregisters the Active Directory identity provider from License Manager user-based subscriptions\cr
 #'  \link[=licensemanagerusersubscriptions_disassociate_user]{disassociate_user} \tab Disassociates the user from an EC2 instance providing user-based subscriptions\cr
-#'  \link[=licensemanagerusersubscriptions_list_identity_providers]{list_identity_providers} \tab Lists the identity providers for user-based subscriptions\cr
+#'  \link[=licensemanagerusersubscriptions_list_identity_providers]{list_identity_providers} \tab Lists the Active Directory identity providers for user-based subscriptions\cr
 #'  \link[=licensemanagerusersubscriptions_list_instances]{list_instances} \tab Lists the EC2 instances providing user-based subscriptions\cr
+#'  \link[=licensemanagerusersubscriptions_list_license_server_endpoints]{list_license_server_endpoints} \tab List the Remote Desktop Services (RDS) License Server endpoints\cr
 #'  \link[=licensemanagerusersubscriptions_list_product_subscriptions]{list_product_subscriptions} \tab Lists the user-based subscription products available from an identity provider\cr
+#'  \link[=licensemanagerusersubscriptions_list_tags_for_resource]{list_tags_for_resource} \tab Returns the list of tags for the specified resource\cr
 #'  \link[=licensemanagerusersubscriptions_list_user_associations]{list_user_associations} \tab Lists user associations for an identity provider\cr
 #'  \link[=licensemanagerusersubscriptions_register_identity_provider]{register_identity_provider} \tab Registers an identity provider for user-based subscriptions\cr
 #'  \link[=licensemanagerusersubscriptions_start_product_subscription]{start_product_subscription} \tab Starts a product subscription for a user with the specified identity provider\cr
 #'  \link[=licensemanagerusersubscriptions_stop_product_subscription]{stop_product_subscription} \tab Stops a product subscription for a user with the specified identity provider\cr
+#'  \link[=licensemanagerusersubscriptions_tag_resource]{tag_resource} \tab Adds tags to a resource\cr
+#'  \link[=licensemanagerusersubscriptions_untag_resource]{untag_resource} \tab Removes tags from a resource\cr
 #'  \link[=licensemanagerusersubscriptions_update_identity_provider_settings]{update_identity_provider_settings} \tab Updates additional product configuration settings for the registered identity provider
 #' }
 #'
@@ -134,7 +140,7 @@ licensemanagerusersubscriptions <- function(config = list(), credentials = list(
 
 .licensemanagerusersubscriptions$metadata <- list(
   service_name = "licensemanagerusersubscriptions",
-  endpoints = list("*" = list(endpoint = "license-manager-user-subscriptions.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "license-manager-user-subscriptions.{region}.amazonaws.com.cn", global = FALSE), "eu-isoe-*" = list(endpoint = "license-manager-user-subscriptions.{region}.cloud.adc-e.uk", global = FALSE), "us-iso-*" = list(endpoint = "license-manager-user-subscriptions.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "license-manager-user-subscriptions.{region}.sc2s.sgov.gov", global = FALSE), "us-isof-*" = list(endpoint = "license-manager-user-subscriptions.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "license-manager-user-subscriptions.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "license-manager-user-subscriptions.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "license-manager-user-subscriptions.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "license-manager-user-subscriptions.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "license-manager-user-subscriptions.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "license-manager-user-subscriptions.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "license-manager-user-subscriptions.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "License Manager User Subscriptions",
   api_version = "2018-05-10",
   signing_name = "license-manager-user-subscriptions",

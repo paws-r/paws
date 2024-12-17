@@ -2,7 +2,7 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_admin_delete_user_attributes}
 \alias{cognitoidentityprovider_admin_delete_user_attributes}
-\title{Deletes the user attributes in a user pool as an administrator}
+\title{Deletes attribute values from a user}
 \usage{
 cognitoidentityprovider_admin_delete_user_attributes(
   UserPoolId,
@@ -11,8 +11,7 @@ cognitoidentityprovider_admin_delete_user_attributes(
 )
 }
 \arguments{
-\item{UserPoolId}{[required] The user pool ID for the user pool where you want to delete user
-attributes.}
+\item{UserPoolId}{[required] The ID of the user pool where you want to delete user attributes.}
 
 \item{Username}{[required] The username of the user that you want to query or modify. The value of
 this parameter is typically your user's username, but it can be any of
@@ -27,7 +26,7 @@ For custom attributes, you must prepend the \verb{custom:} prefix to the
 attribute name.}
 }
 \description{
-Deletes the user attributes in a user pool as an administrator. Works on any user.
+Deletes attribute values from a user. This operation doesn't affect tokens for existing user sessions. The next ID token that the user receives will no longer have this attribute.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_admin_delete_user_attributes/} for full documentation.
 }

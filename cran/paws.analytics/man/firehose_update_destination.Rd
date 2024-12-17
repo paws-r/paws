@@ -2,7 +2,7 @@
 % Please edit documentation in R/firehose_operations.R
 \name{firehose_update_destination}
 \alias{firehose_update_destination}
-\title{Updates the specified destination of the specified delivery stream}
+\title{Updates the specified destination of the specified Firehose stream}
 \usage{
 firehose_update_destination(
   DeliveryStreamName,
@@ -21,7 +21,7 @@ firehose_update_destination(
 )
 }
 \arguments{
-\item{DeliveryStreamName}{[required] The name of the delivery stream.}
+\item{DeliveryStreamName}{[required] The name of the Firehose stream.}
 
 \item{CurrentDeliveryStreamVersionId}{[required] Obtain this value from the \code{VersionId} result of
 DeliveryStreamDescription. This value is required, and helps the service
@@ -52,12 +52,10 @@ Amazon OpenSearch Service.}
 
 \item{SnowflakeDestinationUpdate}{Update to the Snowflake destination configuration settings.}
 
-\item{IcebergDestinationUpdate}{Describes an update for a destination in Apache Iceberg Tables.
-
-Amazon Data Firehose is in preview release and is subject to change.}
+\item{IcebergDestinationUpdate}{Describes an update for a destination in Apache Iceberg Tables.}
 }
 \description{
-Updates the specified destination of the specified delivery stream.
+Updates the specified destination of the specified Firehose stream.
 
 See \url{https://www.paws-r-sdk.com/docs/firehose_update_destination/} for full documentation.
 }

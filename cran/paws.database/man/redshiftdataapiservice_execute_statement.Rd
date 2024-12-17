@@ -11,6 +11,7 @@ redshiftdataapiservice_execute_statement(
   Database = NULL,
   DbUser = NULL,
   Parameters = NULL,
+  ResultFormat = NULL,
   SecretArn = NULL,
   SessionId = NULL,
   SessionKeepAliveSeconds = NULL,
@@ -36,6 +37,9 @@ cluster as a database user and authenticating using temporary
 credentials.}
 
 \item{Parameters}{The parameters for the SQL statement.}
+
+\item{ResultFormat}{The data format of the result of the SQL statement. If no format is
+specified, the default is JSON.}
 
 \item{SecretArn}{The name or ARN of the secret that enables access to the database. This
 parameter is required when authenticating using Secrets Manager.}

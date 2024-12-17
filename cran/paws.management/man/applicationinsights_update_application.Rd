@@ -9,6 +9,7 @@ applicationinsights_update_application(
   OpsCenterEnabled = NULL,
   CWEMonitorEnabled = NULL,
   OpsItemSNSTopicArn = NULL,
+  SNSNotificationArn = NULL,
   RemoveSNSTopic = NULL,
   AutoConfigEnabled = NULL,
   AttachMissingPermission = NULL
@@ -27,6 +28,9 @@ for the application resources, such as \verb{instance terminated},
 \item{OpsItemSNSTopicArn}{The SNS topic provided to Application Insights that is associated to the
 created opsItem. Allows you to receive notifications for updates to the
 opsItem.}
+
+\item{SNSNotificationArn}{The SNS topic ARN. Allows you to receive SNS notifications for updates
+and issues with an application.}
 
 \item{RemoveSNSTopic}{Disassociates the SNS topic from the opsItem created for detected
 problems.}

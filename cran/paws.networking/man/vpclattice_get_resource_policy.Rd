@@ -2,7 +2,7 @@
 % Please edit documentation in R/vpclattice_operations.R
 \name{vpclattice_get_resource_policy}
 \alias{vpclattice_get_resource_policy}
-\title{Retrieves information about the resource policy}
+\title{Retrieves information about the specified resource policy}
 \usage{
 vpclattice_get_resource_policy(resourceArn)
 }
@@ -10,7 +10,7 @@ vpclattice_get_resource_policy(resourceArn)
 \item{resourceArn}{[required] The Amazon Resource Name (ARN) of the service network or service.}
 }
 \description{
-Retrieves information about the resource policy. The resource policy is an IAM policy created on behalf of the resource owner when they share a resource.
+Retrieves information about the specified resource policy. The resource policy is an IAM policy created on behalf of the resource owner when they share a resource.
 
 See \url{https://www.paws-r-sdk.com/docs/vpclattice_get_resource_policy/} for full documentation.
 }

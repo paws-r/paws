@@ -9,7 +9,7 @@ vpclattice_delete_service_network_vpc_association(
 )
 }
 \arguments{
-\item{serviceNetworkVpcAssociationIdentifier}{[required] The ID or Amazon Resource Name (ARN) of the association.}
+\item{serviceNetworkVpcAssociationIdentifier}{[required] The ID or ARN of the association.}
 }
 \description{
 Disassociates the VPC from the service network. You can't disassociate the VPC if there is a create or update association in progress.

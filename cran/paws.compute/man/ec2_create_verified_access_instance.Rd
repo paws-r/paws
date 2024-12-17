@@ -11,7 +11,8 @@ ec2_create_verified_access_instance(
   TagSpecifications = NULL,
   ClientToken = NULL,
   DryRun = NULL,
-  FIPSEnabled = NULL
+  FIPSEnabled = NULL,
+  CidrEndpointsCustomSubDomain = NULL
 )
 }
 \arguments{
@@ -29,6 +30,8 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{FIPSEnabled}{Enable or disable support for Federal Information Processing Standards
 (FIPS) on the instance.}
+
+\item{CidrEndpointsCustomSubDomain}{The custom subdomain.}
 }
 \description{
 An Amazon Web Services Verified Access instance is a regional entity that evaluates application requests and grants access only when your security requirements are met.

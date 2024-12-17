@@ -4,12 +4,17 @@
 \alias{ec2_describe_bundle_tasks}
 \title{Describes the specified bundle tasks or all of your bundle tasks}
 \usage{
-ec2_describe_bundle_tasks(BundleIds = NULL, Filters = NULL, DryRun = NULL)
+ec2_describe_bundle_tasks(BundleIds = NULL, DryRun = NULL, Filters = NULL)
 }
 \arguments{
 \item{BundleIds}{The bundle task IDs.
 
 Default: Describes all your bundle tasks.}
+
+\item{DryRun}{Checks whether you have the required permissions for the action, without
+actually making the request, and provides an error response. If you have
+the required permissions, the error response is \code{DryRunOperation}.
+Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{Filters}{The filters.
 \itemize{
@@ -27,11 +32,6 @@ example, 20\%).
 | \code{bundling} | \code{storing} | \code{cancelling} | \code{complete} | \code{failed}).
 \item \code{update-time} - The time of the most recent update for the task.
 }}
-
-\item{DryRun}{Checks whether you have the required permissions for the action, without
-actually making the request, and provides an error response. If you have
-the required permissions, the error response is \code{DryRunOperation}.
-Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
 Describes the specified bundle tasks or all of your bundle tasks.

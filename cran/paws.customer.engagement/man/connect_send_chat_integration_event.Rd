@@ -20,13 +20,14 @@ chat customer participant.}
 
 \item{DestinationId}{[required] Chat system identifier, used in part to uniquely identify chat. This is
 associated with the Amazon Connect instance and flow to be used to start
-chats. For SMS, this is the phone number destination of inbound SMS
-messages represented by an Amazon Pinpoint phone number ARN.}
+chats. For Server Migration Service, this is the phone number
+destination of inbound Server Migration Service messages represented by
+an Amazon Web Services End User Messaging phone number ARN.}
 
 \item{Subtype}{Classification of a channel. This is used in part to uniquely identify
 chat.
 
-Valid value: \verb{["connect:sms"]}}
+Valid value: \verb{["connect:sms", connect:"WhatsApp"]}}
 
 \item{Event}{[required] Chat integration event payload}
 

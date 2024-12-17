@@ -45,7 +45,9 @@ NULL
 #' svc$add_lf_tags_to_resource(
 #'   CatalogId = "string",
 #'   Resource = list(
-#'     Catalog = list(),
+#'     Catalog = list(
+#'       Id = "string"
+#'     ),
 #'     Database = list(
 #'       CatalogId = "string",
 #'       Name = "string"
@@ -96,7 +98,12 @@ NULL
 #'             "string"
 #'           )
 #'         )
-#'       )
+#'       ),
+#'       ExpressionName = "string"
+#'     ),
+#'     LFTagExpression = list(
+#'       CatalogId = "string",
+#'       Name = "string"
 #'     )
 #'   ),
 #'   LFTags = list(
@@ -246,7 +253,9 @@ lakeformation_assume_decorated_role_with_saml <- function(SAMLAssertion, RoleArn
 #'           DataLakePrincipalIdentifier = "string"
 #'         ),
 #'         Resource = list(
-#'           Catalog = list(),
+#'           Catalog = list(
+#'             Id = "string"
+#'           ),
 #'           Database = list(
 #'             CatalogId = "string",
 #'             Name = "string"
@@ -297,14 +306,19 @@ lakeformation_assume_decorated_role_with_saml <- function(SAMLAssertion, RoleArn
 #'                   "string"
 #'                 )
 #'               )
-#'             )
+#'             ),
+#'             ExpressionName = "string"
+#'           ),
+#'           LFTagExpression = list(
+#'             CatalogId = "string",
+#'             Name = "string"
 #'           )
 #'         ),
 #'         Permissions = list(
-#'           "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_LF_TAG"|"ASSOCIATE"|"GRANT_WITH_LF_TAG_EXPRESSION"
+#'           "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_LF_TAG"|"ASSOCIATE"|"GRANT_WITH_LF_TAG_EXPRESSION"|"CREATE_LF_TAG_EXPRESSION"|"CREATE_CATALOG"|"SUPER_USER"
 #'         ),
 #'         PermissionsWithGrantOption = list(
-#'           "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_LF_TAG"|"ASSOCIATE"|"GRANT_WITH_LF_TAG_EXPRESSION"
+#'           "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_LF_TAG"|"ASSOCIATE"|"GRANT_WITH_LF_TAG_EXPRESSION"|"CREATE_LF_TAG_EXPRESSION"|"CREATE_CATALOG"|"SUPER_USER"
 #'         )
 #'       ),
 #'       Error = list(
@@ -327,7 +341,9 @@ lakeformation_assume_decorated_role_with_saml <- function(SAMLAssertion, RoleArn
 #'         DataLakePrincipalIdentifier = "string"
 #'       ),
 #'       Resource = list(
-#'         Catalog = list(),
+#'         Catalog = list(
+#'           Id = "string"
+#'         ),
 #'         Database = list(
 #'           CatalogId = "string",
 #'           Name = "string"
@@ -378,14 +394,19 @@ lakeformation_assume_decorated_role_with_saml <- function(SAMLAssertion, RoleArn
 #'                 "string"
 #'               )
 #'             )
-#'           )
+#'           ),
+#'           ExpressionName = "string"
+#'         ),
+#'         LFTagExpression = list(
+#'           CatalogId = "string",
+#'           Name = "string"
 #'         )
 #'       ),
 #'       Permissions = list(
-#'         "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_LF_TAG"|"ASSOCIATE"|"GRANT_WITH_LF_TAG_EXPRESSION"
+#'         "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_LF_TAG"|"ASSOCIATE"|"GRANT_WITH_LF_TAG_EXPRESSION"|"CREATE_LF_TAG_EXPRESSION"|"CREATE_CATALOG"|"SUPER_USER"
 #'       ),
 #'       PermissionsWithGrantOption = list(
-#'         "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_LF_TAG"|"ASSOCIATE"|"GRANT_WITH_LF_TAG_EXPRESSION"
+#'         "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_LF_TAG"|"ASSOCIATE"|"GRANT_WITH_LF_TAG_EXPRESSION"|"CREATE_LF_TAG_EXPRESSION"|"CREATE_CATALOG"|"SUPER_USER"
 #'       )
 #'     )
 #'   )
@@ -443,7 +464,9 @@ lakeformation_batch_grant_permissions <- function(CatalogId = NULL, Entries) {
 #'           DataLakePrincipalIdentifier = "string"
 #'         ),
 #'         Resource = list(
-#'           Catalog = list(),
+#'           Catalog = list(
+#'             Id = "string"
+#'           ),
 #'           Database = list(
 #'             CatalogId = "string",
 #'             Name = "string"
@@ -494,14 +517,19 @@ lakeformation_batch_grant_permissions <- function(CatalogId = NULL, Entries) {
 #'                   "string"
 #'                 )
 #'               )
-#'             )
+#'             ),
+#'             ExpressionName = "string"
+#'           ),
+#'           LFTagExpression = list(
+#'             CatalogId = "string",
+#'             Name = "string"
 #'           )
 #'         ),
 #'         Permissions = list(
-#'           "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_LF_TAG"|"ASSOCIATE"|"GRANT_WITH_LF_TAG_EXPRESSION"
+#'           "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_LF_TAG"|"ASSOCIATE"|"GRANT_WITH_LF_TAG_EXPRESSION"|"CREATE_LF_TAG_EXPRESSION"|"CREATE_CATALOG"|"SUPER_USER"
 #'         ),
 #'         PermissionsWithGrantOption = list(
-#'           "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_LF_TAG"|"ASSOCIATE"|"GRANT_WITH_LF_TAG_EXPRESSION"
+#'           "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_LF_TAG"|"ASSOCIATE"|"GRANT_WITH_LF_TAG_EXPRESSION"|"CREATE_LF_TAG_EXPRESSION"|"CREATE_CATALOG"|"SUPER_USER"
 #'         )
 #'       ),
 #'       Error = list(
@@ -524,7 +552,9 @@ lakeformation_batch_grant_permissions <- function(CatalogId = NULL, Entries) {
 #'         DataLakePrincipalIdentifier = "string"
 #'       ),
 #'       Resource = list(
-#'         Catalog = list(),
+#'         Catalog = list(
+#'           Id = "string"
+#'         ),
 #'         Database = list(
 #'           CatalogId = "string",
 #'           Name = "string"
@@ -575,14 +605,19 @@ lakeformation_batch_grant_permissions <- function(CatalogId = NULL, Entries) {
 #'                 "string"
 #'               )
 #'             )
-#'           )
+#'           ),
+#'           ExpressionName = "string"
+#'         ),
+#'         LFTagExpression = list(
+#'           CatalogId = "string",
+#'           Name = "string"
 #'         )
 #'       ),
 #'       Permissions = list(
-#'         "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_LF_TAG"|"ASSOCIATE"|"GRANT_WITH_LF_TAG_EXPRESSION"
+#'         "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_LF_TAG"|"ASSOCIATE"|"GRANT_WITH_LF_TAG_EXPRESSION"|"CREATE_LF_TAG_EXPRESSION"|"CREATE_CATALOG"|"SUPER_USER"
 #'       ),
 #'       PermissionsWithGrantOption = list(
-#'         "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_LF_TAG"|"ASSOCIATE"|"GRANT_WITH_LF_TAG_EXPRESSION"
+#'         "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_LF_TAG"|"ASSOCIATE"|"GRANT_WITH_LF_TAG_EXPRESSION"|"CREATE_LF_TAG_EXPRESSION"|"CREATE_CATALOG"|"SUPER_USER"
 #'       )
 #'     )
 #'   )
@@ -827,6 +862,77 @@ lakeformation_create_lf_tag <- function(CatalogId = NULL, TagKey, TagValues) {
 }
 .lakeformation$operations$create_lf_tag <- lakeformation_create_lf_tag
 
+#' Creates a new LF-Tag expression with the provided name, description,
+#' catalog ID, and expression body
+#'
+#' @description
+#' Creates a new LF-Tag expression with the provided name, description,
+#' catalog ID, and expression body. This call fails if a LF-Tag expression
+#' with the same name already exists in the caller’s account or if the
+#' underlying LF-Tags don't exist. To call this API operation, caller needs
+#' the following Lake Formation permissions:
+#' 
+#' `CREATE_LF_TAG_EXPRESSION` on the root catalog resource.
+#' 
+#' `GRANT_WITH_LF_TAG_EXPRESSION` on all underlying LF-Tag key:value pairs
+#' included in the expression.
+#'
+#' @usage
+#' lakeformation_create_lf_tag_expression(Name, Description, CatalogId,
+#'   Expression)
+#'
+#' @param Name &#91;required&#93; A name for the expression.
+#' @param Description A description with information about the LF-Tag expression.
+#' @param CatalogId The identifier for the Data Catalog. By default, the account ID. The
+#' Data Catalog is the persistent metadata store. It contains database
+#' definitions, table definitions, and other control information to manage
+#' your Lake Formation environment.
+#' @param Expression &#91;required&#93; A list of LF-Tag conditions (key-value pairs).
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_lf_tag_expression(
+#'   Name = "string",
+#'   Description = "string",
+#'   CatalogId = "string",
+#'   Expression = list(
+#'     list(
+#'       TagKey = "string",
+#'       TagValues = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lakeformation_create_lf_tag_expression
+#'
+#' @aliases lakeformation_create_lf_tag_expression
+lakeformation_create_lf_tag_expression <- function(Name, Description = NULL, CatalogId = NULL, Expression) {
+  op <- new_operation(
+    name = "CreateLFTagExpression",
+    http_method = "POST",
+    http_path = "/CreateLFTagExpression",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .lakeformation$create_lf_tag_expression_input(Name = Name, Description = Description, CatalogId = CatalogId, Expression = Expression)
+  output <- .lakeformation$create_lf_tag_expression_output()
+  config <- get_config()
+  svc <- .lakeformation$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lakeformation$operations$create_lf_tag_expression <- lakeformation_create_lf_tag_expression
+
 #' Creates an IAM Identity Center connection with Lake Formation to allow
 #' IAM Identity Center users and groups to access Data Catalog resources
 #'
@@ -932,7 +1038,9 @@ lakeformation_create_lake_formation_identity_center_configuration <- function(Ca
 #'     DataLakePrincipalIdentifier = "string"
 #'   ),
 #'   Resource = list(
-#'     Catalog = list(),
+#'     Catalog = list(
+#'       Id = "string"
+#'     ),
 #'     Database = list(
 #'       CatalogId = "string",
 #'       Name = "string"
@@ -983,7 +1091,12 @@ lakeformation_create_lake_formation_identity_center_configuration <- function(Ca
 #'             "string"
 #'           )
 #'         )
-#'       )
+#'       ),
+#'       ExpressionName = "string"
+#'     ),
+#'     LFTagExpression = list(
+#'       CatalogId = "string",
+#'       Name = "string"
 #'     )
 #'   )
 #' )
@@ -1118,6 +1231,56 @@ lakeformation_delete_lf_tag <- function(CatalogId = NULL, TagKey) {
 }
 .lakeformation$operations$delete_lf_tag <- lakeformation_delete_lf_tag
 
+#' Deletes the LF-Tag expression
+#'
+#' @description
+#' Deletes the LF-Tag expression. The caller must be a data lake admin or
+#' have `DROP` permissions on the LF-Tag expression. Deleting a LF-Tag
+#' expression will also delete all `LFTagPolicy` permissions referencing
+#' the LF-Tag expression.
+#'
+#' @usage
+#' lakeformation_delete_lf_tag_expression(Name, CatalogId)
+#'
+#' @param Name &#91;required&#93; The name for the LF-Tag expression.
+#' @param CatalogId The identifier for the Data Catalog. By default, the account ID in which
+#' the LF-Tag expression is saved.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_lf_tag_expression(
+#'   Name = "string",
+#'   CatalogId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lakeformation_delete_lf_tag_expression
+#'
+#' @aliases lakeformation_delete_lf_tag_expression
+lakeformation_delete_lf_tag_expression <- function(Name, CatalogId = NULL) {
+  op <- new_operation(
+    name = "DeleteLFTagExpression",
+    http_method = "POST",
+    http_path = "/DeleteLFTagExpression",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .lakeformation$delete_lf_tag_expression_input(Name = Name, CatalogId = CatalogId)
+  output <- .lakeformation$delete_lf_tag_expression_output()
+  config <- get_config()
+  svc <- .lakeformation$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lakeformation$operations$delete_lf_tag_expression <- lakeformation_delete_lf_tag_expression
+
 #' Deletes an IAM Identity Center connection with Lake Formation
 #'
 #' @description
@@ -1189,7 +1352,9 @@ lakeformation_delete_lake_formation_identity_center_configuration <- function(Ca
 #'     DataLakePrincipalIdentifier = "string"
 #'   ),
 #'   Resource = list(
-#'     Catalog = list(),
+#'     Catalog = list(
+#'       Id = "string"
+#'     ),
 #'     Database = list(
 #'       CatalogId = "string",
 #'       Name = "string"
@@ -1240,7 +1405,12 @@ lakeformation_delete_lake_formation_identity_center_configuration <- function(Ca
 #'             "string"
 #'           )
 #'         )
-#'       )
+#'       ),
+#'       ExpressionName = "string"
+#'     ),
+#'     LFTagExpression = list(
+#'       CatalogId = "string",
+#'       Name = "string"
 #'     )
 #'   )
 #' )
@@ -1780,7 +1950,7 @@ lakeformation_get_data_lake_principal <- function() {
 #'           DataLakePrincipalIdentifier = "string"
 #'         ),
 #'         Permissions = list(
-#'           "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_LF_TAG"|"ASSOCIATE"|"GRANT_WITH_LF_TAG_EXPRESSION"
+#'           "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_LF_TAG"|"ASSOCIATE"|"GRANT_WITH_LF_TAG_EXPRESSION"|"CREATE_LF_TAG_EXPRESSION"|"CREATE_CATALOG"|"SUPER_USER"
 #'         )
 #'       )
 #'     ),
@@ -1790,7 +1960,7 @@ lakeformation_get_data_lake_principal <- function() {
 #'           DataLakePrincipalIdentifier = "string"
 #'         ),
 #'         Permissions = list(
-#'           "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_LF_TAG"|"ASSOCIATE"|"GRANT_WITH_LF_TAG_EXPRESSION"
+#'           "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_LF_TAG"|"ASSOCIATE"|"GRANT_WITH_LF_TAG_EXPRESSION"|"CREATE_LF_TAG_EXPRESSION"|"CREATE_CATALOG"|"SUPER_USER"
 #'         )
 #'       )
 #'     ),
@@ -1878,7 +2048,9 @@ lakeformation_get_data_lake_settings <- function(CatalogId = NULL) {
 #'         DataLakePrincipalIdentifier = "string"
 #'       ),
 #'       Resource = list(
-#'         Catalog = list(),
+#'         Catalog = list(
+#'           Id = "string"
+#'         ),
 #'         Database = list(
 #'           CatalogId = "string",
 #'           Name = "string"
@@ -1929,14 +2101,22 @@ lakeformation_get_data_lake_settings <- function(CatalogId = NULL) {
 #'                 "string"
 #'               )
 #'             )
-#'           )
+#'           ),
+#'           ExpressionName = "string"
+#'         ),
+#'         LFTagExpression = list(
+#'           CatalogId = "string",
+#'           Name = "string"
 #'         )
 #'       ),
+#'       Condition = list(
+#'         Expression = "string"
+#'       ),
 #'       Permissions = list(
-#'         "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_LF_TAG"|"ASSOCIATE"|"GRANT_WITH_LF_TAG_EXPRESSION"
+#'         "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_LF_TAG"|"ASSOCIATE"|"GRANT_WITH_LF_TAG_EXPRESSION"|"CREATE_LF_TAG_EXPRESSION"|"CREATE_CATALOG"|"SUPER_USER"
 #'       ),
 #'       PermissionsWithGrantOption = list(
-#'         "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_LF_TAG"|"ASSOCIATE"|"GRANT_WITH_LF_TAG_EXPRESSION"
+#'         "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_LF_TAG"|"ASSOCIATE"|"GRANT_WITH_LF_TAG_EXPRESSION"|"CREATE_LF_TAG_EXPRESSION"|"CREATE_CATALOG"|"SUPER_USER"
 #'       ),
 #'       AdditionalDetails = list(
 #'         ResourceShare = list(
@@ -1974,7 +2154,7 @@ lakeformation_get_effective_permissions_for_path <- function(CatalogId = NULL, R
     http_method = "POST",
     http_path = "/GetEffectivePermissionsForPath",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .lakeformation$get_effective_permissions_for_path_input(CatalogId = CatalogId, ResourceArn = ResourceArn, NextToken = NextToken, MaxResults = MaxResults)
@@ -2044,6 +2224,69 @@ lakeformation_get_lf_tag <- function(CatalogId = NULL, TagKey) {
   return(response)
 }
 .lakeformation$operations$get_lf_tag <- lakeformation_get_lf_tag
+
+#' Returns the details about the LF-Tag expression
+#'
+#' @description
+#' Returns the details about the LF-Tag expression. The caller must be a
+#' data lake admin or must have `DESCRIBE` permission on the LF-Tag
+#' expression resource.
+#'
+#' @usage
+#' lakeformation_get_lf_tag_expression(Name, CatalogId)
+#'
+#' @param Name &#91;required&#93; The name for the LF-Tag expression
+#' @param CatalogId The identifier for the Data Catalog. By default, the account ID.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Name = "string",
+#'   Description = "string",
+#'   CatalogId = "string",
+#'   Expression = list(
+#'     list(
+#'       TagKey = "string",
+#'       TagValues = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_lf_tag_expression(
+#'   Name = "string",
+#'   CatalogId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lakeformation_get_lf_tag_expression
+#'
+#' @aliases lakeformation_get_lf_tag_expression
+lakeformation_get_lf_tag_expression <- function(Name, CatalogId = NULL) {
+  op <- new_operation(
+    name = "GetLFTagExpression",
+    http_method = "POST",
+    http_path = "/GetLFTagExpression",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .lakeformation$get_lf_tag_expression_input(Name = Name, CatalogId = CatalogId)
+  output <- .lakeformation$get_lf_tag_expression_output()
+  config <- get_config()
+  svc <- .lakeformation$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lakeformation$operations$get_lf_tag_expression <- lakeformation_get_lf_tag_expression
 
 #' Returns the state of a query previously submitted
 #'
@@ -2222,7 +2465,9 @@ lakeformation_get_query_statistics <- function(QueryId) {
 #' svc$get_resource_lf_tags(
 #'   CatalogId = "string",
 #'   Resource = list(
-#'     Catalog = list(),
+#'     Catalog = list(
+#'       Id = "string"
+#'     ),
 #'     Database = list(
 #'       CatalogId = "string",
 #'       Name = "string"
@@ -2273,7 +2518,12 @@ lakeformation_get_query_statistics <- function(QueryId) {
 #'             "string"
 #'           )
 #'         )
-#'       )
+#'       ),
+#'       ExpressionName = "string"
+#'     ),
+#'     LFTagExpression = list(
+#'       CatalogId = "string",
+#'       Name = "string"
 #'     )
 #'   ),
 #'   ShowAssignedLFTags = TRUE|FALSE
@@ -2390,7 +2640,7 @@ lakeformation_get_table_objects <- function(CatalogId = NULL, DatabaseName, Tabl
     http_method = "POST",
     http_path = "/GetTableObjects",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .lakeformation$get_table_objects_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, TransactionId = TransactionId, QueryAsOfTime = QueryAsOfTime, PartitionPredicate = PartitionPredicate, MaxResults = MaxResults, NextToken = NextToken)
@@ -2452,7 +2702,7 @@ lakeformation_get_table_objects <- function(CatalogId = NULL, DatabaseName, Tabl
 #'     )
 #'   ),
 #'   Permissions = list(
-#'     "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_LF_TAG"|"ASSOCIATE"|"GRANT_WITH_LF_TAG_EXPRESSION"
+#'     "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_LF_TAG"|"ASSOCIATE"|"GRANT_WITH_LF_TAG_EXPRESSION"|"CREATE_LF_TAG_EXPRESSION"|"CREATE_CATALOG"|"SUPER_USER"
 #'   ),
 #'   DurationSeconds = 123,
 #'   AuditContext = list(
@@ -2497,6 +2747,9 @@ lakeformation_get_temporary_glue_partition_credentials <- function(TableArn, Par
 #' assumes the role associated with a registered location, for example an
 #' Amazon S3 bucket, with a scope down policy which restricts the access to
 #' a single prefix.
+#' 
+#' To call this API, the role that the service assumes must have
+#' `lakeformation:GetDataAccess` permission on the resource.
 #'
 #' @usage
 #' lakeformation_get_temporary_glue_table_credentials(TableArn,
@@ -2539,7 +2792,7 @@ lakeformation_get_temporary_glue_partition_credentials <- function(TableArn, Par
 #' svc$get_temporary_glue_table_credentials(
 #'   TableArn = "string",
 #'   Permissions = list(
-#'     "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_LF_TAG"|"ASSOCIATE"|"GRANT_WITH_LF_TAG_EXPRESSION"
+#'     "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_LF_TAG"|"ASSOCIATE"|"GRANT_WITH_LF_TAG_EXPRESSION"|"CREATE_LF_TAG_EXPRESSION"|"CREATE_CATALOG"|"SUPER_USER"
 #'   ),
 #'   DurationSeconds = 123,
 #'   AuditContext = list(
@@ -2759,7 +3012,9 @@ lakeformation_get_work_units <- function(NextToken = NULL, PageSize = NULL, Quer
 #'     DataLakePrincipalIdentifier = "string"
 #'   ),
 #'   Resource = list(
-#'     Catalog = list(),
+#'     Catalog = list(
+#'       Id = "string"
+#'     ),
 #'     Database = list(
 #'       CatalogId = "string",
 #'       Name = "string"
@@ -2810,14 +3065,19 @@ lakeformation_get_work_units <- function(NextToken = NULL, PageSize = NULL, Quer
 #'             "string"
 #'           )
 #'         )
-#'       )
+#'       ),
+#'       ExpressionName = "string"
+#'     ),
+#'     LFTagExpression = list(
+#'       CatalogId = "string",
+#'       Name = "string"
 #'     )
 #'   ),
 #'   Permissions = list(
-#'     "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_LF_TAG"|"ASSOCIATE"|"GRANT_WITH_LF_TAG_EXPRESSION"
+#'     "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_LF_TAG"|"ASSOCIATE"|"GRANT_WITH_LF_TAG_EXPRESSION"|"CREATE_LF_TAG_EXPRESSION"|"CREATE_CATALOG"|"SUPER_USER"
 #'   ),
 #'   PermissionsWithGrantOption = list(
-#'     "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_LF_TAG"|"ASSOCIATE"|"GRANT_WITH_LF_TAG_EXPRESSION"
+#'     "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_LF_TAG"|"ASSOCIATE"|"GRANT_WITH_LF_TAG_EXPRESSION"|"CREATE_LF_TAG_EXPRESSION"|"CREATE_CATALOG"|"SUPER_USER"
 #'   )
 #' )
 #' ```
@@ -2925,6 +3185,79 @@ lakeformation_list_data_cells_filter <- function(Table = NULL, NextToken = NULL,
 }
 .lakeformation$operations$list_data_cells_filter <- lakeformation_list_data_cells_filter
 
+#' Returns the LF-Tag expressions in caller’s account filtered based on
+#' caller's permissions
+#'
+#' @description
+#' Returns the LF-Tag expressions in caller’s account filtered based on
+#' caller's permissions. Data Lake and read only admins implicitly can see
+#' all tag expressions in their account, else caller needs DESCRIBE
+#' permissions on tag expression.
+#'
+#' @usage
+#' lakeformation_list_lf_tag_expressions(CatalogId, MaxResults, NextToken)
+#'
+#' @param CatalogId The identifier for the Data Catalog. By default, the account ID.
+#' @param MaxResults The maximum number of results to return.
+#' @param NextToken A continuation token, if this is not the first call to retrieve this
+#' list.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LFTagExpressions = list(
+#'     list(
+#'       Name = "string",
+#'       Description = "string",
+#'       CatalogId = "string",
+#'       Expression = list(
+#'         list(
+#'           TagKey = "string",
+#'           TagValues = list(
+#'             "string"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_lf_tag_expressions(
+#'   CatalogId = "string",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lakeformation_list_lf_tag_expressions
+#'
+#' @aliases lakeformation_list_lf_tag_expressions
+lakeformation_list_lf_tag_expressions <- function(CatalogId = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListLFTagExpressions",
+    http_method = "POST",
+    http_path = "/ListLFTagExpressions",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "LFTagExpressions"),
+    stream_api = FALSE
+  )
+  input <- .lakeformation$list_lf_tag_expressions_input(CatalogId = CatalogId, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .lakeformation$list_lf_tag_expressions_output()
+  config <- get_config()
+  svc <- .lakeformation$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lakeformation$operations$list_lf_tag_expressions <- lakeformation_list_lf_tag_expressions
+
 #' Lists LF-tags that the requester has permission to view
 #'
 #' @description
@@ -3022,7 +3355,9 @@ lakeformation_list_lf_tags <- function(CatalogId = NULL, ResourceShareType = NUL
 #'   LakeFormationOptInsInfoList = list(
 #'     list(
 #'       Resource = list(
-#'         Catalog = list(),
+#'         Catalog = list(
+#'           Id = "string"
+#'         ),
 #'         Database = list(
 #'           CatalogId = "string",
 #'           Name = "string"
@@ -3073,11 +3408,19 @@ lakeformation_list_lf_tags <- function(CatalogId = NULL, ResourceShareType = NUL
 #'                 "string"
 #'               )
 #'             )
-#'           )
+#'           ),
+#'           ExpressionName = "string"
+#'         ),
+#'         LFTagExpression = list(
+#'           CatalogId = "string",
+#'           Name = "string"
 #'         )
 #'       ),
 #'       Principal = list(
 #'         DataLakePrincipalIdentifier = "string"
+#'       ),
+#'       Condition = list(
+#'         Expression = "string"
 #'       ),
 #'       LastModified = as.POSIXct(
 #'         "2015-01-01"
@@ -3096,7 +3439,9 @@ lakeformation_list_lf_tags <- function(CatalogId = NULL, ResourceShareType = NUL
 #'     DataLakePrincipalIdentifier = "string"
 #'   ),
 #'   Resource = list(
-#'     Catalog = list(),
+#'     Catalog = list(
+#'       Id = "string"
+#'     ),
 #'     Database = list(
 #'       CatalogId = "string",
 #'       Name = "string"
@@ -3147,7 +3492,12 @@ lakeformation_list_lf_tags <- function(CatalogId = NULL, ResourceShareType = NUL
 #'             "string"
 #'           )
 #'         )
-#'       )
+#'       ),
+#'       ExpressionName = "string"
+#'     ),
+#'     LFTagExpression = list(
+#'       CatalogId = "string",
+#'       Name = "string"
 #'     )
 #'   ),
 #'   MaxResults = 123,
@@ -3166,7 +3516,7 @@ lakeformation_list_lake_formation_opt_ins <- function(Principal = NULL, Resource
     http_method = "POST",
     http_path = "/ListLakeFormationOptIns",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .lakeformation$list_lake_formation_opt_ins_input(Principal = Principal, Resource = Resource, MaxResults = MaxResults, NextToken = NextToken)
@@ -3225,7 +3575,9 @@ lakeformation_list_lake_formation_opt_ins <- function(Principal = NULL, Resource
 #'         DataLakePrincipalIdentifier = "string"
 #'       ),
 #'       Resource = list(
-#'         Catalog = list(),
+#'         Catalog = list(
+#'           Id = "string"
+#'         ),
 #'         Database = list(
 #'           CatalogId = "string",
 #'           Name = "string"
@@ -3276,14 +3628,22 @@ lakeformation_list_lake_formation_opt_ins <- function(Principal = NULL, Resource
 #'                 "string"
 #'               )
 #'             )
-#'           )
+#'           ),
+#'           ExpressionName = "string"
+#'         ),
+#'         LFTagExpression = list(
+#'           CatalogId = "string",
+#'           Name = "string"
 #'         )
 #'       ),
+#'       Condition = list(
+#'         Expression = "string"
+#'       ),
 #'       Permissions = list(
-#'         "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_LF_TAG"|"ASSOCIATE"|"GRANT_WITH_LF_TAG_EXPRESSION"
+#'         "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_LF_TAG"|"ASSOCIATE"|"GRANT_WITH_LF_TAG_EXPRESSION"|"CREATE_LF_TAG_EXPRESSION"|"CREATE_CATALOG"|"SUPER_USER"
 #'       ),
 #'       PermissionsWithGrantOption = list(
-#'         "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_LF_TAG"|"ASSOCIATE"|"GRANT_WITH_LF_TAG_EXPRESSION"
+#'         "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_LF_TAG"|"ASSOCIATE"|"GRANT_WITH_LF_TAG_EXPRESSION"|"CREATE_LF_TAG_EXPRESSION"|"CREATE_CATALOG"|"SUPER_USER"
 #'       ),
 #'       AdditionalDetails = list(
 #'         ResourceShare = list(
@@ -3307,9 +3667,11 @@ lakeformation_list_lake_formation_opt_ins <- function(Principal = NULL, Resource
 #'   Principal = list(
 #'     DataLakePrincipalIdentifier = "string"
 #'   ),
-#'   ResourceType = "CATALOG"|"DATABASE"|"TABLE"|"DATA_LOCATION"|"LF_TAG"|"LF_TAG_POLICY"|"LF_TAG_POLICY_DATABASE"|"LF_TAG_POLICY_TABLE",
+#'   ResourceType = "CATALOG"|"DATABASE"|"TABLE"|"DATA_LOCATION"|"LF_TAG"|"LF_TAG_POLICY"|"LF_TAG_POLICY_DATABASE"|"LF_TAG_POLICY_TABLE"|"LF_NAMED_TAG_EXPRESSION",
 #'   Resource = list(
-#'     Catalog = list(),
+#'     Catalog = list(
+#'       Id = "string"
+#'     ),
 #'     Database = list(
 #'       CatalogId = "string",
 #'       Name = "string"
@@ -3360,7 +3722,12 @@ lakeformation_list_lake_formation_opt_ins <- function(Principal = NULL, Resource
 #'             "string"
 #'           )
 #'         )
-#'       )
+#'       ),
+#'       ExpressionName = "string"
+#'     ),
+#'     LFTagExpression = list(
+#'       CatalogId = "string",
+#'       Name = "string"
 #'     )
 #'   ),
 #'   NextToken = "string",
@@ -3380,7 +3747,7 @@ lakeformation_list_permissions <- function(CatalogId = NULL, Principal = NULL, R
     http_method = "POST",
     http_path = "/ListPermissions",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .lakeformation$list_permissions_input(CatalogId = CatalogId, Principal = Principal, ResourceType = ResourceType, Resource = Resource, NextToken = NextToken, MaxResults = MaxResults, IncludeRelated = IncludeRelated)
@@ -3454,7 +3821,7 @@ lakeformation_list_resources <- function(FilterConditionList = NULL, MaxResults 
     http_method = "POST",
     http_path = "/ListResources",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .lakeformation$list_resources_input(FilterConditionList = FilterConditionList, MaxResults = MaxResults, NextToken = NextToken)
@@ -3528,7 +3895,7 @@ lakeformation_list_table_storage_optimizers <- function(CatalogId = NULL, Databa
     http_method = "POST",
     http_path = "/ListTableStorageOptimizers",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .lakeformation$list_table_storage_optimizers_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, StorageOptimizerType = StorageOptimizerType, MaxResults = MaxResults, NextToken = NextToken)
@@ -3604,7 +3971,7 @@ lakeformation_list_transactions <- function(CatalogId = NULL, StatusFilter = NUL
     http_method = "POST",
     http_path = "/ListTransactions",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .lakeformation$list_transactions_input(CatalogId = CatalogId, StatusFilter = StatusFilter, MaxResults = MaxResults, NextToken = NextToken)
@@ -3664,7 +4031,7 @@ lakeformation_list_transactions <- function(CatalogId = NULL, StatusFilter = NUL
 #'           DataLakePrincipalIdentifier = "string"
 #'         ),
 #'         Permissions = list(
-#'           "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_LF_TAG"|"ASSOCIATE"|"GRANT_WITH_LF_TAG_EXPRESSION"
+#'           "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_LF_TAG"|"ASSOCIATE"|"GRANT_WITH_LF_TAG_EXPRESSION"|"CREATE_LF_TAG_EXPRESSION"|"CREATE_CATALOG"|"SUPER_USER"
 #'         )
 #'       )
 #'     ),
@@ -3674,7 +4041,7 @@ lakeformation_list_transactions <- function(CatalogId = NULL, StatusFilter = NUL
 #'           DataLakePrincipalIdentifier = "string"
 #'         ),
 #'         Permissions = list(
-#'           "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_LF_TAG"|"ASSOCIATE"|"GRANT_WITH_LF_TAG_EXPRESSION"
+#'           "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_LF_TAG"|"ASSOCIATE"|"GRANT_WITH_LF_TAG_EXPRESSION"|"CREATE_LF_TAG_EXPRESSION"|"CREATE_CATALOG"|"SUPER_USER"
 #'         )
 #'       )
 #'     ),
@@ -3739,7 +4106,7 @@ lakeformation_put_data_lake_settings <- function(CatalogId = NULL, DataLakeSetti
 #' The following request registers a new location and gives Lake Formation
 #' permission to use the service-linked role to access that location.
 #' 
-#' `ResourceArn = arn:aws:s3:::my-bucket UseServiceLinkedRole = true`
+#' `ResourceArn = arn:aws:s3:::my-bucket/ UseServiceLinkedRole = true`
 #' 
 #' If `UseServiceLinkedRole` is not set to true, you must provide or set
 #' the `RoleArn`:
@@ -3847,7 +4214,9 @@ lakeformation_register_resource <- function(ResourceArn, UseServiceLinkedRole = 
 #' svc$remove_lf_tags_from_resource(
 #'   CatalogId = "string",
 #'   Resource = list(
-#'     Catalog = list(),
+#'     Catalog = list(
+#'       Id = "string"
+#'     ),
 #'     Database = list(
 #'       CatalogId = "string",
 #'       Name = "string"
@@ -3898,7 +4267,12 @@ lakeformation_register_resource <- function(ResourceArn, UseServiceLinkedRole = 
 #'             "string"
 #'           )
 #'         )
-#'       )
+#'       ),
+#'       ExpressionName = "string"
+#'     ),
+#'     LFTagExpression = list(
+#'       CatalogId = "string",
+#'       Name = "string"
 #'     )
 #'   ),
 #'   LFTags = list(
@@ -3972,7 +4346,9 @@ lakeformation_remove_lf_tags_from_resource <- function(CatalogId = NULL, Resourc
 #'     DataLakePrincipalIdentifier = "string"
 #'   ),
 #'   Resource = list(
-#'     Catalog = list(),
+#'     Catalog = list(
+#'       Id = "string"
+#'     ),
 #'     Database = list(
 #'       CatalogId = "string",
 #'       Name = "string"
@@ -4023,14 +4399,19 @@ lakeformation_remove_lf_tags_from_resource <- function(CatalogId = NULL, Resourc
 #'             "string"
 #'           )
 #'         )
-#'       )
+#'       ),
+#'       ExpressionName = "string"
+#'     ),
+#'     LFTagExpression = list(
+#'       CatalogId = "string",
+#'       Name = "string"
 #'     )
 #'   ),
 #'   Permissions = list(
-#'     "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_LF_TAG"|"ASSOCIATE"|"GRANT_WITH_LF_TAG_EXPRESSION"
+#'     "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_LF_TAG"|"ASSOCIATE"|"GRANT_WITH_LF_TAG_EXPRESSION"|"CREATE_LF_TAG_EXPRESSION"|"CREATE_CATALOG"|"SUPER_USER"
 #'   ),
 #'   PermissionsWithGrantOption = list(
-#'     "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_LF_TAG"|"ASSOCIATE"|"GRANT_WITH_LF_TAG_EXPRESSION"
+#'     "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_LF_TAG"|"ASSOCIATE"|"GRANT_WITH_LF_TAG_EXPRESSION"|"CREATE_LF_TAG_EXPRESSION"|"CREATE_CATALOG"|"SUPER_USER"
 #'   )
 #' )
 #' ```
@@ -4507,6 +4888,68 @@ lakeformation_update_lf_tag <- function(CatalogId = NULL, TagKey, TagValuesToDel
 }
 .lakeformation$operations$update_lf_tag <- lakeformation_update_lf_tag
 
+#' Updates the name of the LF-Tag expression to the new description and
+#' expression body provided
+#'
+#' @description
+#' Updates the name of the LF-Tag expression to the new description and
+#' expression body provided. Updating a LF-Tag expression immediately
+#' changes the permission boundaries of all existing `LFTagPolicy`
+#' permission grants that reference the given LF-Tag expression.
+#'
+#' @usage
+#' lakeformation_update_lf_tag_expression(Name, Description, CatalogId,
+#'   Expression)
+#'
+#' @param Name &#91;required&#93; The name for the LF-Tag expression.
+#' @param Description The description with information about the saved LF-Tag expression.
+#' @param CatalogId The identifier for the Data Catalog. By default, the account ID.
+#' @param Expression &#91;required&#93; The LF-Tag expression body composed of one more LF-Tag key-value pairs.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_lf_tag_expression(
+#'   Name = "string",
+#'   Description = "string",
+#'   CatalogId = "string",
+#'   Expression = list(
+#'     list(
+#'       TagKey = "string",
+#'       TagValues = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lakeformation_update_lf_tag_expression
+#'
+#' @aliases lakeformation_update_lf_tag_expression
+lakeformation_update_lf_tag_expression <- function(Name, Description = NULL, CatalogId = NULL, Expression) {
+  op <- new_operation(
+    name = "UpdateLFTagExpression",
+    http_method = "POST",
+    http_path = "/UpdateLFTagExpression",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .lakeformation$update_lf_tag_expression_input(Name = Name, Description = Description, CatalogId = CatalogId, Expression = Expression)
+  output <- .lakeformation$update_lf_tag_expression_output()
+  config <- get_config()
+  svc <- .lakeformation$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lakeformation$operations$update_lf_tag_expression <- lakeformation_update_lf_tag_expression
+
 #' Updates the IAM Identity Center connection parameters
 #'
 #' @description
@@ -4725,7 +5168,7 @@ lakeformation_update_table_objects <- function(CatalogId = NULL, DatabaseName, T
 #' @param CatalogId The Catalog ID of the table.
 #' @param DatabaseName &#91;required&#93; Name of the database where the table is present.
 #' @param TableName &#91;required&#93; Name of the table for which to enable the storage optimizer.
-#' @param StorageOptimizerConfig &#91;required&#93; Name of the table for which to enable the storage optimizer.
+#' @param StorageOptimizerConfig &#91;required&#93; Name of the configuration for the storage optimizer.
 #'
 #' @return
 #' A list with the following syntax:

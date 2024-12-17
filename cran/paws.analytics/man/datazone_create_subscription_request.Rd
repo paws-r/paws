@@ -7,6 +7,7 @@
 datazone_create_subscription_request(
   clientToken = NULL,
   domainIdentifier,
+  metadataForms = NULL,
   requestReason,
   subscribedListings,
   subscribedPrincipals
@@ -18,6 +19,8 @@ idempotency of the request.}
 
 \item{domainIdentifier}{[required] The ID of the Amazon DataZone domain in which the subscription request
 is created.}
+
+\item{metadataForms}{The metadata form included in the subscription request.}
 
 \item{requestReason}{[required] The reason for the subscription request.}
 

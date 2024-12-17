@@ -28,6 +28,7 @@ NULL
 #'     TypeName = "string",
 #'     Identifier = "string",
 #'     RequestToken = "string",
+#'     HooksRequestToken = "string",
 #'     Operation = "CREATE"|"DELETE"|"UPDATE",
 #'     OperationStatus = "PENDING"|"IN_PROGRESS"|"SUCCESS"|"FAILED"|"CANCEL_IN_PROGRESS"|"CANCEL_COMPLETE",
 #'     EventTime = as.POSIXct(
@@ -35,7 +36,7 @@ NULL
 #'     ),
 #'     ResourceModel = "string",
 #'     StatusMessage = "string",
-#'     ErrorCode = "NotUpdatable"|"InvalidRequest"|"AccessDenied"|"InvalidCredentials"|"AlreadyExists"|"NotFound"|"ResourceConflict"|"Throttling"|"ServiceLimitExceeded"|"NotStabilized"|"GeneralServiceException"|"ServiceInternalError"|"ServiceTimeout"|"NetworkFailure"|"InternalFailure",
+#'     ErrorCode = "NotUpdatable"|"InvalidRequest"|"AccessDenied"|"UnauthorizedTaggingOperation"|"InvalidCredentials"|"AlreadyExists"|"NotFound"|"ResourceConflict"|"Throttling"|"ServiceLimitExceeded"|"NotStabilized"|"GeneralServiceException"|"ServiceInternalError"|"ServiceTimeout"|"NetworkFailure"|"InternalFailure",
 #'     RetryAfter = as.POSIXct(
 #'       "2015-01-01"
 #'     )
@@ -152,6 +153,7 @@ cloudcontrolapi_cancel_resource_request <- function(RequestToken) {
 #'     TypeName = "string",
 #'     Identifier = "string",
 #'     RequestToken = "string",
+#'     HooksRequestToken = "string",
 #'     Operation = "CREATE"|"DELETE"|"UPDATE",
 #'     OperationStatus = "PENDING"|"IN_PROGRESS"|"SUCCESS"|"FAILED"|"CANCEL_IN_PROGRESS"|"CANCEL_COMPLETE",
 #'     EventTime = as.POSIXct(
@@ -159,7 +161,7 @@ cloudcontrolapi_cancel_resource_request <- function(RequestToken) {
 #'     ),
 #'     ResourceModel = "string",
 #'     StatusMessage = "string",
-#'     ErrorCode = "NotUpdatable"|"InvalidRequest"|"AccessDenied"|"InvalidCredentials"|"AlreadyExists"|"NotFound"|"ResourceConflict"|"Throttling"|"ServiceLimitExceeded"|"NotStabilized"|"GeneralServiceException"|"ServiceInternalError"|"ServiceTimeout"|"NetworkFailure"|"InternalFailure",
+#'     ErrorCode = "NotUpdatable"|"InvalidRequest"|"AccessDenied"|"UnauthorizedTaggingOperation"|"InvalidCredentials"|"AlreadyExists"|"NotFound"|"ResourceConflict"|"Throttling"|"ServiceLimitExceeded"|"NotStabilized"|"GeneralServiceException"|"ServiceInternalError"|"ServiceTimeout"|"NetworkFailure"|"InternalFailure",
 #'     RetryAfter = as.POSIXct(
 #'       "2015-01-01"
 #'     )
@@ -275,6 +277,7 @@ cloudcontrolapi_create_resource <- function(TypeName, TypeVersionId = NULL, Role
 #'     TypeName = "string",
 #'     Identifier = "string",
 #'     RequestToken = "string",
+#'     HooksRequestToken = "string",
 #'     Operation = "CREATE"|"DELETE"|"UPDATE",
 #'     OperationStatus = "PENDING"|"IN_PROGRESS"|"SUCCESS"|"FAILED"|"CANCEL_IN_PROGRESS"|"CANCEL_COMPLETE",
 #'     EventTime = as.POSIXct(
@@ -282,7 +285,7 @@ cloudcontrolapi_create_resource <- function(TypeName, TypeVersionId = NULL, Role
 #'     ),
 #'     ResourceModel = "string",
 #'     StatusMessage = "string",
-#'     ErrorCode = "NotUpdatable"|"InvalidRequest"|"AccessDenied"|"InvalidCredentials"|"AlreadyExists"|"NotFound"|"ResourceConflict"|"Throttling"|"ServiceLimitExceeded"|"NotStabilized"|"GeneralServiceException"|"ServiceInternalError"|"ServiceTimeout"|"NetworkFailure"|"InternalFailure",
+#'     ErrorCode = "NotUpdatable"|"InvalidRequest"|"AccessDenied"|"UnauthorizedTaggingOperation"|"InvalidCredentials"|"AlreadyExists"|"NotFound"|"ResourceConflict"|"Throttling"|"ServiceLimitExceeded"|"NotStabilized"|"GeneralServiceException"|"ServiceInternalError"|"ServiceTimeout"|"NetworkFailure"|"InternalFailure",
 #'     RetryAfter = as.POSIXct(
 #'       "2015-01-01"
 #'     )
@@ -444,6 +447,7 @@ cloudcontrolapi_get_resource <- function(TypeName, TypeVersionId = NULL, RoleArn
 #'     TypeName = "string",
 #'     Identifier = "string",
 #'     RequestToken = "string",
+#'     HooksRequestToken = "string",
 #'     Operation = "CREATE"|"DELETE"|"UPDATE",
 #'     OperationStatus = "PENDING"|"IN_PROGRESS"|"SUCCESS"|"FAILED"|"CANCEL_IN_PROGRESS"|"CANCEL_COMPLETE",
 #'     EventTime = as.POSIXct(
@@ -451,9 +455,23 @@ cloudcontrolapi_get_resource <- function(TypeName, TypeVersionId = NULL, RoleArn
 #'     ),
 #'     ResourceModel = "string",
 #'     StatusMessage = "string",
-#'     ErrorCode = "NotUpdatable"|"InvalidRequest"|"AccessDenied"|"InvalidCredentials"|"AlreadyExists"|"NotFound"|"ResourceConflict"|"Throttling"|"ServiceLimitExceeded"|"NotStabilized"|"GeneralServiceException"|"ServiceInternalError"|"ServiceTimeout"|"NetworkFailure"|"InternalFailure",
+#'     ErrorCode = "NotUpdatable"|"InvalidRequest"|"AccessDenied"|"UnauthorizedTaggingOperation"|"InvalidCredentials"|"AlreadyExists"|"NotFound"|"ResourceConflict"|"Throttling"|"ServiceLimitExceeded"|"NotStabilized"|"GeneralServiceException"|"ServiceInternalError"|"ServiceTimeout"|"NetworkFailure"|"InternalFailure",
 #'     RetryAfter = as.POSIXct(
 #'       "2015-01-01"
+#'     )
+#'   ),
+#'   HooksProgressEvent = list(
+#'     list(
+#'       HookTypeName = "string",
+#'       HookTypeVersionId = "string",
+#'       HookTypeArn = "string",
+#'       InvocationPoint = "string",
+#'       HookStatus = "string",
+#'       HookEventTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       HookStatusMessage = "string",
+#'       FailureMode = "string"
 #'     )
 #'   )
 #' )
@@ -528,6 +546,7 @@ cloudcontrolapi_get_resource_request_status <- function(RequestToken) {
 #'       TypeName = "string",
 #'       Identifier = "string",
 #'       RequestToken = "string",
+#'       HooksRequestToken = "string",
 #'       Operation = "CREATE"|"DELETE"|"UPDATE",
 #'       OperationStatus = "PENDING"|"IN_PROGRESS"|"SUCCESS"|"FAILED"|"CANCEL_IN_PROGRESS"|"CANCEL_COMPLETE",
 #'       EventTime = as.POSIXct(
@@ -535,7 +554,7 @@ cloudcontrolapi_get_resource_request_status <- function(RequestToken) {
 #'       ),
 #'       ResourceModel = "string",
 #'       StatusMessage = "string",
-#'       ErrorCode = "NotUpdatable"|"InvalidRequest"|"AccessDenied"|"InvalidCredentials"|"AlreadyExists"|"NotFound"|"ResourceConflict"|"Throttling"|"ServiceLimitExceeded"|"NotStabilized"|"GeneralServiceException"|"ServiceInternalError"|"ServiceTimeout"|"NetworkFailure"|"InternalFailure",
+#'       ErrorCode = "NotUpdatable"|"InvalidRequest"|"AccessDenied"|"UnauthorizedTaggingOperation"|"InvalidCredentials"|"AlreadyExists"|"NotFound"|"ResourceConflict"|"Throttling"|"ServiceLimitExceeded"|"NotStabilized"|"GeneralServiceException"|"ServiceInternalError"|"ServiceTimeout"|"NetworkFailure"|"InternalFailure",
 #'       RetryAfter = as.POSIXct(
 #'         "2015-01-01"
 #'       )
@@ -770,6 +789,7 @@ cloudcontrolapi_list_resources <- function(TypeName, TypeVersionId = NULL, RoleA
 #'     TypeName = "string",
 #'     Identifier = "string",
 #'     RequestToken = "string",
+#'     HooksRequestToken = "string",
 #'     Operation = "CREATE"|"DELETE"|"UPDATE",
 #'     OperationStatus = "PENDING"|"IN_PROGRESS"|"SUCCESS"|"FAILED"|"CANCEL_IN_PROGRESS"|"CANCEL_COMPLETE",
 #'     EventTime = as.POSIXct(
@@ -777,7 +797,7 @@ cloudcontrolapi_list_resources <- function(TypeName, TypeVersionId = NULL, RoleA
 #'     ),
 #'     ResourceModel = "string",
 #'     StatusMessage = "string",
-#'     ErrorCode = "NotUpdatable"|"InvalidRequest"|"AccessDenied"|"InvalidCredentials"|"AlreadyExists"|"NotFound"|"ResourceConflict"|"Throttling"|"ServiceLimitExceeded"|"NotStabilized"|"GeneralServiceException"|"ServiceInternalError"|"ServiceTimeout"|"NetworkFailure"|"InternalFailure",
+#'     ErrorCode = "NotUpdatable"|"InvalidRequest"|"AccessDenied"|"UnauthorizedTaggingOperation"|"InvalidCredentials"|"AlreadyExists"|"NotFound"|"ResourceConflict"|"Throttling"|"ServiceLimitExceeded"|"NotStabilized"|"GeneralServiceException"|"ServiceInternalError"|"ServiceTimeout"|"NetworkFailure"|"InternalFailure",
 #'     RetryAfter = as.POSIXct(
 #'       "2015-01-01"
 #'     )

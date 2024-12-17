@@ -19,14 +19,13 @@ glue_create_table_optimizer(
 
 \item{TableName}{[required] The name of the table.}
 
-\item{Type}{[required] The type of table optimizer. Currently, the only valid value is
-\code{compaction}.}
+\item{Type}{[required] The type of table optimizer.}
 
 \item{TableOptimizerConfiguration}{[required] A \code{TableOptimizerConfiguration} object representing the configuration of
 a table optimizer.}
 }
 \description{
-Creates a new table optimizer for a specific function. \code{compaction} is the only currently supported optimizer type.
+Creates a new table optimizer for a specific function.
 
 See \url{https://www.paws-r-sdk.com/docs/glue_create_table_optimizer/} for full documentation.
 }

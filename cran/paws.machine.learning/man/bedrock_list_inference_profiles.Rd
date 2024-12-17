@@ -4,7 +4,11 @@
 \alias{bedrock_list_inference_profiles}
 \title{Returns a list of inference profiles that you can use}
 \usage{
-bedrock_list_inference_profiles(maxResults = NULL, nextToken = NULL)
+bedrock_list_inference_profiles(
+  maxResults = NULL,
+  nextToken = NULL,
+  typeEquals = NULL
+)
 }
 \arguments{
 \item{maxResults}{The maximum number of results to return in the response. If the total
@@ -15,9 +19,20 @@ return the next batch of results.}
 \item{nextToken}{If the total number of results is greater than the \code{maxResults} value
 provided in the request, enter the token returned in the \code{nextToken}
 field in the response in this field to return the next batch of results.}
+
+\item{typeEquals}{Filters for inference profiles that match the type you specify.
+\itemize{
+\item \code{SYSTEM_DEFINED} – The inference profile is defined by Amazon
+Bedrock. You can route inference requests across regions with these
+inference profiles.
+\item \code{APPLICATION} – The inference profile was created by a user. This
+type of inference profile can track metrics and costs when invoking
+the model in it. The inference profile may route requests to one or
+multiple regions.
+}}
 }
 \description{
-Returns a list of inference profiles that you can use.
+Returns a list of inference profiles that you can use. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/cross-region-inference.html}{Increase throughput and resilience with cross-region inference in Amazon Bedrock}. in the Amazon Bedrock User Guide.
 
 See \url{https://www.paws-r-sdk.com/docs/bedrock_list_inference_profiles/} for full documentation.
 }

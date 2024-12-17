@@ -3470,15 +3470,15 @@ wafv2_delete_api_key <- function(Scope, APIKey) {
 }
 .wafv2$operations$delete_api_key <- wafv2_delete_api_key
 
-#' Deletes all rule groups that are managed by Firewall Manager for the
-#' specified web ACL
+#' Deletes all rule groups that are managed by Firewall Manager from the
+#' specified WebACL
 #'
 #' @description
-#' Deletes all rule groups that are managed by Firewall Manager for the
-#' specified web ACL.
-#' 
-#' You can only use this if `ManagedByFirewallManager` is false in the
+#' Deletes all rule groups that are managed by Firewall Manager from the
 #' specified WebACL.
+#' 
+#' You can only use this if `ManagedByFirewallManager` and
+#' `RetrofittedByFirewallManager` are both false in the web ACL.
 #'
 #' @usage
 #' wafv2_delete_firewall_manager_rule_groups(WebACLArn, WebACLLockToken)
@@ -3866,8 +3866,8 @@ wafv2_delete_rule_group <- function(Name, Scope, Id, LockToken) {
 #' @description
 #' Deletes the specified WebACL.
 #' 
-#' You can only use this if `ManagedByFirewallManager` is false in the
-#' specified WebACL.
+#' You can only use this if `ManagedByFirewallManager` is false in the web
+#' ACL.
 #' 
 #' Before deleting any web ACL, first disassociate it from all resources.
 #' 
@@ -8924,7 +8924,8 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'           DefaultSizeInspectionLimit = "KB_16"|"KB_32"|"KB_48"|"KB_64"
 #'         )
 #'       )
-#'     )
+#'     ),
+#'     RetrofittedByFirewallManager = TRUE|FALSE
 #'   ),
 #'   LockToken = "string",
 #'   ApplicationIntegrationURL = "string"
@@ -11659,7 +11660,8 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
 #'           DefaultSizeInspectionLimit = "KB_16"|"KB_32"|"KB_48"|"KB_64"
 #'         )
 #'       )
-#'     )
+#'     ),
+#'     RetrofittedByFirewallManager = TRUE|FALSE
 #'   )
 #' )
 #' ```

@@ -26,10 +26,11 @@ rune/code-point count, not number of bytes. Default: 500.}
 \item{messageReviewHandler}{Configuration information for optional review of messages.}
 
 \item{tags}{Tags to attach to the resource. Array of maps, each of the form
-\code{string:string (key:value)}. See \href{https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html}{Tagging AWS Resources}
-for details, including restrictions that apply to tags and "Tag naming
-limits and requirements"; Amazon IVS Chat has no constraints beyond what
-is documented there.}
+\code{string:string (key:value)}. See \href{https://docs.aws.amazon.com/tag-editor/latest/userguide/best-practices-and-strats.html}{Best practices and strategies}
+in \emph{Tagging Amazon Web Services Resources and Tag Editor} for details,
+including restrictions that apply to tags and "Tag naming limits and
+requirements"; Amazon IVS Chat has no constraints beyond what is
+documented there.}
 
 \item{loggingConfigurationIdentifiers}{Array of logging-configuration identifiers attached to the room.}
 }

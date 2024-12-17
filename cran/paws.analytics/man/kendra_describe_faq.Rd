@@ -2,7 +2,7 @@
 % Please edit documentation in R/kendra_operations.R
 \name{kendra_describe_faq}
 \alias{kendra_describe_faq}
-\title{Gets information about an FAQ list}
+\title{Gets information about a FAQ}
 \usage{
 kendra_describe_faq(Id, IndexId)
 }
@@ -12,7 +12,7 @@ kendra_describe_faq(Id, IndexId)
 \item{IndexId}{[required] The identifier of the index for the FAQ.}
 }
 \description{
-Gets information about an FAQ list.
+Gets information about a FAQ.
 
 See \url{https://www.paws-r-sdk.com/docs/kendra_describe_faq/} for full documentation.
 }

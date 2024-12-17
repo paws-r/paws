@@ -6,15 +6,21 @@
 identity provider}
 \usage{
 licensemanagerusersubscriptions_update_identity_provider_settings(
-  IdentityProvider,
-  Product,
+  IdentityProvider = NULL,
+  IdentityProviderArn = NULL,
+  Product = NULL,
   UpdateSettings
 )
 }
 \arguments{
-\item{IdentityProvider}{[required]}
+\item{IdentityProvider}{}
 
-\item{Product}{[required] The name of the user-based subscription product.}
+\item{IdentityProviderArn}{The Amazon Resource Name (ARN) of the identity provider to update.}
+
+\item{Product}{The name of the user-based subscription product.
+
+Valid values: \code{VISUAL_STUDIO_ENTERPRISE} | \code{VISUAL_STUDIO_PROFESSIONAL}
+| \code{OFFICE_PROFESSIONAL_PLUS}}
 
 \item{UpdateSettings}{[required] Updates the registered identity provider’s product related configuration
 settings. You can update any combination of settings in a single

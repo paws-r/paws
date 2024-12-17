@@ -5,15 +5,15 @@
 \title{Changes the route table associated with a given subnet, internet
 gateway, or virtual private gateway in a VPC}
 \usage{
-ec2_replace_route_table_association(AssociationId, DryRun = NULL, RouteTableId)
+ec2_replace_route_table_association(DryRun = NULL, AssociationId, RouteTableId)
 }
 \arguments{
-\item{AssociationId}{[required] The association ID.}
-
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
+
+\item{AssociationId}{[required] The association ID.}
 
 \item{RouteTableId}{[required] The ID of the new route table to associate with the subnet.}
 }

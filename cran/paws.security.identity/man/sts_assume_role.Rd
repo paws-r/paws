@@ -34,6 +34,13 @@ subsequent cross-account API requests that use the temporary security
 credentials will expose the role session name to the external account in
 their CloudTrail logs.
 
+For security purposes, administrators can view this field in \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/cloudtrail-integration.html#cloudtrail-integration_signin-tempcreds}{CloudTrail logs}
+to help identify who performed an action in Amazon Web Services. Your
+administrator might require that you specify your user name as the
+session name when you assume the role. For more information, see
+\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_iam-condition-keys.html#ck_rolesessionname}{\code{sts:RoleSessionName}}
+.
+
 The regex used to validate this parameter is a string of characters
 consisting of upper- and lower-case alphanumeric characters with no
 spaces. You can also include underscores or any of the following
@@ -90,7 +97,9 @@ policy, managed policy ARNs, and session tags into a packed binary
 format that has a separate limit. Your request can fail for this limit
 even if your plaintext meets the other requirements. The
 \code{PackedPolicySize} response element indicates by percentage how close
-the policies and tags for your request are to the upper size limit.}
+the policies and tags for your request are to the upper size limit.
+
+For more information about role session permissions, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html#policies_session}{Session policies}.}
 
 \item{DurationSeconds}{The duration, in seconds, of the role session. The value specified can
 range from 900 seconds (15 minutes) up to the maximum session duration
@@ -109,8 +118,7 @@ parameter. You can specify a parameter value of up to 43200 seconds (12
 hours), depending on the maximum session duration setting for your role.
 However, if you assume a role using role chaining and provide a
 \code{DurationSeconds} parameter value greater than one hour, the operation
-fails. To learn how to view the maximum value for your role, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_manage-assume.html#id_roles_use_view-role-max-session}{View the Maximum Session Duration Setting for a Role}
-in the \emph{IAM User Guide}.
+fails. To learn how to view the maximum value for your role, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_update-role-settings.html#id_roles_update-session-duration}{Update the maximum session duration for a role}.
 
 By default, the value is set to \code{3600} seconds.
 
@@ -162,8 +170,8 @@ to subsequent sessions in a role chain. For more information, see
 \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_session-tags.html#id_session-tags_role-chaining}{Chaining Roles with Session Tags}
 in the \emph{IAM User Guide}.
 
-This parameter is optional. When you set session tags as transitive, the
-session policy and session tags packed binary limit is not affected.
+This parameter is optional. The transitive status of a session tag does
+not impact its packed binary size.
 
 If you choose not to specify a transitive tag key, then no tags are
 passed from this session to any subsequent sessions.}
@@ -208,15 +216,19 @@ The format for this parameter, as described by its regex pattern, is a
 sequence of six numeric digits.}
 
 \item{SourceIdentity}{The source identity specified by the principal that is calling the
-\code{\link[=sts_assume_role]{assume_role}} operation.
+\code{\link[=sts_assume_role]{assume_role}} operation. The source identity value
+persists across \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html#iam-term-role-chaining}{chained role}
+sessions.
 
 You can require users to specify a source identity when they assume a
-role. You do this by using the \code{sts:SourceIdentity} condition key in a
-role trust policy. You can use source identity information in CloudTrail
-logs to determine who took actions with a role. You can use the
-\code{aws:SourceIdentity} condition key to further control access to Amazon
-Web Services resources based on the value of source identity. For more
-information about using source identity, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_control-access_monitor.html}{Monitor and control actions taken with assumed roles}
+role. You do this by using the
+\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_condition-keys.html#condition-keys-sourceidentity}{\code{sts:SourceIdentity}}
+condition key in a role trust policy. You can use source identity
+information in CloudTrail logs to determine who took actions with a
+role. You can use the \code{aws:SourceIdentity} condition key to further
+control access to Amazon Web Services resources based on the value of
+source identity. For more information about using source identity, see
+\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_control-access_monitor.html}{Monitor and control actions taken with assumed roles}
 in the \emph{IAM User Guide}.
 
 The regex used to validate this parameter is a string of characters
@@ -236,7 +248,7 @@ from which the trusted context assertion was generated.
 \verb{[\{"ProviderArn":"arn:aws:iam::aws:contextProvider/IdentityCenter","ContextAssertion":"trusted-context-assertion"\}]}}
 }
 \description{
-Returns a set of temporary security credentials that you can use to access Amazon Web Services resources. These temporary credentials consist of an access key ID, a secret access key, and a security token. Typically, you use \code{\link[=sts_assume_role]{assume_role}} within your account or for cross-account access. For a comparison of \code{\link[=sts_assume_role]{assume_role}} with other API operations that produce temporary credentials, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html}{Requesting Temporary Security Credentials} and \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#stsapi_comparison}{Comparing the Amazon Web Services STS API operations} in the \emph{IAM User Guide}.
+Returns a set of temporary security credentials that you can use to access Amazon Web Services resources. These temporary credentials consist of an access key ID, a secret access key, and a security token. Typically, you use \code{\link[=sts_assume_role]{assume_role}} within your account or for cross-account access. For a comparison of \code{\link[=sts_assume_role]{assume_role}} with other API operations that produce temporary credentials, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html}{Requesting Temporary Security Credentials} and \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_sts-comparison.html}{Compare STS credentials} in the \emph{IAM User Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/sts_assume_role/} for full documentation.
 }

@@ -230,12 +230,9 @@ kms_cancel_key_deletion <- function(KeyId) {
 #'
 #' @examples
 #' \dontrun{
-#' # This example connects an AWS KMS custom key store to its backing key
-#' # store. For an AWS CloudHSM key store, it connects the key store to its
-#' # AWS CloudHSM cluster. For an external key store, it connects the key
-#' # store to the external key store proxy that communicates with your
-#' # external key manager. This operation does not return any data. To verify
-#' # that the custom key store is connected, use the
+#' # This example connects an AWS KMS custom key store to its AWS CloudHSM
+#' # cluster. This operation does not return any data. To verify that the
+#' # custom key store is connected, use the
 #' # <code>DescribeCustomKeyStores</code> operation.
 #' svc$connect_custom_key_store(
 #'   CustomKeyStoreId = "cks-1234567890abcdef0"
@@ -709,39 +706,10 @@ kms_create_alias <- function(AliasName, TargetKeyId) {
 #' # This example creates a custom key store that is associated with an AWS
 #' # CloudHSM cluster.
 #' svc$create_custom_key_store(
-#'   CloudHsmClusterId = "cluster-234abcdefABC",
+#'   CloudHsmClusterId = "cluster-1a23b4cdefg",
 #'   CustomKeyStoreName = "ExampleKeyStore",
 #'   KeyStorePassword = "kmsPswd",
 #'   TrustAnchorCertificate = "<certificate-goes-here>"
-#' )
-#' 
-#' # This example creates an external key store that uses an Amazon VPC
-#' # endpoint service to communicate with AWS KMS.
-#' svc$create_custom_key_store(
-#'   CustomKeyStoreName = "ExampleVPCEndpointKeyStore",
-#'   CustomKeyStoreType = "EXTERNAL_KEY_STORE",
-#'   XksProxyAuthenticationCredential = list(
-#'     AccessKeyId = "ABCDE12345670EXAMPLE",
-#'     RawSecretAccessKey = "DXjSUawnel2fr6SKC7G25CNxTyWKE5PF9XX6H/u9pSo="
-#'   ),
-#'   XksProxyConnectivity = "VPC_ENDPOINT_SERVICE",
-#'   XksProxyUriEndpoint = "https://myproxy-private.xks.example.com",
-#'   XksProxyUriPath = "/example-prefix/kms/xks/v1",
-#'   XksProxyVpcEndpointServiceName = "com.amazonaws.vpce.us-east-1.vpce-svc-example1"
-#' )
-#' 
-#' # This example creates an external key store with public endpoint
-#' # connectivity.
-#' svc$create_custom_key_store(
-#'   CustomKeyStoreName = "ExamplePublicEndpointKeyStore",
-#'   CustomKeyStoreType = "EXTERNAL_KEY_STORE",
-#'   XksProxyAuthenticationCredential = list(
-#'     AccessKeyId = "ABCDE12345670EXAMPLE",
-#'     RawSecretAccessKey = "DXjSUawnel2fr6SKC7G25CNxTyWKE5PF9XX6H/u9pSo="
-#'   ),
-#'   XksProxyConnectivity = "PUBLIC_ENDPOINT",
-#'   XksProxyUriEndpoint = "https://myproxy.xks.example.com",
-#'   XksProxyUriPath = "/kms/xks/v1"
 #' )
 #' }
 #'
@@ -1648,15 +1616,6 @@ kms_create_grant <- function(KeyId, GranteePrincipal, RetiringPrincipal = NULL, 
 #'   KeyUsage = "SIGN_VERIFY"
 #' )
 #' 
-#' # This example creates a 384-bit symmetric HMAC KMS key. The
-#' # GENERATE_VERIFY_MAC key usage value is required even though it's the
-#' # only valid value for HMAC KMS keys. The key spec and key usage can't be
-#' # changed after the key is created.
-#' svc$create_key(
-#'   KeySpec = "HMAC_384",
-#'   KeyUsage = "GENERATE_VERIFY_MAC"
-#' )
-#' 
 #' # This example creates a multi-Region primary symmetric encryption key.
 #' # Because the default values for all parameters create a symmetric
 #' # encryption key, only the MultiRegion parameter is required for this KMS
@@ -1665,32 +1624,29 @@ kms_create_grant <- function(KeyId, GranteePrincipal, RetiringPrincipal = NULL, 
 #'   MultiRegion = TRUE
 #' )
 #' 
-#' # This example creates a symmetric KMS key with no key material. When the
-#' # operation is complete, you can import your own key material into the KMS
-#' # key. To create this KMS key, set the Origin parameter to EXTERNAL.
+#' # This example creates a KMS key with no key material. When the operation
+#' # is complete, you can import your own key material into the KMS key. To
+#' # create this KMS key, set the Origin parameter to EXTERNAL.
 #' svc$create_key(
 #'   Origin = "EXTERNAL"
 #' )
 #' 
-#' # This example creates a KMS key in the specified AWS CloudHSM key store.
-#' # The operation creates the KMS key and its metadata in AWS KMS and
-#' # creates the key material in the AWS CloudHSM cluster associated with the
-#' # custom key store. This example requires the CustomKeyStoreId  and Origin
-#' # parameters.
+#' # This example creates a KMS key in the specified custom key store. The
+#' # operation creates the KMS key and its metadata in AWS KMS and the key
+#' # material in the AWS CloudHSM cluster associated with the custom key
+#' # store. This example requires the Origin and CustomKeyStoreId parameters.
 #' svc$create_key(
 #'   CustomKeyStoreId = "cks-1234567890abcdef0",
 #'   Origin = "AWS_CLOUDHSM"
 #' )
 #' 
-#' # This example creates a KMS key in the specified external key store. It
-#' # uses the XksKeyId parameter to associate the KMS key with an existing
-#' # symmetric encryption key in your external key manager. This
-#' # CustomKeyStoreId, Origin, and XksKeyId parameters are required in this
-#' # operation.
+#' # This example creates a 384-bit symmetric HMAC KMS key. The
+#' # GENERATE_VERIFY_MAC key usage value is required even though it's the
+#' # only valid value for HMAC KMS keys. The key spec and key usage can't be
+#' # changed after the key is created.
 #' svc$create_key(
-#'   CustomKeyStoreId = "cks-9876543210fedcba9",
-#'   Origin = "EXTERNAL_KEY_STORE",
-#'   XksKeyId = "bb8562717f809024"
+#'   KeySpec = "HMAC_384",
+#'   KeyUsage = "GENERATE_VERIFY_MAC"
 #' )
 #' }
 #'
@@ -1955,36 +1911,10 @@ kms_create_key <- function(Policy = NULL, Description = NULL, KeyUsage = NULL, C
 #'
 #' @examples
 #' \dontrun{
-#' # The following example decrypts data that was encrypted with a symmetric
-#' # encryption KMS key. The KeyId is not required when decrypting with a
-#' # symmetric encryption key, but it is a best practice.
+#' # The following example decrypts data that was encrypted with a KMS key.
 #' svc$decrypt(
 #'   CiphertextBlob = "<binary data>",
 #'   KeyId = "arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"
-#' )
-#' 
-#' # The following example decrypts data that was encrypted with an
-#' # asymmetric encryption KMS key. When the KMS encryption key is
-#' # asymmetric, you must specify the KMS key ID and the encryption algorithm
-#' # that was used to encrypt the data.
-#' svc$decrypt(
-#'   CiphertextBlob = "<binary data>",
-#'   EncryptionAlgorithm = "RSAES_OAEP_SHA_256",
-#'   KeyId = "0987dcba-09fe-87dc-65ba-ab0987654321"
-#' )
-#' 
-#' # The following Decrypt example includes the Recipient parameter with a
-#' # signed attestation document from an AWS Nitro enclave. Instead of
-#' # returning the decrypted data in plaintext (Plaintext), the operation
-#' # returns the decrypted data encrypted by the public key from the
-#' # attestation document (CiphertextForRecipient).
-#' svc$decrypt(
-#'   CiphertextBlob = "<binary data>",
-#'   KeyId = "arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab",
-#'   Recipient = list(
-#'     AttestationDocument = "<attestation document>",
-#'     KeyEncryptionAlgorithm = "RSAES_OAEP_SHA_256"
-#'   )
 #' )
 #' }
 #'
@@ -2200,10 +2130,10 @@ kms_delete_alias <- function(AliasName) {
 #' @examples
 #' \dontrun{
 #' # This example deletes a custom key store from AWS KMS. This operation
-#' # does not affect the backing key store, such as a CloudHSM cluster,
-#' # external key store proxy, or your external key manager. This operation
-#' # doesn't return any data. To verify that the operation was successful,
-#' # use the DescribeCustomKeyStores operation.
+#' # does not delete the AWS CloudHSM cluster that was associated with the
+#' # CloudHSM cluster. This operation doesn't return any data. To verify that
+#' # the operation was successful, use the DescribeCustomKeyStores operation.
+#' # 
 #' svc$delete_custom_key_store(
 #'   CustomKeyStoreId = "cks-1234567890abcdef0"
 #' )
@@ -2543,17 +2473,6 @@ kms_delete_imported_key_material <- function(KeyId) {
 #' )
 #' ```
 #'
-#' @examples
-#' \dontrun{
-#' # The following example derives a shared secret using a key agreement
-#' # algorithm.
-#' svc$derive_shared_secret(
-#'   KeyAgreementAlgorithm = "ECDH",
-#'   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab",
-#'   PublicKey = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvH3Yj0wbkLEpUl95..."
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname kms_derive_shared_secret
@@ -2717,30 +2636,12 @@ kms_derive_shared_secret <- function(KeyId, KeyAgreementAlgorithm, PublicKey, Gr
 #' # a custom key store name or ID.
 #' svc$describe_custom_key_stores()
 #' 
-#' # This example gets detailed information about a particular AWS CloudHSM
-#' # key store by specifying its friendly name. To limit the output to a
-#' # particular custom key store, provide either the custom key store name or
-#' # ID.
+#' # This example gets detailed information about a particular AWS KMS custom
+#' # key store that is associate with an AWS CloudHSM cluster. To limit the
+#' # output to a particular custom key store, provide the custom key store
+#' # name or ID.
 #' svc$describe_custom_key_stores(
 #'   CustomKeyStoreName = "ExampleKeyStore"
-#' )
-#' 
-#' # This example gets detailed information about an external key store by
-#' # specifying its ID.  The example external key store proxy uses public
-#' # endpoint connectivity.
-#' svc$describe_custom_key_stores(
-#'   CustomKeyStoreId = "cks-9876543210fedcba9"
-#' )
-#' 
-#' # This example gets detailed information about a particular external key
-#' # store by specifying its friendly name. To limit the output to a
-#' # particular custom key store, provide either the custom key store name or
-#' # ID. The proxy URI path for this external key store includes an optional
-#' # prefix. Also, because this example external key store uses VPC endpoint
-#' # connectivity, the response includes the associated VPC endpoint service
-#' # name.
-#' svc$describe_custom_key_stores(
-#'   CustomKeyStoreName = "VPCExternalKeystore"
 #' )
 #' }
 #'
@@ -2985,18 +2886,6 @@ kms_describe_custom_key_stores <- function(CustomKeyStoreId = NULL, CustomKeySto
 #' )
 #' 
 #' # The following example gets the metadata of an HMAC KMS key.
-#' svc$describe_key(
-#'   KeyId = "arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"
-#' )
-#' 
-#' # The following example gets the metadata of a KMS key in an AWS CloudHSM
-#' # key store.
-#' svc$describe_key(
-#'   KeyId = "arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"
-#' )
-#' 
-#' # The following example gets the metadata of a KMS key in an external key
-#' # store.
 #' svc$describe_key(
 #'   KeyId = "arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"
 #' )
@@ -3321,12 +3210,9 @@ kms_disable_key_rotation <- function(KeyId) {
 #'
 #' @examples
 #' \dontrun{
-#' # This example disconnects an AWS KMS custom key store from its backing
-#' # key store. For an AWS CloudHSM key store, it disconnects the key store
-#' # from its AWS CloudHSM cluster. For an external key store, it disconnects
-#' # the key store from the external key store proxy that communicates with
-#' # your external key manager. This operation doesn't return any data. To
-#' # verify that the custom key store is disconnected, use the
+#' # This example disconnects an AWS KMS custom key store from its AWS
+#' # CloudHSM cluster. This operation doesn't return any data. To verify that
+#' # the custom key store is disconnected, use the
 #' # <code>DescribeCustomKeyStores</code> operation.
 #' svc$disconnect_custom_key_store(
 #'   CustomKeyStoreId = "cks-1234567890abcdef0"
@@ -3583,11 +3469,10 @@ kms_enable_key <- function(KeyId) {
 #'
 #' @examples
 #' \dontrun{
-#' # The following example enables automatic rotation with a rotation period
-#' # of 365 days for the specified KMS key.
+#' # The following example enables automatic annual rotation of the key
+#' # material for the specified KMS key.
 #' svc$enable_key_rotation(
-#'   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab",
-#'   RotationPeriodInDays = 365L
+#'   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab"
 #' )
 #' }
 #'
@@ -3809,19 +3694,9 @@ kms_enable_key_rotation <- function(KeyId, RotationPeriodInDays = NULL) {
 #'
 #' @examples
 #' \dontrun{
-#' # The following example encrypts data with the specified symmetric
-#' # encryption KMS key.
+#' # The following example encrypts data with the specified KMS key.
 #' svc$encrypt(
 #'   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab",
-#'   Plaintext = "<binary data>"
-#' )
-#' 
-#' # The following example encrypts data with the specified RSA asymmetric
-#' # KMS key. When you encrypt with an asymmetric key, you must specify the
-#' # encryption algorithm.
-#' svc$encrypt(
-#'   EncryptionAlgorithm = "RSAES_OAEP_SHA_256",
-#'   KeyId = "0987dcba-09fe-87dc-65ba-ab0987654321",
 #'   Plaintext = "<binary data>"
 #' )
 #' }
@@ -4113,23 +3988,6 @@ kms_encrypt <- function(KeyId, Plaintext, EncryptionContext = NULL, GrantTokens 
 #'   KeyId = "alias/ExampleAlias",
 #'   KeySpec = "AES_256"
 #' )
-#' 
-#' # The following example includes the Recipient parameter with a signed
-#' # attestation document from an AWS Nitro enclave. Instead of returning a
-#' # copy of the data key encrypted by the KMS key and a plaintext copy of
-#' # the data key, GenerateDataKey returns one copy of the data key encrypted
-#' # by the KMS key (CiphertextBlob) and one copy of the data key encrypted
-#' # by the public key from the attestation document
-#' # (CiphertextForRecipient). The operation doesn't return a plaintext data
-#' # key.
-#' svc$generate_data_key(
-#'   KeyId = "arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab",
-#'   KeySpec = "AES_256",
-#'   Recipient = list(
-#'     AttestationDocument = "<attestation document>",
-#'     KeyEncryptionAlgorithm = "RSAES_OAEP_SHA_256"
-#'   )
-#' )
 #' }
 #'
 #' @keywords internal
@@ -4403,23 +4261,6 @@ kms_generate_data_key <- function(KeyId, EncryptionContext = NULL, NumberOfBytes
 #' svc$generate_data_key_pair(
 #'   KeyId = "arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab",
 #'   KeyPairSpec = "RSA_3072"
-#' )
-#' 
-#' # The following example includes the Recipient parameter with a signed
-#' # attestation document from an AWS Nitro enclave. Instead of returning a
-#' # plaintext copy of the private data key, GenerateDataKeyPair returns a
-#' # copy of the private data key encrypted by the public key from the
-#' # attestation document (CiphertextForRecipient). It returns the public
-#' # data key (PublicKey) and a copy of private data key encrypted under the
-#' # specified KMS key (PrivateKeyCiphertextBlob), as usual, but plaintext
-#' # private data key field (PrivateKeyPlaintext) is null or empty.
-#' svc$generate_data_key_pair(
-#'   KeyId = "arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab",
-#'   KeyPairSpec = "RSA_3072",
-#'   Recipient = list(
-#'     AttestationDocument = "<attestation document>",
-#'     KeyEncryptionAlgorithm = "RSAES_OAEP_SHA_256"
-#'   )
 #' )
 #' }
 #'
@@ -5119,19 +4960,6 @@ kms_generate_mac <- function(Message, KeyId, MacAlgorithm, GrantTokens = NULL, D
 #' svc$generate_random(
 #'   NumberOfBytes = 32L
 #' )
-#' 
-#' # The following example includes the Recipient parameter with a signed
-#' # attestation document from an AWS Nitro enclave. Instead of returning a
-#' # plaintext (unencrypted) byte string, GenerateRandom returns the byte
-#' # string encrypted by the public key from the enclave's attestation
-#' # document.
-#' svc$generate_random(
-#'   NumberOfBytes = 1024L,
-#'   Recipient = list(
-#'     AttestationDocument = "<attestation document>",
-#'     KeyEncryptionAlgorithm = "RSAES_OAEP_SHA_256"
-#'   )
-#' )
 #' }
 #'
 #' @keywords internal
@@ -5381,10 +5209,8 @@ kms_get_key_policy <- function(KeyId, PolicyName = NULL) {
 #'
 #' @examples
 #' \dontrun{
-#' # The following example retrieves detailed information about the rotation
-#' # status for a KMS key, including whether automatic key rotation is
-#' # enabled for the specified KMS key, the rotation period, and the next
-#' # scheduled rotation date.
+#' # The following example retrieves the status of automatic annual rotation
+#' # of the key material for the specified KMS key.
 #' svc$get_key_rotation_status(
 #'   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab"
 #' )
@@ -5594,43 +5420,12 @@ kms_get_key_rotation_status <- function(KeyId) {
 #'
 #' @examples
 #' \dontrun{
-#' # The following example downloads a public key and import token to import
-#' # symmetric encryption key material. It uses the default wrapping key spec
-#' # and the RSAES_OAEP_SHA_256 wrapping algorithm.
+#' # The following example retrieves the public key and import token for the
+#' # specified KMS key.
 #' svc$get_parameters_for_import(
 #'   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab",
 #'   WrappingAlgorithm = "RSAES_OAEP_SHA_1",
 #'   WrappingKeySpec = "RSA_2048"
-#' )
-#' 
-#' # The following example downloads a public key and import token to import
-#' # an RSA private key. It uses a required RSA_AES wrapping algorithm and
-#' # the largest supported private key.
-#' svc$get_parameters_for_import(
-#'   KeyId = "arn:aws:kms:us-east-2:111122223333:key/8888abcd-12ab-34cd-56ef-1234567890ab",
-#'   WrappingAlgorithm = "RSA_AES_KEY_WRAP_SHA_256",
-#'   WrappingKeySpec = "RSA_4096"
-#' )
-#' 
-#' # The following example downloads a public key and import token to import
-#' # an ECC_NIST_P521 (secp521r1) private key. You cannot directly wrap this
-#' # ECC key under an RSA_2048 public key, although you can use an RSA_2048
-#' # public key with an RSA_AES wrapping algorithm to wrap any supported key
-#' # material. This example requests an RSA_3072 public key for use with the
-#' # RSAES_OAEP_SHA_256.
-#' svc$get_parameters_for_import(
-#'   KeyId = "arn:aws:kms:us-east-2:111122223333:key/9876abcd-12ab-34cd-56ef-1234567890ab",
-#'   WrappingAlgorithm = "RSAES_OAEP_SHA_256",
-#'   WrappingKeySpec = "RSA_3072"
-#' )
-#' 
-#' # The following example downloads a public key and import token to import
-#' # an HMAC key. It uses the RSAES_OAEP_SHA_256 wrapping algorithm and an
-#' # RSA_4096 private key.
-#' svc$get_parameters_for_import(
-#'   KeyId = "2468abcd-12ab-34cd-56ef-1234567890ab",
-#'   WrappingAlgorithm = "RSAES_OAEP_SHA_256",
-#'   WrappingKeySpec = "RSA_4096"
 #' )
 #' }
 #'
@@ -6064,17 +5859,6 @@ kms_get_public_key <- function(KeyId, GrantTokens = NULL) {
 #'   ImportToken = "<binary data>",
 #'   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab"
 #' )
-#' 
-#' # The following example imports key material that expires in 3 days. It
-#' # might be part of an application that frequently reimports the same key
-#' # material to comply with business rules or regulations.
-#' svc$import_key_material(
-#'   EncryptedKeyMaterial = "<binary data>",
-#'   ExpirationModel = "KEY_MATERIAL_EXPIRES",
-#'   ImportToken = "<binary data>",
-#'   KeyId = "arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab",
-#'   ValidTo = "2023-09-30T00:00:00-00:00"
-#' )
 #' }
 #'
 #' @keywords internal
@@ -6229,7 +6013,7 @@ kms_list_aliases <- function(KeyId = NULL, Limit = NULL, Marker = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "Limit", more_results = "Truncated", output_token = "NextMarker", result_key = "Aliases"),
+    paginator = list(limit_key = "Limit", input_token = "Marker", output_token = "NextMarker", more_results = "Truncated", result_key = "Aliases"),
     stream_api = FALSE
   )
   input <- .kms$list_aliases_input(KeyId = KeyId, Limit = Limit, Marker = Marker)
@@ -6382,7 +6166,7 @@ kms_list_grants <- function(Limit = NULL, Marker = NULL, KeyId, GrantId = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "Limit", more_results = "Truncated", output_token = "NextMarker", result_key = "Grants"),
+    paginator = list(limit_key = "Limit", input_token = "Marker", output_token = "NextMarker", more_results = "Truncated", result_key = "Grants"),
     stream_api = FALSE
   )
   input <- .kms$list_grants_input(Limit = Limit, Marker = Marker, KeyId = KeyId, GrantId = GrantId, GranteePrincipal = GranteePrincipal)
@@ -6488,7 +6272,7 @@ kms_list_key_policies <- function(KeyId, Limit = NULL, Marker = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "Limit", more_results = "Truncated", output_token = "NextMarker", result_key = "PolicyNames"),
+    paginator = list(limit_key = "Limit", input_token = "Marker", output_token = "NextMarker", more_results = "Truncated", result_key = "PolicyNames"),
     stream_api = FALSE
   )
   input <- .kms$list_key_policies_input(KeyId = KeyId, Limit = Limit, Marker = Marker)
@@ -6589,15 +6373,6 @@ kms_list_key_policies <- function(KeyId, Limit = NULL, Marker = NULL) {
 #'   Marker = "string"
 #' )
 #' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example returns information about all completed key
-#' # material rotations for the specified KMS key.
-#' svc$list_key_rotations(
-#'   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -6704,7 +6479,7 @@ kms_list_keys <- function(Limit = NULL, Marker = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "Limit", more_results = "Truncated", output_token = "NextMarker", result_key = "Keys"),
+    paginator = list(limit_key = "Limit", input_token = "Marker", output_token = "NextMarker", more_results = "Truncated", result_key = "Keys"),
     stream_api = FALSE
   )
   input <- .kms$list_keys_input(Limit = Limit, Marker = Marker)
@@ -8190,15 +7965,6 @@ kms_revoke_grant <- function(KeyId, GrantId, DryRun = NULL) {
 #' )
 #' ```
 #'
-#' @examples
-#' \dontrun{
-#' # The following example immediately initiates rotation of the key material
-#' # for the specified KMS key.
-#' svc$rotate_key_on_demand(
-#'   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab"
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname kms_rotate_key_on_demand
@@ -8579,18 +8345,6 @@ kms_schedule_key_deletion <- function(KeyId, PendingWindowInDays = NULL) {
 #'   Message = "<message to be signed>",
 #'   MessageType = "RAW",
 #'   SigningAlgorithm = "ECDSA_SHA_384"
-#' )
-#' 
-#' # This operation uses the private key in an asymmetric RSA signing KMS key
-#' # to generate a digital signature for a message digest. In this example, a
-#' # large message was hashed and the resulting digest is provided in the
-#' # Message parameter. To tell KMS not to hash the message again, the
-#' # MessageType field is set to DIGEST
-#' svc$sign(
-#'   KeyId = "alias/RSA_signing_key",
-#'   Message = "<message digest to be signed>",
-#'   MessageType = "DIGEST",
-#'   SigningAlgorithm = "RSASSA_PKCS1_V1_5_SHA_256"
 #' )
 #' }
 #'
@@ -9270,6 +9024,15 @@ kms_update_alias <- function(AliasName, TargetKeyId) {
 #'
 #' @examples
 #' \dontrun{
+#' # This example tells KMS the password for the kmsuser crypto user in the
+#' # AWS CloudHSM cluster that is associated with the AWS KMS custom key
+#' # store. (It does not change the password in the CloudHSM cluster.) This
+#' # operation does not return any data.
+#' svc$update_custom_key_store(
+#'   CustomKeyStoreId = "cks-1234567890abcdef0",
+#'   KeyStorePassword = "ExamplePassword"
+#' )
+#' 
 #' # This example changes the friendly name of the AWS KMS custom key store
 #' # to the name that you specify. This operation does not return any data.
 #' # To verify that the operation worked, use the DescribeCustomKeyStores
@@ -9279,54 +9042,13 @@ kms_update_alias <- function(AliasName, TargetKeyId) {
 #'   NewCustomKeyStoreName = "DevelopmentKeys"
 #' )
 #' 
-#' # This example tells AWS KMS the password for the kmsuser crypto user in
-#' # the AWS CloudHSM cluster that is associated with the AWS KMS custom key
-#' # store. (It does not change the password in the CloudHSM cluster.) This
-#' # operation does not return any data.
+#' # This example changes the cluster that is associated with a custom key
+#' # store to a related cluster, such as a different backup of the same
+#' # cluster. This operation does not return any data. To verify that the
+#' # operation worked, use the DescribeCustomKeyStores operation.
 #' svc$update_custom_key_store(
-#'   CustomKeyStoreId = "cks-1234567890abcdef0",
-#'   KeyStorePassword = "ExamplePassword"
-#' )
-#' 
-#' # This example changes the AWS CloudHSM cluster that is associated with an
-#' # AWS CloudHSM key store to a related cluster, such as a different backup
-#' # of the same cluster. This operation does not return any data. To verify
-#' # that the operation worked, use the DescribeCustomKeyStores operation.
-#' svc$update_custom_key_store(
-#'   CloudHsmClusterId = "cluster-234abcdefABC",
+#'   CloudHsmClusterId = "cluster-1a23b4cdefg",
 #'   CustomKeyStoreId = "cks-1234567890abcdef0"
-#' )
-#' 
-#' # To update the proxy authentication credential for your external key
-#' # store, specify both the <code>RawSecretAccessKey</code> and the
-#' # <code>AccessKeyId</code>, even if you are changing only one of the
-#' # values. You can use this feature to fix an invalid credential or to
-#' # change the credential when the external key store proxy rotates it.
-#' svc$update_custom_key_store(
-#'   CustomKeyStoreId = "cks-1234567890abcdef0",
-#'   XksProxyAuthenticationCredential = list(
-#'     AccessKeyId = "ABCDE12345670EXAMPLE",
-#'     RawSecretAccessKey = "DXjSUawnel2fr6SKC7G25CNxTyWKE5PF9XX6H/u9pSo="
-#'   )
-#' )
-#' 
-#' # This example updates the proxy URI path for an external key store
-#' svc$update_custom_key_store(
-#'   CustomKeyStoreId = "cks-1234567890abcdef0",
-#'   XksProxyUriPath = "/new-path/kms/xks/v1"
-#' )
-#' 
-#' # To change the external key store proxy connectivity option from public
-#' # endpoint connectivity to VPC endpoint service connectivity, in addition
-#' # to changing the <code>XksProxyConnectivity</code> value, you must change
-#' # the <code>XksProxyUriEndpoint</code> value to reflect the private DNS
-#' # name associated with the VPC endpoint service. You must also add an
-#' # <code>XksProxyVpcEndpointServiceName</code> value.
-#' svc$update_custom_key_store(
-#'   CustomKeyStoreId = "cks-1234567890abcdef0",
-#'   XksProxyConnectivity = "VPC_ENDPOINT_SERVICE",
-#'   XksProxyUriEndpoint = "https://myproxy-private.xks.example.com",
-#'   XksProxyVpcEndpointServiceName = "com.amazonaws.vpce.us-east-1.vpce-svc-example"
 #' )
 #' }
 #'
@@ -9575,26 +9297,6 @@ kms_update_key_description <- function(KeyId, Description) {
 #' )
 #' ```
 #'
-#' @examples
-#' \dontrun{
-#' # The following UpdatePrimaryRegion example changes the multi-Region
-#' # replica key in the eu-central-1 Region to the primary key. The current
-#' # primary key in the us-west-1 Region becomes a replica key.
-#' # 
-#' # The KeyId
-#' # parameter identifies the current primary key in the us-west-1 Region.
-#' # The PrimaryRegion parameter indicates the Region of the replica key that
-#' # will become the new primary key.
-#' # 
-#' # This operation does not return any
-#' # output. To verify that primary key is changed, use the DescribeKey
-#' # operation.
-#' svc$update_primary_region(
-#'   KeyId = "arn:aws:kms:us-west-1:111122223333:key/mrk-1234abcd12ab34cd56ef1234567890ab",
-#'   PrimaryRegion = "eu-central-1"
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname kms_update_primary_region
@@ -9805,19 +9507,6 @@ kms_update_primary_region <- function(KeyId, PrimaryRegion) {
 #'   MessageType = "RAW",
 #'   Signature = "<binary data>",
 #'   SigningAlgorithm = "ECDSA_SHA_384"
-#' )
-#' 
-#' # This operation uses the public key in an RSA asymmetric signing key pair
-#' # to verify the digital signature of a message digest. Hashing a message
-#' # into a digest before sending it to KMS lets you verify messages that
-#' # exceed the 4096-byte message size limit. To indicate that the value of
-#' # Message is a digest, use the MessageType parameter
-#' svc$verify(
-#'   KeyId = "arn:aws:kms:us-east-2:111122223333:key/0987dcba-09fe-87dc-65ba-ab0987654321",
-#'   Message = "<message digest to be verified>",
-#'   MessageType = "DIGEST",
-#'   Signature = "<binary data>",
-#'   SigningAlgorithm = "RSASSA_PSS_SHA_512"
 #' )
 #' }
 #'

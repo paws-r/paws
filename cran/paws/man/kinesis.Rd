@@ -121,6 +121,7 @@ for real-time processing of streaming big data.
 \link[paws.analytics:kinesis_split_shard]{split_shard} \tab Splits a shard into two new shards in the Kinesis data stream, to increase the stream's capacity to ingest and transport data\cr
 \link[paws.analytics:kinesis_start_stream_encryption]{start_stream_encryption} \tab Enables or updates server-side encryption using an Amazon Web Services KMS key for a specified stream\cr
 \link[paws.analytics:kinesis_stop_stream_encryption]{stop_stream_encryption} \tab Disables server-side encryption for a specified stream\cr
+\link[paws.analytics:kinesis_subscribe_to_shard]{subscribe_to_shard} \tab This operation establishes an HTTP/2 connection between the consumer you specify in the ConsumerARN parameter and the shard you specify in the ShardId parameter\cr
 \link[paws.analytics:kinesis_update_shard_count]{update_shard_count} \tab Updates the shard count of the specified stream to the specified number of shards\cr
 \link[paws.analytics:kinesis_update_stream_mode]{update_stream_mode} \tab Updates the capacity mode of the data stream
 }

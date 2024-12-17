@@ -1161,7 +1161,7 @@ ses_list_configuration_sets <- function(NextToken = NULL, MaxItems = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", limit_key = "MaxItems", output_token = "NextToken", result_key = "ConfigurationSets"),
     stream_api = FALSE
   )
   input <- .ses$list_configuration_sets_input(NextToken = NextToken, MaxItems = MaxItems)
@@ -1198,7 +1198,7 @@ ses_list_custom_verification_email_templates <- function(NextToken = NULL, MaxRe
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    paginator = list(result_key = "CustomVerificationEmailTemplates", output_token = "NextToken", input_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .ses$list_custom_verification_email_templates_input(NextToken = NextToken, MaxResults = MaxResults)
@@ -1236,7 +1236,7 @@ ses_list_identities <- function(IdentityType = NULL, NextToken = NULL, MaxItems 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxItems", output_token = "NextToken", result_key = "Identities"),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxItems", result_key = "Identities"),
     stream_api = FALSE
   )
   input <- .ses$list_identities_input(IdentityType = IdentityType, NextToken = NextToken, MaxItems = MaxItems)
@@ -1340,7 +1340,7 @@ ses_list_receipt_rule_sets <- function(NextToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "RuleSets"),
     stream_api = FALSE
   )
   input <- .ses$list_receipt_rule_sets_input(NextToken = NextToken)
@@ -1378,7 +1378,7 @@ ses_list_templates <- function(NextToken = NULL, MaxItems = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", limit_key = "MaxItems", output_token = "NextToken", result_key = "TemplatesMetadata"),
     stream_api = FALSE
   )
   input <- .ses$list_templates_input(NextToken = NextToken, MaxItems = MaxItems)
@@ -1409,7 +1409,7 @@ ses_list_verified_email_addresses <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "VerifiedEmailAddresses"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .ses$list_verified_email_addresses_input()

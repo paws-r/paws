@@ -228,8 +228,8 @@ cloudwatchlogs_cancel_export_task <- function(taskId) {
 #' multiple deliveries to configure multiple delivery sources to send logs
 #' to the same delivery destination.
 #' 
-#' You can't update an existing delivery. You can only create and delete
-#' deliveries.
+#' To update an existing delivery configuration, use
+#' [`update_delivery_configuration`][cloudwatchlogs_update_delivery_configuration].
 #'
 #' @usage
 #' cloudwatchlogs_create_delivery(deliverySourceName,
@@ -239,12 +239,12 @@ cloudwatchlogs_cancel_export_task <- function(taskId) {
 #' @param deliverySourceName &#91;required&#93; The name of the delivery source to use for this delivery.
 #' @param deliveryDestinationArn &#91;required&#93; The ARN of the delivery destination to use for this delivery.
 #' @param recordFields The list of record fields to be delivered to the destination, in order.
-#' If the delivery’s log source has mandatory fields, they must be included
+#' If the delivery's log source has mandatory fields, they must be included
 #' in this list.
 #' @param fieldDelimiter The field delimiter to use between record fields when the final output
 #' format of a delivery is in `Plain`, `W3C`, or `Raw` format.
 #' @param s3DeliveryConfiguration This structure contains parameters that are valid only when the
-#' delivery’s delivery destination is an S3 bucket.
+#' delivery's delivery destination is an S3 bucket.
 #' @param tags An optional list of key-value pairs to associate with the resource.
 #' 
 #' For more information about tagging, see [Tagging Amazon Web Services
@@ -371,6 +371,10 @@ cloudwatchlogs_create_delivery <- function(deliverySourceName, deliveryDestinati
 #' the same Amazon Web Services Region.
 #' @param destinationPrefix The prefix used as the start of the key for every object exported. If
 #' you don't specify a value, the default is `exportedlogs`.
+#' 
+#' The length of this parameter must comply with the S3 object key name
+#' length limits. The object key name is a sequence of Unicode characters
+#' with UTF-8 encoding, and can be up to 1,024 bytes.
 #'
 #' @return
 #' A list with the following syntax:
@@ -717,9 +721,10 @@ cloudwatchlogs_create_log_stream <- function(logGroupName, logStreamName) {
 #' Deletes a CloudWatch Logs account policy
 #'
 #' @description
-#' Deletes a CloudWatch Logs account policy. This stops the policy from
-#' applying to all log groups or a subset of log groups in the account.
-#' Log-group level policies will still be in effect.
+#' Deletes a CloudWatch Logs account policy. This stops the account-wide
+#' policy from applying to log groups in the account. If you delete a data
+#' protection policy or subscription filter policy, any log-group level
+#' policies of those types remain in effect.
 #' 
 #' To use this operation, you must be signed on with the correct
 #' permissions depending on the type of policy that you are deleting.
@@ -731,6 +736,16 @@ cloudwatchlogs_create_log_stream <- function(logGroupName, logStreamName) {
 #' -   To delete a subscription filter policy, you must have the
 #'     `logs:DeleteSubscriptionFilter` and `logs:DeleteAccountPolicy`
 #'     permissions.
+#' 
+#' -   To delete a transformer policy, you must have the
+#'     `logs:DeleteTransformer` and `logs:DeleteAccountPolicy` permissions.
+#' 
+#' -   To delete a field index policy, you must have the
+#'     `logs:DeleteIndexPolicy` and `logs:DeleteAccountPolicy` permissions.
+#' 
+#' If you delete a field index policy, the indexing of the log events that
+#' happened before you deleted the policy will still be used for up to 30
+#' days to improve CloudWatch Logs Insights queries.
 #'
 #' @usage
 #' cloudwatchlogs_delete_account_policy(policyName, policyType)
@@ -745,7 +760,7 @@ cloudwatchlogs_create_log_stream <- function(logGroupName, logStreamName) {
 #' ```
 #' svc$delete_account_policy(
 #'   policyName = "string",
-#'   policyType = "DATA_PROTECTION_POLICY"|"SUBSCRIPTION_FILTER_POLICY"
+#'   policyType = "DATA_PROTECTION_POLICY"|"SUBSCRIPTION_FILTER_POLICY"|"FIELD_INDEX_POLICY"|"TRANSFORMER_POLICY"
 #' )
 #' ```
 #'
@@ -1070,6 +1085,119 @@ cloudwatchlogs_delete_destination <- function(destinationName) {
   return(response)
 }
 .cloudwatchlogs$operations$delete_destination <- cloudwatchlogs_delete_destination
+
+#' Deletes a log-group level field index policy that was applied to a
+#' single log group
+#'
+#' @description
+#' Deletes a log-group level field index policy that was applied to a
+#' single log group. The indexing of the log events that happened before
+#' you delete the policy will still be used for as many as 30 days to
+#' improve CloudWatch Logs Insights queries.
+#' 
+#' You can't use this operation to delete an account-level index policy.
+#' Instead, use
+#' [DeletAccountPolicy](https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_DeleteAccountPolicy.html).
+#' 
+#' If you delete a log-group level field index policy and there is an
+#' account-level field index policy, in a few minutes the log group begins
+#' using that account-wide policy to index new incoming log events.
+#'
+#' @usage
+#' cloudwatchlogs_delete_index_policy(logGroupIdentifier)
+#'
+#' @param logGroupIdentifier &#91;required&#93; The log group to delete the index policy for. You can specify either the
+#' name or the ARN of the log group.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_index_policy(
+#'   logGroupIdentifier = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchlogs_delete_index_policy
+#'
+#' @aliases cloudwatchlogs_delete_index_policy
+cloudwatchlogs_delete_index_policy <- function(logGroupIdentifier) {
+  op <- new_operation(
+    name = "DeleteIndexPolicy",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudwatchlogs$delete_index_policy_input(logGroupIdentifier = logGroupIdentifier)
+  output <- .cloudwatchlogs$delete_index_policy_output()
+  config <- get_config()
+  svc <- .cloudwatchlogs$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchlogs$operations$delete_index_policy <- cloudwatchlogs_delete_index_policy
+
+#' Deletes the integration between CloudWatch Logs and OpenSearch Service
+#'
+#' @description
+#' Deletes the integration between CloudWatch Logs and OpenSearch Service.
+#' If your integration has active vended logs dashboards, you must specify
+#' `true` for the `force` parameter, otherwise the operation will fail. If
+#' you delete the integration by setting `force` to `true`, all your vended
+#' logs dashboards powered by OpenSearch Service will be deleted and the
+#' data that was on them will no longer be accessible.
+#'
+#' @usage
+#' cloudwatchlogs_delete_integration(integrationName, force)
+#'
+#' @param integrationName &#91;required&#93; The name of the integration to delete. To find the name of your
+#' integration, use
+#' [`list_integrations`][cloudwatchlogs_list_integrations].
+#' @param force Specify `true` to force the deletion of the integration even if vended
+#' logs dashboards currently exist.
+#' 
+#' The default is `false`.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_integration(
+#'   integrationName = "string",
+#'   force = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchlogs_delete_integration
+#'
+#' @aliases cloudwatchlogs_delete_integration
+cloudwatchlogs_delete_integration <- function(integrationName, force = NULL) {
+  op <- new_operation(
+    name = "DeleteIntegration",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudwatchlogs$delete_integration_input(integrationName = integrationName, force = force)
+  output <- .cloudwatchlogs$delete_integration_output()
+  config <- get_config()
+  svc <- .cloudwatchlogs$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchlogs$operations$delete_integration <- cloudwatchlogs_delete_integration
 
 #' Deletes the specified CloudWatch Logs anomaly detector
 #'
@@ -1455,6 +1583,60 @@ cloudwatchlogs_delete_subscription_filter <- function(logGroupName, filterName) 
 }
 .cloudwatchlogs$operations$delete_subscription_filter <- cloudwatchlogs_delete_subscription_filter
 
+#' Deletes the log transformer for the specified log group
+#'
+#' @description
+#' Deletes the log transformer for the specified log group. As soon as you
+#' do this, the transformation of incoming log events according to that
+#' transformer stops. If this account has an account-level transformer that
+#' applies to this log group, the log group begins using that account-level
+#' transformer when this log-group level transformer is deleted.
+#' 
+#' After you delete a transformer, be sure to edit any metric filters or
+#' subscription filters that relied on the transformed versions of the log
+#' events.
+#'
+#' @usage
+#' cloudwatchlogs_delete_transformer(logGroupIdentifier)
+#'
+#' @param logGroupIdentifier &#91;required&#93; Specify either the name or ARN of the log group to delete the
+#' transformer for. If the log group is in a source account and you are
+#' using a monitoring account, you must use the log group ARN.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_transformer(
+#'   logGroupIdentifier = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchlogs_delete_transformer
+#'
+#' @aliases cloudwatchlogs_delete_transformer
+cloudwatchlogs_delete_transformer <- function(logGroupIdentifier) {
+  op <- new_operation(
+    name = "DeleteTransformer",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudwatchlogs$delete_transformer_input(logGroupIdentifier = logGroupIdentifier)
+  output <- .cloudwatchlogs$delete_transformer_output()
+  config <- get_config()
+  svc <- .cloudwatchlogs$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchlogs$operations$delete_transformer <- cloudwatchlogs_delete_transformer
+
 #' Returns a list of all CloudWatch Logs account policies in the account
 #'
 #' @description
@@ -1462,7 +1644,7 @@ cloudwatchlogs_delete_subscription_filter <- function(logGroupName, filterName) 
 #'
 #' @usage
 #' cloudwatchlogs_describe_account_policies(policyType, policyName,
-#'   accountIdentifiers)
+#'   accountIdentifiers, nextToken)
 #'
 #' @param policyType &#91;required&#93; Use this parameter to limit the returned policies to only the policies
 #' that match the policy type that you specify.
@@ -1476,6 +1658,8 @@ cloudwatchlogs_delete_subscription_filter <- function(logGroupName, filterName) 
 #' 
 #' If you omit this parameter, only the policy in the current account is
 #' returned.
+#' @param nextToken The token for the next set of items to return. (You received this token
+#' from a previous call.)
 #'
 #' @return
 #' A list with the following syntax:
@@ -1486,23 +1670,25 @@ cloudwatchlogs_delete_subscription_filter <- function(logGroupName, filterName) 
 #'       policyName = "string",
 #'       policyDocument = "string",
 #'       lastUpdatedTime = 123,
-#'       policyType = "DATA_PROTECTION_POLICY"|"SUBSCRIPTION_FILTER_POLICY",
+#'       policyType = "DATA_PROTECTION_POLICY"|"SUBSCRIPTION_FILTER_POLICY"|"FIELD_INDEX_POLICY"|"TRANSFORMER_POLICY",
 #'       scope = "ALL",
 #'       selectionCriteria = "string",
 #'       accountId = "string"
 #'     )
-#'   )
+#'   ),
+#'   nextToken = "string"
 #' )
 #' ```
 #'
 #' @section Request syntax:
 #' ```
 #' svc$describe_account_policies(
-#'   policyType = "DATA_PROTECTION_POLICY"|"SUBSCRIPTION_FILTER_POLICY",
+#'   policyType = "DATA_PROTECTION_POLICY"|"SUBSCRIPTION_FILTER_POLICY"|"FIELD_INDEX_POLICY"|"TRANSFORMER_POLICY",
 #'   policyName = "string",
 #'   accountIdentifiers = list(
 #'     "string"
-#'   )
+#'   ),
+#'   nextToken = "string"
 #' )
 #' ```
 #'
@@ -1511,7 +1697,7 @@ cloudwatchlogs_delete_subscription_filter <- function(logGroupName, filterName) 
 #' @rdname cloudwatchlogs_describe_account_policies
 #'
 #' @aliases cloudwatchlogs_describe_account_policies
-cloudwatchlogs_describe_account_policies <- function(policyType, policyName = NULL, accountIdentifiers = NULL) {
+cloudwatchlogs_describe_account_policies <- function(policyType, policyName = NULL, accountIdentifiers = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "DescribeAccountPolicies",
     http_method = "POST",
@@ -1520,7 +1706,7 @@ cloudwatchlogs_describe_account_policies <- function(policyType, policyName = NU
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .cloudwatchlogs$describe_account_policies_input(policyType = policyType, policyName = policyName, accountIdentifiers = accountIdentifiers)
+  input <- .cloudwatchlogs$describe_account_policies_input(policyType = policyType, policyName = policyName, accountIdentifiers = accountIdentifiers, nextToken = nextToken)
   output <- .cloudwatchlogs$describe_account_policies_output()
   config <- get_config()
   svc <- .cloudwatchlogs$service(config, op)
@@ -1920,7 +2106,7 @@ cloudwatchlogs_describe_destinations <- function(DestinationNamePrefix = NULL, n
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "limit", output_token = "nextToken", result_key = "destinations"),
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "limit", result_key = "destinations"),
     stream_api = FALSE
   )
   input <- .cloudwatchlogs$describe_destinations_input(DestinationNamePrefix = DestinationNamePrefix, nextToken = nextToken, limit = limit)
@@ -2000,7 +2186,7 @@ cloudwatchlogs_describe_export_tasks <- function(taskId = NULL, statusCode = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "nextToken", limit_key = "limit", output_token = "nextToken", result_key = "exportTasks"),
     stream_api = FALSE
   )
   input <- .cloudwatchlogs$describe_export_tasks_input(taskId = taskId, statusCode = statusCode, nextToken = nextToken, limit = limit)
@@ -2013,6 +2199,148 @@ cloudwatchlogs_describe_export_tasks <- function(taskId = NULL, statusCode = NUL
 }
 .cloudwatchlogs$operations$describe_export_tasks <- cloudwatchlogs_describe_export_tasks
 
+#' Returns a list of field indexes listed in the field index policies of
+#' one or more log groups
+#'
+#' @description
+#' Returns a list of field indexes listed in the field index policies of
+#' one or more log groups. For more information about field index policies,
+#' see [`put_index_policy`][cloudwatchlogs_put_index_policy].
+#'
+#' @usage
+#' cloudwatchlogs_describe_field_indexes(logGroupIdentifiers, nextToken)
+#'
+#' @param logGroupIdentifiers &#91;required&#93; An array containing the names or ARNs of the log groups that you want to
+#' retrieve field indexes for.
+#' @param nextToken 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   fieldIndexes = list(
+#'     list(
+#'       logGroupIdentifier = "string",
+#'       fieldIndexName = "string",
+#'       lastScanTime = 123,
+#'       firstEventTime = 123,
+#'       lastEventTime = 123
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_field_indexes(
+#'   logGroupIdentifiers = list(
+#'     "string"
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchlogs_describe_field_indexes
+#'
+#' @aliases cloudwatchlogs_describe_field_indexes
+cloudwatchlogs_describe_field_indexes <- function(logGroupIdentifiers, nextToken = NULL) {
+  op <- new_operation(
+    name = "DescribeFieldIndexes",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudwatchlogs$describe_field_indexes_input(logGroupIdentifiers = logGroupIdentifiers, nextToken = nextToken)
+  output <- .cloudwatchlogs$describe_field_indexes_output()
+  config <- get_config()
+  svc <- .cloudwatchlogs$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchlogs$operations$describe_field_indexes <- cloudwatchlogs_describe_field_indexes
+
+#' Returns the field index policies of one or more log groups
+#'
+#' @description
+#' Returns the field index policies of one or more log groups. For more
+#' information about field index policies, see
+#' [`put_index_policy`][cloudwatchlogs_put_index_policy].
+#' 
+#' If a specified log group has a log-group level index policy, that policy
+#' is returned by this operation.
+#' 
+#' If a specified log group doesn't have a log-group level index policy,
+#' but an account-wide index policy applies to it, that account-wide policy
+#' is returned by this operation.
+#' 
+#' To find information about only account-level policies, use
+#' [`describe_account_policies`][cloudwatchlogs_describe_account_policies]
+#' instead.
+#'
+#' @usage
+#' cloudwatchlogs_describe_index_policies(logGroupIdentifiers, nextToken)
+#'
+#' @param logGroupIdentifiers &#91;required&#93; An array containing the name or ARN of the log group that you want to
+#' retrieve field index policies for.
+#' @param nextToken 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   indexPolicies = list(
+#'     list(
+#'       logGroupIdentifier = "string",
+#'       lastUpdateTime = 123,
+#'       policyDocument = "string",
+#'       policyName = "string",
+#'       source = "ACCOUNT"|"LOG_GROUP"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_index_policies(
+#'   logGroupIdentifiers = list(
+#'     "string"
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchlogs_describe_index_policies
+#'
+#' @aliases cloudwatchlogs_describe_index_policies
+cloudwatchlogs_describe_index_policies <- function(logGroupIdentifiers, nextToken = NULL) {
+  op <- new_operation(
+    name = "DescribeIndexPolicies",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudwatchlogs$describe_index_policies_input(logGroupIdentifiers = logGroupIdentifiers, nextToken = nextToken)
+  output <- .cloudwatchlogs$describe_index_policies_output()
+  config <- get_config()
+  svc <- .cloudwatchlogs$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchlogs$operations$describe_index_policies <- cloudwatchlogs_describe_index_policies
+
 #' Lists the specified log groups
 #'
 #' @description
@@ -2020,7 +2348,7 @@ cloudwatchlogs_describe_export_tasks <- function(taskId = NULL, statusCode = NUL
 #' filter the results by prefix. The results are ASCII-sorted by log group
 #' name.
 #' 
-#' CloudWatch Logs doesn’t support IAM policies that control access to the
+#' CloudWatch Logs doesn't support IAM policies that control access to the
 #' [`describe_log_groups`][cloudwatchlogs_describe_log_groups] action by
 #' using the `aws:ResourceTag/key-name ` condition key. Other CloudWatch
 #' Logs actions do support the use of the `aws:ResourceTag/key-name `
@@ -2130,7 +2458,7 @@ cloudwatchlogs_describe_log_groups <- function(accountIdentifiers = NULL, logGro
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "limit", output_token = "nextToken", result_key = "logGroups"),
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "limit", result_key = "logGroups"),
     stream_api = FALSE
   )
   input <- .cloudwatchlogs$describe_log_groups_input(accountIdentifiers = accountIdentifiers, logGroupNamePrefix = logGroupNamePrefix, logGroupNamePattern = logGroupNamePattern, nextToken = nextToken, limit = limit, includeLinkedAccounts = includeLinkedAccounts, logGroupClass = logGroupClass)
@@ -2244,7 +2572,7 @@ cloudwatchlogs_describe_log_streams <- function(logGroupName = NULL, logGroupIde
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "limit", output_token = "nextToken", result_key = "logStreams"),
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "limit", result_key = "logStreams"),
     stream_api = FALSE
   )
   input <- .cloudwatchlogs$describe_log_streams_input(logGroupName = logGroupName, logGroupIdentifier = logGroupIdentifier, logStreamNamePrefix = logStreamNamePrefix, orderBy = orderBy, descending = descending, nextToken = nextToken, limit = limit)
@@ -2303,7 +2631,8 @@ cloudwatchlogs_describe_log_streams <- function(logGroupName = NULL, logGroupIde
 #'         )
 #'       ),
 #'       creationTime = 123,
-#'       logGroupName = "string"
+#'       logGroupName = "string",
+#'       applyOnTransformedLogs = TRUE|FALSE
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -2333,7 +2662,7 @@ cloudwatchlogs_describe_metric_filters <- function(logGroupName = NULL, filterNa
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "limit", output_token = "nextToken", result_key = "metricFilters"),
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "limit", result_key = "metricFilters"),
     stream_api = FALSE
   )
   input <- .cloudwatchlogs$describe_metric_filters_input(logGroupName = logGroupName, filterNamePrefix = filterNamePrefix, nextToken = nextToken, limit = limit, metricName = metricName, metricNamespace = metricNamespace)
@@ -2357,7 +2686,7 @@ cloudwatchlogs_describe_metric_filters <- function(logGroupName = NULL, filterNa
 #'
 #' @usage
 #' cloudwatchlogs_describe_queries(logGroupName, status, maxResults,
-#'   nextToken)
+#'   nextToken, queryLanguage)
 #'
 #' @param logGroupName Limits the returned queries to only those for the specified log group.
 #' @param status Limits the returned queries to only those that have the specified
@@ -2365,6 +2694,8 @@ cloudwatchlogs_describe_metric_filters <- function(logGroupName = NULL, filterNa
 #' and `Scheduled`.
 #' @param maxResults Limits the number of returned queries to the specified number.
 #' @param nextToken 
+#' @param queryLanguage Limits the returned queries to only the queries that use the specified
+#' query language.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2372,6 +2703,7 @@ cloudwatchlogs_describe_metric_filters <- function(logGroupName = NULL, filterNa
 #' list(
 #'   queries = list(
 #'     list(
+#'       queryLanguage = "CWLI"|"SQL"|"PPL",
 #'       queryId = "string",
 #'       queryString = "string",
 #'       status = "Scheduled"|"Running"|"Complete"|"Failed"|"Cancelled"|"Timeout"|"Unknown",
@@ -2389,7 +2721,8 @@ cloudwatchlogs_describe_metric_filters <- function(logGroupName = NULL, filterNa
 #'   logGroupName = "string",
 #'   status = "Scheduled"|"Running"|"Complete"|"Failed"|"Cancelled"|"Timeout"|"Unknown",
 #'   maxResults = 123,
-#'   nextToken = "string"
+#'   nextToken = "string",
+#'   queryLanguage = "CWLI"|"SQL"|"PPL"
 #' )
 #' ```
 #'
@@ -2398,16 +2731,16 @@ cloudwatchlogs_describe_metric_filters <- function(logGroupName = NULL, filterNa
 #' @rdname cloudwatchlogs_describe_queries
 #'
 #' @aliases cloudwatchlogs_describe_queries
-cloudwatchlogs_describe_queries <- function(logGroupName = NULL, status = NULL, maxResults = NULL, nextToken = NULL) {
+cloudwatchlogs_describe_queries <- function(logGroupName = NULL, status = NULL, maxResults = NULL, nextToken = NULL, queryLanguage = NULL) {
   op <- new_operation(
     name = "DescribeQueries",
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "queries"),
     stream_api = FALSE
   )
-  input <- .cloudwatchlogs$describe_queries_input(logGroupName = logGroupName, status = status, maxResults = maxResults, nextToken = nextToken)
+  input <- .cloudwatchlogs$describe_queries_input(logGroupName = logGroupName, status = status, maxResults = maxResults, nextToken = nextToken, queryLanguage = queryLanguage)
   output <- .cloudwatchlogs$describe_queries_output()
   config <- get_config()
   svc <- .cloudwatchlogs$service(config, op)
@@ -2431,9 +2764,12 @@ cloudwatchlogs_describe_queries <- function(logGroupName = NULL, status = NULL, 
 #' certain string.
 #'
 #' @usage
-#' cloudwatchlogs_describe_query_definitions(queryDefinitionNamePrefix,
-#'   maxResults, nextToken)
+#' cloudwatchlogs_describe_query_definitions(queryLanguage,
+#'   queryDefinitionNamePrefix, maxResults, nextToken)
 #'
+#' @param queryLanguage The query language used for this query. For more information about the
+#' query languages that CloudWatch Logs supports, see [Supported query
+#' languages](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_AnalyzeLogData_Languages.html).
 #' @param queryDefinitionNamePrefix Use this parameter to filter your results to only the query definitions
 #' that have names that start with the prefix you specify.
 #' @param maxResults Limits the number of returned query definitions to the specified number.
@@ -2445,6 +2781,7 @@ cloudwatchlogs_describe_queries <- function(logGroupName = NULL, status = NULL, 
 #' list(
 #'   queryDefinitions = list(
 #'     list(
+#'       queryLanguage = "CWLI"|"SQL"|"PPL",
 #'       queryDefinitionId = "string",
 #'       name = "string",
 #'       queryString = "string",
@@ -2461,6 +2798,7 @@ cloudwatchlogs_describe_queries <- function(logGroupName = NULL, status = NULL, 
 #' @section Request syntax:
 #' ```
 #' svc$describe_query_definitions(
+#'   queryLanguage = "CWLI"|"SQL"|"PPL",
 #'   queryDefinitionNamePrefix = "string",
 #'   maxResults = 123,
 #'   nextToken = "string"
@@ -2472,7 +2810,7 @@ cloudwatchlogs_describe_queries <- function(logGroupName = NULL, status = NULL, 
 #' @rdname cloudwatchlogs_describe_query_definitions
 #'
 #' @aliases cloudwatchlogs_describe_query_definitions
-cloudwatchlogs_describe_query_definitions <- function(queryDefinitionNamePrefix = NULL, maxResults = NULL, nextToken = NULL) {
+cloudwatchlogs_describe_query_definitions <- function(queryLanguage = NULL, queryDefinitionNamePrefix = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "DescribeQueryDefinitions",
     http_method = "POST",
@@ -2481,7 +2819,7 @@ cloudwatchlogs_describe_query_definitions <- function(queryDefinitionNamePrefix 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .cloudwatchlogs$describe_query_definitions_input(queryDefinitionNamePrefix = queryDefinitionNamePrefix, maxResults = maxResults, nextToken = nextToken)
+  input <- .cloudwatchlogs$describe_query_definitions_input(queryLanguage = queryLanguage, queryDefinitionNamePrefix = queryDefinitionNamePrefix, maxResults = maxResults, nextToken = nextToken)
   output <- .cloudwatchlogs$describe_query_definitions_output()
   config <- get_config()
   svc <- .cloudwatchlogs$service(config, op)
@@ -2537,7 +2875,7 @@ cloudwatchlogs_describe_resource_policies <- function(nextToken = NULL, limit = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "nextToken", limit_key = "limit", output_token = "nextToken", result_key = "resourcePolicies"),
     stream_api = FALSE
   )
   input <- .cloudwatchlogs$describe_resource_policies_input(nextToken = nextToken, limit = limit)
@@ -2581,6 +2919,7 @@ cloudwatchlogs_describe_resource_policies <- function(nextToken = NULL, limit = 
 #'       destinationArn = "string",
 #'       roleArn = "string",
 #'       distribution = "Random"|"ByLogStream",
+#'       applyOnTransformedLogs = TRUE|FALSE,
 #'       creationTime = 123
 #'     )
 #'   ),
@@ -2609,7 +2948,7 @@ cloudwatchlogs_describe_subscription_filters <- function(logGroupName, filterNam
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "limit", output_token = "nextToken", result_key = "subscriptionFilters"),
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "limit", result_key = "subscriptionFilters"),
     stream_api = FALSE
   )
   input <- .cloudwatchlogs$describe_subscription_filters_input(logGroupName = logGroupName, filterNamePrefix = filterNamePrefix, nextToken = nextToken, limit = limit)
@@ -2857,7 +3196,7 @@ cloudwatchlogs_filter_log_events <- function(logGroupName = NULL, logGroupIdenti
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "limit", output_token = "nextToken", result_key = list("events", "searchedLogStreams")),
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "limit", result_key = list("events", "searchedLogStreams")),
     stream_api = FALSE
   )
   input <- .cloudwatchlogs$filter_log_events_input(logGroupName = logGroupName, logGroupIdentifier = logGroupIdentifier, logStreamNames = logStreamNames, logStreamNamePrefix = logStreamNamePrefix, startTime = startTime, endTime = endTime, filterPattern = filterPattern, nextToken = nextToken, limit = limit, interleaved = interleaved, unmask = unmask)
@@ -3180,6 +3519,124 @@ cloudwatchlogs_get_delivery_source <- function(name) {
 }
 .cloudwatchlogs$operations$get_delivery_source <- cloudwatchlogs_get_delivery_source
 
+#' Returns information about one integration between CloudWatch Logs and
+#' OpenSearch Service
+#'
+#' @description
+#' Returns information about one integration between CloudWatch Logs and
+#' OpenSearch Service.
+#'
+#' @usage
+#' cloudwatchlogs_get_integration(integrationName)
+#'
+#' @param integrationName &#91;required&#93; The name of the integration that you want to find information about. To
+#' find the name of your integration, use
+#' [`list_integrations`][cloudwatchlogs_list_integrations]
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   integrationName = "string",
+#'   integrationType = "OPENSEARCH",
+#'   integrationStatus = "PROVISIONING"|"ACTIVE"|"FAILED",
+#'   integrationDetails = list(
+#'     openSearchIntegrationDetails = list(
+#'       dataSource = list(
+#'         dataSourceName = "string",
+#'         status = list(
+#'           status = "ACTIVE"|"NOT_FOUND"|"ERROR",
+#'           statusMessage = "string"
+#'         )
+#'       ),
+#'       application = list(
+#'         applicationEndpoint = "string",
+#'         applicationArn = "string",
+#'         applicationId = "string",
+#'         status = list(
+#'           status = "ACTIVE"|"NOT_FOUND"|"ERROR",
+#'           statusMessage = "string"
+#'         )
+#'       ),
+#'       collection = list(
+#'         collectionEndpoint = "string",
+#'         collectionArn = "string",
+#'         status = list(
+#'           status = "ACTIVE"|"NOT_FOUND"|"ERROR",
+#'           statusMessage = "string"
+#'         )
+#'       ),
+#'       workspace = list(
+#'         workspaceId = "string",
+#'         status = list(
+#'           status = "ACTIVE"|"NOT_FOUND"|"ERROR",
+#'           statusMessage = "string"
+#'         )
+#'       ),
+#'       encryptionPolicy = list(
+#'         policyName = "string",
+#'         status = list(
+#'           status = "ACTIVE"|"NOT_FOUND"|"ERROR",
+#'           statusMessage = "string"
+#'         )
+#'       ),
+#'       networkPolicy = list(
+#'         policyName = "string",
+#'         status = list(
+#'           status = "ACTIVE"|"NOT_FOUND"|"ERROR",
+#'           statusMessage = "string"
+#'         )
+#'       ),
+#'       accessPolicy = list(
+#'         policyName = "string",
+#'         status = list(
+#'           status = "ACTIVE"|"NOT_FOUND"|"ERROR",
+#'           statusMessage = "string"
+#'         )
+#'       ),
+#'       lifecyclePolicy = list(
+#'         policyName = "string",
+#'         status = list(
+#'           status = "ACTIVE"|"NOT_FOUND"|"ERROR",
+#'           statusMessage = "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_integration(
+#'   integrationName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchlogs_get_integration
+#'
+#' @aliases cloudwatchlogs_get_integration
+cloudwatchlogs_get_integration <- function(integrationName) {
+  op <- new_operation(
+    name = "GetIntegration",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudwatchlogs$get_integration_input(integrationName = integrationName)
+  output <- .cloudwatchlogs$get_integration_output()
+  config <- get_config()
+  svc <- .cloudwatchlogs$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchlogs$operations$get_integration <- cloudwatchlogs_get_integration
+
 #' Retrieves information about the log anomaly detector that you specify
 #'
 #' @description
@@ -3345,7 +3802,7 @@ cloudwatchlogs_get_log_events <- function(logGroupName = NULL, logGroupIdentifie
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "limit", output_token = "nextForwardToken", result_key = "events"),
+    paginator = list(),
     stream_api = FALSE
   )
   input <- .cloudwatchlogs$get_log_events_input(logGroupName = logGroupName, logGroupIdentifier = logGroupIdentifier, logStreamName = logStreamName, startTime = startTime, endTime = endTime, nextToken = nextToken, limit = limit, startFromHead = startFromHead, unmask = unmask)
@@ -3553,6 +4010,7 @@ cloudwatchlogs_get_log_record <- function(logRecordPointer, unmask = NULL) {
 #' A list with the following syntax:
 #' ```
 #' list(
+#'   queryLanguage = "CWLI"|"SQL"|"PPL",
 #'   results = list(
 #'     list(
 #'       list(
@@ -3564,7 +4022,10 @@ cloudwatchlogs_get_log_record <- function(logRecordPointer, unmask = NULL) {
 #'   statistics = list(
 #'     recordsMatched = 123.0,
 #'     recordsScanned = 123.0,
-#'     bytesScanned = 123.0
+#'     estimatedRecordsSkipped = 123.0,
+#'     bytesScanned = 123.0,
+#'     estimatedBytesSkipped = 123.0,
+#'     logGroupsScanned = 123.0
 #'   ),
 #'   status = "Scheduled"|"Running"|"Complete"|"Failed"|"Cancelled"|"Timeout"|"Unknown",
 #'   encryptionKey = "string"
@@ -3601,6 +4062,209 @@ cloudwatchlogs_get_query_results <- function(queryId) {
   return(response)
 }
 .cloudwatchlogs$operations$get_query_results <- cloudwatchlogs_get_query_results
+
+#' Returns the information about the log transformer associated with this
+#' log group
+#'
+#' @description
+#' Returns the information about the log transformer associated with this
+#' log group.
+#' 
+#' This operation returns data only for transformers created at the log
+#' group level. To get information for an account-level transformer, use
+#' [`describe_account_policies`][cloudwatchlogs_describe_account_policies].
+#'
+#' @usage
+#' cloudwatchlogs_get_transformer(logGroupIdentifier)
+#'
+#' @param logGroupIdentifier &#91;required&#93; Specify either the name or ARN of the log group to return transformer
+#' information for. If the log group is in a source account and you are
+#' using a monitoring account, you must use the log group ARN.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   logGroupIdentifier = "string",
+#'   creationTime = 123,
+#'   lastModifiedTime = 123,
+#'   transformerConfig = list(
+#'     list(
+#'       addKeys = list(
+#'         entries = list(
+#'           list(
+#'             key = "string",
+#'             value = "string",
+#'             overwriteIfExists = TRUE|FALSE
+#'           )
+#'         )
+#'       ),
+#'       copyValue = list(
+#'         entries = list(
+#'           list(
+#'             source = "string",
+#'             target = "string",
+#'             overwriteIfExists = TRUE|FALSE
+#'           )
+#'         )
+#'       ),
+#'       csv = list(
+#'         quoteCharacter = "string",
+#'         delimiter = "string",
+#'         columns = list(
+#'           "string"
+#'         ),
+#'         source = "string"
+#'       ),
+#'       dateTimeConverter = list(
+#'         source = "string",
+#'         target = "string",
+#'         targetFormat = "string",
+#'         matchPatterns = list(
+#'           "string"
+#'         ),
+#'         sourceTimezone = "string",
+#'         targetTimezone = "string",
+#'         locale = "string"
+#'       ),
+#'       deleteKeys = list(
+#'         withKeys = list(
+#'           "string"
+#'         )
+#'       ),
+#'       grok = list(
+#'         source = "string",
+#'         match = "string"
+#'       ),
+#'       listToMap = list(
+#'         source = "string",
+#'         key = "string",
+#'         valueKey = "string",
+#'         target = "string",
+#'         flatten = TRUE|FALSE,
+#'         flattenedElement = "first"|"last"
+#'       ),
+#'       lowerCaseString = list(
+#'         withKeys = list(
+#'           "string"
+#'         )
+#'       ),
+#'       moveKeys = list(
+#'         entries = list(
+#'           list(
+#'             source = "string",
+#'             target = "string",
+#'             overwriteIfExists = TRUE|FALSE
+#'           )
+#'         )
+#'       ),
+#'       parseCloudfront = list(
+#'         source = "string"
+#'       ),
+#'       parseJSON = list(
+#'         source = "string",
+#'         destination = "string"
+#'       ),
+#'       parseKeyValue = list(
+#'         source = "string",
+#'         destination = "string",
+#'         fieldDelimiter = "string",
+#'         keyValueDelimiter = "string",
+#'         keyPrefix = "string",
+#'         nonMatchValue = "string",
+#'         overwriteIfExists = TRUE|FALSE
+#'       ),
+#'       parseRoute53 = list(
+#'         source = "string"
+#'       ),
+#'       parsePostgres = list(
+#'         source = "string"
+#'       ),
+#'       parseVPC = list(
+#'         source = "string"
+#'       ),
+#'       parseWAF = list(
+#'         source = "string"
+#'       ),
+#'       renameKeys = list(
+#'         entries = list(
+#'           list(
+#'             key = "string",
+#'             renameTo = "string",
+#'             overwriteIfExists = TRUE|FALSE
+#'           )
+#'         )
+#'       ),
+#'       splitString = list(
+#'         entries = list(
+#'           list(
+#'             source = "string",
+#'             delimiter = "string"
+#'           )
+#'         )
+#'       ),
+#'       substituteString = list(
+#'         entries = list(
+#'           list(
+#'             source = "string",
+#'             from = "string",
+#'             to = "string"
+#'           )
+#'         )
+#'       ),
+#'       trimString = list(
+#'         withKeys = list(
+#'           "string"
+#'         )
+#'       ),
+#'       typeConverter = list(
+#'         entries = list(
+#'           list(
+#'             key = "string",
+#'             type = "boolean"|"integer"|"double"|"string"
+#'           )
+#'         )
+#'       ),
+#'       upperCaseString = list(
+#'         withKeys = list(
+#'           "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_transformer(
+#'   logGroupIdentifier = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchlogs_get_transformer
+#'
+#' @aliases cloudwatchlogs_get_transformer
+cloudwatchlogs_get_transformer <- function(logGroupIdentifier) {
+  op <- new_operation(
+    name = "GetTransformer",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudwatchlogs$get_transformer_input(logGroupIdentifier = logGroupIdentifier)
+  output <- .cloudwatchlogs$get_transformer_output()
+  config <- get_config()
+  svc <- .cloudwatchlogs$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchlogs$operations$get_transformer <- cloudwatchlogs_get_transformer
 
 #' Returns a list of anomalies that log anomaly detectors have found
 #'
@@ -3654,7 +4318,8 @@ cloudwatchlogs_get_query_results <- function(queryId) {
 #'           tokenString = "string",
 #'           enumerations = list(
 #'             123
-#'           )
+#'           ),
+#'           inferredTokenName = "string"
 #'         )
 #'       ),
 #'       logGroupArnList = list(
@@ -3703,6 +4368,72 @@ cloudwatchlogs_list_anomalies <- function(anomalyDetectorArn = NULL, suppression
   return(response)
 }
 .cloudwatchlogs$operations$list_anomalies <- cloudwatchlogs_list_anomalies
+
+#' Returns a list of integrations between CloudWatch Logs and other
+#' services in this account
+#'
+#' @description
+#' Returns a list of integrations between CloudWatch Logs and other
+#' services in this account. Currently, only one integration can be created
+#' in an account, and this integration must be with OpenSearch Service.
+#'
+#' @usage
+#' cloudwatchlogs_list_integrations(integrationNamePrefix, integrationType,
+#'   integrationStatus)
+#'
+#' @param integrationNamePrefix To limit the results to integrations that start with a certain name
+#' prefix, specify that name prefix here.
+#' @param integrationType To limit the results to integrations of a certain type, specify that
+#' type here.
+#' @param integrationStatus To limit the results to integrations with a certain status, specify that
+#' status here.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   integrationSummaries = list(
+#'     list(
+#'       integrationName = "string",
+#'       integrationType = "OPENSEARCH",
+#'       integrationStatus = "PROVISIONING"|"ACTIVE"|"FAILED"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_integrations(
+#'   integrationNamePrefix = "string",
+#'   integrationType = "OPENSEARCH",
+#'   integrationStatus = "PROVISIONING"|"ACTIVE"|"FAILED"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchlogs_list_integrations
+#'
+#' @aliases cloudwatchlogs_list_integrations
+cloudwatchlogs_list_integrations <- function(integrationNamePrefix = NULL, integrationType = NULL, integrationStatus = NULL) {
+  op <- new_operation(
+    name = "ListIntegrations",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudwatchlogs$list_integrations_input(integrationNamePrefix = integrationNamePrefix, integrationType = integrationType, integrationStatus = integrationStatus)
+  output <- .cloudwatchlogs$list_integrations_output()
+  config <- get_config()
+  svc <- .cloudwatchlogs$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchlogs$operations$list_integrations <- cloudwatchlogs_list_integrations
 
 #' Retrieves a list of the log anomaly detectors in the account
 #'
@@ -3775,6 +4506,71 @@ cloudwatchlogs_list_log_anomaly_detectors <- function(filterLogGroupArn = NULL, 
   return(response)
 }
 .cloudwatchlogs$operations$list_log_anomaly_detectors <- cloudwatchlogs_list_log_anomaly_detectors
+
+#' Returns a list of the log groups that were analyzed during a single
+#' CloudWatch Logs Insights query
+#'
+#' @description
+#' Returns a list of the log groups that were analyzed during a single
+#' CloudWatch Logs Insights query. This can be useful for queries that use
+#' log group name prefixes or the `filterIndex` command, because the log
+#' groups are dynamically selected in these cases.
+#' 
+#' For more information about field indexes, see [Create field indexes to
+#' improve query performance and reduce
+#' costs](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CloudWatchLogs-Field-Indexing.html).
+#'
+#' @usage
+#' cloudwatchlogs_list_log_groups_for_query(queryId, nextToken, maxResults)
+#'
+#' @param queryId &#91;required&#93; The ID of the query to use. This query ID is from the response to your
+#' [`start_query`][cloudwatchlogs_start_query] operation.
+#' @param nextToken 
+#' @param maxResults Limits the number of returned log groups to the specified number.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   logGroupIdentifiers = list(
+#'     "string"
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_log_groups_for_query(
+#'   queryId = "string",
+#'   nextToken = "string",
+#'   maxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchlogs_list_log_groups_for_query
+#'
+#' @aliases cloudwatchlogs_list_log_groups_for_query
+cloudwatchlogs_list_log_groups_for_query <- function(queryId, nextToken = NULL, maxResults = NULL) {
+  op <- new_operation(
+    name = "ListLogGroupsForQuery",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "logGroupIdentifiers"),
+    stream_api = FALSE
+  )
+  input <- .cloudwatchlogs$list_log_groups_for_query_input(queryId = queryId, nextToken = nextToken, maxResults = maxResults)
+  output <- .cloudwatchlogs$list_log_groups_for_query_output()
+  config <- get_config()
+  svc <- .cloudwatchlogs$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchlogs$operations$list_log_groups_for_query <- cloudwatchlogs_list_log_groups_for_query
 
 #' Displays the tags associated with a CloudWatch Logs resource
 #'
@@ -3894,14 +4690,14 @@ cloudwatchlogs_list_tags_log_group <- function(logGroupName) {
 }
 .cloudwatchlogs$operations$list_tags_log_group <- cloudwatchlogs_list_tags_log_group
 
-#' Creates an account-level data protection policy or subscription filter
-#' policy that applies to all log groups or a subset of log groups in the
-#' account
+#' Creates an account-level data protection policy, subscription filter
+#' policy, or field index policy that applies to all log groups or a subset
+#' of log groups in the account
 #'
 #' @description
-#' Creates an account-level data protection policy or subscription filter
-#' policy that applies to all log groups or a subset of log groups in the
-#' account.
+#' Creates an account-level data protection policy, subscription filter
+#' policy, or field index policy that applies to all log groups or a subset
+#' of log groups in the account.
 #' 
 #' **Data protection policy**
 #' 
@@ -3979,6 +4775,104 @@ cloudwatchlogs_list_tags_log_group <- function(logGroupName) {
 #' [`put_account_policy`][cloudwatchlogs_put_account_policy] subscription
 #' filter operation for any destination except a Lambda function, you must
 #' also have the `iam:PassRole` permission.
+#' 
+#' **Transformer policy**
+#' 
+#' Creates or updates a *log transformer policy* for your account. You use
+#' log transformers to transform log events into a different format, making
+#' them easier for you to process and analyze. You can also transform logs
+#' from different sources into standardized formats that contain relevant,
+#' source-specific information. After you have created a transformer,
+#' CloudWatch Logs performs this transformation at the time of log
+#' ingestion. You can then refer to the transformed versions of the logs
+#' during operations such as querying with CloudWatch Logs Insights or
+#' creating metric filters or subscription filters.
+#' 
+#' You can also use a transformer to copy metadata from metadata keys into
+#' the log events themselves. This metadata can include log group name, log
+#' stream name, account ID and Region.
+#' 
+#' A transformer for a log group is a series of processors, where each
+#' processor applies one type of transformation to the log events ingested
+#' into this log group. For more information about the available processors
+#' to use in a transformer, see [Processors that you can
+#' use](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CloudWatch-Logs-Transformation.html#CloudWatch-Logs-Transformation-Processors).
+#' 
+#' Having log events in standardized format enables visibility across your
+#' applications for your log analysis, reporting, and alarming needs.
+#' CloudWatch Logs provides transformation for common log types with
+#' out-of-the-box transformation templates for major Amazon Web Services
+#' log sources such as VPC flow logs, Lambda, and Amazon RDS. You can use
+#' pre-built transformation templates or create custom transformation
+#' policies.
+#' 
+#' You can create transformers only for the log groups in the Standard log
+#' class.
+#' 
+#' You can have one account-level transformer policy that applies to all
+#' log groups in the account. Or you can create as many as 20 account-level
+#' transformer policies that are each scoped to a subset of log groups with
+#' the `selectionCriteria` parameter. If you have multiple account-level
+#' transformer policies with selection criteria, no two of them can use the
+#' same or overlapping log group name prefixes. For example, if you have
+#' one policy filtered to log groups that start with `my-log`, you can't
+#' have another field index policy filtered to `my-logpprod` or
+#' `my-logging`.
+#' 
+#' You can also set up a transformer at the log-group level. For more
+#' information, see [`put_transformer`][cloudwatchlogs_put_transformer]. If
+#' there is both a log-group level transformer created with
+#' [`put_transformer`][cloudwatchlogs_put_transformer] and an account-level
+#' transformer that could apply to the same log group, the log group uses
+#' only the log-group level transformer. It ignores the account-level
+#' transformer.
+#' 
+#' **Field index policy**
+#' 
+#' You can use field index policies to create indexes on fields found in
+#' log events in the log group. Creating field indexes can help lower the
+#' scan volume for CloudWatch Logs Insights queries that reference those
+#' fields, because these queries attempt to skip the processing of log
+#' events that are known to not match the indexed field. Good fields to
+#' index are fields that you often need to query for and fields or values
+#' that match only a small fraction of the total log events. Common
+#' examples of indexes include request ID, session ID, user IDs, or
+#' instance IDs. For more information, see [Create field indexes to improve
+#' query performance and reduce
+#' costs](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CloudWatchLogs-Field-Indexing.html)
+#' 
+#' To find the fields that are in your log group events, use the
+#' [`get_log_group_fields`][cloudwatchlogs_get_log_group_fields] operation.
+#' 
+#' For example, suppose you have created a field index for `requestId`.
+#' Then, any CloudWatch Logs Insights query on that log group that includes
+#' `requestId = value ` or `requestId in [value, value, ...]` will attempt
+#' to process only the log events where the indexed field matches the
+#' specified value.
+#' 
+#' Matches of log events to the names of indexed fields are case-sensitive.
+#' For example, an indexed field of `RequestId` won't match a log event
+#' containing `requestId`.
+#' 
+#' You can have one account-level field index policy that applies to all
+#' log groups in the account. Or you can create as many as 20 account-level
+#' field index policies that are each scoped to a subset of log groups with
+#' the `selectionCriteria` parameter. If you have multiple account-level
+#' index policies with selection criteria, no two of them can use the same
+#' or overlapping log group name prefixes. For example, if you have one
+#' policy filtered to log groups that start with `my-log`, you can't have
+#' another field index policy filtered to `my-logpprod` or `my-logging`.
+#' 
+#' If you create an account-level field index policy in a monitoring
+#' account in cross-account observability, the policy is applied only to
+#' the monitoring account and not to any source accounts.
+#' 
+#' If you want to create a field index policy for a single log group, you
+#' can use [`put_index_policy`][cloudwatchlogs_put_index_policy] instead of
+#' [`put_account_policy`][cloudwatchlogs_put_account_policy]. If you do so,
+#' that log group will use only that log-group level policy, and will
+#' ignore the account-level policy that you create with
+#' [`put_account_policy`][cloudwatchlogs_put_account_policy].
 #'
 #' @usage
 #' cloudwatchlogs_put_account_policy(policyName, policyDocument,
@@ -4063,21 +4957,51 @@ cloudwatchlogs_list_tags_log_group <- function(logGroupName) {
 #'     grouping can be set to `Random` for a more even distribution. This
 #'     property is only applicable when the destination is an Kinesis Data
 #'     Streams data stream.
+#' 
+#' **Transformer policy**
+#' 
+#' A transformer policy must include one JSON block with the array of
+#' processors and their configurations. For more information about
+#' available processors, see [Processors that you can
+#' use](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CloudWatch-Logs-Transformation.html#CloudWatch-Logs-Transformation-Processors).
+#' 
+#' **Field index policy**
+#' 
+#' A field index filter policy can include the following attribute in a
+#' JSON block:
+#' 
+#' -   **Fields** The array of field indexes to create.
+#' 
+#' It must contain at least one field index.
+#' 
+#' The following is an example of an index policy document that creates two
+#' indexes, `RequestId` and `TransactionId`.
+#' 
+#' `"policyDocument": "{ \"Fields\": [ \"RequestId\", \"TransactionId\" ] }"`
 #' @param policyType &#91;required&#93; The type of policy that you're creating or updating.
 #' @param scope Currently the only valid value for this parameter is `ALL`, which
 #' specifies that the data protection policy applies to all log groups in
 #' the account. If you omit this parameter, the default of `ALL` is used.
-#' @param selectionCriteria Use this parameter to apply the subscription filter policy to a subset
-#' of log groups in the account. Currently, the only supported filter is
-#' `LogGroupName NOT IN []`. The `selectionCriteria` string can be up to
-#' 25KB in length. The length is determined by using its UTF-8 bytes.
-#' 
-#' Using the `selectionCriteria` parameter is useful to help prevent
-#' infinite loops. For more information, see [Log recursion
-#' prevention](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/Subscriptions-recursion-prevention.html).
+#' @param selectionCriteria Use this parameter to apply the new policy to a subset of log groups in
+#' the account.
 #' 
 #' Specifing `selectionCriteria` is valid only when you specify
-#' ` SUBSCRIPTION_FILTER_POLICY` for `policyType`.
+#' `SUBSCRIPTION_FILTER_POLICY`, `FIELD_INDEX_POLICY` or
+#' `TRANSFORMER_POLICY`for `policyType`.
+#' 
+#' If `policyType` is `SUBSCRIPTION_FILTER_POLICY`, the only supported
+#' `selectionCriteria` filter is `LogGroupName NOT IN []`
+#' 
+#' If `policyType` is `FIELD_INDEX_POLICY` or `TRANSFORMER_POLICY`, the
+#' only supported `selectionCriteria` filter is `LogGroupNamePrefix`
+#' 
+#' The `selectionCriteria` string can be up to 25KB in length. The length
+#' is determined by using its UTF-8 bytes.
+#' 
+#' Using the `selectionCriteria` parameter with
+#' `SUBSCRIPTION_FILTER_POLICY` is useful to help prevent infinite loops.
+#' For more information, see [Log recursion
+#' prevention](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/Subscriptions-recursion-prevention.html).
 #'
 #' @return
 #' A list with the following syntax:
@@ -4087,7 +5011,7 @@ cloudwatchlogs_list_tags_log_group <- function(logGroupName) {
 #'     policyName = "string",
 #'     policyDocument = "string",
 #'     lastUpdatedTime = 123,
-#'     policyType = "DATA_PROTECTION_POLICY"|"SUBSCRIPTION_FILTER_POLICY",
+#'     policyType = "DATA_PROTECTION_POLICY"|"SUBSCRIPTION_FILTER_POLICY"|"FIELD_INDEX_POLICY"|"TRANSFORMER_POLICY",
 #'     scope = "ALL",
 #'     selectionCriteria = "string",
 #'     accountId = "string"
@@ -4100,7 +5024,7 @@ cloudwatchlogs_list_tags_log_group <- function(logGroupName) {
 #' svc$put_account_policy(
 #'   policyName = "string",
 #'   policyDocument = "string",
-#'   policyType = "DATA_PROTECTION_POLICY"|"SUBSCRIPTION_FILTER_POLICY",
+#'   policyType = "DATA_PROTECTION_POLICY"|"SUBSCRIPTION_FILTER_POLICY"|"FIELD_INDEX_POLICY"|"TRANSFORMER_POLICY",
 #'   scope = "ALL",
 #'   selectionCriteria = "string"
 #' )
@@ -4739,6 +5663,197 @@ cloudwatchlogs_put_destination_policy <- function(destinationName, accessPolicy,
 }
 .cloudwatchlogs$operations$put_destination_policy <- cloudwatchlogs_put_destination_policy
 
+#' Creates or updates a field index policy for the specified log group
+#'
+#' @description
+#' Creates or updates a *field index policy* for the specified log group.
+#' Only log groups in the Standard log class support field index policies.
+#' For more information about log classes, see [Log
+#' classes](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CloudWatch_Logs_Log_Classes.html).
+#' 
+#' You can use field index policies to create *field indexes* on fields
+#' found in log events in the log group. Creating field indexes speeds up
+#' and lowers the costs for CloudWatch Logs Insights queries that reference
+#' those field indexes, because these queries attempt to skip the
+#' processing of log events that are known to not match the indexed field.
+#' Good fields to index are fields that you often need to query for and
+#' fields or values that match only a small fraction of the total log
+#' events. Common examples of indexes include request ID, session ID,
+#' userID, and instance IDs. For more information, see [Create field
+#' indexes to improve query performance and reduce
+#' costs](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CloudWatchLogs-Field-Indexing.html).
+#' 
+#' To find the fields that are in your log group events, use the
+#' [`get_log_group_fields`][cloudwatchlogs_get_log_group_fields] operation.
+#' 
+#' For example, suppose you have created a field index for `requestId`.
+#' Then, any CloudWatch Logs Insights query on that log group that includes
+#' `requestId = value ` or `requestId IN [value, value, ...]` will process
+#' fewer log events to reduce costs, and have improved performance.
+#' 
+#' Each index policy has the following quotas and restrictions:
+#' 
+#' -   As many as 20 fields can be included in the policy.
+#' 
+#' -   Each field name can include as many as 100 characters.
+#' 
+#' Matches of log events to the names of indexed fields are case-sensitive.
+#' For example, a field index of `RequestId` won't match a log event
+#' containing `requestId`.
+#' 
+#' Log group-level field index policies created with
+#' [`put_index_policy`][cloudwatchlogs_put_index_policy] override
+#' account-level field index policies created with
+#' [`put_account_policy`][cloudwatchlogs_put_account_policy]. If you use
+#' [`put_index_policy`][cloudwatchlogs_put_index_policy] to create a field
+#' index policy for a log group, that log group uses only that policy. The
+#' log group ignores any account-wide field index policy that you might
+#' have created.
+#'
+#' @usage
+#' cloudwatchlogs_put_index_policy(logGroupIdentifier, policyDocument)
+#'
+#' @param logGroupIdentifier &#91;required&#93; Specify either the log group name or log group ARN to apply this field
+#' index policy to. If you specify an ARN, use the format
+#' arn:aws:logs:*region*:*account-id*:log-group:*log_group_name* Don't
+#' include an * at the end.
+#' @param policyDocument &#91;required&#93; The index policy document, in JSON format. The following is an example
+#' of an index policy document that creates two indexes, `RequestId` and
+#' `TransactionId`.
+#' 
+#' `"policyDocument": "{ "Fields": [ "RequestId", "TransactionId" ] }"`
+#' 
+#' The policy document must include at least one field index. For more
+#' information about the fields that can be included and other
+#' restrictions, see [Field index syntax and
+#' quotas](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CloudWatchLogs-Field-Indexing-Syntax.html).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   indexPolicy = list(
+#'     logGroupIdentifier = "string",
+#'     lastUpdateTime = 123,
+#'     policyDocument = "string",
+#'     policyName = "string",
+#'     source = "ACCOUNT"|"LOG_GROUP"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_index_policy(
+#'   logGroupIdentifier = "string",
+#'   policyDocument = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchlogs_put_index_policy
+#'
+#' @aliases cloudwatchlogs_put_index_policy
+cloudwatchlogs_put_index_policy <- function(logGroupIdentifier, policyDocument) {
+  op <- new_operation(
+    name = "PutIndexPolicy",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudwatchlogs$put_index_policy_input(logGroupIdentifier = logGroupIdentifier, policyDocument = policyDocument)
+  output <- .cloudwatchlogs$put_index_policy_output()
+  config <- get_config()
+  svc <- .cloudwatchlogs$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchlogs$operations$put_index_policy <- cloudwatchlogs_put_index_policy
+
+#' Creates an integration between CloudWatch Logs and another service in
+#' this account
+#'
+#' @description
+#' Creates an integration between CloudWatch Logs and another service in
+#' this account. Currently, only integrations with OpenSearch Service are
+#' supported, and currently you can have only one integration in your
+#' account.
+#' 
+#' Integrating with OpenSearch Service makes it possible for you to create
+#' curated vended logs dashboards, powered by OpenSearch Service analytics.
+#' For more information, see [Vended log dashboards powered by Amazon
+#' OpenSearch
+#' Service](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CloudWatchLogs-OpenSearch-Dashboards.html).
+#' 
+#' You can use this operation only to create a new integration. You can't
+#' modify an existing integration.
+#'
+#' @usage
+#' cloudwatchlogs_put_integration(integrationName, resourceConfig,
+#'   integrationType)
+#'
+#' @param integrationName &#91;required&#93; A name for the integration.
+#' @param resourceConfig &#91;required&#93; A structure that contains configuration information for the integration
+#' that you are creating.
+#' @param integrationType &#91;required&#93; The type of integration. Currently, the only supported type is
+#' `OPENSEARCH`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   integrationName = "string",
+#'   integrationStatus = "PROVISIONING"|"ACTIVE"|"FAILED"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_integration(
+#'   integrationName = "string",
+#'   resourceConfig = list(
+#'     openSearchResourceConfig = list(
+#'       kmsKeyArn = "string",
+#'       dataSourceRoleArn = "string",
+#'       dashboardViewerPrincipals = list(
+#'         "string"
+#'       ),
+#'       applicationArn = "string",
+#'       retentionDays = 123
+#'     )
+#'   ),
+#'   integrationType = "OPENSEARCH"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchlogs_put_integration
+#'
+#' @aliases cloudwatchlogs_put_integration
+cloudwatchlogs_put_integration <- function(integrationName, resourceConfig, integrationType) {
+  op <- new_operation(
+    name = "PutIntegration",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudwatchlogs$put_integration_input(integrationName = integrationName, resourceConfig = resourceConfig, integrationType = integrationType)
+  output <- .cloudwatchlogs$put_integration_output()
+  config <- get_config()
+  svc <- .cloudwatchlogs$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchlogs$operations$put_integration <- cloudwatchlogs_put_integration
+
 #' Uploads a batch of log events to the specified log stream
 #'
 #' @description
@@ -4805,7 +5920,7 @@ cloudwatchlogs_put_destination_policy <- function(destinationName, accessPolicy,
 #' [`put_log_events`][cloudwatchlogs_put_log_events] actions are now
 #' accepted and never return `InvalidSequenceTokenException` or
 #' `DataAlreadyAcceptedException` even if the sequence token is not valid.
-#' @param entity Reserved for internal use.
+#' @param entity The entity associated with the log events.
 #'
 #' @return
 #' A list with the following syntax:
@@ -4883,11 +5998,11 @@ cloudwatchlogs_put_log_events <- function(logGroupName, logStreamName, logEvents
 #' group is 100.
 #' 
 #' Using regular expressions to create metric filters is supported. For
-#' these filters, there is a quotas of quota of two regular expression
-#' patterns within a single filter pattern. There is also a quota of five
-#' regular expression patterns per log group. For more information about
-#' using regular expressions in metric filters, see [Filter pattern syntax
-#' for metric filters, subscription filters, filter log events, and Live
+#' these filters, there is a quota of two regular expression patterns
+#' within a single filter pattern. There is also a quota of five regular
+#' expression patterns per log group. For more information about using
+#' regular expressions in metric filters, see [Filter pattern syntax for
+#' metric filters, subscription filters, filter log events, and Live
 #' Tail](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/FilterAndPatternSyntax.html).
 #' 
 #' When you create a metric filter, you can also optionally assign a unit
@@ -4910,12 +6025,20 @@ cloudwatchlogs_put_log_events <- function(logGroupName, logStreamName, logEvents
 #'
 #' @usage
 #' cloudwatchlogs_put_metric_filter(logGroupName, filterName,
-#'   filterPattern, metricTransformations)
+#'   filterPattern, metricTransformations, applyOnTransformedLogs)
 #'
 #' @param logGroupName &#91;required&#93; The name of the log group.
 #' @param filterName &#91;required&#93; A name for the metric filter.
 #' @param filterPattern &#91;required&#93; A filter pattern for extracting metric data out of ingested log events.
 #' @param metricTransformations &#91;required&#93; A collection of information that defines how metric data gets emitted.
+#' @param applyOnTransformedLogs This parameter is valid only for log groups that have an active log
+#' transformer. For more information about log transformers, see
+#' [`put_transformer`][cloudwatchlogs_put_transformer].
+#' 
+#' If the log group uses either a log-group level or account-level
+#' transformer, and you specify `true`, the metric filter will be applied
+#' on the transformed version of the log events instead of the original
+#' ingested log events.
 #'
 #' @return
 #' An empty list.
@@ -4937,7 +6060,8 @@ cloudwatchlogs_put_log_events <- function(logGroupName, logStreamName, logEvents
 #'       ),
 #'       unit = "Seconds"|"Microseconds"|"Milliseconds"|"Bytes"|"Kilobytes"|"Megabytes"|"Gigabytes"|"Terabytes"|"Bits"|"Kilobits"|"Megabits"|"Gigabits"|"Terabits"|"Percent"|"Count"|"Bytes/Second"|"Kilobytes/Second"|"Megabytes/Second"|"Gigabytes/Second"|"Terabytes/Second"|"Bits/Second"|"Kilobits/Second"|"Megabits/Second"|"Gigabits/Second"|"Terabits/Second"|"Count/Second"|"None"
 #'     )
-#'   )
+#'   ),
+#'   applyOnTransformedLogs = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -4946,7 +6070,7 @@ cloudwatchlogs_put_log_events <- function(logGroupName, logStreamName, logEvents
 #' @rdname cloudwatchlogs_put_metric_filter
 #'
 #' @aliases cloudwatchlogs_put_metric_filter
-cloudwatchlogs_put_metric_filter <- function(logGroupName, filterName, filterPattern, metricTransformations) {
+cloudwatchlogs_put_metric_filter <- function(logGroupName, filterName, filterPattern, metricTransformations, applyOnTransformedLogs = NULL) {
   op <- new_operation(
     name = "PutMetricFilter",
     http_method = "POST",
@@ -4955,7 +6079,7 @@ cloudwatchlogs_put_metric_filter <- function(logGroupName, filterName, filterPat
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .cloudwatchlogs$put_metric_filter_input(logGroupName = logGroupName, filterName = filterName, filterPattern = filterPattern, metricTransformations = metricTransformations)
+  input <- .cloudwatchlogs$put_metric_filter_input(logGroupName = logGroupName, filterName = filterName, filterPattern = filterPattern, metricTransformations = metricTransformations, applyOnTransformedLogs = applyOnTransformedLogs)
   output <- .cloudwatchlogs$put_metric_filter_output()
   config <- get_config()
   svc <- .cloudwatchlogs$service(config, op)
@@ -4984,9 +6108,14 @@ cloudwatchlogs_put_metric_filter <- function(logGroupName, filterName, filterPat
 #' perform this operation.
 #'
 #' @usage
-#' cloudwatchlogs_put_query_definition(name, queryDefinitionId,
-#'   logGroupNames, queryString, clientToken)
+#' cloudwatchlogs_put_query_definition(queryLanguage, name,
+#'   queryDefinitionId, logGroupNames, queryString, clientToken)
 #'
+#' @param queryLanguage Specify the query language to use for this query. The options are Logs
+#' Insights QL, OpenSearch PPL, and OpenSearch SQL. For more information
+#' about the query languages that CloudWatch Logs supports, see [Supported
+#' query
+#' languages](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_AnalyzeLogData_Languages.html).
 #' @param name &#91;required&#93; A name for the query definition. If you are saving numerous query
 #' definitions, we recommend that you name them. This way, you can find the
 #' ones you want by using the first part of the name as a filter in the
@@ -5001,10 +6130,13 @@ cloudwatchlogs_put_metric_filter <- function(logGroupName, filterName, filterPat
 #' CloudWatch generates a unique ID for the new query definition and
 #' include it in the response to this operation.
 #' @param logGroupNames Use this parameter to include specific log groups as part of your query
-#' definition.
+#' definition. If your query uses the OpenSearch Service query language,
+#' you specify the log group names inside the `querystring` instead of
+#' here.
 #' 
-#' If you are updating a query definition and you omit this parameter, then
-#' the updated definition will contain no log groups.
+#' If you are updating an existing query definition for the Logs Insights
+#' QL or OpenSearch Service PPL and you omit this parameter, then the
+#' updated definition will contain no log groups.
 #' @param queryString &#91;required&#93; The query string to use for this definition. For more information, see
 #' [CloudWatch Logs Insights Query
 #' Syntax](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_QuerySyntax.html).
@@ -5022,6 +6154,7 @@ cloudwatchlogs_put_metric_filter <- function(logGroupName, filterName, filterPat
 #' @section Request syntax:
 #' ```
 #' svc$put_query_definition(
+#'   queryLanguage = "CWLI"|"SQL"|"PPL",
 #'   name = "string",
 #'   queryDefinitionId = "string",
 #'   logGroupNames = list(
@@ -5037,7 +6170,7 @@ cloudwatchlogs_put_metric_filter <- function(logGroupName, filterName, filterPat
 #' @rdname cloudwatchlogs_put_query_definition
 #'
 #' @aliases cloudwatchlogs_put_query_definition
-cloudwatchlogs_put_query_definition <- function(name, queryDefinitionId = NULL, logGroupNames = NULL, queryString, clientToken = NULL) {
+cloudwatchlogs_put_query_definition <- function(queryLanguage = NULL, name, queryDefinitionId = NULL, logGroupNames = NULL, queryString, clientToken = NULL) {
   op <- new_operation(
     name = "PutQueryDefinition",
     http_method = "POST",
@@ -5046,7 +6179,7 @@ cloudwatchlogs_put_query_definition <- function(name, queryDefinitionId = NULL, 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .cloudwatchlogs$put_query_definition_input(name = name, queryDefinitionId = queryDefinitionId, logGroupNames = logGroupNames, queryString = queryString, clientToken = clientToken)
+  input <- .cloudwatchlogs$put_query_definition_input(queryLanguage = queryLanguage, name = name, queryDefinitionId = queryDefinitionId, logGroupNames = logGroupNames, queryString = queryString, clientToken = clientToken)
   output <- .cloudwatchlogs$put_query_definition_output()
   config <- get_config()
   svc <- .cloudwatchlogs$service(config, op)
@@ -5142,13 +6275,13 @@ cloudwatchlogs_put_resource_policy <- function(policyName = NULL, policyDocument
 #' you can configure the number of days for which to retain log events in
 #' the specified log group.
 #' 
-#' CloudWatch Logs doesn’t immediately delete log events when they reach
+#' CloudWatch Logs doesn't immediately delete log events when they reach
 #' their retention setting. It typically takes up to 72 hours after that
 #' before log events are deleted, but in rare situations might take longer.
 #' 
 #' To illustrate, imagine that you change a log group to have a longer
 #' retention setting when it contains log events that are past the
-#' expiration date, but haven’t been deleted. Those log events will take up
+#' expiration date, but haven't been deleted. Those log events will take up
 #' to 72 hours to be deleted after the new retention date is reached. To
 #' make sure that log data is deleted permanently, keep a log group at its
 #' lower retention setting until 72 hours after the previous retention
@@ -5251,7 +6384,8 @@ cloudwatchlogs_put_retention_policy <- function(logGroupName, retentionInDays) {
 #'
 #' @usage
 #' cloudwatchlogs_put_subscription_filter(logGroupName, filterName,
-#'   filterPattern, destinationArn, roleArn, distribution)
+#'   filterPattern, destinationArn, roleArn, distribution,
+#'   applyOnTransformedLogs)
 #'
 #' @param logGroupName &#91;required&#93; The name of the log group.
 #' @param filterName &#91;required&#93; A name for the subscription filter. If you are updating an existing
@@ -5287,6 +6421,14 @@ cloudwatchlogs_put_retention_policy <- function(logGroupName, retentionInDays) {
 #' log data is grouped by log stream, but the grouping can be set to random
 #' for a more even distribution. This property is only applicable when the
 #' destination is an Amazon Kinesis data stream.
+#' @param applyOnTransformedLogs This parameter is valid only for log groups that have an active log
+#' transformer. For more information about log transformers, see
+#' [`put_transformer`][cloudwatchlogs_put_transformer].
+#' 
+#' If the log group uses either a log-group level or account-level
+#' transformer, and you specify `true`, the subscription filter will be
+#' applied on the transformed version of the log events instead of the
+#' original ingested log events.
 #'
 #' @return
 #' An empty list.
@@ -5299,7 +6441,8 @@ cloudwatchlogs_put_retention_policy <- function(logGroupName, retentionInDays) {
 #'   filterPattern = "string",
 #'   destinationArn = "string",
 #'   roleArn = "string",
-#'   distribution = "Random"|"ByLogStream"
+#'   distribution = "Random"|"ByLogStream",
+#'   applyOnTransformedLogs = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -5308,7 +6451,7 @@ cloudwatchlogs_put_retention_policy <- function(logGroupName, retentionInDays) {
 #' @rdname cloudwatchlogs_put_subscription_filter
 #'
 #' @aliases cloudwatchlogs_put_subscription_filter
-cloudwatchlogs_put_subscription_filter <- function(logGroupName, filterName, filterPattern, destinationArn, roleArn = NULL, distribution = NULL) {
+cloudwatchlogs_put_subscription_filter <- function(logGroupName, filterName, filterPattern, destinationArn, roleArn = NULL, distribution = NULL, applyOnTransformedLogs = NULL) {
   op <- new_operation(
     name = "PutSubscriptionFilter",
     http_method = "POST",
@@ -5317,7 +6460,7 @@ cloudwatchlogs_put_subscription_filter <- function(logGroupName, filterName, fil
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .cloudwatchlogs$put_subscription_filter_input(logGroupName = logGroupName, filterName = filterName, filterPattern = filterPattern, destinationArn = destinationArn, roleArn = roleArn, distribution = distribution)
+  input <- .cloudwatchlogs$put_subscription_filter_input(logGroupName = logGroupName, filterName = filterName, filterPattern = filterPattern, destinationArn = destinationArn, roleArn = roleArn, distribution = distribution, applyOnTransformedLogs = applyOnTransformedLogs)
   output <- .cloudwatchlogs$put_subscription_filter_output()
   config <- get_config()
   svc <- .cloudwatchlogs$service(config, op)
@@ -5326,6 +6469,240 @@ cloudwatchlogs_put_subscription_filter <- function(logGroupName, filterName, fil
   return(response)
 }
 .cloudwatchlogs$operations$put_subscription_filter <- cloudwatchlogs_put_subscription_filter
+
+#' Creates or updates a log transformer for a single log group
+#'
+#' @description
+#' Creates or updates a *log transformer* for a single log group. You use
+#' log transformers to transform log events into a different format, making
+#' them easier for you to process and analyze. You can also transform logs
+#' from different sources into standardized formats that contains relevant,
+#' source-specific information.
+#' 
+#' After you have created a transformer, CloudWatch Logs performs the
+#' transformations at the time of log ingestion. You can then refer to the
+#' transformed versions of the logs during operations such as querying with
+#' CloudWatch Logs Insights or creating metric filters or subscription
+#' filers.
+#' 
+#' You can also use a transformer to copy metadata from metadata keys into
+#' the log events themselves. This metadata can include log group name, log
+#' stream name, account ID and Region.
+#' 
+#' A transformer for a log group is a series of processors, where each
+#' processor applies one type of transformation to the log events ingested
+#' into this log group. The processors work one after another, in the order
+#' that you list them, like a pipeline. For more information about the
+#' available processors to use in a transformer, see [Processors that you
+#' can
+#' use](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CloudWatch-Logs-Transformation.html#CloudWatch-Logs-Transformation-Processors).
+#' 
+#' Having log events in standardized format enables visibility across your
+#' applications for your log analysis, reporting, and alarming needs.
+#' CloudWatch Logs provides transformation for common log types with
+#' out-of-the-box transformation templates for major Amazon Web Services
+#' log sources such as VPC flow logs, Lambda, and Amazon RDS. You can use
+#' pre-built transformation templates or create custom transformation
+#' policies.
+#' 
+#' You can create transformers only for the log groups in the Standard log
+#' class.
+#' 
+#' You can also set up a transformer at the account level. For more
+#' information, see
+#' [`put_account_policy`][cloudwatchlogs_put_account_policy]. If there is
+#' both a log-group level transformer created with
+#' [`put_transformer`][cloudwatchlogs_put_transformer] and an account-level
+#' transformer that could apply to the same log group, the log group uses
+#' only the log-group level transformer. It ignores the account-level
+#' transformer.
+#'
+#' @usage
+#' cloudwatchlogs_put_transformer(logGroupIdentifier, transformerConfig)
+#'
+#' @param logGroupIdentifier &#91;required&#93; Specify either the name or ARN of the log group to create the
+#' transformer for.
+#' @param transformerConfig &#91;required&#93; This structure contains the configuration of this log transformer. A log
+#' transformer is an array of processors, where each processor applies one
+#' type of transformation to the log events that are ingested.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_transformer(
+#'   logGroupIdentifier = "string",
+#'   transformerConfig = list(
+#'     list(
+#'       addKeys = list(
+#'         entries = list(
+#'           list(
+#'             key = "string",
+#'             value = "string",
+#'             overwriteIfExists = TRUE|FALSE
+#'           )
+#'         )
+#'       ),
+#'       copyValue = list(
+#'         entries = list(
+#'           list(
+#'             source = "string",
+#'             target = "string",
+#'             overwriteIfExists = TRUE|FALSE
+#'           )
+#'         )
+#'       ),
+#'       csv = list(
+#'         quoteCharacter = "string",
+#'         delimiter = "string",
+#'         columns = list(
+#'           "string"
+#'         ),
+#'         source = "string"
+#'       ),
+#'       dateTimeConverter = list(
+#'         source = "string",
+#'         target = "string",
+#'         targetFormat = "string",
+#'         matchPatterns = list(
+#'           "string"
+#'         ),
+#'         sourceTimezone = "string",
+#'         targetTimezone = "string",
+#'         locale = "string"
+#'       ),
+#'       deleteKeys = list(
+#'         withKeys = list(
+#'           "string"
+#'         )
+#'       ),
+#'       grok = list(
+#'         source = "string",
+#'         match = "string"
+#'       ),
+#'       listToMap = list(
+#'         source = "string",
+#'         key = "string",
+#'         valueKey = "string",
+#'         target = "string",
+#'         flatten = TRUE|FALSE,
+#'         flattenedElement = "first"|"last"
+#'       ),
+#'       lowerCaseString = list(
+#'         withKeys = list(
+#'           "string"
+#'         )
+#'       ),
+#'       moveKeys = list(
+#'         entries = list(
+#'           list(
+#'             source = "string",
+#'             target = "string",
+#'             overwriteIfExists = TRUE|FALSE
+#'           )
+#'         )
+#'       ),
+#'       parseCloudfront = list(
+#'         source = "string"
+#'       ),
+#'       parseJSON = list(
+#'         source = "string",
+#'         destination = "string"
+#'       ),
+#'       parseKeyValue = list(
+#'         source = "string",
+#'         destination = "string",
+#'         fieldDelimiter = "string",
+#'         keyValueDelimiter = "string",
+#'         keyPrefix = "string",
+#'         nonMatchValue = "string",
+#'         overwriteIfExists = TRUE|FALSE
+#'       ),
+#'       parseRoute53 = list(
+#'         source = "string"
+#'       ),
+#'       parsePostgres = list(
+#'         source = "string"
+#'       ),
+#'       parseVPC = list(
+#'         source = "string"
+#'       ),
+#'       parseWAF = list(
+#'         source = "string"
+#'       ),
+#'       renameKeys = list(
+#'         entries = list(
+#'           list(
+#'             key = "string",
+#'             renameTo = "string",
+#'             overwriteIfExists = TRUE|FALSE
+#'           )
+#'         )
+#'       ),
+#'       splitString = list(
+#'         entries = list(
+#'           list(
+#'             source = "string",
+#'             delimiter = "string"
+#'           )
+#'         )
+#'       ),
+#'       substituteString = list(
+#'         entries = list(
+#'           list(
+#'             source = "string",
+#'             from = "string",
+#'             to = "string"
+#'           )
+#'         )
+#'       ),
+#'       trimString = list(
+#'         withKeys = list(
+#'           "string"
+#'         )
+#'       ),
+#'       typeConverter = list(
+#'         entries = list(
+#'           list(
+#'             key = "string",
+#'             type = "boolean"|"integer"|"double"|"string"
+#'           )
+#'         )
+#'       ),
+#'       upperCaseString = list(
+#'         withKeys = list(
+#'           "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchlogs_put_transformer
+#'
+#' @aliases cloudwatchlogs_put_transformer
+cloudwatchlogs_put_transformer <- function(logGroupIdentifier, transformerConfig) {
+  op <- new_operation(
+    name = "PutTransformer",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudwatchlogs$put_transformer_input(logGroupIdentifier = logGroupIdentifier, transformerConfig = transformerConfig)
+  output <- .cloudwatchlogs$put_transformer_output()
+  config <- get_config()
+  svc <- .cloudwatchlogs$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchlogs$operations$put_transformer <- cloudwatchlogs_put_transformer
 
 #' Starts a Live Tail streaming session for one or more log groups
 #'
@@ -5505,12 +6882,12 @@ cloudwatchlogs_start_live_tail <- function(logGroupIdentifiers, logStreamNames =
 }
 .cloudwatchlogs$operations$start_live_tail <- cloudwatchlogs_start_live_tail
 
-#' Schedules a query of a log group using CloudWatch Logs Insights
+#' Starts a query of one or more log groups using CloudWatch Logs Insights
 #'
 #' @description
-#' Schedules a query of a log group using CloudWatch Logs Insights. You
-#' specify the log group and time range to query and the query string to
-#' use.
+#' Starts a query of one or more log groups using CloudWatch Logs Insights.
+#' You specify the log groups and time range to query and the query string
+#' to use.
 #' 
 #' For more information, see [CloudWatch Logs Insights Query
 #' Syntax](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_QuerySyntax.html).
@@ -5520,6 +6897,20 @@ cloudwatchlogs_start_live_tail <- function(logGroupIdentifiers, logStreamNames =
 #' [`get_query_results`][cloudwatchlogs_get_query_results] to retrieve the
 #' results of a query, using the `queryId` that
 #' [`start_query`][cloudwatchlogs_start_query] returns.
+#' 
+#' To specify the log groups to query, a
+#' [`start_query`][cloudwatchlogs_start_query] operation must include one
+#' of the following:
+#' 
+#' -   Either exactly one of the following parameters: `logGroupName`,
+#'     `logGroupNames`, or `logGroupIdentifiers`
+#' 
+#' -   Or the `queryString` must include a `SOURCE` command to select log
+#'     groups for the query. The `SOURCE` command can select log groups
+#'     based on log group name prefix, account ID, and log class.
+#' 
+#'     For more information about the `SOURCE` command, see
+#'     [SOURCE](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_QuerySyntax-Source.html).
 #' 
 #' If you have associated a KMS key with the query results in this account,
 #' then [`start_query`][cloudwatchlogs_start_query] uses that key to
@@ -5543,20 +6934,29 @@ cloudwatchlogs_start_live_tail <- function(logGroupIdentifiers, logStreamNames =
 #' including queries that have been added to dashboards.
 #'
 #' @usage
-#' cloudwatchlogs_start_query(logGroupName, logGroupNames,
+#' cloudwatchlogs_start_query(queryLanguage, logGroupName, logGroupNames,
 #'   logGroupIdentifiers, startTime, endTime, queryString, limit)
 #'
+#' @param queryLanguage Specify the query language to use for this query. The options are Logs
+#' Insights QL, OpenSearch PPL, and OpenSearch SQL. For more information
+#' about the query languages that CloudWatch Logs supports, see [Supported
+#' query
+#' languages](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_AnalyzeLogData_Languages.html).
 #' @param logGroupName The log group on which to perform the query.
 #' 
 #' A [`start_query`][cloudwatchlogs_start_query] operation must include
 #' exactly one of the following parameters: `logGroupName`,
-#' `logGroupNames`, or `logGroupIdentifiers`.
+#' `logGroupNames`, or `logGroupIdentifiers`. The exception is queries
+#' using the OpenSearch Service SQL query language, where you specify the
+#' log group names inside the `querystring` instead of here.
 #' @param logGroupNames The list of log groups to be queried. You can include up to 50 log
 #' groups.
 #' 
 #' A [`start_query`][cloudwatchlogs_start_query] operation must include
 #' exactly one of the following parameters: `logGroupName`,
-#' `logGroupNames`, or `logGroupIdentifiers`.
+#' `logGroupNames`, or `logGroupIdentifiers`. The exception is queries
+#' using the OpenSearch Service SQL query language, where you specify the
+#' log group names inside the `querystring` instead of here.
 #' @param logGroupIdentifiers The list of log groups to query. You can include up to 50 log groups.
 #' 
 #' You can specify them by the log group name or ARN. If a log group that
@@ -5564,11 +6964,15 @@ cloudwatchlogs_start_live_tail <- function(logGroupIdentifiers, logStreamNames =
 #' account, you must specify the ARN of the log group here. The query
 #' definition must also be defined in the monitoring account.
 #' 
-#' If you specify an ARN, the ARN can't end with an asterisk (*).
+#' If you specify an ARN, use the format
+#' arn:aws:logs:*region*:*account-id*:log-group:*log_group_name* Don't
+#' include an * at the end.
 #' 
 #' A [`start_query`][cloudwatchlogs_start_query] operation must include
 #' exactly one of the following parameters: `logGroupName`,
-#' `logGroupNames`, or `logGroupIdentifiers`.
+#' `logGroupNames`, or `logGroupIdentifiers`. The exception is queries
+#' using the OpenSearch Service SQL query language, where you specify the
+#' log group names inside the `querystring` instead of here.
 #' @param startTime &#91;required&#93; The beginning of the time range to query. The range is inclusive, so the
 #' specified start time is included in the query. Specified as epoch time,
 #' the number of seconds since `January 1, 1970, 00:00:00 UTC`.
@@ -5580,7 +6984,7 @@ cloudwatchlogs_start_live_tail <- function(logGroupIdentifiers, logStreamNames =
 #' Syntax](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_QuerySyntax.html).
 #' @param limit The maximum number of log events to return in the query. If the query
 #' string uses the `fields` command, only the specified fields and their
-#' values are returned. The default is 1000.
+#' values are returned. The default is 10,000.
 #'
 #' @return
 #' A list with the following syntax:
@@ -5593,6 +6997,7 @@ cloudwatchlogs_start_live_tail <- function(logGroupIdentifiers, logStreamNames =
 #' @section Request syntax:
 #' ```
 #' svc$start_query(
+#'   queryLanguage = "CWLI"|"SQL"|"PPL",
 #'   logGroupName = "string",
 #'   logGroupNames = list(
 #'     "string"
@@ -5612,7 +7017,7 @@ cloudwatchlogs_start_live_tail <- function(logGroupIdentifiers, logStreamNames =
 #' @rdname cloudwatchlogs_start_query
 #'
 #' @aliases cloudwatchlogs_start_query
-cloudwatchlogs_start_query <- function(logGroupName = NULL, logGroupNames = NULL, logGroupIdentifiers = NULL, startTime, endTime, queryString, limit = NULL) {
+cloudwatchlogs_start_query <- function(queryLanguage = NULL, logGroupName = NULL, logGroupNames = NULL, logGroupIdentifiers = NULL, startTime, endTime, queryString, limit = NULL) {
   op <- new_operation(
     name = "StartQuery",
     http_method = "POST",
@@ -5621,7 +7026,7 @@ cloudwatchlogs_start_query <- function(logGroupName = NULL, logGroupNames = NULL
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .cloudwatchlogs$start_query_input(logGroupName = logGroupName, logGroupNames = logGroupNames, logGroupIdentifiers = logGroupIdentifiers, startTime = startTime, endTime = endTime, queryString = queryString, limit = limit)
+  input <- .cloudwatchlogs$start_query_input(queryLanguage = queryLanguage, logGroupName = logGroupName, logGroupNames = logGroupNames, logGroupIdentifiers = logGroupIdentifiers, startTime = startTime, endTime = endTime, queryString = queryString, limit = limit)
   output <- .cloudwatchlogs$start_query_output()
   config <- get_config()
   svc <- .cloudwatchlogs$service(config, op)
@@ -5700,7 +7105,7 @@ cloudwatchlogs_stop_query <- function(queryId) {
 #' Logs](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/Working-with-log-groups-and-streams.html#log-group-tagging)
 #' in the *Amazon CloudWatch Logs User Guide*.
 #' 
-#' CloudWatch Logs doesn’t support IAM policies that prevent users from
+#' CloudWatch Logs doesn't support IAM policies that prevent users from
 #' assigning specified tags to log groups using the
 #' `aws:Resource/key-name ` or `aws:TagKeys` condition keys. For more
 #' information about using tags to control access, see [Controlling access
@@ -5891,6 +7296,215 @@ cloudwatchlogs_test_metric_filter <- function(filterPattern, logEventMessages) {
 }
 .cloudwatchlogs$operations$test_metric_filter <- cloudwatchlogs_test_metric_filter
 
+#' Use this operation to test a log transformer
+#'
+#' @description
+#' Use this operation to test a log transformer. You enter the transformer
+#' configuration and a set of log events to test with. The operation
+#' responds with an array that includes the original log events and the
+#' transformed versions.
+#'
+#' @usage
+#' cloudwatchlogs_test_transformer(transformerConfig, logEventMessages)
+#'
+#' @param transformerConfig &#91;required&#93; This structure contains the configuration of this log transformer that
+#' you want to test. A log transformer is an array of processors, where
+#' each processor applies one type of transformation to the log events that
+#' are ingested.
+#' @param logEventMessages &#91;required&#93; An array of the raw log events that you want to use to test this
+#' transformer.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   transformedLogs = list(
+#'     list(
+#'       eventNumber = 123,
+#'       eventMessage = "string",
+#'       transformedEventMessage = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$test_transformer(
+#'   transformerConfig = list(
+#'     list(
+#'       addKeys = list(
+#'         entries = list(
+#'           list(
+#'             key = "string",
+#'             value = "string",
+#'             overwriteIfExists = TRUE|FALSE
+#'           )
+#'         )
+#'       ),
+#'       copyValue = list(
+#'         entries = list(
+#'           list(
+#'             source = "string",
+#'             target = "string",
+#'             overwriteIfExists = TRUE|FALSE
+#'           )
+#'         )
+#'       ),
+#'       csv = list(
+#'         quoteCharacter = "string",
+#'         delimiter = "string",
+#'         columns = list(
+#'           "string"
+#'         ),
+#'         source = "string"
+#'       ),
+#'       dateTimeConverter = list(
+#'         source = "string",
+#'         target = "string",
+#'         targetFormat = "string",
+#'         matchPatterns = list(
+#'           "string"
+#'         ),
+#'         sourceTimezone = "string",
+#'         targetTimezone = "string",
+#'         locale = "string"
+#'       ),
+#'       deleteKeys = list(
+#'         withKeys = list(
+#'           "string"
+#'         )
+#'       ),
+#'       grok = list(
+#'         source = "string",
+#'         match = "string"
+#'       ),
+#'       listToMap = list(
+#'         source = "string",
+#'         key = "string",
+#'         valueKey = "string",
+#'         target = "string",
+#'         flatten = TRUE|FALSE,
+#'         flattenedElement = "first"|"last"
+#'       ),
+#'       lowerCaseString = list(
+#'         withKeys = list(
+#'           "string"
+#'         )
+#'       ),
+#'       moveKeys = list(
+#'         entries = list(
+#'           list(
+#'             source = "string",
+#'             target = "string",
+#'             overwriteIfExists = TRUE|FALSE
+#'           )
+#'         )
+#'       ),
+#'       parseCloudfront = list(
+#'         source = "string"
+#'       ),
+#'       parseJSON = list(
+#'         source = "string",
+#'         destination = "string"
+#'       ),
+#'       parseKeyValue = list(
+#'         source = "string",
+#'         destination = "string",
+#'         fieldDelimiter = "string",
+#'         keyValueDelimiter = "string",
+#'         keyPrefix = "string",
+#'         nonMatchValue = "string",
+#'         overwriteIfExists = TRUE|FALSE
+#'       ),
+#'       parseRoute53 = list(
+#'         source = "string"
+#'       ),
+#'       parsePostgres = list(
+#'         source = "string"
+#'       ),
+#'       parseVPC = list(
+#'         source = "string"
+#'       ),
+#'       parseWAF = list(
+#'         source = "string"
+#'       ),
+#'       renameKeys = list(
+#'         entries = list(
+#'           list(
+#'             key = "string",
+#'             renameTo = "string",
+#'             overwriteIfExists = TRUE|FALSE
+#'           )
+#'         )
+#'       ),
+#'       splitString = list(
+#'         entries = list(
+#'           list(
+#'             source = "string",
+#'             delimiter = "string"
+#'           )
+#'         )
+#'       ),
+#'       substituteString = list(
+#'         entries = list(
+#'           list(
+#'             source = "string",
+#'             from = "string",
+#'             to = "string"
+#'           )
+#'         )
+#'       ),
+#'       trimString = list(
+#'         withKeys = list(
+#'           "string"
+#'         )
+#'       ),
+#'       typeConverter = list(
+#'         entries = list(
+#'           list(
+#'             key = "string",
+#'             type = "boolean"|"integer"|"double"|"string"
+#'           )
+#'         )
+#'       ),
+#'       upperCaseString = list(
+#'         withKeys = list(
+#'           "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   logEventMessages = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchlogs_test_transformer
+#'
+#' @aliases cloudwatchlogs_test_transformer
+cloudwatchlogs_test_transformer <- function(transformerConfig, logEventMessages) {
+  op <- new_operation(
+    name = "TestTransformer",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudwatchlogs$test_transformer_input(transformerConfig = transformerConfig, logEventMessages = logEventMessages)
+  output <- .cloudwatchlogs$test_transformer_output()
+  config <- get_config()
+  svc <- .cloudwatchlogs$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchlogs$operations$test_transformer <- cloudwatchlogs_test_transformer
+
 #' The UntagLogGroup operation is on the path to deprecation
 #'
 #' @description
@@ -5903,7 +7517,7 @@ cloudwatchlogs_test_metric_filter <- function(filterPattern, logEventMessages) {
 #' [`list_tags_for_resource`][cloudwatchlogs_list_tags_for_resource]. To
 #' add tags, use [`tag_resource`][cloudwatchlogs_tag_resource].
 #' 
-#' CloudWatch Logs doesn’t support IAM policies that prevent users from
+#' CloudWatch Logs doesn't support IAM policies that prevent users from
 #' assigning specified tags to log groups using the
 #' `aws:Resource/key-name ` or `aws:TagKeys` condition keys.
 #'
@@ -6013,9 +7627,9 @@ cloudwatchlogs_untag_resource <- function(resourceArn, tagKeys) {
 #'
 #' @description
 #' Use this operation to *suppress* anomaly detection for a specified
-#' anomaly or pattern. If you suppress an anomaly, CloudWatch Logs won’t
+#' anomaly or pattern. If you suppress an anomaly, CloudWatch Logs won't
 #' report new occurrences of that anomaly and won't update that anomaly
-#' with new data. If you suppress a pattern, CloudWatch Logs won’t report
+#' with new data. If you suppress a pattern, CloudWatch Logs won't report
 #' any anomalies related to that pattern.
 #' 
 #' You must specify either `anomalyId` or `patternId`, but you can't
@@ -6029,7 +7643,7 @@ cloudwatchlogs_untag_resource <- function(resourceArn, tagKeys) {
 #'
 #' @usage
 #' cloudwatchlogs_update_anomaly(anomalyId, patternId, anomalyDetectorArn,
-#'   suppressionType, suppressionPeriod)
+#'   suppressionType, suppressionPeriod, baseline)
 #'
 #' @param anomalyId If you are suppressing or unsuppressing an anomaly, specify its unique
 #' ID here. You can find anomaly IDs by using the
@@ -6043,6 +7657,13 @@ cloudwatchlogs_untag_resource <- function(resourceArn, tagKeys) {
 #' If you specify `INFINITE`, any value for `suppressionPeriod` is ignored.
 #' @param suppressionPeriod If you are temporarily suppressing an anomaly or pattern, use this
 #' structure to specify how long the suppression is to last.
+#' @param baseline Set this to `true` to prevent CloudWatch Logs from displaying this
+#' behavior as an anomaly in the future. The behavior is then treated as
+#' baseline behavior. However, if similar but more severe occurrences of
+#' this behavior occur in the future, those will still be reported as
+#' anomalies.
+#' 
+#' The default is `false`
 #'
 #' @return
 #' An empty list.
@@ -6057,7 +7678,8 @@ cloudwatchlogs_untag_resource <- function(resourceArn, tagKeys) {
 #'   suppressionPeriod = list(
 #'     value = 123,
 #'     suppressionUnit = "SECONDS"|"MINUTES"|"HOURS"
-#'   )
+#'   ),
+#'   baseline = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -6066,7 +7688,7 @@ cloudwatchlogs_untag_resource <- function(resourceArn, tagKeys) {
 #' @rdname cloudwatchlogs_update_anomaly
 #'
 #' @aliases cloudwatchlogs_update_anomaly
-cloudwatchlogs_update_anomaly <- function(anomalyId = NULL, patternId = NULL, anomalyDetectorArn, suppressionType = NULL, suppressionPeriod = NULL) {
+cloudwatchlogs_update_anomaly <- function(anomalyId = NULL, patternId = NULL, anomalyDetectorArn, suppressionType = NULL, suppressionPeriod = NULL, baseline = NULL) {
   op <- new_operation(
     name = "UpdateAnomaly",
     http_method = "POST",
@@ -6075,7 +7697,7 @@ cloudwatchlogs_update_anomaly <- function(anomalyId = NULL, patternId = NULL, an
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .cloudwatchlogs$update_anomaly_input(anomalyId = anomalyId, patternId = patternId, anomalyDetectorArn = anomalyDetectorArn, suppressionType = suppressionType, suppressionPeriod = suppressionPeriod)
+  input <- .cloudwatchlogs$update_anomaly_input(anomalyId = anomalyId, patternId = patternId, anomalyDetectorArn = anomalyDetectorArn, suppressionType = suppressionType, suppressionPeriod = suppressionPeriod, baseline = baseline)
   output <- .cloudwatchlogs$update_anomaly_output()
   config <- get_config()
   svc <- .cloudwatchlogs$service(config, op)
@@ -6101,12 +7723,12 @@ cloudwatchlogs_update_anomaly <- function(anomalyId = NULL, patternId = NULL, an
 #'
 #' @param id &#91;required&#93; The ID of the delivery to be updated by this request.
 #' @param recordFields The list of record fields to be delivered to the destination, in order.
-#' If the delivery’s log source has mandatory fields, they must be included
+#' If the delivery's log source has mandatory fields, they must be included
 #' in this list.
 #' @param fieldDelimiter The field delimiter to use between record fields when the final output
 #' format of a delivery is in `Plain`, `W3C`, or `Raw` format.
 #' @param s3DeliveryConfiguration This structure contains parameters that are valid only when the
-#' delivery’s delivery destination is an S3 bucket.
+#' delivery's delivery destination is an S3 bucket.
 #'
 #' @return
 #' An empty list.
