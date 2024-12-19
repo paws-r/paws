@@ -59,15 +59,8 @@ old_service_name <- function(name) {
 }
 
 service_alias <- function(name) {
-  m <- matrix(c(
-    "costandusagereportservice", "CostandUsageReportService",
-    "elasticloadbalancing",      "ELB",
-    "elasticloadbalancingv2",    "ELBV2",
-    "config",                    "ConfigService"
-  ), ncol = 2, byrow = TRUE)
-  aliases <- stats::setNames(m[, 2], m[, 1])
-  if (name %in% names(aliases)) {
-    return(aliases[[name]])
+  if (name %in% names(.service_alias)) {
+    return(.service_alias[[name]])
   }
   return("")
 }
@@ -106,3 +99,14 @@ snake_case <- function(x) {
 get_operation_name <- function(operation) {
   return(snake_case(operation$name))
 }
+
+.service_alias <- c(
+  "costandusagereportservice" = "CostandUsageReportService",
+  "elasticloadbalancing" = "ELB",
+  "elasticloadbalancingv2" = "ELBV2",
+  "config" = "ConfigService",
+  "agentsforamazonbedrockruntime" = "bedrockagentruntime",
+  "agentsforamazonbedrock" = "bedrockagent",
+  "dataautomationforamazonbedrock" = "bedrockdataautomation",
+  "runtimeforamazonbedrockdataautomation" = "bedrockdataautomationruntime"
+)

@@ -298,6 +298,8 @@
     - bedrock
     - bedrock-agent
     - bedrock-agent-runtime
+    - bedrock-data-automation
+    - bedrock-data-automation-runtime
     - bedrock-runtime
   title: "'Amazon Web Services' Machine Learning Services"
   description: >-
