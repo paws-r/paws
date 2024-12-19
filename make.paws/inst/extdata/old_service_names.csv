@@ -1,4 +1,6 @@
 "migrationhub",                "mgh"
+"agentsforamazonbedrockruntime", "bedrockagentruntime"
+"agentsforamazonbedrock",      "bedrockagent"
 "acmpca",                      "acm-pca"
 "acm",                         "acm"
 "alexaforbusiness",            "a4b"
