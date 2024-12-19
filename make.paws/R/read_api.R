@@ -1,3 +1,5 @@
+cache <- new.env(parent = emptyenv())
+
 # Read a given API's definition and documentation files.
 # aws-sdk-js deprecated and apis is not being updated
 # TODO: short term migrate to botocore jsons
@@ -18,7 +20,7 @@ read_api_old <- function(api_name, path) {
   }
   if (!is.null(files$paginators)) {
     paginators <- jsonlite::read_json(files$paginators)
-    api <- merge_paginators(api, paginators$pagination)
+    api <- merge_paginators(api, api_name, paginators$pagination)
   }
   api <- merge_eventstream(api)
   region_config <- jsonlite::read_json(region_config_path)
@@ -44,11 +46,11 @@ read_api <- function(api_name, path) {
     api <- merge_examples(api, examples$examples)
   }
   if (!is.null(files$paginators)) {
-    paginators <- jsonlite::read_json(files$paginators)
-    api <- merge_paginators(api, paginators$pagination)
+    paginators <- jsonlite::read_json(files$paginators)$pagination
+    api <- merge_paginators(api, api_name, paginators)
   }
   api <- merge_eventstream(api)
-  region_config <- jsonlite::read_json(region_config_path)
+  region_config <- get_cache_file(region_config_path)
   api <- merge_region_config_v2(api, region_config)
   api <- fix_region_config(api)
 
@@ -96,13 +98,41 @@ merge_examples <- function(api, examples) {
 }
 
 # Returns an API object with paginators merged into the corresponding operations.
-merge_paginators <- function(api, paginators) {
+merge_paginators <- function(api, api_name, paginators) {
+  pg <- get_paginators_override()
+  missing <- setdiff(names(pg[[api_name]]), names(paginators))
   for (name in names(paginators)) {
-    operation <- api$operations[[name]]
-    operation[["paginators"]] <- paginators[[name]]
-    api$operations[[name]] <- operation
+    api$operations[[name]][["paginators"]] <- paginators[[name]]
+  }
+  # merge paginators from aws-sdk-js
+  if (length(missing) > 0) {
+    for (name in names(pg[[api_name]])) {
+      if (!is.null(api$operations[[name]])) {
+        api$operations[[name]][["paginators"]] <- pg[[api_name]][[name]]
+      }
+    }
   }
   return(api)
+}
+
+get_paginators_override <- function() {
+  if (!is.null(cache$paginators)) {
+    return(cache$paginators)
+  }
+  file_pg <- system.file(
+    file.path("extdata", "paginators_override.json"),
+    package = "make.paws"
+  )
+  cache$paginators <- jsonlite::read_json(file_pg)
+  return(cache$paginators)
+}
+
+get_cache_file <- function(path) {
+  if (!is.null(cache[[path]])) {
+    return(cache[[path]])
+  }
+  cache[[path]] <- jsonlite::read_json(path)
+  return(cache[[path]])
 }
 
 merge_eventstream <- function(api) {
