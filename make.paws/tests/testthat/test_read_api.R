@@ -71,3 +71,21 @@ test_that("merge_examples", {
   expect_equal(ret$operations$operation1$examples[[1]]$description, "foo")
   expect_equal(ret$operations$operation2$examples[[1]]$description, "bar")
 })
+
+
+test_that("merge_paginators", {
+  api <- list(
+    operations = list(
+      DescribeDestinations = list(),
+      GetLogEvents = list()
+    )
+  )
+  paginator <- list(
+    "DescribeDestinations" = list(
+      "input_token"= "nextToken"
+    )
+  )
+  ret <- make.paws:::merge_paginators(api, "logs", paginator)
+  expect_equal(ret$operations$DescribeDestinations$paginators$input_token, "nextToken")
+  expect_equal(ret$operations$DescribeDestinations$paginators$input_token, "nextToken")
+})
