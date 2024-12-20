@@ -18,6 +18,7 @@ the valid values:
 \item \code{Deploy}
 \item \code{Approval}
 \item \code{Invoke}
+\item \code{Compute}
 }}
 
 \item{owner}{[required] The creator of an action type that was created with any supported

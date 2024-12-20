@@ -22,7 +22,8 @@ ecs_register_task_definition(
   proxyConfiguration = NULL,
   inferenceAccelerators = NULL,
   ephemeralStorage = NULL,
-  runtimePlatform = NULL
+  runtimePlatform = NULL,
+  enableFaultInjection = NULL
 )
 }
 \arguments{
@@ -279,6 +280,10 @@ platforms:
 
 \item{runtimePlatform}{The operating system that your tasks definitions run on. A platform
 family is specified only for tasks using the Fargate launch type.}
+
+\item{enableFaultInjection}{Enables fault injection when you register your task definition and
+allows for fault injection requests to be accepted from the task's
+containers. The default value is \code{false}.}
 }
 \description{
 Registers a new task definition from the supplied \code{family} and \code{containerDefinitions}. Optionally, you can add data volumes to your containers with the \code{volumes} parameter. For more information about task definition parameters and defaults, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definitions.html}{Amazon ECS Task Definitions} in the \emph{Amazon Elastic Container Service Developer Guide}.

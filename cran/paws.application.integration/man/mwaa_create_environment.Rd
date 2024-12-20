@@ -115,7 +115,7 @@ specified, it defaults to the latest version. For more information, see
 \href{https://docs.aws.amazon.com/mwaa/latest/userguide/airflow-versions.html}{Apache Airflow versions on Amazon Managed Workflows for Apache Airflow (Amazon MWAA)}.
 
 Valid values: \verb{1.10.12}, \verb{2.0.2}, \verb{2.2.2}, \verb{2.4.3}, \verb{2.5.1}, \verb{2.6.3},
-\verb{2.7.2}, \verb{2.8.1}, \verb{2.9.2}, and \verb{2.10.1}.}
+\verb{2.7.2}, \verb{2.8.1}, \verb{2.9.2}, \verb{2.10.1}, and \verb{2.10.3}.}
 
 \item{LoggingConfiguration}{Defines the Apache Airflow logs to send to CloudWatch Logs.}
 

@@ -749,7 +749,7 @@ opensearchserviceserverless_list_access_policies <- function(maxResults = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
     stream_api = FALSE
   )
   input <- .opensearchserviceserverless$list_access_policies_input(maxResults = maxResults, nextToken = nextToken, resource = resource, type = type)
@@ -788,7 +788,7 @@ opensearchserviceserverless_list_collections <- function(collectionFilters = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
     stream_api = FALSE
   )
   input <- .opensearchserviceserverless$list_collections_input(collectionFilters = collectionFilters, maxResults = maxResults, nextToken = nextToken)
@@ -830,7 +830,7 @@ opensearchserviceserverless_list_lifecycle_policies <- function(maxResults = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
     stream_api = FALSE
   )
   input <- .opensearchserviceserverless$list_lifecycle_policies_input(maxResults = maxResults, nextToken = nextToken, resources = resources, type = type)
@@ -871,7 +871,7 @@ opensearchserviceserverless_list_security_configs <- function(maxResults = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
     stream_api = FALSE
   )
   input <- .opensearchserviceserverless$list_security_configs_input(maxResults = maxResults, nextToken = nextToken, type = type)
@@ -914,7 +914,7 @@ opensearchserviceserverless_list_security_policies <- function(maxResults = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
     stream_api = FALSE
   )
   input <- .opensearchserviceserverless$list_security_policies_input(maxResults = maxResults, nextToken = nextToken, resource = resource, type = type)
@@ -990,7 +990,7 @@ opensearchserviceserverless_list_vpc_endpoints <- function(maxResults = NULL, ne
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
     stream_api = FALSE
   )
   input <- .opensearchserviceserverless$list_vpc_endpoints_input(maxResults = maxResults, nextToken = nextToken, vpcEndpointFilters = vpcEndpointFilters)

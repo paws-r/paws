@@ -613,7 +613,7 @@ inspector_get_exclusions_preview <- function(assessmentTemplateArn, previewToken
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
     stream_api = FALSE
   )
   input <- .inspector$get_exclusions_preview_input(assessmentTemplateArn = assessmentTemplateArn, previewToken = previewToken, nextToken = nextToken, maxResults = maxResults, locale = locale)

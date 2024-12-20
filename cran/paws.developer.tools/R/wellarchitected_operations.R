@@ -804,7 +804,7 @@ wellarchitected_get_consolidated_report <- function(Format, IncludeSharedResourc
     http_method = "GET",
     http_path = "/consolidatedReport",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .wellarchitected$get_consolidated_report_input(Format = Format, IncludeSharedResources = IncludeSharedResources, NextToken = NextToken, MaxResults = MaxResults)
@@ -1259,7 +1259,7 @@ wellarchitected_list_answers <- function(WorkloadId, LensAlias, PillarId = NULL,
     http_method = "GET",
     http_path = "/workloads/{WorkloadId}/lensReviews/{LensAlias}/answers",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .wellarchitected$list_answers_input(WorkloadId = WorkloadId, LensAlias = LensAlias, PillarId = PillarId, MilestoneNumber = MilestoneNumber, NextToken = NextToken, MaxResults = MaxResults, QuestionPriority = QuestionPriority)
@@ -1296,7 +1296,7 @@ wellarchitected_list_check_details <- function(WorkloadId, NextToken = NULL, Max
     http_method = "POST",
     http_path = "/workloads/{WorkloadId}/checks",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .wellarchitected$list_check_details_input(WorkloadId = WorkloadId, NextToken = NextToken, MaxResults = MaxResults, LensArn = LensArn, PillarId = PillarId, QuestionId = QuestionId, ChoiceId = ChoiceId)
@@ -1334,7 +1334,7 @@ wellarchitected_list_check_summaries <- function(WorkloadId, NextToken = NULL, M
     http_method = "POST",
     http_path = "/workloads/{WorkloadId}/checkSummaries",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .wellarchitected$list_check_summaries_input(WorkloadId = WorkloadId, NextToken = NextToken, MaxResults = MaxResults, LensArn = LensArn, PillarId = PillarId, QuestionId = QuestionId, ChoiceId = ChoiceId)
@@ -1371,7 +1371,7 @@ wellarchitected_list_lens_review_improvements <- function(WorkloadId, LensAlias,
     http_method = "GET",
     http_path = "/workloads/{WorkloadId}/lensReviews/{LensAlias}/improvements",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .wellarchitected$list_lens_review_improvements_input(WorkloadId = WorkloadId, LensAlias = LensAlias, PillarId = PillarId, MilestoneNumber = MilestoneNumber, NextToken = NextToken, MaxResults = MaxResults, QuestionPriority = QuestionPriority)
@@ -1405,7 +1405,7 @@ wellarchitected_list_lens_reviews <- function(WorkloadId, MilestoneNumber = NULL
     http_method = "GET",
     http_path = "/workloads/{WorkloadId}/lensReviews",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .wellarchitected$list_lens_reviews_input(WorkloadId = WorkloadId, MilestoneNumber = MilestoneNumber, NextToken = NextToken, MaxResults = MaxResults)
@@ -1441,7 +1441,7 @@ wellarchitected_list_lens_shares <- function(LensAlias, SharedWithPrefix = NULL,
     http_method = "GET",
     http_path = "/lenses/{LensAlias}/shares",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .wellarchitected$list_lens_shares_input(LensAlias = LensAlias, SharedWithPrefix = SharedWithPrefix, NextToken = NextToken, MaxResults = MaxResults, Status = Status)
@@ -1476,7 +1476,7 @@ wellarchitected_list_lenses <- function(NextToken = NULL, MaxResults = NULL, Len
     http_method = "GET",
     http_path = "/lenses",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .wellarchitected$list_lenses_input(NextToken = NextToken, MaxResults = MaxResults, LensType = LensType, LensStatus = LensStatus, LensName = LensName)
@@ -1509,7 +1509,7 @@ wellarchitected_list_milestones <- function(WorkloadId, NextToken = NULL, MaxRes
     http_method = "POST",
     http_path = "/workloads/{WorkloadId}/milestonesSummaries",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .wellarchitected$list_milestones_input(WorkloadId = WorkloadId, NextToken = NextToken, MaxResults = MaxResults)
@@ -1545,7 +1545,7 @@ wellarchitected_list_notifications <- function(WorkloadId = NULL, NextToken = NU
     http_method = "POST",
     http_path = "/notifications",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .wellarchitected$list_notifications_input(WorkloadId = WorkloadId, NextToken = NextToken, MaxResults = MaxResults, ResourceArn = ResourceArn)
@@ -1578,7 +1578,7 @@ wellarchitected_list_profile_notifications <- function(WorkloadId = NULL, NextTo
     http_method = "GET",
     http_path = "/profileNotifications/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .wellarchitected$list_profile_notifications_input(WorkloadId = WorkloadId, NextToken = NextToken, MaxResults = MaxResults)
@@ -1614,7 +1614,7 @@ wellarchitected_list_profile_shares <- function(ProfileArn, SharedWithPrefix = N
     http_method = "GET",
     http_path = "/profiles/{ProfileArn}/shares",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .wellarchitected$list_profile_shares_input(ProfileArn = ProfileArn, SharedWithPrefix = SharedWithPrefix, NextToken = NextToken, MaxResults = MaxResults, Status = Status)
@@ -1649,7 +1649,7 @@ wellarchitected_list_profiles <- function(ProfileNamePrefix = NULL, ProfileOwner
     http_method = "GET",
     http_path = "/profileSummaries",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .wellarchitected$list_profiles_input(ProfileNamePrefix = ProfileNamePrefix, ProfileOwnerType = ProfileOwnerType, NextToken = NextToken, MaxResults = MaxResults)
@@ -1684,7 +1684,7 @@ wellarchitected_list_review_template_answers <- function(TemplateArn, LensAlias,
     http_method = "GET",
     http_path = "/reviewTemplates/{TemplateArn}/lensReviews/{LensAlias}/answers",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .wellarchitected$list_review_template_answers_input(TemplateArn = TemplateArn, LensAlias = LensAlias, PillarId = PillarId, NextToken = NextToken, MaxResults = MaxResults)
@@ -1716,7 +1716,7 @@ wellarchitected_list_review_templates <- function(NextToken = NULL, MaxResults =
     http_method = "GET",
     http_path = "/reviewTemplates",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .wellarchitected$list_review_templates_input(NextToken = NextToken, MaxResults = MaxResults)
@@ -1756,7 +1756,7 @@ wellarchitected_list_share_invitations <- function(WorkloadNamePrefix = NULL, Le
     http_method = "GET",
     http_path = "/shareInvitations",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .wellarchitected$list_share_invitations_input(WorkloadNamePrefix = WorkloadNamePrefix, LensNamePrefix = LensNamePrefix, ShareResourceType = ShareResourceType, NextToken = NextToken, MaxResults = MaxResults, ProfileNamePrefix = ProfileNamePrefix, TemplateNamePrefix = TemplateNamePrefix)
@@ -1823,7 +1823,7 @@ wellarchitected_list_template_shares <- function(TemplateArn, SharedWithPrefix =
     http_method = "GET",
     http_path = "/templates/shares/{TemplateArn}",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .wellarchitected$list_template_shares_input(TemplateArn = TemplateArn, SharedWithPrefix = SharedWithPrefix, NextToken = NextToken, MaxResults = MaxResults, Status = Status)
@@ -1859,7 +1859,7 @@ wellarchitected_list_workload_shares <- function(WorkloadId, SharedWithPrefix = 
     http_method = "GET",
     http_path = "/workloads/{WorkloadId}/shares",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .wellarchitected$list_workload_shares_input(WorkloadId = WorkloadId, SharedWithPrefix = SharedWithPrefix, NextToken = NextToken, MaxResults = MaxResults, Status = Status)
@@ -1892,7 +1892,7 @@ wellarchitected_list_workloads <- function(WorkloadNamePrefix = NULL, NextToken 
     http_method = "POST",
     http_path = "/workloadsSummaries",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .wellarchitected$list_workloads_input(WorkloadNamePrefix = WorkloadNamePrefix, NextToken = NextToken, MaxResults = MaxResults)

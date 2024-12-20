@@ -15,7 +15,8 @@ connect_start_chat_contact(
   SupportedMessagingContentTypes = NULL,
   PersistentChat = NULL,
   RelatedContactId = NULL,
-  SegmentAttributes = NULL
+  SegmentAttributes = NULL,
+  CustomerId = NULL
 )
 }
 \arguments{
@@ -92,6 +93,9 @@ The types \code{application/vnd.amazonaws.connect.message.interactive} and
 present in the SupportedMessagingContentTypes field of this API in order
 to set \code{SegmentAttributes} as
 \{\verb{ "connect:Subtype": \\\{"valueString" : "connect:Guide" \\\}\\\}}.}
+
+\item{CustomerId}{The customer's identification number. For example, the \code{CustomerId} may
+be a customer number from your CRM.}
 }
 \description{
 Initiates a flow to start a new chat for the customer. Response of this API provides a token required to obtain credentials from the \href{https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-participant_CreateParticipantConnection.html}{CreateParticipantConnection} API in the Amazon Connect Participant Service.

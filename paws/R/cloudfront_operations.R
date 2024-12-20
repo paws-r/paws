@@ -197,7 +197,9 @@ cloudfront_associate_alias <- function(TargetDistributionId, Alias) {
 #'               OriginKeepaliveTimeout = 123
 #'             ),
 #'             VpcOriginConfig = list(
-#'               VpcOriginId = "string"
+#'               VpcOriginId = "string",
+#'               OriginReadTimeout = 123,
+#'               OriginKeepaliveTimeout = 123
 #'             ),
 #'             ConnectionAttempts = 123,
 #'             ConnectionTimeout = 123,
@@ -1011,7 +1013,9 @@ cloudfront_create_continuous_deployment_policy <- function(ContinuousDeploymentP
 #'               OriginKeepaliveTimeout = 123
 #'             ),
 #'             VpcOriginConfig = list(
-#'               VpcOriginId = "string"
+#'               VpcOriginId = "string",
+#'               OriginReadTimeout = 123,
+#'               OriginKeepaliveTimeout = 123
 #'             ),
 #'             ConnectionAttempts = 123,
 #'             ConnectionTimeout = 123,
@@ -1328,7 +1332,9 @@ cloudfront_create_continuous_deployment_policy <- function(ContinuousDeploymentP
 #'             OriginKeepaliveTimeout = 123
 #'           ),
 #'           VpcOriginConfig = list(
-#'             VpcOriginId = "string"
+#'             VpcOriginId = "string",
+#'             OriginReadTimeout = 123,
+#'             OriginKeepaliveTimeout = 123
 #'           ),
 #'           ConnectionAttempts = 123,
 #'           ConnectionTimeout = 123,
@@ -1715,7 +1721,9 @@ cloudfront_create_distribution <- function(DistributionConfig) {
 #'               OriginKeepaliveTimeout = 123
 #'             ),
 #'             VpcOriginConfig = list(
-#'               VpcOriginId = "string"
+#'               VpcOriginId = "string",
+#'               OriginReadTimeout = 123,
+#'               OriginKeepaliveTimeout = 123
 #'             ),
 #'             ConnectionAttempts = 123,
 #'             ConnectionTimeout = 123,
@@ -2033,7 +2041,9 @@ cloudfront_create_distribution <- function(DistributionConfig) {
 #'               OriginKeepaliveTimeout = 123
 #'             ),
 #'             VpcOriginConfig = list(
-#'               VpcOriginId = "string"
+#'               VpcOriginId = "string",
+#'               OriginReadTimeout = 123,
+#'               OriginKeepaliveTimeout = 123
 #'             ),
 #'             ConnectionAttempts = 123,
 #'             ConnectionTimeout = 123,
@@ -5725,7 +5735,9 @@ cloudfront_get_continuous_deployment_policy_config <- function(Id) {
 #'               OriginKeepaliveTimeout = 123
 #'             ),
 #'             VpcOriginConfig = list(
-#'               VpcOriginId = "string"
+#'               VpcOriginId = "string",
+#'               OriginReadTimeout = 123,
+#'               OriginKeepaliveTimeout = 123
 #'             ),
 #'             ConnectionAttempts = 123,
 #'             ConnectionTimeout = 123,
@@ -6084,7 +6096,9 @@ cloudfront_get_distribution <- function(Id) {
 #'             OriginKeepaliveTimeout = 123
 #'           ),
 #'           VpcOriginConfig = list(
-#'             VpcOriginId = "string"
+#'             VpcOriginId = "string",
+#'             OriginReadTimeout = 123,
+#'             OriginKeepaliveTimeout = 123
 #'           ),
 #'           ConnectionAttempts = 123,
 #'           ConnectionTimeout = 123,
@@ -8623,7 +8637,9 @@ cloudfront_list_continuous_deployment_policies <- function(Marker = NULL, MaxIte
 #'                 OriginKeepaliveTimeout = 123
 #'               ),
 #'               VpcOriginConfig = list(
-#'                 VpcOriginId = "string"
+#'                 VpcOriginId = "string",
+#'                 OriginReadTimeout = 123,
+#'                 OriginKeepaliveTimeout = 123
 #'               ),
 #'               ConnectionAttempts = 123,
 #'               ConnectionTimeout = 123,
@@ -8996,7 +9012,9 @@ cloudfront_list_distributions <- function(Marker = NULL, MaxItems = NULL) {
 #'                 OriginKeepaliveTimeout = 123
 #'               ),
 #'               VpcOriginConfig = list(
-#'                 VpcOriginId = "string"
+#'                 VpcOriginId = "string",
+#'                 OriginReadTimeout = 123,
+#'                 OriginKeepaliveTimeout = 123
 #'               ),
 #'               ConnectionAttempts = 123,
 #'               ConnectionTimeout = 123,
@@ -9615,7 +9633,9 @@ cloudfront_list_distributions_by_origin_request_policy_id <- function(Marker = N
 #'                 OriginKeepaliveTimeout = 123
 #'               ),
 #'               VpcOriginConfig = list(
-#'                 VpcOriginId = "string"
+#'                 VpcOriginId = "string",
+#'                 OriginReadTimeout = 123,
+#'                 OriginKeepaliveTimeout = 123
 #'               ),
 #'               ConnectionAttempts = 123,
 #'               ConnectionTimeout = 123,
@@ -10138,7 +10158,9 @@ cloudfront_list_distributions_by_vpc_origin_id <- function(Marker = NULL, MaxIte
 #'                 OriginKeepaliveTimeout = 123
 #'               ),
 #'               VpcOriginConfig = list(
-#'                 VpcOriginId = "string"
+#'                 VpcOriginId = "string",
+#'                 OriginReadTimeout = 123,
+#'                 OriginKeepaliveTimeout = 123
 #'               ),
 #'               ConnectionAttempts = 123,
 #'               ConnectionTimeout = 123,
@@ -12489,7 +12511,9 @@ cloudfront_update_continuous_deployment_policy <- function(ContinuousDeploymentP
 #'               OriginKeepaliveTimeout = 123
 #'             ),
 #'             VpcOriginConfig = list(
-#'               VpcOriginId = "string"
+#'               VpcOriginId = "string",
+#'               OriginReadTimeout = 123,
+#'               OriginKeepaliveTimeout = 123
 #'             ),
 #'             ConnectionAttempts = 123,
 #'             ConnectionTimeout = 123,
@@ -12805,7 +12829,9 @@ cloudfront_update_continuous_deployment_policy <- function(ContinuousDeploymentP
 #'             OriginKeepaliveTimeout = 123
 #'           ),
 #'           VpcOriginConfig = list(
-#'             VpcOriginId = "string"
+#'             VpcOriginId = "string",
+#'             OriginReadTimeout = 123,
+#'             OriginKeepaliveTimeout = 123
 #'           ),
 #'           ConnectionAttempts = 123,
 #'           ConnectionTimeout = 123,
@@ -13217,7 +13243,9 @@ cloudfront_update_distribution <- function(DistributionConfig, Id, IfMatch = NUL
 #'               OriginKeepaliveTimeout = 123
 #'             ),
 #'             VpcOriginConfig = list(
-#'               VpcOriginId = "string"
+#'               VpcOriginId = "string",
+#'               OriginReadTimeout = 123,
+#'               OriginKeepaliveTimeout = 123
 #'             ),
 #'             ConnectionAttempts = 123,
 #'             ConnectionTimeout = 123,

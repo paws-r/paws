@@ -21,7 +21,7 @@ ecs_list_service_deployments(
 or ARN. Starting April 15, 2023, Amazon Web Services will not onboard
 new customers to Amazon Elastic Inference (EI), and will help current
 customers migrate their workloads to options that offer better price and
-performanceIf you don't specify a cluster, \code{default} is used.}
+performance. If you don't specify a cluster, \code{default} is used.}
 
 \item{status}{An optional filter you can use to narrow the results. If you do not
 specify a status, then all status values are included in the result.}

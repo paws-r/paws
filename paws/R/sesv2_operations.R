@@ -2447,7 +2447,7 @@ sesv2_get_dedicated_ips <- function(PoolName = NULL, NextToken = NULL, PageSize 
     http_method = "GET",
     http_path = "/v2/email/dedicated-ips",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "PageSize"),
     stream_api = FALSE
   )
   input <- .sesv2$get_dedicated_ips_input(PoolName = PoolName, NextToken = NextToken, PageSize = PageSize)
@@ -3517,7 +3517,7 @@ sesv2_list_configuration_sets <- function(NextToken = NULL, PageSize = NULL) {
     http_method = "GET",
     http_path = "/v2/email/configuration-sets",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "PageSize"),
     stream_api = FALSE
   )
   input <- .sesv2$list_configuration_sets_input(NextToken = NextToken, PageSize = PageSize)
@@ -3582,7 +3582,7 @@ sesv2_list_contact_lists <- function(PageSize = NULL, NextToken = NULL) {
     http_method = "GET",
     http_path = "/v2/email/contact-lists",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "PageSize"),
     stream_api = FALSE
   )
   input <- .sesv2$list_contact_lists_input(PageSize = PageSize, NextToken = NextToken)
@@ -3672,7 +3672,7 @@ sesv2_list_contacts <- function(ContactListName, Filter = NULL, PageSize = NULL,
     http_method = "POST",
     http_path = "/v2/email/contact-lists/{ContactListName}/contacts/list",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "PageSize"),
     stream_api = FALSE
   )
   input <- .sesv2$list_contacts_input(ContactListName = ContactListName, Filter = Filter, PageSize = PageSize, NextToken = NextToken)
@@ -3750,7 +3750,7 @@ sesv2_list_custom_verification_email_templates <- function(NextToken = NULL, Pag
     http_method = "GET",
     http_path = "/v2/email/custom-verification-email-templates",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "PageSize"),
     stream_api = FALSE
   )
   input <- .sesv2$list_custom_verification_email_templates_input(NextToken = NextToken, PageSize = PageSize)
@@ -3812,7 +3812,7 @@ sesv2_list_dedicated_ip_pools <- function(NextToken = NULL, PageSize = NULL) {
     http_method = "GET",
     http_path = "/v2/email/dedicated-ip-pools",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "PageSize"),
     stream_api = FALSE
   )
   input <- .sesv2$list_dedicated_ip_pools_input(NextToken = NextToken, PageSize = PageSize)
@@ -3890,7 +3890,7 @@ sesv2_list_deliverability_test_reports <- function(NextToken = NULL, PageSize = 
     http_method = "GET",
     http_path = "/v2/email/deliverability-dashboard/test-reports",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "PageSize"),
     stream_api = FALSE
   )
   input <- .sesv2$list_deliverability_test_reports_input(NextToken = NextToken, PageSize = PageSize)
@@ -3992,7 +3992,7 @@ sesv2_list_domain_deliverability_campaigns <- function(StartDate, EndDate, Subsc
     http_method = "GET",
     http_path = "/v2/email/deliverability-dashboard/domains/{SubscribedDomain}/campaigns",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "PageSize"),
     stream_api = FALSE
   )
   input <- .sesv2$list_domain_deliverability_campaigns_input(StartDate = StartDate, EndDate = EndDate, SubscribedDomain = SubscribedDomain, NextToken = NextToken, PageSize = PageSize)
@@ -4065,7 +4065,7 @@ sesv2_list_email_identities <- function(NextToken = NULL, PageSize = NULL) {
     http_method = "GET",
     http_path = "/v2/email/identities",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "PageSize"),
     stream_api = FALSE
   )
   input <- .sesv2$list_email_identities_input(NextToken = NextToken, PageSize = PageSize)
@@ -4136,7 +4136,7 @@ sesv2_list_email_templates <- function(NextToken = NULL, PageSize = NULL) {
     http_method = "GET",
     http_path = "/v2/email/templates",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "PageSize"),
     stream_api = FALSE
   )
   input <- .sesv2$list_email_templates_input(NextToken = NextToken, PageSize = PageSize)
@@ -4211,7 +4211,7 @@ sesv2_list_export_jobs <- function(NextToken = NULL, PageSize = NULL, ExportSour
     http_method = "POST",
     http_path = "/v2/email/list-export-jobs",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "PageSize"),
     stream_api = FALSE
   )
   input <- .sesv2$list_export_jobs_input(NextToken = NextToken, PageSize = PageSize, ExportSourceType = ExportSourceType, JobStatus = JobStatus)
@@ -4292,7 +4292,7 @@ sesv2_list_import_jobs <- function(ImportDestinationType = NULL, NextToken = NUL
     http_method = "POST",
     http_path = "/v2/email/import-jobs/list",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "PageSize"),
     stream_api = FALSE
   )
   input <- .sesv2$list_import_jobs_input(ImportDestinationType = ImportDestinationType, NextToken = NextToken, PageSize = PageSize)
@@ -4453,7 +4453,7 @@ sesv2_list_recommendations <- function(Filter = NULL, NextToken = NULL, PageSize
     http_method = "POST",
     http_path = "/v2/email/vdm/recommendations",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "PageSize"),
     stream_api = FALSE
   )
   input <- .sesv2$list_recommendations_input(Filter = Filter, NextToken = NextToken, PageSize = PageSize)
@@ -4536,7 +4536,7 @@ sesv2_list_suppressed_destinations <- function(Reasons = NULL, StartDate = NULL,
     http_method = "GET",
     http_path = "/v2/email/suppression/addresses",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "PageSize"),
     stream_api = FALSE
   )
   input <- .sesv2$list_suppressed_destinations_input(Reasons = Reasons, StartDate = StartDate, EndDate = EndDate, NextToken = NextToken, PageSize = PageSize)

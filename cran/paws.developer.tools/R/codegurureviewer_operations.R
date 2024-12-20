@@ -291,7 +291,7 @@ codegurureviewer_list_code_reviews <- function(ProviderTypes = NULL, States = NU
     http_method = "GET",
     http_path = "/codereviews",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .codegurureviewer$list_code_reviews_input(ProviderTypes = ProviderTypes, States = States, RepositoryNames = RepositoryNames, Type = Type, MaxResults = MaxResults, NextToken = NextToken)
@@ -341,7 +341,7 @@ codegurureviewer_list_recommendation_feedback <- function(NextToken = NULL, MaxR
     http_method = "GET",
     http_path = "/feedback/{CodeReviewArn}/RecommendationFeedback",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .codegurureviewer$list_recommendation_feedback_input(NextToken = NextToken, MaxResults = MaxResults, CodeReviewArn = CodeReviewArn, UserIds = UserIds, RecommendationIds = RecommendationIds)
@@ -377,7 +377,7 @@ codegurureviewer_list_recommendations <- function(NextToken = NULL, MaxResults =
     http_method = "GET",
     http_path = "/codereviews/{CodeReviewArn}/Recommendations",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .codegurureviewer$list_recommendations_input(NextToken = NextToken, MaxResults = MaxResults, CodeReviewArn = CodeReviewArn)

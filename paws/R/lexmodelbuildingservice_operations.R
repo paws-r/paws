@@ -1699,8 +1699,9 @@ lexmodelbuildingservice_get_builtin_intents <- function(locale = NULL, signature
 #' @description
 #' Gets a list of built-in slot types that meet the specified criteria.
 #' 
-#' For a list of built-in slot types, see Slot Type Reference in the *Alexa
-#' Skills Kit*.
+#' For a list of built-in slot types, see [Slot Type
+#' Reference](https://developer.amazon.com/en-US/docs/alexa/custom-skills/slot-type-reference.html)
+#' in the *Alexa Skills Kit*.
 #' 
 #' This operation requires permission for the `lex:GetBuiltInSlotTypes`
 #' action.
@@ -2401,7 +2402,7 @@ lexmodelbuildingservice_get_migrations <- function(sortByAttribute = NULL, sortB
     http_method = "GET",
     http_path = "/migrations",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
     stream_api = FALSE
   )
   input <- .lexmodelbuildingservice$get_migrations_input(sortByAttribute = sortByAttribute, sortByOrder = sortByOrder, v1BotNameContains = v1BotNameContains, migrationStatusEquals = migrationStatusEquals, maxResults = maxResults, nextToken = nextToken)
@@ -4003,8 +4004,9 @@ lexmodelbuildingservice_put_intent <- function(name, description = NULL, slots =
 #' slot type called `AMAZON.DATE`, you can't create a custom slot type
 #' called `DATE`.
 #' 
-#' For a list of built-in slot types, see Slot Type Reference in the *Alexa
-#' Skills Kit*.
+#' For a list of built-in slot types, see [Slot Type
+#' Reference](https://developer.amazon.com/en-US/docs/alexa/custom-skills/slot-type-reference.html)
+#' in the *Alexa Skills Kit*.
 #' @param description A description of the slot type.
 #' @param enumerationValues A list of `EnumerationValue` objects that defines the values that the
 #' slot type can take. Each value can have a list of `synonyms`, which are

@@ -842,7 +842,7 @@ pinpointemail_list_domain_deliverability_campaigns <- function(StartDate, EndDat
     http_method = "GET",
     http_path = "/v1/email/deliverability-dashboard/domains/{SubscribedDomain}/campaigns",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "PageSize"),
     stream_api = FALSE
   )
   input <- .pinpointemail$list_domain_deliverability_campaigns_input(StartDate = StartDate, EndDate = EndDate, SubscribedDomain = SubscribedDomain, NextToken = NextToken, PageSize = PageSize)

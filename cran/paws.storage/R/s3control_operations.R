@@ -2417,7 +2417,7 @@ s3control_list_access_grants <- function(AccountId, NextToken = NULL, MaxResults
     http_method = "GET",
     http_path = "/v20180820/accessgrantsinstance/grants",
     host_prefix = "{AccountId}.",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .s3control$list_access_grants_input(AccountId = AccountId, NextToken = NextToken, MaxResults = MaxResults, GranteeType = GranteeType, GranteeIdentifier = GranteeIdentifier, Permission = Permission, GrantScope = GrantScope, ApplicationArn = ApplicationArn)
@@ -2455,7 +2455,7 @@ s3control_list_access_grants_instances <- function(AccountId, NextToken = NULL, 
     http_method = "GET",
     http_path = "/v20180820/accessgrantsinstances",
     host_prefix = "{AccountId}.",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .s3control$list_access_grants_instances_input(AccountId = AccountId, NextToken = NextToken, MaxResults = MaxResults)
@@ -2502,7 +2502,7 @@ s3control_list_access_grants_locations <- function(AccountId, NextToken = NULL, 
     http_method = "GET",
     http_path = "/v20180820/accessgrantsinstance/locations",
     host_prefix = "{AccountId}.",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .s3control$list_access_grants_locations_input(AccountId = AccountId, NextToken = NextToken, MaxResults = MaxResults, LocationScope = LocationScope)
@@ -2557,7 +2557,7 @@ s3control_list_access_points <- function(AccountId, Bucket = NULL, NextToken = N
     http_method = "GET",
     http_path = "/v20180820/accesspoint",
     host_prefix = "{AccountId}.",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .s3control$list_access_points_input(AccountId = AccountId, Bucket = Bucket, NextToken = NextToken, MaxResults = MaxResults)
@@ -2687,7 +2687,7 @@ s3control_list_jobs <- function(AccountId, JobStatuses = NULL, NextToken = NULL,
     http_method = "GET",
     http_path = "/v20180820/jobs",
     host_prefix = "{AccountId}.",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .s3control$list_jobs_input(AccountId = AccountId, JobStatuses = JobStatuses, NextToken = NextToken, MaxResults = MaxResults)
@@ -2721,7 +2721,7 @@ s3control_list_multi_region_access_points <- function(AccountId, NextToken = NUL
     http_method = "GET",
     http_path = "/v20180820/mrap/instances",
     host_prefix = "{AccountId}.",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .s3control$list_multi_region_access_points_input(AccountId = AccountId, NextToken = NextToken, MaxResults = MaxResults)
@@ -2757,7 +2757,7 @@ s3control_list_regional_buckets <- function(AccountId, NextToken = NULL, MaxResu
     http_method = "GET",
     http_path = "/v20180820/bucket",
     host_prefix = "{AccountId}.",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .s3control$list_regional_buckets_input(AccountId = AccountId, NextToken = NextToken, MaxResults = MaxResults, OutpostId = OutpostId)
@@ -2789,7 +2789,7 @@ s3control_list_storage_lens_configurations <- function(AccountId, NextToken = NU
     http_method = "GET",
     http_path = "/v20180820/storagelens",
     host_prefix = "{AccountId}.",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken"),
     stream_api = FALSE
   )
   input <- .s3control$list_storage_lens_configurations_input(AccountId = AccountId, NextToken = NextToken)
@@ -2822,7 +2822,7 @@ s3control_list_storage_lens_groups <- function(AccountId, NextToken = NULL) {
     http_method = "GET",
     http_path = "/v20180820/storagelensgroup",
     host_prefix = "{AccountId}.",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken"),
     stream_api = FALSE
   )
   input <- .s3control$list_storage_lens_groups_input(AccountId = AccountId, NextToken = NextToken)

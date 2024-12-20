@@ -1496,7 +1496,7 @@ ivsrealtime_list_compositions <- function(filterByStageArn = NULL, filterByEncod
     http_method = "POST",
     http_path = "/ListCompositions",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
     stream_api = FALSE
   )
   input <- .ivsrealtime$list_compositions_input(filterByStageArn = filterByStageArn, filterByEncoderConfigurationArn = filterByEncoderConfigurationArn, nextToken = nextToken, maxResults = maxResults)
@@ -1559,7 +1559,7 @@ ivsrealtime_list_encoder_configurations <- function(nextToken = NULL, maxResults
     http_method = "POST",
     http_path = "/ListEncoderConfigurations",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
     stream_api = FALSE
   )
   input <- .ivsrealtime$list_encoder_configurations_input(nextToken = nextToken, maxResults = maxResults)
@@ -1705,7 +1705,7 @@ ivsrealtime_list_participant_events <- function(stageArn, sessionId, participant
     http_method = "POST",
     http_path = "/ListParticipantEvents",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
     stream_api = FALSE
   )
   input <- .ivsrealtime$list_participant_events_input(stageArn = stageArn, sessionId = sessionId, participantId = participantId, nextToken = nextToken, maxResults = maxResults)
@@ -1796,7 +1796,7 @@ ivsrealtime_list_participants <- function(stageArn, sessionId, filterByUserId = 
     http_method = "POST",
     http_path = "/ListParticipants",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
     stream_api = FALSE
   )
   input <- .ivsrealtime$list_participants_input(stageArn = stageArn, sessionId = sessionId, filterByUserId = filterByUserId, filterByPublished = filterByPublished, filterByState = filterByState, nextToken = nextToken, maxResults = maxResults, filterByRecordingState = filterByRecordingState)
@@ -1924,7 +1924,7 @@ ivsrealtime_list_stage_sessions <- function(stageArn, nextToken = NULL, maxResul
     http_method = "POST",
     http_path = "/ListStageSessions",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
     stream_api = FALSE
   )
   input <- .ivsrealtime$list_stage_sessions_input(stageArn = stageArn, nextToken = nextToken, maxResults = maxResults)
@@ -1988,7 +1988,7 @@ ivsrealtime_list_stages <- function(nextToken = NULL, maxResults = NULL) {
     http_method = "POST",
     http_path = "/ListStages",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
     stream_api = FALSE
   )
   input <- .ivsrealtime$list_stages_input(nextToken = nextToken, maxResults = maxResults)
@@ -2055,7 +2055,7 @@ ivsrealtime_list_storage_configurations <- function(nextToken = NULL, maxResults
     http_method = "POST",
     http_path = "/ListStorageConfigurations",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
     stream_api = FALSE
   )
   input <- .ivsrealtime$list_storage_configurations_input(nextToken = nextToken, maxResults = maxResults)

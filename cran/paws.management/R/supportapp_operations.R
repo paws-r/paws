@@ -225,7 +225,7 @@ supportapp_list_slack_channel_configurations <- function(nextToken = NULL) {
     http_method = "POST",
     http_path = "/control/list-slack-channel-configurations",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "nextToken", output_token = "nextToken"),
     stream_api = FALSE
   )
   input <- .supportapp$list_slack_channel_configurations_input(nextToken = nextToken)
@@ -261,7 +261,7 @@ supportapp_list_slack_workspace_configurations <- function(nextToken = NULL) {
     http_method = "POST",
     http_path = "/control/list-slack-workspace-configurations",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "nextToken", output_token = "nextToken"),
     stream_api = FALSE
   )
   input <- .supportapp$list_slack_workspace_configurations_input(nextToken = nextToken)

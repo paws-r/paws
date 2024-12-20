@@ -4016,6 +4016,7 @@ serverlessapplicationrepository <- function(config = list(), credentials = list(
 #'  \link[paws.storage:backup_get_backup_vault_access_policy]{get_backup_vault_access_policy} \tab Returns the access policy document that is associated with the named backup vault\cr
 #'  \link[paws.storage:backup_get_backup_vault_notifications]{get_backup_vault_notifications} \tab Returns event notifications for the specified backup vault\cr
 #'  \link[paws.storage:backup_get_legal_hold]{get_legal_hold} \tab This action returns details for a specified legal hold\cr
+#'  \link[paws.storage:backup_get_recovery_point_index_details]{get_recovery_point_index_details} \tab This operation returns the metadata and details specific to the backup index associated with the specified recovery point\cr
 #'  \link[paws.storage:backup_get_recovery_point_restore_metadata]{get_recovery_point_restore_metadata} \tab Returns a set of metadata key-value pairs that were used to create the backup\cr
 #'  \link[paws.storage:backup_get_restore_job_metadata]{get_restore_job_metadata} \tab This request returns the metadata for the specified restore job\cr
 #'  \link[paws.storage:backup_get_restore_testing_inferred_metadata]{get_restore_testing_inferred_metadata} \tab This request returns the minimal required set of metadata needed to start a restore job with secure default settings\cr
@@ -4032,6 +4033,7 @@ serverlessapplicationrepository <- function(config = list(), credentials = list(
 #'  \link[paws.storage:backup_list_copy_jobs]{list_copy_jobs} \tab Returns metadata about your copy jobs\cr
 #'  \link[paws.storage:backup_list_copy_job_summaries]{list_copy_job_summaries} \tab This request obtains a list of copy jobs created or running within the the most recent 30 days\cr
 #'  \link[paws.storage:backup_list_frameworks]{list_frameworks} \tab Returns a list of all frameworks for an Amazon Web Services account and Amazon Web Services Region\cr
+#'  \link[paws.storage:backup_list_indexed_recovery_points]{list_indexed_recovery_points} \tab This operation returns a list of recovery points that have an associated index, belonging to the specified account\cr
 #'  \link[paws.storage:backup_list_legal_holds]{list_legal_holds} \tab This action returns metadata about active and previous legal holds\cr
 #'  \link[paws.storage:backup_list_protected_resources]{list_protected_resources} \tab Returns an array of resources successfully backed up by Backup, including the time the resource was saved, an Amazon Resource Name (ARN) of the resource, and a resource type\cr
 #'  \link[paws.storage:backup_list_protected_resources_by_backup_vault]{list_protected_resources_by_backup_vault} \tab This request lists the protected resources corresponding to each backup vault\cr
@@ -4060,6 +4062,7 @@ serverlessapplicationrepository <- function(config = list(), credentials = list(
 #'  \link[paws.storage:backup_update_backup_plan]{update_backup_plan} \tab Updates the specified backup plan\cr
 #'  \link[paws.storage:backup_update_framework]{update_framework} \tab Updates the specified framework\cr
 #'  \link[paws.storage:backup_update_global_settings]{update_global_settings} \tab Updates whether the Amazon Web Services account is opted in to cross-account backup\cr
+#'  \link[paws.storage:backup_update_recovery_point_index_settings]{update_recovery_point_index_settings} \tab This operation updates the settings of a recovery point index\cr
 #'  \link[paws.storage:backup_update_recovery_point_lifecycle]{update_recovery_point_lifecycle} \tab Sets the transition lifecycle of a recovery point\cr
 #'  \link[paws.storage:backup_update_region_settings]{update_region_settings} \tab Updates the current service opt-in settings for the Region\cr
 #'  \link[paws.storage:backup_update_report_plan]{update_report_plan} \tab Updates the specified report plan\cr
@@ -30133,7 +30136,7 @@ bedrock <- function(config = list(), credentials = list(), endpoint = NULL, regi
 #'
 #' @section Service syntax:
 #' ```
-#' svc <- agentsforamazonbedrock(
+#' svc <- bedrockagent(
 #'   config = list(
 #'     credentials = list(
 #'       creds = list(
@@ -30167,7 +30170,7 @@ bedrock <- function(config = list(), credentials = list(), endpoint = NULL, regi
 #'
 #' @examples
 #' \dontrun{
-#' svc <- agentsforamazonbedrock()
+#' svc <- bedrockagent()
 #' svc$associate_agent_collaborator(
 #'   Foo = 123
 #' )
@@ -30175,78 +30178,78 @@ bedrock <- function(config = list(), credentials = list(), endpoint = NULL, regi
 #'
 #' @section Operations:
 #' \tabular{ll}{
-#'  \link[paws.machine.learning:agentsforamazonbedrock_associate_agent_collaborator]{associate_agent_collaborator} \tab Makes an agent a collaborator for another agent\cr
-#'  \link[paws.machine.learning:agentsforamazonbedrock_associate_agent_knowledge_base]{associate_agent_knowledge_base} \tab Associates a knowledge base with an agent\cr
-#'  \link[paws.machine.learning:agentsforamazonbedrock_create_agent]{create_agent} \tab Creates an agent that orchestrates interactions between foundation models, data sources, software applications, user conversations, and APIs to carry out tasks to help customers\cr
-#'  \link[paws.machine.learning:agentsforamazonbedrock_create_agent_action_group]{create_agent_action_group} \tab Creates an action group for an agent\cr
-#'  \link[paws.machine.learning:agentsforamazonbedrock_create_agent_alias]{create_agent_alias} \tab Creates an alias of an agent that can be used to deploy the agent\cr
-#'  \link[paws.machine.learning:agentsforamazonbedrock_create_data_source]{create_data_source} \tab Connects a knowledge base to a data source\cr
-#'  \link[paws.machine.learning:agentsforamazonbedrock_create_flow]{create_flow} \tab Creates a prompt flow that you can use to send an input through various steps to yield an output\cr
-#'  \link[paws.machine.learning:agentsforamazonbedrock_create_flow_alias]{create_flow_alias} \tab Creates an alias of a flow for deployment\cr
-#'  \link[paws.machine.learning:agentsforamazonbedrock_create_flow_version]{create_flow_version} \tab Creates a version of the flow that you can deploy\cr
-#'  \link[paws.machine.learning:agentsforamazonbedrock_create_knowledge_base]{create_knowledge_base} \tab Creates a knowledge base\cr
-#'  \link[paws.machine.learning:agentsforamazonbedrock_create_prompt]{create_prompt} \tab Creates a prompt in your prompt library that you can add to a flow\cr
-#'  \link[paws.machine.learning:agentsforamazonbedrock_create_prompt_version]{create_prompt_version} \tab Creates a static snapshot of your prompt that can be deployed to production\cr
-#'  \link[paws.machine.learning:agentsforamazonbedrock_delete_agent]{delete_agent} \tab Deletes an agent\cr
-#'  \link[paws.machine.learning:agentsforamazonbedrock_delete_agent_action_group]{delete_agent_action_group} \tab Deletes an action group in an agent\cr
-#'  \link[paws.machine.learning:agentsforamazonbedrock_delete_agent_alias]{delete_agent_alias} \tab Deletes an alias of an agent\cr
-#'  \link[paws.machine.learning:agentsforamazonbedrock_delete_agent_version]{delete_agent_version} \tab Deletes a version of an agent\cr
-#'  \link[paws.machine.learning:agentsforamazonbedrock_delete_data_source]{delete_data_source} \tab Deletes a data source from a knowledge base\cr
-#'  \link[paws.machine.learning:agentsforamazonbedrock_delete_flow]{delete_flow} \tab Deletes a flow\cr
-#'  \link[paws.machine.learning:agentsforamazonbedrock_delete_flow_alias]{delete_flow_alias} \tab Deletes an alias of a flow\cr
-#'  \link[paws.machine.learning:agentsforamazonbedrock_delete_flow_version]{delete_flow_version} \tab Deletes a version of a flow\cr
-#'  \link[paws.machine.learning:agentsforamazonbedrock_delete_knowledge_base]{delete_knowledge_base} \tab Deletes a knowledge base\cr
-#'  \link[paws.machine.learning:agentsforamazonbedrock_delete_knowledge_base_documents]{delete_knowledge_base_documents} \tab Deletes documents from a data source and syncs the changes to the knowledge base that is connected to it\cr
-#'  \link[paws.machine.learning:agentsforamazonbedrock_delete_prompt]{delete_prompt} \tab Deletes a prompt or a version of it, depending on whether you include the promptVersion field or not\cr
-#'  \link[paws.machine.learning:agentsforamazonbedrock_disassociate_agent_collaborator]{disassociate_agent_collaborator} \tab Disassociates an agent collaborator\cr
-#'  \link[paws.machine.learning:agentsforamazonbedrock_disassociate_agent_knowledge_base]{disassociate_agent_knowledge_base} \tab Disassociates a knowledge base from an agent\cr
-#'  \link[paws.machine.learning:agentsforamazonbedrock_get_agent]{get_agent} \tab Gets information about an agent\cr
-#'  \link[paws.machine.learning:agentsforamazonbedrock_get_agent_action_group]{get_agent_action_group} \tab Gets information about an action group for an agent\cr
-#'  \link[paws.machine.learning:agentsforamazonbedrock_get_agent_alias]{get_agent_alias} \tab Gets information about an alias of an agent\cr
-#'  \link[paws.machine.learning:agentsforamazonbedrock_get_agent_collaborator]{get_agent_collaborator} \tab Retrieves information about an agent's collaborator\cr
-#'  \link[paws.machine.learning:agentsforamazonbedrock_get_agent_knowledge_base]{get_agent_knowledge_base} \tab Gets information about a knowledge base associated with an agent\cr
-#'  \link[paws.machine.learning:agentsforamazonbedrock_get_agent_version]{get_agent_version} \tab Gets details about a version of an agent\cr
-#'  \link[paws.machine.learning:agentsforamazonbedrock_get_data_source]{get_data_source} \tab Gets information about a data source\cr
-#'  \link[paws.machine.learning:agentsforamazonbedrock_get_flow]{get_flow} \tab Retrieves information about a flow\cr
-#'  \link[paws.machine.learning:agentsforamazonbedrock_get_flow_alias]{get_flow_alias} \tab Retrieves information about a flow\cr
-#'  \link[paws.machine.learning:agentsforamazonbedrock_get_flow_version]{get_flow_version} \tab Retrieves information about a version of a flow\cr
-#'  \link[paws.machine.learning:agentsforamazonbedrock_get_ingestion_job]{get_ingestion_job} \tab Gets information about a data ingestion job\cr
-#'  \link[paws.machine.learning:agentsforamazonbedrock_get_knowledge_base]{get_knowledge_base} \tab Gets information about a knoweldge base\cr
-#'  \link[paws.machine.learning:agentsforamazonbedrock_get_knowledge_base_documents]{get_knowledge_base_documents} \tab Retrieves specific documents from a data source that is connected to a knowledge base\cr
-#'  \link[paws.machine.learning:agentsforamazonbedrock_get_prompt]{get_prompt} \tab Retrieves information about the working draft (DRAFT version) of a prompt or a version of it, depending on whether you include the promptVersion field or not\cr
-#'  \link[paws.machine.learning:agentsforamazonbedrock_ingest_knowledge_base_documents]{ingest_knowledge_base_documents} \tab Ingests documents directly into the knowledge base that is connected to the data source\cr
-#'  \link[paws.machine.learning:agentsforamazonbedrock_list_agent_action_groups]{list_agent_action_groups} \tab Lists the action groups for an agent and information about each one\cr
-#'  \link[paws.machine.learning:agentsforamazonbedrock_list_agent_aliases]{list_agent_aliases} \tab Lists the aliases of an agent and information about each one\cr
-#'  \link[paws.machine.learning:agentsforamazonbedrock_list_agent_collaborators]{list_agent_collaborators} \tab Retrieve a list of an agent's collaborators\cr
-#'  \link[paws.machine.learning:agentsforamazonbedrock_list_agent_knowledge_bases]{list_agent_knowledge_bases} \tab Lists knowledge bases associated with an agent and information about each one\cr
-#'  \link[paws.machine.learning:agentsforamazonbedrock_list_agents]{list_agents} \tab Lists the agents belonging to an account and information about each agent\cr
-#'  \link[paws.machine.learning:agentsforamazonbedrock_list_agent_versions]{list_agent_versions} \tab Lists the versions of an agent and information about each version\cr
-#'  \link[paws.machine.learning:agentsforamazonbedrock_list_data_sources]{list_data_sources} \tab Lists the data sources in a knowledge base and information about each one\cr
-#'  \link[paws.machine.learning:agentsforamazonbedrock_list_flow_aliases]{list_flow_aliases} \tab Returns a list of aliases for a flow\cr
-#'  \link[paws.machine.learning:agentsforamazonbedrock_list_flows]{list_flows} \tab Returns a list of flows and information about each flow\cr
-#'  \link[paws.machine.learning:agentsforamazonbedrock_list_flow_versions]{list_flow_versions} \tab Returns a list of information about each flow\cr
-#'  \link[paws.machine.learning:agentsforamazonbedrock_list_ingestion_jobs]{list_ingestion_jobs} \tab Lists the data ingestion jobs for a data source\cr
-#'  \link[paws.machine.learning:agentsforamazonbedrock_list_knowledge_base_documents]{list_knowledge_base_documents} \tab Retrieves all the documents contained in a data source that is connected to a knowledge base\cr
-#'  \link[paws.machine.learning:agentsforamazonbedrock_list_knowledge_bases]{list_knowledge_bases} \tab Lists the knowledge bases in an account\cr
-#'  \link[paws.machine.learning:agentsforamazonbedrock_list_prompts]{list_prompts} \tab Returns either information about the working draft (DRAFT version) of each prompt in an account, or information about of all versions of a prompt, depending on whether you include the promptIdentifier field or not\cr
-#'  \link[paws.machine.learning:agentsforamazonbedrock_list_tags_for_resource]{list_tags_for_resource} \tab List all the tags for the resource you specify\cr
-#'  \link[paws.machine.learning:agentsforamazonbedrock_prepare_agent]{prepare_agent} \tab Creates a DRAFT version of the agent that can be used for internal testing\cr
-#'  \link[paws.machine.learning:agentsforamazonbedrock_prepare_flow]{prepare_flow} \tab Prepares the DRAFT version of a flow so that it can be invoked\cr
-#'  \link[paws.machine.learning:agentsforamazonbedrock_start_ingestion_job]{start_ingestion_job} \tab Begins a data ingestion job\cr
-#'  \link[paws.machine.learning:agentsforamazonbedrock_stop_ingestion_job]{stop_ingestion_job} \tab Stops a currently running data ingestion job\cr
-#'  \link[paws.machine.learning:agentsforamazonbedrock_tag_resource]{tag_resource} \tab Associate tags with a resource\cr
-#'  \link[paws.machine.learning:agentsforamazonbedrock_untag_resource]{untag_resource} \tab Remove tags from a resource\cr
-#'  \link[paws.machine.learning:agentsforamazonbedrock_update_agent]{update_agent} \tab Updates the configuration of an agent\cr
-#'  \link[paws.machine.learning:agentsforamazonbedrock_update_agent_action_group]{update_agent_action_group} \tab Updates the configuration for an action group for an agent\cr
-#'  \link[paws.machine.learning:agentsforamazonbedrock_update_agent_alias]{update_agent_alias} \tab Updates configurations for an alias of an agent\cr
-#'  \link[paws.machine.learning:agentsforamazonbedrock_update_agent_collaborator]{update_agent_collaborator} \tab Updates an agent's collaborator\cr
-#'  \link[paws.machine.learning:agentsforamazonbedrock_update_agent_knowledge_base]{update_agent_knowledge_base} \tab Updates the configuration for a knowledge base that has been associated with an agent\cr
-#'  \link[paws.machine.learning:agentsforamazonbedrock_update_data_source]{update_data_source} \tab Updates the configurations for a data source connector\cr
-#'  \link[paws.machine.learning:agentsforamazonbedrock_update_flow]{update_flow} \tab Modifies a flow\cr
-#'  \link[paws.machine.learning:agentsforamazonbedrock_update_flow_alias]{update_flow_alias} \tab Modifies the alias of a flow\cr
-#'  \link[paws.machine.learning:agentsforamazonbedrock_update_knowledge_base]{update_knowledge_base} \tab Updates the configuration of a knowledge base with the fields that you specify\cr
-#'  \link[paws.machine.learning:agentsforamazonbedrock_update_prompt]{update_prompt} \tab Modifies a prompt in your prompt library\cr
-#'  \link[paws.machine.learning:agentsforamazonbedrock_validate_flow_definition]{validate_flow_definition} \tab Validates the definition of a flow
+#'  \link[paws.machine.learning:bedrockagent_associate_agent_collaborator]{associate_agent_collaborator} \tab Makes an agent a collaborator for another agent\cr
+#'  \link[paws.machine.learning:bedrockagent_associate_agent_knowledge_base]{associate_agent_knowledge_base} \tab Associates a knowledge base with an agent\cr
+#'  \link[paws.machine.learning:bedrockagent_create_agent]{create_agent} \tab Creates an agent that orchestrates interactions between foundation models, data sources, software applications, user conversations, and APIs to carry out tasks to help customers\cr
+#'  \link[paws.machine.learning:bedrockagent_create_agent_action_group]{create_agent_action_group} \tab Creates an action group for an agent\cr
+#'  \link[paws.machine.learning:bedrockagent_create_agent_alias]{create_agent_alias} \tab Creates an alias of an agent that can be used to deploy the agent\cr
+#'  \link[paws.machine.learning:bedrockagent_create_data_source]{create_data_source} \tab Connects a knowledge base to a data source\cr
+#'  \link[paws.machine.learning:bedrockagent_create_flow]{create_flow} \tab Creates a prompt flow that you can use to send an input through various steps to yield an output\cr
+#'  \link[paws.machine.learning:bedrockagent_create_flow_alias]{create_flow_alias} \tab Creates an alias of a flow for deployment\cr
+#'  \link[paws.machine.learning:bedrockagent_create_flow_version]{create_flow_version} \tab Creates a version of the flow that you can deploy\cr
+#'  \link[paws.machine.learning:bedrockagent_create_knowledge_base]{create_knowledge_base} \tab Creates a knowledge base\cr
+#'  \link[paws.machine.learning:bedrockagent_create_prompt]{create_prompt} \tab Creates a prompt in your prompt library that you can add to a flow\cr
+#'  \link[paws.machine.learning:bedrockagent_create_prompt_version]{create_prompt_version} \tab Creates a static snapshot of your prompt that can be deployed to production\cr
+#'  \link[paws.machine.learning:bedrockagent_delete_agent]{delete_agent} \tab Deletes an agent\cr
+#'  \link[paws.machine.learning:bedrockagent_delete_agent_action_group]{delete_agent_action_group} \tab Deletes an action group in an agent\cr
+#'  \link[paws.machine.learning:bedrockagent_delete_agent_alias]{delete_agent_alias} \tab Deletes an alias of an agent\cr
+#'  \link[paws.machine.learning:bedrockagent_delete_agent_version]{delete_agent_version} \tab Deletes a version of an agent\cr
+#'  \link[paws.machine.learning:bedrockagent_delete_data_source]{delete_data_source} \tab Deletes a data source from a knowledge base\cr
+#'  \link[paws.machine.learning:bedrockagent_delete_flow]{delete_flow} \tab Deletes a flow\cr
+#'  \link[paws.machine.learning:bedrockagent_delete_flow_alias]{delete_flow_alias} \tab Deletes an alias of a flow\cr
+#'  \link[paws.machine.learning:bedrockagent_delete_flow_version]{delete_flow_version} \tab Deletes a version of a flow\cr
+#'  \link[paws.machine.learning:bedrockagent_delete_knowledge_base]{delete_knowledge_base} \tab Deletes a knowledge base\cr
+#'  \link[paws.machine.learning:bedrockagent_delete_knowledge_base_documents]{delete_knowledge_base_documents} \tab Deletes documents from a data source and syncs the changes to the knowledge base that is connected to it\cr
+#'  \link[paws.machine.learning:bedrockagent_delete_prompt]{delete_prompt} \tab Deletes a prompt or a version of it, depending on whether you include the promptVersion field or not\cr
+#'  \link[paws.machine.learning:bedrockagent_disassociate_agent_collaborator]{disassociate_agent_collaborator} \tab Disassociates an agent collaborator\cr
+#'  \link[paws.machine.learning:bedrockagent_disassociate_agent_knowledge_base]{disassociate_agent_knowledge_base} \tab Disassociates a knowledge base from an agent\cr
+#'  \link[paws.machine.learning:bedrockagent_get_agent]{get_agent} \tab Gets information about an agent\cr
+#'  \link[paws.machine.learning:bedrockagent_get_agent_action_group]{get_agent_action_group} \tab Gets information about an action group for an agent\cr
+#'  \link[paws.machine.learning:bedrockagent_get_agent_alias]{get_agent_alias} \tab Gets information about an alias of an agent\cr
+#'  \link[paws.machine.learning:bedrockagent_get_agent_collaborator]{get_agent_collaborator} \tab Retrieves information about an agent's collaborator\cr
+#'  \link[paws.machine.learning:bedrockagent_get_agent_knowledge_base]{get_agent_knowledge_base} \tab Gets information about a knowledge base associated with an agent\cr
+#'  \link[paws.machine.learning:bedrockagent_get_agent_version]{get_agent_version} \tab Gets details about a version of an agent\cr
+#'  \link[paws.machine.learning:bedrockagent_get_data_source]{get_data_source} \tab Gets information about a data source\cr
+#'  \link[paws.machine.learning:bedrockagent_get_flow]{get_flow} \tab Retrieves information about a flow\cr
+#'  \link[paws.machine.learning:bedrockagent_get_flow_alias]{get_flow_alias} \tab Retrieves information about a flow\cr
+#'  \link[paws.machine.learning:bedrockagent_get_flow_version]{get_flow_version} \tab Retrieves information about a version of a flow\cr
+#'  \link[paws.machine.learning:bedrockagent_get_ingestion_job]{get_ingestion_job} \tab Gets information about a data ingestion job\cr
+#'  \link[paws.machine.learning:bedrockagent_get_knowledge_base]{get_knowledge_base} \tab Gets information about a knoweldge base\cr
+#'  \link[paws.machine.learning:bedrockagent_get_knowledge_base_documents]{get_knowledge_base_documents} \tab Retrieves specific documents from a data source that is connected to a knowledge base\cr
+#'  \link[paws.machine.learning:bedrockagent_get_prompt]{get_prompt} \tab Retrieves information about the working draft (DRAFT version) of a prompt or a version of it, depending on whether you include the promptVersion field or not\cr
+#'  \link[paws.machine.learning:bedrockagent_ingest_knowledge_base_documents]{ingest_knowledge_base_documents} \tab Ingests documents directly into the knowledge base that is connected to the data source\cr
+#'  \link[paws.machine.learning:bedrockagent_list_agent_action_groups]{list_agent_action_groups} \tab Lists the action groups for an agent and information about each one\cr
+#'  \link[paws.machine.learning:bedrockagent_list_agent_aliases]{list_agent_aliases} \tab Lists the aliases of an agent and information about each one\cr
+#'  \link[paws.machine.learning:bedrockagent_list_agent_collaborators]{list_agent_collaborators} \tab Retrieve a list of an agent's collaborators\cr
+#'  \link[paws.machine.learning:bedrockagent_list_agent_knowledge_bases]{list_agent_knowledge_bases} \tab Lists knowledge bases associated with an agent and information about each one\cr
+#'  \link[paws.machine.learning:bedrockagent_list_agents]{list_agents} \tab Lists the agents belonging to an account and information about each agent\cr
+#'  \link[paws.machine.learning:bedrockagent_list_agent_versions]{list_agent_versions} \tab Lists the versions of an agent and information about each version\cr
+#'  \link[paws.machine.learning:bedrockagent_list_data_sources]{list_data_sources} \tab Lists the data sources in a knowledge base and information about each one\cr
+#'  \link[paws.machine.learning:bedrockagent_list_flow_aliases]{list_flow_aliases} \tab Returns a list of aliases for a flow\cr
+#'  \link[paws.machine.learning:bedrockagent_list_flows]{list_flows} \tab Returns a list of flows and information about each flow\cr
+#'  \link[paws.machine.learning:bedrockagent_list_flow_versions]{list_flow_versions} \tab Returns a list of information about each flow\cr
+#'  \link[paws.machine.learning:bedrockagent_list_ingestion_jobs]{list_ingestion_jobs} \tab Lists the data ingestion jobs for a data source\cr
+#'  \link[paws.machine.learning:bedrockagent_list_knowledge_base_documents]{list_knowledge_base_documents} \tab Retrieves all the documents contained in a data source that is connected to a knowledge base\cr
+#'  \link[paws.machine.learning:bedrockagent_list_knowledge_bases]{list_knowledge_bases} \tab Lists the knowledge bases in an account\cr
+#'  \link[paws.machine.learning:bedrockagent_list_prompts]{list_prompts} \tab Returns either information about the working draft (DRAFT version) of each prompt in an account, or information about of all versions of a prompt, depending on whether you include the promptIdentifier field or not\cr
+#'  \link[paws.machine.learning:bedrockagent_list_tags_for_resource]{list_tags_for_resource} \tab List all the tags for the resource you specify\cr
+#'  \link[paws.machine.learning:bedrockagent_prepare_agent]{prepare_agent} \tab Creates a DRAFT version of the agent that can be used for internal testing\cr
+#'  \link[paws.machine.learning:bedrockagent_prepare_flow]{prepare_flow} \tab Prepares the DRAFT version of a flow so that it can be invoked\cr
+#'  \link[paws.machine.learning:bedrockagent_start_ingestion_job]{start_ingestion_job} \tab Begins a data ingestion job\cr
+#'  \link[paws.machine.learning:bedrockagent_stop_ingestion_job]{stop_ingestion_job} \tab Stops a currently running data ingestion job\cr
+#'  \link[paws.machine.learning:bedrockagent_tag_resource]{tag_resource} \tab Associate tags with a resource\cr
+#'  \link[paws.machine.learning:bedrockagent_untag_resource]{untag_resource} \tab Remove tags from a resource\cr
+#'  \link[paws.machine.learning:bedrockagent_update_agent]{update_agent} \tab Updates the configuration of an agent\cr
+#'  \link[paws.machine.learning:bedrockagent_update_agent_action_group]{update_agent_action_group} \tab Updates the configuration for an action group for an agent\cr
+#'  \link[paws.machine.learning:bedrockagent_update_agent_alias]{update_agent_alias} \tab Updates configurations for an alias of an agent\cr
+#'  \link[paws.machine.learning:bedrockagent_update_agent_collaborator]{update_agent_collaborator} \tab Updates an agent's collaborator\cr
+#'  \link[paws.machine.learning:bedrockagent_update_agent_knowledge_base]{update_agent_knowledge_base} \tab Updates the configuration for a knowledge base that has been associated with an agent\cr
+#'  \link[paws.machine.learning:bedrockagent_update_data_source]{update_data_source} \tab Updates the configurations for a data source connector\cr
+#'  \link[paws.machine.learning:bedrockagent_update_flow]{update_flow} \tab Modifies a flow\cr
+#'  \link[paws.machine.learning:bedrockagent_update_flow_alias]{update_flow_alias} \tab Modifies the alias of a flow\cr
+#'  \link[paws.machine.learning:bedrockagent_update_knowledge_base]{update_knowledge_base} \tab Updates the configuration of a knowledge base with the fields that you specify\cr
+#'  \link[paws.machine.learning:bedrockagent_update_prompt]{update_prompt} \tab Modifies a prompt in your prompt library\cr
+#'  \link[paws.machine.learning:bedrockagent_validate_flow_definition]{validate_flow_definition} \tab Validates the definition of a flow
 #' }
 #'
 #' @return
@@ -30255,10 +30258,10 @@ bedrock <- function(config = list(), credentials = list(), endpoint = NULL, regi
 #' to the client. The available operations are listed in the
 #' Operations section.
 #'
-#' @rdname agentsforamazonbedrock
+#' @rdname bedrockagent
 #' @export
-agentsforamazonbedrock <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
-  paws.machine.learning::agentsforamazonbedrock(
+bedrockagent <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.machine.learning::bedrockagent(
     config = config,
     credentials = credentials,
     endpoint = endpoint,
@@ -30313,7 +30316,7 @@ agentsforamazonbedrock <- function(config = list(), credentials = list(), endpoi
 #'
 #' @section Service syntax:
 #' ```
-#' svc <- agentsforamazonbedrockruntime(
+#' svc <- bedrockagentruntime(
 #'   config = list(
 #'     credentials = list(
 #'       creds = list(
@@ -30347,7 +30350,7 @@ agentsforamazonbedrock <- function(config = list(), credentials = list(), endpoi
 #'
 #' @examples
 #' \dontrun{
-#' svc <- agentsforamazonbedrockruntime()
+#' svc <- bedrockagentruntime()
 #' svc$delete_agent_memory(
 #'   Foo = 123
 #' )
@@ -30355,17 +30358,17 @@ agentsforamazonbedrock <- function(config = list(), credentials = list(), endpoi
 #'
 #' @section Operations:
 #' \tabular{ll}{
-#'  \link[paws.machine.learning:agentsforamazonbedrockruntime_delete_agent_memory]{delete_agent_memory} \tab Deletes memory from the specified memory identifier\cr
-#'  \link[paws.machine.learning:agentsforamazonbedrockruntime_generate_query]{generate_query} \tab Generates an SQL query from a natural language query\cr
-#'  \link[paws.machine.learning:agentsforamazonbedrockruntime_get_agent_memory]{get_agent_memory} \tab Gets the sessions stored in the memory of the agent\cr
-#'  \link[paws.machine.learning:agentsforamazonbedrockruntime_invoke_agent]{invoke_agent} \tab The CLI doesn't support streaming operations in Amazon Bedrock, including InvokeAgent\cr
-#'  \link[paws.machine.learning:agentsforamazonbedrockruntime_invoke_flow]{invoke_flow} \tab Invokes an alias of a flow to run the inputs that you specify and return the output of each node as a stream\cr
-#'  \link[paws.machine.learning:agentsforamazonbedrockruntime_invoke_inline_agent]{invoke_inline_agent} \tab Invokes an inline Amazon Bedrock agent using the configurations you provide with the request\cr
-#'  \link[paws.machine.learning:agentsforamazonbedrockruntime_optimize_prompt]{optimize_prompt} \tab Optimizes a prompt for the task that you specify\cr
-#'  \link[paws.machine.learning:agentsforamazonbedrockruntime_rerank]{rerank} \tab Reranks the relevance of sources based on queries\cr
-#'  \link[paws.machine.learning:agentsforamazonbedrockruntime_retrieve]{retrieve} \tab Queries a knowledge base and retrieves information from it\cr
-#'  \link[paws.machine.learning:agentsforamazonbedrockruntime_retrieve_and_generate]{retrieve_and_generate} \tab Queries a knowledge base and generates responses based on the retrieved results and using the specified foundation model or inference profile\cr
-#'  \link[paws.machine.learning:agentsforamazonbedrockruntime_retrieve_and_generate_stream]{retrieve_and_generate_stream} \tab Queries a knowledge base and generates responses based on the retrieved results, with output in streaming format
+#'  \link[paws.machine.learning:bedrockagentruntime_delete_agent_memory]{delete_agent_memory} \tab Deletes memory from the specified memory identifier\cr
+#'  \link[paws.machine.learning:bedrockagentruntime_generate_query]{generate_query} \tab Generates an SQL query from a natural language query\cr
+#'  \link[paws.machine.learning:bedrockagentruntime_get_agent_memory]{get_agent_memory} \tab Gets the sessions stored in the memory of the agent\cr
+#'  \link[paws.machine.learning:bedrockagentruntime_invoke_agent]{invoke_agent} \tab The CLI doesn't support streaming operations in Amazon Bedrock, including InvokeAgent\cr
+#'  \link[paws.machine.learning:bedrockagentruntime_invoke_flow]{invoke_flow} \tab Invokes an alias of a flow to run the inputs that you specify and return the output of each node as a stream\cr
+#'  \link[paws.machine.learning:bedrockagentruntime_invoke_inline_agent]{invoke_inline_agent} \tab Invokes an inline Amazon Bedrock agent using the configurations you provide with the request\cr
+#'  \link[paws.machine.learning:bedrockagentruntime_optimize_prompt]{optimize_prompt} \tab Optimizes a prompt for the task that you specify\cr
+#'  \link[paws.machine.learning:bedrockagentruntime_rerank]{rerank} \tab Reranks the relevance of sources based on queries\cr
+#'  \link[paws.machine.learning:bedrockagentruntime_retrieve]{retrieve} \tab Queries a knowledge base and retrieves information from it\cr
+#'  \link[paws.machine.learning:bedrockagentruntime_retrieve_and_generate]{retrieve_and_generate} \tab Queries a knowledge base and generates responses based on the retrieved results and using the specified foundation model or inference profile\cr
+#'  \link[paws.machine.learning:bedrockagentruntime_retrieve_and_generate_stream]{retrieve_and_generate_stream} \tab Queries a knowledge base and generates responses based on the retrieved results, with output in streaming format
 #' }
 #'
 #' @return
@@ -30374,10 +30377,237 @@ agentsforamazonbedrock <- function(config = list(), credentials = list(), endpoi
 #' to the client. The available operations are listed in the
 #' Operations section.
 #'
-#' @rdname agentsforamazonbedrockruntime
+#' @rdname bedrockagentruntime
 #' @export
-agentsforamazonbedrockruntime <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
-  paws.machine.learning::agentsforamazonbedrockruntime(
+bedrockagentruntime <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.machine.learning::bedrockagentruntime(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
+}
+
+#' Data Automation for Amazon Bedrock
+#'
+#' @description
+#' Amazon Bedrock Keystone Build
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#' \itemize{
+#' \item{\strong{credentials}: \itemize{
+#' \item{\strong{creds}: \itemize{
+#' \item{\strong{access_key_id}: AWS access key ID}
+#' \item{\strong{secret_access_key}: AWS secret access key}
+#' \item{\strong{session_token}: AWS temporary session token}
+#' }}
+#' \item{\strong{profile}: The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}: Set anonymous credentials.}
+#' }}
+#' \item{\strong{endpoint}: The complete URL to use for the constructed client.}
+#' \item{\strong{region}: The AWS Region used in instantiating the client.}
+#' \item{\strong{close_connection}: Immediately close all HTTP connections.}
+#' \item{\strong{timeout}: The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+#' \item{\strong{s3_force_path_style}: Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}: Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
+#' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}: \itemize{
+#' \item{\strong{access_key_id}: AWS access key ID}
+#' \item{\strong{secret_access_key}: AWS secret access key}
+#' \item{\strong{session_token}: AWS temporary session token}
+#' }}
+#' \item{\strong{profile}: The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}: Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- bedrockdataautomation(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string",
+#'       anonymous = "logical"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string",
+#'     close_connection = "logical",
+#'     timeout = "numeric",
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' svc <- bedrockdataautomation()
+#' svc$create_blueprint(
+#'   Foo = 123
+#' )
+#' }
+#'
+#' @section Operations:
+#' \tabular{ll}{
+#'  \link[paws.machine.learning:bedrockdataautomation_create_blueprint]{create_blueprint} \tab Creates an Amazon Bedrock Keystone Blueprint\cr
+#'  \link[paws.machine.learning:bedrockdataautomation_create_blueprint_version]{create_blueprint_version} \tab Creates a new version of an existing Amazon Bedrock Keystone Blueprint\cr
+#'  \link[paws.machine.learning:bedrockdataautomation_create_data_automation_project]{create_data_automation_project} \tab Creates an Amazon Bedrock Keystone DataAutomationProject\cr
+#'  \link[paws.machine.learning:bedrockdataautomation_delete_blueprint]{delete_blueprint} \tab Deletes an existing Amazon Bedrock Keystone Blueprint\cr
+#'  \link[paws.machine.learning:bedrockdataautomation_delete_data_automation_project]{delete_data_automation_project} \tab Deletes an existing Amazon Bedrock Keystone DataAutomationProject\cr
+#'  \link[paws.machine.learning:bedrockdataautomation_get_blueprint]{get_blueprint} \tab Gets an existing Amazon Bedrock Keystone Blueprint\cr
+#'  \link[paws.machine.learning:bedrockdataautomation_get_data_automation_project]{get_data_automation_project} \tab Gets an existing Amazon Bedrock Keystone DataAutomationProject\cr
+#'  \link[paws.machine.learning:bedrockdataautomation_list_blueprints]{list_blueprints} \tab Lists all existing Amazon Bedrock Keystone Blueprints\cr
+#'  \link[paws.machine.learning:bedrockdataautomation_list_data_automation_projects]{list_data_automation_projects} \tab Lists all existing Amazon Bedrock Keystone DataAutomationProjects\cr
+#'  \link[paws.machine.learning:bedrockdataautomation_update_blueprint]{update_blueprint} \tab Updates an existing Amazon Bedrock Blueprint\cr
+#'  \link[paws.machine.learning:bedrockdataautomation_update_data_automation_project]{update_data_automation_project} \tab Updates an existing Amazon Bedrock DataAutomationProject
+#' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
+#' @rdname bedrockdataautomation
+#' @export
+bedrockdataautomation <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.machine.learning::bedrockdataautomation(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
+}
+
+#' Runtime for Amazon Bedrock Data Automation
+#'
+#' @description
+#' Amazon Bedrock Keystone Runtime
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#' \itemize{
+#' \item{\strong{credentials}: \itemize{
+#' \item{\strong{creds}: \itemize{
+#' \item{\strong{access_key_id}: AWS access key ID}
+#' \item{\strong{secret_access_key}: AWS secret access key}
+#' \item{\strong{session_token}: AWS temporary session token}
+#' }}
+#' \item{\strong{profile}: The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}: Set anonymous credentials.}
+#' }}
+#' \item{\strong{endpoint}: The complete URL to use for the constructed client.}
+#' \item{\strong{region}: The AWS Region used in instantiating the client.}
+#' \item{\strong{close_connection}: Immediately close all HTTP connections.}
+#' \item{\strong{timeout}: The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+#' \item{\strong{s3_force_path_style}: Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}: Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
+#' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}: \itemize{
+#' \item{\strong{access_key_id}: AWS access key ID}
+#' \item{\strong{secret_access_key}: AWS secret access key}
+#' \item{\strong{session_token}: AWS temporary session token}
+#' }}
+#' \item{\strong{profile}: The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}: Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- bedrockdataautomationruntime(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string",
+#'       anonymous = "logical"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string",
+#'     close_connection = "logical",
+#'     timeout = "numeric",
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' svc <- bedrockdataautomationruntime()
+#' svc$get_data_automation_status(
+#'   Foo = 123
+#' )
+#' }
+#'
+#' @section Operations:
+#' \tabular{ll}{
+#'  \link[paws.machine.learning:bedrockdataautomationruntime_get_data_automation_status]{get_data_automation_status} \tab API used to get data automation status\cr
+#'  \link[paws.machine.learning:bedrockdataautomationruntime_invoke_data_automation_async]{invoke_data_automation_async} \tab Async API: Invoke data automation
+#' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
+#' @rdname bedrockdataautomationruntime
+#' @export
+bedrockdataautomationruntime <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.machine.learning::bedrockdataautomationruntime(
     config = config,
     credentials = credentials,
     endpoint = endpoint,
@@ -45538,6 +45768,7 @@ paymentcryptographydataplane <- function(config = list(), credentials = list(), 
 #'  \link[paws.customer.engagement:connect_update_hours_of_operation_override]{update_hours_of_operation_override} \tab Update the hours of operation override\cr
 #'  \link[paws.customer.engagement:connect_update_instance_attribute]{update_instance_attribute} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 #'  \link[paws.customer.engagement:connect_update_instance_storage_config]{update_instance_storage_config} \tab This API is in preview release for Amazon Connect and is subject to change\cr
+#'  \link[paws.customer.engagement:connect_update_participant_authentication]{update_participant_authentication} \tab Instructs Amazon Connect to resume the authentication process\cr
 #'  \link[paws.customer.engagement:connect_update_participant_role_config]{update_participant_role_config} \tab Updates timeouts for when human chat participants are to be considered idle, and when agents are automatically disconnected from a chat due to idleness\cr
 #'  \link[paws.customer.engagement:connect_update_phone_number]{update_phone_number} \tab Updates your claimed phone number from its current Amazon Connect instance or traffic distribution group to another Amazon Connect instance or traffic distribution group in the same Amazon Web Services Region\cr
 #'  \link[paws.customer.engagement:connect_update_phone_number_metadata]{update_phone_number_metadata} \tab Updates a phone number’s metadata\cr
@@ -46132,6 +46363,12 @@ connectcontactlens <- function(config = list(), credentials = list(), endpoint =
 #' Amazon Connect Participant Service
 #'
 #' @description
+#' -   [Participant Service
+#'     actions](https://docs.aws.amazon.com/connect/latest/APIReference/API_Operations_Amazon_Connect_Participant_Service.html)
+#' 
+#' -   [Participant Service data
+#'     types](https://docs.aws.amazon.com/connect/latest/APIReference/API_Types_Amazon_Connect_Participant_Service.html)
+#' 
 #' Amazon Connect is an easy-to-use omnichannel cloud contact center
 #' service that enables companies of any size to deliver superior customer
 #' service at a lower cost. Amazon Connect communications capabilities make
@@ -46221,18 +46458,20 @@ connectcontactlens <- function(config = list(), credentials = list(), endpoint =
 #' @examples
 #' \dontrun{
 #' svc <- connectparticipant()
-#' svc$complete_attachment_upload(
+#' svc$cancel_participant_authentication(
 #'   Foo = 123
 #' )
 #' }
 #'
 #' @section Operations:
 #' \tabular{ll}{
+#'  \link[paws.customer.engagement:connectparticipant_cancel_participant_authentication]{cancel_participant_authentication} \tab Cancels the authentication session\cr
 #'  \link[paws.customer.engagement:connectparticipant_complete_attachment_upload]{complete_attachment_upload} \tab Allows you to confirm that the attachment has been uploaded using the pre-signed URL provided in StartAttachmentUpload API\cr
 #'  \link[paws.customer.engagement:connectparticipant_create_participant_connection]{create_participant_connection} \tab Creates the participant's connection\cr
 #'  \link[paws.customer.engagement:connectparticipant_describe_view]{describe_view} \tab Retrieves the view for the specified view token\cr
 #'  \link[paws.customer.engagement:connectparticipant_disconnect_participant]{disconnect_participant} \tab Disconnects a participant\cr
 #'  \link[paws.customer.engagement:connectparticipant_get_attachment]{get_attachment} \tab Provides a pre-signed URL for download of a completed attachment\cr
+#'  \link[paws.customer.engagement:connectparticipant_get_authentication_url]{get_authentication_url} \tab Retrieves the AuthenticationUrl for the current authentication session for the AuthenticateCustomer flow block\cr
 #'  \link[paws.customer.engagement:connectparticipant_get_transcript]{get_transcript} \tab Retrieves a transcript of the session, including details about any attachments\cr
 #'  \link[paws.customer.engagement:connectparticipant_send_event]{send_event} \tab The application/vnd\cr
 #'  \link[paws.customer.engagement:connectparticipant_send_message]{send_message} \tab Sends a message\cr

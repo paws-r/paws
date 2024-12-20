@@ -623,7 +623,7 @@ apprunner_describe_custom_domains <- function(ServiceArn, NextToken = NULL, MaxR
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .apprunner$describe_custom_domains_input(ServiceArn = ServiceArn, NextToken = NextToken, MaxResults = MaxResults)
@@ -846,7 +846,7 @@ apprunner_list_auto_scaling_configurations <- function(AutoScalingConfigurationN
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .apprunner$list_auto_scaling_configurations_input(AutoScalingConfigurationName = AutoScalingConfigurationName, LatestOnly = LatestOnly, MaxResults = MaxResults, NextToken = NextToken)
@@ -890,7 +890,7 @@ apprunner_list_connections <- function(ConnectionName = NULL, MaxResults = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .apprunner$list_connections_input(ConnectionName = ConnectionName, MaxResults = MaxResults, NextToken = NextToken)
@@ -943,7 +943,7 @@ apprunner_list_observability_configurations <- function(ObservabilityConfigurati
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .apprunner$list_observability_configurations_input(ObservabilityConfigurationName = ObservabilityConfigurationName, LatestOnly = LatestOnly, MaxResults = MaxResults, NextToken = NextToken)
@@ -986,7 +986,7 @@ apprunner_list_operations <- function(ServiceArn, NextToken = NULL, MaxResults =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .apprunner$list_operations_input(ServiceArn = ServiceArn, NextToken = NextToken, MaxResults = MaxResults)
@@ -1028,7 +1028,7 @@ apprunner_list_services <- function(NextToken = NULL, MaxResults = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .apprunner$list_services_input(NextToken = NextToken, MaxResults = MaxResults)
@@ -1076,7 +1076,7 @@ apprunner_list_services_for_auto_scaling_configuration <- function(AutoScalingCo
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .apprunner$list_services_for_auto_scaling_configuration_input(AutoScalingConfigurationArn = AutoScalingConfigurationArn, MaxResults = MaxResults, NextToken = NextToken)
@@ -1152,7 +1152,7 @@ apprunner_list_vpc_connectors <- function(MaxResults = NULL, NextToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .apprunner$list_vpc_connectors_input(MaxResults = MaxResults, NextToken = NextToken)
@@ -1196,7 +1196,7 @@ apprunner_list_vpc_ingress_connections <- function(Filter = NULL, MaxResults = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .apprunner$list_vpc_ingress_connections_input(Filter = Filter, MaxResults = MaxResults, NextToken = NextToken)

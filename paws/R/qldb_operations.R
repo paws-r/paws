@@ -916,7 +916,7 @@ qldb_list_journal_kinesis_streams_for_ledger <- function(LedgerName, MaxResults 
     http_method = "GET",
     http_path = "/ledgers/{name}/journal-kinesis-streams",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .qldb$list_journal_kinesis_streams_for_ledger_input(LedgerName = LedgerName, MaxResults = MaxResults, NextToken = NextToken)
@@ -1010,7 +1010,7 @@ qldb_list_journal_s3_exports <- function(MaxResults = NULL, NextToken = NULL) {
     http_method = "GET",
     http_path = "/journal-s3-exports",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .qldb$list_journal_s3_exports_input(MaxResults = MaxResults, NextToken = NextToken)
@@ -1105,7 +1105,7 @@ qldb_list_journal_s3_exports_for_ledger <- function(Name, MaxResults = NULL, Nex
     http_method = "GET",
     http_path = "/ledgers/{name}/journal-s3-exports",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .qldb$list_journal_s3_exports_for_ledger_input(Name = Name, MaxResults = MaxResults, NextToken = NextToken)
@@ -1176,7 +1176,7 @@ qldb_list_ledgers <- function(MaxResults = NULL, NextToken = NULL) {
     http_method = "GET",
     http_path = "/ledgers",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .qldb$list_ledgers_input(MaxResults = MaxResults, NextToken = NextToken)

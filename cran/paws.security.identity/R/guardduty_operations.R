@@ -1071,7 +1071,7 @@ guardduty_describe_organization_configuration <- function(DetectorId, MaxResults
     http_method = "GET",
     http_path = "/detector/{detectorId}/admin",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .guardduty$describe_organization_configuration_input(DetectorId = DetectorId, MaxResults = MaxResults, NextToken = NextToken)
@@ -1898,7 +1898,7 @@ guardduty_get_usage_statistics <- function(DetectorId, UsageStatisticType, Usage
     http_method = "POST",
     http_path = "/detector/{detectorId}/usage/statistics",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .guardduty$get_usage_statistics_input(DetectorId = DetectorId, UsageStatisticType = UsageStatisticType, UsageCriteria = UsageCriteria, Unit = Unit, MaxResults = MaxResults, NextToken = NextToken)
@@ -2458,7 +2458,7 @@ guardduty_list_publishing_destinations <- function(DetectorId, MaxResults = NULL
     http_method = "GET",
     http_path = "/detector/{detectorId}/publishingDestination",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .guardduty$list_publishing_destinations_input(DetectorId = DetectorId, MaxResults = MaxResults, NextToken = NextToken)

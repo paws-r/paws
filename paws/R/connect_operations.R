@@ -2437,7 +2437,7 @@ connect_create_instance <- function(ClientToken = NULL, IdentityManagementType, 
 #' ```
 #' svc$create_integration_association(
 #'   InstanceId = "string",
-#'   IntegrationType = "EVENT"|"VOICE_ID"|"PINPOINT_APP"|"WISDOM_ASSISTANT"|"WISDOM_KNOWLEDGE_BASE"|"WISDOM_QUICK_RESPONSES"|"Q_MESSAGE_TEMPLATES"|"CASES_DOMAIN"|"APPLICATION"|"FILE_SCANNER"|"SES_IDENTITY"|"ANALYTICS_CONNECTOR"|"CALL_TRANSFER_CONNECTOR",
+#'   IntegrationType = "EVENT"|"VOICE_ID"|"PINPOINT_APP"|"WISDOM_ASSISTANT"|"WISDOM_KNOWLEDGE_BASE"|"WISDOM_QUICK_RESPONSES"|"Q_MESSAGE_TEMPLATES"|"CASES_DOMAIN"|"APPLICATION"|"FILE_SCANNER"|"SES_IDENTITY"|"ANALYTICS_CONNECTOR"|"CALL_TRANSFER_CONNECTOR"|"COGNITO_USER_POOL",
 #'   IntegrationArn = "string",
 #'   SourceApplicationUrl = "string",
 #'   SourceApplicationName = "string",
@@ -2815,8 +2815,9 @@ connect_create_prompt <- function(InstanceId, Name, Description = NULL, S3Uri, T
 #' Creates registration for a device token and a chat contact to receive
 #' real-time push notifications. For more information about push
 #' notifications, see [Set up push notifications in Amazon Connect for
-#' mobile chat](https://docs.aws.amazon.com/connect/latest/adminguide/) in
-#' the *Amazon Connect Administrator Guide*.
+#' mobile
+#' chat](https://docs.aws.amazon.com/connect/latest/adminguide/enable-push-notifications-for-mobile-chat.html)
+#' in the *Amazon Connect Administrator Guide*.
 #'
 #' @usage
 #' connect_create_push_notification_registration(InstanceId, ClientToken,
@@ -5841,6 +5842,7 @@ connect_describe_authentication_profile <- function(AuthenticationProfileId, Ins
 #'     WisdomInfo = list(
 #'       SessionArn = "string"
 #'     ),
+#'     CustomerId = "string",
 #'     CustomerEndpoint = list(
 #'       Type = "TELEPHONE_NUMBER"|"VOIP"|"CONTACT_FLOW"|"CONNECT_PHONENUMBER_ARN"|"EMAIL_ADDRESS",
 #'       Address = "string",
@@ -6809,7 +6811,7 @@ connect_describe_instance <- function(InstanceId) {
 #' ```
 #' list(
 #'   Attribute = list(
-#'     AttributeType = "INBOUND_CALLS"|"OUTBOUND_CALLS"|"CONTACTFLOW_LOGS"|"CONTACT_LENS"|"AUTO_RESOLVE_BEST_VOICES"|"USE_CUSTOM_TTS_VOICES"|"EARLY_MEDIA"|"MULTI_PARTY_CONFERENCE"|"HIGH_VOLUME_OUTBOUND"|"ENHANCED_CONTACT_MONITORING"|"ENHANCED_CHAT_MONITORING",
+#'     AttributeType = "INBOUND_CALLS"|"OUTBOUND_CALLS"|"CONTACTFLOW_LOGS"|"CONTACT_LENS"|"AUTO_RESOLVE_BEST_VOICES"|"USE_CUSTOM_TTS_VOICES"|"EARLY_MEDIA"|"MULTI_PARTY_CONFERENCE"|"HIGH_VOLUME_OUTBOUND"|"ENHANCED_CONTACT_MONITORING"|"ENHANCED_CHAT_MONITORING"|"MULTI_PARTY_CHAT_CONFERENCE",
 #'     Value = "string"
 #'   )
 #' )
@@ -6819,7 +6821,7 @@ connect_describe_instance <- function(InstanceId) {
 #' ```
 #' svc$describe_instance_attribute(
 #'   InstanceId = "string",
-#'   AttributeType = "INBOUND_CALLS"|"OUTBOUND_CALLS"|"CONTACTFLOW_LOGS"|"CONTACT_LENS"|"AUTO_RESOLVE_BEST_VOICES"|"USE_CUSTOM_TTS_VOICES"|"EARLY_MEDIA"|"MULTI_PARTY_CONFERENCE"|"HIGH_VOLUME_OUTBOUND"|"ENHANCED_CONTACT_MONITORING"|"ENHANCED_CHAT_MONITORING"
+#'   AttributeType = "INBOUND_CALLS"|"OUTBOUND_CALLS"|"CONTACTFLOW_LOGS"|"CONTACT_LENS"|"AUTO_RESOLVE_BEST_VOICES"|"USE_CUSTOM_TTS_VOICES"|"EARLY_MEDIA"|"MULTI_PARTY_CONFERENCE"|"HIGH_VOLUME_OUTBOUND"|"ENHANCED_CONTACT_MONITORING"|"ENHANCED_CHAT_MONITORING"|"MULTI_PARTY_CHAT_CONFERENCE"
 #' )
 #' ```
 #'
@@ -9343,7 +9345,7 @@ connect_get_current_metric_data <- function(InstanceId, Filters, Groupings = NUL
     http_method = "POST",
     http_path = "/metrics/current/{InstanceId}",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
     stream_api = FALSE
   )
   input <- .connect$get_current_metric_data_input(InstanceId = InstanceId, Filters = Filters, Groupings = Groupings, CurrentMetrics = CurrentMetrics, NextToken = NextToken, MaxResults = MaxResults, SortCriteria = SortCriteria)
@@ -9512,7 +9514,7 @@ connect_get_current_user_data <- function(InstanceId, Filters, NextToken = NULL,
     http_method = "POST",
     http_path = "/metrics/userdata/{InstanceId}",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
     stream_api = FALSE
   )
   input <- .connect$get_current_user_data_input(InstanceId = InstanceId, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
@@ -11597,7 +11599,7 @@ connect_get_metric_data_v2 <- function(ResourceArn, StartTime, EndTime, Interval
     http_method = "POST",
     http_path = "/metrics/data",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
     stream_api = FALSE
   )
   input <- .connect$get_metric_data_v2_input(ResourceArn = ResourceArn, StartTime = StartTime, EndTime = EndTime, Interval = Interval, Filters = Filters, Groupings = Groupings, Metrics = Metrics, NextToken = NextToken, MaxResults = MaxResults)
@@ -12352,7 +12354,7 @@ connect_list_authentication_profiles <- function(InstanceId, MaxResults = NULL, 
 #' 
 #' For the specified version of Amazon Lex, returns a paginated list of all
 #' the Amazon Lex bots currently associated with the instance. Use this API
-#' to returns both Amazon Lex V1 and V2 bots.
+#' to return both Amazon Lex V1 and V2 bots.
 #'
 #' @usage
 #' connect_list_bots(InstanceId, NextToken, MaxResults, LexVersion)
@@ -13320,7 +13322,7 @@ connect_list_hours_of_operations <- function(InstanceId, NextToken = NULL, MaxRe
 #' list(
 #'   Attributes = list(
 #'     list(
-#'       AttributeType = "INBOUND_CALLS"|"OUTBOUND_CALLS"|"CONTACTFLOW_LOGS"|"CONTACT_LENS"|"AUTO_RESOLVE_BEST_VOICES"|"USE_CUSTOM_TTS_VOICES"|"EARLY_MEDIA"|"MULTI_PARTY_CONFERENCE"|"HIGH_VOLUME_OUTBOUND"|"ENHANCED_CONTACT_MONITORING"|"ENHANCED_CHAT_MONITORING",
+#'       AttributeType = "INBOUND_CALLS"|"OUTBOUND_CALLS"|"CONTACTFLOW_LOGS"|"CONTACT_LENS"|"AUTO_RESOLVE_BEST_VOICES"|"USE_CUSTOM_TTS_VOICES"|"EARLY_MEDIA"|"MULTI_PARTY_CONFERENCE"|"HIGH_VOLUME_OUTBOUND"|"ENHANCED_CONTACT_MONITORING"|"ENHANCED_CHAT_MONITORING"|"MULTI_PARTY_CHAT_CONFERENCE",
 #'       Value = "string"
 #'     )
 #'   ),
@@ -13562,7 +13564,7 @@ connect_list_instances <- function(NextToken = NULL, MaxResults = NULL) {
 #'       IntegrationAssociationId = "string",
 #'       IntegrationAssociationArn = "string",
 #'       InstanceId = "string",
-#'       IntegrationType = "EVENT"|"VOICE_ID"|"PINPOINT_APP"|"WISDOM_ASSISTANT"|"WISDOM_KNOWLEDGE_BASE"|"WISDOM_QUICK_RESPONSES"|"Q_MESSAGE_TEMPLATES"|"CASES_DOMAIN"|"APPLICATION"|"FILE_SCANNER"|"SES_IDENTITY"|"ANALYTICS_CONNECTOR"|"CALL_TRANSFER_CONNECTOR",
+#'       IntegrationType = "EVENT"|"VOICE_ID"|"PINPOINT_APP"|"WISDOM_ASSISTANT"|"WISDOM_KNOWLEDGE_BASE"|"WISDOM_QUICK_RESPONSES"|"Q_MESSAGE_TEMPLATES"|"CASES_DOMAIN"|"APPLICATION"|"FILE_SCANNER"|"SES_IDENTITY"|"ANALYTICS_CONNECTOR"|"CALL_TRANSFER_CONNECTOR"|"COGNITO_USER_POOL",
 #'       IntegrationArn = "string",
 #'       SourceApplicationUrl = "string",
 #'       SourceApplicationName = "string",
@@ -13577,7 +13579,7 @@ connect_list_instances <- function(NextToken = NULL, MaxResults = NULL) {
 #' ```
 #' svc$list_integration_associations(
 #'   InstanceId = "string",
-#'   IntegrationType = "EVENT"|"VOICE_ID"|"PINPOINT_APP"|"WISDOM_ASSISTANT"|"WISDOM_KNOWLEDGE_BASE"|"WISDOM_QUICK_RESPONSES"|"Q_MESSAGE_TEMPLATES"|"CASES_DOMAIN"|"APPLICATION"|"FILE_SCANNER"|"SES_IDENTITY"|"ANALYTICS_CONNECTOR"|"CALL_TRANSFER_CONNECTOR",
+#'   IntegrationType = "EVENT"|"VOICE_ID"|"PINPOINT_APP"|"WISDOM_ASSISTANT"|"WISDOM_KNOWLEDGE_BASE"|"WISDOM_QUICK_RESPONSES"|"Q_MESSAGE_TEMPLATES"|"CASES_DOMAIN"|"APPLICATION"|"FILE_SCANNER"|"SES_IDENTITY"|"ANALYTICS_CONNECTOR"|"CALL_TRANSFER_CONNECTOR"|"COGNITO_USER_POOL",
 #'   NextToken = "string",
 #'   MaxResults = 123,
 #'   IntegrationArn = "string"
@@ -14503,7 +14505,7 @@ connect_list_realtime_contact_analysis_segments_v2 <- function(InstanceId, Conta
     http_method = "POST",
     http_path = "/contact/list-real-time-analysis-segments-v2/{InstanceId}/{ContactId}",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
     stream_api = FALSE
   )
   input <- .connect$list_realtime_contact_analysis_segments_v2_input(InstanceId = InstanceId, ContactId = ContactId, MaxResults = MaxResults, NextToken = NextToken, OutputType = OutputType, SegmentTypes = SegmentTypes)
@@ -18796,7 +18798,7 @@ connect_start_attached_file_upload <- function(ClientToken = NULL, InstanceId, F
 #' connect_start_chat_contact(InstanceId, ContactFlowId, Attributes,
 #'   ParticipantDetails, InitialMessage, ClientToken, ChatDurationInMinutes,
 #'   SupportedMessagingContentTypes, PersistentChat, RelatedContactId,
-#'   SegmentAttributes)
+#'   SegmentAttributes, CustomerId)
 #'
 #' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
 #' instance
@@ -18866,6 +18868,8 @@ connect_start_attached_file_upload <- function(ClientToken = NULL, InstanceId, F
 #' present in the SupportedMessagingContentTypes field of this API in order
 #' to set `SegmentAttributes` as
 #' \{` "connect:Subtype": \{"valueString" : "connect:Guide" \}\}`.
+#' @param CustomerId The customer's identification number. For example, the `CustomerId` may
+#' be a customer number from your CRM.
 #'
 #' @return
 #' A list with the following syntax:
@@ -18911,7 +18915,8 @@ connect_start_attached_file_upload <- function(ClientToken = NULL, InstanceId, F
 #'       ),
 #'       ValueInteger = 123
 #'     )
-#'   )
+#'   ),
+#'   CustomerId = "string"
 #' )
 #' ```
 #'
@@ -18920,7 +18925,7 @@ connect_start_attached_file_upload <- function(ClientToken = NULL, InstanceId, F
 #' @rdname connect_start_chat_contact
 #'
 #' @aliases connect_start_chat_contact
-connect_start_chat_contact <- function(InstanceId, ContactFlowId, Attributes = NULL, ParticipantDetails, InitialMessage = NULL, ClientToken = NULL, ChatDurationInMinutes = NULL, SupportedMessagingContentTypes = NULL, PersistentChat = NULL, RelatedContactId = NULL, SegmentAttributes = NULL) {
+connect_start_chat_contact <- function(InstanceId, ContactFlowId, Attributes = NULL, ParticipantDetails, InitialMessage = NULL, ClientToken = NULL, ChatDurationInMinutes = NULL, SupportedMessagingContentTypes = NULL, PersistentChat = NULL, RelatedContactId = NULL, SegmentAttributes = NULL, CustomerId = NULL) {
   op <- new_operation(
     name = "StartChatContact",
     http_method = "PUT",
@@ -18929,7 +18934,7 @@ connect_start_chat_contact <- function(InstanceId, ContactFlowId, Attributes = N
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .connect$start_chat_contact_input(InstanceId = InstanceId, ContactFlowId = ContactFlowId, Attributes = Attributes, ParticipantDetails = ParticipantDetails, InitialMessage = InitialMessage, ClientToken = ClientToken, ChatDurationInMinutes = ChatDurationInMinutes, SupportedMessagingContentTypes = SupportedMessagingContentTypes, PersistentChat = PersistentChat, RelatedContactId = RelatedContactId, SegmentAttributes = SegmentAttributes)
+  input <- .connect$start_chat_contact_input(InstanceId = InstanceId, ContactFlowId = ContactFlowId, Attributes = Attributes, ParticipantDetails = ParticipantDetails, InitialMessage = InitialMessage, ClientToken = ClientToken, ChatDurationInMinutes = ChatDurationInMinutes, SupportedMessagingContentTypes = SupportedMessagingContentTypes, PersistentChat = PersistentChat, RelatedContactId = RelatedContactId, SegmentAttributes = SegmentAttributes, CustomerId = CustomerId)
   output <- .connect$start_chat_contact_output()
   config <- get_config()
   svc <- .connect$service(config, op)
@@ -22085,7 +22090,7 @@ connect_update_hours_of_operation_override <- function(InstanceId, HoursOfOperat
 #' ```
 #' svc$update_instance_attribute(
 #'   InstanceId = "string",
-#'   AttributeType = "INBOUND_CALLS"|"OUTBOUND_CALLS"|"CONTACTFLOW_LOGS"|"CONTACT_LENS"|"AUTO_RESOLVE_BEST_VOICES"|"USE_CUSTOM_TTS_VOICES"|"EARLY_MEDIA"|"MULTI_PARTY_CONFERENCE"|"HIGH_VOLUME_OUTBOUND"|"ENHANCED_CONTACT_MONITORING"|"ENHANCED_CHAT_MONITORING",
+#'   AttributeType = "INBOUND_CALLS"|"OUTBOUND_CALLS"|"CONTACTFLOW_LOGS"|"CONTACT_LENS"|"AUTO_RESOLVE_BEST_VOICES"|"USE_CUSTOM_TTS_VOICES"|"EARLY_MEDIA"|"MULTI_PARTY_CONFERENCE"|"HIGH_VOLUME_OUTBOUND"|"ENHANCED_CONTACT_MONITORING"|"ENHANCED_CHAT_MONITORING"|"MULTI_PARTY_CHAT_CONFERENCE",
 #'   Value = "string"
 #' )
 #' ```
@@ -22198,6 +22203,79 @@ connect_update_instance_storage_config <- function(InstanceId, AssociationId, Re
   return(response)
 }
 .connect$operations$update_instance_storage_config <- connect_update_instance_storage_config
+
+#' Instructs Amazon Connect to resume the authentication process
+#'
+#' @description
+#' Instructs Amazon Connect to resume the authentication process. The
+#' subsequent actions depend on the request body contents:
+#' 
+#' -   **If a code is provided**: Connect retrieves the identity
+#'     information from Amazon Cognito and imports it into Connect Customer
+#'     Profiles.
+#' 
+#' -   **If an error is provided**: The error branch of the Authenticate
+#'     Customer block is executed.
+#' 
+#' The API returns a success response to acknowledge the request. However,
+#' the interaction and exchange of identity information occur
+#' asynchronously after the response is returned.
+#'
+#' @usage
+#' connect_update_participant_authentication(State, InstanceId, Code,
+#'   Error, ErrorDescription)
+#'
+#' @param State &#91;required&#93; The `state` query parameter that was provided by Cognito in the
+#' `redirectUri`. This will also match the `state` parameter provided in
+#' the `AuthenticationUrl` from the
+#' [GetAuthenticationUrl](https://docs.aws.amazon.com/connect/latest/APIReference/)
+#' response.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
+#' @param Code The `code` query parameter provided by Cognito in the `redirectUri`.
+#' @param Error The `error` query parameter provided by Cognito in the `redirectUri`.
+#' @param ErrorDescription The `error_description` parameter provided by Cognito in the
+#' `redirectUri`.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_participant_authentication(
+#'   State = "string",
+#'   InstanceId = "string",
+#'   Code = "string",
+#'   Error = "string",
+#'   ErrorDescription = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname connect_update_participant_authentication
+#'
+#' @aliases connect_update_participant_authentication
+connect_update_participant_authentication <- function(State, InstanceId, Code = NULL, Error = NULL, ErrorDescription = NULL) {
+  op <- new_operation(
+    name = "UpdateParticipantAuthentication",
+    http_method = "POST",
+    http_path = "/contact/update-participant-authentication",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .connect$update_participant_authentication_input(State = State, InstanceId = InstanceId, Code = Code, Error = Error, ErrorDescription = ErrorDescription)
+  output <- .connect$update_participant_authentication_output()
+  config <- get_config()
+  svc <- .connect$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connect$operations$update_participant_authentication <- connect_update_participant_authentication
 
 #' Updates timeouts for when human chat participants are to be considered
 #' idle, and when agents are automatically disconnected from a chat due to

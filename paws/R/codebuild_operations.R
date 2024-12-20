@@ -3517,7 +3517,7 @@ codebuild_list_fleets <- function(nextToken = NULL, maxResults = NULL, sortOrder
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken"),
     stream_api = FALSE
   )
   input <- .codebuild$list_fleets_input(nextToken = nextToken, maxResults = maxResults, sortOrder = sortOrder, sortBy = sortBy)

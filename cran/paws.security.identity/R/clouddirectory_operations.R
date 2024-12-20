@@ -1531,7 +1531,7 @@ clouddirectory_list_object_children <- function(DirectoryArn, ObjectReference, N
     http_method = "POST",
     http_path = "/amazonclouddirectory/2017-01-11/object/children",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .clouddirectory$list_object_children_input(DirectoryArn = DirectoryArn, ObjectReference = ObjectReference, NextToken = NextToken, MaxResults = MaxResults, ConsistencyLevel = ConsistencyLevel)
@@ -1610,7 +1610,7 @@ clouddirectory_list_object_parents <- function(DirectoryArn, ObjectReference, Ne
     http_method = "POST",
     http_path = "/amazonclouddirectory/2017-01-11/object/parent",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .clouddirectory$list_object_parents_input(DirectoryArn = DirectoryArn, ObjectReference = ObjectReference, NextToken = NextToken, MaxResults = MaxResults, ConsistencyLevel = ConsistencyLevel, IncludeAllLinksToEachParent = IncludeAllLinksToEachParent)

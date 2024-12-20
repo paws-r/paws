@@ -2326,7 +2326,7 @@ configservice_describe_conformance_pack_compliance <- function(ConformancePackNa
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken"),
     stream_api = FALSE
   )
   input <- .configservice$describe_conformance_pack_compliance_input(ConformancePackName = ConformancePackName, Filters = Filters, Limit = Limit, NextToken = NextToken)
@@ -3285,7 +3285,7 @@ configservice_describe_remediation_exceptions <- function(ConfigRuleName, Resour
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken"),
     stream_api = FALSE
   )
   input <- .configservice$describe_remediation_exceptions_input(ConfigRuleName = ConfigRuleName, ResourceKeys = ResourceKeys, Limit = Limit, NextToken = NextToken)
@@ -3745,7 +3745,7 @@ configservice_get_aggregate_config_rule_compliance_summary <- function(Configura
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken"),
     stream_api = FALSE
   )
   input <- .configservice$get_aggregate_config_rule_compliance_summary_input(ConfigurationAggregatorName = ConfigurationAggregatorName, Filters = Filters, GroupByKey = GroupByKey, Limit = Limit, NextToken = NextToken)
@@ -3828,7 +3828,7 @@ configservice_get_aggregate_conformance_pack_compliance_summary <- function(Conf
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken"),
     stream_api = FALSE
   )
   input <- .configservice$get_aggregate_conformance_pack_compliance_summary_input(ConfigurationAggregatorName = ConfigurationAggregatorName, Filters = Filters, GroupByKey = GroupByKey, Limit = Limit, NextToken = NextToken)
@@ -3910,7 +3910,7 @@ configservice_get_aggregate_discovered_resource_counts <- function(Configuration
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken"),
     stream_api = FALSE
   )
   input <- .configservice$get_aggregate_discovered_resource_counts_input(ConfigurationAggregatorName = ConfigurationAggregatorName, Filters = Filters, GroupByKey = GroupByKey, Limit = Limit, NextToken = NextToken)
@@ -4435,7 +4435,7 @@ configservice_get_conformance_pack_compliance_details <- function(ConformancePac
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken"),
     stream_api = FALSE
   )
   input <- .configservice$get_conformance_pack_compliance_details_input(ConformancePackName = ConformancePackName, Filters = Filters, Limit = Limit, NextToken = NextToken)
@@ -4669,7 +4669,7 @@ configservice_get_discovered_resource_counts <- function(resourceTypes = NULL, l
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "nextToken", limit_key = "limit", output_token = "nextToken"),
     stream_api = FALSE
   )
   input <- .configservice$get_discovered_resource_counts_input(resourceTypes = resourceTypes, limit = limit, nextToken = nextToken)
@@ -5411,7 +5411,7 @@ configservice_list_conformance_pack_compliance_scores <- function(Filters = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken"),
     stream_api = FALSE
   )
   input <- .configservice$list_conformance_pack_compliance_scores_input(Filters = Filters, SortOrder = SortOrder, SortBy = SortBy, Limit = Limit, NextToken = NextToken)
@@ -5645,7 +5645,7 @@ configservice_list_stored_queries <- function(NextToken = NULL, MaxResults = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
     stream_api = FALSE
   )
   input <- .configservice$list_stored_queries_input(NextToken = NextToken, MaxResults = MaxResults)

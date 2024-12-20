@@ -1482,6 +1482,44 @@ backup_get_legal_hold <- function(LegalHoldId) {
 }
 .backup$operations$get_legal_hold <- backup_get_legal_hold
 
+#' This operation returns the metadata and details specific to the backup
+#' index associated with the specified recovery point
+#'
+#' @description
+#' This operation returns the metadata and details specific to the backup index associated with the specified recovery point.
+#'
+#' See [https://www.paws-r-sdk.com/docs/backup_get_recovery_point_index_details/](https://www.paws-r-sdk.com/docs/backup_get_recovery_point_index_details/) for full documentation.
+#'
+#' @param BackupVaultName &#91;required&#93; The name of a logical container where backups are stored. Backup vaults
+#' are identified by names that are unique to the account used to create
+#' them and the Region where they are created.
+#' 
+#' Accepted characters include lowercase letters, numbers, and hyphens.
+#' @param RecoveryPointArn &#91;required&#93; An ARN that uniquely identifies a recovery point; for example,
+#' `arn:aws:backup:us-east-1:123456789012:recovery-point:1EB3B5E7-9EB0-435A-A80B-108B488B0D45`.
+#'
+#' @keywords internal
+#'
+#' @rdname backup_get_recovery_point_index_details
+backup_get_recovery_point_index_details <- function(BackupVaultName, RecoveryPointArn) {
+  op <- new_operation(
+    name = "GetRecoveryPointIndexDetails",
+    http_method = "GET",
+    http_path = "/backup-vaults/{backupVaultName}/recovery-points/{recoveryPointArn}/index",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .backup$get_recovery_point_index_details_input(BackupVaultName = BackupVaultName, RecoveryPointArn = RecoveryPointArn)
+  output <- .backup$get_recovery_point_index_details_output()
+  config <- get_config()
+  svc <- .backup$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.backup$operations$get_recovery_point_index_details <- backup_get_recovery_point_index_details
+
 #' Returns a set of metadata key-value pairs that were used to create the
 #' backup
 #'
@@ -1771,7 +1809,7 @@ backup_list_backup_job_summaries <- function(AccountId = NULL, State = NULL, Res
     http_method = "GET",
     http_path = "/audit/backup-job-summaries",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .backup$list_backup_job_summaries_input(AccountId = AccountId, State = State, ResourceType = ResourceType, MessageCategory = MessageCategory, AggregationPeriod = AggregationPeriod, MaxResults = MaxResults, NextToken = NextToken)
@@ -2155,7 +2193,7 @@ backup_list_copy_job_summaries <- function(AccountId = NULL, State = NULL, Resou
     http_method = "GET",
     http_path = "/audit/copy-job-summaries",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .backup$list_copy_job_summaries_input(AccountId = AccountId, State = State, ResourceType = ResourceType, MessageCategory = MessageCategory, AggregationPeriod = AggregationPeriod, MaxResults = MaxResults, NextToken = NextToken)
@@ -2289,7 +2327,7 @@ backup_list_frameworks <- function(MaxResults = NULL, NextToken = NULL) {
     http_method = "GET",
     http_path = "/audit/frameworks",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .backup$list_frameworks_input(MaxResults = MaxResults, NextToken = NextToken)
@@ -2301,6 +2339,64 @@ backup_list_frameworks <- function(MaxResults = NULL, NextToken = NULL) {
   return(response)
 }
 .backup$operations$list_frameworks <- backup_list_frameworks
+
+#' This operation returns a list of recovery points that have an associated
+#' index, belonging to the specified account
+#'
+#' @description
+#' This operation returns a list of recovery points that have an associated index, belonging to the specified account.
+#'
+#' See [https://www.paws-r-sdk.com/docs/backup_list_indexed_recovery_points/](https://www.paws-r-sdk.com/docs/backup_list_indexed_recovery_points/) for full documentation.
+#'
+#' @param NextToken The next item following a partial list of returned recovery points.
+#' 
+#' For example, if a request is made to return `MaxResults` number of
+#' indexed recovery points, `NextToken` allows you to return more items in
+#' your list starting at the location pointed to by the next token.
+#' @param MaxResults The maximum number of resource list items to be returned.
+#' @param SourceResourceArn A string of the Amazon Resource Name (ARN) that uniquely identifies the
+#' source resource.
+#' @param CreatedBefore Returns only indexed recovery points that were created before the
+#' specified date.
+#' @param CreatedAfter Returns only indexed recovery points that were created after the
+#' specified date.
+#' @param ResourceType Returns a list of indexed recovery points for the specified resource
+#' type(s).
+#' 
+#' Accepted values include:
+#' 
+#' -   `EBS` for Amazon Elastic Block Store
+#' 
+#' -   `S3` for Amazon Simple Storage Service (Amazon S3)
+#' @param IndexStatus Include this parameter to filter the returned list by the indicated
+#' statuses.
+#' 
+#' Accepted values: `PENDING` | `ACTIVE` | `FAILED` | `DELETING`
+#' 
+#' A recovery point with an index that has the status of `ACTIVE` can be
+#' included in a search.
+#'
+#' @keywords internal
+#'
+#' @rdname backup_list_indexed_recovery_points
+backup_list_indexed_recovery_points <- function(NextToken = NULL, MaxResults = NULL, SourceResourceArn = NULL, CreatedBefore = NULL, CreatedAfter = NULL, ResourceType = NULL, IndexStatus = NULL) {
+  op <- new_operation(
+    name = "ListIndexedRecoveryPoints",
+    http_method = "GET",
+    http_path = "/indexes/recovery-point/",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "IndexedRecoveryPoints"),
+    stream_api = FALSE
+  )
+  input <- .backup$list_indexed_recovery_points_input(NextToken = NextToken, MaxResults = MaxResults, SourceResourceArn = SourceResourceArn, CreatedBefore = CreatedBefore, CreatedAfter = CreatedAfter, ResourceType = ResourceType, IndexStatus = IndexStatus)
+  output <- .backup$list_indexed_recovery_points_output()
+  config <- get_config()
+  svc <- .backup$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.backup$operations$list_indexed_recovery_points <- backup_list_indexed_recovery_points
 
 #' This action returns metadata about active and previous legal holds
 #'
@@ -2621,7 +2717,7 @@ backup_list_report_jobs <- function(ByReportPlanName = NULL, ByCreationBefore = 
     http_method = "GET",
     http_path = "/audit/report-jobs",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .backup$list_report_jobs_input(ByReportPlanName = ByReportPlanName, ByCreationBefore = ByCreationBefore, ByCreationAfter = ByCreationAfter, ByStatus = ByStatus, MaxResults = MaxResults, NextToken = NextToken)
@@ -2656,7 +2752,7 @@ backup_list_report_plans <- function(MaxResults = NULL, NextToken = NULL) {
     http_method = "GET",
     http_path = "/audit/report-plans",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .backup$list_report_plans_input(MaxResults = MaxResults, NextToken = NextToken)
@@ -2730,7 +2826,7 @@ backup_list_restore_job_summaries <- function(AccountId = NULL, State = NULL, Re
     http_method = "GET",
     http_path = "/audit/restore-job-summaries",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .backup$list_restore_job_summaries_input(AccountId = AccountId, State = State, ResourceType = ResourceType, AggregationPeriod = AggregationPeriod, MaxResults = MaxResults, NextToken = NextToken)
@@ -2966,7 +3062,7 @@ backup_list_tags <- function(ResourceArn, NextToken = NULL, MaxResults = NULL) {
     http_method = "GET",
     http_path = "/tags/{resourceArn}/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .backup$list_tags_input(ResourceArn = ResourceArn, NextToken = NextToken, MaxResults = MaxResults)
@@ -3264,11 +3360,26 @@ backup_put_restore_validation_result <- function(RestoreJobId, ValidationStatus,
 #' backup option and create a Windows VSS backup. Set to
 #' `"WindowsVSS""disabled"` to create a regular backup. The `WindowsVSS`
 #' option is not enabled by default.
+#' @param Index Include this parameter to enable index creation if your backup job has a
+#' resource type that supports backup indexes.
+#' 
+#' Resource types that support backup indexes include:
+#' 
+#' -   `EBS` for Amazon Elastic Block Store
+#' 
+#' -   `S3` for Amazon Simple Storage Service (Amazon S3)
+#' 
+#' Index can have 1 of 2 possible values, either `ENABLED` or `DISABLED`.
+#' 
+#' To create a backup index for an eligible `ACTIVE` recovery point that
+#' does not yet have a backup index, set value to `ENABLED`.
+#' 
+#' To delete a backup index, set value to `DISABLED`.
 #'
 #' @keywords internal
 #'
 #' @rdname backup_start_backup_job
-backup_start_backup_job <- function(BackupVaultName, ResourceArn, IamRoleArn, IdempotencyToken = NULL, StartWindowMinutes = NULL, CompleteWindowMinutes = NULL, Lifecycle = NULL, RecoveryPointTags = NULL, BackupOptions = NULL) {
+backup_start_backup_job <- function(BackupVaultName, ResourceArn, IamRoleArn, IdempotencyToken = NULL, StartWindowMinutes = NULL, CompleteWindowMinutes = NULL, Lifecycle = NULL, RecoveryPointTags = NULL, BackupOptions = NULL, Index = NULL) {
   op <- new_operation(
     name = "StartBackupJob",
     http_method = "PUT",
@@ -3277,7 +3388,7 @@ backup_start_backup_job <- function(BackupVaultName, ResourceArn, IamRoleArn, Id
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .backup$start_backup_job_input(BackupVaultName = BackupVaultName, ResourceArn = ResourceArn, IamRoleArn = IamRoleArn, IdempotencyToken = IdempotencyToken, StartWindowMinutes = StartWindowMinutes, CompleteWindowMinutes = CompleteWindowMinutes, Lifecycle = Lifecycle, RecoveryPointTags = RecoveryPointTags, BackupOptions = BackupOptions)
+  input <- .backup$start_backup_job_input(BackupVaultName = BackupVaultName, ResourceArn = ResourceArn, IamRoleArn = IamRoleArn, IdempotencyToken = IdempotencyToken, StartWindowMinutes = StartWindowMinutes, CompleteWindowMinutes = CompleteWindowMinutes, Lifecycle = Lifecycle, RecoveryPointTags = RecoveryPointTags, BackupOptions = BackupOptions, Index = Index)
   output <- .backup$start_backup_job_output()
   config <- get_config()
   svc <- .backup$service(config, op)
@@ -3722,6 +3833,52 @@ backup_update_global_settings <- function(GlobalSettings = NULL) {
   return(response)
 }
 .backup$operations$update_global_settings <- backup_update_global_settings
+
+#' This operation updates the settings of a recovery point index
+#'
+#' @description
+#' This operation updates the settings of a recovery point index.
+#'
+#' See [https://www.paws-r-sdk.com/docs/backup_update_recovery_point_index_settings/](https://www.paws-r-sdk.com/docs/backup_update_recovery_point_index_settings/) for full documentation.
+#'
+#' @param BackupVaultName &#91;required&#93; The name of a logical container where backups are stored. Backup vaults
+#' are identified by names that are unique to the account used to create
+#' them and the Region where they are created.
+#' 
+#' Accepted characters include lowercase letters, numbers, and hyphens.
+#' @param RecoveryPointArn &#91;required&#93; An ARN that uniquely identifies a recovery point; for example,
+#' `arn:aws:backup:us-east-1:123456789012:recovery-point:1EB3B5E7-9EB0-435A-A80B-108B488B0D45`.
+#' @param IamRoleArn This specifies the IAM role ARN used for this operation.
+#' 
+#' For example, arn:aws:iam::123456789012:role/S3Access
+#' @param Index &#91;required&#93; Index can have 1 of 2 possible values, either `ENABLED` or `DISABLED`.
+#' 
+#' To create a backup index for an eligible `ACTIVE` recovery point that
+#' does not yet have a backup index, set value to `ENABLED`.
+#' 
+#' To delete a backup index, set value to `DISABLED`.
+#'
+#' @keywords internal
+#'
+#' @rdname backup_update_recovery_point_index_settings
+backup_update_recovery_point_index_settings <- function(BackupVaultName, RecoveryPointArn, IamRoleArn = NULL, Index) {
+  op <- new_operation(
+    name = "UpdateRecoveryPointIndexSettings",
+    http_method = "POST",
+    http_path = "/backup-vaults/{backupVaultName}/recovery-points/{recoveryPointArn}/index",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .backup$update_recovery_point_index_settings_input(BackupVaultName = BackupVaultName, RecoveryPointArn = RecoveryPointArn, IamRoleArn = IamRoleArn, Index = Index)
+  output <- .backup$update_recovery_point_index_settings_output()
+  config <- get_config()
+  svc <- .backup$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.backup$operations$update_recovery_point_index_settings <- backup_update_recovery_point_index_settings
 
 #' Sets the transition lifecycle of a recovery point
 #'

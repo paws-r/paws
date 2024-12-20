@@ -1347,7 +1347,7 @@ elasticbeanstalk_list_platform_branches <- function(Filters = NULL, MaxRecords =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken"),
     stream_api = FALSE
   )
   input <- .elasticbeanstalk$list_platform_branches_input(Filters = Filters, MaxRecords = MaxRecords, NextToken = NextToken)

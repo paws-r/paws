@@ -53,6 +53,11 @@ to the client. The available operations are listed in the
 Operations section.
 }
 \description{
+\itemize{
+\item \href{https://docs.aws.amazon.com/connect/latest/APIReference/API_Operations_Amazon_Connect_Participant_Service.html}{Participant Service actions}
+\item \href{https://docs.aws.amazon.com/connect/latest/APIReference/API_Types_Amazon_Connect_Participant_Service.html}{Participant Service data types}
+}
+
 Amazon Connect is an easy-to-use omnichannel cloud contact center
 service that enables companies of any size to deliver superior customer
 service at a lower cost. Amazon Connect communications capabilities make
@@ -105,11 +110,13 @@ retrieving chat transcripts.
 \section{Operations}{
 
 \tabular{ll}{
+\link[paws.customer.engagement:connectparticipant_cancel_participant_authentication]{cancel_participant_authentication} \tab Cancels the authentication session\cr
 \link[paws.customer.engagement:connectparticipant_complete_attachment_upload]{complete_attachment_upload} \tab Allows you to confirm that the attachment has been uploaded using the pre-signed URL provided in StartAttachmentUpload API\cr
 \link[paws.customer.engagement:connectparticipant_create_participant_connection]{create_participant_connection} \tab Creates the participant's connection\cr
 \link[paws.customer.engagement:connectparticipant_describe_view]{describe_view} \tab Retrieves the view for the specified view token\cr
 \link[paws.customer.engagement:connectparticipant_disconnect_participant]{disconnect_participant} \tab Disconnects a participant\cr
 \link[paws.customer.engagement:connectparticipant_get_attachment]{get_attachment} \tab Provides a pre-signed URL for download of a completed attachment\cr
+\link[paws.customer.engagement:connectparticipant_get_authentication_url]{get_authentication_url} \tab Retrieves the AuthenticationUrl for the current authentication session for the AuthenticateCustomer flow block\cr
 \link[paws.customer.engagement:connectparticipant_get_transcript]{get_transcript} \tab Retrieves a transcript of the session, including details about any attachments\cr
 \link[paws.customer.engagement:connectparticipant_send_event]{send_event} \tab The application/vnd\cr
 \link[paws.customer.engagement:connectparticipant_send_message]{send_message} \tab Sends a message\cr
@@ -120,7 +127,7 @@ retrieving chat transcripts.
 \examples{
 \dontrun{
 svc <- connectparticipant()
-svc$complete_attachment_upload(
+svc$cancel_participant_authentication(
   Foo = 123
 )
 }

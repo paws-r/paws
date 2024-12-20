@@ -588,7 +588,7 @@ applicationinsights_list_applications <- function(MaxResults = NULL, NextToken =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .applicationinsights$list_applications_input(MaxResults = MaxResults, NextToken = NextToken, AccountId = AccountId)
@@ -625,7 +625,7 @@ applicationinsights_list_components <- function(ResourceGroupName, MaxResults = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .applicationinsights$list_components_input(ResourceGroupName = ResourceGroupName, MaxResults = MaxResults, NextToken = NextToken, AccountId = AccountId)
@@ -680,7 +680,7 @@ applicationinsights_list_configuration_history <- function(ResourceGroupName = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .applicationinsights$list_configuration_history_input(ResourceGroupName = ResourceGroupName, StartTime = StartTime, EndTime = EndTime, EventStatus = EventStatus, MaxResults = MaxResults, NextToken = NextToken, AccountId = AccountId)
@@ -716,7 +716,7 @@ applicationinsights_list_log_pattern_sets <- function(ResourceGroupName, MaxResu
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .applicationinsights$list_log_pattern_sets_input(ResourceGroupName = ResourceGroupName, MaxResults = MaxResults, NextToken = NextToken, AccountId = AccountId)
@@ -753,7 +753,7 @@ applicationinsights_list_log_patterns <- function(ResourceGroupName, PatternSetN
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .applicationinsights$list_log_patterns_input(ResourceGroupName = ResourceGroupName, PatternSetName = PatternSetName, MaxResults = MaxResults, NextToken = NextToken, AccountId = AccountId)
@@ -797,7 +797,7 @@ applicationinsights_list_problems <- function(AccountId = NULL, ResourceGroupNam
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .applicationinsights$list_problems_input(AccountId = AccountId, ResourceGroupName = ResourceGroupName, StartTime = StartTime, EndTime = EndTime, MaxResults = MaxResults, NextToken = NextToken, ComponentName = ComponentName, Visibility = Visibility)
@@ -867,7 +867,7 @@ applicationinsights_list_workloads <- function(ResourceGroupName, ComponentName,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .applicationinsights$list_workloads_input(ResourceGroupName = ResourceGroupName, ComponentName = ComponentName, MaxResults = MaxResults, NextToken = NextToken, AccountId = AccountId)

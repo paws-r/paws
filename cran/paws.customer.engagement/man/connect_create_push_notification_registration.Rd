@@ -32,7 +32,7 @@ populates this field. For more information about idempotency, see
 \item{ContactConfiguration}{[required] The contact configuration for push notification registration.}
 }
 \description{
-Creates registration for a device token and a chat contact to receive real-time push notifications. For more information about push notifications, see \href{https://docs.aws.amazon.com/connect/latest/adminguide/}{Set up push notifications in Amazon Connect for mobile chat} in the \emph{Amazon Connect Administrator Guide}.
+Creates registration for a device token and a chat contact to receive real-time push notifications. For more information about push notifications, see \href{https://docs.aws.amazon.com/connect/latest/adminguide/enable-push-notifications-for-mobile-chat.html}{Set up push notifications in Amazon Connect for mobile chat} in the \emph{Amazon Connect Administrator Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/connect_create_push_notification_registration/} for full documentation.
 }

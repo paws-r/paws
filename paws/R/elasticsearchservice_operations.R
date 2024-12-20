@@ -1512,7 +1512,7 @@ elasticsearchservice_describe_domain_auto_tunes <- function(DomainName, MaxResul
     http_method = "GET",
     http_path = "/2015-01-01/es/domain/{DomainName}/autoTunes",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .elasticsearchservice$describe_domain_auto_tunes_input(DomainName = DomainName, MaxResults = MaxResults, NextToken = NextToken)
@@ -2523,7 +2523,7 @@ elasticsearchservice_describe_inbound_cross_cluster_search_connections <- functi
     http_method = "POST",
     http_path = "/2015-01-01/es/ccs/inboundConnection/search",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .elasticsearchservice$describe_inbound_cross_cluster_search_connections_input(Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
@@ -2615,7 +2615,7 @@ elasticsearchservice_describe_outbound_cross_cluster_search_connections <- funct
     http_method = "POST",
     http_path = "/2015-01-01/es/ccs/outboundConnection/search",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .elasticsearchservice$describe_outbound_cross_cluster_search_connections_input(Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
@@ -2699,7 +2699,7 @@ elasticsearchservice_describe_packages <- function(Filters = NULL, MaxResults = 
     http_method = "POST",
     http_path = "/2015-01-01/packages/describe",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .elasticsearchservice$describe_packages_input(Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
@@ -3130,7 +3130,7 @@ elasticsearchservice_get_package_version_history <- function(PackageID, MaxResul
     http_method = "GET",
     http_path = "/2015-01-01/packages/{PackageID}/history",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .elasticsearchservice$get_package_version_history_input(PackageID = PackageID, MaxResults = MaxResults, NextToken = NextToken)
@@ -3389,7 +3389,7 @@ elasticsearchservice_list_domains_for_package <- function(PackageID, MaxResults 
     http_method = "GET",
     http_path = "/2015-01-01/packages/{PackageID}/domains",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .elasticsearchservice$list_domains_for_package_input(PackageID = PackageID, MaxResults = MaxResults, NextToken = NextToken)
@@ -3584,7 +3584,7 @@ elasticsearchservice_list_packages_for_domain <- function(DomainName, MaxResults
     http_method = "GET",
     http_path = "/2015-01-01/domain/{DomainName}/packages",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .elasticsearchservice$list_packages_for_domain_input(DomainName = DomainName, MaxResults = MaxResults, NextToken = NextToken)

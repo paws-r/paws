@@ -1322,7 +1322,7 @@ athena_list_application_dpu_sizes <- function(MaxResults = NULL, NextToken = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
     stream_api = FALSE
   )
   input <- .athena$list_application_dpu_sizes_input(MaxResults = MaxResults, NextToken = NextToken)
@@ -1379,7 +1379,7 @@ athena_list_calculation_executions <- function(SessionId, StateFilter = NULL, Ma
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
     stream_api = FALSE
   )
   input <- .athena$list_calculation_executions_input(SessionId = SessionId, StateFilter = StateFilter, MaxResults = MaxResults, NextToken = NextToken)
@@ -1412,7 +1412,7 @@ athena_list_capacity_reservations <- function(NextToken = NULL, MaxResults = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
     stream_api = FALSE
   )
   input <- .athena$list_capacity_reservations_input(NextToken = NextToken, MaxResults = MaxResults)
@@ -1523,7 +1523,7 @@ athena_list_engine_versions <- function(NextToken = NULL, MaxResults = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
     stream_api = FALSE
   )
   input <- .athena$list_engine_versions_input(NextToken = NextToken, MaxResults = MaxResults)
@@ -1574,7 +1574,7 @@ athena_list_executors <- function(SessionId, ExecutorStateFilter = NULL, MaxResu
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
     stream_api = FALSE
   )
   input <- .athena$list_executors_input(SessionId = SessionId, ExecutorStateFilter = ExecutorStateFilter, MaxResults = MaxResults, NextToken = NextToken)
@@ -1724,7 +1724,7 @@ athena_list_prepared_statements <- function(WorkGroup, NextToken = NULL, MaxResu
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
     stream_api = FALSE
   )
   input <- .athena$list_prepared_statements_input(WorkGroup = WorkGroup, NextToken = NextToken, MaxResults = MaxResults)
@@ -1821,7 +1821,7 @@ athena_list_sessions <- function(WorkGroup, StateFilter = NULL, MaxResults = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
     stream_api = FALSE
   )
   input <- .athena$list_sessions_input(WorkGroup = WorkGroup, StateFilter = StateFilter, MaxResults = MaxResults, NextToken = NextToken)
@@ -1934,7 +1934,7 @@ athena_list_work_groups <- function(NextToken = NULL, MaxResults = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
     stream_api = FALSE
   )
   input <- .athena$list_work_groups_input(NextToken = NextToken, MaxResults = MaxResults)
