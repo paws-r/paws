@@ -578,7 +578,7 @@ cloudwatchinternetmonitor_get_query_results <- function(MonitorName, QueryId, Ne
     http_method = "GET",
     http_path = "/v20210603/Monitors/{MonitorName}/Queries/{QueryId}/Results",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .cloudwatchinternetmonitor$get_query_results_input(MonitorName = MonitorName, QueryId = QueryId, NextToken = NextToken, MaxResults = MaxResults)

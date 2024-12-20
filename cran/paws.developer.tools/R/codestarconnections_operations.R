@@ -557,7 +557,7 @@ codestarconnections_list_connections <- function(ProviderTypeFilter = NULL, Host
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .codestarconnections$list_connections_input(ProviderTypeFilter = ProviderTypeFilter, HostArnFilter = HostArnFilter, MaxResults = MaxResults, NextToken = NextToken)
@@ -593,7 +593,7 @@ codestarconnections_list_hosts <- function(MaxResults = NULL, NextToken = NULL) 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .codestarconnections$list_hosts_input(MaxResults = MaxResults, NextToken = NextToken)
@@ -627,7 +627,7 @@ codestarconnections_list_repository_links <- function(MaxResults = NULL, NextTok
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .codestarconnections$list_repository_links_input(MaxResults = MaxResults, NextToken = NextToken)
@@ -699,7 +699,7 @@ codestarconnections_list_sync_configurations <- function(MaxResults = NULL, Next
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .codestarconnections$list_sync_configurations_input(MaxResults = MaxResults, NextToken = NextToken, RepositoryLinkId = RepositoryLinkId, SyncType = SyncType)

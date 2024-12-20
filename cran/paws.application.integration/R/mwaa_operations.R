@@ -126,7 +126,7 @@ mwaa_create_cli_token <- function(Name) {
 #' MWAA)](https://docs.aws.amazon.com/mwaa/latest/userguide/airflow-versions.html).
 #' 
 #' Valid values: `1.10.12`, `2.0.2`, `2.2.2`, `2.4.3`, `2.5.1`, `2.6.3`,
-#' `2.7.2`, `2.8.1`, `2.9.2`, and `2.10.1`.
+#' `2.7.2`, `2.8.1`, `2.9.2`, `2.10.1`, and `2.10.3`.
 #' @param LoggingConfiguration Defines the Apache Airflow logs to send to CloudWatch Logs.
 #' @param WeeklyMaintenanceWindowStart The day and time of the week in Coordinated Universal Time (UTC) 24-hour
 #' standard time to start weekly maintenance updates of your environment in
@@ -554,7 +554,7 @@ mwaa_untag_resource <- function(ResourceArn, tagKeys) {
 #' environment](https://docs.aws.amazon.com/mwaa/latest/userguide/upgrading-environment.html).
 #' 
 #' Valid values: `1.10.12`, `2.0.2`, `2.2.2`, `2.4.3`, `2.5.1`, `2.6.3`,
-#' `2.7.2`, `2.8.1`, `2.9.2`, and `2.10.1`.
+#' `2.7.2`, `2.8.1`, `2.9.2`, `2.10.1`, and `2.10.3`.
 #' @param SourceBucketArn The Amazon Resource Name (ARN) of the Amazon S3 bucket where your DAG
 #' code and supporting files are stored. For example,
 #' `arn:aws:s3:::my-airflow-bucket-unique-name`. For more information, see

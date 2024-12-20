@@ -2523,7 +2523,7 @@ opensearchservice_describe_domain_auto_tunes <- function(DomainName, MaxResults 
     http_method = "GET",
     http_path = "/2021-01-01/opensearch/domain/{DomainName}/autoTunes",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .opensearchservice$describe_domain_auto_tunes_input(DomainName = DomainName, MaxResults = MaxResults, NextToken = NextToken)
@@ -3814,7 +3814,7 @@ opensearchservice_describe_inbound_connections <- function(Filters = NULL, MaxRe
     http_method = "POST",
     http_path = "/2021-01-01/opensearch/cc/inboundConnection/search",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .opensearchservice$describe_inbound_connections_input(Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
@@ -4006,7 +4006,7 @@ opensearchservice_describe_outbound_connections <- function(Filters = NULL, MaxR
     http_method = "POST",
     http_path = "/2021-01-01/opensearch/cc/outboundConnection/search",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .opensearchservice$describe_outbound_connections_input(Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
@@ -4118,7 +4118,7 @@ opensearchservice_describe_packages <- function(Filters = NULL, MaxResults = NUL
     http_method = "POST",
     http_path = "/2021-01-01/packages/describe",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .opensearchservice$describe_packages_input(Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
@@ -4201,7 +4201,7 @@ opensearchservice_describe_reserved_instance_offerings <- function(ReservedInsta
     http_method = "GET",
     http_path = "/2021-01-01/opensearch/reservedInstanceOfferings",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .opensearchservice$describe_reserved_instance_offerings_input(ReservedInstanceOfferingId = ReservedInstanceOfferingId, MaxResults = MaxResults, NextToken = NextToken)
@@ -4292,7 +4292,7 @@ opensearchservice_describe_reserved_instances <- function(ReservedInstanceId = N
     http_method = "GET",
     http_path = "/2021-01-01/opensearch/reservedInstances",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .opensearchservice$describe_reserved_instances_input(ReservedInstanceId = ReservedInstanceId, MaxResults = MaxResults, NextToken = NextToken)
@@ -4941,7 +4941,7 @@ opensearchservice_get_package_version_history <- function(PackageID, MaxResults 
     http_method = "GET",
     http_path = "/2021-01-01/packages/{PackageID}/history",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .opensearchservice$get_package_version_history_input(PackageID = PackageID, MaxResults = MaxResults, NextToken = NextToken)
@@ -5021,7 +5021,7 @@ opensearchservice_get_upgrade_history <- function(DomainName, MaxResults = NULL,
     http_method = "GET",
     http_path = "/2021-01-01/opensearch/upgradeDomain/{DomainName}/history",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .opensearchservice$get_upgrade_history_input(DomainName = DomainName, MaxResults = MaxResults, NextToken = NextToken)
@@ -5364,7 +5364,7 @@ opensearchservice_list_domain_maintenances <- function(DomainName, Action = NULL
     http_method = "GET",
     http_path = "/2021-01-01/opensearch/domain/{DomainName}/domainMaintenances",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .opensearchservice$list_domain_maintenances_input(DomainName = DomainName, Action = Action, Status = Status, MaxResults = MaxResults, NextToken = NextToken)
@@ -5512,7 +5512,7 @@ opensearchservice_list_domains_for_package <- function(PackageID, MaxResults = N
     http_method = "GET",
     http_path = "/2021-01-01/packages/{PackageID}/domains",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .opensearchservice$list_domains_for_package_input(PackageID = PackageID, MaxResults = MaxResults, NextToken = NextToken)
@@ -5599,7 +5599,7 @@ opensearchservice_list_instance_type_details <- function(EngineVersion, DomainNa
     http_method = "GET",
     http_path = "/2021-01-01/opensearch/instanceTypeDetails/{EngineVersion}",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .opensearchservice$list_instance_type_details_input(EngineVersion = EngineVersion, DomainName = DomainName, MaxResults = MaxResults, NextToken = NextToken, RetrieveAZs = RetrieveAZs, InstanceType = InstanceType)
@@ -5688,7 +5688,7 @@ opensearchservice_list_packages_for_domain <- function(DomainName, MaxResults = 
     http_method = "GET",
     http_path = "/2021-01-01/domain/{DomainName}/packages",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .opensearchservice$list_packages_for_domain_input(DomainName = DomainName, MaxResults = MaxResults, NextToken = NextToken)
@@ -5766,7 +5766,7 @@ opensearchservice_list_scheduled_actions <- function(DomainName, MaxResults = NU
     http_method = "GET",
     http_path = "/2021-01-01/opensearch/domain/{DomainName}/scheduledActions",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .opensearchservice$list_scheduled_actions_input(DomainName = DomainName, MaxResults = MaxResults, NextToken = NextToken)
@@ -5886,7 +5886,7 @@ opensearchservice_list_versions <- function(MaxResults = NULL, NextToken = NULL)
     http_method = "GET",
     http_path = "/2021-01-01/opensearch/versions",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .opensearchservice$list_versions_input(MaxResults = MaxResults, NextToken = NextToken)

@@ -36,7 +36,8 @@ association that is used for this trained model inference job.}
 \item{outputConfiguration}{[required] Defines the output configuration information for the trained model
 inference job.}
 
-\item{dataSource}{[required] Defines he data source that is used for the trained model inference job.}
+\item{dataSource}{[required] Defines the data source that is used for the trained model inference
+job.}
 
 \item{description}{The description of the trained model inference job.}
 

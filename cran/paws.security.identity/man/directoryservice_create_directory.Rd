@@ -47,7 +47,7 @@ Directory:
 }
 
 For additional information about how Active Directory passwords are
-enforced, see \href{https://learn.microsoft.com/en-us/windows/security/threat-protection/security-policy-settings/password-must-meet-complexity-requirements}{Password must meet complexity requirements}
+enforced, see \href{https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-10/security/threat-protection/security-policy-settings/password-must-meet-complexity-requirements}{Password must meet complexity requirements}
 on the Microsoft website.}
 
 \item{Description}{A description for the directory.}

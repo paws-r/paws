@@ -577,11 +577,13 @@ quicksight_create_dashboard <- function(AwsAccountId, DashboardId, Name, Paramet
 #' @param DatasetParameters The parameter declarations of the dataset.
 #' @param FolderArns When you create the dataset, Amazon QuickSight adds the dataset to these
 #' folders.
+#' @param PerformanceConfiguration The configuration for the performance optimization of the dataset that
+#' contains a `UniqueKey` configuration.
 #'
 #' @keywords internal
 #'
 #' @rdname quicksight_create_data_set
-quicksight_create_data_set <- function(AwsAccountId, DataSetId, Name, PhysicalTableMap, LogicalTableMap = NULL, ImportMode, ColumnGroups = NULL, FieldFolders = NULL, Permissions = NULL, RowLevelPermissionDataSet = NULL, RowLevelPermissionTagConfiguration = NULL, ColumnLevelPermissionRules = NULL, Tags = NULL, DataSetUsageConfiguration = NULL, DatasetParameters = NULL, FolderArns = NULL) {
+quicksight_create_data_set <- function(AwsAccountId, DataSetId, Name, PhysicalTableMap, LogicalTableMap = NULL, ImportMode, ColumnGroups = NULL, FieldFolders = NULL, Permissions = NULL, RowLevelPermissionDataSet = NULL, RowLevelPermissionTagConfiguration = NULL, ColumnLevelPermissionRules = NULL, Tags = NULL, DataSetUsageConfiguration = NULL, DatasetParameters = NULL, FolderArns = NULL, PerformanceConfiguration = NULL) {
   op <- new_operation(
     name = "CreateDataSet",
     http_method = "POST",
@@ -590,7 +592,7 @@ quicksight_create_data_set <- function(AwsAccountId, DataSetId, Name, PhysicalTa
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .quicksight$create_data_set_input(AwsAccountId = AwsAccountId, DataSetId = DataSetId, Name = Name, PhysicalTableMap = PhysicalTableMap, LogicalTableMap = LogicalTableMap, ImportMode = ImportMode, ColumnGroups = ColumnGroups, FieldFolders = FieldFolders, Permissions = Permissions, RowLevelPermissionDataSet = RowLevelPermissionDataSet, RowLevelPermissionTagConfiguration = RowLevelPermissionTagConfiguration, ColumnLevelPermissionRules = ColumnLevelPermissionRules, Tags = Tags, DataSetUsageConfiguration = DataSetUsageConfiguration, DatasetParameters = DatasetParameters, FolderArns = FolderArns)
+  input <- .quicksight$create_data_set_input(AwsAccountId = AwsAccountId, DataSetId = DataSetId, Name = Name, PhysicalTableMap = PhysicalTableMap, LogicalTableMap = LogicalTableMap, ImportMode = ImportMode, ColumnGroups = ColumnGroups, FieldFolders = FieldFolders, Permissions = Permissions, RowLevelPermissionDataSet = RowLevelPermissionDataSet, RowLevelPermissionTagConfiguration = RowLevelPermissionTagConfiguration, ColumnLevelPermissionRules = ColumnLevelPermissionRules, Tags = Tags, DataSetUsageConfiguration = DataSetUsageConfiguration, DatasetParameters = DatasetParameters, FolderArns = FolderArns, PerformanceConfiguration = PerformanceConfiguration)
   output <- .quicksight$create_data_set_output()
   config <- get_config()
   svc <- .quicksight$service(config, op)
@@ -5555,7 +5557,7 @@ quicksight_list_topics <- function(AwsAccountId, NextToken = NULL, MaxResults = 
     http_method = "GET",
     http_path = "/accounts/{AwsAccountId}/topics",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .quicksight$list_topics_input(AwsAccountId = AwsAccountId, NextToken = NextToken, MaxResults = MaxResults)
@@ -5667,7 +5669,7 @@ quicksight_list_vpc_connections <- function(AwsAccountId, NextToken = NULL, MaxR
     http_method = "GET",
     http_path = "/accounts/{AwsAccountId}/vpc-connections",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .quicksight$list_vpc_connections_input(AwsAccountId = AwsAccountId, NextToken = NextToken, MaxResults = MaxResults)
@@ -7034,11 +7036,13 @@ quicksight_update_dashboards_qa_configuration <- function(AwsAccountId, Dashboar
 #' @param ColumnLevelPermissionRules A set of one or more definitions of a ` ColumnLevelPermissionRule `.
 #' @param DataSetUsageConfiguration 
 #' @param DatasetParameters The parameter declarations of the dataset.
+#' @param PerformanceConfiguration The configuration for the performance optimization of the dataset that
+#' contains a `UniqueKey` configuration.
 #'
 #' @keywords internal
 #'
 #' @rdname quicksight_update_data_set
-quicksight_update_data_set <- function(AwsAccountId, DataSetId, Name, PhysicalTableMap, LogicalTableMap = NULL, ImportMode, ColumnGroups = NULL, FieldFolders = NULL, RowLevelPermissionDataSet = NULL, RowLevelPermissionTagConfiguration = NULL, ColumnLevelPermissionRules = NULL, DataSetUsageConfiguration = NULL, DatasetParameters = NULL) {
+quicksight_update_data_set <- function(AwsAccountId, DataSetId, Name, PhysicalTableMap, LogicalTableMap = NULL, ImportMode, ColumnGroups = NULL, FieldFolders = NULL, RowLevelPermissionDataSet = NULL, RowLevelPermissionTagConfiguration = NULL, ColumnLevelPermissionRules = NULL, DataSetUsageConfiguration = NULL, DatasetParameters = NULL, PerformanceConfiguration = NULL) {
   op <- new_operation(
     name = "UpdateDataSet",
     http_method = "PUT",
@@ -7047,7 +7051,7 @@ quicksight_update_data_set <- function(AwsAccountId, DataSetId, Name, PhysicalTa
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .quicksight$update_data_set_input(AwsAccountId = AwsAccountId, DataSetId = DataSetId, Name = Name, PhysicalTableMap = PhysicalTableMap, LogicalTableMap = LogicalTableMap, ImportMode = ImportMode, ColumnGroups = ColumnGroups, FieldFolders = FieldFolders, RowLevelPermissionDataSet = RowLevelPermissionDataSet, RowLevelPermissionTagConfiguration = RowLevelPermissionTagConfiguration, ColumnLevelPermissionRules = ColumnLevelPermissionRules, DataSetUsageConfiguration = DataSetUsageConfiguration, DatasetParameters = DatasetParameters)
+  input <- .quicksight$update_data_set_input(AwsAccountId = AwsAccountId, DataSetId = DataSetId, Name = Name, PhysicalTableMap = PhysicalTableMap, LogicalTableMap = LogicalTableMap, ImportMode = ImportMode, ColumnGroups = ColumnGroups, FieldFolders = FieldFolders, RowLevelPermissionDataSet = RowLevelPermissionDataSet, RowLevelPermissionTagConfiguration = RowLevelPermissionTagConfiguration, ColumnLevelPermissionRules = ColumnLevelPermissionRules, DataSetUsageConfiguration = DataSetUsageConfiguration, DatasetParameters = DatasetParameters, PerformanceConfiguration = PerformanceConfiguration)
   output <- .quicksight$update_data_set_output()
   config <- get_config()
   svc <- .quicksight$service(config, op)

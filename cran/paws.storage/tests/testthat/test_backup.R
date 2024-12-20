@@ -72,6 +72,14 @@ test_that("list_frameworks", {
   expect_error(svc$list_frameworks(MaxResults = 20), NA)
 })
 
+test_that("list_indexed_recovery_points", {
+  expect_error(svc$list_indexed_recovery_points(), NA)
+})
+
+test_that("list_indexed_recovery_points", {
+  expect_error(svc$list_indexed_recovery_points(MaxResults = 20), NA)
+})
+
 test_that("list_legal_holds", {
   expect_error(svc$list_legal_holds(), NA)
 })

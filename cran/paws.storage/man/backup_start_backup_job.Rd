@@ -13,7 +13,8 @@ backup_start_backup_job(
   CompleteWindowMinutes = NULL,
   Lifecycle = NULL,
   RecoveryPointTags = NULL,
-  BackupOptions = NULL
+  BackupOptions = NULL,
+  Index = NULL
 )
 }
 \arguments{
@@ -83,6 +84,22 @@ Valid values: Set to \code{"WindowsVSS":"enabled"} to enable the \code{WindowsVS
 backup option and create a Windows VSS backup. Set to
 \verb{"WindowsVSS""disabled"} to create a regular backup. The \code{WindowsVSS}
 option is not enabled by default.}
+
+\item{Index}{Include this parameter to enable index creation if your backup job has a
+resource type that supports backup indexes.
+
+Resource types that support backup indexes include:
+\itemize{
+\item \code{EBS} for Amazon Elastic Block Store
+\item \code{S3} for Amazon Simple Storage Service (Amazon S3)
+}
+
+Index can have 1 of 2 possible values, either \code{ENABLED} or \code{DISABLED}.
+
+To create a backup index for an eligible \code{ACTIVE} recovery point that
+does not yet have a backup index, set value to \code{ENABLED}.
+
+To delete a backup index, set value to \code{DISABLED}.}
 }
 \description{
 Starts an on-demand backup job for the specified resource.

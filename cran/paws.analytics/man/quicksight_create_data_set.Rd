@@ -20,7 +20,8 @@ quicksight_create_data_set(
   Tags = NULL,
   DataSetUsageConfiguration = NULL,
   DatasetParameters = NULL,
-  FolderArns = NULL
+  FolderArns = NULL,
+  PerformanceConfiguration = NULL
 )
 }
 \arguments{
@@ -64,6 +65,9 @@ assigned to the dataset.}
 
 \item{FolderArns}{When you create the dataset, Amazon QuickSight adds the dataset to these
 folders.}
+
+\item{PerformanceConfiguration}{The configuration for the performance optimization of the dataset that
+contains a \code{UniqueKey} configuration.}
 }
 \description{
 Creates a dataset. This operation doesn't support datasets that include uploaded files as a source.

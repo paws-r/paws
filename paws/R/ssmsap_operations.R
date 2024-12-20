@@ -1005,7 +1005,7 @@ ssmsap_put_resource_permission <- function(ActionType, SourceResourceArn, Resour
 #'
 #' @usage
 #' ssmsap_register_application(ApplicationId, ApplicationType, Instances,
-#'   SapInstanceNumber, Sid, Tags, Credentials, DatabaseArn)
+#'   SapInstanceNumber, Sid, Tags, Credentials, DatabaseArn, ComponentsInfo)
 #'
 #' @param ApplicationId &#91;required&#93; The ID of the application.
 #' @param ApplicationType &#91;required&#93; The type of the application.
@@ -1015,6 +1015,11 @@ ssmsap_put_resource_permission <- function(ActionType, SourceResourceArn, Resour
 #' @param Tags The tags to be attached to the SAP application.
 #' @param Credentials The credentials of the SAP application.
 #' @param DatabaseArn The Amazon Resource Name of the SAP HANA database.
+#' @param ComponentsInfo This is an optional parameter for component details to which the SAP
+#' ABAP application is attached, such as Web Dispatcher.
+#' 
+#' This is an array of ApplicationComponent objects. You may input 0 to 5
+#' items.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1062,7 +1067,14 @@ ssmsap_put_resource_permission <- function(ActionType, SourceResourceArn, Resour
 #'       SecretId = "string"
 #'     )
 #'   ),
-#'   DatabaseArn = "string"
+#'   DatabaseArn = "string",
+#'   ComponentsInfo = list(
+#'     list(
+#'       ComponentType = "HANA"|"HANA_NODE"|"ABAP"|"ASCS"|"DIALOG"|"WEBDISP"|"WD"|"ERS",
+#'       Sid = "string",
+#'       Ec2InstanceId = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -1071,7 +1083,7 @@ ssmsap_put_resource_permission <- function(ActionType, SourceResourceArn, Resour
 #' @rdname ssmsap_register_application
 #'
 #' @aliases ssmsap_register_application
-ssmsap_register_application <- function(ApplicationId, ApplicationType, Instances, SapInstanceNumber = NULL, Sid = NULL, Tags = NULL, Credentials = NULL, DatabaseArn = NULL) {
+ssmsap_register_application <- function(ApplicationId, ApplicationType, Instances, SapInstanceNumber = NULL, Sid = NULL, Tags = NULL, Credentials = NULL, DatabaseArn = NULL, ComponentsInfo = NULL) {
   op <- new_operation(
     name = "RegisterApplication",
     http_method = "POST",
@@ -1080,7 +1092,7 @@ ssmsap_register_application <- function(ApplicationId, ApplicationType, Instance
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ssmsap$register_application_input(ApplicationId = ApplicationId, ApplicationType = ApplicationType, Instances = Instances, SapInstanceNumber = SapInstanceNumber, Sid = Sid, Tags = Tags, Credentials = Credentials, DatabaseArn = DatabaseArn)
+  input <- .ssmsap$register_application_input(ApplicationId = ApplicationId, ApplicationType = ApplicationType, Instances = Instances, SapInstanceNumber = SapInstanceNumber, Sid = Sid, Tags = Tags, Credentials = Credentials, DatabaseArn = DatabaseArn, ComponentsInfo = ComponentsInfo)
   output <- .ssmsap$register_application_output()
   config <- get_config()
   svc <- .ssmsap$service(config, op)

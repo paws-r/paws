@@ -447,7 +447,7 @@ sagemakergeospatialcapabilities_search_raster_data_collection <- function(Arn, N
     http_method = "POST",
     http_path = "/search-raster-data-collection",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken"),
     stream_api = FALSE
   )
   input <- .sagemakergeospatialcapabilities$search_raster_data_collection_input(Arn = Arn, NextToken = NextToken, RasterDataCollectionQuery = RasterDataCollectionQuery)

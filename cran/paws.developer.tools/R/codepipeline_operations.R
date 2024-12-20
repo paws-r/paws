@@ -393,6 +393,8 @@ codepipeline_enable_stage_transition <- function(pipelineName, stageName, transi
 #' -   `Approval`
 #' 
 #' -   `Invoke`
+#' 
+#' -   `Compute`
 #' @param owner &#91;required&#93; The creator of an action type that was created with any supported
 #' integration model. There are two valid values: `AWS` and `ThirdParty`.
 #' @param provider &#91;required&#93; The provider of the action type being called. The provider name is
@@ -785,7 +787,7 @@ codepipeline_list_rule_executions <- function(pipelineName, filter = NULL, maxRe
 #' Lists the rules for the condition
 #'
 #' @description
-#' Lists the rules for the condition.
+#' Lists the rules for the condition. For more information about conditions, see [Stage conditions](https://docs.aws.amazon.com/codepipeline/latest/userguide/stage-conditions.html). For more information about rules, see the [CodePipeline rule reference](https://docs.aws.amazon.com/codepipeline/latest/userguide/rule-reference.html).
 #'
 #' See [https://www.paws-r-sdk.com/docs/codepipeline_list_rule_types/](https://www.paws-r-sdk.com/docs/codepipeline_list_rule_types/) for full documentation.
 #'

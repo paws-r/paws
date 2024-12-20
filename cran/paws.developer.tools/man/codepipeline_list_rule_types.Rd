@@ -12,7 +12,7 @@ codepipeline_list_rule_types(ruleOwnerFilter = NULL, regionFilter = NULL)
 \item{regionFilter}{The rule Region to filter on.}
 }
 \description{
-Lists the rules for the condition.
+Lists the rules for the condition. For more information about conditions, see \href{https://docs.aws.amazon.com/codepipeline/latest/userguide/stage-conditions.html}{Stage conditions}. For more information about rules, see the \href{https://docs.aws.amazon.com/codepipeline/latest/userguide/rule-reference.html}{CodePipeline rule reference}.
 
 See \url{https://www.paws-r-sdk.com/docs/codepipeline_list_rule_types/} for full documentation.
 }

@@ -434,7 +434,7 @@ connectcases_get_case <- function(caseId, domainId, fields, nextToken = NULL) {
     http_method = "POST",
     http_path = "/domains/{domainId}/cases/{caseId}",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "nextToken", output_token = "nextToken"),
     stream_api = FALSE
   )
   input <- .connectcases$get_case_input(caseId = caseId, domainId = domainId, fields = fields, nextToken = nextToken)
@@ -472,7 +472,7 @@ connectcases_get_case_audit_events <- function(caseId, domainId, maxResults = NU
     http_method = "POST",
     http_path = "/domains/{domainId}/cases/{caseId}/audit-history",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
     stream_api = FALSE
   )
   input <- .connectcases$get_case_audit_events_input(caseId = caseId, domainId = domainId, maxResults = maxResults, nextToken = nextToken)
@@ -634,7 +634,7 @@ connectcases_list_cases_for_contact <- function(contactArn, domainId, maxResults
     http_method = "POST",
     http_path = "/domains/{domainId}/list-cases-for-contact",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
     stream_api = FALSE
   )
   input <- .connectcases$list_cases_for_contact_input(contactArn = contactArn, domainId = domainId, maxResults = maxResults, nextToken = nextToken)
@@ -668,7 +668,7 @@ connectcases_list_domains <- function(maxResults = NULL, nextToken = NULL) {
     http_method = "POST",
     http_path = "/domains-list",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
     stream_api = FALSE
   )
   input <- .connectcases$list_domains_input(maxResults = maxResults, nextToken = nextToken)
@@ -706,7 +706,7 @@ connectcases_list_field_options <- function(domainId, fieldId, maxResults = NULL
     http_method = "POST",
     http_path = "/domains/{domainId}/fields/{fieldId}/options-list",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
     stream_api = FALSE
   )
   input <- .connectcases$list_field_options_input(domainId = domainId, fieldId = fieldId, maxResults = maxResults, nextToken = nextToken, values = values)
@@ -741,7 +741,7 @@ connectcases_list_fields <- function(domainId, maxResults = NULL, nextToken = NU
     http_method = "POST",
     http_path = "/domains/{domainId}/fields-list",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
     stream_api = FALSE
   )
   input <- .connectcases$list_fields_input(domainId = domainId, maxResults = maxResults, nextToken = nextToken)
@@ -776,7 +776,7 @@ connectcases_list_layouts <- function(domainId, maxResults = NULL, nextToken = N
     http_method = "POST",
     http_path = "/domains/{domainId}/layouts-list",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
     stream_api = FALSE
   )
   input <- .connectcases$list_layouts_input(domainId = domainId, maxResults = maxResults, nextToken = nextToken)
@@ -843,7 +843,7 @@ connectcases_list_templates <- function(domainId, maxResults = NULL, nextToken =
     http_method = "POST",
     http_path = "/domains/{domainId}/templates-list",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
     stream_api = FALSE
   )
   input <- .connectcases$list_templates_input(domainId = domainId, maxResults = maxResults, nextToken = nextToken, status = status)

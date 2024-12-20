@@ -1734,7 +1734,7 @@ ivs_list_playback_restriction_policies <- function(maxResults = NULL, nextToken 
     http_method = "POST",
     http_path = "/ListPlaybackRestrictionPolicies",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
     stream_api = FALSE
   )
   input <- .ivs$list_playback_restriction_policies_input(maxResults = maxResults, nextToken = nextToken)
@@ -1937,7 +1937,7 @@ ivs_list_stream_sessions <- function(channelArn, maxResults = NULL, nextToken = 
     http_method = "POST",
     http_path = "/ListStreamSessions",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
     stream_api = FALSE
   )
   input <- .ivs$list_stream_sessions_input(channelArn = channelArn, maxResults = maxResults, nextToken = nextToken)

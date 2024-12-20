@@ -936,7 +936,7 @@ xray_get_insight_events <- function(InsightId, MaxResults = NULL, NextToken = NU
     http_method = "POST",
     http_path = "/InsightEvents",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
     stream_api = FALSE
   )
   input <- .xray$get_insight_events_input(InsightId = InsightId, MaxResults = MaxResults, NextToken = NextToken)
@@ -1156,7 +1156,7 @@ xray_get_insight_summaries <- function(States = NULL, GroupARN = NULL, GroupName
     http_method = "POST",
     http_path = "/InsightSummaries",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
     stream_api = FALSE
   )
   input <- .xray$get_insight_summaries_input(States = States, GroupARN = GroupARN, GroupName = GroupName, StartTime = StartTime, EndTime = EndTime, MaxResults = MaxResults, NextToken = NextToken)

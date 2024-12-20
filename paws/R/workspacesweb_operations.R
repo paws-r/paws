@@ -2805,7 +2805,7 @@ workspacesweb_list_browser_settings <- function(maxResults = NULL, nextToken = N
     http_method = "GET",
     http_path = "/browserSettings",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
     stream_api = FALSE
   )
   input <- .workspacesweb$list_browser_settings_input(maxResults = maxResults, nextToken = nextToken)
@@ -2928,7 +2928,7 @@ workspacesweb_list_identity_providers <- function(maxResults = NULL, nextToken =
     http_method = "GET",
     http_path = "/portals/{portalArn+}/identityProviders",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
     stream_api = FALSE
   )
   input <- .workspacesweb$list_identity_providers_input(maxResults = maxResults, nextToken = nextToken, portalArn = portalArn)
@@ -2990,7 +2990,7 @@ workspacesweb_list_ip_access_settings <- function(maxResults = NULL, nextToken =
     http_method = "GET",
     http_path = "/ipAccessSettings",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
     stream_api = FALSE
   )
   input <- .workspacesweb$list_ip_access_settings_input(maxResults = maxResults, nextToken = nextToken)
@@ -3048,7 +3048,7 @@ workspacesweb_list_network_settings <- function(maxResults = NULL, nextToken = N
     http_method = "GET",
     http_path = "/networkSettings",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
     stream_api = FALSE
   )
   input <- .workspacesweb$list_network_settings_input(maxResults = maxResults, nextToken = nextToken)
@@ -3123,7 +3123,7 @@ workspacesweb_list_portals <- function(maxResults = NULL, nextToken = NULL) {
     http_method = "GET",
     http_path = "/portals",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
     stream_api = FALSE
   )
   input <- .workspacesweb$list_portals_input(maxResults = maxResults, nextToken = nextToken)
@@ -3325,7 +3325,7 @@ workspacesweb_list_trust_store_certificates <- function(maxResults = NULL, nextT
     http_method = "GET",
     http_path = "/trustStores/{trustStoreArn+}/certificates",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
     stream_api = FALSE
   )
   input <- .workspacesweb$list_trust_store_certificates_input(maxResults = maxResults, nextToken = nextToken, trustStoreArn = trustStoreArn)
@@ -3382,7 +3382,7 @@ workspacesweb_list_trust_stores <- function(maxResults = NULL, nextToken = NULL)
     http_method = "GET",
     http_path = "/trustStores",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
     stream_api = FALSE
   )
   input <- .workspacesweb$list_trust_stores_input(maxResults = maxResults, nextToken = nextToken)
@@ -3440,7 +3440,7 @@ workspacesweb_list_user_access_logging_settings <- function(maxResults = NULL, n
     http_method = "GET",
     http_path = "/userAccessLoggingSettings",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
     stream_api = FALSE
   )
   input <- .workspacesweb$list_user_access_logging_settings_input(maxResults = maxResults, nextToken = nextToken)
@@ -3521,7 +3521,7 @@ workspacesweb_list_user_settings <- function(maxResults = NULL, nextToken = NULL
     http_method = "GET",
     http_path = "/userSettings",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
     stream_api = FALSE
   )
   input <- .workspacesweb$list_user_settings_input(maxResults = maxResults, nextToken = nextToken)

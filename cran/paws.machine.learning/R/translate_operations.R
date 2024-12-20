@@ -280,7 +280,7 @@ translate_list_languages <- function(DisplayLanguageCode = NULL, NextToken = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
     stream_api = FALSE
   )
   input <- .translate$list_languages_input(DisplayLanguageCode = DisplayLanguageCode, NextToken = NextToken, MaxResults = MaxResults)
@@ -313,7 +313,7 @@ translate_list_parallel_data <- function(NextToken = NULL, MaxResults = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
     stream_api = FALSE
   )
   input <- .translate$list_parallel_data_input(NextToken = NextToken, MaxResults = MaxResults)
@@ -414,7 +414,7 @@ translate_list_text_translation_jobs <- function(Filter = NULL, NextToken = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
     stream_api = FALSE
   )
   input <- .translate$list_text_translation_jobs_input(Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)

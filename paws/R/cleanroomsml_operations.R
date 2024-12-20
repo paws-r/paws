@@ -1478,6 +1478,12 @@ cleanroomsml_delete_training_dataset <- function(trainingDatasetArn) {
 #'       parameters = list(
 #'         "string"
 #'       )
+#'     ),
+#'     sqlComputeConfiguration = list(
+#'       worker = list(
+#'         type = "CR.1X"|"CR.4X",
+#'         number = 123
+#'       )
 #'     )
 #'   ),
 #'   includeSeedInOutput = TRUE|FALSE,
@@ -4088,6 +4094,12 @@ cleanroomsml_start_audience_export_job <- function(name, audienceGenerationJobAr
 #'       parameters = list(
 #'         "string"
 #'       )
+#'     ),
+#'     sqlComputeConfiguration = list(
+#'       worker = list(
+#'         type = "CR.1X"|"CR.4X",
+#'         number = 123
+#'       )
 #'     )
 #'   ),
 #'   includeSeedInOutput = TRUE|FALSE,
@@ -4206,7 +4218,8 @@ cleanroomsml_start_trained_model_export_job <- function(name, trainedModelArn, m
 #' @param resourceConfig &#91;required&#93; Defines the resource configuration for the trained model inference job.
 #' @param outputConfiguration &#91;required&#93; Defines the output configuration information for the trained model
 #' inference job.
-#' @param dataSource &#91;required&#93; Defines he data source that is used for the trained model inference job.
+#' @param dataSource &#91;required&#93; Defines the data source that is used for the trained model inference
+#' job.
 #' @param description The description of the trained model inference job.
 #' @param containerExecutionParameters The execution parameters for the container.
 #' @param environment The environment variables to set in the Docker container.

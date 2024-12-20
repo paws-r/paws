@@ -1180,7 +1180,7 @@ autoscaling_describe_instance_refreshes <- function(AutoScalingGroupName, Instan
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken"),
     stream_api = FALSE
   )
   input <- .autoscaling$describe_instance_refreshes_input(AutoScalingGroupName = AutoScalingGroupName, InstanceRefreshIds = InstanceRefreshIds, NextToken = NextToken, MaxRecords = MaxRecords)
@@ -1699,7 +1699,7 @@ autoscaling_describe_traffic_sources <- function(AutoScalingGroupName, TrafficSo
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken"),
     stream_api = FALSE
   )
   input <- .autoscaling$describe_traffic_sources_input(AutoScalingGroupName = AutoScalingGroupName, TrafficSourceType = TrafficSourceType, NextToken = NextToken, MaxRecords = MaxRecords)

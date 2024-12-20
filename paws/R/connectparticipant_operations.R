@@ -3,6 +3,57 @@
 #' @include connectparticipant_service.R
 NULL
 
+#' Cancels the authentication session
+#'
+#' @description
+#' Cancels the authentication session. The opted out branch of the
+#' Authenticate Customer flow block will be taken.
+#' 
+#' The current supported channel is chat. This API is not supported for
+#' Apple Messages for Business, WhatsApp, or SMS chats.
+#'
+#' @usage
+#' connectparticipant_cancel_participant_authentication(SessionId,
+#'   ConnectionToken)
+#'
+#' @param SessionId &#91;required&#93; The `sessionId` provided in the `authenticationInitiated` event.
+#' @param ConnectionToken &#91;required&#93; The authentication token associated with the participant's connection.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$cancel_participant_authentication(
+#'   SessionId = "string",
+#'   ConnectionToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname connectparticipant_cancel_participant_authentication
+#'
+#' @aliases connectparticipant_cancel_participant_authentication
+connectparticipant_cancel_participant_authentication <- function(SessionId, ConnectionToken) {
+  op <- new_operation(
+    name = "CancelParticipantAuthentication",
+    http_method = "POST",
+    http_path = "/participant/cancel-authentication",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .connectparticipant$cancel_participant_authentication_input(SessionId = SessionId, ConnectionToken = ConnectionToken)
+  output <- .connectparticipant$cancel_participant_authentication_output()
+  config <- get_config()
+  svc <- .connectparticipant$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connectparticipant$operations$cancel_participant_authentication <- connectparticipant_cancel_participant_authentication
+
 #' Allows you to confirm that the attachment has been uploaded using the
 #' pre-signed URL provided in StartAttachmentUpload API
 #'
@@ -11,6 +62,9 @@ NULL
 #' pre-signed URL provided in StartAttachmentUpload API. A conflict
 #' exception is thrown when an attachment with that identifier is already
 #' being uploaded.
+#' 
+#' For security recommendations, see [Amazon Connect Chat security best
+#' practices](https://docs.aws.amazon.com/connect/latest/adminguide/security-best-practices.html#bp-security-chat).
 #' 
 #' `ConnectionToken` is used for invoking this API instead of
 #' `ParticipantToken`.
@@ -73,6 +127,9 @@ connectparticipant_complete_attachment_upload <- function(AttachmentIds, ClientT
 #'
 #' @description
 #' Creates the participant's connection.
+#' 
+#' For security recommendations, see [Amazon Connect Chat security best
+#' practices](https://docs.aws.amazon.com/connect/latest/adminguide/security-best-practices.html#bp-security-chat).
 #' 
 #' `ParticipantToken` is used for invoking this API instead of
 #' `ConnectionToken`.
@@ -182,6 +239,9 @@ connectparticipant_create_participant_connection <- function(Type = NULL, Partic
 #'
 #' @description
 #' Retrieves the view for the specified view token.
+#' 
+#' For security recommendations, see [Amazon Connect Chat security best
+#' practices](https://docs.aws.amazon.com/connect/latest/adminguide/security-best-practices.html#bp-security-chat).
 #'
 #' @usage
 #' connectparticipant_describe_view(ViewToken, ConnectionToken)
@@ -247,6 +307,9 @@ connectparticipant_describe_view <- function(ViewToken, ConnectionToken) {
 #' @description
 #' Disconnects a participant.
 #' 
+#' For security recommendations, see [Amazon Connect Chat security best
+#' practices](https://docs.aws.amazon.com/connect/latest/adminguide/security-best-practices.html#bp-security-chat).
+#' 
 #' `ConnectionToken` is used for invoking this API instead of
 #' `ParticipantToken`.
 #' 
@@ -305,6 +368,9 @@ connectparticipant_disconnect_participant <- function(ClientToken = NULL, Connec
 #' Provides a pre-signed URL for download of a completed attachment. This
 #' is an asynchronous API for use with active contacts.
 #' 
+#' For security recommendations, see [Amazon Connect Chat security best
+#' practices](https://docs.aws.amazon.com/connect/latest/adminguide/security-best-practices.html#bp-security-chat).
+#' 
 #' `ConnectionToken` is used for invoking this API instead of
 #' `ParticipantToken`.
 #' 
@@ -313,17 +379,22 @@ connectparticipant_disconnect_participant <- function(ClientToken = NULL, Connec
 #' authentication](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html).
 #'
 #' @usage
-#' connectparticipant_get_attachment(AttachmentId, ConnectionToken)
+#' connectparticipant_get_attachment(AttachmentId, ConnectionToken,
+#'   UrlExpiryInSeconds)
 #'
 #' @param AttachmentId &#91;required&#93; A unique identifier for the attachment.
 #' @param ConnectionToken &#91;required&#93; The authentication token associated with the participant's connection.
+#' @param UrlExpiryInSeconds The expiration time of the URL in ISO timestamp. It's specified in ISO
+#' 8601 format: yyyy-MM-ddThh:mm:ss.SSSZ. For example,
+#' 2019-11-08T02:41:28.172Z.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
 #'   Url = "string",
-#'   UrlExpiry = "string"
+#'   UrlExpiry = "string",
+#'   AttachmentSizeInBytes = 123
 #' )
 #' ```
 #'
@@ -331,7 +402,8 @@ connectparticipant_disconnect_participant <- function(ClientToken = NULL, Connec
 #' ```
 #' svc$get_attachment(
 #'   AttachmentId = "string",
-#'   ConnectionToken = "string"
+#'   ConnectionToken = "string",
+#'   UrlExpiryInSeconds = 123
 #' )
 #' ```
 #'
@@ -340,7 +412,7 @@ connectparticipant_disconnect_participant <- function(ClientToken = NULL, Connec
 #' @rdname connectparticipant_get_attachment
 #'
 #' @aliases connectparticipant_get_attachment
-connectparticipant_get_attachment <- function(AttachmentId, ConnectionToken) {
+connectparticipant_get_attachment <- function(AttachmentId, ConnectionToken, UrlExpiryInSeconds = NULL) {
   op <- new_operation(
     name = "GetAttachment",
     http_method = "POST",
@@ -349,7 +421,7 @@ connectparticipant_get_attachment <- function(AttachmentId, ConnectionToken) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .connectparticipant$get_attachment_input(AttachmentId = AttachmentId, ConnectionToken = ConnectionToken)
+  input <- .connectparticipant$get_attachment_input(AttachmentId = AttachmentId, ConnectionToken = ConnectionToken, UrlExpiryInSeconds = UrlExpiryInSeconds)
   output <- .connectparticipant$get_attachment_output()
   config <- get_config()
   svc <- .connectparticipant$service(config, op)
@@ -359,6 +431,72 @@ connectparticipant_get_attachment <- function(AttachmentId, ConnectionToken) {
 }
 .connectparticipant$operations$get_attachment <- connectparticipant_get_attachment
 
+#' Retrieves the AuthenticationUrl for the current authentication session
+#' for the AuthenticateCustomer flow block
+#'
+#' @description
+#' Retrieves the AuthenticationUrl for the current authentication session
+#' for the AuthenticateCustomer flow block.
+#' 
+#' For security recommendations, see [Amazon Connect Chat security best
+#' practices](https://docs.aws.amazon.com/connect/latest/adminguide/security-best-practices.html#bp-security-chat).
+#' 
+#' -   This API can only be called within one minute of receiving the
+#'     authenticationInitiated event.
+#' 
+#' -   The current supported channel is chat. This API is not supported for
+#'     Apple Messages for Business, WhatsApp, or SMS chats.
+#'
+#' @usage
+#' connectparticipant_get_authentication_url(SessionId, RedirectUri,
+#'   ConnectionToken)
+#'
+#' @param SessionId &#91;required&#93; The sessionId provided in the authenticationInitiated event.
+#' @param RedirectUri &#91;required&#93; The URL where the customer will be redirected after Amazon Cognito
+#' authorizes the user.
+#' @param ConnectionToken &#91;required&#93; The authentication token associated with the participant's connection.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AuthenticationUrl = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_authentication_url(
+#'   SessionId = "string",
+#'   RedirectUri = "string",
+#'   ConnectionToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname connectparticipant_get_authentication_url
+#'
+#' @aliases connectparticipant_get_authentication_url
+connectparticipant_get_authentication_url <- function(SessionId, RedirectUri, ConnectionToken) {
+  op <- new_operation(
+    name = "GetAuthenticationUrl",
+    http_method = "POST",
+    http_path = "/participant/authentication-url",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .connectparticipant$get_authentication_url_input(SessionId = SessionId, RedirectUri = RedirectUri, ConnectionToken = ConnectionToken)
+  output <- .connectparticipant$get_authentication_url_output()
+  config <- get_config()
+  svc <- .connectparticipant$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connectparticipant$operations$get_authentication_url <- connectparticipant_get_authentication_url
+
 #' Retrieves a transcript of the session, including details about any
 #' attachments
 #'
@@ -367,6 +505,9 @@ connectparticipant_get_attachment <- function(AttachmentId, ConnectionToken) {
 #' attachments. For information about accessing past chat contact
 #' transcripts for a persistent chat, see [Enable persistent
 #' chat](https://docs.aws.amazon.com/connect/latest/adminguide/chat-persistence.html).
+#' 
+#' For security recommendations, see [Amazon Connect Chat security best
+#' practices](https://docs.aws.amazon.com/connect/latest/adminguide/security-best-practices.html#bp-security-chat).
 #' 
 #' If you have a process that consumes events in the transcript of an chat
 #' that has ended, note that chat transcripts contain the following event
@@ -474,7 +615,7 @@ connectparticipant_get_transcript <- function(ContactId = NULL, MaxResults = NUL
     http_method = "POST",
     http_path = "/participant/transcript",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .connectparticipant$get_transcript_input(ContactId = ContactId, MaxResults = MaxResults, NextToken = NextToken, ScanDirection = ScanDirection, SortOrder = SortOrder, StartPosition = StartPosition, ConnectionToken = ConnectionToken)
@@ -500,6 +641,9 @@ connectparticipant_get_transcript <- function(ContactId = NULL, MaxResults = NUL
 #' than two active participants in the chat. Using the SendEvent API for
 #' message receipts when a supervisor is barged-in will result in a
 #' conflict exception.
+#' 
+#' For security recommendations, see [Amazon Connect Chat security best
+#' practices](https://docs.aws.amazon.com/connect/latest/adminguide/security-best-practices.html#bp-security-chat).
 #' 
 #' `ConnectionToken` is used for invoking this API instead of
 #' `ParticipantToken`.
@@ -583,6 +727,9 @@ connectparticipant_send_event <- function(ContentType, Content = NULL, ClientTok
 #' @description
 #' Sends a message.
 #' 
+#' For security recommendations, see [Amazon Connect Chat security best
+#' practices](https://docs.aws.amazon.com/connect/latest/adminguide/security-best-practices.html#bp-security-chat).
+#' 
 #' `ConnectionToken` is used for invoking this API instead of
 #' `ParticipantToken`.
 #' 
@@ -664,6 +811,9 @@ connectparticipant_send_message <- function(ContentType, Content, ClientToken = 
 #' @description
 #' Provides a pre-signed Amazon S3 URL in response for uploading the file
 #' directly to S3.
+#' 
+#' For security recommendations, see [Amazon Connect Chat security best
+#' practices](https://docs.aws.amazon.com/connect/latest/adminguide/security-best-practices.html#bp-security-chat).
 #' 
 #' `ConnectionToken` is used for invoking this API instead of
 #' `ParticipantToken`.

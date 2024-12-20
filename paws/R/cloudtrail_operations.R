@@ -2137,7 +2137,7 @@ cloudtrail_get_query_results <- function(EventDataStore = NULL, QueryId, NextTok
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken"),
     stream_api = FALSE
   )
   input <- .cloudtrail$get_query_results_input(EventDataStore = EventDataStore, QueryId = QueryId, NextToken = NextToken, MaxQueryResults = MaxQueryResults, EventDataStoreOwnerAccountId = EventDataStoreOwnerAccountId)
@@ -2418,7 +2418,7 @@ cloudtrail_list_channels <- function(MaxResults = NULL, NextToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
     stream_api = FALSE
   )
   input <- .cloudtrail$list_channels_input(MaxResults = MaxResults, NextToken = NextToken)
@@ -2579,7 +2579,7 @@ cloudtrail_list_event_data_stores <- function(NextToken = NULL, MaxResults = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
     stream_api = FALSE
   )
   input <- .cloudtrail$list_event_data_stores_input(NextToken = NextToken, MaxResults = MaxResults)
@@ -2852,7 +2852,7 @@ cloudtrail_list_insights_metric_data <- function(EventSource, EventName, Insight
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
     stream_api = FALSE
   )
   input <- .cloudtrail$list_insights_metric_data_input(EventSource = EventSource, EventName = EventName, InsightType = InsightType, ErrorCode = ErrorCode, StartTime = StartTime, EndTime = EndTime, Period = Period, DataType = DataType, MaxResults = MaxResults, NextToken = NextToken)
@@ -3019,7 +3019,7 @@ cloudtrail_list_queries <- function(EventDataStore, NextToken = NULL, MaxResults
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
     stream_api = FALSE
   )
   input <- .cloudtrail$list_queries_input(EventDataStore = EventDataStore, NextToken = NextToken, MaxResults = MaxResults, StartTime = StartTime, EndTime = EndTime, QueryStatus = QueryStatus)

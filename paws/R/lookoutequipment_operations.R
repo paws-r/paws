@@ -1949,7 +1949,7 @@ lookoutequipment_list_data_ingestion_jobs <- function(DatasetName = NULL, NextTo
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .lookoutequipment$list_data_ingestion_jobs_input(DatasetName = DatasetName, NextToken = NextToken, MaxResults = MaxResults, Status = Status)
@@ -2016,7 +2016,7 @@ lookoutequipment_list_datasets <- function(NextToken = NULL, MaxResults = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .lookoutequipment$list_datasets_input(NextToken = NextToken, MaxResults = MaxResults, DatasetNameBeginsWith = DatasetNameBeginsWith)
@@ -2097,7 +2097,7 @@ lookoutequipment_list_inference_events <- function(NextToken = NULL, MaxResults 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .lookoutequipment$list_inference_events_input(NextToken = NextToken, MaxResults = MaxResults, InferenceSchedulerName = InferenceSchedulerName, IntervalStartTime = IntervalStartTime, IntervalEndTime = IntervalEndTime)
@@ -2209,7 +2209,7 @@ lookoutequipment_list_inference_executions <- function(NextToken = NULL, MaxResu
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .lookoutequipment$list_inference_executions_input(NextToken = NextToken, MaxResults = MaxResults, InferenceSchedulerName = InferenceSchedulerName, DataStartTimeAfter = DataStartTimeAfter, DataEndTimeBefore = DataEndTimeBefore, Status = Status)
@@ -2283,7 +2283,7 @@ lookoutequipment_list_inference_schedulers <- function(NextToken = NULL, MaxResu
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .lookoutequipment$list_inference_schedulers_input(NextToken = NextToken, MaxResults = MaxResults, InferenceSchedulerNameBeginsWith = InferenceSchedulerNameBeginsWith, ModelName = ModelName, Status = Status)
@@ -2350,7 +2350,7 @@ lookoutequipment_list_label_groups <- function(LabelGroupNameBeginsWith = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .lookoutequipment$list_label_groups_input(LabelGroupNameBeginsWith = LabelGroupNameBeginsWith, NextToken = NextToken, MaxResults = MaxResults)
@@ -2437,7 +2437,7 @@ lookoutequipment_list_labels <- function(LabelGroupName, IntervalStartTime = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .lookoutequipment$list_labels_input(LabelGroupName = LabelGroupName, IntervalStartTime = IntervalStartTime, IntervalEndTime = IntervalEndTime, FaultCode = FaultCode, Equipment = Equipment, NextToken = NextToken, MaxResults = MaxResults)
@@ -2531,7 +2531,7 @@ lookoutequipment_list_model_versions <- function(ModelName, NextToken = NULL, Ma
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .lookoutequipment$list_model_versions_input(ModelName = ModelName, NextToken = NextToken, MaxResults = MaxResults, Status = Status, SourceType = SourceType, CreatedAtEndTime = CreatedAtEndTime, CreatedAtStartTime = CreatedAtStartTime, MaxModelVersion = MaxModelVersion, MinModelVersion = MinModelVersion)
@@ -2624,7 +2624,7 @@ lookoutequipment_list_models <- function(NextToken = NULL, MaxResults = NULL, St
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .lookoutequipment$list_models_input(NextToken = NextToken, MaxResults = MaxResults, Status = Status, ModelNameBeginsWith = ModelNameBeginsWith, DatasetNameBeginsWith = DatasetNameBeginsWith)
@@ -2698,7 +2698,7 @@ lookoutequipment_list_retraining_schedulers <- function(ModelNameBeginsWith = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .lookoutequipment$list_retraining_schedulers_input(ModelNameBeginsWith = ModelNameBeginsWith, Status = Status, NextToken = NextToken, MaxResults = MaxResults)
@@ -2806,7 +2806,7 @@ lookoutequipment_list_sensor_statistics <- function(DatasetName, IngestionJobId 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .lookoutequipment$list_sensor_statistics_input(DatasetName = DatasetName, IngestionJobId = IngestionJobId, MaxResults = MaxResults, NextToken = NextToken)

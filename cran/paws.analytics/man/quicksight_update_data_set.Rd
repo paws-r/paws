@@ -17,7 +17,8 @@ quicksight_update_data_set(
   RowLevelPermissionTagConfiguration = NULL,
   ColumnLevelPermissionRules = NULL,
   DataSetUsageConfiguration = NULL,
-  DatasetParameters = NULL
+  DatasetParameters = NULL,
+  PerformanceConfiguration = NULL
 )
 }
 \arguments{
@@ -52,6 +53,9 @@ only.}
 \item{DataSetUsageConfiguration}{}
 
 \item{DatasetParameters}{The parameter declarations of the dataset.}
+
+\item{PerformanceConfiguration}{The configuration for the performance optimization of the dataset that
+contains a \code{UniqueKey} configuration.}
 }
 \description{
 Updates a dataset. This operation doesn't support datasets that include uploaded files as a source. Partial updates are not supported by this operation.

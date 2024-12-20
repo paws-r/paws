@@ -369,6 +369,9 @@ codepipeline_create_custom_action_type <- function(category, provider, version, 
 #'                   configuration = list(
 #'                     "string"
 #'                   ),
+#'                   commands = list(
+#'                     "string"
+#'                   ),
 #'                   inputArtifacts = list(
 #'                     list(
 #'                       name = "string"
@@ -398,6 +401,9 @@ codepipeline_create_custom_action_type <- function(category, provider, version, 
 #'                   configuration = list(
 #'                     "string"
 #'                   ),
+#'                   commands = list(
+#'                     "string"
+#'                   ),
 #'                   inputArtifacts = list(
 #'                     list(
 #'                       name = "string"
@@ -425,6 +431,9 @@ codepipeline_create_custom_action_type <- function(category, provider, version, 
 #'                     version = "string"
 #'                   ),
 #'                   configuration = list(
+#'                     "string"
+#'                   ),
+#'                   commands = list(
 #'                     "string"
 #'                   ),
 #'                   inputArtifacts = list(
@@ -612,6 +621,9 @@ codepipeline_create_custom_action_type <- function(category, provider, version, 
 #'                   configuration = list(
 #'                     "string"
 #'                   ),
+#'                   commands = list(
+#'                     "string"
+#'                   ),
 #'                   inputArtifacts = list(
 #'                     list(
 #'                       name = "string"
@@ -641,6 +653,9 @@ codepipeline_create_custom_action_type <- function(category, provider, version, 
 #'                   configuration = list(
 #'                     "string"
 #'                   ),
+#'                   commands = list(
+#'                     "string"
+#'                   ),
 #'                   inputArtifacts = list(
 #'                     list(
 #'                       name = "string"
@@ -668,6 +683,9 @@ codepipeline_create_custom_action_type <- function(category, provider, version, 
 #'                     version = "string"
 #'                   ),
 #'                   configuration = list(
+#'                     "string"
+#'                   ),
+#'                   commands = list(
 #'                     "string"
 #'                   ),
 #'                   inputArtifacts = list(
@@ -1128,6 +1146,8 @@ codepipeline_enable_stage_transition <- function(pipelineName, stageName, transi
 #' -   `Approval`
 #' 
 #' -   `Invoke`
+#' 
+#' -   `Compute`
 #' @param owner &#91;required&#93; The creator of an action type that was created with any supported
 #' integration model. There are two valid values: `AWS` and `ThirdParty`.
 #' @param provider &#91;required&#93; The provider of the action type being called. The provider name is
@@ -1457,6 +1477,9 @@ codepipeline_get_job_details <- function(jobId) {
 #'                   configuration = list(
 #'                     "string"
 #'                   ),
+#'                   commands = list(
+#'                     "string"
+#'                   ),
 #'                   inputArtifacts = list(
 #'                     list(
 #'                       name = "string"
@@ -1486,6 +1509,9 @@ codepipeline_get_job_details <- function(jobId) {
 #'                   configuration = list(
 #'                     "string"
 #'                   ),
+#'                   commands = list(
+#'                     "string"
+#'                   ),
 #'                   inputArtifacts = list(
 #'                     list(
 #'                       name = "string"
@@ -1513,6 +1539,9 @@ codepipeline_get_job_details <- function(jobId) {
 #'                     version = "string"
 #'                   ),
 #'                   configuration = list(
+#'                     "string"
+#'                   ),
+#'                   commands = list(
 #'                     "string"
 #'                   ),
 #'                   inputArtifacts = list(
@@ -2657,7 +2686,11 @@ codepipeline_list_rule_executions <- function(pipelineName, filter = NULL, maxRe
 #' Lists the rules for the condition
 #'
 #' @description
-#' Lists the rules for the condition.
+#' Lists the rules for the condition. For more information about
+#' conditions, see [Stage
+#' conditions](https://docs.aws.amazon.com/codepipeline/latest/userguide/stage-conditions.html).
+#' For more information about rules, see the [CodePipeline rule
+#' reference](https://docs.aws.amazon.com/codepipeline/latest/userguide/rule-reference.html).
 #'
 #' @usage
 #' codepipeline_list_rule_types(ruleOwnerFilter, regionFilter)
@@ -4299,6 +4332,9 @@ codepipeline_update_action_type <- function(actionType) {
 #'                   configuration = list(
 #'                     "string"
 #'                   ),
+#'                   commands = list(
+#'                     "string"
+#'                   ),
 #'                   inputArtifacts = list(
 #'                     list(
 #'                       name = "string"
@@ -4328,6 +4364,9 @@ codepipeline_update_action_type <- function(actionType) {
 #'                   configuration = list(
 #'                     "string"
 #'                   ),
+#'                   commands = list(
+#'                     "string"
+#'                   ),
 #'                   inputArtifacts = list(
 #'                     list(
 #'                       name = "string"
@@ -4355,6 +4394,9 @@ codepipeline_update_action_type <- function(actionType) {
 #'                     version = "string"
 #'                   ),
 #'                   configuration = list(
+#'                     "string"
+#'                   ),
+#'                   commands = list(
 #'                     "string"
 #'                   ),
 #'                   inputArtifacts = list(
@@ -4536,6 +4578,9 @@ codepipeline_update_action_type <- function(actionType) {
 #'                   configuration = list(
 #'                     "string"
 #'                   ),
+#'                   commands = list(
+#'                     "string"
+#'                   ),
 #'                   inputArtifacts = list(
 #'                     list(
 #'                       name = "string"
@@ -4565,6 +4610,9 @@ codepipeline_update_action_type <- function(actionType) {
 #'                   configuration = list(
 #'                     "string"
 #'                   ),
+#'                   commands = list(
+#'                     "string"
+#'                   ),
 #'                   inputArtifacts = list(
 #'                     list(
 #'                       name = "string"
@@ -4592,6 +4640,9 @@ codepipeline_update_action_type <- function(actionType) {
 #'                     version = "string"
 #'                   ),
 #'                   configuration = list(
+#'                     "string"
+#'                   ),
+#'                   commands = list(
 #'                     "string"
 #'                   ),
 #'                   inputArtifacts = list(

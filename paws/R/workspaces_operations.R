@@ -1086,7 +1086,11 @@ workspaces_create_workspace_image <- function(Name, Description, WorkspaceId, Ta
 #'           Protocols = list(
 #'             "PCOIP"|"WSP"
 #'           ),
-#'           OperatingSystemName = "AMAZON_LINUX_2"|"UBUNTU_18_04"|"UBUNTU_20_04"|"UBUNTU_22_04"|"UNKNOWN"|"WINDOWS_10"|"WINDOWS_11"|"WINDOWS_7"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"RHEL_8"|"ROCKY_8"
+#'           OperatingSystemName = "AMAZON_LINUX_2"|"UBUNTU_18_04"|"UBUNTU_20_04"|"UBUNTU_22_04"|"UNKNOWN"|"WINDOWS_10"|"WINDOWS_11"|"WINDOWS_7"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"RHEL_8"|"ROCKY_8",
+#'           GlobalAccelerator = list(
+#'             Mode = "ENABLED_AUTO"|"DISABLED"|"INHERITED",
+#'             PreferredProtocol = "TCP"|"NONE"|"INHERITED"
+#'           )
 #'         ),
 #'         Tags = list(
 #'           list(
@@ -1125,7 +1129,11 @@ workspaces_create_workspace_image <- function(Name, Description, WorkspaceId, Ta
 #'         Protocols = list(
 #'           "PCOIP"|"WSP"
 #'         ),
-#'         OperatingSystemName = "AMAZON_LINUX_2"|"UBUNTU_18_04"|"UBUNTU_20_04"|"UBUNTU_22_04"|"UNKNOWN"|"WINDOWS_10"|"WINDOWS_11"|"WINDOWS_7"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"RHEL_8"|"ROCKY_8"
+#'         OperatingSystemName = "AMAZON_LINUX_2"|"UBUNTU_18_04"|"UBUNTU_20_04"|"UBUNTU_22_04"|"UNKNOWN"|"WINDOWS_10"|"WINDOWS_11"|"WINDOWS_7"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"RHEL_8"|"ROCKY_8",
+#'         GlobalAccelerator = list(
+#'           Mode = "ENABLED_AUTO"|"DISABLED"|"INHERITED",
+#'           PreferredProtocol = "TCP"|"NONE"|"INHERITED"
+#'         )
 #'       ),
 #'       ModificationStates = list(
 #'         list(
@@ -1181,7 +1189,11 @@ workspaces_create_workspace_image <- function(Name, Description, WorkspaceId, Ta
 #'         Protocols = list(
 #'           "PCOIP"|"WSP"
 #'         ),
-#'         OperatingSystemName = "AMAZON_LINUX_2"|"UBUNTU_18_04"|"UBUNTU_20_04"|"UBUNTU_22_04"|"UNKNOWN"|"WINDOWS_10"|"WINDOWS_11"|"WINDOWS_7"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"RHEL_8"|"ROCKY_8"
+#'         OperatingSystemName = "AMAZON_LINUX_2"|"UBUNTU_18_04"|"UBUNTU_20_04"|"UBUNTU_22_04"|"UNKNOWN"|"WINDOWS_10"|"WINDOWS_11"|"WINDOWS_7"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"RHEL_8"|"ROCKY_8",
+#'         GlobalAccelerator = list(
+#'           Mode = "ENABLED_AUTO"|"DISABLED"|"INHERITED",
+#'           PreferredProtocol = "TCP"|"NONE"|"INHERITED"
+#'         )
 #'       ),
 #'       Tags = list(
 #'         list(
@@ -2053,7 +2065,7 @@ workspaces_describe_application_associations <- function(MaxResults = NULL, Next
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
     stream_api = FALSE
   )
   input <- .workspaces$describe_application_associations_input(MaxResults = MaxResults, NextToken = NextToken, ApplicationId = ApplicationId, AssociatedResourceTypes = AssociatedResourceTypes)
@@ -2143,7 +2155,7 @@ workspaces_describe_applications <- function(ApplicationIds = NULL, ComputeTypeN
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
     stream_api = FALSE
   )
   input <- .workspaces$describe_applications_input(ApplicationIds = ApplicationIds, ComputeTypeNames = ComputeTypeNames, LicenseType = LicenseType, OperatingSystemNames = OperatingSystemNames, Owner = Owner, MaxResults = MaxResults, NextToken = NextToken)
@@ -3082,6 +3094,10 @@ workspaces_describe_workspace_bundles <- function(BundleIds = NULL, Owner = NULL
 #'             ConnectorType = "HOME_FOLDER",
 #'             Status = "ENABLED"|"DISABLED"
 #'           )
+#'         ),
+#'         GlobalAccelerator = list(
+#'           Mode = "ENABLED_AUTO"|"DISABLED",
+#'           PreferredProtocol = "TCP"|"NONE"
 #'         )
 #'       ),
 #'       ErrorMessage = "string"
@@ -3414,7 +3430,11 @@ workspaces_describe_workspace_snapshots <- function(WorkspaceId) {
 #'         Protocols = list(
 #'           "PCOIP"|"WSP"
 #'         ),
-#'         OperatingSystemName = "AMAZON_LINUX_2"|"UBUNTU_18_04"|"UBUNTU_20_04"|"UBUNTU_22_04"|"UNKNOWN"|"WINDOWS_10"|"WINDOWS_11"|"WINDOWS_7"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"RHEL_8"|"ROCKY_8"
+#'         OperatingSystemName = "AMAZON_LINUX_2"|"UBUNTU_18_04"|"UBUNTU_20_04"|"UBUNTU_22_04"|"UNKNOWN"|"WINDOWS_10"|"WINDOWS_11"|"WINDOWS_7"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"RHEL_8"|"ROCKY_8",
+#'         GlobalAccelerator = list(
+#'           Mode = "ENABLED_AUTO"|"DISABLED"|"INHERITED",
+#'           PreferredProtocol = "TCP"|"NONE"|"INHERITED"
+#'         )
 #'       ),
 #'       ModificationStates = list(
 #'         list(
@@ -4770,6 +4790,10 @@ workspaces_modify_selfservice_permissions <- function(ResourceId, SelfservicePer
 #'         ConnectorType = "HOME_FOLDER",
 #'         Status = "ENABLED"|"DISABLED"
 #'       )
+#'     ),
+#'     GlobalAccelerator = list(
+#'       Mode = "ENABLED_AUTO"|"DISABLED",
+#'       PreferredProtocol = "TCP"|"NONE"
 #'     )
 #'   )
 #' )
@@ -4949,7 +4973,11 @@ workspaces_modify_workspace_creation_properties <- function(ResourceId, Workspac
 #'     Protocols = list(
 #'       "PCOIP"|"WSP"
 #'     ),
-#'     OperatingSystemName = "AMAZON_LINUX_2"|"UBUNTU_18_04"|"UBUNTU_20_04"|"UBUNTU_22_04"|"UNKNOWN"|"WINDOWS_10"|"WINDOWS_11"|"WINDOWS_7"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"RHEL_8"|"ROCKY_8"
+#'     OperatingSystemName = "AMAZON_LINUX_2"|"UBUNTU_18_04"|"UBUNTU_20_04"|"UBUNTU_22_04"|"UNKNOWN"|"WINDOWS_10"|"WINDOWS_11"|"WINDOWS_7"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"RHEL_8"|"ROCKY_8",
+#'     GlobalAccelerator = list(
+#'       Mode = "ENABLED_AUTO"|"DISABLED"|"INHERITED",
+#'       PreferredProtocol = "TCP"|"NONE"|"INHERITED"
+#'     )
 #'   ),
 #'   DataReplication = "NO_REPLICATION"|"PRIMARY_AS_SOURCE"
 #' )

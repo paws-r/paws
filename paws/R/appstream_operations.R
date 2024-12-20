@@ -819,7 +819,7 @@ appstream_create_app_block_builder_streaming_url <- function(AppBlockBuilderName
 #'       S3Key = "string"
 #'     ),
 #'     Platforms = list(
-#'       "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2"|"RHEL8"
+#'       "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2"|"RHEL8"|"ROCKY_LINUX8"
 #'     ),
 #'     InstanceFamilies = list(
 #'       "string"
@@ -845,7 +845,7 @@ appstream_create_app_block_builder_streaming_url <- function(AppBlockBuilderName
 #'   WorkingDirectory = "string",
 #'   LaunchParameters = "string",
 #'   Platforms = list(
-#'     "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2"|"RHEL8"
+#'     "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2"|"RHEL8"|"ROCKY_LINUX8"
 #'   ),
 #'   InstanceFamilies = list(
 #'     "string"
@@ -1335,7 +1335,7 @@ appstream_create_entitlement <- function(Name, StackName, Description = NULL, Ap
 #'     IdleDisconnectTimeoutInSeconds = 123,
 #'     IamRoleArn = "string",
 #'     StreamView = "APP"|"DESKTOP",
-#'     Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2"|"RHEL8",
+#'     Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2"|"RHEL8"|"ROCKY_LINUX8",
 #'     MaxConcurrentSessions = 123,
 #'     UsbDeviceFilterStrings = list(
 #'       "string"
@@ -1384,7 +1384,7 @@ appstream_create_entitlement <- function(Name, StackName, Description = NULL, Ap
 #'   IdleDisconnectTimeoutInSeconds = 123,
 #'   IamRoleArn = "string",
 #'   StreamView = "APP"|"DESKTOP",
-#'   Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2"|"RHEL8",
+#'   Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2"|"RHEL8"|"ROCKY_LINUX8",
 #'   MaxConcurrentSessions = 123,
 #'   UsbDeviceFilterStrings = list(
 #'     "string"
@@ -1565,7 +1565,7 @@ appstream_create_fleet <- function(Name, ImageName = NULL, ImageArn = NULL, Inst
 #'       )
 #'     ),
 #'     InstanceType = "string",
-#'     Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2"|"RHEL8",
+#'     Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2"|"RHEL8"|"ROCKY_LINUX8",
 #'     IamRoleArn = "string",
 #'     State = "PENDING"|"UPDATING_AGENT"|"RUNNING"|"STOPPING"|"STOPPED"|"REBOOTING"|"SNAPSHOTTING"|"DELETING"|"FAILED"|"UPDATING"|"PENDING_QUALIFICATION",
 #'     StateChangeReason = list(
@@ -2121,7 +2121,7 @@ appstream_create_theme_for_stack <- function(StackName, FooterLinks = NULL, Titl
 #'     Visibility = "PUBLIC"|"PRIVATE"|"SHARED",
 #'     ImageBuilderSupported = TRUE|FALSE,
 #'     ImageBuilderName = "string",
-#'     Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2"|"RHEL8",
+#'     Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2"|"RHEL8"|"ROCKY_LINUX8",
 #'     Description = "string",
 #'     StateChangeReason = list(
 #'       Code = "INTERNAL_ERROR"|"IMAGE_BUILDER_NOT_AVAILABLE"|"IMAGE_COPY_FAILURE",
@@ -2147,7 +2147,7 @@ appstream_create_theme_for_stack <- function(StackName, FooterLinks = NULL, Titl
 #'           S3Key = "string"
 #'         ),
 #'         Platforms = list(
-#'           "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2"|"RHEL8"
+#'           "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2"|"RHEL8"|"ROCKY_LINUX8"
 #'         ),
 #'         InstanceFamilies = list(
 #'           "string"
@@ -2635,7 +2635,7 @@ appstream_delete_fleet <- function(Name) {
 #'     Visibility = "PUBLIC"|"PRIVATE"|"SHARED",
 #'     ImageBuilderSupported = TRUE|FALSE,
 #'     ImageBuilderName = "string",
-#'     Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2"|"RHEL8",
+#'     Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2"|"RHEL8"|"ROCKY_LINUX8",
 #'     Description = "string",
 #'     StateChangeReason = list(
 #'       Code = "INTERNAL_ERROR"|"IMAGE_BUILDER_NOT_AVAILABLE"|"IMAGE_COPY_FAILURE",
@@ -2661,7 +2661,7 @@ appstream_delete_fleet <- function(Name) {
 #'           S3Key = "string"
 #'         ),
 #'         Platforms = list(
-#'           "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2"|"RHEL8"
+#'           "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2"|"RHEL8"|"ROCKY_LINUX8"
 #'         ),
 #'         InstanceFamilies = list(
 #'           "string"
@@ -2761,7 +2761,7 @@ appstream_delete_image <- function(Name) {
 #'       )
 #'     ),
 #'     InstanceType = "string",
-#'     Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2"|"RHEL8",
+#'     Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2"|"RHEL8"|"ROCKY_LINUX8",
 #'     IamRoleArn = "string",
 #'     State = "PENDING"|"UPDATING_AGENT"|"RUNNING"|"STOPPING"|"STOPPED"|"REBOOTING"|"SNAPSHOTTING"|"DELETING"|"FAILED"|"UPDATING"|"PENDING_QUALIFICATION",
 #'     StateChangeReason = list(
@@ -3116,7 +3116,7 @@ appstream_describe_app_block_builder_app_block_associations <- function(AppBlock
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .appstream$describe_app_block_builder_app_block_associations_input(AppBlockArn = AppBlockArn, AppBlockBuilderName = AppBlockBuilderName, MaxResults = MaxResults, NextToken = NextToken)
@@ -3215,7 +3215,7 @@ appstream_describe_app_block_builders <- function(Names = NULL, NextToken = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .appstream$describe_app_block_builders_input(Names = Names, NextToken = NextToken, MaxResults = MaxResults)
@@ -3427,7 +3427,7 @@ appstream_describe_application_fleet_associations <- function(FleetName = NULL, 
 #'         S3Key = "string"
 #'       ),
 #'       Platforms = list(
-#'         "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2"|"RHEL8"
+#'         "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2"|"RHEL8"|"ROCKY_LINUX8"
 #'       ),
 #'       InstanceFamilies = list(
 #'         "string"
@@ -3703,7 +3703,7 @@ appstream_describe_entitlements <- function(Name = NULL, StackName, NextToken = 
 #'       IdleDisconnectTimeoutInSeconds = 123,
 #'       IamRoleArn = "string",
 #'       StreamView = "APP"|"DESKTOP",
-#'       Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2"|"RHEL8",
+#'       Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2"|"RHEL8"|"ROCKY_LINUX8",
 #'       MaxConcurrentSessions = 123,
 #'       UsbDeviceFilterStrings = list(
 #'         "string"
@@ -3789,7 +3789,7 @@ appstream_describe_fleets <- function(Names = NULL, NextToken = NULL) {
 #'         )
 #'       ),
 #'       InstanceType = "string",
-#'       Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2"|"RHEL8",
+#'       Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2"|"RHEL8"|"ROCKY_LINUX8",
 #'       IamRoleArn = "string",
 #'       State = "PENDING"|"UPDATING_AGENT"|"RUNNING"|"STOPPING"|"STOPPED"|"REBOOTING"|"SNAPSHOTTING"|"DELETING"|"FAILED"|"UPDATING"|"PENDING_QUALIFICATION",
 #'       StateChangeReason = list(
@@ -3926,7 +3926,7 @@ appstream_describe_image_permissions <- function(Name, MaxResults = NULL, Shared
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
     stream_api = FALSE
   )
   input <- .appstream$describe_image_permissions_input(Name = Name, MaxResults = MaxResults, SharedAwsAccountIds = SharedAwsAccountIds, NextToken = NextToken)
@@ -3971,7 +3971,7 @@ appstream_describe_image_permissions <- function(Name, MaxResults = NULL, Shared
 #'       Visibility = "PUBLIC"|"PRIVATE"|"SHARED",
 #'       ImageBuilderSupported = TRUE|FALSE,
 #'       ImageBuilderName = "string",
-#'       Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2"|"RHEL8",
+#'       Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2"|"RHEL8"|"ROCKY_LINUX8",
 #'       Description = "string",
 #'       StateChangeReason = list(
 #'         Code = "INTERNAL_ERROR"|"IMAGE_BUILDER_NOT_AVAILABLE"|"IMAGE_COPY_FAILURE",
@@ -3997,7 +3997,7 @@ appstream_describe_image_permissions <- function(Name, MaxResults = NULL, Shared
 #'             S3Key = "string"
 #'           ),
 #'           Platforms = list(
-#'             "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2"|"RHEL8"
+#'             "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2"|"RHEL8"|"ROCKY_LINUX8"
 #'           ),
 #'           InstanceFamilies = list(
 #'             "string"
@@ -5300,7 +5300,7 @@ appstream_start_fleet <- function(Name) {
 #'       )
 #'     ),
 #'     InstanceType = "string",
-#'     Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2"|"RHEL8",
+#'     Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2"|"RHEL8"|"ROCKY_LINUX8",
 #'     IamRoleArn = "string",
 #'     State = "PENDING"|"UPDATING_AGENT"|"RUNNING"|"STOPPING"|"STOPPED"|"REBOOTING"|"SNAPSHOTTING"|"DELETING"|"FAILED"|"UPDATING"|"PENDING_QUALIFICATION",
 #'     StateChangeReason = list(
@@ -5537,7 +5537,7 @@ appstream_stop_fleet <- function(Name) {
 #'       )
 #'     ),
 #'     InstanceType = "string",
-#'     Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2"|"RHEL8",
+#'     Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2"|"RHEL8"|"ROCKY_LINUX8",
 #'     IamRoleArn = "string",
 #'     State = "PENDING"|"UPDATING_AGENT"|"RUNNING"|"STOPPING"|"STOPPED"|"REBOOTING"|"SNAPSHOTTING"|"DELETING"|"FAILED"|"UPDATING"|"PENDING_QUALIFICATION",
 #'     StateChangeReason = list(
@@ -5845,7 +5845,7 @@ appstream_untag_resource <- function(ResourceArn, TagKeys) {
 #'   Name = "string",
 #'   Description = "string",
 #'   DisplayName = "string",
-#'   Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2"|"RHEL8",
+#'   Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2"|"RHEL8"|"ROCKY_LINUX8",
 #'   InstanceType = "string",
 #'   VpcConfig = list(
 #'     SubnetIds = list(
@@ -5938,7 +5938,7 @@ appstream_update_app_block_builder <- function(Name, Description = NULL, Display
 #'       S3Key = "string"
 #'     ),
 #'     Platforms = list(
-#'       "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2"|"RHEL8"
+#'       "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2"|"RHEL8"|"ROCKY_LINUX8"
 #'     ),
 #'     InstanceFamilies = list(
 #'       "string"
@@ -6419,7 +6419,7 @@ appstream_update_entitlement <- function(Name, StackName, Description = NULL, Ap
 #'     IdleDisconnectTimeoutInSeconds = 123,
 #'     IamRoleArn = "string",
 #'     StreamView = "APP"|"DESKTOP",
-#'     Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2"|"RHEL8",
+#'     Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2"|"RHEL8"|"ROCKY_LINUX8",
 #'     MaxConcurrentSessions = 123,
 #'     UsbDeviceFilterStrings = list(
 #'       "string"
@@ -6468,7 +6468,7 @@ appstream_update_entitlement <- function(Name, StackName, Description = NULL, Ap
 #'   ),
 #'   IamRoleArn = "string",
 #'   StreamView = "APP"|"DESKTOP",
-#'   Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2"|"RHEL8",
+#'   Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"AMAZON_LINUX2"|"RHEL8"|"ROCKY_LINUX8",
 #'   MaxConcurrentSessions = 123,
 #'   UsbDeviceFilterStrings = list(
 #'     "string"

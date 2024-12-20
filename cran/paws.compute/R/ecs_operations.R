@@ -1674,7 +1674,7 @@ ecs_list_container_instances <- function(cluster = NULL, filter = NULL, nextToke
 #' or ARN. Starting April 15, 2023, Amazon Web Services will not onboard
 #' new customers to Amazon Elastic Inference (EI), and will help current
 #' customers migrate their workloads to options that offer better price and
-#' performanceIf you don't specify a cluster, `default` is used.
+#' performance. If you don't specify a cluster, `default` is used.
 #' @param status An optional filter you can use to narrow the results. If you do not
 #' specify a status, then all status values are included in the result.
 #' @param createdAt An optional filter you can use to narrow the results by the service
@@ -2838,11 +2838,14 @@ ecs_register_container_instance <- function(cluster = NULL, instanceIdentityDocu
 #' -   Windows platform version `1.0.0` or later.
 #' @param runtimePlatform The operating system that your tasks definitions run on. A platform
 #' family is specified only for tasks using the Fargate launch type.
+#' @param enableFaultInjection Enables fault injection when you register your task definition and
+#' allows for fault injection requests to be accepted from the task's
+#' containers. The default value is `false`.
 #'
 #' @keywords internal
 #'
 #' @rdname ecs_register_task_definition
-ecs_register_task_definition <- function(family, taskRoleArn = NULL, executionRoleArn = NULL, networkMode = NULL, containerDefinitions, volumes = NULL, placementConstraints = NULL, requiresCompatibilities = NULL, cpu = NULL, memory = NULL, tags = NULL, pidMode = NULL, ipcMode = NULL, proxyConfiguration = NULL, inferenceAccelerators = NULL, ephemeralStorage = NULL, runtimePlatform = NULL) {
+ecs_register_task_definition <- function(family, taskRoleArn = NULL, executionRoleArn = NULL, networkMode = NULL, containerDefinitions, volumes = NULL, placementConstraints = NULL, requiresCompatibilities = NULL, cpu = NULL, memory = NULL, tags = NULL, pidMode = NULL, ipcMode = NULL, proxyConfiguration = NULL, inferenceAccelerators = NULL, ephemeralStorage = NULL, runtimePlatform = NULL, enableFaultInjection = NULL) {
   op <- new_operation(
     name = "RegisterTaskDefinition",
     http_method = "POST",
@@ -2851,7 +2854,7 @@ ecs_register_task_definition <- function(family, taskRoleArn = NULL, executionRo
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ecs$register_task_definition_input(family = family, taskRoleArn = taskRoleArn, executionRoleArn = executionRoleArn, networkMode = networkMode, containerDefinitions = containerDefinitions, volumes = volumes, placementConstraints = placementConstraints, requiresCompatibilities = requiresCompatibilities, cpu = cpu, memory = memory, tags = tags, pidMode = pidMode, ipcMode = ipcMode, proxyConfiguration = proxyConfiguration, inferenceAccelerators = inferenceAccelerators, ephemeralStorage = ephemeralStorage, runtimePlatform = runtimePlatform)
+  input <- .ecs$register_task_definition_input(family = family, taskRoleArn = taskRoleArn, executionRoleArn = executionRoleArn, networkMode = networkMode, containerDefinitions = containerDefinitions, volumes = volumes, placementConstraints = placementConstraints, requiresCompatibilities = requiresCompatibilities, cpu = cpu, memory = memory, tags = tags, pidMode = pidMode, ipcMode = ipcMode, proxyConfiguration = proxyConfiguration, inferenceAccelerators = inferenceAccelerators, ephemeralStorage = ephemeralStorage, runtimePlatform = runtimePlatform, enableFaultInjection = enableFaultInjection)
   output <- .ecs$register_task_definition_output()
   config <- get_config()
   svc <- .ecs$service(config, op)

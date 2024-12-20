@@ -1545,6 +1545,7 @@ batch_describe_compute_environments <- function(computeEnvironments = NULL, maxR
 #'                       list(
 #'                         name = "string",
 #'                         mountPath = "string",
+#'                         subPath = "string",
 #'                         readOnly = TRUE|FALSE
 #'                       )
 #'                     ),
@@ -1587,6 +1588,7 @@ batch_describe_compute_environments <- function(computeEnvironments = NULL, maxR
 #'                       list(
 #'                         name = "string",
 #'                         mountPath = "string",
+#'                         subPath = "string",
 #'                         readOnly = TRUE|FALSE
 #'                       )
 #'                     ),
@@ -1613,13 +1615,21 @@ batch_describe_compute_environments <- function(computeEnvironments = NULL, maxR
 #'                     secret = list(
 #'                       secretName = "string",
 #'                       optional = TRUE|FALSE
+#'                     ),
+#'                     persistentVolumeClaim = list(
+#'                       claimName = "string",
+#'                       readOnly = TRUE|FALSE
 #'                     )
 #'                   )
 #'                 ),
 #'                 metadata = list(
 #'                   labels = list(
 #'                     "string"
-#'                   )
+#'                   ),
+#'                   annotations = list(
+#'                     "string"
+#'                   ),
+#'                   namespace = "string"
 #'                 ),
 #'                 shareProcessNamespace = TRUE|FALSE
 #'               )
@@ -1802,6 +1812,7 @@ batch_describe_compute_environments <- function(computeEnvironments = NULL, maxR
 #'                 list(
 #'                   name = "string",
 #'                   mountPath = "string",
+#'                   subPath = "string",
 #'                   readOnly = TRUE|FALSE
 #'                 )
 #'               ),
@@ -1844,6 +1855,7 @@ batch_describe_compute_environments <- function(computeEnvironments = NULL, maxR
 #'                 list(
 #'                   name = "string",
 #'                   mountPath = "string",
+#'                   subPath = "string",
 #'                   readOnly = TRUE|FALSE
 #'                 )
 #'               ),
@@ -1870,13 +1882,21 @@ batch_describe_compute_environments <- function(computeEnvironments = NULL, maxR
 #'               secret = list(
 #'                 secretName = "string",
 #'                 optional = TRUE|FALSE
+#'               ),
+#'               persistentVolumeClaim = list(
+#'                 claimName = "string",
+#'                 readOnly = TRUE|FALSE
 #'               )
 #'             )
 #'           ),
 #'           metadata = list(
 #'             labels = list(
 #'               "string"
-#'             )
+#'             ),
+#'             annotations = list(
+#'               "string"
+#'             ),
+#'             namespace = "string"
 #'           ),
 #'           shareProcessNamespace = TRUE|FALSE
 #'         )
@@ -2560,6 +2580,7 @@ batch_describe_job_queues <- function(jobQueues = NULL, maxResults = NULL, nextT
 #'                       list(
 #'                         name = "string",
 #'                         mountPath = "string",
+#'                         subPath = "string",
 #'                         readOnly = TRUE|FALSE
 #'                       )
 #'                     ),
@@ -2602,6 +2623,7 @@ batch_describe_job_queues <- function(jobQueues = NULL, maxResults = NULL, nextT
 #'                       list(
 #'                         name = "string",
 #'                         mountPath = "string",
+#'                         subPath = "string",
 #'                         readOnly = TRUE|FALSE
 #'                       )
 #'                     ),
@@ -2628,13 +2650,21 @@ batch_describe_job_queues <- function(jobQueues = NULL, maxResults = NULL, nextT
 #'                     secret = list(
 #'                       secretName = "string",
 #'                       optional = TRUE|FALSE
+#'                     ),
+#'                     persistentVolumeClaim = list(
+#'                       claimName = "string",
+#'                       readOnly = TRUE|FALSE
 #'                     )
 #'                   )
 #'                 ),
 #'                 metadata = list(
 #'                   labels = list(
 #'                     "string"
-#'                   )
+#'                   ),
+#'                   annotations = list(
+#'                     "string"
+#'                   ),
+#'                   namespace = "string"
 #'                 ),
 #'                 shareProcessNamespace = TRUE|FALSE
 #'               )
@@ -2700,6 +2730,7 @@ batch_describe_job_queues <- function(jobQueues = NULL, maxResults = NULL, nextT
 #'                 list(
 #'                   name = "string",
 #'                   mountPath = "string",
+#'                   subPath = "string",
 #'                   readOnly = TRUE|FALSE
 #'                 )
 #'               ),
@@ -2744,6 +2775,7 @@ batch_describe_job_queues <- function(jobQueues = NULL, maxResults = NULL, nextT
 #'                 list(
 #'                   name = "string",
 #'                   mountPath = "string",
+#'                   subPath = "string",
 #'                   readOnly = TRUE|FALSE
 #'                 )
 #'               ),
@@ -2770,6 +2802,10 @@ batch_describe_job_queues <- function(jobQueues = NULL, maxResults = NULL, nextT
 #'               secret = list(
 #'                 secretName = "string",
 #'                 optional = TRUE|FALSE
+#'               ),
+#'               persistentVolumeClaim = list(
+#'                 claimName = "string",
+#'                 readOnly = TRUE|FALSE
 #'               )
 #'             )
 #'           ),
@@ -2778,7 +2814,11 @@ batch_describe_job_queues <- function(jobQueues = NULL, maxResults = NULL, nextT
 #'           metadata = list(
 #'             labels = list(
 #'               "string"
-#'             )
+#'             ),
+#'             annotations = list(
+#'               "string"
+#'             ),
+#'             namespace = "string"
 #'           ),
 #'           shareProcessNamespace = TRUE|FALSE
 #'         )
@@ -3989,6 +4029,7 @@ batch_list_tags_for_resource <- function(resourceArn) {
 #'                   list(
 #'                     name = "string",
 #'                     mountPath = "string",
+#'                     subPath = "string",
 #'                     readOnly = TRUE|FALSE
 #'                   )
 #'                 ),
@@ -4031,6 +4072,7 @@ batch_list_tags_for_resource <- function(resourceArn) {
 #'                   list(
 #'                     name = "string",
 #'                     mountPath = "string",
+#'                     subPath = "string",
 #'                     readOnly = TRUE|FALSE
 #'                   )
 #'                 ),
@@ -4057,13 +4099,21 @@ batch_list_tags_for_resource <- function(resourceArn) {
 #'                 secret = list(
 #'                   secretName = "string",
 #'                   optional = TRUE|FALSE
+#'                 ),
+#'                 persistentVolumeClaim = list(
+#'                   claimName = "string",
+#'                   readOnly = TRUE|FALSE
 #'                 )
 #'               )
 #'             ),
 #'             metadata = list(
 #'               labels = list(
 #'                 "string"
-#'               )
+#'               ),
+#'               annotations = list(
+#'                 "string"
+#'               ),
+#'               namespace = "string"
 #'             ),
 #'             shareProcessNamespace = TRUE|FALSE
 #'           )
@@ -4131,6 +4181,7 @@ batch_list_tags_for_resource <- function(resourceArn) {
 #'             list(
 #'               name = "string",
 #'               mountPath = "string",
+#'               subPath = "string",
 #'               readOnly = TRUE|FALSE
 #'             )
 #'           ),
@@ -4173,6 +4224,7 @@ batch_list_tags_for_resource <- function(resourceArn) {
 #'             list(
 #'               name = "string",
 #'               mountPath = "string",
+#'               subPath = "string",
 #'               readOnly = TRUE|FALSE
 #'             )
 #'           ),
@@ -4199,13 +4251,21 @@ batch_list_tags_for_resource <- function(resourceArn) {
 #'           secret = list(
 #'             secretName = "string",
 #'             optional = TRUE|FALSE
+#'           ),
+#'           persistentVolumeClaim = list(
+#'             claimName = "string",
+#'             readOnly = TRUE|FALSE
 #'           )
 #'         )
 #'       ),
 #'       metadata = list(
 #'         labels = list(
 #'           "string"
-#'         )
+#'         ),
+#'         annotations = list(
+#'           "string"
+#'         ),
+#'         namespace = "string"
 #'       ),
 #'       shareProcessNamespace = TRUE|FALSE
 #'     )
@@ -4698,7 +4758,11 @@ batch_register_job_definition <- function(jobDefinitionName, type, parameters = 
 #'             metadata = list(
 #'               labels = list(
 #'                 "string"
-#'               )
+#'               ),
+#'               annotations = list(
+#'                 "string"
+#'               ),
+#'               namespace = "string"
 #'             )
 #'           )
 #'         )
@@ -4780,7 +4844,11 @@ batch_register_job_definition <- function(jobDefinitionName, type, parameters = 
 #'       metadata = list(
 #'         labels = list(
 #'           "string"
-#'         )
+#'         ),
+#'         annotations = list(
+#'           "string"
+#'         ),
+#'         namespace = "string"
 #'       )
 #'     )
 #'   ),

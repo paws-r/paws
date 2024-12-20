@@ -136,6 +136,7 @@ providing reporting and auditing.
 \link[paws.storage:backup_get_backup_vault_access_policy]{get_backup_vault_access_policy} \tab Returns the access policy document that is associated with the named backup vault\cr
 \link[paws.storage:backup_get_backup_vault_notifications]{get_backup_vault_notifications} \tab Returns event notifications for the specified backup vault\cr
 \link[paws.storage:backup_get_legal_hold]{get_legal_hold} \tab This action returns details for a specified legal hold\cr
+\link[paws.storage:backup_get_recovery_point_index_details]{get_recovery_point_index_details} \tab This operation returns the metadata and details specific to the backup index associated with the specified recovery point\cr
 \link[paws.storage:backup_get_recovery_point_restore_metadata]{get_recovery_point_restore_metadata} \tab Returns a set of metadata key-value pairs that were used to create the backup\cr
 \link[paws.storage:backup_get_restore_job_metadata]{get_restore_job_metadata} \tab This request returns the metadata for the specified restore job\cr
 \link[paws.storage:backup_get_restore_testing_inferred_metadata]{get_restore_testing_inferred_metadata} \tab This request returns the minimal required set of metadata needed to start a restore job with secure default settings\cr
@@ -152,6 +153,7 @@ providing reporting and auditing.
 \link[paws.storage:backup_list_copy_jobs]{list_copy_jobs} \tab Returns metadata about your copy jobs\cr
 \link[paws.storage:backup_list_copy_job_summaries]{list_copy_job_summaries} \tab This request obtains a list of copy jobs created or running within the the most recent 30 days\cr
 \link[paws.storage:backup_list_frameworks]{list_frameworks} \tab Returns a list of all frameworks for an Amazon Web Services account and Amazon Web Services Region\cr
+\link[paws.storage:backup_list_indexed_recovery_points]{list_indexed_recovery_points} \tab This operation returns a list of recovery points that have an associated index, belonging to the specified account\cr
 \link[paws.storage:backup_list_legal_holds]{list_legal_holds} \tab This action returns metadata about active and previous legal holds\cr
 \link[paws.storage:backup_list_protected_resources]{list_protected_resources} \tab Returns an array of resources successfully backed up by Backup, including the time the resource was saved, an Amazon Resource Name (ARN) of the resource, and a resource type\cr
 \link[paws.storage:backup_list_protected_resources_by_backup_vault]{list_protected_resources_by_backup_vault} \tab This request lists the protected resources corresponding to each backup vault\cr
@@ -180,6 +182,7 @@ providing reporting and auditing.
 \link[paws.storage:backup_update_backup_plan]{update_backup_plan} \tab Updates the specified backup plan\cr
 \link[paws.storage:backup_update_framework]{update_framework} \tab Updates the specified framework\cr
 \link[paws.storage:backup_update_global_settings]{update_global_settings} \tab Updates whether the Amazon Web Services account is opted in to cross-account backup\cr
+\link[paws.storage:backup_update_recovery_point_index_settings]{update_recovery_point_index_settings} \tab This operation updates the settings of a recovery point index\cr
 \link[paws.storage:backup_update_recovery_point_lifecycle]{update_recovery_point_lifecycle} \tab Sets the transition lifecycle of a recovery point\cr
 \link[paws.storage:backup_update_region_settings]{update_region_settings} \tab Updates the current service opt-in settings for the Region\cr
 \link[paws.storage:backup_update_report_plan]{update_report_plan} \tab Updates the specified report plan\cr
