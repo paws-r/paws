@@ -191,7 +191,7 @@ canonical_standard_headers <- function(ctx, headers) {
 canonical_custom_headers <- function(ctx, headers) {
   header_names <- tolower(names(headers))
 
-  found <- grepl("x-amz-", header_names)
+  found <- startsWith(header_names, "x-amz-")
   custom_headers <- trimws(Filter(Negate(is.null), headers[found]))
   names(custom_headers) <- names(headers[found])
   sorted_header_keys <- sort_list(as.list(custom_headers))
@@ -259,7 +259,7 @@ inject_signature_query <- function(ctx) {
 
   header_names <- names(headers)
   l_header_nms <- tolower(header_names)
-  found <- grepl("x-amz-", l_header_nms)
+  found <- startsWith(l_header_nms, "x-amz-")
   found[!found] <- l_header_nms[!found] %in% c("content-md5", "content-type")
 
   for (header_name in header_names[found]) {
