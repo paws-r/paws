@@ -29,7 +29,7 @@ write_description_category <- function(path, package, title, description,
     Suggests = "testthat",
     BugReports = "https://github.com/paws-r/paws/issues",
     License = "Apache License (>= 2.0)",
-    URL = "https://github.com/paws-r/paws",
+    URL = sprintf("https://github.com/paws-r/paws, https://paws-r.r-universe.dev/%s", fs::path_file(path)),
     Encoding = "UTF-8",
     Roxygen = 'list(markdown = TRUE, roclets = c("rd", "namespace", "collate"))'
   )
@@ -61,9 +61,9 @@ get_version <- function(major = 0, minor = 0, patch = 0) {
   if (is.null(cache_env$version)) {
     df <- as.data.frame(utils::available.packages(repos = "https://cran.rstudio.com"))
     cache_env$version <- package_version(df[df$Package == "paws", "Version"])
-    cache_env$version[[c(1,1)]] <- cache_env$version$major + major
-    cache_env$version[[c(1,2)]] <- cache_env$version$minor + minor
-    cache_env$version[[c(1,3)]] <- cache_env$version$patch + patch
+    cache_env$version[[c(1, 1)]] <- cache_env$version$major + major
+    cache_env$version[[c(1, 2)]] <- cache_env$version$minor + minor
+    cache_env$version[[c(1, 3)]] <- cache_env$version$patch + patch
   }
   return(cache_env$version)
 }
