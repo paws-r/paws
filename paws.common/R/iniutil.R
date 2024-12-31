@@ -17,27 +17,23 @@ read_ini <- function(file_name) {
     return(profiles)
   }
 
-  content <- sub(
-    "[ \t\r\n]+$", "",
-    scan(file_name, what = "", sep = "\n", quiet = TRUE),
-    perl = TRUE
+  content <- rtrim_whitespace(
+    scan(file_name, what = "", sep = "\n", quiet = TRUE)
   )
+
   # Return empty list for empty files
   if (length(content) == 0) {
     ini_cache[[file_name]] <- list()
     return(ini_cache[[file_name]])
   }
 
-  # Get the profile name from an ini file
-  rm_els <- grep("(^;)|(^\\s+;)|(^#)|(^\\s+#)", content, perl = TRUE)
-  if (length(rm_els) > 0) content <- content[-rm_els]
+  # Remove ini comments
+  comments <- which(identify_comments(content))
+  if (length(comments) > 0) content <- content[-comments]
 
-  found <- grep("^\\[.*\\]", content, perl = TRUE)
-  profile_nms <- gsub(
-    "^[ \t\r\n]+|[ \t\r\n]+$", "",
-    gsub("\\[|\\]", "", content[found]),
-    perl = TRUE
-  )
+  # Get Profile names
+  found <- which(startsWith(content, "[") + endsWith(content, "]") == 2)
+  profile_nms <- process_profile_name(content[found])
   profiles <- vector("list", length = length(profile_nms))
   names(profiles) <- profile_nms
 
@@ -46,7 +42,7 @@ read_ini <- function(file_name) {
   split_content <- parse_in_half(content)
   nested_contents <- split_content[, 2] == ""
 
-  sub_grps <- !grepl("^[ ]+", split_content[, 1])
+  sub_grps <- !startsWith(split_content[, 1], " ")
   split_content <- sub("[ \t\r\n]+$", "", split_content, perl = TRUE)
   split_content <- sub("^[ \t\r]+", "", split_content, perl = TRUE)
   for (i in which(start <= end)) {

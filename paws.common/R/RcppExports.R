@@ -7,6 +7,18 @@ paws_url_encoder <- function(urls, safe = "") {
     .Call('_paws_common_paws_url_encoder', PACKAGE = 'paws.common', urls, safe)
 }
 
+rtrim_whitespace <- function(vec) {
+    .Call('_paws_common_rtrim_whitespace', PACKAGE = 'paws.common', vec)
+}
+
+identify_comments <- function(vec) {
+    .Call('_paws_common_identify_comments', PACKAGE = 'paws.common', vec)
+}
+
+process_profile_name <- function(vec) {
+    .Call('_paws_common_process_profile_name', PACKAGE = 'paws.common', vec)
+}
+
 #' @useDynLib paws.common _paws_common_json_convert_string
 #' @importFrom Rcpp evalCpp
 json_convert_string <- function(x) {

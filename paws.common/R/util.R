@@ -166,7 +166,7 @@ render_template <- function(request) {
   template_params <- gsub("\\+", "", template_params, perl = TRUE)
   encoded_params <- as.character(request[["params"]][template_params])
   encoded_params[found] <- paws_url_encoder(encoded_params[found], safe = "/~")
-  encoded_params[!found] <- curl::curl_escape(encoded_params[!found])
+  encoded_params[!found] <- paws_url_encoder(encoded_params[!found])
   mod_temp <- sprintf_template(template)
   return(do.call(sprintf, c(fmt = mod_temp, as.list(encoded_params))))
 }
