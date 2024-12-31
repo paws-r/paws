@@ -115,12 +115,12 @@ build_query_string <- function(params) {
 
   params[found_multi] <- vapply(
     param_names[found_multi], function(nm) {
-      paste(nm, paws_url_encoder(params[[nm]]), sep = "=", collapse = "&")
+      paste(nm, paws_url_encoder(as.character(params[[nm]])), sep = "=", collapse = "&")
     },
     FUN.VALUE = ""
   )
   params[!found_multi] <- paste(
-    param_names[!found_multi], paws_url_encoder(params[!found_multi]),
+    param_names[!found_multi], paws_url_encoder(as.character(params[!found_multi])),
     sep = "="
   )
   return(paste(params[char_sort(param_names)], collapse = "&"))
