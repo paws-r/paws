@@ -25,11 +25,11 @@ user_message <- "Describe the purpose of a 'hello world' program in one line."
 conversation <- list(
     list(
         role = "user",
-        content = list(list(text= user_message)),
+        content = list(list(text= user_message))
     )
 )
 
-resp <- client.converse_stream(
+resp <- client$converse_stream(
   modelId=model_id,
   messages=conversation,
   inferenceConfig=list(maxTokens = 512, temperature = 0.5, topP = 0.9)
@@ -56,11 +56,11 @@ user_message <- "Describe the purpose of a 'hello world' program in one line."
 conversation <- list(
     list(
         role = "user",
-        content = list(list(text= user_message)),
+        content = list(list(text= user_message))
     )
 )
 
-resp <- client.converse_stream(
+resp <- client$converse_stream(
   modelId=model_id,
   messages=conversation,
   inferenceConfig=list(maxTokens = 512, temperature = 0.5, topP = 0.9)
@@ -90,11 +90,11 @@ user_message <- "Describe the purpose of a 'hello world' program in one line."
 conversation <- list(
     list(
         role = "user",
-        content = list(list(text= user_message)),
+        content = list(list(text= user_message))
     )
 )
 
-resp <- client.converse_stream(
+resp <- client$converse_stream(
   modelId=model_id,
   messages=conversation,
   inferenceConfig=list(maxTokens = 512, temperature = 0.5, topP = 0.9)
