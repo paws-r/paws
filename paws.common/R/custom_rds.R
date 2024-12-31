@@ -1,5 +1,5 @@
 rds_build_auth_token <- function(endpoint, region, user, creds = NULL) {
-  if (!grepl("^https?://", endpoint)) endpoint <- paste0("https://", endpoint)
+  if (!startsWith(endpoint, "https://")) endpoint <- paste0("https://", endpoint)
   req <- new_http_request("GET", endpoint)
   auth_token_params <- list(
     Action = "connect",

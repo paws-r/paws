@@ -176,7 +176,7 @@ paginate_update_fn <- function(
   pkg_name <- environmentName(environment(fn_call))
 
   # Ensure method can be found.
-  if (!grepl("^paws", pkg_name, perl = TRUE)) {
+  if (!startsWith(pkg_name, "paws")) {
     stopf(
       "Unknown method: `%s`. Please check service methods and try again.",
       as.character(fn)[1]

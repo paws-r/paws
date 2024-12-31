@@ -22,6 +22,39 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// rtrim_whitespace
+Rcpp::CharacterVector rtrim_whitespace(Rcpp::CharacterVector vec);
+RcppExport SEXP _paws_common_rtrim_whitespace(SEXP vecSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< Rcpp::CharacterVector >::type vec(vecSEXP);
+    rcpp_result_gen = Rcpp::wrap(rtrim_whitespace(vec));
+    return rcpp_result_gen;
+END_RCPP
+}
+// identify_comments
+Rcpp::LogicalVector identify_comments(Rcpp::CharacterVector vec);
+RcppExport SEXP _paws_common_identify_comments(SEXP vecSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< Rcpp::CharacterVector >::type vec(vecSEXP);
+    rcpp_result_gen = Rcpp::wrap(identify_comments(vec));
+    return rcpp_result_gen;
+END_RCPP
+}
+// process_profile_name
+std::vector<std::string> process_profile_name(const std::vector<std::string>& vec);
+RcppExport SEXP _paws_common_process_profile_name(SEXP vecSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const std::vector<std::string>& >::type vec(vecSEXP);
+    rcpp_result_gen = Rcpp::wrap(process_profile_name(vec));
+    return rcpp_result_gen;
+END_RCPP
+}
 // json_convert_string
 CharacterVector json_convert_string(CharacterVector x);
 RcppExport SEXP _paws_common_json_convert_string(SEXP xSEXP) {
@@ -93,6 +126,9 @@ END_RCPP
 
 static const R_CallMethodDef CallEntries[] = {
     {"_paws_common_paws_url_encoder", (DL_FUNC) &_paws_common_paws_url_encoder, 2},
+    {"_paws_common_rtrim_whitespace", (DL_FUNC) &_paws_common_rtrim_whitespace, 1},
+    {"_paws_common_identify_comments", (DL_FUNC) &_paws_common_identify_comments, 1},
+    {"_paws_common_process_profile_name", (DL_FUNC) &_paws_common_process_profile_name, 1},
     {"_paws_common_json_convert_string", (DL_FUNC) &_paws_common_json_convert_string, 1},
     {"_paws_common_check_global", (DL_FUNC) &_paws_common_check_global, 1},
     {"_paws_common_endpoint_unescape", (DL_FUNC) &_paws_common_endpoint_unescape, 2},

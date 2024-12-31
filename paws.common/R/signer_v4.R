@@ -267,7 +267,7 @@ build_context <- function(ctx, disable_header_hoisting) {
   if (ctx$is_presigned) {
     if (!disable_header_hoisting) {
       for (header in names(unsigned_headers)) {
-        if (grepl("X-Amz-", header) & !grepl("X-Amz-Meta-", header) &
+        if (startsWith(header, "X-Amz-") & !startsWith(header, "X-Amz-Meta-") &
           !(header %in% REQUIRED_SIGNED_HEADERS)) {
           ctx$query[[header]] <- unsigned_headers[[header]]
           unsigned_headers[[header]] <- NULL

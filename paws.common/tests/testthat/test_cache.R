@@ -30,7 +30,7 @@ test_that("check if environmental variables are parsed correctly", {
     paste(sample(letters, 10), collapse = ""),
     paste(sample(letters, 10), collapse = "")
   )
-  fake_env <- list(
+  fake_env <- c(
     "AWS_ENV_VAR1=foo",
     sprintf("AWS_ENV_VAR2=%s", expect),
     "AWS_ENV_VAR3=bar",
@@ -56,7 +56,7 @@ test_that("check if environmental variables remove whitespace", {
     paste(sample(letters, 10), collapse = ""),
     paste(sample(letters, 10), collapse = "")
   )
-  fake_env <- list(
+  fake_env <- c(
     "AWS_ENV_VAR1 = foo ",
     sprintf("AWS_ENV_VAR2=%s", expect),
     "AWS_ENV_VAR3   =    bar    ",
@@ -76,7 +76,7 @@ test_that("check if environmental variables remove whitespace", {
 
 test_that("check if environmental variables with nothing assigned", {
   skip_if(.Platform$OS.type != "unix")
-  fake_env <- list(
+  fake_env <- c(
     "AWS_ENV_VAR1",
     "AWS_ENV_VAR2=",
     "OTHER"
