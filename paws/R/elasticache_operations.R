@@ -1117,8 +1117,7 @@ elasticache_copy_snapshot <- function(SourceSnapshotName, TargetSnapshotName, Ta
 #'     \<, \>, and -. Other printable special characters cannot be used in
 #'     the AUTH token.
 #' 
-#' For more information, see [AUTH
-#' password](https://redis.io/docs/latest/commands/auth/) at
+#' For more information, see AUTH password at
 #' http://redis.io/commands/AUTH.
 #' @param OutpostMode Specifies whether the nodes in the cluster are created in a single
 #' outpost or across multiple outposts.
