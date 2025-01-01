@@ -1617,7 +1617,7 @@ ec2instanceconnect <- function(config = list(), credentials = list(), endpoint =
 #'  \link[paws.compute:ecr_describe_registry]{describe_registry} \tab Describes the settings for a registry\cr
 #'  \link[paws.compute:ecr_describe_repositories]{describe_repositories} \tab Describes image repositories in a registry\cr
 #'  \link[paws.compute:ecr_describe_repository_creation_templates]{describe_repository_creation_templates} \tab Returns details about the repository creation templates in a registry\cr
-#'  \link[paws.compute:ecr_get_account_setting]{get_account_setting} \tab Retrieves the basic scan type version name\cr
+#'  \link[paws.compute:ecr_get_account_setting]{get_account_setting} \tab Retrieves the account setting value for the specified setting name\cr
 #'  \link[paws.compute:ecr_get_authorization_token]{get_authorization_token} \tab Retrieves an authorization token\cr
 #'  \link[paws.compute:ecr_get_download_url_for_layer]{get_download_url_for_layer} \tab Retrieves the pre-signed Amazon S3 download URL corresponding to an image layer\cr
 #'  \link[paws.compute:ecr_get_lifecycle_policy]{get_lifecycle_policy} \tab Retrieves the lifecycle policy for the specified repository\cr
@@ -1628,7 +1628,7 @@ ec2instanceconnect <- function(config = list(), credentials = list(), endpoint =
 #'  \link[paws.compute:ecr_initiate_layer_upload]{initiate_layer_upload} \tab Notifies Amazon ECR that you intend to upload an image layer\cr
 #'  \link[paws.compute:ecr_list_images]{list_images} \tab Lists all the image IDs for the specified repository\cr
 #'  \link[paws.compute:ecr_list_tags_for_resource]{list_tags_for_resource} \tab List the tags for an Amazon ECR resource\cr
-#'  \link[paws.compute:ecr_put_account_setting]{put_account_setting} \tab Allows you to change the basic scan type version by setting the name parameter to either CLAIR to AWS_NATIVE\cr
+#'  \link[paws.compute:ecr_put_account_setting]{put_account_setting} \tab Allows you to change the basic scan type version or registry policy scope\cr
 #'  \link[paws.compute:ecr_put_image]{put_image} \tab Creates or updates the image manifest and tags associated with an image\cr
 #'  \link[paws.compute:ecr_put_image_scanning_configuration]{put_image_scanning_configuration} \tab The PutImageScanningConfiguration API is being deprecated, in favor of specifying the image scanning configuration at the registry level\cr
 #'  \link[paws.compute:ecr_put_image_tag_mutability]{put_image_tag_mutability} \tab Updates the image tag mutability settings for the specified repository\cr
@@ -2125,6 +2125,7 @@ ecs <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #'  \link[paws.compute:eks_describe_addon_configuration]{describe_addon_configuration} \tab Returns configuration options\cr
 #'  \link[paws.compute:eks_describe_addon_versions]{describe_addon_versions} \tab Describes the versions for an add-on\cr
 #'  \link[paws.compute:eks_describe_cluster]{describe_cluster} \tab Describes an Amazon EKS cluster\cr
+#'  \link[paws.compute:eks_describe_cluster_versions]{describe_cluster_versions} \tab Lists available Kubernetes versions for Amazon EKS clusters\cr
 #'  \link[paws.compute:eks_describe_eks_anywhere_subscription]{describe_eks_anywhere_subscription} \tab Returns descriptive information about a subscription\cr
 #'  \link[paws.compute:eks_describe_fargate_profile]{describe_fargate_profile} \tab Describes an Fargate profile\cr
 #'  \link[paws.compute:eks_describe_identity_provider_config]{describe_identity_provider_config} \tab Describes an identity provider configuration\cr
@@ -11892,24 +11893,32 @@ globalaccelerator <- function(config = list(), credentials = list(), endpoint = 
 #' developers who need detailed information about the Network Firewall API
 #' actions, data types, and errors.
 #' 
-#' -   The REST API requires you to handle connection details, such as
-#'     calculating signatures, handling request retries, and error
-#'     handling. For general information about using the Amazon Web
-#'     Services REST APIs, see [Amazon Web Services
-#'     APIs](https://docs.aws.amazon.com/general/latest/gr/).
+#' The REST API requires you to handle connection details, such as
+#' calculating signatures, handling request retries, and error handling.
+#' For general information about using the Amazon Web Services REST APIs,
+#' see [Amazon Web Services
+#' APIs](https://docs.aws.amazon.com/general/latest/gr/).
 #' 
-#'     To access Network Firewall using the REST API endpoint:
-#'     `https://network-firewall.<region>.amazonaws.com `
+#' To view the complete list of Amazon Web Services Regions where Network
+#' Firewall is available, see [Service endpoints and
+#' quotas](https://docs.aws.amazon.com/general/latest/gr/network-firewall.html)
+#' in the *Amazon Web Services General Reference*.
 #' 
-#' -   Alternatively, you can use one of the Amazon Web Services SDKs to
-#'     access an API that's tailored to the programming language or
-#'     platform that you're using. For more information, see [Amazon Web
-#'     Services SDKs](https://aws.amazon.com/developer/tools/#SDKs).
+#' To access Network Firewall using the IPv4 REST API endpoint:
+#' `https://network-firewall.<region>.amazonaws.com `
 #' 
-#' -   For descriptions of Network Firewall features, including and
-#'     step-by-step instructions on how to use them through the Network
-#'     Firewall console, see the [Network Firewall Developer
-#'     Guide](https://docs.aws.amazon.com/network-firewall/latest/developerguide/).
+#' To access Network Firewall using the Dualstack (IPv4 and IPv6) REST API
+#' endpoint: `https://network-firewall.<region>.aws.api `
+#' 
+#' Alternatively, you can use one of the Amazon Web Services SDKs to access
+#' an API that's tailored to the programming language or platform that
+#' you're using. For more information, see [Amazon Web Services
+#' SDKs](https://aws.amazon.com/developer/tools/#SDKs).
+#' 
+#' For descriptions of Network Firewall features, including and
+#' step-by-step instructions on how to use them through the Network
+#' Firewall console, see the [Network Firewall Developer
+#' Guide](https://docs.aws.amazon.com/network-firewall/latest/developerguide/).
 #' 
 #' Network Firewall is a stateful, managed, network firewall and intrusion
 #' detection and prevention service for Amazon Virtual Private Cloud
@@ -28262,13 +28271,13 @@ rekognition <- function(config = list(), credentials = list(), endpoint = NULL, 
 #'  \link[paws.machine.learning:sagemaker_create_action]{create_action} \tab Creates an action\cr
 #'  \link[paws.machine.learning:sagemaker_create_algorithm]{create_algorithm} \tab Create a machine learning algorithm that you can use in SageMaker and list in the Amazon Web Services Marketplace\cr
 #'  \link[paws.machine.learning:sagemaker_create_app]{create_app} \tab Creates a running app for the specified UserProfile\cr
-#'  \link[paws.machine.learning:sagemaker_create_app_image_config]{create_app_image_config} \tab Creates a configuration for running a SageMaker image as a KernelGateway app\cr
+#'  \link[paws.machine.learning:sagemaker_create_app_image_config]{create_app_image_config} \tab Creates a configuration for running a SageMaker AI image as a KernelGateway app\cr
 #'  \link[paws.machine.learning:sagemaker_create_artifact]{create_artifact} \tab Creates an artifact\cr
 #'  \link[paws.machine.learning:sagemaker_create_auto_ml_job]{create_auto_ml_job} \tab Creates an Autopilot job also referred to as Autopilot experiment or AutoML job\cr
 #'  \link[paws.machine.learning:sagemaker_create_auto_ml_job_v2]{create_auto_ml_job_v2} \tab Creates an Autopilot job also referred to as Autopilot experiment or AutoML job V2\cr
 #'  \link[paws.machine.learning:sagemaker_create_cluster]{create_cluster} \tab Creates a SageMaker HyperPod cluster\cr
 #'  \link[paws.machine.learning:sagemaker_create_cluster_scheduler_config]{create_cluster_scheduler_config} \tab Create cluster policy configuration\cr
-#'  \link[paws.machine.learning:sagemaker_create_code_repository]{create_code_repository} \tab Creates a Git repository as a resource in your SageMaker account\cr
+#'  \link[paws.machine.learning:sagemaker_create_code_repository]{create_code_repository} \tab Creates a Git repository as a resource in your SageMaker AI account\cr
 #'  \link[paws.machine.learning:sagemaker_create_compilation_job]{create_compilation_job} \tab Starts a model compilation job\cr
 #'  \link[paws.machine.learning:sagemaker_create_compute_quota]{create_compute_quota} \tab Create compute allocation definition\cr
 #'  \link[paws.machine.learning:sagemaker_create_context]{create_context} \tab Creates a context\cr
@@ -28287,9 +28296,9 @@ rekognition <- function(config = list(), credentials = list(), endpoint = NULL, 
 #'  \link[paws.machine.learning:sagemaker_create_hub_content_reference]{create_hub_content_reference} \tab Create a hub content reference in order to add a model in the JumpStart public hub to a private hub\cr
 #'  \link[paws.machine.learning:sagemaker_create_human_task_ui]{create_human_task_ui} \tab Defines the settings you will use for the human review workflow user interface\cr
 #'  \link[paws.machine.learning:sagemaker_create_hyper_parameter_tuning_job]{create_hyper_parameter_tuning_job} \tab Starts a hyperparameter tuning job\cr
-#'  \link[paws.machine.learning:sagemaker_create_image]{create_image} \tab Creates a custom SageMaker image\cr
-#'  \link[paws.machine.learning:sagemaker_create_image_version]{create_image_version} \tab Creates a version of the SageMaker image specified by ImageName\cr
-#'  \link[paws.machine.learning:sagemaker_create_inference_component]{create_inference_component} \tab Creates an inference component, which is a SageMaker hosting object that you can use to deploy a model to an endpoint\cr
+#'  \link[paws.machine.learning:sagemaker_create_image]{create_image} \tab Creates a custom SageMaker AI image\cr
+#'  \link[paws.machine.learning:sagemaker_create_image_version]{create_image_version} \tab Creates a version of the SageMaker AI image specified by ImageName\cr
+#'  \link[paws.machine.learning:sagemaker_create_inference_component]{create_inference_component} \tab Creates an inference component, which is a SageMaker AI hosting object that you can use to deploy a model to an endpoint\cr
 #'  \link[paws.machine.learning:sagemaker_create_inference_experiment]{create_inference_experiment} \tab Creates an inference experiment using the configurations specified in the request\cr
 #'  \link[paws.machine.learning:sagemaker_create_inference_recommendations_job]{create_inference_recommendations_job} \tab Starts a recommendation job\cr
 #'  \link[paws.machine.learning:sagemaker_create_labeling_job]{create_labeling_job} \tab Creates a job that uses workers to label the data objects in your input dataset\cr
@@ -28302,8 +28311,8 @@ rekognition <- function(config = list(), credentials = list(), endpoint = NULL, 
 #'  \link[paws.machine.learning:sagemaker_create_model_package]{create_model_package} \tab Creates a model package that you can use to create SageMaker models or list on Amazon Web Services Marketplace, or a versioned model that is part of a model group\cr
 #'  \link[paws.machine.learning:sagemaker_create_model_package_group]{create_model_package_group} \tab Creates a model group\cr
 #'  \link[paws.machine.learning:sagemaker_create_model_quality_job_definition]{create_model_quality_job_definition} \tab Creates a definition for a job that monitors model quality and drift\cr
-#'  \link[paws.machine.learning:sagemaker_create_monitoring_schedule]{create_monitoring_schedule} \tab Creates a schedule that regularly starts Amazon SageMaker Processing Jobs to monitor the data captured for an Amazon SageMaker Endpoint\cr
-#'  \link[paws.machine.learning:sagemaker_create_notebook_instance]{create_notebook_instance} \tab Creates an SageMaker notebook instance\cr
+#'  \link[paws.machine.learning:sagemaker_create_monitoring_schedule]{create_monitoring_schedule} \tab Creates a schedule that regularly starts Amazon SageMaker AI Processing Jobs to monitor the data captured for an Amazon SageMaker AI Endpoint\cr
+#'  \link[paws.machine.learning:sagemaker_create_notebook_instance]{create_notebook_instance} \tab Creates an SageMaker AI notebook instance\cr
 #'  \link[paws.machine.learning:sagemaker_create_notebook_instance_lifecycle_config]{create_notebook_instance_lifecycle_config} \tab Creates a lifecycle configuration that you can associate with a notebook instance\cr
 #'  \link[paws.machine.learning:sagemaker_create_optimization_job]{create_optimization_job} \tab Creates a job that optimizes a model for inference performance\cr
 #'  \link[paws.machine.learning:sagemaker_create_partner_app]{create_partner_app} \tab Creates an Amazon SageMaker Partner AI App\cr
@@ -28315,7 +28324,7 @@ rekognition <- function(config = list(), credentials = list(), endpoint = NULL, 
 #'  \link[paws.machine.learning:sagemaker_create_processing_job]{create_processing_job} \tab Creates a processing job\cr
 #'  \link[paws.machine.learning:sagemaker_create_project]{create_project} \tab Creates a machine learning (ML) project that can contain one or more templates that set up an ML pipeline from training to deploying an approved model\cr
 #'  \link[paws.machine.learning:sagemaker_create_space]{create_space} \tab Creates a private space or a space used for real time collaboration in a domain\cr
-#'  \link[paws.machine.learning:sagemaker_create_studio_lifecycle_config]{create_studio_lifecycle_config} \tab Creates a new Amazon SageMaker Studio Lifecycle Configuration\cr
+#'  \link[paws.machine.learning:sagemaker_create_studio_lifecycle_config]{create_studio_lifecycle_config} \tab Creates a new Amazon SageMaker AI Studio Lifecycle Configuration\cr
 #'  \link[paws.machine.learning:sagemaker_create_training_job]{create_training_job} \tab Starts a model training job\cr
 #'  \link[paws.machine.learning:sagemaker_create_training_plan]{create_training_plan} \tab Creates a new training plan in SageMaker to reserve compute capacity\cr
 #'  \link[paws.machine.learning:sagemaker_create_transform_job]{create_transform_job} \tab Starts a transform job\cr
@@ -28351,28 +28360,28 @@ rekognition <- function(config = list(), credentials = list(), endpoint = NULL, 
 #'  \link[paws.machine.learning:sagemaker_delete_hub_content_reference]{delete_hub_content_reference} \tab Delete a hub content reference in order to remove a model from a private hub\cr
 #'  \link[paws.machine.learning:sagemaker_delete_human_task_ui]{delete_human_task_ui} \tab Use this operation to delete a human task user interface (worker task template)\cr
 #'  \link[paws.machine.learning:sagemaker_delete_hyper_parameter_tuning_job]{delete_hyper_parameter_tuning_job} \tab Deletes a hyperparameter tuning job\cr
-#'  \link[paws.machine.learning:sagemaker_delete_image]{delete_image} \tab Deletes a SageMaker image and all versions of the image\cr
-#'  \link[paws.machine.learning:sagemaker_delete_image_version]{delete_image_version} \tab Deletes a version of a SageMaker image\cr
+#'  \link[paws.machine.learning:sagemaker_delete_image]{delete_image} \tab Deletes a SageMaker AI image and all versions of the image\cr
+#'  \link[paws.machine.learning:sagemaker_delete_image_version]{delete_image_version} \tab Deletes a version of a SageMaker AI image\cr
 #'  \link[paws.machine.learning:sagemaker_delete_inference_component]{delete_inference_component} \tab Deletes an inference component\cr
 #'  \link[paws.machine.learning:sagemaker_delete_inference_experiment]{delete_inference_experiment} \tab Deletes an inference experiment\cr
 #'  \link[paws.machine.learning:sagemaker_delete_mlflow_tracking_server]{delete_mlflow_tracking_server} \tab Deletes an MLflow Tracking Server\cr
 #'  \link[paws.machine.learning:sagemaker_delete_model]{delete_model} \tab Deletes a model\cr
-#'  \link[paws.machine.learning:sagemaker_delete_model_bias_job_definition]{delete_model_bias_job_definition} \tab Deletes an Amazon SageMaker model bias job definition\cr
+#'  \link[paws.machine.learning:sagemaker_delete_model_bias_job_definition]{delete_model_bias_job_definition} \tab Deletes an Amazon SageMaker AI model bias job definition\cr
 #'  \link[paws.machine.learning:sagemaker_delete_model_card]{delete_model_card} \tab Deletes an Amazon SageMaker Model Card\cr
-#'  \link[paws.machine.learning:sagemaker_delete_model_explainability_job_definition]{delete_model_explainability_job_definition} \tab Deletes an Amazon SageMaker model explainability job definition\cr
+#'  \link[paws.machine.learning:sagemaker_delete_model_explainability_job_definition]{delete_model_explainability_job_definition} \tab Deletes an Amazon SageMaker AI model explainability job definition\cr
 #'  \link[paws.machine.learning:sagemaker_delete_model_package]{delete_model_package} \tab Deletes a model package\cr
 #'  \link[paws.machine.learning:sagemaker_delete_model_package_group]{delete_model_package_group} \tab Deletes the specified model group\cr
 #'  \link[paws.machine.learning:sagemaker_delete_model_package_group_policy]{delete_model_package_group_policy} \tab Deletes a model group resource policy\cr
 #'  \link[paws.machine.learning:sagemaker_delete_model_quality_job_definition]{delete_model_quality_job_definition} \tab Deletes the secified model quality monitoring job definition\cr
 #'  \link[paws.machine.learning:sagemaker_delete_monitoring_schedule]{delete_monitoring_schedule} \tab Deletes a monitoring schedule\cr
-#'  \link[paws.machine.learning:sagemaker_delete_notebook_instance]{delete_notebook_instance} \tab Deletes an SageMaker notebook instance\cr
+#'  \link[paws.machine.learning:sagemaker_delete_notebook_instance]{delete_notebook_instance} \tab Deletes an SageMaker AI notebook instance\cr
 #'  \link[paws.machine.learning:sagemaker_delete_notebook_instance_lifecycle_config]{delete_notebook_instance_lifecycle_config} \tab Deletes a notebook instance lifecycle configuration\cr
 #'  \link[paws.machine.learning:sagemaker_delete_optimization_job]{delete_optimization_job} \tab Deletes an optimization job\cr
 #'  \link[paws.machine.learning:sagemaker_delete_partner_app]{delete_partner_app} \tab Deletes a SageMaker Partner AI App\cr
 #'  \link[paws.machine.learning:sagemaker_delete_pipeline]{delete_pipeline} \tab Deletes a pipeline if there are no running instances of the pipeline\cr
 #'  \link[paws.machine.learning:sagemaker_delete_project]{delete_project} \tab Delete the specified project\cr
 #'  \link[paws.machine.learning:sagemaker_delete_space]{delete_space} \tab Used to delete a space\cr
-#'  \link[paws.machine.learning:sagemaker_delete_studio_lifecycle_config]{delete_studio_lifecycle_config} \tab Deletes the Amazon SageMaker Studio Lifecycle Configuration\cr
+#'  \link[paws.machine.learning:sagemaker_delete_studio_lifecycle_config]{delete_studio_lifecycle_config} \tab Deletes the Amazon SageMaker AI Studio Lifecycle Configuration\cr
 #'  \link[paws.machine.learning:sagemaker_delete_tags]{delete_tags} \tab Deletes the specified tags from an SageMaker resource\cr
 #'  \link[paws.machine.learning:sagemaker_delete_trial]{delete_trial} \tab Deletes the specified trial\cr
 #'  \link[paws.machine.learning:sagemaker_delete_trial_component]{delete_trial_component} \tab Deletes the specified trial component\cr
@@ -28410,8 +28419,8 @@ rekognition <- function(config = list(), credentials = list(), endpoint = NULL, 
 #'  \link[paws.machine.learning:sagemaker_describe_hub_content]{describe_hub_content} \tab Describe the content of a hub\cr
 #'  \link[paws.machine.learning:sagemaker_describe_human_task_ui]{describe_human_task_ui} \tab Returns information about the requested human task user interface (worker task template)\cr
 #'  \link[paws.machine.learning:sagemaker_describe_hyper_parameter_tuning_job]{describe_hyper_parameter_tuning_job} \tab Returns a description of a hyperparameter tuning job, depending on the fields selected\cr
-#'  \link[paws.machine.learning:sagemaker_describe_image]{describe_image} \tab Describes a SageMaker image\cr
-#'  \link[paws.machine.learning:sagemaker_describe_image_version]{describe_image_version} \tab Describes a version of a SageMaker image\cr
+#'  \link[paws.machine.learning:sagemaker_describe_image]{describe_image} \tab Describes a SageMaker AI image\cr
+#'  \link[paws.machine.learning:sagemaker_describe_image_version]{describe_image_version} \tab Describes a version of a SageMaker AI image\cr
 #'  \link[paws.machine.learning:sagemaker_describe_inference_component]{describe_inference_component} \tab Returns information about an inference component\cr
 #'  \link[paws.machine.learning:sagemaker_describe_inference_experiment]{describe_inference_experiment} \tab Returns details about an inference experiment\cr
 #'  \link[paws.machine.learning:sagemaker_describe_inference_recommendations_job]{describe_inference_recommendations_job} \tab Provides the results of the Inference Recommender job\cr
@@ -28437,7 +28446,7 @@ rekognition <- function(config = list(), credentials = list(), endpoint = NULL, 
 #'  \link[paws.machine.learning:sagemaker_describe_processing_job]{describe_processing_job} \tab Returns a description of a processing job\cr
 #'  \link[paws.machine.learning:sagemaker_describe_project]{describe_project} \tab Describes the details of a project\cr
 #'  \link[paws.machine.learning:sagemaker_describe_space]{describe_space} \tab Describes the space\cr
-#'  \link[paws.machine.learning:sagemaker_describe_studio_lifecycle_config]{describe_studio_lifecycle_config} \tab Describes the Amazon SageMaker Studio Lifecycle Configuration\cr
+#'  \link[paws.machine.learning:sagemaker_describe_studio_lifecycle_config]{describe_studio_lifecycle_config} \tab Describes the Amazon SageMaker AI Studio Lifecycle Configuration\cr
 #'  \link[paws.machine.learning:sagemaker_describe_subscribed_workteam]{describe_subscribed_workteam} \tab Gets information about a work team provided by a vendor\cr
 #'  \link[paws.machine.learning:sagemaker_describe_training_job]{describe_training_job} \tab Returns information about a training job\cr
 #'  \link[paws.machine.learning:sagemaker_describe_training_plan]{describe_training_plan} \tab Retrieves detailed information about a specific training plan\cr
@@ -28514,7 +28523,7 @@ rekognition <- function(config = list(), credentials = list(), endpoint = NULL, 
 #'  \link[paws.machine.learning:sagemaker_list_monitoring_executions]{list_monitoring_executions} \tab Returns list of all monitoring job executions\cr
 #'  \link[paws.machine.learning:sagemaker_list_monitoring_schedules]{list_monitoring_schedules} \tab Returns list of all monitoring schedules\cr
 #'  \link[paws.machine.learning:sagemaker_list_notebook_instance_lifecycle_configs]{list_notebook_instance_lifecycle_configs} \tab Lists notebook instance lifestyle configurations created with the CreateNotebookInstanceLifecycleConfig API\cr
-#'  \link[paws.machine.learning:sagemaker_list_notebook_instances]{list_notebook_instances} \tab Returns a list of the SageMaker notebook instances in the requester's account in an Amazon Web Services Region\cr
+#'  \link[paws.machine.learning:sagemaker_list_notebook_instances]{list_notebook_instances} \tab Returns a list of the SageMaker AI notebook instances in the requester's account in an Amazon Web Services Region\cr
 #'  \link[paws.machine.learning:sagemaker_list_optimization_jobs]{list_optimization_jobs} \tab Lists the optimization jobs in your account and their properties\cr
 #'  \link[paws.machine.learning:sagemaker_list_partner_apps]{list_partner_apps} \tab Lists all of the SageMaker Partner AI Apps in an account\cr
 #'  \link[paws.machine.learning:sagemaker_list_pipeline_executions]{list_pipeline_executions} \tab Gets a list of the pipeline executions\cr
@@ -28526,7 +28535,7 @@ rekognition <- function(config = list(), credentials = list(), endpoint = NULL, 
 #'  \link[paws.machine.learning:sagemaker_list_resource_catalogs]{list_resource_catalogs} \tab Lists Amazon SageMaker Catalogs based on given filters and orders\cr
 #'  \link[paws.machine.learning:sagemaker_list_spaces]{list_spaces} \tab Lists spaces\cr
 #'  \link[paws.machine.learning:sagemaker_list_stage_devices]{list_stage_devices} \tab Lists devices allocated to the stage, containing detailed device information and deployment status\cr
-#'  \link[paws.machine.learning:sagemaker_list_studio_lifecycle_configs]{list_studio_lifecycle_configs} \tab Lists the Amazon SageMaker Studio Lifecycle Configurations in your Amazon Web Services Account\cr
+#'  \link[paws.machine.learning:sagemaker_list_studio_lifecycle_configs]{list_studio_lifecycle_configs} \tab Lists the Amazon SageMaker AI Studio Lifecycle Configurations in your Amazon Web Services Account\cr
 #'  \link[paws.machine.learning:sagemaker_list_subscribed_workteams]{list_subscribed_workteams} \tab Gets a list of the work teams that you are subscribed to in the Amazon Web Services Marketplace\cr
 #'  \link[paws.machine.learning:sagemaker_list_tags]{list_tags} \tab Returns the tags for the specified SageMaker resource\cr
 #'  \link[paws.machine.learning:sagemaker_list_training_jobs]{list_training_jobs} \tab Lists training jobs\cr
@@ -28587,8 +28596,8 @@ rekognition <- function(config = list(), credentials = list(), endpoint = NULL, 
 #'  \link[paws.machine.learning:sagemaker_update_feature_group]{update_feature_group} \tab Updates the feature group by either adding features or updating the online store configuration\cr
 #'  \link[paws.machine.learning:sagemaker_update_feature_metadata]{update_feature_metadata} \tab Updates the description and parameters of the feature group\cr
 #'  \link[paws.machine.learning:sagemaker_update_hub]{update_hub} \tab Update a hub\cr
-#'  \link[paws.machine.learning:sagemaker_update_image]{update_image} \tab Updates the properties of a SageMaker image\cr
-#'  \link[paws.machine.learning:sagemaker_update_image_version]{update_image_version} \tab Updates the properties of a SageMaker image version\cr
+#'  \link[paws.machine.learning:sagemaker_update_image]{update_image} \tab Updates the properties of a SageMaker AI image\cr
+#'  \link[paws.machine.learning:sagemaker_update_image_version]{update_image_version} \tab Updates the properties of a SageMaker AI image version\cr
 #'  \link[paws.machine.learning:sagemaker_update_inference_component]{update_inference_component} \tab Updates an inference component\cr
 #'  \link[paws.machine.learning:sagemaker_update_inference_component_runtime_config]{update_inference_component_runtime_config} \tab Runtime settings for a model that is deployed with an inference component\cr
 #'  \link[paws.machine.learning:sagemaker_update_inference_experiment]{update_inference_experiment} \tab Updates an inference experiment that you created\cr
@@ -30391,7 +30400,7 @@ bedrockagentruntime <- function(config = list(), credentials = list(), endpoint 
 #' Data Automation for Amazon Bedrock
 #'
 #' @description
-#' Amazon Bedrock Keystone Build
+#' Amazon Bedrock Data Automation BuildTime
 #'
 #' @param
 #' config
@@ -30476,17 +30485,17 @@ bedrockagentruntime <- function(config = list(), credentials = list(), endpoint 
 #'
 #' @section Operations:
 #' \tabular{ll}{
-#'  \link[paws.machine.learning:bedrockdataautomation_create_blueprint]{create_blueprint} \tab Creates an Amazon Bedrock Keystone Blueprint\cr
-#'  \link[paws.machine.learning:bedrockdataautomation_create_blueprint_version]{create_blueprint_version} \tab Creates a new version of an existing Amazon Bedrock Keystone Blueprint\cr
-#'  \link[paws.machine.learning:bedrockdataautomation_create_data_automation_project]{create_data_automation_project} \tab Creates an Amazon Bedrock Keystone DataAutomationProject\cr
-#'  \link[paws.machine.learning:bedrockdataautomation_delete_blueprint]{delete_blueprint} \tab Deletes an existing Amazon Bedrock Keystone Blueprint\cr
-#'  \link[paws.machine.learning:bedrockdataautomation_delete_data_automation_project]{delete_data_automation_project} \tab Deletes an existing Amazon Bedrock Keystone DataAutomationProject\cr
-#'  \link[paws.machine.learning:bedrockdataautomation_get_blueprint]{get_blueprint} \tab Gets an existing Amazon Bedrock Keystone Blueprint\cr
-#'  \link[paws.machine.learning:bedrockdataautomation_get_data_automation_project]{get_data_automation_project} \tab Gets an existing Amazon Bedrock Keystone DataAutomationProject\cr
-#'  \link[paws.machine.learning:bedrockdataautomation_list_blueprints]{list_blueprints} \tab Lists all existing Amazon Bedrock Keystone Blueprints\cr
-#'  \link[paws.machine.learning:bedrockdataautomation_list_data_automation_projects]{list_data_automation_projects} \tab Lists all existing Amazon Bedrock Keystone DataAutomationProjects\cr
-#'  \link[paws.machine.learning:bedrockdataautomation_update_blueprint]{update_blueprint} \tab Updates an existing Amazon Bedrock Blueprint\cr
-#'  \link[paws.machine.learning:bedrockdataautomation_update_data_automation_project]{update_data_automation_project} \tab Updates an existing Amazon Bedrock DataAutomationProject
+#'  \link[paws.machine.learning:bedrockdataautomation_create_blueprint]{create_blueprint} \tab Creates an Amazon Bedrock Data Automation Blueprint\cr
+#'  \link[paws.machine.learning:bedrockdataautomation_create_blueprint_version]{create_blueprint_version} \tab Creates a new version of an existing Amazon Bedrock Data Automation Blueprint\cr
+#'  \link[paws.machine.learning:bedrockdataautomation_create_data_automation_project]{create_data_automation_project} \tab Creates an Amazon Bedrock Data Automation Project\cr
+#'  \link[paws.machine.learning:bedrockdataautomation_delete_blueprint]{delete_blueprint} \tab Deletes an existing Amazon Bedrock Data Automation Blueprint\cr
+#'  \link[paws.machine.learning:bedrockdataautomation_delete_data_automation_project]{delete_data_automation_project} \tab Deletes an existing Amazon Bedrock Data Automation Project\cr
+#'  \link[paws.machine.learning:bedrockdataautomation_get_blueprint]{get_blueprint} \tab Gets an existing Amazon Bedrock Data Automation Blueprint\cr
+#'  \link[paws.machine.learning:bedrockdataautomation_get_data_automation_project]{get_data_automation_project} \tab Gets an existing Amazon Bedrock Data Automation Project\cr
+#'  \link[paws.machine.learning:bedrockdataautomation_list_blueprints]{list_blueprints} \tab Lists all existing Amazon Bedrock Data Automation Blueprints\cr
+#'  \link[paws.machine.learning:bedrockdataautomation_list_data_automation_projects]{list_data_automation_projects} \tab Lists all existing Amazon Bedrock Data Automation Projects\cr
+#'  \link[paws.machine.learning:bedrockdataautomation_update_blueprint]{update_blueprint} \tab Updates an existing Amazon Bedrock Data Automation Blueprint\cr
+#'  \link[paws.machine.learning:bedrockdataautomation_update_data_automation_project]{update_data_automation_project} \tab Updates an existing Amazon Bedrock Data Automation Project
 #' }
 #'
 #' @return
@@ -30509,7 +30518,7 @@ bedrockdataautomation <- function(config = list(), credentials = list(), endpoin
 #' Runtime for Amazon Bedrock Data Automation
 #'
 #' @description
-#' Amazon Bedrock Keystone Runtime
+#' Amazon Bedrock Data Automation Runtime
 #'
 #' @param
 #' config
@@ -38979,7 +38988,7 @@ kms <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #'  \link[paws.security.identity:macie2_list_automated_discovery_accounts]{list_automated_discovery_accounts} \tab Retrieves the status of automated sensitive data discovery for one or more accounts\cr
 #'  \link[paws.security.identity:macie2_list_classification_jobs]{list_classification_jobs} \tab Retrieves a subset of information about one or more classification jobs\cr
 #'  \link[paws.security.identity:macie2_list_classification_scopes]{list_classification_scopes} \tab Retrieves a subset of information about the classification scope for an account\cr
-#'  \link[paws.security.identity:macie2_list_custom_data_identifiers]{list_custom_data_identifiers} \tab Retrieves a subset of information about all the custom data identifiers for an account\cr
+#'  \link[paws.security.identity:macie2_list_custom_data_identifiers]{list_custom_data_identifiers} \tab Retrieves a subset of information about the custom data identifiers for an account\cr
 #'  \link[paws.security.identity:macie2_list_findings]{list_findings} \tab Retrieves a subset of information about one or more findings\cr
 #'  \link[paws.security.identity:macie2_list_findings_filters]{list_findings_filters} \tab Retrieves a subset of information about all the findings filters for an account\cr
 #'  \link[paws.security.identity:macie2_list_invitations]{list_invitations} \tab Retrieves information about Amazon Macie membership invitations that were received by an account\cr
@@ -38992,7 +39001,7 @@ kms <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #'  \link[paws.security.identity:macie2_list_tags_for_resource]{list_tags_for_resource} \tab Retrieves the tags (keys and values) that are associated with an Amazon Macie resource\cr
 #'  \link[paws.security.identity:macie2_put_classification_export_configuration]{put_classification_export_configuration} \tab Adds or updates the configuration settings for storing data classification results\cr
 #'  \link[paws.security.identity:macie2_put_findings_publication_configuration]{put_findings_publication_configuration} \tab Updates the configuration settings for publishing findings to Security Hub\cr
-#'  \link[paws.security.identity:macie2_search_resources]{search_resources} \tab Retrieves (queries) statistical data and other information about Amazon Web Services resources that Amazon Macie monitors and analyzes\cr
+#'  \link[paws.security.identity:macie2_search_resources]{search_resources} \tab Retrieves (queries) statistical data and other information about Amazon Web Services resources that Amazon Macie monitors and analyzes for an account\cr
 #'  \link[paws.security.identity:macie2_tag_resource]{tag_resource} \tab Adds or updates one or more tags (keys and values) that are associated with an Amazon Macie resource\cr
 #'  \link[paws.security.identity:macie2_test_custom_data_identifier]{test_custom_data_identifier} \tab Tests criteria for a custom data identifier\cr
 #'  \link[paws.security.identity:macie2_untag_resource]{untag_resource} \tab Removes one or more tags (keys and values) from an Amazon Macie resource\cr
@@ -43833,14 +43842,23 @@ billingconductor <- function(config = list(), credentials = list(), endpoint = N
 #' @examples
 #' \dontrun{
 #' svc <- billing()
-#' svc$list_billing_views(
+#' svc$create_billing_view(
 #'   Foo = 123
 #' )
 #' }
 #'
 #' @section Operations:
 #' \tabular{ll}{
-#'  \link[paws.cost.management:billing_list_billing_views]{list_billing_views} \tab Lists the billing views available for a given time period
+#'  \link[paws.cost.management:billing_create_billing_view]{create_billing_view} \tab Creates a billing view with the specified billing view attributes\cr
+#'  \link[paws.cost.management:billing_delete_billing_view]{delete_billing_view} \tab Deletes the specified billing view\cr
+#'  \link[paws.cost.management:billing_get_billing_view]{get_billing_view} \tab Returns the metadata associated to the specified billing view ARN\cr
+#'  \link[paws.cost.management:billing_get_resource_policy]{get_resource_policy} \tab Returns the resource-based policy document attached to the resource in JSON format\cr
+#'  \link[paws.cost.management:billing_list_billing_views]{list_billing_views} \tab Lists the billing views available for a given time period\cr
+#'  \link[paws.cost.management:billing_list_source_views_for_billing_view]{list_source_views_for_billing_view} \tab Lists the source views (managed Amazon Web Services billing views) associated with the billing view\cr
+#'  \link[paws.cost.management:billing_list_tags_for_resource]{list_tags_for_resource} \tab Lists tags associated with the billing view resource\cr
+#'  \link[paws.cost.management:billing_tag_resource]{tag_resource} \tab An API operation for adding one or more tags (key-value pairs) to a resource\cr
+#'  \link[paws.cost.management:billing_untag_resource]{untag_resource} \tab Removes one or more tags from a resource\cr
+#'  \link[paws.cost.management:billing_update_billing_view]{update_billing_view} \tab An API to update the attributes of the billing view
 #' }
 #'
 #' @return

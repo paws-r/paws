@@ -30,7 +30,7 @@ must be set.}
 \item{Tags}{Each tag consists of a key and an optional value. Tag keys must be
 unique per resource.}
 
-\item{ResourceSpec}{The instance type and the Amazon Resource Name (ARN) of the SageMaker
+\item{ResourceSpec}{The instance type and the Amazon Resource Name (ARN) of the SageMaker AI
 image created on the instance.
 
 The value of \code{InstanceType} passed as part of the \code{ResourceSpec} in the
@@ -42,7 +42,7 @@ domain. If \code{InstanceType} is not specified in any of those three
 validation error.}
 }
 \description{
-Creates a running app for the specified UserProfile. This operation is automatically invoked by Amazon SageMaker upon access to the associated Domain, and when new kernel configurations are selected by the user. A user may have multiple Apps active simultaneously.
+Creates a running app for the specified UserProfile. This operation is automatically invoked by Amazon SageMaker AI upon access to the associated Domain, and when new kernel configurations are selected by the user. A user may have multiple Apps active simultaneously.
 
 See \url{https://www.paws-r-sdk.com/docs/sagemaker_create_app/} for full documentation.
 }

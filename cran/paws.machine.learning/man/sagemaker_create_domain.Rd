@@ -52,13 +52,13 @@ Domain launches.}
 \code{PublicInternetOnly}.
 \itemize{
 \item \code{PublicInternetOnly} - Non-EFS traffic is through a VPC managed by
-Amazon SageMaker, which allows direct internet access
+Amazon SageMaker AI, which allows direct internet access
 \item \code{VpcOnly} - All traffic is through the specified VPC and subnets
 }}
 
 \item{HomeEfsFileSystemKmsKeyId}{Use \code{KmsKeyId}.}
 
-\item{KmsKeyId}{SageMaker uses Amazon Web Services KMS to encrypt EFS and EBS volumes
+\item{KmsKeyId}{SageMaker AI uses Amazon Web Services KMS to encrypt EFS and EBS volumes
 attached to the domain with an Amazon Web Services managed key by
 default. For more control, specify a customer managed key.}
 

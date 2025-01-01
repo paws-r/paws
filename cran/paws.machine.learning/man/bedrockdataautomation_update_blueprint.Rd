@@ -2,7 +2,7 @@
 % Please edit documentation in R/bedrockdataautomation_operations.R
 \name{bedrockdataautomation_update_blueprint}
 \alias{bedrockdataautomation_update_blueprint}
-\title{Updates an existing Amazon Bedrock Blueprint}
+\title{Updates an existing Amazon Bedrock Data Automation Blueprint}
 \usage{
 bedrockdataautomation_update_blueprint(
   blueprintArn,
@@ -18,7 +18,7 @@ bedrockdataautomation_update_blueprint(
 \item{blueprintStage}{}
 }
 \description{
-Updates an existing Amazon Bedrock Blueprint
+Updates an existing Amazon Bedrock Data Automation Blueprint
 
 See \url{https://www.paws-r-sdk.com/docs/bedrockdataautomation_update_blueprint/} for full documentation.
 }

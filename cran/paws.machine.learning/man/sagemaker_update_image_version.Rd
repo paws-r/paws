@@ -2,7 +2,7 @@
 % Please edit documentation in R/sagemaker_operations.R
 \name{sagemaker_update_image_version}
 \alias{sagemaker_update_image_version}
-\title{Updates the properties of a SageMaker image version}
+\title{Updates the properties of a SageMaker AI image version}
 \usage{
 sagemaker_update_image_version(
   ImageName,
@@ -42,13 +42,13 @@ archived after three months.
 are not searchable and are no longer actively supported.
 }}
 
-\item{JobType}{Indicates SageMaker job type compatibility.
+\item{JobType}{Indicates SageMaker AI job type compatibility.
 \itemize{
-\item \code{TRAINING}: The image version is compatible with SageMaker training
-jobs.
-\item \code{INFERENCE}: The image version is compatible with SageMaker
+\item \code{TRAINING}: The image version is compatible with SageMaker AI
+training jobs.
+\item \code{INFERENCE}: The image version is compatible with SageMaker AI
 inference jobs.
-\item \code{NOTEBOOK_KERNEL}: The image version is compatible with SageMaker
+\item \code{NOTEBOOK_KERNEL}: The image version is compatible with SageMaker AI
 notebook kernels.
 }}
 
@@ -67,7 +67,7 @@ notebook kernels.
 \item{ReleaseNotes}{The maintainer description of the image version.}
 }
 \description{
-Updates the properties of a SageMaker image version.
+Updates the properties of a SageMaker AI image version.
 
 See \url{https://www.paws-r-sdk.com/docs/sagemaker_update_image_version/} for full documentation.
 }

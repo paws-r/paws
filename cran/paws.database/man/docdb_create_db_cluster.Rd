@@ -25,7 +25,9 @@ docdb_create_db_cluster(
   EnableCloudwatchLogsExports = NULL,
   DeletionProtection = NULL,
   GlobalClusterIdentifier = NULL,
-  StorageType = NULL
+  StorageType = NULL,
+  ManageMasterUserPassword = NULL,
+  MasterUserSecretKmsKeyId = NULL
 )
 }
 \arguments{
@@ -168,6 +170,32 @@ Default value is \code{standard }
 When you create a DocumentDB DB cluster with the storage type set to
 \code{iopt1}, the storage type is returned in the response. The storage type
 isn't returned when you set it to \code{standard}.}
+
+\item{ManageMasterUserPassword}{Specifies whether to manage the master user password with Amazon Web
+Services Secrets Manager.
+
+Constraint: You can't manage the master user password with Amazon Web
+Services Secrets Manager if \code{MasterUserPassword} is specified.}
+
+\item{MasterUserSecretKmsKeyId}{The Amazon Web Services KMS key identifier to encrypt a secret that is
+automatically generated and managed in Amazon Web Services Secrets
+Manager. This setting is valid only if the master user password is
+managed by Amazon DocumentDB in Amazon Web Services Secrets Manager for
+the DB cluster.
+
+The Amazon Web Services KMS key identifier is the key ARN, key ID, alias
+ARN, or alias name for the KMS key. To use a KMS key in a different
+Amazon Web Services account, specify the key ARN or alias ARN.
+
+If you don't specify \code{MasterUserSecretKmsKeyId}, then the
+\code{aws/secretsmanager} KMS key is used to encrypt the secret. If the
+secret is in a different Amazon Web Services account, then you can't use
+the \code{aws/secretsmanager} KMS key to encrypt the secret, and you must use
+a customer managed KMS key.
+
+There is a default KMS key for your Amazon Web Services account. Your
+Amazon Web Services account has a different default KMS key for each
+Amazon Web Services Region.}
 }
 \description{
 Creates a new Amazon DocumentDB cluster.

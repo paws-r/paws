@@ -2,8 +2,8 @@
 % Please edit documentation in R/sagemaker_operations.R
 \name{sagemaker_create_inference_component}
 \alias{sagemaker_create_inference_component}
-\title{Creates an inference component, which is a SageMaker hosting object that
-you can use to deploy a model to an endpoint}
+\title{Creates an inference component, which is a SageMaker AI hosting object
+that you can use to deploy a model to an endpoint}
 \usage{
 sagemaker_create_inference_component(
   InferenceComponentName,
@@ -33,7 +33,7 @@ information, see \href{https://docs.aws.amazon.com/tag-editor/latest/userguide/t
 in the \emph{Amazon Web Services General Reference}.}
 }
 \description{
-Creates an inference component, which is a SageMaker hosting object that you can use to deploy a model to an endpoint. In the inference component settings, you specify the model, the endpoint, and how the model utilizes the resources that the endpoint hosts. You can optimize resource utilization by tailoring how the required CPU cores, accelerators, and memory are allocated. You can deploy multiple inference components to an endpoint, where each inference component contains one model and the resource utilization needs for that individual model. After you deploy an inference component, you can directly invoke the associated model when you use the InvokeEndpoint API action.
+Creates an inference component, which is a SageMaker AI hosting object that you can use to deploy a model to an endpoint. In the inference component settings, you specify the model, the endpoint, and how the model utilizes the resources that the endpoint hosts. You can optimize resource utilization by tailoring how the required CPU cores, accelerators, and memory are allocated. You can deploy multiple inference components to an endpoint, where each inference component contains one model and the resource utilization needs for that individual model. After you deploy an inference component, you can directly invoke the associated model when you use the InvokeEndpoint API action.
 
 See \url{https://www.paws-r-sdk.com/docs/sagemaker_create_inference_component/} for full documentation.
 }

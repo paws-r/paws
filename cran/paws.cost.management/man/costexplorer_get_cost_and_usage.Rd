@@ -10,6 +10,7 @@ costexplorer_get_cost_and_usage(
   Filter = NULL,
   Metrics,
   GroupBy = NULL,
+  BillingViewArn = NULL,
   NextPageToken = NULL
 )
 }
@@ -68,6 +69,13 @@ Valid values for the \code{DIMENSION} type are \code{AZ}, \code{INSTANCE_TYPE},
 
 When you group by the \code{TAG} type and include a valid tag key, you get
 all tag values, including empty strings.}
+
+\item{BillingViewArn}{The Amazon Resource Name (ARN) that uniquely identifies a specific
+billing view. The ARN is used to specify which particular billing view
+you want to interact with or retrieve information from when making API
+calls related to Amazon Web Services Billing and Cost Management
+features. The BillingViewArn can be retrieved by calling the
+ListBillingViews API.}
 
 \item{NextPageToken}{The token to retrieve the next set of results. Amazon Web Services
 provides the token when the response from a previous call has more

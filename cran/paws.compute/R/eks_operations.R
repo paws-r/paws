@@ -1178,6 +1178,43 @@ eks_describe_cluster <- function(name) {
 }
 .eks$operations$describe_cluster <- eks_describe_cluster
 
+#' Lists available Kubernetes versions for Amazon EKS clusters
+#'
+#' @description
+#' Lists available Kubernetes versions for Amazon EKS clusters.
+#'
+#' See [https://www.paws-r-sdk.com/docs/eks_describe_cluster_versions/](https://www.paws-r-sdk.com/docs/eks_describe_cluster_versions/) for full documentation.
+#'
+#' @param clusterType The type of cluster to filter versions by.
+#' @param maxResults Maximum number of results to return.
+#' @param nextToken Pagination token for the next set of results.
+#' @param defaultOnly Filter to show only default versions.
+#' @param includeAll Include all available versions in the response.
+#' @param clusterVersions List of specific cluster versions to describe.
+#' @param status Filter versions by their current status.
+#'
+#' @keywords internal
+#'
+#' @rdname eks_describe_cluster_versions
+eks_describe_cluster_versions <- function(clusterType = NULL, maxResults = NULL, nextToken = NULL, defaultOnly = NULL, includeAll = NULL, clusterVersions = NULL, status = NULL) {
+  op <- new_operation(
+    name = "DescribeClusterVersions",
+    http_method = "GET",
+    http_path = "/cluster-versions",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "clusterVersions"),
+    stream_api = FALSE
+  )
+  input <- .eks$describe_cluster_versions_input(clusterType = clusterType, maxResults = maxResults, nextToken = nextToken, defaultOnly = defaultOnly, includeAll = includeAll, clusterVersions = clusterVersions, status = status)
+  output <- .eks$describe_cluster_versions_output()
+  config <- get_config()
+  svc <- .eks$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eks$operations$describe_cluster_versions <- eks_describe_cluster_versions
+
 #' Returns descriptive information about a subscription
 #'
 #' @description

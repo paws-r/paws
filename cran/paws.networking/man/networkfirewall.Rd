@@ -56,21 +56,29 @@ Operations section.
 This is the API Reference for Network Firewall. This guide is for
 developers who need detailed information about the Network Firewall API
 actions, data types, and errors.
-\itemize{
-\item The REST API requires you to handle connection details, such as
-calculating signatures, handling request retries, and error
-handling. For general information about using the Amazon Web
-Services REST APIs, see \href{https://docs.aws.amazon.com/general/latest/gr/}{Amazon Web Services APIs}.
 
-To access Network Firewall using the REST API endpoint:
+The REST API requires you to handle connection details, such as
+calculating signatures, handling request retries, and error handling.
+For general information about using the Amazon Web Services REST APIs,
+see \href{https://docs.aws.amazon.com/general/latest/gr/}{Amazon Web Services APIs}.
+
+To view the complete list of Amazon Web Services Regions where Network
+Firewall is available, see \href{https://docs.aws.amazon.com/general/latest/gr/network-firewall.html}{Service endpoints and quotas}
+in the \emph{Amazon Web Services General Reference}.
+
+To access Network Firewall using the IPv4 REST API endpoint:
 \verb{https://network-firewall.<region>.amazonaws.com }
-\item Alternatively, you can use one of the Amazon Web Services SDKs to
-access an API that's tailored to the programming language or
-platform that you're using. For more information, see \href{https://aws.amazon.com/developer/tools/#SDKs}{Amazon Web Services SDKs}.
-\item For descriptions of Network Firewall features, including and
+
+To access Network Firewall using the Dualstack (IPv4 and IPv6) REST API
+endpoint: \verb{https://network-firewall.<region>.aws.api }
+
+Alternatively, you can use one of the Amazon Web Services SDKs to access
+an API that's tailored to the programming language or platform that
+you're using. For more information, see \href{https://aws.amazon.com/developer/tools/#SDKs}{Amazon Web Services SDKs}.
+
+For descriptions of Network Firewall features, including and
 step-by-step instructions on how to use them through the Network
 Firewall console, see the \href{https://docs.aws.amazon.com/network-firewall/latest/developerguide/}{Network Firewall Developer Guide}.
-}
 
 Network Firewall is a stateful, managed, network firewall and intrusion
 detection and prevention service for Amazon Virtual Private Cloud

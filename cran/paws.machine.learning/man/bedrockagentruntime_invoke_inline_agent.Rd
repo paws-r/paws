@@ -7,6 +7,7 @@ provide with the request}
 \usage{
 bedrockagentruntime_invoke_inline_agent(
   actionGroups = NULL,
+  bedrockModelConfigurations = NULL,
   customerEncryptionKeyArn = NULL,
   enableTrace = NULL,
   endSession = NULL,
@@ -24,6 +25,8 @@ bedrockagentruntime_invoke_inline_agent(
 \arguments{
 \item{actionGroups}{A list of action groups with each action group defining the action the
 inline agent needs to carry out.}
+
+\item{bedrockModelConfigurations}{Model settings for the request.}
 
 \item{customerEncryptionKeyArn}{The Amazon Resource Name (ARN) of the Amazon Web Services KMS key to use
 to encrypt your inline agent.}

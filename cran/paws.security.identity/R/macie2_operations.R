@@ -1948,11 +1948,11 @@ macie2_list_classification_scopes <- function(name = NULL, nextToken = NULL) {
 }
 .macie2$operations$list_classification_scopes <- macie2_list_classification_scopes
 
-#' Retrieves a subset of information about all the custom data identifiers
-#' for an account
+#' Retrieves a subset of information about the custom data identifiers for
+#' an account
 #'
 #' @description
-#' Retrieves a subset of information about all the custom data identifiers for an account.
+#' Retrieves a subset of information about the custom data identifiers for an account.
 #'
 #' See [https://www.paws-r-sdk.com/docs/macie2_list_custom_data_identifiers/](https://www.paws-r-sdk.com/docs/macie2_list_custom_data_identifiers/) for full documentation.
 #'
@@ -2402,10 +2402,11 @@ macie2_put_findings_publication_configuration <- function(clientToken = NULL, se
 .macie2$operations$put_findings_publication_configuration <- macie2_put_findings_publication_configuration
 
 #' Retrieves (queries) statistical data and other information about Amazon
-#' Web Services resources that Amazon Macie monitors and analyzes
+#' Web Services resources that Amazon Macie monitors and analyzes for an
+#' account
 #'
 #' @description
-#' Retrieves (queries) statistical data and other information about Amazon Web Services resources that Amazon Macie monitors and analyzes.
+#' Retrieves (queries) statistical data and other information about Amazon Web Services resources that Amazon Macie monitors and analyzes for an account.
 #'
 #' See [https://www.paws-r-sdk.com/docs/macie2_search_resources/](https://www.paws-r-sdk.com/docs/macie2_search_resources/) for full documentation.
 #'
@@ -2959,9 +2960,9 @@ macie2_update_resource_profile <- function(resourceArn, sensitivityScoreOverride
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the S3 bucket that the request applies
 #' to.
 #' @param suppressDataIdentifiers An array of objects, one for each custom data identifier or managed data
-#' identifier that detected the type of sensitive data to start excluding
-#' or including in the bucket's score. To start including all sensitive
-#' data types in the score, don't specify any values for this array.
+#' identifier that detected a type of sensitive data to exclude from the
+#' bucket's score. To include all sensitive data types in the score, don't
+#' specify any values for this array.
 #'
 #' @keywords internal
 #'

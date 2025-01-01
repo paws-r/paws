@@ -12,7 +12,8 @@ Description: Interface to 'Amazon Web Services' compute services,
     functions-as-a-service, containers, batch processing, and more
     <https://aws.amazon.com/>.
 License: Apache License (>= 2.0)
-URL: https://github.com/paws-r/paws
+URL: https://github.com/paws-r/paws,
+    https://paws-r.r-universe.dev/paws.compute
 BugReports: https://github.com/paws-r/paws/issues
 Imports: 
     paws.common (>= 0.8.0)

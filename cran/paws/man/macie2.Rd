@@ -141,7 +141,7 @@ Amazon Macie
 \link[paws.security.identity:macie2_list_automated_discovery_accounts]{list_automated_discovery_accounts} \tab Retrieves the status of automated sensitive data discovery for one or more accounts\cr
 \link[paws.security.identity:macie2_list_classification_jobs]{list_classification_jobs} \tab Retrieves a subset of information about one or more classification jobs\cr
 \link[paws.security.identity:macie2_list_classification_scopes]{list_classification_scopes} \tab Retrieves a subset of information about the classification scope for an account\cr
-\link[paws.security.identity:macie2_list_custom_data_identifiers]{list_custom_data_identifiers} \tab Retrieves a subset of information about all the custom data identifiers for an account\cr
+\link[paws.security.identity:macie2_list_custom_data_identifiers]{list_custom_data_identifiers} \tab Retrieves a subset of information about the custom data identifiers for an account\cr
 \link[paws.security.identity:macie2_list_findings]{list_findings} \tab Retrieves a subset of information about one or more findings\cr
 \link[paws.security.identity:macie2_list_findings_filters]{list_findings_filters} \tab Retrieves a subset of information about all the findings filters for an account\cr
 \link[paws.security.identity:macie2_list_invitations]{list_invitations} \tab Retrieves information about Amazon Macie membership invitations that were received by an account\cr
@@ -154,7 +154,7 @@ Amazon Macie
 \link[paws.security.identity:macie2_list_tags_for_resource]{list_tags_for_resource} \tab Retrieves the tags (keys and values) that are associated with an Amazon Macie resource\cr
 \link[paws.security.identity:macie2_put_classification_export_configuration]{put_classification_export_configuration} \tab Adds or updates the configuration settings for storing data classification results\cr
 \link[paws.security.identity:macie2_put_findings_publication_configuration]{put_findings_publication_configuration} \tab Updates the configuration settings for publishing findings to Security Hub\cr
-\link[paws.security.identity:macie2_search_resources]{search_resources} \tab Retrieves (queries) statistical data and other information about Amazon Web Services resources that Amazon Macie monitors and analyzes\cr
+\link[paws.security.identity:macie2_search_resources]{search_resources} \tab Retrieves (queries) statistical data and other information about Amazon Web Services resources that Amazon Macie monitors and analyzes for an account\cr
 \link[paws.security.identity:macie2_tag_resource]{tag_resource} \tab Adds or updates one or more tags (keys and values) that are associated with an Amazon Macie resource\cr
 \link[paws.security.identity:macie2_test_custom_data_identifier]{test_custom_data_identifier} \tab Tests criteria for a custom data identifier\cr
 \link[paws.security.identity:macie2_untag_resource]{untag_resource} \tab Removes one or more tags (keys and values) from an Amazon Macie resource\cr

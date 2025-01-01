@@ -5875,6 +5875,10 @@ connect_describe_authentication_profile <- function(AuthenticationProfileId, Ins
 #'               Name = "string",
 #'               Value = "string",
 #'               ProficiencyLevel = 123.0,
+#'               Range = list(
+#'                 MinProficiencyLevel = 123.0,
+#'                 MaxProficiencyLevel = 123.0
+#'               ),
 #'               MatchCriteria = list(
 #'                 AgentsCriteria = list(
 #'                   AgentIds = list(
@@ -5889,6 +5893,23 @@ connect_describe_authentication_profile <- function(AuthenticationProfileId, Ins
 #'             ),
 #'             OrExpression = list(
 #'               list()
+#'             ),
+#'             NotAttributeCondition = list(
+#'               Name = "string",
+#'               Value = "string",
+#'               ProficiencyLevel = 123.0,
+#'               Range = list(
+#'                 MinProficiencyLevel = 123.0,
+#'                 MaxProficiencyLevel = 123.0
+#'               ),
+#'               MatchCriteria = list(
+#'                 AgentsCriteria = list(
+#'                   AgentIds = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
+#'               ComparisonOperator = "string"
 #'             )
 #'           ),
 #'           Status = "ACTIVE"|"INACTIVE"|"JOINED"|"EXPIRED"
@@ -21597,6 +21618,10 @@ connect_update_contact_flow_name <- function(InstanceId, ContactFlowId, Name = N
 #'             Name = "string",
 #'             Value = "string",
 #'             ProficiencyLevel = 123.0,
+#'             Range = list(
+#'               MinProficiencyLevel = 123.0,
+#'               MaxProficiencyLevel = 123.0
+#'             ),
 #'             MatchCriteria = list(
 #'               AgentsCriteria = list(
 #'                 AgentIds = list(
@@ -21611,6 +21636,23 @@ connect_update_contact_flow_name <- function(InstanceId, ContactFlowId, Name = N
 #'           ),
 #'           OrExpression = list(
 #'             list()
+#'           ),
+#'           NotAttributeCondition = list(
+#'             Name = "string",
+#'             Value = "string",
+#'             ProficiencyLevel = 123.0,
+#'             Range = list(
+#'               MinProficiencyLevel = 123.0,
+#'               MaxProficiencyLevel = 123.0
+#'             ),
+#'             MatchCriteria = list(
+#'               AgentsCriteria = list(
+#'                 AgentIds = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             ),
+#'             ComparisonOperator = "string"
 #'           )
 #'         )
 #'       )

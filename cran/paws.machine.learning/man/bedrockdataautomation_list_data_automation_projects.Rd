@@ -2,7 +2,7 @@
 % Please edit documentation in R/bedrockdataautomation_operations.R
 \name{bedrockdataautomation_list_data_automation_projects}
 \alias{bedrockdataautomation_list_data_automation_projects}
-\title{Lists all existing Amazon Bedrock Keystone DataAutomationProjects}
+\title{Lists all existing Amazon Bedrock Data Automation Projects}
 \usage{
 bedrockdataautomation_list_data_automation_projects(
   maxResults = NULL,
@@ -24,7 +24,7 @@ bedrockdataautomation_list_data_automation_projects(
 \item{resourceOwner}{}
 }
 \description{
-Lists all existing Amazon Bedrock Keystone DataAutomationProjects
+Lists all existing Amazon Bedrock Data Automation Projects
 
 See \url{https://www.paws-r-sdk.com/docs/bedrockdataautomation_list_data_automation_projects/} for full documentation.
 }

@@ -2,8 +2,8 @@
 % Please edit documentation in R/sagemaker_operations.R
 \name{sagemaker_create_monitoring_schedule}
 \alias{sagemaker_create_monitoring_schedule}
-\title{Creates a schedule that regularly starts Amazon SageMaker Processing
-Jobs to monitor the data captured for an Amazon SageMaker Endpoint}
+\title{Creates a schedule that regularly starts Amazon SageMaker AI Processing
+Jobs to monitor the data captured for an Amazon SageMaker AI Endpoint}
 \usage{
 sagemaker_create_monitoring_schedule(
   MonitoringScheduleName,
@@ -23,7 +23,7 @@ Cost Allocation Tags in the \emph{Amazon Web Services Billing and Cost
 Management User Guide}.}
 }
 \description{
-Creates a schedule that regularly starts Amazon SageMaker Processing Jobs to monitor the data captured for an Amazon SageMaker Endpoint.
+Creates a schedule that regularly starts Amazon SageMaker AI Processing Jobs to monitor the data captured for an Amazon SageMaker AI Endpoint.
 
 See \url{https://www.paws-r-sdk.com/docs/sagemaker_create_monitoring_schedule/} for full documentation.
 }

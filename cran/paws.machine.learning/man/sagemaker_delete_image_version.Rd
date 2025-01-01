@@ -2,7 +2,7 @@
 % Please edit documentation in R/sagemaker_operations.R
 \name{sagemaker_delete_image_version}
 \alias{sagemaker_delete_image_version}
-\title{Deletes a version of a SageMaker image}
+\title{Deletes a version of a SageMaker AI image}
 \usage{
 sagemaker_delete_image_version(ImageName, Version = NULL, Alias = NULL)
 }
@@ -14,7 +14,7 @@ sagemaker_delete_image_version(ImageName, Version = NULL, Alias = NULL)
 \item{Alias}{The alias of the image to delete.}
 }
 \description{
-Deletes a version of a SageMaker image. The container image the version represents isn't deleted.
+Deletes a version of a SageMaker AI image. The container image the version represents isn't deleted.
 
 See \url{https://www.paws-r-sdk.com/docs/sagemaker_delete_image_version/} for full documentation.
 }

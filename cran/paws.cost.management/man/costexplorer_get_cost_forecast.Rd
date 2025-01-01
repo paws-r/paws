@@ -11,6 +11,7 @@ costexplorer_get_cost_forecast(
   Metric,
   Granularity,
   Filter = NULL,
+  BillingViewArn = NULL,
   PredictionIntervalLevel = NULL
 )
 }
@@ -67,6 +68,13 @@ filtering by the following dimensions:
 \item \code{RESERVATION_ID}
 \item \code{SAVINGS_PLAN_ARN}
 }}
+
+\item{BillingViewArn}{The Amazon Resource Name (ARN) that uniquely identifies a specific
+billing view. The ARN is used to specify which particular billing view
+you want to interact with or retrieve information from when making API
+calls related to Amazon Web Services Billing and Cost Management
+features. The BillingViewArn can be retrieved by calling the
+ListBillingViews API.}
 
 \item{PredictionIntervalLevel}{Cost Explorer always returns the mean forecast as a single point. You
 can request a prediction interval around the mean by specifying a

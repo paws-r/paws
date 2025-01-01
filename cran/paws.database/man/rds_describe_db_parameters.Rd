@@ -26,7 +26,10 @@ Default: All parameter types returned
 
 Valid Values: \code{user | system | engine-default}}
 
-\item{Filters}{This parameter isn't currently supported.}
+\item{Filters}{A filter that specifies one or more DB parameters to describe.
+
+The only supported filter is \code{parameter-name}. The results list only
+includes information about the DB parameters with these names.}
 
 \item{MaxRecords}{The maximum number of records to include in the response. If more
 records exist than the specified \code{MaxRecords} value, a pagination token

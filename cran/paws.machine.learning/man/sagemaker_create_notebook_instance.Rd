@@ -2,7 +2,7 @@
 % Please edit documentation in R/sagemaker_operations.R
 \name{sagemaker_create_notebook_instance}
 \alias{sagemaker_create_notebook_instance}
-\title{Creates an SageMaker notebook instance}
+\title{Creates an SageMaker AI notebook instance}
 \usage{
 sagemaker_create_notebook_instance(
   NotebookInstanceName,
@@ -35,17 +35,17 @@ connectivity from your ML compute instance.}
 must be for the same VPC as specified in the subnet.}
 
 \item{RoleArn}{[required] When you send any requests to Amazon Web Services resources from the
-notebook instance, SageMaker assumes this role to perform tasks on your
-behalf. You must grant this role necessary permissions so SageMaker can
-perform these tasks. The policy must allow the SageMaker service
-principal (sagemaker.amazonaws.com) permissions to assume this role. For
-more information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html}{SageMaker Roles}.
+notebook instance, SageMaker AI assumes this role to perform tasks on
+your behalf. You must grant this role necessary permissions so SageMaker
+AI can perform these tasks. The policy must allow the SageMaker AI
+service principal (sagemaker.amazonaws.com) permissions to assume this
+role. For more information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html}{SageMaker AI Roles}.
 
-To be able to pass this role to SageMaker, the caller of this API must
-have the \code{iam:PassRole} permission.}
+To be able to pass this role to SageMaker AI, the caller of this API
+must have the \code{iam:PassRole} permission.}
 
 \item{KmsKeyId}{The Amazon Resource Name (ARN) of a Amazon Web Services Key Management
-Service key that SageMaker uses to encrypt data on the storage volume
+Service key that SageMaker AI uses to encrypt data on the storage volume
 attached to your notebook instance. The KMS key you provide must be
 enabled. For information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/enabling-keys.html}{Enabling and Disabling Keys}
 in the \emph{Amazon Web Services Key Management Service Developer Guide}.}
@@ -57,10 +57,10 @@ owner, or environment. For more information, see \href{https://docs.aws.amazon.c
 \item{LifecycleConfigName}{The name of a lifecycle configuration to associate with the notebook
 instance. For information about lifestyle configurations, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html}{Step 2.1: (Optional) Customize a Notebook Instance}.}
 
-\item{DirectInternetAccess}{Sets whether SageMaker provides internet access to the notebook
+\item{DirectInternetAccess}{Sets whether SageMaker AI provides internet access to the notebook
 instance. If you set this to \code{Disabled} this notebook instance is able
 to access resources only in your VPC, and is not be able to connect to
-SageMaker training and endpoint services unless you configure a NAT
+SageMaker AI training and endpoint services unless you configure a NAT
 Gateway in your VPC.
 
 For more information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/notebook-interface-endpoint.html#appendix-notebook-and-internet-access}{Notebook Instances Are Internet-Enabled by Default}.
@@ -81,14 +81,14 @@ code repository. This can be either the name of a Git repository stored
 as a resource in your account, or the URL of a Git repository in \href{https://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html}{Amazon Web Services CodeCommit}
 or in any other Git repository. When you open a notebook instance, it
 opens in the directory that contains this repository. For more
-information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/nbi-git-repo.html}{Associating Git Repositories with SageMaker Notebook Instances}.}
+information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/nbi-git-repo.html}{Associating Git Repositories with SageMaker AI Notebook Instances}.}
 
 \item{AdditionalCodeRepositories}{An array of up to three Git repositories to associate with the notebook
 instance. These can be either the names of Git repositories stored as
 resources in your account, or the URL of Git repositories in \href{https://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html}{Amazon Web Services CodeCommit}
 or in any other Git repository. These repositories are cloned at the
 same level as the default repository of your notebook instance. For more
-information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/nbi-git-repo.html}{Associating Git Repositories with SageMaker Notebook Instances}.}
+information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/nbi-git-repo.html}{Associating Git Repositories with SageMaker AI Notebook Instances}.}
 
 \item{RootAccess}{Whether root access is enabled or disabled for users of the notebook
 instance. The default value is \code{Enabled}.
@@ -103,7 +103,7 @@ root access for users.}
 \item{InstanceMetadataServiceConfiguration}{Information on the IMDS configuration of the notebook instance}
 }
 \description{
-Creates an SageMaker notebook instance. A notebook instance is a machine learning (ML) compute instance running on a Jupyter notebook.
+Creates an SageMaker AI notebook instance. A notebook instance is a machine learning (ML) compute instance running on a Jupyter notebook.
 
 See \url{https://www.paws-r-sdk.com/docs/sagemaker_create_notebook_instance/} for full documentation.
 }

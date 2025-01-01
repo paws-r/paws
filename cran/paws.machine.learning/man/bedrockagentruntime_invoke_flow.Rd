@@ -9,7 +9,8 @@ bedrockagentruntime_invoke_flow(
   enableTrace = NULL,
   flowAliasIdentifier,
   flowIdentifier,
-  inputs
+  inputs,
+  modelPerformanceConfiguration = NULL
 )
 }
 \arguments{
@@ -23,6 +24,8 @@ inputs and outputs for nodes in the flow. For more information, see
 
 \item{inputs}{[required] A list of objects, each containing information about an input into the
 flow.}
+
+\item{modelPerformanceConfiguration}{Model performance settings for the request.}
 }
 \description{
 Invokes an alias of a flow to run the inputs that you specify and return the output of each node as a stream. If there's an error, the error is returned. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/flows-test.html}{Test a flow in Amazon Bedrock} in the \href{https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html}{Amazon Bedrock User Guide}.

@@ -21,9 +21,9 @@ sagemaker_create_optimization_job(
 \item{OptimizationJobName}{[required] A custom name for the new optimization job.}
 
 \item{RoleArn}{[required] The Amazon Resource Name (ARN) of an IAM role that enables Amazon
-SageMaker to perform tasks on your behalf.
+SageMaker AI to perform tasks on your behalf.
 
-During model optimization, Amazon SageMaker needs your permission to:
+During model optimization, Amazon SageMaker AI needs your permission to:
 \itemize{
 \item Read input data from an S3 bucket
 \item Write model artifacts to an S3 bucket
@@ -32,8 +32,8 @@ During model optimization, Amazon SageMaker needs your permission to:
 }
 
 You grant permissions for all of these tasks to an IAM role. To pass
-this role to Amazon SageMaker, the caller of this API must have the
-\code{iam:PassRole} permission. For more information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html}{Amazon SageMaker Roles.}}
+this role to Amazon SageMaker AI, the caller of this API must have the
+\code{iam:PassRole} permission. For more information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html}{Amazon SageMaker AI Roles.}}
 
 \item{ModelSource}{[required] The location of the source model to optimize with an optimization job.}
 

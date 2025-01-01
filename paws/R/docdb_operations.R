@@ -512,7 +512,8 @@ docdb_copy_db_cluster_snapshot <- function(SourceDBClusterSnapshotIdentifier, Ta
 #'   MasterUserPassword, PreferredBackupWindow, PreferredMaintenanceWindow,
 #'   Tags, StorageEncrypted, KmsKeyId, PreSignedUrl,
 #'   EnableCloudwatchLogsExports, DeletionProtection,
-#'   GlobalClusterIdentifier, StorageType)
+#'   GlobalClusterIdentifier, StorageType, ManageMasterUserPassword,
+#'   MasterUserSecretKmsKeyId)
 #'
 #' @param AvailabilityZones A list of Amazon EC2 Availability Zones that instances in the cluster
 #' can be created in.
@@ -637,6 +638,30 @@ docdb_copy_db_cluster_snapshot <- function(SourceDBClusterSnapshotIdentifier, Ta
 #' When you create a DocumentDB DB cluster with the storage type set to
 #' `iopt1`, the storage type is returned in the response. The storage type
 #' isn't returned when you set it to `standard`.
+#' @param ManageMasterUserPassword Specifies whether to manage the master user password with Amazon Web
+#' Services Secrets Manager.
+#' 
+#' Constraint: You can't manage the master user password with Amazon Web
+#' Services Secrets Manager if `MasterUserPassword` is specified.
+#' @param MasterUserSecretKmsKeyId The Amazon Web Services KMS key identifier to encrypt a secret that is
+#' automatically generated and managed in Amazon Web Services Secrets
+#' Manager. This setting is valid only if the master user password is
+#' managed by Amazon DocumentDB in Amazon Web Services Secrets Manager for
+#' the DB cluster.
+#' 
+#' The Amazon Web Services KMS key identifier is the key ARN, key ID, alias
+#' ARN, or alias name for the KMS key. To use a KMS key in a different
+#' Amazon Web Services account, specify the key ARN or alias ARN.
+#' 
+#' If you don't specify `MasterUserSecretKmsKeyId`, then the
+#' `aws/secretsmanager` KMS key is used to encrypt the secret. If the
+#' secret is in a different Amazon Web Services account, then you can't use
+#' the `aws/secretsmanager` KMS key to encrypt the secret, and you must use
+#' a customer managed KMS key.
+#' 
+#' There is a default KMS key for your Amazon Web Services account. Your
+#' Amazon Web Services account has a different default KMS key for each
+#' Amazon Web Services Region.
 #'
 #' @return
 #' A list with the following syntax:
@@ -704,7 +729,12 @@ docdb_copy_db_cluster_snapshot <- function(SourceDBClusterSnapshotIdentifier, Ta
 #'       "string"
 #'     ),
 #'     DeletionProtection = TRUE|FALSE,
-#'     StorageType = "string"
+#'     StorageType = "string",
+#'     MasterUserSecret = list(
+#'       SecretArn = "string",
+#'       SecretStatus = "string",
+#'       KmsKeyId = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -743,7 +773,9 @@ docdb_copy_db_cluster_snapshot <- function(SourceDBClusterSnapshotIdentifier, Ta
 #'   ),
 #'   DeletionProtection = TRUE|FALSE,
 #'   GlobalClusterIdentifier = "string",
-#'   StorageType = "string"
+#'   StorageType = "string",
+#'   ManageMasterUserPassword = TRUE|FALSE,
+#'   MasterUserSecretKmsKeyId = "string"
 #' )
 #' ```
 #'
@@ -752,7 +784,7 @@ docdb_copy_db_cluster_snapshot <- function(SourceDBClusterSnapshotIdentifier, Ta
 #' @rdname docdb_create_db_cluster
 #'
 #' @aliases docdb_create_db_cluster
-docdb_create_db_cluster <- function(AvailabilityZones = NULL, BackupRetentionPeriod = NULL, DBClusterIdentifier, DBClusterParameterGroupName = NULL, VpcSecurityGroupIds = NULL, DBSubnetGroupName = NULL, Engine, EngineVersion = NULL, Port = NULL, MasterUsername = NULL, MasterUserPassword = NULL, PreferredBackupWindow = NULL, PreferredMaintenanceWindow = NULL, Tags = NULL, StorageEncrypted = NULL, KmsKeyId = NULL, PreSignedUrl = NULL, EnableCloudwatchLogsExports = NULL, DeletionProtection = NULL, GlobalClusterIdentifier = NULL, StorageType = NULL) {
+docdb_create_db_cluster <- function(AvailabilityZones = NULL, BackupRetentionPeriod = NULL, DBClusterIdentifier, DBClusterParameterGroupName = NULL, VpcSecurityGroupIds = NULL, DBSubnetGroupName = NULL, Engine, EngineVersion = NULL, Port = NULL, MasterUsername = NULL, MasterUserPassword = NULL, PreferredBackupWindow = NULL, PreferredMaintenanceWindow = NULL, Tags = NULL, StorageEncrypted = NULL, KmsKeyId = NULL, PreSignedUrl = NULL, EnableCloudwatchLogsExports = NULL, DeletionProtection = NULL, GlobalClusterIdentifier = NULL, StorageType = NULL, ManageMasterUserPassword = NULL, MasterUserSecretKmsKeyId = NULL) {
   op <- new_operation(
     name = "CreateDBCluster",
     http_method = "POST",
@@ -761,7 +793,7 @@ docdb_create_db_cluster <- function(AvailabilityZones = NULL, BackupRetentionPer
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .docdb$create_db_cluster_input(AvailabilityZones = AvailabilityZones, BackupRetentionPeriod = BackupRetentionPeriod, DBClusterIdentifier = DBClusterIdentifier, DBClusterParameterGroupName = DBClusterParameterGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, DBSubnetGroupName = DBSubnetGroupName, Engine = Engine, EngineVersion = EngineVersion, Port = Port, MasterUsername = MasterUsername, MasterUserPassword = MasterUserPassword, PreferredBackupWindow = PreferredBackupWindow, PreferredMaintenanceWindow = PreferredMaintenanceWindow, Tags = Tags, StorageEncrypted = StorageEncrypted, KmsKeyId = KmsKeyId, PreSignedUrl = PreSignedUrl, EnableCloudwatchLogsExports = EnableCloudwatchLogsExports, DeletionProtection = DeletionProtection, GlobalClusterIdentifier = GlobalClusterIdentifier, StorageType = StorageType)
+  input <- .docdb$create_db_cluster_input(AvailabilityZones = AvailabilityZones, BackupRetentionPeriod = BackupRetentionPeriod, DBClusterIdentifier = DBClusterIdentifier, DBClusterParameterGroupName = DBClusterParameterGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, DBSubnetGroupName = DBSubnetGroupName, Engine = Engine, EngineVersion = EngineVersion, Port = Port, MasterUsername = MasterUsername, MasterUserPassword = MasterUserPassword, PreferredBackupWindow = PreferredBackupWindow, PreferredMaintenanceWindow = PreferredMaintenanceWindow, Tags = Tags, StorageEncrypted = StorageEncrypted, KmsKeyId = KmsKeyId, PreSignedUrl = PreSignedUrl, EnableCloudwatchLogsExports = EnableCloudwatchLogsExports, DeletionProtection = DeletionProtection, GlobalClusterIdentifier = GlobalClusterIdentifier, StorageType = StorageType, ManageMasterUserPassword = ManageMasterUserPassword, MasterUserSecretKmsKeyId = MasterUserSecretKmsKeyId)
   output <- .docdb$create_db_cluster_output()
   config <- get_config()
   svc <- .docdb$service(config, op)
@@ -1629,7 +1661,12 @@ docdb_create_global_cluster <- function(GlobalClusterIdentifier, SourceDBCluster
 #'       "string"
 #'     ),
 #'     DeletionProtection = TRUE|FALSE,
-#'     StorageType = "string"
+#'     StorageType = "string",
+#'     MasterUserSecret = list(
+#'       SecretArn = "string",
+#'       SecretStatus = "string",
+#'       KmsKeyId = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -2759,7 +2796,12 @@ docdb_describe_db_cluster_snapshots <- function(DBClusterIdentifier = NULL, DBCl
 #'         "string"
 #'       ),
 #'       DeletionProtection = TRUE|FALSE,
-#'       StorageType = "string"
+#'       StorageType = "string",
+#'       MasterUserSecret = list(
+#'         SecretArn = "string",
+#'         SecretStatus = "string",
+#'         KmsKeyId = "string"
+#'       )
 #'     )
 #'   )
 #' )
@@ -4003,7 +4045,12 @@ docdb_describe_pending_maintenance_actions <- function(ResourceIdentifier = NULL
 #'       "string"
 #'     ),
 #'     DeletionProtection = TRUE|FALSE,
-#'     StorageType = "string"
+#'     StorageType = "string",
+#'     MasterUserSecret = list(
+#'       SecretArn = "string",
+#'       SecretStatus = "string",
+#'       KmsKeyId = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -4236,7 +4283,8 @@ docdb_list_tags_for_resource <- function(ResourceName, Filters = NULL) {
 #'   VpcSecurityGroupIds, Port, MasterUserPassword, PreferredBackupWindow,
 #'   PreferredMaintenanceWindow, CloudwatchLogsExportConfiguration,
 #'   EngineVersion, AllowMajorVersionUpgrade, DeletionProtection,
-#'   StorageType)
+#'   StorageType, ManageMasterUserPassword, MasterUserSecretKmsKeyId,
+#'   RotateMasterUserPassword)
 #'
 #' @param DBClusterIdentifier &#91;required&#93; The cluster identifier for the cluster that is being modified. This
 #' parameter is not case sensitive.
@@ -4350,6 +4398,52 @@ docdb_list_tags_for_resource <- function(ResourceName, Filters = NULL) {
 #' Valid values for storage type - `standard | iopt1`
 #' 
 #' Default value is `standard `
+#' @param ManageMasterUserPassword Specifies whether to manage the master user password with Amazon Web
+#' Services Secrets Manager. If the cluster doesn't manage the master user
+#' password with Amazon Web Services Secrets Manager, you can turn on this
+#' management. In this case, you can't specify `MasterUserPassword`. If the
+#' cluster already manages the master user password with Amazon Web
+#' Services Secrets Manager, and you specify that the master user password
+#' is not managed with Amazon Web Services Secrets Manager, then you must
+#' specify `MasterUserPassword`. In this case, Amazon DocumentDB deletes
+#' the secret and uses the new password for the master user specified by
+#' `MasterUserPassword`.
+#' @param MasterUserSecretKmsKeyId The Amazon Web Services KMS key identifier to encrypt a secret that is
+#' automatically generated and managed in Amazon Web Services Secrets
+#' Manager.
+#' 
+#' This setting is valid only if both of the following conditions are met:
+#' 
+#' -   The cluster doesn't manage the master user password in Amazon Web
+#'     Services Secrets Manager. If the cluster already manages the master
+#'     user password in Amazon Web Services Secrets Manager, you can't
+#'     change the KMS key that is used to encrypt the secret.
+#' 
+#' -   You are enabling `ManageMasterUserPassword` to manage the master
+#'     user password in Amazon Web Services Secrets Manager. If you are
+#'     turning on `ManageMasterUserPassword` and don't specify
+#'     `MasterUserSecretKmsKeyId`, then the `aws/secretsmanager` KMS key is
+#'     used to encrypt the secret. If the secret is in a different Amazon
+#'     Web Services account, then you can't use the `aws/secretsmanager`
+#'     KMS key to encrypt the secret, and you must use a customer managed
+#'     KMS key.
+#' 
+#' The Amazon Web Services KMS key identifier is the key ARN, key ID, alias
+#' ARN, or alias name for the KMS key. To use a KMS key in a different
+#' Amazon Web Services account, specify the key ARN or alias ARN.
+#' 
+#' There is a default KMS key for your Amazon Web Services account. Your
+#' Amazon Web Services account has a different default KMS key for each
+#' Amazon Web Services Region.
+#' @param RotateMasterUserPassword Specifies whether to rotate the secret managed by Amazon Web Services
+#' Secrets Manager for the master user password.
+#' 
+#' This setting is valid only if the master user password is managed by
+#' Amazon DocumentDB in Amazon Web Services Secrets Manager for the
+#' cluster. The secret value contains the updated password.
+#' 
+#' Constraint: You must apply the change immediately when rotating the
+#' master user password.
 #'
 #' @return
 #' A list with the following syntax:
@@ -4417,7 +4511,12 @@ docdb_list_tags_for_resource <- function(ResourceName, Filters = NULL) {
 #'       "string"
 #'     ),
 #'     DeletionProtection = TRUE|FALSE,
-#'     StorageType = "string"
+#'     StorageType = "string",
+#'     MasterUserSecret = list(
+#'       SecretArn = "string",
+#'       SecretStatus = "string",
+#'       KmsKeyId = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -4448,7 +4547,10 @@ docdb_list_tags_for_resource <- function(ResourceName, Filters = NULL) {
 #'   EngineVersion = "string",
 #'   AllowMajorVersionUpgrade = TRUE|FALSE,
 #'   DeletionProtection = TRUE|FALSE,
-#'   StorageType = "string"
+#'   StorageType = "string",
+#'   ManageMasterUserPassword = TRUE|FALSE,
+#'   MasterUserSecretKmsKeyId = "string",
+#'   RotateMasterUserPassword = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -4457,7 +4559,7 @@ docdb_list_tags_for_resource <- function(ResourceName, Filters = NULL) {
 #' @rdname docdb_modify_db_cluster
 #'
 #' @aliases docdb_modify_db_cluster
-docdb_modify_db_cluster <- function(DBClusterIdentifier, NewDBClusterIdentifier = NULL, ApplyImmediately = NULL, BackupRetentionPeriod = NULL, DBClusterParameterGroupName = NULL, VpcSecurityGroupIds = NULL, Port = NULL, MasterUserPassword = NULL, PreferredBackupWindow = NULL, PreferredMaintenanceWindow = NULL, CloudwatchLogsExportConfiguration = NULL, EngineVersion = NULL, AllowMajorVersionUpgrade = NULL, DeletionProtection = NULL, StorageType = NULL) {
+docdb_modify_db_cluster <- function(DBClusterIdentifier, NewDBClusterIdentifier = NULL, ApplyImmediately = NULL, BackupRetentionPeriod = NULL, DBClusterParameterGroupName = NULL, VpcSecurityGroupIds = NULL, Port = NULL, MasterUserPassword = NULL, PreferredBackupWindow = NULL, PreferredMaintenanceWindow = NULL, CloudwatchLogsExportConfiguration = NULL, EngineVersion = NULL, AllowMajorVersionUpgrade = NULL, DeletionProtection = NULL, StorageType = NULL, ManageMasterUserPassword = NULL, MasterUserSecretKmsKeyId = NULL, RotateMasterUserPassword = NULL) {
   op <- new_operation(
     name = "ModifyDBCluster",
     http_method = "POST",
@@ -4466,7 +4568,7 @@ docdb_modify_db_cluster <- function(DBClusterIdentifier, NewDBClusterIdentifier 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .docdb$modify_db_cluster_input(DBClusterIdentifier = DBClusterIdentifier, NewDBClusterIdentifier = NewDBClusterIdentifier, ApplyImmediately = ApplyImmediately, BackupRetentionPeriod = BackupRetentionPeriod, DBClusterParameterGroupName = DBClusterParameterGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, Port = Port, MasterUserPassword = MasterUserPassword, PreferredBackupWindow = PreferredBackupWindow, PreferredMaintenanceWindow = PreferredMaintenanceWindow, CloudwatchLogsExportConfiguration = CloudwatchLogsExportConfiguration, EngineVersion = EngineVersion, AllowMajorVersionUpgrade = AllowMajorVersionUpgrade, DeletionProtection = DeletionProtection, StorageType = StorageType)
+  input <- .docdb$modify_db_cluster_input(DBClusterIdentifier = DBClusterIdentifier, NewDBClusterIdentifier = NewDBClusterIdentifier, ApplyImmediately = ApplyImmediately, BackupRetentionPeriod = BackupRetentionPeriod, DBClusterParameterGroupName = DBClusterParameterGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, Port = Port, MasterUserPassword = MasterUserPassword, PreferredBackupWindow = PreferredBackupWindow, PreferredMaintenanceWindow = PreferredMaintenanceWindow, CloudwatchLogsExportConfiguration = CloudwatchLogsExportConfiguration, EngineVersion = EngineVersion, AllowMajorVersionUpgrade = AllowMajorVersionUpgrade, DeletionProtection = DeletionProtection, StorageType = StorageType, ManageMasterUserPassword = ManageMasterUserPassword, MasterUserSecretKmsKeyId = MasterUserSecretKmsKeyId, RotateMasterUserPassword = RotateMasterUserPassword)
   output <- .docdb$modify_db_cluster_output()
   config <- get_config()
   svc <- .docdb$service(config, op)
@@ -5785,7 +5887,12 @@ docdb_reset_db_cluster_parameter_group <- function(DBClusterParameterGroupName, 
 #'       "string"
 #'     ),
 #'     DeletionProtection = TRUE|FALSE,
-#'     StorageType = "string"
+#'     StorageType = "string",
+#'     MasterUserSecret = list(
+#'       SecretArn = "string",
+#'       SecretStatus = "string",
+#'       KmsKeyId = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -6034,7 +6141,12 @@ docdb_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, DBC
 #'       "string"
 #'     ),
 #'     DeletionProtection = TRUE|FALSE,
-#'     StorageType = "string"
+#'     StorageType = "string",
+#'     MasterUserSecret = list(
+#'       SecretArn = "string",
+#'       SecretStatus = "string",
+#'       KmsKeyId = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -6172,7 +6284,12 @@ docdb_restore_db_cluster_to_point_in_time <- function(DBClusterIdentifier, Resto
 #'       "string"
 #'     ),
 #'     DeletionProtection = TRUE|FALSE,
-#'     StorageType = "string"
+#'     StorageType = "string",
+#'     MasterUserSecret = list(
+#'       SecretArn = "string",
+#'       SecretStatus = "string",
+#'       KmsKeyId = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -6288,7 +6405,12 @@ docdb_start_db_cluster <- function(DBClusterIdentifier) {
 #'       "string"
 #'     ),
 #'     DeletionProtection = TRUE|FALSE,
-#'     StorageType = "string"
+#'     StorageType = "string",
+#'     MasterUserSecret = list(
+#'       SecretArn = "string",
+#'       SecretStatus = "string",
+#'       KmsKeyId = "string"
+#'     )
 #'   )
 #' )
 #' ```

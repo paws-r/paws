@@ -401,7 +401,7 @@ DB cluster.
 DB cluster during the maintenance window. By default, minor engine
 upgrades are applied automatically.
 
-Valid for Cluster Type: Multi-AZ DB clusters only}
+Valid for Cluster Type: Aurora DB clusters and Multi-AZ DB clusters}
 
 \item{MonitoringInterval}{The interval, in seconds, between points when Enhanced Monitoring
 metrics are collected for the DB cluster. To turn off collecting
@@ -427,7 +427,16 @@ If \code{MonitoringInterval} is set to a value other than \code{0}, supply a
 
 Valid for Cluster Type: Multi-AZ DB clusters only}
 
-\item{DatabaseInsightsMode}{Specifies the mode of Database Insights to enable for the cluster.}
+\item{DatabaseInsightsMode}{Specifies the mode of Database Insights to enable for the DB cluster.
+
+If you change the value from \code{standard} to \code{advanced}, you must set the
+\code{PerformanceInsightsEnabled} parameter to \code{true} and the
+\code{PerformanceInsightsRetentionPeriod} parameter to 465.
+
+If you change the value from \code{advanced} to \code{standard}, you must set the
+\code{PerformanceInsightsEnabled} parameter to \code{false}.
+
+Valid for Cluster Type: Aurora DB clusters only}
 
 \item{EnablePerformanceInsights}{Specifies whether to turn on Performance Insights for the DB cluster.
 
@@ -447,11 +456,11 @@ Amazon RDS uses your default KMS key. There is a default KMS key for
 your Amazon Web Services account. Your Amazon Web Services account has a
 different default KMS key for each Amazon Web Services Region.
 
-Valid for Cluster Type: Multi-AZ DB clusters only}
+Valid for Cluster Type: Aurora DB clusters and Multi-AZ DB clusters}
 
 \item{PerformanceInsightsRetentionPeriod}{The number of days to retain Performance Insights data.
 
-Valid for Cluster Type: Multi-AZ DB clusters only
+Valid for Cluster Type: Aurora DB clusters and Multi-AZ DB clusters
 
 Valid Values:
 \itemize{

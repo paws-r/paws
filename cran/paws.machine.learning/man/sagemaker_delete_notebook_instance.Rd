@@ -2,15 +2,15 @@
 % Please edit documentation in R/sagemaker_operations.R
 \name{sagemaker_delete_notebook_instance}
 \alias{sagemaker_delete_notebook_instance}
-\title{Deletes an SageMaker notebook instance}
+\title{Deletes an SageMaker AI notebook instance}
 \usage{
 sagemaker_delete_notebook_instance(NotebookInstanceName)
 }
 \arguments{
-\item{NotebookInstanceName}{[required] The name of the SageMaker notebook instance to delete.}
+\item{NotebookInstanceName}{[required] The name of the SageMaker AI notebook instance to delete.}
 }
 \description{
-Deletes an SageMaker notebook instance. Before you can delete a notebook instance, you must call the \code{\link[=sagemaker_stop_notebook_instance]{stop_notebook_instance}} API.
+Deletes an SageMaker AI notebook instance. Before you can delete a notebook instance, you must call the \code{\link[=sagemaker_stop_notebook_instance]{stop_notebook_instance}} API.
 
 See \url{https://www.paws-r-sdk.com/docs/sagemaker_delete_notebook_instance/} for full documentation.
 }

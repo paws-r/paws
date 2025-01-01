@@ -313,6 +313,9 @@ bedrockagent_associate_agent_knowledge_base <- function(agentId, agentVersion, d
 #'       enabledMemoryTypes = list(
 #'         "SESSION_SUMMARY"
 #'       ),
+#'       sessionSummaryConfiguration = list(
+#'         maxRecentSessions = 123
+#'       ),
 #'       storageDays = 123
 #'     ),
 #'     orchestrationType = "DEFAULT"|"CUSTOM_ORCHESTRATION",
@@ -337,7 +340,7 @@ bedrockagent_associate_agent_knowledge_base <- function(agentId, agentVersion, d
 #'           parserMode = "DEFAULT"|"OVERRIDDEN",
 #'           promptCreationMode = "DEFAULT"|"OVERRIDDEN",
 #'           promptState = "ENABLED"|"DISABLED",
-#'           promptType = "PRE_PROCESSING"|"ORCHESTRATION"|"POST_PROCESSING"|"KNOWLEDGE_BASE_RESPONSE_GENERATION"
+#'           promptType = "PRE_PROCESSING"|"ORCHESTRATION"|"POST_PROCESSING"|"KNOWLEDGE_BASE_RESPONSE_GENERATION"|"MEMORY_SUMMARIZATION"
 #'         )
 #'       )
 #'     ),
@@ -376,6 +379,9 @@ bedrockagent_associate_agent_knowledge_base <- function(agentId, agentVersion, d
 #'     enabledMemoryTypes = list(
 #'       "SESSION_SUMMARY"
 #'     ),
+#'     sessionSummaryConfiguration = list(
+#'       maxRecentSessions = 123
+#'     ),
 #'     storageDays = 123
 #'   ),
 #'   orchestrationType = "DEFAULT"|"CUSTOM_ORCHESTRATION",
@@ -397,7 +403,7 @@ bedrockagent_associate_agent_knowledge_base <- function(agentId, agentVersion, d
 #'         parserMode = "DEFAULT"|"OVERRIDDEN",
 #'         promptCreationMode = "DEFAULT"|"OVERRIDDEN",
 #'         promptState = "ENABLED"|"DISABLED",
-#'         promptType = "PRE_PROCESSING"|"ORCHESTRATION"|"POST_PROCESSING"|"KNOWLEDGE_BASE_RESPONSE_GENERATION"
+#'         promptType = "PRE_PROCESSING"|"ORCHESTRATION"|"POST_PROCESSING"|"KNOWLEDGE_BASE_RESPONSE_GENERATION"|"MEMORY_SUMMARIZATION"
 #'       )
 #'     )
 #'   ),
@@ -853,7 +859,7 @@ bedrockagent_create_agent_alias <- function(agentAliasName, agentId, clientToken
 #'           )
 #'         ),
 #'         sourceConfiguration = list(
-#'           authType = "OAUTH2_CLIENT_CREDENTIALS",
+#'           authType = "OAUTH2_CLIENT_CREDENTIALS"|"OAUTH2_SHAREPOINT_APP_ONLY_CLIENT_CREDENTIALS",
 #'           credentialsSecretArn = "string",
 #'           domain = "string",
 #'           hostType = "ONLINE",
@@ -867,6 +873,7 @@ bedrockagent_create_agent_alias <- function(agentAliasName, agentId, clientToken
 #'       webConfiguration = list(
 #'         crawlerConfiguration = list(
 #'           crawlerLimits = list(
+#'             maxPages = 123,
 #'             rateLimit = 123
 #'           ),
 #'           exclusionFilters = list(
@@ -875,7 +882,8 @@ bedrockagent_create_agent_alias <- function(agentAliasName, agentId, clientToken
 #'           inclusionFilters = list(
 #'             "string"
 #'           ),
-#'           scope = "HOST_ONLY"|"SUBDOMAINS"
+#'           scope = "HOST_ONLY"|"SUBDOMAINS",
+#'           userAgent = "string"
 #'         ),
 #'         sourceConfiguration = list(
 #'           urlConfiguration = list(
@@ -1042,7 +1050,7 @@ bedrockagent_create_agent_alias <- function(agentAliasName, agentId, clientToken
 #'         )
 #'       ),
 #'       sourceConfiguration = list(
-#'         authType = "OAUTH2_CLIENT_CREDENTIALS",
+#'         authType = "OAUTH2_CLIENT_CREDENTIALS"|"OAUTH2_SHAREPOINT_APP_ONLY_CLIENT_CREDENTIALS",
 #'         credentialsSecretArn = "string",
 #'         domain = "string",
 #'         hostType = "ONLINE",
@@ -1056,6 +1064,7 @@ bedrockagent_create_agent_alias <- function(agentAliasName, agentId, clientToken
 #'     webConfiguration = list(
 #'       crawlerConfiguration = list(
 #'         crawlerLimits = list(
+#'           maxPages = 123,
 #'           rateLimit = 123
 #'         ),
 #'         exclusionFilters = list(
@@ -1064,7 +1073,8 @@ bedrockagent_create_agent_alias <- function(agentAliasName, agentId, clientToken
 #'         inclusionFilters = list(
 #'           "string"
 #'         ),
-#'         scope = "HOST_ONLY"|"SUBDOMAINS"
+#'         scope = "HOST_ONLY"|"SUBDOMAINS",
+#'         userAgent = "string"
 #'       ),
 #'       sourceConfiguration = list(
 #'         urlConfiguration = list(
@@ -3518,6 +3528,9 @@ bedrockagent_disassociate_agent_knowledge_base <- function(agentId, agentVersion
 #'       enabledMemoryTypes = list(
 #'         "SESSION_SUMMARY"
 #'       ),
+#'       sessionSummaryConfiguration = list(
+#'         maxRecentSessions = 123
+#'       ),
 #'       storageDays = 123
 #'     ),
 #'     orchestrationType = "DEFAULT"|"CUSTOM_ORCHESTRATION",
@@ -3542,7 +3555,7 @@ bedrockagent_disassociate_agent_knowledge_base <- function(agentId, agentVersion
 #'           parserMode = "DEFAULT"|"OVERRIDDEN",
 #'           promptCreationMode = "DEFAULT"|"OVERRIDDEN",
 #'           promptState = "ENABLED"|"DISABLED",
-#'           promptType = "PRE_PROCESSING"|"ORCHESTRATION"|"POST_PROCESSING"|"KNOWLEDGE_BASE_RESPONSE_GENERATION"
+#'           promptType = "PRE_PROCESSING"|"ORCHESTRATION"|"POST_PROCESSING"|"KNOWLEDGE_BASE_RESPONSE_GENERATION"|"MEMORY_SUMMARIZATION"
 #'         )
 #'       )
 #'     ),
@@ -3953,6 +3966,9 @@ bedrockagent_get_agent_knowledge_base <- function(agentId, agentVersion, knowled
 #'       enabledMemoryTypes = list(
 #'         "SESSION_SUMMARY"
 #'       ),
+#'       sessionSummaryConfiguration = list(
+#'         maxRecentSessions = 123
+#'       ),
 #'       storageDays = 123
 #'     ),
 #'     promptOverrideConfiguration = list(
@@ -3973,7 +3989,7 @@ bedrockagent_get_agent_knowledge_base <- function(agentId, agentVersion, knowled
 #'           parserMode = "DEFAULT"|"OVERRIDDEN",
 #'           promptCreationMode = "DEFAULT"|"OVERRIDDEN",
 #'           promptState = "ENABLED"|"DISABLED",
-#'           promptType = "PRE_PROCESSING"|"ORCHESTRATION"|"POST_PROCESSING"|"KNOWLEDGE_BASE_RESPONSE_GENERATION"
+#'           promptType = "PRE_PROCESSING"|"ORCHESTRATION"|"POST_PROCESSING"|"KNOWLEDGE_BASE_RESPONSE_GENERATION"|"MEMORY_SUMMARIZATION"
 #'         )
 #'       )
 #'     ),
@@ -4119,7 +4135,7 @@ bedrockagent_get_agent_version <- function(agentId, agentVersion) {
 #'           )
 #'         ),
 #'         sourceConfiguration = list(
-#'           authType = "OAUTH2_CLIENT_CREDENTIALS",
+#'           authType = "OAUTH2_CLIENT_CREDENTIALS"|"OAUTH2_SHAREPOINT_APP_ONLY_CLIENT_CREDENTIALS",
 #'           credentialsSecretArn = "string",
 #'           domain = "string",
 #'           hostType = "ONLINE",
@@ -4133,6 +4149,7 @@ bedrockagent_get_agent_version <- function(agentId, agentVersion) {
 #'       webConfiguration = list(
 #'         crawlerConfiguration = list(
 #'           crawlerLimits = list(
+#'             maxPages = 123,
 #'             rateLimit = 123
 #'           ),
 #'           exclusionFilters = list(
@@ -4141,7 +4158,8 @@ bedrockagent_get_agent_version <- function(agentId, agentVersion) {
 #'           inclusionFilters = list(
 #'             "string"
 #'           ),
-#'           scope = "HOST_ONLY"|"SUBDOMAINS"
+#'           scope = "HOST_ONLY"|"SUBDOMAINS",
+#'           userAgent = "string"
 #'         ),
 #'         sourceConfiguration = list(
 #'           urlConfiguration = list(
@@ -7179,6 +7197,9 @@ bedrockagent_untag_resource <- function(resourceArn, tagKeys) {
 #'       enabledMemoryTypes = list(
 #'         "SESSION_SUMMARY"
 #'       ),
+#'       sessionSummaryConfiguration = list(
+#'         maxRecentSessions = 123
+#'       ),
 #'       storageDays = 123
 #'     ),
 #'     orchestrationType = "DEFAULT"|"CUSTOM_ORCHESTRATION",
@@ -7203,7 +7224,7 @@ bedrockagent_untag_resource <- function(resourceArn, tagKeys) {
 #'           parserMode = "DEFAULT"|"OVERRIDDEN",
 #'           promptCreationMode = "DEFAULT"|"OVERRIDDEN",
 #'           promptState = "ENABLED"|"DISABLED",
-#'           promptType = "PRE_PROCESSING"|"ORCHESTRATION"|"POST_PROCESSING"|"KNOWLEDGE_BASE_RESPONSE_GENERATION"
+#'           promptType = "PRE_PROCESSING"|"ORCHESTRATION"|"POST_PROCESSING"|"KNOWLEDGE_BASE_RESPONSE_GENERATION"|"MEMORY_SUMMARIZATION"
 #'         )
 #'       )
 #'     ),
@@ -7242,6 +7263,9 @@ bedrockagent_untag_resource <- function(resourceArn, tagKeys) {
 #'     enabledMemoryTypes = list(
 #'       "SESSION_SUMMARY"
 #'     ),
+#'     sessionSummaryConfiguration = list(
+#'       maxRecentSessions = 123
+#'     ),
 #'     storageDays = 123
 #'   ),
 #'   orchestrationType = "DEFAULT"|"CUSTOM_ORCHESTRATION",
@@ -7263,7 +7287,7 @@ bedrockagent_untag_resource <- function(resourceArn, tagKeys) {
 #'         parserMode = "DEFAULT"|"OVERRIDDEN",
 #'         promptCreationMode = "DEFAULT"|"OVERRIDDEN",
 #'         promptState = "ENABLED"|"DISABLED",
-#'         promptType = "PRE_PROCESSING"|"ORCHESTRATION"|"POST_PROCESSING"|"KNOWLEDGE_BASE_RESPONSE_GENERATION"
+#'         promptType = "PRE_PROCESSING"|"ORCHESTRATION"|"POST_PROCESSING"|"KNOWLEDGE_BASE_RESPONSE_GENERATION"|"MEMORY_SUMMARIZATION"
 #'       )
 #'     )
 #'   )
@@ -7822,7 +7846,7 @@ bedrockagent_update_agent_knowledge_base <- function(agentId, agentVersion, desc
 #'           )
 #'         ),
 #'         sourceConfiguration = list(
-#'           authType = "OAUTH2_CLIENT_CREDENTIALS",
+#'           authType = "OAUTH2_CLIENT_CREDENTIALS"|"OAUTH2_SHAREPOINT_APP_ONLY_CLIENT_CREDENTIALS",
 #'           credentialsSecretArn = "string",
 #'           domain = "string",
 #'           hostType = "ONLINE",
@@ -7836,6 +7860,7 @@ bedrockagent_update_agent_knowledge_base <- function(agentId, agentVersion, desc
 #'       webConfiguration = list(
 #'         crawlerConfiguration = list(
 #'           crawlerLimits = list(
+#'             maxPages = 123,
 #'             rateLimit = 123
 #'           ),
 #'           exclusionFilters = list(
@@ -7844,7 +7869,8 @@ bedrockagent_update_agent_knowledge_base <- function(agentId, agentVersion, desc
 #'           inclusionFilters = list(
 #'             "string"
 #'           ),
-#'           scope = "HOST_ONLY"|"SUBDOMAINS"
+#'           scope = "HOST_ONLY"|"SUBDOMAINS",
+#'           userAgent = "string"
 #'         ),
 #'         sourceConfiguration = list(
 #'           urlConfiguration = list(
@@ -8010,7 +8036,7 @@ bedrockagent_update_agent_knowledge_base <- function(agentId, agentVersion, desc
 #'         )
 #'       ),
 #'       sourceConfiguration = list(
-#'         authType = "OAUTH2_CLIENT_CREDENTIALS",
+#'         authType = "OAUTH2_CLIENT_CREDENTIALS"|"OAUTH2_SHAREPOINT_APP_ONLY_CLIENT_CREDENTIALS",
 #'         credentialsSecretArn = "string",
 #'         domain = "string",
 #'         hostType = "ONLINE",
@@ -8024,6 +8050,7 @@ bedrockagent_update_agent_knowledge_base <- function(agentId, agentVersion, desc
 #'     webConfiguration = list(
 #'       crawlerConfiguration = list(
 #'         crawlerLimits = list(
+#'           maxPages = 123,
 #'           rateLimit = 123
 #'         ),
 #'         exclusionFilters = list(
@@ -8032,7 +8059,8 @@ bedrockagent_update_agent_knowledge_base <- function(agentId, agentVersion, desc
 #'         inclusionFilters = list(
 #'           "string"
 #'         ),
-#'         scope = "HOST_ONLY"|"SUBDOMAINS"
+#'         scope = "HOST_ONLY"|"SUBDOMAINS",
+#'         userAgent = "string"
 #'       ),
 #'       sourceConfiguration = list(
 #'         urlConfiguration = list(

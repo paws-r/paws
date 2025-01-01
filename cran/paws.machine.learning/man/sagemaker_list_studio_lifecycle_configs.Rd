@@ -2,7 +2,7 @@
 % Please edit documentation in R/sagemaker_operations.R
 \name{sagemaker_list_studio_lifecycle_configs}
 \alias{sagemaker_list_studio_lifecycle_configs}
-\title{Lists the Amazon SageMaker Studio Lifecycle Configurations in your
+\title{Lists the Amazon SageMaker AI Studio Lifecycle Configurations in your
 Amazon Web Services Account}
 \usage{
 sagemaker_list_studio_lifecycle_configs(
@@ -51,7 +51,7 @@ specified time.}
 \item{SortOrder}{The sort order. The default value is Descending.}
 }
 \description{
-Lists the Amazon SageMaker Studio Lifecycle Configurations in your Amazon Web Services Account.
+Lists the Amazon SageMaker AI Studio Lifecycle Configurations in your Amazon Web Services Account.
 
 See \url{https://www.paws-r-sdk.com/docs/sagemaker_list_studio_lifecycle_configs/} for full documentation.
 }

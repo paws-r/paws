@@ -2599,7 +2599,7 @@ rds_create_custom_db_engine_version <- function(Engine, EngineVersion, DatabaseI
 #' DB cluster during the maintenance window. By default, minor engine
 #' upgrades are applied automatically.
 #' 
-#' Valid for Cluster Type: Multi-AZ DB clusters only
+#' Valid for Cluster Type: Aurora DB clusters and Multi-AZ DB cluster
 #' @param MonitoringInterval The interval, in seconds, between points when Enhanced Monitoring
 #' metrics are collected for the DB cluster. To turn off collecting
 #' Enhanced Monitoring metrics, specify `0`.
@@ -2607,7 +2607,7 @@ rds_create_custom_db_engine_version <- function(Engine, EngineVersion, DatabaseI
 #' If `MonitoringRoleArn` is specified, also set `MonitoringInterval` to a
 #' value other than `0`.
 #' 
-#' Valid for Cluster Type: Multi-AZ DB clusters only
+#' Valid for Cluster Type: Aurora DB clusters and Multi-AZ DB clusters
 #' 
 #' Valid Values: `0 | 1 | 5 | 10 | 15 | 30 | 60`
 #' 
@@ -2622,15 +2622,21 @@ rds_create_custom_db_engine_version <- function(Engine, EngineVersion, DatabaseI
 #' If `MonitoringInterval` is set to a value other than `0`, supply a
 #' `MonitoringRoleArn` value.
 #' 
-#' Valid for Cluster Type: Multi-AZ DB clusters only
-#' @param DatabaseInsightsMode Specifies the mode of Database Insights to enable for the cluster.
+#' Valid for Cluster Type: Aurora DB clusters and Multi-AZ DB clusters
+#' @param DatabaseInsightsMode The mode of Database Insights to enable for the DB cluster.
+#' 
+#' If you set this value to `advanced`, you must also set the
+#' `PerformanceInsightsEnabled` parameter to `true` and the
+#' `PerformanceInsightsRetentionPeriod` parameter to 465.
+#' 
+#' Valid for Cluster Type: Aurora DB clusters only
 #' @param EnablePerformanceInsights Specifies whether to turn on Performance Insights for the DB cluster.
 #' 
 #' For more information, see [Using Amazon Performance
 #' Insights](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PerfInsights.html)
 #' in the *Amazon RDS User Guide*.
 #' 
-#' Valid for Cluster Type: Multi-AZ DB clusters only
+#' Valid for Cluster Type: Aurora DB clusters and Multi-AZ DB clusters
 #' @param PerformanceInsightsKMSKeyId The Amazon Web Services KMS key identifier for encryption of Performance
 #' Insights data.
 #' 
@@ -2642,10 +2648,10 @@ rds_create_custom_db_engine_version <- function(Engine, EngineVersion, DatabaseI
 #' your Amazon Web Services account. Your Amazon Web Services account has a
 #' different default KMS key for each Amazon Web Services Region.
 #' 
-#' Valid for Cluster Type: Multi-AZ DB clusters only
+#' Valid for Cluster Type: Aurora DB clusters and Multi-AZ DB clusters
 #' @param PerformanceInsightsRetentionPeriod The number of days to retain Performance Insights data.
 #' 
-#' Valid for Cluster Type: Multi-AZ DB clusters only
+#' Valid for Cluster Type: Aurora DB clusters and Multi-AZ DB clusters
 #' 
 #' Valid Values:
 #' 
@@ -4386,7 +4392,12 @@ rds_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCluste
 #'     accounts is managed by the DB cluster.)
 #' 
 #' -   RDS Custom
-#' @param DatabaseInsightsMode Specifies the mode of Database Insights to enable for the instance.
+#' @param DatabaseInsightsMode The mode of Database Insights to enable for the DB instance.
+#' 
+#' This setting only applies to Amazon Aurora DB instances.
+#' 
+#' Currently, this value is inherited from the DB cluster and can't be
+#' changed.
 #' @param EnablePerformanceInsights Specifies whether to enable Performance Insights for the DB instance.
 #' For more information, see [Using Amazon Performance
 #' Insights](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PerfInsights.html)
@@ -5337,7 +5348,9 @@ rds_create_db_instance <- function(DBName = NULL, DBInstanceIdentifier, Allocate
 #' in the *Amazon RDS User Guide*.
 #' 
 #' This setting doesn't apply to RDS Custom DB instances.
-#' @param DatabaseInsightsMode Specifies the mode of Database Insights.
+#' @param DatabaseInsightsMode The mode of Database Insights to enable for the read replica.
+#' 
+#' Currently, this setting is not supported.
 #' @param EnablePerformanceInsights Specifies whether to enable Performance Insights for the read replica.
 #' 
 #' For more information, see [Using Amazon Performance
@@ -5522,6 +5535,8 @@ rds_create_db_instance <- function(DBName = NULL, DBInstanceIdentifier, Allocate
 #' @param AllocatedStorage The amount of storage (in gibibytes) to allocate initially for the read
 #' replica. Follow the allocation rules specified in
 #' [`create_db_instance`][rds_create_db_instance].
+#' 
+#' This setting isn't valid for RDS for SQL Server.
 #' 
 #' Be sure to allocate enough storage for your read replica so that the
 #' create operation can succeed. You can also allocate additional storage
@@ -10794,12 +10809,15 @@ rds_describe_db_cluster_parameter_groups <- function(DBClusterParameterGroupName
 #' 
 #' Valid Values:
 #' 
-#' -   `customer`
+#' -   `engine-default`
 #' 
-#' -   `engine`
+#' -   `system`
 #' 
-#' -   `service`
-#' @param Filters This parameter isn't currently supported.
+#' -   `user`
+#' @param Filters A filter that specifies one or more DB cluster parameters to describe.
+#' 
+#' The only supported filter is `parameter-name`. The results list only
+#' includes information about the DB cluster parameters with these names.
 #' @param MaxRecords The maximum number of records to include in the response. If more
 #' records exist than the specified `MaxRecords` value, a pagination token
 #' called a marker is included in the response so you can retrieve the
@@ -12540,7 +12558,10 @@ rds_describe_db_parameter_groups <- function(DBParameterGroupName = NULL, Filter
 #' Default: All parameter types returned
 #' 
 #' Valid Values: `user | system | engine-default`
-#' @param Filters This parameter isn't currently supported.
+#' @param Filters A filter that specifies one or more DB parameters to describe.
+#' 
+#' The only supported filter is `parameter-name`. The results list only
+#' includes information about the DB parameters with these names.
 #' @param MaxRecords The maximum number of records to include in the response. If more
 #' records exist than the specified `MaxRecords` value, a pagination token
 #' called a marker is included in the response so that you can retrieve the
@@ -14348,7 +14369,10 @@ rds_describe_engine_default_cluster_parameters <- function(DBParameterGroupFamil
 #' -   `sqlserver-web-14.0`
 #' 
 #' -   `sqlserver-web-15.0`
-#' @param Filters This parameter isn't currently supported.
+#' @param Filters A filter that specifies one or more parameters to describe.
+#' 
+#' The only supported filter is `parameter-name`. The results list only
+#' includes information about the parameters with these names.
 #' @param MaxRecords The maximum number of records to include in the response. If more
 #' records exist than the specified `MaxRecords` value, a pagination token
 #' called a marker is included in the response so you can retrieve the
@@ -18064,7 +18088,7 @@ rds_modify_custom_db_engine_version <- function(Engine, EngineVersion, Descripti
 #' DB cluster during the maintenance window. By default, minor engine
 #' upgrades are applied automatically.
 #' 
-#' Valid for Cluster Type: Multi-AZ DB clusters only
+#' Valid for Cluster Type: Aurora DB clusters and Multi-AZ DB clusters
 #' @param MonitoringInterval The interval, in seconds, between points when Enhanced Monitoring
 #' metrics are collected for the DB cluster. To turn off collecting
 #' Enhanced Monitoring metrics, specify `0`.
@@ -18088,7 +18112,16 @@ rds_modify_custom_db_engine_version <- function(Engine, EngineVersion, Descripti
 #' `MonitoringRoleArn` value.
 #' 
 #' Valid for Cluster Type: Multi-AZ DB clusters only
-#' @param DatabaseInsightsMode Specifies the mode of Database Insights to enable for the cluster.
+#' @param DatabaseInsightsMode Specifies the mode of Database Insights to enable for the DB cluster.
+#' 
+#' If you change the value from `standard` to `advanced`, you must set the
+#' `PerformanceInsightsEnabled` parameter to `true` and the
+#' `PerformanceInsightsRetentionPeriod` parameter to 465.
+#' 
+#' If you change the value from `advanced` to `standard`, you must set the
+#' `PerformanceInsightsEnabled` parameter to `false`.
+#' 
+#' Valid for Cluster Type: Aurora DB clusters only
 #' @param EnablePerformanceInsights Specifies whether to turn on Performance Insights for the DB cluster.
 #' 
 #' For more information, see [Using Amazon Performance
@@ -18107,10 +18140,10 @@ rds_modify_custom_db_engine_version <- function(Engine, EngineVersion, Descripti
 #' your Amazon Web Services account. Your Amazon Web Services account has a
 #' different default KMS key for each Amazon Web Services Region.
 #' 
-#' Valid for Cluster Type: Multi-AZ DB clusters only
+#' Valid for Cluster Type: Aurora DB clusters and Multi-AZ DB clusters
 #' @param PerformanceInsightsRetentionPeriod The number of days to retain Performance Insights data.
 #' 
-#' Valid for Cluster Type: Multi-AZ DB clusters only
+#' Valid for Cluster Type: Aurora DB clusters and Multi-AZ DB clusters
 #' 
 #' Valid Values:
 #' 
@@ -19547,7 +19580,12 @@ rds_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifier
 #' in the *Amazon RDS User Guide.*
 #' 
 #' This setting doesn't apply to RDS Custom DB instances.
-#' @param DatabaseInsightsMode Specifies the mode of Database Insights to enable for the instance.
+#' @param DatabaseInsightsMode Specifies the mode of Database Insights to enable for the DB instance.
+#' 
+#' This setting only applies to Amazon Aurora DB instances.
+#' 
+#' Currently, this value is inherited from the DB cluster and can't be
+#' changed.
 #' @param EnablePerformanceInsights Specifies whether to enable Performance Insights for the DB instance.
 #' 
 #' For more information, see [Using Amazon Performance
@@ -19593,6 +19631,26 @@ rds_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifier
 #' `ApplyImmediately` parameter has no effect.
 #' 
 #' This setting doesn't apply to RDS Custom DB instances.
+#' 
+#' The following values are valid for each DB engine:
+#' 
+#' -   Aurora MySQL - `audit | error | general | slowquery`
+#' 
+#' -   Aurora PostgreSQL - `postgresql`
+#' 
+#' -   RDS for MySQL - `error | general | slowquery`
+#' 
+#' -   RDS for PostgreSQL - `postgresql | upgrade`
+#' 
+#' For more information about exporting CloudWatch Logs for Amazon RDS, see
+#' [Publishing Database Logs to Amazon CloudWatch
+#' Logs](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch)
+#' in the *Amazon RDS User Guide*.
+#' 
+#' For more information about exporting CloudWatch Logs for Amazon Aurora,
+#' see [Publishing Database Logs to Amazon CloudWatch
+#' Logs](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch)
+#' in the *Amazon Aurora User Guide*.
 #' @param ProcessorFeatures The number of CPU cores and the number of threads per core for the DB
 #' instance class of the DB instance.
 #' 
@@ -26465,6 +26523,8 @@ rds_restore_db_cluster_to_point_in_time <- function(DBClusterIdentifier, Restore
 #' @param AllocatedStorage The amount of storage (in gibibytes) to allocate initially for the DB
 #' instance. Follow the allocation rules specified in CreateDBInstance.
 #' 
+#' This setting isn't valid for RDS for SQL Server.
+#' 
 #' Be sure to allocate enough storage for your new DB instance so that the
 #' restore operation can succeed. You can also allocate additional storage
 #' for future growth.
@@ -26902,6 +26962,8 @@ rds_restore_db_instance_from_db_snapshot <- function(DBInstanceIdentifier, DBSna
 #' instance. Follow the allocation rules specified in
 #' [`create_db_instance`][rds_create_db_instance].
 #' 
+#' This setting isn't valid for RDS for SQL Server.
+#' 
 #' Be sure to allocate enough storage for your new DB instance so that the
 #' restore operation can succeed. You can also allocate additional storage
 #' for future growth.
@@ -27123,7 +27185,12 @@ rds_restore_db_instance_from_db_snapshot <- function(DBInstanceIdentifier, DBSna
 #' IAM role
 #' manually](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/MySQL.Procedural.Importing.html#MySQL.Procedural.Importing.Enabling.IAM)
 #' in the *Amazon RDS User Guide.*
-#' @param DatabaseInsightsMode Specifies the mode of Database Insights to enable for the instance.
+#' @param DatabaseInsightsMode Specifies the mode of Database Insights to enable for the DB instance.
+#' 
+#' This setting only applies to Amazon Aurora DB instances.
+#' 
+#' Currently, this value is inherited from the DB cluster and can't be
+#' changed.
 #' @param EnablePerformanceInsights Specifies whether to enable Performance Insights for the DB instance.
 #' 
 #' For more information, see [Using Amazon Performance
@@ -28046,6 +28113,8 @@ rds_restore_db_instance_from_s3 <- function(DBName = NULL, DBInstanceIdentifier,
 #' @param AllocatedStorage The amount of storage (in gibibytes) to allocate initially for the DB
 #' instance. Follow the allocation rules specified in
 #' [`create_db_instance`][rds_create_db_instance].
+#' 
+#' This setting isn't valid for RDS for SQL Server.
 #' 
 #' Be sure to allocate enough storage for your new DB instance so that the
 #' restore operation can succeed. You can also allocate additional storage

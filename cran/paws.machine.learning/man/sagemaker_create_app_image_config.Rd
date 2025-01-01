@@ -2,8 +2,8 @@
 % Please edit documentation in R/sagemaker_operations.R
 \name{sagemaker_create_app_image_config}
 \alias{sagemaker_create_app_image_config}
-\title{Creates a configuration for running a SageMaker image as a KernelGateway
-app}
+\title{Creates a configuration for running a SageMaker AI image as a
+KernelGateway app}
 \usage{
 sagemaker_create_app_image_config(
   AppImageConfigName,
@@ -32,7 +32,7 @@ the AppImageConfig API. This kernel is shown to users before the image
 starts. After the image runs, all kernels are visible in Code Editor.}
 }
 \description{
-Creates a configuration for running a SageMaker image as a KernelGateway app. The configuration specifies the Amazon Elastic File System storage volume on the image, and a list of the kernels in the image.
+Creates a configuration for running a SageMaker AI image as a KernelGateway app. The configuration specifies the Amazon Elastic File System storage volume on the image, and a list of the kernels in the image.
 
 See \url{https://www.paws-r-sdk.com/docs/sagemaker_create_app_image_config/} for full documentation.
 }

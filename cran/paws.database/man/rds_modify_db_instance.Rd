@@ -671,7 +671,12 @@ in the \emph{Amazon RDS User Guide.}
 
 This setting doesn't apply to RDS Custom DB instances.}
 
-\item{DatabaseInsightsMode}{Specifies the mode of Database Insights to enable for the instance.}
+\item{DatabaseInsightsMode}{Specifies the mode of Database Insights to enable for the DB instance.
+
+This setting only applies to Amazon Aurora DB instances.
+
+Currently, this value is inherited from the DB cluster and can't be
+changed.}
 
 \item{EnablePerformanceInsights}{Specifies whether to enable Performance Insights for the DB instance.
 
@@ -718,7 +723,23 @@ A change to the \code{CloudwatchLogsExportConfiguration} parameter is always
 applied to the DB instance immediately. Therefore, the
 \code{ApplyImmediately} parameter has no effect.
 
-This setting doesn't apply to RDS Custom DB instances.}
+This setting doesn't apply to RDS Custom DB instances.
+
+The following values are valid for each DB engine:
+\itemize{
+\item Aurora MySQL - \code{audit | error | general | slowquery}
+\item Aurora PostgreSQL - \code{postgresql}
+\item RDS for MySQL - \code{error | general | slowquery}
+\item RDS for PostgreSQL - \code{postgresql | upgrade}
+}
+
+For more information about exporting CloudWatch Logs for Amazon RDS, see
+\href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch}{Publishing Database Logs to Amazon CloudWatch Logs}
+in the \emph{Amazon RDS User Guide}.
+
+For more information about exporting CloudWatch Logs for Amazon Aurora,
+see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch}{Publishing Database Logs to Amazon CloudWatch Logs}
+in the \emph{Amazon Aurora User Guide}.}
 
 \item{ProcessorFeatures}{The number of CPU cores and the number of threads per core for the DB
 instance class of the DB instance.

@@ -2,15 +2,16 @@
 % Please edit documentation in R/ecr_operations.R
 \name{ecr_get_account_setting}
 \alias{ecr_get_account_setting}
-\title{Retrieves the basic scan type version name}
+\title{Retrieves the account setting value for the specified setting name}
 \usage{
 ecr_get_account_setting(name)
 }
 \arguments{
-\item{name}{[required] Basic scan type version name.}
+\item{name}{[required] The name of the account setting, such as \code{BASIC_SCAN_TYPE_VERSION} or
+\code{REGISTRY_POLICY_SCOPE}.}
 }
 \description{
-Retrieves the basic scan type version name.
+Retrieves the account setting value for the specified setting name.
 
 See \url{https://www.paws-r-sdk.com/docs/ecr_get_account_setting/} for full documentation.
 }

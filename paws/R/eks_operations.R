@@ -3219,6 +3219,89 @@ eks_describe_cluster <- function(name) {
 }
 .eks$operations$describe_cluster <- eks_describe_cluster
 
+#' Lists available Kubernetes versions for Amazon EKS clusters
+#'
+#' @description
+#' Lists available Kubernetes versions for Amazon EKS clusters.
+#'
+#' @usage
+#' eks_describe_cluster_versions(clusterType, maxResults, nextToken,
+#'   defaultOnly, includeAll, clusterVersions, status)
+#'
+#' @param clusterType The type of cluster to filter versions by.
+#' @param maxResults Maximum number of results to return.
+#' @param nextToken Pagination token for the next set of results.
+#' @param defaultOnly Filter to show only default versions.
+#' @param includeAll Include all available versions in the response.
+#' @param clusterVersions List of specific cluster versions to describe.
+#' @param status Filter versions by their current status.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   nextToken = "string",
+#'   clusterVersions = list(
+#'     list(
+#'       clusterVersion = "string",
+#'       clusterType = "string",
+#'       defaultPlatformVersion = "string",
+#'       defaultVersion = TRUE|FALSE,
+#'       releaseDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       endOfStandardSupportDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       endOfExtendedSupportDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       status = "unsupported"|"standard-support"|"extended-support",
+#'       kubernetesPatchVersion = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_cluster_versions(
+#'   clusterType = "string",
+#'   maxResults = 123,
+#'   nextToken = "string",
+#'   defaultOnly = TRUE|FALSE,
+#'   includeAll = TRUE|FALSE,
+#'   clusterVersions = list(
+#'     "string"
+#'   ),
+#'   status = "unsupported"|"standard-support"|"extended-support"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname eks_describe_cluster_versions
+#'
+#' @aliases eks_describe_cluster_versions
+eks_describe_cluster_versions <- function(clusterType = NULL, maxResults = NULL, nextToken = NULL, defaultOnly = NULL, includeAll = NULL, clusterVersions = NULL, status = NULL) {
+  op <- new_operation(
+    name = "DescribeClusterVersions",
+    http_method = "GET",
+    http_path = "/cluster-versions",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "clusterVersions"),
+    stream_api = FALSE
+  )
+  input <- .eks$describe_cluster_versions_input(clusterType = clusterType, maxResults = maxResults, nextToken = nextToken, defaultOnly = defaultOnly, includeAll = includeAll, clusterVersions = clusterVersions, status = status)
+  output <- .eks$describe_cluster_versions_output()
+  config <- get_config()
+  svc <- .eks$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eks$operations$describe_cluster_versions <- eks_describe_cluster_versions
+
 #' Returns descriptive information about a subscription
 #'
 #' @description
@@ -3513,6 +3596,14 @@ eks_describe_identity_provider_config <- function(clusterName, identityProviderC
 #'                 "2015-01-01"
 #'               )
 #'             )
+#'           )
+#'         )
+#'       ),
+#'       addonCompatibilityDetails = list(
+#'         list(
+#'           name = "string",
+#'           compatibleVersions = list(
+#'             "string"
 #'           )
 #'         )
 #'       )

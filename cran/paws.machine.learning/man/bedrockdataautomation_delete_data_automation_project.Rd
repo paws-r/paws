@@ -2,7 +2,7 @@
 % Please edit documentation in R/bedrockdataautomation_operations.R
 \name{bedrockdataautomation_delete_data_automation_project}
 \alias{bedrockdataautomation_delete_data_automation_project}
-\title{Deletes an existing Amazon Bedrock Keystone DataAutomationProject}
+\title{Deletes an existing Amazon Bedrock Data Automation Project}
 \usage{
 bedrockdataautomation_delete_data_automation_project(projectArn)
 }
@@ -10,7 +10,7 @@ bedrockdataautomation_delete_data_automation_project(projectArn)
 \item{projectArn}{[required] ARN generated at the server side when a DataAutomationProject is created}
 }
 \description{
-Deletes an existing Amazon Bedrock Keystone DataAutomationProject
+Deletes an existing Amazon Bedrock Data Automation Project
 
 See \url{https://www.paws-r-sdk.com/docs/bedrockdataautomation_delete_data_automation_project/} for full documentation.
 }

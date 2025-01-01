@@ -2,7 +2,7 @@
 % Please edit documentation in R/bedrockdataautomation_operations.R
 \name{bedrockdataautomation_get_blueprint}
 \alias{bedrockdataautomation_get_blueprint}
-\title{Gets an existing Amazon Bedrock Keystone Blueprint}
+\title{Gets an existing Amazon Bedrock Data Automation Blueprint}
 \usage{
 bedrockdataautomation_get_blueprint(
   blueprintArn,
@@ -18,7 +18,7 @@ bedrockdataautomation_get_blueprint(
 \item{blueprintStage}{Optional field to get a specific Blueprint stage}
 }
 \description{
-Gets an existing Amazon Bedrock Keystone Blueprint
+Gets an existing Amazon Bedrock Data Automation Blueprint
 
 See \url{https://www.paws-r-sdk.com/docs/bedrockdataautomation_get_blueprint/} for full documentation.
 }

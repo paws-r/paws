@@ -39,7 +39,7 @@ If removing subnets, ensure there are no apps in the \code{InService},
 \item{AppNetworkAccessType}{Specifies the VPC used for non-EFS traffic.
 \itemize{
 \item \code{PublicInternetOnly} - Non-EFS traffic is through a VPC managed by
-Amazon SageMaker, which allows direct internet access.
+Amazon SageMaker AI, which allows direct internet access.
 \item \code{VpcOnly} - All Studio traffic is through the specified VPC and
 subnets.
 }

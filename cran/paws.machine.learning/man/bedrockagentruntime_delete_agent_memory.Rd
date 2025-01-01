@@ -4,7 +4,12 @@
 \alias{bedrockagentruntime_delete_agent_memory}
 \title{Deletes memory from the specified memory identifier}
 \usage{
-bedrockagentruntime_delete_agent_memory(agentAliasId, agentId, memoryId = NULL)
+bedrockagentruntime_delete_agent_memory(
+  agentAliasId,
+  agentId,
+  memoryId = NULL,
+  sessionId = NULL
+)
 }
 \arguments{
 \item{agentAliasId}{[required] The unique identifier of an alias of an agent.}
@@ -12,6 +17,8 @@ bedrockagentruntime_delete_agent_memory(agentAliasId, agentId, memoryId = NULL)
 \item{agentId}{[required] The unique identifier of the agent to which the alias belongs.}
 
 \item{memoryId}{The unique identifier of the memory.}
+
+\item{sessionId}{The unique session identifier of the memory.}
 }
 \description{
 Deletes memory from the specified memory identifier.

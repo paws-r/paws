@@ -16,7 +16,7 @@ sagemaker_create_presigned_notebook_instance_url(
 \item{SessionExpirationDurationInSeconds}{The duration of the session, in seconds. The default is 12 hours.}
 }
 \description{
-Returns a URL that you can use to connect to the Jupyter server from a notebook instance. In the SageMaker console, when you choose \code{Open} next to a notebook instance, SageMaker opens a new tab showing the Jupyter server home page from the notebook instance. The console uses this API to get the URL and show the page.
+Returns a URL that you can use to connect to the Jupyter server from a notebook instance. In the SageMaker AI console, when you choose \code{Open} next to a notebook instance, SageMaker AI opens a new tab showing the Jupyter server home page from the notebook instance. The console uses this API to get the URL and show the page.
 
 See \url{https://www.paws-r-sdk.com/docs/sagemaker_create_presigned_notebook_instance_url/} for full documentation.
 }

@@ -14,9 +14,9 @@ macie2_update_resource_profile_detections(
 to.}
 
 \item{suppressDataIdentifiers}{An array of objects, one for each custom data identifier or managed data
-identifier that detected the type of sensitive data to start excluding
-or including in the bucket's score. To start including all sensitive
-data types in the score, don't specify any values for this array.}
+identifier that detected a type of sensitive data to exclude from the
+bucket's score. To include all sensitive data types in the score, don't
+specify any values for this array.}
 }
 \description{
 Updates the sensitivity scoring settings for an S3 bucket.
