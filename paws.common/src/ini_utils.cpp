@@ -1,87 +1,154 @@
-#include <Rcpp.h>
+#include <iostream>
+#include <vector>
 #include <string>
+#include <sys/mman.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <unistd.h>
+#include <Rcpp.h>
+#include <cctype>
 
 using namespace Rcpp;
 
-// Function to trim trailing whitespace from a string
-std::string rtrim(const std::string& s) {
+// Helper function to trim trailing whitespace from a string
+std::string rtrim(const std::string& s)
+{
   size_t end = s.find_last_not_of(" \t\n\r\f\v");
   return (end == std::string::npos) ? "" : s.substr(0, end + 1);
 }
 
-// [[Rcpp::export]]
-Rcpp::CharacterVector rtrim_whitespace(Rcpp::CharacterVector vec) {
-  Rcpp::CharacterVector result(vec.size());
-
-  for (size_t i = 0; i < vec.size(); ++i) {
-    std::string line = Rcpp::as<std::string>(vec[i]);
-    result[i] = rtrim(line);
-  }
-
-  return result;
-}
-
-// Function to check if a line starts with specified patterns
-bool startsWithPattern(const std::string& line) {
-  size_t i = 0;
+// Helper function to check if a line starts with the unwanted pattern
+bool startsWithPattern(const std::string& line)
+{
   // Skip leading whitespace
-  while (i < line.size() && std::isspace(line[i])) {
-    i++;
+  size_t start = line.find_first_not_of(" \t");
+  if (start == std::string::npos)
+  {
+    return false; // Line is empty or only whitespace
   }
-  // Check for specific patterns
-  return (i < line.size() && (line[i] == ';' || line[i] == '#'));
+  // Check for ';' or '#'
+  return (line[start] == ';' || line[start] == '#');
 }
 
-
+// Function to read an ini file using memory-mapped files and return its contents as a vector of strings
 // [[Rcpp::export]]
-Rcpp::LogicalVector identify_comments(Rcpp::CharacterVector vec) {
-  Rcpp::LogicalVector result(vec.size());
+std::vector<std::string> scan_ini_file(const std::string &filename)
+{
+  std::vector<std::string> fileLines;
 
-  for (size_t i = 0; i < vec.size(); ++i) {
-    std::string line = Rcpp::as<std::string>(vec[i]);
-    result[i] = startsWithPattern(line);
+  // Open the file
+  int fd = open(filename.c_str(), O_RDONLY);
+  if (fd == -1)
+  {
+    Rcpp::stop("Unable to find file: " + filename);
   }
 
-  return result;
+  // Get the file size
+  struct stat sb;
+  if (fstat(fd, &sb) == -1)
+  {
+    close(fd);
+    Rcpp::stop("Unable to get the file size");
+  }
+
+  // Map the file into memory
+  char *fileContent = static_cast<char *>(mmap(nullptr, sb.st_size, PROT_READ, MAP_PRIVATE, fd, 0));
+  if (fileContent == MAP_FAILED)
+  {
+    close(fd);
+    return fileLines; // Return empty vector for empty files
+  }
+
+  // Close the file descriptor as it is no longer needed
+  close(fd);
+
+  // Reserve space for lines to minimize reallocations
+  fileLines.reserve(sb.st_size / 80); // Assuming an average line length of 80 characters
+
+  // Split the file content into lines, trim trailing whitespace, and store them in the vector
+  const char *start = fileContent;
+  const char *end = fileContent + sb.st_size;
+  for (const char *ptr = start; ptr != end; ++ptr)
+  {
+    if (*ptr == '\n')
+    {
+      if (start != ptr) // Check if the line is not empty
+      {
+        std::string line(start, ptr - start);
+        line = rtrim(line);
+        // Check if the line matches the unwanted pattern
+        if (!startsWithPattern(line))
+        {
+          fileLines.emplace_back(line);
+        }
+      }
+      start = ptr + 1;
+    }
+  }
+  // Add the last line if the file doesn't end with a newline and is not empty
+  if (start < end && start != end)
+  {
+    std::string line(start, end - start);
+    line = rtrim(line);
+    // Check if the line matches the unwanted pattern
+    if (!startsWithPattern(line))
+    {
+      fileLines.emplace_back(line);
+    }
+  }
+
+  // Unmap the file from memory
+  if (munmap(fileContent, sb.st_size) == -1)
+  {
+    Rcpp::stop("Unable to unmap file: " + filename);
+  }
+
+  return fileLines;
 }
 
-// Function to trim leading and trailing whitespace characters
+// Helper function to trim leading and trailing whitespace characters from a string
 std::string trim(const std::string& str) {
   size_t start = 0;
+  size_t end = str.size();
+
   // Find the first non-whitespace character
-  while (start < str.size() && std::isspace(str[start])) {
+  while (start < end && std::isspace(str[start])) {
     ++start;
   }
 
-  // If the string is entirely whitespace, return an empty string
-  if (start == str.size()) {
-    return "";
-  }
-
-  size_t end = str.size() - 1;
   // Find the last non-whitespace character
-  while (end > start && std::isspace(str[end])) {
+  while (end > start && std::isspace(str[end - 1])) {
     --end;
   }
 
-  // Return the substring that excludes leading and trailing whitespace
-  return str.substr(start, end - start + 1);
+  return str.substr(start, end - start);
 }
 
 // Function to remove square brackets and all outer whitespaces
 std::string removeBracketsAndTrim(const std::string& str) {
-  std::string result;
-  result.reserve(str.size()); // Reserve space to avoid multiple allocations
+  size_t start = 0;
+  size_t end = str.size();
 
-  for (char ch : str) {
-    // Check if the character is not a square bracket
-    if (ch != '[' && ch != ']') {
-      result += ch;
-    }
+  // Skip leading whitespace
+  while (start < end && std::isspace(str[start])) {
+    ++start;
   }
 
-  // Trim leading and trailing whitespace from the result
-  return trim(result);
+  // Skip trailing whitespace
+  while (end > start && std::isspace(str[end - 1])) {
+    --end;
+  }
+
+  // Remove square brackets if present
+  if (start < end && str[start] == '[') {
+    ++start;
+  }
+  if (end > start && str[end - 1] == ']') {
+    --end;
+  }
+
+  // Trim the internal whitespace again
+  return trim(str.substr(start, end - start));
 }
 
 // [[Rcpp::export]]
