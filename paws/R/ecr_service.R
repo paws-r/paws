@@ -129,7 +129,7 @@ NULL
 #'  \link[=ecr_describe_registry]{describe_registry} \tab Describes the settings for a registry\cr
 #'  \link[=ecr_describe_repositories]{describe_repositories} \tab Describes image repositories in a registry\cr
 #'  \link[=ecr_describe_repository_creation_templates]{describe_repository_creation_templates} \tab Returns details about the repository creation templates in a registry\cr
-#'  \link[=ecr_get_account_setting]{get_account_setting} \tab Retrieves the basic scan type version name\cr
+#'  \link[=ecr_get_account_setting]{get_account_setting} \tab Retrieves the account setting value for the specified setting name\cr
 #'  \link[=ecr_get_authorization_token]{get_authorization_token} \tab Retrieves an authorization token\cr
 #'  \link[=ecr_get_download_url_for_layer]{get_download_url_for_layer} \tab Retrieves the pre-signed Amazon S3 download URL corresponding to an image layer\cr
 #'  \link[=ecr_get_lifecycle_policy]{get_lifecycle_policy} \tab Retrieves the lifecycle policy for the specified repository\cr
@@ -140,7 +140,7 @@ NULL
 #'  \link[=ecr_initiate_layer_upload]{initiate_layer_upload} \tab Notifies Amazon ECR that you intend to upload an image layer\cr
 #'  \link[=ecr_list_images]{list_images} \tab Lists all the image IDs for the specified repository\cr
 #'  \link[=ecr_list_tags_for_resource]{list_tags_for_resource} \tab List the tags for an Amazon ECR resource\cr
-#'  \link[=ecr_put_account_setting]{put_account_setting} \tab Allows you to change the basic scan type version by setting the name parameter to either CLAIR to AWS_NATIVE\cr
+#'  \link[=ecr_put_account_setting]{put_account_setting} \tab Allows you to change the basic scan type version or registry policy scope\cr
 #'  \link[=ecr_put_image]{put_image} \tab Creates or updates the image manifest and tags associated with an image\cr
 #'  \link[=ecr_put_image_scanning_configuration]{put_image_scanning_configuration} \tab The PutImageScanningConfiguration API is being deprecated, in favor of specifying the image scanning configuration at the registry level\cr
 #'  \link[=ecr_put_image_tag_mutability]{put_image_tag_mutability} \tab Updates the image tag mutability settings for the specified repository\cr

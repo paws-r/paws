@@ -53,7 +53,7 @@ to the client. The available operations are listed in the
 Operations section.
 }
 \description{
-Amazon Bedrock Keystone Build
+Amazon Bedrock Data Automation BuildTime
 }
 \section{Service syntax}{
 
@@ -94,17 +94,17 @@ Amazon Bedrock Keystone Build
 \section{Operations}{
 
 \tabular{ll}{
-\link[=bedrockdataautomation_create_blueprint]{create_blueprint} \tab Creates an Amazon Bedrock Keystone Blueprint\cr
-\link[=bedrockdataautomation_create_blueprint_version]{create_blueprint_version} \tab Creates a new version of an existing Amazon Bedrock Keystone Blueprint\cr
-\link[=bedrockdataautomation_create_data_automation_project]{create_data_automation_project} \tab Creates an Amazon Bedrock Keystone DataAutomationProject\cr
-\link[=bedrockdataautomation_delete_blueprint]{delete_blueprint} \tab Deletes an existing Amazon Bedrock Keystone Blueprint\cr
-\link[=bedrockdataautomation_delete_data_automation_project]{delete_data_automation_project} \tab Deletes an existing Amazon Bedrock Keystone DataAutomationProject\cr
-\link[=bedrockdataautomation_get_blueprint]{get_blueprint} \tab Gets an existing Amazon Bedrock Keystone Blueprint\cr
-\link[=bedrockdataautomation_get_data_automation_project]{get_data_automation_project} \tab Gets an existing Amazon Bedrock Keystone DataAutomationProject\cr
-\link[=bedrockdataautomation_list_blueprints]{list_blueprints} \tab Lists all existing Amazon Bedrock Keystone Blueprints\cr
-\link[=bedrockdataautomation_list_data_automation_projects]{list_data_automation_projects} \tab Lists all existing Amazon Bedrock Keystone DataAutomationProjects\cr
-\link[=bedrockdataautomation_update_blueprint]{update_blueprint} \tab Updates an existing Amazon Bedrock Blueprint\cr
-\link[=bedrockdataautomation_update_data_automation_project]{update_data_automation_project} \tab Updates an existing Amazon Bedrock DataAutomationProject
+\link[=bedrockdataautomation_create_blueprint]{create_blueprint} \tab Creates an Amazon Bedrock Data Automation Blueprint\cr
+\link[=bedrockdataautomation_create_blueprint_version]{create_blueprint_version} \tab Creates a new version of an existing Amazon Bedrock Data Automation Blueprint\cr
+\link[=bedrockdataautomation_create_data_automation_project]{create_data_automation_project} \tab Creates an Amazon Bedrock Data Automation Project\cr
+\link[=bedrockdataautomation_delete_blueprint]{delete_blueprint} \tab Deletes an existing Amazon Bedrock Data Automation Blueprint\cr
+\link[=bedrockdataautomation_delete_data_automation_project]{delete_data_automation_project} \tab Deletes an existing Amazon Bedrock Data Automation Project\cr
+\link[=bedrockdataautomation_get_blueprint]{get_blueprint} \tab Gets an existing Amazon Bedrock Data Automation Blueprint\cr
+\link[=bedrockdataautomation_get_data_automation_project]{get_data_automation_project} \tab Gets an existing Amazon Bedrock Data Automation Project\cr
+\link[=bedrockdataautomation_list_blueprints]{list_blueprints} \tab Lists all existing Amazon Bedrock Data Automation Blueprints\cr
+\link[=bedrockdataautomation_list_data_automation_projects]{list_data_automation_projects} \tab Lists all existing Amazon Bedrock Data Automation Projects\cr
+\link[=bedrockdataautomation_update_blueprint]{update_blueprint} \tab Updates an existing Amazon Bedrock Data Automation Blueprint\cr
+\link[=bedrockdataautomation_update_data_automation_project]{update_data_automation_project} \tab Updates an existing Amazon Bedrock Data Automation Project
 }
 }
 

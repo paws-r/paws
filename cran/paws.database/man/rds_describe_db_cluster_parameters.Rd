@@ -27,12 +27,15 @@ DBClusterParameterGroup.
 
 Valid Values:
 \itemize{
-\item \code{customer}
-\item \code{engine}
-\item \code{service}
+\item \code{engine-default}
+\item \code{system}
+\item \code{user}
 }}
 
-\item{Filters}{This parameter isn't currently supported.}
+\item{Filters}{A filter that specifies one or more DB cluster parameters to describe.
+
+The only supported filter is \code{parameter-name}. The results list only
+includes information about the DB cluster parameters with these names.}
 
 \item{MaxRecords}{The maximum number of records to include in the response. If more
 records exist than the specified \code{MaxRecords} value, a pagination token

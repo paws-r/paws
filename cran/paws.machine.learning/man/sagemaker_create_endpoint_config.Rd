@@ -81,11 +81,11 @@ replicated from the model specified on \code{ProductionVariants}. If you use
 this field, you can only specify one variant for \code{ProductionVariants}
 and one variant for \code{ShadowProductionVariants}.}
 
-\item{ExecutionRoleArn}{The Amazon Resource Name (ARN) of an IAM role that Amazon SageMaker can
-assume to perform actions on your behalf. For more information, see
-\href{https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html}{SageMaker Roles}.
+\item{ExecutionRoleArn}{The Amazon Resource Name (ARN) of an IAM role that Amazon SageMaker AI
+can assume to perform actions on your behalf. For more information, see
+\href{https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html}{SageMaker AI Roles}.
 
-To be able to pass this role to Amazon SageMaker, the caller of this
+To be able to pass this role to Amazon SageMaker AI, the caller of this
 action must have the \code{iam:PassRole} permission.}
 
 \item{VpcConfig}{}

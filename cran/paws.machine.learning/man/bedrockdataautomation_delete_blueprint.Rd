@@ -2,7 +2,7 @@
 % Please edit documentation in R/bedrockdataautomation_operations.R
 \name{bedrockdataautomation_delete_blueprint}
 \alias{bedrockdataautomation_delete_blueprint}
-\title{Deletes an existing Amazon Bedrock Keystone Blueprint}
+\title{Deletes an existing Amazon Bedrock Data Automation Blueprint}
 \usage{
 bedrockdataautomation_delete_blueprint(blueprintArn, blueprintVersion = NULL)
 }
@@ -12,7 +12,7 @@ bedrockdataautomation_delete_blueprint(blueprintArn, blueprintVersion = NULL)
 \item{blueprintVersion}{Optional field to delete a specific Blueprint version}
 }
 \description{
-Deletes an existing Amazon Bedrock Keystone Blueprint
+Deletes an existing Amazon Bedrock Data Automation Blueprint
 
 See \url{https://www.paws-r-sdk.com/docs/bedrockdataautomation_delete_blueprint/} for full documentation.
 }

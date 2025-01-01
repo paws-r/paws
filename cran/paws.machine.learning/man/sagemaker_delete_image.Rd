@@ -2,7 +2,7 @@
 % Please edit documentation in R/sagemaker_operations.R
 \name{sagemaker_delete_image}
 \alias{sagemaker_delete_image}
-\title{Deletes a SageMaker image and all versions of the image}
+\title{Deletes a SageMaker AI image and all versions of the image}
 \usage{
 sagemaker_delete_image(ImageName)
 }
@@ -10,7 +10,7 @@ sagemaker_delete_image(ImageName)
 \item{ImageName}{[required] The name of the image to delete.}
 }
 \description{
-Deletes a SageMaker image and all versions of the image. The container images aren't deleted.
+Deletes a SageMaker AI image and all versions of the image. The container images aren't deleted.
 
 See \url{https://www.paws-r-sdk.com/docs/sagemaker_delete_image/} for full documentation.
 }

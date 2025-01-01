@@ -9,11 +9,13 @@ NULL
 #' Deletes memory from the specified memory identifier.
 #'
 #' @usage
-#' bedrockagentruntime_delete_agent_memory(agentAliasId, agentId, memoryId)
+#' bedrockagentruntime_delete_agent_memory(agentAliasId, agentId, memoryId,
+#'   sessionId)
 #'
 #' @param agentAliasId &#91;required&#93; The unique identifier of an alias of an agent.
 #' @param agentId &#91;required&#93; The unique identifier of the agent to which the alias belongs.
 #' @param memoryId The unique identifier of the memory.
+#' @param sessionId The unique session identifier of the memory.
 #'
 #' @return
 #' An empty list.
@@ -23,7 +25,8 @@ NULL
 #' svc$delete_agent_memory(
 #'   agentAliasId = "string",
 #'   agentId = "string",
-#'   memoryId = "string"
+#'   memoryId = "string",
+#'   sessionId = "string"
 #' )
 #' ```
 #'
@@ -32,7 +35,7 @@ NULL
 #' @rdname bedrockagentruntime_delete_agent_memory
 #'
 #' @aliases bedrockagentruntime_delete_agent_memory
-bedrockagentruntime_delete_agent_memory <- function(agentAliasId, agentId, memoryId = NULL) {
+bedrockagentruntime_delete_agent_memory <- function(agentAliasId, agentId, memoryId = NULL, sessionId = NULL) {
   op <- new_operation(
     name = "DeleteAgentMemory",
     http_method = "DELETE",
@@ -41,7 +44,7 @@ bedrockagentruntime_delete_agent_memory <- function(agentAliasId, agentId, memor
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagentruntime$delete_agent_memory_input(agentAliasId = agentAliasId, agentId = agentId, memoryId = memoryId)
+  input <- .bedrockagentruntime$delete_agent_memory_input(agentAliasId = agentAliasId, agentId = agentId, memoryId = memoryId, sessionId = sessionId)
   output <- .bedrockagentruntime$delete_agent_memory_output()
   config <- get_config()
   svc <- .bedrockagentruntime$service(config, op)
@@ -223,6 +226,16 @@ bedrockagentruntime_get_agent_memory <- function(agentAliasId, agentId, maxItems
 #'     final result it yielded. For more information, see [Trace
 #'     enablement](https://docs.aws.amazon.com/bedrock/latest/userguide/agents-test.html#trace-events).
 #' 
+#' -   To stream agent responses, make sure that only orchestration prompt
+#'     is enabled. Agent streaming is not supported for the following
+#'     steps:
+#' 
+#'     -   `Pre-processing`
+#' 
+#'     -   `Post-processing`
+#' 
+#'     -   Agent with 1 Knowledge base and `User Input` not enabled
+#' 
 #' -   End a conversation by setting `endSession` to `true`.
 #' 
 #' -   In the `sessionState` object, you can include attributes for the
@@ -244,12 +257,13 @@ bedrockagentruntime_get_agent_memory <- function(agentAliasId, agentId, maxItems
 #' -   Errors are also surfaced in the response.
 #'
 #' @usage
-#' bedrockagentruntime_invoke_agent(agentAliasId, agentId, enableTrace,
-#'   endSession, inputText, memoryId, sessionId, sessionState, sourceArn,
-#'   streamingConfigurations)
+#' bedrockagentruntime_invoke_agent(agentAliasId, agentId,
+#'   bedrockModelConfigurations, enableTrace, endSession, inputText,
+#'   memoryId, sessionId, sessionState, sourceArn, streamingConfigurations)
 #'
 #' @param agentAliasId &#91;required&#93; The alias of the agent to use.
 #' @param agentId &#91;required&#93; The unique identifier of the agent to use.
+#' @param bedrockModelConfigurations Model performance settings for the request.
 #' @param enableTrace Specifies whether to turn on the trace or not to track the agent's
 #' reasoning process. For more information, see [Trace
 #' enablement](https://docs.aws.amazon.com/bedrock/latest/userguide/agents-test.html#trace-events).
@@ -269,6 +283,9 @@ bedrockagentruntime_get_agent_memory <- function(agentAliasId, agentId, maxItems
 #' field, the `inputText` field will be ignored.
 #' @param sourceArn The ARN of the resource making the request.
 #' @param streamingConfigurations Specifies the configurations for streaming.
+#' 
+#' To use agent streaming, you need permissions to perform the
+#' `bedrock:InvokeModelWithResponseStream` action.
 #'
 #' @return
 #' A list with the following syntax:
@@ -363,6 +380,9 @@ bedrockagentruntime_get_agent_memory <- function(agentAliasId, agentId, maxItems
 #'       )
 #'     ),
 #'     internalServerException = list(
+#'       message = "string"
+#'     ),
+#'     modelNotReadyException = list(
 #'       message = "string"
 #'     ),
 #'     resourceNotFoundException = list(
@@ -1129,6 +1149,11 @@ bedrockagentruntime_get_agent_memory <- function(agentAliasId, agentId, maxItems
 #' svc$invoke_agent(
 #'   agentAliasId = "string",
 #'   agentId = "string",
+#'   bedrockModelConfigurations = list(
+#'     performanceConfig = list(
+#'       latency = "standard"|"optimized"
+#'     )
+#'   ),
 #'   enableTrace = TRUE|FALSE,
 #'   endSession = TRUE|FALSE,
 #'   inputText = "string",
@@ -1314,7 +1339,7 @@ bedrockagentruntime_get_agent_memory <- function(agentAliasId, agentId, maxItems
 #' @rdname bedrockagentruntime_invoke_agent
 #'
 #' @aliases bedrockagentruntime_invoke_agent
-bedrockagentruntime_invoke_agent <- function(agentAliasId, agentId, enableTrace = NULL, endSession = NULL, inputText = NULL, memoryId = NULL, sessionId, sessionState = NULL, sourceArn = NULL, streamingConfigurations = NULL) {
+bedrockagentruntime_invoke_agent <- function(agentAliasId, agentId, bedrockModelConfigurations = NULL, enableTrace = NULL, endSession = NULL, inputText = NULL, memoryId = NULL, sessionId, sessionState = NULL, sourceArn = NULL, streamingConfigurations = NULL) {
   op <- new_operation(
     name = "InvokeAgent",
     http_method = "POST",
@@ -1323,7 +1348,7 @@ bedrockagentruntime_invoke_agent <- function(agentAliasId, agentId, enableTrace 
     paginator = list(),
     stream_api = TRUE
   )
-  input <- .bedrockagentruntime$invoke_agent_input(agentAliasId = agentAliasId, agentId = agentId, enableTrace = enableTrace, endSession = endSession, inputText = inputText, memoryId = memoryId, sessionId = sessionId, sessionState = sessionState, sourceArn = sourceArn, streamingConfigurations = streamingConfigurations)
+  input <- .bedrockagentruntime$invoke_agent_input(agentAliasId = agentAliasId, agentId = agentId, bedrockModelConfigurations = bedrockModelConfigurations, enableTrace = enableTrace, endSession = endSession, inputText = inputText, memoryId = memoryId, sessionId = sessionId, sessionState = sessionState, sourceArn = sourceArn, streamingConfigurations = streamingConfigurations)
   output <- .bedrockagentruntime$invoke_agent_output()
   config <- get_config()
   svc <- .bedrockagentruntime$service(config, op)
@@ -1349,7 +1374,7 @@ bedrockagentruntime_invoke_agent <- function(agentAliasId, agentId, enableTrace 
 #'
 #' @usage
 #' bedrockagentruntime_invoke_flow(enableTrace, flowAliasIdentifier,
-#'   flowIdentifier, inputs)
+#'   flowIdentifier, inputs, modelPerformanceConfiguration)
 #'
 #' @param enableTrace Specifies whether to return the trace for the flow or not. Traces track
 #' inputs and outputs for nodes in the flow. For more information, see
@@ -1359,6 +1384,7 @@ bedrockagentruntime_invoke_agent <- function(agentAliasId, agentId, enableTrace 
 #' @param flowIdentifier &#91;required&#93; The unique identifier of the flow.
 #' @param inputs &#91;required&#93; A list of objects, each containing information about an input into the
 #' flow.
+#' @param modelPerformanceConfiguration Model performance settings for the request.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1465,6 +1491,11 @@ bedrockagentruntime_invoke_agent <- function(agentAliasId, agentId, enableTrace 
 #'       nodeName = "string",
 #'       nodeOutputName = "string"
 #'     )
+#'   ),
+#'   modelPerformanceConfiguration = list(
+#'     performanceConfig = list(
+#'       latency = "standard"|"optimized"
+#'     )
 #'   )
 #' )
 #' ```
@@ -1474,7 +1505,7 @@ bedrockagentruntime_invoke_agent <- function(agentAliasId, agentId, enableTrace 
 #' @rdname bedrockagentruntime_invoke_flow
 #'
 #' @aliases bedrockagentruntime_invoke_flow
-bedrockagentruntime_invoke_flow <- function(enableTrace = NULL, flowAliasIdentifier, flowIdentifier, inputs) {
+bedrockagentruntime_invoke_flow <- function(enableTrace = NULL, flowAliasIdentifier, flowIdentifier, inputs, modelPerformanceConfiguration = NULL) {
   op <- new_operation(
     name = "InvokeFlow",
     http_method = "POST",
@@ -1483,7 +1514,7 @@ bedrockagentruntime_invoke_flow <- function(enableTrace = NULL, flowAliasIdentif
     paginator = list(),
     stream_api = TRUE
   )
-  input <- .bedrockagentruntime$invoke_flow_input(enableTrace = enableTrace, flowAliasIdentifier = flowAliasIdentifier, flowIdentifier = flowIdentifier, inputs = inputs)
+  input <- .bedrockagentruntime$invoke_flow_input(enableTrace = enableTrace, flowAliasIdentifier = flowAliasIdentifier, flowIdentifier = flowIdentifier, inputs = inputs, modelPerformanceConfiguration = modelPerformanceConfiguration)
   output <- .bedrockagentruntime$invoke_flow_output()
   config <- get_config()
   svc <- .bedrockagentruntime$service(config, op)
@@ -1526,13 +1557,14 @@ bedrockagentruntime_invoke_flow <- function(enableTrace = NULL, flowAliasIdentif
 #'
 #' @usage
 #' bedrockagentruntime_invoke_inline_agent(actionGroups,
-#'   customerEncryptionKeyArn, enableTrace, endSession, foundationModel,
-#'   guardrailConfiguration, idleSessionTTLInSeconds, inlineSessionState,
-#'   inputText, instruction, knowledgeBases, promptOverrideConfiguration,
-#'   sessionId)
+#'   bedrockModelConfigurations, customerEncryptionKeyArn, enableTrace,
+#'   endSession, foundationModel, guardrailConfiguration,
+#'   idleSessionTTLInSeconds, inlineSessionState, inputText, instruction,
+#'   knowledgeBases, promptOverrideConfiguration, sessionId)
 #'
 #' @param actionGroups A list of action groups with each action group defining the action the
 #' inline agent needs to carry out.
+#' @param bedrockModelConfigurations Model settings for the request.
 #' @param customerEncryptionKeyArn The Amazon Resource Name (ARN) of the Amazon Web Services KMS key to use
 #' to encrypt your inline agent.
 #' @param enableTrace Specifies whether to turn on the trace or not to track the agent's
@@ -2457,6 +2489,11 @@ bedrockagentruntime_invoke_flow <- function(enableTrace = NULL, flowAliasIdentif
 #'       parentActionGroupSignature = "AMAZON.UserInput"|"AMAZON.CodeInterpreter"
 #'     )
 #'   ),
+#'   bedrockModelConfigurations = list(
+#'     performanceConfig = list(
+#'       latency = "standard"|"optimized"
+#'     )
+#'   ),
 #'   customerEncryptionKeyArn = "string",
 #'   enableTrace = TRUE|FALSE,
 #'   endSession = TRUE|FALSE,
@@ -2654,7 +2691,7 @@ bedrockagentruntime_invoke_flow <- function(enableTrace = NULL, flowAliasIdentif
 #' @rdname bedrockagentruntime_invoke_inline_agent
 #'
 #' @aliases bedrockagentruntime_invoke_inline_agent
-bedrockagentruntime_invoke_inline_agent <- function(actionGroups = NULL, customerEncryptionKeyArn = NULL, enableTrace = NULL, endSession = NULL, foundationModel, guardrailConfiguration = NULL, idleSessionTTLInSeconds = NULL, inlineSessionState = NULL, inputText = NULL, instruction, knowledgeBases = NULL, promptOverrideConfiguration = NULL, sessionId) {
+bedrockagentruntime_invoke_inline_agent <- function(actionGroups = NULL, bedrockModelConfigurations = NULL, customerEncryptionKeyArn = NULL, enableTrace = NULL, endSession = NULL, foundationModel, guardrailConfiguration = NULL, idleSessionTTLInSeconds = NULL, inlineSessionState = NULL, inputText = NULL, instruction, knowledgeBases = NULL, promptOverrideConfiguration = NULL, sessionId) {
   op <- new_operation(
     name = "InvokeInlineAgent",
     http_method = "POST",
@@ -2663,7 +2700,7 @@ bedrockagentruntime_invoke_inline_agent <- function(actionGroups = NULL, custome
     paginator = list(),
     stream_api = TRUE
   )
-  input <- .bedrockagentruntime$invoke_inline_agent_input(actionGroups = actionGroups, customerEncryptionKeyArn = customerEncryptionKeyArn, enableTrace = enableTrace, endSession = endSession, foundationModel = foundationModel, guardrailConfiguration = guardrailConfiguration, idleSessionTTLInSeconds = idleSessionTTLInSeconds, inlineSessionState = inlineSessionState, inputText = inputText, instruction = instruction, knowledgeBases = knowledgeBases, promptOverrideConfiguration = promptOverrideConfiguration, sessionId = sessionId)
+  input <- .bedrockagentruntime$invoke_inline_agent_input(actionGroups = actionGroups, bedrockModelConfigurations = bedrockModelConfigurations, customerEncryptionKeyArn = customerEncryptionKeyArn, enableTrace = enableTrace, endSession = endSession, foundationModel = foundationModel, guardrailConfiguration = guardrailConfiguration, idleSessionTTLInSeconds = idleSessionTTLInSeconds, inlineSessionState = inlineSessionState, inputText = inputText, instruction = instruction, knowledgeBases = knowledgeBases, promptOverrideConfiguration = promptOverrideConfiguration, sessionId = sessionId)
   output <- .bedrockagentruntime$invoke_inline_agent_output()
   config <- get_config()
   svc <- .bedrockagentruntime$service(config, op)
@@ -3200,6 +3237,9 @@ bedrockagentruntime_retrieve <- function(guardrailConfiguration = NULL, knowledg
 #'             topP = 123.0
 #'           )
 #'         ),
+#'         performanceConfig = list(
+#'           latency = "standard"|"optimized"
+#'         ),
 #'         promptTemplate = list(
 #'           textPromptTemplate = "string"
 #'         )
@@ -3238,6 +3278,9 @@ bedrockagentruntime_retrieve <- function(guardrailConfiguration = NULL, knowledg
 #'             topP = 123.0
 #'           )
 #'         ),
+#'         performanceConfig = list(
+#'           latency = "standard"|"optimized"
+#'         ),
 #'         promptTemplate = list(
 #'           textPromptTemplate = "string"
 #'         )
@@ -3257,6 +3300,9 @@ bedrockagentruntime_retrieve <- function(guardrailConfiguration = NULL, knowledg
 #'             temperature = 123.0,
 #'             topP = 123.0
 #'           )
+#'         ),
+#'         performanceConfig = list(
+#'           latency = "standard"|"optimized"
 #'         ),
 #'         promptTemplate = list(
 #'           textPromptTemplate = "string"
@@ -3551,6 +3597,9 @@ bedrockagentruntime_retrieve_and_generate <- function(input, retrieveAndGenerate
 #'             topP = 123.0
 #'           )
 #'         ),
+#'         performanceConfig = list(
+#'           latency = "standard"|"optimized"
+#'         ),
 #'         promptTemplate = list(
 #'           textPromptTemplate = "string"
 #'         )
@@ -3589,6 +3638,9 @@ bedrockagentruntime_retrieve_and_generate <- function(input, retrieveAndGenerate
 #'             topP = 123.0
 #'           )
 #'         ),
+#'         performanceConfig = list(
+#'           latency = "standard"|"optimized"
+#'         ),
 #'         promptTemplate = list(
 #'           textPromptTemplate = "string"
 #'         )
@@ -3608,6 +3660,9 @@ bedrockagentruntime_retrieve_and_generate <- function(input, retrieveAndGenerate
 #'             temperature = 123.0,
 #'             topP = 123.0
 #'           )
+#'         ),
+#'         performanceConfig = list(
+#'           latency = "standard"|"optimized"
 #'         ),
 #'         promptTemplate = list(
 #'           textPromptTemplate = "string"

@@ -138,6 +138,7 @@ NULL
 #'  \link[=eks_describe_addon_configuration]{describe_addon_configuration} \tab Returns configuration options\cr
 #'  \link[=eks_describe_addon_versions]{describe_addon_versions} \tab Describes the versions for an add-on\cr
 #'  \link[=eks_describe_cluster]{describe_cluster} \tab Describes an Amazon EKS cluster\cr
+#'  \link[=eks_describe_cluster_versions]{describe_cluster_versions} \tab Lists available Kubernetes versions for Amazon EKS clusters\cr
 #'  \link[=eks_describe_eks_anywhere_subscription]{describe_eks_anywhere_subscription} \tab Returns descriptive information about a subscription\cr
 #'  \link[=eks_describe_fargate_profile]{describe_fargate_profile} \tab Describes an Fargate profile\cr
 #'  \link[=eks_describe_identity_provider_config]{describe_identity_provider_config} \tab Describes an identity provider configuration\cr

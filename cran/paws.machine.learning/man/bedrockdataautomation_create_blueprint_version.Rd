@@ -2,7 +2,8 @@
 % Please edit documentation in R/bedrockdataautomation_operations.R
 \name{bedrockdataautomation_create_blueprint_version}
 \alias{bedrockdataautomation_create_blueprint_version}
-\title{Creates a new version of an existing Amazon Bedrock Keystone Blueprint}
+\title{Creates a new version of an existing Amazon Bedrock Data Automation
+Blueprint}
 \usage{
 bedrockdataautomation_create_blueprint_version(
   blueprintArn,
@@ -15,7 +16,7 @@ bedrockdataautomation_create_blueprint_version(
 \item{clientToken}{}
 }
 \description{
-Creates a new version of an existing Amazon Bedrock Keystone Blueprint
+Creates a new version of an existing Amazon Bedrock Data Automation Blueprint
 
 See \url{https://www.paws-r-sdk.com/docs/bedrockdataautomation_create_blueprint_version/} for full documentation.
 }

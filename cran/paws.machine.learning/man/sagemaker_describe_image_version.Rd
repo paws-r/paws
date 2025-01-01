@@ -2,7 +2,7 @@
 % Please edit documentation in R/sagemaker_operations.R
 \name{sagemaker_describe_image_version}
 \alias{sagemaker_describe_image_version}
-\title{Describes a version of a SageMaker image}
+\title{Describes a version of a SageMaker AI image}
 \usage{
 sagemaker_describe_image_version(ImageName, Version = NULL, Alias = NULL)
 }
@@ -15,7 +15,7 @@ described.}
 \item{Alias}{The alias of the image version.}
 }
 \description{
-Describes a version of a SageMaker image.
+Describes a version of a SageMaker AI image.
 
 See \url{https://www.paws-r-sdk.com/docs/sagemaker_describe_image_version/} for full documentation.
 }

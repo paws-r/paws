@@ -33,8 +33,8 @@ supported as monitoring inputs.}
 
 \item{NetworkConfig}{Specifies networking configuration for the monitoring job.}
 
-\item{RoleArn}{[required] The Amazon Resource Name (ARN) of an IAM role that Amazon SageMaker can
-assume to perform tasks on your behalf.}
+\item{RoleArn}{[required] The Amazon Resource Name (ARN) of an IAM role that Amazon SageMaker AI
+can assume to perform tasks on your behalf.}
 
 \item{StoppingCondition}{}
 
@@ -42,7 +42,7 @@ assume to perform tasks on your behalf.}
 in the \emph{Amazon Web Services Billing and Cost Management User Guide}.}
 }
 \description{
-Creates a definition for a job that monitors data quality and drift. For information about model monitor, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor.html}{Amazon SageMaker Model Monitor}.
+Creates a definition for a job that monitors data quality and drift. For information about model monitor, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor.html}{Amazon SageMaker AI Model Monitor}.
 
 See \url{https://www.paws-r-sdk.com/docs/sagemaker_create_data_quality_job_definition/} for full documentation.
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/sagemaker_operations.R
 \name{sagemaker_delete_model_explainability_job_definition}
 \alias{sagemaker_delete_model_explainability_job_definition}
-\title{Deletes an Amazon SageMaker model explainability job definition}
+\title{Deletes an Amazon SageMaker AI model explainability job definition}
 \usage{
 sagemaker_delete_model_explainability_job_definition(JobDefinitionName)
 }
@@ -10,7 +10,7 @@ sagemaker_delete_model_explainability_job_definition(JobDefinitionName)
 \item{JobDefinitionName}{[required] The name of the model explainability job definition to delete.}
 }
 \description{
-Deletes an Amazon SageMaker model explainability job definition.
+Deletes an Amazon SageMaker AI model explainability job definition.
 
 See \url{https://www.paws-r-sdk.com/docs/sagemaker_delete_model_explainability_job_definition/} for full documentation.
 }

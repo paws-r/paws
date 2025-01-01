@@ -3,10 +3,10 @@
 #' @include bedrockdataautomation_service.R
 NULL
 
-#' Creates an Amazon Bedrock Keystone Blueprint
+#' Creates an Amazon Bedrock Data Automation Blueprint
 #'
 #' @description
-#' Creates an Amazon Bedrock Keystone Blueprint
+#' Creates an Amazon Bedrock Data Automation Blueprint
 #'
 #' See [https://www.paws-r-sdk.com/docs/bedrockdataautomation_create_blueprint/](https://www.paws-r-sdk.com/docs/bedrockdataautomation_create_blueprint/) for full documentation.
 #'
@@ -39,10 +39,11 @@ bedrockdataautomation_create_blueprint <- function(blueprintName, type, blueprin
 }
 .bedrockdataautomation$operations$create_blueprint <- bedrockdataautomation_create_blueprint
 
-#' Creates a new version of an existing Amazon Bedrock Keystone Blueprint
+#' Creates a new version of an existing Amazon Bedrock Data Automation
+#' Blueprint
 #'
 #' @description
-#' Creates a new version of an existing Amazon Bedrock Keystone Blueprint
+#' Creates a new version of an existing Amazon Bedrock Data Automation Blueprint
 #'
 #' See [https://www.paws-r-sdk.com/docs/bedrockdataautomation_create_blueprint_version/](https://www.paws-r-sdk.com/docs/bedrockdataautomation_create_blueprint_version/) for full documentation.
 #'
@@ -71,10 +72,10 @@ bedrockdataautomation_create_blueprint_version <- function(blueprintArn, clientT
 }
 .bedrockdataautomation$operations$create_blueprint_version <- bedrockdataautomation_create_blueprint_version
 
-#' Creates an Amazon Bedrock Keystone DataAutomationProject
+#' Creates an Amazon Bedrock Data Automation Project
 #'
 #' @description
-#' Creates an Amazon Bedrock Keystone DataAutomationProject
+#' Creates an Amazon Bedrock Data Automation Project
 #'
 #' See [https://www.paws-r-sdk.com/docs/bedrockdataautomation_create_data_automation_project/](https://www.paws-r-sdk.com/docs/bedrockdataautomation_create_data_automation_project/) for full documentation.
 #'
@@ -109,10 +110,10 @@ bedrockdataautomation_create_data_automation_project <- function(projectName, pr
 }
 .bedrockdataautomation$operations$create_data_automation_project <- bedrockdataautomation_create_data_automation_project
 
-#' Deletes an existing Amazon Bedrock Keystone Blueprint
+#' Deletes an existing Amazon Bedrock Data Automation Blueprint
 #'
 #' @description
-#' Deletes an existing Amazon Bedrock Keystone Blueprint
+#' Deletes an existing Amazon Bedrock Data Automation Blueprint
 #'
 #' See [https://www.paws-r-sdk.com/docs/bedrockdataautomation_delete_blueprint/](https://www.paws-r-sdk.com/docs/bedrockdataautomation_delete_blueprint/) for full documentation.
 #'
@@ -141,10 +142,10 @@ bedrockdataautomation_delete_blueprint <- function(blueprintArn, blueprintVersio
 }
 .bedrockdataautomation$operations$delete_blueprint <- bedrockdataautomation_delete_blueprint
 
-#' Deletes an existing Amazon Bedrock Keystone DataAutomationProject
+#' Deletes an existing Amazon Bedrock Data Automation Project
 #'
 #' @description
-#' Deletes an existing Amazon Bedrock Keystone DataAutomationProject
+#' Deletes an existing Amazon Bedrock Data Automation Project
 #'
 #' See [https://www.paws-r-sdk.com/docs/bedrockdataautomation_delete_data_automation_project/](https://www.paws-r-sdk.com/docs/bedrockdataautomation_delete_data_automation_project/) for full documentation.
 #'
@@ -172,10 +173,10 @@ bedrockdataautomation_delete_data_automation_project <- function(projectArn) {
 }
 .bedrockdataautomation$operations$delete_data_automation_project <- bedrockdataautomation_delete_data_automation_project
 
-#' Gets an existing Amazon Bedrock Keystone Blueprint
+#' Gets an existing Amazon Bedrock Data Automation Blueprint
 #'
 #' @description
-#' Gets an existing Amazon Bedrock Keystone Blueprint
+#' Gets an existing Amazon Bedrock Data Automation Blueprint
 #'
 #' See [https://www.paws-r-sdk.com/docs/bedrockdataautomation_get_blueprint/](https://www.paws-r-sdk.com/docs/bedrockdataautomation_get_blueprint/) for full documentation.
 #'
@@ -205,10 +206,10 @@ bedrockdataautomation_get_blueprint <- function(blueprintArn, blueprintVersion =
 }
 .bedrockdataautomation$operations$get_blueprint <- bedrockdataautomation_get_blueprint
 
-#' Gets an existing Amazon Bedrock Keystone DataAutomationProject
+#' Gets an existing Amazon Bedrock Data Automation Project
 #'
 #' @description
-#' Gets an existing Amazon Bedrock Keystone DataAutomationProject
+#' Gets an existing Amazon Bedrock Data Automation Project
 #'
 #' See [https://www.paws-r-sdk.com/docs/bedrockdataautomation_get_data_automation_project/](https://www.paws-r-sdk.com/docs/bedrockdataautomation_get_data_automation_project/) for full documentation.
 #'
@@ -237,10 +238,10 @@ bedrockdataautomation_get_data_automation_project <- function(projectArn, projec
 }
 .bedrockdataautomation$operations$get_data_automation_project <- bedrockdataautomation_get_data_automation_project
 
-#' Lists all existing Amazon Bedrock Keystone Blueprints
+#' Lists all existing Amazon Bedrock Data Automation Blueprints
 #'
 #' @description
-#' Lists all existing Amazon Bedrock Keystone Blueprints
+#' Lists all existing Amazon Bedrock Data Automation Blueprints
 #'
 #' See [https://www.paws-r-sdk.com/docs/bedrockdataautomation_list_blueprints/](https://www.paws-r-sdk.com/docs/bedrockdataautomation_list_blueprints/) for full documentation.
 #'
@@ -273,10 +274,10 @@ bedrockdataautomation_list_blueprints <- function(blueprintArn = NULL, resourceO
 }
 .bedrockdataautomation$operations$list_blueprints <- bedrockdataautomation_list_blueprints
 
-#' Lists all existing Amazon Bedrock Keystone DataAutomationProjects
+#' Lists all existing Amazon Bedrock Data Automation Projects
 #'
 #' @description
-#' Lists all existing Amazon Bedrock Keystone DataAutomationProjects
+#' Lists all existing Amazon Bedrock Data Automation Projects
 #'
 #' See [https://www.paws-r-sdk.com/docs/bedrockdataautomation_list_data_automation_projects/](https://www.paws-r-sdk.com/docs/bedrockdataautomation_list_data_automation_projects/) for full documentation.
 #'
@@ -308,10 +309,10 @@ bedrockdataautomation_list_data_automation_projects <- function(maxResults = NUL
 }
 .bedrockdataautomation$operations$list_data_automation_projects <- bedrockdataautomation_list_data_automation_projects
 
-#' Updates an existing Amazon Bedrock Blueprint
+#' Updates an existing Amazon Bedrock Data Automation Blueprint
 #'
 #' @description
-#' Updates an existing Amazon Bedrock Blueprint
+#' Updates an existing Amazon Bedrock Data Automation Blueprint
 #'
 #' See [https://www.paws-r-sdk.com/docs/bedrockdataautomation_update_blueprint/](https://www.paws-r-sdk.com/docs/bedrockdataautomation_update_blueprint/) for full documentation.
 #'
@@ -341,10 +342,10 @@ bedrockdataautomation_update_blueprint <- function(blueprintArn, schema, bluepri
 }
 .bedrockdataautomation$operations$update_blueprint <- bedrockdataautomation_update_blueprint
 
-#' Updates an existing Amazon Bedrock DataAutomationProject
+#' Updates an existing Amazon Bedrock Data Automation Project
 #'
 #' @description
-#' Updates an existing Amazon Bedrock DataAutomationProject
+#' Updates an existing Amazon Bedrock Data Automation Project
 #'
 #' See [https://www.paws-r-sdk.com/docs/bedrockdataautomation_update_data_automation_project/](https://www.paws-r-sdk.com/docs/bedrockdataautomation_update_data_automation_project/) for full documentation.
 #'

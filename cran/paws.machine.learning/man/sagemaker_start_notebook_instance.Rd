@@ -11,7 +11,7 @@ sagemaker_start_notebook_instance(NotebookInstanceName)
 \item{NotebookInstanceName}{[required] The name of the notebook instance to start.}
 }
 \description{
-Launches an ML compute instance with the latest version of the libraries and attaches your ML storage volume. After configuring the notebook instance, SageMaker sets the notebook instance status to \code{InService}. A notebook instance's status must be \code{InService} before you can connect to your Jupyter notebook.
+Launches an ML compute instance with the latest version of the libraries and attaches your ML storage volume. After configuring the notebook instance, SageMaker AI sets the notebook instance status to \code{InService}. A notebook instance's status must be \code{InService} before you can connect to your Jupyter notebook.
 
 See \url{https://www.paws-r-sdk.com/docs/sagemaker_start_notebook_instance/} for full documentation.
 }

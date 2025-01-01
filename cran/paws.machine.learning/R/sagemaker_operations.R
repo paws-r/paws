@@ -303,7 +303,7 @@ sagemaker_create_algorithm <- function(AlgorithmName, AlgorithmDescription = NUL
 #' Creates a running app for the specified UserProfile
 #'
 #' @description
-#' Creates a running app for the specified UserProfile. This operation is automatically invoked by Amazon SageMaker upon access to the associated Domain, and when new kernel configurations are selected by the user. A user may have multiple Apps active simultaneously.
+#' Creates a running app for the specified UserProfile. This operation is automatically invoked by Amazon SageMaker AI upon access to the associated Domain, and when new kernel configurations are selected by the user. A user may have multiple Apps active simultaneously.
 #'
 #' See [https://www.paws-r-sdk.com/docs/sagemaker_create_app/](https://www.paws-r-sdk.com/docs/sagemaker_create_app/) for full documentation.
 #'
@@ -316,7 +316,7 @@ sagemaker_create_algorithm <- function(AlgorithmName, AlgorithmDescription = NUL
 #' @param AppName &#91;required&#93; The name of the app.
 #' @param Tags Each tag consists of a key and an optional value. Tag keys must be
 #' unique per resource.
-#' @param ResourceSpec The instance type and the Amazon Resource Name (ARN) of the SageMaker
+#' @param ResourceSpec The instance type and the Amazon Resource Name (ARN) of the SageMaker AI
 #' image created on the instance.
 #' 
 #' The value of `InstanceType` passed as part of the `ResourceSpec` in the
@@ -349,11 +349,11 @@ sagemaker_create_app <- function(DomainId, UserProfileName = NULL, SpaceName = N
 }
 .sagemaker$operations$create_app <- sagemaker_create_app
 
-#' Creates a configuration for running a SageMaker image as a KernelGateway
-#' app
+#' Creates a configuration for running a SageMaker AI image as a
+#' KernelGateway app
 #'
 #' @description
-#' Creates a configuration for running a SageMaker image as a KernelGateway app. The configuration specifies the Amazon Elastic File System storage volume on the image, and a list of the kernels in the image.
+#' Creates a configuration for running a SageMaker AI image as a KernelGateway app. The configuration specifies the Amazon Elastic File System storage volume on the image, and a list of the kernels in the image.
 #'
 #' See [https://www.paws-r-sdk.com/docs/sagemaker_create_app_image_config/](https://www.paws-r-sdk.com/docs/sagemaker_create_app_image_config/) for full documentation.
 #'
@@ -668,10 +668,10 @@ sagemaker_create_cluster_scheduler_config <- function(Name, ClusterArn, Schedule
 }
 .sagemaker$operations$create_cluster_scheduler_config <- sagemaker_create_cluster_scheduler_config
 
-#' Creates a Git repository as a resource in your SageMaker account
+#' Creates a Git repository as a resource in your SageMaker AI account
 #'
 #' @description
-#' Creates a Git repository as a resource in your SageMaker account. You can associate the repository with notebook instances so that you can use Git source control for the notebooks you create. The Git repository is a resource in your SageMaker account, so it can be associated with more than one notebook instance, and it persists independently from the lifecycle of any notebook instances it is associated with.
+#' Creates a Git repository as a resource in your SageMaker AI account. You can associate the repository with notebook instances so that you can use Git source control for the notebooks you create. The Git repository is a resource in your SageMaker AI account, so it can be associated with more than one notebook instance, and it persists independently from the lifecycle of any notebook instances it is associated with.
 #'
 #' See [https://www.paws-r-sdk.com/docs/sagemaker_create_code_repository/](https://www.paws-r-sdk.com/docs/sagemaker_create_code_repository/) for full documentation.
 #'
@@ -711,16 +711,16 @@ sagemaker_create_code_repository <- function(CodeRepositoryName, GitConfig, Tags
 #' Starts a model compilation job
 #'
 #' @description
-#' Starts a model compilation job. After the model has been compiled, Amazon SageMaker saves the resulting model artifacts to an Amazon Simple Storage Service (Amazon S3) bucket that you specify.
+#' Starts a model compilation job. After the model has been compiled, Amazon SageMaker AI saves the resulting model artifacts to an Amazon Simple Storage Service (Amazon S3) bucket that you specify.
 #'
 #' See [https://www.paws-r-sdk.com/docs/sagemaker_create_compilation_job/](https://www.paws-r-sdk.com/docs/sagemaker_create_compilation_job/) for full documentation.
 #'
 #' @param CompilationJobName &#91;required&#93; A name for the model compilation job. The name must be unique within the
 #' Amazon Web Services Region and within your Amazon Web Services account.
 #' @param RoleArn &#91;required&#93; The Amazon Resource Name (ARN) of an IAM role that enables Amazon
-#' SageMaker to perform tasks on your behalf.
+#' SageMaker AI to perform tasks on your behalf.
 #' 
-#' During model compilation, Amazon SageMaker needs your permission to:
+#' During model compilation, Amazon SageMaker AI needs your permission to:
 #' 
 #' -   Read input data from an S3 bucket
 #' 
@@ -731,8 +731,9 @@ sagemaker_create_code_repository <- function(CodeRepositoryName, GitConfig, Tags
 #' -   Publish metrics to Amazon CloudWatch
 #' 
 #' You grant permissions for all of these tasks to an IAM role. To pass
-#' this role to Amazon SageMaker, the caller of this API must have the
+#' this role to Amazon SageMaker AI, the caller of this API must have the
 #' `iam:PassRole` permission. For more information, see [Amazon SageMaker
+#' AI
 #' Roles.](https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html)
 #' @param ModelPackageVersionArn The Amazon Resource Name (ARN) of a versioned model package. Provide
 #' either a `ModelPackageVersionArn` or an `InputConfig` object in the
@@ -752,8 +753,8 @@ sagemaker_create_code_repository <- function(CodeRepositoryName, GitConfig, Tags
 #' Virtual Private
 #' Cloud](https://docs.aws.amazon.com/sagemaker/latest/dg/neo-vpc.html).
 #' @param StoppingCondition &#91;required&#93; Specifies a limit to how long a model compilation job can run. When the
-#' job reaches the time limit, Amazon SageMaker ends the compilation job.
-#' Use this API to cap model training costs.
+#' job reaches the time limit, Amazon SageMaker AI ends the compilation
+#' job. Use this API to cap model training costs.
 #' @param Tags An array of key-value pairs. You can use tags to categorize your Amazon
 #' Web Services resources in different ways, for example, by purpose,
 #' owner, or environment. For more information, see [Tagging Amazon Web
@@ -863,7 +864,7 @@ sagemaker_create_context <- function(ContextName, Source, ContextType, Descripti
 #' Creates a definition for a job that monitors data quality and drift
 #'
 #' @description
-#' Creates a definition for a job that monitors data quality and drift. For information about model monitor, see [Amazon SageMaker Model Monitor](https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor.html).
+#' Creates a definition for a job that monitors data quality and drift. For information about model monitor, see [Amazon SageMaker AI Model Monitor](https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor.html).
 #'
 #' See [https://www.paws-r-sdk.com/docs/sagemaker_create_data_quality_job_definition/](https://www.paws-r-sdk.com/docs/sagemaker_create_data_quality_job_definition/) for full documentation.
 #'
@@ -875,8 +876,8 @@ sagemaker_create_context <- function(ContextName, Source, ContextType, Descripti
 #' @param DataQualityJobOutputConfig &#91;required&#93; 
 #' @param JobResources &#91;required&#93; 
 #' @param NetworkConfig Specifies networking configuration for the monitoring job.
-#' @param RoleArn &#91;required&#93; The Amazon Resource Name (ARN) of an IAM role that Amazon SageMaker can
-#' assume to perform tasks on your behalf.
+#' @param RoleArn &#91;required&#93; The Amazon Resource Name (ARN) of an IAM role that Amazon SageMaker AI
+#' can assume to perform tasks on your behalf.
 #' @param StoppingCondition 
 #' @param Tags (Optional) An array of key-value pairs. For more information, see [Using
 #' Cost Allocation
@@ -978,11 +979,11 @@ sagemaker_create_device_fleet <- function(DeviceFleetName, RoleArn = NULL, Descr
 #' `PublicInternetOnly`.
 #' 
 #' -   `PublicInternetOnly` - Non-EFS traffic is through a VPC managed by
-#'     Amazon SageMaker, which allows direct internet access
+#'     Amazon SageMaker AI, which allows direct internet access
 #' 
 #' -   `VpcOnly` - All traffic is through the specified VPC and subnets
 #' @param HomeEfsFileSystemKmsKeyId Use `KmsKeyId`.
-#' @param KmsKeyId SageMaker uses Amazon Web Services KMS to encrypt EFS and EBS volumes
+#' @param KmsKeyId SageMaker AI uses Amazon Web Services KMS to encrypt EFS and EBS volumes
 #' attached to the domain with an Amazon Web Services managed key by
 #' default. For more control, specify a customer managed key.
 #' @param AppSecurityGroupManagement The entity that creates and manages the required security groups for
@@ -1240,12 +1241,12 @@ sagemaker_create_endpoint <- function(EndpointName, EndpointConfigName, Deployme
 #' replicated from the model specified on `ProductionVariants`. If you use
 #' this field, you can only specify one variant for `ProductionVariants`
 #' and one variant for `ShadowProductionVariants`.
-#' @param ExecutionRoleArn The Amazon Resource Name (ARN) of an IAM role that Amazon SageMaker can
-#' assume to perform actions on your behalf. For more information, see
-#' [SageMaker
+#' @param ExecutionRoleArn The Amazon Resource Name (ARN) of an IAM role that Amazon SageMaker AI
+#' can assume to perform actions on your behalf. For more information, see
+#' [SageMaker AI
 #' Roles](https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html).
 #' 
-#' To be able to pass this role to Amazon SageMaker, the caller of this
+#' To be able to pass this role to Amazon SageMaker AI, the caller of this
 #' action must have the `iam:PassRole` permission.
 #' @param VpcConfig 
 #' @param EnableNetworkIsolation Sets whether all model containers deployed to the endpoint are isolated.
@@ -1683,10 +1684,10 @@ sagemaker_create_hyper_parameter_tuning_job <- function(HyperParameterTuningJobN
 }
 .sagemaker$operations$create_hyper_parameter_tuning_job <- sagemaker_create_hyper_parameter_tuning_job
 
-#' Creates a custom SageMaker image
+#' Creates a custom SageMaker AI image
 #'
 #' @description
-#' Creates a custom SageMaker image. A SageMaker image is a set of image versions. Each image version represents a container image stored in Amazon ECR. For more information, see [Bring your own SageMaker image](https://docs.aws.amazon.com/sagemaker/latest/dg/studio-byoi.html).
+#' Creates a custom SageMaker AI image. A SageMaker AI image is a set of image versions. Each image version represents a container image stored in Amazon ECR. For more information, see [Bring your own SageMaker AI image](https://docs.aws.amazon.com/sagemaker/latest/dg/studio-byoi.html).
 #'
 #' See [https://www.paws-r-sdk.com/docs/sagemaker_create_image/](https://www.paws-r-sdk.com/docs/sagemaker_create_image/) for full documentation.
 #'
@@ -1694,8 +1695,8 @@ sagemaker_create_hyper_parameter_tuning_job <- function(HyperParameterTuningJobN
 #' @param DisplayName The display name of the image. If not provided, `ImageName` is
 #' displayed.
 #' @param ImageName &#91;required&#93; The name of the image. Must be unique to your account.
-#' @param RoleArn &#91;required&#93; The ARN of an IAM role that enables Amazon SageMaker to perform tasks on
-#' your behalf.
+#' @param RoleArn &#91;required&#93; The ARN of an IAM role that enables Amazon SageMaker AI to perform tasks
+#' on your behalf.
 #' @param Tags A list of tags to apply to the image.
 #'
 #' @keywords internal
@@ -1720,10 +1721,10 @@ sagemaker_create_image <- function(Description = NULL, DisplayName = NULL, Image
 }
 .sagemaker$operations$create_image <- sagemaker_create_image
 
-#' Creates a version of the SageMaker image specified by ImageName
+#' Creates a version of the SageMaker AI image specified by ImageName
 #'
 #' @description
-#' Creates a version of the SageMaker image specified by `ImageName`. The version represents the Amazon ECR container image specified by `BaseImage`.
+#' Creates a version of the SageMaker AI image specified by `ImageName`. The version represents the Amazon ECR container image specified by `BaseImage`.
 #'
 #' See [https://www.paws-r-sdk.com/docs/sagemaker_create_image_version/](https://www.paws-r-sdk.com/docs/sagemaker_create_image_version/) for full documentation.
 #'
@@ -1749,15 +1750,15 @@ sagemaker_create_image <- function(Description = NULL, DisplayName = NULL, Image
 #' 
 #' -   `ARCHIVED`: The image version is archived. Archived image versions
 #'     are not searchable and are no longer actively supported.
-#' @param JobType Indicates SageMaker job type compatibility.
+#' @param JobType Indicates SageMaker AI job type compatibility.
 #' 
-#' -   `TRAINING`: The image version is compatible with SageMaker training
-#'     jobs.
+#' -   `TRAINING`: The image version is compatible with SageMaker AI
+#'     training jobs.
 #' 
-#' -   `INFERENCE`: The image version is compatible with SageMaker
+#' -   `INFERENCE`: The image version is compatible with SageMaker AI
 #'     inference jobs.
 #' 
-#' -   `NOTEBOOK_KERNEL`: The image version is compatible with SageMaker
+#' -   `NOTEBOOK_KERNEL`: The image version is compatible with SageMaker AI
 #'     notebook kernels.
 #' @param MLFramework The machine learning framework vended in the image version.
 #' @param ProgrammingLang The supported programming language and its version.
@@ -1791,11 +1792,11 @@ sagemaker_create_image_version <- function(BaseImage, ClientToken, ImageName, Al
 }
 .sagemaker$operations$create_image_version <- sagemaker_create_image_version
 
-#' Creates an inference component, which is a SageMaker hosting object that
-#' you can use to deploy a model to an endpoint
+#' Creates an inference component, which is a SageMaker AI hosting object
+#' that you can use to deploy a model to an endpoint
 #'
 #' @description
-#' Creates an inference component, which is a SageMaker hosting object that you can use to deploy a model to an endpoint. In the inference component settings, you specify the model, the endpoint, and how the model utilizes the resources that the endpoint hosts. You can optimize resource utilization by tailoring how the required CPU cores, accelerators, and memory are allocated. You can deploy multiple inference components to an endpoint, where each inference component contains one model and the resource utilization needs for that individual model. After you deploy an inference component, you can directly invoke the associated model when you use the InvokeEndpoint API action.
+#' Creates an inference component, which is a SageMaker AI hosting object that you can use to deploy a model to an endpoint. In the inference component settings, you specify the model, the endpoint, and how the model utilizes the resources that the endpoint hosts. You can optimize resource utilization by tailoring how the required CPU cores, accelerators, and memory are allocated. You can deploy multiple inference components to an endpoint, where each inference component contains one model and the resource utilization needs for that individual model. After you deploy an inference component, you can directly invoke the associated model when you use the InvokeEndpoint API action.
 #'
 #' See [https://www.paws-r-sdk.com/docs/sagemaker_create_inference_component/](https://www.paws-r-sdk.com/docs/sagemaker_create_inference_component/) for full documentation.
 #'
@@ -2302,8 +2303,8 @@ sagemaker_create_model <- function(ModelName, PrimaryContainer = NULL, Container
 #' @param ModelBiasJobOutputConfig &#91;required&#93; 
 #' @param JobResources &#91;required&#93; 
 #' @param NetworkConfig Networking options for a model bias job.
-#' @param RoleArn &#91;required&#93; The Amazon Resource Name (ARN) of an IAM role that Amazon SageMaker can
-#' assume to perform tasks on your behalf.
+#' @param RoleArn &#91;required&#93; The Amazon Resource Name (ARN) of an IAM role that Amazon SageMaker AI
+#' can assume to perform tasks on your behalf.
 #' @param StoppingCondition 
 #' @param Tags (Optional) An array of key-value pairs. For more information, see [Using
 #' Cost Allocation
@@ -2435,8 +2436,8 @@ sagemaker_create_model_card_export_job <- function(ModelCardName, ModelCardVersi
 #' @param ModelExplainabilityJobOutputConfig &#91;required&#93; 
 #' @param JobResources &#91;required&#93; 
 #' @param NetworkConfig Networking options for a model explainability job.
-#' @param RoleArn &#91;required&#93; The Amazon Resource Name (ARN) of an IAM role that Amazon SageMaker can
-#' assume to perform tasks on your behalf.
+#' @param RoleArn &#91;required&#93; The Amazon Resource Name (ARN) of an IAM role that Amazon SageMaker AI
+#' can assume to perform tasks on your behalf.
 #' @param StoppingCondition 
 #' @param Tags (Optional) An array of key-value pairs. For more information, see [Using
 #' Cost Allocation
@@ -2630,7 +2631,7 @@ sagemaker_create_model_package_group <- function(ModelPackageGroupName, ModelPac
 #' Creates a definition for a job that monitors model quality and drift
 #'
 #' @description
-#' Creates a definition for a job that monitors model quality and drift. For information about model monitor, see [Amazon SageMaker Model Monitor](https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor.html).
+#' Creates a definition for a job that monitors model quality and drift. For information about model monitor, see [Amazon SageMaker AI Model Monitor](https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor.html).
 #'
 #' See [https://www.paws-r-sdk.com/docs/sagemaker_create_model_quality_job_definition/](https://www.paws-r-sdk.com/docs/sagemaker_create_model_quality_job_definition/) for full documentation.
 #'
@@ -2642,8 +2643,8 @@ sagemaker_create_model_package_group <- function(ModelPackageGroupName, ModelPac
 #' @param ModelQualityJobOutputConfig &#91;required&#93; 
 #' @param JobResources &#91;required&#93; 
 #' @param NetworkConfig Specifies the network configuration for the monitoring job.
-#' @param RoleArn &#91;required&#93; The Amazon Resource Name (ARN) of an IAM role that Amazon SageMaker can
-#' assume to perform tasks on your behalf.
+#' @param RoleArn &#91;required&#93; The Amazon Resource Name (ARN) of an IAM role that Amazon SageMaker AI
+#' can assume to perform tasks on your behalf.
 #' @param StoppingCondition 
 #' @param Tags (Optional) An array of key-value pairs. For more information, see [Using
 #' Cost Allocation
@@ -2672,11 +2673,11 @@ sagemaker_create_model_quality_job_definition <- function(JobDefinitionName, Mod
 }
 .sagemaker$operations$create_model_quality_job_definition <- sagemaker_create_model_quality_job_definition
 
-#' Creates a schedule that regularly starts Amazon SageMaker Processing
-#' Jobs to monitor the data captured for an Amazon SageMaker Endpoint
+#' Creates a schedule that regularly starts Amazon SageMaker AI Processing
+#' Jobs to monitor the data captured for an Amazon SageMaker AI Endpoint
 #'
 #' @description
-#' Creates a schedule that regularly starts Amazon SageMaker Processing Jobs to monitor the data captured for an Amazon SageMaker Endpoint.
+#' Creates a schedule that regularly starts Amazon SageMaker AI Processing Jobs to monitor the data captured for an Amazon SageMaker AI Endpoint.
 #'
 #' See [https://www.paws-r-sdk.com/docs/sagemaker_create_monitoring_schedule/](https://www.paws-r-sdk.com/docs/sagemaker_create_monitoring_schedule/) for full documentation.
 #'
@@ -2710,10 +2711,10 @@ sagemaker_create_monitoring_schedule <- function(MonitoringScheduleName, Monitor
 }
 .sagemaker$operations$create_monitoring_schedule <- sagemaker_create_monitoring_schedule
 
-#' Creates an SageMaker notebook instance
+#' Creates an SageMaker AI notebook instance
 #'
 #' @description
-#' Creates an SageMaker notebook instance. A notebook instance is a machine learning (ML) compute instance running on a Jupyter notebook.
+#' Creates an SageMaker AI notebook instance. A notebook instance is a machine learning (ML) compute instance running on a Jupyter notebook.
 #'
 #' See [https://www.paws-r-sdk.com/docs/sagemaker_create_notebook_instance/](https://www.paws-r-sdk.com/docs/sagemaker_create_notebook_instance/) for full documentation.
 #'
@@ -2724,17 +2725,17 @@ sagemaker_create_monitoring_schedule <- function(MonitoringScheduleName, Monitor
 #' @param SecurityGroupIds The VPC security group IDs, in the form sg-xxxxxxxx. The security groups
 #' must be for the same VPC as specified in the subnet.
 #' @param RoleArn &#91;required&#93; When you send any requests to Amazon Web Services resources from the
-#' notebook instance, SageMaker assumes this role to perform tasks on your
-#' behalf. You must grant this role necessary permissions so SageMaker can
-#' perform these tasks. The policy must allow the SageMaker service
-#' principal (sagemaker.amazonaws.com) permissions to assume this role. For
-#' more information, see [SageMaker
+#' notebook instance, SageMaker AI assumes this role to perform tasks on
+#' your behalf. You must grant this role necessary permissions so SageMaker
+#' AI can perform these tasks. The policy must allow the SageMaker AI
+#' service principal (sagemaker.amazonaws.com) permissions to assume this
+#' role. For more information, see [SageMaker AI
 #' Roles](https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html).
 #' 
-#' To be able to pass this role to SageMaker, the caller of this API must
-#' have the `iam:PassRole` permission.
+#' To be able to pass this role to SageMaker AI, the caller of this API
+#' must have the `iam:PassRole` permission.
 #' @param KmsKeyId The Amazon Resource Name (ARN) of a Amazon Web Services Key Management
-#' Service key that SageMaker uses to encrypt data on the storage volume
+#' Service key that SageMaker AI uses to encrypt data on the storage volume
 #' attached to your notebook instance. The KMS key you provide must be
 #' enabled. For information, see [Enabling and Disabling
 #' Keys](https://docs.aws.amazon.com/kms/latest/developerguide/enabling-keys.html)
@@ -2748,10 +2749,10 @@ sagemaker_create_monitoring_schedule <- function(MonitoringScheduleName, Monitor
 #' instance. For information about lifestyle configurations, see [Step 2.1:
 #' (Optional) Customize a Notebook
 #' Instance](https://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html).
-#' @param DirectInternetAccess Sets whether SageMaker provides internet access to the notebook
+#' @param DirectInternetAccess Sets whether SageMaker AI provides internet access to the notebook
 #' instance. If you set this to `Disabled` this notebook instance is able
 #' to access resources only in your VPC, and is not be able to connect to
-#' SageMaker training and endpoint services unless you configure a NAT
+#' SageMaker AI training and endpoint services unless you configure a NAT
 #' Gateway in your VPC.
 #' 
 #' For more information, see [Notebook Instances Are Internet-Enabled by
@@ -2772,7 +2773,8 @@ sagemaker_create_monitoring_schedule <- function(MonitoringScheduleName, Monitor
 #' CodeCommit](https://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html)
 #' or in any other Git repository. When you open a notebook instance, it
 #' opens in the directory that contains this repository. For more
-#' information, see [Associating Git Repositories with SageMaker Notebook
+#' information, see [Associating Git Repositories with SageMaker AI
+#' Notebook
 #' Instances](https://docs.aws.amazon.com/sagemaker/latest/dg/nbi-git-repo.html).
 #' @param AdditionalCodeRepositories An array of up to three Git repositories to associate with the notebook
 #' instance. These can be either the names of Git repositories stored as
@@ -2781,7 +2783,8 @@ sagemaker_create_monitoring_schedule <- function(MonitoringScheduleName, Monitor
 #' CodeCommit](https://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html)
 #' or in any other Git repository. These repositories are cloned at the
 #' same level as the default repository of your notebook instance. For more
-#' information, see [Associating Git Repositories with SageMaker Notebook
+#' information, see [Associating Git Repositories with SageMaker AI
+#' Notebook
 #' Instances](https://docs.aws.amazon.com/sagemaker/latest/dg/nbi-git-repo.html).
 #' @param RootAccess Whether root access is enabled or disabled for users of the notebook
 #' instance. The default value is `Enabled`.
@@ -2861,9 +2864,9 @@ sagemaker_create_notebook_instance_lifecycle_config <- function(NotebookInstance
 #'
 #' @param OptimizationJobName &#91;required&#93; A custom name for the new optimization job.
 #' @param RoleArn &#91;required&#93; The Amazon Resource Name (ARN) of an IAM role that enables Amazon
-#' SageMaker to perform tasks on your behalf.
+#' SageMaker AI to perform tasks on your behalf.
 #' 
-#' During model optimization, Amazon SageMaker needs your permission to:
+#' During model optimization, Amazon SageMaker AI needs your permission to:
 #' 
 #' -   Read input data from an S3 bucket
 #' 
@@ -2874,8 +2877,9 @@ sagemaker_create_notebook_instance_lifecycle_config <- function(NotebookInstance
 #' -   Publish metrics to Amazon CloudWatch
 #' 
 #' You grant permissions for all of these tasks to an IAM role. To pass
-#' this role to Amazon SageMaker, the caller of this API must have the
+#' this role to Amazon SageMaker AI, the caller of this API must have the
 #' `iam:PassRole` permission. For more information, see [Amazon SageMaker
+#' AI
 #' Roles.](https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html)
 #' @param ModelSource &#91;required&#93; The location of the source model to optimize with an optimization job.
 #' @param DeploymentInstanceType &#91;required&#93; The type of instance that hosts the optimized model that you create with
@@ -3140,7 +3144,7 @@ sagemaker_create_presigned_mlflow_tracking_server_url <- function(TrackingServer
 #' notebook instance
 #'
 #' @description
-#' Returns a URL that you can use to connect to the Jupyter server from a notebook instance. In the SageMaker console, when you choose `Open` next to a notebook instance, SageMaker opens a new tab showing the Jupyter server home page from the notebook instance. The console uses this API to get the URL and show the page.
+#' Returns a URL that you can use to connect to the Jupyter server from a notebook instance. In the SageMaker AI console, when you choose `Open` next to a notebook instance, SageMaker AI opens a new tab showing the Jupyter server home page from the notebook instance. The console uses this API to get the URL and show the page.
 #'
 #' See [https://www.paws-r-sdk.com/docs/sagemaker_create_presigned_notebook_instance_url/](https://www.paws-r-sdk.com/docs/sagemaker_create_presigned_notebook_instance_url/) for full documentation.
 #'
@@ -3307,16 +3311,16 @@ sagemaker_create_space <- function(DomainId, SpaceName, Tags = NULL, SpaceSettin
 }
 .sagemaker$operations$create_space <- sagemaker_create_space
 
-#' Creates a new Amazon SageMaker Studio Lifecycle Configuration
+#' Creates a new Amazon SageMaker AI Studio Lifecycle Configuration
 #'
 #' @description
-#' Creates a new Amazon SageMaker Studio Lifecycle Configuration.
+#' Creates a new Amazon SageMaker AI Studio Lifecycle Configuration.
 #'
 #' See [https://www.paws-r-sdk.com/docs/sagemaker_create_studio_lifecycle_config/](https://www.paws-r-sdk.com/docs/sagemaker_create_studio_lifecycle_config/) for full documentation.
 #'
-#' @param StudioLifecycleConfigName &#91;required&#93; The name of the Amazon SageMaker Studio Lifecycle Configuration to
+#' @param StudioLifecycleConfigName &#91;required&#93; The name of the Amazon SageMaker AI Studio Lifecycle Configuration to
 #' create.
-#' @param StudioLifecycleConfigContent &#91;required&#93; The content of your Amazon SageMaker Studio Lifecycle Configuration
+#' @param StudioLifecycleConfigContent &#91;required&#93; The content of your Amazon SageMaker AI Studio Lifecycle Configuration
 #' script. This content must be base64 encoded.
 #' @param StudioLifecycleConfigAppType &#91;required&#93; The App type that the Lifecycle Configuration is attached to.
 #' @param Tags Tags to be associated with the Lifecycle Configuration. Each tag
@@ -4181,7 +4185,7 @@ sagemaker_delete_code_repository <- function(CodeRepositoryName) {
 #' Deletes the specified compilation job
 #'
 #' @description
-#' Deletes the specified compilation job. This action deletes only the compilation job resource in Amazon SageMaker. It doesn't delete other resources that are related to that job, such as the model artifacts that the job creates, the compilation logs in CloudWatch, the compiled model, or the IAM role.
+#' Deletes the specified compilation job. This action deletes only the compilation job resource in Amazon SageMaker AI. It doesn't delete other resources that are related to that job, such as the model artifacts that the job creates, the compilation logs in CloudWatch, the compiled model, or the IAM role.
 #'
 #' See [https://www.paws-r-sdk.com/docs/sagemaker_delete_compilation_job/](https://www.paws-r-sdk.com/docs/sagemaker_delete_compilation_job/) for full documentation.
 #'
@@ -4755,10 +4759,10 @@ sagemaker_delete_hyper_parameter_tuning_job <- function(HyperParameterTuningJobN
 }
 .sagemaker$operations$delete_hyper_parameter_tuning_job <- sagemaker_delete_hyper_parameter_tuning_job
 
-#' Deletes a SageMaker image and all versions of the image
+#' Deletes a SageMaker AI image and all versions of the image
 #'
 #' @description
-#' Deletes a SageMaker image and all versions of the image. The container images aren't deleted.
+#' Deletes a SageMaker AI image and all versions of the image. The container images aren't deleted.
 #'
 #' See [https://www.paws-r-sdk.com/docs/sagemaker_delete_image/](https://www.paws-r-sdk.com/docs/sagemaker_delete_image/) for full documentation.
 #'
@@ -4786,10 +4790,10 @@ sagemaker_delete_image <- function(ImageName) {
 }
 .sagemaker$operations$delete_image <- sagemaker_delete_image
 
-#' Deletes a version of a SageMaker image
+#' Deletes a version of a SageMaker AI image
 #'
 #' @description
-#' Deletes a version of a SageMaker image. The container image the version represents isn't deleted.
+#' Deletes a version of a SageMaker AI image. The container image the version represents isn't deleted.
 #'
 #' See [https://www.paws-r-sdk.com/docs/sagemaker_delete_image_version/](https://www.paws-r-sdk.com/docs/sagemaker_delete_image_version/) for full documentation.
 #'
@@ -4943,10 +4947,10 @@ sagemaker_delete_model <- function(ModelName) {
 }
 .sagemaker$operations$delete_model <- sagemaker_delete_model
 
-#' Deletes an Amazon SageMaker model bias job definition
+#' Deletes an Amazon SageMaker AI model bias job definition
 #'
 #' @description
-#' Deletes an Amazon SageMaker model bias job definition.
+#' Deletes an Amazon SageMaker AI model bias job definition.
 #'
 #' See [https://www.paws-r-sdk.com/docs/sagemaker_delete_model_bias_job_definition/](https://www.paws-r-sdk.com/docs/sagemaker_delete_model_bias_job_definition/) for full documentation.
 #'
@@ -5005,10 +5009,10 @@ sagemaker_delete_model_card <- function(ModelCardName) {
 }
 .sagemaker$operations$delete_model_card <- sagemaker_delete_model_card
 
-#' Deletes an Amazon SageMaker model explainability job definition
+#' Deletes an Amazon SageMaker AI model explainability job definition
 #'
 #' @description
-#' Deletes an Amazon SageMaker model explainability job definition.
+#' Deletes an Amazon SageMaker AI model explainability job definition.
 #'
 #' See [https://www.paws-r-sdk.com/docs/sagemaker_delete_model_explainability_job_definition/](https://www.paws-r-sdk.com/docs/sagemaker_delete_model_explainability_job_definition/) for full documentation.
 #'
@@ -5194,14 +5198,14 @@ sagemaker_delete_monitoring_schedule <- function(MonitoringScheduleName) {
 }
 .sagemaker$operations$delete_monitoring_schedule <- sagemaker_delete_monitoring_schedule
 
-#' Deletes an SageMaker notebook instance
+#' Deletes an SageMaker AI notebook instance
 #'
 #' @description
-#' Deletes an SageMaker notebook instance. Before you can delete a notebook instance, you must call the [`stop_notebook_instance`][sagemaker_stop_notebook_instance] API.
+#' Deletes an SageMaker AI notebook instance. Before you can delete a notebook instance, you must call the [`stop_notebook_instance`][sagemaker_stop_notebook_instance] API.
 #'
 #' See [https://www.paws-r-sdk.com/docs/sagemaker_delete_notebook_instance/](https://www.paws-r-sdk.com/docs/sagemaker_delete_notebook_instance/) for full documentation.
 #'
-#' @param NotebookInstanceName &#91;required&#93; The name of the SageMaker notebook instance to delete.
+#' @param NotebookInstanceName &#91;required&#93; The name of the SageMaker AI notebook instance to delete.
 #'
 #' @keywords internal
 #'
@@ -5416,14 +5420,14 @@ sagemaker_delete_space <- function(DomainId, SpaceName) {
 }
 .sagemaker$operations$delete_space <- sagemaker_delete_space
 
-#' Deletes the Amazon SageMaker Studio Lifecycle Configuration
+#' Deletes the Amazon SageMaker AI Studio Lifecycle Configuration
 #'
 #' @description
-#' Deletes the Amazon SageMaker Studio Lifecycle Configuration. In order to delete the Lifecycle Configuration, there must be no running apps using the Lifecycle Configuration. You must also remove the Lifecycle Configuration from UserSettings in all Domains and UserProfiles.
+#' Deletes the Amazon SageMaker AI Studio Lifecycle Configuration. In order to delete the Lifecycle Configuration, there must be no running apps using the Lifecycle Configuration. You must also remove the Lifecycle Configuration from UserSettings in all Domains and UserProfiles.
 #'
 #' See [https://www.paws-r-sdk.com/docs/sagemaker_delete_studio_lifecycle_config/](https://www.paws-r-sdk.com/docs/sagemaker_delete_studio_lifecycle_config/) for full documentation.
 #'
-#' @param StudioLifecycleConfigName &#91;required&#93; The name of the Amazon SageMaker Studio Lifecycle Configuration to
+#' @param StudioLifecycleConfigName &#91;required&#93; The name of the Amazon SageMaker AI Studio Lifecycle Configuration to
 #' delete.
 #'
 #' @keywords internal
@@ -6629,10 +6633,10 @@ sagemaker_describe_hyper_parameter_tuning_job <- function(HyperParameterTuningJo
 }
 .sagemaker$operations$describe_hyper_parameter_tuning_job <- sagemaker_describe_hyper_parameter_tuning_job
 
-#' Describes a SageMaker image
+#' Describes a SageMaker AI image
 #'
 #' @description
-#' Describes a SageMaker image.
+#' Describes a SageMaker AI image.
 #'
 #' See [https://www.paws-r-sdk.com/docs/sagemaker_describe_image/](https://www.paws-r-sdk.com/docs/sagemaker_describe_image/) for full documentation.
 #'
@@ -6660,10 +6664,10 @@ sagemaker_describe_image <- function(ImageName) {
 }
 .sagemaker$operations$describe_image <- sagemaker_describe_image
 
-#' Describes a version of a SageMaker image
+#' Describes a version of a SageMaker AI image
 #'
 #' @description
-#' Describes a version of a SageMaker image.
+#' Describes a version of a SageMaker AI image.
 #'
 #' See [https://www.paws-r-sdk.com/docs/sagemaker_describe_image_version/](https://www.paws-r-sdk.com/docs/sagemaker_describe_image_version/) for full documentation.
 #'
@@ -7483,14 +7487,14 @@ sagemaker_describe_space <- function(DomainId, SpaceName) {
 }
 .sagemaker$operations$describe_space <- sagemaker_describe_space
 
-#' Describes the Amazon SageMaker Studio Lifecycle Configuration
+#' Describes the Amazon SageMaker AI Studio Lifecycle Configuration
 #'
 #' @description
-#' Describes the Amazon SageMaker Studio Lifecycle Configuration.
+#' Describes the Amazon SageMaker AI Studio Lifecycle Configuration.
 #'
 #' See [https://www.paws-r-sdk.com/docs/sagemaker_describe_studio_lifecycle_config/](https://www.paws-r-sdk.com/docs/sagemaker_describe_studio_lifecycle_config/) for full documentation.
 #'
-#' @param StudioLifecycleConfigName &#91;required&#93; The name of the Amazon SageMaker Studio Lifecycle Configuration to
+#' @param StudioLifecycleConfigName &#91;required&#93; The name of the Amazon SageMaker AI Studio Lifecycle Configuration to
 #' describe.
 #'
 #' @keywords internal
@@ -10759,11 +10763,11 @@ sagemaker_list_notebook_instance_lifecycle_configs <- function(NextToken = NULL,
 }
 .sagemaker$operations$list_notebook_instance_lifecycle_configs <- sagemaker_list_notebook_instance_lifecycle_configs
 
-#' Returns a list of the SageMaker notebook instances in the requester's
+#' Returns a list of the SageMaker AI notebook instances in the requester's
 #' account in an Amazon Web Services Region
 #'
 #' @description
-#' Returns a list of the SageMaker notebook instances in the requester's account in an Amazon Web Services Region.
+#' Returns a list of the SageMaker AI notebook instances in the requester's account in an Amazon Web Services Region.
 #'
 #' See [https://www.paws-r-sdk.com/docs/sagemaker_list_notebook_instances/](https://www.paws-r-sdk.com/docs/sagemaker_list_notebook_instances/) for full documentation.
 #'
@@ -11288,11 +11292,11 @@ sagemaker_list_stage_devices <- function(NextToken = NULL, MaxResults = NULL, Ed
 }
 .sagemaker$operations$list_stage_devices <- sagemaker_list_stage_devices
 
-#' Lists the Amazon SageMaker Studio Lifecycle Configurations in your
+#' Lists the Amazon SageMaker AI Studio Lifecycle Configurations in your
 #' Amazon Web Services Account
 #'
 #' @description
-#' Lists the Amazon SageMaker Studio Lifecycle Configurations in your Amazon Web Services Account.
+#' Lists the Amazon SageMaker AI Studio Lifecycle Configurations in your Amazon Web Services Account.
 #'
 #' See [https://www.paws-r-sdk.com/docs/sagemaker_list_studio_lifecycle_configs/](https://www.paws-r-sdk.com/docs/sagemaker_list_studio_lifecycle_configs/) for full documentation.
 #'
@@ -12326,7 +12330,7 @@ sagemaker_start_monitoring_schedule <- function(MonitoringScheduleName) {
 #' and attaches your ML storage volume
 #'
 #' @description
-#' Launches an ML compute instance with the latest version of the libraries and attaches your ML storage volume. After configuring the notebook instance, SageMaker sets the notebook instance status to `InService`. A notebook instance's status must be `InService` before you can connect to your Jupyter notebook.
+#' Launches an ML compute instance with the latest version of the libraries and attaches your ML storage volume. After configuring the notebook instance, SageMaker AI sets the notebook instance status to `InService`. A notebook instance's status must be `InService` before you can connect to your Jupyter notebook.
 #'
 #' See [https://www.paws-r-sdk.com/docs/sagemaker_start_notebook_instance/](https://www.paws-r-sdk.com/docs/sagemaker_start_notebook_instance/) for full documentation.
 #'
@@ -12728,7 +12732,7 @@ sagemaker_stop_monitoring_schedule <- function(MonitoringScheduleName) {
 #' Terminates the ML compute instance
 #'
 #' @description
-#' Terminates the ML compute instance. Before terminating the instance, SageMaker disconnects the ML storage volume from it. SageMaker preserves the ML storage volume. SageMaker stops charging you for the ML compute instance when you call [`stop_notebook_instance`][sagemaker_stop_notebook_instance].
+#' Terminates the ML compute instance. Before terminating the instance, SageMaker AI disconnects the ML storage volume from it. SageMaker AI preserves the ML storage volume. SageMaker AI stops charging you for the ML compute instance when you call [`stop_notebook_instance`][sagemaker_stop_notebook_instance].
 #'
 #' See [https://www.paws-r-sdk.com/docs/sagemaker_stop_notebook_instance/](https://www.paws-r-sdk.com/docs/sagemaker_stop_notebook_instance/) for full documentation.
 #'
@@ -13325,7 +13329,7 @@ sagemaker_update_devices <- function(DeviceFleetName, Devices) {
 #' @param AppNetworkAccessType Specifies the VPC used for non-EFS traffic.
 #' 
 #' -   `PublicInternetOnly` - Non-EFS traffic is through a VPC managed by
-#'     Amazon SageMaker, which allows direct internet access.
+#'     Amazon SageMaker AI, which allows direct internet access.
 #' 
 #' -   `VpcOnly` - All Studio traffic is through the specified VPC and
 #'     subnets.
@@ -13593,10 +13597,10 @@ sagemaker_update_hub <- function(HubName, HubDescription = NULL, HubDisplayName 
 }
 .sagemaker$operations$update_hub <- sagemaker_update_hub
 
-#' Updates the properties of a SageMaker image
+#' Updates the properties of a SageMaker AI image
 #'
 #' @description
-#' Updates the properties of a SageMaker image. To change the image's tags, use the [`add_tags`][sagemaker_add_tags] and [`delete_tags`][sagemaker_delete_tags] APIs.
+#' Updates the properties of a SageMaker AI image. To change the image's tags, use the [`add_tags`][sagemaker_add_tags] and [`delete_tags`][sagemaker_delete_tags] APIs.
 #'
 #' See [https://www.paws-r-sdk.com/docs/sagemaker_update_image/](https://www.paws-r-sdk.com/docs/sagemaker_update_image/) for full documentation.
 #'
@@ -13605,7 +13609,7 @@ sagemaker_update_hub <- function(HubName, HubDescription = NULL, HubDisplayName 
 #' @param Description The new description for the image.
 #' @param DisplayName The new display name for the image.
 #' @param ImageName &#91;required&#93; The name of the image to update.
-#' @param RoleArn The new ARN for the IAM role that enables Amazon SageMaker to perform
+#' @param RoleArn The new ARN for the IAM role that enables Amazon SageMaker AI to perform
 #' tasks on your behalf.
 #'
 #' @keywords internal
@@ -13630,10 +13634,10 @@ sagemaker_update_image <- function(DeleteProperties = NULL, Description = NULL, 
 }
 .sagemaker$operations$update_image <- sagemaker_update_image
 
-#' Updates the properties of a SageMaker image version
+#' Updates the properties of a SageMaker AI image version
 #'
 #' @description
-#' Updates the properties of a SageMaker image version.
+#' Updates the properties of a SageMaker AI image version.
 #'
 #' See [https://www.paws-r-sdk.com/docs/sagemaker_update_image_version/](https://www.paws-r-sdk.com/docs/sagemaker_update_image_version/) for full documentation.
 #'
@@ -13655,15 +13659,15 @@ sagemaker_update_image <- function(DeleteProperties = NULL, Description = NULL, 
 #' 
 #' -   `ARCHIVED`: The image version is archived. Archived image versions
 #'     are not searchable and are no longer actively supported.
-#' @param JobType Indicates SageMaker job type compatibility.
+#' @param JobType Indicates SageMaker AI job type compatibility.
 #' 
-#' -   `TRAINING`: The image version is compatible with SageMaker training
-#'     jobs.
+#' -   `TRAINING`: The image version is compatible with SageMaker AI
+#'     training jobs.
 #' 
-#' -   `INFERENCE`: The image version is compatible with SageMaker
+#' -   `INFERENCE`: The image version is compatible with SageMaker AI
 #'     inference jobs.
 #' 
-#' -   `NOTEBOOK_KERNEL`: The image version is compatible with SageMaker
+#' -   `NOTEBOOK_KERNEL`: The image version is compatible with SageMaker AI
 #'     notebook kernels.
 #' @param MLFramework The machine learning framework vended in the image version.
 #' @param ProgrammingLang The supported programming language and its version.
@@ -14048,12 +14052,13 @@ sagemaker_update_monitoring_schedule <- function(MonitoringScheduleName, Monitor
 #'
 #' @param NotebookInstanceName &#91;required&#93; The name of the notebook instance to update.
 #' @param InstanceType The Amazon ML compute instance type.
-#' @param RoleArn The Amazon Resource Name (ARN) of the IAM role that SageMaker can assume
-#' to access the notebook instance. For more information, see [SageMaker
+#' @param RoleArn The Amazon Resource Name (ARN) of the IAM role that SageMaker AI can
+#' assume to access the notebook instance. For more information, see
+#' [SageMaker AI
 #' Roles](https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html).
 #' 
-#' To be able to pass this role to SageMaker, the caller of this API must
-#' have the `iam:PassRole` permission.
+#' To be able to pass this role to SageMaker AI, the caller of this API
+#' must have the `iam:PassRole` permission.
 #' @param LifecycleConfigName The name of a lifecycle configuration to associate with the notebook
 #' instance. For information about lifestyle configurations, see [Step 2.1:
 #' (Optional) Customize a Notebook
@@ -14065,8 +14070,8 @@ sagemaker_update_monitoring_schedule <- function(MonitoringScheduleName, Monitor
 #' not throw an error.
 #' @param VolumeSizeInGB The size, in GB, of the ML storage volume to attach to the notebook
 #' instance. The default value is 5 GB. ML storage volumes are encrypted,
-#' so SageMaker can't determine the amount of available free space on the
-#' volume. Because of this, you can increase the volume size when you
+#' so SageMaker AI can't determine the amount of available free space on
+#' the volume. Because of this, you can increase the volume size when you
 #' update a notebook instance, but you can't decrease the volume size. If
 #' you want to decrease the size of the ML storage volume in use, create a
 #' new notebook instance with the desired size.
@@ -14077,7 +14082,8 @@ sagemaker_update_monitoring_schedule <- function(MonitoringScheduleName, Monitor
 #' CodeCommit](https://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html)
 #' or in any other Git repository. When you open a notebook instance, it
 #' opens in the directory that contains this repository. For more
-#' information, see [Associating Git Repositories with SageMaker Notebook
+#' information, see [Associating Git Repositories with SageMaker AI
+#' Notebook
 #' Instances](https://docs.aws.amazon.com/sagemaker/latest/dg/nbi-git-repo.html).
 #' @param AdditionalCodeRepositories An array of up to three Git repositories to associate with the notebook
 #' instance. These can be either the names of Git repositories stored as
@@ -14086,7 +14092,8 @@ sagemaker_update_monitoring_schedule <- function(MonitoringScheduleName, Monitor
 #' CodeCommit](https://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html)
 #' or in any other Git repository. These repositories are cloned at the
 #' same level as the default repository of your notebook instance. For more
-#' information, see [Associating Git Repositories with SageMaker Notebook
+#' information, see [Associating Git Repositories with SageMaker AI
+#' Notebook
 #' Instances](https://docs.aws.amazon.com/sagemaker/latest/dg/nbi-git-repo.html).
 #' @param AcceleratorTypes This parameter is no longer supported. Elastic Inference (EI) is no
 #' longer available.

@@ -35,8 +35,8 @@ container image.}
 
 \item{NetworkConfig}{Networking options for a model explainability job.}
 
-\item{RoleArn}{[required] The Amazon Resource Name (ARN) of an IAM role that Amazon SageMaker can
-assume to perform tasks on your behalf.}
+\item{RoleArn}{[required] The Amazon Resource Name (ARN) of an IAM role that Amazon SageMaker AI
+can assume to perform tasks on your behalf.}
 
 \item{StoppingCondition}{}
 

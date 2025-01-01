@@ -2,7 +2,7 @@
 % Please edit documentation in R/bedrockdataautomation_operations.R
 \name{bedrockdataautomation_get_data_automation_project}
 \alias{bedrockdataautomation_get_data_automation_project}
-\title{Gets an existing Amazon Bedrock Keystone DataAutomationProject}
+\title{Gets an existing Amazon Bedrock Data Automation Project}
 \usage{
 bedrockdataautomation_get_data_automation_project(
   projectArn,
@@ -15,7 +15,7 @@ bedrockdataautomation_get_data_automation_project(
 \item{projectStage}{Optional field to delete a specific DataAutomationProject stage}
 }
 \description{
-Gets an existing Amazon Bedrock Keystone DataAutomationProject
+Gets an existing Amazon Bedrock Data Automation Project
 
 See \url{https://www.paws-r-sdk.com/docs/bedrockdataautomation_get_data_automation_project/} for full documentation.
 }

@@ -3,6 +3,147 @@
 #' @include billing_service.R
 NULL
 
+#' Creates a billing view with the specified billing view attributes
+#'
+#' @description
+#' Creates a billing view with the specified billing view attributes.
+#'
+#' See [https://www.paws-r-sdk.com/docs/billing_create_billing_view/](https://www.paws-r-sdk.com/docs/billing_create_billing_view/) for full documentation.
+#'
+#' @param name &#91;required&#93; The name of the billing view.
+#' @param description The description of the billing view.
+#' @param sourceViews &#91;required&#93; A list of billing views used as the data source for the custom billing
+#' view.
+#' @param dataFilterExpression See
+#' [Expression](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html).
+#' Billing view only supports `LINKED_ACCOUNT` and `Tags`.
+#' @param clientToken A unique, case-sensitive identifier you specify to ensure idempotency of
+#' the request. Idempotency ensures that an API request completes no more
+#' than one time. If the original request completes successfully, any
+#' subsequent retries complete successfully without performing any further
+#' actions with an idempotent request.
+#' @param resourceTags A list of key value map specifying tags associated to the billing view
+#' being created.
+#'
+#' @keywords internal
+#'
+#' @rdname billing_create_billing_view
+billing_create_billing_view <- function(name, description = NULL, sourceViews, dataFilterExpression = NULL, clientToken = NULL, resourceTags = NULL) {
+  op <- new_operation(
+    name = "CreateBillingView",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .billing$create_billing_view_input(name = name, description = description, sourceViews = sourceViews, dataFilterExpression = dataFilterExpression, clientToken = clientToken, resourceTags = resourceTags)
+  output <- .billing$create_billing_view_output()
+  config <- get_config()
+  svc <- .billing$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.billing$operations$create_billing_view <- billing_create_billing_view
+
+#' Deletes the specified billing view
+#'
+#' @description
+#' Deletes the specified billing view.
+#'
+#' See [https://www.paws-r-sdk.com/docs/billing_delete_billing_view/](https://www.paws-r-sdk.com/docs/billing_delete_billing_view/) for full documentation.
+#'
+#' @param arn &#91;required&#93; The Amazon Resource Name (ARN) that can be used to uniquely identify the
+#' billing view.
+#'
+#' @keywords internal
+#'
+#' @rdname billing_delete_billing_view
+billing_delete_billing_view <- function(arn) {
+  op <- new_operation(
+    name = "DeleteBillingView",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .billing$delete_billing_view_input(arn = arn)
+  output <- .billing$delete_billing_view_output()
+  config <- get_config()
+  svc <- .billing$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.billing$operations$delete_billing_view <- billing_delete_billing_view
+
+#' Returns the metadata associated to the specified billing view ARN
+#'
+#' @description
+#' Returns the metadata associated to the specified billing view ARN.
+#'
+#' See [https://www.paws-r-sdk.com/docs/billing_get_billing_view/](https://www.paws-r-sdk.com/docs/billing_get_billing_view/) for full documentation.
+#'
+#' @param arn &#91;required&#93; The Amazon Resource Name (ARN) that can be used to uniquely identify the
+#' billing view.
+#'
+#' @keywords internal
+#'
+#' @rdname billing_get_billing_view
+billing_get_billing_view <- function(arn) {
+  op <- new_operation(
+    name = "GetBillingView",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .billing$get_billing_view_input(arn = arn)
+  output <- .billing$get_billing_view_output()
+  config <- get_config()
+  svc <- .billing$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.billing$operations$get_billing_view <- billing_get_billing_view
+
+#' Returns the resource-based policy document attached to the resource in
+#' JSON format
+#'
+#' @description
+#' Returns the resource-based policy document attached to the resource in `JSON` format.
+#'
+#' See [https://www.paws-r-sdk.com/docs/billing_get_resource_policy/](https://www.paws-r-sdk.com/docs/billing_get_resource_policy/) for full documentation.
+#'
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the billing view resource to which the
+#' policy is attached to.
+#'
+#' @keywords internal
+#'
+#' @rdname billing_get_resource_policy
+billing_get_resource_policy <- function(resourceArn) {
+  op <- new_operation(
+    name = "GetResourcePolicy",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .billing$get_resource_policy_input(resourceArn = resourceArn)
+  output <- .billing$get_resource_policy_output()
+  config <- get_config()
+  svc <- .billing$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.billing$operations$get_resource_policy <- billing_get_resource_policy
+
 #' Lists the billing views available for a given time period
 #'
 #' @description
@@ -10,10 +151,14 @@ NULL
 #'
 #' See [https://www.paws-r-sdk.com/docs/billing_list_billing_views/](https://www.paws-r-sdk.com/docs/billing_list_billing_views/) for full documentation.
 #'
-#' @param activeTimeRange &#91;required&#93; The time range for the billing views listed. `PRIMARY` billing view is
+#' @param activeTimeRange The time range for the billing views listed. `PRIMARY` billing view is
 #' always listed. `BILLING_GROUP` billing views are listed for time ranges
 #' when the associated billing group resource in Billing Conductor is
 #' active. The time range must be within one calendar month.
+#' @param arns The Amazon Resource Name (ARN) that can be used to uniquely identify the
+#' billing view.
+#' @param billingViewTypes The type of billing view.
+#' @param ownerAccountId The list of owners of the billing view.
 #' @param maxResults The maximum number of billing views to retrieve. Default is 100.
 #' @param nextToken The pagination token that is used on subsequent calls to list billing
 #' views.
@@ -21,7 +166,7 @@ NULL
 #' @keywords internal
 #'
 #' @rdname billing_list_billing_views
-billing_list_billing_views <- function(activeTimeRange, maxResults = NULL, nextToken = NULL) {
+billing_list_billing_views <- function(activeTimeRange = NULL, arns = NULL, billingViewTypes = NULL, ownerAccountId = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListBillingViews",
     http_method = "POST",
@@ -30,7 +175,7 @@ billing_list_billing_views <- function(activeTimeRange, maxResults = NULL, nextT
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "billingViews"),
     stream_api = FALSE
   )
-  input <- .billing$list_billing_views_input(activeTimeRange = activeTimeRange, maxResults = maxResults, nextToken = nextToken)
+  input <- .billing$list_billing_views_input(activeTimeRange = activeTimeRange, arns = arns, billingViewTypes = billingViewTypes, ownerAccountId = ownerAccountId, maxResults = maxResults, nextToken = nextToken)
   output <- .billing$list_billing_views_output()
   config <- get_config()
   svc <- .billing$service(config, op)
@@ -39,3 +184,172 @@ billing_list_billing_views <- function(activeTimeRange, maxResults = NULL, nextT
   return(response)
 }
 .billing$operations$list_billing_views <- billing_list_billing_views
+
+#' Lists the source views (managed Amazon Web Services billing views)
+#' associated with the billing view
+#'
+#' @description
+#' Lists the source views (managed Amazon Web Services billing views) associated with the billing view.
+#'
+#' See [https://www.paws-r-sdk.com/docs/billing_list_source_views_for_billing_view/](https://www.paws-r-sdk.com/docs/billing_list_source_views_for_billing_view/) for full documentation.
+#'
+#' @param arn &#91;required&#93; The Amazon Resource Name (ARN) that can be used to uniquely identify the
+#' billing view.
+#' @param maxResults The number of entries a paginated response contains.
+#' @param nextToken The pagination token that is used on subsequent calls to list billing
+#' views.
+#'
+#' @keywords internal
+#'
+#' @rdname billing_list_source_views_for_billing_view
+billing_list_source_views_for_billing_view <- function(arn, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListSourceViewsForBillingView",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "sourceViews"),
+    stream_api = FALSE
+  )
+  input <- .billing$list_source_views_for_billing_view_input(arn = arn, maxResults = maxResults, nextToken = nextToken)
+  output <- .billing$list_source_views_for_billing_view_output()
+  config <- get_config()
+  svc <- .billing$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.billing$operations$list_source_views_for_billing_view <- billing_list_source_views_for_billing_view
+
+#' Lists tags associated with the billing view resource
+#'
+#' @description
+#' Lists tags associated with the billing view resource.
+#'
+#' See [https://www.paws-r-sdk.com/docs/billing_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/billing_list_tags_for_resource/) for full documentation.
+#'
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
+#'
+#' @keywords internal
+#'
+#' @rdname billing_list_tags_for_resource
+billing_list_tags_for_resource <- function(resourceArn) {
+  op <- new_operation(
+    name = "ListTagsForResource",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .billing$list_tags_for_resource_input(resourceArn = resourceArn)
+  output <- .billing$list_tags_for_resource_output()
+  config <- get_config()
+  svc <- .billing$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.billing$operations$list_tags_for_resource <- billing_list_tags_for_resource
+
+#' An API operation for adding one or more tags (key-value pairs) to a
+#' resource
+#'
+#' @description
+#' An API operation for adding one or more tags (key-value pairs) to a resource.
+#'
+#' See [https://www.paws-r-sdk.com/docs/billing_tag_resource/](https://www.paws-r-sdk.com/docs/billing_tag_resource/) for full documentation.
+#'
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
+#' @param resourceTags &#91;required&#93; A list of tag key value pairs that are associated with the resource.
+#'
+#' @keywords internal
+#'
+#' @rdname billing_tag_resource
+billing_tag_resource <- function(resourceArn, resourceTags) {
+  op <- new_operation(
+    name = "TagResource",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .billing$tag_resource_input(resourceArn = resourceArn, resourceTags = resourceTags)
+  output <- .billing$tag_resource_output()
+  config <- get_config()
+  svc <- .billing$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.billing$operations$tag_resource <- billing_tag_resource
+
+#' Removes one or more tags from a resource
+#'
+#' @description
+#' Removes one or more tags from a resource. Specify only tag keys in your request. Don't specify the value.
+#'
+#' See [https://www.paws-r-sdk.com/docs/billing_untag_resource/](https://www.paws-r-sdk.com/docs/billing_untag_resource/) for full documentation.
+#'
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
+#' @param resourceTagKeys &#91;required&#93; A list of tag key value pairs that are associated with the resource.
+#'
+#' @keywords internal
+#'
+#' @rdname billing_untag_resource
+billing_untag_resource <- function(resourceArn, resourceTagKeys) {
+  op <- new_operation(
+    name = "UntagResource",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .billing$untag_resource_input(resourceArn = resourceArn, resourceTagKeys = resourceTagKeys)
+  output <- .billing$untag_resource_output()
+  config <- get_config()
+  svc <- .billing$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.billing$operations$untag_resource <- billing_untag_resource
+
+#' An API to update the attributes of the billing view
+#'
+#' @description
+#' An API to update the attributes of the billing view.
+#'
+#' See [https://www.paws-r-sdk.com/docs/billing_update_billing_view/](https://www.paws-r-sdk.com/docs/billing_update_billing_view/) for full documentation.
+#'
+#' @param arn &#91;required&#93; The Amazon Resource Name (ARN) that can be used to uniquely identify the
+#' billing view.
+#' @param name The name of the billing view.
+#' @param description The description of the billing view.
+#' @param dataFilterExpression See
+#' [Expression](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html).
+#' Billing view only supports `LINKED_ACCOUNT` and `Tags`.
+#'
+#' @keywords internal
+#'
+#' @rdname billing_update_billing_view
+billing_update_billing_view <- function(arn, name = NULL, description = NULL, dataFilterExpression = NULL) {
+  op <- new_operation(
+    name = "UpdateBillingView",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .billing$update_billing_view_input(arn = arn, name = name, description = description, dataFilterExpression = dataFilterExpression)
+  output <- .billing$update_billing_view_output()
+  config <- get_config()
+  svc <- .billing$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.billing$operations$update_billing_view <- billing_update_billing_view

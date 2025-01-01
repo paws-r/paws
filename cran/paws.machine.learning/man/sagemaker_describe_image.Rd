@@ -2,7 +2,7 @@
 % Please edit documentation in R/sagemaker_operations.R
 \name{sagemaker_describe_image}
 \alias{sagemaker_describe_image}
-\title{Describes a SageMaker image}
+\title{Describes a SageMaker AI image}
 \usage{
 sagemaker_describe_image(ImageName)
 }
@@ -10,7 +10,7 @@ sagemaker_describe_image(ImageName)
 \item{ImageName}{[required] The name of the image to describe.}
 }
 \description{
-Describes a SageMaker image.
+Describes a SageMaker AI image.
 
 See \url{https://www.paws-r-sdk.com/docs/sagemaker_describe_image/} for full documentation.
 }

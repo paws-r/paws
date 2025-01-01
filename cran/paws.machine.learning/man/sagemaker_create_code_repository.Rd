@@ -2,7 +2,7 @@
 % Please edit documentation in R/sagemaker_operations.R
 \name{sagemaker_create_code_repository}
 \alias{sagemaker_create_code_repository}
-\title{Creates a Git repository as a resource in your SageMaker account}
+\title{Creates a Git repository as a resource in your SageMaker AI account}
 \usage{
 sagemaker_create_code_repository(CodeRepositoryName, GitConfig, Tags = NULL)
 }
@@ -19,7 +19,7 @@ Web Services resources in different ways, for example, by purpose,
 owner, or environment. For more information, see \href{https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html}{Tagging Amazon Web Services Resources}.}
 }
 \description{
-Creates a Git repository as a resource in your SageMaker account. You can associate the repository with notebook instances so that you can use Git source control for the notebooks you create. The Git repository is a resource in your SageMaker account, so it can be associated with more than one notebook instance, and it persists independently from the lifecycle of any notebook instances it is associated with.
+Creates a Git repository as a resource in your SageMaker AI account. You can associate the repository with notebook instances so that you can use Git source control for the notebooks you create. The Git repository is a resource in your SageMaker AI account, so it can be associated with more than one notebook instance, and it persists independently from the lifecycle of any notebook instances it is associated with.
 
 See \url{https://www.paws-r-sdk.com/docs/sagemaker_create_code_repository/} for full documentation.
 }

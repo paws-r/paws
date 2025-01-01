@@ -878,7 +878,12 @@ accounts is managed by the DB cluster.)
 \item RDS Custom
 }}
 
-\item{DatabaseInsightsMode}{Specifies the mode of Database Insights to enable for the instance.}
+\item{DatabaseInsightsMode}{The mode of Database Insights to enable for the DB instance.
+
+This setting only applies to Amazon Aurora DB instances.
+
+Currently, this value is inherited from the DB cluster and can't be
+changed.}
 
 \item{EnablePerformanceInsights}{Specifies whether to enable Performance Insights for the DB instance.
 For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PerfInsights.html}{Using Amazon Performance Insights}

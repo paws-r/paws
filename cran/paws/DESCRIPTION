@@ -12,7 +12,7 @@ Description: Interface to Amazon Web Services <https://aws.amazon.com>,
     Storage Service' ('S3'), 'DynamoDB' 'NoSQL' database, and 'Lambda'
     functions-as-a-service.
 License: Apache License (>= 2.0)
-URL: https://github.com/paws-r/paws
+URL: https://github.com/paws-r/paws, https://paws-r.r-universe.dev/paws
 BugReports: https://github.com/paws-r/paws/issues
 Imports: 
     paws.analytics (>= 0.8.0),

@@ -8,6 +8,7 @@ including InvokeAgent}
 bedrockagentruntime_invoke_agent(
   agentAliasId,
   agentId,
+  bedrockModelConfigurations = NULL,
   enableTrace = NULL,
   endSession = NULL,
   inputText = NULL,
@@ -22,6 +23,8 @@ bedrockagentruntime_invoke_agent(
 \item{agentAliasId}{[required] The alias of the agent to use.}
 
 \item{agentId}{[required] The unique identifier of the agent to use.}
+
+\item{bedrockModelConfigurations}{Model performance settings for the request.}
 
 \item{enableTrace}{Specifies whether to turn on the trace or not to track the agent's
 reasoning process. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/agents-test.html#trace-events}{Trace enablement}.}
@@ -46,7 +49,10 @@ field, the \code{inputText} field will be ignored.}
 
 \item{sourceArn}{The ARN of the resource making the request.}
 
-\item{streamingConfigurations}{Specifies the configurations for streaming.}
+\item{streamingConfigurations}{Specifies the configurations for streaming.
+
+To use agent streaming, you need permissions to perform the
+\code{bedrock:InvokeModelWithResponseStream} action.}
 }
 \description{
 The CLI doesn't support streaming operations in Amazon Bedrock, including \code{\link[=bedrockagentruntime_invoke_agent]{invoke_agent}}.

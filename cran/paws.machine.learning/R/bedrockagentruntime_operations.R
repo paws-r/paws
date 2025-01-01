@@ -13,11 +13,12 @@ NULL
 #' @param agentAliasId &#91;required&#93; The unique identifier of an alias of an agent.
 #' @param agentId &#91;required&#93; The unique identifier of the agent to which the alias belongs.
 #' @param memoryId The unique identifier of the memory.
+#' @param sessionId The unique session identifier of the memory.
 #'
 #' @keywords internal
 #'
 #' @rdname bedrockagentruntime_delete_agent_memory
-bedrockagentruntime_delete_agent_memory <- function(agentAliasId, agentId, memoryId = NULL) {
+bedrockagentruntime_delete_agent_memory <- function(agentAliasId, agentId, memoryId = NULL, sessionId = NULL) {
   op <- new_operation(
     name = "DeleteAgentMemory",
     http_method = "DELETE",
@@ -26,7 +27,7 @@ bedrockagentruntime_delete_agent_memory <- function(agentAliasId, agentId, memor
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagentruntime$delete_agent_memory_input(agentAliasId = agentAliasId, agentId = agentId, memoryId = memoryId)
+  input <- .bedrockagentruntime$delete_agent_memory_input(agentAliasId = agentAliasId, agentId = agentId, memoryId = memoryId, sessionId = sessionId)
   output <- .bedrockagentruntime$delete_agent_memory_output()
   config <- get_config()
   svc <- .bedrockagentruntime$service(config, op)
@@ -121,6 +122,7 @@ bedrockagentruntime_get_agent_memory <- function(agentAliasId, agentId, maxItems
 #'
 #' @param agentAliasId &#91;required&#93; The alias of the agent to use.
 #' @param agentId &#91;required&#93; The unique identifier of the agent to use.
+#' @param bedrockModelConfigurations Model performance settings for the request.
 #' @param enableTrace Specifies whether to turn on the trace or not to track the agent's
 #' reasoning process. For more information, see [Trace
 #' enablement](https://docs.aws.amazon.com/bedrock/latest/userguide/agents-test.html#trace-events).
@@ -140,11 +142,14 @@ bedrockagentruntime_get_agent_memory <- function(agentAliasId, agentId, maxItems
 #' field, the `inputText` field will be ignored.
 #' @param sourceArn The ARN of the resource making the request.
 #' @param streamingConfigurations Specifies the configurations for streaming.
+#' 
+#' To use agent streaming, you need permissions to perform the
+#' `bedrock:InvokeModelWithResponseStream` action.
 #'
 #' @keywords internal
 #'
 #' @rdname bedrockagentruntime_invoke_agent
-bedrockagentruntime_invoke_agent <- function(agentAliasId, agentId, enableTrace = NULL, endSession = NULL, inputText = NULL, memoryId = NULL, sessionId, sessionState = NULL, sourceArn = NULL, streamingConfigurations = NULL) {
+bedrockagentruntime_invoke_agent <- function(agentAliasId, agentId, bedrockModelConfigurations = NULL, enableTrace = NULL, endSession = NULL, inputText = NULL, memoryId = NULL, sessionId, sessionState = NULL, sourceArn = NULL, streamingConfigurations = NULL) {
   op <- new_operation(
     name = "InvokeAgent",
     http_method = "POST",
@@ -153,7 +158,7 @@ bedrockagentruntime_invoke_agent <- function(agentAliasId, agentId, enableTrace 
     paginator = list(),
     stream_api = TRUE
   )
-  input <- .bedrockagentruntime$invoke_agent_input(agentAliasId = agentAliasId, agentId = agentId, enableTrace = enableTrace, endSession = endSession, inputText = inputText, memoryId = memoryId, sessionId = sessionId, sessionState = sessionState, sourceArn = sourceArn, streamingConfigurations = streamingConfigurations)
+  input <- .bedrockagentruntime$invoke_agent_input(agentAliasId = agentAliasId, agentId = agentId, bedrockModelConfigurations = bedrockModelConfigurations, enableTrace = enableTrace, endSession = endSession, inputText = inputText, memoryId = memoryId, sessionId = sessionId, sessionState = sessionState, sourceArn = sourceArn, streamingConfigurations = streamingConfigurations)
   output <- .bedrockagentruntime$invoke_agent_output()
   config <- get_config()
   svc <- .bedrockagentruntime$service(config, op)
@@ -179,11 +184,12 @@ bedrockagentruntime_invoke_agent <- function(agentAliasId, agentId, enableTrace 
 #' @param flowIdentifier &#91;required&#93; The unique identifier of the flow.
 #' @param inputs &#91;required&#93; A list of objects, each containing information about an input into the
 #' flow.
+#' @param modelPerformanceConfiguration Model performance settings for the request.
 #'
 #' @keywords internal
 #'
 #' @rdname bedrockagentruntime_invoke_flow
-bedrockagentruntime_invoke_flow <- function(enableTrace = NULL, flowAliasIdentifier, flowIdentifier, inputs) {
+bedrockagentruntime_invoke_flow <- function(enableTrace = NULL, flowAliasIdentifier, flowIdentifier, inputs, modelPerformanceConfiguration = NULL) {
   op <- new_operation(
     name = "InvokeFlow",
     http_method = "POST",
@@ -192,7 +198,7 @@ bedrockagentruntime_invoke_flow <- function(enableTrace = NULL, flowAliasIdentif
     paginator = list(),
     stream_api = TRUE
   )
-  input <- .bedrockagentruntime$invoke_flow_input(enableTrace = enableTrace, flowAliasIdentifier = flowAliasIdentifier, flowIdentifier = flowIdentifier, inputs = inputs)
+  input <- .bedrockagentruntime$invoke_flow_input(enableTrace = enableTrace, flowAliasIdentifier = flowAliasIdentifier, flowIdentifier = flowIdentifier, inputs = inputs, modelPerformanceConfiguration = modelPerformanceConfiguration)
   output <- .bedrockagentruntime$invoke_flow_output()
   config <- get_config()
   svc <- .bedrockagentruntime$service(config, op)
@@ -212,6 +218,7 @@ bedrockagentruntime_invoke_flow <- function(enableTrace = NULL, flowAliasIdentif
 #'
 #' @param actionGroups A list of action groups with each action group defining the action the
 #' inline agent needs to carry out.
+#' @param bedrockModelConfigurations Model settings for the request.
 #' @param customerEncryptionKeyArn The Amazon Resource Name (ARN) of the Amazon Web Services KMS key to use
 #' to encrypt your inline agent.
 #' @param enableTrace Specifies whether to turn on the trace or not to track the agent's
@@ -258,7 +265,7 @@ bedrockagentruntime_invoke_flow <- function(enableTrace = NULL, flowAliasIdentif
 #' @keywords internal
 #'
 #' @rdname bedrockagentruntime_invoke_inline_agent
-bedrockagentruntime_invoke_inline_agent <- function(actionGroups = NULL, customerEncryptionKeyArn = NULL, enableTrace = NULL, endSession = NULL, foundationModel, guardrailConfiguration = NULL, idleSessionTTLInSeconds = NULL, inlineSessionState = NULL, inputText = NULL, instruction, knowledgeBases = NULL, promptOverrideConfiguration = NULL, sessionId) {
+bedrockagentruntime_invoke_inline_agent <- function(actionGroups = NULL, bedrockModelConfigurations = NULL, customerEncryptionKeyArn = NULL, enableTrace = NULL, endSession = NULL, foundationModel, guardrailConfiguration = NULL, idleSessionTTLInSeconds = NULL, inlineSessionState = NULL, inputText = NULL, instruction, knowledgeBases = NULL, promptOverrideConfiguration = NULL, sessionId) {
   op <- new_operation(
     name = "InvokeInlineAgent",
     http_method = "POST",
@@ -267,7 +274,7 @@ bedrockagentruntime_invoke_inline_agent <- function(actionGroups = NULL, custome
     paginator = list(),
     stream_api = TRUE
   )
-  input <- .bedrockagentruntime$invoke_inline_agent_input(actionGroups = actionGroups, customerEncryptionKeyArn = customerEncryptionKeyArn, enableTrace = enableTrace, endSession = endSession, foundationModel = foundationModel, guardrailConfiguration = guardrailConfiguration, idleSessionTTLInSeconds = idleSessionTTLInSeconds, inlineSessionState = inlineSessionState, inputText = inputText, instruction = instruction, knowledgeBases = knowledgeBases, promptOverrideConfiguration = promptOverrideConfiguration, sessionId = sessionId)
+  input <- .bedrockagentruntime$invoke_inline_agent_input(actionGroups = actionGroups, bedrockModelConfigurations = bedrockModelConfigurations, customerEncryptionKeyArn = customerEncryptionKeyArn, enableTrace = enableTrace, endSession = endSession, foundationModel = foundationModel, guardrailConfiguration = guardrailConfiguration, idleSessionTTLInSeconds = idleSessionTTLInSeconds, inlineSessionState = inlineSessionState, inputText = inputText, instruction = instruction, knowledgeBases = knowledgeBases, promptOverrideConfiguration = promptOverrideConfiguration, sessionId = sessionId)
   output <- .bedrockagentruntime$invoke_inline_agent_output()
   config <- get_config()
   svc <- .bedrockagentruntime$service(config, op)

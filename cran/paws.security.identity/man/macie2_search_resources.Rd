@@ -3,7 +3,8 @@
 \name{macie2_search_resources}
 \alias{macie2_search_resources}
 \title{Retrieves (queries) statistical data and other information about Amazon
-Web Services resources that Amazon Macie monitors and analyzes}
+Web Services resources that Amazon Macie monitors and analyzes for an
+account}
 \usage{
 macie2_search_resources(
   bucketCriteria = NULL,
@@ -25,7 +26,7 @@ paginated response.}
 \item{sortCriteria}{The criteria to use to sort the results.}
 }
 \description{
-Retrieves (queries) statistical data and other information about Amazon Web Services resources that Amazon Macie monitors and analyzes.
+Retrieves (queries) statistical data and other information about Amazon Web Services resources that Amazon Macie monitors and analyzes for an account.
 
 See \url{https://www.paws-r-sdk.com/docs/macie2_search_resources/} for full documentation.
 }

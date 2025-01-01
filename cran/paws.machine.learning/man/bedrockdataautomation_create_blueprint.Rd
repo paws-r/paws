@@ -2,7 +2,7 @@
 % Please edit documentation in R/bedrockdataautomation_operations.R
 \name{bedrockdataautomation_create_blueprint}
 \alias{bedrockdataautomation_create_blueprint}
-\title{Creates an Amazon Bedrock Keystone Blueprint}
+\title{Creates an Amazon Bedrock Data Automation Blueprint}
 \usage{
 bedrockdataautomation_create_blueprint(
   blueprintName,
@@ -27,7 +27,7 @@ bedrockdataautomation_create_blueprint(
 \item{encryptionConfiguration}{}
 }
 \description{
-Creates an Amazon Bedrock Keystone Blueprint
+Creates an Amazon Bedrock Data Automation Blueprint
 
 See \url{https://www.paws-r-sdk.com/docs/bedrockdataautomation_create_blueprint/} for full documentation.
 }

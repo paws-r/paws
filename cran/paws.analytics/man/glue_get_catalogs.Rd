@@ -8,7 +8,8 @@ glue_get_catalogs(
   ParentCatalogId = NULL,
   NextToken = NULL,
   MaxResults = NULL,
-  Recursive = NULL
+  Recursive = NULL,
+  IncludeRoot = NULL
 )
 }
 \arguments{
@@ -19,8 +20,18 @@ provided, the Amazon Web Services Account Number is used by default.}
 
 \item{MaxResults}{The maximum number of catalogs to return in one response.}
 
-\item{Recursive}{When specified as true, iterates through the account and returns all
-catalog resources (including top-level resources and child resources)}
+\item{Recursive}{Whether to list all catalogs across the catalog hierarchy, starting from
+the \code{ParentCatalogId}. Defaults to \code{false} . When \code{true}, all catalog
+objects in the \code{ParentCatalogID} hierarchy are enumerated in the
+response.}
+
+\item{IncludeRoot}{Whether to list the default catalog in the account and region in the
+response. Defaults to \code{false}. When \code{true} and
+\verb{ParentCatalogId = NULL | Amazon Web Services Account ID}, all catalogs
+and the default catalog are enumerated in the response.
+
+When the \code{ParentCatalogId} is not equal to null, and this attribute is
+passed as \code{false} or \code{true}, an \code{InvalidInputException} is thrown.}
 }
 \description{
 Retrieves all catalogs defined in a catalog in the Glue Data Catalog. For a Redshift-federated catalog use case, this operation returns the list of catalogs mapped to Redshift databases in the Redshift namespace catalog.

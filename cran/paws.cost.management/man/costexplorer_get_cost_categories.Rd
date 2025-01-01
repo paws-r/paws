@@ -10,6 +10,7 @@ costexplorer_get_cost_categories(
   CostCategoryName = NULL,
   Filter = NULL,
   SortBy = NULL,
+  BillingViewArn = NULL,
   MaxResults = NULL,
   NextPageToken = NULL
 )
@@ -47,6 +48,13 @@ The supported key values for the \code{SortOrder} value are \code{ASCENDING} and
 
 When you use the \code{SortBy} value, the \code{NextPageToken} and \code{SearchString}
 key values aren't supported.}
+
+\item{BillingViewArn}{The Amazon Resource Name (ARN) that uniquely identifies a specific
+billing view. The ARN is used to specify which particular billing view
+you want to interact with or retrieve information from when making API
+calls related to Amazon Web Services Billing and Cost Management
+features. The BillingViewArn can be retrieved by calling the
+ListBillingViews API.}
 
 \item{MaxResults}{This field is only used when the \code{SortBy} value is provided in the
 request.

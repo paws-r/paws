@@ -5,7 +5,7 @@ NULL
 #' Runtime for Amazon Bedrock Data Automation
 #'
 #' @description
-#' Amazon Bedrock Keystone Runtime
+#' Amazon Bedrock Data Automation Runtime
 #'
 #' @param
 #' config

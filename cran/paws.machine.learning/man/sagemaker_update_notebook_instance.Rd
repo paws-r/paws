@@ -26,11 +26,12 @@ sagemaker_update_notebook_instance(
 
 \item{InstanceType}{The Amazon ML compute instance type.}
 
-\item{RoleArn}{The Amazon Resource Name (ARN) of the IAM role that SageMaker can assume
-to access the notebook instance. For more information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html}{SageMaker Roles}.
+\item{RoleArn}{The Amazon Resource Name (ARN) of the IAM role that SageMaker AI can
+assume to access the notebook instance. For more information, see
+\href{https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html}{SageMaker AI Roles}.
 
-To be able to pass this role to SageMaker, the caller of this API must
-have the \code{iam:PassRole} permission.}
+To be able to pass this role to SageMaker AI, the caller of this API
+must have the \code{iam:PassRole} permission.}
 
 \item{LifecycleConfigName}{The name of a lifecycle configuration to associate with the notebook
 instance. For information about lifestyle configurations, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html}{Step 2.1: (Optional) Customize a Notebook Instance}.}
@@ -43,8 +44,8 @@ not throw an error.}
 
 \item{VolumeSizeInGB}{The size, in GB, of the ML storage volume to attach to the notebook
 instance. The default value is 5 GB. ML storage volumes are encrypted,
-so SageMaker can't determine the amount of available free space on the
-volume. Because of this, you can increase the volume size when you
+so SageMaker AI can't determine the amount of available free space on
+the volume. Because of this, you can increase the volume size when you
 update a notebook instance, but you can't decrease the volume size. If
 you want to decrease the size of the ML storage volume in use, create a
 new notebook instance with the desired size.}
@@ -55,14 +56,14 @@ stored as a resource in your account, or the URL of a Git repository in
 \href{https://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html}{Amazon Web Services CodeCommit}
 or in any other Git repository. When you open a notebook instance, it
 opens in the directory that contains this repository. For more
-information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/nbi-git-repo.html}{Associating Git Repositories with SageMaker Notebook Instances}.}
+information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/nbi-git-repo.html}{Associating Git Repositories with SageMaker AI Notebook Instances}.}
 
 \item{AdditionalCodeRepositories}{An array of up to three Git repositories to associate with the notebook
 instance. These can be either the names of Git repositories stored as
 resources in your account, or the URL of Git repositories in \href{https://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html}{Amazon Web Services CodeCommit}
 or in any other Git repository. These repositories are cloned at the
 same level as the default repository of your notebook instance. For more
-information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/nbi-git-repo.html}{Associating Git Repositories with SageMaker Notebook Instances}.}
+information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/nbi-git-repo.html}{Associating Git Repositories with SageMaker AI Notebook Instances}.}
 
 \item{AcceleratorTypes}{This parameter is no longer supported. Elastic Inference (EI) is no
 longer available.

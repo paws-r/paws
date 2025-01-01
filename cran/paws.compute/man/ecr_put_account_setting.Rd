@@ -2,19 +2,21 @@
 % Please edit documentation in R/ecr_operations.R
 \name{ecr_put_account_setting}
 \alias{ecr_put_account_setting}
-\title{Allows you to change the basic scan type version by setting the name
-parameter to either CLAIR to AWS_NATIVE}
+\title{Allows you to change the basic scan type version or registry policy
+scope}
 \usage{
 ecr_put_account_setting(name, value)
 }
 \arguments{
-\item{name}{[required] Basic scan type version name.}
+\item{name}{[required] The name of the account setting, such as \code{BASIC_SCAN_TYPE_VERSION} or
+\code{REGISTRY_POLICY_SCOPE}.}
 
-\item{value}{[required] Setting value that determines what basic scan type is being used:
-\code{AWS_NATIVE} or \code{CLAIR}.}
+\item{value}{[required] Setting value that is specified. The following are valid values for the
+basic scan type being used: \code{AWS_NATIVE} or \code{CLAIR}. The following are
+valid values for the registry policy scope being used: \code{V1} or \code{V2}.}
 }
 \description{
-Allows you to change the basic scan type version by setting the \code{name} parameter to either \code{CLAIR} to \code{AWS_NATIVE}.
+Allows you to change the basic scan type version or registry policy scope.
 
 See \url{https://www.paws-r-sdk.com/docs/ecr_put_account_setting/} for full documentation.
 }

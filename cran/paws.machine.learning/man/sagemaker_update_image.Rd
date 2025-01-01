@@ -2,7 +2,7 @@
 % Please edit documentation in R/sagemaker_operations.R
 \name{sagemaker_update_image}
 \alias{sagemaker_update_image}
-\title{Updates the properties of a SageMaker image}
+\title{Updates the properties of a SageMaker AI image}
 \usage{
 sagemaker_update_image(
   DeleteProperties = NULL,
@@ -22,11 +22,11 @@ properties can be deleted.}
 
 \item{ImageName}{[required] The name of the image to update.}
 
-\item{RoleArn}{The new ARN for the IAM role that enables Amazon SageMaker to perform
+\item{RoleArn}{The new ARN for the IAM role that enables Amazon SageMaker AI to perform
 tasks on your behalf.}
 }
 \description{
-Updates the properties of a SageMaker image. To change the image's tags, use the \code{\link[=sagemaker_add_tags]{add_tags}} and \code{\link[=sagemaker_delete_tags]{delete_tags}} APIs.
+Updates the properties of a SageMaker AI image. To change the image's tags, use the \code{\link[=sagemaker_add_tags]{add_tags}} and \code{\link[=sagemaker_delete_tags]{delete_tags}} APIs.
 
 See \url{https://www.paws-r-sdk.com/docs/sagemaker_update_image/} for full documentation.
 }

@@ -95,14 +95,23 @@ The Billing API provides the following endpoint:
 \section{Operations}{
 
 \tabular{ll}{
-\link[paws.cost.management:billing_list_billing_views]{list_billing_views} \tab Lists the billing views available for a given time period
+\link[paws.cost.management:billing_create_billing_view]{create_billing_view} \tab Creates a billing view with the specified billing view attributes\cr
+\link[paws.cost.management:billing_delete_billing_view]{delete_billing_view} \tab Deletes the specified billing view\cr
+\link[paws.cost.management:billing_get_billing_view]{get_billing_view} \tab Returns the metadata associated to the specified billing view ARN\cr
+\link[paws.cost.management:billing_get_resource_policy]{get_resource_policy} \tab Returns the resource-based policy document attached to the resource in JSON format\cr
+\link[paws.cost.management:billing_list_billing_views]{list_billing_views} \tab Lists the billing views available for a given time period\cr
+\link[paws.cost.management:billing_list_source_views_for_billing_view]{list_source_views_for_billing_view} \tab Lists the source views (managed Amazon Web Services billing views) associated with the billing view\cr
+\link[paws.cost.management:billing_list_tags_for_resource]{list_tags_for_resource} \tab Lists tags associated with the billing view resource\cr
+\link[paws.cost.management:billing_tag_resource]{tag_resource} \tab An API operation for adding one or more tags (key-value pairs) to a resource\cr
+\link[paws.cost.management:billing_untag_resource]{untag_resource} \tab Removes one or more tags from a resource\cr
+\link[paws.cost.management:billing_update_billing_view]{update_billing_view} \tab An API to update the attributes of the billing view
 }
 }
 
 \examples{
 \dontrun{
 svc <- billing()
-svc$list_billing_views(
+svc$create_billing_view(
   Foo = 123
 )
 }

@@ -461,6 +461,8 @@ This setting doesn't apply to RDS Custom or Amazon Aurora.}
 instance. Follow the allocation rules specified in
 \code{\link[=rds_create_db_instance]{create_db_instance}}.
 
+This setting isn't valid for RDS for SQL Server.
+
 Be sure to allocate enough storage for your new DB instance so that the
 restore operation can succeed. You can also allocate additional storage
 for future growth.}

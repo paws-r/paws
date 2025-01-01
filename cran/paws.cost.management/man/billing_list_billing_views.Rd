@@ -5,16 +5,26 @@
 \title{Lists the billing views available for a given time period}
 \usage{
 billing_list_billing_views(
-  activeTimeRange,
+  activeTimeRange = NULL,
+  arns = NULL,
+  billingViewTypes = NULL,
+  ownerAccountId = NULL,
   maxResults = NULL,
   nextToken = NULL
 )
 }
 \arguments{
-\item{activeTimeRange}{[required] The time range for the billing views listed. \code{PRIMARY} billing view is
+\item{activeTimeRange}{The time range for the billing views listed. \code{PRIMARY} billing view is
 always listed. \code{BILLING_GROUP} billing views are listed for time ranges
 when the associated billing group resource in Billing Conductor is
 active. The time range must be within one calendar month.}
+
+\item{arns}{The Amazon Resource Name (ARN) that can be used to uniquely identify the
+billing view.}
+
+\item{billingViewTypes}{The type of billing view.}
+
+\item{ownerAccountId}{The list of owners of the billing view.}
 
 \item{maxResults}{The maximum number of billing views to retrieve. Default is 100.}
 

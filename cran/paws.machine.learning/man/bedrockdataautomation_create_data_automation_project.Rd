@@ -2,7 +2,7 @@
 % Please edit documentation in R/bedrockdataautomation_operations.R
 \name{bedrockdataautomation_create_data_automation_project}
 \alias{bedrockdataautomation_create_data_automation_project}
-\title{Creates an Amazon Bedrock Keystone DataAutomationProject}
+\title{Creates an Amazon Bedrock Data Automation Project}
 \usage{
 bedrockdataautomation_create_data_automation_project(
   projectName,
@@ -33,7 +33,7 @@ bedrockdataautomation_create_data_automation_project(
 \item{encryptionConfiguration}{}
 }
 \description{
-Creates an Amazon Bedrock Keystone DataAutomationProject
+Creates an Amazon Bedrock Data Automation Project
 
 See \url{https://www.paws-r-sdk.com/docs/bedrockdataautomation_create_data_automation_project/} for full documentation.
 }

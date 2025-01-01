@@ -2,7 +2,7 @@
 % Please edit documentation in R/bedrockdataautomation_operations.R
 \name{bedrockdataautomation_update_data_automation_project}
 \alias{bedrockdataautomation_update_data_automation_project}
-\title{Updates an existing Amazon Bedrock DataAutomationProject}
+\title{Updates an existing Amazon Bedrock Data Automation Project}
 \usage{
 bedrockdataautomation_update_data_automation_project(
   projectArn,
@@ -27,7 +27,7 @@ bedrockdataautomation_update_data_automation_project(
 \item{overrideConfiguration}{}
 }
 \description{
-Updates an existing Amazon Bedrock DataAutomationProject
+Updates an existing Amazon Bedrock Data Automation Project
 
 See \url{https://www.paws-r-sdk.com/docs/bedrockdataautomation_update_data_automation_project/} for full documentation.
 }

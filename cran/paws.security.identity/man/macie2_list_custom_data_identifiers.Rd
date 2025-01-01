@@ -2,8 +2,8 @@
 % Please edit documentation in R/macie2_operations.R
 \name{macie2_list_custom_data_identifiers}
 \alias{macie2_list_custom_data_identifiers}
-\title{Retrieves a subset of information about all the custom data identifiers
-for an account}
+\title{Retrieves a subset of information about the custom data identifiers for
+an account}
 \usage{
 macie2_list_custom_data_identifiers(maxResults = NULL, nextToken = NULL)
 }
@@ -14,7 +14,7 @@ macie2_list_custom_data_identifiers(maxResults = NULL, nextToken = NULL)
 paginated response.}
 }
 \description{
-Retrieves a subset of information about all the custom data identifiers for an account.
+Retrieves a subset of information about the custom data identifiers for an account.
 
 See \url{https://www.paws-r-sdk.com/docs/macie2_list_custom_data_identifiers/} for full documentation.
 }

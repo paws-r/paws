@@ -2,7 +2,7 @@
 % Please edit documentation in R/sagemaker_operations.R
 \name{sagemaker_create_image_version}
 \alias{sagemaker_create_image_version}
-\title{Creates a version of the SageMaker image specified by ImageName}
+\title{Creates a version of the SageMaker AI image specified by ImageName}
 \usage{
 sagemaker_create_image_version(
   BaseImage,
@@ -44,13 +44,13 @@ archived after three months.
 are not searchable and are no longer actively supported.
 }}
 
-\item{JobType}{Indicates SageMaker job type compatibility.
+\item{JobType}{Indicates SageMaker AI job type compatibility.
 \itemize{
-\item \code{TRAINING}: The image version is compatible with SageMaker training
-jobs.
-\item \code{INFERENCE}: The image version is compatible with SageMaker
+\item \code{TRAINING}: The image version is compatible with SageMaker AI
+training jobs.
+\item \code{INFERENCE}: The image version is compatible with SageMaker AI
 inference jobs.
-\item \code{NOTEBOOK_KERNEL}: The image version is compatible with SageMaker
+\item \code{NOTEBOOK_KERNEL}: The image version is compatible with SageMaker AI
 notebook kernels.
 }}
 
@@ -69,7 +69,7 @@ notebook kernels.
 \item{ReleaseNotes}{The maintainer description of the image version.}
 }
 \description{
-Creates a version of the SageMaker image specified by \code{ImageName}. The version represents the Amazon ECR container image specified by \code{BaseImage}.
+Creates a version of the SageMaker AI image specified by \code{ImageName}. The version represents the Amazon ECR container image specified by \code{BaseImage}.
 
 See \url{https://www.paws-r-sdk.com/docs/sagemaker_create_image_version/} for full documentation.
 }

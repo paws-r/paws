@@ -3631,13 +3631,22 @@ glue_get_catalog_import_status <- function(CatalogId = NULL) {
 #' provided, the Amazon Web Services Account Number is used by default.
 #' @param NextToken A continuation token, if this is a continuation call.
 #' @param MaxResults The maximum number of catalogs to return in one response.
-#' @param Recursive When specified as true, iterates through the account and returns all
-#' catalog resources (including top-level resources and child resources)
+#' @param Recursive Whether to list all catalogs across the catalog hierarchy, starting from
+#' the `ParentCatalogId`. Defaults to `false` . When `true`, all catalog
+#' objects in the `ParentCatalogID` hierarchy are enumerated in the
+#' response.
+#' @param IncludeRoot Whether to list the default catalog in the account and region in the
+#' response. Defaults to `false`. When `true` and
+#' `ParentCatalogId = NULL | Amazon Web Services Account ID`, all catalogs
+#' and the default catalog are enumerated in the response.
+#' 
+#' When the `ParentCatalogId` is not equal to null, and this attribute is
+#' passed as `false` or `true`, an `InvalidInputException` is thrown.
 #'
 #' @keywords internal
 #'
 #' @rdname glue_get_catalogs
-glue_get_catalogs <- function(ParentCatalogId = NULL, NextToken = NULL, MaxResults = NULL, Recursive = NULL) {
+glue_get_catalogs <- function(ParentCatalogId = NULL, NextToken = NULL, MaxResults = NULL, Recursive = NULL, IncludeRoot = NULL) {
   op <- new_operation(
     name = "GetCatalogs",
     http_method = "POST",
@@ -3646,7 +3655,7 @@ glue_get_catalogs <- function(ParentCatalogId = NULL, NextToken = NULL, MaxResul
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .glue$get_catalogs_input(ParentCatalogId = ParentCatalogId, NextToken = NextToken, MaxResults = MaxResults, Recursive = Recursive)
+  input <- .glue$get_catalogs_input(ParentCatalogId = ParentCatalogId, NextToken = NextToken, MaxResults = MaxResults, Recursive = Recursive, IncludeRoot = IncludeRoot)
   output <- .glue$get_catalogs_output()
   config <- get_config()
   svc <- .glue$service(config, op)
@@ -8149,11 +8158,14 @@ glue_start_import_labels_task_run <- function(TransformId, InputS3Path, ReplaceA
 #' can consume resources before it is terminated and enters `TIMEOUT`
 #' status. This value overrides the timeout value set in the parent job.
 #' 
-#' Streaming jobs must have timeout values less than 7 days or 10080
-#' minutes. When the value is left blank, the job will be restarted after 7
-#' days based if you have not setup a maintenance window. If you have setup
-#' maintenance window, it will be restarted during the maintenance window
-#' after 7 days.
+#' Jobs must have timeout values less than 7 days or 10080 minutes.
+#' Otherwise, the jobs will throw an exception.
+#' 
+#' When the value is left blank, the timeout is defaulted to 2880 minutes.
+#' 
+#' Any existing Glue jobs that had a timeout value greater than 7 days will
+#' be defaulted to 7 days. For instance if you have specified a timeout of
+#' 20 days for a batch job, it will be stopped on the 7th day.
 #' @param MaxCapacity For Glue version 1.0 or earlier jobs, using the standard worker type,
 #' the number of Glue data processing units (DPUs) that can be allocated
 #' when this job runs. A DPU is a relative measure of processing power that

@@ -19,7 +19,10 @@ docdb_modify_db_cluster(
   EngineVersion = NULL,
   AllowMajorVersionUpgrade = NULL,
   DeletionProtection = NULL,
-  StorageType = NULL
+  StorageType = NULL,
+  ManageMasterUserPassword = NULL,
+  MasterUserSecretKmsKeyId = NULL,
+  RotateMasterUserPassword = NULL
 )
 }
 \arguments{
@@ -148,6 +151,55 @@ Guide}.
 Valid values for storage type - \code{standard | iopt1}
 
 Default value is \code{standard }}
+
+\item{ManageMasterUserPassword}{Specifies whether to manage the master user password with Amazon Web
+Services Secrets Manager. If the cluster doesn't manage the master user
+password with Amazon Web Services Secrets Manager, you can turn on this
+management. In this case, you can't specify \code{MasterUserPassword}. If the
+cluster already manages the master user password with Amazon Web
+Services Secrets Manager, and you specify that the master user password
+is not managed with Amazon Web Services Secrets Manager, then you must
+specify \code{MasterUserPassword}. In this case, Amazon DocumentDB deletes
+the secret and uses the new password for the master user specified by
+\code{MasterUserPassword}.}
+
+\item{MasterUserSecretKmsKeyId}{The Amazon Web Services KMS key identifier to encrypt a secret that is
+automatically generated and managed in Amazon Web Services Secrets
+Manager.
+
+This setting is valid only if both of the following conditions are met:
+\itemize{
+\item The cluster doesn't manage the master user password in Amazon Web
+Services Secrets Manager. If the cluster already manages the master
+user password in Amazon Web Services Secrets Manager, you can't
+change the KMS key that is used to encrypt the secret.
+\item You are enabling \code{ManageMasterUserPassword} to manage the master
+user password in Amazon Web Services Secrets Manager. If you are
+turning on \code{ManageMasterUserPassword} and don't specify
+\code{MasterUserSecretKmsKeyId}, then the \code{aws/secretsmanager} KMS key is
+used to encrypt the secret. If the secret is in a different Amazon
+Web Services account, then you can't use the \code{aws/secretsmanager}
+KMS key to encrypt the secret, and you must use a customer managed
+KMS key.
+}
+
+The Amazon Web Services KMS key identifier is the key ARN, key ID, alias
+ARN, or alias name for the KMS key. To use a KMS key in a different
+Amazon Web Services account, specify the key ARN or alias ARN.
+
+There is a default KMS key for your Amazon Web Services account. Your
+Amazon Web Services account has a different default KMS key for each
+Amazon Web Services Region.}
+
+\item{RotateMasterUserPassword}{Specifies whether to rotate the secret managed by Amazon Web Services
+Secrets Manager for the master user password.
+
+This setting is valid only if the master user password is managed by
+Amazon DocumentDB in Amazon Web Services Secrets Manager for the
+cluster. The secret value contains the updated password.
+
+Constraint: You must apply the change immediately when rotating the
+master user password.}
 }
 \description{
 Modifies a setting for an Amazon DocumentDB cluster. You can change one or more database configuration parameters by specifying these parameters and the new values in the request.

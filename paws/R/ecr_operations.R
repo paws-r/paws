@@ -1968,15 +1968,16 @@ ecr_describe_repository_creation_templates <- function(prefixes = NULL, nextToke
 }
 .ecr$operations$describe_repository_creation_templates <- ecr_describe_repository_creation_templates
 
-#' Retrieves the basic scan type version name
+#' Retrieves the account setting value for the specified setting name
 #'
 #' @description
-#' Retrieves the basic scan type version name.
+#' Retrieves the account setting value for the specified setting name.
 #'
 #' @usage
 #' ecr_get_account_setting(name)
 #'
-#' @param name &#91;required&#93; Basic scan type version name.
+#' @param name &#91;required&#93; The name of the account setting, such as `BASIC_SCAN_TYPE_VERSION` or
+#' `REGISTRY_POLICY_SCOPE`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2717,19 +2718,21 @@ ecr_list_tags_for_resource <- function(resourceArn) {
 }
 .ecr$operations$list_tags_for_resource <- ecr_list_tags_for_resource
 
-#' Allows you to change the basic scan type version by setting the name
-#' parameter to either CLAIR to AWS_NATIVE
+#' Allows you to change the basic scan type version or registry policy
+#' scope
 #'
 #' @description
-#' Allows you to change the basic scan type version by setting the `name`
-#' parameter to either `CLAIR` to `AWS_NATIVE`.
+#' Allows you to change the basic scan type version or registry policy
+#' scope.
 #'
 #' @usage
 #' ecr_put_account_setting(name, value)
 #'
-#' @param name &#91;required&#93; Basic scan type version name.
-#' @param value &#91;required&#93; Setting value that determines what basic scan type is being used:
-#' `AWS_NATIVE` or `CLAIR`.
+#' @param name &#91;required&#93; The name of the account setting, such as `BASIC_SCAN_TYPE_VERSION` or
+#' `REGISTRY_POLICY_SCOPE`.
+#' @param value &#91;required&#93; Setting value that is specified. The following are valid values for the
+#' basic scan type being used: `AWS_NATIVE` or `CLAIR`. The following are
+#' valid values for the registry policy scope being used: `V1` or `V2`.
 #'
 #' @return
 #' A list with the following syntax:

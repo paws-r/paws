@@ -1237,7 +1237,7 @@ costexplorer_get_commitment_purchase_analysis <- function(AnalysisId) {
 #'
 #' @usage
 #' costexplorer_get_cost_and_usage(TimePeriod, Granularity, Filter,
-#'   Metrics, GroupBy, NextPageToken)
+#'   Metrics, GroupBy, BillingViewArn, NextPageToken)
 #'
 #' @param TimePeriod &#91;required&#93; Sets the start date and end date for retrieving Amazon Web Services
 #' costs. The start date is inclusive, but the end date is exclusive. For
@@ -1289,6 +1289,12 @@ costexplorer_get_commitment_purchase_analysis <- function(AnalysisId) {
 #' 
 #' When you group by the `TAG` type and include a valid tag key, you get
 #' all tag values, including empty strings.
+#' @param BillingViewArn The Amazon Resource Name (ARN) that uniquely identifies a specific
+#' billing view. The ARN is used to specify which particular billing view
+#' you want to interact with or retrieve information from when making API
+#' calls related to Amazon Web Services Billing and Cost Management
+#' features. The BillingViewArn can be retrieved by calling the
+#' ListBillingViews API.
 #' @param NextPageToken The token to retrieve the next set of results. Amazon Web Services
 #' provides the token when the response from a previous call has more
 #' results than the maximum page size.
@@ -1396,6 +1402,7 @@ costexplorer_get_commitment_purchase_analysis <- function(AnalysisId) {
 #'       Key = "string"
 #'     )
 #'   ),
+#'   BillingViewArn = "string",
 #'   NextPageToken = "string"
 #' )
 #' ```
@@ -1405,7 +1412,7 @@ costexplorer_get_commitment_purchase_analysis <- function(AnalysisId) {
 #' @rdname costexplorer_get_cost_and_usage
 #'
 #' @aliases costexplorer_get_cost_and_usage
-costexplorer_get_cost_and_usage <- function(TimePeriod, Granularity, Filter = NULL, Metrics, GroupBy = NULL, NextPageToken = NULL) {
+costexplorer_get_cost_and_usage <- function(TimePeriod, Granularity, Filter = NULL, Metrics, GroupBy = NULL, BillingViewArn = NULL, NextPageToken = NULL) {
   op <- new_operation(
     name = "GetCostAndUsage",
     http_method = "POST",
@@ -1414,7 +1421,7 @@ costexplorer_get_cost_and_usage <- function(TimePeriod, Granularity, Filter = NU
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .costexplorer$get_cost_and_usage_input(TimePeriod = TimePeriod, Granularity = Granularity, Filter = Filter, Metrics = Metrics, GroupBy = GroupBy, NextPageToken = NextPageToken)
+  input <- .costexplorer$get_cost_and_usage_input(TimePeriod = TimePeriod, Granularity = Granularity, Filter = Filter, Metrics = Metrics, GroupBy = GroupBy, BillingViewArn = BillingViewArn, NextPageToken = NextPageToken)
   output <- .costexplorer$get_cost_and_usage_output()
   config <- get_config()
   svc <- .costexplorer$service(config, op)
@@ -1448,7 +1455,7 @@ costexplorer_get_cost_and_usage <- function(TimePeriod, Granularity, Filter = NU
 #'
 #' @usage
 #' costexplorer_get_cost_and_usage_with_resources(TimePeriod, Granularity,
-#'   Filter, Metrics, GroupBy, NextPageToken)
+#'   Filter, Metrics, GroupBy, BillingViewArn, NextPageToken)
 #'
 #' @param TimePeriod &#91;required&#93; Sets the start and end dates for retrieving Amazon Web Services costs.
 #' The range must be within the last 14 days (the start date cannot be
@@ -1501,6 +1508,12 @@ costexplorer_get_cost_and_usage <- function(TimePeriod, Granularity, Filter = NU
 #' requests.
 #' @param GroupBy You can group Amazon Web Services costs using up to two different
 #' groups: `DIMENSION`, `TAG`, `COST_CATEGORY`.
+#' @param BillingViewArn The Amazon Resource Name (ARN) that uniquely identifies a specific
+#' billing view. The ARN is used to specify which particular billing view
+#' you want to interact with or retrieve information from when making API
+#' calls related to Amazon Web Services Billing and Cost Management
+#' features. The BillingViewArn can be retrieved by calling the
+#' ListBillingViews API.
 #' @param NextPageToken The token to retrieve the next set of results. Amazon Web Services
 #' provides the token when the response from a previous call has more
 #' results than the maximum page size.
@@ -1608,6 +1621,7 @@ costexplorer_get_cost_and_usage <- function(TimePeriod, Granularity, Filter = NU
 #'       Key = "string"
 #'     )
 #'   ),
+#'   BillingViewArn = "string",
 #'   NextPageToken = "string"
 #' )
 #' ```
@@ -1617,7 +1631,7 @@ costexplorer_get_cost_and_usage <- function(TimePeriod, Granularity, Filter = NU
 #' @rdname costexplorer_get_cost_and_usage_with_resources
 #'
 #' @aliases costexplorer_get_cost_and_usage_with_resources
-costexplorer_get_cost_and_usage_with_resources <- function(TimePeriod, Granularity, Filter, Metrics = NULL, GroupBy = NULL, NextPageToken = NULL) {
+costexplorer_get_cost_and_usage_with_resources <- function(TimePeriod, Granularity, Filter, Metrics = NULL, GroupBy = NULL, BillingViewArn = NULL, NextPageToken = NULL) {
   op <- new_operation(
     name = "GetCostAndUsageWithResources",
     http_method = "POST",
@@ -1626,7 +1640,7 @@ costexplorer_get_cost_and_usage_with_resources <- function(TimePeriod, Granulari
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .costexplorer$get_cost_and_usage_with_resources_input(TimePeriod = TimePeriod, Granularity = Granularity, Filter = Filter, Metrics = Metrics, GroupBy = GroupBy, NextPageToken = NextPageToken)
+  input <- .costexplorer$get_cost_and_usage_with_resources_input(TimePeriod = TimePeriod, Granularity = Granularity, Filter = Filter, Metrics = Metrics, GroupBy = GroupBy, BillingViewArn = BillingViewArn, NextPageToken = NextPageToken)
   output <- .costexplorer$get_cost_and_usage_with_resources_output()
   config <- get_config()
   svc <- .costexplorer$service(config, op)
@@ -1646,7 +1660,8 @@ costexplorer_get_cost_and_usage_with_resources <- function(TimePeriod, Granulari
 #'
 #' @usage
 #' costexplorer_get_cost_categories(SearchString, TimePeriod,
-#'   CostCategoryName, Filter, SortBy, MaxResults, NextPageToken)
+#'   CostCategoryName, Filter, SortBy, BillingViewArn, MaxResults,
+#'   NextPageToken)
 #'
 #' @param SearchString The value that you want to search the filter values for.
 #' 
@@ -1681,6 +1696,12 @@ costexplorer_get_cost_and_usage_with_resources <- function(TimePeriod, Granulari
 #' 
 #' When you use the `SortBy` value, the `NextPageToken` and `SearchString`
 #' key values aren't supported.
+#' @param BillingViewArn The Amazon Resource Name (ARN) that uniquely identifies a specific
+#' billing view. The ARN is used to specify which particular billing view
+#' you want to interact with or retrieve information from when making API
+#' calls related to Amazon Web Services Billing and Cost Management
+#' features. The BillingViewArn can be retrieved by calling the
+#' ListBillingViews API.
 #' @param MaxResults This field is only used when the `SortBy` value is provided in the
 #' request.
 #' 
@@ -1762,6 +1783,7 @@ costexplorer_get_cost_and_usage_with_resources <- function(TimePeriod, Granulari
 #'       SortOrder = "ASCENDING"|"DESCENDING"
 #'     )
 #'   ),
+#'   BillingViewArn = "string",
 #'   MaxResults = 123,
 #'   NextPageToken = "string"
 #' )
@@ -1772,7 +1794,7 @@ costexplorer_get_cost_and_usage_with_resources <- function(TimePeriod, Granulari
 #' @rdname costexplorer_get_cost_categories
 #'
 #' @aliases costexplorer_get_cost_categories
-costexplorer_get_cost_categories <- function(SearchString = NULL, TimePeriod, CostCategoryName = NULL, Filter = NULL, SortBy = NULL, MaxResults = NULL, NextPageToken = NULL) {
+costexplorer_get_cost_categories <- function(SearchString = NULL, TimePeriod, CostCategoryName = NULL, Filter = NULL, SortBy = NULL, BillingViewArn = NULL, MaxResults = NULL, NextPageToken = NULL) {
   op <- new_operation(
     name = "GetCostCategories",
     http_method = "POST",
@@ -1781,7 +1803,7 @@ costexplorer_get_cost_categories <- function(SearchString = NULL, TimePeriod, Co
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .costexplorer$get_cost_categories_input(SearchString = SearchString, TimePeriod = TimePeriod, CostCategoryName = CostCategoryName, Filter = Filter, SortBy = SortBy, MaxResults = MaxResults, NextPageToken = NextPageToken)
+  input <- .costexplorer$get_cost_categories_input(SearchString = SearchString, TimePeriod = TimePeriod, CostCategoryName = CostCategoryName, Filter = Filter, SortBy = SortBy, BillingViewArn = BillingViewArn, MaxResults = MaxResults, NextPageToken = NextPageToken)
   output <- .costexplorer$get_cost_categories_output()
   config <- get_config()
   svc <- .costexplorer$service(config, op)
@@ -1802,7 +1824,7 @@ costexplorer_get_cost_categories <- function(SearchString = NULL, TimePeriod, Co
 #'
 #' @usage
 #' costexplorer_get_cost_forecast(TimePeriod, Metric, Granularity, Filter,
-#'   PredictionIntervalLevel)
+#'   BillingViewArn, PredictionIntervalLevel)
 #'
 #' @param TimePeriod &#91;required&#93; The period of time that you want the forecast to cover. The start date
 #' must be equal to or no later than the current date to avoid a validation
@@ -1877,6 +1899,12 @@ costexplorer_get_cost_categories <- function(SearchString = NULL, TimePeriod, Co
 #' -   `RESERVATION_ID`
 #' 
 #' -   `SAVINGS_PLAN_ARN`
+#' @param BillingViewArn The Amazon Resource Name (ARN) that uniquely identifies a specific
+#' billing view. The ARN is used to specify which particular billing view
+#' you want to interact with or retrieve information from when making API
+#' calls related to Amazon Web Services Billing and Cost Management
+#' features. The BillingViewArn can be retrieved by calling the
+#' ListBillingViews API.
 #' @param PredictionIntervalLevel Cost Explorer always returns the mean forecast as a single point. You
 #' can request a prediction interval around the mean by specifying a
 #' confidence level. The higher the confidence level, the more confident
@@ -1950,6 +1978,7 @@ costexplorer_get_cost_categories <- function(SearchString = NULL, TimePeriod, Co
 #'       )
 #'     )
 #'   ),
+#'   BillingViewArn = "string",
 #'   PredictionIntervalLevel = 123
 #' )
 #' ```
@@ -1959,7 +1988,7 @@ costexplorer_get_cost_categories <- function(SearchString = NULL, TimePeriod, Co
 #' @rdname costexplorer_get_cost_forecast
 #'
 #' @aliases costexplorer_get_cost_forecast
-costexplorer_get_cost_forecast <- function(TimePeriod, Metric, Granularity, Filter = NULL, PredictionIntervalLevel = NULL) {
+costexplorer_get_cost_forecast <- function(TimePeriod, Metric, Granularity, Filter = NULL, BillingViewArn = NULL, PredictionIntervalLevel = NULL) {
   op <- new_operation(
     name = "GetCostForecast",
     http_method = "POST",
@@ -1968,7 +1997,7 @@ costexplorer_get_cost_forecast <- function(TimePeriod, Metric, Granularity, Filt
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .costexplorer$get_cost_forecast_input(TimePeriod = TimePeriod, Metric = Metric, Granularity = Granularity, Filter = Filter, PredictionIntervalLevel = PredictionIntervalLevel)
+  input <- .costexplorer$get_cost_forecast_input(TimePeriod = TimePeriod, Metric = Metric, Granularity = Granularity, Filter = Filter, BillingViewArn = BillingViewArn, PredictionIntervalLevel = PredictionIntervalLevel)
   output <- .costexplorer$get_cost_forecast_output()
   config <- get_config()
   svc <- .costexplorer$service(config, op)
@@ -1988,7 +2017,7 @@ costexplorer_get_cost_forecast <- function(TimePeriod, Metric, Granularity, Filt
 #'
 #' @usage
 #' costexplorer_get_dimension_values(SearchString, TimePeriod, Dimension,
-#'   Context, Filter, SortBy, MaxResults, NextPageToken)
+#'   Context, Filter, SortBy, BillingViewArn, MaxResults, NextPageToken)
 #'
 #' @param SearchString The value that you want to search the filter values for.
 #' @param TimePeriod &#91;required&#93; The start date and end date for retrieving the dimension values. The
@@ -2175,6 +2204,12 @@ costexplorer_get_cost_forecast <- function(TimePeriod, Metric, Granularity, Filt
 #' When you specify a `SortBy` paramater, the context must be
 #' `COST_AND_USAGE`. Further, when using `SortBy`, `NextPageToken` and
 #' `SearchString` aren't supported.
+#' @param BillingViewArn The Amazon Resource Name (ARN) that uniquely identifies a specific
+#' billing view. The ARN is used to specify which particular billing view
+#' you want to interact with or retrieve information from when making API
+#' calls related to Amazon Web Services Billing and Cost Management
+#' features. The BillingViewArn can be retrieved by calling the
+#' ListBillingViews API.
 #' @param MaxResults This field is only used when SortBy is provided in the request. The
 #' maximum number of objects that are returned for this request. If
 #' MaxResults isn't specified with SortBy, the request returns 1000 results
@@ -2256,6 +2291,7 @@ costexplorer_get_cost_forecast <- function(TimePeriod, Metric, Granularity, Filt
 #'       SortOrder = "ASCENDING"|"DESCENDING"
 #'     )
 #'   ),
+#'   BillingViewArn = "string",
 #'   MaxResults = 123,
 #'   NextPageToken = "string"
 #' )
@@ -2266,7 +2302,7 @@ costexplorer_get_cost_forecast <- function(TimePeriod, Metric, Granularity, Filt
 #' @rdname costexplorer_get_dimension_values
 #'
 #' @aliases costexplorer_get_dimension_values
-costexplorer_get_dimension_values <- function(SearchString = NULL, TimePeriod, Dimension, Context = NULL, Filter = NULL, SortBy = NULL, MaxResults = NULL, NextPageToken = NULL) {
+costexplorer_get_dimension_values <- function(SearchString = NULL, TimePeriod, Dimension, Context = NULL, Filter = NULL, SortBy = NULL, BillingViewArn = NULL, MaxResults = NULL, NextPageToken = NULL) {
   op <- new_operation(
     name = "GetDimensionValues",
     http_method = "POST",
@@ -2275,7 +2311,7 @@ costexplorer_get_dimension_values <- function(SearchString = NULL, TimePeriod, D
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .costexplorer$get_dimension_values_input(SearchString = SearchString, TimePeriod = TimePeriod, Dimension = Dimension, Context = Context, Filter = Filter, SortBy = SortBy, MaxResults = MaxResults, NextPageToken = NextPageToken)
+  input <- .costexplorer$get_dimension_values_input(SearchString = SearchString, TimePeriod = TimePeriod, Dimension = Dimension, Context = Context, Filter = Filter, SortBy = SortBy, BillingViewArn = BillingViewArn, MaxResults = MaxResults, NextPageToken = NextPageToken)
   output <- .costexplorer$get_dimension_values_output()
   config <- get_config()
   svc <- .costexplorer$service(config, op)
@@ -4231,7 +4267,7 @@ costexplorer_get_savings_plans_utilization_details <- function(TimePeriod, Filte
 #'
 #' @usage
 #' costexplorer_get_tags(SearchString, TimePeriod, TagKey, Filter, SortBy,
-#'   MaxResults, NextPageToken)
+#'   BillingViewArn, MaxResults, NextPageToken)
 #'
 #' @param SearchString The value that you want to search for.
 #' @param TimePeriod &#91;required&#93; The start and end dates for retrieving the dimension values. The start
@@ -4264,6 +4300,12 @@ costexplorer_get_savings_plans_utilization_details <- function(TimePeriod, Filte
 #' 
 #' When you use `SortBy`, `NextPageToken` and `SearchString` aren't
 #' supported.
+#' @param BillingViewArn The Amazon Resource Name (ARN) that uniquely identifies a specific
+#' billing view. The ARN is used to specify which particular billing view
+#' you want to interact with or retrieve information from when making API
+#' calls related to Amazon Web Services Billing and Cost Management
+#' features. The BillingViewArn can be retrieved by calling the
+#' ListBillingViews API.
 #' @param MaxResults This field is only used when SortBy is provided in the request. The
 #' maximum number of objects that are returned for this request. If
 #' MaxResults isn't specified with SortBy, the request returns 1000 results
@@ -4339,6 +4381,7 @@ costexplorer_get_savings_plans_utilization_details <- function(TimePeriod, Filte
 #'       SortOrder = "ASCENDING"|"DESCENDING"
 #'     )
 #'   ),
+#'   BillingViewArn = "string",
 #'   MaxResults = 123,
 #'   NextPageToken = "string"
 #' )
@@ -4349,7 +4392,7 @@ costexplorer_get_savings_plans_utilization_details <- function(TimePeriod, Filte
 #' @rdname costexplorer_get_tags
 #'
 #' @aliases costexplorer_get_tags
-costexplorer_get_tags <- function(SearchString = NULL, TimePeriod, TagKey = NULL, Filter = NULL, SortBy = NULL, MaxResults = NULL, NextPageToken = NULL) {
+costexplorer_get_tags <- function(SearchString = NULL, TimePeriod, TagKey = NULL, Filter = NULL, SortBy = NULL, BillingViewArn = NULL, MaxResults = NULL, NextPageToken = NULL) {
   op <- new_operation(
     name = "GetTags",
     http_method = "POST",
@@ -4358,7 +4401,7 @@ costexplorer_get_tags <- function(SearchString = NULL, TimePeriod, TagKey = NULL
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .costexplorer$get_tags_input(SearchString = SearchString, TimePeriod = TimePeriod, TagKey = TagKey, Filter = Filter, SortBy = SortBy, MaxResults = MaxResults, NextPageToken = NextPageToken)
+  input <- .costexplorer$get_tags_input(SearchString = SearchString, TimePeriod = TimePeriod, TagKey = TagKey, Filter = Filter, SortBy = SortBy, BillingViewArn = BillingViewArn, MaxResults = MaxResults, NextPageToken = NextPageToken)
   output <- .costexplorer$get_tags_output()
   config <- get_config()
   svc <- .costexplorer$service(config, op)
@@ -4379,7 +4422,7 @@ costexplorer_get_tags <- function(SearchString = NULL, TimePeriod, TagKey = NULL
 #'
 #' @usage
 #' costexplorer_get_usage_forecast(TimePeriod, Metric, Granularity, Filter,
-#'   PredictionIntervalLevel)
+#'   BillingViewArn, PredictionIntervalLevel)
 #'
 #' @param TimePeriod &#91;required&#93; The start and end dates of the period that you want to retrieve usage
 #' forecast for. The start date is included in the period, but the end date
@@ -4451,6 +4494,12 @@ costexplorer_get_tags <- function(SearchString = NULL, TimePeriod, TagKey = NULL
 #' -   `RESERVATION_ID`
 #' 
 #' -   `SAVINGS_PLAN_ARN`
+#' @param BillingViewArn The Amazon Resource Name (ARN) that uniquely identifies a specific
+#' billing view. The ARN is used to specify which particular billing view
+#' you want to interact with or retrieve information from when making API
+#' calls related to Amazon Web Services Billing and Cost Management
+#' features. The BillingViewArn can be retrieved by calling the
+#' ListBillingViews API.
 #' @param PredictionIntervalLevel Amazon Web Services Cost Explorer always returns the mean forecast as a
 #' single point. You can request a prediction interval around the mean by
 #' specifying a confidence level. The higher the confidence level, the more
@@ -4525,6 +4574,7 @@ costexplorer_get_tags <- function(SearchString = NULL, TimePeriod, TagKey = NULL
 #'       )
 #'     )
 #'   ),
+#'   BillingViewArn = "string",
 #'   PredictionIntervalLevel = 123
 #' )
 #' ```
@@ -4534,7 +4584,7 @@ costexplorer_get_tags <- function(SearchString = NULL, TimePeriod, TagKey = NULL
 #' @rdname costexplorer_get_usage_forecast
 #'
 #' @aliases costexplorer_get_usage_forecast
-costexplorer_get_usage_forecast <- function(TimePeriod, Metric, Granularity, Filter = NULL, PredictionIntervalLevel = NULL) {
+costexplorer_get_usage_forecast <- function(TimePeriod, Metric, Granularity, Filter = NULL, BillingViewArn = NULL, PredictionIntervalLevel = NULL) {
   op <- new_operation(
     name = "GetUsageForecast",
     http_method = "POST",
@@ -4543,7 +4593,7 @@ costexplorer_get_usage_forecast <- function(TimePeriod, Metric, Granularity, Fil
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .costexplorer$get_usage_forecast_input(TimePeriod = TimePeriod, Metric = Metric, Granularity = Granularity, Filter = Filter, PredictionIntervalLevel = PredictionIntervalLevel)
+  input <- .costexplorer$get_usage_forecast_input(TimePeriod = TimePeriod, Metric = Metric, Granularity = Granularity, Filter = Filter, BillingViewArn = BillingViewArn, PredictionIntervalLevel = PredictionIntervalLevel)
   output <- .costexplorer$get_usage_forecast_output()
   config <- get_config()
   svc <- .costexplorer$service(config, op)

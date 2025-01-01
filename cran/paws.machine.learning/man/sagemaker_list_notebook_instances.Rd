@@ -2,7 +2,7 @@
 % Please edit documentation in R/sagemaker_operations.R
 \name{sagemaker_list_notebook_instances}
 \alias{sagemaker_list_notebook_instances}
-\title{Returns a list of the SageMaker notebook instances in the requester's
+\title{Returns a list of the SageMaker AI notebook instances in the requester's
 account in an Amazon Web Services Region}
 \usage{
 sagemaker_list_notebook_instances(
@@ -70,7 +70,7 @@ string.}
 specified git repository.}
 }
 \description{
-Returns a list of the SageMaker notebook instances in the requester's account in an Amazon Web Services Region.
+Returns a list of the SageMaker AI notebook instances in the requester's account in an Amazon Web Services Region.
 
 See \url{https://www.paws-r-sdk.com/docs/sagemaker_list_notebook_instances/} for full documentation.
 }

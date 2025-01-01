@@ -2,7 +2,7 @@
 % Please edit documentation in R/bedrockdataautomation_operations.R
 \name{bedrockdataautomation_list_blueprints}
 \alias{bedrockdataautomation_list_blueprints}
-\title{Lists all existing Amazon Bedrock Keystone Blueprints}
+\title{Lists all existing Amazon Bedrock Data Automation Blueprints}
 \usage{
 bedrockdataautomation_list_blueprints(
   blueprintArn = NULL,
@@ -27,7 +27,7 @@ bedrockdataautomation_list_blueprints(
 \item{projectFilter}{}
 }
 \description{
-Lists all existing Amazon Bedrock Keystone Blueprints
+Lists all existing Amazon Bedrock Data Automation Blueprints
 
 See \url{https://www.paws-r-sdk.com/docs/bedrockdataautomation_list_blueprints/} for full documentation.
 }

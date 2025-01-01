@@ -348,7 +348,9 @@ in the \emph{Amazon RDS User Guide}.
 
 This setting doesn't apply to RDS Custom DB instances.}
 
-\item{DatabaseInsightsMode}{Specifies the mode of Database Insights.}
+\item{DatabaseInsightsMode}{The mode of Database Insights to enable for the read replica.
+
+Currently, this setting is not supported.}
 
 \item{EnablePerformanceInsights}{Specifies whether to enable Performance Insights for the read replica.
 
@@ -539,6 +541,8 @@ in the \emph{Amazon Web Services Outposts User Guide}.}
 \item{AllocatedStorage}{The amount of storage (in gibibytes) to allocate initially for the read
 replica. Follow the allocation rules specified in
 \code{\link[=rds_create_db_instance]{create_db_instance}}.
+
+This setting isn't valid for RDS for SQL Server.
 
 Be sure to allocate enough storage for your read replica so that the
 create operation can succeed. You can also allocate additional storage

@@ -31,20 +31,9 @@ CreatedAt timestamp of the finding to the time at which the API is
 called. In all of these scenarios, the response is limited to 100
 results, and the maximum time period is limited to 90 days.
 
-This field accepts only the specified formats. Timestamps can end with
-\code{Z} or \verb{("+" / "-") time-hour [":" time-minute]}. The time-secfrac after
-seconds is limited to a maximum of 9 digits. The offset is bounded by
-+/-18:00. Here are valid timestamp formats with examples:
-\itemize{
-\item \code{YYYY-MM-DDTHH:MM:SSZ} (for example, \verb{2019-01-31T23:00:00Z})
-\item \code{YYYY-MM-DDTHH:MM:SS.mmmmmmmmmZ} (for example,
-\verb{2019-01-31T23:00:00.123456789Z})
-\item \code{YYYY-MM-DDTHH:MM:SS+HH:MM} (for example,
-\verb{2024-01-04T15:25:10+17:59})
-\item \code{YYYY-MM-DDTHH:MM:SS-HHMM} (for example, \verb{2024-01-04T15:25:10-1759})
-\item \code{YYYY-MM-DDTHH:MM:SS.mmmmmmmmm+HH:MM} (for example,
-\verb{2024-01-04T15:25:10.123456789+17:59})
-}}
+For more information about the validation and formatting of timestamp
+fields in Security Hub, see
+\href{https://docs.aws.amazon.com/securityhub/1.0/APIReference/Welcome.html#timestamps}{Timestamps}.}
 
 \item{EndTime}{An ISO 8601-formatted timestamp that indicates the end time of the
 requested finding history.
@@ -62,20 +51,9 @@ CreatedAt timestamp of the finding to the time at which the API is
 called. In all of these scenarios, the response is limited to 100
 results, and the maximum time period is limited to 90 days.
 
-This field accepts only the specified formats. Timestamps can end with
-\code{Z} or \verb{("+" / "-") time-hour [":" time-minute]}. The time-secfrac after
-seconds is limited to a maximum of 9 digits. The offset is bounded by
-+/-18:00. Here are valid timestamp formats with examples:
-\itemize{
-\item \code{YYYY-MM-DDTHH:MM:SSZ} (for example, \verb{2019-01-31T23:00:00Z})
-\item \code{YYYY-MM-DDTHH:MM:SS.mmmmmmmmmZ} (for example,
-\verb{2019-01-31T23:00:00.123456789Z})
-\item \code{YYYY-MM-DDTHH:MM:SS+HH:MM} (for example,
-\verb{2024-01-04T15:25:10+17:59})
-\item \code{YYYY-MM-DDTHH:MM:SS-HHMM} (for example, \verb{2024-01-04T15:25:10-1759})
-\item \code{YYYY-MM-DDTHH:MM:SS.mmmmmmmmm+HH:MM} (for example,
-\verb{2024-01-04T15:25:10.123456789+17:59})
-}}
+For more information about the validation and formatting of timestamp
+fields in Security Hub, see
+\href{https://docs.aws.amazon.com/securityhub/1.0/APIReference/Welcome.html#timestamps}{Timestamps}.}
 
 \item{NextToken}{A token for pagination purposes. Provide \code{NULL} as the initial value. In
 subsequent requests, provide the token included in the response to get

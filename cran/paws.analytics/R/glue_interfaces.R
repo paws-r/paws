@@ -1097,7 +1097,7 @@ NULL
 
 .glue$get_catalogs_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ParentCatalogId = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), Recursive = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
+  shape <- structure(list(ParentCatalogId = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), Recursive = structure(logical(0), tags = list(type = "boolean")), IncludeRoot = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
