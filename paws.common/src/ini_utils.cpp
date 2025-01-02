@@ -1,14 +1,15 @@
-#include <iostream>
+#include <cstdio>
+#include <cstdlib>
 #include <vector>
 #include <string>
-#include <fstream>
-#include <Rcpp.h>
-#include <cctype>
+#include <iostream>
 #include <algorithm> // for std::isspace, std::remove_if
+#include <cctype>
+#include <Rcpp.h>
 
 using namespace Rcpp;
 
-// Helper function to trim trailing and leading whitespace and check if a line starts with the unwanted pattern
+// Function to process a line and check if it should be included
 bool processLine(std::string &line)
 {
   // Trim trailing whitespace
@@ -31,36 +32,35 @@ bool processLine(std::string &line)
   return !(*start == ';' || *start == '#');
 }
 
-// Function to read an ini file using standard file I/O and return its contents as a vector of strings
 // [[Rcpp::export]]
 std::vector<std::string> scan_ini_file(const std::string &filename)
 {
-  std::vector<std::string> fileLines;
-
-  // Open the file
-  std::ifstream file(filename);
-  if (!file.is_open())
+  FILE *file = fopen(filename.c_str(), "r");
+  if (!file)
   {
-    Rcpp::stop("Unable to find file: " + filename);
+    perror("Unable to open file");
+    return {}; // Return an empty vector on failure
   }
 
-  // Reserve space for lines to minimize reallocations (assuming an average line length of 80 characters)
-  fileLines.reserve(100); // Adjust this value based on the expected number of lines
-
-  // Read the file line by line
-  std::string line;
-  while (std::getline(file, line))
+  std::vector<std::string> lines;
+  char buffer[256];
+  while (fgets(buffer, sizeof(buffer), file))
   {
+    std::string line(buffer);
+    // Remove the newline character at the end, if it exists
+    if (!line.empty() && line.back() == '\n')
+    {
+      line.erase(line.length() - 1);
+    }
+    // Process the line to check if it should be included
     if (processLine(line))
     {
-      fileLines.push_back(line);
+      lines.emplace_back(line);
     }
   }
 
-  // Close the file
-  file.close();
-
-  return fileLines;
+  fclose(file);
+  return lines;
 }
 
 // Helper function to trim leading and trailing whitespace characters from a string
