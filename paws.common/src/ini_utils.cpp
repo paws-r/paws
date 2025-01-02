@@ -38,8 +38,7 @@ std::vector<std::string> scan_ini_file(const std::string &filename)
   FILE *file = fopen(filename.c_str(), "r");
   if (!file)
   {
-    perror("Unable to open file");
-    return {}; // Return an empty vector on failure
+    Rcpp::stop("Can't load the INI file: " + filename);
   }
 
   std::vector<std::string> lines;
