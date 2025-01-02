@@ -5,20 +5,22 @@
 
 using namespace Rcpp;
 
-
 // Sort character vector
 // param str A character vector to be sorted
 //' @useDynLib paws.common _paws_common_char_sort
 //' @importFrom Rcpp evalCpp
 // [[Rcpp::export]]
-CharacterVector char_sort(CharacterVector str) {
- IntegerVector idx = seq_along(str) - 1;
- std::sort(idx.begin(), idx.end(), [&](int i, int j){return str[i] < str[j];});
- return str[idx];
+CharacterVector char_sort(CharacterVector str)
+{
+  IntegerVector idx = seq_along(str) - 1;
+  std::sort(idx.begin(), idx.end(), [&](int i, int j)
+            { return str[i] < str[j]; });
+  return str[idx];
 }
 
 // Optimized UUID v4 generator function
-std::string generate_uuid_v4() {
+std::string generate_uuid_v4()
+{
   // Singleton random engine and distribution to avoid reinitialization overhead
   static thread_local std::random_device rd;  // Seed for random number generator
   static thread_local std::mt19937 gen(rd()); // Mersenne twister engine
@@ -33,7 +35,7 @@ std::string generate_uuid_v4() {
   uint32_t f = dis(gen);
 
   // Use a fixed-size character array for the UUID string
-  std::array<char, 42> uuid;
+  std::array<char, 40> uuid;
 
   // Format the UUID components into the character array
   std::snprintf(uuid.data(), uuid.size(),
@@ -44,18 +46,18 @@ std::string generate_uuid_v4() {
 }
 
 // Creates uuid v4
-// Developed from: https://github.com/rkg82/uuid-v4
 // param n A integer, number of uuid v4 to generate.
 //' @useDynLib paws.common _paws_common_uuid_v4
 //' @importFrom Rcpp evalCpp
 //  [[Rcpp::export]]
-CharacterVector uuid_v4(size_t n = 1) {
+CharacterVector uuid_v4(size_t n = 1)
+{
   CharacterVector uuids(n);
 
-  for (size_t i = 0; i < n; ++i) {
+  for (size_t i = 0; i < n; ++i)
+  {
     uuids[i] = generate_uuid_v4();
   }
 
   return uuids;
 }
-
