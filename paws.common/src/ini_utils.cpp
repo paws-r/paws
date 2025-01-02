@@ -1,95 +1,129 @@
-#include <Rcpp.h>
+#include <iostream>
+#include <vector>
 #include <string>
+#include <fstream>
+#include <Rcpp.h>
+#include <cctype>
+#include <algorithm> // for std::isspace, std::remove_if
 
 using namespace Rcpp;
 
-// Function to trim trailing whitespace from a string
-std::string rtrim(const std::string& s) {
-  size_t end = s.find_last_not_of(" \t\n\r\f\v");
-  return (end == std::string::npos) ? "" : s.substr(0, end + 1);
+// Helper function to trim trailing and leading whitespace and check if a line starts with the unwanted pattern
+bool processLine(std::string &line)
+{
+  // Trim trailing whitespace
+  line.erase(std::find_if_not(line.rbegin(), line.rend(), [](unsigned char ch)
+                              { return std::isspace(ch); })
+                 .base(),
+             line.end());
+
+  // Trim leading whitespace
+  auto start = std::find_if_not(line.begin(), line.end(), [](unsigned char ch)
+                                { return std::isspace(ch); });
+
+  // Line is empty or only whitespace
+  if (start == line.end())
+  {
+    return false;
+  }
+
+  // Check for ';' or '#'
+  return !(*start == ';' || *start == '#');
 }
 
+// Function to read an ini file using standard file I/O and return its contents as a vector of strings
 // [[Rcpp::export]]
-Rcpp::CharacterVector rtrim_whitespace(Rcpp::CharacterVector vec) {
-  Rcpp::CharacterVector result(vec.size());
+std::vector<std::string> scan_ini_file(const std::string &filename)
+{
+  std::vector<std::string> fileLines;
 
-  for (size_t i = 0; i < vec.size(); ++i) {
-    std::string line = Rcpp::as<std::string>(vec[i]);
-    result[i] = rtrim(line);
+  // Open the file
+  std::ifstream file(filename);
+  if (!file.is_open())
+  {
+    Rcpp::stop("Unable to find file: " + filename);
   }
 
-  return result;
-}
+  // Reserve space for lines to minimize reallocations (assuming an average line length of 80 characters)
+  fileLines.reserve(100); // Adjust this value based on the expected number of lines
 
-// Function to check if a line starts with specified patterns
-bool startsWithPattern(const std::string& line) {
-  size_t i = 0;
-  // Skip leading whitespace
-  while (i < line.size() && std::isspace(line[i])) {
-    i++;
-  }
-  // Check for specific patterns
-  return (i < line.size() && (line[i] == ';' || line[i] == '#'));
-}
-
-
-// [[Rcpp::export]]
-Rcpp::LogicalVector identify_comments(Rcpp::CharacterVector vec) {
-  Rcpp::LogicalVector result(vec.size());
-
-  for (size_t i = 0; i < vec.size(); ++i) {
-    std::string line = Rcpp::as<std::string>(vec[i]);
-    result[i] = startsWithPattern(line);
-  }
-
-  return result;
-}
-
-// Function to trim leading and trailing whitespace characters
-std::string trim(const std::string& str) {
-  size_t start = 0;
-  // Find the first non-whitespace character
-  while (start < str.size() && std::isspace(str[start])) {
-    ++start;
-  }
-
-  // If the string is entirely whitespace, return an empty string
-  if (start == str.size()) {
-    return "";
-  }
-
-  size_t end = str.size() - 1;
-  // Find the last non-whitespace character
-  while (end > start && std::isspace(str[end])) {
-    --end;
-  }
-
-  // Return the substring that excludes leading and trailing whitespace
-  return str.substr(start, end - start + 1);
-}
-
-// Function to remove square brackets and all outer whitespaces
-std::string removeBracketsAndTrim(const std::string& str) {
-  std::string result;
-  result.reserve(str.size()); // Reserve space to avoid multiple allocations
-
-  for (char ch : str) {
-    // Check if the character is not a square bracket
-    if (ch != '[' && ch != ']') {
-      result += ch;
+  // Read the file line by line
+  std::string line;
+  while (std::getline(file, line))
+  {
+    if (processLine(line))
+    {
+      fileLines.push_back(line);
     }
   }
 
-  // Trim leading and trailing whitespace from the result
-  return trim(result);
+  // Close the file
+  file.close();
+
+  return fileLines;
+}
+
+// Helper function to trim leading and trailing whitespace characters from a string
+std::string trim(const std::string &str)
+{
+  size_t start = 0;
+  size_t end = str.size();
+
+  // Find the first non-whitespace character
+  while (start < end && std::isspace(str[start]))
+  {
+    ++start;
+  }
+
+  // Find the last non-whitespace character
+  while (end > start && std::isspace(str[end - 1]))
+  {
+    --end;
+  }
+
+  return str.substr(start, end - start);
+}
+
+// Function to remove square brackets and all outer whitespaces
+std::string removeBracketsAndTrim(const std::string &str)
+{
+  size_t start = 0;
+  size_t end = str.size();
+
+  // Skip leading whitespace
+  while (start < end && std::isspace(str[start]))
+  {
+    ++start;
+  }
+
+  // Skip trailing whitespace
+  while (end > start && std::isspace(str[end - 1]))
+  {
+    --end;
+  }
+
+  // Remove square brackets if present
+  if (start < end && str[start] == '[')
+  {
+    ++start;
+  }
+  if (end > start && str[end - 1] == ']')
+  {
+    --end;
+  }
+
+  // Trim the internal whitespace again
+  return trim(str.substr(start, end - start));
 }
 
 // [[Rcpp::export]]
-std::vector<std::string> process_profile_name(const std::vector<std::string>& vec) {
+std::vector<std::string> process_profile_name(const std::vector<std::string> &vec)
+{
   std::vector<std::string> modifiedVec;
   modifiedVec.reserve(vec.size());
 
-  for (const auto& str : vec) {
+  for (const auto &str : vec)
+  {
     std::string modified = removeBracketsAndTrim(str);
     modifiedVec.push_back(modified);
   }

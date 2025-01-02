@@ -77,3 +77,9 @@ test_that("Check cache", {
   content2 <- read_ini("data_ini")
   expect_equal(content1, content2)
 })
+
+test_that("Check empty ini file", {
+  paws_reset_cache()
+  content <- read_ini("empty_ini")
+  expect_equal(content, list())
+})

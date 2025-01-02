@@ -9,27 +9,17 @@ extract_ini_parameter <- function(items) {
 }
 
 read_ini <- function(file_name) {
-  if (!file.exists(file_name)) {
-    stopf("Unable to find file: %s", file_name)
-  }
-
   if (!is.null(profiles <- ini_cache[[file_name]])) {
     return(profiles)
   }
 
-  content <- rtrim_whitespace(
-    scan(file_name, what = "", sep = "\n", quiet = TRUE)
-  )
+  content <- scan_ini_file(file_name)
 
   # Return empty list for empty files
   if (length(content) == 0) {
     ini_cache[[file_name]] <- list()
     return(ini_cache[[file_name]])
   }
-
-  # Remove ini comments
-  comments <- which(identify_comments(content))
-  if (length(comments) > 0) content <- content[-comments]
 
   # Get Profile names
   found <- which(startsWith(content, "[") + endsWith(content, "]") == 2)

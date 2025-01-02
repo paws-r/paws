@@ -7,12 +7,8 @@ paws_url_encoder <- function(urls, safe = "") {
     .Call('_paws_common_paws_url_encoder', PACKAGE = 'paws.common', urls, safe)
 }
 
-rtrim_whitespace <- function(vec) {
-    .Call('_paws_common_rtrim_whitespace', PACKAGE = 'paws.common', vec)
-}
-
-identify_comments <- function(vec) {
-    .Call('_paws_common_identify_comments', PACKAGE = 'paws.common', vec)
+scan_ini_file <- function(filename) {
+    .Call('_paws_common_scan_ini_file', PACKAGE = 'paws.common', filename)
 }
 
 process_profile_name <- function(vec) {

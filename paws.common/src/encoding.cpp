@@ -3,9 +3,9 @@
 
 #include <Rcpp.h>
 #include <unordered_set>
-#include <string_view>
 #include <vector>
 #include <bitset>
+#include <string>
 
 using namespace Rcpp;
 
@@ -29,7 +29,7 @@ inline std::string to_hex(char x) {
   return output;
 }
 
-std::string internal_url_encode(std::string_view url, std::string_view safe) {
+std::string internal_url_encode(const std::string& url, const std::string& safe) {
   // Create a bitset for additional safe characters
   std::bitset<256> safe_chars_map = unreserved_chars_map;
   for (char ch : safe) {
