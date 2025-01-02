@@ -35,7 +35,7 @@ std::string generate_uuid_v4()
   uint32_t f = dis(gen);
 
   // Use a fixed-size character array for the UUID string
-  std::array<char, 40> uuid;
+  std::array<char, 42> uuid;
 
   // Format the UUID components into the character array
   std::snprintf(uuid.data(), uuid.size(),
