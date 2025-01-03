@@ -202,16 +202,16 @@ sanitize_host_for_header <- function(http_request) {
   host <- get_host(http_request)
   port <- get_port(host)
   if (port != "" && is_default_port(http_request$url$scheme, port)) {
-    http_request$host <- strip_port(host)
+    http_request[["host"]] <- strip_port(host)
   }
   return(http_request)
 }
 
 # Return the host from an HTTP request.
 get_host <- function(http_request) {
-  host <- http_request$host
+  host <- http_request[["host"]]
   if (host == "") {
-    host <- http_request$url$host
+    host <- http_request$url[["host"]]
   }
   return(host)
 }
