@@ -80,7 +80,7 @@ new_http_request <- function(method, url, body = NULL, close = FALSE, connect_ti
     proto_minor = 1,
     header = header,
     body = body,
-    host = u$host,
+    host = u[["host"]],
     close = close,
     connect_timeout = connect_timeout,
     timeout = timeout,

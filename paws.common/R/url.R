@@ -79,8 +79,8 @@ paws_url_parse <- function(url) {
 # Build a URL from a Url object.
 # <scheme>://<net_loc>/<path>;<params>?<query>#<fragment>
 build_url <- function(url) {
-  if (nzchar(url$scheme) && nzchar(url$host)) {
-    l <- paste0(url$scheme, "://", url$host)
+  if (nzchar(url$scheme) && nzchar(url[["host"]])) {
+    l <- paste0(url$scheme, "://", url[["host"]])
   } else {
     return("")
   }
@@ -88,8 +88,8 @@ build_url <- function(url) {
     if (nzchar(x)) paste0(prefix, x)
   }
   l <- paste0(
-    l, if (nzchar(url$raw_path)) url$raw_path else url$path,
-    prefix("?", url$raw_query), prefix("#", url$fragment)
+    l, if (nzchar(url[["raw_path"]])) url[["raw_path"]] else url[["path"]],
+    prefix("?", url[["raw_query"]]), prefix("#", url$fragment)
   )
   return(l)
 }
