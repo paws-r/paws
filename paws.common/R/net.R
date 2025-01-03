@@ -138,7 +138,7 @@ request_aws <- function(url, http_request) {
   req$method <- http_request$method
   req$headers <- http_request$header
   req$policies$error_is_error <- function(resp) FALSE
-  if (!is.null(http_request$body)) {
+  if (!is.null(http_request$body) && http_request$method != "HEAD") {
     req$body <- list(data = http_request$body, type = "raw", content_type = "", params = list())
   }
   req <- req_options(
