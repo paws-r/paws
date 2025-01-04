@@ -69,13 +69,12 @@ dns_compatible_bucket_name <- function(bucket) {
 }
 
 move_bucket_to_host <- function(url, bucket) {
-  url$host <- paste0(bucket, ".", url$host)
-  url$path <- gsub("/\\{Bucket\\}", "", url$path)
+  url[["host"]] <- paste0(bucket, ".", url[["host"]])
+  url[["path"]] <- gsub("/\\{Bucket\\}", "", url$path)
 
-  if (url$path == "") {
-    url$path <- "/"
+  if (url[["path"]] == "") {
+    url[["path"]] <- "/"
   }
-
   return(url)
 }
 
@@ -114,7 +113,7 @@ update_endpoint_for_s3_config <- function(request) {
   }
 
   if (is_access_point(bucket_name)) {
-    request$http_request$url$host <- get_access_point_endpoint(bucket_name)
+    request$http_request$url[["host"]] <- get_access_point_endpoint(bucket_name)
     request$http_request$url <- remove_bucket_from_url(request$http_request$url)
     return(request)
   }
@@ -442,7 +441,7 @@ set_request_url <- function(original_endpoint,
   final_endpoint_components <- parse_url(original_endpoint)
   scheme <- final_endpoint_components$scheme
   if (use_new_scheme) {
-    scheme <- new_endpoint_components$scheme
+    scheme <- new_endpoint_components[["scheme"]]
   }
   path <- (
     if (final_endpoint_components[["path"]] == "/") "" else final_endpoint_components[["path"]]
@@ -450,8 +449,7 @@ set_request_url <- function(original_endpoint,
   final_endpoint_components[["host"]] <- new_endpoint_components$host
   final_endpoint_components[["scheme"]] <- scheme
   final_endpoint_components[["path"]] <- path
-  final_endpoint <- build_url(final_endpoint_components)
-  return(final_endpoint)
+  return(build_url(final_endpoint_components))
 }
 
 ################################################################################

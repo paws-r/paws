@@ -378,10 +378,10 @@ build_canonical_headers <- function(ctx, header, ignored_headers) {
   header_values <- c()
   for (key in headers) {
     if (key == "host") {
-      if (ctx$request$host != "") {
-        header_value <- paste0("host:", ctx$request$host)
+      if (ctx$request[["host"]] != "") {
+        header_value <- paste0("host:", ctx$request[["host"]])
       } else {
-        header_value <- paste0("host:", ctx$request$url$host)
+        header_value <- paste0("host:", ctx$request$url[["host"]])
       }
     } else {
       value <- ctx$signed_header_vals[[key]]
