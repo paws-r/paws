@@ -54,3 +54,8 @@ test_that("check if json string is converted correctly", {
   string <- paste0(c(letters, LETTERS, intToUtf8(1:31, multiple = TRUE), "\\", '"', "\b", "\f", "\r", "\t", "\n"), collapse = "")
   expect_equal(json_convert_string(string), expect)
 })
+
+test_that("check encoding and unencoding", {
+  expect <- "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._~`!@#$%^&*()=+[{]}\\|;:'\",<>/? "
+  expect_equal(paws_url_unencoder(escape(expect, "encodePath")), expect)
+})

@@ -7,6 +7,10 @@ paws_url_encoder <- function(urls, safe = "") {
     .Call('_paws_common_paws_url_encoder', PACKAGE = 'paws.common', urls, safe)
 }
 
+paws_url_unencoder <- function(urls) {
+    .Call('_paws_common_paws_url_unencoder', PACKAGE = 'paws.common', urls)
+}
+
 scan_ini_file <- function(filename) {
     .Call('_paws_common_scan_ini_file', PACKAGE = 'paws.common', filename)
 }
@@ -37,6 +41,18 @@ endpoint_unescape <- function(endpoint, region) {
 #' @importFrom Rcpp evalCpp
 get_region_pattern <- function(region_pattern, region) {
     .Call('_paws_common_get_region_pattern', PACKAGE = 'paws.common', region_pattern, region)
+}
+
+parse_query_string <- function(query) {
+    .Call('_paws_common_parse_query_string', PACKAGE = 'paws.common', query)
+}
+
+parse_url <- function(url) {
+    .Call('_paws_common_parse_url', PACKAGE = 'paws.common', url)
+}
+
+build_url <- function(url_components) {
+    .Call('_paws_common_build_url', PACKAGE = 'paws.common', url_components)
 }
 
 #' @useDynLib paws.common _paws_common_char_sort

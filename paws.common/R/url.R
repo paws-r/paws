@@ -8,6 +8,7 @@ Url <- struct(
   scheme = "",
   opaque = "",
   user = "",
+  password = "",
   host = "",
   path = "",
   raw_path = "",
@@ -15,84 +16,6 @@ Url <- struct(
   raw_query = "",
   fragment = ""
 )
-
-# Parse a URL into a Url object.
-# TODO: Finish.
-parse_url <- function(url) {
-  p <- paws_url_parse(url)
-  if (is.null(p$hostname)) p$hostname <- ""
-  if (!is.null(p$port)) p$hostname <- paste0(p$hostname, ":", p$port)
-  raw_path <- p$path
-  if (is.null(raw_path)) {
-    raw_path <- "/"
-  } else if (substr(raw_path, 1, 1) != "/") raw_path <- paste0("/", raw_path)
-  path <- unescape(raw_path)
-  escaped_path <- escape(raw_path, "encodePath")
-  if (escaped_path == raw_path) raw_path <- ""
-  u <- Url(
-    scheme = p$scheme %||% "",
-    host = p$hostname,
-    path = path,
-    raw_path = raw_path,
-    raw_query = build_query_string(p$query),
-  )
-  return(u)
-}
-
-# Developed from httr2:
-# https://github.com/r-lib/httr2/blob/main/R/url.R#L26-L67
-paws_url_parse <- function(url) {
-  pieces <- str_match(url, "^(([^:/?#]+):)?(//([^/?#]*))?([^?#]*)(\\?([^#]*))?(#(.*))?")
-  scheme <- pieces[[2]]
-  authority <- pieces[[4]]
-  path <- pieces[[5]]
-  query <- pieces[[7]]
-  if (!is.null(query)) {
-    query <- parse_query_string(query)
-  }
-  fragment <- pieces[[9]]
-  pieces <- str_match(authority %||% "", "^(([^@]+)@)?([^:]+)?(:([^#]+))?")
-  userinfo <- pieces[[2]]
-  if (!is.null(userinfo)) {
-    if (grepl(":", userinfo)) {
-      userinfo <- parse_in_half(userinfo, ":")
-    } else {
-      userinfo <- list(userinfo, NULL)
-    }
-  }
-  hostname <- pieces[[3]]
-  port <- pieces[[5]]
-  return(
-    list(
-      scheme = scheme,
-      hostname = hostname,
-      port = port,
-      path = path,
-      query = query,
-      fragment = fragment,
-      username = userinfo[[1]],
-      password = userinfo[[2]]
-    )
-  )
-}
-
-# Build a URL from a Url object.
-# <scheme>://<net_loc>/<path>;<params>?<query>#<fragment>
-build_url <- function(url) {
-  if (nzchar(url$scheme) && nzchar(url[["host"]])) {
-    l <- paste0(url$scheme, "://", url[["host"]])
-  } else {
-    return("")
-  }
-  prefix <- function(prefix, x) {
-    if (nzchar(x)) paste0(prefix, x)
-  }
-  l <- paste0(
-    l, if (nzchar(url[["raw_path"]])) url[["raw_path"]] else url[["path"]],
-    prefix("?", url[["raw_query"]]), prefix("#", url$fragment)
-  )
-  return(l)
-}
 
 # helper function to filter out empty elements within build_query_string
 query_empty <- function(params) {
@@ -126,19 +49,6 @@ build_query_string <- function(params) {
   return(paste(params[char_sort(param_names)], collapse = "&"))
 }
 
-# Decode a query string into a list.
-# e.g. `parse_query_string("bar=baz&foo=qux")` -> `list(bar = "baz", foo = "qux")`
-parse_query_string <- function(query) {
-  query <- gsub("^\\?", "", query)
-  params <- parse_in_half(strsplit(query, "&")[[1]], "=")
-  if (length(params) == 0) {
-    return(list())
-  }
-  out <- as.list(curl::curl_unescape(params[, 2]))
-  names(out) <- curl::curl_unescape(params[, 1])
-  return(out)
-}
-
 # Add the key/value pairs in `params` to a query string in `query_string`,
 # and return a new query string. Keys in the query string that are also in
 # params will be overwritten with the new value from params.
@@ -151,39 +61,16 @@ update_query_string <- function(query_string, params) {
 
 # Escape strings so they can be safely included in a URL.
 escape <- function(string, mode) {
-  # Ensure anything going to paws_url_encoder is a string
-  string <- as.character(string)
-  # base characters that won't be encoded
-  if (mode == "encodeHost" || mode == "encodeZone") {
-    # host and zone characters that won't be encoded
-    host_zone_pattern <- "][!$&'()*+,;=:<>\""
-    return(
-      paws_url_encoder(string, host_zone_pattern)
-    )
-  }
-  # path and path segment characters that won't be encoded
-  path_pattern <- "$&+,/;:=?@"
-
-  if (mode == "encodePath") {
-    # remove character ? from pattern so that it can be encoded
-    rm_pattern <- "[?]"
-    pattern <- gsub(rm_pattern, "", path_pattern)
-    return(paws_url_encoder(string, pattern))
-  }
-  if (mode == "encodePathSegment") {
-    # remove character /;,? from pattern so that it can be encoded
-    rm_pattern <- "[/;,?]"
-    pattern <- gsub(rm_pattern, "", path_pattern)
-    return(paws_url_encoder(string, pattern))
-  }
-  if (mode == "encodeQueryComponent") {
-    # escape string using base_url_encode
-    return(paws_url_encoder(string))
-  }
-  if (mode == "encodeFragment") {
-    return(paws_url_encoder(string, path_pattern))
-  }
-  return(paws_url_encoder(string))
+  safe_pattern <- switch(mode,
+    "encodeHost" = "][!$&'()*+,;=:<>\"",
+    "encodeZone" = "][!$&'()*+,;=:<>\"",
+    "encodeFragment" = "$&+,/;:=?@",
+    "encodePath" = "$&+,/;:=@",
+    "encodePathSegment" = "$&+:=@",
+    "encodeQueryComponent" = "",
+    ""
+  )
+  return(paws_url_encoder(as.character(string), safe_pattern))
 }
 
 # Un-escape a string.

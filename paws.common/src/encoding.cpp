@@ -1,11 +1,8 @@
 // This encoder has been modified from the excellent urltools R package
 // https://github.com/Ironholds/urltools/blob/master/src/encoding.cpp
 
+#include "encoding.h"
 #include <Rcpp.h>
-#include <unordered_set>
-#include <vector>
-#include <bitset>
-#include <string>
 
 using namespace Rcpp;
 
@@ -13,26 +10,23 @@ using namespace Rcpp;
 const char hex_chars[] = "0123456789ABCDEF";
 
 // Precomputed unreserved characters lookup table
-const std::bitset<256> unreserved_chars_map = [] {
+const std::bitset<256> unreserved_chars_map = []
+{
   std::bitset<256> bitset;
   std::string unreserved_chars = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ._~-";
-  for (char ch : unreserved_chars) {
+  for (char ch : unreserved_chars)
+  {
     bitset.set(static_cast<unsigned char>(ch));
   }
   return bitset;
 }();
 
-inline std::string to_hex(char x) {
-  std::string output;
-  output.push_back(hex_chars[(x & 0xF0) >> 4]);
-  output.push_back(hex_chars[x & 0x0F]);
-  return output;
-}
-
-std::string internal_url_encode(const std::string& url, const std::string& safe) {
+std::string internal_url_encode(const std::string &url, const std::string &safe)
+{
   // Create a bitset for additional safe characters
   std::bitset<256> safe_chars_map = unreserved_chars_map;
-  for (char ch : safe) {
+  for (char ch : safe)
+  {
     safe_chars_map.set(static_cast<unsigned char>(ch));
   }
 
@@ -41,11 +35,15 @@ std::string internal_url_encode(const std::string& url, const std::string& safe)
   output.reserve(url.size() * 3); // Assume worst case where all characters are encoded
 
   // For each character
-  for (char ch : url) {
+  for (char ch : url)
+  {
     // If it's in the list of unreserved ones, just pass it through
-    if (safe_chars_map.test(static_cast<unsigned char>(ch))) {
+    if (safe_chars_map.test(static_cast<unsigned char>(ch)))
+    {
       output.push_back(ch);
-    } else {
+    }
+    else
+    {
       // Otherwise, append in an encoded form
       output.push_back('%');
       output.append(to_hex(ch));
@@ -56,33 +54,95 @@ std::string internal_url_encode(const std::string& url, const std::string& safe)
   return output;
 }
 
+std::string internal_url_unencode(const std::string &url)
+{
+  std::string unescaped;
+  unescaped.reserve(url.size()); // Reserve memory to avoid reallocations
+  size_t length = url.length();
+
+  for (size_t i = 0; i < length; ++i)
+  {
+    if (url[i] == '%' && i + 2 < length)
+    {
+      int high = from_hex(url[i + 1]);
+      int low = from_hex(url[i + 2]);
+      if (high != -1 && low != -1)
+      {
+        unescaped.push_back(static_cast<char>((high << 4) | low));
+        i += 2;
+      }
+      else
+      {
+        unescaped.push_back('%'); // Invalid percent encoding, keep as is
+      }
+    }
+    else
+    {
+      unescaped.push_back(url[i]); // Keep other characters as is
+    }
+  }
+  return unescaped;
+}
+
 // Escape characters for use in URLs.
 // param urls A character vector to be encoded
 // param safe A characters of extra that should not be encoded
 //' @useDynLib paws.common _paws_common_paws_url_encoder
 //' @importFrom Rcpp evalCpp
 // [[Rcpp::export]]
-CharacterVector paws_url_encoder(CharacterVector urls, CharacterVector safe = "") {
- // Measure size, create output object and holding objects
- int input_size = urls.size();
- CharacterVector output(input_size);
- std::string safe_pattern = Rcpp::as<std::string>(safe);
+CharacterVector paws_url_encoder(CharacterVector urls, CharacterVector safe = "")
+{
+  // Measure size, create output object and holding objects
+  int input_size = urls.size();
+  CharacterVector output(input_size);
+  std::string safe_pattern = Rcpp::as<std::string>(safe);
 
- // For each string
- for (int i = 0; i < input_size; ++i) {
-   // Check for user interrupts
-   if ((i % 10000) == 0) {
-     Rcpp::checkUserInterrupt();
-   }
+  // For each string
+  for (int i = 0; i < input_size; ++i)
+  {
+    // Check for user interrupts
+    if ((i % 10000) == 0)
+    {
+      Rcpp::checkUserInterrupt();
+    }
 
-   if (urls[i] == NA_STRING) {
-     output[i] = NA_STRING;
-   } else {
-     std::string holding = Rcpp::as<std::string>(urls[i]);
-     output[i] = internal_url_encode(holding, safe_pattern);
-   }
- }
+    if (urls[i] == NA_STRING)
+    {
+      output[i] = NA_STRING;
+    }
+    else
+    {
+      std::string holding = Rcpp::as<std::string>(urls[i]);
+      output[i] = internal_url_encode(holding, safe_pattern);
+    }
+  }
 
- // Return
- return output;
+  // Return
+  return output;
+}
+
+// Escape all special characters (i.e. everything except for a-z, A-Z, 0-9, '-', '.', '_' or '~') for use in URLs.
+// [[Rcpp::export]]
+CharacterVector paws_url_unencoder(CharacterVector urls)
+{
+  int input_size = urls.size();
+  CharacterVector output(input_size);
+
+  for (int i = 0; i < input_size; ++i)
+  {
+    if (urls[i] == NA_STRING)
+    {
+      output[i] = NA_STRING;
+    }
+    else
+    {
+      output[i] = internal_url_unencode(Rcpp::as<std::string>(urls[i]));
+    }
+    if ((i % 10000) == 0)
+    {
+      Rcpp::checkUserInterrupt();
+    }
+  }
+
+  return output;
 }
