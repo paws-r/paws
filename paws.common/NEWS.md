@@ -6,6 +6,7 @@
 * migrate backend `httr` to `httr2`
 * new `PawsStreamHandler`, allows paws to handle aws stream event (#842). Thankyou to @hadley for developing the initial solution in `httr2`.
 * deprecated custom handler for `s3_unmarshal_select_object_content`
+* migrate `parse_url`, `parse_query_string` and `build_url` to `cpp` for performance improvement.
 
 # paws.common 0.7.7
 * fix unix time expiration check
