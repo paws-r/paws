@@ -36,24 +36,24 @@ client <- bedrockruntime(region = "us-east-1")
 model_id <- "amazon.titan-text-premier-v1:0"
 
 # Start a conversation with the user message.
-user_message = "Describe the purpose of a 'hello world' program in one line."
+user_message <- "Describe the purpose of a 'hello world' program in one line."
 conversation <- list(
   list(
     role = "user",
-    content = list(list(text=user_message))
+    content = list(list(text = user_message))
   )
 )
 
 resp <- client$converse_stream(
   modelId = model_id,
   messages = conversation,
-  inferenceConfig = list(maxTokens=512, temperature=0.5, topP=0.9)
+  inferenceConfig = list(maxTokens = 512, temperature = 0.5, topP = 0.9)
 )
 resp$stream(\(chunk) chunk$contentBlockDelta$delta$text)
 
 # Or handle stream utilising paws_stream_parser
-while(!is.null(event <- paws_stream_parser(con))) {
-   print(chunk$contentBlockDelta$delta$text)
+while (!is.null(event <- paws_stream_parser(con))) {
+  print(chunk$contentBlockDelta$delta$text)
 }
 
 # or return httr2 resp_perform_connection
@@ -63,6 +63,5 @@ while (!is.null(event <- resp_stream_aws(con))) {
   str(event)
 }
 close(con)
-
 }
 }

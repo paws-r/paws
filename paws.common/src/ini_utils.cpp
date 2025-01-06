@@ -32,6 +32,21 @@ bool processLine(std::string &line)
   return !(*start == ';' || *start == '#');
 }
 
+/**
+ * @brief Reads an INI file and returns a vector of non-comment, non-empty lines.
+ *
+ * This function opens the specified INI file, reads it line by line, and processes each line to remove
+ * leading and trailing whitespace. Lines that are empty or start with a comment character (';' or '#')
+ * are excluded from the result.
+ *
+ * @param filename The path to the INI file to be read.
+ *
+ * @return A vector of strings containing the non-comment, non-empty lines from the INI file.
+ *
+ * @throws Rcpp::exception if the file cannot be opened.
+ */
+//' @useDynLib paws.common _paws_common_scan_ini_file
+//' @importFrom Rcpp evalCpp
 // [[Rcpp::export]]
 std::vector<std::string> scan_ini_file(const std::string &filename)
 {
@@ -115,6 +130,19 @@ std::string removeBracketsAndTrim(const std::string &str)
   return trim(str.substr(start, end - start));
 }
 
+/**
+ * @brief Processes a vector of strings to remove square brackets and trim whitespace.
+ *
+ * This function takes a vector of strings, removes any leading and trailing whitespace,
+ * and removes square brackets ('[' and ']') from each string. The processed strings are
+ * returned in a new vector.
+ *
+ * @param vec A vector of strings to be processed.
+ *
+ * @return A vector of strings with square brackets removed and whitespace trimmed.
+ */
+//' @useDynLib paws.common _paws_common_process_profile_name
+//' @importFrom Rcpp evalCpp
 // [[Rcpp::export]]
 std::vector<std::string> process_profile_name(const std::vector<std::string> &vec)
 {

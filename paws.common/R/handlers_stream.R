@@ -22,24 +22,24 @@
 #' model_id <- "amazon.titan-text-premier-v1:0"
 #'
 #' # Start a conversation with the user message.
-#' user_message = "Describe the purpose of a 'hello world' program in one line."
+#' user_message <- "Describe the purpose of a 'hello world' program in one line."
 #' conversation <- list(
 #'   list(
 #'     role = "user",
-#'     content = list(list(text=user_message))
+#'     content = list(list(text = user_message))
 #'   )
 #' )
 #'
 #' resp <- client$converse_stream(
 #'   modelId = model_id,
 #'   messages = conversation,
-#'   inferenceConfig = list(maxTokens=512, temperature=0.5, topP=0.9)
+#'   inferenceConfig = list(maxTokens = 512, temperature = 0.5, topP = 0.9)
 #' )
 #' resp$stream(\(chunk) chunk$contentBlockDelta$delta$text)
 #'
 #' # Or handle stream utilising paws_stream_parser
-#' while(!is.null(event <- paws_stream_parser(con))) {
-#'    print(chunk$contentBlockDelta$delta$text)
+#' while (!is.null(event <- paws_stream_parser(con))) {
+#'   print(chunk$contentBlockDelta$delta$text)
 #' }
 #'
 #' # or return httr2 resp_perform_connection
@@ -49,7 +49,6 @@
 #'   str(event)
 #' }
 #' close(con)
-#'
 #' }
 NULL
 
@@ -65,7 +64,7 @@ StreamHandler <- function(body, unmarshal, interface, metadata) {
       return(con)
     }
     result <- list()
-    while(!is.null(resp <- paws_stream_parser(con))) {
+    while (!is.null(resp <- paws_stream_parser(con))) {
       result[[length(result) + 1]] <- FUN(resp)
     }
     return(result)
@@ -75,7 +74,7 @@ StreamHandler <- function(body, unmarshal, interface, metadata) {
 }
 
 paws_con <- function(con, unmarshal, interface) {
-  con$paws_metadata <- list(unmarshal=unmarshal, interface=interface)
+  con$paws_metadata <- list(unmarshal = unmarshal, interface = interface)
   class(con) <- c("paws_connection", class(con))
   return(con)
 }
@@ -84,7 +83,8 @@ paws_con <- function(con, unmarshal, interface) {
 print.PawsStreamHandler <- function(x, ...) {
   metadata <- environment(x)$metadata
   op_name <- tolower(gsub("(.)([A-Z])", "\\1_\\2", metadata$operation_name))
-  msg <- sprintf(c(
+  msg <- sprintf(
+    c(
       "<PawsStreamHandler>",
       "Please check return object for: %1$s_%2$s",
       "https://www.paws-r-sdk.com/docs/%1$s_%2$s/"
@@ -108,12 +108,11 @@ paws_stream_parser <- function(con) {
     return(NULL)
   }
   return(eventstream_parser(
-      buffer,
-      unmarshal = con$paws_metadata$unmarshal,
-      interface = con$paws_metadata$interface,
-      boundary = boundary
-    )
-  )
+    buffer,
+    unmarshal = con$paws_metadata$unmarshal,
+    interface = con$paws_metadata$interface,
+    boundary = boundary
+  ))
 }
 
 ################ stream unmarshal ################
@@ -181,7 +180,7 @@ aws_boundary <- function(buffer) {
 
 # Modified from httr2:
 # https://github.com/r-lib/httr2/blob/e972770199f674eca4c64ca8161235e5745683dd/R/utils.R#L314C1-L326C2
-split_buffer <- function (buffer, split_at) {
+split_buffer <- function(buffer, split_at) {
   list(
     matched = slice(buffer, end = split_at),
     remaining = slice(buffer, start = split_at)
@@ -227,15 +226,14 @@ parse_aws_event <- function(bytes) {
 
   # Parse headers
   headers <- list()
-  while(i <= 12 + header_length) {
+  while (i <= 12 + header_length) {
     name_length <- parse_int8(read_bytes(1), 1)
     name <- rawToChar(read_bytes(name_length))
     type <- parse_int8(read_bytes(1), 1)
     delayedAssign("len", parse_int16(read_bytes(2), 2))
-    value <- switch(
-      type_enum(type),
-      'TRUE' = TRUE,
-      'FALSE' = FALSE,
+    value <- switch(type_enum(type),
+      "TRUE" = TRUE,
+      "FALSE" = FALSE,
       BYTE = parse_int8(read_bytes(1), 1),
       SHORT = parse_int16(read_bytes(2), 2),
       INTEGER = parse_int32(read_bytes(4), 4),
@@ -253,7 +251,7 @@ parse_aws_event <- function(bytes) {
 
   # validate the message checksum
   validate_checksum(
-    bytes[1:(total_length-4)], paste(read_bytes(4), collapse = "")
+    bytes[1:(total_length - 4)], paste(read_bytes(4), collapse = "")
   )
 
   list(
@@ -270,16 +268,16 @@ type_enum <- function(value) {
     stopf("Unsupported type %s.", value)
   }
   switch(value + 1,
-         "TRUE",
-         "FALSE",
-         "BYTE",
-         "SHORT",
-         "INTEGER",
-         "LONG",
-         "BYTE_ARRAY",
-         "CHARACTER",
-         "TIMESTAMP",
-         "UUID",
+    "TRUE",
+    "FALSE",
+    "BYTE",
+    "SHORT",
+    "INTEGER",
+    "LONG",
+    "BYTE_ARRAY",
+    "CHARACTER",
+    "TIMESTAMP",
+    "UUID",
   )
 }
 
@@ -296,16 +294,16 @@ parse_int64 <- function(x) {
   sum(bits[-1] * 2^(62:0)) - bits[[1]] * 2^63
 }
 
-parse_int32 <- function(x, len=length(x)) {
-  readBin(x, "integer", n=len, size=4, endian = "big")
+parse_int32 <- function(x, len = length(x)) {
+  readBin(x, "integer", n = len, size = 4, endian = "big")
 }
 
-parse_int16 <- function(x, len=length(x)) {
-  readBin(x, "integer", n=len, size=2, endian = "big")
+parse_int16 <- function(x, len = length(x)) {
+  readBin(x, "integer", n = len, size = 2, endian = "big")
 }
 
-parse_int8 <- function(x, len=length(x)) {
-  readBin(x, "integer", n=len, size=1, endian = "big")
+parse_int8 <- function(x, len = length(x)) {
+  readBin(x, "integer", n = len, size = 1, endian = "big")
 }
 
 hex_to_raw <- function(x) {
@@ -324,7 +322,7 @@ validate_checksum <- function(data, crc) {
   computed_checksum <- crc32(data)
   if (computed_checksum != crc) {
     stopf(
-      'Checksum mismatch: expected %s, calculated %s', crc, computed_checksum
+      "Checksum mismatch: expected %s, calculated %s", crc, computed_checksum
     )
   }
 }

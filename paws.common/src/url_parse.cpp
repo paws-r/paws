@@ -8,6 +8,21 @@
 
 using namespace Rcpp;
 
+/**
+ * @brief Parses a query string into a list of key-value pairs.
+ *
+ * @param query The query string to parse. It may start with a '?'.
+ *
+ * @return
+ * A list where each element is a key-value pair from the query string.
+ * If the query string is empty, an empty list is returned.
+ *
+ * @example
+ * parse_query_string("?key1=value1&key2=value2")
+ * // Returns: list(key1 = "value1", key2 = "value2")
+ */
+//' @useDynLib paws.common _paws_common_parse_query_string
+//' @importFrom Rcpp evalCpp
 // [[Rcpp::export]]
 List parse_query_string(std::string query)
 {
@@ -76,8 +91,17 @@ List parse_query_string(std::string query)
   return result;
 }
 
-// Encode a list into a query string.
-// # e.g. `list(bar = "baz", foo = "qux")` -> "bar=baz&foo=qux".
+/**
+ * @brief Encodes a list of key-value pairs into a query string.
+ *
+ * @param params A list where each element is a key-value pair to be encoded.
+ *
+ * @return A query string representing the key-value pairs.
+ *
+ * @example
+ * decode_query_string(list(bar = "baz", foo = "qux"))
+ * // Returns: "bar=baz&foo=qux"
+ */
 std::string decode_query_string(List params)
 {
   if (params.size() == 0)
@@ -223,38 +247,36 @@ public:
   }
 };
 
+/**
+ * Parses a URL string into its components.
+ *
+ * @param url The URL string to parse.
+ *
+ * @return
+ * A list containing the components of the URL: scheme, user, password, host, path, raw_path, force_query, raw_query, and fragment.
+ *
+ * @example
+ * parse_url("https://user:pass@host.com/path?query#fragment")
+ * // Returns: list(scheme = "https", user = "user", password = "pass", host = "host.com", path = "/path", raw_path = "", force_query = false, raw_query = "query", fragment = "fragment")
+ */
+//' @useDynLib paws.common _paws_common_parse_url
+//' @importFrom Rcpp evalCpp
 // [[Rcpp::export]]
 Rcpp::List parse_url(const std::string &url)
 {
   URL parsed_url = URLParser::parse(url);
-  std::string raw_path = parsed_url.path;
-  std::string path;
-  std::string escaped_path;
-  std::string raw_query;
-
-  // Ensure raw_path starts with "/"
-  if (raw_path.empty())
-  {
-    raw_path = "/";
-  }
-  else if (raw_path[0] != '/')
-  {
-    raw_path = "/" + raw_path;
-  }
-
-  path = internal_url_unencode(raw_path);
-  // escaped path: encodePath
-  escaped_path = internal_url_encode(raw_path, "$&+,/;:=@");
+  std::string raw_path = parsed_url.path.empty() ? "/" : parsed_url.path;
+  std::string path = internal_url_unencode(raw_path);
+  std::string escaped_path = internal_url_encode(raw_path, "$&+,/;:=@");
 
   if (escaped_path == raw_path)
   {
     raw_path = "";
   }
 
-  raw_query = decode_query_string(parse_query_string(parsed_url.raw_query));
+  std::string raw_query = decode_query_string(parse_query_string(parsed_url.raw_query));
 
-  Rcpp::List result;
-  result = Rcpp::List::create(
+  Rcpp::List result = Rcpp::List::create(
       Rcpp::Named("scheme") = parsed_url.scheme,
       Rcpp::Named("opaque") = "",
       Rcpp::Named("user") = parsed_url.user,
@@ -270,6 +292,19 @@ Rcpp::List parse_url(const std::string &url)
   return result;
 }
 
+/**
+ * @brief Builds a URL string from its components.
+ *
+ * @param url_components A list containing the components of the URL: scheme, user, password, host, path, raw_path, raw_query, and fragment.
+ *
+ * @return A URL string constructed from the provided components
+ *
+ * @example
+ * build_url(list(scheme = "https", user = "user", password = "pass", host = "host.com", path = "/path", raw_path = "", raw_query = "query", fragment = "fragment"))
+ * // Returns: "https://user:pass@host.com/path?query#fragment"
+ */
+//' @useDynLib paws.common _paws_common_build_url
+//' @importFrom Rcpp evalCpp
 // [[Rcpp::export]]
 std::string build_url(const Rcpp::List &url_components)
 {

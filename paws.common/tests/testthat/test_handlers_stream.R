@@ -1,7 +1,7 @@
 test_that("StreamHandler", {
   op <- Operation(name = "SelectObjectContent")
   svc <- Client()
-  svc$client_info$service_name = "s3"
+  svc$client_info$service_name <- "s3"
   svc$handlers$unmarshal <- HandlerList(
     restxml_unmarshal
   )
@@ -33,7 +33,7 @@ test_that("StreamHandler", {
   )
 
   req <- new_request(svc, op, NULL, op_output)
-  req$operation$stream_api = TRUE
+  req$operation$stream_api <- TRUE
   req$http_response <- HttpResponse(
     status_code = 200,
     body = list()
@@ -232,8 +232,7 @@ test_that("check json paws_stream_parser", {
   interface <- structure(list(
     contentBlockDelta = structure(list(delta = structure(list(text = structure(logical(0), tags = list(type = "string")), toolUse = structure(list(input = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), contentBlockIndex = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure", event = TRUE)),
     messageStop = structure(list(stopReason = structure(logical(0), tags = list(type = "string")), additionalModelResponseFields = structure(list(), tags = list(type = "structure", document = TRUE))), tags = list(type = "structure", event = TRUE))
-    )
-  )
+  ))
 
   # mock con object
   con <- list(
@@ -276,4 +275,3 @@ test_that("check validate_checksum failure", {
     "Checksum mismatch"
   )
 })
-
