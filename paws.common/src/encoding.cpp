@@ -84,9 +84,21 @@ std::string internal_url_unencode(const std::string &url)
   return unescaped;
 }
 
-// Escape characters for use in URLs.
-// param urls A character vector to be encoded
-// param safe A characters of extra that should not be encoded
+/**
+ * @brief Escape characters for use in URLs.
+ *
+ * This function encodes a character vector for use in URLs, escaping all special characters
+ * except for those specified in the `safe` parameter.
+ *
+ * @param urls A character vector to be encoded.
+ * @param safe A character vector of extra characters that should not be encoded.
+ *
+ * @return A character vector with the encoded URLs.
+ *
+ * @example
+ * paws_url_encoder(c("https://example.com/path?query=1", "https://example.com/another_path"), c("/"))
+ * // Returns: c("https%3A%2F%2Fexample.com%2Fpath%3Fquery%3D1", "https%3A%2F%2Fexample.com%2Fanother_path")
+ */
 //' @useDynLib paws.common _paws_common_paws_url_encoder
 //' @importFrom Rcpp evalCpp
 // [[Rcpp::export]]
@@ -121,7 +133,21 @@ CharacterVector paws_url_encoder(CharacterVector urls, CharacterVector safe = ""
   return output;
 }
 
-// Escape all special characters (i.e. everything except for a-z, A-Z, 0-9, '-', '.', '_' or '~') for use in URLs.
+/**
+ * @brief Unescape characters in URLs.
+ *
+ * This function decodes a character vector of URLs, converting percent-encoded characters back to their original form.
+ *
+ * @param urls A character vector to be decoded.
+ *
+ * @return A character vector with the decoded URLs.
+ *
+ * @example
+ * paws_url_unencoder(c("https%3A%2F%2Fexample.com%2Fpath%3Fquery%3D1", "https%3A%2F%2Fexample.com%2Fanother_path"))
+ * // Returns: c("https://example.com/path?query=1", "https://example.com/another_path")
+ */
+//' @useDynLib paws.common _paws_common_paws_url_unencoder
+//' @importFrom Rcpp evalCpp
 // [[Rcpp::export]]
 CharacterVector paws_url_unencoder(CharacterVector urls)
 {

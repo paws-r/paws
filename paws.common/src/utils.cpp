@@ -5,8 +5,11 @@
 
 using namespace Rcpp;
 
-// Sort character vector
-// param str A character vector to be sorted
+/**
+ * @brief Sort character vector
+ *
+ * @param str A character vector to be sorted
+ */
 //' @useDynLib paws.common _paws_common_char_sort
 //' @importFrom Rcpp evalCpp
 // [[Rcpp::export]]
@@ -45,11 +48,23 @@ std::string generate_uuid_v4()
   return std::string(uuid.data(), 36);
 }
 
-// Creates uuid v4
-// param n A integer, number of uuid v4 to generate.
+/**
+ * @brief Generate UUID v4
+ *
+ * This function generates one or more UUID v4 strings.
+ *
+ * @param n An integer specifying the number of UUID v4 strings to generate. Default is 1.
+ *
+ * @return
+ * A character vector containing the generated UUID v4 strings.
+ *
+ * @example
+ * uuid_v4() # Generate a single UUID v4
+ * uuid_v4(5) # Generate five UUID v4 strings
+ */
 //' @useDynLib paws.common _paws_common_uuid_v4
 //' @importFrom Rcpp evalCpp
-//  [[Rcpp::export]]
+// [[Rcpp::export]]
 CharacterVector uuid_v4(size_t n = 1)
 {
   CharacterVector uuids(n);
