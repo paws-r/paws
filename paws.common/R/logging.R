@@ -127,9 +127,9 @@ log_color <- function(lvl) {
 # https://github.com/r-lib/httr2/blob/8e9f8588e66378f1f419158cd1810a82a4dad022/R/req-options.R#L167-L187
 paws_debug <- function(type, msg) {
   switch(type + 1,
-         text = prefix_trace("*  ", msg),
-         headerIn = prefix_debug("<- ", msg),
-         headerOut = prefix_debug("-> ", msg)
+    text = prefix_trace("*  ", msg),
+    headerIn = prefix_debug("<- ", msg),
+    headerOut = prefix_debug("-> ", msg)
   )
 }
 
