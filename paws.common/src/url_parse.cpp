@@ -332,7 +332,7 @@ Rcpp::List parse_url(const std::string &url)
       Rcpp::Named("user") = parsed_url.user,
       Rcpp::Named("password") = parsed_url.password,
       Rcpp::Named("host") = parsed_url.port.empty() ? parsed_url.host : parsed_url.host + ":" + parsed_url.port,
-      Rcpp::Named("path") = path,
+      Rcpp::Named("path") = path.empty() ? "/" : path,
       Rcpp::Named("raw_path") = raw_path,
       Rcpp::Named("force_query") = false,
       Rcpp::Named("raw_query") = raw_query,
