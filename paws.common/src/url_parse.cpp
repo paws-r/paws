@@ -130,6 +130,7 @@ public:
   std::string user;
   std::string password;
   std::string host;
+  std::string port;
   std::string raw_path;
   std::string path;
   std::string raw_query;
@@ -148,7 +149,7 @@ public:
     {
       url << scheme << "://";
     }
-    if (!user.empty())
+    if (!user.empty() || !password.empty())
     {
       url << user;
       if (!password.empty())
@@ -158,8 +159,17 @@ public:
       url << "@";
     }
     url << host;
+    if (!port.empty())
+    {
+      url << ":" << port;
+    }
     if (!raw_path.empty())
     {
+      // Ensure the raw_path starts with a '/'
+      if (raw_path[0] != '/')
+      {
+        url << "/";
+      }
       url << raw_path;
     }
     else
@@ -196,28 +206,68 @@ public:
       it = scheme_end + scheme_delim.size(); // Skip "://"
     }
 
-    // Parse user and password (if present)
-    auto user_info_end = std::find(it, end, '@');
-    if (user_info_end != end)
-    {
-      std::string user_info(it, user_info_end);
-      auto colon_pos = user_info.find(':');
-      if (colon_pos != std::string::npos)
-      {
-        result.user = user_info.substr(0, colon_pos);
-        result.password = user_info.substr(colon_pos + 1);
-      }
-      else
-      {
-        result.user = user_info;
-      }
-      it = user_info_end + 1; // Skip '@'
-    }
-
     // Parse host (including port if present)
     auto host_end = std::find_if(it, end, [](char ch)
                                  { return ch == '/' || ch == '?' || ch == '#'; });
-    result.host = std::string(it, host_end);
+    std::string host_port = std::string(it, host_end);
+
+    // Use rfind to locate the last occurrence of ':' in host_port
+    // Use find to locate '@' in host_port
+    auto colon_pos = host_port.rfind(':');
+    auto at_pos = host_port.find('@');
+
+    if (colon_pos != std::string::npos)
+    {
+      if (at_pos != std::string::npos)
+      {
+        if (colon_pos > at_pos)
+        {
+          // contains: <user>:<password>@<host>:<port>
+          result.host = host_port.substr(0, colon_pos);
+          result.port = host_port.substr(colon_pos + 1);
+
+          // split user, password and host
+          auto user_col_pos = result.host.find(':');
+          if (user_col_pos != std::string::npos)
+          {
+            result.user = result.host.substr(0, user_col_pos);
+            result.password = result.host.substr(user_col_pos + 1, at_pos - user_col_pos - 1);
+            result.host = result.host.substr(at_pos + 1);
+          }
+          else
+          {
+            // assume user when ":" can't be found
+            result.user = result.host.substr(0, at_pos);
+            result.host = result.host.substr(at_pos + 1);
+          }
+        }
+        else
+        {
+          // contains: <user>:<pass>@<host>
+          result.user = host_port.substr(0, colon_pos);
+          result.password = host_port.substr(colon_pos + 1, at_pos - colon_pos - 1);
+          result.host = host_port.substr(at_pos + 1);
+        }
+      }
+      else
+      {
+        // contains: <host>:<port>
+        result.host = host_port.substr(0, colon_pos);
+        result.port = host_port.substr(colon_pos + 1);
+      }
+    }
+    else if (at_pos != std::string::npos)
+    {
+      // contains: <user>@<host>
+      result.user = host_port.substr(0, at_pos);
+      result.host = host_port.substr(at_pos + 1);
+    }
+    else
+    {
+      // contains: <host>
+      result.host = host_port;
+    }
+
     it = host_end;
 
     // Parse path
@@ -265,7 +315,7 @@ public:
 Rcpp::List parse_url(const std::string &url)
 {
   URL parsed_url = URLParser::parse(url);
-  std::string raw_path = parsed_url.path.empty() ? "/" : parsed_url.path;
+  std::string raw_path = parsed_url.path;
   std::string path = internal_url_unencode(raw_path);
   std::string escaped_path = internal_url_encode(raw_path, "$&+,/;:=@");
 
@@ -281,8 +331,8 @@ Rcpp::List parse_url(const std::string &url)
       Rcpp::Named("opaque") = "",
       Rcpp::Named("user") = parsed_url.user,
       Rcpp::Named("password") = parsed_url.password,
-      Rcpp::Named("host") = parsed_url.host,
-      Rcpp::Named("path") = path,
+      Rcpp::Named("host") = parsed_url.port.empty() ? parsed_url.host : parsed_url.host + ":" + parsed_url.port,
+      Rcpp::Named("path") = path.empty() ? "/" : path,
       Rcpp::Named("raw_path") = raw_path,
       Rcpp::Named("force_query") = false,
       Rcpp::Named("raw_query") = raw_query,
