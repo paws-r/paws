@@ -443,9 +443,12 @@ set_request_url <- function(original_endpoint,
   if (use_new_scheme) {
     scheme <- new_endpoint_components[["scheme"]]
   }
+  path <- (
+    if (final_endpoint_components[["path"]] == "/") "" else final_endpoint_components[["path"]]
+  )
   final_endpoint_components[["host"]] <- new_endpoint_components$host
   final_endpoint_components[["scheme"]] <- scheme
-  final_endpoint_components[["path"]] <- final_endpoint_components[["path"]]
+  final_endpoint_components[["path"]] <- path
   return(build_url(final_endpoint_components))
 }
 
