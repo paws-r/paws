@@ -285,7 +285,9 @@ build_context <- function(ctx, disable_header_hoisting) {
   # log_debug("Signature:\n%s", ctx$signature)
   if (ctx$is_presigned) {
     query <- ctx$request$url$raw_query
-    ctx$request$url$raw_query <- update_query_string(query, list("X-Amz-Signature" = ctx$signature))
+    ctx$request$url$raw_query <- sprintf(
+      "%s&X-Amz-Signature=%s", query, ctx$signature
+    )
   } else {
     authorization <- paste(
       paste0(AUTH_HEADER_PREFIX, " Credential=", ctx$cred_values$access_key_id, "/", ctx$credential_string),
