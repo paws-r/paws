@@ -95,7 +95,17 @@ set_config <- function(svc, cfgs = list()) {
   config <- populate(cfgs, shape)
   config$credentials <- as.environment(config$credentials)
   svc$.internal <- list(config = config)
+  set_paws_vendor()
   return(svc)
+}
+
+set_paws_vendor <- function() {
+  where <- topenv(parent.frame(n = 2))
+  pkg_name <- get0(".packageName", where, inherits = FALSE)
+  if (!is.null(pkg_name) && startsWith(pkg_name, "paws.")) {
+    vendor <- (if (packageVersion(pkg_name) >= numeric_version("0.8.0")) "boto" else "js")
+    vendor_cache[["vendor"]] <- vendor
+  }
 }
 
 update_optional_config_parameter <- function(cfgs, profile) {

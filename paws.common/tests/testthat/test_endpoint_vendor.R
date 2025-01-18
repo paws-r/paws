@@ -2,11 +2,33 @@ test_that("set_paws_vendor", {
   on.exit(vendor_cache$vendor <- "boto")
   local_mocked_bindings(
     packageVersion = \(pkg) numeric_version("0.7.7"),
+    get0 = \(...) "paws.storage",
     .package = "paws.common"
   )
   set_paws_vendor()
   expect_equal(vendor_cache$vendor, "js")
 })
+
+test_that("set_paws_vendor parent pkg null", {
+  on.exit(vendor_cache$vendor <- "boto")
+  local_mocked_bindings(
+    get0 = \(...) NULL,
+    .package = "paws.common"
+  )
+  set_paws_vendor()
+  expect_equal(vendor_cache$vendor, "boto")
+})
+
+test_that("set_paws_vendor parent pkg not paws category", {
+  on.exit(vendor_cache$vendor <- "boto")
+  local_mocked_bindings(
+    get0 = \(...) "testthat",
+    .package = "paws.common"
+  )
+  set_paws_vendor()
+  expect_equal(vendor_cache$vendor, "boto")
+})
+
 
 test_that("resolver_endpoint boto", {
   on.exit(vendor_cache$vendor <- "boto")
