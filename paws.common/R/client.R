@@ -85,6 +85,13 @@ HOST_PREFIX_RE <- "^[A-Za-z0-9\\.\\-]+$"
 # resolver_endpoint returns the endpoint for a given service.
 # e.g. "https://ec2.us-east-1.amazonaws.com"
 resolver_endpoint <- function(service, region, endpoints, sts_regional_endpoint = "", scheme = "https", host_prefix = "") {
+  switch(vendor_cache[["vendor"]],
+    "boto" = resolver_endpoint_boto(service, region, endpoints, sts_regional_endpoint, scheme, host_prefix),
+    "js" = resolver_endpoint_js(service, region, endpoints, sts_regional_endpoint, scheme, host_prefix)
+  )
+}
+
+resolver_endpoint_boto <- function(service, region, endpoints, sts_regional_endpoint, scheme, host_prefix) {
   # locate global endpoint
   global_found <- check_global(endpoints)
   global_region <- region == "aws-global"
@@ -114,6 +121,45 @@ resolver_endpoint <- function(service, region, endpoints, sts_regional_endpoint 
   ))
 }
 
+# Support paws < 0.8.0
+resolver_endpoint_js <- function(service, region, endpoints, sts_regional_endpoint, scheme, host_prefix) {
+  # Set default region for s3:
+  # https://github.com/boto/botocore/blob/develop/botocore/regions.py#L189-L220
+  if (service == "s3" & (region == "aws-global")) {
+    region <- "us-east-1"
+  }
+  # locate global endpoint
+  global_found <- check_global(endpoints)
+  global_region <- (region == "aws-global")
+  if (!any(global_found) & global_region) {
+    stop("No region provided and no global region found.")
+  }
+  search_region <- (
+    if (any(global_found) & global_region) names(global_found[global_found][1]) else region
+  )
+  e <- endpoints[[get_region_pattern_js(names(endpoints), search_region)]]
+  if (is.character(e)) {
+    e <- list(endpoint = e, global = FALSE)
+  }
+  if (service == "sts" & nzchar(sts_regional_endpoint)) {
+    e$endpoint <- set_sts_regional_endpoint(
+      sts_regional_endpoint, e
+    )
+    region <- set_sts_region(sts_regional_endpoint, region)
+  }
+  signing_region <- if (e[["global"]]) "us-east-1" else region
+  endpoint <- endpoint_unescape_js(e[["endpoint"]], service, signing_region)
+  if (grepl(HOST_PREFIX_RE, host_prefix)) {
+    endpoint <- sprintf("%s%s", host_prefix, endpoint)
+  }
+  endpoint <- gsub("^(.+://)?", sprintf("%s://", scheme), endpoint)
+
+  return(list(
+    endpoint = endpoint,
+    signing_region = signing_region
+  ))
+}
+
 set_sts_regional_endpoint <- function(sts_regional_endpoint, endpoint) {
   switch(sts_regional_endpoint,
     "legacy" = "sts.amazonaws.com",
@@ -130,44 +176,46 @@ set_sts_region <- function(sts_regional_endpoint, region) {
 }
 
 # client_config returns a ClientConfig configured for the service.
+# client_config returns a ClientConfig configured for the service.
 client_config <- function(service_name, endpoints, cfgs, service_id, operation = Operation()) {
-  s <- new_session()
+  sess <- new_session()
   if (!is.null(cfgs)) {
-    s$config <- cfgs
+    sess$config <- cfgs
   }
   custom_endpoint <- FALSE
   # If region not defined, set it
-  if (nchar(s$config$region) == 0) {
-    s$config$region <- get_region(cfgs[["credentials"]][["profile"]])
+  if (nchar(sess$config$region) == 0) {
+    sess$config$region <- get_region(sess$config[["credentials"]][["profile"]])
   }
-  region <- s$config$region
-  if (s$config$endpoint != "") {
-    endpoint <- s$config$endpoint
-    signing_region <- region
+  signing_region <- sess$config$region
+  if (sess$config$endpoint != "") {
+    endpoint <- sess$config$endpoint
   } else {
-    endpoint <- get_service_endpoint(cfgs[["credentials"]][["profile"]], service_id)
+    endpoint <- get_service_endpoint(sess$config[["credentials"]][["profile"]], service_id)
     if (!is.null(endpoint)) {
-      signing_region <- region
       custom_endpoint <- TRUE
     } else {
-      sts_regional_endpoint <- s$config$sts_regional_endpoint
-      e <- resolver_endpoint(
+      sts_regional_endpoint <- sess$config$sts_regional_endpoint
+      re <- resolver_endpoint(
         service_name,
-        region, endpoints,
+        signing_region,
+        endpoints,
         sts_regional_endpoint,
         host_prefix = operation$host_prefix
       )
-      endpoint <- e$endpoint
-      signing_region <- e$signing_region
+      endpoint <- re$endpoint
+      signing_region <- re$signing_region
     }
+    # sess$config$endpoint <- endpoint
+    # sess$config$region <- signing_region
   }
-  c <- ClientConfig(
-    config = s$config,
-    handlers = s$handlers,
+  cc <- ClientConfig(
+    config = sess$config,
+    handlers = sess$handlers,
     endpoint = endpoint,
     custom_endpoint = custom_endpoint,
     signing_region = signing_region,
     signing_name = service_name
   )
-  return(c)
+  return(cc)
 }
