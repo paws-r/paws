@@ -43,10 +43,22 @@ endpoint_unescape <- function(endpoint, region) {
     .Call('_paws_common_endpoint_unescape', PACKAGE = 'paws.common', endpoint, region)
 }
 
+#' @useDynLib paws.common _paws_common_endpoint_unescape_js
+#' @importFrom Rcpp evalCpp
+endpoint_unescape_js <- function(endpoint, service, region) {
+    .Call('_paws_common_endpoint_unescape_js', PACKAGE = 'paws.common', endpoint, service, region)
+}
+
 #' @useDynLib paws.common _paws_common_get_region_pattern
 #' @importFrom Rcpp evalCpp
 get_region_pattern <- function(region_pattern, region) {
     .Call('_paws_common_get_region_pattern', PACKAGE = 'paws.common', region_pattern, region)
+}
+
+#' @useDynLib paws.common _paws_common_get_region_pattern_js
+#' @importFrom Rcpp evalCpp
+get_region_pattern_js <- function(region_pattern, region) {
+    .Call('_paws_common_get_region_pattern_js', PACKAGE = 'paws.common', region_pattern, region)
 }
 
 #' @useDynLib paws.common _paws_common_parse_query_string

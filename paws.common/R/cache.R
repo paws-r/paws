@@ -4,6 +4,8 @@ ini_cache <- new.env(parent = emptyenv())
 
 os_env_cache <- new.env(parent = emptyenv())
 
+vendor_cache <- list2env(list(vendor = "boto"))
+
 set_os_env_cache <- function() {
   env_vars <- system("printenv", intern = TRUE)
 
