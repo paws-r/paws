@@ -101,4 +101,4 @@ rds_build_auth_token <- utils::getFromNamespace("rds_build_auth_token", "paws.co
 #' @seealso \link[paws.database:rds_build_auth_token]{rds_build_auth_token}
 #' @rdname rds_build_auth_token_v2
 rds_build_auth_token_v2 <- utils::getFromNamespace("rds_build_auth_token_v2", "paws.common")
-.rds$operations$_build_auth_token_v2 <- rds_build_auth_token_v2
+.rds$operations$build_auth_token_v2 <- rds_build_auth_token_v2
