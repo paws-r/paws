@@ -16,25 +16,34 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-
         config:
-          - {r_version: 'release', os: macOS, version: cpu-intel, runner: macOS-latest}
-          - {r_version: 'release', os: ubuntu, runner: ubuntu-latest}
-          - {r_version: 'release', os: windows, runner: windows-latest}
-          - {r_version: 'oldrel-1', os: macOS, version: cpu-intel, runner: macOS-latest}
-          - {r_version: 'oldrel-1', os: windows, runner: windows-latest}
+          - {
+              r_version: "release",
+              os: macOS,
+              version: cpu-intel,
+              runner: macOS-latest,
+            }
+          - { r_version: "release", os: ubuntu, runner: ubuntu-latest }
+          - { r_version: "release", os: windows, runner: windows-latest }
+          - {
+              r_version: "oldrel-1",
+              os: macOS,
+              version: cpu-intel,
+              runner: macOS-latest,
+            }
+          - { r_version: "oldrel-1", os: windows, runner: windows-latest }
 
         include:
-          - config: {os: ubuntu}
-            type: 'source'
+          - config: { os: ubuntu }
+            type: "source"
             r_install_tar: "tar"
 
-          - config: {os: windows}
-            type: 'win.binary'
+          - config: { os: windows }
+            type: "win.binary"
             r_install_tar: ""
 
-          - config: {os: macOS}
-            type: 'mac.binary'
+          - config: { os: macOS }
+            type: "mac.binary"
             r_install_tar: ""
 
     env:
@@ -48,7 +57,6 @@ jobs:
       pkg_version: ${{ steps.build.outputs.pkg_version }}
 
     steps:
-
       - uses: actions/checkout@v3
 
       - name: Install R
@@ -60,12 +68,18 @@ jobs:
         with:
           pandoc-version: "2.17.1"
 
-      - name: Install System Dependencies
+      - name: Install system dependencies macOS
+        if: runner.os == 'macOS'
+        run: |
+          brew install freetype
+
+      - name: Install System Dependencies linux
         if: runner.os == 'Linux'
         run: |
           sudo apt-get update
           sudo apt-get install -y libcurl4-openssl-dev libssl-dev libxml2-dev libgit2-dev
           sudo apt-get install -y libharfbuzz-dev libfribidi-dev
+          sudo apt-get install -y libfontconfig1-dev libfreetype6-dev libpng-dev libtiff5-dev libjpeg-dev
 
       - name: Install Paws Dependencies
         run: |
@@ -96,9 +110,8 @@ jobs:
 
         shell: Rscript {0}
 
-      - name: 'upload-file'
-        run:
-          aws s3 sync "../binaries" "s3://paws-r-builds/packages/${{ steps.build.outputs.pkg_version }}/" --acl public-read --quiet
+      - name: "upload-file"
+        run: aws s3 sync "../binaries" "s3://paws-r-builds/packages/${{ steps.build.outputs.pkg_version }}/" --acl public-read --quiet
 
   latest-binaries:
     runs-on: ubuntu-latest
