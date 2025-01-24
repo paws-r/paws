@@ -50,7 +50,7 @@ Services SDKs, you provide the Outposts access point ARN in place of the
 bucket name. For more information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html}{What is S3 on Outposts?}
 in the \emph{Amazon S3 User Guide}.}
 
-\item{ContentMD5}{The base64-encoded 128-bit MD5 digest of the data. This header must be
+\item{ContentMD5}{The Base64 encoded 128-bit \code{MD5} digest of the data. This header must be
 used as a message integrity check to verify that the request body was
 not corrupted in transit. For more information, go to \href{https://www.ietf.org/rfc/rfc1864.txt}{RFC 1864.\>}
 

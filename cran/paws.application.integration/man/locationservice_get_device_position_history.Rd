@@ -25,7 +25,7 @@ response. If no token is provided, the default page is the first page.
 
 Default value: \code{null}}
 
-\item{StartTimeInclusive}{Specify the start time for the position history in \href{https://www.iso.org/iso-8601-date-and-time-format.html}{ISO 8601} format:
+\item{StartTimeInclusive}{Specify the start time for the position history in ISO 8601 format:
 \code{YYYY-MM-DDThh:mm:ss.sssZ}. By default, the value will be 24 hours prior
 to the time that the request is made.
 
@@ -35,7 +35,7 @@ Requirement:
 \code{EndTimeExclusive}.
 }}
 
-\item{EndTimeExclusive}{Specify the end time for the position history in \href{https://www.iso.org/iso-8601-date-and-time-format.html}{ISO 8601} format:
+\item{EndTimeExclusive}{Specify the end time for the position history in ISO 8601 format:
 \code{YYYY-MM-DDThh:mm:ss.sssZ}. By default, the value will be the time that
 the request is made.
 

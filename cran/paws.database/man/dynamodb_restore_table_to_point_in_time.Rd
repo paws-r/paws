@@ -50,7 +50,7 @@ exclude some or all of the indexes at the time of restore.}
 \item{SSESpecificationOverride}{The new server-side encryption settings for the restored table.}
 }
 \description{
-Restores the specified table to the specified point in time within \code{EarliestRestorableDateTime} and \code{LatestRestorableDateTime}. You can restore your table to any point in time during the last 35 days. Any number of users can execute up to 50 concurrent restores (any type of restore) in a given account.
+Restores the specified table to the specified point in time within \code{EarliestRestorableDateTime} and \code{LatestRestorableDateTime}. You can restore your table to any point in time in the last 35 days. You can set the recovery period to any value between 1 and 35 days. Any number of users can execute up to 50 concurrent restores (any type of restore) in a given account.
 
 See \url{https://www.paws-r-sdk.com/docs/dynamodb_restore_table_to_point_in_time/} for full documentation.
 }

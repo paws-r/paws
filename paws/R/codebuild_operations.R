@@ -258,6 +258,9 @@ codebuild_batch_delete_builds <- function(ids) {
 #'           maximumBuildsAllowed = 123,
 #'           computeTypesAllowed = list(
 #'             "string"
+#'           ),
+#'           fleetsAllowed = list(
+#'             "string"
 #'           )
 #'         ),
 #'         timeoutInMins = 123,
@@ -960,6 +963,9 @@ codebuild_batch_get_fleets <- function(names) {
 #'         restrictions = list(
 #'           maximumBuildsAllowed = 123,
 #'           computeTypesAllowed = list(
+#'             "string"
+#'           ),
+#'           fleetsAllowed = list(
 #'             "string"
 #'           )
 #'         ),
@@ -1820,6 +1826,9 @@ codebuild_create_fleet <- function(name, baseCapacity, environmentType, computeT
 #'         maximumBuildsAllowed = 123,
 #'         computeTypesAllowed = list(
 #'           "string"
+#'         ),
+#'         fleetsAllowed = list(
+#'           "string"
 #'         )
 #'       ),
 #'       timeoutInMins = 123,
@@ -1997,6 +2006,9 @@ codebuild_create_fleet <- function(name, baseCapacity, environmentType, computeT
 #'     restrictions = list(
 #'       maximumBuildsAllowed = 123,
 #'       computeTypesAllowed = list(
+#'         "string"
+#'       ),
+#'       fleetsAllowed = list(
 #'         "string"
 #'       )
 #'     ),
@@ -4570,6 +4582,9 @@ codebuild_retry_build <- function(id = NULL, idempotencyToken = NULL) {
 #'         maximumBuildsAllowed = 123,
 #'         computeTypesAllowed = list(
 #'           "string"
+#'         ),
+#'         fleetsAllowed = list(
+#'           "string"
 #'         )
 #'       ),
 #'       timeoutInMins = 123,
@@ -4776,8 +4791,8 @@ codebuild_retry_build_batch <- function(id = NULL, idempotencyToken = NULL, retr
 #' override applies only if the build's source is GitHub Enterprise.
 #' @param reportBuildStatusOverride Set to true to report to your source provider the status of a build's
 #' start and completion. If you use this option with a source provider
-#' other than GitHub, GitHub Enterprise, or Bitbucket, an
-#' `invalidInputException` is thrown.
+#' other than GitHub, GitHub Enterprise, GitLab, GitLab Self Managed, or
+#' Bitbucket, an `invalidInputException` is thrown.
 #' 
 #' To be able to report the build status to the source provider, the user
 #' associated with the source provider must have write access to the repo.
@@ -5560,6 +5575,9 @@ codebuild_start_build <- function(projectName, secondarySourcesOverride = NULL, 
 #'         maximumBuildsAllowed = 123,
 #'         computeTypesAllowed = list(
 #'           "string"
+#'         ),
+#'         fleetsAllowed = list(
+#'           "string"
 #'         )
 #'       ),
 #'       timeoutInMins = 123,
@@ -5739,6 +5757,9 @@ codebuild_start_build <- function(projectName, secondarySourcesOverride = NULL, 
 #'     restrictions = list(
 #'       maximumBuildsAllowed = 123,
 #'       computeTypesAllowed = list(
+#'         "string"
+#'       ),
+#'       fleetsAllowed = list(
 #'         "string"
 #'       )
 #'     ),
@@ -6220,6 +6241,9 @@ codebuild_stop_build <- function(id) {
 #'       restrictions = list(
 #'         maximumBuildsAllowed = 123,
 #'         computeTypesAllowed = list(
+#'           "string"
+#'         ),
+#'         fleetsAllowed = list(
 #'           "string"
 #'         )
 #'       ),
@@ -6943,6 +6967,9 @@ codebuild_update_fleet <- function(arn, baseCapacity = NULL, environmentType = N
 #'         maximumBuildsAllowed = 123,
 #'         computeTypesAllowed = list(
 #'           "string"
+#'         ),
+#'         fleetsAllowed = list(
+#'           "string"
 #'         )
 #'       ),
 #'       timeoutInMins = 123,
@@ -7120,6 +7147,9 @@ codebuild_update_fleet <- function(arn, baseCapacity = NULL, environmentType = N
 #'     restrictions = list(
 #'       maximumBuildsAllowed = 123,
 #'       computeTypesAllowed = list(
+#'         "string"
+#'       ),
+#'       fleetsAllowed = list(
 #'         "string"
 #'       )
 #'     ),

@@ -544,10 +544,10 @@ connect_associate_traffic_distribution_group_user <- function(TrafficDistributio
 }
 .connect$operations$associate_traffic_distribution_group_user <- connect_associate_traffic_distribution_group_user
 
-#' >Associates a set of proficiencies with a user
+#' Associates a set of proficiencies with a user
 #'
 #' @description
-#' \>Associates a set of proficiencies with a user.
+#' Associates a set of proficiencies with a user.
 #'
 #' See [https://www.paws-r-sdk.com/docs/connect_associate_user_proficiencies/](https://www.paws-r-sdk.com/docs/connect_associate_user_proficiencies/) for full documentation.
 #'
@@ -1081,7 +1081,7 @@ connect_create_contact_flow_module <- function(InstanceId, Name, Description = N
 #' Publishes a new version of the flow provided
 #'
 #' @description
-#' Publishes a new version of the flow provided. Versions are immutable and monotonically increasing. If a version of the same flow content already exists, no new version is created and instead the existing version number is returned. If the `FlowContentSha256` provided is different from the `FlowContentSha256` of the `$LATEST` published flow content, then an error is returned. This API only supports creating versions for flows of type `Campaign`.
+#' Publishes a new version of the flow provided. Versions are immutable and monotonically increasing. If the `FlowContentSha256` provided is different from the `FlowContentSha256` of the `$LATEST` published flow content, then an error is returned. This API only supports creating versions for flows of type `Campaign`.
 #'
 #' See [https://www.paws-r-sdk.com/docs/connect_create_contact_flow_version/](https://www.paws-r-sdk.com/docs/connect_create_contact_flow_version/) for full documentation.
 #'
@@ -1089,13 +1089,14 @@ connect_create_contact_flow_module <- function(InstanceId, Name, Description = N
 #' @param Description The description of the flow version.
 #' @param ContactFlowId &#91;required&#93; The identifier of the flow.
 #' @param FlowContentSha256 Indicates the checksum value of the flow content.
+#' @param ContactFlowVersion The identifier of the flow version.
 #' @param LastModifiedTime The Amazon Web Services Region where this resource was last modified.
 #' @param LastModifiedRegion The Amazon Web Services Region where this resource was last modified.
 #'
 #' @keywords internal
 #'
 #' @rdname connect_create_contact_flow_version
-connect_create_contact_flow_version <- function(InstanceId, Description = NULL, ContactFlowId, FlowContentSha256 = NULL, LastModifiedTime = NULL, LastModifiedRegion = NULL) {
+connect_create_contact_flow_version <- function(InstanceId, Description = NULL, ContactFlowId, FlowContentSha256 = NULL, ContactFlowVersion = NULL, LastModifiedTime = NULL, LastModifiedRegion = NULL) {
   op <- new_operation(
     name = "CreateContactFlowVersion",
     http_method = "PUT",
@@ -1104,7 +1105,7 @@ connect_create_contact_flow_version <- function(InstanceId, Description = NULL, 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .connect$create_contact_flow_version_input(InstanceId = InstanceId, Description = Description, ContactFlowId = ContactFlowId, FlowContentSha256 = FlowContentSha256, LastModifiedTime = LastModifiedTime, LastModifiedRegion = LastModifiedRegion)
+  input <- .connect$create_contact_flow_version_input(InstanceId = InstanceId, Description = Description, ContactFlowId = ContactFlowId, FlowContentSha256 = FlowContentSha256, ContactFlowVersion = ContactFlowVersion, LastModifiedTime = LastModifiedTime, LastModifiedRegion = LastModifiedRegion)
   output <- .connect$create_contact_flow_version_output()
   config <- get_config()
   svc <- .connect$service(config, op)
@@ -2433,6 +2434,42 @@ connect_delete_contact_flow_module <- function(InstanceId, ContactFlowModuleId) 
 }
 .connect$operations$delete_contact_flow_module <- connect_delete_contact_flow_module
 
+#' Deletes the particular version specified in flow version identifier
+#'
+#' @description
+#' Deletes the particular version specified in flow version identifier.
+#'
+#' See [https://www.paws-r-sdk.com/docs/connect_delete_contact_flow_version/](https://www.paws-r-sdk.com/docs/connect_delete_contact_flow_version/) for full documentation.
+#'
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
+#' @param ContactFlowId &#91;required&#93; The identifier of the flow.
+#' @param ContactFlowVersion &#91;required&#93; The identifier of the flow version.
+#'
+#' @keywords internal
+#'
+#' @rdname connect_delete_contact_flow_version
+connect_delete_contact_flow_version <- function(InstanceId, ContactFlowId, ContactFlowVersion) {
+  op <- new_operation(
+    name = "DeleteContactFlowVersion",
+    http_method = "DELETE",
+    http_path = "/contact-flows/{InstanceId}/{ContactFlowId}/version/{ContactFlowVersion}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .connect$delete_contact_flow_version_input(InstanceId = InstanceId, ContactFlowId = ContactFlowId, ContactFlowVersion = ContactFlowVersion)
+  output <- .connect$delete_contact_flow_version_output()
+  config <- get_config()
+  svc <- .connect$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connect$operations$delete_contact_flow_version <- connect_delete_contact_flow_version
+
 #' Deletes email address from the specified Amazon Connect instance
 #'
 #' @description
@@ -2753,7 +2790,7 @@ connect_delete_push_notification_registration <- function(InstanceId, Registrati
 #' Deletes a queue
 #'
 #' @description
-#' Deletes a queue. It isn't possible to delete a queue by using the Amazon Connect admin website.
+#' Deletes a queue.
 #'
 #' See [https://www.paws-r-sdk.com/docs/connect_delete_queue/](https://www.paws-r-sdk.com/docs/connect_delete_queue/) for full documentation.
 #'

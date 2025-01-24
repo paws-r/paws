@@ -18,7 +18,8 @@ ec2_modify_client_vpn_endpoint(
   SelfServicePortal = NULL,
   ClientConnectOptions = NULL,
   SessionTimeoutHours = NULL,
-  ClientLoginBannerOptions = NULL
+  ClientLoginBannerOptions = NULL,
+  DisconnectOnSessionTimeout = NULL
 )
 }
 \arguments{
@@ -80,6 +81,11 @@ Default value: \code{24}}
 \item{ClientLoginBannerOptions}{Options for enabling a customizable text banner that will be displayed
 on Amazon Web Services provided clients when a VPN session is
 established.}
+
+\item{DisconnectOnSessionTimeout}{Indicates whether the client VPN session is disconnected after the
+maximum timeout specified in \code{sessionTimeoutHours} is reached. If
+\code{true}, users are prompted to reconnect client VPN. If \code{false}, client
+VPN attempts to reconnect automatically. The default value is \code{false}.}
 }
 \description{
 Modifies the specified Client VPN endpoint. Modifying the DNS server resets existing client connections.

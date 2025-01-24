@@ -879,10 +879,10 @@ connect_associate_traffic_distribution_group_user <- function(TrafficDistributio
 }
 .connect$operations$associate_traffic_distribution_group_user <- connect_associate_traffic_distribution_group_user
 
-#' >Associates a set of proficiencies with a user
+#' Associates a set of proficiencies with a user
 #'
 #' @description
-#' \>Associates a set of proficiencies with a user.
+#' Associates a set of proficiencies with a user.
 #'
 #' @usage
 #' connect_associate_user_proficiencies(InstanceId, UserId,
@@ -1760,7 +1760,7 @@ connect_create_contact <- function(InstanceId, ClientToken = NULL, RelatedContac
 #' svc$create_contact_flow(
 #'   InstanceId = "string",
 #'   Name = "string",
-#'   Type = "CONTACT_FLOW"|"CUSTOMER_QUEUE"|"CUSTOMER_HOLD"|"CUSTOMER_WHISPER"|"AGENT_HOLD"|"AGENT_WHISPER"|"OUTBOUND_WHISPER"|"AGENT_TRANSFER"|"QUEUE_TRANSFER",
+#'   Type = "CONTACT_FLOW"|"CUSTOMER_QUEUE"|"CUSTOMER_HOLD"|"CUSTOMER_WHISPER"|"AGENT_HOLD"|"AGENT_WHISPER"|"OUTBOUND_WHISPER"|"AGENT_TRANSFER"|"QUEUE_TRANSFER"|"CAMPAIGN",
 #'   Description = "string",
 #'   Content = "string",
 #'   Status = "PUBLISHED"|"SAVED",
@@ -1871,21 +1871,21 @@ connect_create_contact_flow_module <- function(InstanceId, Name, Description = N
 #'
 #' @description
 #' Publishes a new version of the flow provided. Versions are immutable and
-#' monotonically increasing. If a version of the same flow content already
-#' exists, no new version is created and instead the existing version
-#' number is returned. If the `FlowContentSha256` provided is different
-#' from the `FlowContentSha256` of the `$LATEST` published flow content,
-#' then an error is returned. This API only supports creating versions for
-#' flows of type `Campaign`.
+#' monotonically increasing. If the `FlowContentSha256` provided is
+#' different from the `FlowContentSha256` of the `$LATEST` published flow
+#' content, then an error is returned. This API only supports creating
+#' versions for flows of type `Campaign`.
 #'
 #' @usage
 #' connect_create_contact_flow_version(InstanceId, Description,
-#'   ContactFlowId, FlowContentSha256, LastModifiedTime, LastModifiedRegion)
+#'   ContactFlowId, FlowContentSha256, ContactFlowVersion, LastModifiedTime,
+#'   LastModifiedRegion)
 #'
 #' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance.
 #' @param Description The description of the flow version.
 #' @param ContactFlowId &#91;required&#93; The identifier of the flow.
 #' @param FlowContentSha256 Indicates the checksum value of the flow content.
+#' @param ContactFlowVersion The identifier of the flow version.
 #' @param LastModifiedTime The Amazon Web Services Region where this resource was last modified.
 #' @param LastModifiedRegion The Amazon Web Services Region where this resource was last modified.
 #'
@@ -1905,6 +1905,7 @@ connect_create_contact_flow_module <- function(InstanceId, Name, Description = N
 #'   Description = "string",
 #'   ContactFlowId = "string",
 #'   FlowContentSha256 = "string",
+#'   ContactFlowVersion = 123,
 #'   LastModifiedTime = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
@@ -1917,7 +1918,7 @@ connect_create_contact_flow_module <- function(InstanceId, Name, Description = N
 #' @rdname connect_create_contact_flow_version
 #'
 #' @aliases connect_create_contact_flow_version
-connect_create_contact_flow_version <- function(InstanceId, Description = NULL, ContactFlowId, FlowContentSha256 = NULL, LastModifiedTime = NULL, LastModifiedRegion = NULL) {
+connect_create_contact_flow_version <- function(InstanceId, Description = NULL, ContactFlowId, FlowContentSha256 = NULL, ContactFlowVersion = NULL, LastModifiedTime = NULL, LastModifiedRegion = NULL) {
   op <- new_operation(
     name = "CreateContactFlowVersion",
     http_method = "PUT",
@@ -1926,7 +1927,7 @@ connect_create_contact_flow_version <- function(InstanceId, Description = NULL, 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .connect$create_contact_flow_version_input(InstanceId = InstanceId, Description = Description, ContactFlowId = ContactFlowId, FlowContentSha256 = FlowContentSha256, LastModifiedTime = LastModifiedTime, LastModifiedRegion = LastModifiedRegion)
+  input <- .connect$create_contact_flow_version_input(InstanceId = InstanceId, Description = Description, ContactFlowId = ContactFlowId, FlowContentSha256 = FlowContentSha256, ContactFlowVersion = ContactFlowVersion, LastModifiedTime = LastModifiedTime, LastModifiedRegion = LastModifiedRegion)
   output <- .connect$create_contact_flow_version_output()
   config <- get_config()
   svc <- .connect$service(config, op)
@@ -4433,6 +4434,58 @@ connect_delete_contact_flow_module <- function(InstanceId, ContactFlowModuleId) 
 }
 .connect$operations$delete_contact_flow_module <- connect_delete_contact_flow_module
 
+#' Deletes the particular version specified in flow version identifier
+#'
+#' @description
+#' Deletes the particular version specified in flow version identifier.
+#'
+#' @usage
+#' connect_delete_contact_flow_version(InstanceId, ContactFlowId,
+#'   ContactFlowVersion)
+#'
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
+#' @param ContactFlowId &#91;required&#93; The identifier of the flow.
+#' @param ContactFlowVersion &#91;required&#93; The identifier of the flow version.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_contact_flow_version(
+#'   InstanceId = "string",
+#'   ContactFlowId = "string",
+#'   ContactFlowVersion = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname connect_delete_contact_flow_version
+#'
+#' @aliases connect_delete_contact_flow_version
+connect_delete_contact_flow_version <- function(InstanceId, ContactFlowId, ContactFlowVersion) {
+  op <- new_operation(
+    name = "DeleteContactFlowVersion",
+    http_method = "DELETE",
+    http_path = "/contact-flows/{InstanceId}/{ContactFlowId}/version/{ContactFlowVersion}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .connect$delete_contact_flow_version_input(InstanceId = InstanceId, ContactFlowId = ContactFlowId, ContactFlowVersion = ContactFlowVersion)
+  output <- .connect$delete_contact_flow_version_output()
+  config <- get_config()
+  svc <- .connect$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connect$operations$delete_contact_flow_version <- connect_delete_contact_flow_version
+
 #' Deletes email address from the specified Amazon Connect instance
 #'
 #' @description
@@ -4910,8 +4963,7 @@ connect_delete_push_notification_registration <- function(InstanceId, Registrati
 #' Deletes a queue
 #'
 #' @description
-#' Deletes a queue. It isn't possible to delete a queue by using the Amazon
-#' Connect admin website.
+#' Deletes a queue.
 #'
 #' @usage
 #' connect_delete_queue(InstanceId, QueueId)
@@ -6211,6 +6263,9 @@ connect_describe_contact_evaluation <- function(InstanceId, EvaluationId) {
 #' flow is published, `$SAVED` needs to be supplied to view saved content
 #' that has not been published.
 #' 
+#' Use `arn:aws:.../contact-flow/{id}:{version}` to retrieve the content of
+#' a specific flow version.
+#' 
 #' In the response, **Status** indicates the flow status as either `SAVED`
 #' or `PUBLISHED`. The `PUBLISHED` status will initiate validation on the
 #' content. `SAVED` does not initiate validation of the content. `SAVED` |
@@ -6230,7 +6285,7 @@ connect_describe_contact_evaluation <- function(InstanceId, EvaluationId) {
 #'     Arn = "string",
 #'     Id = "string",
 #'     Name = "string",
-#'     Type = "CONTACT_FLOW"|"CUSTOMER_QUEUE"|"CUSTOMER_HOLD"|"CUSTOMER_WHISPER"|"AGENT_HOLD"|"AGENT_WHISPER"|"OUTBOUND_WHISPER"|"AGENT_TRANSFER"|"QUEUE_TRANSFER",
+#'     Type = "CONTACT_FLOW"|"CUSTOMER_QUEUE"|"CUSTOMER_HOLD"|"CUSTOMER_WHISPER"|"AGENT_HOLD"|"AGENT_WHISPER"|"OUTBOUND_WHISPER"|"AGENT_TRANSFER"|"QUEUE_TRANSFER"|"CAMPAIGN",
 #'     State = "ACTIVE"|"ARCHIVED",
 #'     Status = "PUBLISHED"|"SAVED",
 #'     Description = "string",
@@ -12702,7 +12757,7 @@ connect_list_contact_flow_versions <- function(InstanceId, ContactFlowId, NextTo
 #'       Id = "string",
 #'       Arn = "string",
 #'       Name = "string",
-#'       ContactFlowType = "CONTACT_FLOW"|"CUSTOMER_QUEUE"|"CUSTOMER_HOLD"|"CUSTOMER_WHISPER"|"AGENT_HOLD"|"AGENT_WHISPER"|"OUTBOUND_WHISPER"|"AGENT_TRANSFER"|"QUEUE_TRANSFER",
+#'       ContactFlowType = "CONTACT_FLOW"|"CUSTOMER_QUEUE"|"CUSTOMER_HOLD"|"CUSTOMER_WHISPER"|"AGENT_HOLD"|"AGENT_WHISPER"|"OUTBOUND_WHISPER"|"AGENT_TRANSFER"|"QUEUE_TRANSFER"|"CAMPAIGN",
 #'       ContactFlowState = "ACTIVE"|"ARCHIVED",
 #'       ContactFlowStatus = "PUBLISHED"|"SAVED"
 #'     )
@@ -12716,7 +12771,7 @@ connect_list_contact_flow_versions <- function(InstanceId, ContactFlowId, NextTo
 #' svc$list_contact_flows(
 #'   InstanceId = "string",
 #'   ContactFlowTypes = list(
-#'     "CONTACT_FLOW"|"CUSTOMER_QUEUE"|"CUSTOMER_HOLD"|"CUSTOMER_WHISPER"|"AGENT_HOLD"|"AGENT_WHISPER"|"OUTBOUND_WHISPER"|"AGENT_TRANSFER"|"QUEUE_TRANSFER"
+#'     "CONTACT_FLOW"|"CUSTOMER_QUEUE"|"CUSTOMER_HOLD"|"CUSTOMER_WHISPER"|"AGENT_HOLD"|"AGENT_WHISPER"|"OUTBOUND_WHISPER"|"AGENT_TRANSFER"|"QUEUE_TRANSFER"|"CAMPAIGN"
 #'   ),
 #'   NextToken = "string",
 #'   MaxResults = 123
@@ -16585,7 +16640,7 @@ connect_search_contact_flow_modules <- function(InstanceId, NextToken = NULL, Ma
 #'       Arn = "string",
 #'       Id = "string",
 #'       Name = "string",
-#'       Type = "CONTACT_FLOW"|"CUSTOMER_QUEUE"|"CUSTOMER_HOLD"|"CUSTOMER_WHISPER"|"AGENT_HOLD"|"AGENT_WHISPER"|"OUTBOUND_WHISPER"|"AGENT_TRANSFER"|"QUEUE_TRANSFER",
+#'       Type = "CONTACT_FLOW"|"CUSTOMER_QUEUE"|"CUSTOMER_HOLD"|"CUSTOMER_WHISPER"|"AGENT_HOLD"|"AGENT_WHISPER"|"OUTBOUND_WHISPER"|"AGENT_TRANSFER"|"QUEUE_TRANSFER"|"CAMPAIGN",
 #'       State = "ACTIVE"|"ARCHIVED",
 #'       Status = "PUBLISHED"|"SAVED",
 #'       Description = "string",
@@ -16647,7 +16702,7 @@ connect_search_contact_flow_modules <- function(InstanceId, NextToken = NULL, Ma
 #'       Value = "string",
 #'       ComparisonType = "STARTS_WITH"|"CONTAINS"|"EXACT"
 #'     ),
-#'     TypeCondition = "CONTACT_FLOW"|"CUSTOMER_QUEUE"|"CUSTOMER_HOLD"|"CUSTOMER_WHISPER"|"AGENT_HOLD"|"AGENT_WHISPER"|"OUTBOUND_WHISPER"|"AGENT_TRANSFER"|"QUEUE_TRANSFER",
+#'     TypeCondition = "CONTACT_FLOW"|"CUSTOMER_QUEUE"|"CUSTOMER_HOLD"|"CUSTOMER_WHISPER"|"AGENT_HOLD"|"AGENT_WHISPER"|"OUTBOUND_WHISPER"|"AGENT_TRANSFER"|"QUEUE_TRANSFER"|"CAMPAIGN",
 #'     StateCondition = "ACTIVE"|"ARCHIVED",
 #'     StatusCondition = "PUBLISHED"|"SAVED"
 #'   )

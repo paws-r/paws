@@ -9,6 +9,7 @@ connect_create_contact_flow_version(
   Description = NULL,
   ContactFlowId,
   FlowContentSha256 = NULL,
+  ContactFlowVersion = NULL,
   LastModifiedTime = NULL,
   LastModifiedRegion = NULL
 )
@@ -22,12 +23,14 @@ connect_create_contact_flow_version(
 
 \item{FlowContentSha256}{Indicates the checksum value of the flow content.}
 
+\item{ContactFlowVersion}{The identifier of the flow version.}
+
 \item{LastModifiedTime}{The Amazon Web Services Region where this resource was last modified.}
 
 \item{LastModifiedRegion}{The Amazon Web Services Region where this resource was last modified.}
 }
 \description{
-Publishes a new version of the flow provided. Versions are immutable and monotonically increasing. If a version of the same flow content already exists, no new version is created and instead the existing version number is returned. If the \code{FlowContentSha256} provided is different from the \code{FlowContentSha256} of the \verb{$LATEST} published flow content, then an error is returned. This API only supports creating versions for flows of type \code{Campaign}.
+Publishes a new version of the flow provided. Versions are immutable and monotonically increasing. If the \code{FlowContentSha256} provided is different from the \code{FlowContentSha256} of the \verb{$LATEST} published flow content, then an error is returned. This API only supports creating versions for flows of type \code{Campaign}.
 
 See \url{https://www.paws-r-sdk.com/docs/connect_create_contact_flow_version/} for full documentation.
 }

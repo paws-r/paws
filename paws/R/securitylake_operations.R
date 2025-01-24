@@ -99,65 +99,9 @@ securitylake_create_aws_log_source <- function(sources) {
 #' @param configuration &#91;required&#93; The configuration used for the third-party custom source.
 #' @param eventClasses The Open Cybersecurity Schema Framework (OCSF) event classes which
 #' describes the type of data that the custom source will send to Security
-#' Lake. The supported event classes are:
-#' 
-#' -   `ACCESS_ACTIVITY`
-#' 
-#' -   `FILE_ACTIVITY`
-#' 
-#' -   `KERNEL_ACTIVITY`
-#' 
-#' -   `KERNEL_EXTENSION`
-#' 
-#' -   `MEMORY_ACTIVITY`
-#' 
-#' -   `MODULE_ACTIVITY`
-#' 
-#' -   `PROCESS_ACTIVITY`
-#' 
-#' -   `REGISTRY_KEY_ACTIVITY`
-#' 
-#' -   `REGISTRY_VALUE_ACTIVITY`
-#' 
-#' -   `RESOURCE_ACTIVITY`
-#' 
-#' -   `SCHEDULED_JOB_ACTIVITY`
-#' 
-#' -   `SECURITY_FINDING`
-#' 
-#' -   `ACCOUNT_CHANGE`
-#' 
-#' -   `AUTHENTICATION`
-#' 
-#' -   `AUTHORIZATION`
-#' 
-#' -   `ENTITY_MANAGEMENT_AUDIT`
-#' 
-#' -   `DHCP_ACTIVITY`
-#' 
-#' -   `NETWORK_ACTIVITY`
-#' 
-#' -   `DNS_ACTIVITY`
-#' 
-#' -   `FTP_ACTIVITY`
-#' 
-#' -   `HTTP_ACTIVITY`
-#' 
-#' -   `RDP_ACTIVITY`
-#' 
-#' -   `SMB_ACTIVITY`
-#' 
-#' -   `SSH_ACTIVITY`
-#' 
-#' -   `CONFIG_STATE`
-#' 
-#' -   `INVENTORY_INFO`
-#' 
-#' -   `EMAIL_ACTIVITY`
-#' 
-#' -   `API_ACTIVITY`
-#' 
-#' -   `CLOUD_API`
+#' Lake. For the list of supported event classes, see the [Amazon Security
+#' Lake User
+#' Guide](https://docs.aws.amazon.com/security-lake/latest/userguide/adding-custom-sources.html#ocsf-eventclass).
 #' @param sourceName &#91;required&#93; Specify the name for a third-party custom source. This must be a
 #' Regionally unique value. The `sourceName` you enter here, is used in the
 #' `LogProviderRole` name which follows the convention
@@ -438,6 +382,12 @@ securitylake_create_data_lake_exception_subscription <- function(exceptionTimeTo
 #' Automatically enables Amazon Security Lake for new member accounts in
 #' your organization. Security Lake is not automatically enabled for any
 #' existing member accounts in your organization.
+#' 
+#' This operation merges the new data lake organization configuration with
+#' the existing configuration for Security Lake in your organization. If
+#' you want to create a new data lake organization configuration, you must
+#' delete the existing one using
+#' [`delete_data_lake_organization_configuration`][securitylake_delete_data_lake_organization_configuration].
 #'
 #' @usage
 #' securitylake_create_data_lake_organization_configuration(

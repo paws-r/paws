@@ -17,9 +17,10 @@ NULL
 #' `resourceIdentifier` parameter. You can't specify both of those
 #' parameters in the same operation.
 #' 
-#' -   Specify the `logGroupName` parameter to cause all log events stored
-#'     in the log group to be encrypted with that key. Only the log events
-#'     ingested after the key is associated are encrypted with that key.
+#' -   Specify the `logGroupName` parameter to cause log events ingested
+#'     into that log group to be encrypted with that key. Only the log
+#'     events ingested after the key is associated are encrypted with that
+#'     key.
 #' 
 #'     Associating a KMS key with a log group overrides any existing
 #'     associations between the log group and a KMS key. After a KMS key is
@@ -345,6 +346,12 @@ cloudwatchlogs_create_delivery <- function(deliverySourceName, deliveryDestinati
 #' You can export logs from multiple log groups or multiple time ranges to
 #' the same S3 bucket. To separate log data for each export task, specify a
 #' prefix to be used as the Amazon S3 key prefix for all exported objects.
+#' 
+#' We recommend that you don't regularly export to Amazon S3 as a way to
+#' continuously archive your logs. For that use case, we instaed recommend
+#' that you use subscriptions. For more information about subscriptions,
+#' see [Real-time processing of log data with
+#' subscriptions](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/Subscriptions.html).
 #' 
 #' Time-based sorting on chunks of log data inside an exported file is not
 #' guaranteed. You can sort the exported log field data by using Linux
@@ -836,10 +843,10 @@ cloudwatchlogs_delete_data_protection_policy <- function(logGroupIdentifier) {
 }
 .cloudwatchlogs$operations$delete_data_protection_policy <- cloudwatchlogs_delete_data_protection_policy
 
-#' Deletes s delivery
+#' Deletes a delivery
 #'
 #' @description
-#' Deletes s *delivery*. A delivery is a connection between a logical
+#' Deletes a *delivery*. A delivery is a connection between a logical
 #' *delivery source* and a logical *delivery destination*. Deleting a
 #' delivery only deletes the connection between the delivery source and
 #' delivery destination. It does not delete the delivery destination or the
@@ -1641,6 +1648,25 @@ cloudwatchlogs_delete_transformer <- function(logGroupIdentifier) {
 #'
 #' @description
 #' Returns a list of all CloudWatch Logs account policies in the account.
+#' 
+#' To use this operation, you must be signed on with the correct
+#' permissions depending on the type of policy that you are retrieving
+#' information for.
+#' 
+#' -   To see data protection policies, you must have the
+#'     `logs:GetDataProtectionPolicy` and `logs:DescribeAccountPolicies`
+#'     permissions.
+#' 
+#' -   To see subscription filter policies, you must have the
+#'     `logs:DescrubeSubscriptionFilters` and
+#'     `logs:DescribeAccountPolicies` permissions.
+#' 
+#' -   To see transformer policies, you must have the `logs:GetTransformer`
+#'     and `logs:DescribeAccountPolicies` permissions.
+#' 
+#' -   To see field index policies, you must have the
+#'     `logs:DescribeIndexPolicies` and `logs:DescribeAccountPolicies`
+#'     permissions.
 #'
 #' @usage
 #' cloudwatchlogs_describe_account_policies(policyType, policyName,
@@ -2482,7 +2508,7 @@ cloudwatchlogs_describe_log_groups <- function(accountIdentifiers = NULL, logGro
 #' `logGroupIdentifier` or `logGroupName`. You must include one of these
 #' two parameters, but you can't include both.
 #' 
-#' This operation has a limit of five transactions per second, after which
+#' This operation has a limit of 25 transactions per second, after which
 #' transactions are throttled.
 #' 
 #' If you are using CloudWatch cross-account observability, you can use
@@ -4699,6 +4725,22 @@ cloudwatchlogs_list_tags_log_group <- function(logGroupName) {
 #' policy, or field index policy that applies to all log groups or a subset
 #' of log groups in the account.
 #' 
+#' To use this operation, you must be signed on with the correct
+#' permissions depending on the type of policy that you are creating.
+#' 
+#' -   To create a data protection policy, you must have the
+#'     `logs:PutDataProtectionPolicy` and `logs:PutAccountPolicy`
+#'     permissions.
+#' 
+#' -   To create a subscription filter policy, you must have the
+#'     `logs:PutSubscriptionFilter` and `logs:PutccountPolicy` permissions.
+#' 
+#' -   To create a transformer policy, you must have the
+#'     `logs:PutTransformer` and `logs:PutAccountPolicy` permissions.
+#' 
+#' -   To create a field index policy, you must have the
+#'     `logs:PutIndexPolicy` and `logs:PutAccountPolicy` permissions.
+#' 
 #' **Data protection policy**
 #' 
 #' A data protection policy can help safeguard sensitive data that's
@@ -5194,8 +5236,9 @@ cloudwatchlogs_put_data_protection_policy <- function(logGroupIdentifier, policy
 #' 
 #' -   Use
 #'     [`put_delivery_destination`][cloudwatchlogs_put_delivery_destination]
-#'     to create a *delivery destination*, which is a logical object that
-#'     represents the actual delivery destination.
+#'     to create a *delivery destination* in the same account of the actual
+#'     delivery destination. The delivery destination that you create is a
+#'     logical object that represents the actual delivery destination.
 #' 
 #' -   If you are delivering logs cross-account, you must use
 #'     [`put_delivery_destination_policy`][cloudwatchlogs_put_delivery_destination_policy]
@@ -5441,13 +5484,27 @@ cloudwatchlogs_put_delivery_destination_policy <- function(deliveryDestinationNa
 #' 
 #' -   For Amazon Bedrock, the valid value is `APPLICATION_LOGS`.
 #' 
+#' -   For CloudFront, the valid value is `ACCESS_LOGS`.
+#' 
 #' -   For Amazon CodeWhisperer, the valid value is `EVENT_LOGS`.
+#' 
+#' -   For Elemental MediaPackage, the valid values are
+#'     `EGRESS_ACCESS_LOGS` and `INGRESS_ACCESS_LOGS`.
+#' 
+#' -   For Elemental MediaTailor, the valid values are
+#'     `AD_DECISION_SERVER_LOGS`, `MANIFEST_SERVICE_LOGS`, and
+#'     `TRANSCODE_LOGS`.
 #' 
 #' -   For IAM Identity Center, the valid value is `ERROR_LOGS`.
 #' 
+#' -   For Amazon Q, the valid value is `EVENT_LOGS`.
+#' 
+#' -   For Amazon SES mail manager, the valid value is `APPLICATION_LOG`.
+#' 
 #' -   For Amazon WorkMail, the valid values are `ACCESS_CONTROL_LOGS`,
-#'     `AUTHENTICATION_LOGS`, `WORKMAIL_AVAILABILITY_PROVIDER_LOGS`, and
-#'     `WORKMAIL_MAILBOX_ACCESS_LOGS`.
+#'     `AUTHENTICATION_LOGS`, `WORKMAIL_AVAILABILITY_PROVIDER_LOGS`,
+#'     `WORKMAIL_MAILBOX_ACCESS_LOGS`, and
+#'     `WORKMAIL_PERSONAL_ACCESS_TOKEN_LOGS`.
 #' @param tags An optional list of key-value pairs to associate with the resource.
 #' 
 #' For more information about tagging, see [Tagging Amazon Web Services
@@ -5997,12 +6054,12 @@ cloudwatchlogs_put_log_events <- function(logGroupName, logStreamName, logEvents
 #' The maximum number of metric filters that can be associated with a log
 #' group is 100.
 #' 
-#' Using regular expressions to create metric filters is supported. For
-#' these filters, there is a quota of two regular expression patterns
-#' within a single filter pattern. There is also a quota of five regular
-#' expression patterns per log group. For more information about using
-#' regular expressions in metric filters, see [Filter pattern syntax for
-#' metric filters, subscription filters, filter log events, and Live
+#' Using regular expressions in filter patterns is supported. For these
+#' filters, there is a quota of two regular expression patterns within a
+#' single filter pattern. There is also a quota of five regular expression
+#' patterns per log group. For more information about using regular
+#' expressions in filter patterns, see [Filter pattern syntax for metric
+#' filters, subscription filters, filter log events, and Live
 #' Tail](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/FilterAndPatternSyntax.html).
 #' 
 #' When you create a metric filter, you can also optionally assign a unit
@@ -6368,13 +6425,12 @@ cloudwatchlogs_put_retention_policy <- function(logGroupName, retentionInDays) {
 #' it. If you are updating an existing filter, you must specify the correct
 #' name in `filterName`.
 #' 
-#' Using regular expressions to create subscription filters is supported.
-#' For these filters, there is a quotas of quota of two regular expression
-#' patterns within a single filter pattern. There is also a quota of five
-#' regular expression patterns per log group. For more information about
-#' using regular expressions in subscription filters, see [Filter pattern
-#' syntax for metric filters, subscription filters, filter log events, and
-#' Live
+#' Using regular expressions in filter patterns is supported. For these
+#' filters, there is a quotas of quota of two regular expression patterns
+#' within a single filter pattern. There is also a quota of five regular
+#' expression patterns per log group. For more information about using
+#' regular expressions in filter patterns, see [Filter pattern syntax for
+#' metric filters, subscription filters, filter log events, and Live
 #' Tail](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/FilterAndPatternSyntax.html).
 #' 
 #' To perform a

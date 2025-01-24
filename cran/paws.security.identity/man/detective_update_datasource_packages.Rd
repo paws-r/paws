@@ -2,17 +2,17 @@
 % Please edit documentation in R/detective_operations.R
 \name{detective_update_datasource_packages}
 \alias{detective_update_datasource_packages}
-\title{Starts a data source packages for the behavior graph}
+\title{Starts a data source package for the Detective behavior graph}
 \usage{
 detective_update_datasource_packages(GraphArn, DatasourcePackages)
 }
 \arguments{
 \item{GraphArn}{[required] The ARN of the behavior graph.}
 
-\item{DatasourcePackages}{[required] The data source package start for the behavior graph.}
+\item{DatasourcePackages}{[required] The data source package to start for the behavior graph.}
 }
 \description{
-Starts a data source packages for the behavior graph.
+Starts a data source package for the Detective behavior graph.
 
 See \url{https://www.paws-r-sdk.com/docs/detective_update_datasource_packages/} for full documentation.
 }

@@ -905,7 +905,7 @@ configservice_describe_config_rule_evaluation_status <- function(ConfigRuleNames
 #' @param Filters Returns a list of Detective or Proactive Config rules. By default, this
 #' API returns an unfiltered list. For more information on Detective or
 #' Proactive Config rules, see [**Evaluation
-#' Mode**](https://docs.aws.amazon.com/config/latest/developerguide/evaluate-config-rules.html)
+#' Mode**](https://docs.aws.amazon.com/config/latest/developerguide/evaluate-config_components.html)
 #' in the *Config Developer Guide*.
 #'
 #' @keywords internal

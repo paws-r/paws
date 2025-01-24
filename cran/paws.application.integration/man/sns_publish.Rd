@@ -105,20 +105,46 @@ Valid value: \code{json}}
 
 \item{MessageAttributes}{Message attributes for Publish action.}
 
-\item{MessageDeduplicationId}{This parameter applies only to FIFO (first-in-first-out) topics. The
-\code{MessageDeduplicationId} can contain up to 128 alphanumeric characters
-\verb{(a-z, A-Z, 0-9)} and punctuation
+\item{MessageDeduplicationId}{\itemize{
+\item This parameter applies only to FIFO (first-in-first-out) topics. The
+\code{MessageDeduplicationId} can contain up to 128 alphanumeric
+characters \verb{(a-z, A-Z, 0-9)} and punctuation
 \verb{(!\\"#$\%&\\'()*+,-./:;<=>?@[\]^_\\`\{|\}~)}.
-
-Every message must have a unique \code{MessageDeduplicationId}, which is a
-token used for deduplication of sent messages. If a message with a
-particular \code{MessageDeduplicationId} is sent successfully, any message
-sent with the same \code{MessageDeduplicationId} during the 5-minute
-deduplication interval is treated as a duplicate.
-
-If the topic has \code{ContentBasedDeduplication} set, the system generates a
-\code{MessageDeduplicationId} based on the contents of the message. Your
+\item Every message must have a unique \code{MessageDeduplicationId}, which is
+a token used for deduplication of sent messages within the 5 minute
+minimum deduplication interval.
+\item The scope of deduplication depends on the \code{FifoThroughputScope}
+attribute, when set to \code{Topic} the message deduplication scope is
+across the entire topic, when set to \code{MessageGroup} the message
+deduplication scope is within each individual message group.
+\item If a message with a particular \code{MessageDeduplicationId} is sent
+successfully, subsequent messages within the deduplication scope and
+interval, with the same \code{MessageDeduplicationId}, are accepted
+successfully but aren't delivered.
+\item Every message must have a unique \code{MessageDeduplicationId}:
+\itemize{
+\item You may provide a \code{MessageDeduplicationId} explicitly.
+\item If you aren't able to provide a \code{MessageDeduplicationId} and you
+enable \code{ContentBasedDeduplication} for your topic, Amazon SNS
+uses a SHA-256 hash to generate the \code{MessageDeduplicationId}
+using the body of the message (but not the attributes of the
+message).
+\item If you don't provide a \code{MessageDeduplicationId} and the topic
+doesn't have \code{ContentBasedDeduplication} set, the action fails
+with an error.
+\item If the topic has a \code{ContentBasedDeduplication} set, your
 \code{MessageDeduplicationId} overrides the generated one.
+}
+\item When \code{ContentBasedDeduplication} is in effect, messages with
+identical content sent within the deduplication scope and interval
+are treated as duplicates and only one copy of the message is
+delivered.
+\item If you send one message with \code{ContentBasedDeduplication} enabled,
+and then another message with a \code{MessageDeduplicationId} that is the
+same as the one generated for the first \code{MessageDeduplicationId},
+the two messages are treated as duplicates, within the deduplication
+scope and interval, and only one copy of the message is delivered.
+}
 
 []: R:\%5C}
 

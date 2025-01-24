@@ -2,7 +2,7 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_put_bucket_lifecycle}
 \alias{s3_put_bucket_lifecycle}
-\title{For an updated version of this API, see PutBucketLifecycleConfiguration}
+\title{This operation is not supported for directory buckets}
 \usage{
 s3_put_bucket_lifecycle(
   Bucket,
@@ -37,7 +37,7 @@ provide does not match the actual owner of the bucket, the request fails
 with the HTTP status code \verb{403 Forbidden} (access denied).}
 }
 \description{
-For an updated version of this API, see \code{\link[=s3_put_bucket_lifecycle_configuration]{put_bucket_lifecycle_configuration}}. This version has been deprecated. Existing lifecycle configurations will work. For new lifecycle configurations, use the updated API.
+This operation is not supported for directory buckets.
 
 See \url{https://www.paws-r-sdk.com/docs/s3_put_bucket_lifecycle/} for full documentation.
 }

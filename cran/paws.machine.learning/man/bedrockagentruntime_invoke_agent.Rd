@@ -2,8 +2,7 @@
 % Please edit documentation in R/bedrockagentruntime_operations.R
 \name{bedrockagentruntime_invoke_agent}
 \alias{bedrockagentruntime_invoke_agent}
-\title{The CLI doesn't support streaming operations in Amazon Bedrock,
-including InvokeAgent}
+\title{Sends a prompt for the agent to process and respond to}
 \usage{
 bedrockagentruntime_invoke_agent(
   agentAliasId,
@@ -55,7 +54,7 @@ To use agent streaming, you need permissions to perform the
 \code{bedrock:InvokeModelWithResponseStream} action.}
 }
 \description{
-The CLI doesn't support streaming operations in Amazon Bedrock, including \code{\link[=bedrockagentruntime_invoke_agent]{invoke_agent}}.
+Sends a prompt for the agent to process and respond to. Note the following fields for the request:
 
 See \url{https://www.paws-r-sdk.com/docs/bedrockagentruntime_invoke_agent/} for full documentation.
 }

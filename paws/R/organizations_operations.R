@@ -486,7 +486,7 @@ organizations_close_account <- function(AccountId) {
 #'     remove an account from your organization later, you can do so only
 #'     after you provide the missing information. For more information, see
 #'     [Considerations before removing an account from an
-#'     organization](https://docs.aws.amazon.com/organizations/latest/userguide/)
+#'     organization](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html)
 #'     in the *Organizations User Guide*.
 #' 
 #' -   If you get an exception that indicates that you exceeded your
@@ -786,7 +786,7 @@ organizations_create_account <- function(Email, AccountName, RoleName = NULL, Ia
 #'     from your organization later, you can do so only after you provide
 #'     the missing information. For more information, see [Considerations
 #'     before removing an account from an
-#'     organization](https://docs.aws.amazon.com/organizations/latest/userguide/)
+#'     organization](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html)
 #'     in the *Organizations User Guide*.
 #' 
 #' -   If you get an exception that indicates that you exceeded your
@@ -3204,7 +3204,7 @@ organizations_invite_account_to_organization <- function(Target, Notes = NULL, T
 #'     billable (not free tier) Amazon Web Services activity that occurs
 #'     while the account isn't attached to an organization. For more
 #'     information, see [Considerations before removing an account from an
-#'     organization](https://docs.aws.amazon.com/organizations/latest/userguide/)
+#'     organization](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html)
 #'     in the *Organizations User Guide*.
 #' 
 #' -   The account that you want to leave must not be a delegated
@@ -5225,7 +5225,7 @@ organizations_register_delegated_administrator <- function(AccountId, ServicePri
 #'     information required of standalone accounts is *not* automatically
 #'     collected. For more information, see [Considerations before removing
 #'     an account from an
-#'     organization](https://docs.aws.amazon.com/organizations/latest/userguide/)
+#'     organization](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html)
 #'     in the *Organizations User Guide*.
 #' 
 #' -   The account that you want to leave must not be a delegated

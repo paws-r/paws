@@ -207,13 +207,9 @@ bedrockagentruntime_get_agent_memory <- function(agentAliasId, agentId, maxItems
 }
 .bedrockagentruntime$operations$get_agent_memory <- bedrockagentruntime_get_agent_memory
 
-#' The CLI doesn't support streaming operations in Amazon Bedrock,
-#' including InvokeAgent
+#' Sends a prompt for the agent to process and respond to
 #'
 #' @description
-#' The CLI doesn't support streaming operations in Amazon Bedrock,
-#' including [`invoke_agent`][bedrockagentruntime_invoke_agent].
-#' 
 #' Sends a prompt for the agent to process and respond to. Note the
 #' following fields for the request:
 #' 
@@ -242,7 +238,11 @@ bedrockagentruntime_get_agent_memory <- function(agentAliasId, agentId, maxItems
 #'     session or prompt or, if you configured an action group to return
 #'     control, results from invocation of the action group.
 #' 
-#' The response is returned in the `bytes` field of the `chunk` object.
+#' The response contains both **chunk** and **trace** attributes.
+#' 
+#' The final response is returned in the `bytes` field of the `chunk`
+#' object. The [`invoke_agent`][bedrockagentruntime_invoke_agent] returns
+#' one chunk for the entire interaction.
 #' 
 #' -   The `attribution` object contains citations for parts of the
 #'     response.
@@ -1373,13 +1373,16 @@ bedrockagentruntime_invoke_agent <- function(agentAliasId, agentId, bedrockModel
 #' including [`invoke_flow`][bedrockagentruntime_invoke_flow].
 #'
 #' @usage
-#' bedrockagentruntime_invoke_flow(enableTrace, flowAliasIdentifier,
-#'   flowIdentifier, inputs, modelPerformanceConfiguration)
+#' bedrockagentruntime_invoke_flow(enableTrace, executionId,
+#'   flowAliasIdentifier, flowIdentifier, inputs,
+#'   modelPerformanceConfiguration)
 #'
 #' @param enableTrace Specifies whether to return the trace for the flow or not. Traces track
 #' inputs and outputs for nodes in the flow. For more information, see
 #' [Track each step in your prompt flow by viewing its trace in Amazon
 #' Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/flows-trace.html).
+#' @param executionId The unique identifier for the current flow execution. If you don't
+#' provide a value, Amazon Bedrock creates the identifier for you.
 #' @param flowAliasIdentifier &#91;required&#93; The unique identifier of the flow alias.
 #' @param flowIdentifier &#91;required&#93; The unique identifier of the flow.
 #' @param inputs &#91;required&#93; A list of objects, each containing information about an input into the
@@ -1390,6 +1393,7 @@ bedrockagentruntime_invoke_agent <- function(agentAliasId, agentId, bedrockModel
 #' A list with the following syntax:
 #' ```
 #' list(
+#'   executionId = "string",
 #'   responseStream = list(
 #'     accessDeniedException = list(
 #'       message = "string"
@@ -1406,7 +1410,14 @@ bedrockagentruntime_invoke_agent <- function(agentAliasId, agentId, bedrockModel
 #'       resourceName = "string"
 #'     ),
 #'     flowCompletionEvent = list(
-#'       completionReason = "SUCCESS"
+#'       completionReason = "SUCCESS"|"INPUT_REQUIRED"
+#'     ),
+#'     flowMultiTurnInputRequestEvent = list(
+#'       content = list(
+#'         document = list()
+#'       ),
+#'       nodeName = "string",
+#'       nodeType = "FlowInputNode"|"FlowOutputNode"|"LambdaFunctionNode"|"KnowledgeBaseNode"|"PromptNode"|"ConditionNode"|"LexNode"
 #'     ),
 #'     flowOutputEvent = list(
 #'       content = list(
@@ -1481,6 +1492,7 @@ bedrockagentruntime_invoke_agent <- function(agentAliasId, agentId, bedrockModel
 #' ```
 #' svc$invoke_flow(
 #'   enableTrace = TRUE|FALSE,
+#'   executionId = "string",
 #'   flowAliasIdentifier = "string",
 #'   flowIdentifier = "string",
 #'   inputs = list(
@@ -1488,6 +1500,7 @@ bedrockagentruntime_invoke_agent <- function(agentAliasId, agentId, bedrockModel
 #'       content = list(
 #'         document = list()
 #'       ),
+#'       nodeInputName = "string",
 #'       nodeName = "string",
 #'       nodeOutputName = "string"
 #'     )
@@ -1505,7 +1518,7 @@ bedrockagentruntime_invoke_agent <- function(agentAliasId, agentId, bedrockModel
 #' @rdname bedrockagentruntime_invoke_flow
 #'
 #' @aliases bedrockagentruntime_invoke_flow
-bedrockagentruntime_invoke_flow <- function(enableTrace = NULL, flowAliasIdentifier, flowIdentifier, inputs, modelPerformanceConfiguration = NULL) {
+bedrockagentruntime_invoke_flow <- function(enableTrace = NULL, executionId = NULL, flowAliasIdentifier, flowIdentifier, inputs, modelPerformanceConfiguration = NULL) {
   op <- new_operation(
     name = "InvokeFlow",
     http_method = "POST",
@@ -1514,7 +1527,7 @@ bedrockagentruntime_invoke_flow <- function(enableTrace = NULL, flowAliasIdentif
     paginator = list(),
     stream_api = TRUE
   )
-  input <- .bedrockagentruntime$invoke_flow_input(enableTrace = enableTrace, flowAliasIdentifier = flowAliasIdentifier, flowIdentifier = flowIdentifier, inputs = inputs, modelPerformanceConfiguration = modelPerformanceConfiguration)
+  input <- .bedrockagentruntime$invoke_flow_input(enableTrace = enableTrace, executionId = executionId, flowAliasIdentifier = flowAliasIdentifier, flowIdentifier = flowIdentifier, inputs = inputs, modelPerformanceConfiguration = modelPerformanceConfiguration)
   output <- .bedrockagentruntime$invoke_flow_output()
   config <- get_config()
   svc <- .bedrockagentruntime$service(config, op)
@@ -1550,17 +1563,14 @@ bedrockagentruntime_invoke_flow <- function(enableTrace = NULL, flowAliasIdentif
 #' -   The agent instructions will not be honored if your agent has only
 #'     one knowledge base, uses default prompts, has no action group, and
 #'     user input is disabled.
-#' 
-#' The CLI doesn't support streaming operations in Amazon Bedrock,
-#' including
-#' [`invoke_inline_agent`][bedrockagentruntime_invoke_inline_agent].
 #'
 #' @usage
 #' bedrockagentruntime_invoke_inline_agent(actionGroups,
 #'   bedrockModelConfigurations, customerEncryptionKeyArn, enableTrace,
 #'   endSession, foundationModel, guardrailConfiguration,
 #'   idleSessionTTLInSeconds, inlineSessionState, inputText, instruction,
-#'   knowledgeBases, promptOverrideConfiguration, sessionId)
+#'   knowledgeBases, promptOverrideConfiguration, sessionId,
+#'   streamingConfigurations)
 #'
 #' @param actionGroups A list of action groups with each action group defining the action the
 #' inline agent needs to carry out.
@@ -1607,6 +1617,10 @@ bedrockagentruntime_invoke_flow <- function(enableTrace = NULL, flowAliasIdentif
 #' to enhance the accuracy of the inline agent.
 #' @param sessionId &#91;required&#93; The unique identifier of the session. Use the same value across requests
 #' to continue the same conversation.
+#' @param streamingConfigurations Specifies the configurations for streaming.
+#' 
+#' To use agent streaming, you need permissions to perform the
+#' `bedrock:InvokeModelWithResponseStream` action.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2682,7 +2696,11 @@ bedrockagentruntime_invoke_flow <- function(enableTrace = NULL, flowAliasIdentif
 #'       )
 #'     )
 #'   ),
-#'   sessionId = "string"
+#'   sessionId = "string",
+#'   streamingConfigurations = list(
+#'     applyGuardrailInterval = 123,
+#'     streamFinalResponse = TRUE|FALSE
+#'   )
 #' )
 #' ```
 #'
@@ -2691,7 +2709,7 @@ bedrockagentruntime_invoke_flow <- function(enableTrace = NULL, flowAliasIdentif
 #' @rdname bedrockagentruntime_invoke_inline_agent
 #'
 #' @aliases bedrockagentruntime_invoke_inline_agent
-bedrockagentruntime_invoke_inline_agent <- function(actionGroups = NULL, bedrockModelConfigurations = NULL, customerEncryptionKeyArn = NULL, enableTrace = NULL, endSession = NULL, foundationModel, guardrailConfiguration = NULL, idleSessionTTLInSeconds = NULL, inlineSessionState = NULL, inputText = NULL, instruction, knowledgeBases = NULL, promptOverrideConfiguration = NULL, sessionId) {
+bedrockagentruntime_invoke_inline_agent <- function(actionGroups = NULL, bedrockModelConfigurations = NULL, customerEncryptionKeyArn = NULL, enableTrace = NULL, endSession = NULL, foundationModel, guardrailConfiguration = NULL, idleSessionTTLInSeconds = NULL, inlineSessionState = NULL, inputText = NULL, instruction, knowledgeBases = NULL, promptOverrideConfiguration = NULL, sessionId, streamingConfigurations = NULL) {
   op <- new_operation(
     name = "InvokeInlineAgent",
     http_method = "POST",
@@ -2700,7 +2718,7 @@ bedrockagentruntime_invoke_inline_agent <- function(actionGroups = NULL, bedrock
     paginator = list(),
     stream_api = TRUE
   )
-  input <- .bedrockagentruntime$invoke_inline_agent_input(actionGroups = actionGroups, bedrockModelConfigurations = bedrockModelConfigurations, customerEncryptionKeyArn = customerEncryptionKeyArn, enableTrace = enableTrace, endSession = endSession, foundationModel = foundationModel, guardrailConfiguration = guardrailConfiguration, idleSessionTTLInSeconds = idleSessionTTLInSeconds, inlineSessionState = inlineSessionState, inputText = inputText, instruction = instruction, knowledgeBases = knowledgeBases, promptOverrideConfiguration = promptOverrideConfiguration, sessionId = sessionId)
+  input <- .bedrockagentruntime$invoke_inline_agent_input(actionGroups = actionGroups, bedrockModelConfigurations = bedrockModelConfigurations, customerEncryptionKeyArn = customerEncryptionKeyArn, enableTrace = enableTrace, endSession = endSession, foundationModel = foundationModel, guardrailConfiguration = guardrailConfiguration, idleSessionTTLInSeconds = idleSessionTTLInSeconds, inlineSessionState = inlineSessionState, inputText = inputText, instruction = instruction, knowledgeBases = knowledgeBases, promptOverrideConfiguration = promptOverrideConfiguration, sessionId = sessionId, streamingConfigurations = streamingConfigurations)
   output <- .bedrockagentruntime$invoke_inline_agent_output()
   config <- get_config()
   svc <- .bedrockagentruntime$service(config, op)

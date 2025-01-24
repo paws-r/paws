@@ -70,7 +70,10 @@ When the value is left blank, the timeout is defaulted to 2880 minutes.
 
 Any existing Glue jobs that had a timeout value greater than 7 days will
 be defaulted to 7 days. For instance if you have specified a timeout of
-20 days for a batch job, it will be stopped on the 7th day.}
+20 days for a batch job, it will be stopped on the 7th day.
+
+For streaming jobs, if you have set up a maintenance window, it will be
+restarted during the maintenance window after 7 days.}
 
 \item{MaxCapacity}{For Glue version 1.0 or earlier jobs, using the standard worker type,
 the number of Glue data processing units (DPUs) that can be allocated

@@ -22,6 +22,11 @@ NULL
 #' you specify a filter you want applied to the attributes of a call. For
 #' example, you can choose a sentiment filter that detects if a customer's
 #' sentiment was positive during the last 30 seconds of the call.
+#' @param Tags Adds one or more custom tags, each in the form of a key:value pair, to a
+#' new call analytics category at the time you start this new job.
+#' 
+#' To learn more about using tags with Amazon Transcribe, refer to [Tagging
+#' resources](https://docs.aws.amazon.com/transcribe/latest/dg/tagging.html).
 #' @param InputType Choose whether you want to create a real-time or a post-call category
 #' for your Call Analytics transcription.
 #' 
@@ -39,7 +44,7 @@ NULL
 #' @keywords internal
 #'
 #' @rdname transcribeservice_create_call_analytics_category
-transcribeservice_create_call_analytics_category <- function(CategoryName, Rules, InputType = NULL) {
+transcribeservice_create_call_analytics_category <- function(CategoryName, Rules, Tags = NULL, InputType = NULL) {
   op <- new_operation(
     name = "CreateCallAnalyticsCategory",
     http_method = "POST",
@@ -48,7 +53,7 @@ transcribeservice_create_call_analytics_category <- function(CategoryName, Rules
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .transcribeservice$create_call_analytics_category_input(CategoryName = CategoryName, Rules = Rules, InputType = InputType)
+  input <- .transcribeservice$create_call_analytics_category_input(CategoryName = CategoryName, Rules = Rules, Tags = Tags, InputType = InputType)
   output <- .transcribeservice$create_call_analytics_category_output()
   config <- get_config()
   svc <- .transcribeservice$service(config, op)
@@ -1479,6 +1484,11 @@ transcribeservice_list_vocabulary_filters <- function(NextToken = NULL, MaxResul
 #' @param Settings Specify additional optional settings in your request, including content
 #' redaction; allows you to apply custom language models, vocabulary
 #' filters, and custom vocabularies to your Call Analytics job.
+#' @param Tags Adds one or more custom tags, each in the form of a key:value pair, to a
+#' new call analytics job at the time you start this new job.
+#' 
+#' To learn more about using tags with Amazon Transcribe, refer to [Tagging
+#' resources](https://docs.aws.amazon.com/transcribe/latest/dg/tagging.html).
 #' @param ChannelDefinitions Makes it possible to specify which speaker is on which channel. For
 #' example, if your agent is the first participant to speak, you would set
 #' `ChannelId` to `0` (to indicate the first channel) and `ParticipantRole`
@@ -1487,7 +1497,7 @@ transcribeservice_list_vocabulary_filters <- function(NextToken = NULL, MaxResul
 #' @keywords internal
 #'
 #' @rdname transcribeservice_start_call_analytics_job
-transcribeservice_start_call_analytics_job <- function(CallAnalyticsJobName, Media, OutputLocation = NULL, OutputEncryptionKMSKeyId = NULL, DataAccessRoleArn = NULL, Settings = NULL, ChannelDefinitions = NULL) {
+transcribeservice_start_call_analytics_job <- function(CallAnalyticsJobName, Media, OutputLocation = NULL, OutputEncryptionKMSKeyId = NULL, DataAccessRoleArn = NULL, Settings = NULL, Tags = NULL, ChannelDefinitions = NULL) {
   op <- new_operation(
     name = "StartCallAnalyticsJob",
     http_method = "POST",
@@ -1496,7 +1506,7 @@ transcribeservice_start_call_analytics_job <- function(CallAnalyticsJobName, Med
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .transcribeservice$start_call_analytics_job_input(CallAnalyticsJobName = CallAnalyticsJobName, Media = Media, OutputLocation = OutputLocation, OutputEncryptionKMSKeyId = OutputEncryptionKMSKeyId, DataAccessRoleArn = DataAccessRoleArn, Settings = Settings, ChannelDefinitions = ChannelDefinitions)
+  input <- .transcribeservice$start_call_analytics_job_input(CallAnalyticsJobName = CallAnalyticsJobName, Media = Media, OutputLocation = OutputLocation, OutputEncryptionKMSKeyId = OutputEncryptionKMSKeyId, DataAccessRoleArn = DataAccessRoleArn, Settings = Settings, Tags = Tags, ChannelDefinitions = ChannelDefinitions)
   output <- .transcribeservice$start_call_analytics_job_output()
   config <- get_config()
   svc <- .transcribeservice$service(config, op)

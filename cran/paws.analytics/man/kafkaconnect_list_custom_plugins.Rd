@@ -6,18 +6,18 @@
 \usage{
 kafkaconnect_list_custom_plugins(
   maxResults = NULL,
-  namePrefix = NULL,
-  nextToken = NULL
+  nextToken = NULL,
+  namePrefix = NULL
 )
 }
 \arguments{
 \item{maxResults}{The maximum number of custom plugins to list in one response.}
 
-\item{namePrefix}{Lists custom plugin names that start with the specified text string.}
-
 \item{nextToken}{If the response of a ListCustomPlugins operation is truncated, it will
 include a NextToken. Send this NextToken in a subsequent request to
 continue listing from where the previous operation left off.}
+
+\item{namePrefix}{Lists custom plugin names that start with the specified text string.}
 }
 \description{
 Returns a list of all of the custom plugins in this account and Region.

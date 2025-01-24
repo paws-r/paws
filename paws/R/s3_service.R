@@ -171,7 +171,7 @@ NULL
 #'  \link[=s3_put_bucket_encryption]{put_bucket_encryption} \tab This operation configures default encryption and Amazon S3 Bucket Keys for an existing bucket\cr
 #'  \link[=s3_put_bucket_intelligent_tiering_configuration]{put_bucket_intelligent_tiering_configuration} \tab This operation is not supported for directory buckets\cr
 #'  \link[=s3_put_bucket_inventory_configuration]{put_bucket_inventory_configuration} \tab This operation is not supported for directory buckets\cr
-#'  \link[=s3_put_bucket_lifecycle]{put_bucket_lifecycle} \tab For an updated version of this API, see PutBucketLifecycleConfiguration\cr
+#'  \link[=s3_put_bucket_lifecycle]{put_bucket_lifecycle} \tab This operation is not supported for directory buckets\cr
 #'  \link[=s3_put_bucket_lifecycle_configuration]{put_bucket_lifecycle_configuration} \tab Creates a new lifecycle configuration for the bucket or replaces an existing lifecycle configuration\cr
 #'  \link[=s3_put_bucket_logging]{put_bucket_logging} \tab This operation is not supported for directory buckets\cr
 #'  \link[=s3_put_bucket_metrics_configuration]{put_bucket_metrics_configuration} \tab This operation is not supported for directory buckets\cr

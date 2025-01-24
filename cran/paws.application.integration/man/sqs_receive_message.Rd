@@ -20,7 +20,7 @@ sqs_receive_message(
 
 Queue URLs and names are case-sensitive.}
 
-\item{AttributeNames}{This parameter has been deprecated but will be supported for backward
+\item{AttributeNames}{This parameter has been discontinued but will be supported for backward
 compatibility. To provide attribute names, you are encouraged to use
 \code{MessageSystemAttributeNames}.
 
@@ -114,12 +114,39 @@ Valid values: 1 to 10. Default: 1.}
 
 \item{VisibilityTimeout}{The duration (in seconds) that the received messages are hidden from
 subsequent retrieve requests after being retrieved by a
-\code{\link[=sqs_receive_message]{receive_message}} request.}
+\code{\link[=sqs_receive_message]{receive_message}} request. If not specified, the
+default visibility timeout for the queue is used, which is 30 seconds.
+
+Understanding \code{VisibilityTimeout}:
+\itemize{
+\item When a message is received from a queue, it becomes temporarily
+invisible to other consumers for the duration of the visibility
+timeout. This prevents multiple consumers from processing the same
+message simultaneously. If the message is not deleted or its
+visibility timeout is not extended before the timeout expires, it
+becomes visible again and can be retrieved by other consumers.
+\item Setting an appropriate visibility timeout is crucial. If it's too
+short, the message might become visible again before processing is
+complete, leading to duplicate processing. If it's too long, it
+delays the reprocessing of messages if the initial processing fails.
+\item You can adjust the visibility timeout using the
+\code{--visibility-timeout} parameter in the \code{receive-message} command to
+match the processing time required by your application.
+\item A message that isn't deleted or a message whose visibility isn't
+extended before the visibility timeout expires counts as a failed
+receive. Depending on the configuration of the queue, the message
+might be sent to the dead-letter queue.
+}
+
+For more information, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html}{Visibility Timeout}
+in the \emph{Amazon SQS Developer Guide}.}
 
 \item{WaitTimeSeconds}{The duration (in seconds) for which the call waits for a message to
 arrive in the queue before returning. If a message is available, the
 call returns sooner than \code{WaitTimeSeconds}. If no messages are available
-and the wait time expires, the call does not return a message list.
+and the wait time expires, the call does not return a message list. If
+you are using the Java SDK, it returns a \code{ReceiveMessageResponse}
+object, which has a empty list instead of a Null object.
 
 To avoid HTTP errors, ensure that the HTTP response timeout for
 \code{\link[=sqs_receive_message]{receive_message}} requests is longer than the

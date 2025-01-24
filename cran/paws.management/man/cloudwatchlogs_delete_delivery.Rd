@@ -2,7 +2,7 @@
 % Please edit documentation in R/cloudwatchlogs_operations.R
 \name{cloudwatchlogs_delete_delivery}
 \alias{cloudwatchlogs_delete_delivery}
-\title{Deletes s delivery}
+\title{Deletes a delivery}
 \usage{
 cloudwatchlogs_delete_delivery(id)
 }
@@ -12,7 +12,7 @@ delivery with the
 \code{\link[=cloudwatchlogs_describe_deliveries]{describe_deliveries}} operation.}
 }
 \description{
-Deletes s \emph{delivery}. A delivery is a connection between a logical \emph{delivery source} and a logical \emph{delivery destination}. Deleting a delivery only deletes the connection between the delivery source and delivery destination. It does not delete the delivery destination or the delivery source.
+Deletes a \emph{delivery}. A delivery is a connection between a logical \emph{delivery source} and a logical \emph{delivery destination}. Deleting a delivery only deletes the connection between the delivery source and delivery destination. It does not delete the delivery destination or the delivery source.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudwatchlogs_delete_delivery/} for full documentation.
 }

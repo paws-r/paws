@@ -234,7 +234,7 @@ NULL
 #' The regex used to validate this parameter is a string of characters
 #' consisting of upper- and lower-case alphanumeric characters with no
 #' spaces. You can also include underscores or any of the following
-#' characters: =,.@@-. You cannot use a value that begins with the text
+#' characters: +=,.@@-. You cannot use a value that begins with the text
 #' `aws:`. This prefix is reserved for Amazon Web Services internal use.
 #' @param ProvidedContexts A list of previously acquired trusted context assertions in the format
 #' of a JSON array. The trusted context assertion is signed and encrypted
@@ -439,7 +439,8 @@ sts_assume_role_with_saml <- function(RoleArn, PrincipalArn, SAMLAssertion, Poli
 #' identity provider before the application makes an
 #' [`assume_role_with_web_identity`][sts_assume_role_with_web_identity]
 #' call. Timestamps in the token must be formatted as either an integer or
-#' a long integer. Only tokens with RSA algorithms (RS256) are supported.
+#' a long integer. Tokens must be signed using either RSA keys (RS256,
+#' RS384, or RS512) or ECDSA keys (ES256, ES384, or ES512).
 #' @param ProviderId The fully qualified host component of the domain name of the OAuth 2.0
 #' identity provider. Do not specify this value for an OpenID Connect
 #' identity provider.
@@ -552,19 +553,17 @@ sts_assume_role_with_web_identity <- function(RoleArn, RoleSessionName, WebIdent
 .sts$operations$assume_role_with_web_identity <- sts_assume_role_with_web_identity
 
 #' Returns a set of short term credentials you can use to perform
-#' privileged tasks in a member account
+#' privileged tasks on a member account in your organization
 #'
 #' @description
-#' Returns a set of short term credentials you can use to perform privileged tasks in a member account.
+#' Returns a set of short term credentials you can use to perform privileged tasks on a member account in your organization.
 #'
 #' See [https://www.paws-r-sdk.com/docs/sts_assume_root/](https://www.paws-r-sdk.com/docs/sts_assume_root/) for full documentation.
 #'
 #' @param TargetPrincipal &#91;required&#93; The member account principal ARN or account ID.
 #' @param TaskPolicyArn &#91;required&#93; The identity based policy that scopes the session to the privileged
 #' tasks that can be performed. You can use one of following Amazon Web
-#' Services managed policies to scope root session actions. You can add
-#' additional customer managed policies to further limit the permissions
-#' for the root session.
+#' Services managed policies to scope root session actions.
 #' 
 #' -   [IAMAuditRootUserCredentials](https://docs.aws.amazon.com/IAM/latest/UserGuide/security-iam-awsmanpol.html#security-iam-awsmanpol-IAMAuditRootUserCredentials)
 #' 

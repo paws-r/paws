@@ -190,7 +190,10 @@ bedrock_batch_delete_evaluation_job <- function(jobIdentifiers) {
 #'       list(
 #'         bedrockModel = list(
 #'           modelIdentifier = "string",
-#'           inferenceParams = "string"
+#'           inferenceParams = "string",
+#'           performanceConfig = list(
+#'             latency = "standard"|"optimized"
+#'           )
 #'         )
 #'       )
 #'     ),
@@ -2030,7 +2033,10 @@ bedrock_get_custom_model <- function(modelIdentifier) {
 #'       list(
 #'         bedrockModel = list(
 #'           modelIdentifier = "string",
-#'           inferenceParams = "string"
+#'           inferenceParams = "string",
+#'           performanceConfig = list(
+#'             latency = "standard"|"optimized"
+#'           )
 #'         )
 #'       )
 #'     ),

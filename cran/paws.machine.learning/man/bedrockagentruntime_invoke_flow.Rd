@@ -7,6 +7,7 @@ the output of each node as a stream}
 \usage{
 bedrockagentruntime_invoke_flow(
   enableTrace = NULL,
+  executionId = NULL,
   flowAliasIdentifier,
   flowIdentifier,
   inputs,
@@ -17,6 +18,9 @@ bedrockagentruntime_invoke_flow(
 \item{enableTrace}{Specifies whether to return the trace for the flow or not. Traces track
 inputs and outputs for nodes in the flow. For more information, see
 \href{https://docs.aws.amazon.com/bedrock/latest/userguide/flows-trace.html}{Track each step in your prompt flow by viewing its trace in Amazon Bedrock}.}
+
+\item{executionId}{The unique identifier for the current flow execution. If you don't
+provide a value, Amazon Bedrock creates the identifier for you.}
 
 \item{flowAliasIdentifier}{[required] The unique identifier of the flow alias.}
 

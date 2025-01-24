@@ -19,7 +19,7 @@ the next page of results in a paginated response.}
 
 \item{Filters}{Returns a list of Detective or Proactive Config rules. By default, this
 API returns an unfiltered list. For more information on Detective or
-Proactive Config rules, see \href{https://docs.aws.amazon.com/config/latest/developerguide/evaluate-config-rules.html}{\strong{Evaluation Mode}}
+Proactive Config rules, see \href{https://docs.aws.amazon.com/config/latest/developerguide/evaluate-config_components.html}{\strong{Evaluation Mode}}
 in the \emph{Config Developer Guide}.}
 }
 \description{

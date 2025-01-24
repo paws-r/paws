@@ -531,14 +531,15 @@ cloudhsmv2_modify_backup_attributes <- function(BackupId, NeverExpires) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudhsmv2_modify_cluster/](https://www.paws-r-sdk.com/docs/cloudhsmv2_modify_cluster/) for full documentation.
 #'
-#' @param BackupRetentionPolicy &#91;required&#93; A policy that defines how the service retains backups.
+#' @param HsmType The desired HSM type of the cluster.
+#' @param BackupRetentionPolicy A policy that defines how the service retains backups.
 #' @param ClusterId &#91;required&#93; The identifier (ID) of the cluster that you want to modify. To find the
 #' cluster ID, use [`describe_clusters`][cloudhsmv2_describe_clusters].
 #'
 #' @keywords internal
 #'
 #' @rdname cloudhsmv2_modify_cluster
-cloudhsmv2_modify_cluster <- function(BackupRetentionPolicy, ClusterId) {
+cloudhsmv2_modify_cluster <- function(HsmType = NULL, BackupRetentionPolicy = NULL, ClusterId) {
   op <- new_operation(
     name = "ModifyCluster",
     http_method = "POST",
@@ -547,7 +548,7 @@ cloudhsmv2_modify_cluster <- function(BackupRetentionPolicy, ClusterId) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .cloudhsmv2$modify_cluster_input(BackupRetentionPolicy = BackupRetentionPolicy, ClusterId = ClusterId)
+  input <- .cloudhsmv2$modify_cluster_input(HsmType = HsmType, BackupRetentionPolicy = BackupRetentionPolicy, ClusterId = ClusterId)
   output <- .cloudhsmv2$modify_cluster_output()
   config <- get_config()
   svc <- .cloudhsmv2$service(config, op)

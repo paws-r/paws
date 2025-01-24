@@ -12,6 +12,7 @@ transcribeservice_start_call_analytics_job(
   OutputEncryptionKMSKeyId = NULL,
   DataAccessRoleArn = NULL,
   Settings = NULL,
+  Tags = NULL,
   ChannelDefinitions = NULL
 )
 }
@@ -95,6 +96,11 @@ For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide
 \item{Settings}{Specify additional optional settings in your request, including content
 redaction; allows you to apply custom language models, vocabulary
 filters, and custom vocabularies to your Call Analytics job.}
+
+\item{Tags}{Adds one or more custom tags, each in the form of a key:value pair, to a
+new call analytics job at the time you start this new job.
+
+To learn more about using tags with Amazon Transcribe, refer to \href{https://docs.aws.amazon.com/transcribe/latest/dg/tagging.html}{Tagging resources}.}
 
 \item{ChannelDefinitions}{Makes it possible to specify which speaker is on which channel. For
 example, if your agent is the first participant to speak, you would set

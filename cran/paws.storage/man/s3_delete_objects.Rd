@@ -92,10 +92,11 @@ code \verb{400 Bad Request}.
 For the \code{x-amz-checksum-algorithm } header, replace \code{algorithm} with
 the supported algorithm from the following list:
 \itemize{
-\item \code{CRC32}
-\item \code{CRC32C}
-\item \code{SHA1}
-\item \code{SHA256}
+\item \code{CRC-32}
+\item \verb{CRC-32C}
+\item \verb{CRC-64NVME}
+\item \code{SHA-1}
+\item \code{SHA-256}
 }
 
 For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html}{Checking object integrity}
@@ -103,9 +104,8 @@ in the \emph{Amazon S3 User Guide}.
 
 If the individual checksum value you provide through
 \code{x-amz-checksum-algorithm } doesn't match the checksum algorithm you set
-through \code{x-amz-sdk-checksum-algorithm}, Amazon S3 ignores any provided
-\code{ChecksumAlgorithm} parameter and uses the checksum algorithm that
-matches the provided value in \code{x-amz-checksum-algorithm }.
+through \code{x-amz-sdk-checksum-algorithm}, Amazon S3 fails the request with
+a \code{BadDigest} error.
 
 If you provide an individual checksum, Amazon S3 ignores any provided
 \code{ChecksumAlgorithm} parameter.}

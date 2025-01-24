@@ -348,7 +348,9 @@ sagemaker_batch_delete_cluster_nodes <- function(ClusterName, NodeIds) {
 #'                 HubAccessConfig = list(
 #'                   HubContentArn = "string"
 #'                 ),
-#'                 ManifestS3Uri = "string"
+#'                 ManifestS3Uri = "string",
+#'                 ETag = "string",
+#'                 ManifestEtag = "string"
 #'               )
 #'             ),
 #'             ProductId = "string",
@@ -364,8 +366,10 @@ sagemaker_batch_delete_cluster_nodes <- function(ClusterName, NodeIds) {
 #'             AdditionalS3DataSource = list(
 #'               S3DataType = "S3Object"|"S3Prefix",
 #'               S3Uri = "string",
-#'               CompressionType = "None"|"Gzip"
-#'             )
+#'               CompressionType = "None"|"Gzip",
+#'               ETag = "string"
+#'             ),
+#'             ModelDataETag = "string"
 #'           )
 #'         ),
 #'         SupportedTransformInstanceTypes = list(
@@ -645,7 +649,8 @@ sagemaker_create_action <- function(ActionName, Source, ActionType, Description 
 #'     AdditionalS3DataSource = list(
 #'       S3DataType = "S3Object"|"S3Prefix",
 #'       S3Uri = "string",
-#'       CompressionType = "None"|"Gzip"
+#'       CompressionType = "None"|"Gzip",
+#'       ETag = "string"
 #'     )
 #'   ),
 #'   InferenceSpecification = list(
@@ -666,7 +671,9 @@ sagemaker_create_action <- function(ActionName, Source, ActionType, Description 
 #'             HubAccessConfig = list(
 #'               HubContentArn = "string"
 #'             ),
-#'             ManifestS3Uri = "string"
+#'             ManifestS3Uri = "string",
+#'             ETag = "string",
+#'             ManifestEtag = "string"
 #'           )
 #'         ),
 #'         ProductId = "string",
@@ -682,8 +689,10 @@ sagemaker_create_action <- function(ActionName, Source, ActionType, Description 
 #'         AdditionalS3DataSource = list(
 #'           S3DataType = "S3Object"|"S3Prefix",
 #'           S3Uri = "string",
-#'           CompressionType = "None"|"Gzip"
-#'         )
+#'           CompressionType = "None"|"Gzip",
+#'           ETag = "string"
+#'         ),
+#'         ModelDataETag = "string"
 #'       )
 #'     ),
 #'     SupportedTransformInstanceTypes = list(
@@ -5976,7 +5985,9 @@ sagemaker_create_mlflow_tracking_server <- function(TrackingServerName, Artifact
 #'         HubAccessConfig = list(
 #'           HubContentArn = "string"
 #'         ),
-#'         ManifestS3Uri = "string"
+#'         ManifestS3Uri = "string",
+#'         ETag = "string",
+#'         ManifestEtag = "string"
 #'       )
 #'     ),
 #'     AdditionalModelDataSources = list(
@@ -5992,7 +6003,9 @@ sagemaker_create_mlflow_tracking_server <- function(TrackingServerName, Artifact
 #'           HubAccessConfig = list(
 #'             HubContentArn = "string"
 #'           ),
-#'           ManifestS3Uri = "string"
+#'           ManifestS3Uri = "string",
+#'           ETag = "string",
+#'           ManifestEtag = "string"
 #'         )
 #'       )
 #'     ),
@@ -6028,7 +6041,9 @@ sagemaker_create_mlflow_tracking_server <- function(TrackingServerName, Artifact
 #'           HubAccessConfig = list(
 #'             HubContentArn = "string"
 #'           ),
-#'           ManifestS3Uri = "string"
+#'           ManifestS3Uri = "string",
+#'           ETag = "string",
+#'           ManifestEtag = "string"
 #'         )
 #'       ),
 #'       AdditionalModelDataSources = list(
@@ -6044,7 +6059,9 @@ sagemaker_create_mlflow_tracking_server <- function(TrackingServerName, Artifact
 #'             HubAccessConfig = list(
 #'               HubContentArn = "string"
 #'             ),
-#'             ManifestS3Uri = "string"
+#'             ManifestS3Uri = "string",
+#'             ETag = "string",
+#'             ManifestEtag = "string"
 #'           )
 #'         )
 #'       ),
@@ -6730,7 +6747,9 @@ sagemaker_create_model_explainability_job_definition <- function(JobDefinitionNa
 #'             HubAccessConfig = list(
 #'               HubContentArn = "string"
 #'             ),
-#'             ManifestS3Uri = "string"
+#'             ManifestS3Uri = "string",
+#'             ETag = "string",
+#'             ManifestEtag = "string"
 #'           )
 #'         ),
 #'         ProductId = "string",
@@ -6746,8 +6765,10 @@ sagemaker_create_model_explainability_job_definition <- function(JobDefinitionNa
 #'         AdditionalS3DataSource = list(
 #'           S3DataType = "S3Object"|"S3Prefix",
 #'           S3Uri = "string",
-#'           CompressionType = "None"|"Gzip"
-#'         )
+#'           CompressionType = "None"|"Gzip",
+#'           ETag = "string"
+#'         ),
+#'         ModelDataETag = "string"
 #'       )
 #'     ),
 #'     SupportedTransformInstanceTypes = list(
@@ -6816,9 +6837,12 @@ sagemaker_create_model_explainability_job_definition <- function(JobDefinitionNa
 #'             HubAccessConfig = list(
 #'               HubContentArn = "string"
 #'             ),
-#'             ManifestS3Uri = "string"
+#'             ManifestS3Uri = "string",
+#'             ETag = "string",
+#'             ManifestEtag = "string"
 #'           )
 #'         ),
+#'         ModelDataETag = "string",
 #'         AlgorithmName = "string"
 #'       )
 #'     )
@@ -6970,7 +6994,9 @@ sagemaker_create_model_explainability_job_definition <- function(JobDefinitionNa
 #'               HubAccessConfig = list(
 #'                 HubContentArn = "string"
 #'               ),
-#'               ManifestS3Uri = "string"
+#'               ManifestS3Uri = "string",
+#'               ETag = "string",
+#'               ManifestEtag = "string"
 #'             )
 #'           ),
 #'           ProductId = "string",
@@ -6986,8 +7012,10 @@ sagemaker_create_model_explainability_job_definition <- function(JobDefinitionNa
 #'           AdditionalS3DataSource = list(
 #'             S3DataType = "S3Object"|"S3Prefix",
 #'             S3Uri = "string",
-#'             CompressionType = "None"|"Gzip"
-#'           )
+#'             CompressionType = "None"|"Gzip",
+#'             ETag = "string"
+#'           ),
+#'           ModelDataETag = "string"
 #'         )
 #'       ),
 #'       SupportedTransformInstanceTypes = list(
@@ -13271,7 +13299,8 @@ sagemaker_describe_action <- function(ActionName) {
 #'     AdditionalS3DataSource = list(
 #'       S3DataType = "S3Object"|"S3Prefix",
 #'       S3Uri = "string",
-#'       CompressionType = "None"|"Gzip"
+#'       CompressionType = "None"|"Gzip",
+#'       ETag = "string"
 #'     )
 #'   ),
 #'   InferenceSpecification = list(
@@ -13292,7 +13321,9 @@ sagemaker_describe_action <- function(ActionName) {
 #'             HubAccessConfig = list(
 #'               HubContentArn = "string"
 #'             ),
-#'             ManifestS3Uri = "string"
+#'             ManifestS3Uri = "string",
+#'             ETag = "string",
+#'             ManifestEtag = "string"
 #'           )
 #'         ),
 #'         ProductId = "string",
@@ -13308,8 +13339,10 @@ sagemaker_describe_action <- function(ActionName) {
 #'         AdditionalS3DataSource = list(
 #'           S3DataType = "S3Object"|"S3Prefix",
 #'           S3Uri = "string",
-#'           CompressionType = "None"|"Gzip"
-#'         )
+#'           CompressionType = "None"|"Gzip",
+#'           ETag = "string"
+#'         ),
+#'         ModelDataETag = "string"
 #'       )
 #'     ),
 #'     SupportedTransformInstanceTypes = list(
@@ -14436,6 +14469,7 @@ sagemaker_describe_cluster <- function(ClusterName) {
 #'       )
 #'     ),
 #'     PrivatePrimaryIp = "string",
+#'     PrivatePrimaryIpv6 = "string",
 #'     PrivateDnsHostname = "string",
 #'     Placement = list(
 #'       AvailabilityZone = "string",
@@ -18351,7 +18385,9 @@ sagemaker_describe_mlflow_tracking_server <- function(TrackingServerName) {
 #'         HubAccessConfig = list(
 #'           HubContentArn = "string"
 #'         ),
-#'         ManifestS3Uri = "string"
+#'         ManifestS3Uri = "string",
+#'         ETag = "string",
+#'         ManifestEtag = "string"
 #'       )
 #'     ),
 #'     AdditionalModelDataSources = list(
@@ -18367,7 +18403,9 @@ sagemaker_describe_mlflow_tracking_server <- function(TrackingServerName) {
 #'           HubAccessConfig = list(
 #'             HubContentArn = "string"
 #'           ),
-#'           ManifestS3Uri = "string"
+#'           ManifestS3Uri = "string",
+#'           ETag = "string",
+#'           ManifestEtag = "string"
 #'         )
 #'       )
 #'     ),
@@ -18403,7 +18441,9 @@ sagemaker_describe_mlflow_tracking_server <- function(TrackingServerName) {
 #'           HubAccessConfig = list(
 #'             HubContentArn = "string"
 #'           ),
-#'           ManifestS3Uri = "string"
+#'           ManifestS3Uri = "string",
+#'           ETag = "string",
+#'           ManifestEtag = "string"
 #'         )
 #'       ),
 #'       AdditionalModelDataSources = list(
@@ -18419,7 +18459,9 @@ sagemaker_describe_mlflow_tracking_server <- function(TrackingServerName) {
 #'             HubAccessConfig = list(
 #'               HubContentArn = "string"
 #'             ),
-#'             ManifestS3Uri = "string"
+#'             ManifestS3Uri = "string",
+#'             ETag = "string",
+#'             ManifestEtag = "string"
 #'           )
 #'         )
 #'       ),
@@ -18988,7 +19030,9 @@ sagemaker_describe_model_explainability_job_definition <- function(JobDefinition
 #'             HubAccessConfig = list(
 #'               HubContentArn = "string"
 #'             ),
-#'             ManifestS3Uri = "string"
+#'             ManifestS3Uri = "string",
+#'             ETag = "string",
+#'             ManifestEtag = "string"
 #'           )
 #'         ),
 #'         ProductId = "string",
@@ -19004,8 +19048,10 @@ sagemaker_describe_model_explainability_job_definition <- function(JobDefinition
 #'         AdditionalS3DataSource = list(
 #'           S3DataType = "S3Object"|"S3Prefix",
 #'           S3Uri = "string",
-#'           CompressionType = "None"|"Gzip"
-#'         )
+#'           CompressionType = "None"|"Gzip",
+#'           ETag = "string"
+#'         ),
+#'         ModelDataETag = "string"
 #'       )
 #'     ),
 #'     SupportedTransformInstanceTypes = list(
@@ -19036,9 +19082,12 @@ sagemaker_describe_model_explainability_job_definition <- function(JobDefinition
 #'             HubAccessConfig = list(
 #'               HubContentArn = "string"
 #'             ),
-#'             ManifestS3Uri = "string"
+#'             ManifestS3Uri = "string",
+#'             ETag = "string",
+#'             ManifestEtag = "string"
 #'           )
 #'         ),
+#'         ModelDataETag = "string",
 #'         AlgorithmName = "string"
 #'       )
 #'     )
@@ -19262,7 +19311,9 @@ sagemaker_describe_model_explainability_job_definition <- function(JobDefinition
 #'               HubAccessConfig = list(
 #'                 HubContentArn = "string"
 #'               ),
-#'               ManifestS3Uri = "string"
+#'               ManifestS3Uri = "string",
+#'               ETag = "string",
+#'               ManifestEtag = "string"
 #'             )
 #'           ),
 #'           ProductId = "string",
@@ -19278,8 +19329,10 @@ sagemaker_describe_model_explainability_job_definition <- function(JobDefinition
 #'           AdditionalS3DataSource = list(
 #'             S3DataType = "S3Object"|"S3Prefix",
 #'             S3Uri = "string",
-#'             CompressionType = "None"|"Gzip"
-#'           )
+#'             CompressionType = "None"|"Gzip",
+#'             ETag = "string"
+#'           ),
+#'           ModelDataETag = "string"
 #'         )
 #'       ),
 #'       SupportedTransformInstanceTypes = list(
@@ -21200,7 +21253,7 @@ sagemaker_describe_training_job <- function(TrainingJobName) {
 #'   ReservedCapacitySummaries = list(
 #'     list(
 #'       ReservedCapacityArn = "string",
-#'       InstanceType = "ml.p4d.24xlarge"|"ml.p5.48xlarge"|"ml.p5e.48xlarge"|"ml.p5en.48xlarge"|"ml.trn2.48xlarge",
+#'       InstanceType = "ml.p4d.24xlarge"|"ml.p5.48xlarge"|"ml.p5e.48xlarge"|"ml.p5en.48xlarge"|"ml.trn1.32xlarge"|"ml.trn2.48xlarge",
 #'       TotalInstanceCount = 123,
 #'       Status = "Pending"|"Active"|"Scheduled"|"Expired"|"Failed",
 #'       AvailabilityZone = "string",
@@ -29920,7 +29973,7 @@ sagemaker_list_training_jobs_for_hyper_parameter_tuning_job <- function(HyperPar
 #'       ReservedCapacitySummaries = list(
 #'         list(
 #'           ReservedCapacityArn = "string",
-#'           InstanceType = "ml.p4d.24xlarge"|"ml.p5.48xlarge"|"ml.p5e.48xlarge"|"ml.p5en.48xlarge"|"ml.trn2.48xlarge",
+#'           InstanceType = "ml.p4d.24xlarge"|"ml.p5.48xlarge"|"ml.p5e.48xlarge"|"ml.p5en.48xlarge"|"ml.trn1.32xlarge"|"ml.trn2.48xlarge",
 #'           TotalInstanceCount = 123,
 #'           Status = "Pending"|"Active"|"Scheduled"|"Expired"|"Failed",
 #'           AvailabilityZone = "string",
@@ -32176,7 +32229,9 @@ sagemaker_retry_pipeline_execution <- function(PipelineExecutionArn, ClientReque
 #'                   HubAccessConfig = list(
 #'                     HubContentArn = "string"
 #'                   ),
-#'                   ManifestS3Uri = "string"
+#'                   ManifestS3Uri = "string",
+#'                   ETag = "string",
+#'                   ManifestEtag = "string"
 #'                 )
 #'               ),
 #'               ProductId = "string",
@@ -32192,8 +32247,10 @@ sagemaker_retry_pipeline_execution <- function(PipelineExecutionArn, ClientReque
 #'               AdditionalS3DataSource = list(
 #'                 S3DataType = "S3Object"|"S3Prefix",
 #'                 S3Uri = "string",
-#'                 CompressionType = "None"|"Gzip"
-#'               )
+#'                 CompressionType = "None"|"Gzip",
+#'                 ETag = "string"
+#'               ),
+#'               ModelDataETag = "string"
 #'             )
 #'           ),
 #'           SupportedTransformInstanceTypes = list(
@@ -32224,9 +32281,12 @@ sagemaker_retry_pipeline_execution <- function(PipelineExecutionArn, ClientReque
 #'                   HubAccessConfig = list(
 #'                     HubContentArn = "string"
 #'                   ),
-#'                   ManifestS3Uri = "string"
+#'                   ManifestS3Uri = "string",
+#'                   ETag = "string",
+#'                   ManifestEtag = "string"
 #'                 )
 #'               ),
+#'               ModelDataETag = "string",
 #'               AlgorithmName = "string"
 #'             )
 #'           )
@@ -32392,7 +32452,9 @@ sagemaker_retry_pipeline_execution <- function(PipelineExecutionArn, ClientReque
 #'                     HubAccessConfig = list(
 #'                       HubContentArn = "string"
 #'                     ),
-#'                     ManifestS3Uri = "string"
+#'                     ManifestS3Uri = "string",
+#'                     ETag = "string",
+#'                     ManifestEtag = "string"
 #'                   )
 #'                 ),
 #'                 ProductId = "string",
@@ -32408,8 +32470,10 @@ sagemaker_retry_pipeline_execution <- function(PipelineExecutionArn, ClientReque
 #'                 AdditionalS3DataSource = list(
 #'                   S3DataType = "S3Object"|"S3Prefix",
 #'                   S3Uri = "string",
-#'                   CompressionType = "None"|"Gzip"
-#'                 )
+#'                   CompressionType = "None"|"Gzip",
+#'                   ETag = "string"
+#'                 ),
+#'                 ModelDataETag = "string"
 #'               )
 #'             ),
 #'             SupportedTransformInstanceTypes = list(
@@ -33296,7 +33360,9 @@ sagemaker_retry_pipeline_execution <- function(PipelineExecutionArn, ClientReque
 #'                 HubAccessConfig = list(
 #'                   HubContentArn = "string"
 #'                 ),
-#'                 ManifestS3Uri = "string"
+#'                 ManifestS3Uri = "string",
+#'                 ETag = "string",
+#'                 ManifestEtag = "string"
 #'               )
 #'             ),
 #'             AdditionalModelDataSources = list(
@@ -33312,7 +33378,9 @@ sagemaker_retry_pipeline_execution <- function(PipelineExecutionArn, ClientReque
 #'                   HubAccessConfig = list(
 #'                     HubContentArn = "string"
 #'                   ),
-#'                   ManifestS3Uri = "string"
+#'                   ManifestS3Uri = "string",
+#'                   ETag = "string",
+#'                   ManifestEtag = "string"
 #'                 )
 #'               )
 #'             ),
@@ -33348,7 +33416,9 @@ sagemaker_retry_pipeline_execution <- function(PipelineExecutionArn, ClientReque
 #'                   HubAccessConfig = list(
 #'                     HubContentArn = "string"
 #'                   ),
-#'                   ManifestS3Uri = "string"
+#'                   ManifestS3Uri = "string",
+#'                   ETag = "string",
+#'                   ManifestEtag = "string"
 #'                 )
 #'               ),
 #'               AdditionalModelDataSources = list(
@@ -33364,7 +33434,9 @@ sagemaker_retry_pipeline_execution <- function(PipelineExecutionArn, ClientReque
 #'                     HubAccessConfig = list(
 #'                       HubContentArn = "string"
 #'                     ),
-#'                     ManifestS3Uri = "string"
+#'                     ManifestS3Uri = "string",
+#'                     ETag = "string",
+#'                     ManifestEtag = "string"
 #'                   )
 #'                 )
 #'               ),
@@ -33871,7 +33943,7 @@ sagemaker_search <- function(Resource, SearchExpression = NULL, SortBy = NULL, S
 #'       CurrencyCode = "string",
 #'       ReservedCapacityOfferings = list(
 #'         list(
-#'           InstanceType = "ml.p4d.24xlarge"|"ml.p5.48xlarge"|"ml.p5e.48xlarge"|"ml.p5en.48xlarge"|"ml.trn2.48xlarge",
+#'           InstanceType = "ml.p4d.24xlarge"|"ml.p5.48xlarge"|"ml.p5e.48xlarge"|"ml.p5en.48xlarge"|"ml.trn1.32xlarge"|"ml.trn2.48xlarge",
 #'           InstanceCount = 123,
 #'           AvailabilityZone = "string",
 #'           DurationHours = 123,
@@ -33892,7 +33964,7 @@ sagemaker_search <- function(Resource, SearchExpression = NULL, SortBy = NULL, S
 #' @section Request syntax:
 #' ```
 #' svc$search_training_plan_offerings(
-#'   InstanceType = "ml.p4d.24xlarge"|"ml.p5.48xlarge"|"ml.p5e.48xlarge"|"ml.p5en.48xlarge"|"ml.trn2.48xlarge",
+#'   InstanceType = "ml.p4d.24xlarge"|"ml.p5.48xlarge"|"ml.p5e.48xlarge"|"ml.p5en.48xlarge"|"ml.trn1.32xlarge"|"ml.trn2.48xlarge",
 #'   InstanceCount = 123,
 #'   StartTimeAfter = as.POSIXct(
 #'     "2015-01-01"
@@ -37526,7 +37598,9 @@ sagemaker_update_model_card <- function(ModelCardName, Content = NULL, ModelCard
 #'               HubAccessConfig = list(
 #'                 HubContentArn = "string"
 #'               ),
-#'               ManifestS3Uri = "string"
+#'               ManifestS3Uri = "string",
+#'               ETag = "string",
+#'               ManifestEtag = "string"
 #'             )
 #'           ),
 #'           ProductId = "string",
@@ -37542,8 +37616,10 @@ sagemaker_update_model_card <- function(ModelCardName, Content = NULL, ModelCard
 #'           AdditionalS3DataSource = list(
 #'             S3DataType = "S3Object"|"S3Prefix",
 #'             S3Uri = "string",
-#'             CompressionType = "None"|"Gzip"
-#'           )
+#'             CompressionType = "None"|"Gzip",
+#'             ETag = "string"
+#'           ),
+#'           ModelDataETag = "string"
 #'         )
 #'       ),
 #'       SupportedTransformInstanceTypes = list(
@@ -37578,7 +37654,9 @@ sagemaker_update_model_card <- function(ModelCardName, Content = NULL, ModelCard
 #'             HubAccessConfig = list(
 #'               HubContentArn = "string"
 #'             ),
-#'             ManifestS3Uri = "string"
+#'             ManifestS3Uri = "string",
+#'             ETag = "string",
+#'             ManifestEtag = "string"
 #'           )
 #'         ),
 #'         ProductId = "string",
@@ -37594,8 +37672,10 @@ sagemaker_update_model_card <- function(ModelCardName, Content = NULL, ModelCard
 #'         AdditionalS3DataSource = list(
 #'           S3DataType = "S3Object"|"S3Prefix",
 #'           S3Uri = "string",
-#'           CompressionType = "None"|"Gzip"
-#'         )
+#'           CompressionType = "None"|"Gzip",
+#'           ETag = "string"
+#'         ),
+#'         ModelDataETag = "string"
 #'       )
 #'     ),
 #'     SupportedTransformInstanceTypes = list(

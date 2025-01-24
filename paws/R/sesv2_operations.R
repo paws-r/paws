@@ -4415,7 +4415,7 @@ sesv2_list_multi_region_endpoints <- function(NextToken = NULL, PageSize = NULL)
 #'   Recommendations = list(
 #'     list(
 #'       ResourceArn = "string",
-#'       Type = "DKIM"|"DMARC"|"SPF"|"BIMI",
+#'       Type = "DKIM"|"DMARC"|"SPF"|"BIMI"|"COMPLAINT",
 #'       Description = "string",
 #'       Status = "OPEN"|"FIXED",
 #'       CreatedTimestamp = as.POSIXct(

@@ -225,7 +225,7 @@ sqs_cancel_message_move_task <- function(TaskHandle) {
 #' of queues you use to process your messages. To request a limit increase,
 #' file a support request.
 #' 
-#' For FIFO queues, there can be a maximum of 20,000 in flight messages
+#' For FIFO queues, there can be a maximum of 120,000 in flight messages
 #' (received from a queue by a consumer, but not yet deleted from the
 #' queue). If you reach this limit, Amazon SQS returns no error messages.
 #' 
@@ -404,18 +404,24 @@ sqs_change_message_visibility_batch <- function(QueueUrl, Entries) {
 #' After you create a queue, you must wait at least one second after the
 #' queue is created to be able to use the queue.
 #' 
-#' To get the queue URL, use the [`get_queue_url`][sqs_get_queue_url]
-#' action. [`get_queue_url`][sqs_get_queue_url] requires only the
-#' `QueueName` parameter. be aware of existing queue names:
+#' To retrieve the URL of a queue, use the
+#' [`get_queue_url`](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/API_GetQueueUrl.html)
+#' action. This action only requires the
+#' [`QueueName`](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/API_CreateQueue.html#API_CreateQueue_RequestSyntax)
+#' parameter.
 #' 
-#' -   If you provide the name of an existing queue along with the exact
-#'     names and values of all the queue's attributes,
-#'     [`create_queue`][sqs_create_queue] returns the queue URL for the
-#'     existing queue.
+#' When creating queues, keep the following points in mind:
 #' 
-#' -   If the queue name, attribute names, or attribute values don't match
-#'     an existing queue, [`create_queue`][sqs_create_queue] returns an
-#'     error.
+#' -   If you specify the name of an existing queue and provide the exact
+#'     same names and values for all its attributes, the
+#'     [`create_queue`](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/API_CreateQueue.html)
+#'     action will return the URL of the existing queue instead of creating
+#'     a new one.
+#' 
+#' -   If you attempt to create a queue with a name that already exists but
+#'     with different attribute names or values, the
+#'     [`create_queue`][sqs_create_queue] action will return an error. This
+#'     ensures that existing queues are not inadvertently altered.
 #' 
 #' Cross-account permissions don't apply to this action. For more
 #' information, see [Grant cross-account permissions to a role and a
@@ -717,12 +723,14 @@ sqs_create_queue <- function(QueueName, Attributes = NULL, tags = NULL) {
 #' automatically deletes messages left in a queue longer than the retention
 #' period configured for the queue.
 #' 
-#' The `ReceiptHandle` is associated with a *specific instance* of
-#' receiving a message. If you receive a message more than once, the
-#' `ReceiptHandle` is different each time you receive a message. When you
-#' use the [`delete_message`][sqs_delete_message] action, you must provide
-#' the most recently received `ReceiptHandle` for the message (otherwise,
-#' the request succeeds, but the message will not be deleted).
+#' Each time you receive a message, meaning when a consumer retrieves a
+#' message from the queue, it comes with a unique `ReceiptHandle`. If you
+#' receive the same message more than once, you will get a different
+#' `ReceiptHandle` each time. When you want to delete a message using the
+#' [`delete_message`][sqs_delete_message] action, you must use the
+#' `ReceiptHandle` from the most recent time you received the message. If
+#' you use an old `ReceiptHandle`, the request will succeed, but the
+#' message might not be deleted.
 #' 
 #' For standard queues, it is possible to receive a message even after you
 #' delete it. This might happen on rare occasions if one of the servers
@@ -1161,30 +1169,32 @@ sqs_get_queue_attributes <- function(QueueUrl, AttributeNames = NULL) {
 }
 .sqs$operations$get_queue_attributes <- sqs_get_queue_attributes
 
-#' Returns the URL of an existing Amazon SQS queue
+#' The GetQueueUrl API returns the URL of an existing Amazon SQS queue
 #'
 #' @description
-#' Returns the URL of an existing Amazon SQS queue.
+#' The [`get_queue_url`][sqs_get_queue_url] API returns the URL of an
+#' existing Amazon SQS queue. This is useful when you know the queue's name
+#' but need to retrieve its URL for further operations.
 #' 
-#' To access a queue that belongs to another AWS account, use the
+#' To access a queue owned by another Amazon Web Services account, use the
 #' `QueueOwnerAWSAccountId` parameter to specify the account ID of the
-#' queue's owner. The queue's owner must grant you permission to access the
-#' queue. For more information about shared queue access, see
-#' [`add_permission`][sqs_add_permission] or see [Allow Developers to Write
-#' Messages to a Shared
-#' Queue](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-basic-examples-of-iam-policies.html#write-messages-to-shared-queue)
+#' queue's owner. Note that the queue owner must grant you the necessary
+#' permissions to access the queue. For more information about accessing
+#' shared queues, see the [`add_permission`][sqs_add_permission] API or
+#' [Allow developers to write messages to a shared
+#' queue](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-basic-examples-of-iam-policies.html#write-messages-to-shared-queue)
 #' in the *Amazon SQS Developer Guide*.
 #'
 #' @usage
 #' sqs_get_queue_url(QueueName, QueueOwnerAWSAccountId)
 #'
-#' @param QueueName &#91;required&#93; The name of the queue whose URL must be fetched. Maximum 80 characters.
-#' Valid values: alphanumeric characters, hyphens (`-`), and underscores
-#' (`_`).
-#' 
-#' Queue URLs and names are case-sensitive.
-#' @param QueueOwnerAWSAccountId The Amazon Web Services account ID of the account that created the
-#' queue.
+#' @param QueueName &#91;required&#93; (Required) The name of the queue for which you want to fetch the URL.
+#' The name can be up to 80 characters long and can include alphanumeric
+#' characters, hyphens (-), and underscores (_). Queue URLs and names are
+#' case-sensitive.
+#' @param QueueOwnerAWSAccountId (Optional) The Amazon Web Services account ID of the account that
+#' created the queue. This is only required when you are attempting to
+#' access a queue owned by another Amazon Web Services account.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1592,9 +1602,9 @@ sqs_purge_queue <- function(QueueUrl) {
 #' 
 #' Short poll is the default behavior where a weighted random set of
 #' machines is sampled on a [`receive_message`][sqs_receive_message] call.
-#' Thus, only the messages on the sampled machines are returned. If the
-#' number of messages in the queue is small (fewer than 1,000), you most
-#' likely get fewer messages than you requested per
+#' Therefore, only the messages on the sampled machines are returned. If
+#' the number of messages in the queue is small (fewer than 1,000), you
+#' most likely get fewer messages than you requested per
 #' [`receive_message`][sqs_receive_message] call. If the number of messages
 #' in the queue is extremely small, you might not receive any messages in a
 #' particular [`receive_message`][sqs_receive_message] response. If this
@@ -1623,15 +1633,8 @@ sqs_purge_queue <- function(QueueUrl) {
 #' You can provide the `VisibilityTimeout` parameter in your request. The
 #' parameter is applied to the messages that Amazon SQS returns in the
 #' response. If you don't include the parameter, the overall visibility
-#' timeout for the queue is used for the returned messages. For more
-#' information, see [Visibility
-#' Timeout](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html)
-#' in the *Amazon SQS Developer Guide*.
-#' 
-#' A message that isn't deleted or a message whose visibility isn't
-#' extended before the visibility timeout expires counts as a failed
-#' receive. Depending on the configuration of the queue, the message might
-#' be sent to the dead-letter queue.
+#' timeout for the queue is used for the returned messages. The default
+#' visibility timeout for a queue is 30 seconds.
 #' 
 #' In the future, new attributes might be added. If you write code that
 #' calls this action, we recommend that you structure your code so that it
@@ -1645,7 +1648,7 @@ sqs_purge_queue <- function(QueueUrl) {
 #' @param QueueUrl &#91;required&#93; The URL of the Amazon SQS queue from which messages are received.
 #' 
 #' Queue URLs and names are case-sensitive.
-#' @param AttributeNames This parameter has been deprecated but will be supported for backward
+#' @param AttributeNames This parameter has been discontinued but will be supported for backward
 #' compatibility. To provide attribute names, you are encouraged to use
 #' `MessageSystemAttributeNames`.
 #' 
@@ -1756,11 +1759,41 @@ sqs_purge_queue <- function(QueueUrl) {
 #' Valid values: 1 to 10. Default: 1.
 #' @param VisibilityTimeout The duration (in seconds) that the received messages are hidden from
 #' subsequent retrieve requests after being retrieved by a
-#' [`receive_message`][sqs_receive_message] request.
+#' [`receive_message`][sqs_receive_message] request. If not specified, the
+#' default visibility timeout for the queue is used, which is 30 seconds.
+#' 
+#' Understanding `VisibilityTimeout`:
+#' 
+#' -   When a message is received from a queue, it becomes temporarily
+#'     invisible to other consumers for the duration of the visibility
+#'     timeout. This prevents multiple consumers from processing the same
+#'     message simultaneously. If the message is not deleted or its
+#'     visibility timeout is not extended before the timeout expires, it
+#'     becomes visible again and can be retrieved by other consumers.
+#' 
+#' -   Setting an appropriate visibility timeout is crucial. If it's too
+#'     short, the message might become visible again before processing is
+#'     complete, leading to duplicate processing. If it's too long, it
+#'     delays the reprocessing of messages if the initial processing fails.
+#' 
+#' -   You can adjust the visibility timeout using the
+#'     `--visibility-timeout` parameter in the `receive-message` command to
+#'     match the processing time required by your application.
+#' 
+#' -   A message that isn't deleted or a message whose visibility isn't
+#'     extended before the visibility timeout expires counts as a failed
+#'     receive. Depending on the configuration of the queue, the message
+#'     might be sent to the dead-letter queue.
+#' 
+#' For more information, see [Visibility
+#' Timeout](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html)
+#' in the *Amazon SQS Developer Guide*.
 #' @param WaitTimeSeconds The duration (in seconds) for which the call waits for a message to
 #' arrive in the queue before returning. If a message is available, the
 #' call returns sooner than `WaitTimeSeconds`. If no messages are available
-#' and the wait time expires, the call does not return a message list.
+#' and the wait time expires, the call does not return a message list. If
+#' you are using the Java SDK, it returns a `ReceiveMessageResponse`
+#' object, which has a empty list instead of a Null object.
 #' 
 #' To avoid HTTP errors, ensure that the HTTP response timeout for
 #' [`receive_message`][sqs_receive_message] requests is longer than the

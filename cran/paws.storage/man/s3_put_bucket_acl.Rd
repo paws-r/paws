@@ -26,7 +26,7 @@ grantee.}
 
 \item{Bucket}{[required] The bucket to which to apply the ACL.}
 
-\item{ContentMD5}{The base64-encoded 128-bit MD5 digest of the data. This header must be
+\item{ContentMD5}{The Base64 encoded 128-bit \code{MD5} digest of the data. This header must be
 used as a message integrity check to verify that the request body was
 not corrupted in transit. For more information, go to \href{https://www.ietf.org/rfc/rfc1864.txt}{RFC 1864.}
 

@@ -525,6 +525,23 @@ sns_create_sms_sandbox_phone_number <- function(PhoneNumber, LanguageCode = NULL
 #'         (Optional) To override the generated value, you can specify a
 #'         value for the `MessageDeduplicationId` parameter for the
 #'         [`publish`][sns_publish] action.
+#' 
+#' 
+#' -   `FifoThroughputScope` – Enables higher throughput for your FIFO
+#'     topic by adjusting the scope of deduplication. This attribute has
+#'     two possible values:
+#' 
+#'     -   `Topic` – The scope of message deduplication is across the
+#'         entire topic. This is the default value and maintains existing
+#'         behavior, with a maximum throughput of 3000 messages per second
+#'         or 20MB per second, whichever comes first.
+#' 
+#'     -   `MessageGroup` – The scope of deduplication is within each
+#'         individual message group, which enables higher throughput per
+#'         topic subject to regional quotas. For more information on quotas
+#'         or to request an increase, see [Amazon SNS service
+#'         quotas](https://docs.aws.amazon.com/general/latest/gr/sns.html)
+#'         in the Amazon Web Services General Reference.
 #' @param Tags The list of tags to add to a new topic.
 #' 
 #' To be able to tag a topic on creation, you must have the
@@ -1964,20 +1981,52 @@ sns_opt_in_phone_number <- function(phoneNumber) {
 #' 
 #' Valid value: `json`
 #' @param MessageAttributes Message attributes for Publish action.
-#' @param MessageDeduplicationId This parameter applies only to FIFO (first-in-first-out) topics. The
-#' `MessageDeduplicationId` can contain up to 128 alphanumeric characters
-#' `(a-z, A-Z, 0-9)` and punctuation
-#' `` (!\"#$%&\'()*+,-./:;<=>?@@[\]^_\`{|}~) ``.
+#' @param MessageDeduplicationId -   This parameter applies only to FIFO (first-in-first-out) topics. The
+#'     `MessageDeduplicationId` can contain up to 128 alphanumeric
+#'     characters `(a-z, A-Z, 0-9)` and punctuation
+#'     `` (!\"#$%&\'()*+,-./:;<=>?@@[\]^_\`{|}~) ``.
 #' 
-#' Every message must have a unique `MessageDeduplicationId`, which is a
-#' token used for deduplication of sent messages. If a message with a
-#' particular `MessageDeduplicationId` is sent successfully, any message
-#' sent with the same `MessageDeduplicationId` during the 5-minute
-#' deduplication interval is treated as a duplicate.
+#' -   Every message must have a unique `MessageDeduplicationId`, which is
+#'     a token used for deduplication of sent messages within the 5 minute
+#'     minimum deduplication interval.
 #' 
-#' If the topic has `ContentBasedDeduplication` set, the system generates a
-#' `MessageDeduplicationId` based on the contents of the message. Your
-#' `MessageDeduplicationId` overrides the generated one.
+#' -   The scope of deduplication depends on the `FifoThroughputScope`
+#'     attribute, when set to `Topic` the message deduplication scope is
+#'     across the entire topic, when set to `MessageGroup` the message
+#'     deduplication scope is within each individual message group.
+#' 
+#' -   If a message with a particular `MessageDeduplicationId` is sent
+#'     successfully, subsequent messages within the deduplication scope and
+#'     interval, with the same `MessageDeduplicationId`, are accepted
+#'     successfully but aren't delivered.
+#' 
+#' -   Every message must have a unique `MessageDeduplicationId`:
+#' 
+#'     -   You may provide a `MessageDeduplicationId` explicitly.
+#' 
+#'     -   If you aren't able to provide a `MessageDeduplicationId` and you
+#'         enable `ContentBasedDeduplication` for your topic, Amazon SNS
+#'         uses a SHA-256 hash to generate the `MessageDeduplicationId`
+#'         using the body of the message (but not the attributes of the
+#'         message).
+#' 
+#'     -   If you don't provide a `MessageDeduplicationId` and the topic
+#'         doesn't have `ContentBasedDeduplication` set, the action fails
+#'         with an error.
+#' 
+#'     -   If the topic has a `ContentBasedDeduplication` set, your
+#'         `MessageDeduplicationId` overrides the generated one.
+#' 
+#' -   When `ContentBasedDeduplication` is in effect, messages with
+#'     identical content sent within the deduplication scope and interval
+#'     are treated as duplicates and only one copy of the message is
+#'     delivered.
+#' 
+#' -   If you send one message with `ContentBasedDeduplication` enabled,
+#'     and then another message with a `MessageDeduplicationId` that is the
+#'     same as the one generated for the first `MessageDeduplicationId`,
+#'     the two messages are treated as duplicates, within the deduplication
+#'     scope and interval, and only one copy of the message is delivered.
 #' @param MessageGroupId This parameter applies only to FIFO (first-in-first-out) topics. The
 #' `MessageGroupId` can contain up to 128 alphanumeric characters
 #' `(a-z, A-Z, 0-9)` and punctuation
@@ -2862,6 +2911,23 @@ sns_set_subscription_attributes <- function(SubscriptionArn, AttributeName, Attr
 #'         (Optional) To override the generated value, you can specify a
 #'         value for the `MessageDeduplicationId` parameter for the
 #'         [`publish`][sns_publish] action.
+#' 
+#' 
+#' -   `FifoThroughputScope` – Enables higher throughput for your FIFO
+#'     topic by adjusting the scope of deduplication. This attribute has
+#'     two possible values:
+#' 
+#'     -   `Topic` – The scope of message deduplication is across the
+#'         entire topic. This is the default value and maintains existing
+#'         behavior, with a maximum throughput of 3000 messages per second
+#'         or 20MB per second, whichever comes first.
+#' 
+#'     -   `MessageGroup` – The scope of deduplication is within each
+#'         individual message group, which enables higher throughput per
+#'         topic subject to regional quotas. For more information on quotas
+#'         or to request an increase, see [Amazon SNS service
+#'         quotas](https://docs.aws.amazon.com/general/latest/gr/sns.html)
+#'         in the Amazon Web Services General Reference.
 #' @param AttributeValue The new value for the attribute.
 #'
 #' @return

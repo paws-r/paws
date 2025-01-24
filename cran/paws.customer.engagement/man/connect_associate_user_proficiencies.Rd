@@ -15,7 +15,7 @@ ID in the Amazon Resource Name (ARN of the instance).}
 \item{UserProficiencies}{[required] The proficiencies to associate with the user.}
 }
 \description{
-\>Associates a set of proficiencies with a user.
+Associates a set of proficiencies with a user.
 
 See \url{https://www.paws-r-sdk.com/docs/connect_associate_user_proficiencies/} for full documentation.
 }

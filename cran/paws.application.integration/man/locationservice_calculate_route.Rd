@@ -98,8 +98,7 @@ Default Value: \code{Car}}
 calculate the route. Otherwise, the best time of day to travel with the
 best traffic conditions is used to calculate the route.
 \itemize{
-\item In \href{https://www.iso.org/iso-8601-date-and-time-format.html}{ISO 8601}
-format: \code{YYYY-MM-DDThh:mm:ss.sssZ}. For example,
+\item In ISO 8601 format: \code{YYYY-MM-DDThh:mm:ss.sssZ}. For example,
 \verb{2020–07-2T12:15:20.000Z+01:00}
 }}
 

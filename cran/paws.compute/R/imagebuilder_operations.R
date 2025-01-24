@@ -1506,6 +1506,57 @@ imagebuilder_import_component <- function(name, semanticVersion, description = N
 }
 .imagebuilder$operations$import_component <- imagebuilder_import_component
 
+#' Import a Windows operating system image from a verified Microsoft ISO
+#' disk file
+#'
+#' @description
+#' Import a Windows operating system image from a verified Microsoft ISO disk file. The following disk images are supported:
+#'
+#' See [https://www.paws-r-sdk.com/docs/imagebuilder_import_disk_image/](https://www.paws-r-sdk.com/docs/imagebuilder_import_disk_image/) for full documentation.
+#'
+#' @param name &#91;required&#93; The name of the image resource that's created from the import.
+#' @param semanticVersion &#91;required&#93; The semantic version to attach to the image that's created during the
+#' import process. This version follows the semantic version syntax.
+#' @param description The description for your disk image import.
+#' @param platform &#91;required&#93; The operating system platform for the imported image. Allowed values
+#' include the following: `Windows`.
+#' @param osVersion &#91;required&#93; The operating system version for the imported image. Allowed values
+#' include the following: `Microsoft Windows 11`.
+#' @param executionRole The name or Amazon Resource Name (ARN) for the IAM role you create that
+#' grants Image Builder access to perform workflow actions to import an
+#' image from a Microsoft ISO file.
+#' @param infrastructureConfigurationArn &#91;required&#93; The Amazon Resource Name (ARN) of the infrastructure configuration
+#' resource that's used for launching the EC2 instance on which the ISO
+#' image is built.
+#' @param uri &#91;required&#93; The `uri` of the ISO disk file that's stored in Amazon S3.
+#' @param tags Tags that are attached to image resources created from the import.
+#' @param clientToken &#91;required&#93; Unique, case-sensitive identifier you provide to ensure idempotency of
+#' the request. For more information, see [Ensuring
+#' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html)
+#' in the *Amazon EC2 API Reference*.
+#'
+#' @keywords internal
+#'
+#' @rdname imagebuilder_import_disk_image
+imagebuilder_import_disk_image <- function(name, semanticVersion, description = NULL, platform, osVersion, executionRole = NULL, infrastructureConfigurationArn, uri, tags = NULL, clientToken) {
+  op <- new_operation(
+    name = "ImportDiskImage",
+    http_method = "PUT",
+    http_path = "/ImportDiskImage",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .imagebuilder$import_disk_image_input(name = name, semanticVersion = semanticVersion, description = description, platform = platform, osVersion = osVersion, executionRole = executionRole, infrastructureConfigurationArn = infrastructureConfigurationArn, uri = uri, tags = tags, clientToken = clientToken)
+  output <- .imagebuilder$import_disk_image_output()
+  config <- get_config()
+  svc <- .imagebuilder$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.imagebuilder$operations$import_disk_image <- imagebuilder_import_disk_image
+
 #' When you export your virtual machine (VM) from its virtualization
 #' environment, that process creates a set of one or more disk container
 #' files that act as snapshots of your VM’s environment, settings, and data

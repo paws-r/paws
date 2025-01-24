@@ -899,7 +899,7 @@ workspaces_create_updated_workspace_image <- function(Name, Description, SourceI
 #'       Capacity = "string"
 #'     ),
 #'     ComputeType = list(
-#'       Name = "VALUE"|"STANDARD"|"PERFORMANCE"|"POWER"|"GRAPHICS"|"POWERPRO"|"GRAPHICSPRO"|"GRAPHICS_G4DN"|"GRAPHICSPRO_G4DN"
+#'       Name = "VALUE"|"STANDARD"|"PERFORMANCE"|"POWER"|"GRAPHICS"|"POWERPRO"|"GENERALPURPOSE_4XLARGE"|"GENERALPURPOSE_8XLARGE"|"GRAPHICSPRO"|"GRAPHICS_G4DN"|"GRAPHICSPRO_G4DN"
 #'     ),
 #'     LastUpdatedTime = as.POSIXct(
 #'       "2015-01-01"
@@ -920,7 +920,7 @@ workspaces_create_updated_workspace_image <- function(Name, Description, SourceI
 #'   BundleDescription = "string",
 #'   ImageId = "string",
 #'   ComputeType = list(
-#'     Name = "VALUE"|"STANDARD"|"PERFORMANCE"|"POWER"|"GRAPHICS"|"POWERPRO"|"GRAPHICSPRO"|"GRAPHICS_G4DN"|"GRAPHICSPRO_G4DN"
+#'     Name = "VALUE"|"STANDARD"|"PERFORMANCE"|"POWER"|"GRAPHICS"|"POWERPRO"|"GENERALPURPOSE_4XLARGE"|"GENERALPURPOSE_8XLARGE"|"GRAPHICSPRO"|"GRAPHICS_G4DN"|"GRAPHICSPRO_G4DN"
 #'   ),
 #'   UserStorage = list(
 #'     Capacity = "string"
@@ -1082,7 +1082,7 @@ workspaces_create_workspace_image <- function(Name, Description, WorkspaceId, Ta
 #'           RunningModeAutoStopTimeoutInMinutes = 123,
 #'           RootVolumeSizeGib = 123,
 #'           UserVolumeSizeGib = 123,
-#'           ComputeTypeName = "VALUE"|"STANDARD"|"PERFORMANCE"|"POWER"|"GRAPHICS"|"POWERPRO"|"GRAPHICSPRO"|"GRAPHICS_G4DN"|"GRAPHICSPRO_G4DN",
+#'           ComputeTypeName = "VALUE"|"STANDARD"|"PERFORMANCE"|"POWER"|"GRAPHICS"|"POWERPRO"|"GENERALPURPOSE_4XLARGE"|"GENERALPURPOSE_8XLARGE"|"GRAPHICSPRO"|"GRAPHICS_G4DN"|"GRAPHICSPRO_G4DN",
 #'           Protocols = list(
 #'             "PCOIP"|"WSP"
 #'           ),
@@ -1125,7 +1125,7 @@ workspaces_create_workspace_image <- function(Name, Description, WorkspaceId, Ta
 #'         RunningModeAutoStopTimeoutInMinutes = 123,
 #'         RootVolumeSizeGib = 123,
 #'         UserVolumeSizeGib = 123,
-#'         ComputeTypeName = "VALUE"|"STANDARD"|"PERFORMANCE"|"POWER"|"GRAPHICS"|"POWERPRO"|"GRAPHICSPRO"|"GRAPHICS_G4DN"|"GRAPHICSPRO_G4DN",
+#'         ComputeTypeName = "VALUE"|"STANDARD"|"PERFORMANCE"|"POWER"|"GRAPHICS"|"POWERPRO"|"GENERALPURPOSE_4XLARGE"|"GENERALPURPOSE_8XLARGE"|"GRAPHICSPRO"|"GRAPHICS_G4DN"|"GRAPHICSPRO_G4DN",
 #'         Protocols = list(
 #'           "PCOIP"|"WSP"
 #'         ),
@@ -1185,7 +1185,7 @@ workspaces_create_workspace_image <- function(Name, Description, WorkspaceId, Ta
 #'         RunningModeAutoStopTimeoutInMinutes = 123,
 #'         RootVolumeSizeGib = 123,
 #'         UserVolumeSizeGib = 123,
-#'         ComputeTypeName = "VALUE"|"STANDARD"|"PERFORMANCE"|"POWER"|"GRAPHICS"|"POWERPRO"|"GRAPHICSPRO"|"GRAPHICS_G4DN"|"GRAPHICSPRO_G4DN",
+#'         ComputeTypeName = "VALUE"|"STANDARD"|"PERFORMANCE"|"POWER"|"GRAPHICS"|"POWERPRO"|"GENERALPURPOSE_4XLARGE"|"GENERALPURPOSE_8XLARGE"|"GRAPHICSPRO"|"GRAPHICS_G4DN"|"GRAPHICSPRO_G4DN",
 #'         Protocols = list(
 #'           "PCOIP"|"WSP"
 #'         ),
@@ -2114,7 +2114,7 @@ workspaces_describe_application_associations <- function(MaxResults = NULL, Next
 #'       Owner = "string",
 #'       State = "PENDING"|"ERROR"|"AVAILABLE"|"UNINSTALL_ONLY",
 #'       SupportedComputeTypeNames = list(
-#'         "VALUE"|"STANDARD"|"PERFORMANCE"|"POWER"|"GRAPHICS"|"POWERPRO"|"GRAPHICSPRO"|"GRAPHICS_G4DN"|"GRAPHICSPRO_G4DN"
+#'         "VALUE"|"STANDARD"|"PERFORMANCE"|"POWER"|"GRAPHICS"|"POWERPRO"|"GENERALPURPOSE_4XLARGE"|"GENERALPURPOSE_8XLARGE"|"GRAPHICSPRO"|"GRAPHICS_G4DN"|"GRAPHICSPRO_G4DN"
 #'       ),
 #'       SupportedOperatingSystemNames = list(
 #'         "AMAZON_LINUX_2"|"UBUNTU_18_04"|"UBUNTU_20_04"|"UBUNTU_22_04"|"UNKNOWN"|"WINDOWS_10"|"WINDOWS_11"|"WINDOWS_7"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"|"RHEL_8"|"ROCKY_8"
@@ -2132,7 +2132,7 @@ workspaces_describe_application_associations <- function(MaxResults = NULL, Next
 #'     "string"
 #'   ),
 #'   ComputeTypeNames = list(
-#'     "VALUE"|"STANDARD"|"PERFORMANCE"|"POWER"|"GRAPHICS"|"POWERPRO"|"GRAPHICSPRO"|"GRAPHICS_G4DN"|"GRAPHICSPRO_G4DN"
+#'     "VALUE"|"STANDARD"|"PERFORMANCE"|"POWER"|"GRAPHICS"|"POWERPRO"|"GENERALPURPOSE_4XLARGE"|"GENERALPURPOSE_8XLARGE"|"GRAPHICSPRO"|"GRAPHICS_G4DN"|"GRAPHICSPRO_G4DN"
 #'   ),
 #'   LicenseType = "LICENSED"|"UNLICENSED",
 #'   OperatingSystemNames = list(
@@ -2934,7 +2934,7 @@ workspaces_describe_workspace_associations <- function(WorkspaceId, AssociatedRe
 #'         Capacity = "string"
 #'       ),
 #'       ComputeType = list(
-#'         Name = "VALUE"|"STANDARD"|"PERFORMANCE"|"POWER"|"GRAPHICS"|"POWERPRO"|"GRAPHICSPRO"|"GRAPHICS_G4DN"|"GRAPHICSPRO_G4DN"
+#'         Name = "VALUE"|"STANDARD"|"PERFORMANCE"|"POWER"|"GRAPHICS"|"POWERPRO"|"GENERALPURPOSE_4XLARGE"|"GENERALPURPOSE_8XLARGE"|"GRAPHICSPRO"|"GRAPHICS_G4DN"|"GRAPHICSPRO_G4DN"
 #'       ),
 #'       LastUpdatedTime = as.POSIXct(
 #'         "2015-01-01"
@@ -3426,7 +3426,7 @@ workspaces_describe_workspace_snapshots <- function(WorkspaceId) {
 #'         RunningModeAutoStopTimeoutInMinutes = 123,
 #'         RootVolumeSizeGib = 123,
 #'         UserVolumeSizeGib = 123,
-#'         ComputeTypeName = "VALUE"|"STANDARD"|"PERFORMANCE"|"POWER"|"GRAPHICS"|"POWERPRO"|"GRAPHICSPRO"|"GRAPHICS_G4DN"|"GRAPHICSPRO_G4DN",
+#'         ComputeTypeName = "VALUE"|"STANDARD"|"PERFORMANCE"|"POWER"|"GRAPHICS"|"POWERPRO"|"GENERALPURPOSE_4XLARGE"|"GENERALPURPOSE_8XLARGE"|"GRAPHICSPRO"|"GRAPHICS_G4DN"|"GRAPHICSPRO_G4DN",
 #'         Protocols = list(
 #'           "PCOIP"|"WSP"
 #'         ),
@@ -4969,7 +4969,7 @@ workspaces_modify_workspace_creation_properties <- function(ResourceId, Workspac
 #'     RunningModeAutoStopTimeoutInMinutes = 123,
 #'     RootVolumeSizeGib = 123,
 #'     UserVolumeSizeGib = 123,
-#'     ComputeTypeName = "VALUE"|"STANDARD"|"PERFORMANCE"|"POWER"|"GRAPHICS"|"POWERPRO"|"GRAPHICSPRO"|"GRAPHICS_G4DN"|"GRAPHICSPRO_G4DN",
+#'     ComputeTypeName = "VALUE"|"STANDARD"|"PERFORMANCE"|"POWER"|"GRAPHICS"|"POWERPRO"|"GENERALPURPOSE_4XLARGE"|"GENERALPURPOSE_8XLARGE"|"GRAPHICSPRO"|"GRAPHICS_G4DN"|"GRAPHICSPRO_G4DN",
 #'     Protocols = list(
 #'       "PCOIP"|"WSP"
 #'     ),

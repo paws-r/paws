@@ -22,7 +22,8 @@ ec2_create_client_vpn_endpoint(
   SelfServicePortal = NULL,
   ClientConnectOptions = NULL,
   SessionTimeoutHours = NULL,
-  ClientLoginBannerOptions = NULL
+  ClientLoginBannerOptions = NULL,
+  DisconnectOnSessionTimeout = NULL
 )
 }
 \arguments{
@@ -111,6 +112,11 @@ Default value: \code{24}}
 \item{ClientLoginBannerOptions}{Options for enabling a customizable text banner that will be displayed
 on Amazon Web Services provided clients when a VPN session is
 established.}
+
+\item{DisconnectOnSessionTimeout}{Indicates whether the client VPN session is disconnected after the
+maximum timeout specified in \code{SessionTimeoutHours} is reached. If
+\code{true}, users are prompted to reconnect client VPN. If \code{false}, client
+VPN attempts to reconnect automatically. The default value is \code{false}.}
 }
 \description{
 Creates a Client VPN endpoint. A Client VPN endpoint is the resource you create and configure to enable and manage client VPN sessions. It is the destination endpoint at which all client VPN sessions are terminated.

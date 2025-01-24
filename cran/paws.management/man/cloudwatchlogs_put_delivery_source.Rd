@@ -17,11 +17,20 @@ sending logs. For example,
 \item{logType}{[required] Defines the type of log that the source is sending.
 \itemize{
 \item For Amazon Bedrock, the valid value is \code{APPLICATION_LOGS}.
+\item For CloudFront, the valid value is \code{ACCESS_LOGS}.
 \item For Amazon CodeWhisperer, the valid value is \code{EVENT_LOGS}.
+\item For Elemental MediaPackage, the valid values are
+\code{EGRESS_ACCESS_LOGS} and \code{INGRESS_ACCESS_LOGS}.
+\item For Elemental MediaTailor, the valid values are
+\code{AD_DECISION_SERVER_LOGS}, \code{MANIFEST_SERVICE_LOGS}, and
+\code{TRANSCODE_LOGS}.
 \item For IAM Identity Center, the valid value is \code{ERROR_LOGS}.
+\item For Amazon Q, the valid value is \code{EVENT_LOGS}.
+\item For Amazon SES mail manager, the valid value is \code{APPLICATION_LOG}.
 \item For Amazon WorkMail, the valid values are \code{ACCESS_CONTROL_LOGS},
-\code{AUTHENTICATION_LOGS}, \code{WORKMAIL_AVAILABILITY_PROVIDER_LOGS}, and
-\code{WORKMAIL_MAILBOX_ACCESS_LOGS}.
+\code{AUTHENTICATION_LOGS}, \code{WORKMAIL_AVAILABILITY_PROVIDER_LOGS},
+\code{WORKMAIL_MAILBOX_ACCESS_LOGS}, and
+\code{WORKMAIL_PERSONAL_ACCESS_TOKEN_LOGS}.
 }}
 
 \item{tags}{An optional list of key-value pairs to associate with the resource.

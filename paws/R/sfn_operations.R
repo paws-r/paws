@@ -1222,7 +1222,7 @@ sfn_describe_state_machine_for_execution <- function(executionArn, includedData 
 #' Polling with [`get_activity_task`][sfn_get_activity_task] can cause
 #' latency in some implementations. See [Avoid Latency When Polling for
 #' Activity
-#' Tasks](https://docs.aws.amazon.com/step-functions/latest/dg/welcome.html)
+#' Tasks](https://docs.aws.amazon.com/step-functions/latest/dg/sfn-best-practices.html#bp-activity-pollers)
 #' in the Step Functions Developer Guide.
 #'
 #' @usage

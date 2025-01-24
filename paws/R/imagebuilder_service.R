@@ -132,6 +132,7 @@ NULL
 #'  \link[=imagebuilder_get_workflow_execution]{get_workflow_execution} \tab Get the runtime information that was logged for a specific runtime instance of the workflow\cr
 #'  \link[=imagebuilder_get_workflow_step_execution]{get_workflow_step_execution} \tab Get the runtime information that was logged for a specific runtime instance of the workflow step\cr
 #'  \link[=imagebuilder_import_component]{import_component} \tab Imports a component and transforms its data into a component document\cr
+#'  \link[=imagebuilder_import_disk_image]{import_disk_image} \tab Import a Windows operating system image from a verified Microsoft ISO disk file\cr
 #'  \link[=imagebuilder_import_vm_image]{import_vm_image} \tab When you export your virtual machine (VM) from its virtualization environment, that process creates a set of one or more disk container files that act as snapshots of your VM’s environment, settings, and data\cr
 #'  \link[=imagebuilder_list_component_build_versions]{list_component_build_versions} \tab Returns the list of component build versions for the specified component version Amazon Resource Name (ARN)\cr
 #'  \link[=imagebuilder_list_components]{list_components} \tab Returns the list of components that can be filtered by name, or by using the listed filters to streamline results\cr

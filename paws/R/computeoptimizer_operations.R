@@ -288,7 +288,7 @@ computeoptimizer_describe_recommendation_export_jobs <- function(jobIds = NULL, 
 #'     )
 #'   ),
 #'   fieldsToExport = list(
-#'     "AccountId"|"AutoScalingGroupArn"|"AutoScalingGroupName"|"Finding"|"UtilizationMetricsCpuMaximum"|"UtilizationMetricsMemoryMaximum"|"UtilizationMetricsEbsReadOpsPerSecondMaximum"|"UtilizationMetricsEbsWriteOpsPerSecondMaximum"|"UtilizationMetricsEbsReadBytesPerSecondMaximum"|"UtilizationMetricsEbsWriteBytesPerSecondMaximum"|"UtilizationMetricsDiskReadOpsPerSecondMaximum"|"UtilizationMetricsDiskWriteOpsPerSecondMaximum"|"UtilizationMetricsDiskReadBytesPerSecondMaximum"|"UtilizationMetricsDiskWriteBytesPerSecondMaximum"|"UtilizationMetricsNetworkInBytesPerSecondMaximum"|"UtilizationMetricsNetworkOutBytesPerSecondMaximum"|"UtilizationMetricsNetworkPacketsInPerSecondMaximum"|"UtilizationMetricsNetworkPacketsOutPerSecondMaximum"|"LookbackPeriodInDays"|"CurrentConfigurationInstanceType"|"CurrentConfigurationDesiredCapacity"|"CurrentConfigurationMinSize"|"CurrentConfigurationMaxSize"|"CurrentOnDemandPrice"|"CurrentStandardOneYearNoUpfrontReservedPrice"|"CurrentStandardThreeYearNoUpfrontReservedPrice"|"CurrentVCpus"|"CurrentMemory"|"CurrentStorage"|"CurrentNetwork"|"RecommendationOptionsConfigurationInstanceType"|"RecommendationOptionsConfigurationDesiredCapacity"|"RecommendationOptionsConfigurationMinSize"|"RecommendationOptionsConfigurationMaxSize"|"RecommendationOptionsProjectedUtilizationMetricsCpuMaximum"|"RecommendationOptionsProjectedUtilizationMetricsMemoryMaximum"|"RecommendationOptionsPerformanceRisk"|"RecommendationOptionsOnDemandPrice"|"RecommendationOptionsStandardOneYearNoUpfrontReservedPrice"|"RecommendationOptionsStandardThreeYearNoUpfrontReservedPrice"|"RecommendationOptionsVcpus"|"RecommendationOptionsMemory"|"RecommendationOptionsStorage"|"RecommendationOptionsNetwork"|"LastRefreshTimestamp"|"CurrentPerformanceRisk"|"RecommendationOptionsSavingsOpportunityPercentage"|"RecommendationOptionsEstimatedMonthlySavingsCurrency"|"RecommendationOptionsEstimatedMonthlySavingsValue"|"EffectiveRecommendationPreferencesCpuVendorArchitectures"|"EffectiveRecommendationPreferencesEnhancedInfrastructureMetrics"|"EffectiveRecommendationPreferencesInferredWorkloadTypes"|"EffectiveRecommendationPreferencesPreferredResources"|"EffectiveRecommendationPreferencesLookBackPeriod"|"InferredWorkloadTypes"|"RecommendationOptionsMigrationEffort"|"CurrentInstanceGpuInfo"|"RecommendationOptionsInstanceGpuInfo"|"UtilizationMetricsGpuPercentageMaximum"|"UtilizationMetricsGpuMemoryPercentageMaximum"|"RecommendationOptionsProjectedUtilizationMetricsGpuPercentageMaximum"|"RecommendationOptionsProjectedUtilizationMetricsGpuMemoryPercentageMaximum"|"EffectiveRecommendationPreferencesSavingsEstimationMode"|"RecommendationOptionsSavingsOpportunityAfterDiscountsPercentage"|"RecommendationOptionsEstimatedMonthlySavingsCurrencyAfterDiscounts"|"RecommendationOptionsEstimatedMonthlySavingsValueAfterDiscounts"
+#'     "AccountId"|"AutoScalingGroupArn"|"AutoScalingGroupName"|"Finding"|"UtilizationMetricsCpuMaximum"|"UtilizationMetricsMemoryMaximum"|"UtilizationMetricsEbsReadOpsPerSecondMaximum"|"UtilizationMetricsEbsWriteOpsPerSecondMaximum"|"UtilizationMetricsEbsReadBytesPerSecondMaximum"|"UtilizationMetricsEbsWriteBytesPerSecondMaximum"|"UtilizationMetricsDiskReadOpsPerSecondMaximum"|"UtilizationMetricsDiskWriteOpsPerSecondMaximum"|"UtilizationMetricsDiskReadBytesPerSecondMaximum"|"UtilizationMetricsDiskWriteBytesPerSecondMaximum"|"UtilizationMetricsNetworkInBytesPerSecondMaximum"|"UtilizationMetricsNetworkOutBytesPerSecondMaximum"|"UtilizationMetricsNetworkPacketsInPerSecondMaximum"|"UtilizationMetricsNetworkPacketsOutPerSecondMaximum"|"LookbackPeriodInDays"|"CurrentConfigurationInstanceType"|"CurrentConfigurationDesiredCapacity"|"CurrentConfigurationMinSize"|"CurrentConfigurationMaxSize"|"CurrentConfigurationAllocationStrategy"|"CurrentConfigurationMixedInstanceTypes"|"CurrentConfigurationType"|"CurrentOnDemandPrice"|"CurrentStandardOneYearNoUpfrontReservedPrice"|"CurrentStandardThreeYearNoUpfrontReservedPrice"|"CurrentVCpus"|"CurrentMemory"|"CurrentStorage"|"CurrentNetwork"|"RecommendationOptionsConfigurationInstanceType"|"RecommendationOptionsConfigurationDesiredCapacity"|"RecommendationOptionsConfigurationMinSize"|"RecommendationOptionsConfigurationMaxSize"|"RecommendationOptionsConfigurationEstimatedInstanceHourReductionPercentage"|"RecommendationOptionsConfigurationAllocationStrategy"|"RecommendationOptionsConfigurationMixedInstanceTypes"|"RecommendationOptionsConfigurationType"|"RecommendationOptionsProjectedUtilizationMetricsCpuMaximum"|"RecommendationOptionsProjectedUtilizationMetricsMemoryMaximum"|"RecommendationOptionsPerformanceRisk"|"RecommendationOptionsOnDemandPrice"|"RecommendationOptionsStandardOneYearNoUpfrontReservedPrice"|"RecommendationOptionsStandardThreeYearNoUpfrontReservedPrice"|"RecommendationOptionsVcpus"|"RecommendationOptionsMemory"|"RecommendationOptionsStorage"|"RecommendationOptionsNetwork"|"LastRefreshTimestamp"|"CurrentPerformanceRisk"|"RecommendationOptionsSavingsOpportunityPercentage"|"RecommendationOptionsEstimatedMonthlySavingsCurrency"|"RecommendationOptionsEstimatedMonthlySavingsValue"|"EffectiveRecommendationPreferencesCpuVendorArchitectures"|"EffectiveRecommendationPreferencesEnhancedInfrastructureMetrics"|"EffectiveRecommendationPreferencesInferredWorkloadTypes"|"EffectiveRecommendationPreferencesPreferredResources"|"EffectiveRecommendationPreferencesLookBackPeriod"|"InferredWorkloadTypes"|"RecommendationOptionsMigrationEffort"|"CurrentInstanceGpuInfo"|"RecommendationOptionsInstanceGpuInfo"|"UtilizationMetricsGpuPercentageMaximum"|"UtilizationMetricsGpuMemoryPercentageMaximum"|"RecommendationOptionsProjectedUtilizationMetricsGpuPercentageMaximum"|"RecommendationOptionsProjectedUtilizationMetricsGpuMemoryPercentageMaximum"|"EffectiveRecommendationPreferencesSavingsEstimationMode"|"RecommendationOptionsSavingsOpportunityAfterDiscountsPercentage"|"RecommendationOptionsEstimatedMonthlySavingsCurrencyAfterDiscounts"|"RecommendationOptionsEstimatedMonthlySavingsValueAfterDiscounts"
 #'   ),
 #'   s3DestinationConfig = list(
 #'     bucket = "string",
@@ -1287,7 +1287,13 @@ computeoptimizer_export_rds_database_recommendations <- function(accountIds = NU
 #'         desiredCapacity = 123,
 #'         minSize = 123,
 #'         maxSize = 123,
-#'         instanceType = "string"
+#'         instanceType = "string",
+#'         allocationStrategy = "Prioritized"|"LowestPrice",
+#'         estimatedInstanceHourReductionPercentage = 123.0,
+#'         type = "SingleInstanceType"|"MixedInstanceTypes",
+#'         mixedInstanceTypes = list(
+#'           "string"
+#'         )
 #'       ),
 #'       currentInstanceGpuInfo = list(
 #'         gpus = list(
@@ -1303,7 +1309,13 @@ computeoptimizer_export_rds_database_recommendations <- function(accountIds = NU
 #'             desiredCapacity = 123,
 #'             minSize = 123,
 #'             maxSize = 123,
-#'             instanceType = "string"
+#'             instanceType = "string",
+#'             allocationStrategy = "Prioritized"|"LowestPrice",
+#'             estimatedInstanceHourReductionPercentage = 123.0,
+#'             type = "SingleInstanceType"|"MixedInstanceTypes",
+#'             mixedInstanceTypes = list(
+#'               "string"
+#'             )
 #'           ),
 #'           instanceGpuInfo = list(
 #'             gpus = list(

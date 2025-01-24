@@ -135,28 +135,47 @@ s3_abort_multipart_upload <- function(Bucket, Key, UploadId, RequestPayer = NULL
 #' @param UploadId &#91;required&#93; ID for the initiated multipart upload.
 #' @param ChecksumCRC32 This header can be used as a data integrity check to verify that the
 #' data received is the same data that was originally sent. This header
-#' specifies the base64-encoded, 32-bit CRC-32 checksum of the object. For
-#' more information, see [Checking object
+#' specifies the Base64 encoded, 32-bit `CRC-32` checksum of the object.
+#' For more information, see [Checking object
 #' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
 #' in the *Amazon S3 User Guide*.
 #' @param ChecksumCRC32C This header can be used as a data integrity check to verify that the
 #' data received is the same data that was originally sent. This header
-#' specifies the base64-encoded, 32-bit CRC-32C checksum of the object. For
-#' more information, see [Checking object
+#' specifies the Base64 encoded, 32-bit `CRC-32C` checksum of the object.
+#' For more information, see [Checking object
 #' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
 #' in the *Amazon S3 User Guide*.
+#' @param ChecksumCRC64NVME This header can be used as a data integrity check to verify that the
+#' data received is the same data that was originally sent. This header
+#' specifies the Base64 encoded, 64-bit `CRC-64NVME` checksum of the
+#' object. The `CRC-64NVME` checksum is always a full object checksum. For
+#' more information, see [Checking object integrity in the Amazon S3 User
+#' Guide](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html).
 #' @param ChecksumSHA1 This header can be used as a data integrity check to verify that the
 #' data received is the same data that was originally sent. This header
-#' specifies the base64-encoded, 160-bit SHA-1 digest of the object. For
+#' specifies the Base64 encoded, 160-bit `SHA-1` digest of the object. For
 #' more information, see [Checking object
 #' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
 #' in the *Amazon S3 User Guide*.
 #' @param ChecksumSHA256 This header can be used as a data integrity check to verify that the
 #' data received is the same data that was originally sent. This header
-#' specifies the base64-encoded, 256-bit SHA-256 digest of the object. For
-#' more information, see [Checking object
+#' specifies the Base64 encoded, 256-bit `SHA-256` digest of the object.
+#' For more information, see [Checking object
 #' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
 #' in the *Amazon S3 User Guide*.
+#' @param ChecksumType This header specifies the checksum type of the object, which determines
+#' how part-level checksums are combined to create an object-level checksum
+#' for multipart objects. You can use this header as a data integrity check
+#' to verify that the checksum type that is received is the same checksum
+#' that was specified. If the checksum type doesn’t match the checksum type
+#' that was specified for the object during the
+#' [`create_multipart_upload`][s3_create_multipart_upload] request, it’ll
+#' result in a `BadDigest` error. For more information, see Checking object
+#' integrity in the Amazon S3 User Guide.
+#' @param MpuObjectSize The expected total object size of the multipart upload request. If
+#' there’s a mismatch between the specified object size value and the
+#' actual object size value, it results in an `HTTP 400 InvalidRequest`
+#' error.
 #' @param RequestPayer 
 #' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
 #' provide does not match the actual owner of the bucket, the request fails
@@ -220,7 +239,7 @@ s3_abort_multipart_upload <- function(Bucket, Key, UploadId, RequestPayer = NULL
 #' @keywords internal
 #'
 #' @rdname s3_complete_multipart_upload
-s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, UploadId, ChecksumCRC32 = NULL, ChecksumCRC32C = NULL, ChecksumSHA1 = NULL, ChecksumSHA256 = NULL, RequestPayer = NULL, ExpectedBucketOwner = NULL, IfMatch = NULL, IfNoneMatch = NULL, SSECustomerAlgorithm = NULL, SSECustomerKey = NULL, SSECustomerKeyMD5 = NULL) {
+s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, UploadId, ChecksumCRC32 = NULL, ChecksumCRC32C = NULL, ChecksumCRC64NVME = NULL, ChecksumSHA1 = NULL, ChecksumSHA256 = NULL, ChecksumType = NULL, MpuObjectSize = NULL, RequestPayer = NULL, ExpectedBucketOwner = NULL, IfMatch = NULL, IfNoneMatch = NULL, SSECustomerAlgorithm = NULL, SSECustomerKey = NULL, SSECustomerKeyMD5 = NULL) {
   op <- new_operation(
     name = "CompleteMultipartUpload",
     http_method = "POST",
@@ -229,7 +248,7 @@ s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, Up
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .s3$complete_multipart_upload_input(Bucket = Bucket, Key = Key, MultipartUpload = MultipartUpload, UploadId = UploadId, ChecksumCRC32 = ChecksumCRC32, ChecksumCRC32C = ChecksumCRC32C, ChecksumSHA1 = ChecksumSHA1, ChecksumSHA256 = ChecksumSHA256, RequestPayer = RequestPayer, ExpectedBucketOwner = ExpectedBucketOwner, IfMatch = IfMatch, IfNoneMatch = IfNoneMatch, SSECustomerAlgorithm = SSECustomerAlgorithm, SSECustomerKey = SSECustomerKey, SSECustomerKeyMD5 = SSECustomerKeyMD5)
+  input <- .s3$complete_multipart_upload_input(Bucket = Bucket, Key = Key, MultipartUpload = MultipartUpload, UploadId = UploadId, ChecksumCRC32 = ChecksumCRC32, ChecksumCRC32C = ChecksumCRC32C, ChecksumCRC64NVME = ChecksumCRC64NVME, ChecksumSHA1 = ChecksumSHA1, ChecksumSHA256 = ChecksumSHA256, ChecksumType = ChecksumType, MpuObjectSize = MpuObjectSize, RequestPayer = RequestPayer, ExpectedBucketOwner = ExpectedBucketOwner, IfMatch = IfMatch, IfNoneMatch = IfNoneMatch, SSECustomerAlgorithm = SSECustomerAlgorithm, SSECustomerKey = SSECustomerKey, SSECustomerKeyMD5 = SSECustomerKeyMD5)
   output <- .s3$complete_multipart_upload_output()
   config <- get_config()
   svc <- .s3$service(config, op)
@@ -1387,7 +1406,7 @@ s3_create_bucket_metadata_table_configuration <- function(Bucket, ContentMD5 = N
 #' key](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-cmk)
 #' (`aws/s3`) isn't supported.
 #' @param SSEKMSEncryptionContext Specifies the Amazon Web Services KMS Encryption Context to use for
-#' object encryption. The value of this header is a Base64-encoded string
+#' object encryption. The value of this header is a Base64 encoded string
 #' of a UTF-8 encoded JSON, which contains the encryption context as
 #' key-value pairs.
 #' 
@@ -1438,11 +1457,15 @@ s3_create_bucket_metadata_table_configuration <- function(Bucket, ContentMD5 = N
 #' checksum for the object. For more information, see [Checking object
 #' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
 #' in the *Amazon S3 User Guide*.
+#' @param ChecksumType Indicates the checksum type that you want Amazon S3 to use to calculate
+#' the object’s checksum value. For more information, see [Checking object
+#' integrity in the Amazon S3 User
+#' Guide](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html).
 #'
 #' @keywords internal
 #'
 #' @rdname s3_create_multipart_upload
-s3_create_multipart_upload <- function(ACL = NULL, Bucket, CacheControl = NULL, ContentDisposition = NULL, ContentEncoding = NULL, ContentLanguage = NULL, ContentType = NULL, Expires = NULL, GrantFullControl = NULL, GrantRead = NULL, GrantReadACP = NULL, GrantWriteACP = NULL, Key, Metadata = NULL, ServerSideEncryption = NULL, StorageClass = NULL, WebsiteRedirectLocation = NULL, SSECustomerAlgorithm = NULL, SSECustomerKey = NULL, SSECustomerKeyMD5 = NULL, SSEKMSKeyId = NULL, SSEKMSEncryptionContext = NULL, BucketKeyEnabled = NULL, RequestPayer = NULL, Tagging = NULL, ObjectLockMode = NULL, ObjectLockRetainUntilDate = NULL, ObjectLockLegalHoldStatus = NULL, ExpectedBucketOwner = NULL, ChecksumAlgorithm = NULL) {
+s3_create_multipart_upload <- function(ACL = NULL, Bucket, CacheControl = NULL, ContentDisposition = NULL, ContentEncoding = NULL, ContentLanguage = NULL, ContentType = NULL, Expires = NULL, GrantFullControl = NULL, GrantRead = NULL, GrantReadACP = NULL, GrantWriteACP = NULL, Key, Metadata = NULL, ServerSideEncryption = NULL, StorageClass = NULL, WebsiteRedirectLocation = NULL, SSECustomerAlgorithm = NULL, SSECustomerKey = NULL, SSECustomerKeyMD5 = NULL, SSEKMSKeyId = NULL, SSEKMSEncryptionContext = NULL, BucketKeyEnabled = NULL, RequestPayer = NULL, Tagging = NULL, ObjectLockMode = NULL, ObjectLockRetainUntilDate = NULL, ObjectLockLegalHoldStatus = NULL, ExpectedBucketOwner = NULL, ChecksumAlgorithm = NULL, ChecksumType = NULL) {
   op <- new_operation(
     name = "CreateMultipartUpload",
     http_method = "POST",
@@ -1451,7 +1474,7 @@ s3_create_multipart_upload <- function(ACL = NULL, Bucket, CacheControl = NULL, 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .s3$create_multipart_upload_input(ACL = ACL, Bucket = Bucket, CacheControl = CacheControl, ContentDisposition = ContentDisposition, ContentEncoding = ContentEncoding, ContentLanguage = ContentLanguage, ContentType = ContentType, Expires = Expires, GrantFullControl = GrantFullControl, GrantRead = GrantRead, GrantReadACP = GrantReadACP, GrantWriteACP = GrantWriteACP, Key = Key, Metadata = Metadata, ServerSideEncryption = ServerSideEncryption, StorageClass = StorageClass, WebsiteRedirectLocation = WebsiteRedirectLocation, SSECustomerAlgorithm = SSECustomerAlgorithm, SSECustomerKey = SSECustomerKey, SSECustomerKeyMD5 = SSECustomerKeyMD5, SSEKMSKeyId = SSEKMSKeyId, SSEKMSEncryptionContext = SSEKMSEncryptionContext, BucketKeyEnabled = BucketKeyEnabled, RequestPayer = RequestPayer, Tagging = Tagging, ObjectLockMode = ObjectLockMode, ObjectLockRetainUntilDate = ObjectLockRetainUntilDate, ObjectLockLegalHoldStatus = ObjectLockLegalHoldStatus, ExpectedBucketOwner = ExpectedBucketOwner, ChecksumAlgorithm = ChecksumAlgorithm)
+  input <- .s3$create_multipart_upload_input(ACL = ACL, Bucket = Bucket, CacheControl = CacheControl, ContentDisposition = ContentDisposition, ContentEncoding = ContentEncoding, ContentLanguage = ContentLanguage, ContentType = ContentType, Expires = Expires, GrantFullControl = GrantFullControl, GrantRead = GrantRead, GrantReadACP = GrantReadACP, GrantWriteACP = GrantWriteACP, Key = Key, Metadata = Metadata, ServerSideEncryption = ServerSideEncryption, StorageClass = StorageClass, WebsiteRedirectLocation = WebsiteRedirectLocation, SSECustomerAlgorithm = SSECustomerAlgorithm, SSECustomerKey = SSECustomerKey, SSECustomerKeyMD5 = SSECustomerKeyMD5, SSEKMSKeyId = SSEKMSKeyId, SSEKMSEncryptionContext = SSEKMSEncryptionContext, BucketKeyEnabled = BucketKeyEnabled, RequestPayer = RequestPayer, Tagging = Tagging, ObjectLockMode = ObjectLockMode, ObjectLockRetainUntilDate = ObjectLockRetainUntilDate, ObjectLockLegalHoldStatus = ObjectLockLegalHoldStatus, ExpectedBucketOwner = ExpectedBucketOwner, ChecksumAlgorithm = ChecksumAlgorithm, ChecksumType = ChecksumType)
   output <- .s3$create_multipart_upload_output()
   config <- get_config()
   svc <- .s3$service(config, op)
@@ -1508,7 +1531,7 @@ s3_create_multipart_upload <- function(ACL = NULL, Bucket, CacheControl = NULL, 
 #' (`aws/s3`) isn't supported.
 #' @param SSEKMSEncryptionContext Specifies the Amazon Web Services KMS Encryption Context as an
 #' additional encryption context to use for object encryption. The value of
-#' this header is a Base64-encoded string of a UTF-8 encoded JSON, which
+#' this header is a Base64 encoded string of a UTF-8 encoded JSON, which
 #' contains the encryption context as key-value pairs. This value is stored
 #' as object metadata and automatically gets passed on to Amazon Web
 #' Services KMS for future [`get_object`][s3_get_object] operations on this
@@ -2354,13 +2377,15 @@ s3_delete_object_tagging <- function(Bucket, Key, VersionId = NULL, ExpectedBuck
 #' For the `x-amz-checksum-algorithm ` header, replace ` algorithm ` with
 #' the supported algorithm from the following list:
 #' 
-#' -   `CRC32`
+#' -   `CRC-32`
 #' 
-#' -   `CRC32C`
+#' -   `CRC-32C`
 #' 
-#' -   `SHA1`
+#' -   `CRC-64NVME`
 #' 
-#' -   `SHA256`
+#' -   `SHA-1`
+#' 
+#' -   `SHA-256`
 #' 
 #' For more information, see [Checking object
 #' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
@@ -2368,9 +2393,8 @@ s3_delete_object_tagging <- function(Bucket, Key, VersionId = NULL, ExpectedBuck
 #' 
 #' If the individual checksum value you provide through
 #' `x-amz-checksum-algorithm ` doesn't match the checksum algorithm you set
-#' through `x-amz-sdk-checksum-algorithm`, Amazon S3 ignores any provided
-#' `ChecksumAlgorithm` parameter and uses the checksum algorithm that
-#' matches the provided value in `x-amz-checksum-algorithm `.
+#' through `x-amz-sdk-checksum-algorithm`, Amazon S3 fails the request with
+#' a `BadDigest` error.
 #' 
 #' If you provide an individual checksum, Amazon S3 ignores any provided
 #' `ChecksumAlgorithm` parameter.
@@ -5060,7 +5084,7 @@ s3_put_bucket_accelerate_configuration <- function(Bucket, AccelerateConfigurati
 #' @param AccessControlPolicy Contains the elements that set the ACL permissions for an object per
 #' grantee.
 #' @param Bucket &#91;required&#93; The bucket to which to apply the ACL.
-#' @param ContentMD5 The base64-encoded 128-bit MD5 digest of the data. This header must be
+#' @param ContentMD5 The Base64 encoded 128-bit `MD5` digest of the data. This header must be
 #' used as a message integrity check to verify that the request body was
 #' not corrupted in transit. For more information, go to [RFC
 #' 1864.](https://www.ietf.org/rfc/rfc1864.txt)
@@ -5162,7 +5186,7 @@ s3_put_bucket_analytics_configuration <- function(Bucket, Id, AnalyticsConfigura
 #' S3 bucket. For more information, see [Enabling Cross-Origin Resource
 #' Sharing](https://docs.aws.amazon.com/AmazonS3/latest/userguide/cors.html)
 #' in the *Amazon S3 User Guide*.
-#' @param ContentMD5 The base64-encoded 128-bit MD5 digest of the data. This header must be
+#' @param ContentMD5 The Base64 encoded 128-bit `MD5` digest of the data. This header must be
 #' used as a message integrity check to verify that the request body was
 #' not corrupted in transit. For more information, go to [RFC
 #' 1864.](https://www.ietf.org/rfc/rfc1864.txt)
@@ -5229,7 +5253,7 @@ s3_put_bucket_cors <- function(Bucket, CORSConfiguration, ContentMD5 = NULL, Che
 #' naming restrictions, see [Directory bucket naming
 #' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
 #' in the *Amazon S3 User Guide*
-#' @param ContentMD5 The base64-encoded 128-bit MD5 digest of the server-side encryption
+#' @param ContentMD5 The Base64 encoded 128-bit `MD5` digest of the server-side encryption
 #' configuration.
 #' 
 #' For requests made using the Amazon Web Services Command Line Interface
@@ -5352,10 +5376,10 @@ s3_put_bucket_inventory_configuration <- function(Bucket, Id, InventoryConfigura
 }
 .s3$operations$put_bucket_inventory_configuration <- s3_put_bucket_inventory_configuration
 
-#' For an updated version of this API, see PutBucketLifecycleConfiguration
+#' This operation is not supported for directory buckets
 #'
 #' @description
-#' For an updated version of this API, see [`put_bucket_lifecycle_configuration`][s3_put_bucket_lifecycle_configuration]. This version has been deprecated. Existing lifecycle configurations will work. For new lifecycle configurations, use the updated API.
+#' This operation is not supported for directory buckets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_put_bucket_lifecycle/](https://www.paws-r-sdk.com/docs/s3_put_bucket_lifecycle/) for full documentation.
 #'
@@ -5727,13 +5751,15 @@ s3_put_bucket_ownership_controls <- function(Bucket, ContentMD5 = NULL, Expected
 #' For the `x-amz-checksum-algorithm ` header, replace ` algorithm ` with
 #' the supported algorithm from the following list:
 #' 
-#' -   `CRC32`
+#' -   `CRC-32`
 #' 
-#' -   `CRC32C`
+#' -   `CRC-32C`
 #' 
-#' -   `SHA1`
+#' -   `CRC-64NVME`
 #' 
-#' -   `SHA256`
+#' -   `SHA-1`
+#' 
+#' -   `SHA-256`
 #' 
 #' For more information, see [Checking object
 #' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
@@ -5741,9 +5767,8 @@ s3_put_bucket_ownership_controls <- function(Bucket, ContentMD5 = NULL, Expected
 #' 
 #' If the individual checksum value you provide through
 #' `x-amz-checksum-algorithm ` doesn't match the checksum algorithm you set
-#' through `x-amz-sdk-checksum-algorithm`, Amazon S3 ignores any provided
-#' `ChecksumAlgorithm` parameter and uses the checksum algorithm that
-#' matches the provided value in `x-amz-checksum-algorithm `.
+#' through `x-amz-sdk-checksum-algorithm`, Amazon S3 fails the request with
+#' a `BadDigest` error.
 #' 
 #' For directory buckets, when you use Amazon Web Services SDKs, `CRC32` is
 #' the default checksum algorithm that's used for performance.
@@ -5793,7 +5818,7 @@ s3_put_bucket_policy <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm = 
 #' See [https://www.paws-r-sdk.com/docs/s3_put_bucket_replication/](https://www.paws-r-sdk.com/docs/s3_put_bucket_replication/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The name of the bucket
-#' @param ContentMD5 The base64-encoded 128-bit MD5 digest of the data. You must use this
+#' @param ContentMD5 The Base64 encoded 128-bit `MD5` digest of the data. You must use this
 #' header as a message integrity check to verify that the request body was
 #' not corrupted in transit. For more information, see [RFC
 #' 1864](https://www.ietf.org/rfc/rfc1864.txt).
@@ -5848,7 +5873,7 @@ s3_put_bucket_replication <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorit
 #' See [https://www.paws-r-sdk.com/docs/s3_put_bucket_request_payment/](https://www.paws-r-sdk.com/docs/s3_put_bucket_request_payment/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The bucket name.
-#' @param ContentMD5 The base64-encoded 128-bit MD5 digest of the data. You must use this
+#' @param ContentMD5 The Base64 encoded 128-bit `MD5` digest of the data. You must use this
 #' header as a message integrity check to verify that the request body was
 #' not corrupted in transit. For more information, see [RFC
 #' 1864](https://www.ietf.org/rfc/rfc1864.txt).
@@ -5902,7 +5927,7 @@ s3_put_bucket_request_payment <- function(Bucket, ContentMD5 = NULL, ChecksumAlg
 #' See [https://www.paws-r-sdk.com/docs/s3_put_bucket_tagging/](https://www.paws-r-sdk.com/docs/s3_put_bucket_tagging/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The bucket name.
-#' @param ContentMD5 The base64-encoded 128-bit MD5 digest of the data. You must use this
+#' @param ContentMD5 The Base64 encoded 128-bit `MD5` digest of the data. You must use this
 #' header as a message integrity check to verify that the request body was
 #' not corrupted in transit. For more information, see [RFC
 #' 1864](https://www.ietf.org/rfc/rfc1864.txt).
@@ -5956,7 +5981,7 @@ s3_put_bucket_tagging <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #' See [https://www.paws-r-sdk.com/docs/s3_put_bucket_versioning/](https://www.paws-r-sdk.com/docs/s3_put_bucket_versioning/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The bucket name.
-#' @param ContentMD5 \>The base64-encoded 128-bit MD5 digest of the data. You must use this
+#' @param ContentMD5 \>The Base64 encoded 128-bit `MD5` digest of the data. You must use this
 #' header as a message integrity check to verify that the request body was
 #' not corrupted in transit. For more information, see [RFC
 #' 1864](https://www.ietf.org/rfc/rfc1864.txt).
@@ -6012,7 +6037,7 @@ s3_put_bucket_versioning <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorith
 #' See [https://www.paws-r-sdk.com/docs/s3_put_bucket_website/](https://www.paws-r-sdk.com/docs/s3_put_bucket_website/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The bucket name.
-#' @param ContentMD5 The base64-encoded 128-bit MD5 digest of the data. You must use this
+#' @param ContentMD5 The Base64 encoded 128-bit `MD5` digest of the data. You must use this
 #' header as a message integrity check to verify that the request body was
 #' not corrupted in transit. For more information, see [RFC
 #' 1864](https://www.ietf.org/rfc/rfc1864.txt).
@@ -6148,7 +6173,7 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #' @param ContentLength Size of the body in bytes. This parameter is useful when the size of the
 #' body cannot be determined automatically. For more information, see
 #' <https://www.rfc-editor.org/rfc/rfc9110.html#name-content-length>.
-#' @param ContentMD5 The base64-encoded 128-bit MD5 digest of the message (without the
+#' @param ContentMD5 The Base64 encoded 128-bit `MD5` digest of the message (without the
 #' headers) according to RFC 1864. This header can be used as a message
 #' integrity check to verify that the data is the same data that was
 #' originally sent. Although it is optional, we recommend using the
@@ -6177,13 +6202,15 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #' For the `x-amz-checksum-algorithm ` header, replace ` algorithm ` with
 #' the supported algorithm from the following list:
 #' 
-#' -   `CRC32`
+#' -   `CRC-32`
 #' 
-#' -   `CRC32C`
+#' -   `CRC-32C`
 #' 
-#' -   `SHA1`
+#' -   `CRC-64NVME`
 #' 
-#' -   `SHA256`
+#' -   `SHA-1`
+#' 
+#' -   `SHA-256`
 #' 
 #' For more information, see [Checking object
 #' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
@@ -6191,9 +6218,8 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #' 
 #' If the individual checksum value you provide through
 #' `x-amz-checksum-algorithm ` doesn't match the checksum algorithm you set
-#' through `x-amz-sdk-checksum-algorithm`, Amazon S3 ignores any provided
-#' `ChecksumAlgorithm` parameter and uses the checksum algorithm that
-#' matches the provided value in `x-amz-checksum-algorithm `.
+#' through `x-amz-sdk-checksum-algorithm`, Amazon S3 fails the request with
+#' a `BadDigest` error.
 #' 
 #' The `Content-MD5` or `x-amz-sdk-checksum-algorithm` header is required
 #' for any request to upload an object with a retention period configured
@@ -6206,26 +6232,32 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #' the default checksum algorithm that's used for performance.
 #' @param ChecksumCRC32 This header can be used as a data integrity check to verify that the
 #' data received is the same data that was originally sent. This header
-#' specifies the base64-encoded, 32-bit CRC-32 checksum of the object. For
-#' more information, see [Checking object
+#' specifies the Base64 encoded, 32-bit `CRC-32` checksum of the object.
+#' For more information, see [Checking object
 #' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
 #' in the *Amazon S3 User Guide*.
 #' @param ChecksumCRC32C This header can be used as a data integrity check to verify that the
 #' data received is the same data that was originally sent. This header
-#' specifies the base64-encoded, 32-bit CRC-32C checksum of the object. For
-#' more information, see [Checking object
+#' specifies the Base64 encoded, 32-bit `CRC-32C` checksum of the object.
+#' For more information, see [Checking object
 #' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
 #' in the *Amazon S3 User Guide*.
+#' @param ChecksumCRC64NVME This header can be used as a data integrity check to verify that the
+#' data received is the same data that was originally sent. This header
+#' specifies the Base64 encoded, 64-bit `CRC-64NVME` checksum of the
+#' object. The `CRC-64NVME` checksum is always a full object checksum. For
+#' more information, see [Checking object integrity in the Amazon S3 User
+#' Guide](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html).
 #' @param ChecksumSHA1 This header can be used as a data integrity check to verify that the
 #' data received is the same data that was originally sent. This header
-#' specifies the base64-encoded, 160-bit SHA-1 digest of the object. For
+#' specifies the Base64 encoded, 160-bit `SHA-1` digest of the object. For
 #' more information, see [Checking object
 #' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
 #' in the *Amazon S3 User Guide*.
 #' @param ChecksumSHA256 This header can be used as a data integrity check to verify that the
 #' data received is the same data that was originally sent. This header
-#' specifies the base64-encoded, 256-bit SHA-256 digest of the object. For
-#' more information, see [Checking object
+#' specifies the Base64 encoded, 256-bit `SHA-256` digest of the object.
+#' For more information, see [Checking object
 #' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
 #' in the *Amazon S3 User Guide*.
 #' @param Expires The date and time at which the object is no longer cacheable. For more
@@ -6433,7 +6465,7 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #' (`aws/s3`) isn't supported.
 #' @param SSEKMSEncryptionContext Specifies the Amazon Web Services KMS Encryption Context as an
 #' additional encryption context to use for object encryption. The value of
-#' this header is a Base64-encoded string of a UTF-8 encoded JSON, which
+#' this header is a Base64 encoded string of a UTF-8 encoded JSON, which
 #' contains the encryption context as key-value pairs. This value is stored
 #' as object metadata and automatically gets passed on to Amazon Web
 #' Services KMS for future [`get_object`][s3_get_object] operations on this
@@ -6496,7 +6528,7 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #' @keywords internal
 #'
 #' @rdname s3_put_object
-s3_put_object <- function(ACL = NULL, Body = NULL, Bucket, CacheControl = NULL, ContentDisposition = NULL, ContentEncoding = NULL, ContentLanguage = NULL, ContentLength = NULL, ContentMD5 = NULL, ContentType = NULL, ChecksumAlgorithm = NULL, ChecksumCRC32 = NULL, ChecksumCRC32C = NULL, ChecksumSHA1 = NULL, ChecksumSHA256 = NULL, Expires = NULL, IfMatch = NULL, IfNoneMatch = NULL, GrantFullControl = NULL, GrantRead = NULL, GrantReadACP = NULL, GrantWriteACP = NULL, Key, WriteOffsetBytes = NULL, Metadata = NULL, ServerSideEncryption = NULL, StorageClass = NULL, WebsiteRedirectLocation = NULL, SSECustomerAlgorithm = NULL, SSECustomerKey = NULL, SSECustomerKeyMD5 = NULL, SSEKMSKeyId = NULL, SSEKMSEncryptionContext = NULL, BucketKeyEnabled = NULL, RequestPayer = NULL, Tagging = NULL, ObjectLockMode = NULL, ObjectLockRetainUntilDate = NULL, ObjectLockLegalHoldStatus = NULL, ExpectedBucketOwner = NULL) {
+s3_put_object <- function(ACL = NULL, Body = NULL, Bucket, CacheControl = NULL, ContentDisposition = NULL, ContentEncoding = NULL, ContentLanguage = NULL, ContentLength = NULL, ContentMD5 = NULL, ContentType = NULL, ChecksumAlgorithm = NULL, ChecksumCRC32 = NULL, ChecksumCRC32C = NULL, ChecksumCRC64NVME = NULL, ChecksumSHA1 = NULL, ChecksumSHA256 = NULL, Expires = NULL, IfMatch = NULL, IfNoneMatch = NULL, GrantFullControl = NULL, GrantRead = NULL, GrantReadACP = NULL, GrantWriteACP = NULL, Key, WriteOffsetBytes = NULL, Metadata = NULL, ServerSideEncryption = NULL, StorageClass = NULL, WebsiteRedirectLocation = NULL, SSECustomerAlgorithm = NULL, SSECustomerKey = NULL, SSECustomerKeyMD5 = NULL, SSEKMSKeyId = NULL, SSEKMSEncryptionContext = NULL, BucketKeyEnabled = NULL, RequestPayer = NULL, Tagging = NULL, ObjectLockMode = NULL, ObjectLockRetainUntilDate = NULL, ObjectLockLegalHoldStatus = NULL, ExpectedBucketOwner = NULL) {
   op <- new_operation(
     name = "PutObject",
     http_method = "PUT",
@@ -6505,7 +6537,7 @@ s3_put_object <- function(ACL = NULL, Body = NULL, Bucket, CacheControl = NULL, 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .s3$put_object_input(ACL = ACL, Body = Body, Bucket = Bucket, CacheControl = CacheControl, ContentDisposition = ContentDisposition, ContentEncoding = ContentEncoding, ContentLanguage = ContentLanguage, ContentLength = ContentLength, ContentMD5 = ContentMD5, ContentType = ContentType, ChecksumAlgorithm = ChecksumAlgorithm, ChecksumCRC32 = ChecksumCRC32, ChecksumCRC32C = ChecksumCRC32C, ChecksumSHA1 = ChecksumSHA1, ChecksumSHA256 = ChecksumSHA256, Expires = Expires, IfMatch = IfMatch, IfNoneMatch = IfNoneMatch, GrantFullControl = GrantFullControl, GrantRead = GrantRead, GrantReadACP = GrantReadACP, GrantWriteACP = GrantWriteACP, Key = Key, WriteOffsetBytes = WriteOffsetBytes, Metadata = Metadata, ServerSideEncryption = ServerSideEncryption, StorageClass = StorageClass, WebsiteRedirectLocation = WebsiteRedirectLocation, SSECustomerAlgorithm = SSECustomerAlgorithm, SSECustomerKey = SSECustomerKey, SSECustomerKeyMD5 = SSECustomerKeyMD5, SSEKMSKeyId = SSEKMSKeyId, SSEKMSEncryptionContext = SSEKMSEncryptionContext, BucketKeyEnabled = BucketKeyEnabled, RequestPayer = RequestPayer, Tagging = Tagging, ObjectLockMode = ObjectLockMode, ObjectLockRetainUntilDate = ObjectLockRetainUntilDate, ObjectLockLegalHoldStatus = ObjectLockLegalHoldStatus, ExpectedBucketOwner = ExpectedBucketOwner)
+  input <- .s3$put_object_input(ACL = ACL, Body = Body, Bucket = Bucket, CacheControl = CacheControl, ContentDisposition = ContentDisposition, ContentEncoding = ContentEncoding, ContentLanguage = ContentLanguage, ContentLength = ContentLength, ContentMD5 = ContentMD5, ContentType = ContentType, ChecksumAlgorithm = ChecksumAlgorithm, ChecksumCRC32 = ChecksumCRC32, ChecksumCRC32C = ChecksumCRC32C, ChecksumCRC64NVME = ChecksumCRC64NVME, ChecksumSHA1 = ChecksumSHA1, ChecksumSHA256 = ChecksumSHA256, Expires = Expires, IfMatch = IfMatch, IfNoneMatch = IfNoneMatch, GrantFullControl = GrantFullControl, GrantRead = GrantRead, GrantReadACP = GrantReadACP, GrantWriteACP = GrantWriteACP, Key = Key, WriteOffsetBytes = WriteOffsetBytes, Metadata = Metadata, ServerSideEncryption = ServerSideEncryption, StorageClass = StorageClass, WebsiteRedirectLocation = WebsiteRedirectLocation, SSECustomerAlgorithm = SSECustomerAlgorithm, SSECustomerKey = SSECustomerKey, SSECustomerKeyMD5 = SSECustomerKeyMD5, SSEKMSKeyId = SSEKMSKeyId, SSEKMSEncryptionContext = SSEKMSEncryptionContext, BucketKeyEnabled = BucketKeyEnabled, RequestPayer = RequestPayer, Tagging = Tagging, ObjectLockMode = ObjectLockMode, ObjectLockRetainUntilDate = ObjectLockRetainUntilDate, ObjectLockLegalHoldStatus = ObjectLockLegalHoldStatus, ExpectedBucketOwner = ExpectedBucketOwner)
   output <- .s3$put_object_output()
   config <- get_config()
   svc <- .s3$service(config, op)
@@ -6551,7 +6583,7 @@ s3_put_object <- function(ACL = NULL, Body = NULL, Bucket, CacheControl = NULL, 
 #' is S3 on
 #' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
-#' @param ContentMD5 The base64-encoded 128-bit MD5 digest of the data. This header must be
+#' @param ContentMD5 The Base64 encoded 128-bit `MD5` digest of the data. This header must be
 #' used as a message integrity check to verify that the request body was
 #' not corrupted in transit. For more information, go to [RFC
 #' 1864.\>](https://www.ietf.org/rfc/rfc1864.txt)
@@ -7141,7 +7173,7 @@ s3_select_object_content <- function(Bucket, Key, SSECustomerAlgorithm = NULL, S
 #' in the *Amazon S3 User Guide*.
 #' @param ContentLength Size of the body in bytes. This parameter is useful when the size of the
 #' body cannot be determined automatically.
-#' @param ContentMD5 The base64-encoded 128-bit MD5 digest of the part data. This parameter
+#' @param ContentMD5 The Base64 encoded 128-bit MD5 digest of the part data. This parameter
 #' is auto-populated when using the command from the CLI. This parameter is
 #' required if object lock parameters are specified.
 #' 
@@ -7163,26 +7195,32 @@ s3_select_object_content <- function(Bucket, Key, SSECustomerAlgorithm = NULL, S
 #' [`create_multipart_upload`][s3_create_multipart_upload] request.
 #' @param ChecksumCRC32 This header can be used as a data integrity check to verify that the
 #' data received is the same data that was originally sent. This header
-#' specifies the base64-encoded, 32-bit CRC-32 checksum of the object. For
-#' more information, see [Checking object
+#' specifies the Base64 encoded, 32-bit `CRC-32` checksum of the object.
+#' For more information, see [Checking object
 #' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
 #' in the *Amazon S3 User Guide*.
 #' @param ChecksumCRC32C This header can be used as a data integrity check to verify that the
 #' data received is the same data that was originally sent. This header
-#' specifies the base64-encoded, 32-bit CRC-32C checksum of the object. For
-#' more information, see [Checking object
+#' specifies the Base64 encoded, 32-bit `CRC-32C` checksum of the object.
+#' For more information, see [Checking object
+#' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
+#' in the *Amazon S3 User Guide*.
+#' @param ChecksumCRC64NVME This header can be used as a data integrity check to verify that the
+#' data received is the same data that was originally sent. This header
+#' specifies the Base64 encoded, 64-bit `CRC-64NVME` checksum of the part.
+#' For more information, see [Checking object
 #' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
 #' in the *Amazon S3 User Guide*.
 #' @param ChecksumSHA1 This header can be used as a data integrity check to verify that the
 #' data received is the same data that was originally sent. This header
-#' specifies the base64-encoded, 160-bit SHA-1 digest of the object. For
+#' specifies the Base64 encoded, 160-bit `SHA-1` digest of the object. For
 #' more information, see [Checking object
 #' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
 #' in the *Amazon S3 User Guide*.
 #' @param ChecksumSHA256 This header can be used as a data integrity check to verify that the
 #' data received is the same data that was originally sent. This header
-#' specifies the base64-encoded, 256-bit SHA-256 digest of the object. For
-#' more information, see [Checking object
+#' specifies the Base64 encoded, 256-bit `SHA-256` digest of the object.
+#' For more information, see [Checking object
 #' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
 #' in the *Amazon S3 User Guide*.
 #' @param Key &#91;required&#93; Object key for which the multipart upload was initiated.
@@ -7215,7 +7253,7 @@ s3_select_object_content <- function(Bucket, Key, SSECustomerAlgorithm = NULL, S
 #' @keywords internal
 #'
 #' @rdname s3_upload_part
-s3_upload_part <- function(Body = NULL, Bucket, ContentLength = NULL, ContentMD5 = NULL, ChecksumAlgorithm = NULL, ChecksumCRC32 = NULL, ChecksumCRC32C = NULL, ChecksumSHA1 = NULL, ChecksumSHA256 = NULL, Key, PartNumber, UploadId, SSECustomerAlgorithm = NULL, SSECustomerKey = NULL, SSECustomerKeyMD5 = NULL, RequestPayer = NULL, ExpectedBucketOwner = NULL) {
+s3_upload_part <- function(Body = NULL, Bucket, ContentLength = NULL, ContentMD5 = NULL, ChecksumAlgorithm = NULL, ChecksumCRC32 = NULL, ChecksumCRC32C = NULL, ChecksumCRC64NVME = NULL, ChecksumSHA1 = NULL, ChecksumSHA256 = NULL, Key, PartNumber, UploadId, SSECustomerAlgorithm = NULL, SSECustomerKey = NULL, SSECustomerKeyMD5 = NULL, RequestPayer = NULL, ExpectedBucketOwner = NULL) {
   op <- new_operation(
     name = "UploadPart",
     http_method = "PUT",
@@ -7224,7 +7262,7 @@ s3_upload_part <- function(Body = NULL, Bucket, ContentLength = NULL, ContentMD5
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .s3$upload_part_input(Body = Body, Bucket = Bucket, ContentLength = ContentLength, ContentMD5 = ContentMD5, ChecksumAlgorithm = ChecksumAlgorithm, ChecksumCRC32 = ChecksumCRC32, ChecksumCRC32C = ChecksumCRC32C, ChecksumSHA1 = ChecksumSHA1, ChecksumSHA256 = ChecksumSHA256, Key = Key, PartNumber = PartNumber, UploadId = UploadId, SSECustomerAlgorithm = SSECustomerAlgorithm, SSECustomerKey = SSECustomerKey, SSECustomerKeyMD5 = SSECustomerKeyMD5, RequestPayer = RequestPayer, ExpectedBucketOwner = ExpectedBucketOwner)
+  input <- .s3$upload_part_input(Body = Body, Bucket = Bucket, ContentLength = ContentLength, ContentMD5 = ContentMD5, ChecksumAlgorithm = ChecksumAlgorithm, ChecksumCRC32 = ChecksumCRC32, ChecksumCRC32C = ChecksumCRC32C, ChecksumCRC64NVME = ChecksumCRC64NVME, ChecksumSHA1 = ChecksumSHA1, ChecksumSHA256 = ChecksumSHA256, Key = Key, PartNumber = PartNumber, UploadId = UploadId, SSECustomerAlgorithm = SSECustomerAlgorithm, SSECustomerKey = SSECustomerKey, SSECustomerKeyMD5 = SSECustomerKeyMD5, RequestPayer = RequestPayer, ExpectedBucketOwner = ExpectedBucketOwner)
   output <- .s3$upload_part_output()
   config <- get_config()
   svc <- .s3$service(config, op)
@@ -7528,20 +7566,7 @@ s3_upload_part_copy <- function(Bucket, CopySource, CopySourceIfMatch = NULL, Co
 #' @param ContentType A standard MIME type describing the format of the object data.
 #' @param ChecksumCRC32 This header can be used as a data integrity check to verify that the
 #' data received is the same data that was originally sent. This specifies
-#' the base64-encoded, 32-bit CRC-32 checksum of the object returned by the
-#' Object Lambda function. This may not match the checksum for the object
-#' stored in Amazon S3. Amazon S3 will perform validation of the checksum
-#' values only when the original [`get_object`][s3_get_object] request
-#' required checksum validation. For more information about checksums, see
-#' [Checking object
-#' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
-#' in the *Amazon S3 User Guide*.
-#' 
-#' Only one checksum header can be specified at a time. If you supply
-#' multiple checksum headers, this request will fail.
-#' @param ChecksumCRC32C This header can be used as a data integrity check to verify that the
-#' data received is the same data that was originally sent. This specifies
-#' the base64-encoded, 32-bit CRC-32C checksum of the object returned by
+#' the Base64 encoded, 32-bit `CRC-32` checksum of the object returned by
 #' the Object Lambda function. This may not match the checksum for the
 #' object stored in Amazon S3. Amazon S3 will perform validation of the
 #' checksum values only when the original [`get_object`][s3_get_object]
@@ -7552,9 +7577,28 @@ s3_upload_part_copy <- function(Bucket, CopySource, CopySourceIfMatch = NULL, Co
 #' 
 #' Only one checksum header can be specified at a time. If you supply
 #' multiple checksum headers, this request will fail.
+#' @param ChecksumCRC32C This header can be used as a data integrity check to verify that the
+#' data received is the same data that was originally sent. This specifies
+#' the Base64 encoded, 32-bit `CRC-32C` checksum of the object returned by
+#' the Object Lambda function. This may not match the checksum for the
+#' object stored in Amazon S3. Amazon S3 will perform validation of the
+#' checksum values only when the original [`get_object`][s3_get_object]
+#' request required checksum validation. For more information about
+#' checksums, see [Checking object
+#' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
+#' in the *Amazon S3 User Guide*.
+#' 
+#' Only one checksum header can be specified at a time. If you supply
+#' multiple checksum headers, this request will fail.
+#' @param ChecksumCRC64NVME This header can be used as a data integrity check to verify that the
+#' data received is the same data that was originally sent. This header
+#' specifies the Base64 encoded, 64-bit `CRC-64NVME` checksum of the part.
+#' For more information, see [Checking object
+#' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
+#' in the *Amazon S3 User Guide*.
 #' @param ChecksumSHA1 This header can be used as a data integrity check to verify that the
 #' data received is the same data that was originally sent. This specifies
-#' the base64-encoded, 160-bit SHA-1 digest of the object returned by the
+#' the Base64 encoded, 160-bit `SHA-1` digest of the object returned by the
 #' Object Lambda function. This may not match the checksum for the object
 #' stored in Amazon S3. Amazon S3 will perform validation of the checksum
 #' values only when the original [`get_object`][s3_get_object] request
@@ -7567,12 +7611,12 @@ s3_upload_part_copy <- function(Bucket, CopySource, CopySourceIfMatch = NULL, Co
 #' multiple checksum headers, this request will fail.
 #' @param ChecksumSHA256 This header can be used as a data integrity check to verify that the
 #' data received is the same data that was originally sent. This specifies
-#' the base64-encoded, 256-bit SHA-256 digest of the object returned by the
-#' Object Lambda function. This may not match the checksum for the object
-#' stored in Amazon S3. Amazon S3 will perform validation of the checksum
-#' values only when the original [`get_object`][s3_get_object] request
-#' required checksum validation. For more information about checksums, see
-#' [Checking object
+#' the Base64 encoded, 256-bit `SHA-256` digest of the object returned by
+#' the Object Lambda function. This may not match the checksum for the
+#' object stored in Amazon S3. Amazon S3 will perform validation of the
+#' checksum values only when the original [`get_object`][s3_get_object]
+#' request required checksum validation. For more information about
+#' checksums, see [Checking object
 #' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
 #' in the *Amazon S3 User Guide*.
 #' 
@@ -7634,7 +7678,7 @@ s3_upload_part_copy <- function(Bucket, CopySource, CopySourceIfMatch = NULL, Co
 #' @keywords internal
 #'
 #' @rdname s3_write_get_object_response
-s3_write_get_object_response <- function(RequestRoute, RequestToken, Body = NULL, StatusCode = NULL, ErrorCode = NULL, ErrorMessage = NULL, AcceptRanges = NULL, CacheControl = NULL, ContentDisposition = NULL, ContentEncoding = NULL, ContentLanguage = NULL, ContentLength = NULL, ContentRange = NULL, ContentType = NULL, ChecksumCRC32 = NULL, ChecksumCRC32C = NULL, ChecksumSHA1 = NULL, ChecksumSHA256 = NULL, DeleteMarker = NULL, ETag = NULL, Expires = NULL, Expiration = NULL, LastModified = NULL, MissingMeta = NULL, Metadata = NULL, ObjectLockMode = NULL, ObjectLockLegalHoldStatus = NULL, ObjectLockRetainUntilDate = NULL, PartsCount = NULL, ReplicationStatus = NULL, RequestCharged = NULL, Restore = NULL, ServerSideEncryption = NULL, SSECustomerAlgorithm = NULL, SSEKMSKeyId = NULL, SSECustomerKeyMD5 = NULL, StorageClass = NULL, TagCount = NULL, VersionId = NULL, BucketKeyEnabled = NULL) {
+s3_write_get_object_response <- function(RequestRoute, RequestToken, Body = NULL, StatusCode = NULL, ErrorCode = NULL, ErrorMessage = NULL, AcceptRanges = NULL, CacheControl = NULL, ContentDisposition = NULL, ContentEncoding = NULL, ContentLanguage = NULL, ContentLength = NULL, ContentRange = NULL, ContentType = NULL, ChecksumCRC32 = NULL, ChecksumCRC32C = NULL, ChecksumCRC64NVME = NULL, ChecksumSHA1 = NULL, ChecksumSHA256 = NULL, DeleteMarker = NULL, ETag = NULL, Expires = NULL, Expiration = NULL, LastModified = NULL, MissingMeta = NULL, Metadata = NULL, ObjectLockMode = NULL, ObjectLockLegalHoldStatus = NULL, ObjectLockRetainUntilDate = NULL, PartsCount = NULL, ReplicationStatus = NULL, RequestCharged = NULL, Restore = NULL, ServerSideEncryption = NULL, SSECustomerAlgorithm = NULL, SSEKMSKeyId = NULL, SSECustomerKeyMD5 = NULL, StorageClass = NULL, TagCount = NULL, VersionId = NULL, BucketKeyEnabled = NULL) {
   op <- new_operation(
     name = "WriteGetObjectResponse",
     http_method = "POST",
@@ -7643,7 +7687,7 @@ s3_write_get_object_response <- function(RequestRoute, RequestToken, Body = NULL
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .s3$write_get_object_response_input(RequestRoute = RequestRoute, RequestToken = RequestToken, Body = Body, StatusCode = StatusCode, ErrorCode = ErrorCode, ErrorMessage = ErrorMessage, AcceptRanges = AcceptRanges, CacheControl = CacheControl, ContentDisposition = ContentDisposition, ContentEncoding = ContentEncoding, ContentLanguage = ContentLanguage, ContentLength = ContentLength, ContentRange = ContentRange, ContentType = ContentType, ChecksumCRC32 = ChecksumCRC32, ChecksumCRC32C = ChecksumCRC32C, ChecksumSHA1 = ChecksumSHA1, ChecksumSHA256 = ChecksumSHA256, DeleteMarker = DeleteMarker, ETag = ETag, Expires = Expires, Expiration = Expiration, LastModified = LastModified, MissingMeta = MissingMeta, Metadata = Metadata, ObjectLockMode = ObjectLockMode, ObjectLockLegalHoldStatus = ObjectLockLegalHoldStatus, ObjectLockRetainUntilDate = ObjectLockRetainUntilDate, PartsCount = PartsCount, ReplicationStatus = ReplicationStatus, RequestCharged = RequestCharged, Restore = Restore, ServerSideEncryption = ServerSideEncryption, SSECustomerAlgorithm = SSECustomerAlgorithm, SSEKMSKeyId = SSEKMSKeyId, SSECustomerKeyMD5 = SSECustomerKeyMD5, StorageClass = StorageClass, TagCount = TagCount, VersionId = VersionId, BucketKeyEnabled = BucketKeyEnabled)
+  input <- .s3$write_get_object_response_input(RequestRoute = RequestRoute, RequestToken = RequestToken, Body = Body, StatusCode = StatusCode, ErrorCode = ErrorCode, ErrorMessage = ErrorMessage, AcceptRanges = AcceptRanges, CacheControl = CacheControl, ContentDisposition = ContentDisposition, ContentEncoding = ContentEncoding, ContentLanguage = ContentLanguage, ContentLength = ContentLength, ContentRange = ContentRange, ContentType = ContentType, ChecksumCRC32 = ChecksumCRC32, ChecksumCRC32C = ChecksumCRC32C, ChecksumCRC64NVME = ChecksumCRC64NVME, ChecksumSHA1 = ChecksumSHA1, ChecksumSHA256 = ChecksumSHA256, DeleteMarker = DeleteMarker, ETag = ETag, Expires = Expires, Expiration = Expiration, LastModified = LastModified, MissingMeta = MissingMeta, Metadata = Metadata, ObjectLockMode = ObjectLockMode, ObjectLockLegalHoldStatus = ObjectLockLegalHoldStatus, ObjectLockRetainUntilDate = ObjectLockRetainUntilDate, PartsCount = PartsCount, ReplicationStatus = ReplicationStatus, RequestCharged = RequestCharged, Restore = Restore, ServerSideEncryption = ServerSideEncryption, SSECustomerAlgorithm = SSECustomerAlgorithm, SSEKMSKeyId = SSEKMSKeyId, SSECustomerKeyMD5 = SSECustomerKeyMD5, StorageClass = StorageClass, TagCount = TagCount, VersionId = VersionId, BucketKeyEnabled = BucketKeyEnabled)
   output <- .s3$write_get_object_response_output()
   config <- get_config()
   svc <- .s3$service(config, op)

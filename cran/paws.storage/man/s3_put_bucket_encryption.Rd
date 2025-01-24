@@ -28,7 +28,7 @@ Bucket names must also follow the format
 naming restrictions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html}{Directory bucket naming rules}
 in the \emph{Amazon S3 User Guide}}
 
-\item{ContentMD5}{The base64-encoded 128-bit MD5 digest of the server-side encryption
+\item{ContentMD5}{The Base64 encoded 128-bit \code{MD5} digest of the server-side encryption
 configuration.
 
 For requests made using the Amazon Web Services Command Line Interface

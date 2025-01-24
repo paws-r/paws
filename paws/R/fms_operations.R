@@ -1046,7 +1046,8 @@ fms_get_notification_channel <- function() {
 #'       "string"
 #'     ),
 #'     PolicyDescription = "string",
-#'     PolicyStatus = "ACTIVE"|"OUT_OF_ADMIN_SCOPE"
+#'     PolicyStatus = "ACTIVE"|"OUT_OF_ADMIN_SCOPE",
+#'     ResourceTagLogicalOperator = "AND"|"OR"
 #'   ),
 #'   PolicyArn = "string"
 #' )
@@ -3407,7 +3408,8 @@ fms_put_notification_channel <- function(SnsTopicArn, SnsRoleName) {
 #'       "string"
 #'     ),
 #'     PolicyDescription = "string",
-#'     PolicyStatus = "ACTIVE"|"OUT_OF_ADMIN_SCOPE"
+#'     PolicyStatus = "ACTIVE"|"OUT_OF_ADMIN_SCOPE",
+#'     ResourceTagLogicalOperator = "AND"|"OR"
 #'   ),
 #'   PolicyArn = "string"
 #' )
@@ -3499,7 +3501,8 @@ fms_put_notification_channel <- function(SnsTopicArn, SnsRoleName) {
 #'       "string"
 #'     ),
 #'     PolicyDescription = "string",
-#'     PolicyStatus = "ACTIVE"|"OUT_OF_ADMIN_SCOPE"
+#'     PolicyStatus = "ACTIVE"|"OUT_OF_ADMIN_SCOPE",
+#'     ResourceTagLogicalOperator = "AND"|"OR"
 #'   ),
 #'   TagList = list(
 #'     list(

@@ -18,8 +18,8 @@ locationservice_update_key(
 
 \item{Description}{Updates the description for the API key resource.}
 
-\item{ExpireTime}{Updates the timestamp for when the API key resource will expire in \href{https://www.iso.org/iso-8601-date-and-time-format.html}{ISO 8601} format:
-\code{YYYY-MM-DDThh:mm:ss.sssZ}.}
+\item{ExpireTime}{Updates the timestamp for when the API key resource will expire in ISO
+8601 format: \code{YYYY-MM-DDThh:mm:ss.sssZ}.}
 
 \item{NoExpiry}{Whether the API key should expire. Set to \code{true} to set the API key to
 have no expiration time.}

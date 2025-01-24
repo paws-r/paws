@@ -2988,11 +2988,15 @@ ec2_create_carrier_gateway <- function(VpcId, TagSpecifications = NULL, DryRun =
 #' @param ClientLoginBannerOptions Options for enabling a customizable text banner that will be displayed
 #' on Amazon Web Services provided clients when a VPN session is
 #' established.
+#' @param DisconnectOnSessionTimeout Indicates whether the client VPN session is disconnected after the
+#' maximum timeout specified in `SessionTimeoutHours` is reached. If
+#' `true`, users are prompted to reconnect client VPN. If `false`, client
+#' VPN attempts to reconnect automatically. The default value is `false`.
 #'
 #' @keywords internal
 #'
 #' @rdname ec2_create_client_vpn_endpoint
-ec2_create_client_vpn_endpoint <- function(ClientCidrBlock, ServerCertificateArn, AuthenticationOptions, ConnectionLogOptions, DnsServers = NULL, TransportProtocol = NULL, VpnPort = NULL, Description = NULL, SplitTunnel = NULL, DryRun = NULL, ClientToken = NULL, TagSpecifications = NULL, SecurityGroupIds = NULL, VpcId = NULL, SelfServicePortal = NULL, ClientConnectOptions = NULL, SessionTimeoutHours = NULL, ClientLoginBannerOptions = NULL) {
+ec2_create_client_vpn_endpoint <- function(ClientCidrBlock, ServerCertificateArn, AuthenticationOptions, ConnectionLogOptions, DnsServers = NULL, TransportProtocol = NULL, VpnPort = NULL, Description = NULL, SplitTunnel = NULL, DryRun = NULL, ClientToken = NULL, TagSpecifications = NULL, SecurityGroupIds = NULL, VpcId = NULL, SelfServicePortal = NULL, ClientConnectOptions = NULL, SessionTimeoutHours = NULL, ClientLoginBannerOptions = NULL, DisconnectOnSessionTimeout = NULL) {
   op <- new_operation(
     name = "CreateClientVpnEndpoint",
     http_method = "POST",
@@ -3001,7 +3005,7 @@ ec2_create_client_vpn_endpoint <- function(ClientCidrBlock, ServerCertificateArn
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ec2$create_client_vpn_endpoint_input(ClientCidrBlock = ClientCidrBlock, ServerCertificateArn = ServerCertificateArn, AuthenticationOptions = AuthenticationOptions, ConnectionLogOptions = ConnectionLogOptions, DnsServers = DnsServers, TransportProtocol = TransportProtocol, VpnPort = VpnPort, Description = Description, SplitTunnel = SplitTunnel, DryRun = DryRun, ClientToken = ClientToken, TagSpecifications = TagSpecifications, SecurityGroupIds = SecurityGroupIds, VpcId = VpcId, SelfServicePortal = SelfServicePortal, ClientConnectOptions = ClientConnectOptions, SessionTimeoutHours = SessionTimeoutHours, ClientLoginBannerOptions = ClientLoginBannerOptions)
+  input <- .ec2$create_client_vpn_endpoint_input(ClientCidrBlock = ClientCidrBlock, ServerCertificateArn = ServerCertificateArn, AuthenticationOptions = AuthenticationOptions, ConnectionLogOptions = ConnectionLogOptions, DnsServers = DnsServers, TransportProtocol = TransportProtocol, VpnPort = VpnPort, Description = Description, SplitTunnel = SplitTunnel, DryRun = DryRun, ClientToken = ClientToken, TagSpecifications = TagSpecifications, SecurityGroupIds = SecurityGroupIds, VpcId = VpcId, SelfServicePortal = SelfServicePortal, ClientConnectOptions = ClientConnectOptions, SessionTimeoutHours = SessionTimeoutHours, ClientLoginBannerOptions = ClientLoginBannerOptions, DisconnectOnSessionTimeout = DisconnectOnSessionTimeout)
   output <- .ec2$create_client_vpn_endpoint_output()
   config <- get_config()
   svc <- .ec2$service(config, op)
@@ -25511,11 +25515,15 @@ ec2_modify_capacity_reservation_fleet <- function(CapacityReservationFleetId, To
 #' @param ClientLoginBannerOptions Options for enabling a customizable text banner that will be displayed
 #' on Amazon Web Services provided clients when a VPN session is
 #' established.
+#' @param DisconnectOnSessionTimeout Indicates whether the client VPN session is disconnected after the
+#' maximum timeout specified in `sessionTimeoutHours` is reached. If
+#' `true`, users are prompted to reconnect client VPN. If `false`, client
+#' VPN attempts to reconnect automatically. The default value is `false`.
 #'
 #' @keywords internal
 #'
 #' @rdname ec2_modify_client_vpn_endpoint
-ec2_modify_client_vpn_endpoint <- function(ClientVpnEndpointId, ServerCertificateArn = NULL, ConnectionLogOptions = NULL, DnsServers = NULL, VpnPort = NULL, Description = NULL, SplitTunnel = NULL, DryRun = NULL, SecurityGroupIds = NULL, VpcId = NULL, SelfServicePortal = NULL, ClientConnectOptions = NULL, SessionTimeoutHours = NULL, ClientLoginBannerOptions = NULL) {
+ec2_modify_client_vpn_endpoint <- function(ClientVpnEndpointId, ServerCertificateArn = NULL, ConnectionLogOptions = NULL, DnsServers = NULL, VpnPort = NULL, Description = NULL, SplitTunnel = NULL, DryRun = NULL, SecurityGroupIds = NULL, VpcId = NULL, SelfServicePortal = NULL, ClientConnectOptions = NULL, SessionTimeoutHours = NULL, ClientLoginBannerOptions = NULL, DisconnectOnSessionTimeout = NULL) {
   op <- new_operation(
     name = "ModifyClientVpnEndpoint",
     http_method = "POST",
@@ -25524,7 +25532,7 @@ ec2_modify_client_vpn_endpoint <- function(ClientVpnEndpointId, ServerCertificat
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ec2$modify_client_vpn_endpoint_input(ClientVpnEndpointId = ClientVpnEndpointId, ServerCertificateArn = ServerCertificateArn, ConnectionLogOptions = ConnectionLogOptions, DnsServers = DnsServers, VpnPort = VpnPort, Description = Description, SplitTunnel = SplitTunnel, DryRun = DryRun, SecurityGroupIds = SecurityGroupIds, VpcId = VpcId, SelfServicePortal = SelfServicePortal, ClientConnectOptions = ClientConnectOptions, SessionTimeoutHours = SessionTimeoutHours, ClientLoginBannerOptions = ClientLoginBannerOptions)
+  input <- .ec2$modify_client_vpn_endpoint_input(ClientVpnEndpointId = ClientVpnEndpointId, ServerCertificateArn = ServerCertificateArn, ConnectionLogOptions = ConnectionLogOptions, DnsServers = DnsServers, VpnPort = VpnPort, Description = Description, SplitTunnel = SplitTunnel, DryRun = DryRun, SecurityGroupIds = SecurityGroupIds, VpcId = VpcId, SelfServicePortal = SelfServicePortal, ClientConnectOptions = ClientConnectOptions, SessionTimeoutHours = SessionTimeoutHours, ClientLoginBannerOptions = ClientLoginBannerOptions, DisconnectOnSessionTimeout = DisconnectOnSessionTimeout)
   output <- .ec2$modify_client_vpn_endpoint_output()
   config <- get_config()
   svc <- .ec2$service(config, op)

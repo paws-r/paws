@@ -445,12 +445,6 @@ API (RDS Data API) for running SQL queries on the DB cluster. You can
 also query your database from inside the RDS console with the RDS query
 editor.
 
-RDS Data API is supported with the following DB clusters:
-\itemize{
-\item Aurora PostgreSQL Serverless v2 and provisioned
-\item Aurora PostgreSQL and Aurora MySQL Serverless v1
-}
-
 For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/data-api.html}{Using RDS Data API}
 in the \emph{Amazon Aurora User Guide}.
 
