@@ -40,12 +40,12 @@ jobs:
         with:
           pandoc-version: "2.17.1"
 
-      - name: Install system dependencies
+      - name: Install system dependencies macOS
         if: runner.os == 'macOS'
         run: |
           brew install freetype
 
-      - name: Install system dependencies
+      - name: Install system dependencies Linux
         if: runner.os == 'Linux'
         run: |
           sudo apt-get update
