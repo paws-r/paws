@@ -18,6 +18,7 @@ s3_put_object(
   ChecksumAlgorithm = NULL,
   ChecksumCRC32 = NULL,
   ChecksumCRC32C = NULL,
+  ChecksumCRC64NVME = NULL,
   ChecksumSHA1 = NULL,
   ChecksumSHA256 = NULL,
   Expires = NULL,
@@ -130,7 +131,7 @@ referenced by the Content-Type header field. For more information, see
 body cannot be determined automatically. For more information, see
 \url{https://www.rfc-editor.org/rfc/rfc9110.html#name-content-length}.}
 
-\item{ContentMD5}{The base64-encoded 128-bit MD5 digest of the message (without the
+\item{ContentMD5}{The Base64 encoded 128-bit \code{MD5} digest of the message (without the
 headers) according to RFC 1864. This header can be used as a message
 integrity check to verify that the data is the same data that was
 originally sent. Although it is optional, we recommend using the
@@ -158,10 +159,11 @@ code \verb{400 Bad Request}.
 For the \code{x-amz-checksum-algorithm } header, replace \code{algorithm} with
 the supported algorithm from the following list:
 \itemize{
-\item \code{CRC32}
-\item \code{CRC32C}
-\item \code{SHA1}
-\item \code{SHA256}
+\item \code{CRC-32}
+\item \verb{CRC-32C}
+\item \verb{CRC-64NVME}
+\item \code{SHA-1}
+\item \code{SHA-256}
 }
 
 For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html}{Checking object integrity}
@@ -169,9 +171,8 @@ in the \emph{Amazon S3 User Guide}.
 
 If the individual checksum value you provide through
 \code{x-amz-checksum-algorithm } doesn't match the checksum algorithm you set
-through \code{x-amz-sdk-checksum-algorithm}, Amazon S3 ignores any provided
-\code{ChecksumAlgorithm} parameter and uses the checksum algorithm that
-matches the provided value in \code{x-amz-checksum-algorithm }.
+through \code{x-amz-sdk-checksum-algorithm}, Amazon S3 fails the request with
+a \code{BadDigest} error.
 
 The \code{Content-MD5} or \code{x-amz-sdk-checksum-algorithm} header is required
 for any request to upload an object with a retention period configured
@@ -183,26 +184,32 @@ the default checksum algorithm that's used for performance.}
 
 \item{ChecksumCRC32}{This header can be used as a data integrity check to verify that the
 data received is the same data that was originally sent. This header
-specifies the base64-encoded, 32-bit CRC-32 checksum of the object. For
-more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html}{Checking object integrity}
+specifies the Base64 encoded, 32-bit \code{CRC-32} checksum of the object.
+For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html}{Checking object integrity}
 in the \emph{Amazon S3 User Guide}.}
 
 \item{ChecksumCRC32C}{This header can be used as a data integrity check to verify that the
 data received is the same data that was originally sent. This header
-specifies the base64-encoded, 32-bit CRC-32C checksum of the object. For
-more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html}{Checking object integrity}
+specifies the Base64 encoded, 32-bit \verb{CRC-32C} checksum of the object.
+For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html}{Checking object integrity}
 in the \emph{Amazon S3 User Guide}.}
+
+\item{ChecksumCRC64NVME}{This header can be used as a data integrity check to verify that the
+data received is the same data that was originally sent. This header
+specifies the Base64 encoded, 64-bit \verb{CRC-64NVME} checksum of the
+object. The \verb{CRC-64NVME} checksum is always a full object checksum. For
+more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html}{Checking object integrity in the Amazon S3 User Guide}.}
 
 \item{ChecksumSHA1}{This header can be used as a data integrity check to verify that the
 data received is the same data that was originally sent. This header
-specifies the base64-encoded, 160-bit SHA-1 digest of the object. For
+specifies the Base64 encoded, 160-bit \code{SHA-1} digest of the object. For
 more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html}{Checking object integrity}
 in the \emph{Amazon S3 User Guide}.}
 
 \item{ChecksumSHA256}{This header can be used as a data integrity check to verify that the
 data received is the same data that was originally sent. This header
-specifies the base64-encoded, 256-bit SHA-256 digest of the object. For
-more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html}{Checking object integrity}
+specifies the Base64 encoded, 256-bit \code{SHA-256} digest of the object.
+For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html}{Checking object integrity}
 in the \emph{Amazon S3 User Guide}.}
 
 \item{Expires}{The date and time at which the object is no longer cacheable. For more
@@ -411,7 +418,7 @@ per directory bucket for the lifetime of the bucket. The \href{https://docs.aws.
 
 \item{SSEKMSEncryptionContext}{Specifies the Amazon Web Services KMS Encryption Context as an
 additional encryption context to use for object encryption. The value of
-this header is a Base64-encoded string of a UTF-8 encoded JSON, which
+this header is a Base64 encoded string of a UTF-8 encoded JSON, which
 contains the encryption context as key-value pairs. This value is stored
 as object metadata and automatically gets passed on to Amazon Web
 Services KMS for future \code{\link[=s3_get_object]{get_object}} operations on this

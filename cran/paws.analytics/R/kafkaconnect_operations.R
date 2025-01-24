@@ -34,13 +34,13 @@ NULL
 #' resources depends on the logic of the connector. For example, a
 #' connector that has Amazon S3 as a destination must have permissions that
 #' allow it to write to the S3 destination bucket.
-#' @param tags The tags you want to attach to the connector.
 #' @param workerConfiguration Specifies which worker configuration to use with the connector.
+#' @param tags The tags you want to attach to the connector.
 #'
 #' @keywords internal
 #'
 #' @rdname kafkaconnect_create_connector
-kafkaconnect_create_connector <- function(capacity, connectorConfiguration, connectorDescription = NULL, connectorName, kafkaCluster, kafkaClusterClientAuthentication, kafkaClusterEncryptionInTransit, kafkaConnectVersion, logDelivery = NULL, plugins, serviceExecutionRoleArn, tags = NULL, workerConfiguration = NULL) {
+kafkaconnect_create_connector <- function(capacity, connectorConfiguration, connectorDescription = NULL, connectorName, kafkaCluster, kafkaClusterClientAuthentication, kafkaClusterEncryptionInTransit, kafkaConnectVersion, logDelivery = NULL, plugins, serviceExecutionRoleArn, workerConfiguration = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateConnector",
     http_method = "POST",
@@ -49,7 +49,7 @@ kafkaconnect_create_connector <- function(capacity, connectorConfiguration, conn
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .kafkaconnect$create_connector_input(capacity = capacity, connectorConfiguration = connectorConfiguration, connectorDescription = connectorDescription, connectorName = connectorName, kafkaCluster = kafkaCluster, kafkaClusterClientAuthentication = kafkaClusterClientAuthentication, kafkaClusterEncryptionInTransit = kafkaClusterEncryptionInTransit, kafkaConnectVersion = kafkaConnectVersion, logDelivery = logDelivery, plugins = plugins, serviceExecutionRoleArn = serviceExecutionRoleArn, tags = tags, workerConfiguration = workerConfiguration)
+  input <- .kafkaconnect$create_connector_input(capacity = capacity, connectorConfiguration = connectorConfiguration, connectorDescription = connectorDescription, connectorName = connectorName, kafkaCluster = kafkaCluster, kafkaClusterClientAuthentication = kafkaClusterClientAuthentication, kafkaClusterEncryptionInTransit = kafkaClusterEncryptionInTransit, kafkaConnectVersion = kafkaConnectVersion, logDelivery = logDelivery, plugins = plugins, serviceExecutionRoleArn = serviceExecutionRoleArn, workerConfiguration = workerConfiguration, tags = tags)
   output <- .kafkaconnect$create_connector_output()
   config <- get_config()
   svc <- .kafkaconnect$service(config, op)
@@ -256,6 +256,37 @@ kafkaconnect_describe_connector <- function(connectorArn) {
 }
 .kafkaconnect$operations$describe_connector <- kafkaconnect_describe_connector
 
+#' Returns information about the specified connector's operations
+#'
+#' @description
+#' Returns information about the specified connector's operations.
+#'
+#' See [https://www.paws-r-sdk.com/docs/kafkaconnect_describe_connector_operation/](https://www.paws-r-sdk.com/docs/kafkaconnect_describe_connector_operation/) for full documentation.
+#'
+#' @param connectorOperationArn &#91;required&#93; ARN of the connector operation to be described.
+#'
+#' @keywords internal
+#'
+#' @rdname kafkaconnect_describe_connector_operation
+kafkaconnect_describe_connector_operation <- function(connectorOperationArn) {
+  op <- new_operation(
+    name = "DescribeConnectorOperation",
+    http_method = "GET",
+    http_path = "/v1/connectorOperations/{connectorOperationArn}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .kafkaconnect$describe_connector_operation_input(connectorOperationArn = connectorOperationArn)
+  output <- .kafkaconnect$describe_connector_operation_output()
+  config <- get_config()
+  svc <- .kafkaconnect$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kafkaconnect$operations$describe_connector_operation <- kafkaconnect_describe_connector_operation
+
 #' A summary description of the custom plugin
 #'
 #' @description
@@ -319,6 +350,42 @@ kafkaconnect_describe_worker_configuration <- function(workerConfigurationArn) {
 }
 .kafkaconnect$operations$describe_worker_configuration <- kafkaconnect_describe_worker_configuration
 
+#' Lists information about a connector's operation(s)
+#'
+#' @description
+#' Lists information about a connector's operation(s).
+#'
+#' See [https://www.paws-r-sdk.com/docs/kafkaconnect_list_connector_operations/](https://www.paws-r-sdk.com/docs/kafkaconnect_list_connector_operations/) for full documentation.
+#'
+#' @param connectorArn &#91;required&#93; The Amazon Resource Name (ARN) of the connector for which to list
+#' operations.
+#' @param maxResults Maximum number of connector operations to fetch in one get request.
+#' @param nextToken If the response is truncated, it includes a NextToken. Send this
+#' NextToken in a subsequent request to continue listing from where it left
+#' off.
+#'
+#' @keywords internal
+#'
+#' @rdname kafkaconnect_list_connector_operations
+kafkaconnect_list_connector_operations <- function(connectorArn, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListConnectorOperations",
+    http_method = "GET",
+    http_path = "/v1/connectors/{connectorArn}/operations",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "connectorOperations"),
+    stream_api = FALSE
+  )
+  input <- .kafkaconnect$list_connector_operations_input(connectorArn = connectorArn, maxResults = maxResults, nextToken = nextToken)
+  output <- .kafkaconnect$list_connector_operations_output()
+  config <- get_config()
+  svc <- .kafkaconnect$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kafkaconnect$operations$list_connector_operations <- kafkaconnect_list_connector_operations
+
 #' Returns a list of all the connectors in this account and Region
 #'
 #' @description
@@ -362,15 +429,15 @@ kafkaconnect_list_connectors <- function(connectorNamePrefix = NULL, maxResults 
 #' See [https://www.paws-r-sdk.com/docs/kafkaconnect_list_custom_plugins/](https://www.paws-r-sdk.com/docs/kafkaconnect_list_custom_plugins/) for full documentation.
 #'
 #' @param maxResults The maximum number of custom plugins to list in one response.
-#' @param namePrefix Lists custom plugin names that start with the specified text string.
 #' @param nextToken If the response of a ListCustomPlugins operation is truncated, it will
 #' include a NextToken. Send this NextToken in a subsequent request to
 #' continue listing from where the previous operation left off.
+#' @param namePrefix Lists custom plugin names that start with the specified text string.
 #'
 #' @keywords internal
 #'
 #' @rdname kafkaconnect_list_custom_plugins
-kafkaconnect_list_custom_plugins <- function(maxResults = NULL, namePrefix = NULL, nextToken = NULL) {
+kafkaconnect_list_custom_plugins <- function(maxResults = NULL, nextToken = NULL, namePrefix = NULL) {
   op <- new_operation(
     name = "ListCustomPlugins",
     http_method = "GET",
@@ -379,7 +446,7 @@ kafkaconnect_list_custom_plugins <- function(maxResults = NULL, namePrefix = NUL
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "customPlugins"),
     stream_api = FALSE
   )
-  input <- .kafkaconnect$list_custom_plugins_input(maxResults = maxResults, namePrefix = namePrefix, nextToken = nextToken)
+  input <- .kafkaconnect$list_custom_plugins_input(maxResults = maxResults, nextToken = nextToken, namePrefix = namePrefix)
   output <- .kafkaconnect$list_custom_plugins_output()
   config <- get_config()
   svc <- .kafkaconnect$service(config, op)
@@ -430,16 +497,16 @@ kafkaconnect_list_tags_for_resource <- function(resourceArn) {
 #' See [https://www.paws-r-sdk.com/docs/kafkaconnect_list_worker_configurations/](https://www.paws-r-sdk.com/docs/kafkaconnect_list_worker_configurations/) for full documentation.
 #'
 #' @param maxResults The maximum number of worker configurations to list in one response.
-#' @param namePrefix Lists worker configuration names that start with the specified text
-#' string.
 #' @param nextToken If the response of a ListWorkerConfigurations operation is truncated, it
 #' will include a NextToken. Send this NextToken in a subsequent request to
 #' continue listing from where the previous operation left off.
+#' @param namePrefix Lists worker configuration names that start with the specified text
+#' string.
 #'
 #' @keywords internal
 #'
 #' @rdname kafkaconnect_list_worker_configurations
-kafkaconnect_list_worker_configurations <- function(maxResults = NULL, namePrefix = NULL, nextToken = NULL) {
+kafkaconnect_list_worker_configurations <- function(maxResults = NULL, nextToken = NULL, namePrefix = NULL) {
   op <- new_operation(
     name = "ListWorkerConfigurations",
     http_method = "GET",
@@ -448,7 +515,7 @@ kafkaconnect_list_worker_configurations <- function(maxResults = NULL, namePrefi
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "workerConfigurations"),
     stream_api = FALSE
   )
-  input <- .kafkaconnect$list_worker_configurations_input(maxResults = maxResults, namePrefix = namePrefix, nextToken = nextToken)
+  input <- .kafkaconnect$list_worker_configurations_input(maxResults = maxResults, nextToken = nextToken, namePrefix = namePrefix)
   output <- .kafkaconnect$list_worker_configurations_output()
   config <- get_config()
   svc <- .kafkaconnect$service(config, op)
@@ -531,14 +598,16 @@ kafkaconnect_untag_resource <- function(resourceArn, tagKeys) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/kafkaconnect_update_connector/](https://www.paws-r-sdk.com/docs/kafkaconnect_update_connector/) for full documentation.
 #'
-#' @param capacity &#91;required&#93; The target capacity.
+#' @param capacity The target capacity.
+#' @param connectorConfiguration A map of keys to values that represent the configuration for the
+#' connector.
 #' @param connectorArn &#91;required&#93; The Amazon Resource Name (ARN) of the connector that you want to update.
 #' @param currentVersion &#91;required&#93; The current version of the connector that you want to update.
 #'
 #' @keywords internal
 #'
 #' @rdname kafkaconnect_update_connector
-kafkaconnect_update_connector <- function(capacity, connectorArn, currentVersion) {
+kafkaconnect_update_connector <- function(capacity = NULL, connectorConfiguration = NULL, connectorArn, currentVersion) {
   op <- new_operation(
     name = "UpdateConnector",
     http_method = "PUT",
@@ -547,7 +616,7 @@ kafkaconnect_update_connector <- function(capacity, connectorArn, currentVersion
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .kafkaconnect$update_connector_input(capacity = capacity, connectorArn = connectorArn, currentVersion = currentVersion)
+  input <- .kafkaconnect$update_connector_input(capacity = capacity, connectorConfiguration = connectorConfiguration, connectorArn = connectorArn, currentVersion = currentVersion)
   output <- .kafkaconnect$update_connector_output()
   config <- get_config()
   svc <- .kafkaconnect$service(config, op)

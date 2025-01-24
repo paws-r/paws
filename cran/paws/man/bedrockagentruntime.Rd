@@ -98,7 +98,7 @@ bases.
 \link[paws.machine.learning:bedrockagentruntime_delete_agent_memory]{delete_agent_memory} \tab Deletes memory from the specified memory identifier\cr
 \link[paws.machine.learning:bedrockagentruntime_generate_query]{generate_query} \tab Generates an SQL query from a natural language query\cr
 \link[paws.machine.learning:bedrockagentruntime_get_agent_memory]{get_agent_memory} \tab Gets the sessions stored in the memory of the agent\cr
-\link[paws.machine.learning:bedrockagentruntime_invoke_agent]{invoke_agent} \tab The CLI doesn't support streaming operations in Amazon Bedrock, including InvokeAgent\cr
+\link[paws.machine.learning:bedrockagentruntime_invoke_agent]{invoke_agent} \tab Sends a prompt for the agent to process and respond to\cr
 \link[paws.machine.learning:bedrockagentruntime_invoke_flow]{invoke_flow} \tab Invokes an alias of a flow to run the inputs that you specify and return the output of each node as a stream\cr
 \link[paws.machine.learning:bedrockagentruntime_invoke_inline_agent]{invoke_inline_agent} \tab Invokes an inline Amazon Bedrock agent using the configurations you provide with the request\cr
 \link[paws.machine.learning:bedrockagentruntime_optimize_prompt]{optimize_prompt} \tab Optimizes a prompt for the task that you specify\cr

@@ -301,7 +301,7 @@ NULL
 
 .connect$create_contact_flow_version_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), Description = structure(logical(0), tags = list(type = "string")), ContactFlowId = structure(logical(0), tags = list(location = "uri", locationName = "ContactFlowId", type = "string")), FlowContentSha256 = structure(logical(0), tags = list(type = "string")), LastModifiedTime = structure(logical(0), tags = list(type = "timestamp")), LastModifiedRegion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), Description = structure(logical(0), tags = list(type = "string")), ContactFlowId = structure(logical(0), tags = list(location = "uri", locationName = "ContactFlowId", type = "string")), FlowContentSha256 = structure(logical(0), tags = list(type = "string")), ContactFlowVersion = structure(logical(0), tags = list(type = "long")), LastModifiedTime = structure(logical(0), tags = list(type = "timestamp")), LastModifiedRegion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -650,6 +650,18 @@ NULL
 }
 
 .connect$delete_contact_flow_module_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.connect$delete_contact_flow_version_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), ContactFlowId = structure(logical(0), tags = list(location = "uri", locationName = "ContactFlowId", type = "string")), ContactFlowVersion = structure(logical(0), tags = list(location = "uri", locationName = "ContactFlowVersion", type = "long"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.connect$delete_contact_flow_version_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(), tags = list(type = "structure"))
   return(populate(args, shape))

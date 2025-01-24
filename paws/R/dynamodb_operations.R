@@ -2851,7 +2851,8 @@ dynamodb_describe_backup <- function(BackupArn) {
 #' `LatestRestorableDateTime`.
 #' 
 #' `LatestRestorableDateTime` is typically 5 minutes before the current
-#' time. You can restore your table to any point in time during the last 35
+#' time. You can restore your table to any point in time in the last 35
+#' days. You can set the recovery period to any value between 1 and 35
 #' days.
 #' 
 #' You can call
@@ -2875,6 +2876,7 @@ dynamodb_describe_backup <- function(BackupArn) {
 #'     ContinuousBackupsStatus = "ENABLED"|"DISABLED",
 #'     PointInTimeRecoveryDescription = list(
 #'       PointInTimeRecoveryStatus = "ENABLED"|"DISABLED",
+#'       RecoveryPeriodInDays = 123,
 #'       EarliestRestorableDateTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
@@ -7362,9 +7364,10 @@ dynamodb_restore_table_from_backup <- function(TargetTableName, BackupArn, Billi
 #' @description
 #' Restores the specified table to the specified point in time within
 #' `EarliestRestorableDateTime` and `LatestRestorableDateTime`. You can
-#' restore your table to any point in time during the last 35 days. Any
-#' number of users can execute up to 50 concurrent restores (any type of
-#' restore) in a given account.
+#' restore your table to any point in time in the last 35 days. You can set
+#' the recovery period to any value between 1 and 35 days. Any number of
+#' users can execute up to 50 concurrent restores (any type of restore) in
+#' a given account.
 #' 
 #' When you restore using point in time recovery, DynamoDB restores your
 #' table data to the state based on the selected date and time
@@ -9009,7 +9012,8 @@ dynamodb_untag_resource <- function(ResourceArn, TagKeys) {
 #' `LatestRestorableDateTime`.
 #' 
 #' `LatestRestorableDateTime` is typically 5 minutes before the current
-#' time. You can restore your table to any point in time during the last 35
+#' time. You can restore your table to any point in time in the last 35
+#' days. You can set the recovery period to any value between 1 and 35
 #' days.
 #'
 #' @usage
@@ -9028,6 +9032,7 @@ dynamodb_untag_resource <- function(ResourceArn, TagKeys) {
 #'     ContinuousBackupsStatus = "ENABLED"|"DISABLED",
 #'     PointInTimeRecoveryDescription = list(
 #'       PointInTimeRecoveryStatus = "ENABLED"|"DISABLED",
+#'       RecoveryPeriodInDays = 123,
 #'       EarliestRestorableDateTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
@@ -9044,7 +9049,8 @@ dynamodb_untag_resource <- function(ResourceArn, TagKeys) {
 #' svc$update_continuous_backups(
 #'   TableName = "string",
 #'   PointInTimeRecoverySpecification = list(
-#'     PointInTimeRecoveryEnabled = TRUE|FALSE
+#'     PointInTimeRecoveryEnabled = TRUE|FALSE,
+#'     RecoveryPeriodInDays = 123
 #'   )
 #' )
 #' ```

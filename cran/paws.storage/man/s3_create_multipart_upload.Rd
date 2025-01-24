@@ -34,7 +34,8 @@ s3_create_multipart_upload(
   ObjectLockRetainUntilDate = NULL,
   ObjectLockLegalHoldStatus = NULL,
   ExpectedBucketOwner = NULL,
-  ChecksumAlgorithm = NULL
+  ChecksumAlgorithm = NULL,
+  ChecksumType = NULL
 )
 }
 \arguments{
@@ -413,7 +414,7 @@ per directory bucket for the lifetime of the bucket. The \href{https://docs.aws.
 (\code{aws/s3}) isn't supported.}
 
 \item{SSEKMSEncryptionContext}{Specifies the Amazon Web Services KMS Encryption Context to use for
-object encryption. The value of this header is a Base64-encoded string
+object encryption. The value of this header is a Base64 encoded string
 of a UTF-8 encoded JSON, which contains the encryption context as
 key-value pairs.
 
@@ -469,6 +470,9 @@ with the HTTP status code \verb{403 Forbidden} (access denied).}
 \item{ChecksumAlgorithm}{Indicates the algorithm that you want Amazon S3 to use to create the
 checksum for the object. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html}{Checking object integrity}
 in the \emph{Amazon S3 User Guide}.}
+
+\item{ChecksumType}{Indicates the checksum type that you want Amazon S3 to use to calculate
+the object’s checksum value. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html}{Checking object integrity in the Amazon S3 User Guide}.}
 }
 \description{
 This action initiates a multipart upload and returns an upload ID. This upload ID is used to associate all of the parts in the specific multipart upload. You specify this upload ID in each of your subsequent upload part requests (see \code{\link[=s3_upload_part]{upload_part}}). You also include this upload ID in the final request to either complete or abort the multipart upload request. For more information about multipart uploads, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpuoverview.html}{Multipart Upload Overview} in the \emph{Amazon S3 User Guide}.

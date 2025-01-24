@@ -253,11 +253,14 @@ Default: \code{1}
 
 Constraints: Value must be at least 1 and no more than 100.}
 
-\item{PubliclyAccessible}{If \code{true}, the cluster can be accessed from a public network.}
-
-\item{Encrypted}{If \code{true}, the data in the cluster is encrypted at rest.
+\item{PubliclyAccessible}{If \code{true}, the cluster can be accessed from a public network.
 
 Default: false}
+
+\item{Encrypted}{If \code{true}, the data in the cluster is encrypted at rest. If you set the
+value on this parameter to \code{false}, the request will fail.
+
+Default: true}
 
 \item{HsmClientCertificateIdentifier}{Specifies the name of the HSM client certificate the Amazon Redshift
 cluster uses to retrieve the data encryption keys stored in an HSM.}

@@ -238,8 +238,8 @@ apigateway_create_authorizer <- function(restApiId, name, type, providerARNs = N
 #'   restApiId, stage)
 #'
 #' @param domainName &#91;required&#93; The domain name of the BasePathMapping resource to create.
-#' @param domainNameId The identifier for the domain name resource. Supported only for private
-#' custom domain names.
+#' @param domainNameId The identifier for the domain name resource. Required for private custom
+#' domain names.
 #' @param basePath The base path name that callers of the API must provide as part of the
 #' URL after the domain name. This value must be unique for all of the
 #' mappings across a single API. Specify '(none)' if you do not want
@@ -3698,8 +3698,8 @@ apigateway_get_documentation_versions <- function(restApiId, position = NULL, li
 #' apigateway_get_domain_name(domainName, domainNameId)
 #'
 #' @param domainName &#91;required&#93; The name of the DomainName resource.
-#' @param domainNameId The identifier for the domain name resource. Supported only for private
-#' custom domain names.
+#' @param domainNameId The identifier for the domain name resource. Required for private custom
+#' domain names.
 #'
 #' @return
 #' A list with the following syntax:

@@ -459,6 +459,18 @@ NULL
   return(populate(args, shape))
 }
 
+.imagebuilder$import_disk_image_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), semanticVersion = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), platform = structure(logical(0), tags = list(type = "string")), osVersion = structure(logical(0), tags = list(type = "string")), executionRole = structure(logical(0), tags = list(type = "string")), infrastructureConfigurationArn = structure(logical(0), tags = list(type = "string")), uri = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.imagebuilder$import_disk_image_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(clientToken = structure(logical(0), tags = list(type = "string")), imageBuildVersionArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .imagebuilder$import_vm_image_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), semanticVersion = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), platform = structure(logical(0), tags = list(type = "string")), osVersion = structure(logical(0), tags = list(type = "string")), vmImportTaskId = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))

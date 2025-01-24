@@ -2432,7 +2432,7 @@ dynamodb_restore_table_from_backup <- function(TargetTableName, BackupArn, Billi
 #' EarliestRestorableDateTime and LatestRestorableDateTime
 #'
 #' @description
-#' Restores the specified table to the specified point in time within `EarliestRestorableDateTime` and `LatestRestorableDateTime`. You can restore your table to any point in time during the last 35 days. Any number of users can execute up to 50 concurrent restores (any type of restore) in a given account.
+#' Restores the specified table to the specified point in time within `EarliestRestorableDateTime` and `LatestRestorableDateTime`. You can restore your table to any point in time in the last 35 days. You can set the recovery period to any value between 1 and 35 days. Any number of users can execute up to 50 concurrent restores (any type of restore) in a given account.
 #'
 #' See [https://www.paws-r-sdk.com/docs/dynamodb_restore_table_to_point_in_time/](https://www.paws-r-sdk.com/docs/dynamodb_restore_table_to_point_in_time/) for full documentation.
 #'

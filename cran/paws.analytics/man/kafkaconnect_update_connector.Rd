@@ -4,10 +4,18 @@
 \alias{kafkaconnect_update_connector}
 \title{Updates the specified connector}
 \usage{
-kafkaconnect_update_connector(capacity, connectorArn, currentVersion)
+kafkaconnect_update_connector(
+  capacity = NULL,
+  connectorConfiguration = NULL,
+  connectorArn,
+  currentVersion
+)
 }
 \arguments{
-\item{capacity}{[required] The target capacity.}
+\item{capacity}{The target capacity.}
+
+\item{connectorConfiguration}{A map of keys to values that represent the configuration for the
+connector.}
 
 \item{connectorArn}{[required] The Amazon Resource Name (ARN) of the connector that you want to update.}
 

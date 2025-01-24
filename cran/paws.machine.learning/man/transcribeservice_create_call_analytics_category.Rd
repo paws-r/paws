@@ -7,6 +7,7 @@
 transcribeservice_create_call_analytics_category(
   CategoryName,
   Rules,
+  Tags = NULL,
   InputType = NULL
 )
 }
@@ -24,6 +25,11 @@ you must create between 1 and 20 rules for that category. For each rule,
 you specify a filter you want applied to the attributes of a call. For
 example, you can choose a sentiment filter that detects if a customer's
 sentiment was positive during the last 30 seconds of the call.}
+
+\item{Tags}{Adds one or more custom tags, each in the form of a key:value pair, to a
+new call analytics category at the time you start this new job.
+
+To learn more about using tags with Amazon Transcribe, refer to \href{https://docs.aws.amazon.com/transcribe/latest/dg/tagging.html}{Tagging resources}.}
 
 \item{InputType}{Choose whether you want to create a real-time or a post-call category
 for your Call Analytics transcription.

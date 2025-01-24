@@ -11,8 +11,11 @@ s3_complete_multipart_upload(
   UploadId,
   ChecksumCRC32 = NULL,
   ChecksumCRC32C = NULL,
+  ChecksumCRC64NVME = NULL,
   ChecksumSHA1 = NULL,
   ChecksumSHA256 = NULL,
+  ChecksumType = NULL,
+  MpuObjectSize = NULL,
   RequestPayer = NULL,
   ExpectedBucketOwner = NULL,
   IfMatch = NULL,
@@ -66,27 +69,48 @@ in the \emph{Amazon S3 User Guide}.}
 
 \item{ChecksumCRC32}{This header can be used as a data integrity check to verify that the
 data received is the same data that was originally sent. This header
-specifies the base64-encoded, 32-bit CRC-32 checksum of the object. For
-more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html}{Checking object integrity}
+specifies the Base64 encoded, 32-bit \code{CRC-32} checksum of the object.
+For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html}{Checking object integrity}
 in the \emph{Amazon S3 User Guide}.}
 
 \item{ChecksumCRC32C}{This header can be used as a data integrity check to verify that the
 data received is the same data that was originally sent. This header
-specifies the base64-encoded, 32-bit CRC-32C checksum of the object. For
-more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html}{Checking object integrity}
+specifies the Base64 encoded, 32-bit \verb{CRC-32C} checksum of the object.
+For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html}{Checking object integrity}
 in the \emph{Amazon S3 User Guide}.}
+
+\item{ChecksumCRC64NVME}{This header can be used as a data integrity check to verify that the
+data received is the same data that was originally sent. This header
+specifies the Base64 encoded, 64-bit \verb{CRC-64NVME} checksum of the
+object. The \verb{CRC-64NVME} checksum is always a full object checksum. For
+more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html}{Checking object integrity in the Amazon S3 User Guide}.}
 
 \item{ChecksumSHA1}{This header can be used as a data integrity check to verify that the
 data received is the same data that was originally sent. This header
-specifies the base64-encoded, 160-bit SHA-1 digest of the object. For
+specifies the Base64 encoded, 160-bit \code{SHA-1} digest of the object. For
 more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html}{Checking object integrity}
 in the \emph{Amazon S3 User Guide}.}
 
 \item{ChecksumSHA256}{This header can be used as a data integrity check to verify that the
 data received is the same data that was originally sent. This header
-specifies the base64-encoded, 256-bit SHA-256 digest of the object. For
-more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html}{Checking object integrity}
+specifies the Base64 encoded, 256-bit \code{SHA-256} digest of the object.
+For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html}{Checking object integrity}
 in the \emph{Amazon S3 User Guide}.}
+
+\item{ChecksumType}{This header specifies the checksum type of the object, which determines
+how part-level checksums are combined to create an object-level checksum
+for multipart objects. You can use this header as a data integrity check
+to verify that the checksum type that is received is the same checksum
+that was specified. If the checksum type doesn’t match the checksum type
+that was specified for the object during the
+\code{\link[=s3_create_multipart_upload]{create_multipart_upload}} request, it’ll
+result in a \code{BadDigest} error. For more information, see Checking object
+integrity in the Amazon S3 User Guide.}
+
+\item{MpuObjectSize}{The expected total object size of the multipart upload request. If
+there’s a mismatch between the specified object size value and the
+actual object size value, it results in an \verb{HTTP 400 InvalidRequest}
+error.}
 
 \item{RequestPayer}{}
 

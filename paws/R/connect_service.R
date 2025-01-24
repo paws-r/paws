@@ -127,7 +127,7 @@ NULL
 #'  \link[=connect_associate_routing_profile_queues]{associate_routing_profile_queues} \tab Associates a set of queues with a routing profile\cr
 #'  \link[=connect_associate_security_key]{associate_security_key} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 #'  \link[=connect_associate_traffic_distribution_group_user]{associate_traffic_distribution_group_user} \tab Associates an agent with a traffic distribution group\cr
-#'  \link[=connect_associate_user_proficiencies]{associate_user_proficiencies} \tab >Associates a set of proficiencies with a user\cr
+#'  \link[=connect_associate_user_proficiencies]{associate_user_proficiencies} \tab Associates a set of proficiencies with a user\cr
 #'  \link[=connect_batch_associate_analytics_data_set]{batch_associate_analytics_data_set} \tab Associates a list of analytics datasets for a given Amazon Connect instance to a target account\cr
 #'  \link[=connect_batch_disassociate_analytics_data_set]{batch_disassociate_analytics_data_set} \tab Removes a list of analytics datasets associated with a given Amazon Connect instance\cr
 #'  \link[=connect_batch_get_attached_file_metadata]{batch_get_attached_file_metadata} \tab Allows you to retrieve metadata about multiple attached files on an associated resource\cr
@@ -169,6 +169,7 @@ NULL
 #'  \link[=connect_delete_contact_evaluation]{delete_contact_evaluation} \tab Deletes a contact evaluation in the specified Amazon Connect instance\cr
 #'  \link[=connect_delete_contact_flow]{delete_contact_flow} \tab Deletes a flow for the specified Amazon Connect instance\cr
 #'  \link[=connect_delete_contact_flow_module]{delete_contact_flow_module} \tab Deletes the specified flow module\cr
+#'  \link[=connect_delete_contact_flow_version]{delete_contact_flow_version} \tab Deletes the particular version specified in flow version identifier\cr
 #'  \link[=connect_delete_email_address]{delete_email_address} \tab Deletes email address from the specified Amazon Connect instance\cr
 #'  \link[=connect_delete_evaluation_form]{delete_evaluation_form} \tab Deletes an evaluation form in the specified Amazon Connect instance\cr
 #'  \link[=connect_delete_hours_of_operation]{delete_hours_of_operation} \tab This API is in preview release for Amazon Connect and is subject to change\cr

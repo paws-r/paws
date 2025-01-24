@@ -19,7 +19,8 @@ bedrockagentruntime_invoke_inline_agent(
   instruction,
   knowledgeBases = NULL,
   promptOverrideConfiguration = NULL,
-  sessionId
+  sessionId,
+  streamingConfigurations = NULL
 )
 }
 \arguments{
@@ -79,6 +80,11 @@ to enhance the accuracy of the inline agent.}
 
 \item{sessionId}{[required] The unique identifier of the session. Use the same value across requests
 to continue the same conversation.}
+
+\item{streamingConfigurations}{Specifies the configurations for streaming.
+
+To use agent streaming, you need permissions to perform the
+\code{bedrock:InvokeModelWithResponseStream} action.}
 }
 \description{
 Invokes an inline Amazon Bedrock agent using the configurations you provide with the request.

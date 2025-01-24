@@ -114,7 +114,7 @@ An invited member account can use the Detective API to do the following:
 \item Remove their account from a behavior graph.
 }
 
-All API actions are logged as CloudTrail events. See \href{https://docs.aws.amazon.com/detective/latest/userguide/}{Logging Detective API Calls with CloudTrail}.
+All API actions are logged as CloudTrail events. See \href{https://docs.aws.amazon.com/detective/latest/userguide/logging-using-cloudtrail.html}{Logging Detective API Calls with CloudTrail}.
 
 We replaced the term "master account" with the term "administrator
 account". An administrator account is used to centrally manage multiple
@@ -186,7 +186,7 @@ the accounts in their behavior graph.
 \link[paws.security.identity:detective_start_monitoring_member]{start_monitoring_member} \tab Sends a request to enable data ingest for a member account that has a status of ACCEPTED_BUT_DISABLED\cr
 \link[paws.security.identity:detective_tag_resource]{tag_resource} \tab Applies tag values to a behavior graph\cr
 \link[paws.security.identity:detective_untag_resource]{untag_resource} \tab Removes tags from a behavior graph\cr
-\link[paws.security.identity:detective_update_datasource_packages]{update_datasource_packages} \tab Starts a data source packages for the behavior graph\cr
+\link[paws.security.identity:detective_update_datasource_packages]{update_datasource_packages} \tab Starts a data source package for the Detective behavior graph\cr
 \link[paws.security.identity:detective_update_investigation_state]{update_investigation_state} \tab Updates the state of an investigation\cr
 \link[paws.security.identity:detective_update_organization_configuration]{update_organization_configuration} \tab Updates the configuration for the Organizations integration in the current Region
 }

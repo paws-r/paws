@@ -12,6 +12,7 @@ s3_upload_part(
   ChecksumAlgorithm = NULL,
   ChecksumCRC32 = NULL,
   ChecksumCRC32C = NULL,
+  ChecksumCRC64NVME = NULL,
   ChecksumSHA1 = NULL,
   ChecksumSHA256 = NULL,
   Key,
@@ -65,7 +66,7 @@ in the \emph{Amazon S3 User Guide}.}
 \item{ContentLength}{Size of the body in bytes. This parameter is useful when the size of the
 body cannot be determined automatically.}
 
-\item{ContentMD5}{The base64-encoded 128-bit MD5 digest of the part data. This parameter
+\item{ContentMD5}{The Base64 encoded 128-bit MD5 digest of the part data. This parameter
 is auto-populated when using the command from the CLI. This parameter is
 required if object lock parameters are specified.
 
@@ -88,26 +89,32 @@ checksum value supplied in the
 
 \item{ChecksumCRC32}{This header can be used as a data integrity check to verify that the
 data received is the same data that was originally sent. This header
-specifies the base64-encoded, 32-bit CRC-32 checksum of the object. For
-more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html}{Checking object integrity}
+specifies the Base64 encoded, 32-bit \code{CRC-32} checksum of the object.
+For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html}{Checking object integrity}
 in the \emph{Amazon S3 User Guide}.}
 
 \item{ChecksumCRC32C}{This header can be used as a data integrity check to verify that the
 data received is the same data that was originally sent. This header
-specifies the base64-encoded, 32-bit CRC-32C checksum of the object. For
-more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html}{Checking object integrity}
+specifies the Base64 encoded, 32-bit \verb{CRC-32C} checksum of the object.
+For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html}{Checking object integrity}
+in the \emph{Amazon S3 User Guide}.}
+
+\item{ChecksumCRC64NVME}{This header can be used as a data integrity check to verify that the
+data received is the same data that was originally sent. This header
+specifies the Base64 encoded, 64-bit \verb{CRC-64NVME} checksum of the part.
+For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html}{Checking object integrity}
 in the \emph{Amazon S3 User Guide}.}
 
 \item{ChecksumSHA1}{This header can be used as a data integrity check to verify that the
 data received is the same data that was originally sent. This header
-specifies the base64-encoded, 160-bit SHA-1 digest of the object. For
+specifies the Base64 encoded, 160-bit \code{SHA-1} digest of the object. For
 more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html}{Checking object integrity}
 in the \emph{Amazon S3 User Guide}.}
 
 \item{ChecksumSHA256}{This header can be used as a data integrity check to verify that the
 data received is the same data that was originally sent. This header
-specifies the base64-encoded, 256-bit SHA-256 digest of the object. For
-more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html}{Checking object integrity}
+specifies the Base64 encoded, 256-bit \code{SHA-256} digest of the object.
+For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html}{Checking object integrity}
 in the \emph{Amazon S3 User Guide}.}
 
 \item{Key}{[required] Object key for which the multipart upload was initiated.}

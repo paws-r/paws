@@ -19,7 +19,7 @@ s3_put_bucket_cors(
 S3 bucket. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/cors.html}{Enabling Cross-Origin Resource Sharing}
 in the \emph{Amazon S3 User Guide}.}
 
-\item{ContentMD5}{The base64-encoded 128-bit MD5 digest of the data. This header must be
+\item{ContentMD5}{The Base64 encoded 128-bit \code{MD5} digest of the data. This header must be
 used as a message integrity check to verify that the request body was
 not corrupted in transit. For more information, go to \href{https://www.ietf.org/rfc/rfc1864.txt}{RFC 1864.}
 

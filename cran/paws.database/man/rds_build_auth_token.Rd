@@ -10,12 +10,12 @@ rds_build_auth_token(endpoint, region, user, creds)
 \item{endpoint}{[required] Hostname and port needed to connect
 to the database: \verb{<host>:<port>}.}
 
-\item{region}{[required] AWS region the database is located in.}
-
 \item{user}{[required] User account within the database to sign in
 with.}
 
 \item{creds}{Credentials to be signed with.}
+
+\item{region}{AWS region the database is located in.}
 }
 \description{
 Return an authentication token used as the password for a database connection.
@@ -62,5 +62,8 @@ conn <- DBI::dbConnect(
 )
 }
 
+}
+\seealso{
+\link[paws.database:rds_build_auth_token_v2]{rds_build_auth_token_v2}
 }
 \keyword{internal}

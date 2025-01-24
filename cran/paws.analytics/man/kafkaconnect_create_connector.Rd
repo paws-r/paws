@@ -16,8 +16,8 @@ kafkaconnect_create_connector(
   logDelivery = NULL,
   plugins,
   serviceExecutionRoleArn,
-  tags = NULL,
-  workerConfiguration = NULL
+  workerConfiguration = NULL,
+  tags = NULL
 )
 }
 \arguments{
@@ -56,9 +56,9 @@ resources depends on the logic of the connector. For example, a
 connector that has Amazon S3 as a destination must have permissions that
 allow it to write to the S3 destination bucket.}
 
-\item{tags}{The tags you want to attach to the connector.}
-
 \item{workerConfiguration}{Specifies which worker configuration to use with the connector.}
+
+\item{tags}{The tags you want to attach to the connector.}
 }
 \description{
 Creates a connector using the specified properties.

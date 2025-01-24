@@ -1301,9 +1301,12 @@ redshift_create_authentication_profile <- function(AuthenticationProfileName, Au
 #' 
 #' Constraints: Value must be at least 1 and no more than 100.
 #' @param PubliclyAccessible If `true`, the cluster can be accessed from a public network.
-#' @param Encrypted If `true`, the data in the cluster is encrypted at rest.
 #' 
 #' Default: false
+#' @param Encrypted If `true`, the data in the cluster is encrypted at rest. If you set the
+#' value on this parameter to `false`, the request will fail.
+#' 
+#' Default: true
 #' @param HsmClientCertificateIdentifier Specifies the name of the HSM client certificate the Amazon Redshift
 #' cluster uses to retrieve the data encryption keys stored in an HSM.
 #' @param HsmConfigurationIdentifier Specifies the name of the HSM configuration that contains the
@@ -11142,6 +11145,8 @@ redshift_modify_authentication_profile <- function(AuthenticationProfileName, Au
 #' Example: `examplecluster`
 #' @param PubliclyAccessible If `true`, the cluster can be accessed from a public network. Only
 #' clusters in VPCs can be set to be publicly available.
+#' 
+#' Default: false
 #' @param ElasticIp The Elastic IP (EIP) address for the cluster.
 #' 
 #' Constraints: The cluster must be provisioned in EC2-VPC and
@@ -14918,6 +14923,8 @@ redshift_resize_cluster <- function(ClusterIdentifier, ClusterType = NULL, NodeT
 #' A snapshot of cluster in VPC can be restored only in VPC. Therefore, you
 #' must provide subnet group name where you want the cluster restored.
 #' @param PubliclyAccessible If `true`, the cluster can be accessed from a public network.
+#' 
+#' Default: false
 #' @param OwnerAccount The Amazon Web Services account used to create or copy the snapshot.
 #' Required if you are restoring a snapshot you do not own, optional if you
 #' own the snapshot.

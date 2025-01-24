@@ -412,10 +412,10 @@ cloudwatchlogs_delete_data_protection_policy <- function(logGroupIdentifier) {
 }
 .cloudwatchlogs$operations$delete_data_protection_policy <- cloudwatchlogs_delete_data_protection_policy
 
-#' Deletes s delivery
+#' Deletes a delivery
 #'
 #' @description
-#' Deletes s *delivery*. A delivery is a connection between a logical *delivery source* and a logical *delivery destination*. Deleting a delivery only deletes the connection between the delivery source and delivery destination. It does not delete the delivery destination or the delivery source.
+#' Deletes a *delivery*. A delivery is a connection between a logical *delivery source* and a logical *delivery destination*. Deleting a delivery only deletes the connection between the delivery source and delivery destination. It does not delete the delivery destination or the delivery source.
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudwatchlogs_delete_delivery/](https://www.paws-r-sdk.com/docs/cloudwatchlogs_delete_delivery/) for full documentation.
 #'
@@ -2698,13 +2698,27 @@ cloudwatchlogs_put_delivery_destination_policy <- function(deliveryDestinationNa
 #' 
 #' -   For Amazon Bedrock, the valid value is `APPLICATION_LOGS`.
 #' 
+#' -   For CloudFront, the valid value is `ACCESS_LOGS`.
+#' 
 #' -   For Amazon CodeWhisperer, the valid value is `EVENT_LOGS`.
+#' 
+#' -   For Elemental MediaPackage, the valid values are
+#'     `EGRESS_ACCESS_LOGS` and `INGRESS_ACCESS_LOGS`.
+#' 
+#' -   For Elemental MediaTailor, the valid values are
+#'     `AD_DECISION_SERVER_LOGS`, `MANIFEST_SERVICE_LOGS`, and
+#'     `TRANSCODE_LOGS`.
 #' 
 #' -   For IAM Identity Center, the valid value is `ERROR_LOGS`.
 #' 
+#' -   For Amazon Q, the valid value is `EVENT_LOGS`.
+#' 
+#' -   For Amazon SES mail manager, the valid value is `APPLICATION_LOG`.
+#' 
 #' -   For Amazon WorkMail, the valid values are `ACCESS_CONTROL_LOGS`,
-#'     `AUTHENTICATION_LOGS`, `WORKMAIL_AVAILABILITY_PROVIDER_LOGS`, and
-#'     `WORKMAIL_MAILBOX_ACCESS_LOGS`.
+#'     `AUTHENTICATION_LOGS`, `WORKMAIL_AVAILABILITY_PROVIDER_LOGS`,
+#'     `WORKMAIL_MAILBOX_ACCESS_LOGS`, and
+#'     `WORKMAIL_PERSONAL_ACCESS_TOKEN_LOGS`.
 #' @param tags An optional list of key-value pairs to associate with the resource.
 #' 
 #' For more information about tagging, see [Tagging Amazon Web Services

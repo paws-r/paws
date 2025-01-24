@@ -132,7 +132,7 @@ the following automatically:
 \link[=sqs_delete_message_batch]{delete_message_batch} \tab Deletes up to ten messages from the specified queue\cr
 \link[=sqs_delete_queue]{delete_queue} \tab Deletes the queue specified by the QueueUrl, regardless of the queue's contents\cr
 \link[=sqs_get_queue_attributes]{get_queue_attributes} \tab Gets attributes for the specified queue\cr
-\link[=sqs_get_queue_url]{get_queue_url} \tab Returns the URL of an existing Amazon SQS queue\cr
+\link[=sqs_get_queue_url]{get_queue_url} \tab The GetQueueUrl API returns the URL of an existing Amazon SQS queue\cr
 \link[=sqs_list_dead_letter_source_queues]{list_dead_letter_source_queues} \tab Returns a list of your queues that have the RedrivePolicy queue attribute configured with a dead-letter queue\cr
 \link[=sqs_list_message_move_tasks]{list_message_move_tasks} \tab Gets the most recent message movement tasks (up to 10) under a specific source queue\cr
 \link[=sqs_list_queues]{list_queues} \tab Returns a list of your queues in the current region\cr

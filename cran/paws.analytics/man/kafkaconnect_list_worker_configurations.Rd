@@ -7,19 +7,19 @@ Region}
 \usage{
 kafkaconnect_list_worker_configurations(
   maxResults = NULL,
-  namePrefix = NULL,
-  nextToken = NULL
+  nextToken = NULL,
+  namePrefix = NULL
 )
 }
 \arguments{
 \item{maxResults}{The maximum number of worker configurations to list in one response.}
 
-\item{namePrefix}{Lists worker configuration names that start with the specified text
-string.}
-
 \item{nextToken}{If the response of a ListWorkerConfigurations operation is truncated, it
 will include a NextToken. Send this NextToken in a subsequent request to
 continue listing from where the previous operation left off.}
+
+\item{namePrefix}{Lists worker configuration names that start with the specified text
+string.}
 }
 \description{
 Returns a list of all of the worker configurations in this account and Region.

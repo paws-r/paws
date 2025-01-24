@@ -101,8 +101,10 @@ Managed Streaming for Kafka Connect
 \link[paws.analytics:kafkaconnect_delete_custom_plugin]{delete_custom_plugin} \tab Deletes a custom plugin\cr
 \link[paws.analytics:kafkaconnect_delete_worker_configuration]{delete_worker_configuration} \tab Deletes the specified worker configuration\cr
 \link[paws.analytics:kafkaconnect_describe_connector]{describe_connector} \tab Returns summary information about the connector\cr
+\link[paws.analytics:kafkaconnect_describe_connector_operation]{describe_connector_operation} \tab Returns information about the specified connector's operations\cr
 \link[paws.analytics:kafkaconnect_describe_custom_plugin]{describe_custom_plugin} \tab A summary description of the custom plugin\cr
 \link[paws.analytics:kafkaconnect_describe_worker_configuration]{describe_worker_configuration} \tab Returns information about a worker configuration\cr
+\link[paws.analytics:kafkaconnect_list_connector_operations]{list_connector_operations} \tab Lists information about a connector's operation(s)\cr
 \link[paws.analytics:kafkaconnect_list_connectors]{list_connectors} \tab Returns a list of all the connectors in this account and Region\cr
 \link[paws.analytics:kafkaconnect_list_custom_plugins]{list_custom_plugins} \tab Returns a list of all of the custom plugins in this account and Region\cr
 \link[paws.analytics:kafkaconnect_list_tags_for_resource]{list_tags_for_resource} \tab Lists all the tags attached to the specified resource\cr

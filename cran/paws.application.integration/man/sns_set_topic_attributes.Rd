@@ -144,6 +144,20 @@ message).
 value for the \code{MessageDeduplicationId} parameter for the
 \code{\link[=sns_publish]{publish}} action.
 }
+\item \code{FifoThroughputScope} – Enables higher throughput for your FIFO
+topic by adjusting the scope of deduplication. This attribute has
+two possible values:
+\itemize{
+\item \code{Topic} – The scope of message deduplication is across the
+entire topic. This is the default value and maintains existing
+behavior, with a maximum throughput of 3000 messages per second
+or 20MB per second, whichever comes first.
+\item \code{MessageGroup} – The scope of deduplication is within each
+individual message group, which enables higher throughput per
+topic subject to regional quotas. For more information on quotas
+or to request an increase, see \href{https://docs.aws.amazon.com/general/latest/gr/sns.html}{Amazon SNS service quotas}
+in the Amazon Web Services General Reference.
+}
 }}
 
 \item{AttributeValue}{The new value for the attribute.}

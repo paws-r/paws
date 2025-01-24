@@ -140,8 +140,8 @@ override applies only if the build's source is GitHub Enterprise.}
 
 \item{reportBuildStatusOverride}{Set to true to report to your source provider the status of a build's
 start and completion. If you use this option with a source provider
-other than GitHub, GitHub Enterprise, or Bitbucket, an
-\code{invalidInputException} is thrown.
+other than GitHub, GitHub Enterprise, GitLab, GitLab Self Managed, or
+Bitbucket, an \code{invalidInputException} is thrown.
 
 To be able to report the build status to the source provider, the user
 associated with the source provider must have write access to the repo.

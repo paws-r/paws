@@ -200,7 +200,9 @@ account.
 Example: \code{examplecluster}}
 
 \item{PubliclyAccessible}{If \code{true}, the cluster can be accessed from a public network. Only
-clusters in VPCs can be set to be publicly available.}
+clusters in VPCs can be set to be publicly available.
+
+Default: false}
 
 \item{ElasticIp}{The Elastic IP (EIP) address for the cluster.
 

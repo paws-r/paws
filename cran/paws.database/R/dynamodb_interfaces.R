@@ -143,7 +143,7 @@ NULL
 
 .dynamodb$describe_continuous_backups_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ContinuousBackupsDescription = structure(list(ContinuousBackupsStatus = structure(logical(0), tags = list(type = "string")), PointInTimeRecoveryDescription = structure(list(PointInTimeRecoveryStatus = structure(logical(0), tags = list(type = "string")), EarliestRestorableDateTime = structure(logical(0), tags = list(type = "timestamp")), LatestRestorableDateTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(ContinuousBackupsDescription = structure(list(ContinuousBackupsStatus = structure(logical(0), tags = list(type = "string")), PointInTimeRecoveryDescription = structure(list(PointInTimeRecoveryStatus = structure(logical(0), tags = list(type = "string")), RecoveryPeriodInDays = structure(logical(0), tags = list(type = "integer")), EarliestRestorableDateTime = structure(logical(0), tags = list(type = "timestamp")), LatestRestorableDateTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -577,13 +577,13 @@ NULL
 
 .dynamodb$update_continuous_backups_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TableName = structure(logical(0), tags = list(type = "string")), PointInTimeRecoverySpecification = structure(list(PointInTimeRecoveryEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(TableName = structure(logical(0), tags = list(type = "string")), PointInTimeRecoverySpecification = structure(list(PointInTimeRecoveryEnabled = structure(logical(0), tags = list(type = "boolean")), RecoveryPeriodInDays = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .dynamodb$update_continuous_backups_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ContinuousBackupsDescription = structure(list(ContinuousBackupsStatus = structure(logical(0), tags = list(type = "string")), PointInTimeRecoveryDescription = structure(list(PointInTimeRecoveryStatus = structure(logical(0), tags = list(type = "string")), EarliestRestorableDateTime = structure(logical(0), tags = list(type = "timestamp")), LatestRestorableDateTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(ContinuousBackupsDescription = structure(list(ContinuousBackupsStatus = structure(logical(0), tags = list(type = "string")), PointInTimeRecoveryDescription = structure(list(PointInTimeRecoveryStatus = structure(logical(0), tags = list(type = "string")), RecoveryPeriodInDays = structure(logical(0), tags = list(type = "integer")), EarliestRestorableDateTime = structure(logical(0), tags = list(type = "timestamp")), LatestRestorableDateTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

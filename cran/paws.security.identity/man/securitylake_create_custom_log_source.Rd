@@ -17,38 +17,7 @@ securitylake_create_custom_log_source(
 
 \item{eventClasses}{The Open Cybersecurity Schema Framework (OCSF) event classes which
 describes the type of data that the custom source will send to Security
-Lake. The supported event classes are:
-\itemize{
-\item \code{ACCESS_ACTIVITY}
-\item \code{FILE_ACTIVITY}
-\item \code{KERNEL_ACTIVITY}
-\item \code{KERNEL_EXTENSION}
-\item \code{MEMORY_ACTIVITY}
-\item \code{MODULE_ACTIVITY}
-\item \code{PROCESS_ACTIVITY}
-\item \code{REGISTRY_KEY_ACTIVITY}
-\item \code{REGISTRY_VALUE_ACTIVITY}
-\item \code{RESOURCE_ACTIVITY}
-\item \code{SCHEDULED_JOB_ACTIVITY}
-\item \code{SECURITY_FINDING}
-\item \code{ACCOUNT_CHANGE}
-\item \code{AUTHENTICATION}
-\item \code{AUTHORIZATION}
-\item \code{ENTITY_MANAGEMENT_AUDIT}
-\item \code{DHCP_ACTIVITY}
-\item \code{NETWORK_ACTIVITY}
-\item \code{DNS_ACTIVITY}
-\item \code{FTP_ACTIVITY}
-\item \code{HTTP_ACTIVITY}
-\item \code{RDP_ACTIVITY}
-\item \code{SMB_ACTIVITY}
-\item \code{SSH_ACTIVITY}
-\item \code{CONFIG_STATE}
-\item \code{INVENTORY_INFO}
-\item \code{EMAIL_ACTIVITY}
-\item \code{API_ACTIVITY}
-\item \code{CLOUD_API}
-}}
+Lake. For the list of supported event classes, see the \href{https://docs.aws.amazon.com/security-lake/latest/userguide/adding-custom-sources.html#ocsf-eventclass}{Amazon Security Lake User Guide}.}
 
 \item{sourceName}{[required] Specify the name for a third-party custom source. This must be a
 Regionally unique value. The \code{sourceName} you enter here, is used in the

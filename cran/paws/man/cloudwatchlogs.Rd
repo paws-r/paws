@@ -136,7 +136,7 @@ it.
 \link[paws.management:cloudwatchlogs_create_log_stream]{create_log_stream} \tab Creates a log stream for the specified log group\cr
 \link[paws.management:cloudwatchlogs_delete_account_policy]{delete_account_policy} \tab Deletes a CloudWatch Logs account policy\cr
 \link[paws.management:cloudwatchlogs_delete_data_protection_policy]{delete_data_protection_policy} \tab Deletes the data protection policy from the specified log group\cr
-\link[paws.management:cloudwatchlogs_delete_delivery]{delete_delivery} \tab Deletes s delivery\cr
+\link[paws.management:cloudwatchlogs_delete_delivery]{delete_delivery} \tab Deletes a delivery\cr
 \link[paws.management:cloudwatchlogs_delete_delivery_destination]{delete_delivery_destination} \tab Deletes a delivery destination\cr
 \link[paws.management:cloudwatchlogs_delete_delivery_destination_policy]{delete_delivery_destination_policy} \tab Deletes a delivery destination policy\cr
 \link[paws.management:cloudwatchlogs_delete_delivery_source]{delete_delivery_source} \tab Deletes a delivery source\cr

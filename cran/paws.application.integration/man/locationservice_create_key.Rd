@@ -30,9 +30,9 @@ periods (.), and underscores (_).
 
 \item{Description}{An optional description for the API key resource.}
 
-\item{ExpireTime}{The optional timestamp for when the API key resource will expire in \href{https://www.iso.org/iso-8601-date-and-time-format.html}{ISO 8601} format:
-\code{YYYY-MM-DDThh:mm:ss.sssZ}. One of \code{NoExpiry} or \code{ExpireTime} must be
-set.}
+\item{ExpireTime}{The optional timestamp for when the API key resource will expire in ISO
+8601 format: \code{YYYY-MM-DDThh:mm:ss.sssZ}. One of \code{NoExpiry} or
+\code{ExpireTime} must be set.}
 
 \item{NoExpiry}{Optionally set to \code{true} to set no expiration time for the API key. One
 of \code{NoExpiry} or \code{ExpireTime} must be set.}

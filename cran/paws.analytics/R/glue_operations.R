@@ -1423,13 +1423,18 @@ glue_create_integration_table_properties <- function(ResourceArn, TableName, Sou
 #' pricing page](https://aws.amazon.com/glue/pricing/).
 #' @param Timeout The job timeout in minutes. This is the maximum time that a job run can
 #' consume resources before it is terminated and enters `TIMEOUT` status.
-#' The default is 2,880 minutes (48 hours) for batch jobs.
 #' 
-#' Streaming jobs must have timeout values less than 7 days or 10080
-#' minutes. When the value is left blank, the job will be restarted after 7
-#' days based if you have not setup a maintenance window. If you have setup
-#' maintenance window, it will be restarted during the maintenance window
-#' after 7 days.
+#' Jobs must have timeout values less than 7 days or 10080 minutes.
+#' Otherwise, the jobs will throw an exception.
+#' 
+#' When the value is left blank, the timeout is defaulted to 2880 minutes.
+#' 
+#' Any existing Glue jobs that had a timeout value greater than 7 days will
+#' be defaulted to 7 days. For instance if you have specified a timeout of
+#' 20 days for a batch job, it will be stopped on the 7th day.
+#' 
+#' For streaming jobs, if you have set up a maintenance window, it will be
+#' restarted during the maintenance window after 7 days.
 #' @param MaxCapacity For Glue version 1.0 or earlier jobs, using the standard worker type,
 #' the number of Glue data processing units (DPUs) that can be allocated
 #' when this job runs. A DPU is a relative measure of processing power that
@@ -1969,8 +1974,8 @@ glue_create_security_configuration <- function(Name, EncryptionConfiguration) {
 #' @param Role &#91;required&#93; The IAM Role ARN
 #' @param Command &#91;required&#93; The `SessionCommand` that runs the job.
 #' @param Timeout The number of minutes before session times out. Default for Spark ETL
-#' jobs is 48 hours (2880 minutes), the maximum session lifetime for this
-#' job type. Consult the documentation for other job types.
+#' jobs is 48 hours (2880 minutes). Consult the documentation for other job
+#' types.
 #' @param IdleTimeout The number of minutes when idle before session times out. Default for
 #' Spark ETL jobs is value of Timeout. Consult the documentation for other
 #' job types.
@@ -8166,6 +8171,9 @@ glue_start_import_labels_task_run <- function(TransformId, InputS3Path, ReplaceA
 #' Any existing Glue jobs that had a timeout value greater than 7 days will
 #' be defaulted to 7 days. For instance if you have specified a timeout of
 #' 20 days for a batch job, it will be stopped on the 7th day.
+#' 
+#' For streaming jobs, if you have set up a maintenance window, it will be
+#' restarted during the maintenance window after 7 days.
 #' @param MaxCapacity For Glue version 1.0 or earlier jobs, using the standard worker type,
 #' the number of Glue data processing units (DPUs) that can be allocated
 #' when this job runs. A DPU is a relative measure of processing power that

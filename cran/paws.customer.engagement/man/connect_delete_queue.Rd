@@ -13,7 +13,7 @@ in the Amazon Resource Name (ARN) of the instance.}
 \item{QueueId}{[required] The identifier for the queue.}
 }
 \description{
-Deletes a queue. It isn't possible to delete a queue by using the Amazon Connect admin website.
+Deletes a queue.
 
 See \url{https://www.paws-r-sdk.com/docs/connect_delete_queue/} for full documentation.
 }
