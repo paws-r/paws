@@ -43,7 +43,7 @@ jobs:
       - name: Install system dependencies macOS
         if: runner.os == 'macOS'
         run: |
-          brew install freetype
+          brew install freetype libpng libtiff jpeg
 
       - name: Install system dependencies Linux
         if: runner.os == 'Linux'
@@ -51,7 +51,7 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y libcurl4-openssl-dev libssl-dev libxml2-dev libgit2-dev
           sudo apt-get install -y libharfbuzz-dev libfribidi-dev
-          sudo apt-get install -y libfontconfig1-dev freetype2-demos
+          sudo apt-get install -y libfontconfig1-dev libfreetype6-dev libpng-dev libtiff5-dev libjpeg-dev
 
       - name: List dependencies
         run: |
