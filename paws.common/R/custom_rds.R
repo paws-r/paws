@@ -1,4 +1,4 @@
-rds_build_auth_token <- function(endpoint, user, creds = NULL, region=NULL) {
+rds_build_auth_token <- function(endpoint, user, creds = NULL, region = NULL) {
   if (!startsWith(endpoint, "https://")) endpoint <- paste0("https://", endpoint)
   req <- new_http_request("GET", endpoint)
   auth_token_params <- list(
@@ -16,14 +16,14 @@ rds_build_auth_token <- function(endpoint, user, creds = NULL, region=NULL) {
   } else {
     creds <- populate(creds, tag_annotate(Creds()))
   }
-  v4 <- Signer(credentials =Credentials(creds = creds))
-  req <- sign_with_body(v4, req, NULL, "rds-db", region, 900, TRUE, Sys.time())
+  v4 <- Signer(credentials = Credentials(creds = creds))
+  req <- sign_with_body(v4, req, NULL, "rds-db", region, 900, TRUE, now())
 
   url <- build_url(req$url)
   return(substr(url, 9, nchar(url)))
 }
 
-rds_build_auth_token_v2 <- function(DBHostname, Port, DBUsername, Region=NULL) {
+rds_build_auth_token_v2 <- function(DBHostname, Port, DBUsername, Region = NULL) {
   op <- new_operation(
     name = "connect", http_method = "GET",
     http_path = "/", host_prefix = "", paginator = list(), stream_api = FALSE

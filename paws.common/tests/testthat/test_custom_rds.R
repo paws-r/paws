@@ -1,11 +1,13 @@
 test_that("check rds_build_auth_token", {
   local_mocked_bindings(
-    Sys.time = function() as.POSIXct("2025/01/01 00:00:01 UTC"),
-    get_config = function() list(credentials = list(creds = list(
-      access_key_id = "AKIA",
-      secret_access_key = "SECRET",
-      session_token = "SESSION"
-    ))),
+    now = function() as.POSIXct("2025/01/01 00:00:01 UTC"),
+    get_config = function() {
+      list(credentials = list(creds = list(
+        access_key_id = "AKIA",
+        secret_access_key = "SECRET",
+        session_token = "SESSION"
+      )))
+    },
     .package = "paws.common"
   )
   expected <- "prod-instance.us-east-1.rds.amazonaws.com:3306/?Action=connect&DBUser=mysqlUser&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA%2F20250101%2Fus-west-2%2Frds-db%2Faws4_request&X-Amz-Date=20250101T000001Z&X-Amz-Expires=900&X-Amz-Security-Token=SESSION&X-Amz-SignedHeaders=host&X-Amz-Signature=4e4ce10c7b3710decae757df60ba2519348dcb4db802f15646dce1bf5e17c3ed"
@@ -37,12 +39,14 @@ test_that("check rds_build_auth_token", {
 
 test_that("check rds_build_auth_token upper case host", {
   local_mocked_bindings(
-    Sys.time = function() as.POSIXct("2025/01/01 00:00:01 UTC"),
-    get_config = function() list(credentials = list(creds = list(
-      access_key_id = "AKIA",
-      secret_access_key = "SECRET",
-      session_token = "SESSION"
-    ))),
+    now = function() as.POSIXct("2025/01/01 00:00:01 UTC"),
+    get_config = function() {
+      list(credentials = list(creds = list(
+        access_key_id = "AKIA",
+        secret_access_key = "SECRET",
+        session_token = "SESSION"
+      )))
+    },
     .package = "paws.common"
   )
 
@@ -65,10 +69,10 @@ test_that("check rds_build_auth_token upper case host", {
   )
 
   actual_v2 <- client$build_auth_token_v2(
-    DBHostname='XXXXX.US-EAST-2.RDS.AMAZONAWS.COM',
+    DBHostname = "XXXXX.US-EAST-2.RDS.AMAZONAWS.COM",
     Port = 3306,
-    DBUsername="user1",
-    Region="us-east-2"
+    DBUsername = "user1",
+    Region = "us-east-2"
   )
   expect_equal(actual_v1, expected)
   expect_equal(actual_v2, expected)

@@ -79,5 +79,5 @@ check_if_cred_needs_refresh <- function(creds, window) {
   if (is.numeric(expire <- creds$expiration)) {
     expire <- expire / 1000
   }
-  return(length(expire) == 1 && is.finite(expire) && Sys.time() > expire - window)
+  return(length(expire) == 1 && is.finite(expire) && now() > expire - window)
 }

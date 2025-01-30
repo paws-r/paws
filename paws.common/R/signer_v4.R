@@ -67,7 +67,7 @@ Signer <- struct(
   disable_header_hoisting = FALSE,
   disable_uri_path_escaping = FALSE,
   disable_request_body_overwrite = FALSE,
-  curr_time_fn = Sys.time,
+  curr_time_fn = now,
   unsigned_payload = FALSE
 )
 
@@ -104,7 +104,7 @@ v4_sign_request_handler <- function(request) {
 }
 
 sign_sdk_request_with_curr_time <- function(request,
-                                            curr_time_fn = Sys.time,
+                                            curr_time_fn = now,
                                             opts = NULL) {
   region <- request$client_info$signing_region
   if (region == "") {
@@ -153,7 +153,7 @@ sign_with_body <- function(signer, request, body, service, region,
                            expire_time, is_presigned, signing_time) {
   curr_time_fn <- signer$curr_time_fn
   if (is.null(curr_time_fn)) {
-    curr_time_fn <- Sys.time
+    curr_time_fn <- now
   }
 
   if (is.null(body)) body <- ""
