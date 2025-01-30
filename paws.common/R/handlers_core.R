@@ -52,7 +52,7 @@ validate_req_sig_handler <- function(request) {
   }
 
   minute <- 60
-  if (signed_time + 10 * minute > Sys.time()) {
+  if (signed_time + 10 * minute > now()) {
     return(request)
   }
 

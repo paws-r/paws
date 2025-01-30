@@ -102,7 +102,7 @@ log_error <- function(...) {
 
 log_msg <- function(lvl, msg) {
   log_file <- getOption("paws.log_file")
-  now <- strftime(Sys.time(), "%Y-%m-%d %H:%M:%OS3")
+  now <- strftime(now(), "%Y-%m-%d %H:%M:%OS3")
   cat(
     sprintf("%s [%s]: %s\n", log_color(lvl), now, msg),
     file = log_file,

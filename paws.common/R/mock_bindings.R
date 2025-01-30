@@ -3,6 +3,7 @@
 # https://testthat.r-lib.org/reference/local_mocked_bindings.html#base-functions
 ################################################################
 
-Sys.time <- NULL
+# re-assign Sys.time for mocking as setting a NULL binding will break the paginator
+now <- Sys.time
 
 get0 <- NULL
