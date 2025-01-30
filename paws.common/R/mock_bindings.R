@@ -4,6 +4,6 @@
 ################################################################
 
 # re-assign Sys.time for mocking as setting a NULL binding will break the paginator
-now <- Sys.time
+now <- function() {Sys.time()}
 
 get0 <- NULL
