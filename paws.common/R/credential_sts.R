@@ -23,7 +23,7 @@ sts <- function(config = list()) {
 
 .sts$metadata <- list(
   service_name = "sts",
-  endpoints = list("aws-global" = list(endpoint = "sts.amazonaws.com", global = TRUE), "us-east-1" = list(endpoint = "sts.amazonaws.com", global = TRUE), "^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "sts.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "sts.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "sts.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "sts.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "sts.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "sts.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "sts.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list(),
   service_id = "STS",
   api_version = "2011-06-15",
   signing_name = NULL,
@@ -31,8 +31,68 @@ sts <- function(config = list()) {
   target_prefix = ""
 )
 
+.sts_endpoint <- function() {
+  switch(
+    vendor_cache[["vendor"]],
+    "boto" = list(
+      "aws-global" = list(endpoint = "sts.amazonaws.com", global = TRUE),
+      "us-east-1" = list(endpoint = "sts.amazonaws.com", global = TRUE),
+      "^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(
+        endpoint = "sts.{region}.amazonaws.com",
+        global = FALSE
+      ),
+      "^cn\\-\\w+\\-\\d+$" = list(
+        endpoint = "sts.{region}.amazonaws.com.cn",
+        global = FALSE
+      ),
+      "^us\\-gov\\-\\w+\\-\\d+$" = list(
+        endpoint = "sts.{region}.amazonaws.com",
+        global = FALSE
+      ),
+      "^us\\-iso\\-\\w+\\-\\d+$" = list(
+        endpoint = "sts.{region}.c2s.ic.gov",
+        global = FALSE
+      ),
+      "^us\\-isob\\-\\w+\\-\\d+$" = list(
+        endpoint = "sts.{region}.sc2s.sgov.gov",
+        global = FALSE
+      ),
+      "^eu\\-isoe\\-\\w+\\-\\d+$" = list(
+        endpoint = "sts.{region}.cloud.adc-e.uk",
+        global = FALSE
+      ),
+      "^us\\-isof\\-\\w+\\-\\d+$" = list(
+        endpoint = "sts.{region}.csp.hci.ic.gov",
+        global = FALSE
+      )
+    ),
+    "js" = list(
+      "*" = list(endpoint = "https://sts.amazonaws.com", global = TRUE),
+      "us-gov-*" = list(
+        endpoint = "sts.{region}.amazonaws.com",
+        global = FALSE
+      ),
+      "cn-*" = list(endpoint = "sts.{region}.amazonaws.com.cn", global = FALSE),
+      "eu-isoe-*" = list(
+        endpoint = "sts.{region}.cloud.adc-e.uk",
+        global = FALSE
+      ),
+      "us-iso-*" = list(endpoint = "sts.{region}.c2s.ic.gov", global = FALSE),
+      "us-isob-*" = list(
+        endpoint = "sts.{region}.sc2s.sgov.gov",
+        global = FALSE
+      ),
+      "us-isof-*" = list(
+        endpoint = "sts.{region}.csp.hci.ic.gov",
+        global = FALSE
+      )
+    )
+  )
+}
+
 .sts$service <- function(config = list()) {
   handlers <- new_handlers("query", "v4")
+  .sts$metadata$endpoints <- .sts_endpoint()
   new_service(.sts$metadata, handlers, config)
 }
 
@@ -40,13 +100,70 @@ sts <- function(config = list()) {
 # Docs: https://docs.aws.amazon.com/STS/latest/APIReference/API_AssumeRole.html
 .sts$assume_role_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RoleArn = structure(logical(0), tags = list(type = "string")), RoleSessionName = structure(logical(0), tags = list(type = "string")), PolicyArns = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Policy = structure(logical(0), tags = list(type = "string")), DurationSeconds = structure(logical(0), tags = list(type = "integer")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), TransitiveTagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ExternalId = structure(logical(0), tags = list(type = "string")), SerialNumber = structure(logical(0), tags = list(type = "string")), TokenCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(
+    list(
+      RoleArn = structure(logical(0), tags = list(type = "string")),
+      RoleSessionName = structure(logical(0), tags = list(type = "string")),
+      PolicyArns = structure(
+        list(
+          structure(
+            list(arn = structure(logical(0), tags = list(type = "string"))),
+            tags = list(type = "structure")
+          )
+        ),
+        tags = list(type = "list")
+      ),
+      Policy = structure(logical(0), tags = list(type = "string")),
+      DurationSeconds = structure(logical(0), tags = list(type = "integer")),
+      Tags = structure(
+        list(
+          structure(
+            list(
+              Key = structure(logical(0), tags = list(type = "string")),
+              Value = structure(logical(0), tags = list(type = "string"))
+            ),
+            tags = list(type = "structure")
+          )
+        ),
+        tags = list(type = "list")
+      ),
+      TransitiveTagKeys = structure(
+        list(structure(logical(0), tags = list(type = "string"))),
+        tags = list(type = "list")
+      ),
+      ExternalId = structure(logical(0), tags = list(type = "string")),
+      SerialNumber = structure(logical(0), tags = list(type = "string")),
+      TokenCode = structure(logical(0), tags = list(type = "string"))
+    ),
+    tags = list(type = "structure")
+  )
   return(populate(args, shape))
 }
 
 .sts$assume_role_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Credentials = structure(list(AccessKeyId = structure(logical(0), tags = list(type = "string")), SecretAccessKey = structure(logical(0), tags = list(type = "string")), SessionToken = structure(logical(0), tags = list(type = "string")), Expiration = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), AssumedRoleUser = structure(list(AssumedRoleId = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), PackedPolicySize = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure", resultWrapper = "AssumeRoleResult"))
+  shape <- structure(
+    list(
+      Credentials = structure(
+        list(
+          AccessKeyId = structure(logical(0), tags = list(type = "string")),
+          SecretAccessKey = structure(logical(0), tags = list(type = "string")),
+          SessionToken = structure(logical(0), tags = list(type = "string")),
+          Expiration = structure(logical(0), tags = list(type = "timestamp"))
+        ),
+        tags = list(type = "structure")
+      ),
+      AssumedRoleUser = structure(
+        list(
+          AssumedRoleId = structure(logical(0), tags = list(type = "string")),
+          Arn = structure(logical(0), tags = list(type = "string"))
+        ),
+        tags = list(type = "structure")
+      ),
+      PackedPolicySize = structure(logical(0), tags = list(type = "integer"))
+    ),
+    tags = list(type = "structure", resultWrapper = "AssumeRoleResult")
+  )
   return(populate(args, shape))
 }
 
@@ -55,14 +172,36 @@ sts <- function(config = list()) {
 # temporary credentials consist of an access key ID, a secret access key,
 # and a security token. Typically, you use `AssumeRole` within your
 # account or for cross-account access.
-sts_assume_role <- function(RoleArn, RoleSessionName, PolicyArns = NULL, Policy = NULL, DurationSeconds = NULL, Tags = NULL, TransitiveTagKeys = NULL, ExternalId = NULL, SerialNumber = NULL, TokenCode = NULL) {
+sts_assume_role <- function(
+  RoleArn,
+  RoleSessionName,
+  PolicyArns = NULL,
+  Policy = NULL,
+  DurationSeconds = NULL,
+  Tags = NULL,
+  TransitiveTagKeys = NULL,
+  ExternalId = NULL,
+  SerialNumber = NULL,
+  TokenCode = NULL
+) {
   op <- new_operation(
     name = "AssumeRole",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .sts$assume_role_input(RoleArn = RoleArn, RoleSessionName = RoleSessionName, PolicyArns = PolicyArns, Policy = Policy, DurationSeconds = DurationSeconds, Tags = Tags, TransitiveTagKeys = TransitiveTagKeys, ExternalId = ExternalId, SerialNumber = SerialNumber, TokenCode = TokenCode)
+  input <- .sts$assume_role_input(
+    RoleArn = RoleArn,
+    RoleSessionName = RoleSessionName,
+    PolicyArns = PolicyArns,
+    Policy = Policy,
+    DurationSeconds = DurationSeconds,
+    Tags = Tags,
+    TransitiveTagKeys = TransitiveTagKeys,
+    ExternalId = ExternalId,
+    SerialNumber = SerialNumber,
+    TokenCode = TokenCode
+  )
   output <- .sts$assume_role_output()
   config <- get_config()
   svc <- .sts$service(config)
@@ -77,24 +216,90 @@ sts_assume_role <- function(RoleArn, RoleSessionName, PolicyArns = NULL, Policy 
 # Docs: https://docs.aws.amazon.com/STS/latest/APIReference/API_AssumeRoleWithWebIdentity.html
 .sts$assume_role_with_web_identity_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RoleArn = structure(logical(0), tags = list(type = "string")), RoleSessionName = structure(logical(0), tags = list(type = "string")), WebIdentityToken = structure(logical(0), tags = list(type = "string")), ProviderId = structure(logical(0), tags = list(type = "string")), PolicyArns = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Policy = structure(logical(0), tags = list(type = "string")), DurationSeconds = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  shape <- structure(
+    list(
+      RoleArn = structure(logical(0), tags = list(type = "string")),
+      RoleSessionName = structure(logical(0), tags = list(type = "string")),
+      WebIdentityToken = structure(logical(0), tags = list(type = "string")),
+      ProviderId = structure(logical(0), tags = list(type = "string")),
+      PolicyArns = structure(
+        list(
+          structure(
+            list(arn = structure(logical(0), tags = list(type = "string"))),
+            tags = list(type = "structure")
+          )
+        ),
+        tags = list(type = "list")
+      ),
+      Policy = structure(logical(0), tags = list(type = "string")),
+      DurationSeconds = structure(logical(0), tags = list(type = "integer"))
+    ),
+    tags = list(type = "structure")
+  )
   return(populate(args, shape))
 }
 
 .sts$assume_role_with_web_identity_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Credentials = structure(list(AccessKeyId = structure(logical(0), tags = list(type = "string")), SecretAccessKey = structure(logical(0), tags = list(type = "string")), SessionToken = structure(logical(0), tags = list(type = "string")), Expiration = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), SubjectFromWebIdentityToken = structure(logical(0), tags = list(type = "string")), AssumedRoleUser = structure(list(AssumedRoleId = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), PackedPolicySize = structure(logical(0), tags = list(type = "integer")), Provider = structure(logical(0), tags = list(type = "string")), Audience = structure(logical(0), tags = list(type = "string")), SourceIdentity = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "AssumeRoleWithWebIdentityResult"))
+  shape <- structure(
+    list(
+      Credentials = structure(
+        list(
+          AccessKeyId = structure(logical(0), tags = list(type = "string")),
+          SecretAccessKey = structure(logical(0), tags = list(type = "string")),
+          SessionToken = structure(logical(0), tags = list(type = "string")),
+          Expiration = structure(logical(0), tags = list(type = "timestamp"))
+        ),
+        tags = list(type = "structure")
+      ),
+      SubjectFromWebIdentityToken = structure(
+        logical(0),
+        tags = list(type = "string")
+      ),
+      AssumedRoleUser = structure(
+        list(
+          AssumedRoleId = structure(logical(0), tags = list(type = "string")),
+          Arn = structure(logical(0), tags = list(type = "string"))
+        ),
+        tags = list(type = "structure")
+      ),
+      PackedPolicySize = structure(logical(0), tags = list(type = "integer")),
+      Provider = structure(logical(0), tags = list(type = "string")),
+      Audience = structure(logical(0), tags = list(type = "string")),
+      SourceIdentity = structure(logical(0), tags = list(type = "string"))
+    ),
+    tags = list(
+      type = "structure",
+      resultWrapper = "AssumeRoleWithWebIdentityResult"
+    )
+  )
   return(populate(args, shape))
 }
 
-sts_assume_role_with_web_identity <- function(RoleArn, RoleSessionName, WebIdentityToken, ProviderId = NULL, PolicyArns = NULL, Policy = NULL, DurationSeconds = NULL) {
+sts_assume_role_with_web_identity <- function(
+  RoleArn,
+  RoleSessionName,
+  WebIdentityToken,
+  ProviderId = NULL,
+  PolicyArns = NULL,
+  Policy = NULL,
+  DurationSeconds = NULL
+) {
   op <- new_operation(
     name = "AssumeRoleWithWebIdentity",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .sts$assume_role_with_web_identity_input(RoleArn = RoleArn, RoleSessionName = RoleSessionName, WebIdentityToken = WebIdentityToken, ProviderId = ProviderId, PolicyArns = PolicyArns, Policy = Policy, DurationSeconds = DurationSeconds)
+  input <- .sts$assume_role_with_web_identity_input(
+    RoleArn = RoleArn,
+    RoleSessionName = RoleSessionName,
+    WebIdentityToken = WebIdentityToken,
+    ProviderId = ProviderId,
+    PolicyArns = PolicyArns,
+    Policy = Policy,
+    DurationSeconds = DurationSeconds
+  )
   output <- .sts$assume_role_with_web_identity_output()
   config <- get_config()
   svc <- .sts$service(config)
