@@ -50,18 +50,35 @@ resp <- client$converse_stream(
   inferenceConfig = list(maxTokens = 512, temperature = 0.5, topP = 0.9)
 )
 resp$stream(\(chunk) chunk$contentBlockDelta$delta$text)
+# Note: stream will close connection after all chunks are read
 
-# Or handle stream utilising paws_stream_parser
-while (!is.null(event <- paws_stream_parser(con))) {
+# Get connection object
+resp <- client$converse_stream(
+  modelId = model_id,
+  messages = conversation,
+  inferenceConfig = list(maxTokens = 512, temperature = 0.5, topP = 0.9)
+)
+con <- resp$stream(.connection = T)
+
+# Handle connection object using paws_stream_parser
+while (!is.null(chunk <- paws_stream_parser(con))) {
   print(chunk$contentBlockDelta$delta$text)
 }
 
-# or return httr2 resp_perform_connection
-con <- resp$stream(.connection = T)
+# Note: paws_stream_parser will close connection after all chunks are read
 
-while (!is.null(event <- resp_stream_aws(con))) {
-  str(event)
+resp <- client$converse_stream(
+  modelId = model_id,
+  messages = conversation,
+  inferenceConfig = list(maxTokens = 512, temperature = 0.5, topP = 0.9)
+)
+
+# Or handle connection using httr2::resp_stream_aws
+while (!is.null(chunk <- resp_stream_aws(con))) {
+  str(chunk)
 }
 close(con)
+
+# Note: connection needs to be closed manually after all chunks have been read.
 }
 }
