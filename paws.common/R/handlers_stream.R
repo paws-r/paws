@@ -1,6 +1,5 @@
 #' @importFrom digest digest
 
-
 .PAYLOAD_KB <- 1024 * 65
 
 #' @title Iterate over AWS Event Stream connection
@@ -36,19 +35,36 @@
 #'   inferenceConfig = list(maxTokens = 512, temperature = 0.5, topP = 0.9)
 #' )
 #' resp$stream(\(chunk) chunk$contentBlockDelta$delta$text)
+#' # Note: stream will close connection after all chunks are read
 #'
-#' # Or handle stream utilising paws_stream_parser
-#' while (!is.null(event <- paws_stream_parser(con))) {
+#' # Get connection object
+#' resp <- client$converse_stream(
+#'   modelId = model_id,
+#'   messages = conversation,
+#'   inferenceConfig = list(maxTokens = 512, temperature = 0.5, topP = 0.9)
+#' )
+#' con <- resp$stream(.connection = T)
+#'
+#' # Handle connection object using paws_stream_parser
+#' while (!is.null(chunk <- paws_stream_parser(con))) {
 #'   print(chunk$contentBlockDelta$delta$text)
 #' }
 #'
-#' # or return httr2 resp_perform_connection
-#' con <- resp$stream(.connection = T)
+#' # Note: paws_stream_parser will close connection after all chunks are read
 #'
-#' while (!is.null(event <- resp_stream_aws(con))) {
-#'   str(event)
+#' resp <- client$converse_stream(
+#'   modelId = model_id,
+#'   messages = conversation,
+#'   inferenceConfig = list(maxTokens = 512, temperature = 0.5, topP = 0.9)
+#' )
+#'
+#' # Or handle connection using httr2::resp_stream_aws
+#' while (!is.null(chunk <- resp_stream_aws(con))) {
+#'   str(chunk)
 #' }
 #' close(con)
+#'
+#' # Note: connection needs to be closed manually after all chunks have been read.
 #' }
 NULL
 
@@ -107,12 +123,14 @@ paws_stream_parser <- function(con) {
     close(con)
     return(NULL)
   }
-  return(eventstream_parser(
-    buffer,
-    unmarshal = con$paws_metadata$unmarshal,
-    interface = con$paws_metadata$interface,
-    boundary = boundary
-  ))
+  return(
+    eventstream_parser(
+      buffer,
+      unmarshal = con$paws_metadata$unmarshal,
+      interface = con$paws_metadata$interface,
+      boundary = boundary
+    )
+  )
 }
 
 ################ stream unmarshal ################
@@ -156,7 +174,8 @@ eventstream_parser <- function(buffer, unmarshal, interface, boundary) {
     data <- parse_aws_event(result$matched)
     (nms <- data$headers[[":event-type"]])
     interface[[nms]] <- unmarshal(
-      data$payload, interface[[nms]]
+      data$payload,
+      interface[[nms]]
     )
     buffer <- result$remaining
     boundary <- aws_boundary(buffer)
@@ -231,7 +250,8 @@ parse_aws_event <- function(bytes) {
     name <- rawToChar(read_bytes(name_length))
     type <- parse_int8(read_bytes(1), 1)
     delayedAssign("len", parse_int16(read_bytes(2), 2))
-    value <- switch(type_enum(type),
+    value <- switch(
+      type_enum(type),
       "TRUE" = TRUE,
       "FALSE" = FALSE,
       BYTE = parse_int8(read_bytes(1), 1),
@@ -251,7 +271,8 @@ parse_aws_event <- function(bytes) {
 
   # validate the message checksum
   validate_checksum(
-    bytes[1:(total_length - 4)], paste(read_bytes(4), collapse = "")
+    bytes[1:(total_length - 4)],
+    paste(read_bytes(4), collapse = "")
   )
 
   list(
@@ -267,7 +288,8 @@ type_enum <- function(value) {
   if (value < 0 || value > 10) {
     stopf("Unsupported type %s.", value)
   }
-  switch(value + 1,
+  switch(
+    value + 1,
     "TRUE",
     "FALSE",
     "BYTE",
@@ -283,8 +305,14 @@ type_enum <- function(value) {
 
 big_endian <- function(vec) {
   c(
-    vec[8:1], vec[16:9], vec[24:17], vec[32:25],
-    vec[40:33], vec[48:41], vec[56:49], vec[64:57]
+    vec[8:1],
+    vec[16:9],
+    vec[24:17],
+    vec[32:25],
+    vec[40:33],
+    vec[48:41],
+    vec[56:49],
+    vec[64:57]
   )
 }
 
@@ -322,7 +350,9 @@ validate_checksum <- function(data, crc) {
   computed_checksum <- crc32(data)
   if (computed_checksum != crc) {
     stopf(
-      "Checksum mismatch: expected %s, calculated %s", crc, computed_checksum
+      "Checksum mismatch: expected %s, calculated %s",
+      crc,
+      computed_checksum
     )
   }
 }

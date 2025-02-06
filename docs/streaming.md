@@ -5,7 +5,7 @@ As of `paws v-0.8.0+` streaming is supported in `paws`.
 
 ## Basic usage:
 
-Example taken from: https://docs.aws.amazon.com/code-library/latest/ug/python_3_bedrock-runtime_code_examples.html
+Example taken from: [python 3 bedrock-runtime code examples](https://docs.aws.amazon.com/code-library/latest/ug/python_3_bedrock-runtime_code_examples.html)
 
 
 ### Internal function:
@@ -73,7 +73,7 @@ while(!is.null(chunk <- paws_stream_parser(con))) {
 }
 ```
 
-Note: the paws_stream_parser return the stream in the response syntax. In this case please check https://paws-r.github.io/docs/bedrockruntime_converse_stream/
+Note: the paws_stream_parser return the stream in the response syntax. In this case please check [bedrockruntime_converse_stream](https://paws-r.github.io/docs/bedrockruntime_converse_stream/)
 
 For full flexibility you can use [httr2::resp_stream_aws](https://httr2.r-lib.org/reference/req_perform_stream.html?search-input=resp_stream_aws) to get the raw response from AWS.
 
