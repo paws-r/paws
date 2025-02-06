@@ -1,9 +1,8 @@
 # paws.common 0.8.0
-* migrate backend from httr to httr2
+* migrate backend from `httr` to `httr2`
 * enrich sso message (#844). Thanks to @hadley for raising issue.
 * attempt to automatically set/refresh `sso` credentials by calling `aws cli` (#844)
 * moved api log level to `debug` and `trace`. This is to prevent `info` level being saturated by api calls.
-* migrate backend `httr` to `httr2`
 * new `PawsStreamHandler`, allows paws to handle aws stream event (#842). Thankyou to @hadley for developing the initial solution in `httr2`.
 * deprecated custom handler for `s3_unmarshal_select_object_content` in favour or new streamhandler
 * migrate `parse_url`, `parse_query_string` and `build_url` to `cpp` for performance improvement.
