@@ -1,12 +1,19 @@
+# Note: Issue with mocking `now` function on cran.
+
 test_that("check rds_build_auth_token", {
+  skip_on_cran()
   local_mocked_bindings(
     now = function() as.POSIXct("2025/01/01 00:00:01 UTC"),
     get_config = function() {
-      list(credentials = list(creds = list(
-        access_key_id = "AKIA",
-        secret_access_key = "SECRET",
-        session_token = "SESSION"
-      )))
+      list(
+        credentials = list(
+          creds = list(
+            access_key_id = "AKIA",
+            secret_access_key = "SECRET",
+            session_token = "SESSION"
+          )
+        )
+      )
     },
     .package = "paws.common"
   )
@@ -38,14 +45,19 @@ test_that("check rds_build_auth_token", {
 })
 
 test_that("check rds_build_auth_token upper case host", {
+  skip_on_cran()
   local_mocked_bindings(
     now = function() as.POSIXct("2025/01/01 00:00:01 UTC"),
     get_config = function() {
-      list(credentials = list(creds = list(
-        access_key_id = "AKIA",
-        secret_access_key = "SECRET",
-        session_token = "SESSION"
-      )))
+      list(
+        credentials = list(
+          creds = list(
+            access_key_id = "AKIA",
+            secret_access_key = "SECRET",
+            session_token = "SESSION"
+          )
+        )
+      )
     },
     .package = "paws.common"
   )
