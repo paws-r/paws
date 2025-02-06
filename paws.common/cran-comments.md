@@ -1,5 +1,5 @@
 ## Submission
-This release fixes a few bugs
+This release include performance improvements and backend change.
 
 ## Test environments
 
