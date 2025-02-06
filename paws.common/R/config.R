@@ -102,8 +102,14 @@ set_config <- function(svc, cfgs = list()) {
 set_paws_vendor <- function() {
   where <- topenv(parent.frame(n = 2))
   pkg_name <- get0(".packageName", where, inherits = FALSE)
-  if (!is.null(pkg_name) && startsWith(pkg_name, "paws.")) {
-    vendor <- (if (packageVersion(pkg_name) >= numeric_version("0.8.0")) "boto" else "js")
+  if (
+    !is.null(pkg_name) &&
+      startsWith(pkg_name, "paws.") &&
+      pkg_name != "paws.common"
+  ) {
+    vendor <- (
+      if (packageVersion(pkg_name) >= numeric_version("0.8.0")) "boto" else "js"
+    )
     vendor_cache[["vendor"]] <- vendor
   }
 }
@@ -198,7 +204,9 @@ get_iam_role <- function() {
 get_instance_metadata <- function(query_path = "") {
   token_ttl <- "21600" # same approach as in boto3: https://github.com/boto/botocore/blob/master/botocore/utils.py#L376
   # Do not get metadata when the disabled setting is on.
-  if (trimws(tolower(get_env("AWS_EC2_METADATA_DISABLED"))) %in% c("true", "1")) {
+  if (
+    trimws(tolower(get_env("AWS_EC2_METADATA_DISABLED"))) %in% c("true", "1")
+  ) {
     return(NULL)
   }
   # Get token timeout for IMDSv2 tokens
@@ -221,7 +229,10 @@ get_instance_metadata <- function(query_path = "") {
       NULL
     }
   )
-  if (!is.null(metadata_token_response) && metadata_token_response$status_code == 200) {
+  if (
+    !is.null(metadata_token_response) &&
+      metadata_token_response$status_code == 200
+  ) {
     if (length(metadata_token_response[["body"]]) > 0) {
       token <- rawToChar(metadata_token_response[["body"]])
     }
@@ -353,7 +364,9 @@ check_config_file_endpoint <- function(profile = "", service_id = "") {
   if (is.null(service_name <- profile[["services"]])) {
     return(profile[["endpoint_url"]])
   }
-  profile_service <- config_values[[paste("services", service_name)]][[service_id]]
+  profile_service <- config_values[[paste("services", service_name)]][[
+    service_id
+  ]]
   if (is.null(profile_service)) {
     return(profile[["endpoint_url"]])
   }
@@ -402,7 +415,12 @@ get_web_identity_token_file <- function(web_identity_token_file = "") {
 
 # Get the Web Identity Token from reading the token file
 get_web_identity_token <- function(web_identity_token_file = "") {
-  return(readLines(get_web_identity_token_file(web_identity_token_file), warn = FALSE))
+  return(
+    readLines(
+      get_web_identity_token_file(web_identity_token_file),
+      warn = FALSE
+    )
+  )
 }
 
 # Check if sts_regional_endpoint is present in config file
@@ -460,7 +478,9 @@ build_config <- function(cfg) {
       for (credentails_name in credentails_names) {
         if (credentails_name == "creds") {
           for (cred_name in cred_names) {
-            creds[[cred_name]] <- cfg[[cfg_name]][[credentails_name]][[cred_name]]
+            creds[[cred_name]] <- cfg[[cfg_name]][[credentails_name]][[
+              cred_name
+            ]]
           }
           credentials[[credentails_name]] <- add_list(creds)
         } else {
