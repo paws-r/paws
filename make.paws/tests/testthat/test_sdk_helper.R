@@ -569,3 +569,49 @@ test_that("check if script html span link formatted", {
   expect_equal(actual_rd_script, readLines("dummy/scripts/expected_script.Rd"))
   unlink(c(temp1, temp2))
 })
+
+test_that("paws_rd_links modifies Rd files correctly", {
+  dir <- "CRAN"
+  # Mocking the dependencies
+  mock_list_cat_pkgs <- mock2(c("pkg1", "pkg2"))
+  mockery::stub(paws_rd_links, "list_cat_pkgs", mock_list_cat_pkgs)
+
+  mock_list_paws_pkgs <- mock2(c("pkg1", "pkg2"))
+  mockery::stub(paws_rd_links, "list_paws_pkgs", mock_list_paws_pkgs)
+
+  # Simulating the directory and Rd files structure
+  dir.create(file.path(dir, "pkg1/R"), recursive = TRUE, showWarnings = FALSE)
+  dir.create(file.path(dir, "pkg2/R"), recursive = TRUE, showWarnings = FALSE)
+  file.create(file.path(dir, "pkg1/R/pkg1_function.R"))
+  file.create(file.path(dir, "pkg2/R/pkg2_function.R"))
+
+  # Create a mock Rd file content
+  rd_dir <- file.path(dir, "paws/man/")
+  dir.create(rd_dir, recursive = TRUE, showWarnings = FALSE)
+  writeLines(
+    c("This is a mock Rd file.", "\\link[=service]{service}"),
+    file.path(rd_dir, "pkg1.Rd")
+  )
+  writeLines(
+    "This is a mock Rd file.",
+    file.path(rd_dir, "pkg2.Rd")
+  )
+  # Run the function
+  paws_rd_links(in_dir = dir)
+
+  # Check if the Rd files have been modified correctly
+  modified_content <- readLines(file.path(rd_dir, "pkg1.Rd"))
+  expect_equal(
+    modified_content,
+    c("This is a mock Rd file.", "\\link[pkg1:service]{service}")
+  )
+
+  modified_content <- readLines(file.path(rd_dir, "pkg2.Rd"))
+  expect_equal(
+    modified_content,
+    "This is a mock Rd file."
+  )
+
+  # Clean up created directories and files
+  unlink(dir, recursive = TRUE)
+})
