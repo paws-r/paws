@@ -4,7 +4,7 @@
 \alias{rds_build_auth_token}
 \title{Return an authentication token for a database connection}
 \usage{
-rds_build_auth_token(endpoint, region, user, creds)
+rds_build_auth_token(endpoint, user, creds = NULL, region = NULL)
 }
 \arguments{
 \item{endpoint}{[required] Hostname and port needed to connect
