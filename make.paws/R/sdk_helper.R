@@ -720,6 +720,8 @@ paws_update_version <- function(dir = "../cran", version) {
 
 ##### helper functions #####
 check_pkgs <- function(pkgs, keep_notes = FALSE) {
+  # reset mirai daemons on exit
+  on.exit(mirai::daemons(NULL))
   # Check package locally
   mirai::daemons(parallel::detectCores(), .compute = "build_check")
   checks <- mirai::mirai_map(
