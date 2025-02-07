@@ -44,3 +44,4 @@ paws_fix_html_span(root = root)
 
 paws_unescape_latex_post_build(root = root)
 paws_pkg_doc_build(in_dir = in_dir)
+paws_rd_links(in_dir = in_dir)

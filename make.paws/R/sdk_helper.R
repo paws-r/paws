@@ -13,10 +13,12 @@
 #' @return A list of any warnings, errors and notes within paws sdk.
 #' @name paws_check_local
 #' @export
-paws_check_local <- function(in_dir = "../cran",
-                             path,
-                             pkg_list = list(),
-                             keep_notes = FALSE) {
+paws_check_local <- function(
+  in_dir = "../cran",
+  path,
+  pkg_list = list(),
+  keep_notes = FALSE
+) {
   check_sub_cat <- paws_check_local_sub_cat(
     in_dir = in_dir,
     pkg_list = pkg_list,
@@ -39,10 +41,12 @@ paws_check_local <- function(in_dir = "../cran",
 
 #' @rdname paws_check_local
 #' @export
-paws_check_local_cat <- function(in_dir = "../cran",
-                                 path,
-                                 pkg_list = list(),
-                                 keep_notes = FALSE) {
+paws_check_local_cat <- function(
+  in_dir = "../cran",
+  path,
+  pkg_list = list(),
+  keep_notes = FALSE
+) {
   pkgs <- list_paws_pkgs(in_dir, pkg_list)
   pkgs <- list_cat_pkgs(pkgs)
   checks <- check_pkgs(pkgs, keep_notes)
@@ -54,10 +58,12 @@ paws_check_local_cat <- function(in_dir = "../cran",
 
 #' @rdname paws_check_local
 #' @export
-paws_check_local_sub_cat <- function(in_dir = "../cran",
-                                     path,
-                                     pkg_list = list(),
-                                     keep_notes = FALSE) {
+paws_check_local_sub_cat <- function(
+  in_dir = "../cran",
+  path,
+  pkg_list = list(),
+  keep_notes = FALSE
+) {
   pkgs <- list_paws_pkgs(in_dir, pkg_list)
   pkgs <- list_sub_cat_pkgs(pkgs)
   checks <- check_pkgs(pkgs, keep_notes)
@@ -93,9 +99,11 @@ paws_check_url <- function(in_dir = "../cran", path, pkg_list = list()) {
 #' @param email address to notify, defaults to the maintainer address in the package.
 #' @name paws_check_rhub
 #' @export
-paws_check_rhub <- function(in_dir = "../cran",
-                            pkg_list = list(),
-                            platforms = c("linux", "macos", "macos-arm64", "windows")) {
+paws_check_rhub <- function(
+  in_dir = "../cran",
+  pkg_list = list(),
+  platforms = c("linux", "macos", "macos-arm64", "windows")
+) {
   paws_check_rhub_sub_cat(in_dir, pkg_list, platforms)
   paws_check_rhub_cat(in_dir, pkg_list, platforms)
   paws_rhub_action_check("paws", platforms)
@@ -103,9 +111,11 @@ paws_check_rhub <- function(in_dir = "../cran",
 
 #' @name paws_check_rhub
 #' @export
-paws_check_rhub_cat <- function(in_dir = "../cran",
-                                pkg_list = list(),
-                                platforms = c("linux", "macos", "macos-arm64", "windows")) {
+paws_check_rhub_cat <- function(
+  in_dir = "../cran",
+  pkg_list = list(),
+  platforms = c("linux", "macos", "macos-arm64", "windows")
+) {
   pkgs <- list_paws_pkgs(in_dir, pkg_list)
   pkgs <- list_cat_pkgs(pkgs)
   paws_rhub_action_check(basename(pkgs), platforms)
@@ -113,9 +123,11 @@ paws_check_rhub_cat <- function(in_dir = "../cran",
 
 #' @rdname paws_check_rhub
 #' @export
-paws_check_rhub_sub_cat <- function(in_dir = "../cran",
-                                    pkg_list = list(),
-                                    platforms = c("linux", "macos", "macos-arm64", "windows")) {
+paws_check_rhub_sub_cat <- function(
+  in_dir = "../cran",
+  pkg_list = list(),
+  platforms = c("linux", "macos", "macos-arm64", "windows")
+) {
   pkgs <- list_paws_pkgs(in_dir, pkg_list)
   pkgs <- list_sub_cat_pkgs(pkgs)
   if (length(pkgs) > 0) {
@@ -127,20 +139,39 @@ paws_check_rhub_sub_cat <- function(in_dir = "../cran",
 
 #' @rdname paws_check_rhub
 #' @export
-paws_rhub_action_check <- function(packages = "paws", platforms = c("linux", "macos", "macos-arm64", "windows")) {
+paws_rhub_action_check <- function(
+  packages = "paws",
+  platforms = c("linux", "macos", "macos-arm64", "windows")
+) {
   url <- "https://api.github.com/repos/paws-r/paws-rhub/actions/workflows/rhub.yaml/dispatches"
-  pat <- gitcreds::gitcreds_get(url = "https://github.com/paws-r/paws-rhub")$password
+  pat <- gitcreds::gitcreds_get(
+    url = "https://github.com/paws-r/paws-rhub"
+  )$password
   config <- list(platforms = platforms)
   name <- paste(platforms, collapse = ", ")
   to_json <- \(x) jsonlite::toJSON(x, auto_unbox = T)
   resps <- lapply(packages, \(pkg) {
-    id <- sprintf("%s-%s", pkg, paste0(sample(c(letters, LETTERS, 0:9), 10, replace = TRUE), collapse = ""))
-    data <- list(ref = "main", inputs = list(config = to_json(config), name = name, id = id, pkg = pkg))
+    id <- sprintf(
+      "%s-%s",
+      pkg,
+      paste0(
+        sample(c(letters, LETTERS, 0:9), 10, replace = TRUE),
+        collapse = ""
+      )
+    )
+    data <- list(
+      ref = "main",
+      inputs = list(config = to_json(config), name = name, id = id, pkg = pkg)
+    )
     httr2::request(url) |>
-      httr2::req_headers("Accept" = "application/vnd.github+json", "Authorization" = sprintf("Bearer %s", pat)) |>
+      httr2::req_headers(
+        "Accept" = "application/vnd.github+json",
+        "Authorization" = sprintf("Bearer %s", pat)
+      ) |>
       httr2::req_body_raw(to_json(data)) |>
       httr2::req_method("POST")
-  }) |> httr2::req_perform_parallel()
+  }) |>
+    httr2::req_perform_parallel()
   names(resps) <- unlist(packages)
 
   for (pkg in names(resps)) {
@@ -148,16 +179,19 @@ paws_rhub_action_check <- function(packages = "paws", platforms = c("linux", "ma
       stop(sprintf("Failed to start rhub action for package: %s", pkg))
     }
   }
-  writeLines("Please check results: https://github.com/paws-r/paws-rhub/actions")
+  writeLines(
+    "Please check results: https://github.com/paws-r/paws-rhub/actions"
+  )
   invisible(NULL)
 }
 
-
 #' @rdname paws_check_rhub
 #' @export
-paws_check_win_devel <- function(in_dir = "../cran",
-                                 pkg_list = list(),
-                                 email = NULL) {
+paws_check_win_devel <- function(
+  in_dir = "../cran",
+  pkg_list = list(),
+  email = NULL
+) {
   paws_check_win_devel_sub_cat(in_dir, pkg_list, email)
   paws_check_win_devel_cat(in_dir, pkg_list, email)
   pkg <- file.path(in_dir, "paws")
@@ -166,9 +200,11 @@ paws_check_win_devel <- function(in_dir = "../cran",
 
 #' @rdname paws_check_rhub
 #' @export
-paws_check_win_devel_cat <- function(in_dir = "../cran",
-                                     pkg_list = list(),
-                                     email = NULL) {
+paws_check_win_devel_cat <- function(
+  in_dir = "../cran",
+  pkg_list = list(),
+  email = NULL
+) {
   pkgs <- list_paws_pkgs(in_dir, pkg_list)
   pkgs <- list_cat_pkgs(pkgs)
   for (pkg in pkgs) {
@@ -178,9 +214,11 @@ paws_check_win_devel_cat <- function(in_dir = "../cran",
 
 #' @rdname paws_check_rhub
 #' @export
-paws_check_win_devel_sub_cat <- function(in_dir = "../cran",
-                                         pkg_list = list(),
-                                         email = NULL) {
+paws_check_win_devel_sub_cat <- function(
+  in_dir = "../cran",
+  pkg_list = list(),
+  email = NULL
+) {
   pkgs <- list_paws_pkgs(in_dir, pkg_list)
   pkgs <- list_sub_cat_pkgs(pkgs)
   if (length(pkgs) > 0) {
@@ -201,9 +239,11 @@ paws_check_win_devel_sub_cat <- function(in_dir = "../cran",
 #' @return A data.table with package status size and percentage.
 #' @name paws_check_pkg_size
 #' @export
-paws_check_pkg_size <- function(in_dir = "../cran",
-                                threshold = fs::fs_bytes("5MB"),
-                                pkg_list = list()) {
+paws_check_pkg_size <- function(
+  in_dir = "../cran",
+  threshold = fs::fs_bytes("5MB"),
+  pkg_list = list()
+) {
   pkgs <- list_paws_pkgs(in_dir, pkg_list)
   tmp <- tempfile()
   fs::dir_create(tmp)
@@ -219,14 +259,19 @@ paws_check_pkg_size <- function(in_dir = "../cran",
   dir_info <- dir_info[, c("package", "size")]
   setDT(dir_info)
 
-  dir_info[, c("status", "percentage") := list(
-    fcase(
-      get("size") > threshold, "ERROR",
-      get("size") > threshold * .75, "WARNING",
-      get("size") <= threshold * .75, "OK"
-    ),
-    paste(round(as.numeric(get("size") / threshold) * 100, 2), "%")
-  )]
+  dir_info[,
+    c("status", "percentage") := list(
+      fcase(
+        get("size") > threshold,
+        "ERROR",
+        get("size") > threshold * .75,
+        "WARNING",
+        get("size") <= threshold * .75,
+        "OK"
+      ),
+      paste(round(as.numeric(get("size") / threshold) * 100, 2), "%")
+    )
+  ]
 
   return(dir_info[order(-get("size"))])
 }
@@ -315,9 +360,11 @@ Maintainer Notes: tarball package size: %s
 #' @param refresh re-write any cran-comments.md that already exists.
 #' @name paws_build_cran_comments
 #' @export
-paws_build_cran_comments <- function(in_dir = "../cran",
-                                     cache_path = NULL,
-                                     refresh = FALSE) {
+paws_build_cran_comments <- function(
+  in_dir = "../cran",
+  cache_path = NULL,
+  refresh = FALSE
+) {
   log_info <- utils::getFromNamespace("log_info", "paws.common")
   all_cats <- basename(list_paws_pkgs(in_dir))
   log_info(
@@ -350,48 +397,54 @@ paws_build_cran_comments <- function(in_dir = "../cran",
     on = "package"
   ]
 
-  dir_info[
-    ,
+  dir_info[,
     "cran_comment" := fcase(
       is.na(get("errors")) & is.na(get("warnings")) & is.na(get("notes")),
       "There were no ERRORs, WARNINGs, or Notes.",
       is.na(get("errors")) & is.na(get("warnings")) & !is.na(get("notes")),
       sprintf(
-        "There were no ERRORs, or WARNINGs.\nNotes:\n%s", get("notes")
+        "There were no ERRORs, or WARNINGs.\nNotes:\n%s",
+        get("notes")
       ),
       is.na(get("errors")) & !is.na(get("warnings")) & !is.na(get("notes")),
       sprintf(
         "There were no ERRORs.\nWarnings:%s\nNotes:\n%s",
-        get("warnings"), get("notes")
+        get("warnings"),
+        get("notes")
       ),
       is.na(get("errors")) & !is.na(get("warnings")) & is.na(get("notes")),
       sprintf(
-        "There were no ERRORs or Notes.\nWarnings:%s", warnings
+        "There were no ERRORs or Notes.\nWarnings:%s",
+        warnings
       ),
       !is.na(get("errors")) & !is.na(get("warnings")) & !is.na(get("notes")),
       sprintf(
         "Errors:\n%s\nWarnings:\n%s\nNotes:\n%s",
-        get("errors"), get("warnings"), get("notes")
+        get("errors"),
+        get("warnings"),
+        get("notes")
       ),
       !is.na(get("errors")) & is.na(get("warnings")) & is.na(get("notes")),
       sprintf(
-        "There was no WARNINGS or Notes.\nErrors:\n%s", get("errors")
+        "There was no WARNINGS or Notes.\nErrors:\n%s",
+        get("errors")
       ),
       !is.na(get("errors")) & !is.na(get("warnings")) & is.na(get("notes")),
       sprintf(
         "There was no WARNINGS.\nErrors:\n%s\nNotes:\n%s",
-        get("errors"), get("notes")
+        get("errors"),
+        get("notes")
       ),
       !is.na(get("errors")) & !is.na(get("warnings")) & !is.na(get("notes")),
       sprintf(
         "There was no NOTES.\nErrors:\n%s\nNotes:\n%s",
-        get("errors"), get("warnings")
+        get("errors"),
+        get("warnings")
       )
     )
   ]
 
-  dir_info[
-    ,
+  dir_info[,
     "downstream_info" := fifelse(
       grepl("paws[.].*$", get("package")),
       "All downstream dependencies ('paws') pass R CMD check.",
@@ -421,18 +474,21 @@ paws_build_cran_comments <- function(in_dir = "../cran",
 #' @param after a replacement for matched pattern in sub and gsub.
 #' @export
 paws_gsub <- function(
-    root = "..",
-    before = "",
-    after = "") {
+  root = "..",
+  before = "",
+  after = ""
+) {
   log_info <- utils::getFromNamespace("log_info", "paws.common")
 
   paws_r <- fs::dir_ls(file.path(root, "paws", "R"))
   cran_pkg <- fs::dir_ls(file.path(root, "cran"))
   cran_r <- lapply(
-    cran_pkg, \(x) fs::dir_ls(file.path(x, "R"))
+    cran_pkg,
+    \(x) fs::dir_ls(file.path(x, "R"))
   )
   cran_rd <- lapply(
-    cran_pkg, \(x) fs::dir_ls(file.path(x, "man"))
+    cran_pkg,
+    \(x) fs::dir_ls(file.path(x, "man"))
   )
   log_info(
     "Removed escaped latex scripts from paws directory."
@@ -461,8 +517,7 @@ paws_gsub <- function(
 #' @param in_dir Directory containing paws sdk packages.
 #' @param pkg_list list of packages to release, release all packages by default
 #' @export
-paws_pkg_doc_build <- function(in_dir = "../cran",
-                               pkg_list = list()) {
+paws_pkg_doc_build <- function(in_dir = "../cran", pkg_list = list()) {
   log_info <- utils::getFromNamespace("log_info", "paws.common")
   pkgs <- list_paws_pkgs(in_dir, pkg_list)
   log_info(
@@ -470,7 +525,39 @@ paws_pkg_doc_build <- function(in_dir = "../cran",
   )
   for (pkg in pkgs[basename(pkgs) != "paws"]) {
     roxygen2::roxygenise(package.dir = pkg)
-    log_info("Successfully update r documentation for package: %s", basename(pkg))
+    log_info(
+      "Successfully update r documentation for package: %s",
+      basename(pkg)
+    )
+  }
+}
+
+#' @title Tidy paws sdk link documentation
+#' @param in_dir Directory containing paws sdk packages.
+#' @export
+paws_rd_links <- function(in_dir = "../cran") {
+  pkgs <- basename(list_cat_pkgs(list_paws_pkgs(in_dir)))
+  pkg_service <- c()
+  for (pkg in pkgs) {
+    services <- unique(
+      gsub("_.*", "", list.files(sprintf("%s/%s/R", in_dir, pkg)))
+    )
+    services <- services[services != "reexports"]
+    pkg_service <- c(
+      pkg_service,
+      setNames(services, rep(pkg, length(services)))
+    )
+  }
+
+  path <- sprintf("%s/paws/man", in_dir)
+  paws_rds <- gsub(".Rd", "", list.files(path), fixed = T)
+  paws_rds <- paws_rds[paws_rds != "reexports"]
+  for (src in paws_rds) {
+    rd_file <- sprintf("%s/%s.Rd", path, src)
+    docs <- readLines(rd_file)
+    pkg <- names(pkg_service[pkg_service == src])
+    docs <- add_package_name_to_links(docs, pkg)
+    writeLines(docs, rd_file)
   }
 }
 
@@ -479,17 +566,20 @@ paws_pkg_doc_build <- function(in_dir = "../cran",
 #' @param special_characters character to be removed
 #' @export
 paws_unescape_latex_post_build <- function(
-    root = "..",
-    special_characters = c("#", "$", "_")) {
+  root = "..",
+  special_characters = c("#", "$", "_")
+) {
   log_info <- utils::getFromNamespace("log_info", "paws.common")
 
   paws_r <- fs::dir_ls(file.path(root, "paws", "R"))
   cran_pkg <- fs::dir_ls(file.path(root, "cran"))
   cran_r <- lapply(
-    cran_pkg, \(x) fs::dir_ls(file.path(x, "R"))
+    cran_pkg,
+    \(x) fs::dir_ls(file.path(x, "R"))
   )
   cran_rd <- lapply(
-    cran_pkg, \(x) fs::dir_ls(file.path(x, "man"))
+    cran_pkg,
+    \(x) fs::dir_ls(file.path(x, "man"))
   )
 
   remove_esaped_latex <- function(files) {
@@ -523,10 +613,12 @@ paws_fix_html_span <- function(root = "..") {
   paws_r <- fs::dir_ls(file.path(root, "paws", "R"))
   cran_pkg <- fs::dir_ls(file.path(root, "cran"))
   cran_r <- lapply(
-    cran_pkg, \(x) fs::dir_ls(file.path(x, "R"))
+    cran_pkg,
+    \(x) fs::dir_ls(file.path(x, "R"))
   )
   cran_rd <- lapply(
-    cran_pkg, \(x) fs::dir_ls(file.path(x, "man"))
+    cran_pkg,
+    \(x) fs::dir_ls(file.path(x, "man"))
   )
 
   remove_html_span_r(paws_r)
@@ -617,7 +709,8 @@ paws_update_version <- function(dir = "../cran", version) {
 
     # remove paws.common
     found[found] <- !grepl(
-      "paws\\.common.*[0-9]+\\.[0-9]+\\.[0-9]+", lines[found],
+      "paws\\.common.*[0-9]+\\.[0-9]+\\.[0-9]+",
+      lines[found],
       perl = T
     )
     lines[found] <- gsub("[0-9]+\\.[0-9]+\\.[0-9]+", version, lines[found])
@@ -627,17 +720,15 @@ paws_update_version <- function(dir = "../cran", version) {
 
 ##### helper functions #####
 check_pkgs <- function(pkgs, keep_notes = FALSE) {
-  temp_file <- tempfile()
-  on.exit(unlink(temp_file))
-
   # Check package locally
-  checks <- list()
-  sink(temp_file)
-  print(pkgs)
-  for (pkg in pkgs) {
-    checks[[basename(pkg)]] <- devtools::check_built(pkg, cran = TRUE)
-  }
-  sink()
+  mirai::daemons(parallel::detectCores(), .compute = "build_check")
+  checks <- mirai::mirai_map(
+    pkgs,
+    devtools::check_built,
+    .args = list(cran = TRUE),
+    .compute = "build_check"
+  )[]
+  names(checks) <- basename(pkgs)
 
   # parse results
   results <- list()
