@@ -45,6 +45,7 @@ test_that("check local check_pkgs remove notes", {
       list(notes = "baz")
     )
   )
+  mockery::stub(check_pkgs, "mirai::daemons", mock2())
   mockery::stub(check_pkgs, "mirai::mirai_map", mock_devtools_check_built)
 
   check <- check_pkgs(c("paws", "paws.cat1", "paws.cat2"))
@@ -66,6 +67,7 @@ test_that("check local check_pkgs keep notes", {
       list(notes = "baz")
     )
   )
+  mockery::stub(check_pkgs, "mirai::daemons", mock2())
   mockery::stub(check_pkgs, "mirai::mirai_map", mock_devtools_check_built)
 
   check <- check_pkgs(c("paws", "paws.cat1", "paws.cat2"), keep_notes = T)
