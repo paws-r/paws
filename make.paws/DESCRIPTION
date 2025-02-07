@@ -34,7 +34,8 @@ Imports:
     waldo,
     urlchecker,
     stats,
-    fs
+    fs,
+    mirai
 Suggests: 
     covr,
     formatR,
@@ -46,7 +47,7 @@ Remotes:
     r-lib/cachem
 SystemRequirements: pandoc (>= 1.12.3) - http://pandoc.org
 Roxygen: list(markdown = TRUE, roclets = c("rd"))
-RoxygenNote: 7.3.1
+RoxygenNote: 7.3.2
 Collate: 
     'cache.R'
     'docs.R'

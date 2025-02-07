@@ -483,7 +483,6 @@
     - lookoutvision
     - outposts
     - medical-imaging
-    - workmail
   title: "'Amazon Web Services' Business Applications Services"
   description: >-
     Interface to 'Amazon Web Services' business applications services, including
