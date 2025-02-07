@@ -4,7 +4,7 @@
 \alias{rds_build_auth_token_v2}
 \title{Generates an auth token used to connect to a db with IAM credentials.}
 \usage{
-rds_build_auth_token_v2(DBHostname, Port, DBUsername, Region)
+rds_build_auth_token_v2(DBHostname, Port, DBUsername, Region = NULL)
 }
 \arguments{
 \item{DBHostname}{[required] The hostname of the database to connect to.}
