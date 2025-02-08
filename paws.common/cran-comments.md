@@ -1,5 +1,5 @@
 ## Submission
-This release include performance improvements and backend change.
+This release address cran testing when network fails.
 
 ## Test environments
 
