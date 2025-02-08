@@ -66,7 +66,7 @@ User Messaging SMS and Voice, version 2 resources such as phone numbers,
 sender IDs, and opt-out lists can be used by the Amazon Pinpoint API.
 
 If you're new to AWS End User Messaging SMS and Voice, it's also helpful
-to review the \href{https://docs.aws.amazon.com/sms-voice/latest/userguide/what-is-service.html}{AWS End User Messaging SMS User Guide}.
+to review the \href{https://docs.aws.amazon.com/sms-voice/latest/userguide/what-is-sms-mms.html}{AWS End User Messaging SMS User Guide}.
 The \emph{AWS End User Messaging SMS User Guide} provides tutorials, code
 samples, and procedures that demonstrate how to use AWS End User
 Messaging SMS and Voice features programmatically and how to integrate

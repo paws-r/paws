@@ -2,30 +2,30 @@
 #'
 #' @description
 #' App Runner
-#' 
+#'
 #' App Runner is an application service that provides a fast, simple, and
 #' cost-effective way to go directly from an existing container image or
 #' source code to a running service in the Amazon Web Services Cloud in
 #' seconds. You don't need to learn new technologies, decide which compute
 #' service to use, or understand how to provision and configure Amazon Web
 #' Services resources.
-#' 
+#'
 #' App Runner connects directly to your container registry or source code
 #' repository. It provides an automatic delivery pipeline with fully
 #' managed operations, high performance, scalability, and security.
-#' 
+#'
 #' For more information about App Runner, see the [App Runner Developer
 #' Guide](https://docs.aws.amazon.com/apprunner/latest/dg/). For release
 #' information, see the [App Runner Release
 #' Notes](https://docs.aws.amazon.com/apprunner/latest/relnotes/).
-#' 
+#'
 #' To install the Software Development Kits (SDKs), Integrated Development
 #' Environment (IDE) Toolkits, and command line tools that you can use to
 #' access the API, see [Tools for Amazon Web
 #' Services](https://aws.amazon.com/developer/tools/).
-#' 
+#'
 #' **Endpoints**
-#' 
+#'
 #' For a list of Region-specific endpoints that App Runner supports, see
 #' [App Runner endpoints and
 #' quotas](https://docs.aws.amazon.com/general/latest/gr/apprunner.html) in
@@ -161,7 +161,12 @@
 #'
 #' @rdname apprunner
 #' @export
-apprunner <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+apprunner <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.compute::apprunner(
     config = config,
     credentials = credentials,
@@ -174,7 +179,7 @@ apprunner <- function(config = list(), credentials = list(), endpoint = NULL, re
 #'
 #' @description
 #' Batch
-#' 
+#'
 #' Using Batch, you can run batch computing workloads on the Amazon Web
 #' Services Cloud. Batch computing is a common means for developers,
 #' scientists, and engineers to access large amounts of compute resources.
@@ -184,7 +189,7 @@ apprunner <- function(config = list(), credentials = list(), endpoint = NULL, re
 #' computing software approach. You can use Batch to efficiently provision
 #' resources, and work toward eliminating capacity constraints, reducing
 #' your overall compute costs, and delivering results more quickly.
-#' 
+#'
 #' As a fully managed service, Batch can run batch computing workloads of
 #' any scale. Batch automatically provisions compute resources and
 #' optimizes workload distribution based on the quantity and scale of your
@@ -312,7 +317,12 @@ apprunner <- function(config = list(), credentials = list(), endpoint = NULL, re
 #'
 #' @rdname batch
 #' @export
-batch <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+batch <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.compute::batch(
     config = config,
     credentials = credentials,
@@ -326,9 +336,9 @@ batch <- function(config = list(), credentials = list(), endpoint = NULL, region
 #' @description
 #' The Amazon Braket API Reference provides information about the
 #' operations and structures supported in Amazon Braket.
-#' 
+#'
 #' Additional Resources:
-#' 
+#'
 #' -   [Amazon Braket Developer
 #'     Guide](https://docs.aws.amazon.com/braket/latest/developerguide/what-is-braket.html)
 #'
@@ -438,7 +448,12 @@ batch <- function(config = list(), credentials = list(), endpoint = NULL, region
 #'
 #' @rdname braket
 #' @export
-braket <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+braket <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.compute::braket(
     config = config,
     credentials = credentials,
@@ -587,7 +602,12 @@ braket <- function(config = list(), credentials = list(), endpoint = NULL, regio
 #'
 #' @rdname computeoptimizer
 #' @export
-computeoptimizer <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+computeoptimizer <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.compute::computeoptimizer(
     config = config,
     credentials = credentials,
@@ -1356,7 +1376,12 @@ computeoptimizer <- function(config = list(), credentials = list(), endpoint = N
 #'
 #' @rdname ec2
 #' @export
-ec2 <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+ec2 <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.compute::ec2(
     config = config,
     credentials = credentials,
@@ -1373,11 +1398,11 @@ ec2 <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #' Amazon EC2 Instance Connect. Amazon EC2 Instance Connect enables system
 #' administrators to publish one-time use SSH public keys to EC2, providing
 #' users a simple and secure way to connect to their instances.
-#' 
+#'
 #' To view the Amazon EC2 Instance Connect content in the *Amazon EC2 User
 #' Guide*, see [Connect to your Linux instance using EC2 Instance
 #' Connect](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/connect-linux-inst-eic.html).
-#' 
+#'
 #' For Amazon EC2 APIs, see the [Amazon EC2 API
 #' Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Welcome.html).
 #'
@@ -1481,7 +1506,12 @@ ec2 <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #'
 #' @rdname ec2instanceconnect
 #' @export
-ec2instanceconnect <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+ec2instanceconnect <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.compute::ec2instanceconnect(
     config = config,
     credentials = credentials,
@@ -1500,7 +1530,7 @@ ec2instanceconnect <- function(config = list(), credentials = list(), endpoint =
 #' Open Container Initiative (OCI) images. Amazon ECR supports private
 #' repositories with resource-based permissions using IAM so that specific
 #' users or Amazon EC2 instances can access repositories and images.
-#' 
+#'
 #' Amazon ECR has service endpoints in each supported Region. For more
 #' information, see [Amazon ECR
 #' endpoints](https://docs.aws.amazon.com/general/latest/gr/ecr.html) in
@@ -1655,7 +1685,12 @@ ec2instanceconnect <- function(config = list(), credentials = list(), endpoint =
 #'
 #' @rdname ecr
 #' @export
-ecr <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+ecr <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.compute::ecr(
     config = config,
     credentials = credentials,
@@ -1794,7 +1829,12 @@ ecr <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #'
 #' @rdname ecrpublic
 #' @export
-ecrpublic <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+ecrpublic <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.compute::ecrpublic(
     config = config,
     credentials = credentials,
@@ -1807,7 +1847,7 @@ ecrpublic <- function(config = list(), credentials = list(), endpoint = NULL, re
 #'
 #' @description
 #' Amazon Elastic Container Service
-#' 
+#'
 #' Amazon Elastic Container Service (Amazon ECS) is a highly scalable,
 #' fast, container management service. It makes it easy to run, stop, and
 #' manage Docker containers. You can host your cluster on a serverless
@@ -1815,12 +1855,12 @@ ecrpublic <- function(config = list(), credentials = list(), endpoint = NULL, re
 #' or tasks on Fargate. For more control, you can host your tasks on a
 #' cluster of Amazon Elastic Compute Cloud (Amazon EC2) or External
 #' (on-premises) instances that you manage.
-#' 
+#'
 #' Amazon ECS makes it easy to launch and stop container-based applications
 #' with simple API calls. This makes it easy to get the state of your
 #' cluster from a centralized service, and gives you access to many
 #' familiar Amazon EC2 features.
-#' 
+#'
 #' You can use Amazon ECS to schedule the placement of containers across
 #' your cluster based on your resource needs, isolation policies, and
 #' availability requirements. With Amazon ECS, you don't need to operate
@@ -1980,7 +2020,12 @@ ecrpublic <- function(config = list(), credentials = list(), endpoint = NULL, re
 #'
 #' @rdname ecs
 #' @export
-ecs <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+ecs <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.compute::ecs(
     config = config,
     credentials = credentials,
@@ -1997,7 +2042,7 @@ ecs <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #' needing to setup or maintain your own Kubernetes control plane.
 #' Kubernetes is an open-source system for automating the deployment,
 #' scaling, and management of containerized applications.
-#' 
+#'
 #' Amazon EKS runs up-to-date versions of the open-source Kubernetes
 #' software, so you can use all the existing plugins and tooling from the
 #' Kubernetes community. Applications running on Amazon EKS are fully
@@ -2169,7 +2214,12 @@ ecs <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #'
 #' @rdname eks
 #' @export
-eks <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+eks <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.compute::eks(
     config = config,
     credentials = credentials,
@@ -2184,7 +2234,7 @@ eks <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #' AWS Elastic Beanstalk makes it easy for you to create, deploy, and
 #' manage scalable, fault-tolerant applications running on the Amazon Web
 #' Services cloud.
-#' 
+#'
 #' For more information about this product, go to the [AWS Elastic
 #' Beanstalk](https://aws.amazon.com/elasticbeanstalk/) details page. The
 #' location of the latest AWS Elastic Beanstalk WSDL is
@@ -2193,9 +2243,9 @@ eks <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #' Environment (IDE) Toolkits, and command line tools that enable you to
 #' access the API, go to [Tools for Amazon Web
 #' Services](https://aws.amazon.com/developer/tools/).
-#' 
+#'
 #' **Endpoints**
-#' 
+#'
 #' For a list of region-specific endpoints that AWS Elastic Beanstalk
 #' supports, go to [Regions and
 #' Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html#elasticbeanstalk_region)
@@ -2343,7 +2393,12 @@ eks <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #'
 #' @rdname elasticbeanstalk
 #' @export
-elasticbeanstalk <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+elasticbeanstalk <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.compute::elasticbeanstalk(
     config = config,
     credentials = credentials,
@@ -2363,18 +2418,18 @@ elasticbeanstalk <- function(config = list(), credentials = list(), endpoint = N
 #' more information about Amazon EMR on EKS concepts and tasks, see [What
 #' is Amazon EMR on
 #' EKS](https://docs.aws.amazon.com/emr/latest/EMR-on-EKS-DevelopmentGuide/emr-eks.html).
-#' 
+#'
 #' *Amazon EMR containers* is the API name for Amazon EMR on EKS. The
 #' `emr-containers` prefix is used in the following scenarios:
-#' 
+#'
 #' -   It is the prefix in the CLI commands for Amazon EMR on EKS. For
 #'     example, `aws emr-containers start-job-run`.
-#' 
+#'
 #' -   It is the prefix before IAM policy actions for Amazon EMR on EKS.
 #'     For example, `"Action": [ "emr-containers:StartJobRun"]`. For more
 #'     information, see [Policy actions for Amazon EMR on
 #'     EKS](https://docs.aws.amazon.com/emr/latest/EMR-on-EKS-DevelopmentGuide/security_iam_service-with-iam.html#security_iam_service-with-iam-id-based-policies-actions).
-#' 
+#'
 #' -   It is the prefix used in Amazon EMR on EKS service endpoints. For
 #'     example, `emr-containers.us-east-2.amazonaws.com`. For more
 #'     information, see [Amazon EMR on EKSService
@@ -2496,7 +2551,12 @@ elasticbeanstalk <- function(config = list(), credentials = list(), endpoint = N
 #'
 #' @rdname emrcontainers
 #' @export
-emrcontainers <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+emrcontainers <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.compute::emrcontainers(
     config = config,
     credentials = credentials,
@@ -2514,18 +2574,18 @@ emrcontainers <- function(config = list(), credentials = list(), endpoint = NULL
 #' such as Apache Spark and Apache Hive. With Amazon EMR Serverless, you
 #' don’t have to configure, optimize, secure, or operate clusters to run
 #' applications with these frameworks.
-#' 
+#'
 #' The API reference to Amazon EMR Serverless is `emr-serverless`. The
 #' `emr-serverless` prefix is used in the following scenarios:
-#' 
+#'
 #' -   It is the prefix in the CLI commands for Amazon EMR Serverless. For
 #'     example, `aws emr-serverless start-job-run`.
-#' 
+#'
 #' -   It is the prefix before IAM policy actions for Amazon EMR
 #'     Serverless. For example, `"Action": ["emr-serverless:StartJobRun"]`.
 #'     For more information, see [Policy actions for Amazon EMR
 #'     Serverless](https://docs.aws.amazon.com/emr/latest/EMR-Serverless-UserGuide/security_iam_service-with-iam.html#security_iam_service-with-iam-id-based-policies-actions).
-#' 
+#'
 #' -   It is the prefix used in Amazon EMR Serverless service endpoints.
 #'     For example, `emr-serverless.us-east-2.amazonaws.com`.
 #'
@@ -2638,7 +2698,12 @@ emrcontainers <- function(config = list(), credentials = list(), endpoint = NULL
 #'
 #' @rdname emrserverless
 #' @export
-emrserverless <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+emrserverless <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.compute::emrserverless(
     config = config,
     credentials = credentials,
@@ -2824,7 +2889,12 @@ emrserverless <- function(config = list(), credentials = list(), endpoint = NULL
 #'
 #' @rdname imagebuilder
 #' @export
-imagebuilder <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+imagebuilder <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.compute::imagebuilder(
     config = config,
     credentials = credentials,
@@ -2837,9 +2907,9 @@ imagebuilder <- function(config = list(), credentials = list(), endpoint = NULL,
 #'
 #' @description
 #' Lambda
-#' 
+#'
 #' **Overview**
-#' 
+#'
 #' Lambda is a compute service that lets you run code without provisioning
 #' or managing servers. Lambda runs your code on a high-availability
 #' compute infrastructure and performs all of the administration of the
@@ -2850,29 +2920,29 @@ imagebuilder <- function(config = list(), credentials = list(), endpoint = NULL,
 #' service, see [What is
 #' Lambda](https://docs.aws.amazon.com/lambda/latest/dg/welcome.html) in
 #' the **Lambda Developer Guide**.
-#' 
+#'
 #' The *Lambda API Reference* provides information about each of the API
 #' methods, including details about the parameters in each API request and
 #' response.
-#' 
+#'
 #' You can use Software Development Kits (SDKs), Integrated Development
 #' Environment (IDE) Toolkits, and command line tools to access the API.
 #' For installation instructions, see [Tools for Amazon Web
 #' Services](https://aws.amazon.com/developer/tools/).
-#' 
+#'
 #' For a list of Region-specific endpoints that Lambda supports, see
 #' [Lambda endpoints and
 #' quotas](https://docs.aws.amazon.com/general/latest/gr/lambda-service.html)
 #' in the *Amazon Web Services General Reference.*.
-#' 
+#'
 #' When making the API calls, you will need to authenticate your request by
 #' providing a signature. Lambda supports signature version 4. For more
 #' information, see [Signature Version 4 signing
 #' process](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' in the *Amazon Web Services General Reference.*.
-#' 
+#'
 #' **CA certificates**
-#' 
+#'
 #' Because Amazon Web Services SDKs use the CA certificates from your
 #' computer, changes to the certificates on the Amazon Web Services servers
 #' can cause connection failures when you attempt to use an SDK. You can
@@ -2881,33 +2951,33 @@ imagebuilder <- function(config = list(), credentials = list(), endpoint = NULL,
 #' environment and do not manage your own computer, you might need to ask
 #' an administrator to assist with the update process. The following list
 #' shows minimum operating system and Java versions:
-#' 
+#'
 #' -   Microsoft Windows versions that have updates from January 2005 or
 #'     later installed contain at least one of the required CAs in their
 #'     trust list.
-#' 
+#'
 #' -   Mac OS X 10.4 with Java for Mac OS X 10.4 Release 5 (February 2007),
 #'     Mac OS X 10.5 (October 2007), and later versions contain at least
 #'     one of the required CAs in their trust list.
-#' 
+#'
 #' -   Red Hat Enterprise Linux 5 (March 2007), 6, and 7 and CentOS 5, 6,
 #'     and 7 all contain at least one of the required CAs in their default
 #'     trusted CA list.
-#' 
+#'
 #' -   Java 1.4.2_12 (May 2006), 5 Update 2 (March 2005), and all later
 #'     versions, including Java 6 (December 2006), 7, and 8, contain at
 #'     least one of the required CAs in their default trusted CA list.
-#' 
+#'
 #' When accessing the Lambda management console or Lambda API endpoints,
 #' whether through browsers or programmatically, you will need to ensure
 #' your client machines support any of the following CAs:
-#' 
+#'
 #' -   Amazon Root CA 1
-#' 
+#'
 #' -   Starfield Services Root Certificate Authority - G2
-#' 
+#'
 #' -   Starfield Class 2 Certification Authority
-#' 
+#'
 #' Root certificates from the first two authorities are available from
 #' [Amazon trust services](https://www.amazontrust.com/repository/), but
 #' keeping your computer up-to-date is the more straightforward solution.
@@ -3082,7 +3152,12 @@ imagebuilder <- function(config = list(), credentials = list(), endpoint = NULL,
 #'
 #' @rdname lambda
 #' @export
-lambda <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+lambda <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.compute::lambda(
     config = config,
     credentials = credentials,
@@ -3102,13 +3177,13 @@ lambda <- function(config = list(), credentials = list(), endpoint = NULL, regio
 #' static IP addresses, load balancers, content delivery network (CDN)
 #' distributions, DNS management of registered domains, and resource
 #' snapshots (backups) - for a low, predictable monthly price.
-#' 
+#'
 #' You can manage your Lightsail resources using the Lightsail console,
 #' Lightsail API, Command Line Interface (CLI), or SDKs. For more
 #' information about Lightsail concepts and tasks, see the [Amazon
 #' Lightsail Developer
 #' Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/lightsail-how-to-set-up-access-keys-to-use-sdk-api-cli.html).
-#' 
+#'
 #' This API Reference provides detailed information about the actions, data
 #' types, parameters, and errors of the Lightsail service. For more
 #' information about the supported Amazon Web Services Regions, endpoints,
@@ -3371,7 +3446,12 @@ lambda <- function(config = list(), credentials = list(), endpoint = NULL, regio
 #'
 #' @rdname lightsail
 #' @export
-lightsail <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+lightsail <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.compute::lightsail(
     config = config,
     credentials = credentials,
@@ -3389,36 +3469,36 @@ lightsail <- function(config = list(), credentials = list(), endpoint = NULL, re
 #' and [data
 #' types](https://docs.aws.amazon.com/proton/latest/APIReference/API_Types.html)
 #' for the Proton service.
-#' 
+#'
 #' The documentation for each action shows the Query API request parameters
 #' and the XML response.
-#' 
+#'
 #' Alternatively, you can use the Amazon Web Services CLI to access an API.
 #' For more information, see the [Amazon Web Services Command Line
 #' Interface User
 #' Guide](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-welcome.html).
-#' 
+#'
 #' The Proton service is a two-pronged automation framework. Administrators
 #' create service templates to provide standardized infrastructure and
 #' deployment tooling for serverless and container based applications.
 #' Developers, in turn, select from the available service templates to
 #' automate their application or service deployments.
-#' 
+#'
 #' Because administrators define the infrastructure and tooling that Proton
 #' deploys and manages, they need permissions to use all of the listed API
 #' operations.
-#' 
+#'
 #' When developers select a specific infrastructure and tooling set, Proton
 #' deploys their applications. To monitor their applications that are
 #' running on Proton, developers need permissions to the service *create*,
 #' *list*, *update* and *delete* API operations and the service instance
 #' *list* and *update* API operations.
-#' 
+#'
 #' To learn more about Proton, see the [Proton User
 #' Guide](https://docs.aws.amazon.com/proton/latest/userguide/Welcome.html).
-#' 
+#'
 #' **Ensuring Idempotency**
-#' 
+#'
 #' When you make a mutating API request, the request typically returns a
 #' result before the asynchronous workflows of the operation are complete.
 #' Operations might also time out or encounter other server issues before
@@ -3429,18 +3509,18 @@ lightsail <- function(config = list(), credentials = list(), endpoint = NULL, re
 #' request and the subsequent retries are successful, the operation occurs
 #' multiple times. This means that you might create more resources than you
 #' intended.
-#' 
+#'
 #' *Idempotency* ensures that an API request action completes no more than
 #' one time. With an idempotent request, if the original request action
 #' completes successfully, any subsequent retries complete successfully
 #' without performing any further actions. However, the result might
 #' contain updated information, such as the current creation status.
-#' 
+#'
 #' The following lists of APIs are grouped according to methods that ensure
 #' idempotency.
-#' 
+#'
 #' **Idempotent create APIs with a client token**
-#' 
+#'
 #' The API actions in this list support idempotency with the use of a
 #' *client token*. The corresponding Amazon Web Services CLI commands also
 #' support idempotency using a client token. A client token is a unique,
@@ -3450,95 +3530,95 @@ lightsail <- function(config = list(), credentials = list(), endpoint = NULL, re
 #' client token for other API requests. If you don’t provide a client token
 #' for these APIs, a default client token is automatically provided by
 #' SDKs.
-#' 
+#'
 #' Given a request action that has succeeded:
-#' 
+#'
 #' If you retry the request using the same client token and the same
 #' parameters, the retry succeeds without performing any further actions
 #' other than returning the original resource detail data in the response.
-#' 
+#'
 #' If you retry the request using the same client token, but one or more of
 #' the parameters are different, the retry throws a `ValidationException`
 #' with an `IdempotentParameterMismatch` error.
-#' 
+#'
 #' Client tokens expire eight hours after a request is made. If you retry
 #' the request with the expired token, a new resource is created.
-#' 
+#'
 #' If the original resource is deleted and you retry the request, a new
 #' resource is created.
-#' 
+#'
 #' Idempotent create APIs with a client token:
-#' 
+#'
 #' -   CreateEnvironmentTemplateVersion
-#' 
+#'
 #' -   CreateServiceTemplateVersion
-#' 
+#'
 #' -   CreateEnvironmentAccountConnection
-#' 
+#'
 #' **Idempotent create APIs**
-#' 
+#'
 #' Given a request action that has succeeded:
-#' 
+#'
 #' If you retry the request with an API from this group, and the original
 #' resource *hasn't* been modified, the retry succeeds without performing
 #' any further actions other than returning the original resource detail
 #' data in the response.
-#' 
+#'
 #' If the original resource has been modified, the retry throws a
 #' `ConflictException`.
-#' 
+#'
 #' If you retry with different input parameters, the retry throws a
 #' `ValidationException` with an `IdempotentParameterMismatch` error.
-#' 
+#'
 #' Idempotent create APIs:
-#' 
+#'
 #' -   CreateEnvironmentTemplate
-#' 
+#'
 #' -   CreateServiceTemplate
-#' 
+#'
 #' -   CreateEnvironment
-#' 
+#'
 #' -   CreateService
-#' 
+#'
 #' **Idempotent delete APIs**
-#' 
+#'
 #' Given a request action that has succeeded:
-#' 
+#'
 #' When you retry the request with an API from this group and the resource
 #' was deleted, its metadata is returned in the response.
-#' 
+#'
 #' If you retry and the resource doesn't exist, the response is empty.
-#' 
+#'
 #' In both cases, the retry succeeds.
-#' 
+#'
 #' Idempotent delete APIs:
-#' 
+#'
 #' -   DeleteEnvironmentTemplate
-#' 
+#'
 #' -   DeleteEnvironmentTemplateVersion
-#' 
+#'
 #' -   DeleteServiceTemplate
-#' 
+#'
 #' -   DeleteServiceTemplateVersion
-#' 
+#'
 #' -   DeleteEnvironmentAccountConnection
-#' 
+#'
 #' **Asynchronous idempotent delete APIs**
-#' 
+#'
 #' Given a request action that has succeeded:
-#' 
+#'
 #' If you retry the request with an API from this group, if the original
 #' request delete operation status is `DELETE_IN_PROGRESS`, the retry
 #' returns the resource detail data in the response without performing any
 #' further actions.
-#' 
+#'
 #' If the original request delete operation is complete, a retry returns an
 #' empty response.
-#' 
+#'
 #' Asynchronous idempotent delete APIs:
-#' 
+#'
 #' -   DeleteEnvironment
-#' 
+#'
 #' -   DeleteService
 #'
 #' @param
@@ -3721,7 +3801,12 @@ lightsail <- function(config = list(), credentials = list(), endpoint = NULL, re
 #'
 #' @rdname proton
 #' @export
-proton <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+proton <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.compute::proton(
     config = config,
     credentials = credentials,
@@ -3737,7 +3822,7 @@ proton <- function(config = list(), credentials = list(), endpoint = NULL, regio
 #' and enterprises to quickly find and deploy serverless applications in
 #' the AWS Cloud. For more information about serverless applications, see
 #' Serverless Computing and Applications on the AWS website.
-#' 
+#'
 #' The AWS Serverless Application Repository is deeply integrated with the
 #' AWS Lambda console, so that developers of all levels can get started
 #' with serverless computing without needing to learn anything new. You can
@@ -3746,7 +3831,7 @@ proton <- function(config = list(), credentials = list(), endpoint = NULL, regio
 #' for applications by name, publisher, or event source. To use an
 #' application, you simply choose it, configure any required fields, and
 #' deploy it with a few clicks.
-#' 
+#'
 #' You can also easily publish applications, sharing them publicly with the
 #' community at large, or privately within your team or across your
 #' organization. To publish a serverless application (or app), you can use
@@ -3755,14 +3840,14 @@ proton <- function(config = list(), credentials = list(), endpoint = NULL, regio
 #' manifest file, also known as the AWS Serverless Application Model (AWS
 #' SAM) template. For more information about AWS SAM, see AWS Serverless
 #' Application Model (AWS SAM) on the AWS Labs GitHub repository.
-#' 
+#'
 #' The AWS Serverless Application Repository Developer Guide contains more
 #' information about the two developer experiences available:
-#' 
+#'
 #' -   Consuming Applications – Browse for applications and view
 #'     information about them, including source code and readme files. Also
 #'     install, configure, and deploy applications of your choosing.
-#' 
+#'
 #'     Publishing Applications – Configure and upload applications to make
 #'     them available to other developers, and publish new versions of
 #'     applications.
@@ -3874,7 +3959,12 @@ proton <- function(config = list(), credentials = list(), endpoint = NULL, regio
 #'
 #' @rdname serverlessapplicationrepository
 #' @export
-serverlessapplicationrepository <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+serverlessapplicationrepository <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.compute::serverlessapplicationrepository(
     config = config,
     credentials = credentials,
@@ -3887,7 +3977,7 @@ serverlessapplicationrepository <- function(config = list(), credentials = list(
 #'
 #' @description
 #' Backup
-#' 
+#'
 #' Backup is a unified backup service designed to protect Amazon Web
 #' Services services and their associated data. Backup simplifies the
 #' creation, migration, restoration, and deletion of backups, while also
@@ -4080,7 +4170,12 @@ serverlessapplicationrepository <- function(config = list(), credentials = list(
 #'
 #' @rdname backup
 #' @export
-backup <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+backup <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.storage::backup(
     config = config,
     credentials = credentials,
@@ -4095,7 +4190,7 @@ backup <- function(config = list(), credentials = list(), endpoint = NULL, regio
 #' With Amazon Data Lifecycle Manager, you can manage the lifecycle of your
 #' Amazon Web Services resources. You create lifecycle policies, which are
 #' used to automate operations on the specified resources.
-#' 
+#'
 #' Amazon Data Lifecycle Manager supports Amazon EBS volumes and snapshots.
 #' For information about using Amazon Data Lifecycle Manager with Amazon
 #' EBS, see [Amazon Data Lifecycle
@@ -4203,7 +4298,12 @@ backup <- function(config = list(), credentials = list(), endpoint = NULL, regio
 #'
 #' @rdname dlm
 #' @export
-dlm <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+dlm <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.storage::dlm(
     config = config,
     credentials = credentials,
@@ -4224,7 +4324,7 @@ dlm <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #' EBS volumes through snapshots. This can be done without having to create
 #' new volumes from snapshots, and then use Amazon Elastic Compute Cloud
 #' (Amazon EC2) instances to compare the differences.
-#' 
+#'
 #' You can create incremental snapshots directly from data on-premises into
 #' volumes and the cloud to use for quick disaster recovery. With the
 #' ability to write and read snapshots, you can write your on-premises data
@@ -4232,7 +4332,7 @@ dlm <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #' it back to Amazon Web Services or on-premises from the snapshot. You no
 #' longer need to build and maintain complex mechanisms to copy data to and
 #' from Amazon EBS.
-#' 
+#'
 #' This API reference provides detailed information about the actions, data
 #' types, parameters, and errors of the EBS direct APIs. For more
 #' information about the elements that make up the EBS direct APIs, and
@@ -4345,7 +4445,12 @@ dlm <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #'
 #' @rdname ebs
 #' @export
-ebs <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+ebs <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.storage::ebs(
     config = config,
     credentials = credentials,
@@ -4502,7 +4607,12 @@ ebs <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #'
 #' @rdname efs
 #' @export
-efs <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+efs <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.storage::efs(
     config = config,
     credentials = credentials,
@@ -4640,7 +4750,12 @@ efs <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #'
 #' @rdname finspacedata
 #' @export
-finspacedata <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+finspacedata <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.storage::finspacedata(
     config = config,
     credentials = credentials,
@@ -4795,7 +4910,12 @@ finspacedata <- function(config = list(), credentials = list(), endpoint = NULL,
 #'
 #' @rdname fsx
 #' @export
-fsx <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+fsx <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.storage::fsx(
     config = config,
     credentials = credentials,
@@ -4808,7 +4928,7 @@ fsx <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #'
 #' @description
 #' Amazon S3 Glacier (Glacier) is a storage solution for "cold data."
-#' 
+#'
 #' Glacier is an extremely low-cost storage service that provides secure,
 #' durable, and easy-to-use storage for data backup and archival. With
 #' Glacier, customers can store their data cost effectively for months,
@@ -4817,26 +4937,26 @@ fsx <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #' don't have to worry about capacity planning, hardware provisioning, data
 #' replication, hardware failure and recovery, or time-consuming hardware
 #' migrations.
-#' 
+#'
 #' Glacier is a great storage choice when low storage cost is paramount and
 #' your data is rarely retrieved. If your application requires fast or
 #' frequent access to your data, consider using Amazon S3. For more
 #' information, see [Amazon Simple Storage Service (Amazon
 #' S3)](https://aws.amazon.com/s3/).
-#' 
+#'
 #' You can store any kind of data in any format. There is no maximum limit
 #' on the total amount of data you can store in Glacier.
-#' 
+#'
 #' If you are a first-time user of Glacier, we recommend that you begin by
 #' reading the following sections in the *Amazon S3 Glacier Developer
 #' Guide*:
-#' 
+#'
 #' -   [What is Amazon S3
 #'     Glacier](https://docs.aws.amazon.com/amazonglacier/latest/dev/introduction.html) -
 #'     This section of the Developer Guide describes the underlying data
 #'     model, the operations it supports, and the AWS SDKs that you can use
 #'     to interact with the service.
-#' 
+#'
 #' -   [Getting Started with Amazon S3
 #'     Glacier](https://docs.aws.amazon.com/amazonglacier/latest/dev/amazon-glacier-getting-started.html) -
 #'     The Getting Started section walks you through the process of
@@ -4973,7 +5093,12 @@ fsx <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #'
 #' @rdname glacier
 #' @export
-glacier <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+glacier <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.storage::glacier(
     config = config,
     credentials = credentials,
@@ -5174,7 +5299,12 @@ glacier <- function(config = list(), credentials = list(), endpoint = NULL, regi
 #'
 #' @rdname omics
 #' @export
-omics <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+omics <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.storage::omics(
     config = config,
     credentials = credentials,
@@ -5189,12 +5319,12 @@ omics <- function(config = list(), credentials = list(), endpoint = NULL, region
 #' This is the *Recycle Bin API Reference*. This documentation provides
 #' descriptions and syntax for each of the actions and data types in
 #' Recycle Bin.
-#' 
+#'
 #' Recycle Bin is a resource recovery feature that enables you to restore
 #' accidentally deleted snapshots and EBS-backed AMIs. When using Recycle
 #' Bin, if your resources are deleted, they are retained in the Recycle Bin
 #' for a time period that you specify.
-#' 
+#'
 #' You can restore a resource from the Recycle Bin at any time before its
 #' retention period expires. After you restore a resource from the Recycle
 #' Bin, the resource is removed from the Recycle Bin, and you can then use
@@ -5309,7 +5439,12 @@ omics <- function(config = list(), credentials = list(), endpoint = NULL, region
 #'
 #' @rdname recyclebin
 #' @export
-recyclebin <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+recyclebin <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.storage::recyclebin(
     config = config,
     credentials = credentials,
@@ -5320,7 +5455,7 @@ recyclebin <- function(config = list(), credentials = list(), endpoint = NULL, r
 
 #' Amazon Simple Storage Service
 #'
-#' 
+#'
 #'
 #' @param
 #' config
@@ -5522,7 +5657,12 @@ recyclebin <- function(config = list(), credentials = list(), endpoint = NULL, r
 #'
 #' @rdname s3
 #' @export
-s3 <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+s3 <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.storage::s3(
     config = config,
     credentials = credentials,
@@ -5723,7 +5863,12 @@ s3 <- function(config = list(), credentials = list(), endpoint = NULL, region = 
 #'
 #' @rdname s3control
 #' @export
-s3control <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+s3control <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.storage::s3control(
     config = config,
     credentials = credentials,
@@ -5835,7 +5980,12 @@ s3control <- function(config = list(), credentials = list(), endpoint = NULL, re
 #'
 #' @rdname s3outposts
 #' @export
-s3outposts <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+s3outposts <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.storage::s3outposts(
     config = config,
     credentials = credentials,
@@ -5848,47 +5998,47 @@ s3outposts <- function(config = list(), credentials = list(), endpoint = NULL, r
 #'
 #' @description
 #' Storage Gateway Service
-#' 
+#'
 #' Amazon FSx File Gateway is no longer available to new customers.
 #' Existing customers of FSx File Gateway can continue to use the service
 #' normally. For capabilities similar to FSx File Gateway, visit [this blog
 #' post](https://aws.amazon.com/blogs/storage/switch-your-file-share-access-from-amazon-fsx-file-gateway-to-amazon-fsx-for-windows-file-server/).
-#' 
+#'
 #' Storage Gateway is the service that connects an on-premises software
 #' appliance with cloud-based storage to provide seamless and secure
 #' integration between an organization's on-premises IT environment and the
 #' Amazon Web Services storage infrastructure. The service enables you to
 #' securely upload data to the Amazon Web Services Cloud for cost effective
 #' backup and rapid disaster recovery.
-#' 
+#'
 #' Use the following links to get started using the *Storage Gateway
 #' Service API Reference*:
-#' 
+#'
 #' -   [Storage Gateway required request
 #'     headers](https://docs.aws.amazon.com/storagegateway/#AWSStorageGatewayHTTPRequestsHeaders):
 #'     Describes the required headers that you must send with every POST
 #'     request to Storage Gateway.
-#' 
+#'
 #' -   [Signing
 #'     requests](https://docs.aws.amazon.com/storagegateway/#AWSStorageGatewaySigningRequests):
 #'     Storage Gateway requires that you authenticate every request you
 #'     send; this topic describes how sign such a request.
-#' 
+#'
 #' -   [Error
 #'     responses](https://docs.aws.amazon.com/storagegateway/#APIErrorResponses):
 #'     Provides reference information about Storage Gateway errors.
-#' 
+#'
 #' -   [Operations in Storage
 #'     Gateway](https://docs.aws.amazon.com/storagegateway/latest/APIReference/API_Operations.html):
 #'     Contains detailed descriptions of all Storage Gateway operations,
 #'     their request parameters, response elements, possible errors, and
 #'     examples of requests and responses.
-#' 
+#'
 #' -   [Storage Gateway endpoints and
 #'     quotas](https://docs.aws.amazon.com/general/latest/gr/sg.html):
 #'     Provides a list of each Amazon Web Services Region and the endpoints
 #'     available for use with Storage Gateway.
-#' 
+#'
 #' Storage Gateway resource IDs are in uppercase. When you use these
 #' resource IDs with the Amazon EC2 API, EC2 expects resource IDs in
 #' lowercase. You must change your resource ID to lowercase to use it with
@@ -5896,7 +6046,7 @@ s3outposts <- function(config = list(), credentials = list(), endpoint = NULL, r
 #' be `vol-AA22BB012345DAF670`. When you use this ID with the EC2 API, you
 #' must change it to `vol-aa22bb012345daf670`. Otherwise, the EC2 API might
 #' not behave as expected.
-#' 
+#'
 #' IDs for Storage Gateway volumes and Amazon EBS snapshots created from
 #' gateway volumes are changing to a longer format. Starting in December
 #' 2016, all new volumes and snapshots will be created with a 17-character
@@ -5904,15 +6054,15 @@ s3outposts <- function(config = list(), credentials = list(), endpoint = NULL, r
 #' so you can test your systems with the new format. For more information,
 #' see [Longer EC2 and EBS resource
 #' IDs](https://aws.amazon.com/ec2/faqs/#longer-ids).
-#' 
+#'
 #' For example, a volume Amazon Resource Name (ARN) with the longer volume
 #' ID format looks like the following:
-#' 
+#'
 #' `arn:aws:storagegateway:us-west-2:111122223333:gateway/sgw-12A3456B/volume/vol-1122AABBCCDDEEFFG`.
-#' 
+#'
 #' A snapshot ID with the longer ID format looks like the following:
 #' `snap-78e226633445566ee`.
-#' 
+#'
 #' For more information, see Announcement: Heads-up – Longer Storage
 #' Gateway volume and snapshot IDs coming in 2016.
 #'
@@ -6106,7 +6256,12 @@ s3outposts <- function(config = list(), credentials = list(), endpoint = NULL, r
 #'
 #' @rdname storagegateway
 #' @export
-storagegateway <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+storagegateway <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.storage::storagegateway(
     config = config,
     credentials = credentials,
@@ -6240,7 +6395,12 @@ storagegateway <- function(config = list(), credentials = list(), endpoint = NUL
 #'
 #' @rdname dax
 #' @export
-dax <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+dax <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.database::dax(
     config = config,
     credentials = credentials,
@@ -6406,7 +6566,12 @@ dax <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #'
 #' @rdname docdb
 #' @export
-docdb <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+docdb <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.database::docdb(
     config = config,
     credentials = credentials,
@@ -6419,22 +6584,22 @@ docdb <- function(config = list(), credentials = list(), endpoint = NULL, region
 #'
 #' @description
 #' Amazon DocumentDB elastic clusters
-#' 
+#'
 #' Amazon DocumentDB elastic-clusters support workloads with millions of
 #' reads/writes per second and petabytes of storage capacity. Amazon
 #' DocumentDB elastic clusters also simplify how developers interact with
 #' Amazon DocumentDB elastic-clusters by eliminating the need to choose,
 #' manage or upgrade instances.
-#' 
+#'
 #' Amazon DocumentDB elastic-clusters were created to:
-#' 
+#'
 #' -   provide a solution for customers looking for a database that
 #'     provides virtually limitless scale with rich query capabilities and
 #'     MongoDB API compatibility.
-#' 
+#'
 #' -   give customers higher connection limits, and to reduce downtime from
 #'     patching.
-#' 
+#'
 #' -   continue investing in a cloud-native, elastic, and class leading
 #'     architecture for JSON workloads.
 #'
@@ -6550,7 +6715,12 @@ docdb <- function(config = list(), credentials = list(), endpoint = NULL, region
 #'
 #' @rdname docdbelastic
 #' @export
-docdbelastic <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+docdbelastic <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.database::docdbelastic(
     config = config,
     credentials = credentials,
@@ -6568,14 +6738,14 @@ docdbelastic <- function(config = list(), credentials = list(), endpoint = NULL,
 #' distributed database, so that you don't have to worry about hardware
 #' provisioning, setup and configuration, replication, software patching,
 #' or cluster scaling.
-#' 
+#'
 #' With DynamoDB, you can create database tables that can store and
 #' retrieve any amount of data, and serve any level of request traffic. You
 #' can scale up or scale down your tables' throughput capacity without
 #' downtime or performance degradation, and use the Amazon Web Services
 #' Management Console to monitor resource utilization and performance
 #' metrics.
-#' 
+#'
 #' DynamoDB automatically spreads the data and traffic for your tables over
 #' a sufficient number of servers to handle your throughput and storage
 #' requirements, while maintaining consistent and fast performance. All of
@@ -6765,7 +6935,12 @@ docdbelastic <- function(config = list(), credentials = list(), endpoint = NULL,
 #'
 #' @rdname dynamodb
 #' @export
-dynamodb <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+dynamodb <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.database::dynamodb(
     config = config,
     credentials = credentials,
@@ -6778,7 +6953,7 @@ dynamodb <- function(config = list(), credentials = list(), endpoint = NULL, reg
 #'
 #' @description
 #' Amazon DynamoDB
-#' 
+#'
 #' Amazon DynamoDB Streams provides API actions for accessing streams and
 #' processing stream records. To learn more about application development
 #' with Streams, see [Capturing Table Activity with DynamoDB
@@ -6883,7 +7058,12 @@ dynamodb <- function(config = list(), credentials = list(), endpoint = NULL, reg
 #'
 #' @rdname dynamodbstreams
 #' @export
-dynamodbstreams <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+dynamodbstreams <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.database::dynamodbstreams(
     config = config,
     credentials = credentials,
@@ -6897,13 +7077,13 @@ dynamodbstreams <- function(config = list(), credentials = list(), endpoint = NU
 #' @description
 #' Amazon ElastiCache is a web service that makes it easier to set up,
 #' operate, and scale a distributed cache in the cloud.
-#' 
+#'
 #' With ElastiCache, customers get all of the benefits of a
 #' high-performance, in-memory cache with less of the administrative burden
 #' involved in launching and managing a distributed cache. The service
 #' makes setup, scaling, and cluster failure handling much simpler than in
 #' a self-managed cache deployment.
-#' 
+#'
 #' In addition, through integration with Amazon CloudWatch, customers get
 #' enhanced visibility into the key performance statistics associated with
 #' their cache and can receive alarms if a part of their cache runs hot.
@@ -7087,7 +7267,12 @@ dynamodbstreams <- function(config = list(), credentials = list(), endpoint = NU
 #'
 #' @rdname elasticache
 #' @export
-elasticache <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+elasticache <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.database::elasticache(
     config = config,
     credentials = credentials,
@@ -7106,24 +7291,24 @@ elasticache <- function(config = list(), credentials = list(), endpoint = NULL, 
 #' Web Services Management Console or a few lines of code, you can create
 #' keyspaces and tables in Amazon Keyspaces, without deploying any
 #' infrastructure or installing software.
-#' 
+#'
 #' In addition to supporting Cassandra Query Language (CQL) requests via
 #' open-source Cassandra drivers, Amazon Keyspaces supports data definition
 #' language (DDL) operations to manage keyspaces and tables using the
 #' Amazon Web Services SDK and CLI, as well as infrastructure as code (IaC)
 #' services and tools such as CloudFormation and Terraform. This API
 #' reference describes the supported DDL operations in detail.
-#' 
+#'
 #' For the list of all supported CQL APIs, see [Supported Cassandra APIs,
 #' operations, and data types in Amazon
 #' Keyspaces](https://docs.aws.amazon.com/keyspaces/latest/devguide/cassandra-apis.html)
 #' in the *Amazon Keyspaces Developer Guide*.
-#' 
+#'
 #' To learn how Amazon Keyspaces API actions are recorded with CloudTrail,
 #' see [Amazon Keyspaces information in
 #' CloudTrail](https://docs.aws.amazon.com/keyspaces/latest/devguide/logging-using-cloudtrail.html#service-name-info-in-cloudtrail)
 #' in the *Amazon Keyspaces Developer Guide*.
-#' 
+#'
 #' For more information about Amazon Web Services APIs, for example how to
 #' implement retry logic or how to sign Amazon Web Services API requests,
 #' see [Amazon Web Services
@@ -7242,7 +7427,12 @@ elasticache <- function(config = list(), credentials = list(), endpoint = NULL, 
 #'
 #' @rdname keyspaces
 #' @export
-keyspaces <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+keyspaces <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.database::keyspaces(
     config = config,
     credentials = credentials,
@@ -7255,7 +7445,7 @@ keyspaces <- function(config = list(), credentials = list(), endpoint = NULL, re
 #'
 #' @description
 #' Lake Formation
-#' 
+#'
 #' Defines the public endpoint for the Lake Formation service.
 #'
 #' @param
@@ -7411,7 +7601,12 @@ keyspaces <- function(config = list(), credentials = list(), endpoint = NULL, re
 #'
 #' @rdname lakeformation
 #' @export
-lakeformation <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+lakeformation <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.database::lakeformation(
     config = config,
     credentials = credentials,
@@ -7567,7 +7762,12 @@ lakeformation <- function(config = list(), credentials = list(), endpoint = NULL
 #'
 #' @rdname memorydb
 #' @export
-memorydb <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+memorydb <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.database::memorydb(
     config = config,
     credentials = credentials,
@@ -7590,7 +7790,7 @@ memorydb <- function(config = list(), credentials = list(), endpoint = NULL, reg
 #' connected datasets. Neptune powers graph use cases such as
 #' recommendation engines, fraud detection, knowledge graphs, drug
 #' discovery, and network security.
-#' 
+#'
 #' This interface reference for Amazon Neptune contains documentation for a
 #' programming or command line interface you can use to manage Amazon
 #' Neptune. Note that Amazon Neptune is asynchronous, which means that some
@@ -7763,7 +7963,12 @@ memorydb <- function(config = list(), credentials = list(), endpoint = NULL, reg
 #'
 #' @rdname neptune
 #' @export
-neptune <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+neptune <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.database::neptune(
     config = config,
     credentials = credentials,
@@ -7776,7 +7981,7 @@ neptune <- function(config = list(), credentials = list(), endpoint = NULL, regi
 #'
 #' @description
 #' Neptune Data API
-#' 
+#'
 #' The Amazon Neptune data API provides SDK support for more than 40 of
 #' Neptune's data operations, including data loading, query execution, data
 #' inquiry, and machine learning. It supports the Gremlin and openCypher
@@ -7920,7 +8125,12 @@ neptune <- function(config = list(), credentials = list(), endpoint = NULL, regi
 #'
 #' @rdname neptunedata
 #' @export
-neptunedata <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+neptunedata <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.database::neptunedata(
     config = config,
     credentials = credentials,
@@ -8047,7 +8257,12 @@ neptunedata <- function(config = list(), credentials = list(), endpoint = NULL, 
 #'
 #' @rdname qldb
 #' @export
-qldb <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+qldb <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.database::qldb(
     config = config,
     credentials = credentials,
@@ -8060,10 +8275,10 @@ qldb <- function(config = list(), credentials = list(), endpoint = NULL, region 
 #'
 #' @description
 #' The transactional data APIs for Amazon QLDB
-#' 
+#'
 #' Instead of interacting directly with this API, we recommend using the
 #' QLDB driver or the QLDB shell to execute data transactions on a ledger.
-#' 
+#'
 #' -   If you are working with an AWS SDK, use the QLDB driver. The driver
 #'     provides a high-level abstraction layer above this *QLDB Session*
 #'     data plane and manages `send_command`
@@ -8071,7 +8286,7 @@ qldb <- function(config = list(), credentials = list(), endpoint = NULL, region 
 #'     programming languages, see [Getting started with the
 #'     driver](https://docs.aws.amazon.com/qldb/latest/developerguide/getting-started-driver.html)
 #'     in the *Amazon QLDB Developer Guide*.
-#' 
+#'
 #' -   If you are working with the AWS Command Line Interface (AWS CLI),
 #'     use the QLDB shell. The shell is a command line interface that uses
 #'     the QLDB driver to interact with a ledger. For information, see
@@ -8172,7 +8387,12 @@ qldb <- function(config = list(), credentials = list(), endpoint = NULL, region 
 #'
 #' @rdname qldbsession
 #' @export
-qldbsession <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+qldbsession <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.database::qldbsession(
     config = config,
     credentials = credentials,
@@ -8190,7 +8410,7 @@ qldbsession <- function(config = list(), credentials = list(), endpoint = NULL, 
 #' industry-standard relational database and manages common database
 #' administration tasks, freeing up developers to focus on what makes their
 #' applications and businesses unique.
-#' 
+#'
 #' Amazon RDS gives you access to the capabilities of a MySQL, MariaDB,
 #' PostgreSQL, Microsoft SQL Server, Oracle, Db2, or Amazon Aurora database
 #' server. These capabilities mean that the code, applications, and tools
@@ -8201,7 +8421,7 @@ qldbsession <- function(config = list(), credentials = list(), endpoint = NULL, 
 #' storage capacity to meet your application's demand. As with all Amazon
 #' Web Services, there are no up-front investments, and you pay only for
 #' the resources you use.
-#' 
+#'
 #' This interface reference for Amazon RDS contains documentation for a
 #' programming or command line interface you can use to manage Amazon RDS.
 #' Amazon RDS is asynchronous, which means that some interfaces might
@@ -8211,26 +8431,26 @@ qldbsession <- function(config = list(), credentials = list(), endpoint = NULL, 
 #' next instance reboot, or during the maintenance window. The reference
 #' structure is as follows, and we list following some related topics from
 #' the user guide.
-#' 
+#'
 #' **Amazon RDS API Reference**
-#' 
+#'
 #' -   For the alphabetical list of API actions, see [API
 #'     Actions](https://docs.aws.amazon.com/AmazonRDS/latest/APIReference/API_Operations.html).
-#' 
+#'
 #' -   For the alphabetical list of data types, see [Data
 #'     Types](https://docs.aws.amazon.com/AmazonRDS/latest/APIReference/API_Types.html).
-#' 
+#'
 #' -   For a list of common query parameters, see [Common
 #'     Parameters](https://docs.aws.amazon.com/AmazonRDS/latest/APIReference/CommonParameters.html).
-#' 
+#'
 #' -   For descriptions of the error codes, see [Common
 #'     Errors](https://docs.aws.amazon.com/AmazonRDS/latest/APIReference/CommonErrors.html).
-#' 
+#'
 #' **Amazon RDS User Guide**
-#' 
+#'
 #' -   For a summary of the Amazon RDS interfaces, see [Available RDS
 #'     Interfaces](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Welcome.html#Welcome.Interfaces).
-#' 
+#'
 #' -   For more information about how to use the Query API, see [Using the
 #'     Query
 #'     API](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Using_the_Query_API.html).
@@ -8495,7 +8715,12 @@ qldbsession <- function(config = list(), credentials = list(), endpoint = NULL, 
 #'
 #' @rdname rds
 #' @export
-rds <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+rds <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.database::rds(
     config = config,
     credentials = credentials,
@@ -8508,17 +8733,17 @@ rds <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #'
 #' @description
 #' RDS Data API
-#' 
+#'
 #' Amazon RDS provides an HTTP endpoint to run SQL statements on an Amazon
 #' Aurora DB cluster. To run these statements, you use the RDS Data API
 #' (Data API).
-#' 
+#'
 #' Data API is available with the following types of Aurora databases:
-#' 
+#'
 #' -   Aurora PostgreSQL - Serverless v2, provisioned, and Serverless v1
-#' 
+#'
 #' -   Aurora MySQL - Serverless v2, provisioned, and Serverless v1
-#' 
+#'
 #' For more information about the Data API, see [Using RDS Data
 #' API](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/data-api.html)
 #' in the *Amazon Aurora User Guide*.
@@ -8622,7 +8847,12 @@ rds <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #'
 #' @rdname rdsdataservice
 #' @export
-rdsdataservice <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+rdsdataservice <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.database::rdsdataservice(
     config = config,
     credentials = credentials,
@@ -8635,7 +8865,7 @@ rdsdataservice <- function(config = list(), credentials = list(), endpoint = NUL
 #'
 #' @description
 #' **Overview**
-#' 
+#'
 #' This is an interface reference for Amazon Redshift. It contains
 #' documentation for one of the programming or command line interfaces you
 #' can use to manage Amazon Redshift clusters. Note that Amazon Redshift is
@@ -8647,17 +8877,17 @@ rdsdataservice <- function(config = list(), credentials = list(), endpoint = NUL
 #' Amazon Redshift cluster management interfaces, go to [Using the Amazon
 #' Redshift Management
 #' Interfaces](https://docs.aws.amazon.com/redshift/latest/mgmt/using-aws-sdk.html).
-#' 
+#'
 #' Amazon Redshift manages all the work of setting up, operating, and
 #' scaling a data warehouse: provisioning capacity, monitoring and backing
 #' up the cluster, and applying patches and upgrades to the Amazon Redshift
 #' engine. You can focus on using your data to acquire new insights for
 #' your business and customers.
-#' 
+#'
 #' If you are a first-time user of Amazon Redshift, we recommend that you
 #' begin by reading the [Amazon Redshift Getting Started
 #' Guide](https://docs.aws.amazon.com/redshift/latest/gsg/getting-started.html).
-#' 
+#'
 #' If you are a database developer, the [Amazon Redshift Database Developer
 #' Guide](https://docs.aws.amazon.com/redshift/latest/dg/welcome.html)
 #' explains how to design, build, query, and maintain the databases that
@@ -8895,7 +9125,12 @@ rdsdataservice <- function(config = list(), credentials = list(), endpoint = NUL
 #'
 #' @rdname redshift
 #' @export
-redshift <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+redshift <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.database::redshift(
     config = config,
     credentials = credentials,
@@ -8910,7 +9145,7 @@ redshift <- function(config = list(), credentials = list(), endpoint = NULL, reg
 #' You can use the Amazon Redshift Data API to run queries on Amazon
 #' Redshift tables. You can run SQL statements, which are committed if the
 #' statement succeeds.
-#' 
+#'
 #' For more information about the Amazon Redshift Data API and CLI usage
 #' examples, see [Using the Amazon Redshift Data
 #' API](https://docs.aws.amazon.com/redshift/latest/mgmt/data-api.html) in
@@ -9020,7 +9255,12 @@ redshift <- function(config = list(), credentials = list(), endpoint = NULL, reg
 #'
 #' @rdname redshiftdataapiservice
 #' @export
-redshiftdataapiservice <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+redshiftdataapiservice <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.database::redshiftdataapiservice(
     config = config,
     credentials = credentials,
@@ -9035,7 +9275,7 @@ redshiftdataapiservice <- function(config = list(), credentials = list(), endpoi
 #' This is an interface reference for Amazon Redshift Serverless. It
 #' contains documentation for one of the programming or command line
 #' interfaces you can use to manage Amazon Redshift Serverless.
-#' 
+#'
 #' Amazon Redshift Serverless automatically provisions data warehouse
 #' capacity and intelligently scales the underlying resources based on
 #' workload demands. Amazon Redshift Serverless adjusts capacity in seconds
@@ -9043,7 +9283,7 @@ redshiftdataapiservice <- function(config = list(), credentials = list(), endpoi
 #' even the most demanding and volatile workloads. Amazon Redshift
 #' Serverless lets you focus on using your data to acquire new insights for
 #' your business and customers.
-#' 
+#'
 #' To learn more about Amazon Redshift Serverless, see [What is Amazon
 #' Redshift
 #' Serverless?](https://docs.aws.amazon.com/redshift/latest/mgmt/serverless-whatis.html).
@@ -9197,7 +9437,12 @@ redshiftdataapiservice <- function(config = list(), credentials = list(), endpoi
 #'
 #' @rdname redshiftserverless
 #' @export
-redshiftserverless <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+redshiftserverless <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.database::redshiftserverless(
     config = config,
     credentials = credentials,
@@ -9214,7 +9459,7 @@ redshiftserverless <- function(config = list(), credentials = list(), endpoint =
 #' effort associated with building and operating a web-scale database,
 #' SimpleDB provides developers the freedom to focus on application
 #' development.
-#' 
+#'
 #' A traditional, clustered relational database requires a sizable upfront
 #' capital outlay, is complex to design, and often requires extensive and
 #' repetitive database administration. Amazon SimpleDB is dramatically
@@ -9224,7 +9469,7 @@ redshiftserverless <- function(config = list(), credentials = list(), endpoint =
 #' performance tuning. Developers gain access to this functionality within
 #' Amazon's proven computing environment, are able to scale instantly, and
 #' pay only for what they use.
-#' 
+#'
 #' Visit
 #' [http://aws.amazon.com/simpledb/](https://aws.amazon.com/simpledb/) for
 #' more information.
@@ -9332,7 +9577,12 @@ redshiftserverless <- function(config = list(), credentials = list(), endpoint =
 #'
 #' @rdname simpledb
 #' @export
-simpledb <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+simpledb <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.database::simpledb(
     config = config,
     credentials = credentials,
@@ -9454,7 +9704,12 @@ simpledb <- function(config = list(), credentials = list(), endpoint = NULL, reg
 #'
 #' @rdname timestreamquery
 #' @export
-timestreamquery <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+timestreamquery <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.database::timestreamquery(
     config = config,
     credentials = credentials,
@@ -9474,7 +9729,7 @@ timestreamquery <- function(config = list(), credentials = list(), endpoint = NU
 #' equipment management and maintenance. You can also store and analyze log
 #' data and metrics to improve the performance and availability of your
 #' applications.
-#' 
+#'
 #' Timestream is built from the ground up to effectively ingest, process,
 #' and store time-series data. It organizes data to optimize query
 #' processing. It automatically scales based on the volume of data ingested
@@ -9595,7 +9850,12 @@ timestreamquery <- function(config = list(), credentials = list(), endpoint = NU
 #'
 #' @rdname timestreamwrite
 #' @export
-timestreamwrite <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+timestreamwrite <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.database::timestreamwrite(
     config = config,
     credentials = credentials,
@@ -9830,7 +10090,12 @@ timestreamwrite <- function(config = list(), credentials = list(), endpoint = NU
 #'
 #' @rdname apigateway
 #' @export
-apigateway <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+apigateway <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.networking::apigateway(
     config = config,
     credentials = credentials,
@@ -9946,7 +10211,12 @@ apigateway <- function(config = list(), credentials = list(), endpoint = NULL, r
 #'
 #' @rdname apigatewaymanagementapi
 #' @export
-apigatewaymanagementapi <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+apigatewaymanagementapi <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.networking::apigatewaymanagementapi(
     config = config,
     credentials = credentials,
@@ -10125,7 +10395,12 @@ apigatewaymanagementapi <- function(config = list(), credentials = list(), endpo
 #'
 #' @rdname apigatewayv2
 #' @export
-apigatewayv2 <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+apigatewayv2 <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.networking::apigatewayv2(
     config = config,
     credentials = credentials,
@@ -10270,7 +10545,12 @@ apigatewayv2 <- function(config = list(), credentials = list(), endpoint = NULL,
 #'
 #' @rdname appfabric
 #' @export
-appfabric <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+appfabric <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.networking::appfabric(
     config = config,
     credentials = credentials,
@@ -10286,12 +10566,12 @@ appfabric <- function(config = list(), credentials = list(), endpoint = NULL, re
 #' to monitor and control microservices. App Mesh standardizes how your
 #' microservices communicate, giving you end-to-end visibility and helping
 #' to ensure high availability for your applications.
-#' 
+#'
 #' App Mesh gives you consistent visibility and network traffic controls
 #' for every microservice in an application. You can use App Mesh with
 #' Amazon Web Services Fargate, Amazon ECS, Amazon EKS, Kubernetes on
 #' Amazon Web Services, and Amazon EC2.
-#' 
+#'
 #' App Mesh supports microservice applications that use service discovery
 #' naming for their components. For more information about service
 #' discovery on Amazon ECS, see [Service
@@ -10433,7 +10713,12 @@ appfabric <- function(config = list(), credentials = list(), endpoint = NULL, re
 #'
 #' @rdname appmesh
 #' @export
-appmesh <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+appmesh <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.networking::appmesh(
     config = config,
     credentials = credentials,
@@ -10447,14 +10732,14 @@ appmesh <- function(config = list(), credentials = list(), endpoint = NULL, regi
 #' @description
 #' Welcome to the API Reference Guide for zonal shift and zonal autoshift
 #' in Amazon Route 53 Application Recovery Controller (Route 53 ARC).
-#' 
+#'
 #' You can start a zonal shift to move traffic for a load balancer resource
 #' away from an Availability Zone to help your application recover quickly
 #' from an impairment in an Availability Zone. For example, you can recover
 #' your application from a developer's bad code deployment or from an
 #' Amazon Web Services infrastructure failure in a single Availability
 #' Zone.
-#' 
+#'
 #' You can also configure zonal autoshift for supported load balancer
 #' resources. Zonal autoshift is a capability in Route 53 ARC where you
 #' authorize Amazon Web Services to shift away application resource traffic
@@ -10462,7 +10747,7 @@ appmesh <- function(config = list(), credentials = list(), endpoint = NULL, regi
 #' your time to recovery. Amazon Web Services starts an autoshift when
 #' internal telemetry indicates that there is an Availability Zone
 #' impairment that could potentially impact customers.
-#' 
+#'
 #' To help make sure that zonal autoshift is safe for your application, you
 #' must also configure practice runs when you enable zonal autoshift for a
 #' resource. Practice runs start weekly zonal shifts for a resource, to
@@ -10471,7 +10756,7 @@ appmesh <- function(config = list(), credentials = list(), endpoint = NULL, regi
 #' capacity in all the Availability Zones in an Amazon Web Services Region
 #' for your application to continue to operate normally when traffic for a
 #' resource is shifted away from one Availability Zone.
-#' 
+#'
 #' Before you configure practice runs or enable zonal autoshift, we
 #' strongly recommend that you prescale your application resource capacity
 #' in all Availability Zones in the Region where your application resources
@@ -10480,17 +10765,17 @@ appmesh <- function(config = list(), credentials = list(), endpoint = NULL, regi
 #' independently, and does not wait for auto scaling actions to complete.
 #' Relying on auto scaling, instead of pre-scaling, can result in loss of
 #' availability.
-#' 
+#'
 #' If you use auto scaling to handle regular cycles of traffic, we strongly
 #' recommend that you configure the minimum capacity of your auto scaling
 #' to continue operating normally with the loss of an Availability Zone.
-#' 
+#'
 #' Be aware that Route 53 ARC does not inspect the health of individual
 #' resources. Amazon Web Services only starts an autoshift when Amazon Web
 #' Services telemetry detects that there is an Availability Zone impairment
 #' that could potentially impact customers. In some cases, resources might
 #' be shifted away that are not experiencing impact.
-#' 
+#'
 #' For more information about using zonal shift and zonal autoshift, see
 #' the [Amazon Route 53 Application Recovery Controller Developer
 #' Guide](https://docs.aws.amazon.com/r53recovery/latest/dg/what-is-route53-recovery.html).
@@ -10601,7 +10886,12 @@ appmesh <- function(config = list(), credentials = list(), endpoint = NULL, regi
 #'
 #' @rdname arczonalshift
 #' @export
-arczonalshift <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+arczonalshift <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.networking::arczonalshift(
     config = config,
     credentials = credentials,
@@ -10614,19 +10904,19 @@ arczonalshift <- function(config = list(), credentials = list(), endpoint = NULL
 #'
 #' @description
 #' Backup gateway
-#' 
+#'
 #' Backup gateway connects Backup to your hypervisor, so you can create,
 #' store, and restore backups of your virtual machines (VMs) anywhere,
 #' whether on-premises or in the VMware Cloud (VMC) on Amazon Web Services.
-#' 
+#'
 #' Add on-premises resources by connecting to a hypervisor through a
 #' gateway. Backup will automatically discover the resources in your
 #' hypervisor.
-#' 
+#'
 #' Use Backup to assign virtual or on-premises resources to a backup plan,
 #' or run on-demand backups. Once you have backed up your resources, you
 #' can view them and restore them like any resource supported by Backup.
-#' 
+#'
 #' To download the Amazon Web Services software to get started, navigate to
 #' the Backup console, choose **Gateways**, then choose **Create gateway**.
 #'
@@ -10748,7 +11038,12 @@ arczonalshift <- function(config = list(), credentials = list(), endpoint = NULL
 #'
 #' @rdname backupgateway
 #' @export
-backupgateway <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+backupgateway <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.networking::backupgateway(
     config = config,
     credentials = credentials,
@@ -10981,7 +11276,12 @@ backupgateway <- function(config = list(), credentials = list(), endpoint = NULL
 #'
 #' @rdname cloudfront
 #' @export
-cloudfront <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+cloudfront <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.networking::cloudfront(
     config = config,
     credentials = credentials,
@@ -11095,7 +11395,12 @@ cloudfront <- function(config = list(), credentials = list(), endpoint = NULL, r
 #'
 #' @rdname cloudfrontkeyvaluestore
 #' @export
-cloudfrontkeyvaluestore <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+cloudfrontkeyvaluestore <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.networking::cloudfrontkeyvaluestore(
     config = config,
     credentials = credentials,
@@ -11274,7 +11579,12 @@ cloudfrontkeyvaluestore <- function(config = list(), credentials = list(), endpo
 #'
 #' @rdname directconnect
 #' @export
-directconnect <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+directconnect <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.networking::directconnect(
     config = config,
     credentials = credentials,
@@ -11295,22 +11605,22 @@ directconnect <- function(config = list(), credentials = list(), endpoint = NULL
 #' protocol and port number for connections from clients to the load
 #' balancer and a protocol and port number for connections from the load
 #' balancer to the instances.
-#' 
+#'
 #' Elastic Load Balancing supports three types of load balancers:
 #' Application Load Balancers, Network Load Balancers, and Classic Load
 #' Balancers. You can select a load balancer based on your application
 #' needs. For more information, see the [Elastic Load Balancing User
 #' Guide](https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/).
-#' 
+#'
 #' This reference covers the 2012-06-01 API, which supports Classic Load
 #' Balancers. The 2015-12-01 API supports Application Load Balancers and
 #' Network Load Balancers.
-#' 
+#'
 #' To get started, create a load balancer with one or more listeners using
 #' `create_load_balancer`. Register your
 #' instances with the load balancer using
 #' `register_instances_with_load_balancer`.
-#' 
+#'
 #' All Elastic Load Balancing operations are *idempotent*, which means that
 #' they complete at most one time. If you repeat an operation, it succeeds
 #' with a 200 OK response code.
@@ -11450,7 +11760,12 @@ directconnect <- function(config = list(), credentials = list(), endpoint = NULL
 #'
 #' @rdname elb
 #' @export
-elb <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+elb <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.networking::elb(
     config = config,
     credentials = credentials,
@@ -11472,23 +11787,23 @@ elb <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #' configure a target group with a protocol and port number for connections
 #' from the load balancer to the targets, and with health check settings to
 #' be used when checking the health status of the targets.
-#' 
+#'
 #' Elastic Load Balancing supports the following types of load balancers:
 #' Application Load Balancers, Network Load Balancers, Gateway Load
 #' Balancers, and Classic Load Balancers. This reference covers the
 #' following load balancer types:
-#' 
+#'
 #' -   Application Load Balancer - Operates at the application layer
 #'     (layer 7) and supports HTTP and HTTPS.
-#' 
+#'
 #' -   Network Load Balancer - Operates at the transport layer (layer 4)
 #'     and supports TCP, TLS, and UDP.
-#' 
+#'
 #' -   Gateway Load Balancer - Operates at the network layer (layer 3).
-#' 
+#'
 #' For more information, see the [Elastic Load Balancing User
 #' Guide](https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/).
-#' 
+#'
 #' All Elastic Load Balancing operations are idempotent, which means that
 #' they complete at most one time. If you repeat an operation, it succeeds.
 #'
@@ -11648,7 +11963,12 @@ elb <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #'
 #' @rdname elbv2
 #' @export
-elbv2 <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+elbv2 <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.networking::elbv2(
     config = config,
     credentials = credentials,
@@ -11661,34 +11981,34 @@ elbv2 <- function(config = list(), credentials = list(), endpoint = NULL, region
 #'
 #' @description
 #' Global Accelerator
-#' 
+#'
 #' This is the *Global Accelerator API Reference*. This guide is for
 #' developers who need detailed information about Global Accelerator API
 #' actions, data types, and errors. For more information about Global
 #' Accelerator features, see the [Global Accelerator Developer
 #' Guide](https://docs.aws.amazon.com/global-accelerator/latest/dg/what-is-global-accelerator.html).
-#' 
+#'
 #' Global Accelerator is a service in which you create *accelerators* to
 #' improve the performance of your applications for local and global users.
 #' Depending on the type of accelerator you choose, you can gain additional
 #' benefits.
-#' 
+#'
 #' -   By using a standard accelerator, you can improve availability of
 #'     your internet applications that are used by a global audience. With
 #'     a standard accelerator, Global Accelerator directs traffic to
 #'     optimal endpoints over the Amazon Web Services global network.
-#' 
+#'
 #' -   For other scenarios, you might choose a custom routing accelerator.
 #'     With a custom routing accelerator, you can use application logic to
 #'     directly map one or more users to a specific endpoint among many
 #'     endpoints.
-#' 
+#'
 #' Global Accelerator is a global service that supports endpoints in
 #' multiple Amazon Web Services Regions but you must specify the US West
 #' (Oregon) Region to create, update, or otherwise work with accelerators.
 #' That is, for example, specify `--region us-west-2` on Amazon Web
 #' Services CLI commands.
-#' 
+#'
 #' By default, Global Accelerator provides you with static IP addresses
 #' that you associate with your accelerator. The static IP addresses are
 #' anycast from the Amazon Web Services edge network. For IPv4, Global
@@ -11698,7 +12018,7 @@ elbv2 <- function(config = list(), credentials = list(), endpoint = NULL, region
 #' IPv4, instead of using the addresses that Global Accelerator provides,
 #' you can configure these entry points to be IPv4 addresses from your own
 #' IP address ranges that you bring to Global Accelerator (BYOIP).
-#' 
+#'
 #' For a standard accelerator, they distribute incoming application traffic
 #' across multiple endpoint resources in multiple Amazon Web Services
 #' Regions , which increases the availability of your applications.
@@ -11708,7 +12028,7 @@ elbv2 <- function(config = list(), credentials = list(), endpoint = NULL, region
 #' Amazon Web Services Regions. For custom routing accelerators, you map
 #' traffic that arrives to the static IP addresses to specific Amazon EC2
 #' servers in endpoints that are virtual private cloud (VPC) subnets.
-#' 
+#'
 #' The static IP addresses remain assigned to your accelerator for as long
 #' as it exists, even if you disable the accelerator and it no longer
 #' accepts or routes traffic. However, when you *delete* an accelerator,
@@ -11718,14 +12038,14 @@ elbv2 <- function(config = list(), credentials = list(), endpoint = NULL, region
 #' have permissions to delete an accelerator. For more information, see
 #' [Tag-based
 #' policies](https://docs.aws.amazon.com/global-accelerator/latest/dg/).
-#' 
+#'
 #' For standard accelerators, Global Accelerator uses the Amazon Web
 #' Services global network to route traffic to the optimal regional
 #' endpoint based on health, client location, and policies that you
 #' configure. The service reacts instantly to changes in health or
 #' configuration to ensure that internet traffic from clients is always
 #' directed to healthy endpoints.
-#' 
+#'
 #' For more information about understanding and using Global Accelerator,
 #' see the [Global Accelerator Developer
 #' Guide](https://docs.aws.amazon.com/global-accelerator/latest/dg/what-is-global-accelerator.html).
@@ -11879,7 +12199,12 @@ elbv2 <- function(config = list(), credentials = list(), endpoint = NULL, region
 #'
 #' @rdname globalaccelerator
 #' @export
-globalaccelerator <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+globalaccelerator <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.networking::globalaccelerator(
     config = config,
     credentials = credentials,
@@ -11894,34 +12219,34 @@ globalaccelerator <- function(config = list(), credentials = list(), endpoint = 
 #' This is the API Reference for Network Firewall. This guide is for
 #' developers who need detailed information about the Network Firewall API
 #' actions, data types, and errors.
-#' 
+#'
 #' The REST API requires you to handle connection details, such as
 #' calculating signatures, handling request retries, and error handling.
 #' For general information about using the Amazon Web Services REST APIs,
 #' see [Amazon Web Services
 #' APIs](https://docs.aws.amazon.com/general/latest/gr/).
-#' 
+#'
 #' To view the complete list of Amazon Web Services Regions where Network
 #' Firewall is available, see [Service endpoints and
 #' quotas](https://docs.aws.amazon.com/general/latest/gr/network-firewall.html)
 #' in the *Amazon Web Services General Reference*.
-#' 
+#'
 #' To access Network Firewall using the IPv4 REST API endpoint:
 #' `https://network-firewall.<region>.amazonaws.com `
-#' 
+#'
 #' To access Network Firewall using the Dualstack (IPv4 and IPv6) REST API
 #' endpoint: `https://network-firewall.<region>.aws.api `
-#' 
+#'
 #' Alternatively, you can use one of the Amazon Web Services SDKs to access
 #' an API that's tailored to the programming language or platform that
 #' you're using. For more information, see [Amazon Web Services
 #' SDKs](https://aws.amazon.com/developer/tools/#SDKs).
-#' 
+#'
 #' For descriptions of Network Firewall features, including and
 #' step-by-step instructions on how to use them through the Network
 #' Firewall console, see the [Network Firewall Developer
 #' Guide](https://docs.aws.amazon.com/network-firewall/latest/developerguide/).
-#' 
+#'
 #' Network Firewall is a stateful, managed, network firewall and intrusion
 #' detection and prevention service for Amazon Virtual Private Cloud
 #' (Amazon VPC). With Network Firewall, you can filter traffic at the
@@ -11929,48 +12254,48 @@ globalaccelerator <- function(config = list(), credentials = list(), endpoint = 
 #' coming from an internet gateway, NAT gateway, or over VPN or Direct
 #' Connect. Network Firewall uses rules that are compatible with Suricata,
 #' a free, open source network analysis and threat detection engine.
-#' 
+#'
 #' You can use Network Firewall to monitor and protect your VPC traffic in
 #' a number of ways. The following are just a few examples:
-#' 
+#'
 #' -   Allow domains or IP addresses for known Amazon Web Services service
 #'     endpoints, such as Amazon S3, and block all other forms of traffic.
-#' 
+#'
 #' -   Use custom lists of known bad domains to limit the types of domain
 #'     names that your applications can access.
-#' 
+#'
 #' -   Perform deep packet inspection on traffic entering or leaving your
 #'     VPC.
-#' 
+#'
 #' -   Use stateful protocol detection to filter protocols like HTTPS,
 #'     regardless of the port used.
-#' 
+#'
 #' To enable Network Firewall for your VPCs, you perform steps in both
 #' Amazon VPC and in Network Firewall. For information about using Amazon
 #' VPC, see [Amazon VPC User
 #' Guide](https://docs.aws.amazon.com/vpc/latest/userguide/).
-#' 
+#'
 #' To start using Network Firewall, do the following:
-#' 
+#'
 #' 1.  (Optional) If you don't already have a VPC that you want to protect,
 #'     create it in Amazon VPC.
-#' 
+#'
 #' 2.  In Amazon VPC, in each Availability Zone where you want to have a
 #'     firewall endpoint, create a subnet for the sole use of Network
 #'     Firewall.
-#' 
+#'
 #' 3.  In Network Firewall, create stateless and stateful rule groups, to
 #'     define the components of the network traffic filtering behavior that
 #'     you want your firewall to have.
-#' 
+#'
 #' 4.  In Network Firewall, create a firewall policy that uses your rule
 #'     groups and specifies additional default traffic filtering behavior.
-#' 
+#'
 #' 5.  In Network Firewall, create a firewall and specify your new firewall
 #'     policy and VPC subnets. Network Firewall creates a firewall endpoint
 #'     in each subnet that you specify, with the behavior that's defined in
 #'     the firewall policy.
-#' 
+#'
 #' 6.  In Amazon VPC, use ingress routing enhancements to route traffic
 #'     through the new firewall endpoints.
 #'
@@ -12103,7 +12428,12 @@ globalaccelerator <- function(config = list(), credentials = list(), endpoint = 
 #'
 #' @rdname networkfirewall
 #' @export
-networkfirewall <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+networkfirewall <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.networking::networkfirewall(
     config = config,
     credentials = credentials,
@@ -12300,7 +12630,12 @@ networkfirewall <- function(config = list(), credentials = list(), endpoint = NU
 #'
 #' @rdname networkmanager
 #' @export
-networkmanager <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+networkmanager <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.networking::networkmanager(
     config = config,
     credentials = credentials,
@@ -12314,22 +12649,22 @@ networkmanager <- function(config = list(), credentials = list(), endpoint = NUL
 #' @description
 #' Amazon Route 53 is a highly available and scalable Domain Name System
 #' (DNS) web service.
-#' 
+#'
 #' You can use Route 53 to:
-#' 
+#'
 #' -   Register domain names.
-#' 
+#'
 #'     For more information, see [How domain registration
 #'     works](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/welcome-domain-registration.html).
-#' 
+#'
 #' -   Route internet traffic to the resources for your domain
-#' 
+#'
 #'     For more information, see [How internet traffic is routed to your
 #'     website or web
 #'     application](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/welcome-dns-service.html).
-#' 
+#'
 #' -   Check the health of your resources.
-#' 
+#'
 #'     For more information, see [How Route 53 checks the health of your
 #'     resources](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/welcome-health-checks.html).
 #'
@@ -12503,7 +12838,12 @@ networkmanager <- function(config = list(), credentials = list(), endpoint = NUL
 #'
 #' @rdname route53
 #' @export
-route53 <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+route53 <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.networking::route53(
     config = config,
     credentials = credentials,
@@ -12645,7 +12985,12 @@ route53 <- function(config = list(), credentials = list(), endpoint = NULL, regi
 #'
 #' @rdname route53domains
 #' @export
-route53domains <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+route53domains <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.networking::route53domains(
     config = config,
     credentials = credentials,
@@ -12769,7 +13114,12 @@ route53domains <- function(config = list(), credentials = list(), endpoint = NUL
 #'
 #' @rdname route53profiles
 #' @export
-route53profiles <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+route53profiles <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.networking::route53profiles(
     config = config,
     credentials = credentials,
@@ -12783,7 +13133,7 @@ route53profiles <- function(config = list(), credentials = list(), endpoint = NU
 #' @description
 #' Welcome to the Routing Control (Recovery Cluster) API Reference Guide
 #' for Amazon Route 53 Application Recovery Controller.
-#' 
+#'
 #' With Route 53 ARC, you can use routing control with extreme reliability
 #' to recover applications by rerouting traffic across Availability Zones
 #' or Amazon Web Services Regions. Routing controls are simple on/off
@@ -12793,7 +13143,7 @@ route53profiles <- function(config = list(), credentials = list(), endpoint = NU
 #' implement failover, you set one routing control to ON and another one to
 #' OFF, to reroute traffic from one Availability Zone or Amazon Web
 #' Services Region to another.
-#' 
+#'
 #' *Be aware that you must specify a Regional endpoint for a cluster when
 #' you work with API cluster operations to get or update routing control
 #' states in Route 53 ARC.* In addition, you must specify the US West
@@ -12802,22 +13152,22 @@ route53profiles <- function(config = list(), credentials = list(), endpoint = NU
 #' information, see [Get and update routing control states using the
 #' API](https://docs.aws.amazon.com/r53recovery/latest/dg/routing-control.update.api.html)
 #' in the Amazon Route 53 Application Recovery Controller Developer Guide.
-#' 
+#'
 #' This API guide includes information about the API operations for how to
 #' get and update routing control states in Route 53 ARC. To work with
 #' routing control in Route 53 ARC, you must first create the required
 #' components (clusters, control panels, and routing controls) using the
 #' recovery cluster configuration API.
-#' 
+#'
 #' For more information about working with routing control in Route 53 ARC,
 #' see the following:
-#' 
+#'
 #' -   Create clusters, control panels, and routing controls by using API
 #'     operations. For more information, see the [Recovery Control
 #'     Configuration API Reference Guide for Amazon Route 53 Application
 #'     Recovery
 #'     Controller](https://docs.aws.amazon.com/recovery-cluster/latest/api/).
-#' 
+#'
 #' -   Learn about the components in recovery control, including clusters,
 #'     routing controls, and control panels, and how to work with Route 53
 #'     ARC in the Amazon Web Services console. For more information, see
@@ -12825,14 +13175,14 @@ route53profiles <- function(config = list(), credentials = list(), endpoint = NU
 #'     components](https://docs.aws.amazon.com/r53recovery/latest/dg/introduction-components-zonal.html#introduction-components-routing)
 #'     in the Amazon Route 53 Application Recovery Controller Developer
 #'     Guide.
-#' 
+#'
 #' -   Route 53 ARC also provides readiness checks that continually audit
 #'     resources to help make sure that your applications are scaled and
 #'     ready to handle failover traffic. For more information about the
 #'     related API operations, see the [Recovery Readiness API Reference
 #'     Guide for Amazon Route 53 Application Recovery
 #'     Controller](https://docs.aws.amazon.com/recovery-readiness/latest/api/).
-#' 
+#'
 #' -   For more information about creating resilient applications and
 #'     preparing for recovery readiness with Route 53 ARC, see the [Amazon
 #'     Route 53 Application Recovery Controller Developer
@@ -12935,7 +13285,12 @@ route53profiles <- function(config = list(), credentials = list(), endpoint = NU
 #'
 #' @rdname route53recoverycluster
 #' @export
-route53recoverycluster <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+route53recoverycluster <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.networking::route53recoverycluster(
     config = config,
     credentials = credentials,
@@ -13067,7 +13422,12 @@ route53recoverycluster <- function(config = list(), credentials = list(), endpoi
 #'
 #' @rdname route53recoverycontrolconfig
 #' @export
-route53recoverycontrolconfig <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+route53recoverycontrolconfig <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.networking::route53recoverycontrolconfig(
     config = config,
     credentials = credentials,
@@ -13206,7 +13566,12 @@ route53recoverycontrolconfig <- function(config = list(), credentials = list(), 
 #'
 #' @rdname route53recoveryreadiness
 #' @export
-route53recoveryreadiness <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+route53recoveryreadiness <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.networking::route53recoveryreadiness(
     config = config,
     credentials = credentials,
@@ -13224,13 +13589,13 @@ route53recoveryreadiness <- function(config = list(), credentials = list(), endp
 #' instances or Elastic Load Balancing load balancers. Resolver performs
 #' recursive lookups against public name servers for all other domain
 #' names.
-#' 
+#'
 #' You can also configure DNS resolution between your VPC and your network
 #' over a Direct Connect or VPN connection:
-#' 
+#'
 #' **Forward DNS queries from resolvers on your network to Route 53
 #' Resolver**
-#' 
+#'
 #' DNS resolvers on your network can forward DNS queries to Resolver in a
 #' specified VPC. This allows your DNS resolvers to easily resolve domain
 #' names for Amazon Web Services resources such as EC2 instances or records
@@ -13238,10 +13603,10 @@ route53recoveryreadiness <- function(config = list(), credentials = list(), endp
 #' Resolvers on Your Network Forward DNS Queries to Route 53
 #' Resolver](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resolver.html#resolver-overview-forward-network-to-vpc)
 #' in the *Amazon Route 53 Developer Guide*.
-#' 
+#'
 #' **Conditionally forward queries from a VPC to resolvers on your
 #' network**
-#' 
+#'
 #' You can configure Resolver to forward queries that it receives from EC2
 #' instances in your VPCs to DNS resolvers on your network. To forward
 #' selected queries, you create Resolver rules that specify the domain
@@ -13254,7 +13619,7 @@ route53recoveryreadiness <- function(config = list(), credentials = list(), endp
 #' [How Route 53 Resolver Forwards DNS Queries from Your VPCs to Your
 #' Network](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resolver.html#resolver-overview-forward-vpc-to-network)
 #' in the *Amazon Route 53 Developer Guide*.
-#' 
+#'
 #' Like Amazon VPC, Resolver is Regional. In each Region where you have
 #' VPCs, you can choose whether to forward queries from your VPCs to your
 #' network (outbound queries), from your network to your VPCs (inbound
@@ -13421,7 +13786,12 @@ route53recoveryreadiness <- function(config = list(), credentials = list(), endp
 #'
 #' @rdname route53resolver
 #' @export
-route53resolver <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+route53resolver <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.networking::route53resolver(
     config = config,
     credentials = credentials,
@@ -13434,7 +13804,7 @@ route53resolver <- function(config = list(), credentials = list(), endpoint = NU
 #'
 #' @description
 #' Cloud Map
-#' 
+#'
 #' With Cloud Map, you can configure public DNS, private DNS, or HTTP
 #' namespaces that your microservice applications run in. When an instance
 #' becomes available, you can call the Cloud Map API to register the
@@ -13569,7 +13939,12 @@ route53resolver <- function(config = list(), credentials = list(), endpoint = NU
 #'
 #' @rdname servicediscovery
 #' @export
-servicediscovery <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+servicediscovery <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.networking::servicediscovery(
     config = config,
     credentials = credentials,
@@ -13713,7 +14088,12 @@ servicediscovery <- function(config = list(), credentials = list(), endpoint = N
 #'
 #' @rdname telconetworkbuilder
 #' @export
-telconetworkbuilder <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+telconetworkbuilder <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.networking::telconetworkbuilder(
     config = config,
     credentials = credentials,
@@ -13895,7 +14275,12 @@ telconetworkbuilder <- function(config = list(), credentials = list(), endpoint 
 #'
 #' @rdname vpclattice
 #' @export
-vpclattice <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+vpclattice <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.networking::vpclattice(
     config = config,
     credentials = credentials,
@@ -13908,56 +14293,56 @@ vpclattice <- function(config = list(), credentials = list(), endpoint = NULL, r
 #'
 #' @description
 #' Cloud9
-#' 
+#'
 #' Cloud9 is a collection of tools that you can use to code, build, run,
 #' test, debug, and release software in the cloud.
-#' 
+#'
 #' For more information about Cloud9, see the [Cloud9 User
 #' Guide](https://docs.aws.amazon.com/cloud9/latest/user-guide/).
-#' 
+#'
 #' Cloud9 is no longer available to new customers. Existing customers of
 #' Cloud9 can continue to use the service as normal. [Learn
 #' more"](https://aws.amazon.com/blogs/devops/how-to-migrate-from-aws-cloud9-to-aws-ide-toolkits-or-aws-cloudshell/)
-#' 
+#'
 #' Cloud9 supports these operations:
-#' 
+#'
 #' -   [`create_environment_ec2`][cloud9_create_environment_ec2]: Creates
 #'     an Cloud9 development environment, launches an Amazon EC2 instance,
 #'     and then connects from the instance to the environment.
-#' 
+#'
 #' -   [`create_environment_membership`][cloud9_create_environment_membership]:
 #'     Adds an environment member to an environment.
-#' 
+#'
 #' -   [`delete_environment`][cloud9_delete_environment]: Deletes an
 #'     environment. If an Amazon EC2 instance is connected to the
 #'     environment, also terminates the instance.
-#' 
+#'
 #' -   [`delete_environment_membership`][cloud9_delete_environment_membership]:
 #'     Deletes an environment member from an environment.
-#' 
+#'
 #' -   [`describe_environment_memberships`][cloud9_describe_environment_memberships]:
 #'     Gets information about environment members for an environment.
-#' 
+#'
 #' -   [`describe_environments`][cloud9_describe_environments]: Gets
 #'     information about environments.
-#' 
+#'
 #' -   [`describe_environment_status`][cloud9_describe_environment_status]:
 #'     Gets status information for an environment.
-#' 
+#'
 #' -   [`list_environments`][cloud9_list_environments]: Gets a list of
 #'     environment identifiers.
-#' 
+#'
 #' -   [`list_tags_for_resource`][cloud9_list_tags_for_resource]: Gets the
 #'     tags for an environment.
-#' 
+#'
 #' -   [`tag_resource`][cloud9_tag_resource]: Adds tags to an environment.
-#' 
+#'
 #' -   [`untag_resource`][cloud9_untag_resource]: Removes tags from an
 #'     environment.
-#' 
+#'
 #' -   [`update_environment`][cloud9_update_environment]: Changes the
 #'     settings of an existing environment.
-#' 
+#'
 #' -   [`update_environment_membership`][cloud9_update_environment_membership]:
 #'     Changes the settings of an existing environment member for an
 #'     environment.
@@ -14038,7 +14423,7 @@ vpclattice <- function(config = list(), credentials = list(), endpoint = NULL, r
 #' @examples
 #' \dontrun{
 #' svc <- cloud9()
-#' # 
+#' #
 #' svc$create_environment_ec2(
 #'   name = "my-demo-environment",
 #'   automaticStopTimeMinutes = 60L,
@@ -14074,7 +14459,12 @@ vpclattice <- function(config = list(), credentials = list(), endpoint = NULL, r
 #'
 #' @rdname cloud9
 #' @export
-cloud9 <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+cloud9 <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.developer.tools::cloud9(
     config = config,
     credentials = credentials,
@@ -14191,7 +14581,12 @@ cloud9 <- function(config = list(), credentials = list(), endpoint = NULL, regio
 #'
 #' @rdname cloudcontrolapi
 #' @export
-cloudcontrolapi <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+cloudcontrolapi <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.developer.tools::cloudcontrolapi(
     config = config,
     credentials = credentials,
@@ -14204,7 +14599,7 @@ cloudcontrolapi <- function(config = list(), credentials = list(), endpoint = NU
 #'
 #' @description
 #' CodeBuild
-#' 
+#'
 #' CodeBuild is a fully managed build service in the cloud. CodeBuild
 #' compiles your source code, runs unit tests, and produces artifacts that
 #' are ready to deploy. CodeBuild eliminates the need to provision, manage,
@@ -14364,7 +14759,12 @@ cloudcontrolapi <- function(config = list(), credentials = list(), endpoint = NU
 #'
 #' @rdname codebuild
 #' @export
-codebuild <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+codebuild <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.developer.tools::codebuild(
     config = config,
     credentials = credentials,
@@ -14384,9 +14784,9 @@ codebuild <- function(config = list(), credentials = list(), endpoint = NULL, re
 #' relationship between a CodeArtifact repository and another repository,
 #' which effectively merges their contents from the point of view of a
 #' package manager client.
-#' 
+#'
 #' **CodeArtifact concepts**
-#' 
+#'
 #' -   **Repository**: A CodeArtifact repository contains a set of [package
 #'     versions](https://docs.aws.amazon.com/codeartifact/latest/ug/welcome.html#welcome-concepts-package-version),
 #'     each of which maps to a set of assets, or files. Repositories are
@@ -14396,7 +14796,7 @@ codebuild <- function(config = list(), credentials = list(), endpoint = NULL, re
 #'     Maven CLI ( **`mvn`** ). For a list of supported package managers,
 #'     see the [CodeArtifact User
 #'     Guide](https://docs.aws.amazon.com/codeartifact/latest/ug/welcome.html).
-#' 
+#'
 #' -   **Domain**: Repositories are aggregated into a higher-level entity
 #'     known as a *domain*. All package assets and metadata are stored in
 #'     the domain, but are consumed through repositories. A given package
@@ -14404,19 +14804,19 @@ codebuild <- function(config = list(), credentials = list(), endpoint = NULL, re
 #'     matter how many repositories it's present in. All of the assets and
 #'     metadata in a domain are encrypted with the same customer master key
 #'     (CMK) stored in Key Management Service (KMS).
-#' 
+#'
 #'     Each repository is a member of a single domain and can't be moved to
 #'     a different domain.
-#' 
+#'
 #'     The domain allows organizational policy to be applied across
 #'     multiple repositories, such as which accounts can access
 #'     repositories in the domain, and which public repositories can be
 #'     used as sources of packages.
-#' 
+#'
 #'     Although an organization can have multiple domains, we recommend a
 #'     single production domain that contains all published artifacts so
 #'     that teams can find and share packages across their organization.
-#' 
+#'
 #' -   **Package**: A *package* is a bundle of software and the metadata
 #'     required to resolve dependencies and install the software.
 #'     CodeArtifact supports npm, PyPI, Maven, NuGet, Swift, Ruby, Cargo,
@@ -14424,18 +14824,18 @@ codebuild <- function(config = list(), credentials = list(), endpoint = NULL, re
 #'     supported package formats and how to use CodeArtifact with them, see
 #'     the [CodeArtifact User
 #'     Guide](https://docs.aws.amazon.com/codeartifact/latest/ug/welcome.html).
-#' 
+#'
 #'     In CodeArtifact, a package consists of:
-#' 
+#'
 #'     -   A *name* (for example, `webpack` is the name of a popular npm
 #'         package)
-#' 
+#'
 #'     -   An optional namespace (for example, `@@types` in `@@types/node`)
-#' 
+#'
 #'     -   A set of versions (for example, `1.0.0`, `1.0.1`, `1.0.2`, etc.)
-#' 
+#'
 #'     -   Package-level metadata (for example, npm tags)
-#' 
+#'
 #' -   **Package group**: A group of packages that match a specified
 #'     definition. Package groups can be used to apply configuration to
 #'     multiple packages that match a defined pattern using package format,
@@ -14445,7 +14845,7 @@ codebuild <- function(config = list(), credentials = list(), endpoint = NULL, re
 #'     ingestion or publishing of new package versions, which protects
 #'     users from malicious actions known as dependency substitution
 #'     attacks.
-#' 
+#'
 #' -   **Package version**: A version of a package, such as
 #'     `@@types/node 12.6.9`. The version number format and semantics vary
 #'     for different package formats. For example, npm package versions
@@ -14453,195 +14853,195 @@ codebuild <- function(config = list(), credentials = list(), endpoint = NULL, re
 #'     specification](https://semver.org/). In CodeArtifact, a package
 #'     version consists of the version identifier, metadata at the package
 #'     version level, and a set of assets.
-#' 
+#'
 #' -   **Upstream repository**: One repository is *upstream* of another
 #'     when the package versions in it can be accessed from the repository
 #'     endpoint of the downstream repository, effectively merging the
 #'     contents of the two repositories from the point of view of a client.
 #'     CodeArtifact allows creating an upstream relationship between two
 #'     repositories.
-#' 
+#'
 #' -   **Asset**: An individual file stored in CodeArtifact associated with
 #'     a package version, such as an npm `.tgz` file or Maven POM and JAR
 #'     files.
-#' 
+#'
 #' **CodeArtifact supported API operations**
-#' 
+#'
 #' -   `associate_external_connection`:
 #'     Adds an existing external connection to a repository.
-#' 
+#'
 #' -   `copy_package_versions`:
 #'     Copies package versions from one repository to another repository in
 #'     the same domain.
-#' 
+#'
 #' -   `create_domain`: Creates a domain.
-#' 
+#'
 #' -   `create_package_group`: Creates
 #'     a package group.
-#' 
+#'
 #' -   `create_repository`: Creates a
 #'     CodeArtifact repository in a domain.
-#' 
+#'
 #' -   `delete_domain`: Deletes a domain. You
 #'     cannot delete a domain that contains repositories.
-#' 
+#'
 #' -   `delete_domain_permissions_policy`:
 #'     Deletes the resource policy that is set on a domain.
-#' 
+#'
 #' -   `delete_package`: Deletes a package
 #'     and all associated package versions.
-#' 
+#'
 #' -   `delete_package_group`: Deletes
 #'     a package group. Does not delete packages or package versions that
 #'     are associated with a package group.
-#' 
+#'
 #' -   `delete_package_versions`:
 #'     Deletes versions of a package. After a package has been deleted, it
 #'     can be republished, but its assets and metadata cannot be restored
 #'     because they have been permanently removed from storage.
-#' 
+#'
 #' -   `delete_repository`: Deletes a
 #'     repository.
-#' 
+#'
 #' -   `delete_repository_permissions_policy`:
 #'     Deletes the resource policy that is set on a repository.
-#' 
+#'
 #' -   `describe_domain`: Returns a
 #'     `DomainDescription` object that contains information about the
 #'     requested domain.
-#' 
+#'
 #' -   `describe_package`: Returns a
 #'     [PackageDescription](https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_PackageDescription.html)
 #'     object that contains details about a package.
-#' 
+#'
 #' -   `describe_package_group`:
 #'     Returns a
 #'     [PackageGroup](https://docs.aws.amazon.com/codeartifact/latest/APIReference/)
 #'     object that contains details about a package group.
-#' 
+#'
 #' -   `describe_package_version`:
 #'     Returns a
 #'     [PackageVersionDescription](https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_PackageVersionDescription.html)
 #'     object that contains details about a package version.
-#' 
+#'
 #' -   `describe_repository`: Returns a
 #'     `RepositoryDescription` object that contains detailed information
 #'     about the requested repository.
-#' 
+#'
 #' -   `dispose_package_versions`:
 #'     Disposes versions of a package. A package version with the status
 #'     `Disposed` cannot be restored because they have been permanently
 #'     removed from storage.
-#' 
+#'
 #' -   `disassociate_external_connection`:
 #'     Removes an existing external connection from a repository.
-#' 
+#'
 #' -   `get_associated_package_group`:
 #'     Returns the most closely associated package group to the specified
 #'     package.
-#' 
+#'
 #' -   `get_authorization_token`:
 #'     Generates a temporary authorization token for accessing repositories
 #'     in the domain. The token expires the authorization period has
 #'     passed. The default authorization period is 12 hours and can be
 #'     customized to any length with a maximum of 12 hours.
-#' 
+#'
 #' -   `get_domain_permissions_policy`:
 #'     Returns the policy of a resource that is attached to the specified
 #'     domain.
-#' 
+#'
 #' -   `get_package_version_asset`:
 #'     Returns the contents of an asset that is in a package version.
-#' 
+#'
 #' -   `get_package_version_readme`:
 #'     Gets the readme file or descriptive text for a package version.
-#' 
+#'
 #' -   `get_repository_endpoint`:
 #'     Returns the endpoint of a repository for a specific package format.
 #'     A repository has one endpoint for each package format:
-#' 
+#'
 #'     -   `cargo`
-#' 
+#'
 #'     -   `generic`
-#' 
+#'
 #'     -   `maven`
-#' 
+#'
 #'     -   `npm`
-#' 
+#'
 #'     -   `nuget`
-#' 
+#'
 #'     -   `pypi`
-#' 
+#'
 #'     -   `ruby`
-#' 
+#'
 #'     -   `swift`
-#' 
+#'
 #' -   `get_repository_permissions_policy`:
 #'     Returns the resource policy that is set on a repository.
-#' 
+#'
 #' -   `list_allowed_repositories_for_group`:
 #'     Lists the allowed repositories for a package group that has origin
 #'     configuration set to `ALLOW_SPECIFIC_REPOSITORIES`.
-#' 
+#'
 #' -   `list_associated_packages`:
 #'     Returns a list of packages associated with the requested package
 #'     group.
-#' 
+#'
 #' -   `list_domains`: Returns a list of
 #'     `DomainSummary` objects. Each returned `DomainSummary` object
 #'     contains information about a domain.
-#' 
+#'
 #' -   `list_packages`: Lists the packages in
 #'     a repository.
-#' 
+#'
 #' -   `list_package_groups`: Returns a
 #'     list of package groups in the requested domain.
-#' 
+#'
 #' -   `list_package_version_assets`:
 #'     Lists the assets for a given package version.
-#' 
+#'
 #' -   `list_package_version_dependencies`:
 #'     Returns a list of the direct dependencies for a package version.
-#' 
+#'
 #' -   `list_package_versions`:
 #'     Returns a list of package versions for a specified package in a
 #'     repository.
-#' 
+#'
 #' -   `list_repositories`: Returns a
 #'     list of repositories owned by the Amazon Web Services account that
 #'     called this method.
-#' 
+#'
 #' -   `list_repositories_in_domain`:
 #'     Returns a list of the repositories in a domain.
-#' 
+#'
 #' -   `list_sub_package_groups`:
 #'     Returns a list of direct children of the specified package group.
-#' 
+#'
 #' -   `publish_package_version`:
 #'     Creates a new package version containing one or more assets.
-#' 
+#'
 #' -   `put_domain_permissions_policy`:
 #'     Attaches a resource policy to a domain.
-#' 
+#'
 #' -   `put_package_origin_configuration`:
 #'     Sets the package origin configuration for a package, which determine
 #'     how new versions of the package can be added to a specific
 #'     repository.
-#' 
+#'
 #' -   `put_repository_permissions_policy`:
 #'     Sets the resource policy on a repository that specifies permissions
 #'     to access it.
-#' 
+#'
 #' -   `update_package_group`: Updates
 #'     a package group. This API cannot be used to update a package group's
 #'     origin configuration or pattern.
-#' 
+#'
 #' -   `update_package_group_origin_configuration`:
 #'     Updates the package origin configuration for a package group.
-#' 
+#'
 #' -   `update_package_versions_status`:
 #'     Updates the status of one or more versions of a package.
-#' 
+#'
 #' -   `update_repository`: Updates the
 #'     properties of a repository.
 #'
@@ -14786,7 +15186,12 @@ codebuild <- function(config = list(), credentials = list(), endpoint = NULL, re
 #'
 #' @rdname codeartifact
 #' @export
-codeartifact <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+codeartifact <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.developer.tools::codeartifact(
     config = config,
     credentials = credentials,
@@ -14799,321 +15204,321 @@ codeartifact <- function(config = list(), credentials = list(), endpoint = NULL,
 #'
 #' @description
 #' CodeCommit
-#' 
+#'
 #' This is the *CodeCommit API Reference*. This reference provides
 #' descriptions of the operations and data types for CodeCommit API along
 #' with usage examples.
-#' 
+#'
 #' You can use the CodeCommit API to work with the following objects:
-#' 
+#'
 #' Repositories, by calling the following:
-#' 
+#'
 #' -   `batch_get_repositories`, which
 #'     returns information about one or more repositories associated with
 #'     your Amazon Web Services account.
-#' 
+#'
 #' -   `create_repository`, which creates
 #'     an CodeCommit repository.
-#' 
+#'
 #' -   `delete_repository`, which deletes
 #'     an CodeCommit repository.
-#' 
+#'
 #' -   `get_repository`, which returns
 #'     information about a specified repository.
-#' 
+#'
 #' -   `list_repositories`, which lists all
 #'     CodeCommit repositories associated with your Amazon Web Services
 #'     account.
-#' 
+#'
 #' -   `update_repository_description`,
 #'     which sets or updates the description of the repository.
-#' 
+#'
 #' -   `update_repository_encryption_key`,
 #'     which updates the Key Management Service encryption key used to
 #'     encrypt and decrypt a repository.
-#' 
+#'
 #' -   `update_repository_name`, which
 #'     changes the name of the repository. If you change the name of a
 #'     repository, no other users of that repository can access it until
 #'     you send them the new HTTPS or SSH URL to use.
-#' 
+#'
 #' Branches, by calling the following:
-#' 
+#'
 #' -   `create_branch`, which creates a branch
 #'     in a specified repository.
-#' 
+#'
 #' -   `delete_branch`, which deletes the
 #'     specified branch in a repository unless it is the default branch.
-#' 
+#'
 #' -   `get_branch`, which returns information
 #'     about a specified branch.
-#' 
+#'
 #' -   `list_branches`, which lists all
 #'     branches for a specified repository.
-#' 
+#'
 #' -   `update_default_branch`, which
 #'     changes the default branch for a repository.
-#' 
+#'
 #' Files, by calling the following:
-#' 
+#'
 #' -   `delete_file`, which deletes the content
 #'     of a specified file from a specified branch.
-#' 
+#'
 #' -   `get_blob`, which returns the base-64 encoded
 #'     content of an individual Git blob object in a repository.
-#' 
+#'
 #' -   `get_file`, which returns the base-64 encoded
 #'     content of a specified file.
-#' 
+#'
 #' -   `get_folder`, which returns the contents of
 #'     a specified folder or directory.
-#' 
+#'
 #' -   `list_file_commit_history`,
 #'     which retrieves a list of commits and changes to a specified file.
-#' 
+#'
 #' -   `put_file`, which adds or modifies a single
 #'     file in a specified repository and branch.
-#' 
+#'
 #' Commits, by calling the following:
-#' 
+#'
 #' -   `batch_get_commits`, which returns
 #'     information about one or more commits in a repository.
-#' 
+#'
 #' -   `create_commit`, which creates a commit
 #'     for changes to a repository.
-#' 
+#'
 #' -   `get_commit`, which returns information
 #'     about a commit, including commit messages and author and committer
 #'     information.
-#' 
+#'
 #' -   `get_differences`, which returns
 #'     information about the differences in a valid commit specifier (such
 #'     as a branch, tag, HEAD, commit ID, or other fully qualified
 #'     reference).
-#' 
+#'
 #' Merges, by calling the following:
-#' 
+#'
 #' -   `batch_describe_merge_conflicts`,
 #'     which returns information about conflicts in a merge between commits
 #'     in a repository.
-#' 
+#'
 #' -   `create_unreferenced_merge_commit`,
 #'     which creates an unreferenced commit between two branches or commits
 #'     for the purpose of comparing them and identifying any potential
 #'     conflicts.
-#' 
+#'
 #' -   `describe_merge_conflicts`,
 #'     which returns information about merge conflicts between the base,
 #'     source, and destination versions of a file in a potential merge.
-#' 
+#'
 #' -   `get_merge_commit`, which returns
 #'     information about the merge between a source and destination commit.
-#' 
+#'
 #' -   `get_merge_conflicts`, which
 #'     returns information about merge conflicts between the source and
 #'     destination branch in a pull request.
-#' 
+#'
 #' -   `get_merge_options`, which returns
 #'     information about the available merge options between two branches
 #'     or commit specifiers.
-#' 
+#'
 #' -   `merge_branches_by_fast_forward`,
 #'     which merges two branches using the fast-forward merge option.
-#' 
+#'
 #' -   `merge_branches_by_squash`,
 #'     which merges two branches using the squash merge option.
-#' 
+#'
 #' -   `merge_branches_by_three_way`,
 #'     which merges two branches using the three-way merge option.
-#' 
+#'
 #' Pull requests, by calling the following:
-#' 
+#'
 #' -   `create_pull_request`, which
 #'     creates a pull request in a specified repository.
-#' 
+#'
 #' -   `create_pull_request_approval_rule`,
 #'     which creates an approval rule for a specified pull request.
-#' 
+#'
 #' -   `delete_pull_request_approval_rule`,
 #'     which deletes an approval rule for a specified pull request.
-#' 
+#'
 #' -   `describe_pull_request_events`,
 #'     which returns information about one or more pull request events.
-#' 
+#'
 #' -   `evaluate_pull_request_approval_rules`,
 #'     which evaluates whether a pull request has met all the conditions
 #'     specified in its associated approval rules.
-#' 
+#'
 #' -   `get_comments_for_pull_request`,
 #'     which returns information about comments on a specified pull
 #'     request.
-#' 
+#'
 #' -   `get_pull_request`, which returns
 #'     information about a specified pull request.
-#' 
+#'
 #' -   `get_pull_request_approval_states`,
 #'     which returns information about the approval states for a specified
 #'     pull request.
-#' 
+#'
 #' -   `get_pull_request_override_state`,
 #'     which returns information about whether approval rules have been set
 #'     aside (overriden) for a pull request, and if so, the Amazon Resource
 #'     Name (ARN) of the user or identity that overrode the rules and their
 #'     requirements for the pull request.
-#' 
+#'
 #' -   `list_pull_requests`, which lists
 #'     all pull requests for a repository.
-#' 
+#'
 #' -   `merge_pull_request_by_fast_forward`,
 #'     which merges the source destination branch of a pull request into
 #'     the specified destination branch for that pull request using the
 #'     fast-forward merge option.
-#' 
+#'
 #' -   `merge_pull_request_by_squash`,
 #'     which merges the source destination branch of a pull request into
 #'     the specified destination branch for that pull request using the
 #'     squash merge option.
-#' 
+#'
 #' -   `merge_pull_request_by_three_way`,
 #'     which merges the source destination branch of a pull request into
 #'     the specified destination branch for that pull request using the
 #'     three-way merge option.
-#' 
+#'
 #' -   `override_pull_request_approval_rules`,
 #'     which sets aside all approval rule requirements for a pull request.
-#' 
+#'
 #' -   `post_comment_for_pull_request`,
 #'     which posts a comment to a pull request at the specified line, file,
 #'     or request.
-#' 
+#'
 #' -   `update_pull_request_approval_rule_content`,
 #'     which updates the structure of an approval rule for a pull request.
-#' 
+#'
 #' -   `update_pull_request_approval_state`,
 #'     which updates the state of an approval on a pull request.
-#' 
+#'
 #' -   `update_pull_request_description`,
 #'     which updates the description of a pull request.
-#' 
+#'
 #' -   `update_pull_request_status`,
 #'     which updates the status of a pull request.
-#' 
+#'
 #' -   `update_pull_request_title`,
 #'     which updates the title of a pull request.
-#' 
+#'
 #' Approval rule templates, by calling the following:
-#' 
+#'
 #' -   `associate_approval_rule_template_with_repository`,
 #'     which associates a template with a specified repository. After the
 #'     template is associated with a repository, CodeCommit creates
 #'     approval rules that match the template conditions on every pull
 #'     request created in the specified repository.
-#' 
+#'
 #' -   `batch_associate_approval_rule_template_with_repositories`,
 #'     which associates a template with one or more specified repositories.
 #'     After the template is associated with a repository, CodeCommit
 #'     creates approval rules that match the template conditions on every
 #'     pull request created in the specified repositories.
-#' 
+#'
 #' -   `batch_disassociate_approval_rule_template_from_repositories`,
 #'     which removes the association between a template and specified
 #'     repositories so that approval rules based on the template are not
 #'     automatically created when pull requests are created in those
 #'     repositories.
-#' 
+#'
 #' -   `create_approval_rule_template`,
 #'     which creates a template for approval rules that can then be
 #'     associated with one or more repositories in your Amazon Web Services
 #'     account.
-#' 
+#'
 #' -   `delete_approval_rule_template`,
 #'     which deletes the specified template. It does not remove approval
 #'     rules on pull requests already created with the template.
-#' 
+#'
 #' -   `disassociate_approval_rule_template_from_repository`,
 #'     which removes the association between a template and a repository so
 #'     that approval rules based on the template are not automatically
 #'     created when pull requests are created in the specified repository.
-#' 
+#'
 #' -   `get_approval_rule_template`,
 #'     which returns information about an approval rule template.
-#' 
+#'
 #' -   `list_approval_rule_templates`,
 #'     which lists all approval rule templates in the Amazon Web Services
 #'     Region in your Amazon Web Services account.
-#' 
+#'
 #' -   `list_associated_approval_rule_templates_for_repository`,
 #'     which lists all approval rule templates that are associated with a
 #'     specified repository.
-#' 
+#'
 #' -   `list_repositories_for_approval_rule_template`,
 #'     which lists all repositories associated with the specified approval
 #'     rule template.
-#' 
+#'
 #' -   `update_approval_rule_template_description`,
 #'     which updates the description of an approval rule template.
-#' 
+#'
 #' -   `update_approval_rule_template_name`,
 #'     which updates the name of an approval rule template.
-#' 
+#'
 #' -   `update_approval_rule_template_content`,
 #'     which updates the content of an approval rule template.
-#' 
+#'
 #' Comments in a repository, by calling the following:
-#' 
+#'
 #' -   `delete_comment_content`, which
 #'     deletes the content of a comment on a commit in a repository.
-#' 
+#'
 #' -   `get_comment`, which returns information
 #'     about a comment on a commit.
-#' 
+#'
 #' -   `get_comment_reactions`, which
 #'     returns information about emoji reactions to comments.
-#' 
+#'
 #' -   `get_comments_for_compared_commit`,
 #'     which returns information about comments on the comparison between
 #'     two commit specifiers in a repository.
-#' 
+#'
 #' -   `post_comment_for_compared_commit`,
 #'     which creates a comment on the comparison between two commit
 #'     specifiers in a repository.
-#' 
+#'
 #' -   `post_comment_reply`, which creates
 #'     a reply to a comment.
-#' 
+#'
 #' -   `put_comment_reaction`, which
 #'     creates or updates an emoji reaction to a comment.
-#' 
+#'
 #' -   `update_comment`, which updates the
 #'     content of a comment on a commit in a repository.
-#' 
+#'
 #' Tags used to tag resources in CodeCommit (not Git tags), by calling the
 #' following:
-#' 
+#'
 #' -   `list_tags_for_resource`, which
 #'     gets information about Amazon Web Servicestags for a specified
 #'     Amazon Resource Name (ARN) in CodeCommit.
-#' 
+#'
 #' -   `tag_resource`, which adds or updates
 #'     tags for a resource in CodeCommit.
-#' 
+#'
 #' -   `untag_resource`, which removes tags
 #'     for a resource in CodeCommit.
-#' 
+#'
 #' Triggers, by calling the following:
-#' 
+#'
 #' -   `get_repository_triggers`,
 #'     which returns information about triggers configured for a
 #'     repository.
-#' 
+#'
 #' -   `put_repository_triggers`,
 #'     which replaces all triggers for a repository and can be used to
 #'     create or delete triggers.
-#' 
+#'
 #' -   `test_repository_triggers`,
 #'     which tests the functionality of a repository trigger by sending
 #'     data to the trigger target.
-#' 
+#'
 #' For information about how to use CodeCommit, see the [CodeCommit User
 #' Guide](https://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html).
 #'
@@ -15289,7 +15694,12 @@ codeartifact <- function(config = list(), credentials = list(), endpoint = NULL,
 #'
 #' @rdname codecommit
 #' @export
-codecommit <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+codecommit <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.developer.tools::codecommit(
     config = config,
     credentials = credentials,
@@ -15305,138 +15715,138 @@ codecommit <- function(config = list(), credentials = list(), endpoint = NULL, r
 #' provides descriptions of operations and data types for Amazon
 #' CodeCatalyst. You can use the Amazon CodeCatalyst API to work with the
 #' following objects.
-#' 
+#'
 #' Spaces, by calling the following:
-#' 
+#'
 #' -   `delete_space`, which deletes a space.
-#' 
+#'
 #' -   `get_space`, which returns information
 #'     about a space.
-#' 
+#'
 #' -   `get_subscription`, which returns
 #'     information about the Amazon Web Services account used for billing
 #'     purposes and the billing plan for the space.
-#' 
+#'
 #' -   `list_spaces`, which retrieves a list of
 #'     spaces.
-#' 
+#'
 #' -   `update_space`, which changes one or
 #'     more values for a space.
-#' 
+#'
 #' Projects, by calling the following:
-#' 
+#'
 #' -   `create_project` which creates a
 #'     project in a specified space.
-#' 
+#'
 #' -   `get_project`, which returns information
 #'     about a project.
-#' 
+#'
 #' -   `list_projects`, which retrieves a
 #'     list of projects in a space.
-#' 
+#'
 #' Users, by calling the following:
-#' 
+#'
 #' -   `get_user_details`, which returns
 #'     information about a user in Amazon CodeCatalyst.
-#' 
+#'
 #' Source repositories, by calling the following:
-#' 
+#'
 #' -   `create_source_repository`,
 #'     which creates an empty Git-based source repository in a specified
 #'     project.
-#' 
+#'
 #' -   `create_source_repository_branch`,
 #'     which creates a branch in a specified repository where you can work
 #'     on code.
-#' 
+#'
 #' -   `delete_source_repository`,
 #'     which deletes a source repository.
-#' 
+#'
 #' -   `get_source_repository`, which
 #'     returns information about a source repository.
-#' 
+#'
 #' -   `get_source_repository_clone_urls`,
 #'     which returns information about the URLs that can be used with a Git
 #'     client to clone a source repository.
-#' 
+#'
 #' -   `list_source_repositories`,
 #'     which retrieves a list of source repositories in a project.
-#' 
+#'
 #' -   `list_source_repository_branches`,
 #'     which retrieves a list of branches in a source repository.
-#' 
+#'
 #' Dev Environments and the Amazon Web Services Toolkits, by calling the
 #' following:
-#' 
+#'
 #' -   `create_dev_environment`,
 #'     which creates a Dev Environment, where you can quickly work on the
 #'     code stored in the source repositories of your project.
-#' 
+#'
 #' -   `delete_dev_environment`,
 #'     which deletes a Dev Environment.
-#' 
+#'
 #' -   `get_dev_environment`, which
 #'     returns information about a Dev Environment.
-#' 
+#'
 #' -   `list_dev_environments`, which
 #'     retrieves a list of Dev Environments in a project.
-#' 
+#'
 #' -   `list_dev_environment_sessions`,
 #'     which retrieves a list of active Dev Environment sessions in a
 #'     project.
-#' 
+#'
 #' -   `start_dev_environment`, which
 #'     starts a specified Dev Environment and puts it into an active state.
-#' 
+#'
 #' -   `start_dev_environment_session`,
 #'     which starts a session to a specified Dev Environment.
-#' 
+#'
 #' -   `stop_dev_environment`, which
 #'     stops a specified Dev Environment and puts it into an stopped state.
-#' 
+#'
 #' -   `stop_dev_environment_session`,
 #'     which stops a session for a specified Dev Environment.
-#' 
+#'
 #' -   `update_dev_environment`,
 #'     which changes one or more values for a Dev Environment.
-#' 
+#'
 #' Workflows, by calling the following:
-#' 
+#'
 #' -   `get_workflow`, which returns
 #'     information about a workflow.
-#' 
+#'
 #' -   `get_workflow_run`, which returns
 #'     information about a specified run of a workflow.
-#' 
+#'
 #' -   `list_workflow_runs`, which
 #'     retrieves a list of runs of a specified workflow.
-#' 
+#'
 #' -   `list_workflows`, which retrieves a
 #'     list of workflows in a specified project.
-#' 
+#'
 #' -   `start_workflow_run`, which
 #'     starts a run of a specified workflow.
-#' 
+#'
 #' Security, activity, and resource management in Amazon CodeCatalyst, by
 #' calling the following:
-#' 
+#'
 #' -   `create_access_token`, which
 #'     creates a personal access token (PAT) for the current user.
-#' 
+#'
 #' -   `delete_access_token`, which
 #'     deletes a specified personal access token (PAT).
-#' 
+#'
 #' -   `list_access_tokens`, which lists
 #'     all personal access tokens (PATs) associated with a user.
-#' 
+#'
 #' -   `list_event_logs`, which retrieves a
 #'     list of events that occurred during a specified time period in a
 #'     space.
-#' 
+#'
 #' -   `verify_session`, which verifies
 #'     whether the calling user has a valid Amazon CodeCatalyst login and
 #'     session.
-#' 
+#'
 #' If you are using the Amazon CodeCatalyst APIs with an SDK or the CLI,
 #' you must configure your computer to work with Amazon CodeCatalyst and
 #' single sign-on (SSO). For more information, see [Setting up to use the
@@ -15575,7 +15985,12 @@ codecommit <- function(config = list(), credentials = list(), endpoint = NULL, r
 #'
 #' @rdname codecatalyst
 #' @export
-codecatalyst <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+codecatalyst <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.developer.tools::codecatalyst(
     config = config,
     credentials = credentials,
@@ -15591,7 +16006,7 @@ codecatalyst <- function(config = list(), credentials = list(), endpoint = NULL,
 #' deployments to Amazon EC2 instances, on-premises instances running in
 #' your own facility, serverless Lambda functions, or applications in an
 #' Amazon ECS service.
-#' 
+#'
 #' You can deploy a nearly unlimited variety of application content, such
 #' as an updated Lambda function, updated applications in an Amazon ECS
 #' service, code, web and configuration files, executables, packages,
@@ -15599,23 +16014,23 @@ codecatalyst <- function(config = list(), credentials = list(), endpoint = NULL,
 #' content stored in Amazon S3 buckets, GitHub repositories, or Bitbucket
 #' repositories. You do not need to make changes to your existing code
 #' before you can use CodeDeploy.
-#' 
+#'
 #' CodeDeploy makes it easier for you to rapidly release new features,
 #' helps you avoid downtime during application deployment, and handles the
 #' complexity of updating your applications, without many of the risks
 #' associated with error-prone manual deployments.
-#' 
+#'
 #' **CodeDeploy Components**
-#' 
+#'
 #' Use the information in this guide to help you work with the following
 #' CodeDeploy components:
-#' 
+#'
 #' -   **Application**: A name that uniquely identifies the application you
 #'     want to deploy. CodeDeploy uses this name, which functions as a
 #'     container, to ensure the correct combination of revision, deployment
 #'     configuration, and deployment group are referenced during a
 #'     deployment.
-#' 
+#'
 #' -   **Deployment group**: A set of individual instances, CodeDeploy
 #'     Lambda deployment configuration settings, or an Amazon ECS service
 #'     and network details. A Lambda deployment group specifies how to
@@ -15627,15 +16042,15 @@ codecatalyst <- function(config = list(), credentials = list(), endpoint = NULL,
 #'     instances, Amazon EC2 instances in Amazon EC2 Auto Scaling groups,
 #'     or both. All deployment groups can specify optional trigger, alarm,
 #'     and rollback settings.
-#' 
+#'
 #' -   **Deployment configuration**: A set of deployment rules and
 #'     deployment success and failure conditions used by CodeDeploy during
 #'     a deployment.
-#' 
+#'
 #' -   **Deployment**: The process and the components used when updating a
 #'     Lambda function, a containerized application in an Amazon ECS
 #'     service, or of installing content on one or more instances.
-#' 
+#'
 #' -   **Application revisions**: For an Lambda deployment, this is an
 #'     AppSpec file that specifies the Lambda function to be updated and
 #'     one or more functions to validate deployment lifecycle events. For
@@ -15648,23 +16063,23 @@ codecatalyst <- function(config = list(), credentials = list(), endpoint = NULL,
 #'     For Amazon S3, a revision is uniquely identified by its Amazon S3
 #'     object key and its ETag, version, or both. For GitHub, a revision is
 #'     uniquely identified by its commit ID.
-#' 
+#'
 #' This guide also contains information to help you get details about the
 #' instances in your deployments, to make on-premises instances available
 #' for CodeDeploy deployments, to get details about a Lambda function
 #' deployment, and to get details about Amazon ECS service deployments.
-#' 
+#'
 #' **CodeDeploy Information Resources**
-#' 
+#'
 #' -   [CodeDeploy User
 #'     Guide](https://docs.aws.amazon.com/codedeploy/latest/userguide/)
-#' 
+#'
 #' -   [CodeDeploy API Reference
 #'     Guide](https://docs.aws.amazon.com/codedeploy/latest/APIReference/)
-#' 
+#'
 #' -   [CLI Reference for
 #'     CodeDeploy](https://docs.aws.amazon.com/cli/latest/reference/deploy/)
-#' 
+#'
 #' -   CodeDeploy Developer Forum
 #'
 #' @param
@@ -15807,7 +16222,12 @@ codecatalyst <- function(config = list(), credentials = list(), endpoint = NULL,
 #'
 #' @rdname codedeploy
 #' @export
-codedeploy <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+codedeploy <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.developer.tools::codedeploy(
     config = config,
     credentials = credentials,
@@ -15821,25 +16241,25 @@ codedeploy <- function(config = list(), credentials = list(), endpoint = NULL, r
 #' @description
 #' This section provides documentation for the Amazon CodeGuru Profiler API
 #' operations.
-#' 
+#'
 #' Amazon CodeGuru Profiler collects runtime performance data from your
 #' live applications, and provides recommendations that can help you
 #' fine-tune your application performance. Using machine learning
 #' algorithms, CodeGuru Profiler can help you find your most expensive
 #' lines of code and suggest ways you can improve efficiency and remove CPU
 #' bottlenecks.
-#' 
+#'
 #' Amazon CodeGuru Profiler provides different visualizations of profiling
 #' data to help you identify what code is running on the CPU, see how much
 #' time is consumed, and suggest ways to reduce CPU utilization.
-#' 
+#'
 #' Amazon CodeGuru Profiler currently supports applications written in all
 #' Java virtual machine (JVM) languages and Python. While CodeGuru Profiler
 #' supports both visualizations and recommendations for applications
 #' written in Java, it can also generate visualizations and a subset of
 #' recommendations for applications written in other JVM languages and
 #' Python.
-#' 
+#'
 #' For more information, see [What is Amazon CodeGuru
 #' Profiler](https://docs.aws.amazon.com/codeguru/latest/profiler-ug/what-is-codeguru-profiler.html)
 #' in the *Amazon CodeGuru Profiler User Guide*.
@@ -15960,7 +16380,12 @@ codedeploy <- function(config = list(), credentials = list(), endpoint = NULL, r
 #'
 #' @rdname codeguruprofiler
 #' @export
-codeguruprofiler <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+codeguruprofiler <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.developer.tools::codeguruprofiler(
     config = config,
     credentials = credentials,
@@ -15976,13 +16401,13 @@ codeguruprofiler <- function(config = list(), credentials = list(), endpoint = N
 #' operations. CodeGuru Reviewer is a service that uses program analysis
 #' and machine learning to detect potential defects that are difficult for
 #' developers to find and recommends fixes in your Java and Python code.
-#' 
+#'
 #' By proactively detecting and providing recommendations for addressing
 #' code defects and implementing best practices, CodeGuru Reviewer improves
 #' the overall quality and maintainability of your code base during the
 #' code review stage. For more information about CodeGuru Reviewer, see the
 #' *\href{https://docs.aws.amazon.com/codeguru/latest/reviewer-ug/welcome.html}{Amazon CodeGuru Reviewer User Guide}.*
-#' 
+#'
 #' To improve the security of your CodeGuru Reviewer API calls, you can
 #' establish a private connection between your VPC and CodeGuru Reviewer by
 #' creating an *interface VPC endpoint*. For more information, see
@@ -16097,7 +16522,12 @@ codeguruprofiler <- function(config = list(), credentials = list(), endpoint = N
 #'
 #' @rdname codegurureviewer
 #' @export
-codegurureviewer <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+codegurureviewer <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.developer.tools::codegurureviewer(
     config = config,
     credentials = credentials,
@@ -16110,12 +16540,12 @@ codegurureviewer <- function(config = list(), credentials = list(), endpoint = N
 #'
 #' @description
 #' Amazon CodeGuru Security is in preview release and is subject to change.
-#' 
+#'
 #' This section provides documentation for the Amazon CodeGuru Security API
 #' operations. CodeGuru Security is a service that uses program analysis
 #' and machine learning to detect security policy violations and
 #' vulnerabilities, and recommends ways to address these security risks.
-#' 
+#'
 #' By proactively detecting and providing recommendations for addressing
 #' security risks, CodeGuru Security improves the overall security of your
 #' application code. For more information about CodeGuru Security, see the
@@ -16228,7 +16658,12 @@ codegurureviewer <- function(config = list(), credentials = list(), endpoint = N
 #'
 #' @rdname codegurusecurity
 #' @export
-codegurusecurity <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+codegurusecurity <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.developer.tools::codegurusecurity(
     config = config,
     credentials = credentials,
@@ -16241,63 +16676,63 @@ codegurusecurity <- function(config = list(), credentials = list(), endpoint = N
 #'
 #' @description
 #' CodePipeline
-#' 
+#'
 #' **Overview**
-#' 
+#'
 #' This is the CodePipeline API Reference. This guide provides descriptions
 #' of the actions and data types for CodePipeline. Some functionality for
 #' your pipeline can only be configured through the API. For more
 #' information, see the [CodePipeline User
 #' Guide](https://docs.aws.amazon.com/codepipeline/latest/userguide/welcome.html).
-#' 
+#'
 #' You can use the CodePipeline API to work with pipelines, stages,
 #' actions, and transitions.
-#' 
+#'
 #' *Pipelines* are models of automated release processes. Each pipeline is
 #' uniquely named, and consists of stages, actions, and transitions.
-#' 
+#'
 #' You can work with pipelines by calling:
-#' 
+#'
 #' -   `create_pipeline`, which creates a
 #'     uniquely named pipeline.
-#' 
+#'
 #' -   `delete_pipeline`, which deletes the
 #'     specified pipeline.
-#' 
+#'
 #' -   `get_pipeline`, which returns
 #'     information about the pipeline structure and pipeline metadata,
 #'     including the pipeline Amazon Resource Name (ARN).
-#' 
+#'
 #' -   `get_pipeline_execution`,
 #'     which returns information about a specific execution of a pipeline.
-#' 
+#'
 #' -   `get_pipeline_state`, which
 #'     returns information about the current state of the stages and
 #'     actions of a pipeline.
-#' 
+#'
 #' -   `list_action_executions`,
 #'     which returns action-level details for past executions. The details
 #'     include full stage and action-level details, including individual
 #'     action duration, status, any errors that occurred during the
 #'     execution, and input and output artifact location details.
-#' 
+#'
 #' -   `list_pipelines`, which gets a
 #'     summary of all of the pipelines associated with your account.
-#' 
+#'
 #' -   `list_pipeline_executions`,
 #'     which gets a summary of the most recent executions for a pipeline.
-#' 
+#'
 #' -   `start_pipeline_execution`,
 #'     which runs the most recent revision of an artifact through the
 #'     pipeline.
-#' 
+#'
 #' -   `stop_pipeline_execution`,
 #'     which stops the specified pipeline execution from continuing through
 #'     the pipeline.
-#' 
+#'
 #' -   `update_pipeline`, which updates a
 #'     pipeline with edits or changes to the structure of the pipeline.
-#' 
+#'
 #' Pipelines include *stages*. Each stage contains one or more actions that
 #' must complete before the next stage begins. A stage results in success
 #' or failure. If a stage fails, the pipeline stops at that stage and
@@ -16311,7 +16746,7 @@ codegurusecurity <- function(config = list(), credentials = list(), endpoint = N
 #' pipeline. For more information about the structure of stages and
 #' actions, see [CodePipeline Pipeline Structure
 #' Reference](https://docs.aws.amazon.com/codepipeline/latest/userguide/reference-pipeline-structure.html).
-#' 
+#'
 #' Pipeline stages include *actions* that are categorized into categories
 #' such as source or build actions performed in a stage of a pipeline. For
 #' example, you can use a source action to import artifacts into a pipeline
@@ -16321,79 +16756,79 @@ codegurusecurity <- function(config = list(), credentials = list(), endpoint = N
 #' `create_pipeline` and
 #' `get_pipeline_state`. Valid action
 #' categories are:
-#' 
+#'
 #' -   Source
-#' 
+#'
 #' -   Build
-#' 
+#'
 #' -   Test
-#' 
+#'
 #' -   Deploy
-#' 
+#'
 #' -   Approval
-#' 
+#'
 #' -   Invoke
-#' 
+#'
 #' -   Compute
-#' 
+#'
 #' Pipelines also include *transitions*, which allow the transition of
 #' artifacts from one stage to the next in a pipeline after the actions in
 #' one stage complete.
-#' 
+#'
 #' You can work with transitions by calling:
-#' 
+#'
 #' -   `disable_stage_transition`,
 #'     which prevents artifacts from transitioning to the next stage in a
 #'     pipeline.
-#' 
+#'
 #' -   `enable_stage_transition`,
 #'     which enables transition of artifacts between stages in a pipeline.
-#' 
+#'
 #' **Using the API to integrate with CodePipeline**
-#' 
+#'
 #' For third-party integrators or developers who want to create their own
 #' integrations with CodePipeline, the expected sequence varies from the
 #' standard API user. To integrate with CodePipeline, developers need to
 #' work with the following items:
-#' 
+#'
 #' **Jobs**, which are instances of an action. For example, a job for a
 #' source action might import a revision of an artifact from a source.
-#' 
+#'
 #' You can work with jobs by calling:
-#' 
+#'
 #' -   `acknowledge_job`, which confirms
 #'     whether a job worker has received the specified job.
-#' 
+#'
 #' -   `get_job_details`, which returns the
 #'     details of a job.
-#' 
+#'
 #' -   `poll_for_jobs`, which determines
 #'     whether there are any jobs to act on.
-#' 
+#'
 #' -   `put_job_failure_result`,
 #'     which provides details of a job failure.
-#' 
+#'
 #' -   `put_job_success_result`,
 #'     which provides details of a job success.
-#' 
+#'
 #' **Third party jobs**, which are instances of an action created by a
 #' partner action and integrated into CodePipeline. Partner actions are
 #' created by members of the Amazon Web Services Partner Network.
-#' 
+#'
 #' You can work with third party jobs by calling:
-#' 
+#'
 #' -   `acknowledge_third_party_job`,
 #'     which confirms whether a job worker has received the specified job.
-#' 
+#'
 #' -   `get_third_party_job_details`,
 #'     which requests the details of a job for a partner action.
-#' 
+#'
 #' -   `poll_for_third_party_jobs`,
 #'     which determines whether there are any jobs to act on.
-#' 
+#'
 #' -   `put_third_party_job_failure_result`,
 #'     which provides details of a job failure.
-#' 
+#'
 #' -   `put_third_party_job_success_result`,
 #'     which provides details of a job success.
 #'
@@ -16533,7 +16968,12 @@ codegurusecurity <- function(config = list(), credentials = list(), endpoint = N
 #'
 #' @rdname codepipeline
 #' @export
-codepipeline <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+codepipeline <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.developer.tools::codepipeline(
     config = config,
     credentials = credentials,
@@ -16549,7 +16989,7 @@ codepipeline <- function(config = list(), credentials = list(), endpoint = NULL,
 #' descriptions and usage examples of the operations and data types for the
 #' Amazon Web Services CodeConnections API. You can use the connections API
 #' to work with connections and installations.
-#' 
+#'
 #' *Connections* are configurations that you use to connect Amazon Web
 #' Services resources to external code repositories. Each connection is a
 #' resource that can be given to services such as CodePipeline to connect
@@ -16558,59 +16998,59 @@ codepipeline <- function(config = list(), credentials = list(), endpoint = NULL,
 #' code change is made to your third-party code repository. Each connection
 #' is named and associated with a unique ARN that is used to reference the
 #' connection.
-#' 
+#'
 #' When you create a connection, the console initiates a third-party
 #' connection handshake. *Installations* are the apps that are used to
 #' conduct this handshake. For example, the installation for the Bitbucket
 #' provider type is the Bitbucket app. When you create a connection, you
 #' can choose an existing installation or create one.
-#' 
+#'
 #' When you want to create a connection to an installed provider type such
 #' as GitHub Enterprise Server, you create a *host* for your connections.
-#' 
+#'
 #' You can work with connections by calling:
-#' 
+#'
 #' -   `create_connection`, which
 #'     creates a uniquely named connection that can be referenced by
 #'     services such as CodePipeline.
-#' 
+#'
 #' -   `delete_connection`, which
 #'     deletes the specified connection.
-#' 
+#'
 #' -   `get_connection`, which returns
 #'     information about the connection, including the connection status.
-#' 
+#'
 #' -   `list_connections`, which lists
 #'     the connections associated with your account.
-#' 
+#'
 #' You can work with hosts by calling:
-#' 
+#'
 #' -   `create_host`, which creates a host
 #'     that represents the infrastructure where your provider is installed.
-#' 
+#'
 #' -   `delete_host`, which deletes the
 #'     specified host.
-#' 
+#'
 #' -   `get_host`, which returns information
 #'     about the host, including the setup status.
-#' 
+#'
 #' -   `list_hosts`, which lists the hosts
 #'     associated with your account.
-#' 
+#'
 #' You can work with tags in Amazon Web Services CodeConnections by calling
 #' the following:
-#' 
+#'
 #' -   `list_tags_for_resource`,
 #'     which gets information about Amazon Web Services tags for a
 #'     specified Amazon Resource Name (ARN) in Amazon Web Services
 #'     CodeConnections.
-#' 
+#'
 #' -   `tag_resource`, which adds or
 #'     updates tags for a resource in Amazon Web Services CodeConnections.
-#' 
+#'
 #' -   `untag_resource`, which removes
 #'     tags for a resource in Amazon Web Services CodeConnections.
-#' 
+#'
 #' For information about how to use Amazon Web Services CodeConnections,
 #' see the [Developer Tools User
 #' Guide](https://docs.aws.amazon.com/dtconsole/latest/userguide/welcome-connections.html).
@@ -16735,7 +17175,12 @@ codepipeline <- function(config = list(), credentials = list(), endpoint = NULL,
 #'
 #' @rdname codeconnections
 #' @export
-codeconnections <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+codeconnections <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.developer.tools::codeconnections(
     config = config,
     credentials = credentials,
@@ -16748,12 +17193,12 @@ codeconnections <- function(config = list(), credentials = list(), endpoint = NU
 #'
 #' @description
 #' AWS CodeStar Connections
-#' 
+#'
 #' This Amazon Web Services CodeStar Connections API Reference provides
 #' descriptions and usage examples of the operations and data types for the
 #' Amazon Web Services CodeStar Connections API. You can use the
 #' connections API to work with connections and installations.
-#' 
+#'
 #' *Connections* are configurations that you use to connect Amazon Web
 #' Services resources to external code repositories. Each connection is a
 #' resource that can be given to services such as CodePipeline to connect
@@ -16762,63 +17207,63 @@ codeconnections <- function(config = list(), credentials = list(), endpoint = NU
 #' code change is made to your third-party code repository. Each connection
 #' is named and associated with a unique ARN that is used to reference the
 #' connection.
-#' 
+#'
 #' When you create a connection, the console initiates a third-party
 #' connection handshake. *Installations* are the apps that are used to
 #' conduct this handshake. For example, the installation for the Bitbucket
 #' provider type is the Bitbucket app. When you create a connection, you
 #' can choose an existing installation or create one.
-#' 
+#'
 #' When you want to create a connection to an installed provider type such
 #' as GitHub Enterprise Server, you create a *host* for your connections.
-#' 
+#'
 #' You can work with connections by calling:
-#' 
+#'
 #' -   `create_connection`, which
 #'     creates a uniquely named connection that can be referenced by
 #'     services such as CodePipeline.
-#' 
+#'
 #' -   `delete_connection`, which
 #'     deletes the specified connection.
-#' 
+#'
 #' -   `get_connection`, which
 #'     returns information about the connection, including the connection
 #'     status.
-#' 
+#'
 #' -   `list_connections`, which
 #'     lists the connections associated with your account.
-#' 
+#'
 #' You can work with hosts by calling:
-#' 
+#'
 #' -   `create_host`, which creates a
 #'     host that represents the infrastructure where your provider is
 #'     installed.
-#' 
+#'
 #' -   `delete_host`, which deletes the
 #'     specified host.
-#' 
+#'
 #' -   `get_host`, which returns
 #'     information about the host, including the setup status.
-#' 
+#'
 #' -   `list_hosts`, which lists the
 #'     hosts associated with your account.
-#' 
+#'
 #' You can work with tags in Amazon Web Services CodeStar Connections by
 #' calling the following:
-#' 
+#'
 #' -   `list_tags_for_resource`,
 #'     which gets information about Amazon Web Services tags for a
 #'     specified Amazon Resource Name (ARN) in Amazon Web Services CodeStar
 #'     Connections.
-#' 
+#'
 #' -   `tag_resource`, which adds or
 #'     updates tags for a resource in Amazon Web Services CodeStar
 #'     Connections.
-#' 
+#'
 #' -   `untag_resource`, which
 #'     removes tags for a resource in Amazon Web Services CodeStar
 #'     Connections.
-#' 
+#'
 #' For information about how to use Amazon Web Services CodeStar
 #' Connections, see the [Developer Tools User
 #' Guide](https://docs.aws.amazon.com/dtconsole/latest/userguide/welcome-connections.html).
@@ -16943,7 +17388,12 @@ codeconnections <- function(config = list(), credentials = list(), endpoint = NU
 #'
 #' @rdname codestarconnections
 #' @export
-codestarconnections <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+codestarconnections <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.developer.tools::codestarconnections(
     config = config,
     credentials = credentials,
@@ -16959,57 +17409,57 @@ codestarconnections <- function(config = list(), credentials = list(), endpoint 
 #' usage examples of the operations and data types for the AWS CodeStar
 #' Notifications API. You can use the AWS CodeStar Notifications API to
 #' work with the following objects:
-#' 
+#'
 #' Notification rules, by calling the following:
-#' 
+#'
 #' -   `create_notification_rule`,
 #'     which creates a notification rule for a resource in your account.
-#' 
+#'
 #' -   `delete_notification_rule`,
 #'     which deletes a notification rule.
-#' 
+#'
 #' -   `describe_notification_rule`,
 #'     which provides information about a notification rule.
-#' 
+#'
 #' -   `list_notification_rules`,
 #'     which lists the notification rules associated with your account.
-#' 
+#'
 #' -   `update_notification_rule`,
 #'     which changes the name, events, or targets associated with a
 #'     notification rule.
-#' 
+#'
 #' -   `subscribe`, which subscribes a
 #'     target to a notification rule.
-#' 
+#'
 #' -   `unsubscribe`, which removes a
 #'     target from a notification rule.
-#' 
+#'
 #' Targets, by calling the following:
-#' 
+#'
 #' -   `delete_target`, which
 #'     removes a notification rule target from a notification rule.
-#' 
+#'
 #' -   `list_targets`, which lists
 #'     the targets associated with a notification rule.
-#' 
+#'
 #' Events, by calling the following:
-#' 
+#'
 #' -   `list_event_types`, which
 #'     lists the event types you can include in a notification rule.
-#' 
+#'
 #' Tags, by calling the following:
-#' 
+#'
 #' -   `list_tags_for_resource`,
 #'     which lists the tags already associated with a notification rule in
 #'     your account.
-#' 
+#'
 #' -   `tag_resource`, which
 #'     associates a tag you provide with a notification rule in your
 #'     account.
-#' 
+#'
 #' -   `untag_resource`, which
 #'     removes a tag from a notification rule in your account.
-#' 
+#'
 #' For information about how to use AWS CodeStar Notifications, see the
 #' [Amazon Web Services Developer Tools Console User
 #' Guide](https://docs.aws.amazon.com/dtconsole/latest/userguide/what-is-dtconsole.html).
@@ -17120,7 +17570,12 @@ codestarconnections <- function(config = list(), credentials = list(), endpoint 
 #'
 #' @rdname codestarnotifications
 #' @export
-codestarnotifications <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+codestarnotifications <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.developer.tools::codestarnotifications(
     config = config,
     credentials = credentials,
@@ -17277,7 +17732,12 @@ codestarnotifications <- function(config = list(), credentials = list(), endpoin
 #'
 #' @rdname drs
 #' @export
-drs <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+drs <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.developer.tools::drs(
     config = config,
     credentials = credentials,
@@ -17299,13 +17759,13 @@ drs <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #' help you improve your operational applications. For more information,
 #' see [What is Amazon DevOps
 #' Guru](https://docs.aws.amazon.com/devops-guru/latest/userguide/welcome.html).
-#' 
+#'
 #' You can specify 1 or 2 Amazon Simple Notification Service topics so you
 #' are notified every time a new insight is created. You can also enable
 #' DevOps Guru to generate an OpsItem in Amazon Web Services Systems
 #' Manager for each insight to help you manage and track your work
 #' addressing insights.
-#' 
+#'
 #' To learn about the DevOps Guru workflow, see [How DevOps Guru
 #' works](https://docs.aws.amazon.com/devops-guru/latest/userguide/welcome.html#how-it-works).
 #' To learn about DevOps Guru concepts, see [Concepts in DevOps
@@ -17435,7 +17895,12 @@ drs <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #'
 #' @rdname devopsguru
 #' @export
-devopsguru <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+devopsguru <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.developer.tools::devopsguru(
     config = config,
     credentials = credentials,
@@ -17571,7 +18036,12 @@ devopsguru <- function(config = list(), credentials = list(), endpoint = NULL, r
 #'
 #' @rdname fis
 #' @export
-fis <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+fis <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.developer.tools::fis(
     config = config,
     credentials = credentials,
@@ -17584,7 +18054,7 @@ fis <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #'
 #' @description
 #' Well-Architected Tool
-#' 
+#'
 #' This is the *Well-Architected Tool API Reference*. The WA Tool API
 #' provides programmatic access to the [Well-Architected
 #' Tool](https://aws.amazon.com/well-architected-tool/) in the Amazon Web
@@ -17757,7 +18227,12 @@ fis <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #'
 #' @rdname wellarchitected
 #' @export
-wellarchitected <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+wellarchitected <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.developer.tools::wellarchitected(
     config = config,
     credentials = credentials,
@@ -17904,7 +18379,12 @@ wellarchitected <- function(config = list(), credentials = list(), endpoint = NU
 #'
 #' @rdname xray
 #' @export
-xray <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+xray <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.developer.tools::xray(
     config = config,
     credentials = credentials,
@@ -17924,18 +18404,18 @@ xray <- function(config = list(), credentials = list(), endpoint = NULL, region 
 #' to monitor the performance of your containerized workloads, and also
 #' enjoy improved scalability, availability, and security without having to
 #' manage the underlying infrastructure.
-#' 
+#'
 #' For more information about Amazon Managed Service for Prometheus, see
 #' the [Amazon Managed Service for
 #' Prometheus](https://docs.aws.amazon.com/prometheus/latest/userguide/what-is-Amazon-Managed-Service-Prometheus.html)
 #' User Guide.
-#' 
+#'
 #' Amazon Managed Service for Prometheus includes two APIs.
-#' 
+#'
 #' -   Use the Amazon Web Services API described in this guide to manage
 #'     Amazon Managed Service for Prometheus resources, such as workspaces,
 #'     rule groups, and alert managers.
-#' 
+#'
 #' -   Use the [Prometheus-compatible
 #'     API](https://docs.aws.amazon.com/prometheus/latest/userguide/AMP-APIReference.html#AMP-APIReference-Prometheus-Compatible-Apis)
 #'     to work within your Prometheus workspace.
@@ -18060,7 +18540,12 @@ xray <- function(config = list(), credentials = list(), endpoint = NULL, region 
 #'
 #' @rdname prometheusservice
 #' @export
-prometheusservice <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+prometheusservice <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.management::prometheusservice(
     config = config,
     credentials = credentials,
@@ -18074,62 +18559,62 @@ prometheusservice <- function(config = list(), credentials = list(), endpoint = 
 #' @description
 #' With Application Auto Scaling, you can configure automatic scaling for
 #' the following resources:
-#' 
+#'
 #' -   Amazon AppStream 2.0 fleets
-#' 
+#'
 #' -   Amazon Aurora Replicas
-#' 
+#'
 #' -   Amazon Comprehend document classification and entity recognizer
 #'     endpoints
-#' 
+#'
 #' -   Amazon DynamoDB tables and global secondary indexes throughput
 #'     capacity
-#' 
+#'
 #' -   Amazon ECS services
-#' 
+#'
 #' -   Amazon ElastiCache for Redis clusters (replication groups)
-#' 
+#'
 #' -   Amazon EMR clusters
-#' 
+#'
 #' -   Amazon Keyspaces (for Apache Cassandra) tables
-#' 
+#'
 #' -   Lambda function provisioned concurrency
-#' 
+#'
 #' -   Amazon Managed Streaming for Apache Kafka broker storage
-#' 
+#'
 #' -   Amazon Neptune clusters
-#' 
+#'
 #' -   Amazon SageMaker endpoint variants
-#' 
+#'
 #' -   Amazon SageMaker inference components
-#' 
+#'
 #' -   Amazon SageMaker serverless endpoint provisioned concurrency
-#' 
+#'
 #' -   Spot Fleets (Amazon EC2)
-#' 
+#'
 #' -   Pool of WorkSpaces
-#' 
+#'
 #' -   Custom resources provided by your own applications or services
-#' 
+#'
 #' To learn more about Application Auto Scaling, see the [Application Auto
 #' Scaling User
 #' Guide](https://docs.aws.amazon.com/autoscaling/application/userguide/what-is-application-auto-scaling.html).
-#' 
+#'
 #' **API Summary**
-#' 
+#'
 #' The Application Auto Scaling service API includes three key sets of
 #' actions:
-#' 
+#'
 #' -   Register and manage scalable targets - Register Amazon Web Services
 #'     or custom resources as scalable targets (a resource that Application
 #'     Auto Scaling can scale), set minimum and maximum capacity limits,
 #'     and retrieve information on existing scalable targets.
-#' 
+#'
 #' -   Configure and manage automatic scaling - Define scaling policies to
 #'     dynamically scale your resources in response to CloudWatch alarms,
 #'     schedule one-time or recurring scaling actions, and retrieve your
 #'     recent scaling activity history.
-#' 
+#'
 #' -   Suspend and resume scaling - Temporarily suspend and later resume
 #'     automatic scaling by calling the
 #'     `register_scalable_target`
@@ -18251,7 +18736,12 @@ prometheusservice <- function(config = list(), credentials = list(), endpoint = 
 #'
 #' @rdname applicationautoscaling
 #' @export
-applicationautoscaling <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+applicationautoscaling <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.management::applicationautoscaling(
     config = config,
     credentials = credentials,
@@ -18268,7 +18758,7 @@ applicationautoscaling <- function(config = list(), credentials = list(), endpoi
 #' pinpoint the source of issues in your applications (built with
 #' technologies such as Microsoft IIS, .NET, and Microsoft SQL Server), by
 #' providing key insights into detected problems.
-#' 
+#'
 #' After you onboard your application, CloudWatch Application Insights
 #' identifies, recommends, and sets up metrics and logs. It continuously
 #' analyzes and correlates your metrics and logs for unusual behavior to
@@ -18404,7 +18894,12 @@ applicationautoscaling <- function(config = list(), credentials = list(), endpoi
 #'
 #' @rdname applicationinsights
 #' @export
-applicationinsights <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+applicationinsights <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.management::applicationinsights(
     config = config,
     credentials = credentials,
@@ -18423,19 +18918,19 @@ applicationinsights <- function(config = list(), credentials = list(), endpoint 
 #' visibility across your applications, services, and dependencies, so you
 #' can proactively monitor and efficiently triage any issues that may
 #' arise, ensuring optimal customer experience.
-#' 
+#'
 #' Application Signals provides the following benefits:
-#' 
+#'
 #' -   Automatically collect metrics and traces from your applications, and
 #'     display key metrics such as call volume, availability, latency,
 #'     faults, and errors.
-#' 
+#'
 #' -   Create and monitor service level objectives (SLOs).
-#' 
+#'
 #' -   See a map of your application topology that Application Signals
 #'     automatically discovers, that gives you a visual representation of
 #'     your applications, dependencies, and their connectivity.
-#' 
+#'
 #' Application Signals works with CloudWatch RUM, CloudWatch Synthetics
 #' canaries, and Amazon Web Services Service Catalog AppRegistry, to
 #' display your client pages, Synthetics canaries, and application names
@@ -18549,7 +19044,12 @@ applicationinsights <- function(config = list(), credentials = list(), endpoint 
 #'
 #' @rdname cloudwatchapplicationsignals
 #' @export
-cloudwatchapplicationsignals <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+cloudwatchapplicationsignals <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.management::cloudwatchapplicationsignals(
     config = config,
     credentials = credentials,
@@ -18563,12 +19063,12 @@ cloudwatchapplicationsignals <- function(config = list(), credentials = list(), 
 #' @description
 #' This reference provides descriptions of the AWS Application Cost
 #' Profiler API.
-#' 
+#'
 #' The AWS Application Cost Profiler API provides programmatic access to
 #' view, create, update, and delete application cost report definitions, as
 #' well as to import your usage data into the Application Cost Profiler
 #' service.
-#' 
+#'
 #' For more information about using this service, see the AWS Application
 #' Cost Profiler User Guide.
 #'
@@ -18671,7 +19171,12 @@ cloudwatchapplicationsignals <- function(config = list(), credentials = list(), 
 #'
 #' @rdname applicationcostprofiler
 #' @export
-applicationcostprofiler <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+applicationcostprofiler <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.management::applicationcostprofiler(
     config = config,
     credentials = credentials,
@@ -18686,12 +19191,12 @@ applicationcostprofiler <- function(config = list(), credentials = list(), endpo
 #' Welcome to the Audit Manager API reference. This guide is for developers
 #' who need detailed information about the Audit Manager API operations,
 #' data types, and errors.
-#' 
+#'
 #' Audit Manager is a service that provides automated evidence collection
 #' so that you can continually audit your Amazon Web Services usage. You
 #' can use it to assess the effectiveness of your controls, manage risk,
 #' and simplify compliance.
-#' 
+#'
 #' Audit Manager provides prebuilt frameworks that structure and automate
 #' assessments for a given compliance standard. Frameworks include a
 #' prebuilt collection of controls with descriptions and testing
@@ -18699,24 +19204,24 @@ applicationcostprofiler <- function(config = list(), credentials = list(), endpo
 #' the specified compliance standard or regulation. You can also customize
 #' frameworks and controls to support internal audits with specific
 #' requirements.
-#' 
+#'
 #' Use the following links to get started with the Audit Manager API:
-#' 
+#'
 #' -   [Actions](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_Operations.html):
 #'     An alphabetical list of all Audit Manager API operations.
-#' 
+#'
 #' -   [Data
 #'     types](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_Types.html):
 #'     An alphabetical list of all Audit Manager data types.
-#' 
+#'
 #' -   [Common
 #'     parameters](https://docs.aws.amazon.com/audit-manager/latest/APIReference/CommonParameters.html):
 #'     Parameters that all operations can use.
-#' 
+#'
 #' -   [Common
 #'     errors](https://docs.aws.amazon.com/audit-manager/latest/APIReference/CommonErrors.html):
 #'     Client and server errors that all operations can return.
-#' 
+#'
 #' If you're new to Audit Manager, we recommend that you review the [Audit
 #' Manager User
 #' Guide](https://docs.aws.amazon.com/audit-manager/latest/userguide/what-is.html).
@@ -18876,7 +19381,12 @@ applicationcostprofiler <- function(config = list(), credentials = list(), endpo
 #'
 #' @rdname auditmanager
 #' @export
-auditmanager <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+auditmanager <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.management::auditmanager(
     config = config,
     credentials = credentials,
@@ -18889,11 +19399,11 @@ auditmanager <- function(config = list(), credentials = list(), endpoint = NULL,
 #'
 #' @description
 #' Amazon EC2 Auto Scaling
-#' 
+#'
 #' Amazon EC2 Auto Scaling is designed to automatically launch and
 #' terminate EC2 instances based on user-defined scaling policies,
 #' scheduled actions, and health checks.
-#' 
+#'
 #' For more information, see the [Amazon EC2 Auto Scaling User
 #' Guide](https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html)
 #' and the [Amazon EC2 Auto Scaling API
@@ -19062,7 +19572,12 @@ auditmanager <- function(config = list(), credentials = list(), endpoint = NULL,
 #'
 #' @rdname autoscaling
 #' @export
-autoscaling <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+autoscaling <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.management::autoscaling(
     config = config,
     credentials = credentials,
@@ -19075,30 +19590,30 @@ autoscaling <- function(config = list(), credentials = list(), endpoint = NULL, 
 #'
 #' @description
 #' AWS Auto Scaling
-#' 
+#'
 #' Use AWS Auto Scaling to create scaling plans for your applications to
 #' automatically scale your scalable AWS resources.
-#' 
+#'
 #' **API Summary**
-#' 
+#'
 #' You can use the AWS Auto Scaling service API to accomplish the following
 #' tasks:
-#' 
+#'
 #' -   Create and manage scaling plans
-#' 
+#'
 #' -   Define target tracking scaling policies to dynamically scale your
 #'     resources based on utilization
-#' 
+#'
 #' -   Scale Amazon EC2 Auto Scaling groups using predictive scaling and
 #'     dynamic scaling to scale your Amazon EC2 capacity faster
-#' 
+#'
 #' -   Set minimum and maximum capacity limits
-#' 
+#'
 #' -   Retrieve information on existing scaling plans
-#' 
+#'
 #' -   Access current forecast data and historical forecast data for up to
 #'     56 days previous
-#' 
+#'
 #' To learn more about AWS Auto Scaling, including information about
 #' granting IAM users required permissions for AWS Auto Scaling actions,
 #' see the [AWS Auto Scaling User
@@ -19203,7 +19718,12 @@ autoscaling <- function(config = list(), credentials = list(), endpoint = NULL, 
 #'
 #' @rdname autoscalingplans
 #' @export
-autoscalingplans <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+autoscalingplans <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.management::autoscalingplans(
     config = config,
     credentials = credentials,
@@ -19216,7 +19736,7 @@ autoscalingplans <- function(config = list(), credentials = list(), endpoint = N
 #'
 #' @description
 #' CloudFormation
-#' 
+#'
 #' CloudFormation allows you to create and manage Amazon Web Services
 #' infrastructure deployments predictably and repeatedly. You can use
 #' CloudFormation to leverage Amazon Web Services products, such as Amazon
@@ -19225,16 +19745,16 @@ autoscalingplans <- function(config = list(), credentials = list(), endpoint = N
 #' Scaling to build highly reliable, highly scalable, cost-effective
 #' applications without creating or configuring the underlying Amazon Web
 #' Services infrastructure.
-#' 
+#'
 #' With CloudFormation, you declare all your resources and dependencies in
 #' a template file. The template defines a collection of resources as a
 #' single unit called a stack. CloudFormation creates and deletes all
 #' member resources of the stack together and manages all dependencies
 #' between the resources for you.
-#' 
+#'
 #' For more information about CloudFormation, see the [CloudFormation
 #' product page](https://aws.amazon.com/cloudformation/).
-#' 
+#'
 #' CloudFormation makes use of other Amazon Web Services products. If you
 #' need additional technical information about a specific Amazon Web
 #' Services product, you can find the product's technical documentation at
@@ -19416,7 +19936,12 @@ autoscalingplans <- function(config = list(), credentials = list(), endpoint = N
 #'
 #' @rdname cloudformation
 #' @export
-cloudformation <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+cloudformation <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.management::cloudformation(
     config = config,
     credentials = credentials,
@@ -19429,18 +19954,18 @@ cloudformation <- function(config = list(), credentials = list(), endpoint = NUL
 #'
 #' @description
 #' CloudTrail
-#' 
+#'
 #' This is the CloudTrail API Reference. It provides descriptions of
 #' actions, data types, common parameters, and common errors for
 #' CloudTrail.
-#' 
+#'
 #' CloudTrail is a web service that records Amazon Web Services API calls
 #' for your Amazon Web Services account and delivers log files to an Amazon
 #' S3 bucket. The recorded information includes the identity of the user,
 #' the start time of the Amazon Web Services API call, the source IP
 #' address, the request parameters, and the response elements returned by
 #' the service.
-#' 
+#'
 #' As an alternative to the API, you can use one of the Amazon Web Services
 #' SDKs, which consist of libraries and sample code for various programming
 #' languages and platforms (Java, Ruby, .NET, iOS, Android, etc.). The SDKs
@@ -19449,7 +19974,7 @@ cloudformation <- function(config = list(), credentials = list(), endpoint = NUL
 #' requests automatically. For more information about the Amazon Web
 #' Services SDKs, including how to download and install them, see [Tools to
 #' Build on Amazon Web Services](https://aws.amazon.com/developer/tools/).
-#' 
+#'
 #' See the [CloudTrail User
 #' Guide](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html)
 #' for information about the data that is included with each Amazon Web
@@ -19604,7 +20129,12 @@ cloudformation <- function(config = list(), credentials = list(), endpoint = NUL
 #'
 #' @rdname cloudtrail
 #' @export
-cloudtrail <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+cloudtrail <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.management::cloudtrail(
     config = config,
     credentials = credentials,
@@ -19721,7 +20251,12 @@ cloudtrail <- function(config = list(), credentials = list(), endpoint = NULL, r
 #'
 #' @rdname cloudtraildataservice
 #' @export
-cloudtraildataservice <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+cloudtraildataservice <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.management::cloudtraildataservice(
     config = config,
     credentials = credentials,
@@ -19734,7 +20269,7 @@ cloudtraildataservice <- function(config = list(), credentials = list(), endpoin
 #'
 #' @description
 #' Config
-#' 
+#'
 #' Config provides a way to keep track of the configurations of all the
 #' Amazon Web Services resources associated with your Amazon Web Services
 #' account. You can use Config to get the current and historical
@@ -19745,7 +20280,7 @@ cloudtraildataservice <- function(config = list(), credentials = list(), endpoin
 #' or a security group. For a complete list of resources currently
 #' supported by Config, see [Supported Amazon Web Services
 #' resources](https://docs.aws.amazon.com/config/latest/developerguide/resource-config-reference.html#supported-resources).
-#' 
+#'
 #' You can access and manage Config through the Amazon Web Services
 #' Management Console, the Amazon Web Services Command Line Interface
 #' (Amazon Web Services CLI), the Config API, or the Amazon Web Services
@@ -19951,7 +20486,12 @@ cloudtraildataservice <- function(config = list(), credentials = list(), endpoin
 #'
 #' @rdname configservice
 #' @export
-configservice <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+configservice <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.management::configservice(
     config = config,
     credentials = credentials,
@@ -19966,99 +20506,99 @@ configservice <- function(config = list(), credentials = list(), endpoint = NULL
 #' Amazon Web Services Control Tower offers application programming
 #' interface (API) operations that support programmatic interaction with
 #' these types of resources:
-#' 
+#'
 #' -   [*Controls*](https://docs.aws.amazon.com/controltower/latest/controlreference/controls.html)
-#' 
+#'
 #'     -   `disable_control`
-#' 
+#'
 #'     -   `enable_control`
-#' 
+#'
 #'     -   `get_enabled_control`
-#' 
+#'
 #'     -   `list_control_operations`
-#' 
+#'
 #'     -   `list_enabled_controls`
-#' 
+#'
 #'     -   `update_enabled_control`
-#' 
+#'
 #' -   [*Landing
 #'     zones*](https://docs.aws.amazon.com/controltower/latest/userguide/lz-api-launch.html)
-#' 
+#'
 #'     -   `create_landing_zone`
-#' 
+#'
 #'     -   `delete_landing_zone`
-#' 
+#'
 #'     -   `get_landing_zone`
-#' 
+#'
 #'     -   `get_landing_zone_operation`
-#' 
+#'
 #'     -   `list_landing_zones`
-#' 
+#'
 #'     -   `list_landing_zone_operations`
-#' 
+#'
 #'     -   `reset_landing_zone`
-#' 
+#'
 #'     -   `update_landing_zone`
-#' 
+#'
 #' -   [*Baselines*](https://docs.aws.amazon.com/controltower/latest/userguide/types-of-baselines.html)
-#' 
+#'
 #'     -   `disable_baseline`
-#' 
+#'
 #'     -   `enable_baseline`
-#' 
+#'
 #'     -   `get_baseline`
-#' 
+#'
 #'     -   `get_baseline_operation`
-#' 
+#'
 #'     -   `get_enabled_baseline`
-#' 
+#'
 #'     -   `list_baselines`
-#' 
+#'
 #'     -   `list_enabled_baselines`
-#' 
+#'
 #'     -   `reset_enabled_baseline`
-#' 
+#'
 #'     -   `update_enabled_baseline`
-#' 
+#'
 #' -   [*Tagging*](https://docs.aws.amazon.com/controltower/latest/controlreference/tagging.html)
-#' 
+#'
 #'     -   `list_tags_for_resource`
-#' 
+#'
 #'     -   `tag_resource`
-#' 
+#'
 #'     -   `untag_resource`
-#' 
+#'
 #' For more information about these types of resources, see the [*Amazon
 #' Web Services Control Tower User
 #' Guide*](https://docs.aws.amazon.com/controltower/latest/userguide/what-is-control-tower.html)
 #' .
-#' 
+#'
 #' **About control APIs**
-#' 
+#'
 #' These interfaces allow you to apply the Amazon Web Services library of
 #' pre-defined *controls* to your organizational units, programmatically.
 #' In Amazon Web Services Control Tower, the terms "control" and
 #' "guardrail" are synonyms.
-#' 
+#'
 #' To call these APIs, you'll need to know:
-#' 
+#'
 #' -   the `controlIdentifier` for the control--or guardrail--you are
 #'     targeting.
-#' 
+#'
 #' -   the ARN associated with the target organizational unit (OU), which
 #'     we call the `targetIdentifier`.
-#' 
+#'
 #' -   the ARN associated with a resource that you wish to tag or untag.
-#' 
+#'
 #' **To get the `controlIdentifier` for your Amazon Web Services Control
 #' Tower control:**
-#' 
+#'
 #' The `controlIdentifier` is an ARN that is specified for each control.
 #' You can view the `controlIdentifier` in the console on the **Control
 #' details** page, as well as in the documentation.
-#' 
+#'
 #' **About identifiers for Amazon Web Services Control Tower**
-#' 
+#'
 #' The Amazon Web Services Control Tower `controlIdentifier` is unique in
 #' each Amazon Web Services Region for each control. You can find the
 #' `controlIdentifier` for each Region and control in the [Tables of
@@ -20067,7 +20607,7 @@ configservice <- function(config = list(), credentials = list(), endpoint = NULL
 #' or the [Control availability by Region
 #' tables](https://docs.aws.amazon.com/controltower/latest/controlreference/control-region-tables.html)
 #' in the *Amazon Web Services Control Tower Controls Reference Guide*.
-#' 
+#'
 #' A quick-reference list of control identifers for the Amazon Web Services
 #' Control Tower legacy *Strongly recommended* and *Elective* controls is
 #' given in [Resource identifiers for APIs and
@@ -20075,49 +20615,49 @@ configservice <- function(config = list(), credentials = list(), endpoint = NULL
 #' in the [*Amazon Web Services Control Tower Controls Reference
 #' Guide*](https://docs.aws.amazon.com/controltower/latest/controlreference/control-identifiers.html)
 #' . Remember that *Mandatory* controls cannot be added or removed.
-#' 
+#'
 #' **Some controls have two identifiers**
-#' 
+#'
 #' -   **ARN format for Amazon Web Services Control Tower:**
 #'     `arn:aws:controltower:{REGION}::control/{CONTROL_TOWER_OPAQUE_ID}`
-#' 
+#'
 #'     **Example:**
-#' 
+#'
 #'     `arn:aws:controltower:us-west-2::control/AWS-GR_AUTOSCALING_LAUNCH_CONFIG_PUBLIC_IP_DISABLED`
-#' 
+#'
 #' -   **ARN format for Amazon Web Services Control Catalog:**
 #'     `arn:{PARTITION}:controlcatalog:::control/{CONTROL_CATALOG_OPAQUE_ID}`
-#' 
+#'
 #' You can find the `{CONTROL_CATALOG_OPAQUE_ID}` in the [*Amazon Web
 #' Services Control Tower Controls Reference
 #' Guide*](https://docs.aws.amazon.com/controltower/latest/controlreference/all-global-identifiers.html)
 #' , or in the Amazon Web Services Control Tower console, on the **Control
 #' details** page.
-#' 
+#'
 #' The Amazon Web Services Control Tower APIs for enabled controls, such as
 #' `get_enabled_control` and
 #' `list_enabled_controls` always
 #' return an ARN of the same type given when the control was enabled.
-#' 
+#'
 #' **To get the `targetIdentifier`:**
-#' 
+#'
 #' The `targetIdentifier` is the ARN for an OU.
-#' 
+#'
 #' In the Amazon Web Services Organizations console, you can find the ARN
 #' for the OU on the **Organizational unit details** page associated with
 #' that OU.
-#' 
+#'
 #' **OU ARN format:**
-#' 
+#'
 #' `arn:${Partition}:organizations::${MasterAccountId}:ou/o-${OrganizationId}/ou-${OrganizationalUnitId}`
-#' 
+#'
 #' **About landing zone APIs**
-#' 
+#'
 #' You can configure and launch an Amazon Web Services Control Tower
 #' landing zone with APIs. For an introduction and steps, see [Getting
 #' started with Amazon Web Services Control Tower using
 #' APIs](https://docs.aws.amazon.com/controltower/latest/userguide/getting-started-apis.html).
-#' 
+#'
 #' For an overview of landing zone API operations, see [Amazon Web Services
 #' Control Tower supports landing zone
 #' APIs](https://docs.aws.amazon.com/controltower/latest/userguide/2023-all.html#landing-zone-apis).
@@ -20125,37 +20665,37 @@ configservice <- function(config = list(), credentials = list(), endpoint = NULL
 #' document, the [API reference
 #' manual](https://docs.aws.amazon.com/controltower/latest/APIReference/API_Operations.html),
 #' in the "Actions" section.
-#' 
+#'
 #' **About baseline APIs**
-#' 
+#'
 #' You can apply the `AWSControlTowerBaseline` baseline to an
 #' organizational unit (OU) as a way to register the OU with Amazon Web
 #' Services Control Tower, programmatically. For a general overview of this
 #' capability, see [Amazon Web Services Control Tower supports APIs for OU
 #' registration and configuration with
 #' baselines](https://docs.aws.amazon.com/controltower/latest/userguide/2024-all.html#baseline-apis).
-#' 
+#'
 #' You can call the baseline API operations to view the baselines that
 #' Amazon Web Services Control Tower enables for your landing zone, on your
 #' behalf, when setting up the landing zone. These baselines are read-only
 #' baselines.
-#' 
+#'
 #' The individual API operations for baselines are detailed in this
 #' document, the [API reference
 #' manual](https://docs.aws.amazon.com/controltower/latest/APIReference/API_Operations.html),
 #' in the "Actions" section. For usage examples, see [Baseline API input
 #' and output examples with
 #' CLI](https://docs.aws.amazon.com/controltower/latest/userguide/baseline-api-examples.html).
-#' 
+#'
 #' **About Amazon Web Services Control Catalog identifiers**
-#' 
+#'
 #' -   The `enable_control` and
 #'     `disable_control` API operations can
 #'     be called by specifying either the Amazon Web Services Control Tower
 #'     identifer or the Amazon Web Services Control Catalog identifier. The
 #'     API response returns the same type of identifier that you specified
 #'     when calling the API.
-#' 
+#'
 #' -   If you use an Amazon Web Services Control Tower identifier to call
 #'     the `enable_control` API, and then
 #'     call `enable_control` again with an
@@ -20163,48 +20703,48 @@ configservice <- function(config = list(), credentials = list(), endpoint = NULL
 #'     Control Tower returns an error message stating that the control is
 #'     already enabled. Similar behavior applies to the
 #'     `disable_control` API operation.
-#' 
+#'
 #' -   Mandatory controls and the landing-zone-level Region deny control
 #'     have Amazon Web Services Control Tower identifiers only.
-#' 
+#'
 #' **Details and examples**
-#' 
+#'
 #' -   [Control API input and output examples with
 #'     CLI](https://docs.aws.amazon.com/controltower/latest/controlreference/control-api-examples-short.html)
-#' 
+#'
 #' -   [Baseline API input and output examples with
 #'     CLI](https://docs.aws.amazon.com/controltower/latest/userguide/baseline-api-examples.html)
-#' 
+#'
 #' -   [Enable controls with
 #'     CloudFormation](https://docs.aws.amazon.com/controltower/latest/controlreference/enable-controls.html)
-#' 
+#'
 #' -   [Launch a landing zone with
 #'     CloudFormation](https://docs.aws.amazon.com/controltower/latest/userguide/lz-apis-cfn-setup.html)
-#' 
+#'
 #' -   [Control metadata tables (large
 #'     page)](https://docs.aws.amazon.com/controltower/latest/controlreference/control-metadata-tables.html)
-#' 
+#'
 #' -   [Control availability by Region tables (large
 #'     page)](https://docs.aws.amazon.com/controltower/latest/controlreference/control-region-tables.html)
-#' 
+#'
 #' -   [List of identifiers for legacy
 #'     controls](https://docs.aws.amazon.com/controltower/latest/controlreference/control-identifiers.html)
-#' 
+#'
 #' -   [Controls reference
 #'     guide](https://docs.aws.amazon.com/controltower/latest/controlreference/controls.html)
-#' 
+#'
 #' -   [Controls library
 #'     groupings](https://docs.aws.amazon.com/controltower/latest/controlreference/controls-reference.html)
-#' 
+#'
 #' -   [Creating Amazon Web Services Control Tower resources with Amazon
 #'     Web Services
 #'     CloudFormation](https://docs.aws.amazon.com/controltower/latest/userguide/creating-resources-with-cloudformation.html)
-#' 
+#'
 #' To view the open source resource repository on GitHub, see
 #' [aws-cloudformation/aws-cloudformation-resource-providers-controltower](https://github.com/aws-cloudformation/aws-cloudformation-resource-providers-controltower)
-#' 
+#'
 #' **Recording API Requests**
-#' 
+#'
 #' Amazon Web Services Control Tower supports Amazon Web Services
 #' CloudTrail, a service that records Amazon Web Services API calls for
 #' your Amazon Web Services account and delivers log files to an Amazon S3
@@ -20339,7 +20879,12 @@ configservice <- function(config = list(), credentials = list(), endpoint = NULL
 #'
 #' @rdname controltower
 #' @export
-controltower <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+controltower <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.management::controltower(
     config = config,
     credentials = credentials,
@@ -20357,7 +20902,7 @@ controltower <- function(config = list(), credentials = list(), endpoint = NULL,
 #' help you decide when to ramp up traffic to your users. This helps you
 #' reduce risk and identify unintended consequences before you fully launch
 #' the feature.
-#' 
+#'
 #' You can also conduct A/B experiments to make feature design decisions
 #' based on evidence and data. An experiment can test as many as five
 #' variations at once. Evidently collects experiment data and analyzes it
@@ -20496,7 +21041,12 @@ controltower <- function(config = list(), credentials = list(), endpoint = NULL,
 #'
 #' @rdname cloudwatchevidently
 #' @export
-cloudwatchevidently <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+cloudwatchevidently <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.management::cloudwatchevidently(
     config = config,
     credentials = credentials,
@@ -20654,7 +21204,12 @@ cloudwatchevidently <- function(config = list(), credentials = list(), endpoint 
 #'
 #' @rdname finspace
 #' @export
-finspace <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+finspace <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.management::finspace(
     config = config,
     credentials = credentials,
@@ -20672,7 +21227,7 @@ finspace <- function(config = list(), credentials = list(), endpoint = NULL, reg
 #' Managed Grafana makes it easy to deploy, operate, and scale Grafana, a
 #' widely deployed data visualization tool that is popular for its
 #' extensible data support.
-#' 
+#'
 #' With Amazon Managed Grafana, you create logically isolated Grafana
 #' servers called *workspaces*. In a workspace, you can create Grafana
 #' dashboards and visualizations to analyze your metrics, logs, and traces
@@ -20797,7 +21352,12 @@ finspace <- function(config = list(), credentials = list(), endpoint = NULL, reg
 #'
 #' @rdname managedgrafana
 #' @export
-managedgrafana <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+managedgrafana <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.management::managedgrafana(
     config = config,
     credentials = credentials,
@@ -20810,19 +21370,19 @@ managedgrafana <- function(config = list(), credentials = list(), endpoint = NUL
 #'
 #' @description
 #' Health
-#' 
+#'
 #' The Health API provides access to the Health information that appears in
 #' the Health Dashboard. You can use the API operations to get information
 #' about events that might affect your Amazon Web Services services and
 #' resources.
-#' 
+#'
 #' You must have a Business, Enterprise On-Ramp, or Enterprise Support plan
 #' from [Amazon Web Services
 #' Support](https://aws.amazon.com/premiumsupport/) to use the Health API.
 #' If you call the Health API from an Amazon Web Services account that
 #' doesn't have a Business, Enterprise On-Ramp, or Enterprise Support plan,
 #' you receive a `SubscriptionRequiredException` error.
-#' 
+#'
 #' For API access, you need an access key ID and a secret access key. Use
 #' temporary credentials instead of long-term access keys when possible.
 #' Temporary credentials include an access key ID, a secret access key, and
@@ -20830,7 +21390,7 @@ managedgrafana <- function(config = list(), credentials = list(), endpoint = NUL
 #' information, see [Best practices for managing Amazon Web Services access
 #' keys](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#securing_access-keys)
 #' in the *Amazon Web Services General Reference*.
-#' 
+#'
 #' You can use the Health endpoint health.us-east-1.amazonaws.com (HTTPS)
 #' to call the Health API operations. Health supports a multi-Region
 #' application architecture and has two regional endpoints in an
@@ -20840,11 +21400,11 @@ managedgrafana <- function(config = list(), credentials = list(), endpoint = NUL
 #' see [Accessing the Health
 #' API](https://docs.aws.amazon.com/health/latest/ug/health-api.html) in
 #' the *Health User Guide*.
-#' 
+#'
 #' For authentication of requests, Health uses the [Signature Version 4
 #' Signing
 #' Process](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html).
-#' 
+#'
 #' If your Amazon Web Services account is part of Organizations, you can
 #' use the Health organizational view feature. This feature provides a
 #' centralized view of Health events across all accounts in your
@@ -20855,15 +21415,15 @@ managedgrafana <- function(config = list(), credentials = list(), endpoint = NUL
 #' more information, see [Aggregating Health
 #' events](https://docs.aws.amazon.com/health/latest/ug/aggregate-events.html)
 #' in the *Health User Guide*.
-#' 
+#'
 #' When you use the Health API operations to return Health events, see the
 #' following recommendations:
-#' 
+#'
 #' -   Use the
 #'     [eventScopeCode](https://docs.aws.amazon.com/health/latest/APIReference/API_Event.html#AWSHealth-Type-Event-eventScopeCode)
 #'     parameter to specify whether to return Health events that are public
 #'     or account-specific.
-#' 
+#'
 #' -   Use pagination to view all events from the response. For example, if
 #'     you call the
 #'     `describe_events_for_organization`
@@ -20978,7 +21538,12 @@ managedgrafana <- function(config = list(), credentials = list(), endpoint = NUL
 #'
 #' @rdname health
 #' @export
-health <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+health <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.management::health(
     config = config,
     credentials = credentials,
@@ -21136,7 +21701,12 @@ health <- function(config = list(), credentials = list(), endpoint = NULL, regio
 #'
 #' @rdname licensemanager
 #' @export
-licensemanager <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+licensemanager <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.management::licensemanager(
     config = config,
     credentials = credentials,
@@ -21262,7 +21832,12 @@ licensemanager <- function(config = list(), credentials = list(), endpoint = NUL
 #'
 #' @rdname licensemanagerusersubscriptions
 #' @export
-licensemanagerusersubscriptions <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+licensemanagerusersubscriptions <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.management::licensemanagerusersubscriptions(
     config = config,
     credentials = credentials,
@@ -21381,7 +21956,12 @@ licensemanagerusersubscriptions <- function(config = list(), credentials = list(
 #'
 #' @rdname licensemanagerlinuxsubscriptions
 #' @export
-licensemanagerlinuxsubscriptions <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+licensemanagerlinuxsubscriptions <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.management::licensemanagerlinuxsubscriptions(
     config = config,
     credentials = credentials,
@@ -21399,9 +21979,9 @@ licensemanagerlinuxsubscriptions <- function(config = list(), credentials = list
 #' CloudWatch console. Alternatively, you can use CloudWatch Logs commands
 #' in the Amazon Web Services CLI, CloudWatch Logs API, or CloudWatch Logs
 #' SDK.
-#' 
+#'
 #' You can use CloudWatch Logs to:
-#' 
+#'
 #' -   **Monitor logs from EC2 instances in real time**: You can use
 #'     CloudWatch Logs to monitor applications and systems using log data.
 #'     For example, CloudWatch Logs can track the number of errors that
@@ -21415,12 +21995,12 @@ licensemanagerlinuxsubscriptions <- function(config = list(), credentials = list
 #'     Apache access log). When the term you are searching for is found,
 #'     CloudWatch Logs reports the data to a CloudWatch metric that you
 #'     specify.
-#' 
+#'
 #' -   **Monitor CloudTrail logged events**: You can create alarms in
 #'     CloudWatch and receive notifications of particular API activity as
 #'     captured by CloudTrail. You can use the notification to perform
 #'     troubleshooting.
-#' 
+#'
 #' -   **Archive log data**: You can use CloudWatch Logs to store your log
 #'     data in highly durable storage. You can change the log retention
 #'     setting so that any log events earlier than this setting are
@@ -21611,7 +22191,12 @@ licensemanagerlinuxsubscriptions <- function(config = list(), credentials = list
 #'
 #' @rdname cloudwatchlogs
 #' @export
-cloudwatchlogs <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+cloudwatchlogs <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.management::cloudwatchlogs(
     config = config,
     credentials = credentials,
@@ -21635,7 +22220,7 @@ cloudwatchlogs <- function(config = list(), credentials = list(), endpoint = NUL
 #' raises awareness for you when there are significant problems for your
 #' end users in the different geographic locations where your application
 #' runs.
-#' 
+#'
 #' Internet Monitor publishes internet measurements to CloudWatch Logs and
 #' CloudWatch Metrics, to easily support using CloudWatch tools with health
 #' information for geographies and networks specific to your application.
@@ -21644,7 +22229,7 @@ cloudwatchlogs <- function(config = list(), credentials = list(), endpoint = NUL
 #' Services network, you also automatically receive an Amazon Web Services
 #' Health Dashboard notification with the steps that Amazon Web Services is
 #' taking to mitigate the problem.
-#' 
+#'
 #' To use Internet Monitor, you create a *monitor* and associate your
 #' application's resources with it - VPCs, NLBs, CloudFront distributions,
 #' or WorkSpaces directories - so Internet Monitor can determine where your
@@ -21652,7 +22237,7 @@ cloudwatchlogs <- function(config = list(), credentials = list(), endpoint = NUL
 #' internet measurements from Amazon Web Services that are specific to the
 #' locations and ASNs (typically, internet service providers or ISPs) that
 #' communicate with your application.
-#' 
+#'
 #' For more information, see [Using Amazon CloudWatch Internet
 #' Monitor](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-InternetMonitor.html)
 #' in the *Amazon CloudWatch User Guide*.
@@ -21766,7 +22351,12 @@ cloudwatchlogs <- function(config = list(), credentials = list(), endpoint = NUL
 #'
 #' @rdname cloudwatchinternetmonitor
 #' @export
-cloudwatchinternetmonitor <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+cloudwatchinternetmonitor <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.management::cloudwatchinternetmonitor(
     config = config,
     credentials = credentials,
@@ -21783,14 +22373,14 @@ cloudwatchinternetmonitor <- function(config = list(), credentials = list(), end
 #' in real time. You can use CloudWatch to collect and track metrics, which
 #' are the variables you want to measure for your resources and
 #' applications.
-#' 
+#'
 #' CloudWatch alarms send notifications or automatically change the
 #' resources you are monitoring based on rules that you define. For
 #' example, you can monitor the CPU usage and disk reads and writes of your
 #' Amazon EC2 instances. Then, use this data to determine whether you
 #' should launch additional instances to handle increased load. You can
 #' also use this data to stop under-used instances to save money.
-#' 
+#'
 #' In addition to monitoring the built-in metrics that come with Amazon Web
 #' Services, you can monitor your own custom metrics. With CloudWatch, you
 #' gain system-wide visibility into resource utilization, application
@@ -21927,7 +22517,12 @@ cloudwatchinternetmonitor <- function(config = list(), credentials = list(), end
 #'
 #' @rdname cloudwatch
 #' @export
-cloudwatch <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+cloudwatch <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.management::cloudwatch(
     config = config,
     credentials = credentials,
@@ -21946,7 +22541,7 @@ cloudwatch <- function(config = list(), credentials = list(), endpoint = NULL, r
 #' multiple accounts within a Region. Seamlessly search, visualize, and
 #' analyze your metrics, logs, traces, and Application Insights
 #' applications in any of the linked accounts without account boundaries.
-#' 
+#'
 #' Set up one or more Amazon Web Services accounts as *monitoring accounts*
 #' and link them with multiple *source accounts*. A monitoring account is a
 #' central Amazon Web Services account that can view and interact with
@@ -22066,7 +22661,12 @@ cloudwatch <- function(config = list(), credentials = list(), endpoint = NULL, r
 #'
 #' @rdname cloudwatchobservabilityaccessmanager
 #' @export
-cloudwatchobservabilityaccessmanager <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+cloudwatchobservabilityaccessmanager <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.management::cloudwatchobservabilityaccessmanager(
     config = config,
     credentials = credentials,
@@ -22079,80 +22679,80 @@ cloudwatchobservabilityaccessmanager <- function(config = list(), credentials = 
 #'
 #' @description
 #' OpsWorks
-#' 
+#'
 #' Welcome to the *OpsWorks Stacks API Reference*. This guide provides
 #' descriptions, syntax, and usage examples for OpsWorks Stacks actions and
 #' data types, including common parameters and error codes.
-#' 
+#'
 #' OpsWorks Stacks is an application management service that provides an
 #' integrated experience for managing the complete application lifecycle.
 #' For information about OpsWorks, see the
 #' [OpsWorks](https://aws.amazon.com/) information page.
-#' 
+#'
 #' **SDKs and CLI**
-#' 
+#'
 #' Use the OpsWorks Stacks API by using the Command Line Interface (CLI) or
 #' by using one of the Amazon Web Services SDKs to implement applications
 #' in your preferred language. For more information, see:
-#' 
+#'
 #' -   [CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-welcome.html)
-#' 
+#'
 #' -   [SDK for
 #'     Java](https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/opsworks/AWSOpsWorksClient.html)
-#' 
+#'
 #' -   [SDK for
 #'     .NET](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/OpsWorks/NOpsWorks.html)
-#' 
+#'
 #' -   [SDK for
 #'     PHP](https://docs.aws.amazon.com/aws-sdk-php/v3/api/class-Aws.OpsWorks.OpsWorksClient.html)
-#' 
+#'
 #' -   [SDK for Ruby](https://docs.aws.amazon.com/sdk-for-ruby/v2/api/)
-#' 
+#'
 #' -   [Amazon Web Services SDK for
 #'     Node.js](https://docs.aws.amazon.com/sdk-for-javascript/)
-#' 
+#'
 #' -   [SDK for Python
 #'     (Boto)](http://docs.pythonboto.org/en/latest/ref/opsworks.html)
-#' 
+#'
 #' **Endpoints**
-#' 
+#'
 #' OpsWorks Stacks supports the following endpoints, all HTTPS. You must
 #' connect to one of the following endpoints. Stacks can only be accessed
 #' or managed within the endpoint in which they are created.
-#' 
+#'
 #' -   opsworks.us-east-1.amazonaws.com
-#' 
+#'
 #' -   opsworks.us-east-2.amazonaws.com
-#' 
+#'
 #' -   opsworks.us-west-1.amazonaws.com
-#' 
+#'
 #' -   opsworks.us-west-2.amazonaws.com
-#' 
+#'
 #' -   opsworks.ca-central-1.amazonaws.com (API only; not available in the
 #'     Amazon Web Services Management Console)
-#' 
+#'
 #' -   opsworks.eu-west-1.amazonaws.com
-#' 
+#'
 #' -   opsworks.eu-west-2.amazonaws.com
-#' 
+#'
 #' -   opsworks.eu-west-3.amazonaws.com
-#' 
+#'
 #' -   opsworks.eu-central-1.amazonaws.com
-#' 
+#'
 #' -   opsworks.ap-northeast-1.amazonaws.com
-#' 
+#'
 #' -   opsworks.ap-northeast-2.amazonaws.com
-#' 
+#'
 #' -   opsworks.ap-south-1.amazonaws.com
-#' 
+#'
 #' -   opsworks.ap-southeast-1.amazonaws.com
-#' 
+#'
 #' -   opsworks.ap-southeast-2.amazonaws.com
-#' 
+#'
 #' -   opsworks.sa-east-1.amazonaws.com
-#' 
+#'
 #' **Chef Versions**
-#' 
+#'
 #' When you call `create_stack`,
 #' `clone_stack`, or
 #' `update_stack` we recommend you use the
@@ -22160,7 +22760,7 @@ cloudwatchobservabilityaccessmanager <- function(config = list(), credentials = 
 #' recommended and default value for Linux stacks is currently 12. Windows
 #' stacks use Chef 12.2. For more information, see [Chef
 #' Versions](https://docs.aws.amazon.com/opsworks/latest/userguide/workingcookbook-chef11.html).
-#' 
+#'
 #' You can specify Chef 12, 11.10, or 11.4 for your Linux stack. We
 #' recommend migrating your existing Linux stacks to Chef 12 as soon as
 #' possible.
@@ -22332,7 +22932,12 @@ cloudwatchobservabilityaccessmanager <- function(config = list(), credentials = 
 #'
 #' @rdname opsworks
 #' @export
-opsworks <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+opsworks <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.management::opsworks(
     config = config,
     credentials = credentials,
@@ -22349,9 +22954,9 @@ opsworks <- function(config = list(), credentials = list(), endpoint = NULL, reg
 #' CM to create and manage AWS OpsWorks for Chef Automate and AWS OpsWorks
 #' for Puppet Enterprise servers, and add or remove nodes for the servers
 #' to manage.
-#' 
+#'
 #' **Glossary of terms**
-#' 
+#'
 #' -   **Server**: A configuration management server that can be
 #'     highly-available. The configuration management server runs on an
 #'     Amazon Elastic Compute Cloud (EC2) instance, and may use various
@@ -22360,57 +22965,57 @@ opsworks <- function(config = list(), credentials = list(), endpoint = NULL, reg
 #'     the configuration manager that you want to use, much like Amazon
 #'     RDS. In AWS OpsWorks CM, you do not start or stop servers. After you
 #'     create servers, they continue to run until they are deleted.
-#' 
+#'
 #' -   **Engine**: The engine is the specific configuration manager that
 #'     you want to use. Valid values in this release include `ChefAutomate`
 #'     and `Puppet`.
-#' 
+#'
 #' -   **Backup**: This is an application-level backup of the data that the
 #'     configuration manager stores. AWS OpsWorks CM creates an S3 bucket
 #'     for backups when you launch the first server. A backup maintains a
 #'     snapshot of a server's configuration-related attributes at the time
 #'     the backup starts.
-#' 
+#'
 #' -   **Events**: Events are always related to a server. Events are
 #'     written during server creation, when health checks run, when backups
 #'     are created, when system maintenance is performed, etc. When you
 #'     delete a server, the server's events are also deleted.
-#' 
+#'
 #' -   **Account attributes**: Every account has attributes that are
 #'     assigned in the AWS OpsWorks CM database. These attributes store
 #'     information about configuration limits (servers, backups, etc.) and
 #'     your customer account.
-#' 
+#'
 #' **Endpoints**
-#' 
+#'
 #' AWS OpsWorks CM supports the following endpoints, all HTTPS. You must
 #' connect to one of the following endpoints. Your servers can only be
 #' accessed or managed within the endpoint in which they are created.
-#' 
+#'
 #' -   opsworks-cm.us-east-1.amazonaws.com
-#' 
+#'
 #' -   opsworks-cm.us-east-2.amazonaws.com
-#' 
+#'
 #' -   opsworks-cm.us-west-1.amazonaws.com
-#' 
+#'
 #' -   opsworks-cm.us-west-2.amazonaws.com
-#' 
+#'
 #' -   opsworks-cm.ap-northeast-1.amazonaws.com
-#' 
+#'
 #' -   opsworks-cm.ap-southeast-1.amazonaws.com
-#' 
+#'
 #' -   opsworks-cm.ap-southeast-2.amazonaws.com
-#' 
+#'
 #' -   opsworks-cm.eu-central-1.amazonaws.com
-#' 
+#'
 #' -   opsworks-cm.eu-west-1.amazonaws.com
-#' 
+#'
 #' For more information, see [AWS OpsWorks endpoints and
 #' quotas](https://docs.aws.amazon.com/general/latest/gr/opsworks-service.html)
 #' in the AWS General Reference.
-#' 
+#'
 #' **Throttling limits**
-#' 
+#'
 #' All API operations allow for five requests per second with a burst of 10
 #' requests per second.
 #'
@@ -22526,7 +23131,12 @@ opsworks <- function(config = list(), credentials = list(), endpoint = NULL, reg
 #'
 #' @rdname opsworkscm
 #' @export
-opsworkscm <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+opsworkscm <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.management::opsworkscm(
     config = config,
     credentials = credentials,
@@ -22541,61 +23151,61 @@ opsworkscm <- function(config = list(), credentials = list(), endpoint = NULL, r
 #' Organizations is a web service that enables you to consolidate your
 #' multiple Amazon Web Services accounts into an *organization* and
 #' centrally manage your accounts and their resources.
-#' 
+#'
 #' This guide provides descriptions of the Organizations operations. For
 #' more information about using this service, see the [Organizations User
 #' Guide](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html).
-#' 
+#'
 #' **Support and feedback for Organizations**
-#' 
+#'
 #' We welcome your feedback. Send your comments to
 #' <feedback-awsorganizations@@amazon.com> or post your feedback and
 #' questions in the Organizations support forum. For more information about
 #' the Amazon Web Services support forums, see Forums Help.
-#' 
+#'
 #' **Endpoint to call When using the CLI or the Amazon Web Services SDK**
-#' 
+#'
 #' For the current release of Organizations, specify the `us-east-1` region
 #' for all Amazon Web Services API and CLI calls made from the commercial
 #' Amazon Web Services Regions outside of China. If calling from one of the
 #' Amazon Web Services Regions in China, then specify `cn-northwest-1`. You
 #' can do this in the CLI by using these parameters and commands:
-#' 
+#'
 #' -   Use the following parameter with each command to specify both the
 #'     endpoint and its region:
-#' 
+#'
 #'     `--endpoint-url https://organizations.us-east-1.amazonaws.com`
 #'     *(from commercial Amazon Web Services Regions outside of China)*
-#' 
+#'
 #'     or
-#' 
+#'
 #'     `--endpoint-url https://organizations.cn-northwest-1.amazonaws.com.cn`
 #'     *(from Amazon Web Services Regions in China)*
-#' 
+#'
 #' -   Use the default endpoint, but configure your default region with
 #'     this command:
-#' 
+#'
 #'     `aws configure set default.region us-east-1` *(from commercial
 #'     Amazon Web Services Regions outside of China)*
-#' 
+#'
 #'     or
-#' 
+#'
 #'     `aws configure set default.region cn-northwest-1` *(from Amazon Web
 #'     Services Regions in China)*
-#' 
+#'
 #' -   Use the following parameter with each command to specify the
 #'     endpoint:
-#' 
+#'
 #'     `--region us-east-1` *(from commercial Amazon Web Services Regions
 #'     outside of China)*
-#' 
+#'
 #'     or
-#' 
+#'
 #'     `--region cn-northwest-1` *(from Amazon Web Services Regions in
 #'     China)*
-#' 
+#'
 #' **Recording API Requests**
-#' 
+#'
 #' Organizations supports CloudTrail, a service that records Amazon Web
 #' Services API calls for your Amazon Web Services account and delivers log
 #' files to an Amazon S3 bucket. By using information collected by
@@ -22761,7 +23371,12 @@ opsworkscm <- function(config = list(), credentials = list(), endpoint = NULL, r
 #'
 #' @rdname organizations
 #' @export
-organizations <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+organizations <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.management::organizations(
     config = config,
     credentials = credentials,
@@ -22774,31 +23389,31 @@ organizations <- function(config = list(), credentials = list(), endpoint = NULL
 #'
 #' @description
 #' Amazon RDS Performance Insights
-#' 
+#'
 #' Amazon RDS Performance Insights enables you to monitor and explore
 #' different dimensions of database load based on data captured from a
 #' running DB instance. The guide provides detailed information about
 #' Performance Insights data types, parameters and errors.
-#' 
+#'
 #' When Performance Insights is enabled, the Amazon RDS Performance
 #' Insights API provides visibility into the performance of your DB
 #' instance. Amazon CloudWatch provides the authoritative source for Amazon
 #' Web Services service-vended monitoring metrics. Performance Insights
 #' offers a domain-specific view of DB load.
-#' 
+#'
 #' DB load is measured as average active sessions. Performance Insights
 #' provides the data to API consumers as a two-dimensional time-series
 #' dataset. The time dimension provides DB load data for each time point in
 #' the queried time range. Each time point decomposes overall load in
 #' relation to the requested dimensions, measured at that time point.
 #' Examples include SQL, Wait event, User, and Host.
-#' 
+#'
 #' -   To learn more about Performance Insights and Amazon Aurora DB
 #'     instances, go to the *\href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_PerfInsights.html}{ Amazon Aurora User Guide}* .
-#' 
+#'
 #' -   To learn more about Performance Insights and Amazon RDS DB
 #'     instances, go to the *\href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PerfInsights.html}{ Amazon RDS User Guide}* .
-#' 
+#'
 #' -   To learn more about Performance Insights and Amazon DocumentDB
 #'     clusters, go to the *\href{https://docs.aws.amazon.com/documentdb/latest/developerguide/performance-insights.html}{ Amazon DocumentDB Developer Guide}* .
 #'
@@ -22908,7 +23523,12 @@ organizations <- function(config = list(), credentials = list(), endpoint = NULL
 #'
 #' @rdname pi
 #' @export
-pi <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+pi <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.management::pi(
     config = config,
     credentials = credentials,
@@ -23084,7 +23704,12 @@ pi <- function(config = list(), credentials = list(), endpoint = NULL, region = 
 #'
 #' @rdname resiliencehub
 #' @export
-resiliencehub <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+resiliencehub <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.management::resiliencehub(
     config = config,
     credentials = credentials,
@@ -23110,27 +23735,27 @@ resiliencehub <- function(config = list(), credentials = list(), endpoint = NULL
 #' resources also let you quickly view a custom console in Amazon Web
 #' Services Systems Manager that shows Config compliance and other
 #' monitoring data about member resources.
-#' 
+#'
 #' To create a resource group, build a resource query, and specify tags
 #' that identify the criteria that members of the group have in common.
 #' Tags are key-value pairs.
-#' 
+#'
 #' For more information about Resource Groups, see the [Resource Groups
 #' User Guide](https://docs.aws.amazon.com/ARG/latest/userguide/).
-#' 
+#'
 #' Resource Groups uses a REST-compliant API that you can use to perform
 #' the following types of operations.
-#' 
+#'
 #' -   Create, Read, Update, and Delete (CRUD) operations on resource
 #'     groups and resource query entities
-#' 
+#'
 #' -   Applying, editing, and removing tags from resource groups
-#' 
+#'
 #' -   Resolving resource group member Amazon resource names (ARN)s so they
 #'     can be returned as search results
-#' 
+#'
 #' -   Getting data about resources that are members of a group
-#' 
+#'
 #' -   Searching Amazon Web Services resources based on a resource query
 #'
 #' @param
@@ -23249,7 +23874,12 @@ resiliencehub <- function(config = list(), credentials = list(), endpoint = NULL
 #'
 #' @rdname resourcegroups
 #' @export
-resourcegroups <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+resourcegroups <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.management::resourcegroups(
     config = config,
     credentials = credentials,
@@ -23364,7 +23994,12 @@ resourcegroups <- function(config = list(), credentials = list(), endpoint = NUL
 #'
 #' @rdname resourcegroupstaggingapi
 #' @export
-resourcegroupstaggingapi <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+resourcegroupstaggingapi <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.management::resourcegroupstaggingapi(
     config = config,
     credentials = credentials,
@@ -23382,7 +24017,7 @@ resourcegroupstaggingapi <- function(config = list(), credentials = list(), endp
 #' times, client-side errors, and user behavior. When you view this data,
 #' you can see it all aggregated together and also see breakdowns by the
 #' browsers and devices that your customers use.
-#' 
+#'
 #' You can use the collected data to quickly identify and debug client-side
 #' performance issues. CloudWatch RUM helps you visualize anomalies in your
 #' application performance and find relevant debugging data such as error
@@ -23500,7 +24135,12 @@ resourcegroupstaggingapi <- function(config = list(), credentials = list(), endp
 #'
 #' @rdname cloudwatchrum
 #' @export
-cloudwatchrum <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+cloudwatchrum <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.management::cloudwatchrum(
     config = config,
     credentials = credentials,
@@ -23630,7 +24270,12 @@ cloudwatchrum <- function(config = list(), credentials = list(), endpoint = NULL
 #'
 #' @rdname servicequotas
 #' @export
-servicequotas <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+servicequotas <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.management::servicequotas(
     config = config,
     credentials = credentials,
@@ -23643,7 +24288,7 @@ servicequotas <- function(config = list(), credentials = list(), endpoint = NULL
 #'
 #' @description
 #' Service Catalog
-#' 
+#'
 #' [Service Catalog](https://aws.amazon.com/servicecatalog/) enables
 #' organizations to create and manage catalogs of IT services that are
 #' approved for Amazon Web Services. To get the most out of this
@@ -23834,7 +24479,12 @@ servicequotas <- function(config = list(), credentials = list(), endpoint = NULL
 #'
 #' @rdname servicecatalog
 #' @export
-servicecatalog <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+servicecatalog <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.management::servicecatalog(
     config = config,
     credentials = credentials,
@@ -23969,7 +24619,12 @@ servicecatalog <- function(config = list(), credentials = list(), endpoint = NUL
 #'
 #' @rdname appregistry
 #' @export
-appregistry <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+appregistry <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.management::appregistry(
     config = config,
     credentials = credentials,
@@ -23985,27 +24640,27 @@ appregistry <- function(config = list(), credentials = list(), endpoint = NULL, 
 #' Amazon Web Services applications and resources and a secure end-to-end
 #' management solution for hybrid cloud environments that enables safe and
 #' secure operations at scale.
-#' 
+#'
 #' This reference is intended to be used with the [Amazon Web Services
 #' Systems Manager User
 #' Guide](https://docs.aws.amazon.com/systems-manager/latest/userguide/).
 #' To get started, see [Setting up Amazon Web Services Systems
 #' Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/).
-#' 
+#'
 #' **Related resources**
-#' 
+#'
 #' -   For information about each of the capabilities that comprise Systems
 #'     Manager, see [Systems Manager
 #'     capabilities](https://docs.aws.amazon.com/systems-manager/latest/userguide/what-is-systems-manager.html#systems-manager-capabilities)
 #'     in the *Amazon Web Services Systems Manager User Guide*.
-#' 
+#'
 #' -   For details about predefined runbooks for Automation, a capability
 #'     of Amazon Web Services Systems Manager, see the *\href{https://docs.aws.amazon.com/systems-manager-automation-runbooks/latest/userguide/automation-runbook-reference.html}{Systems Manager Automation runbook reference}* .
-#' 
+#'
 #' -   For information about AppConfig, a capability of Systems Manager,
 #'     see the *\href{https://docs.aws.amazon.com/appconfig/latest/userguide/}{AppConfig User Guide}* and the *
 #'     \href{https://docs.aws.amazon.com/appconfig/2019-10-09/APIReference/}{AppConfig API Reference}* .
-#' 
+#'
 #' -   For information about Incident Manager, a capability of Systems
 #'     Manager, see the *\href{https://docs.aws.amazon.com/incident-manager/latest/userguide/}{Systems Manager Incident Manager User Guide}* and the *
 #'     \href{https://docs.aws.amazon.com/incident-manager/latest/APIReference/}{Systems Manager Incident Manager API Reference}* .
@@ -24247,7 +24902,12 @@ appregistry <- function(config = list(), credentials = list(), endpoint = NULL, 
 #'
 #' @rdname ssm
 #' @export
-ssm <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+ssm <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.management::ssm(
     config = config,
     credentials = credentials,
@@ -24263,7 +24923,7 @@ ssm <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #' designed to help users mitigate and recover from incidents affecting
 #' their Amazon Web Services-hosted applications. An incident is any
 #' unplanned interruption or reduction in quality of services.
-#' 
+#'
 #' Incident Manager increases incident resolution by notifying responders
 #' of impact, highlighting relevant troubleshooting data, and providing
 #' collaboration tools to get services back up and running. To achieve the
@@ -24407,7 +25067,12 @@ ssm <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #'
 #' @rdname ssmcontacts
 #' @export
-ssmcontacts <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+ssmcontacts <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.management::ssmcontacts(
     config = config,
     credentials = credentials,
@@ -24423,7 +25088,7 @@ ssmcontacts <- function(config = list(), credentials = list(), endpoint = NULL, 
 #' designed to help users mitigate and recover from incidents affecting
 #' their Amazon Web Services-hosted applications. An incident is any
 #' unplanned interruption or reduction in quality of services.
-#' 
+#'
 #' Incident Manager increases incident resolution by notifying responders
 #' of impact, highlighting relevant troubleshooting data, and providing
 #' collaboration tools to get services back up and running. To achieve the
@@ -24555,7 +25220,12 @@ ssmcontacts <- function(config = list(), credentials = list(), endpoint = NULL, 
 #'
 #' @rdname ssmincidents
 #' @export
-ssmincidents <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+ssmincidents <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.management::ssmincidents(
     config = config,
     credentials = credentials,
@@ -24686,7 +25356,12 @@ ssmincidents <- function(config = list(), credentials = list(), endpoint = NULL,
 #'
 #' @rdname ssmsap
 #' @export
-ssmsap <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+ssmsap <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.management::ssmsap(
     config = config,
     credentials = credentials,
@@ -24699,60 +25374,60 @@ ssmsap <- function(config = list(), credentials = list(), endpoint = NULL, regio
 #'
 #' @description
 #' Amazon Web Services Support
-#' 
+#'
 #' The *Amazon Web Services Support API Reference* is intended for
 #' programmers who need detailed information about the Amazon Web Services
 #' Support operations and data types. You can use the API to manage your
 #' support cases programmatically. The Amazon Web Services Support API uses
 #' HTTP methods that return results in JSON format.
-#' 
+#'
 #' -   You must have a Business, Enterprise On-Ramp, or Enterprise Support
 #'     plan to use the Amazon Web Services Support API.
-#' 
+#'
 #' -   If you call the Amazon Web Services Support API from an account that
 #'     doesn't have a Business, Enterprise On-Ramp, or Enterprise Support
 #'     plan, the `SubscriptionRequiredException` error message appears. For
 #'     information about changing your support plan, see [Amazon Web
 #'     Services Support](https://aws.amazon.com/premiumsupport/).
-#' 
+#'
 #' You can also use the Amazon Web Services Support API to access features
 #' for [Trusted
 #' Advisor](https://aws.amazon.com/premiumsupport/technology/trusted-advisor/).
 #' You can return a list of checks and their descriptions, get check
 #' results, specify checks to refresh, and get the refresh status of
 #' checks.
-#' 
+#'
 #' You can manage your support cases with the following Amazon Web Services
 #' Support API operations:
-#' 
+#'
 #' -   The `create_case`,
 #'     `describe_cases`,
 #'     `describe_attachment`, and
 #'     `resolve_case` operations create Amazon Web
 #'     Services Support cases, retrieve information about cases, and
 #'     resolve cases.
-#' 
+#'
 #' -   The `describe_communications`,
 #'     `add_communication_to_case`,
 #'     and `add_attachments_to_set`
 #'     operations retrieve and add communications and attachments to Amazon
 #'     Web Services Support cases.
-#' 
+#'
 #' -   The `describe_services` and
 #'     `describe_severity_levels`
 #'     operations return Amazon Web Service names, service codes, service
 #'     categories, and problem severity levels. You use these values when
 #'     you call the `create_case` operation.
-#' 
+#'
 #' You can also use the Amazon Web Services Support API to call the Trusted
 #' Advisor operations. For more information, see [Trusted
 #' Advisor](https://docs.aws.amazon.com/awssupport/latest/user/trusted-advisor.html)
 #' in the *Amazon Web Services Support User Guide*.
-#' 
+#'
 #' For authentication of requests, Amazon Web Services Support uses
 #' [Signature Version 4 Signing
 #' Process](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html).
-#' 
+#'
 #' For more information about this service and the endpoints to use, see
 #' [About the Amazon Web Services Support
 #' API](https://docs.aws.amazon.com/awssupport/latest/user/about-support-api.html)
@@ -24867,7 +25542,12 @@ ssmsap <- function(config = list(), credentials = list(), endpoint = NULL, regio
 #'
 #' @rdname support
 #' @export
-support <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+support <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.management::support(
     config = config,
     credentials = credentials,
@@ -24880,45 +25560,45 @@ support <- function(config = list(), credentials = list(), endpoint = NULL, regi
 #'
 #' @description
 #' Amazon Web Services Support App in Slack
-#' 
+#'
 #' You can use the Amazon Web Services Support App in Slack API to manage
 #' your support cases in Slack for your Amazon Web Services account. After
 #' you configure your Slack workspace and channel with the Amazon Web
 #' Services Support App, you can perform the following tasks directly in
 #' your Slack channel:
-#' 
+#'
 #' -   Create, search, update, and resolve your support cases
-#' 
+#'
 #' -   Request service quota increases for your account
-#' 
+#'
 #' -   Invite Amazon Web Services Support agents to your channel so that
 #'     you can chat directly about your support cases
-#' 
+#'
 #' For more information about how to perform these actions in Slack, see
 #' the following documentation in the *Amazon Web Services Support User
 #' Guide*:
-#' 
+#'
 #' -   [Amazon Web Services Support App in
 #'     Slack](https://docs.aws.amazon.com/awssupport/latest/user/aws-support-app-for-slack.html)
-#' 
+#'
 #' -   [Joining a live chat session with Amazon Web Services
 #'     Support](https://docs.aws.amazon.com/awssupport/latest/user/joining-a-live-chat-session.html)
-#' 
+#'
 #' -   [Requesting service quota
 #'     increases](https://docs.aws.amazon.com/awssupport/latest/user/service-quota-increase.html)
-#' 
+#'
 #' -   [Amazon Web Services Support App commands in
 #'     Slack](https://docs.aws.amazon.com/awssupport/latest/user/support-app-commands.html)
-#' 
+#'
 #' You can also use the Amazon Web Services Management Console instead of
 #' the Amazon Web Services Support App API to manage your Slack
 #' configurations. For more information, see [Authorize a Slack workspace
 #' to enable the Amazon Web Services Support
 #' App](https://docs.aws.amazon.com/awssupport/latest/user/authorize-slack-workspace.html).
-#' 
+#'
 #' -   You must have a Business or Enterprise Support plan to use the
 #'     Amazon Web Services Support App API.
-#' 
+#'
 #' -   For more information about the Amazon Web Services Support App
 #'     endpoints, see the [Amazon Web Services Support App in Slack
 #'     endpoints](https://docs.aws.amazon.com/general/latest/gr/awssupport.html#awssupport_app_region)
@@ -25027,7 +25707,12 @@ support <- function(config = list(), credentials = list(), endpoint = NULL, regi
 #'
 #' @rdname supportapp
 #' @export
-supportapp <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+supportapp <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.management::supportapp(
     config = config,
     credentials = credentials,
@@ -25040,7 +25725,7 @@ supportapp <- function(config = list(), credentials = list(), endpoint = NULL, r
 #'
 #' @description
 #' Amazon CloudWatch Synthetics
-#' 
+#'
 #' You can use Amazon CloudWatch Synthetics to continually monitor your
 #' services. You can create and manage *canaries*, which are modular,
 #' lightweight scripts that monitor your endpoints and APIs from the
@@ -25053,7 +25738,7 @@ supportapp <- function(config = list(), credentials = list(), endpoint = NULL, r
 #' ServiceLens to Monitor the Health of Your
 #' Applications](https://docs.aws.amazon.com/xray/latest/devguide/xray-console-servicemap.html)
 #' in the *Amazon CloudWatch User Guide*.
-#' 
+#'
 #' Before you create and manage canaries, be aware of the security
 #' considerations. For more information, see [Security Considerations for
 #' Synthetics
@@ -25173,7 +25858,12 @@ supportapp <- function(config = list(), credentials = list(), endpoint = NULL, r
 #'
 #' @rdname synthetics
 #' @export
-synthetics <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+synthetics <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.management::synthetics(
     config = config,
     credentials = credentials,
@@ -25368,7 +26058,12 @@ synthetics <- function(config = list(), credentials = list(), endpoint = NULL, r
 #'
 #' @rdname comprehend
 #' @export
-comprehend <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+comprehend <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.machine.learning::comprehend(
     config = config,
     credentials = credentials,
@@ -25508,7 +26203,12 @@ comprehend <- function(config = list(), credentials = list(), endpoint = NULL, r
 #'
 #' @rdname comprehendmedical
 #' @export
-comprehendmedical <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+comprehendmedical <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.machine.learning::comprehendmedical(
     config = config,
     credentials = credentials,
@@ -25521,7 +26221,7 @@ comprehendmedical <- function(config = list(), credentials = list(), endpoint = 
 #'
 #' @description
 #' Amazon Elastic Inference is no longer available.
-#' 
+#'
 #' Elastic Inference public APIs.
 #'
 #' @param
@@ -25623,7 +26323,12 @@ comprehendmedical <- function(config = list(), credentials = list(), endpoint = 
 #'
 #' @rdname elasticinference
 #' @export
-elasticinference <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+elasticinference <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.machine.learning::elasticinference(
     config = config,
     credentials = credentials,
@@ -25732,7 +26437,12 @@ elasticinference <- function(config = list(), credentials = list(), endpoint = N
 #'
 #' @rdname forecastqueryservice
 #' @export
-forecastqueryservice <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+forecastqueryservice <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.machine.learning::forecastqueryservice(
     config = config,
     credentials = credentials,
@@ -25902,7 +26612,12 @@ forecastqueryservice <- function(config = list(), credentials = list(), endpoint
 #'
 #' @rdname forecastservice
 #' @export
-forecastservice <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+forecastservice <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.machine.learning::forecastservice(
     config = config,
     credentials = credentials,
@@ -25919,10 +26634,10 @@ forecastservice <- function(config = list(), credentials = list(), endpoint = NU
 #' actions, data types, and errors. For more information about Amazon Fraud
 #' Detector features, see the [Amazon Fraud Detector User
 #' Guide](https://docs.aws.amazon.com/frauddetector/latest/ug/).
-#' 
+#'
 #' We provide the Query API as well as AWS software development kits (SDK)
 #' for Amazon Fraud Detector in Java and Python programming languages.
-#' 
+#'
 #' The Amazon Fraud Detector Query API provides HTTPS requests that use the
 #' HTTP verb GET or POST and a Query parameter `Action`. AWS SDK provides
 #' libraries, sample code, tutorials, and other resources for software
@@ -26101,7 +26816,12 @@ forecastservice <- function(config = list(), credentials = list(), endpoint = NU
 #'
 #' @rdname frauddetector
 #' @export
-frauddetector <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+frauddetector <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.machine.learning::frauddetector(
     config = config,
     credentials = credentials,
@@ -26114,7 +26834,7 @@ frauddetector <- function(config = list(), credentials = list(), endpoint = NULL
 #'
 #' @description
 #' Amazon Lex Build-Time Actions
-#' 
+#'
 #' Amazon Lex is an AWS service for building conversational voice and text
 #' interfaces. Use these actions to create, update, and delete
 #' conversational bots for new and existing client applications.
@@ -26256,7 +26976,12 @@ frauddetector <- function(config = list(), credentials = list(), endpoint = NULL
 #'
 #' @rdname lexmodelbuildingservice
 #' @export
-lexmodelbuildingservice <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+lexmodelbuildingservice <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.machine.learning::lexmodelbuildingservice(
     config = config,
     credentials = credentials,
@@ -26267,7 +26992,7 @@ lexmodelbuildingservice <- function(config = list(), credentials = list(), endpo
 
 #' Amazon Lex Model Building V2
 #'
-#' 
+#'
 #'
 #' @param
 #' config
@@ -26464,7 +27189,12 @@ lexmodelbuildingservice <- function(config = list(), credentials = list(), endpo
 #'
 #' @rdname lexmodelsv2
 #' @export
-lexmodelsv2 <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+lexmodelsv2 <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.machine.learning::lexmodelsv2(
     config = config,
     credentials = credentials,
@@ -26587,7 +27317,12 @@ lexmodelsv2 <- function(config = list(), credentials = list(), endpoint = NULL, 
 #'
 #' @rdname lexruntimeservice
 #' @export
-lexruntimeservice <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+lexruntimeservice <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.machine.learning::lexruntimeservice(
     config = config,
     credentials = credentials,
@@ -26701,7 +27436,12 @@ lexruntimeservice <- function(config = list(), credentials = list(), endpoint = 
 #'
 #' @rdname lexruntimev2
 #' @export
-lexruntimev2 <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+lexruntimev2 <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.machine.learning::lexruntimev2(
     config = config,
     credentials = credentials,
@@ -26859,7 +27599,12 @@ lexruntimev2 <- function(config = list(), credentials = list(), endpoint = NULL,
 #'
 #' @rdname lookoutequipment
 #' @export
-lookoutequipment <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+lookoutequipment <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.machine.learning::lookoutequipment(
     config = config,
     credentials = credentials,
@@ -26999,7 +27744,12 @@ lookoutequipment <- function(config = list(), credentials = list(), endpoint = N
 #'
 #' @rdname lookoutmetrics
 #' @export
-lookoutmetrics <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+lookoutmetrics <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.machine.learning::lookoutmetrics(
     config = config,
     credentials = credentials,
@@ -27134,7 +27884,12 @@ lookoutmetrics <- function(config = list(), credentials = list(), endpoint = NUL
 #'
 #' @rdname machinelearning
 #' @export
-machinelearning <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+machinelearning <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.machine.learning::machinelearning(
     config = config,
     credentials = credentials,
@@ -27147,7 +27902,7 @@ machinelearning <- function(config = list(), credentials = list(), endpoint = NU
 #'
 #' @description
 #' **Overview**
-#' 
+#'
 #' This is the *AWS Panorama API Reference*. For an introduction to the
 #' service, see [What is AWS
 #' Panorama?](https://docs.aws.amazon.com/panorama/latest/dev/panorama-welcome.html)
@@ -27280,7 +28035,12 @@ machinelearning <- function(config = list(), credentials = list(), endpoint = NU
 #'
 #' @rdname panorama
 #' @export
-panorama <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+panorama <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.machine.learning::panorama(
     config = config,
     credentials = credentials,
@@ -27459,7 +28219,12 @@ panorama <- function(config = list(), credentials = list(), endpoint = NULL, reg
 #'
 #' @rdname personalize
 #' @export
-personalize <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+personalize <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.machine.learning::personalize(
     config = config,
     credentials = credentials,
@@ -27575,7 +28340,12 @@ personalize <- function(config = list(), credentials = list(), endpoint = NULL, 
 #'
 #' @rdname personalizeevents
 #' @export
-personalizeevents <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+personalizeevents <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.machine.learning::personalizeevents(
     config = config,
     credentials = credentials,
@@ -27586,7 +28356,7 @@ personalizeevents <- function(config = list(), credentials = list(), endpoint = 
 
 #' Amazon Personalize Runtime
 #'
-#' 
+#'
 #'
 #' @param
 #' config
@@ -27684,7 +28454,12 @@ personalizeevents <- function(config = list(), credentials = list(), endpoint = 
 #'
 #' @rdname personalizeruntime
 #' @export
-personalizeruntime <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+personalizeruntime <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.machine.learning::personalizeruntime(
     config = config,
     credentials = credentials,
@@ -27698,7 +28473,7 @@ personalizeruntime <- function(config = list(), credentials = list(), endpoint =
 #' @description
 #' Amazon Polly is a web service that makes it easy to synthesize speech
 #' from text.
-#' 
+#'
 #' The Amazon Polly service provides API operations for synthesizing
 #' high-quality speech from plain text and Speech Synthesis Markup Language
 #' (SSML), along with managing pronunciations lexicons that enable you to
@@ -27807,7 +28582,12 @@ personalizeruntime <- function(config = list(), credentials = list(), endpoint =
 #'
 #' @rdname polly
 #' @export
-polly <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+polly <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.machine.learning::polly(
     config = config,
     credentials = credentials,
@@ -27829,153 +28609,153 @@ polly <- function(config = list(), credentials = list(), endpoint = NULL, region
 #' Video](https://docs.aws.amazon.com/rekognition/latest/dg/streaming-video.html).
 #' It provides descriptions of actions, data types, common parameters, and
 #' common errors.
-#' 
+#'
 #' **Amazon Rekognition Image**
-#' 
+#'
 #' -   `associate_faces`
-#' 
+#'
 #' -   `compare_faces`
-#' 
+#'
 #' -   `create_collection`
-#' 
+#'
 #' -   `create_user`
-#' 
+#'
 #' -   `delete_collection`
-#' 
+#'
 #' -   `delete_faces`
-#' 
+#'
 #' -   `delete_user`
-#' 
+#'
 #' -   `describe_collection`
-#' 
+#'
 #' -   `detect_faces`
-#' 
+#'
 #' -   `detect_labels`
-#' 
+#'
 #' -   `detect_moderation_labels`
-#' 
+#'
 #' -   `detect_protective_equipment`
-#' 
+#'
 #' -   `detect_text`
-#' 
+#'
 #' -   `disassociate_faces`
-#' 
+#'
 #' -   `get_celebrity_info`
-#' 
+#'
 #' -   `get_media_analysis_job`
-#' 
+#'
 #' -   `index_faces`
-#' 
+#'
 #' -   `list_collections`
-#' 
+#'
 #' -   [ListMediaAnalysisJob](https://docs.aws.amazon.com/rekognition/latest/APIReference/)
-#' 
+#'
 #' -   `list_faces`
-#' 
+#'
 #' -   `list_users`
-#' 
+#'
 #' -   `recognize_celebrities`
-#' 
+#'
 #' -   `search_faces`
-#' 
+#'
 #' -   `search_faces_by_image`
-#' 
+#'
 #' -   `search_users`
-#' 
+#'
 #' -   `search_users_by_image`
-#' 
+#'
 #' -   `start_media_analysis_job`
-#' 
+#'
 #' **Amazon Rekognition Custom Labels**
-#' 
+#'
 #' -   `copy_project_version`
-#' 
+#'
 #' -   `create_dataset`
-#' 
+#'
 #' -   `create_project`
-#' 
+#'
 #' -   `create_project_version`
-#' 
+#'
 #' -   `delete_dataset`
-#' 
+#'
 #' -   `delete_project`
-#' 
+#'
 #' -   `delete_project_policy`
-#' 
+#'
 #' -   `delete_project_version`
-#' 
+#'
 #' -   `describe_dataset`
-#' 
+#'
 #' -   `describe_projects`
-#' 
+#'
 #' -   `describe_project_versions`
-#' 
+#'
 #' -   `detect_custom_labels`
-#' 
+#'
 #' -   `distribute_dataset_entries`
-#' 
+#'
 #' -   `list_dataset_entries`
-#' 
+#'
 #' -   `list_dataset_labels`
-#' 
+#'
 #' -   `list_project_policies`
-#' 
+#'
 #' -   `put_project_policy`
-#' 
+#'
 #' -   `start_project_version`
-#' 
+#'
 #' -   `stop_project_version`
-#' 
+#'
 #' -   `update_dataset_entries`
-#' 
+#'
 #' **Amazon Rekognition Video Stored Video**
-#' 
+#'
 #' -   `get_celebrity_recognition`
-#' 
+#'
 #' -   `get_content_moderation`
-#' 
+#'
 #' -   `get_face_detection`
-#' 
+#'
 #' -   `get_face_search`
-#' 
+#'
 #' -   `get_label_detection`
-#' 
+#'
 #' -   `get_person_tracking`
-#' 
+#'
 #' -   `get_segment_detection`
-#' 
+#'
 #' -   `get_text_detection`
-#' 
+#'
 #' -   `start_celebrity_recognition`
-#' 
+#'
 #' -   `start_content_moderation`
-#' 
+#'
 #' -   `start_face_detection`
-#' 
+#'
 #' -   `start_face_search`
-#' 
+#'
 #' -   `start_label_detection`
-#' 
+#'
 #' -   `start_person_tracking`
-#' 
+#'
 #' -   `start_segment_detection`
-#' 
+#'
 #' -   `start_text_detection`
-#' 
+#'
 #' **Amazon Rekognition Video Streaming Video**
-#' 
+#'
 #' -   `create_stream_processor`
-#' 
+#'
 #' -   `delete_stream_processor`
-#' 
+#'
 #' -   `describe_stream_processor`
-#' 
+#'
 #' -   `list_stream_processors`
-#' 
+#'
 #' -   `start_stream_processor`
-#' 
+#'
 #' -   `stop_stream_processor`
-#' 
+#'
 #' -   `update_stream_processor`
 #'
 #' @param
@@ -28160,7 +28940,12 @@ polly <- function(config = list(), credentials = list(), endpoint = NULL, region
 #'
 #' @rdname rekognition
 #' @export
-rekognition <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+rekognition <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.machine.learning::rekognition(
     config = config,
     credentials = credentials,
@@ -28173,12 +28958,12 @@ rekognition <- function(config = list(), credentials = list(), endpoint = NULL, 
 #'
 #' @description
 #' Provides APIs for creating and managing SageMaker resources.
-#' 
+#'
 #' Other Resources:
-#' 
+#'
 #' -   [SageMaker Developer
 #'     Guide](https://docs.aws.amazon.com/sagemaker/latest/dg/whatis.html#first-time-user)
-#' 
+#'
 #' -   [Amazon Augmented AI Runtime API
 #'     Reference](https://docs.aws.amazon.com/augmented-ai/2019-11-07/APIReference/Welcome.html)
 #'
@@ -28631,7 +29416,12 @@ rekognition <- function(config = list(), credentials = list(), endpoint = NULL, 
 #'
 #' @rdname sagemaker
 #' @export
-sagemaker <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+sagemaker <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.machine.learning::sagemaker(
     config = config,
     credentials = credentials,
@@ -28649,16 +29439,16 @@ sagemaker <- function(config = list(), credentials = list(), endpoint = NULL, re
 #' This human review is called a human review workflow. To create and start
 #' a human review workflow, you need three resources: a *worker task
 #' template*, a *flow definition*, and a *human loop*.
-#' 
+#'
 #' For information about these resources and prerequisites for using Amazon
 #' A2I, see [Get Started with Amazon Augmented
 #' AI](https://docs.aws.amazon.com/sagemaker/latest/dg/a2i-getting-started.html)
 #' in the Amazon SageMaker Developer Guide.
-#' 
+#'
 #' This API reference includes information about API actions and data types
 #' that you can use to interact with Amazon A2I programmatically. Use this
 #' guide to:
-#' 
+#'
 #' -   Start a human loop with the
 #'     `start_human_loop` operation
 #'     when using Amazon A2I with a *custom task type*. To learn more about
@@ -28668,13 +29458,13 @@ sagemaker <- function(config = list(), credentials = list(), endpoint = NULL, re
 #'     Start a Human Loop for a Custom Task
 #'     Type](https://docs.aws.amazon.com/sagemaker/latest/dg/a2i-start-human-loop.html#a2i-instructions-starthumanloop)
 #'     in the Amazon SageMaker Developer Guide.
-#' 
+#'
 #' -   Manage your human loops. You can list all human loops that you have
 #'     created, describe individual human loops, and stop and delete human
 #'     loops. To learn more, see [Monitor and Manage Your Human
 #'     Loop](https://docs.aws.amazon.com/sagemaker/latest/dg/a2i-monitor-humanloop-results.html)
 #'     in the Amazon SageMaker Developer Guide.
-#' 
+#'
 #' Amazon A2I integrates APIs from various AWS services to create and start
 #' human review workflows for those services. To learn how Amazon A2I uses
 #' these APIs, see [Use APIs in Amazon
@@ -28779,7 +29569,12 @@ sagemaker <- function(config = list(), credentials = list(), endpoint = NULL, re
 #'
 #' @rdname augmentedairuntime
 #' @export
-augmentedairuntime <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+augmentedairuntime <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.machine.learning::augmentedairuntime(
     config = config,
     credentials = credentials,
@@ -28890,7 +29685,12 @@ augmentedairuntime <- function(config = list(), credentials = list(), endpoint =
 #'
 #' @rdname sagemakeredgemanager
 #' @export
-sagemakeredgemanager <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+sagemakeredgemanager <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.machine.learning::sagemakeredgemanager(
     config = config,
     credentials = credentials,
@@ -28905,16 +29705,16 @@ sagemakeredgemanager <- function(config = list(), credentials = list(), endpoint
 #' Contains all data plane API operations and data types for the Amazon
 #' SageMaker Feature Store. Use this API to put, delete, and retrieve (get)
 #' features from a feature store.
-#' 
+#'
 #' Use the following operations to configure your `OnlineStore` and
 #' `OfflineStore` features, and to create and manage feature groups:
-#' 
+#'
 #' -   [CreateFeatureGroup](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateFeatureGroup.html)
-#' 
+#'
 #' -   [DeleteFeatureGroup](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DeleteFeatureGroup.html)
-#' 
+#'
 #' -   [DescribeFeatureGroup](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeFeatureGroup.html)
-#' 
+#'
 #' -   [ListFeatureGroups](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ListFeatureGroups.html)
 #'
 #' @param
@@ -29014,7 +29814,12 @@ sagemakeredgemanager <- function(config = list(), credentials = list(), endpoint
 #'
 #' @rdname sagemakerfeaturestoreruntime
 #' @export
-sagemakerfeaturestoreruntime <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+sagemakerfeaturestoreruntime <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.machine.learning::sagemakerfeaturestoreruntime(
     config = config,
     credentials = credentials,
@@ -29140,7 +29945,12 @@ sagemakerfeaturestoreruntime <- function(config = list(), credentials = list(), 
 #'
 #' @rdname sagemakergeospatialcapabilities
 #' @export
-sagemakergeospatialcapabilities <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+sagemakergeospatialcapabilities <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.machine.learning::sagemakergeospatialcapabilities(
     config = config,
     credentials = credentials,
@@ -29155,7 +29965,7 @@ sagemakergeospatialcapabilities <- function(config = list(), credentials = list(
 #' Contains all data plane API operations and data types for Amazon
 #' SageMaker Metrics. Use these APIs to put and retrieve (get) features
 #' related to your training run.
-#' 
+#'
 #' -   `batch_put_metrics`
 #'
 #' @param
@@ -29253,7 +30063,12 @@ sagemakergeospatialcapabilities <- function(config = list(), credentials = list(
 #'
 #' @rdname sagemakermetrics
 #' @export
-sagemakermetrics <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+sagemakermetrics <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.machine.learning::sagemakermetrics(
     config = config,
     credentials = credentials,
@@ -29363,7 +30178,12 @@ sagemakermetrics <- function(config = list(), credentials = list(), endpoint = N
 #'
 #' @rdname sagemakerruntime
 #' @export
-sagemakerruntime <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+sagemakerruntime <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.machine.learning::sagemakerruntime(
     config = config,
     credentials = credentials,
@@ -29497,7 +30317,12 @@ sagemakerruntime <- function(config = list(), credentials = list(), endpoint = N
 #'
 #' @rdname textract
 #' @export
-textract <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+textract <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.machine.learning::textract(
     config = config,
     credentials = credentials,
@@ -29511,15 +30336,15 @@ textract <- function(config = list(), credentials = list(), endpoint = NULL, reg
 #' @description
 #' Amazon Transcribe offers three main types of batch transcription:
 #' **Standard**, **Medical**, and **Call Analytics**.
-#' 
+#'
 #' -   **Standard transcriptions** are the most common option. Refer to for
 #'     details.
-#' 
+#'
 #' -   **Medical transcriptions** are tailored to medical professionals and
 #'     incorporate medical terms. A common use case for this service is
 #'     transcribing doctor-patient dialogue into after-visit notes. Refer
 #'     to for details.
-#' 
+#'
 #' -   **Call Analytics transcriptions** are designed for use with call
 #'     center audio on two different channels; if you're looking for
 #'     insight into customer service calls, use this option. Refer to for
@@ -29661,7 +30486,12 @@ textract <- function(config = list(), credentials = list(), endpoint = NULL, reg
 #'
 #' @rdname transcribeservice
 #' @export
-transcribeservice <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+transcribeservice <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.machine.learning::transcribeservice(
     config = config,
     credentials = credentials,
@@ -29788,7 +30618,12 @@ transcribeservice <- function(config = list(), credentials = list(), endpoint = 
 #'
 #' @rdname translate
 #' @export
-translate <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+translate <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.machine.learning::translate(
     config = config,
     credentials = credentials,
@@ -29926,7 +30761,12 @@ translate <- function(config = list(), credentials = list(), endpoint = NULL, re
 #'
 #' @rdname voiceid
 #' @export
-voiceid <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+voiceid <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.machine.learning::voiceid(
     config = config,
     credentials = credentials,
@@ -30091,7 +30931,12 @@ voiceid <- function(config = list(), credentials = list(), endpoint = NULL, regi
 #'
 #' @rdname bedrock
 #' @export
-bedrock <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+bedrock <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.machine.learning::bedrock(
     config = config,
     credentials = credentials,
@@ -30271,7 +31116,12 @@ bedrock <- function(config = list(), credentials = list(), endpoint = NULL, regi
 #'
 #' @rdname bedrockagent
 #' @export
-bedrockagent <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+bedrockagent <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.machine.learning::bedrockagent(
     config = config,
     credentials = credentials,
@@ -30390,7 +31240,12 @@ bedrockagent <- function(config = list(), credentials = list(), endpoint = NULL,
 #'
 #' @rdname bedrockagentruntime
 #' @export
-bedrockagentruntime <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+bedrockagentruntime <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.machine.learning::bedrockagentruntime(
     config = config,
     credentials = credentials,
@@ -30508,7 +31363,12 @@ bedrockagentruntime <- function(config = list(), credentials = list(), endpoint 
 #'
 #' @rdname bedrockdataautomation
 #' @export
-bedrockdataautomation <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+bedrockdataautomation <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.machine.learning::bedrockdataautomation(
     config = config,
     credentials = credentials,
@@ -30617,7 +31477,12 @@ bedrockdataautomation <- function(config = list(), credentials = list(), endpoin
 #'
 #' @rdname bedrockdataautomationruntime
 #' @export
-bedrockdataautomationruntime <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+bedrockdataautomationruntime <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.machine.learning::bedrockdataautomationruntime(
     config = config,
     credentials = credentials,
@@ -30733,7 +31598,12 @@ bedrockdataautomationruntime <- function(config = list(), credentials = list(), 
 #'
 #' @rdname bedrockruntime
 #' @export
-bedrockruntime <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+bedrockruntime <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.machine.learning::bedrockruntime(
     config = config,
     credentials = credentials,
@@ -30755,7 +31625,7 @@ bedrockruntime <- function(config = list(), credentials = list(), endpoint = NUL
 #' is Amazon
 #' Athena](https://docs.aws.amazon.com/athena/latest/ug/what-is.html) in
 #' the *Amazon Athena User Guide*.
-#' 
+#'
 #' If you connect to Athena using the JDBC driver, use version 1.1.0 of the
 #' driver or later with the Amazon Athena API. Earlier version drivers do
 #' not support the API. For more information and to download the driver,
@@ -30923,7 +31793,12 @@ bedrockruntime <- function(config = list(), credentials = list(), endpoint = NUL
 #'
 #' @rdname athena
 #' @export
-athena <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+athena <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.analytics::athena(
     config = config,
     credentials = credentials,
@@ -30936,13 +31811,13 @@ athena <- function(config = list(), credentials = list(), endpoint = NULL, regio
 #'
 #' @description
 #' Amazon CloudSearch Configuration Service
-#' 
+#'
 #' You use the Amazon CloudSearch configuration service to create,
 #' configure, and manage search domains. Configuration service requests are
 #' submitted using the AWS Query protocol. AWS Query requests are HTTP or
 #' HTTPS requests submitted via HTTP GET or POST with a query parameter
 #' named Action.
-#' 
+#'
 #' The endpoint for configuration service requests is region-specific:
 #' cloudsearch.*region*.amazonaws.com. For example,
 #' cloudsearch.us-east-1.amazonaws.com. For a current list of supported
@@ -31069,7 +31944,12 @@ athena <- function(config = list(), credentials = list(), endpoint = NULL, regio
 #'
 #' @rdname cloudsearch
 #' @export
-cloudsearch <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+cloudsearch <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.analytics::cloudsearch(
     config = config,
     credentials = credentials,
@@ -31083,7 +31963,7 @@ cloudsearch <- function(config = list(), credentials = list(), endpoint = NULL, 
 #' @description
 #' You use the AmazonCloudSearch2013 API to upload documents to a search
 #' domain and search those documents.
-#' 
+#'
 #' The endpoints for submitting
 #' `upload_documents`,
 #' `search`, and
@@ -31092,7 +31972,7 @@ cloudsearch <- function(config = list(), credentials = list(), endpoint = NULL, 
 #' configuration service `DescribeDomains` action. The domain endpoints are
 #' also displayed on the domain dashboard in the Amazon CloudSearch
 #' console. You submit suggest requests to the search endpoint.
-#' 
+#'
 #' For more information, see the [Amazon CloudSearch Developer
 #' Guide](https://docs.aws.amazon.com/cloudsearch/latest/developerguide/).
 #'
@@ -31192,7 +32072,12 @@ cloudsearch <- function(config = list(), credentials = list(), endpoint = NULL, 
 #'
 #' @rdname cloudsearchdomain
 #' @export
-cloudsearchdomain <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+cloudsearchdomain <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.analytics::cloudsearchdomain(
     config = config,
     credentials = credentials,
@@ -31208,14 +32093,14 @@ cloudsearchdomain <- function(config = list(), credentials = list(), endpoint = 
 #' pipeline. AWS Data Pipeline handles the details of scheduling and
 #' ensuring that data dependencies are met so that your application can
 #' focus on processing the data.
-#' 
+#'
 #' AWS Data Pipeline provides a JAR implementation of a task runner called
 #' AWS Data Pipeline Task Runner. AWS Data Pipeline Task Runner provides
 #' logic for common data management scenarios, such as performing database
 #' queries and running data analysis using Amazon Elastic MapReduce (Amazon
 #' EMR). You can use AWS Data Pipeline Task Runner as your task runner, or
 #' you can write your own task runner to provide custom data management.
-#' 
+#'
 #' AWS Data Pipeline implements two main sets of functionality. Use the
 #' first set to create a pipeline and define data sources, schedules,
 #' dependencies, and the transforms to be performed on the data. Use the
@@ -31340,7 +32225,12 @@ cloudsearchdomain <- function(config = list(), credentials = list(), endpoint = 
 #'
 #' @rdname datapipeline
 #' @export
-datapipeline <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+datapipeline <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.analytics::datapipeline(
     config = config,
     credentials = credentials,
@@ -31611,7 +32501,12 @@ datapipeline <- function(config = list(), credentials = list(), endpoint = NULL,
 #'
 #' @rdname datazone
 #' @export
-datazone <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+datazone <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.analytics::datazone(
     config = config,
     credentials = credentials,
@@ -31624,17 +32519,17 @@ datazone <- function(config = list(), credentials = list(), endpoint = NULL, reg
 #'
 #' @description
 #' Amazon Elasticsearch Configuration Service
-#' 
+#'
 #' Use the Amazon Elasticsearch Configuration API to create, configure, and
 #' manage Elasticsearch domains.
-#' 
+#'
 #' For sample code that uses the Configuration API, see the [Amazon
 #' Elasticsearch Service Developer
 #' Guide](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/configuration-samples.html).
 #' The guide also contains [sample code for sending signed HTTP requests to
 #' the Elasticsearch
 #' APIs](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/).
-#' 
+#'
 #' The endpoint for configuration service requests is region-specific:
 #' es.*region*.amazonaws.com. For example, es.us-east-1.amazonaws.com. For
 #' a current list of supported regions and endpoints, see <a
@@ -31785,7 +32680,12 @@ datazone <- function(config = list(), credentials = list(), endpoint = NULL, reg
 #'
 #' @rdname elasticsearchservice
 #' @export
-elasticsearchservice <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+elasticsearchservice <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.analytics::elasticsearchservice(
     config = config,
     credentials = credentials,
@@ -31952,7 +32852,12 @@ elasticsearchservice <- function(config = list(), credentials = list(), endpoint
 #'
 #' @rdname emr
 #' @export
-emr <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+emr <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.analytics::emr(
     config = config,
     credentials = credentials,
@@ -31965,19 +32870,19 @@ emr <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #'
 #' @description
 #' Welcome to the *Entity Resolution API Reference*.
-#' 
+#'
 #' Entity Resolution is an Amazon Web Services service that provides
 #' pre-configured entity resolution capabilities that enable developers and
 #' analysts at advertising and marketing companies to build an accurate and
 #' complete view of their consumers.
-#' 
+#'
 #' With Entity Resolution, you can match source records containing consumer
 #' identifiers, such as name, email address, and phone number. This is true
 #' even when these records have incomplete or conflicting identifiers. For
 #' example, Entity Resolution can effectively match a source record from a
 #' customer relationship management (CRM) system with a source record from
 #' a marketing system containing campaign information.
-#' 
+#'
 #' To learn more about Entity Resolution concepts, procedures, and best
 #' practices, see the [Entity Resolution User
 #' Guide](https://docs.aws.amazon.com/entityresolution/latest/userguide/what-is-service.html).
@@ -32112,7 +33017,12 @@ emr <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #'
 #' @rdname entityresolution
 #' @export
-entityresolution <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+entityresolution <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.analytics::entityresolution(
     config = config,
     credentials = credentials,
@@ -32125,10 +33035,10 @@ entityresolution <- function(config = list(), credentials = list(), endpoint = N
 #'
 #' @description
 #' Amazon Data Firehose
-#' 
+#'
 #' Amazon Data Firehose was previously known as Amazon Kinesis Data
 #' Firehose.
-#' 
+#'
 #' Amazon Data Firehose is a fully managed service that delivers real-time
 #' streaming data to destinations such as Amazon Simple Storage Service
 #' (Amazon S3), Amazon OpenSearch Service, Amazon Redshift, Splunk, and
@@ -32239,7 +33149,12 @@ entityresolution <- function(config = list(), credentials = list(), endpoint = N
 #'
 #' @rdname firehose
 #' @export
-firehose <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+firehose <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.analytics::firehose(
     config = config,
     credentials = credentials,
@@ -32252,7 +33167,7 @@ firehose <- function(config = list(), credentials = list(), endpoint = NULL, reg
 #'
 #' @description
 #' Glue
-#' 
+#'
 #' Defines the public endpoint for the Glue service.
 #'
 #' @param
@@ -32601,7 +33516,12 @@ firehose <- function(config = list(), credentials = list(), endpoint = NULL, reg
 #'
 #' @rdname glue
 #' @export
-glue <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+glue <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.analytics::glue(
     config = config,
     credentials = credentials,
@@ -32756,7 +33676,12 @@ glue <- function(config = list(), credentials = list(), endpoint = NULL, region 
 #'
 #' @rdname gluedatabrew
 #' @export
-gluedatabrew <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+gluedatabrew <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.analytics::gluedatabrew(
     config = config,
     credentials = credentials,
@@ -32878,7 +33803,12 @@ gluedatabrew <- function(config = list(), credentials = list(), endpoint = NULL,
 #'
 #' @rdname healthlake
 #' @export
-healthlake <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+healthlake <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.analytics::healthlake(
     config = config,
     credentials = credentials,
@@ -32891,61 +33821,61 @@ healthlake <- function(config = list(), credentials = list(), endpoint = NULL, r
 #'
 #' @description
 #' **Introduction**
-#' 
+#'
 #' The Amazon Interactive Video Service (IVS) API is REST compatible, using
 #' a standard HTTP API and an Amazon Web Services EventBridge event stream
 #' for responses. JSON is used for both requests and responses, including
 #' errors.
-#' 
+#'
 #' The API is an Amazon Web Services regional service. For a list of
 #' supported regions and Amazon IVS HTTPS service endpoints, see the
 #' [Amazon IVS
 #' page](https://docs.aws.amazon.com/general/latest/gr/ivs.html) in the
 #' *Amazon Web Services General Reference*.
-#' 
+#'
 #' *All API request parameters and URLs are case sensitive. *
-#' 
+#'
 #' For a summary of notable documentation changes in each release, see
 #' [Document
 #' History](https://docs.aws.amazon.com/ivs/latest/LowLatencyUserGuide/doc-history.html).
-#' 
+#'
 #' **Allowed Header Values**
-#' 
+#'
 #' -   ` Accept: ` application/json
-#' 
+#'
 #' -   ` Accept-Encoding: ` gzip, deflate
-#' 
+#'
 #' -   ` Content-Type: `application/json
-#' 
+#'
 #' **Key Concepts**
-#' 
+#'
 #' -   **Channel** — Stores configuration data related to your live stream.
 #'     You first create a channel and then use the channel’s stream key to
 #'     start your live stream.
-#' 
+#'
 #' -   **Stream key** — An identifier assigned by Amazon IVS when you
 #'     create a channel, which is then used to authorize streaming. *Treat
 #'     the stream key like a secret, since it allows anyone to stream to
 #'     the channel.*
-#' 
+#'
 #' -   **Playback key pair** — Video playback may be restricted using
 #'     playback-authorization tokens, which use public-key encryption. A
 #'     playback key pair is the public-private pair of keys used to sign
 #'     and validate the playback-authorization token.
-#' 
+#'
 #' -   **Recording configuration** — Stores configuration related to
 #'     recording a live stream and where to store the recorded content.
 #'     Multiple channels can reference the same recording configuration.
-#' 
+#'
 #' -   **Playback restriction policy** — Restricts playback by countries
 #'     and/or origin sites.
-#' 
+#'
 #' For more information about your IVS live stream, also see [Getting
 #' Started with IVS Low-Latency
 #' Streaming](https://docs.aws.amazon.com/ivs/latest/LowLatencyUserGuide/getting-started.html).
-#' 
+#'
 #' **Tagging**
-#' 
+#'
 #' A *tag* is a metadata label that you assign to an Amazon Web Services
 #' resource. A tag comprises a *key* and a *value*, both set by you. For
 #' example, you might set a tag as `topic:nature` to label a particular
@@ -32955,62 +33885,62 @@ healthlake <- function(config = list(), credentials = list(), endpoint = NULL, r
 #' including restrictions that apply to tags and "Tag naming limits and
 #' requirements"; Amazon IVS has no service-specific constraints beyond
 #' what is documented there.
-#' 
+#'
 #' Tags can help you identify and organize your Amazon Web Services
 #' resources. For example, you can use the same tag for different resources
 #' to indicate that they are related. You can also use tags to manage
 #' access (see [Access
 #' Tags](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_tags.html)).
-#' 
+#'
 #' The Amazon IVS API has these tag-related operations:
 #' `tag_resource`,
 #' `untag_resource`, and
 #' `list_tags_for_resource`. The following
 #' resources support tagging: Channels, Stream Keys, Playback Key Pairs,
 #' and Recording Configurations.
-#' 
+#'
 #' At most 50 tags can be applied to a resource.
-#' 
+#'
 #' **Authentication versus Authorization**
-#' 
+#'
 #' Note the differences between these concepts:
-#' 
+#'
 #' -   *Authentication* is about verifying identity. You need to be
 #'     authenticated to sign Amazon IVS API requests.
-#' 
+#'
 #' -   *Authorization* is about granting permissions. Your IAM roles need
 #'     to have permissions for Amazon IVS API requests. In addition,
 #'     authorization is needed to view [Amazon IVS private
 #'     channels](https://docs.aws.amazon.com/ivs/latest/LowLatencyUserGuide/private-channels.html).
 #'     (Private channels are channels that are enabled for "playback
 #'     authorization.")
-#' 
+#'
 #' **Authentication**
-#' 
+#'
 #' All Amazon IVS API requests must be authenticated with a signature. The
 #' Amazon Web Services Command-Line Interface (CLI) and Amazon IVS Player
 #' SDKs take care of signing the underlying API calls for you. However, if
 #' your application calls the Amazon IVS API directly, it’s your
 #' responsibility to sign the requests.
-#' 
+#'
 #' You generate a signature using valid Amazon Web Services credentials
 #' that have permission to perform the requested action. For example, you
 #' must sign PutMetadata requests with a signature generated from a user
 #' account that has the `ivs:PutMetadata` permission.
-#' 
+#'
 #' For more information:
-#' 
+#'
 #' -   Authentication and generating signatures — See [Authenticating
 #'     Requests (Amazon Web Services Signature Version
 #'     4)](https://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-authenticating-requests.html)
 #'     in the *Amazon Web Services General Reference*.
-#' 
+#'
 #' -   Managing Amazon IVS permissions — See [Identity and Access
 #'     Management](https://docs.aws.amazon.com/ivs/latest/LowLatencyUserGuide/security-iam.html)
 #'     on the Security page of the *Amazon IVS User Guide*.
-#' 
+#'
 #' **Amazon Resource Names (ARNs)**
-#' 
+#'
 #' ARNs uniquely identify AWS resources. An ARN is required when you need
 #' to specify a resource unambiguously across all of AWS, such as in IAM
 #' policies and API calls. For more information, see [Amazon Resource
@@ -33145,7 +34075,12 @@ healthlake <- function(config = list(), credentials = list(), endpoint = NULL, r
 #'
 #' @rdname ivs
 #' @export
-ivs <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+ivs <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.analytics::ivs(
     config = config,
     credentials = credentials,
@@ -33161,37 +34096,37 @@ ivs <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #' compatible, using a standard HTTP API and an AWS EventBridge event
 #' stream for responses. JSON is used for both requests and responses,
 #' including errors.
-#' 
+#'
 #' **Key Concepts**
-#' 
+#'
 #' -   **Stage** — A virtual space where participants can exchange video in
 #'     real time.
-#' 
+#'
 #' -   **Participant token** — A token that authenticates a participant
 #'     when they join a stage.
-#' 
+#'
 #' -   **Participant object** — Represents participants (people) in the
 #'     stage and contains information about them. When a token is created,
 #'     it includes a participant ID; when a participant uses that token to
 #'     join a stage, the participant is associated with that participant
 #'     ID. There is a 1:1 mapping between participant tokens and
 #'     participants.
-#' 
+#'
 #' For server-side composition:
-#' 
+#'
 #' -   **Composition process** — Composites participants of a stage into a
 #'     single video and forwards it to a set of outputs (e.g., IVS
 #'     channels). Composition operations support this process.
-#' 
+#'
 #' -   **Composition** — Controls the look of the outputs, including how
 #'     participants are positioned in the video.
-#' 
+#'
 #' For more information about your IVS live stream, also see [Getting
 #' Started with Amazon IVS Real-Time
 #' Streaming](https://docs.aws.amazon.com/ivs/latest/RealTimeUserGuide/getting-started.html).
-#' 
+#'
 #' **Tagging**
-#' 
+#'
 #' A *tag* is a metadata label that you assign to an AWS resource. A tag
 #' comprises a *key* and a *value*, both set by you. For example, you might
 #' set a tag as `topic:nature` to label a particular video category. See
@@ -33201,18 +34136,18 @@ ivs <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #' restrictions that apply to tags and "Tag naming limits and
 #' requirements"; Amazon IVS stages has no service-specific constraints
 #' beyond what is documented there.
-#' 
+#'
 #' Tags can help you identify and organize your AWS resources. For example,
 #' you can use the same tag for different resources to indicate that they
 #' are related. You can also use tags to manage access (see [Access
 #' Tags](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_tags.html)).
-#' 
+#'
 #' The Amazon IVS real-time API has these tag-related operations:
 #' `tag_resource`,
 #' `untag_resource`, and
 #' `list_tags_for_resource`. The
 #' following resource supports tagging: Stage.
-#' 
+#'
 #' At most 50 tags can be applied to a resource.
 #'
 #' @param
@@ -33344,7 +34279,12 @@ ivs <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #'
 #' @rdname ivsrealtime
 #' @export
-ivsrealtime <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+ivsrealtime <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.analytics::ivsrealtime(
     config = config,
     credentials = credentials,
@@ -33503,7 +34443,12 @@ ivsrealtime <- function(config = list(), credentials = list(), endpoint = NULL, 
 #'
 #' @rdname kafka
 #' @export
-kafka <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+kafka <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.analytics::kafka(
     config = config,
     credentials = credentials,
@@ -33514,7 +34459,7 @@ kafka <- function(config = list(), credentials = list(), endpoint = NULL, region
 
 #' Managed Streaming for Kafka Connect
 #'
-#' 
+#'
 #'
 #' @param
 #' config
@@ -33627,7 +34572,12 @@ kafka <- function(config = list(), credentials = list(), endpoint = NULL, region
 #'
 #' @rdname kafkaconnect
 #' @export
-kafkaconnect <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+kafkaconnect <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.analytics::kafkaconnect(
     config = config,
     credentials = credentials,
@@ -33800,7 +34750,12 @@ kafkaconnect <- function(config = list(), credentials = list(), endpoint = NULL,
 #'
 #' @rdname kendra
 #' @export
-kendra <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+kendra <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.analytics::kendra(
     config = config,
     credentials = credentials,
@@ -33917,7 +34872,12 @@ kendra <- function(config = list(), credentials = list(), endpoint = NULL, regio
 #'
 #' @rdname kendraranking
 #' @export
-kendraranking <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+kendraranking <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.analytics::kendraranking(
     config = config,
     credentials = credentials,
@@ -33930,7 +34890,7 @@ kendraranking <- function(config = list(), credentials = list(), endpoint = NULL
 #'
 #' @description
 #' Amazon Kinesis Data Streams Service API Reference
-#' 
+#'
 #' Amazon Kinesis Data Streams is a managed service that scales elastically
 #' for real-time processing of streaming big data.
 #'
@@ -34059,7 +35019,12 @@ kendraranking <- function(config = list(), credentials = list(), endpoint = NULL
 #'
 #' @rdname kinesis
 #' @export
-kinesis <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+kinesis <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.analytics::kinesis(
     config = config,
     credentials = credentials,
@@ -34072,12 +35037,12 @@ kinesis <- function(config = list(), credentials = list(), endpoint = NULL, regi
 #'
 #' @description
 #' **Overview**
-#' 
+#'
 #' This documentation is for version 1 of the Amazon Kinesis Data Analytics
 #' API, which only supports SQL applications. Version 2 of the API supports
 #' SQL and Java applications. For more information about version 2, see
 #' Amazon Kinesis Data Analytics API V2 Documentation.
-#' 
+#'
 #' This is the *Amazon Kinesis Analytics v1 API Reference*. The Amazon
 #' Kinesis Analytics Developer Guide provides additional information.
 #'
@@ -34194,7 +35159,12 @@ kinesis <- function(config = list(), credentials = list(), endpoint = NULL, regi
 #'
 #' @rdname kinesisanalytics
 #' @export
-kinesisanalytics <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+kinesisanalytics <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.analytics::kinesisanalytics(
     config = config,
     credentials = credentials,
@@ -34208,7 +35178,7 @@ kinesisanalytics <- function(config = list(), credentials = list(), endpoint = N
 #' @description
 #' Amazon Managed Service for Apache Flink was previously known as Amazon
 #' Kinesis Data Analytics for Apache Flink.
-#' 
+#'
 #' Amazon Managed Service for Apache Flink is a fully managed service that
 #' you can use to process and analyze streaming data using Java, Python,
 #' SQL, or Scala. The service enables you to quickly author and run Java,
@@ -34341,7 +35311,12 @@ kinesisanalytics <- function(config = list(), credentials = list(), endpoint = N
 #'
 #' @rdname kinesisanalyticsv2
 #' @export
-kinesisanalyticsv2 <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+kinesisanalyticsv2 <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.analytics::kinesisanalyticsv2(
     config = config,
     credentials = credentials,
@@ -34487,7 +35462,12 @@ kinesisanalyticsv2 <- function(config = list(), credentials = list(), endpoint =
 #'
 #' @rdname mturk
 #' @export
-mturk <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+mturk <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.analytics::mturk(
     config = config,
     credentials = credentials,
@@ -34676,7 +35656,12 @@ mturk <- function(config = list(), credentials = list(), endpoint = NULL, region
 #'
 #' @rdname opensearchservice
 #' @export
-opensearchservice <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+opensearchservice <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.analytics::opensearchservice(
     config = config,
     credentials = credentials,
@@ -34690,14 +35675,14 @@ opensearchservice <- function(config = list(), credentials = list(), endpoint = 
 #' @description
 #' Use the Amazon OpenSearch Serverless API to create, configure, and
 #' manage OpenSearch Serverless collections and security policies.
-#' 
+#'
 #' OpenSearch Serverless is an on-demand, pre-provisioned serverless
 #' configuration for Amazon OpenSearch Service. OpenSearch Serverless
 #' removes the operational complexities of provisioning, configuring, and
 #' tuning your OpenSearch clusters. It enables you to easily search and
 #' analyze petabytes of data without having to worry about the underlying
 #' infrastructure and data management.
-#' 
+#'
 #' To learn more about OpenSearch Serverless, see [What is Amazon
 #' OpenSearch
 #' Serverless?](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-overview.html)
@@ -34832,7 +35817,12 @@ opensearchservice <- function(config = list(), credentials = list(), endpoint = 
 #'
 #' @rdname opensearchserviceserverless
 #' @export
-opensearchserviceserverless <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+opensearchserviceserverless <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.analytics::opensearchserviceserverless(
     config = config,
     credentials = credentials,
@@ -34957,7 +35947,12 @@ opensearchserviceserverless <- function(config = list(), credentials = list(), e
 #'
 #' @rdname opensearchingestion
 #' @export
-opensearchingestion <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+opensearchingestion <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.analytics::opensearchingestion(
     config = config,
     credentials = credentials,
@@ -34970,7 +35965,7 @@ opensearchingestion <- function(config = list(), credentials = list(), endpoint 
 #'
 #' @description
 #' Amazon QuickSight API Reference
-#' 
+#'
 #' Amazon QuickSight is a fully managed, serverless business intelligence
 #' service for the Amazon Web Services Cloud that makes it easy to extend
 #' data and insights to every user in your organization. This API reference
@@ -35279,7 +36274,12 @@ opensearchingestion <- function(config = list(), credentials = list(), endpoint 
 #'
 #' @rdname quicksight
 #' @export
-quicksight <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+quicksight <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.analytics::quicksight(
     config = config,
     credentials = credentials,
@@ -35298,7 +36298,7 @@ quicksight <- function(config = list(), credentials = list(), endpoint = NULL, r
 #' generate fine-grained policies. To start using IAM Access Analyzer to
 #' identify external or unused access, you first need to create an
 #' analyzer.
-#' 
+#'
 #' **External access analyzers** help identify potential risks of accessing
 #' resources by enabling you to identify any resource policies that grant
 #' access to an external principal. It does this by using logic-based
@@ -35308,17 +36308,17 @@ quicksight <- function(config = list(), credentials = list(), endpoint = NULL, r
 #' Web Services service, or an anonymous user. You can also use IAM Access
 #' Analyzer to preview public and cross-account access to your resources
 #' before deploying permissions changes.
-#' 
+#'
 #' **Unused access analyzers** help identify potential identity access
 #' risks by enabling you to identify unused IAM roles, unused access keys,
 #' unused console passwords, and IAM principals with unused service and
 #' action-level permissions.
-#' 
+#'
 #' Beyond findings, IAM Access Analyzer provides basic and custom policy
 #' checks to validate IAM policies before deploying permissions changes.
 #' You can use policy generation to refine permissions by attaching a
 #' policy generated using access activity logged in CloudTrail logs.
-#' 
+#'
 #' This guide describes the IAM Access Analyzer operations that you can
 #' call programmatically. For general information about IAM Access
 #' Analyzer, see [Identity and Access Management Access
@@ -35454,7 +36454,12 @@ quicksight <- function(config = list(), credentials = list(), endpoint = NULL, r
 #'
 #' @rdname accessanalyzer
 #' @export
-accessanalyzer <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+accessanalyzer <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.security.identity::accessanalyzer(
     config = config,
     credentials = credentials,
@@ -35573,7 +36578,12 @@ accessanalyzer <- function(config = list(), credentials = list(), endpoint = NUL
 #'
 #' @rdname account
 #' @export
-account <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+account <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.security.identity::account(
     config = config,
     credentials = credentials,
@@ -35586,7 +36596,7 @@ account <- function(config = list(), credentials = list(), endpoint = NULL, regi
 #'
 #' @description
 #' Certificate Manager
-#' 
+#'
 #' You can use Certificate Manager (ACM) to manage SSL/TLS certificates for
 #' your Amazon Web Services-based websites and applications. For more
 #' information about using ACM, see the [Certificate Manager User
@@ -35700,7 +36710,12 @@ account <- function(config = list(), credentials = list(), endpoint = NULL, regi
 #'
 #' @rdname acm
 #' @export
-acm <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+acm <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.security.identity::acm(
     config = config,
     credentials = credentials,
@@ -35716,13 +36731,13 @@ acm <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #' Reference*. It provides descriptions, syntax, and usage examples for
 #' each of the actions and data types involved in creating and managing a
 #' private certificate authority (CA) for your organization.
-#' 
+#'
 #' The documentation for each action shows the API request parameters and
 #' the JSON response. Alternatively, you can use one of the Amazon Web
 #' Services SDKs to access an API that is tailored to the programming
 #' language or platform that you prefer. For more information, see [Amazon
 #' Web Services SDKs](https://aws.amazon.com/developer/tools/#SDKs).
-#' 
+#'
 #' Each Amazon Web Services Private CA API operation has a quota that
 #' determines the number of times the operation can be called per second.
 #' Amazon Web Services Private CA throttles API requests at different rates
@@ -35733,7 +36748,7 @@ acm <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #' [ThrottlingException](https://docs.aws.amazon.com/privateca/latest/APIReference/CommonErrors.html)
 #' error. Amazon Web Services Private CA does not guarantee a minimum
 #' request rate for APIs.
-#' 
+#'
 #' To see an up-to-date list of your Amazon Web Services Private CA quotas,
 #' or to request a quota increase, log into your Amazon Web Services
 #' account and visit the Service Quotas console.
@@ -35854,7 +36869,12 @@ acm <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #'
 #' @rdname acmpca
 #' @export
-acmpca <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+acmpca <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.security.identity::acmpca(
     config = config,
     credentials = credentials,
@@ -35867,7 +36887,7 @@ acmpca <- function(config = list(), credentials = list(), endpoint = NULL, regio
 #'
 #' @description
 #' Welcome to the *Amazon Web Services Clean Rooms ML API Reference*.
-#' 
+#'
 #' Amazon Web Services Clean Rooms ML provides a privacy-enhancing method
 #' for two parties to identify similar users in their data without the need
 #' to share their data with each other. The first party brings the training
@@ -35875,11 +36895,11 @@ acmpca <- function(config = list(), credentials = list(), endpoint = NULL, regio
 #' model (lookalike model) and associate it with a collaboration. The
 #' second party then brings their seed data to Clean Rooms and generates an
 #' audience (lookalike segment) that resembles the training data.
-#' 
+#'
 #' To learn more about Amazon Web Services Clean Rooms ML concepts,
 #' procedures, and best practices, see the [Clean Rooms User
 #' Guide](https://docs.aws.amazon.com/clean-rooms/latest/userguide/machine-learning.html).
-#' 
+#'
 #' To learn more about SQL commands, functions, and conditions supported in
 #' Clean Rooms, see the [Clean Rooms SQL
 #' Reference](https://docs.aws.amazon.com/clean-rooms/latest/sql-reference/sql-reference.html).
@@ -36035,7 +37055,12 @@ acmpca <- function(config = list(), credentials = list(), endpoint = NULL, regio
 #'
 #' @rdname cleanroomsml
 #' @export
-cleanroomsml <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+cleanroomsml <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.security.identity::cleanroomsml(
     config = config,
     credentials = credentials,
@@ -36048,7 +37073,7 @@ cleanroomsml <- function(config = list(), credentials = list(), endpoint = NULL,
 #'
 #' @description
 #' Amazon Cloud Directory
-#' 
+#'
 #' Amazon Cloud Directory is a component of the AWS Directory Service that
 #' simplifies the development and management of cloud-scale web, mobile,
 #' and IoT applications. This guide describes the Cloud Directory
@@ -36218,7 +37243,12 @@ cleanroomsml <- function(config = list(), credentials = list(), endpoint = NULL,
 #'
 #' @rdname clouddirectory
 #' @export
-clouddirectory <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+clouddirectory <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.security.identity::clouddirectory(
     config = config,
     credentials = credentials,
@@ -36231,13 +37261,13 @@ clouddirectory <- function(config = list(), credentials = list(), endpoint = NUL
 #'
 #' @description
 #' AWS CloudHSM Service
-#' 
+#'
 #' This is documentation for **AWS CloudHSM Classic**. For more
 #' information, see [AWS CloudHSM Classic
 #' FAQs](https://aws.amazon.com/cloudhsm/faqs/), the AWS CloudHSM Classic
 #' User Guide, and the [AWS CloudHSM Classic API
 #' Reference](https://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
-#' 
+#'
 #' **For information about the current version of AWS CloudHSM**, see [AWS
 #' CloudHSM](https://aws.amazon.com/cloudhsm/), the [AWS CloudHSM User
 #' Guide](https://docs.aws.amazon.com/cloudhsm/latest/userguide/), and the
@@ -36357,7 +37387,12 @@ clouddirectory <- function(config = list(), credentials = list(), endpoint = NUL
 #'
 #' @rdname cloudhsm
 #' @export
-cloudhsm <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+cloudhsm <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.security.identity::cloudhsm(
     config = config,
     credentials = credentials,
@@ -36484,7 +37519,12 @@ cloudhsm <- function(config = list(), credentials = list(), endpoint = NULL, reg
 #'
 #' @rdname cloudhsmv2
 #' @export
-cloudhsmv2 <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+cloudhsmv2 <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.security.identity::cloudhsmv2(
     config = config,
     credentials = credentials,
@@ -36497,12 +37537,12 @@ cloudhsmv2 <- function(config = list(), credentials = list(), endpoint = NULL, r
 #'
 #' @description
 #' Amazon Cognito Federated Identities
-#' 
+#'
 #' Amazon Cognito Federated Identities is a web service that delivers
 #' scoped temporary credentials to mobile devices and other untrusted
 #' environments. It uniquely identifies a device and supplies the user with
 #' a consistent identity over the lifetime of an application.
-#' 
+#'
 #' Using Amazon Cognito Federated Identities, you can enable authentication
 #' with one or more third-party identity providers (Facebook, Google, or
 #' Login with Amazon) or an Amazon Cognito user pool, and you can also
@@ -36510,11 +37550,11 @@ cloudhsmv2 <- function(config = list(), credentials = list(), endpoint = NULL, r
 #' a unique identifier for each user and acts as an OpenID token provider
 #' trusted by AWS Security Token Service (STS) to access temporary,
 #' limited-privilege AWS credentials.
-#' 
+#'
 #' For a description of the authentication flow from the Amazon Cognito
 #' Developer Guide see [Authentication
 #' Flow](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flow.html).
-#' 
+#'
 #' For more information see [Amazon Cognito Federated
 #' Identities](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-identity.html).
 #'
@@ -36634,7 +37674,12 @@ cloudhsmv2 <- function(config = list(), credentials = list(), endpoint = NULL, r
 #'
 #' @rdname cognitoidentity
 #' @export
-cognitoidentity <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+cognitoidentity <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.security.identity::cognitoidentity(
     config = config,
     credentials = credentials,
@@ -36655,32 +37700,32 @@ cognitoidentity <- function(config = list(), credentials = list(), endpoint = NU
 #' party](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-identity-federation.html)
 #' and in the [User pool federation endpoints and hosted UI
 #' reference](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-userpools-server-contract-reference.html).
-#' 
+#'
 #' This API reference provides detailed information about API operations
 #' and object types in Amazon Cognito.
-#' 
+#'
 #' Along with resource management operations, the Amazon Cognito user pools
 #' API includes classes of operations and authorization models for
 #' client-side and server-side authentication of users. You can interact
 #' with operations in the Amazon Cognito user pools API as any of the
 #' following subjects.
-#' 
+#'
 #' 1.  An administrator who wants to configure user pools, app clients,
 #'     users, groups, or other user pool functions.
-#' 
+#'
 #' 2.  A server-side app, like a web application, that wants to use its
 #'     Amazon Web Services privileges to manage, authenticate, or authorize
 #'     a user.
-#' 
+#'
 #' 3.  A client-side app, like a mobile app, that wants to make
 #'     unauthenticated requests to manage, authenticate, or authorize a
 #'     user.
-#' 
+#'
 #' For more information, see [Using the Amazon Cognito user pools API and
 #' user pool
 #' endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-public-server-side.html)
 #' in the *Amazon Cognito Developer Guide*.
-#' 
+#'
 #' With your Amazon Web Services SDK, you can build the logic to support
 #' operational flows in every use case for this API. You can also make
 #' direct REST API requests to [Amazon Cognito user pools service
@@ -36688,37 +37733,37 @@ cognitoidentity <- function(config = list(), credentials = list(), endpoint = NU
 #' The following links can get you started with the
 #' `CognitoIdentityProvider` client in other supported Amazon Web Services
 #' SDKs.
-#' 
+#'
 #' -   [Amazon Web Services Command Line
 #'     Interface](https://docs.aws.amazon.com/cli/latest/reference/cognito-idp/#cli-aws-cognito-idp)
-#' 
+#'
 #' -   [Amazon Web Services SDK for
 #'     .NET](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/CognitoIdentityProvider/TCognitoIdentityProviderClient.html)
-#' 
+#'
 #' -   [Amazon Web Services SDK for
 #'     C++](https://sdk.amazonaws.com/cpp/api/LATEST/aws-cpp-sdk-cognito-idp/html/class_aws_1_1_cognito_identity_provider_1_1_cognito_identity_provider_client.html)
-#' 
+#'
 #' -   [Amazon Web Services SDK for
 #'     Go](https://docs.aws.amazon.com/sdk-for-go/api/service/cognitoidentityprovider/#CognitoIdentityProvider)
-#' 
+#'
 #' -   [Amazon Web Services SDK for Java
 #'     V2](https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/services/cognitoidentityprovider/CognitoIdentityProviderClient.html)
-#' 
+#'
 #' -   [Amazon Web Services SDK for
 #'     JavaScript](https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/CognitoIdentityServiceProvider.html)
-#' 
+#'
 #' -   [Amazon Web Services SDK for PHP
 #'     V3](https://docs.aws.amazon.com/aws-sdk-php/v3/api/api-cognito-idp-2016-04-18.html)
-#' 
+#'
 #' -   [Amazon Web Services SDK for
 #'     Python](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/cognito-idp.html)
-#' 
+#'
 #' -   [Amazon Web Services SDK for Ruby
 #'     V3](https://docs.aws.amazon.com/sdk-for-ruby/v3/api/Aws/CognitoIdentityProvider/Client.html)
-#' 
+#'
 #' -   [Amazon Web Services SDK for
 #'     Kotlin](https://sdk.amazonaws.com/kotlin/api/latest/cognitoidentityprovider/aws.sdk.kotlin.services.cognitoidentityprovider/-cognito-identity-provider-client/index.html)
-#' 
+#'
 #' To get started with an Amazon Web Services SDK, see [Tools to Build on
 #' Amazon Web Services](https://aws.amazon.com/developer/tools/). For
 #' example actions and scenarios, see [Code examples for Amazon Cognito
@@ -36931,7 +37976,12 @@ cognitoidentity <- function(config = list(), credentials = list(), endpoint = NU
 #'
 #' @rdname cognitoidentityprovider
 #' @export
-cognitoidentityprovider <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+cognitoidentityprovider <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.security.identity::cognitoidentityprovider(
     config = config,
     credentials = credentials,
@@ -36952,13 +38002,13 @@ cognitoidentityprovider <- function(config = list(), credentials = list(), endpo
 #' obtain a normalized user ID and credentials. User data is persisted in a
 #' dataset that can store up to 1 MB of key-value pairs, and you can have
 #' up to 20 datasets per user identity.
-#' 
+#'
 #' With Amazon Cognito Sync, the data stored for each identity is
 #' accessible only to credentials assigned to that identity. In order to
 #' use the Cognito Sync service, you need to make API calls using
 #' credentials retrieved with [Amazon Cognito Identity
 #' service](https://docs.aws.amazon.com/cognitoidentity/latest/APIReference/Welcome.html).
-#' 
+#'
 #' If you want to use Cognito Sync in an Android or iOS application, you
 #' will probably want to make API calls via the AWS Mobile SDK. To learn
 #' more, see the [Developer Guide for
@@ -37075,7 +38125,12 @@ cognitoidentityprovider <- function(config = list(), credentials = list(), endpo
 #'
 #' @rdname cognitosync
 #' @export
-cognitosync <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+cognitosync <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.security.identity::cognitosync(
     config = config,
     credentials = credentials,
@@ -37093,70 +38148,70 @@ cognitosync <- function(config = list(), credentials = list(), endpoint = NULL, 
 #' extracts time-based events such as login attempts, API calls, and
 #' network traffic from CloudTrail and Amazon Virtual Private Cloud (Amazon
 #' VPC) flow logs. It also extracts findings detected by Amazon GuardDuty.
-#' 
+#'
 #' The Detective API primarily supports the creation and management of
 #' behavior graphs. A behavior graph contains the extracted data from a set
 #' of member accounts, and is created and managed by an administrator
 #' account.
-#' 
+#'
 #' To add a member account to the behavior graph, the administrator account
 #' sends an invitation to the account. When the account accepts the
 #' invitation, it becomes a member account in the behavior graph.
-#' 
+#'
 #' Detective is also integrated with Organizations. The organization
 #' management account designates the Detective administrator account for
 #' the organization. That account becomes the administrator account for the
 #' organization behavior graph. The Detective administrator account is also
 #' the delegated administrator account for Detective in Organizations.
-#' 
+#'
 #' The Detective administrator account can enable any organization account
 #' as a member account in the organization behavior graph. The organization
 #' accounts do not receive invitations. The Detective administrator account
 #' can also invite other accounts to the organization behavior graph.
-#' 
+#'
 #' Every behavior graph is specific to a Region. You can only use the API
 #' to manage behavior graphs that belong to the Region that is associated
 #' with the currently selected endpoint.
-#' 
+#'
 #' The administrator account for a behavior graph can use the Detective API
 #' to do the following:
-#' 
+#'
 #' -   Enable and disable Detective. Enabling Detective creates a new
 #'     behavior graph.
-#' 
+#'
 #' -   View the list of member accounts in a behavior graph.
-#' 
+#'
 #' -   Add member accounts to a behavior graph.
-#' 
+#'
 #' -   Remove member accounts from a behavior graph.
-#' 
+#'
 #' -   Apply tags to a behavior graph.
-#' 
+#'
 #' The organization management account can use the Detective API to select
 #' the delegated administrator for Detective.
-#' 
+#'
 #' The Detective administrator account for an organization can use the
 #' Detective API to do the following:
-#' 
+#'
 #' -   Perform all of the functions of an administrator account.
-#' 
+#'
 #' -   Determine whether to automatically enable new organization accounts
 #'     as member accounts in the organization behavior graph.
-#' 
+#'
 #' An invited member account can use the Detective API to do the following:
-#' 
+#'
 #' -   View the list of behavior graphs that they are invited to.
-#' 
+#'
 #' -   Accept an invitation to contribute to a behavior graph.
-#' 
+#'
 #' -   Decline an invitation to contribute to a behavior graph.
-#' 
+#'
 #' -   Remove their account from a behavior graph.
-#' 
+#'
 #' All API actions are logged as CloudTrail events. See [Logging Detective
 #' API Calls with
 #' CloudTrail](https://docs.aws.amazon.com/detective/latest/userguide/logging-using-cloudtrail.html).
-#' 
+#'
 #' We replaced the term "master account" with the term "administrator
 #' account". An administrator account is used to centrally manage multiple
 #' accounts. In the case of Detective, the administrator account manages
@@ -37284,7 +38339,12 @@ cognitosync <- function(config = list(), credentials = list(), endpoint = NULL, 
 #'
 #' @rdname detective
 #' @export
-detective <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+detective <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.security.identity::detective(
     config = config,
     credentials = credentials,
@@ -37297,7 +38357,7 @@ detective <- function(config = list(), credentials = list(), endpoint = NULL, re
 #'
 #' @description
 #' Directory Service
-#' 
+#'
 #' Directory Service is a web service that makes it easy for you to setup
 #' and run directories in the Amazon Web Services cloud, or connect your
 #' Amazon Web Services resources with an existing self-managed Microsoft
@@ -37307,7 +38367,7 @@ detective <- function(config = list(), credentials = list(), endpoint = NULL, re
 #' Service](https://aws.amazon.com/directoryservice/) and the [Directory
 #' Service Administration
 #' Guide](https://docs.aws.amazon.com/directoryservice/latest/admin-guide/what_is.html).
-#' 
+#'
 #' Amazon Web Services provides SDKs that consist of libraries and sample
 #' code for various programming languages and platforms (Java, Ruby, .Net,
 #' iOS, Android, etc.). The SDKs provide a convenient way to create
@@ -37479,7 +38539,12 @@ detective <- function(config = list(), credentials = list(), endpoint = NULL, re
 #'
 #' @rdname directoryservice
 #' @export
-directoryservice <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+directoryservice <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.security.identity::directoryservice(
     config = config,
     credentials = credentials,
@@ -37496,7 +38561,7 @@ directoryservice <- function(config = list(), credentials = list(), endpoint = N
 #' actions, data types, and errors. For detailed information about Firewall
 #' Manager features, see the [Firewall Manager Developer
 #' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/fms-chapter.html).
-#' 
+#'
 #' Some API actions require explicit resource permissions. For information,
 #' see the developer guide topic [Service roles for Firewall
 #' Manager](https://docs.aws.amazon.com/waf/latest/developerguide/fms-security_iam_service-with-iam.html#fms-security_iam_service-with-iam-roles-service).
@@ -37636,7 +38701,12 @@ directoryservice <- function(config = list(), credentials = list(), endpoint = N
 #'
 #' @rdname fms
 #' @export
-fms <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+fms <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.security.identity::fms(
     config = config,
     credentials = credentials,
@@ -37663,13 +38733,13 @@ fms <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #' instances and container workloads. For example, GuardDuty can detect
 #' compromised EC2 instances and container workloads serving malware, or
 #' mining bitcoin.
-#' 
+#'
 #' GuardDuty also monitors Amazon Web Services account access behavior for
 #' signs of compromise, such as unauthorized infrastructure deployments
 #' like EC2 instances deployed in a Region that has never been used, or
 #' unusual API calls like a password policy change to reduce password
 #' strength.
-#' 
+#'
 #' GuardDuty informs you about the status of your Amazon Web Services
 #' environment by producing security findings that you can view in the
 #' GuardDuty console or through Amazon EventBridge. For more information,
@@ -37842,7 +38912,12 @@ fms <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #'
 #' @rdname guardduty
 #' @export
-guardduty <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+guardduty <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.security.identity::guardduty(
     config = config,
     credentials = credentials,
@@ -37855,7 +38930,7 @@ guardduty <- function(config = list(), credentials = list(), endpoint = NULL, re
 #'
 #' @description
 #' Identity and Access Management
-#' 
+#'
 #' Identity and Access Management (IAM) is a web service for securely
 #' controlling access to Amazon Web Services services. With IAM, you can
 #' centrally manage users, security credentials such as access keys, and
@@ -38126,7 +39201,12 @@ guardduty <- function(config = list(), credentials = list(), endpoint = NULL, re
 #'
 #' @rdname iam
 #' @export
-iam <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+iam <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.security.identity::iam(
     config = config,
     credentials = credentials,
@@ -38142,11 +39222,11 @@ iam <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #' place to retrieve all of your identities (users and groups). For more
 #' information, see the [IAM Identity Center User
 #' Guide](https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html).
-#' 
+#'
 #' This reference guide describes the identity store operations that you
 #' can call programmatically and includes detailed information about data
 #' types and errors.
-#' 
+#'
 #' IAM Identity Center uses the `sso` and `identitystore` API namespaces.
 #'
 #' @param
@@ -38261,7 +39341,12 @@ iam <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #'
 #' @rdname identitystore
 #' @export
-identitystore <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+identitystore <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.security.identity::identitystore(
     config = config,
     credentials = credentials,
@@ -38418,7 +39503,12 @@ identitystore <- function(config = list(), credentials = list(), endpoint = NULL
 #'
 #' @rdname inspector
 #' @export
-inspector <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+inspector <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.security.identity::inspector(
     config = config,
     credentials = credentials,
@@ -38586,7 +39676,12 @@ inspector <- function(config = list(), credentials = list(), endpoint = NULL, re
 #'
 #' @rdname inspector2
 #' @export
-inspector2 <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+inspector2 <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.security.identity::inspector2(
     config = config,
     credentials = credentials,
@@ -38599,17 +39694,17 @@ inspector2 <- function(config = list(), credentials = list(), endpoint = NULL, r
 #'
 #' @description
 #' Key Management Service
-#' 
+#'
 #' Key Management Service (KMS) is an encryption and key management web
 #' service. This guide describes the KMS operations that you can call
 #' programmatically. For general information about KMS, see the [*Key
 #' Management Service Developer
 #' Guide*](https://docs.aws.amazon.com/kms/latest/developerguide/) .
-#' 
+#'
 #' KMS has replaced the term *customer master key (CMK)* with *KMS key* and
 #' *KMS key*. The concept has not changed. To prevent breaking changes, KMS
 #' is keeping some variations of this term.
-#' 
+#'
 #' Amazon Web Services provides SDKs that consist of libraries and sample
 #' code for various programming languages and platforms (Java, Ruby, .Net,
 #' macOS, Android, etc.). The SDKs provide a convenient way to create
@@ -38619,10 +39714,10 @@ inspector2 <- function(config = list(), credentials = list(), endpoint = NULL, r
 #' information about the Amazon Web Services SDKs, including how to
 #' download and install them, see [Tools for Amazon Web
 #' Services](https://aws.amazon.com/developer/tools/).
-#' 
+#'
 #' We recommend that you use the Amazon Web Services SDKs to make
 #' programmatic API calls to KMS.
-#' 
+#'
 #' If you need to use FIPS 140-2 validated cryptographic modules when
 #' communicating with Amazon Web Services, use the FIPS endpoint in your
 #' preferred Amazon Web Services Region. For more information about the
@@ -38630,28 +39725,28 @@ inspector2 <- function(config = list(), credentials = list(), endpoint = NULL, r
 #' endpoints](https://docs.aws.amazon.com/general/latest/gr/kms.html#kms_region)
 #' in the Key Management Service topic of the *Amazon Web Services General
 #' Reference*.
-#' 
+#'
 #' All KMS API calls must be signed and be transmitted using Transport
 #' Layer Security (TLS). KMS recommends you always use the latest supported
 #' TLS version. Clients must also support cipher suites with Perfect
 #' Forward Secrecy (PFS) such as Ephemeral Diffie-Hellman (DHE) or Elliptic
 #' Curve Ephemeral Diffie-Hellman (ECDHE). Most modern systems such as Java
 #' 7 and later support these modes.
-#' 
+#'
 #' **Signing Requests**
-#' 
+#'
 #' Requests must be signed using an access key ID and a secret access key.
 #' We strongly recommend that you do not use your Amazon Web Services
 #' account root access key ID and secret access key for everyday work. You
 #' can use the access key ID and secret access key for an IAM user or you
 #' can use the Security Token Service (STS) to generate temporary security
 #' credentials and use those to sign requests.
-#' 
+#'
 #' All KMS requests must be signed with [Signature Version
 #' 4](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html).
-#' 
+#'
 #' **Logging API Requests**
-#' 
+#'
 #' KMS supports CloudTrail, a service that logs Amazon Web Services API
 #' calls and related events for your Amazon Web Services account and
 #' delivers them to an Amazon S3 bucket that you specify. By using the
@@ -38660,40 +39755,40 @@ inspector2 <- function(config = list(), credentials = list(), endpoint = NULL, r
 #' learn more about CloudTrail, including how to turn it on and find your
 #' log files, see the [CloudTrail User
 #' Guide](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/).
-#' 
+#'
 #' **Additional Resources**
-#' 
+#'
 #' For more information about credentials and request signing, see the
 #' following:
-#' 
+#'
 #' -   [Amazon Web Services Security
 #'     Credentials](https://docs.aws.amazon.com/IAM/latest/UserGuide/security-creds.html) -
 #'     This topic provides general information about the types of
 #'     credentials used to access Amazon Web Services.
-#' 
+#'
 #' -   [Temporary Security
 #'     Credentials](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html) -
 #'     This section of the *IAM User Guide* describes how to create and use
 #'     temporary security credentials.
-#' 
+#'
 #' -   [Signature Version 4 Signing
 #'     Process](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html) -
 #'     This set of topics walks you through the process of signing a
 #'     request using an access key ID and a secret access key.
-#' 
+#'
 #' **Commonly Used API Operations**
-#' 
+#'
 #' Of the API operations discussed in this guide, the following will prove
 #' the most useful for most applications. You will likely perform
 #' operations other than these, such as creating keys and assigning
 #' policies, by using the console.
-#' 
+#'
 #' -   `encrypt`
-#' 
+#'
 #' -   `decrypt`
-#' 
+#'
 #' -   `generate_data_key`
-#' 
+#'
 #' -   `generate_data_key_without_plaintext`
 #'
 #' @param
@@ -38843,7 +39938,12 @@ inspector2 <- function(config = list(), credentials = list(), endpoint = NULL, r
 #'
 #' @rdname kms
 #' @export
-kms <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+kms <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.security.identity::kms(
     config = config,
     credentials = credentials,
@@ -39031,7 +40131,12 @@ kms <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #'
 #' @rdname macie2
 #' @export
-macie2 <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+macie2 <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.security.identity::macie2(
     config = config,
     credentials = credentials,
@@ -39168,7 +40273,12 @@ macie2 <- function(config = list(), credentials = list(), endpoint = NULL, regio
 #'
 #' @rdname pcaconnectorad
 #' @export
-pcaconnectorad <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+pcaconnectorad <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.security.identity::pcaconnectorad(
     config = config,
     credentials = credentials,
@@ -39188,11 +40298,11 @@ pcaconnectorad <- function(config = list(), credentials = list(), endpoint = NUL
 #' with your entire organization or to organizational units (OUs). For
 #' supported resource types, you can also share resources with individual
 #' Identity and Access Management (IAM) roles and users.
-#' 
+#'
 #' To learn more about RAM, see the following resources:
-#' 
+#'
 #' -   [Resource Access Manager product page](https://aws.amazon.com/ram/)
-#' 
+#'
 #' -   [Resource Access Manager User
 #'     Guide](https://docs.aws.amazon.com/ram/latest/userguide/)
 #'
@@ -39323,7 +40433,12 @@ pcaconnectorad <- function(config = list(), credentials = list(), endpoint = NUL
 #'
 #' @rdname ram
 #' @export
-ram <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+ram <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.security.identity::ram(
     config = config,
     credentials = credentials,
@@ -39343,14 +40458,14 @@ ram <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #' Services resources. Using IAM Roles Anywhere eliminates the need to
 #' manage long-term credentials for workloads running outside of Amazon Web
 #' Services.
-#' 
+#'
 #' To use IAM Roles Anywhere, your workloads must use X.509 certificates
 #' issued by their certificate authority (CA). You register the CA with IAM
 #' Roles Anywhere as a trust anchor to establish trust between your public
 #' key infrastructure (PKI) and IAM Roles Anywhere. If you don't manage
 #' your own PKI system, you can use Private Certificate Authority to create
 #' a CA and then use that to establish trust with IAM Roles Anywhere.
-#' 
+#'
 #' This guide describes the IAM Roles Anywhere operations that you can call
 #' programmatically. For more information about IAM Roles Anywhere, see the
 #' [IAM Roles Anywhere User
@@ -39479,7 +40594,12 @@ ram <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #'
 #' @rdname iamrolesanywhere
 #' @export
-iamrolesanywhere <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+iamrolesanywhere <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.security.identity::iamrolesanywhere(
     config = config,
     credentials = credentials,
@@ -39492,33 +40612,33 @@ iamrolesanywhere <- function(config = list(), credentials = list(), endpoint = N
 #'
 #' @description
 #' Amazon Web Services Secrets Manager
-#' 
+#'
 #' Amazon Web Services Secrets Manager provides a service to enable you to
 #' store, manage, and retrieve, secrets.
-#' 
+#'
 #' This guide provides descriptions of the Secrets Manager API. For more
 #' information about using this service, see the [Amazon Web Services
 #' Secrets Manager User
 #' Guide](https://docs.aws.amazon.com/secretsmanager/latest/userguide/).
-#' 
+#'
 #' **API Version**
-#' 
+#'
 #' This version of the Secrets Manager API Reference documents the Secrets
 #' Manager API version 2017-10-17.
-#' 
+#'
 #' For a list of endpoints, see [Amazon Web Services Secrets Manager
 #' endpoints](https://docs.aws.amazon.com/secretsmanager/latest/userguide/asm_access.html#endpoints).
-#' 
+#'
 #' **Support and Feedback for Amazon Web Services Secrets Manager**
-#' 
+#'
 #' We welcome your feedback. Send your comments to
 #' <awssecretsmanager-feedback@@amazon.com>, or post your feedback and
 #' questions in the Amazon Web Services Secrets Manager Discussion Forum.
 #' For more information about the Amazon Web Services Discussion Forums,
 #' see Forums Help.
-#' 
+#'
 #' **Logging API Requests**
-#' 
+#'
 #' Amazon Web Services Secrets Manager supports Amazon Web Services
 #' CloudTrail, a service that records Amazon Web Services API calls for
 #' your Amazon Web Services account and delivers log files to an Amazon S3
@@ -39654,7 +40774,12 @@ iamrolesanywhere <- function(config = list(), credentials = list(), endpoint = N
 #'
 #' @rdname secretsmanager
 #' @export
-secretsmanager <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+secretsmanager <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.security.identity::secretsmanager(
     config = config,
     credentials = credentials,
@@ -39670,12 +40795,12 @@ secretsmanager <- function(config = list(), credentials = list(), endpoint = NUL
 #' state in Amazon Web Services and helps you assess your Amazon Web
 #' Services environment against security industry standards and best
 #' practices.
-#' 
+#'
 #' Security Hub collects security data across Amazon Web Services accounts,
 #' Amazon Web Services services, and supported third-party products and
 #' helps you analyze your security trends and identify the highest priority
 #' security issues.
-#' 
+#'
 #' To help you manage the security state of your organization, Security Hub
 #' supports multiple security standards. These include the Amazon Web
 #' Services Foundational Security Best Practices (FSBP) standard developed
@@ -39686,20 +40811,20 @@ secretsmanager <- function(config = list(), credentials = list(), endpoint = NUL
 #' each of which represents a security best practice. Security Hub runs
 #' checks against security controls and generates control findings to help
 #' you assess your compliance against security best practices.
-#' 
+#'
 #' In addition to generating control findings, Security Hub also receives
 #' findings from other Amazon Web Services services, such as Amazon
 #' GuardDuty and Amazon Inspector, and supported third-party products. This
 #' gives you a single pane of glass into a variety of security-related
 #' issues. You can also send Security Hub findings to other Amazon Web
 #' Services services and supported third-party products.
-#' 
+#'
 #' Security Hub offers automation features that help you triage and
 #' remediate security issues. For example, you can use automation rules to
 #' automatically update critical findings when a security check fails. You
 #' can also leverage the integration with Amazon EventBridge to trigger
 #' automatic responses to specific findings.
-#' 
+#'
 #' This guide, the *Security Hub API Reference*, provides information about
 #' the Security Hub API. This includes supported resources, HTTP methods,
 #' parameters, and schemas. If you're new to Security Hub, you might find
@@ -39709,7 +40834,7 @@ secretsmanager <- function(config = list(), credentials = list(), endpoint = NUL
 #' demonstrate how to use Security Hub features. It also provides
 #' information about topics such as integrating Security Hub with other
 #' Amazon Web Services services.
-#' 
+#'
 #' In addition to interacting with Security Hub by making calls to the
 #' Security Hub API, you can use a current version of an Amazon Web
 #' Services command line tool or SDK. Amazon Web Services provides tools
@@ -39721,7 +40846,7 @@ secretsmanager <- function(config = list(), credentials = list(), endpoint = NUL
 #' automatically. For information about installing and using the Amazon Web
 #' Services tools and SDKs, see [Tools to Build on Amazon Web
 #' Services](https://aws.amazon.com/developer/tools/).
-#' 
+#'
 #' With the exception of operations that are related to central
 #' configuration, Security Hub API requests are executed only in the Amazon
 #' Web Services Region that is currently active or in the specific Amazon
@@ -39735,28 +40860,28 @@ secretsmanager <- function(config = list(), credentials = list(), endpoint = NUL
 #' [Central configuration terms and
 #' concepts](https://docs.aws.amazon.com/securityhub/latest/userguide/central-configuration-intro.html#central-configuration-concepts)
 #' section of the *Security Hub User Guide*.
-#' 
+#'
 #' The following throttling limits apply to Security Hub API operations.
-#' 
+#'
 #' -   `batch_enable_standards` -
 #'     `RateLimit` of 1 request per second. `BurstLimit` of 1 request per
 #'     second.
-#' 
+#'
 #' -   `get_findings` - `RateLimit` of 3
 #'     requests per second. `BurstLimit` of 6 requests per second.
-#' 
+#'
 #' -   `batch_import_findings` -
 #'     `RateLimit` of 10 requests per second. `BurstLimit` of 30 requests
 #'     per second.
-#' 
+#'
 #' -   `batch_update_findings` -
 #'     `RateLimit` of 10 requests per second. `BurstLimit` of 30 requests
 #'     per second.
-#' 
+#'
 #' -   `update_standards_control` -
 #'     `RateLimit` of 1 request per second. `BurstLimit` of 5 requests per
 #'     second.
-#' 
+#'
 #' -   All other operations - `RateLimit` of 10 requests per second.
 #'     `BurstLimit` of 30 requests per second.
 #'
@@ -39932,7 +41057,12 @@ secretsmanager <- function(config = list(), credentials = list(), endpoint = NUL
 #'
 #' @rdname securityhub
 #' @export
-securityhub <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+securityhub <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.security.identity::securityhub(
     config = config,
     credentials = credentials,
@@ -39955,10 +41085,10 @@ securityhub <- function(config = list(), credentials = list(), endpoint = NULL, 
 #' analyze security data for a more complete understanding of your security
 #' posture across the entire organization. It can also help you improve the
 #' protection of your workloads, applications, and data.
-#' 
+#'
 #' The data lake is backed by Amazon Simple Storage Service (Amazon S3)
 #' buckets, and you retain ownership over your data.
-#' 
+#'
 #' Amazon Security Lake integrates with CloudTrail, a service that provides
 #' a record of actions taken by a user, role, or an Amazon Web Services
 #' service. In Security Lake, CloudTrail captures API calls for Security
@@ -39973,14 +41103,14 @@ securityhub <- function(config = list(), credentials = list(), endpoint = NULL, 
 #' when it was made, and additional details. To learn more about Security
 #' Lake information in CloudTrail, see the [Amazon Security Lake User
 #' Guide](https://docs.aws.amazon.com/security-lake/latest/userguide/securitylake-cloudtrail.html).
-#' 
+#'
 #' Security Lake automates the collection of security-related log and event
 #' data from integrated Amazon Web Services services and third-party
 #' services. It also helps you manage the lifecycle of data with
 #' customizable retention and replication settings. Security Lake converts
 #' ingested data into Apache Parquet format and a standard open-source
 #' schema called the Open Cybersecurity Schema Framework (OCSF).
-#' 
+#'
 #' Other Amazon Web Services services and third-party services can
 #' subscribe to the data that's stored in Security Lake for incident
 #' response and security data analytics.
@@ -40109,7 +41239,12 @@ securityhub <- function(config = list(), credentials = list(), endpoint = NULL, 
 #'
 #' @rdname securitylake
 #' @export
-securitylake <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+securitylake <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.security.identity::securitylake(
     config = config,
     credentials = credentials,
@@ -40122,7 +41257,7 @@ securitylake <- function(config = list(), credentials = list(), endpoint = NULL,
 #'
 #' @description
 #' Shield Advanced
-#' 
+#'
 #' This is the *Shield Advanced API Reference*. This guide is for
 #' developers who need detailed information about the Shield Advanced API
 #' actions, data types, and errors. For detailed information about WAF and
@@ -40259,7 +41394,12 @@ securitylake <- function(config = list(), credentials = list(), endpoint = NULL,
 #'
 #' @rdname shield
 #' @export
-shield <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+shield <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.security.identity::shield(
     config = config,
     credentials = credentials,
@@ -40276,16 +41416,16 @@ shield <- function(config = list(), credentials = list(), endpoint = NULL, regio
 #' Identity Center resources such as the AWS access portal. Users can get
 #' AWS account applications and roles assigned to them and get federated
 #' into the application.
-#' 
+#'
 #' Although AWS Single Sign-On was renamed, the `sso` and `identitystore`
 #' API namespaces will continue to retain their original name for backward
 #' compatibility purposes. For more information, see [IAM Identity Center
 #' rename](https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html#renamed).
-#' 
+#'
 #' This reference guide describes the IAM Identity Center Portal operations
 #' that you can call programatically and includes detailed information on
 #' data types and errors.
-#' 
+#'
 #' AWS provides SDKs that consist of libraries and sample code for various
 #' programming languages and platforms, such as Java, Ruby, .Net, iOS, or
 #' Android. The SDKs provide a convenient way to create programmatic access
@@ -40391,7 +41531,12 @@ shield <- function(config = list(), credentials = list(), endpoint = NULL, regio
 #'
 #' @rdname sso
 #' @export
-sso <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+sso <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.security.identity::sso(
     config = config,
     credentials = credentials,
@@ -40409,21 +41554,21 @@ sso <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #' Identity Center is the recommended approach for workforce authentication
 #' and authorization in Amazon Web Services, for organizations of any size
 #' and type.
-#' 
+#'
 #' IAM Identity Center uses the `sso` and `identitystore` API namespaces.
-#' 
+#'
 #' This reference guide provides information on single sign-on operations
 #' which could be used for access management of Amazon Web Services
 #' accounts. For information about IAM Identity Center features, see the
 #' [IAM Identity Center User
 #' Guide](https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html).
-#' 
+#'
 #' Many operations in the IAM Identity Center APIs rely on identifiers for
 #' users and groups, known as principals. For more information about how to
 #' work with principals and principal IDs in IAM Identity Center, see the
 #' [Identity Store API
 #' Reference](https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/welcome.html).
-#' 
+#'
 #' Amazon Web Services provides SDKs that consist of libraries and sample
 #' code for various programming languages and platforms (Java, Ruby, .Net,
 #' iOS, Android, and more). The SDKs provide a convenient way to create
@@ -40598,7 +41743,12 @@ sso <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #'
 #' @rdname ssoadmin
 #' @export
-ssoadmin <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+ssoadmin <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.security.identity::ssoadmin(
     config = config,
     credentials = credentials,
@@ -40615,21 +41765,21 @@ ssoadmin <- function(config = list(), credentials = list(), endpoint = NULL, reg
 #' Identity Center. The service also enables the client to fetch the user’s
 #' access token upon successful authentication and authorization with IAM
 #' Identity Center.
-#' 
+#'
 #' IAM Identity Center uses the `sso` and `identitystore` API namespaces.
-#' 
+#'
 #' **Considerations for Using This Guide**
-#' 
+#'
 #' Before you begin using this guide, we recommend that you first review
 #' the following important information about how the IAM Identity Center
 #' OIDC service works.
-#' 
+#'
 #' -   The IAM Identity Center OIDC service currently implements only the
 #'     portions of the OAuth 2.0 Device Authorization Grant standard
 #'     ([https://tools.ietf.org/html/rfc8628](https://datatracker.ietf.org/doc/html/rfc8628))
 #'     that are necessary to enable single sign-on authentication with the
 #'     CLI.
-#' 
+#'
 #' -   With older versions of the CLI, the service only emits OIDC access
 #'     tokens, so to obtain a new token, users must explicitly
 #'     re-authenticate. To access the OIDC flow that supports token refresh
@@ -40640,18 +41790,18 @@ ssoadmin <- function(config = list(), credentials = list(), endpoint = NULL, reg
 #'     access portal session
 #'     duration](https://docs.aws.amazon.com/singlesignon/latest/userguide/configure-user-session.html)
 #'     .
-#' 
+#'
 #' -   The access tokens provided by this service grant access to all
 #'     Amazon Web Services account entitlements assigned to an IAM Identity
 #'     Center user, not just a particular application.
-#' 
+#'
 #' -   The documentation in this guide does not describe the mechanism to
 #'     convert the access token into Amazon Web Services Auth (“sigv4”)
 #'     credentials for use with IAM-protected Amazon Web Services service
 #'     endpoints. For more information, see
 #'     [GetRoleCredentials](https://docs.aws.amazon.com/singlesignon/latest/PortalAPIReference/API_GetRoleCredentials.html)
 #'     in the *IAM Identity Center Portal API Reference Guide*.
-#' 
+#'
 #' For general information about IAM Identity Center, see [What is IAM
 #' Identity
 #' Center?](https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html)
@@ -40754,7 +41904,12 @@ ssoadmin <- function(config = list(), credentials = list(), endpoint = NULL, reg
 #'
 #' @rdname ssooidc
 #' @export
-ssooidc <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+ssooidc <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.security.identity::ssooidc(
     config = config,
     credentials = credentials,
@@ -40767,7 +41922,7 @@ ssooidc <- function(config = list(), credentials = list(), endpoint = NULL, regi
 #'
 #' @description
 #' Security Token Service
-#' 
+#'
 #' Security Token Service (STS) enables you to request temporary,
 #' limited-privilege credentials for users. This guide provides
 #' descriptions of the STS API. For more information about using this
@@ -40850,7 +42005,7 @@ ssooidc <- function(config = list(), credentials = list(), endpoint = NULL, regi
 #' @examples
 #' \dontrun{
 #' svc <- sts()
-#' # 
+#' #
 #' svc$assume_role(
 #'   ExternalId = "123ABC",
 #'   Policy = "\{\"Version\":\"2012-10-17\",\"Statement\":[\{\"Sid\":\"Stmt1\",\"Effect\":\"A...",
@@ -40898,7 +42053,12 @@ ssooidc <- function(config = list(), credentials = list(), endpoint = NULL, regi
 #'
 #' @rdname sts
 #' @export
-sts <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+sts <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.security.identity::sts(
     config = config,
     credentials = credentials,
@@ -40921,26 +42081,26 @@ sts <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #' permissions by letting you create and store authorization policies for
 #' your applications, such as consumer-facing web sites and enterprise
 #' business systems.
-#' 
+#'
 #' Verified Permissions uses Cedar as the policy language to express your
 #' permission requirements. Cedar supports both role-based access control
 #' (RBAC) and attribute-based access control (ABAC) authorization models.
-#' 
+#'
 #' For more information about configuring, administering, and using Amazon
 #' Verified Permissions in your applications, see the [Amazon Verified
 #' Permissions User
 #' Guide](https://docs.aws.amazon.com/verifiedpermissions/latest/userguide/).
-#' 
+#'
 #' For more information about the Cedar policy language, see the [Cedar
 #' Policy Language Guide](https://docs.cedarpolicy.com/).
-#' 
+#'
 #' When you write Cedar policies that reference principals, resources and
 #' actions, you can define the unique identifiers used for each of those
 #' elements. We strongly recommend that you follow these best practices:
-#' 
+#'
 #' -   **Use values like universally unique identifiers (UUIDs) for all
 #'     principal and resource identifiers.**
-#' 
+#'
 #'     For example, if user `jane` leaves the company, and you later let
 #'     someone else use the name `jane`, then that new user automatically
 #'     gets access to everything granted by policies that still reference
@@ -40949,31 +42109,31 @@ sts <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #'     use identifiers that are guaranteed unique and never reused to
 #'     ensure that you don’t unintentionally grant access because of the
 #'     presence of an old identifier in a policy.
-#' 
+#'
 #'     Where you use a UUID for an entity, we recommend that you follow it
 #'     with the // comment specifier and the ‘friendly’ name of your
 #'     entity. This helps to make your policies easier to understand. For
 #'     example: principal == User::"a1b2c3d4-e5f6-a1b2-c3d4-EXAMPLE11111",
 #'     // alice
-#' 
+#'
 #' -   **Do not include personally identifying, confidential, or sensitive
 #'     information as part of the unique identifier for your principals or
 #'     resources.** These identifiers are included in log entries shared in
 #'     CloudTrail trails.
-#' 
+#'
 #' Several operations return structures that appear similar, but have
 #' different purposes. As new functionality is added to the product, the
 #' structure used in a parameter of one operation might need to change in a
 #' way that wouldn't make sense for the same parameter in a different
 #' operation. To help you understand the purpose of each, the following
 #' naming convention is used for the structures:
-#' 
+#'
 #' -   Parameter type structures that end in `Detail` are used in `Get`
 #'     operations.
-#' 
+#'
 #' -   Parameter type structures that end in `Item` are used in `List`
 #'     operations.
-#' 
+#'
 #' -   Parameter type structures that use neither suffix are used in the
 #'     mutating (create and update) operations.
 #'
@@ -41097,7 +42257,12 @@ sts <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #'
 #' @rdname verifiedpermissions
 #' @export
-verifiedpermissions <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+verifiedpermissions <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.security.identity::verifiedpermissions(
     config = config,
     credentials = credentials,
@@ -41113,13 +42278,13 @@ verifiedpermissions <- function(config = list(), credentials = list(), endpoint 
 #' [AWS WAF
 #' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
 #' in the developer guide.
-#' 
+#'
 #' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
 #' [AWS WAF Developer
 #' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
 #' With the latest version, AWS WAF has a single set of endpoints for
 #' regional and global use.
-#' 
+#'
 #' This is the *AWS WAF Classic API Reference* for using AWS WAF Classic
 #' with Amazon CloudFront. The AWS WAF Classic actions and data types
 #' listed in the reference are available for protecting Amazon CloudFront
@@ -41303,7 +42468,12 @@ verifiedpermissions <- function(config = list(), credentials = list(), endpoint 
 #'
 #' @rdname waf
 #' @export
-waf <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+waf <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.security.identity::waf(
     config = config,
     credentials = credentials,
@@ -41319,13 +42489,13 @@ waf <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #' information, see [AWS WAF
 #' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
 #' in the developer guide.
-#' 
+#'
 #' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
 #' [AWS WAF Developer
 #' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
 #' With the latest version, AWS WAF has a single set of endpoints for
 #' regional and global use.
-#' 
+#'
 #' This is the *AWS WAF Regional Classic API Reference* for using AWS WAF
 #' Classic with the AWS resources, Elastic Load Balancing (ELB) Application
 #' Load Balancers and API Gateway APIs. The AWS WAF Classic actions and
@@ -41517,7 +42687,12 @@ waf <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #'
 #' @rdname wafregional
 #' @export
-wafregional <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+wafregional <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.security.identity::wafregional(
     config = config,
     credentials = credentials,
@@ -41530,22 +42705,22 @@ wafregional <- function(config = list(), credentials = list(), endpoint = NULL, 
 #'
 #' @description
 #' WAF
-#' 
+#'
 #' This is the latest version of the **WAF** API, released in November,
 #' 2019. The names of the entities that you use to access this API, like
 #' endpoints and namespaces, all have the versioning information added,
 #' like "V2" or "v2", to distinguish from the prior version. We recommend
 #' migrating your resources to this version, because it has a number of
 #' significant improvements.
-#' 
+#'
 #' If you used WAF prior to this release, you can't use this WAFV2 API to
 #' access any WAF resources that you created before. WAF Classic support
 #' will end on September 30, 2025.
-#' 
+#'
 #' For information about WAF, including how to migrate your WAF Classic
 #' resources to this version, see the [WAF Developer
 #' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' 
+#'
 #' WAF is a web application firewall that lets you monitor the HTTP and
 #' HTTPS requests that are forwarded to an Amazon CloudFront distribution,
 #' Amazon API Gateway REST API, Application Load Balancer, AppSync GraphQL
@@ -41556,25 +42731,25 @@ wafregional <- function(config = list(), credentials = list(), endpoint = NULL, 
 #' addresses that requests originate from or the values of query strings,
 #' the protected resource responds to requests with either the requested
 #' content, an HTTP 403 status code (Forbidden), or with a custom response.
-#' 
+#'
 #' This API guide is for developers who need detailed information about WAF
 #' API actions, data types, and errors. For detailed information about WAF
 #' features and guidance for configuring and using WAF, see the [WAF
 #' Developer
 #' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/what-is-aws-waf.html).
-#' 
+#'
 #' You can make calls using the endpoints listed in [WAF endpoints and
 #' quotas](https://docs.aws.amazon.com/general/latest/gr/waf.html).
-#' 
+#'
 #' -   For regional applications, you can use any of the endpoints in the
 #'     list. A regional application can be an Application Load Balancer
 #'     (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API, an
 #'     Amazon Cognito user pool, an App Runner service, or an Amazon Web
 #'     Services Verified Access instance.
-#' 
+#'
 #' -   For Amazon CloudFront applications, you must use the API endpoint
 #'     listed for US East (N. Virginia): us-east-1.
-#' 
+#'
 #' Alternatively, you can use one of the Amazon Web Services SDKs to access
 #' an API that's tailored to the programming language or platform that
 #' you're using. For more information, see [Amazon Web Services
@@ -41727,7 +42902,12 @@ wafregional <- function(config = list(), credentials = list(), endpoint = NULL, 
 #'
 #' @rdname wafv2
 #' @export
-wafv2 <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+wafv2 <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.security.identity::wafv2(
     config = config,
     credentials = credentials,
@@ -41745,18 +42925,18 @@ wafv2 <- function(config = list(), credentials = list(), endpoint = NULL, region
 #' match selected events in the stream and route them to targets to take
 #' action. You can also use rules to take action on a predetermined
 #' schedule. For example, you can configure rules to:
-#' 
+#'
 #' -   Automatically invoke an Lambda function to update DNS entries when
 #'     an event notifies you that Amazon EC2 instance enters the running
 #'     state.
-#' 
+#'
 #' -   Direct specific API records from CloudTrail to an Amazon Kinesis
 #'     data stream for detailed analysis of potential security or
 #'     availability risks.
-#' 
+#'
 #' -   Periodically invoke a built-in target to create a snapshot of an
 #'     Amazon EBS volume.
-#' 
+#'
 #' For more information about the features of Amazon EventBridge, see the
 #' [Amazon EventBridge User
 #' Guide](https://docs.aws.amazon.com/eventbridge/latest/userguide/).
@@ -41911,7 +43091,12 @@ wafv2 <- function(config = list(), credentials = list(), endpoint = NULL, region
 #'
 #' @rdname eventbridge
 #' @export
-eventbridge <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+eventbridge <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.application.integration::eventbridge(
     config = config,
     credentials = credentials,
@@ -42079,7 +43264,12 @@ eventbridge <- function(config = list(), credentials = list(), endpoint = NULL, 
 #'
 #' @rdname locationservice
 #' @export
-locationservice <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+locationservice <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.application.integration::locationservice(
     config = config,
     credentials = credentials,
@@ -42213,7 +43403,12 @@ locationservice <- function(config = list(), credentials = list(), endpoint = NU
 #'
 #' @rdname mq
 #' @export
-mq <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+mq <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.application.integration::mq(
     config = config,
     credentials = credentials,
@@ -42226,44 +43421,44 @@ mq <- function(config = list(), credentials = list(), endpoint = NULL, region = 
 #'
 #' @description
 #' Amazon Managed Workflows for Apache Airflow
-#' 
+#'
 #' This section contains the Amazon Managed Workflows for Apache Airflow
 #' (MWAA) API reference documentation. For more information, see [What is
 #' Amazon
 #' MWAA?](https://docs.aws.amazon.com/mwaa/latest/userguide/what-is-mwaa.html).
-#' 
+#'
 #' **Endpoints**
-#' 
+#'
 #' -   `api.airflow.{region}.amazonaws.com` - This endpoint is used for
 #'     environment management.
-#' 
+#'
 #'     -   `create_environment`
-#' 
+#'
 #'     -   `delete_environment`
-#' 
+#'
 #'     -   `get_environment`
-#' 
+#'
 #'     -   `list_environments`
-#' 
+#'
 #'     -   `list_tags_for_resource`
-#' 
+#'
 #'     -   `tag_resource`
-#' 
+#'
 #'     -   `untag_resource`
-#' 
+#'
 #'     -   `update_environment`
-#' 
+#'
 #' -   `env.airflow.{region}.amazonaws.com` - This endpoint is used to
 #'     operate the Airflow environment.
-#' 
+#'
 #'     -   `create_cli_token`
-#' 
+#'
 #'     -   `create_web_login_token`
-#' 
+#'
 #'     -   `invoke_rest_api`
-#' 
+#'
 #' **Regions**
-#' 
+#'
 #' For a list of supported regions, see [Amazon MWAA endpoints and
 #' quotas](https://docs.aws.amazon.com/general/latest/gr/mwaa.html) in the
 #' *Amazon Web Services General Reference*.
@@ -42373,7 +43568,12 @@ mq <- function(config = list(), credentials = list(), endpoint = NULL, region = 
 #'
 #' @rdname mwaa
 #' @export
-mwaa <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+mwaa <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.application.integration::mwaa(
     config = config,
     credentials = credentials,
@@ -42496,7 +43696,12 @@ mwaa <- function(config = list(), credentials = list(), endpoint = NULL, region 
 #'
 #' @rdname eventbridgepipes
 #' @export
-eventbridgepipes <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+eventbridgepipes <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.application.integration::eventbridgepipes(
     config = config,
     credentials = credentials,
@@ -42517,13 +43722,13 @@ eventbridgepipes <- function(config = list(), credentials = list(), endpoint = N
 #' names, tags, and IDs. Resource Explorer can search across all of the
 #' Amazon Web Services Regions in your account in which you turn the
 #' service on, to simplify your cross-Region workloads.
-#' 
+#'
 #' Resource Explorer scans the resources in each of the Amazon Web Services
 #' Regions in your Amazon Web Services account in which you turn on
 #' Resource Explorer. Resource Explorer [creates and maintains an
 #' index](https://docs.aws.amazon.com/resource-explorer/latest/userguide/getting-started-terms-and-concepts.html#term-index)
 #' in each Region, with the details of that Region's resources.
-#' 
+#'
 #' You can [search across all of the indexed Regions in your
 #' account](https://docs.aws.amazon.com/resource-explorer/latest/userguide/manage-aggregator-region.html)
 #' by designating one of your Amazon Web Services Regions to contain the
@@ -42536,7 +43741,7 @@ eventbridgepipes <- function(config = list(), credentials = list(), endpoint = N
 #' resource information for all Regions in the account where you turned on
 #' Resource Explorer. As a result, views in the aggregator index Region
 #' include resources from all of the indexed Regions in your account.
-#' 
+#'
 #' For more information about Amazon Web Services Resource Explorer,
 #' including how to enable and configure the service, see the [Amazon Web
 #' Services Resource Explorer User
@@ -42659,7 +43864,12 @@ eventbridgepipes <- function(config = list(), credentials = list(), endpoint = N
 #'
 #' @rdname resourceexplorer
 #' @export
-resourceexplorer <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+resourceexplorer <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.application.integration::resourceexplorer(
     config = config,
     credentials = credentials,
@@ -42797,7 +44007,12 @@ resourceexplorer <- function(config = list(), credentials = list(), endpoint = N
 #'
 #' @rdname schemas
 #' @export
-schemas <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+schemas <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.application.integration::schemas(
     config = config,
     credentials = credentials,
@@ -42921,7 +44136,12 @@ schemas <- function(config = list(), credentials = list(), endpoint = NULL, regi
 #'
 #' @rdname eventbridgescheduler
 #' @export
-eventbridgescheduler <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+eventbridgescheduler <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.application.integration::eventbridgescheduler(
     config = config,
     credentials = credentials,
@@ -42934,10 +44154,10 @@ eventbridgescheduler <- function(config = list(), credentials = list(), endpoint
 #'
 #' @description
 #' Step Functions
-#' 
+#'
 #' Step Functions coordinates the components of distributed applications
 #' and microservices using visual workflows.
-#' 
+#'
 #' You can use Step Functions to build applications from individual
 #' components, each of which performs a discrete function, or *task*,
 #' allowing you to scale and change applications quickly. Step Functions
@@ -42947,14 +44167,14 @@ eventbridgescheduler <- function(config = list(), credentials = list(), endpoint
 #' application executes predictably and in the right order every time. Step
 #' Functions logs the state of each step, so you can quickly diagnose and
 #' debug any issues.
-#' 
+#'
 #' Step Functions manages operations and underlying infrastructure to
 #' ensure your application is available at any scale. You can run tasks on
 #' Amazon Web Services, your own servers, or any system that has access to
 #' Amazon Web Services. You can access and use Step Functions using the
 #' console, the Amazon Web Services SDKs, or an HTTP API. For more
 #' information about Step Functions, see the *\href{https://docs.aws.amazon.com/step-functions/latest/dg/welcome.html}{Step Functions Developer Guide}* .
-#' 
+#'
 #' If you use the Step Functions API actions using Amazon Web Services SDK
 #' integrations, make sure the API actions are in camel case and parameter
 #' names are in Pascal case. For example, you could use Step Functions API
@@ -43091,7 +44311,12 @@ eventbridgescheduler <- function(config = list(), credentials = list(), endpoint
 #'
 #' @rdname sfn
 #' @export
-sfn <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+sfn <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.application.integration::sfn(
     config = config,
     credentials = credentials,
@@ -43111,12 +44336,12 @@ sfn <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #' page](https://aws.amazon.com/sns/). For detailed information about
 #' Amazon SNS features and their associated API calls, see the [Amazon SNS
 #' Developer Guide](https://docs.aws.amazon.com/sns/latest/dg/).
-#' 
+#'
 #' For information on the permissions you need to use this API, see
 #' [Identity and access management in Amazon
 #' SNS](https://docs.aws.amazon.com/sns/latest/dg/) in the *Amazon SNS
 #' Developer Guide.*
-#' 
+#'
 #' We also provide SDKs that enable you to access Amazon SNS from your
 #' preferred programming language. The SDKs contain functionality that
 #' automatically takes care of tasks such as: cryptographically signing
@@ -43259,7 +44484,12 @@ sfn <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #'
 #' @rdname sns
 #' @export
-sns <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+sns <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.application.integration::sns(
     config = config,
     credentials = credentials,
@@ -43272,48 +44502,48 @@ sns <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #'
 #' @description
 #' Welcome to the *Amazon SQS API Reference*.
-#' 
+#'
 #' Amazon SQS is a reliable, highly-scalable hosted queue for storing
 #' messages as they travel between applications or microservices. Amazon
 #' SQS moves data between distributed application components and helps you
 #' decouple these components.
-#' 
+#'
 #' For information on the permissions you need to use this API, see
 #' [Identity and access
 #' management](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-authentication-and-access-control.html)
 #' in the *Amazon SQS Developer Guide.*
-#' 
+#'
 #' You can use [Amazon Web Services
 #' SDKs](https://aws.amazon.com/developer/tools/#sdk) to access Amazon SQS
 #' using your favorite programming language. The SDKs perform tasks such as
 #' the following automatically:
-#' 
+#'
 #' -   Cryptographically sign your service requests
-#' 
+#'
 #' -   Retry requests
-#' 
+#'
 #' -   Handle error responses
-#' 
+#'
 #' **Additional information**
-#' 
+#'
 #' -   [Amazon SQS Product Page](https://aws.amazon.com/sqs/)
-#' 
+#'
 #' -   *Amazon SQS Developer Guide*
-#' 
+#'
 #'     -   [Making API
 #'         Requests](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-making-api-requests-xml.html)
-#' 
+#'
 #'     -   [Amazon SQS Message
 #'         Attributes](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-metadata.html#sqs-message-attributes)
-#' 
+#'
 #'     -   [Amazon SQS Dead-Letter
 #'         Queues](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html)
-#' 
+#'
 #' -   [Amazon SQS in the *Command Line
 #'     Interface*](https://docs.aws.amazon.com/cli/latest/reference/sqs/)
-#' 
+#'
 #' -   *Amazon Web Services General Reference*
-#' 
+#'
 #'     -   [Regions and
 #'         Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html#sqs_region)
 #'
@@ -43433,7 +44663,12 @@ sns <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #'
 #' @rdname sqs
 #' @export
-sqs <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+sqs <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.application.integration::sqs(
     config = config,
     credentials = credentials,
@@ -43452,13 +44687,13 @@ sqs <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #' Coordinating tasks in a workflow involves managing intertask
 #' dependencies, scheduling, and concurrency in accordance with the logical
 #' flow of the application.
-#' 
+#'
 #' Amazon SWF gives you full control over implementing tasks and
 #' coordinating them without worrying about underlying complexities such as
 #' tracking their progress and maintaining their state.
-#' 
+#'
 #' This documentation serves as reference only. For a broader overview of
-#' the Amazon SWF programming model, see the *\href{https://docs.aws.amazon.com/amazonswf/latest/developerguide/}{Amazon SWF Developer Guide}* .
+#' the Amazon SWF programming model, see the *\href{https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-welcome.html}{Amazon SWF Developer Guide}* .
 #'
 #' @param
 #' config
@@ -43592,7 +44827,12 @@ sqs <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #'
 #' @rdname swf
 #' @export
-swf <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+swf <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.application.integration::swf(
     config = config,
     credentials = credentials,
@@ -43618,7 +44858,7 @@ swf <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #' configuration, the payer account can also see the custom rate applied on
 #' the billing details page of the Amazon Web Services Billing console, or
 #' configure a cost and usage report per billing group.
-#' 
+#'
 #' This documentation shows how you can configure Amazon Web Services
 #' Billing Conductor using its API. For more information about using the
 #' Amazon Web Services Billing Conductor user interface, see the [Amazon
@@ -43750,7 +44990,12 @@ swf <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #'
 #' @rdname billingconductor
 #' @export
-billingconductor <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+billingconductor <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.cost.management::billingconductor(
     config = config,
     credentials = credentials,
@@ -43765,9 +45010,9 @@ billingconductor <- function(config = list(), credentials = list(), endpoint = N
 #' You can use the Billing API to programatically list the billing views
 #' available to you for a given time period. A billing view represents a
 #' set of billing data.
-#' 
+#'
 #' The Billing API provides the following endpoint:
-#' 
+#'
 #' `https://billing.us-east-1.api.aws`
 #'
 #' @param
@@ -43873,7 +45118,12 @@ billingconductor <- function(config = list(), credentials = list(), endpoint = N
 #'
 #' @rdname billing
 #' @export
-billing <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+billing <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.cost.management::billing(
     config = config,
     credentials = credentials,
@@ -43889,45 +45139,45 @@ billing <- function(config = list(), credentials = list(), endpoint = NULL, regi
 #' service costs, and instance reservations. This API reference provides
 #' descriptions, syntax, and usage examples for each of the actions and
 #' data types for the Amazon Web Services Budgets feature.
-#' 
+#'
 #' Budgets provide you with a way to see the following information:
-#' 
+#'
 #' -   How close your plan is to your budgeted amount or to the free tier
 #'     limits
-#' 
+#'
 #' -   Your usage-to-date, including how much you've used of your Reserved
 #'     Instances (RIs)
-#' 
+#'
 #' -   Your current estimated charges from Amazon Web Services, and how
 #'     much your predicted usage will accrue in charges by the end of the
 #'     month
-#' 
+#'
 #' -   How much of your budget has been used
-#' 
+#'
 #' Amazon Web Services updates your budget status several times a day.
 #' Budgets track your unblended costs, subscriptions, refunds, and RIs. You
 #' can create the following types of budgets:
-#' 
+#'
 #' -   **Cost budgets** - Plan how much you want to spend on a service.
-#' 
+#'
 #' -   **Usage budgets** - Plan how much you want to use one or more
 #'     services.
-#' 
+#'
 #' -   **RI utilization budgets** - Define a utilization threshold, and
 #'     receive alerts when your RI usage falls below that threshold. This
 #'     lets you see if your RIs are unused or under-utilized.
-#' 
+#'
 #' -   **RI coverage budgets** - Define a coverage threshold, and receive
 #'     alerts when the number of your instance hours that are covered by
 #'     RIs fall below that threshold. This lets you see how much of your
 #'     instance usage is covered by a reservation.
-#' 
+#'
 #' Service Endpoint
-#' 
+#'
 #' The Amazon Web Services Budgets API provides the following endpoint:
-#' 
+#'
 #' -   https://budgets.amazonaws.com
-#' 
+#'
 #' For information about costs that are associated with the Amazon Web
 #' Services Budgets API, see [Amazon Web Services Cost Management
 #' Pricing](https://aws.amazon.com/aws-cost-management/).
@@ -44051,7 +45301,12 @@ billing <- function(config = list(), credentials = list(), endpoint = NULL, regi
 #'
 #' @rdname budgets
 #' @export
-budgets <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+budgets <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.cost.management::budgets(
     config = config,
     credentials = credentials,
@@ -44066,7 +45321,7 @@ budgets <- function(config = list(), credentials = list(), endpoint = NULL, regi
 #' You can use the Amazon Web Services Cost and Usage Report API to
 #' programmatically create, query, and delete Amazon Web Services Cost and
 #' Usage Report definitions.
-#' 
+#'
 #' Amazon Web Services Cost and Usage Report track the monthly Amazon Web
 #' Services costs and usage associated with your Amazon Web Services
 #' account. The report contains line items for each unique combination of
@@ -44074,12 +45329,12 @@ budgets <- function(config = list(), credentials = list(), endpoint = NULL, regi
 #' Web Services account uses. You can configure the Amazon Web Services
 #' Cost and Usage Report to show only the data that you want, using the
 #' Amazon Web Services Cost and Usage Report API.
-#' 
+#'
 #' Service Endpoint
-#' 
+#'
 #' The Amazon Web Services Cost and Usage Report API provides the following
 #' endpoint:
-#' 
+#'
 #' -   cur.us-east-1.amazonaws.com
 #'
 #' @param
@@ -44184,7 +45439,12 @@ budgets <- function(config = list(), credentials = list(), endpoint = NULL, regi
 #'
 #' @rdname costandusagereportservice
 #' @export
-costandusagereportservice <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+costandusagereportservice <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.cost.management::costandusagereportservice(
     config = config,
     credentials = credentials,
@@ -44201,13 +45461,13 @@ costandusagereportservice <- function(config = list(), credentials = list(), end
 #' costs or total daily usage. You can also query for granular data. This
 #' might include the number of daily write operations for Amazon DynamoDB
 #' database tables in your production environment.
-#' 
+#'
 #' Service Endpoint
-#' 
+#'
 #' The Cost Explorer API provides the following endpoint:
-#' 
+#'
 #' -   `https://ce.us-east-1.amazonaws.com`
-#' 
+#'
 #' For information about the costs that are associated with the Cost
 #' Explorer API, see [Amazon Web Services Cost Management
 #' Pricing](https://aws.amazon.com/aws-cost-management/).
@@ -44349,7 +45609,12 @@ costandusagereportservice <- function(config = list(), credentials = list(), end
 #'
 #' @rdname costexplorer
 #' @export
-costexplorer <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+costexplorer <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.cost.management::costexplorer(
     config = config,
     credentials = credentials,
@@ -44364,7 +45629,7 @@ costexplorer <- function(config = list(), credentials = list(), endpoint = NULL,
 #' Catalog API actions allow you to manage your entities through list,
 #' describe, and update capabilities. An entity can be a product or an
 #' offer on AWS Marketplace.
-#' 
+#'
 #' You can automate your entity update process by integrating the AWS
 #' Marketplace Catalog API with your AWS Marketplace product build or
 #' deployment pipelines. You can also create your own applications on top
@@ -44476,7 +45741,12 @@ costexplorer <- function(config = list(), credentials = list(), endpoint = NULL,
 #'
 #' @rdname marketplacecatalog
 #' @export
-marketplacecatalog <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+marketplacecatalog <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.cost.management::marketplacecatalog(
     config = config,
     credentials = credentials,
@@ -44585,7 +45855,12 @@ marketplacecatalog <- function(config = list(), credentials = list(), endpoint =
 #'
 #' @rdname marketplacecommerceanalytics
 #' @export
-marketplacecommerceanalytics <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+marketplacecommerceanalytics <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.cost.management::marketplacecommerceanalytics(
     config = config,
     credentials = credentials,
@@ -44599,15 +45874,15 @@ marketplacecommerceanalytics <- function(config = list(), credentials = list(), 
 #' @description
 #' This reference provides descriptions of the AWS Marketplace Entitlement
 #' Service API.
-#' 
+#'
 #' AWS Marketplace Entitlement Service is used to determine the entitlement
 #' of a customer to a given product. An entitlement represents capacity in
 #' a product owned by the customer. For example, a customer might own some
 #' number of users or seats in an SaaS application or some amount of data
 #' capacity in a multi-tenant database.
-#' 
+#'
 #' **Getting Entitlement Records**
-#' 
+#'
 #' -   *GetEntitlements*- Gets the entitlements for a Marketplace product.
 #'
 #' @param
@@ -44704,7 +45979,12 @@ marketplacecommerceanalytics <- function(config = list(), credentials = list(), 
 #'
 #' @rdname marketplaceentitlementservice
 #' @export
-marketplaceentitlementservice <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+marketplaceentitlementservice <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.cost.management::marketplaceentitlementservice(
     config = config,
     credentials = credentials,
@@ -44717,40 +45997,40 @@ marketplaceentitlementservice <- function(config = list(), credentials = list(),
 #'
 #' @description
 #' AWS Marketplace Metering Service
-#' 
+#'
 #' This reference provides descriptions of the low-level AWS Marketplace
 #' Metering Service API.
-#' 
+#'
 #' AWS Marketplace sellers can use this API to submit usage data for custom
 #' usage dimensions.
-#' 
+#'
 #' For information on the permissions you need to use this API, see [AWS
 #' Marketplace metering and entitlement API
 #' permissions](https://docs.aws.amazon.com/marketplace/latest/userguide/iam-user-policy-for-aws-marketplace-actions.html)
 #' in the *AWS Marketplace Seller Guide.*
-#' 
+#'
 #' **Submitting Metering Records**
-#' 
+#'
 #' -   *MeterUsage* - Submits the metering record for an AWS Marketplace
 #'     product. `meter_usage` is called
 #'     from an EC2 instance or a container running on EKS or ECS.
-#' 
+#'
 #' -   *BatchMeterUsage* - Submits the metering record for a set of
 #'     customers.
 #'     `batch_meter_usage` is
 #'     called from a software-as-a-service (SaaS) application.
-#' 
+#'
 #' **Accepting New Customers**
-#' 
+#'
 #' -   *ResolveCustomer* - Called by a SaaS application during the
 #'     registration process. When a buyer visits your website during the
 #'     registration process, the buyer submits a Registration Token through
 #'     the browser. The Registration Token is resolved through this API to
 #'     obtain a `CustomerIdentifier` along with the `CustomerAWSAccountId`
 #'     and `ProductCode`.
-#' 
+#'
 #' **Entitlement and Metering for Paid Container Products**
-#' 
+#'
 #' -   Paid container software products sold through AWS Marketplace must
 #'     integrate with the AWS Marketplace Metering Service and call the
 #'     `register_usage` operation for
@@ -44762,14 +46042,14 @@ marketplaceentitlementservice <- function(config = list(), credentials = list(),
 #'     `register_usage` operation,
 #'     see [Container-Based
 #'     Products](https://docs.aws.amazon.com/marketplace/latest/userguide/container-based-products.html).
-#' 
+#'
 #' `batch_meter_usage` API calls
 #' are captured by AWS CloudTrail. You can use Cloudtrail to verify that
 #' the SaaS metering records that you sent are accurate by searching for
 #' records with the `eventName` of
 #' `batch_meter_usage`. You can
 #' also use CloudTrail to audit records over time. For more information,
-#' see the *\href{http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-concepts.html}{AWS CloudTrail User Guide}.*
+#' see the *\href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-concepts.html}{AWS CloudTrail User Guide}.*
 #'
 #' @param
 #' config
@@ -44868,7 +46148,12 @@ marketplaceentitlementservice <- function(config = list(), credentials = list(),
 #'
 #' @rdname marketplacemetering
 #' @export
-marketplacemetering <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+marketplacemetering <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.cost.management::marketplacemetering(
     config = config,
     credentials = credentials,
@@ -44887,16 +46172,16 @@ marketplacemetering <- function(config = list(), credentials = list(), endpoint 
 #' `Storage Class`, and `Operating System`, and provides prices at the SKU
 #' level. You can use the Amazon Web Services Price List to do the
 #' following:
-#' 
+#'
 #' -   Build cost control and scenario planning tools
-#' 
+#'
 #' -   Reconcile billing data
-#' 
+#'
 #' -   Forecast future spend for budgeting purposes
-#' 
+#'
 #' -   Provide cost benefit analysis that compare your internal workloads
 #'     with Amazon Web Services
-#' 
+#'
 #' Use `GetServices` without a service code to retrieve the service codes
 #' for all Amazon Web Services services, then `GetServices` with a service
 #' code to retrieve the attribute names for that service. After you have
@@ -44907,7 +46192,7 @@ marketplacemetering <- function(config = list(), credentials = list(), endpoint 
 #' `get_products` to find specific products that
 #' you're interested in, such as an `AmazonEC2` instance, with a
 #' `Provisioned IOPS` `volumeType`.
-#' 
+#'
 #' For more information, see [Using the Amazon Web Services Price List
 #' API](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/price-changes.html)
 #' in the *Billing User Guide*.
@@ -45013,7 +46298,12 @@ marketplacemetering <- function(config = list(), credentials = list(), endpoint 
 #'
 #' @rdname pricing
 #' @export
-pricing <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+pricing <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.cost.management::pricing(
     config = config,
     credentials = credentials,
@@ -45136,7 +46426,12 @@ pricing <- function(config = list(), credentials = list(), endpoint = NULL, regi
 #'
 #' @rdname savingsplans
 #' @export
-savingsplans <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+savingsplans <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.cost.management::savingsplans(
     config = config,
     credentials = credentials,
@@ -45155,18 +46450,18 @@ savingsplans <- function(config = list(), credentials = list(), endpoint = NULL,
 #' more information, see [Identity and access
 #' management](https://docs.aws.amazon.com/payment-cryptography/latest/userguide/security-iam.html)
 #' in the *Amazon Web Services Payment Cryptography User Guide.*
-#' 
+#'
 #' To use encryption keys for payment-related transaction processing and
 #' associated cryptographic operations, you use the [Amazon Web Services
 #' Payment Cryptography Data
 #' Plane](https://docs.aws.amazon.com/payment-cryptography/latest/DataAPIReference/Welcome.html).
 #' You can perform actions like encrypt, decrypt, generate, and verify
 #' payment-related data.
-#' 
+#'
 #' All Amazon Web Services Payment Cryptography API calls must be signed
 #' and transmitted using Transport Layer Security (TLS). We recommend you
 #' always use the latest supported TLS version for logging API requests.
-#' 
+#'
 #' Amazon Web Services Payment Cryptography supports CloudTrail for control
 #' plane operations, a service that logs Amazon Web Services API calls and
 #' related events for your Amazon Web Services account and delivers them to
@@ -45291,7 +46586,12 @@ savingsplans <- function(config = list(), credentials = list(), endpoint = NULL,
 #'
 #' @rdname paymentcryptographycontrolplane
 #' @export
-paymentcryptographycontrolplane <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+paymentcryptographycontrolplane <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.cost.management::paymentcryptographycontrolplane(
     config = config,
     credentials = credentials,
@@ -45311,7 +46611,7 @@ paymentcryptographycontrolplane <- function(config = list(), credentials = list(
 #' information, see [Data
 #' operations](https://docs.aws.amazon.com/payment-cryptography/latest/userguide/data-operations.html)
 #' in the *Amazon Web Services Payment Cryptography User Guide*.
-#' 
+#'
 #' To manage your encryption keys, you use the [Amazon Web Services Payment
 #' Cryptography Control
 #' Plane](https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/Welcome.html).
@@ -45423,7 +46723,12 @@ paymentcryptographycontrolplane <- function(config = list(), credentials = list(
 #'
 #' @rdname paymentcryptographydataplane
 #' @export
-paymentcryptographydataplane <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+paymentcryptographydataplane <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.cost.management::paymentcryptographydataplane(
     config = config,
     credentials = credentials,
@@ -45437,24 +46742,24 @@ paymentcryptographydataplane <- function(config = list(), credentials = list(), 
 #' @description
 #' -   [Amazon Connect
 #'     actions](https://docs.aws.amazon.com/connect/latest/APIReference/API_Operations_Amazon_Connect_Service.html)
-#' 
+#'
 #' -   [Amazon Connect data
 #'     types](https://docs.aws.amazon.com/connect/latest/APIReference/API_Types_Amazon_Connect_Service.html)
-#' 
+#'
 #' Amazon Connect is a cloud-based contact center solution that you use to
 #' set up and manage a customer contact center and provide reliable
 #' customer engagement at any scale.
-#' 
+#'
 #' Amazon Connect provides metrics and real-time reporting that enable you
 #' to optimize contact routing. You can also resolve customer issues more
 #' efficiently by getting customers in touch with the appropriate agents.
-#' 
+#'
 #' There are limits to the number of Amazon Connect resources that you can
 #' create. There are also limits to the number of requests that you can
 #' make per second. For more information, see [Amazon Connect Service
 #' Quotas](https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-service-limits.html)
 #' in the *Amazon Connect Administrator Guide*.
-#' 
+#'
 #' You can use an endpoint to connect programmatically to an Amazon Web
 #' Services service. For a list of Amazon Connect endpoints, see [Amazon
 #' Connect
@@ -45834,7 +47139,12 @@ paymentcryptographydataplane <- function(config = list(), credentials = list(), 
 #'
 #' @rdname connect
 #' @export
-connect <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+connect <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.customer.engagement::connect(
     config = config,
     credentials = credentials,
@@ -45963,7 +47273,12 @@ connect <- function(config = list(), credentials = list(), endpoint = NULL, regi
 #'
 #' @rdname connectcampaignservice
 #' @export
-connectcampaignservice <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+connectcampaignservice <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.customer.engagement::connectcampaignservice(
     config = config,
     credentials = credentials,
@@ -46103,7 +47418,12 @@ connectcampaignservice <- function(config = list(), credentials = list(), endpoi
 #'
 #' @rdname connectcampaignservicev2
 #' @export
-connectcampaignservicev2 <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+connectcampaignservicev2 <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.customer.engagement::connectcampaignservicev2(
     config = config,
     credentials = credentials,
@@ -46250,7 +47570,12 @@ connectcampaignservicev2 <- function(config = list(), credentials = list(), endp
 #'
 #' @rdname connectcases
 #' @export
-connectcases <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+connectcases <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.customer.engagement::connectcases(
     config = config,
     credentials = credentials,
@@ -46264,16 +47589,16 @@ connectcases <- function(config = list(), credentials = list(), endpoint = NULL,
 #' @description
 #' -   [Contact Lens
 #'     actions](https://docs.aws.amazon.com/connect/latest/APIReference/API_Operations_Amazon_Connect_Contact_Lens.html)
-#' 
+#'
 #' -   [Contact Lens data
 #'     types](https://docs.aws.amazon.com/connect/latest/APIReference/API_Types_Amazon_Connect_Contact_Lens.html)
-#' 
+#'
 #' Amazon Connect Contact Lens enables you to analyze conversations between
 #' customer and agents, by using speech transcription, natural language
 #' processing, and intelligent search capabilities. It performs sentiment
 #' analysis, detects issues, and enables you to automatically categorize
 #' contacts.
-#' 
+#'
 #' Amazon Connect Contact Lens provides both real-time and post-call
 #' analytics of customer-agent conversations. For more information, see
 #' [Analyze conversations using speech
@@ -46374,7 +47699,12 @@ connectcases <- function(config = list(), credentials = list(), endpoint = NULL,
 #'
 #' @rdname connectcontactlens
 #' @export
-connectcontactlens <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+connectcontactlens <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.customer.engagement::connectcontactlens(
     config = config,
     credentials = credentials,
@@ -46388,16 +47718,16 @@ connectcontactlens <- function(config = list(), credentials = list(), endpoint =
 #' @description
 #' -   [Participant Service
 #'     actions](https://docs.aws.amazon.com/connect/latest/APIReference/API_Operations_Amazon_Connect_Participant_Service.html)
-#' 
+#'
 #' -   [Participant Service data
 #'     types](https://docs.aws.amazon.com/connect/latest/APIReference/API_Types_Amazon_Connect_Participant_Service.html)
-#' 
+#'
 #' Amazon Connect is an easy-to-use omnichannel cloud contact center
 #' service that enables companies of any size to deliver superior customer
 #' service at a lower cost. Amazon Connect communications capabilities make
 #' it easy for companies to deliver personalized interactions across
 #' communication channels, including chat.
-#' 
+#'
 #' Use the Amazon Connect Participant Service to manage participants (for
 #' example, agents, customers, and managers listening in), and to send
 #' messages and events within a chat contact. The APIs in the service
@@ -46509,7 +47839,12 @@ connectcontactlens <- function(config = list(), credentials = list(), endpoint =
 #'
 #' @rdname connectparticipant
 #' @export
-connectparticipant <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+connectparticipant <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.customer.engagement::connectparticipant(
     config = config,
     credentials = credentials,
@@ -46662,7 +47997,12 @@ connectparticipant <- function(config = list(), credentials = list(), endpoint =
 #'
 #' @rdname connectwisdomservice
 #' @export
-connectwisdomservice <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+connectwisdomservice <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.customer.engagement::connectwisdomservice(
     config = config,
     credentials = credentials,
@@ -46676,17 +48016,17 @@ connectwisdomservice <- function(config = list(), credentials = list(), endpoint
 #' @description
 #' -   [Customer Profiles
 #'     actions](https://docs.aws.amazon.com/connect/latest/APIReference/API_Operations_Amazon_Connect_Customer_Profiles.html)
-#' 
+#'
 #' -   [Customer Profiles data
 #'     types](https://docs.aws.amazon.com/connect/latest/APIReference/API_Types_Amazon_Connect_Customer_Profiles.html)
-#' 
+#'
 #' Amazon Connect Customer Profiles is a unified customer profile for your
 #' contact center that has pre-built connectors powered by AppFlow that
 #' make it easy to combine customer information from third party
 #' applications, such as Salesforce (CRM), ServiceNow (ITSM), and your
 #' enterprise resource planning (ERP), with contact history from your
 #' Amazon Connect contact center.
-#' 
+#'
 #' For more information about the Amazon Connect Customer Profiles feature,
 #' see [Use Customer
 #' Profiles](https://docs.aws.amazon.com/connect/latest/adminguide/customer-profiles.html)
@@ -46855,7 +48195,12 @@ connectwisdomservice <- function(config = list(), credentials = list(), endpoint
 #'
 #' @rdname customerprofiles
 #' @export
-customerprofiles <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+customerprofiles <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.customer.engagement::customerprofiles(
     config = config,
     credentials = credentials,
@@ -47084,7 +48429,12 @@ customerprofiles <- function(config = list(), credentials = list(), endpoint = N
 #'
 #' @rdname pinpoint
 #' @export
-pinpoint <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+pinpoint <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.customer.engagement::pinpoint(
     config = config,
     credentials = credentials,
@@ -47099,14 +48449,14 @@ pinpoint <- function(config = list(), credentials = list(), endpoint = NULL, reg
 #' Welcome to the *Amazon Pinpoint Email API Reference*. This guide
 #' provides information about the Amazon Pinpoint Email API (version 1.0),
 #' including supported operations, data types, parameters, and schemas.
-#' 
+#'
 #' [Amazon Pinpoint](https://aws.amazon.com/pinpoint/) is an AWS service
 #' that you can use to engage with your customers across multiple messaging
 #' channels. You can use Amazon Pinpoint to send email, SMS text messages,
 #' voice messages, and push notifications. The Amazon Pinpoint Email API
 #' provides programmatic access to options that are unique to the email
 #' channel and supplement the options provided by the Amazon Pinpoint API.
-#' 
+#'
 #' If you're new to Amazon Pinpoint, you might find it helpful to also
 #' review the [Amazon Pinpoint Developer
 #' Guide](https://docs.aws.amazon.com/pinpoint/latest/developerguide/welcome.html).
@@ -47116,7 +48466,7 @@ pinpoint <- function(config = list(), credentials = list(), endpoint = NULL, reg
 #' mobile apps and other types of applications. The guide also provides
 #' information about key topics such as Amazon Pinpoint integration with
 #' other AWS services and the limits that apply to using the service.
-#' 
+#'
 #' The Amazon Pinpoint Email API is available in several AWS Regions and it
 #' provides an endpoint for each of these Regions. For a list of all the
 #' Regions and endpoints where the API is currently available, see [AWS
@@ -47126,7 +48476,7 @@ pinpoint <- function(config = list(), credentials = list(), endpoint = NULL, reg
 #' Regions, see [Managing AWS
 #' Regions](https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-regions.html)
 #' in the *Amazon Web Services General Reference*.
-#' 
+#'
 #' In each Region, AWS maintains multiple Availability Zones. These
 #' Availability Zones are physically isolated from each other, but are
 #' united by private, low-latency, high-throughput, and highly redundant
@@ -47271,7 +48621,12 @@ pinpoint <- function(config = list(), credentials = list(), endpoint = NULL, reg
 #'
 #' @rdname pinpointemail
 #' @export
-pinpointemail <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+pinpointemail <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.customer.engagement::pinpointemail(
     config = config,
     credentials = credentials,
@@ -47287,17 +48642,17 @@ pinpointemail <- function(config = list(), credentials = list(), endpoint = NULL
 #' Reference*. This guide provides information about AWS End User Messaging
 #' SMS and Voice, version 2 API resources, including supported HTTP
 #' methods, parameters, and schemas.
-#' 
+#'
 #' Amazon Pinpoint is an Amazon Web Services service that you can use to
 #' engage with your recipients across multiple messaging channels. The AWS
 #' End User Messaging SMS and Voice, version 2 API provides programmatic
 #' access to options that are unique to the SMS and voice channels. AWS End
 #' User Messaging SMS and Voice, version 2 resources such as phone numbers,
 #' sender IDs, and opt-out lists can be used by the Amazon Pinpoint API.
-#' 
+#'
 #' If you're new to AWS End User Messaging SMS and Voice, it's also helpful
 #' to review the [AWS End User Messaging SMS User
-#' Guide](https://docs.aws.amazon.com/sms-voice/latest/userguide/what-is-service.html).
+#' Guide](https://docs.aws.amazon.com/sms-voice/latest/userguide/what-is-sms-mms.html).
 #' The *AWS End User Messaging SMS User Guide* provides tutorials, code
 #' samples, and procedures that demonstrate how to use AWS End User
 #' Messaging SMS and Voice features programmatically and how to integrate
@@ -47305,9 +48660,9 @@ pinpointemail <- function(config = list(), credentials = list(), endpoint = NULL
 #' guide also provides key information, such as AWS End User Messaging SMS
 #' and Voice integration with other Amazon Web Services services, and the
 #' quotas that apply to use of the service.
-#' 
+#'
 #' **Regional availability**
-#' 
+#'
 #' The *AWS End User Messaging SMS and Voice version 2 API Reference* is
 #' available in several Amazon Web Services Regions and it provides an
 #' endpoint for each of these Regions. For a list of all the Regions and
@@ -47320,7 +48675,7 @@ pinpointemail <- function(config = list(), credentials = list(), endpoint = NULL
 #' Web Services Regions, see [Managing Amazon Web Services
 #' Regions](https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-regions.html)
 #' in the Amazon Web Services General Reference.
-#' 
+#'
 #' In each Region, Amazon Web Services maintains multiple Availability
 #' Zones. These Availability Zones are physically isolated from each other,
 #' but are united by private, low-latency, high-throughput, and highly
@@ -47513,7 +48868,12 @@ pinpointemail <- function(config = list(), credentials = list(), endpoint = NULL
 #'
 #' @rdname pinpointsmsvoicev2
 #' @export
-pinpointsmsvoicev2 <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+pinpointsmsvoicev2 <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.customer.engagement::pinpointsmsvoicev2(
     config = config,
     credentials = credentials,
@@ -47530,25 +48890,25 @@ pinpointsmsvoicev2 <- function(config = list(), credentials = list(), endpoint =
 #' 2010-12-01. This document is best used in conjunction with the [Amazon
 #' SES Developer
 #' Guide](https://docs.aws.amazon.com/ses/latest/dg/Welcome.html).
-#' 
+#'
 #' For a list of Amazon SES endpoints to use in service requests, see
 #' [Regions and Amazon
 #' SES](https://docs.aws.amazon.com/ses/latest/dg/regions.html) in the
 #' [Amazon SES Developer
 #' Guide](https://docs.aws.amazon.com/ses/latest/dg/Welcome.html).
-#' 
+#'
 #' This documentation contains reference information related to the
 #' following:
-#' 
+#'
 #' -   [Amazon SES API
 #'     Actions](https://docs.aws.amazon.com/ses/latest/APIReference/API_Operations.html)
-#' 
+#'
 #' -   [Amazon SES API Data
 #'     Types](https://docs.aws.amazon.com/ses/latest/APIReference/API_Types.html)
-#' 
+#'
 #' -   [Common
 #'     Parameters](https://docs.aws.amazon.com/ses/latest/APIReference/CommonParameters.html)
-#' 
+#'
 #' -   [Common
 #'     Errors](https://docs.aws.amazon.com/ses/latest/APIReference/CommonErrors.html)
 #'
@@ -47719,7 +49079,12 @@ pinpointsmsvoicev2 <- function(config = list(), credentials = list(), endpoint =
 #'
 #' @rdname ses
 #' @export
-ses <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+ses <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.customer.engagement::ses(
     config = config,
     credentials = credentials,
@@ -47732,10 +49097,10 @@ ses <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #'
 #' @description
 #' Amazon SES API v2
-#' 
+#'
 #' [Amazon SES](https://aws.amazon.com/ses/) is an Amazon Web Services
 #' service that you can use to send email messages to your customers.
-#' 
+#'
 #' If you're new to Amazon SES API v2, you might find it helpful to review
 #' the [Amazon Simple Email Service Developer
 #' Guide](https://docs.aws.amazon.com/ses/latest/dg/Welcome.html). The
@@ -47931,7 +49296,12 @@ ses <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #'
 #' @rdname sesv2
 #' @export
-sesv2 <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+sesv2 <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.customer.engagement::sesv2(
     config = config,
     credentials = credentials,
@@ -48046,7 +49416,12 @@ sesv2 <- function(config = list(), credentials = list(), endpoint = NULL, region
 #'
 #' @rdname pinpointsmsvoice
 #' @export
-pinpointsmsvoice <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+pinpointsmsvoice <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.customer.engagement::pinpointsmsvoice(
     config = config,
     credentials = credentials,
@@ -48059,7 +49434,7 @@ pinpointsmsvoice <- function(config = list(), credentials = list(), endpoint = N
 #'
 #' @description
 #' Amazon AppStream 2.0
-#' 
+#'
 #' This is the *Amazon AppStream 2.0 API Reference*. This documentation
 #' provides descriptions and syntax for each of the actions and data types
 #' in AppStream 2.0. AppStream 2.0 is a fully managed, secure application
@@ -48067,18 +49442,18 @@ pinpointsmsvoice <- function(config = list(), credentials = list(), endpoint = N
 #' without rewriting applications. AppStream 2.0 manages the AWS resources
 #' that are required to host and run your applications, scales
 #' automatically, and provides access to your users on demand.
-#' 
+#'
 #' You can call the AppStream 2.0 API operations by using an interface VPC
 #' endpoint (interface endpoint). For more information, see [Access
 #' AppStream 2.0 API Operations and CLI Commands Through an Interface VPC
 #' Endpoint](https://docs.aws.amazon.com/appstream2/latest/developerguide/access-api-cli-through-interface-vpc-endpoint.html)
 #' in the *Amazon AppStream 2.0 Administration Guide*.
-#' 
+#'
 #' To learn more about AppStream 2.0, see the following resources:
-#' 
+#'
 #' -   [Amazon AppStream 2.0 product
 #'     page](https://aws.amazon.com/appstream2/)
-#' 
+#'
 #' -   [Amazon AppStream 2.0
 #'     documentation](https://docs.aws.amazon.com/appstream2/)
 #'
@@ -48254,7 +49629,12 @@ pinpointsmsvoice <- function(config = list(), credentials = list(), endpoint = N
 #'
 #' @rdname appstream
 #' @export
-appstream <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+appstream <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.end.user.computing::appstream(
     config = config,
     credentials = credentials,
@@ -48269,21 +49649,21 @@ appstream <- function(config = list(), credentials = list(), endpoint = NULL, re
 #' The *AWS Chatbot API Reference* provides descriptions, API request
 #' parameters, and the XML response for each of the AWS Chatbot API
 #' actions.
-#' 
+#'
 #' AWS Chatbot APIs are currently available in the following Regions:
-#' 
+#'
 #' -   US East (Ohio) - `us-east-2`
-#' 
+#'
 #' -   US West (Oregon) - `us-west-2`
-#' 
+#'
 #' -   Asia Pacific (Singapore) - `ap-southeast-1`
-#' 
+#'
 #' -   Europe (Ireland) - `eu-west-1`
-#' 
+#'
 #' The AWS Chatbot console can only be used in US East (Ohio). Your
 #' configuration data however, is stored in each of the relevant available
 #' Regions.
-#' 
+#'
 #' Your AWS CloudTrail events are logged in whatever Region you call from,
 #' not US East (N. Virginia) by default.
 #'
@@ -48414,7 +49794,12 @@ appstream <- function(config = list(), credentials = list(), endpoint = NULL, re
 #'
 #' @rdname chatbot
 #' @export
-chatbot <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+chatbot <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.end.user.computing::chatbot(
     config = config,
     credentials = credentials,
@@ -48427,46 +49812,46 @@ chatbot <- function(config = list(), credentials = list(), endpoint = NULL, regi
 #'
 #' @description
 #' **Introduction**
-#' 
+#'
 #' The Amazon IVS Chat control-plane API enables you to create and manage
 #' Amazon IVS Chat resources. You also need to integrate with the [Amazon
 #' IVS Chat Messaging
 #' API](https://docs.aws.amazon.com/ivs/latest/chatmsgapireference/), to
 #' enable users to interact with chat rooms in real time.
-#' 
+#'
 #' The API is an AWS regional service. For a list of supported regions and
 #' Amazon IVS Chat HTTPS service endpoints, see the Amazon IVS Chat
 #' information on the [Amazon IVS
 #' page](https://docs.aws.amazon.com/general/latest/gr/ivs.html) in the
 #' *AWS General Reference*.
-#' 
+#'
 #' This document describes HTTP operations. There is a separate *messaging*
 #' API for managing Chat resources; see the [Amazon IVS Chat Messaging API
 #' Reference](https://docs.aws.amazon.com/ivs/latest/chatmsgapireference/).
-#' 
+#'
 #' **Notes on terminology:**
-#' 
+#'
 #' -   You create service applications using the Amazon IVS Chat API. We
 #'     refer to these as *applications*.
-#' 
+#'
 #' -   You create front-end client applications (browser and Android/iOS
 #'     apps) using the Amazon IVS Chat Messaging API. We refer to these as
 #'     *clients*.
-#' 
+#'
 #' **Resources**
-#' 
+#'
 #' The following resources are part of Amazon IVS Chat:
-#' 
+#'
 #' -   **LoggingConfiguration** — A configuration that allows customers to
 #'     store and record sent messages in a chat room. See the Logging
 #'     Configuration endpoints for more information.
-#' 
+#'
 #' -   **Room** — The central Amazon IVS Chat resource through which
 #'     clients connect to and exchange chat messages. See the Room
 #'     endpoints for more information.
-#' 
+#'
 #' **Tagging**
-#' 
+#'
 #' A *tag* is a metadata label that you assign to an AWS resource. A tag
 #' comprises a *key* and a *value*, both set by you. For example, you might
 #' set a tag as `topic:nature` to label a particular video category. See
@@ -48476,64 +49861,64 @@ chatbot <- function(config = list(), credentials = list(), endpoint = NULL, regi
 #' including restrictions that apply to tags and "Tag naming limits and
 #' requirements"; Amazon IVS Chat has no service-specific constraints
 #' beyond what is documented there.
-#' 
+#'
 #' Tags can help you identify and organize your AWS resources. For example,
 #' you can use the same tag for different resources to indicate that they
 #' are related. You can also use tags to manage access (see [Access
 #' Tags](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_tags.html)).
-#' 
+#'
 #' The Amazon IVS Chat API has these tag-related operations:
 #' `tag_resource`,
 #' `untag_resource`, and
 #' `list_tags_for_resource`. The
 #' following resource supports tagging: Room.
-#' 
+#'
 #' At most 50 tags can be applied to a resource.
-#' 
+#'
 #' **API Access Security**
-#' 
+#'
 #' Your Amazon IVS Chat applications (service applications and clients)
 #' must be authenticated and authorized to access Amazon IVS Chat
 #' resources. Note the differences between these concepts:
-#' 
+#'
 #' -   *Authentication* is about verifying identity. Requests to the Amazon
 #'     IVS Chat API must be signed to verify your identity.
-#' 
+#'
 #' -   *Authorization* is about granting permissions. Your IAM roles need
 #'     to have permissions for Amazon IVS Chat API requests.
-#' 
+#'
 #' Users (viewers) connect to a room using secure access tokens that you
 #' create using the `create_chat_token`
 #' operation through the AWS SDK. You call CreateChatToken for every user’s
 #' chat session, passing identity and authorization information about the
 #' user.
-#' 
+#'
 #' **Signing API Requests**
-#' 
+#'
 #' HTTP API requests must be signed with an AWS SigV4 signature using your
 #' AWS security credentials. The AWS Command Line Interface (CLI) and the
 #' AWS SDKs take care of signing the underlying API calls for you. However,
 #' if your application calls the Amazon IVS Chat HTTP API directly, it’s
 #' your responsibility to sign the requests.
-#' 
+#'
 #' You generate a signature using valid AWS credentials for an IAM role
 #' that has permission to perform the requested action. For example,
 #' DeleteMessage requests must be made using an IAM role that has the
 #' `ivschat:DeleteMessage` permission.
-#' 
+#'
 #' For more information:
-#' 
+#'
 #' -   Authentication and generating signatures — See [Authenticating
 #'     Requests (Amazon Web Services Signature Version
 #'     4)](https://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-authenticating-requests.html)
 #'     in the *Amazon Web Services General Reference*.
-#' 
+#'
 #' -   Managing Amazon IVS permissions — See [Identity and Access
 #'     Management](https://docs.aws.amazon.com/ivs/latest/LowLatencyUserGuide/security-iam.html)
 #'     on the Security page of the *Amazon IVS User Guide*.
-#' 
+#'
 #' **Amazon Resource Names (ARNs)**
-#' 
+#'
 #' ARNs uniquely identify AWS resources. An ARN is required when you need
 #' to specify a resource unambiguously across all of AWS, such as in IAM
 #' policies and API calls. For more information, see [Amazon Resource
@@ -48650,7 +50035,12 @@ chatbot <- function(config = list(), credentials = list(), endpoint = NULL, regi
 #'
 #' @rdname ivschat
 #' @export
-ivschat <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+ivschat <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.end.user.computing::ivschat(
     config = config,
     credentials = credentials,
@@ -48663,13 +50053,13 @@ ivschat <- function(config = list(), credentials = list(), endpoint = NULL, regi
 #'
 #' @description
 #' The Amazon WorkDocs API is designed for the following use cases:
-#' 
+#'
 #' -   File Migration: File migration applications are supported for users
 #'     who want to migrate their files from an on-premises or off-premises
 #'     file system or service. Users can insert files into a user directory
 #'     structure, as well as allow for basic metadata changes, such as
 #'     modifications to the permissions of files.
-#' 
+#'
 #' -   Security: Support security applications are supported for users who
 #'     have additional security needs, such as antivirus or data loss
 #'     prevention. The API actions, along with CloudTrail, allow these
@@ -48677,13 +50067,13 @@ ivschat <- function(config = list(), credentials = list(), endpoint = NULL, regi
 #'     the application can take the necessary actions and replace the
 #'     target file. If the target file violates the policy, the application
 #'     can also choose to email the user.
-#' 
+#'
 #' -   eDiscovery/Analytics: General administrative applications are
 #'     supported, such as eDiscovery and analytics. These applications can
 #'     choose to mimic or record the actions in an Amazon WorkDocs site,
 #'     along with CloudTrail, to replicate data for eDiscovery, backup, or
 #'     analytical applications.
-#' 
+#'
 #' All Amazon WorkDocs API actions are Amazon authenticated and
 #' certificate-signed. They not only require the use of the Amazon Web
 #' Services SDK, but also allow for the exclusive use of IAM users and
@@ -48695,18 +50085,18 @@ ivschat <- function(config = list(), credentials = list(), endpoint = NULL, regi
 #' file to any user. This allows developers to perform the three use cases
 #' above, as well as give users the ability to grant access on a selective
 #' basis using the IAM model.
-#' 
+#'
 #' The pricing for Amazon WorkDocs APIs varies depending on the API call
 #' type for these actions:
-#' 
+#'
 #' -   `READ (Get*)`
-#' 
+#'
 #' -   `WRITE (Activate*, Add*, Create*, Deactivate*, Initiate*, Update*)`
-#' 
+#'
 #' -   `LIST (Describe*)`
-#' 
+#'
 #' -   `DELETE*, CANCEL`
-#' 
+#'
 #' For information about Amazon WorkDocs API pricing, see [Amazon WorkDocs
 #' Pricing](https://aws.amazon.com/workdocs/pricing/).
 #'
@@ -48847,7 +50237,12 @@ ivschat <- function(config = list(), credentials = list(), endpoint = NULL, regi
 #'
 #' @rdname workdocs
 #' @export
-workdocs <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+workdocs <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.end.user.computing::workdocs(
     config = config,
     credentials = credentials,
@@ -48866,20 +50261,20 @@ workdocs <- function(config = list(), credentials = list(), endpoint = NULL, reg
 #' integrate WorkMail with your existing corporate directory and control
 #' both the keys that encrypt your data and the location in which your data
 #' is stored.
-#' 
+#'
 #' The WorkMail API is designed for the following scenarios:
-#' 
+#'
 #' -   Listing and describing organizations
-#' 
-#' 
+#'
+#'
 #' -   Managing users
-#' 
-#' 
+#'
+#'
 #' -   Managing groups
-#' 
-#' 
+#'
+#'
 #' -   Managing resources
-#' 
+#'
 #' All WorkMail API operations are Amazon-authenticated and
 #' certificate-signed. They not only require the use of the AWS SDK, but
 #' also allow for the exclusive use of AWS Identity and Access Management
@@ -49077,7 +50472,12 @@ workdocs <- function(config = list(), credentials = list(), endpoint = NULL, reg
 #'
 #' @rdname workmail
 #' @export
-workmail <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+workmail <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.end.user.computing::workmail(
     config = config,
     credentials = credentials,
@@ -49187,7 +50587,12 @@ workmail <- function(config = list(), credentials = list(), endpoint = NULL, reg
 #'
 #' @rdname workmailmessageflow
 #' @export
-workmailmessageflow <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+workmailmessageflow <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.end.user.computing::workmailmessageflow(
     config = config,
     credentials = credentials,
@@ -49200,14 +50605,14 @@ workmailmessageflow <- function(config = list(), credentials = list(), endpoint 
 #'
 #' @description
 #' Amazon WorkSpaces Service
-#' 
+#'
 #' Amazon WorkSpaces enables you to provision virtual, cloud-based
 #' Microsoft Windows or Amazon Linux desktops for your users, known as
 #' *WorkSpaces*. WorkSpaces eliminates the need to procure and deploy
 #' hardware or install complex software. You can quickly add or remove
 #' users as your needs change. Users can access their virtual desktops from
 #' multiple devices or web browsers.
-#' 
+#'
 #' This API Reference provides detailed information about the actions, data
 #' types, parameters, and errors of the WorkSpaces service. For more
 #' information about the supported Amazon Web Services Regions, endpoints,
@@ -49215,7 +50620,7 @@ workmailmessageflow <- function(config = list(), credentials = list(), endpoint 
 #' endpoints and
 #' quotas](https://docs.aws.amazon.com/general/latest/gr/wsp.html) in the
 #' *Amazon Web Services General Reference*.
-#' 
+#'
 #' You can also manage your WorkSpaces resources using the WorkSpaces
 #' console, Command Line Interface (CLI), and SDKs. For more information
 #' about administering WorkSpaces, see the [Amazon WorkSpaces
@@ -49409,7 +50814,12 @@ workmailmessageflow <- function(config = list(), credentials = list(), endpoint 
 #'
 #' @rdname workspaces
 #' @export
-workspaces <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+workspaces <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.end.user.computing::workspaces(
     config = config,
     credentials = credentials,
@@ -49591,7 +51001,12 @@ workspaces <- function(config = list(), credentials = list(), endpoint = NULL, r
 #'
 #' @rdname workspacesweb
 #' @export
-workspacesweb <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+workspacesweb <- function(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+) {
   paws.end.user.computing::workspacesweb(
     config = config,
     credentials = credentials,
