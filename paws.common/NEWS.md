@@ -1,3 +1,6 @@
+# paws.common 0.8.1
+* skip network connection unit tests on cran
+
 # paws.common 0.8.0
 * migrate backend from `httr` to `httr2`
 * enrich sso message (#844). Thanks to @hadley for raising issue.
