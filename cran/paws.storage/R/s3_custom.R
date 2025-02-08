@@ -37,7 +37,7 @@ NULL
 #' When using this operation using S3 on Outposts through the AWS SDKs, you
 #' provide the Outposts bucket ARN in place of the bucket name. For more
 #' information about S3 on Outposts ARNs, see [Using S3 on
-#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html)
 #' in the *Amazon Simple Storage Service Developer Guide*.
 #' @param Key &#91;required&#93; Key of the object to get.
 #' @param Filename &#91;required&#93; A local file location where the downloaded
@@ -115,7 +115,29 @@ NULL
 #' @keywords internal
 #'
 #' @rdname s3_download_file
-s3_download_file <- function(Bucket, Key, Filename, IfMatch = NULL, IfModifiedSince = NULL, IfNoneMatch = NULL, IfUnmodifiedSince = NULL, Range = NULL, ResponseCacheControl = NULL, ResponseContentDisposition = NULL, ResponseContentEncoding = NULL, ResponseContentLanguage = NULL, ResponseContentType = NULL, ResponseExpires = NULL, VersionId = NULL, SSECustomerAlgorithm = NULL, SSECustomerKey = NULL, SSECustomerKeyMD5 = NULL, RequestPayer = NULL, PartNumber = NULL, ExpectedBucketOwner = NULL) {
+s3_download_file <- function(
+  Bucket,
+  Key,
+  Filename,
+  IfMatch = NULL,
+  IfModifiedSince = NULL,
+  IfNoneMatch = NULL,
+  IfUnmodifiedSince = NULL,
+  Range = NULL,
+  ResponseCacheControl = NULL,
+  ResponseContentDisposition = NULL,
+  ResponseContentEncoding = NULL,
+  ResponseContentLanguage = NULL,
+  ResponseContentType = NULL,
+  ResponseExpires = NULL,
+  VersionId = NULL,
+  SSECustomerAlgorithm = NULL,
+  SSECustomerKey = NULL,
+  SSECustomerKeyMD5 = NULL,
+  RequestPayer = NULL,
+  PartNumber = NULL,
+  ExpectedBucketOwner = NULL
+) {
   op <- new_operation(
     name = "GetObject",
     http_method = "GET",
@@ -123,7 +145,28 @@ s3_download_file <- function(Bucket, Key, Filename, IfMatch = NULL, IfModifiedSi
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .s3$get_object_input(Bucket = Bucket, IfMatch = IfMatch, IfModifiedSince = IfModifiedSince, IfNoneMatch = IfNoneMatch, IfUnmodifiedSince = IfUnmodifiedSince, Key = Key, Range = Range, ResponseCacheControl = ResponseCacheControl, ResponseContentDisposition = ResponseContentDisposition, ResponseContentEncoding = ResponseContentEncoding, ResponseContentLanguage = ResponseContentLanguage, ResponseContentType = ResponseContentType, ResponseExpires = ResponseExpires, VersionId = VersionId, SSECustomerAlgorithm = SSECustomerAlgorithm, SSECustomerKey = SSECustomerKey, SSECustomerKeyMD5 = SSECustomerKeyMD5, RequestPayer = RequestPayer, PartNumber = PartNumber, ExpectedBucketOwner = ExpectedBucketOwner)
+  input <- .s3$get_object_input(
+    Bucket = Bucket,
+    IfMatch = IfMatch,
+    IfModifiedSince = IfModifiedSince,
+    IfNoneMatch = IfNoneMatch,
+    IfUnmodifiedSince = IfUnmodifiedSince,
+    Key = Key,
+    Range = Range,
+    ResponseCacheControl = ResponseCacheControl,
+    ResponseContentDisposition = ResponseContentDisposition,
+    ResponseContentEncoding = ResponseContentEncoding,
+    ResponseContentLanguage = ResponseContentLanguage,
+    ResponseContentType = ResponseContentType,
+    ResponseExpires = ResponseExpires,
+    VersionId = VersionId,
+    SSECustomerAlgorithm = SSECustomerAlgorithm,
+    SSECustomerKey = SSECustomerKey,
+    SSECustomerKeyMD5 = SSECustomerKeyMD5,
+    RequestPayer = RequestPayer,
+    PartNumber = PartNumber,
+    ExpectedBucketOwner = ExpectedBucketOwner
+  )
   output <- .s3$get_object_output()
   config <- get_config()
   svc <- .s3$service(config, op)
@@ -133,7 +176,6 @@ s3_download_file <- function(Bucket, Key, Filename, IfMatch = NULL, IfModifiedSi
 }
 
 .s3$operations$download_file <- s3_download_file
-
 
 #' @title Generate a presigned url given a client, its method, and arguments
 #'
@@ -171,10 +213,12 @@ s3_download_file <- function(Bucket, Key, Filename, IfMatch = NULL, IfModifiedSi
 #' }
 #' @keywords internal
 #' @rdname s3_generate_presigned_url
-s3_generate_presigned_url <- function(client_method,
-                                      params = list(),
-                                      expires_in = 3600,
-                                      http_method = NULL) {
+s3_generate_presigned_url <- function(
+  client_method,
+  params = list(),
+  expires_in = 3600,
+  http_method = NULL
+) {
   stopifnot(
     "`client_method` must to be a character" = is.character(client_method),
     "`params` must be a list of parameters for client_method" = is.list(params),
@@ -216,7 +260,8 @@ s3_generate_presigned_url <- function(client_method,
     stop(
       sprintf(
         "Invalid parameter(s) [`%s`] for client method %s",
-        paste(param_check, collapse = "`, `"), client_method
+        paste(param_check, collapse = "`, `"),
+        client_method
       ),
       call. = FALSE
     )
@@ -251,12 +296,14 @@ s3_generate_presigned_url <- function(client_method,
 
   # build request
   request <- do.call(
-    "build", list(request = request),
+    "build",
+    list(request = request),
     envir = getNamespace("paws.common")
   )
 
   signer <- function(config, default) {
-    switch(config[["signature_version"]],
+    switch(
+      config[["signature_version"]],
       "v1" = "v1_sign_request_handler",
       "s3" = "s3_sign_request_handler",
       "s3v4" = "s3v4_sign_request_handler",
@@ -267,7 +314,8 @@ s3_generate_presigned_url <- function(client_method,
 
   # sign request
   request <- do.call(
-    signer(config, "v1_sign_request_handler"), list(request = request),
+    signer(config, "v1_sign_request_handler"),
+    list(request = request),
     envir = getNamespace("paws.common")
   )
 
@@ -275,10 +323,13 @@ s3_generate_presigned_url <- function(client_method,
     request$http_request$url$scheme <- http_method
   }
 
-  return(do.call(
-    "build_url", list(url = request$http_request$url),
-    envir = getNamespace("paws.common")
-  ))
+  return(
+    do.call(
+      "build_url",
+      list(url = request$http_request$url),
+      envir = getNamespace("paws.common")
+    )
+  )
 }
 
 .s3$operations$generate_presigned_url <- s3_generate_presigned_url
