@@ -340,7 +340,7 @@ paws_release_sub_cat <- function(in_dir = "../cran", pkg_list = list()) {
 
 cran_comment_template <- "## Test environments
 
-* local macOS install, R 4.2.1
+* local %s install, %s
 * R-hub (devel and release)
 * win-builder
 
@@ -453,6 +453,8 @@ paws_build_cran_comments <- function(
   ]
   cran_comments <- sprintf(
     cran_comment_template,
+    utils::osVersion,
+    R.version.string,
     dir_info$cran_comment,
     dir_info$size,
     dir_info$downstream_info
@@ -497,10 +499,12 @@ paws_gsub <- function(
   cran_file_gsub <- function(before, after, files) {
     for (file in files) {
       result <- readLines(file)
-      found <- grep(before, result)
-      if (length(found) > 0) {
-        result[found] <- gsub(before, after, result[found])
-        writeLines(result, file)
+      for (i in seq_along(before)) {
+        found <- grep(before[i], result)
+        if (length(found) > 0) {
+          result[found] <- gsub(before[i], after[i], result[found])
+          writeLines(result, file)
+        }
       }
     }
   }
