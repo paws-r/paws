@@ -71,7 +71,7 @@ in your preferred language. For more information, see:
 \item \href{https://docs.aws.amazon.com/aws-sdk-php/v3/api/class-Aws.OpsWorks.OpsWorksClient.html}{SDK for PHP}
 \item \href{https://docs.aws.amazon.com/sdk-for-ruby/v2/api/}{SDK for Ruby}
 \item \href{https://docs.aws.amazon.com/sdk-for-javascript/}{Amazon Web Services SDK for Node.js}
-\item \href{http://docs.pythonboto.org/en/latest/ref/opsworks.html}{SDK for Python (Boto)}
+\item \href{https://docs.pythonboto.org/en/latest/ref/opsworks.html}{SDK for Python (Boto)}
 }
 
 \strong{Endpoints}

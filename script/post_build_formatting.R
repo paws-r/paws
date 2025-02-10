@@ -17,7 +17,8 @@ before <- c(
   "#' \\*arn:aws:iam:::role/\\*/ResourceName_\\?\\*",
   "#' \\*arn:aws:iam:::role/pathA/pathB/ResourceName_1\\*",
   "#' \\*arn:aws:iam:::role/pathA/ResourceName_1\\*",
-  "\u2028"
+  "\u2028",
+  "http://docs.pythonboto.org"
 )
 
 after <- c(
@@ -32,12 +33,11 @@ after <- c(
   "#' \\\\emph\\{arn:aws:iam:::role/&#42;/ResourceName_\\?\\}",
   "#' \\\\emph\\{arn:aws:iam:::role/pathA/pathB/ResourceName_1\\}",
   "#' \\\\emph\\{arn:aws:iam:::role/pathA/ResourceName_1\\}",
-  ""
+  "",
+  "https://docs.pythonboto.org"
 )
 
-for (i in seq_along(before)) {
-  paws_gsub(root = root, before = before[i], after = after[i])
-}
+paws_gsub(root = root, before = before, after = after)
 
 paws_unescape_latex_post_build(root = root)
 paws_fix_html_span(root = root)
