@@ -448,11 +448,19 @@ test_that("check paws_build_cran_comments", {
     mockery::mock_args(mock_write_line),
     list(
       list(
-        "## Test environments\n\n* local macOS install, R 4.2.1\n* R-hub (devel and release)\n* win-builder\n\n## R CMD check results\n\nThere were no ERRORs or Notes.\nWarnings:this is a dummy warning\n\nMaintainer Notes: tarball package size: 456K\n\n## Downstream dependencies\n\nAll downstream dependencies ('paws') pass R CMD check.",
+        sprintf(
+          "## Test environments\n\n* local %s install, %s\n* R-hub (devel and release)\n* win-builder\n\n## R CMD check results\n\nThere were no ERRORs or Notes.\nWarnings:this is a dummy warning\n\nMaintainer Notes: tarball package size: 456K\n\n## Downstream dependencies\n\nAll downstream dependencies ('paws') pass R CMD check.",
+          utils::osVersion,
+          R.version.string
+        ),
         con = "made_up/paws.cat1/cran-comments.md"
       ),
       list(
-        "## Test environments\n\n* local macOS install, R 4.2.1\n* R-hub (devel and release)\n* win-builder\n\n## R CMD check results\n\nThere were no ERRORs, or WARNINGs.\nNotes:\nthis is a dummy note\n\nMaintainer Notes: tarball package size: 789K\n\n## Downstream dependencies\n\nAll downstream dependencies ('paws') pass R CMD check.",
+        sprintf(
+          "## Test environments\n\n* local %s install, %s\n* R-hub (devel and release)\n* win-builder\n\n## R CMD check results\n\nThere were no ERRORs, or WARNINGs.\nNotes:\nthis is a dummy note\n\nMaintainer Notes: tarball package size: 789K\n\n## Downstream dependencies\n\nAll downstream dependencies ('paws') pass R CMD check.",
+          utils::osVersion,
+          R.version.string
+        ),
         con = "made_up/paws.cat2/cran-comments.md"
       )
     )
@@ -513,11 +521,19 @@ test_that("check paws_build_cran_comments from cache", {
     mockery::mock_args(mock_write_line),
     list(
       list(
-        "## Test environments\n\n* local macOS install, R 4.2.1\n* R-hub (devel and release)\n* win-builder\n\n## R CMD check results\n\nThere were no ERRORs or Notes.\nWarnings:this is a dummy warning\n\nMaintainer Notes: tarball package size: 456K\n\n## Downstream dependencies\n\nAll downstream dependencies ('paws') pass R CMD check.",
+        sprintf(
+          "## Test environments\n\n* local %s install, %s\n* R-hub (devel and release)\n* win-builder\n\n## R CMD check results\n\nThere were no ERRORs or Notes.\nWarnings:this is a dummy warning\n\nMaintainer Notes: tarball package size: 456K\n\n## Downstream dependencies\n\nAll downstream dependencies ('paws') pass R CMD check.",
+          utils::osVersion,
+          R.version.string
+        ),
         con = "made_up/paws.cat1/cran-comments.md"
       ),
       list(
-        "## Test environments\n\n* local macOS install, R 4.2.1\n* R-hub (devel and release)\n* win-builder\n\n## R CMD check results\n\nThere were no ERRORs, or WARNINGs.\nNotes:\nthis is a dummy note\n\nMaintainer Notes: tarball package size: 789K\n\n## Downstream dependencies\n\nAll downstream dependencies ('paws') pass R CMD check.",
+        sprintf(
+          "## Test environments\n\n* local %s install, %s\n* R-hub (devel and release)\n* win-builder\n\n## R CMD check results\n\nThere were no ERRORs, or WARNINGs.\nNotes:\nthis is a dummy note\n\nMaintainer Notes: tarball package size: 789K\n\n## Downstream dependencies\n\nAll downstream dependencies ('paws') pass R CMD check.",
+          utils::osVersion,
+          R.version.string
+        ),
         con = "made_up/paws.cat2/cran-comments.md"
       )
     )
