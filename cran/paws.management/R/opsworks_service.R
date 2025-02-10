@@ -39,7 +39,7 @@ NULL
 #'     Node.js](https://docs.aws.amazon.com/sdk-for-javascript/)
 #' 
 #' -   [SDK for Python
-#'     (Boto)](http://docs.pythonboto.org/en/latest/ref/opsworks.html)
+#'     (Boto)](https://docs.pythonboto.org/en/latest/ref/opsworks.html)
 #' 
 #' **Endpoints**
 #' 
