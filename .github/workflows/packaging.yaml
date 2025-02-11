@@ -57,7 +57,7 @@ jobs:
       pkg_version: ${{ steps.build.outputs.pkg_version }}
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Install R
         uses: r-lib/actions/setup-r@v2
