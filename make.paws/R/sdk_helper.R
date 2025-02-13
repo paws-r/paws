@@ -81,10 +81,7 @@ paws_check_local_sub_cat <- function(
 #' @export
 paws_check_url <- function(in_dir = "../cran", path, pkg_list = list()) {
   pkgs <- list_paws_pkgs(in_dir, pkg_list)
-  results <- setNames(
-    lapply(pkgs, urlchecker::url_check),
-    basename(pkgs)
-  )
+  results <- setNames(lapply(pkgs, urlchecker::url_check), basename(pkgs))
   if (!missing(path)) {
     yaml::write_yaml(results, path)
   }
@@ -248,12 +245,7 @@ paws_check_pkg_size <- function(
   tmp <- tempfile()
   fs::dir_create(tmp)
   on.exit(fs::dir_delete(tmp))
-  lapply(
-    pkgs,
-    devtools::build,
-    path = tmp,
-    quiet = TRUE
-  )
+  lapply(pkgs, devtools::build, path = tmp, quiet = TRUE)
   dir_info <- fs::dir_info(tmp)
   dir_info$package <- gsub("_.*", "", basename(dir_info$path))
   dir_info <- dir_info[, c("package", "size")]
@@ -281,8 +273,7 @@ paws_check_pkg_size <- function(
 paws_uninstall <- function() {
   pkg <- as.data.table(installed.packages())
   pkg <- pkg[
-    grepl("^paws.", get("Package")) &
-      !(get("Package") %in% "paws.common") # don't remove paws.common
+    grepl("^paws.", get("Package")) & !(get("Package") %in% "paws.common") # don't remove paws.common
   ]$Package
   remove.packages(pkg)
   remove.packages("paws")
@@ -402,10 +393,7 @@ paws_build_cran_comments <- function(
       is.na(get("errors")) & is.na(get("warnings")) & is.na(get("notes")),
       "There were no ERRORs, WARNINGs, or Notes.",
       is.na(get("errors")) & is.na(get("warnings")) & !is.na(get("notes")),
-      sprintf(
-        "There were no ERRORs, or WARNINGs.\nNotes:\n%s",
-        get("notes")
-      ),
+      sprintf("There were no ERRORs, or WARNINGs.\nNotes:\n%s", get("notes")),
       is.na(get("errors")) & !is.na(get("warnings")) & !is.na(get("notes")),
       sprintf(
         "There were no ERRORs.\nWarnings:%s\nNotes:\n%s",
@@ -413,10 +401,7 @@ paws_build_cran_comments <- function(
         get("notes")
       ),
       is.na(get("errors")) & !is.na(get("warnings")) & is.na(get("notes")),
-      sprintf(
-        "There were no ERRORs or Notes.\nWarnings:%s",
-        warnings
-      ),
+      sprintf("There were no ERRORs or Notes.\nWarnings:%s", warnings),
       !is.na(get("errors")) & !is.na(get("warnings")) & !is.na(get("notes")),
       sprintf(
         "Errors:\n%s\nWarnings:\n%s\nNotes:\n%s",
@@ -425,10 +410,7 @@ paws_build_cran_comments <- function(
         get("notes")
       ),
       !is.na(get("errors")) & is.na(get("warnings")) & is.na(get("notes")),
-      sprintf(
-        "There was no WARNINGS or Notes.\nErrors:\n%s",
-        get("errors")
-      ),
+      sprintf("There was no WARNINGS or Notes.\nErrors:\n%s", get("errors")),
       !is.na(get("errors")) & !is.na(get("warnings")) & is.na(get("notes")),
       sprintf(
         "There was no WARNINGS.\nErrors:\n%s\nNotes:\n%s",
@@ -475,26 +457,14 @@ paws_build_cran_comments <- function(
 #' @param before character string containing a regular expression to be matched in the given character vector.
 #' @param after a replacement for matched pattern in sub and gsub.
 #' @export
-paws_gsub <- function(
-  root = "..",
-  before = "",
-  after = ""
-) {
+paws_gsub <- function(root = "..", before = "", after = "") {
   log_info <- utils::getFromNamespace("log_info", "paws.common")
 
   paws_r <- fs::dir_ls(file.path(root, "paws", "R"))
   cran_pkg <- fs::dir_ls(file.path(root, "cran"))
-  cran_r <- lapply(
-    cran_pkg,
-    \(x) fs::dir_ls(file.path(x, "R"))
-  )
-  cran_rd <- lapply(
-    cran_pkg,
-    \(x) fs::dir_ls(file.path(x, "man"))
-  )
-  log_info(
-    "Removed escaped latex scripts from paws directory."
-  )
+  cran_r <- lapply(cran_pkg, \(x) fs::dir_ls(file.path(x, "R")))
+  cran_rd <- lapply(cran_pkg, \(x) fs::dir_ls(file.path(x, "man")))
+  log_info("Removed escaped latex scripts from paws directory.")
 
   cran_file_gsub <- function(before, after, files) {
     for (file in files) {
@@ -524,9 +494,7 @@ paws_gsub <- function(
 paws_pkg_doc_build <- function(in_dir = "../cran", pkg_list = list()) {
   log_info <- utils::getFromNamespace("log_info", "paws.common")
   pkgs <- list_paws_pkgs(in_dir, pkg_list)
-  log_info(
-    "Rebuild paws documentation."
-  )
+  log_info("Rebuild paws documentation.")
   for (pkg in pkgs[basename(pkgs) != "paws"]) {
     roxygen2::roxygenise(package.dir = pkg)
     log_info(
@@ -577,14 +545,8 @@ paws_unescape_latex_post_build <- function(
 
   paws_r <- fs::dir_ls(file.path(root, "paws", "R"))
   cran_pkg <- fs::dir_ls(file.path(root, "cran"))
-  cran_r <- lapply(
-    cran_pkg,
-    \(x) fs::dir_ls(file.path(x, "R"))
-  )
-  cran_rd <- lapply(
-    cran_pkg,
-    \(x) fs::dir_ls(file.path(x, "man"))
-  )
+  cran_r <- lapply(cran_pkg, \(x) fs::dir_ls(file.path(x, "R")))
+  cran_rd <- lapply(cran_pkg, \(x) fs::dir_ls(file.path(x, "man")))
 
   remove_esaped_latex <- function(files) {
     for (file in files) {
@@ -597,9 +559,7 @@ paws_unescape_latex_post_build <- function(
   }
 
   remove_esaped_latex(paws_r)
-  log_info(
-    "Removed escaped latex scripts from paws directory."
-  )
+  log_info("Removed escaped latex scripts from paws directory.")
 
   for (pkg in cran_pkg) {
     remove_esaped_latex(cran_r[[pkg]])
@@ -616,19 +576,11 @@ paws_fix_html_span <- function(root = "..") {
 
   paws_r <- fs::dir_ls(file.path(root, "paws", "R"))
   cran_pkg <- fs::dir_ls(file.path(root, "cran"))
-  cran_r <- lapply(
-    cran_pkg,
-    \(x) fs::dir_ls(file.path(x, "R"))
-  )
-  cran_rd <- lapply(
-    cran_pkg,
-    \(x) fs::dir_ls(file.path(x, "man"))
-  )
+  cran_r <- lapply(cran_pkg, \(x) fs::dir_ls(file.path(x, "R")))
+  cran_rd <- lapply(cran_pkg, \(x) fs::dir_ls(file.path(x, "man")))
 
   remove_html_span_r(paws_r)
-  log_info(
-    "Removed escaped latex scripts from paws directory."
-  )
+  log_info("Removed escaped latex scripts from paws directory.")
 
   for (pkg in cran_pkg) {
     remove_html_span_r(cran_r[[pkg]])

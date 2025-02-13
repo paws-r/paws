@@ -49,8 +49,16 @@ struct_name <- function(api) {
 }
 
 old_service_name <- function(name) {
-  path <- system_file("extdata/old_service_names.csv", package = methods::getPackageName())
-  data <- utils::read.csv(path, header = FALSE, strip.white = TRUE, stringsAsFactors = FALSE)
+  path <- system_file(
+    "extdata/old_service_names.csv",
+    package = methods::getPackageName()
+  )
+  data <- utils::read.csv(
+    path,
+    header = FALSE,
+    strip.white = TRUE,
+    stringsAsFactors = FALSE
+  )
   old_service_names <- stats::setNames(data[, 2], data[, 1])
   if (name %in% names(old_service_names)) {
     return(old_service_names[[name]])

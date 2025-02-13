@@ -29,11 +29,22 @@ rest_build_location_elements <- function(request, values, build_get_query) {
 
     location <- tag_get(field, "location")
     if (location == "headers") {
-      request$http_request$header <- rest_build_header_map(request$http_request$header, field)
+      request$http_request$header <- rest_build_header_map(
+        request$http_request$header,
+        field
+      )
     } else if (location == "header") {
-      request$http_request$header <- rest_build_header(request$http_request$header, field, name)
+      request$http_request$header <- rest_build_header(
+        request$http_request$header,
+        field,
+        name
+      )
     } else if (location == "uri") {
-      request$http_request$url <- rest_build_uri(request$http_request$url, field, name)
+      request$http_request$url <- rest_build_uri(
+        request$http_request$url,
+        field,
+        name
+      )
     } else if (location == "querystring") {
       query <- rest_build_query_string(query, field, name)
     } else if (build_get_query) {
@@ -53,7 +64,10 @@ rest_build_header_map <- function(header, values) {
   prefix <- tag_get(values, "locationName")
   for (key in names(values)) {
     value <- values[[key]]
-    header[[paste0(prefix, key)]] <- convert_type(value, timestamp_format = "unix")
+    header[[paste0(prefix, key)]] <- convert_type(
+      value,
+      timestamp_format = "unix"
+    )
   }
   return(header)
 }
@@ -67,8 +81,18 @@ rest_build_uri <- function(uri, value, name) {
   str <- convert_type(value, timestamp_format = "unix")
   uri$path <- sub(sprintf("{%s}", name), str, uri$path, fixed = TRUE)
   uri$path <- sub(sprintf("{%s+}", name), str, uri$path, fixed = TRUE)
-  uri$raw_path <- sub(sprintf("{%s}", name), escape_path(str, TRUE), uri$raw_path, fixed = TRUE)
-  uri$raw_path <- sub(sprintf("{%s+}", name), escape_path(str, FALSE), uri$raw_path, fixed = TRUE)
+  uri$raw_path <- sub(
+    sprintf("{%s}", name),
+    escape_path(str, TRUE),
+    uri$raw_path,
+    fixed = TRUE
+  )
+  uri$raw_path <- sub(
+    sprintf("{%s+}", name),
+    escape_path(str, FALSE),
+    uri$raw_path,
+    fixed = TRUE
+  )
   return(uri)
 }
 
@@ -174,7 +198,8 @@ rest_unmarshal_status_code <- function(status_code) {
 
 # Unmarshal a header.
 rest_unmarshal_header <- function(value, type) {
-  convert <- switch(type,
+  convert <- switch(
+    type,
     blob = base64_to_raw,
     boolean = as.logical,
     double = as.numeric,

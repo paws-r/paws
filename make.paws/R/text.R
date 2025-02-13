@@ -21,7 +21,12 @@ html_to <- function(html, to) {
     temp_in <- tempfile()
     write_utf8(html, temp_in)
     temp_out <- tempfile()
-    rmarkdown::pandoc_convert(temp_in, output = temp_out, from = "html", to = to)
+    rmarkdown::pandoc_convert(
+      temp_in,
+      output = temp_out,
+      from = "html",
+      to = to
+    )
     result <- read_utf8(temp_out)
     # Pandoc inappropriately escapes "%" and "*"; undo this escaping.
     result <- gsub("\\\\(\\%|\\*)", "\\1", result)
@@ -75,7 +80,10 @@ unmask <- function(object, masks) {
 tabular <- function(cols) {
   stopifnot(is.data.frame(cols))
   col_align <- paste(rep("l", ncol(cols)), collapse = "")
-  contents <- do.call("paste", c(cols, list(sep = " \\tab ", collapse = "\\cr\n  ")))
+  contents <- do.call(
+    "paste",
+    c(cols, list(sep = " \\tab ", collapse = "\\cr\n  "))
+  )
   paste("\\tabular{", col_align, "}{\n  ", contents, "\n}\n", sep = "")
 }
 

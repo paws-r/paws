@@ -32,10 +32,7 @@ Config <- struct(
 )
 
 # A Session object stores configuration and request handlers for a service.
-Session <- struct(
-  config = Config(),
-  handlers = Handlers()
-)
+Session <- struct(config = Config(), handlers = Handlers())
 
 # A ClientConfig object stores the information required to configure a service
 # client instance.
@@ -133,10 +130,7 @@ resolver_endpoint_boto <- function(
   )
   e <- endpoints[[get_region_pattern(names(endpoints), signing_region)]]
   if (service == "sts" & nzchar(sts_regional_endpoint)) {
-    e$endpoint <- set_sts_regional_endpoint(
-      sts_regional_endpoint,
-      e
-    )
+    e$endpoint <- set_sts_regional_endpoint(sts_regional_endpoint, e)
     region <- set_sts_region(sts_regional_endpoint, region)
   }
   # signing_region <- if (e[["global"]]) "us-east-1" else region
@@ -146,12 +140,7 @@ resolver_endpoint_boto <- function(
   }
   endpoint <- gsub("^(.+://)?", sprintf("%s://", scheme), endpoint)
 
-  return(
-    list(
-      endpoint = endpoint,
-      signing_region = signing_region
-    )
-  )
+  return(list(endpoint = endpoint, signing_region = signing_region))
 }
 
 # Support paws < 0.8.0
@@ -183,10 +172,7 @@ resolver_endpoint_js <- function(
     e <- list(endpoint = e, global = FALSE)
   }
   if (service == "sts" & nzchar(sts_regional_endpoint)) {
-    e$endpoint <- set_sts_regional_endpoint(
-      sts_regional_endpoint,
-      e
-    )
+    e$endpoint <- set_sts_regional_endpoint(sts_regional_endpoint, e)
     region <- set_sts_region(sts_regional_endpoint, region)
   }
   signing_region <- if (e[["global"]]) "us-east-1" else region
@@ -196,12 +182,7 @@ resolver_endpoint_js <- function(
   }
   endpoint <- gsub("^(.+://)?", sprintf("%s://", scheme), endpoint)
 
-  return(
-    list(
-      endpoint = endpoint,
-      signing_region = signing_region
-    )
-  )
+  return(list(endpoint = endpoint, signing_region = signing_region))
 }
 
 set_sts_regional_endpoint <- function(sts_regional_endpoint, endpoint) {

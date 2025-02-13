@@ -71,7 +71,10 @@ make_tests_files <- function(api, path) {
 make_custom_operations_files <- function(api) {
   result <- list()
   package <- package_name(api)
-  from <- system_file(sprintf("src/custom/%s.R", package), package = methods::getPackageName())
+  from <- system_file(
+    sprintf("src/custom/%s.R", package),
+    package = methods::getPackageName()
+  )
   filename <- paste0(package, "_custom.R")
   if (from != "" && file.exists(from)) {
     contents <- readLines(from)
@@ -82,7 +85,10 @@ make_custom_operations_files <- function(api) {
 
 make_reexports <- function() {
   result <- list()
-  from <- system_file("templates/reexports_paws.common.R", package = methods::getPackageName())
+  from <- system_file(
+    "templates/reexports_paws.common.R",
+    package = methods::getPackageName()
+  )
   filename <- "reexports_paws.common.R"
   if (from != "" && file.exists(from)) {
     contents <- readLines(from)

@@ -3,7 +3,10 @@ test_that("resolver_endpoint", {
     "aws-global" = list(endpoint = "service.amazonaws.com", global = TRUE),
     "us-west-1" = list(endpoint = "service.amazonaws.com", global = TRUE),
     "us-east-1" = list(endpoint = "service.amazonaws.com", global = FALSE),
-    "^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "service.{region}.amazonaws.com", global = FALSE)
+    "^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(
+      endpoint = "service.{region}.amazonaws.com",
+      global = FALSE
+    )
   )
 
   r <- resolver_endpoint("service", "region", endpoints)
@@ -25,7 +28,10 @@ test_that("resolver_endpoint", {
 
 test_that("resolver_endpoint no region and no global region found", {
   endpoints <- list(
-    "^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "service.{region}.amazonaws.com", global = FALSE)
+    "^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(
+      endpoint = "service.{region}.amazonaws.com",
+      global = FALSE
+    )
   )
 
   expect_error(
@@ -38,7 +44,10 @@ test_that("resolver_endpoint service sts_regional_endpoint", {
   endpoints <- list(
     "aws-global" = list(endpoint = "service.amazonaws.com", global = TRUE),
     "us-west-1" = list(endpoint = "service.amazonaws.com", global = TRUE),
-    "^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "service.{region}.amazonaws.com", global = FALSE)
+    "^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(
+      endpoint = "service.{region}.amazonaws.com",
+      global = FALSE
+    )
   )
 
   r <- resolver_endpoint("sts", "us-east-1", endpoints, "regional")
@@ -54,7 +63,10 @@ test_that("resolver_endpoint service s3 default region", {
   endpoints <- list(
     "aws-global" = list(endpoint = "s3.amazonaws.com", global = TRUE),
     "us-west-1" = list(endpoint = "s3.amazonaws.com", global = TRUE),
-    "^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE)
+    "^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(
+      endpoint = "s3.{region}.amazonaws.com",
+      global = FALSE
+    )
   )
 
   r <- resolver_endpoint("s3", "aws-global", endpoints)
@@ -68,10 +80,12 @@ test_that("client_config uses custom endpoint", {
   cfgs$endpoint <- "https://test.us-west-2.amazonaws.com"
   client_cfg <- client_config(
     service_name = "dynamodb",
-    endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(
-      endpoint = "dynamodb.{region}.amazonaws.com",
-      global = FALSE
-    )),
+    endpoints = list(
+      "^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(
+        endpoint = "dynamodb.{region}.amazonaws.com",
+        global = FALSE
+      )
+    ),
     cfgs = cfgs
   )
   expect_equal(
@@ -86,17 +100,16 @@ test_that("client_config uses custom region", {
   cfgs$region <- "test_region"
   client_cfg <- client_config(
     service_name = "dynamodb",
-    endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(
-      endpoint = "dynamodb.{region}.amazonaws.com",
-      global = FALSE
-    )),
+    endpoints = list(
+      "^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(
+        endpoint = "dynamodb.{region}.amazonaws.com",
+        global = FALSE
+      )
+    ),
     cfgs = cfgs,
     service_id = "foo"
   )
-  expect_equal(
-    "test_region",
-    client_cfg$config$region
-  )
+  expect_equal("test_region", client_cfg$config$region)
 })
 
 test_that("client_config uses custom credentials", {
@@ -108,23 +121,19 @@ test_that("client_config uses custom credentials", {
 
   client_cfg <- client_config(
     service_name = "dynamodb",
-    endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(
-      endpoint = "dynamodb.{region}.amazonaws.com",
-      global = FALSE
-    )),
+    endpoints = list(
+      "^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(
+        endpoint = "dynamodb.{region}.amazonaws.com",
+        global = FALSE
+      )
+    ),
     cfgs = cfgs,
     service_id = "foo"
   )
-  expect_equal(
-    "test_key",
-    client_cfg$config$credentials$creds$access_key_id
-  )
+  expect_equal("test_key", client_cfg$config$credentials$creds$access_key_id)
   expect_equal(
     "test_secret",
     client_cfg$config$credentials$creds$secret_access_key
   )
-  expect_equal(
-    "test_profile",
-    client_cfg$config$credentials$profile
-  )
+  expect_equal("test_profile", client_cfg$config$credentials$profile)
 })

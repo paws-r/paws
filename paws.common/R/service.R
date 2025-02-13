@@ -30,25 +30,12 @@ new_handlers <- function(protocol, signer) {
       build_content_length_handler,
       handler(signer, "sign_request_handler")
     ),
-    send = HandlerList(
-      validate_req_sig_handler,
-      send_handler
-    ),
-    validate_response = HandlerList(
-      validate_response_handler
-    ),
-    unmarshal = HandlerList(
-      handler(protocol, "unmarshal")
-    ),
-    unmarshal_meta = HandlerList(
-      handler(protocol, "unmarshal_meta")
-    ),
-    unmarshal_error = HandlerList(
-      handler(protocol, "unmarshal_error")
-    ),
-    retry = HandlerList(
-      standard_retry_handler
-    )
+    send = HandlerList(validate_req_sig_handler, send_handler),
+    validate_response = HandlerList(validate_response_handler),
+    unmarshal = HandlerList(handler(protocol, "unmarshal")),
+    unmarshal_meta = HandlerList(handler(protocol, "unmarshal_meta")),
+    unmarshal_error = HandlerList(handler(protocol, "unmarshal_error")),
+    retry = HandlerList(standard_retry_handler)
   )
   return(handlers)
 }
@@ -116,7 +103,12 @@ new_handlers <- function(protocol, signer) {
 #' @seealso [new_operation()]
 #'
 #' @export
-new_service <- function(metadata, handlers, cfgs = NULL, operation = Operation()) {
+new_service <- function(
+  metadata,
+  handlers,
+  cfgs = NULL,
+  operation = Operation()
+) {
   cfg <- client_config(
     service_name = metadata$service_name,
     endpoints = metadata$endpoints,

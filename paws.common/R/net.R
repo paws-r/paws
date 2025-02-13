@@ -63,7 +63,17 @@ HttpResponse <- struct(
 # @param timeout Timeout for the entire request.
 # @param dest Control where the response body is written
 # @param header list of HTTP headers to add to the request
-new_http_request <- function(method, url, body = NULL, close = FALSE, connect_timeout = NULL, timeout = NULL, dest = NULL, stream_api = FALSE, header = list()) {
+new_http_request <- function(
+  method,
+  url,
+  body = NULL,
+  close = FALSE,
+  connect_timeout = NULL,
+  timeout = NULL,
+  dest = NULL,
+  stream_api = FALSE,
+  header = list()
+) {
   if (method == "") {
     method <- "GET"
   }
@@ -139,7 +149,12 @@ request_aws <- function(url, http_request) {
   req$headers <- http_request$header
   req$policies$error_is_error <- function(resp) FALSE
   if (http_request$method != "HEAD") {
-    req$body <- list(data = http_request$body, type = "raw", content_type = "", params = list())
+    req$body <- list(
+      data = http_request$body,
+      type = "raw",
+      content_type = "",
+      params = list()
+    )
   }
   req <- req_options(
     .req = req,

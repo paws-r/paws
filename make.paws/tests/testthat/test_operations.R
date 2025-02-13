@@ -1,22 +1,13 @@
 test_that("make_operation", {
   operation <- list(
     name = "Operation",
-    http = list(
-      method = "POST",
-      requestUri = "/abc"
-    ),
-    input = list(
-      shape = "InputShape"
-    ),
-    output = list(
-      shape = "OutputShape"
-    ),
+    http = list(method = "POST", requestUri = "/abc"),
+    input = list(shape = "InputShape"),
+    output = list(shape = "OutputShape"),
     documentation = "Foo."
   )
   api <- list(
-    metadata = list(
-      serviceAbbreviation = "api"
-    ),
+    metadata = list(serviceAbbreviation = "api"),
     shapes = list(
       InputShape = list(
         required = list(),
@@ -48,7 +39,8 @@ test_that("make_operation", {
   a <- gsub(" +\n", "\n", a)
 
   e <- gsub(
-    "\n {4}", "\n",
+    "\n {4}",
+    "\n",
     "#' Foo
     #'
     #' @description

@@ -76,11 +76,7 @@ test_that("check if environmental variables remove whitespace", {
 
 test_that("check if environmental variables with nothing assigned", {
   skip_if(.Platform$OS.type != "unix")
-  fake_env <- c(
-    "AWS_ENV_VAR1",
-    "AWS_ENV_VAR2=",
-    "OTHER"
-  )
+  fake_env <- c("AWS_ENV_VAR1", "AWS_ENV_VAR2=", "OTHER")
 
   mock_env <- mock2(fake_env)
   mockery::stub(set_os_env_cache, "system", mock_env)

@@ -1,9 +1,5 @@
 test_that("clean_path", {
-  url <- Url(
-    path = "//foo//bar",
-    scheme = "https",
-    host = "host"
-  )
+  url <- Url(path = "//foo//bar", scheme = "https", host = "host")
   actual <- build_url(clean_path(url))
   expected <- "https://host/foo/bar"
   expect_equal(actual, expected)
@@ -16,11 +12,7 @@ test_that("escape_path", {
   expect_equal(actual, expected)
 })
 
-svc <- Client(
-  client_info = ClientInfo(
-    endpoint = "https://test"
-  )
-)
+svc <- Client(client_info = ClientInfo(endpoint = "https://test"))
 svc$handlers$build <- HandlerList(rest_build)
 
 test_that("build request with URL requiring escaping", {
@@ -35,8 +27,14 @@ test_that("build request with URL requiring escaping", {
   op_input1 <- function(Bucket, Key) {
     args <- list(Bucket = Bucket, Key = Key)
     interface <- Structure(
-      Bucket = Scalar(type = "string", .tags = list(location = "uri", locationName = "bucket")),
-      Key = Scalar(type = "string", .tags = list(location = "uri", locationName = "key"))
+      Bucket = Scalar(
+        type = "string",
+        .tags = list(location = "uri", locationName = "bucket")
+      ),
+      Key = Scalar(
+        type = "string",
+        .tags = list(location = "uri", locationName = "key")
+      )
     )
     return(populate(args, interface))
   }
@@ -48,7 +46,10 @@ test_that("build request with URL requiring escaping", {
   req <- build(req)
   r <- req$http_request
   expect_equal(r$url$path, "/mybucket/my/cool+thing space/object世界")
-  expect_equal(r$url$raw_path, "/mybucket/my/cool%2Bthing%20space/object%E4%B8%96%E7%95%8C")
+  expect_equal(
+    r$url$raw_path,
+    "/mybucket/my/cool%2Bthing%20space/object%E4%B8%96%E7%95%8C"
+  )
 })
 
 test_that("build request with URL", {
@@ -64,9 +65,7 @@ test_that("build request with URL", {
     )
     return(populate(args, interface))
   }
-  input <- op_input1(
-    foo = "bar"
-  )
+  input <- op_input1(foo = "bar")
   req <- new_request(svc, op1, input, NULL)
   req <- build(req)
   r <- req$http_request

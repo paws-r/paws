@@ -69,7 +69,10 @@ expect_user_agent <- function(request) {
   r_arch <- R.Version()$arch
   user_agent <- sprintf(
     "paws/%s (R%s; %s; %s)",
-    paws_version, r_version, r_os, r_arch
+    paws_version,
+    r_version,
+    r_os,
+    r_arch
   )
   return(user_agent)
 }

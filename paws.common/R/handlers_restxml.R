@@ -37,7 +37,8 @@ restxml_unmarshal <- function(request) {
 # Unmarshal errors from a REST XML response.
 restxml_unmarshal_error <- function(request) {
   request$http_response$body <- get_connection_error(
-    request$http_response$body, request$operation$stream_api
+    request$http_response$body,
+    request$operation$stream_api
   )
   request <- query_unmarshal_error(request)
   return(request)

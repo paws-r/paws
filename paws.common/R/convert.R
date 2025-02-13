@@ -1,7 +1,8 @@
 # Convert an R value to a value acceptable by the AWS API.
 convert_type <- function(value, timestamp_format) {
   t <- tag_get(value, "type")
-  string <- switch(t,
+  string <- switch(
+    t,
     blob = convert_blob(value),
     boolean = convert_boolean(value),
     float = as.character(value),
@@ -68,7 +69,8 @@ raw_to_utf8 <- function(value) {
 
 # Return a strptime format string for a given timestamp format.
 get_timestamp_format <- function(name) {
-  format_string <- switch(name,
+  format_string <- switch(
+    name,
     iso8601 = "%Y-%m-%dT%H:%M:%SZ",
     rfc822 = "%a, %d %b %Y %H:%M:%S %Z"
   )

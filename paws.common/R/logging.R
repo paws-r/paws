@@ -37,9 +37,11 @@
 #' # reset to default config
 #' paws_config_log()
 #' @export
-paws_config_log <- function(level = 2L,
-                            file = "",
-                            timestamp_fmt = "%Y-%m-%d %H:%M:%OS3") {
+paws_config_log <- function(
+  level = 2L,
+  file = "",
+  timestamp_fmt = "%Y-%m-%d %H:%M:%OS3"
+) {
   stopifnot(
     "`level` must be integer" = is.integer(level),
     "`file` must be character" = is.character(file),
@@ -112,7 +114,8 @@ log_msg <- function(lvl, msg) {
 }
 
 log_color <- function(lvl) {
-  color <- switch(lvl,
+  color <- switch(
+    lvl,
     TRACE = style_trace,
     DEBUG = style_debug,
     INFO = style_info,
@@ -126,7 +129,8 @@ log_color <- function(lvl) {
 # modified httr2::req_verbose to align with paws logging system
 # https://github.com/r-lib/httr2/blob/8e9f8588e66378f1f419158cd1810a82a4dad022/R/req-options.R#L167-L187
 paws_debug <- function(type, msg) {
-  switch(type + 1,
+  switch(
+    type + 1,
     text = prefix_trace("*  ", msg),
     headerIn = prefix_debug("<- ", msg),
     headerOut = prefix_debug("-> ", msg)
@@ -155,7 +159,8 @@ init_log_config <- function() {
   r_options <- lapply(log_opt_name, getOption)
   names(r_options) <- log_opt_name
   paws_logging_opt <- modifyList(
-    paws_logging_opt, Filter(Negate(is.null), r_options)
+    paws_logging_opt,
+    Filter(Negate(is.null), r_options)
   )
 
   # check environment variables for log settings
@@ -166,7 +171,8 @@ init_log_config <- function() {
   )
   names(env_options) <- c(log_opt_name)
   paws_logging_opt <- modifyList(
-    paws_logging_opt, Filter(Negate(is.na), env_options)
+    paws_logging_opt,
+    Filter(Negate(is.na), env_options)
   )
   # ensure log level is an integer
   paws_logging_opt$paws.log_level <- as.integer(paws_logging_opt$paws.log_level)

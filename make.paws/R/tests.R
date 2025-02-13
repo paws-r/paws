@@ -22,11 +22,7 @@ make_tests <- function(api) {
     }
   }
   tests <- paste(tests, collapse = "\n\n")
-  render(
-    test_file_template,
-    service = package_name(api),
-    tests = tests
-  )
+  render(test_file_template, service = package_name(api), tests = tests)
 }
 
 # Make the individual test template.

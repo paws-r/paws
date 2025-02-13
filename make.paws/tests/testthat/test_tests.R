@@ -6,17 +6,10 @@ format_test_code <- function(code) {
 }
 
 test_that("make_test no arguments", {
-  api <- list(
-    metadata = list(
-      serviceAbbreviation = "api"
-    )
-  )
-  operation <- list(
-    name = "foo"
-  )
+  api <- list(metadata = list(serviceAbbreviation = "api"))
+  operation <- list(name = "foo")
   a <- make_test(operation, api, NULL, NA)
-  e <-
-    'test_that("foo", {
+  e <- 'test_that("foo", {
       expect_error(svc$foo(), NA)
     })
   '
@@ -26,17 +19,10 @@ test_that("make_test no arguments", {
 })
 
 test_that("make_test with arguments", {
-  api <- list(
-    metadata = list(
-      serviceAbbreviation = "api"
-    )
-  )
-  operation <- list(
-    name = "foo"
-  )
+  api <- list(metadata = list(serviceAbbreviation = "api"))
+  operation <- list(name = "foo")
   a <- make_test(operation, api, list('"bar"', 123), NA)
-  e <-
-    'test_that("foo", {
+  e <- 'test_that("foo", {
       expect_error(svc$foo("bar", 123), NA)
     })
   '
@@ -47,49 +33,26 @@ test_that("make_test with arguments", {
 
 test_that("make_tests", {
   api <- list(
-    metadata = list(
-      serviceAbbreviation = "api"
-    ),
+    metadata = list(serviceAbbreviation = "api"),
     operations = list(
-      CreateFoo = list(
-        name = "CreateFoo"
-      ),
+      CreateFoo = list(name = "CreateFoo"),
       DescribeFoo = list(
         name = "DescribeFoo",
-        input = list(
-          shape = "DescribeFooShape"
-        )
+        input = list(shape = "DescribeFooShape")
       ),
-      ListBar = list(
-        name = "ListBar"
-      ),
-      ListBaz = list(
-        name = "ListBaz",
-        input = list(
-          shape = "ListBazShape"
-        )
-      )
+      ListBar = list(name = "ListBar"),
+      ListBaz = list(name = "ListBaz", input = list(shape = "ListBazShape"))
     ),
     shapes = list(
       DescribeFooShape = list(
-        members = list(
-          MaxResults = list()
-        ),
+        members = list(MaxResults = list()),
         required = list()
       ),
-      ListBazShape = list(
-        members = list(
-          Qux = list()
-        ),
-        required = list(
-          "Qux"
-        )
-      )
+      ListBazShape = list(members = list(Qux = list()), required = list("Qux"))
     )
   )
   a <- make_tests(api)
-  e <-
-    'svc <- paws::api()
+  e <- 'svc <- paws::api()
 
     test_that("describe_foo", {
       expect_error(svc$describe_foo(), NA)

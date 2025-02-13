@@ -237,33 +237,30 @@ parse_in_half <- function(x, char = "=") {
   right_start[no_match] <- 0
   right_end[no_match] <- 0
 
-  cbind(
-    substr(x, 1, left_end),
-    substr(x, right_start, right_end)
-  )
+  cbind(substr(x, 1, left_end), substr(x, right_start, right_end))
 }
 
 set_user_agent <- function(pkgname) {
-  paws_version <- .__NAMESPACE__.[["spec"]]["version"] %||% packageVersion(pkgname)
+  paws_version <- .__NAMESPACE__.[["spec"]]["version"] %||%
+    packageVersion(pkgname)
   user_agent <- sprintf(
     "paws/%s (R%s; %s; %s)",
-    paws_version, getRversion(), R.version$os, R.version$arch
+    paws_version,
+    getRversion(),
+    R.version$os,
+    R.version$arch
   )
   assign("PAWS_USER_AGENT", user_agent, envir = getNamespace(pkgname))
 }
 
 set_paws_options <- function() {
-  paws_options <- list(
-    paws.aws_sso_creds = FALSE
-  )
+  paws_options <- list(paws.aws_sso_creds = FALSE)
   paws_options_names <- names(paws_options)
 
   # check R options for log settings
   r_options <- lapply(paws_options_names, getOption)
   names(r_options) <- paws_options_names
-  paws_options <- modifyList(
-    paws_options, Filter(Negate(is.null), r_options)
-  )
+  paws_options <- modifyList(paws_options, Filter(Negate(is.null), r_options))
 
   do.call(options, paws_options)
 }

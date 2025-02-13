@@ -173,10 +173,7 @@ eventstream_parser <- function(buffer, unmarshal, interface, boundary) {
     result <- split_buffer(buffer, boundary)
     data <- parse_aws_event(result$matched)
     (nms <- data$headers[[":event-type"]])
-    interface[[nms]] <- unmarshal(
-      data$payload,
-      interface[[nms]]
-    )
+    interface[[nms]] <- unmarshal(data$payload, interface[[nms]])
     buffer <- result$remaining
     boundary <- aws_boundary(buffer)
   }

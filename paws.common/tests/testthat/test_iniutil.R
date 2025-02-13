@@ -56,7 +56,10 @@ test_that("Reads in values with nested content", {
   paws_reset_cache()
   content <- read_ini("data_ini")
   profile <- "nested"
-  expect_equal(content[[profile]][["nested1"]], list(arg1 = "value1", arg2 = "value2"))
+  expect_equal(
+    content[[profile]][["nested1"]],
+    list(arg1 = "value1", arg2 = "value2")
+  )
   expect_equal(content[[profile]][["nested2"]], list(arg4 = "value4"))
   expect_equal(content[[profile]][["arg3"]], "value3")
 })

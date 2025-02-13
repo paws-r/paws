@@ -33,12 +33,14 @@ make_collection <- function(sdk_dir, out_dir, categories, service_names) {
 
 # Write the R source files for the collection package, which import and
 # re-export the API client objects for each AWS API.
-write_source_collection <- function(sdk_dir,
-                                    out_dir,
-                                    categories,
-                                    service_names,
-                                    expand_doc_links = FALSE,
-                                    use_parents = FALSE) {
+write_source_collection <- function(
+  sdk_dir,
+  out_dir,
+  categories,
+  service_names,
+  expand_doc_links = FALSE,
+  use_parents = FALSE
+) {
   clients <- list()
   for (category in categories) {
     for (service in category$service) {
@@ -62,7 +64,10 @@ write_source_collection <- function(sdk_dir,
     }
   }
   write_list(clients, file.path(out_dir, "R", "paws.R"))
-  write_list(make_reexports(), file.path(out_dir, "R", "reexports_paws.common.R"))
+  write_list(
+    make_reexports(),
+    file.path(out_dir, "R", "reexports_paws.common.R")
+  )
 }
 
 # Add the category packages to the DESCRIPTION file's Imports.
@@ -104,11 +109,7 @@ collection_client_template <- template(
 )
 
 make_collection_client_source <- function(package, service) {
-  render(
-    collection_client_template,
-    service = service,
-    package = package
-  )
+  render(collection_client_template, service = service, package = package)
 }
 
 service_exists <- function(path, service) {

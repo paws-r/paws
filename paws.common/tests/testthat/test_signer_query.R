@@ -1,12 +1,7 @@
 mock_request <- function(bucket, key, http_path) {
   list(
-    operation = list(
-      http_path = http_path
-    ),
-    params = list(
-      Bucket = bucket,
-      Key = key
-    )
+    operation = list(http_path = http_path),
+    params = list(Bucket = bucket, Key = key)
   )
 }
 
@@ -92,7 +87,9 @@ list_objects_v2_input_params <- function(...) {
       Delimiter = structure(
         logical(0),
         tags = list(
-          location = "querystring", locationName = "delimiter", type = "string"
+          location = "querystring",
+          locationName = "delimiter",
+          type = "string"
         )
       ),
       EncodingType = structure(
@@ -184,29 +181,30 @@ list_objects_v2_output_params <- structure(
             ),
             Size = structure(logical(0), tags = list(type = "integer")),
             StorageClass = structure(logical(0), tags = list(type = "string")),
-            Owner = structure(list(
-              DisplayName = structure(logical(0), tags = list(type = "string")),
-              ID = structure(logical(0), tags = list(type = "string"))
-            ), tags = list(type = "structure"))
+            Owner = structure(
+              list(
+                DisplayName = structure(
+                  logical(0),
+                  tags = list(type = "string")
+                ),
+                ID = structure(logical(0), tags = list(type = "string"))
+              ),
+              tags = list(type = "structure")
+            )
           ),
           tags = list(type = "structure")
         )
       ),
       tags = list(type = "list", flattened = TRUE)
     ),
-    Name = structure(
-      logical(0),
-      tags = list(type = "string")
-    ),
+    Name = structure(logical(0), tags = list(type = "string")),
     Prefix = structure(logical(0), tags = list(type = "string")),
     Delimiter = structure(logical(0), tags = list(type = "string")),
     MaxKeys = structure(logical(0), tags = list(type = "integer")),
     CommonPrefixes = structure(
       list(
         structure(
-          list(
-            Prefix = structure(logical(0), tags = list(type = "string"))
-          ),
+          list(Prefix = structure(logical(0), tags = list(type = "string"))),
           tags = list(type = "structure")
         )
       ),
@@ -224,7 +222,10 @@ list_objects_v2_output_params <- structure(
 test_that("check standard generated presigned url", {
   metadata <- list(
     endpoints = list(
-      "^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "s3.amazonaws.com", global = FALSE)
+      "^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(
+        endpoint = "s3.amazonaws.com",
+        global = FALSE
+      )
     ),
     service_name = "s3"
   )
@@ -268,7 +269,10 @@ test_that("check standard generated presigned url", {
 test_that("check standard generated presigned url for anonymous signing", {
   metadata <- list(
     endpoints = list(
-      "^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "s3.amazonaws.com", global = FALSE)
+      "^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(
+        endpoint = "s3.amazonaws.com",
+        global = FALSE
+      )
     ),
     service_name = "s3"
   )
@@ -307,15 +311,14 @@ test_that("check standard generated presigned url with no credentials explicitly
 
   metadata <- list(
     endpoints = list(
-      "^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "s3.amazonaws.com", global = FALSE)
+      "^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(
+        endpoint = "s3.amazonaws.com",
+        global = FALSE
+      )
     ),
     service_name = "s3"
   )
-  client <- new_service(
-    metadata,
-    new_handlers("restxml", "s3"),
-    Config()
-  )
+  client <- new_service(metadata, new_handlers("restxml", "s3"), Config())
   op <- new_operation(
     name = "ListObjectsV2",
     http_method = "GET",
@@ -345,96 +348,99 @@ test_that("check standard generated presigned url with no credentials explicitly
   )
 })
 
-
 get_object_input_params <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(
     list(
       Bucket = structure(
         logical(0),
-        tags = list(
-          location = "uri",
-          locationName = "Bucket",
-          type = "string"
-        )
-      ), IfMatch = structure(
+        tags = list(location = "uri", locationName = "Bucket", type = "string")
+      ),
+      IfMatch = structure(
         logical(0),
         tags = list(
           location = "header",
           locationName = "If-Match",
           type = "string"
         )
-      ), IfModifiedSince = structure(
+      ),
+      IfModifiedSince = structure(
         logical(0),
         tags = list(
           location = "header",
           locationName = "If-Modified-Since",
           type = "timestamp"
         )
-      ), IfNoneMatch = structure(
+      ),
+      IfNoneMatch = structure(
         logical(0),
         tags = list(
           location = "header",
           locationName = "If-None-Match",
           type = "string"
         )
-      ), IfUnmodifiedSince = structure(
+      ),
+      IfUnmodifiedSince = structure(
         logical(0),
         tags = list(
           location = "header",
           locationName = "If-Unmodified-Since",
           type = "timestamp"
         )
-      ), Key = structure(
+      ),
+      Key = structure(
         logical(0),
-        tags = list(
-          location = "uri",
-          locationName = "Key",
-          type = "string"
-        )
-      ), Range = structure(
+        tags = list(location = "uri", locationName = "Key", type = "string")
+      ),
+      Range = structure(
         logical(0),
         tags = list(
           location = "header",
           locationName = "Range",
           type = "string"
         )
-      ), ResponseCacheControl = structure(
+      ),
+      ResponseCacheControl = structure(
         logical(0),
         tags = list(
           location = "querystring",
           locationName = "response-cache-control",
           type = "string"
         )
-      ), ResponseContentDisposition = structure(
+      ),
+      ResponseContentDisposition = structure(
         logical(0),
         tags = list(
           location = "querystring",
           locationName = "response-content-disposition",
           type = "string"
         )
-      ), ResponseContentEncoding = structure(
+      ),
+      ResponseContentEncoding = structure(
         logical(0),
         tags = list(
           location = "querystring",
           locationName = "response-content-encoding",
           type = "string"
         )
-      ), ResponseContentLanguage = structure(
+      ),
+      ResponseContentLanguage = structure(
         logical(0),
         tags = list(
           location = "querystring",
           locationName = "response-content-language",
           type = "string"
         )
-      ), ResponseContentType = structure(
+      ),
+      ResponseContentType = structure(
         logical(0),
         tags = list(
           location = "querystring",
           locationName = "response-content-type",
           type = "string"
         )
-      ), ResponseExpires = structure(
+      ),
+      ResponseExpires = structure(
         logical(0),
         tags = list(
           location = "querystring",
@@ -442,21 +448,24 @@ get_object_input_params <- function(...) {
           type = "timestamp",
           timestampFormat = "rfc822"
         )
-      ), VersionId = structure(
+      ),
+      VersionId = structure(
         logical(0),
         tags = list(
           location = "querystring",
           locationName = "versionId",
           type = "string"
         )
-      ), SSECustomerAlgorithm = structure(
+      ),
+      SSECustomerAlgorithm = structure(
         logical(0),
         tags = list(
           location = "header",
           locationName = "x-amz-server-side-encryption-customer-algorithm",
           type = "string"
         )
-      ), SSECustomerKey = structure(
+      ),
+      SSECustomerKey = structure(
         logical(0),
         tags = list(
           location = "header",
@@ -464,35 +473,40 @@ get_object_input_params <- function(...) {
           type = "blob",
           sensitive = TRUE
         )
-      ), SSECustomerKeyMD5 = structure(
+      ),
+      SSECustomerKeyMD5 = structure(
         logical(0),
         tags = list(
           location = "header",
           locationName = "x-amz-server-side-encryption-customer-key-MD5",
           type = "string"
         )
-      ), RequestPayer = structure(
+      ),
+      RequestPayer = structure(
         logical(0),
         tags = list(
           location = "header",
           locationName = "x-amz-request-payer",
           type = "string"
         )
-      ), PartNumber = structure(
+      ),
+      PartNumber = structure(
         logical(0),
         tags = list(
           location = "querystring",
           locationName = "partNumber",
           type = "integer"
         )
-      ), ExpectedBucketOwner = structure(
+      ),
+      ExpectedBucketOwner = structure(
         logical(0),
         tags = list(
           location = "header",
           locationName = "x-amz-expected-bucket-owner",
           type = "string"
         )
-      ), ChecksumMode = structure(
+      ),
+      ChecksumMode = structure(
         logical(0),
         tags = list(
           location = "header",
@@ -508,225 +522,279 @@ get_object_input_params <- function(...) {
 
 get_object_output_params <- structure(
   list(
-    Body = structure(
-      logical(0),
-      tags = list(
-        streaming = TRUE,
-        type = "blob"
-      )
-    ), DeleteMarker = structure(
+    Body = structure(logical(0), tags = list(streaming = TRUE, type = "blob")),
+    DeleteMarker = structure(
       logical(0),
       tags = list(
         location = "header",
         locationName = "x-amz-delete-marker",
         type = "boolean"
       )
-    ), AcceptRanges = structure(logical(0),
+    ),
+    AcceptRanges = structure(
+      logical(0),
       tags = list(
         location = "header",
         locationName = "accept-ranges",
         type = "string"
       )
-    ), Expiration = structure(
+    ),
+    Expiration = structure(
       logical(0),
       tags = list(
         ocation = "header",
         locationName = "x-amz-expiration",
         type = "string"
       )
-    ), Restore = structure(
+    ),
+    Restore = structure(
       logical(0),
       tags = list(
         location = "header",
         locationName = "x-amz-restore",
         type = "string"
       )
-    ), LastModified = structure(logical(0),
+    ),
+    LastModified = structure(
+      logical(0),
       tags = list(
         location = "header",
         locationName = "Last-Modified",
         type = "timestamp"
       )
-    ), ContentLength = structure(logical(0),
+    ),
+    ContentLength = structure(
+      logical(0),
       tags = list(
         location = "header",
         locationName = "Content-Length",
         type = "long"
       )
-    ), ETag = structure(logical(0),
-      tags = list(
-        location = "header",
-        locationName = "ETag",
-        type = "string"
-      )
-    ), ChecksumCRC32 = structure(logical(0),
+    ),
+    ETag = structure(
+      logical(0),
+      tags = list(location = "header", locationName = "ETag", type = "string")
+    ),
+    ChecksumCRC32 = structure(
+      logical(0),
       tags = list(
         location = "header",
         locationName = "x-amz-checksum-crc32",
         type = "string"
       )
-    ), ChecksumCRC32C = structure(logical(0),
+    ),
+    ChecksumCRC32C = structure(
+      logical(0),
       tags = list(
         location = "header",
         locationName = "x-amz-checksum-crc32c",
         type = "string"
       )
-    ), ChecksumSHA1 = structure(logical(0),
+    ),
+    ChecksumSHA1 = structure(
+      logical(0),
       tags = list(
         location = "header",
         locationName = "x-amz-checksum-sha1",
         type = "string"
       )
-    ), ChecksumSHA256 = structure(logical(0),
+    ),
+    ChecksumSHA256 = structure(
+      logical(0),
       tags = list(
         location = "header",
         locationName = "x-amz-checksum-sha256",
         type = "string"
       )
-    ), MissingMeta = structure(logical(0),
+    ),
+    MissingMeta = structure(
+      logical(0),
       tags = list(
         location = "header",
         locationName = "x-amz-missing-meta",
         type = "integer"
       )
-    ), VersionId = structure(logical(0),
+    ),
+    VersionId = structure(
+      logical(0),
       tags = list(
         location = "header",
         locationName = "x-amz-version-id",
         type = "string"
       )
-    ), CacheControl = structure(logical(0),
+    ),
+    CacheControl = structure(
+      logical(0),
       tags = list(
         location = "header",
         locationName = "Cache-Control",
         type = "string"
       )
     ),
-    ContentDisposition = structure(logical(0),
+    ContentDisposition = structure(
+      logical(0),
       tags = list(
         location = "header",
         locationName = "Content-Disposition",
         type = "string"
       )
-    ), ContentEncoding = structure(logical(0),
+    ),
+    ContentEncoding = structure(
+      logical(0),
       tags = list(
         location = "header",
         locationName = "Content-Encoding",
         type = "string"
       )
-    ), ContentLanguage = structure(logical(0),
+    ),
+    ContentLanguage = structure(
+      logical(0),
       tags = list(
         location = "header",
         locationName = "Content-Language",
         type = "string"
       )
-    ), ContentRange = structure(logical(0),
+    ),
+    ContentRange = structure(
+      logical(0),
       tags = list(
         location = "header",
         locationName = "Content-Range",
         type = "string"
       )
-    ), ContentType = structure(logical(0),
+    ),
+    ContentType = structure(
+      logical(0),
       tags = list(
         location = "header",
         locationName = "Content-Type",
         type = "string"
       )
-    ), Expires = structure(logical(0),
+    ),
+    Expires = structure(
+      logical(0),
       tags = list(
         location = "header",
         locationName = "Expires",
         type = "timestamp"
       )
-    ), WebsiteRedirectLocation = structure(logical(0),
+    ),
+    WebsiteRedirectLocation = structure(
+      logical(0),
       tags = list(
         location = "header",
         locationName = "x-amz-website-redirect-location",
         type = "string"
       )
-    ), ServerSideEncryption = structure(logical(0),
+    ),
+    ServerSideEncryption = structure(
+      logical(0),
       tags = list(
         location = "header",
         locationName = "x-amz-server-side-encryption",
         type = "string"
       )
-    ), Metadata = structure(
-      list(structure(logical(0),
-        tags = list(type = "string")
-      )),
+    ),
+    Metadata = structure(
+      list(structure(logical(0), tags = list(type = "string"))),
       tags = list(
         location = "headers",
         locationName = "x-amz-meta-",
         type = "map"
       )
-    ), SSECustomerAlgorithm = structure(logical(0),
+    ),
+    SSECustomerAlgorithm = structure(
+      logical(0),
       tags = list(
         location = "header",
         locationName = "x-amz-server-side-encryption-customer-algorithm",
         type = "string"
       )
-    ), SSECustomerKeyMD5 = structure(logical(0),
+    ),
+    SSECustomerKeyMD5 = structure(
+      logical(0),
       tags = list(
         location = "header",
         locationName = "x-amz-server-side-encryption-customer-key-MD5",
         type = "string"
       )
-    ), SSEKMSKeyId = structure(logical(0),
+    ),
+    SSEKMSKeyId = structure(
+      logical(0),
       tags = list(
         location = "header",
         locationName = "x-amz-server-side-encryption-aws-kms-key-id",
         type = "string",
         sensitive = TRUE
       )
-    ), BucketKeyEnabled = structure(logical(0),
+    ),
+    BucketKeyEnabled = structure(
+      logical(0),
       tags = list(
         location = "header",
         locationName = "x-amz-server-side-encryption-bucket-key-enabled",
         type = "boolean"
       )
-    ), StorageClass = structure(logical(0),
+    ),
+    StorageClass = structure(
+      logical(0),
       tags = list(
         location = "header",
         locationName = "x-amz-storage-class",
         type = "string"
       )
-    ), RequestCharged = structure(logical(0),
+    ),
+    RequestCharged = structure(
+      logical(0),
       tags = list(
         location = "header",
         locationName = "x-amz-request-charged",
         type = "string"
       )
-    ), ReplicationStatus = structure(logical(0),
+    ),
+    ReplicationStatus = structure(
+      logical(0),
       tags = list(
         location = "header",
         locationName = "x-amz-replication-status",
         type = "string"
       )
-    ), PartsCount = structure(logical(0),
+    ),
+    PartsCount = structure(
+      logical(0),
       tags = list(
         location = "header",
         locationName = "x-amz-mp-parts-count",
         type = "integer"
       )
-    ), TagCount = structure(logical(0),
+    ),
+    TagCount = structure(
+      logical(0),
       tags = list(
         location = "header",
         locationName = "x-amz-tagging-count",
         type = "integer"
       )
-    ), ObjectLockMode = structure(logical(0),
+    ),
+    ObjectLockMode = structure(
+      logical(0),
       tags = list(
         location = "header",
         locationName = "x-amz-object-lock-mode",
         type = "string"
       )
-    ), ObjectLockRetainUntilDate = structure(logical(0),
+    ),
+    ObjectLockRetainUntilDate = structure(
+      logical(0),
       tags = list(
         location = "header",
         locationName = "x-amz-object-lock-retain-until-date",
-        type = "timestamp", timestampFormat = "iso8601"
+        type = "timestamp",
+        timestampFormat = "iso8601"
       )
-    ), ObjectLockLegalHoldStatus = structure(logical(0),
+    ),
+    ObjectLockLegalHoldStatus = structure(
+      logical(0),
       tags = list(
         location = "header",
         locationName = "x-amz-object-lock-legal-hold",
@@ -740,7 +808,10 @@ get_object_output_params <- structure(
 test_that("check generate_presigned_url with query string arguments of interest", {
   metadata <- list(
     endpoints = list(
-      "^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "s3.amazonaws.com", global = FALSE)
+      "^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(
+        endpoint = "s3.amazonaws.com",
+        global = FALSE
+      )
     ),
     service_name = "s3"
   )

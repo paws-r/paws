@@ -68,7 +68,10 @@ test_that("new_service adds customizations", {
   metadata <- list(
     service_name = "dynamodb",
     endpoints = list(
-      "^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "dynamodb.{region}.amazonaws.com", global = FALSE)
+      "^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(
+        endpoint = "dynamodb.{region}.amazonaws.com",
+        global = FALSE
+      )
     ),
     service_id = "DynamoDB",
     api_version = "2012-08-10",
@@ -119,7 +122,11 @@ test_that("test custom config credentials take priority", {
 
 test_that("test service endpoint config file with service present", {
   mock_get_config_file_path <- mock2("data_ini", cycle = TRUE)
-  mockery::stub(check_config_file_endpoint, "get_config_file_path", mock_get_config_file_path)
+  mockery::stub(
+    check_config_file_endpoint,
+    "get_config_file_path",
+    mock_get_config_file_path
+  )
 
   s3_endpoint <- check_config_file_endpoint("localstack", "s3")
   ec2_endpoint <- check_config_file_endpoint("localstack", "ec2")
@@ -131,7 +138,11 @@ test_that("test service endpoint config file with service present", {
 
 test_that("test service endpoint config file with service not present", {
   mock_get_config_file_path <- mock2("data_ini")
-  mockery::stub(check_config_file_endpoint, "get_config_file_path", mock_get_config_file_path)
+  mockery::stub(
+    check_config_file_endpoint,
+    "get_config_file_path",
+    mock_get_config_file_path
+  )
 
   endpoint <- check_config_file_endpoint("minio", "ec2")
   expect_null(endpoint)
@@ -152,5 +163,7 @@ test_that("test service endpoint environment variables", {
   expect_equal(endpoint2, "http://localhost:9090")
   expect_equal(endpoint3, "http://localhost:1234")
 
-  Sys.unsetenv(c("AWS_ENDPOINT_URL_BAR", "AWS_ENDPOINT_URL_BAZ_CHO", "AWS_ENDPOINT_URL"))
+  Sys.unsetenv(
+    c("AWS_ENDPOINT_URL_BAR", "AWS_ENDPOINT_URL_BAZ_CHO", "AWS_ENDPOINT_URL")
+  )
 })

@@ -8,17 +8,27 @@ jsonrpc_build <- function(request) {
     body <- EMPTY_JSON
   }
 
-  if (!is_empty(request$client_info$target_prefix) || (!is.null(body) && body != "{}")) {
+  if (
+    !is_empty(request$client_info$target_prefix) ||
+      (!is.null(body) && body != "{}")
+  ) {
     request <- set_body(request, body)
   }
   if (!is_empty(request$client_info$target_prefix)) {
-    target <- paste0(request$client_info$target_prefix, ".", request$operation$name)
+    target <- paste0(
+      request$client_info$target_prefix,
+      ".",
+      request$operation$name
+    )
     request$http_request$header["X-Amz-Target"] <- target
   }
 
   if (!is_empty(request$client_info$json_version)) {
     json_version <- request$client_info$json_version
-    request$http_request$header["Content-Type"] <- paste0("application/x-amz-json-", json_version)
+    request$http_request$header["Content-Type"] <- paste0(
+      "application/x-amz-json-",
+      json_version
+    )
   }
 
   return(request)
@@ -52,7 +62,8 @@ json_parse_stream <- function(bytes, format) {
 # Unmarshal errors from a JSON RPC response.
 jsonrpc_unmarshal_error <- function(request) {
   request$http_response$body <- get_connection_error(
-    request$http_response$body, request$operation$stream_api
+    request$http_response$body,
+    request$operation$stream_api
   )
   error <- decode_json(request$http_response$body)
   if (length(error) == 0) {
@@ -60,7 +71,12 @@ jsonrpc_unmarshal_error <- function(request) {
   }
   code <- strsplit(error[["__type"]], "#")[[1]][1]
   message <- ""
-  message_name <- grep("message", names(error), ignore.case = TRUE, value = TRUE)
+  message_name <- grep(
+    "message",
+    names(error),
+    ignore.case = TRUE,
+    value = TRUE
+  )
   if (length(message_name) > 0) {
     message <- error[[message_name]]
   }

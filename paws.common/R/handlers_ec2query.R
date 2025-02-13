@@ -9,7 +9,9 @@ ec2query_build <- function(request) {
 
   if (!is_presigned(request)) {
     request$http_request$method <- "POST"
-    request$http_request$header["Content-Type"] <- "application/x-www-form-urlencoded; charset=utf-8"
+    request$http_request$header[
+      "Content-Type"
+    ] <- "application/x-www-form-urlencoded; charset=utf-8"
     request$body <- build_query_string(body)
     request$http_request$body <- request$body
   } else {
@@ -40,6 +42,11 @@ ec2query_unmarshal_error <- function(request) {
   error_response <- lapply(body$Response$Errors[[1]], unlist)
   code <- error_response$Code
   message <- error_response$Message
-  request$error <- Error(code, message, request$http_response$status_code, error_response)
+  request$error <- Error(
+    code,
+    message,
+    request$http_response$status_code,
+    error_response
+  )
   return(request)
 }
