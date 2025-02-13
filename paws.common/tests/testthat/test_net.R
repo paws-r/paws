@@ -2,10 +2,7 @@ test_that("issue", {
   # Avoid CRAN check errors due to unavailable network resources.
   skip_on_cran()
 
-  req <- HttpRequest(
-    method = "GET",
-    url = parse_url("https://httpbin.org/json")
-  )
+  req <- HttpRequest(method = "GET", url = parse_url("https://httpbin.org/json"))
   resp <- issue(req)
 
   # skip if network flaky
@@ -75,10 +72,7 @@ test_that("don't decompress the body when already decompressed", {
   # Avoid CRAN check errors due to unavailable network resources.
   skip_on_cran()
 
-  req <- HttpRequest(
-    method = "GET",
-    url = parse_url("https://httpbin.org/gzip")
-  )
+  req <- HttpRequest(method = "GET", url = parse_url("https://httpbin.org/gzip"))
 
   expect_error(resp <- issue(req), NA)
 
@@ -113,10 +107,7 @@ test_that("write content to disk", {
 })
 
 test_that("check issue", {
-  req <- HttpRequest(
-    method = "GET",
-    url = parse_url("https://httpbin.org/json")
-  )
+  req <- HttpRequest(method = "GET", url = parse_url("https://httpbin.org/json"))
 
   mock_request_aws <- mock2(httr2::response(body = charToRaw("dummy")))
   mockery::stub(issue, "request_aws", mock_request_aws)

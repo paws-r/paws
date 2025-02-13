@@ -29,14 +29,7 @@ make_category <- function(category, service_names, sdk_dir, out_dir) {
 
   package_dir <- file.path(out_dir, name)
   write_skeleton_category(package_dir)
-  write_description_category(
-    package_dir,
-    name,
-    title,
-    description,
-    version,
-    imports
-  )
+  write_description_category(package_dir, name, title, description, version, imports)
   for (service in services) {
     copy_files(service_names[[service]], from = sdk_dir, to = package_dir)
   }
@@ -54,10 +47,7 @@ get_package_name <- function(suffix) {
 
 # Get the stored AWS service categories and which services they include.
 get_categories <- function() {
-  path <- system_file(
-    "extdata/packages.yml",
-    package = methods::getPackageName()
-  )
+  path <- system_file("extdata/packages.yml", package = methods::getPackageName())
   yaml::read_yaml(path)
 }
 

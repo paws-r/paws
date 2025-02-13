@@ -108,10 +108,7 @@ get_url <- function(url, tries = 3) {
   cached_expr(list("get_url", url = url), function() {
     try <- 0
     while (try < tries) {
-      resp <- tryCatch(
-        httr::HEAD(url, httr::timeout(1)),
-        error = function(e) NULL
-      )
+      resp <- tryCatch(httr::HEAD(url, httr::timeout(1)), error = function(e) NULL)
       if (!is.null(resp)) {
         if (resp$status_code >= 400) {
           return(NULL)

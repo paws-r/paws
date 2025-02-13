@@ -252,12 +252,7 @@ config_file_credential_source <- function(
   if (is.null(creds)) {
     return(NULL)
   }
-  role_creds <- get_assumed_role_creds(
-    role_arn,
-    role_session_name,
-    mfa_serial,
-    creds
-  )
+  role_creds <- get_assumed_role_creds(role_arn, role_session_name, mfa_serial, creds)
   return(role_creds)
 }
 
@@ -285,11 +280,7 @@ sso_credential_process <- function(
   retry_no = 0
 ) {
   input_str <- sso_session %||% sso_start_url
-  cache_key <- digest::digest(
-    enc2utf8(input_str),
-    algo = "sha1",
-    serialize = FALSE
-  )
+  cache_key <- digest::digest(enc2utf8(input_str), algo = "sha1", serialize = FALSE)
   json_file <- paste0(cache_key, ".json")
   root <- switch(
     Sys.info()[[1]],
@@ -313,8 +304,7 @@ sso_credential_process <- function(
   }
   cache_creds <- jsonlite::fromJSON(sso_cache)
   if (
-    !("accessToken" %in% names(cache_creds)) ||
-      !("expiresAt" %in% names(cache_creds))
+    !("accessToken" %in% names(cache_creds)) || !("expiresAt" %in% names(cache_creds))
   ) {
     stopf("Error loading SSO Token: Token for %s is invalid.", sso_start_url)
   }
@@ -335,9 +325,7 @@ sso_credential_process <- function(
       cache_creds$accessToken
     ),
     http_401 = function(err) {
-      if (
-        grepl("Session token not found or invalid", err$error_response$message)
-      ) {
+      if (grepl("Session token not found or invalid", err$error_response$message)) {
         profile <- sub("profile ", "", profile_name, fixed = TRUE)
         if (retry_no == 1 || (!isTRUE(getOption("paws.aws_sso_creds")))) {
           enrich_msg <- sprintf(
@@ -396,12 +384,7 @@ config_file_source_profile <- function(
   if (is.null(creds)) {
     return(NULL)
   }
-  role_creds <- get_assumed_role_creds(
-    role_arn,
-    role_session_name,
-    mfa_serial,
-    creds
-  )
+  role_creds <- get_assumed_role_creds(role_arn, role_session_name, mfa_serial, creds)
   return(role_creds)
 }
 
@@ -409,9 +392,7 @@ config_file_source_profile <- function(
 # Use an RStudio prompt if running in RStudio.
 # Otherwise use a text prompt in the console.
 get_token_code <- function() {
-  if (
-    requireNamespace("rstudioapi", quietly = TRUE) && rstudioapi::isAvailable()
-  ) {
+  if (requireNamespace("rstudioapi", quietly = TRUE) && rstudioapi::isAvailable()) {
     token_code <- rstudioapi::showPrompt("MFA", "Enter MFA token code")
   } else {
     token_code <- readline("Enter MFA token code: ")
@@ -433,18 +414,10 @@ get_creds_from_sts_resp <- function(resp) {
 # If the role requires MFA, the MFA device's serial number must be provided in
 # `mfa_serial`, and the user will be prompted interactively to provide the
 # current MFA token code.
-get_assumed_role_creds <- function(
-  role_arn,
-  role_session_name,
-  mfa_serial,
-  creds
-) {
+get_assumed_role_creds <- function(role_arn, role_session_name, mfa_serial, creds) {
   svc <- sts(config = list(credentials = list(creds = creds)))
   if (is.null(mfa_serial) || mfa_serial == "") {
-    resp <- svc$assume_role(
-      RoleArn = role_arn,
-      RoleSessionName = role_session_name
-    )
+    resp <- svc$assume_role(RoleArn = role_arn, RoleSessionName = role_session_name)
   } else {
     token_code <- get_token_code()
     resp <- svc$assume_role(
@@ -487,9 +460,7 @@ container_credentials_provider <- function() {
   # Initialize to NULL
   credentials_response <- NULL
   container_credentials_uri <- get_env("AWS_CONTAINER_CREDENTIALS_RELATIVE_URI")
-  container_credentials_full_uri <- get_env(
-    "AWS_CONTAINER_CREDENTIALS_FULL_URI"
-  )
+  container_credentials_full_uri <- get_env("AWS_CONTAINER_CREDENTIALS_FULL_URI")
   container_credentials_token <- get_env("AWS_WEB_IDENTITY_TOKEN_FILE")
 
   # Look for job role credentials first, then web identity token file
@@ -508,14 +479,8 @@ container_credentials_provider <- function() {
   expiration <- credentials_response$expiration
 
   # return credential
-  if (
-    is.null(access_key_id) ||
-      is.null(secret_access_key) ||
-      is.null(session_token)
-  ) {
-    log_info(
-      "Unable to obtain access_key_id, secret_access_key or session_token"
-    )
+  if (is.null(access_key_id) || is.null(secret_access_key) || is.null(session_token)) {
+    log_info("Unable to obtain access_key_id, secret_access_key or session_token")
     return(NULL)
   }
 
@@ -558,9 +523,7 @@ get_container_credentials <- function(credentials_uri, credentials_full_uri) {
     return(NULL)
   }
 
-  credentials_response_body <- jsonlite::fromJSON(
-    raw_to_utf8(metadata_response$body)
-  )
+  credentials_response_body <- jsonlite::fromJSON(raw_to_utf8(metadata_response$body))
 
   return(
     list(
@@ -623,23 +586,15 @@ iam_credentials_provider <- function() {
     return(NULL)
   }
 
-  credentials_response_body <- jsonlite::fromJSON(
-    raw_to_utf8(credentials_response$body)
-  )
+  credentials_response_body <- jsonlite::fromJSON(raw_to_utf8(credentials_response$body))
 
   access_key_id <- credentials_response_body$AccessKeyId
   secret_access_key <- credentials_response_body$SecretAccessKey
   session_token <- credentials_response_body$Token
   expiration <- as_timestamp(credentials_response_body$Expiration, "iso8601")
 
-  if (
-    is.null(access_key_id) ||
-      is.null(secret_access_key) ||
-      is.null(session_token)
-  ) {
-    log_info(
-      "Unable to obtain access_key_id, secret_access_key or session_token"
-    )
+  if (is.null(access_key_id) || is.null(secret_access_key) || is.null(session_token)) {
+    log_info("Unable to obtain access_key_id, secret_access_key or session_token")
     return(NULL)
   }
 

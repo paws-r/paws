@@ -101,16 +101,7 @@ new_http_request <- function(
 }
 
 valid_method <- function(method) {
-  methods <- c(
-    "OPTIONS",
-    "GET",
-    "HEAD",
-    "POST",
-    "PUT",
-    "DELETE",
-    "TRACE",
-    "CONNECT"
-  )
+  methods <- c("OPTIONS", "GET", "HEAD", "POST", "PUT", "DELETE", "TRACE", "CONNECT")
   ok <- method %in% methods
   return(ok)
 }

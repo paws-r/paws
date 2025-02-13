@@ -11,9 +11,7 @@ tests_config <- list(
   ),
   appstream = list(skip = list("describe_user_stack_associations")),
   batch = list(skip = list("list_jobs")),
-  cloudformation = list(
-    skip = list("describe_stack_events", "describe_stack_resources")
-  ),
+  cloudformation = list(skip = list("describe_stack_events", "describe_stack_resources")),
   cloudhsm = list(skip = list("*")),
   codedeploy = list(skip = list("list_deployment_targets")),
   costandusagereportservice = list(
@@ -39,14 +37,9 @@ tests_config <- list(
       "describe_spot_datafeed_subscription"
     )
   ),
-  ecs = list(
-    skip = list("list_container_instances", "list_services", "list_tasks")
-  ),
+  ecs = list(skip = list("list_container_instances", "list_services", "list_tasks")),
   elasticache = list(
-    skip = list(
-      "describe_cache_security_groups",
-      "list_allowed_node_type_modifications"
-    )
+    skip = list("describe_cache_security_groups", "list_allowed_node_type_modifications")
   ),
   elasticbeanstalk = list(
     skip = list(
@@ -144,10 +137,7 @@ tests_config <- list(
   ),
   pinpointsmsvoice = list(skip = list("*")),
   redshift = list(
-    skip = list(
-      "describe_cluster_security_groups",
-      "describe_table_restore_status"
-    )
+    skip = list("describe_cluster_security_groups", "describe_table_restore_status")
   ),
   servicecatalog = list(skip = list("list_tag_options")),
   shield = list(
@@ -169,16 +159,10 @@ tests_config <- list(
   ),
   support = list(skip = list("*")),
   waf = list(
-    skip = list(
-      "list_activated_rules_in_rule_group",
-      "list_logging_configurations"
-    )
+    skip = list("list_activated_rules_in_rule_group", "list_logging_configurations")
   ),
   wafregional = list(
-    skip = list(
-      "list_activated_rules_in_rule_group",
-      "list_logging_configurations"
-    )
+    skip = list("list_activated_rules_in_rule_group", "list_logging_configurations")
   ),
   workdocs = list(skip = list("describe_activities", "describe_users")),
   workspaces = list(skip = list("*"))

@@ -113,10 +113,7 @@ test_that("test custom config credentials take priority", {
 
   expect_equal(service$config$region, "cfgs_region")
   expect_equal(service$config$credentials$creds$access_key_id, "cfgs_key")
-  expect_equal(
-    service$config$credentials$creds$secret_access_key,
-    "cfgs_secret"
-  )
+  expect_equal(service$config$credentials$creds$secret_access_key, "cfgs_secret")
   expect_equal(service$config$credentials$profile, "cfgs_profile")
 })
 
@@ -163,7 +160,5 @@ test_that("test service endpoint environment variables", {
   expect_equal(endpoint2, "http://localhost:9090")
   expect_equal(endpoint3, "http://localhost:1234")
 
-  Sys.unsetenv(
-    c("AWS_ENDPOINT_URL_BAR", "AWS_ENDPOINT_URL_BAZ_CHO", "AWS_ENDPOINT_URL")
-  )
+  Sys.unsetenv(c("AWS_ENDPOINT_URL_BAR", "AWS_ENDPOINT_URL_BAZ_CHO", "AWS_ENDPOINT_URL"))
 })

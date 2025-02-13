@@ -11,9 +11,7 @@ Error <- struct(
 ERROR_MSG_TEMPLATE <- "An error occurred when calling the %s operation%s: %s"
 
 serialization_error <- function(request) {
-  error_message <- http_statuses[[
-    as.character(request$http_response$status_code)
-  ]]
+  error_message <- http_statuses[[as.character(request$http_response$status_code)]]
   Error(
     "SerializationError",
     sprintf(
@@ -69,10 +67,7 @@ aws_error <- function(e, call = sys.call(-1), use_call = FALSE) {
     # If the http_error is still NA (default), don't set specific classes.
     http_class <- c("http_error")
   } else {
-    http_class <- paste0(
-      "http_",
-      unique(c(e$status_code, status_type, "error"))
-    )
+    http_class <- paste0("http_", unique(c(e$status_code, status_type, "error")))
   }
   if (!use_call) {
     call <- NULL

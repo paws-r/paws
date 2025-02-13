@@ -65,11 +65,7 @@ test_that("URI parameter with location name", {
 })
 
 test_that("query string list of strings", {
-  op4 <- Operation(
-    name = "OperationName",
-    http_method = "GET",
-    http_path = "/path"
-  )
+  op4 <- Operation(name = "OperationName", http_method = "GET", http_path = "/path")
   op_input4 <- function(Items) {
     args <- list(Items = Items)
     interface <- Structure(
@@ -97,17 +93,11 @@ test_that("query string map of strings", {
     args <- list(PipelineId = PipelineId, QueryDoc = QueryDoc)
     interface <- Structure(
       PipelineId = Scalar(type = "string", .tags = list(location = "uri")),
-      QueryDoc = Map(
-        Scalar(type = "string"),
-        .tags = list(location = "querystring")
-      )
+      QueryDoc = Map(Scalar(type = "string"), .tags = list(location = "querystring"))
     )
     return(populate(args, interface))
   }
-  input <- op_input5(
-    PipelineId = "foo",
-    QueryDoc = list(bar = "baz", fizz = "buzz")
-  )
+  input <- op_input5(PipelineId = "foo", QueryDoc = list(bar = "baz", fizz = "buzz"))
   req <- new_request(svc, op5, input, NULL)
   req <- build(req)
   r <- req$http_request
@@ -148,11 +138,7 @@ test_that("query string map of lists of strings", {
 })
 
 test_that("query string with bool (true)", {
-  op7 <- Operation(
-    name = "OperationName",
-    http_method = "GET",
-    http_path = "/path"
-  )
+  op7 <- Operation(name = "OperationName", http_method = "GET", http_path = "/path")
   op_input7 <- function(BoolQuery) {
     args <- list(BoolQuery = BoolQuery)
     interface <- Structure(
@@ -171,11 +157,7 @@ test_that("query string with bool (true)", {
 })
 
 test_that("query string with bool (false)", {
-  op8 <- Operation(
-    name = "OperationName",
-    http_method = "GET",
-    http_path = "/path"
-  )
+  op8 <- Operation(name = "OperationName", http_method = "GET", http_path = "/path")
   op_input8 <- function(BoolQuery) {
     args <- list(BoolQuery = BoolQuery)
     interface <- Structure(
@@ -200,11 +182,7 @@ test_that("URI and query string parameters", {
     http_path = "/2014-01-01/jobsByPipeline/{PipelineId}"
   )
   op_input9 <- function(Ascending, PageToken, PipelineId) {
-    args <- list(
-      Ascending = Ascending,
-      PageToken = PageToken,
-      PipelineId = PipelineId
-    )
+    args <- list(Ascending = Ascending, PageToken = PageToken, PipelineId = PipelineId)
     interface <- Structure(
       Ascending = Scalar(
         type = "string",
@@ -296,10 +274,7 @@ test_that("Nested Structure Case1", {
     return(populate(args, interface))
   }
 
-  input <- op_input_test(
-    Description = "baz",
-    SubStructure = list(Bar = "b", Foo = "a")
-  )
+  input <- op_input_test(Description = "baz", SubStructure = list(Bar = "b", Foo = "a"))
   req <- new_request(svc, op_test, input, NULL)
   req <- build(req)
   r <- req$body
@@ -337,10 +312,7 @@ test_that("NonFlattened List With LocationName Case1", {
     interface <- Structure(
       ListParam = List(
         Scalar(type = "string"),
-        .tags = list(
-          locationName = "AlternateName",
-          locationNameList = "NotMember"
-        )
+        .tags = list(locationName = "AlternateName", locationNameList = "NotMember")
       ),
       .tags = list(locationName = "OperationRequest", xmlURI = "https://foo/")
     )
@@ -362,10 +334,7 @@ test_that("Flattened List Case1", {
   op_input_test <- function(ListParam) {
     args <- list(ListParam = ListParam)
     interface <- Structure(
-      ListParam = List(
-        Scalar(type = "string"),
-        .tags = list(flattened = "true")
-      ),
+      ListParam = List(Scalar(type = "string"), .tags = list(flattened = "true")),
       .tags = list(locationName = "OperationRequest", xmlURI = "https://foo/")
     )
     return(populate(args, interface))
@@ -412,10 +381,7 @@ test_that("List of Structures Case1", {
     interface <- Structure(
       ListParam = List(
         Structure(
-          Element = Scalar(
-            type = "string",
-            .tags = list(locationName = "value")
-          )
+          Element = Scalar(type = "string", .tags = list(locationName = "value"))
         ),
         .tags = list(flattened = "true", locationName = "item")
       ),
@@ -674,11 +640,7 @@ test_that("unmarshal flattened map", {
 op_output8 <- Structure(
   Map = Map(
     Scalar(),
-    .tags = list(
-      locationNameKey = "foo",
-      locationNameValue = "bar",
-      flattened = TRUE
-    )
+    .tags = list(locationNameKey = "foo", locationNameValue = "bar", flattened = TRUE)
   )
 )
 
@@ -831,10 +793,7 @@ op_output14 <- Structure(
   Contents = List(
     Structure(
       Size = Scalar(type = "integer"),
-      Owner = list(
-        DisplayName = Scalar(type = "string"),
-        ID = Scalar(type = "string")
-      )
+      Owner = list(DisplayName = Scalar(type = "string"), ID = Scalar(type = "string"))
     ),
     .tags = list(flattened = TRUE)
   )
@@ -895,10 +854,7 @@ op_output15 <- Structure(
   Version = List(
     Structure(
       Size = Scalar(type = "integer"),
-      Owner = list(
-        DisplayName = Scalar(type = "string"),
-        ID = Scalar(type = "string")
-      )
+      Owner = list(DisplayName = Scalar(type = "string"), ID = Scalar(type = "string"))
     ),
     .tags = list(flattened = TRUE)
   )

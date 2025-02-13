@@ -34,10 +34,7 @@ test_that("check if non-ascci characters are correctly encoded", {
 test_that("check if encoded url is correctly decoded", {
   string <- "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._~`!@#$%^&*()=+[{]}\\|;:'\",<>/? "
 
-  url <- paste0(
-    sample(strsplit(string, "")[[1]], 1e4, replace = TRUE),
-    collapse = ""
-  )
+  url <- paste0(sample(strsplit(string, "")[[1]], 1e4, replace = TRUE), collapse = "")
   url_encode <- paws_url_encoder(url)
   actual <- unescape(url_encode)
 
@@ -48,10 +45,7 @@ test_that("check if encoded url is correctly decoded", {
 test_that("check if non-encoded url is correctly decoded", {
   string <- "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._~"
 
-  url <- paste(
-    sample(strsplit(string, "")[[1]], 1e4, replace = TRUE),
-    collapse = ""
-  )
+  url <- paste(sample(strsplit(string, "")[[1]], 1e4, replace = TRUE), collapse = "")
   url_encode <- paws_url_encoder(url)
   actual <- unescape(url_encode)
 

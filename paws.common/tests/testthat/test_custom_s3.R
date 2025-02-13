@@ -74,10 +74,7 @@ test_that("content_md5 works with an empty body", {
   op_input <- function(Body, Bucket, Key) {
     args <- list(Body = Body, Bucket = Bucket, Key = Key)
     interface <- Structure(
-      Body = structure(
-        logical(0),
-        tags = list(streaming = TRUE, type = "blob")
-      ),
+      Body = structure(logical(0), tags = list(streaming = TRUE, type = "blob")),
       Bucket = structure(
         logical(0),
         tags = list(location = "uri", locationName = "Bucket", type = "string")
@@ -284,10 +281,7 @@ test_that("redirect request from http response error", {
   sign_args <- mockery::mock_args(pass)[[1]]
   expect_true(sign_args[[1]]$context$s3_redirect)
   expect_false(sign_args[[1]]$built)
-  expect_equal(
-    actual$client_info$endpoint,
-    "https://s3.eu-east-2.amazonaws.com"
-  )
+  expect_equal(actual$client_info$endpoint, "https://s3.eu-east-2.amazonaws.com")
   expect_equal(actual$http_request$url$host, "s3.eu-east-2.amazonaws.com")
 })
 
@@ -308,9 +302,7 @@ test_that("redirect error with region", {
   error <- s3_unmarshal_error(req)$error
 
   expect_equal(error$code, "BucketRegionError")
-  expect_true(
-    grepl("incorrect region.*bucket is in 'eu-east-2' region", error$message)
-  )
+  expect_true(grepl("incorrect region.*bucket is in 'eu-east-2' region", error$message))
   expect_equal(error$status_code, 301)
 })
 
@@ -400,10 +392,7 @@ test_that("check CopySource character versionId encoded", {
   )
 
   req <- handle_copy_source_param(req)
-  expect_equal(
-    req$params$CopySource,
-    "/foo/%2501file%25/output.txt?versionId=123"
-  )
+  expect_equal(req$params$CopySource, "/foo/%2501file%25/output.txt?versionId=123")
 })
 
 test_that("check CopySource with multiple questions", {
@@ -413,10 +402,7 @@ test_that("check CopySource with multiple questions", {
     copy_source = "/foo/bar+baz?a=baz+?versionId=a+"
   )
   req <- handle_copy_source_param(req)
-  expect_equal(
-    req$params$CopySource,
-    "/foo/bar%2Bbaz%3Fa%3Dbaz%2B?versionId=a+"
-  )
+  expect_equal(req$params$CopySource, "/foo/bar%2Bbaz%3Fa%3Dbaz%2B?versionId=a+")
 })
 
 test_that("check CopySource list encoded", {
@@ -434,18 +420,11 @@ test_that("check CopySource list versionId encoded", {
   req <- build_copy_object_request(
     bucket = "foo",
     key = "file.txt",
-    copy_source = list(
-      Bucket = "foo",
-      Key = "%01file%/output.txt",
-      VersionId = "123"
-    )
+    copy_source = list(Bucket = "foo", Key = "%01file%/output.txt", VersionId = "123")
   )
 
   req <- handle_copy_source_param(req)
-  expect_equal(
-    req$params$CopySource,
-    "foo/%2501file%25/output.txt?versionId=123"
-  )
+  expect_equal(req$params$CopySource, "foo/%2501file%25/output.txt?versionId=123")
 })
 
 test_that("check CopySource list bucket s3 access point", {

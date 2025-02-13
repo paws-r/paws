@@ -141,9 +141,7 @@ paws_rhub_action_check <- function(
   platforms = c("linux", "macos", "macos-arm64", "windows")
 ) {
   url <- "https://api.github.com/repos/paws-r/paws-rhub/actions/workflows/rhub.yaml/dispatches"
-  pat <- gitcreds::gitcreds_get(
-    url = "https://github.com/paws-r/paws-rhub"
-  )$password
+  pat <- gitcreds::gitcreds_get(url = "https://github.com/paws-r/paws-rhub")$password
   config <- list(platforms = platforms)
   name <- paste(platforms, collapse = ", ")
   to_json <- \(x) jsonlite::toJSON(x, auto_unbox = T)
@@ -151,10 +149,7 @@ paws_rhub_action_check <- function(
     id <- sprintf(
       "%s-%s",
       pkg,
-      paste0(
-        sample(c(letters, LETTERS, 0:9), 10, replace = TRUE),
-        collapse = ""
-      )
+      paste0(sample(c(letters, LETTERS, 0:9), 10, replace = TRUE), collapse = "")
     )
     data <- list(
       ref = "main",
@@ -176,19 +171,13 @@ paws_rhub_action_check <- function(
       stop(sprintf("Failed to start rhub action for package: %s", pkg))
     }
   }
-  writeLines(
-    "Please check results: https://github.com/paws-r/paws-rhub/actions"
-  )
+  writeLines("Please check results: https://github.com/paws-r/paws-rhub/actions")
   invisible(NULL)
 }
 
 #' @rdname paws_check_rhub
 #' @export
-paws_check_win_devel <- function(
-  in_dir = "../cran",
-  pkg_list = list(),
-  email = NULL
-) {
+paws_check_win_devel <- function(in_dir = "../cran", pkg_list = list(), email = NULL) {
   paws_check_win_devel_sub_cat(in_dir, pkg_list, email)
   paws_check_win_devel_cat(in_dir, pkg_list, email)
   pkg <- file.path(in_dir, "paws")
@@ -358,10 +347,7 @@ paws_build_cran_comments <- function(
 ) {
   log_info <- utils::getFromNamespace("log_info", "paws.common")
   all_cats <- basename(list_paws_pkgs(in_dir))
-  log_info(
-    "Running local checks for: ['%s']",
-    paste(all_cats, collapse = "', '")
-  )
+  log_info("Running local checks for: ['%s']", paste(all_cats, collapse = "', '"))
   dir_info <- paws_check_pkg_size(in_dir, pkg_list = all_cats)
   if (is.null(cache_path)) {
     results_local <- paws_check_local(
@@ -380,11 +366,7 @@ paws_build_cran_comments <- function(
 
   dir_info[
     result_dt,
-    `:=`(
-      "errors" = get("errors"),
-      "warnings" = get("warnings"),
-      "notes" = get("notes")
-    ),
+    `:=`("errors" = get("errors"), "warnings" = get("warnings"), "notes" = get("notes")),
     on = "package"
   ]
 
@@ -497,10 +479,7 @@ paws_pkg_doc_build <- function(in_dir = "../cran", pkg_list = list()) {
   log_info("Rebuild paws documentation.")
   for (pkg in pkgs[basename(pkgs) != "paws"]) {
     roxygen2::roxygenise(package.dir = pkg)
-    log_info(
-      "Successfully update r documentation for package: %s",
-      basename(pkg)
-    )
+    log_info("Successfully update r documentation for package: %s", basename(pkg))
   }
 }
 
@@ -511,14 +490,9 @@ paws_rd_links <- function(in_dir = "../cran") {
   pkgs <- basename(list_cat_pkgs(list_paws_pkgs(in_dir)))
   pkg_service <- c()
   for (pkg in pkgs) {
-    services <- unique(
-      gsub("_.*", "", list.files(sprintf("%s/%s/R", in_dir, pkg)))
-    )
+    services <- unique(gsub("_.*", "", list.files(sprintf("%s/%s/R", in_dir, pkg))))
     services <- services[services != "reexports"]
-    pkg_service <- c(
-      pkg_service,
-      setNames(services, rep(pkg, length(services)))
-    )
+    pkg_service <- c(pkg_service, setNames(services, rep(pkg, length(services))))
   }
 
   path <- sprintf("%s/paws/man", in_dir)

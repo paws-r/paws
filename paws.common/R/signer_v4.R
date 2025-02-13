@@ -99,11 +99,7 @@ v4_sign_request_handler <- function(request) {
   return(sign_sdk_request_with_curr_time(request))
 }
 
-sign_sdk_request_with_curr_time <- function(
-  request,
-  curr_time_fn = now,
-  opts = NULL
-) {
+sign_sdk_request_with_curr_time <- function(request, curr_time_fn = now, opts = NULL) {
   region <- request$client_info$signing_region
   if (region == "") {
     region <- request$config$region
@@ -299,11 +295,7 @@ build_context <- function(ctx, disable_header_hoisting) {
   # log_debug("Signature:\n%s", ctx$signature)
   if (ctx$is_presigned) {
     query <- ctx$request$url$raw_query
-    ctx$request$url$raw_query <- sprintf(
-      "%s&X-Amz-Signature=%s",
-      query,
-      ctx$signature
-    )
+    ctx$request$url$raw_query <- sprintf("%s&X-Amz-Signature=%s", query, ctx$signature)
   } else {
     authorization <- paste(
       paste0(
@@ -325,11 +317,7 @@ build_context <- function(ctx, disable_header_hoisting) {
 
 build_time <- function(ctx) {
   ctx$formatted_time <- format(ctx$time, tz = "UTC", format = TIME_FORMAT)
-  ctx$formatted_short_time <- format(
-    ctx$time,
-    tz = "UTC",
-    format = SHORT_TIME_FORMAT
-  )
+  ctx$formatted_short_time <- format(ctx$time, tz = "UTC", format = SHORT_TIME_FORMAT)
   if (ctx$is_presigned) {
     ctx$query[["X-Amz-Date"]] <- ctx$formatted_time
     ctx$query[["X-Amz-Expires"]] <- as.character(as.integer(ctx$expire_time))
@@ -368,12 +356,9 @@ build_body_digest <- function(ctx) {
   hash <- get_element(ctx$request$header, "X-Amz-Content-Sha256")
   if (hash == "") {
     include_sha256_header <- (
-      ctx$unsigned_payload ||
-        ctx$service_name %in% c("s3", "s3-object-lambda", "glacier")
+      ctx$unsigned_payload || ctx$service_name %in% c("s3", "s3-object-lambda", "glacier")
     )
-    s3_presign <- (
-      ctx$is_presigned && ctx$service_name %in% c("s3", "s3-object-lambda")
-    )
+    s3_presign <- (ctx$is_presigned && ctx$service_name %in% c("s3", "s3-object-lambda"))
     if (ctx$unsigned_payload || s3_presign) {
       hash <- "UNSIGNED-PAYLOAD"
       include_sha256_header <- !s3_presign

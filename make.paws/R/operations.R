@@ -15,12 +15,7 @@ operation_file_template <- template(
 
 # Make all API operations.
 make_operations <- function(api, doc_maker) {
-  operations <- lapply(
-    api$operations,
-    make_operation,
-    api = api,
-    doc_maker = doc_maker
-  )
+  operations <- lapply(api$operations, make_operation, api = api, doc_maker = doc_maker)
   render(
     operation_file_template,
     service = package_name(api),

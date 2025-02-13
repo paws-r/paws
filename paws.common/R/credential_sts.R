@@ -68,24 +68,12 @@ sts <- function(config = list()) {
     ),
     "js" = list(
       "*" = list(endpoint = "https://sts.amazonaws.com", global = TRUE),
-      "us-gov-*" = list(
-        endpoint = "sts.{region}.amazonaws.com",
-        global = FALSE
-      ),
+      "us-gov-*" = list(endpoint = "sts.{region}.amazonaws.com", global = FALSE),
       "cn-*" = list(endpoint = "sts.{region}.amazonaws.com.cn", global = FALSE),
-      "eu-isoe-*" = list(
-        endpoint = "sts.{region}.cloud.adc-e.uk",
-        global = FALSE
-      ),
+      "eu-isoe-*" = list(endpoint = "sts.{region}.cloud.adc-e.uk", global = FALSE),
       "us-iso-*" = list(endpoint = "sts.{region}.c2s.ic.gov", global = FALSE),
-      "us-isob-*" = list(
-        endpoint = "sts.{region}.sc2s.sgov.gov",
-        global = FALSE
-      ),
-      "us-isof-*" = list(
-        endpoint = "sts.{region}.csp.hci.ic.gov",
-        global = FALSE
-      )
+      "us-isob-*" = list(endpoint = "sts.{region}.sc2s.sgov.gov", global = FALSE),
+      "us-isof-*" = list(endpoint = "sts.{region}.csp.hci.ic.gov", global = FALSE)
     )
   )
 }
@@ -252,10 +240,7 @@ sts_assume_role <- function(
         ),
         tags = list(type = "structure")
       ),
-      SubjectFromWebIdentityToken = structure(
-        logical(0),
-        tags = list(type = "string")
-      ),
+      SubjectFromWebIdentityToken = structure(logical(0), tags = list(type = "string")),
       AssumedRoleUser = structure(
         list(
           AssumedRoleId = structure(logical(0), tags = list(type = "string")),
@@ -268,10 +253,7 @@ sts_assume_role <- function(
       Audience = structure(logical(0), tags = list(type = "string")),
       SourceIdentity = structure(logical(0), tags = list(type = "string"))
     ),
-    tags = list(
-      type = "structure",
-      resultWrapper = "AssumeRoleWithWebIdentityResult"
-    )
+    tags = list(type = "structure", resultWrapper = "AssumeRoleWithWebIdentityResult")
   )
   return(populate(args, shape))
 }

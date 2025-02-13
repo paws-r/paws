@@ -424,10 +424,7 @@ test_that("check xml paws_stream_parser", {
     list(
       Records = structure(
         list(
-          Payload = structure(
-            logical(0),
-            tags = list(eventpayload = TRUE, type = "blob")
-          )
+          Payload = structure(logical(0), tags = list(eventpayload = TRUE, type = "blob"))
         ),
         tags = list(type = "structure", event = TRUE)
       ),
@@ -496,9 +493,7 @@ test_that("check xml paws_stream_parser", {
   expect_equal(rawToChar(actual$Records$Payload), "1\n2\n3\n")
   expect_equal(
     actual$Stats,
-    list(
-      Details = list(BytesScanned = 10, BytesProcessed = 10, BytesReturned = 6)
-    )
+    list(Details = list(BytesScanned = 10, BytesProcessed = 10, BytesReturned = 6))
   )
 })
 
@@ -1651,9 +1646,7 @@ test_that("check json paws_stream_parser", {
             list(
               text = structure(logical(0), tags = list(type = "string")),
               toolUse = structure(
-                list(
-                  input = structure(logical(0), tags = list(type = "string"))
-                ),
+                list(input = structure(logical(0), tags = list(type = "string"))),
                 tags = list(type = "structure")
               )
             ),

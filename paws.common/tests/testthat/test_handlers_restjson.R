@@ -62,11 +62,7 @@ test_that("URI parameter with location name", {
 })
 
 test_that("query string list of strings", {
-  op4 <- Operation(
-    name = "OperationName",
-    http_method = "GET",
-    http_path = "/path"
-  )
+  op4 <- Operation(name = "OperationName", http_method = "GET", http_path = "/path")
   op_input4 <- function(Items) {
     args <- list(Items = Items)
     interface <- Structure(
@@ -94,17 +90,11 @@ test_that("query string map of strings", {
     args <- list(PipelineId = PipelineId, QueryDoc = QueryDoc)
     interface <- Structure(
       PipelineId = Scalar(type = "string", .tags = list(location = "uri")),
-      QueryDoc = Map(
-        Scalar(type = "string"),
-        .tags = list(location = "querystring")
-      )
+      QueryDoc = Map(Scalar(type = "string"), .tags = list(location = "querystring"))
     )
     return(populate(args, interface))
   }
-  input <- op_input5(
-    PipelineId = "foo",
-    QueryDoc = list(bar = "baz", fizz = "buzz")
-  )
+  input <- op_input5(PipelineId = "foo", QueryDoc = list(bar = "baz", fizz = "buzz"))
   req <- new_request(svc, op5, input, NULL)
   req <- build(req)
   r <- req$http_request
@@ -145,11 +135,7 @@ test_that("query string map of lists of strings", {
 })
 
 test_that("query string with bool (true)", {
-  op7 <- Operation(
-    name = "OperationName",
-    http_method = "GET",
-    http_path = "/path"
-  )
+  op7 <- Operation(name = "OperationName", http_method = "GET", http_path = "/path")
   op_input7 <- function(BoolQuery) {
     args <- list(BoolQuery = BoolQuery)
     interface <- Structure(
@@ -168,11 +154,7 @@ test_that("query string with bool (true)", {
 })
 
 test_that("query string with bool (false)", {
-  op8 <- Operation(
-    name = "OperationName",
-    http_method = "GET",
-    http_path = "/path"
-  )
+  op8 <- Operation(name = "OperationName", http_method = "GET", http_path = "/path")
   op_input8 <- function(BoolQuery) {
     args <- list(BoolQuery = BoolQuery)
     interface <- Structure(
@@ -197,11 +179,7 @@ test_that("URI and query string parameters", {
     http_path = "/2014-01-01/jobsByPipeline/{PipelineId}"
   )
   op_input9 <- function(Ascending, PageToken, PipelineId) {
-    args <- list(
-      Ascending = Ascending,
-      PageToken = PageToken,
-      PipelineId = PipelineId
-    )
+    args <- list(Ascending = Ascending, PageToken = PageToken, PipelineId = PipelineId)
     interface <- Structure(
       Ascending = Scalar(
         type = "string",
@@ -246,10 +224,7 @@ test_that("URI, query string, and JSON body", {
         type = "string",
         .tags = list(location = "querystring", locationName = "Ascending")
       ),
-      Config = Structure(
-        A = Scalar(type = "string"),
-        B = Scalar(type = "string")
-      ),
+      Config = Structure(A = Scalar(type = "string"), B = Scalar(type = "string")),
       PageToken = Scalar(
         type = "string",
         .tags = list(location = "querystring", locationName = "PageToken")
@@ -300,10 +275,7 @@ test_that("URI, query string, JSON body, and header", {
         type = "string",
         .tags = list(location = "header", locationName = "x-amz-checksum")
       ),
-      Config = Structure(
-        A = Scalar(type = "string"),
-        B = Scalar(type = "string")
-      ),
+      Config = Structure(A = Scalar(type = "string"), B = Scalar(type = "string")),
       PageToken = Scalar(
         type = "string",
         .tags = list(location = "querystring", locationName = "PageToken")
@@ -345,28 +317,17 @@ test_that("streaming payload", {
       Body = Scalar(type = "blob", .tags = list(locationName = "body")),
       Checksum = Scalar(
         type = "string",
-        .tags = list(
-          location = "header",
-          locationName = "x-amz-sha256-tree-hash"
-        )
+        .tags = list(location = "header", locationName = "x-amz-sha256-tree-hash")
       ),
       VaultName = Scalar(
         type = "string",
-        .tags = list(
-          location = "uri",
-          locationName = "vaultName",
-          required = TRUE
-        )
+        .tags = list(location = "uri", locationName = "vaultName", required = TRUE)
       ),
       .tags = list(payload = "Body")
     )
     return(populate(args, interface))
   }
-  input <- op_input12(
-    Body = charToRaw("contents"),
-    Checksum = "foo",
-    VaultName = "name"
-  )
+  input <- op_input12(Body = charToRaw("contents"), Checksum = "foo", VaultName = "name")
   req <- new_request(svc, op12, input, NULL)
   req <- build(req)
   r <- req$http_request
@@ -460,11 +421,7 @@ test_that("empty structure payload", {
 })
 
 test_that("omit null query string parameters", {
-  op16 <- Operation(
-    name = "OperationName",
-    http_method = "POST",
-    http_path = "/path"
-  )
+  op16 <- Operation(name = "OperationName", http_method = "POST", http_path = "/path")
   op_input16 <- function(Foo = NULL) {
     args <- list(Foo = Foo)
     interface <- Structure(
@@ -510,11 +467,7 @@ test_that("serialize empty string query string parameters", {
 # TODO: RecursiveStructs.
 
 test_that("timestamp value", {
-  op18 <- Operation(
-    name = "OperationName",
-    http_method = "POST",
-    http_path = "/path"
-  )
+  op18 <- Operation(name = "OperationName", http_method = "POST", http_path = "/path")
   op_input18 <- function(TimeArg) {
     args <- list(TimeArg = TimeArg)
     interface <- Structure(TimeArg = Scalar(type = "timestamp"))
@@ -529,11 +482,7 @@ test_that("timestamp value", {
 })
 
 test_that("timestamp value in header", {
-  op19 <- Operation(
-    name = "OperationName",
-    http_method = "POST",
-    http_path = "/path"
-  )
+  op19 <- Operation(name = "OperationName", http_method = "POST", http_path = "/path")
   op_input19 <- function(TimeArgInHeader) {
     args <- list(TimeArgInHeader = TimeArgInHeader)
     interface <- Structure(
@@ -553,11 +502,7 @@ test_that("timestamp value in header", {
 })
 
 test_that("timestamp value in JSON body", {
-  op20 <- Operation(
-    name = "OperationName",
-    http_method = "POST",
-    http_path = "/path"
-  )
+  op20 <- Operation(name = "OperationName", http_method = "POST", http_path = "/path")
   op_input20 <- function(TimeArg) {
     args <- list(TimeArg = TimeArg)
     interface <- Structure(
@@ -577,11 +522,7 @@ test_that("timestamp value in JSON body", {
 })
 
 test_that("string payload", {
-  op21 <- Operation(
-    name = "OperationName",
-    http_method = "POST",
-    http_path = "/path"
-  )
+  op21 <- Operation(name = "OperationName", http_method = "POST", http_path = "/path")
   op_input21 <- function(Foo) {
     args <- list(Foo = Foo)
     interface <- Structure(
@@ -598,11 +539,7 @@ test_that("string payload", {
   expect_equal(r$body, "bar")
 })
 
-op22 <- Operation(
-  name = "OperationName",
-  http_method = "POST",
-  http_path = "/path"
-)
+op22 <- Operation(name = "OperationName", http_method = "POST", http_path = "/path")
 op_input22 <- function(Token = NULL) {
   args <- list(Token = Token)
   interface <- Structure(
@@ -655,10 +592,7 @@ test_that("unmarshal scalar members", {
     ),
     Long = Scalar(type = "long"),
     Num = Scalar(type = "integer"),
-    StatusCode = Scalar(
-      type = "integer",
-      .tags = list(location = "statusCode")
-    ),
+    StatusCode = Scalar(type = "integer", .tags = list(location = "statusCode")),
     Str = Scalar(type = "string"),
     TrueBool = Scalar(type = "boolean")
   )
@@ -710,10 +644,7 @@ test_that("unmarshal blob member", {
 
 test_that("unmarshal timestamp member", {
   op_output3 <- Structure(
-    TimeMember = Scalar(
-      type = "timestamp",
-      .tags = list(timestampFormat = "unix")
-    ),
+    TimeMember = Scalar(type = "timestamp", .tags = list(timestampFormat = "unix")),
     StructMember = Structure(
       Foo = Scalar(
         type = "timestamp",
@@ -732,11 +663,7 @@ test_that("unmarshal timestamp member", {
   req <- unmarshal(req)
   out <- req$data
   expect_equal(out$TimeMember, unix_time(1.398796238e+09), ignore_attr = TRUE)
-  expect_equal(
-    out$StructMember$Foo,
-    unix_time(1.398796238e+09),
-    ignore_attr = TRUE
-  )
+  expect_equal(out$StructMember$Foo, unix_time(1.398796238e+09), ignore_attr = TRUE)
 })
 
 test_that("unmarshal list", {
@@ -754,9 +681,7 @@ test_that("unmarshal list", {
 })
 
 test_that("unmarshal list with structure member", {
-  op_output5 <- Structure(
-    ListMember = List(Structure(Foo = Scalar(type = "string")))
-  )
+  op_output5 <- Structure(ListMember = List(Structure(Foo = Scalar(type = "string"))))
   req <- new_request(svc, op, NULL, op_output5)
   req$http_response <- HttpResponse(
     status_code = 200,
@@ -795,16 +720,8 @@ test_that("unmarshal map with timestamps", {
   req <- unmarshal_meta(req)
   req <- unmarshal(req)
   out <- req$data
-  expect_equal(
-    out$MapMember[["a"]],
-    unix_time(1.398796238e+09),
-    ignore_attr = TRUE
-  )
-  expect_equal(
-    out$MapMember[["b"]],
-    unix_time(1.398796238e+09),
-    ignore_attr = TRUE
-  )
+  expect_equal(out$MapMember[["a"]], unix_time(1.398796238e+09), ignore_attr = TRUE)
+  expect_equal(out$MapMember[["b"]], unix_time(1.398796238e+09), ignore_attr = TRUE)
 })
 
 test_that("unmarshal ignores extra data", {
@@ -823,10 +740,7 @@ test_that("unmarshal ignores extra data", {
 
 test_that("unmarshal header map", {
   op_output9 <- Structure(
-    AllHeaders = Map(
-      Scalar(type = "string"),
-      .tags = list(location = "headers")
-    ),
+    AllHeaders = Map(Scalar(type = "string"), .tags = list(location = "headers")),
     PrefixedHeaders = Map(
       Scalar(type = "string"),
       .tags = list(location = "headers", locationName = "X-")

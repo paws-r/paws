@@ -23,11 +23,7 @@ test_that("credentials not provided", {
 })
 
 test_that("credentials expired", {
-  creds <- Creds(
-    access_key_id = "foo",
-    secret_access_key = "bar",
-    expiration = 1000
-  )
+  creds <- Creds(access_key_id = "foo", secret_access_key = "bar", expiration = 1000)
 
   expect_false(is_credentials_provided(creds))
 
@@ -47,19 +43,11 @@ test_that("credentials expired", {
 
   expect_true(is_credentials_provided(creds))
 
-  creds <- Creds(
-    access_key_id = "foo",
-    secret_access_key = "bar",
-    expiration = Inf
-  )
+  creds <- Creds(access_key_id = "foo", secret_access_key = "bar", expiration = Inf)
 
   expect_true(is_credentials_provided(creds))
 
-  creds <- Creds(
-    access_key_id = "foo",
-    secret_access_key = "bar",
-    expiration = NA
-  )
+  creds <- Creds(access_key_id = "foo", secret_access_key = "bar", expiration = NA)
 
   expect_true(is_credentials_provided(creds))
 })
@@ -126,16 +114,8 @@ test_that("credentials are cached", {
   foo <- svc$get_credentials() # get the credentials
   actual <- svc$dont_get_credentials() # access the credentials found above
 
-  expect_equal(
-    actual$credentials$creds$access_key_id,
-    "AKID",
-    ignore_attr = TRUE
-  )
-  expect_equal(
-    actual$credentials$creds$secret_access_key,
-    "SECRET",
-    ignore_attr = TRUE
-  )
+  expect_equal(actual$credentials$creds$access_key_id, "AKID", ignore_attr = TRUE)
+  expect_equal(actual$credentials$creds$secret_access_key, "SECRET", ignore_attr = TRUE)
 })
 
 test_that("credentials refresh when expired", {

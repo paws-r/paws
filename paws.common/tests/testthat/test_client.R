@@ -88,10 +88,7 @@ test_that("client_config uses custom endpoint", {
     ),
     cfgs = cfgs
   )
-  expect_equal(
-    "https://test.us-west-2.amazonaws.com",
-    client_cfg$config$endpoint
-  )
+  expect_equal("https://test.us-west-2.amazonaws.com", client_cfg$config$endpoint)
 })
 
 test_that("client_config uses custom region", {
@@ -131,9 +128,6 @@ test_that("client_config uses custom credentials", {
     service_id = "foo"
   )
   expect_equal("test_key", client_cfg$config$credentials$creds$access_key_id)
-  expect_equal(
-    "test_secret",
-    client_cfg$config$credentials$creds$secret_access_key
-  )
+  expect_equal("test_secret", client_cfg$config$credentials$creds$secret_access_key)
   expect_equal("test_profile", client_cfg$config$credentials$profile)
 })

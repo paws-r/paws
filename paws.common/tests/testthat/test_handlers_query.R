@@ -22,10 +22,7 @@ test_that("build scalar members", {
   input <- op_input1(Bar = "val2", Foo = "val1")
   req <- new_request(svc, op, input, NULL)
   req <- build(req)
-  expect_equal(
-    req$body,
-    "Action=OperationName&Bar=val2&Foo=val1&Version=2014-01-01"
-  )
+  expect_equal(req$body, "Action=OperationName&Bar=val2&Foo=val1&Version=2014-01-01")
 })
 
 test_that("build scalar members", {
@@ -44,9 +41,7 @@ test_that("build scalar members", {
 
 op_input2 <- function(StructArg) {
   args <- list(StructArg = StructArg)
-  interface <- Structure(
-    StructArg = Structure(ScalarArg = Scalar(type = "string"))
-  )
+  interface <- Structure(StructArg = Structure(ScalarArg = Scalar(type = "string")))
   return(populate(args, interface))
 }
 
@@ -86,11 +81,7 @@ test_that("build empty list", {
 })
 
 op_input4 <- function(ListArg = NULL, NamedListArg = NULL, ScalarArg = NULL) {
-  args <- list(
-    ListArg = ListArg,
-    NamedListArg = NamedListArg,
-    ScalarArg = ScalarArg
-  )
+  args <- list(ListArg = ListArg, NamedListArg = NamedListArg, ScalarArg = ScalarArg)
   interface <- Structure(
     ListArg = List(Scalar(type = "string"), .tags = list(flattened = TRUE)),
     NamedListArg = List(
@@ -140,10 +131,7 @@ test_that("build flattened map", {
 op_input6 <- function(ListArg) {
   args <- list(ListArg = ListArg)
   interface <- Structure(
-    ListArg = List(
-      Scalar(type = "string"),
-      .tags = list(locationNameList = "item")
-    )
+    ListArg = List(Scalar(type = "string"), .tags = list(locationNameList = "item"))
   )
   return(populate(args, interface))
 }
@@ -242,10 +230,7 @@ test_that("build blob argument", {
   input <- op_input11(BlobArgs = list(charToRaw("foo")))
   req <- new_request(svc, op, input, NULL)
   req <- build(req)
-  expect_equal(
-    req$body,
-    "Action=OperationName&BlobArgs.1=Zm9v&Version=2014-01-01"
-  )
+  expect_equal(req$body, "Action=OperationName&BlobArgs.1=Zm9v&Version=2014-01-01")
 })
 
 op_input12 <- function(TimeArg) {
@@ -301,10 +286,7 @@ test_that("build nested shapes", {
 test_that("build nested shapes", {
   input <- op_input13(
     RecursiveStruct = list(
-      RecursiveMap = list(
-        bar = list(NoRecurse = "bar"),
-        foo = list(NoRecurse = "foo")
-      )
+      RecursiveMap = list(bar = list(NoRecurse = "bar"), foo = list(NoRecurse = "foo"))
     )
   )
   req <- new_request(svc, op, input, NULL)
@@ -336,10 +318,7 @@ test_that("build idempotency token auto-fill", {
   req <- build(req)
   expect_true(
     grepl(
-      sprintf(
-        "Action=OperationName&Token=%s&Version=2014-01-01",
-        UUID_V4_PATTERN
-      ),
+      sprintf("Action=OperationName&Token=%s&Version=2014-01-01", UUID_V4_PATTERN),
       req$body
     )
   )
@@ -471,10 +450,7 @@ test_that("unmarshal list", {
 })
 
 op_output4 <- Structure(
-  ListMember = List(
-    Scalar(type = "string"),
-    .tags = list(locationNameList = "item")
-  )
+  ListMember = List(Scalar(type = "string"), .tags = list(locationNameList = "item"))
 )
 
 test_that("unmarshal list with custom member name", {
@@ -606,9 +582,7 @@ test_that("unmarshal flattened list with location name", {
 })
 
 op_output9 <- Structure(
-  Map = Map(
-    Structure(Foo = Scalar(type = "string", .tags = list(locationName = "foo")))
-  )
+  Map = Map(Structure(Foo = Scalar(type = "string", .tags = list(locationName = "foo"))))
 )
 
 test_that("unmarshal map", {
@@ -671,11 +645,7 @@ test_that("unmarshal flattened map", {
 op_output12 <- Structure(
   Map = Map(
     Scalar(type = "string"),
-    .tags = list(
-      locationNameKey = "foo",
-      locationNameValue = "bar",
-      flattened = TRUE
-    )
+    .tags = list(locationNameKey = "foo", locationNameValue = "bar", flattened = TRUE)
   )
 )
 
@@ -742,14 +712,8 @@ test_that("unmarshal empty output shape", {
 })
 
 op_output16 <- Structure(
-  FooStr = Structure(
-    Foo = Scalar(type = "string"),
-    Bar = Scalar(type = "double")
-  ),
-  ChoStr = Structure(
-    Cho = Scalar(type = "string"),
-    Zar = Scalar(type = "double")
-  ),
+  FooStr = Structure(Foo = Scalar(type = "string"), Bar = Scalar(type = "double")),
+  ChoStr = Structure(Cho = Scalar(type = "string"), Zar = Scalar(type = "double")),
   Zoo = Scalar(type = "string")
 )
 

@@ -210,12 +210,7 @@ canonical_custom_headers <- function(ctx, headers) {
   sorted_header_keys <- sort_list(as.list(custom_headers))
   canonical_headers <- c(
     ctx$canonical_headers,
-    paste(
-      names(sorted_header_keys),
-      sorted_header_keys,
-      sep = ":",
-      collapse = "\n"
-    )
+    paste(names(sorted_header_keys), sorted_header_keys, sep = ":", collapse = "\n")
   )
   return(canonical_headers[nzchar(canonical_headers)])
 }

@@ -16,10 +16,7 @@ test_that("sanitize_host_for_header", {
       "https://estest.us-east-1.es.amazonaws.com:443",
       "estest.us-east-1.es.amazonaws.com"
     ),
-    c(
-      "https://estest.us-east-1.es.amazonaws.com",
-      "estest.us-east-1.es.amazonaws.com"
-    ),
+    c("https://estest.us-east-1.es.amazonaws.com", "estest.us-east-1.es.amazonaws.com"),
     c("https://localhost:9200", "localhost:9200"),
     c("http://localhost:80", "localhost"),
     c("http://localhost:8080", "localhost:8080")

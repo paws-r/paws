@@ -22,10 +22,7 @@ test_that("build scalar members", {
   input <- op_input1(Bar = "val2", Foo = "val1")
   req <- new_request(svc, op, input, NULL)
   req <- build(req)
-  expect_equal(
-    req$body,
-    "Action=OperationName&Bar=val2&Foo=val1&Version=2014-01-01"
-  )
+  expect_equal(req$body, "Action=OperationName&Bar=val2&Foo=val1&Version=2014-01-01")
 })
 
 op_input2 <- function(Foo = NULL, Bar = NULL, Yuck = NULL) {
@@ -34,10 +31,7 @@ op_input2 <- function(Foo = NULL, Bar = NULL, Yuck = NULL) {
     Foo = Scalar(),
     Bar = Scalar(.tags = list(locationName = "barLocationName")),
     Yuck = Scalar(
-      .tags = list(
-        locationName = "yuckLocationName",
-        queryName = "yuckQueryName"
-      )
+      .tags = list(locationName = "yuckLocationName", queryName = "yuckQueryName")
     )
   )
   return(populate(args, interface))
@@ -63,10 +57,7 @@ test_that("build nested structure members", {
   input <- op_input3(Struct = list(Scalar = "foo"))
   req <- new_request(svc, op, input, NULL)
   req <- build(req)
-  expect_equal(
-    req$body,
-    "Action=OperationName&Struct.Scalar=foo&Version=2014-01-01"
-  )
+  expect_equal(req$body, "Action=OperationName&Struct.Scalar=foo&Version=2014-01-01")
 })
 
 op_input4 <- function(ListBools, ListFloats, ListIntegers, ListStrings) {
@@ -194,10 +185,7 @@ test_that("build idempotency token", {
   req <- build(req)
   expect_true(
     grepl(
-      sprintf(
-        "Action=OperationName&Token=%s&Version=2014-01-01",
-        UUID_V4_PATTERN
-      ),
+      sprintf("Action=OperationName&Token=%s&Version=2014-01-01", UUID_V4_PATTERN),
       req$body
     )
   )
@@ -206,9 +194,7 @@ test_that("build idempotency token", {
 op_input10 <- function(ListEnums = NULL) {
   args <- list(ListEnums = ListEnums)
   interface <- Structure(
-    ListEnums = List(
-      Scalar(.tags = list(enum = "InputService10TestShapeEnumType"))
-    )
+    ListEnums = List(Scalar(.tags = list(enum = "InputService10TestShapeEnumType")))
   )
   return(populate(args, interface))
 }
@@ -372,11 +358,7 @@ test_that("unmarshal flattened map", {
 op_output8 <- Structure(
   Map = Map(
     Scalar(),
-    .tags = list(
-      locationNameKey = "foo",
-      locationNameValue = "bar",
-      flattened = TRUE
-    )
+    .tags = list(locationNameKey = "foo", locationNameValue = "bar", flattened = TRUE)
   )
 )
 

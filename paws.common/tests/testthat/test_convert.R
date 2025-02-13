@@ -27,10 +27,7 @@ test_that("raw_to_utf", {
 test_that("convert_type", {
   value <- as.POSIXct("2010-01-01", tz = "UTC")
   value <- tag_add(value, tags = list(type = "timestamp"))
-  expect_equal(
-    "2010-01-01T00:00:00Z",
-    convert_type(value, timestamp_format = "iso8601")
-  )
+  expect_equal("2010-01-01T00:00:00Z", convert_type(value, timestamp_format = "iso8601"))
   expect_equal(
     "Fri, 01 Jan 2010 00:00:00 UTC",
     convert_type(value, timestamp_format = "rfc822")

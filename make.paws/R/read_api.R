@@ -73,11 +73,7 @@ get_latest_api_version_v2 <- function(api_name, path) {
 
 # Returns a list of API files for a given API version.
 get_api_files <- function(version, path) {
-  files <- list.files(
-    path,
-    pattern = sprintf("^%s", version),
-    full.names = TRUE
-  )
+  files <- list.files(path, pattern = sprintf("^%s", version), full.names = TRUE)
   types <- gsub("^.+\\.(.+)\\..+", "\\1", basename(files))
   files <- as.list(files)
   names(files) <- types
@@ -178,12 +174,7 @@ merge_region_config <- function(api, region_config) {
       rule <- region_config$patterns[[rule]]
     }
     rules[[region]] <- list(
-      endpoint = gsub(
-        "{service}",
-        endpoint_prefix,
-        rule$endpoint,
-        fixed = TRUE
-      ),
+      endpoint = gsub("{service}", endpoint_prefix, rule$endpoint, fixed = TRUE),
       global = isTRUE(rule$globalEndpoint)
     )
   }
@@ -201,11 +192,7 @@ merge_region_config_v2 <- function(api, region_config) {
     hostname <- partition$defaults$hostname
     region_regex <- gsub("\\", "\\\\", partition$regionRegex, fixed = T)
     if (
-      !is.null(
-        global <- partition$services[[endpoint_prefix]]$endpoints[[
-          "aws-global"
-        ]]
-      )
+      !is.null(global <- partition$services[[endpoint_prefix]]$endpoints[["aws-global"]])
     ) {
       endpoint <- build_endpoint(endpoint_prefix, global$hostname, dnsSuffix)
       endpoint <- list(endpoint = endpoint, global = TRUE)

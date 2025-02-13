@@ -1,9 +1,6 @@
 # Build the request for the EC2 protocol.
 ec2query_build <- function(request) {
-  body <- list(
-    Action = request$operation$name,
-    Version = request$client_info$api_version
-  )
+  body <- list(Action = request$operation$name, Version = request$client_info$api_version)
 
   body <- query_parse(body, request$params, TRUE)
 
@@ -42,11 +39,6 @@ ec2query_unmarshal_error <- function(request) {
   error_response <- lapply(body$Response$Errors[[1]], unlist)
   code <- error_response$Code
   message <- error_response$Message
-  request$error <- Error(
-    code,
-    message,
-    request$http_response$status_code,
-    error_response
-  )
+  request$error <- Error(code, message, request$http_response$status_code, error_response)
   return(request)
 }

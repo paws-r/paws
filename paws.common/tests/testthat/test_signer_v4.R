@@ -47,16 +47,7 @@ test_that("sign with custom URI escape", {
   req$url$path <- "/log-*/_search"
   req$url$opaque <- "//subdomain.us-east-1.es.amazonaws.com/log-%2A/_search"
 
-  req <- sign_with_body(
-    signer,
-    req,
-    NULL,
-    "es",
-    "us-east-1",
-    0,
-    FALSE,
-    unix_time(0, 0)
-  )
+  req <- sign_with_body(signer, req, NULL, "es", "us-east-1", 0, FALSE, unix_time(0, 0))
   actual <- req$header[["Authorization"]]
 
   expect_equal(actual, expected)
@@ -88,16 +79,7 @@ test_that("standalone sign with port", {
   for (case in cases) {
     signer <- Signer(test_creds)
     req <- new_http_request("GET", case$url, NULL)
-    req <- sign_with_body(
-      signer,
-      req,
-      NULL,
-      "es",
-      "us-east-1",
-      0,
-      FALSE,
-      unix_time(0, 0)
-    )
+    req <- sign_with_body(signer, req, NULL, "es", "us-east-1", 0, FALSE, unix_time(0, 0))
     actual <- req$header[["Authorization"]]
     expect_equal(actual, case$expected)
   }
@@ -147,11 +129,7 @@ test_that("standalone presign with port", {
 
 test_that("presign", {
   signer <- Signer(test_creds)
-  req <- new_http_request(
-    "POST",
-    "https://dynamodb.us-east-1.amazonaws.com",
-    "{}"
-  )
+  req <- new_http_request("POST", "https://dynamodb.us-east-1.amazonaws.com", "{}")
   req$url$opaque <- "//example.org/bucket/key-._~,!@#$%^&*()"
   req$header["X-Amz-Target"] <- "prefix.Operation"
   req$header["Content-Type"] <- "application/x-amz-json-1.0"
@@ -178,10 +156,7 @@ test_that("presign", {
     q[["X-Amz-Signature"]],
     "122f0b9e091e4ba84286097e2b3404a1f1f4c4aad479adda95b7dff0ccbe5581"
   )
-  expect_equal(
-    q[["X-Amz-Credential"]],
-    "AKID/19700101/us-east-1/dynamodb/aws4_request"
-  )
+  expect_equal(q[["X-Amz-Credential"]], "AKID/19700101/us-east-1/dynamodb/aws4_request")
   expect_equal(
     q[["X-Amz-SignedHeaders"]],
     "content-length;content-type;host;x-amz-meta-other-header;x-amz-meta-other-header_with_underscore"

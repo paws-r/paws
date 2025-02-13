@@ -31,17 +31,11 @@ test_that("build request with URL requiring escaping", {
         type = "string",
         .tags = list(location = "uri", locationName = "bucket")
       ),
-      Key = Scalar(
-        type = "string",
-        .tags = list(location = "uri", locationName = "key")
-      )
+      Key = Scalar(type = "string", .tags = list(location = "uri", locationName = "key"))
     )
     return(populate(args, interface))
   }
-  input <- op_input1(
-    Bucket = "mybucket",
-    Key = "my/cool+thing space/object世界"
-  )
+  input <- op_input1(Bucket = "mybucket", Key = "my/cool+thing space/object世界")
   req <- new_request(svc, op1, input, NULL)
   req <- build(req)
   r <- req$http_request
@@ -53,16 +47,10 @@ test_that("build request with URL requiring escaping", {
 })
 
 test_that("build request with URL", {
-  op1 <- Operation(
-    name = "OperationName",
-    http_method = "GET",
-    http_path = "/{foo}"
-  )
+  op1 <- Operation(name = "OperationName", http_method = "GET", http_path = "/{foo}")
   op_input1 <- function(foo) {
     args <- list(foo = foo)
-    interface <- Structure(
-      foo = Scalar(type = "string", .tags = list(location = "uri"))
-    )
+    interface <- Structure(foo = Scalar(type = "string", .tags = list(location = "uri")))
     return(populate(args, interface))
   }
   input <- op_input1(foo = "bar")

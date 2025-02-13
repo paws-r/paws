@@ -241,8 +241,7 @@ parse_in_half <- function(x, char = "=") {
 }
 
 set_user_agent <- function(pkgname) {
-  paws_version <- .__NAMESPACE__.[["spec"]]["version"] %||%
-    packageVersion(pkgname)
+  paws_version <- .__NAMESPACE__.[["spec"]]["version"] %||% packageVersion(pkgname)
   user_agent <- sprintf(
     "paws/%s (R%s; %s; %s)",
     paws_version,

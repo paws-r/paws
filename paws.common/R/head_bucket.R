@@ -48,54 +48,21 @@
       )
     ),
     "js" = list(
-      "us-gov-west-1" = list(
-        endpoint = "s3.{region}.amazonaws.com",
-        global = FALSE
-      ),
-      "us-west-1" = list(
-        endpoint = "s3.{region}.amazonaws.com",
-        global = FALSE
-      ),
-      "us-west-2" = list(
-        endpoint = "s3.{region}.amazonaws.com",
-        global = FALSE
-      ),
-      "eu-west-1" = list(
-        endpoint = "s3.{region}.amazonaws.com",
-        global = FALSE
-      ),
-      "ap-southeast-1" = list(
-        endpoint = "s3.{region}.amazonaws.com",
-        global = FALSE
-      ),
-      "ap-southeast-2" = list(
-        endpoint = "s3.{region}.amazonaws.com",
-        global = FALSE
-      ),
-      "ap-northeast-1" = list(
-        endpoint = "s3.{region}.amazonaws.com",
-        global = FALSE
-      ),
-      "sa-east-1" = list(
-        endpoint = "s3.{region}.amazonaws.com",
-        global = FALSE
-      ),
+      "us-gov-west-1" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE),
+      "us-west-1" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE),
+      "us-west-2" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE),
+      "eu-west-1" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE),
+      "ap-southeast-1" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE),
+      "ap-southeast-2" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE),
+      "ap-northeast-1" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE),
+      "sa-east-1" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE),
       "us-east-1" = list(endpoint = "s3.amazonaws.com", global = FALSE),
       "*" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE),
       "cn-*" = list(endpoint = "s3.{region}.amazonaws.com.cn", global = FALSE),
-      "eu-isoe-*" = list(
-        endpoint = "s3.{region}.cloud.adc-e.uk",
-        global = FALSE
-      ),
+      "eu-isoe-*" = list(endpoint = "s3.{region}.cloud.adc-e.uk", global = FALSE),
       "us-iso-*" = list(endpoint = "s3.{region}.c2s.ic.gov", global = FALSE),
-      "us-isob-*" = list(
-        endpoint = "s3.{region}.sc2s.sgov.gov",
-        global = FALSE
-      ),
-      "us-isof-*" = list(
-        endpoint = "s3.{region}.csp.hci.ic.gov",
-        global = FALSE
-      )
+      "us-isob-*" = list(endpoint = "s3.{region}.sc2s.sgov.gov", global = FALSE),
+      "us-isof-*" = list(endpoint = "s3.{region}.csp.hci.ic.gov", global = FALSE)
     )
   )
 }

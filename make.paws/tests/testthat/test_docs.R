@@ -7,15 +7,11 @@ test_that("make_doc_title", {
   expected <- "#' Foo"
   expect_equal(make_doc_title(operation), expected)
 
-  operation <- list(
-    documentation = "<body><p>Foo <a href='baz'>bar</a>.</p></body>"
-  )
+  operation <- list(documentation = "<body><p>Foo <a href='baz'>bar</a>.</p></body>")
   expected <- "#' Foo bar"
   expect_equal(make_doc_title(operation), expected)
 
-  operation <- list(
-    documentation = "<body><p>[In brackets] Outside brackets.</p></body>"
-  )
+  operation <- list(documentation = "<body><p>[In brackets] Outside brackets.</p></body>")
   expected <- "#' &#91;In brackets&#93; Outside brackets"
   expect_equal(make_doc_title(operation), expected)
 
@@ -63,10 +59,7 @@ test_that("make_doc_request", {
     shapes = list(
       OperationShape = list(
         type = "structure",
-        members = list(
-          Foo = list(shape = "FooShape"),
-          Bar = list(shape = "BarShape")
-        )
+        members = list(Foo = list(shape = "FooShape"), Bar = list(shape = "BarShape"))
       ),
       FooShape = list(type = "string"),
       BarShape = list(
@@ -111,10 +104,7 @@ test_that("make_doc_value", {
     shapes = list(
       OperationShape = list(
         type = "structure",
-        members = list(
-          Foo = list(shape = "FooShape"),
-          Bar = list(shape = "BarShape")
-        )
+        members = list(Foo = list(shape = "FooShape"), Bar = list(shape = "BarShape"))
       ),
       FooShape = list(type = "string"),
       BarShape = list(

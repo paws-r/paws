@@ -46,30 +46,12 @@
       )
     ),
     "js" = list(
-      "*" = list(
-        endpoint = "portal.sso.{region}.amazonaws.com",
-        global = FALSE
-      ),
-      "cn-*" = list(
-        endpoint = "portal.sso.{region}.amazonaws.com.cn",
-        global = FALSE
-      ),
-      "eu-isoe-*" = list(
-        endpoint = "portal.sso.{region}.cloud.adc-e.uk",
-        global = FALSE
-      ),
-      "us-iso-*" = list(
-        endpoint = "portal.sso.{region}.c2s.ic.gov",
-        global = FALSE
-      ),
-      "us-isob-*" = list(
-        endpoint = "portal.sso.{region}.sc2s.sgov.gov",
-        global = FALSE
-      ),
-      "us-isof-*" = list(
-        endpoint = "portal.sso.{region}.csp.hci.ic.gov",
-        global = FALSE
-      )
+      "*" = list(endpoint = "portal.sso.{region}.amazonaws.com", global = FALSE),
+      "cn-*" = list(endpoint = "portal.sso.{region}.amazonaws.com.cn", global = FALSE),
+      "eu-isoe-*" = list(endpoint = "portal.sso.{region}.cloud.adc-e.uk", global = FALSE),
+      "us-iso-*" = list(endpoint = "portal.sso.{region}.c2s.ic.gov", global = FALSE),
+      "us-isob-*" = list(endpoint = "portal.sso.{region}.sc2s.sgov.gov", global = FALSE),
+      "us-isof-*" = list(endpoint = "portal.sso.{region}.csp.hci.ic.gov", global = FALSE)
     )
   )
 }
@@ -86,11 +68,7 @@
     list(
       roleName = structure(
         logical(0),
-        tags = list(
-          location = "querystring",
-          locationName = "role_name",
-          type = "string"
-        )
+        tags = list(location = "querystring", locationName = "role_name", type = "string")
       ),
       accountId = structure(
         logical(0),

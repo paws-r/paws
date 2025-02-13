@@ -30,10 +30,7 @@ populate_structure <- function(input, interface) {
       if (!check_location) {
         stopf("invalid name: %s", name)
       }
-      interface[[check_location]] <- populate(
-        input[[name]],
-        interface[[check_location]]
-      )
+      interface[[check_location]] <- populate(input[[name]], interface[[check_location]])
     } else {
       interface[[name]] <- populate(input[[name]], interface[[name]])
     }

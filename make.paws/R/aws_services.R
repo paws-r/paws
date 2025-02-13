@@ -38,12 +38,7 @@ category_service_ops_count <- function(in_dir = "../vendor/botocore") {
     data.frame(name = rep(x$name, length(x$services)), services = x$services)
   })
   paws_cat <- rbindlist(paws_cat, fill = T)
-  paws_cat_service_ops <- merge(
-    paws_cat,
-    aws_service_ops,
-    by = "services",
-    all.y = T
-  )
+  paws_cat_service_ops <- merge(paws_cat, aws_service_ops, by = "services", all.y = T)
   setcolorder(paws_cat_service_ops, "name")
   names(paws_cat_service_ops) <- c("category", "services", "operations")
   paws_cat_service_ops_count <- paws_cat_service_ops[,

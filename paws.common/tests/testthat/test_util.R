@@ -51,8 +51,5 @@ test_that("call_with_args", {
     a + b
   }
   args <- list(a = 1, b = 2)
-  expect_error(
-    call_with_args(foo, args),
-    "A parameter has no corresponding element in.*"
-  )
+  expect_error(call_with_args(foo, args), "A parameter has no corresponding element in.*")
 })
