@@ -41,14 +41,7 @@ api <- list(
   documentation = "AWS Foo is an example AWS API."
 )
 
-api_path <- file.path(
-  path_in,
-  "botocore",
-  "data",
-  "foo",
-  "2018-11-01",
-  "service-2.json"
-)
+api_path <- file.path(path_in, "botocore", "data", "foo", "2018-11-01", "service-2.json")
 dir.create(dirname(api_path), recursive = TRUE, showWarnings = FALSE)
 jsonlite::write_json(api, api_path, auto_unbox = TRUE)
 

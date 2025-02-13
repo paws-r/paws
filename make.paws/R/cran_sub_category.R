@@ -38,11 +38,7 @@ make_category_collection <- function(
     expand_doc_links = TRUE
   )
   write_documentation(package_dir)
-  write_imports_collection(
-    package_dir,
-    version,
-    get_category_packages(categories)
-  )
+  write_imports_collection(package_dir, version, get_category_packages(categories))
 }
 
 # Identify sub-categories

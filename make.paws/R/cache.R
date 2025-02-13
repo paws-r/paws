@@ -127,14 +127,7 @@ maybe_spot_check <- function(cache_result, value_expr, key_label) {
           collapse = "\n",
           "  ",
           utils::capture.output(
-            print(
-              waldo::compare(
-                cache_result,
-                value,
-                x_arg = "cached",
-                y_arg = "live"
-              )
-            )
+            print(waldo::compare(cache_result, value, x_arg = "cached", y_arg = "live"))
           )
         )
       )

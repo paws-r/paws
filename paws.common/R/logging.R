@@ -105,11 +105,7 @@ log_error <- function(...) {
 log_msg <- function(lvl, msg) {
   log_file <- getOption("paws.log_file")
   now <- strftime(now(), "%Y-%m-%d %H:%M:%OS3")
-  cat(
-    sprintf("%s [%s]: %s\n", log_color(lvl), now, msg),
-    file = log_file,
-    append = TRUE
-  )
+  cat(sprintf("%s [%s]: %s\n", log_color(lvl), now, msg), file = log_file, append = TRUE)
   on.exit(flush.console())
 }
 
@@ -158,10 +154,7 @@ init_log_config <- function() {
   # check R options for log settings
   r_options <- lapply(log_opt_name, getOption)
   names(r_options) <- log_opt_name
-  paws_logging_opt <- modifyList(
-    paws_logging_opt,
-    Filter(Negate(is.null), r_options)
-  )
+  paws_logging_opt <- modifyList(paws_logging_opt, Filter(Negate(is.null), r_options))
 
   # check environment variables for log settings
   env_options <- lapply(
@@ -170,10 +163,7 @@ init_log_config <- function() {
     unset = NA
   )
   names(env_options) <- c(log_opt_name)
-  paws_logging_opt <- modifyList(
-    paws_logging_opt,
-    Filter(Negate(is.na), env_options)
-  )
+  paws_logging_opt <- modifyList(paws_logging_opt, Filter(Negate(is.na), env_options))
   # ensure log level is an integer
   paws_logging_opt$paws.log_level <- as.integer(paws_logging_opt$paws.log_level)
 

@@ -12,10 +12,7 @@ as_timestamp <- function(x, format, tz = "GMT") {
     attr(result, "tzone") <- tz
     return(result)
   }
-  lookup <- c(
-    "iso8601" = "%Y-%m-%dT%H:%M:%S",
-    "rfc822" = "%a, %d %b %Y %H:%M:%S"
-  )
+  lookup <- c("iso8601" = "%Y-%m-%dT%H:%M:%S", "rfc822" = "%a, %d %b %Y %H:%M:%S")
   result <- as.POSIXct(x, tz = tz, format = lookup[format])
   return(result)
 }

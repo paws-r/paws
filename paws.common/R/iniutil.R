@@ -45,9 +45,7 @@ read_ini <- function(file_name) {
         which(sub_grps[items])
       )
     } else {
-      profiles[[i]] <- extract_ini_parameter(
-        split_content[items, , drop = FALSE]
-      )
+      profiles[[i]] <- extract_ini_parameter(split_content[items, , drop = FALSE])
     }
   }
   ini_cache[[file_name]] <- profiles

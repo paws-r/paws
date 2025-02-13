@@ -115,13 +115,7 @@ tag_del <- function(object, tags = NULL) {
 type <- function(object) {
   type_tag <- tag_get(object, "type")
   if (type_tag != "") {
-    t <- switch(
-      type_tag,
-      structure = "structure",
-      list = "list",
-      map = "map",
-      "scalar"
-    )
+    t <- switch(type_tag, structure = "structure", list = "list", map = "map", "scalar")
   } else {
     t <- guess_type(object)
   }

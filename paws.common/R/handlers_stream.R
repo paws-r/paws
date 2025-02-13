@@ -267,10 +267,7 @@ parse_aws_event <- function(bytes) {
   payload_raw <- read_bytes(total_length - i - 4 + 1)
 
   # validate the message checksum
-  validate_checksum(
-    bytes[1:(total_length - 4)],
-    paste(read_bytes(4), collapse = "")
-  )
+  validate_checksum(bytes[1:(total_length - 4)], paste(read_bytes(4), collapse = ""))
 
   list(
     total_length = total_length,
@@ -346,10 +343,6 @@ crc32 <- function(raw) {
 validate_checksum <- function(data, crc) {
   computed_checksum <- crc32(data)
   if (computed_checksum != crc) {
-    stopf(
-      "Checksum mismatch: expected %s, calculated %s",
-      crc,
-      computed_checksum
-    )
+    stopf("Checksum mismatch: expected %s, calculated %s", crc, computed_checksum)
   }
 }

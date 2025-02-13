@@ -28,8 +28,7 @@ Map <- function(..., .tags = NULL) {
 }
 
 Scalar <- function(value = NULL, .tags = NULL, type = "scalar") {
-  if (length(value) > 1 || !is_atomic(value))
-    stop("a scalar must be length <= 1")
+  if (length(value) > 1 || !is_atomic(value)) stop("a scalar must be length <= 1")
   if (is.null(value)) value <- logical(0)
   tags <- c(list(type = type), .tags)
   value <- tag_add(value, tags)

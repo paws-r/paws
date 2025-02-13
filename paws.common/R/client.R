@@ -125,8 +125,8 @@ resolver_endpoint_boto <- function(
     stop("No region provided and no global region found.")
   }
   signing_region <- (
-    if (any(global_found) & global_region)
-      names(global_found[global_found][1]) else region
+    if (any(global_found) & global_region) names(global_found[global_found][1]) else
+      region
   )
   e <- endpoints[[get_region_pattern(names(endpoints), signing_region)]]
   if (service == "sts" & nzchar(sts_regional_endpoint)) {
@@ -164,8 +164,8 @@ resolver_endpoint_js <- function(
     stop("No region provided and no global region found.")
   }
   search_region <- (
-    if (any(global_found) & global_region)
-      names(global_found[global_found][1]) else region
+    if (any(global_found) & global_region) names(global_found[global_found][1]) else
+      region
   )
   e <- endpoints[[get_region_pattern_js(names(endpoints), search_region)]]
   if (is.character(e)) {

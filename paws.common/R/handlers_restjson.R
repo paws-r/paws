@@ -10,9 +10,7 @@ restjson_build <- function(request) {
   if (has_streaming_payload(request, t)) {
     headers <- request[["http_request"]][["header"]]
     if (is.null(headers[["Content-Type"]])) {
-      request[["http_request"]][["header"]][[
-        "Content-Type"
-      ]] <- "application/json"
+      request[["http_request"]][["header"]][["Content-Type"]] <- "application/json"
     }
     if (is.null(headers[["Accept"]])) {
       request[["http_request"]][["header"]][["Accept"]] <- "application/json"

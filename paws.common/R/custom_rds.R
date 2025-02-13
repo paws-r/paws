@@ -1,6 +1,5 @@
 rds_build_auth_token <- function(endpoint, user, creds = NULL, region = NULL) {
-  if (!startsWith(endpoint, "https://"))
-    endpoint <- paste0("https://", endpoint)
+  if (!startsWith(endpoint, "https://")) endpoint <- paste0("https://", endpoint)
   req <- new_http_request("GET", endpoint)
   auth_token_params <- list(Action = "connect", DBUser = user)
   req$url$raw_query <- update_query_string(req$url$raw_query, auth_token_params)
@@ -21,12 +20,7 @@ rds_build_auth_token <- function(endpoint, user, creds = NULL, region = NULL) {
   return(substr(url, 9, nchar(url)))
 }
 
-rds_build_auth_token_v2 <- function(
-  DBHostname,
-  Port,
-  DBUsername,
-  Region = NULL
-) {
+rds_build_auth_token_v2 <- function(DBHostname, Port, DBUsername, Region = NULL) {
   op <- new_operation(
     name = "connect",
     http_method = "GET",
@@ -43,8 +37,7 @@ rds_build_auth_token_v2 <- function(
     config$region <- Region
   }
 
-  if (!startsWith(DBHostname, "https://"))
-    DBHostname <- paste0("https://", DBHostname)
+  if (!startsWith(DBHostname, "https://")) DBHostname <- paste0("https://", DBHostname)
   config$endpoint <- paste(DBHostname, Port, sep = ":")
 
   metadata <- list(

@@ -8,11 +8,7 @@ test_that("get_config", {
   expect_equal(actual$region, 123, ignore_attr = TRUE)
 
   # Check if config is returned when executed in a `do.call`.
-  expect_equal(
-    do.call(svc$operation, list()),
-    svc$operation(),
-    ignore_attr = TRUE
-  )
+  expect_equal(do.call(svc$operation, list()), svc$operation(), ignore_attr = TRUE)
 
   f <- function() {
     svc$operation()
@@ -42,11 +38,7 @@ test_that("get_config optional parameter update", {
 })
 
 test_that("set_config", {
-  svc <- list(
-    f = function() "foo",
-    g = function() 123,
-    h = function() get_config()
-  )
+  svc <- list(f = function() "foo", g = function() 123, h = function() get_config())
   a <- set_config(svc, list(region = "foo", endpoint = "bar"))
   expect_equal(a$f(), "foo")
   expect_equal(a$g(), 123)
@@ -90,10 +82,7 @@ test_that("get_role_session_name", {
 })
 
 test_that("get_web_identity_token_file", {
-  expect_error(
-    get_web_identity_token_file(),
-    "No WebIdentityToken file available"
-  )
+  expect_error(get_web_identity_token_file(), "No WebIdentityToken file available")
 
   withr::with_envvar(list(AWS_WEB_IDENTITY_TOKEN_FILE = "bar"), {
     expect_equal(get_web_identity_token_file(), "bar")
@@ -233,11 +222,7 @@ services/"
         http_request$method == "PUT" &&
         http_request$url$path == "/latest/api/token" &&
         !is.na(http_request$header[["X-aws-ec2-metadata-token-ttl-seconds"]]) &&
-        !is.na(
-          as.numeric(
-            http_request$header[["X-aws-ec2-metadata-token-ttl-seconds"]]
-          )
-        )
+        !is.na(as.numeric(http_request$header[["X-aws-ec2-metadata-token-ttl-seconds"]]))
     ) {
       # provide a valid IMDSv2 metadata service token
       mock_imdsv2_token_response <- HttpResponse(
@@ -301,11 +286,7 @@ services/"
 test_that("get sso legacy credentials", {
   mock_get_config_file_path <- mock2("data_sso_ini")
   mock_sso_credential_process <- mock2(invisible(TRUE))
-  mockery::stub(
-    config_file_provider,
-    "get_config_file_path",
-    mock_get_config_file_path
-  )
+  mockery::stub(config_file_provider, "get_config_file_path", mock_get_config_file_path)
   mockery::stub(
     config_file_provider,
     "sso_credential_process",
@@ -329,11 +310,7 @@ test_that("get sso legacy credentials", {
 test_that("get sso credentials", {
   mock_get_config_file_path <- mock2("data_sso_ini")
   mock_sso_credential_process <- mock2(invisible(TRUE))
-  mockery::stub(
-    config_file_provider,
-    "get_config_file_path",
-    mock_get_config_file_path
-  )
+  mockery::stub(config_file_provider, "get_config_file_path", mock_get_config_file_path)
   mockery::stub(
     config_file_provider,
     "sso_credential_process",
@@ -394,10 +371,7 @@ test_that("sso_credential_process legacy", {
 
   # check for correct sso_cache
   expect_true(
-    grepl(
-      "c7aaaf71fcc8777ae2475525ed049d39fe16c484",
-      mock_arg(mock_fromJSON)[[1]]
-    )
+    grepl("c7aaaf71fcc8777ae2475525ed049d39fe16c484", mock_arg(mock_fromJSON)[[1]])
   )
   expect_equal(
     mock_arg(mock_Creds),
@@ -450,10 +424,7 @@ test_that("sso_credential_process", {
 
   # check for correct sso_cache
   expect_true(
-    grepl(
-      "0ad374308c5a4e22f723adf10145eafad7c4031c",
-      mock_arg(mock_fromJSON)[[1]]
-    )
+    grepl("0ad374308c5a4e22f723adf10145eafad7c4031c", mock_arg(mock_fromJSON)[[1]])
   )
   expect_equal(
     mock_arg(mock_Creds),
@@ -597,10 +568,7 @@ test_that("merge_config default param config", {
   )
 
   # Check if cfg is not affected by credentials list()
-  actual2 <- merge_config(
-    cfg,
-    list(credentials = list(), endpoint = NULL, region = NULL)
-  )
+  actual2 <- merge_config(cfg, list(credentials = list(), endpoint = NULL, region = NULL))
 
   # Check if default config is not affected by default credentials()
   actual3 <- merge_config(
@@ -623,11 +591,7 @@ test_that("merge_config modify default config with param config", {
   # check if list config is modified by credentials()
   actual1 <- merge_config(
     list(),
-    list(
-      credentials = credentials(profile = "dummy"),
-      endpoint = NULL,
-      region = NULL
-    )
+    list(credentials = credentials(profile = "dummy"), endpoint = NULL, region = NULL)
   )
 
   # check if list config is modified by credentials
@@ -639,11 +603,7 @@ test_that("merge_config modify default config with param config", {
   # check if config() is modified by all param config
   actual3 <- merge_config(
     config(),
-    list(
-      credentials = credentials(profile = "dummy"),
-      endpoint = "bar",
-      region = "zoo"
-    )
+    list(credentials = credentials(profile = "dummy"), endpoint = "bar", region = "zoo")
   )
 
   expect_credentials <- as.list(credentials(profile = "dummy"))
@@ -668,11 +628,7 @@ test_that("merge_config config and param config", {
 
   # check if list config is modified by credentials
   actual2 <- merge_config(
-    config(
-      credentials(profile = "dummy"),
-      endpoint = "endpoint1",
-      region = "eu-west-1"
-    ),
+    config(credentials(profile = "dummy"), endpoint = "endpoint1", region = "eu-west-1"),
     list(
       credentials = list(profile = "edited"),
       endpoint = "my-endpoint",
@@ -694,9 +650,7 @@ test_that("merge_config config and param config", {
     )
   )
   actual4 <- merge_config(
-    config(
-      credentials(creds(access_key_id = "dummy", secret_access_key = "secret"))
-    ),
+    config(credentials(creds(access_key_id = "dummy", secret_access_key = "secret"))),
     list(endpoint = "my-endpoint", region = "us-east-1")
   )
 
@@ -717,9 +671,7 @@ test_that("merge_config config and param config", {
   )
 
   expect4 <- config(
-    credentials(
-      creds = creds(access_key_id = "dummy", secret_access_key = "secret")
-    ),
+    credentials(creds = creds(access_key_id = "dummy", secret_access_key = "secret")),
     endpoint = "my-endpoint",
     region = "us-east-1"
   )

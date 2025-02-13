@@ -4,10 +4,7 @@
 
 op <- Operation(name = "OperationName")
 svc <- Client(
-  client_info = ClientInfo(
-    json_version = "1.1",
-    target_prefix = "com.amazonaws.foo"
-  )
+  client_info = ClientInfo(json_version = "1.1", target_prefix = "com.amazonaws.foo")
 )
 svc$handlers$build <- HandlerList(jsonrpc_build)
 UUID_V4_PATTERN <- "[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}"
@@ -58,9 +55,7 @@ test_that("build blob value", {
 })
 
 test_that("build blob map", {
-  input <- op_input3(
-    BlobMap = list(key1 = charToRaw("foo"), key2 = charToRaw("bar"))
-  )
+  input <- op_input3(BlobMap = list(key1 = charToRaw("foo"), key2 = charToRaw("bar")))
   req <- new_request(svc, op, input, NULL)
   req <- build(req)
   expect_equal(req$body, '{"BlobMap":{"key1":"Zm9v","key2":"YmFy"}}')
@@ -81,9 +76,7 @@ test_that("build blob list", {
 
 op_input5 <- function(RecursiveStruct) {
   args <- list(RecursiveStruct = RecursiveStruct)
-  interface <- Structure(
-    RecursiveStruct = Structure(NoRecurse = Scalar(type = "string"))
-  )
+  interface <- Structure(RecursiveStruct = Structure(NoRecurse = Scalar(type = "string")))
   return(populate(args, interface))
 }
 
@@ -105,15 +98,10 @@ op_input6 <- function(RecursiveStruct) {
 }
 
 test_that("build nested structure", {
-  input <- op_input6(
-    RecursiveStruct = list(RecursiveStruct = list(NoRecurse = "foo"))
-  )
+  input <- op_input6(RecursiveStruct = list(RecursiveStruct = list(NoRecurse = "foo")))
   req <- new_request(svc, op, input, NULL)
   req <- build(req)
-  expect_equal(
-    req$body,
-    '{"RecursiveStruct":{"RecursiveStruct":{"NoRecurse":"foo"}}}'
-  )
+  expect_equal(req$body, '{"RecursiveStruct":{"RecursiveStruct":{"NoRecurse":"foo"}}}')
 })
 
 op_input7 <- function(RecursiveStruct) {
@@ -215,10 +203,7 @@ op_input10 <- function(RecursiveStruct) {
 test_that("build nested structure", {
   input <- op_input10(
     RecursiveStruct = list(
-      RecursiveMap = list(
-        bar = list(NoRecurse = "bar"),
-        foo = list(NoRecurse = "foo")
-      )
+      RecursiveMap = list(bar = list(NoRecurse = "bar"), foo = list(NoRecurse = "foo"))
     )
   )
   req <- new_request(svc, op, input, NULL)
@@ -273,10 +258,7 @@ op_input13 <- function(FooEnum, ListEnums) {
       .tags = list(enum = "InputService8TestShapeEnumType")
     ),
     ListEnums = List(
-      Scalar(
-        type = "string",
-        .tags = list(enum = "InputService8TestShapeEnumType")
-      )
+      Scalar(type = "string", .tags = list(enum = "InputService8TestShapeEnumType"))
     )
   )
   return(populate(args, interface))
@@ -358,9 +340,7 @@ test_that("build nested structure with incomplete input shape", {
 # Build with no target prefix
 
 op <- Operation(name = "OperationName")
-svc <- Client(
-  client_info = ClientInfo(json_version = "1.1", target_prefix = NULL)
-)
+svc <- Client(client_info = ClientInfo(json_version = "1.1", target_prefix = NULL))
 svc$handlers$build <- HandlerList(jsonrpc_build)
 
 op_input1 <- function(Name) {
@@ -536,10 +516,7 @@ op_output7 <- Structure(
     .tags = list(enum = "OutputService7TestShapeJSONEnumType")
   ),
   ListEnums = List(
-    Scalar(
-      type = "string",
-      .tags = list(enum = "OutputService7TestShapeJSONEnumType")
-    )
+    Scalar(type = "string", .tags = list(enum = "OutputService7TestShapeJSONEnumType"))
   )
 )
 
@@ -547,9 +524,7 @@ test_that("unmarshal enums", {
   req <- new_request(svc, op, NULL, op_output7)
   req$http_response <- HttpResponse(
     status_code = 200,
-    body = charToRaw(
-      "{\"FooEnum\": \"foo\", \"ListEnums\": [\"foo\", \"bar\"]}"
-    )
+    body = charToRaw("{\"FooEnum\": \"foo\", \"ListEnums\": [\"foo\", \"bar\"]}")
   )
   req <- unmarshal(req)
   out <- req$data
@@ -607,14 +582,8 @@ test_that("unmarshal nested structure with incomplete output shape", {
   out <- req$data
   expect_length(out$Items, 1)
   expect_equal(out$Items[[1]]$Bar$NS, c("3", "2", "1"))
-  expect_equal(
-    out$Items[[1]]$Foo$L[[1]],
-    list(M = list(FooBar = list(N = "1")))
-  )
-  expect_equal(
-    out$Items[[1]]$Foo$L[[2]],
-    list(M = list(FooBar = list(N = "2")))
-  )
+  expect_equal(out$Items[[1]]$Foo$L[[1]], list(M = list(FooBar = list(N = "1"))))
+  expect_equal(out$Items[[1]]$Foo$L[[2]], list(M = list(FooBar = list(N = "2"))))
 })
 
 test_that("unmarshal UTF-8 text", {

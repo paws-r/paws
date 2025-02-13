@@ -76,25 +76,13 @@ test_that("resolver_endpoint boto", {
 test_that("resolver_endpoint js", {
   on.exit(vendor_cache$vendor <- "boto")
   s3_endpoints_js <- list(
-    "us-gov-west-1" = list(
-      endpoint = "s3.{region}.amazonaws.com",
-      global = FALSE
-    ),
+    "us-gov-west-1" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE),
     "us-west-1" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE),
     "us-west-2" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE),
     "eu-west-1" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE),
-    "ap-southeast-1" = list(
-      endpoint = "s3.{region}.amazonaws.com",
-      global = FALSE
-    ),
-    "ap-southeast-2" = list(
-      endpoint = "s3.{region}.amazonaws.com",
-      global = FALSE
-    ),
-    "ap-northeast-1" = list(
-      endpoint = "s3.{region}.amazonaws.com",
-      global = FALSE
-    ),
+    "ap-southeast-1" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE),
+    "ap-southeast-2" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE),
+    "ap-northeast-1" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE),
     "sa-east-1" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE),
     "us-east-1" = list(endpoint = "s3.amazonaws.com", global = FALSE),
     "*" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE),

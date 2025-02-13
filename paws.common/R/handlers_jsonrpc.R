@@ -8,18 +8,11 @@ jsonrpc_build <- function(request) {
     body <- EMPTY_JSON
   }
 
-  if (
-    !is_empty(request$client_info$target_prefix) ||
-      (!is.null(body) && body != "{}")
-  ) {
+  if (!is_empty(request$client_info$target_prefix) || (!is.null(body) && body != "{}")) {
     request <- set_body(request, body)
   }
   if (!is_empty(request$client_info$target_prefix)) {
-    target <- paste0(
-      request$client_info$target_prefix,
-      ".",
-      request$operation$name
-    )
+    target <- paste0(request$client_info$target_prefix, ".", request$operation$name)
     request$http_request$header["X-Amz-Target"] <- target
   }
 
@@ -71,12 +64,7 @@ jsonrpc_unmarshal_error <- function(request) {
   }
   code <- strsplit(error[["__type"]], "#")[[1]][1]
   message <- ""
-  message_name <- grep(
-    "message",
-    names(error),
-    ignore.case = TRUE,
-    value = TRUE
-  )
+  message_name <- grep("message", names(error), ignore.case = TRUE, value = TRUE)
   if (length(message_name) > 0) {
     message <- error[[message_name]]
   }

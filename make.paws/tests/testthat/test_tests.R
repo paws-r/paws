@@ -36,18 +36,12 @@ test_that("make_tests", {
     metadata = list(serviceAbbreviation = "api"),
     operations = list(
       CreateFoo = list(name = "CreateFoo"),
-      DescribeFoo = list(
-        name = "DescribeFoo",
-        input = list(shape = "DescribeFooShape")
-      ),
+      DescribeFoo = list(name = "DescribeFoo", input = list(shape = "DescribeFooShape")),
       ListBar = list(name = "ListBar"),
       ListBaz = list(name = "ListBaz", input = list(shape = "ListBazShape"))
     ),
     shapes = list(
-      DescribeFooShape = list(
-        members = list(MaxResults = list()),
-        required = list()
-      ),
+      DescribeFooShape = list(members = list(MaxResults = list()), required = list()),
       ListBazShape = list(members = list(Qux = list()), required = list("Qux"))
     )
   )

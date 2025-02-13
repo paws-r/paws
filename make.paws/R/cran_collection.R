@@ -64,10 +64,7 @@ write_source_collection <- function(
     }
   }
   write_list(clients, file.path(out_dir, "R", "paws.R"))
-  write_list(
-    make_reexports(),
-    file.path(out_dir, "R", "reexports_paws.common.R")
-  )
+  write_list(make_reexports(), file.path(out_dir, "R", "reexports_paws.common.R"))
 }
 
 # Add the category packages to the DESCRIPTION file's Imports.

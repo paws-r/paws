@@ -15,10 +15,7 @@ interface_file_template <- template(
 
 # Return a list of interfaces for an API.
 make_interfaces <- function(api) {
-  interfaces <- lapply(
-    api$operations,
-    function(op) make_interface_pair(op, api)
-  )
+  interfaces <- lapply(api$operations, function(op) make_interface_pair(op, api))
   render(
     interface_file_template,
     service = package_name(api),
@@ -50,11 +47,7 @@ make_interface <- function(name, shape_data, api) {
     if (key == "shape") next
     shape <- tag_add(shape, stats::setNames(shape_data[[key]], key))
   }
-  interface <- render(
-    interface_template,
-    name = name,
-    shape = get_structure(shape)
-  )
+  interface <- render(interface_template, name = name, shape = get_structure(shape))
   return(interface)
 }
 
@@ -71,9 +64,7 @@ make_interface_pair <- function(operation, api) {
 }
 
 # Declare variables to avoid R CMD check notes about templates.
-utils::globalVariables(
-  "\n    ${name} <- function(...) {\n      list()\n    }\n    "
-)
+utils::globalVariables("\n    ${name} <- function(...) {\n      list()\n    }\n    ")
 
 make_empty_interface <- function(name) {
   interface_template <- template(

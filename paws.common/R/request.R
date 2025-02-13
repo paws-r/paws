@@ -126,9 +126,7 @@ new_request <- function(client, operation, params, data, dest = NULL) {
     stream_api = operation$stream_api
   )
 
-  http_req$url <- parse_url(
-    paste0(client$client_info$endpoint, operation$http_path)
-  )
+  http_req$url <- parse_url(paste0(client$client_info$endpoint, operation$http_path))
 
   http_req <- sanitize_host_for_header(http_req)
 

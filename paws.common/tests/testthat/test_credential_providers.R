@@ -27,11 +27,7 @@ test_that("get_creds_from_sts_resp()", {
   test_access_key_id <- "AccessKeyId"
   test_secret_access_key <- "SecretAccessKey"
   test_session_token <- "SessionToken"
-  test_expiration <- structure(
-    1136214245,
-    class = c("POSIXct", "POSIXt"),
-    tzone = "GMT"
-  )
+  test_expiration <- structure(1136214245, class = c("POSIXct", "POSIXt"), tzone = "GMT")
 
   test_response <- list(
     Credentials = list(
@@ -84,9 +80,7 @@ test_that("config_file_provider", {
 
     # Test profile using environment credential_source
     mock_get_assumed_role_creds <- mock2(creds$p1)
-    local_mocked_bindings(
-      get_assumed_role_creds = mock_get_assumed_role_creds,
-    )
+    local_mocked_bindings(get_assumed_role_creds = mock_get_assumed_role_creds, )
     expect_equal(config_file_provider("p1"), creds$p1)
     expect_equal(
       mock_arg(mock_get_assumed_role_creds)[1:3],

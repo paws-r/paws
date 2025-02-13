@@ -18,14 +18,8 @@ new_handlers <- function(protocol, signer) {
     get(paste0(protocol, "_", type))
   }
   handlers <- Handlers(
-    validate = HandlerList(
-      validate_endpoint_handler,
-      validate_parameters_handler
-    ),
-    build = HandlerList(
-      add_host_exec_env_user_agent_handler,
-      handler(protocol, "build")
-    ),
+    validate = HandlerList(validate_endpoint_handler, validate_parameters_handler),
+    build = HandlerList(add_host_exec_env_user_agent_handler, handler(protocol, "build")),
     sign = HandlerList(
       build_content_length_handler,
       handler(signer, "sign_request_handler")
@@ -103,12 +97,7 @@ new_handlers <- function(protocol, signer) {
 #' @seealso [new_operation()]
 #'
 #' @export
-new_service <- function(
-  metadata,
-  handlers,
-  cfgs = NULL,
-  operation = Operation()
-) {
+new_service <- function(metadata, handlers, cfgs = NULL, operation = Operation()) {
   cfg <- client_config(
     service_name = metadata$service_name,
     endpoints = metadata$endpoints,
@@ -134,11 +123,7 @@ new_service <- function(
 
   handlers <- customize(handlers, metadata$service_name)
 
-  svc <- Client(
-    config = cfg$config,
-    client_info = client_info,
-    handlers = handlers
-  )
+  svc <- Client(config = cfg$config, client_info = client_info, handlers = handlers)
   return(svc)
 }
 

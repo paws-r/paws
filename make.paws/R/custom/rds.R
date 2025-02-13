@@ -57,10 +57,7 @@ NULL
 #' @keywords internal
 #' @seealso \link[paws.database:rds_build_auth_token_v2]{rds_build_auth_token_v2}
 #' @rdname rds_build_auth_token
-rds_build_auth_token <- utils::getFromNamespace(
-  "rds_build_auth_token",
-  "paws.common"
-)
+rds_build_auth_token <- utils::getFromNamespace("rds_build_auth_token", "paws.common")
 .rds$operations$build_auth_token <- rds_build_auth_token
 
 #' Generates an auth token used to connect to a db with IAM credentials.

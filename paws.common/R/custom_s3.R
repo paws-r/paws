@@ -97,12 +97,7 @@ get_access_point_endpoint <- function(access_point) {
   region <- part[4]
   account <- part[5]
   name <- part[7]
-  endpoint <- sprintf(
-    "%s-%s.s3-accesspoint.%s.amazonaws.com",
-    name,
-    account,
-    region
-  )
+  endpoint <- sprintf("%s-%s.s3-accesspoint.%s.amazonaws.com", name, account, region)
   return(endpoint)
 }
 
@@ -138,10 +133,7 @@ update_endpoint_for_s3_config <- function(request) {
   }
 
   if (use_virtual_host_style) {
-    request$http_request$url <- move_bucket_to_host(
-      request$http_request$url,
-      bucket_name
-    )
+    request$http_request$url <- move_bucket_to_host(request$http_request$url, bucket_name)
   }
 
   return(request)
@@ -274,10 +266,7 @@ s3_unmarshal_error <- function(request) {
     request$http_response$body,
     request$operation$stream_api
   )
-  data <- tryCatch(
-    decode_xml(request$http_response$body),
-    error = function(e) NULL
-  )
+  data <- tryCatch(decode_xml(request$http_response$body), error = function(e) NULL)
   # Bucket exists in a different region, and request needs
   # to be made to the correct region.
   if (request$http_response$status_code == 301) {
@@ -287,9 +276,7 @@ s3_unmarshal_error <- function(request) {
       request$config$region,
       request$config$endpoint
     )
-    if (
-      nzchar(v <- request$http_response$header[["x-amz-bucket-region"]] %||% "")
-    ) {
+    if (nzchar(v <- request$http_response$header[["x-amz-bucket-region"]] %||% "")) {
       error_msg[[2]] <- sprintf(", bucket is in '%s' region", v)
     }
     request$error <- Error(
@@ -314,12 +301,7 @@ s3_unmarshal_error <- function(request) {
     return(request)
   }
 
-  request$error <- Error(
-    code,
-    message,
-    request$http_response$status_code,
-    error_response
-  )
+  request$error <- Error(code, message, request$http_response$status_code, error_response)
   return(request)
 }
 
@@ -461,11 +443,7 @@ s3_get_bucket_region <- function(request, error, bucket) {
 # Splice a new endpoint into an existing URL. Note that some endpoints
 # from the endpoint provider have a path component which will be
 # discarded by this function.
-set_request_url <- function(
-  original_endpoint,
-  new_endpoint,
-  use_new_scheme = TRUE
-) {
+set_request_url <- function(original_endpoint, new_endpoint, use_new_scheme = TRUE) {
   new_endpoint_components <- parse_url(new_endpoint)
   final_endpoint_components <- parse_url(original_endpoint)
   scheme <- final_endpoint_components$scheme
@@ -536,14 +514,8 @@ quote_source_header_from_list <- function(source, tags) {
 ################################################################################
 
 customizations$s3 <- function(handlers) {
-  handlers$build <- handlers_add_front(
-    handlers$build,
-    update_endpoint_for_s3_config
-  )
-  handlers$build <- handlers_add_front(
-    handlers$build,
-    populate_location_constraint
-  )
+  handlers$build <- handlers_add_front(handlers$build, update_endpoint_for_s3_config)
+  handlers$build <- handlers_add_front(handlers$build, populate_location_constraint)
   handlers$build <- handlers_add_front(handlers$build, convert_file_to_raw)
   handlers$build <- handlers_add_front(handlers$build, handle_copy_source_param)
   handlers$build <- handlers_add_front(handlers$build, sse_md5_build)

@@ -13,10 +13,7 @@ test_that("read_api", {
   fs::dir_create(api_dir, "2018-11-01")
   fs::dir_create(api_dir, "2017-11-01")
 
-  write_json(
-    list(foo = "examples"),
-    file.path(api_dir, "2018-11-01", "examples-1.json")
-  )
+  write_json(list(foo = "examples"), file.path(api_dir, "2018-11-01", "examples-1.json"))
 
   write_json(
     list(
@@ -35,18 +32,9 @@ test_that("read_api", {
     file.path(api_dir, "2018-11-01", "paginators-1.json")
   )
 
-  write_json(
-    list(foo = "wrong1"),
-    file.path(api_dir, "2017-11-01", "examples-1.json")
-  )
-  write_json(
-    list(foo = "wrong3"),
-    file.path(api_dir, "2017-11-01", "service-2.json")
-  )
-  write_json(
-    list(foo = "wrong4"),
-    file.path(api_dir, "2017-11-01", "paginators-1.json")
-  )
+  write_json(list(foo = "wrong1"), file.path(api_dir, "2017-11-01", "examples-1.json"))
+  write_json(list(foo = "wrong3"), file.path(api_dir, "2017-11-01", "service-2.json"))
+  write_json(list(foo = "wrong4"), file.path(api_dir, "2017-11-01", "paginators-1.json"))
 
   write_json(
     list(
@@ -102,17 +90,9 @@ test_that("merge_examples", {
 })
 
 test_that("merge_paginators", {
-  api <- list(
-    operations = list(DescribeDestinations = list(), GetLogEvents = list())
-  )
+  api <- list(operations = list(DescribeDestinations = list(), GetLogEvents = list()))
   paginator <- list("DescribeDestinations" = list("input_token" = "nextToken"))
   ret <- make.paws:::merge_paginators(api, "logs", paginator)
-  expect_equal(
-    ret$operations$DescribeDestinations$paginators$input_token,
-    "nextToken"
-  )
-  expect_equal(
-    ret$operations$DescribeDestinations$paginators$input_token,
-    "nextToken"
-  )
+  expect_equal(ret$operations$DescribeDestinations$paginators$input_token, "nextToken")
+  expect_equal(ret$operations$DescribeDestinations$paginators$input_token, "nextToken")
 })

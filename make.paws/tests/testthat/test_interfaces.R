@@ -5,9 +5,7 @@ test_that("make_interfaces", {
       Foo = list(name = "Foo", input = list(shape = "FooShape")),
       Bar = list(name = "Bar")
     ),
-    shapes = list(
-      FooShape = list(type = "string", enum = list("value1", "value2"))
-    )
+    shapes = list(FooShape = list(type = "string", enum = list("value1", "value2")))
   )
   actual <- make_interfaces(api)
   expected <- gsub(
@@ -48,9 +46,7 @@ test_that("make_interface with root-level metadata", {
         input = list(shape = "FooShape", locationName = "FooShapeInput")
       )
     ),
-    shapes = list(
-      FooShape = list(type = "string", enum = list("value1", "value2"))
-    )
+    shapes = list(FooShape = list(type = "string", enum = list("value1", "value2")))
   )
   actual <- make_interface(".api$foo_input", api$operations$Foo$input, api)
   expected <- gsub(
@@ -67,9 +63,7 @@ test_that("make_interface with root-level metadata", {
 
 test_that("scalar", {
   api <- list(
-    shapes = list(
-      FooShape = list(type = "string", enum = list("value1", "value2"))
-    )
+    shapes = list(FooShape = list(type = "string", enum = list("value1", "value2")))
   )
   out <- make_shape(list(shape = "FooShape"), api = api)
   expect_length(out, 0)
@@ -128,14 +122,8 @@ test_that("nested structure", {
         type = "structure",
         members = list(Foo = list(shape = "FooShape"))
       ),
-      FooShape = list(
-        type = "structure",
-        members = list(Bar = list(shape = "BarShape"))
-      ),
-      BarShape = list(
-        type = "structure",
-        members = list(Baz = list(shape = "BazShape"))
-      ),
+      FooShape = list(type = "structure", members = list(Bar = list(shape = "BarShape"))),
+      BarShape = list(type = "structure", members = list(Baz = list(shape = "BazShape"))),
       BazShape = list(type = "double")
     )
   )

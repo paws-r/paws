@@ -241,10 +241,7 @@ s3_generate_presigned_url <- function(
       )
     },
     error = function(err) {
-      stop(
-        sprintf("Client does not have method: %s", client_method),
-        call. = FALSE
-      )
+      stop(sprintf("Client does not have method: %s", client_method), call. = FALSE)
     }
   )
   operation_body <- body(operation_fun)
@@ -270,9 +267,7 @@ s3_generate_presigned_url <- function(
   # create: input from client_method
   kwargs <- as.list(modifyList(original_params, params))
   input <- do.call(
-    get(.pkg_api, envir = getNamespace(pkg_name))[[
-      sprintf("%s_input", client_method)
-    ]],
+    get(.pkg_api, envir = getNamespace(pkg_name))[[sprintf("%s_input", client_method)]],
     kwargs
   )
 

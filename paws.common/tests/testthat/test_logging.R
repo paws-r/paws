@@ -13,11 +13,7 @@ test_that("check default logging settings", {
 
 test_that("check updating paws log config", {
   temp_file <- tempfile()
-  paws_config_log(
-    level = 3L,
-    file = temp_file,
-    timestamp_fmt = "%Y-%m-%d %H:%M"
-  )
+  paws_config_log(level = 3L, file = temp_file, timestamp_fmt = "%Y-%m-%d %H:%M")
 
   log_level <- getOption("paws.log_level")
   log_file <- getOption("paws.log_file")
@@ -75,11 +71,7 @@ test_that("check if http logs aren't being tracked", {
 })
 
 test_that("check reset log config", {
-  paws_config_log(
-    level = 3L,
-    file = "made-up",
-    timestamp_fmt = "%Y-%m-%d %H:%M"
-  )
+  paws_config_log(level = 3L, file = "made-up", timestamp_fmt = "%Y-%m-%d %H:%M")
   log_level <- getOption("paws.log_level")
   log_file <- getOption("paws.log_file")
   log_timestamp_fmt <- getOption("paws.log_timestamp_fmt")
@@ -99,11 +91,7 @@ test_that("check reset log config", {
 })
 
 test_that("ensure init_log_config doesn't modified already set log config", {
-  paws_config_log(
-    level = 3L,
-    file = "made-up",
-    timestamp_fmt = "%Y-%m-%d %H:%M"
-  )
+  paws_config_log(level = 3L, file = "made-up", timestamp_fmt = "%Y-%m-%d %H:%M")
 
   init_log_config()
 
@@ -130,10 +118,7 @@ test_that("update log config from environmental variables", {
   expect_equal(log_level, 4L)
   expect_equal(log_file, "dummy-file")
   expect_equal(log_timestamp_fmt, "made-up")
-  lapply(
-    c("PAWS_LOG_LEVEL", "PAWS_LOG_TIMESTAMP_FMT", "PAWS_LOG_FILE"),
-    Sys.unsetenv
-  )
+  lapply(c("PAWS_LOG_LEVEL", "PAWS_LOG_TIMESTAMP_FMT", "PAWS_LOG_FILE"), Sys.unsetenv)
 })
 
 test_that("check log messages", {

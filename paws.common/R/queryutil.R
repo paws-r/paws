@@ -43,10 +43,7 @@ query_parse_structure <- function(values, value, prefix, tag, is_ec2 = FALSE) {
       name <- tag_get(field, "queryName")
     }
     if (name == "") {
-      if (
-        tag_get(field, "flattened") != "" &&
-          tag_get(field, "locationNameList") != ""
-      ) {
+      if (tag_get(field, "flattened") != "" && tag_get(field, "locationNameList") != "") {
         name <- tag_get(field, "locationNameList")
       } else if (tag_get(field, "locationName") != "") {
         name <- tag_get(field, "locationName")

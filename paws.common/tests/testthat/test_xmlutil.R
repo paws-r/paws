@@ -1,7 +1,5 @@
 test_that("add XML namespace", {
-  object <- list(
-    Foo = list(Bar = list(list(Baz = list(Qux = 123, Quux = 456))))
-  )
+  object <- list(Foo = list(Bar = list(list(Baz = list(Qux = 123, Quux = 456)))))
   result <- add_xmlns(object, "https://foo/")
   expect_equal(attr(result, "xmlns"), "https://foo/")
   expect_equal(attr(result$Foo, "xmlns"), "https://foo/")
@@ -64,23 +62,13 @@ test_that("check nested xml build with nested default parameters", {
 })
 
 test_that("check if list is transposed correctly", {
-  obj1 <- list(
-    var1 = c(1, 2, 3),
-    var2 = letters[1:3],
-    var3 = list(),
-    var4 = list()
-  )
+  obj1 <- list(var1 = c(1, 2, 3), var2 = letters[1:3], var3 = list(), var4 = list())
   expected1 <- list(
     list(var1 = 1, var2 = "a", var3 = NULL, var4 = NULL),
     list(var1 = 2, var2 = "b", var3 = NULL, var4 = NULL),
     list(var1 = 3, var2 = "c", var3 = NULL, var4 = NULL)
   )
-  obj2 <- list(
-    var1 = list(),
-    var2 = letters[1:3],
-    var3 = list(),
-    var4 = c(1, 2, 3)
-  )
+  obj2 <- list(var1 = list(), var2 = letters[1:3], var3 = list(), var4 = c(1, 2, 3))
   expected2 <- list(
     list(var1 = NULL, var2 = "a", var3 = NULL, var4 = 1),
     list(var1 = NULL, var2 = "b", var3 = NULL, var4 = 2),

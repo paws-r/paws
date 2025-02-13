@@ -40,11 +40,7 @@ rest_build_location_elements <- function(request, values, build_get_query) {
         name
       )
     } else if (location == "uri") {
-      request$http_request$url <- rest_build_uri(
-        request$http_request$url,
-        field,
-        name
-      )
+      request$http_request$url <- rest_build_uri(request$http_request$url, field, name)
     } else if (location == "querystring") {
       query <- rest_build_query_string(query, field, name)
     } else if (build_get_query) {
@@ -64,10 +60,7 @@ rest_build_header_map <- function(header, values) {
   prefix <- tag_get(values, "locationName")
   for (key in names(values)) {
     value <- values[[key]]
-    header[[paste0(prefix, key)]] <- convert_type(
-      value,
-      timestamp_format = "unix"
-    )
+    header[[paste0(prefix, key)]] <- convert_type(value, timestamp_format = "unix")
   }
   return(header)
 }
