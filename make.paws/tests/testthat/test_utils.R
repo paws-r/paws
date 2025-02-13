@@ -10,8 +10,7 @@ test_that("get_structure", {
 })
 
 test_that("parse_operations", {
-  text <-
-    "#' foo
+  text <- "#' foo
   NULL
 
   #' An operation

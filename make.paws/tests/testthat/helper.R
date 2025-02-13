@@ -18,7 +18,12 @@
 #
 # $z
 # [1] "bye"
-mock2 <- function(..., cycle = FALSE, side_effect = NULL, envir = parent.frame()) {
+mock2 <- function(
+  ...,
+  cycle = FALSE,
+  side_effect = NULL,
+  envir = parent.frame()
+) {
   return_values <- eval(substitute(alist(...)))
   return_values_env <- envir
   call_no <- 0
@@ -30,11 +35,12 @@ mock2 <- function(..., cycle = FALSE, side_effect = NULL, envir = parent.frame()
     args[[call_no]] <<- list(...)
     if (length(return_values)) {
       if (call_no > length(return_values) && !cycle) {
-        stop("too many calls to mock object and cycle set to FALSE", call. = FALSE)
+        stop(
+          "too many calls to mock object and cycle set to FALSE",
+          call. = FALSE
+        )
       }
-      value <- return_values[[
-        (call_no - 1) %% length(return_values) + 1
-      ]]
+      value <- return_values[[(call_no - 1) %% length(return_values) + 1]]
       return(eval(value, envir = return_values_env))
     }
 
@@ -45,7 +51,6 @@ mock2 <- function(..., cycle = FALSE, side_effect = NULL, envir = parent.frame()
   class(mock) <- "mock"
   return(mock)
 }
-
 
 # retrieves a list of all arguments used for the last mocked function call
 mock_arg <- function(m) {

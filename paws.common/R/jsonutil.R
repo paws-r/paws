@@ -39,7 +39,8 @@ json_build <- function(object) {
 }
 
 json_build_any <- function(values) {
-  build_fn <- switch(type(values),
+  build_fn <- switch(
+    type(values),
     structure = json_build_structure,
     list = json_build_list,
     map = json_build_map,
@@ -119,7 +120,8 @@ json_build_map <- function(values) {
 }
 
 json_build_scalar <- function(values) {
-  s <- switch(tag_get(values, "type"),
+  s <- switch(
+    tag_get(values, "type"),
     blob = sprintf('"%s"', convert_blob(values)),
     boolean = convert_boolean(values),
     double = as.character(values),
@@ -138,7 +140,8 @@ json_build_scalar <- function(values) {
 # Convert an API response in `node` to the shape given in `interface`.
 json_parse <- function(node, interface) {
   t <- type(interface)
-  parse_fn <- switch(t,
+  parse_fn <- switch(
+    t,
     structure = json_parse_structure,
     map = json_parse_map,
     list = json_parse_list,
@@ -214,7 +217,8 @@ json_parse_scalar <- function(node, interface) {
   if (t == "") {
     return(interface)
   }
-  convert <- switch(t,
+  convert <- switch(
+    t,
     blob = base64_to_raw,
     boolean = as.logical,
     double = as.numeric,

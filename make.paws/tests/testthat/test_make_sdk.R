@@ -13,16 +13,9 @@ api <- list(
   operations = list(
     Foo = list(
       name = "Foo",
-      http = list(
-        method = "GET",
-        requestUri = "/"
-      ),
-      input = list(
-        shape = "FooRequest"
-      ),
-      output = list(
-        shape = "FooResponse"
-      ),
+      http = list(method = "GET", requestUri = "/"),
+      input = list(shape = "FooRequest"),
+      output = list(shape = "FooResponse"),
       documentation = "Foo"
     )
   ),
@@ -31,51 +24,38 @@ api <- list(
       type = "structure",
       required = list("Foo"),
       members = list(
-        Foo = list(
-          shape = "Foo",
-          documentation = "Foo"
-        ),
-        Bar = list(
-          shape = "Bar",
-          documentation = "Bar"
-        )
+        Foo = list(shape = "Foo", documentation = "Foo"),
+        Bar = list(shape = "Bar", documentation = "Bar")
       )
     ),
     FooResponse = list(
       type = "structure",
       members = list(
-        Foo = list(
-          shape = "Foo",
-          documentation = "Foo"
-        ),
-        Bar = list(
-          shape = "Bar",
-          documentation = "Bar"
-        )
+        Foo = list(shape = "Foo", documentation = "Foo"),
+        Bar = list(shape = "Bar", documentation = "Bar")
       )
     ),
-    Foo = list(
-      type = "string"
-    ),
-    Bar = list(
-      type = "string"
-    )
+    Foo = list(type = "string"),
+    Bar = list(type = "string")
   ),
   documentation = "AWS Foo is an example AWS API."
 )
 
-api_path <- file.path(path_in, "botocore",  "data","foo", "2018-11-01", "service-2.json")
+api_path <- file.path(
+  path_in,
+  "botocore",
+  "data",
+  "foo",
+  "2018-11-01",
+  "service-2.json"
+)
 dir.create(dirname(api_path), recursive = TRUE, showWarnings = FALSE)
 jsonlite::write_json(api, api_path, auto_unbox = TRUE)
 
 region_config <- list(
-  rules = list(
-    "*/*" = list(
-      endpoint = "{service}.{region}.amazonaws.com"
-    )
-  )
+  rules = list("*/*" = list(endpoint = "{service}.{region}.amazonaws.com"))
 )
-region_config_path <- file.path(path_in, "botocore",  "data", "endpoints.json")
+region_config_path <- file.path(path_in, "botocore", "data", "endpoints.json")
 dir.create(dirname(region_config_path), recursive = TRUE, showWarnings = FALSE)
 jsonlite::write_json(region_config, region_config_path, auto_unbox = TRUE)
 
@@ -123,18 +103,14 @@ test_that("make_sdk with sub categories", {
       title = "Bar",
       description = "Bar.",
       category_description = "Category Bar.",
-      services = list(
-        "foo"
-      )
+      services = list("foo")
     ),
     list(
       name = "bar.p2",
       title = "Bar",
       description = "Bar.",
       category_description = "",
-      services = list(
-        "foo"
-      )
+      services = list("foo")
     )
   )
 

@@ -23,18 +23,12 @@ test_that("check list paws sub category packages", {
 
 test_that("check list paws only category packages", {
   pkgs_list <- list_paws_pkgs("./dummy/pkg4")
-  expect_equal(
-    basename(list_cat_pkgs(pkgs_list)),
-    c("paws.cat1", "paws.cat2")
-  )
+  expect_equal(basename(list_cat_pkgs(pkgs_list)), c("paws.cat1", "paws.cat2"))
 })
 
 test_that("check list paws only category packages", {
   pkgs_list <- list_paws_pkgs("./dummy/pkg4")
-  expect_equal(
-    basename(list_sub_cat_pkgs(pkgs_list)),
-    c("paws.cat1.p1")
-  )
+  expect_equal(basename(list_sub_cat_pkgs(pkgs_list)), c("paws.cat1.p1"))
 })
 
 test_that("check local check_pkgs remove notes", {
@@ -98,10 +92,7 @@ test_that("check paws_check_local_sub_cat", {
   expect_equal(check, list(paws = list(errors = "foo", warnings = "bar")))
   expect_equal(
     mock_arg(mock_check_pkgs),
-    list(
-      file.path("dummy", c("paws.cat1.p1", "paws.cat1.p2")),
-      FALSE
-    )
+    list(file.path("dummy", c("paws.cat1.p1", "paws.cat1.p2")), FALSE)
   )
 })
 
@@ -123,10 +114,7 @@ test_that("check paws_check_local_cat", {
 
   expect_equal(
     mock_arg(mock_check_pkgs),
-    list(
-      file.path("dummy", c("paws.cat1", "paws.cat2")),
-      FALSE
-    )
+    list(file.path("dummy", c("paws.cat1", "paws.cat2")), FALSE)
   )
   expect_equal(check, list(paws.cat1 = list(errors = "foo", warnings = "bar")))
 })
@@ -158,12 +146,7 @@ test_that("check paws_check_url", {
   mock_list_paws_pkgs <- mock2(
     file.path("dummy", c("paws", "paws.cat1", "paws.cat2"))
   )
-  mock_url_check <- mock2(
-    "foo",
-    "bar",
-    "cho",
-    cycle = T
-  )
+  mock_url_check <- mock2("foo", "bar", "cho", cycle = T)
   mockery::stub(paws_check_url, "urlchecker::url_check", mock_url_check)
   mockery::stub(paws_check_url, "list_paws_pkgs", mock_list_paws_pkgs)
 
@@ -337,10 +320,7 @@ test_that("check paws_uninstall", {
 
   expect_equal(
     mockery::mock_args(mock_remove_packages),
-    list(
-      list(c("paws.cat1", "paws.cat2")),
-      list("paws")
-    )
+    list(list(c("paws.cat1", "paws.cat2")), list("paws"))
   )
 })
 
@@ -388,11 +368,7 @@ test_that("check paws_build_cran_comments", {
   )
   mock_paws_check_local <- mock2(
     list(
-      paws = list(
-        errors = NULL,
-        warnings = NULL,
-        notes = NULL
-      ),
+      paws = list(errors = NULL, warnings = NULL, notes = NULL),
       paws.cat1 = list(
         errors = NULL,
         warnings = "this is a dummy warning",
@@ -406,11 +382,7 @@ test_that("check paws_build_cran_comments", {
     )
   )
   mock_write_line <- mock2()
-  mockery::stub(
-    paws_build_cran_comments,
-    "list_paws_pkgs",
-    mock_list_paws_pkgs
-  )
+  mockery::stub(paws_build_cran_comments, "list_paws_pkgs", mock_list_paws_pkgs)
   mockery::stub(
     paws_build_cran_comments,
     "paws_check_pkg_size",
@@ -421,20 +393,13 @@ test_that("check paws_build_cran_comments", {
     "paws_check_local",
     mock_paws_check_local
   )
-  mockery::stub(
-    paws_build_cran_comments,
-    "writeLines",
-    mock_write_line
-  )
+  mockery::stub(paws_build_cran_comments, "writeLines", mock_write_line)
 
   paws_build_cran_comments(in_dir = "made_up")
 
   expect_equal(
     mock_arg(mock_paws_check_pkg_size),
-    list(
-      "made_up",
-      "pkg_list" = c("paws.cat1", "paws.cat2")
-    )
+    list("made_up", "pkg_list" = c("paws.cat1", "paws.cat2"))
   )
   expect_equal(
     mock_arg(mock_paws_check_local),
@@ -489,21 +454,13 @@ test_that("check paws_build_cran_comments from cache", {
     "desc::desc_get_deps",
     mock_desc_get_deps
   )
-  mockery::stub(
-    paws_build_cran_comments,
-    "list_paws_pkgs",
-    mock_list_paws_pkgs
-  )
+  mockery::stub(paws_build_cran_comments, "list_paws_pkgs", mock_list_paws_pkgs)
   mockery::stub(
     paws_build_cran_comments,
     "paws_check_pkg_size",
     mock_paws_check_pkg_size
   )
-  mockery::stub(
-    paws_build_cran_comments,
-    "writeLines",
-    mock_write_line
-  )
+  mockery::stub(paws_build_cran_comments, "writeLines", mock_write_line)
 
   paws_build_cran_comments(
     in_dir = "made_up",
@@ -512,10 +469,7 @@ test_that("check paws_build_cran_comments from cache", {
 
   expect_equal(
     mock_arg(mock_paws_check_pkg_size),
-    list(
-      "made_up",
-      "pkg_list" = c("paws.cat1", "paws.cat2")
-    )
+    list("made_up", "pkg_list" = c("paws.cat1", "paws.cat2"))
   )
   expect_equal(
     mockery::mock_args(mock_write_line),
@@ -542,11 +496,7 @@ test_that("check paws_build_cran_comments from cache", {
 
 test_that("check if version is updated correctly", {
   mock_writelines <- mock2()
-  mockery::stub(
-    paws_update_version,
-    "writeLines",
-    mock_writelines
-  )
+  mockery::stub(paws_update_version, "writeLines", mock_writelines)
   paws_update_version(dir = "dummy/paws", version = "0.8.0")
 
   expected <- lapply(
@@ -568,16 +518,8 @@ test_that("check if script html span link formatted", {
   mock_writelines_2 <- mock2(side_effect = function(lines, path) {
     writeLines(lines, temp2)
   })
-  mockery::stub(
-    remove_html_span_r,
-    "writeLines",
-    mock_writelines_1
-  )
-  mockery::stub(
-    remove_html_span_rd,
-    "writeLines",
-    mock_writelines_2
-  )
+  mockery::stub(remove_html_span_r, "writeLines", mock_writelines_1)
+  mockery::stub(remove_html_span_rd, "writeLines", mock_writelines_2)
   remove_html_span_r("dummy/scripts/script.R")
   remove_html_span_rd("dummy/scripts/script.Rd")
 
@@ -610,10 +552,7 @@ test_that("paws_rd_links modifies Rd files correctly", {
     c("This is a mock Rd file.", "\\link[=service]{service}"),
     file.path(rd_dir, "pkg1.Rd")
   )
-  writeLines(
-    "This is a mock Rd file.",
-    file.path(rd_dir, "pkg2.Rd")
-  )
+  writeLines("This is a mock Rd file.", file.path(rd_dir, "pkg2.Rd"))
   # Run the function
   paws_rd_links(in_dir = dir)
 
@@ -625,10 +564,7 @@ test_that("paws_rd_links modifies Rd files correctly", {
   )
 
   modified_content <- readLines(file.path(rd_dir, "pkg2.Rd"))
-  expect_equal(
-    modified_content,
-    "This is a mock Rd file."
-  )
+  expect_equal(modified_content, "This is a mock Rd file.")
 
   # Clean up created directories and files
   unlink(dir, recursive = TRUE)

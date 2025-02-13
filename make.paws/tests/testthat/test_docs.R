@@ -7,15 +7,21 @@ test_that("make_doc_title", {
   expected <- "#' Foo"
   expect_equal(make_doc_title(operation), expected)
 
-  operation <- list(documentation = "<body><p>Foo <a href='baz'>bar</a>.</p></body>")
+  operation <- list(
+    documentation = "<body><p>Foo <a href='baz'>bar</a>.</p></body>"
+  )
   expected <- "#' Foo bar"
   expect_equal(make_doc_title(operation), expected)
 
-  operation <- list(documentation = "<body><p>[In brackets] Outside brackets.</p></body>")
+  operation <- list(
+    documentation = "<body><p>[In brackets] Outside brackets.</p></body>"
+  )
   expected <- "#' &#91;In brackets&#93; Outside brackets"
   expect_equal(make_doc_title(operation), expected)
 
-  operation <- list(documentation = "<p>A really long description which is over 80 characters wide and will get cut off by the automatic line wrapping when converted from HTML to Markdown. Here is another sentence.</p>")
+  operation <- list(
+    documentation = "<p>A really long description which is over 80 characters wide and will get cut off by the automatic line wrapping when converted from HTML to Markdown. Here is another sentence.</p>"
+  )
   expected <- "#' A really long description which is over 80 characters wide and will get\n#' cut off by the automatic line wrapping when converted from HTML to\n#' Markdown"
   expect_equal(make_doc_title(operation), expected)
 
@@ -27,19 +33,15 @@ test_that("make_doc_title", {
 test_that("make_doc_desc", {
   api <- list(metadata = list(serviceAbbreviation = "api"))
   operation <- list(documentation = "<body><p>Foo.</p><p>Bar.</p></body>")
-  expected <- paste(
-    "#' @description",
-    "#' Foo.",
-    "#' ",
-    "#' Bar.",
-    sep = "\n"
-  )
+  expected <- paste("#' @description", "#' Foo.", "#' ", "#' Bar.", sep = "\n")
   expect_equal(make_doc_desc(operation, api), expected)
 })
 
 test_that("make_doc_desc with special characters", {
   api <- list(metadata = list(serviceAbbreviation = "api"))
-  operation <- list(documentation = "<body><p>Foo%</p><p>Bar{</p><p>}Baz</p><p>\\Qux</p></body>")
+  operation <- list(
+    documentation = "<body><p>Foo%</p><p>Bar{</p><p>}Baz</p><p>\\Qux</p></body>"
+  )
   expected <- paste(
     "#' @description",
     "#' Foo%",
@@ -55,63 +57,31 @@ test_that("make_doc_desc with special characters", {
 })
 
 test_that("make_doc_request", {
-  operation <- list(
-    name = "operation",
-    input = list(
-      shape = "OperationShape"
-    )
-  )
+  operation <- list(name = "operation", input = list(shape = "OperationShape"))
   api <- list(
-    metadata = list(
-      serviceAbbreviation = "api"
-    ),
+    metadata = list(serviceAbbreviation = "api"),
     shapes = list(
       OperationShape = list(
         type = "structure",
         members = list(
-          Foo = list(
-            shape = "FooShape"
-          ),
-          Bar = list(
-            shape = "BarShape"
-          )
+          Foo = list(shape = "FooShape"),
+          Bar = list(shape = "BarShape")
         )
       ),
-      FooShape = list(
-        type = "string"
-      ),
+      FooShape = list(type = "string"),
       BarShape = list(
         type = "structure",
         members = list(
-          Baz = list(
-            shape = "BazShape"
-          ),
-          Qux = list(
-            shape = "QuxShape"
-          ),
-          Quux = list(
-            shape = "QuuxShape"
-          ),
-          Quuz = list(
-            shape = "QuuzShape"
-          )
+          Baz = list(shape = "BazShape"),
+          Qux = list(shape = "QuxShape"),
+          Quux = list(shape = "QuuxShape"),
+          Quuz = list(shape = "QuuzShape")
         )
       ),
-      BazShape = list(
-        type = "integer"
-      ),
-      QuxShape = list(
-        type = "double"
-      ),
-      QuuxShape = list(
-        type = "boolean"
-      ),
-      QuuzShape = list(
-        type = "enum",
-        enum = list(
-          "a", "b", "c"
-        )
-      )
+      BazShape = list(type = "integer"),
+      QuxShape = list(type = "double"),
+      QuuxShape = list(type = "boolean"),
+      QuuzShape = list(type = "enum", enum = list("a", "b", "c"))
     )
   )
 
@@ -135,63 +105,31 @@ test_that("make_doc_request", {
 })
 
 test_that("make_doc_value", {
-  operation <- list(
-    name = "operation",
-    output = list(
-      shape = "OperationShape"
-    )
-  )
+  operation <- list(name = "operation", output = list(shape = "OperationShape"))
   api <- list(
-    metadata = list(
-      serviceAbbreviation = "api"
-    ),
+    metadata = list(serviceAbbreviation = "api"),
     shapes = list(
       OperationShape = list(
         type = "structure",
         members = list(
-          Foo = list(
-            shape = "FooShape"
-          ),
-          Bar = list(
-            shape = "BarShape"
-          )
+          Foo = list(shape = "FooShape"),
+          Bar = list(shape = "BarShape")
         )
       ),
-      FooShape = list(
-        type = "string"
-      ),
+      FooShape = list(type = "string"),
       BarShape = list(
         type = "structure",
         members = list(
-          Baz = list(
-            shape = "BazShape"
-          ),
-          Qux = list(
-            shape = "QuxShape"
-          ),
-          Quux = list(
-            shape = "QuuxShape"
-          ),
-          Quuz = list(
-            shape = "QuuzShape"
-          )
+          Baz = list(shape = "BazShape"),
+          Qux = list(shape = "QuxShape"),
+          Quux = list(shape = "QuuxShape"),
+          Quuz = list(shape = "QuuzShape")
         )
       ),
-      BazShape = list(
-        type = "integer"
-      ),
-      QuxShape = list(
-        type = "double"
-      ),
-      QuuxShape = list(
-        type = "boolean"
-      ),
-      QuuzShape = list(
-        type = "enum",
-        enum = list(
-          "a", "b", "c"
-        )
-      )
+      BazShape = list(type = "integer"),
+      QuxShape = list(type = "double"),
+      QuuxShape = list(type = "boolean"),
+      QuuzShape = list(type = "enum", enum = list("a", "b", "c"))
     )
   )
 
@@ -222,24 +160,14 @@ test_that("make_doc_params", {
   expect_equal(make_doc_params(operation, api), "")
 
   # Operation with parameters.
-  operation <- list(
-    input = list(
-      shape = "Foo"
-    )
-  )
+  operation <- list(input = list(shape = "Foo"))
   api <- list(
     shapes = list(
       Foo = list(
-        required = list(
-          "Member2"
-        ),
+        required = list("Member2"),
         members = list(
-          Member1 = list(
-            documentation = "Documentation1"
-          ),
-          Member2 = list(
-            documentation = "Documentation2\n<h2>Foo</h2>"
-          )
+          Member1 = list(documentation = "Documentation1"),
+          Member2 = list(documentation = "Documentation2\n<h2>Foo</h2>")
         )
       )
     )
@@ -255,14 +183,8 @@ test_that("make_doc_params", {
 })
 
 test_that("make_doc_examples", {
-  api <- list(
-    metadata = list(
-      serviceAbbreviation = "api"
-    )
-  )
-  operation <- list(
-    name = "Operation"
-  )
+  api <- list(metadata = list(serviceAbbreviation = "api"))
+  operation <- list(name = "Operation")
   actual <- make_doc_examples(operation, api)
   expect_null(actual)
 
@@ -270,12 +192,7 @@ test_that("make_doc_examples", {
     name = "Operation",
     examples = list(
       list(
-        input = list(
-          "Foo" = "bar",
-          "Baz" = list(
-            "Qux" = 123
-          )
-        ),
+        input = list("Foo" = "bar", "Baz" = list("Qux" = 123)),
         description = "Description"
       )
     )
@@ -299,17 +216,9 @@ test_that("make_doc_examples", {
   operation <- list(
     name = "Operation",
     examples = list(
+      list(input = list(), description = "Description1"),
       list(
-        input = list(),
-        description = "Description1"
-      ),
-      list(
-        input = list(
-          "Foo" = "bar",
-          "Baz" = list(
-            "Qux" = 123
-          )
-        ),
+        input = list("Foo" = "bar", "Baz" = list("Qux" = 123)),
         description = "Description2"
       )
     )
@@ -337,12 +246,7 @@ test_that("make_doc_examples", {
     name = "Operation",
     examples = list(
       list(
-        input = list(
-          "Foo" = "bar",
-          "Baz" = list(
-            "Qux" = 123
-          )
-        ),
+        input = list("Foo" = "bar", "Baz" = list("Qux" = 123)),
         description = "Description, with a comma"
       )
     )
@@ -367,12 +271,7 @@ test_that("make_doc_examples", {
     name = "Operation",
     examples = list(
       list(
-        input = list(
-          "Foo" = "bar",
-          "Baz" = list(
-            "Qux" = "a,b,c"
-          )
-        ),
+        input = list("Foo" = "bar", "Baz" = list("Qux" = "a,b,c")),
         description = "Description, with a comma"
       )
     )
@@ -429,12 +328,7 @@ test_that("make_doc_examples", {
     name = "Operation",
     examples = list(
       list(
-        input = list(
-          "Foo" = "bar",
-          "Baz" = list(
-            "Qux" = 123
-          )
-        ),
+        input = list("Foo" = "bar", "Baz" = list("Qux" = 123)),
         description = "Description with inline ``code``"
       )
     )
@@ -459,12 +353,7 @@ test_that("make_doc_examples", {
     name = "Operation",
     examples = list(
       list(
-        input = list(
-          "Foo" = "bar",
-          "Baz" = list(
-            "Qux" = 123
-          )
-        ),
+        input = list("Foo" = "bar", "Baz" = list("Qux" = 123)),
         description = "Description with inline ```code```"
       )
     )
@@ -489,9 +378,7 @@ test_that("make_doc_examples", {
     name = "Operation",
     examples = list(
       list(
-        input = list(
-          "Foo" = "bar{"
-        ),
+        input = list("Foo" = "bar{"),
         description = "Example with unmatched curly brace"
       )
     )

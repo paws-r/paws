@@ -1,6 +1,5 @@
 write_json <- function(x, file) jsonlite::write_json(x, file, auto_unbox = TRUE)
 
-
 test_that("read_api", {
   path <- tempdir()
   api_path <- file.path(path, "botocore", "data")
@@ -14,28 +13,58 @@ test_that("read_api", {
   fs::dir_create(api_dir, "2018-11-01")
   fs::dir_create(api_dir, "2017-11-01")
 
-  write_json(list(foo = "examples"), file.path(api_dir, "2018-11-01", "examples-1.json"))
-
   write_json(
-    list(foo = "normal", name = "foo", metadata = list(endpointPrefix = "baz"), shapes = list(
-      fooOutput = list(members = list(Payload = list(shape = "fooStream"))),
-      fooStream = list(eventstream = "TRUE"))
-    ),
-    file.path(api_dir, "2018-11-01", "service-2.json")
+    list(foo = "examples"),
+    file.path(api_dir, "2018-11-01", "examples-1.json")
   )
-  write_json(list(foo = "paginators"), file.path(api_dir, "2018-11-01", "paginators-1.json"))
-
-  write_json(list(foo = "wrong1"), file.path(api_dir, "2017-11-01", "examples-1.json"))
-  write_json(list(foo = "wrong3"), file.path(api_dir, "2017-11-01", "service-2.json"))
-  write_json(list(foo = "wrong4"), file.path(api_dir, "2017-11-01", "paginators-1.json"))
 
   write_json(
     list(
-      partitions = list(list(
-          defaults=list(hostname="{service}.{region}.{dnsSuffix}"),
+      foo = "normal",
+      name = "foo",
+      metadata = list(endpointPrefix = "baz"),
+      shapes = list(
+        fooOutput = list(members = list(Payload = list(shape = "fooStream"))),
+        fooStream = list(eventstream = "TRUE")
+      )
+    ),
+    file.path(api_dir, "2018-11-01", "service-2.json")
+  )
+  write_json(
+    list(foo = "paginators"),
+    file.path(api_dir, "2018-11-01", "paginators-1.json")
+  )
+
+  write_json(
+    list(foo = "wrong1"),
+    file.path(api_dir, "2017-11-01", "examples-1.json")
+  )
+  write_json(
+    list(foo = "wrong3"),
+    file.path(api_dir, "2017-11-01", "service-2.json")
+  )
+  write_json(
+    list(foo = "wrong4"),
+    file.path(api_dir, "2017-11-01", "paginators-1.json")
+  )
+
+  write_json(
+    list(
+      partitions = list(
+        list(
+          defaults = list(hostname = "{service}.{region}.{dnsSuffix}"),
           dnsSuffix = "amazonaws.com",
           regionRegex = "^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$",
-          services = list(baz = list(endpoints = list("aws-global" = list(hostname = "baz.us-east-1.amazonaws.com",credentialScope = list(region = "us-east-1")))))
+          services = list(
+            baz = list(
+              endpoints = list(
+                "aws-global" = list(
+                  hostname = "baz.us-east-1.amazonaws.com",
+                  credentialScope = list(region = "us-east-1")
+                )
+              )
+            )
+          )
         )
       )
     ),
@@ -46,46 +75,44 @@ test_that("read_api", {
 
   expect_equal(api$name, "foo")
   expect_equal(api$operations$foo$eventstream, "TRUE")
-  expect_equal(api$region_config[["aws-global"]], list(endpoint = "baz.us-east-1.amazonaws.com", global = TRUE))
-  expect_equal(api$region_config[["us-east-1"]], list(endpoint = "baz.us-east-1.amazonaws.com", global = TRUE))
-  expect_equal(api$region_config[["^(us|eu|ap|sa|ca|me|af|il|mx)\\\\-\\\\w+\\\\-\\\\d+$"]], list(endpoint = "baz.{region}.amazonaws.com", global = FALSE))
+  expect_equal(
+    api$region_config[["aws-global"]],
+    list(endpoint = "baz.us-east-1.amazonaws.com", global = TRUE)
+  )
+  expect_equal(
+    api$region_config[["us-east-1"]],
+    list(endpoint = "baz.us-east-1.amazonaws.com", global = TRUE)
+  )
+  expect_equal(
+    api$region_config[["^(us|eu|ap|sa|ca|me|af|il|mx)\\\\-\\\\w+\\\\-\\\\d+$"]],
+    list(endpoint = "baz.{region}.amazonaws.com", global = FALSE)
+  )
   expect_error(read_api("bar", path))
 })
 
 test_that("merge_examples", {
-  api <- list(
-    operations = list(
-      operation1 = list(),
-      operation2 = list()
-    )
-  )
+  api <- list(operations = list(operation1 = list(), operation2 = list()))
   examples <- list(
-    operation1 = list(
-      list(description = "foo")
-    ),
-    operation2 = list(
-      list(description = "bar")
-    )
+    operation1 = list(list(description = "foo")),
+    operation2 = list(list(description = "bar"))
   )
   ret <- merge_examples(api, examples)
   expect_equal(ret$operations$operation1$examples[[1]]$description, "foo")
   expect_equal(ret$operations$operation2$examples[[1]]$description, "bar")
 })
 
-
 test_that("merge_paginators", {
   api <- list(
-    operations = list(
-      DescribeDestinations = list(),
-      GetLogEvents = list()
-    )
+    operations = list(DescribeDestinations = list(), GetLogEvents = list())
   )
-  paginator <- list(
-    "DescribeDestinations" = list(
-      "input_token"= "nextToken"
-    )
-  )
+  paginator <- list("DescribeDestinations" = list("input_token" = "nextToken"))
   ret <- make.paws:::merge_paginators(api, "logs", paginator)
-  expect_equal(ret$operations$DescribeDestinations$paginators$input_token, "nextToken")
-  expect_equal(ret$operations$DescribeDestinations$paginators$input_token, "nextToken")
+  expect_equal(
+    ret$operations$DescribeDestinations$paginators$input_token,
+    "nextToken"
+  )
+  expect_equal(
+    ret$operations$DescribeDestinations$paginators$input_token,
+    "nextToken"
+  )
 })

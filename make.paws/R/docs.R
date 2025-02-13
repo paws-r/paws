@@ -60,7 +60,11 @@ make_doc_title <- function(operation) {
 
 # Make the description documentation.
 make_doc_desc <- function(operation, api) {
-  docs <- convert(operation$documentation, package_name(api), links = get_links(api))
+  docs <- convert(
+    operation$documentation,
+    package_name(api),
+    links = get_links(api)
+  )
   if (length(docs) == 1 && docs == "") docs <- get_operation_title(operation)
   description <- glue::glue("#' {docs}")
   description <- glue::glue_collapse(description, sep = "\n")
@@ -70,7 +74,11 @@ make_doc_desc <- function(operation, api) {
 
 # Make a short description of the operation with only the first paragraph.
 make_doc_desc_short <- function(operation, api) {
-  docs <- convert(operation$documentation, package_name(api), links = get_links(api))
+  docs <- convert(
+    operation$documentation,
+    package_name(api),
+    links = get_links(api)
+  )
   if (length(docs) == 1 && docs == "") {
     docs <- get_operation_title(operation)
   } else {
@@ -122,7 +130,11 @@ make_doc_params <- function(operation, api) {
     params <- lapply(inputs, function(input) {
       param <- input$member_name
       required <- input$required
-      documentation <- convert(input$documentation, package_name(api), links = get_links(api))
+      documentation <- convert(
+        input$documentation,
+        package_name(api),
+        links = get_links(api)
+      )
       documentation <- convert_headings_to_bold(documentation)
       documentation <- glue::glue_collapse(documentation, sep = "\n")
       if (required) {
@@ -153,9 +165,10 @@ make_doc_request <- function(operation, api) {
     call <- gsub("^list", func, list_to_string(args, quote = FALSE))
     call <- unmask(clean_example(call), masks)
     call <- paste("```", call, "```", sep = "\n")
-    accepted_params <- comment(paste(c("@section Request syntax:", call),
-      collapse = "\n"
-    ), "#'")
+    accepted_params <- comment(
+      paste(c("@section Request syntax:", call), collapse = "\n"),
+      "#'"
+    )
     return(accepted_params)
   }
   return("")
@@ -265,7 +278,11 @@ make_doc_alias <- function(operation, api) {
 # Get the first paragraph from a block of text.
 first_paragraph <- function(x) {
   blank_line <- which(x == "")
-  first_paragraph <- ifelse(length(blank_line) >= 1, blank_line[1] - 1, length(x))
+  first_paragraph <- ifelse(
+    length(blank_line) >= 1,
+    blank_line[1] - 1,
+    length(x)
+  )
   paragraph <- paste(x[1:first_paragraph], collapse = " ")
   paragraph <- gsub(" +", " ", paragraph)
   return(paragraph)
@@ -318,7 +335,11 @@ comment_list_item <- function(items = list()) {
   items_list <- setNames(character(length(items_names)), items_names)
   for (i in items_names) {
     if (is.list(items[[i]])) {
-      items_list[i] <- sprintf("\\item{%s: %s}", comment_bold(i), comment_list_itemize(items[[i]]))
+      items_list[i] <- sprintf(
+        "\\item{%s: %s}",
+        comment_bold(i),
+        comment_list_itemize(items[[i]])
+      )
     } else {
       items_list[i] <- sprintf("\\item{%s: %s}", comment_bold(i), items[[i]])
     }
@@ -327,12 +348,7 @@ comment_list_item <- function(items = list()) {
 }
 
 comment_list_itemize <- function(items) {
-  paste(
-    "\\itemize{",
-    comment_list_item(items),
-    "}",
-    sep = "\n"
-  )
+  paste("\\itemize{", comment_list_item(items), "}", sep = "\n")
 }
 
 #' Convert documentation to Markdown.
@@ -392,7 +408,8 @@ clean_html <- function(text, links = c()) {
 # Clean an HTML node.
 # Note: This function, and all the clean_html functions, modify their inputs.
 clean_html_node <- function(node, links = c()) {
-  switch(xml2::xml_name(node),
+  switch(
+    xml2::xml_name(node),
     a = clean_html_a(node, links),
     code = clean_html_code(node, links),
     dt = clean_html_dt(node),
@@ -539,7 +556,8 @@ escape_unmatched_chars <- function(x, chars) {
 
 escape_unmatched_pairs <- function(x, pairs) {
   result <- x
-  count <- function(string, char) stringr::str_count(string, stringr::fixed(char))
+  count <- function(string, char)
+    stringr::str_count(string, stringr::fixed(char))
   for (i in seq_along(pairs)) {
     a <- names(pairs)[i]
     b <- pairs[i]
@@ -659,7 +677,8 @@ add_example_values <- function(shape) {
       t <- "enum"
       enum <- tag_get(shape, "enum")
     }
-    result <- switch(t,
+    result <- switch(
+      t,
       blob = "raw",
       boolean = "TRUE|FALSE",
       double = "123.0",
@@ -739,8 +758,13 @@ clean_example <- function(s) {
     } else if (current_character == ",") {
       # Add new line after every comma
 
-      indents <- paste0(rep(tab_string, max(length(open_perens) - 1, 0)), collapse = "")
-      space_number <- (if (substr(s, i + 1, i + 1) == " ") num_spaces - 1 else num_spaces)
+      indents <- paste0(
+        rep(tab_string, max(length(open_perens) - 1, 0)),
+        collapse = ""
+      )
+      space_number <- (
+        if (substr(s, i + 1, i + 1) == " ") num_spaces - 1 else num_spaces
+      )
       final_tab <- paste0(rep(" ", space_number), collapse = "")
       cleaned[[i]] <- paste0(",\n", indents, final_tab)
     } else {
@@ -768,9 +792,6 @@ shorten_rdname <- function(svc_name, op_name, len) {
   prts <- strsplit(op_name, "_")[[1]]
   len_svc <- nchar(svc_name) + len %/% length(prts)
   cut_off <- floor((len - len_svc) / length(prts))
-  op_name <- paste(
-    paste0(substr(prts, 1, cut_off)),
-    collapse = "_"
-  )
+  op_name <- paste(paste0(substr(prts, 1, cut_off)), collapse = "_")
   return(sprintf("%s_%s", svc_name, op_name))
 }

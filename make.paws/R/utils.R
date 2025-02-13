@@ -84,11 +84,7 @@ system_file <- function(..., package = "base") {
 
 # Run an expression without printing messages.
 quietly <- function(expr) {
-  utils::capture.output(
-    suppressMessages(
-      expr
-    )
-  )
+  utils::capture.output(suppressMessages(expr))
 }
 
 # Returns the URL if valid. If invalid, returns NULL. If redirected, return

@@ -19,19 +19,13 @@ HandlerList <- function(..., after_each_fn = NULL) {
     after_each_fn <- Handler(after_each_fn)
   }
 
-  l <- list(
-    list = handlers,
-    after_each_fn = after_each_fn
-  )
+  l <- list(list = handlers, after_each_fn = after_each_fn)
   return(l)
 }
 
 # Return a wrapped request handler.
 Handler <- function(fn, name = NULL) {
-  handler <- list(
-    fn = fn,
-    name = name
-  )
+  handler <- list(fn = fn, name = name)
   return(handler)
 }
 

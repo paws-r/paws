@@ -15,7 +15,10 @@ interface_file_template <- template(
 
 # Return a list of interfaces for an API.
 make_interfaces <- function(api) {
-  interfaces <- lapply(api$operations, function(op) make_interface_pair(op, api))
+  interfaces <- lapply(
+    api$operations,
+    function(op) make_interface_pair(op, api)
+  )
   render(
     interface_file_template,
     service = package_name(api),
@@ -94,7 +97,8 @@ make_shape <- function(x, api, path = character(0)) {
   loop <- x$shape %in% path
   path <- c(path, x$shape)
 
-  maker <- switch(shape$type,
+  maker <- switch(
+    shape$type,
     structure = make_shape_structure,
     list = make_shape_list,
     map = make_shape_map,
@@ -115,7 +119,7 @@ make_shape <- function(x, api, path = character(0)) {
 make_shape_structure <- function(shape, api, path) {
   members <- shape$members
   member_names <- names(members)
-  proto <- lapply(member_names, \(member_name){
+  proto <- lapply(member_names, \(member_name) {
     member <- members[[member_name]]
     make_shape(member, api, path)
   })

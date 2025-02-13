@@ -138,8 +138,10 @@ update_endpoint_for_s3_config <- function(request) {
   }
 
   if (use_virtual_host_style) {
-    request$http_request$url <-
-      move_bucket_to_host(request$http_request$url, bucket_name)
+    request$http_request$url <- move_bucket_to_host(
+      request$http_request$url,
+      bucket_name
+    )
   }
 
   return(request)
@@ -334,9 +336,7 @@ s3_redirect_from_error <- function(request) {
     return(request)
   }
   if (isTRUE(request$context$s3_redirect)) {
-    log_debug(
-      "S3 request was previously redirected, not redirecting."
-    )
+    log_debug("S3 request was previously redirected, not redirecting.")
     return(request)
   }
   error_code <- request$http_response$status_code
@@ -544,22 +544,10 @@ customizations$s3 <- function(handlers) {
     handlers$build,
     populate_location_constraint
   )
-  handlers$build <- handlers_add_front(
-    handlers$build,
-    convert_file_to_raw
-  )
-  handlers$build <- handlers_add_front(
-    handlers$build,
-    handle_copy_source_param
-  )
-  handlers$build <- handlers_add_front(
-    handlers$build,
-    sse_md5_build
-  )
-  handlers$build <- handlers_add_back(
-    handlers$build,
-    content_md5
-  )
+  handlers$build <- handlers_add_front(handlers$build, convert_file_to_raw)
+  handlers$build <- handlers_add_front(handlers$build, handle_copy_source_param)
+  handlers$build <- handlers_add_front(handlers$build, sse_md5_build)
+  handlers$build <- handlers_add_back(handlers$build, content_md5)
   handlers$send <- handlers_add_back(handlers$send, s3_redirect_from_error)
   handlers$unmarshal <- handlers_add_back(
     handlers$unmarshal,

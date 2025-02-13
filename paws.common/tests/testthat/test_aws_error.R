@@ -10,7 +10,10 @@ test_that("error conditions have correct classes", {
   expect_equal(error_condition$message, "foo (HTTP 404). bar")
   expect_equal(attributes(error_condition)$status_code, 404)
   expect_equal(attributes(error_condition)$error_response$c[[1]], 1)
-  expect_identical(attributes(error_condition)$error_response, list(a = "baz", b = "pizza", c = list(1, 2)))
+  expect_identical(
+    attributes(error_condition)$error_response,
+    list(a = "baz", b = "pizza", c = list(1, 2))
+  )
 
   expect_error(stop(error_condition))
   expect_error(stop(error_condition), class = "http_error")
@@ -30,7 +33,10 @@ test_that("error with NA status codes don't have incorrect classes", {
   expect_equal(error_condition$message, "foo (HTTP NA). bar")
   expect_identical(attributes(error_condition)$status_code, NA_integer_)
   expect_equal(attributes(error_condition)$error_response$c[[1]], 1)
-  expect_identical(attributes(error_condition)$error_response, list(a = "baz", b = "pizza", c = list(1, 2)))
+  expect_identical(
+    attributes(error_condition)$error_response,
+    list(a = "baz", b = "pizza", c = list(1, 2))
+  )
 
   expect_error(stop(error_condition))
   expect_error(stop(error_condition), class = "http_error")

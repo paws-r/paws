@@ -1,15 +1,6 @@
 test_that("add XML namespace", {
   object <- list(
-    Foo = list(
-      Bar = list(
-        list(
-          Baz = list(
-            Qux = 123,
-            Quux = 456
-          )
-        )
-      )
-    )
+    Foo = list(Bar = list(list(Baz = list(Qux = 123, Quux = 456))))
   )
   result <- add_xmlns(object, "https://foo/")
   expect_equal(attr(result, "xmlns"), "https://foo/")
@@ -57,9 +48,10 @@ test_that("check nested xml build with nested default parameters", {
     list(
       nested = structure(
         list(
-          foo = structure(list(
-            bar = structure(logical(0))
-          ), tags = list(type = "string")),
+          foo = structure(
+            list(bar = structure(logical(0))),
+            tags = list(type = "string")
+          ),
           cho = ""
         ),
         tags = list(type = "structure")

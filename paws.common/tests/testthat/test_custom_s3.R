@@ -2,7 +2,10 @@ build_request <- function(bucket, operation) {
   metadata <- list(
     endpoints = list(
       "aws-global" = list(endpoint = "s3.amazonaws.com", global = TRUE),
-      "^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "s3.amazonaws.com", global = FALSE)
+      "^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(
+        endpoint = "s3.amazonaws.com",
+        global = FALSE
+      )
     ),
     service_name = "s3"
   )
@@ -55,7 +58,10 @@ test_that("content_md5 works with an empty body", {
   metadata <- list(
     endpoints = list(
       "aws-global" = list(endpoint = "s3.amazonaws.com", global = TRUE),
-      "^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE)
+      "^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(
+        endpoint = "s3.{region}.amazonaws.com",
+        global = FALSE
+      )
     ),
     service_name = "s3"
   )
@@ -68,17 +74,22 @@ test_that("content_md5 works with an empty body", {
   op_input <- function(Body, Bucket, Key) {
     args <- list(Body = Body, Bucket = Bucket, Key = Key)
     interface <- Structure(
-      Body = structure(logical(0), tags = list(streaming = TRUE, type = "blob")),
-      Bucket = structure(logical(0), tags = list(location = "uri", locationName = "Bucket", type = "string")),
-      Key = structure(logical(0), tags = list(location = "uri", locationName = "Key", type = "string"))
+      Body = structure(
+        logical(0),
+        tags = list(streaming = TRUE, type = "blob")
+      ),
+      Bucket = structure(
+        logical(0),
+        tags = list(location = "uri", locationName = "Bucket", type = "string")
+      ),
+      Key = structure(
+        logical(0),
+        tags = list(location = "uri", locationName = "Key", type = "string")
+      )
     )
     return(populate(args, interface))
   }
-  input <- op_input(
-    Body = raw(0),
-    Bucket = "foo",
-    Key = "bar"
-  )
+  input <- op_input(Body = raw(0), Bucket = "foo", Key = "bar")
   output <- list()
   svc <- new_service(metadata, new_handlers("restxml", "s3"))
   svc$handlers$build <- handlers_add_front(svc$handlers$build, content_md5)
@@ -86,7 +97,9 @@ test_that("content_md5 works with an empty body", {
   expect_error(result <- build(request), NA)
 
   actual <- result$http_request$header[["Content-Md5"]]
-  expected <- base64enc::base64encode(digest::digest(raw(0), serialize = FALSE, raw = TRUE))
+  expected <- base64enc::base64encode(
+    digest::digest(raw(0), serialize = FALSE, raw = TRUE)
+  )
   expect_equal(actual, expected)
 })
 
@@ -95,14 +108,8 @@ test_that("content_md5 leave existing Content-MD5 alone", {
   expect_hash <- base64enc::base64encode(hash)
 
   request <- list(
-    "operation" = list(
-      "name" = "PutObject"
-    ),
-    "http_request" = list(
-      "header" = list(
-        "Content-MD5" = expect_hash
-      )
-    ),
+    "operation" = list("name" = "PutObject"),
+    "http_request" = list("header" = list("Content-MD5" = expect_hash)),
     body = raw(1)
   )
 
@@ -115,17 +122,11 @@ test_that("content_md5 create new Content-Md5", {
   hash <- digest::digest(body, serialize = FALSE, raw = TRUE)
   expect_hash <- base64enc::base64encode(hash)
 
-  request <- list(
-    "operation" = list(
-      "name" = "PutObject"
-    ),
-    body = body
-  )
+  request <- list("operation" = list("name" = "PutObject"), body = body)
 
   actual <- content_md5(request)
   expect_equal(actual$http_request$header$`Content-Md5`, expect_hash)
 })
-
 
 test_that("s3_unmarshal_get_bucket_location", {
   op <- Operation(name = "GetBucketLocation")
@@ -135,14 +136,14 @@ test_that("s3_unmarshal_get_bucket_location", {
     s3_unmarshal_get_bucket_location
   )
 
-  op_output1 <- Structure(
-    LocationConstraint = Scalar(type = "character")
-  )
+  op_output1 <- Structure(LocationConstraint = Scalar(type = "character"))
 
   req <- new_request(svc, op, NULL, op_output1)
   req$http_response <- HttpResponse(
     status_code = 200,
-    body = charToRaw('<?xml version="1.0" encoding="UTF-8"?>\n<LocationConstraint xmlns="http://s3.amazonaws.com/doc/2006-03-01/">us-west-2</LocationConstraint>')
+    body = charToRaw(
+      '<?xml version="1.0" encoding="UTF-8"?>\n<LocationConstraint xmlns="http://s3.amazonaws.com/doc/2006-03-01/">us-west-2</LocationConstraint>'
+    )
   )
   req <- unmarshal(req)
   out <- req$data
@@ -151,7 +152,9 @@ test_that("s3_unmarshal_get_bucket_location", {
   req <- new_request(svc, op, NULL, op_output1)
   req$http_response <- HttpResponse(
     status_code = 200,
-    body = charToRaw('<?xml version="1.0" encoding="UTF-8"?>\n<LocationConstraint xmlns="http://s3.amazonaws.com/doc/2006-03-01/"/>')
+    body = charToRaw(
+      '<?xml version="1.0" encoding="UTF-8"?>\n<LocationConstraint xmlns="http://s3.amazonaws.com/doc/2006-03-01/"/>'
+    )
   )
   req <- unmarshal(req)
   out <- req$data
@@ -160,7 +163,9 @@ test_that("s3_unmarshal_get_bucket_location", {
   req <- new_request(svc, op, NULL, op_output1)
   req$http_response <- HttpResponse(
     status_code = 200,
-    body = charToRaw('<?xml version="1.0" encoding="UTF-8"?>\n<LocationConstraint xmlns="http://s3.amazonaws.com/doc/2006-03-01/">EU</LocationConstraint>')
+    body = charToRaw(
+      '<?xml version="1.0" encoding="UTF-8"?>\n<LocationConstraint xmlns="http://s3.amazonaws.com/doc/2006-03-01/">EU</LocationConstraint>'
+    )
   )
   req <- unmarshal(req)
   out <- req$data
@@ -220,14 +225,14 @@ test_that("ignore redirect if already redirected", {
   req <- build_request(bucket = "foo", operation = "ListObjects")
   req$http_response <- HttpResponse(
     status_code = 301,
-    body = charToRaw(paste0(
-      "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Error><Code>PermanentRedirect</Code>",
-      "<Message>Dummy Error</Message><Endpoint>foo.s3.us-east-2.amazonaws.com</Endpoint>",
-      "<Bucket>foo</Bucket></Error>"
-    )),
-    header = list(
-      "x-amz-bucket-region" = "eu-east-2"
-    )
+    body = charToRaw(
+      paste0(
+        "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Error><Code>PermanentRedirect</Code>",
+        "<Message>Dummy Error</Message><Endpoint>foo.s3.us-east-2.amazonaws.com</Endpoint>",
+        "<Bucket>foo</Bucket></Error>"
+      )
+    ),
+    header = list("x-amz-bucket-region" = "eu-east-2")
   )
   req$context$s3_redirect <- TRUE
   actual <- s3_redirect_from_error(req)
@@ -235,16 +240,15 @@ test_that("ignore redirect if already redirected", {
 })
 
 test_that("default to head_bucket for final region check", {
-  raw_error <- charToRaw(paste0(
-    "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Error><Code>PermanentRedirect</Code>",
-    "<Message>Dummy Error</Message><Endpoint>foo.s3.us-east-2.amazonaws.com</Endpoint>",
-    "<Bucket>foo</Bucket></Error>"
-  ))
-  req <- build_request(bucket = "foo", operation = "ListObjects")
-  req$http_response <- HttpResponse(
-    status_code = 301,
-    body = raw_error
+  raw_error <- charToRaw(
+    paste0(
+      "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Error><Code>PermanentRedirect</Code>",
+      "<Message>Dummy Error</Message><Endpoint>foo.s3.us-east-2.amazonaws.com</Endpoint>",
+      "<Bucket>foo</Bucket></Error>"
+    )
   )
+  req <- build_request(bucket = "foo", operation = "ListObjects")
+  req$http_response <- HttpResponse(status_code = 301, body = raw_error)
   mock_head_bucket <- mock2(list(BucketRegion = "bar"))
   mock_s3 <- mock2(list(head_bucket = mock_head_bucket))
   mockery::stub(s3_get_bucket_region, "s3", mock_s3)
@@ -262,14 +266,14 @@ test_that("redirect request from http response error", {
   req <- build_request(bucket = "foo", operation = "ListObjects")
   req$http_response <- HttpResponse(
     status_code = 301,
-    body = charToRaw(paste0(
-      "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Error><Code>PermanentRedirect</Code>",
-      "<Message>Dummy Error</Message><Endpoint>foo.s3.us-east-2.amazonaws.com</Endpoint>",
-      "<Bucket>foo</Bucket></Error>"
-    )),
-    header = list(
-      "x-amz-bucket-region" = "eu-east-2"
-    )
+    body = charToRaw(
+      paste0(
+        "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Error><Code>PermanentRedirect</Code>",
+        "<Message>Dummy Error</Message><Endpoint>foo.s3.us-east-2.amazonaws.com</Endpoint>",
+        "<Bucket>foo</Bucket></Error>"
+      )
+    ),
+    header = list("x-amz-bucket-region" = "eu-east-2")
   )
 
   pass <- mock2(side_effect = function(...) as.list(...))
@@ -280,7 +284,10 @@ test_that("redirect request from http response error", {
   sign_args <- mockery::mock_args(pass)[[1]]
   expect_true(sign_args[[1]]$context$s3_redirect)
   expect_false(sign_args[[1]]$built)
-  expect_equal(actual$client_info$endpoint, "https://s3.eu-east-2.amazonaws.com")
+  expect_equal(
+    actual$client_info$endpoint,
+    "https://s3.eu-east-2.amazonaws.com"
+  )
   expect_equal(actual$http_request$url$host, "s3.eu-east-2.amazonaws.com")
 })
 
@@ -288,14 +295,14 @@ test_that("redirect error with region", {
   req <- build_request(bucket = "foo", operation = "ListObjects")
   req$http_response <- HttpResponse(
     status_code = 301,
-    body = charToRaw(paste0(
-      "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Error><Code>PermanentRedirect</Code>",
-      "<Message>Dummy Error</Message><Endpoint>foo.s3.us-east-2.amazonaws.com</Endpoint>",
-      "<Bucket>foo</Bucket></Error>"
-    )),
-    header = list(
-      "x-amz-bucket-region" = "eu-east-2"
-    )
+    body = charToRaw(
+      paste0(
+        "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Error><Code>PermanentRedirect</Code>",
+        "<Message>Dummy Error</Message><Endpoint>foo.s3.us-east-2.amazonaws.com</Endpoint>",
+        "<Bucket>foo</Bucket></Error>"
+      )
+    ),
+    header = list("x-amz-bucket-region" = "eu-east-2")
   )
 
   error <- s3_unmarshal_error(req)$error
@@ -311,28 +318,30 @@ test_that("redirect error without region", {
   req <- build_request(bucket = "foo", operation = "ListObjects")
   req$http_response <- HttpResponse(
     status_code = 301,
-    body = charToRaw(paste0(
-      "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Error><Code>PermanentRedirect</Code>",
-      "<Message>Dummy Error</Message><Endpoint>foo.s3.us-east-2.amazonaws.com</Endpoint>",
-      "<Bucket>foo</Bucket></Error>"
-    ))
+    body = charToRaw(
+      paste0(
+        "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Error><Code>PermanentRedirect</Code>",
+        "<Message>Dummy Error</Message><Endpoint>foo.s3.us-east-2.amazonaws.com</Endpoint>",
+        "<Bucket>foo</Bucket></Error>"
+      )
+    )
   )
 
   error <- s3_unmarshal_error(req)$error
 
   expect_equal(error$code, "BucketRegionError")
-  expect_true(
-    grepl("incorrect region", error$message)
-  )
+  expect_true(grepl("incorrect region", error$message))
   expect_equal(error$status_code, 301)
 })
-
 
 build_copy_object_request <- function(bucket, key, copy_source) {
   metadata <- list(
     endpoints = list(
       "aws-global" = list(endpoint = "s3.amazonaws.com", global = TRUE),
-      "^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE)
+      "^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(
+        endpoint = "s3.{region}.amazonaws.com",
+        global = FALSE
+      )
     ),
     service_name = "s3"
   )
@@ -343,7 +352,10 @@ build_copy_object_request <- function(bucket, key, copy_source) {
     http_path = "/{Bucket}",
     paginator = list()
   )
-  input <- tag_add(list(Bucket = bucket, Key = key, CopySource = copy_source), list(type = "structure"))
+  input <- tag_add(
+    list(Bucket = bucket, Key = key, CopySource = copy_source),
+    list(type = "structure")
+  )
   output <- list()
   request <- new_request(svc, op, input, output)
   return(request)
@@ -351,7 +363,9 @@ build_copy_object_request <- function(bucket, key, copy_source) {
 
 test_that("check CopySource character encoded", {
   req <- build_copy_object_request(
-    bucket = "foo", key = "file.txt", copy_source = "/foo/%01file%/output.txt"
+    bucket = "foo",
+    key = "file.txt",
+    copy_source = "/foo/%01file%/output.txt"
   )
 
   req <- handle_copy_source_param(req)
@@ -360,7 +374,9 @@ test_that("check CopySource character encoded", {
 
 test_that("check CopySource only quote url path not version id", {
   req <- build_copy_object_request(
-    bucket = "foo", key = "file.txt", copy_source = "/foo/bar++baz?versionId=123"
+    bucket = "foo",
+    key = "file.txt",
+    copy_source = "/foo/bar++baz?versionId=123"
   )
   req <- handle_copy_source_param(req)
   expect_equal(req$params$CopySource, "/foo/bar%2B%2Bbaz?versionId=123")
@@ -368,7 +384,9 @@ test_that("check CopySource only quote url path not version id", {
 
 test_that("check CopySource only version id is special cased", {
   req <- build_copy_object_request(
-    bucket = "foo", key = "file.txt", copy_source = "/foo/bar++baz?notVersion=foo+"
+    bucket = "foo",
+    key = "file.txt",
+    copy_source = "/foo/bar++baz?notVersion=foo+"
   )
   req <- handle_copy_source_param(req)
   expect_equal(req$params$CopySource, "/foo/bar%2B%2Bbaz%3FnotVersion%3Dfoo%2B")
@@ -382,26 +400,30 @@ test_that("check CopySource character versionId encoded", {
   )
 
   req <- handle_copy_source_param(req)
-  expect_equal(req$params$CopySource, "/foo/%2501file%25/output.txt?versionId=123")
+  expect_equal(
+    req$params$CopySource,
+    "/foo/%2501file%25/output.txt?versionId=123"
+  )
 })
 
 test_that("check CopySource with multiple questions", {
   req <- build_copy_object_request(
-    bucket = "foo", key = "file.txt", copy_source = "/foo/bar+baz?a=baz+?versionId=a+"
+    bucket = "foo",
+    key = "file.txt",
+    copy_source = "/foo/bar+baz?a=baz+?versionId=a+"
   )
   req <- handle_copy_source_param(req)
-  expect_equal(req$params$CopySource, "/foo/bar%2Bbaz%3Fa%3Dbaz%2B?versionId=a+")
+  expect_equal(
+    req$params$CopySource,
+    "/foo/bar%2Bbaz%3Fa%3Dbaz%2B?versionId=a+"
+  )
 })
-
 
 test_that("check CopySource list encoded", {
   req <- build_copy_object_request(
     bucket = "foo",
     key = "file.txt",
-    copy_source = list(
-      Bucket = "foo",
-      Key = "%01file%/output.txt"
-    )
+    copy_source = list(Bucket = "foo", Key = "%01file%/output.txt")
   )
 
   req <- handle_copy_source_param(req)
@@ -420,7 +442,10 @@ test_that("check CopySource list versionId encoded", {
   )
 
   req <- handle_copy_source_param(req)
-  expect_equal(req$params$CopySource, "foo/%2501file%25/output.txt?versionId=123")
+  expect_equal(
+    req$params$CopySource,
+    "foo/%2501file%25/output.txt?versionId=123"
+  )
 })
 
 test_that("check CopySource list bucket s3 access point", {
@@ -444,16 +469,12 @@ test_that("check CopySource list missing params", {
   req1 <- build_copy_object_request(
     bucket = "foo",
     key = "file.txt",
-    copy_source = list(
-      Key = "%01file%/output.txt"
-    )
+    copy_source = list(Key = "%01file%/output.txt")
   )
   req2 <- build_copy_object_request(
     bucket = "foo",
     key = "file.txt",
-    copy_source = list(
-      Bucket = "foo"
-    )
+    copy_source = list(Bucket = "foo")
   )
   expect_error(
     handle_copy_source_param(req1),

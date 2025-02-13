@@ -118,9 +118,7 @@ test_that("check issue", {
     url = parse_url("https://httpbin.org/json")
   )
 
-  mock_request_aws <- mock2(
-    httr2::response(body = charToRaw("dummy"))
-  )
+  mock_request_aws <- mock2(httr2::response(body = charToRaw("dummy")))
   mockery::stub(issue, "request_aws", mock_request_aws)
 
   resp <- issue(req)
@@ -130,10 +128,7 @@ test_that("check issue", {
 
 test_that("check request_aws", {
   url <- "https://httpbin.org/json"
-  req <- HttpRequest(
-    method = "GET",
-    url = parse_url(url)
-  )
+  req <- HttpRequest(method = "GET", url = parse_url(url))
   mock_req_perform <- mock2()
   mock_req_perform_conn <- mock2()
 

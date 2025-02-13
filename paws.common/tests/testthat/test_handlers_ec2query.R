@@ -19,13 +19,13 @@ op_input1 <- function(Foo = NULL, Bar = NULL, Yuck = NULL) {
 }
 
 test_that("build scalar members", {
-  input <- op_input1(
-    Bar = "val2",
-    Foo = "val1"
-  )
+  input <- op_input1(Bar = "val2", Foo = "val1")
   req <- new_request(svc, op, input, NULL)
   req <- build(req)
-  expect_equal(req$body, "Action=OperationName&Bar=val2&Foo=val1&Version=2014-01-01")
+  expect_equal(
+    req$body,
+    "Action=OperationName&Bar=val2&Foo=val1&Version=2014-01-01"
+  )
 })
 
 op_input2 <- function(Foo = NULL, Bar = NULL, Yuck = NULL) {
@@ -33,39 +33,40 @@ op_input2 <- function(Foo = NULL, Bar = NULL, Yuck = NULL) {
   interface <- Structure(
     Foo = Scalar(),
     Bar = Scalar(.tags = list(locationName = "barLocationName")),
-    Yuck = Scalar(.tags = list(locationName = "yuckLocationName", queryName = "yuckQueryName"))
-  )
-  return(populate(args, interface))
-}
-
-test_that("build location name and query name", {
-  input <- op_input2(
-    Bar = "val2",
-    Foo = "val1",
-    Yuck = "val3"
-  )
-  req <- new_request(svc, op, input, NULL)
-  req <- build(req)
-  expect_equal(req$body, "Action=OperationName&BarLocationName=val2&Foo=val1&Version=2014-01-01&yuckQueryName=val3")
-})
-
-op_input3 <- function(Struct) {
-  args <- list(Struct = Struct)
-  interface <- Structure(
-    Struct = Structure(
-      Scalar = Scalar()
+    Yuck = Scalar(
+      .tags = list(
+        locationName = "yuckLocationName",
+        queryName = "yuckQueryName"
+      )
     )
   )
   return(populate(args, interface))
 }
 
-test_that("build nested structure members", {
-  input <- op_input3(
-    Struct = list(Scalar = "foo")
-  )
+test_that("build location name and query name", {
+  input <- op_input2(Bar = "val2", Foo = "val1", Yuck = "val3")
   req <- new_request(svc, op, input, NULL)
   req <- build(req)
-  expect_equal(req$body, "Action=OperationName&Struct.Scalar=foo&Version=2014-01-01")
+  expect_equal(
+    req$body,
+    "Action=OperationName&BarLocationName=val2&Foo=val1&Version=2014-01-01&yuckQueryName=val3"
+  )
+})
+
+op_input3 <- function(Struct) {
+  args <- list(Struct = Struct)
+  interface <- Structure(Struct = Structure(Scalar = Scalar()))
+  return(populate(args, interface))
+}
+
+test_that("build nested structure members", {
+  input <- op_input3(Struct = list(Scalar = "foo"))
+  req <- new_request(svc, op, input, NULL)
+  req <- build(req)
+  expect_equal(
+    req$body,
+    "Action=OperationName&Struct.Scalar=foo&Version=2014-01-01"
+  )
 })
 
 op_input4 <- function(ListBools, ListFloats, ListIntegers, ListStrings) {
@@ -93,55 +94,66 @@ test_that("build list types", {
   )
   req <- new_request(svc, op, input, NULL)
   req <- build(req)
-  expect_equal(req$body, "Action=OperationName&ListBools.1=true&ListBools.2=false&ListBools.3=false&ListFloats.1=1.1&ListFloats.2=2.718&ListFloats.3=3.14&ListIntegers.1=0&ListIntegers.2=1&ListIntegers.3=2&ListStrings.1=foo&ListStrings.2=bar&ListStrings.3=baz&Version=2014-01-01")
+  expect_equal(
+    req$body,
+    "Action=OperationName&ListBools.1=true&ListBools.2=false&ListBools.3=false&ListFloats.1=1.1&ListFloats.2=2.718&ListFloats.3=3.14&ListIntegers.1=0&ListIntegers.2=1&ListIntegers.3=2&ListStrings.1=foo&ListStrings.2=bar&ListStrings.3=baz&Version=2014-01-01"
+  )
 })
 
 op_input5 <- function(ListArg) {
   args <- list(ListArg = ListArg)
   interface <- Structure(
-    ListArg = List(Scalar(), .tags = list(locationName = "ListMemberName", locationNameList = "item"))
+    ListArg = List(
+      Scalar(),
+      .tags = list(locationName = "ListMemberName", locationNameList = "item")
+    )
   )
   return(populate(args, interface))
 }
 
 test_that("build location name list", {
-  input <- op_input5(
-    ListArg = c("a", "b", "c")
-  )
+  input <- op_input5(ListArg = c("a", "b", "c"))
   req <- new_request(svc, op, input, NULL)
   req <- build(req)
-  expect_equal(req$body, "Action=OperationName&ListMemberName.1=a&ListMemberName.2=b&ListMemberName.3=c&Version=2014-01-01")
+  expect_equal(
+    req$body,
+    "Action=OperationName&ListMemberName.1=a&ListMemberName.2=b&ListMemberName.3=c&Version=2014-01-01"
+  )
 })
 
 op_input6 <- function(ListArg) {
   args <- list(ListArg = ListArg)
   interface <- Structure(
-    ListArg = List(Scalar(), .tags = list(locationName = "ListMemberName", queryName = "ListQueryName", locationNameList = "item"))
+    ListArg = List(
+      Scalar(),
+      .tags = list(
+        locationName = "ListMemberName",
+        queryName = "ListQueryName",
+        locationNameList = "item"
+      )
+    )
   )
   return(populate(args, interface))
 }
 
 test_that("build query name list", {
-  input <- op_input6(
-    ListArg = c("a", "b", "c")
-  )
+  input <- op_input6(ListArg = c("a", "b", "c"))
   req <- new_request(svc, op, input, NULL)
   req <- build(req)
-  expect_equal(req$body, "Action=OperationName&ListQueryName.1=a&ListQueryName.2=b&ListQueryName.3=c&Version=2014-01-01")
+  expect_equal(
+    req$body,
+    "Action=OperationName&ListQueryName.1=a&ListQueryName.2=b&ListQueryName.3=c&Version=2014-01-01"
+  )
 })
 
 op_input7 <- function(BlobArg) {
   args <- list(BlobArg = BlobArg)
-  interface <- Structure(
-    BlobArg = Scalar(type = "blob")
-  )
+  interface <- Structure(BlobArg = Scalar(type = "blob"))
   return(populate(args, interface))
 }
 
 test_that("build blob argument", {
-  input <- op_input7(
-    BlobArg = charToRaw("foo")
-  )
+  input <- op_input7(BlobArg = charToRaw("foo"))
   req <- new_request(svc, op, input, NULL)
   req <- build(req)
   expect_equal(req$body, "Action=OperationName&BlobArg=Zm9v&Version=2014-01-01")
@@ -149,33 +161,28 @@ test_that("build blob argument", {
 
 op_input8 <- function(TimeArg) {
   args <- list(TimeArg = TimeArg)
-  interface <- Structure(
-    TimeArg = Scalar(type = "timestamp")
-  )
+  interface <- Structure(TimeArg = Scalar(type = "timestamp"))
   return(populate(args, interface))
 }
 
 test_that("build time argument", {
-  input <- op_input8(
-    TimeArg = unix_time(1422172800)
-  )
+  input <- op_input8(TimeArg = unix_time(1422172800))
   req <- new_request(svc, op, input, NULL)
   req <- build(req)
-  expect_equal(req$body, "Action=OperationName&TimeArg=2015-01-25T08%3A00%3A00Z&Version=2014-01-01")
+  expect_equal(
+    req$body,
+    "Action=OperationName&TimeArg=2015-01-25T08%3A00%3A00Z&Version=2014-01-01"
+  )
 })
 
 op_input9 <- function(Token = NULL) {
   args <- list(Token = Token)
-  interface <- Structure(
-    Token = Scalar(.tags = list(idempotencyToken = TRUE))
-  )
+  interface <- Structure(Token = Scalar(.tags = list(idempotencyToken = TRUE)))
   return(populate(args, interface))
 }
 
 test_that("build idempotency token", {
-  input <- op_input9(
-    Token = "abc123"
-  )
+  input <- op_input9(Token = "abc123")
   req <- new_request(svc, op, input, NULL)
   req <- build(req)
   expect_equal(req$body, "Action=OperationName&Token=abc123&Version=2014-01-01")
@@ -185,7 +192,15 @@ test_that("build idempotency token", {
   input <- op_input9()
   req <- new_request(svc, op, input, NULL)
   req <- build(req)
-  expect_true(grepl(sprintf("Action=OperationName&Token=%s&Version=2014-01-01", UUID_V4_PATTERN), req$body))
+  expect_true(
+    grepl(
+      sprintf(
+        "Action=OperationName&Token=%s&Version=2014-01-01",
+        UUID_V4_PATTERN
+      ),
+      req$body
+    )
+  )
 })
 
 op_input10 <- function(ListEnums = NULL) {
@@ -199,12 +214,13 @@ op_input10 <- function(ListEnums = NULL) {
 }
 
 test_that("build list enums", {
-  input <- op_input10(
-    ListEnums = list("foo", "", "bar")
-  )
+  input <- op_input10(ListEnums = list("foo", "", "bar"))
   req <- new_request(svc, op, input, NULL)
   req <- build(req)
-  expect_equal(req$body, "Action=OperationName&ListEnums.1=foo&ListEnums.2=&ListEnums.3=bar&Version=2014-01-01")
+  expect_equal(
+    req$body,
+    "Action=OperationName&ListEnums.1=foo&ListEnums.2=&ListEnums.3=bar&Version=2014-01-01"
+  )
 })
 
 test_that("build empty list enums", {
@@ -238,7 +254,9 @@ test_that("unmarshal scalar members", {
   req <- new_request(svc, op, NULL, op_output1)
   req$http_response <- HttpResponse(
     status_code = 200,
-    body = charToRaw("<OperationNameResponse><Str>myname</Str><FooNum>123</FooNum><FalseBool>false</FalseBool><TrueBool>true</TrueBool><Float>1.2</Float><Double>1.3</Double><Long>200</Long><Char>a</Char><RequestId>request-id</RequestId></OperationNameResponse>")
+    body = charToRaw(
+      "<OperationNameResponse><Str>myname</Str><FooNum>123</FooNum><FalseBool>false</FalseBool><TrueBool>true</TrueBool><Float>1.2</Float><Double>1.3</Double><Long>200</Long><Char>a</Char><RequestId>request-id</RequestId></OperationNameResponse>"
+    )
   )
   req <- unmarshal(req)
   out <- req$data
@@ -252,30 +270,30 @@ test_that("unmarshal scalar members", {
   expect_true(out$TrueBool)
 })
 
-op_output2 <- Structure(
-  Blob = Scalar(type = "blob")
-)
+op_output2 <- Structure(Blob = Scalar(type = "blob"))
 
 test_that("unmarshal blob", {
   req <- new_request(svc, op, NULL, op_output2)
   req$http_response <- HttpResponse(
     status_code = 200,
-    body = charToRaw("<OperationNameResponse><Blob>dmFsdWU=</Blob><RequestId>requestid</RequestId></OperationNameResponse>")
+    body = charToRaw(
+      "<OperationNameResponse><Blob>dmFsdWU=</Blob><RequestId>requestid</RequestId></OperationNameResponse>"
+    )
   )
   req <- unmarshal(req)
   out <- req$data
   expect_equal(rawToChar(out$Blob), "value")
 })
 
-op_output3 <- Structure(
-  ListMember = List(Scalar(type = "string"))
-)
+op_output3 <- Structure(ListMember = List(Scalar(type = "string")))
 
 test_that("unmarshal list", {
   req <- new_request(svc, op, NULL, op_output3)
   req$http_response <- HttpResponse(
     status_code = 200,
-    body = charToRaw("<OperationNameResponse><ListMember><member>abc</member><member>123</member></ListMember><RequestId>requestid</RequestId></OperationNameResponse>")
+    body = charToRaw(
+      "<OperationNameResponse><ListMember><member>abc</member><member>123</member></ListMember><RequestId>requestid</RequestId></OperationNameResponse>"
+    )
   )
   req <- unmarshal(req)
   out <- req$data
@@ -283,15 +301,15 @@ test_that("unmarshal list", {
   expect_equal(out$ListMember[2], "123")
 })
 
-op_output4 <- Structure(
-  ListMember = List(Scalar(type = "string"))
-)
+op_output4 <- Structure(ListMember = List(Scalar(type = "string")))
 
 test_that("unmarshal list", {
   req <- new_request(svc, op, NULL, op_output4)
   req$http_response <- HttpResponse(
     status_code = 200,
-    body = charToRaw("<OperationNameResponse><ListMember><item>abc</item><item>123</item></ListMember><RequestId>requestid</RequestId></OperationNameResponse>")
+    body = charToRaw(
+      "<OperationNameResponse><ListMember><item>abc</item><item>123</item></ListMember><RequestId>requestid</RequestId></OperationNameResponse>"
+    )
   )
   req <- unmarshal(req)
   out <- req$data
@@ -307,7 +325,9 @@ test_that("unmarshal flattened list", {
   req <- new_request(svc, op, NULL, op_output5)
   req$http_response <- HttpResponse(
     status_code = 200,
-    body = charToRaw("<OperationNameResponse><ListMember>abc</ListMember><ListMember>123</ListMember><RequestId>requestid</RequestId></OperationNameResponse>")
+    body = charToRaw(
+      "<OperationNameResponse><ListMember>abc</ListMember><ListMember>123</ListMember><RequestId>requestid</RequestId></OperationNameResponse>"
+    )
   )
   req <- unmarshal(req)
   out <- req$data
@@ -323,7 +343,9 @@ test_that("unmarshal map", {
   req <- new_request(svc, op, NULL, op_output6)
   req$http_response <- HttpResponse(
     status_code = 200,
-    body = charToRaw("<OperationNameResponse><Map><entry><key>qux</key><value><foo>bar</foo></value></entry><entry><key>baz</key><value><foo>bam</foo></value></entry></Map><RequestId>requestid</RequestId></OperationNameResponse>")
+    body = charToRaw(
+      "<OperationNameResponse><Map><entry><key>qux</key><value><foo>bar</foo></value></entry><entry><key>baz</key><value><foo>bam</foo></value></entry></Map><RequestId>requestid</RequestId></OperationNameResponse>"
+    )
   )
   req <- unmarshal(req)
   out <- req$data
@@ -331,15 +353,15 @@ test_that("unmarshal map", {
   expect_equal(out$Map$qux$Foo, "bar")
 })
 
-op_output7 <- Structure(
-  Map = Map(Scalar(), .tags = list(flattened = TRUE))
-)
+op_output7 <- Structure(Map = Map(Scalar(), .tags = list(flattened = TRUE)))
 
 test_that("unmarshal flattened map", {
   req <- new_request(svc, op, NULL, op_output7)
   req$http_response <- HttpResponse(
     status_code = 200,
-    body = charToRaw("<OperationNameResponse><Map><key>qux</key><value>bar</value></Map><Map><key>baz</key><value>bam</value></Map><RequestId>requestid</RequestId></OperationNameResponse>")
+    body = charToRaw(
+      "<OperationNameResponse><Map><key>qux</key><value>bar</value></Map><Map><key>baz</key><value>bam</value></Map><RequestId>requestid</RequestId></OperationNameResponse>"
+    )
   )
   req <- unmarshal(req)
   out <- req$data
@@ -348,14 +370,23 @@ test_that("unmarshal flattened map", {
 })
 
 op_output8 <- Structure(
-  Map = Map(Scalar(), .tags = list(locationNameKey = "foo", locationNameValue = "bar", flattened = TRUE))
+  Map = Map(
+    Scalar(),
+    .tags = list(
+      locationNameKey = "foo",
+      locationNameValue = "bar",
+      flattened = TRUE
+    )
+  )
 )
 
 test_that("unmarshal flattened named map", {
   req <- new_request(svc, op, NULL, op_output8)
   req$http_response <- HttpResponse(
     status_code = 200,
-    body = charToRaw("<OperationNameResponse><Map><foo>qux</foo><bar>bar</bar></Map><Map><foo>baz</foo><bar>bam</bar></Map><RequestId>requestid</RequestId></OperationNameResponse>")
+    body = charToRaw(
+      "<OperationNameResponse><Map><foo>qux</foo><bar>bar</bar></Map><Map><foo>baz</foo><bar>bam</bar></Map><RequestId>requestid</RequestId></OperationNameResponse>"
+    )
   )
   req <- unmarshal(req)
   out <- req$data
@@ -363,16 +394,16 @@ test_that("unmarshal flattened named map", {
   expect_equal(out$Map$qux, "bar")
 })
 
-op_output9 <- Structure(
-  Foo = Scalar(type = "string")
-)
+op_output9 <- Structure(Foo = Scalar(type = "string"))
 
 test_that("unmarshal empty string", {
   skip("skip")
   req <- new_request(svc, op, NULL, op_output9)
   req$http_response <- HttpResponse(
     status_code = 200,
-    body = charToRaw("<OperationNameResponse><Foo/><RequestId>requestid</RequestId></OperationNameResponse>")
+    body = charToRaw(
+      "<OperationNameResponse><Foo/><RequestId>requestid</RequestId></OperationNameResponse>"
+    )
   )
   req <- unmarshal(req)
   out <- req$data
@@ -380,7 +411,10 @@ test_that("unmarshal empty string", {
 })
 
 op_output10 <- Structure(
-  FooEnum = Scalar(type = "string", .tags = list(enum = "OutputService10TestShapeEC2EnumType")),
+  FooEnum = Scalar(
+    type = "string",
+    .tags = list(enum = "OutputService10TestShapeEC2EnumType")
+  ),
   ListEnums = List(Scalar(type = "string"))
 )
 
@@ -388,7 +422,9 @@ test_that("unmarshal enum", {
   req <- new_request(svc, op, NULL, op_output10)
   req$http_response <- HttpResponse(
     status_code = 200,
-    body = charToRaw("<OperationNameResponse><FooEnum>foo</FooEnum><ListEnums><member>foo</member><member>bar</member></ListEnums></OperationNameResponse>")
+    body = charToRaw(
+      "<OperationNameResponse><FooEnum>foo</FooEnum><ListEnums><member>foo</member><member>bar</member></ListEnums></OperationNameResponse>"
+    )
   )
   req <- unmarshal(req)
   out <- req$data
@@ -398,13 +434,13 @@ test_that("unmarshal enum", {
 })
 
 test_that("unmarshal timestamp", {
-  op_output11 <- Structure(
-    Timestamp = Scalar(type = "timestamp")
-  )
+  op_output11 <- Structure(Timestamp = Scalar(type = "timestamp"))
   req <- new_request(svc, op, NULL, op_output11)
   req$http_response <- HttpResponse(
     status_code = 200,
-    body = charToRaw("<OperationNameResponse><Timestamp>1970-01-01T00:00:00.000Z</Timestamp></OperationNameResponse>")
+    body = charToRaw(
+      "<OperationNameResponse><Timestamp>1970-01-01T00:00:00.000Z</Timestamp></OperationNameResponse>"
+    )
   )
   req <- unmarshal(req)
   out <- req$data
@@ -415,7 +451,9 @@ test_that("unmarshal error", {
   req <- new_request(svc, op, NULL, op_output10)
   req$http_response <- HttpResponse(
     status_code = 404,
-    body = charToRaw("<Response><Errors><Error><Code>Foo</Code><Message>Bar</Message><RequestID>Baz</RequestID></Error></Errors></Response>")
+    body = charToRaw(
+      "<Response><Errors><Error><Code>Foo</Code><Message>Bar</Message><RequestID>Baz</RequestID></Error></Errors></Response>"
+    )
   )
 
   req <- unmarshal_error(req)

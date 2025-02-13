@@ -13,7 +13,11 @@ test_that("check default logging settings", {
 
 test_that("check updating paws log config", {
   temp_file <- tempfile()
-  paws_config_log(level = 3L, file = temp_file, timestamp_fmt = "%Y-%m-%d %H:%M")
+  paws_config_log(
+    level = 3L,
+    file = temp_file,
+    timestamp_fmt = "%Y-%m-%d %H:%M"
+  )
 
   log_level <- getOption("paws.log_level")
   log_file <- getOption("paws.log_file")
@@ -26,18 +30,9 @@ test_that("check updating paws log config", {
 })
 
 test_that("check updating paws log config with wrong parameter types", {
-  expect_error(
-    paws_config_log(level = "3"),
-    ".*level.*"
-  )
-  expect_error(
-    paws_config_log(file = 1),
-    ".*file.*"
-  )
-  expect_error(
-    paws_config_log(timestamp_fmt = 1),
-    ".*timestamp_fmt.*"
-  )
+  expect_error(paws_config_log(level = "3"), ".*level.*")
+  expect_error(paws_config_log(file = 1), ".*file.*")
+  expect_error(paws_config_log(timestamp_fmt = 1), ".*timestamp_fmt.*")
 })
 
 test_that("check if file created in none existing directory", {
@@ -136,7 +131,8 @@ test_that("update log config from environmental variables", {
   expect_equal(log_file, "dummy-file")
   expect_equal(log_timestamp_fmt, "made-up")
   lapply(
-    c("PAWS_LOG_LEVEL", "PAWS_LOG_TIMESTAMP_FMT", "PAWS_LOG_FILE"), Sys.unsetenv
+    c("PAWS_LOG_LEVEL", "PAWS_LOG_TIMESTAMP_FMT", "PAWS_LOG_FILE"),
+    Sys.unsetenv
   )
 })
 

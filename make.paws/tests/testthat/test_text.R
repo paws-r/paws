@@ -23,13 +23,7 @@ test_that("html_to_markdown", {
 })
 
 test_that("mask", {
-  foo <- list(
-    a = list(
-      "abc",
-      "xyz",
-      123
-    )
-  )
+  foo <- list(a = list("abc", "xyz", 123))
   masks <- list("b" = "&#98;", "z" = "&#122;")
   result <- mask(foo, masks)
   expect_equal(result$a[[1]], "a&#98;c")

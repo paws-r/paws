@@ -39,11 +39,13 @@
 #' }
 #' @name paginate
 #' @export
-paginate <- function(Operation,
-                     PageSize = NULL,
-                     MaxItems = NULL,
-                     StartingToken = NULL,
-                     StopOnSameToken = FALSE) {
+paginate <- function(
+  Operation,
+  PageSize = NULL,
+  MaxItems = NULL,
+  StartingToken = NULL,
+  StopOnSameToken = FALSE
+) {
   fn <- substitute(Operation)
   # rebuild fn for do.call
   if (identical(fn[[1]], .do_call)) {
@@ -98,13 +100,15 @@ paginate <- function(Operation,
 
 #' @rdname paginate
 #' @export
-paginate_lapply <- function(Operation,
-                            FUN,
-                            ...,
-                            PageSize = NULL,
-                            MaxItems = NULL,
-                            StartingToken = NULL,
-                            StopOnSameToken = FALSE) {
+paginate_lapply <- function(
+  Operation,
+  FUN,
+  ...,
+  PageSize = NULL,
+  MaxItems = NULL,
+  StartingToken = NULL,
+  StopOnSameToken = FALSE
+) {
   FUN <- match.fun(FUN)
   fn <- substitute(Operation)
 
@@ -131,14 +135,16 @@ paginate_lapply <- function(Operation,
 
 #' @rdname paginate
 #' @export
-paginate_sapply <- function(Operation,
-                            FUN,
-                            ...,
-                            simplify = TRUE,
-                            PageSize = NULL,
-                            MaxItems = NULL,
-                            StartingToken = NULL,
-                            StopOnSameToken = FALSE) {
+paginate_sapply <- function(
+  Operation,
+  FUN,
+  ...,
+  simplify = TRUE,
+  PageSize = NULL,
+  MaxItems = NULL,
+  StartingToken = NULL,
+  StopOnSameToken = FALSE
+) {
   FUN <- match.fun(FUN)
   fn <- substitute(Operation)
 
@@ -168,10 +174,7 @@ paginate_sapply <- function(Operation,
   }
 }
 
-paginate_update_fn <- function(
-    fn,
-    PageSize = NULL,
-    StartingToken = NULL) {
+paginate_update_fn <- function(fn, PageSize = NULL, StartingToken = NULL) {
   fn_call <- eval(fn[[1]], envir = parent.frame(n = 2))
   pkg_name <- environmentName(environment(fn_call))
 
@@ -188,10 +191,7 @@ paginate_update_fn <- function(
 
   # Check if method can paginate
   if (!all(c("input_token", "output_token") %in% names(paginator))) {
-    stopf(
-      "Method: `%s` is unable to paginate.",
-      as.character(fn)[1]
-    )
+    stopf("Method: `%s` is unable to paginate.", as.character(fn)[1])
   }
 
   # only update input_token if single token
@@ -206,10 +206,7 @@ paginate_update_fn <- function(
     }
   }
 
-  return(list(
-    fn = fn,
-    paginator = eval(paginator, envir = parent.frame())
-  ))
+  return(list(fn = fn, paginator = eval(paginator, envir = parent.frame())))
 }
 
 #' @title List methods that can be paginated from a paws client.
@@ -250,12 +247,13 @@ is_paginators <- function(fn) {
 }
 
 paginate_xapply <- function(
-    fn,
-    paginator,
-    FUN,
-    ...,
-    MaxItems = NULL,
-    StopOnSameToken = FALSE) {
+  fn,
+  paginator,
+  FUN,
+  ...,
+  MaxItems = NULL,
+  StopOnSameToken = FALSE
+) {
   primary_result_key <- paginator$result_key[[1]]
   no_items <- 0
   jmes_path_token <- NULL
@@ -302,7 +300,8 @@ get_tokens <- function(resp, token, caller_env) {
   last <- function(x) x[[length(x)]]
   tokens <- list()
   for (tkn in token) {
-    jmes_path <- caller_env[["jmes_path_token"]][[tkn]] %||% jmespath_index(tkn, caller_env)
+    jmes_path <- caller_env[["jmes_path_token"]][[tkn]] %||%
+      jmespath_index(tkn, caller_env)
     tokens[[tkn]] <- tryCatch(
       {
         eval(str2expression(jmes_path), envir = environment())
@@ -352,7 +351,9 @@ jmespath_index <- function(token, caller_env) {
     if (found < length(token_prts)) {
       token_prts <- token_prts[(position + 2):length(token_prts)]
       final_token <- sprintf(
-        "%s[[%s]]", final_token, paste0(token_prts, collapse = "]][[")
+        "%s[[%s]]",
+        final_token,
+        paste0(token_prts, collapse = "]][[")
       )
     }
   } else {

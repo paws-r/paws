@@ -30,8 +30,12 @@ make_category <- function(category, service_names, sdk_dir, out_dir) {
   package_dir <- file.path(out_dir, name)
   write_skeleton_category(package_dir)
   write_description_category(
-    package_dir, name, title, description,
-    version, imports
+    package_dir,
+    name,
+    title,
+    description,
+    version,
+    imports
   )
   for (service in services) {
     copy_files(service_names[[service]], from = sdk_dir, to = package_dir)
@@ -50,7 +54,10 @@ get_package_name <- function(suffix) {
 
 # Get the stored AWS service categories and which services they include.
 get_categories <- function() {
-  path <- system_file("extdata/packages.yml", package = methods::getPackageName())
+  path <- system_file(
+    "extdata/packages.yml",
+    package = methods::getPackageName()
+  )
   yaml::read_yaml(path)
 }
 
@@ -81,7 +88,11 @@ copy_files <- function(name, from, to) {
     list(dir = "tests/testthat", pattern = "^test_%s.R$")
   )
   for (r in resources) {
-    copy <- list.files(file.path(from, r$dir), pattern = sprintf(r$pattern, name), full.names = TRUE)
+    copy <- list.files(
+      file.path(from, r$dir),
+      pattern = sprintf(r$pattern, name),
+      full.names = TRUE
+    )
     if (length(copy) == 0) {
       # skip warning as there is no reexports files in tests
       if (r$dir == "tests/testthat" & name != "reexports") {

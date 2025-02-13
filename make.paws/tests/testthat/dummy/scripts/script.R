@@ -251,7 +251,12 @@ ssm <- function(config = list()) {
 
 .ssm$metadata <- list(
   service_name = "ssm",
-  endpoints = list("*" = list(endpoint = "ssm.{region}.amazonaws.com", global = FALSE), "cn-*" = list(endpoint = "ssm.{region}.amazonaws.com.cn", global = FALSE), "us-iso-*" = list(endpoint = "ssm.{region}.c2s.ic.gov", global = FALSE), "us-isob-*" = list(endpoint = "ssm.{region}.sc2s.sgov.gov", global = FALSE)),
+  endpoints = list(
+    "*" = list(endpoint = "ssm.{region}.amazonaws.com", global = FALSE),
+    "cn-*" = list(endpoint = "ssm.{region}.amazonaws.com.cn", global = FALSE),
+    "us-iso-*" = list(endpoint = "ssm.{region}.c2s.ic.gov", global = FALSE),
+    "us-isob-*" = list(endpoint = "ssm.{region}.sc2s.sgov.gov", global = FALSE)
+  ),
   service_id = "SSM",
   api_version = "2014-11-06",
   signing_name = "ssm",

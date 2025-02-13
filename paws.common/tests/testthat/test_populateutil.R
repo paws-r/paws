@@ -21,7 +21,11 @@ test_that("Map", {
   expect_equal(tag_get(foo, "type"), "map")
 
   bar <- Map(list(Name = "foo", Value = 1), list(Name = "bar", Value = 2))
-  expect_equal(bar, list(list(Name = "foo", Value = 1), list(Name = "bar", Value = 2)), ignore_attr = TRUE)
+  expect_equal(
+    bar,
+    list(list(Name = "foo", Value = 1), list(Name = "bar", Value = 2)),
+    ignore_attr = TRUE
+  )
 
   expect_error(Map(a = 1, b = 2))
 })

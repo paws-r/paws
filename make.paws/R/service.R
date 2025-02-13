@@ -137,7 +137,7 @@ service_params <- function() {
       "Set sts regional endpoint resolver to regional or legacy",
       "\\url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}"
     )
-)
+  )
   desc <- c(desc, comment_list_itemize(config))
   desc <- comment(paste(desc, collapse = "\n"), "#'")
   param <- paste("@param", param, desc, sep = "\n")
@@ -208,7 +208,8 @@ service_syntax <- function(api) {
       region = "string"
     )
     ```',
-    service)
+    service
+  )
   syntax <- gsub("\n\\s{4}", "\n", syntax)
   syntax <- comment(paste(syntax, collapse = "\n"), "#'")
   paste(section, syntax, sep = "\n")
@@ -266,7 +267,10 @@ service_operations <- function(api) {
 # Returns a list of a package's custom operations and their documentation.
 get_custom_operations <- function(api) {
   package <- package_name(api)
-  from <- system_file(sprintf("src/custom/%s.R", package), package = methods::getPackageName())
+  from <- system_file(
+    sprintf("src/custom/%s.R", package),
+    package = methods::getPackageName()
+  )
   if (from == "") {
     return(list())
   }
@@ -290,9 +294,8 @@ service_return <- function(api) {
 # e.g. rest-json -> restjson.
 protocol_package <- function(api) {
   protocol <- api$metadata$protocol
-  if (protocol == "json") protocol <- "jsonrpc"
-  else if (protocol == "ec2") protocol <- "ec2query"
-  else protocol <- gsub("\\-", "", protocol)
+  if (protocol == "json") protocol <- "jsonrpc" else if (protocol == "ec2")
+    protocol <- "ec2query" else protocol <- gsub("\\-", "", protocol)
   quoted(protocol)
 }
 

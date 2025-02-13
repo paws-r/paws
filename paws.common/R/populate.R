@@ -3,7 +3,8 @@
 # Sometimes the locationName is different from the interface name
 check_location_name <- function(name, interface) {
   location_names <- vapply(
-    interface, function(x) tag_get(x, "locationName"),
+    interface,
+    function(x) tag_get(x, "locationName"),
     FUN.VALUE = character(1)
   )
   in_location_names <- name %in% location_names
@@ -94,7 +95,8 @@ populate_scalar <- function(input, interface) {
 #' @export
 populate <- function(input, interface) {
   t <- tag_get(interface, "type")
-  populate_fn <- switch(t,
+  populate_fn <- switch(
+    t,
     structure = populate_structure,
     list = populate_list,
     map = populate_map,

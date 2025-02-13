@@ -1,8 +1,6 @@
 test_that("get_config", {
   svc <- set_config(
-    svc = list(
-      operation = function() get_config()
-    ),
+    svc = list(operation = function() get_config()),
     cfgs = list(region = 123)
   )
 
@@ -23,9 +21,7 @@ test_that("get_config", {
 
   g <- function() {
     svc <- set_config(
-      svc = list(
-        operation = function() get_config()
-      ),
+      svc = list(operation = function() get_config()),
       cfgs = list(endpoint = 456)
     )
     svc$operation()
@@ -38,9 +34,7 @@ test_that("get_config", {
 
 test_that("get_config optional parameter update", {
   svc <- set_config(
-    svc = list(
-      operation = function() get_config()
-    ),
+    svc = list(operation = function() get_config()),
     cfgs = list(sts_regional_endpoint = "legacy")
   )
   actual <- svc$operation()
@@ -53,13 +47,7 @@ test_that("set_config", {
     g = function() 123,
     h = function() get_config()
   )
-  a <- set_config(
-    svc,
-    list(
-      region = "foo",
-      endpoint = "bar"
-    )
-  )
+  a <- set_config(svc, list(region = "foo", endpoint = "bar"))
   expect_equal(a$f(), "foo")
   expect_equal(a$g(), 123)
 
@@ -208,10 +196,7 @@ services/"
   actual <- get_instance_metadata()
 
   expect_equal(mock_call_no(mock_imdsv1_behaviour), 2)
-  expect_equal(
-    charToRaw(valid_metadata_response),
-    actual$body
-  )
+  expect_equal(charToRaw(valid_metadata_response), actual$body)
 })
 
 test_that("get_instance_metadata_imdsv2", {
@@ -310,10 +295,7 @@ services/"
   actual <- get_instance_metadata()
 
   expect_equal(mock_call_no(mock_imdsv2_behaviour), 2)
-  expect_equal(
-    charToRaw(valid_metadata_response),
-    actual$body
-  )
+  expect_equal(charToRaw(valid_metadata_response), actual$body)
 })
 
 test_that("get sso legacy credentials", {
@@ -715,10 +697,7 @@ test_that("merge_config config and param config", {
     config(
       credentials(creds(access_key_id = "dummy", secret_access_key = "secret"))
     ),
-    list(
-      endpoint = "my-endpoint",
-      region = "us-east-1"
-    )
+    list(endpoint = "my-endpoint", region = "us-east-1")
   )
 
   expect1 <- config(
@@ -732,19 +711,14 @@ test_that("merge_config config and param config", {
     endpoint = "my-endpoint"
   )
   expect3 <- list(
-    credentials = list(
-      profile = "edited"
-    ),
+    credentials = list(profile = "edited"),
     endpoint = "my-endpoint",
     region = "us-east-1"
   )
 
   expect4 <- config(
     credentials(
-      creds = creds(
-        access_key_id = "dummy",
-        secret_access_key = "secret"
-      )
+      creds = creds(access_key_id = "dummy", secret_access_key = "secret")
     ),
     endpoint = "my-endpoint",
     region = "us-east-1"

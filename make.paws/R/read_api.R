@@ -73,7 +73,11 @@ get_latest_api_version_v2 <- function(api_name, path) {
 
 # Returns a list of API files for a given API version.
 get_api_files <- function(version, path) {
-  files <- list.files(path, pattern = sprintf("^%s", version), full.names = TRUE)
+  files <- list.files(
+    path,
+    pattern = sprintf("^%s", version),
+    full.names = TRUE
+  )
   types <- gsub("^.+\\.(.+)\\..+", "\\1", basename(files))
   files <- as.list(files)
   names(files) <- types
@@ -143,7 +147,9 @@ merge_eventstream <- function(api) {
   shape <- flat_shape[endsWith(names(flat_shape), "shape")]
   shape <- shape[shape %in% names(eventstream)]
   names(shape) <- gsub(
-    "Output$|Response$|Request$", "", stringr::str_extract(names(shape), "([a-zA-Z]+)")
+    "Output$|Response$|Request$",
+    "",
+    stringr::str_extract(names(shape), "([a-zA-Z]+)")
   )
   names(eventstream) <- names(shape)
 
@@ -172,7 +178,12 @@ merge_region_config <- function(api, region_config) {
       rule <- region_config$patterns[[rule]]
     }
     rules[[region]] <- list(
-      endpoint = gsub("{service}", endpoint_prefix, rule$endpoint, fixed = TRUE),
+      endpoint = gsub(
+        "{service}",
+        endpoint_prefix,
+        rule$endpoint,
+        fixed = TRUE
+      ),
       global = isTRUE(rule$globalEndpoint)
     )
   }
@@ -189,7 +200,13 @@ merge_region_config_v2 <- function(api, region_config) {
     dnsSuffix <- partition$dnsSuffix
     hostname <- partition$defaults$hostname
     region_regex <- gsub("\\", "\\\\", partition$regionRegex, fixed = T)
-    if (!is.null(global <- partition$services[[endpoint_prefix]]$endpoints[["aws-global"]])) {
+    if (
+      !is.null(
+        global <- partition$services[[endpoint_prefix]]$endpoints[[
+          "aws-global"
+        ]]
+      )
+    ) {
       endpoint <- build_endpoint(endpoint_prefix, global$hostname, dnsSuffix)
       endpoint <- list(endpoint = endpoint, global = TRUE)
       ep[["aws-global"]] <- endpoint
@@ -197,7 +214,10 @@ merge_region_config_v2 <- function(api, region_config) {
         ep[[region_name]] <- endpoint
       }
     }
-    endpoint <- list(endpoint = build_endpoint(endpoint_prefix, hostname, dnsSuffix), global = FALSE)
+    endpoint <- list(
+      endpoint = build_endpoint(endpoint_prefix, hostname, dnsSuffix),
+      global = FALSE
+    )
     ep[[region_regex]] <- endpoint
   }
   api$region_config <- ep

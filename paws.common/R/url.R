@@ -37,13 +37,20 @@ build_query_string <- function(params) {
   param_names <- names(params)
 
   params[found_multi] <- vapply(
-    param_names[found_multi], function(nm) {
-      paste(nm, paws_url_encoder(as.character(params[[nm]])), sep = "=", collapse = "&")
+    param_names[found_multi],
+    function(nm) {
+      paste(
+        nm,
+        paws_url_encoder(as.character(params[[nm]])),
+        sep = "=",
+        collapse = "&"
+      )
     },
     FUN.VALUE = ""
   )
   params[!found_multi] <- paste(
-    param_names[!found_multi], paws_url_encoder(as.character(params[!found_multi])),
+    param_names[!found_multi],
+    paws_url_encoder(as.character(params[!found_multi])),
     sep = "="
   )
   return(paste(params[char_sort(param_names)], collapse = "&"))
@@ -61,7 +68,8 @@ update_query_string <- function(query_string, params) {
 
 # Escape strings so they can be safely included in a URL.
 escape <- function(string, mode) {
-  safe_pattern <- switch(mode,
+  safe_pattern <- switch(
+    mode,
     "encodeHost" = "][!$&'()*+,;=:<>\"",
     "encodeZone" = "][!$&'()*+,;=:<>\"",
     "encodeFragment" = "$&+,/;:=?@",

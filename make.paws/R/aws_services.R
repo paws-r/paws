@@ -14,9 +14,14 @@ list_aws_services <- function(in_dir = "../vendor/botocore") {
     api <- read_api(x, in_dir)
     data.frame(
       services = package_name(api),
-      operations = vapply(api$operations, function(x) {
-        get_operation_name(x)
-      }, FUN.VALUE = "", USE.NAMES = F)
+      operations = vapply(
+        api$operations,
+        function(x) {
+          get_operation_name(x)
+        },
+        FUN.VALUE = "",
+        USE.NAMES = F
+      )
     )
   })
   return(do.call(rbind, aws_service_ops))
@@ -33,17 +38,26 @@ category_service_ops_count <- function(in_dir = "../vendor/botocore") {
     data.frame(name = rep(x$name, length(x$services)), services = x$services)
   })
   paws_cat <- rbindlist(paws_cat, fill = T)
-  paws_cat_service_ops <- merge(paws_cat, aws_service_ops, by = "services", all.y = T)
+  paws_cat_service_ops <- merge(
+    paws_cat,
+    aws_service_ops,
+    by = "services",
+    all.y = T
+  )
   setcolorder(paws_cat_service_ops, "name")
   names(paws_cat_service_ops) <- c("category", "services", "operations")
-  paws_cat_service_ops_count <- paws_cat_service_ops[, list(
-    total_operations = .N
-  ), by = c("category", "services")][, list(
-    services = get("services"),
-    total_services = uniqueN(get("services")),
-    total_operations = get("total_operations"),
-    sum_operations = sum(get("total_operations"))
-  ), by = "category"]
+  paws_cat_service_ops_count <- paws_cat_service_ops[,
+    list(total_operations = .N),
+    by = c("category", "services")
+  ][,
+    list(
+      services = get("services"),
+      total_services = uniqueN(get("services")),
+      total_operations = get("total_operations"),
+      sum_operations = sum(get("total_operations"))
+    ),
+    by = "category"
+  ]
   paws_cat_service_ops_count <- paws_cat_service_ops_count[
     order(get("category"), -get("total_services"), -get("total_operations"))
   ]

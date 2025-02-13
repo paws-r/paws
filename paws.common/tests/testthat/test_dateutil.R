@@ -25,35 +25,23 @@ test_that("as_timestamp empty input", {
 test_that("unix_time check default value", {
   actual <- unix_time(0)
   expect <- as.POSIXct("1970-01-01 00:00:00", tz = "GMT")
-  expect_equal(
-    actual,
-    expect
-  )
+  expect_equal(actual, expect)
 })
 
 test_that("unix_time check numeric value", {
   actual <- unix_time(1704067200)
   expect <- as.POSIXct("2024-01-01 00:00:00", tz = "GMT")
-  expect_equal(
-    actual,
-    expect
-  )
+  expect_equal(actual, expect)
 })
 
 test_that("unix_time check string value", {
   actual <- unix_time("")
   expect <- as.POSIXct(NA, tz = "GMT")
-  expect_equal(
-    actual,
-    expect
-  )
+  expect_equal(actual, expect)
 })
 
 test_that("unix_time check null value", {
   actual <- unix_time(NULL)
   expect <- as.POSIXct(NULL, tz = "GMT")
-  expect_equal(
-    actual,
-    expect
-  )
+  expect_equal(actual, expect)
 })

@@ -9,52 +9,27 @@ tests_config <- list(
       "*" # endpoint not found
     )
   ),
-  appstream = list(
-    skip = list(
-      "describe_user_stack_associations"
-    )
-  ),
-  batch = list(
-    skip = list(
-      "list_jobs"
-    )
-  ),
+  appstream = list(skip = list("describe_user_stack_associations")),
+  batch = list(skip = list("list_jobs")),
   cloudformation = list(
-    skip = list(
-      "describe_stack_events",
-      "describe_stack_resources"
-    )
+    skip = list("describe_stack_events", "describe_stack_resources")
   ),
-  cloudhsm = list(
-    skip = list(
-      "*"
-    )
-  ),
-  codedeploy = list(
-    skip = list(
-      "list_deployment_targets"
-    )
-  ),
+  cloudhsm = list(skip = list("*")),
+  codedeploy = list(skip = list("list_deployment_targets")),
   costandusagereportservice = list(
     skip = list(
       "describe_report_definitions" # invalid MaxResults
     )
   ),
   databasemigrationservice = list(
-    skip = list(
-      "describe_replication_task_assessment_results"
-    )
+    skip = list("describe_replication_task_assessment_results")
   ),
   devicefarm = list(
     skip = list(
       "*" # endpoint not found
     )
   ),
-  directconnect = list(
-    skip = list(
-      "*"
-    )
-  ),
+  directconnect = list(skip = list("*")),
   ec2 = list(
     skip = list(
       "describe_images",
@@ -65,11 +40,7 @@ tests_config <- list(
     )
   ),
   ecs = list(
-    skip = list(
-      "list_container_instances",
-      "list_services",
-      "list_tasks"
-    )
+    skip = list("list_container_instances", "list_services", "list_tasks")
   ),
   elasticache = list(
     skip = list(
@@ -88,22 +59,9 @@ tests_config <- list(
       "describe_platform_version"
     )
   ),
-  elbv2 = list(
-    skip = list(
-      "describe_listeners",
-      "describe_rules"
-    )
-  ),
-  emr = list(
-    skip = list(
-      "describe_job_flows"
-    )
-  ),
-  fms = list(
-    skip = list(
-      "*"
-    )
-  ),
+  elbv2 = list(skip = list("describe_listeners", "describe_rules")),
+  emr = list(skip = list("describe_job_flows")),
+  fms = list(skip = list("*")),
   gamelift = list(
     skip = list(
       "describe_game_session_details",
@@ -116,11 +74,7 @@ tests_config <- list(
       "*" # endpoint not found
     )
   ),
-  health = list(
-    skip = list(
-      "*"
-    )
-  ),
+  health = list(skip = list("*")),
   iot = list(
     skip = list(
       "describe_default_authorizer",
@@ -133,17 +87,8 @@ tests_config <- list(
       "*" # endpoint not found
     )
   ),
-  iotanalytics = list(
-    skip = list(
-      "describe_logging_options"
-    )
-  ),
-  kinesis = list(
-    skip = list(
-      "describe_stream_consumer",
-      "list_shards"
-    )
-  ),
+  iotanalytics = list(skip = list("describe_logging_options")),
+  kinesis = list(skip = list("describe_stream_consumer", "list_shards")),
   kinesisanalyticsv2 = list(
     skip = list(
       "*" # endpoint not found
@@ -154,26 +99,10 @@ tests_config <- list(
       "*" # endpoint not found
     )
   ),
-  machinelearning = list(
-    skip = list(
-      "*"
-    )
-  ),
-  macie = list(
-    skip = list(
-      "*"
-    )
-  ),
-  mediaconvert = list(
-    skip = list(
-      "*"
-    )
-  ),
-  mediastore = list(
-    skip = list(
-      "describe_container"
-    )
-  ),
+  machinelearning = list(skip = list("*")),
+  macie = list(skip = list("*")),
+  mediaconvert = list(skip = list("*")),
+  mediastore = list(skip = list("describe_container")),
   mediastoredata = list(
     skip = list(
       "*" # endpoint not found
@@ -184,11 +113,7 @@ tests_config <- list(
       "*" # endpoint not found
     )
   ),
-  mturk = list(
-    skip = list(
-      "*"
-    )
-  ),
+  mturk = list(skip = list("*")),
   opsworks = list(
     skip = list(
       "describe_agent_versions",
@@ -211,32 +136,20 @@ tests_config <- list(
       "describe_servers"
     )
   ),
-  organizations = list(
-    skip = list(
-      "*"
-    )
-  ),
+  organizations = list(skip = list("*")),
   pinpointemail = list(
     skip = list(
       "*" # endpoint not found
     )
   ),
-  pinpointsmsvoice = list(
-    skip = list(
-      "*"
-    )
-  ),
+  pinpointsmsvoice = list(skip = list("*")),
   redshift = list(
     skip = list(
       "describe_cluster_security_groups",
       "describe_table_restore_status"
     )
   ),
-  servicecatalog = list(
-    skip = list(
-      "list_tag_options"
-    )
-  ),
+  servicecatalog = list(skip = list("list_tag_options")),
   shield = list(
     skip = list(
       "describe_drt_access",
@@ -254,11 +167,7 @@ tests_config <- list(
       "list_compliance_summaries" # invalid MaxResults
     )
   ),
-  support = list(
-    skip = list(
-      "*"
-    )
-  ),
+  support = list(skip = list("*")),
   waf = list(
     skip = list(
       "list_activated_rules_in_rule_group",
@@ -271,15 +180,6 @@ tests_config <- list(
       "list_logging_configurations"
     )
   ),
-  workdocs = list(
-    skip = list(
-      "describe_activities",
-      "describe_users"
-    )
-  ),
-  workspaces = list(
-    skip = list(
-      "*"
-    )
-  )
+  workdocs = list(skip = list("describe_activities", "describe_users")),
+  workspaces = list(skip = list("*"))
 )

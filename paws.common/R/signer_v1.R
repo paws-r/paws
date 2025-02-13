@@ -95,9 +95,7 @@ sign_v1_auth_query <- function(request) {
     name <- request$config$service_name
   }
 
-  v1 <- SignerQuery(
-    credentials = request$config$credentials
-  )
+  v1 <- SignerQuery(credentials = request$config$credentials)
 
   if (name == "s3") {
     v1$disable_uri_path_escaping <- TRUE
@@ -110,16 +108,31 @@ sign_v1_auth_query <- function(request) {
 
   auth_path <- get_auth(request)
   request$http_request <- sign_with_body_query(
-    v1, request$http_request, request$body,
-    name, region, request$expire_time, signing_time,
-    auth_path, request$config$credentials$anonymous
+    v1,
+    request$http_request,
+    request$body,
+    name,
+    region,
+    request$expire_time,
+    signing_time,
+    auth_path,
+    request$config$credentials$anonymous
   )
 
   return(request)
 }
 
-sign_with_body_query <- function(signer, request, body, service, region,
-                                 expire_time, signing_time, auth_path, anonymous) {
+sign_with_body_query <- function(
+  signer,
+  request,
+  body,
+  service,
+  region,
+  expire_time,
+  signing_time,
+  auth_path,
+  anonymous
+) {
   if (is.null(body)) body <- ""
 
   ctx <- SigningContextQuery(
@@ -242,7 +255,9 @@ canonical_string <- function(ctx, auth_path) {
 
 sign_string_query <- function(ctx) {
   new_hmac <- make_hmac(
-    enc2utf8(ctx$cred_values$secret_access_key), ctx$canonical_string, "sha1"
+    enc2utf8(ctx$cred_values$secret_access_key),
+    ctx$canonical_string,
+    "sha1"
   )
   return(base64enc::base64encode(new_hmac))
 }

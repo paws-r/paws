@@ -13,7 +13,9 @@ query_build <- function(request) {
 
   if (!is_presigned(request)) {
     request$http_request$method <- "POST"
-    request$http_request$header["Content-Type"] <- "application/x-www-form-urlencoded; charset=utf-8"
+    request$http_request$header[
+      "Content-Type"
+    ] <- "application/x-www-form-urlencoded; charset=utf-8"
     request$body <- build_query_string(body)
     request$http_request$body <- request$body
   } else {

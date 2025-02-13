@@ -12,12 +12,13 @@
 #' @name make_sdk
 #' @export
 make_sdk <- function(
-    in_dir = "./vendor/botocore",
-    out_sdk_dir = "./cran",
-    out_doc_dir = "./paws",
-    apis = character(0),
-    only_cran = TRUE,
-    cache_dir = "./cache") {
+  in_dir = "./vendor/botocore",
+  out_sdk_dir = "./cran",
+  out_doc_dir = "./paws",
+  apis = character(0),
+  only_cran = TRUE,
+  cache_dir = "./cache"
+) {
   if (length(apis) == 0) {
     apis <- list_apis(fs::path(in_dir, "botocore", "data"))
   }
@@ -26,7 +27,9 @@ make_sdk <- function(
   # The SDK is separated into categories to fit in CRAN's package size limit.
   categories <- get_categories()
   if (only_cran) {
-    cran <- row.names(utils::available.packages(repos = "https://cran.rstudio.com"))
+    cran <- row.names(
+      utils::available.packages(repos = "https://cran.rstudio.com")
+    )
     package <- sapply(categories, function(x) get_package_name(x$name))
     parent_package <- sapply(categories, function(x) get_package_name(x$parent))
     categories <- categories[package %in% cran | parent_package %in% cran]
@@ -67,7 +70,13 @@ make_sdk <- function(
 
     # Build categories from sub-categories
     for (cat in names(grp_sub_cats)) {
-      make_category_collection(temp_dir, out_sdk_dir, grp_sub_cats[[cat]], cat, api_names)
+      make_category_collection(
+        temp_dir,
+        out_sdk_dir,
+        grp_sub_cats[[cat]],
+        cat,
+        api_names
+      )
     }
   }
 
@@ -101,7 +110,6 @@ list_apis_old <- function(path) {
 list_apis <- function(path) {
   return(fs::path_file(fs::dir_ls(path, type = "dir")))
 }
-
 
 # Create the package's R directory.
 use_r_dir <- function(path) {

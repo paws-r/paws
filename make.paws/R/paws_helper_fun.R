@@ -36,10 +36,7 @@ get_service_parameter <- function(param) {
 }
 
 build_service_parameter <- function(param) {
-  return(do.call(
-    paws.common:::struct,
-    get_service_parameter(param)
-  ))
+  return(do.call(paws.common:::struct, get_service_parameter(param)))
 }
 
 #' @title Create paws serice helper functions
@@ -66,7 +63,9 @@ paws_service_param_fn <- function(dir = "../paws.common") {
 #' @param in_dir Directory containing AWS API input files.
 #' @export
 paws_new_services <- function(in_dir = "../vendor/botocore") {
-  existing_apis <- yaml::read_yaml(system.file("extdata/packages.yml", package = "make.paws"))
+  existing_apis <- yaml::read_yaml(
+    system.file("extdata/packages.yml", package = "make.paws")
+  )
   existing_apis <- unlist(lapply(existing_apis, \(x) x$services))
 
   new_apis <- list_apis(file.path(in_dir, "botocore", "data"))
