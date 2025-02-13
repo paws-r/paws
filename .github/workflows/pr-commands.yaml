@@ -58,24 +58,21 @@ jobs:
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
 
-      - uses: r-lib/actions/setup-r@v2
-
       - name: Install dependencies
-        run: install.packages("styler")
-        shell: Rscript {0}
-
-      - name: Style
         run: |
-          styler::style_pkg(pkg = 'paws.common', exclude_files = c("R/RcppExports\\.R", "R/cpp11\\.R", "R/import-standalone.*\\.R", "R/service_parameter_helper\\.R"))
-          styler::style_pkg(pkg = 'make.paws')
-        shell: Rscript {0}
+          curl -LsSf https://github.com/posit-dev/air/releases/latest/download/air-installer.sh | sh
+
+      - name: Format
+        run: |
+          air format paws.common/R paws.common/tests
+          air format make.paws/R make.paws/tests
 
       - name: commit
         run: |
           git config --local user.name "$GITHUB_ACTOR"
           git config --local user.email "$GITHUB_ACTOR@users.noreply.github.com"
           git add \*.R
-          git commit -m 'Style'
+          git commit -m 'Air R formatting'
 
       - uses: r-lib/actions/pr-push@v2
         with:
@@ -113,12 +110,9 @@ jobs:
               lines <- readLines(desc)
               found <- grepl("Version: [0-9\\.]+", lines, perl = T)
               lines[found] <- gsub("[0-9\\.]+", version, lines[found])
-              found <- grepl("paws\\..*[0-9]+\\.[0-9]+\\.[0-9]+", lines, 
-                             perl = T)
-              found[found] <- !grepl("paws\\.common.*[0-9]+\\.[0-9]+\\.[0-9]+", 
-                                     lines[found], perl = T)
-              lines[found] <- gsub("[0-9]+\\.[0-9]+\\.[0-9]+", version, 
-                                   lines[found])
+              found <- grepl("paws\\..*[0-9]+\\.[0-9]+\\.[0-9]+", lines, perl = T)
+              found[found] <- !grepl("paws\\.common.*[0-9]+\\.[0-9]+\\.[0-9]+", lines[found], perl = T)
+              lines[found] <- gsub("[0-9]+\\.[0-9]+\\.[0-9]+", version, lines[found])
               writeLines(lines, desc)
             }
           }
