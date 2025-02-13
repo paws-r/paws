@@ -58,8 +58,6 @@ jobs:
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
 
-      - uses: r-lib/actions/setup-r@v2
-
       - name: Install dependencies
         run: |
           curl -LsSf https://github.com/posit-dev/air/releases/latest/download/air-installer.sh | sh
@@ -112,12 +110,9 @@ jobs:
               lines <- readLines(desc)
               found <- grepl("Version: [0-9\\.]+", lines, perl = T)
               lines[found] <- gsub("[0-9\\.]+", version, lines[found])
-              found <- grepl("paws\\..*[0-9]+\\.[0-9]+\\.[0-9]+", lines,
-                             perl = T)
-              found[found] <- !grepl("paws\\.common.*[0-9]+\\.[0-9]+\\.[0-9]+",
-                                     lines[found], perl = T)
-              lines[found] <- gsub("[0-9]+\\.[0-9]+\\.[0-9]+", version,
-                                   lines[found])
+              found <- grepl("paws\\..*[0-9]+\\.[0-9]+\\.[0-9]+", lines, perl = T)
+              found[found] <- !grepl("paws\\.common.*[0-9]+\\.[0-9]+\\.[0-9]+", lines[found], perl = T)
+              lines[found] <- gsub("[0-9]+\\.[0-9]+\\.[0-9]+", version, lines[found])
               writeLines(lines, desc)
             }
           }
