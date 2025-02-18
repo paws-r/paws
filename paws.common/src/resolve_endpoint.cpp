@@ -88,22 +88,32 @@ std::string endpoint_unescape_js(std::string endpoint, const std::string& servic
 //' @useDynLib paws.common _paws_common_get_region_pattern
 //' @importFrom Rcpp evalCpp
 // [[Rcpp::export]]
-std::string get_region_pattern(CharacterVector region_pattern, const std::string &region)
-{
-  int n = region_pattern.size();
-  std::string safe_pattern;
-  for (int i = 0; i < n; ++i)
-  {
-    String cur = region_pattern[i];
-    safe_pattern = cur;
+List get_region_pattern(const List &endpoints, std::string region) {
+  const CharacterVector region_pattern = endpoints.names();
+  const int n = region_pattern.size();
+  List result;
 
-    const std::regex re(safe_pattern);
-    if (std::regex_search(region, re))
-    {
+  for (int i = 0; i < n; ++i) {
+    const std::string& cur = as<std::string>(region_pattern[i]);
+    const std::regex re(cur);
+
+    if (std::regex_search(region, re)) {
+      const List& sublist = endpoints[i];
+      const CharacterVector nv = sublist.names();
+
+      for (int j = 0; j < nv.size(); ++j) {
+        if (as<std::string>(nv[j]) == "signing_region") {
+          region = as<std::string>(sublist["signing_region"]);
+          break;
+        }
+      }
+      result = sublist;
       break;
-    };
-  };
-  return safe_pattern;
+    }
+  }
+
+  result["signing_region"] = region;
+  return result;
 }
 
 /**
