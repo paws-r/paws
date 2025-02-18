@@ -78,6 +78,13 @@ new_session <- function() {
 # only add host_prefix that match HOST_PREFIX_RE
 # https://github.com/boto/botocore/blob/786396c9b236671cc57f6404d84c381ad1499cc5/botocore/serialize.py#L173-L203
 HOST_PREFIX_RE <- "^[A-Za-z0-9\\.\\-]+$"
+GLOBAL_REGIONS <- c(
+  "aws-global",
+  "aws-cn-global",
+  "aws-us-gov-global",
+  "aws-iso-global",
+  "aws-iso-b-global"
+)
 
 # resolver_endpoint returns the endpoint for a given service.
 # e.g. "https://ec2.us-east-1.amazonaws.com"
@@ -118,16 +125,20 @@ resolver_endpoint_boto <- function(
   scheme,
   host_prefix
 ) {
-  # locate global endpoint
   global_found <- check_global(endpoints)
-  global_region <- region == "aws-global"
-  if (!any(global_found) & global_region) {
+  global_endpoints <- global_found[global_found]
+
+  # use first global endpoint if region isn't provided
+  if (is.null(region) && length(global_endpoints) > 0) {
+    region <- names(global_endpoints)[1]
+  } else if (is.null(region) && length(global) == 0) {
+    region <- ""
+  }
+  global_region <- region %in% GLOBAL_REGIONS
+  if (!any(global_found) && global_region) {
     stop("No region provided and no global region found.")
   }
-  signing_region <- (
-    if (any(global_found) & global_region) names(global_found[global_found][1]) else
-      region
-  )
+  signing_region <- region
   e <- endpoints[[get_region_pattern(names(endpoints), signing_region)]]
   if (service == "sts" & nzchar(sts_regional_endpoint)) {
     e$endpoint <- set_sts_regional_endpoint(sts_regional_endpoint, e)
