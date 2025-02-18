@@ -125,6 +125,10 @@ resolver_endpoint_boto <- function(
   scheme,
   host_prefix
 ) {
+  # Set default region for s3 if not provided
+  # https://github.com/boto/botocore/blob/develop/botocore/regions.py#L200-L205
+  if (service_name == 's3' && is.null(region)) region <- 'us-east-1'
+
   global_found <- check_global(endpoints)
   global_endpoints <- global_found[global_found]
 
