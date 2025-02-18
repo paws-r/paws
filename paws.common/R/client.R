@@ -99,20 +99,20 @@ resolver_endpoint <- function(
   switch(
     vendor_cache[["vendor"]],
     "boto" = resolver_endpoint_boto(
-      service,
-      region,
-      endpoints,
-      sts_regional_endpoint,
-      scheme,
-      host_prefix
+      service = service,
+      region = region,
+      endpoints = endpoints,
+      sts_regional_endpoint = sts_regional_endpoint,
+      scheme = scheme,
+      host_prefix = host_prefix
     ),
     "js" = resolver_endpoint_js(
-      service,
-      region,
-      endpoints,
-      sts_regional_endpoint,
-      scheme,
-      host_prefix
+      service = service,
+      region = region,
+      endpoints = endpoints,
+      sts_regional_endpoint = sts_regional_endpoint,
+      scheme = scheme,
+      host_prefix = host_prefix
     )
   )
 }
@@ -138,20 +138,18 @@ resolver_endpoint_boto <- function(
   if (!any(global_found) && global_region) {
     stop("No region provided and no global region found.")
   }
-  signing_region <- region
-  e <- endpoints[[get_region_pattern(names(endpoints), signing_region)]]
+  e <- get_region_pattern(endpoints, region)
   if (service == "sts" & nzchar(sts_regional_endpoint)) {
-    e$endpoint <- set_sts_regional_endpoint(sts_regional_endpoint, e)
-    region <- set_sts_region(sts_regional_endpoint, region)
+    e[["endpoint"]] <- set_sts_regional_endpoint(sts_regional_endpoint, e[["endpoint"]])
+    e[["signing_region"]] <- set_sts_region(sts_regional_endpoint, region)
   }
-  # signing_region <- if (e[["global"]]) "us-east-1" else region
-  endpoint <- endpoint_unescape(e[["endpoint"]], signing_region)
+  endpoint <- endpoint_unescape(e[["endpoint"]], e[["signing_region"]])
   if (grepl(HOST_PREFIX_RE, host_prefix)) {
     endpoint <- sprintf("%s%s", host_prefix, endpoint)
   }
   endpoint <- gsub("^(.+://)?", sprintf("%s://", scheme), endpoint)
 
-  return(list(endpoint = endpoint, signing_region = signing_region))
+  return(list(endpoint = endpoint, signing_region = e[["signing_region"]]))
 }
 
 # Support paws < 0.8.0
