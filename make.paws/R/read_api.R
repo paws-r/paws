@@ -161,6 +161,7 @@ merge_region_config <- function(api, region_config) {
       ep[[partitionEndpoint]] <- endpoint
       if (!is.null(region_name <- global$credentialScope$region)) {
         ep[[region_name]] <- endpoint
+        ep[[partitionEndpoint]]$signing_region <- region_name
       }
     }
 
@@ -184,6 +185,9 @@ merge_region_config <- function(api, region_config) {
       endpoint = build_endpoint(service, result$hostname, result$dnsSuffix),
       global = FALSE
     )
+    if (!is.null(result$credentialScope$region)) {
+      endpoint$signing_region <- result$credentialScope$region
+    }
     ep[[regionRegex]] <- endpoint
   }
   api$region_config <- ep
