@@ -140,7 +140,7 @@ the \emph{Amazon Web Services General Reference}.
 \link[paws.compute:ecr_put_registry_scanning_configuration]{put_registry_scanning_configuration} \tab Creates or updates the scanning configuration for your private registry\cr
 \link[paws.compute:ecr_put_replication_configuration]{put_replication_configuration} \tab Creates or updates the replication configuration for a registry\cr
 \link[paws.compute:ecr_set_repository_policy]{set_repository_policy} \tab Applies a repository policy to the specified repository to control access permissions\cr
-\link[paws.compute:ecr_start_image_scan]{start_image_scan} \tab Starts an image vulnerability scan\cr
+\link[paws.compute:ecr_start_image_scan]{start_image_scan} \tab Starts a basic image vulnerability scan\cr
 \link[paws.compute:ecr_start_lifecycle_policy_preview]{start_lifecycle_policy_preview} \tab Starts a preview of a lifecycle policy for the specified repository\cr
 \link[paws.compute:ecr_tag_resource]{tag_resource} \tab Adds specified tags to a resource with the specified ARN\cr
 \link[paws.compute:ecr_untag_resource]{untag_resource} \tab Deletes specified tags from a resource\cr

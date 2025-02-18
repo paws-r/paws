@@ -2,7 +2,8 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_describe_network_interfaces}
 \alias{ec2_describe_network_interfaces}
-\title{Describes one or more of your network interfaces}
+\title{Describes the specified network interfaces or all your network
+interfaces}
 \usage{
 ec2_describe_network_interfaces(
   NextToken = NULL,
@@ -81,6 +82,11 @@ network interface.
 | \code{quicksight} | \code{transit_gateway} | \code{trunk} | \code{vpc_endpoint}).
 \item \code{mac-address} - The MAC address of the network interface.
 \item \code{network-interface-id} - The ID of the network interface.
+\item \code{operator.managed} - A Boolean that indicates whether this is a
+managed network interface.
+\item \code{operator.principal} - The principal that manages the network
+interface. Only valid for managed network interfaces, where
+\code{managed} is \code{true}.
 \item \code{owner-id} - The Amazon Web Services account ID of the network
 interface owner.
 \item \code{private-dns-name} - The private DNS name of the network interface
@@ -114,7 +120,7 @@ regardless of the tag value.
 }}
 }
 \description{
-Describes one or more of your network interfaces.
+Describes the specified network interfaces or all your network interfaces.
 
 See \url{https://www.paws-r-sdk.com/docs/ec2_describe_network_interfaces/} for full documentation.
 }

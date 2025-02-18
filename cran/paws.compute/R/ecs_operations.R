@@ -213,7 +213,7 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #' For more information, see [Balancing an Amazon ECS service across
 #' Availability
 #' Zones](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-rebalancing.html)
-#' in the *Amazon Elastic Container Service Developer Guide*.
+#' in the *Amazon Elastic Container Service Developer Guide* .
 #' @param loadBalancers A load balancer object representing the load balancers to use with your
 #' service. For more information, see [Service load
 #' balancing](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-load-balancing.html)
@@ -3175,7 +3175,7 @@ ecs_start_task <- function(cluster = NULL, containerInstances, enableECSManagedT
 #' @param cluster The short name or full Amazon Resource Name (ARN) of the cluster that
 #' hosts the task to stop. If you do not specify a cluster, the default
 #' cluster is assumed.
-#' @param task &#91;required&#93; The task ID of the task to stop.
+#' @param task &#91;required&#93; Thefull Amazon Resource Name (ARN) of the task.
 #' @param reason An optional message specified when a task is stopped. For example, if
 #' you're using a custom scheduler, you can use this parameter to specify
 #' the reason for stopping the task here, and the message appears in
@@ -3331,6 +3331,22 @@ ecs_submit_task_state_change <- function(cluster = NULL, task = NULL, status = N
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource to add tags to.
 #' Currently, the supported resources are Amazon ECS capacity providers,
 #' tasks, services, task definitions, clusters, and container instances.
+#' 
+#' In order to tag a service that has the following ARN format, you need to
+#' migrate the service to the long ARN. For more information, see [Migrate
+#' an Amazon ECS short service ARN to a long
+#' ARN](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-arn-migration.html)
+#' in the *Amazon Elastic Container Service Developer Guide*.
+#' 
+#' `arn:aws:ecs:region:aws_account_id:service/service-name`
+#' 
+#' After the migration is complete, the service has the long ARN format, as
+#' shown below. Use this ARN to tag the service.
+#' 
+#' `arn:aws:ecs:region:aws_account_id:service/cluster-name/service-name`
+#' 
+#' If you try to tag a service with a short ARN, you receive an
+#' `InvalidParameterException` error.
 #' @param tags &#91;required&#93; The tags to add to the resource. A tag is an array of key-value pairs.
 #' 
 #' The following basic restrictions apply to tags:
@@ -3673,7 +3689,7 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
 #' For more information, see [Balancing an Amazon ECS service across
 #' Availability
 #' Zones](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-rebalancing.html)
-#' in the *Amazon Elastic Container Service Developer Guide*.
+#' in the *Amazon Elastic Container Service Developer Guide* .
 #' @param networkConfiguration An object representing the network configuration for the service.
 #' @param placementConstraints An array of task placement constraint objects to update the service to
 #' use. If no value is specified, the existing placement constraints for

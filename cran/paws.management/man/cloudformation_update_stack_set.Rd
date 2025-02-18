@@ -38,9 +38,10 @@ cloudformation_update_stack_set(
 Conditional: You must specify only one of the following parameters:
 \code{TemplateBody} or \code{TemplateURL}—or set \code{UsePreviousTemplate} to true.}
 
-\item{TemplateURL}{The location of the file that contains the template body. The URL must
-point to a template (maximum size: 460,800 bytes) that is located in an
-Amazon S3 bucket or a Systems Manager document.
+\item{TemplateURL}{The URL of a file that contains the template body. The URL must point to
+a template (maximum size: 1 MB) that is located in an Amazon S3 bucket
+or a Systems Manager document. The location for an Amazon S3 bucket must
+start with \verb{https://}.
 
 Conditional: You must specify only one of the following parameters:
 \code{TemplateBody} or \code{TemplateURL}—or set \code{UsePreviousTemplate} to true.}
@@ -95,7 +96,7 @@ references one or more macros, you must update the stack set
 directly from the processed template, without first reviewing the
 resulting changes in a change set. To update the stack set directly,
 you must acknowledge this capability. For more information, see
-\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-macros.html}{Using CloudFormation Macros to Perform Custom Processing on Templates}.
+\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-macros.html}{Perform custom processing on CloudFormation templates with template macros}.
 
 Stack sets with service-managed permissions do not currently support
 the use of macros in templates. (This includes the
@@ -146,7 +147,7 @@ stack set.
 
 Specify an IAM role only if you are using customized administrator roles
 to control which users or groups can manage specific stack sets within
-the same administrator account. For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-prereqs.html}{Granting Permissions for Stack Set Operations}
+the same administrator account. For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-prereqs.html}{Prerequisites for using CloudFormation StackSets}
 in the \emph{CloudFormation User Guide}.
 
 If you specified a customized administrator role when you created the
@@ -190,10 +191,10 @@ instances associated with your stack set.
 \itemize{
 \item With \code{self-managed} permissions, you must create the administrator
 and execution roles required to deploy to target accounts. For more
-information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-prereqs-self-managed.html}{Grant Self-Managed Stack Set Permissions}.
+information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-prereqs-self-managed.html}{Grant self-managed permissions}.
 \item With \code{service-managed} permissions, StackSets automatically creates
 the IAM roles required to deploy to accounts managed by
-Organizations. For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/}{Grant Service-Managed Stack Set Permissions}.
+Organizations. For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-activate-trusted-access.html}{Activate trusted access for stack sets with Organizations}.
 }}
 
 \item{AutoDeployment}{[Service-managed permissions] Describes whether StackSets

@@ -9,7 +9,7 @@ healthlake_start_fhir_export_job(
   OutputDataConfig,
   DatastoreId,
   DataAccessRoleArn,
-  ClientToken
+  ClientToken = NULL
 )
 }
 \arguments{
@@ -23,7 +23,7 @@ exported for an export job.}
 
 \item{DataAccessRoleArn}{[required] The Amazon Resource Name used during the initiation of the job.}
 
-\item{ClientToken}{[required] An optional user provided token used for ensuring idempotency.}
+\item{ClientToken}{An optional user provided token used for ensuring idempotency.}
 }
 \description{
 Begins a FHIR export job.

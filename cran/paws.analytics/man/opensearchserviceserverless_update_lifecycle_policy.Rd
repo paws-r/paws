@@ -5,27 +5,27 @@
 \title{Updates an OpenSearch Serverless access policy}
 \usage{
 opensearchserviceserverless_update_lifecycle_policy(
-  clientToken = NULL,
-  description = NULL,
+  type,
   name,
-  policy = NULL,
   policyVersion,
-  type
+  description = NULL,
+  policy = NULL,
+  clientToken = NULL
 )
 }
 \arguments{
-\item{clientToken}{A unique, case-sensitive identifier to ensure idempotency of the
-request.}
-
-\item{description}{A description of the lifecycle policy.}
+\item{type}{[required] The type of lifecycle policy.}
 
 \item{name}{[required] The name of the policy.}
 
-\item{policy}{The JSON policy document to use as the content for the lifecycle policy.}
-
 \item{policyVersion}{[required] The version of the policy being updated.}
 
-\item{type}{[required] The type of lifecycle policy.}
+\item{description}{A description of the lifecycle policy.}
+
+\item{policy}{The JSON policy document to use as the content for the lifecycle policy.}
+
+\item{clientToken}{A unique, case-sensitive identifier to ensure idempotency of the
+request.}
 }
 \description{
 Updates an OpenSearch Serverless access policy. For more information, see \href{https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-lifecycle.html#serverless-lifecycle-update}{Updating data lifecycle policies}.

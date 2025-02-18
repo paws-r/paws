@@ -5,17 +5,17 @@
 \title{Deletes an OpenSearch Serverless access policy}
 \usage{
 opensearchserviceserverless_delete_access_policy(
-  clientToken = NULL,
+  type,
   name,
-  type
+  clientToken = NULL
 )
 }
 \arguments{
-\item{clientToken}{Unique, case-sensitive identifier to ensure idempotency of the request.}
+\item{type}{[required] The type of policy.}
 
 \item{name}{[required] The name of the policy to delete.}
 
-\item{type}{[required] The type of policy.}
+\item{clientToken}{Unique, case-sensitive identifier to ensure idempotency of the request.}
 }
 \description{
 Deletes an OpenSearch Serverless access policy. For more information, see \href{https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-data-access.html}{Data access control for Amazon OpenSearch Serverless}.

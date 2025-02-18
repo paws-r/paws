@@ -776,6 +776,60 @@ storagegateway_cancel_archival <- function(GatewayARN, TapeARN) {
 }
 .storagegateway$operations$cancel_archival <- storagegateway_cancel_archival
 
+#' Cancels generation of a specified cache report
+#'
+#' @description
+#' Cancels generation of a specified cache report. You can use this
+#' operation to manually cancel an IN-PROGRESS report for any reason. This
+#' action changes the report status from IN-PROGRESS to CANCELLED. You can
+#' only cancel in-progress reports. If the the report you attempt to cancel
+#' is in FAILED, ERROR, or COMPLETED state, the cancel operation returns an
+#' error.
+#'
+#' @usage
+#' storagegateway_cancel_cache_report(CacheReportARN)
+#'
+#' @param CacheReportARN &#91;required&#93; The Amazon Resource Name (ARN) of the cache report you want to cancel.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CacheReportARN = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$cancel_cache_report(
+#'   CacheReportARN = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname storagegateway_cancel_cache_report
+#'
+#' @aliases storagegateway_cancel_cache_report
+storagegateway_cancel_cache_report <- function(CacheReportARN) {
+  op <- new_operation(
+    name = "CancelCacheReport",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .storagegateway$cancel_cache_report_input(CacheReportARN = CacheReportARN)
+  output <- .storagegateway$cancel_cache_report_output()
+  config <- get_config()
+  svc <- .storagegateway$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.storagegateway$operations$cancel_cache_report <- storagegateway_cancel_cache_report
+
 #' Cancels retrieval of a virtual tape from the virtual tape shelf (VTS) to
 #' a gateway after the retrieval process is initiated
 #'
@@ -2319,6 +2373,64 @@ storagegateway_delete_bandwidth_rate_limit <- function(GatewayARN, BandwidthType
 }
 .storagegateway$operations$delete_bandwidth_rate_limit <- storagegateway_delete_bandwidth_rate_limit
 
+#' Deletes the specified cache report and any associated tags from the
+#' Storage Gateway database
+#'
+#' @description
+#' Deletes the specified cache report and any associated tags from the
+#' Storage Gateway database. You can only delete completed reports. If the
+#' status of the report you attempt to delete still IN-PROGRESS, the delete
+#' operation returns an error. You can use
+#' [`cancel_cache_report`][storagegateway_cancel_cache_report] to cancel an
+#' IN-PROGRESS report.
+#' 
+#' [`delete_cache_report`][storagegateway_delete_cache_report] does not
+#' delete the report object from your Amazon S3 bucket.
+#'
+#' @usage
+#' storagegateway_delete_cache_report(CacheReportARN)
+#'
+#' @param CacheReportARN &#91;required&#93; The Amazon Resource Name (ARN) of the cache report you want to delete.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CacheReportARN = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_cache_report(
+#'   CacheReportARN = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname storagegateway_delete_cache_report
+#'
+#' @aliases storagegateway_delete_cache_report
+storagegateway_delete_cache_report <- function(CacheReportARN) {
+  op <- new_operation(
+    name = "DeleteCacheReport",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .storagegateway$delete_cache_report_input(CacheReportARN = CacheReportARN)
+  output <- .storagegateway$delete_cache_report_output()
+  config <- get_config()
+  svc <- .storagegateway$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.storagegateway$operations$delete_cache_report <- storagegateway_delete_cache_report
+
 #' Deletes Challenge-Handshake Authentication Protocol (CHAP) credentials
 #' for a specified iSCSI target and initiator pair
 #'
@@ -3130,6 +3242,93 @@ storagegateway_describe_cache <- function(GatewayARN) {
   return(response)
 }
 .storagegateway$operations$describe_cache <- storagegateway_describe_cache
+
+#' Returns information about the specified cache report, including
+#' completion status and generation progress
+#'
+#' @description
+#' Returns information about the specified cache report, including
+#' completion status and generation progress.
+#'
+#' @usage
+#' storagegateway_describe_cache_report(CacheReportARN)
+#'
+#' @param CacheReportARN &#91;required&#93; The Amazon Resource Name (ARN) of the cache report you want to describe.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CacheReportInfo = list(
+#'     CacheReportARN = "string",
+#'     CacheReportStatus = "IN_PROGRESS"|"COMPLETED"|"CANCELED"|"FAILED"|"ERROR",
+#'     ReportCompletionPercent = 123,
+#'     EndTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Role = "string",
+#'     FileShareARN = "string",
+#'     LocationARN = "string",
+#'     StartTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     InclusionFilters = list(
+#'       list(
+#'         Name = "UploadState"|"UploadFailureReason",
+#'         Values = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     ExclusionFilters = list(
+#'       list(
+#'         Name = "UploadState"|"UploadFailureReason",
+#'         Values = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     ReportName = "string",
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_cache_report(
+#'   CacheReportARN = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname storagegateway_describe_cache_report
+#'
+#' @aliases storagegateway_describe_cache_report
+storagegateway_describe_cache_report <- function(CacheReportARN) {
+  op <- new_operation(
+    name = "DescribeCacheReport",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .storagegateway$describe_cache_report_input(CacheReportARN = CacheReportARN)
+  output <- .storagegateway$describe_cache_report_output()
+  config <- get_config()
+  svc <- .storagegateway$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.storagegateway$operations$describe_cache_report <- storagegateway_describe_cache_report
 
 #' Returns a description of the gateway volumes specified in the request
 #'
@@ -4868,6 +5067,104 @@ storagegateway_list_automatic_tape_creation_policies <- function(GatewayARN = NU
 }
 .storagegateway$operations$list_automatic_tape_creation_policies <- storagegateway_list_automatic_tape_creation_policies
 
+#' Returns a list of existing cache reports for all file shares associated
+#' with your Amazon Web Services account
+#'
+#' @description
+#' Returns a list of existing cache reports for all file shares associated
+#' with your Amazon Web Services account. This list includes all
+#' information provided by the
+#' [`describe_cache_report`][storagegateway_describe_cache_report] action,
+#' such as report name, status, completion progress, start time, end time,
+#' filters, and tags.
+#'
+#' @usage
+#' storagegateway_list_cache_reports(Marker)
+#'
+#' @param Marker Opaque pagination token returned from a previous
+#' [`list_cache_reports`][storagegateway_list_cache_reports] operation. If
+#' present, `Marker` specifies where to continue the list from after a
+#' previous call to
+#' [`list_cache_reports`][storagegateway_list_cache_reports]. Optional.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CacheReportList = list(
+#'     list(
+#'       CacheReportARN = "string",
+#'       CacheReportStatus = "IN_PROGRESS"|"COMPLETED"|"CANCELED"|"FAILED"|"ERROR",
+#'       ReportCompletionPercent = 123,
+#'       EndTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Role = "string",
+#'       FileShareARN = "string",
+#'       LocationARN = "string",
+#'       StartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       InclusionFilters = list(
+#'         list(
+#'           Name = "UploadState"|"UploadFailureReason",
+#'           Values = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       ExclusionFilters = list(
+#'         list(
+#'           Name = "UploadState"|"UploadFailureReason",
+#'           Values = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       ReportName = "string",
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   Marker = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_cache_reports(
+#'   Marker = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname storagegateway_list_cache_reports
+#'
+#' @aliases storagegateway_list_cache_reports
+storagegateway_list_cache_reports <- function(Marker = NULL) {
+  op <- new_operation(
+    name = "ListCacheReports",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .storagegateway$list_cache_reports_input(Marker = Marker)
+  output <- .storagegateway$list_cache_reports_output()
+  config <- get_config()
+  svc <- .storagegateway$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.storagegateway$operations$list_cache_reports <- storagegateway_list_cache_reports
+
 #' Gets a list of the file shares for a specific S3 File Gateway, or the
 #' list of file shares that belong to the calling Amazon Web Services
 #' account
@@ -5644,21 +5941,21 @@ storagegateway_list_volumes <- function(GatewayARN = NULL, Marker = NULL, Limit 
 }
 .storagegateway$operations$list_volumes <- storagegateway_list_volumes
 
-#' Sends you notification through CloudWatch Events when all files written
+#' Sends you notification through Amazon EventBridge when all files written
 #' to your file share have been uploaded to Amazon S3
 #'
 #' @description
-#' Sends you notification through CloudWatch Events when all files written
+#' Sends you notification through Amazon EventBridge when all files written
 #' to your file share have been uploaded to Amazon S3.
 #' 
-#' Storage Gateway can send a notification through Amazon CloudWatch Events
-#' when all files written to your file share up to that point in time have
-#' been uploaded to Amazon S3. These files include files written to the
-#' file share up to the time that you make a request for notification. When
-#' the upload is done, Storage Gateway sends you notification through an
-#' Amazon CloudWatch Event. You can configure CloudWatch Events to send the
-#' notification through event targets such as Amazon SNS or Lambda
-#' function. This operation is only supported for S3 File Gateways.
+#' Storage Gateway can send a notification through Amazon EventBridge when
+#' all files written to your file share up to that point in time have been
+#' uploaded to Amazon S3. These files include files written to the file
+#' share up to the time that you make a request for notification. When the
+#' upload is done, Storage Gateway sends you notification through
+#' EventBridge. You can configure EventBridge to send the notification
+#' through event targets such as Amazon SNS or Lambda function. This
+#' operation is only supported for S3 File Gateways.
 #' 
 #' For more information, see [Getting file upload
 #' notification](https://docs.aws.amazon.com/filegateway/latest/files3/monitoring-file-gateway.html#get-notification)
@@ -6376,6 +6673,142 @@ storagegateway_start_availability_monitor_test <- function(GatewayARN) {
   return(response)
 }
 .storagegateway$operations$start_availability_monitor_test <- storagegateway_start_availability_monitor_test
+
+#' Starts generating a report of the file metadata currently cached by an
+#' S3 File Gateway for a specific file share
+#'
+#' @description
+#' Starts generating a report of the file metadata currently cached by an
+#' S3 File Gateway for a specific file share. You can use this report to
+#' identify and resolve issues if you have files failing upload from your
+#' gateway to Amazon S3. The report is a CSV file containing a list of
+#' files which match the set of filter parameters you specify in the
+#' request.
+#' 
+#' The **Files Failing Upload** flag is reset every 24 hours and during
+#' gateway reboot. If this report captures the files after the reset, but
+#' before they become flagged again, they will not be reported as **Files
+#' Failing Upload**.
+#' 
+#' The following requirements must be met to successfully generate a cache
+#' report:
+#' 
+#' -   You must have permissions to list the entire Amazon S3 bucket
+#'     associated with the specified file share.
+#' 
+#' -   No other cache reports can currently be in-progress for the
+#'     specified file share.
+#' 
+#' -   There must be fewer than 10 existing cache reports for the specified
+#'     file share.
+#' 
+#' -   The gateway must be online and connected to Amazon Web Services.
+#' 
+#' -   The root disk must have at least 20GB of free space when report
+#'     generation starts.
+#' 
+#' -   You must specify at least one value for `InclusionFilters` or
+#'     `ExclusionFilters` in the request.
+#'
+#' @usage
+#' storagegateway_start_cache_report(FileShareARN, Role, LocationARN,
+#'   BucketRegion, VPCEndpointDNSName, InclusionFilters, ExclusionFilters,
+#'   ClientToken, Tags)
+#'
+#' @param FileShareARN &#91;required&#93; 
+#' @param Role &#91;required&#93; The ARN of the IAM role used when saving the cache report to Amazon S3.
+#' @param LocationARN &#91;required&#93; The ARN of the Amazon S3 bucket where the cache report will be saved.
+#' 
+#' We do not recommend saving the cache report to the same Amazon S3 bucket
+#' for which you are generating the report.
+#' 
+#' This field does not accept access point ARNs.
+#' @param BucketRegion &#91;required&#93; The Amazon Web Services Region of the Amazon S3 bucket associated with
+#' the file share for which you want to generate the cache report.
+#' @param VPCEndpointDNSName The DNS name of the VPC endpoint associated with the Amazon S3 where you
+#' want to save the cache report. Optional.
+#' @param InclusionFilters The list of filters and parameters that determine which files are
+#' included in the report. You must specify at least one value for
+#' `InclusionFilters` or `ExclusionFilters` in a
+#' [`start_cache_report`][storagegateway_start_cache_report] request.
+#' @param ExclusionFilters The list of filters and parameters that determine which files are
+#' excluded from the report. You must specify at least one value for
+#' `InclusionFilters` or `ExclusionFilters` in a
+#' [`start_cache_report`][storagegateway_start_cache_report] request.
+#' @param ClientToken &#91;required&#93; A unique identifier that you use to ensure idempotent report generation
+#' if you need to retry an unsuccessful
+#' [`start_cache_report`][storagegateway_start_cache_report] request. If
+#' you retry a request, use the same `ClientToken` you specified in the
+#' initial request.
+#' @param Tags A list of up to 50 key/value tags that you can assign to the cache
+#' report. Using tags can help you categorize your reports and more easily
+#' locate them in search results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CacheReportARN = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$start_cache_report(
+#'   FileShareARN = "string",
+#'   Role = "string",
+#'   LocationARN = "string",
+#'   BucketRegion = "string",
+#'   VPCEndpointDNSName = "string",
+#'   InclusionFilters = list(
+#'     list(
+#'       Name = "UploadState"|"UploadFailureReason",
+#'       Values = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   ExclusionFilters = list(
+#'     list(
+#'       Name = "UploadState"|"UploadFailureReason",
+#'       Values = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   ClientToken = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname storagegateway_start_cache_report
+#'
+#' @aliases storagegateway_start_cache_report
+storagegateway_start_cache_report <- function(FileShareARN, Role, LocationARN, BucketRegion, VPCEndpointDNSName = NULL, InclusionFilters = NULL, ExclusionFilters = NULL, ClientToken, Tags = NULL) {
+  op <- new_operation(
+    name = "StartCacheReport",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .storagegateway$start_cache_report_input(FileShareARN = FileShareARN, Role = Role, LocationARN = LocationARN, BucketRegion = BucketRegion, VPCEndpointDNSName = VPCEndpointDNSName, InclusionFilters = InclusionFilters, ExclusionFilters = ExclusionFilters, ClientToken = ClientToken, Tags = Tags)
+  output <- .storagegateway$start_cache_report_output()
+  config <- get_config()
+  svc <- .storagegateway$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.storagegateway$operations$start_cache_report <- storagegateway_start_cache_report
 
 #' Starts a gateway that you previously shut down (see ShutdownGateway)
 #'

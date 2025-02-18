@@ -1658,10 +1658,10 @@ ecr_set_repository_policy <- function(registryId = NULL, repositoryName, policyT
 }
 .ecr$operations$set_repository_policy <- ecr_set_repository_policy
 
-#' Starts an image vulnerability scan
+#' Starts a basic image vulnerability scan
 #'
 #' @description
-#' Starts an image vulnerability scan. An image scan can only be started once per 24 hours on an individual image. This limit includes if an image was scanned on initial push. For more information, see [Image scanning](https://docs.aws.amazon.com/AmazonECR/latest/userguide/image-scanning.html) in the *Amazon Elastic Container Registry User Guide*.
+#' Starts a basic image vulnerability scan.
 #'
 #' See [https://www.paws-r-sdk.com/docs/ecr_start_image_scan/](https://www.paws-r-sdk.com/docs/ecr_start_image_scan/) for full documentation.
 #'

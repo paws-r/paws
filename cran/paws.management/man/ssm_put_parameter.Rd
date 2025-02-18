@@ -67,8 +67,8 @@ parameters have a value limit of 4 KB. Advanced parameters have a value
 limit of 8 KB.
 
 Parameters can't be referenced or nested in the values of other
-parameters. You can't include \code{{{}}} or \code{{{ssm:parameter-name}}} in a
-parameter value.}
+parameters. You can't include values wrapped in double brackets \code{{{}}}
+or \code{{{ssm:parameter-name}}} in a parameter value.}
 
 \item{Type}{The type of parameter that you want to add to the system.
 
@@ -185,7 +185,7 @@ For more information about configuring the default tier option, see
 in the \emph{Amazon Web Services Systems Manager User Guide}.}
 
 \item{Policies}{One or more policies to apply to a parameter. This operation takes a
-JSON array. Parameter Store, a capability of Amazon Web Services Systems
+JSON array. Parameter Store, a tool in Amazon Web Services Systems
 Manager supports the following policy types:
 
 Expiration: This policy deletes the parameter after it expires. When you

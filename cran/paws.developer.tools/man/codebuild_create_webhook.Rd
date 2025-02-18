@@ -34,7 +34,12 @@ For a build to be triggered, at least one filter group in the
 \code{filterGroups} array must pass. For a filter group to pass, each of its
 filters must pass.}
 
-\item{buildType}{Specifies the type of build this webhook will trigger.}
+\item{buildType}{Specifies the type of build this webhook will trigger.
+
+\code{RUNNER_BUILDKITE_BUILD} is only available for \code{NO_SOURCE} source type
+projects configured for Buildkite runner builds. For more information
+about CodeBuild-hosted Buildkite runner builds, see \href{https://docs.aws.amazon.com/codebuild/latest/userguide/sample-runner-buildkite.html}{Tutorial: Configure a CodeBuild-hosted Buildkite runner}
+in the \emph{CodeBuild user guide}.}
 
 \item{manualCreation}{If manualCreation is true, CodeBuild doesn't create a webhook in GitHub
 and instead returns \code{payloadUrl} and \code{secret} values for the webhook.

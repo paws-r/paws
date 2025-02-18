@@ -2,8 +2,8 @@
 % Please edit documentation in R/wafv2_operations.R
 \name{wafv2_disassociate_web_acl}
 \alias{wafv2_disassociate_web_acl}
-\title{Disassociates the specified regional application resource from any
-existing web ACL association}
+\title{Disassociates the specified resource from its web ACL association, if it
+has one}
 \usage{
 wafv2_disassociate_web_acl(ResourceArn)
 }
@@ -28,7 +28,7 @@ The ARN must be in one of the following formats:
 }}
 }
 \description{
-Disassociates the specified regional application resource from any existing web ACL association. A resource can have at most one web ACL association. A regional application can be an Application Load Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API, an Amazon Cognito user pool, an App Runner service, or an Amazon Web Services Verified Access instance.
+Disassociates the specified resource from its web ACL association, if it has one.
 
 See \url{https://www.paws-r-sdk.com/docs/wafv2_disassociate_web_acl/} for full documentation.
 }

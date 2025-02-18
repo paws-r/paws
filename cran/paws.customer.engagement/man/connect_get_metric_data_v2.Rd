@@ -96,10 +96,11 @@ single request. Valid filter keys: \code{AGENT} |
 \code{BOT_INTENT_NAME} | \code{CAMPAIGN} | \code{CAMPAIGN_DELIVERY_EVENT_TYPE}
 |\code{CASE_TEMPLATE_ARN} | \code{CASE_STATUS} | \code{CHANNEL} |
 \code{contact/segmentAttributes/connect:Subtype} | \code{DISCONNECT_REASON} |
-\code{FEATURE} | \code{FLOW_ACTION_ID} | \code{FLOW_TYPE} |
+\code{EVALUATION_FORM} | \code{EVALUATION_SECTION} | \code{EVALUATION_QUESTION} |
+\code{EVALUATION_SOURCE} | \code{FEATURE} | \code{FLOW_ACTION_ID} | \code{FLOW_TYPE} |
 \code{FLOWS_MODULE_RESOURCE_ID} | \code{FLOWS_NEXT_RESOURCE_ID} |
 \code{FLOWS_NEXT_RESOURCE_QUEUE_ID} | \code{FLOWS_OUTCOME_TYPE} |
-\code{FLOWS_RESOURCE_ID} | \code{INITIATION_METHOD} |
+\code{FLOWS_RESOURCE_ID} | \code{FORM_VERSION} | \code{INITIATION_METHOD} |
 \code{INVOKING_RESOURCE_PUBLISHED_TIMESTAMP} | \code{INVOKING_RESOURCE_TYPE} |
 \code{PARENT_FLOWS_RESOURCE_ID} | \code{RESOURCE_PUBLISHED_TIMESTAMP} |
 \code{ROUTING_PROFILE} | \code{ROUTING_STEP_EXPRESSION} | \code{QUEUE} |
@@ -153,12 +154,20 @@ Valid grouping keys: \code{AGENT} | \code{AGENT_HIERARCHY_LEVEL_ONE} |
 \code{BOT_VERSION} | \code{BOT_LOCALE} | \code{BOT_INTENT_NAME} | \code{CAMPAIGN} |
 \code{CAMPAIGN_DELIVERY_EVENT_TYPE} | \code{CASE_TEMPLATE_ARN} | \code{CASE_STATUS} |
 \code{CHANNEL} | \code{contact/segmentAttributes/connect:Subtype} |
-\code{DISCONNECT_REASON} | \code{FLOWS_RESOURCE_ID} | \code{FLOWS_MODULE_RESOURCE_ID} |
-\code{FLOW_ACTION_ID} | \code{FLOW_TYPE} | \code{FLOWS_OUTCOME_TYPE} |
-\code{INITIATION_METHOD} | \code{INVOKING_RESOURCE_PUBLISHED_TIMESTAMP} |
-\code{INVOKING_RESOURCE_TYPE} | \code{PARENT_FLOWS_RESOURCE_ID} |
-\code{Q_CONNECT_ENABLED} | \code{QUEUE} | \code{RESOURCE_PUBLISHED_TIMESTAMP} |
-\code{ROUTING_PROFILE} | \code{ROUTING_STEP_EXPRESSION}}
+\code{DISCONNECT_REASON} | \code{EVALUATION_FORM} | \code{EVALUATION_SECTION} |
+\code{EVALUATION_QUESTION} | \code{EVALUATION_SOURCE} | \code{FLOWS_RESOURCE_ID} |
+\code{FLOWS_MODULE_RESOURCE_ID} | \code{FLOW_ACTION_ID} | \code{FLOW_TYPE} |
+\code{FLOWS_OUTCOME_TYPE} | \code{FORM_VERSION} | \code{INITIATION_METHOD} |
+\code{INVOKING_RESOURCE_PUBLISHED_TIMESTAMP} | \code{INVOKING_RESOURCE_TYPE} |
+\code{PARENT_FLOWS_RESOURCE_ID} | \code{Q_CONNECT_ENABLED} | \code{QUEUE} |
+\code{RESOURCE_PUBLISHED_TIMESTAMP} | \code{ROUTING_PROFILE} |
+\code{ROUTING_STEP_EXPRESSION}
+
+Type: Array of strings
+
+Array Members: Maximum number of 4 items
+
+Required: No}
 
 \item{Metrics}{[required] The metrics to retrieve. Specify the name, groupings, and filters for
 each metric. The following historical metrics are available. For a
@@ -398,6 +407,16 @@ Valid groupings and filters: Agent, Campaign, Queue, Routing Profile
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#average-dials-historical}{Average dials per minute}
 
+\strong{AVG_EVALUATION_SCORE}
+
+Unit: Percent
+
+Valid groupings and filters: Agent, Agent Hierarchy, Channel, Evaluation
+Form ID, Evaluation Section ID, Evaluation Question ID, Evaluation
+Source, Form Version, Queue, Routing Profile
+
+UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#average-agent-evaluation-score-historical}{Average agent evaluation score}
+
 \strong{AVG_FLOW_TIME}
 
 Unit: Seconds
@@ -591,6 +610,16 @@ Unit: Seconds
 Valid groupings and filters: Campaign
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#average-wait-time-historical}{Average wait time after customer connection}
+
+\strong{AVG_WEIGHTED_EVALUATION_SCORE}
+
+Unit: Percent
+
+Valid groupings and filters: Agent, Agent Hierarchy, Channel, Evaluation
+Form Id, Evaluation Section ID, Evaluation Question ID, Evaluation
+Source, Form Version, Queue, Routing Profile
+
+UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#average-weighted-agent-evaluation-score-historical}{Average weighted agent evaluation score}
 
 \strong{BOT_CONVERSATIONS_COMPLETED}
 
@@ -900,6 +929,15 @@ SMS and Email campaign delivery modes. Agent, Queue, Routing Profile,
 Answering Machine Detection Status and Disconnect Reason are only
 available for agent assisted voice and automated voice delivery modes.
 
+\strong{EVALUATIONS_PERFORMED}
+
+Unit: Count
+
+Valid groupings and filters: Agent, Agent Hierarchy, Channel, Evaluation
+Form ID, Evaluation Source, Form Version, Queue, Routing Profile
+
+UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#evaluations-performed-historical}{Evaluations performed}
+
 \strong{FLOWS_OUTCOME}
 
 Unit: Count
@@ -967,6 +1005,15 @@ outcome type, Flows resource ID, Initiation method, Resource published
 timestamp
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#minimum-flow-time-historical}{Minimum flow time}
+
+\strong{PERCENT_AUTOMATIC_FAILS}
+
+Unit: Percent
+
+Valid groupings and filters: Agent, Agent Hierarchy, Channel, Evaluation
+Form ID, Evaluation Source, Form Version, Queue, Routing Profile
+
+UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#percent-evaluation-automatic-failures-historical}{Automatic fails percent}
 
 \strong{PERCENT_BOT_CONVERSATIONS_OUTCOME}
 

@@ -20,7 +20,7 @@ cloudformation_update_stack_instances(
 \item{StackSetName}{[required] The name or unique ID of the stack set associated with the stack
 instances.}
 
-\item{Accounts}{[Self-managed permissions] The names of one or more Amazon Web
+\item{Accounts}{[Self-managed permissions] The account IDs of one or more Amazon Web
 Services accounts for which you want to update parameter values for
 stack instances. The overridden parameter values will be applied to all
 stack instances in the specified accounts and Amazon Web Services

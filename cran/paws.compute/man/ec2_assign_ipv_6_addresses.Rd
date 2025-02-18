@@ -2,7 +2,7 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_assign_ipv_6_addresses}
 \alias{ec2_assign_ipv_6_addresses}
-\title{Assigns one or more IPv6 addresses to the specified network interface}
+\title{Assigns the specified IPv6 addresses to the specified network interface}
 \usage{
 ec2_assign_ipv_6_addresses(
   Ipv6PrefixCount = NULL,
@@ -17,7 +17,7 @@ ec2_assign_ipv_6_addresses(
 assigns to the network interface. You cannot use this option if you use
 the \code{Ipv6Prefixes} option.}
 
-\item{Ipv6Prefixes}{One or more IPv6 prefixes assigned to the network interface. You cannot
+\item{Ipv6Prefixes}{One or more IPv6 prefixes assigned to the network interface. You can't
 use this option if you use the \code{Ipv6PrefixCount} option.}
 
 \item{NetworkInterfaceId}{[required] The ID of the network interface.}
@@ -33,7 +33,7 @@ from the subnet range. You can't use this option if specifying specific
 IPv6 addresses.}
 }
 \description{
-Assigns one or more IPv6 addresses to the specified network interface. You can specify one or more specific IPv6 addresses, or you can specify the number of IPv6 addresses to be automatically assigned from within the subnet's IPv6 CIDR block range. You can assign as many IPv6 addresses to a network interface as you can assign private IPv4 addresses, and the limit varies per instance type.
+Assigns the specified IPv6 addresses to the specified network interface. You can specify specific IPv6 addresses, or you can specify the number of IPv6 addresses to be automatically assigned from the subnet's IPv6 CIDR block range. You can assign as many IPv6 addresses to a network interface as you can assign private IPv4 addresses, and the limit varies by instance type.
 
 See \url{https://www.paws-r-sdk.com/docs/ec2_assign_ipv_6_addresses/} for full documentation.
 }

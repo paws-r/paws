@@ -96,7 +96,7 @@ subnet's IPv4 CIDR range. If you specify an IP address, you cannot
 indicate any IP addresses specified in \code{privateIpAddresses} as primary
 (only one IP address can be designated as primary).}
 
-\item{Groups}{The IDs of one or more security groups.}
+\item{Groups}{The IDs of the security groups.}
 
 \item{PrivateIpAddresses}{The private IPv4 addresses.
 

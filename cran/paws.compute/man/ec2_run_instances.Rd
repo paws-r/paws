@@ -253,15 +253,11 @@ without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
 
-\item{DisableApiTermination}{If you set this parameter to \code{true}, you can't terminate the instance
-using the Amazon EC2 console, CLI, or API; otherwise, you can. To change
-this attribute after launch, use
-\code{\link[=ec2_modify_instance_attribute]{modify_instance_attribute}}.
-Alternatively, if you set \code{InstanceInitiatedShutdownBehavior} to
-\code{terminate}, you can terminate the instance by running the shutdown
-command from the instance.
-
-Default: \code{false}}
+\item{DisableApiTermination}{Indicates whether termination protection is enabled for the instance.
+The default is \code{false}, which means that you can terminate the instance
+using the Amazon EC2 console, command line tools, or API. You can enable
+termination protection when you launch an instance, while the instance
+is running, or while the instance is stopped.}
 
 \item{InstanceInitiatedShutdownBehavior}{Indicates whether an instance stops or terminates when you initiate
 shutdown from the instance (using the operating system command for

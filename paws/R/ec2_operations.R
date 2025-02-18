@@ -1224,15 +1224,15 @@ ec2_apply_security_groups_to_client_vpn_target_network <- function(ClientVpnEndp
 }
 .ec2$operations$apply_security_groups_to_client_vpn_target_network <- ec2_apply_security_groups_to_client_vpn_target_network
 
-#' Assigns one or more IPv6 addresses to the specified network interface
+#' Assigns the specified IPv6 addresses to the specified network interface
 #'
 #' @description
-#' Assigns one or more IPv6 addresses to the specified network interface.
-#' You can specify one or more specific IPv6 addresses, or you can specify
-#' the number of IPv6 addresses to be automatically assigned from within
-#' the subnet's IPv6 CIDR block range. You can assign as many IPv6
-#' addresses to a network interface as you can assign private IPv4
-#' addresses, and the limit varies per instance type.
+#' Assigns the specified IPv6 addresses to the specified network interface.
+#' You can specify specific IPv6 addresses, or you can specify the number
+#' of IPv6 addresses to be automatically assigned from the subnet's IPv6
+#' CIDR block range. You can assign as many IPv6 addresses to a network
+#' interface as you can assign private IPv4 addresses, and the limit varies
+#' by instance type.
 #' 
 #' You must specify either the IPv6 addresses or the IPv6 address count in
 #' the request.
@@ -1251,7 +1251,7 @@ ec2_apply_security_groups_to_client_vpn_target_network <- function(ClientVpnEndp
 #' @param Ipv6PrefixCount The number of IPv6 prefixes that Amazon Web Services automatically
 #' assigns to the network interface. You cannot use this option if you use
 #' the `Ipv6Prefixes` option.
-#' @param Ipv6Prefixes One or more IPv6 prefixes assigned to the network interface. You cannot
+#' @param Ipv6Prefixes One or more IPv6 prefixes assigned to the network interface. You can't
 #' use this option if you use the `Ipv6PrefixCount` option.
 #' @param NetworkInterfaceId &#91;required&#93; The ID of the network interface.
 #' @param Ipv6Addresses The IPv6 addresses to be assigned to the network interface. You can't
@@ -1316,18 +1316,18 @@ ec2_assign_ipv_6_addresses <- function(Ipv6PrefixCount = NULL, Ipv6Prefixes = NU
 }
 .ec2$operations$assign_ipv_6_addresses <- ec2_assign_ipv_6_addresses
 
-#' Assigns one or more secondary private IP addresses to the specified
+#' Assigns the specified secondary private IP addresses to the specified
 #' network interface
 #'
 #' @description
-#' Assigns one or more secondary private IP addresses to the specified
+#' Assigns the specified secondary private IP addresses to the specified
 #' network interface.
 #' 
-#' You can specify one or more specific secondary IP addresses, or you can
-#' specify the number of secondary IP addresses to be automatically
-#' assigned within the subnet's CIDR block range. The number of secondary
-#' IP addresses that you can assign to an instance varies by instance type.
-#' For more information about Elastic IP addresses, see [Elastic IP
+#' You can specify specific secondary IP addresses, or you can specify the
+#' number of secondary IP addresses to be automatically assigned from the
+#' subnet's CIDR block range. The number of secondary IP addresses that you
+#' can assign to an instance varies by instance type. For more information
+#' about Elastic IP addresses, see [Elastic IP
 #' Addresses](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html)
 #' in the *Amazon EC2 User Guide*.
 #' 
@@ -1355,10 +1355,10 @@ ec2_assign_ipv_6_addresses <- function(Ipv6PrefixCount = NULL, Ipv6Prefixes = NU
 #'   NetworkInterfaceId, PrivateIpAddresses, SecondaryPrivateIpAddressCount,
 #'   AllowReassignment)
 #'
-#' @param Ipv4Prefixes One or more IPv4 prefixes assigned to the network interface. You cannot
+#' @param Ipv4Prefixes One or more IPv4 prefixes assigned to the network interface. You can't
 #' use this option if you use the `Ipv4PrefixCount` option.
 #' @param Ipv4PrefixCount The number of IPv4 prefixes that Amazon Web Services automatically
-#' assigns to the network interface. You cannot use this option if you use
+#' assigns to the network interface. You can't use this option if you use
 #' the `Ipv4 Prefixes` option.
 #' @param NetworkInterfaceId &#91;required&#93; The ID of the network interface.
 #' @param PrivateIpAddresses The IP addresses to be assigned as a secondary private IP address to the
@@ -3896,6 +3896,17 @@ ec2_authorize_security_group_egress <- function(TagSpecifications = NULL, DryRun
 #'
 #' @param CidrIp The IPv4 address range, in CIDR format.
 #' 
+#' Amazon Web Services
+#' [canonicalizes](https://en.wikipedia.org/wiki/Canonicalization) IPv4 and
+#' IPv6 CIDRs. For example, if you specify 100.68.0.18/18 for the CIDR
+#' block, Amazon Web Services canonicalizes the CIDR block to
+#' 100.68.0.0/18. Any subsequent DescribeSecurityGroups and
+#' DescribeSecurityGroupRules calls will return the canonicalized form of
+#' the CIDR block. Additionally, if you attempt to add another rule with
+#' the non-canonical form of the CIDR (such as 100.68.0.18/18) and there is
+#' already a rule for the canonicalized form of the CIDR block (such as
+#' 100.68.0.0/18), the API throws an duplicate rule error.
+#' 
 #' To specify an IPv6 address range, use IP permissions instead.
 #' 
 #' To specify multiple rules and descriptions for the rules, use IP
@@ -4325,6 +4336,10 @@ ec2_cancel_bundle_task <- function(BundleId, DryRun = NULL) {
 #' -   `active` and there is no commitment duration or the commitment
 #'     duration has elapsed. You can't cancel a future-dated Capacity
 #'     Reservation during the commitment duration.
+#' 
+#' You can't modify or cancel a Capacity Block. For more information, see
+#' [Capacity Blocks for
+#' ML](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-capacity-blocks.html).
 #' 
 #' If a future-dated Capacity Reservation enters the `delayed` state, the
 #' commitment duration is waived, and you can cancel it as soon as it
@@ -5365,8 +5380,8 @@ ec2_copy_image <- function(ClientToken = NULL, Description = NULL, Encrypted = N
 #' Snapshots copied to an Outpost are encrypted by default using the
 #' default encryption key for the Region, or a different key that you
 #' specify in the request using **KmsKeyId**. Outposts do not support
-#' unencrypted snapshots. For more information, [Amazon EBS local snapshots
-#' on
+#' unencrypted snapshots. For more information, see [Amazon EBS local
+#' snapshots on
 #' Outposts](https://docs.aws.amazon.com/ebs/latest/userguide/snapshots-outposts.html#ami)
 #' in the *Amazon EBS User Guide*.
 #' 
@@ -5603,7 +5618,7 @@ ec2_copy_snapshot <- function(Description = NULL, DestinationOutpostArn = NULL, 
 #' @param InstanceCount &#91;required&#93; The number of instances for which to reserve capacity.
 #' 
 #' You can request future-dated Capacity Reservations for an instance count
-#' with a minimum of 100 VPUs. For example, if you request a future-dated
+#' with a minimum of 100 vCPUs. For example, if you request a future-dated
 #' Capacity Reservation for `m5.xlarge` instances, you must request at
 #' least 25 instances (*25 * m5.xlarge = 100 vCPUs*).
 #' 
@@ -7305,7 +7320,10 @@ ec2_create_egress_only_internet_gateway <- function(ClientToken = NULL, DryRun =
 #' the required permissions, the error response is `DryRunOperation`.
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param ClientToken Unique, case-sensitive identifier that you provide to ensure the
-#' idempotency of the request. For more information, see [Ensuring
+#' idempotency of the request. If you do not specify a client token, a
+#' randomly generated token is used for the request to ensure idempotency.
+#' 
+#' For more information, see [Ensuring
 #' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
 #' @param SpotOptions Describes the configuration of Spot Instances in an EC2 Fleet.
 #' @param OnDemandOptions Describes the configuration of On-Demand Instances in an EC2 Fleet.
@@ -10924,9 +10942,8 @@ ec2_create_local_gateway_route_table_vpc_association <- function(LocalGatewayRou
 #' Creates a managed prefix list
 #'
 #' @description
-#' Creates a managed prefix list. You can specify one or more entries for
-#' the prefix list. Each entry consists of a CIDR block and an optional
-#' description.
+#' Creates a managed prefix list. You can specify entries for the prefix
+#' list. Each entry consists of a CIDR block and an optional description.
 #'
 #' @usage
 #' ec2_create_managed_prefix_list(DryRun, PrefixListName, Entries,
@@ -12130,7 +12147,7 @@ ec2_create_network_insights_path <- function(SourceIp = NULL, DestinationIp = NU
 #' subnet's IPv4 CIDR range. If you specify an IP address, you cannot
 #' indicate any IP addresses specified in `privateIpAddresses` as primary
 #' (only one IP address can be designated as primary).
-#' @param Groups The IDs of one or more security groups.
+#' @param Groups The IDs of the security groups.
 #' @param PrivateIpAddresses The private IPv4 addresses.
 #' 
 #' You can't specify private IPv4 addresses if you've specified one of the
@@ -13390,7 +13407,7 @@ ec2_create_security_group <- function(Description, GroupName, VpcId = NULL, TagS
 #'     the same Region as the volume.
 #' 
 #' -   If the source volume is in a Local Zone, you can create the snapshot
-#'     in the same Local Zone or in parent Amazon Web Services Region.
+#'     in the same Local Zone or in its parent Amazon Web Services Region.
 #' 
 #' -   If the source volume is on an Outpost, you can create the snapshot
 #'     on the same Outpost or in its parent Amazon Web Services Region.
@@ -13417,7 +13434,7 @@ ec2_create_security_group <- function(Description, GroupName, VpcId = NULL, TagS
 #' Snapshots that are taken from encrypted volumes are automatically
 #' encrypted. Volumes that are created from encrypted snapshots are also
 #' automatically encrypted. Your encrypted volumes and any associated
-#' snapshots always remain protected. For more information, [Amazon EBS
+#' snapshots always remain protected. For more information, see [Amazon EBS
 #' encryption](https://docs.aws.amazon.com/ebs/latest/userguide/ebs-encryption.html)
 #' in the *Amazon EBS User Guide*.
 #'
@@ -13479,6 +13496,7 @@ ec2_create_security_group <- function(Description, GroupName, VpcId = NULL, TagS
 #'   CompletionTime = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
+#'   FullSnapshotSizeInBytes = 123,
 #'   SnapshotId = "string",
 #'   VolumeId = "string",
 #'   State = "pending"|"completed"|"error"|"recoverable"|"recovering",
@@ -13572,8 +13590,8 @@ ec2_create_snapshot <- function(Description = NULL, OutpostArn = NULL, VolumeId,
 #'     in the same Region as the instance.
 #' 
 #' -   If the source instance is in a Local Zone, you can create the
-#'     snapshots in the same Local Zone or in parent Amazon Web Services
-#'     Region.
+#'     snapshots in the same Local Zone or in its parent Amazon Web
+#'     Services Region.
 #' 
 #' -   If the source instance is on an Outpost, you can create the
 #'     snapshots on the same Outpost or in its parent Amazon Web Services
@@ -21056,7 +21074,7 @@ ec2_delete_security_group <- function(GroupId = NULL, GroupName = NULL, DryRun =
 #' volume.
 #' 
 #' You cannot delete a snapshot of the root device of an EBS volume used by
-#' a registered AMI. You must first de-register the AMI before you can
+#' a registered AMI. You must first deregister the AMI before you can
 #' delete the snapshot.
 #' 
 #' For more information, see [Delete an Amazon EBS
@@ -24596,10 +24614,9 @@ ec2_describe_aggregate_id_format <- function(DryRun = NULL) {
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param Filters The filters.
 #' 
-#' -   `group-name` - For Availability Zones, use the Region name. For
-#'     Local Zones, use the name of the group associated with the Local
-#'     Zone (for example, `us-west-2-lax-1`) For Wavelength Zones, use the
-#'     name of the group associated with the Wavelength Zone (for example,
+#' -   `group-name` - The name of the zone group for the Availability Zone
+#'     (for example, `us-east-1-zg-1`), the Local Zone (for example,
+#'     `us-west-2-lax-1`), or the Wavelength Zone (for example,
 #'     `us-east-1-wl1`).
 #' 
 #' -   `message` - The Zone message.
@@ -25204,6 +25221,15 @@ ec2_describe_capacity_block_extension_offerings <- function(DryRun = NULL, Capac
 #' Describes Capacity Block offerings available for purchase in the Amazon
 #' Web Services Region that you're currently using. With Capacity Blocks,
 #' you purchase a specific instance type for a period of time.
+#' 
+#' To search for an available Capacity Block offering, you specify a
+#' reservation duration and instance count. You must select one of the
+#' following options.
+#' 
+#' -   For reservation durations **1-day increments up 14 days and 7-day
+#'     increments up to 182 days total**
+#' 
+#' -   For instance count **1, 2, 4, 8, 16, 32, or 64 instances**
 #'
 #' @usage
 #' ec2_describe_capacity_block_offerings(DryRun, InstanceType,
@@ -30035,11 +30061,7 @@ ec2_describe_import_snapshot_tasks <- function(DryRun = NULL, Filters = NULL, Im
 #'
 #' @description
 #' Describes the specified attribute of the specified instance. You can
-#' specify only one attribute at a time. Valid attribute values are:
-#' `instanceType` | `kernel` | `ramdisk` | `userData` |
-#' `disableApiTermination` | `instanceInitiatedShutdownBehavior` |
-#' `rootDeviceName` | `blockDeviceMapping` | `productCodes` |
-#' `sourceDestCheck` | `groupSet` | `ebsOptimized` | `sriovNetSupport`
+#' specify only one attribute at a time.
 #'
 #' @usage
 #' ec2_describe_instance_attribute(DryRun, InstanceId, Attribute)
@@ -30051,7 +30073,7 @@ ec2_describe_import_snapshot_tasks <- function(DryRun = NULL, Filters = NULL, Im
 #' @param InstanceId &#91;required&#93; The ID of the instance.
 #' @param Attribute &#91;required&#93; The instance attribute.
 #' 
-#' Note: The `enaSupport` attribute is not supported at this time.
+#' Note that the `enaSupport` attribute is not supported.
 #'
 #' @return
 #' A list with the following syntax:
@@ -31114,7 +31136,8 @@ ec2_describe_instance_status <- function(InstanceIds = NULL, MaxResults = NULL, 
 #'     -   `p3dn.24xlarge` | `p4d.24xlarge` | `p4de.24xlarge` |
 #'         `p5.48xlarge` | `p5e.48xlarge` | `p5en.48xlarge`
 #' 
-#'     -   `trn1.2xlarge` | `trn1.32xlarge` | `trn1n.32xlarge`
+#'     -   `trn1.2xlarge` | `trn1.32xlarge` | `trn1n.32xlarge` |
+#'         `trn2.48xlarge` | `trn2u.48xlarge`
 #' 
 #' For more information, see [Amazon EC2 instance
 #' topology](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-topology.html)
@@ -37610,10 +37633,12 @@ ec2_describe_network_interface_permissions <- function(NetworkInterfacePermissio
 }
 .ec2$operations$describe_network_interface_permissions <- ec2_describe_network_interface_permissions
 
-#' Describes one or more of your network interfaces
+#' Describes the specified network interfaces or all your network
+#' interfaces
 #'
 #' @description
-#' Describes one or more of your network interfaces.
+#' Describes the specified network interfaces or all your network
+#' interfaces.
 #' 
 #' If you have a large number of network interfaces, the operation fails
 #' unless you use pagination or one of the following filters: `group-id`,
@@ -37713,6 +37738,13 @@ ec2_describe_network_interface_permissions <- function(NetworkInterfacePermissio
 #' -   `mac-address` - The MAC address of the network interface.
 #' 
 #' -   `network-interface-id` - The ID of the network interface.
+#' 
+#' -   `operator.managed` - A Boolean that indicates whether this is a
+#'     managed network interface.
+#' 
+#' -   `operator.principal` - The principal that manages the network
+#'     interface. Only valid for managed network interfaces, where
+#'     `managed` is `true`.
 #' 
 #' -   `owner-id` - The Amazon Web Services account ID of the network
 #'     interface owner.
@@ -40613,6 +40645,7 @@ ec2_describe_snapshot_tier_status <- function(Filters = NULL, DryRun = NULL, Nex
 #'       CompletionTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
+#'       FullSnapshotSizeInBytes = 123,
 #'       SnapshotId = "string",
 #'       VolumeId = "string",
 #'       State = "pending"|"completed"|"error"|"recoverable"|"recovering",
@@ -46691,7 +46724,7 @@ ec2_describe_vpc_endpoint_services <- function(DryRun = NULL, ServiceNames = NUL
 #'     `deleted` | `rejected` | `failed`).
 #' 
 #' -   `vpc-endpoint-type` - The type of VPC endpoint (`Interface` |
-#'     `Gateway` | `GatewayLoadBalancer`).
+#'     `Gateway` | `GatewayLoadBalancer` | `Resource` | `ServiceNetwork`).
 #' @param MaxResults The maximum number of items to return for this request. The request
 #' returns a token that you can specify in a subsequent call to get the
 #' next set of results.
@@ -60084,9 +60117,10 @@ ec2_modify_image_attribute <- function(Attribute = NULL, Description = NULL, Ima
 #' the block device mapping when launching an
 #' instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/block-device-mapping-concepts.html#Using_OverridingAMIBDM)
 #' in the *Amazon EC2 User Guide*.
-#' @param DisableApiTermination If the value is `true`, you can't terminate the instance using the
-#' Amazon EC2 console, CLI, or API; otherwise, you can. You cannot use this
-#' parameter for Spot Instances.
+#' @param DisableApiTermination Enable or disable termination protection for the instance. If the value
+#' is `true`, you can't terminate the instance using the Amazon EC2
+#' console, command line interface, or API. You can't enable termination
+#' protection for Spot Instances.
 #' @param InstanceType Changes the instance type to the specified value. For more information,
 #' see [Instance
 #' types](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html)
@@ -61515,6 +61549,13 @@ ec2_modify_ipam_resource_cidr <- function(DryRun = NULL, ResourceId, ResourceCid
 #' for your
 #' IPAM](https://docs.aws.amazon.com/vpc/latest/ipam/quotas-ipam.html) in
 #' the *Amazon VPC IPAM User Guide*.
+#' 
+#' The resulting set of exclusions must not result in "overlap", meaning
+#' two or more OU exclusions must not exclude the same OU. For more
+#' information and examples, see the Amazon Web Services CLI request
+#' process in [Add or remove OU
+#' exclusions](https://docs.aws.amazon.com/vpc/latest/ipam/exclude-ous.html#exclude-ous-create-delete)
+#' in the *Amazon VPC User Guide*.
 #' @param RemoveOrganizationalUnitExclusions Remove an Organizational Unit (OU) exclusion to your IPAM. If your IPAM
 #' is integrated with Amazon Web Services Organizations and you add an
 #' organizational unit (OU) exclusion, IPAM will not manage the IP
@@ -61523,6 +61564,13 @@ ec2_modify_ipam_resource_cidr <- function(DryRun = NULL, ResourceId, ResourceCid
 #' for your
 #' IPAM](https://docs.aws.amazon.com/vpc/latest/ipam/quotas-ipam.html) in
 #' the *Amazon VPC IPAM User Guide*.
+#' 
+#' The resulting set of exclusions must not result in "overlap", meaning
+#' two or more OU exclusions must not exclude the same OU. For more
+#' information and examples, see the Amazon Web Services CLI request
+#' process in [Add or remove OU
+#' exclusions](https://docs.aws.amazon.com/vpc/latest/ipam/exclude-ous.html#exclude-ous-create-delete)
+#' in the *Amazon VPC User Guide*.
 #'
 #' @return
 #' A list with the following syntax:
@@ -72030,15 +72078,11 @@ ec2_revoke_security_group_ingress <- function(CidrIp = NULL, FromPort = NULL, Gr
 #' without actually making the request, and provides an error response. If
 #' you have the required permissions, the error response is
 #' `DryRunOperation`. Otherwise, it is `UnauthorizedOperation`.
-#' @param DisableApiTermination If you set this parameter to `true`, you can't terminate the instance
-#' using the Amazon EC2 console, CLI, or API; otherwise, you can. To change
-#' this attribute after launch, use
-#' [`modify_instance_attribute`][ec2_modify_instance_attribute].
-#' Alternatively, if you set `InstanceInitiatedShutdownBehavior` to
-#' `terminate`, you can terminate the instance by running the shutdown
-#' command from the instance.
-#' 
-#' Default: `false`
+#' @param DisableApiTermination Indicates whether termination protection is enabled for the instance.
+#' The default is `false`, which means that you can terminate the instance
+#' using the Amazon EC2 console, command line tools, or API. You can enable
+#' termination protection when you launch an instance, while the instance
+#' is running, or while the instance is stopped.
 #' @param InstanceInitiatedShutdownBehavior Indicates whether an instance stops or terminates when you initiate
 #' shutdown from the instance (using the operating system command for
 #' system shutdown).
@@ -75407,11 +75451,11 @@ ec2_terminate_instances <- function(InstanceIds, DryRun = NULL) {
 }
 .ec2$operations$terminate_instances <- ec2_terminate_instances
 
-#' Unassigns one or more IPv6 addresses IPv4 Prefix Delegation prefixes
+#' Unassigns the specified IPv6 addresses or Prefix Delegation prefixes
 #' from a network interface
 #'
 #' @description
-#' Unassigns one or more IPv6 addresses IPv4 Prefix Delegation prefixes
+#' Unassigns the specified IPv6 addresses or Prefix Delegation prefixes
 #' from a network interface.
 #'
 #' @usage
@@ -75473,11 +75517,11 @@ ec2_unassign_ipv_6_addresses <- function(Ipv6Prefixes = NULL, NetworkInterfaceId
 }
 .ec2$operations$unassign_ipv_6_addresses <- ec2_unassign_ipv_6_addresses
 
-#' Unassigns one or more secondary private IP addresses, or IPv4 Prefix
+#' Unassigns the specified secondary private IP addresses or IPv4 Prefix
 #' Delegation prefixes from a network interface
 #'
 #' @description
-#' Unassigns one or more secondary private IP addresses, or IPv4 Prefix
+#' Unassigns the specified secondary private IP addresses or IPv4 Prefix
 #' Delegation prefixes from a network interface.
 #'
 #' @usage

@@ -911,7 +911,7 @@ codebuild_batch_get_fleets <- function(names) {
 #'             )
 #'           )
 #'         ),
-#'         buildType = "BUILD"|"BUILD_BATCH",
+#'         buildType = "BUILD"|"BUILD_BATCH"|"RUNNER_BUILDKITE_BUILD",
 #'         manualCreation = TRUE|FALSE,
 #'         lastModifiedSecret = as.POSIXct(
 #'           "2015-01-01"
@@ -1773,7 +1773,7 @@ codebuild_create_fleet <- function(name, baseCapacity, environmentType, computeT
 #'           )
 #'         )
 #'       ),
-#'       buildType = "BUILD"|"BUILD_BATCH",
+#'       buildType = "BUILD"|"BUILD_BATCH"|"RUNNER_BUILDKITE_BUILD",
 #'       manualCreation = TRUE|FALSE,
 #'       lastModifiedSecret = as.POSIXct(
 #'         "2015-01-01"
@@ -2186,6 +2186,13 @@ codebuild_create_report_group <- function(name, type, exportConfig, tags = NULL)
 #' `filterGroups` array must pass. For a filter group to pass, each of its
 #' filters must pass.
 #' @param buildType Specifies the type of build this webhook will trigger.
+#' 
+#' `RUNNER_BUILDKITE_BUILD` is only available for `NO_SOURCE` source type
+#' projects configured for Buildkite runner builds. For more information
+#' about CodeBuild-hosted Buildkite runner builds, see [Tutorial: Configure
+#' a CodeBuild-hosted Buildkite
+#' runner](https://docs.aws.amazon.com/codebuild/latest/userguide/sample-runner-buildkite.html)
+#' in the *CodeBuild user guide*.
 #' @param manualCreation If manualCreation is true, CodeBuild doesn't create a webhook in GitHub
 #' and instead returns `payloadUrl` and `secret` values for the webhook.
 #' The `payloadUrl` and `secret` values in the output can be used to
@@ -2215,7 +2222,7 @@ codebuild_create_report_group <- function(name, type, exportConfig, tags = NULL)
 #'         )
 #'       )
 #'     ),
-#'     buildType = "BUILD"|"BUILD_BATCH",
+#'     buildType = "BUILD"|"BUILD_BATCH"|"RUNNER_BUILDKITE_BUILD",
 #'     manualCreation = TRUE|FALSE,
 #'     lastModifiedSecret = as.POSIXct(
 #'       "2015-01-01"
@@ -2243,7 +2250,7 @@ codebuild_create_report_group <- function(name, type, exportConfig, tags = NULL)
 #'       )
 #'     )
 #'   ),
-#'   buildType = "BUILD"|"BUILD_BATCH",
+#'   buildType = "BUILD"|"BUILD_BATCH"|"RUNNER_BUILDKITE_BUILD",
 #'   manualCreation = TRUE|FALSE,
 #'   scopeConfiguration = list(
 #'     name = "string",
@@ -2793,7 +2800,8 @@ codebuild_describe_code_coverages <- function(reportArn, nextToken = NULL, maxRe
 #'       message = "string",
 #'       expired = as.POSIXct(
 #'         "2015-01-01"
-#'       )
+#'       ),
+#'       testSuiteName = "string"
 #'     )
 #'   )
 #' )
@@ -6914,7 +6922,7 @@ codebuild_update_fleet <- function(arn, baseCapacity = NULL, environmentType = N
 #'           )
 #'         )
 #'       ),
-#'       buildType = "BUILD"|"BUILD_BATCH",
+#'       buildType = "BUILD"|"BUILD_BATCH"|"RUNNER_BUILDKITE_BUILD",
 #'       manualCreation = TRUE|FALSE,
 #'       lastModifiedSecret = as.POSIXct(
 #'         "2015-01-01"
@@ -7403,6 +7411,13 @@ codebuild_update_report_group <- function(arn, exportConfig = NULL, tags = NULL)
 #' webhook event can trigger a build. A filter group must contain at least
 #' one `EVENT` `WebhookFilter`.
 #' @param buildType Specifies the type of build this webhook will trigger.
+#' 
+#' `RUNNER_BUILDKITE_BUILD` is only available for `NO_SOURCE` source type
+#' projects configured for Buildkite runner builds. For more information
+#' about CodeBuild-hosted Buildkite runner builds, see [Tutorial: Configure
+#' a CodeBuild-hosted Buildkite
+#' runner](https://docs.aws.amazon.com/codebuild/latest/userguide/sample-runner-buildkite.html)
+#' in the *CodeBuild user guide*.
 #'
 #' @return
 #' A list with the following syntax:
@@ -7422,7 +7437,7 @@ codebuild_update_report_group <- function(arn, exportConfig = NULL, tags = NULL)
 #'         )
 #'       )
 #'     ),
-#'     buildType = "BUILD"|"BUILD_BATCH",
+#'     buildType = "BUILD"|"BUILD_BATCH"|"RUNNER_BUILDKITE_BUILD",
 #'     manualCreation = TRUE|FALSE,
 #'     lastModifiedSecret = as.POSIXct(
 #'       "2015-01-01"
@@ -7451,7 +7466,7 @@ codebuild_update_report_group <- function(arn, exportConfig = NULL, tags = NULL)
 #'       )
 #'     )
 #'   ),
-#'   buildType = "BUILD"|"BUILD_BATCH"
+#'   buildType = "BUILD"|"BUILD_BATCH"|"RUNNER_BUILDKITE_BUILD"
 #' )
 #' ```
 #'

@@ -8,7 +8,7 @@ member accounts in your organization}
 iam_disable_organizations_root_credentials_management()
 }
 \description{
-Disables the management of privileged root user credentials across member accounts in your organization. When you disable this feature, the management account and the delegated admininstrator for IAM can no longer manage root user credentials for member accounts in your organization.
+Disables the management of privileged root user credentials across member accounts in your organization. When you disable this feature, the management account and the delegated administrator for IAM can no longer manage root user credentials for member accounts in your organization.
 
 See \url{https://www.paws-r-sdk.com/docs/iam_disable_organizations_root_credentials_management/} for full documentation.
 }

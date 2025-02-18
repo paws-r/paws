@@ -32,9 +32,8 @@ ssm_update_association(
 \item{AssociationId}{[required] The ID of the association you want to update.}
 
 \item{Parameters}{The parameters you want to update for the association. If you create a
-parameter using Parameter Store, a capability of Amazon Web Services
-Systems Manager, you can reference the parameter using
-\code{{{ssm:parameter-name}}}.}
+parameter using Parameter Store, a tool in Amazon Web Services Systems
+Manager, you can reference the parameter using \code{{{ssm:parameter-name}}}.}
 
 \item{DocumentVersion}{The document version you want update for the association.
 
@@ -83,7 +82,7 @@ this parameter.}
 \item{AutomationTargetParameterName}{Choose the parameter that will define how your automation will branch
 out. This target is required for associations that use an Automation
 runbook and target resources by using rate controls. Automation is a
-capability of Amazon Web Services Systems Manager.}
+tool in Amazon Web Services Systems Manager.}
 
 \item{MaxErrors}{The number of errors that are allowed before the system stops sending
 requests to run the association on additional targets. You can specify
@@ -124,9 +123,9 @@ association is \code{NON-COMPLIANT}.
 In \code{MANUAL} mode, you must specify the \code{AssociationId} as a parameter
 for the \code{\link[=ssm_put_compliance_items]{put_compliance_items}} API
 operation. In this case, compliance data isn't managed by State Manager,
-a capability of Amazon Web Services Systems Manager. It is managed by
-your direct call to the
-\code{\link[=ssm_put_compliance_items]{put_compliance_items}} API operation.
+a tool in Amazon Web Services Systems Manager. It is managed by your
+direct call to the \code{\link[=ssm_put_compliance_items]{put_compliance_items}}
+API operation.
 
 By default, all associations use \code{AUTO} mode.}
 

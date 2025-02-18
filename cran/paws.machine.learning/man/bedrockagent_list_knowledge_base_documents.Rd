@@ -28,7 +28,7 @@ provided in the request, enter the token returned in the \code{nextToken}
 field in the response in this field to return the next batch of results.}
 }
 \description{
-Retrieves all the documents contained in a data source that is connected to a knowledge base. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/}{Ingest documents into a knowledge base in real-time} in the Amazon Bedrock User Guide.
+Retrieves all the documents contained in a data source that is connected to a knowledge base. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/kb-direct-ingestion.html}{Ingest changes directly into a knowledge base} in the Amazon Bedrock User Guide.
 
 See \url{https://www.paws-r-sdk.com/docs/bedrockagent_list_knowledge_base_documents/} for full documentation.
 }

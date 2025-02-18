@@ -22,6 +22,8 @@ NULL
 #' 
 #' -   `KinesisStreamAsSource`: The Firehose stream uses a Kinesis data
 #'     stream as a source.
+#' @param DirectPutSourceConfiguration The structure that configures parameters such as `ThroughputHintInMBs`
+#' for a stream configured with Direct PUT as a source.
 #' @param KinesisStreamSourceConfiguration When a Kinesis data stream is used as the source for the Firehose
 #' stream, a KinesisStreamSourceConfiguration containing the Kinesis data
 #' stream Amazon Resource Name (ARN) and the role ARN for the source
@@ -33,7 +35,8 @@ NULL
 #' @param ExtendedS3DestinationConfiguration The destination in Amazon S3. You can specify only one destination.
 #' @param RedshiftDestinationConfiguration The destination in Amazon Redshift. You can specify only one
 #' destination.
-#' @param ElasticsearchDestinationConfiguration The destination in Amazon ES. You can specify only one destination.
+#' @param ElasticsearchDestinationConfiguration The destination in Amazon OpenSearch Service. You can specify only one
+#' destination.
 #' @param AmazonopensearchserviceDestinationConfiguration The destination in Amazon OpenSearch Service. You can specify only one
 #' destination.
 #' @param SplunkDestinationConfiguration The destination in Splunk. You can specify only one destination.
@@ -55,8 +58,8 @@ NULL
 #' Amazon Data Firehose performs an additional authorization on the
 #' `firehose:TagDeliveryStream` action to verify if users have permissions
 #' to create tags. If you do not provide this permission, requests to
-#' create new Firehose Firehose streams with IAM resource tags will fail
-#' with an `AccessDeniedException` such as following.
+#' create new Firehose streams with IAM resource tags will fail with an
+#' `AccessDeniedException` such as following.
 #' 
 #' **AccessDeniedException**
 #' 
@@ -72,12 +75,14 @@ NULL
 #' @param MSKSourceConfiguration 
 #' @param SnowflakeDestinationConfiguration Configure Snowflake destination
 #' @param IcebergDestinationConfiguration Configure Apache Iceberg Tables destination.
-#' @param DatabaseSourceConfiguration Amazon Data Firehose is in preview release and is subject to change.
+#' @param DatabaseSourceConfiguration The top level object for configuring streams with database as a source.
+#' 
+#' Amazon Data Firehose is in preview release and is subject to change.
 #'
 #' @keywords internal
 #'
 #' @rdname firehose_create_delivery_stream
-firehose_create_delivery_stream <- function(DeliveryStreamName, DeliveryStreamType = NULL, KinesisStreamSourceConfiguration = NULL, DeliveryStreamEncryptionConfigurationInput = NULL, S3DestinationConfiguration = NULL, ExtendedS3DestinationConfiguration = NULL, RedshiftDestinationConfiguration = NULL, ElasticsearchDestinationConfiguration = NULL, AmazonopensearchserviceDestinationConfiguration = NULL, SplunkDestinationConfiguration = NULL, HttpEndpointDestinationConfiguration = NULL, Tags = NULL, AmazonOpenSearchServerlessDestinationConfiguration = NULL, MSKSourceConfiguration = NULL, SnowflakeDestinationConfiguration = NULL, IcebergDestinationConfiguration = NULL, DatabaseSourceConfiguration = NULL) {
+firehose_create_delivery_stream <- function(DeliveryStreamName, DeliveryStreamType = NULL, DirectPutSourceConfiguration = NULL, KinesisStreamSourceConfiguration = NULL, DeliveryStreamEncryptionConfigurationInput = NULL, S3DestinationConfiguration = NULL, ExtendedS3DestinationConfiguration = NULL, RedshiftDestinationConfiguration = NULL, ElasticsearchDestinationConfiguration = NULL, AmazonopensearchserviceDestinationConfiguration = NULL, SplunkDestinationConfiguration = NULL, HttpEndpointDestinationConfiguration = NULL, Tags = NULL, AmazonOpenSearchServerlessDestinationConfiguration = NULL, MSKSourceConfiguration = NULL, SnowflakeDestinationConfiguration = NULL, IcebergDestinationConfiguration = NULL, DatabaseSourceConfiguration = NULL) {
   op <- new_operation(
     name = "CreateDeliveryStream",
     http_method = "POST",
@@ -86,7 +91,7 @@ firehose_create_delivery_stream <- function(DeliveryStreamName, DeliveryStreamTy
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .firehose$create_delivery_stream_input(DeliveryStreamName = DeliveryStreamName, DeliveryStreamType = DeliveryStreamType, KinesisStreamSourceConfiguration = KinesisStreamSourceConfiguration, DeliveryStreamEncryptionConfigurationInput = DeliveryStreamEncryptionConfigurationInput, S3DestinationConfiguration = S3DestinationConfiguration, ExtendedS3DestinationConfiguration = ExtendedS3DestinationConfiguration, RedshiftDestinationConfiguration = RedshiftDestinationConfiguration, ElasticsearchDestinationConfiguration = ElasticsearchDestinationConfiguration, AmazonopensearchserviceDestinationConfiguration = AmazonopensearchserviceDestinationConfiguration, SplunkDestinationConfiguration = SplunkDestinationConfiguration, HttpEndpointDestinationConfiguration = HttpEndpointDestinationConfiguration, Tags = Tags, AmazonOpenSearchServerlessDestinationConfiguration = AmazonOpenSearchServerlessDestinationConfiguration, MSKSourceConfiguration = MSKSourceConfiguration, SnowflakeDestinationConfiguration = SnowflakeDestinationConfiguration, IcebergDestinationConfiguration = IcebergDestinationConfiguration, DatabaseSourceConfiguration = DatabaseSourceConfiguration)
+  input <- .firehose$create_delivery_stream_input(DeliveryStreamName = DeliveryStreamName, DeliveryStreamType = DeliveryStreamType, DirectPutSourceConfiguration = DirectPutSourceConfiguration, KinesisStreamSourceConfiguration = KinesisStreamSourceConfiguration, DeliveryStreamEncryptionConfigurationInput = DeliveryStreamEncryptionConfigurationInput, S3DestinationConfiguration = S3DestinationConfiguration, ExtendedS3DestinationConfiguration = ExtendedS3DestinationConfiguration, RedshiftDestinationConfiguration = RedshiftDestinationConfiguration, ElasticsearchDestinationConfiguration = ElasticsearchDestinationConfiguration, AmazonopensearchserviceDestinationConfiguration = AmazonopensearchserviceDestinationConfiguration, SplunkDestinationConfiguration = SplunkDestinationConfiguration, HttpEndpointDestinationConfiguration = HttpEndpointDestinationConfiguration, Tags = Tags, AmazonOpenSearchServerlessDestinationConfiguration = AmazonOpenSearchServerlessDestinationConfiguration, MSKSourceConfiguration = MSKSourceConfiguration, SnowflakeDestinationConfiguration = SnowflakeDestinationConfiguration, IcebergDestinationConfiguration = IcebergDestinationConfiguration, DatabaseSourceConfiguration = DatabaseSourceConfiguration)
   output <- .firehose$create_delivery_stream_output()
   config <- get_config()
   svc <- .firehose$service(config, op)
@@ -473,7 +478,7 @@ firehose_untag_delivery_stream <- function(DeliveryStreamName, TagKeys) {
 #' @param S3DestinationUpdate \[Deprecated\] Describes an update for a destination in Amazon S3.
 #' @param ExtendedS3DestinationUpdate Describes an update for a destination in Amazon S3.
 #' @param RedshiftDestinationUpdate Describes an update for a destination in Amazon Redshift.
-#' @param ElasticsearchDestinationUpdate Describes an update for a destination in Amazon ES.
+#' @param ElasticsearchDestinationUpdate Describes an update for a destination in Amazon OpenSearch Service.
 #' @param AmazonopensearchserviceDestinationUpdate Describes an update for a destination in Amazon OpenSearch Service.
 #' @param SplunkDestinationUpdate Describes an update for a destination in Splunk.
 #' @param HttpEndpointDestinationUpdate Describes an update to the specified HTTP endpoint destination.

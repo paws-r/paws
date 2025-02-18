@@ -21,7 +21,7 @@ document for which to retrieve information.}
 data source.}
 }
 \description{
-Retrieves specific documents from a data source that is connected to a knowledge base. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/}{Ingest documents into a knowledge base in real-time} in the Amazon Bedrock User Guide.
+Retrieves specific documents from a data source that is connected to a knowledge base. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/kb-direct-ingestion.html}{Ingest changes directly into a knowledge base} in the Amazon Bedrock User Guide.
 
 See \url{https://www.paws-r-sdk.com/docs/bedrockagent_get_knowledge_base_documents/} for full documentation.
 }

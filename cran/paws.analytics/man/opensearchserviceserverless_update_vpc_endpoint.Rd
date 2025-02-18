@@ -5,29 +5,29 @@
 \title{Updates an OpenSearch Serverless-managed interface endpoint}
 \usage{
 opensearchserviceserverless_update_vpc_endpoint(
-  addSecurityGroupIds = NULL,
-  addSubnetIds = NULL,
-  clientToken = NULL,
   id,
+  addSubnetIds = NULL,
+  removeSubnetIds = NULL,
+  addSecurityGroupIds = NULL,
   removeSecurityGroupIds = NULL,
-  removeSubnetIds = NULL
+  clientToken = NULL
 )
 }
 \arguments{
+\item{id}{[required] The unique identifier of the interface endpoint to update.}
+
+\item{addSubnetIds}{The ID of one or more subnets to add to the endpoint.}
+
+\item{removeSubnetIds}{The unique identifiers of the subnets to remove from the endpoint.}
+
 \item{addSecurityGroupIds}{The unique identifiers of the security groups to add to the endpoint.
 Security groups define the ports, protocols, and sources for inbound
 traffic that you are authorizing into your endpoint.}
 
-\item{addSubnetIds}{The ID of one or more subnets to add to the endpoint.}
-
-\item{clientToken}{Unique, case-sensitive identifier to ensure idempotency of the request.}
-
-\item{id}{[required] The unique identifier of the interface endpoint to update.}
-
 \item{removeSecurityGroupIds}{The unique identifiers of the security groups to remove from the
 endpoint.}
 
-\item{removeSubnetIds}{The unique identifiers of the subnets to remove from the endpoint.}
+\item{clientToken}{Unique, case-sensitive identifier to ensure idempotency of the request.}
 }
 \description{
 Updates an OpenSearch Serverless-managed interface endpoint. For more information, see \href{https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-vpc.html}{Access Amazon OpenSearch Serverless using an interface endpoint}.

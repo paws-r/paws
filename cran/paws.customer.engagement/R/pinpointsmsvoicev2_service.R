@@ -9,14 +9,14 @@ NULL
 #' Reference*. This guide provides information about AWS End User Messaging
 #' SMS and Voice, version 2 API resources, including supported HTTP
 #' methods, parameters, and schemas.
-#'
+#' 
 #' Amazon Pinpoint is an Amazon Web Services service that you can use to
 #' engage with your recipients across multiple messaging channels. The AWS
 #' End User Messaging SMS and Voice, version 2 API provides programmatic
 #' access to options that are unique to the SMS and voice channels. AWS End
 #' User Messaging SMS and Voice, version 2 resources such as phone numbers,
 #' sender IDs, and opt-out lists can be used by the Amazon Pinpoint API.
-#'
+#' 
 #' If you're new to AWS End User Messaging SMS and Voice, it's also helpful
 #' to review the [AWS End User Messaging SMS User
 #' Guide](https://docs.aws.amazon.com/sms-voice/latest/userguide/what-is-sms-mms.html).
@@ -27,9 +27,9 @@ NULL
 #' guide also provides key information, such as AWS End User Messaging SMS
 #' and Voice integration with other Amazon Web Services services, and the
 #' quotas that apply to use of the service.
-#'
+#' 
 #' **Regional availability**
-#'
+#' 
 #' The *AWS End User Messaging SMS and Voice version 2 API Reference* is
 #' available in several Amazon Web Services Regions and it provides an
 #' endpoint for each of these Regions. For a list of all the Regions and
@@ -42,7 +42,7 @@ NULL
 #' Web Services Regions, see [Managing Amazon Web Services
 #' Regions](https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-regions.html)
 #' in the Amazon Web Services General Reference.
-#'
+#' 
 #' In each Region, Amazon Web Services maintains multiple Availability
 #' Zones. These Availability Zones are physically isolated from each other,
 #' but are united by private, low-latency, high-throughput, and highly
@@ -235,12 +235,7 @@ NULL
 #'
 #' @rdname pinpointsmsvoicev2
 #' @export
-pinpointsmsvoicev2 <- function(
-  config = list(),
-  credentials = list(),
-  endpoint = NULL,
-  region = NULL
-) {
+pinpointsmsvoicev2 <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
   config <- merge_config(
     config,
     list(
@@ -261,36 +256,7 @@ pinpointsmsvoicev2 <- function(
 
 .pinpointsmsvoicev2$metadata <- list(
   service_name = "pinpointsmsvoicev2",
-  endpoints = list(
-    "^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(
-      endpoint = "sms-voice.{region}.amazonaws.com",
-      global = FALSE
-    ),
-    "^cn\\-\\w+\\-\\d+$" = list(
-      endpoint = "sms-voice.{region}.amazonaws.com.cn",
-      global = FALSE
-    ),
-    "^us\\-gov\\-\\w+\\-\\d+$" = list(
-      endpoint = "sms-voice.{region}.amazonaws.com",
-      global = FALSE
-    ),
-    "^us\\-iso\\-\\w+\\-\\d+$" = list(
-      endpoint = "sms-voice.{region}.c2s.ic.gov",
-      global = FALSE
-    ),
-    "^us\\-isob\\-\\w+\\-\\d+$" = list(
-      endpoint = "sms-voice.{region}.sc2s.sgov.gov",
-      global = FALSE
-    ),
-    "^eu\\-isoe\\-\\w+\\-\\d+$" = list(
-      endpoint = "sms-voice.{region}.cloud.adc-e.uk",
-      global = FALSE
-    ),
-    "^us\\-isof\\-\\w+\\-\\d+$" = list(
-      endpoint = "sms-voice.{region}.csp.hci.ic.gov",
-      global = FALSE
-    )
-  ),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "sms-voice.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "sms-voice.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "sms-voice.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "sms-voice.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "sms-voice.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "sms-voice.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "sms-voice.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Pinpoint SMS Voice V2",
   api_version = "2022-03-31",
   signing_name = "sms-voice",

@@ -53,8 +53,8 @@ you use a dedicated security group for your cluster control plane.}
 \item{kubernetesNetworkConfig}{The Kubernetes network configuration for the cluster.}
 
 \item{logging}{Enable or disable exporting the Kubernetes control plane logs for your
-cluster to CloudWatch Logs. By default, cluster control plane logs
-aren't exported to CloudWatch Logs. For more information, see \href{https://docs.aws.amazon.com/eks/latest/userguide/control-plane-logs.html}{Amazon EKS Cluster control plane logs}
+cluster to CloudWatch Logs . By default, cluster control plane logs
+aren't exported to CloudWatch Logs . For more information, see \href{https://docs.aws.amazon.com/eks/latest/userguide/control-plane-logs.html}{Amazon EKS Cluster control plane logs}
 in the \emph{Amazon EKS User Guide} .
 
 CloudWatch Logs ingestion, archive storage, and data scanning rates
@@ -99,13 +99,13 @@ you to move traffic for a resource away from an impaired AZ until the
 zonal shift expires or you cancel it. You can extend the zonal shift if
 necessary.
 
-You can start a zonal shift for an EKS cluster, or you can allow Amazon
-Web Services to do it for you by enabling \emph{zonal autoshift}. This shift
-updates the flow of east-to-west network traffic in your cluster to only
-consider network endpoints for Pods running on worker nodes in healthy
-AZs. Additionally, any ALB or NLB handling ingress traffic for
-applications in your EKS cluster will automatically route traffic to
-targets in the healthy AZs. For more information about zonal shift in
+You can start a zonal shift for an Amazon EKS cluster, or you can allow
+Amazon Web Services to do it for you by enabling \emph{zonal autoshift}. This
+shift updates the flow of east-to-west network traffic in your cluster
+to only consider network endpoints for Pods running on worker nodes in
+healthy AZs. Additionally, any ALB or NLB handling ingress traffic for
+applications in your Amazon EKS cluster will automatically route traffic
+to targets in the healthy AZs. For more information about zonal shift in
 EKS, see \href{https://docs.aws.amazon.com/eks/latest/userguide/zone-shift.html}{Learn about Amazon Application Recovery Controller (ARC) Zonal Shift in Amazon EKS}
 in the \emph{Amazon EKS User Guide} .}
 

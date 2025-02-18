@@ -1386,9 +1386,9 @@ rds_create_custom_db_engine_version <- function(Engine, EngineVersion, DatabaseI
 #' 
 #' The following values are valid for each DB engine:
 #' 
-#' -   Aurora MySQL - `audit | error | general | slowquery`
+#' -   Aurora MySQL - `audit | error | general | instance | slowquery`
 #' 
-#' -   Aurora PostgreSQL - `postgresql`
+#' -   Aurora PostgreSQL - `instance | postgresql`
 #' 
 #' -   RDS for MySQL - `error | general | slowquery`
 #' 
@@ -2959,7 +2959,8 @@ rds_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCluste
 #' in the *Amazon RDS User Guide.*
 #' 
 #' Valid Values: `IPV4 | DUAL`
-#' @param StorageThroughput The storage throughput value for the DB instance.
+#' @param StorageThroughput The storage throughput value, in mebibyte per second (MiBps), for the DB
+#' instance.
 #' 
 #' This setting applies only to the `gp3` storage type.
 #' 
@@ -4265,9 +4266,9 @@ rds_create_global_cluster <- function(GlobalClusterIdentifier = NULL, SourceDBCl
 #' @param Tags 
 #' @param DataFilter Data filtering options for the integration. For more information, see
 #' [Data filtering for Aurora zero-ETL integrations with Amazon
-#' Redshift](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/zero-etl.filtering.html).
-#' 
-#' Valid for: Integrations with Aurora MySQL source DB clusters only
+#' Redshift](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/zero-etl.filtering.html)
+#' or [Data filtering for Amazon RDS zero-ETL integrations with Amazon
+#' Redshift](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/zero-etl.filtering.html).
 #' @param Description A description of the integration.
 #'
 #' @keywords internal
@@ -4548,7 +4549,9 @@ rds_delete_custom_db_engine_version <- function(Engine, EngineVersion) {
 #' -   Can't end with a hyphen or contain two consecutive hyphens
 #' @param DeleteAutomatedBackups Specifies whether to remove automated backups immediately after the DB
 #' cluster is deleted. This parameter isn't case-sensitive. The default is
-#' to remove automated backups immediately after the DB cluster is deleted.
+#' to remove automated backups immediately after the DB cluster is deleted,
+#' unless the Amazon Web Services Backup policy specifies a point-in-time
+#' restore rule.
 #'
 #' @keywords internal
 #'
@@ -8862,9 +8865,9 @@ rds_modify_custom_db_engine_version <- function(Engine, EngineVersion, Descripti
 #' 
 #' The following values are valid for each DB engine:
 #' 
-#' -   Aurora MySQL - `audit | error | general | slowquery`
+#' -   Aurora MySQL - `audit | error | general | instance | slowquery`
 #' 
-#' -   Aurora PostgreSQL - `postgresql`
+#' -   Aurora PostgreSQL - `instance | postgresql`
 #' 
 #' -   RDS for MySQL - `error | general | slowquery`
 #' 
@@ -10506,6 +10509,8 @@ rds_modify_db_proxy_endpoint <- function(DBProxyEndpointName, NewDBProxyEndpoint
 #' @param NewName The new name for the modified `DBProxyTarget`. An identifier must begin
 #' with a letter and must contain only ASCII letters, digits, and hyphens;
 #' it can't end with a hyphen or contain two consecutive hyphens.
+#' 
+#' You can't rename the `default` target group.
 #'
 #' @keywords internal
 #'
@@ -10917,7 +10922,9 @@ rds_modify_global_cluster <- function(GlobalClusterIdentifier = NULL, NewGlobalC
 #' @param IntegrationName A new name for the integration.
 #' @param DataFilter A new data filter for the integration. For more information, see [Data
 #' filtering for Aurora zero-ETL integrations with Amazon
-#' Redshift](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/).
+#' Redshift](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/)
+#' or [Data filtering for Amazon RDS zero-ETL integrations with Amazon
+#' Redshift](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/zero-etl.filtering.html).
 #' @param Description A new description for the integration.
 #'
 #' @keywords internal
@@ -11800,7 +11807,17 @@ rds_reset_db_parameter_group <- function(DBParameterGroupName, ResetAllParameter
 #' 
 #' **Aurora MySQL**
 #' 
-#' Possible values are `audit`, `error`, `general`, and `slowquery`.
+#' Possible values are `audit`, `error`, `general`, `instance`, and
+#' `slowquery`.
+#' 
+#' **Aurora PostgreSQL**
+#' 
+#' Possible value are `instance` and `postgresql`.
+#' 
+#' For more information about exporting CloudWatch Logs for Amazon RDS, see
+#' [Publishing Database Logs to Amazon CloudWatch
+#' Logs](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch)
+#' in the *Amazon RDS User Guide*.
 #' 
 #' For more information about exporting CloudWatch Logs for Amazon Aurora,
 #' see [Publishing Database Logs to Amazon CloudWatch
@@ -12110,11 +12127,12 @@ rds_restore_db_cluster_from_s3 <- function(AvailabilityZones = NULL, BackupReten
 #' 
 #' **Aurora MySQL**
 #' 
-#' Possible values are `audit`, `error`, `general`, and `slowquery`.
+#' Possible values are `audit`, `error`, `general`, `instance`, and
+#' `slowquery`.
 #' 
 #' **Aurora PostgreSQL**
 #' 
-#' Possible value is `postgresql`.
+#' Possible value are `instance` and `postgresql`.
 #' 
 #' For more information about exporting CloudWatch Logs for Amazon RDS, see
 #' [Publishing Database Logs to Amazon CloudWatch
@@ -12512,11 +12530,12 @@ rds_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, DBClu
 #' 
 #' **Aurora MySQL**
 #' 
-#' Possible values are `audit`, `error`, `general`, and `slowquery`.
+#' Possible values are `audit`, `error`, `general`, `instance`, and
+#' `slowquery`.
 #' 
 #' **Aurora PostgreSQL**
 #' 
-#' Possible value is `postgresql`.
+#' Possible value are `instance` and `postgresql`.
 #' 
 #' For more information about exporting CloudWatch Logs for Amazon RDS, see
 #' [Publishing Database Logs to Amazon CloudWatch
@@ -14521,10 +14540,10 @@ rds_stop_db_cluster <- function(DBClusterIdentifier) {
 }
 .rds$operations$stop_db_cluster <- rds_stop_db_cluster
 
-#' Stops an Amazon RDS DB instance
+#' Stops an Amazon RDS DB instance temporarily
 #'
 #' @description
-#' Stops an Amazon RDS DB instance. When you stop a DB instance, Amazon RDS retains the DB instance's metadata, including its endpoint, DB parameter group, and option group membership. Amazon RDS also retains the transaction logs so you can do a point-in-time restore if necessary.
+#' Stops an Amazon RDS DB instance temporarily. When you stop a DB instance, Amazon RDS retains the DB instance's metadata, including its endpoint, DB parameter group, and option group membership. Amazon RDS also retains the transaction logs so you can do a point-in-time restore if necessary. The instance restarts automatically after 7 days.
 #'
 #' See [https://www.paws-r-sdk.com/docs/rds_stop_db_instance/](https://www.paws-r-sdk.com/docs/rds_stop_db_instance/) for full documentation.
 #'

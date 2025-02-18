@@ -2,7 +2,7 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_unassign_ipv_6_addresses}
 \alias{ec2_unassign_ipv_6_addresses}
-\title{Unassigns one or more IPv6 addresses IPv4 Prefix Delegation prefixes
+\title{Unassigns the specified IPv6 addresses or Prefix Delegation prefixes
 from a network interface}
 \usage{
 ec2_unassign_ipv_6_addresses(
@@ -19,7 +19,7 @@ ec2_unassign_ipv_6_addresses(
 \item{Ipv6Addresses}{The IPv6 addresses to unassign from the network interface.}
 }
 \description{
-Unassigns one or more IPv6 addresses IPv4 Prefix Delegation prefixes from a network interface.
+Unassigns the specified IPv6 addresses or Prefix Delegation prefixes from a network interface.
 
 See \url{https://www.paws-r-sdk.com/docs/ec2_unassign_ipv_6_addresses/} for full documentation.
 }

@@ -19,11 +19,8 @@ wafv2_update_rule_group(
 \item{Name}{[required] The name of the rule group. You cannot change the name of a rule group
 after you create it.}
 
-\item{Scope}{[required] Specifies whether this is for an Amazon CloudFront distribution or for a
-regional application. A regional application can be an Application Load
-Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
-an Amazon Cognito user pool, an App Runner service, or an Amazon Web
-Services Verified Access instance.
+\item{Scope}{[required] Specifies whether this is for a global resource type, such as a Amazon
+CloudFront distribution.
 
 To work with CloudFront, you must also specify the Region US East (N.
 Virginia) as follows:

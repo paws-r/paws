@@ -8,6 +8,7 @@ prometheusservice_create_scraper(
   alias = NULL,
   clientToken = NULL,
   destination,
+  roleConfiguration = NULL,
   scrapeConfiguration,
   source,
   tags = NULL
@@ -21,6 +22,8 @@ and does not need to be unique.}
 ensure the idempotency of the request.}
 
 \item{destination}{[required] The Amazon Managed Service for Prometheus workspace to send metrics to.}
+
+\item{roleConfiguration}{The scraper role configuration for the workspace.}
 
 \item{scrapeConfiguration}{[required] The configuration file to use in the new scraper. For more information,
 see \href{https://docs.aws.amazon.com/prometheus/latest/userguide/AMP-collector-how-to.html#AMP-collector-configuration}{Scraper configuration}

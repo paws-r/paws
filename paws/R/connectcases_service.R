@@ -5,6 +5,12 @@ NULL
 #' Amazon Connect Cases
 #'
 #' @description
+#' -   [Cases
+#'     actions](https://docs.aws.amazon.com/connect/latest/APIReference/API_Operations_Amazon_Connect_Cases.html)
+#' 
+#' -   [Cases data
+#'     types](https://docs.aws.amazon.com/connect/latest/APIReference/API_Types_Amazon_Connect_Cases.html)
+#' 
 #' With Amazon Connect Cases, your agents can track and manage customer
 #' issues that require multiple interactions, follow-up tasks, and teams in
 #' your contact center. A case represents a customer issue. It records the
@@ -89,21 +95,24 @@ NULL
 #' @examples
 #' \dontrun{
 #' svc <- connectcases()
-#' svc$batch_get_field(
+#' svc$batch_get_case_rule(
 #'   Foo = 123
 #' )
 #' }
 #'
 #' @section Operations:
 #' \tabular{ll}{
+#'  \link[=connectcases_batch_get_case_rule]{batch_get_case_rule} \tab Gets a batch of case rules\cr
 #'  \link[=connectcases_batch_get_field]{batch_get_field} \tab Returns the description for the list of fields in the request parameters\cr
 #'  \link[=connectcases_batch_put_field_options]{batch_put_field_options} \tab Creates and updates a set of field options for a single select field in a Cases domain\cr
 #'  \link[=connectcases_create_case]{create_case} \tab If you provide a value for PerformedBy\cr
+#'  \link[=connectcases_create_case_rule]{create_case_rule} \tab Creates a new case rule\cr
 #'  \link[=connectcases_create_domain]{create_domain} \tab Creates a domain, which is a container for all case data, such as cases, fields, templates and layouts\cr
 #'  \link[=connectcases_create_field]{create_field} \tab Creates a field in the Cases domain\cr
 #'  \link[=connectcases_create_layout]{create_layout} \tab Creates a layout in the Cases domain\cr
 #'  \link[=connectcases_create_related_item]{create_related_item} \tab Creates a related item (comments, tasks, and contacts) and associates it with a case\cr
 #'  \link[=connectcases_create_template]{create_template} \tab Creates a template in the Cases domain\cr
+#'  \link[=connectcases_delete_case_rule]{delete_case_rule} \tab Deletes a case rule\cr
 #'  \link[=connectcases_delete_domain]{delete_domain} \tab Deletes a Cases domain\cr
 #'  \link[=connectcases_delete_field]{delete_field} \tab Deletes a field from a cases template\cr
 #'  \link[=connectcases_delete_layout]{delete_layout} \tab Deletes a layout from a cases template\cr
@@ -114,6 +123,7 @@ NULL
 #'  \link[=connectcases_get_domain]{get_domain} \tab Returns information about a specific domain if it exists\cr
 #'  \link[=connectcases_get_layout]{get_layout} \tab Returns the details for the requested layout\cr
 #'  \link[=connectcases_get_template]{get_template} \tab Returns the details for the requested template\cr
+#'  \link[=connectcases_list_case_rules]{list_case_rules} \tab Lists all case rules in a Cases domain\cr
 #'  \link[=connectcases_list_cases_for_contact]{list_cases_for_contact} \tab Lists cases for a given contact\cr
 #'  \link[=connectcases_list_domains]{list_domains} \tab Lists all cases domains in the Amazon Web Services account\cr
 #'  \link[=connectcases_list_field_options]{list_field_options} \tab Lists all of the field options for a field identifier in the domain\cr
@@ -127,6 +137,7 @@ NULL
 #'  \link[=connectcases_tag_resource]{tag_resource} \tab Adds tags to a resource\cr
 #'  \link[=connectcases_untag_resource]{untag_resource} \tab Untags a resource\cr
 #'  \link[=connectcases_update_case]{update_case} \tab If you provide a value for PerformedBy\cr
+#'  \link[=connectcases_update_case_rule]{update_case_rule} \tab Updates a case rule\cr
 #'  \link[=connectcases_update_field]{update_field} \tab Updates the properties of an existing field\cr
 #'  \link[=connectcases_update_layout]{update_layout} \tab Updates the attributes of an existing layout\cr
 #'  \link[=connectcases_update_template]{update_template} \tab Updates the attributes of an existing template

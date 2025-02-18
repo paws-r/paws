@@ -39,7 +39,7 @@ regardless of the tag value.
 (\code{pendingAcceptance} | \code{pending} | \code{available} | \code{deleting} |
 \code{deleted} | \code{rejected} | \code{failed}).
 \item \code{vpc-endpoint-type} - The type of VPC endpoint (\code{Interface} |
-\code{Gateway} | \code{GatewayLoadBalancer}).
+\code{Gateway} | \code{GatewayLoadBalancer} | \code{Resource} | \code{ServiceNetwork}).
 }}
 
 \item{MaxResults}{The maximum number of items to return for this request. The request

@@ -207,7 +207,9 @@ NULL
 #'       S3ObjectAcl = "PUBLIC_READ"|"BUCKET_OWNER_FULL_CONTROL",
 #'       CrlDistributionPointExtensionConfiguration = list(
 #'         OmitExtension = TRUE|FALSE
-#'       )
+#'       ),
+#'       CrlType = "COMPLETE"|"PARTITIONED",
+#'       CustomPath = "string"
 #'     ),
 #'     OcspConfiguration = list(
 #'       Enabled = TRUE|FALSE,
@@ -829,7 +831,9 @@ acmpca_delete_policy <- function(ResourceArn) {
 #'         S3ObjectAcl = "PUBLIC_READ"|"BUCKET_OWNER_FULL_CONTROL",
 #'         CrlDistributionPointExtensionConfiguration = list(
 #'           OmitExtension = TRUE|FALSE
-#'         )
+#'         ),
+#'         CrlType = "COMPLETE"|"PARTITIONED",
+#'         CustomPath = "string"
 #'       ),
 #'       OcspConfiguration = list(
 #'         Enabled = TRUE|FALSE,
@@ -1789,7 +1793,9 @@ acmpca_issue_certificate <- function(ApiPassthrough = NULL, CertificateAuthority
 #'           S3ObjectAcl = "PUBLIC_READ"|"BUCKET_OWNER_FULL_CONTROL",
 #'           CrlDistributionPointExtensionConfiguration = list(
 #'             OmitExtension = TRUE|FALSE
-#'           )
+#'           ),
+#'           CrlType = "COMPLETE"|"PARTITIONED",
+#'           CustomPath = "string"
 #'         ),
 #'         OcspConfiguration = list(
 #'           Enabled = TRUE|FALSE,
@@ -2484,7 +2490,9 @@ acmpca_untag_certificate_authority <- function(CertificateAuthorityArn, Tags) {
 #'       S3ObjectAcl = "PUBLIC_READ"|"BUCKET_OWNER_FULL_CONTROL",
 #'       CrlDistributionPointExtensionConfiguration = list(
 #'         OmitExtension = TRUE|FALSE
-#'       )
+#'       ),
+#'       CrlType = "COMPLETE"|"PARTITIONED",
+#'       CustomPath = "string"
 #'     ),
 #'     OcspConfiguration = list(
 #'       Enabled = TRUE|FALSE,

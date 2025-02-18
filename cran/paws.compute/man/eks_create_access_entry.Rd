@@ -23,11 +23,12 @@ one access entry. This value can't be changed after access entry
 creation.
 
 The valid principals differ depending on the type of the access entry in
-the \code{type} field. The only valid ARN is IAM roles for the types of
-access entries for nodes: \verb{ }. You can use every IAM principal type
-for \code{STANDARD} access entries. You can't use the STS session principal
-type with access entries because this is a temporary principal for each
-session and not a permanent identity that can be assigned permissions.
+the \code{type} field. For \code{STANDARD} access entries, you can use every IAM
+principal type. For nodes (\code{EC2} (for EKS Auto Mode), \code{EC2_LINUX},
+\code{EC2_WINDOWS}, \code{FARGATE_LINUX}, and \code{HYBRID_LINUX}), the only valid ARN
+is IAM roles. You can't use the STS session principal type with access
+entries because this is a temporary principal for each session and not a
+permanent identity that can be assigned permissions.
 
 \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html#bp-users-federation-idp}{IAM best practices}
 recommend using IAM roles with temporary credentials, rather than IAM
@@ -66,14 +67,16 @@ more information about the value Amazon EKS specifies for you, or
 constraints before specifying your own username, see \href{https://docs.aws.amazon.com/eks/latest/userguide/access-entries.html#creating-access-entries}{Creating access entries}
 in the \emph{Amazon EKS User Guide}.}
 
-\item{type}{The type of the new access entry. Valid values are \code{Standard},
-\code{FARGATE_LINUX}, \code{EC2_LINUX}, and \code{EC2_WINDOWS}.
+\item{type}{The type of the new access entry. Valid values are \code{STANDARD},
+\code{FARGATE_LINUX}, \code{EC2_LINUX}, \code{EC2_WINDOWS}, \code{EC2} (for EKS Auto Mode),
+\code{HYBRID_LINUX}, and \code{HYPERPOD_LINUX}.
 
 If the \code{principalArn} is for an IAM role that's used for self-managed
 Amazon EC2 nodes, specify \code{EC2_LINUX} or \code{EC2_WINDOWS}. Amazon EKS
 grants the necessary permissions to the node for you. If the
 \code{principalArn} is for any other purpose, specify \code{STANDARD}. If you
-don't specify a value, Amazon EKS sets the value to \code{STANDARD}. It's
+don't specify a value, Amazon EKS sets the value to \code{STANDARD}. If you
+have the access mode of the cluster set to \code{API_AND_CONFIG_MAP}, it's
 unnecessary to create access entries for IAM roles used with Fargate
 profiles or managed Amazon EC2 nodes, because Amazon EKS creates entries
 in the \code{aws-auth} \code{ConfigMap} for the roles. You can't change this value

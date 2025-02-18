@@ -12,7 +12,7 @@ connectcases_get_template(domainId, templateId)
 \item{templateId}{[required] A unique identifier of a template.}
 }
 \description{
-Returns the details for the requested template.
+Returns the details for the requested template. Other template APIs are:
 
 See \url{https://www.paws-r-sdk.com/docs/connectcases_get_template/} for full documentation.
 }

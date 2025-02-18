@@ -5,27 +5,27 @@
 \title{Updates an OpenSearch Serverless security policy}
 \usage{
 opensearchserviceserverless_update_security_policy(
-  clientToken = NULL,
-  description = NULL,
+  type,
   name,
-  policy = NULL,
   policyVersion,
-  type
+  description = NULL,
+  policy = NULL,
+  clientToken = NULL
 )
 }
 \arguments{
-\item{clientToken}{Unique, case-sensitive identifier to ensure idempotency of the request.}
+\item{type}{[required] The type of access policy.}
+
+\item{name}{[required] The name of the policy.}
+
+\item{policyVersion}{[required] The version of the policy being updated.}
 
 \item{description}{A description of the policy. Typically used to store information about
 the permissions defined in the policy.}
 
-\item{name}{[required] The name of the policy.}
-
 \item{policy}{The JSON policy document to use as the content for the new policy.}
 
-\item{policyVersion}{[required] The version of the policy being updated.}
-
-\item{type}{[required] The type of access policy.}
+\item{clientToken}{Unique, case-sensitive identifier to ensure idempotency of the request.}
 }
 \description{
 Updates an OpenSearch Serverless security policy. For more information, see \href{https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-network.html}{Network access for Amazon OpenSearch Serverless} and \href{https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-encryption.html}{Encryption at rest for Amazon OpenSearch Serverless}.

@@ -109,6 +109,18 @@ NULL
   return(populate(args, shape))
 }
 
+.cloudformation$create_stack_refactor_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Description = structure(logical(0), tags = list(type = "string")), EnableStackCreation = structure(logical(0), tags = list(type = "boolean")), ResourceMappings = structure(list(structure(list(Source = structure(list(StackName = structure(logical(0), tags = list(type = "string")), LogicalResourceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Destination = structure(list(StackName = structure(logical(0), tags = list(type = "string")), LogicalResourceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), StackDefinitions = structure(list(structure(list(StackName = structure(logical(0), tags = list(type = "string")), TemplateBody = structure(logical(0), tags = list(type = "string")), TemplateURL = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudformation$create_stack_refactor_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(StackRefactorId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "CreateStackRefactorResult"))
+  return(populate(args, shape))
+}
+
 .cloudformation$create_stack_set_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(StackSetName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), TemplateBody = structure(logical(0), tags = list(type = "string")), TemplateURL = structure(logical(0), tags = list(type = "string")), StackId = structure(logical(0), tags = list(type = "string")), Parameters = structure(list(structure(list(ParameterKey = structure(logical(0), tags = list(type = "string")), ParameterValue = structure(logical(0), tags = list(type = "string")), UsePreviousValue = structure(logical(0), tags = list(type = "boolean")), ResolvedValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Capabilities = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), AdministrationRoleARN = structure(logical(0), tags = list(type = "string")), ExecutionRoleName = structure(logical(0), tags = list(type = "string")), PermissionModel = structure(logical(0), tags = list(type = "string")), AutoDeployment = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), RetainStacksOnAccountRemoval = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), CallAs = structure(logical(0), tags = list(type = "string")), ClientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), ManagedExecution = structure(list(Active = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))
@@ -333,6 +345,18 @@ NULL
   return(populate(args, shape))
 }
 
+.cloudformation$describe_stack_refactor_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(StackRefactorId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudformation$describe_stack_refactor_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Description = structure(logical(0), tags = list(type = "string")), StackRefactorId = structure(logical(0), tags = list(type = "string")), StackIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ExecutionStatus = structure(logical(0), tags = list(type = "string")), ExecutionStatusReason = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "DescribeStackRefactorResult"))
+  return(populate(args, shape))
+}
+
 .cloudformation$describe_stack_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(StackName = structure(logical(0), tags = list(type = "string")), LogicalResourceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -487,6 +511,16 @@ NULL
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(), tags = list(type = "structure", resultWrapper = "ExecuteChangeSetResult"))
   return(populate(args, shape))
+}
+
+.cloudformation$execute_stack_refactor_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(StackRefactorId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudformation$execute_stack_refactor_output <- function(...) {
+  list()
 }
 
 .cloudformation$get_generated_template_input <- function(...) {
@@ -666,6 +700,30 @@ NULL
 .cloudformation$list_stack_instances_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(Summaries = structure(list(structure(list(StackSetId = structure(logical(0), tags = list(type = "string")), Region = structure(logical(0), tags = list(type = "string")), Account = structure(logical(0), tags = list(type = "string")), StackId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusReason = structure(logical(0), tags = list(type = "string")), StackInstanceStatus = structure(list(DetailedStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), OrganizationalUnitId = structure(logical(0), tags = list(type = "string")), DriftStatus = structure(logical(0), tags = list(type = "string")), LastDriftCheckTimestamp = structure(logical(0), tags = list(type = "timestamp")), LastOperationId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "ListStackInstancesResult"))
+  return(populate(args, shape))
+}
+
+.cloudformation$list_stack_refactor_actions_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(StackRefactorId = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudformation$list_stack_refactor_actions_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(StackRefactorActions = structure(list(structure(list(Action = structure(logical(0), tags = list(type = "string")), Entity = structure(logical(0), tags = list(type = "string")), PhysicalResourceId = structure(logical(0), tags = list(type = "string")), ResourceIdentifier = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Detection = structure(logical(0), tags = list(type = "string")), DetectionReason = structure(logical(0), tags = list(type = "string")), TagResources = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), UntagResources = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ResourceMapping = structure(list(Source = structure(list(StackName = structure(logical(0), tags = list(type = "string")), LogicalResourceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Destination = structure(list(StackName = structure(logical(0), tags = list(type = "string")), LogicalResourceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "ListStackRefactorActionsResult"))
+  return(populate(args, shape))
+}
+
+.cloudformation$list_stack_refactors_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ExecutionStatusFilter = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudformation$list_stack_refactors_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(StackRefactorSummaries = structure(list(structure(list(StackRefactorId = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), ExecutionStatus = structure(logical(0), tags = list(type = "string")), ExecutionStatusReason = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "ListStackRefactorsResult"))
   return(populate(args, shape))
 }
 

@@ -181,7 +181,7 @@ NULL
 
 .iam$create_saml_provider_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SAMLMetadataDocument = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(SAMLMetadataDocument = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), AssertionEncryptionMode = structure(logical(0), tags = list(type = "string")), AddPrivateKey = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -819,7 +819,7 @@ NULL
 
 .iam$get_saml_provider_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SAMLMetadataDocument = structure(logical(0), tags = list(type = "string")), CreateDate = structure(logical(0), tags = list(type = "timestamp")), ValidUntil = structure(logical(0), tags = list(type = "timestamp")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", resultWrapper = "GetSAMLProviderResult"))
+  shape <- structure(list(SAMLProviderUUID = structure(logical(0), tags = list(type = "string")), SAMLMetadataDocument = structure(logical(0), tags = list(type = "string")), CreateDate = structure(logical(0), tags = list(type = "timestamp")), ValidUntil = structure(logical(0), tags = list(type = "timestamp")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), AssertionEncryptionMode = structure(logical(0), tags = list(type = "string")), PrivateKeyList = structure(list(structure(list(KeyId = structure(logical(0), tags = list(type = "string")), Timestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", resultWrapper = "GetSAMLProviderResult"))
   return(populate(args, shape))
 }
 
@@ -1719,7 +1719,7 @@ NULL
 
 .iam$update_saml_provider_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SAMLMetadataDocument = structure(logical(0), tags = list(type = "string")), SAMLProviderArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(SAMLMetadataDocument = structure(logical(0), tags = list(type = "string")), SAMLProviderArn = structure(logical(0), tags = list(type = "string")), AssertionEncryptionMode = structure(logical(0), tags = list(type = "string")), AddPrivateKey = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), RemovePrivateKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

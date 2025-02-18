@@ -16,7 +16,7 @@ s3_put_bucket_lifecycle_configuration(
 \arguments{
 \item{Bucket}{[required] The name of the bucket for which to set the configuration.}
 
-\item{ChecksumAlgorithm}{Indicates the algorithm used to create the checksum for the object when
+\item{ChecksumAlgorithm}{Indicates the algorithm used to create the checksum for the request when
 you use the SDK. This header will not provide any additional
 functionality if you don't use the SDK. When you send this header, there
 must be a corresponding \code{x-amz-checksum} or \code{x-amz-trailer} header sent.

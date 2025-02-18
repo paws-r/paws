@@ -288,7 +288,7 @@ the user guide.
 \link[paws.database:rds_start_export_task]{start_export_task} \tab Starts an export of DB snapshot or DB cluster data to Amazon S3\cr
 \link[paws.database:rds_stop_activity_stream]{stop_activity_stream} \tab Stops a database activity stream that was started using the Amazon Web Services console, the start-activity-stream CLI command, or the StartActivityStream operation\cr
 \link[paws.database:rds_stop_db_cluster]{stop_db_cluster} \tab Stops an Amazon Aurora DB cluster\cr
-\link[paws.database:rds_stop_db_instance]{stop_db_instance} \tab Stops an Amazon RDS DB instance\cr
+\link[paws.database:rds_stop_db_instance]{stop_db_instance} \tab Stops an Amazon RDS DB instance temporarily\cr
 \link[paws.database:rds_stop_db_instance_automated_backups_replication]{stop_db_instance_automated_backups_replication} \tab Stops automated backup replication for a DB instance\cr
 \link[paws.database:rds_switchover_blue_green_deployment]{switchover_blue_green_deployment} \tab Switches over a blue/green deployment\cr
 \link[paws.database:rds_switchover_global_cluster]{switchover_global_cluster} \tab Switches over the specified secondary DB cluster to be the new primary DB cluster in the global database cluster\cr

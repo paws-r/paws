@@ -11,6 +11,7 @@ wafv2_create_web_acl(
   Description = NULL,
   Rules = NULL,
   VisibilityConfig,
+  DataProtectionConfig = NULL,
   Tags = NULL,
   CustomResponseBodies = NULL,
   CaptchaConfig = NULL,
@@ -23,11 +24,8 @@ wafv2_create_web_acl(
 \item{Name}{[required] The name of the web ACL. You cannot change the name of a web ACL after
 you create it.}
 
-\item{Scope}{[required] Specifies whether this is for an Amazon CloudFront distribution or for a
-regional application. A regional application can be an Application Load
-Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
-an Amazon Cognito user pool, an App Runner service, or an Amazon Web
-Services Verified Access instance.
+\item{Scope}{[required] Specifies whether this is for a global resource type, such as a Amazon
+CloudFront distribution.
 
 To work with CloudFront, you must also specify the Region US East (N.
 Virginia) as follows:
@@ -49,6 +47,16 @@ handles them.}
 
 \item{VisibilityConfig}{[required] Defines and enables Amazon CloudWatch metrics and web request sample
 collection.}
+
+\item{DataProtectionConfig}{Specifies data protection to apply to the web request data that WAF
+stores for the web ACL. This is a web ACL level data protection option.
+
+The data protection that you configure for the web ACL alters the data
+that's available for any other data collection activity, including WAF
+logging, web ACL request sampling, Amazon Web Services Managed Rules,
+and Amazon Security Lake data collection and management. Your other
+option for data protection is in the logging configuration, which only
+affects logging.}
 
 \item{Tags}{An array of key:value pairs to associate with the resource.}
 

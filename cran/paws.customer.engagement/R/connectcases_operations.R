@@ -3,6 +3,38 @@
 #' @include connectcases_service.R
 NULL
 
+#' Gets a batch of case rules
+#'
+#' @description
+#' Gets a batch of case rules. In the Amazon Connect admin website, case rules are known as *case field conditions*. For more information about case field conditions, see [Add case field conditions to a case template](https://docs.aws.amazon.com/connect/latest/adminguide/case-field-conditions.html).
+#'
+#' See [https://www.paws-r-sdk.com/docs/connectcases_batch_get_case_rule/](https://www.paws-r-sdk.com/docs/connectcases_batch_get_case_rule/) for full documentation.
+#'
+#' @param caseRules &#91;required&#93; List of case rule identifiers.
+#' @param domainId &#91;required&#93; Unique identifier of a Cases domain.
+#'
+#' @keywords internal
+#'
+#' @rdname connectcases_batch_get_case_rule
+connectcases_batch_get_case_rule <- function(caseRules, domainId) {
+  op <- new_operation(
+    name = "BatchGetCaseRule",
+    http_method = "POST",
+    http_path = "/domains/{domainId}/rules-batch",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .connectcases$batch_get_case_rule_input(caseRules = caseRules, domainId = domainId)
+  output <- .connectcases$batch_get_case_rule_output()
+  config <- get_config()
+  svc <- .connectcases$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connectcases$operations$batch_get_case_rule <- connectcases_batch_get_case_rule
+
 #' Returns the description for the list of fields in the request parameters
 #'
 #' @description
@@ -108,6 +140,40 @@ connectcases_create_case <- function(clientToken = NULL, domainId, fields, perfo
   return(response)
 }
 .connectcases$operations$create_case <- connectcases_create_case
+
+#' Creates a new case rule
+#'
+#' @description
+#' Creates a new case rule. In the Amazon Connect admin website, case rules are known as *case field conditions*. For more information about case field conditions, see [Add case field conditions to a case template](https://docs.aws.amazon.com/connect/latest/adminguide/case-field-conditions.html).
+#'
+#' See [https://www.paws-r-sdk.com/docs/connectcases_create_case_rule/](https://www.paws-r-sdk.com/docs/connectcases_create_case_rule/) for full documentation.
+#'
+#' @param description The description of a case rule.
+#' @param domainId &#91;required&#93; Unique identifier of a Cases domain.
+#' @param name &#91;required&#93; Name of the case rule.
+#' @param rule &#91;required&#93; Represents what rule type should take place, under what conditions.
+#'
+#' @keywords internal
+#'
+#' @rdname connectcases_create_case_rule
+connectcases_create_case_rule <- function(description = NULL, domainId, name, rule) {
+  op <- new_operation(
+    name = "CreateCaseRule",
+    http_method = "POST",
+    http_path = "/domains/{domainId}/case-rules",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .connectcases$create_case_rule_input(description = description, domainId = domainId, name = name, rule = rule)
+  output <- .connectcases$create_case_rule_output()
+  config <- get_config()
+  svc <- .connectcases$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connectcases$operations$create_case_rule <- connectcases_create_case_rule
 
 #' Creates a domain, which is a container for all case data, such as cases,
 #' fields, templates and layouts
@@ -260,12 +326,15 @@ connectcases_create_related_item <- function(caseId, content, domainId, performe
 #' @param name &#91;required&#93; A name for the template. It must be unique per domain.
 #' @param requiredFields A list of fields that must contain a value for a case to be successfully
 #' created with this template.
+#' @param rules A list of case rules (also known as [case field
+#' conditions](https://docs.aws.amazon.com/connect/latest/adminguide/case-field-conditions.html))
+#' on a template.
 #' @param status The status of the template.
 #'
 #' @keywords internal
 #'
 #' @rdname connectcases_create_template
-connectcases_create_template <- function(description = NULL, domainId, layoutConfiguration = NULL, name, requiredFields = NULL, status = NULL) {
+connectcases_create_template <- function(description = NULL, domainId, layoutConfiguration = NULL, name, requiredFields = NULL, rules = NULL, status = NULL) {
   op <- new_operation(
     name = "CreateTemplate",
     http_method = "POST",
@@ -274,7 +343,7 @@ connectcases_create_template <- function(description = NULL, domainId, layoutCon
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .connectcases$create_template_input(description = description, domainId = domainId, layoutConfiguration = layoutConfiguration, name = name, requiredFields = requiredFields, status = status)
+  input <- .connectcases$create_template_input(description = description, domainId = domainId, layoutConfiguration = layoutConfiguration, name = name, requiredFields = requiredFields, rules = rules, status = status)
   output <- .connectcases$create_template_output()
   config <- get_config()
   svc <- .connectcases$service(config, op)
@@ -283,6 +352,38 @@ connectcases_create_template <- function(description = NULL, domainId, layoutCon
   return(response)
 }
 .connectcases$operations$create_template <- connectcases_create_template
+
+#' Deletes a case rule
+#'
+#' @description
+#' Deletes a case rule. In the Amazon Connect admin website, case rules are known as *case field conditions*. For more information about case field conditions, see [Add case field conditions to a case template](https://docs.aws.amazon.com/connect/latest/adminguide/case-field-conditions.html).
+#'
+#' See [https://www.paws-r-sdk.com/docs/connectcases_delete_case_rule/](https://www.paws-r-sdk.com/docs/connectcases_delete_case_rule/) for full documentation.
+#'
+#' @param caseRuleId &#91;required&#93; Unique identifier of a case rule.
+#' @param domainId &#91;required&#93; Unique identifier of a Cases domain.
+#'
+#' @keywords internal
+#'
+#' @rdname connectcases_delete_case_rule
+connectcases_delete_case_rule <- function(caseRuleId, domainId) {
+  op <- new_operation(
+    name = "DeleteCaseRule",
+    http_method = "DELETE",
+    http_path = "/domains/{domainId}/case-rules/{caseRuleId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .connectcases$delete_case_rule_input(caseRuleId = caseRuleId, domainId = domainId)
+  output <- .connectcases$delete_case_rule_output()
+  config <- get_config()
+  svc <- .connectcases$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connectcases$operations$delete_case_rule <- connectcases_delete_case_rule
 
 #' Deletes a Cases domain
 #'
@@ -582,7 +683,7 @@ connectcases_get_layout <- function(domainId, layoutId) {
 #' Returns the details for the requested template
 #'
 #' @description
-#' Returns the details for the requested template.
+#' Returns the details for the requested template. Other template APIs are:
 #'
 #' See [https://www.paws-r-sdk.com/docs/connectcases_get_template/](https://www.paws-r-sdk.com/docs/connectcases_get_template/) for full documentation.
 #'
@@ -610,6 +711,41 @@ connectcases_get_template <- function(domainId, templateId) {
   return(response)
 }
 .connectcases$operations$get_template <- connectcases_get_template
+
+#' Lists all case rules in a Cases domain
+#'
+#' @description
+#' Lists all case rules in a Cases domain. In the Amazon Connect admin website, case rules are known as *case field conditions*. For more information about case field conditions, see [Add case field conditions to a case template](https://docs.aws.amazon.com/connect/latest/adminguide/case-field-conditions.html).
+#'
+#' See [https://www.paws-r-sdk.com/docs/connectcases_list_case_rules/](https://www.paws-r-sdk.com/docs/connectcases_list_case_rules/) for full documentation.
+#'
+#' @param domainId &#91;required&#93; Unique identifier of a Cases domain.
+#' @param maxResults The maximum number of results to return per page.
+#' @param nextToken The token for the next set of results. Use the value returned in the
+#' previous response in the next request to retrieve the next set of
+#' results.
+#'
+#' @keywords internal
+#'
+#' @rdname connectcases_list_case_rules
+connectcases_list_case_rules <- function(domainId, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListCaseRules",
+    http_method = "POST",
+    http_path = "/domains/{domainId}/rules-list/",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "caseRules"),
+    stream_api = FALSE
+  )
+  input <- .connectcases$list_case_rules_input(domainId = domainId, maxResults = maxResults, nextToken = nextToken)
+  output <- .connectcases$list_case_rules_output()
+  config <- get_config()
+  svc <- .connectcases$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connectcases$operations$list_case_rules <- connectcases_list_case_rules
 
 #' Lists cases for a given contact
 #'
@@ -1070,6 +1206,41 @@ connectcases_update_case <- function(caseId, domainId, fields, performedBy = NUL
 }
 .connectcases$operations$update_case <- connectcases_update_case
 
+#' Updates a case rule
+#'
+#' @description
+#' Updates a case rule. In the Amazon Connect admin website, case rules are known as *case field conditions*. For more information about case field conditions, see [Add case field conditions to a case template](https://docs.aws.amazon.com/connect/latest/adminguide/case-field-conditions.html).
+#'
+#' See [https://www.paws-r-sdk.com/docs/connectcases_update_case_rule/](https://www.paws-r-sdk.com/docs/connectcases_update_case_rule/) for full documentation.
+#'
+#' @param caseRuleId &#91;required&#93; Unique identifier of a case rule.
+#' @param description Description of a case rule.
+#' @param domainId &#91;required&#93; Unique identifier of a Cases domain.
+#' @param name Name of the case rule.
+#' @param rule Represents what rule type should take place, under what conditions.
+#'
+#' @keywords internal
+#'
+#' @rdname connectcases_update_case_rule
+connectcases_update_case_rule <- function(caseRuleId, description = NULL, domainId, name = NULL, rule = NULL) {
+  op <- new_operation(
+    name = "UpdateCaseRule",
+    http_method = "PUT",
+    http_path = "/domains/{domainId}/case-rules/{caseRuleId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .connectcases$update_case_rule_input(caseRuleId = caseRuleId, description = description, domainId = domainId, name = name, rule = rule)
+  output <- .connectcases$update_case_rule_output()
+  config <- get_config()
+  svc <- .connectcases$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connectcases$operations$update_case_rule <- connectcases_update_case_rule
+
 #' Updates the properties of an existing field
 #'
 #' @description
@@ -1152,13 +1323,16 @@ connectcases_update_layout <- function(content = NULL, domainId, layoutId, name 
 #' @param name The name of the template. It must be unique per domain.
 #' @param requiredFields A list of fields that must contain a value for a case to be successfully
 #' created with this template.
+#' @param rules A list of case rules (also known as [case field
+#' conditions](https://docs.aws.amazon.com/connect/latest/adminguide/case-field-conditions.html))
+#' on a template.
 #' @param status The status of the template.
 #' @param templateId &#91;required&#93; A unique identifier for the template.
 #'
 #' @keywords internal
 #'
 #' @rdname connectcases_update_template
-connectcases_update_template <- function(description = NULL, domainId, layoutConfiguration = NULL, name = NULL, requiredFields = NULL, status = NULL, templateId) {
+connectcases_update_template <- function(description = NULL, domainId, layoutConfiguration = NULL, name = NULL, requiredFields = NULL, rules = NULL, status = NULL, templateId) {
   op <- new_operation(
     name = "UpdateTemplate",
     http_method = "PUT",
@@ -1167,7 +1341,7 @@ connectcases_update_template <- function(description = NULL, domainId, layoutCon
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .connectcases$update_template_input(description = description, domainId = domainId, layoutConfiguration = layoutConfiguration, name = name, requiredFields = requiredFields, status = status, templateId = templateId)
+  input <- .connectcases$update_template_input(description = description, domainId = domainId, layoutConfiguration = layoutConfiguration, name = name, requiredFields = requiredFields, rules = rules, status = status, templateId = templateId)
   output <- .connectcases$update_template_output()
   config <- get_config()
   svc <- .connectcases$service(config, op)

@@ -18,7 +18,7 @@ NULL
 #' requests are not supported. Directory bucket names must be unique in the
 #' chosen Zone (Availability Zone or Local Zone). Bucket names must follow
 #' the format ` bucket-base-name--zone-id--x-s3` (for example,
-#' ` DOC-EXAMPLE-BUCKET--usw2-az1--x-s3`). For information about bucket
+#' ` amzn-s3-demo-bucket--usw2-az1--x-s3`). For information about bucket
 #' naming restrictions, see [Directory bucket naming
 #' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
 #' in the *Amazon S3 User Guide*.
@@ -38,14 +38,13 @@ NULL
 #' Access points and Object Lambda access points are not supported by
 #' directory buckets.
 #' 
-#' **S3 on Outposts** - When you use this action with Amazon S3 on
-#' Outposts, you must direct requests to the S3 on Outposts hostname. The
-#' S3 on Outposts hostname takes the form
+#' **S3 on Outposts** - When you use this action with S3 on Outposts, you
+#' must direct requests to the S3 on Outposts hostname. The S3 on Outposts
+#' hostname takes the form
 #' ` AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com`.
-#' When you use this action with S3 on Outposts through the Amazon Web
-#' Services SDKs, you provide the Outposts access point ARN in place of the
-#' bucket name. For more information about S3 on Outposts ARNs, see [What
-#' is S3 on
+#' When you use this action with S3 on Outposts, the destination bucket
+#' must be the Outposts access point ARN or the access point alias. For
+#' more information about S3 on Outposts, see [What is S3 on
 #' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param Key &#91;required&#93; Key of the object for which the multipart upload was initiated.
@@ -100,7 +99,7 @@ s3_abort_multipart_upload <- function(Bucket, Key, UploadId, RequestPayer = NULL
 #' requests are not supported. Directory bucket names must be unique in the
 #' chosen Zone (Availability Zone or Local Zone). Bucket names must follow
 #' the format ` bucket-base-name--zone-id--x-s3` (for example,
-#' ` DOC-EXAMPLE-BUCKET--usw2-az1--x-s3`). For information about bucket
+#' ` amzn-s3-demo-bucket--usw2-az1--x-s3`). For information about bucket
 #' naming restrictions, see [Directory bucket naming
 #' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
 #' in the *Amazon S3 User Guide*.
@@ -120,14 +119,13 @@ s3_abort_multipart_upload <- function(Bucket, Key, UploadId, RequestPayer = NULL
 #' Access points and Object Lambda access points are not supported by
 #' directory buckets.
 #' 
-#' **S3 on Outposts** - When you use this action with Amazon S3 on
-#' Outposts, you must direct requests to the S3 on Outposts hostname. The
-#' S3 on Outposts hostname takes the form
+#' **S3 on Outposts** - When you use this action with S3 on Outposts, you
+#' must direct requests to the S3 on Outposts hostname. The S3 on Outposts
+#' hostname takes the form
 #' ` AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com`.
-#' When you use this action with S3 on Outposts through the Amazon Web
-#' Services SDKs, you provide the Outposts access point ARN in place of the
-#' bucket name. For more information about S3 on Outposts ARNs, see [What
-#' is S3 on
+#' When you use this action with S3 on Outposts, the destination bucket
+#' must be the Outposts access point ARN or the access point alias. For
+#' more information about S3 on Outposts, see [What is S3 on
 #' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param Key &#91;required&#93; Object key for which the multipart upload was initiated.
@@ -135,32 +133,32 @@ s3_abort_multipart_upload <- function(Bucket, Key, UploadId, RequestPayer = NULL
 #' @param UploadId &#91;required&#93; ID for the initiated multipart upload.
 #' @param ChecksumCRC32 This header can be used as a data integrity check to verify that the
 #' data received is the same data that was originally sent. This header
-#' specifies the Base64 encoded, 32-bit `CRC-32` checksum of the object.
-#' For more information, see [Checking object
+#' specifies the Base64 encoded, 32-bit `CRC32` checksum of the object. For
+#' more information, see [Checking object
 #' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
 #' in the *Amazon S3 User Guide*.
 #' @param ChecksumCRC32C This header can be used as a data integrity check to verify that the
 #' data received is the same data that was originally sent. This header
-#' specifies the Base64 encoded, 32-bit `CRC-32C` checksum of the object.
+#' specifies the Base64 encoded, 32-bit `CRC32C` checksum of the object.
 #' For more information, see [Checking object
 #' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
 #' in the *Amazon S3 User Guide*.
 #' @param ChecksumCRC64NVME This header can be used as a data integrity check to verify that the
 #' data received is the same data that was originally sent. This header
-#' specifies the Base64 encoded, 64-bit `CRC-64NVME` checksum of the
-#' object. The `CRC-64NVME` checksum is always a full object checksum. For
-#' more information, see [Checking object integrity in the Amazon S3 User
+#' specifies the Base64 encoded, 64-bit `CRC64NVME` checksum of the object.
+#' The `CRC64NVME` checksum is always a full object checksum. For more
+#' information, see [Checking object integrity in the Amazon S3 User
 #' Guide](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html).
 #' @param ChecksumSHA1 This header can be used as a data integrity check to verify that the
 #' data received is the same data that was originally sent. This header
-#' specifies the Base64 encoded, 160-bit `SHA-1` digest of the object. For
+#' specifies the Base64 encoded, 160-bit `SHA1` digest of the object. For
 #' more information, see [Checking object
 #' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
 #' in the *Amazon S3 User Guide*.
 #' @param ChecksumSHA256 This header can be used as a data integrity check to verify that the
 #' data received is the same data that was originally sent. This header
-#' specifies the Base64 encoded, 256-bit `SHA-256` digest of the object.
-#' For more information, see [Checking object
+#' specifies the Base64 encoded, 256-bit `SHA256` digest of the object. For
+#' more information, see [Checking object
 #' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
 #' in the *Amazon S3 User Guide*.
 #' @param ChecksumType This header specifies the checksum type of the object, which determines
@@ -299,7 +297,7 @@ s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, Up
 #' requests are not supported. Directory bucket names must be unique in the
 #' chosen Zone (Availability Zone or Local Zone). Bucket names must follow
 #' the format ` bucket-base-name--zone-id--x-s3` (for example,
-#' ` DOC-EXAMPLE-BUCKET--usw2-az1--x-s3`). For information about bucket
+#' ` amzn-s3-demo-bucket--usw2-az1--x-s3`). For information about bucket
 #' naming restrictions, see [Directory bucket naming
 #' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
 #' in the *Amazon S3 User Guide*.
@@ -325,16 +323,20 @@ s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, Up
 #' Access points and Object Lambda access points are not supported by
 #' directory buckets.
 #' 
-#' **S3 on Outposts** - When you use this action with Amazon S3 on
-#' Outposts, you must direct requests to the S3 on Outposts hostname. The
-#' S3 on Outposts hostname takes the form
-#' ` AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com`.
-#' When you use this action with S3 on Outposts through the Amazon Web
-#' Services SDKs, you provide the Outposts access point ARN in place of the
-#' bucket name. For more information about S3 on Outposts ARNs, see [What
-#' is S3 on
+#' **S3 on Outposts** - When you use this action with S3 on Outposts, you
+#' must use the Outpost bucket access point ARN or the access point alias
+#' for the destination bucket. You can only copy objects within the same
+#' Outpost bucket. It's not supported to copy objects across different
+#' Amazon Web Services Outposts, between buckets on the same Outposts, or
+#' between Outposts buckets and any other bucket types. For more
+#' information about S3 on Outposts, see [What is S3 on
 #' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html)
-#' in the *Amazon S3 User Guide*.
+#' in the *S3 on Outposts guide*. When you use this action with S3 on
+#' Outposts through the REST API, you must direct requests to the S3 on
+#' Outposts hostname, in the format
+#' ` AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com`.
+#' The hostname isn't required when you use the Amazon Web Services CLI or
+#' SDKs.
 #' @param CacheControl Specifies the caching behavior along the request/reply chain.
 #' @param ChecksumAlgorithm Indicates the algorithm that you want Amazon S3 to use to create the
 #' checksum for the object. For more information, see [Checking object
@@ -712,23 +714,19 @@ s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, Up
 #' Authentication](https://docs.aws.amazon.com/AmazonS3/latest/API/#specify-signature-version)
 #' in the *Amazon S3 User Guide*.
 #' 
-#' **Directory buckets** - If you specify `x-amz-server-side-encryption`
-#' with `aws:kms`, the ` x-amz-server-side-encryption-aws-kms-key-id`
-#' header is implicitly assigned the ID of the KMS symmetric encryption
-#' customer managed key that's configured for your directory bucket's
-#' default encryption setting. If you want to specify the
-#' ` x-amz-server-side-encryption-aws-kms-key-id` header explicitly, you
-#' can only specify it with the ID (Key ID or Key ARN) of the KMS customer
-#' managed key that's configured for your directory bucket's default
-#' encryption setting. Otherwise, you get an HTTP `400 Bad Request` error.
-#' Only use the key ID or key ARN. The key alias format of the KMS key
-#' isn't supported. Your SSE-KMS configuration can only support 1 [customer
-#' managed
+#' **Directory buckets** - To encrypt data using SSE-KMS, it's recommended
+#' to specify the `x-amz-server-side-encryption` header to `aws:kms`. Then,
+#' the `x-amz-server-side-encryption-aws-kms-key-id` header implicitly uses
+#' the bucket's default KMS customer managed key ID. If you want to
+#' explicitly set the ` x-amz-server-side-encryption-aws-kms-key-id`
+#' header, it must match the bucket's default customer managed key (using
+#' key ID or ARN, not alias). Your SSE-KMS configuration can only support 1
+#' [customer managed
 #' key](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-cmk)
-#' per directory bucket for the lifetime of the bucket. The [Amazon Web
-#' Services managed
+#' per directory bucket's lifetime. The [Amazon Web Services managed
 #' key](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-cmk)
-#' (`aws/s3`) isn't supported.
+#' (`aws/s3`) isn't supported. Incorrect key specification results in an
+#' HTTP `400 Bad Request` error.
 #' @param SSEKMSEncryptionContext Specifies the Amazon Web Services KMS Encryption Context as an
 #' additional encryption context to use for the destination object
 #' encryption. The value of this header is a base64-encoded UTF-8 string
@@ -1032,7 +1030,7 @@ s3_create_bucket_metadata_table_configuration <- function(Bucket, ContentMD5 = N
 #' requests are not supported. Directory bucket names must be unique in the
 #' chosen Zone (Availability Zone or Local Zone). Bucket names must follow
 #' the format ` bucket-base-name--zone-id--x-s3` (for example,
-#' ` DOC-EXAMPLE-BUCKET--usw2-az1--x-s3`). For information about bucket
+#' ` amzn-s3-demo-bucket--usw2-az1--x-s3`). For information about bucket
 #' naming restrictions, see [Directory bucket naming
 #' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
 #' in the *Amazon S3 User Guide*.
@@ -1052,14 +1050,13 @@ s3_create_bucket_metadata_table_configuration <- function(Bucket, ContentMD5 = N
 #' Access points and Object Lambda access points are not supported by
 #' directory buckets.
 #' 
-#' **S3 on Outposts** - When you use this action with Amazon S3 on
-#' Outposts, you must direct requests to the S3 on Outposts hostname. The
-#' S3 on Outposts hostname takes the form
+#' **S3 on Outposts** - When you use this action with S3 on Outposts, you
+#' must direct requests to the S3 on Outposts hostname. The S3 on Outposts
+#' hostname takes the form
 #' ` AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com`.
-#' When you use this action with S3 on Outposts through the Amazon Web
-#' Services SDKs, you provide the Outposts access point ARN in place of the
-#' bucket name. For more information about S3 on Outposts ARNs, see [What
-#' is S3 on
+#' When you use this action with S3 on Outposts, the destination bucket
+#' must be the Outposts access point ARN or the access point alias. For
+#' more information about S3 on Outposts, see [What is S3 on
 #' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param CacheControl Specifies caching behavior along the request/reply chain.
@@ -1388,23 +1385,19 @@ s3_create_bucket_metadata_table_configuration <- function(Bucket, ContentMD5 = N
 #' `x-amz-server-side-encryption-aws-kms-key-id`, Amazon S3 uses the Amazon
 #' Web Services managed key (`aws/s3`) to protect the data.
 #' 
-#' **Directory buckets** - If you specify `x-amz-server-side-encryption`
-#' with `aws:kms`, the ` x-amz-server-side-encryption-aws-kms-key-id`
-#' header is implicitly assigned the ID of the KMS symmetric encryption
-#' customer managed key that's configured for your directory bucket's
-#' default encryption setting. If you want to specify the
-#' ` x-amz-server-side-encryption-aws-kms-key-id` header explicitly, you
-#' can only specify it with the ID (Key ID or Key ARN) of the KMS customer
-#' managed key that's configured for your directory bucket's default
-#' encryption setting. Otherwise, you get an HTTP `400 Bad Request` error.
-#' Only use the key ID or key ARN. The key alias format of the KMS key
-#' isn't supported. Your SSE-KMS configuration can only support 1 [customer
-#' managed
+#' **Directory buckets** - To encrypt data using SSE-KMS, it's recommended
+#' to specify the `x-amz-server-side-encryption` header to `aws:kms`. Then,
+#' the `x-amz-server-side-encryption-aws-kms-key-id` header implicitly uses
+#' the bucket's default KMS customer managed key ID. If you want to
+#' explicitly set the ` x-amz-server-side-encryption-aws-kms-key-id`
+#' header, it must match the bucket's default customer managed key (using
+#' key ID or ARN, not alias). Your SSE-KMS configuration can only support 1
+#' [customer managed
 #' key](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-cmk)
-#' per directory bucket for the lifetime of the bucket. The [Amazon Web
-#' Services managed
+#' per directory bucket's lifetime. The [Amazon Web Services managed
 #' key](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-cmk)
-#' (`aws/s3`) isn't supported.
+#' (`aws/s3`) isn't supported. Incorrect key specification results in an
+#' HTTP `400 Bad Request` error.
 #' @param SSEKMSEncryptionContext Specifies the Amazon Web Services KMS Encryption Context to use for
 #' object encryption. The value of this header is a Base64 encoded string
 #' of a UTF-8 encoded JSON, which contains the encryption context as
@@ -1512,8 +1505,8 @@ s3_create_multipart_upload <- function(ACL = NULL, Bucket, CacheControl = NULL, 
 #' keys (SSE-S3) (`AES256`) and server-side encryption with KMS keys
 #' (SSE-KMS) (`aws:kms`). By default, Amazon S3 encrypts data with SSE-S3.
 #' For more information, see [Protecting data with server-side
-#' encryption](https://docs.aws.amazon.com/AmazonS3/latest/userguide/) in
-#' the *Amazon S3 User Guide*.
+#' encryption](https://docs.aws.amazon.com/AmazonS3/latest/userguide/serv-side-encryption.html)
+#' in the *Amazon S3 User Guide*.
 #' @param SSEKMSKeyId If you specify `x-amz-server-side-encryption` with `aws:kms`, you must
 #' specify the ` x-amz-server-side-encryption-aws-kms-key-id` header with
 #' the ID (Key ID or Key ARN) of the KMS symmetric encryption customer
@@ -1525,8 +1518,7 @@ s3_create_multipart_upload <- function(ACL = NULL, Bucket, CacheControl = NULL, 
 #' 
 #' Your SSE-KMS configuration can only support 1 [customer managed
 #' key](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-cmk)
-#' per directory bucket for the lifetime of the bucket. The [Amazon Web
-#' Services managed
+#' per directory bucket's lifetime. The [Amazon Web Services managed
 #' key](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-cmk)
 #' (`aws/s3`) isn't supported.
 #' @param SSEKMSEncryptionContext Specifies the Amazon Web Services KMS Encryption Context as an
@@ -2134,7 +2126,7 @@ s3_delete_bucket_website <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' requests are not supported. Directory bucket names must be unique in the
 #' chosen Zone (Availability Zone or Local Zone). Bucket names must follow
 #' the format ` bucket-base-name--zone-id--x-s3` (for example,
-#' ` DOC-EXAMPLE-BUCKET--usw2-az1--x-s3`). For information about bucket
+#' ` amzn-s3-demo-bucket--usw2-az1--x-s3`). For information about bucket
 #' naming restrictions, see [Directory bucket naming
 #' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
 #' in the *Amazon S3 User Guide*.
@@ -2154,14 +2146,13 @@ s3_delete_bucket_website <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' Access points and Object Lambda access points are not supported by
 #' directory buckets.
 #' 
-#' **S3 on Outposts** - When you use this action with Amazon S3 on
-#' Outposts, you must direct requests to the S3 on Outposts hostname. The
-#' S3 on Outposts hostname takes the form
+#' **S3 on Outposts** - When you use this action with S3 on Outposts, you
+#' must direct requests to the S3 on Outposts hostname. The S3 on Outposts
+#' hostname takes the form
 #' ` AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com`.
-#' When you use this action with S3 on Outposts through the Amazon Web
-#' Services SDKs, you provide the Outposts access point ARN in place of the
-#' bucket name. For more information about S3 on Outposts ARNs, see [What
-#' is S3 on
+#' When you use this action with S3 on Outposts, the destination bucket
+#' must be the Outposts access point ARN or the access point alias. For
+#' more information about S3 on Outposts, see [What is S3 on
 #' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param Key &#91;required&#93; Key name of the object to delete.
@@ -2190,7 +2181,8 @@ s3_delete_bucket_website <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' doesn't exist, the operation will return a
 #' `204 Success (No Content) response`.
 #' 
-#' For more information about conditional requests, see RFC 7232.
+#' For more information about conditional requests, see [RFC
+#' 7232](https://datatracker.ietf.org/doc/html/rfc7232).
 #' 
 #' This functionality is only supported for directory buckets.
 #' @param IfMatchLastModifiedTime If present, the object is deleted only if its modification times matches
@@ -2255,14 +2247,13 @@ s3_delete_object <- function(Bucket, Key, MFA = NULL, VersionId = NULL, RequestP
 #' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
 #' in the *Amazon S3 User Guide*.
 #' 
-#' **S3 on Outposts** - When you use this action with Amazon S3 on
-#' Outposts, you must direct requests to the S3 on Outposts hostname. The
-#' S3 on Outposts hostname takes the form
+#' **S3 on Outposts** - When you use this action with S3 on Outposts, you
+#' must direct requests to the S3 on Outposts hostname. The S3 on Outposts
+#' hostname takes the form
 #' ` AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com`.
-#' When you use this action with S3 on Outposts through the Amazon Web
-#' Services SDKs, you provide the Outposts access point ARN in place of the
-#' bucket name. For more information about S3 on Outposts ARNs, see [What
-#' is S3 on
+#' When you use this action with S3 on Outposts, the destination bucket
+#' must be the Outposts access point ARN or the access point alias. For
+#' more information about S3 on Outposts, see [What is S3 on
 #' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param Key &#91;required&#93; The key that identifies the object in the bucket from which to remove
@@ -2310,7 +2301,7 @@ s3_delete_object_tagging <- function(Bucket, Key, VersionId = NULL, ExpectedBuck
 #' requests are not supported. Directory bucket names must be unique in the
 #' chosen Zone (Availability Zone or Local Zone). Bucket names must follow
 #' the format ` bucket-base-name--zone-id--x-s3` (for example,
-#' ` DOC-EXAMPLE-BUCKET--usw2-az1--x-s3`). For information about bucket
+#' ` amzn-s3-demo-bucket--usw2-az1--x-s3`). For information about bucket
 #' naming restrictions, see [Directory bucket naming
 #' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
 #' in the *Amazon S3 User Guide*.
@@ -2330,14 +2321,13 @@ s3_delete_object_tagging <- function(Bucket, Key, VersionId = NULL, ExpectedBuck
 #' Access points and Object Lambda access points are not supported by
 #' directory buckets.
 #' 
-#' **S3 on Outposts** - When you use this action with Amazon S3 on
-#' Outposts, you must direct requests to the S3 on Outposts hostname. The
-#' S3 on Outposts hostname takes the form
+#' **S3 on Outposts** - When you use this action with S3 on Outposts, you
+#' must direct requests to the S3 on Outposts hostname. The S3 on Outposts
+#' hostname takes the form
 #' ` AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com`.
-#' When you use this action with S3 on Outposts through the Amazon Web
-#' Services SDKs, you provide the Outposts access point ARN in place of the
-#' bucket name. For more information about S3 on Outposts ARNs, see [What
-#' is S3 on
+#' When you use this action with S3 on Outposts, the destination bucket
+#' must be the Outposts access point ARN or the access point alias. For
+#' more information about S3 on Outposts, see [What is S3 on
 #' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param Delete &#91;required&#93; Container for the request.
@@ -2377,15 +2367,15 @@ s3_delete_object_tagging <- function(Bucket, Key, VersionId = NULL, ExpectedBuck
 #' For the `x-amz-checksum-algorithm ` header, replace ` algorithm ` with
 #' the supported algorithm from the following list:
 #' 
-#' -   `CRC-32`
+#' -   `CRC32`
 #' 
-#' -   `CRC-32C`
+#' -   `CRC32C`
 #' 
-#' -   `CRC-64NVME`
+#' -   `CRC64NVME`
 #' 
-#' -   `SHA-1`
+#' -   `SHA1`
 #' 
-#' -   `SHA-256`
+#' -   `SHA256`
 #' 
 #' For more information, see [Checking object
 #' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
@@ -3370,7 +3360,7 @@ s3_get_bucket_website <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' requests are not supported. Directory bucket names must be unique in the
 #' chosen Zone (Availability Zone or Local Zone). Bucket names must follow
 #' the format ` bucket-base-name--zone-id--x-s3` (for example,
-#' ` DOC-EXAMPLE-BUCKET--usw2-az1--x-s3`). For information about bucket
+#' ` amzn-s3-demo-bucket--usw2-az1--x-s3`). For information about bucket
 #' naming restrictions, see [Directory bucket naming
 #' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
 #' in the *Amazon S3 User Guide*.
@@ -3396,14 +3386,13 @@ s3_get_bucket_website <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' Access points and Object Lambda access points are not supported by
 #' directory buckets.
 #' 
-#' **S3 on Outposts** - When you use this action with Amazon S3 on
-#' Outposts, you must direct requests to the S3 on Outposts hostname. The
-#' S3 on Outposts hostname takes the form
+#' **S3 on Outposts** - When you use this action with S3 on Outposts, you
+#' must direct requests to the S3 on Outposts hostname. The S3 on Outposts
+#' hostname takes the form
 #' ` AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com`.
-#' When you use this action with S3 on Outposts through the Amazon Web
-#' Services SDKs, you provide the Outposts access point ARN in place of the
-#' bucket name. For more information about S3 on Outposts ARNs, see [What
-#' is S3 on
+#' When you use this action with S3 on Outposts, the destination bucket
+#' must be the Outposts access point ARN or the access point alias. For
+#' more information about S3 on Outposts, see [What is S3 on
 #' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param IfMatch Return the object only if its entity tag (ETag) is the same as the one
@@ -3558,12 +3547,6 @@ s3_get_bucket_website <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' provide does not match the actual owner of the bucket, the request fails
 #' with the HTTP status code `403 Forbidden` (access denied).
 #' @param ChecksumMode To retrieve the checksum, this mode must be enabled.
-#' 
-#' **General purpose buckets** - In addition, if you enable checksum mode
-#' and the object is uploaded with a
-#' [checksum](https://docs.aws.amazon.com/AmazonS3/latest/API/API_Checksum.html)
-#' and encrypted with an Key Management Service (KMS) key, you must have
-#' permission to use the `kms:Decrypt` action to retrieve the checksum.
 #'
 #' @keywords internal
 #'
@@ -3655,7 +3638,7 @@ s3_get_object_acl <- function(Bucket, Key, VersionId = NULL, RequestPayer = NULL
 #' requests are not supported. Directory bucket names must be unique in the
 #' chosen Zone (Availability Zone or Local Zone). Bucket names must follow
 #' the format ` bucket-base-name--zone-id--x-s3` (for example,
-#' ` DOC-EXAMPLE-BUCKET--usw2-az1--x-s3`). For information about bucket
+#' ` amzn-s3-demo-bucket--usw2-az1--x-s3`). For information about bucket
 #' naming restrictions, see [Directory bucket naming
 #' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
 #' in the *Amazon S3 User Guide*.
@@ -3675,14 +3658,13 @@ s3_get_object_acl <- function(Bucket, Key, VersionId = NULL, RequestPayer = NULL
 #' Access points and Object Lambda access points are not supported by
 #' directory buckets.
 #' 
-#' **S3 on Outposts** - When you use this action with Amazon S3 on
-#' Outposts, you must direct requests to the S3 on Outposts hostname. The
-#' S3 on Outposts hostname takes the form
+#' **S3 on Outposts** - When you use this action with S3 on Outposts, you
+#' must direct requests to the S3 on Outposts hostname. The S3 on Outposts
+#' hostname takes the form
 #' ` AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com`.
-#' When you use this action with S3 on Outposts through the Amazon Web
-#' Services SDKs, you provide the Outposts access point ARN in place of the
-#' bucket name. For more information about S3 on Outposts ARNs, see [What
-#' is S3 on
+#' When you use this action with S3 on Outposts, the destination bucket
+#' must be the Outposts access point ARN or the access point alias. For
+#' more information about S3 on Outposts, see [What is S3 on
 #' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param Key &#91;required&#93; The object key.
@@ -3912,14 +3894,13 @@ s3_get_object_retention <- function(Bucket, Key, VersionId = NULL, RequestPayer 
 #' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
 #' in the *Amazon S3 User Guide*.
 #' 
-#' **S3 on Outposts** - When you use this action with Amazon S3 on
-#' Outposts, you must direct requests to the S3 on Outposts hostname. The
-#' S3 on Outposts hostname takes the form
+#' **S3 on Outposts** - When you use this action with S3 on Outposts, you
+#' must direct requests to the S3 on Outposts hostname. The S3 on Outposts
+#' hostname takes the form
 #' ` AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com`.
-#' When you use this action with S3 on Outposts through the Amazon Web
-#' Services SDKs, you provide the Outposts access point ARN in place of the
-#' bucket name. For more information about S3 on Outposts ARNs, see [What
-#' is S3 on
+#' When you use this action with S3 on Outposts, the destination bucket
+#' must be the Outposts access point ARN or the access point alias. For
+#' more information about S3 on Outposts, see [What is S3 on
 #' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param Key &#91;required&#93; Object key for which to get the tagging information.
@@ -4039,7 +4020,7 @@ s3_get_public_access_block <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' requests are not supported. Directory bucket names must be unique in the
 #' chosen Zone (Availability Zone or Local Zone). Bucket names must follow
 #' the format ` bucket-base-name--zone-id--x-s3` (for example,
-#' ` DOC-EXAMPLE-BUCKET--usw2-az1--x-s3`). For information about bucket
+#' ` amzn-s3-demo-bucket--usw2-az1--x-s3`). For information about bucket
 #' naming restrictions, see [Directory bucket naming
 #' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
 #' in the *Amazon S3 User Guide*.
@@ -4067,14 +4048,13 @@ s3_get_public_access_block <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' Access points and Object Lambda access points are not supported by
 #' directory buckets.
 #' 
-#' **S3 on Outposts** - When you use this action with Amazon S3 on
-#' Outposts, you must direct requests to the S3 on Outposts hostname. The
-#' S3 on Outposts hostname takes the form
+#' **S3 on Outposts** - When you use this action with S3 on Outposts, you
+#' must direct requests to the S3 on Outposts hostname. The S3 on Outposts
+#' hostname takes the form
 #' ` AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com`.
-#' When you use this action with S3 on Outposts through the Amazon Web
-#' Services SDKs, you provide the Outposts access point ARN in place of the
-#' bucket name. For more information about S3 on Outposts ARNs, see [What
-#' is S3 on
+#' When you use this action with S3 on Outposts, the destination bucket
+#' must be the Outposts access point ARN or the access point alias. For
+#' more information about S3 on Outposts, see [What is S3 on
 #' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
@@ -4119,7 +4099,7 @@ s3_head_bucket <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' requests are not supported. Directory bucket names must be unique in the
 #' chosen Zone (Availability Zone or Local Zone). Bucket names must follow
 #' the format ` bucket-base-name--zone-id--x-s3` (for example,
-#' ` DOC-EXAMPLE-BUCKET--usw2-az1--x-s3`). For information about bucket
+#' ` amzn-s3-demo-bucket--usw2-az1--x-s3`). For information about bucket
 #' naming restrictions, see [Directory bucket naming
 #' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
 #' in the *Amazon S3 User Guide*.
@@ -4139,14 +4119,13 @@ s3_head_bucket <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' Access points and Object Lambda access points are not supported by
 #' directory buckets.
 #' 
-#' **S3 on Outposts** - When you use this action with Amazon S3 on
-#' Outposts, you must direct requests to the S3 on Outposts hostname. The
-#' S3 on Outposts hostname takes the form
+#' **S3 on Outposts** - When you use this action with S3 on Outposts, you
+#' must direct requests to the S3 on Outposts hostname. The S3 on Outposts
+#' hostname takes the form
 #' ` AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com`.
-#' When you use this action with S3 on Outposts through the Amazon Web
-#' Services SDKs, you provide the Outposts access point ARN in place of the
-#' bucket name. For more information about S3 on Outposts ARNs, see [What
-#' is S3 on
+#' When you use this action with S3 on Outposts, the destination bucket
+#' must be the Outposts access point ARN or the access point alias. For
+#' more information about S3 on Outposts, see [What is S3 on
 #' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param IfMatch Return the object only if its entity tag (ETag) is the same as the one
@@ -4542,7 +4521,7 @@ s3_list_directory_buckets <- function(ContinuationToken = NULL, MaxDirectoryBuck
 #' requests are not supported. Directory bucket names must be unique in the
 #' chosen Zone (Availability Zone or Local Zone). Bucket names must follow
 #' the format ` bucket-base-name--zone-id--x-s3` (for example,
-#' ` DOC-EXAMPLE-BUCKET--usw2-az1--x-s3`). For information about bucket
+#' ` amzn-s3-demo-bucket--usw2-az1--x-s3`). For information about bucket
 #' naming restrictions, see [Directory bucket naming
 #' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
 #' in the *Amazon S3 User Guide*.
@@ -4562,14 +4541,13 @@ s3_list_directory_buckets <- function(ContinuationToken = NULL, MaxDirectoryBuck
 #' Access points and Object Lambda access points are not supported by
 #' directory buckets.
 #' 
-#' **S3 on Outposts** - When you use this action with Amazon S3 on
-#' Outposts, you must direct requests to the S3 on Outposts hostname. The
-#' S3 on Outposts hostname takes the form
+#' **S3 on Outposts** - When you use this action with S3 on Outposts, you
+#' must direct requests to the S3 on Outposts hostname. The S3 on Outposts
+#' hostname takes the form
 #' ` AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com`.
-#' When you use this action with S3 on Outposts through the Amazon Web
-#' Services SDKs, you provide the Outposts access point ARN in place of the
-#' bucket name. For more information about S3 on Outposts ARNs, see [What
-#' is S3 on
+#' When you use this action with S3 on Outposts, the destination bucket
+#' must be the Outposts access point ARN or the access point alias. For
+#' more information about S3 on Outposts, see [What is S3 on
 #' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param Delimiter Character you use to group keys.
@@ -4728,7 +4706,7 @@ s3_list_object_versions <- function(Bucket, Delimiter = NULL, EncodingType = NUL
 #' requests are not supported. Directory bucket names must be unique in the
 #' chosen Zone (Availability Zone or Local Zone). Bucket names must follow
 #' the format ` bucket-base-name--zone-id--x-s3` (for example,
-#' ` DOC-EXAMPLE-BUCKET--usw2-az1--x-s3`). For information about bucket
+#' ` amzn-s3-demo-bucket--usw2-az1--x-s3`). For information about bucket
 #' naming restrictions, see [Directory bucket naming
 #' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
 #' in the *Amazon S3 User Guide*.
@@ -4748,14 +4726,13 @@ s3_list_object_versions <- function(Bucket, Delimiter = NULL, EncodingType = NUL
 #' Access points and Object Lambda access points are not supported by
 #' directory buckets.
 #' 
-#' **S3 on Outposts** - When you use this action with Amazon S3 on
-#' Outposts, you must direct requests to the S3 on Outposts hostname. The
-#' S3 on Outposts hostname takes the form
+#' **S3 on Outposts** - When you use this action with S3 on Outposts, you
+#' must direct requests to the S3 on Outposts hostname. The S3 on Outposts
+#' hostname takes the form
 #' ` AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com`.
-#' When you use this action with S3 on Outposts through the Amazon Web
-#' Services SDKs, you provide the Outposts access point ARN in place of the
-#' bucket name. For more information about S3 on Outposts ARNs, see [What
-#' is S3 on
+#' When you use this action with S3 on Outposts, the destination bucket
+#' must be the Outposts access point ARN or the access point alias. For
+#' more information about S3 on Outposts, see [What is S3 on
 #' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param Delimiter A delimiter is a character that you use to group keys.
@@ -4812,7 +4789,7 @@ s3_list_objects <- function(Bucket, Delimiter = NULL, EncodingType = NULL, Marke
 #' requests are not supported. Directory bucket names must be unique in the
 #' chosen Zone (Availability Zone or Local Zone). Bucket names must follow
 #' the format ` bucket-base-name--zone-id--x-s3` (for example,
-#' ` DOC-EXAMPLE-BUCKET--usw2-az1--x-s3`). For information about bucket
+#' ` amzn-s3-demo-bucket--usw2-az1--x-s3`). For information about bucket
 #' naming restrictions, see [Directory bucket naming
 #' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
 #' in the *Amazon S3 User Guide*.
@@ -4832,14 +4809,13 @@ s3_list_objects <- function(Bucket, Delimiter = NULL, EncodingType = NULL, Marke
 #' Access points and Object Lambda access points are not supported by
 #' directory buckets.
 #' 
-#' **S3 on Outposts** - When you use this action with Amazon S3 on
-#' Outposts, you must direct requests to the S3 on Outposts hostname. The
-#' S3 on Outposts hostname takes the form
+#' **S3 on Outposts** - When you use this action with S3 on Outposts, you
+#' must direct requests to the S3 on Outposts hostname. The S3 on Outposts
+#' hostname takes the form
 #' ` AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com`.
-#' When you use this action with S3 on Outposts through the Amazon Web
-#' Services SDKs, you provide the Outposts access point ARN in place of the
-#' bucket name. For more information about S3 on Outposts ARNs, see [What
-#' is S3 on
+#' When you use this action with S3 on Outposts, the destination bucket
+#' must be the Outposts access point ARN or the access point alias. For
+#' more information about S3 on Outposts, see [What is S3 on
 #' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param Delimiter A delimiter is a character that you use to group keys.
@@ -4943,7 +4919,7 @@ s3_list_objects_v2 <- function(Bucket, Delimiter = NULL, EncodingType = NULL, Ma
 #' requests are not supported. Directory bucket names must be unique in the
 #' chosen Zone (Availability Zone or Local Zone). Bucket names must follow
 #' the format ` bucket-base-name--zone-id--x-s3` (for example,
-#' ` DOC-EXAMPLE-BUCKET--usw2-az1--x-s3`). For information about bucket
+#' ` amzn-s3-demo-bucket--usw2-az1--x-s3`). For information about bucket
 #' naming restrictions, see [Directory bucket naming
 #' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
 #' in the *Amazon S3 User Guide*.
@@ -4963,14 +4939,13 @@ s3_list_objects_v2 <- function(Bucket, Delimiter = NULL, EncodingType = NULL, Ma
 #' Access points and Object Lambda access points are not supported by
 #' directory buckets.
 #' 
-#' **S3 on Outposts** - When you use this action with Amazon S3 on
-#' Outposts, you must direct requests to the S3 on Outposts hostname. The
-#' S3 on Outposts hostname takes the form
+#' **S3 on Outposts** - When you use this action with S3 on Outposts, you
+#' must direct requests to the S3 on Outposts hostname. The S3 on Outposts
+#' hostname takes the form
 #' ` AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com`.
-#' When you use this action with S3 on Outposts through the Amazon Web
-#' Services SDKs, you provide the Outposts access point ARN in place of the
-#' bucket name. For more information about S3 on Outposts ARNs, see [What
-#' is S3 on
+#' When you use this action with S3 on Outposts, the destination bucket
+#' must be the Outposts access point ARN or the access point alias. For
+#' more information about S3 on Outposts, see [What is S3 on
 #' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param Key &#91;required&#93; Object key for which the multipart upload was initiated.
@@ -5039,7 +5014,7 @@ s3_list_parts <- function(Bucket, Key, MaxParts = NULL, PartNumberMarker = NULL,
 #' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
 #' provide does not match the actual owner of the bucket, the request fails
 #' with the HTTP status code `403 Forbidden` (access denied).
-#' @param ChecksumAlgorithm Indicates the algorithm used to create the checksum for the object when
+#' @param ChecksumAlgorithm Indicates the algorithm used to create the checksum for the request when
 #' you use the SDK. This header will not provide any additional
 #' functionality if you don't use the SDK. When you send this header, there
 #' must be a corresponding `x-amz-checksum` or `x-amz-trailer` header sent.
@@ -5092,7 +5067,7 @@ s3_put_bucket_accelerate_configuration <- function(Bucket, AccelerateConfigurati
 #' For requests made using the Amazon Web Services Command Line Interface
 #' (CLI) or Amazon Web Services SDKs, this field is calculated
 #' automatically.
-#' @param ChecksumAlgorithm Indicates the algorithm used to create the checksum for the object when
+#' @param ChecksumAlgorithm Indicates the algorithm used to create the checksum for the request when
 #' you use the SDK. This header will not provide any additional
 #' functionality if you don't use the SDK. When you send this header, there
 #' must be a corresponding `x-amz-checksum` or `x-amz-trailer` header sent.
@@ -5194,7 +5169,7 @@ s3_put_bucket_analytics_configuration <- function(Bucket, Id, AnalyticsConfigura
 #' For requests made using the Amazon Web Services Command Line Interface
 #' (CLI) or Amazon Web Services SDKs, this field is calculated
 #' automatically.
-#' @param ChecksumAlgorithm Indicates the algorithm used to create the checksum for the object when
+#' @param ChecksumAlgorithm Indicates the algorithm used to create the checksum for the request when
 #' you use the SDK. This header will not provide any additional
 #' functionality if you don't use the SDK. When you send this header, there
 #' must be a corresponding `x-amz-checksum` or `x-amz-trailer` header sent.
@@ -5261,7 +5236,7 @@ s3_put_bucket_cors <- function(Bucket, CORSConfiguration, ContentMD5 = NULL, Che
 #' automatically.
 #' 
 #' This functionality is not supported for directory buckets.
-#' @param ChecksumAlgorithm Indicates the algorithm used to create the checksum for the object when
+#' @param ChecksumAlgorithm Indicates the algorithm used to create the checksum for the request when
 #' you use the SDK. This header will not provide any additional
 #' functionality if you don't use the SDK. When you send this header, there
 #' must be a corresponding `x-amz-checksum` or `x-amz-trailer` header sent.
@@ -5387,7 +5362,7 @@ s3_put_bucket_inventory_configuration <- function(Bucket, Id, InventoryConfigura
 #' @param ContentMD5 For requests made using the Amazon Web Services Command Line Interface
 #' (CLI) or Amazon Web Services SDKs, this field is calculated
 #' automatically.
-#' @param ChecksumAlgorithm Indicates the algorithm used to create the checksum for the object when
+#' @param ChecksumAlgorithm Indicates the algorithm used to create the checksum for the request when
 #' you use the SDK. This header will not provide any additional
 #' functionality if you don't use the SDK. When you send this header, there
 #' must be a corresponding `x-amz-checksum` or `x-amz-trailer` header sent.
@@ -5434,7 +5409,7 @@ s3_put_bucket_lifecycle <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm
 #' See [https://www.paws-r-sdk.com/docs/s3_put_bucket_lifecycle_configuration/](https://www.paws-r-sdk.com/docs/s3_put_bucket_lifecycle_configuration/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The name of the bucket for which to set the configuration.
-#' @param ChecksumAlgorithm Indicates the algorithm used to create the checksum for the object when
+#' @param ChecksumAlgorithm Indicates the algorithm used to create the checksum for the request when
 #' you use the SDK. This header will not provide any additional
 #' functionality if you don't use the SDK. When you send this header, there
 #' must be a corresponding `x-amz-checksum` or `x-amz-trailer` header sent.
@@ -5508,7 +5483,7 @@ s3_put_bucket_lifecycle_configuration <- function(Bucket, ChecksumAlgorithm = NU
 #' For requests made using the Amazon Web Services Command Line Interface
 #' (CLI) or Amazon Web Services SDKs, this field is calculated
 #' automatically.
-#' @param ChecksumAlgorithm Indicates the algorithm used to create the checksum for the object when
+#' @param ChecksumAlgorithm Indicates the algorithm used to create the checksum for the request when
 #' you use the SDK. This header will not provide any additional
 #' functionality if you don't use the SDK. When you send this header, there
 #' must be a corresponding `x-amz-checksum` or `x-amz-trailer` header sent.
@@ -5597,7 +5572,7 @@ s3_put_bucket_metrics_configuration <- function(Bucket, Id, MetricsConfiguration
 #' For requests made using the Amazon Web Services Command Line Interface
 #' (CLI) or Amazon Web Services SDKs, this field is calculated
 #' automatically.
-#' @param ChecksumAlgorithm Indicates the algorithm used to create the checksum for the object when
+#' @param ChecksumAlgorithm Indicates the algorithm used to create the checksum for the request when
 #' you use the SDK. This header will not provide any additional
 #' functionality if you don't use the SDK. When you send this header, there
 #' must be a corresponding `x-amz-checksum` or `x-amz-trailer` header sent.
@@ -5741,7 +5716,7 @@ s3_put_bucket_ownership_controls <- function(Bucket, ContentMD5 = NULL, Expected
 #' automatically.
 #' 
 #' This functionality is not supported for directory buckets.
-#' @param ChecksumAlgorithm Indicates the algorithm used to create the checksum for the object when
+#' @param ChecksumAlgorithm Indicates the algorithm used to create the checksum for the request when
 #' you use the SDK. This header will not provide any additional
 #' functionality if you don't use the SDK. When you send this header, there
 #' must be a corresponding `x-amz-checksum-algorithm ` or `x-amz-trailer`
@@ -5751,15 +5726,15 @@ s3_put_bucket_ownership_controls <- function(Bucket, ContentMD5 = NULL, Expected
 #' For the `x-amz-checksum-algorithm ` header, replace ` algorithm ` with
 #' the supported algorithm from the following list:
 #' 
-#' -   `CRC-32`
+#' -   `CRC32`
 #' 
-#' -   `CRC-32C`
+#' -   `CRC32C`
 #' 
-#' -   `CRC-64NVME`
+#' -   `CRC64NVME`
 #' 
-#' -   `SHA-1`
+#' -   `SHA1`
 #' 
-#' -   `SHA-256`
+#' -   `SHA256`
 #' 
 #' For more information, see [Checking object
 #' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
@@ -5826,7 +5801,7 @@ s3_put_bucket_policy <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm = 
 #' For requests made using the Amazon Web Services Command Line Interface
 #' (CLI) or Amazon Web Services SDKs, this field is calculated
 #' automatically.
-#' @param ChecksumAlgorithm Indicates the algorithm used to create the checksum for the object when
+#' @param ChecksumAlgorithm Indicates the algorithm used to create the checksum for the request when
 #' you use the SDK. This header will not provide any additional
 #' functionality if you don't use the SDK. When you send this header, there
 #' must be a corresponding `x-amz-checksum` or `x-amz-trailer` header sent.
@@ -5881,7 +5856,7 @@ s3_put_bucket_replication <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorit
 #' For requests made using the Amazon Web Services Command Line Interface
 #' (CLI) or Amazon Web Services SDKs, this field is calculated
 #' automatically.
-#' @param ChecksumAlgorithm Indicates the algorithm used to create the checksum for the object when
+#' @param ChecksumAlgorithm Indicates the algorithm used to create the checksum for the request when
 #' you use the SDK. This header will not provide any additional
 #' functionality if you don't use the SDK. When you send this header, there
 #' must be a corresponding `x-amz-checksum` or `x-amz-trailer` header sent.
@@ -5935,7 +5910,7 @@ s3_put_bucket_request_payment <- function(Bucket, ContentMD5 = NULL, ChecksumAlg
 #' For requests made using the Amazon Web Services Command Line Interface
 #' (CLI) or Amazon Web Services SDKs, this field is calculated
 #' automatically.
-#' @param ChecksumAlgorithm Indicates the algorithm used to create the checksum for the object when
+#' @param ChecksumAlgorithm Indicates the algorithm used to create the checksum for the request when
 #' you use the SDK. This header will not provide any additional
 #' functionality if you don't use the SDK. When you send this header, there
 #' must be a corresponding `x-amz-checksum` or `x-amz-trailer` header sent.
@@ -5989,7 +5964,7 @@ s3_put_bucket_tagging <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #' For requests made using the Amazon Web Services Command Line Interface
 #' (CLI) or Amazon Web Services SDKs, this field is calculated
 #' automatically.
-#' @param ChecksumAlgorithm Indicates the algorithm used to create the checksum for the object when
+#' @param ChecksumAlgorithm Indicates the algorithm used to create the checksum for the request when
 #' you use the SDK. This header will not provide any additional
 #' functionality if you don't use the SDK. When you send this header, there
 #' must be a corresponding `x-amz-checksum` or `x-amz-trailer` header sent.
@@ -6045,7 +6020,7 @@ s3_put_bucket_versioning <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorith
 #' For requests made using the Amazon Web Services Command Line Interface
 #' (CLI) or Amazon Web Services SDKs, this field is calculated
 #' automatically.
-#' @param ChecksumAlgorithm Indicates the algorithm used to create the checksum for the object when
+#' @param ChecksumAlgorithm Indicates the algorithm used to create the checksum for the request when
 #' you use the SDK. This header will not provide any additional
 #' functionality if you don't use the SDK. When you send this header, there
 #' must be a corresponding `x-amz-checksum` or `x-amz-trailer` header sent.
@@ -6130,7 +6105,7 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #' requests are not supported. Directory bucket names must be unique in the
 #' chosen Zone (Availability Zone or Local Zone). Bucket names must follow
 #' the format ` bucket-base-name--zone-id--x-s3` (for example,
-#' ` DOC-EXAMPLE-BUCKET--usw2-az1--x-s3`). For information about bucket
+#' ` amzn-s3-demo-bucket--usw2-az1--x-s3`). For information about bucket
 #' naming restrictions, see [Directory bucket naming
 #' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
 #' in the *Amazon S3 User Guide*.
@@ -6150,14 +6125,13 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #' Access points and Object Lambda access points are not supported by
 #' directory buckets.
 #' 
-#' **S3 on Outposts** - When you use this action with Amazon S3 on
-#' Outposts, you must direct requests to the S3 on Outposts hostname. The
-#' S3 on Outposts hostname takes the form
+#' **S3 on Outposts** - When you use this action with S3 on Outposts, you
+#' must direct requests to the S3 on Outposts hostname. The S3 on Outposts
+#' hostname takes the form
 #' ` AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com`.
-#' When you use this action with S3 on Outposts through the Amazon Web
-#' Services SDKs, you provide the Outposts access point ARN in place of the
-#' bucket name. For more information about S3 on Outposts ARNs, see [What
-#' is S3 on
+#' When you use this action with S3 on Outposts, the destination bucket
+#' must be the Outposts access point ARN or the access point alias. For
+#' more information about S3 on Outposts, see [What is S3 on
 #' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param CacheControl Can be used to specify caching behavior along the request/reply chain.
@@ -6202,15 +6176,15 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #' For the `x-amz-checksum-algorithm ` header, replace ` algorithm ` with
 #' the supported algorithm from the following list:
 #' 
-#' -   `CRC-32`
+#' -   `CRC32`
 #' 
-#' -   `CRC-32C`
+#' -   `CRC32C`
 #' 
-#' -   `CRC-64NVME`
+#' -   `CRC64NVME`
 #' 
-#' -   `SHA-1`
+#' -   `SHA1`
 #' 
-#' -   `SHA-256`
+#' -   `SHA256`
 #' 
 #' For more information, see [Checking object
 #' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
@@ -6232,32 +6206,32 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #' the default checksum algorithm that's used for performance.
 #' @param ChecksumCRC32 This header can be used as a data integrity check to verify that the
 #' data received is the same data that was originally sent. This header
-#' specifies the Base64 encoded, 32-bit `CRC-32` checksum of the object.
-#' For more information, see [Checking object
+#' specifies the Base64 encoded, 32-bit `CRC32` checksum of the object. For
+#' more information, see [Checking object
 #' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
 #' in the *Amazon S3 User Guide*.
 #' @param ChecksumCRC32C This header can be used as a data integrity check to verify that the
 #' data received is the same data that was originally sent. This header
-#' specifies the Base64 encoded, 32-bit `CRC-32C` checksum of the object.
+#' specifies the Base64 encoded, 32-bit `CRC32C` checksum of the object.
 #' For more information, see [Checking object
 #' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
 #' in the *Amazon S3 User Guide*.
 #' @param ChecksumCRC64NVME This header can be used as a data integrity check to verify that the
 #' data received is the same data that was originally sent. This header
-#' specifies the Base64 encoded, 64-bit `CRC-64NVME` checksum of the
-#' object. The `CRC-64NVME` checksum is always a full object checksum. For
-#' more information, see [Checking object integrity in the Amazon S3 User
+#' specifies the Base64 encoded, 64-bit `CRC64NVME` checksum of the object.
+#' The `CRC64NVME` checksum is always a full object checksum. For more
+#' information, see [Checking object integrity in the Amazon S3 User
 #' Guide](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html).
 #' @param ChecksumSHA1 This header can be used as a data integrity check to verify that the
 #' data received is the same data that was originally sent. This header
-#' specifies the Base64 encoded, 160-bit `SHA-1` digest of the object. For
+#' specifies the Base64 encoded, 160-bit `SHA1` digest of the object. For
 #' more information, see [Checking object
 #' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
 #' in the *Amazon S3 User Guide*.
 #' @param ChecksumSHA256 This header can be used as a data integrity check to verify that the
 #' data received is the same data that was originally sent. This header
-#' specifies the Base64 encoded, 256-bit `SHA-256` digest of the object.
-#' For more information, see [Checking object
+#' specifies the Base64 encoded, 256-bit `SHA256` digest of the object. For
+#' more information, see [Checking object
 #' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
 #' in the *Amazon S3 User Guide*.
 #' @param Expires The date and time at which the object is no longer cacheable. For more
@@ -6446,23 +6420,19 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #' `x-amz-server-side-encryption-aws-kms-key-id`, Amazon S3 uses the Amazon
 #' Web Services managed key (`aws/s3`) to protect the data.
 #' 
-#' **Directory buckets** - If you specify `x-amz-server-side-encryption`
-#' with `aws:kms`, the ` x-amz-server-side-encryption-aws-kms-key-id`
-#' header is implicitly assigned the ID of the KMS symmetric encryption
-#' customer managed key that's configured for your directory bucket's
-#' default encryption setting. If you want to specify the
-#' ` x-amz-server-side-encryption-aws-kms-key-id` header explicitly, you
-#' can only specify it with the ID (Key ID or Key ARN) of the KMS customer
-#' managed key that's configured for your directory bucket's default
-#' encryption setting. Otherwise, you get an HTTP `400 Bad Request` error.
-#' Only use the key ID or key ARN. The key alias format of the KMS key
-#' isn't supported. Your SSE-KMS configuration can only support 1 [customer
-#' managed
+#' **Directory buckets** - To encrypt data using SSE-KMS, it's recommended
+#' to specify the `x-amz-server-side-encryption` header to `aws:kms`. Then,
+#' the `x-amz-server-side-encryption-aws-kms-key-id` header implicitly uses
+#' the bucket's default KMS customer managed key ID. If you want to
+#' explicitly set the ` x-amz-server-side-encryption-aws-kms-key-id`
+#' header, it must match the bucket's default customer managed key (using
+#' key ID or ARN, not alias). Your SSE-KMS configuration can only support 1
+#' [customer managed
 #' key](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-cmk)
-#' per directory bucket for the lifetime of the bucket. The [Amazon Web
-#' Services managed
+#' per directory bucket's lifetime. The [Amazon Web Services managed
 #' key](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-cmk)
-#' (`aws/s3`) isn't supported.
+#' (`aws/s3`) isn't supported. Incorrect key specification results in an
+#' HTTP `400 Bad Request` error.
 #' @param SSEKMSEncryptionContext Specifies the Amazon Web Services KMS Encryption Context as an
 #' additional encryption context to use for object encryption. The value of
 #' this header is a Base64 encoded string of a UTF-8 encoded JSON, which
@@ -6573,14 +6543,13 @@ s3_put_object <- function(ACL = NULL, Body = NULL, Bucket, CacheControl = NULL, 
 #' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
 #' in the *Amazon S3 User Guide*.
 #' 
-#' **S3 on Outposts** - When you use this action with Amazon S3 on
-#' Outposts, you must direct requests to the S3 on Outposts hostname. The
-#' S3 on Outposts hostname takes the form
+#' **S3 on Outposts** - When you use this action with S3 on Outposts, you
+#' must direct requests to the S3 on Outposts hostname. The S3 on Outposts
+#' hostname takes the form
 #' ` AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com`.
-#' When you use this action with S3 on Outposts through the Amazon Web
-#' Services SDKs, you provide the Outposts access point ARN in place of the
-#' bucket name. For more information about S3 on Outposts ARNs, see [What
-#' is S3 on
+#' When you use this action with S3 on Outposts, the destination bucket
+#' must be the Outposts access point ARN or the access point alias. For
+#' more information about S3 on Outposts, see [What is S3 on
 #' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param ContentMD5 The Base64 encoded 128-bit `MD5` digest of the data. This header must be
@@ -6865,14 +6834,13 @@ s3_put_object_retention <- function(Bucket, Key, Retention = NULL, RequestPayer 
 #' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
 #' in the *Amazon S3 User Guide*.
 #' 
-#' **S3 on Outposts** - When you use this action with Amazon S3 on
-#' Outposts, you must direct requests to the S3 on Outposts hostname. The
-#' S3 on Outposts hostname takes the form
+#' **S3 on Outposts** - When you use this action with S3 on Outposts, you
+#' must direct requests to the S3 on Outposts hostname. The S3 on Outposts
+#' hostname takes the form
 #' ` AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com`.
-#' When you use this action with S3 on Outposts through the Amazon Web
-#' Services SDKs, you provide the Outposts access point ARN in place of the
-#' bucket name. For more information about S3 on Outposts ARNs, see [What
-#' is S3 on
+#' When you use this action with S3 on Outposts, the destination bucket
+#' must be the Outposts access point ARN or the access point alias. For
+#' more information about S3 on Outposts, see [What is S3 on
 #' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param Key &#91;required&#93; Name of the object key.
@@ -7000,14 +6968,13 @@ s3_put_public_access_block <- function(Bucket, ContentMD5 = NULL, ChecksumAlgori
 #' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
 #' in the *Amazon S3 User Guide*.
 #' 
-#' **S3 on Outposts** - When you use this action with Amazon S3 on
-#' Outposts, you must direct requests to the S3 on Outposts hostname. The
-#' S3 on Outposts hostname takes the form
+#' **S3 on Outposts** - When you use this action with S3 on Outposts, you
+#' must direct requests to the S3 on Outposts hostname. The S3 on Outposts
+#' hostname takes the form
 #' ` AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com`.
-#' When you use this action with S3 on Outposts through the Amazon Web
-#' Services SDKs, you provide the Outposts access point ARN in place of the
-#' bucket name. For more information about S3 on Outposts ARNs, see [What
-#' is S3 on
+#' When you use this action with S3 on Outposts, the destination bucket
+#' must be the Outposts access point ARN or the access point alias. For
+#' more information about S3 on Outposts, see [What is S3 on
 #' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param Key &#91;required&#93; Object key for which the action was initiated.
@@ -7141,7 +7108,7 @@ s3_select_object_content <- function(Bucket, Key, SSECustomerAlgorithm = NULL, S
 #' requests are not supported. Directory bucket names must be unique in the
 #' chosen Zone (Availability Zone or Local Zone). Bucket names must follow
 #' the format ` bucket-base-name--zone-id--x-s3` (for example,
-#' ` DOC-EXAMPLE-BUCKET--usw2-az1--x-s3`). For information about bucket
+#' ` amzn-s3-demo-bucket--usw2-az1--x-s3`). For information about bucket
 #' naming restrictions, see [Directory bucket naming
 #' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
 #' in the *Amazon S3 User Guide*.
@@ -7161,14 +7128,13 @@ s3_select_object_content <- function(Bucket, Key, SSECustomerAlgorithm = NULL, S
 #' Access points and Object Lambda access points are not supported by
 #' directory buckets.
 #' 
-#' **S3 on Outposts** - When you use this action with Amazon S3 on
-#' Outposts, you must direct requests to the S3 on Outposts hostname. The
-#' S3 on Outposts hostname takes the form
+#' **S3 on Outposts** - When you use this action with S3 on Outposts, you
+#' must direct requests to the S3 on Outposts hostname. The S3 on Outposts
+#' hostname takes the form
 #' ` AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com`.
-#' When you use this action with S3 on Outposts through the Amazon Web
-#' Services SDKs, you provide the Outposts access point ARN in place of the
-#' bucket name. For more information about S3 on Outposts ARNs, see [What
-#' is S3 on
+#' When you use this action with S3 on Outposts, the destination bucket
+#' must be the Outposts access point ARN or the access point alias. For
+#' more information about S3 on Outposts, see [What is S3 on
 #' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param ContentLength Size of the body in bytes. This parameter is useful when the size of the
@@ -7195,32 +7161,32 @@ s3_select_object_content <- function(Bucket, Key, SSECustomerAlgorithm = NULL, S
 #' [`create_multipart_upload`][s3_create_multipart_upload] request.
 #' @param ChecksumCRC32 This header can be used as a data integrity check to verify that the
 #' data received is the same data that was originally sent. This header
-#' specifies the Base64 encoded, 32-bit `CRC-32` checksum of the object.
-#' For more information, see [Checking object
+#' specifies the Base64 encoded, 32-bit `CRC32` checksum of the object. For
+#' more information, see [Checking object
 #' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
 #' in the *Amazon S3 User Guide*.
 #' @param ChecksumCRC32C This header can be used as a data integrity check to verify that the
 #' data received is the same data that was originally sent. This header
-#' specifies the Base64 encoded, 32-bit `CRC-32C` checksum of the object.
+#' specifies the Base64 encoded, 32-bit `CRC32C` checksum of the object.
 #' For more information, see [Checking object
 #' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
 #' in the *Amazon S3 User Guide*.
 #' @param ChecksumCRC64NVME This header can be used as a data integrity check to verify that the
 #' data received is the same data that was originally sent. This header
-#' specifies the Base64 encoded, 64-bit `CRC-64NVME` checksum of the part.
+#' specifies the Base64 encoded, 64-bit `CRC64NVME` checksum of the part.
 #' For more information, see [Checking object
 #' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
 #' in the *Amazon S3 User Guide*.
 #' @param ChecksumSHA1 This header can be used as a data integrity check to verify that the
 #' data received is the same data that was originally sent. This header
-#' specifies the Base64 encoded, 160-bit `SHA-1` digest of the object. For
+#' specifies the Base64 encoded, 160-bit `SHA1` digest of the object. For
 #' more information, see [Checking object
 #' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
 #' in the *Amazon S3 User Guide*.
 #' @param ChecksumSHA256 This header can be used as a data integrity check to verify that the
 #' data received is the same data that was originally sent. This header
-#' specifies the Base64 encoded, 256-bit `SHA-256` digest of the object.
-#' For more information, see [Checking object
+#' specifies the Base64 encoded, 256-bit `SHA256` digest of the object. For
+#' more information, see [Checking object
 #' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
 #' in the *Amazon S3 User Guide*.
 #' @param Key &#91;required&#93; Object key for which the multipart upload was initiated.
@@ -7287,7 +7253,7 @@ s3_upload_part <- function(Body = NULL, Bucket, ContentLength = NULL, ContentMD5
 #' requests are not supported. Directory bucket names must be unique in the
 #' chosen Zone (Availability Zone or Local Zone). Bucket names must follow
 #' the format ` bucket-base-name--zone-id--x-s3` (for example,
-#' ` DOC-EXAMPLE-BUCKET--usw2-az1--x-s3`). For information about bucket
+#' ` amzn-s3-demo-bucket--usw2-az1--x-s3`). For information about bucket
 #' naming restrictions, see [Directory bucket naming
 #' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html)
 #' in the *Amazon S3 User Guide*.
@@ -7313,14 +7279,13 @@ s3_upload_part <- function(Body = NULL, Bucket, ContentLength = NULL, ContentMD5
 #' Access points and Object Lambda access points are not supported by
 #' directory buckets.
 #' 
-#' **S3 on Outposts** - When you use this action with Amazon S3 on
-#' Outposts, you must direct requests to the S3 on Outposts hostname. The
-#' S3 on Outposts hostname takes the form
+#' **S3 on Outposts** - When you use this action with S3 on Outposts, you
+#' must direct requests to the S3 on Outposts hostname. The S3 on Outposts
+#' hostname takes the form
 #' ` AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com`.
-#' When you use this action with S3 on Outposts through the Amazon Web
-#' Services SDKs, you provide the Outposts access point ARN in place of the
-#' bucket name. For more information about S3 on Outposts ARNs, see [What
-#' is S3 on
+#' When you use this action with S3 on Outposts, the destination bucket
+#' must be the Outposts access point ARN or the access point alias. For
+#' more information about S3 on Outposts, see [What is S3 on
 #' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param CopySource &#91;required&#93; Specifies the source object for the copy operation. You specify the
@@ -7566,7 +7531,7 @@ s3_upload_part_copy <- function(Bucket, CopySource, CopySourceIfMatch = NULL, Co
 #' @param ContentType A standard MIME type describing the format of the object data.
 #' @param ChecksumCRC32 This header can be used as a data integrity check to verify that the
 #' data received is the same data that was originally sent. This specifies
-#' the Base64 encoded, 32-bit `CRC-32` checksum of the object returned by
+#' the Base64 encoded, 32-bit `CRC32` checksum of the object returned by
 #' the Object Lambda function. This may not match the checksum for the
 #' object stored in Amazon S3. Amazon S3 will perform validation of the
 #' checksum values only when the original [`get_object`][s3_get_object]
@@ -7579,7 +7544,7 @@ s3_upload_part_copy <- function(Bucket, CopySource, CopySourceIfMatch = NULL, Co
 #' multiple checksum headers, this request will fail.
 #' @param ChecksumCRC32C This header can be used as a data integrity check to verify that the
 #' data received is the same data that was originally sent. This specifies
-#' the Base64 encoded, 32-bit `CRC-32C` checksum of the object returned by
+#' the Base64 encoded, 32-bit `CRC32C` checksum of the object returned by
 #' the Object Lambda function. This may not match the checksum for the
 #' object stored in Amazon S3. Amazon S3 will perform validation of the
 #' checksum values only when the original [`get_object`][s3_get_object]
@@ -7592,13 +7557,13 @@ s3_upload_part_copy <- function(Bucket, CopySource, CopySourceIfMatch = NULL, Co
 #' multiple checksum headers, this request will fail.
 #' @param ChecksumCRC64NVME This header can be used as a data integrity check to verify that the
 #' data received is the same data that was originally sent. This header
-#' specifies the Base64 encoded, 64-bit `CRC-64NVME` checksum of the part.
+#' specifies the Base64 encoded, 64-bit `CRC64NVME` checksum of the part.
 #' For more information, see [Checking object
 #' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
 #' in the *Amazon S3 User Guide*.
 #' @param ChecksumSHA1 This header can be used as a data integrity check to verify that the
 #' data received is the same data that was originally sent. This specifies
-#' the Base64 encoded, 160-bit `SHA-1` digest of the object returned by the
+#' the Base64 encoded, 160-bit `SHA1` digest of the object returned by the
 #' Object Lambda function. This may not match the checksum for the object
 #' stored in Amazon S3. Amazon S3 will perform validation of the checksum
 #' values only when the original [`get_object`][s3_get_object] request
@@ -7611,7 +7576,7 @@ s3_upload_part_copy <- function(Bucket, CopySource, CopySourceIfMatch = NULL, Co
 #' multiple checksum headers, this request will fail.
 #' @param ChecksumSHA256 This header can be used as a data integrity check to verify that the
 #' data received is the same data that was originally sent. This specifies
-#' the Base64 encoded, 256-bit `SHA-256` digest of the object returned by
+#' the Base64 encoded, 256-bit `SHA256` digest of the object returned by
 #' the Object Lambda function. This may not match the checksum for the
 #' object stored in Amazon S3. Amazon S3 will perform validation of the
 #' checksum values only when the original [`get_object`][s3_get_object]
@@ -7623,7 +7588,9 @@ s3_upload_part_copy <- function(Bucket, CopySource, CopySourceIfMatch = NULL, Co
 #' Only one checksum header can be specified at a time. If you supply
 #' multiple checksum headers, this request will fail.
 #' @param DeleteMarker Specifies whether an object stored in Amazon S3 is (`true`) or is not
-#' (`false`) a delete marker.
+#' (`false`) a delete marker. To learn more about delete markers, see
+#' [Working with delete
+#' markers](https://docs.aws.amazon.com/AmazonS3/latest/userguide/DeleteMarker.html).
 #' @param ETag An opaque identifier assigned by a web server to a specific version of a
 #' resource found at a URL.
 #' @param Expires The date and time at which the object is no longer cacheable.

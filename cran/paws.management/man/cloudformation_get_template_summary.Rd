@@ -20,9 +20,9 @@ and a maximum length of 51,200 bytes.
 Conditional: You must specify only one of the following parameters:
 \code{StackName}, \code{StackSetName}, \code{TemplateBody}, or \code{TemplateURL}.}
 
-\item{TemplateURL}{Location of file containing the template body. The URL must point to a
-template (max size: 460,800 bytes) that's located in an Amazon S3 bucket
-or a Systems Manager document. The location for an Amazon S3 bucket must
+\item{TemplateURL}{The URL of a file containing the template body. The URL must point to a
+template (max size: 1 MB) that's located in an Amazon S3 bucket or a
+Systems Manager document. The location for an Amazon S3 bucket must
 start with \verb{https://}.
 
 Conditional: You must specify only one of the following parameters:

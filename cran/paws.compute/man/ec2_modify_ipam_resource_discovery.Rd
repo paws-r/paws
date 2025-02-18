@@ -36,14 +36,26 @@ integrated with Amazon Web Services Organizations and you add an
 organizational unit (OU) exclusion, IPAM will not manage the IP
 addresses in accounts in that OU exclusion. There is a limit on the
 number of exclusions you can create. For more information, see \href{https://docs.aws.amazon.com/vpc/latest/ipam/quotas-ipam.html}{Quotas for your IPAM} in
-the \emph{Amazon VPC IPAM User Guide}.}
+the \emph{Amazon VPC IPAM User Guide}.
+
+The resulting set of exclusions must not result in "overlap", meaning
+two or more OU exclusions must not exclude the same OU. For more
+information and examples, see the Amazon Web Services CLI request
+process in \href{https://docs.aws.amazon.com/vpc/latest/ipam/exclude-ous.html#exclude-ous-create-delete}{Add or remove OU exclusions}
+in the \emph{Amazon VPC User Guide}.}
 
 \item{RemoveOrganizationalUnitExclusions}{Remove an Organizational Unit (OU) exclusion to your IPAM. If your IPAM
 is integrated with Amazon Web Services Organizations and you add an
 organizational unit (OU) exclusion, IPAM will not manage the IP
 addresses in accounts in that OU exclusion. There is a limit on the
 number of exclusions you can create. For more information, see \href{https://docs.aws.amazon.com/vpc/latest/ipam/quotas-ipam.html}{Quotas for your IPAM} in
-the \emph{Amazon VPC IPAM User Guide}.}
+the \emph{Amazon VPC IPAM User Guide}.
+
+The resulting set of exclusions must not result in "overlap", meaning
+two or more OU exclusions must not exclude the same OU. For more
+information and examples, see the Amazon Web Services CLI request
+process in \href{https://docs.aws.amazon.com/vpc/latest/ipam/exclude-ous.html#exclude-ous-create-delete}{Add or remove OU exclusions}
+in the \emph{Amazon VPC User Guide}.}
 }
 \description{
 Modifies a resource discovery. A resource discovery is an IPAM component that enables IPAM to manage and monitor resources that belong to the owning account.

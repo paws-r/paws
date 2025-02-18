@@ -5,27 +5,27 @@
 \title{Creates a new OpenSearch Serverless collection}
 \usage{
 opensearchserviceserverless_create_collection(
-  clientToken = NULL,
-  description = NULL,
   name,
-  standbyReplicas = NULL,
+  type = NULL,
+  description = NULL,
   tags = NULL,
-  type = NULL
+  standbyReplicas = NULL,
+  clientToken = NULL
 )
 }
 \arguments{
-\item{clientToken}{Unique, case-sensitive identifier to ensure idempotency of the request.}
-
-\item{description}{Description of the collection.}
-
 \item{name}{[required] Name of the collection.}
 
-\item{standbyReplicas}{Indicates whether standby replicas should be used for a collection.}
+\item{type}{The type of collection.}
+
+\item{description}{Description of the collection.}
 
 \item{tags}{An arbitrary set of tags (key–value pairs) to associate with the
 OpenSearch Serverless collection.}
 
-\item{type}{The type of collection.}
+\item{standbyReplicas}{Indicates whether standby replicas should be used for a collection.}
+
+\item{clientToken}{Unique, case-sensitive identifier to ensure idempotency of the request.}
 }
 \description{
 Creates a new OpenSearch Serverless collection. For more information, see \href{https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-manage.html}{Creating and managing Amazon OpenSearch Serverless collections}.

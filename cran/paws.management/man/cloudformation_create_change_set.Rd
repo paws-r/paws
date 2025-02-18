@@ -40,12 +40,11 @@ the template of the stack that you specified.
 
 Conditional: You must specify only \code{TemplateBody} or \code{TemplateURL}.}
 
-\item{TemplateURL}{The location of the file that contains the revised template. The URL
-must point to a template (max size: 460,800 bytes) that's located in an
-Amazon S3 bucket or a Systems Manager document. CloudFormation generates
-the change set by comparing this template with the stack that you
-specified. The location for an Amazon S3 bucket must start with
-\verb{https://}.
+\item{TemplateURL}{The URL of the file that contains the revised template. The URL must
+point to a template (max size: 1 MB) that's located in an Amazon S3
+bucket or a Systems Manager document. CloudFormation generates the
+change set by comparing this template with the stack that you specified.
+The location for an Amazon S3 bucket must start with \verb{https://}.
 
 Conditional: You must specify only \code{TemplateBody} or \code{TemplateURL}.}
 
@@ -83,6 +82,7 @@ permissions if necessary.
 \item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-accesskey.html}{AWS::IAM::AccessKey}
 \item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-group.html}{AWS::IAM::Group}
 \item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html}{AWS::IAM::InstanceProfile}
+\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-managedpolicy.html}{AWS::IAM::ManagedPolicy}
 \item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-policy.html}{AWS::IAM::Policy}
 \item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html}{AWS::IAM::Role}
 \item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-user.html}{AWS::IAM::User}

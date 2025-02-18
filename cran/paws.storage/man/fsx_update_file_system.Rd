@@ -13,7 +13,8 @@ fsx_update_file_system(
   LustreConfiguration = NULL,
   OntapConfiguration = NULL,
   OpenZFSConfiguration = NULL,
-  StorageType = NULL
+  StorageType = NULL,
+  FileSystemTypeVersion = NULL
 )
 }
 \arguments{
@@ -75,6 +76,10 @@ system.}
 \item{OpenZFSConfiguration}{The configuration updates for an FSx for OpenZFS file system.}
 
 \item{StorageType}{}
+
+\item{FileSystemTypeVersion}{The Lustre version you are updating an FSx for Lustre file system to.
+Valid values are \code{2.12} and \code{2.15}. The value you choose must be newer
+than the file system's current Lustre version.}
 }
 \description{
 Use this operation to update the configuration of an existing Amazon FSx file system. You can update multiple properties in a single request.

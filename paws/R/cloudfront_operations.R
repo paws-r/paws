@@ -4895,7 +4895,9 @@ cloudfront_delete_streaming_distribution <- function(Id, IfMatch = NULL) {
 #' cloudfront_delete_vpc_origin(Id, IfMatch)
 #'
 #' @param Id &#91;required&#93; The VPC origin ID.
-#' @param IfMatch &#91;required&#93; The VPC origin to delete, if a match occurs.
+#' @param IfMatch &#91;required&#93; The version identifier of the VPC origin to delete. This is the `ETag`
+#' value returned in the response to
+#' [`get_vpc_origin`][cloudfront_get_vpc_origin].
 #'
 #' @return
 #' A list with the following syntax:

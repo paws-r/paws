@@ -126,11 +126,12 @@ eks_associate_identity_provider_config <- function(clusterName, oidc, tags = NUL
 #' creation.
 #' 
 #' The valid principals differ depending on the type of the access entry in
-#' the `type` field. The only valid ARN is IAM roles for the types of
-#' access entries for nodes: `` ``. You can use every IAM principal type
-#' for `STANDARD` access entries. You can't use the STS session principal
-#' type with access entries because this is a temporary principal for each
-#' session and not a permanent identity that can be assigned permissions.
+#' the `type` field. For `STANDARD` access entries, you can use every IAM
+#' principal type. For nodes (`EC2` (for EKS Auto Mode), `EC2_LINUX`,
+#' `EC2_WINDOWS`, `FARGATE_LINUX`, and `HYBRID_LINUX`), the only valid ARN
+#' is IAM roles. You can't use the STS session principal type with access
+#' entries because this is a temporary principal for each session and not a
+#' permanent identity that can be assigned permissions.
 #' 
 #' [IAM best
 #' practices](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html#bp-users-federation-idp)
@@ -168,14 +169,16 @@ eks_associate_identity_provider_config <- function(clusterName, oidc, tags = NUL
 #' constraints before specifying your own username, see [Creating access
 #' entries](https://docs.aws.amazon.com/eks/latest/userguide/access-entries.html#creating-access-entries)
 #' in the *Amazon EKS User Guide*.
-#' @param type The type of the new access entry. Valid values are `Standard`,
-#' `FARGATE_LINUX`, `EC2_LINUX`, and `EC2_WINDOWS`.
+#' @param type The type of the new access entry. Valid values are `STANDARD`,
+#' `FARGATE_LINUX`, `EC2_LINUX`, `EC2_WINDOWS`, `EC2` (for EKS Auto Mode),
+#' `HYBRID_LINUX`, and `HYPERPOD_LINUX`.
 #' 
 #' If the `principalArn` is for an IAM role that's used for self-managed
 #' Amazon EC2 nodes, specify `EC2_LINUX` or `EC2_WINDOWS`. Amazon EKS
 #' grants the necessary permissions to the node for you. If the
 #' `principalArn` is for any other purpose, specify `STANDARD`. If you
-#' don't specify a value, Amazon EKS sets the value to `STANDARD`. It's
+#' don't specify a value, Amazon EKS sets the value to `STANDARD`. If you
+#' have the access mode of the cluster set to `API_AND_CONFIG_MAP`, it's
 #' unnecessary to create access entries for IAM roles used with Fargate
 #' profiles or managed Amazon EC2 nodes, because Amazon EKS creates entries
 #' in the `aws-auth` `ConfigMap` for the roles. You can't change this value
@@ -251,7 +254,9 @@ eks_create_access_entry <- function(clusterName, principalArn, kubernetesGroups 
 #'     Amazon EKS doesn't change the add-on resource properties. Creation
 #'     of the add-on might fail if conflicts are detected. This option
 #'     works differently during the update operation. For more information,
-#'     see [`update_addon`][eks_update_addon].
+#'     see
+#'     [`update_addon`](https://docs.aws.amazon.com/eks/latest/APIReference/API_UpdateAddon.html)
+#'     .
 #' 
 #' If you don't currently have the self-managed version of the add-on
 #' installed on your cluster, the Amazon EKS add-on is installed. Amazon
@@ -271,7 +276,7 @@ eks_create_access_entry <- function(clusterName, principalArn, kubernetesGroups 
 #' For more information, see [Attach an IAM Role to an Amazon EKS add-on
 #' using Pod
 #' Identity](https://docs.aws.amazon.com/eks/latest/userguide/add-ons-iam.html)
-#' in the EKS User Guide.
+#' in the *Amazon EKS User Guide*.
 #'
 #' @keywords internal
 #'
@@ -329,8 +334,8 @@ eks_create_addon <- function(clusterName, addonName, addonVersion = NULL, servic
 #' you use a dedicated security group for your cluster control plane.
 #' @param kubernetesNetworkConfig The Kubernetes network configuration for the cluster.
 #' @param logging Enable or disable exporting the Kubernetes control plane logs for your
-#' cluster to CloudWatch Logs. By default, cluster control plane logs
-#' aren't exported to CloudWatch Logs. For more information, see [Amazon
+#' cluster to CloudWatch Logs . By default, cluster control plane logs
+#' aren't exported to CloudWatch Logs . For more information, see [Amazon
 #' EKS Cluster control plane
 #' logs](https://docs.aws.amazon.com/eks/latest/userguide/control-plane-logs.html)
 #' in the *Amazon EKS User Guide* .
@@ -371,13 +376,13 @@ eks_create_addon <- function(clusterName, addonName, addonVersion = NULL, servic
 #' zonal shift expires or you cancel it. You can extend the zonal shift if
 #' necessary.
 #' 
-#' You can start a zonal shift for an EKS cluster, or you can allow Amazon
-#' Web Services to do it for you by enabling *zonal autoshift*. This shift
-#' updates the flow of east-to-west network traffic in your cluster to only
-#' consider network endpoints for Pods running on worker nodes in healthy
-#' AZs. Additionally, any ALB or NLB handling ingress traffic for
-#' applications in your EKS cluster will automatically route traffic to
-#' targets in the healthy AZs. For more information about zonal shift in
+#' You can start a zonal shift for an Amazon EKS cluster, or you can allow
+#' Amazon Web Services to do it for you by enabling *zonal autoshift*. This
+#' shift updates the flow of east-to-west network traffic in your cluster
+#' to only consider network endpoints for Pods running on worker nodes in
+#' healthy AZs. Additionally, any ALB or NLB handling ingress traffic for
+#' applications in your Amazon EKS cluster will automatically route traffic
+#' to targets in the healthy AZs. For more information about zonal shift in
 #' EKS, see [Learn about Amazon Application Recovery Controller (ARC) Zonal
 #' Shift in Amazon
 #' EKS](https://docs.aws.amazon.com/eks/latest/userguide/zone-shift.html)
@@ -1191,12 +1196,16 @@ eks_describe_cluster <- function(name) {
 #' @param defaultOnly Filter to show only default versions.
 #' @param includeAll Include all available versions in the response.
 #' @param clusterVersions List of specific cluster versions to describe.
-#' @param status Filter versions by their current status.
+#' @param status This field is deprecated. Use `versionStatus` instead, as that field
+#' matches for input and output of this action.
+#' 
+#' Filter versions by their current status.
+#' @param versionStatus Filter versions by their current status.
 #'
 #' @keywords internal
 #'
 #' @rdname eks_describe_cluster_versions
-eks_describe_cluster_versions <- function(clusterType = NULL, maxResults = NULL, nextToken = NULL, defaultOnly = NULL, includeAll = NULL, clusterVersions = NULL, status = NULL) {
+eks_describe_cluster_versions <- function(clusterType = NULL, maxResults = NULL, nextToken = NULL, defaultOnly = NULL, includeAll = NULL, clusterVersions = NULL, status = NULL, versionStatus = NULL) {
   op <- new_operation(
     name = "DescribeClusterVersions",
     http_method = "GET",
@@ -1205,7 +1214,7 @@ eks_describe_cluster_versions <- function(clusterType = NULL, maxResults = NULL,
     paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "clusterVersions"),
     stream_api = FALSE
   )
-  input <- .eks$describe_cluster_versions_input(clusterType = clusterType, maxResults = maxResults, nextToken = nextToken, defaultOnly = defaultOnly, includeAll = includeAll, clusterVersions = clusterVersions, status = status)
+  input <- .eks$describe_cluster_versions_input(clusterType = clusterType, maxResults = maxResults, nextToken = nextToken, defaultOnly = defaultOnly, includeAll = includeAll, clusterVersions = clusterVersions, status = status, versionStatus = versionStatus)
   output <- .eks$describe_cluster_versions_output()
   config <- get_config()
   svc <- .eks$service(config, op)
@@ -2342,7 +2351,7 @@ eks_update_access_entry <- function(clusterName, principalArn, kubernetesGroups 
 #' For more information, see [Attach an IAM Role to an Amazon EKS add-on
 #' using Pod
 #' Identity](https://docs.aws.amazon.com/eks/latest/userguide/add-ons-iam.html)
-#' in the EKS User Guide.
+#' in the *Amazon EKS User Guide*.
 #'
 #' @keywords internal
 #'
@@ -2376,8 +2385,8 @@ eks_update_addon <- function(clusterName, addonName, addonVersion = NULL, servic
 #' @param name &#91;required&#93; The name of the Amazon EKS cluster to update.
 #' @param resourcesVpcConfig 
 #' @param logging Enable or disable exporting the Kubernetes control plane logs for your
-#' cluster to CloudWatch Logs. By default, cluster control plane logs
-#' aren't exported to CloudWatch Logs. For more information, see [Amazon
+#' cluster to CloudWatch Logs . By default, cluster control plane logs
+#' aren't exported to CloudWatch Logs . For more information, see [Amazon
 #' EKS cluster control plane
 #' logs](https://docs.aws.amazon.com/eks/latest/userguide/control-plane-logs.html)
 #' in the *Amazon EKS User Guide* .
@@ -2443,7 +2452,7 @@ eks_update_cluster_config <- function(name, resourcesVpcConfig = NULL, logging =
 #' Updates an Amazon EKS cluster to the specified Kubernetes version
 #'
 #' @description
-#' Updates an Amazon EKS cluster to the specified Kubernetes version. Your cluster continues to function during the update. The response output includes an update ID that you can use to track the status of your cluster update with the [`describe_update`][eks_describe_update] API operation.
+#' Updates an Amazon EKS cluster to the specified Kubernetes version. Your cluster continues to function during the update. The response output includes an update ID that you can use to track the status of your cluster update with the [`describe_update`](https://docs.aws.amazon.com/eks/latest/APIReference/API_DescribeUpdate.html) API operation.
 #'
 #' See [https://www.paws-r-sdk.com/docs/eks_update_cluster_version/](https://www.paws-r-sdk.com/docs/eks_update_cluster_version/) for full documentation.
 #'
@@ -2512,7 +2521,7 @@ eks_update_eks_anywhere_subscription <- function(id, autoRenew, clientRequestTok
 #' Updates an Amazon EKS managed node group configuration
 #'
 #' @description
-#' Updates an Amazon EKS managed node group configuration. Your node group continues to function during the update. The response output includes an update ID that you can use to track the status of your node group update with the [`describe_update`][eks_describe_update] API operation. Currently you can update the Kubernetes labels for a node group or the scaling configuration.
+#' Updates an Amazon EKS managed node group configuration. Your node group continues to function during the update. The response output includes an update ID that you can use to track the status of your node group update with the [`describe_update`](https://docs.aws.amazon.com/eks/latest/APIReference/API_DescribeUpdate.html) API operation. You can update the Kubernetes labels and taints for a node group and the scaling and version update configuration.
 #'
 #' See [https://www.paws-r-sdk.com/docs/eks_update_nodegroup_config/](https://www.paws-r-sdk.com/docs/eks_update_nodegroup_config/) for full documentation.
 #'

@@ -327,7 +327,9 @@ locationservice_batch_update_device_position <- function(TrackerName, Updates) {
 #' calculate the route. Otherwise, the best time of day to travel with the
 #' best traffic conditions is used to calculate the route.
 #' 
-#' -   In ISO 8601 format: `YYYY-MM-DDThh:mm:ss.sssZ`. For example,
+#' -   In [ISO
+#'     8601](https://www.iso.org/iso-8601-date-and-time-format.html)
+#'     format: `YYYY-MM-DDThh:mm:ss.sssZ`. For example,
 #'     `2020–07-2T12:15:20.000Z+01:00`
 #' @param DepartNow Sets the time of departure as the current time. Uses the current time to
 #' calculate a route. Otherwise, the best time of day to travel with the
@@ -461,7 +463,9 @@ locationservice_calculate_route <- function(CalculatorName, DeparturePosition, D
 #' Setting a departure time in the past returns a `400 ValidationException`
 #' error.
 #' 
-#' -   In ISO 8601 format: `YYYY-MM-DDThh:mm:ss.sssZ`. For example,
+#' -   In [ISO
+#'     8601](https://www.iso.org/iso-8601-date-and-time-format.html)
+#'     format: `YYYY-MM-DDThh:mm:ss.sssZ`. For example,
 #'     `2020–07-2T12:15:20.000Z+01:00`
 #' @param DepartNow Sets the time of departure as the current time. Uses the current time to
 #' calculate the route matrix. You can't set both `DepartureTime` and
@@ -597,9 +601,10 @@ locationservice_create_geofence_collection <- function(CollectionName, PricingPl
 #' -   No spaces allowed. For example, `ExampleAPIKey`.
 #' @param Restrictions &#91;required&#93; The API key restrictions for the API key resource.
 #' @param Description An optional description for the API key resource.
-#' @param ExpireTime The optional timestamp for when the API key resource will expire in ISO
-#' 8601 format: `YYYY-MM-DDThh:mm:ss.sssZ`. One of `NoExpiry` or
-#' `ExpireTime` must be set.
+#' @param ExpireTime The optional timestamp for when the API key resource will expire in [ISO
+#' 8601](https://www.iso.org/iso-8601-date-and-time-format.html) format:
+#' `YYYY-MM-DDThh:mm:ss.sssZ`. One of `NoExpiry` or `ExpireTime` must be
+#' set.
 #' @param NoExpiry Optionally set to `true` to set no expiration time for the API key. One
 #' of `NoExpiry` or `ExpireTime` must be set.
 #' @param Tags Applies one or more tags to the map resource. A tag is a key-value pair
@@ -1547,7 +1552,8 @@ locationservice_get_device_position <- function(TrackerName, DeviceId) {
 #' response. If no token is provided, the default page is the first page.
 #' 
 #' Default value: `null`
-#' @param StartTimeInclusive Specify the start time for the position history in ISO 8601 format:
+#' @param StartTimeInclusive Specify the start time for the position history in [ISO
+#' 8601](https://www.iso.org/iso-8601-date-and-time-format.html) format:
 #' `YYYY-MM-DDThh:mm:ss.sssZ`. By default, the value will be 24 hours prior
 #' to the time that the request is made.
 #' 
@@ -1555,7 +1561,8 @@ locationservice_get_device_position <- function(TrackerName, DeviceId) {
 #' 
 #' -   The time specified for `StartTimeInclusive` must be before
 #'     `EndTimeExclusive`.
-#' @param EndTimeExclusive Specify the end time for the position history in ISO 8601 format:
+#' @param EndTimeExclusive Specify the end time for the position history in [ISO
+#' 8601](https://www.iso.org/iso-8601-date-and-time-format.html) format:
 #' `YYYY-MM-DDThh:mm:ss.sssZ`. By default, the value will be the time that
 #' the request is made.
 #' 
@@ -2424,8 +2431,9 @@ locationservice_search_place_index_for_position <- function(IndexName, Position,
 #' @param FilterCountries An optional parameter that limits the search results by returning only
 #' suggestions within the provided list of countries.
 #' 
-#' -   Use the ISO 3166 3-digit country code. For example, Australia uses
-#'     three upper-case characters: `AUS`.
+#' -   Use the [ISO 3166](https://www.iso.org/iso-3166-country-codes.html)
+#'     3-digit country code. For example, Australia uses three upper-case
+#'     characters: `AUS`.
 #' @param MaxResults An optional parameter. The maximum number of results returned per
 #' request.
 #' 
@@ -2524,8 +2532,10 @@ locationservice_search_place_index_for_suggestions <- function(IndexName, Text, 
 #' @param FilterCountries An optional parameter that limits the search results by returning only
 #' places that are in a specified list of countries.
 #' 
-#' -   Valid values include ISO 3166 3-digit country codes. For example,
-#'     Australia uses three upper-case characters: `AUS`.
+#' -   Valid values include [ISO
+#'     3166](https://www.iso.org/iso-3166-country-codes.html) 3-digit
+#'     country codes. For example, Australia uses three upper-case
+#'     characters: `AUS`.
 #' @param MaxResults An optional parameter. The maximum number of results returned per
 #' request.
 #' 
@@ -2717,8 +2727,9 @@ locationservice_update_geofence_collection <- function(CollectionName, PricingPl
 #'
 #' @param KeyName &#91;required&#93; The name of the API key resource to update.
 #' @param Description Updates the description for the API key resource.
-#' @param ExpireTime Updates the timestamp for when the API key resource will expire in ISO
-#' 8601 format: `YYYY-MM-DDThh:mm:ss.sssZ`.
+#' @param ExpireTime Updates the timestamp for when the API key resource will expire in [ISO
+#' 8601](https://www.iso.org/iso-8601-date-and-time-format.html) format:
+#' `YYYY-MM-DDThh:mm:ss.sssZ`.
 #' @param NoExpiry Whether the API key should expire. Set to `true` to set the API key to
 #' have no expiration time.
 #' @param ForceUpdate The boolean flag to be included for updating `ExpireTime` or

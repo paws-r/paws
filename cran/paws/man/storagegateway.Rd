@@ -160,6 +160,7 @@ Gateway volume and snapshot IDs coming in 2016.
 \link[paws.storage:storagegateway_associate_file_system]{associate_file_system} \tab Associate an Amazon FSx file system with the FSx File Gateway\cr
 \link[paws.storage:storagegateway_attach_volume]{attach_volume} \tab Connects a volume to an iSCSI connection and then attaches the volume to the specified gateway\cr
 \link[paws.storage:storagegateway_cancel_archival]{cancel_archival} \tab Cancels archiving of a virtual tape to the virtual tape shelf (VTS) after the archiving process is initiated\cr
+\link[paws.storage:storagegateway_cancel_cache_report]{cancel_cache_report} \tab Cancels generation of a specified cache report\cr
 \link[paws.storage:storagegateway_cancel_retrieval]{cancel_retrieval} \tab Cancels retrieval of a virtual tape from the virtual tape shelf (VTS) to a gateway after the retrieval process is initiated\cr
 \link[paws.storage:storagegateway_create_cachedi_scsi_volume]{create_cachedi_scsi_volume} \tab Creates a cached volume on a specified cached volume gateway\cr
 \link[paws.storage:storagegateway_create_nfs_file_share]{create_nfs_file_share} \tab Creates a Network File System (NFS) file share on an existing S3 File Gateway\cr
@@ -172,6 +173,7 @@ Gateway volume and snapshot IDs coming in 2016.
 \link[paws.storage:storagegateway_create_tape_with_barcode]{create_tape_with_barcode} \tab Creates a virtual tape by using your own barcode\cr
 \link[paws.storage:storagegateway_delete_automatic_tape_creation_policy]{delete_automatic_tape_creation_policy} \tab Deletes the automatic tape creation policy of a gateway\cr
 \link[paws.storage:storagegateway_delete_bandwidth_rate_limit]{delete_bandwidth_rate_limit} \tab Deletes the bandwidth rate limits of a gateway\cr
+\link[paws.storage:storagegateway_delete_cache_report]{delete_cache_report} \tab Deletes the specified cache report and any associated tags from the Storage Gateway database\cr
 \link[paws.storage:storagegateway_delete_chap_credentials]{delete_chap_credentials} \tab Deletes Challenge-Handshake Authentication Protocol (CHAP) credentials for a specified iSCSI target and initiator pair\cr
 \link[paws.storage:storagegateway_delete_file_share]{delete_file_share} \tab Deletes a file share from an S3 File Gateway\cr
 \link[paws.storage:storagegateway_delete_gateway]{delete_gateway} \tab Deletes a gateway\cr
@@ -185,6 +187,7 @@ Gateway volume and snapshot IDs coming in 2016.
 \link[paws.storage:storagegateway_describe_bandwidth_rate_limit_schedule]{describe_bandwidth_rate_limit_schedule} \tab Returns information about the bandwidth rate limit schedule of a gateway\cr
 \link[paws.storage:storagegateway_describe_cache]{describe_cache} \tab Returns information about the cache of a gateway\cr
 \link[paws.storage:storagegateway_describe_cachedi_scsi_volumes]{describe_cachedi_scsi_volumes} \tab Returns a description of the gateway volumes specified in the request\cr
+\link[paws.storage:storagegateway_describe_cache_report]{describe_cache_report} \tab Returns information about the specified cache report, including completion status and generation progress\cr
 \link[paws.storage:storagegateway_describe_chap_credentials]{describe_chap_credentials} \tab Returns an array of Challenge-Handshake Authentication Protocol (CHAP) credentials information for a specified iSCSI target, one for each target-initiator pair\cr
 \link[paws.storage:storagegateway_describe_file_system_associations]{describe_file_system_associations} \tab Gets the file system association information\cr
 \link[paws.storage:storagegateway_describe_gateway_information]{describe_gateway_information} \tab Returns metadata about a gateway such as its name, network interfaces, time zone, status, and software version\cr
@@ -205,6 +208,7 @@ Gateway volume and snapshot IDs coming in 2016.
 \link[paws.storage:storagegateway_disassociate_file_system]{disassociate_file_system} \tab Disassociates an Amazon FSx file system from the specified gateway\cr
 \link[paws.storage:storagegateway_join_domain]{join_domain} \tab Adds a file gateway to an Active Directory domain\cr
 \link[paws.storage:storagegateway_list_automatic_tape_creation_policies]{list_automatic_tape_creation_policies} \tab Lists the automatic tape creation policies for a gateway\cr
+\link[paws.storage:storagegateway_list_cache_reports]{list_cache_reports} \tab Returns a list of existing cache reports for all file shares associated with your Amazon Web Services account\cr
 \link[paws.storage:storagegateway_list_file_shares]{list_file_shares} \tab Gets a list of the file shares for a specific S3 File Gateway, or the list of file shares that belong to the calling Amazon Web Services account\cr
 \link[paws.storage:storagegateway_list_file_system_associations]{list_file_system_associations} \tab Gets a list of FileSystemAssociationSummary objects\cr
 \link[paws.storage:storagegateway_list_gateways]{list_gateways} \tab Lists gateways owned by an Amazon Web Services account in an Amazon Web Services Region specified in the request\cr
@@ -215,7 +219,7 @@ Gateway volume and snapshot IDs coming in 2016.
 \link[paws.storage:storagegateway_list_volume_initiators]{list_volume_initiators} \tab Lists iSCSI initiators that are connected to a volume\cr
 \link[paws.storage:storagegateway_list_volume_recovery_points]{list_volume_recovery_points} \tab Lists the recovery points for a specified gateway\cr
 \link[paws.storage:storagegateway_list_volumes]{list_volumes} \tab Lists the iSCSI stored volumes of a gateway\cr
-\link[paws.storage:storagegateway_notify_when_uploaded]{notify_when_uploaded} \tab Sends you notification through CloudWatch Events when all files written to your file share have been uploaded to Amazon S3\cr
+\link[paws.storage:storagegateway_notify_when_uploaded]{notify_when_uploaded} \tab Sends you notification through Amazon EventBridge when all files written to your file share have been uploaded to Amazon S3\cr
 \link[paws.storage:storagegateway_refresh_cache]{refresh_cache} \tab Refreshes the cached inventory of objects for the specified file share\cr
 \link[paws.storage:storagegateway_remove_tags_from_resource]{remove_tags_from_resource} \tab Removes one or more tags from the specified resource\cr
 \link[paws.storage:storagegateway_reset_cache]{reset_cache} \tab Resets all cache disks that have encountered an error and makes the disks available for reconfiguration as cache storage\cr
@@ -225,6 +229,7 @@ Gateway volume and snapshot IDs coming in 2016.
 \link[paws.storage:storagegateway_set_smb_guest_password]{set_smb_guest_password} \tab Sets the password for the guest user smbguest\cr
 \link[paws.storage:storagegateway_shutdown_gateway]{shutdown_gateway} \tab Shuts down a Tape Gateway or Volume Gateway\cr
 \link[paws.storage:storagegateway_start_availability_monitor_test]{start_availability_monitor_test} \tab Start a test that verifies that the specified gateway is configured for High Availability monitoring in your host environment\cr
+\link[paws.storage:storagegateway_start_cache_report]{start_cache_report} \tab Starts generating a report of the file metadata currently cached by an S3 File Gateway for a specific file share\cr
 \link[paws.storage:storagegateway_start_gateway]{start_gateway} \tab Starts a gateway that you previously shut down (see ShutdownGateway)\cr
 \link[paws.storage:storagegateway_update_automatic_tape_creation_policy]{update_automatic_tape_creation_policy} \tab Updates the automatic tape creation policy of a gateway\cr
 \link[paws.storage:storagegateway_update_bandwidth_rate_limit]{update_bandwidth_rate_limit} \tab Updates the bandwidth rate limits of a gateway\cr

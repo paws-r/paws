@@ -75,10 +75,9 @@ original SSD file system had a storage capacity of at least 2000 GiB.}
 \item{FileSystemTypeVersion}{Sets the version for the Amazon FSx for Lustre file system that you're
 creating from a backup. Valid values are \code{2.10}, \code{2.12}, and \code{2.15}.
 
-You don't need to specify \code{FileSystemTypeVersion} because it will be
-applied using the backup's \code{FileSystemTypeVersion} setting. If you
-choose to specify \code{FileSystemTypeVersion} when creating from backup, the
-value must match the backup's \code{FileSystemTypeVersion} setting.}
+You can enter a Lustre version that is newer than the backup's
+\code{FileSystemTypeVersion} setting. If you don't enter a newer Lustre
+version, it defaults to the backup's setting.}
 
 \item{OpenZFSConfiguration}{The OpenZFS configuration for the file system that's being created.}
 
@@ -91,8 +90,8 @@ don't use the \code{StorageCapacity} parameter, the default is the backup's
 
 If used to create a file system other than OpenZFS, you must provide a
 value that matches the backup's \code{StorageCapacity} value. If you provide
-any other value, Amazon FSx responds with with an HTTP status code 400
-Bad Request.}
+any other value, Amazon FSx responds with an HTTP status code 400 Bad
+Request.}
 }
 \description{
 Creates a new Amazon FSx for Lustre, Amazon FSx for Windows File Server, or Amazon FSx for OpenZFS file system from an existing Amazon FSx backup.

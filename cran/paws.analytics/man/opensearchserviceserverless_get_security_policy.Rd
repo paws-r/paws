@@ -5,12 +5,12 @@
 \title{Returns information about a configured OpenSearch Serverless security
 policy}
 \usage{
-opensearchserviceserverless_get_security_policy(name, type)
+opensearchserviceserverless_get_security_policy(type, name)
 }
 \arguments{
-\item{name}{[required] The name of the security policy.}
-
 \item{type}{[required] The type of security policy.}
+
+\item{name}{[required] The name of the security policy.}
 }
 \description{
 Returns information about a configured OpenSearch Serverless security policy. For more information, see \href{https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-network.html}{Network access for Amazon OpenSearch Serverless} and \href{https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-encryption.html}{Encryption at rest for Amazon OpenSearch Serverless}.

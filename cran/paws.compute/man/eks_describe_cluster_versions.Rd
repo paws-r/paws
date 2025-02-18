@@ -11,7 +11,8 @@ eks_describe_cluster_versions(
   defaultOnly = NULL,
   includeAll = NULL,
   clusterVersions = NULL,
-  status = NULL
+  status = NULL,
+  versionStatus = NULL
 )
 }
 \arguments{
@@ -27,7 +28,12 @@ eks_describe_cluster_versions(
 
 \item{clusterVersions}{List of specific cluster versions to describe.}
 
-\item{status}{Filter versions by their current status.}
+\item{status}{This field is deprecated. Use \code{versionStatus} instead, as that field
+matches for input and output of this action.
+
+Filter versions by their current status.}
+
+\item{versionStatus}{Filter versions by their current status.}
 }
 \description{
 Lists available Kubernetes versions for Amazon EKS clusters.

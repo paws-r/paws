@@ -46,7 +46,9 @@ Constraints:
 
 \item{DeleteAutomatedBackups}{Specifies whether to remove automated backups immediately after the DB
 cluster is deleted. This parameter isn't case-sensitive. The default is
-to remove automated backups immediately after the DB cluster is deleted.}
+to remove automated backups immediately after the DB cluster is deleted,
+unless the Amazon Web Services Backup policy specifies a point-in-time
+restore rule.}
 }
 \description{
 The DeleteDBCluster action deletes a previously provisioned DB cluster. When you delete a DB cluster, all automated backups for that DB cluster are deleted and can't be recovered. Manual DB cluster snapshots of the specified DB cluster are not deleted.

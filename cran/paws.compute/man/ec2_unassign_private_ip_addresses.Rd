@@ -2,7 +2,7 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_unassign_private_ip_addresses}
 \alias{ec2_unassign_private_ip_addresses}
-\title{Unassigns one or more secondary private IP addresses, or IPv4 Prefix
+\title{Unassigns the specified secondary private IP addresses or IPv4 Prefix
 Delegation prefixes from a network interface}
 \usage{
 ec2_unassign_private_ip_addresses(
@@ -21,7 +21,7 @@ interface. You can specify this option multiple times to unassign more
 than one IP address.}
 }
 \description{
-Unassigns one or more secondary private IP addresses, or IPv4 Prefix Delegation prefixes from a network interface.
+Unassigns the specified secondary private IP addresses or IPv4 Prefix Delegation prefixes from a network interface.
 
 See \url{https://www.paws-r-sdk.com/docs/ec2_unassign_private_ip_addresses/} for full documentation.
 }

@@ -2,8 +2,8 @@
 % Please edit documentation in R/ssm_operations.R
 \name{ssm_get_parameters_by_path}
 \alias{ssm_get_parameters_by_path}
-\title{Retrieve information about one or more parameters in a specific
-hierarchy}
+\title{Retrieve information about one or more parameters under a specified
+level in a hierarchy}
 \usage{
 ssm_get_parameters_by_path(
   Path,
@@ -50,7 +50,7 @@ next set of results.}
 results.}
 }
 \description{
-Retrieve information about one or more parameters in a specific hierarchy.
+Retrieve information about one or more parameters under a specified level in a hierarchy.
 
 See \url{https://www.paws-r-sdk.com/docs/ssm_get_parameters_by_path/} for full documentation.
 }

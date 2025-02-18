@@ -20,7 +20,7 @@ cloudformation_delete_stack_instances(
 \item{StackSetName}{[required] The name or unique ID of the stack set that you want to delete stack
 instances for.}
 
-\item{Accounts}{[Self-managed permissions] The names of the Amazon Web Services
+\item{Accounts}{[Self-managed permissions] The account IDs of the Amazon Web Services
 accounts that you want to delete stack instances for.
 
 You can specify \code{Accounts} or \code{DeploymentTargets}, but not both.}

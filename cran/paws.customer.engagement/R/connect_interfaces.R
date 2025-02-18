@@ -29,7 +29,7 @@ NULL
 
 .connect$associate_approved_origin_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), Origin = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), Origin = structure(logical(0), tags = list(type = "string")), ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -39,7 +39,7 @@ NULL
 
 .connect$associate_bot_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), LexBot = structure(list(Name = structure(logical(0), tags = list(type = "string")), LexRegion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), LexV2Bot = structure(list(AliasArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), LexBot = structure(list(Name = structure(logical(0), tags = list(type = "string")), LexRegion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), LexV2Bot = structure(list(AliasArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -73,7 +73,7 @@ NULL
 
 .connect$associate_instance_storage_config_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), ResourceType = structure(logical(0), tags = list(type = "string")), StorageConfig = structure(list(AssociationId = structure(logical(0), tags = list(type = "string")), StorageType = structure(logical(0), tags = list(type = "string")), S3Config = structure(list(BucketName = structure(logical(0), tags = list(type = "string")), BucketPrefix = structure(logical(0), tags = list(type = "string")), EncryptionConfig = structure(list(EncryptionType = structure(logical(0), tags = list(type = "string")), KeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), KinesisVideoStreamConfig = structure(list(Prefix = structure(logical(0), tags = list(type = "string")), RetentionPeriodHours = structure(logical(0), tags = list(type = "integer")), EncryptionConfig = structure(list(EncryptionType = structure(logical(0), tags = list(type = "string")), KeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), KinesisStreamConfig = structure(list(StreamArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), KinesisFirehoseConfig = structure(list(FirehoseArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), ResourceType = structure(logical(0), tags = list(type = "string")), StorageConfig = structure(list(AssociationId = structure(logical(0), tags = list(type = "string")), StorageType = structure(logical(0), tags = list(type = "string")), S3Config = structure(list(BucketName = structure(logical(0), tags = list(type = "string")), BucketPrefix = structure(logical(0), tags = list(type = "string")), EncryptionConfig = structure(list(EncryptionType = structure(logical(0), tags = list(type = "string")), KeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), KinesisVideoStreamConfig = structure(list(Prefix = structure(logical(0), tags = list(type = "string")), RetentionPeriodHours = structure(logical(0), tags = list(type = "integer")), EncryptionConfig = structure(list(EncryptionType = structure(logical(0), tags = list(type = "string")), KeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), KinesisStreamConfig = structure(list(StreamArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), KinesisFirehoseConfig = structure(list(FirehoseArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -85,7 +85,7 @@ NULL
 
 .connect$associate_lambda_function_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), FunctionArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), FunctionArn = structure(logical(0), tags = list(type = "string")), ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -95,7 +95,7 @@ NULL
 
 .connect$associate_lex_bot_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), LexBot = structure(list(Name = structure(logical(0), tags = list(type = "string")), LexRegion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), LexBot = structure(list(Name = structure(logical(0), tags = list(type = "string")), LexRegion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -135,7 +135,7 @@ NULL
 
 .connect$associate_security_key_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), Key = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), Key = structure(logical(0), tags = list(type = "string")), ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -175,7 +175,7 @@ NULL
 
 .connect$batch_associate_analytics_data_set_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Created = structure(list(structure(list(DataSetId = structure(logical(0), tags = list(type = "string")), TargetAccountId = structure(logical(0), tags = list(type = "string")), ResourceShareId = structure(logical(0), tags = list(type = "string")), ResourceShareArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Errors = structure(list(structure(list(ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(Created = structure(list(structure(list(DataSetId = structure(logical(0), tags = list(type = "string")), TargetAccountId = structure(logical(0), tags = list(type = "string")), ResourceShareId = structure(logical(0), tags = list(type = "string")), ResourceShareArn = structure(logical(0), tags = list(type = "string")), ResourceShareStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Errors = structure(list(structure(list(ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -361,7 +361,7 @@ NULL
 
 .connect$create_instance_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ClientToken = structure(logical(0), tags = list(type = "string")), IdentityManagementType = structure(logical(0), tags = list(type = "string")), InstanceAlias = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), DirectoryId = structure(logical(0), tags = list(type = "string")), InboundCallsEnabled = structure(logical(0), tags = list(type = "boolean")), OutboundCallsEnabled = structure(logical(0), tags = list(type = "boolean")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  shape <- structure(list(ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), IdentityManagementType = structure(logical(0), tags = list(type = "string")), InstanceAlias = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), DirectoryId = structure(logical(0), tags = list(type = "string")), InboundCallsEnabled = structure(logical(0), tags = list(type = "boolean")), OutboundCallsEnabled = structure(logical(0), tags = list(type = "boolean")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -711,7 +711,7 @@ NULL
 
 .connect$delete_instance_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, location = "querystring", locationName = "clientToken", type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -1237,7 +1237,7 @@ NULL
 
 .connect$disassociate_approved_origin_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), Origin = structure(logical(0), tags = list(location = "querystring", locationName = "origin", type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), Origin = structure(logical(0), tags = list(location = "querystring", locationName = "origin", type = "string")), ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, location = "querystring", locationName = "clientToken", type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -1247,7 +1247,7 @@ NULL
 
 .connect$disassociate_bot_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), LexBot = structure(list(Name = structure(logical(0), tags = list(type = "string")), LexRegion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), LexV2Bot = structure(list(AliasArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), LexBot = structure(list(Name = structure(logical(0), tags = list(type = "string")), LexRegion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), LexV2Bot = structure(list(AliasArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -1269,7 +1269,7 @@ NULL
 
 .connect$disassociate_instance_storage_config_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), AssociationId = structure(logical(0), tags = list(location = "uri", locationName = "AssociationId", type = "string")), ResourceType = structure(logical(0), tags = list(location = "querystring", locationName = "resourceType", type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), AssociationId = structure(logical(0), tags = list(location = "uri", locationName = "AssociationId", type = "string")), ResourceType = structure(logical(0), tags = list(location = "querystring", locationName = "resourceType", type = "string")), ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, location = "querystring", locationName = "clientToken", type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -1279,7 +1279,7 @@ NULL
 
 .connect$disassociate_lambda_function_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), FunctionArn = structure(logical(0), tags = list(location = "querystring", locationName = "functionArn", type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), FunctionArn = structure(logical(0), tags = list(location = "querystring", locationName = "functionArn", type = "string")), ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, location = "querystring", locationName = "clientToken", type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -1289,7 +1289,7 @@ NULL
 
 .connect$disassociate_lex_bot_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), BotName = structure(logical(0), tags = list(location = "querystring", locationName = "botName", type = "string")), LexRegion = structure(logical(0), tags = list(location = "querystring", locationName = "lexRegion", type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), BotName = structure(logical(0), tags = list(location = "querystring", locationName = "botName", type = "string")), LexRegion = structure(logical(0), tags = list(location = "querystring", locationName = "lexRegion", type = "string")), ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, location = "querystring", locationName = "clientToken", type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -1329,7 +1329,7 @@ NULL
 
 .connect$disassociate_security_key_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), AssociationId = structure(logical(0), tags = list(location = "uri", locationName = "AssociationId", type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), AssociationId = structure(logical(0), tags = list(location = "uri", locationName = "AssociationId", type = "string")), ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, location = "querystring", locationName = "clientToken", type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -1547,7 +1547,19 @@ NULL
 
 .connect$list_analytics_data_associations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Results = structure(list(structure(list(DataSetId = structure(logical(0), tags = list(type = "string")), TargetAccountId = structure(logical(0), tags = list(type = "string")), ResourceShareId = structure(logical(0), tags = list(type = "string")), ResourceShareArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Results = structure(list(structure(list(DataSetId = structure(logical(0), tags = list(type = "string")), TargetAccountId = structure(logical(0), tags = list(type = "string")), ResourceShareId = structure(logical(0), tags = list(type = "string")), ResourceShareArn = structure(logical(0), tags = list(type = "string")), ResourceShareStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.connect$list_analytics_data_lake_data_sets_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.connect$list_analytics_data_lake_data_sets_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Results = structure(list(structure(list(DataSetId = structure(logical(0), tags = list(type = "string")), DataSetName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -2871,7 +2883,7 @@ NULL
 
 .connect$update_instance_attribute_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), AttributeType = structure(logical(0), tags = list(location = "uri", locationName = "AttributeType", type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), AttributeType = structure(logical(0), tags = list(location = "uri", locationName = "AttributeType", type = "string")), Value = structure(logical(0), tags = list(type = "string")), ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -2881,7 +2893,7 @@ NULL
 
 .connect$update_instance_storage_config_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), AssociationId = structure(logical(0), tags = list(location = "uri", locationName = "AssociationId", type = "string")), ResourceType = structure(logical(0), tags = list(location = "querystring", locationName = "resourceType", type = "string")), StorageConfig = structure(list(AssociationId = structure(logical(0), tags = list(type = "string")), StorageType = structure(logical(0), tags = list(type = "string")), S3Config = structure(list(BucketName = structure(logical(0), tags = list(type = "string")), BucketPrefix = structure(logical(0), tags = list(type = "string")), EncryptionConfig = structure(list(EncryptionType = structure(logical(0), tags = list(type = "string")), KeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), KinesisVideoStreamConfig = structure(list(Prefix = structure(logical(0), tags = list(type = "string")), RetentionPeriodHours = structure(logical(0), tags = list(type = "integer")), EncryptionConfig = structure(list(EncryptionType = structure(logical(0), tags = list(type = "string")), KeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), KinesisStreamConfig = structure(list(StreamArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), KinesisFirehoseConfig = structure(list(FirehoseArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(InstanceId = structure(logical(0), tags = list(location = "uri", locationName = "InstanceId", type = "string")), AssociationId = structure(logical(0), tags = list(location = "uri", locationName = "AssociationId", type = "string")), ResourceType = structure(logical(0), tags = list(location = "querystring", locationName = "resourceType", type = "string")), StorageConfig = structure(list(AssociationId = structure(logical(0), tags = list(type = "string")), StorageType = structure(logical(0), tags = list(type = "string")), S3Config = structure(list(BucketName = structure(logical(0), tags = list(type = "string")), BucketPrefix = structure(logical(0), tags = list(type = "string")), EncryptionConfig = structure(list(EncryptionType = structure(logical(0), tags = list(type = "string")), KeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), KinesisVideoStreamConfig = structure(list(Prefix = structure(logical(0), tags = list(type = "string")), RetentionPeriodHours = structure(logical(0), tags = list(type = "integer")), EncryptionConfig = structure(list(EncryptionType = structure(logical(0), tags = list(type = "string")), KeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), KinesisStreamConfig = structure(list(StreamArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), KinesisFirehoseConfig = structure(list(FirehoseArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

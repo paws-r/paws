@@ -531,6 +531,18 @@ NULL
   return(populate(args, shape))
 }
 
+.cloudtrail$search_sample_queries_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(SearchPhrase = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudtrail$search_sample_queries_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(SearchResults = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), SQL = structure(logical(0), tags = list(type = "string")), Relevance = structure(logical(0), tags = list(type = "float"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .cloudtrail$start_dashboard_refresh_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(DashboardId = structure(logical(0), tags = list(type = "string")), QueryParameterValues = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))

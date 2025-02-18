@@ -9,7 +9,7 @@ NULL
 #' for more information on using IAM database authentication with RDS.
 #'
 #' @usage
-#' rds_build_auth_token(endpoint, region, user, creds)
+#' rds_build_auth_token(endpoint, user, creds = NULL, region = NULL)
 #'
 #' @param endpoint &#91;required&#93; Hostname and port needed to connect
 #' to the database: `<host>:<port>`.
@@ -60,14 +60,13 @@ NULL
 rds_build_auth_token <- utils::getFromNamespace("rds_build_auth_token", "paws.common")
 .rds$operations$build_auth_token <- rds_build_auth_token
 
-
 #' Generates an auth token used to connect to a db with IAM credentials.
 #'
 #' See [*IAM Database Authentication for MySQL and PostgreSQL*](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)
 #' for more information on using IAM database authentication with RDS.
 #'
 #' @usage
-#' rds_build_auth_token_v2(DBHostname, Port, DBUsername, Region)
+#' rds_build_auth_token_v2(DBHostname, Port, DBUsername, Region = NULL)
 #'
 #' @param DBHostname &#91;required&#93; The hostname of the database to connect to.
 #' @param Port &#91;required&#93; The port number the database is listening on.
@@ -100,5 +99,8 @@ rds_build_auth_token <- utils::getFromNamespace("rds_build_auth_token", "paws.co
 #' @keywords internal
 #' @seealso \link[paws.database:rds_build_auth_token]{rds_build_auth_token}
 #' @rdname rds_build_auth_token_v2
-rds_build_auth_token_v2 <- utils::getFromNamespace("rds_build_auth_token_v2", "paws.common")
+rds_build_auth_token_v2 <- utils::getFromNamespace(
+  "rds_build_auth_token_v2",
+  "paws.common"
+)
 .rds$operations$build_auth_token_v2 <- rds_build_auth_token_v2

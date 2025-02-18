@@ -20,7 +20,7 @@ cloudformation_create_stack_instances(
 \item{StackSetName}{[required] The name or unique ID of the stack set that you want to create stack
 instances from.}
 
-\item{Accounts}{[Self-managed permissions] The names of one or more Amazon Web
+\item{Accounts}{[Self-managed permissions] The account IDs of one or more Amazon Web
 Services accounts that you want to create stack instances in the
 specified Region(s) for.
 

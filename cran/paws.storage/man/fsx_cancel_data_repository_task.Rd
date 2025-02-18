@@ -11,7 +11,7 @@ fsx_cancel_data_repository_task(TaskId)
 \item{TaskId}{[required] Specifies the data repository task to cancel.}
 }
 \description{
-Cancels an existing Amazon FSx for Lustre data repository task if that task is in either the \code{PENDING} or \code{EXECUTING} state. When you cancel am export task, Amazon FSx does the following.
+Cancels an existing Amazon FSx for Lustre data repository task if that task is in either the \code{PENDING} or \code{EXECUTING} state. When you cancel an export task, Amazon FSx does the following.
 
 See \url{https://www.paws-r-sdk.com/docs/fsx_cancel_data_repository_task/} for full documentation.
 }

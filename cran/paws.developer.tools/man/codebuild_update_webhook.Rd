@@ -30,7 +30,12 @@ your repository, \code{rotateSecret} is ignored.}
 webhook event can trigger a build. A filter group must contain at least
 one \code{EVENT} \code{WebhookFilter}.}
 
-\item{buildType}{Specifies the type of build this webhook will trigger.}
+\item{buildType}{Specifies the type of build this webhook will trigger.
+
+\code{RUNNER_BUILDKITE_BUILD} is only available for \code{NO_SOURCE} source type
+projects configured for Buildkite runner builds. For more information
+about CodeBuild-hosted Buildkite runner builds, see \href{https://docs.aws.amazon.com/codebuild/latest/userguide/sample-runner-buildkite.html}{Tutorial: Configure a CodeBuild-hosted Buildkite runner}
+in the \emph{CodeBuild user guide}.}
 }
 \description{
 Updates the webhook associated with an CodeBuild build project.

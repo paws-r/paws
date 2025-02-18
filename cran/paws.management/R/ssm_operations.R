@@ -72,7 +72,7 @@ ssm_add_tags_to_resource <- function(ResourceType, ResourceId, Tags) {
 #' Associates a related item to a Systems Manager OpsCenter OpsItem
 #'
 #' @description
-#' Associates a related item to a Systems Manager OpsCenter OpsItem. For example, you can associate an Incident Manager incident or analysis with an OpsItem. Incident Manager and OpsCenter are capabilities of Amazon Web Services Systems Manager.
+#' Associates a related item to a Systems Manager OpsCenter OpsItem. For example, you can associate an Incident Manager incident or analysis with an OpsItem. Incident Manager and OpsCenter are tools in Amazon Web Services Systems Manager.
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssm_associate_ops_item_related_item/](https://www.paws-r-sdk.com/docs/ssm_associate_ops_item_related_item/) for full documentation.
 #'
@@ -183,7 +183,7 @@ ssm_cancel_maintenance_window_execution <- function(WindowExecutionId) {
 #' Amazon Web Services Systems Manager
 #'
 #' @description
-#' Generates an activation code and activation ID you can use to register your on-premises servers, edge devices, or virtual machine (VM) with Amazon Web Services Systems Manager. Registering these machines with Systems Manager makes it possible to manage them using Systems Manager capabilities. You use the activation code and ID when installing SSM Agent on machines in your hybrid environment. For more information about requirements for managing on-premises machines using Systems Manager, see [Using Amazon Web Services Systems Manager in hybrid and multicloud environments](https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-hybrid-multicloud.html) in the *Amazon Web Services Systems Manager User Guide*.
+#' Generates an activation code and activation ID you can use to register your on-premises servers, edge devices, or virtual machine (VM) with Amazon Web Services Systems Manager. Registering these machines with Systems Manager makes it possible to manage them using Systems Manager tools. You use the activation code and ID when installing SSM Agent on machines in your hybrid environment. For more information about requirements for managing on-premises machines using Systems Manager, see [Using Amazon Web Services Systems Manager in hybrid and multicloud environments](https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-hybrid-multicloud.html) in the *Amazon Web Services Systems Manager User Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssm_create_activation/](https://www.paws-r-sdk.com/docs/ssm_create_activation/) for full documentation.
 #'
@@ -265,7 +265,7 @@ ssm_create_activation <- function(Description = NULL, DefaultInstanceName = NULL
 #' on your managed nodes
 #'
 #' @description
-#' A State Manager association defines the state that you want to maintain on your managed nodes. For example, an association can specify that anti-virus software must be installed and running on your managed nodes, or that certain ports must be closed. For static targets, the association specifies a schedule for when the configuration is reapplied. For dynamic targets, such as an Amazon Web Services resource group or an Amazon Web Services autoscaling group, State Manager, a capability of Amazon Web Services Systems Manager applies the configuration when new managed nodes are added to the group. The association also specifies actions to take when applying the configuration. For example, an association for anti-virus software might run once a day. If the software isn't installed, then State Manager installs it. If the software is installed, but the service isn't running, then the association might instruct State Manager to start the service.
+#' A State Manager association defines the state that you want to maintain on your managed nodes. For example, an association can specify that anti-virus software must be installed and running on your managed nodes, or that certain ports must be closed. For static targets, the association specifies a schedule for when the configuration is reapplied. For dynamic targets, such as an Amazon Web Services resource group or an Amazon Web Services autoscaling group, State Manager, a tool in Amazon Web Services Systems Manager applies the configuration when new managed nodes are added to the group. The association also specifies actions to take when applying the configuration. For example, an association for anti-virus software might run once a day. If the software isn't installed, then State Manager installs it. If the software is installed, but the service isn't running, then the association might instruct State Manager to start the service.
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssm_create_association/](https://www.paws-r-sdk.com/docs/ssm_create_association/) for full documentation.
 #'
@@ -326,7 +326,7 @@ ssm_create_activation <- function(Description = NULL, DefaultInstanceName = NULL
 #' @param AutomationTargetParameterName Choose the parameter that will define how your automation will branch
 #' out. This target is required for associations that use an Automation
 #' runbook and target resources by using rate controls. Automation is a
-#' capability of Amazon Web Services Systems Manager.
+#' tool in Amazon Web Services Systems Manager.
 #' @param MaxErrors The number of errors that are allowed before the system stops sending
 #' requests to run the association on additional targets. You can specify
 #' either an absolute number of errors, for example 10, or a percentage of
@@ -3034,7 +3034,7 @@ ssm_describe_sessions <- function(State, MaxResults = NULL, NextToken = NULL, Fi
 #' Deletes the association between an OpsItem and a related item
 #'
 #' @description
-#' Deletes the association between an OpsItem and a related item. For example, this API operation can delete an Incident Manager incident from an OpsItem. Incident Manager is a capability of Amazon Web Services Systems Manager.
+#' Deletes the association between an OpsItem and a related item. For example, this API operation can delete an Incident Manager incident from an OpsItem. Incident Manager is a tool in Amazon Web Services Systems Manager.
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssm_disassociate_ops_item_related_item/](https://www.paws-r-sdk.com/docs/ssm_disassociate_ops_item_related_item/) for full documentation.
 #'
@@ -3842,11 +3842,11 @@ ssm_get_parameters <- function(Names, WithDecryption = NULL) {
 }
 .ssm$operations$get_parameters <- ssm_get_parameters
 
-#' Retrieve information about one or more parameters in a specific
-#' hierarchy
+#' Retrieve information about one or more parameters under a specified
+#' level in a hierarchy
 #'
 #' @description
-#' Retrieve information about one or more parameters in a specific hierarchy.
+#' Retrieve information about one or more parameters under a specified level in a hierarchy.
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssm_get_parameters_by_path/](https://www.paws-r-sdk.com/docs/ssm_get_parameters_by_path/) for full documentation.
 #'
@@ -4142,7 +4142,7 @@ ssm_list_association_versions <- function(AssociationId, MaxResults = NULL, Next
 #' Services account and Amazon Web Services Region
 #'
 #' @description
-#' Returns all State Manager associations in the current Amazon Web Services account and Amazon Web Services Region. You can limit the results to a specific State Manager association document or managed node by specifying a filter. State Manager is a capability of Amazon Web Services Systems Manager.
+#' Returns all State Manager associations in the current Amazon Web Services account and Amazon Web Services Region. You can limit the results to a specific State Manager association document or managed node by specifying a filter. State Manager is a tool in Amazon Web Services Systems Manager.
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssm_list_associations/](https://www.paws-r-sdk.com/docs/ssm_list_associations/) for full documentation.
 #'
@@ -4636,7 +4636,7 @@ ssm_list_ops_item_events <- function(Filters = NULL, MaxResults = NULL, NextToke
 #' OpsCenter OpsItem
 #'
 #' @description
-#' Lists all related-item resources associated with a Systems Manager OpsCenter OpsItem. OpsCenter is a capability of Amazon Web Services Systems Manager.
+#' Lists all related-item resources associated with a Systems Manager OpsCenter OpsItem. OpsCenter is a tool in Amazon Web Services Systems Manager.
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssm_list_ops_item_related_items/](https://www.paws-r-sdk.com/docs/ssm_list_ops_item_related_items/) for full documentation.
 #'
@@ -5009,8 +5009,8 @@ ssm_put_inventory <- function(InstanceId, Items) {
 #' limit of 8 KB.
 #' 
 #' Parameters can't be referenced or nested in the values of other
-#' parameters. You can't include `{{}}` or `{{ssm:parameter-name}}` in a
-#' parameter value.
+#' parameters. You can't include values wrapped in double brackets `{{}}`
+#' or `{{ssm:parameter-name}}` in a parameter value.
 #' @param Type The type of parameter that you want to add to the system.
 #' 
 #' `SecureString` isn't currently supported for CloudFormation templates.
@@ -5123,7 +5123,7 @@ ssm_put_inventory <- function(InstanceId, Items) {
 #' tier](https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-advanced-parameters.html#ps-default-tier)
 #' in the *Amazon Web Services Systems Manager User Guide*.
 #' @param Policies One or more policies to apply to a parameter. This operation takes a
-#' JSON array. Parameter Store, a capability of Amazon Web Services Systems
+#' JSON array. Parameter Store, a tool in Amazon Web Services Systems
 #' Manager supports the following policy types:
 #' 
 #' Expiration: This policy deletes the parameter after it expires. When you
@@ -5808,8 +5808,8 @@ ssm_send_automation_signal <- function(AutomationExecutionId, SignalType, Payloa
 #' in the *Amazon Web Services Systems Manager User Guide*.
 #' @param NotificationConfig Configurations for sending notifications.
 #' @param CloudWatchOutputConfig Enables Amazon Web Services Systems Manager to send Run Command output
-#' to Amazon CloudWatch Logs. Run Command is a capability of Amazon Web
-#' Services Systems Manager.
+#' to Amazon CloudWatch Logs. Run Command is a tool in Amazon Web Services
+#' Systems Manager.
 #' @param AlarmConfiguration The CloudWatch alarm you want to apply to your command.
 #'
 #' @keywords internal
@@ -5936,8 +5936,12 @@ ssm_start_associations_once <- function(AssociationIds) {
 #' 
 #' -   `Key=OS,Value=Windows`
 #' 
-#' To add tags to an existing automation, use the
-#' [`add_tags_to_resource`][ssm_add_tags_to_resource] operation.
+#' The `Array Members` maximum value is reported as 1000. This number
+#' includes capacity reserved for internal operations. When calling the
+#' [`start_automation_execution`][ssm_start_automation_execution] action,
+#' you can specify a maximum of 5 tags. You can, however, use the
+#' [`add_tags_to_resource`][ssm_add_tags_to_resource] action to add up to a
+#' total of 50 tags to an existing automation configuration.
 #' @param AlarmConfiguration The CloudWatch alarm you want to apply to your automation.
 #' @param TargetLocationsURL Specify a publicly accessible URL for a file that contains the
 #' `TargetLocations` body. Currently, only files in presigned Amazon S3
@@ -6015,6 +6019,13 @@ ssm_start_automation_execution <- function(DocumentName, DocumentVersion = NULL,
 #' -   `Key=Environment,Value=Production`
 #' 
 #' -   `Key=Region,Value=us-east-2`
+#' 
+#' The `Array Members` maximum value is reported as 1000. This number
+#' includes capacity reserved for internal operations. When calling the
+#' [`start_change_request_execution`][ssm_start_change_request_execution]
+#' action, you can specify a maximum of 5 tags. You can, however, use the
+#' [`add_tags_to_resource`][ssm_add_tags_to_resource] action to add up to a
+#' total of 50 tags to an existing change request configuration.
 #' @param ScheduledEndTime The time that the requester expects the runbook workflow related to the
 #' change request to complete. The time is an estimate only that the
 #' requester provides for reviewers.
@@ -6104,7 +6115,10 @@ ssm_start_execution_preview <- function(DocumentName, DocumentVersion = NULL, Ex
 #' details for the Amazon CloudWatch Events event created when you start
 #' the session.
 #' @param Parameters The values you want to specify for the parameters defined in the Session
-#' document.
+#' document. For more information about these parameters, see [Create a
+#' Session Manager preferences
+#' document](https://docs.aws.amazon.com/systems-manager/latest/userguide/getting-started-create-preferences-cli.html)
+#' in the *Amazon Web Services Systems Manager User Guide*.
 #'
 #' @keywords internal
 #'
@@ -6240,9 +6254,8 @@ ssm_unlabel_parameter_version <- function(Name, ParameterVersion, Labels) {
 #'
 #' @param AssociationId &#91;required&#93; The ID of the association you want to update.
 #' @param Parameters The parameters you want to update for the association. If you create a
-#' parameter using Parameter Store, a capability of Amazon Web Services
-#' Systems Manager, you can reference the parameter using
-#' `{{ssm:parameter-name}}`.
+#' parameter using Parameter Store, a tool in Amazon Web Services Systems
+#' Manager, you can reference the parameter using `{{ssm:parameter-name}}`.
 #' @param DocumentVersion The document version you want update for the association.
 #' 
 #' State Manager doesn't support running associations that use a new
@@ -6283,7 +6296,7 @@ ssm_unlabel_parameter_version <- function(Name, ParameterVersion, Labels) {
 #' @param AutomationTargetParameterName Choose the parameter that will define how your automation will branch
 #' out. This target is required for associations that use an Automation
 #' runbook and target resources by using rate controls. Automation is a
-#' capability of Amazon Web Services Systems Manager.
+#' tool in Amazon Web Services Systems Manager.
 #' @param MaxErrors The number of errors that are allowed before the system stops sending
 #' requests to run the association on additional targets. You can specify
 #' either an absolute number of errors, for example 10, or a percentage of
@@ -6320,9 +6333,9 @@ ssm_unlabel_parameter_version <- function(Name, ParameterVersion, Labels) {
 #' In `MANUAL` mode, you must specify the `AssociationId` as a parameter
 #' for the [`put_compliance_items`][ssm_put_compliance_items] API
 #' operation. In this case, compliance data isn't managed by State Manager,
-#' a capability of Amazon Web Services Systems Manager. It is managed by
-#' your direct call to the
-#' [`put_compliance_items`][ssm_put_compliance_items] API operation.
+#' a tool in Amazon Web Services Systems Manager. It is managed by your
+#' direct call to the [`put_compliance_items`][ssm_put_compliance_items]
+#' API operation.
 #' 
 #' By default, all associations use `AUTO` mode.
 #' @param ApplyOnlyAtCronInterval By default, when you update an association, the system runs it

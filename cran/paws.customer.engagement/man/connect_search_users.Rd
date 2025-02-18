@@ -14,9 +14,7 @@ connect_search_users(
 }
 \arguments{
 \item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can \href{https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html}{find the instance ID}
-in the Amazon Resource Name (ARN) of the instance.
-
-InstanceID is a required field. The "Required: No" below is incorrect.}
+in the Amazon Resource Name (ARN) of the instance.}
 
 \item{NextToken}{The token for the next set of results. Use the value returned in the
 previous response in the next request to retrieve the next set of

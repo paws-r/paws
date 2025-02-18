@@ -387,7 +387,7 @@ fis_list_actions <- function(maxResults = NULL, nextToken = NULL) {
     http_method = "GET",
     http_path = "/actions",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "actions"),
     stream_api = FALSE
   )
   input <- .fis$list_actions_input(maxResults = maxResults, nextToken = nextToken)
@@ -423,7 +423,7 @@ fis_list_experiment_resolved_targets <- function(experimentId, maxResults = NULL
     http_method = "GET",
     http_path = "/experiments/{id}/resolvedTargets",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "resolvedTargets"),
     stream_api = FALSE
   )
   input <- .fis$list_experiment_resolved_targets_input(experimentId = experimentId, maxResults = maxResults, nextToken = nextToken, targetName = targetName)
@@ -489,7 +489,7 @@ fis_list_experiment_templates <- function(maxResults = NULL, nextToken = NULL) {
     http_method = "GET",
     http_path = "/experimentTemplates",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "experimentTemplates"),
     stream_api = FALSE
   )
   input <- .fis$list_experiment_templates_input(maxResults = maxResults, nextToken = nextToken)
@@ -524,7 +524,7 @@ fis_list_experiments <- function(maxResults = NULL, nextToken = NULL, experiment
     http_method = "GET",
     http_path = "/experiments",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "experiments"),
     stream_api = FALSE
   )
   input <- .fis$list_experiments_input(maxResults = maxResults, nextToken = nextToken, experimentTemplateId = experimentTemplateId)
@@ -591,7 +591,7 @@ fis_list_target_account_configurations <- function(experimentTemplateId, maxResu
     http_method = "GET",
     http_path = "/experimentTemplates/{id}/targetAccountConfigurations",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "targetAccountConfigurations"),
     stream_api = FALSE
   )
   input <- .fis$list_target_account_configurations_input(experimentTemplateId = experimentTemplateId, maxResults = maxResults, nextToken = nextToken)
@@ -625,7 +625,7 @@ fis_list_target_resource_types <- function(maxResults = NULL, nextToken = NULL) 
     http_method = "GET",
     http_path = "/targetResourceTypes",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "targetResourceTypes"),
     stream_api = FALSE
   )
   input <- .fis$list_target_resource_types_input(maxResults = maxResults, nextToken = nextToken)

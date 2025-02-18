@@ -41,7 +41,7 @@ of the request. For more information, see \href{https://docs.aws.amazon.com/ec2/
 Constraints: Up to 255 UTF-8 characters in length.}
 }
 \description{
-Creates a managed prefix list. You can specify one or more entries for the prefix list. Each entry consists of a CIDR block and an optional description.
+Creates a managed prefix list. You can specify entries for the prefix list. Each entry consists of a CIDR block and an optional description.
 
 See \url{https://www.paws-r-sdk.com/docs/ec2_create_managed_prefix_list/} for full documentation.
 }

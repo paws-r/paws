@@ -209,6 +209,18 @@ NULL
   return(populate(args, shape))
 }
 
+.accessanalyzer$get_findings_statistics_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(analyzerArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.accessanalyzer$get_findings_statistics_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(findingsStatistics = structure(list(structure(list(externalAccessFindingsStatistics = structure(list(resourceTypeStatistics = structure(list(structure(list(totalActivePublic = structure(logical(0), tags = list(type = "integer", box = TRUE)), totalActiveCrossAccount = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "map")), totalActiveFindings = structure(logical(0), tags = list(type = "integer", box = TRUE)), totalArchivedFindings = structure(logical(0), tags = list(type = "integer", box = TRUE)), totalResolvedFindings = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), unusedAccessFindingsStatistics = structure(list(unusedAccessTypeStatistics = structure(list(structure(list(unusedAccessType = structure(logical(0), tags = list(type = "string")), total = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), topAccounts = structure(list(structure(list(account = structure(logical(0), tags = list(type = "string")), numberOfActiveFindings = structure(logical(0), tags = list(type = "integer", box = TRUE)), details = structure(list(structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), totalActiveFindings = structure(logical(0), tags = list(type = "integer", box = TRUE)), totalArchivedFindings = structure(logical(0), tags = list(type = "integer", box = TRUE)), totalResolvedFindings = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "list")), lastUpdatedAt = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .accessanalyzer$get_generated_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(jobId = structure(logical(0), tags = list(location = "uri", locationName = "jobId", type = "string")), includeResourcePlaceholders = structure(logical(0), tags = list(location = "querystring", locationName = "includeResourcePlaceholders", type = "boolean", box = TRUE)), includeServiceLevelTemplate = structure(logical(0), tags = list(location = "querystring", locationName = "includeServiceLevelTemplate", type = "boolean", box = TRUE))), tags = list(type = "structure"))

@@ -2,7 +2,7 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_assign_private_ip_addresses}
 \alias{ec2_assign_private_ip_addresses}
-\title{Assigns one or more secondary private IP addresses to the specified
+\title{Assigns the specified secondary private IP addresses to the specified
 network interface}
 \usage{
 ec2_assign_private_ip_addresses(
@@ -15,11 +15,11 @@ ec2_assign_private_ip_addresses(
 )
 }
 \arguments{
-\item{Ipv4Prefixes}{One or more IPv4 prefixes assigned to the network interface. You cannot
+\item{Ipv4Prefixes}{One or more IPv4 prefixes assigned to the network interface. You can't
 use this option if you use the \code{Ipv4PrefixCount} option.}
 
 \item{Ipv4PrefixCount}{The number of IPv4 prefixes that Amazon Web Services automatically
-assigns to the network interface. You cannot use this option if you use
+assigns to the network interface. You can't use this option if you use
 the \verb{Ipv4 Prefixes} option.}
 
 \item{NetworkInterfaceId}{[required] The ID of the network interface.}
@@ -40,7 +40,7 @@ another network interface or instance to be reassigned to the specified
 network interface.}
 }
 \description{
-Assigns one or more secondary private IP addresses to the specified network interface.
+Assigns the specified secondary private IP addresses to the specified network interface.
 
 See \url{https://www.paws-r-sdk.com/docs/ec2_assign_private_ip_addresses/} for full documentation.
 }

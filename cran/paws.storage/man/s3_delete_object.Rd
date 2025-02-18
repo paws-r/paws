@@ -26,7 +26,7 @@ bucket, you must use virtual-hosted-style requests in the format
 requests are not supported. Directory bucket names must be unique in the
 chosen Zone (Availability Zone or Local Zone). Bucket names must follow
 the format \code{ bucket-base-name--zone-id--x-s3} (for example,
-\code{ DOC-EXAMPLE-BUCKET--usw2-az1--x-s3}). For information about bucket
+\code{ amzn-s3-demo-bucket--usw2-az1--x-s3}). For information about bucket
 naming restrictions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html}{Directory bucket naming rules}
 in the \emph{Amazon S3 User Guide}.
 
@@ -44,13 +44,13 @@ in the \emph{Amazon S3 User Guide}.
 Access points and Object Lambda access points are not supported by
 directory buckets.
 
-\strong{S3 on Outposts} - When you use this action with Amazon S3 on
-Outposts, you must direct requests to the S3 on Outposts hostname. The
-S3 on Outposts hostname takes the form
+\strong{S3 on Outposts} - When you use this action with S3 on Outposts, you
+must direct requests to the S3 on Outposts hostname. The S3 on Outposts
+hostname takes the form
 \code{ AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com}.
-When you use this action with S3 on Outposts through the Amazon Web
-Services SDKs, you provide the Outposts access point ARN in place of the
-bucket name. For more information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html}{What is S3 on Outposts?}
+When you use this action with S3 on Outposts, the destination bucket
+must be the Outposts access point ARN or the access point alias. For
+more information about S3 on Outposts, see \href{https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html}{What is S3 on Outposts?}
 in the \emph{Amazon S3 User Guide}.}
 
 \item{Key}{[required] Key name of the object to delete.}
@@ -85,7 +85,7 @@ ETags. If the ETag value does not match, the operation returns a
 doesn't exist, the operation will return a
 \verb{204 Success (No Content) response}.
 
-For more information about conditional requests, see RFC 7232.
+For more information about conditional requests, see \href{https://datatracker.ietf.org/doc/html/rfc7232}{RFC 7232}.
 
 This functionality is only supported for directory buckets.}
 

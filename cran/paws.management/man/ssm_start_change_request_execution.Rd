@@ -69,7 +69,14 @@ could specify the following key-value pairs:
 \itemize{
 \item \verb{Key=Environment,Value=Production}
 \item \verb{Key=Region,Value=us-east-2}
-}}
+}
+
+The \verb{Array Members} maximum value is reported as 1000. This number
+includes capacity reserved for internal operations. When calling the
+\code{\link[=ssm_start_change_request_execution]{start_change_request_execution}}
+action, you can specify a maximum of 5 tags. You can, however, use the
+\code{\link[=ssm_add_tags_to_resource]{add_tags_to_resource}} action to add up to a
+total of 50 tags to an existing change request configuration.}
 
 \item{ScheduledEndTime}{The time that the requester expects the runbook workflow related to the
 change request to complete. The time is an estimate only that the

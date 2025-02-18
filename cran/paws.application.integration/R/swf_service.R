@@ -12,13 +12,13 @@ NULL
 #' Coordinating tasks in a workflow involves managing intertask
 #' dependencies, scheduling, and concurrency in accordance with the logical
 #' flow of the application.
-#'
+#' 
 #' Amazon SWF gives you full control over implementing tasks and
 #' coordinating them without worrying about underlying complexities such as
 #' tracking their progress and maintaining their state.
-#'
+#' 
 #' This documentation serves as reference only. For a broader overview of
-#' the Amazon SWF programming model, see the *\href{https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-welcome.html}{Amazon SWF Developer Guide}* .
+#' the Amazon SWF programming model, see the *\href{https://docs.aws.amazon.com/amazonswf/latest/developerguide/}{Amazon SWF Developer Guide}* .
 #'
 #' @param
 #' config
@@ -152,12 +152,7 @@ NULL
 #'
 #' @rdname swf
 #' @export
-swf <- function(
-  config = list(),
-  credentials = list(),
-  endpoint = NULL,
-  region = NULL
-) {
+swf <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
   config <- merge_config(
     config,
     list(
@@ -178,36 +173,7 @@ swf <- function(
 
 .swf$metadata <- list(
   service_name = "swf",
-  endpoints = list(
-    "^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(
-      endpoint = "swf.{region}.amazonaws.com",
-      global = FALSE
-    ),
-    "^cn\\-\\w+\\-\\d+$" = list(
-      endpoint = "swf.{region}.amazonaws.com.cn",
-      global = FALSE
-    ),
-    "^us\\-gov\\-\\w+\\-\\d+$" = list(
-      endpoint = "swf.{region}.amazonaws.com",
-      global = FALSE
-    ),
-    "^us\\-iso\\-\\w+\\-\\d+$" = list(
-      endpoint = "swf.{region}.c2s.ic.gov",
-      global = FALSE
-    ),
-    "^us\\-isob\\-\\w+\\-\\d+$" = list(
-      endpoint = "swf.{region}.sc2s.sgov.gov",
-      global = FALSE
-    ),
-    "^eu\\-isoe\\-\\w+\\-\\d+$" = list(
-      endpoint = "swf.{region}.cloud.adc-e.uk",
-      global = FALSE
-    ),
-    "^us\\-isof\\-\\w+\\-\\d+$" = list(
-      endpoint = "swf.{region}.csp.hci.ic.gov",
-      global = FALSE
-    )
-  ),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "swf.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "swf.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "swf.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "swf.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "swf.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "swf.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "swf.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "SWF",
   api_version = "2012-01-25",
   signing_name = "swf",

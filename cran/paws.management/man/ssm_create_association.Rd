@@ -93,7 +93,7 @@ store the output details of the request.}
 \item{AutomationTargetParameterName}{Choose the parameter that will define how your automation will branch
 out. This target is required for associations that use an Automation
 runbook and target resources by using rate controls. Automation is a
-capability of Amazon Web Services Systems Manager.}
+tool in Amazon Web Services Systems Manager.}
 
 \item{MaxErrors}{The number of errors that are allowed before the system stops sending
 requests to run the association on additional targets. You can specify
@@ -195,7 +195,7 @@ of a key and an optional value, both of which you define.}
 \item{AlarmConfiguration}{}
 }
 \description{
-A State Manager association defines the state that you want to maintain on your managed nodes. For example, an association can specify that anti-virus software must be installed and running on your managed nodes, or that certain ports must be closed. For static targets, the association specifies a schedule for when the configuration is reapplied. For dynamic targets, such as an Amazon Web Services resource group or an Amazon Web Services autoscaling group, State Manager, a capability of Amazon Web Services Systems Manager applies the configuration when new managed nodes are added to the group. The association also specifies actions to take when applying the configuration. For example, an association for anti-virus software might run once a day. If the software isn't installed, then State Manager installs it. If the software is installed, but the service isn't running, then the association might instruct State Manager to start the service.
+A State Manager association defines the state that you want to maintain on your managed nodes. For example, an association can specify that anti-virus software must be installed and running on your managed nodes, or that certain ports must be closed. For static targets, the association specifies a schedule for when the configuration is reapplied. For dynamic targets, such as an Amazon Web Services resource group or an Amazon Web Services autoscaling group, State Manager, a tool in Amazon Web Services Systems Manager applies the configuration when new managed nodes are added to the group. The association also specifies actions to take when applying the configuration. For example, an association for anti-virus software might run once a day. If the software isn't installed, then State Manager installs it. If the software is installed, but the service isn't running, then the association might instruct State Manager to start the service.
 
 See \url{https://www.paws-r-sdk.com/docs/ssm_create_association/} for full documentation.
 }

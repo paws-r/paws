@@ -111,6 +111,18 @@ NULL
   return(populate(args, shape))
 }
 
+.storagegateway$cancel_cache_report_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(CacheReportARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.storagegateway$cancel_cache_report_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(CacheReportARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .storagegateway$cancel_retrieval_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(GatewayARN = structure(logical(0), tags = list(type = "string")), TapeARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -255,6 +267,18 @@ NULL
   return(populate(args, shape))
 }
 
+.storagegateway$delete_cache_report_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(CacheReportARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.storagegateway$delete_cache_report_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(CacheReportARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .storagegateway$delete_chap_credentials_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(TargetARN = structure(logical(0), tags = list(type = "string")), InitiatorName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -396,6 +420,18 @@ NULL
 .storagegateway$describe_cache_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(GatewayARN = structure(logical(0), tags = list(type = "string")), DiskIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), CacheAllocatedInBytes = structure(logical(0), tags = list(type = "long")), CacheUsedPercentage = structure(logical(0), tags = list(type = "double")), CacheDirtyPercentage = structure(logical(0), tags = list(type = "double")), CacheHitPercentage = structure(logical(0), tags = list(type = "double")), CacheMissPercentage = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.storagegateway$describe_cache_report_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(CacheReportARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.storagegateway$describe_cache_report_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(CacheReportInfo = structure(list(CacheReportARN = structure(logical(0), tags = list(type = "string")), CacheReportStatus = structure(logical(0), tags = list(type = "string")), ReportCompletionPercent = structure(logical(0), tags = list(type = "integer")), EndTime = structure(logical(0), tags = list(type = "timestamp")), Role = structure(logical(0), tags = list(type = "string")), FileShareARN = structure(logical(0), tags = list(type = "string")), LocationARN = structure(logical(0), tags = list(type = "string")), StartTime = structure(logical(0), tags = list(type = "timestamp")), InclusionFilters = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), ExclusionFilters = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), ReportName = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -651,6 +687,18 @@ NULL
   return(populate(args, shape))
 }
 
+.storagegateway$list_cache_reports_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Marker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.storagegateway$list_cache_reports_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(CacheReportList = structure(list(structure(list(CacheReportARN = structure(logical(0), tags = list(type = "string")), CacheReportStatus = structure(logical(0), tags = list(type = "string")), ReportCompletionPercent = structure(logical(0), tags = list(type = "integer")), EndTime = structure(logical(0), tags = list(type = "timestamp")), Role = structure(logical(0), tags = list(type = "string")), FileShareARN = structure(logical(0), tags = list(type = "string")), LocationARN = structure(logical(0), tags = list(type = "string")), StartTime = structure(logical(0), tags = list(type = "timestamp")), InclusionFilters = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), ExclusionFilters = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), ReportName = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), Marker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .storagegateway$list_file_shares_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(GatewayARN = structure(logical(0), tags = list(type = "string")), Limit = structure(logical(0), tags = list(type = "integer")), Marker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -888,6 +936,18 @@ NULL
 .storagegateway$start_availability_monitor_test_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(GatewayARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.storagegateway$start_cache_report_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(FileShareARN = structure(logical(0), tags = list(type = "string")), Role = structure(logical(0), tags = list(type = "string")), LocationARN = structure(logical(0), tags = list(type = "string")), BucketRegion = structure(logical(0), tags = list(type = "string")), VPCEndpointDNSName = structure(logical(0), tags = list(type = "string")), InclusionFilters = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), ExclusionFilters = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), ClientToken = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.storagegateway$start_cache_report_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(CacheReportARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

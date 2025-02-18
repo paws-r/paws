@@ -2,7 +2,7 @@
 % Please edit documentation in R/rds_operations.R
 \name{rds_stop_db_instance}
 \alias{rds_stop_db_instance}
-\title{Stops an Amazon RDS DB instance}
+\title{Stops an Amazon RDS DB instance temporarily}
 \usage{
 rds_stop_db_instance(DBInstanceIdentifier, DBSnapshotIdentifier = NULL)
 }
@@ -13,7 +13,7 @@ rds_stop_db_instance(DBInstanceIdentifier, DBSnapshotIdentifier = NULL)
 immediately before the DB instance is stopped.}
 }
 \description{
-Stops an Amazon RDS DB instance. When you stop a DB instance, Amazon RDS retains the DB instance's metadata, including its endpoint, DB parameter group, and option group membership. Amazon RDS also retains the transaction logs so you can do a point-in-time restore if necessary.
+Stops an Amazon RDS DB instance temporarily. When you stop a DB instance, Amazon RDS retains the DB instance's metadata, including its endpoint, DB parameter group, and option group membership. Amazon RDS also retains the transaction logs so you can do a point-in-time restore if necessary. The instance restarts automatically after 7 days.
 
 See \url{https://www.paws-r-sdk.com/docs/rds_stop_db_instance/} for full documentation.
 }
