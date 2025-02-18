@@ -45,6 +45,7 @@ test_that("read_api", {
           regionRegex = "^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$",
           services = list(
             baz = list(
+              partitionEndpoint = "aws-global",
               endpoints = list(
                 "aws-global" = list(
                   hostname = "baz.us-east-1.amazonaws.com",
@@ -92,7 +93,47 @@ test_that("merge_examples", {
 test_that("merge_paginators", {
   api <- list(operations = list(DescribeDestinations = list(), GetLogEvents = list()))
   paginator <- list("DescribeDestinations" = list("input_token" = "nextToken"))
-  ret <- make.paws:::merge_paginators(api, "logs", paginator)
+  ret <- merge_paginators(api, "logs", paginator)
   expect_equal(ret$operations$DescribeDestinations$paginators$input_token, "nextToken")
   expect_equal(ret$operations$DescribeDestinations$paginators$input_token, "nextToken")
+})
+
+test_that("merge_region_config", {
+  region_config <- list(
+    partitions = list(
+      list(
+        defaults = list(hostname = "{service}.{region}.{dnsSuffix}"),
+        dnsSuffix = "amazon.aws.com",
+        regionRegex = "^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$",
+        services = list(
+          iam = list(
+            isRegionalized = FALSE,
+            partitionEndpoint = "aws-global",
+            endpoints = list(
+              "aws-global" = list(
+                hostname = "iam.amazonaws.com",
+                credentialScope = list(region = "us-east-1")
+              )
+            )
+          )
+        )
+      )
+    )
+  )
+  api <- list(metadata = list(endpointPrefix = "iam"))
+  actual <- merge_region_config(api, region_config)
+  expect_equal(
+    actual,
+    list(
+      metadata = list(endpointPrefix = "iam"),
+      region_config = list(
+        "aws-global" = list(endpoint = "iam.amazonaws.com", global = TRUE),
+        "us-east-1" = list(endpoint = "iam.amazonaws.com", global = TRUE),
+        "^(us|eu|ap|sa|ca|me|af|il|mx)\\\\-\\\\w+\\\\-\\\\d+$" = list(
+          endpoint = "iam.amazonaws.com",
+          global = FALSE
+        )
+      )
+    )
+  )
 })

@@ -1,41 +1,12 @@
 cache <- new.env(parent = emptyenv())
 
 # Read a given API's definition and documentation files.
-# aws-sdk-js deprecated and apis is not being updated
-# TODO: short term migrate to botocore jsons
-read_api_old <- function(api_name, path) {
-  api_path <- file.path(path, "apis")
-  region_config_path <- file.path(path, "lib/region_config_data.json")
-
-  version <- get_latest_api_version(api_name, api_path)
-  files <- get_api_files(version, api_path)
-  if (length(version) == 0 || length(files) == 0) stop("Invalid API")
-
-  api <- jsonlite::read_json(files$normal)
-  api <- fix_operation_names(api)
-
-  if (!is.null(files$examples)) {
-    examples <- jsonlite::read_json(files$examples)
-    api <- merge_examples(api, examples$examples)
-  }
-  if (!is.null(files$paginators)) {
-    paginators <- jsonlite::read_json(files$paginators)
-    api <- merge_paginators(api, api_name, paginators$pagination)
-  }
-  api <- merge_eventstream(api)
-  region_config <- jsonlite::read_json(region_config_path)
-  api <- merge_region_config(api, region_config)
-  api <- fix_region_config(api)
-
-  return(api)
-}
-
 read_api <- function(api_name, path) {
   api_path <- file.path(path, "botocore", "data")
   region_config_path <- file.path(api_path, "endpoints.json")
 
-  version <- get_latest_api_version_v2(api_name, api_path)
-  files <- get_api_files_v2(version, api_name, api_path)
+  version <- get_latest_api_version(api_name, api_path)
+  files <- get_api_files(version, api_name, api_path)
   if (length(version) == 0 || length(files) == 0) stop("Invalid API")
 
   api <- jsonlite::read_json(files$service)
@@ -51,36 +22,21 @@ read_api <- function(api_name, path) {
   }
   api <- merge_eventstream(api)
   region_config <- get_cache_file(region_config_path)
-  api <- merge_region_config_v2(api, region_config)
+  api <- merge_region_config(api, region_config)
   api <- fix_region_config(api)
 
   return(api)
 }
 
 # Returns the latest version of the given API.
-get_latest_api_version <- function(name, path) {
-  files <- list.files(path, pattern = sprintf("^%s-.{10}.normal.json", name))
-  versions <- unique(gsub("^(.+)\\..+\\..+", "\\1", files))
-  latest <- utils::tail(sort(versions), 1)
-  return(latest)
-}
-
-get_latest_api_version_v2 <- function(api_name, path) {
+get_latest_api_version <- function(api_name, path) {
   dir_ls <- list.files(file.path(path, api_name))
   if (length(dir_ls) == 0) stop("Invalid API")
   return(max(as.Date(dir_ls)))
 }
 
 # Returns a list of API files for a given API version.
-get_api_files <- function(version, path) {
-  files <- list.files(path, pattern = sprintf("^%s", version), full.names = TRUE)
-  types <- gsub("^.+\\.(.+)\\..+", "\\1", basename(files))
-  files <- as.list(files)
-  names(files) <- types
-  return(files)
-}
-
-get_api_files_v2 <- function(version, api_name, api_path) {
+get_api_files <- function(version, api_name, api_path) {
   files <- list.files(file.path(api_path, api_name, version), full.names = TRUE)
   types <- gsub("(-\\d.json)$", "", basename(files))
   names(files) <- types
@@ -183,29 +139,52 @@ merge_region_config <- function(api, region_config) {
   return(api)
 }
 
-merge_region_config_v2 <- function(api, region_config) {
-  service <- service_name(api)
-  endpoint_prefix <- api$metadata$endpointPrefix
+merge_region_config <- function(api, region_config) {
+  service <- api$metadata$endpointPrefix
   ep <- list()
-  for (partition in region_config$partitions) {
-    dnsSuffix <- partition$dnsSuffix
-    hostname <- partition$defaults$hostname
-    region_regex <- gsub("\\", "\\\\", partition$regionRegex, fixed = T)
-    if (
-      !is.null(global <- partition$services[[endpoint_prefix]]$endpoints[["aws-global"]])
-    ) {
-      endpoint <- build_endpoint(endpoint_prefix, global$hostname, dnsSuffix)
+  for (partition in region_config$partition) {
+    regionRegex <- gsub("\\", "\\\\", partition$regionRegex, fixed = T)
+    # partition_alias <- partition$partition
+
+    service_data <- partition$services[[service]]
+
+    partition_defaults <- partition$defaults %||% list()
+    service_defaults <- service_data$defaults %||% list()
+    dnsSuffix <- service_data$dnsSuffix %||% partition$dnsSuffix
+
+    partitionEndpoint <- service_data$partitionEnd %||% ""
+    isRegionalized <- service_data$isRegionalized %||% TRUE
+
+    if (!is.null(global <- service_data$endpoints[[partitionEndpoint]])) {
+      endpoint <- build_endpoint(service, global$hostname, dnsSuffix)
       endpoint <- list(endpoint = endpoint, global = TRUE)
-      ep[["aws-global"]] <- endpoint
+      ep[[partitionEndpoint]] <- endpoint
       if (!is.null(region_name <- global$credentialScope$region)) {
         ep[[region_name]] <- endpoint
       }
     }
+
+    if (nzchar(partitionEndpoint) && !isRegionalized) {
+      endpoint_name <- partitionEndpoint
+      result <- service_data$endpoints[[endpoint_name]]
+    } else {
+      result <- partition_defaults
+    }
+
+    # If dnsSuffix has not already been consumed from a variant definition
+    if (!('dnsSuffix' %in% names(result))) {
+      result[['dnsSuffix']] <- dnsSuffix
+    }
+
+    # Merge in the service defaults then the partition defaults.
+    result <- merge_keys(result, service_defaults)
+    result <- merge_keys(result, partition_defaults)
+
     endpoint <- list(
-      endpoint = build_endpoint(endpoint_prefix, hostname, dnsSuffix),
+      endpoint = build_endpoint(service, result$hostname, result$dnsSuffix),
       global = FALSE
     )
-    ep[[region_regex]] <- endpoint
+    ep[[regionRegex]] <- endpoint
   }
   api$region_config <- ep
   return(api)
@@ -214,6 +193,15 @@ merge_region_config_v2 <- function(api, region_config) {
 build_endpoint <- function(service, hostname, dnsSuffix) {
   endpoint <- gsub("{service}", service, hostname, fixed = TRUE)
   gsub("{dnsSuffix}", dnsSuffix, endpoint, fixed = TRUE)
+}
+
+merge_keys <- function(result, from_data) {
+  for (key in names(from_data)) {
+    if (!(key %in% names(result))) {
+      result[[key]] <- from_data[[key]]
+    }
+  }
+  return(result)
 }
 
 # Make sure each operation has an exportable name. CloudFront's operation `name`
