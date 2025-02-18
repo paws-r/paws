@@ -1787,6 +1787,9 @@ appstream_create_image_builder_streaming_url <- function(Name, Validity = NULL) 
 #'         ResourceIdentifier = "string",
 #'         Domains = list(
 #'           "string"
+#'         ),
+#'         DomainsRequireAdminConsent = list(
+#'           "string"
 #'         )
 #'       )
 #'     ),
@@ -1837,6 +1840,9 @@ appstream_create_image_builder_streaming_url <- function(Name, Validity = NULL) 
 #'       ConnectorType = "HOMEFOLDERS"|"GOOGLE_DRIVE"|"ONE_DRIVE",
 #'       ResourceIdentifier = "string",
 #'       Domains = list(
+#'         "string"
+#'       ),
+#'       DomainsRequireAdminConsent = list(
 #'         "string"
 #'       )
 #'     )
@@ -4205,6 +4211,9 @@ appstream_describe_sessions <- function(StackName, FleetName, UserId = NULL, Nex
 #'           ConnectorType = "HOMEFOLDERS"|"GOOGLE_DRIVE"|"ONE_DRIVE",
 #'           ResourceIdentifier = "string",
 #'           Domains = list(
+#'             "string"
+#'           ),
+#'           DomainsRequireAdminConsent = list(
 #'             "string"
 #'           )
 #'         )
@@ -6611,6 +6620,9 @@ appstream_update_image_permissions <- function(Name, SharedAccountId, ImagePermi
 #'         ResourceIdentifier = "string",
 #'         Domains = list(
 #'           "string"
+#'         ),
+#'         DomainsRequireAdminConsent = list(
+#'           "string"
 #'         )
 #'       )
 #'     ),
@@ -6661,6 +6673,9 @@ appstream_update_image_permissions <- function(Name, SharedAccountId, ImagePermi
 #'       ConnectorType = "HOMEFOLDERS"|"GOOGLE_DRIVE"|"ONE_DRIVE",
 #'       ResourceIdentifier = "string",
 #'       Domains = list(
+#'         "string"
+#'       ),
+#'       DomainsRequireAdminConsent = list(
 #'         "string"
 #'       )
 #'     )

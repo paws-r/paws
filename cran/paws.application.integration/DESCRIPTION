@@ -1,6 +1,6 @@
 Package: paws.application.integration
 Title: 'Amazon Web Services' Application Integration Services
-Version: 0.8.0
+Version: 0.9.0
 Authors@R: c(
     person("David", "Kretch", , "david.kretch@gmail.com", role = "aut"),
     person("Adam", "Banker", , "adam.banker39@gmail.com", role = "aut"),

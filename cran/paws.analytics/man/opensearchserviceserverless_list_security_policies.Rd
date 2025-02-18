@@ -6,16 +6,17 @@
 policies}
 \usage{
 opensearchserviceserverless_list_security_policies(
-  maxResults = NULL,
-  nextToken = NULL,
+  type,
   resource = NULL,
-  type
+  nextToken = NULL,
+  maxResults = NULL
 )
 }
 \arguments{
-\item{maxResults}{An optional parameter that specifies the maximum number of results to
-return. You can use \code{nextToken} to get the next page of results. The
-default is 20.}
+\item{type}{[required] The type of policy.}
+
+\item{resource}{Resource filters (can be collection or indexes) that policies can apply
+to.}
 
 \item{nextToken}{If your initial
 \code{\link[=opensearchserviceserverless_list_security_policies]{list_security_policies}}
@@ -24,10 +25,9 @@ operation returns a \code{nextToken}, you can include the returned
 \code{\link[=opensearchserviceserverless_list_security_policies]{list_security_policies}}
 operations, which returns results in the next page.}
 
-\item{resource}{Resource filters (can be collection or indexes) that policies can apply
-to.}
-
-\item{type}{[required] The type of policy.}
+\item{maxResults}{An optional parameter that specifies the maximum number of results to
+return. You can use \code{nextToken} to get the next page of results. The
+default is 20.}
 }
 \description{
 Returns information about configured OpenSearch Serverless security policies.

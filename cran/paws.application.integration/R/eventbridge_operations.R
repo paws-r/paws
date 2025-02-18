@@ -1717,7 +1717,7 @@ eventbridge_put_permission <- function(EventBusName = NULL, Action = NULL, Princ
 #'     events](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-events-with-cloudtrail.html#logging-management-events)
 #'     in the *CloudTrail User Guide*, and [Filtering management events
 #'     from Amazon Web Services
-#'     services](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-service-event.html#eb-service-event-cloudtrail)
+#'     services](https://docs.aws.amazon.com/eventbridge/latest/userguide/#eb-service-event-cloudtrail)
 #'     in the *Amazon EventBridge User Guide* .
 #' 
 #'     This value is only valid for rules on the

@@ -29,7 +29,8 @@ details for the Amazon CloudWatch Events event created when you start
 the session.}
 
 \item{Parameters}{The values you want to specify for the parameters defined in the Session
-document.}
+document. For more information about these parameters, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/getting-started-create-preferences-cli.html}{Create a Session Manager preferences document}
+in the \emph{Amazon Web Services Systems Manager User Guide}.}
 }
 \description{
 Initiates a connection to a target (for example, a managed node) for a Session Manager session. Returns a URL and token that can be used to open a WebSocket connection for sending input and receiving outputs.

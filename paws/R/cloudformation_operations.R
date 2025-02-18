@@ -506,12 +506,11 @@ cloudformation_continue_update_rollback <- function(StackName, RoleARN = NULL, R
 #' the template of the stack that you specified.
 #' 
 #' Conditional: You must specify only `TemplateBody` or `TemplateURL`.
-#' @param TemplateURL The location of the file that contains the revised template. The URL
-#' must point to a template (max size: 460,800 bytes) that's located in an
-#' Amazon S3 bucket or a Systems Manager document. CloudFormation generates
-#' the change set by comparing this template with the stack that you
-#' specified. The location for an Amazon S3 bucket must start with
-#' `https://`.
+#' @param TemplateURL The URL of the file that contains the revised template. The URL must
+#' point to a template (max size: 1 MB) that's located in an Amazon S3
+#' bucket or a Systems Manager document. CloudFormation generates the
+#' change set by comparing this template with the stack that you specified.
+#' The location for an Amazon S3 bucket must start with `https://`.
 #' 
 #' Conditional: You must specify only `TemplateBody` or `TemplateURL`.
 #' @param UsePreviousTemplate Whether to reuse the template that's associated with the stack to create
@@ -549,6 +548,8 @@ cloudformation_continue_update_rollback <- function(StackName, RoleARN = NULL, R
 #'     -   [AWS::IAM::Group](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-group.html)
 #' 
 #'     -   [AWS::IAM::InstanceProfile](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html)
+#' 
+#'     -   [AWS::IAM::ManagedPolicy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-managedpolicy.html)
 #' 
 #'     -   [AWS::IAM::Policy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-policy.html)
 #' 
@@ -901,9 +902,9 @@ cloudformation_create_generated_template <- function(Resources = NULL, Generated
 #' 
 #' Conditional: You must specify either the `TemplateBody` or the
 #' `TemplateURL` parameter, but not both.
-#' @param TemplateURL Location of file containing the template body. The URL must point to a
-#' template (max size: 460,800 bytes) that's located in an Amazon S3 bucket
-#' or a Systems Manager document. The location for an Amazon S3 bucket must
+#' @param TemplateURL The URL of a file containing the template body. The URL must point to a
+#' template (max size: 1 MB) that's located in an Amazon S3 bucket or a
+#' Systems Manager document. The location for an Amazon S3 bucket must
 #' start with `https://`.
 #' 
 #' Conditional: You must specify either the `TemplateBody` or the
@@ -956,6 +957,8 @@ cloudformation_create_generated_template <- function(Resources = NULL, Generated
 #'     -   [AWS::IAM::Group](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-group.html)
 #' 
 #'     -   [AWS::IAM::InstanceProfile](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html)
+#' 
+#'     -   [AWS::IAM::ManagedPolicy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-managedpolicy.html)
 #' 
 #'     -   [AWS::IAM::Policy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-policy.html)
 #' 
@@ -1190,7 +1193,7 @@ cloudformation_create_stack <- function(StackName, TemplateBody = NULL, Template
 #'
 #' @param StackSetName &#91;required&#93; The name or unique ID of the stack set that you want to create stack
 #' instances from.
-#' @param Accounts \[Self-managed permissions\] The names of one or more Amazon Web
+#' @param Accounts \[Self-managed permissions\] The account IDs of one or more Amazon Web
 #' Services accounts that you want to create stack instances in the
 #' specified Region(s) for.
 #' 
@@ -1337,6 +1340,82 @@ cloudformation_create_stack_instances <- function(StackSetName, Accounts = NULL,
 }
 .cloudformation$operations$create_stack_instances <- cloudformation_create_stack_instances
 
+#' Creates a refactor across multiple stacks, with the list of stacks and
+#' resources that are affected
+#'
+#' @description
+#' Creates a refactor across multiple stacks, with the list of stacks and
+#' resources that are affected.
+#'
+#' @usage
+#' cloudformation_create_stack_refactor(Description, EnableStackCreation,
+#'   ResourceMappings, StackDefinitions)
+#'
+#' @param Description A description to help you identify the stack refactor.
+#' @param EnableStackCreation Determines if a new stack is created with the refactor.
+#' @param ResourceMappings The mappings for the stack resource `Source` and stack resource
+#' `Destination`.
+#' @param StackDefinitions &#91;required&#93; The stacks being refactored.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   StackRefactorId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_stack_refactor(
+#'   Description = "string",
+#'   EnableStackCreation = TRUE|FALSE,
+#'   ResourceMappings = list(
+#'     list(
+#'       Source = list(
+#'         StackName = "string",
+#'         LogicalResourceId = "string"
+#'       ),
+#'       Destination = list(
+#'         StackName = "string",
+#'         LogicalResourceId = "string"
+#'       )
+#'     )
+#'   ),
+#'   StackDefinitions = list(
+#'     list(
+#'       StackName = "string",
+#'       TemplateBody = "string",
+#'       TemplateURL = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudformation_create_stack_refactor
+#'
+#' @aliases cloudformation_create_stack_refactor
+cloudformation_create_stack_refactor <- function(Description = NULL, EnableStackCreation = NULL, ResourceMappings = NULL, StackDefinitions) {
+  op <- new_operation(
+    name = "CreateStackRefactor",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudformation$create_stack_refactor_input(Description = Description, EnableStackCreation = EnableStackCreation, ResourceMappings = ResourceMappings, StackDefinitions = StackDefinitions)
+  output <- .cloudformation$create_stack_refactor_output()
+  config <- get_config()
+  svc <- .cloudformation$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudformation$operations$create_stack_refactor <- cloudformation_create_stack_refactor
+
 #' Creates a stack set
 #'
 #' @description
@@ -1361,9 +1440,10 @@ cloudformation_create_stack_instances <- function(StackSetName, Accounts = NULL,
 #' 
 #' Conditional: You must specify either the TemplateBody or the TemplateURL
 #' parameter, but not both.
-#' @param TemplateURL The location of the file that contains the template body. The URL must
-#' point to a template (maximum size: 460,800 bytes) that's located in an
-#' Amazon S3 bucket or a Systems Manager document.
+#' @param TemplateURL The URL of a file that contains the template body. The URL must point to
+#' a template (maximum size: 1 MB) that's located in an Amazon S3 bucket or
+#' a Systems Manager document. The location for an Amazon S3 bucket must
+#' start with `https://`.
 #' 
 #' Conditional: You must specify either the TemplateBody or the TemplateURL
 #' parameter, but not both.
@@ -1421,8 +1501,8 @@ cloudformation_create_stack_instances <- function(StackSetName, Accounts = NULL,
 #'     directly from the processed template, without first reviewing the
 #'     resulting changes in a change set. To create the stack set directly,
 #'     you must acknowledge this capability. For more information, see
-#'     [Using CloudFormation Macros to Perform Custom Processing on
-#'     Templates](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-macros.html).
+#'     [Perform custom processing on CloudFormation templates with template
+#'     macros](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-macros.html).
 #' 
 #'     Stack sets with service-managed permissions don't currently support
 #'     the use of macros in templates. (This includes the
@@ -1449,9 +1529,9 @@ cloudformation_create_stack_instances <- function(StackSetName, Accounts = NULL,
 #' 
 #' Specify an IAM role only if you are using customized administrator roles
 #' to control which users or groups can manage specific stack sets within
-#' the same administrator account. For more information, see
-#' [Prerequisites: Granting Permissions for Stack Set
-#' Operations](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-prereqs.html)
+#' the same administrator account. For more information, see [Prerequisites
+#' for using
+#' StackSets](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-prereqs.html)
 #' in the *CloudFormation User Guide*.
 #' @param ExecutionRoleName The name of the IAM execution role to use to create the stack set. If
 #' you do not specify an execution role, CloudFormation uses the
@@ -1466,14 +1546,14 @@ cloudformation_create_stack_instances <- function(StackSetName, Accounts = NULL,
 #' 
 #' -   With `self-managed` permissions, you must create the administrator
 #'     and execution roles required to deploy to target accounts. For more
-#'     information, see [Grant Self-Managed Stack Set
-#'     Permissions](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-prereqs-self-managed.html).
+#'     information, see [Grant self-managed
+#'     permissions](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-prereqs-self-managed.html).
 #' 
 #' -   With `service-managed` permissions, StackSets automatically creates
 #'     the IAM roles required to deploy to accounts managed by
-#'     Organizations. For more information, see [Grant Service-Managed
-#'     Stack Set
-#'     Permissions](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/).
+#'     Organizations. For more information, see [Activate trusted access
+#'     for stack sets with
+#'     Organizations](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-activate-trusted-access.html).
 #' @param AutoDeployment Describes whether StackSets automatically deploys to Organizations
 #' accounts that are added to the target organization or organizational
 #' unit (OU). Specify only if `PermissionModel` is `SERVICE_MANAGED`.
@@ -1910,7 +1990,7 @@ cloudformation_delete_stack <- function(StackName, RetainResources = NULL, RoleA
 #'
 #' @param StackSetName &#91;required&#93; The name or unique ID of the stack set that you want to delete stack
 #' instances for.
-#' @param Accounts \[Self-managed permissions\] The names of the Amazon Web Services
+#' @param Accounts \[Self-managed permissions\] The account IDs of the Amazon Web Services
 #' accounts that you want to delete stack instances for.
 #' 
 #' You can specify `Accounts` or `DeploymentTargets`, but not both.
@@ -2400,7 +2480,7 @@ cloudformation_describe_change_set <- function(ChangeSetName, StackName = NULL, 
 #' [`describe_change_set_hooks`][cloudformation_describe_change_set_hooks]
 #' response output, that identifies the next page of information that you
 #' want to retrieve.
-#' @param LogicalResourceId If specified, lists only the hooks related to the specified
+#' @param LogicalResourceId If specified, lists only the Hooks related to the specified
 #' `LogicalResourceId`.
 #'
 #' @return
@@ -2888,7 +2968,7 @@ cloudformation_describe_stack_drift_detection_status <- function(StackDriftDetec
 #'       Timestamp = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       ResourceStatus = "CREATE_IN_PROGRESS"|"CREATE_FAILED"|"CREATE_COMPLETE"|"DELETE_IN_PROGRESS"|"DELETE_FAILED"|"DELETE_COMPLETE"|"DELETE_SKIPPED"|"UPDATE_IN_PROGRESS"|"UPDATE_FAILED"|"UPDATE_COMPLETE"|"IMPORT_FAILED"|"IMPORT_COMPLETE"|"IMPORT_IN_PROGRESS"|"IMPORT_ROLLBACK_IN_PROGRESS"|"IMPORT_ROLLBACK_FAILED"|"IMPORT_ROLLBACK_COMPLETE"|"UPDATE_ROLLBACK_IN_PROGRESS"|"UPDATE_ROLLBACK_COMPLETE"|"UPDATE_ROLLBACK_FAILED"|"ROLLBACK_IN_PROGRESS"|"ROLLBACK_COMPLETE"|"ROLLBACK_FAILED",
+#'       ResourceStatus = "CREATE_IN_PROGRESS"|"CREATE_FAILED"|"CREATE_COMPLETE"|"DELETE_IN_PROGRESS"|"DELETE_FAILED"|"DELETE_COMPLETE"|"DELETE_SKIPPED"|"UPDATE_IN_PROGRESS"|"UPDATE_FAILED"|"UPDATE_COMPLETE"|"IMPORT_FAILED"|"IMPORT_COMPLETE"|"IMPORT_IN_PROGRESS"|"IMPORT_ROLLBACK_IN_PROGRESS"|"IMPORT_ROLLBACK_FAILED"|"IMPORT_ROLLBACK_COMPLETE"|"EXPORT_FAILED"|"EXPORT_COMPLETE"|"EXPORT_IN_PROGRESS"|"EXPORT_ROLLBACK_IN_PROGRESS"|"EXPORT_ROLLBACK_FAILED"|"EXPORT_ROLLBACK_COMPLETE"|"UPDATE_ROLLBACK_IN_PROGRESS"|"UPDATE_ROLLBACK_COMPLETE"|"UPDATE_ROLLBACK_FAILED"|"ROLLBACK_IN_PROGRESS"|"ROLLBACK_COMPLETE"|"ROLLBACK_FAILED",
 #'       ResourceStatusReason = "string",
 #'       ResourceProperties = "string",
 #'       ClientRequestToken = "string",
@@ -3040,6 +3120,64 @@ cloudformation_describe_stack_instance <- function(StackSetName, StackInstanceAc
 }
 .cloudformation$operations$describe_stack_instance <- cloudformation_describe_stack_instance
 
+#' Describes the stack refactor status
+#'
+#' @description
+#' Describes the stack refactor status.
+#'
+#' @usage
+#' cloudformation_describe_stack_refactor(StackRefactorId)
+#'
+#' @param StackRefactorId &#91;required&#93; The ID associated with the stack refactor created from the
+#' [`create_stack_refactor`][cloudformation_create_stack_refactor] action.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Description = "string",
+#'   StackRefactorId = "string",
+#'   StackIds = list(
+#'     "string"
+#'   ),
+#'   ExecutionStatus = "UNAVAILABLE"|"AVAILABLE"|"OBSOLETE"|"EXECUTE_IN_PROGRESS"|"EXECUTE_COMPLETE"|"EXECUTE_FAILED"|"ROLLBACK_IN_PROGRESS"|"ROLLBACK_COMPLETE"|"ROLLBACK_FAILED",
+#'   ExecutionStatusReason = "string",
+#'   Status = "CREATE_IN_PROGRESS"|"CREATE_COMPLETE"|"CREATE_FAILED"|"DELETE_IN_PROGRESS"|"DELETE_COMPLETE"|"DELETE_FAILED",
+#'   StatusReason = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_stack_refactor(
+#'   StackRefactorId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudformation_describe_stack_refactor
+#'
+#' @aliases cloudformation_describe_stack_refactor
+cloudformation_describe_stack_refactor <- function(StackRefactorId) {
+  op <- new_operation(
+    name = "DescribeStackRefactor",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudformation$describe_stack_refactor_input(StackRefactorId = StackRefactorId)
+  output <- .cloudformation$describe_stack_refactor_output()
+  config <- get_config()
+  svc <- .cloudformation$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudformation$operations$describe_stack_refactor <- cloudformation_describe_stack_refactor
+
 #' Returns a description of the specified resource in the specified stack
 #'
 #' @description
@@ -3077,7 +3215,7 @@ cloudformation_describe_stack_instance <- function(StackSetName, StackInstanceAc
 #'     LastUpdatedTimestamp = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
-#'     ResourceStatus = "CREATE_IN_PROGRESS"|"CREATE_FAILED"|"CREATE_COMPLETE"|"DELETE_IN_PROGRESS"|"DELETE_FAILED"|"DELETE_COMPLETE"|"DELETE_SKIPPED"|"UPDATE_IN_PROGRESS"|"UPDATE_FAILED"|"UPDATE_COMPLETE"|"IMPORT_FAILED"|"IMPORT_COMPLETE"|"IMPORT_IN_PROGRESS"|"IMPORT_ROLLBACK_IN_PROGRESS"|"IMPORT_ROLLBACK_FAILED"|"IMPORT_ROLLBACK_COMPLETE"|"UPDATE_ROLLBACK_IN_PROGRESS"|"UPDATE_ROLLBACK_COMPLETE"|"UPDATE_ROLLBACK_FAILED"|"ROLLBACK_IN_PROGRESS"|"ROLLBACK_COMPLETE"|"ROLLBACK_FAILED",
+#'     ResourceStatus = "CREATE_IN_PROGRESS"|"CREATE_FAILED"|"CREATE_COMPLETE"|"DELETE_IN_PROGRESS"|"DELETE_FAILED"|"DELETE_COMPLETE"|"DELETE_SKIPPED"|"UPDATE_IN_PROGRESS"|"UPDATE_FAILED"|"UPDATE_COMPLETE"|"IMPORT_FAILED"|"IMPORT_COMPLETE"|"IMPORT_IN_PROGRESS"|"IMPORT_ROLLBACK_IN_PROGRESS"|"IMPORT_ROLLBACK_FAILED"|"IMPORT_ROLLBACK_COMPLETE"|"EXPORT_FAILED"|"EXPORT_COMPLETE"|"EXPORT_IN_PROGRESS"|"EXPORT_ROLLBACK_IN_PROGRESS"|"EXPORT_ROLLBACK_FAILED"|"EXPORT_ROLLBACK_COMPLETE"|"UPDATE_ROLLBACK_IN_PROGRESS"|"UPDATE_ROLLBACK_COMPLETE"|"UPDATE_ROLLBACK_FAILED"|"ROLLBACK_IN_PROGRESS"|"ROLLBACK_COMPLETE"|"ROLLBACK_FAILED",
 #'     ResourceStatusReason = "string",
 #'     Description = "string",
 #'     Metadata = "string",
@@ -3327,7 +3465,7 @@ cloudformation_describe_stack_resource_drifts <- function(StackName, StackResour
 #'       Timestamp = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       ResourceStatus = "CREATE_IN_PROGRESS"|"CREATE_FAILED"|"CREATE_COMPLETE"|"DELETE_IN_PROGRESS"|"DELETE_FAILED"|"DELETE_COMPLETE"|"DELETE_SKIPPED"|"UPDATE_IN_PROGRESS"|"UPDATE_FAILED"|"UPDATE_COMPLETE"|"IMPORT_FAILED"|"IMPORT_COMPLETE"|"IMPORT_IN_PROGRESS"|"IMPORT_ROLLBACK_IN_PROGRESS"|"IMPORT_ROLLBACK_FAILED"|"IMPORT_ROLLBACK_COMPLETE"|"UPDATE_ROLLBACK_IN_PROGRESS"|"UPDATE_ROLLBACK_COMPLETE"|"UPDATE_ROLLBACK_FAILED"|"ROLLBACK_IN_PROGRESS"|"ROLLBACK_COMPLETE"|"ROLLBACK_FAILED",
+#'       ResourceStatus = "CREATE_IN_PROGRESS"|"CREATE_FAILED"|"CREATE_COMPLETE"|"DELETE_IN_PROGRESS"|"DELETE_FAILED"|"DELETE_COMPLETE"|"DELETE_SKIPPED"|"UPDATE_IN_PROGRESS"|"UPDATE_FAILED"|"UPDATE_COMPLETE"|"IMPORT_FAILED"|"IMPORT_COMPLETE"|"IMPORT_IN_PROGRESS"|"IMPORT_ROLLBACK_IN_PROGRESS"|"IMPORT_ROLLBACK_FAILED"|"IMPORT_ROLLBACK_COMPLETE"|"EXPORT_FAILED"|"EXPORT_COMPLETE"|"EXPORT_IN_PROGRESS"|"EXPORT_ROLLBACK_IN_PROGRESS"|"EXPORT_ROLLBACK_FAILED"|"EXPORT_ROLLBACK_COMPLETE"|"UPDATE_ROLLBACK_IN_PROGRESS"|"UPDATE_ROLLBACK_COMPLETE"|"UPDATE_ROLLBACK_FAILED"|"ROLLBACK_IN_PROGRESS"|"ROLLBACK_COMPLETE"|"ROLLBACK_FAILED",
 #'       ResourceStatusReason = "string",
 #'       Description = "string",
 #'       DriftInformation = list(
@@ -4160,8 +4298,8 @@ cloudformation_detect_stack_resource_drift <- function(StackName, LogicalResourc
 #' Detect drift on a stack set. When CloudFormation performs drift
 #' detection on a stack set, it performs drift detection on the stack
 #' associated with each stack instance in the stack set. For more
-#' information, see [How CloudFormation performs drift detection on a stack
-#' set](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-drift.html).
+#' information, see [Performing drift detection on CloudFormation
+#' StackSets](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-drift.html).
 #' 
 #' [`detect_stack_set_drift`][cloudformation_detect_stack_set_drift]
 #' returns the `OperationId` of the stack set drift detection operation.
@@ -4190,10 +4328,6 @@ cloudformation_detect_stack_resource_drift <- function(StackName, LogicalResourc
 #'     [`describe_stack_instance`][cloudformation_describe_stack_instance]
 #'     to return detailed information about a specific stack instance,
 #'     including its drift status and last drift time checked.
-#' 
-#' For more information about performing a drift detection operation on a
-#' stack set, see [Detecting unmanaged changes in stack
-#' sets](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-drift.html).
 #' 
 #' You can only run a single drift detection operation on a given stack set
 #' at one time.
@@ -4300,7 +4434,7 @@ cloudformation_detect_stack_set_drift <- function(StackSetName, OperationPrefere
 #' 
 #' Conditional: You must pass `TemplateBody` or `TemplateURL`. If both are
 #' passed, only `TemplateBody` is used.
-#' @param TemplateURL Location of file containing the template body. The URL must point to a
+#' @param TemplateURL The URL of a file containing the template body. The URL must point to a
 #' template that's located in an Amazon S3 bucket or a Systems Manager
 #' document. The location for an Amazon S3 bucket must start with
 #' `https://`.
@@ -4455,6 +4589,51 @@ cloudformation_execute_change_set <- function(ChangeSetName, StackName = NULL, C
   return(response)
 }
 .cloudformation$operations$execute_change_set <- cloudformation_execute_change_set
+
+#' Executes the stack refactor operation
+#'
+#' @description
+#' Executes the stack refactor operation.
+#'
+#' @usage
+#' cloudformation_execute_stack_refactor(StackRefactorId)
+#'
+#' @param StackRefactorId &#91;required&#93; The ID associated with the stack refactor created from the
+#' [`create_stack_refactor`][cloudformation_create_stack_refactor] action.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$execute_stack_refactor(
+#'   StackRefactorId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudformation_execute_stack_refactor
+#'
+#' @aliases cloudformation_execute_stack_refactor
+cloudformation_execute_stack_refactor <- function(StackRefactorId) {
+  op <- new_operation(
+    name = "ExecuteStackRefactor",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudformation$execute_stack_refactor_input(StackRefactorId = StackRefactorId)
+  output <- .cloudformation$execute_stack_refactor_output()
+  config <- get_config()
+  svc <- .cloudformation$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudformation$operations$execute_stack_refactor <- cloudformation_execute_stack_refactor
 
 #' Retrieves a generated template
 #'
@@ -4678,9 +4857,9 @@ cloudformation_get_template <- function(StackName = NULL, ChangeSetName = NULL, 
 #' 
 #' Conditional: You must specify only one of the following parameters:
 #' `StackName`, `StackSetName`, `TemplateBody`, or `TemplateURL`.
-#' @param TemplateURL Location of file containing the template body. The URL must point to a
-#' template (max size: 460,800 bytes) that's located in an Amazon S3 bucket
-#' or a Systems Manager document. The location for an Amazon S3 bucket must
+#' @param TemplateURL The URL of a file containing the template body. The URL must point to a
+#' template (max size: 1 MB) that's located in an Amazon S3 bucket or a
+#' Systems Manager document. The location for an Amazon S3 bucket must
 #' start with `https://`.
 #' 
 #' Conditional: You must specify only one of the following parameters:
@@ -5738,6 +5917,176 @@ cloudformation_list_stack_instances <- function(StackSetName, NextToken = NULL, 
 }
 .cloudformation$operations$list_stack_instances <- cloudformation_list_stack_instances
 
+#' Lists the stack refactor actions that will be taken after calling the
+#' ExecuteStackRefactor action
+#'
+#' @description
+#' Lists the stack refactor actions that will be taken after calling the
+#' [`execute_stack_refactor`][cloudformation_execute_stack_refactor]
+#' action.
+#'
+#' @usage
+#' cloudformation_list_stack_refactor_actions(StackRefactorId, NextToken,
+#'   MaxResults)
+#'
+#' @param StackRefactorId &#91;required&#93; The ID associated with the stack refactor created from the
+#' [`create_stack_refactor`][cloudformation_create_stack_refactor] action.
+#' @param NextToken If the request doesn't return all the remaining results, `NextToken` is
+#' set to a token. To retrieve the next set of results, call this action
+#' again and assign that token to the request object's `NextToken`
+#' parameter. If the request returns all results, `NextToken` is set to
+#' `null`.
+#' @param MaxResults The maximum number of results to be returned with a single call. If the
+#' number of available results exceeds this maximum, the response includes
+#' a `NextToken` value that you can assign to the `NextToken` request
+#' parameter to get the next set of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   StackRefactorActions = list(
+#'     list(
+#'       Action = "MOVE"|"CREATE",
+#'       Entity = "RESOURCE"|"STACK",
+#'       PhysicalResourceId = "string",
+#'       ResourceIdentifier = "string",
+#'       Description = "string",
+#'       Detection = "AUTO"|"MANUAL",
+#'       DetectionReason = "string",
+#'       TagResources = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       UntagResources = list(
+#'         "string"
+#'       ),
+#'       ResourceMapping = list(
+#'         Source = list(
+#'           StackName = "string",
+#'           LogicalResourceId = "string"
+#'         ),
+#'         Destination = list(
+#'           StackName = "string",
+#'           LogicalResourceId = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_stack_refactor_actions(
+#'   StackRefactorId = "string",
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudformation_list_stack_refactor_actions
+#'
+#' @aliases cloudformation_list_stack_refactor_actions
+cloudformation_list_stack_refactor_actions <- function(StackRefactorId, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListStackRefactorActions",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "StackRefactorActions"),
+    stream_api = FALSE
+  )
+  input <- .cloudformation$list_stack_refactor_actions_input(StackRefactorId = StackRefactorId, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .cloudformation$list_stack_refactor_actions_output()
+  config <- get_config()
+  svc <- .cloudformation$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudformation$operations$list_stack_refactor_actions <- cloudformation_list_stack_refactor_actions
+
+#' Lists all account stack refactor operations and their statuses
+#'
+#' @description
+#' Lists all account stack refactor operations and their statuses.
+#'
+#' @usage
+#' cloudformation_list_stack_refactors(ExecutionStatusFilter, NextToken,
+#'   MaxResults)
+#'
+#' @param ExecutionStatusFilter Execution status to use as a filter. Specify one or more execution
+#' status codes to list only stack refactors with the specified execution
+#' status codes.
+#' @param NextToken If the request doesn't return all the remaining results, `NextToken` is
+#' set to a token. To retrieve the next set of results, call this action
+#' again and assign that token to the request object's `NextToken`
+#' parameter. If the request returns all results, `NextToken` is set to
+#' `null`.
+#' @param MaxResults The maximum number of results to be returned with a single call. If the
+#' number of available results exceeds this maximum, the response includes
+#' a `NextToken` value that you can assign to the `NextToken` request
+#' parameter to get the next set of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   StackRefactorSummaries = list(
+#'     list(
+#'       StackRefactorId = "string",
+#'       Description = "string",
+#'       ExecutionStatus = "UNAVAILABLE"|"AVAILABLE"|"OBSOLETE"|"EXECUTE_IN_PROGRESS"|"EXECUTE_COMPLETE"|"EXECUTE_FAILED"|"ROLLBACK_IN_PROGRESS"|"ROLLBACK_COMPLETE"|"ROLLBACK_FAILED",
+#'       ExecutionStatusReason = "string",
+#'       Status = "CREATE_IN_PROGRESS"|"CREATE_COMPLETE"|"CREATE_FAILED"|"DELETE_IN_PROGRESS"|"DELETE_COMPLETE"|"DELETE_FAILED",
+#'       StatusReason = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_stack_refactors(
+#'   ExecutionStatusFilter = list(
+#'     "UNAVAILABLE"|"AVAILABLE"|"OBSOLETE"|"EXECUTE_IN_PROGRESS"|"EXECUTE_COMPLETE"|"EXECUTE_FAILED"|"ROLLBACK_IN_PROGRESS"|"ROLLBACK_COMPLETE"|"ROLLBACK_FAILED"
+#'   ),
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudformation_list_stack_refactors
+#'
+#' @aliases cloudformation_list_stack_refactors
+cloudformation_list_stack_refactors <- function(ExecutionStatusFilter = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListStackRefactors",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "StackRefactorSummaries"),
+    stream_api = FALSE
+  )
+  input <- .cloudformation$list_stack_refactors_input(ExecutionStatusFilter = ExecutionStatusFilter, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .cloudformation$list_stack_refactors_output()
+  config <- get_config()
+  svc <- .cloudformation$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudformation$operations$list_stack_refactors <- cloudformation_list_stack_refactors
+
 #' Returns descriptions of all resources of the specified stack
 #'
 #' @description
@@ -5773,7 +6122,7 @@ cloudformation_list_stack_instances <- function(StackSetName, NextToken = NULL, 
 #'       LastUpdatedTimestamp = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       ResourceStatus = "CREATE_IN_PROGRESS"|"CREATE_FAILED"|"CREATE_COMPLETE"|"DELETE_IN_PROGRESS"|"DELETE_FAILED"|"DELETE_COMPLETE"|"DELETE_SKIPPED"|"UPDATE_IN_PROGRESS"|"UPDATE_FAILED"|"UPDATE_COMPLETE"|"IMPORT_FAILED"|"IMPORT_COMPLETE"|"IMPORT_IN_PROGRESS"|"IMPORT_ROLLBACK_IN_PROGRESS"|"IMPORT_ROLLBACK_FAILED"|"IMPORT_ROLLBACK_COMPLETE"|"UPDATE_ROLLBACK_IN_PROGRESS"|"UPDATE_ROLLBACK_COMPLETE"|"UPDATE_ROLLBACK_FAILED"|"ROLLBACK_IN_PROGRESS"|"ROLLBACK_COMPLETE"|"ROLLBACK_FAILED",
+#'       ResourceStatus = "CREATE_IN_PROGRESS"|"CREATE_FAILED"|"CREATE_COMPLETE"|"DELETE_IN_PROGRESS"|"DELETE_FAILED"|"DELETE_COMPLETE"|"DELETE_SKIPPED"|"UPDATE_IN_PROGRESS"|"UPDATE_FAILED"|"UPDATE_COMPLETE"|"IMPORT_FAILED"|"IMPORT_COMPLETE"|"IMPORT_IN_PROGRESS"|"IMPORT_ROLLBACK_IN_PROGRESS"|"IMPORT_ROLLBACK_FAILED"|"IMPORT_ROLLBACK_COMPLETE"|"EXPORT_FAILED"|"EXPORT_COMPLETE"|"EXPORT_IN_PROGRESS"|"EXPORT_ROLLBACK_IN_PROGRESS"|"EXPORT_ROLLBACK_FAILED"|"EXPORT_ROLLBACK_COMPLETE"|"UPDATE_ROLLBACK_IN_PROGRESS"|"UPDATE_ROLLBACK_COMPLETE"|"UPDATE_ROLLBACK_FAILED"|"ROLLBACK_IN_PROGRESS"|"ROLLBACK_COMPLETE"|"ROLLBACK_FAILED",
 #'       ResourceStatusReason = "string",
 #'       DriftInformation = list(
 #'         StackResourceDriftStatus = "IN_SYNC"|"MODIFIED"|"DELETED"|"NOT_CHECKED",
@@ -6937,7 +7286,7 @@ cloudformation_register_publisher <- function(AcceptTermsAndConditions = NULL, C
 #' 
 #' -   For modules, `company_or_organization::service::type::MODULE`.
 #' 
-#' -   For hooks, `MyCompany::Testing::MyTestHook`.
+#' -   For Hooks, `MyCompany::Testing::MyTestHook`.
 #' 
 #' The following organization namespaces are reserved and can't be used in
 #' your extension names:
@@ -7768,7 +8117,7 @@ cloudformation_update_generated_template <- function(GeneratedTemplateName, NewG
 #' Conditional: You must specify only one of the following parameters:
 #' `TemplateBody`, `TemplateURL`, or set the `UsePreviousTemplate` to
 #' `true`.
-#' @param TemplateURL Location of file containing the template body. The URL must point to a
+#' @param TemplateURL The URL of a file containing the template body. The URL must point to a
 #' template that's located in an Amazon S3 bucket or a Systems Manager
 #' document. The location for an Amazon S3 bucket must start with
 #' `https://`.
@@ -7836,6 +8185,8 @@ cloudformation_update_generated_template <- function(GeneratedTemplateName, NewG
 #'     -   [AWS::IAM::Group](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-group.html)
 #' 
 #'     -   [AWS::IAM::InstanceProfile](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html)
+#' 
+#'     -   [AWS::IAM::ManagedPolicy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-managedpolicy.html)
 #' 
 #'     -   [AWS::IAM::Policy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-policy.html)
 #' 
@@ -8084,7 +8435,7 @@ cloudformation_update_stack <- function(StackName, TemplateBody = NULL, Template
 #'
 #' @param StackSetName &#91;required&#93; The name or unique ID of the stack set associated with the stack
 #' instances.
-#' @param Accounts \[Self-managed permissions\] The names of one or more Amazon Web
+#' @param Accounts \[Self-managed permissions\] The account IDs of one or more Amazon Web
 #' Services accounts for which you want to update parameter values for
 #' stack instances. The overridden parameter values will be applied to all
 #' stack instances in the specified accounts and Amazon Web Services
@@ -8269,9 +8620,10 @@ cloudformation_update_stack_instances <- function(StackSetName, Accounts = NULL,
 #' 
 #' Conditional: You must specify only one of the following parameters:
 #' `TemplateBody` or `TemplateURL`—or set `UsePreviousTemplate` to true.
-#' @param TemplateURL The location of the file that contains the template body. The URL must
-#' point to a template (maximum size: 460,800 bytes) that is located in an
-#' Amazon S3 bucket or a Systems Manager document.
+#' @param TemplateURL The URL of a file that contains the template body. The URL must point to
+#' a template (maximum size: 1 MB) that is located in an Amazon S3 bucket
+#' or a Systems Manager document. The location for an Amazon S3 bucket must
+#' start with `https://`.
 #' 
 #' Conditional: You must specify only one of the following parameters:
 #' `TemplateBody` or `TemplateURL`—or set `UsePreviousTemplate` to true.
@@ -8332,8 +8684,8 @@ cloudformation_update_stack_instances <- function(StackSetName, Accounts = NULL,
 #'     directly from the processed template, without first reviewing the
 #'     resulting changes in a change set. To update the stack set directly,
 #'     you must acknowledge this capability. For more information, see
-#'     [Using CloudFormation Macros to Perform Custom Processing on
-#'     Templates](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-macros.html).
+#'     [Perform custom processing on CloudFormation templates with template
+#'     macros](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-macros.html).
 #' 
 #'     Stack sets with service-managed permissions do not currently support
 #'     the use of macros in templates. (This includes the
@@ -8381,9 +8733,9 @@ cloudformation_update_stack_instances <- function(StackSetName, Accounts = NULL,
 #' 
 #' Specify an IAM role only if you are using customized administrator roles
 #' to control which users or groups can manage specific stack sets within
-#' the same administrator account. For more information, see [Granting
-#' Permissions for Stack Set
-#' Operations](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-prereqs.html)
+#' the same administrator account. For more information, see [Prerequisites
+#' for using CloudFormation
+#' StackSets](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-prereqs.html)
 #' in the *CloudFormation User Guide*.
 #' 
 #' If you specified a customized administrator role when you created the
@@ -8424,14 +8776,14 @@ cloudformation_update_stack_instances <- function(StackSetName, Accounts = NULL,
 #' 
 #' -   With `self-managed` permissions, you must create the administrator
 #'     and execution roles required to deploy to target accounts. For more
-#'     information, see [Grant Self-Managed Stack Set
-#'     Permissions](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-prereqs-self-managed.html).
+#'     information, see [Grant self-managed
+#'     permissions](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-prereqs-self-managed.html).
 #' 
 #' -   With `service-managed` permissions, StackSets automatically creates
 #'     the IAM roles required to deploy to accounts managed by
-#'     Organizations. For more information, see [Grant Service-Managed
-#'     Stack Set
-#'     Permissions](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/).
+#'     Organizations. For more information, see [Activate trusted access
+#'     for stack sets with
+#'     Organizations](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-activate-trusted-access.html).
 #' @param AutoDeployment \[Service-managed permissions\] Describes whether StackSets
 #' automatically deploys to Organizations accounts that are added to a
 #' target organization or organizational unit (OU).
@@ -8679,10 +9031,10 @@ cloudformation_update_termination_protection <- function(EnableTerminationProtec
 #' 
 #' Conditional: You must pass `TemplateURL` or `TemplateBody`. If both are
 #' passed, only `TemplateBody` is used.
-#' @param TemplateURL Location of file containing the template body. The URL must point to a
-#' template (max size: 460,800 bytes) that is located in an Amazon S3
-#' bucket or a Systems Manager document. The location for an Amazon S3
-#' bucket must start with `https://`.
+#' @param TemplateURL The URL of a file containing the template body. The URL must point to a
+#' template (max size: 1 MB) that is located in an Amazon S3 bucket or a
+#' Systems Manager document. The location for an Amazon S3 bucket must
+#' start with `https://`.
 #' 
 #' Conditional: You must pass `TemplateURL` or `TemplateBody`. If both are
 #' passed, only `TemplateBody` is used.

@@ -35,8 +35,9 @@ For example, \{ "Tags": \{"key1":"value1", "key2":"value2"\} \}.}
 resources in Amazon Connect.}
 
 \item{TagRestrictedResources}{The list of resources that a security profile applies tag restrictions
-to in Amazon Connect. Following are acceptable ResourceNames: \code{User} |
-\code{SecurityProfile} | \code{Queue} | \code{RoutingProfile}}
+to in Amazon Connect. For a list of Amazon Connect resources that you
+can tag, see \href{https://docs.aws.amazon.com/connect/latest/adminguide/tagging.html}{Add tags to resources in Amazon Connect}
+in the \emph{Amazon Connect Administrator Guide}.}
 
 \item{Applications}{A list of third-party applications that the security profile will give
 access to.}

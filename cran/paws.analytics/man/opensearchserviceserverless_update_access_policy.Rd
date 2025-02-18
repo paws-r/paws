@@ -5,27 +5,27 @@
 \title{Updates an OpenSearch Serverless access policy}
 \usage{
 opensearchserviceserverless_update_access_policy(
-  clientToken = NULL,
-  description = NULL,
+  type,
   name,
-  policy = NULL,
   policyVersion,
-  type
+  description = NULL,
+  policy = NULL,
+  clientToken = NULL
 )
 }
 \arguments{
-\item{clientToken}{Unique, case-sensitive identifier to ensure idempotency of the request.}
+\item{type}{[required] The type of policy.}
+
+\item{name}{[required] The name of the policy.}
+
+\item{policyVersion}{[required] The version of the policy being updated.}
 
 \item{description}{A description of the policy. Typically used to store information about
 the permissions defined in the policy.}
 
-\item{name}{[required] The name of the policy.}
-
 \item{policy}{The JSON policy document to use as the content for the policy.}
 
-\item{policyVersion}{[required] The version of the policy being updated.}
-
-\item{type}{[required] The type of policy.}
+\item{clientToken}{Unique, case-sensitive identifier to ensure idempotency of the request.}
 }
 \description{
 Updates an OpenSearch Serverless access policy. For more information, see \href{https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-data-access.html}{Data access control for Amazon OpenSearch Serverless}.

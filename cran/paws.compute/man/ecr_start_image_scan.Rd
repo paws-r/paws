@@ -2,7 +2,7 @@
 % Please edit documentation in R/ecr_operations.R
 \name{ecr_start_image_scan}
 \alias{ecr_start_image_scan}
-\title{Starts an image vulnerability scan}
+\title{Starts a basic image vulnerability scan}
 \usage{
 ecr_start_image_scan(registryId = NULL, repositoryName, imageId)
 }
@@ -16,7 +16,7 @@ do not specify a registry, the default registry is assumed.}
 \item{imageId}{[required]}
 }
 \description{
-Starts an image vulnerability scan. An image scan can only be started once per 24 hours on an individual image. This limit includes if an image was scanned on initial push. For more information, see \href{https://docs.aws.amazon.com/AmazonECR/latest/userguide/image-scanning.html}{Image scanning} in the \emph{Amazon Elastic Container Registry User Guide}.
+Starts a basic image vulnerability scan.
 
 See \url{https://www.paws-r-sdk.com/docs/ecr_start_image_scan/} for full documentation.
 }

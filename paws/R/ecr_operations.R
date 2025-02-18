@@ -1291,7 +1291,7 @@ ecr_describe_image_replication_status <- function(repositoryName, imageId, regis
 #'     imageTag = "string"
 #'   ),
 #'   imageScanStatus = list(
-#'     status = "IN_PROGRESS"|"COMPLETE"|"FAILED"|"UNSUPPORTED_IMAGE"|"ACTIVE"|"PENDING"|"SCAN_ELIGIBILITY_EXPIRED"|"FINDINGS_UNAVAILABLE",
+#'     status = "IN_PROGRESS"|"COMPLETE"|"FAILED"|"UNSUPPORTED_IMAGE"|"ACTIVE"|"PENDING"|"SCAN_ELIGIBILITY_EXPIRED"|"FINDINGS_UNAVAILABLE"|"LIMIT_EXCEEDED",
 #'     description = "string"
 #'   ),
 #'   imageScanFindings = list(
@@ -1526,7 +1526,7 @@ ecr_describe_image_scan_findings <- function(registryId = NULL, repositoryName, 
 #'         "2015-01-01"
 #'       ),
 #'       imageScanStatus = list(
-#'         status = "IN_PROGRESS"|"COMPLETE"|"FAILED"|"UNSUPPORTED_IMAGE"|"ACTIVE"|"PENDING"|"SCAN_ELIGIBILITY_EXPIRED"|"FINDINGS_UNAVAILABLE",
+#'         status = "IN_PROGRESS"|"COMPLETE"|"FAILED"|"UNSUPPORTED_IMAGE"|"ACTIVE"|"PENDING"|"SCAN_ELIGIBILITY_EXPIRED"|"FINDINGS_UNAVAILABLE"|"LIMIT_EXCEEDED",
 #'         description = "string"
 #'       ),
 #'       imageScanFindingsSummary = list(
@@ -3371,13 +3371,17 @@ ecr_set_repository_policy <- function(registryId = NULL, repositoryName, policyT
 }
 .ecr$operations$set_repository_policy <- ecr_set_repository_policy
 
-#' Starts an image vulnerability scan
+#' Starts a basic image vulnerability scan
 #'
 #' @description
-#' Starts an image vulnerability scan. An image scan can only be started
-#' once per 24 hours on an individual image. This limit includes if an
-#' image was scanned on initial push. For more information, see [Image
-#' scanning](https://docs.aws.amazon.com/AmazonECR/latest/userguide/image-scanning.html)
+#' Starts a basic image vulnerability scan.
+#' 
+#' A basic image scan can only be started once per 24 hours on an
+#' individual image. This limit includes if an image was scanned on initial
+#' push. You can start up to 100,000 basic scans per 24 hours. This limit
+#' includes both scans on initial push and scans initiated by the
+#' StartImageScan API. For more information, see [Basic
+#' scanning](https://docs.aws.amazon.com/AmazonECR/latest/userguide/image-scanning-basic.html)
 #' in the *Amazon Elastic Container Registry User Guide*.
 #'
 #' @usage
@@ -3400,7 +3404,7 @@ ecr_set_repository_policy <- function(registryId = NULL, repositoryName, policyT
 #'     imageTag = "string"
 #'   ),
 #'   imageScanStatus = list(
-#'     status = "IN_PROGRESS"|"COMPLETE"|"FAILED"|"UNSUPPORTED_IMAGE"|"ACTIVE"|"PENDING"|"SCAN_ELIGIBILITY_EXPIRED"|"FINDINGS_UNAVAILABLE",
+#'     status = "IN_PROGRESS"|"COMPLETE"|"FAILED"|"UNSUPPORTED_IMAGE"|"ACTIVE"|"PENDING"|"SCAN_ELIGIBILITY_EXPIRED"|"FINDINGS_UNAVAILABLE"|"LIMIT_EXCEEDED",
 #'     description = "string"
 #'   )
 #' )

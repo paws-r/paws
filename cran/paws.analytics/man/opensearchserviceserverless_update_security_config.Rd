@@ -5,16 +5,18 @@
 \title{Updates a security configuration for OpenSearch Serverless}
 \usage{
 opensearchserviceserverless_update_security_config(
-  clientToken = NULL,
+  id,
   configVersion,
   description = NULL,
+  samlOptions = NULL,
   iamIdentityCenterOptionsUpdates = NULL,
-  id,
-  samlOptions = NULL
+  clientToken = NULL
 )
 }
 \arguments{
-\item{clientToken}{Unique, case-sensitive identifier to ensure idempotency of the request.}
+\item{id}{[required] The security configuration identifier. For SAML the ID will be
+\verb{saml/<accountId>/<idpProviderName>}. For example,
+\code{saml/123456789123/OKTADev}.}
 
 \item{configVersion}{[required] The version of the security configuration to be updated. You can find
 the most recent version of a security configuration using the
@@ -23,13 +25,11 @@ command.}
 
 \item{description}{A description of the security configuration.}
 
+\item{samlOptions}{SAML options in in the form of a key-value map.}
+
 \item{iamIdentityCenterOptionsUpdates}{Describes IAM Identity Center options in the form of a key-value map.}
 
-\item{id}{[required] The security configuration identifier. For SAML the ID will be
-\verb{saml/<accountId>/<idpProviderName>}. For example,
-\code{saml/123456789123/OKTADev}.}
-
-\item{samlOptions}{SAML options in in the form of a key-value map.}
+\item{clientToken}{Unique, case-sensitive identifier to ensure idempotency of the request.}
 }
 \description{
 Updates a security configuration for OpenSearch Serverless. For more information, see \href{https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-saml.html}{SAML authentication for Amazon OpenSearch Serverless}.

@@ -26,6 +26,8 @@ example, specify \code{db-ABCDEFGHIJKLMNOPQRSTU1VW2X}.}
 specified group for the dimension group ID. The following group name
 values are valid:
 \itemize{
+\item \code{db.execution_plan} (Amazon RDS and Aurora only)
+\item \code{db.lock_snapshot} (Aurora only)
 \item \code{db.query} (Amazon DocumentDB only)
 \item \code{db.sql} (Amazon RDS and Aurora only)
 }}
@@ -34,8 +36,15 @@ values are valid:
 For dimension group \code{db.sql}, the group ID is \code{db.sql.id}. The following
 group ID values are valid:
 \itemize{
+\item \code{db.execution_plan.id} for dimension group \code{db.execution_plan}
+(Aurora and RDS only)
 \item \code{db.sql.id} for dimension group \code{db.sql} (Aurora and RDS only)
 \item \code{db.query.id} for dimension group \code{db.query} (DocumentDB only)
+\item For the dimension group \code{db.lock_snapshot}, the \code{GroupIdentifier} is
+the epoch timestamp when Performance Insights captured the snapshot,
+in seconds. You can retrieve this value with the
+\code{\link[=pi_get_resource_metrics]{get_resource_metrics}} operation for a 1
+second period.
 }}
 
 \item{RequestedDimensions}{A list of dimensions to retrieve the detail data for within the given
@@ -43,6 +52,12 @@ dimension group. If you don't specify this parameter, Performance
 Insights returns all dimension data within the specified dimension
 group. Specify dimension names for the following dimension groups:
 \itemize{
+\item \code{db.execution_plan} - Specify the dimension name
+\code{db.execution_plan.raw_plan} or the short dimension name \code{raw_plan}
+(Amazon RDS and Aurora only)
+\item \code{db.lock_snapshot} - Specify the dimension name
+\code{db.lock_snapshot.lock_trees} or the short dimension name
+\code{lock_trees}. (Aurora only)
 \item \code{db.sql} - Specify either the full dimension name \code{db.sql.statement}
 or the short dimension name \code{statement} (Aurora and RDS only).
 \item \code{db.query} - Specify either the full dimension name
@@ -51,7 +66,7 @@ or the short dimension name \code{statement} (Aurora and RDS only).
 }}
 }
 \description{
-Get the attributes of the specified dimension group for a DB instance or data source. For example, if you specify a SQL ID, \code{\link[=pi_get_dimension_key_details]{get_dimension_key_details}} retrieves the full text of the dimension \code{db.sql.statement} associated with this ID. This operation is useful because \code{\link[=pi_get_resource_metrics]{get_resource_metrics}} and \code{\link[=pi_describe_dimension_keys]{describe_dimension_keys}} don't support retrieval of large SQL statement text.
+Get the attributes of the specified dimension group for a DB instance or data source. For example, if you specify a SQL ID, \code{\link[=pi_get_dimension_key_details]{get_dimension_key_details}} retrieves the full text of the dimension \code{db.sql.statement} associated with this ID. This operation is useful because \code{\link[=pi_get_resource_metrics]{get_resource_metrics}} and \code{\link[=pi_describe_dimension_keys]{describe_dimension_keys}} don't support retrieval of large SQL statement text, lock snapshots, and execution plans.
 
 See \url{https://www.paws-r-sdk.com/docs/pi_get_dimension_key_details/} for full documentation.
 }

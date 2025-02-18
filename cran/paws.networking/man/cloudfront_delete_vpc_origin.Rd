@@ -9,7 +9,9 @@ cloudfront_delete_vpc_origin(Id, IfMatch)
 \arguments{
 \item{Id}{[required] The VPC origin ID.}
 
-\item{IfMatch}{[required] The VPC origin to delete, if a match occurs.}
+\item{IfMatch}{[required] The version identifier of the VPC origin to delete. This is the \code{ETag}
+value returned in the response to
+\code{\link[=cloudfront_get_vpc_origin]{get_vpc_origin}}.}
 }
 \description{
 Delete an Amazon CloudFront VPC origin.

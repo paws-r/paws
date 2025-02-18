@@ -218,6 +218,8 @@ pi_delete_performance_analysis_report <- function(ServiceType, Identifier, Analy
 #' can specify per-SQL metrics to get the values for the top `N` SQL
 #' digests. The response syntax is as follows:
 #' `"AdditionalMetrics" : { "string" : "string" }`.
+#' 
+#' The only supported statistic function is `.avg`.
 #' @param PartitionBy For each dimension specified in `GroupBy`, specify a secondary dimension
 #' to further subdivide the partition keys in the response.
 #' @param Filter One or more filters to apply in the request. Restrictions:
@@ -344,7 +346,8 @@ pi_describe_dimension_keys <- function(ServiceType, Identifier, StartTime, EndTi
 #' ID. This operation is useful because
 #' [`get_resource_metrics`][pi_get_resource_metrics] and
 #' [`describe_dimension_keys`][pi_describe_dimension_keys] don't support
-#' retrieval of large SQL statement text.
+#' retrieval of large SQL statement text, lock snapshots, and execution
+#' plans.
 #'
 #' @usage
 #' pi_get_dimension_key_details(ServiceType, Identifier, Group,
@@ -360,6 +363,10 @@ pi_describe_dimension_keys <- function(ServiceType, Identifier, StartTime, EndTi
 #' specified group for the dimension group ID. The following group name
 #' values are valid:
 #' 
+#' -   `db.execution_plan` (Amazon RDS and Aurora only)
+#' 
+#' -   `db.lock_snapshot` (Aurora only)
+#' 
 #' -   `db.query` (Amazon DocumentDB only)
 #' 
 #' -   `db.sql` (Amazon RDS and Aurora only)
@@ -367,13 +374,30 @@ pi_describe_dimension_keys <- function(ServiceType, Identifier, StartTime, EndTi
 #' For dimension group `db.sql`, the group ID is `db.sql.id`. The following
 #' group ID values are valid:
 #' 
+#' -   `db.execution_plan.id` for dimension group `db.execution_plan`
+#'     (Aurora and RDS only)
+#' 
 #' -   `db.sql.id` for dimension group `db.sql` (Aurora and RDS only)
 #' 
 #' -   `db.query.id` for dimension group `db.query` (DocumentDB only)
+#' 
+#' -   For the dimension group `db.lock_snapshot`, the `GroupIdentifier` is
+#'     the epoch timestamp when Performance Insights captured the snapshot,
+#'     in seconds. You can retrieve this value with the
+#'     [`get_resource_metrics`][pi_get_resource_metrics] operation for a 1
+#'     second period.
 #' @param RequestedDimensions A list of dimensions to retrieve the detail data for within the given
 #' dimension group. If you don't specify this parameter, Performance
 #' Insights returns all dimension data within the specified dimension
 #' group. Specify dimension names for the following dimension groups:
+#' 
+#' -   `db.execution_plan` - Specify the dimension name
+#'     `db.execution_plan.raw_plan` or the short dimension name `raw_plan`
+#'     (Amazon RDS and Aurora only)
+#' 
+#' -   `db.lock_snapshot` - Specify the dimension name
+#'     `db.lock_snapshot.lock_trees` or the short dimension name
+#'     `lock_trees`. (Aurora only)
 #' 
 #' -   `db.sql` - Specify either the full dimension name `db.sql.statement`
 #'     or the short dimension name `statement` (Aurora and RDS only).
@@ -509,6 +533,9 @@ pi_get_dimension_key_details <- function(ServiceType, Identifier, Group, GroupId
 #'               Dimensions = list(
 #'                 "string"
 #'               ),
+#'               Filter = list(
+#'                 "string"
+#'               ),
 #'               Value = 123.0
 #'             )
 #'           )
@@ -519,6 +546,9 @@ pi_get_dimension_key_details <- function(ServiceType, Identifier, Group, GroupId
 #'               Metric = "string",
 #'               DisplayName = "string",
 #'               Dimensions = list(
+#'                 "string"
+#'               ),
+#'               Filter = list(
 #'                 "string"
 #'               ),
 #'               Value = 123.0
@@ -696,9 +726,7 @@ pi_get_resource_metadata <- function(ServiceType, Identifier) {
 #' If you don't specify `PeriodInSeconds`, then Performance Insights will
 #' choose a value for you, with a goal of returning roughly 100-200 data
 #' points in the response.
-#' @param MaxResults The maximum number of items to return in the response. If more items
-#' exist than the specified `MaxRecords` value, a pagination token is
-#' included in the response so that the remaining results can be retrieved.
+#' @param MaxResults The maximum number of items to return in the response.
 #' @param NextToken An optional pagination token provided by a previous request. If this
 #' parameter is specified, the response includes only records beyond the
 #' token, up to the value specified by `MaxRecords`.

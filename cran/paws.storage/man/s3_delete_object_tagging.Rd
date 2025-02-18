@@ -25,13 +25,13 @@ Services SDKs, you provide the access point ARN in place of the bucket
 name. For more information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html}{Using access points}
 in the \emph{Amazon S3 User Guide}.
 
-\strong{S3 on Outposts} - When you use this action with Amazon S3 on
-Outposts, you must direct requests to the S3 on Outposts hostname. The
-S3 on Outposts hostname takes the form
+\strong{S3 on Outposts} - When you use this action with S3 on Outposts, you
+must direct requests to the S3 on Outposts hostname. The S3 on Outposts
+hostname takes the form
 \code{ AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com}.
-When you use this action with S3 on Outposts through the Amazon Web
-Services SDKs, you provide the Outposts access point ARN in place of the
-bucket name. For more information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html}{What is S3 on Outposts?}
+When you use this action with S3 on Outposts, the destination bucket
+must be the Outposts access point ARN or the access point alias. For
+more information about S3 on Outposts, see \href{https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html}{What is S3 on Outposts?}
 in the \emph{Amazon S3 User Guide}.}
 
 \item{Key}{[required] The key that identifies the object in the bucket from which to remove

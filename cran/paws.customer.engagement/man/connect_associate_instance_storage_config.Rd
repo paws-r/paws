@@ -8,7 +8,8 @@ change}
 connect_associate_instance_storage_config(
   InstanceId,
   ResourceType,
-  StorageConfig
+  StorageConfig,
+  ClientToken = NULL
 )
 }
 \arguments{
@@ -32,6 +33,11 @@ If you have previously associated a stream with
 stream to \code{REAL_TIME_CONTACT_ANALYSIS_VOICE_SEGMENTS}.}
 
 \item{StorageConfig}{[required] A valid storage type.}
+
+\item{ClientToken}{A unique, case-sensitive identifier that you provide to ensure the
+idempotency of the request. If not provided, the Amazon Web Services SDK
+populates this field. For more information about idempotency, see
+\href{https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/}{Making retries safe with idempotent APIs}.}
 }
 \description{
 This API is in preview release for Amazon Connect and is subject to change.

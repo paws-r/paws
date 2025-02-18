@@ -6,40 +6,40 @@ NULL
 #'
 #' @description
 #' AWS Marketplace Metering Service
-#'
+#' 
 #' This reference provides descriptions of the low-level AWS Marketplace
 #' Metering Service API.
-#'
+#' 
 #' AWS Marketplace sellers can use this API to submit usage data for custom
 #' usage dimensions.
-#'
+#' 
 #' For information on the permissions you need to use this API, see [AWS
 #' Marketplace metering and entitlement API
 #' permissions](https://docs.aws.amazon.com/marketplace/latest/userguide/iam-user-policy-for-aws-marketplace-actions.html)
 #' in the *AWS Marketplace Seller Guide.*
-#'
+#' 
 #' **Submitting Metering Records**
-#'
+#' 
 #' -   *MeterUsage* - Submits the metering record for an AWS Marketplace
 #'     product. [`meter_usage`][marketplacemetering_meter_usage] is called
 #'     from an EC2 instance or a container running on EKS or ECS.
-#'
+#' 
 #' -   *BatchMeterUsage* - Submits the metering record for a set of
 #'     customers.
 #'     [`batch_meter_usage`][marketplacemetering_batch_meter_usage] is
 #'     called from a software-as-a-service (SaaS) application.
-#'
+#' 
 #' **Accepting New Customers**
-#'
+#' 
 #' -   *ResolveCustomer* - Called by a SaaS application during the
 #'     registration process. When a buyer visits your website during the
 #'     registration process, the buyer submits a Registration Token through
 #'     the browser. The Registration Token is resolved through this API to
 #'     obtain a `CustomerIdentifier` along with the `CustomerAWSAccountId`
 #'     and `ProductCode`.
-#'
+#' 
 #' **Entitlement and Metering for Paid Container Products**
-#'
+#' 
 #' -   Paid container software products sold through AWS Marketplace must
 #'     integrate with the AWS Marketplace Metering Service and call the
 #'     [`register_usage`][marketplacemetering_register_usage] operation for
@@ -51,14 +51,14 @@ NULL
 #'     [`register_usage`][marketplacemetering_register_usage] operation,
 #'     see [Container-Based
 #'     Products](https://docs.aws.amazon.com/marketplace/latest/userguide/container-based-products.html).
-#'
+#' 
 #' [`batch_meter_usage`][marketplacemetering_batch_meter_usage] API calls
 #' are captured by AWS CloudTrail. You can use Cloudtrail to verify that
 #' the SaaS metering records that you sent are accurate by searching for
 #' records with the `eventName` of
 #' [`batch_meter_usage`][marketplacemetering_batch_meter_usage]. You can
 #' also use CloudTrail to audit records over time. For more information,
-#' see the *\href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-concepts.html}{AWS CloudTrail User Guide}.*
+#' see the *\href{http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-concepts.html}{AWS CloudTrail User Guide}.*
 #'
 #' @param
 #' config
@@ -157,12 +157,7 @@ NULL
 #'
 #' @rdname marketplacemetering
 #' @export
-marketplacemetering <- function(
-  config = list(),
-  credentials = list(),
-  endpoint = NULL,
-  region = NULL
-) {
+marketplacemetering <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
   config <- merge_config(
     config,
     list(
@@ -183,36 +178,7 @@ marketplacemetering <- function(
 
 .marketplacemetering$metadata <- list(
   service_name = "metering.marketplace",
-  endpoints = list(
-    "^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(
-      endpoint = "metering.marketplace.{region}.amazonaws.com",
-      global = FALSE
-    ),
-    "^cn\\-\\w+\\-\\d+$" = list(
-      endpoint = "metering.marketplace.{region}.amazonaws.com.cn",
-      global = FALSE
-    ),
-    "^us\\-gov\\-\\w+\\-\\d+$" = list(
-      endpoint = "metering.marketplace.{region}.amazonaws.com",
-      global = FALSE
-    ),
-    "^us\\-iso\\-\\w+\\-\\d+$" = list(
-      endpoint = "metering.marketplace.{region}.c2s.ic.gov",
-      global = FALSE
-    ),
-    "^us\\-isob\\-\\w+\\-\\d+$" = list(
-      endpoint = "metering.marketplace.{region}.sc2s.sgov.gov",
-      global = FALSE
-    ),
-    "^eu\\-isoe\\-\\w+\\-\\d+$" = list(
-      endpoint = "metering.marketplace.{region}.cloud.adc-e.uk",
-      global = FALSE
-    ),
-    "^us\\-isof\\-\\w+\\-\\d+$" = list(
-      endpoint = "metering.marketplace.{region}.csp.hci.ic.gov",
-      global = FALSE
-    )
-  ),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "metering.marketplace.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "metering.marketplace.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "metering.marketplace.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "metering.marketplace.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "metering.marketplace.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "metering.marketplace.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "metering.marketplace.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Marketplace Metering",
   api_version = "2016-01-14",
   signing_name = "aws-marketplace",

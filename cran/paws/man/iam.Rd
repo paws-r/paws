@@ -251,7 +251,7 @@ applications can access. For more information about IAM, see \href{https://aws.a
 \link[paws.security.identity:iam_update_open_id_connect_provider_thumbprint]{update_open_id_connect_provider_thumbprint} \tab Replaces the existing list of server certificate thumbprints associated with an OpenID Connect (OIDC) provider resource object with a new list of thumbprints\cr
 \link[paws.security.identity:iam_update_role]{update_role} \tab Updates the description or maximum session duration setting of a role\cr
 \link[paws.security.identity:iam_update_role_description]{update_role_description} \tab Use UpdateRole instead\cr
-\link[paws.security.identity:iam_update_saml_provider]{update_saml_provider} \tab Updates the metadata document for an existing SAML provider resource object\cr
+\link[paws.security.identity:iam_update_saml_provider]{update_saml_provider} \tab Updates the metadata document, SAML encryption settings, and private keys for an existing SAML provider\cr
 \link[paws.security.identity:iam_update_server_certificate]{update_server_certificate} \tab Updates the name and/or the path of the specified server certificate stored in IAM\cr
 \link[paws.security.identity:iam_update_service_specific_credential]{update_service_specific_credential} \tab Sets the status of a service-specific credential to Active or Inactive\cr
 \link[paws.security.identity:iam_update_signing_certificate]{update_signing_certificate} \tab Changes the status of the specified user signing certificate from active to disabled, or vice versa\cr

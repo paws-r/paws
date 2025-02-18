@@ -21,6 +21,17 @@ ec2_authorize_security_group_ingress(
 \arguments{
 \item{CidrIp}{The IPv4 address range, in CIDR format.
 
+Amazon Web Services
+\href{https://en.wikipedia.org/wiki/Canonicalization}{canonicalizes} IPv4 and
+IPv6 CIDRs. For example, if you specify 100.68.0.18/18 for the CIDR
+block, Amazon Web Services canonicalizes the CIDR block to
+100.68.0.0/18. Any subsequent DescribeSecurityGroups and
+DescribeSecurityGroupRules calls will return the canonicalized form of
+the CIDR block. Additionally, if you attempt to add another rule with
+the non-canonical form of the CIDR (such as 100.68.0.18/18) and there is
+already a rule for the canonicalized form of the CIDR block (such as
+100.68.0.0/18), the API throws an duplicate rule error.
+
 To specify an IPv6 address range, use IP permissions instead.
 
 To specify multiple rules and descriptions for the rules, use IP

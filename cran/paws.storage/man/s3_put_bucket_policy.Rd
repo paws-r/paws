@@ -35,7 +35,7 @@ automatically.
 
 This functionality is not supported for directory buckets.}
 
-\item{ChecksumAlgorithm}{Indicates the algorithm used to create the checksum for the object when
+\item{ChecksumAlgorithm}{Indicates the algorithm used to create the checksum for the request when
 you use the SDK. This header will not provide any additional
 functionality if you don't use the SDK. When you send this header, there
 must be a corresponding \code{x-amz-checksum-algorithm } or \code{x-amz-trailer}
@@ -45,11 +45,11 @@ code \verb{400 Bad Request}.
 For the \code{x-amz-checksum-algorithm } header, replace \code{algorithm} with
 the supported algorithm from the following list:
 \itemize{
-\item \code{CRC-32}
-\item \verb{CRC-32C}
-\item \verb{CRC-64NVME}
-\item \code{SHA-1}
-\item \code{SHA-256}
+\item \code{CRC32}
+\item \code{CRC32C}
+\item \code{CRC64NVME}
+\item \code{SHA1}
+\item \code{SHA256}
 }
 
 For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html}{Checking object integrity}

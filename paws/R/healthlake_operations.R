@@ -58,7 +58,7 @@ NULL
 #'     )
 #'   ),
 #'   IdentityProviderConfiguration = list(
-#'     AuthorizationStrategy = "SMART_ON_FHIR_V1"|"AWS_AUTH",
+#'     AuthorizationStrategy = "SMART_ON_FHIR_V1"|"SMART_ON_FHIR"|"AWS_AUTH",
 #'     FineGrainedAuthorizationEnabled = TRUE|FALSE,
 #'     Metadata = "string",
 #'     IdpLambdaArn = "string"
@@ -182,7 +182,7 @@ healthlake_delete_fhir_datastore <- function(DatastoreId) {
 #'       PreloadDataType = "SYNTHEA"
 #'     ),
 #'     IdentityProviderConfiguration = list(
-#'       AuthorizationStrategy = "SMART_ON_FHIR_V1"|"AWS_AUTH",
+#'       AuthorizationStrategy = "SMART_ON_FHIR_V1"|"SMART_ON_FHIR"|"AWS_AUTH",
 #'       FineGrainedAuthorizationEnabled = TRUE|FALSE,
 #'       Metadata = "string",
 #'       IdpLambdaArn = "string"
@@ -247,7 +247,7 @@ healthlake_describe_fhir_datastore <- function(DatastoreId) {
 #'   ExportJobProperties = list(
 #'     JobId = "string",
 #'     JobName = "string",
-#'     JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED_WITH_ERRORS"|"COMPLETED"|"FAILED"|"CANCEL_SUBMITTED"|"CANCEL_IN_PROGRESS"|"CANCEL_COMPLETED"|"CANCEL_FAILED",
+#'     JobStatus = "SUBMITTED"|"QUEUED"|"IN_PROGRESS"|"COMPLETED_WITH_ERRORS"|"COMPLETED"|"FAILED"|"CANCEL_SUBMITTED"|"CANCEL_IN_PROGRESS"|"CANCEL_COMPLETED"|"CANCEL_FAILED",
 #'     SubmitTime = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
@@ -319,7 +319,7 @@ healthlake_describe_fhir_export_job <- function(DatastoreId, JobId) {
 #'   ImportJobProperties = list(
 #'     JobId = "string",
 #'     JobName = "string",
-#'     JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED_WITH_ERRORS"|"COMPLETED"|"FAILED"|"CANCEL_SUBMITTED"|"CANCEL_IN_PROGRESS"|"CANCEL_COMPLETED"|"CANCEL_FAILED",
+#'     JobStatus = "SUBMITTED"|"QUEUED"|"IN_PROGRESS"|"COMPLETED_WITH_ERRORS"|"COMPLETED"|"FAILED"|"CANCEL_SUBMITTED"|"CANCEL_IN_PROGRESS"|"CANCEL_COMPLETED"|"CANCEL_FAILED",
 #'     SubmitTime = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
@@ -424,7 +424,7 @@ healthlake_describe_fhir_import_job <- function(DatastoreId, JobId) {
 #'         PreloadDataType = "SYNTHEA"
 #'       ),
 #'       IdentityProviderConfiguration = list(
-#'         AuthorizationStrategy = "SMART_ON_FHIR_V1"|"AWS_AUTH",
+#'         AuthorizationStrategy = "SMART_ON_FHIR_V1"|"SMART_ON_FHIR"|"AWS_AUTH",
 #'         FineGrainedAuthorizationEnabled = TRUE|FALSE,
 #'         Metadata = "string",
 #'         IdpLambdaArn = "string"
@@ -514,7 +514,7 @@ healthlake_list_fhir_datastores <- function(Filter = NULL, NextToken = NULL, Max
 #'     list(
 #'       JobId = "string",
 #'       JobName = "string",
-#'       JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED_WITH_ERRORS"|"COMPLETED"|"FAILED"|"CANCEL_SUBMITTED"|"CANCEL_IN_PROGRESS"|"CANCEL_COMPLETED"|"CANCEL_FAILED",
+#'       JobStatus = "SUBMITTED"|"QUEUED"|"IN_PROGRESS"|"COMPLETED_WITH_ERRORS"|"COMPLETED"|"FAILED"|"CANCEL_SUBMITTED"|"CANCEL_IN_PROGRESS"|"CANCEL_COMPLETED"|"CANCEL_FAILED",
 #'       SubmitTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
@@ -543,7 +543,7 @@ healthlake_list_fhir_datastores <- function(Filter = NULL, NextToken = NULL, Max
 #'   NextToken = "string",
 #'   MaxResults = 123,
 #'   JobName = "string",
-#'   JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED_WITH_ERRORS"|"COMPLETED"|"FAILED"|"CANCEL_SUBMITTED"|"CANCEL_IN_PROGRESS"|"CANCEL_COMPLETED"|"CANCEL_FAILED",
+#'   JobStatus = "SUBMITTED"|"QUEUED"|"IN_PROGRESS"|"COMPLETED_WITH_ERRORS"|"COMPLETED"|"FAILED"|"CANCEL_SUBMITTED"|"CANCEL_IN_PROGRESS"|"CANCEL_COMPLETED"|"CANCEL_FAILED",
 #'   SubmittedBefore = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
@@ -610,7 +610,7 @@ healthlake_list_fhir_export_jobs <- function(DatastoreId, NextToken = NULL, MaxR
 #'     list(
 #'       JobId = "string",
 #'       JobName = "string",
-#'       JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED_WITH_ERRORS"|"COMPLETED"|"FAILED"|"CANCEL_SUBMITTED"|"CANCEL_IN_PROGRESS"|"CANCEL_COMPLETED"|"CANCEL_FAILED",
+#'       JobStatus = "SUBMITTED"|"QUEUED"|"IN_PROGRESS"|"COMPLETED_WITH_ERRORS"|"COMPLETED"|"FAILED"|"CANCEL_SUBMITTED"|"CANCEL_IN_PROGRESS"|"CANCEL_COMPLETED"|"CANCEL_FAILED",
 #'       SubmitTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
@@ -652,7 +652,7 @@ healthlake_list_fhir_export_jobs <- function(DatastoreId, NextToken = NULL, MaxR
 #'   NextToken = "string",
 #'   MaxResults = 123,
 #'   JobName = "string",
-#'   JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED_WITH_ERRORS"|"COMPLETED"|"FAILED"|"CANCEL_SUBMITTED"|"CANCEL_IN_PROGRESS"|"CANCEL_COMPLETED"|"CANCEL_FAILED",
+#'   JobStatus = "SUBMITTED"|"QUEUED"|"IN_PROGRESS"|"COMPLETED_WITH_ERRORS"|"COMPLETED"|"FAILED"|"CANCEL_SUBMITTED"|"CANCEL_IN_PROGRESS"|"CANCEL_COMPLETED"|"CANCEL_FAILED",
 #'   SubmittedBefore = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
@@ -756,14 +756,14 @@ healthlake_list_tags_for_resource <- function(ResourceARN) {
 #' @param DatastoreId &#91;required&#93; The AWS generated ID for the data store from which files are being
 #' exported for an export job.
 #' @param DataAccessRoleArn &#91;required&#93; The Amazon Resource Name used during the initiation of the job.
-#' @param ClientToken &#91;required&#93; An optional user provided token used for ensuring idempotency.
+#' @param ClientToken An optional user provided token used for ensuring idempotency.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
 #'   JobId = "string",
-#'   JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED_WITH_ERRORS"|"COMPLETED"|"FAILED"|"CANCEL_SUBMITTED"|"CANCEL_IN_PROGRESS"|"CANCEL_COMPLETED"|"CANCEL_FAILED",
+#'   JobStatus = "SUBMITTED"|"QUEUED"|"IN_PROGRESS"|"COMPLETED_WITH_ERRORS"|"COMPLETED"|"FAILED"|"CANCEL_SUBMITTED"|"CANCEL_IN_PROGRESS"|"CANCEL_COMPLETED"|"CANCEL_FAILED",
 #'   DatastoreId = "string"
 #' )
 #' ```
@@ -789,7 +789,7 @@ healthlake_list_tags_for_resource <- function(ResourceARN) {
 #' @rdname healthlake_start_fhir_export_job
 #'
 #' @aliases healthlake_start_fhir_export_job
-healthlake_start_fhir_export_job <- function(JobName = NULL, OutputDataConfig, DatastoreId, DataAccessRoleArn, ClientToken) {
+healthlake_start_fhir_export_job <- function(JobName = NULL, OutputDataConfig, DatastoreId, DataAccessRoleArn, ClientToken = NULL) {
   op <- new_operation(
     name = "StartFHIRExportJob",
     http_method = "POST",
@@ -824,14 +824,14 @@ healthlake_start_fhir_export_job <- function(JobName = NULL, OutputDataConfig, D
 #' @param DatastoreId &#91;required&#93; The AWS-generated data store ID.
 #' @param DataAccessRoleArn &#91;required&#93; The Amazon Resource Name (ARN) that gives AWS HealthLake access
 #' permission.
-#' @param ClientToken &#91;required&#93; Optional user provided token used for ensuring idempotency.
+#' @param ClientToken Optional user provided token used for ensuring idempotency.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
 #'   JobId = "string",
-#'   JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED_WITH_ERRORS"|"COMPLETED"|"FAILED"|"CANCEL_SUBMITTED"|"CANCEL_IN_PROGRESS"|"CANCEL_COMPLETED"|"CANCEL_FAILED",
+#'   JobStatus = "SUBMITTED"|"QUEUED"|"IN_PROGRESS"|"COMPLETED_WITH_ERRORS"|"COMPLETED"|"FAILED"|"CANCEL_SUBMITTED"|"CANCEL_IN_PROGRESS"|"CANCEL_COMPLETED"|"CANCEL_FAILED",
 #'   DatastoreId = "string"
 #' )
 #' ```
@@ -860,7 +860,7 @@ healthlake_start_fhir_export_job <- function(JobName = NULL, OutputDataConfig, D
 #' @rdname healthlake_start_fhir_import_job
 #'
 #' @aliases healthlake_start_fhir_import_job
-healthlake_start_fhir_import_job <- function(JobName = NULL, InputDataConfig, JobOutputDataConfig, DatastoreId, DataAccessRoleArn, ClientToken) {
+healthlake_start_fhir_import_job <- function(JobName = NULL, InputDataConfig, JobOutputDataConfig, DatastoreId, DataAccessRoleArn, ClientToken = NULL) {
   op <- new_operation(
     name = "StartFHIRImportJob",
     http_method = "POST",

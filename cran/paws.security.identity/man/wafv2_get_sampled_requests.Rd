@@ -22,11 +22,8 @@ sample of requests.}
 \item{RuleMetricName}{[required] The metric name assigned to the \code{Rule} or \code{RuleGroup} dimension for
 which you want a sample of requests.}
 
-\item{Scope}{[required] Specifies whether this is for an Amazon CloudFront distribution or for a
-regional application. A regional application can be an Application Load
-Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
-an Amazon Cognito user pool, an App Runner service, or an Amazon Web
-Services Verified Access instance.
+\item{Scope}{[required] Specifies whether this is for a global resource type, such as a Amazon
+CloudFront distribution.
 
 To work with CloudFront, you must also specify the Region US East (N.
 Virginia) as follows:

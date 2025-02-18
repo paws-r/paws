@@ -95,8 +95,12 @@ following key-value pairs:
 \item \verb{Key=OS,Value=Windows}
 }
 
-To add tags to an existing automation, use the
-\code{\link[=ssm_add_tags_to_resource]{add_tags_to_resource}} operation.}
+The \verb{Array Members} maximum value is reported as 1000. This number
+includes capacity reserved for internal operations. When calling the
+\code{\link[=ssm_start_automation_execution]{start_automation_execution}} action,
+you can specify a maximum of 5 tags. You can, however, use the
+\code{\link[=ssm_add_tags_to_resource]{add_tags_to_resource}} action to add up to a
+total of 50 tags to an existing automation configuration.}
 
 \item{AlarmConfiguration}{The CloudWatch alarm you want to apply to your automation.}
 

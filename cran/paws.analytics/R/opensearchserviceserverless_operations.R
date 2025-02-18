@@ -142,17 +142,17 @@ opensearchserviceserverless_batch_get_vpc_endpoint <- function(ids) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/opensearchserviceserverless_create_access_policy/](https://www.paws-r-sdk.com/docs/opensearchserviceserverless_create_access_policy/) for full documentation.
 #'
-#' @param clientToken Unique, case-sensitive identifier to ensure idempotency of the request.
+#' @param type &#91;required&#93; The type of policy.
+#' @param name &#91;required&#93; The name of the policy.
 #' @param description A description of the policy. Typically used to store information about
 #' the permissions defined in the policy.
-#' @param name &#91;required&#93; The name of the policy.
 #' @param policy &#91;required&#93; The JSON policy document to use as the content for the policy.
-#' @param type &#91;required&#93; The type of policy.
+#' @param clientToken Unique, case-sensitive identifier to ensure idempotency of the request.
 #'
 #' @keywords internal
 #'
 #' @rdname opensearchserviceserverless_create_access_policy
-opensearchserviceserverless_create_access_policy <- function(clientToken = NULL, description = NULL, name, policy, type) {
+opensearchserviceserverless_create_access_policy <- function(type, name, description = NULL, policy, clientToken = NULL) {
   op <- new_operation(
     name = "CreateAccessPolicy",
     http_method = "POST",
@@ -161,7 +161,7 @@ opensearchserviceserverless_create_access_policy <- function(clientToken = NULL,
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .opensearchserviceserverless$create_access_policy_input(clientToken = clientToken, description = description, name = name, policy = policy, type = type)
+  input <- .opensearchserviceserverless$create_access_policy_input(type = type, name = name, description = description, policy = policy, clientToken = clientToken)
   output <- .opensearchserviceserverless$create_access_policy_output()
   config <- get_config()
   svc <- .opensearchserviceserverless$service(config, op)
@@ -178,18 +178,18 @@ opensearchserviceserverless_create_access_policy <- function(clientToken = NULL,
 #'
 #' See [https://www.paws-r-sdk.com/docs/opensearchserviceserverless_create_collection/](https://www.paws-r-sdk.com/docs/opensearchserviceserverless_create_collection/) for full documentation.
 #'
-#' @param clientToken Unique, case-sensitive identifier to ensure idempotency of the request.
-#' @param description Description of the collection.
 #' @param name &#91;required&#93; Name of the collection.
-#' @param standbyReplicas Indicates whether standby replicas should be used for a collection.
+#' @param type The type of collection.
+#' @param description Description of the collection.
 #' @param tags An arbitrary set of tags (key–value pairs) to associate with the
 #' OpenSearch Serverless collection.
-#' @param type The type of collection.
+#' @param standbyReplicas Indicates whether standby replicas should be used for a collection.
+#' @param clientToken Unique, case-sensitive identifier to ensure idempotency of the request.
 #'
 #' @keywords internal
 #'
 #' @rdname opensearchserviceserverless_create_collection
-opensearchserviceserverless_create_collection <- function(clientToken = NULL, description = NULL, name, standbyReplicas = NULL, tags = NULL, type = NULL) {
+opensearchserviceserverless_create_collection <- function(name, type = NULL, description = NULL, tags = NULL, standbyReplicas = NULL, clientToken = NULL) {
   op <- new_operation(
     name = "CreateCollection",
     http_method = "POST",
@@ -198,7 +198,7 @@ opensearchserviceserverless_create_collection <- function(clientToken = NULL, de
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .opensearchserviceserverless$create_collection_input(clientToken = clientToken, description = description, name = name, standbyReplicas = standbyReplicas, tags = tags, type = type)
+  input <- .opensearchserviceserverless$create_collection_input(name = name, type = type, description = description, tags = tags, standbyReplicas = standbyReplicas, clientToken = clientToken)
   output <- .opensearchserviceserverless$create_collection_output()
   config <- get_config()
   svc <- .opensearchserviceserverless$service(config, op)
@@ -215,17 +215,17 @@ opensearchserviceserverless_create_collection <- function(clientToken = NULL, de
 #'
 #' See [https://www.paws-r-sdk.com/docs/opensearchserviceserverless_create_lifecycle_policy/](https://www.paws-r-sdk.com/docs/opensearchserviceserverless_create_lifecycle_policy/) for full documentation.
 #'
+#' @param type &#91;required&#93; The type of lifecycle policy.
+#' @param name &#91;required&#93; The name of the lifecycle policy.
+#' @param description A description of the lifecycle policy.
+#' @param policy &#91;required&#93; The JSON policy document to use as the content for the lifecycle policy.
 #' @param clientToken A unique, case-sensitive identifier to ensure idempotency of the
 #' request.
-#' @param description A description of the lifecycle policy.
-#' @param name &#91;required&#93; The name of the lifecycle policy.
-#' @param policy &#91;required&#93; The JSON policy document to use as the content for the lifecycle policy.
-#' @param type &#91;required&#93; The type of lifecycle policy.
 #'
 #' @keywords internal
 #'
 #' @rdname opensearchserviceserverless_create_lifecycle_policy
-opensearchserviceserverless_create_lifecycle_policy <- function(clientToken = NULL, description = NULL, name, policy, type) {
+opensearchserviceserverless_create_lifecycle_policy <- function(type, name, description = NULL, policy, clientToken = NULL) {
   op <- new_operation(
     name = "CreateLifecyclePolicy",
     http_method = "POST",
@@ -234,7 +234,7 @@ opensearchserviceserverless_create_lifecycle_policy <- function(clientToken = NU
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .opensearchserviceserverless$create_lifecycle_policy_input(clientToken = clientToken, description = description, name = name, policy = policy, type = type)
+  input <- .opensearchserviceserverless$create_lifecycle_policy_input(type = type, name = name, description = description, policy = policy, clientToken = clientToken)
   output <- .opensearchserviceserverless$create_lifecycle_policy_output()
   config <- get_config()
   svc <- .opensearchserviceserverless$service(config, op)
@@ -251,20 +251,20 @@ opensearchserviceserverless_create_lifecycle_policy <- function(clientToken = NU
 #'
 #' See [https://www.paws-r-sdk.com/docs/opensearchserviceserverless_create_security_config/](https://www.paws-r-sdk.com/docs/opensearchserviceserverless_create_security_config/) for full documentation.
 #'
-#' @param clientToken Unique, case-sensitive identifier to ensure idempotency of the request.
+#' @param type &#91;required&#93; The type of security configuration.
+#' @param name &#91;required&#93; The name of the security configuration.
 #' @param description A description of the security configuration.
+#' @param samlOptions Describes SAML options in in the form of a key-value map. This field is
+#' required if you specify `saml` for the `type` parameter.
 #' @param iamIdentityCenterOptions Describes IAM Identity Center options in the form of a key-value map.
 #' This field is required if you specify iamidentitycenter for the type
 #' parameter.
-#' @param name &#91;required&#93; The name of the security configuration.
-#' @param samlOptions Describes SAML options in in the form of a key-value map. This field is
-#' required if you specify `saml` for the `type` parameter.
-#' @param type &#91;required&#93; The type of security configuration.
+#' @param clientToken Unique, case-sensitive identifier to ensure idempotency of the request.
 #'
 #' @keywords internal
 #'
 #' @rdname opensearchserviceserverless_create_security_config
-opensearchserviceserverless_create_security_config <- function(clientToken = NULL, description = NULL, iamIdentityCenterOptions = NULL, name, samlOptions = NULL, type) {
+opensearchserviceserverless_create_security_config <- function(type, name, description = NULL, samlOptions = NULL, iamIdentityCenterOptions = NULL, clientToken = NULL) {
   op <- new_operation(
     name = "CreateSecurityConfig",
     http_method = "POST",
@@ -273,7 +273,7 @@ opensearchserviceserverless_create_security_config <- function(clientToken = NUL
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .opensearchserviceserverless$create_security_config_input(clientToken = clientToken, description = description, iamIdentityCenterOptions = iamIdentityCenterOptions, name = name, samlOptions = samlOptions, type = type)
+  input <- .opensearchserviceserverless$create_security_config_input(type = type, name = name, description = description, samlOptions = samlOptions, iamIdentityCenterOptions = iamIdentityCenterOptions, clientToken = clientToken)
   output <- .opensearchserviceserverless$create_security_config_output()
   config <- get_config()
   svc <- .opensearchserviceserverless$service(config, op)
@@ -291,17 +291,17 @@ opensearchserviceserverless_create_security_config <- function(clientToken = NUL
 #'
 #' See [https://www.paws-r-sdk.com/docs/opensearchserviceserverless_create_security_policy/](https://www.paws-r-sdk.com/docs/opensearchserviceserverless_create_security_policy/) for full documentation.
 #'
-#' @param clientToken Unique, case-sensitive identifier to ensure idempotency of the request.
+#' @param type &#91;required&#93; The type of security policy.
+#' @param name &#91;required&#93; The name of the policy.
 #' @param description A description of the policy. Typically used to store information about
 #' the permissions defined in the policy.
-#' @param name &#91;required&#93; The name of the policy.
 #' @param policy &#91;required&#93; The JSON policy document to use as the content for the new policy.
-#' @param type &#91;required&#93; The type of security policy.
+#' @param clientToken Unique, case-sensitive identifier to ensure idempotency of the request.
 #'
 #' @keywords internal
 #'
 #' @rdname opensearchserviceserverless_create_security_policy
-opensearchserviceserverless_create_security_policy <- function(clientToken = NULL, description = NULL, name, policy, type) {
+opensearchserviceserverless_create_security_policy <- function(type, name, description = NULL, policy, clientToken = NULL) {
   op <- new_operation(
     name = "CreateSecurityPolicy",
     http_method = "POST",
@@ -310,7 +310,7 @@ opensearchserviceserverless_create_security_policy <- function(clientToken = NUL
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .opensearchserviceserverless$create_security_policy_input(clientToken = clientToken, description = description, name = name, policy = policy, type = type)
+  input <- .opensearchserviceserverless$create_security_policy_input(type = type, name = name, description = description, policy = policy, clientToken = clientToken)
   output <- .opensearchserviceserverless$create_security_policy_output()
   config <- get_config()
   svc <- .opensearchserviceserverless$service(config, op)
@@ -327,19 +327,19 @@ opensearchserviceserverless_create_security_policy <- function(clientToken = NUL
 #'
 #' See [https://www.paws-r-sdk.com/docs/opensearchserviceserverless_create_vpc_endpoint/](https://www.paws-r-sdk.com/docs/opensearchserviceserverless_create_vpc_endpoint/) for full documentation.
 #'
-#' @param clientToken Unique, case-sensitive identifier to ensure idempotency of the request.
 #' @param name &#91;required&#93; The name of the interface endpoint.
+#' @param vpcId &#91;required&#93; The ID of the VPC from which you'll access OpenSearch Serverless.
+#' @param subnetIds &#91;required&#93; The ID of one or more subnets from which you'll access OpenSearch
+#' Serverless.
 #' @param securityGroupIds The unique identifiers of the security groups that define the ports,
 #' protocols, and sources for inbound traffic that you are authorizing into
 #' your endpoint.
-#' @param subnetIds &#91;required&#93; The ID of one or more subnets from which you'll access OpenSearch
-#' Serverless.
-#' @param vpcId &#91;required&#93; The ID of the VPC from which you'll access OpenSearch Serverless.
+#' @param clientToken Unique, case-sensitive identifier to ensure idempotency of the request.
 #'
 #' @keywords internal
 #'
 #' @rdname opensearchserviceserverless_create_vpc_endpoint
-opensearchserviceserverless_create_vpc_endpoint <- function(clientToken = NULL, name, securityGroupIds = NULL, subnetIds, vpcId) {
+opensearchserviceserverless_create_vpc_endpoint <- function(name, vpcId, subnetIds, securityGroupIds = NULL, clientToken = NULL) {
   op <- new_operation(
     name = "CreateVpcEndpoint",
     http_method = "POST",
@@ -348,7 +348,7 @@ opensearchserviceserverless_create_vpc_endpoint <- function(clientToken = NULL, 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .opensearchserviceserverless$create_vpc_endpoint_input(clientToken = clientToken, name = name, securityGroupIds = securityGroupIds, subnetIds = subnetIds, vpcId = vpcId)
+  input <- .opensearchserviceserverless$create_vpc_endpoint_input(name = name, vpcId = vpcId, subnetIds = subnetIds, securityGroupIds = securityGroupIds, clientToken = clientToken)
   output <- .opensearchserviceserverless$create_vpc_endpoint_output()
   config <- get_config()
   svc <- .opensearchserviceserverless$service(config, op)
@@ -365,14 +365,14 @@ opensearchserviceserverless_create_vpc_endpoint <- function(clientToken = NULL, 
 #'
 #' See [https://www.paws-r-sdk.com/docs/opensearchserviceserverless_delete_access_policy/](https://www.paws-r-sdk.com/docs/opensearchserviceserverless_delete_access_policy/) for full documentation.
 #'
-#' @param clientToken Unique, case-sensitive identifier to ensure idempotency of the request.
-#' @param name &#91;required&#93; The name of the policy to delete.
 #' @param type &#91;required&#93; The type of policy.
+#' @param name &#91;required&#93; The name of the policy to delete.
+#' @param clientToken Unique, case-sensitive identifier to ensure idempotency of the request.
 #'
 #' @keywords internal
 #'
 #' @rdname opensearchserviceserverless_delete_access_policy
-opensearchserviceserverless_delete_access_policy <- function(clientToken = NULL, name, type) {
+opensearchserviceserverless_delete_access_policy <- function(type, name, clientToken = NULL) {
   op <- new_operation(
     name = "DeleteAccessPolicy",
     http_method = "POST",
@@ -381,7 +381,7 @@ opensearchserviceserverless_delete_access_policy <- function(clientToken = NULL,
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .opensearchserviceserverless$delete_access_policy_input(clientToken = clientToken, name = name, type = type)
+  input <- .opensearchserviceserverless$delete_access_policy_input(type = type, name = name, clientToken = clientToken)
   output <- .opensearchserviceserverless$delete_access_policy_output()
   config <- get_config()
   svc <- .opensearchserviceserverless$service(config, op)
@@ -398,17 +398,17 @@ opensearchserviceserverless_delete_access_policy <- function(clientToken = NULL,
 #'
 #' See [https://www.paws-r-sdk.com/docs/opensearchserviceserverless_delete_collection/](https://www.paws-r-sdk.com/docs/opensearchserviceserverless_delete_collection/) for full documentation.
 #'
-#' @param clientToken A unique, case-sensitive identifier to ensure idempotency of the
-#' request.
 #' @param id &#91;required&#93; The unique identifier of the collection. For example, `1iu5usc406kd`.
 #' The ID is part of the collection endpoint. You can also retrieve it
 #' using the
 #' [`list_collections`][opensearchserviceserverless_list_collections] API.
+#' @param clientToken A unique, case-sensitive identifier to ensure idempotency of the
+#' request.
 #'
 #' @keywords internal
 #'
 #' @rdname opensearchserviceserverless_delete_collection
-opensearchserviceserverless_delete_collection <- function(clientToken = NULL, id) {
+opensearchserviceserverless_delete_collection <- function(id, clientToken = NULL) {
   op <- new_operation(
     name = "DeleteCollection",
     http_method = "POST",
@@ -417,7 +417,7 @@ opensearchserviceserverless_delete_collection <- function(clientToken = NULL, id
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .opensearchserviceserverless$delete_collection_input(clientToken = clientToken, id = id)
+  input <- .opensearchserviceserverless$delete_collection_input(id = id, clientToken = clientToken)
   output <- .opensearchserviceserverless$delete_collection_output()
   config <- get_config()
   svc <- .opensearchserviceserverless$service(config, op)
@@ -434,14 +434,14 @@ opensearchserviceserverless_delete_collection <- function(clientToken = NULL, id
 #'
 #' See [https://www.paws-r-sdk.com/docs/opensearchserviceserverless_delete_lifecycle_policy/](https://www.paws-r-sdk.com/docs/opensearchserviceserverless_delete_lifecycle_policy/) for full documentation.
 #'
-#' @param clientToken Unique, case-sensitive identifier to ensure idempotency of the request.
-#' @param name &#91;required&#93; The name of the policy to delete.
 #' @param type &#91;required&#93; The type of lifecycle policy.
+#' @param name &#91;required&#93; The name of the policy to delete.
+#' @param clientToken Unique, case-sensitive identifier to ensure idempotency of the request.
 #'
 #' @keywords internal
 #'
 #' @rdname opensearchserviceserverless_delete_lifecycle_policy
-opensearchserviceserverless_delete_lifecycle_policy <- function(clientToken = NULL, name, type) {
+opensearchserviceserverless_delete_lifecycle_policy <- function(type, name, clientToken = NULL) {
   op <- new_operation(
     name = "DeleteLifecyclePolicy",
     http_method = "POST",
@@ -450,7 +450,7 @@ opensearchserviceserverless_delete_lifecycle_policy <- function(clientToken = NU
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .opensearchserviceserverless$delete_lifecycle_policy_input(clientToken = clientToken, name = name, type = type)
+  input <- .opensearchserviceserverless$delete_lifecycle_policy_input(type = type, name = name, clientToken = clientToken)
   output <- .opensearchserviceserverless$delete_lifecycle_policy_output()
   config <- get_config()
   svc <- .opensearchserviceserverless$service(config, op)
@@ -467,15 +467,15 @@ opensearchserviceserverless_delete_lifecycle_policy <- function(clientToken = NU
 #'
 #' See [https://www.paws-r-sdk.com/docs/opensearchserviceserverless_delete_security_config/](https://www.paws-r-sdk.com/docs/opensearchserviceserverless_delete_security_config/) for full documentation.
 #'
-#' @param clientToken Unique, case-sensitive identifier to ensure idempotency of the request.
 #' @param id &#91;required&#93; The security configuration identifier. For SAML the ID will be
 #' `saml/<accountId>/<idpProviderName>`. For example,
 #' `saml/123456789123/OKTADev`.
+#' @param clientToken Unique, case-sensitive identifier to ensure idempotency of the request.
 #'
 #' @keywords internal
 #'
 #' @rdname opensearchserviceserverless_delete_security_config
-opensearchserviceserverless_delete_security_config <- function(clientToken = NULL, id) {
+opensearchserviceserverless_delete_security_config <- function(id, clientToken = NULL) {
   op <- new_operation(
     name = "DeleteSecurityConfig",
     http_method = "POST",
@@ -484,7 +484,7 @@ opensearchserviceserverless_delete_security_config <- function(clientToken = NUL
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .opensearchserviceserverless$delete_security_config_input(clientToken = clientToken, id = id)
+  input <- .opensearchserviceserverless$delete_security_config_input(id = id, clientToken = clientToken)
   output <- .opensearchserviceserverless$delete_security_config_output()
   config <- get_config()
   svc <- .opensearchserviceserverless$service(config, op)
@@ -501,14 +501,14 @@ opensearchserviceserverless_delete_security_config <- function(clientToken = NUL
 #'
 #' See [https://www.paws-r-sdk.com/docs/opensearchserviceserverless_delete_security_policy/](https://www.paws-r-sdk.com/docs/opensearchserviceserverless_delete_security_policy/) for full documentation.
 #'
-#' @param clientToken Unique, case-sensitive identifier to ensure idempotency of the request.
-#' @param name &#91;required&#93; The name of the policy to delete.
 #' @param type &#91;required&#93; The type of policy.
+#' @param name &#91;required&#93; The name of the policy to delete.
+#' @param clientToken Unique, case-sensitive identifier to ensure idempotency of the request.
 #'
 #' @keywords internal
 #'
 #' @rdname opensearchserviceserverless_delete_security_policy
-opensearchserviceserverless_delete_security_policy <- function(clientToken = NULL, name, type) {
+opensearchserviceserverless_delete_security_policy <- function(type, name, clientToken = NULL) {
   op <- new_operation(
     name = "DeleteSecurityPolicy",
     http_method = "POST",
@@ -517,7 +517,7 @@ opensearchserviceserverless_delete_security_policy <- function(clientToken = NUL
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .opensearchserviceserverless$delete_security_policy_input(clientToken = clientToken, name = name, type = type)
+  input <- .opensearchserviceserverless$delete_security_policy_input(type = type, name = name, clientToken = clientToken)
   output <- .opensearchserviceserverless$delete_security_policy_output()
   config <- get_config()
   svc <- .opensearchserviceserverless$service(config, op)
@@ -534,13 +534,13 @@ opensearchserviceserverless_delete_security_policy <- function(clientToken = NUL
 #'
 #' See [https://www.paws-r-sdk.com/docs/opensearchserviceserverless_delete_vpc_endpoint/](https://www.paws-r-sdk.com/docs/opensearchserviceserverless_delete_vpc_endpoint/) for full documentation.
 #'
-#' @param clientToken Unique, case-sensitive identifier to ensure idempotency of the request.
 #' @param id &#91;required&#93; The VPC endpoint identifier.
+#' @param clientToken Unique, case-sensitive identifier to ensure idempotency of the request.
 #'
 #' @keywords internal
 #'
 #' @rdname opensearchserviceserverless_delete_vpc_endpoint
-opensearchserviceserverless_delete_vpc_endpoint <- function(clientToken = NULL, id) {
+opensearchserviceserverless_delete_vpc_endpoint <- function(id, clientToken = NULL) {
   op <- new_operation(
     name = "DeleteVpcEndpoint",
     http_method = "POST",
@@ -549,7 +549,7 @@ opensearchserviceserverless_delete_vpc_endpoint <- function(clientToken = NULL, 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .opensearchserviceserverless$delete_vpc_endpoint_input(clientToken = clientToken, id = id)
+  input <- .opensearchserviceserverless$delete_vpc_endpoint_input(id = id, clientToken = clientToken)
   output <- .opensearchserviceserverless$delete_vpc_endpoint_output()
   config <- get_config()
   svc <- .opensearchserviceserverless$service(config, op)
@@ -566,13 +566,13 @@ opensearchserviceserverless_delete_vpc_endpoint <- function(clientToken = NULL, 
 #'
 #' See [https://www.paws-r-sdk.com/docs/opensearchserviceserverless_get_access_policy/](https://www.paws-r-sdk.com/docs/opensearchserviceserverless_get_access_policy/) for full documentation.
 #'
-#' @param name &#91;required&#93; The name of the access policy.
 #' @param type &#91;required&#93; Tye type of policy. Currently, the only supported value is `data`.
+#' @param name &#91;required&#93; The name of the access policy.
 #'
 #' @keywords internal
 #'
 #' @rdname opensearchserviceserverless_get_access_policy
-opensearchserviceserverless_get_access_policy <- function(name, type) {
+opensearchserviceserverless_get_access_policy <- function(type, name) {
   op <- new_operation(
     name = "GetAccessPolicy",
     http_method = "POST",
@@ -581,7 +581,7 @@ opensearchserviceserverless_get_access_policy <- function(name, type) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .opensearchserviceserverless$get_access_policy_input(name = name, type = type)
+  input <- .opensearchserviceserverless$get_access_policy_input(type = type, name = name)
   output <- .opensearchserviceserverless$get_access_policy_output()
   config <- get_config()
   svc <- .opensearchserviceserverless$service(config, op)
@@ -694,13 +694,13 @@ opensearchserviceserverless_get_security_config <- function(id) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/opensearchserviceserverless_get_security_policy/](https://www.paws-r-sdk.com/docs/opensearchserviceserverless_get_security_policy/) for full documentation.
 #'
-#' @param name &#91;required&#93; The name of the security policy.
 #' @param type &#91;required&#93; The type of security policy.
+#' @param name &#91;required&#93; The name of the security policy.
 #'
 #' @keywords internal
 #'
 #' @rdname opensearchserviceserverless_get_security_policy
-opensearchserviceserverless_get_security_policy <- function(name, type) {
+opensearchserviceserverless_get_security_policy <- function(type, name) {
   op <- new_operation(
     name = "GetSecurityPolicy",
     http_method = "POST",
@@ -709,7 +709,7 @@ opensearchserviceserverless_get_security_policy <- function(name, type) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .opensearchserviceserverless$get_security_policy_input(name = name, type = type)
+  input <- .opensearchserviceserverless$get_security_policy_input(type = type, name = name)
   output <- .opensearchserviceserverless$get_security_policy_output()
   config <- get_config()
   svc <- .opensearchserviceserverless$service(config, op)
@@ -727,23 +727,23 @@ opensearchserviceserverless_get_security_policy <- function(name, type) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/opensearchserviceserverless_list_access_policies/](https://www.paws-r-sdk.com/docs/opensearchserviceserverless_list_access_policies/) for full documentation.
 #'
-#' @param maxResults An optional parameter that specifies the maximum number of results to
-#' return. You can use `nextToken` to get the next page of results. The
-#' default is 20.
+#' @param type &#91;required&#93; The type of access policy.
+#' @param resource Resource filters (can be collections or indexes) that policies can apply
+#' to.
 #' @param nextToken If your initial
 #' [`list_access_policies`][opensearchserviceserverless_list_access_policies]
 #' operation returns a `nextToken`, you can include the returned
 #' `nextToken` in subsequent
 #' [`list_access_policies`][opensearchserviceserverless_list_access_policies]
 #' operations, which returns results in the next page.
-#' @param resource Resource filters (can be collections or indexes) that policies can apply
-#' to.
-#' @param type &#91;required&#93; The type of access policy.
+#' @param maxResults An optional parameter that specifies the maximum number of results to
+#' return. You can use `nextToken` to get the next page of results. The
+#' default is 20.
 #'
 #' @keywords internal
 #'
 #' @rdname opensearchserviceserverless_list_access_policies
-opensearchserviceserverless_list_access_policies <- function(maxResults = NULL, nextToken = NULL, resource = NULL, type) {
+opensearchserviceserverless_list_access_policies <- function(type, resource = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListAccessPolicies",
     http_method = "POST",
@@ -752,7 +752,7 @@ opensearchserviceserverless_list_access_policies <- function(maxResults = NULL, 
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
     stream_api = FALSE
   )
-  input <- .opensearchserviceserverless$list_access_policies_input(maxResults = maxResults, nextToken = nextToken, resource = resource, type = type)
+  input <- .opensearchserviceserverless$list_access_policies_input(type = type, resource = resource, nextToken = nextToken, maxResults = maxResults)
   output <- .opensearchserviceserverless$list_access_policies_output()
   config <- get_config()
   svc <- .opensearchserviceserverless$service(config, op)
@@ -770,19 +770,19 @@ opensearchserviceserverless_list_access_policies <- function(maxResults = NULL, 
 #' See [https://www.paws-r-sdk.com/docs/opensearchserviceserverless_list_collections/](https://www.paws-r-sdk.com/docs/opensearchserviceserverless_list_collections/) for full documentation.
 #'
 #' @param collectionFilters A list of filter names and values that you can use for requests.
-#' @param maxResults The maximum number of results to return. Default is 20. You can use
-#' `nextToken` to get the next page of results.
 #' @param nextToken If your initial
 #' [`list_collections`][opensearchserviceserverless_list_collections]
 #' operation returns a `nextToken`, you can include the returned
 #' `nextToken` in subsequent
 #' [`list_collections`][opensearchserviceserverless_list_collections]
 #' operations, which returns results in the next page.
+#' @param maxResults The maximum number of results to return. Default is 20. You can use
+#' `nextToken` to get the next page of results.
 #'
 #' @keywords internal
 #'
 #' @rdname opensearchserviceserverless_list_collections
-opensearchserviceserverless_list_collections <- function(collectionFilters = NULL, maxResults = NULL, nextToken = NULL) {
+opensearchserviceserverless_list_collections <- function(collectionFilters = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListCollections",
     http_method = "POST",
@@ -791,7 +791,7 @@ opensearchserviceserverless_list_collections <- function(collectionFilters = NUL
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
     stream_api = FALSE
   )
-  input <- .opensearchserviceserverless$list_collections_input(collectionFilters = collectionFilters, maxResults = maxResults, nextToken = nextToken)
+  input <- .opensearchserviceserverless$list_collections_input(collectionFilters = collectionFilters, nextToken = nextToken, maxResults = maxResults)
   output <- .opensearchserviceserverless$list_collections_output()
   config <- get_config()
   svc <- .opensearchserviceserverless$service(config, op)
@@ -808,23 +808,23 @@ opensearchserviceserverless_list_collections <- function(collectionFilters = NUL
 #'
 #' See [https://www.paws-r-sdk.com/docs/opensearchserviceserverless_list_lifecycle_policies/](https://www.paws-r-sdk.com/docs/opensearchserviceserverless_list_lifecycle_policies/) for full documentation.
 #'
-#' @param maxResults An optional parameter that specifies the maximum number of results to
-#' return. You can use use `nextToken` to get the next page of results. The
-#' default is 10.
+#' @param type &#91;required&#93; The type of lifecycle policy.
+#' @param resources Resource filters that policies can apply to. Currently, the only
+#' supported resource type is `index`.
 #' @param nextToken If your initial
 #' [`list_lifecycle_policies`][opensearchserviceserverless_list_lifecycle_policies]
 #' operation returns a `nextToken`, you can include the returned
 #' `nextToken` in subsequent
 #' [`list_lifecycle_policies`][opensearchserviceserverless_list_lifecycle_policies]
 #' operations, which returns results in the next page.
-#' @param resources Resource filters that policies can apply to. Currently, the only
-#' supported resource type is `index`.
-#' @param type &#91;required&#93; The type of lifecycle policy.
+#' @param maxResults An optional parameter that specifies the maximum number of results to
+#' return. You can use use `nextToken` to get the next page of results. The
+#' default is 10.
 #'
 #' @keywords internal
 #'
 #' @rdname opensearchserviceserverless_list_lifecycle_policies
-opensearchserviceserverless_list_lifecycle_policies <- function(maxResults = NULL, nextToken = NULL, resources = NULL, type) {
+opensearchserviceserverless_list_lifecycle_policies <- function(type, resources = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListLifecyclePolicies",
     http_method = "POST",
@@ -833,7 +833,7 @@ opensearchserviceserverless_list_lifecycle_policies <- function(maxResults = NUL
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
     stream_api = FALSE
   )
-  input <- .opensearchserviceserverless$list_lifecycle_policies_input(maxResults = maxResults, nextToken = nextToken, resources = resources, type = type)
+  input <- .opensearchserviceserverless$list_lifecycle_policies_input(type = type, resources = resources, nextToken = nextToken, maxResults = maxResults)
   output <- .opensearchserviceserverless$list_lifecycle_policies_output()
   config <- get_config()
   svc <- .opensearchserviceserverless$service(config, op)
@@ -851,21 +851,21 @@ opensearchserviceserverless_list_lifecycle_policies <- function(maxResults = NUL
 #'
 #' See [https://www.paws-r-sdk.com/docs/opensearchserviceserverless_list_security_configs/](https://www.paws-r-sdk.com/docs/opensearchserviceserverless_list_security_configs/) for full documentation.
 #'
-#' @param maxResults An optional parameter that specifies the maximum number of results to
-#' return. You can use `nextToken` to get the next page of results. The
-#' default is 20.
+#' @param type &#91;required&#93; The type of security configuration.
 #' @param nextToken If your initial
 #' [`list_security_configs`][opensearchserviceserverless_list_security_configs]
 #' operation returns a `nextToken`, you can include the returned
 #' `nextToken` in subsequent
 #' [`list_security_configs`][opensearchserviceserverless_list_security_configs]
 #' operations, which returns results in the next page.
-#' @param type &#91;required&#93; The type of security configuration.
+#' @param maxResults An optional parameter that specifies the maximum number of results to
+#' return. You can use `nextToken` to get the next page of results. The
+#' default is 20.
 #'
 #' @keywords internal
 #'
 #' @rdname opensearchserviceserverless_list_security_configs
-opensearchserviceserverless_list_security_configs <- function(maxResults = NULL, nextToken = NULL, type) {
+opensearchserviceserverless_list_security_configs <- function(type, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListSecurityConfigs",
     http_method = "POST",
@@ -874,7 +874,7 @@ opensearchserviceserverless_list_security_configs <- function(maxResults = NULL,
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
     stream_api = FALSE
   )
-  input <- .opensearchserviceserverless$list_security_configs_input(maxResults = maxResults, nextToken = nextToken, type = type)
+  input <- .opensearchserviceserverless$list_security_configs_input(type = type, nextToken = nextToken, maxResults = maxResults)
   output <- .opensearchserviceserverless$list_security_configs_output()
   config <- get_config()
   svc <- .opensearchserviceserverless$service(config, op)
@@ -892,23 +892,23 @@ opensearchserviceserverless_list_security_configs <- function(maxResults = NULL,
 #'
 #' See [https://www.paws-r-sdk.com/docs/opensearchserviceserverless_list_security_policies/](https://www.paws-r-sdk.com/docs/opensearchserviceserverless_list_security_policies/) for full documentation.
 #'
-#' @param maxResults An optional parameter that specifies the maximum number of results to
-#' return. You can use `nextToken` to get the next page of results. The
-#' default is 20.
+#' @param type &#91;required&#93; The type of policy.
+#' @param resource Resource filters (can be collection or indexes) that policies can apply
+#' to.
 #' @param nextToken If your initial
 #' [`list_security_policies`][opensearchserviceserverless_list_security_policies]
 #' operation returns a `nextToken`, you can include the returned
 #' `nextToken` in subsequent
 #' [`list_security_policies`][opensearchserviceserverless_list_security_policies]
 #' operations, which returns results in the next page.
-#' @param resource Resource filters (can be collection or indexes) that policies can apply
-#' to.
-#' @param type &#91;required&#93; The type of policy.
+#' @param maxResults An optional parameter that specifies the maximum number of results to
+#' return. You can use `nextToken` to get the next page of results. The
+#' default is 20.
 #'
 #' @keywords internal
 #'
 #' @rdname opensearchserviceserverless_list_security_policies
-opensearchserviceserverless_list_security_policies <- function(maxResults = NULL, nextToken = NULL, resource = NULL, type) {
+opensearchserviceserverless_list_security_policies <- function(type, resource = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListSecurityPolicies",
     http_method = "POST",
@@ -917,7 +917,7 @@ opensearchserviceserverless_list_security_policies <- function(maxResults = NULL
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
     stream_api = FALSE
   )
-  input <- .opensearchserviceserverless$list_security_policies_input(maxResults = maxResults, nextToken = nextToken, resource = resource, type = type)
+  input <- .opensearchserviceserverless$list_security_policies_input(type = type, resource = resource, nextToken = nextToken, maxResults = maxResults)
   output <- .opensearchserviceserverless$list_security_policies_output()
   config <- get_config()
   svc <- .opensearchserviceserverless$service(config, op)
@@ -968,23 +968,23 @@ opensearchserviceserverless_list_tags_for_resource <- function(resourceArn) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/opensearchserviceserverless_list_vpc_endpoints/](https://www.paws-r-sdk.com/docs/opensearchserviceserverless_list_vpc_endpoints/) for full documentation.
 #'
-#' @param maxResults An optional parameter that specifies the maximum number of results to
-#' return. You can use `nextToken` to get the next page of results. The
-#' default is 20.
+#' @param vpcEndpointFilters Filter the results according to the current status of the VPC endpoint.
+#' Possible statuses are `CREATING`, `DELETING`, `UPDATING`, `ACTIVE`, and
+#' `FAILED`.
 #' @param nextToken If your initial
 #' [`list_vpc_endpoints`][opensearchserviceserverless_list_vpc_endpoints]
 #' operation returns a `nextToken`, you can include the returned
 #' `nextToken` in subsequent
 #' [`list_vpc_endpoints`][opensearchserviceserverless_list_vpc_endpoints]
 #' operations, which returns results in the next page.
-#' @param vpcEndpointFilters Filter the results according to the current status of the VPC endpoint.
-#' Possible statuses are `CREATING`, `DELETING`, `UPDATING`, `ACTIVE`, and
-#' `FAILED`.
+#' @param maxResults An optional parameter that specifies the maximum number of results to
+#' return. You can use `nextToken` to get the next page of results. The
+#' default is 20.
 #'
 #' @keywords internal
 #'
 #' @rdname opensearchserviceserverless_list_vpc_endpoints
-opensearchserviceserverless_list_vpc_endpoints <- function(maxResults = NULL, nextToken = NULL, vpcEndpointFilters = NULL) {
+opensearchserviceserverless_list_vpc_endpoints <- function(vpcEndpointFilters = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListVpcEndpoints",
     http_method = "POST",
@@ -993,7 +993,7 @@ opensearchserviceserverless_list_vpc_endpoints <- function(maxResults = NULL, ne
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
     stream_api = FALSE
   )
-  input <- .opensearchserviceserverless$list_vpc_endpoints_input(maxResults = maxResults, nextToken = nextToken, vpcEndpointFilters = vpcEndpointFilters)
+  input <- .opensearchserviceserverless$list_vpc_endpoints_input(vpcEndpointFilters = vpcEndpointFilters, nextToken = nextToken, maxResults = maxResults)
   output <- .opensearchserviceserverless$list_vpc_endpoints_output()
   config <- get_config()
   svc <- .opensearchserviceserverless$service(config, op)
@@ -1080,18 +1080,18 @@ opensearchserviceserverless_untag_resource <- function(resourceArn, tagKeys) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/opensearchserviceserverless_update_access_policy/](https://www.paws-r-sdk.com/docs/opensearchserviceserverless_update_access_policy/) for full documentation.
 #'
-#' @param clientToken Unique, case-sensitive identifier to ensure idempotency of the request.
+#' @param type &#91;required&#93; The type of policy.
+#' @param name &#91;required&#93; The name of the policy.
+#' @param policyVersion &#91;required&#93; The version of the policy being updated.
 #' @param description A description of the policy. Typically used to store information about
 #' the permissions defined in the policy.
-#' @param name &#91;required&#93; The name of the policy.
 #' @param policy The JSON policy document to use as the content for the policy.
-#' @param policyVersion &#91;required&#93; The version of the policy being updated.
-#' @param type &#91;required&#93; The type of policy.
+#' @param clientToken Unique, case-sensitive identifier to ensure idempotency of the request.
 #'
 #' @keywords internal
 #'
 #' @rdname opensearchserviceserverless_update_access_policy
-opensearchserviceserverless_update_access_policy <- function(clientToken = NULL, description = NULL, name, policy = NULL, policyVersion, type) {
+opensearchserviceserverless_update_access_policy <- function(type, name, policyVersion, description = NULL, policy = NULL, clientToken = NULL) {
   op <- new_operation(
     name = "UpdateAccessPolicy",
     http_method = "POST",
@@ -1100,7 +1100,7 @@ opensearchserviceserverless_update_access_policy <- function(clientToken = NULL,
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .opensearchserviceserverless$update_access_policy_input(clientToken = clientToken, description = description, name = name, policy = policy, policyVersion = policyVersion, type = type)
+  input <- .opensearchserviceserverless$update_access_policy_input(type = type, name = name, policyVersion = policyVersion, description = description, policy = policy, clientToken = clientToken)
   output <- .opensearchserviceserverless$update_access_policy_output()
   config <- get_config()
   svc <- .opensearchserviceserverless$service(config, op)
@@ -1149,14 +1149,14 @@ opensearchserviceserverless_update_account_settings <- function(capacityLimits =
 #'
 #' See [https://www.paws-r-sdk.com/docs/opensearchserviceserverless_update_collection/](https://www.paws-r-sdk.com/docs/opensearchserviceserverless_update_collection/) for full documentation.
 #'
-#' @param clientToken Unique, case-sensitive identifier to ensure idempotency of the request.
-#' @param description A description of the collection.
 #' @param id &#91;required&#93; The unique identifier of the collection.
+#' @param description A description of the collection.
+#' @param clientToken Unique, case-sensitive identifier to ensure idempotency of the request.
 #'
 #' @keywords internal
 #'
 #' @rdname opensearchserviceserverless_update_collection
-opensearchserviceserverless_update_collection <- function(clientToken = NULL, description = NULL, id) {
+opensearchserviceserverless_update_collection <- function(id, description = NULL, clientToken = NULL) {
   op <- new_operation(
     name = "UpdateCollection",
     http_method = "POST",
@@ -1165,7 +1165,7 @@ opensearchserviceserverless_update_collection <- function(clientToken = NULL, de
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .opensearchserviceserverless$update_collection_input(clientToken = clientToken, description = description, id = id)
+  input <- .opensearchserviceserverless$update_collection_input(id = id, description = description, clientToken = clientToken)
   output <- .opensearchserviceserverless$update_collection_output()
   config <- get_config()
   svc <- .opensearchserviceserverless$service(config, op)
@@ -1182,18 +1182,18 @@ opensearchserviceserverless_update_collection <- function(clientToken = NULL, de
 #'
 #' See [https://www.paws-r-sdk.com/docs/opensearchserviceserverless_update_lifecycle_policy/](https://www.paws-r-sdk.com/docs/opensearchserviceserverless_update_lifecycle_policy/) for full documentation.
 #'
+#' @param type &#91;required&#93; The type of lifecycle policy.
+#' @param name &#91;required&#93; The name of the policy.
+#' @param policyVersion &#91;required&#93; The version of the policy being updated.
+#' @param description A description of the lifecycle policy.
+#' @param policy The JSON policy document to use as the content for the lifecycle policy.
 #' @param clientToken A unique, case-sensitive identifier to ensure idempotency of the
 #' request.
-#' @param description A description of the lifecycle policy.
-#' @param name &#91;required&#93; The name of the policy.
-#' @param policy The JSON policy document to use as the content for the lifecycle policy.
-#' @param policyVersion &#91;required&#93; The version of the policy being updated.
-#' @param type &#91;required&#93; The type of lifecycle policy.
 #'
 #' @keywords internal
 #'
 #' @rdname opensearchserviceserverless_update_lifecycle_policy
-opensearchserviceserverless_update_lifecycle_policy <- function(clientToken = NULL, description = NULL, name, policy = NULL, policyVersion, type) {
+opensearchserviceserverless_update_lifecycle_policy <- function(type, name, policyVersion, description = NULL, policy = NULL, clientToken = NULL) {
   op <- new_operation(
     name = "UpdateLifecyclePolicy",
     http_method = "POST",
@@ -1202,7 +1202,7 @@ opensearchserviceserverless_update_lifecycle_policy <- function(clientToken = NU
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .opensearchserviceserverless$update_lifecycle_policy_input(clientToken = clientToken, description = description, name = name, policy = policy, policyVersion = policyVersion, type = type)
+  input <- .opensearchserviceserverless$update_lifecycle_policy_input(type = type, name = name, policyVersion = policyVersion, description = description, policy = policy, clientToken = clientToken)
   output <- .opensearchserviceserverless$update_lifecycle_policy_output()
   config <- get_config()
   svc <- .opensearchserviceserverless$service(config, op)
@@ -1219,22 +1219,22 @@ opensearchserviceserverless_update_lifecycle_policy <- function(clientToken = NU
 #'
 #' See [https://www.paws-r-sdk.com/docs/opensearchserviceserverless_update_security_config/](https://www.paws-r-sdk.com/docs/opensearchserviceserverless_update_security_config/) for full documentation.
 #'
-#' @param clientToken Unique, case-sensitive identifier to ensure idempotency of the request.
+#' @param id &#91;required&#93; The security configuration identifier. For SAML the ID will be
+#' `saml/<accountId>/<idpProviderName>`. For example,
+#' `saml/123456789123/OKTADev`.
 #' @param configVersion &#91;required&#93; The version of the security configuration to be updated. You can find
 #' the most recent version of a security configuration using the
 #' [`get_security_policy`][opensearchserviceserverless_get_security_policy]
 #' command.
 #' @param description A description of the security configuration.
-#' @param iamIdentityCenterOptionsUpdates Describes IAM Identity Center options in the form of a key-value map.
-#' @param id &#91;required&#93; The security configuration identifier. For SAML the ID will be
-#' `saml/<accountId>/<idpProviderName>`. For example,
-#' `saml/123456789123/OKTADev`.
 #' @param samlOptions SAML options in in the form of a key-value map.
+#' @param iamIdentityCenterOptionsUpdates Describes IAM Identity Center options in the form of a key-value map.
+#' @param clientToken Unique, case-sensitive identifier to ensure idempotency of the request.
 #'
 #' @keywords internal
 #'
 #' @rdname opensearchserviceserverless_update_security_config
-opensearchserviceserverless_update_security_config <- function(clientToken = NULL, configVersion, description = NULL, iamIdentityCenterOptionsUpdates = NULL, id, samlOptions = NULL) {
+opensearchserviceserverless_update_security_config <- function(id, configVersion, description = NULL, samlOptions = NULL, iamIdentityCenterOptionsUpdates = NULL, clientToken = NULL) {
   op <- new_operation(
     name = "UpdateSecurityConfig",
     http_method = "POST",
@@ -1243,7 +1243,7 @@ opensearchserviceserverless_update_security_config <- function(clientToken = NUL
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .opensearchserviceserverless$update_security_config_input(clientToken = clientToken, configVersion = configVersion, description = description, iamIdentityCenterOptionsUpdates = iamIdentityCenterOptionsUpdates, id = id, samlOptions = samlOptions)
+  input <- .opensearchserviceserverless$update_security_config_input(id = id, configVersion = configVersion, description = description, samlOptions = samlOptions, iamIdentityCenterOptionsUpdates = iamIdentityCenterOptionsUpdates, clientToken = clientToken)
   output <- .opensearchserviceserverless$update_security_config_output()
   config <- get_config()
   svc <- .opensearchserviceserverless$service(config, op)
@@ -1260,18 +1260,18 @@ opensearchserviceserverless_update_security_config <- function(clientToken = NUL
 #'
 #' See [https://www.paws-r-sdk.com/docs/opensearchserviceserverless_update_security_policy/](https://www.paws-r-sdk.com/docs/opensearchserviceserverless_update_security_policy/) for full documentation.
 #'
-#' @param clientToken Unique, case-sensitive identifier to ensure idempotency of the request.
+#' @param type &#91;required&#93; The type of access policy.
+#' @param name &#91;required&#93; The name of the policy.
+#' @param policyVersion &#91;required&#93; The version of the policy being updated.
 #' @param description A description of the policy. Typically used to store information about
 #' the permissions defined in the policy.
-#' @param name &#91;required&#93; The name of the policy.
 #' @param policy The JSON policy document to use as the content for the new policy.
-#' @param policyVersion &#91;required&#93; The version of the policy being updated.
-#' @param type &#91;required&#93; The type of access policy.
+#' @param clientToken Unique, case-sensitive identifier to ensure idempotency of the request.
 #'
 #' @keywords internal
 #'
 #' @rdname opensearchserviceserverless_update_security_policy
-opensearchserviceserverless_update_security_policy <- function(clientToken = NULL, description = NULL, name, policy = NULL, policyVersion, type) {
+opensearchserviceserverless_update_security_policy <- function(type, name, policyVersion, description = NULL, policy = NULL, clientToken = NULL) {
   op <- new_operation(
     name = "UpdateSecurityPolicy",
     http_method = "POST",
@@ -1280,7 +1280,7 @@ opensearchserviceserverless_update_security_policy <- function(clientToken = NUL
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .opensearchserviceserverless$update_security_policy_input(clientToken = clientToken, description = description, name = name, policy = policy, policyVersion = policyVersion, type = type)
+  input <- .opensearchserviceserverless$update_security_policy_input(type = type, name = name, policyVersion = policyVersion, description = description, policy = policy, clientToken = clientToken)
   output <- .opensearchserviceserverless$update_security_policy_output()
   config <- get_config()
   svc <- .opensearchserviceserverless$service(config, op)
@@ -1297,20 +1297,20 @@ opensearchserviceserverless_update_security_policy <- function(clientToken = NUL
 #'
 #' See [https://www.paws-r-sdk.com/docs/opensearchserviceserverless_update_vpc_endpoint/](https://www.paws-r-sdk.com/docs/opensearchserviceserverless_update_vpc_endpoint/) for full documentation.
 #'
+#' @param id &#91;required&#93; The unique identifier of the interface endpoint to update.
+#' @param addSubnetIds The ID of one or more subnets to add to the endpoint.
+#' @param removeSubnetIds The unique identifiers of the subnets to remove from the endpoint.
 #' @param addSecurityGroupIds The unique identifiers of the security groups to add to the endpoint.
 #' Security groups define the ports, protocols, and sources for inbound
 #' traffic that you are authorizing into your endpoint.
-#' @param addSubnetIds The ID of one or more subnets to add to the endpoint.
-#' @param clientToken Unique, case-sensitive identifier to ensure idempotency of the request.
-#' @param id &#91;required&#93; The unique identifier of the interface endpoint to update.
 #' @param removeSecurityGroupIds The unique identifiers of the security groups to remove from the
 #' endpoint.
-#' @param removeSubnetIds The unique identifiers of the subnets to remove from the endpoint.
+#' @param clientToken Unique, case-sensitive identifier to ensure idempotency of the request.
 #'
 #' @keywords internal
 #'
 #' @rdname opensearchserviceserverless_update_vpc_endpoint
-opensearchserviceserverless_update_vpc_endpoint <- function(addSecurityGroupIds = NULL, addSubnetIds = NULL, clientToken = NULL, id, removeSecurityGroupIds = NULL, removeSubnetIds = NULL) {
+opensearchserviceserverless_update_vpc_endpoint <- function(id, addSubnetIds = NULL, removeSubnetIds = NULL, addSecurityGroupIds = NULL, removeSecurityGroupIds = NULL, clientToken = NULL) {
   op <- new_operation(
     name = "UpdateVpcEndpoint",
     http_method = "POST",
@@ -1319,7 +1319,7 @@ opensearchserviceserverless_update_vpc_endpoint <- function(addSecurityGroupIds 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .opensearchserviceserverless$update_vpc_endpoint_input(addSecurityGroupIds = addSecurityGroupIds, addSubnetIds = addSubnetIds, clientToken = clientToken, id = id, removeSecurityGroupIds = removeSecurityGroupIds, removeSubnetIds = removeSubnetIds)
+  input <- .opensearchserviceserverless$update_vpc_endpoint_input(id = id, addSubnetIds = addSubnetIds, removeSubnetIds = removeSubnetIds, addSecurityGroupIds = addSecurityGroupIds, removeSecurityGroupIds = removeSecurityGroupIds, clientToken = clientToken)
   output <- .opensearchserviceserverless$update_vpc_endpoint_output()
   config <- get_config()
   svc <- .opensearchserviceserverless$service(config, op)

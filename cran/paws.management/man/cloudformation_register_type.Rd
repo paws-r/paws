@@ -22,7 +22,7 @@ We suggest that extension names adhere to the following patterns:
 \itemize{
 \item For resource types, \verb{company_or_organization::service::type}.
 \item For modules, \verb{company_or_organization::service::type::MODULE}.
-\item For hooks, \verb{MyCompany::Testing::MyTestHook}.
+\item For Hooks, \verb{MyCompany::Testing::MyTestHook}.
 }
 
 The following organization namespaces are reserved and can't be used in

@@ -8,7 +8,7 @@ accounts in your organization}
 iam_enable_organizations_root_credentials_management()
 }
 \description{
-Enables the management of privileged root user credentials across member accounts in your organization. When you enable root credentials management for \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_root-user.html#id_root-user-access-management}{centralized root access}, the management account and the delegated admininstrator for IAM can manage root user credentials for member accounts in your organization.
+Enables the management of privileged root user credentials across member accounts in your organization. When you enable root credentials management for \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_root-user.html#id_root-user-access-management}{centralized root access}, the management account and the delegated administrator for IAM can manage root user credentials for member accounts in your organization.
 
 See \url{https://www.paws-r-sdk.com/docs/iam_enable_organizations_root_credentials_management/} for full documentation.
 }

@@ -8,6 +8,7 @@ prometheusservice_update_scraper(
   alias = NULL,
   clientToken = NULL,
   destination = NULL,
+  roleConfiguration = NULL,
   scrapeConfiguration = NULL,
   scraperId
 )
@@ -20,6 +21,8 @@ the request. Case-sensitive.}
 
 \item{destination}{The new Amazon Managed Service for Prometheus workspace to send metrics
 to.}
+
+\item{roleConfiguration}{The scraper role configuration for the workspace.}
 
 \item{scrapeConfiguration}{Contains the base-64 encoded YAML configuration for the scraper.
 

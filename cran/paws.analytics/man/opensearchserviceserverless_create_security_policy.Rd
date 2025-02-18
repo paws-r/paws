@@ -6,24 +6,24 @@
 Serverless collections}
 \usage{
 opensearchserviceserverless_create_security_policy(
-  clientToken = NULL,
-  description = NULL,
+  type,
   name,
+  description = NULL,
   policy,
-  type
+  clientToken = NULL
 )
 }
 \arguments{
-\item{clientToken}{Unique, case-sensitive identifier to ensure idempotency of the request.}
+\item{type}{[required] The type of security policy.}
+
+\item{name}{[required] The name of the policy.}
 
 \item{description}{A description of the policy. Typically used to store information about
 the permissions defined in the policy.}
 
-\item{name}{[required] The name of the policy.}
-
 \item{policy}{[required] The JSON policy document to use as the content for the new policy.}
 
-\item{type}{[required] The type of security policy.}
+\item{clientToken}{Unique, case-sensitive identifier to ensure idempotency of the request.}
 }
 \description{
 Creates a security policy to be used by one or more OpenSearch Serverless collections. Security policies provide access to a collection and its OpenSearch Dashboards endpoint from public networks or specific VPC endpoints. They also allow you to secure a collection with a KMS encryption key. For more information, see \href{https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-network.html}{Network access for Amazon OpenSearch Serverless} and \href{https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-encryption.html}{Encryption at rest for Amazon OpenSearch Serverless}.

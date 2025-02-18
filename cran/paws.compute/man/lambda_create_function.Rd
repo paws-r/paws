@@ -151,7 +151,7 @@ setting.}
 \item{LoggingConfig}{The function's Amazon CloudWatch Logs configuration settings.}
 }
 \description{
-Creates a Lambda function. To create a function, you need a \href{https://docs.aws.amazon.com/lambda/latest/dg/}{deployment package} and an \href{https://docs.aws.amazon.com/lambda/latest/dg/lambda-permissions.html#lambda-intro-execution-role}{execution role}. The deployment package is a .zip file archive or container image that contains your function code. The execution role grants the function permission to use Amazon Web Services services, such as Amazon CloudWatch Logs for log streaming and X-Ray for request tracing.
+Creates a Lambda function. To create a function, you need a \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-function-zip.html}{deployment package} and an \href{https://docs.aws.amazon.com/lambda/latest/dg/lambda-permissions.html#lambda-intro-execution-role}{execution role}. The deployment package is a .zip file archive or container image that contains your function code. The execution role grants the function permission to use Amazon Web Services services, such as Amazon CloudWatch Logs for log streaming and X-Ray for request tracing.
 
 See \url{https://www.paws-r-sdk.com/docs/lambda_create_function/} for full documentation.
 }

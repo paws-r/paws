@@ -4,12 +4,12 @@
 \alias{opensearchserviceserverless_get_access_policy}
 \title{Returns an OpenSearch Serverless access policy}
 \usage{
-opensearchserviceserverless_get_access_policy(name, type)
+opensearchserviceserverless_get_access_policy(type, name)
 }
 \arguments{
-\item{name}{[required] The name of the access policy.}
-
 \item{type}{[required] Tye type of policy. Currently, the only supported value is \code{data}.}
+
+\item{name}{[required] The name of the access policy.}
 }
 \description{
 Returns an OpenSearch Serverless access policy. For more information, see \href{https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-data-access.html}{Data access control for Amazon OpenSearch Serverless}.

@@ -3,6 +3,18 @@
 #' @include connectcases_service.R
 NULL
 
+.connectcases$batch_get_case_rule_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(caseRules = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), domainId = structure(logical(0), tags = list(location = "uri", locationName = "domainId", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.connectcases$batch_get_case_rule_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(caseRules = structure(list(structure(list(caseRuleArn = structure(logical(0), tags = list(type = "string")), caseRuleId = structure(logical(0), tags = list(type = "string")), createdTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), deleted = structure(logical(0), tags = list(type = "boolean")), description = structure(logical(0), tags = list(type = "string")), lastModifiedTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), name = structure(logical(0), tags = list(type = "string")), rule = structure(list(required = structure(list(conditions = structure(list(structure(list(equalTo = structure(list(operandOne = structure(list(fieldId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", union = TRUE)), operandTwo = structure(list(booleanValue = structure(logical(0), tags = list(type = "boolean", box = TRUE)), doubleValue = structure(logical(0), tags = list(type = "double", box = TRUE)), emptyValue = structure(list(), tags = list(type = "structure")), stringValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", union = TRUE)), result = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure")), notEqualTo = structure(list(operandOne = structure(list(fieldId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", union = TRUE)), operandTwo = structure(list(booleanValue = structure(logical(0), tags = list(type = "boolean", box = TRUE)), doubleValue = structure(logical(0), tags = list(type = "double", box = TRUE)), emptyValue = structure(list(), tags = list(type = "structure")), stringValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", union = TRUE)), result = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "list")), defaultValue = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), errors = structure(list(structure(list(errorCode = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .connectcases$batch_get_field_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(domainId = structure(logical(0), tags = list(location = "uri", locationName = "domainId", type = "string")), fields = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
@@ -36,6 +48,18 @@ NULL
 .connectcases$create_case_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(caseArn = structure(logical(0), tags = list(type = "string")), caseId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.connectcases$create_case_rule_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(description = structure(logical(0), tags = list(type = "string")), domainId = structure(logical(0), tags = list(location = "uri", locationName = "domainId", type = "string")), name = structure(logical(0), tags = list(type = "string")), rule = structure(list(required = structure(list(conditions = structure(list(structure(list(equalTo = structure(list(operandOne = structure(list(fieldId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", union = TRUE)), operandTwo = structure(list(booleanValue = structure(logical(0), tags = list(type = "boolean", box = TRUE)), doubleValue = structure(logical(0), tags = list(type = "double", box = TRUE)), emptyValue = structure(list(), tags = list(type = "structure")), stringValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", union = TRUE)), result = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure")), notEqualTo = structure(list(operandOne = structure(list(fieldId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", union = TRUE)), operandTwo = structure(list(booleanValue = structure(logical(0), tags = list(type = "boolean", box = TRUE)), doubleValue = structure(logical(0), tags = list(type = "double", box = TRUE)), emptyValue = structure(list(), tags = list(type = "structure")), stringValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", union = TRUE)), result = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "list")), defaultValue = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.connectcases$create_case_rule_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(caseRuleArn = structure(logical(0), tags = list(type = "string")), caseRuleId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -89,13 +113,25 @@ NULL
 
 .connectcases$create_template_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(description = structure(logical(0), tags = list(type = "string")), domainId = structure(logical(0), tags = list(location = "uri", locationName = "domainId", type = "string")), layoutConfiguration = structure(list(defaultLayout = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), name = structure(logical(0), tags = list(type = "string")), requiredFields = structure(list(structure(list(fieldId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(description = structure(logical(0), tags = list(type = "string")), domainId = structure(logical(0), tags = list(location = "uri", locationName = "domainId", type = "string")), layoutConfiguration = structure(list(defaultLayout = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), name = structure(logical(0), tags = list(type = "string")), requiredFields = structure(list(structure(list(fieldId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), rules = structure(list(structure(list(caseRuleId = structure(logical(0), tags = list(type = "string")), fieldId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .connectcases$create_template_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(templateArn = structure(logical(0), tags = list(type = "string")), templateId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.connectcases$delete_case_rule_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(caseRuleId = structure(logical(0), tags = list(location = "uri", locationName = "caseRuleId", type = "string")), domainId = structure(logical(0), tags = list(location = "uri", locationName = "domainId", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.connectcases$delete_case_rule_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -215,7 +251,19 @@ NULL
 
 .connectcases$get_template_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(createdTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), deleted = structure(logical(0), tags = list(type = "boolean")), description = structure(logical(0), tags = list(type = "string")), lastModifiedTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), layoutConfiguration = structure(list(defaultLayout = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), name = structure(logical(0), tags = list(type = "string")), requiredFields = structure(list(structure(list(fieldId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), status = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), templateArn = structure(logical(0), tags = list(type = "string")), templateId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(createdTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), deleted = structure(logical(0), tags = list(type = "boolean")), description = structure(logical(0), tags = list(type = "string")), lastModifiedTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), layoutConfiguration = structure(list(defaultLayout = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), name = structure(logical(0), tags = list(type = "string")), requiredFields = structure(list(structure(list(fieldId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), rules = structure(list(structure(list(caseRuleId = structure(logical(0), tags = list(type = "string")), fieldId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), status = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), templateArn = structure(logical(0), tags = list(type = "string")), templateId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.connectcases$list_case_rules_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(domainId = structure(logical(0), tags = list(location = "uri", locationName = "domainId", type = "string")), maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.connectcases$list_case_rules_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(caseRules = structure(list(structure(list(caseRuleArn = structure(logical(0), tags = list(type = "string")), caseRuleId = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), ruleType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -371,6 +419,18 @@ NULL
   return(populate(args, shape))
 }
 
+.connectcases$update_case_rule_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(caseRuleId = structure(logical(0), tags = list(location = "uri", locationName = "caseRuleId", type = "string")), description = structure(logical(0), tags = list(type = "string")), domainId = structure(logical(0), tags = list(location = "uri", locationName = "domainId", type = "string")), name = structure(logical(0), tags = list(type = "string")), rule = structure(list(required = structure(list(conditions = structure(list(structure(list(equalTo = structure(list(operandOne = structure(list(fieldId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", union = TRUE)), operandTwo = structure(list(booleanValue = structure(logical(0), tags = list(type = "boolean", box = TRUE)), doubleValue = structure(logical(0), tags = list(type = "double", box = TRUE)), emptyValue = structure(list(), tags = list(type = "structure")), stringValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", union = TRUE)), result = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure")), notEqualTo = structure(list(operandOne = structure(list(fieldId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", union = TRUE)), operandTwo = structure(list(booleanValue = structure(logical(0), tags = list(type = "boolean", box = TRUE)), doubleValue = structure(logical(0), tags = list(type = "double", box = TRUE)), emptyValue = structure(list(), tags = list(type = "structure")), stringValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", union = TRUE)), result = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "list")), defaultValue = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.connectcases$update_case_rule_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .connectcases$update_field_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(description = structure(logical(0), tags = list(type = "string")), domainId = structure(logical(0), tags = list(location = "uri", locationName = "domainId", type = "string")), fieldId = structure(logical(0), tags = list(location = "uri", locationName = "fieldId", type = "string")), name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -397,7 +457,7 @@ NULL
 
 .connectcases$update_template_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(description = structure(logical(0), tags = list(type = "string")), domainId = structure(logical(0), tags = list(location = "uri", locationName = "domainId", type = "string")), layoutConfiguration = structure(list(defaultLayout = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), name = structure(logical(0), tags = list(type = "string")), requiredFields = structure(list(structure(list(fieldId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), status = structure(logical(0), tags = list(type = "string")), templateId = structure(logical(0), tags = list(location = "uri", locationName = "templateId", type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(description = structure(logical(0), tags = list(type = "string")), domainId = structure(logical(0), tags = list(location = "uri", locationName = "domainId", type = "string")), layoutConfiguration = structure(list(defaultLayout = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), name = structure(logical(0), tags = list(type = "string")), requiredFields = structure(list(structure(list(fieldId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), rules = structure(list(structure(list(caseRuleId = structure(logical(0), tags = list(type = "string")), fieldId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), status = structure(logical(0), tags = list(type = "string")), templateId = structure(logical(0), tags = list(location = "uri", locationName = "templateId", type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

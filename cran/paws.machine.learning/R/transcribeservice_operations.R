@@ -1833,8 +1833,11 @@ transcribeservice_start_medical_transcription_job <- function(MedicalTranscripti
 #' languages](https://docs.aws.amazon.com/transcribe/latest/dg/supported-languages.html)
 #' table.
 #' 
-#' To transcribe speech in Modern Standard Arabic (`ar-SA`), your media
-#' file must be encoded at a sample rate of 16,000 Hz or higher.
+#' To transcribe speech in Modern Standard Arabic (`ar-SA`) in Amazon Web
+#' Services GovCloud (US) (US-West, us-gov-west-1), Amazon Web Services
+#' GovCloud (US) (US-East, us-gov-east-1), Canada (Calgary, ca-west-1) and
+#' Africa (Cape Town, af-south-1), your media file must be encoded at a
+#' sample rate of 16,000 Hz or higher.
 #' @param MediaSampleRateHertz The sample rate, in hertz, of the audio track in your input media file.
 #' 
 #' If you do not specify the media sample rate, Amazon Transcribe
@@ -2024,8 +2027,11 @@ transcribeservice_start_medical_transcription_job <- function(MedicalTranscripti
 #' For more information, refer to [Supported
 #' languages](https://docs.aws.amazon.com/transcribe/latest/dg/supported-languages.html).
 #' 
-#' To transcribe speech in Modern Standard Arabic (`ar-SA`), your media
-#' file must be encoded at a sample rate of 16,000 Hz or higher.
+#' To transcribe speech in Modern Standard Arabic (`ar-SA`)in Amazon Web
+#' Services GovCloud (US) (US-West, us-gov-west-1), Amazon Web Services
+#' GovCloud (US) (US-East, us-gov-east-1), in Canada (Calgary) ca-west-1
+#' and Africa (Cape Town) af-south-1, your media file must be encoded at a
+#' sample rate of 16,000 Hz or higher.
 #' @param Subtitles Produces subtitle files for your input media. You can specify WebVTT
 #' (*.vtt) and SubRip (*.srt) formats.
 #' @param Tags Adds one or more custom tags, each in the form of a key:value pair, to a

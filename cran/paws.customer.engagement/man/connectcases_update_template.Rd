@@ -10,6 +10,7 @@ connectcases_update_template(
   layoutConfiguration = NULL,
   name = NULL,
   requiredFields = NULL,
+  rules = NULL,
   status = NULL,
   templateId
 )
@@ -25,6 +26,9 @@ connectcases_update_template(
 
 \item{requiredFields}{A list of fields that must contain a value for a case to be successfully
 created with this template.}
+
+\item{rules}{A list of case rules (also known as \href{https://docs.aws.amazon.com/connect/latest/adminguide/case-field-conditions.html}{case field conditions})
+on a template.}
 
 \item{status}{The status of the template.}
 

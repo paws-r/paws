@@ -4,12 +4,12 @@
 \alias{opensearchserviceserverless_delete_vpc_endpoint}
 \title{Deletes an OpenSearch Serverless-managed interface endpoint}
 \usage{
-opensearchserviceserverless_delete_vpc_endpoint(clientToken = NULL, id)
+opensearchserviceserverless_delete_vpc_endpoint(id, clientToken = NULL)
 }
 \arguments{
-\item{clientToken}{Unique, case-sensitive identifier to ensure idempotency of the request.}
-
 \item{id}{[required] The VPC endpoint identifier.}
+
+\item{clientToken}{Unique, case-sensitive identifier to ensure idempotency of the request.}
 }
 \description{
 Deletes an OpenSearch Serverless-managed interface endpoint. For more information, see \href{https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-vpc.html}{Access Amazon OpenSearch Serverless using an interface endpoint}.

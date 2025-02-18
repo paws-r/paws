@@ -16,7 +16,8 @@ rds_modify_integration(
 
 \item{IntegrationName}{A new name for the integration.}
 
-\item{DataFilter}{A new data filter for the integration. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/}{Data filtering for Aurora zero-ETL integrations with Amazon Redshift}.}
+\item{DataFilter}{A new data filter for the integration. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/}{Data filtering for Aurora zero-ETL integrations with Amazon Redshift}
+or \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/zero-etl.filtering.html}{Data filtering for Amazon RDS zero-ETL integrations with Amazon Redshift}.}
 
 \item{Description}{A new description for the integration.}
 }

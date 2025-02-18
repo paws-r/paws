@@ -6,15 +6,12 @@
 \usage{
 opensearchserviceserverless_list_collections(
   collectionFilters = NULL,
-  maxResults = NULL,
-  nextToken = NULL
+  nextToken = NULL,
+  maxResults = NULL
 )
 }
 \arguments{
 \item{collectionFilters}{A list of filter names and values that you can use for requests.}
-
-\item{maxResults}{The maximum number of results to return. Default is 20. You can use
-\code{nextToken} to get the next page of results.}
 
 \item{nextToken}{If your initial
 \code{\link[=opensearchserviceserverless_list_collections]{list_collections}}
@@ -22,6 +19,9 @@ operation returns a \code{nextToken}, you can include the returned
 \code{nextToken} in subsequent
 \code{\link[=opensearchserviceserverless_list_collections]{list_collections}}
 operations, which returns results in the next page.}
+
+\item{maxResults}{The maximum number of results to return. Default is 20. You can use
+\code{nextToken} to get the next page of results.}
 }
 \description{
 Lists all OpenSearch Serverless collections. For more information, see \href{https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-manage.html}{Creating and managing Amazon OpenSearch Serverless collections}.

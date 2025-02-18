@@ -10,7 +10,7 @@ healthlake_start_fhir_import_job(
   JobOutputDataConfig,
   DatastoreId,
   DataAccessRoleArn,
-  ClientToken
+  ClientToken = NULL
 )
 }
 \arguments{
@@ -26,7 +26,7 @@ request.}
 \item{DataAccessRoleArn}{[required] The Amazon Resource Name (ARN) that gives AWS HealthLake access
 permission.}
 
-\item{ClientToken}{[required] Optional user provided token used for ensuring idempotency.}
+\item{ClientToken}{Optional user provided token used for ensuring idempotency.}
 }
 \description{
 Begins a FHIR Import job.

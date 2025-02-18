@@ -42,7 +42,7 @@ information on how to configure IP addresses, see \href{https://docs.aws.amazon.
 in the \emph{Amazon Connect Administrator Guide}.}
 }
 \description{
-This API is in preview release for Amazon Connect and is subject to change. To request access to this API, contact Amazon Web Services Support.
+This API is in preview release for Amazon Connect and is subject to change. To request access to this API, contact Amazon Web ServicesSupport.
 
 See \url{https://www.paws-r-sdk.com/docs/connect_update_authentication_profile/} for full documentation.
 }

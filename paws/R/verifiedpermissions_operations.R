@@ -183,7 +183,8 @@ verifiedpermissions_batch_get_policy <- function(requests) {
 #'               ipaddr = "string",
 #'               decimal = "string"
 #'             )
-#'           )
+#'           ),
+#'           cedarJson = "string"
 #'         )
 #'       ),
 #'       decision = "ALLOW"|"DENY",
@@ -239,7 +240,8 @@ verifiedpermissions_batch_get_policy <- function(requests) {
 #'           )
 #'         )
 #'       )
-#'     )
+#'     ),
+#'     cedarJson = "string"
 #'   ),
 #'   requests = list(
 #'     list(
@@ -274,7 +276,8 @@ verifiedpermissions_batch_get_policy <- function(requests) {
 #'             ipaddr = "string",
 #'             decimal = "string"
 #'           )
-#'         )
+#'         ),
+#'         cedarJson = "string"
 #'       )
 #'     )
 #'   )
@@ -411,7 +414,8 @@ verifiedpermissions_batch_is_authorized <- function(policyStoreId, entities = NU
 #'               ipaddr = "string",
 #'               decimal = "string"
 #'             )
-#'           )
+#'           ),
+#'           cedarJson = "string"
 #'         )
 #'       ),
 #'       decision = "ALLOW"|"DENY",
@@ -469,7 +473,8 @@ verifiedpermissions_batch_is_authorized <- function(policyStoreId, entities = NU
 #'           )
 #'         )
 #'       )
-#'     )
+#'     ),
+#'     cedarJson = "string"
 #'   ),
 #'   requests = list(
 #'     list(
@@ -500,7 +505,8 @@ verifiedpermissions_batch_is_authorized <- function(policyStoreId, entities = NU
 #'             ipaddr = "string",
 #'             decimal = "string"
 #'           )
-#'         )
+#'         ),
+#'         cedarJson = "string"
 #'       )
 #'     )
 #'   )
@@ -1676,7 +1682,8 @@ verifiedpermissions_get_schema <- function(policyStoreId) {
 #'         ipaddr = "string",
 #'         decimal = "string"
 #'       )
-#'     )
+#'     ),
+#'     cedarJson = "string"
 #'   ),
 #'   entities = list(
 #'     entityList = list(
@@ -1711,7 +1718,8 @@ verifiedpermissions_get_schema <- function(policyStoreId) {
 #'           )
 #'         )
 #'       )
-#'     )
+#'     ),
+#'     cedarJson = "string"
 #'   )
 #' )
 #' ```
@@ -1858,7 +1866,8 @@ verifiedpermissions_is_authorized <- function(policyStoreId, principal = NULL, a
 #'         ipaddr = "string",
 #'         decimal = "string"
 #'       )
-#'     )
+#'     ),
+#'     cedarJson = "string"
 #'   ),
 #'   entities = list(
 #'     entityList = list(
@@ -1893,7 +1902,8 @@ verifiedpermissions_is_authorized <- function(policyStoreId, principal = NULL, a
 #'           )
 #'         )
 #'       )
-#'     )
+#'     ),
+#'     cedarJson = "string"
 #'   )
 #' )
 #' ```

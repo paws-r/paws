@@ -58,16 +58,16 @@ To get started, see \href{https://docs.aws.amazon.com/systems-manager/latest/use
 
 \strong{Related resources}
 \itemize{
-\item For information about each of the capabilities that comprise Systems
-Manager, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/what-is-systems-manager.html#systems-manager-capabilities}{Systems Manager capabilities}
+\item For information about each of the tools that comprise Systems
+Manager, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-tools.html}{Using Systems Manager tools}
 in the \emph{Amazon Web Services Systems Manager User Guide}.
-\item For details about predefined runbooks for Automation, a capability
-of Amazon Web Services Systems Manager, see the \emph{\href{https://docs.aws.amazon.com/systems-manager-automation-runbooks/latest/userguide/automation-runbook-reference.html}{Systems Manager Automation runbook reference}} .
-\item For information about AppConfig, a capability of Systems Manager,
-see the \emph{\href{https://docs.aws.amazon.com/appconfig/latest/userguide/}{AppConfig User Guide}} and the *
+\item For details about predefined runbooks for Automation, a tool in
+Amazon Web Services Systems Manager, see the \emph{\href{https://docs.aws.amazon.com/systems-manager-automation-runbooks/latest/userguide/automation-runbook-reference.html}{Systems Manager Automation runbook reference}} .
+\item For information about AppConfig, a tool in Systems Manager, see the
+\emph{\href{https://docs.aws.amazon.com/appconfig/latest/userguide/}{AppConfig User Guide}} and the *
 \href{https://docs.aws.amazon.com/appconfig/2019-10-09/APIReference/}{AppConfig API Reference}* .
-\item For information about Incident Manager, a capability of Systems
-Manager, see the \emph{\href{https://docs.aws.amazon.com/incident-manager/latest/userguide/}{Systems Manager Incident Manager User Guide}} and the *
+\item For information about Incident Manager, a tool in Systems Manager,
+see the \emph{\href{https://docs.aws.amazon.com/incident-manager/latest/userguide/}{Systems Manager Incident Manager User Guide}} and the *
 \href{https://docs.aws.amazon.com/incident-manager/latest/APIReference/}{Systems Manager Incident Manager API Reference}* .
 }
 }
@@ -194,7 +194,7 @@ Manager, see the \emph{\href{https://docs.aws.amazon.com/incident-manager/latest
 \link[=ssm_get_parameter]{get_parameter} \tab Get information about a single parameter by specifying the parameter name\cr
 \link[=ssm_get_parameter_history]{get_parameter_history} \tab Retrieves the history of all changes to a parameter\cr
 \link[=ssm_get_parameters]{get_parameters} \tab Get information about one or more parameters by specifying multiple parameter names\cr
-\link[=ssm_get_parameters_by_path]{get_parameters_by_path} \tab Retrieve information about one or more parameters in a specific hierarchy\cr
+\link[=ssm_get_parameters_by_path]{get_parameters_by_path} \tab Retrieve information about one or more parameters under a specified level in a hierarchy\cr
 \link[=ssm_get_patch_baseline]{get_patch_baseline} \tab Retrieves information about a patch baseline\cr
 \link[=ssm_get_patch_baseline_for_patch_group]{get_patch_baseline_for_patch_group} \tab Retrieves the patch baseline that should be used for the specified patch group\cr
 \link[=ssm_get_resource_policies]{get_resource_policies} \tab Returns an array of the Policy object\cr

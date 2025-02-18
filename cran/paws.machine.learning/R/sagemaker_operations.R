@@ -595,7 +595,23 @@ sagemaker_create_auto_ml_job_v2 <- function(AutoMLJobName, AutoMLJobInputDataCon
 #'
 #' @param ClusterName &#91;required&#93; The name for the new SageMaker HyperPod cluster.
 #' @param InstanceGroups &#91;required&#93; The instance groups to be created in the SageMaker HyperPod cluster.
-#' @param VpcConfig 
+#' @param VpcConfig Specifies the Amazon Virtual Private Cloud (VPC) that is associated with
+#' the Amazon SageMaker HyperPod cluster. You can control access to and
+#' from your resources by configuring your VPC. For more information, see
+#' [Give SageMaker access to resources in your Amazon
+#' VPC](https://docs.aws.amazon.com/sagemaker/latest/dg/infrastructure-give-access.html).
+#' 
+#' If you configure your VPC with IPv6 support and specify subnets with
+#' IPv6 addressing enabled in your VPC configuration, the cluster
+#' automatically uses IPv6 addressing for network communication.
+#' 
+#' For information about adding IPv6 support for your VPC, see [IPv6
+#' support for your
+#' VPC](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-migrate-ipv6.html).
+#' 
+#' For information about creating a new VPC for use with IPv6, see [Create
+#' a
+#' VPC](https://docs.aws.amazon.com/vpc/latest/userguide/create-vpc.html).
 #' @param Tags Custom tags for managing the SageMaker HyperPod cluster as an Amazon Web
 #' Services resource. You can add tags to your cluster in the same way you
 #' add them in other Amazon Web Services services that support tagging. To

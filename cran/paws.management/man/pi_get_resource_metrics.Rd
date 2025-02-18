@@ -71,9 +71,7 @@ If you don't specify \code{PeriodInSeconds}, then Performance Insights will
 choose a value for you, with a goal of returning roughly 100-200 data
 points in the response.}
 
-\item{MaxResults}{The maximum number of items to return in the response. If more items
-exist than the specified \code{MaxRecords} value, a pagination token is
-included in the response so that the remaining results can be retrieved.}
+\item{MaxResults}{The maximum number of items to return in the response.}
 
 \item{NextToken}{An optional pagination token provided by a previous request. If this
 parameter is specified, the response includes only records beyond the

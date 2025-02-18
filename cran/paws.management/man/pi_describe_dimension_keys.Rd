@@ -91,7 +91,9 @@ Performance Insights return a limited number of values for a dimension.}
 dimension group in the \code{GroupBy} parameter is \code{db.sql_tokenized}, you
 can specify per-SQL metrics to get the values for the top \code{N} SQL
 digests. The response syntax is as follows:
-\code{"AdditionalMetrics" : { "string" : "string" }}.}
+\code{"AdditionalMetrics" : { "string" : "string" }}.
+
+The only supported statistic function is \code{.avg}.}
 
 \item{PartitionBy}{For each dimension specified in \code{GroupBy}, specify a secondary dimension
 to further subdivide the partition keys in the response.}

@@ -1997,8 +1997,8 @@ cloudtrail_get_import <- function(ImportId) {
 #' get Insights event selectors for a trail. You cannot specify these
 #' parameters together.
 #' 
-#' For more information, see [Logging CloudTrail Insights
-#' events](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-insights-events-with-cloudtrail.html)
+#' For more information, see [Working with CloudTrail
+#' Insights](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-insights-events-with-cloudtrail.html)
 #' in the *CloudTrail User Guide*.
 #'
 #' @usage
@@ -3344,8 +3344,8 @@ cloudtrail_lookup_events <- function(LookupAttributes = NULL, StartTime = NULL, 
 #' If you want your trail to log Insights events, be sure the event
 #' selector or advanced event selector enables logging of the Insights
 #' event types you want configured for your trail. For more information
-#' about logging Insights events, see [Logging Insights
-#' events](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-insights-events-with-cloudtrail.html)
+#' about logging Insights events, see [Working with CloudTrail
+#' Insights](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-insights-events-with-cloudtrail.html)
 #' in the *CloudTrail User Guide*. By default, trails created without
 #' specific event selectors are configured to log all read and write
 #' management events, and no data events or network activity events.
@@ -3608,8 +3608,8 @@ cloudtrail_put_event_selectors <- function(TrailName, EventSelectors = NULL, Adv
 #' [`get_event_data_store`][cloudtrail_get_event_data_store] on an event
 #' data store to check whether the event data store logs management events.
 #' 
-#' For more information, see [Logging CloudTrail Insights
-#' events](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-insights-events-with-cloudtrail.html)
+#' For more information, see [Working with CloudTrail
+#' Insights](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-insights-events-with-cloudtrail.html)
 #' in the *CloudTrail User Guide*.
 #'
 #' @usage
@@ -3981,6 +3981,73 @@ cloudtrail_restore_event_data_store <- function(EventDataStore) {
   return(response)
 }
 .cloudtrail$operations$restore_event_data_store <- cloudtrail_restore_event_data_store
+
+#' Searches sample queries and returns a list of sample queries that are
+#' sorted by relevance
+#'
+#' @description
+#' Searches sample queries and returns a list of sample queries that are
+#' sorted by relevance. To search for sample queries, provide a natural
+#' language `SearchPhrase` in English.
+#'
+#' @usage
+#' cloudtrail_search_sample_queries(SearchPhrase, MaxResults, NextToken)
+#'
+#' @param SearchPhrase &#91;required&#93; The natural language phrase to use for the semantic search. The phrase
+#' must be in English. The length constraint is in characters, not words.
+#' @param MaxResults The maximum number of results to return on a single page. The default
+#' value is 10.
+#' @param NextToken A token you can use to get the next page of results. The length
+#' constraint is in characters, not words.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SearchResults = list(
+#'     list(
+#'       Name = "string",
+#'       Description = "string",
+#'       SQL = "string",
+#'       Relevance = 123.0
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$search_sample_queries(
+#'   SearchPhrase = "string",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudtrail_search_sample_queries
+#'
+#' @aliases cloudtrail_search_sample_queries
+cloudtrail_search_sample_queries <- function(SearchPhrase, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "SearchSampleQueries",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudtrail$search_sample_queries_input(SearchPhrase = SearchPhrase, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .cloudtrail$search_sample_queries_output()
+  config <- get_config()
+  svc <- .cloudtrail$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudtrail$operations$search_sample_queries <- cloudtrail_search_sample_queries
 
 #' Starts a refresh of the specified dashboard
 #'

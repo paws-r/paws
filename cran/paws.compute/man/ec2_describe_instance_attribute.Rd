@@ -16,10 +16,10 @@ you have the required permissions, the error response is
 
 \item{Attribute}{[required] The instance attribute.
 
-Note: The \code{enaSupport} attribute is not supported at this time.}
+Note that the \code{enaSupport} attribute is not supported.}
 }
 \description{
-Describes the specified attribute of the specified instance. You can specify only one attribute at a time. Valid attribute values are: \code{instanceType} | \code{kernel} | \code{ramdisk} | \code{userData} | \code{disableApiTermination} | \code{instanceInitiatedShutdownBehavior} | \code{rootDeviceName} | \code{blockDeviceMapping} | \code{productCodes} | \code{sourceDestCheck} | \code{groupSet} | \code{ebsOptimized} | \code{sriovNetSupport}
+Describes the specified attribute of the specified instance. You can specify only one attribute at a time.
 
 See \url{https://www.paws-r-sdk.com/docs/ec2_describe_instance_attribute/} for full documentation.
 }

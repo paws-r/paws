@@ -5,13 +5,18 @@
 \title{This API is in preview release for Amazon Connect and is subject to
 change}
 \usage{
-connect_disassociate_approved_origin(InstanceId, Origin)
+connect_disassociate_approved_origin(InstanceId, Origin, ClientToken = NULL)
 }
 \arguments{
 \item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can \href{https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html}{find the instance ID}
 in the Amazon Resource Name (ARN) of the instance.}
 
 \item{Origin}{[required] The domain URL of the integrated application.}
+
+\item{ClientToken}{A unique, case-sensitive identifier that you provide to ensure the
+idempotency of the request. If not provided, the Amazon Web Services SDK
+populates this field. For more information about idempotency, see
+\href{https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/}{Making retries safe with idempotent APIs}.}
 }
 \description{
 This API is in preview release for Amazon Connect and is subject to change.

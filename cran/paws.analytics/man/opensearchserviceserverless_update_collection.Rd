@@ -5,17 +5,17 @@
 \title{Updates an OpenSearch Serverless collection}
 \usage{
 opensearchserviceserverless_update_collection(
-  clientToken = NULL,
+  id,
   description = NULL,
-  id
+  clientToken = NULL
 )
 }
 \arguments{
-\item{clientToken}{Unique, case-sensitive identifier to ensure idempotency of the request.}
+\item{id}{[required] The unique identifier of the collection.}
 
 \item{description}{A description of the collection.}
 
-\item{id}{[required] The unique identifier of the collection.}
+\item{clientToken}{Unique, case-sensitive identifier to ensure idempotency of the request.}
 }
 \description{
 Updates an OpenSearch Serverless collection.

@@ -66,7 +66,7 @@ If this value is left blank, no change. If an empty array is provided,
 existing Pod Identity Assocations owned by the Addon are deleted.
 
 For more information, see \href{https://docs.aws.amazon.com/eks/latest/userguide/add-ons-iam.html}{Attach an IAM Role to an Amazon EKS add-on using Pod Identity}
-in the EKS User Guide.}
+in the \emph{Amazon EKS User Guide}.}
 }
 \description{
 Updates an Amazon EKS add-on.

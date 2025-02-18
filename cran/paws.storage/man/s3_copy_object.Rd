@@ -80,7 +80,7 @@ bucket, you must use virtual-hosted-style requests in the format
 requests are not supported. Directory bucket names must be unique in the
 chosen Zone (Availability Zone or Local Zone). Bucket names must follow
 the format \code{ bucket-base-name--zone-id--x-s3} (for example,
-\code{ DOC-EXAMPLE-BUCKET--usw2-az1--x-s3}). For information about bucket
+\code{ amzn-s3-demo-bucket--usw2-az1--x-s3}). For information about bucket
 naming restrictions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html}{Directory bucket naming rules}
 in the \emph{Amazon S3 User Guide}.
 
@@ -104,14 +104,19 @@ in the \emph{Amazon S3 User Guide}.
 Access points and Object Lambda access points are not supported by
 directory buckets.
 
-\strong{S3 on Outposts} - When you use this action with Amazon S3 on
-Outposts, you must direct requests to the S3 on Outposts hostname. The
-S3 on Outposts hostname takes the form
+\strong{S3 on Outposts} - When you use this action with S3 on Outposts, you
+must use the Outpost bucket access point ARN or the access point alias
+for the destination bucket. You can only copy objects within the same
+Outpost bucket. It's not supported to copy objects across different
+Amazon Web Services Outposts, between buckets on the same Outposts, or
+between Outposts buckets and any other bucket types. For more
+information about S3 on Outposts, see \href{https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html}{What is S3 on Outposts?}
+in the \emph{S3 on Outposts guide}. When you use this action with S3 on
+Outposts through the REST API, you must direct requests to the S3 on
+Outposts hostname, in the format
 \code{ AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com}.
-When you use this action with S3 on Outposts through the Amazon Web
-Services SDKs, you provide the Outposts access point ARN in place of the
-bucket name. For more information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html}{What is S3 on Outposts?}
-in the \emph{Amazon S3 User Guide}.}
+The hostname isn't required when you use the Amazon Web Services CLI or
+SDKs.}
 
 \item{CacheControl}{Specifies the caching behavior along the request/reply chain.}
 
@@ -496,19 +501,17 @@ information about configuring any of the officially supported Amazon Web
 Services SDKs and Amazon Web Services CLI, see \href{https://docs.aws.amazon.com/AmazonS3/latest/API/#specify-signature-version}{Specifying the Signature Version in Request Authentication}
 in the \emph{Amazon S3 User Guide}.
 
-\strong{Directory buckets} - If you specify \code{x-amz-server-side-encryption}
-with \code{aws:kms}, the \code{ x-amz-server-side-encryption-aws-kms-key-id}
-header is implicitly assigned the ID of the KMS symmetric encryption
-customer managed key that's configured for your directory bucket's
-default encryption setting. If you want to specify the
-\code{ x-amz-server-side-encryption-aws-kms-key-id} header explicitly, you
-can only specify it with the ID (Key ID or Key ARN) of the KMS customer
-managed key that's configured for your directory bucket's default
-encryption setting. Otherwise, you get an HTTP \verb{400 Bad Request} error.
-Only use the key ID or key ARN. The key alias format of the KMS key
-isn't supported. Your SSE-KMS configuration can only support 1 \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-cmk}{customer managed key}
-per directory bucket for the lifetime of the bucket. The \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-cmk}{Amazon Web Services managed key}
-(\code{aws/s3}) isn't supported.}
+\strong{Directory buckets} - To encrypt data using SSE-KMS, it's recommended
+to specify the \code{x-amz-server-side-encryption} header to \code{aws:kms}. Then,
+the \code{x-amz-server-side-encryption-aws-kms-key-id} header implicitly uses
+the bucket's default KMS customer managed key ID. If you want to
+explicitly set the \code{ x-amz-server-side-encryption-aws-kms-key-id}
+header, it must match the bucket's default customer managed key (using
+key ID or ARN, not alias). Your SSE-KMS configuration can only support 1
+\href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-cmk}{customer managed key}
+per directory bucket's lifetime. The \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-cmk}{Amazon Web Services managed key}
+(\code{aws/s3}) isn't supported. Incorrect key specification results in an
+HTTP \verb{400 Bad Request} error.}
 
 \item{SSEKMSEncryptionContext}{Specifies the Amazon Web Services KMS Encryption Context as an
 additional encryption context to use for the destination object

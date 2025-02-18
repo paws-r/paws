@@ -251,7 +251,7 @@ NULL
 
 .codebuild$describe_test_cases_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), testCases = structure(list(structure(list(reportArn = structure(logical(0), tags = list(type = "string")), testRawDataPath = structure(logical(0), tags = list(type = "string")), prefix = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), durationInNanoSeconds = structure(logical(0), tags = list(type = "long")), message = structure(logical(0), tags = list(type = "string")), expired = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), testCases = structure(list(structure(list(reportArn = structure(logical(0), tags = list(type = "string")), testRawDataPath = structure(logical(0), tags = list(type = "string")), prefix = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), durationInNanoSeconds = structure(logical(0), tags = list(type = "long")), message = structure(logical(0), tags = list(type = "string")), expired = structure(logical(0), tags = list(type = "timestamp")), testSuiteName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

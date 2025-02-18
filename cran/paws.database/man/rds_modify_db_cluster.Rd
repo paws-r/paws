@@ -205,8 +205,8 @@ Valid for Cluster Type: Aurora DB clusters and Multi-AZ DB clusters
 
 The following values are valid for each DB engine:
 \itemize{
-\item Aurora MySQL - \code{audit | error | general | slowquery}
-\item Aurora PostgreSQL - \code{postgresql}
+\item Aurora MySQL - \code{audit | error | general | instance | slowquery}
+\item Aurora PostgreSQL - \code{instance | postgresql}
 \item RDS for MySQL - \code{error | general | slowquery}
 \item RDS for PostgreSQL - \code{postgresql | upgrade}
 }

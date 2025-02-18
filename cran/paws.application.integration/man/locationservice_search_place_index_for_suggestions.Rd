@@ -57,8 +57,9 @@ options results in an error.}
 \item{FilterCountries}{An optional parameter that limits the search results by returning only
 suggestions within the provided list of countries.
 \itemize{
-\item Use the ISO 3166 3-digit country code. For example, Australia uses
-three upper-case characters: \code{AUS}.
+\item Use the \href{https://www.iso.org/iso-3166-country-codes.html}{ISO 3166}
+3-digit country code. For example, Australia uses three upper-case
+characters: \code{AUS}.
 }}
 
 \item{MaxResults}{An optional parameter. The maximum number of results returned per

@@ -84,7 +84,7 @@ the deployment and the ordering of stopping and starting tasks.}
 \item{availabilityZoneRebalancing}{Indicates whether to use Availability Zone rebalancing for the service.
 
 For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-rebalancing.html}{Balancing an Amazon ECS service across Availability Zones}
-in the \emph{Amazon Elastic Container Service Developer Guide}.}
+in the \emph{Amazon Elastic Container Service Developer Guide} .}
 
 \item{networkConfiguration}{An object representing the network configuration for the service.}
 

@@ -54,8 +54,11 @@ For a list of supported languages and their associated language codes,
 refer to the \href{https://docs.aws.amazon.com/transcribe/latest/dg/supported-languages.html}{Supported languages}
 table.
 
-To transcribe speech in Modern Standard Arabic (\code{ar-SA}), your media
-file must be encoded at a sample rate of 16,000 Hz or higher.}
+To transcribe speech in Modern Standard Arabic (\code{ar-SA}) in Amazon Web
+Services GovCloud (US) (US-West, us-gov-west-1), Amazon Web Services
+GovCloud (US) (US-East, us-gov-east-1), Canada (Calgary, ca-west-1) and
+Africa (Cape Town, af-south-1), your media file must be encoded at a
+sample rate of 16,000 Hz or higher.}
 
 \item{MediaSampleRateHertz}{The sample rate, in hertz, of the audio track in your input media file.
 
@@ -250,8 +253,11 @@ If you include \code{LanguageOptions} in your request, you must also include
 
 For more information, refer to \href{https://docs.aws.amazon.com/transcribe/latest/dg/supported-languages.html}{Supported languages}.
 
-To transcribe speech in Modern Standard Arabic (\code{ar-SA}), your media
-file must be encoded at a sample rate of 16,000 Hz or higher.}
+To transcribe speech in Modern Standard Arabic (\code{ar-SA})in Amazon Web
+Services GovCloud (US) (US-West, us-gov-west-1), Amazon Web Services
+GovCloud (US) (US-East, us-gov-east-1), in Canada (Calgary) ca-west-1
+and Africa (Cape Town) af-south-1, your media file must be encoded at a
+sample rate of 16,000 Hz or higher.}
 
 \item{Subtitles}{Produces subtitle files for your input media. You can specify WebVTT
 (\emph{.vtt) and SubRip (}.srt) formats.}

@@ -56,7 +56,7 @@ For more information about deployment types, see \href{https://docs.aws.amazon.c
 \item{availabilityZoneRebalancing}{Indicates whether to use Availability Zone rebalancing for the service.
 
 For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-rebalancing.html}{Balancing an Amazon ECS service across Availability Zones}
-in the \emph{Amazon Elastic Container Service Developer Guide}.}
+in the \emph{Amazon Elastic Container Service Developer Guide} .}
 
 \item{loadBalancers}{A load balancer object representing the load balancers to use with your
 service. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-load-balancing.html}{Service load balancing}

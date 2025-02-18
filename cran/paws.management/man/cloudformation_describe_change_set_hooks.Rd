@@ -24,7 +24,7 @@ stack ID (ARN) of the change set you want to describe.}
 response output, that identifies the next page of information that you
 want to retrieve.}
 
-\item{LogicalResourceId}{If specified, lists only the hooks related to the specified
+\item{LogicalResourceId}{If specified, lists only the Hooks related to the specified
 \code{LogicalResourceId}.}
 }
 \description{

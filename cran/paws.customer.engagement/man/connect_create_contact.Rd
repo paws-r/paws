@@ -2,7 +2,7 @@
 % Please edit documentation in R/connect_operations.R
 \name{connect_create_contact}
 \alias{connect_create_contact}
-\title{Creates a new contact}
+\title{Only the EMAIL channel is supported}
 \usage{
 connect_create_contact(
   InstanceId,
@@ -43,9 +43,18 @@ underscore characters.}
 (CCP). Tasks can have the following reference types at the time of
 creation: URL | NUMBER | STRING | DATE | EMAIL | ATTACHMENT.}
 
-\item{Channel}{[required] The channel for the contact}
+\item{Channel}{[required] The channel for the contact
 
-\item{InitiationMethod}{[required] Indicates how the contact was initiated.}
+CreateContact only supports the EMAIL channel. The following information
+that states other channels are supported is incorrect. We are working to
+update this topic.}
+
+\item{InitiationMethod}{[required] Indicates how the contact was initiated.
+
+CreateContact only supports the following initiation methods: OUTBOUND,
+AGENT_REPLY, and FLOW. The following information that states other
+initiation methods are supported is incorrect. We are working to update
+this topic.}
 
 \item{ExpiryDurationInMinutes}{Number of minutes the contact will be active for before expiring}
 
@@ -72,7 +81,7 @@ expiring, with \code{SegmentAttributes} like \{
 \verb{ "connect:ContactExpiry": \\\{"ValueMap" : \\\{ "ExpiryDuration": \\\{ "ValueInteger": 135\\\}\\\}\\\}\\\}}.}
 }
 \description{
-Creates a new contact.
+Only the EMAIL channel is supported. The supported initiation methods are: OUTBOUND, AGENT_REPLY, and FLOW.
 
 See \url{https://www.paws-r-sdk.com/docs/connect_create_contact/} for full documentation.
 }

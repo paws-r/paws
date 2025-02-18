@@ -1027,7 +1027,8 @@ in the \emph{Amazon RDS User Guide.}
 
 Valid Values: \code{IPV4 | DUAL}}
 
-\item{StorageThroughput}{The storage throughput value for the DB instance.
+\item{StorageThroughput}{The storage throughput value, in mebibyte per second (MiBps), for the DB
+instance.
 
 This setting applies only to the \code{gp3} storage type.
 

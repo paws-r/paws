@@ -6,15 +6,15 @@
 associated with the current account}
 \usage{
 opensearchserviceserverless_list_vpc_endpoints(
-  maxResults = NULL,
+  vpcEndpointFilters = NULL,
   nextToken = NULL,
-  vpcEndpointFilters = NULL
+  maxResults = NULL
 )
 }
 \arguments{
-\item{maxResults}{An optional parameter that specifies the maximum number of results to
-return. You can use \code{nextToken} to get the next page of results. The
-default is 20.}
+\item{vpcEndpointFilters}{Filter the results according to the current status of the VPC endpoint.
+Possible statuses are \code{CREATING}, \code{DELETING}, \code{UPDATING}, \code{ACTIVE}, and
+\code{FAILED}.}
 
 \item{nextToken}{If your initial
 \code{\link[=opensearchserviceserverless_list_vpc_endpoints]{list_vpc_endpoints}}
@@ -23,9 +23,9 @@ operation returns a \code{nextToken}, you can include the returned
 \code{\link[=opensearchserviceserverless_list_vpc_endpoints]{list_vpc_endpoints}}
 operations, which returns results in the next page.}
 
-\item{vpcEndpointFilters}{Filter the results according to the current status of the VPC endpoint.
-Possible statuses are \code{CREATING}, \code{DELETING}, \code{UPDATING}, \code{ACTIVE}, and
-\code{FAILED}.}
+\item{maxResults}{An optional parameter that specifies the maximum number of results to
+return. You can use \code{nextToken} to get the next page of results. The
+default is 20.}
 }
 \description{
 Returns the OpenSearch Serverless-managed interface VPC endpoints associated with the current account. For more information, see \href{https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-vpc.html}{Access Amazon OpenSearch Serverless using an interface endpoint}.

@@ -344,12 +344,12 @@ healthlake_list_tags_for_resource <- function(ResourceARN) {
 #' @param DatastoreId &#91;required&#93; The AWS generated ID for the data store from which files are being
 #' exported for an export job.
 #' @param DataAccessRoleArn &#91;required&#93; The Amazon Resource Name used during the initiation of the job.
-#' @param ClientToken &#91;required&#93; An optional user provided token used for ensuring idempotency.
+#' @param ClientToken An optional user provided token used for ensuring idempotency.
 #'
 #' @keywords internal
 #'
 #' @rdname healthlake_start_fhir_export_job
-healthlake_start_fhir_export_job <- function(JobName = NULL, OutputDataConfig, DatastoreId, DataAccessRoleArn, ClientToken) {
+healthlake_start_fhir_export_job <- function(JobName = NULL, OutputDataConfig, DatastoreId, DataAccessRoleArn, ClientToken = NULL) {
   op <- new_operation(
     name = "StartFHIRExportJob",
     http_method = "POST",
@@ -382,12 +382,12 @@ healthlake_start_fhir_export_job <- function(JobName = NULL, OutputDataConfig, D
 #' @param DatastoreId &#91;required&#93; The AWS-generated data store ID.
 #' @param DataAccessRoleArn &#91;required&#93; The Amazon Resource Name (ARN) that gives AWS HealthLake access
 #' permission.
-#' @param ClientToken &#91;required&#93; Optional user provided token used for ensuring idempotency.
+#' @param ClientToken Optional user provided token used for ensuring idempotency.
 #'
 #' @keywords internal
 #'
 #' @rdname healthlake_start_fhir_import_job
-healthlake_start_fhir_import_job <- function(JobName = NULL, InputDataConfig, JobOutputDataConfig, DatastoreId, DataAccessRoleArn, ClientToken) {
+healthlake_start_fhir_import_job <- function(JobName = NULL, InputDataConfig, JobOutputDataConfig, DatastoreId, DataAccessRoleArn, ClientToken = NULL) {
   op <- new_operation(
     name = "StartFHIRImportJob",
     http_method = "POST",

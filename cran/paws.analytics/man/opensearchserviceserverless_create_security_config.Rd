@@ -5,29 +5,29 @@
 \title{Specifies a security configuration for OpenSearch Serverless}
 \usage{
 opensearchserviceserverless_create_security_config(
-  clientToken = NULL,
-  description = NULL,
-  iamIdentityCenterOptions = NULL,
+  type,
   name,
+  description = NULL,
   samlOptions = NULL,
-  type
+  iamIdentityCenterOptions = NULL,
+  clientToken = NULL
 )
 }
 \arguments{
-\item{clientToken}{Unique, case-sensitive identifier to ensure idempotency of the request.}
+\item{type}{[required] The type of security configuration.}
+
+\item{name}{[required] The name of the security configuration.}
 
 \item{description}{A description of the security configuration.}
+
+\item{samlOptions}{Describes SAML options in in the form of a key-value map. This field is
+required if you specify \code{saml} for the \code{type} parameter.}
 
 \item{iamIdentityCenterOptions}{Describes IAM Identity Center options in the form of a key-value map.
 This field is required if you specify iamidentitycenter for the type
 parameter.}
 
-\item{name}{[required] The name of the security configuration.}
-
-\item{samlOptions}{Describes SAML options in in the form of a key-value map. This field is
-required if you specify \code{saml} for the \code{type} parameter.}
-
-\item{type}{[required] The type of security configuration.}
+\item{clientToken}{Unique, case-sensitive identifier to ensure idempotency of the request.}
 }
 \description{
 Specifies a security configuration for OpenSearch Serverless. For more information, see \href{https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-saml.html}{SAML authentication for Amazon OpenSearch Serverless}.

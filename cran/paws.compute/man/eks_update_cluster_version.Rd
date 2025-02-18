@@ -15,7 +15,7 @@ eks_update_cluster_version(name, version, clientRequestToken = NULL)
 idempotency of the request.}
 }
 \description{
-Updates an Amazon EKS cluster to the specified Kubernetes version. Your cluster continues to function during the update. The response output includes an update ID that you can use to track the status of your cluster update with the \code{\link[=eks_describe_update]{describe_update}} API operation.
+Updates an Amazon EKS cluster to the specified Kubernetes version. Your cluster continues to function during the update. The response output includes an update ID that you can use to track the status of your cluster update with the \href{https://docs.aws.amazon.com/eks/latest/APIReference/API_DescribeUpdate.html}{\code{describe_update}} API operation.
 
 See \url{https://www.paws-r-sdk.com/docs/eks_update_cluster_version/} for full documentation.
 }

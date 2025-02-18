@@ -58,7 +58,7 @@ fsx_associate_file_system_aliases <- function(ClientRequestToken = NULL, FileSys
 #' task is in either the PENDING or EXECUTING state
 #'
 #' @description
-#' Cancels an existing Amazon FSx for Lustre data repository task if that task is in either the `PENDING` or `EXECUTING` state. When you cancel am export task, Amazon FSx does the following.
+#' Cancels an existing Amazon FSx for Lustre data repository task if that task is in either the `PENDING` or `EXECUTING` state. When you cancel an export task, Amazon FSx does the following.
 #'
 #' See [https://www.paws-r-sdk.com/docs/fsx_cancel_data_repository_task/](https://www.paws-r-sdk.com/docs/fsx_cancel_data_repository_task/) for full documentation.
 #'
@@ -669,10 +669,9 @@ fsx_create_file_system <- function(ClientRequestToken = NULL, FileSystemType, St
 #' @param FileSystemTypeVersion Sets the version for the Amazon FSx for Lustre file system that you're
 #' creating from a backup. Valid values are `2.10`, `2.12`, and `2.15`.
 #' 
-#' You don't need to specify `FileSystemTypeVersion` because it will be
-#' applied using the backup's `FileSystemTypeVersion` setting. If you
-#' choose to specify `FileSystemTypeVersion` when creating from backup, the
-#' value must match the backup's `FileSystemTypeVersion` setting.
+#' You can enter a Lustre version that is newer than the backup's
+#' `FileSystemTypeVersion` setting. If you don't enter a newer Lustre
+#' version, it defaults to the backup's setting.
 #' @param OpenZFSConfiguration The OpenZFS configuration for the file system that's being created.
 #' @param StorageCapacity Sets the storage capacity of the OpenZFS file system that you're
 #' creating from a backup, in gibibytes (GiB). Valid values are from 64 GiB
@@ -683,8 +682,8 @@ fsx_create_file_system <- function(ClientRequestToken = NULL, FileSystemType, St
 #' 
 #' If used to create a file system other than OpenZFS, you must provide a
 #' value that matches the backup's `StorageCapacity` value. If you provide
-#' any other value, Amazon FSx responds with with an HTTP status code 400
-#' Bad Request.
+#' any other value, Amazon FSx responds with an HTTP status code 400 Bad
+#' Request.
 #'
 #' @keywords internal
 #'
@@ -1898,11 +1897,14 @@ fsx_update_file_cache <- function(FileCacheId, ClientRequestToken = NULL, Lustre
 #' @param OntapConfiguration 
 #' @param OpenZFSConfiguration The configuration updates for an FSx for OpenZFS file system.
 #' @param StorageType 
+#' @param FileSystemTypeVersion The Lustre version you are updating an FSx for Lustre file system to.
+#' Valid values are `2.12` and `2.15`. The value you choose must be newer
+#' than the file system's current Lustre version.
 #'
 #' @keywords internal
 #'
 #' @rdname fsx_update_file_system
-fsx_update_file_system <- function(FileSystemId, ClientRequestToken = NULL, StorageCapacity = NULL, WindowsConfiguration = NULL, LustreConfiguration = NULL, OntapConfiguration = NULL, OpenZFSConfiguration = NULL, StorageType = NULL) {
+fsx_update_file_system <- function(FileSystemId, ClientRequestToken = NULL, StorageCapacity = NULL, WindowsConfiguration = NULL, LustreConfiguration = NULL, OntapConfiguration = NULL, OpenZFSConfiguration = NULL, StorageType = NULL, FileSystemTypeVersion = NULL) {
   op <- new_operation(
     name = "UpdateFileSystem",
     http_method = "POST",
@@ -1911,7 +1913,7 @@ fsx_update_file_system <- function(FileSystemId, ClientRequestToken = NULL, Stor
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .fsx$update_file_system_input(FileSystemId = FileSystemId, ClientRequestToken = ClientRequestToken, StorageCapacity = StorageCapacity, WindowsConfiguration = WindowsConfiguration, LustreConfiguration = LustreConfiguration, OntapConfiguration = OntapConfiguration, OpenZFSConfiguration = OpenZFSConfiguration, StorageType = StorageType)
+  input <- .fsx$update_file_system_input(FileSystemId = FileSystemId, ClientRequestToken = ClientRequestToken, StorageCapacity = StorageCapacity, WindowsConfiguration = WindowsConfiguration, LustreConfiguration = LustreConfiguration, OntapConfiguration = OntapConfiguration, OpenZFSConfiguration = OpenZFSConfiguration, StorageType = StorageType, FileSystemTypeVersion = FileSystemTypeVersion)
   output <- .fsx$update_file_system_output()
   config <- get_config()
   svc <- .fsx$service(config, op)

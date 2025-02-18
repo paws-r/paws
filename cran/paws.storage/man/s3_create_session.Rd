@@ -36,8 +36,8 @@ For directory buckets, there are only two supported options for
 server-side encryption: server-side encryption with Amazon S3 managed
 keys (SSE-S3) (\code{AES256}) and server-side encryption with KMS keys
 (SSE-KMS) (\code{aws:kms}). By default, Amazon S3 encrypts data with SSE-S3.
-For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/}{Protecting data with server-side encryption} in
-the \emph{Amazon S3 User Guide}.}
+For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/serv-side-encryption.html}{Protecting data with server-side encryption}
+in the \emph{Amazon S3 User Guide}.}
 
 \item{SSEKMSKeyId}{If you specify \code{x-amz-server-side-encryption} with \code{aws:kms}, you must
 specify the \code{ x-amz-server-side-encryption-aws-kms-key-id} header with
@@ -49,7 +49,7 @@ that't issuing the command, you must use the full Key ARN not the Key
 ID.
 
 Your SSE-KMS configuration can only support 1 \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-cmk}{customer managed key}
-per directory bucket for the lifetime of the bucket. The \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-cmk}{Amazon Web Services managed key}
+per directory bucket's lifetime. The \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-cmk}{Amazon Web Services managed key}
 (\code{aws/s3}) isn't supported.}
 
 \item{SSEKMSEncryptionContext}{Specifies the Amazon Web Services KMS Encryption Context as an

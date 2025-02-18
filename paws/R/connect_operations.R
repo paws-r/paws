@@ -140,13 +140,18 @@ connect_associate_analytics_data_set <- function(InstanceId, DataSetId, TargetAc
 #' Associates an approved origin to an Amazon Connect instance.
 #'
 #' @usage
-#' connect_associate_approved_origin(InstanceId, Origin)
+#' connect_associate_approved_origin(InstanceId, Origin, ClientToken)
 #'
 #' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
 #' instance
 #' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
 #' in the Amazon Resource Name (ARN) of the instance.
 #' @param Origin &#91;required&#93; The domain to add to your allow list.
+#' @param ClientToken A unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request. If not provided, the Amazon Web Services SDK
+#' populates this field. For more information about idempotency, see
+#' [Making retries safe with idempotent
+#' APIs](https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/).
 #'
 #' @return
 #' An empty list.
@@ -155,7 +160,8 @@ connect_associate_analytics_data_set <- function(InstanceId, DataSetId, TargetAc
 #' ```
 #' svc$associate_approved_origin(
 #'   InstanceId = "string",
-#'   Origin = "string"
+#'   Origin = "string",
+#'   ClientToken = "string"
 #' )
 #' ```
 #'
@@ -164,7 +170,7 @@ connect_associate_analytics_data_set <- function(InstanceId, DataSetId, TargetAc
 #' @rdname connect_associate_approved_origin
 #'
 #' @aliases connect_associate_approved_origin
-connect_associate_approved_origin <- function(InstanceId, Origin) {
+connect_associate_approved_origin <- function(InstanceId, Origin, ClientToken = NULL) {
   op <- new_operation(
     name = "AssociateApprovedOrigin",
     http_method = "PUT",
@@ -173,7 +179,7 @@ connect_associate_approved_origin <- function(InstanceId, Origin) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .connect$associate_approved_origin_input(InstanceId = InstanceId, Origin = Origin)
+  input <- .connect$associate_approved_origin_input(InstanceId = InstanceId, Origin = Origin, ClientToken = ClientToken)
   output <- .connect$associate_approved_origin_output()
   config <- get_config()
   svc <- .connect$service(config, op)
@@ -194,7 +200,7 @@ connect_associate_approved_origin <- function(InstanceId, Origin) {
 #' Amazon Lex or Amazon Lex V2 bot.
 #'
 #' @usage
-#' connect_associate_bot(InstanceId, LexBot, LexV2Bot)
+#' connect_associate_bot(InstanceId, LexBot, LexV2Bot, ClientToken)
 #'
 #' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
 #' instance
@@ -202,6 +208,11 @@ connect_associate_approved_origin <- function(InstanceId, Origin) {
 #' in the Amazon Resource Name (ARN) of the instance.
 #' @param LexBot 
 #' @param LexV2Bot The Amazon Lex V2 bot to associate with the instance.
+#' @param ClientToken A unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request. If not provided, the Amazon Web Services SDK
+#' populates this field. For more information about idempotency, see
+#' [Making retries safe with idempotent
+#' APIs](https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/).
 #'
 #' @return
 #' An empty list.
@@ -216,7 +227,8 @@ connect_associate_approved_origin <- function(InstanceId, Origin) {
 #'   ),
 #'   LexV2Bot = list(
 #'     AliasArn = "string"
-#'   )
+#'   ),
+#'   ClientToken = "string"
 #' )
 #' ```
 #'
@@ -225,7 +237,7 @@ connect_associate_approved_origin <- function(InstanceId, Origin) {
 #' @rdname connect_associate_bot
 #'
 #' @aliases connect_associate_bot
-connect_associate_bot <- function(InstanceId, LexBot = NULL, LexV2Bot = NULL) {
+connect_associate_bot <- function(InstanceId, LexBot = NULL, LexV2Bot = NULL, ClientToken = NULL) {
   op <- new_operation(
     name = "AssociateBot",
     http_method = "PUT",
@@ -234,7 +246,7 @@ connect_associate_bot <- function(InstanceId, LexBot = NULL, LexV2Bot = NULL) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .connect$associate_bot_input(InstanceId = InstanceId, LexBot = LexBot, LexV2Bot = LexV2Bot)
+  input <- .connect$associate_bot_input(InstanceId = InstanceId, LexBot = LexBot, LexV2Bot = LexV2Bot, ClientToken = ClientToken)
   output <- .connect$associate_bot_output()
   config <- get_config()
   svc <- .connect$service(config, op)
@@ -379,7 +391,7 @@ connect_associate_flow <- function(InstanceId, ResourceId, FlowId, ResourceType)
 #'
 #' @usage
 #' connect_associate_instance_storage_config(InstanceId, ResourceType,
-#'   StorageConfig)
+#'   StorageConfig, ClientToken)
 #'
 #' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
 #' instance
@@ -402,6 +414,11 @@ connect_associate_flow <- function(InstanceId, ResourceId, FlowId, ResourceType)
 #' `REAL_TIME_CONTACT_ANALYSIS_SEGMENTS`, no action is needed to update the
 #' stream to `REAL_TIME_CONTACT_ANALYSIS_VOICE_SEGMENTS`.
 #' @param StorageConfig &#91;required&#93; A valid storage type.
+#' @param ClientToken A unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request. If not provided, the Amazon Web Services SDK
+#' populates this field. For more information about idempotency, see
+#' [Making retries safe with idempotent
+#' APIs](https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/).
 #'
 #' @return
 #' A list with the following syntax:
@@ -441,7 +458,8 @@ connect_associate_flow <- function(InstanceId, ResourceId, FlowId, ResourceType)
 #'     KinesisFirehoseConfig = list(
 #'       FirehoseArn = "string"
 #'     )
-#'   )
+#'   ),
+#'   ClientToken = "string"
 #' )
 #' ```
 #'
@@ -450,7 +468,7 @@ connect_associate_flow <- function(InstanceId, ResourceId, FlowId, ResourceType)
 #' @rdname connect_associate_instance_storage_config
 #'
 #' @aliases connect_associate_instance_storage_config
-connect_associate_instance_storage_config <- function(InstanceId, ResourceType, StorageConfig) {
+connect_associate_instance_storage_config <- function(InstanceId, ResourceType, StorageConfig, ClientToken = NULL) {
   op <- new_operation(
     name = "AssociateInstanceStorageConfig",
     http_method = "PUT",
@@ -459,7 +477,7 @@ connect_associate_instance_storage_config <- function(InstanceId, ResourceType, 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .connect$associate_instance_storage_config_input(InstanceId = InstanceId, ResourceType = ResourceType, StorageConfig = StorageConfig)
+  input <- .connect$associate_instance_storage_config_input(InstanceId = InstanceId, ResourceType = ResourceType, StorageConfig = StorageConfig, ClientToken = ClientToken)
   output <- .connect$associate_instance_storage_config_output()
   config <- get_config()
   svc <- .connect$service(config, op)
@@ -480,7 +498,7 @@ connect_associate_instance_storage_config <- function(InstanceId, ResourceType, 
 #' Lambda function.
 #'
 #' @usage
-#' connect_associate_lambda_function(InstanceId, FunctionArn)
+#' connect_associate_lambda_function(InstanceId, FunctionArn, ClientToken)
 #'
 #' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
 #' instance
@@ -488,6 +506,11 @@ connect_associate_instance_storage_config <- function(InstanceId, ResourceType, 
 #' in the Amazon Resource Name (ARN) of the instance.
 #' @param FunctionArn &#91;required&#93; The Amazon Resource Name (ARN) for the Lambda function being associated.
 #' Maximum number of characters allowed is 140.
+#' @param ClientToken A unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request. If not provided, the Amazon Web Services SDK
+#' populates this field. For more information about idempotency, see
+#' [Making retries safe with idempotent
+#' APIs](https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/).
 #'
 #' @return
 #' An empty list.
@@ -496,7 +519,8 @@ connect_associate_instance_storage_config <- function(InstanceId, ResourceType, 
 #' ```
 #' svc$associate_lambda_function(
 #'   InstanceId = "string",
-#'   FunctionArn = "string"
+#'   FunctionArn = "string",
+#'   ClientToken = "string"
 #' )
 #' ```
 #'
@@ -505,7 +529,7 @@ connect_associate_instance_storage_config <- function(InstanceId, ResourceType, 
 #' @rdname connect_associate_lambda_function
 #'
 #' @aliases connect_associate_lambda_function
-connect_associate_lambda_function <- function(InstanceId, FunctionArn) {
+connect_associate_lambda_function <- function(InstanceId, FunctionArn, ClientToken = NULL) {
   op <- new_operation(
     name = "AssociateLambdaFunction",
     http_method = "PUT",
@@ -514,7 +538,7 @@ connect_associate_lambda_function <- function(InstanceId, FunctionArn) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .connect$associate_lambda_function_input(InstanceId = InstanceId, FunctionArn = FunctionArn)
+  input <- .connect$associate_lambda_function_input(InstanceId = InstanceId, FunctionArn = FunctionArn, ClientToken = ClientToken)
   output <- .connect$associate_lambda_function_output()
   config <- get_config()
   svc <- .connect$service(config, op)
@@ -536,13 +560,18 @@ connect_associate_lambda_function <- function(InstanceId, FunctionArn) {
 #' V1 bots.
 #'
 #' @usage
-#' connect_associate_lex_bot(InstanceId, LexBot)
+#' connect_associate_lex_bot(InstanceId, LexBot, ClientToken)
 #'
 #' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
 #' instance
 #' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
 #' in the Amazon Resource Name (ARN) of the instance.
 #' @param LexBot &#91;required&#93; The Amazon Lex bot to associate with the instance.
+#' @param ClientToken A unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request. If not provided, the Amazon Web Services SDK
+#' populates this field. For more information about idempotency, see
+#' [Making retries safe with idempotent
+#' APIs](https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/).
 #'
 #' @return
 #' An empty list.
@@ -554,7 +583,8 @@ connect_associate_lambda_function <- function(InstanceId, FunctionArn) {
 #'   LexBot = list(
 #'     Name = "string",
 #'     LexRegion = "string"
-#'   )
+#'   ),
+#'   ClientToken = "string"
 #' )
 #' ```
 #'
@@ -563,7 +593,7 @@ connect_associate_lambda_function <- function(InstanceId, FunctionArn) {
 #' @rdname connect_associate_lex_bot
 #'
 #' @aliases connect_associate_lex_bot
-connect_associate_lex_bot <- function(InstanceId, LexBot) {
+connect_associate_lex_bot <- function(InstanceId, LexBot, ClientToken = NULL) {
   op <- new_operation(
     name = "AssociateLexBot",
     http_method = "PUT",
@@ -572,7 +602,7 @@ connect_associate_lex_bot <- function(InstanceId, LexBot) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .connect$associate_lex_bot_input(InstanceId = InstanceId, LexBot = LexBot)
+  input <- .connect$associate_lex_bot_input(InstanceId = InstanceId, LexBot = LexBot, ClientToken = ClientToken)
   output <- .connect$associate_lex_bot_output()
   config <- get_config()
   svc <- .connect$service(config, op)
@@ -775,13 +805,18 @@ connect_associate_routing_profile_queues <- function(InstanceId, RoutingProfileI
 #' Associates a security key to the instance.
 #'
 #' @usage
-#' connect_associate_security_key(InstanceId, Key)
+#' connect_associate_security_key(InstanceId, Key, ClientToken)
 #'
 #' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
 #' instance
 #' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
 #' in the Amazon Resource Name (ARN) of the instance.
 #' @param Key &#91;required&#93; A valid security key in PEM format as a String.
+#' @param ClientToken A unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request. If not provided, the Amazon Web Services SDK
+#' populates this field. For more information about idempotency, see
+#' [Making retries safe with idempotent
+#' APIs](https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/).
 #'
 #' @return
 #' A list with the following syntax:
@@ -795,7 +830,8 @@ connect_associate_routing_profile_queues <- function(InstanceId, RoutingProfileI
 #' ```
 #' svc$associate_security_key(
 #'   InstanceId = "string",
-#'   Key = "string"
+#'   Key = "string",
+#'   ClientToken = "string"
 #' )
 #' ```
 #'
@@ -804,7 +840,7 @@ connect_associate_routing_profile_queues <- function(InstanceId, RoutingProfileI
 #' @rdname connect_associate_security_key
 #'
 #' @aliases connect_associate_security_key
-connect_associate_security_key <- function(InstanceId, Key) {
+connect_associate_security_key <- function(InstanceId, Key, ClientToken = NULL) {
   op <- new_operation(
     name = "AssociateSecurityKey",
     http_method = "PUT",
@@ -813,7 +849,7 @@ connect_associate_security_key <- function(InstanceId, Key) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .connect$associate_security_key_input(InstanceId = InstanceId, Key = Key)
+  input <- .connect$associate_security_key_input(InstanceId = InstanceId, Key = Key, ClientToken = ClientToken)
   output <- .connect$associate_security_key_output()
   config <- get_config()
   svc <- .connect$service(config, op)
@@ -966,7 +1002,8 @@ connect_associate_user_proficiencies <- function(InstanceId, UserId, UserProfici
 #'       DataSetId = "string",
 #'       TargetAccountId = "string",
 #'       ResourceShareId = "string",
-#'       ResourceShareArn = "string"
+#'       ResourceShareArn = "string",
+#'       ResourceShareStatus = "string"
 #'     )
 #'   ),
 #'   Errors = list(
@@ -1590,10 +1627,13 @@ connect_create_agent_status <- function(InstanceId, Name, Description = NULL, St
 }
 .connect$operations$create_agent_status <- connect_create_agent_status
 
-#' Creates a new contact
+#' Only the EMAIL channel is supported
 #'
 #' @description
-#' Creates a new contact.
+#' Only the EMAIL channel is supported. The supported initiation methods
+#' are: OUTBOUND, AGENT_REPLY, and FLOW.
+#' 
+#' Creates a new EMAIL contact.
 #'
 #' @usage
 #' connect_create_contact(InstanceId, ClientToken, RelatedContactId,
@@ -1622,7 +1662,16 @@ connect_create_agent_status <- function(InstanceId, Name, Description = NULL, St
 #' (CCP). Tasks can have the following reference types at the time of
 #' creation: URL | NUMBER | STRING | DATE | EMAIL | ATTACHMENT.
 #' @param Channel &#91;required&#93; The channel for the contact
+#' 
+#' CreateContact only supports the EMAIL channel. The following information
+#' that states other channels are supported is incorrect. We are working to
+#' update this topic.
 #' @param InitiationMethod &#91;required&#93; Indicates how the contact was initiated.
+#' 
+#' CreateContact only supports the following initiation methods: OUTBOUND,
+#' AGENT_REPLY, and FLOW. The following information that states other
+#' initiation methods are supported is incorrect. We are working to update
+#' this topic.
 #' @param ExpiryDurationInMinutes Number of minutes the contact will be active for before expiring
 #' @param UserInfo User details for the contact
 #' @param InitiateAs Initial state of the contact when it's created
@@ -3346,8 +3395,10 @@ connect_create_rule <- function(InstanceId, Name, TriggerEventSource, Function, 
 #' @param AllowedAccessControlTags The list of tags that a security profile uses to restrict access to
 #' resources in Amazon Connect.
 #' @param TagRestrictedResources The list of resources that a security profile applies tag restrictions
-#' to in Amazon Connect. Following are acceptable ResourceNames: `User` |
-#' `SecurityProfile` | `Queue` | `RoutingProfile`
+#' to in Amazon Connect. For a list of Amazon Connect resources that you
+#' can tag, see [Add tags to resources in Amazon
+#' Connect](https://docs.aws.amazon.com/connect/latest/adminguide/tagging.html)
+#' in the *Amazon Connect Administrator Guide*.
 #' @param Applications A list of third-party applications that the security profile will give
 #' access to.
 #' @param HierarchyRestrictedResources The list of resources that a security profile applies hierarchy
@@ -4716,12 +4767,17 @@ connect_delete_hours_of_operation_override <- function(InstanceId, HoursOfOperat
 #' you can restart creating and deleting instances in your account.
 #'
 #' @usage
-#' connect_delete_instance(InstanceId)
+#' connect_delete_instance(InstanceId, ClientToken)
 #'
 #' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
 #' instance
 #' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
 #' in the Amazon Resource Name (ARN) of the instance.
+#' @param ClientToken A unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request. If not provided, the Amazon Web Services SDK
+#' populates this field. For more information about idempotency, see
+#' [Making retries safe with idempotent
+#' APIs](https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/).
 #'
 #' @return
 #' An empty list.
@@ -4729,7 +4785,8 @@ connect_delete_hours_of_operation_override <- function(InstanceId, HoursOfOperat
 #' @section Request syntax:
 #' ```
 #' svc$delete_instance(
-#'   InstanceId = "string"
+#'   InstanceId = "string",
+#'   ClientToken = "string"
 #' )
 #' ```
 #'
@@ -4738,7 +4795,7 @@ connect_delete_hours_of_operation_override <- function(InstanceId, HoursOfOperat
 #' @rdname connect_delete_instance
 #'
 #' @aliases connect_delete_instance
-connect_delete_instance <- function(InstanceId) {
+connect_delete_instance <- function(InstanceId, ClientToken = NULL) {
   op <- new_operation(
     name = "DeleteInstance",
     http_method = "DELETE",
@@ -4747,7 +4804,7 @@ connect_delete_instance <- function(InstanceId) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .connect$delete_instance_input(InstanceId = InstanceId)
+  input <- .connect$delete_instance_input(InstanceId = InstanceId, ClientToken = ClientToken)
   output <- .connect$delete_instance_output()
   config <- get_config()
   svc <- .connect$service(config, op)
@@ -5719,8 +5776,8 @@ connect_describe_agent_status <- function(InstanceId, AgentStatusId) {
 #'
 #' @description
 #' This API is in preview release for Amazon Connect and is subject to
-#' change. To request access to this API, contact Amazon Web Services
-#' Support.
+#' change. To request access to this API, contact Amazon Web
+#' ServicesSupport.
 #' 
 #' Describes the target authentication profile.
 #'
@@ -5804,9 +5861,13 @@ connect_describe_authentication_profile <- function(AuthenticationProfileId, Ins
 #' 
 #' Describes the specified contact.
 #' 
-#' Contact information remains available in Amazon Connect for 24 months
-#' from the InitiationTimestamp, and then it is deleted. Only contact
-#' information that is available in Amazon Connect is returned by this API
+#' -   `CustomerEndpoint` and `SystemEndpoint` are only populated for EMAIL
+#'     contacts.
+#' 
+#' -   Contact information remains available in Amazon Connect for 24
+#'     months from the `InitiationTimestamp`, and then it is deleted. Only
+#'     contact information that is available in Amazon Connect is returned
+#'     by this API.
 #'
 #' @usage
 #' connect_describe_contact(InstanceId, ContactId)
@@ -8285,13 +8346,18 @@ connect_disassociate_analytics_data_set <- function(InstanceId, DataSetId, Targe
 #' Revokes access to integrated applications from Amazon Connect.
 #'
 #' @usage
-#' connect_disassociate_approved_origin(InstanceId, Origin)
+#' connect_disassociate_approved_origin(InstanceId, Origin, ClientToken)
 #'
 #' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
 #' instance
 #' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
 #' in the Amazon Resource Name (ARN) of the instance.
 #' @param Origin &#91;required&#93; The domain URL of the integrated application.
+#' @param ClientToken A unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request. If not provided, the Amazon Web Services SDK
+#' populates this field. For more information about idempotency, see
+#' [Making retries safe with idempotent
+#' APIs](https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/).
 #'
 #' @return
 #' An empty list.
@@ -8300,7 +8366,8 @@ connect_disassociate_analytics_data_set <- function(InstanceId, DataSetId, Targe
 #' ```
 #' svc$disassociate_approved_origin(
 #'   InstanceId = "string",
-#'   Origin = "string"
+#'   Origin = "string",
+#'   ClientToken = "string"
 #' )
 #' ```
 #'
@@ -8309,7 +8376,7 @@ connect_disassociate_analytics_data_set <- function(InstanceId, DataSetId, Targe
 #' @rdname connect_disassociate_approved_origin
 #'
 #' @aliases connect_disassociate_approved_origin
-connect_disassociate_approved_origin <- function(InstanceId, Origin) {
+connect_disassociate_approved_origin <- function(InstanceId, Origin, ClientToken = NULL) {
   op <- new_operation(
     name = "DisassociateApprovedOrigin",
     http_method = "DELETE",
@@ -8318,7 +8385,7 @@ connect_disassociate_approved_origin <- function(InstanceId, Origin) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .connect$disassociate_approved_origin_input(InstanceId = InstanceId, Origin = Origin)
+  input <- .connect$disassociate_approved_origin_input(InstanceId = InstanceId, Origin = Origin, ClientToken = ClientToken)
   output <- .connect$disassociate_approved_origin_output()
   config <- get_config()
   svc <- .connect$service(config, op)
@@ -8339,7 +8406,7 @@ connect_disassociate_approved_origin <- function(InstanceId, Origin) {
 #' specified Amazon Lex or Amazon Lex V2 bot.
 #'
 #' @usage
-#' connect_disassociate_bot(InstanceId, LexBot, LexV2Bot)
+#' connect_disassociate_bot(InstanceId, LexBot, LexV2Bot, ClientToken)
 #'
 #' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
 #' instance
@@ -8347,6 +8414,11 @@ connect_disassociate_approved_origin <- function(InstanceId, Origin) {
 #' in the Amazon Resource Name (ARN) of the instance.
 #' @param LexBot 
 #' @param LexV2Bot The Amazon Lex V2 bot to disassociate from the instance.
+#' @param ClientToken A unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request. If not provided, the Amazon Web Services SDK
+#' populates this field. For more information about idempotency, see
+#' [Making retries safe with idempotent
+#' APIs](https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/).
 #'
 #' @return
 #' An empty list.
@@ -8361,7 +8433,8 @@ connect_disassociate_approved_origin <- function(InstanceId, Origin) {
 #'   ),
 #'   LexV2Bot = list(
 #'     AliasArn = "string"
-#'   )
+#'   ),
+#'   ClientToken = "string"
 #' )
 #' ```
 #'
@@ -8370,7 +8443,7 @@ connect_disassociate_approved_origin <- function(InstanceId, Origin) {
 #' @rdname connect_disassociate_bot
 #'
 #' @aliases connect_disassociate_bot
-connect_disassociate_bot <- function(InstanceId, LexBot = NULL, LexV2Bot = NULL) {
+connect_disassociate_bot <- function(InstanceId, LexBot = NULL, LexV2Bot = NULL, ClientToken = NULL) {
   op <- new_operation(
     name = "DisassociateBot",
     http_method = "POST",
@@ -8379,7 +8452,7 @@ connect_disassociate_bot <- function(InstanceId, LexBot = NULL, LexV2Bot = NULL)
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .connect$disassociate_bot_input(InstanceId = InstanceId, LexBot = LexBot, LexV2Bot = LexV2Bot)
+  input <- .connect$disassociate_bot_input(InstanceId = InstanceId, LexBot = LexBot, LexV2Bot = LexV2Bot, ClientToken = ClientToken)
   output <- .connect$disassociate_bot_output()
   config <- get_config()
   svc <- .connect$service(config, op)
@@ -8458,7 +8531,7 @@ connect_disassociate_flow <- function(InstanceId, ResourceId, ResourceType) {
 #'
 #' @usage
 #' connect_disassociate_instance_storage_config(InstanceId, AssociationId,
-#'   ResourceType)
+#'   ResourceType, ClientToken)
 #'
 #' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
 #' instance
@@ -8467,6 +8540,11 @@ connect_disassociate_flow <- function(InstanceId, ResourceId, ResourceType) {
 #' @param AssociationId &#91;required&#93; The existing association identifier that uniquely identifies the
 #' resource type and storage config for the given instance ID.
 #' @param ResourceType &#91;required&#93; A valid resource type.
+#' @param ClientToken A unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request. If not provided, the Amazon Web Services SDK
+#' populates this field. For more information about idempotency, see
+#' [Making retries safe with idempotent
+#' APIs](https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/).
 #'
 #' @return
 #' An empty list.
@@ -8476,7 +8554,8 @@ connect_disassociate_flow <- function(InstanceId, ResourceId, ResourceType) {
 #' svc$disassociate_instance_storage_config(
 #'   InstanceId = "string",
 #'   AssociationId = "string",
-#'   ResourceType = "CHAT_TRANSCRIPTS"|"CALL_RECORDINGS"|"SCHEDULED_REPORTS"|"MEDIA_STREAMS"|"CONTACT_TRACE_RECORDS"|"AGENT_EVENTS"|"REAL_TIME_CONTACT_ANALYSIS_SEGMENTS"|"ATTACHMENTS"|"CONTACT_EVALUATIONS"|"SCREEN_RECORDINGS"|"REAL_TIME_CONTACT_ANALYSIS_CHAT_SEGMENTS"|"REAL_TIME_CONTACT_ANALYSIS_VOICE_SEGMENTS"|"EMAIL_MESSAGES"
+#'   ResourceType = "CHAT_TRANSCRIPTS"|"CALL_RECORDINGS"|"SCHEDULED_REPORTS"|"MEDIA_STREAMS"|"CONTACT_TRACE_RECORDS"|"AGENT_EVENTS"|"REAL_TIME_CONTACT_ANALYSIS_SEGMENTS"|"ATTACHMENTS"|"CONTACT_EVALUATIONS"|"SCREEN_RECORDINGS"|"REAL_TIME_CONTACT_ANALYSIS_CHAT_SEGMENTS"|"REAL_TIME_CONTACT_ANALYSIS_VOICE_SEGMENTS"|"EMAIL_MESSAGES",
+#'   ClientToken = "string"
 #' )
 #' ```
 #'
@@ -8485,7 +8564,7 @@ connect_disassociate_flow <- function(InstanceId, ResourceId, ResourceType) {
 #' @rdname connect_disassociate_instance_storage_config
 #'
 #' @aliases connect_disassociate_instance_storage_config
-connect_disassociate_instance_storage_config <- function(InstanceId, AssociationId, ResourceType) {
+connect_disassociate_instance_storage_config <- function(InstanceId, AssociationId, ResourceType, ClientToken = NULL) {
   op <- new_operation(
     name = "DisassociateInstanceStorageConfig",
     http_method = "DELETE",
@@ -8494,7 +8573,7 @@ connect_disassociate_instance_storage_config <- function(InstanceId, Association
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .connect$disassociate_instance_storage_config_input(InstanceId = InstanceId, AssociationId = AssociationId, ResourceType = ResourceType)
+  input <- .connect$disassociate_instance_storage_config_input(InstanceId = InstanceId, AssociationId = AssociationId, ResourceType = ResourceType, ClientToken = ClientToken)
   output <- .connect$disassociate_instance_storage_config_output()
   config <- get_config()
   svc <- .connect$service(config, op)
@@ -8515,7 +8594,8 @@ connect_disassociate_instance_storage_config <- function(InstanceId, Association
 #' relevant flow blocks.
 #'
 #' @usage
-#' connect_disassociate_lambda_function(InstanceId, FunctionArn)
+#' connect_disassociate_lambda_function(InstanceId, FunctionArn,
+#'   ClientToken)
 #'
 #' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
 #' instance
@@ -8523,6 +8603,11 @@ connect_disassociate_instance_storage_config <- function(InstanceId, Association
 #' in the Amazon Resource Name (ARN) of the instance..
 #' @param FunctionArn &#91;required&#93; The Amazon Resource Name (ARN) of the Lambda function being
 #' disassociated.
+#' @param ClientToken A unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request. If not provided, the Amazon Web Services SDK
+#' populates this field. For more information about idempotency, see
+#' [Making retries safe with idempotent
+#' APIs](https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/).
 #'
 #' @return
 #' An empty list.
@@ -8531,7 +8616,8 @@ connect_disassociate_instance_storage_config <- function(InstanceId, Association
 #' ```
 #' svc$disassociate_lambda_function(
 #'   InstanceId = "string",
-#'   FunctionArn = "string"
+#'   FunctionArn = "string",
+#'   ClientToken = "string"
 #' )
 #' ```
 #'
@@ -8540,7 +8626,7 @@ connect_disassociate_instance_storage_config <- function(InstanceId, Association
 #' @rdname connect_disassociate_lambda_function
 #'
 #' @aliases connect_disassociate_lambda_function
-connect_disassociate_lambda_function <- function(InstanceId, FunctionArn) {
+connect_disassociate_lambda_function <- function(InstanceId, FunctionArn, ClientToken = NULL) {
   op <- new_operation(
     name = "DisassociateLambdaFunction",
     http_method = "DELETE",
@@ -8549,7 +8635,7 @@ connect_disassociate_lambda_function <- function(InstanceId, FunctionArn) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .connect$disassociate_lambda_function_input(InstanceId = InstanceId, FunctionArn = FunctionArn)
+  input <- .connect$disassociate_lambda_function_input(InstanceId = InstanceId, FunctionArn = FunctionArn, ClientToken = ClientToken)
   output <- .connect$disassociate_lambda_function_output()
   config <- get_config()
   svc <- .connect$service(config, op)
@@ -8570,7 +8656,8 @@ connect_disassociate_lambda_function <- function(InstanceId, FunctionArn) {
 #' specified Amazon Lex bot.
 #'
 #' @usage
-#' connect_disassociate_lex_bot(InstanceId, BotName, LexRegion)
+#' connect_disassociate_lex_bot(InstanceId, BotName, LexRegion,
+#'   ClientToken)
 #'
 #' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
 #' instance
@@ -8579,6 +8666,11 @@ connect_disassociate_lambda_function <- function(InstanceId, FunctionArn) {
 #' @param BotName &#91;required&#93; The name of the Amazon Lex bot. Maximum character limit of 50.
 #' @param LexRegion &#91;required&#93; The Amazon Web Services Region in which the Amazon Lex bot has been
 #' created.
+#' @param ClientToken A unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request. If not provided, the Amazon Web Services SDK
+#' populates this field. For more information about idempotency, see
+#' [Making retries safe with idempotent
+#' APIs](https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/).
 #'
 #' @return
 #' An empty list.
@@ -8588,7 +8680,8 @@ connect_disassociate_lambda_function <- function(InstanceId, FunctionArn) {
 #' svc$disassociate_lex_bot(
 #'   InstanceId = "string",
 #'   BotName = "string",
-#'   LexRegion = "string"
+#'   LexRegion = "string",
+#'   ClientToken = "string"
 #' )
 #' ```
 #'
@@ -8597,7 +8690,7 @@ connect_disassociate_lambda_function <- function(InstanceId, FunctionArn) {
 #' @rdname connect_disassociate_lex_bot
 #'
 #' @aliases connect_disassociate_lex_bot
-connect_disassociate_lex_bot <- function(InstanceId, BotName, LexRegion) {
+connect_disassociate_lex_bot <- function(InstanceId, BotName, LexRegion, ClientToken = NULL) {
   op <- new_operation(
     name = "DisassociateLexBot",
     http_method = "DELETE",
@@ -8606,7 +8699,7 @@ connect_disassociate_lex_bot <- function(InstanceId, BotName, LexRegion) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .connect$disassociate_lex_bot_input(InstanceId = InstanceId, BotName = BotName, LexRegion = LexRegion)
+  input <- .connect$disassociate_lex_bot_input(InstanceId = InstanceId, BotName = BotName, LexRegion = LexRegion, ClientToken = ClientToken)
   output <- .connect$disassociate_lex_bot_output()
   config <- get_config()
   svc <- .connect$service(config, op)
@@ -8803,7 +8896,8 @@ connect_disassociate_routing_profile_queues <- function(InstanceId, RoutingProfi
 #' Deletes the specified security key.
 #'
 #' @usage
-#' connect_disassociate_security_key(InstanceId, AssociationId)
+#' connect_disassociate_security_key(InstanceId, AssociationId,
+#'   ClientToken)
 #'
 #' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
 #' instance
@@ -8811,6 +8905,11 @@ connect_disassociate_routing_profile_queues <- function(InstanceId, RoutingProfi
 #' in the Amazon Resource Name (ARN) of the instance.
 #' @param AssociationId &#91;required&#93; The existing association identifier that uniquely identifies the
 #' resource type and storage config for the given instance ID.
+#' @param ClientToken A unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request. If not provided, the Amazon Web Services SDK
+#' populates this field. For more information about idempotency, see
+#' [Making retries safe with idempotent
+#' APIs](https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/).
 #'
 #' @return
 #' An empty list.
@@ -8819,7 +8918,8 @@ connect_disassociate_routing_profile_queues <- function(InstanceId, RoutingProfi
 #' ```
 #' svc$disassociate_security_key(
 #'   InstanceId = "string",
-#'   AssociationId = "string"
+#'   AssociationId = "string",
+#'   ClientToken = "string"
 #' )
 #' ```
 #'
@@ -8828,7 +8928,7 @@ connect_disassociate_routing_profile_queues <- function(InstanceId, RoutingProfi
 #' @rdname connect_disassociate_security_key
 #'
 #' @aliases connect_disassociate_security_key
-connect_disassociate_security_key <- function(InstanceId, AssociationId) {
+connect_disassociate_security_key <- function(InstanceId, AssociationId, ClientToken = NULL) {
   op <- new_operation(
     name = "DisassociateSecurityKey",
     http_method = "DELETE",
@@ -8837,7 +8937,7 @@ connect_disassociate_security_key <- function(InstanceId, AssociationId) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .connect$disassociate_security_key_input(InstanceId = InstanceId, AssociationId = AssociationId)
+  input <- .connect$disassociate_security_key_input(InstanceId = InstanceId, AssociationId = AssociationId, ClientToken = ClientToken)
   output <- .connect$disassociate_security_key_output()
   config <- get_config()
   svc <- .connect$service(config, op)
@@ -10261,10 +10361,11 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #'     `BOT_INTENT_NAME` | `CAMPAIGN` | `CAMPAIGN_DELIVERY_EVENT_TYPE`
 #'     |`CASE_TEMPLATE_ARN` | `CASE_STATUS` | `CHANNEL` |
 #'     `contact/segmentAttributes/connect:Subtype` | `DISCONNECT_REASON` |
-#'     `FEATURE` | `FLOW_ACTION_ID` | `FLOW_TYPE` |
+#'     `EVALUATION_FORM` | `EVALUATION_SECTION` | `EVALUATION_QUESTION` |
+#'     `EVALUATION_SOURCE` | `FEATURE` | `FLOW_ACTION_ID` | `FLOW_TYPE` |
 #'     `FLOWS_MODULE_RESOURCE_ID` | `FLOWS_NEXT_RESOURCE_ID` |
 #'     `FLOWS_NEXT_RESOURCE_QUEUE_ID` | `FLOWS_OUTCOME_TYPE` |
-#'     `FLOWS_RESOURCE_ID` | `INITIATION_METHOD` |
+#'     `FLOWS_RESOURCE_ID` | `FORM_VERSION` | `INITIATION_METHOD` |
 #'     `INVOKING_RESOURCE_PUBLISHED_TIMESTAMP` | `INVOKING_RESOURCE_TYPE` |
 #'     `PARENT_FLOWS_RESOURCE_ID` | `RESOURCE_PUBLISHED_TIMESTAMP` |
 #'     `ROUTING_PROFILE` | `ROUTING_STEP_EXPRESSION` | `QUEUE` |
@@ -10317,12 +10418,20 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' `BOT_VERSION` | `BOT_LOCALE` | `BOT_INTENT_NAME` | `CAMPAIGN` |
 #' `CAMPAIGN_DELIVERY_EVENT_TYPE` | `CASE_TEMPLATE_ARN` | `CASE_STATUS` |
 #' `CHANNEL` | `contact/segmentAttributes/connect:Subtype` |
-#' `DISCONNECT_REASON` | `FLOWS_RESOURCE_ID` | `FLOWS_MODULE_RESOURCE_ID` |
-#' `FLOW_ACTION_ID` | `FLOW_TYPE` | `FLOWS_OUTCOME_TYPE` |
-#' `INITIATION_METHOD` | `INVOKING_RESOURCE_PUBLISHED_TIMESTAMP` |
-#' `INVOKING_RESOURCE_TYPE` | `PARENT_FLOWS_RESOURCE_ID` |
-#' `Q_CONNECT_ENABLED` | `QUEUE` | `RESOURCE_PUBLISHED_TIMESTAMP` |
-#' `ROUTING_PROFILE` | `ROUTING_STEP_EXPRESSION`
+#' `DISCONNECT_REASON` | `EVALUATION_FORM` | `EVALUATION_SECTION` |
+#' `EVALUATION_QUESTION` | `EVALUATION_SOURCE` | `FLOWS_RESOURCE_ID` |
+#' `FLOWS_MODULE_RESOURCE_ID` | `FLOW_ACTION_ID` | `FLOW_TYPE` |
+#' `FLOWS_OUTCOME_TYPE` | `FORM_VERSION` | `INITIATION_METHOD` |
+#' `INVOKING_RESOURCE_PUBLISHED_TIMESTAMP` | `INVOKING_RESOURCE_TYPE` |
+#' `PARENT_FLOWS_RESOURCE_ID` | `Q_CONNECT_ENABLED` | `QUEUE` |
+#' `RESOURCE_PUBLISHED_TIMESTAMP` | `ROUTING_PROFILE` |
+#' `ROUTING_STEP_EXPRESSION`
+#' 
+#' Type: Array of strings
+#' 
+#' Array Members: Maximum number of 4 items
+#' 
+#' Required: No
 #' @param Metrics &#91;required&#93; The metrics to retrieve. Specify the name, groupings, and filters for
 #' each metric. The following historical metrics are available. For a
 #' description of each metric, see [Historical metrics
@@ -10584,6 +10693,17 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' UI name: [Average dials per
 #' minute](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#average-dials-historical)
 #' 
+#' **AVG_EVALUATION_SCORE**
+#' 
+#' Unit: Percent
+#' 
+#' Valid groupings and filters: Agent, Agent Hierarchy, Channel, Evaluation
+#' Form ID, Evaluation Section ID, Evaluation Question ID, Evaluation
+#' Source, Form Version, Queue, Routing Profile
+#' 
+#' UI name: [Average agent evaluation
+#' score](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#average-agent-evaluation-score-historical)
+#' 
 #' **AVG_FLOW_TIME**
 #' 
 #' Unit: Seconds
@@ -10794,6 +10914,17 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' 
 #' UI name: [Average wait time after customer
 #' connection](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#average-wait-time-historical)
+#' 
+#' **AVG_WEIGHTED_EVALUATION_SCORE**
+#' 
+#' Unit: Percent
+#' 
+#' Valid groupings and filters: Agent, Agent Hierarchy, Channel, Evaluation
+#' Form Id, Evaluation Section ID, Evaluation Question ID, Evaluation
+#' Source, Form Version, Queue, Routing Profile
+#' 
+#' UI name: [Average weighted agent evaluation
+#' score](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#average-weighted-agent-evaluation-score-historical)
 #' 
 #' **BOT_CONVERSATIONS_COMPLETED**
 #' 
@@ -11129,6 +11260,16 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' Answering Machine Detection Status and Disconnect Reason are only
 #' available for agent assisted voice and automated voice delivery modes.
 #' 
+#' **EVALUATIONS_PERFORMED**
+#' 
+#' Unit: Count
+#' 
+#' Valid groupings and filters: Agent, Agent Hierarchy, Channel, Evaluation
+#' Form ID, Evaluation Source, Form Version, Queue, Routing Profile
+#' 
+#' UI name: [Evaluations
+#' performed](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#evaluations-performed-historical)
+#' 
 #' **FLOWS_OUTCOME**
 #' 
 #' Unit: Count
@@ -11202,6 +11343,16 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' 
 #' UI name: [Minimum flow
 #' time](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#minimum-flow-time-historical)
+#' 
+#' **PERCENT_AUTOMATIC_FAILS**
+#' 
+#' Unit: Percent
+#' 
+#' Valid groupings and filters: Agent, Agent Hierarchy, Channel, Evaluation
+#' Form ID, Evaluation Source, Form Version, Queue, Routing Profile
+#' 
+#' UI name: [Automatic fails
+#' percent](https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html#percent-evaluation-automatic-failures-historical)
 #' 
 #' **PERCENT_BOT_CONVERSATIONS_OUTCOME**
 #' 
@@ -11975,7 +12126,7 @@ connect_get_traffic_distribution <- function(Id) {
 #' service level quota of 99 phone numbers, and in any 180 day period you
 #' release 99, claim 99, and then release 99, you will have exceeded the
 #' 200% limit. At that point you are blocked from claiming any more numbers
-#' until you open an Amazon Web Services Support ticket.
+#' until you open an Amazon Web ServicesSupport ticket.
 #'
 #' @usage
 #' connect_import_phone_number(InstanceId, SourcePhoneNumberArn,
@@ -12153,7 +12304,8 @@ connect_list_agent_statuses <- function(InstanceId, NextToken = NULL, MaxResults
 #'       DataSetId = "string",
 #'       TargetAccountId = "string",
 #'       ResourceShareId = "string",
-#'       ResourceShareArn = "string"
+#'       ResourceShareArn = "string",
+#'       ResourceShareStatus = "string"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -12193,6 +12345,73 @@ connect_list_analytics_data_associations <- function(InstanceId, DataSetId = NUL
   return(response)
 }
 .connect$operations$list_analytics_data_associations <- connect_list_analytics_data_associations
+
+#' Lists the data lake datasets available to associate with for a given
+#' Amazon Connect instance
+#'
+#' @description
+#' Lists the data lake datasets available to associate with for a given
+#' Amazon Connect instance.
+#'
+#' @usage
+#' connect_list_analytics_data_lake_data_sets(InstanceId, NextToken,
+#'   MaxResults)
+#'
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
+#' @param NextToken The token for the next set of results. Use the value returned in the
+#' previous response in the next request to retrieve the next set of
+#' results.
+#' @param MaxResults The maximum number of results to return per page.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Results = list(
+#'     list(
+#'       DataSetId = "string",
+#'       DataSetName = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_analytics_data_lake_data_sets(
+#'   InstanceId = "string",
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname connect_list_analytics_data_lake_data_sets
+#'
+#' @aliases connect_list_analytics_data_lake_data_sets
+connect_list_analytics_data_lake_data_sets <- function(InstanceId, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListAnalyticsDataLakeDataSets",
+    http_method = "GET",
+    http_path = "/analytics-data/instance/{InstanceId}/datasets",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .connect$list_analytics_data_lake_data_sets_input(InstanceId = InstanceId, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .connect$list_analytics_data_lake_data_sets_output()
+  config <- get_config()
+  svc <- .connect$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connect$operations$list_analytics_data_lake_data_sets <- connect_list_analytics_data_lake_data_sets
 
 #' This API is in preview release for Amazon Connect and is subject to
 #' change
@@ -12350,8 +12569,8 @@ connect_list_associated_contacts <- function(InstanceId, ContactId, MaxResults =
 #'
 #' @description
 #' This API is in preview release for Amazon Connect and is subject to
-#' change. To request access to this API, contact Amazon Web Services
-#' Support.
+#' change. To request access to this API, contact Amazon Web
+#' ServicesSupport.
 #' 
 #' Provides summary information about the authentication profiles in a
 #' specified Amazon Connect instance.
@@ -16035,7 +16254,7 @@ connect_put_user_status <- function(UserId, InstanceId, AgentStatusId) {
 #' After releasing a phone number, the phone number enters into a cooldown
 #' period for up to 180 days. It cannot be searched for or claimed again
 #' until the period has ended. If you accidentally release a phone number,
-#' contact Amazon Web Services Support.
+#' contact Amazon Web ServicesSupport.
 #' 
 #' If you plan to claim and release numbers frequently, contact us for a
 #' service quota exception. Otherwise, it is possible you will be blocked
@@ -17743,25 +17962,29 @@ connect_search_quick_connects <- function(InstanceId, NextToken = NULL, MaxResul
 #' instanceId in the Amazon Resource Name (ARN) of the instance.
 #' @param ResourceTypes The list of resource types to be used to search tags from. If not
 #' provided or if any empty list is provided, this API will search from all
-#' supported resource types.
+#' supported resource types. Note that lowercase and - are required.
 #' 
 #' **Supported resource types**
 #' 
-#' -   AGENT
+#' -   agent
 #' 
-#' -   ROUTING_PROFILE
+#' -   agent-state
 #' 
-#' -   STANDARD_QUEUE
+#' -   routing-profile
 #' 
-#' -   SECURITY_PROFILE
+#' -   standard-queue
 #' 
-#' -   OPERATING_HOURS
+#' -   security-profile
 #' 
-#' -   PROMPT
+#' -   operating-hours
 #' 
-#' -   CONTACT_FLOW
+#' -   prompt
 #' 
-#' -   FLOW_MODULE
+#' -   contact-flow
+#' 
+#' -   flow- module
+#' 
+#' -   transfer-destination (also known as quick connect)
 #' @param NextToken The token for the next set of results. Use the value returned in the
 #' previous response in the next request to retrieve the next set of
 #' results.
@@ -18268,8 +18491,6 @@ connect_search_user_hierarchy_groups <- function(InstanceId, NextToken = NULL, M
 #' instance
 #' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
 #' in the Amazon Resource Name (ARN) of the instance.
-#' 
-#' InstanceID is a required field. The "Required: No" below is incorrect.
 #' @param NextToken The token for the next set of results. Use the value returned in the
 #' previous response in the next request to retrieve the next set of
 #' results.
@@ -18859,7 +19080,7 @@ connect_start_attached_file_upload <- function(ClientToken = NULL, InstanceId, F
 #' 
 #' If you use the `ChatDurationInMinutes` parameter and receive a 400
 #' error, your account may not support the ability to configure custom chat
-#' durations. For more information, contact Amazon Web Services Support.
+#' durations. For more information, contact Amazon Web ServicesSupport.
 #' 
 #' For more information about chat, see the following topics in the *Amazon
 #' Connect Administrator Guide*:
@@ -20946,8 +21167,8 @@ connect_update_agent_status <- function(InstanceId, AgentStatusId, Name = NULL, 
 #'
 #' @description
 #' This API is in preview release for Amazon Connect and is subject to
-#' change. To request access to this API, contact Amazon Web Services
-#' Support.
+#' change. To request access to this API, contact Amazon Web
+#' ServicesSupport.
 #' 
 #' Updates the selected authentication profile.
 #'
@@ -21198,8 +21419,10 @@ connect_update_contact <- function(InstanceId, ContactId, Name = NULL, Descripti
 #' contact. Attribute keys can include only alphanumeric, dash, and
 #' underscore characters.
 #' 
-#' When the attributes for a contact exceed 32 KB, the contact is routed
-#' down the Error branch of the flow. As a mitigation, consider the
+#' In the [Set contact
+#' attributes](https://docs.aws.amazon.com/connect/latest/adminguide/set-contact-attributes.html)
+#' block, when the attributes for a contact exceed 32 KB, the contact is
+#' routed down the Error branch of the flow. As a mitigation, consider the
 #' following options:
 #' 
 #' -   Remove unnecessary attributes by setting their values to empty.
@@ -22168,7 +22391,8 @@ connect_update_hours_of_operation_override <- function(InstanceId, HoursOfOperat
 #' Updates the value for the specified attribute type.
 #'
 #' @usage
-#' connect_update_instance_attribute(InstanceId, AttributeType, Value)
+#' connect_update_instance_attribute(InstanceId, AttributeType, Value,
+#'   ClientToken)
 #'
 #' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
 #' instance
@@ -22177,8 +22401,13 @@ connect_update_hours_of_operation_override <- function(InstanceId, HoursOfOperat
 #' @param AttributeType &#91;required&#93; The type of attribute.
 #' 
 #' Only allowlisted customers can consume USE_CUSTOM_TTS_VOICES. To access
-#' this feature, contact Amazon Web Services Support for allowlisting.
+#' this feature, contact Amazon Web ServicesSupport for allowlisting.
 #' @param Value &#91;required&#93; The value for the attribute. Maximum character limit is 100.
+#' @param ClientToken A unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request. If not provided, the Amazon Web Services SDK
+#' populates this field. For more information about idempotency, see
+#' [Making retries safe with idempotent
+#' APIs](https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/).
 #'
 #' @return
 #' An empty list.
@@ -22188,7 +22417,8 @@ connect_update_hours_of_operation_override <- function(InstanceId, HoursOfOperat
 #' svc$update_instance_attribute(
 #'   InstanceId = "string",
 #'   AttributeType = "INBOUND_CALLS"|"OUTBOUND_CALLS"|"CONTACTFLOW_LOGS"|"CONTACT_LENS"|"AUTO_RESOLVE_BEST_VOICES"|"USE_CUSTOM_TTS_VOICES"|"EARLY_MEDIA"|"MULTI_PARTY_CONFERENCE"|"HIGH_VOLUME_OUTBOUND"|"ENHANCED_CONTACT_MONITORING"|"ENHANCED_CHAT_MONITORING"|"MULTI_PARTY_CHAT_CONFERENCE",
-#'   Value = "string"
+#'   Value = "string",
+#'   ClientToken = "string"
 #' )
 #' ```
 #'
@@ -22197,7 +22427,7 @@ connect_update_hours_of_operation_override <- function(InstanceId, HoursOfOperat
 #' @rdname connect_update_instance_attribute
 #'
 #' @aliases connect_update_instance_attribute
-connect_update_instance_attribute <- function(InstanceId, AttributeType, Value) {
+connect_update_instance_attribute <- function(InstanceId, AttributeType, Value, ClientToken = NULL) {
   op <- new_operation(
     name = "UpdateInstanceAttribute",
     http_method = "POST",
@@ -22206,7 +22436,7 @@ connect_update_instance_attribute <- function(InstanceId, AttributeType, Value) 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .connect$update_instance_attribute_input(InstanceId = InstanceId, AttributeType = AttributeType, Value = Value)
+  input <- .connect$update_instance_attribute_input(InstanceId = InstanceId, AttributeType = AttributeType, Value = Value, ClientToken = ClientToken)
   output <- .connect$update_instance_attribute_output()
   config <- get_config()
   svc <- .connect$service(config, op)
@@ -22228,7 +22458,7 @@ connect_update_instance_attribute <- function(InstanceId, AttributeType, Value) 
 #'
 #' @usage
 #' connect_update_instance_storage_config(InstanceId, AssociationId,
-#'   ResourceType, StorageConfig)
+#'   ResourceType, StorageConfig, ClientToken)
 #'
 #' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
 #' instance
@@ -22238,6 +22468,11 @@ connect_update_instance_attribute <- function(InstanceId, AttributeType, Value) 
 #' resource type and storage config for the given instance ID.
 #' @param ResourceType &#91;required&#93; A valid resource type.
 #' @param StorageConfig &#91;required&#93; 
+#' @param ClientToken A unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request. If not provided, the Amazon Web Services SDK
+#' populates this field. For more information about idempotency, see
+#' [Making retries safe with idempotent
+#' APIs](https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/).
 #'
 #' @return
 #' An empty list.
@@ -22273,7 +22508,8 @@ connect_update_instance_attribute <- function(InstanceId, AttributeType, Value) 
 #'     KinesisFirehoseConfig = list(
 #'       FirehoseArn = "string"
 #'     )
-#'   )
+#'   ),
+#'   ClientToken = "string"
 #' )
 #' ```
 #'
@@ -22282,7 +22518,7 @@ connect_update_instance_attribute <- function(InstanceId, AttributeType, Value) 
 #' @rdname connect_update_instance_storage_config
 #'
 #' @aliases connect_update_instance_storage_config
-connect_update_instance_storage_config <- function(InstanceId, AssociationId, ResourceType, StorageConfig) {
+connect_update_instance_storage_config <- function(InstanceId, AssociationId, ResourceType, StorageConfig, ClientToken = NULL) {
   op <- new_operation(
     name = "UpdateInstanceStorageConfig",
     http_method = "POST",
@@ -22291,7 +22527,7 @@ connect_update_instance_storage_config <- function(InstanceId, AssociationId, Re
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .connect$update_instance_storage_config_input(InstanceId = InstanceId, AssociationId = AssociationId, ResourceType = ResourceType, StorageConfig = StorageConfig)
+  input <- .connect$update_instance_storage_config_input(InstanceId = InstanceId, AssociationId = AssociationId, ResourceType = ResourceType, StorageConfig = StorageConfig, ClientToken = ClientToken)
   output <- .connect$update_instance_storage_config_output()
   config <- get_config()
   svc <- .connect$service(config, op)
@@ -23906,6 +24142,11 @@ connect_update_task_template <- function(TaskTemplateId, InstanceId, Name = NULL
 #'
 #' @description
 #' Updates the traffic distribution for a given traffic distribution group.
+#' 
+#' When you shift telephony traffic, also shift agents and/or agent
+#' sign-ins to ensure they can handle the calls in the other Region. If you
+#' don't shift the agents, voice calls will go to the shifted Region but
+#' there won't be any agents available to receive the calls.
 #' 
 #' The `SignInConfig` distribution is available only on a default
 #' `TrafficDistributionGroup` (see the `IsDefault` parameter in the

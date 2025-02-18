@@ -40,6 +40,14 @@ test_that("list_resource_scans", {
   expect_error(svc$list_resource_scans(MaxResults = 20), NA)
 })
 
+test_that("list_stack_refactors", {
+  expect_error(svc$list_stack_refactors(), NA)
+})
+
+test_that("list_stack_refactors", {
+  expect_error(svc$list_stack_refactors(MaxResults = 20), NA)
+})
+
 test_that("list_stack_sets", {
   expect_error(svc$list_stack_sets(), NA)
 })

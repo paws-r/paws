@@ -37,7 +37,7 @@ NULL
 #' When using this operation using S3 on Outposts through the AWS SDKs, you
 #' provide the Outposts bucket ARN in place of the bucket name. For more
 #' information about S3 on Outposts ARNs, see [Using S3 on
-#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html)
+#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
 #' in the *Amazon Simple Storage Service Developer Guide*.
 #' @param Key &#91;required&#93; Key of the object to get.
 #' @param Filename &#91;required&#93; A local file location where the downloaded
@@ -241,10 +241,7 @@ s3_generate_presigned_url <- function(
       )
     },
     error = function(err) {
-      stop(
-        sprintf("Client does not have method: %s", client_method),
-        call. = FALSE
-      )
+      stop(sprintf("Client does not have method: %s", client_method), call. = FALSE)
     }
   )
   operation_body <- body(operation_fun)
@@ -270,18 +267,14 @@ s3_generate_presigned_url <- function(
   # create: input from client_method
   kwargs <- as.list(modifyList(original_params, params))
   input <- do.call(
-    get(
-      .pkg_api,
-      envir = getNamespace(pkg_name)
-    )[[sprintf("%s_input", client_method)]],
+    get(.pkg_api, envir = getNamespace(pkg_name))[[sprintf("%s_input", client_method)]],
     kwargs
   )
 
   # create: output from client_method
-  output <- get(
-    .pkg_api,
-    envir = getNamespace(pkg_name)
-  )[[sprintf("%s_input", client_method)]]()
+  output <- get(.pkg_api, envir = getNamespace(pkg_name))[[
+    sprintf("%s_input", client_method)
+  ]]()
 
   # get config
   config <- get_config()

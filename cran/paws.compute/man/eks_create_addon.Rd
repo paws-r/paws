@@ -54,7 +54,9 @@ self-managed version of the add-on is installed on your cluster
 Amazon EKS doesn't change the add-on resource properties. Creation
 of the add-on might fail if conflicts are detected. This option
 works differently during the update operation. For more information,
-see \code{\link[=eks_update_addon]{update_addon}}.
+see
+\href{https://docs.aws.amazon.com/eks/latest/APIReference/API_UpdateAddon.html}{\code{update_addon}}
+.
 }
 
 If you don't currently have the self-managed version of the add-on
@@ -77,7 +79,7 @@ values that you provide are validated against the schema returned by
 Identity association maps a Kubernetes service account to an IAM Role.
 
 For more information, see \href{https://docs.aws.amazon.com/eks/latest/userguide/add-ons-iam.html}{Attach an IAM Role to an Amazon EKS add-on using Pod Identity}
-in the EKS User Guide.}
+in the \emph{Amazon EKS User Guide}.}
 }
 \description{
 Creates an Amazon EKS add-on.

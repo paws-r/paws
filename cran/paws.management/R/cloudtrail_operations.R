@@ -1943,6 +1943,43 @@ cloudtrail_restore_event_data_store <- function(EventDataStore) {
 }
 .cloudtrail$operations$restore_event_data_store <- cloudtrail_restore_event_data_store
 
+#' Searches sample queries and returns a list of sample queries that are
+#' sorted by relevance
+#'
+#' @description
+#' Searches sample queries and returns a list of sample queries that are sorted by relevance. To search for sample queries, provide a natural language `SearchPhrase` in English.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudtrail_search_sample_queries/](https://www.paws-r-sdk.com/docs/cloudtrail_search_sample_queries/) for full documentation.
+#'
+#' @param SearchPhrase &#91;required&#93; The natural language phrase to use for the semantic search. The phrase
+#' must be in English. The length constraint is in characters, not words.
+#' @param MaxResults The maximum number of results to return on a single page. The default
+#' value is 10.
+#' @param NextToken A token you can use to get the next page of results. The length
+#' constraint is in characters, not words.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudtrail_search_sample_queries
+cloudtrail_search_sample_queries <- function(SearchPhrase, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "SearchSampleQueries",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudtrail$search_sample_queries_input(SearchPhrase = SearchPhrase, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .cloudtrail$search_sample_queries_output()
+  config <- get_config()
+  svc <- .cloudtrail$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudtrail$operations$search_sample_queries <- cloudtrail_search_sample_queries
+
 #' Starts a refresh of the specified dashboard
 #'
 #' @description

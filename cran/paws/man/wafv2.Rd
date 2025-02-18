@@ -65,15 +65,16 @@ For information about WAF, including how to migrate your WAF Classic
 resources to this version, see the \href{https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html}{WAF Developer Guide}.
 
 WAF is a web application firewall that lets you monitor the HTTP and
-HTTPS requests that are forwarded to an Amazon CloudFront distribution,
-Amazon API Gateway REST API, Application Load Balancer, AppSync GraphQL
-API, Amazon Cognito user pool, App Runner service, or Amazon Web
-Services Verified Access instance. WAF also lets you control access to
-your content, to protect the Amazon Web Services resource that WAF is
-monitoring. Based on conditions that you specify, such as the IP
-addresses that requests originate from or the values of query strings,
-the protected resource responds to requests with either the requested
-content, an HTTP 403 status code (Forbidden), or with a custom response.
+HTTPS requests that are forwarded to a protected resource. Protected
+resource types include Amazon CloudFront distribution, Amazon API
+Gateway REST API, Application Load Balancer, AppSync GraphQL API, Amazon
+Cognito user pool, App Runner service, and Amazon Web Services Verified
+Access instance. WAF also lets you control access to your content, to
+protect the Amazon Web Services resource that WAF is monitoring. Based
+on conditions that you specify, such as the IP addresses that requests
+originate from or the values of query strings, the protected resource
+responds to requests with either the requested content, an HTTP 403
+status code (Forbidden), or with a custom response.
 
 This API guide is for developers who need detailed information about WAF
 API actions, data types, and errors. For detailed information about WAF
@@ -81,13 +82,13 @@ features and guidance for configuring and using WAF, see the \href{https://docs.
 
 You can make calls using the endpoints listed in \href{https://docs.aws.amazon.com/general/latest/gr/waf.html}{WAF endpoints and quotas}.
 \itemize{
-\item For regional applications, you can use any of the endpoints in the
+\item For regional resources, you can use any of the endpoints in the
 list. A regional application can be an Application Load Balancer
 (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API, an
 Amazon Cognito user pool, an App Runner service, or an Amazon Web
 Services Verified Access instance.
-\item For Amazon CloudFront applications, you must use the API endpoint
-listed for US East (N. Virginia): us-east-1.
+\item For Amazon CloudFront, you must use the API endpoint listed for US
+East (N. Virginia): us-east-1.
 }
 
 Alternatively, you can use one of the Amazon Web Services SDKs to access
@@ -133,7 +134,7 @@ you're using. For more information, see \href{https://aws.amazon.com/developer/t
 \section{Operations}{
 
 \tabular{ll}{
-\link[paws.security.identity:wafv2_associate_web_acl]{associate_web_acl} \tab Associates a web ACL with a regional application resource, to protect the resource\cr
+\link[paws.security.identity:wafv2_associate_web_acl]{associate_web_acl} \tab Associates a web ACL with a resource, to protect the resource\cr
 \link[paws.security.identity:wafv2_check_capacity]{check_capacity} \tab Returns the web ACL capacity unit (WCU) requirements for a specified scope and set of rules\cr
 \link[paws.security.identity:wafv2_create_api_key]{create_api_key} \tab Creates an API key that contains a set of token domains\cr
 \link[paws.security.identity:wafv2_create_ip_set]{create_ip_set} \tab Creates an IPSet, which you use to identify web requests that originate from specific IP addresses or ranges of IP addresses\cr
@@ -151,7 +152,7 @@ you're using. For more information, see \href{https://aws.amazon.com/developer/t
 \link[paws.security.identity:wafv2_describe_all_managed_products]{describe_all_managed_products} \tab Provides high-level information for the Amazon Web Services Managed Rules rule groups and Amazon Web Services Marketplace managed rule groups\cr
 \link[paws.security.identity:wafv2_describe_managed_products_by_vendor]{describe_managed_products_by_vendor} \tab Provides high-level information for the managed rule groups owned by a specific vendor\cr
 \link[paws.security.identity:wafv2_describe_managed_rule_group]{describe_managed_rule_group} \tab Provides high-level information for a managed rule group, including descriptions of the rules\cr
-\link[paws.security.identity:wafv2_disassociate_web_acl]{disassociate_web_acl} \tab Disassociates the specified regional application resource from any existing web ACL association\cr
+\link[paws.security.identity:wafv2_disassociate_web_acl]{disassociate_web_acl} \tab Disassociates the specified resource from its web ACL association, if it has one\cr
 \link[paws.security.identity:wafv2_generate_mobile_sdk_release_url]{generate_mobile_sdk_release_url} \tab Generates a presigned download URL for the specified release of the mobile SDK\cr
 \link[paws.security.identity:wafv2_get_decrypted_api_key]{get_decrypted_api_key} \tab Returns your API key in decrypted form\cr
 \link[paws.security.identity:wafv2_get_ip_set]{get_ip_set} \tab Retrieves the specified IPSet\cr
@@ -173,7 +174,7 @@ you're using. For more information, see \href{https://aws.amazon.com/developer/t
 \link[paws.security.identity:wafv2_list_managed_rule_sets]{list_managed_rule_sets} \tab Retrieves the managed rule sets that you own\cr
 \link[paws.security.identity:wafv2_list_mobile_sdk_releases]{list_mobile_sdk_releases} \tab Retrieves a list of the available releases for the mobile SDK and the specified device platform\cr
 \link[paws.security.identity:wafv2_list_regex_pattern_sets]{list_regex_pattern_sets} \tab Retrieves an array of RegexPatternSetSummary objects for the regex pattern sets that you manage\cr
-\link[paws.security.identity:wafv2_list_resources_for_web_acl]{list_resources_for_web_acl} \tab Retrieves an array of the Amazon Resource Names (ARNs) for the regional resources that are associated with the specified web ACL\cr
+\link[paws.security.identity:wafv2_list_resources_for_web_acl]{list_resources_for_web_acl} \tab Retrieves an array of the Amazon Resource Names (ARNs) for the resources that are associated with the specified web ACL\cr
 \link[paws.security.identity:wafv2_list_rule_groups]{list_rule_groups} \tab Retrieves an array of RuleGroupSummary objects for the rule groups that you manage\cr
 \link[paws.security.identity:wafv2_list_tags_for_resource]{list_tags_for_resource} \tab Retrieves the TagInfoForResource for the specified resource\cr
 \link[paws.security.identity:wafv2_list_web_ac_ls]{list_web_ac_ls} \tab Retrieves an array of WebACLSummary objects for the web ACLs that you manage\cr

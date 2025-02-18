@@ -19,7 +19,7 @@ NULL
 #' 
 #' If you're new to AWS End User Messaging SMS and Voice, it's also helpful
 #' to review the [AWS End User Messaging SMS User
-#' Guide](https://docs.aws.amazon.com/sms-voice/latest/userguide/what-is-service.html).
+#' Guide](https://docs.aws.amazon.com/sms-voice/latest/userguide/what-is-sms-mms.html).
 #' The *AWS End User Messaging SMS User Guide* provides tutorials, code
 #' samples, and procedures that demonstrate how to use AWS End User
 #' Messaging SMS and Voice features programmatically and how to integrate

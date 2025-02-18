@@ -125,6 +125,7 @@ Services product, you can find the product's technical documentation at
 \link[paws.management:cloudformation_create_generated_template]{create_generated_template} \tab Creates a template from existing resources that are not already managed with CloudFormation\cr
 \link[paws.management:cloudformation_create_stack]{create_stack} \tab Creates a stack as specified in the template\cr
 \link[paws.management:cloudformation_create_stack_instances]{create_stack_instances} \tab Creates stack instances for the specified accounts, within the specified Amazon Web Services Regions\cr
+\link[paws.management:cloudformation_create_stack_refactor]{create_stack_refactor} \tab Creates a refactor across multiple stacks, with the list of stacks and resources that are affected\cr
 \link[paws.management:cloudformation_create_stack_set]{create_stack_set} \tab Creates a stack set\cr
 \link[paws.management:cloudformation_deactivate_organizations_access]{deactivate_organizations_access} \tab Deactivates trusted access with Organizations\cr
 \link[paws.management:cloudformation_deactivate_type]{deactivate_type} \tab Deactivates a public extension that was previously activated in this account and Region\cr
@@ -144,6 +145,7 @@ Services product, you can find the product's technical documentation at
 \link[paws.management:cloudformation_describe_stack_drift_detection_status]{describe_stack_drift_detection_status} \tab Returns information about a stack drift detection operation\cr
 \link[paws.management:cloudformation_describe_stack_events]{describe_stack_events} \tab Returns all stack related events for a specified stack in reverse chronological order\cr
 \link[paws.management:cloudformation_describe_stack_instance]{describe_stack_instance} \tab Returns the stack instance that's associated with the specified StackSet, Amazon Web Services account, and Amazon Web Services Region\cr
+\link[paws.management:cloudformation_describe_stack_refactor]{describe_stack_refactor} \tab Describes the stack refactor status\cr
 \link[paws.management:cloudformation_describe_stack_resource]{describe_stack_resource} \tab Returns a description of the specified resource in the specified stack\cr
 \link[paws.management:cloudformation_describe_stack_resource_drifts]{describe_stack_resource_drifts} \tab Returns drift information for the resources that have been checked for drift in the specified stack\cr
 \link[paws.management:cloudformation_describe_stack_resources]{describe_stack_resources} \tab Returns Amazon Web Services resource descriptions for running and deleted stacks\cr
@@ -157,6 +159,7 @@ Services product, you can find the product's technical documentation at
 \link[paws.management:cloudformation_detect_stack_set_drift]{detect_stack_set_drift} \tab Detect drift on a stack set\cr
 \link[paws.management:cloudformation_estimate_template_cost]{estimate_template_cost} \tab Returns the estimated monthly cost of a template\cr
 \link[paws.management:cloudformation_execute_change_set]{execute_change_set} \tab Updates a stack using the input information that was provided when the specified change set was created\cr
+\link[paws.management:cloudformation_execute_stack_refactor]{execute_stack_refactor} \tab Executes the stack refactor operation\cr
 \link[paws.management:cloudformation_get_generated_template]{get_generated_template} \tab Retrieves a generated template\cr
 \link[paws.management:cloudformation_get_stack_policy]{get_stack_policy} \tab Returns the stack policy for a specified stack\cr
 \link[paws.management:cloudformation_get_template]{get_template} \tab Returns the template body for a specified stack\cr
@@ -172,6 +175,8 @@ Services product, you can find the product's technical documentation at
 \link[paws.management:cloudformation_list_resource_scans]{list_resource_scans} \tab List the resource scans from newest to oldest\cr
 \link[paws.management:cloudformation_list_stack_instance_resource_drifts]{list_stack_instance_resource_drifts} \tab Returns drift information for resources in a stack instance\cr
 \link[paws.management:cloudformation_list_stack_instances]{list_stack_instances} \tab Returns summary information about stack instances that are associated with the specified stack set\cr
+\link[paws.management:cloudformation_list_stack_refactor_actions]{list_stack_refactor_actions} \tab Lists the stack refactor actions that will be taken after calling the ExecuteStackRefactor action\cr
+\link[paws.management:cloudformation_list_stack_refactors]{list_stack_refactors} \tab Lists all account stack refactor operations and their statuses\cr
 \link[paws.management:cloudformation_list_stack_resources]{list_stack_resources} \tab Returns descriptions of all resources of the specified stack\cr
 \link[paws.management:cloudformation_list_stacks]{list_stacks} \tab Returns the summary information for stacks whose status matches the specified StackStatusFilter\cr
 \link[paws.management:cloudformation_list_stack_set_auto_deployment_targets]{list_stack_set_auto_deployment_targets} \tab Returns summary information about deployment targets for a stack set\cr

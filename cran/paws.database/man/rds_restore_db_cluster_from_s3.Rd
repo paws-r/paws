@@ -236,7 +236,16 @@ Logs. The values in the list depend on the DB engine being used.
 
 \strong{Aurora MySQL}
 
-Possible values are \code{audit}, \code{error}, \code{general}, and \code{slowquery}.
+Possible values are \code{audit}, \code{error}, \code{general}, \code{instance}, and
+\code{slowquery}.
+
+\strong{Aurora PostgreSQL}
+
+Possible value are \code{instance} and \code{postgresql}.
+
+For more information about exporting CloudWatch Logs for Amazon RDS, see
+\href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch}{Publishing Database Logs to Amazon CloudWatch Logs}
+in the \emph{Amazon RDS User Guide}.
 
 For more information about exporting CloudWatch Logs for Amazon Aurora,
 see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch}{Publishing Database Logs to Amazon CloudWatch Logs}

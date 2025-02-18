@@ -131,7 +131,7 @@ Services service. For a list of Amazon Connect endpoints, see \href{https://docs
 \link[paws.customer.engagement:connect_claim_phone_number]{claim_phone_number} \tab Claims an available phone number to your Amazon Connect instance or traffic distribution group\cr
 \link[paws.customer.engagement:connect_complete_attached_file_upload]{complete_attached_file_upload} \tab Allows you to confirm that the attached file has been uploaded using the pre-signed URL provided in the StartAttachedFileUpload API\cr
 \link[paws.customer.engagement:connect_create_agent_status]{create_agent_status} \tab This API is in preview release for Amazon Connect and is subject to change\cr
-\link[paws.customer.engagement:connect_create_contact]{create_contact} \tab Creates a new contact\cr
+\link[paws.customer.engagement:connect_create_contact]{create_contact} \tab Only the EMAIL channel is supported\cr
 \link[paws.customer.engagement:connect_create_contact_flow]{create_contact_flow} \tab Creates a flow for the specified Amazon Connect instance\cr
 \link[paws.customer.engagement:connect_create_contact_flow_module]{create_contact_flow_module} \tab Creates a flow module for the specified Amazon Connect instance\cr
 \link[paws.customer.engagement:connect_create_contact_flow_version]{create_contact_flow_version} \tab Publishes a new version of the flow provided\cr
@@ -243,6 +243,7 @@ Services service. For a list of Amazon Connect endpoints, see \href{https://docs
 \link[paws.customer.engagement:connect_import_phone_number]{import_phone_number} \tab Imports a claimed phone number from an external service, such as Amazon Web Services End User Messaging, into an Amazon Connect instance\cr
 \link[paws.customer.engagement:connect_list_agent_statuses]{list_agent_statuses} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 \link[paws.customer.engagement:connect_list_analytics_data_associations]{list_analytics_data_associations} \tab Lists the association status of requested dataset ID for a given Amazon Connect instance\cr
+\link[paws.customer.engagement:connect_list_analytics_data_lake_data_sets]{list_analytics_data_lake_data_sets} \tab Lists the data lake datasets available to associate with for a given Amazon Connect instance\cr
 \link[paws.customer.engagement:connect_list_approved_origins]{list_approved_origins} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 \link[paws.customer.engagement:connect_list_associated_contacts]{list_associated_contacts} \tab Provides information about contact tree, a list of associated contacts with a unique identifier\cr
 \link[paws.customer.engagement:connect_list_authentication_profiles]{list_authentication_profiles} \tab This API is in preview release for Amazon Connect and is subject to change\cr

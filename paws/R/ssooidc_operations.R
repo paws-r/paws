@@ -9,7 +9,7 @@ NULL
 #' @description
 #' Creates and returns access and refresh tokens for clients that are
 #' authenticated using client secrets. The access token can be used to
-#' fetch short-term credentials for the assigned AWS accounts or to access
+#' fetch short-lived credentials for the assigned AWS accounts or to access
 #' application APIs using `bearer` authentication.
 #'
 #' @usage
@@ -22,27 +22,23 @@ NULL
 #' @param clientSecret &#91;required&#93; A secret string generated for the client. This value should come from
 #' the persisted result of the [`register_client`][ssooidc_register_client]
 #' API.
-#' @param grantType &#91;required&#93; Supports the following OAuth grant types: Device Code and Refresh Token.
-#' Specify either of the following values, depending on the grant type that
-#' you want:
+#' @param grantType &#91;required&#93; Supports the following OAuth grant types: Authorization Code, Device
+#' Code, and Refresh Token. Specify one of the following values, depending
+#' on the grant type that you want:
+#' 
+#' * Authorization Code - `authorization_code`
 #' 
 #' * Device Code - `urn:ietf:params:oauth:grant-type:device_code`
 #' 
 #' * Refresh Token - `refresh_token`
-#' 
-#' For information about how to obtain the device code, see the
-#' [`start_device_authorization`][ssooidc_start_device_authorization]
-#' topic.
 #' @param deviceCode Used only when calling this API for the Device Code grant type. This
-#' short-term code is used to identify this authorization request. This
+#' short-lived code is used to identify this authorization request. This
 #' comes from the result of the
 #' [`start_device_authorization`][ssooidc_start_device_authorization] API.
 #' @param code Used only when calling this API for the Authorization Code grant type.
-#' The short-term code is used to identify this authorization request. This
-#' grant type is currently unsupported for the
-#' [`create_token`][ssooidc_create_token] API.
+#' The short-lived code is used to identify this authorization request.
 #' @param refreshToken Used only when calling this API for the Refresh Token grant type. This
-#' token is used to refresh short-term tokens, such as the access token,
+#' token is used to refresh short-lived tokens, such as the access token,
 #' that might expire.
 #' 
 #' For more information about the features and limitations of the current
@@ -120,7 +116,7 @@ ssooidc_create_token <- function(clientId, clientSecret, grantType, deviceCode =
 #' @description
 #' Creates and returns access and refresh tokens for clients and
 #' applications that are authenticated using IAM entities. The access token
-#' can be used to fetch short-term credentials for the assigned Amazon Web
+#' can be used to fetch short-lived credentials for the assigned Amazon Web
 #' Services accounts or to access application APIs using `bearer`
 #' authentication.
 #'
@@ -143,12 +139,12 @@ ssooidc_create_token <- function(clientId, clientSecret, grantType, deviceCode =
 #' 
 #' * Token Exchange - `urn:ietf:params:oauth:grant-type:token-exchange`
 #' @param code Used only when calling this API for the Authorization Code grant type.
-#' This short-term code is used to identify this authorization request. The
-#' code is obtained through a redirect from IAM Identity Center to a
+#' This short-lived code is used to identify this authorization request.
+#' The code is obtained through a redirect from IAM Identity Center to a
 #' redirect URI persisted in the Authorization Code GrantOptions for the
 #' application.
 #' @param refreshToken Used only when calling this API for the Refresh Token grant type. This
-#' token is used to refresh short-term tokens, such as the access token,
+#' token is used to refresh short-lived tokens, such as the access token,
 #' that might expire.
 #' 
 #' For more information about the features and limitations of the current
@@ -247,12 +243,12 @@ ssooidc_create_token_with_iam <- function(clientId, grantType, code = NULL, refr
 }
 .ssooidc$operations$create_token_with_iam <- ssooidc_create_token_with_iam
 
-#' Registers a client with IAM Identity Center
+#' Registers a public client with IAM Identity Center
 #'
 #' @description
-#' Registers a client with IAM Identity Center. This allows clients to
-#' initiate device authorization. The output should be persisted for reuse
-#' through many authentication requests.
+#' Registers a public client with IAM Identity Center. This allows clients
+#' to perform authorization using the authorization code grant with Proof
+#' Key for Code Exchange (PKCE) or the device code grant.
 #'
 #' @usage
 #' ssooidc_register_client(clientName, clientType, scopes, redirectUris,
@@ -268,7 +264,14 @@ ssooidc_create_token_with_iam <- function(clientId, grantType, code = NULL, refr
 #' agent can be redirected back to.
 #' @param grantTypes The list of OAuth 2.0 grant types that are defined by the client. This
 #' list is used to restrict the token granting flows available to the
-#' client.
+#' client. Supports the following OAuth 2.0 grant types: Authorization
+#' Code, Device Code, and Refresh Token.
+#' 
+#' * Authorization Code - `authorization_code`
+#' 
+#' * Device Code - `urn:ietf:params:oauth:grant-type:device_code`
+#' 
+#' * Refresh Token - `refresh_token`
 #' @param issuerUrl The IAM Identity Center Issuer URL associated with an instance of IAM
 #' Identity Center. This value is needed for user access to resources
 #' through the client.

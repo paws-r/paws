@@ -27,7 +27,7 @@ document to delete.}
 data source.}
 }
 \description{
-Deletes documents from a data source and syncs the changes to the knowledge base that is connected to it. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/}{Ingest documents into a knowledge base in real-time} in the Amazon Bedrock User Guide.
+Deletes documents from a data source and syncs the changes to the knowledge base that is connected to it. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/kb-direct-ingestion.html}{Ingest changes directly into a knowledge base} in the Amazon Bedrock User Guide.
 
 See \url{https://www.paws-r-sdk.com/docs/bedrockagent_delete_knowledge_base_documents/} for full documentation.
 }

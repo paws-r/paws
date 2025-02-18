@@ -1363,7 +1363,9 @@ cloudfront_delete_streaming_distribution <- function(Id, IfMatch = NULL) {
 #' See [https://www.paws-r-sdk.com/docs/cloudfront_delete_vpc_origin/](https://www.paws-r-sdk.com/docs/cloudfront_delete_vpc_origin/) for full documentation.
 #'
 #' @param Id &#91;required&#93; The VPC origin ID.
-#' @param IfMatch &#91;required&#93; The VPC origin to delete, if a match occurs.
+#' @param IfMatch &#91;required&#93; The version identifier of the VPC origin to delete. This is the `ETag`
+#' value returned in the response to
+#' [`get_vpc_origin`][cloudfront_get_vpc_origin].
 #'
 #' @keywords internal
 #'

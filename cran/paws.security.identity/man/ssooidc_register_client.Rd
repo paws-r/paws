@@ -2,7 +2,7 @@
 % Please edit documentation in R/ssooidc_operations.R
 \name{ssooidc_register_client}
 \alias{ssooidc_register_client}
-\title{Registers a client with IAM Identity Center}
+\title{Registers a public client with IAM Identity Center}
 \usage{
 ssooidc_register_client(
   clientName,
@@ -29,7 +29,13 @@ agent can be redirected back to.}
 
 \item{grantTypes}{The list of OAuth 2.0 grant types that are defined by the client. This
 list is used to restrict the token granting flows available to the
-client.}
+client. Supports the following OAuth 2.0 grant types: Authorization
+Code, Device Code, and Refresh Token.
+\itemize{
+\item Authorization Code - \code{authorization_code}
+\item Device Code - \code{urn:ietf:params:oauth:grant-type:device_code}
+\item Refresh Token - \code{refresh_token}
+}}
 
 \item{issuerUrl}{The IAM Identity Center Issuer URL associated with an instance of IAM
 Identity Center. This value is needed for user access to resources
@@ -42,7 +48,7 @@ available to this client will be restricted by this application
 resource.}
 }
 \description{
-Registers a client with IAM Identity Center. This allows clients to initiate device authorization. The output should be persisted for reuse through many authentication requests.
+Registers a public client with IAM Identity Center. This allows clients to perform authorization using the authorization code grant with Proof Key for Code Exchange (PKCE) or the device code grant.
 
 See \url{https://www.paws-r-sdk.com/docs/ssooidc_register_client/} for full documentation.
 }

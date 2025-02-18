@@ -37,7 +37,7 @@ bucket, you must use virtual-hosted-style requests in the format
 requests are not supported. Directory bucket names must be unique in the
 chosen Zone (Availability Zone or Local Zone). Bucket names must follow
 the format \code{ bucket-base-name--zone-id--x-s3} (for example,
-\code{ DOC-EXAMPLE-BUCKET--usw2-az1--x-s3}). For information about bucket
+\code{ amzn-s3-demo-bucket--usw2-az1--x-s3}). For information about bucket
 naming restrictions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html}{Directory bucket naming rules}
 in the \emph{Amazon S3 User Guide}.
 
@@ -61,13 +61,13 @@ takes the form
 Access points and Object Lambda access points are not supported by
 directory buckets.
 
-\strong{S3 on Outposts} - When you use this action with Amazon S3 on
-Outposts, you must direct requests to the S3 on Outposts hostname. The
-S3 on Outposts hostname takes the form
+\strong{S3 on Outposts} - When you use this action with S3 on Outposts, you
+must direct requests to the S3 on Outposts hostname. The S3 on Outposts
+hostname takes the form
 \code{ AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com}.
-When you use this action with S3 on Outposts through the Amazon Web
-Services SDKs, you provide the Outposts access point ARN in place of the
-bucket name. For more information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html}{What is S3 on Outposts?}
+When you use this action with S3 on Outposts, the destination bucket
+must be the Outposts access point ARN or the access point alias. For
+more information about S3 on Outposts, see \href{https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html}{What is S3 on Outposts?}
 in the \emph{Amazon S3 User Guide}.}
 
 \item{IfMatch}{Return the object only if its entity tag (ETag) is the same as the one
@@ -226,13 +226,7 @@ specified. Useful for downloading just a part of an object.}
 provide does not match the actual owner of the bucket, the request fails
 with the HTTP status code \verb{403 Forbidden} (access denied).}
 
-\item{ChecksumMode}{To retrieve the checksum, this mode must be enabled.
-
-\strong{General purpose buckets} - In addition, if you enable checksum mode
-and the object is uploaded with a
-\href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_Checksum.html}{checksum}
-and encrypted with an Key Management Service (KMS) key, you must have
-permission to use the \code{kms:Decrypt} action to retrieve the checksum.}
+\item{ChecksumMode}{To retrieve the checksum, this mode must be enabled.}
 }
 \description{
 Retrieves an object from Amazon S3.

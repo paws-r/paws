@@ -39,7 +39,7 @@ configuration.}
 
 \item{RedshiftDestinationUpdate}{Describes an update for a destination in Amazon Redshift.}
 
-\item{ElasticsearchDestinationUpdate}{Describes an update for a destination in Amazon ES.}
+\item{ElasticsearchDestinationUpdate}{Describes an update for a destination in Amazon OpenSearch Service.}
 
 \item{AmazonopensearchserviceDestinationUpdate}{Describes an update for a destination in Amazon OpenSearch Service.}
 

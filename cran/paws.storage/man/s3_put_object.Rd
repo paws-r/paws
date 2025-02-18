@@ -86,7 +86,7 @@ bucket, you must use virtual-hosted-style requests in the format
 requests are not supported. Directory bucket names must be unique in the
 chosen Zone (Availability Zone or Local Zone). Bucket names must follow
 the format \code{ bucket-base-name--zone-id--x-s3} (for example,
-\code{ DOC-EXAMPLE-BUCKET--usw2-az1--x-s3}). For information about bucket
+\code{ amzn-s3-demo-bucket--usw2-az1--x-s3}). For information about bucket
 naming restrictions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html}{Directory bucket naming rules}
 in the \emph{Amazon S3 User Guide}.
 
@@ -104,13 +104,13 @@ in the \emph{Amazon S3 User Guide}.
 Access points and Object Lambda access points are not supported by
 directory buckets.
 
-\strong{S3 on Outposts} - When you use this action with Amazon S3 on
-Outposts, you must direct requests to the S3 on Outposts hostname. The
-S3 on Outposts hostname takes the form
+\strong{S3 on Outposts} - When you use this action with S3 on Outposts, you
+must direct requests to the S3 on Outposts hostname. The S3 on Outposts
+hostname takes the form
 \code{ AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com}.
-When you use this action with S3 on Outposts through the Amazon Web
-Services SDKs, you provide the Outposts access point ARN in place of the
-bucket name. For more information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html}{What is S3 on Outposts?}
+When you use this action with S3 on Outposts, the destination bucket
+must be the Outposts access point ARN or the access point alias. For
+more information about S3 on Outposts, see \href{https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html}{What is S3 on Outposts?}
 in the \emph{Amazon S3 User Guide}.}
 
 \item{CacheControl}{Can be used to specify caching behavior along the request/reply chain.
@@ -159,11 +159,11 @@ code \verb{400 Bad Request}.
 For the \code{x-amz-checksum-algorithm } header, replace \code{algorithm} with
 the supported algorithm from the following list:
 \itemize{
-\item \code{CRC-32}
-\item \verb{CRC-32C}
-\item \verb{CRC-64NVME}
-\item \code{SHA-1}
-\item \code{SHA-256}
+\item \code{CRC32}
+\item \code{CRC32C}
+\item \code{CRC64NVME}
+\item \code{SHA1}
+\item \code{SHA256}
 }
 
 For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html}{Checking object integrity}
@@ -184,32 +184,32 @@ the default checksum algorithm that's used for performance.}
 
 \item{ChecksumCRC32}{This header can be used as a data integrity check to verify that the
 data received is the same data that was originally sent. This header
-specifies the Base64 encoded, 32-bit \code{CRC-32} checksum of the object.
-For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html}{Checking object integrity}
+specifies the Base64 encoded, 32-bit \code{CRC32} checksum of the object. For
+more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html}{Checking object integrity}
 in the \emph{Amazon S3 User Guide}.}
 
 \item{ChecksumCRC32C}{This header can be used as a data integrity check to verify that the
 data received is the same data that was originally sent. This header
-specifies the Base64 encoded, 32-bit \verb{CRC-32C} checksum of the object.
+specifies the Base64 encoded, 32-bit \code{CRC32C} checksum of the object.
 For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html}{Checking object integrity}
 in the \emph{Amazon S3 User Guide}.}
 
 \item{ChecksumCRC64NVME}{This header can be used as a data integrity check to verify that the
 data received is the same data that was originally sent. This header
-specifies the Base64 encoded, 64-bit \verb{CRC-64NVME} checksum of the
-object. The \verb{CRC-64NVME} checksum is always a full object checksum. For
-more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html}{Checking object integrity in the Amazon S3 User Guide}.}
+specifies the Base64 encoded, 64-bit \code{CRC64NVME} checksum of the object.
+The \code{CRC64NVME} checksum is always a full object checksum. For more
+information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html}{Checking object integrity in the Amazon S3 User Guide}.}
 
 \item{ChecksumSHA1}{This header can be used as a data integrity check to verify that the
 data received is the same data that was originally sent. This header
-specifies the Base64 encoded, 160-bit \code{SHA-1} digest of the object. For
+specifies the Base64 encoded, 160-bit \code{SHA1} digest of the object. For
 more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html}{Checking object integrity}
 in the \emph{Amazon S3 User Guide}.}
 
 \item{ChecksumSHA256}{This header can be used as a data integrity check to verify that the
 data received is the same data that was originally sent. This header
-specifies the Base64 encoded, 256-bit \code{SHA-256} digest of the object.
-For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html}{Checking object integrity}
+specifies the Base64 encoded, 256-bit \code{SHA256} digest of the object. For
+more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html}{Checking object integrity}
 in the \emph{Amazon S3 User Guide}.}
 
 \item{Expires}{The date and time at which the object is no longer cacheable. For more
@@ -402,19 +402,17 @@ to use. If you specify \code{x-amz-server-side-encryption:aws:kms} or
 \code{x-amz-server-side-encryption-aws-kms-key-id}, Amazon S3 uses the Amazon
 Web Services managed key (\code{aws/s3}) to protect the data.
 
-\strong{Directory buckets} - If you specify \code{x-amz-server-side-encryption}
-with \code{aws:kms}, the \code{ x-amz-server-side-encryption-aws-kms-key-id}
-header is implicitly assigned the ID of the KMS symmetric encryption
-customer managed key that's configured for your directory bucket's
-default encryption setting. If you want to specify the
-\code{ x-amz-server-side-encryption-aws-kms-key-id} header explicitly, you
-can only specify it with the ID (Key ID or Key ARN) of the KMS customer
-managed key that's configured for your directory bucket's default
-encryption setting. Otherwise, you get an HTTP \verb{400 Bad Request} error.
-Only use the key ID or key ARN. The key alias format of the KMS key
-isn't supported. Your SSE-KMS configuration can only support 1 \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-cmk}{customer managed key}
-per directory bucket for the lifetime of the bucket. The \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-cmk}{Amazon Web Services managed key}
-(\code{aws/s3}) isn't supported.}
+\strong{Directory buckets} - To encrypt data using SSE-KMS, it's recommended
+to specify the \code{x-amz-server-side-encryption} header to \code{aws:kms}. Then,
+the \code{x-amz-server-side-encryption-aws-kms-key-id} header implicitly uses
+the bucket's default KMS customer managed key ID. If you want to
+explicitly set the \code{ x-amz-server-side-encryption-aws-kms-key-id}
+header, it must match the bucket's default customer managed key (using
+key ID or ARN, not alias). Your SSE-KMS configuration can only support 1
+\href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-cmk}{customer managed key}
+per directory bucket's lifetime. The \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-cmk}{Amazon Web Services managed key}
+(\code{aws/s3}) isn't supported. Incorrect key specification results in an
+HTTP \verb{400 Bad Request} error.}
 
 \item{SSEKMSEncryptionContext}{Specifies the Amazon Web Services KMS Encryption Context as an
 additional encryption context to use for object encryption. The value of

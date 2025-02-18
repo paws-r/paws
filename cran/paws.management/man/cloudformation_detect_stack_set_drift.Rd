@@ -41,7 +41,7 @@ in the \emph{CloudFormation User Guide}.
 }}
 }
 \description{
-Detect drift on a stack set. When CloudFormation performs drift detection on a stack set, it performs drift detection on the stack associated with each stack instance in the stack set. For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-drift.html}{How CloudFormation performs drift detection on a stack set}.
+Detect drift on a stack set. When CloudFormation performs drift detection on a stack set, it performs drift detection on the stack associated with each stack instance in the stack set. For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-drift.html}{Performing drift detection on CloudFormation StackSets}.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudformation_detect_stack_set_drift/} for full documentation.
 }

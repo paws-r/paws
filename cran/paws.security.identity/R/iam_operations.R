@@ -539,7 +539,7 @@ iam_create_login_profile <- function(UserName = NULL, Password = NULL, PasswordR
 #' supports OpenID Connect (OIDC)
 #'
 #' @description
-#' Creates an IAM entity to describe an identity provider (IdP) that supports OpenID Connect (OIDC).
+#' Creates an IAM entity to describe an identity provider (IdP) that supports [OpenID Connect (OIDC)](https://openid.net/developers/how-connect-works/).
 #'
 #' See [https://www.paws-r-sdk.com/docs/iam_create_open_id_connect_provider/](https://www.paws-r-sdk.com/docs/iam_create_open_id_connect_provider/) for full documentation.
 #'
@@ -945,11 +945,15 @@ iam_create_role <- function(Path = NULL, RoleName, AssumeRolePolicyDocument, Des
 #' If any one of the tags is invalid or if you exceed the allowed maximum
 #' number of tags, then the entire request fails and the resource is not
 #' created.
+#' @param AssertionEncryptionMode Specifies the encryption setting for the SAML provider.
+#' @param AddPrivateKey The private key generated from your external identity provider. The
+#' private key must be a .pem file that uses AES-GCM or AES-CBC encryption
+#' algorithm to decrypt SAML assertions.
 #'
 #' @keywords internal
 #'
 #' @rdname iam_create_saml_provider
-iam_create_saml_provider <- function(SAMLMetadataDocument, Name, Tags = NULL) {
+iam_create_saml_provider <- function(SAMLMetadataDocument, Name, Tags = NULL, AssertionEncryptionMode = NULL, AddPrivateKey = NULL) {
   op <- new_operation(
     name = "CreateSAMLProvider",
     http_method = "POST",
@@ -958,7 +962,7 @@ iam_create_saml_provider <- function(SAMLMetadataDocument, Name, Tags = NULL) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .iam$create_saml_provider_input(SAMLMetadataDocument = SAMLMetadataDocument, Name = Name, Tags = Tags)
+  input <- .iam$create_saml_provider_input(SAMLMetadataDocument = SAMLMetadataDocument, Name = Name, Tags = Tags, AssertionEncryptionMode = AssertionEncryptionMode, AddPrivateKey = AddPrivateKey)
   output <- .iam$create_saml_provider_output()
   config <- get_config()
   svc <- .iam$service(config, op)
@@ -2249,7 +2253,7 @@ iam_detach_user_policy <- function(UserName, PolicyArn) {
 #' member accounts in your organization
 #'
 #' @description
-#' Disables the management of privileged root user credentials across member accounts in your organization. When you disable this feature, the management account and the delegated admininstrator for IAM can no longer manage root user credentials for member accounts in your organization.
+#' Disables the management of privileged root user credentials across member accounts in your organization. When you disable this feature, the management account and the delegated administrator for IAM can no longer manage root user credentials for member accounts in your organization.
 #'
 #' See [https://www.paws-r-sdk.com/docs/iam_disable_organizations_root_credentials_management/](https://www.paws-r-sdk.com/docs/iam_disable_organizations_root_credentials_management/) for full documentation.
 #'
@@ -2281,7 +2285,7 @@ iam_disable_organizations_root_credentials_management <- function() {
 #' in your organization
 #'
 #' @description
-#' Disables root user sessions for privileged tasks across member accounts in your organization. When you disable this feature, the management account and the delegated admininstrator for IAM can no longer perform privileged tasks on member accounts in your organization.
+#' Disables root user sessions for privileged tasks across member accounts in your organization. When you disable this feature, the management account and the delegated administrator for IAM can no longer perform privileged tasks on member accounts in your organization.
 #'
 #' See [https://www.paws-r-sdk.com/docs/iam_disable_organizations_root_sessions/](https://www.paws-r-sdk.com/docs/iam_disable_organizations_root_sessions/) for full documentation.
 #'
@@ -2379,7 +2383,7 @@ iam_enable_mfa_device <- function(UserName, SerialNumber, AuthenticationCode1, A
 #' accounts in your organization
 #'
 #' @description
-#' Enables the management of privileged root user credentials across member accounts in your organization. When you enable root credentials management for [centralized root access](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_root-user.html#id_root-user-access-management), the management account and the delegated admininstrator for IAM can manage root user credentials for member accounts in your organization.
+#' Enables the management of privileged root user credentials across member accounts in your organization. When you enable root credentials management for [centralized root access](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_root-user.html#id_root-user-access-management), the management account and the delegated administrator for IAM can manage root user credentials for member accounts in your organization.
 #'
 #' See [https://www.paws-r-sdk.com/docs/iam_enable_organizations_root_credentials_management/](https://www.paws-r-sdk.com/docs/iam_enable_organizations_root_credentials_management/) for full documentation.
 #'
@@ -3696,7 +3700,7 @@ iam_list_access_keys <- function(UserName = NULL, Marker = NULL, MaxItems = NULL
 #' (Note: you can have only one)
 #'
 #' @description
-#' Lists the account alias associated with the Amazon Web Services account (Note: you can have only one). For information about using an Amazon Web Services account alias, see [Creating, deleting, and listing an Amazon Web Services account alias](https://docs.aws.amazon.com/IAM/latest/UserGuide/account-alias-create.html) in the *Amazon Web Services Sign-In User Guide*.
+#' Lists the account alias associated with the Amazon Web Services account (Note: you can have only one). For information about using an Amazon Web Services account alias, see [Creating, deleting, and listing an Amazon Web Services account alias](https://docs.aws.amazon.com/IAM/latest/UserGuide/console-account-alias.html#CreateAccountAlias) in the *IAM User Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/iam_list_account_aliases/](https://www.paws-r-sdk.com/docs/iam_list_account_aliases/) for full documentation.
 #'
@@ -7506,30 +7510,35 @@ iam_update_role_description <- function(RoleName, Description) {
 }
 .iam$operations$update_role_description <- iam_update_role_description
 
-#' Updates the metadata document for an existing SAML provider resource
-#' object
+#' Updates the metadata document, SAML encryption settings, and private
+#' keys for an existing SAML provider
 #'
 #' @description
-#' Updates the metadata document for an existing SAML provider resource object.
+#' Updates the metadata document, SAML encryption settings, and private keys for an existing SAML provider. To rotate private keys, add your new private key and then remove the old key in a separate request.
 #'
 #' See [https://www.paws-r-sdk.com/docs/iam_update_saml_provider/](https://www.paws-r-sdk.com/docs/iam_update_saml_provider/) for full documentation.
 #'
-#' @param SAMLMetadataDocument &#91;required&#93; An XML document generated by an identity provider (IdP) that supports
+#' @param SAMLMetadataDocument An XML document generated by an identity provider (IdP) that supports
 #' SAML 2.0. The document includes the issuer's name, expiration
 #' information, and keys that can be used to validate the SAML
 #' authentication response (assertions) that are received from the IdP. You
 #' must generate the metadata document using the identity management
-#' software that is used as your organization's IdP.
+#' software that is used as your IdP.
 #' @param SAMLProviderArn &#91;required&#93; The Amazon Resource Name (ARN) of the SAML provider to update.
 #' 
 #' For more information about ARNs, see [Amazon Resource Names
 #' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *Amazon Web Services General Reference*.
+#' @param AssertionEncryptionMode Specifies the encryption setting for the SAML provider.
+#' @param AddPrivateKey Specifies the new private key from your external identity provider. The
+#' private key must be a .pem file that uses AES-GCM or AES-CBC encryption
+#' algorithm to decrypt SAML assertions.
+#' @param RemovePrivateKey The Key ID of the private key to remove.
 #'
 #' @keywords internal
 #'
 #' @rdname iam_update_saml_provider
-iam_update_saml_provider <- function(SAMLMetadataDocument, SAMLProviderArn) {
+iam_update_saml_provider <- function(SAMLMetadataDocument = NULL, SAMLProviderArn, AssertionEncryptionMode = NULL, AddPrivateKey = NULL, RemovePrivateKey = NULL) {
   op <- new_operation(
     name = "UpdateSAMLProvider",
     http_method = "POST",
@@ -7538,7 +7547,7 @@ iam_update_saml_provider <- function(SAMLMetadataDocument, SAMLProviderArn) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .iam$update_saml_provider_input(SAMLMetadataDocument = SAMLMetadataDocument, SAMLProviderArn = SAMLProviderArn)
+  input <- .iam$update_saml_provider_input(SAMLMetadataDocument = SAMLMetadataDocument, SAMLProviderArn = SAMLProviderArn, AssertionEncryptionMode = AssertionEncryptionMode, AddPrivateKey = AddPrivateKey, RemovePrivateKey = RemovePrivateKey)
   output <- .iam$update_saml_provider_output()
   config <- get_config()
   svc <- .iam$service(config, op)

@@ -109,7 +109,7 @@ referenced by the Content-Type header field.}
 
 \item{ChecksumCRC32}{This header can be used as a data integrity check to verify that the
 data received is the same data that was originally sent. This specifies
-the Base64 encoded, 32-bit \code{CRC-32} checksum of the object returned by
+the Base64 encoded, 32-bit \code{CRC32} checksum of the object returned by
 the Object Lambda function. This may not match the checksum for the
 object stored in Amazon S3. Amazon S3 will perform validation of the
 checksum values only when the original \code{\link[=s3_get_object]{get_object}}
@@ -122,7 +122,7 @@ multiple checksum headers, this request will fail.}
 
 \item{ChecksumCRC32C}{This header can be used as a data integrity check to verify that the
 data received is the same data that was originally sent. This specifies
-the Base64 encoded, 32-bit \verb{CRC-32C} checksum of the object returned by
+the Base64 encoded, 32-bit \code{CRC32C} checksum of the object returned by
 the Object Lambda function. This may not match the checksum for the
 object stored in Amazon S3. Amazon S3 will perform validation of the
 checksum values only when the original \code{\link[=s3_get_object]{get_object}}
@@ -135,13 +135,13 @@ multiple checksum headers, this request will fail.}
 
 \item{ChecksumCRC64NVME}{This header can be used as a data integrity check to verify that the
 data received is the same data that was originally sent. This header
-specifies the Base64 encoded, 64-bit \verb{CRC-64NVME} checksum of the part.
+specifies the Base64 encoded, 64-bit \code{CRC64NVME} checksum of the part.
 For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html}{Checking object integrity}
 in the \emph{Amazon S3 User Guide}.}
 
 \item{ChecksumSHA1}{This header can be used as a data integrity check to verify that the
 data received is the same data that was originally sent. This specifies
-the Base64 encoded, 160-bit \code{SHA-1} digest of the object returned by the
+the Base64 encoded, 160-bit \code{SHA1} digest of the object returned by the
 Object Lambda function. This may not match the checksum for the object
 stored in Amazon S3. Amazon S3 will perform validation of the checksum
 values only when the original \code{\link[=s3_get_object]{get_object}} request
@@ -154,7 +154,7 @@ multiple checksum headers, this request will fail.}
 
 \item{ChecksumSHA256}{This header can be used as a data integrity check to verify that the
 data received is the same data that was originally sent. This specifies
-the Base64 encoded, 256-bit \code{SHA-256} digest of the object returned by
+the Base64 encoded, 256-bit \code{SHA256} digest of the object returned by
 the Object Lambda function. This may not match the checksum for the
 object stored in Amazon S3. Amazon S3 will perform validation of the
 checksum values only when the original \code{\link[=s3_get_object]{get_object}}
@@ -166,7 +166,8 @@ Only one checksum header can be specified at a time. If you supply
 multiple checksum headers, this request will fail.}
 
 \item{DeleteMarker}{Specifies whether an object stored in Amazon S3 is (\code{true}) or is not
-(\code{false}) a delete marker.}
+(\code{false}) a delete marker. To learn more about delete markers, see
+\href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/DeleteMarker.html}{Working with delete markers}.}
 
 \item{ETag}{An opaque identifier assigned by a web server to a specific version of a
 resource found at a URL.}

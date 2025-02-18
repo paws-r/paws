@@ -103,8 +103,8 @@ programmatically. For more information, see the \href{https://docs.aws.amazon.co
 \link[paws.compute:ec2_allocate_hosts]{allocate_hosts} \tab Allocates a Dedicated Host to your account\cr
 \link[paws.compute:ec2_allocate_ipam_pool_cidr]{allocate_ipam_pool_cidr} \tab Allocate a CIDR from an IPAM pool\cr
 \link[paws.compute:ec2_apply_security_groups_to_client_vpn_target_network]{apply_security_groups_to_client_vpn_target_network} \tab Applies a security group to the association between the target network and the Client VPN endpoint\cr
-\link[paws.compute:ec2_assign_ipv_6_addresses]{assign_ipv_6_addresses} \tab Assigns one or more IPv6 addresses to the specified network interface\cr
-\link[paws.compute:ec2_assign_private_ip_addresses]{assign_private_ip_addresses} \tab Assigns one or more secondary private IP addresses to the specified network interface\cr
+\link[paws.compute:ec2_assign_ipv_6_addresses]{assign_ipv_6_addresses} \tab Assigns the specified IPv6 addresses to the specified network interface\cr
+\link[paws.compute:ec2_assign_private_ip_addresses]{assign_private_ip_addresses} \tab Assigns the specified secondary private IP addresses to the specified network interface\cr
 \link[paws.compute:ec2_assign_private_nat_gateway_address]{assign_private_nat_gateway_address} \tab Assigns private IPv4 addresses to a private NAT gateway\cr
 \link[paws.compute:ec2_associate_address]{associate_address} \tab Associates an Elastic IP address, or carrier IP address (for instances that are in subnets in Wavelength Zones) with an instance or a network interface\cr
 \link[paws.compute:ec2_associate_capacity_reservation_billing_owner]{associate_capacity_reservation_billing_owner} \tab Initiates a request to assign billing of the unused capacity of a shared Capacity Reservation to a consumer account that is consolidated under the same Amazon Web Services organizations payer account\cr
@@ -408,7 +408,7 @@ programmatically. For more information, see the \href{https://docs.aws.amazon.co
 \link[paws.compute:ec2_describe_network_insights_paths]{describe_network_insights_paths} \tab Describes one or more of your paths\cr
 \link[paws.compute:ec2_describe_network_interface_attribute]{describe_network_interface_attribute} \tab Describes a network interface attribute\cr
 \link[paws.compute:ec2_describe_network_interface_permissions]{describe_network_interface_permissions} \tab Describes the permissions for your network interfaces\cr
-\link[paws.compute:ec2_describe_network_interfaces]{describe_network_interfaces} \tab Describes one or more of your network interfaces\cr
+\link[paws.compute:ec2_describe_network_interfaces]{describe_network_interfaces} \tab Describes the specified network interfaces or all your network interfaces\cr
 \link[paws.compute:ec2_describe_placement_groups]{describe_placement_groups} \tab Describes the specified placement groups or all of your placement groups\cr
 \link[paws.compute:ec2_describe_prefix_lists]{describe_prefix_lists} \tab Describes available Amazon Web Services services in a prefix list format, which includes the prefix list name and prefix list ID of the service and the IP address range for the service\cr
 \link[paws.compute:ec2_describe_principal_id_format]{describe_principal_id_format} \tab Describes the ID format settings for the root user and all IAM roles and IAM users that have explicitly specified a longer ID (17-character ID) preference\cr
@@ -740,8 +740,8 @@ programmatically. For more information, see the \href{https://docs.aws.amazon.co
 \link[paws.compute:ec2_stop_instances]{stop_instances} \tab Stops an Amazon EBS-backed instance\cr
 \link[paws.compute:ec2_terminate_client_vpn_connections]{terminate_client_vpn_connections} \tab Terminates active Client VPN endpoint connections\cr
 \link[paws.compute:ec2_terminate_instances]{terminate_instances} \tab Shuts down the specified instances\cr
-\link[paws.compute:ec2_unassign_ipv_6_addresses]{unassign_ipv_6_addresses} \tab Unassigns one or more IPv6 addresses IPv4 Prefix Delegation prefixes from a network interface\cr
-\link[paws.compute:ec2_unassign_private_ip_addresses]{unassign_private_ip_addresses} \tab Unassigns one or more secondary private IP addresses, or IPv4 Prefix Delegation prefixes from a network interface\cr
+\link[paws.compute:ec2_unassign_ipv_6_addresses]{unassign_ipv_6_addresses} \tab Unassigns the specified IPv6 addresses or Prefix Delegation prefixes from a network interface\cr
+\link[paws.compute:ec2_unassign_private_ip_addresses]{unassign_private_ip_addresses} \tab Unassigns the specified secondary private IP addresses or IPv4 Prefix Delegation prefixes from a network interface\cr
 \link[paws.compute:ec2_unassign_private_nat_gateway_address]{unassign_private_nat_gateway_address} \tab Unassigns secondary private IPv4 addresses from a private NAT gateway\cr
 \link[paws.compute:ec2_unlock_snapshot]{unlock_snapshot} \tab Unlocks a snapshot that is locked in governance mode or that is locked in compliance mode but still in the cooling-off period\cr
 \link[paws.compute:ec2_unmonitor_instances]{unmonitor_instances} \tab Disables detailed monitoring for a running instance\cr

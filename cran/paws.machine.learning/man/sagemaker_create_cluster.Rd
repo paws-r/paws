@@ -18,7 +18,18 @@ sagemaker_create_cluster(
 
 \item{InstanceGroups}{[required] The instance groups to be created in the SageMaker HyperPod cluster.}
 
-\item{VpcConfig}{}
+\item{VpcConfig}{Specifies the Amazon Virtual Private Cloud (VPC) that is associated with
+the Amazon SageMaker HyperPod cluster. You can control access to and
+from your resources by configuring your VPC. For more information, see
+\href{https://docs.aws.amazon.com/sagemaker/latest/dg/infrastructure-give-access.html}{Give SageMaker access to resources in your Amazon VPC}.
+
+If you configure your VPC with IPv6 support and specify subnets with
+IPv6 addressing enabled in your VPC configuration, the cluster
+automatically uses IPv6 addressing for network communication.
+
+For information about adding IPv6 support for your VPC, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/vpc-migrate-ipv6.html}{IPv6 support for your VPC}.
+
+For information about creating a new VPC for use with IPv6, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/create-vpc.html}{Create a VPC}.}
 
 \item{Tags}{Custom tags for managing the SageMaker HyperPod cluster as an Amazon Web
 Services resource. You can add tags to your cluster in the same way you

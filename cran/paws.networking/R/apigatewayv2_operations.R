@@ -362,7 +362,10 @@ apigatewayv2_create_domain_name <- function(DomainName, DomainNameConfigurations
 #' content type defined, unmapped content types will be rejected with the
 #' same HTTP 415 Unsupported Media Type response.
 #' @param PayloadFormatVersion Specifies the format of the payload sent to an integration. Required for
-#' HTTP APIs.
+#' HTTP APIs. Supported values for Lambda proxy integrations are 1.0 and
+#' 2.0. For all other integrations, 1.0 is the only supported value. To
+#' learn more, see [Working with AWS Lambda proxy integrations for HTTP
+#' APIs](https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-develop-integrations-lambda.html).
 #' @param RequestParameters For WebSocket APIs, a key-value map specifying request parameters that
 #' are passed from the method request to the backend. The key is an
 #' integration request parameter name and the associated value is a method
@@ -2647,7 +2650,10 @@ apigatewayv2_update_domain_name <- function(DomainName, DomainNameConfigurations
 #' content type defined, unmapped content types will be rejected with the
 #' same HTTP 415 Unsupported Media Type response.
 #' @param PayloadFormatVersion Specifies the format of the payload sent to an integration. Required for
-#' HTTP APIs.
+#' HTTP APIs. Supported values for Lambda proxy integrations are 1.0 and
+#' 2.0. For all other integrations, 1.0 is the only supported value. To
+#' learn more, see [Working with AWS Lambda proxy integrations for HTTP
+#' APIs](https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-develop-integrations-lambda.html).
 #' @param RequestParameters For WebSocket APIs, a key-value map specifying request parameters that
 #' are passed from the method request to the backend. The key is an
 #' integration request parameter name and the associated value is a method

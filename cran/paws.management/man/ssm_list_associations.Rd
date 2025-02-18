@@ -28,7 +28,7 @@ next set of results.}
 from a previous call.)}
 }
 \description{
-Returns all State Manager associations in the current Amazon Web Services account and Amazon Web Services Region. You can limit the results to a specific State Manager association document or managed node by specifying a filter. State Manager is a capability of Amazon Web Services Systems Manager.
+Returns all State Manager associations in the current Amazon Web Services account and Amazon Web Services Region. You can limit the results to a specific State Manager association document or managed node by specifying a filter. State Manager is a tool in Amazon Web Services Systems Manager.
 
 See \url{https://www.paws-r-sdk.com/docs/ssm_list_associations/} for full documentation.
 }

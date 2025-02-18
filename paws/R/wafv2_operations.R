@@ -3,20 +3,15 @@
 #' @include wafv2_service.R
 NULL
 
-#' Associates a web ACL with a regional application resource, to protect
-#' the resource
+#' Associates a web ACL with a resource, to protect the resource
 #'
 #' @description
-#' Associates a web ACL with a regional application resource, to protect
-#' the resource. A regional application can be an Application Load Balancer
-#' (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API, an Amazon
-#' Cognito user pool, an App Runner service, or an Amazon Web Services
-#' Verified Access instance.
+#' Associates a web ACL with a resource, to protect the resource.
 #' 
-#' For Amazon CloudFront, don't use this call. Instead, use your CloudFront
-#' distribution configuration. To associate a web ACL, in the CloudFront
-#' call `UpdateDistribution`, set the web ACL ID to the Amazon Resource
-#' Name (ARN) of the web ACL. For information, see
+#' Use this for all resource types except for Amazon CloudFront
+#' distributions. For Amazon CloudFront, call `UpdateDistribution` for the
+#' distribution and provide the Amazon Resource Name (ARN) of the web ACL
+#' in the web ACL ID. For information, see
 #' [UpdateDistribution](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UpdateDistribution.html)
 #' in the *Amazon CloudFront Developer Guide*.
 #' 
@@ -137,11 +132,8 @@ wafv2_associate_web_acl <- function(WebACLArn, ResourceArn) {
 #' @usage
 #' wafv2_check_capacity(Scope, Rules)
 #'
-#' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
-#' regional application. A regional application can be an Application Load
-#' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
-#' an Amazon Cognito user pool, an App Runner service, or an Amazon Web
-#' Services Verified Access instance.
+#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
+#' CloudFront distribution.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -1071,11 +1063,8 @@ wafv2_check_capacity <- function(Scope, Rules) {
 #' @usage
 #' wafv2_create_api_key(Scope, TokenDomains)
 #'
-#' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
-#' regional application. A regional application can be an Application Load
-#' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
-#' an Amazon Cognito user pool, an App Runner service, or an Amazon Web
-#' Services Verified Access instance.
+#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
+#' CloudFront distribution.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -1149,11 +1138,8 @@ wafv2_create_api_key <- function(Scope, TokenDomains) {
 #'
 #' @param Name &#91;required&#93; The name of the IP set. You cannot change the name of an `IPSet` after
 #' you create it.
-#' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
-#' regional application. A regional application can be an Application Load
-#' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
-#' an Amazon Cognito user pool, an App Runner service, or an Amazon Web
-#' Services Verified Access instance.
+#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
+#' CloudFront distribution.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -1275,11 +1261,8 @@ wafv2_create_ip_set <- function(Name, Scope, Description = NULL, IPAddressVersio
 #'
 #' @param Name &#91;required&#93; The name of the set. You cannot change the name after you create the
 #' set.
-#' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
-#' regional application. A regional application can be an Application Load
-#' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
-#' an Amazon Cognito user pool, an App Runner service, or an Amazon Web
-#' Services Verified Access instance.
+#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
+#' CloudFront distribution.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -1367,11 +1350,8 @@ wafv2_create_regex_pattern_set <- function(Name, Scope, Description = NULL, Regu
 #'
 #' @param Name &#91;required&#93; The name of the rule group. You cannot change the name of a rule group
 #' after you create it.
-#' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
-#' regional application. A regional application can be an Application Load
-#' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
-#' an Amazon Cognito user pool, an App Runner service, or an Amazon Web
-#' Services Verified Access instance.
+#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
+#' CloudFront distribution.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -2357,23 +2337,20 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 #' block) for any request that does not match any of the rules. The rules
 #' in a web ACL can be a combination of the types Rule, RuleGroup, and
 #' managed rule group. You can associate a web ACL with one or more Amazon
-#' Web Services resources to protect. The resources can be an Amazon
-#' CloudFront distribution, an Amazon API Gateway REST API, an Application
-#' Load Balancer, an AppSync GraphQL API, an Amazon Cognito user pool, an
-#' App Runner service, or an Amazon Web Services Verified Access instance.
+#' Web Services resources to protect. The resource types include Amazon
+#' CloudFront distribution, Amazon API Gateway REST API, Application Load
+#' Balancer, AppSync GraphQL API, Amazon Cognito user pool, App Runner
+#' service, and Amazon Web Services Verified Access instance.
 #'
 #' @usage
 #' wafv2_create_web_acl(Name, Scope, DefaultAction, Description, Rules,
-#'   VisibilityConfig, Tags, CustomResponseBodies, CaptchaConfig,
-#'   ChallengeConfig, TokenDomains, AssociationConfig)
+#'   VisibilityConfig, DataProtectionConfig, Tags, CustomResponseBodies,
+#'   CaptchaConfig, ChallengeConfig, TokenDomains, AssociationConfig)
 #'
 #' @param Name &#91;required&#93; The name of the web ACL. You cannot change the name of a web ACL after
 #' you create it.
-#' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
-#' regional application. A regional application can be an Application Load
-#' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
-#' an Amazon Cognito user pool, an App Runner service, or an Amazon Web
-#' Services Verified Access instance.
+#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
+#' CloudFront distribution.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -2391,6 +2368,15 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 #' handles them.
 #' @param VisibilityConfig &#91;required&#93; Defines and enables Amazon CloudWatch metrics and web request sample
 #' collection.
+#' @param DataProtectionConfig Specifies data protection to apply to the web request data that WAF
+#' stores for the web ACL. This is a web ACL level data protection option.
+#' 
+#' The data protection that you configure for the web ACL alters the data
+#' that's available for any other data collection activity, including WAF
+#' logging, web ACL request sampling, Amazon Web Services Managed Rules,
+#' and Amazon Security Lake data collection and management. Your other
+#' option for data protection is in the logging configuration, which only
+#' affects logging.
 #' @param Tags An array of key:value pairs to associate with the resource.
 #' @param CustomResponseBodies A map of custom response keys and content bodies. When you create a rule
 #' with a block action, you can send a custom response to the web request.
@@ -3350,6 +3336,21 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 #'     CloudWatchMetricsEnabled = TRUE|FALSE,
 #'     MetricName = "string"
 #'   ),
+#'   DataProtectionConfig = list(
+#'     DataProtections = list(
+#'       list(
+#'         Field = list(
+#'           FieldType = "SINGLE_HEADER"|"SINGLE_COOKIE"|"SINGLE_QUERY_ARGUMENT"|"QUERY_STRING"|"BODY",
+#'           FieldKeys = list(
+#'             "string"
+#'           )
+#'         ),
+#'         Action = "SUBSTITUTION"|"HASH",
+#'         ExcludeRuleMatchDetails = TRUE|FALSE,
+#'         ExcludeRateBasedDetails = TRUE|FALSE
+#'       )
+#'     )
+#'   ),
 #'   Tags = list(
 #'     list(
 #'       Key = "string",
@@ -3390,7 +3391,7 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 #' @rdname wafv2_create_web_acl
 #'
 #' @aliases wafv2_create_web_acl
-wafv2_create_web_acl <- function(Name, Scope, DefaultAction, Description = NULL, Rules = NULL, VisibilityConfig, Tags = NULL, CustomResponseBodies = NULL, CaptchaConfig = NULL, ChallengeConfig = NULL, TokenDomains = NULL, AssociationConfig = NULL) {
+wafv2_create_web_acl <- function(Name, Scope, DefaultAction, Description = NULL, Rules = NULL, VisibilityConfig, DataProtectionConfig = NULL, Tags = NULL, CustomResponseBodies = NULL, CaptchaConfig = NULL, ChallengeConfig = NULL, TokenDomains = NULL, AssociationConfig = NULL) {
   op <- new_operation(
     name = "CreateWebACL",
     http_method = "POST",
@@ -3399,7 +3400,7 @@ wafv2_create_web_acl <- function(Name, Scope, DefaultAction, Description = NULL,
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .wafv2$create_web_acl_input(Name = Name, Scope = Scope, DefaultAction = DefaultAction, Description = Description, Rules = Rules, VisibilityConfig = VisibilityConfig, Tags = Tags, CustomResponseBodies = CustomResponseBodies, CaptchaConfig = CaptchaConfig, ChallengeConfig = ChallengeConfig, TokenDomains = TokenDomains, AssociationConfig = AssociationConfig)
+  input <- .wafv2$create_web_acl_input(Name = Name, Scope = Scope, DefaultAction = DefaultAction, Description = Description, Rules = Rules, VisibilityConfig = VisibilityConfig, DataProtectionConfig = DataProtectionConfig, Tags = Tags, CustomResponseBodies = CustomResponseBodies, CaptchaConfig = CaptchaConfig, ChallengeConfig = ChallengeConfig, TokenDomains = TokenDomains, AssociationConfig = AssociationConfig)
   output <- .wafv2$create_web_acl_output()
   config <- get_config()
   svc <- .wafv2$service(config, op)
@@ -3420,11 +3421,8 @@ wafv2_create_web_acl <- function(Name, Scope, DefaultAction, Description = NULL,
 #' @usage
 #' wafv2_delete_api_key(Scope, APIKey)
 #'
-#' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
-#' regional application. A regional application can be an Application Load
-#' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
-#' an Amazon Cognito user pool, an App Runner service, or an Amazon Web
-#' Services Verified Access instance.
+#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
+#' CloudFront distribution.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -3543,11 +3541,8 @@ wafv2_delete_firewall_manager_rule_groups <- function(WebACLArn, WebACLLockToken
 #'
 #' @param Name &#91;required&#93; The name of the IP set. You cannot change the name of an `IPSet` after
 #' you create it.
-#' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
-#' regional application. A regional application can be an Application Load
-#' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
-#' an Amazon Cognito user pool, an App Runner service, or an Amazon Web
-#' Services Verified Access instance.
+#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
+#' CloudFront distribution.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -3727,11 +3722,8 @@ wafv2_delete_permission_policy <- function(ResourceArn) {
 #'
 #' @param Name &#91;required&#93; The name of the set. You cannot change the name after you create the
 #' set.
-#' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
-#' regional application. A regional application can be an Application Load
-#' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
-#' an Amazon Cognito user pool, an App Runner service, or an Amazon Web
-#' Services Verified Access instance.
+#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
+#' CloudFront distribution.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -3799,11 +3791,8 @@ wafv2_delete_regex_pattern_set <- function(Name, Scope, Id, LockToken) {
 #'
 #' @param Name &#91;required&#93; The name of the rule group. You cannot change the name of a rule group
 #' after you create it.
-#' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
-#' regional application. A regional application can be an Application Load
-#' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
-#' an Amazon Cognito user pool, an App Runner service, or an Amazon Web
-#' Services Verified Access instance.
+#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
+#' CloudFront distribution.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -3874,35 +3863,32 @@ wafv2_delete_rule_group <- function(Name, Scope, Id, LockToken) {
 #' -   To retrieve a list of the resources that are associated with a web
 #'     ACL, use the following calls:
 #' 
-#'     -   For regional resources, call
-#'         [`list_resources_for_web_acl`][wafv2_list_resources_for_web_acl].
-#' 
 #'     -   For Amazon CloudFront distributions, use the CloudFront call
 #'         `ListDistributionsByWebACLId`. For information, see
 #'         [ListDistributionsByWebACLId](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_ListDistributionsByWebACLId.html)
 #'         in the *Amazon CloudFront API Reference*.
 #' 
-#' -   To disassociate a resource from a web ACL, use the following calls:
+#'     -   For all other resources, call
+#'         [`list_resources_for_web_acl`][wafv2_list_resources_for_web_acl].
 #' 
-#'     -   For regional resources, call
-#'         [`disassociate_web_acl`][wafv2_disassociate_web_acl].
+#' -   To disassociate a resource from a web ACL, use the following calls:
 #' 
 #'     -   For Amazon CloudFront distributions, provide an empty web ACL ID
 #'         in the CloudFront call `UpdateDistribution`. For information,
 #'         see
 #'         [UpdateDistribution](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UpdateDistribution.html)
 #'         in the *Amazon CloudFront API Reference*.
+#' 
+#'     -   For all other resources, call
+#'         [`disassociate_web_acl`][wafv2_disassociate_web_acl].
 #'
 #' @usage
 #' wafv2_delete_web_acl(Name, Scope, Id, LockToken)
 #'
 #' @param Name &#91;required&#93; The name of the web ACL. You cannot change the name of a web ACL after
 #' you create it.
-#' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
-#' regional application. A regional application can be an Application Load
-#' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
-#' an Amazon Cognito user pool, an App Runner service, or an Amazon Web
-#' Services Verified Access instance.
+#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
+#' CloudFront distribution.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -3972,11 +3958,8 @@ wafv2_delete_web_acl <- function(Name, Scope, Id, LockToken) {
 #' @usage
 #' wafv2_describe_all_managed_products(Scope)
 #'
-#' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
-#' regional application. A regional application can be an Application Load
-#' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
-#' an Amazon Cognito user pool, an App Runner service, or an Amazon Web
-#' Services Verified Access instance.
+#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
+#' CloudFront distribution.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -4049,11 +4032,8 @@ wafv2_describe_all_managed_products <- function(Scope) {
 #'
 #' @param VendorName &#91;required&#93; The name of the managed rule group vendor. You use this, along with the
 #' rule group name, to identify a rule group.
-#' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
-#' regional application. A regional application can be an Application Load
-#' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
-#' an Amazon Cognito user pool, an App Runner service, or an Amazon Web
-#' Services Verified Access instance.
+#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
+#' CloudFront distribution.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -4129,11 +4109,8 @@ wafv2_describe_managed_products_by_vendor <- function(VendorName, Scope) {
 #' rule group name, to identify a rule group.
 #' @param Name &#91;required&#93; The name of the managed rule group. You use this, along with the vendor
 #' name, to identify the rule group.
-#' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
-#' regional application. A regional application can be an Application Load
-#' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
-#' an Amazon Cognito user pool, an App Runner service, or an Amazon Web
-#' Services Verified Access instance.
+#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
+#' CloudFront distribution.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -4260,21 +4237,16 @@ wafv2_describe_managed_rule_group <- function(VendorName, Name, Scope, VersionNa
 }
 .wafv2$operations$describe_managed_rule_group <- wafv2_describe_managed_rule_group
 
-#' Disassociates the specified regional application resource from any
-#' existing web ACL association
+#' Disassociates the specified resource from its web ACL association, if it
+#' has one
 #'
 #' @description
-#' Disassociates the specified regional application resource from any
-#' existing web ACL association. A resource can have at most one web ACL
-#' association. A regional application can be an Application Load Balancer
-#' (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API, an Amazon
-#' Cognito user pool, an App Runner service, or an Amazon Web Services
-#' Verified Access instance.
+#' Disassociates the specified resource from its web ACL association, if it
+#' has one.
 #' 
-#' For Amazon CloudFront, don't use this call. Instead, use your CloudFront
-#' distribution configuration. To disassociate a web ACL, provide an empty
-#' web ACL ID in the CloudFront call `UpdateDistribution`. For information,
-#' see
+#' Use this for all resource types except for Amazon CloudFront
+#' distributions. For Amazon CloudFront, call `UpdateDistribution` for the
+#' distribution and provide an empty web ACL ID. For information, see
 #' [UpdateDistribution](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UpdateDistribution.html)
 #' in the *Amazon CloudFront API Reference*.
 #' 
@@ -4422,11 +4394,8 @@ wafv2_generate_mobile_sdk_release_url <- function(Platform, ReleaseVersion) {
 #' @usage
 #' wafv2_get_decrypted_api_key(Scope, APIKey)
 #'
-#' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
-#' regional application. A regional application can be an Application Load
-#' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
-#' an Amazon Cognito user pool, an App Runner service, or an Amazon Web
-#' Services Verified Access instance.
+#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
+#' CloudFront distribution.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -4492,11 +4461,8 @@ wafv2_get_decrypted_api_key <- function(Scope, APIKey) {
 #'
 #' @param Name &#91;required&#93; The name of the IP set. You cannot change the name of an `IPSet` after
 #' you create it.
-#' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
-#' regional application. A regional application can be an Application Load
-#' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
-#' an Amazon Cognito user pool, an App Runner service, or an Amazon Web
-#' Services Verified Access instance.
+#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
+#' CloudFront distribution.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -4740,11 +4706,8 @@ wafv2_get_logging_configuration <- function(ResourceArn, LogType = NULL, LogScop
 #' 
 #' This name is assigned to the corresponding managed rule group, which
 #' your customers can access and use.
-#' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
-#' regional application. A regional application can be an Application Load
-#' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
-#' an Amazon Cognito user pool, an App Runner service, or an Amazon Web
-#' Services Verified Access instance.
+#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
+#' CloudFront distribution.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -4975,11 +4938,8 @@ wafv2_get_permission_policy <- function(ResourceArn) {
 #' wafv2_get_rate_based_statement_managed_keys(Scope, WebACLName, WebACLId,
 #'   RuleGroupRuleName, RuleName)
 #'
-#' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
-#' regional application. A regional application can be an Application Load
-#' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
-#' an Amazon Cognito user pool, an App Runner service, or an Amazon Web
-#' Services Verified Access instance.
+#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
+#' CloudFront distribution.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -5065,11 +5025,8 @@ wafv2_get_rate_based_statement_managed_keys <- function(Scope, WebACLName, WebAC
 #'
 #' @param Name &#91;required&#93; The name of the set. You cannot change the name after you create the
 #' set.
-#' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
-#' regional application. A regional application can be an Application Load
-#' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
-#' an Amazon Cognito user pool, an App Runner service, or an Amazon Web
-#' Services Verified Access instance.
+#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
+#' CloudFront distribution.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -5144,11 +5101,8 @@ wafv2_get_regex_pattern_set <- function(Name, Scope, Id) {
 #'
 #' @param Name The name of the rule group. You cannot change the name of a rule group
 #' after you create it.
-#' @param Scope Specifies whether this is for an Amazon CloudFront distribution or for a
-#' regional application. A regional application can be an Application Load
-#' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
-#' an Amazon Cognito user pool, an App Runner service, or an Amazon Web
-#' Services Verified Access instance.
+#' @param Scope Specifies whether this is for a global resource type, such as a Amazon
+#' CloudFront distribution.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -6121,11 +6075,8 @@ wafv2_get_rule_group <- function(Name = NULL, Scope = NULL, Id = NULL, ARN = NUL
 #' sample of requests.
 #' @param RuleMetricName &#91;required&#93; The metric name assigned to the `Rule` or `RuleGroup` dimension for
 #' which you want a sample of requests.
-#' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
-#' regional application. A regional application can be an Application Load
-#' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
-#' an Amazon Cognito user pool, an App Runner service, or an Amazon Web
-#' Services Verified Access instance.
+#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
+#' CloudFront distribution.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -6261,11 +6212,8 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'
 #' @param Name &#91;required&#93; The name of the web ACL. You cannot change the name of a web ACL after
 #' you create it.
-#' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
-#' regional application. A regional application can be an Application Load
-#' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
-#' an Amazon Cognito user pool, an App Runner service, or an Amazon Web
-#' Services Verified Access instance.
+#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
+#' CloudFront distribution.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -7175,6 +7123,21 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'       SampledRequestsEnabled = TRUE|FALSE,
 #'       CloudWatchMetricsEnabled = TRUE|FALSE,
 #'       MetricName = "string"
+#'     ),
+#'     DataProtectionConfig = list(
+#'       DataProtections = list(
+#'         list(
+#'           Field = list(
+#'             FieldType = "SINGLE_HEADER"|"SINGLE_COOKIE"|"SINGLE_QUERY_ARGUMENT"|"QUERY_STRING"|"BODY",
+#'             FieldKeys = list(
+#'               "string"
+#'             )
+#'           ),
+#'           Action = "SUBSTITUTION"|"HASH",
+#'           ExcludeRuleMatchDetails = TRUE|FALSE,
+#'           ExcludeRateBasedDetails = TRUE|FALSE
+#'         )
+#'       )
 #'     ),
 #'     Capacity = 123,
 #'     PreProcessFirewallManagerRuleGroups = list(
@@ -9912,6 +9875,21 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
 #'       CloudWatchMetricsEnabled = TRUE|FALSE,
 #'       MetricName = "string"
 #'     ),
+#'     DataProtectionConfig = list(
+#'       DataProtections = list(
+#'         list(
+#'           Field = list(
+#'             FieldType = "SINGLE_HEADER"|"SINGLE_COOKIE"|"SINGLE_QUERY_ARGUMENT"|"QUERY_STRING"|"BODY",
+#'             FieldKeys = list(
+#'               "string"
+#'             )
+#'           ),
+#'           Action = "SUBSTITUTION"|"HASH",
+#'           ExcludeRuleMatchDetails = TRUE|FALSE,
+#'           ExcludeRateBasedDetails = TRUE|FALSE
+#'         )
+#'       )
+#'     ),
 #'     Capacity = 123,
 #'     PreProcessFirewallManagerRuleGroups = list(
 #'       list(
@@ -11715,11 +11693,8 @@ wafv2_get_web_acl_for_resource <- function(ResourceArn) {
 #' @usage
 #' wafv2_list_api_keys(Scope, NextMarker, Limit)
 #'
-#' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
-#' regional application. A regional application can be an Application Load
-#' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
-#' an Amazon Cognito user pool, an App Runner service, or an Amazon Web
-#' Services Verified Access instance.
+#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
+#' CloudFront distribution.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -11806,11 +11781,8 @@ wafv2_list_api_keys <- function(Scope, NextMarker = NULL, Limit = NULL) {
 #' rule group name, to identify a rule group.
 #' @param Name &#91;required&#93; The name of the managed rule group. You use this, along with the vendor
 #' name, to identify the rule group.
-#' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
-#' regional application. A regional application can be an Application Load
-#' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
-#' an Amazon Cognito user pool, an App Runner service, or an Amazon Web
-#' Services Verified Access instance.
+#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
+#' CloudFront distribution.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -11892,11 +11864,8 @@ wafv2_list_available_managed_rule_group_versions <- function(VendorName, Name, S
 #' @usage
 #' wafv2_list_available_managed_rule_groups(Scope, NextMarker, Limit)
 #'
-#' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
-#' regional application. A regional application can be an Application Load
-#' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
-#' an Amazon Cognito user pool, an App Runner service, or an Amazon Web
-#' Services Verified Access instance.
+#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
+#' CloudFront distribution.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -11973,11 +11942,8 @@ wafv2_list_available_managed_rule_groups <- function(Scope, NextMarker = NULL, L
 #' @usage
 #' wafv2_list_ip_sets(Scope, NextMarker, Limit)
 #'
-#' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
-#' regional application. A regional application can be an Application Load
-#' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
-#' an Amazon Cognito user pool, an App Runner service, or an Amazon Web
-#' Services Verified Access instance.
+#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
+#' CloudFront distribution.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -12053,11 +12019,8 @@ wafv2_list_ip_sets <- function(Scope, NextMarker = NULL, Limit = NULL) {
 #' @usage
 #' wafv2_list_logging_configurations(Scope, NextMarker, Limit, LogScope)
 #'
-#' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
-#' regional application. A regional application can be an Application Load
-#' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
-#' an Amazon Cognito user pool, an App Runner service, or an Amazon Web
-#' Services Verified Access instance.
+#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
+#' CloudFront distribution.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -12239,11 +12202,8 @@ wafv2_list_logging_configurations <- function(Scope, NextMarker = NULL, Limit = 
 #' @usage
 #' wafv2_list_managed_rule_sets(Scope, NextMarker, Limit)
 #'
-#' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
-#' regional application. A regional application can be an Application Load
-#' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
-#' an Amazon Cognito user pool, an App Runner service, or an Amazon Web
-#' Services Verified Access instance.
+#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
+#' CloudFront distribution.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -12398,11 +12358,8 @@ wafv2_list_mobile_sdk_releases <- function(Platform, NextMarker = NULL, Limit = 
 #' @usage
 #' wafv2_list_regex_pattern_sets(Scope, NextMarker, Limit)
 #'
-#' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
-#' regional application. A regional application can be an Application Load
-#' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
-#' an Amazon Cognito user pool, an App Runner service, or an Amazon Web
-#' Services Verified Access instance.
+#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
+#' CloudFront distribution.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -12470,12 +12427,12 @@ wafv2_list_regex_pattern_sets <- function(Scope, NextMarker = NULL, Limit = NULL
 }
 .wafv2$operations$list_regex_pattern_sets <- wafv2_list_regex_pattern_sets
 
-#' Retrieves an array of the Amazon Resource Names (ARNs) for the regional
-#' resources that are associated with the specified web ACL
+#' Retrieves an array of the Amazon Resource Names (ARNs) for the resources
+#' that are associated with the specified web ACL
 #'
 #' @description
-#' Retrieves an array of the Amazon Resource Names (ARNs) for the regional
-#' resources that are associated with the specified web ACL.
+#' Retrieves an array of the Amazon Resource Names (ARNs) for the resources
+#' that are associated with the specified web ACL.
 #' 
 #' For Amazon CloudFront, don't use this call. Instead, use the CloudFront
 #' call `ListDistributionsByWebACLId`. For information, see
@@ -12493,11 +12450,12 @@ wafv2_list_regex_pattern_sets <- function(Scope, NextMarker = NULL, Limit = NULL
 #' wafv2_list_resources_for_web_acl(WebACLArn, ResourceType)
 #'
 #' @param WebACLArn &#91;required&#93; The Amazon Resource Name (ARN) of the web ACL.
-#' @param ResourceType Used for web ACLs that are scoped for regional applications. A regional
-#' application can be an Application Load Balancer (ALB), an Amazon API
-#' Gateway REST API, an AppSync GraphQL API, an Amazon Cognito user pool,
-#' an App Runner service, or an Amazon Web Services Verified Access
-#' instance.
+#' @param ResourceType Retrieves the web ACLs that are used by the specified resource type.
+#' 
+#' For Amazon CloudFront, don't use this call. Instead, use the CloudFront
+#' call `ListDistributionsByWebACLId`. For information, see
+#' [ListDistributionsByWebACLId](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_ListDistributionsByWebACLId.html)
+#' in the *Amazon CloudFront API Reference*.
 #' 
 #' If you don't provide a resource type, the call uses the resource type
 #' `APPLICATION_LOAD_BALANCER`.
@@ -12556,11 +12514,8 @@ wafv2_list_resources_for_web_acl <- function(WebACLArn, ResourceType = NULL) {
 #' @usage
 #' wafv2_list_rule_groups(Scope, NextMarker, Limit)
 #'
-#' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
-#' regional application. A regional application can be an Application Load
-#' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
-#' an Amazon Cognito user pool, an App Runner service, or an Amazon Web
-#' Services Verified Access instance.
+#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
+#' CloudFront distribution.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -12715,11 +12670,8 @@ wafv2_list_tags_for_resource <- function(NextMarker = NULL, Limit = NULL, Resour
 #' @usage
 #' wafv2_list_web_ac_ls(Scope, NextMarker, Limit)
 #'
-#' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
-#' regional application. A regional application can be an Application Load
-#' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
-#' an Amazon Cognito user pool, an App Runner service, or an Amazon Web
-#' Services Verified Access instance.
+#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
+#' CloudFront distribution.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -12793,6 +12745,9 @@ wafv2_list_web_ac_ls <- function(Scope, NextMarker = NULL, Limit = NULL) {
 #' @description
 #' Enables the specified LoggingConfiguration, to start logging from a web
 #' ACL, according to the configuration provided.
+#' 
+#' If you configure data protection for the web ACL, the protection applies
+#' to the data that WAF sends to the logs.
 #' 
 #' This operation completely replaces any mutable specifications that you
 #' already have for a logging configuration with the ones that you provide
@@ -13102,11 +13057,8 @@ wafv2_put_logging_configuration <- function(LoggingConfiguration) {
 #' 
 #' This name is assigned to the corresponding managed rule group, which
 #' your customers can access and use.
-#' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
-#' regional application. A regional application can be an Application Load
-#' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
-#' an Amazon Cognito user pool, an App Runner service, or an Amazon Web
-#' Services Verified Access instance.
+#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
+#' CloudFront distribution.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -13424,11 +13376,8 @@ wafv2_untag_resource <- function(ResourceARN, TagKeys) {
 #'
 #' @param Name &#91;required&#93; The name of the IP set. You cannot change the name of an `IPSet` after
 #' you create it.
-#' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
-#' regional application. A regional application can be an Application Load
-#' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
-#' an Amazon Cognito user pool, an App Runner service, or an Amazon Web
-#' Services Verified Access instance.
+#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
+#' CloudFront distribution.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -13563,11 +13512,8 @@ wafv2_update_ip_set <- function(Name, Scope, Id, Description = NULL, Addresses, 
 #' 
 #' This name is assigned to the corresponding managed rule group, which
 #' your customers can access and use.
-#' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
-#' regional application. A regional application can be an Application Load
-#' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
-#' an Amazon Cognito user pool, an App Runner service, or an Amazon Web
-#' Services Verified Access instance.
+#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
+#' CloudFront distribution.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -13693,11 +13639,8 @@ wafv2_update_managed_rule_set_version_expiry_date <- function(Name, Scope, Id, L
 #'
 #' @param Name &#91;required&#93; The name of the set. You cannot change the name after you create the
 #' set.
-#' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
-#' regional application. A regional application can be an Application Load
-#' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
-#' an Amazon Cognito user pool, an App Runner service, or an Amazon Web
-#' Services Verified Access instance.
+#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
+#' CloudFront distribution.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -13822,11 +13765,8 @@ wafv2_update_regex_pattern_set <- function(Name, Scope, Id, Description = NULL, 
 #'
 #' @param Name &#91;required&#93; The name of the rule group. You cannot change the name of a rule group
 #' after you create it.
-#' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
-#' regional application. A regional application can be an Application Load
-#' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
-#' an Amazon Cognito user pool, an App Runner service, or an Amazon Web
-#' Services Verified Access instance.
+#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
+#' CloudFront distribution.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -14808,10 +14748,10 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #' block) for any request that does not match any of the rules. The rules
 #' in a web ACL can be a combination of the types Rule, RuleGroup, and
 #' managed rule group. You can associate a web ACL with one or more Amazon
-#' Web Services resources to protect. The resources can be an Amazon
-#' CloudFront distribution, an Amazon API Gateway REST API, an Application
-#' Load Balancer, an AppSync GraphQL API, an Amazon Cognito user pool, an
-#' App Runner service, or an Amazon Web Services Verified Access instance.
+#' Web Services resources to protect. The resource types include Amazon
+#' CloudFront distribution, Amazon API Gateway REST API, Application Load
+#' Balancer, AppSync GraphQL API, Amazon Cognito user pool, App Runner
+#' service, and Amazon Web Services Verified Access instance.
 #' 
 #' **Temporary inconsistencies during updates**
 #' 
@@ -14840,16 +14780,13 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #'
 #' @usage
 #' wafv2_update_web_acl(Name, Scope, Id, DefaultAction, Description, Rules,
-#'   VisibilityConfig, LockToken, CustomResponseBodies, CaptchaConfig,
-#'   ChallengeConfig, TokenDomains, AssociationConfig)
+#'   VisibilityConfig, DataProtectionConfig, LockToken, CustomResponseBodies,
+#'   CaptchaConfig, ChallengeConfig, TokenDomains, AssociationConfig)
 #'
 #' @param Name &#91;required&#93; The name of the web ACL. You cannot change the name of a web ACL after
 #' you create it.
-#' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
-#' regional application. A regional application can be an Application Load
-#' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
-#' an Amazon Cognito user pool, an App Runner service, or an Amazon Web
-#' Services Verified Access instance.
+#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
+#' CloudFront distribution.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -14870,6 +14807,15 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #' handles them.
 #' @param VisibilityConfig &#91;required&#93; Defines and enables Amazon CloudWatch metrics and web request sample
 #' collection.
+#' @param DataProtectionConfig Specifies data protection to apply to the web request data that WAF
+#' stores for the web ACL. This is a web ACL level data protection option.
+#' 
+#' The data protection that you configure for the web ACL alters the data
+#' that's available for any other data collection activity, including WAF
+#' logging, web ACL request sampling, Amazon Web Services Managed Rules,
+#' and Amazon Security Lake data collection and management. Your other
+#' option for data protection is in the logging configuration, which only
+#' affects logging.
 #' @param LockToken &#91;required&#93; A token used for optimistic locking. WAF returns a token to your `get`
 #' and `list` requests, to mark the state of the entity at the time of the
 #' request. To make changes to the entity associated with the token, you
@@ -15831,6 +15777,21 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #'     CloudWatchMetricsEnabled = TRUE|FALSE,
 #'     MetricName = "string"
 #'   ),
+#'   DataProtectionConfig = list(
+#'     DataProtections = list(
+#'       list(
+#'         Field = list(
+#'           FieldType = "SINGLE_HEADER"|"SINGLE_COOKIE"|"SINGLE_QUERY_ARGUMENT"|"QUERY_STRING"|"BODY",
+#'           FieldKeys = list(
+#'             "string"
+#'           )
+#'         ),
+#'         Action = "SUBSTITUTION"|"HASH",
+#'         ExcludeRuleMatchDetails = TRUE|FALSE,
+#'         ExcludeRateBasedDetails = TRUE|FALSE
+#'       )
+#'     )
+#'   ),
 #'   LockToken = "string",
 #'   CustomResponseBodies = list(
 #'     list(
@@ -15866,7 +15827,7 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #' @rdname wafv2_update_web_acl
 #'
 #' @aliases wafv2_update_web_acl
-wafv2_update_web_acl <- function(Name, Scope, Id, DefaultAction, Description = NULL, Rules = NULL, VisibilityConfig, LockToken, CustomResponseBodies = NULL, CaptchaConfig = NULL, ChallengeConfig = NULL, TokenDomains = NULL, AssociationConfig = NULL) {
+wafv2_update_web_acl <- function(Name, Scope, Id, DefaultAction, Description = NULL, Rules = NULL, VisibilityConfig, DataProtectionConfig = NULL, LockToken, CustomResponseBodies = NULL, CaptchaConfig = NULL, ChallengeConfig = NULL, TokenDomains = NULL, AssociationConfig = NULL) {
   op <- new_operation(
     name = "UpdateWebACL",
     http_method = "POST",
@@ -15875,7 +15836,7 @@ wafv2_update_web_acl <- function(Name, Scope, Id, DefaultAction, Description = N
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .wafv2$update_web_acl_input(Name = Name, Scope = Scope, Id = Id, DefaultAction = DefaultAction, Description = Description, Rules = Rules, VisibilityConfig = VisibilityConfig, LockToken = LockToken, CustomResponseBodies = CustomResponseBodies, CaptchaConfig = CaptchaConfig, ChallengeConfig = ChallengeConfig, TokenDomains = TokenDomains, AssociationConfig = AssociationConfig)
+  input <- .wafv2$update_web_acl_input(Name = Name, Scope = Scope, Id = Id, DefaultAction = DefaultAction, Description = Description, Rules = Rules, VisibilityConfig = VisibilityConfig, DataProtectionConfig = DataProtectionConfig, LockToken = LockToken, CustomResponseBodies = CustomResponseBodies, CaptchaConfig = CaptchaConfig, ChallengeConfig = ChallengeConfig, TokenDomains = TokenDomains, AssociationConfig = AssociationConfig)
   output <- .wafv2$update_web_acl_output()
   config <- get_config()
   svc <- .wafv2$service(config, op)

@@ -31,10 +31,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{Filters}{The filters.
 \itemize{
-\item \code{group-name} - For Availability Zones, use the Region name. For
-Local Zones, use the name of the group associated with the Local
-Zone (for example, \code{us-west-2-lax-1}) For Wavelength Zones, use the
-name of the group associated with the Wavelength Zone (for example,
+\item \code{group-name} - The name of the zone group for the Availability Zone
+(for example, \code{us-east-1-zg-1}), the Local Zone (for example,
+\code{us-west-2-lax-1}), or the Wavelength Zone (for example,
 \code{us-east-1-wl1}).
 \item \code{message} - The Zone message.
 \item \verb{opt-in-status} - The opt-in status (\verb{opted-in} | \verb{not-opted-in} |

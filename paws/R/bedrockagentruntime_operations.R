@@ -380,7 +380,8 @@ bedrockagentruntime_get_agent_memory <- function(agentAliasId, agentId, maxItems
 #'       )
 #'     ),
 #'     internalServerException = list(
-#'       message = "string"
+#'       message = "string",
+#'       reason = "string"
 #'     ),
 #'     modelNotReadyException = list(
 #'       message = "string"
@@ -1470,7 +1471,8 @@ bedrockagentruntime_invoke_agent <- function(agentAliasId, agentId, bedrockModel
 #'       )
 #'     ),
 #'     internalServerException = list(
-#'       message = "string"
+#'       message = "string",
+#'       reason = "string"
 #'     ),
 #'     resourceNotFoundException = list(
 #'       message = "string"
@@ -1715,7 +1717,8 @@ bedrockagentruntime_invoke_flow <- function(enableTrace = NULL, executionId = NU
 #'       )
 #'     ),
 #'     internalServerException = list(
-#'       message = "string"
+#'       message = "string",
+#'       reason = "string"
 #'     ),
 #'     resourceNotFoundException = list(
 #'       message = "string"
@@ -2679,6 +2682,7 @@ bedrockagentruntime_invoke_flow <- function(enableTrace = NULL, executionId = NU
 #'     overrideLambda = "string",
 #'     promptConfigurations = list(
 #'       list(
+#'         additionalModelRequestFields = list(),
 #'         basePromptTemplate = "string",
 #'         inferenceConfiguration = list(
 #'           maximumLength = 123,
@@ -2764,7 +2768,8 @@ bedrockagentruntime_invoke_inline_agent <- function(actionGroups = NULL, bedrock
 #'       resourceName = "string"
 #'     ),
 #'     internalServerException = list(
-#'       message = "string"
+#'       message = "string",
+#'       reason = "string"
 #'     ),
 #'     optimizedPromptEvent = list(
 #'       optimizedPrompt = list(
@@ -3467,6 +3472,9 @@ bedrockagentruntime_retrieve_and_generate <- function(input, retrieveAndGenerate
 #' 
 #' The CLI doesn't support streaming operations in Amazon Bedrock,
 #' including `InvokeModelWithResponseStream`.
+#' 
+#' This operation requires permission for the
+#' ` bedrock:RetrieveAndGenerate` action.
 #'
 #' @usage
 #' bedrockagentruntime_retrieve_and_generate_stream(input,
@@ -3555,6 +3563,61 @@ bedrockagentruntime_retrieve_and_generate <- function(input, retrieveAndGenerate
 #'             )
 #'           )
 #'         )
+#'       ),
+#'       generatedResponsePart = list(
+#'         textResponsePart = list(
+#'           span = list(
+#'             end = 123,
+#'             start = 123
+#'           ),
+#'           text = "string"
+#'         )
+#'       ),
+#'       retrievedReferences = list(
+#'         list(
+#'           content = list(
+#'             byteContent = "string",
+#'             row = list(
+#'               list(
+#'                 columnName = "string",
+#'                 columnValue = "string",
+#'                 type = "BLOB"|"BOOLEAN"|"DOUBLE"|"NULL"|"LONG"|"STRING"
+#'               )
+#'             ),
+#'             text = "string",
+#'             type = "TEXT"|"IMAGE"|"ROW"
+#'           ),
+#'           location = list(
+#'             confluenceLocation = list(
+#'               url = "string"
+#'             ),
+#'             customDocumentLocation = list(
+#'               id = "string"
+#'             ),
+#'             kendraDocumentLocation = list(
+#'               uri = "string"
+#'             ),
+#'             s3Location = list(
+#'               uri = "string"
+#'             ),
+#'             salesforceLocation = list(
+#'               url = "string"
+#'             ),
+#'             sharePointLocation = list(
+#'               url = "string"
+#'             ),
+#'             sqlLocation = list(
+#'               query = "string"
+#'             ),
+#'             type = "S3"|"WEB"|"CONFLUENCE"|"SALESFORCE"|"SHAREPOINT"|"CUSTOM"|"KENDRA"|"SQL",
+#'             webLocation = list(
+#'               url = "string"
+#'             )
+#'           ),
+#'           metadata = list(
+#'             list()
+#'           )
+#'         )
 #'       )
 #'     ),
 #'     conflictException = list(
@@ -3568,7 +3631,8 @@ bedrockagentruntime_retrieve_and_generate <- function(input, retrieveAndGenerate
 #'       action = "INTERVENED"|"NONE"
 #'     ),
 #'     internalServerException = list(
-#'       message = "string"
+#'       message = "string",
+#'       reason = "string"
 #'     ),
 #'     output = list(
 #'       text = "string"

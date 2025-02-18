@@ -5,26 +5,26 @@
 \title{Creates an OpenSearch Serverless-managed interface VPC endpoint}
 \usage{
 opensearchserviceserverless_create_vpc_endpoint(
-  clientToken = NULL,
   name,
-  securityGroupIds = NULL,
+  vpcId,
   subnetIds,
-  vpcId
+  securityGroupIds = NULL,
+  clientToken = NULL
 )
 }
 \arguments{
-\item{clientToken}{Unique, case-sensitive identifier to ensure idempotency of the request.}
-
 \item{name}{[required] The name of the interface endpoint.}
+
+\item{vpcId}{[required] The ID of the VPC from which you'll access OpenSearch Serverless.}
+
+\item{subnetIds}{[required] The ID of one or more subnets from which you'll access OpenSearch
+Serverless.}
 
 \item{securityGroupIds}{The unique identifiers of the security groups that define the ports,
 protocols, and sources for inbound traffic that you are authorizing into
 your endpoint.}
 
-\item{subnetIds}{[required] The ID of one or more subnets from which you'll access OpenSearch
-Serverless.}
-
-\item{vpcId}{[required] The ID of the VPC from which you'll access OpenSearch Serverless.}
+\item{clientToken}{Unique, case-sensitive identifier to ensure idempotency of the request.}
 }
 \description{
 Creates an OpenSearch Serverless-managed interface VPC endpoint. For more information, see \href{https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-vpc.html}{Access Amazon OpenSearch Serverless using an interface endpoint}.

@@ -161,6 +161,7 @@ Services API call listed in the log files.
 \link[paws.management:cloudtrail_register_organization_delegated_admin]{register_organization_delegated_admin} \tab Registers an organization’s member account as the CloudTrail delegated administrator\cr
 \link[paws.management:cloudtrail_remove_tags]{remove_tags} \tab Removes the specified tags from a trail, event data store, dashboard, or channel\cr
 \link[paws.management:cloudtrail_restore_event_data_store]{restore_event_data_store} \tab Restores a deleted event data store specified by EventDataStore, which accepts an event data store ARN\cr
+\link[paws.management:cloudtrail_search_sample_queries]{search_sample_queries} \tab Searches sample queries and returns a list of sample queries that are sorted by relevance\cr
 \link[paws.management:cloudtrail_start_dashboard_refresh]{start_dashboard_refresh} \tab Starts a refresh of the specified dashboard\cr
 \link[paws.management:cloudtrail_start_event_data_store_ingestion]{start_event_data_store_ingestion} \tab Starts the ingestion of live events on an event data store specified as either an ARN or the ID portion of the ARN\cr
 \link[paws.management:cloudtrail_start_import]{start_import} \tab Starts an import of logged trail events from a source S3 bucket to a destination event data store\cr

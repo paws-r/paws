@@ -248,13 +248,14 @@ prometheusservice_create_rule_groups_namespace <- function(clientToken = NULL, d
 #'
 #' @usage
 #' prometheusservice_create_scraper(alias, clientToken, destination,
-#'   scrapeConfiguration, source, tags)
+#'   roleConfiguration, scrapeConfiguration, source, tags)
 #'
 #' @param alias (optional) An alias to associate with the scraper. This is for your use,
 #' and does not need to be unique.
 #' @param clientToken (Optional) A unique, case-sensitive identifier that you can provide to
 #' ensure the idempotency of the request.
 #' @param destination &#91;required&#93; The Amazon Managed Service for Prometheus workspace to send metrics to.
+#' @param roleConfiguration The scraper role configuration for the workspace.
 #' @param scrapeConfiguration &#91;required&#93; The configuration file to use in the new scraper. For more information,
 #' see [Scraper
 #' configuration](https://docs.aws.amazon.com/prometheus/latest/userguide/AMP-collector-how-to.html#AMP-collector-configuration)
@@ -288,6 +289,10 @@ prometheusservice_create_rule_groups_namespace <- function(clientToken = NULL, d
 #'       workspaceArn = "string"
 #'     )
 #'   ),
+#'   roleConfiguration = list(
+#'     sourceRoleArn = "string",
+#'     targetRoleArn = "string"
+#'   ),
 #'   scrapeConfiguration = list(
 #'     configurationBlob = raw
 #'   ),
@@ -313,7 +318,7 @@ prometheusservice_create_rule_groups_namespace <- function(clientToken = NULL, d
 #' @rdname prometheusservice_create_scraper
 #'
 #' @aliases prometheusservice_create_scraper
-prometheusservice_create_scraper <- function(alias = NULL, clientToken = NULL, destination, scrapeConfiguration, source, tags = NULL) {
+prometheusservice_create_scraper <- function(alias = NULL, clientToken = NULL, destination, roleConfiguration = NULL, scrapeConfiguration, source, tags = NULL) {
   op <- new_operation(
     name = "CreateScraper",
     http_method = "POST",
@@ -322,7 +327,7 @@ prometheusservice_create_scraper <- function(alias = NULL, clientToken = NULL, d
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .prometheusservice$create_scraper_input(alias = alias, clientToken = clientToken, destination = destination, scrapeConfiguration = scrapeConfiguration, source = source, tags = tags)
+  input <- .prometheusservice$create_scraper_input(alias = alias, clientToken = clientToken, destination = destination, roleConfiguration = roleConfiguration, scrapeConfiguration = scrapeConfiguration, source = source, tags = tags)
   output <- .prometheusservice$create_scraper_output()
   config <- get_config()
   svc <- .prometheusservice$service(config, op)
@@ -893,6 +898,10 @@ prometheusservice_describe_rule_groups_namespace <- function(name, workspaceId) 
 #'       "2015-01-01"
 #'     ),
 #'     roleArn = "string",
+#'     roleConfiguration = list(
+#'       sourceRoleArn = "string",
+#'       targetRoleArn = "string"
+#'     ),
 #'     scrapeConfiguration = list(
 #'       configurationBlob = raw
 #'     ),
@@ -1205,6 +1214,10 @@ prometheusservice_list_rule_groups_namespaces <- function(maxResults = NULL, nam
 #'         "2015-01-01"
 #'       ),
 #'       roleArn = "string",
+#'       roleConfiguration = list(
+#'         sourceRoleArn = "string",
+#'         targetRoleArn = "string"
+#'       ),
 #'       scraperId = "string",
 #'       source = list(
 #'         eksConfiguration = list(
@@ -1734,13 +1747,14 @@ prometheusservice_update_logging_configuration <- function(clientToken = NULL, l
 #'
 #' @usage
 #' prometheusservice_update_scraper(alias, clientToken, destination,
-#'   scrapeConfiguration, scraperId)
+#'   roleConfiguration, scrapeConfiguration, scraperId)
 #'
 #' @param alias The new alias of the scraper.
 #' @param clientToken A unique identifier that you can provide to ensure the idempotency of
 #' the request. Case-sensitive.
 #' @param destination The new Amazon Managed Service for Prometheus workspace to send metrics
 #' to.
+#' @param roleConfiguration The scraper role configuration for the workspace.
 #' @param scrapeConfiguration Contains the base-64 encoded YAML configuration for the scraper.
 #' 
 #' For more information about configuring a scraper, see [Using an Amazon
@@ -1774,6 +1788,10 @@ prometheusservice_update_logging_configuration <- function(clientToken = NULL, l
 #'       workspaceArn = "string"
 #'     )
 #'   ),
+#'   roleConfiguration = list(
+#'     sourceRoleArn = "string",
+#'     targetRoleArn = "string"
+#'   ),
 #'   scrapeConfiguration = list(
 #'     configurationBlob = raw
 #'   ),
@@ -1786,7 +1804,7 @@ prometheusservice_update_logging_configuration <- function(clientToken = NULL, l
 #' @rdname prometheusservice_update_scraper
 #'
 #' @aliases prometheusservice_update_scraper
-prometheusservice_update_scraper <- function(alias = NULL, clientToken = NULL, destination = NULL, scrapeConfiguration = NULL, scraperId) {
+prometheusservice_update_scraper <- function(alias = NULL, clientToken = NULL, destination = NULL, roleConfiguration = NULL, scrapeConfiguration = NULL, scraperId) {
   op <- new_operation(
     name = "UpdateScraper",
     http_method = "PUT",
@@ -1795,7 +1813,7 @@ prometheusservice_update_scraper <- function(alias = NULL, clientToken = NULL, d
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .prometheusservice$update_scraper_input(alias = alias, clientToken = clientToken, destination = destination, scrapeConfiguration = scrapeConfiguration, scraperId = scraperId)
+  input <- .prometheusservice$update_scraper_input(alias = alias, clientToken = clientToken, destination = destination, roleConfiguration = roleConfiguration, scrapeConfiguration = scrapeConfiguration, scraperId = scraperId)
   output <- .prometheusservice$update_scraper_output()
   config <- get_config()
   svc <- .prometheusservice$service(config, op)

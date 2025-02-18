@@ -41,7 +41,7 @@ Management events provide visibility into management operations that
 are performed on resources in your Amazon Web Services account.
 These are also known as control plane operations. For more
 information, see \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-events-with-cloudtrail.html#logging-management-events}{Logging management events}
-in the \emph{CloudTrail User Guide}, and \href{https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-service-event.html#eb-service-event-cloudtrail}{Filtering management events from Amazon Web Services services}
+in the \emph{CloudTrail User Guide}, and \href{https://docs.aws.amazon.com/eventbridge/latest/userguide/#eb-service-event-cloudtrail}{Filtering management events from Amazon Web Services services}
 in the \emph{Amazon EventBridge User Guide} .
 
 This value is only valid for rules on the

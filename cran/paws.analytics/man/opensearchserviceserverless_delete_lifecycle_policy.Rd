@@ -5,17 +5,17 @@
 \title{Deletes an OpenSearch Serverless lifecycle policy}
 \usage{
 opensearchserviceserverless_delete_lifecycle_policy(
-  clientToken = NULL,
+  type,
   name,
-  type
+  clientToken = NULL
 )
 }
 \arguments{
-\item{clientToken}{Unique, case-sensitive identifier to ensure idempotency of the request.}
+\item{type}{[required] The type of lifecycle policy.}
 
 \item{name}{[required] The name of the policy to delete.}
 
-\item{type}{[required] The type of lifecycle policy.}
+\item{clientToken}{Unique, case-sensitive identifier to ensure idempotency of the request.}
 }
 \description{
 Deletes an OpenSearch Serverless lifecycle policy. For more information, see \href{https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-lifecycle.html#serverless-lifecycle-delete}{Deleting data lifecycle policies}.

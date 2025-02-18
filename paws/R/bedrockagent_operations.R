@@ -326,6 +326,7 @@ bedrockagent_associate_agent_knowledge_base <- function(agentId, agentVersion, d
 #'       overrideLambda = "string",
 #'       promptConfigurations = list(
 #'         list(
+#'           additionalModelRequestFields = list(),
 #'           basePromptTemplate = "string",
 #'           foundationModel = "string",
 #'           inferenceConfiguration = list(
@@ -389,6 +390,7 @@ bedrockagent_associate_agent_knowledge_base <- function(agentId, agentVersion, d
 #'     overrideLambda = "string",
 #'     promptConfigurations = list(
 #'       list(
+#'         additionalModelRequestFields = list(),
 #'         basePromptTemplate = "string",
 #'         foundationModel = "string",
 #'         inferenceConfiguration = list(
@@ -663,7 +665,7 @@ bedrockagent_create_agent_action_group <- function(actionGroupExecutor = NULL, a
 #'     ),
 #'     agentAliasId = "string",
 #'     agentAliasName = "string",
-#'     agentAliasStatus = "CREATING"|"PREPARED"|"FAILED"|"UPDATING"|"DELETING",
+#'     agentAliasStatus = "CREATING"|"PREPARED"|"FAILED"|"UPDATING"|"DELETING"|"DISSOCIATED",
 #'     agentId = "string",
 #'     clientToken = "string",
 #'     createdAt = as.POSIXct(
@@ -1297,6 +1299,9 @@ bedrockagent_create_data_source <- function(clientToken = NULL, dataDeletionPoli
 #'                       list(
 #'                         content = list(
 #'                           list(
+#'                             cachePoint = list(
+#'                               type = "default"
+#'                             ),
 #'                             text = "string"
 #'                           )
 #'                         ),
@@ -1305,6 +1310,9 @@ bedrockagent_create_data_source <- function(clientToken = NULL, dataDeletionPoli
 #'                     ),
 #'                     system = list(
 #'                       list(
+#'                         cachePoint = list(
+#'                           type = "default"
+#'                         ),
 #'                         text = "string"
 #'                       )
 #'                     ),
@@ -1318,6 +1326,9 @@ bedrockagent_create_data_source <- function(clientToken = NULL, dataDeletionPoli
 #'                       ),
 #'                       tools = list(
 #'                         list(
+#'                           cachePoint = list(
+#'                             type = "default"
+#'                           ),
 #'                           toolSpec = list(
 #'                             description = "string",
 #'                             inputSchema = list(
@@ -1330,6 +1341,9 @@ bedrockagent_create_data_source <- function(clientToken = NULL, dataDeletionPoli
 #'                     )
 #'                   ),
 #'                   text = list(
+#'                     cachePoint = list(
+#'                       type = "default"
+#'                     ),
 #'                     inputVariables = list(
 #'                       list(
 #'                         name = "string"
@@ -1476,6 +1490,9 @@ bedrockagent_create_data_source <- function(clientToken = NULL, dataDeletionPoli
 #'                       list(
 #'                         content = list(
 #'                           list(
+#'                             cachePoint = list(
+#'                               type = "default"
+#'                             ),
 #'                             text = "string"
 #'                           )
 #'                         ),
@@ -1484,6 +1501,9 @@ bedrockagent_create_data_source <- function(clientToken = NULL, dataDeletionPoli
 #'                     ),
 #'                     system = list(
 #'                       list(
+#'                         cachePoint = list(
+#'                           type = "default"
+#'                         ),
 #'                         text = "string"
 #'                       )
 #'                     ),
@@ -1497,6 +1517,9 @@ bedrockagent_create_data_source <- function(clientToken = NULL, dataDeletionPoli
 #'                       ),
 #'                       tools = list(
 #'                         list(
+#'                           cachePoint = list(
+#'                             type = "default"
+#'                           ),
 #'                           toolSpec = list(
 #'                             description = "string",
 #'                             inputSchema = list(
@@ -1509,6 +1532,9 @@ bedrockagent_create_data_source <- function(clientToken = NULL, dataDeletionPoli
 #'                     )
 #'                   ),
 #'                   text = list(
+#'                     cachePoint = list(
+#'                       type = "default"
+#'                     ),
 #'                     inputVariables = list(
 #'                       list(
 #'                         name = "string"
@@ -1790,6 +1816,9 @@ bedrockagent_create_flow_alias <- function(clientToken = NULL, description = NUL
 #'                       list(
 #'                         content = list(
 #'                           list(
+#'                             cachePoint = list(
+#'                               type = "default"
+#'                             ),
 #'                             text = "string"
 #'                           )
 #'                         ),
@@ -1798,6 +1827,9 @@ bedrockagent_create_flow_alias <- function(clientToken = NULL, description = NUL
 #'                     ),
 #'                     system = list(
 #'                       list(
+#'                         cachePoint = list(
+#'                           type = "default"
+#'                         ),
 #'                         text = "string"
 #'                       )
 #'                     ),
@@ -1811,6 +1843,9 @@ bedrockagent_create_flow_alias <- function(clientToken = NULL, description = NUL
 #'                       ),
 #'                       tools = list(
 #'                         list(
+#'                           cachePoint = list(
+#'                             type = "default"
+#'                           ),
 #'                           toolSpec = list(
 #'                             description = "string",
 #'                             inputSchema = list(
@@ -1823,6 +1858,9 @@ bedrockagent_create_flow_alias <- function(clientToken = NULL, description = NUL
 #'                     )
 #'                   ),
 #'                   text = list(
+#'                     cachePoint = list(
+#'                       type = "default"
+#'                     ),
 #'                     inputVariables = list(
 #'                       list(
 #'                         name = "string"
@@ -2408,6 +2446,9 @@ bedrockagent_create_knowledge_base <- function(clientToken = NULL, description =
 #'             list(
 #'               content = list(
 #'                 list(
+#'                   cachePoint = list(
+#'                     type = "default"
+#'                   ),
 #'                   text = "string"
 #'                 )
 #'               ),
@@ -2416,6 +2457,9 @@ bedrockagent_create_knowledge_base <- function(clientToken = NULL, description =
 #'           ),
 #'           system = list(
 #'             list(
+#'               cachePoint = list(
+#'                 type = "default"
+#'               ),
 #'               text = "string"
 #'             )
 #'           ),
@@ -2429,6 +2473,9 @@ bedrockagent_create_knowledge_base <- function(clientToken = NULL, description =
 #'             ),
 #'             tools = list(
 #'               list(
+#'                 cachePoint = list(
+#'                   type = "default"
+#'                 ),
 #'                 toolSpec = list(
 #'                   description = "string",
 #'                   inputSchema = list(
@@ -2441,6 +2488,9 @@ bedrockagent_create_knowledge_base <- function(clientToken = NULL, description =
 #'           )
 #'         ),
 #'         text = list(
+#'           cachePoint = list(
+#'             type = "default"
+#'           ),
 #'           inputVariables = list(
 #'             list(
 #'               name = "string"
@@ -2504,6 +2554,9 @@ bedrockagent_create_knowledge_base <- function(clientToken = NULL, description =
 #'             list(
 #'               content = list(
 #'                 list(
+#'                   cachePoint = list(
+#'                     type = "default"
+#'                   ),
 #'                   text = "string"
 #'                 )
 #'               ),
@@ -2512,6 +2565,9 @@ bedrockagent_create_knowledge_base <- function(clientToken = NULL, description =
 #'           ),
 #'           system = list(
 #'             list(
+#'               cachePoint = list(
+#'                 type = "default"
+#'               ),
 #'               text = "string"
 #'             )
 #'           ),
@@ -2525,6 +2581,9 @@ bedrockagent_create_knowledge_base <- function(clientToken = NULL, description =
 #'             ),
 #'             tools = list(
 #'               list(
+#'                 cachePoint = list(
+#'                   type = "default"
+#'                 ),
 #'                 toolSpec = list(
 #'                   description = "string",
 #'                   inputSchema = list(
@@ -2537,6 +2596,9 @@ bedrockagent_create_knowledge_base <- function(clientToken = NULL, description =
 #'           )
 #'         ),
 #'         text = list(
+#'           cachePoint = list(
+#'             type = "default"
+#'           ),
 #'           inputVariables = list(
 #'             list(
 #'               name = "string"
@@ -2654,6 +2716,9 @@ bedrockagent_create_prompt <- function(clientToken = NULL, customerEncryptionKey
 #'             list(
 #'               content = list(
 #'                 list(
+#'                   cachePoint = list(
+#'                     type = "default"
+#'                   ),
 #'                   text = "string"
 #'                 )
 #'               ),
@@ -2662,6 +2727,9 @@ bedrockagent_create_prompt <- function(clientToken = NULL, customerEncryptionKey
 #'           ),
 #'           system = list(
 #'             list(
+#'               cachePoint = list(
+#'                 type = "default"
+#'               ),
 #'               text = "string"
 #'             )
 #'           ),
@@ -2675,6 +2743,9 @@ bedrockagent_create_prompt <- function(clientToken = NULL, customerEncryptionKey
 #'             ),
 #'             tools = list(
 #'               list(
+#'                 cachePoint = list(
+#'                   type = "default"
+#'                 ),
 #'                 toolSpec = list(
 #'                   description = "string",
 #'                   inputSchema = list(
@@ -2687,6 +2758,9 @@ bedrockagent_create_prompt <- function(clientToken = NULL, customerEncryptionKey
 #'           )
 #'         ),
 #'         text = list(
+#'           cachePoint = list(
+#'             type = "default"
+#'           ),
 #'           inputVariables = list(
 #'             list(
 #'               name = "string"
@@ -2861,7 +2935,7 @@ bedrockagent_delete_agent_action_group <- function(actionGroupId, agentId, agent
 #' ```
 #' list(
 #'   agentAliasId = "string",
-#'   agentAliasStatus = "CREATING"|"PREPARED"|"FAILED"|"UPDATING"|"DELETING",
+#'   agentAliasStatus = "CREATING"|"PREPARED"|"FAILED"|"UPDATING"|"DELETING"|"DISSOCIATED",
 #'   agentId = "string"
 #' )
 #' ```
@@ -3232,9 +3306,9 @@ bedrockagent_delete_knowledge_base <- function(knowledgeBaseId) {
 #' @description
 #' Deletes documents from a data source and syncs the changes to the
 #' knowledge base that is connected to it. For more information, see
-#' [Ingest documents into a knowledge base in
-#' real-time](https://docs.aws.amazon.com/bedrock/latest/userguide/) in the
-#' Amazon Bedrock User Guide.
+#' [Ingest changes directly into a knowledge
+#' base](https://docs.aws.amazon.com/bedrock/latest/userguide/kb-direct-ingestion.html)
+#' in the Amazon Bedrock User Guide.
 #'
 #' @usage
 #' bedrockagent_delete_knowledge_base_documents(clientToken, dataSourceId,
@@ -3541,6 +3615,7 @@ bedrockagent_disassociate_agent_knowledge_base <- function(agentId, agentVersion
 #'       overrideLambda = "string",
 #'       promptConfigurations = list(
 #'         list(
+#'           additionalModelRequestFields = list(),
 #'           basePromptTemplate = "string",
 #'           foundationModel = "string",
 #'           inferenceConfiguration = list(
@@ -3732,7 +3807,7 @@ bedrockagent_get_agent_action_group <- function(actionGroupId, agentId, agentVer
 #'     ),
 #'     agentAliasId = "string",
 #'     agentAliasName = "string",
-#'     agentAliasStatus = "CREATING"|"PREPARED"|"FAILED"|"UPDATING"|"DELETING",
+#'     agentAliasStatus = "CREATING"|"PREPARED"|"FAILED"|"UPDATING"|"DELETING"|"DISSOCIATED",
 #'     agentId = "string",
 #'     clientToken = "string",
 #'     createdAt = as.POSIXct(
@@ -3975,6 +4050,7 @@ bedrockagent_get_agent_knowledge_base <- function(agentId, agentVersion, knowled
 #'       overrideLambda = "string",
 #'       promptConfigurations = list(
 #'         list(
+#'           additionalModelRequestFields = list(),
 #'           basePromptTemplate = "string",
 #'           foundationModel = "string",
 #'           inferenceConfiguration = list(
@@ -4377,6 +4453,9 @@ bedrockagent_get_data_source <- function(dataSourceId, knowledgeBaseId) {
 #'                       list(
 #'                         content = list(
 #'                           list(
+#'                             cachePoint = list(
+#'                               type = "default"
+#'                             ),
 #'                             text = "string"
 #'                           )
 #'                         ),
@@ -4385,6 +4464,9 @@ bedrockagent_get_data_source <- function(dataSourceId, knowledgeBaseId) {
 #'                     ),
 #'                     system = list(
 #'                       list(
+#'                         cachePoint = list(
+#'                           type = "default"
+#'                         ),
 #'                         text = "string"
 #'                       )
 #'                     ),
@@ -4398,6 +4480,9 @@ bedrockagent_get_data_source <- function(dataSourceId, knowledgeBaseId) {
 #'                       ),
 #'                       tools = list(
 #'                         list(
+#'                           cachePoint = list(
+#'                             type = "default"
+#'                           ),
 #'                           toolSpec = list(
 #'                             description = "string",
 #'                             inputSchema = list(
@@ -4410,6 +4495,9 @@ bedrockagent_get_data_source <- function(dataSourceId, knowledgeBaseId) {
 #'                     )
 #'                   ),
 #'                   text = list(
+#'                     cachePoint = list(
+#'                       type = "default"
+#'                     ),
 #'                     inputVariables = list(
 #'                       list(
 #'                         name = "string"
@@ -4545,6 +4633,14 @@ bedrockagent_get_data_source <- function(dataSourceId, knowledgeBaseId) {
 #'         unknownConnectionTargetInput = list(
 #'           connection = "string"
 #'         ),
+#'         unknownNodeInput = list(
+#'           input = "string",
+#'           node = "string"
+#'         ),
+#'         unknownNodeOutput = list(
+#'           node = "string",
+#'           output = "string"
+#'         ),
 #'         unreachableNode = list(
 #'           node = "string"
 #'         ),
@@ -4555,7 +4651,7 @@ bedrockagent_get_data_source <- function(dataSourceId, knowledgeBaseId) {
 #'       ),
 #'       message = "string",
 #'       severity = "Warning"|"Error",
-#'       type = "CyclicConnection"|"DuplicateConnections"|"DuplicateConditionExpression"|"UnreachableNode"|"UnknownConnectionSource"|"UnknownConnectionSourceOutput"|"UnknownConnectionTarget"|"UnknownConnectionTargetInput"|"UnknownConnectionCondition"|"MalformedConditionExpression"|"MalformedNodeInputExpression"|"MismatchedNodeInputType"|"MismatchedNodeOutputType"|"IncompatibleConnectionDataType"|"MissingConnectionConfiguration"|"MissingDefaultCondition"|"MissingEndingNodes"|"MissingNodeConfiguration"|"MissingNodeInput"|"MissingNodeOutput"|"MissingStartingNodes"|"MultipleNodeInputConnections"|"UnfulfilledNodeInput"|"UnsatisfiedConnectionConditions"|"Unspecified"
+#'       type = "CyclicConnection"|"DuplicateConnections"|"DuplicateConditionExpression"|"UnreachableNode"|"UnknownConnectionSource"|"UnknownConnectionSourceOutput"|"UnknownConnectionTarget"|"UnknownConnectionTargetInput"|"UnknownConnectionCondition"|"MalformedConditionExpression"|"MalformedNodeInputExpression"|"MismatchedNodeInputType"|"MismatchedNodeOutputType"|"IncompatibleConnectionDataType"|"MissingConnectionConfiguration"|"MissingDefaultCondition"|"MissingEndingNodes"|"MissingNodeConfiguration"|"MissingNodeInput"|"MissingNodeOutput"|"MissingStartingNodes"|"MultipleNodeInputConnections"|"UnfulfilledNodeInput"|"UnsatisfiedConnectionConditions"|"Unspecified"|"UnknownNodeInput"|"UnknownNodeOutput"
 #'     )
 #'   ),
 #'   version = "string"
@@ -4766,6 +4862,9 @@ bedrockagent_get_flow_alias <- function(aliasIdentifier, flowIdentifier) {
 #'                       list(
 #'                         content = list(
 #'                           list(
+#'                             cachePoint = list(
+#'                               type = "default"
+#'                             ),
 #'                             text = "string"
 #'                           )
 #'                         ),
@@ -4774,6 +4873,9 @@ bedrockagent_get_flow_alias <- function(aliasIdentifier, flowIdentifier) {
 #'                     ),
 #'                     system = list(
 #'                       list(
+#'                         cachePoint = list(
+#'                           type = "default"
+#'                         ),
 #'                         text = "string"
 #'                       )
 #'                     ),
@@ -4787,6 +4889,9 @@ bedrockagent_get_flow_alias <- function(aliasIdentifier, flowIdentifier) {
 #'                       ),
 #'                       tools = list(
 #'                         list(
+#'                           cachePoint = list(
+#'                             type = "default"
+#'                           ),
 #'                           toolSpec = list(
 #'                             description = "string",
 #'                             inputSchema = list(
@@ -4799,6 +4904,9 @@ bedrockagent_get_flow_alias <- function(aliasIdentifier, flowIdentifier) {
 #'                     )
 #'                   ),
 #'                   text = list(
+#'                     cachePoint = list(
+#'                       type = "default"
+#'                     ),
 #'                     inputVariables = list(
 #'                       list(
 #'                         name = "string"
@@ -5184,10 +5292,10 @@ bedrockagent_get_knowledge_base <- function(knowledgeBaseId) {
 #'
 #' @description
 #' Retrieves specific documents from a data source that is connected to a
-#' knowledge base. For more information, see [Ingest documents into a
-#' knowledge base in
-#' real-time](https://docs.aws.amazon.com/bedrock/latest/userguide/) in the
-#' Amazon Bedrock User Guide.
+#' knowledge base. For more information, see [Ingest changes directly into
+#' a knowledge
+#' base](https://docs.aws.amazon.com/bedrock/latest/userguide/kb-direct-ingestion.html)
+#' in the Amazon Bedrock User Guide.
 #'
 #' @usage
 #' bedrockagent_get_knowledge_base_documents(dataSourceId,
@@ -5344,6 +5452,9 @@ bedrockagent_get_knowledge_base_documents <- function(dataSourceId, documentIden
 #'             list(
 #'               content = list(
 #'                 list(
+#'                   cachePoint = list(
+#'                     type = "default"
+#'                   ),
 #'                   text = "string"
 #'                 )
 #'               ),
@@ -5352,6 +5463,9 @@ bedrockagent_get_knowledge_base_documents <- function(dataSourceId, documentIden
 #'           ),
 #'           system = list(
 #'             list(
+#'               cachePoint = list(
+#'                 type = "default"
+#'               ),
 #'               text = "string"
 #'             )
 #'           ),
@@ -5365,6 +5479,9 @@ bedrockagent_get_knowledge_base_documents <- function(dataSourceId, documentIden
 #'             ),
 #'             tools = list(
 #'               list(
+#'                 cachePoint = list(
+#'                   type = "default"
+#'                 ),
 #'                 toolSpec = list(
 #'                   description = "string",
 #'                   inputSchema = list(
@@ -5377,6 +5494,9 @@ bedrockagent_get_knowledge_base_documents <- function(dataSourceId, documentIden
 #'           )
 #'         ),
 #'         text = list(
+#'           cachePoint = list(
+#'             type = "default"
+#'           ),
 #'           inputVariables = list(
 #'             list(
 #'               name = "string"
@@ -5431,10 +5551,10 @@ bedrockagent_get_prompt <- function(promptIdentifier, promptVersion = NULL) {
 #' Ingests documents directly into the knowledge base that is connected to
 #' the data source. The `dataSourceType` specified in the content for each
 #' document must match the type of the data source that you specify in the
-#' header. For more information, see [Ingest documents into a knowledge
-#' base in
-#' real-time](https://docs.aws.amazon.com/bedrock/latest/userguide/) in the
-#' Amazon Bedrock User Guide.
+#' header. For more information, see [Ingest changes directly into a
+#' knowledge
+#' base](https://docs.aws.amazon.com/bedrock/latest/userguide/kb-direct-ingestion.html)
+#' in the Amazon Bedrock User Guide.
 #'
 #' @usage
 #' bedrockagent_ingest_knowledge_base_documents(clientToken, dataSourceId,
@@ -5662,7 +5782,7 @@ bedrockagent_list_agent_action_groups <- function(agentId, agentVersion, maxResu
 #'     list(
 #'       agentAliasId = "string",
 #'       agentAliasName = "string",
-#'       agentAliasStatus = "CREATING"|"PREPARED"|"FAILED"|"UPDATING"|"DELETING",
+#'       agentAliasStatus = "CREATING"|"PREPARED"|"FAILED"|"UPDATING"|"DELETING"|"DISSOCIATED",
 #'       createdAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
@@ -6423,10 +6543,10 @@ bedrockagent_list_ingestion_jobs <- function(dataSourceId, filters = NULL, knowl
 #'
 #' @description
 #' Retrieves all the documents contained in a data source that is connected
-#' to a knowledge base. For more information, see [Ingest documents into a
-#' knowledge base in
-#' real-time](https://docs.aws.amazon.com/bedrock/latest/userguide/) in the
-#' Amazon Bedrock User Guide.
+#' to a knowledge base. For more information, see [Ingest changes directly
+#' into a knowledge
+#' base](https://docs.aws.amazon.com/bedrock/latest/userguide/kb-direct-ingestion.html)
+#' in the Amazon Bedrock User Guide.
 #'
 #' @usage
 #' bedrockagent_list_knowledge_base_documents(dataSourceId,
@@ -7210,6 +7330,7 @@ bedrockagent_untag_resource <- function(resourceArn, tagKeys) {
 #'       overrideLambda = "string",
 #'       promptConfigurations = list(
 #'         list(
+#'           additionalModelRequestFields = list(),
 #'           basePromptTemplate = "string",
 #'           foundationModel = "string",
 #'           inferenceConfiguration = list(
@@ -7273,6 +7394,7 @@ bedrockagent_untag_resource <- function(resourceArn, tagKeys) {
 #'     overrideLambda = "string",
 #'     promptConfigurations = list(
 #'       list(
+#'         additionalModelRequestFields = list(),
 #'         basePromptTemplate = "string",
 #'         foundationModel = "string",
 #'         inferenceConfiguration = list(
@@ -7511,7 +7633,7 @@ bedrockagent_update_agent_action_group <- function(actionGroupExecutor = NULL, a
 #'     ),
 #'     agentAliasId = "string",
 #'     agentAliasName = "string",
-#'     agentAliasStatus = "CREATING"|"PREPARED"|"FAILED"|"UPDATING"|"DELETING",
+#'     agentAliasStatus = "CREATING"|"PREPARED"|"FAILED"|"UPDATING"|"DELETING"|"DISSOCIATED",
 #'     agentId = "string",
 #'     clientToken = "string",
 #'     createdAt = as.POSIXct(
@@ -8275,6 +8397,9 @@ bedrockagent_update_data_source <- function(dataDeletionPolicy = NULL, dataSourc
 #'                       list(
 #'                         content = list(
 #'                           list(
+#'                             cachePoint = list(
+#'                               type = "default"
+#'                             ),
 #'                             text = "string"
 #'                           )
 #'                         ),
@@ -8283,6 +8408,9 @@ bedrockagent_update_data_source <- function(dataDeletionPolicy = NULL, dataSourc
 #'                     ),
 #'                     system = list(
 #'                       list(
+#'                         cachePoint = list(
+#'                           type = "default"
+#'                         ),
 #'                         text = "string"
 #'                       )
 #'                     ),
@@ -8296,6 +8424,9 @@ bedrockagent_update_data_source <- function(dataDeletionPolicy = NULL, dataSourc
 #'                       ),
 #'                       tools = list(
 #'                         list(
+#'                           cachePoint = list(
+#'                             type = "default"
+#'                           ),
 #'                           toolSpec = list(
 #'                             description = "string",
 #'                             inputSchema = list(
@@ -8308,6 +8439,9 @@ bedrockagent_update_data_source <- function(dataDeletionPolicy = NULL, dataSourc
 #'                     )
 #'                   ),
 #'                   text = list(
+#'                     cachePoint = list(
+#'                       type = "default"
+#'                     ),
 #'                     inputVariables = list(
 #'                       list(
 #'                         name = "string"
@@ -8453,6 +8587,9 @@ bedrockagent_update_data_source <- function(dataDeletionPolicy = NULL, dataSourc
 #'                       list(
 #'                         content = list(
 #'                           list(
+#'                             cachePoint = list(
+#'                               type = "default"
+#'                             ),
 #'                             text = "string"
 #'                           )
 #'                         ),
@@ -8461,6 +8598,9 @@ bedrockagent_update_data_source <- function(dataDeletionPolicy = NULL, dataSourc
 #'                     ),
 #'                     system = list(
 #'                       list(
+#'                         cachePoint = list(
+#'                           type = "default"
+#'                         ),
 #'                         text = "string"
 #'                       )
 #'                     ),
@@ -8474,6 +8614,9 @@ bedrockagent_update_data_source <- function(dataDeletionPolicy = NULL, dataSourc
 #'                       ),
 #'                       tools = list(
 #'                         list(
+#'                           cachePoint = list(
+#'                             type = "default"
+#'                           ),
 #'                           toolSpec = list(
 #'                             description = "string",
 #'                             inputSchema = list(
@@ -8486,6 +8629,9 @@ bedrockagent_update_data_source <- function(dataDeletionPolicy = NULL, dataSourc
 #'                     )
 #'                   ),
 #'                   text = list(
+#'                     cachePoint = list(
+#'                       type = "default"
+#'                     ),
 #'                     inputVariables = list(
 #'                       list(
 #'                         name = "string"
@@ -9106,6 +9252,9 @@ bedrockagent_update_knowledge_base <- function(description = NULL, knowledgeBase
 #'             list(
 #'               content = list(
 #'                 list(
+#'                   cachePoint = list(
+#'                     type = "default"
+#'                   ),
 #'                   text = "string"
 #'                 )
 #'               ),
@@ -9114,6 +9263,9 @@ bedrockagent_update_knowledge_base <- function(description = NULL, knowledgeBase
 #'           ),
 #'           system = list(
 #'             list(
+#'               cachePoint = list(
+#'                 type = "default"
+#'               ),
 #'               text = "string"
 #'             )
 #'           ),
@@ -9127,6 +9279,9 @@ bedrockagent_update_knowledge_base <- function(description = NULL, knowledgeBase
 #'             ),
 #'             tools = list(
 #'               list(
+#'                 cachePoint = list(
+#'                   type = "default"
+#'                 ),
 #'                 toolSpec = list(
 #'                   description = "string",
 #'                   inputSchema = list(
@@ -9139,6 +9294,9 @@ bedrockagent_update_knowledge_base <- function(description = NULL, knowledgeBase
 #'           )
 #'         ),
 #'         text = list(
+#'           cachePoint = list(
+#'             type = "default"
+#'           ),
 #'           inputVariables = list(
 #'             list(
 #'               name = "string"
@@ -9199,6 +9357,9 @@ bedrockagent_update_knowledge_base <- function(description = NULL, knowledgeBase
 #'             list(
 #'               content = list(
 #'                 list(
+#'                   cachePoint = list(
+#'                     type = "default"
+#'                   ),
 #'                   text = "string"
 #'                 )
 #'               ),
@@ -9207,6 +9368,9 @@ bedrockagent_update_knowledge_base <- function(description = NULL, knowledgeBase
 #'           ),
 #'           system = list(
 #'             list(
+#'               cachePoint = list(
+#'                 type = "default"
+#'               ),
 #'               text = "string"
 #'             )
 #'           ),
@@ -9220,6 +9384,9 @@ bedrockagent_update_knowledge_base <- function(description = NULL, knowledgeBase
 #'             ),
 #'             tools = list(
 #'               list(
+#'                 cachePoint = list(
+#'                   type = "default"
+#'                 ),
 #'                 toolSpec = list(
 #'                   description = "string",
 #'                   inputSchema = list(
@@ -9232,6 +9399,9 @@ bedrockagent_update_knowledge_base <- function(description = NULL, knowledgeBase
 #'           )
 #'         ),
 #'         text = list(
+#'           cachePoint = list(
+#'             type = "default"
+#'           ),
 #'           inputVariables = list(
 #'             list(
 #'               name = "string"
@@ -9363,6 +9533,14 @@ bedrockagent_update_prompt <- function(customerEncryptionKeyArn = NULL, defaultV
 #'         unknownConnectionTargetInput = list(
 #'           connection = "string"
 #'         ),
+#'         unknownNodeInput = list(
+#'           input = "string",
+#'           node = "string"
+#'         ),
+#'         unknownNodeOutput = list(
+#'           node = "string",
+#'           output = "string"
+#'         ),
 #'         unreachableNode = list(
 #'           node = "string"
 #'         ),
@@ -9373,7 +9551,7 @@ bedrockagent_update_prompt <- function(customerEncryptionKeyArn = NULL, defaultV
 #'       ),
 #'       message = "string",
 #'       severity = "Warning"|"Error",
-#'       type = "CyclicConnection"|"DuplicateConnections"|"DuplicateConditionExpression"|"UnreachableNode"|"UnknownConnectionSource"|"UnknownConnectionSourceOutput"|"UnknownConnectionTarget"|"UnknownConnectionTargetInput"|"UnknownConnectionCondition"|"MalformedConditionExpression"|"MalformedNodeInputExpression"|"MismatchedNodeInputType"|"MismatchedNodeOutputType"|"IncompatibleConnectionDataType"|"MissingConnectionConfiguration"|"MissingDefaultCondition"|"MissingEndingNodes"|"MissingNodeConfiguration"|"MissingNodeInput"|"MissingNodeOutput"|"MissingStartingNodes"|"MultipleNodeInputConnections"|"UnfulfilledNodeInput"|"UnsatisfiedConnectionConditions"|"Unspecified"
+#'       type = "CyclicConnection"|"DuplicateConnections"|"DuplicateConditionExpression"|"UnreachableNode"|"UnknownConnectionSource"|"UnknownConnectionSourceOutput"|"UnknownConnectionTarget"|"UnknownConnectionTargetInput"|"UnknownConnectionCondition"|"MalformedConditionExpression"|"MalformedNodeInputExpression"|"MismatchedNodeInputType"|"MismatchedNodeOutputType"|"IncompatibleConnectionDataType"|"MissingConnectionConfiguration"|"MissingDefaultCondition"|"MissingEndingNodes"|"MissingNodeConfiguration"|"MissingNodeInput"|"MissingNodeOutput"|"MissingStartingNodes"|"MultipleNodeInputConnections"|"UnfulfilledNodeInput"|"UnsatisfiedConnectionConditions"|"Unspecified"|"UnknownNodeInput"|"UnknownNodeOutput"
 #'     )
 #'   )
 #' )
@@ -9463,6 +9641,9 @@ bedrockagent_update_prompt <- function(customerEncryptionKeyArn = NULL, defaultV
 #'                       list(
 #'                         content = list(
 #'                           list(
+#'                             cachePoint = list(
+#'                               type = "default"
+#'                             ),
 #'                             text = "string"
 #'                           )
 #'                         ),
@@ -9471,6 +9652,9 @@ bedrockagent_update_prompt <- function(customerEncryptionKeyArn = NULL, defaultV
 #'                     ),
 #'                     system = list(
 #'                       list(
+#'                         cachePoint = list(
+#'                           type = "default"
+#'                         ),
 #'                         text = "string"
 #'                       )
 #'                     ),
@@ -9484,6 +9668,9 @@ bedrockagent_update_prompt <- function(customerEncryptionKeyArn = NULL, defaultV
 #'                       ),
 #'                       tools = list(
 #'                         list(
+#'                           cachePoint = list(
+#'                             type = "default"
+#'                           ),
 #'                           toolSpec = list(
 #'                             description = "string",
 #'                             inputSchema = list(
@@ -9496,6 +9683,9 @@ bedrockagent_update_prompt <- function(customerEncryptionKeyArn = NULL, defaultV
 #'                     )
 #'                   ),
 #'                   text = list(
+#'                     cachePoint = list(
+#'                       type = "default"
+#'                     ),
 #'                     inputVariables = list(
 #'                       list(
 #'                         name = "string"

@@ -663,6 +663,40 @@ accessanalyzer_get_finding_v2 <- function(analyzerArn, id, maxResults = NULL, ne
 }
 .accessanalyzer$operations$get_finding_v2 <- accessanalyzer_get_finding_v2
 
+#' Retrieves a list of aggregated finding statistics for an external access
+#' or unused access analyzer
+#'
+#' @description
+#' Retrieves a list of aggregated finding statistics for an external access or unused access analyzer.
+#'
+#' See [https://www.paws-r-sdk.com/docs/accessanalyzer_get_findings_statistics/](https://www.paws-r-sdk.com/docs/accessanalyzer_get_findings_statistics/) for full documentation.
+#'
+#' @param analyzerArn &#91;required&#93; The [ARN of the
+#' analyzer](https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-getting-started.html#permission-resources)
+#' used to generate the statistics.
+#'
+#' @keywords internal
+#'
+#' @rdname accessanalyzer_get_findings_statistics
+accessanalyzer_get_findings_statistics <- function(analyzerArn) {
+  op <- new_operation(
+    name = "GetFindingsStatistics",
+    http_method = "POST",
+    http_path = "/analyzer/findings/statistics",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .accessanalyzer$get_findings_statistics_input(analyzerArn = analyzerArn)
+  output <- .accessanalyzer$get_findings_statistics_output()
+  config <- get_config()
+  svc <- .accessanalyzer$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.accessanalyzer$operations$get_findings_statistics <- accessanalyzer_get_findings_statistics
+
 #' Retrieves the policy that was generated using StartPolicyGeneration
 #'
 #' @description

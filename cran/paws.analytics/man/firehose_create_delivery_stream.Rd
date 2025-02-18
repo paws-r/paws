@@ -7,6 +7,7 @@
 firehose_create_delivery_stream(
   DeliveryStreamName,
   DeliveryStreamType = NULL,
+  DirectPutSourceConfiguration = NULL,
   KinesisStreamSourceConfiguration = NULL,
   DeliveryStreamEncryptionConfigurationInput = NULL,
   S3DestinationConfiguration = NULL,
@@ -39,6 +40,9 @@ directly.
 stream as a source.
 }}
 
+\item{DirectPutSourceConfiguration}{The structure that configures parameters such as \code{ThroughputHintInMBs}
+for a stream configured with Direct PUT as a source.}
+
 \item{KinesisStreamSourceConfiguration}{When a Kinesis data stream is used as the source for the Firehose
 stream, a KinesisStreamSourceConfiguration containing the Kinesis data
 stream Amazon Resource Name (ARN) and the role ARN for the source
@@ -55,7 +59,8 @@ destination.}
 \item{RedshiftDestinationConfiguration}{The destination in Amazon Redshift. You can specify only one
 destination.}
 
-\item{ElasticsearchDestinationConfiguration}{The destination in Amazon ES. You can specify only one destination.}
+\item{ElasticsearchDestinationConfiguration}{The destination in Amazon OpenSearch Service. You can specify only one
+destination.}
 
 \item{AmazonopensearchserviceDestinationConfiguration}{The destination in Amazon OpenSearch Service. You can specify only one
 destination.}
@@ -79,8 +84,8 @@ If you specify tags in the
 Amazon Data Firehose performs an additional authorization on the
 \code{firehose:TagDeliveryStream} action to verify if users have permissions
 to create tags. If you do not provide this permission, requests to
-create new Firehose Firehose streams with IAM resource tags will fail
-with an \code{AccessDeniedException} such as following.
+create new Firehose streams with IAM resource tags will fail with an
+\code{AccessDeniedException} such as following.
 
 \strong{AccessDeniedException}
 
@@ -100,7 +105,9 @@ Service. You can specify only one destination.}
 
 \item{IcebergDestinationConfiguration}{Configure Apache Iceberg Tables destination.}
 
-\item{DatabaseSourceConfiguration}{Amazon Data Firehose is in preview release and is subject to change.}
+\item{DatabaseSourceConfiguration}{The top level object for configuring streams with database as a source.
+
+Amazon Data Firehose is in preview release and is subject to change.}
 }
 \description{
 Creates a Firehose stream.

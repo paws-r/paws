@@ -4,14 +4,14 @@
 \alias{opensearchserviceserverless_delete_security_config}
 \title{Deletes a security configuration for OpenSearch Serverless}
 \usage{
-opensearchserviceserverless_delete_security_config(clientToken = NULL, id)
+opensearchserviceserverless_delete_security_config(id, clientToken = NULL)
 }
 \arguments{
-\item{clientToken}{Unique, case-sensitive identifier to ensure idempotency of the request.}
-
 \item{id}{[required] The security configuration identifier. For SAML the ID will be
 \verb{saml/<accountId>/<idpProviderName>}. For example,
 \code{saml/123456789123/OKTADev}.}
+
+\item{clientToken}{Unique, case-sensitive identifier to ensure idempotency of the request.}
 }
 \description{
 Deletes a security configuration for OpenSearch Serverless. For more information, see \href{https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-saml.html}{SAML authentication for Amazon OpenSearch Serverless}.
