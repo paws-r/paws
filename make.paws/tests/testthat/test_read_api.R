@@ -60,13 +60,17 @@ test_that("read_api", {
     file.path(api_path, "endpoints.json")
   )
 
-  api <- read_api("foo", path)
+  api <- make.paws:::read_api("foo", path)
 
   expect_equal(api$name, "foo")
   expect_equal(api$operations$foo$eventstream, "TRUE")
   expect_equal(
     api$region_config[["aws-global"]],
-    list(endpoint = "baz.us-east-1.amazonaws.com", global = TRUE)
+    list(
+      endpoint = "baz.us-east-1.amazonaws.com",
+      global = TRUE,
+      signing_region = "us-east-1"
+    )
   )
   expect_equal(
     api$region_config[["us-east-1"]],
@@ -127,11 +131,16 @@ test_that("merge_region_config", {
     list(
       metadata = list(endpointPrefix = "iam"),
       region_config = list(
-        "aws-global" = list(endpoint = "iam.amazonaws.com", global = TRUE),
+        "aws-global" = list(
+          endpoint = "iam.amazonaws.com",
+          global = TRUE,
+          signing_region = "us-east-1"
+        ),
         "us-east-1" = list(endpoint = "iam.amazonaws.com", global = TRUE),
         "^(us|eu|ap|sa|ca|me|af|il|mx)\\\\-\\\\w+\\\\-\\\\d+$" = list(
           endpoint = "iam.amazonaws.com",
-          global = FALSE
+          global = FALSE,
+          signing_region = "us-east-1"
         )
       )
     )

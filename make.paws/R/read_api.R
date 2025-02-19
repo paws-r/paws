@@ -114,32 +114,6 @@ merge_eventstream <- function(api) {
 # Returns an API object with region config info attached. Region config info
 # lists endpoints for each service and region, if different from the default.
 merge_region_config <- function(api, region_config) {
-  service <- service_name(api)
-  endpoint_prefix <- api$metadata$endpointPrefix
-  get_rule_names <- function(service) {
-    grep(sprintf("/%s$", service), names(region_config$rules), value = TRUE)
-  }
-  rule_names <- c(get_rule_names(service), get_rule_names("\\*"))
-  rules <- list()
-  for (rule_name in rule_names) {
-    region <- strsplit(rule_name, "/")[[1]][1]
-    if (region %in% names(rules)) next
-
-    rule <- region_config$rules[[rule_name]]
-    if (is.character(rule)) {
-      rule <- region_config$patterns[[rule]]
-    }
-    rules[[region]] <- list(
-      endpoint = gsub("{service}", endpoint_prefix, rule$endpoint, fixed = TRUE),
-      global = isTRUE(rule$globalEndpoint)
-    )
-  }
-
-  api$region_config <- rules
-  return(api)
-}
-
-merge_region_config <- function(api, region_config) {
   service <- api$metadata$endpointPrefix
   ep <- list()
   for (partition in region_config$partition) {
