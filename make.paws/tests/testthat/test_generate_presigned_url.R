@@ -10,11 +10,12 @@ new_request <- get("new_request", asNamespace("paws.common"))
 
 test_that("check generated presigned url with different http_method", {
   skip_if_not_installed("paws.common")
+  skip_if_not_installed("paws.storage")
   Sys.setenv("AWS_ACCESS_KEY_ID" = "DUMMY")
   Sys.setenv("AWS_SECRET_ACCESS_KEY" = "SECRETDUMMY")
   Sys.setenv("AWS_REGION" = "us-east-1")
 
-  svc <- list()
+  svc <- paws.common::set_config(list())
   svc$generate_presigned_url <- s3_generate_presigned_url
   actual <- svc$generate_presigned_url(
     client_method = "list_objects_v2",
@@ -25,7 +26,7 @@ test_that("check generated presigned url with different http_method", {
   expect_true(
     grepl(
       sprintf(
-        "HTTP://%s.s3.amazonaws.com/\\?list-type=2&prefix=%s&AWSAccessKeyId=%s&Expires=.*?&Signature=.*",
+        "HTTP://%s.s3.us-east-1.amazonaws.com/\\?list-type=2&prefix=%s&AWSAccessKeyId=%s&Expires=.*?&Signature=.*",
         "foo",
         "bar",
         "DUMMY"
@@ -37,11 +38,12 @@ test_that("check generated presigned url with different http_method", {
 
 test_that("check generate_presigned_url with error in client_method", {
   skip_if_not_installed("paws.common")
+  skip_if_not_installed("paws.storage")
   Sys.setenv("AWS_ACCESS_KEY_ID" = "DUMMY")
   Sys.setenv("AWS_SECRET_ACCESS_KEY" = "SECRETDUMMY")
   Sys.setenv("AWS_REGION" = "us-east-1")
 
-  svc <- list()
+  svc <- paws.common::set_config(list())
   svc$generate_presigned_url <- s3_generate_presigned_url
   expect_error(
     svc$generate_presigned_url(
@@ -57,7 +59,7 @@ test_that("check generate_presigned_url with wrong parameters", {
   Sys.setenv("AWS_SECRET_ACCESS_KEY" = "SECRETDUMMY")
   Sys.setenv("AWS_REGION" = "us-east-1")
 
-  svc <- list()
+  svc <- paws.common::set_config(list())
   svc$generate_presigned_url <- s3_generate_presigned_url
   expect_error(
     svc$generate_presigned_url(
