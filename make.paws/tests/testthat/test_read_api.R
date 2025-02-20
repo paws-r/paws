@@ -60,7 +60,7 @@ test_that("read_api", {
     file.path(api_path, "endpoints.json")
   )
 
-  api <- make.paws:::read_api("foo", path)
+  api <- read_api("foo", path)
 
   expect_equal(api$name, "foo")
   expect_equal(api$operations$foo$eventstream, "TRUE")
