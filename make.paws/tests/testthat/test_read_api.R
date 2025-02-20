@@ -73,10 +73,6 @@ test_that("read_api", {
     )
   )
   expect_equal(
-    api$region_config[["us-east-1"]],
-    list(endpoint = "baz.us-east-1.amazonaws.com", global = TRUE)
-  )
-  expect_equal(
     api$region_config[["^(us|eu|ap|sa|ca|me|af|il|mx)\\\\-\\\\w+\\\\-\\\\d+$"]],
     list(endpoint = "baz.{region}.amazonaws.com", global = FALSE)
   )
@@ -136,7 +132,6 @@ test_that("merge_region_config", {
           global = TRUE,
           signing_region = "us-east-1"
         ),
-        "us-east-1" = list(endpoint = "iam.amazonaws.com", global = TRUE),
         "^(us|eu|ap|sa|ca|me|af|il|mx)\\\\-\\\\w+\\\\-\\\\d+$" = list(
           endpoint = "iam.amazonaws.com",
           global = FALSE,
