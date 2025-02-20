@@ -94,13 +94,13 @@ test_that("resolver_endpoint known partition name", {
   expect_equal(r$signing_region, "us-east-1")
 
   r <- resolver_endpoint("s3", "aws-global", endpoints, partition_name = "aws-cn")
-  expect_equal(r$endpoint, "https://s3.us-east-1.amazonaws.cn")
+  expect_equal(r$endpoint, "https://s3.cn-west-2.amazonaws.cn")
   expect_equal(r$signing_region, "cn-west-2")
 
   # unknown partition name defaults to aws partition
   r <- resolver_endpoint("s3", "aws-global", endpoints, partition_name = "random")
   expect_equal(r$endpoint, "https://s3.us-east-1.amazonaws.com")
-  expect_equal(r$signing_region, "cn-west-2")
+  expect_equal(r$signing_region, "us-east-1")
 })
 
 test_that("client_config uses custom endpoint", {
