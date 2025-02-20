@@ -33,7 +33,7 @@ test_that("new_service", {
   handlers <- new_handlers("restxml", "v4")
   cfgs <- Config()
   # new_service needs a region.
-  Sys.setenv("AWS_REGION" = "region")
+  cfgs$region <- "region"
   service <- new_service(metadata, handlers, cfgs)
 
   expect_named(service$client_info, names(ClientInfo()))
@@ -56,9 +56,8 @@ test_that("new_service null cfgs", {
     target_prefix = "baz"
   )
   handlers <- new_handlers("restxml", "v4")
-  # new_service needs a region.
-  Sys.setenv("AWS_REGION" = "region")
-  service <- new_service(metadata, handlers)
+
+  service <- new_service(metadata, handlers, Config(region = "region"))
 
   expect_named(service$config, names(Config()))
   expect_equal(service$config$region, "region")
@@ -97,11 +96,6 @@ test_that("test custom config credentials take priority", {
     target_prefix = "baz"
   )
   handlers <- new_handlers("restxml", "v4")
-  # Set env variables
-  Sys.setenv("AWS_REGION" = "env_region")
-  Sys.setenv("AWS_ACCESS_KEY_ID" = "env_key")
-  Sys.setenv("AWS_SECRET_ACCESS_KEY" = "env_secret")
-  Sys.setenv("AWS_PROFILE" = "env_profile")
 
   # Set custom config
   cfgs <- Config()
