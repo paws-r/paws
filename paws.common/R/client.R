@@ -28,7 +28,8 @@ Config <- struct(
   sleep_delay = NULL,
   disable_rest_protocol_uri_cleaning = FALSE,
   sts_regional_endpoint = "",
-  signature_version = ""
+  signature_version = "",
+  partition_name = ""
 )
 
 # A Session object stores configuration and request handlers for a service.
@@ -94,7 +95,8 @@ resolver_endpoint <- function(
   endpoints,
   sts_regional_endpoint = "",
   scheme = "https",
-  host_prefix = ""
+  host_prefix = "",
+  partition_name = ""
 ) {
   switch(
     vendor_cache[["vendor"]],
@@ -104,7 +106,8 @@ resolver_endpoint <- function(
       endpoints = endpoints,
       sts_regional_endpoint = sts_regional_endpoint,
       scheme = scheme,
-      host_prefix = host_prefix
+      host_prefix = host_prefix,
+      partition_name = partition_name
     ),
     "js" = resolver_endpoint_js(
       service = service,
@@ -123,12 +126,12 @@ resolver_endpoint_boto <- function(
   endpoints,
   sts_regional_endpoint,
   scheme,
-  host_prefix
+  host_prefix,
+  partition_name
 ) {
   # Set default region for s3 if not provided
   # https://github.com/boto/botocore/blob/develop/botocore/regions.py#L200-L205
-  if (service_name == 's3' && is.null(region)) region <- 'us-east-1'
-
+  if (service == 's3' && is.null(region)) region <- 'us-east-1'
   global_found <- check_global(endpoints)
   global_endpoints <- global_found[global_found]
 
@@ -142,7 +145,7 @@ resolver_endpoint_boto <- function(
   if (!any(global_found) && global_region) {
     stop("No region provided and no global region found.")
   }
-  e <- get_region_pattern(endpoints, region)
+  e <- get_region_pattern(endpoints, region, partition_name)
   if (service == "sts" & nzchar(sts_regional_endpoint)) {
     e[["endpoint"]] <- set_sts_regional_endpoint(sts_regional_endpoint, e[["endpoint"]])
     e[["signing_region"]] <- set_sts_region(sts_regional_endpoint, region)
@@ -212,7 +215,6 @@ set_sts_region <- function(sts_regional_endpoint, region) {
 }
 
 # client_config returns a ClientConfig configured for the service.
-# client_config returns a ClientConfig configured for the service.
 client_config <- function(
   service_name,
   endpoints,
@@ -225,10 +227,6 @@ client_config <- function(
     sess$config <- cfgs
   }
   custom_endpoint <- FALSE
-  # If region not defined, set it
-  if (nchar(sess$config$region) == 0) {
-    sess$config$region <- get_region(sess$config[["credentials"]][["profile"]])
-  }
   signing_region <- sess$config$region
   if (sess$config$endpoint != "") {
     endpoint <- sess$config$endpoint
@@ -246,7 +244,8 @@ client_config <- function(
         signing_region,
         endpoints,
         sts_regional_endpoint,
-        host_prefix = operation$host_prefix
+        host_prefix = operation$host_prefix,
+        partition_name = sess$config$partition_name
       )
       endpoint <- re$endpoint
       signing_region <- re$signing_region

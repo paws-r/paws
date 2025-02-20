@@ -94,6 +94,12 @@ set_config <- function(svc, cfgs = list()) {
   cfgs <- update_optional_config_parameter(cfgs, cfgs$credentials$profile)
   config <- populate(cfgs, shape)
   config$credentials <- as.environment(config$credentials)
+  if (nchar(config$region) == 0) {
+    config$region <- get_region(config[["credentials"]][["profile"]])
+  }
+  if (!is.null(config$region) || nchar(config$region) > 0) {
+    config$partition_name <- set_partition(config$region)
+  }
   svc$.internal <- list(config = config)
   set_paws_vendor()
   return(svc)
@@ -307,6 +313,7 @@ get_region <- function(profile = "") {
   }
   region <- check_config_file_region(profile)
 
+  # Should this be here now?
   if (is.null(region)) {
     region <- "aws-global"
   }
