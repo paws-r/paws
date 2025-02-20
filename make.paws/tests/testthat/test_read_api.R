@@ -66,11 +66,11 @@ test_that("read_api", {
   expect_equal(api$operations$foo$eventstream, "TRUE")
   expect_equal(
     api$region_config[["aws-global"]],
-    list(endpoint = "baz.us-east-1.amazonaws.com", global = TRUE)
-  )
-  expect_equal(
-    api$region_config[["us-east-1"]],
-    list(endpoint = "baz.us-east-1.amazonaws.com", global = TRUE)
+    list(
+      endpoint = "baz.us-east-1.amazonaws.com",
+      global = TRUE,
+      signing_region = "us-east-1"
+    )
   )
   expect_equal(
     api$region_config[["^(us|eu|ap|sa|ca|me|af|il|mx)\\\\-\\\\w+\\\\-\\\\d+$"]],
@@ -127,11 +127,15 @@ test_that("merge_region_config", {
     list(
       metadata = list(endpointPrefix = "iam"),
       region_config = list(
-        "aws-global" = list(endpoint = "iam.amazonaws.com", global = TRUE),
-        "us-east-1" = list(endpoint = "iam.amazonaws.com", global = TRUE),
+        "aws-global" = list(
+          endpoint = "iam.amazonaws.com",
+          global = TRUE,
+          signing_region = "us-east-1"
+        ),
         "^(us|eu|ap|sa|ca|me|af|il|mx)\\\\-\\\\w+\\\\-\\\\d+$" = list(
           endpoint = "iam.amazonaws.com",
-          global = FALSE
+          global = FALSE,
+          signing_region = "us-east-1"
         )
       )
     )

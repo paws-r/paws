@@ -49,10 +49,16 @@ endpoint_unescape_js <- function(endpoint, service, region) {
     .Call('_paws_common_endpoint_unescape_js', PACKAGE = 'paws.common', endpoint, service, region)
 }
 
+#' @useDynLib paws.common _paws_common_set_partition
+#' @importFrom Rcpp evalCpp
+set_partition <- function(region) {
+    .Call('_paws_common_set_partition', PACKAGE = 'paws.common', region)
+}
+
 #' @useDynLib paws.common _paws_common_get_region_pattern
 #' @importFrom Rcpp evalCpp
-get_region_pattern <- function(region_pattern, region) {
-    .Call('_paws_common_get_region_pattern', PACKAGE = 'paws.common', region_pattern, region)
+get_region_pattern <- function(endpoints, region, partition_name = "") {
+    .Call('_paws_common_get_region_pattern', PACKAGE = 'paws.common', endpoints, region, partition_name)
 }
 
 #' @useDynLib paws.common _paws_common_get_region_pattern_js

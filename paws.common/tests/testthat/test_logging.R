@@ -39,6 +39,7 @@ test_that("check if file created in none existing directory", {
   unlink(temp_file)
 })
 
+# can this be mocked?
 test_request <- function(url) {
   httr2::req_perform(
     httr2::req_options(

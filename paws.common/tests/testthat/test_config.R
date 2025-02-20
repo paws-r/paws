@@ -1,11 +1,11 @@
 test_that("get_config", {
   svc <- set_config(
     svc = list(operation = function() get_config()),
-    cfgs = list(region = 123)
+    cfgs = list(region = "123")
   )
 
   actual <- svc$operation()
-  expect_equal(actual$region, 123, ignore_attr = TRUE)
+  expect_equal(actual$region, "123", ignore_attr = TRUE)
 
   # Check if config is returned when executed in a `do.call`.
   expect_equal(do.call(svc$operation, list()), svc$operation(), ignore_attr = TRUE)
@@ -13,7 +13,7 @@ test_that("get_config", {
   f <- function() {
     svc$operation()
   }
-  expect_equal(f()$region, 123, ignore_attr = TRUE)
+  expect_equal(f()$region, "123", ignore_attr = TRUE)
 
   g <- function() {
     svc <- set_config(
@@ -680,4 +680,15 @@ test_that("merge_config config and param config", {
   expect_equal(actual2, expect2)
   expect_equal(actual3, expect3)
   expect_equal(actual4, expect4)
+})
+
+test_that("set_partition", {
+  expect_equal(set_partition("us-east-1"), "aws")
+  expect_equal(set_partition("cn-east-1"), "aws-cn")
+  expect_equal(set_partition("us-gov-east-1"), "aws-us-gov")
+  expect_equal(set_partition("us-iso-east-1"), "aws-iso")
+  expect_equal(set_partition("us-isob-east-1"), "aws-iso-b")
+  expect_equal(set_partition("eu-isoe-east-1"), "aws-iso-e")
+  expect_equal(set_partition("us-isof-east-1"), "aws-iso-f")
+  expect_equal(set_partition("region"), "aws")
 })
