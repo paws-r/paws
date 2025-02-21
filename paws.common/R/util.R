@@ -253,7 +253,7 @@ set_user_agent <- function(pkgname) {
 }
 
 set_paws_options <- function() {
-  paws_options <- list(paws.aws_sso_creds = FALSE)
+  paws_options <- list()
   paws_options_names <- names(paws_options)
 
   # check R options for log settings

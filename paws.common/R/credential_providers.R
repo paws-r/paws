@@ -256,16 +256,16 @@ config_file_credential_source <- function(
   return(role_creds)
 }
 
-aws_sso_cmd <- function(profile_name, msg) {
-  cmd <- c("sso", "login", "--profile", profile_name)
-  log_warn(msg, paste("aws", paste(cmd, collapse = " ")))
-  tf <- tempfile()
-  on.exit(unlink(tf))
-  system2("aws", cmd, stderr = tf)
-  if (file.exists(tf) && length(error <- readLines(tf)) > 0) {
-    stop(error, call. = FALSE)
-  }
-}
+# aws_sso_cmd <- function(profile_name, msg) {
+#   cmd <- c("sso", "login", "--profile", profile_name)
+#   log_warn(msg, paste("aws", paste(cmd, collapse = " ")))
+#   tf <- tempfile()
+#   on.exit(unlink(tf))
+#   system2("aws", cmd, stderr = tf)
+#   if (file.exists(tf) && length(error <- readLines(tf)) > 0) {
+#     stop(error, call. = FALSE)
+#   }
+# }
 
 # Get credentials from profile associated with an SSO login.  Assumes
 # the user has already logged in via e.g. the aws cli so that a cached
@@ -276,8 +276,8 @@ sso_credential_process <- function(
   sso_account_id,
   sso_region,
   sso_role_name,
-  profile_name,
-  retry_no = 0
+  profile_name
+  # retry_no = 0
 ) {
   input_str <- sso_session %||% sso_start_url
   cache_key <- digest::digest(enc2utf8(input_str), algo = "sha1", serialize = FALSE)
@@ -290,17 +290,17 @@ sso_credential_process <- function(
   sso_cache <- file.path(root, ".aws", "sso", "cache", json_file)
   if (!file.exists(sso_cache)) {
     msg <- "Error loading SSO Token: Token for %s does not exist"
-    if (!isTRUE(getOption("paws.aws_sso_creds"))) {
-      log_info(
-        "Set `options(paws.aws_sso_creds = TRUE)` to turn on sso credentials automation"
-      )
-      stopf(msg, input_str)
-    }
-    log_error(msg, input_str)
-    aws_sso_cmd(
-      sub("profile ", "", profile_name, fixed = TRUE),
-      "Attempting to set credentials using: `%s`"
-    )
+    # if (!isTRUE(getOption("paws.aws_sso_creds"))) {
+    # log_info(
+    #   "Set `options(paws.aws_sso_creds = TRUE)` to turn on sso credentials automation"
+    # )
+    stopf(msg, input_str)
+    # }
+    # log_error(msg, input_str)
+    # aws_sso_cmd(
+    #   sub("profile ", "", profile_name, fixed = TRUE),
+    #   "Attempting to set credentials using: `%s`"
+    # )
   }
   cache_creds <- jsonlite::fromJSON(sso_cache)
   if (
@@ -317,7 +317,7 @@ sso_credential_process <- function(
       disable_rest_protocol_uri_cleaning = TRUE
     )
   )
-  retry_resp <- NULL
+  # retry_resp <- NULL
   tryCatch(
     resp <- svc$get_role_credentials(
       sso_role_name,
@@ -327,34 +327,34 @@ sso_credential_process <- function(
     http_401 = function(err) {
       if (grepl("Session token not found or invalid", err$error_response$message)) {
         profile <- sub("profile ", "", profile_name, fixed = TRUE)
-        if (retry_no == 1 || (!isTRUE(getOption("paws.aws_sso_creds")))) {
-          enrich_msg <- sprintf(
-            "Try refreshing sso credentials: `aws sso login --profile %s`",
-            profile
-          )
-          err$message <- paste(err$message, enrich_msg, sep = "\n")
-          log_info(
-            "Set `options(paws.aws_sso_creds = TRUE)` to turn on sso credentials automation"
-          )
-          stop(err)
-        }
-        log_error(err$error_response$message)
-        aws_sso_cmd(profile, "Attempting to refresh credentials using: `%s`")
-        retry_resp <<- sso_credential_process(
-          sso_session,
-          sso_start_url,
-          sso_account_id,
-          sso_region,
-          sso_role_name,
-          profile_name,
-          1
+        # if (retry_no == 1 || (!isTRUE(getOption("paws.aws_sso_creds")))) {
+        enrich_msg <- sprintf(
+          "Try refreshing sso credentials: `aws sso login --profile %s`",
+          profile
         )
+        err$message <- paste(err$message, enrich_msg, sep = "\n")
+        # log_info(
+        #   "Set `options(paws.aws_sso_creds = TRUE)` to turn on sso credentials automation"
+        # )
+        # }
+        # log_error(err$error_response$message)
+        # aws_sso_cmd(profile, "Attempting to refresh credentials using: `%s`")
+        # retry_resp <<- sso_credential_process(
+        #   sso_session,
+        #   sso_start_url,
+        #   sso_account_id,
+        #   sso_region,
+        #   sso_role_name,
+        #   profile_name,
+        #   1
+        # )
       }
+      stop(err)
     }
   )
-  if (!is.null(retry_resp)) {
-    return(retry_resp)
-  }
+  # if (!is.null(retry_resp)) {
+  #   return(retry_resp)
+  # }
 
   if (is.null(resp)) {
     return(NULL)
