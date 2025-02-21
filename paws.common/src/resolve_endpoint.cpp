@@ -79,8 +79,14 @@ std::string endpoint_unescape_js(std::string endpoint, const std::string& servic
  return endpoint;
 }
 
+// Define a structure to hold partition data
+struct Partition {
+  std::string name;
+  std::string pattern;
+};
 
-const std::map<std::string, std::string> partitions = {
+// Initialize partition data
+const Partition partitions[] = {
   {"aws", "^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$"},
   {"aws-cn", "^cn\\-\\w+\\-\\d+$"},
   {"aws-us-gov", "^us\\-gov\\-\\w+\\-\\d+$"},
@@ -109,18 +115,18 @@ const std::map<std::string, std::string> partitions = {
 //' @useDynLib paws.common _paws_common_set_partition_name
 //' @importFrom Rcpp evalCpp
 // [[Rcpp::export]]
-std::string set_partition_name(const std::string &region)
-{
- for (const auto &partition : partitions)
- {
-   std::regex re(partition.second);
-   if (std::regex_search(region, re))
-   {
-     return partition.first;
-   }
- }
- return "";
+std::string set_partition_name(const std::string &region) {
+  // Search for the first matching partition
+  for (int i = 0; i < 7; ++i) {
+    std::regex re(partitions[i].pattern);
+    if (std::regex_search(region, re)) {
+      return partitions[i].name;
+    }
+  }
+
+  return "";
 }
+
 
 /**
  * @brief Get region pattern based on region using aws js sdk vendor
