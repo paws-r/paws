@@ -102,27 +102,14 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
-// set_partition
-std::string set_partition(const std::string& region);
-RcppExport SEXP _paws_common_set_partition(SEXP regionSEXP) {
+// set_partition_name
+std::string set_partition_name(const std::string& region);
+RcppExport SEXP _paws_common_set_partition_name(SEXP regionSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< const std::string& >::type region(regionSEXP);
-    rcpp_result_gen = Rcpp::wrap(set_partition(region));
-    return rcpp_result_gen;
-END_RCPP
-}
-// get_region_pattern
-Rcpp::List get_region_pattern(const Rcpp::List& endpoints, const std::string& region, const std::string& partition_name);
-RcppExport SEXP _paws_common_get_region_pattern(SEXP endpointsSEXP, SEXP regionSEXP, SEXP partition_nameSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< const Rcpp::List& >::type endpoints(endpointsSEXP);
-    Rcpp::traits::input_parameter< const std::string& >::type region(regionSEXP);
-    Rcpp::traits::input_parameter< const std::string& >::type partition_name(partition_nameSEXP);
-    rcpp_result_gen = Rcpp::wrap(get_region_pattern(endpoints, region, partition_name));
+    rcpp_result_gen = Rcpp::wrap(set_partition_name(region));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -203,8 +190,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"_paws_common_check_global", (DL_FUNC) &_paws_common_check_global, 1},
     {"_paws_common_endpoint_unescape", (DL_FUNC) &_paws_common_endpoint_unescape, 2},
     {"_paws_common_endpoint_unescape_js", (DL_FUNC) &_paws_common_endpoint_unescape_js, 3},
-    {"_paws_common_set_partition", (DL_FUNC) &_paws_common_set_partition, 1},
-    {"_paws_common_get_region_pattern", (DL_FUNC) &_paws_common_get_region_pattern, 3},
+    {"_paws_common_set_partition_name", (DL_FUNC) &_paws_common_set_partition_name, 1},
     {"_paws_common_get_region_pattern_js", (DL_FUNC) &_paws_common_get_region_pattern_js, 2},
     {"_paws_common_parse_query_string", (DL_FUNC) &_paws_common_parse_query_string, 1},
     {"_paws_common_parse_url", (DL_FUNC) &_paws_common_parse_url, 1},

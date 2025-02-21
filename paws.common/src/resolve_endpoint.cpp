@@ -106,10 +106,10 @@ const std::map<std::string, std::string> partitions = {
  * @note This function references the logic used in the botocore library:
  *       https://github.com/boto/botocore/blob/develop/botocore/client.py#L638-L647
  */
-//' @useDynLib paws.common _paws_common_set_partition
+//' @useDynLib paws.common _paws_common_set_partition_name
 //' @importFrom Rcpp evalCpp
 // [[Rcpp::export]]
-std::string set_partition(const std::string &region)
+std::string set_partition_name(const std::string &region)
 {
  for (const auto &partition : partitions)
  {
@@ -119,62 +119,8 @@ std::string set_partition(const std::string &region)
      return partition.first;
    }
  }
- // If no match was found, default to partition aws
- // https://github.com/boto/botocore/blob/develop/botocore/client.py#L638-L647
- return "aws";
+ return "";
 }
-
-/**
- * @brief Get region pattern based on region using aws botocore vendor
- *
- * @param region_pattern AWS escaped endpoint
- * @param region AWS region
- */
-//' @useDynLib paws.common _paws_common_get_region_pattern
-//' @importFrom Rcpp evalCpp
- // [[Rcpp::export]]
- Rcpp::List get_region_pattern(const Rcpp::List &endpoints, const std::string &region, const std::string &partition_name = "") {
-   const Rcpp::CharacterVector region_pattern = endpoints.names();
-   const int n = region_pattern.size();
-   Rcpp::List result;
-
-   bool matched = false;
-
-   // if partition name is known
-   if (!partition_name.empty()) {
-     for (const auto &partition : partitions) {
-       if (partition_name == partition.first) {
-         result = endpoints[partition.second];
-         matched = true;
-         break;
-       }
-     }
-   } else {
-     // Match region to partition endpoint regex
-     for (int i = 0; i < n; ++i) {
-       const std::string cur = Rcpp::as<std::string>(region_pattern[i]);
-       const std::regex re(cur);
-       if (std::regex_search(region, re)) {
-         result = endpoints[i];
-         matched = true;
-         break; // Exit on first match
-       }
-     }
-   }
-
-   // If no match was found, default to partition aws
-   // https://github.com/boto/botocore/blob/develop/botocore/client.py#L638-L647
-   if (!matched) {
-     result = endpoints["^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$"];
-   }
-
-   // Check if signing_region exists in the result
-   if (!result.containsElementNamed("signing_region")) {
-     result["signing_region"] = region; // Add signing_region if it's not present
-   }
-
-   return result;
- }
 
 /**
  * @brief Get region pattern based on region using aws js sdk vendor
