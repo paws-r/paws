@@ -222,23 +222,26 @@ set_sts_region <- function(sts_regional_endpoint, region) {
 }
 
 get_region_pattern <- function(endpoints, region, partition_name = "") {
-  result <- NULL
   if (nzchar(partition_name)) {
     found <- PARTITIONS[names(PARTITIONS) == partition_name]
-    result <- endpoints[[PARTITIONS[found]]]
   } else {
-    # assume region regex is identified by set_partition_name
     nms <- names(endpoints)
     found <- nms[nms == region]
-    result <- endpoints[[found]]
+    if (length(found) == 0) {
+      partition_name <- set_partition_name(region)
+      found <- PARTITIONS[names(PARTITIONS) == partition_name]
+    }
   }
 
-  # default to partition "aws" when no region is found
-  # https://github.com/boto/botocore/blob/develop/botocore/client.py#L638-L647
-  if (is.null(result)) {
+  if (length(found) > 0) {
+    result <- endpoints[[found]]
+  } else {
+    # default to partition "aws" when no region is found
+    # https://github.com/boto/botocore/blob/develop/botocore/client.py#L638-L647
     result <- endpoints[["^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$"]]
   }
-  if (is.null(result$signing_region)) result[["signing_region"]] <- region
+
+  if (is.null(result[["signing_region"]])) result[["signing_region"]] <- region
   return(result)
 }
 
