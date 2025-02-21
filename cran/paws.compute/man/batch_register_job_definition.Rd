@@ -43,7 +43,7 @@ Parameters in a \code{\link[=batch_submit_job]{submit_job}} request override any
 corresponding parameter defaults from the job definition.}
 
 \item{schedulingPriority}{The scheduling priority for jobs that are submitted with this job
-definition. This only affects jobs in job queues with a fair share
+definition. This only affects jobs in job queues with a fair-share
 policy. Jobs with a higher scheduling priority are scheduled before jobs
 with a lower scheduling priority.
 

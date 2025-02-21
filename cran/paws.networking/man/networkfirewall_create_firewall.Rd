@@ -8,14 +8,15 @@ a VPC}
 networkfirewall_create_firewall(
   FirewallName,
   FirewallPolicyArn,
-  VpcId,
-  SubnetMappings,
+  VpcId = NULL,
+  SubnetMappings = NULL,
   DeleteProtection = NULL,
   SubnetChangeProtection = NULL,
   FirewallPolicyChangeProtection = NULL,
   Description = NULL,
   Tags = NULL,
-  EncryptionConfiguration = NULL
+  EncryptionConfiguration = NULL,
+  EnabledAnalysisTypes = NULL
 )
 }
 \arguments{
@@ -25,12 +26,12 @@ firewall after you create it.}
 \item{FirewallPolicyArn}{[required] The Amazon Resource Name (ARN) of the FirewallPolicy that you want to
 use for the firewall.}
 
-\item{VpcId}{[required] The unique identifier of the VPC where Network Firewall should create
+\item{VpcId}{The unique identifier of the VPC where Network Firewall should create
 the firewall.
 
 You can't change this setting after you create the firewall.}
 
-\item{SubnetMappings}{[required] The public subnets to use for your Network Firewall firewalls. Each
+\item{SubnetMappings}{The public subnets to use for your Network Firewall firewalls. Each
 subnet must belong to a different Availability Zone in the VPC. Network
 Firewall creates a firewall endpoint in each subnet.}
 
@@ -58,6 +59,9 @@ to \code{TRUE}.}
 
 \item{EncryptionConfiguration}{A complex type that contains settings for encryption of your firewall
 resources.}
+
+\item{EnabledAnalysisTypes}{An optional setting indicating the specific traffic analysis types to
+enable on the firewall.}
 }
 \description{
 Creates an Network Firewall Firewall and accompanying FirewallStatus for a VPC.

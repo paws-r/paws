@@ -42,7 +42,7 @@ The following metrics are available for each resource type:
 and \code{NetworkTransmitThroughput}.
 }
 
-For more information about these metrics, see \href{https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-resource-health-metrics.html#available-metrics}{Metrics available in Lightsail}.}
+For more information about these metrics, see \href{https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-resource-health-metrics.html#available-metrics}{Metrics available in Lightsail}.}
 
 \item{monitoredResourceName}{[required] The name of the Lightsail resource that will be monitored.
 

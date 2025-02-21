@@ -24,6 +24,14 @@ test_that("describe_tls_inspection_configuration", {
   expect_error(svc$describe_tls_inspection_configuration(), NA)
 })
 
+test_that("list_analysis_reports", {
+  expect_error(svc$list_analysis_reports(), NA)
+})
+
+test_that("list_analysis_reports", {
+  expect_error(svc$list_analysis_reports(MaxResults = 20), NA)
+})
+
 test_that("list_firewall_policies", {
   expect_error(svc$list_firewall_policies(), NA)
 })

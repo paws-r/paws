@@ -225,6 +225,10 @@ emrcontainers_create_job_template <- function(name, clientToken, jobTemplateData
 #'       )
 #'     ),
 #'     monitoringConfiguration = list(
+#'       managedLogs = list(
+#'         allowAWSToRetainLogs = "ENABLED"|"DISABLED",
+#'         encryptionKeyArn = "string"
+#'       ),
 #'       persistentAppUI = "ENABLED"|"DISABLED",
 #'       cloudWatchMonitoringConfiguration = list(
 #'         logGroupName = "string",
@@ -627,6 +631,10 @@ emrcontainers_delete_virtual_cluster <- function(id) {
 #'         )
 #'       ),
 #'       monitoringConfiguration = list(
+#'         managedLogs = list(
+#'           allowAWSToRetainLogs = "ENABLED"|"DISABLED",
+#'           encryptionKeyArn = "string"
+#'         ),
 #'         persistentAppUI = "ENABLED"|"DISABLED",
 #'         cloudWatchMonitoringConfiguration = list(
 #'           logGroupName = "string",
@@ -863,6 +871,10 @@ emrcontainers_describe_job_template <- function(id) {
 #'         )
 #'       ),
 #'       monitoringConfiguration = list(
+#'         managedLogs = list(
+#'           allowAWSToRetainLogs = "ENABLED"|"DISABLED",
+#'           encryptionKeyArn = "string"
+#'         ),
 #'         persistentAppUI = "ENABLED"|"DISABLED",
 #'         cloudWatchMonitoringConfiguration = list(
 #'           logGroupName = "string",
@@ -1204,6 +1216,10 @@ emrcontainers_get_managed_endpoint_session_credentials <- function(endpointIdent
 #'           )
 #'         ),
 #'         monitoringConfiguration = list(
+#'           managedLogs = list(
+#'             allowAWSToRetainLogs = "ENABLED"|"DISABLED",
+#'             encryptionKeyArn = "string"
+#'           ),
 #'           persistentAppUI = "ENABLED"|"DISABLED",
 #'           cloudWatchMonitoringConfiguration = list(
 #'             logGroupName = "string",
@@ -1474,6 +1490,10 @@ emrcontainers_list_job_templates <- function(createdAfter = NULL, createdBefore 
 #'           )
 #'         ),
 #'         monitoringConfiguration = list(
+#'           managedLogs = list(
+#'             allowAWSToRetainLogs = "ENABLED"|"DISABLED",
+#'             encryptionKeyArn = "string"
+#'           ),
 #'           persistentAppUI = "ENABLED"|"DISABLED",
 #'           cloudWatchMonitoringConfiguration = list(
 #'             logGroupName = "string",
@@ -1873,6 +1893,10 @@ emrcontainers_list_virtual_clusters <- function(containerProviderId = NULL, cont
 #'       )
 #'     ),
 #'     monitoringConfiguration = list(
+#'       managedLogs = list(
+#'         allowAWSToRetainLogs = "ENABLED"|"DISABLED",
+#'         encryptionKeyArn = "string"
+#'       ),
 #'       persistentAppUI = "ENABLED"|"DISABLED",
 #'       cloudWatchMonitoringConfiguration = list(
 #'         logGroupName = "string",

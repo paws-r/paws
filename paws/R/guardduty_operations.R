@@ -533,7 +533,7 @@ guardduty_create_detector <- function(Enable, ClientToken = NULL, FindingPublish
 #' 
 #' -   service.runtimeDetails.process.name
 #' 
-#' -   service.runtimeDetails.process.name
+#' -   service.runtimeDetails.process.executablePath
 #' 
 #' -   resource.lambdaDetails.functionName
 #' 

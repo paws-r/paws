@@ -17,7 +17,7 @@ licensemanagerusersubscriptions_register_identity_provider(
 \item{Product}{[required] The name of the user-based subscription product.
 
 Valid values: \code{VISUAL_STUDIO_ENTERPRISE} | \code{VISUAL_STUDIO_PROFESSIONAL}
-| \code{OFFICE_PROFESSIONAL_PLUS}}
+| \code{OFFICE_PROFESSIONAL_PLUS} | \code{REMOTE_DESKTOP_SERVICES}}
 
 \item{Settings}{The registered identity provider’s product related configuration
 settings such as the subnets to provision VPC endpoints.}

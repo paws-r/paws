@@ -21,8 +21,8 @@ is \code{ENABLED}, it can accept jobs. If the job queue state is \code{DISABLED}
 new jobs can't be added to the queue, but jobs already in the queue can
 finish.}
 
-\item{schedulingPolicyArn}{Amazon Resource Name (ARN) of the fair share scheduling policy. Once a
-job queue is created, the fair share scheduling policy can be replaced
+\item{schedulingPolicyArn}{Amazon Resource Name (ARN) of the fair-share scheduling policy. Once a
+job queue is created, the fair-share scheduling policy can be replaced
 but not removed. The format is
 \code{aws:Partition:batch:Region:Account:scheduling-policy/Name }. For
 example,

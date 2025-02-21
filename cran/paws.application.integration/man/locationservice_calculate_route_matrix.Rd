@@ -23,8 +23,8 @@ locationservice_calculate_route_matrix(
 calculate the route matrix.}
 
 \item{DeparturePositions}{[required] The list of departure (origin) positions for the route matrix. An array
-of points, each of which is itself a 2-value array defined in \href{https://earth-info.nga.mil/index.php?dir=wgs84&action=wgs84}{WGS 84} format:
-\verb{[longitude, latitude]}. For example, \verb{[-123.115, 49.285]}.
+of points, each of which is itself a 2-value array defined in WGS 84
+format: \verb{[longitude, latitude]}. For example, \verb{[-123.115, 49.285]}.
 
 Depending on the data provider selected in the route calculator resource
 there may be additional restrictions on the inputs you can choose. See
@@ -38,8 +38,8 @@ snapped value is available in the result in \code{SnappedDeparturePositions}.
 Valid Values: \verb{[-180 to 180,-90 to 90]}}
 
 \item{DestinationPositions}{[required] The list of destination positions for the route matrix. An array of
-points, each of which is itself a 2-value array defined in \href{https://earth-info.nga.mil/index.php?dir=wgs84&action=wgs84}{WGS 84} format:
-\verb{[longitude, latitude]}. For example, \verb{[-122.339, 47.615]}
+points, each of which is itself a 2-value array defined in WGS 84
+format: \verb{[longitude, latitude]}. For example, \verb{[-122.339, 47.615]}
 
 Depending on the data provider selected in the route calculator resource
 there may be additional restrictions on the inputs you can choose. See

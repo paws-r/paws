@@ -1613,7 +1613,7 @@ rds_create_custom_db_engine_version <- function(Engine, EngineVersion, DatabaseI
 #' `PerformanceInsightsEnabled` parameter to `true` and the
 #' `PerformanceInsightsRetentionPeriod` parameter to 465.
 #' 
-#' Valid for Cluster Type: Aurora DB clusters only
+#' Valid for Cluster Type: Aurora DB clusters and Multi-AZ DB clusters
 #' @param EnablePerformanceInsights Specifies whether to turn on Performance Insights for the DB cluster.
 #' 
 #' For more information, see [Using Amazon Performance
@@ -2805,10 +2805,8 @@ rds_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCluste
 #' -   RDS Custom
 #' @param DatabaseInsightsMode The mode of Database Insights to enable for the DB instance.
 #' 
-#' This setting only applies to Amazon Aurora DB instances.
-#' 
-#' Currently, this value is inherited from the DB cluster and can't be
-#' changed.
+#' Aurora DB instances inherit this value from the DB cluster, so you can't
+#' change this value.
 #' @param EnablePerformanceInsights Specifies whether to enable Performance Insights for the DB instance.
 #' For more information, see [Using Amazon Performance
 #' Insights](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PerfInsights.html)
@@ -3380,7 +3378,7 @@ rds_create_db_instance <- function(DBName = NULL, DBInstanceIdentifier, Allocate
 #' This setting doesn't apply to RDS Custom DB instances.
 #' @param DatabaseInsightsMode The mode of Database Insights to enable for the read replica.
 #' 
-#' Currently, this setting is not supported.
+#' This setting isn't supported.
 #' @param EnablePerformanceInsights Specifies whether to enable Performance Insights for the read replica.
 #' 
 #' For more information, see [Using Amazon Performance
@@ -9090,7 +9088,7 @@ rds_modify_custom_db_engine_version <- function(Engine, EngineVersion, Descripti
 #' If you change the value from `advanced` to `standard`, you must set the
 #' `PerformanceInsightsEnabled` parameter to `false`.
 #' 
-#' Valid for Cluster Type: Aurora DB clusters only
+#' Valid for Cluster Type: Aurora DB clusters and Multi-AZ DB clusters
 #' @param EnablePerformanceInsights Specifies whether to turn on Performance Insights for the DB cluster.
 #' 
 #' For more information, see [Using Amazon Performance
@@ -10022,10 +10020,8 @@ rds_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifier
 #' This setting doesn't apply to RDS Custom DB instances.
 #' @param DatabaseInsightsMode Specifies the mode of Database Insights to enable for the DB instance.
 #' 
-#' This setting only applies to Amazon Aurora DB instances.
-#' 
-#' Currently, this value is inherited from the DB cluster and can't be
-#' changed.
+#' Aurora DB instances inherit this value from the DB cluster, so you can't
+#' change this value.
 #' @param EnablePerformanceInsights Specifies whether to enable Performance Insights for the DB instance.
 #' 
 #' For more information, see [Using Amazon Performance
@@ -13501,10 +13497,8 @@ rds_restore_db_instance_from_db_snapshot <- function(DBInstanceIdentifier, DBSna
 #' in the *Amazon RDS User Guide.*
 #' @param DatabaseInsightsMode Specifies the mode of Database Insights to enable for the DB instance.
 #' 
-#' This setting only applies to Amazon Aurora DB instances.
-#' 
-#' Currently, this value is inherited from the DB cluster and can't be
-#' changed.
+#' Aurora DB instances inherit this value from the DB cluster, so you can't
+#' change this value.
 #' @param EnablePerformanceInsights Specifies whether to enable Performance Insights for the DB instance.
 #' 
 #' For more information, see [Using Amazon Performance

@@ -28,10 +28,10 @@ used to validate that the approval request corresponding to this token
 is still valid.
 
 For a pipeline where the execution mode is set to PARALLEL, the token
-required to approve/reject approval request as detailed above is not
-available. Instead, use the \code{externalExecutionId} from the
-\code{\link[=codepipeline_get_pipeline_state]{get_pipeline_state}} action as the
-token in the approval request.}
+required to approve/reject an approval request as detailed above is not
+available. Instead, use the \code{externalExecutionId} in the response output
+from the \code{\link[=codepipeline_list_action_executions]{list_action_executions}}
+action as the token in the approval request.}
 }
 \description{
 Provides the response to a manual approval request to CodePipeline. Valid responses include Approved and Rejected.

@@ -23,7 +23,7 @@ condition.}
 conditions, failure conditions, or success conditions.}
 }
 \description{
-Used to override a stage condition.
+Used to override a stage condition. For more information about conditions, see \href{https://docs.aws.amazon.com/codepipeline/latest/userguide/stage-conditions.html}{Stage conditions} and \href{https://docs.aws.amazon.com/codepipeline/latest/userguide/concepts-how-it-works-conditions.html}{How do stage conditions work?}.
 
 See \url{https://www.paws-r-sdk.com/docs/codepipeline_override_stage_condition/} for full documentation.
 }

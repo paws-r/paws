@@ -165,6 +165,7 @@ demonstrate how to use Amazon SES API v2 features programmatically.
 \link[paws.customer.engagement:sesv2_put_account_sending_attributes]{put_account_sending_attributes} \tab Enable or disable the ability of your account to send email\cr
 \link[paws.customer.engagement:sesv2_put_account_suppression_attributes]{put_account_suppression_attributes} \tab Change the settings for the account-level suppression list\cr
 \link[paws.customer.engagement:sesv2_put_account_vdm_attributes]{put_account_vdm_attributes} \tab Update your Amazon SES account VDM attributes\cr
+\link[paws.customer.engagement:sesv2_put_configuration_set_archiving_options]{put_configuration_set_archiving_options} \tab Associate the configuration set with a MailManager archive\cr
 \link[paws.customer.engagement:sesv2_put_configuration_set_delivery_options]{put_configuration_set_delivery_options} \tab Associate a configuration set with a dedicated IP pool\cr
 \link[paws.customer.engagement:sesv2_put_configuration_set_reputation_options]{put_configuration_set_reputation_options} \tab Enable or disable collection of reputation metrics for emails that you send using a particular configuration set in a specific Amazon Web Services Region\cr
 \link[paws.customer.engagement:sesv2_put_configuration_set_sending_options]{put_configuration_set_sending_options} \tab Enable or disable email sending for messages that use a particular configuration set in a specific Amazon Web Services Region\cr

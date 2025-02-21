@@ -3107,7 +3107,7 @@ lambda <- function(config = list(), credentials = list(), endpoint = NULL, regio
 #' Lightsail API, Command Line Interface (CLI), or SDKs. For more
 #' information about Lightsail concepts and tasks, see the [Amazon
 #' Lightsail Developer
-#' Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/lightsail-how-to-set-up-access-keys-to-use-sdk-api-cli.html).
+#' Guide](https://docs.aws.amazon.com/lightsail/latest/userguide/lightsail-how-to-set-up-access-keys-to-use-sdk-api-cli.html).
 #' 
 #' This API Reference provides detailed information about the actions, data
 #' types, parameters, and errors of the Lightsail service. For more
@@ -3344,7 +3344,7 @@ lambda <- function(config = list(), credentials = list(), endpoint = NULL, regio
 #'  \link[paws.compute:lightsail_start_gui_session]{start_gui_session} \tab Initiates a graphical user interface (GUI) session that’s used to access a virtual computer’s operating system and application\cr
 #'  \link[paws.compute:lightsail_start_instance]{start_instance} \tab Starts a specific Amazon Lightsail instance from a stopped state\cr
 #'  \link[paws.compute:lightsail_start_relational_database]{start_relational_database} \tab Starts a specific database from a stopped state in Amazon Lightsail\cr
-#'  \link[paws.compute:lightsail_stop_gui_session]{stop_gui_session} \tab Terminates a web-based NICE DCV session that’s used to access a virtual computer’s operating system or application\cr
+#'  \link[paws.compute:lightsail_stop_gui_session]{stop_gui_session} \tab Terminates a web-based Amazon DCV session that’s used to access a virtual computer’s operating system or application\cr
 #'  \link[paws.compute:lightsail_stop_instance]{stop_instance} \tab Stops a specific Amazon Lightsail instance that is currently running\cr
 #'  \link[paws.compute:lightsail_stop_relational_database]{stop_relational_database} \tab Stops a specific database that is currently running in Amazon Lightsail\cr
 #'  \link[paws.compute:lightsail_tag_resource]{tag_resource} \tab Adds one or more tags to the specified Amazon Lightsail resource\cr
@@ -11934,6 +11934,9 @@ globalaccelerator <- function(config = list(), credentials = list(), endpoint = 
 #' coming from an internet gateway, NAT gateway, or over VPN or Direct
 #' Connect. Network Firewall uses rules that are compatible with Suricata,
 #' a free, open source network analysis and threat detection engine.
+#' Network Firewall supports Suricata version 7.0.3. For information about
+#' Suricata, see the [Suricata website](https://suricata.io/) and the
+#' [Suricata User Guide](https://docs.suricata.io/en/suricata-7.0.3/).
 #' 
 #' You can use Network Firewall to monitor and protect your VPC traffic in
 #' a number of ways. The following are just a few examples:
@@ -12081,14 +12084,18 @@ globalaccelerator <- function(config = list(), credentials = list(), endpoint = 
 #'  \link[paws.networking:networkfirewall_describe_rule_group_metadata]{describe_rule_group_metadata} \tab High-level information about a rule group, returned by operations like create and describe\cr
 #'  \link[paws.networking:networkfirewall_describe_tls_inspection_configuration]{describe_tls_inspection_configuration} \tab Returns the data objects for the specified TLS inspection configuration\cr
 #'  \link[paws.networking:networkfirewall_disassociate_subnets]{disassociate_subnets} \tab Removes the specified subnet associations from the firewall\cr
+#'  \link[paws.networking:networkfirewall_get_analysis_report_results]{get_analysis_report_results} \tab The results of a COMPLETED analysis report generated with StartAnalysisReport\cr
+#'  \link[paws.networking:networkfirewall_list_analysis_reports]{list_analysis_reports} \tab Returns a list of all traffic analysis reports generated within the last 30 days\cr
 #'  \link[paws.networking:networkfirewall_list_firewall_policies]{list_firewall_policies} \tab Retrieves the metadata for the firewall policies that you have defined\cr
 #'  \link[paws.networking:networkfirewall_list_firewalls]{list_firewalls} \tab Retrieves the metadata for the firewalls that you have defined\cr
 #'  \link[paws.networking:networkfirewall_list_rule_groups]{list_rule_groups} \tab Retrieves the metadata for the rule groups that you have defined\cr
 #'  \link[paws.networking:networkfirewall_list_tags_for_resource]{list_tags_for_resource} \tab Retrieves the tags associated with the specified resource\cr
 #'  \link[paws.networking:networkfirewall_list_tls_inspection_configurations]{list_tls_inspection_configurations} \tab Retrieves the metadata for the TLS inspection configurations that you have defined\cr
 #'  \link[paws.networking:networkfirewall_put_resource_policy]{put_resource_policy} \tab Creates or updates an IAM policy for your rule group or firewall policy\cr
+#'  \link[paws.networking:networkfirewall_start_analysis_report]{start_analysis_report} \tab Generates a traffic analysis report for the timeframe and traffic type you specify\cr
 #'  \link[paws.networking:networkfirewall_tag_resource]{tag_resource} \tab Adds the specified tags to the specified resource\cr
 #'  \link[paws.networking:networkfirewall_untag_resource]{untag_resource} \tab Removes the tags with the specified keys from the specified resource\cr
+#'  \link[paws.networking:networkfirewall_update_firewall_analysis_settings]{update_firewall_analysis_settings} \tab Enables specific types of firewall analysis on a specific firewall you define\cr
 #'  \link[paws.networking:networkfirewall_update_firewall_delete_protection]{update_firewall_delete_protection} \tab Modifies the flag, DeleteProtection, which indicates whether it is possible to delete the firewall\cr
 #'  \link[paws.networking:networkfirewall_update_firewall_description]{update_firewall_description} \tab Modifies the description for the specified firewall\cr
 #'  \link[paws.networking:networkfirewall_update_firewall_encryption_configuration]{update_firewall_encryption_configuration} \tab A complex type that contains settings for encryption of your firewall resources\cr
@@ -47921,6 +47928,7 @@ ses <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #'  \link[paws.customer.engagement:sesv2_put_account_sending_attributes]{put_account_sending_attributes} \tab Enable or disable the ability of your account to send email\cr
 #'  \link[paws.customer.engagement:sesv2_put_account_suppression_attributes]{put_account_suppression_attributes} \tab Change the settings for the account-level suppression list\cr
 #'  \link[paws.customer.engagement:sesv2_put_account_vdm_attributes]{put_account_vdm_attributes} \tab Update your Amazon SES account VDM attributes\cr
+#'  \link[paws.customer.engagement:sesv2_put_configuration_set_archiving_options]{put_configuration_set_archiving_options} \tab Associate the configuration set with a MailManager archive\cr
 #'  \link[paws.customer.engagement:sesv2_put_configuration_set_delivery_options]{put_configuration_set_delivery_options} \tab Associate a configuration set with a dedicated IP pool\cr
 #'  \link[paws.customer.engagement:sesv2_put_configuration_set_reputation_options]{put_configuration_set_reputation_options} \tab Enable or disable collection of reputation metrics for emails that you send using a particular configuration set in a specific Amazon Web Services Region\cr
 #'  \link[paws.customer.engagement:sesv2_put_configuration_set_sending_options]{put_configuration_set_sending_options} \tab Enable or disable email sending for messages that use a particular configuration set in a specific Amazon Web Services Region\cr

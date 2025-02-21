@@ -63,7 +63,7 @@ in the example later on this page.}
 access private container image repositories, such as Amazon Elastic
 Container Registry (Amazon ECR) private repositories.
 
-For more information, see \href{https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-container-service-ecr-private-repo-access.html}{Configuring access to an Amazon ECR private repository for an Amazon Lightsail container service}
+For more information, see \href{https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-container-service-ecr-private-repo-access.html}{Configuring access to an Amazon ECR private repository for an Amazon Lightsail container service}
 in the \emph{Amazon Lightsail Developer Guide}.}
 }
 \description{

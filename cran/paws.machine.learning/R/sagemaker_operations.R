@@ -601,17 +601,32 @@ sagemaker_create_auto_ml_job_v2 <- function(AutoMLJobName, AutoMLJobInputDataCon
 #' [Give SageMaker access to resources in your Amazon
 #' VPC](https://docs.aws.amazon.com/sagemaker/latest/dg/infrastructure-give-access.html).
 #' 
-#' If you configure your VPC with IPv6 support and specify subnets with
-#' IPv6 addressing enabled in your VPC configuration, the cluster
-#' automatically uses IPv6 addressing for network communication.
+#' When your Amazon VPC and subnets support IPv6, network communications
+#' differ based on the cluster orchestration platform:
 #' 
-#' For information about adding IPv6 support for your VPC, see [IPv6
-#' support for your
-#' VPC](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-migrate-ipv6.html).
+#' -   Slurm-orchestrated clusters automatically configure nodes with dual
+#'     IPv6 and IPv4 addresses, allowing immediate IPv6 network
+#'     communications.
 #' 
-#' For information about creating a new VPC for use with IPv6, see [Create
-#' a
-#' VPC](https://docs.aws.amazon.com/vpc/latest/userguide/create-vpc.html).
+#' -   In Amazon EKS-orchestrated clusters, nodes receive dual-stack
+#'     addressing, but pods can only use IPv6 when the Amazon EKS cluster
+#'     is explicitly IPv6-enabled. For information about deploying an IPv6
+#'     Amazon EKS cluster, see [Amazon EKS IPv6 Cluster
+#'     Deployment](https://docs.aws.amazon.com/eks/latest/userguide/deploy-ipv6-cluster.html#_deploy_an_ipv6_cluster_with_eksctl).
+#' 
+#' Additional resources for IPv6 configuration:
+#' 
+#' -   For information about adding IPv6 support to your VPC, see to [IPv6
+#'     Support for
+#'     VPC](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-migrate-ipv6.html).
+#' 
+#' -   For information about creating a new IPv6-compatible VPC, see
+#'     [Amazon VPC Creation
+#'     Guide](https://docs.aws.amazon.com/vpc/latest/userguide/create-vpc.html).
+#' 
+#' -   To configure SageMaker HyperPod with a custom Amazon VPC, see
+#'     [Custom Amazon VPC Setup for SageMaker
+#'     HyperPod](https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-hyperpod-prerequisites.html#sagemaker-hyperpod-prerequisites-optional-vpc).
 #' @param Tags Custom tags for managing the SageMaker HyperPod cluster as an Amazon Web
 #' Services resource. You can add tags to your cluster in the same way you
 #' add them in other Amazon Web Services services that support tagging. To
@@ -13047,11 +13062,13 @@ sagemaker_update_artifact <- function(ArtifactArn, ArtifactName = NULL, Properti
 #' @param ClusterName &#91;required&#93; Specify the name of the SageMaker HyperPod cluster you want to update.
 #' @param InstanceGroups &#91;required&#93; Specify the instance groups to update.
 #' @param NodeRecovery The node recovery mode to be applied to the SageMaker HyperPod cluster.
+#' @param InstanceGroupsToDelete Specify the names of the instance groups to delete. Use a single `,` as
+#' the separator between multiple names.
 #'
 #' @keywords internal
 #'
 #' @rdname sagemaker_update_cluster
-sagemaker_update_cluster <- function(ClusterName, InstanceGroups, NodeRecovery = NULL) {
+sagemaker_update_cluster <- function(ClusterName, InstanceGroups, NodeRecovery = NULL, InstanceGroupsToDelete = NULL) {
   op <- new_operation(
     name = "UpdateCluster",
     http_method = "POST",
@@ -13060,7 +13077,7 @@ sagemaker_update_cluster <- function(ClusterName, InstanceGroups, NodeRecovery =
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .sagemaker$update_cluster_input(ClusterName = ClusterName, InstanceGroups = InstanceGroups, NodeRecovery = NodeRecovery)
+  input <- .sagemaker$update_cluster_input(ClusterName = ClusterName, InstanceGroups = InstanceGroups, NodeRecovery = NodeRecovery, InstanceGroupsToDelete = InstanceGroupsToDelete)
   output <- .sagemaker$update_cluster_output()
   config <- get_config()
   svc <- .sagemaker$service(config, op)

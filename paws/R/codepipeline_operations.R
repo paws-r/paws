@@ -346,7 +346,13 @@ codepipeline_create_custom_action_type <- function(category, provider, version, 
 #'             roleArn = "string",
 #'             region = "string",
 #'             namespace = "string",
-#'             timeoutInMinutes = 123
+#'             timeoutInMinutes = 123,
+#'             environmentVariables = list(
+#'               list(
+#'                 name = "string",
+#'                 value = "string"
+#'               )
+#'             )
 #'           )
 #'         ),
 #'         onFailure = list(
@@ -598,7 +604,13 @@ codepipeline_create_custom_action_type <- function(category, provider, version, 
 #'             roleArn = "string",
 #'             region = "string",
 #'             namespace = "string",
-#'             timeoutInMinutes = 123
+#'             timeoutInMinutes = 123,
+#'             environmentVariables = list(
+#'               list(
+#'                 name = "string",
+#'                 value = "string"
+#'               )
+#'             )
 #'           )
 #'         ),
 #'         onFailure = list(
@@ -1454,7 +1466,13 @@ codepipeline_get_job_details <- function(jobId) {
 #'             roleArn = "string",
 #'             region = "string",
 #'             namespace = "string",
-#'             timeoutInMinutes = 123
+#'             timeoutInMinutes = 123,
+#'             environmentVariables = list(
+#'               list(
+#'                 name = "string",
+#'                 value = "string"
+#'               )
+#'             )
 #'           )
 #'         ),
 #'         onFailure = list(
@@ -2688,8 +2706,10 @@ codepipeline_list_rule_executions <- function(pipelineName, filter = NULL, maxRe
 #' @description
 #' Lists the rules for the condition. For more information about
 #' conditions, see [Stage
-#' conditions](https://docs.aws.amazon.com/codepipeline/latest/userguide/stage-conditions.html).
-#' For more information about rules, see the [CodePipeline rule
+#' conditions](https://docs.aws.amazon.com/codepipeline/latest/userguide/stage-conditions.html)
+#' and [How do stage conditions
+#' work?](https://docs.aws.amazon.com/codepipeline/latest/userguide/concepts-how-it-works-conditions.html).For
+#' more information about rules, see the [CodePipeline rule
 #' reference](https://docs.aws.amazon.com/codepipeline/latest/userguide/rule-reference.html).
 #'
 #' @usage
@@ -2926,7 +2946,11 @@ codepipeline_list_webhooks <- function(NextToken = NULL, MaxResults = NULL) {
 #' Used to override a stage condition
 #'
 #' @description
-#' Used to override a stage condition.
+#' Used to override a stage condition. For more information about
+#' conditions, see [Stage
+#' conditions](https://docs.aws.amazon.com/codepipeline/latest/userguide/stage-conditions.html)
+#' and [How do stage conditions
+#' work?](https://docs.aws.amazon.com/codepipeline/latest/userguide/concepts-how-it-works-conditions.html).
 #'
 #' @usage
 #' codepipeline_override_stage_condition(pipelineName, stageName,
@@ -3269,10 +3293,10 @@ codepipeline_put_action_revision <- function(pipelineName, stageName, actionName
 #' is still valid.
 #' 
 #' For a pipeline where the execution mode is set to PARALLEL, the token
-#' required to approve/reject approval request as detailed above is not
-#' available. Instead, use the `externalExecutionId` from the
-#' [`get_pipeline_state`][codepipeline_get_pipeline_state] action as the
-#' token in the approval request.
+#' required to approve/reject an approval request as detailed above is not
+#' available. Instead, use the `externalExecutionId` in the response output
+#' from the [`list_action_executions`][codepipeline_list_action_executions]
+#' action as the token in the approval request.
 #'
 #' @return
 #' A list with the following syntax:
@@ -4309,7 +4333,13 @@ codepipeline_update_action_type <- function(actionType) {
 #'             roleArn = "string",
 #'             region = "string",
 #'             namespace = "string",
-#'             timeoutInMinutes = 123
+#'             timeoutInMinutes = 123,
+#'             environmentVariables = list(
+#'               list(
+#'                 name = "string",
+#'                 value = "string"
+#'               )
+#'             )
 #'           )
 #'         ),
 #'         onFailure = list(
@@ -4555,7 +4585,13 @@ codepipeline_update_action_type <- function(actionType) {
 #'             roleArn = "string",
 #'             region = "string",
 #'             namespace = "string",
-#'             timeoutInMinutes = 123
+#'             timeoutInMinutes = 123,
+#'             environmentVariables = list(
+#'               list(
+#'                 name = "string",
+#'                 value = "string"
+#'               )
+#'             )
 #'           )
 #'         ),
 #'         onFailure = list(

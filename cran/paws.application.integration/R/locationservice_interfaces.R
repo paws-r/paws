@@ -113,7 +113,7 @@ NULL
 
 .locationservice$create_geofence_collection_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CollectionName = structure(logical(0), tags = list(type = "string")), PricingPlan = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "Deprecated. If included, the only allowed value is RequestBasedUsage.", type = "string")), PricingPlanDataSource = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "Deprecated. No longer allowed.", type = "string")), Description = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), KmsKeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(CollectionName = structure(logical(0), tags = list(type = "string")), PricingPlan = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "Deprecated. If included, the only allowed value is RequestBasedUsage.", deprecatedSince = "2022-02-01", type = "string")), PricingPlanDataSource = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "Deprecated. No longer allowed.", deprecatedSince = "2022-02-01", type = "string")), Description = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), KmsKeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -137,7 +137,7 @@ NULL
 
 .locationservice$create_map_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MapName = structure(logical(0), tags = list(type = "string")), Configuration = structure(list(Style = structure(logical(0), tags = list(type = "string")), PoliticalView = structure(logical(0), tags = list(type = "string")), CustomLayers = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), PricingPlan = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "Deprecated. If included, the only allowed value is RequestBasedUsage.", type = "string")), Description = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  shape <- structure(list(MapName = structure(logical(0), tags = list(type = "string")), Configuration = structure(list(Style = structure(logical(0), tags = list(type = "string")), PoliticalView = structure(logical(0), tags = list(type = "string")), CustomLayers = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), PricingPlan = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "Deprecated. If included, the only allowed value is RequestBasedUsage.", deprecatedSince = "2022-02-01", type = "string")), Description = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -149,7 +149,7 @@ NULL
 
 .locationservice$create_place_index_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(IndexName = structure(logical(0), tags = list(type = "string")), DataSource = structure(logical(0), tags = list(type = "string")), PricingPlan = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "Deprecated. If included, the only allowed value is RequestBasedUsage.", type = "string")), Description = structure(logical(0), tags = list(type = "string")), DataSourceConfiguration = structure(list(IntendedUse = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  shape <- structure(list(IndexName = structure(logical(0), tags = list(type = "string")), DataSource = structure(logical(0), tags = list(type = "string")), PricingPlan = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "Deprecated. If included, the only allowed value is RequestBasedUsage.", deprecatedSince = "2022-02-01", type = "string")), Description = structure(logical(0), tags = list(type = "string")), DataSourceConfiguration = structure(list(IntendedUse = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -161,7 +161,7 @@ NULL
 
 .locationservice$create_route_calculator_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CalculatorName = structure(logical(0), tags = list(type = "string")), DataSource = structure(logical(0), tags = list(type = "string")), PricingPlan = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "Deprecated. If included, the only allowed value is RequestBasedUsage.", type = "string")), Description = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  shape <- structure(list(CalculatorName = structure(logical(0), tags = list(type = "string")), DataSource = structure(logical(0), tags = list(type = "string")), PricingPlan = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "Deprecated. If included, the only allowed value is RequestBasedUsage.", deprecatedSince = "2022-02-01", type = "string")), Description = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -173,7 +173,7 @@ NULL
 
 .locationservice$create_tracker_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TrackerName = structure(logical(0), tags = list(type = "string")), PricingPlan = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "Deprecated. If included, the only allowed value is RequestBasedUsage.", type = "string")), KmsKeyId = structure(logical(0), tags = list(type = "string")), PricingPlanDataSource = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "Deprecated. No longer allowed.", type = "string")), Description = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), PositionFiltering = structure(logical(0), tags = list(type = "string")), EventBridgeEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), KmsKeyEnableGeospatialQueries = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))
+  shape <- structure(list(TrackerName = structure(logical(0), tags = list(type = "string")), PricingPlan = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "Deprecated. If included, the only allowed value is RequestBasedUsage.", deprecatedSince = "2022-02-01", type = "string")), KmsKeyId = structure(logical(0), tags = list(type = "string")), PricingPlanDataSource = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "Deprecated. No longer allowed.", deprecatedSince = "2022-02-01", type = "string")), Description = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), PositionFiltering = structure(logical(0), tags = list(type = "string")), EventBridgeEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), KmsKeyEnableGeospatialQueries = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -263,7 +263,7 @@ NULL
 
 .locationservice$describe_geofence_collection_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CollectionName = structure(logical(0), tags = list(type = "string")), CollectionArn = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), PricingPlan = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "Deprecated. Always returns RequestBasedUsage.", type = "string")), PricingPlanDataSource = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "Deprecated. Unused.", type = "string")), KmsKeyId = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), CreateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), UpdateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), GeofenceCount = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
+  shape <- structure(list(CollectionName = structure(logical(0), tags = list(type = "string")), CollectionArn = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), PricingPlan = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "Deprecated. Always returns RequestBasedUsage.", deprecatedSince = "2022-02-01", type = "string")), PricingPlanDataSource = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "Deprecated. Unused.", deprecatedSince = "2022-02-01", type = "string")), KmsKeyId = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), CreateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), UpdateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), GeofenceCount = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -287,7 +287,7 @@ NULL
 
 .locationservice$describe_map_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MapName = structure(logical(0), tags = list(type = "string")), MapArn = structure(logical(0), tags = list(type = "string")), PricingPlan = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "Deprecated. Always returns RequestBasedUsage.", type = "string")), DataSource = structure(logical(0), tags = list(type = "string")), Configuration = structure(list(Style = structure(logical(0), tags = list(type = "string")), PoliticalView = structure(logical(0), tags = list(type = "string")), CustomLayers = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), Description = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), CreateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), UpdateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))
+  shape <- structure(list(MapName = structure(logical(0), tags = list(type = "string")), MapArn = structure(logical(0), tags = list(type = "string")), PricingPlan = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "Deprecated. Always returns RequestBasedUsage.", deprecatedSince = "2022-02-01", type = "string")), DataSource = structure(logical(0), tags = list(type = "string")), Configuration = structure(list(Style = structure(logical(0), tags = list(type = "string")), PoliticalView = structure(logical(0), tags = list(type = "string")), CustomLayers = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), Description = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), CreateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), UpdateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -299,7 +299,7 @@ NULL
 
 .locationservice$describe_place_index_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(IndexName = structure(logical(0), tags = list(type = "string")), IndexArn = structure(logical(0), tags = list(type = "string")), PricingPlan = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "Deprecated. Always returns RequestBasedUsage.", type = "string")), Description = structure(logical(0), tags = list(type = "string")), CreateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), UpdateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), DataSource = structure(logical(0), tags = list(type = "string")), DataSourceConfiguration = structure(list(IntendedUse = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  shape <- structure(list(IndexName = structure(logical(0), tags = list(type = "string")), IndexArn = structure(logical(0), tags = list(type = "string")), PricingPlan = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "Deprecated. Always returns RequestBasedUsage.", deprecatedSince = "2022-02-01", type = "string")), Description = structure(logical(0), tags = list(type = "string")), CreateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), UpdateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), DataSource = structure(logical(0), tags = list(type = "string")), DataSourceConfiguration = structure(list(IntendedUse = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -311,7 +311,7 @@ NULL
 
 .locationservice$describe_route_calculator_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CalculatorName = structure(logical(0), tags = list(type = "string")), CalculatorArn = structure(logical(0), tags = list(type = "string")), PricingPlan = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "Deprecated. Always returns RequestBasedUsage.", type = "string")), Description = structure(logical(0), tags = list(type = "string")), CreateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), UpdateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), DataSource = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  shape <- structure(list(CalculatorName = structure(logical(0), tags = list(type = "string")), CalculatorArn = structure(logical(0), tags = list(type = "string")), PricingPlan = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "Deprecated. Always returns RequestBasedUsage.", deprecatedSince = "2022-02-01", type = "string")), Description = structure(logical(0), tags = list(type = "string")), CreateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), UpdateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), DataSource = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -323,7 +323,7 @@ NULL
 
 .locationservice$describe_tracker_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TrackerName = structure(logical(0), tags = list(type = "string")), TrackerArn = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), PricingPlan = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "Deprecated. Always returns RequestBasedUsage.", type = "string")), PricingPlanDataSource = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "Deprecated. Unused.", type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), CreateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), UpdateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), KmsKeyId = structure(logical(0), tags = list(type = "string")), PositionFiltering = structure(logical(0), tags = list(type = "string")), EventBridgeEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), KmsKeyEnableGeospatialQueries = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))
+  shape <- structure(list(TrackerName = structure(logical(0), tags = list(type = "string")), TrackerArn = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), PricingPlan = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "Deprecated. Always returns RequestBasedUsage.", deprecatedSince = "2022-02-01", type = "string")), PricingPlanDataSource = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "Deprecated. Unused.", deprecatedSince = "2022-02-01", type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), CreateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), UpdateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), KmsKeyId = structure(logical(0), tags = list(type = "string")), PositionFiltering = structure(logical(0), tags = list(type = "string")), EventBridgeEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), KmsKeyEnableGeospatialQueries = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -467,7 +467,7 @@ NULL
 
 .locationservice$list_geofence_collections_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Entries = structure(list(structure(list(CollectionName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), PricingPlan = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "Deprecated. Always returns RequestBasedUsage.", type = "string")), PricingPlanDataSource = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "Deprecated. Unused.", type = "string")), CreateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), UpdateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Entries = structure(list(structure(list(CollectionName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), PricingPlan = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "Deprecated. Always returns RequestBasedUsage.", deprecatedSince = "2022-02-01", type = "string")), PricingPlanDataSource = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "Deprecated. Unused.", deprecatedSince = "2022-02-01", type = "string")), CreateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), UpdateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -503,7 +503,7 @@ NULL
 
 .locationservice$list_maps_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Entries = structure(list(structure(list(MapName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), DataSource = structure(logical(0), tags = list(type = "string")), PricingPlan = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "Deprecated. Always returns RequestBasedUsage.", type = "string")), CreateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), UpdateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Entries = structure(list(structure(list(MapName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), DataSource = structure(logical(0), tags = list(type = "string")), PricingPlan = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "Deprecated. Always returns RequestBasedUsage.", deprecatedSince = "2022-02-01", type = "string")), CreateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), UpdateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -515,7 +515,7 @@ NULL
 
 .locationservice$list_place_indexes_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Entries = structure(list(structure(list(IndexName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), DataSource = structure(logical(0), tags = list(type = "string")), PricingPlan = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "Deprecated. Always returns RequestBasedUsage.", type = "string")), CreateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), UpdateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Entries = structure(list(structure(list(IndexName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), DataSource = structure(logical(0), tags = list(type = "string")), PricingPlan = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "Deprecated. Always returns RequestBasedUsage.", deprecatedSince = "2022-02-01", type = "string")), CreateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), UpdateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -527,7 +527,7 @@ NULL
 
 .locationservice$list_route_calculators_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Entries = structure(list(structure(list(CalculatorName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), DataSource = structure(logical(0), tags = list(type = "string")), PricingPlan = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "Deprecated. Always returns RequestBasedUsage.", type = "string")), CreateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), UpdateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Entries = structure(list(structure(list(CalculatorName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), DataSource = structure(logical(0), tags = list(type = "string")), PricingPlan = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "Deprecated. Always returns RequestBasedUsage.", deprecatedSince = "2022-02-01", type = "string")), CreateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), UpdateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -563,7 +563,7 @@ NULL
 
 .locationservice$list_trackers_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Entries = structure(list(structure(list(TrackerName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), PricingPlan = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "Deprecated. Always returns RequestBasedUsage.", type = "string")), PricingPlanDataSource = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "Deprecated. Unused.", type = "string")), CreateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), UpdateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Entries = structure(list(structure(list(TrackerName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), PricingPlan = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "Deprecated. Always returns RequestBasedUsage.", deprecatedSince = "2022-02-01", type = "string")), PricingPlanDataSource = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "Deprecated. Unused.", deprecatedSince = "2022-02-01", type = "string")), CreateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), UpdateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -641,7 +641,7 @@ NULL
 
 .locationservice$update_geofence_collection_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CollectionName = structure(logical(0), tags = list(location = "uri", locationName = "CollectionName", type = "string")), PricingPlan = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "Deprecated. If included, the only allowed value is RequestBasedUsage.", type = "string")), PricingPlanDataSource = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "Deprecated. No longer allowed.", type = "string")), Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(CollectionName = structure(logical(0), tags = list(location = "uri", locationName = "CollectionName", type = "string")), PricingPlan = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "Deprecated. If included, the only allowed value is RequestBasedUsage.", deprecatedSince = "2022-02-01", type = "string")), PricingPlanDataSource = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "Deprecated. No longer allowed.", deprecatedSince = "2022-02-01", type = "string")), Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -665,7 +665,7 @@ NULL
 
 .locationservice$update_map_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MapName = structure(logical(0), tags = list(location = "uri", locationName = "MapName", type = "string")), PricingPlan = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "Deprecated. If included, the only allowed value is RequestBasedUsage.", type = "string")), Description = structure(logical(0), tags = list(type = "string")), ConfigurationUpdate = structure(list(PoliticalView = structure(logical(0), tags = list(type = "string")), CustomLayers = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(MapName = structure(logical(0), tags = list(location = "uri", locationName = "MapName", type = "string")), PricingPlan = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "Deprecated. If included, the only allowed value is RequestBasedUsage.", deprecatedSince = "2022-02-01", type = "string")), Description = structure(logical(0), tags = list(type = "string")), ConfigurationUpdate = structure(list(PoliticalView = structure(logical(0), tags = list(type = "string")), CustomLayers = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -677,7 +677,7 @@ NULL
 
 .locationservice$update_place_index_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(IndexName = structure(logical(0), tags = list(location = "uri", locationName = "IndexName", type = "string")), PricingPlan = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "Deprecated. If included, the only allowed value is RequestBasedUsage.", type = "string")), Description = structure(logical(0), tags = list(type = "string")), DataSourceConfiguration = structure(list(IntendedUse = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(IndexName = structure(logical(0), tags = list(location = "uri", locationName = "IndexName", type = "string")), PricingPlan = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "Deprecated. If included, the only allowed value is RequestBasedUsage.", deprecatedSince = "2022-02-01", type = "string")), Description = structure(logical(0), tags = list(type = "string")), DataSourceConfiguration = structure(list(IntendedUse = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -689,7 +689,7 @@ NULL
 
 .locationservice$update_route_calculator_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CalculatorName = structure(logical(0), tags = list(location = "uri", locationName = "CalculatorName", type = "string")), PricingPlan = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "Deprecated. If included, the only allowed value is RequestBasedUsage.", type = "string")), Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(CalculatorName = structure(logical(0), tags = list(location = "uri", locationName = "CalculatorName", type = "string")), PricingPlan = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "Deprecated. If included, the only allowed value is RequestBasedUsage.", deprecatedSince = "2022-02-01", type = "string")), Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -701,7 +701,7 @@ NULL
 
 .locationservice$update_tracker_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TrackerName = structure(logical(0), tags = list(location = "uri", locationName = "TrackerName", type = "string")), PricingPlan = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "Deprecated. If included, the only allowed value is RequestBasedUsage.", type = "string")), PricingPlanDataSource = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "Deprecated. No longer allowed.", type = "string")), Description = structure(logical(0), tags = list(type = "string")), PositionFiltering = structure(logical(0), tags = list(type = "string")), EventBridgeEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), KmsKeyEnableGeospatialQueries = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))
+  shape <- structure(list(TrackerName = structure(logical(0), tags = list(location = "uri", locationName = "TrackerName", type = "string")), PricingPlan = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "Deprecated. If included, the only allowed value is RequestBasedUsage.", deprecatedSince = "2022-02-01", type = "string")), PricingPlanDataSource = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "Deprecated. No longer allowed.", deprecatedSince = "2022-02-01", type = "string")), Description = structure(logical(0), tags = list(type = "string")), PositionFiltering = structure(logical(0), tags = list(type = "string")), EventBridgeEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE)), KmsKeyEnableGeospatialQueries = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

@@ -22,7 +22,7 @@ to start the product subscription.}
 \item{Product}{[required] The name of the user-based subscription product.
 
 Valid values: \code{VISUAL_STUDIO_ENTERPRISE} | \code{VISUAL_STUDIO_PROFESSIONAL}
-| \code{OFFICE_PROFESSIONAL_PLUS}}
+| \code{OFFICE_PROFESSIONAL_PLUS} | \code{REMOTE_DESKTOP_SERVICES}}
 
 \item{Tags}{The tags that apply to the product subscription.}
 

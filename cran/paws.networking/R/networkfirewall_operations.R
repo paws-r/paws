@@ -125,11 +125,11 @@ networkfirewall_associate_subnets <- function(UpdateToken = NULL, FirewallArn = 
 #' firewall after you create it.
 #' @param FirewallPolicyArn &#91;required&#93; The Amazon Resource Name (ARN) of the FirewallPolicy that you want to
 #' use for the firewall.
-#' @param VpcId &#91;required&#93; The unique identifier of the VPC where Network Firewall should create
+#' @param VpcId The unique identifier of the VPC where Network Firewall should create
 #' the firewall.
 #' 
 #' You can't change this setting after you create the firewall.
-#' @param SubnetMappings &#91;required&#93; The public subnets to use for your Network Firewall firewalls. Each
+#' @param SubnetMappings The public subnets to use for your Network Firewall firewalls. Each
 #' subnet must belong to a different Availability Zone in the VPC. Network
 #' Firewall creates a firewall endpoint in each subnet.
 #' @param DeleteProtection A flag indicating whether it is possible to delete the firewall. A
@@ -151,11 +151,13 @@ networkfirewall_associate_subnets <- function(UpdateToken = NULL, FirewallArn = 
 #' @param Tags The key:value pairs to associate with the resource.
 #' @param EncryptionConfiguration A complex type that contains settings for encryption of your firewall
 #' resources.
+#' @param EnabledAnalysisTypes An optional setting indicating the specific traffic analysis types to
+#' enable on the firewall.
 #'
 #' @keywords internal
 #'
 #' @rdname networkfirewall_create_firewall
-networkfirewall_create_firewall <- function(FirewallName, FirewallPolicyArn, VpcId, SubnetMappings, DeleteProtection = NULL, SubnetChangeProtection = NULL, FirewallPolicyChangeProtection = NULL, Description = NULL, Tags = NULL, EncryptionConfiguration = NULL) {
+networkfirewall_create_firewall <- function(FirewallName, FirewallPolicyArn, VpcId = NULL, SubnetMappings = NULL, DeleteProtection = NULL, SubnetChangeProtection = NULL, FirewallPolicyChangeProtection = NULL, Description = NULL, Tags = NULL, EncryptionConfiguration = NULL, EnabledAnalysisTypes = NULL) {
   op <- new_operation(
     name = "CreateFirewall",
     http_method = "POST",
@@ -164,7 +166,7 @@ networkfirewall_create_firewall <- function(FirewallName, FirewallPolicyArn, Vpc
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .networkfirewall$create_firewall_input(FirewallName = FirewallName, FirewallPolicyArn = FirewallPolicyArn, VpcId = VpcId, SubnetMappings = SubnetMappings, DeleteProtection = DeleteProtection, SubnetChangeProtection = SubnetChangeProtection, FirewallPolicyChangeProtection = FirewallPolicyChangeProtection, Description = Description, Tags = Tags, EncryptionConfiguration = EncryptionConfiguration)
+  input <- .networkfirewall$create_firewall_input(FirewallName = FirewallName, FirewallPolicyArn = FirewallPolicyArn, VpcId = VpcId, SubnetMappings = SubnetMappings, DeleteProtection = DeleteProtection, SubnetChangeProtection = SubnetChangeProtection, FirewallPolicyChangeProtection = FirewallPolicyChangeProtection, Description = Description, Tags = Tags, EncryptionConfiguration = EncryptionConfiguration, EnabledAnalysisTypes = EnabledAnalysisTypes)
   output <- .networkfirewall$create_firewall_output()
   config <- get_config()
   svc <- .networkfirewall$service(config, op)
@@ -914,6 +916,102 @@ networkfirewall_disassociate_subnets <- function(UpdateToken = NULL, FirewallArn
 }
 .networkfirewall$operations$disassociate_subnets <- networkfirewall_disassociate_subnets
 
+#' The results of a COMPLETED analysis report generated with
+#' StartAnalysisReport
+#'
+#' @description
+#' The results of a `COMPLETED` analysis report generated with [`start_analysis_report`][networkfirewall_start_analysis_report].
+#'
+#' See [https://www.paws-r-sdk.com/docs/networkfirewall_get_analysis_report_results/](https://www.paws-r-sdk.com/docs/networkfirewall_get_analysis_report_results/) for full documentation.
+#'
+#' @param FirewallName The descriptive name of the firewall. You can't change the name of a
+#' firewall after you create it.
+#' 
+#' You must specify the ARN or the name, and you can specify both.
+#' @param AnalysisReportId &#91;required&#93; The unique ID of the query that ran when you requested an analysis
+#' report.
+#' @param FirewallArn The Amazon Resource Name (ARN) of the firewall.
+#' 
+#' You must specify the ARN or the name, and you can specify both.
+#' @param NextToken When you request a list of objects with a `MaxResults` setting, if the
+#' number of objects that are still available for retrieval exceeds the
+#' maximum you requested, Network Firewall returns a `NextToken` value in
+#' the response. To retrieve the next batch of objects, use the token
+#' returned from the prior request in your next request.
+#' @param MaxResults The maximum number of objects that you want Network Firewall to return
+#' for this request. If more objects are available, in the response,
+#' Network Firewall provides a `NextToken` value that you can use in a
+#' subsequent call to get the next batch of objects.
+#'
+#' @keywords internal
+#'
+#' @rdname networkfirewall_get_analysis_report_results
+networkfirewall_get_analysis_report_results <- function(FirewallName = NULL, AnalysisReportId, FirewallArn = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "GetAnalysisReportResults",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "AnalysisReportResults"),
+    stream_api = FALSE
+  )
+  input <- .networkfirewall$get_analysis_report_results_input(FirewallName = FirewallName, AnalysisReportId = AnalysisReportId, FirewallArn = FirewallArn, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .networkfirewall$get_analysis_report_results_output()
+  config <- get_config()
+  svc <- .networkfirewall$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkfirewall$operations$get_analysis_report_results <- networkfirewall_get_analysis_report_results
+
+#' Returns a list of all traffic analysis reports generated within the last
+#' 30 days
+#'
+#' @description
+#' Returns a list of all traffic analysis reports generated within the last 30 days.
+#'
+#' See [https://www.paws-r-sdk.com/docs/networkfirewall_list_analysis_reports/](https://www.paws-r-sdk.com/docs/networkfirewall_list_analysis_reports/) for full documentation.
+#'
+#' @param FirewallName The descriptive name of the firewall. You can't change the name of a
+#' firewall after you create it.
+#' 
+#' You must specify the ARN or the name, and you can specify both.
+#' @param FirewallArn The Amazon Resource Name (ARN) of the firewall.
+#' 
+#' You must specify the ARN or the name, and you can specify both.
+#' @param NextToken When you request a list of objects with a `MaxResults` setting, if the
+#' number of objects that are still available for retrieval exceeds the
+#' maximum you requested, Network Firewall returns a `NextToken` value in
+#' the response. To retrieve the next batch of objects, use the token
+#' returned from the prior request in your next request.
+#' @param MaxResults The maximum number of objects that you want Network Firewall to return
+#' for this request. If more objects are available, in the response,
+#' Network Firewall provides a `NextToken` value that you can use in a
+#' subsequent call to get the next batch of objects.
+#'
+#' @keywords internal
+#'
+#' @rdname networkfirewall_list_analysis_reports
+networkfirewall_list_analysis_reports <- function(FirewallName = NULL, FirewallArn = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListAnalysisReports",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "AnalysisReports"),
+    stream_api = FALSE
+  )
+  input <- .networkfirewall$list_analysis_reports_input(FirewallName = FirewallName, FirewallArn = FirewallArn, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .networkfirewall$list_analysis_reports_output()
+  config <- get_config()
+  svc <- .networkfirewall$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkfirewall$operations$list_analysis_reports <- networkfirewall_list_analysis_reports
+
 #' Retrieves the metadata for the firewall policies that you have defined
 #'
 #' @description
@@ -1177,6 +1275,45 @@ networkfirewall_put_resource_policy <- function(ResourceArn, Policy) {
 }
 .networkfirewall$operations$put_resource_policy <- networkfirewall_put_resource_policy
 
+#' Generates a traffic analysis report for the timeframe and traffic type
+#' you specify
+#'
+#' @description
+#' Generates a traffic analysis report for the timeframe and traffic type you specify.
+#'
+#' See [https://www.paws-r-sdk.com/docs/networkfirewall_start_analysis_report/](https://www.paws-r-sdk.com/docs/networkfirewall_start_analysis_report/) for full documentation.
+#'
+#' @param FirewallName The descriptive name of the firewall. You can't change the name of a
+#' firewall after you create it.
+#' 
+#' You must specify the ARN or the name, and you can specify both.
+#' @param FirewallArn The Amazon Resource Name (ARN) of the firewall.
+#' 
+#' You must specify the ARN or the name, and you can specify both.
+#' @param AnalysisType &#91;required&#93; The type of traffic that will be used to generate a report.
+#'
+#' @keywords internal
+#'
+#' @rdname networkfirewall_start_analysis_report
+networkfirewall_start_analysis_report <- function(FirewallName = NULL, FirewallArn = NULL, AnalysisType) {
+  op <- new_operation(
+    name = "StartAnalysisReport",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .networkfirewall$start_analysis_report_input(FirewallName = FirewallName, FirewallArn = FirewallArn, AnalysisType = AnalysisType)
+  output <- .networkfirewall$start_analysis_report_output()
+  config <- get_config()
+  svc <- .networkfirewall$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkfirewall$operations$start_analysis_report <- networkfirewall_start_analysis_report
+
 #' Adds the specified tags to the specified resource
 #'
 #' @description
@@ -1240,6 +1377,63 @@ networkfirewall_untag_resource <- function(ResourceArn, TagKeys) {
   return(response)
 }
 .networkfirewall$operations$untag_resource <- networkfirewall_untag_resource
+
+#' Enables specific types of firewall analysis on a specific firewall you
+#' define
+#'
+#' @description
+#' Enables specific types of firewall analysis on a specific firewall you define.
+#'
+#' See [https://www.paws-r-sdk.com/docs/networkfirewall_update_firewall_analysis_settings/](https://www.paws-r-sdk.com/docs/networkfirewall_update_firewall_analysis_settings/) for full documentation.
+#'
+#' @param EnabledAnalysisTypes An optional setting indicating the specific traffic analysis types to
+#' enable on the firewall.
+#' @param FirewallArn The Amazon Resource Name (ARN) of the firewall.
+#' 
+#' You must specify the ARN or the name, and you can specify both.
+#' @param FirewallName The descriptive name of the firewall. You can't change the name of a
+#' firewall after you create it.
+#' 
+#' You must specify the ARN or the name, and you can specify both.
+#' @param UpdateToken An optional token that you can use for optimistic locking. Network
+#' Firewall returns a token to your requests that access the firewall. The
+#' token marks the state of the firewall resource at the time of the
+#' request.
+#' 
+#' To make an unconditional change to the firewall, omit the token in your
+#' update request. Without the token, Network Firewall performs your
+#' updates regardless of whether the firewall has changed since you last
+#' retrieved it.
+#' 
+#' To make a conditional change to the firewall, provide the token in your
+#' update request. Network Firewall uses the token to ensure that the
+#' firewall hasn't changed since you last retrieved it. If it has changed,
+#' the operation fails with an `InvalidTokenException`. If this happens,
+#' retrieve the firewall again to get a current copy of it with a new
+#' token. Reapply your changes as needed, then try the operation again
+#' using the new token.
+#'
+#' @keywords internal
+#'
+#' @rdname networkfirewall_update_firewall_analysis_settings
+networkfirewall_update_firewall_analysis_settings <- function(EnabledAnalysisTypes = NULL, FirewallArn = NULL, FirewallName = NULL, UpdateToken = NULL) {
+  op <- new_operation(
+    name = "UpdateFirewallAnalysisSettings",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .networkfirewall$update_firewall_analysis_settings_input(EnabledAnalysisTypes = EnabledAnalysisTypes, FirewallArn = FirewallArn, FirewallName = FirewallName, UpdateToken = UpdateToken)
+  output <- .networkfirewall$update_firewall_analysis_settings_output()
+  config <- get_config()
+  svc <- .networkfirewall$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkfirewall$operations$update_firewall_analysis_settings <- networkfirewall_update_firewall_analysis_settings
 
 #' Modifies the flag, DeleteProtection, which indicates whether it is
 #' possible to delete the firewall

@@ -13,7 +13,7 @@ add-on.}
 \item{addOnRequest}{[required] An array of strings representing the add-on to enable or modify.}
 }
 \description{
-Enables or modifies an add-on for an Amazon Lightsail resource. For more information, see the \href{https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-configuring-automatic-snapshots.html}{Amazon Lightsail Developer Guide}.
+Enables or modifies an add-on for an Amazon Lightsail resource. For more information, see the \href{https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-configuring-automatic-snapshots.html}{Amazon Lightsail Developer Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/lightsail_enable_add_on/} for full documentation.
 }
