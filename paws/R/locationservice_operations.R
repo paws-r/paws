@@ -625,9 +625,8 @@ locationservice_batch_update_device_position <- function(TrackerName, Updates) {
 #'
 #' @param CalculatorName &#91;required&#93; The name of the route calculator resource that you want to use to
 #' calculate the route.
-#' @param DeparturePosition &#91;required&#93; The start position for the route. Defined in [World Geodetic System (WGS
-#' 84)](https://earth-info.nga.mil/index.php?dir=wgs84&action=wgs84)
-#' format: `[longitude, latitude]`.
+#' @param DeparturePosition &#91;required&#93; The start position for the route. Defined in World Geodetic System (WGS
+#' 84) format: `[longitude, latitude]`.
 #' 
 #' -   For example, `[-123.115, 49.285]`
 #' 
@@ -638,9 +637,8 @@ locationservice_batch_update_device_position <- function(TrackerName, Updates) {
 #' is longer than 400 km returns a `400 RoutesValidationException` error.
 #' 
 #' Valid Values: `[-180 to 180,-90 to 90]`
-#' @param DestinationPosition &#91;required&#93; The finish position for the route. Defined in [World Geodetic System
-#' (WGS 84)](https://earth-info.nga.mil/index.php?dir=wgs84&action=wgs84)
-#' format: `[longitude, latitude]`.
+#' @param DestinationPosition &#91;required&#93; The finish position for the route. Defined in World Geodetic System (WGS
+#' 84) format: `[longitude, latitude]`.
 #' 
 #' -   For example, `[-122.339, 47.615]`
 #' 
@@ -908,9 +906,8 @@ locationservice_calculate_route <- function(CalculatorName, DeparturePosition, D
 #' @param CalculatorName &#91;required&#93; The name of the route calculator resource that you want to use to
 #' calculate the route matrix.
 #' @param DeparturePositions &#91;required&#93; The list of departure (origin) positions for the route matrix. An array
-#' of points, each of which is itself a 2-value array defined in [WGS
-#' 84](https://earth-info.nga.mil/index.php?dir=wgs84&action=wgs84) format:
-#' `[longitude, latitude]`. For example, `[-123.115, 49.285]`.
+#' of points, each of which is itself a 2-value array defined in WGS 84
+#' format: `[longitude, latitude]`. For example, `[-123.115, 49.285]`.
 #' 
 #' Depending on the data provider selected in the route calculator resource
 #' there may be additional restrictions on the inputs you can choose. See
@@ -926,9 +923,8 @@ locationservice_calculate_route <- function(CalculatorName, DeparturePosition, D
 #' 
 #' Valid Values: `[-180 to 180,-90 to 90]`
 #' @param DestinationPositions &#91;required&#93; The list of destination positions for the route matrix. An array of
-#' points, each of which is itself a 2-value array defined in [WGS
-#' 84](https://earth-info.nga.mil/index.php?dir=wgs84&action=wgs84) format:
-#' `[longitude, latitude]`. For example, `[-122.339, 47.615]`
+#' points, each of which is itself a 2-value array defined in WGS 84
+#' format: `[longitude, latitude]`. For example, `[-122.339, 47.615]`
 #' 
 #' Depending on the data provider selected in the route calculator resource
 #' there may be additional restrictions on the inputs you can choose. See

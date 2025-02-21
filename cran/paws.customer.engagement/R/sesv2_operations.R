@@ -89,11 +89,13 @@ sesv2_cancel_export_job <- function(JobId) {
 #' @param SuppressionOptions 
 #' @param VdmOptions An object that defines the VDM options for emails that you send using
 #' the configuration set.
+#' @param ArchivingOptions An object that defines the MailManager archiving options for emails that
+#' you send using the configuration set.
 #'
 #' @keywords internal
 #'
 #' @rdname sesv2_create_configuration_set
-sesv2_create_configuration_set <- function(ConfigurationSetName, TrackingOptions = NULL, DeliveryOptions = NULL, ReputationOptions = NULL, SendingOptions = NULL, Tags = NULL, SuppressionOptions = NULL, VdmOptions = NULL) {
+sesv2_create_configuration_set <- function(ConfigurationSetName, TrackingOptions = NULL, DeliveryOptions = NULL, ReputationOptions = NULL, SendingOptions = NULL, Tags = NULL, SuppressionOptions = NULL, VdmOptions = NULL, ArchivingOptions = NULL) {
   op <- new_operation(
     name = "CreateConfigurationSet",
     http_method = "POST",
@@ -102,7 +104,7 @@ sesv2_create_configuration_set <- function(ConfigurationSetName, TrackingOptions
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .sesv2$create_configuration_set_input(ConfigurationSetName = ConfigurationSetName, TrackingOptions = TrackingOptions, DeliveryOptions = DeliveryOptions, ReputationOptions = ReputationOptions, SendingOptions = SendingOptions, Tags = Tags, SuppressionOptions = SuppressionOptions, VdmOptions = VdmOptions)
+  input <- .sesv2$create_configuration_set_input(ConfigurationSetName = ConfigurationSetName, TrackingOptions = TrackingOptions, DeliveryOptions = DeliveryOptions, ReputationOptions = ReputationOptions, SendingOptions = SendingOptions, Tags = Tags, SuppressionOptions = SuppressionOptions, VdmOptions = VdmOptions, ArchivingOptions = ArchivingOptions)
   output <- .sesv2$create_configuration_set_output()
   config <- get_config()
   svc <- .sesv2$service(config, op)
@@ -2424,6 +2426,40 @@ sesv2_put_account_vdm_attributes <- function(VdmAttributes) {
   return(response)
 }
 .sesv2$operations$put_account_vdm_attributes <- sesv2_put_account_vdm_attributes
+
+#' Associate the configuration set with a MailManager archive
+#'
+#' @description
+#' Associate the configuration set with a MailManager archive. When you send email using the [`send_email`][sesv2_send_email] or [`send_bulk_email`][sesv2_send_bulk_email] operations the message as it will be given to the receiving SMTP server will be archived, along with the recipient information.
+#'
+#' See [https://www.paws-r-sdk.com/docs/sesv2_put_configuration_set_archiving_options/](https://www.paws-r-sdk.com/docs/sesv2_put_configuration_set_archiving_options/) for full documentation.
+#'
+#' @param ConfigurationSetName &#91;required&#93; The name of the configuration set to associate with a MailManager
+#' archive.
+#' @param ArchiveArn The Amazon Resource Name (ARN) of the MailManager archive that the
+#' Amazon SES API v2 sends email to.
+#'
+#' @keywords internal
+#'
+#' @rdname sesv2_put_configuration_set_archiving_options
+sesv2_put_configuration_set_archiving_options <- function(ConfigurationSetName, ArchiveArn = NULL) {
+  op <- new_operation(
+    name = "PutConfigurationSetArchivingOptions",
+    http_method = "PUT",
+    http_path = "/v2/email/configuration-sets/{ConfigurationSetName}/archiving-options",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .sesv2$put_configuration_set_archiving_options_input(ConfigurationSetName = ConfigurationSetName, ArchiveArn = ArchiveArn)
+  output <- .sesv2$put_configuration_set_archiving_options_output()
+  config <- get_config()
+  svc <- .sesv2$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sesv2$operations$put_configuration_set_archiving_options <- sesv2_put_configuration_set_archiving_options
 
 #' Associate a configuration set with a dedicated IP pool
 #'

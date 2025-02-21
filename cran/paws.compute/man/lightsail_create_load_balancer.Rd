@@ -62,11 +62,11 @@ Use the
 \code{\link[=lightsail_get_load_balancer_tls_policies]{get_load_balancer_tls_policies}}
 action to get a list of TLS policy names that you can specify.
 
-For more information about load balancer TLS policies, see \href{https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-configure-load-balancer-tls-security-policy.html}{Configuring TLS security policies on your Amazon Lightsail load balancers}
+For more information about load balancer TLS policies, see \href{https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-configure-load-balancer-tls-security-policy.html}{Configuring TLS security policies on your Amazon Lightsail load balancers}
 in the \emph{Amazon Lightsail Developer Guide}.}
 }
 \description{
-Creates a Lightsail load balancer. To learn more about deciding whether to load balance your application, see \href{https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/configure-lightsail-instances-for-load-balancing.html}{Configure your Lightsail instances for load balancing}. You can create up to 5 load balancers per AWS Region in your account.
+Creates a Lightsail load balancer. To learn more about deciding whether to load balance your application, see \href{https://docs.aws.amazon.com/lightsail/latest/userguide/configure-lightsail-instances-for-load-balancing.html}{Configure your Lightsail instances for load balancing}. You can create up to 5 load balancers per AWS Region in your account.
 
 See \url{https://www.paws-r-sdk.com/docs/lightsail_create_load_balancer/} for full documentation.
 }

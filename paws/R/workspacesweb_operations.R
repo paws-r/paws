@@ -1120,7 +1120,7 @@ workspacesweb_create_user_access_logging_settings <- function(clientToken = NULL
 #'   clientToken, cookieSynchronizationConfiguration, copyAllowed,
 #'   customerManagedKey, deepLinkAllowed, disconnectTimeoutInMinutes,
 #'   downloadAllowed, idleDisconnectTimeoutInMinutes, pasteAllowed,
-#'   printAllowed, tags, uploadAllowed)
+#'   printAllowed, tags, toolbarConfiguration, uploadAllowed)
 #'
 #' @param additionalEncryptionContext The additional encryption context of the user settings.
 #' @param clientToken A unique, case-sensitive identifier that you provide to ensure the
@@ -1151,6 +1151,11 @@ workspacesweb_create_user_access_logging_settings <- function(clientToken = NULL
 #' @param printAllowed &#91;required&#93; Specifies whether the user can print to the local device.
 #' @param tags The tags to add to the user settings resource. A tag is a key-value
 #' pair.
+#' @param toolbarConfiguration The configuration of the toolbar. This allows administrators to select
+#' the toolbar type and visual mode, set maximum display resolution for
+#' sessions, and choose which items are visible to end users during their
+#' sessions. If administrators do not modify these settings, end users
+#' retain control over their toolbar preferences.
 #' @param uploadAllowed &#91;required&#93; Specifies whether the user can upload files from the local device to the
 #' streaming session.
 #'
@@ -1199,6 +1204,14 @@ workspacesweb_create_user_access_logging_settings <- function(clientToken = NULL
 #'       Value = "string"
 #'     )
 #'   ),
+#'   toolbarConfiguration = list(
+#'     hiddenToolbarItems = list(
+#'       "Windows"|"DualMonitor"|"FullScreen"|"Webcam"|"Microphone"
+#'     ),
+#'     maxDisplayResolution = "size4096X2160"|"size3840X2160"|"size3440X1440"|"size2560X1440"|"size1920X1080"|"size1280X720"|"size1024X768"|"size800X600",
+#'     toolbarType = "Floating"|"Docked",
+#'     visualMode = "Dark"|"Light"
+#'   ),
 #'   uploadAllowed = "Disabled"|"Enabled"
 #' )
 #' ```
@@ -1208,7 +1221,7 @@ workspacesweb_create_user_access_logging_settings <- function(clientToken = NULL
 #' @rdname workspacesweb_create_user_settings
 #'
 #' @aliases workspacesweb_create_user_settings
-workspacesweb_create_user_settings <- function(additionalEncryptionContext = NULL, clientToken = NULL, cookieSynchronizationConfiguration = NULL, copyAllowed, customerManagedKey = NULL, deepLinkAllowed = NULL, disconnectTimeoutInMinutes = NULL, downloadAllowed, idleDisconnectTimeoutInMinutes = NULL, pasteAllowed, printAllowed, tags = NULL, uploadAllowed) {
+workspacesweb_create_user_settings <- function(additionalEncryptionContext = NULL, clientToken = NULL, cookieSynchronizationConfiguration = NULL, copyAllowed, customerManagedKey = NULL, deepLinkAllowed = NULL, disconnectTimeoutInMinutes = NULL, downloadAllowed, idleDisconnectTimeoutInMinutes = NULL, pasteAllowed, printAllowed, tags = NULL, toolbarConfiguration = NULL, uploadAllowed) {
   op <- new_operation(
     name = "CreateUserSettings",
     http_method = "POST",
@@ -1217,7 +1230,7 @@ workspacesweb_create_user_settings <- function(additionalEncryptionContext = NUL
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .workspacesweb$create_user_settings_input(additionalEncryptionContext = additionalEncryptionContext, clientToken = clientToken, cookieSynchronizationConfiguration = cookieSynchronizationConfiguration, copyAllowed = copyAllowed, customerManagedKey = customerManagedKey, deepLinkAllowed = deepLinkAllowed, disconnectTimeoutInMinutes = disconnectTimeoutInMinutes, downloadAllowed = downloadAllowed, idleDisconnectTimeoutInMinutes = idleDisconnectTimeoutInMinutes, pasteAllowed = pasteAllowed, printAllowed = printAllowed, tags = tags, uploadAllowed = uploadAllowed)
+  input <- .workspacesweb$create_user_settings_input(additionalEncryptionContext = additionalEncryptionContext, clientToken = clientToken, cookieSynchronizationConfiguration = cookieSynchronizationConfiguration, copyAllowed = copyAllowed, customerManagedKey = customerManagedKey, deepLinkAllowed = deepLinkAllowed, disconnectTimeoutInMinutes = disconnectTimeoutInMinutes, downloadAllowed = downloadAllowed, idleDisconnectTimeoutInMinutes = idleDisconnectTimeoutInMinutes, pasteAllowed = pasteAllowed, printAllowed = printAllowed, tags = tags, toolbarConfiguration = toolbarConfiguration, uploadAllowed = uploadAllowed)
   output <- .workspacesweb$create_user_settings_output()
   config <- get_config()
   svc <- .workspacesweb$service(config, op)
@@ -2724,6 +2737,14 @@ workspacesweb_get_user_access_logging_settings <- function(userAccessLoggingSett
 #'     idleDisconnectTimeoutInMinutes = 123,
 #'     pasteAllowed = "Disabled"|"Enabled",
 #'     printAllowed = "Disabled"|"Enabled",
+#'     toolbarConfiguration = list(
+#'       hiddenToolbarItems = list(
+#'         "Windows"|"DualMonitor"|"FullScreen"|"Webcam"|"Microphone"
+#'       ),
+#'       maxDisplayResolution = "size4096X2160"|"size3840X2160"|"size3440X1440"|"size2560X1440"|"size1920X1080"|"size1280X720"|"size1024X768"|"size800X600",
+#'       toolbarType = "Floating"|"Docked",
+#'       visualMode = "Dark"|"Light"
+#'     ),
 #'     uploadAllowed = "Disabled"|"Enabled",
 #'     userSettingsArn = "string"
 #'   )
@@ -3495,6 +3516,14 @@ workspacesweb_list_user_access_logging_settings <- function(maxResults = NULL, n
 #'       idleDisconnectTimeoutInMinutes = 123,
 #'       pasteAllowed = "Disabled"|"Enabled",
 #'       printAllowed = "Disabled"|"Enabled",
+#'       toolbarConfiguration = list(
+#'         hiddenToolbarItems = list(
+#'           "Windows"|"DualMonitor"|"FullScreen"|"Webcam"|"Microphone"
+#'         ),
+#'         maxDisplayResolution = "size4096X2160"|"size3840X2160"|"size3440X1440"|"size2560X1440"|"size1920X1080"|"size1280X720"|"size1024X768"|"size800X600",
+#'         toolbarType = "Floating"|"Docked",
+#'         visualMode = "Dark"|"Light"
+#'       ),
 #'       uploadAllowed = "Disabled"|"Enabled",
 #'       userSettingsArn = "string"
 #'     )
@@ -4412,7 +4441,7 @@ workspacesweb_update_user_access_logging_settings <- function(clientToken = NULL
 #'   cookieSynchronizationConfiguration, copyAllowed, deepLinkAllowed,
 #'   disconnectTimeoutInMinutes, downloadAllowed,
 #'   idleDisconnectTimeoutInMinutes, pasteAllowed, printAllowed,
-#'   uploadAllowed, userSettingsArn)
+#'   toolbarConfiguration, uploadAllowed, userSettingsArn)
 #'
 #' @param clientToken A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. Idempotency ensures that an API request
@@ -4441,6 +4470,11 @@ workspacesweb_update_user_access_logging_settings <- function(clientToken = NULL
 #' @param pasteAllowed Specifies whether the user can paste text from the local device to the
 #' streaming session.
 #' @param printAllowed Specifies whether the user can print to the local device.
+#' @param toolbarConfiguration The configuration of the toolbar. This allows administrators to select
+#' the toolbar type and visual mode, set maximum display resolution for
+#' sessions, and choose which items are visible to end users during their
+#' sessions. If administrators do not modify these settings, end users
+#' retain control over their toolbar preferences.
 #' @param uploadAllowed Specifies whether the user can upload files from the local device to the
 #' streaming session.
 #' @param userSettingsArn &#91;required&#93; The ARN of the user settings.
@@ -4480,6 +4514,14 @@ workspacesweb_update_user_access_logging_settings <- function(clientToken = NULL
 #'     idleDisconnectTimeoutInMinutes = 123,
 #'     pasteAllowed = "Disabled"|"Enabled",
 #'     printAllowed = "Disabled"|"Enabled",
+#'     toolbarConfiguration = list(
+#'       hiddenToolbarItems = list(
+#'         "Windows"|"DualMonitor"|"FullScreen"|"Webcam"|"Microphone"
+#'       ),
+#'       maxDisplayResolution = "size4096X2160"|"size3840X2160"|"size3440X1440"|"size2560X1440"|"size1920X1080"|"size1280X720"|"size1024X768"|"size800X600",
+#'       toolbarType = "Floating"|"Docked",
+#'       visualMode = "Dark"|"Light"
+#'     ),
 #'     uploadAllowed = "Disabled"|"Enabled",
 #'     userSettingsArn = "string"
 #'   )
@@ -4513,6 +4555,14 @@ workspacesweb_update_user_access_logging_settings <- function(clientToken = NULL
 #'   idleDisconnectTimeoutInMinutes = 123,
 #'   pasteAllowed = "Disabled"|"Enabled",
 #'   printAllowed = "Disabled"|"Enabled",
+#'   toolbarConfiguration = list(
+#'     hiddenToolbarItems = list(
+#'       "Windows"|"DualMonitor"|"FullScreen"|"Webcam"|"Microphone"
+#'     ),
+#'     maxDisplayResolution = "size4096X2160"|"size3840X2160"|"size3440X1440"|"size2560X1440"|"size1920X1080"|"size1280X720"|"size1024X768"|"size800X600",
+#'     toolbarType = "Floating"|"Docked",
+#'     visualMode = "Dark"|"Light"
+#'   ),
 #'   uploadAllowed = "Disabled"|"Enabled",
 #'   userSettingsArn = "string"
 #' )
@@ -4523,7 +4573,7 @@ workspacesweb_update_user_access_logging_settings <- function(clientToken = NULL
 #' @rdname workspacesweb_update_user_settings
 #'
 #' @aliases workspacesweb_update_user_settings
-workspacesweb_update_user_settings <- function(clientToken = NULL, cookieSynchronizationConfiguration = NULL, copyAllowed = NULL, deepLinkAllowed = NULL, disconnectTimeoutInMinutes = NULL, downloadAllowed = NULL, idleDisconnectTimeoutInMinutes = NULL, pasteAllowed = NULL, printAllowed = NULL, uploadAllowed = NULL, userSettingsArn) {
+workspacesweb_update_user_settings <- function(clientToken = NULL, cookieSynchronizationConfiguration = NULL, copyAllowed = NULL, deepLinkAllowed = NULL, disconnectTimeoutInMinutes = NULL, downloadAllowed = NULL, idleDisconnectTimeoutInMinutes = NULL, pasteAllowed = NULL, printAllowed = NULL, toolbarConfiguration = NULL, uploadAllowed = NULL, userSettingsArn) {
   op <- new_operation(
     name = "UpdateUserSettings",
     http_method = "PATCH",
@@ -4532,7 +4582,7 @@ workspacesweb_update_user_settings <- function(clientToken = NULL, cookieSynchro
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .workspacesweb$update_user_settings_input(clientToken = clientToken, cookieSynchronizationConfiguration = cookieSynchronizationConfiguration, copyAllowed = copyAllowed, deepLinkAllowed = deepLinkAllowed, disconnectTimeoutInMinutes = disconnectTimeoutInMinutes, downloadAllowed = downloadAllowed, idleDisconnectTimeoutInMinutes = idleDisconnectTimeoutInMinutes, pasteAllowed = pasteAllowed, printAllowed = printAllowed, uploadAllowed = uploadAllowed, userSettingsArn = userSettingsArn)
+  input <- .workspacesweb$update_user_settings_input(clientToken = clientToken, cookieSynchronizationConfiguration = cookieSynchronizationConfiguration, copyAllowed = copyAllowed, deepLinkAllowed = deepLinkAllowed, disconnectTimeoutInMinutes = disconnectTimeoutInMinutes, downloadAllowed = downloadAllowed, idleDisconnectTimeoutInMinutes = idleDisconnectTimeoutInMinutes, pasteAllowed = pasteAllowed, printAllowed = printAllowed, toolbarConfiguration = toolbarConfiguration, uploadAllowed = uploadAllowed, userSettingsArn = userSettingsArn)
   output <- .workspacesweb$update_user_settings_output()
   config <- get_config()
   svc <- .workspacesweb$service(config, op)

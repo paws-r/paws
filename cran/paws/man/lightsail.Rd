@@ -64,7 +64,7 @@ snapshots (backups) - for a low, predictable monthly price.
 
 You can manage your Lightsail resources using the Lightsail console,
 Lightsail API, Command Line Interface (CLI), or SDKs. For more
-information about Lightsail concepts and tasks, see the \href{https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/lightsail-how-to-set-up-access-keys-to-use-sdk-api-cli.html}{Amazon Lightsail Developer Guide}.
+information about Lightsail concepts and tasks, see the \href{https://docs.aws.amazon.com/lightsail/latest/userguide/lightsail-how-to-set-up-access-keys-to-use-sdk-api-cli.html}{Amazon Lightsail Developer Guide}.
 
 This API Reference provides detailed information about the actions, data
 types, parameters, and errors of the Lightsail service. For more
@@ -255,7 +255,7 @@ the \emph{Amazon Web Services General Reference}.
 \link[paws.compute:lightsail_start_gui_session]{start_gui_session} \tab Initiates a graphical user interface (GUI) session that’s used to access a virtual computer’s operating system and application\cr
 \link[paws.compute:lightsail_start_instance]{start_instance} \tab Starts a specific Amazon Lightsail instance from a stopped state\cr
 \link[paws.compute:lightsail_start_relational_database]{start_relational_database} \tab Starts a specific database from a stopped state in Amazon Lightsail\cr
-\link[paws.compute:lightsail_stop_gui_session]{stop_gui_session} \tab Terminates a web-based NICE DCV session that’s used to access a virtual computer’s operating system or application\cr
+\link[paws.compute:lightsail_stop_gui_session]{stop_gui_session} \tab Terminates a web-based Amazon DCV session that’s used to access a virtual computer’s operating system or application\cr
 \link[paws.compute:lightsail_stop_instance]{stop_instance} \tab Stops a specific Amazon Lightsail instance that is currently running\cr
 \link[paws.compute:lightsail_stop_relational_database]{stop_relational_database} \tab Stops a specific database that is currently running in Amazon Lightsail\cr
 \link[paws.compute:lightsail_tag_resource]{tag_resource} \tab Adds one or more tags to the specified Amazon Lightsail resource\cr

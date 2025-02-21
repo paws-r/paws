@@ -282,7 +282,7 @@ lightsail_close_instance_public_ports <- function(portInfo, instanceName) {
 #' -   Define this parameter only when copying an automatic snapshot as a
 #'     manual snapshot. For more information, see the [Amazon Lightsail
 #'     Developer
-#'     Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-keeping-automatic-snapshots.html).
+#'     Guide](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-keeping-automatic-snapshots.html).
 #' @param restoreDate The date of the source automatic snapshot to copy. Use the
 #' `get auto snapshots` operation to identify the dates of the available
 #' automatic snapshots.
@@ -299,7 +299,7 @@ lightsail_close_instance_public_ports <- function(portInfo, instanceName) {
 #' -   Define this parameter only when copying an automatic snapshot as a
 #'     manual snapshot. For more information, see the [Amazon Lightsail
 #'     Developer
-#'     Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-keeping-automatic-snapshots.html).
+#'     Guide](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-keeping-automatic-snapshots.html).
 #' @param useLatestRestorableAutoSnapshot A Boolean value to indicate whether to use the latest available
 #' automatic snapshot of the specified source instance or disk.
 #' 
@@ -312,7 +312,7 @@ lightsail_close_instance_public_ports <- function(portInfo, instanceName) {
 #' -   Define this parameter only when copying an automatic snapshot as a
 #'     manual snapshot. For more information, see the [Amazon Lightsail
 #'     Developer
-#'     Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-keeping-automatic-snapshots.html).
+#'     Guide](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-keeping-automatic-snapshots.html).
 #' @param targetSnapshotName &#91;required&#93; The name of the new manual snapshot to be created as a copy.
 #' @param sourceRegion &#91;required&#93; The Amazon Web Services Region where the source manual or automatic
 #' snapshot is located.
@@ -350,7 +350,7 @@ lightsail_copy_snapshot <- function(sourceSnapshotName = NULL, sourceResourceNam
 #' 
 #' For more information about bucket names, see [Bucket naming rules in
 #' Amazon
-#' Lightsail](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/bucket-naming-rules-in-amazon-lightsail.html)
+#' Lightsail](https://docs.aws.amazon.com/lightsail/latest/userguide/bucket-naming-rules-in-amazon-lightsail.html)
 #' in the *Amazon Lightsail Developer Guide*.
 #' @param bundleId &#91;required&#93; The ID of the bundle to use for the bucket.
 #' 
@@ -371,7 +371,7 @@ lightsail_copy_snapshot <- function(sourceSnapshotName = NULL, sourceResourceNam
 #' 
 #' For more information about versioning, see [Enabling and suspending
 #' object versioning in a bucket in Amazon
-#' Lightsail](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-managing-bucket-object-versioning.html)
+#' Lightsail](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-managing-bucket-object-versioning.html)
 #' in the *Amazon Lightsail Developer Guide*.
 #'
 #' @keywords internal
@@ -541,7 +541,7 @@ lightsail_create_cloud_formation_stack <- function(instances) {
 #' 
 #' For more information about notifications in Amazon Lightsail, see
 #' [Notifications in Amazon
-#' Lightsail](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-notifications.html).
+#' Lightsail](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-notifications.html).
 #' @param contactEndpoint &#91;required&#93; The destination of the contact method, such as an email address or a
 #' mobile phone number.
 #' 
@@ -632,7 +632,7 @@ lightsail_create_contact_method <- function(protocol, contactEndpoint) {
 #' 
 #' For more information about tags in Lightsail, see the [Amazon Lightsail
 #' Developer
-#' Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-tags.html).
+#' Guide](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-tags.html).
 #' @param publicDomainNames The public domain names to use with the container service, such as
 #' `example.com` and `www.example.com`.
 #' 
@@ -666,7 +666,7 @@ lightsail_create_contact_method <- function(protocol, contactEndpoint) {
 #' 
 #' For more information, see [Configuring access to an Amazon ECR private
 #' repository for an Amazon Lightsail container
-#' service](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-container-service-ecr-private-repo-access.html)
+#' service](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-container-service-ecr-private-repo-access.html)
 #' in the *Amazon Lightsail Developer Guide*.
 #'
 #' @keywords internal
@@ -845,7 +845,7 @@ lightsail_create_disk <- function(diskName, availabilityZone, sizeInGb, tags = N
 #' -   Define this parameter only when creating a new disk from an
 #'     automatic snapshot. For more information, see the [Amazon Lightsail
 #'     Developer
-#'     Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-configuring-automatic-snapshots.html).
+#'     Guide](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-configuring-automatic-snapshots.html).
 #' @param restoreDate The date of the automatic snapshot to use for the new disk. Use the
 #' `get auto snapshots` operation to identify the dates of the available
 #' automatic snapshots.
@@ -862,7 +862,7 @@ lightsail_create_disk <- function(diskName, availabilityZone, sizeInGb, tags = N
 #' -   Define this parameter only when creating a new disk from an
 #'     automatic snapshot. For more information, see the [Amazon Lightsail
 #'     Developer
-#'     Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-configuring-automatic-snapshots.html).
+#'     Guide](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-configuring-automatic-snapshots.html).
 #' @param useLatestRestorableAutoSnapshot A Boolean value to indicate whether to use the latest available
 #' automatic snapshot.
 #' 
@@ -875,7 +875,7 @@ lightsail_create_disk <- function(diskName, availabilityZone, sizeInGb, tags = N
 #' -   Define this parameter only when creating a new disk from an
 #'     automatic snapshot. For more information, see the [Amazon Lightsail
 #'     Developer
-#'     Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-configuring-automatic-snapshots.html).
+#'     Guide](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-configuring-automatic-snapshots.html).
 #'
 #' @keywords internal
 #'
@@ -1088,7 +1088,7 @@ lightsail_create_domain_entry <- function(domainName, domainEntry) {
 #' user interface (GUI) session
 #'
 #' @description
-#' Creates two URLs that are used to access a virtual computer’s graphical user interface (GUI) session. The primary URL initiates a web-based NICE DCV session to the virtual computer's application. The secondary URL initiates a web-based NICE DCV session to the virtual computer's operating session.
+#' Creates two URLs that are used to access a virtual computer’s graphical user interface (GUI) session. The primary URL initiates a web-based Amazon DCV session to the virtual computer's application. The secondary URL initiates a web-based Amazon DCV session to the virtual computer's operating session.
 #'
 #' See [https://www.paws-r-sdk.com/docs/lightsail_create_gui_session_access_details/](https://www.paws-r-sdk.com/docs/lightsail_create_gui_session_access_details/) for full documentation.
 #'
@@ -1190,7 +1190,7 @@ lightsail_create_instance_snapshot <- function(instanceSnapshotName, instanceNam
 #' on your instance varies. Amazon Linux and CentOS use `yum`, Debian and
 #' Ubuntu use `apt-get`, and FreeBSD uses `pkg`. For a complete list, see
 #' the [Amazon Lightsail Developer
-#' Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/compare-options-choose-lightsail-instance-image.html).
+#' Guide](https://docs.aws.amazon.com/lightsail/latest/userguide/compare-options-choose-lightsail-instance-image.html).
 #' @param keyPairName The name of your key pair.
 #' @param tags The tag keys and optional values to add to the resource during create.
 #' 
@@ -1261,7 +1261,7 @@ lightsail_create_instances <- function(instanceNames, availabilityZone, customIm
 #' on your instance varies. Amazon Linux and CentOS use `yum`, Debian and
 #' Ubuntu use `apt-get`, and FreeBSD uses `pkg`. For a complete list, see
 #' the [Amazon Lightsail Developer
-#' Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/compare-options-choose-lightsail-instance-image.html).
+#' Guide](https://docs.aws.amazon.com/lightsail/latest/userguide/compare-options-choose-lightsail-instance-image.html).
 #' @param keyPairName The name for your key pair.
 #' @param tags The tag keys and optional values to add to the resource during create.
 #' 
@@ -1287,7 +1287,7 @@ lightsail_create_instances <- function(instanceNames, availabilityZone, customIm
 #' -   Define this parameter only when creating a new instance from an
 #'     automatic snapshot. For more information, see the [Amazon Lightsail
 #'     Developer
-#'     Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-configuring-automatic-snapshots.html).
+#'     Guide](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-configuring-automatic-snapshots.html).
 #' @param restoreDate The date of the automatic snapshot to use for the new instance. Use the
 #' `get auto snapshots` operation to identify the dates of the available
 #' automatic snapshots.
@@ -1304,7 +1304,7 @@ lightsail_create_instances <- function(instanceNames, availabilityZone, customIm
 #' -   Define this parameter only when creating a new instance from an
 #'     automatic snapshot. For more information, see the [Amazon Lightsail
 #'     Developer
-#'     Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-configuring-automatic-snapshots.html).
+#'     Guide](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-configuring-automatic-snapshots.html).
 #' @param useLatestRestorableAutoSnapshot A Boolean value to indicate whether to use the latest available
 #' automatic snapshot.
 #' 
@@ -1317,7 +1317,7 @@ lightsail_create_instances <- function(instanceNames, availabilityZone, customIm
 #' -   Define this parameter only when creating a new instance from an
 #'     automatic snapshot. For more information, see the [Amazon Lightsail
 #'     Developer
-#'     Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-configuring-automatic-snapshots.html).
+#'     Guide](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-configuring-automatic-snapshots.html).
 #'
 #' @keywords internal
 #'
@@ -1380,7 +1380,7 @@ lightsail_create_key_pair <- function(keyPairName, tags = NULL) {
 #' Creates a Lightsail load balancer
 #'
 #' @description
-#' Creates a Lightsail load balancer. To learn more about deciding whether to load balance your application, see [Configure your Lightsail instances for load balancing](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/configure-lightsail-instances-for-load-balancing.html). You can create up to 5 load balancers per AWS Region in your account.
+#' Creates a Lightsail load balancer. To learn more about deciding whether to load balance your application, see [Configure your Lightsail instances for load balancing](https://docs.aws.amazon.com/lightsail/latest/userguide/configure-lightsail-instances-for-load-balancing.html). You can create up to 5 load balancers per AWS Region in your account.
 #'
 #' See [https://www.paws-r-sdk.com/docs/lightsail_create_load_balancer/](https://www.paws-r-sdk.com/docs/lightsail_create_load_balancer/) for full documentation.
 #'
@@ -1423,7 +1423,7 @@ lightsail_create_key_pair <- function(keyPairName, tags = NULL) {
 #' 
 #' For more information about load balancer TLS policies, see [Configuring
 #' TLS security policies on your Amazon Lightsail load
-#' balancers](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-configure-load-balancer-tls-security-policy.html)
+#' balancers](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-configure-load-balancer-tls-security-policy.html)
 #' in the *Amazon Lightsail Developer Guide*.
 #'
 #' @keywords internal
@@ -1860,7 +1860,7 @@ lightsail_delete_alarm <- function(alarmName) {
 #' Deletes an automatic snapshot of an instance or disk
 #'
 #' @description
-#' Deletes an automatic snapshot of an instance or disk. For more information, see the [Amazon Lightsail Developer Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-configuring-automatic-snapshots.html).
+#' Deletes an automatic snapshot of an instance or disk. For more information, see the [Amazon Lightsail Developer Guide](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-configuring-automatic-snapshots.html).
 #'
 #' See [https://www.paws-r-sdk.com/docs/lightsail_delete_auto_snapshot/](https://www.paws-r-sdk.com/docs/lightsail_delete_auto_snapshot/) for full documentation.
 #'
@@ -2708,7 +2708,7 @@ lightsail_detach_static_ip <- function(staticIpName) {
 #' Disables an add-on for an Amazon Lightsail resource
 #'
 #' @description
-#' Disables an add-on for an Amazon Lightsail resource. For more information, see the [Amazon Lightsail Developer Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-configuring-automatic-snapshots.html).
+#' Disables an add-on for an Amazon Lightsail resource. For more information, see the [Amazon Lightsail Developer Guide](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-configuring-automatic-snapshots.html).
 #'
 #' See [https://www.paws-r-sdk.com/docs/lightsail_disable_add_on/](https://www.paws-r-sdk.com/docs/lightsail_disable_add_on/) for full documentation.
 #'
@@ -2771,7 +2771,7 @@ lightsail_download_default_key_pair <- function() {
 #' Enables or modifies an add-on for an Amazon Lightsail resource
 #'
 #' @description
-#' Enables or modifies an add-on for an Amazon Lightsail resource. For more information, see the [Amazon Lightsail Developer Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-configuring-automatic-snapshots.html).
+#' Enables or modifies an add-on for an Amazon Lightsail resource. For more information, see the [Amazon Lightsail Developer Guide](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-configuring-automatic-snapshots.html).
 #'
 #' See [https://www.paws-r-sdk.com/docs/lightsail_enable_add_on/](https://www.paws-r-sdk.com/docs/lightsail_enable_add_on/) for full documentation.
 #'
@@ -2915,7 +2915,7 @@ lightsail_get_alarms <- function(alarmName = NULL, pageToken = NULL, monitoredRe
 #' Returns the available automatic snapshots for an instance or disk
 #'
 #' @description
-#' Returns the available automatic snapshots for an instance or disk. For more information, see the [Amazon Lightsail Developer Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-configuring-automatic-snapshots.html).
+#' Returns the available automatic snapshots for an instance or disk. For more information, see the [Amazon Lightsail Developer Guide](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-configuring-automatic-snapshots.html).
 #'
 #' See [https://www.paws-r-sdk.com/docs/lightsail_get_auto_snapshots/](https://www.paws-r-sdk.com/docs/lightsail_get_auto_snapshots/) for full documentation.
 #'
@@ -4327,7 +4327,7 @@ lightsail_get_instance_access_details <- function(instanceName, protocol = NULL)
 #'     capacity stops accruing when your instance's
 #'     `BurstCapacityPercentage` reaches 100%. For more information, see
 #'     [Viewing instance burst capacity in Amazon
-#'     Lightsail](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-viewing-instance-burst-capacity.html).
+#'     Lightsail](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-viewing-instance-burst-capacity.html).
 #' 
 #'     `Statistics`: The most useful statistics are `Maximum` and
 #'     `Average`.
@@ -4347,7 +4347,7 @@ lightsail_get_instance_access_details <- function(instanceName, protocol = NULL)
 #'     50% rate in that period. Your instance consumed 2 minutes and 30
 #'     seconds of CPU burst capacity minutes in the 5-minute period. For
 #'     more information, see [Viewing instance burst capacity in Amazon
-#'     Lightsail](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-viewing-instance-burst-capacity.html).
+#'     Lightsail](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-viewing-instance-burst-capacity.html).
 #' 
 #'     `Statistics`: The most useful statistics are `Maximum` and
 #'     `Average`.
@@ -6013,7 +6013,7 @@ lightsail_peer_vpc <- function() {
 #'     and `NetworkTransmitThroughput`.
 #' 
 #' For more information about these metrics, see [Metrics available in
-#' Lightsail](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-resource-health-metrics.html#available-metrics).
+#' Lightsail](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-resource-health-metrics.html#available-metrics).
 #' @param monitoredResourceName &#91;required&#93; The name of the Lightsail resource that will be monitored.
 #' 
 #' Instances, load balancers, and relational databases are the only
@@ -6605,11 +6605,11 @@ lightsail_start_relational_database <- function(relationalDatabaseName) {
 }
 .lightsail$operations$start_relational_database <- lightsail_start_relational_database
 
-#' Terminates a web-based NICE DCV session that’s used to access a virtual
-#' computer’s operating system or application
+#' Terminates a web-based Amazon DCV session that’s used to access a
+#' virtual computer’s operating system or application
 #'
 #' @description
-#' Terminates a web-based NICE DCV session that’s used to access a virtual computer’s operating system or application. The session will close and any unsaved data will be lost.
+#' Terminates a web-based Amazon DCV session that’s used to access a virtual computer’s operating system or application. The session will close and any unsaved data will be lost.
 #'
 #' See [https://www.paws-r-sdk.com/docs/lightsail_stop_gui_session/](https://www.paws-r-sdk.com/docs/lightsail_stop_gui_session/) for full documentation.
 #'
@@ -6710,7 +6710,7 @@ lightsail_stop_relational_database <- function(relationalDatabaseName, relationa
 #' Adds one or more tags to the specified Amazon Lightsail resource
 #'
 #' @description
-#' Adds one or more tags to the specified Amazon Lightsail resource. Each resource can have a maximum of 50 tags. Each tag consists of a key and an optional value. Tag keys must be unique per resource. For more information about tags, see the [Amazon Lightsail Developer Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-tags.html).
+#' Adds one or more tags to the specified Amazon Lightsail resource. Each resource can have a maximum of 50 tags. Each tag consists of a key and an optional value. Tag keys must be unique per resource. For more information about tags, see the [Amazon Lightsail Developer Guide](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-tags.html).
 #'
 #' See [https://www.paws-r-sdk.com/docs/lightsail_tag_resource/](https://www.paws-r-sdk.com/docs/lightsail_tag_resource/) for full documentation.
 #'
@@ -6986,7 +6986,7 @@ lightsail_update_bucket_bundle <- function(bucketName, bundleId) {
 #' 
 #' For more information, see [Configuring access to an Amazon ECR private
 #' repository for an Amazon Lightsail container
-#' service](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-container-service-ecr-private-repo-access.html)
+#' service](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-container-service-ecr-private-repo-access.html)
 #' in the *Amazon Lightsail Developer Guide*.
 #'
 #' @keywords internal
@@ -7153,7 +7153,7 @@ lightsail_update_domain_entry <- function(domainName, domainEntry) {
 #' or stopped instance
 #'
 #' @description
-#' Modifies the Amazon Lightsail instance metadata parameters on a running or stopped instance. When you modify the parameters on a running instance, the [`get_instance`][lightsail_get_instance] or [`get_instances`][lightsail_get_instances] API operation initially responds with a state of `pending`. After the parameter modifications are successfully applied, the state changes to `applied` in subsequent [`get_instance`][lightsail_get_instance] or [`get_instances`][lightsail_get_instances] API calls. For more information, see [Use IMDSv2 with an Amazon Lightsail instance](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-configuring-instance-metadata-service.html) in the *Amazon Lightsail Developer Guide*.
+#' Modifies the Amazon Lightsail instance metadata parameters on a running or stopped instance. When you modify the parameters on a running instance, the [`get_instance`][lightsail_get_instance] or [`get_instances`][lightsail_get_instances] API operation initially responds with a state of `pending`. After the parameter modifications are successfully applied, the state changes to `applied` in subsequent [`get_instance`][lightsail_get_instance] or [`get_instances`][lightsail_get_instances] API calls. For more information, see [Use IMDSv2 with an Amazon Lightsail instance](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-configuring-instance-metadata-service.html) in the *Amazon Lightsail Developer Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/lightsail_update_instance_metadata_options/](https://www.paws-r-sdk.com/docs/lightsail_update_instance_metadata_options/) for full documentation.
 #'

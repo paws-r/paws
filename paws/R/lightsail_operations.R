@@ -185,7 +185,7 @@ lightsail_attach_certificate_to_distribution <- function(distributionName, certi
 #' The `attach disk` operation supports tag-based access control via
 #' resource tags applied to the resource identified by `disk name`. For
 #' more information, see the [Amazon Lightsail Developer
-#' Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.html).
+#' Guide](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.html).
 #'
 #' @usage
 #' lightsail_attach_disk(diskName, instanceName, diskPath, autoMounting)
@@ -274,7 +274,7 @@ lightsail_attach_disk <- function(diskName, instanceName, diskPath, autoMounting
 #' The `attach instances to load balancer` operation supports tag-based
 #' access control via resource tags applied to the resource identified by
 #' `load balancer name`. For more information, see the [Lightsail Developer
-#' Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.html).
+#' Guide](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.html).
 #'
 #' @usage
 #' lightsail_attach_instances_to_load_balancer(loadBalancerName,
@@ -375,7 +375,7 @@ lightsail_attach_instances_to_load_balancer <- function(loadBalancerName, instan
 #' operation supports tag-based access control via resource tags applied to
 #' the resource identified by `load balancer name`. For more information,
 #' see the [Amazon Lightsail Developer
-#' Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.html).
+#' Guide](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.html).
 #'
 #' @usage
 #' lightsail_attach_load_balancer_tls_certificate(loadBalancerName,
@@ -530,7 +530,7 @@ lightsail_attach_static_ip <- function(staticIpName, instanceName) {
 #' action supports tag-based access control via resource tags applied to
 #' the resource identified by `instanceName`. For more information, see the
 #' [Amazon Lightsail Developer
-#' Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.html).
+#' Guide](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.html).
 #'
 #' @usage
 #' lightsail_close_instance_public_ports(portInfo, instanceName)
@@ -649,7 +649,7 @@ lightsail_close_instance_public_ports <- function(portInfo, instanceName) {
 #' -   Define this parameter only when copying an automatic snapshot as a
 #'     manual snapshot. For more information, see the [Amazon Lightsail
 #'     Developer
-#'     Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-keeping-automatic-snapshots.html).
+#'     Guide](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-keeping-automatic-snapshots.html).
 #' @param restoreDate The date of the source automatic snapshot to copy. Use the
 #' `get auto snapshots` operation to identify the dates of the available
 #' automatic snapshots.
@@ -666,7 +666,7 @@ lightsail_close_instance_public_ports <- function(portInfo, instanceName) {
 #' -   Define this parameter only when copying an automatic snapshot as a
 #'     manual snapshot. For more information, see the [Amazon Lightsail
 #'     Developer
-#'     Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-keeping-automatic-snapshots.html).
+#'     Guide](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-keeping-automatic-snapshots.html).
 #' @param useLatestRestorableAutoSnapshot A Boolean value to indicate whether to use the latest available
 #' automatic snapshot of the specified source instance or disk.
 #' 
@@ -679,7 +679,7 @@ lightsail_close_instance_public_ports <- function(portInfo, instanceName) {
 #' -   Define this parameter only when copying an automatic snapshot as a
 #'     manual snapshot. For more information, see the [Amazon Lightsail
 #'     Developer
-#'     Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-keeping-automatic-snapshots.html).
+#'     Guide](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-keeping-automatic-snapshots.html).
 #' @param targetSnapshotName &#91;required&#93; The name of the new manual snapshot to be created as a copy.
 #' @param sourceRegion &#91;required&#93; The Amazon Web Services Region where the source manual or automatic
 #' snapshot is located.
@@ -759,7 +759,7 @@ lightsail_copy_snapshot <- function(sourceSnapshotName = NULL, sourceResourceNam
 #' storage service. Use buckets to store objects such as data and its
 #' descriptive metadata. For more information about buckets, see [Buckets
 #' in Amazon
-#' Lightsail](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/buckets-in-amazon-lightsail.html)
+#' Lightsail](https://docs.aws.amazon.com/lightsail/latest/userguide/buckets-in-amazon-lightsail.html)
 #' in the *Amazon Lightsail Developer Guide*.
 #'
 #' @usage
@@ -770,7 +770,7 @@ lightsail_copy_snapshot <- function(sourceSnapshotName = NULL, sourceResourceNam
 #' 
 #' For more information about bucket names, see [Bucket naming rules in
 #' Amazon
-#' Lightsail](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/bucket-naming-rules-in-amazon-lightsail.html)
+#' Lightsail](https://docs.aws.amazon.com/lightsail/latest/userguide/bucket-naming-rules-in-amazon-lightsail.html)
 #' in the *Amazon Lightsail Developer Guide*.
 #' @param bundleId &#91;required&#93; The ID of the bundle to use for the bucket.
 #' 
@@ -791,7 +791,7 @@ lightsail_copy_snapshot <- function(sourceSnapshotName = NULL, sourceResourceNam
 #' 
 #' For more information about versioning, see [Enabling and suspending
 #' object versioning in a bucket in Amazon
-#' Lightsail](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-managing-bucket-object-versioning.html)
+#' Lightsail](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-managing-bucket-object-versioning.html)
 #' in the *Amazon Lightsail Developer Guide*.
 #'
 #' @return
@@ -921,7 +921,7 @@ lightsail_create_bucket <- function(bucketName, bundleId, tags = NULL, enableObj
 #' to get a list of current access keys for a specific bucket. For more
 #' information about access keys, see [Creating access keys for a bucket in
 #' Amazon
-#' Lightsail](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-creating-bucket-access-keys.html)
+#' Lightsail](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-creating-bucket-access-keys.html)
 #' in the *Amazon Lightsail Developer Guide*.
 #' 
 #' The `secretAccessKey` value is returned only in response to the
@@ -1311,7 +1311,7 @@ lightsail_create_cloud_formation_stack <- function(instances) {
 #' text messaging is not supported in some Amazon Web Services Regions, and
 #' SMS text messages cannot be sent to some countries/regions. For more
 #' information, see [Notifications in Amazon
-#' Lightsail](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-notifications.html).
+#' Lightsail](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-notifications.html).
 #'
 #' @usage
 #' lightsail_create_contact_method(protocol, contactEndpoint)
@@ -1342,7 +1342,7 @@ lightsail_create_cloud_formation_stack <- function(instances) {
 #' 
 #' For more information about notifications in Amazon Lightsail, see
 #' [Notifications in Amazon
-#' Lightsail](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-notifications.html).
+#' Lightsail](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-notifications.html).
 #' @param contactEndpoint &#91;required&#93; The destination of the contact method, such as an email address or a
 #' mobile phone number.
 #' 
@@ -1424,7 +1424,7 @@ lightsail_create_contact_method <- function(protocol, contactEndpoint) {
 #' A Lightsail container service is a compute resource to which you can
 #' deploy containers. For more information, see [Container services in
 #' Amazon
-#' Lightsail](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-container-services.html)
+#' Lightsail](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-container-services.html)
 #' in the *Lightsail Dev Guide*.
 #'
 #' @usage
@@ -1481,7 +1481,7 @@ lightsail_create_contact_method <- function(protocol, contactEndpoint) {
 #' 
 #' For more information about tags in Lightsail, see the [Amazon Lightsail
 #' Developer
-#' Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-tags.html).
+#' Guide](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-tags.html).
 #' @param publicDomainNames The public domain names to use with the container service, such as
 #' `example.com` and `www.example.com`.
 #' 
@@ -1515,7 +1515,7 @@ lightsail_create_contact_method <- function(protocol, contactEndpoint) {
 #' 
 #' For more information, see [Configuring access to an Amazon ECR private
 #' repository for an Amazon Lightsail container
-#' service](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-container-service-ecr-private-repo-access.html)
+#' service](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-container-service-ecr-private-repo-access.html)
 #' in the *Amazon Lightsail Developer Guide*.
 #'
 #' @return
@@ -1725,7 +1725,7 @@ lightsail_create_container_service <- function(serviceName, power, scale, tags =
 #' images from a public registry such as Amazon ECR Public, or from your
 #' local machine. For more information, see [Creating container images for
 #' your Amazon Lightsail container
-#' services](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-creating-container-images.html)
+#' services](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-creating-container-images.html)
 #' in the *Amazon Lightsail Developer Guide*.
 #'
 #' @usage
@@ -1935,7 +1935,7 @@ lightsail_create_container_service_deployment <- function(serviceName, container
 #' (lightsailctl) plugin to push container images to your Lightsail
 #' container service. For more information, see [Pushing and managing
 #' container images on your Amazon Lightsail container
-#' services](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-pushing-container-images.html)
+#' services](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-pushing-container-images.html)
 #' in the *Amazon Lightsail Developer Guide*.
 #'
 #' @usage
@@ -1996,7 +1996,7 @@ lightsail_create_container_service_registry_login <- function() {
 #' 
 #' The `create disk` operation supports tag-based access control via
 #' request tags. For more information, see the [Amazon Lightsail Developer
-#' Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.html).
+#' Guide](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.html).
 #'
 #' @usage
 #' lightsail_create_disk(diskName, availabilityZone, sizeInGb, tags,
@@ -2110,7 +2110,7 @@ lightsail_create_disk <- function(diskName, availabilityZone, sizeInGb, tags = N
 #' control via request tags and resource tags applied to the resource
 #' identified by `disk snapshot name`. For more information, see the
 #' [Amazon Lightsail Developer
-#' Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.html).
+#' Guide](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.html).
 #'
 #' @usage
 #' lightsail_create_disk_from_snapshot(diskName, diskSnapshotName,
@@ -2151,7 +2151,7 @@ lightsail_create_disk <- function(diskName, availabilityZone, sizeInGb, tags = N
 #' -   Define this parameter only when creating a new disk from an
 #'     automatic snapshot. For more information, see the [Amazon Lightsail
 #'     Developer
-#'     Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-configuring-automatic-snapshots.html).
+#'     Guide](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-configuring-automatic-snapshots.html).
 #' @param restoreDate The date of the automatic snapshot to use for the new disk. Use the
 #' `get auto snapshots` operation to identify the dates of the available
 #' automatic snapshots.
@@ -2168,7 +2168,7 @@ lightsail_create_disk <- function(diskName, availabilityZone, sizeInGb, tags = N
 #' -   Define this parameter only when creating a new disk from an
 #'     automatic snapshot. For more information, see the [Amazon Lightsail
 #'     Developer
-#'     Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-configuring-automatic-snapshots.html).
+#'     Guide](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-configuring-automatic-snapshots.html).
 #' @param useLatestRestorableAutoSnapshot A Boolean value to indicate whether to use the latest available
 #' automatic snapshot.
 #' 
@@ -2181,7 +2181,7 @@ lightsail_create_disk <- function(diskName, availabilityZone, sizeInGb, tags = N
 #' -   Define this parameter only when creating a new disk from an
 #'     automatic snapshot. For more information, see the [Amazon Lightsail
 #'     Developer
-#'     Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-configuring-automatic-snapshots.html).
+#'     Guide](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-configuring-automatic-snapshots.html).
 #'
 #' @return
 #' A list with the following syntax:
@@ -2299,7 +2299,7 @@ lightsail_create_disk_from_snapshot <- function(diskName, diskSnapshotName = NUL
 #' The `create disk snapshot` operation supports tag-based access control
 #' via request tags. For more information, see the [Amazon Lightsail
 #' Developer
-#' Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.html).
+#' Guide](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.html).
 #'
 #' @usage
 #' lightsail_create_disk_snapshot(diskName, diskSnapshotName, instanceName,
@@ -2402,7 +2402,7 @@ lightsail_create_disk_snapshot <- function(diskName = NULL, diskSnapshotName, in
 #' improve the performance of your website or web application hosted on a
 #' Lightsail instance. For more information, see [Content delivery networks
 #' in Amazon
-#' Lightsail](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-content-delivery-network-distributions.html).
+#' Lightsail](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-content-delivery-network-distributions.html).
 #'
 #' @usage
 #' lightsail_create_distribution(distributionName, origin,
@@ -2633,7 +2633,7 @@ lightsail_create_distribution <- function(distributionName, origin, defaultCache
 #' 
 #' The `create domain` operation supports tag-based access control via
 #' request tags. For more information, see the [Amazon Lightsail Developer
-#' Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.html).
+#' Guide](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.html).
 #'
 #' @usage
 #' lightsail_create_domain(domainName, tags)
@@ -2723,7 +2723,7 @@ lightsail_create_domain <- function(domainName, tags = NULL) {
 #' The `create domain entry` operation supports tag-based access control
 #' via resource tags applied to the resource identified by `domain name`.
 #' For more information, see the [Amazon Lightsail Developer
-#' Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.html).
+#' Guide](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.html).
 #'
 #' @usage
 #' lightsail_create_domain_entry(domainName, domainEntry)
@@ -2807,9 +2807,9 @@ lightsail_create_domain_entry <- function(domainName, domainEntry) {
 #'
 #' @description
 #' Creates two URLs that are used to access a virtual computer’s graphical
-#' user interface (GUI) session. The primary URL initiates a web-based NICE
-#' DCV session to the virtual computer's application. The secondary URL
-#' initiates a web-based NICE DCV session to the virtual computer's
+#' user interface (GUI) session. The primary URL initiates a web-based
+#' Amazon DCV session to the virtual computer's application. The secondary
+#' URL initiates a web-based Amazon DCV session to the virtual computer's
 #' operating session.
 #' 
 #' Use [`start_gui_session`][lightsail_start_gui_session] to open the
@@ -2879,7 +2879,7 @@ lightsail_create_gui_session_access_details <- function(resourceName) {
 #' The `create instance snapshot` operation supports tag-based access
 #' control via request tags. For more information, see the [Amazon
 #' Lightsail Developer
-#' Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.html).
+#' Guide](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.html).
 #'
 #' @usage
 #' lightsail_create_instance_snapshot(instanceSnapshotName, instanceName,
@@ -2967,7 +2967,7 @@ lightsail_create_instance_snapshot <- function(instanceSnapshotName, instanceNam
 #' 
 #' The `create instances` operation supports tag-based access control via
 #' request tags. For more information, see the [Lightsail Developer
-#' Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.html).
+#' Guide](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.html).
 #'
 #' @usage
 #' lightsail_create_instances(instanceNames, availabilityZone,
@@ -3005,7 +3005,7 @@ lightsail_create_instance_snapshot <- function(instanceSnapshotName, instanceNam
 #' on your instance varies. Amazon Linux and CentOS use `yum`, Debian and
 #' Ubuntu use `apt-get`, and FreeBSD uses `pkg`. For a complete list, see
 #' the [Amazon Lightsail Developer
-#' Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/compare-options-choose-lightsail-instance-image.html).
+#' Guide](https://docs.aws.amazon.com/lightsail/latest/userguide/compare-options-choose-lightsail-instance-image.html).
 #' @param keyPairName The name of your key pair.
 #' @param tags The tag keys and optional values to add to the resource during create.
 #' 
@@ -3119,7 +3119,7 @@ lightsail_create_instances <- function(instanceNames, availabilityZone, customIm
 #' control via request tags and resource tags applied to the resource
 #' identified by `instance snapshot name`. For more information, see the
 #' [Amazon Lightsail Developer
-#' Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.html).
+#' Guide](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.html).
 #'
 #' @usage
 #' lightsail_create_instances_from_snapshot(instanceNames,
@@ -3153,7 +3153,7 @@ lightsail_create_instances <- function(instanceNames, availabilityZone, customIm
 #' on your instance varies. Amazon Linux and CentOS use `yum`, Debian and
 #' Ubuntu use `apt-get`, and FreeBSD uses `pkg`. For a complete list, see
 #' the [Amazon Lightsail Developer
-#' Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/compare-options-choose-lightsail-instance-image.html).
+#' Guide](https://docs.aws.amazon.com/lightsail/latest/userguide/compare-options-choose-lightsail-instance-image.html).
 #' @param keyPairName The name for your key pair.
 #' @param tags The tag keys and optional values to add to the resource during create.
 #' 
@@ -3179,7 +3179,7 @@ lightsail_create_instances <- function(instanceNames, availabilityZone, customIm
 #' -   Define this parameter only when creating a new instance from an
 #'     automatic snapshot. For more information, see the [Amazon Lightsail
 #'     Developer
-#'     Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-configuring-automatic-snapshots.html).
+#'     Guide](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-configuring-automatic-snapshots.html).
 #' @param restoreDate The date of the automatic snapshot to use for the new instance. Use the
 #' `get auto snapshots` operation to identify the dates of the available
 #' automatic snapshots.
@@ -3196,7 +3196,7 @@ lightsail_create_instances <- function(instanceNames, availabilityZone, customIm
 #' -   Define this parameter only when creating a new instance from an
 #'     automatic snapshot. For more information, see the [Amazon Lightsail
 #'     Developer
-#'     Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-configuring-automatic-snapshots.html).
+#'     Guide](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-configuring-automatic-snapshots.html).
 #' @param useLatestRestorableAutoSnapshot A Boolean value to indicate whether to use the latest available
 #' automatic snapshot.
 #' 
@@ -3209,7 +3209,7 @@ lightsail_create_instances <- function(instanceNames, availabilityZone, customIm
 #' -   Define this parameter only when creating a new instance from an
 #'     automatic snapshot. For more information, see the [Amazon Lightsail
 #'     Developer
-#'     Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-configuring-automatic-snapshots.html).
+#'     Guide](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-configuring-automatic-snapshots.html).
 #'
 #' @return
 #' A list with the following syntax:
@@ -3323,7 +3323,7 @@ lightsail_create_instances_from_snapshot <- function(instanceNames, attachedDisk
 #' 
 #' The `create key pair` operation supports tag-based access control via
 #' request tags. For more information, see the [Amazon Lightsail Developer
-#' Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.html).
+#' Guide](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.html).
 #'
 #' @usage
 #' lightsail_create_key_pair(keyPairName, tags)
@@ -3427,7 +3427,7 @@ lightsail_create_key_pair <- function(keyPairName, tags = NULL) {
 #' Creates a Lightsail load balancer. To learn more about deciding whether
 #' to load balance your application, see [Configure your Lightsail
 #' instances for load
-#' balancing](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/configure-lightsail-instances-for-load-balancing.html).
+#' balancing](https://docs.aws.amazon.com/lightsail/latest/userguide/configure-lightsail-instances-for-load-balancing.html).
 #' You can create up to 5 load balancers per AWS Region in your account.
 #' 
 #' When you create a load balancer, you can specify a unique name and port
@@ -3438,7 +3438,7 @@ lightsail_create_key_pair <- function(keyPairName, tags = NULL) {
 #' The `create load balancer` operation supports tag-based access control
 #' via request tags. For more information, see the [Amazon Lightsail
 #' Developer
-#' Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.html).
+#' Guide](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.html).
 #'
 #' @usage
 #' lightsail_create_load_balancer(loadBalancerName, instancePort,
@@ -3484,7 +3484,7 @@ lightsail_create_key_pair <- function(keyPairName, tags = NULL) {
 #' 
 #' For more information about load balancer TLS policies, see [Configuring
 #' TLS security policies on your Amazon Lightsail load
-#' balancers](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-configure-load-balancer-tls-security-policy.html)
+#' balancers](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-configure-load-balancer-tls-security-policy.html)
 #' in the *Amazon Lightsail Developer Guide*.
 #'
 #' @return
@@ -3576,7 +3576,7 @@ lightsail_create_load_balancer <- function(loadBalancerName, instancePort, healt
 #' operation supports tag-based access control via resource tags applied to
 #' the resource identified by `load balancer name`. For more information,
 #' see the [Amazon Lightsail Developer
-#' Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.html).
+#' Guide](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.html).
 #'
 #' @usage
 #' lightsail_create_load_balancer_tls_certificate(loadBalancerName,
@@ -3682,7 +3682,7 @@ lightsail_create_load_balancer_tls_certificate <- function(loadBalancerName, cer
 #' The `create relational database` operation supports tag-based access
 #' control via request tags. For more information, see the [Amazon
 #' Lightsail Developer
-#' Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.html).
+#' Guide](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.html).
 #'
 #' @usage
 #' lightsail_create_relational_database(relationalDatabaseName,
@@ -3954,7 +3954,7 @@ lightsail_create_relational_database <- function(relationalDatabaseName, availab
 #' tag-based access control via request tags and resource tags applied to
 #' the resource identified by relationalDatabaseSnapshotName. For more
 #' information, see the [Amazon Lightsail Developer
-#' Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.html).
+#' Guide](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.html).
 #'
 #' @usage
 #' lightsail_create_relational_database_from_snapshot(
@@ -4106,7 +4106,7 @@ lightsail_create_relational_database_from_snapshot <- function(relationalDatabas
 #' The `create relational database snapshot` operation supports tag-based
 #' access control via request tags. For more information, see the [Amazon
 #' Lightsail Developer
-#' Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.html).
+#' Guide](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.html).
 #'
 #' @usage
 #' lightsail_create_relational_database_snapshot(relationalDatabaseName,
@@ -4202,7 +4202,7 @@ lightsail_create_relational_database_snapshot <- function(relationalDatabaseName
 #' When a metric condition is met, the alarm can notify you by email, SMS
 #' text message, and a banner displayed on the Amazon Lightsail console.
 #' For more information, see [Alarms in Amazon
-#' Lightsail](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-alarms.html).
+#' Lightsail](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-alarms.html).
 #'
 #' @usage
 #' lightsail_delete_alarm(alarmName)
@@ -4275,7 +4275,7 @@ lightsail_delete_alarm <- function(alarmName) {
 #' @description
 #' Deletes an automatic snapshot of an instance or disk. For more
 #' information, see the [Amazon Lightsail Developer
-#' Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-configuring-automatic-snapshots.html).
+#' Guide](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-configuring-automatic-snapshots.html).
 #'
 #' @usage
 #' lightsail_delete_auto_snapshot(resourceName, date)
@@ -4455,7 +4455,7 @@ lightsail_delete_bucket <- function(bucketName, forceDelete = NULL) {
 #' 
 #' For more information about access keys, see [Creating access keys for a
 #' bucket in Amazon
-#' Lightsail](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-creating-bucket-access-keys.html)
+#' Lightsail](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-creating-bucket-access-keys.html)
 #' in the *Amazon Lightsail Developer Guide*.
 #'
 #' @usage
@@ -4621,7 +4621,7 @@ lightsail_delete_certificate <- function(certificateName) {
 #' text messaging is not supported in some Amazon Web Services Regions, and
 #' SMS text messages cannot be sent to some countries/regions. For more
 #' information, see [Notifications in Amazon
-#' Lightsail](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-notifications.html).
+#' Lightsail](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-notifications.html).
 #'
 #' @usage
 #' lightsail_delete_contact_method(protocol)
@@ -4809,7 +4809,7 @@ lightsail_delete_container_service <- function(serviceName) {
 #' The `delete disk` operation supports tag-based access control via
 #' resource tags applied to the resource identified by `disk name`. For
 #' more information, see the [Amazon Lightsail Developer
-#' Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.html).
+#' Guide](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.html).
 #'
 #' @usage
 #' lightsail_delete_disk(diskName, forceDeleteAddOns)
@@ -4896,7 +4896,7 @@ lightsail_delete_disk <- function(diskName, forceDeleteAddOns = NULL) {
 #' via resource tags applied to the resource identified by
 #' `disk snapshot name`. For more information, see the [Amazon Lightsail
 #' Developer
-#' Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.html).
+#' Guide](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.html).
 #'
 #' @usage
 #' lightsail_delete_disk_snapshot(diskSnapshotName)
@@ -5046,7 +5046,7 @@ lightsail_delete_distribution <- function(distributionName = NULL) {
 #' The `delete domain` operation supports tag-based access control via
 #' resource tags applied to the resource identified by `domain name`. For
 #' more information, see the [Amazon Lightsail Developer
-#' Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.html).
+#' Guide](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.html).
 #'
 #' @usage
 #' lightsail_delete_domain(domainName)
@@ -5120,7 +5120,7 @@ lightsail_delete_domain <- function(domainName) {
 #' The `delete domain entry` operation supports tag-based access control
 #' via resource tags applied to the resource identified by `domain name`.
 #' For more information, see the [Amazon Lightsail Developer
-#' Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.html).
+#' Guide](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.html).
 #'
 #' @usage
 #' lightsail_delete_domain_entry(domainName, domainEntry)
@@ -5206,7 +5206,7 @@ lightsail_delete_domain_entry <- function(domainName, domainEntry) {
 #' The `delete instance` operation supports tag-based access control via
 #' resource tags applied to the resource identified by `instance name`. For
 #' more information, see the [Amazon Lightsail Developer
-#' Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.html).
+#' Guide](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.html).
 #'
 #' @usage
 #' lightsail_delete_instance(instanceName, forceDeleteAddOns)
@@ -5286,7 +5286,7 @@ lightsail_delete_instance <- function(instanceName, forceDeleteAddOns = NULL) {
 #' control via resource tags applied to the resource identified by
 #' `instance snapshot name`. For more information, see the [Amazon
 #' Lightsail Developer
-#' Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.html).
+#' Guide](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.html).
 #'
 #' @usage
 #' lightsail_delete_instance_snapshot(instanceSnapshotName)
@@ -5372,7 +5372,7 @@ lightsail_delete_instance_snapshot <- function(instanceSnapshotName) {
 #' The `delete key pair` operation supports tag-based access control via
 #' resource tags applied to the resource identified by `key pair name`. For
 #' more information, see the [Amazon Lightsail Developer
-#' Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.html).
+#' Guide](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.html).
 #'
 #' @usage
 #' lightsail_delete_key_pair(keyPairName, expectedFingerprint)
@@ -5457,7 +5457,7 @@ lightsail_delete_key_pair <- function(keyPairName, expectedFingerprint = NULL) {
 #' certificate on the instance. For more information, see [Troubleshooting
 #' connection issues when using the Amazon Lightsail browser-based SSH or
 #' RDP
-#' client](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-troubleshooting-browser-based-ssh-rdp-client-connection.html).
+#' client](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-troubleshooting-browser-based-ssh-rdp-client-connection.html).
 #'
 #' @usage
 #' lightsail_delete_known_host_keys(instanceName)
@@ -5539,7 +5539,7 @@ lightsail_delete_known_host_keys <- function(instanceName) {
 #' via resource tags applied to the resource identified by
 #' `load balancer name`. For more information, see the [Amazon Lightsail
 #' Developer
-#' Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.html).
+#' Guide](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.html).
 #'
 #' @usage
 #' lightsail_delete_load_balancer(loadBalancerName)
@@ -5618,7 +5618,7 @@ lightsail_delete_load_balancer <- function(loadBalancerName) {
 #' operation supports tag-based access control via resource tags applied to
 #' the resource identified by `load balancer name`. For more information,
 #' see the [Amazon Lightsail Developer
-#' Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.html).
+#' Guide](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.html).
 #'
 #' @usage
 #' lightsail_delete_load_balancer_tls_certificate(loadBalancerName,
@@ -5705,7 +5705,7 @@ lightsail_delete_load_balancer_tls_certificate <- function(loadBalancerName, cer
 #' control via resource tags applied to the resource identified by
 #' relationalDatabaseName. For more information, see the [Amazon Lightsail
 #' Developer
-#' Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.html).
+#' Guide](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.html).
 #'
 #' @usage
 #' lightsail_delete_relational_database(relationalDatabaseName,
@@ -5805,7 +5805,7 @@ lightsail_delete_relational_database <- function(relationalDatabaseName, skipFin
 #' access control via resource tags applied to the resource identified by
 #' relationalDatabaseName. For more information, see the [Amazon Lightsail
 #' Developer
-#' Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.html).
+#' Guide](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.html).
 #'
 #' @usage
 #' lightsail_delete_relational_database_snapshot(
@@ -5961,7 +5961,7 @@ lightsail_detach_certificate_from_distribution <- function(distributionName) {
 #' The `detach disk` operation supports tag-based access control via
 #' resource tags applied to the resource identified by `disk name`. For
 #' more information, see the [Amazon Lightsail Developer
-#' Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.html).
+#' Guide](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.html).
 #'
 #' @usage
 #' lightsail_detach_disk(diskName)
@@ -6042,7 +6042,7 @@ lightsail_detach_disk <- function(diskName) {
 #' access control via resource tags applied to the resource identified by
 #' `load balancer name`. For more information, see the [Amazon Lightsail
 #' Developer
-#' Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.html).
+#' Guide](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.html).
 #'
 #' @usage
 #' lightsail_detach_instances_from_load_balancer(loadBalancerName,
@@ -6194,7 +6194,7 @@ lightsail_detach_static_ip <- function(staticIpName) {
 #' @description
 #' Disables an add-on for an Amazon Lightsail resource. For more
 #' information, see the [Amazon Lightsail Developer
-#' Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-configuring-automatic-snapshots.html).
+#' Guide](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-configuring-automatic-snapshots.html).
 #'
 #' @usage
 #' lightsail_disable_add_on(addOnType, resourceName)
@@ -6323,7 +6323,7 @@ lightsail_download_default_key_pair <- function() {
 #' @description
 #' Enables or modifies an add-on for an Amazon Lightsail resource. For more
 #' information, see the [Amazon Lightsail Developer
-#' Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-configuring-automatic-snapshots.html).
+#' Guide](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-configuring-automatic-snapshots.html).
 #'
 #' @usage
 #' lightsail_enable_add_on(resourceName, addOnRequest)
@@ -6424,7 +6424,7 @@ lightsail_enable_add_on <- function(resourceName, addOnRequest) {
 #' resource tags applied to the resource identified by
 #' `source snapshot name`. For more information, see the [Amazon Lightsail
 #' Developer
-#' Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.html).
+#' Guide](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.html).
 #' 
 #' Use the `get instance snapshots` or `get disk snapshots` operations to
 #' get a list of snapshots that you can export to Amazon EC2.
@@ -6564,7 +6564,7 @@ lightsail_get_active_names <- function(pageToken = NULL) {
 #' When a metric condition is met, the alarm can notify you by email, SMS
 #' text message, and a banner displayed on the Amazon Lightsail console.
 #' For more information, see [Alarms in Amazon
-#' Lightsail](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-alarms.html).
+#' Lightsail](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-alarms.html).
 #'
 #' @usage
 #' lightsail_get_alarms(alarmName, pageToken, monitoredResourceName)
@@ -6666,7 +6666,7 @@ lightsail_get_alarms <- function(alarmName = NULL, pageToken = NULL, monitoredRe
 #' @description
 #' Returns the available automatic snapshots for an instance or disk. For
 #' more information, see the [Amazon Lightsail Developer
-#' Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-configuring-automatic-snapshots.html).
+#' Guide](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-configuring-automatic-snapshots.html).
 #'
 #' @usage
 #' lightsail_get_auto_snapshots(resourceName)
@@ -7105,7 +7105,7 @@ lightsail_get_bucket_metric_data <- function(bucketName, metricName, startTime, 
 #' feature for your Lightsail buckets.
 #' 
 #' For more information about buckets, see [Buckets in Amazon
-#' Lightsail](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/buckets-in-amazon-lightsail.html)
+#' Lightsail](https://docs.aws.amazon.com/lightsail/latest/userguide/buckets-in-amazon-lightsail.html)
 #' in the *Amazon Lightsail Developer Guide*.
 #'
 #' @usage
@@ -7581,7 +7581,7 @@ lightsail_get_cloud_formation_stack_records <- function(pageToken = NULL) {
 #' text messaging is not supported in some Amazon Web Services Regions, and
 #' SMS text messages cannot be sent to some countries/regions. For more
 #' information, see [Notifications in Amazon
-#' Lightsail](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-notifications.html).
+#' Lightsail](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-notifications.html).
 #'
 #' @usage
 #' lightsail_get_contact_methods(protocols)
@@ -9734,7 +9734,7 @@ lightsail_get_instance <- function(instanceName) {
 #' control via resource tags applied to the resource identified by
 #' `instance name`. For more information, see the [Amazon Lightsail
 #' Developer
-#' Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.html).
+#' Guide](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.html).
 #'
 #' @usage
 #' lightsail_get_instance_access_details(instanceName, protocol)
@@ -9844,7 +9844,7 @@ lightsail_get_instance_access_details <- function(instanceName, protocol = NULL)
 #'     capacity stops accruing when your instance's
 #'     `BurstCapacityPercentage` reaches 100%. For more information, see
 #'     [Viewing instance burst capacity in Amazon
-#'     Lightsail](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-viewing-instance-burst-capacity.html).
+#'     Lightsail](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-viewing-instance-burst-capacity.html).
 #' 
 #'     `Statistics`: The most useful statistics are `Maximum` and
 #'     `Average`.
@@ -9864,7 +9864,7 @@ lightsail_get_instance_access_details <- function(instanceName, protocol = NULL)
 #'     50% rate in that period. Your instance consumed 2 minutes and 30
 #'     seconds of CPU burst capacity minutes in the 5-minute period. For
 #'     more information, see [Viewing instance burst capacity in Amazon
-#'     Lightsail](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-viewing-instance-burst-capacity.html).
+#'     Lightsail](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-viewing-instance-burst-capacity.html).
 #' 
 #'     `Statistics`: The most useful statistics are `Maximum` and
 #'     `Average`.
@@ -11186,7 +11186,7 @@ lightsail_get_load_balancer_tls_certificates <- function(loadBalancerName) {
 #' 
 #' For more information about load balancer TLS security policies, see
 #' [Configuring TLS security policies on your Amazon Lightsail load
-#' balancers](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-configure-load-balancer-tls-security-policy.html)
+#' balancers](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-configure-load-balancer-tls-security-policy.html)
 #' in the *Amazon Lightsail Developer Guide*.
 #'
 #' @usage
@@ -13126,7 +13126,7 @@ lightsail_is_vpc_peered <- function() {
 #' action supports tag-based access control via resource tags applied to
 #' the resource identified by `instanceName`. For more information, see the
 #' [Amazon Lightsail Developer
-#' Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.html).
+#' Guide](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.html).
 #'
 #' @usage
 #' lightsail_open_instance_public_ports(portInfo, instanceName)
@@ -13284,7 +13284,7 @@ lightsail_peer_vpc <- function() {
 #' When a metric condition is met, the alarm can notify you by email, SMS
 #' text message, and a banner displayed on the Amazon Lightsail console.
 #' For more information, see [Alarms in Amazon
-#' Lightsail](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-alarms.html).
+#' Lightsail](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-alarms.html).
 #' 
 #' When this action creates an alarm, the alarm state is immediately set to
 #' `INSUFFICIENT_DATA`. The alarm is then evaluated and its state is set
@@ -13325,7 +13325,7 @@ lightsail_peer_vpc <- function() {
 #'     and `NetworkTransmitThroughput`.
 #' 
 #' For more information about these metrics, see [Metrics available in
-#' Lightsail](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-resource-health-metrics.html#available-metrics).
+#' Lightsail](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-resource-health-metrics.html#available-metrics).
 #' @param monitoredResourceName &#91;required&#93; The name of the Lightsail resource that will be monitored.
 #' 
 #' Instances, load balancers, and relational databases are the only
@@ -13510,7 +13510,7 @@ lightsail_put_alarm <- function(alarmName, metricName, monitoredResourceName, co
 #' action supports tag-based access control via resource tags applied to
 #' the resource identified by `instanceName`. For more information, see the
 #' [Amazon Lightsail Developer
-#' Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.html).
+#' Guide](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.html).
 #'
 #' @usage
 #' lightsail_put_instance_public_ports(portInfos, instanceName)
@@ -13602,7 +13602,7 @@ lightsail_put_instance_public_ports <- function(portInfos, instanceName) {
 #' The `reboot instance` operation supports tag-based access control via
 #' resource tags applied to the resource identified by `instance name`. For
 #' more information, see the [Amazon Lightsail Developer
-#' Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.html).
+#' Guide](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.html).
 #'
 #' @usage
 #' lightsail_reboot_instance(instanceName)
@@ -13679,7 +13679,7 @@ lightsail_reboot_instance <- function(instanceName) {
 #' control via resource tags applied to the resource identified by
 #' relationalDatabaseName. For more information, see the [Amazon Lightsail
 #' Developer
-#' Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.html).
+#' Guide](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.html).
 #'
 #' @usage
 #' lightsail_reboot_relational_database(relationalDatabaseName)
@@ -13756,7 +13756,7 @@ lightsail_reboot_relational_database <- function(relationalDatabaseName) {
 #' (lightsailctl) plugin to push container images to your Lightsail
 #' container service. For more information, see [Pushing and managing
 #' container images on your Amazon Lightsail container
-#' services](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-pushing-container-images.html)
+#' services](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-pushing-container-images.html)
 #' in the *Amazon Lightsail Developer Guide*.
 #'
 #' @usage
@@ -14002,7 +14002,7 @@ lightsail_reset_distribution_cache <- function(distributionName = NULL) {
 #' text messaging is not supported in some Amazon Web Services Regions, and
 #' SMS text messages cannot be sent to some countries/regions. For more
 #' information, see [Notifications in Amazon
-#' Lightsail](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-notifications.html).
+#' Lightsail](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-notifications.html).
 #' 
 #' A verification request is sent to the contact method when you initially
 #' create it. Use this action to send another verification request if a
@@ -14441,12 +14441,12 @@ lightsail_start_gui_session <- function(resourceName) {
 #' address to the instance. To use the same IP address after stopping and
 #' starting an instance, create a static IP address and attach it to the
 #' instance. For more information, see the [Amazon Lightsail Developer
-#' Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/lightsail-create-static-ip.html).
+#' Guide](https://docs.aws.amazon.com/lightsail/latest/userguide/lightsail-create-static-ip.html).
 #' 
 #' The `start instance` operation supports tag-based access control via
 #' resource tags applied to the resource identified by `instance name`. For
 #' more information, see the [Amazon Lightsail Developer
-#' Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.html).
+#' Guide](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.html).
 #'
 #' @usage
 #' lightsail_start_instance(instanceName)
@@ -14524,7 +14524,7 @@ lightsail_start_instance <- function(instanceName) {
 #' control via resource tags applied to the resource identified by
 #' relationalDatabaseName. For more information, see the [Amazon Lightsail
 #' Developer
-#' Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.html).
+#' Guide](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.html).
 #'
 #' @usage
 #' lightsail_start_relational_database(relationalDatabaseName)
@@ -14592,13 +14592,13 @@ lightsail_start_relational_database <- function(relationalDatabaseName) {
 }
 .lightsail$operations$start_relational_database <- lightsail_start_relational_database
 
-#' Terminates a web-based NICE DCV session that’s used to access a virtual
-#' computer’s operating system or application
+#' Terminates a web-based Amazon DCV session that’s used to access a
+#' virtual computer’s operating system or application
 #'
 #' @description
-#' Terminates a web-based NICE DCV session that’s used to access a virtual
-#' computer’s operating system or application. The session will close and
-#' any unsaved data will be lost.
+#' Terminates a web-based Amazon DCV session that’s used to access a
+#' virtual computer’s operating system or application. The session will
+#' close and any unsaved data will be lost.
 #'
 #' @usage
 #' lightsail_stop_gui_session(resourceName)
@@ -14675,12 +14675,12 @@ lightsail_stop_gui_session <- function(resourceName) {
 #' address to the instance. To use the same IP address after stopping and
 #' starting an instance, create a static IP address and attach it to the
 #' instance. For more information, see the [Amazon Lightsail Developer
-#' Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/lightsail-create-static-ip.html).
+#' Guide](https://docs.aws.amazon.com/lightsail/latest/userguide/lightsail-create-static-ip.html).
 #' 
 #' The `stop instance` operation supports tag-based access control via
 #' resource tags applied to the resource identified by `instance name`. For
 #' more information, see the [Amazon Lightsail Developer
-#' Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.html).
+#' Guide](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.html).
 #'
 #' @usage
 #' lightsail_stop_instance(instanceName, force)
@@ -14760,11 +14760,16 @@ lightsail_stop_instance <- function(instanceName, force = NULL) {
 #' @description
 #' Stops a specific database that is currently running in Amazon Lightsail.
 #' 
+#' If you don't manually start your database instance after it has been
+#' stopped for seven consecutive days, Amazon Lightsail automatically
+#' starts it for you. This action helps ensure that your database instance
+#' doesn't fall behind on any required maintenance updates.
+#' 
 #' The `stop relational database` operation supports tag-based access
 #' control via resource tags applied to the resource identified by
 #' relationalDatabaseName. For more information, see the [Amazon Lightsail
 #' Developer
-#' Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.html).
+#' Guide](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.html).
 #'
 #' @usage
 #' lightsail_stop_relational_database(relationalDatabaseName,
@@ -14843,13 +14848,13 @@ lightsail_stop_relational_database <- function(relationalDatabaseName, relationa
 #' resource can have a maximum of 50 tags. Each tag consists of a key and
 #' an optional value. Tag keys must be unique per resource. For more
 #' information about tags, see the [Amazon Lightsail Developer
-#' Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-tags.html).
+#' Guide](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-tags.html).
 #' 
 #' The `tag resource` operation supports tag-based access control via
 #' request tags and resource tags applied to the resource identified by
 #' `resource name`. For more information, see the [Amazon Lightsail
 #' Developer
-#' Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.html).
+#' Guide](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.html).
 #'
 #' @usage
 #' lightsail_tag_resource(resourceName, resourceArn, tags)
@@ -14939,7 +14944,7 @@ lightsail_tag_resource <- function(resourceName, resourceArn = NULL, tags) {
 #' When a metric condition is met, the alarm can notify you by email, SMS
 #' text message, and a banner displayed on the Amazon Lightsail console.
 #' For more information, see [Alarms in Amazon
-#' Lightsail](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-alarms.html).
+#' Lightsail](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-alarms.html).
 #'
 #' @usage
 #' lightsail_test_alarm(alarmName, state)
@@ -15097,7 +15102,7 @@ lightsail_unpeer_vpc <- function() {
 #' request tags and resource tags applied to the resource identified by
 #' `resource name`. For more information, see the [Amazon Lightsail
 #' Developer
-#' Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.html).
+#' Guide](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.html).
 #'
 #' @usage
 #' lightsail_untag_resource(resourceName, resourceArn, tagKeys)
@@ -15474,7 +15479,7 @@ lightsail_update_bucket_bundle <- function(bucketName, bundleId) {
 #' 
 #' For more information, see [Configuring access to an Amazon ECR private
 #' repository for an Amazon Lightsail container
-#' service](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-container-service-ecr-private-repo-access.html)
+#' service](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-container-service-ecr-private-repo-access.html)
 #' in the *Amazon Lightsail Developer Guide*.
 #'
 #' @return
@@ -15889,7 +15894,7 @@ lightsail_update_distribution_bundle <- function(distributionName = NULL, bundle
 #' The `update domain entry` operation supports tag-based access control
 #' via resource tags applied to the resource identified by `domain name`.
 #' For more information, see the [Amazon Lightsail Developer
-#' Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.html).
+#' Guide](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.html).
 #'
 #' @usage
 #' lightsail_update_domain_entry(domainName, domainEntry)
@@ -15982,7 +15987,7 @@ lightsail_update_domain_entry <- function(domainName, domainEntry) {
 #' [`get_instance`][lightsail_get_instance] or
 #' [`get_instances`][lightsail_get_instances] API calls. For more
 #' information, see [Use IMDSv2 with an Amazon Lightsail
-#' instance](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-configuring-instance-metadata-service.html)
+#' instance](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-configuring-instance-metadata-service.html)
 #' in the *Amazon Lightsail Developer Guide*.
 #'
 #' @usage
@@ -16091,7 +16096,7 @@ lightsail_update_instance_metadata_options <- function(instanceName, httpTokens 
 #' control via resource tags applied to the resource identified by
 #' `load balancer name`. For more information, see the [Amazon Lightsail
 #' Developer
-#' Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.html).
+#' Guide](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.html).
 #'
 #' @usage
 #' lightsail_update_load_balancer_attribute(loadBalancerName,
@@ -16210,7 +16215,7 @@ lightsail_update_load_balancer_attribute <- function(loadBalancerName, attribute
 #' control via resource tags applied to the resource identified by
 #' relationalDatabaseName. For more information, see the [Amazon Lightsail
 #' Developer
-#' Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.html).
+#' Guide](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.html).
 #'
 #' @usage
 #' lightsail_update_relational_database(relationalDatabaseName,
@@ -16388,7 +16393,7 @@ lightsail_update_relational_database <- function(relationalDatabaseName, masterU
 #' access control via resource tags applied to the resource identified by
 #' relationalDatabaseName. For more information, see the [Amazon Lightsail
 #' Developer
-#' Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.html).
+#' Guide](https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-controlling-access-using-tags.html).
 #'
 #' @usage
 #' lightsail_update_relational_database_parameters(relationalDatabaseName,

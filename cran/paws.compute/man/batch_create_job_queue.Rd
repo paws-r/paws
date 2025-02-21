@@ -23,10 +23,10 @@ underscores (_).}
 able to accept jobs. If the job queue state is \code{DISABLED}, new jobs
 can't be added to the queue, but jobs already in the queue can finish.}
 
-\item{schedulingPolicyArn}{The Amazon Resource Name (ARN) of the fair share scheduling policy. Job
-queues that don't have a scheduling policy are scheduled in a first-in,
-first-out (FIFO) model. After a job queue has a scheduling policy, it
-can be replaced but can't be removed.
+\item{schedulingPolicyArn}{The Amazon Resource Name (ARN) of the fair-share scheduling policy. Job
+queues that don't have a fair-share scheduling policy are scheduled in a
+first-in, first-out (FIFO) model. After a job queue has a fair-share
+scheduling policy, it can be replaced but can't be removed.
 
 The format is
 \code{aws:Partition:batch:Region:Account:scheduling-policy/Name }.
@@ -34,11 +34,11 @@ The format is
 An example is
 \code{aws:aws:batch:us-west-2:123456789012:scheduling-policy/MySchedulingPolicy}.
 
-A job queue without a scheduling policy is scheduled as a FIFO job queue
-and can't have a scheduling policy added. Jobs queues with a scheduling
-policy can have a maximum of 500 active fair share identifiers. When the
-limit has been reached, submissions of any jobs that add a new fair
-share identifier fail.}
+A job queue without a fair-share scheduling policy is scheduled as a
+FIFO job queue and can't have a fair-share scheduling policy added. Jobs
+queues with a fair-share scheduling policy can have a maximum of 500
+active share identifiers. When the limit has been reached, submissions
+of any jobs that add a new share identifier fail.}
 
 \item{priority}{[required] The priority of the job queue. Job queues with a higher priority (or a
 higher integer value for the \code{priority} parameter) are evaluated first

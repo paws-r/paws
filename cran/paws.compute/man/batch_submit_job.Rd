@@ -32,14 +32,15 @@ letters, numbers, hyphens (-), and underscores (_).}
 name or the Amazon Resource Name (ARN) of the queue.}
 
 \item{shareIdentifier}{The share identifier for the job. Don't specify this parameter if the
-job queue doesn't have a scheduling policy. If the job queue has a
-scheduling policy, then this parameter must be specified.
+job queue doesn't have a fair-share scheduling policy. If the job queue
+has a fair-share scheduling policy, then this parameter must be
+specified.
 
 This string is limited to 255 alphanumeric characters, and can be
 followed by an asterisk (*).}
 
 \item{schedulingPriorityOverride}{The scheduling priority for the job. This only affects jobs in job
-queues with a fair share policy. Jobs with a higher scheduling priority
+queues with a fair-share policy. Jobs with a higher scheduling priority
 are scheduled before jobs with a lower scheduling priority. This
 overrides any scheduling priority in the job definition and works only
 within a single share identifier.

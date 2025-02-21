@@ -436,7 +436,7 @@ If you change the value from \code{standard} to \code{advanced}, you must set th
 If you change the value from \code{advanced} to \code{standard}, you must set the
 \code{PerformanceInsightsEnabled} parameter to \code{false}.
 
-Valid for Cluster Type: Aurora DB clusters only}
+Valid for Cluster Type: Aurora DB clusters and Multi-AZ DB clusters}
 
 \item{EnablePerformanceInsights}{Specifies whether to turn on Performance Insights for the DB cluster.
 

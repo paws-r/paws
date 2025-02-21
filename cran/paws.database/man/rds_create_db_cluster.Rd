@@ -621,7 +621,7 @@ If you set this value to \code{advanced}, you must also set the
 \code{PerformanceInsightsEnabled} parameter to \code{true} and the
 \code{PerformanceInsightsRetentionPeriod} parameter to 465.
 
-Valid for Cluster Type: Aurora DB clusters only}
+Valid for Cluster Type: Aurora DB clusters and Multi-AZ DB clusters}
 
 \item{EnablePerformanceInsights}{Specifies whether to turn on Performance Insights for the DB cluster.
 

@@ -23,13 +23,26 @@ the Amazon SageMaker HyperPod cluster. You can control access to and
 from your resources by configuring your VPC. For more information, see
 \href{https://docs.aws.amazon.com/sagemaker/latest/dg/infrastructure-give-access.html}{Give SageMaker access to resources in your Amazon VPC}.
 
-If you configure your VPC with IPv6 support and specify subnets with
-IPv6 addressing enabled in your VPC configuration, the cluster
-automatically uses IPv6 addressing for network communication.
+When your Amazon VPC and subnets support IPv6, network communications
+differ based on the cluster orchestration platform:
+\itemize{
+\item Slurm-orchestrated clusters automatically configure nodes with dual
+IPv6 and IPv4 addresses, allowing immediate IPv6 network
+communications.
+\item In Amazon EKS-orchestrated clusters, nodes receive dual-stack
+addressing, but pods can only use IPv6 when the Amazon EKS cluster
+is explicitly IPv6-enabled. For information about deploying an IPv6
+Amazon EKS cluster, see \href{https://docs.aws.amazon.com/eks/latest/userguide/deploy-ipv6-cluster.html#_deploy_an_ipv6_cluster_with_eksctl}{Amazon EKS IPv6 Cluster Deployment}.
+}
 
-For information about adding IPv6 support for your VPC, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/vpc-migrate-ipv6.html}{IPv6 support for your VPC}.
-
-For information about creating a new VPC for use with IPv6, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/create-vpc.html}{Create a VPC}.}
+Additional resources for IPv6 configuration:
+\itemize{
+\item For information about adding IPv6 support to your VPC, see to \href{https://docs.aws.amazon.com/vpc/latest/userguide/vpc-migrate-ipv6.html}{IPv6 Support for VPC}.
+\item For information about creating a new IPv6-compatible VPC, see
+\href{https://docs.aws.amazon.com/vpc/latest/userguide/create-vpc.html}{Amazon VPC Creation Guide}.
+\item To configure SageMaker HyperPod with a custom Amazon VPC, see
+\href{https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-hyperpod-prerequisites.html#sagemaker-hyperpod-prerequisites-optional-vpc}{Custom Amazon VPC Setup for SageMaker HyperPod}.
+}}
 
 \item{Tags}{Custom tags for managing the SageMaker HyperPod cluster as an Amazon Web
 Services resource. You can add tags to your cluster in the same way you

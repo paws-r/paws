@@ -216,9 +216,9 @@ batch_cancel_job <- function(jobId, reason) {
 #' `desiredvCpus` value of `36`. This instance doesn't scale down to a
 #' `c5.large` instance.
 #' @param unmanagedvCpus The maximum number of vCPUs for an unmanaged compute environment. This
-#' parameter is only used for fair share scheduling to reserve vCPU
+#' parameter is only used for fair-share scheduling to reserve vCPU
 #' capacity for new share identifiers. If this parameter isn't provided for
-#' a fair share job queue, no vCPU capacity is reserved.
+#' a fair-share job queue, no vCPU capacity is reserved.
 #' 
 #' This parameter is only supported when the `type` parameter is set to
 #' `UNMANAGED`.
@@ -464,10 +464,10 @@ batch_create_compute_environment <- function(computeEnvironmentName, type, state
 #' @param state The state of the job queue. If the job queue state is `ENABLED`, it is
 #' able to accept jobs. If the job queue state is `DISABLED`, new jobs
 #' can't be added to the queue, but jobs already in the queue can finish.
-#' @param schedulingPolicyArn The Amazon Resource Name (ARN) of the fair share scheduling policy. Job
-#' queues that don't have a scheduling policy are scheduled in a first-in,
-#' first-out (FIFO) model. After a job queue has a scheduling policy, it
-#' can be replaced but can't be removed.
+#' @param schedulingPolicyArn The Amazon Resource Name (ARN) of the fair-share scheduling policy. Job
+#' queues that don't have a fair-share scheduling policy are scheduled in a
+#' first-in, first-out (FIFO) model. After a job queue has a fair-share
+#' scheduling policy, it can be replaced but can't be removed.
 #' 
 #' The format is
 #' `aws:Partition:batch:Region:Account:scheduling-policy/Name `.
@@ -475,11 +475,11 @@ batch_create_compute_environment <- function(computeEnvironmentName, type, state
 #' An example is
 #' `aws:aws:batch:us-west-2:123456789012:scheduling-policy/MySchedulingPolicy`.
 #' 
-#' A job queue without a scheduling policy is scheduled as a FIFO job queue
-#' and can't have a scheduling policy added. Jobs queues with a scheduling
-#' policy can have a maximum of 500 active fair share identifiers. When the
-#' limit has been reached, submissions of any jobs that add a new fair
-#' share identifier fail.
+#' A job queue without a fair-share scheduling policy is scheduled as a
+#' FIFO job queue and can't have a fair-share scheduling policy added. Jobs
+#' queues with a fair-share scheduling policy can have a maximum of 500
+#' active share identifiers. When the limit has been reached, submissions
+#' of any jobs that add a new share identifier fail.
 #' @param priority &#91;required&#93; The priority of the job queue. Job queues with a higher priority (or a
 #' higher integer value for the `priority` parameter) are evaluated first
 #' when associated with the same compute environment. Priority is
@@ -615,10 +615,10 @@ batch_create_job_queue <- function(jobQueueName, state = NULL, schedulingPolicyA
 #' @usage
 #' batch_create_scheduling_policy(name, fairsharePolicy, tags)
 #'
-#' @param name &#91;required&#93; The name of the scheduling policy. It can be up to 128 letters long. It
-#' can contain uppercase and lowercase letters, numbers, hyphens (-), and
-#' underscores (_).
-#' @param fairsharePolicy The fair share policy of the scheduling policy.
+#' @param name &#91;required&#93; The name of the fair-share scheduling policy. It can be up to 128
+#' letters long. It can contain uppercase and lowercase letters, numbers,
+#' hyphens (-), and underscores (_).
+#' @param fairsharePolicy The fair-share scheduling policy details.
 #' @param tags The tags that you apply to the scheduling policy to help you categorize
 #' and organize your resources. Each tag consists of a key and an optional
 #' value. For more information, see [Tagging Amazon Web Services
@@ -3538,7 +3538,7 @@ batch_list_tags_for_resource <- function(resourceArn) {
 #' Parameters in a [`submit_job`][batch_submit_job] request override any
 #' corresponding parameter defaults from the job definition.
 #' @param schedulingPriority The scheduling priority for jobs that are submitted with this job
-#' definition. This only affects jobs in job queues with a fair share
+#' definition. This only affects jobs in job queues with a fair-share
 #' policy. Jobs with a higher scheduling priority are scheduled before jobs
 #' with a lower scheduling priority.
 #' 
@@ -4492,7 +4492,7 @@ batch_register_job_definition <- function(jobDefinitionName, type, parameters = 
 #' definition parameters in a `resourceRequirements` object that's included
 #' in the `containerOverrides` parameter.
 #' 
-#' Job queues with a scheduling policy are limited to 500 active fair share
+#' Job queues with a scheduling policy are limited to 500 active share
 #' identifiers at a time.
 #' 
 #' Jobs that run on Fargate resources can't be guaranteed to run for more
@@ -4512,13 +4512,14 @@ batch_register_job_definition <- function(jobDefinitionName, type, parameters = 
 #' @param jobQueue &#91;required&#93; The job queue where the job is submitted. You can specify either the
 #' name or the Amazon Resource Name (ARN) of the queue.
 #' @param shareIdentifier The share identifier for the job. Don't specify this parameter if the
-#' job queue doesn't have a scheduling policy. If the job queue has a
-#' scheduling policy, then this parameter must be specified.
+#' job queue doesn't have a fair-share scheduling policy. If the job queue
+#' has a fair-share scheduling policy, then this parameter must be
+#' specified.
 #' 
 #' This string is limited to 255 alphanumeric characters, and can be
 #' followed by an asterisk (*).
 #' @param schedulingPriorityOverride The scheduling priority for the job. This only affects jobs in job
-#' queues with a fair share policy. Jobs with a higher scheduling priority
+#' queues with a fair-share policy. Jobs with a higher scheduling priority
 #' are scheduled before jobs with a lower scheduling priority. This
 #' overrides any scheduling priority in the job definition and works only
 #' within a single share identifier.
@@ -5152,9 +5153,9 @@ batch_untag_resource <- function(resourceArn, tagKeys) {
 #' `c5.large` instance.
 #' @param unmanagedvCpus The maximum number of vCPUs expected to be used for an unmanaged compute
 #' environment. Don't specify this parameter for a managed compute
-#' environment. This parameter is only used for fair share scheduling to
+#' environment. This parameter is only used for fair-share scheduling to
 #' reserve vCPU capacity for new share identifiers. If this parameter isn't
-#' provided for a fair share job queue, no vCPU capacity is reserved.
+#' provided for a fair-share job queue, no vCPU capacity is reserved.
 #' @param computeResources Details of the compute resources managed by the compute environment.
 #' Required for a managed compute environment. For more information, see
 #' [Compute
@@ -5312,8 +5313,8 @@ batch_update_compute_environment <- function(computeEnvironment, state = NULL, u
 #' is `ENABLED`, it can accept jobs. If the job queue state is `DISABLED`,
 #' new jobs can't be added to the queue, but jobs already in the queue can
 #' finish.
-#' @param schedulingPolicyArn Amazon Resource Name (ARN) of the fair share scheduling policy. Once a
-#' job queue is created, the fair share scheduling policy can be replaced
+#' @param schedulingPolicyArn Amazon Resource Name (ARN) of the fair-share scheduling policy. Once a
+#' job queue is created, the fair-share scheduling policy can be replaced
 #' but not removed. The format is
 #' `aws:Partition:batch:Region:Account:scheduling-policy/Name `. For
 #' example,
@@ -5418,7 +5419,7 @@ batch_update_job_queue <- function(jobQueue, state = NULL, schedulingPolicyArn =
 #' batch_update_scheduling_policy(arn, fairsharePolicy)
 #'
 #' @param arn &#91;required&#93; The Amazon Resource Name (ARN) of the scheduling policy to update.
-#' @param fairsharePolicy The fair share policy.
+#' @param fairsharePolicy The fair-share policy scheduling details.
 #'
 #' @return
 #' An empty list.

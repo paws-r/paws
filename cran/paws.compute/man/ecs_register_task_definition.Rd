@@ -104,9 +104,10 @@ Task-level CPU and memory parameters are ignored for Windows containers.
 We recommend specifying container-level resources for Windows
 containers.
 
-If you're using the EC2 launch type, this field is optional. Supported
-values are between \code{128} CPU units (\code{0.125} vCPUs) and \code{10240} CPU units
-(\code{10} vCPUs). If you do not specify a value, the parameter is ignored.
+If you're using the EC2 launch type or external launch type, this field
+is optional. Supported values are between \code{128} CPU units (\code{0.125}
+vCPUs) and \code{196608} CPU units (\code{192} vCPUs). If you do not specify a
+value, the parameter is ignored.
 
 If you're using the Fargate launch type, this field is required and you
 must use one of the following values, which determines your range of

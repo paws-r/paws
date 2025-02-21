@@ -7,11 +7,11 @@
 batch_create_scheduling_policy(name, fairsharePolicy = NULL, tags = NULL)
 }
 \arguments{
-\item{name}{[required] The name of the scheduling policy. It can be up to 128 letters long. It
-can contain uppercase and lowercase letters, numbers, hyphens (-), and
-underscores (_).}
+\item{name}{[required] The name of the fair-share scheduling policy. It can be up to 128
+letters long. It can contain uppercase and lowercase letters, numbers,
+hyphens (-), and underscores (_).}
 
-\item{fairsharePolicy}{The fair share policy of the scheduling policy.}
+\item{fairsharePolicy}{The fair-share scheduling policy details.}
 
 \item{tags}{The tags that you apply to the scheduling policy to help you categorize
 and organize your resources. Each tag consists of a key and an optional

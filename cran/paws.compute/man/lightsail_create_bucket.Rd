@@ -14,7 +14,7 @@ lightsail_create_bucket(
 \arguments{
 \item{bucketName}{[required] The name for the bucket.
 
-For more information about bucket names, see \href{https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/bucket-naming-rules-in-amazon-lightsail.html}{Bucket naming rules in Amazon Lightsail}
+For more information about bucket names, see \href{https://docs.aws.amazon.com/lightsail/latest/userguide/bucket-naming-rules-in-amazon-lightsail.html}{Bucket naming rules in Amazon Lightsail}
 in the \emph{Amazon Lightsail Developer Guide}.}
 
 \item{bundleId}{[required] The ID of the bundle to use for the bucket.
@@ -36,7 +36,7 @@ bucket after it's created.}
 \item{enableObjectVersioning}{A Boolean value that indicates whether to enable versioning of objects
 in the bucket.
 
-For more information about versioning, see \href{https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-managing-bucket-object-versioning.html}{Enabling and suspending object versioning in a bucket in Amazon Lightsail}
+For more information about versioning, see \href{https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-managing-bucket-object-versioning.html}{Enabling and suspending object versioning in a bucket in Amazon Lightsail}
 in the \emph{Amazon Lightsail Developer Guide}.}
 }
 \description{

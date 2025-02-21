@@ -1065,8 +1065,7 @@ iam_create_login_profile <- function(UserName = NULL, Password = NULL, PasswordR
 #'
 #' @description
 #' Creates an IAM entity to describe an identity provider (IdP) that
-#' supports [OpenID Connect
-#' (OIDC)](https://openid.net/developers/how-connect-works/).
+#' supports OpenID Connect (OIDC).
 #' 
 #' The OIDC provider that you create with this operation can be used as a
 #' principal in a role's trust policy. Such a policy establishes a trust

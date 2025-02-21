@@ -9,7 +9,7 @@ batch_update_scheduling_policy(arn, fairsharePolicy = NULL)
 \arguments{
 \item{arn}{[required] The Amazon Resource Name (ARN) of the scheduling policy to update.}
 
-\item{fairsharePolicy}{The fair share policy.}
+\item{fairsharePolicy}{The fair-share policy scheduling details.}
 }
 \description{
 Updates a scheduling policy.

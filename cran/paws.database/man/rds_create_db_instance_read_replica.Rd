@@ -350,7 +350,7 @@ This setting doesn't apply to RDS Custom DB instances.}
 
 \item{DatabaseInsightsMode}{The mode of Database Insights to enable for the read replica.
 
-Currently, this setting is not supported.}
+This setting isn't supported.}
 
 \item{EnablePerformanceInsights}{Specifies whether to enable Performance Insights for the read replica.
 

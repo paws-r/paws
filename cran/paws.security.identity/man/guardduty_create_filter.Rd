@@ -154,7 +154,7 @@ milliseconds.
 \item resource.rdsDbInstanceDetails.tags.value
 \item service.runtimeDetails.process.executableSha256
 \item service.runtimeDetails.process.name
-\item service.runtimeDetails.process.name
+\item service.runtimeDetails.process.executablePath
 \item resource.lambdaDetails.functionName
 \item resource.lambdaDetails.functionArn
 \item resource.lambdaDetails.tags.key

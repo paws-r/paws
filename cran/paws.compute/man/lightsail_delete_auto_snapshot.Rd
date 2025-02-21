@@ -15,7 +15,7 @@ the \verb{get auto snapshots} operation to get the available automatic
 snapshots for a resource.}
 }
 \description{
-Deletes an automatic snapshot of an instance or disk. For more information, see the \href{https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-configuring-automatic-snapshots.html}{Amazon Lightsail Developer Guide}.
+Deletes an automatic snapshot of an instance or disk. For more information, see the \href{https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-configuring-automatic-snapshots.html}{Amazon Lightsail Developer Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/lightsail_delete_auto_snapshot/} for full documentation.
 }

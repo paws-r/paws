@@ -920,7 +920,9 @@ codebuild_batch_get_fleets <- function(names) {
 #'           name = "string",
 #'           domain = "string",
 #'           scope = "GITHUB_ORGANIZATION"|"GITHUB_GLOBAL"|"GITLAB_GROUP"
-#'         )
+#'         ),
+#'         status = "CREATING"|"CREATE_FAILED"|"ACTIVE"|"DELETING",
+#'         statusMessage = "string"
 #'       ),
 #'       vpcConfig = list(
 #'         vpcId = "string",
@@ -1782,7 +1784,9 @@ codebuild_create_fleet <- function(name, baseCapacity, environmentType, computeT
 #'         name = "string",
 #'         domain = "string",
 #'         scope = "GITHUB_ORGANIZATION"|"GITHUB_GLOBAL"|"GITLAB_GROUP"
-#'       )
+#'       ),
+#'       status = "CREATING"|"CREATE_FAILED"|"ACTIVE"|"DELETING",
+#'       statusMessage = "string"
 #'     ),
 #'     vpcConfig = list(
 #'       vpcId = "string",
@@ -2231,7 +2235,9 @@ codebuild_create_report_group <- function(name, type, exportConfig, tags = NULL)
 #'       name = "string",
 #'       domain = "string",
 #'       scope = "GITHUB_ORGANIZATION"|"GITHUB_GLOBAL"|"GITLAB_GROUP"
-#'     )
+#'     ),
+#'     status = "CREATING"|"CREATE_FAILED"|"ACTIVE"|"DELETING",
+#'     statusMessage = "string"
 #'   )
 #' )
 #' ```
@@ -6931,7 +6937,9 @@ codebuild_update_fleet <- function(arn, baseCapacity = NULL, environmentType = N
 #'         name = "string",
 #'         domain = "string",
 #'         scope = "GITHUB_ORGANIZATION"|"GITHUB_GLOBAL"|"GITLAB_GROUP"
-#'       )
+#'       ),
+#'       status = "CREATING"|"CREATE_FAILED"|"ACTIVE"|"DELETING",
+#'       statusMessage = "string"
 #'     ),
 #'     vpcConfig = list(
 #'       vpcId = "string",
@@ -7446,7 +7454,9 @@ codebuild_update_report_group <- function(arn, exportConfig = NULL, tags = NULL)
 #'       name = "string",
 #'       domain = "string",
 #'       scope = "GITHUB_ORGANIZATION"|"GITHUB_GLOBAL"|"GITLAB_GROUP"
-#'     )
+#'     ),
+#'     status = "CREATING"|"CREATE_FAILED"|"ACTIVE"|"DELETING",
+#'     statusMessage = "string"
 #'   )
 #' )
 #' ```

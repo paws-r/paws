@@ -43,6 +43,9 @@ NULL
 #' coming from an internet gateway, NAT gateway, or over VPN or Direct
 #' Connect. Network Firewall uses rules that are compatible with Suricata,
 #' a free, open source network analysis and threat detection engine.
+#' Network Firewall supports Suricata version 7.0.3. For information about
+#' Suricata, see the [Suricata website](https://suricata.io/) and the
+#' [Suricata User Guide](https://docs.suricata.io/en/suricata-7.0.3/).
 #' 
 #' You can use Network Firewall to monitor and protect your VPC traffic in
 #' a number of ways. The following are just a few examples:
@@ -190,14 +193,18 @@ NULL
 #'  \link[=networkfirewall_describe_rule_group_metadata]{describe_rule_group_metadata} \tab High-level information about a rule group, returned by operations like create and describe\cr
 #'  \link[=networkfirewall_describe_tls_inspection_configuration]{describe_tls_inspection_configuration} \tab Returns the data objects for the specified TLS inspection configuration\cr
 #'  \link[=networkfirewall_disassociate_subnets]{disassociate_subnets} \tab Removes the specified subnet associations from the firewall\cr
+#'  \link[=networkfirewall_get_analysis_report_results]{get_analysis_report_results} \tab The results of a COMPLETED analysis report generated with StartAnalysisReport\cr
+#'  \link[=networkfirewall_list_analysis_reports]{list_analysis_reports} \tab Returns a list of all traffic analysis reports generated within the last 30 days\cr
 #'  \link[=networkfirewall_list_firewall_policies]{list_firewall_policies} \tab Retrieves the metadata for the firewall policies that you have defined\cr
 #'  \link[=networkfirewall_list_firewalls]{list_firewalls} \tab Retrieves the metadata for the firewalls that you have defined\cr
 #'  \link[=networkfirewall_list_rule_groups]{list_rule_groups} \tab Retrieves the metadata for the rule groups that you have defined\cr
 #'  \link[=networkfirewall_list_tags_for_resource]{list_tags_for_resource} \tab Retrieves the tags associated with the specified resource\cr
 #'  \link[=networkfirewall_list_tls_inspection_configurations]{list_tls_inspection_configurations} \tab Retrieves the metadata for the TLS inspection configurations that you have defined\cr
 #'  \link[=networkfirewall_put_resource_policy]{put_resource_policy} \tab Creates or updates an IAM policy for your rule group or firewall policy\cr
+#'  \link[=networkfirewall_start_analysis_report]{start_analysis_report} \tab Generates a traffic analysis report for the timeframe and traffic type you specify\cr
 #'  \link[=networkfirewall_tag_resource]{tag_resource} \tab Adds the specified tags to the specified resource\cr
 #'  \link[=networkfirewall_untag_resource]{untag_resource} \tab Removes the tags with the specified keys from the specified resource\cr
+#'  \link[=networkfirewall_update_firewall_analysis_settings]{update_firewall_analysis_settings} \tab Enables specific types of firewall analysis on a specific firewall you define\cr
 #'  \link[=networkfirewall_update_firewall_delete_protection]{update_firewall_delete_protection} \tab Modifies the flag, DeleteProtection, which indicates whether it is possible to delete the firewall\cr
 #'  \link[=networkfirewall_update_firewall_description]{update_firewall_description} \tab Modifies the description for the specified firewall\cr
 #'  \link[=networkfirewall_update_firewall_encryption_configuration]{update_firewall_encryption_configuration} \tab A complex type that contains settings for encryption of your firewall resources\cr
