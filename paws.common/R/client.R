@@ -86,6 +86,15 @@ GLOBAL_REGIONS <- c(
   "aws-iso-global",
   "aws-iso-b-global"
 )
+PARTITIONS <- c(
+  "aws" = "^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$",
+  "aws-cn" = "^cn\\-\\w+\\-\\d+$",
+  "aws-us-gov" = "^us\\-gov\\-\\w+\\-\\d+$",
+  "aws-iso" = "^us\\-iso\\-\\w+\\-\\d+$",
+  "aws-iso-b" = "^us\\-isob\\-\\w+\\-\\d+$",
+  "aws-iso-e" = "^eu\\-isoe\\-\\w+\\-\\d+$",
+  "aws-iso-f" = "^us\\-isof\\-\\w+\\-\\d+$"
+)
 
 # resolver_endpoint returns the endpoint for a given service.
 # e.g. "https://ec2.us-east-1.amazonaws.com"
@@ -179,10 +188,8 @@ resolver_endpoint_js <- function(
   if (!any(global_found) & global_region) {
     stop("No region provided and no global region found.")
   }
-  search_region <- (
-    if (any(global_found) & global_region) names(global_found[global_found][1]) else
-      region
-  )
+  search_region <- (if (any(global_found) & global_region)
+    names(global_found[global_found][1]) else region)
   e <- endpoints[[get_region_pattern_js(names(endpoints), search_region)]]
   if (is.character(e)) {
     e <- list(endpoint = e, global = FALSE)
@@ -212,6 +219,30 @@ set_sts_regional_endpoint <- function(sts_regional_endpoint, endpoint) {
 
 set_sts_region <- function(sts_regional_endpoint, region) {
   switch(sts_regional_endpoint, "legacy" = "us-east-1", "regional" = region)
+}
+
+get_region_pattern <- function(endpoints, region, partition_name = "") {
+  if (nzchar(partition_name)) {
+    found <- PARTITIONS[names(PARTITIONS) == partition_name]
+  } else {
+    nms <- names(endpoints)
+    found <- nms[nms == region]
+    if (length(found) == 0) {
+      partition_name <- set_partition_name(region)
+      found <- PARTITIONS[names(PARTITIONS) == partition_name]
+    }
+  }
+  result <- list()
+  if (length(found) > 0) {
+    result <- endpoints[[found]]
+  } else {
+    # default to partition "aws" when no region is found
+    # https://github.com/boto/botocore/blob/develop/botocore/client.py#L638-L647
+    result <- endpoints[["^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$"]]
+  }
+
+  if (is.null(result[["signing_region"]])) result[["signing_region"]] <- region
+  return(result)
 }
 
 # client_config returns a ClientConfig configured for the service.

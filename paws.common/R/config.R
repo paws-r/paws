@@ -98,7 +98,7 @@ set_config <- function(svc, cfgs = list()) {
     config$region <- get_region(config[["credentials"]][["profile"]])
   }
   if (!is.null(config$region) || nchar(config$region) > 0) {
-    config$partition_name <- set_partition(config$region)
+    config$partition_name <- set_partition_name(config$region)
   }
   svc$.internal <- list(config = config)
   set_paws_vendor()

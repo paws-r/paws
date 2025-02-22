@@ -333,27 +333,23 @@ test_that("get sso credentials", {
 
 test_that("sso_credential_process legacy", {
   mock_file_exists <- mock2(TRUE)
-  mock_fromJSON <- mock2(
-    list(
-      startUrl = "https://my-sso-portal.awsapps.com/start",
-      region = "us-east-1",
-      accessToken = "foo",
-      expiresAt = "bar",
-      clientId = "cho",
-      clientSecret = "zap",
-      registrationExpiresAt = "2023-01-01T12:00:00Z"
+  mock_fromJSON <- mock2(list(
+    startUrl = "https://my-sso-portal.awsapps.com/start",
+    region = "us-east-1",
+    accessToken = "foo",
+    expiresAt = "bar",
+    clientId = "cho",
+    clientSecret = "zap",
+    registrationExpiresAt = "2023-01-01T12:00:00Z"
+  ))
+  mock_get_role_credentials <- mock2(list(
+    roleCredentials = list(
+      accessKeyId = "hello",
+      secretAccessKey = "world",
+      sessionToken = "foo_hello",
+      expiration = "foo_world"
     )
-  )
-  mock_get_role_credentials <- mock2(
-    list(
-      roleCredentials = list(
-        accessKeyId = "hello",
-        secretAccessKey = "world",
-        sessionToken = "foo_hello",
-        expiration = "foo_world"
-      )
-    )
-  )
+  ))
   mock_Creds <- mock2(Creds())
   mock_sso <- mock2(list(get_role_credentials = mock_get_role_credentials))
   mockery::stub(sso_credential_process, "file.exists", mock_file_exists)
@@ -370,9 +366,10 @@ test_that("sso_credential_process legacy", {
   )
 
   # check for correct sso_cache
-  expect_true(
-    grepl("c7aaaf71fcc8777ae2475525ed049d39fe16c484", mock_arg(mock_fromJSON)[[1]])
-  )
+  expect_true(grepl(
+    "c7aaaf71fcc8777ae2475525ed049d39fe16c484",
+    mock_arg(mock_fromJSON)[[1]]
+  ))
   expect_equal(
     mock_arg(mock_Creds),
     list(
@@ -386,27 +383,23 @@ test_that("sso_credential_process legacy", {
 
 test_that("sso_credential_process", {
   mock_file_exists <- mock2(TRUE)
-  mock_fromJSON <- mock2(
-    list(
-      startUrl = "https://my-sso-portal.awsapps.com/start",
-      region = "us-east-1",
-      accessToken = "foo",
-      expiresAt = "bar",
-      clientId = "cho",
-      clientSecret = "zap",
-      registrationExpiresAt = "2023-01-01T12:00:00Z"
+  mock_fromJSON <- mock2(list(
+    startUrl = "https://my-sso-portal.awsapps.com/start",
+    region = "us-east-1",
+    accessToken = "foo",
+    expiresAt = "bar",
+    clientId = "cho",
+    clientSecret = "zap",
+    registrationExpiresAt = "2023-01-01T12:00:00Z"
+  ))
+  mock_get_role_credentials <- mock2(list(
+    roleCredentials = list(
+      accessKeyId = "hello",
+      secretAccessKey = "world",
+      sessionToken = "foo_hello",
+      expiration = "foo_world"
     )
-  )
-  mock_get_role_credentials <- mock2(
-    list(
-      roleCredentials = list(
-        accessKeyId = "hello",
-        secretAccessKey = "world",
-        sessionToken = "foo_hello",
-        expiration = "foo_world"
-      )
-    )
-  )
+  ))
   mock_Creds <- mock2(Creds())
   mock_sso <- mock2(list(get_role_credentials = mock_get_role_credentials))
   mockery::stub(sso_credential_process, "file.exists", mock_file_exists)
@@ -423,9 +416,10 @@ test_that("sso_credential_process", {
   )
 
   # check for correct sso_cache
-  expect_true(
-    grepl("0ad374308c5a4e22f723adf10145eafad7c4031c", mock_arg(mock_fromJSON)[[1]])
-  )
+  expect_true(grepl(
+    "0ad374308c5a4e22f723adf10145eafad7c4031c",
+    mock_arg(mock_fromJSON)[[1]]
+  ))
   expect_equal(
     mock_arg(mock_Creds),
     list(
@@ -471,16 +465,14 @@ test_that("check sso_cache doesn't exist", {
 
 test_that("check for invalid token, missing accessToken", {
   mock_file_exists <- mock2(TRUE)
-  mock_fromJSON <- mock2(
-    list(
-      startUrl = "https://my-sso-portal.awsapps.com/start",
-      region = "us-east-1",
-      expiresAt = "bar",
-      clientId = "cho",
-      clientSecret = "zap",
-      registrationExpiresAt = "2023-01-01T12:00:00Z"
-    )
-  )
+  mock_fromJSON <- mock2(list(
+    startUrl = "https://my-sso-portal.awsapps.com/start",
+    region = "us-east-1",
+    expiresAt = "bar",
+    clientId = "cho",
+    clientSecret = "zap",
+    registrationExpiresAt = "2023-01-01T12:00:00Z"
+  ))
   mockery::stub(sso_credential_process, "file.exists", mock_file_exists)
   mockery::stub(sso_credential_process, "jsonlite::fromJSON", mock_fromJSON)
 
@@ -498,16 +490,14 @@ test_that("check for invalid token, missing accessToken", {
 
 test_that("check for invalid token, missing expiresAt", {
   mock_file_exists <- mock2(TRUE)
-  mock_fromJSON <- mock2(
-    list(
-      startUrl = "https://my-sso-portal.awsapps.com/start",
-      region = "us-east-1",
-      accessToken = "foo",
-      clientId = "cho",
-      clientSecret = "zap",
-      registrationExpiresAt = "2023-01-01T12:00:00Z"
-    )
-  )
+  mock_fromJSON <- mock2(list(
+    startUrl = "https://my-sso-portal.awsapps.com/start",
+    region = "us-east-1",
+    accessToken = "foo",
+    clientId = "cho",
+    clientSecret = "zap",
+    registrationExpiresAt = "2023-01-01T12:00:00Z"
+  ))
   mockery::stub(sso_credential_process, "file.exists", mock_file_exists)
   mockery::stub(sso_credential_process, "jsonlite::fromJSON", mock_fromJSON)
 
@@ -682,13 +672,58 @@ test_that("merge_config config and param config", {
   expect_equal(actual4, expect4)
 })
 
-test_that("set_partition", {
-  expect_equal(set_partition("us-east-1"), "aws")
-  expect_equal(set_partition("cn-east-1"), "aws-cn")
-  expect_equal(set_partition("us-gov-east-1"), "aws-us-gov")
-  expect_equal(set_partition("us-iso-east-1"), "aws-iso")
-  expect_equal(set_partition("us-isob-east-1"), "aws-iso-b")
-  expect_equal(set_partition("eu-isoe-east-1"), "aws-iso-e")
-  expect_equal(set_partition("us-isof-east-1"), "aws-iso-f")
-  expect_equal(set_partition("region"), "aws")
+test_that("set_partition_name", {
+  # regions generated from:
+  # https://github.com/boto/botocore/blob/develop/botocore/data/endpoints.json
+  aws <- c(
+    "af-south-1",
+    "ap-east-1",
+    "ap-northeast-1",
+    "ap-northeast-2",
+    "ap-northeast-3",
+    "ap-south-1",
+    "ap-south-2",
+    "ap-southeast-1",
+    "ap-southeast-2",
+    "ap-southeast-3",
+    "ap-southeast-4",
+    "ap-southeast-5",
+    "ap-southeast-7",
+    "ca-central-1",
+    "ca-west-1",
+    "eu-central-1",
+    "eu-central-2",
+    "eu-north-1",
+    "eu-south-1",
+    "eu-south-2",
+    "eu-west-1",
+    "eu-west-2",
+    "eu-west-3",
+    "il-central-1",
+    "me-central-1",
+    "me-south-1",
+    "mx-central-1",
+    "sa-east-1",
+    "us-east-1",
+    "us-east-2",
+    "us-west-1",
+    "us-west-2"
+  )
+  aws_cn <- c("cn-north-1", "cn-northwest-1")
+  aws_us_gov <- c("us-gov-east-1", "us-gov-west-1")
+  aws_iso <- c("us-iso-east-1", "us-iso-west-1")
+  aws_isob <- "us-isob-east-1"
+  aws_isoe <- "eu-isoe-west-1"
+  # no region found for this partition used regex pattern for testing
+  aws_isof <- "us-isof-east-1"
+  made_up <- c("region", "dummy_region")
+
+  for (region in aws) expect_equal(set_partition_name(region), "aws")
+  for (region in aws_cn) expect_equal(set_partition_name(region), "aws-cn")
+  for (region in aws_us_gov) expect_equal(set_partition_name(region), "aws-us-gov")
+  for (region in aws_iso) expect_equal(set_partition_name(region), "aws-iso")
+  for (region in aws_isob) expect_equal(set_partition_name(region), "aws-iso-b")
+  for (region in aws_isoe) expect_equal(set_partition_name(region), "aws-iso-e")
+  for (region in aws_isof) expect_equal(set_partition_name(region), "aws-iso-f")
+  for (region in made_up) expect_equal(set_partition_name(region), "")
 })
