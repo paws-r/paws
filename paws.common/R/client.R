@@ -232,7 +232,7 @@ get_region_pattern <- function(endpoints, region, partition_name = "") {
       found <- PARTITIONS[names(PARTITIONS) == partition_name]
     }
   }
-
+  result <- list()
   if (length(found) > 0) {
     result <- endpoints[[found]]
   } else {

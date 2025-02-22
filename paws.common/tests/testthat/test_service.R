@@ -88,7 +88,12 @@ test_that("new_service adds customizations", {
 test_that("test custom config credentials take priority", {
   metadata <- list(
     service_name = "foo",
-    endpoints = list("region" = list(endpoint = "endpoint", global = FALSE)),
+    endpoints = list(
+      "^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(
+        endpoint = "endpoint",
+        global = FALSE
+      )
+    ),
     service_id = "bar",
     api_version = "1",
     signing_name = "foobar",
