@@ -256,14 +256,12 @@ xml_parse <- function(data, interface, data_nms, flattened = NULL) {
       # Check if element exists in response
       found <- (key == data_nms)
     }
-    result[[i]] <- (
-      if (any(found)) {
-        xml_elts <- data[found]
-        parse_xml_elt(xml_elts, interface_i, tags_i, flattened)
-      } else {
-        default_parse_xml(interface_i, tags_i)
-      }
-    )
+    result[[i]] <- (if (any(found)) {
+      xml_elts <- data[found]
+      parse_xml_elt(xml_elts, interface_i, tags_i, flattened)
+    } else {
+      default_parse_xml(interface_i, tags_i)
+    })
   }
   names(result) <- nms
   return(result)

@@ -43,15 +43,13 @@ make_category_collection <- function(
 
 # Identify sub-categories
 find_sub_categories <- function(categories) {
-  return(
-    vapply(
-      categories,
-      function(cat) {
-        !is.null(cat$category_description)
-      },
-      logical(1)
-    )
-  )
+  return(vapply(
+    categories,
+    function(cat) {
+      !is.null(cat$category_description)
+    },
+    logical(1)
+  ))
 }
 
 # Group sub-categories

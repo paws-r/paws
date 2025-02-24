@@ -94,9 +94,11 @@ test_that("content_md5 works with an empty body", {
   expect_error(result <- build(request), NA)
 
   actual <- result$http_request$header[["Content-Md5"]]
-  expected <- base64enc::base64encode(
-    digest::digest(raw(0), serialize = FALSE, raw = TRUE)
-  )
+  expected <- base64enc::base64encode(digest::digest(
+    raw(0),
+    serialize = FALSE,
+    raw = TRUE
+  ))
   expect_equal(actual, expected)
 })
 
@@ -222,13 +224,11 @@ test_that("ignore redirect if already redirected", {
   req <- build_request(bucket = "foo", operation = "ListObjects")
   req$http_response <- HttpResponse(
     status_code = 301,
-    body = charToRaw(
-      paste0(
-        "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Error><Code>PermanentRedirect</Code>",
-        "<Message>Dummy Error</Message><Endpoint>foo.s3.us-east-2.amazonaws.com</Endpoint>",
-        "<Bucket>foo</Bucket></Error>"
-      )
-    ),
+    body = charToRaw(paste0(
+      "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Error><Code>PermanentRedirect</Code>",
+      "<Message>Dummy Error</Message><Endpoint>foo.s3.us-east-2.amazonaws.com</Endpoint>",
+      "<Bucket>foo</Bucket></Error>"
+    )),
     header = list("x-amz-bucket-region" = "eu-east-2")
   )
   req$context$s3_redirect <- TRUE
@@ -237,13 +237,11 @@ test_that("ignore redirect if already redirected", {
 })
 
 test_that("default to head_bucket for final region check", {
-  raw_error <- charToRaw(
-    paste0(
-      "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Error><Code>PermanentRedirect</Code>",
-      "<Message>Dummy Error</Message><Endpoint>foo.s3.us-east-2.amazonaws.com</Endpoint>",
-      "<Bucket>foo</Bucket></Error>"
-    )
-  )
+  raw_error <- charToRaw(paste0(
+    "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Error><Code>PermanentRedirect</Code>",
+    "<Message>Dummy Error</Message><Endpoint>foo.s3.us-east-2.amazonaws.com</Endpoint>",
+    "<Bucket>foo</Bucket></Error>"
+  ))
   req <- build_request(bucket = "foo", operation = "ListObjects")
   req$http_response <- HttpResponse(status_code = 301, body = raw_error)
   mock_head_bucket <- mock2(list(BucketRegion = "bar"))
@@ -263,13 +261,11 @@ test_that("redirect request from http response error", {
   req <- build_request(bucket = "foo", operation = "ListObjects")
   req$http_response <- HttpResponse(
     status_code = 301,
-    body = charToRaw(
-      paste0(
-        "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Error><Code>PermanentRedirect</Code>",
-        "<Message>Dummy Error</Message><Endpoint>foo.s3.us-east-2.amazonaws.com</Endpoint>",
-        "<Bucket>foo</Bucket></Error>"
-      )
-    ),
+    body = charToRaw(paste0(
+      "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Error><Code>PermanentRedirect</Code>",
+      "<Message>Dummy Error</Message><Endpoint>foo.s3.us-east-2.amazonaws.com</Endpoint>",
+      "<Bucket>foo</Bucket></Error>"
+    )),
     header = list("x-amz-bucket-region" = "eu-east-2")
   )
 
@@ -289,13 +285,11 @@ test_that("redirect error with region", {
   req <- build_request(bucket = "foo", operation = "ListObjects")
   req$http_response <- HttpResponse(
     status_code = 301,
-    body = charToRaw(
-      paste0(
-        "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Error><Code>PermanentRedirect</Code>",
-        "<Message>Dummy Error</Message><Endpoint>foo.s3.us-east-2.amazonaws.com</Endpoint>",
-        "<Bucket>foo</Bucket></Error>"
-      )
-    ),
+    body = charToRaw(paste0(
+      "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Error><Code>PermanentRedirect</Code>",
+      "<Message>Dummy Error</Message><Endpoint>foo.s3.us-east-2.amazonaws.com</Endpoint>",
+      "<Bucket>foo</Bucket></Error>"
+    )),
     header = list("x-amz-bucket-region" = "eu-east-2")
   )
 
@@ -310,13 +304,11 @@ test_that("redirect error without region", {
   req <- build_request(bucket = "foo", operation = "ListObjects")
   req$http_response <- HttpResponse(
     status_code = 301,
-    body = charToRaw(
-      paste0(
-        "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Error><Code>PermanentRedirect</Code>",
-        "<Message>Dummy Error</Message><Endpoint>foo.s3.us-east-2.amazonaws.com</Endpoint>",
-        "<Bucket>foo</Bucket></Error>"
-      )
-    )
+    body = charToRaw(paste0(
+      "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Error><Code>PermanentRedirect</Code>",
+      "<Message>Dummy Error</Message><Endpoint>foo.s3.us-east-2.amazonaws.com</Endpoint>",
+      "<Bucket>foo</Bucket></Error>"
+    ))
   )
 
   error <- s3_unmarshal_error(req)$error

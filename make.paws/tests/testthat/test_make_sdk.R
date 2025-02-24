@@ -58,14 +58,12 @@ path_docs <- file.path(path, "docs")
 #-------------------------------------------------------------------------------
 
 test_that("make_sdk", {
-  categories <- list(
-    list(
-      name = "bar",
-      services = list("foo"),
-      title = "Foo",
-      description = "This is a complete sentence."
-    )
-  )
+  categories <- list(list(
+    name = "bar",
+    services = list("foo"),
+    title = "Foo",
+    description = "This is a complete sentence."
+  ))
 
   test_get_categories <- function() {
     return(categories)

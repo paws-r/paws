@@ -53,8 +53,10 @@ category_service_ops_count <- function(in_dir = "../vendor/botocore") {
     ),
     by = "category"
   ]
-  paws_cat_service_ops_count <- paws_cat_service_ops_count[
-    order(get("category"), -get("total_services"), -get("total_operations"))
-  ]
+  paws_cat_service_ops_count <- paws_cat_service_ops_count[order(
+    get("category"),
+    -get("total_services"),
+    -get("total_operations")
+  )]
   return(paws_cat_service_ops_count)
 }

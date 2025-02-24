@@ -57,12 +57,10 @@ test_that("config_file_provider", {
   # Setup the expected creds for each profile
   profiles <- c("default", "env", "p1", "p2", "p3")
   creds <- lapply(profiles, function(profile) {
-    return(
-      Creds(
-        access_key_id = paste0(profile, "Id"),
-        secret_access_key = paste0(profile, "Secret")
-      )
-    )
+    return(Creds(
+      access_key_id = paste0(profile, "Id"),
+      secret_access_key = paste0(profile, "Secret")
+    ))
   })
   names(creds) <- profiles
 

@@ -360,14 +360,12 @@ sso_credential_process <- function(
     return(NULL)
   }
 
-  return(
-    Creds(
-      access_key_id = resp$roleCredentials$accessKeyId,
-      secret_access_key = resp$roleCredentials$secretAccessKey,
-      session_token = resp$roleCredentials$sessionToken,
-      expiration = resp$roleCredentials$expiration
-    )
-  )
+  return(Creds(
+    access_key_id = resp$roleCredentials$accessKeyId,
+    secret_access_key = resp$roleCredentials$secretAccessKey,
+    session_token = resp$roleCredentials$sessionToken,
+    expiration = resp$roleCredentials$expiration
+  ))
 }
 
 # Get STS temporary credentials for the role with ARN `role_arn` using
@@ -525,14 +523,12 @@ get_container_credentials <- function(credentials_uri, credentials_full_uri) {
 
   credentials_response_body <- jsonlite::fromJSON(raw_to_utf8(metadata_response$body))
 
-  return(
-    list(
-      access_key_id = credentials_response_body$AccessKeyId,
-      secret_access_key = credentials_response_body$SecretAccessKey,
-      session_token = credentials_response_body$Token,
-      expiration = as_timestamp(credentials_response_body$Expiration, "iso8601")
-    )
-  )
+  return(list(
+    access_key_id = credentials_response_body$AccessKeyId,
+    secret_access_key = credentials_response_body$SecretAccessKey,
+    session_token = credentials_response_body$Token,
+    expiration = as_timestamp(credentials_response_body$Expiration, "iso8601")
+  ))
 }
 
 # Developed from:
@@ -560,13 +556,11 @@ set_container_credentails_headers <- function() {
 }
 
 get_container_credentials_eks <- function() {
-  return(
-    get_assume_role_with_web_identity_creds(
-      role_arn = get_role_arn(),
-      role_session_name = get_role_session_name(),
-      web_identity_token = get_web_identity_token()
-    )
-  )
+  return(get_assume_role_with_web_identity_creds(
+    role_arn = get_role_arn(),
+    role_session_name = get_role_session_name(),
+    web_identity_token = get_web_identity_token()
+  ))
 }
 
 # Retrieve credentials for EC2 IAM Role
@@ -613,12 +607,10 @@ iam_credentials_provider <- function() {
 }
 
 no_credentials <- function() {
-  message <- (
-    if (isTRUE(getOption("paws.log_level") <= 2L)) {
-      'No compatible credentials provided. Use `options("paws.log_level" = 3L)` for more information.'
-    } else {
-      "No compatible credentials provided."
-    }
-  )
+  message <- (if (isTRUE(getOption("paws.log_level") <= 2L)) {
+    'No compatible credentials provided. Use `options("paws.log_level" = 3L)` for more information.'
+  } else {
+    "No compatible credentials provided."
+  })
   stop(message, call. = FALSE)
 }

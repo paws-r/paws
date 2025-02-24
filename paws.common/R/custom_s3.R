@@ -190,9 +190,11 @@ copy_source_sse_md5 <- function(params) {
   }
   sse_key_member <- paste0(sse_member_prefix, "Key")
   sse_md5_member <- paste0(sse_member_prefix, "KeyMD5")
-  key_md5_str <- base64enc::base64encode(
-    digest::digest(params[[sse_key_member]], serialize = FALSE, raw = TRUE)
-  )
+  key_md5_str <- base64enc::base64encode(digest::digest(
+    params[[sse_key_member]],
+    serialize = FALSE,
+    raw = TRUE
+  ))
   attributes(key_md5_str) <- attributes(params[[sse_md5_member]])
   params[[sse_md5_member]] <- key_md5_str
   return(params)
@@ -210,20 +212,18 @@ copy_source_sse_md5 <- function(params) {
 content_md5 <- function(request) {
   operation_name <- request$operation$name
   if (
-    !(
-      operation_name %in%
-        c(
-          "PutBucketCors",
-          "PutBucketLifecycle",
-          "PutBucketPolicy",
-          "PutBucketTagging",
-          "DeleteObjects",
-          "PutBucketLifecycleConfiguration",
-          "PutBucketReplication",
-          "PutObject",
-          "UploadPart"
-        )
-    )
+    !(operation_name %in%
+      c(
+        "PutBucketCors",
+        "PutBucketLifecycle",
+        "PutBucketPolicy",
+        "PutBucketTagging",
+        "DeleteObjects",
+        "PutBucketLifecycleConfiguration",
+        "PutBucketReplication",
+        "PutObject",
+        "UploadPart"
+      ))
   ) {
     return(request)
   }
@@ -373,9 +373,10 @@ s3_redirect_from_error <- function(request) {
     request$client_info$endpoint,
     ep_info$endpoint
   )
-  request$http_request$url <- parse_url(
-    paste0(request$client_info$endpoint, request$operation$http_path)
-  )
+  request$http_request$url <- parse_url(paste0(
+    request$client_info$endpoint,
+    request$operation$http_path
+  ))
   request$built <- FALSE
   request$context$s3_redirect <- TRUE
   # re-sign redirect request
@@ -391,32 +392,25 @@ can_be_redirected <- function(request, error_code, error) {
   # if we sign a Head* request with the wrong region,
   # we'll get a 400 Bad Request but we won't get a
   # body saying it's an "AuthorizationHeaderMalformed".
-  is_special_head_object <- (
-    error_code %in% c("301", "400") & request$operation$name == "HeadObject"
-  )
-  is_special_head_bucket <- (
-    error_code %in%
-      c("301", "400") &
-      request$operation$name == "HeadBucket" &
-      "x-amz-bucket-region" %in% names(request$http_response$header)
-  )
-  is_wrong_signing_region <- (
-    error$Code == "AuthorizationHeaderMalformed" & "Region" %in% names(error)
-  )
+  is_special_head_object <- (error_code %in%
+    c("301", "400") &
+    request$operation$name == "HeadObject")
+  is_special_head_bucket <- (error_code %in%
+    c("301", "400") &
+    request$operation$name == "HeadBucket" &
+    "x-amz-bucket-region" %in% names(request$http_response$header))
+  is_wrong_signing_region <- (error$Code == "AuthorizationHeaderMalformed" &
+    "Region" %in% names(error))
   is_redirect_status <- request$http_response$status_code %in% c(301, 302, 307)
   is_permanent_redirect <- error$Code == "PermanentRedirect"
 
-  return(
-    any(
-      c(
-        is_special_head_object,
-        is_wrong_signing_region,
-        is_permanent_redirect,
-        is_special_head_bucket,
-        is_redirect_status
-      )
-    )
-  )
+  return(any(c(
+    is_special_head_object,
+    is_wrong_signing_region,
+    is_permanent_redirect,
+    is_special_head_bucket,
+    is_redirect_status
+  )))
 }
 
 # There are multiple potential sources for the new region to redirect to,
@@ -450,10 +444,8 @@ set_request_url <- function(original_endpoint, new_endpoint, use_new_scheme = TR
   if (use_new_scheme) {
     scheme <- new_endpoint_components[["scheme"]]
   }
-  path <- (
-    if (final_endpoint_components[["path"]] == "/") "" else
-      final_endpoint_components[["path"]]
-  )
+  path <- (if (final_endpoint_components[["path"]] == "/") "" else
+    final_endpoint_components[["path"]])
   final_endpoint_components[["host"]] <- new_endpoint_components$host
   final_endpoint_components[["scheme"]] <- scheme
   final_endpoint_components[["path"]] <- path
@@ -483,12 +475,10 @@ quote_source_header <- function(source, tags) {
   if (is.na(result[2])) {
     return(tag_add(paws_url_encoder(result[1], "/"), tags))
   } else {
-    return(
-      tag_add(
-        paste0(paws_url_encoder(result[1], "/"), VERSION_ID_SUFFIX, result[2]),
-        tags
-      )
-    )
+    return(tag_add(
+      paste0(paws_url_encoder(result[1], "/"), VERSION_ID_SUFFIX, result[2]),
+      tags
+    ))
   }
 }
 

@@ -41,13 +41,11 @@ test_that("check if file created in none existing directory", {
 
 # can this be mocked?
 test_request <- function(url) {
-  httr2::req_perform(
-    httr2::req_options(
-      httr2::request(url),
-      debugfunction = paws_debug,
-      verbose = isTRUE(getOption("paws.log_level") >= 3L)
-    )
-  )
+  httr2::req_perform(httr2::req_options(
+    httr2::request(url),
+    debugfunction = paws_debug,
+    verbose = isTRUE(getOption("paws.log_level") >= 3L)
+  ))
 }
 
 test_that("check if http paws log are being tracked", {

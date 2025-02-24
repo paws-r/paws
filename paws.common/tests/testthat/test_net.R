@@ -22,10 +22,8 @@ test_that("connect_timeout", {
     connect_timeout = 1
   )
   quietly <- function(expr)
-    suppressMessages(
-      tryCatch(expr, error = function(e) {
-      })
-    )
+    suppressMessages(tryCatch(expr, error = function(e) {
+    }))
   time <- system.time({
     quietly(issue(req))
   })
@@ -41,10 +39,8 @@ test_that("timeout", {
     timeout = 1
   )
   quietly <- function(expr)
-    suppressMessages(
-      tryCatch(expr, error = function(e) {
-      })
-    )
+    suppressMessages(tryCatch(expr, error = function(e) {
+    }))
   time <- system.time({
     quietly(issue(req))
   })

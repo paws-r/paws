@@ -146,29 +146,27 @@ list_objects_v2_output_params <- structure(
   list(
     IsTruncated = structure(logical(0), tags = list(type = "boolean")),
     Contents = structure(
-      list(
-        structure(
-          list(
-            Key = structure(logical(0), tags = list(type = "string")),
-            LastModified = structure(logical(0), tags = list(type = "timestamp")),
-            ETag = structure(logical(0), tags = list(type = "string")),
-            ChecksumAlgorithm = structure(
-              list(structure(logical(0), tags = list(type = "string"))),
-              tags = list(type = "list", flattened = TRUE)
-            ),
-            Size = structure(logical(0), tags = list(type = "integer")),
-            StorageClass = structure(logical(0), tags = list(type = "string")),
-            Owner = structure(
-              list(
-                DisplayName = structure(logical(0), tags = list(type = "string")),
-                ID = structure(logical(0), tags = list(type = "string"))
-              ),
-              tags = list(type = "structure")
-            )
+      list(structure(
+        list(
+          Key = structure(logical(0), tags = list(type = "string")),
+          LastModified = structure(logical(0), tags = list(type = "timestamp")),
+          ETag = structure(logical(0), tags = list(type = "string")),
+          ChecksumAlgorithm = structure(
+            list(structure(logical(0), tags = list(type = "string"))),
+            tags = list(type = "list", flattened = TRUE)
           ),
-          tags = list(type = "structure")
-        )
-      ),
+          Size = structure(logical(0), tags = list(type = "integer")),
+          StorageClass = structure(logical(0), tags = list(type = "string")),
+          Owner = structure(
+            list(
+              DisplayName = structure(logical(0), tags = list(type = "string")),
+              ID = structure(logical(0), tags = list(type = "string"))
+            ),
+            tags = list(type = "structure")
+          )
+        ),
+        tags = list(type = "structure")
+      )),
       tags = list(type = "list", flattened = TRUE)
     ),
     Name = structure(logical(0), tags = list(type = "string")),
@@ -176,12 +174,10 @@ list_objects_v2_output_params <- structure(
     Delimiter = structure(logical(0), tags = list(type = "string")),
     MaxKeys = structure(logical(0), tags = list(type = "integer")),
     CommonPrefixes = structure(
-      list(
-        structure(
-          list(Prefix = structure(logical(0), tags = list(type = "string"))),
-          tags = list(type = "structure")
-        )
-      ),
+      list(structure(
+        list(Prefix = structure(logical(0), tags = list(type = "string"))),
+        tags = list(type = "structure")
+      )),
       tags = list(type = "list", flattened = TRUE)
     ),
     EncodingType = structure(logical(0), tags = list(type = "string")),
@@ -203,9 +199,10 @@ test_that("check standard generated presigned url", {
     ),
     service_name = "s3"
   )
-  credentials <- Credentials(
-    Creds(access_key_id = "DUMMY", secret_access_key = "SECRETDUMMY")
-  )
+  credentials <- Credentials(Creds(
+    access_key_id = "DUMMY",
+    secret_access_key = "SECRETDUMMY"
+  ))
   client <- new_service(
     metadata,
     new_handlers("restxml", "s3"),
@@ -227,17 +224,15 @@ test_that("check standard generated presigned url", {
   req <- build(req)
   req <- sign_v1_auth_query(req)
   actual <- build_url(req$http_request$url)
-  expect_true(
-    grepl(
-      sprintf(
-        "https://%s.s3.amazonaws.com/\\?list-type=2&prefix=%s&AWSAccessKeyId=%s&Expires=.*?&Signature=.*",
-        "foo",
-        "bar",
-        "DUMMY"
-      ),
-      actual
-    )
-  )
+  expect_true(grepl(
+    sprintf(
+      "https://%s.s3.amazonaws.com/\\?list-type=2&prefix=%s&AWSAccessKeyId=%s&Expires=.*?&Signature=.*",
+      "foo",
+      "bar",
+      "DUMMY"
+    ),
+    actual
+  ))
 })
 
 test_that("check standard generated presigned url for anonymous signing", {
@@ -309,17 +304,15 @@ test_that("check standard generated presigned url with no credentials explicitly
   req <- build(req)
   req <- sign_v1_auth_query(req)
   actual <- build_url(req$http_request$url)
-  expect_true(
-    grepl(
-      sprintf(
-        "https://%s.s3.amazonaws.com/\\?list-type=2&prefix=%s&AWSAccessKeyId=%s&Expires=.*?&Signature=.*",
-        "foo",
-        "bar",
-        "DUMMY"
-      ),
-      actual
-    )
-  )
+  expect_true(grepl(
+    sprintf(
+      "https://%s.s3.amazonaws.com/\\?list-type=2&prefix=%s&AWSAccessKeyId=%s&Expires=.*?&Signature=.*",
+      "foo",
+      "bar",
+      "DUMMY"
+    ),
+    actual
+  ))
 })
 
 get_object_input_params <- function(...) {
@@ -721,9 +714,10 @@ test_that("check generate_presigned_url with query string arguments of interest"
     ),
     service_name = "s3"
   )
-  credentials <- Credentials(
-    Creds(access_key_id = "DUMMY", secret_access_key = "SECRETDUMMY")
-  )
+  credentials <- Credentials(Creds(
+    access_key_id = "DUMMY",
+    secret_access_key = "SECRETDUMMY"
+  ))
   client <- new_service(
     metadata,
     new_handlers("restxml", "s3"),
@@ -749,16 +743,14 @@ test_that("check generate_presigned_url with query string arguments of interest"
   req <- build(req)
   req <- sign_v1_auth_query(req)
   actual <- build_url(req$http_request$url)
-  expect_true(
-    grepl(
-      sprintf(
-        "https://%s.s3.amazonaws.com/%s\\?versionId=%s&AWSAccessKeyId=%s&Expires=.*?&Signature=.*",
-        "foo",
-        "bar",
-        "something_made_up%23",
-        "DUMMY"
-      ),
-      actual
-    )
-  )
+  expect_true(grepl(
+    sprintf(
+      "https://%s.s3.amazonaws.com/%s\\?versionId=%s&AWSAccessKeyId=%s&Expires=.*?&Signature=.*",
+      "foo",
+      "bar",
+      "something_made_up%23",
+      "DUMMY"
+    ),
+    actual
+  ))
 })
