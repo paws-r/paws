@@ -16,7 +16,11 @@
   switch(
     vendor_cache[["vendor"]],
     "boto" = list(
-      "aws-global" = list(endpoint = "s3.amazonaws.com", global = TRUE),
+      "aws-global" = list(
+        endpoint = "s3.amazonaws.com",
+        global = TRUE,
+        signing_region = "us-east-1"
+      ),
       "us-east-1" = list(endpoint = "s3.amazonaws.com", global = TRUE),
       "^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(
         endpoint = "s3.{region}.amazonaws.com",

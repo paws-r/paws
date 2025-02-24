@@ -255,38 +255,37 @@ client_config <- function(
 ) {
   sess <- new_session()
   if (!is.null(cfgs)) {
-    sess$config <- cfgs
+    sess[["config"]] <- cfgs
   }
   custom_endpoint <- FALSE
-  signing_region <- sess$config$region
-  if (sess$config$endpoint != "") {
-    endpoint <- sess$config$endpoint
+  signing_region <- sess[["config"]][["region"]]
+  if (sess[["config"]][["endpoint"]] != "") {
+    endpoint <- sess[["config"]][["endpoint"]]
   } else {
     endpoint <- get_service_endpoint(
-      sess$config[["credentials"]][["profile"]],
+      sess[["config"]][["credentials"]][["profile"]],
       service_id
     )
     if (!is.null(endpoint)) {
       custom_endpoint <- TRUE
     } else {
-      sts_regional_endpoint <- sess$config$sts_regional_endpoint
       re <- resolver_endpoint(
         service_name,
         signing_region,
         endpoints,
-        sts_regional_endpoint,
-        host_prefix = operation$host_prefix,
-        partition_name = sess$config$partition_name
+        sess[["config"]][["sts_regional_endpoint"]],
+        host_prefix = operation[["host_prefix"]],
+        partition_name = sess[["config"]][["partition_name"]]
       )
-      endpoint <- re$endpoint
-      signing_region <- re$signing_region
+      endpoint <- re[["endpoint"]]
+      signing_region <- re[["signing_region"]]
     }
     # sess$config$endpoint <- endpoint
     # sess$config$region <- signing_region
   }
   cc <- ClientConfig(
-    config = sess$config,
-    handlers = sess$handlers,
+    config = sess[["config"]],
+    handlers = sess[["handlers"]],
     endpoint = endpoint,
     custom_endpoint = custom_endpoint,
     signing_region = signing_region,

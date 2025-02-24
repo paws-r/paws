@@ -38,24 +38,22 @@ test_that("read_api", {
 
   write_json(
     list(
-      partitions = list(
-        list(
-          defaults = list(hostname = "{service}.{region}.{dnsSuffix}"),
-          dnsSuffix = "amazonaws.com",
-          regionRegex = "^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$",
-          services = list(
-            baz = list(
-              partitionEndpoint = "aws-global",
-              endpoints = list(
-                "aws-global" = list(
-                  hostname = "baz.us-east-1.amazonaws.com",
-                  credentialScope = list(region = "us-east-1")
-                )
+      partitions = list(list(
+        defaults = list(hostname = "{service}.{region}.{dnsSuffix}"),
+        dnsSuffix = "amazonaws.com",
+        regionRegex = "^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$",
+        services = list(
+          baz = list(
+            partitionEndpoint = "aws-global",
+            endpoints = list(
+              "aws-global" = list(
+                hostname = "baz.us-east-1.amazonaws.com",
+                credentialScope = list(region = "us-east-1")
               )
             )
           )
         )
-      )
+      ))
     ),
     file.path(api_path, "endpoints.json")
   )
@@ -100,25 +98,23 @@ test_that("merge_paginators", {
 
 test_that("merge_region_config", {
   region_config <- list(
-    partitions = list(
-      list(
-        defaults = list(hostname = "{service}.{region}.{dnsSuffix}"),
-        dnsSuffix = "amazon.aws.com",
-        regionRegex = "^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$",
-        services = list(
-          iam = list(
-            isRegionalized = FALSE,
-            partitionEndpoint = "aws-global",
-            endpoints = list(
-              "aws-global" = list(
-                hostname = "iam.amazonaws.com",
-                credentialScope = list(region = "us-east-1")
-              )
+    partitions = list(list(
+      defaults = list(hostname = "{service}.{region}.{dnsSuffix}"),
+      dnsSuffix = "amazon.aws.com",
+      regionRegex = "^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$",
+      services = list(
+        iam = list(
+          isRegionalized = FALSE,
+          partitionEndpoint = "aws-global",
+          endpoints = list(
+            "aws-global" = list(
+              hostname = "iam.amazonaws.com",
+              credentialScope = list(region = "us-east-1")
             )
           )
         )
       )
-    )
+    ))
   )
   api <- list(metadata = list(endpointPrefix = "iam"))
   actual <- merge_region_config(api, region_config)
@@ -132,6 +128,7 @@ test_that("merge_region_config", {
           global = TRUE,
           signing_region = "us-east-1"
         ),
+        "us-east-1" = list(endpoint = "iam.amazonaws.com", global = TRUE),
         "^(us|eu|ap|sa|ca|me|af|il|mx)\\\\-\\\\w+\\\\-\\\\d+$" = list(
           endpoint = "iam.amazonaws.com",
           global = FALSE,

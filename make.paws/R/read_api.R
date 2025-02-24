@@ -134,6 +134,7 @@ merge_region_config <- function(api, region_config) {
       endpoint <- list(endpoint = endpoint, global = TRUE)
       ep[[partitionEndpoint]] <- endpoint
       if (!is.null(region_name <- global$credentialScope$region)) {
+        ep[[region_name]] <- endpoint
         ep[[partitionEndpoint]]$signing_region <- region_name
       }
     }
@@ -163,7 +164,8 @@ merge_region_config <- function(api, region_config) {
     }
     ep[[regionRegex]] <- endpoint
   }
-  api$region_config <- ep
+  ep_order <- sort(vapply(ep, \(x) x$global, FUN.VALUE = FALSE), decreasing = TRUE)
+  api$region_config <- ep[names(ep_order)]
   return(api)
 }
 
