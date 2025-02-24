@@ -162,12 +162,10 @@ op_input9 <- function(RecursiveStruct) {
   args <- list(RecursiveStruct = RecursiveStruct)
   interface <- Structure(
     RecursiveStruct = Structure(
-      RecursiveList = List(
-        Structure(
-          NoRecurse = Scalar(type = "string"),
-          RecursiveStruct = Structure(NoRecurse = Scalar(type = "string"))
-        )
-      )
+      RecursiveList = List(Structure(
+        NoRecurse = Scalar(type = "string"),
+        RecursiveStruct = Structure(NoRecurse = Scalar(type = "string"))
+      ))
     )
   )
   return(populate(args, interface))
@@ -257,9 +255,10 @@ op_input13 <- function(FooEnum, ListEnums) {
       type = "string",
       .tags = list(enum = "InputService8TestShapeEnumType")
     ),
-    ListEnums = List(
-      Scalar(type = "string", .tags = list(enum = "InputService8TestShapeEnumType"))
-    )
+    ListEnums = List(Scalar(
+      type = "string",
+      .tags = list(enum = "InputService8TestShapeEnumType")
+    ))
   )
   return(populate(args, interface))
 }
@@ -275,20 +274,18 @@ op_input14 <- function(TableName, Item) {
   args <- list(TableName = TableName, Item = Item)
   interface <- Structure(
     TableName = Scalar(type = "string"),
-    Item = Map(
-      Structure(
-        S = Scalar(type = "string"),
-        N = Scalar(type = "string"),
-        B = Scalar(type = "blob"),
-        SS = List(Scalar(type = "string")),
-        NS = List(Scalar(type = "string")),
-        BS = List(Scalar(type = "blob")),
-        M = Map(),
-        L = List(),
-        `NULL` = Scalar(type = "boolean"),
-        BOOL = Scalar(type = "boolean")
-      )
-    )
+    Item = Map(Structure(
+      S = Scalar(type = "string"),
+      N = Scalar(type = "string"),
+      B = Scalar(type = "blob"),
+      SS = List(Scalar(type = "string")),
+      NS = List(Scalar(type = "string")),
+      BS = List(Scalar(type = "blob")),
+      M = Map(),
+      L = List(),
+      `NULL` = Scalar(type = "boolean"),
+      BOOL = Scalar(type = "boolean")
+    ))
   )
   return(populate(args, interface))
 }
@@ -515,9 +512,10 @@ op_output7 <- Structure(
     type = "string",
     .tags = list(enum = "OutputService7TestShapeJSONEnumType")
   ),
-  ListEnums = List(
-    Scalar(type = "string", .tags = list(enum = "OutputService7TestShapeJSONEnumType"))
-  )
+  ListEnums = List(Scalar(
+    type = "string",
+    .tags = list(enum = "OutputService7TestShapeJSONEnumType")
+  ))
 )
 
 test_that("unmarshal enums", {
@@ -535,22 +533,18 @@ test_that("unmarshal enums", {
 
 op_output8 <- Structure(
   Count = Scalar(type = "integer"),
-  Items = List(
-    Map(
-      Structure(
-        S = Scalar(type = "string"),
-        N = Scalar(type = "string"),
-        B = Scalar(type = "blob"),
-        SS = List(Scalar(type = "string")),
-        NS = List(Scalar(type = "string")),
-        BS = List(Scalar(type = "blob")),
-        M = Map(),
-        L = List(),
-        `NULL` = Scalar(type = "boolean"),
-        BOOL = Scalar(type = "boolean")
-      )
-    )
-  ),
+  Items = List(Map(Structure(
+    S = Scalar(type = "string"),
+    N = Scalar(type = "string"),
+    B = Scalar(type = "blob"),
+    SS = List(Scalar(type = "string")),
+    NS = List(Scalar(type = "string")),
+    BS = List(Scalar(type = "blob")),
+    M = Map(),
+    L = List(),
+    `NULL` = Scalar(type = "boolean"),
+    BOOL = Scalar(type = "boolean")
+  ))),
   ScannedCount = Scalar(type = "integer")
 )
 

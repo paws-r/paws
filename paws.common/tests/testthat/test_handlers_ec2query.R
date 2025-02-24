@@ -183,12 +183,10 @@ test_that("build idempotency token", {
   input <- op_input9()
   req <- new_request(svc, op, input, NULL)
   req <- build(req)
-  expect_true(
-    grepl(
-      sprintf("Action=OperationName&Token=%s&Version=2014-01-01", UUID_V4_PATTERN),
-      req$body
-    )
-  )
+  expect_true(grepl(
+    sprintf("Action=OperationName&Token=%s&Version=2014-01-01", UUID_V4_PATTERN),
+    req$body
+  ))
 })
 
 op_input10 <- function(ListEnums = NULL) {

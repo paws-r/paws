@@ -123,14 +123,12 @@ paws_stream_parser <- function(con) {
     close(con)
     return(NULL)
   }
-  return(
-    eventstream_parser(
-      buffer,
-      unmarshal = con$paws_metadata$unmarshal,
-      interface = con$paws_metadata$interface,
-      boundary = boundary
-    )
-  )
+  return(eventstream_parser(
+    buffer,
+    unmarshal = con$paws_metadata$unmarshal,
+    interface = con$paws_metadata$interface,
+    boundary = boundary
+  ))
 }
 
 ################ stream unmarshal ################

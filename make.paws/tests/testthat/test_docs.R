@@ -180,12 +180,10 @@ test_that("make_doc_examples", {
 
   operation <- list(
     name = "Operation",
-    examples = list(
-      list(
-        input = list("Foo" = "bar", "Baz" = list("Qux" = 123)),
-        description = "Description"
-      )
-    )
+    examples = list(list(
+      input = list("Foo" = "bar", "Baz" = list("Qux" = 123)),
+      description = "Description"
+    ))
   )
   actual <- make_doc_examples(operation, api)
   expected <- paste(
@@ -234,12 +232,10 @@ test_that("make_doc_examples", {
 
   operation <- list(
     name = "Operation",
-    examples = list(
-      list(
-        input = list("Foo" = "bar", "Baz" = list("Qux" = 123)),
-        description = "Description, with a comma"
-      )
-    )
+    examples = list(list(
+      input = list("Foo" = "bar", "Baz" = list("Qux" = 123)),
+      description = "Description, with a comma"
+    ))
   )
   actual <- make_doc_examples(operation, api)
   expected <- paste(
@@ -259,12 +255,10 @@ test_that("make_doc_examples", {
 
   operation <- list(
     name = "Operation",
-    examples = list(
-      list(
-        input = list("Foo" = "bar", "Baz" = list("Qux" = "a,b,c")),
-        description = "Description, with a comma"
-      )
-    )
+    examples = list(list(
+      input = list("Foo" = "bar", "Baz" = list("Qux" = "a,b,c")),
+      description = "Description, with a comma"
+    ))
   )
   actual <- make_doc_examples(operation, api)
   expected <- paste(
@@ -284,18 +278,16 @@ test_that("make_doc_examples", {
 
   operation <- list(
     name = "Operation",
-    examples = list(
-      list(
-        input = list(
-          "Foo" = "bar",
-          "Baz" = list(
-            "Qux" = "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Sid\":\"Stmt1\",\"Effect\":\"Allow\",\"Action\":\"s3:*\",\"Resource\":\"*\"}]",
-            "Quux" = 123
-          )
-        ),
-        description = "A very long string"
-      )
-    )
+    examples = list(list(
+      input = list(
+        "Foo" = "bar",
+        "Baz" = list(
+          "Qux" = "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Sid\":\"Stmt1\",\"Effect\":\"Allow\",\"Action\":\"s3:*\",\"Resource\":\"*\"}]",
+          "Quux" = 123
+        )
+      ),
+      description = "A very long string"
+    ))
   )
   actual <- make_doc_examples(operation, api)
   expected <- paste(
@@ -316,12 +308,10 @@ test_that("make_doc_examples", {
 
   operation <- list(
     name = "Operation",
-    examples = list(
-      list(
-        input = list("Foo" = "bar", "Baz" = list("Qux" = 123)),
-        description = "Description with inline ``code``"
-      )
-    )
+    examples = list(list(
+      input = list("Foo" = "bar", "Baz" = list("Qux" = 123)),
+      description = "Description with inline ``code``"
+    ))
   )
   actual <- make_doc_examples(operation, api)
   expected <- paste(
@@ -341,12 +331,10 @@ test_that("make_doc_examples", {
 
   operation <- list(
     name = "Operation",
-    examples = list(
-      list(
-        input = list("Foo" = "bar", "Baz" = list("Qux" = 123)),
-        description = "Description with inline ```code```"
-      )
-    )
+    examples = list(list(
+      input = list("Foo" = "bar", "Baz" = list("Qux" = 123)),
+      description = "Description with inline ```code```"
+    ))
   )
   actual <- make_doc_examples(operation, api)
   expected <- paste(
@@ -366,12 +354,10 @@ test_that("make_doc_examples", {
 
   operation <- list(
     name = "Operation",
-    examples = list(
-      list(
-        input = list("Foo" = "bar{"),
-        description = "Example with unmatched curly brace"
-      )
-    )
+    examples = list(list(
+      input = list("Foo" = "bar{"),
+      description = "Example with unmatched curly brace"
+    ))
   )
   actual <- make_doc_examples(operation, api)
   expected <- paste(

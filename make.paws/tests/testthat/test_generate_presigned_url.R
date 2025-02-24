@@ -23,17 +23,15 @@ test_that("check generated presigned url with different http_method", {
     http_method = "HTTP"
   )
 
-  expect_true(
-    grepl(
-      sprintf(
-        "HTTP://%s.s3.us-east-1.amazonaws.com/\\?list-type=2&prefix=%s&AWSAccessKeyId=%s&Expires=.*?&Signature=.*",
-        "foo",
-        "bar",
-        "DUMMY"
-      ),
-      actual
-    )
-  )
+  expect_true(grepl(
+    sprintf(
+      "HTTP://%s.s3.us-east-1.amazonaws.com/\\?list-type=2&prefix=%s&AWSAccessKeyId=%s&Expires=.*?&Signature=.*",
+      "foo",
+      "bar",
+      "DUMMY"
+    ),
+    actual
+  ))
 })
 
 test_that("check generate_presigned_url with error in client_method", {

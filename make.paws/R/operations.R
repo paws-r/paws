@@ -73,9 +73,11 @@ set_paginator <- function(paginator) {
     if (!is.null(output_token)) {
       for (i in seq_along(output_token)) {
         # output_token[[i]] <- strsplit(output_token[[i]], " ")[[1]][[1]]
-        output_token[i] <- list(
-          trimws(strsplit(output_token[[i]], split = "||", fixed = T)[[1]])
-        )
+        output_token[i] <- list(trimws(strsplit(
+          output_token[[i]],
+          split = "||",
+          fixed = T
+        )[[1]]))
       }
       paginator$output_token <- unlist(output_token, use.names = FALSE)
       paginator$input_token <- rep_len(

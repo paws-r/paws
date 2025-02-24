@@ -126,9 +126,12 @@ maybe_spot_check <- function(cache_result, value_expr, key_label) {
         paste0(
           collapse = "\n",
           "  ",
-          utils::capture.output(
-            print(waldo::compare(cache_result, value, x_arg = "cached", y_arg = "live"))
-          )
+          utils::capture.output(print(waldo::compare(
+            cache_result,
+            value,
+            x_arg = "cached",
+            y_arg = "live"
+          )))
         )
       )
       cat(file = stderr(), "\n")

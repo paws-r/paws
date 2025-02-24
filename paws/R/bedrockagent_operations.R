@@ -885,7 +885,8 @@ bedrockagent_create_agent_alias <- function(agentAliasName, agentId, clientToken
 #'             "string"
 #'           ),
 #'           scope = "HOST_ONLY"|"SUBDOMAINS",
-#'           userAgent = "string"
+#'           userAgent = "string",
+#'           userAgentHeader = "string"
 #'         ),
 #'         sourceConfiguration = list(
 #'           urlConfiguration = list(
@@ -1076,7 +1077,8 @@ bedrockagent_create_agent_alias <- function(agentAliasName, agentId, clientToken
 #'           "string"
 #'         ),
 #'         scope = "HOST_ONLY"|"SUBDOMAINS",
-#'         userAgent = "string"
+#'         userAgent = "string",
+#'         userAgentHeader = "string"
 #'       ),
 #'       sourceConfiguration = list(
 #'         urlConfiguration = list(
@@ -4235,7 +4237,8 @@ bedrockagent_get_agent_version <- function(agentId, agentVersion) {
 #'             "string"
 #'           ),
 #'           scope = "HOST_ONLY"|"SUBDOMAINS",
-#'           userAgent = "string"
+#'           userAgent = "string",
+#'           userAgentHeader = "string"
 #'         ),
 #'         sourceConfiguration = list(
 #'           urlConfiguration = list(
@@ -7992,7 +7995,8 @@ bedrockagent_update_agent_knowledge_base <- function(agentId, agentVersion, desc
 #'             "string"
 #'           ),
 #'           scope = "HOST_ONLY"|"SUBDOMAINS",
-#'           userAgent = "string"
+#'           userAgent = "string",
+#'           userAgentHeader = "string"
 #'         ),
 #'         sourceConfiguration = list(
 #'           urlConfiguration = list(
@@ -8182,7 +8186,8 @@ bedrockagent_update_agent_knowledge_base <- function(agentId, agentVersion, desc
 #'           "string"
 #'         ),
 #'         scope = "HOST_ONLY"|"SUBDOMAINS",
-#'         userAgent = "string"
+#'         userAgent = "string",
+#'         userAgentHeader = "string"
 #'       ),
 #'       sourceConfiguration = list(
 #'         urlConfiguration = list(

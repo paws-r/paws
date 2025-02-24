@@ -65,9 +65,11 @@ nested_ini_content <- function(sub_content, found_nested_content, sub_grp) {
   end <- c(sub_grp[-1] - 1, nrow(sub_content))
   for (i in which(start <= end)) {
     items <- seq.int(start[i], end[i])
-    profiles[[profile_nms[i]]] <- extract_ini_parameter(
-      sub_content[items, , drop = FALSE]
-    )
+    profiles[[profile_nms[i]]] <- extract_ini_parameter(sub_content[
+      items,
+      ,
+      drop = FALSE
+    ])
   }
   return(profiles)
 }

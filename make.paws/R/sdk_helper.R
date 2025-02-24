@@ -360,9 +360,12 @@ paws_build_cran_comments <- function(
     results_local <- yaml::read_yaml(cache_path)
     log_info("Retrieved local check results from cache.")
   }
-  result_dt <- suppressWarnings(
-    rbindlist(results_local, fill = T, idcol = "package", use.names = T)
-  )
+  result_dt <- suppressWarnings(rbindlist(
+    results_local,
+    fill = T,
+    idcol = "package",
+    use.names = T
+  ))
 
   dir_info[
     result_dt,

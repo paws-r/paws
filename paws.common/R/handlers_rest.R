@@ -211,9 +211,11 @@ rest_unmarshal_header <- function(value, type) {
 # Unmarshal a collection of header values that share a common prefix.
 rest_unmarshal_header_map <- function(values, prefix, type) {
   value_names <- names(values)
-  value_names <- value_names[
-    grepl(sprintf("^%s", prefix), value_names, ignore.case = TRUE)
-  ]
+  value_names <- value_names[grepl(
+    sprintf("^%s", prefix),
+    value_names,
+    ignore.case = TRUE
+  )]
   result <- lapply(value_names, function(name) {
     rest_unmarshal_header(values[[name]], type)
   })

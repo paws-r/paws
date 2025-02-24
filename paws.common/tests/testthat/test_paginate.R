@@ -131,17 +131,15 @@ test_that("check paginate", {
   }
   mock_substitute <- mock2(substitute(dummy_op(x = "hi")))
 
-  mock_paginate_update_fn <- mock2(
-    list(
-      fn = substitute(dummy_op(x = "hi")),
-      paginator = list(
-        input_token = "NextToken",
-        output_token = "NextToken",
-        limit_key = "MaxKey",
-        result_key = "Contents"
-      )
+  mock_paginate_update_fn <- mock2(list(
+    fn = substitute(dummy_op(x = "hi")),
+    paginator = list(
+      input_token = "NextToken",
+      output_token = "NextToken",
+      limit_key = "MaxKey",
+      result_key = "Contents"
     )
-  )
+  ))
   mock_eval <- mock2(
     list(Contents = list("foo"), NextToken = "token1"),
     list(Contents = list("bar"), NextToken = "token2"),
@@ -188,17 +186,15 @@ test_that("check paginate stop on same token", {
   }
   mock_substitute <- mock2(substitute(dummy_op(x = "hi")))
 
-  mock_paginate_update_fn <- mock2(
-    list(
-      fn = substitute(dummy_op(x = "hi")),
-      paginator = list(
-        input_token = "NextToken",
-        output_token = "NextToken",
-        limit_key = "MaxKey",
-        result_key = "Contents"
-      )
+  mock_paginate_update_fn <- mock2(list(
+    fn = substitute(dummy_op(x = "hi")),
+    paginator = list(
+      input_token = "NextToken",
+      output_token = "NextToken",
+      limit_key = "MaxKey",
+      result_key = "Contents"
     )
-  )
+  ))
   mock_eval <- mock2(
     list(Contents = list("foo"), NextToken = "token1"),
     list(Contents = list("bar"), NextToken = "token2"),

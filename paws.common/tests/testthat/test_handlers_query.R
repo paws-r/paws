@@ -254,12 +254,10 @@ op_input13 <- function(RecursiveStruct) {
   interface <- Structure(
     RecursiveStruct = Structure(
       NoRecurse = Scalar(type = "string"),
-      RecursiveList = List(
-        Structure(
-          RecursiveStruct = Structure(NoRecurse = Scalar(type = "string")),
-          NoRecurse = Scalar(type = "string")
-        )
-      ),
+      RecursiveList = List(Structure(
+        RecursiveStruct = Structure(NoRecurse = Scalar(type = "string")),
+        NoRecurse = Scalar(type = "string")
+      )),
       RecursiveMap = Map(Structure(NoRecurse = Scalar(type = "string")))
     )
   )
@@ -316,12 +314,10 @@ test_that("build idempotency token auto-fill", {
   input <- op_input14()
   req <- new_request(svc, op, input, NULL)
   req <- build(req)
-  expect_true(
-    grepl(
-      sprintf("Action=OperationName&Token=%s&Version=2014-01-01", UUID_V4_PATTERN),
-      req$body
-    )
-  )
+  expect_true(grepl(
+    sprintf("Action=OperationName&Token=%s&Version=2014-01-01", UUID_V4_PATTERN),
+    req$body
+  ))
 })
 
 op_input15 <- function(FooEnum = NULL, ListEnums = NULL) {
@@ -497,13 +493,11 @@ test_that("unmarshal flattened single-element list", {
 })
 
 op_output6 <- Structure(
-  List = List(
-    Structure(
-      Bar = Scalar(type = "string"),
-      Baz = Scalar(type = "string"),
-      Foo = Scalar(type = "string")
-    )
-  )
+  List = List(Structure(
+    Bar = Scalar(type = "string"),
+    Baz = Scalar(type = "string"),
+    Foo = Scalar(type = "string")
+  ))
 )
 
 test_that("unmarshal list of structures", {
