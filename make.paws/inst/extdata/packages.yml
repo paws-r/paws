@@ -39,6 +39,7 @@
     - s3
     - s3control
     - s3outposts
+    - s3tables
     - storagegateway
   title: "'Amazon Web Services' Storage Services"
   description: >-
