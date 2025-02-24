@@ -539,7 +539,7 @@ iam_create_login_profile <- function(UserName = NULL, Password = NULL, PasswordR
 #' supports OpenID Connect (OIDC)
 #'
 #' @description
-#' Creates an IAM entity to describe an identity provider (IdP) that supports OpenID Connect (OIDC).
+#' Creates an IAM entity to describe an identity provider (IdP) that supports [OpenID Connect (OIDC)](https://openid.net/developers/how-connect-works/).
 #'
 #' See [https://www.paws-r-sdk.com/docs/iam_create_open_id_connect_provider/](https://www.paws-r-sdk.com/docs/iam_create_open_id_connect_provider/) for full documentation.
 #'
