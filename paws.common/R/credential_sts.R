@@ -35,7 +35,11 @@ sts <- function(config = list()) {
   switch(
     vendor_cache[["vendor"]],
     "boto" = list(
-      "aws-global" = list(endpoint = "sts.amazonaws.com", global = TRUE),
+      "aws-global" = list(
+        endpoint = "sts.amazonaws.com",
+        global = TRUE,
+        signing_region = "us-east-1"
+      ),
       "us-east-1" = list(endpoint = "sts.amazonaws.com", global = TRUE),
       "^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(
         endpoint = "sts.{region}.amazonaws.com",
@@ -93,26 +97,22 @@ sts <- function(config = list()) {
       RoleArn = structure(logical(0), tags = list(type = "string")),
       RoleSessionName = structure(logical(0), tags = list(type = "string")),
       PolicyArns = structure(
-        list(
-          structure(
-            list(arn = structure(logical(0), tags = list(type = "string"))),
-            tags = list(type = "structure")
-          )
-        ),
+        list(structure(
+          list(arn = structure(logical(0), tags = list(type = "string"))),
+          tags = list(type = "structure")
+        )),
         tags = list(type = "list")
       ),
       Policy = structure(logical(0), tags = list(type = "string")),
       DurationSeconds = structure(logical(0), tags = list(type = "integer")),
       Tags = structure(
-        list(
-          structure(
-            list(
-              Key = structure(logical(0), tags = list(type = "string")),
-              Value = structure(logical(0), tags = list(type = "string"))
-            ),
-            tags = list(type = "structure")
-          )
-        ),
+        list(structure(
+          list(
+            Key = structure(logical(0), tags = list(type = "string")),
+            Value = structure(logical(0), tags = list(type = "string"))
+          ),
+          tags = list(type = "structure")
+        )),
         tags = list(type = "list")
       ),
       TransitiveTagKeys = structure(
@@ -211,12 +211,10 @@ sts_assume_role <- function(
       WebIdentityToken = structure(logical(0), tags = list(type = "string")),
       ProviderId = structure(logical(0), tags = list(type = "string")),
       PolicyArns = structure(
-        list(
-          structure(
-            list(arn = structure(logical(0), tags = list(type = "string"))),
-            tags = list(type = "structure")
-          )
-        ),
+        list(structure(
+          list(arn = structure(logical(0), tags = list(type = "string"))),
+          tags = list(type = "structure")
+        )),
         tags = list(type = "list")
       ),
       Policy = structure(logical(0), tags = list(type = "string")),
