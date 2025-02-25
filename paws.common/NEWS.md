@@ -1,4 +1,7 @@
 # paws.common 0.8.1.9000 (dev)
+* fix issue regex timeout or rstudio crashes in windows (#901, #905). Thanks to @anpatton for debugging issue.
+* revert auto sso retry, this was causing tokens being built incorrectly (#896) thanks to @sckott for testing
+* fix signing region for global services (#900) thanks to @jwijffels for testing
 
 # paws.common 0.8.1
 * skip network connection unit tests on cran
