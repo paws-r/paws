@@ -441,9 +441,14 @@ test_that("check sso_cache doesn't exist legacy", {
       "https://my-sso-portal.awsapps.com/start",
       "123456789011",
       "us-east-1",
-      "readOnly"
+      "readOnly",
+      "profile demo"
     ),
-    "Error loading SSO Token: Token for https://my-sso-portal.awsapps.com/start does not exist"
+    paste(
+      "Error loading SSO Token: Token for https://my-sso-portal.awsapps.com/start does not exist",
+      "Try refreshing sso credentials: `aws sso login --profile demo`",
+      sep = "\n"
+    )
   )
 })
 
@@ -457,9 +462,14 @@ test_that("check sso_cache doesn't exist", {
       "https://my-sso-portal.awsapps.com/start",
       "123456789011",
       "us-east-1",
-      "readOnly"
+      "readOnly",
+      "profile demo"
     ),
-    "Error loading SSO Token: Token for my-sso does not exist"
+    paste(
+      "Error loading SSO Token: Token for my-sso does not exist",
+      "Try refreshing sso credentials: `aws sso login --profile demo`",
+      sep = "\n"
+    )
   )
 })
 
@@ -482,9 +492,14 @@ test_that("check for invalid token, missing accessToken", {
       "https://my-sso-portal.awsapps.com/start",
       "123456789011",
       "us-east-1",
-      "readOnly"
+      "readOnly",
+      "profile demo"
     ),
-    "Error loading SSO Token: Token for https://my-sso-portal.awsapps.com/start is invalid."
+    paste(
+      "Error loading SSO Token: Token for https://my-sso-portal.awsapps.com/start is invalid.",
+      "Try refreshing sso credentials: `aws sso login --profile demo`",
+      sep = "\n"
+    )
   )
 })
 
@@ -507,7 +522,8 @@ test_that("check for invalid token, missing expiresAt", {
       "https://my-sso-portal.awsapps.com/start",
       "123456789011",
       "us-east-1",
-      "readOnly"
+      "readOnly",
+      "profile demo"
     ),
     "Error loading SSO Token: Token for https://my-sso-portal.awsapps.com/start is invalid."
   )
