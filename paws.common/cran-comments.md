@@ -1,5 +1,5 @@
 ## Submission
-This release address cran testing when network fails.
+This release addresses several bug raised previous release.
 
 ## Test environments
 
