@@ -506,10 +506,22 @@ default_parse_scalar <- function(interface_i, tag_type = NULL) {
 
 transpose <- function(x) {
   lens <- lengths(x)
+  max_len <- max(lens)
   if (any(found <- lens == 0)) {
-    x[found] <- list(rep(list(), length.out = max(lens)))
+    x[found] <- list(rep(list(), length.out = max_len))
+  }
+
+  # add buffer to non list that don't match
+  found <- lens > 1 & lens < max_len & !vapply(x, is.list, FUN.VALUE = FALSE)
+  if (any(found)) {
+    buffer <- rep(NA, max_len)
+    x[found] <- lapply(x[found], pad_vector, buffer = buffer, max_len = max_len)
   }
   .mapply(list, x, NULL)
+}
+
+pad_vector <- function(x, buffer, max_len) {
+  return(c(x, buffer)[seq_len(max_len)])
 }
 
 ############## stream ##############
