@@ -74,9 +74,17 @@ test_that("check if list is transposed correctly", {
     list(var1 = NULL, var2 = "b", var3 = NULL, var4 = 2),
     list(var1 = NULL, var2 = "c", var3 = NULL, var4 = 3)
   )
+  obj3 <- list(var1 = list(), var2 = letters[1:2], var3 = list(), var4 = c(1, 2, 3))
+  expected3 <- list(
+    list(var1 = NULL, var2 = "a", var3 = NULL, var4 = 1),
+    list(var1 = NULL, var2 = "b", var3 = NULL, var4 = 2),
+    list(var1 = NULL, var2 = NA_character_, var3 = NULL, var4 = 3)
+  )
   actual1 <- transpose(obj1)
   actual2 <- transpose(obj2)
+  actual3 <- transpose(obj3)
 
   expect_equal(actual1, expected1)
   expect_equal(actual2, expected2)
+  expect_equal(actual3, expected3)
 })
