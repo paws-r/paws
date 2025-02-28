@@ -273,16 +273,12 @@ build_context <- function(ctx, disable_header_hoisting) {
   unsigned_headers <- ctx$request$header
   if (ctx$is_presigned) {
     if (!disable_header_hoisting) {
-      for (header in names(unsigned_headers)) {
-        if (
-          startsWith(header, "X-Amz-") &
-            !startsWith(header, "X-Amz-Meta-") &
-            !(header %in% REQUIRED_SIGNED_HEADERS)
-        ) {
-          ctx$query[[header]] <- unsigned_headers[[header]]
-          unsigned_headers[[header]] <- NULL
-        }
-      }
+      header <- names(unsigned_headers)
+      found <- (startsWith(header, "X-Amz-") &
+        !startsWith(header, "X-Amz-Meta-") &
+        !(header %in% REQUIRED_SIGNED_HEADERS))
+      ctx$query[header[found]] <- unsigned_headers[header[found]]
+      unsigned_headers[header[found]] <- NULL
     }
   }
   ctx <- build_canonical_headers(ctx, unsigned_headers, IGNORED_HEADERS)
