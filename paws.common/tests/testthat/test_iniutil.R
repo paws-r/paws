@@ -93,6 +93,6 @@ test_that("Check wide ini file", {
   on.exit(unlink(tmp_file))
   writeLines(sprintf("[default]\narg1=%s", session_token), tmp_file)
 
-  content <- paws.common:::read_ini(tmp_file)
+  content <- read_ini(tmp_file)
   expect_equal(content$default$arg1, session_token)
 })
