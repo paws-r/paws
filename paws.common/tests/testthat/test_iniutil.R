@@ -84,7 +84,7 @@ test_that("Check empty ini file", {
   expect_equal(content, list())
 })
 
-test_that("Check read in file with long string", {
+test_that("Check wide ini file", {
   paws_reset_cache()
 
   session_token <- rawToChar(as.raw(sample(c(33:126), 2e5, replace = T)))
