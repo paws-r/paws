@@ -83,3 +83,16 @@ test_that("Check empty ini file", {
   content <- read_ini("empty_ini")
   expect_equal(content, list())
 })
+
+test_that("Check wide ini file", {
+  paws_reset_cache()
+
+  session_token <- rawToChar(as.raw(sample(c(33:126), 2e5, replace = T)))
+
+  tmp_file <- tempfile()
+  on.exit(unlink(tmp_file))
+  writeLines(sprintf("[default]\narg1=%s", session_token), tmp_file)
+
+  content <- read_ini(tmp_file)
+  expect_equal(content$default$arg1, session_token)
+})

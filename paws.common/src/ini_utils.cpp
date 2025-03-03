@@ -1,3 +1,4 @@
+#include <fstream>
 #include <cstdio>
 #include <cstdlib>
 #include <vector>
@@ -50,22 +51,18 @@ bool processLine(std::string &line)
 // [[Rcpp::export]]
 std::vector<std::string> scan_ini_file(const std::string &filename)
 {
-  FILE *file = fopen(filename.c_str(), "r");
-  if (!file)
+  std::ifstream file(filename);
+  if (!file.is_open())
   {
     Rcpp::stop("Unable to find file: " + filename);
   }
 
   std::vector<std::string> lines;
-  char buffer[256];
-  while (fgets(buffer, sizeof(buffer), file))
+  std::string line;
+
+  // Read the file line by line
+  while (std::getline(file, line))
   {
-    std::string line(buffer);
-    // Remove the newline character at the end, if it exists
-    if (!line.empty() && line.back() == '\n')
-    {
-      line.erase(line.length() - 1);
-    }
     // Process the line to check if it should be included
     if (processLine(line))
     {
@@ -73,7 +70,6 @@ std::vector<std::string> scan_ini_file(const std::string &filename)
     }
   }
 
-  fclose(file);
   return lines;
 }
 
