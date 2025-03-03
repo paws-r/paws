@@ -1,3 +1,5 @@
+#' @importFrom stats runif
+
 #' @include util.R
 
 # Retry attempts for an expanded list of errors/exceptions:

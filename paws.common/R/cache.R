@@ -1,3 +1,5 @@
+#' @importFrom stats setNames
+
 #' @include util.R
 
 ini_cache <- new.env(parent = emptyenv())
@@ -18,9 +20,7 @@ set_os_env_cache <- function() {
     return()
   }
   aws_env_vars <- trimws(parse_in_half(aws_env_vars))
-  for (i in seq_len(nrow(aws_env_vars))) {
-    os_env_cache[[aws_env_vars[i, 1]]] <- aws_env_vars[i, 2]
-  }
+  list2env(setNames(as.list(aws_env_vars[, 2]), aws_env_vars[, 1]), envir = os_env_cache)
 }
 
 #' @title Clear down paws cache environments
