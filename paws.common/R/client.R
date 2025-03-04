@@ -140,16 +140,15 @@ resolver_endpoint_boto <- function(
 ) {
   # Set default region for s3 if not provided
   # https://github.com/boto/botocore/blob/develop/botocore/regions.py#L200-L205
-  if (service == 's3' && is.null(region)) region <- 'us-east-1'
+  if (service == 's3' && !nzchar(region)) region <- 'us-east-1'
   global_found <- check_global(endpoints)
   global_endpoints <- global_found[global_found]
 
   # use first global endpoint if region isn't provided
-  if (is.null(region) && length(global_endpoints) > 0) {
+  if (!nzchar(region) && length(global_endpoints) > 0) {
     region <- names(global_endpoints)[1]
-  } else if (is.null(region) && length(global) == 0) {
-    region <- ""
   }
+
   global_region <- region %in% GLOBAL_REGIONS
   if (!any(global_found) && global_region) {
     stop("No region provided and no global region found.")
@@ -179,9 +178,7 @@ resolver_endpoint_js <- function(
 ) {
   # Set default region for s3:
   # https://github.com/boto/botocore/blob/develop/botocore/regions.py#L189-L220
-  if (service == "s3" & (region == "aws-global")) {
-    region <- "us-east-1"
-  }
+  if (service == 's3' && !nzchar(region)) region <- 'us-east-1'
   # locate global endpoint
   global_found <- check_global(endpoints)
   global_region <- (region == "aws-global")

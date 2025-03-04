@@ -313,11 +313,7 @@ get_region <- function(profile = "") {
   }
   region <- check_config_file_region(profile)
 
-  # Should this be here now?
-  if (is.null(region)) {
-    region <- "aws-global"
-  }
-  return(region)
+  return(region %||% "")
 }
 
 # Get Endpoint for Service
