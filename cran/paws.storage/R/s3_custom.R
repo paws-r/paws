@@ -37,7 +37,7 @@ NULL
 #' When using this operation using S3 on Outposts through the AWS SDKs, you
 #' provide the Outposts bucket ARN in place of the bucket name. For more
 #' information about S3 on Outposts ARNs, see [Using S3 on
-#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html)
 #' in the *Amazon Simple Storage Service Developer Guide*.
 #' @param Key &#91;required&#93; Key of the object to get.
 #' @param Filename &#91;required&#93; A local file location where the downloaded

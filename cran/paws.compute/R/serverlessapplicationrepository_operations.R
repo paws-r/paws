@@ -191,32 +191,32 @@ serverlessapplicationrepository_create_application_version <- function(Applicati
 #' application before deploying. If you don't specify this parameter for an
 #' application that requires capabilities, the call will fail.
 #' @param ChangeSetName This property corresponds to the parameter of the same name for the *AWS
-#' CloudFormation \href{https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet}{CreateChangeSet}*
+#' CloudFormation \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CreateChangeSet.html}{CreateChangeSet}*
 #' API.
 #' @param ClientToken This property corresponds to the parameter of the same name for the *AWS
-#' CloudFormation \href{https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet}{CreateChangeSet}*
+#' CloudFormation \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CreateChangeSet.html}{CreateChangeSet}*
 #' API.
 #' @param Description This property corresponds to the parameter of the same name for the *AWS
-#' CloudFormation \href{https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet}{CreateChangeSet}*
+#' CloudFormation \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CreateChangeSet.html}{CreateChangeSet}*
 #' API.
 #' @param NotificationArns This property corresponds to the parameter of the same name for the *AWS
-#' CloudFormation \href{https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet}{CreateChangeSet}*
+#' CloudFormation \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CreateChangeSet.html}{CreateChangeSet}*
 #' API.
 #' @param ParameterOverrides A list of parameter values for the parameters of the application.
 #' @param ResourceTypes This property corresponds to the parameter of the same name for the *AWS
-#' CloudFormation \href{https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet}{CreateChangeSet}*
+#' CloudFormation \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CreateChangeSet.html}{CreateChangeSet}*
 #' API.
 #' @param RollbackConfiguration This property corresponds to the parameter of the same name for the *AWS
-#' CloudFormation \href{https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet}{CreateChangeSet}*
+#' CloudFormation \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CreateChangeSet.html}{CreateChangeSet}*
 #' API.
 #' @param SemanticVersion The semantic version of the application:
 #' 
 #' <https://semver.org/>
 #' @param StackName &#91;required&#93; This property corresponds to the parameter of the same name for the *AWS
-#' CloudFormation \href{https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet}{CreateChangeSet}*
+#' CloudFormation \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CreateChangeSet.html}{CreateChangeSet}*
 #' API.
 #' @param Tags This property corresponds to the parameter of the same name for the *AWS
-#' CloudFormation \href{https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet}{CreateChangeSet}*
+#' CloudFormation \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CreateChangeSet.html}{CreateChangeSet}*
 #' API.
 #' @param TemplateId The UUID returned by CreateCloudFormationTemplate.
 #' 

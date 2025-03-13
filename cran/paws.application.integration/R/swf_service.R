@@ -18,7 +18,7 @@ NULL
 #' tracking their progress and maintaining their state.
 #' 
 #' This documentation serves as reference only. For a broader overview of
-#' the Amazon SWF programming model, see the *\href{https://docs.aws.amazon.com/amazonswf/latest/developerguide/}{Amazon SWF Developer Guide}* .
+#' the Amazon SWF programming model, see the *\href{https://docs.aws.amazon.com/amazonswf/latest/developerguide/welcome.html}{Amazon SWF Developer Guide}* .
 #'
 #' @param
 #' config
