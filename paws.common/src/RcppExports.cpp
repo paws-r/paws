@@ -126,7 +126,7 @@ BEGIN_RCPP
 END_RCPP
 }
 // parse_query_string
-List parse_query_string(std::string query);
+Rcpp::List parse_query_string(std::string query);
 RcppExport SEXP _paws_common_parse_query_string(SEXP querySEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;

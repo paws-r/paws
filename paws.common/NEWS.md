@@ -1,3 +1,6 @@
+# paws.common 0.8.2.9000
+* fix query being incorrectly parsed (#923). Thanks to @joeramirez for raising issue.
+
 # paws.common 0.8.2
 * fix issue regex timeout or rstudio crashes in windows (#901, #905). Thanks to @anpatton for debugging issue.
 * revert auto sso retry, this was causing tokens being built incorrectly (#896) thanks to @sckott for testing
