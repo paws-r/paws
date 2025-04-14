@@ -45,6 +45,7 @@ test_that("build_url no scheme or host", {
 test_that("missing query values become empty strings", {
   expect_equal(parse_query_string("?q="), list(q = ""))
   expect_equal(parse_query_string("?q"), list(q = ""))
+  expect_equal(parse_query_string("?q&p=1"), list(q = "", p = "1"))
   expect_equal(parse_query_string("?a&q"), list(a = "", q = ""))
 })
 

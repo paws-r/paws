@@ -39,46 +39,46 @@ List parse_query_string(std::string query)
   }
 
   std::vector<std::pair<std::string, std::string>> result_vector;
-  size_t start = 0, end = 0;
-  std::string key, value;
+  size_t start = 0;
 
   while (start < query.length())
   {
-    end = query.find('=', start);
-    if (end == std::string::npos || query[end] == '&')
+    // Find the next '&' to get the complete key-value pair
+    size_t pair_end = query.find('&', start);
+
+    // If no '&' is found, take the rest of the string
+    if (pair_end == std::string::npos)
     {
-      // Handle case where there is no '=' or it's part of an empty key-value pair
-      key = query.substr(start, query.find('&', start) - start);
+      pair_end = query.length();
+    }
+
+    // Extract the key-value pair substring
+    std::string pair = query.substr(start, pair_end - start);
+
+    // Split the pair into key and value using '='
+    size_t equal_pos = pair.find('=');
+    std::string key, value;
+
+    if (equal_pos == std::string::npos)
+    {
+      // If no '=' is found, treat the entire pair as the key
+      key = pair;
       value = "";
-      start = query.find('&', start);
-      if (start == std::string::npos)
-      {
-        start = query.length();
-      }
-      else
-      {
-        ++start;
-      }
     }
     else
     {
-      key = query.substr(start, end - start);
-      start = end + 1;
-      end = query.find('&', start);
-      if (end == std::string::npos)
-      {
-        value = query.substr(start);
-        start = query.length();
-      }
-      else
-      {
-        value = query.substr(start, end - start);
-        start = end + 1;
-      }
+      key = pair.substr(0, equal_pos);
+      value = pair.substr(equal_pos + 1);
     }
-    result_vector.push_back({internal_url_unencode(key), internal_url_unencode(value)});
+
+    // Decode and store the key-value pair
+    result_vector.emplace_back(internal_url_unencode(key), internal_url_unencode(value));
+
+    // Move to the next pair
+    start = pair_end + 1;
   }
 
+  // Convert the result vector to an Rcpp List
   List result(result_vector.size());
   CharacterVector names(result_vector.size());
   for (size_t i = 0; i < result_vector.size(); ++i)
