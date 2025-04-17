@@ -1,4 +1,4 @@
-# paws.common 0.8.2.9000
+# paws.common 0.8.3
 * fix query being incorrectly parsed (#923). Thanks to @joeramirez for raising issue.
 
 # paws.common 0.8.2
