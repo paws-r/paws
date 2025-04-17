@@ -1,5 +1,5 @@
 ## Submission
-This release addresses several bug raised by previous release.
+This release addresses a couple of bugs.
 
 ## Test environments
 
