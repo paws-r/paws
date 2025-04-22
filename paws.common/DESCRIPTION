@@ -14,7 +14,7 @@ Description: Functions for making low-level API requests to Amazon Web Services
     higher-level interfaces to individual services, such as Simple Storage
     Service (S3).
 License: Apache License (>= 2.0)
-URL: https://github.com/paws-r/paws
+URL: https://github.com/paws-r/paws, https://paws-r.r-universe.dev/paws.common, https://www.paws-r-sdk.com
 BugReports: https://github.com/paws-r/paws/issues
 Encoding: UTF-8
 LinkingTo:
