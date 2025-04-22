@@ -36,7 +36,7 @@ write_description_category <- function(
     BugReports = "https://github.com/paws-r/paws/issues",
     License = "Apache License (>= 2.0)",
     URL = sprintf(
-      "https://github.com/paws-r/paws, https://paws-r.r-universe.dev/%s",
+      "https://github.com/paws-r/paws, https://paws-r.r-universe.dev/%s, https://www.paws-r-sdk.com",
       fs::path_file(path)
     ),
     Encoding = "UTF-8",
