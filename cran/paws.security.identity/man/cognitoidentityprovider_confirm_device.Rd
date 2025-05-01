@@ -12,8 +12,9 @@ cognitoidentityprovider_confirm_device(
 )
 }
 \arguments{
-\item{AccessToken}{[required] A valid access token that Amazon Cognito issued to the user whose device
-you want to confirm.}
+\item{AccessToken}{[required] A valid access token that Amazon Cognito issued to the currently
+signed-in user. Must include a scope claim for
+\code{aws.cognito.signin.user.admin}.}
 
 \item{DeviceKey}{[required] The unique identifier, or device key, of the device that you want to
 update the status for.}

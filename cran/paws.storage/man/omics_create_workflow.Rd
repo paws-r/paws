@@ -2,7 +2,7 @@
 % Please edit documentation in R/omics_operations.R
 \name{omics_create_workflow}
 \alias{omics_create_workflow}
-\title{Creates a workflow}
+\title{Creates a private workflow}
 \usage{
 omics_create_workflow(
   name = NULL,
@@ -15,7 +15,8 @@ omics_create_workflow(
   storageCapacity = NULL,
   tags = NULL,
   requestId,
-  accelerators = NULL
+  accelerators = NULL,
+  storageType = NULL
 )
 }
 \arguments{
@@ -23,7 +24,7 @@ omics_create_workflow(
 
 \item{description}{A description for the workflow.}
 
-\item{engine}{An engine for the workflow.}
+\item{engine}{The workflow engine for the workflow.}
 
 \item{definitionZip}{A ZIP archive for the workflow.}
 
@@ -33,7 +34,8 @@ omics_create_workflow(
 
 \item{parameterTemplate}{A parameter template for the workflow.}
 
-\item{storageCapacity}{The default storage capacity for the workflow runs, in gibibytes.}
+\item{storageCapacity}{The default static storage capacity (in gibibytes) for runs that use
+this workflow or workflow version.}
 
 \item{tags}{Tags for the workflow.}
 
@@ -41,9 +43,15 @@ omics_create_workflow(
 for each request.}
 
 \item{accelerators}{The computational accelerator specified to run the workflow.}
+
+\item{storageType}{The default storage type for runs that use this workflow. STATIC storage
+allocates a fixed amount of storage. DYNAMIC storage dynamically scales
+the storage up or down, based on file system utilization. For more
+information about static and dynamic storage, see \href{https://docs.aws.amazon.com/omics/latest/dev/}{Running workflows} in the \emph{Amazon
+Web Services HealthOmics User Guide}.}
 }
 \description{
-Creates a workflow.
+Creates a private workflow.Private workflows depend on a variety of resources that you create and configure before creating the workflow:
 
 See \url{https://www.paws-r-sdk.com/docs/omics_create_workflow/} for full documentation.
 }

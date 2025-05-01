@@ -79,10 +79,10 @@ arczonalshift_cancel_zonal_shift <- function(zonalShiftId) {
 #' health during practice runs and, optionally, a *blocking alarm*, to
 #' block practice runs from starting.
 #' 
-#' When a resource has a practice run configuration, Route 53 ARC starts
-#' zonal shifts for the resource weekly, to shift traffic for practice
-#' runs. Practice runs help you to ensure that shifting away traffic from
-#' an Availability Zone during an autoshift is safe for your application.
+#' When a resource has a practice run configuration, ARC starts zonal
+#' shifts for the resource weekly, to shift traffic for practice runs.
+#' Practice runs help you to ensure that shifting away traffic from an
+#' Availability Zone during an autoshift is safe for your application.
 #' 
 #' For more information, see [Considerations when you configure zonal
 #' autoshift](https://docs.aws.amazon.com/r53recovery/latest/dg/arc-zonal-autoshift.considerations.html)
@@ -92,8 +92,8 @@ arczonalshift_cancel_zonal_shift <- function(zonalShiftId) {
 #' arczonalshift_create_practice_run_configuration(blockedDates,
 #'   blockedWindows, blockingAlarms, outcomeAlarms, resourceIdentifier)
 #'
-#' @param blockedDates Optionally, you can block Route 53 ARC from starting practice runs for a
-#' resource on specific calendar dates.
+#' @param blockedDates Optionally, you can block ARC from starting practice runs for a resource
+#' on specific calendar dates.
 #' 
 #' The format for blocked dates is: YYYY-MM-DD. Keep in mind, when you
 #' specify dates, that dates and times for practice runs are in UTC.
@@ -102,8 +102,8 @@ arczonalshift_cancel_zonal_shift <- function(zonalShiftId) {
 #' For example, if you have an application update scheduled to launch on
 #' May 1, 2024, and you don't want practice runs to shift traffic away at
 #' that time, you could set a blocked date for `2024-05-01`.
-#' @param blockedWindows Optionally, you can block Route 53 ARC from starting practice runs for
-#' specific windows of days and times.
+#' @param blockedWindows Optionally, you can block ARC from starting practice runs for specific
+#' windows of days and times.
 #' 
 #' The format for blocked windows is: DAY:HH:SS-DAY:HH:SS. Keep in mind,
 #' when you specify dates, that dates and times for practice runs are in
@@ -116,19 +116,19 @@ arczonalshift_cancel_zonal_shift <- function(zonalShiftId) {
 #' as blocked windows, for example:
 #' `MON-20:30-21:30 WED-20:30-21:30 FRI-20:30-21:30`.
 #' @param blockingAlarms An Amazon CloudWatch alarm that you can specify for zonal autoshift
-#' practice runs. This alarm blocks Route 53 ARC from starting practice run
-#' zonal shifts, and ends a practice run that's in progress, when the alarm
-#' is in an `ALARM` state.
+#' practice runs. This alarm blocks ARC from starting practice run zonal
+#' shifts, and ends a practice run that's in progress, when the alarm is in
+#' an `ALARM` state.
 #' @param outcomeAlarms &#91;required&#93; The *outcome alarm* for practice runs is a required Amazon CloudWatch
 #' alarm that you specify that ends a practice run when the alarm is in an
 #' `ALARM` state.
 #' 
 #' Configure the alarm to monitor the health of your application when
-#' traffic is shifted away from an Availability Zone during each weekly
-#' practice run. You should configure the alarm to go into an `ALARM` state
-#' if your application is impacted by the zonal shift, and you want to stop
-#' the zonal shift, to let traffic for the resource return to the
-#' Availability Zone.
+#' traffic is shifted away from an Availability Zone during each practice
+#' run. You should configure the alarm to go into an `ALARM` state if your
+#' application is impacted by the zonal shift, and you want to stop the
+#' zonal shift, to let traffic for the resource return to the Availability
+#' Zone.
 #' @param resourceIdentifier &#91;required&#93; The identifier of the resource that Amazon Web Services shifts traffic
 #' for with a practice run zonal shift. The identifier is the Amazon
 #' Resource Name (ARN) for the resource.
@@ -271,22 +271,14 @@ arczonalshift_delete_practice_run_configuration <- function(resourceIdentifier) 
 }
 .arczonalshift$operations$delete_practice_run_configuration <- arczonalshift_delete_practice_run_configuration
 
-#' Returns the status of autoshift observer notification
+#' Returns the status of the autoshift observer notification
 #'
 #' @description
-#' Returns the status of autoshift observer notification. Autoshift
-#' observer notification enables you to be notified, through Amazon
-#' EventBridge, when there is an autoshift event for zonal autoshift.
-#' 
-#' If the status is `ENABLED`, Route 53 ARC includes all autoshift events
-#' when you use the EventBridge pattern `Autoshift In Progress`. When the
-#' status is `DISABLED`, Route 53 ARC includes only autoshift events for
-#' autoshifts when one or more of your resources is included in the
-#' autoshift.
-#' 
-#' For more information, see [Notifications for practice runs and
-#' autoshifts](https://docs.aws.amazon.com/r53recovery/latest/dg/arc-zonal-autoshift.how-it-works.html#ZAShiftNotification)
-#' in the Amazon Route 53 Application Recovery Controller Developer Guide.
+#' Returns the status of the autoshift observer notification. Autoshift
+#' observer notifications notify you through Amazon EventBridge when there
+#' is an autoshift event for zonal autoshift. The status can be `ENABLED`
+#' or `DISABLED`. When `ENABLED`, a notification is sent when an autoshift
+#' is triggered. When `DISABLED`, notifications are not sent.
 #'
 #' @usage
 #' arczonalshift_get_autoshift_observer_notification_status()
@@ -338,12 +330,8 @@ arczonalshift_get_autoshift_observer_notification_status <- function() {
 #' Get information about a resource that's been registered for zonal shifts
 #' with Amazon Route 53 Application Recovery Controller in this Amazon Web
 #' Services Region. Resources that are registered for zonal shifts are
-#' managed resources in Route 53 ARC. You can start zonal shifts and
-#' configure zonal autoshift for managed resources.
-#' 
-#' At this time, you can only start a zonal shift or configure zonal
-#' autoshift for Network Load Balancers and Application Load Balancers with
-#' cross-zone load balancing turned off.
+#' managed resources in ARC. You can start zonal shifts and configure zonal
+#' autoshift for managed resources.
 #'
 #' @usage
 #' arczonalshift_get_managed_resource(resourceIdentifier)
@@ -403,6 +391,7 @@ arczonalshift_get_autoshift_observer_notification_status <- function() {
 #'       ),
 #'       practiceRunOutcome = "FAILED"|"INTERRUPTED"|"PENDING"|"SUCCEEDED",
 #'       resourceIdentifier = "string",
+#'       shiftType = "ZONAL_SHIFT"|"PRACTICE_RUN"|"FIS_EXPERIMENT"|"ZONAL_AUTOSHIFT",
 #'       startTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
@@ -443,21 +432,21 @@ arczonalshift_get_managed_resource <- function(resourceIdentifier) {
 }
 .arczonalshift$operations$get_managed_resource <- arczonalshift_get_managed_resource
 
-#' Returns a list of autoshifts for an Amazon Web Services Region
+#' Returns the autoshifts for an Amazon Web Services Region
 #'
 #' @description
-#' Returns a list of autoshifts for an Amazon Web Services Region. By
-#' default, the call returns only `ACTIVE` autoshifts. Optionally, you can
-#' specify the `status` parameter to return `COMPLETED` autoshifts.
+#' Returns the autoshifts for an Amazon Web Services Region. By default,
+#' the call returns only `ACTIVE` autoshifts. Optionally, you can specify
+#' the `status` parameter to return `COMPLETED` autoshifts.
 #'
 #' @usage
 #' arczonalshift_list_autoshifts(maxResults, nextToken, status)
 #'
 #' @param maxResults The number of objects that you want to return with this call.
 #' @param nextToken Specifies that you want to receive the next page of results. Valid only
-#' if you received a `NextToken` response in the previous request. If you
+#' if you received a `nextToken` response in the previous request. If you
 #' did, it indicates that more output is available. Set this parameter to
-#' the value provided by the previous call's `NextToken` response to
+#' the value provided by the previous call's `nextToken` response to
 #' request the next page of results.
 #' @param status The status of the autoshift.
 #'
@@ -531,9 +520,9 @@ arczonalshift_list_autoshifts <- function(maxResults = NULL, nextToken = NULL, s
 #'
 #' @param maxResults The number of objects that you want to return with this call.
 #' @param nextToken Specifies that you want to receive the next page of results. Valid only
-#' if you received a `NextToken` response in the previous request. If you
+#' if you received a `nextToken` response in the previous request. If you
 #' did, it indicates that more output is available. Set this parameter to
-#' the value provided by the previous call's `NextToken` response to
+#' the value provided by the previous call's `nextToken` response to
 #' request the next page of results.
 #'
 #' @return
@@ -571,6 +560,7 @@ arczonalshift_list_autoshifts <- function(maxResults = NULL, nextToken = NULL, s
 #'           ),
 #'           practiceRunOutcome = "FAILED"|"INTERRUPTED"|"PENDING"|"SUCCEEDED",
 #'           resourceIdentifier = "string",
+#'           shiftType = "ZONAL_SHIFT"|"PRACTICE_RUN"|"FIS_EXPERIMENT"|"ZONAL_AUTOSHIFT",
 #'           startTime = as.POSIXct(
 #'             "2015-01-01"
 #'           ),
@@ -623,14 +613,6 @@ arczonalshift_list_managed_resources <- function(maxResults = NULL, nextToken = 
 #' Lists all active and completed zonal shifts in Amazon Route 53
 #' Application Recovery Controller in your Amazon Web Services account in
 #' this Amazon Web Services Region.
-#' [`list_zonal_shifts`][arczonalshift_list_zonal_shifts] returns
-#' customer-initiated zonal shifts, as well as practice run zonal shifts
-#' that Route 53 ARC started on your behalf for zonal autoshift.
-#' 
-#' The [`list_zonal_shifts`][arczonalshift_list_zonal_shifts] operation
-#' does not list autoshifts. For more information about listing autoshifts,
-#' see
-#' ["\>ListAutoshifts](https://docs.aws.amazon.com/arc-zonal-shift/latest/api/API_ListAutoshifts.html).
 #'
 #' @usage
 #' arczonalshift_list_zonal_shifts(maxResults, nextToken,
@@ -638,9 +620,9 @@ arczonalshift_list_managed_resources <- function(maxResults = NULL, nextToken = 
 #'
 #' @param maxResults The number of objects that you want to return with this call.
 #' @param nextToken Specifies that you want to receive the next page of results. Valid only
-#' if you received a `NextToken` response in the previous request. If you
+#' if you received a `nextToken` response in the previous request. If you
 #' did, it indicates that more output is available. Set this parameter to
-#' the value provided by the previous call's `NextToken` response to
+#' the value provided by the previous call's `nextToken` response to
 #' request the next page of results.
 #' @param resourceIdentifier The identifier for the resource that you want to list zonal shifts for.
 #' The identifier is the Amazon Resource Name (ARN) for the resource.
@@ -668,6 +650,7 @@ arczonalshift_list_managed_resources <- function(maxResults = NULL, nextToken = 
 #'       ),
 #'       practiceRunOutcome = "FAILED"|"INTERRUPTED"|"PENDING"|"SUCCEEDED",
 #'       resourceIdentifier = "string",
+#'       shiftType = "ZONAL_SHIFT"|"PRACTICE_RUN"|"FIS_EXPERIMENT"|"ZONAL_AUTOSHIFT",
 #'       startTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
@@ -724,10 +707,10 @@ arczonalshift_list_zonal_shifts <- function(maxResults = NULL, nextToken = NULL,
 #' from an Availability Zone in an Amazon Web Services Region, to help your
 #' application recover immediately, for example, from a developer's bad
 #' code deployment or from an Amazon Web Services infrastructure failure in
-#' a single Availability Zone. You can start a zonal shift in Route 53 ARC
-#' only for managed resources in your Amazon Web Services account in an
-#' Amazon Web Services Region. Resources are automatically registered with
-#' Route 53 ARC by Amazon Web Services services.
+#' a single Availability Zone. You can start a zonal shift in ARC only for
+#' managed resources in your Amazon Web Services account in an Amazon Web
+#' Services Region. Resources are automatically registered with ARC by
+#' Amazon Web Services services.
 #' 
 #' At this time, you can only start a zonal shift for Network Load
 #' Balancers and Application Load Balancers with cross-zone load balancing
@@ -735,9 +718,9 @@ arczonalshift_list_zonal_shifts <- function(maxResults = NULL, nextToken = NULL,
 #' 
 #' When you start a zonal shift, traffic for the resource is no longer
 #' routed to the Availability Zone. The zonal shift is created immediately
-#' in Route 53 ARC. However, it can take a short time, typically up to a
-#' few minutes, for existing, in-progress connections in the Availability
-#' Zone to complete.
+#' in ARC. However, it can take a short time, typically up to a few
+#' minutes, for existing, in-progress connections in the Availability Zone
+#' to complete.
 #' 
 #' For more information, see [Zonal
 #' shift](https://docs.aws.amazon.com/r53recovery/latest/dg/arc-zonal-shift.html)
@@ -754,8 +737,8 @@ arczonalshift_list_zonal_shifts <- function(maxResults = NULL, nextToken = NULL,
 #' @param comment &#91;required&#93; A comment that you enter about the zonal shift. Only the latest comment
 #' is retained; no comment history is maintained. A new comment overwrites
 #' any existing comment string.
-#' @param expiresIn &#91;required&#93; The length of time that you want a zonal shift to be active, which Route
-#' 53 ARC converts to an expiry time (expiration time). Zonal shifts are
+#' @param expiresIn &#91;required&#93; The length of time that you want a zonal shift to be active, which ARC
+#' converts to an expiry time (expiration time). Zonal shifts are
 #' temporary. You can set a zonal shift to be active initially for up to
 #' three days (72 hours).
 #' 
@@ -838,11 +821,10 @@ arczonalshift_start_zonal_shift <- function(awayFrom, comment, expiresIn, resour
 #' notification enables you to be notified, through Amazon EventBridge,
 #' when there is an autoshift event for zonal autoshift.
 #' 
-#' If the status is `ENABLED`, Route 53 ARC includes all autoshift events
-#' when you use the EventBridge pattern `Autoshift In Progress`. When the
-#' status is `DISABLED`, Route 53 ARC includes only autoshift events for
-#' autoshifts when one or more of your resources is included in the
-#' autoshift.
+#' If the status is `ENABLED`, ARC includes all autoshift events when you
+#' use the EventBridge pattern `Autoshift In Progress`. When the status is
+#' `DISABLED`, ARC includes only autoshift events for autoshifts when one
+#' or more of your resources is included in the autoshift.
 #' 
 #' For more information, see [Notifications for practice runs and
 #' autoshifts](https://docs.aws.amazon.com/r53recovery/latest/dg/arc-zonal-autoshift.how-it-works.html#ZAShiftNotification)
@@ -852,10 +834,10 @@ arczonalshift_start_zonal_shift <- function(awayFrom, comment, expiresIn, resour
 #' arczonalshift_update_autoshift_observer_notification_status(status)
 #'
 #' @param status &#91;required&#93; The status to set for autoshift observer notification. If the status is
-#' `ENABLED`, Route 53 ARC includes all autoshift events when you use the
-#' Amazon EventBridge pattern `Autoshift In Progress`. When the status is
-#' `DISABLED`, Route 53 ARC includes only autoshift events for autoshifts
-#' when one or more of your resources is included in the autoshift.
+#' `ENABLED`, ARC includes all autoshift events when you use the Amazon
+#' EventBridge pattern `Autoshift In Progress`. When the status is
+#' `DISABLED`, ARC includes only autoshift events for autoshifts when one
+#' or more of your resources is included in the autoshift.
 #'
 #' @return
 #' A list with the following syntax:
@@ -921,8 +903,7 @@ arczonalshift_update_autoshift_observer_notification_status <- function(status) 
 #' May 1, 2024, and you don't want practice runs to shift traffic away at
 #' that time, you could set a blocked date for `2024-05-01`.
 #' @param blockedWindows Add, change, or remove windows of days and times for when you can,
-#' optionally, block Route 53 ARC from starting a practice run for a
-#' resource.
+#' optionally, block ARC from starting a practice run for a resource.
 #' 
 #' The format for blocked windows is: DAY:HH:SS-DAY:HH:SS. Keep in mind,
 #' when you specify dates, that dates and times for practice runs are in
@@ -1110,8 +1091,8 @@ arczonalshift_update_zonal_autoshift_configuration <- function(resourceIdentifie
 #' @param comment A comment that you enter about the zonal shift. Only the latest comment
 #' is retained; no comment history is maintained. A new comment overwrites
 #' any existing comment string.
-#' @param expiresIn The length of time that you want a zonal shift to be active, which Route
-#' 53 ARC converts to an expiry time (expiration time). Zonal shifts are
+#' @param expiresIn The length of time that you want a zonal shift to be active, which ARC
+#' converts to an expiry time (expiration time). Zonal shifts are
 #' temporary. You can set a zonal shift to be active initially for up to
 #' three days (72 hours).
 #' 

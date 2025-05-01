@@ -14,7 +14,8 @@ acm_request_certificate(
   Options = NULL,
   CertificateAuthorityArn = NULL,
   Tags = NULL,
-  KeyAlgorithm = NULL
+  KeyAlgorithm = NULL,
+  ManagedBy = NULL
 )
 }
 \arguments{
@@ -116,6 +117,9 @@ Web Services Private CA, the specified signing algorithm family (RSA or
 ECDSA) must match the algorithm family of the CA's secret key.
 
 Default: RSA_2048}
+
+\item{ManagedBy}{Identifies the Amazon Web Services service that manages the certificate
+issued by ACM.}
 }
 \description{
 Requests an ACM certificate for use with other Amazon Web Services services. To request an ACM certificate, you must specify a fully qualified domain name (FQDN) in the \code{DomainName} parameter. You can also specify additional FQDNs in the \code{SubjectAlternativeNames} parameter.

@@ -12,7 +12,8 @@ bedrockdataautomation_create_data_automation_project(
   customOutputConfiguration = NULL,
   overrideConfiguration = NULL,
   clientToken = NULL,
-  encryptionConfiguration = NULL
+  encryptionConfiguration = NULL,
+  tags = NULL
 )
 }
 \arguments{
@@ -31,6 +32,8 @@ bedrockdataautomation_create_data_automation_project(
 \item{clientToken}{}
 
 \item{encryptionConfiguration}{}
+
+\item{tags}{}
 }
 \description{
 Creates an Amazon Bedrock Data Automation Project

@@ -20,13 +20,16 @@ ssm_modify_document_permission(
 \emph{Share}.}
 
 \item{AccountIdsToAdd}{The Amazon Web Services users that should have access to the document.
-The account IDs can either be a group of account IDs or \emph{All}.}
+The account IDs can either be a group of account IDs or \emph{All}. You must
+specify a value for this parameter or the \code{AccountIdsToRemove}
+parameter.}
 
 \item{AccountIdsToRemove}{The Amazon Web Services users that should no longer have access to the
 document. The Amazon Web Services user can either be a group of account
 IDs or \emph{All}. This action has a higher priority than \code{AccountIdsToAdd}.
 If you specify an ID to add and the same ID to remove, the system
-removes access to the document.}
+removes access to the document. You must specify a value for this
+parameter or the \code{AccountIdsToAdd} parameter.}
 
 \item{SharedDocumentVersion}{(Optional) The version of the document to share. If it isn't specified,
 the system choose the \code{Default} version to share.}

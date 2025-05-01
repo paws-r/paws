@@ -46,7 +46,9 @@ rds_restore_db_instance_from_db_snapshot(
   AllocatedStorage = NULL,
   DedicatedLogVolume = NULL,
   CACertificateIdentifier = NULL,
-  EngineLifecycleSupport = NULL
+  EngineLifecycleSupport = NULL,
+  ManageMasterUserPassword = NULL,
+  MasterUserSecretKmsKeyId = NULL
 )
 }
 \arguments{
@@ -133,7 +135,10 @@ For more information, see
 DB instance during the maintenance window.
 
 If you restore an RDS Custom DB instance, you must disable this
-parameter.}
+parameter.
+
+For more information about automatic minor version upgrades, see
+\href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.Upgrading.html#USER_UpgradeDBInstance.Upgrading.AutoMinorVersionUpgrades}{Automatically upgrading the minor engine version}.}
 
 \item{LicenseModel}{License model information for the restored DB instance.
 
@@ -221,7 +226,7 @@ Valid Values: \code{gp2 | gp3 | io1 | io2 | standard}
 If you specify \code{io1}, \code{io2}, or \code{gp3}, you must also include a value for
 the \code{Iops} parameter.
 
-Default: \code{io1} if the \code{Iops} parameter is specified, otherwise \code{gp2}}
+Default: \code{io1} if the \code{Iops} parameter is specified, otherwise \code{gp3}}
 
 \item{TdeCredentialArn}{The ARN from the key store with which to associate the instance for TDE
 encryption.
@@ -477,6 +482,38 @@ Valid Values:
 \code{open-source-rds-extended-support | open-source-rds-extended-support-disabled}
 
 Default: \code{open-source-rds-extended-support}}
+
+\item{ManageMasterUserPassword}{Specifies whether to manage the master user password with Amazon Web
+Services Secrets Manager in the restored DB instance.
+
+For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-secrets-manager.html}{Password management with Amazon Web Services Secrets Manager}
+in the \emph{Amazon RDS User Guide}.
+
+Constraints:
+\itemize{
+\item Applies to RDS for Oracle only.
+}}
+
+\item{MasterUserSecretKmsKeyId}{The Amazon Web Services KMS key identifier to encrypt a secret that is
+automatically generated and managed in Amazon Web Services Secrets
+Manager.
+
+This setting is valid only if the master user password is managed by RDS
+in Amazon Web Services Secrets Manager for the DB instance.
+
+The Amazon Web Services KMS key identifier is the key ARN, key ID, alias
+ARN, or alias name for the KMS key. To use a KMS key in a different
+Amazon Web Services account, specify the key ARN or alias ARN.
+
+If you don't specify \code{MasterUserSecretKmsKeyId}, then the
+\code{aws/secretsmanager} KMS key is used to encrypt the secret. If the
+secret is in a different Amazon Web Services account, then you can't use
+the \code{aws/secretsmanager} KMS key to encrypt the secret, and you must use
+a customer managed KMS key.
+
+There is a default KMS key for your Amazon Web Services account. Your
+Amazon Web Services account has a different default KMS key for each
+Amazon Web Services Region.}
 }
 \description{
 Creates a new DB instance from a DB snapshot. The target database is created from the source database restore point with most of the source's original configuration, including the default security group and DB parameter group. By default, the new DB instance is created as a Single-AZ deployment, except when the instance is a SQL Server instance that has an option group associated with mirroring. In this case, the instance becomes a Multi-AZ deployment, not a Single-AZ deployment.

@@ -11,7 +11,9 @@ bedrockdataautomationruntime_invoke_data_automation_async(
   dataAutomationConfiguration = NULL,
   encryptionConfiguration = NULL,
   notificationConfiguration = NULL,
-  blueprints = NULL
+  blueprints = NULL,
+  dataAutomationProfileArn,
+  tags = NULL
 )
 }
 \arguments{
@@ -28,6 +30,10 @@ bedrockdataautomationruntime_invoke_data_automation_async(
 \item{notificationConfiguration}{Notification configuration.}
 
 \item{blueprints}{Blueprint list.}
+
+\item{dataAutomationProfileArn}{[required] Data automation profile ARN}
+
+\item{tags}{List of tags.}
 }
 \description{
 Async API: Invoke data automation.

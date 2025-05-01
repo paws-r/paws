@@ -479,6 +479,13 @@ imagebuilder_create_container_recipe <- function(containerType, name, descriptio
 #'           ),
 #'           accountId = "string"
 #'         )
+#'       ),
+#'       ssmParameterConfigurations = list(
+#'         list(
+#'           amiAccountId = "string",
+#'           parameterName = "string",
+#'           dataType = "text"|"aws:ec2:image"
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -2094,6 +2101,13 @@ imagebuilder_get_container_recipe_policy <- function(containerRecipeArn) {
 #'             ),
 #'             accountId = "string"
 #'           )
+#'         ),
+#'         ssmParameterConfigurations = list(
+#'           list(
+#'             amiAccountId = "string",
+#'             parameterName = "string",
+#'             dataType = "text"|"aws:ec2:image"
+#'           )
 #'         )
 #'       )
 #'     ),
@@ -2384,6 +2398,13 @@ imagebuilder_get_distribution_configuration <- function(distributionConfiguratio
 #'                 launchTemplateVersion = "string"
 #'               ),
 #'               accountId = "string"
+#'             )
+#'           ),
+#'           ssmParameterConfigurations = list(
+#'             list(
+#'               amiAccountId = "string",
+#'               parameterName = "string",
+#'               dataType = "text"|"aws:ec2:image"
 #'             )
 #'           )
 #'         )
@@ -6340,6 +6361,13 @@ imagebuilder_untag_resource <- function(resourceArn, tagKeys) {
 #'             launchTemplateVersion = "string"
 #'           ),
 #'           accountId = "string"
+#'         )
+#'       ),
+#'       ssmParameterConfigurations = list(
+#'         list(
+#'           amiAccountId = "string",
+#'           parameterName = "string",
+#'           dataType = "text"|"aws:ec2:image"
 #'         )
 #'       )
 #'     )

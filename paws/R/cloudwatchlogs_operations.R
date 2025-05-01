@@ -57,9 +57,9 @@ NULL
 #' results that were encrypted with that key will be unencryptable and
 #' unusable.
 #' 
-#' CloudWatch Logs supports only symmetric KMS keys. Do not use an
-#' associate an asymmetric KMS key with your log group or query results.
-#' For more information, see [Using Symmetric and Asymmetric
+#' CloudWatch Logs supports only symmetric KMS keys. Do not associate an
+#' asymmetric KMS key with your log group or query results. For more
+#' information, see [Using Symmetric and Asymmetric
 #' Keys](https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html).
 #' 
 #' It can take up to 5 minutes for this operation to take effect.
@@ -348,7 +348,7 @@ cloudwatchlogs_create_delivery <- function(deliverySourceName, deliveryDestinati
 #' prefix to be used as the Amazon S3 key prefix for all exported objects.
 #' 
 #' We recommend that you don't regularly export to Amazon S3 as a way to
-#' continuously archive your logs. For that use case, we instaed recommend
+#' continuously archive your logs. For that use case, we instead recommend
 #' that you use subscriptions. For more information about subscriptions,
 #' see [Real-time processing of log data with
 #' subscriptions](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/Subscriptions.html).
@@ -488,8 +488,9 @@ cloudwatchlogs_create_export_task <- function(taskName = NULL, logGroupName, log
 #' this key and for the anomaly detector to retrieve information about the
 #' anomalies that it finds.
 #' 
-#' For more information about using a KMS key and to see the required IAM
-#' policy, see [Use a KMS key with an anomaly
+#' Make sure the value provided is a valid KMS key ARN. For more
+#' information about using a KMS key and to see the required IAM policy,
+#' see [Use a KMS key with an anomaly
 #' detector](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/LogsAnomalyDetection-KMS.html).
 #' @param anomalyVisibilityTime The number of days to have visibility on an anomaly. After this time
 #' period has elapsed for an anomaly, it will be automatically baselined
@@ -610,12 +611,18 @@ cloudwatchlogs_create_log_anomaly_detector <- function(logGroupArnList, detector
 #' [Controlling access to Amazon Web Services resources using
 #' tags](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_tags.html).
 #' @param logGroupClass Use this parameter to specify the log group class for this log group.
-#' There are two classes:
+#' There are three classes:
 #' 
 #' -   The `Standard` log class supports all CloudWatch Logs features.
 #' 
 #' -   The `Infrequent Access` log class supports a subset of CloudWatch
 #'     Logs features and incurs lower costs.
+#' 
+#' -   Use the `Delivery` log class only for delivering Lambda logs to
+#'     store in Amazon S3 or Amazon Data Firehose. Log events in log groups
+#'     in the Delivery class are kept in CloudWatch Logs for only one day.
+#'     This log class doesn't offer rich CloudWatch Logs capabilities such
+#'     as CloudWatch Logs Insights queries.
 #' 
 #' If you omit this parameter, the default of `STANDARD` is used.
 #' 
@@ -636,7 +643,7 @@ cloudwatchlogs_create_log_anomaly_detector <- function(logGroupArnList, detector
 #'   tags = list(
 #'     "string"
 #'   ),
-#'   logGroupClass = "STANDARD"|"INFREQUENT_ACCESS"
+#'   logGroupClass = "STANDARD"|"INFREQUENT_ACCESS"|"DELIVERY"
 #' )
 #' ```
 #'
@@ -1658,7 +1665,7 @@ cloudwatchlogs_delete_transformer <- function(logGroupIdentifier) {
 #'     permissions.
 #' 
 #' -   To see subscription filter policies, you must have the
-#'     `logs:DescrubeSubscriptionFilters` and
+#'     `logs:DescribeSubscriptionFilters` and
 #'     `logs:DescribeAccountPolicies` permissions.
 #' 
 #' -   To see transformer policies, you must have the `logs:GetTransformer`
@@ -2423,12 +2430,19 @@ cloudwatchlogs_describe_index_policies <- function(logGroupIdentifiers, nextToke
 #' null value, the operation returns all log groups in the monitoring
 #' account and all log groups in all source accounts that are linked to the
 #' monitoring account.
-#' @param logGroupClass Specifies the log group class for this log group. There are two classes:
+#' @param logGroupClass Specifies the log group class for this log group. There are three
+#' classes:
 #' 
 #' -   The `Standard` log class supports all CloudWatch Logs features.
 #' 
 #' -   The `Infrequent Access` log class supports a subset of CloudWatch
 #'     Logs features and incurs lower costs.
+#' 
+#' -   Use the `Delivery` log class only for delivering Lambda logs to
+#'     store in Amazon S3 or Amazon Data Firehose. Log events in log groups
+#'     in the Delivery class are kept in CloudWatch Logs for only one day.
+#'     This log class doesn't offer rich CloudWatch Logs capabilities such
+#'     as CloudWatch Logs Insights queries.
 #' 
 #' For details about the features supported by each class, see [Log
 #' classes](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CloudWatch_Logs_Log_Classes.html)
@@ -2450,7 +2464,7 @@ cloudwatchlogs_describe_index_policies <- function(logGroupIdentifiers, nextToke
 #'       inheritedProperties = list(
 #'         "ACCOUNT_DATA_PROTECTION"
 #'       ),
-#'       logGroupClass = "STANDARD"|"INFREQUENT_ACCESS",
+#'       logGroupClass = "STANDARD"|"INFREQUENT_ACCESS"|"DELIVERY",
 #'       logGroupArn = "string"
 #'     )
 #'   ),
@@ -2469,7 +2483,7 @@ cloudwatchlogs_describe_index_policies <- function(logGroupIdentifiers, nextToke
 #'   nextToken = "string",
 #'   limit = 123,
 #'   includeLinkedAccounts = TRUE|FALSE,
-#'   logGroupClass = "STANDARD"|"INFREQUENT_ACCESS"
+#'   logGroupClass = "STANDARD"|"INFREQUENT_ACCESS"|"DELIVERY"
 #' )
 #' ```
 #'
@@ -3089,8 +3103,14 @@ cloudwatchlogs_disassociate_kms_key <- function(logGroupName = NULL, resourceIde
 #'
 #' @description
 #' Lists log events from the specified log group. You can list all the log
-#' events or filter the results using a filter pattern, a time range, and
-#' the name of the log stream.
+#' events or filter the results using one or more of the following:
+#' 
+#' -   A filter pattern
+#' 
+#' -   A time range
+#' 
+#' -   The log stream name, or a log stream name prefix that matches
+#'     mutltiple log streams
 #' 
 #' You must have the `logs:FilterLogEvents` permission to perform this
 #' operation.
@@ -3099,12 +3119,27 @@ cloudwatchlogs_disassociate_kms_key <- function(logGroupName = NULL, resourceIde
 #' `logGroupIdentifier` or `logGroupName`. You must include one of these
 #' two parameters, but you can't include both.
 #' 
-#' By default, this operation returns as many log events as can fit in 1 MB
-#' (up to 10,000 log events) or all the events found within the specified
-#' time range. If the results include a token, that means there are more
-#' log events available. You can get additional results by specifying the
-#' token in a subsequent call. This operation can return empty results
-#' while there are more log events available through the token.
+#' [`filter_log_events`][cloudwatchlogs_filter_log_events] is a paginated
+#' operation. Each page returned can contain up to 1 MB of log events or up
+#' to 10,000 log events. A returned page might only be partially full, or
+#' even empty. For example, if the result of a query would return 15,000
+#' log events, the first page isn't guaranteed to have 10,000 log events
+#' even if they all fit into 1 MB.
+#' 
+#' Partially full or empty pages don't necessarily mean that pagination is
+#' finished. If the results include a `nextToken`, there might be more log
+#' events available. You can return these additional log events by
+#' providing the nextToken in a subsequent
+#' [`filter_log_events`][cloudwatchlogs_filter_log_events] operation. If
+#' the results don't include a `nextToken`, then pagination is finished.
+#' 
+#' If you set `startFromHead` to `true` and you don’t include `endTime` in
+#' your request, you can end up in a situation where the pagination doesn't
+#' terminate. This can happen when the new log events are being added to
+#' the target log streams faster than they are being read. This situation
+#' is a good use case for the CloudWatch Logs [Live
+#' Tail](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CloudWatchLogs_LiveTail.html)
+#' feature.
 #' 
 #' The returned log events are sorted by event timestamp, the timestamp
 #' when the event was ingested by CloudWatch Logs, and the ID of the
@@ -3114,6 +3149,14 @@ cloudwatchlogs_disassociate_kms_key <- function(logGroupName = NULL, resourceIde
 #' this operation in a monitoring account and view data from the linked
 #' source accounts. For more information, see [CloudWatch cross-account
 #' observability](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Unified-Cross-Account.html).
+#' 
+#' If you are using [log
+#' transformation](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CloudWatch-Logs-Transformation.html),
+#' the [`filter_log_events`][cloudwatchlogs_filter_log_events] operation
+#' returns only the original versions of log events, before they were
+#' transformed. To view the transformed versions, you must use a
+#' [CloudWatch Logs
+#' query.](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AnalyzingLogData.html)
 #'
 #' @usage
 #' cloudwatchlogs_filter_log_events(logGroupName, logGroupIdentifier,
@@ -3667,6 +3710,7 @@ cloudwatchlogs_get_integration <- function(integrationName) {
 #'
 #' @description
 #' Retrieves information about the log anomaly detector that you specify.
+#' The KMS key ARN detected is valid.
 #'
 #' @usage
 #' cloudwatchlogs_get_log_anomaly_detector(anomalyDetectorArn)
@@ -3731,11 +3775,27 @@ cloudwatchlogs_get_log_anomaly_detector <- function(anomalyDetectorArn) {
 #' Lists log events from the specified log stream. You can list all of the
 #' log events or filter using a time range.
 #' 
-#' By default, this operation returns as many log events as can fit in a
-#' response size of 1MB (up to 10,000 log events). You can get additional
-#' log events by specifying one of the tokens in a subsequent call. This
-#' operation can return empty results while there are more log events
-#' available through the token.
+#' [`get_log_events`][cloudwatchlogs_get_log_events] is a paginated
+#' operation. Each page returned can contain up to 1 MB of log events or up
+#' to 10,000 log events. A returned page might only be partially full, or
+#' even empty. For example, if the result of a query would return 15,000
+#' log events, the first page isn't guaranteed to have 10,000 log events
+#' even if they all fit into 1 MB.
+#' 
+#' Partially full or empty pages don't necessarily mean that pagination is
+#' finished. As long as the `nextBackwardToken` or `nextForwardToken`
+#' returned is NOT equal to the `nextToken` that you passed into the API
+#' call, there might be more log events available. The token that you use
+#' depends on the direction you want to move in along the log stream. The
+#' returned tokens are never null.
+#' 
+#' If you set `startFromHead` to `true` and you don’t include `endTime` in
+#' your request, you can end up in a situation where the pagination doesn't
+#' terminate. This can happen when the new log events are being added to
+#' the target log streams faster than they are being read. This situation
+#' is a good use case for the CloudWatch Logs [Live
+#' Tail](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CloudWatchLogs_LiveTail.html)
+#' feature.
 #' 
 #' If you are using CloudWatch cross-account observability, you can use
 #' this operation in a monitoring account and view data from the linked
@@ -3745,6 +3805,13 @@ cloudwatchlogs_get_log_anomaly_detector <- function(anomalyDetectorArn) {
 #' You can specify the log group to search by using either
 #' `logGroupIdentifier` or `logGroupName`. You must include one of these
 #' two parameters, but you can't include both.
+#' 
+#' If you are using [log
+#' transformation](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CloudWatch-Logs-Transformation.html),
+#' the [`get_log_events`][cloudwatchlogs_get_log_events] operation returns
+#' only the original versions of log events, before they were transformed.
+#' To view the transformed versions, you must use a [CloudWatch Logs
+#' query.](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AnalyzingLogData.html)
 #'
 #' @usage
 #' cloudwatchlogs_get_log_events(logGroupName, logGroupIdentifier,
@@ -5948,7 +6015,7 @@ cloudwatchlogs_put_integration <- function(integrationName, resourceConfig, inte
 #' -   A batch of log events in a single request cannot span more than 24
 #'     hours. Otherwise, the operation fails.
 #' 
-#' -   Each log event can be no larger than 256 KB.
+#' -   Each log event can be no larger than 1 MB.
 #' 
 #' -   The maximum number of log events in a batch is 10,000.
 #' 
@@ -6805,6 +6872,10 @@ cloudwatchlogs_put_transformer <- function(logGroupIdentifier, transformerConfig
 #'     [SessionTimeoutException](https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_StartLiveTailResponseStream.html#CWL-Type-StartLiveTailResponseStream-SessionTimeoutException)
 #'     object is returned when the session times out, after it has been
 #'     kept open for three hours.
+#' 
+#' The [`start_live_tail`][cloudwatchlogs_start_live_tail] API routes
+#' requests to `streaming-logs.Region.amazonaws.com` using SDK host prefix
+#' injection. VPC endpoint support is not available for this API.
 #' 
 #' You can end a session before it times out by closing the session stream
 #' or by closing the client that is receiving the stream. The session also

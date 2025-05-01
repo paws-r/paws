@@ -19,6 +19,7 @@ ec2_modify_client_vpn_endpoint(
   ClientConnectOptions = NULL,
   SessionTimeoutHours = NULL,
   ClientLoginBannerOptions = NULL,
+  ClientRouteEnforcementOptions = NULL,
   DisconnectOnSessionTimeout = NULL
 )
 }
@@ -82,10 +83,22 @@ Default value: \code{24}}
 on Amazon Web Services provided clients when a VPN session is
 established.}
 
+\item{ClientRouteEnforcementOptions}{Client route enforcement is a feature of the Client VPN service that
+helps enforce administrator defined routes on devices connected through
+the VPN. T his feature helps improve your security posture by ensuring
+that network traffic originating from a connected client is not
+inadvertently sent outside the VPN tunnel.
+
+Client route enforcement works by monitoring the route table of a
+connected device for routing policy changes to the VPN connection. If
+the feature detects any VPN routing policy modifications, it will
+automatically force an update to the route table, reverting it back to
+the expected route configurations.}
+
 \item{DisconnectOnSessionTimeout}{Indicates whether the client VPN session is disconnected after the
 maximum timeout specified in \code{sessionTimeoutHours} is reached. If
 \code{true}, users are prompted to reconnect client VPN. If \code{false}, client
-VPN attempts to reconnect automatically. The default value is \code{false}.}
+VPN attempts to reconnect automatically. The default value is \code{true}.}
 }
 \description{
 Modifies the specified Client VPN endpoint. Modifying the DNS server resets existing client connections.

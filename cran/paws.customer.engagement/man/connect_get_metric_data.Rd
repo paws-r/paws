@@ -60,7 +60,7 @@ recommend switching to GetMetricDataV2 for more up-to-date features.}
 
 \item{HistoricalMetrics}{[required] The metrics to retrieve. Specify the name, unit, and statistic for each
 metric. The following historical metrics are available. For a
-description of each metric, see \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html}{Historical Metrics Definitions}
+description of each metric, see \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html}{Historical Metrics Definitions}
 in the \emph{Amazon Connect Administrator Guide}.
 
 This API does not support a contacts incoming metric (there's no

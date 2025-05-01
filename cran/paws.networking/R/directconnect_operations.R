@@ -647,6 +647,7 @@ directconnect_create_connection <- function(location, bandwidth, connectionName,
 #' See [https://www.paws-r-sdk.com/docs/directconnect_create_direct_connect_gateway/](https://www.paws-r-sdk.com/docs/directconnect_create_direct_connect_gateway/) for full documentation.
 #'
 #' @param directConnectGatewayName &#91;required&#93; The name of the Direct Connect gateway.
+#' @param tags The key-value pair tags associated with the request.
 #' @param amazonSideAsn The autonomous system number (ASN) for Border Gateway Protocol (BGP) to
 #' be configured on the Amazon side of the connection. The ASN must be in
 #' the private range of 64,512 to 65,534 or 4,200,000,000 to 4,294,967,294.
@@ -655,7 +656,7 @@ directconnect_create_connection <- function(location, bandwidth, connectionName,
 #' @keywords internal
 #'
 #' @rdname directconnect_create_direct_connect_gateway
-directconnect_create_direct_connect_gateway <- function(directConnectGatewayName, amazonSideAsn = NULL) {
+directconnect_create_direct_connect_gateway <- function(directConnectGatewayName, tags = NULL, amazonSideAsn = NULL) {
   op <- new_operation(
     name = "CreateDirectConnectGateway",
     http_method = "POST",
@@ -664,7 +665,7 @@ directconnect_create_direct_connect_gateway <- function(directConnectGatewayName
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .directconnect$create_direct_connect_gateway_input(directConnectGatewayName = directConnectGatewayName, amazonSideAsn = amazonSideAsn)
+  input <- .directconnect$create_direct_connect_gateway_input(directConnectGatewayName = directConnectGatewayName, tags = tags, amazonSideAsn = amazonSideAsn)
   output <- .directconnect$create_direct_connect_gateway_output()
   config <- get_config()
   svc <- .directconnect$service(config, op)

@@ -36,11 +36,13 @@ provisioned capacity values are estimated based on the consumed read and
 write capacity of your table and global secondary indexes over the past
 30 minutes.
 \itemize{
-\item \code{PROVISIONED} - We recommend using \code{PROVISIONED} for predictable
-workloads. \code{PROVISIONED} sets the billing mode to \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/provisioned-capacity-mode.html}{Provisioned capacity mode}.
-\item \code{PAY_PER_REQUEST} - We recommend using \code{PAY_PER_REQUEST} for
-unpredictable workloads. \code{PAY_PER_REQUEST} sets the billing mode to
+\item \code{PAY_PER_REQUEST} - We recommend using \code{PAY_PER_REQUEST} for most
+DynamoDB workloads. \code{PAY_PER_REQUEST} sets the billing mode to
 \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/on-demand-capacity-mode.html}{On-demand capacity mode}.
+\item \code{PROVISIONED} - We recommend using \code{PROVISIONED} for steady
+workloads with predictable growth where capacity requirements can be
+reliably forecasted. \code{PROVISIONED} sets the billing mode to
+\href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/provisioned-capacity-mode.html}{Provisioned capacity mode}.
 }}
 
 \item{ProvisionedThroughput}{The new provisioned throughput settings for the specified table or
@@ -84,7 +86,9 @@ disabled (false) on the table.}
 \item{MultiRegionConsistency}{Specifies the consistency mode for a new global table. This parameter is
 only valid when you create a global table by specifying one or more
 \href{https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_ReplicationGroupUpdate.html#DDB-Type-ReplicationGroupUpdate-Create}{Create}
-actions in the ReplicaUpdates action list.
+actions in the
+\href{https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_UpdateTable.html#DDB-UpdateTable-request-ReplicaUpdates}{ReplicaUpdates}
+action list.
 
 You can specify one of the following consistency modes:
 \itemize{

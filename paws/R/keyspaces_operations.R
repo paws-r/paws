@@ -35,8 +35,7 @@ NULL
 #' -   `regionList` - if the `replicationStrategy` is `MULTI_REGION`, the
 #'     `regionList` requires the current Region and at least one additional
 #'     Amazon Web Services Region where the keyspace is going to be
-#'     replicated in. The maximum number of supported replication Regions
-#'     including the current Region is six.
+#'     replicated in.
 #'
 #' @return
 #' A list with the following syntax:

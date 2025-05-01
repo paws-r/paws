@@ -27,7 +27,7 @@ elasticache_modify_user(
 
 \item{AuthenticationMode}{Specifies how to authenticate the user.}
 
-\item{Engine}{The engine for a specific user.}
+\item{Engine}{Modifies the engine listed for a user. The options are valkey or redis.}
 }
 \description{
 Changes user password(s) and/or access string.

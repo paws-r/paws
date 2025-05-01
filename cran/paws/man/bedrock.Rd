@@ -100,6 +100,7 @@ evaluating Amazon Bedrock models.
 \link[paws.machine.learning:bedrock_create_model_customization_job]{create_model_customization_job} \tab Creates a fine-tuning job to customize a base model\cr
 \link[paws.machine.learning:bedrock_create_model_import_job]{create_model_import_job} \tab Creates a model import job to import model that you have customized in other environments, such as Amazon SageMaker\cr
 \link[paws.machine.learning:bedrock_create_model_invocation_job]{create_model_invocation_job} \tab Creates a batch inference job to invoke a model on multiple prompts\cr
+\link[paws.machine.learning:bedrock_create_prompt_router]{create_prompt_router} \tab Creates a prompt router that manages the routing of requests between multiple foundation models based on the routing criteria\cr
 \link[paws.machine.learning:bedrock_create_provisioned_model_throughput]{create_provisioned_model_throughput} \tab Creates dedicated throughput for a base or custom model with the model units and for the duration that you specify\cr
 \link[paws.machine.learning:bedrock_delete_custom_model]{delete_custom_model} \tab Deletes a custom model that you created earlier\cr
 \link[paws.machine.learning:bedrock_delete_guardrail]{delete_guardrail} \tab Deletes a guardrail\cr
@@ -107,6 +108,7 @@ evaluating Amazon Bedrock models.
 \link[paws.machine.learning:bedrock_delete_inference_profile]{delete_inference_profile} \tab Deletes an application inference profile\cr
 \link[paws.machine.learning:bedrock_delete_marketplace_model_endpoint]{delete_marketplace_model_endpoint} \tab Deletes an endpoint for a model from Amazon Bedrock Marketplace\cr
 \link[paws.machine.learning:bedrock_delete_model_invocation_logging_configuration]{delete_model_invocation_logging_configuration} \tab Delete the invocation logging\cr
+\link[paws.machine.learning:bedrock_delete_prompt_router]{delete_prompt_router} \tab Deletes a specified prompt router\cr
 \link[paws.machine.learning:bedrock_delete_provisioned_model_throughput]{delete_provisioned_model_throughput} \tab Deletes a Provisioned Throughput\cr
 \link[paws.machine.learning:bedrock_deregister_marketplace_model_endpoint]{deregister_marketplace_model_endpoint} \tab Deregisters an endpoint for a model from Amazon Bedrock Marketplace\cr
 \link[paws.machine.learning:bedrock_get_custom_model]{get_custom_model} \tab Get the properties associated with a Amazon Bedrock custom model that you have created\cr

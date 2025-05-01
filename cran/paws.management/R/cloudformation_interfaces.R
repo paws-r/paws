@@ -305,7 +305,7 @@ NULL
 
 .cloudformation$describe_resource_scan_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceScanId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusReason = structure(logical(0), tags = list(type = "string")), StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), PercentageCompleted = structure(logical(0), tags = list(type = "double")), ResourceTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ResourcesScanned = structure(logical(0), tags = list(type = "integer")), ResourcesRead = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure", resultWrapper = "DescribeResourceScanResult"))
+  shape <- structure(list(ResourceScanId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusReason = structure(logical(0), tags = list(type = "string")), StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), PercentageCompleted = structure(logical(0), tags = list(type = "double")), ResourceTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ResourcesScanned = structure(logical(0), tags = list(type = "integer")), ResourcesRead = structure(logical(0), tags = list(type = "integer")), ScanFilters = structure(list(structure(list(Types = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", resultWrapper = "DescribeResourceScanResult"))
   return(populate(args, shape))
 }
 
@@ -669,13 +669,13 @@ NULL
 
 .cloudformation$list_resource_scans_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
+  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), ScanTypeFilter = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .cloudformation$list_resource_scans_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceScanSummaries = structure(list(structure(list(ResourceScanId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusReason = structure(logical(0), tags = list(type = "string")), StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), PercentageCompleted = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "ListResourceScansResult"))
+  shape <- structure(list(ResourceScanSummaries = structure(list(structure(list(ResourceScanId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusReason = structure(logical(0), tags = list(type = "string")), StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), PercentageCompleted = structure(logical(0), tags = list(type = "double")), ScanType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "ListResourceScansResult"))
   return(populate(args, shape))
 }
 
@@ -941,7 +941,7 @@ NULL
 
 .cloudformation$start_resource_scan_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ClientRequestToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(ClientRequestToken = structure(logical(0), tags = list(type = "string")), ScanFilters = structure(list(structure(list(Types = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

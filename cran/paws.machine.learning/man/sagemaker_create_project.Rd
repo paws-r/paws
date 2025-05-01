@@ -9,7 +9,7 @@ approved model}
 sagemaker_create_project(
   ProjectName,
   ProjectDescription = NULL,
-  ServiceCatalogProvisioningDetails,
+  ServiceCatalogProvisioningDetails = NULL,
   Tags = NULL
 )
 }
@@ -18,7 +18,7 @@ sagemaker_create_project(
 
 \item{ProjectDescription}{A description for the project.}
 
-\item{ServiceCatalogProvisioningDetails}{[required] The product ID and provisioning artifact ID to provision a service
+\item{ServiceCatalogProvisioningDetails}{The product ID and provisioning artifact ID to provision a service
 catalog. The provisioning artifact ID will default to the latest
 provisioning artifact ID of the product, if you don't provide the
 provisioning artifact ID. For more information, see \href{https://docs.aws.amazon.com/servicecatalog/latest/adminguide/introduction.html}{What is Amazon Web Services Service Catalog}.}

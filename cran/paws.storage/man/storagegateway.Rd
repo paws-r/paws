@@ -206,6 +206,7 @@ Gateway volume and snapshot IDs coming in 2016.
 \link[=storagegateway_detach_volume]{detach_volume} \tab Disconnects a volume from an iSCSI connection and then detaches the volume from the specified gateway\cr
 \link[=storagegateway_disable_gateway]{disable_gateway} \tab Disables a tape gateway when the gateway is no longer functioning\cr
 \link[=storagegateway_disassociate_file_system]{disassociate_file_system} \tab Disassociates an Amazon FSx file system from the specified gateway\cr
+\link[=storagegateway_evict_files_failing_upload]{evict_files_failing_upload} \tab Starts a process that cleans the specified file share's cache of file entries that are failing upload to Amazon S3\cr
 \link[=storagegateway_join_domain]{join_domain} \tab Adds a file gateway to an Active Directory domain\cr
 \link[=storagegateway_list_automatic_tape_creation_policies]{list_automatic_tape_creation_policies} \tab Lists the automatic tape creation policies for a gateway\cr
 \link[=storagegateway_list_cache_reports]{list_cache_reports} \tab Returns a list of existing cache reports for all file shares associated with your Amazon Web Services account\cr

@@ -111,6 +111,7 @@ for real-time processing of streaming big data.
 \link[paws.analytics:kinesis_list_shards]{list_shards} \tab Lists the shards in a stream and provides information about each shard\cr
 \link[paws.analytics:kinesis_list_stream_consumers]{list_stream_consumers} \tab Lists the consumers registered to receive data from a stream using enhanced fan-out, and provides information about each consumer\cr
 \link[paws.analytics:kinesis_list_streams]{list_streams} \tab Lists your Kinesis data streams\cr
+\link[paws.analytics:kinesis_list_tags_for_resource]{list_tags_for_resource} \tab List all tags added to the specified Kinesis resource\cr
 \link[paws.analytics:kinesis_list_tags_for_stream]{list_tags_for_stream} \tab Lists the tags for the specified Kinesis data stream\cr
 \link[paws.analytics:kinesis_merge_shards]{merge_shards} \tab Merges two adjacent shards in a Kinesis data stream and combines them into a single shard to reduce the stream's capacity to ingest and transport data\cr
 \link[paws.analytics:kinesis_put_record]{put_record} \tab Writes a single data record into an Amazon Kinesis data stream\cr
@@ -122,6 +123,8 @@ for real-time processing of streaming big data.
 \link[paws.analytics:kinesis_start_stream_encryption]{start_stream_encryption} \tab Enables or updates server-side encryption using an Amazon Web Services KMS key for a specified stream\cr
 \link[paws.analytics:kinesis_stop_stream_encryption]{stop_stream_encryption} \tab Disables server-side encryption for a specified stream\cr
 \link[paws.analytics:kinesis_subscribe_to_shard]{subscribe_to_shard} \tab This operation establishes an HTTP/2 connection between the consumer you specify in the ConsumerARN parameter and the shard you specify in the ShardId parameter\cr
+\link[paws.analytics:kinesis_tag_resource]{tag_resource} \tab Adds or updates tags for the specified Kinesis resource\cr
+\link[paws.analytics:kinesis_untag_resource]{untag_resource} \tab Removes tags from the specified Kinesis resource\cr
 \link[paws.analytics:kinesis_update_shard_count]{update_shard_count} \tab Updates the shard count of the specified stream to the specified number of shards\cr
 \link[paws.analytics:kinesis_update_stream_mode]{update_stream_mode} \tab Updates the capacity mode of the data stream
 }

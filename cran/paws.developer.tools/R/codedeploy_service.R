@@ -83,7 +83,8 @@ NULL
 #' -   [CLI Reference for
 #'     CodeDeploy](https://docs.aws.amazon.com/cli/latest/reference/deploy/)
 #' 
-#' -   CodeDeploy Developer Forum
+#' -   [CodeDeploy Developer
+#'     Forum](https://repost.aws/tags/TAP_gx1EAgRJuXWqSRorbHIw?newRedirect=1&forumID=179)
 #'
 #' @param
 #' config
@@ -246,7 +247,7 @@ codedeploy <- function(config = list(), credentials = list(), endpoint = NULL, r
 
 .codedeploy$metadata <- list(
   service_name = "codedeploy",
-  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "codedeploy.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "codedeploy.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "codedeploy.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "codedeploy.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "codedeploy.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "codedeploy.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "codedeploy.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "codedeploy.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "codedeploy.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "codedeploy.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "codedeploy.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "codedeploy.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "codedeploy.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "codedeploy.{region}.csp.hci.ic.gov", global = FALSE), "^eusc\\-(de)\\-\\w+\\-\\d+$" = list(endpoint = "codedeploy.{region}.amazonaws.eu", global = FALSE)),
   service_id = "CodeDeploy",
   api_version = "2014-10-06",
   signing_name = "codedeploy",

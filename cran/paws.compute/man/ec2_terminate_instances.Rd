@@ -18,7 +18,7 @@ you have the required permissions, the error response is
 \code{DryRunOperation}. Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
-Shuts down the specified instances. This operation is idempotent; if you terminate an instance more than once, each call succeeds.
+Shuts down the specified instances. This operation is \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{idempotent}; if you terminate an instance more than once, each call succeeds.
 
 See \url{https://www.paws-r-sdk.com/docs/ec2_terminate_instances/} for full documentation.
 }

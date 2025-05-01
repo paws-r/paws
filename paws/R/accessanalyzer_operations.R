@@ -304,7 +304,7 @@ accessanalyzer_check_no_new_access <- function(newPolicyDocument, existingPolicy
 #' ```
 #' svc$check_no_public_access(
 #'   policyDocument = "string",
-#'   resourceType = "AWS::DynamoDB::Table"|"AWS::DynamoDB::Stream"|"AWS::EFS::FileSystem"|"AWS::OpenSearchService::Domain"|"AWS::Kinesis::Stream"|"AWS::Kinesis::StreamConsumer"|"AWS::KMS::Key"|"AWS::Lambda::Function"|"AWS::S3::Bucket"|"AWS::S3::AccessPoint"|"AWS::S3Express::DirectoryBucket"|"AWS::S3::Glacier"|"AWS::S3Outposts::Bucket"|"AWS::S3Outposts::AccessPoint"|"AWS::SecretsManager::Secret"|"AWS::SNS::Topic"|"AWS::SQS::Queue"|"AWS::IAM::AssumeRolePolicyDocument"
+#'   resourceType = "AWS::DynamoDB::Table"|"AWS::DynamoDB::Stream"|"AWS::EFS::FileSystem"|"AWS::OpenSearchService::Domain"|"AWS::Kinesis::Stream"|"AWS::Kinesis::StreamConsumer"|"AWS::KMS::Key"|"AWS::Lambda::Function"|"AWS::S3::Bucket"|"AWS::S3::AccessPoint"|"AWS::S3Express::DirectoryBucket"|"AWS::S3::Glacier"|"AWS::S3Outposts::Bucket"|"AWS::S3Outposts::AccessPoint"|"AWS::SecretsManager::Secret"|"AWS::SNS::Topic"|"AWS::SQS::Queue"|"AWS::IAM::AssumeRolePolicyDocument"|"AWS::S3Tables::TableBucket"|"AWS::ApiGateway::RestApi"|"AWS::CodeArtifact::Domain"|"AWS::Backup::BackupVault"|"AWS::CloudTrail::Dashboard"|"AWS::CloudTrail::EventDataStore"|"AWS::S3Tables::Table"|"AWS::S3Express::AccessPoint"
 #' )
 #' ```
 #'
@@ -470,7 +470,18 @@ accessanalyzer_check_no_public_access <- function(policyDocument, resourceType) 
 #'         queuePolicy = "string"
 #'       ),
 #'       s3ExpressDirectoryBucket = list(
-#'         bucketPolicy = "string"
+#'         bucketPolicy = "string",
+#'         accessPoints = list(
+#'           list(
+#'             accessPointPolicy = "string",
+#'             networkOrigin = list(
+#'               vpcConfiguration = list(
+#'                 vpcId = "string"
+#'               ),
+#'               internetConfiguration = list()
+#'             )
+#'           )
+#'         )
 #'       ),
 #'       dynamodbStream = list(
 #'         streamPolicy = "string"
@@ -964,7 +975,18 @@ accessanalyzer_generate_finding_recommendation <- function(analyzerArn, id) {
 #'           queuePolicy = "string"
 #'         ),
 #'         s3ExpressDirectoryBucket = list(
-#'           bucketPolicy = "string"
+#'           bucketPolicy = "string",
+#'           accessPoints = list(
+#'             list(
+#'               accessPointPolicy = "string",
+#'               networkOrigin = list(
+#'                 vpcConfiguration = list(
+#'                   vpcId = "string"
+#'                 ),
+#'                 internetConfiguration = list()
+#'               )
+#'             )
+#'           )
 #'         ),
 #'         dynamodbStream = list(
 #'           streamPolicy = "string"

@@ -12,7 +12,7 @@ sagemaker_update_cluster_software(ClusterName)
 HyperPod cluster you want to update for security patching.}
 }
 \description{
-Updates the platform software of a SageMaker HyperPod cluster for security patching. To learn how to use this API, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-hyperpod-operate.html#sagemaker-hyperpod-operate-cli-command-update-cluster-software}{Update the SageMaker HyperPod platform software of a cluster}.
+Updates the platform software of a SageMaker HyperPod cluster for security patching. To learn how to use this API, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-hyperpod-operate-slurm.html#sagemaker-hyperpod-operate-cli-command-update-cluster-software}{Update the SageMaker HyperPod platform software of a cluster}.
 
 See \url{https://www.paws-r-sdk.com/docs/sagemaker_update_cluster_software/} for full documentation.
 }

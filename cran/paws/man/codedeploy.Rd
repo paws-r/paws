@@ -122,7 +122,7 @@ deployment, and to get details about Amazon ECS service deployments.
 \item \href{https://docs.aws.amazon.com/codedeploy/latest/userguide/}{CodeDeploy User Guide}
 \item \href{https://docs.aws.amazon.com/codedeploy/latest/APIReference/}{CodeDeploy API Reference Guide}
 \item \href{https://docs.aws.amazon.com/cli/latest/reference/deploy/}{CLI Reference for CodeDeploy}
-\item CodeDeploy Developer Forum
+\item \href{https://repost.aws/tags/TAP_gx1EAgRJuXWqSRorbHIw?newRedirect=1&forumID=179}{CodeDeploy Developer Forum}
 }
 }
 \section{Service syntax}{

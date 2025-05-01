@@ -47,7 +47,6 @@ filtering by the following dimensions:
 \item \code{AZ}
 \item \code{INSTANCE_TYPE}
 \item \code{LINKED_ACCOUNT}
-\item \code{LINKED_ACCOUNT_NAME}
 \item \code{OPERATION}
 \item \code{PURCHASE_TYPE}
 \item \code{REGION}

@@ -108,6 +108,7 @@ NULL
 #'  \link[=redshiftserverless_create_custom_domain_association]{create_custom_domain_association} \tab Creates a custom domain association for Amazon Redshift Serverless\cr
 #'  \link[=redshiftserverless_create_endpoint_access]{create_endpoint_access} \tab Creates an Amazon Redshift Serverless managed VPC endpoint\cr
 #'  \link[=redshiftserverless_create_namespace]{create_namespace} \tab Creates a namespace in Amazon Redshift Serverless\cr
+#'  \link[=redshiftserverless_create_reservation]{create_reservation} \tab Creates an Amazon Redshift Serverless reservation, which gives you the option to commit to a specified number of Redshift Processing Units (RPUs) for a year at a discount from Serverless on-demand (OD) rates\cr
 #'  \link[=redshiftserverless_create_scheduled_action]{create_scheduled_action} \tab Creates a scheduled action\cr
 #'  \link[=redshiftserverless_create_snapshot]{create_snapshot} \tab Creates a snapshot of all databases in a namespace\cr
 #'  \link[=redshiftserverless_create_snapshot_copy_configuration]{create_snapshot_copy_configuration} \tab Creates a snapshot copy configuration that lets you copy snapshots to another Amazon Web Services Region\cr
@@ -127,10 +128,13 @@ NULL
 #'  \link[=redshiftserverless_get_endpoint_access]{get_endpoint_access} \tab Returns information, such as the name, about a VPC endpoint\cr
 #'  \link[=redshiftserverless_get_namespace]{get_namespace} \tab Returns information about a namespace in Amazon Redshift Serverless\cr
 #'  \link[=redshiftserverless_get_recovery_point]{get_recovery_point} \tab Returns information about a recovery point\cr
+#'  \link[=redshiftserverless_get_reservation]{get_reservation} \tab Gets an Amazon Redshift Serverless reservation\cr
+#'  \link[=redshiftserverless_get_reservation_offering]{get_reservation_offering} \tab Returns the reservation offering\cr
 #'  \link[=redshiftserverless_get_resource_policy]{get_resource_policy} \tab Returns a resource policy\cr
 #'  \link[=redshiftserverless_get_scheduled_action]{get_scheduled_action} \tab Returns information about a scheduled action\cr
 #'  \link[=redshiftserverless_get_snapshot]{get_snapshot} \tab Returns information about a specific snapshot\cr
 #'  \link[=redshiftserverless_get_table_restore_status]{get_table_restore_status} \tab Returns information about a TableRestoreStatus object\cr
+#'  \link[=redshiftserverless_get_track]{get_track} \tab Get the Redshift Serverless version for a specified track\cr
 #'  \link[=redshiftserverless_get_usage_limit]{get_usage_limit} \tab Returns information about a usage limit\cr
 #'  \link[=redshiftserverless_get_workgroup]{get_workgroup} \tab Returns information about a specific workgroup\cr
 #'  \link[=redshiftserverless_list_custom_domain_associations]{list_custom_domain_associations} \tab Lists custom domain associations for Amazon Redshift Serverless\cr
@@ -138,11 +142,14 @@ NULL
 #'  \link[=redshiftserverless_list_managed_workgroups]{list_managed_workgroups} \tab Returns information about a list of specified managed workgroups in your account\cr
 #'  \link[=redshiftserverless_list_namespaces]{list_namespaces} \tab Returns information about a list of specified namespaces\cr
 #'  \link[=redshiftserverless_list_recovery_points]{list_recovery_points} \tab Returns an array of recovery points\cr
+#'  \link[=redshiftserverless_list_reservation_offerings]{list_reservation_offerings} \tab Returns the current reservation offerings in your account\cr
+#'  \link[=redshiftserverless_list_reservations]{list_reservations} \tab Returns a list of Reservation objects\cr
 #'  \link[=redshiftserverless_list_scheduled_actions]{list_scheduled_actions} \tab Returns a list of scheduled actions\cr
 #'  \link[=redshiftserverless_list_snapshot_copy_configurations]{list_snapshot_copy_configurations} \tab Returns a list of snapshot copy configurations\cr
 #'  \link[=redshiftserverless_list_snapshots]{list_snapshots} \tab Returns a list of snapshots\cr
 #'  \link[=redshiftserverless_list_table_restore_status]{list_table_restore_status} \tab Returns information about an array of TableRestoreStatus objects\cr
 #'  \link[=redshiftserverless_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags assigned to a resource\cr
+#'  \link[=redshiftserverless_list_tracks]{list_tracks} \tab List the Amazon Redshift Serverless versions\cr
 #'  \link[=redshiftserverless_list_usage_limits]{list_usage_limits} \tab Lists all usage limits within Amazon Redshift Serverless\cr
 #'  \link[=redshiftserverless_list_workgroups]{list_workgroups} \tab Returns information about a list of specified workgroups\cr
 #'  \link[=redshiftserverless_put_resource_policy]{put_resource_policy} \tab Creates or updates a resource policy\cr
@@ -191,7 +198,7 @@ redshiftserverless <- function(config = list(), credentials = list(), endpoint =
 
 .redshiftserverless$metadata <- list(
   service_name = "redshiftserverless",
-  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "redshift-serverless.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "redshift-serverless.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "redshift-serverless.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "redshift-serverless.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "redshift-serverless.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "redshift-serverless.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "redshift-serverless.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "redshift-serverless.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "redshift-serverless.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "redshift-serverless.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "redshift-serverless.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "redshift-serverless.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "redshift-serverless.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "redshift-serverless.{region}.csp.hci.ic.gov", global = FALSE), "^eusc\\-(de)\\-\\w+\\-\\d+$" = list(endpoint = "redshift-serverless.{region}.amazonaws.eu", global = FALSE)),
   service_id = "Redshift Serverless",
   api_version = "2021-04-21",
   signing_name = "redshift-serverless",

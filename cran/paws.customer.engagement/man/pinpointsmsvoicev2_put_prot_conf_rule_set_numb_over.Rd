@@ -2,8 +2,8 @@
 % Please edit documentation in R/pinpointsmsvoicev2_operations.R
 \name{pinpointsmsvoicev2_put_protect_configuration_rule_set_number_override}
 \alias{pinpointsmsvoicev2_put_protect_configuration_rule_set_number_override}
-\title{Create or update a RuleSetNumberOverride and associate it with a protect
-configuration}
+\title{Create or update a phone number rule override and associate it with a
+protect configuration}
 \usage{
 pinpointsmsvoicev2_put_protect_configuration_rule_set_number_override(
   ClientToken = NULL,
@@ -29,7 +29,7 @@ destination phone number.}
 then the rule does not expire.}
 }
 \description{
-Create or update a RuleSetNumberOverride and associate it with a protect configuration.
+Create or update a phone number rule override and associate it with a protect configuration.
 
 See \url{https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_put_protect_configuration_rule_set_number_override/} for full documentation.
 }

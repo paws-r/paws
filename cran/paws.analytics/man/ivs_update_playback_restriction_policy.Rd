@@ -19,7 +19,7 @@ Default: All countries (an empty array).}
 
 \item{allowedOrigins}{A list of origin sites that control CORS restriction. Allowed values are
 the same as valid values of the Origin header defined at
-\url{https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Origin}.
+\href{https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Origin}{https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Origin}.
 Default: All origins (an empty array).}
 
 \item{arn}{[required] ARN of the playback-restriction-policy to be updated.}

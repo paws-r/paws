@@ -2,8 +2,8 @@
 % Please edit documentation in R/servicequotas_operations.R
 \name{servicequotas_list_services}
 \alias{servicequotas_list_services}
-\title{Lists the names and codes for the Amazon Web Services integrated with
-Service Quotas}
+\title{Lists the names and codes for the Amazon Web Services services
+integrated with Service Quotas}
 \usage{
 servicequotas_list_services(NextToken = NULL, MaxResults = NULL)
 }
@@ -27,7 +27,7 @@ there are more results available. You should check \code{NextToken} after
 every operation to ensure that you receive all of the results.}
 }
 \description{
-Lists the names and codes for the Amazon Web Services integrated with Service Quotas.
+Lists the names and codes for the Amazon Web Services services integrated with Service Quotas.
 
 See \url{https://www.paws-r-sdk.com/docs/servicequotas_list_services/} for full documentation.
 }

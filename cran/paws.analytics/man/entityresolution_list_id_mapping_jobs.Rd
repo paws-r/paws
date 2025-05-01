@@ -5,17 +5,17 @@
 \title{Lists all ID mapping jobs for a given workflow}
 \usage{
 entityresolution_list_id_mapping_jobs(
-  maxResults = NULL,
+  workflowName,
   nextToken = NULL,
-  workflowName
+  maxResults = NULL
 )
 }
 \arguments{
-\item{maxResults}{The maximum number of objects returned per page.}
+\item{workflowName}{[required] The name of the workflow to be retrieved.}
 
 \item{nextToken}{The pagination token from the previous API call.}
 
-\item{workflowName}{[required] The name of the workflow to be retrieved.}
+\item{maxResults}{The maximum number of objects returned per page.}
 }
 \description{
 Lists all ID mapping jobs for a given workflow.

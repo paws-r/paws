@@ -15,11 +15,11 @@ cognitoidentityprovider_admin_update_device_status(
 \arguments{
 \item{UserPoolId}{[required] The ID of the user pool where you want to change a user's device status.}
 
-\item{Username}{[required] The username of the user that you want to query or modify. The value of
-this parameter is typically your user's username, but it can be any of
-their alias attributes. If \code{username} isn't an alias attribute in your
-user pool, this value must be the \code{sub} of a local user or the username
-of a user from a third-party IdP.}
+\item{Username}{[required] The name of the user that you want to query or modify. The value of this
+parameter is typically your user's username, but it can be any of their
+alias attributes. If \code{username} isn't an alias attribute in your user
+pool, this value must be the \code{sub} of a local user or the username of a
+user from a third-party IdP.}
 
 \item{DeviceKey}{[required] The unique identifier, or device key, of the device that you want to
 update the status for.}

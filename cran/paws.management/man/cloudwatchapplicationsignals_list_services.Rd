@@ -9,7 +9,9 @@ cloudwatchapplicationsignals_list_services(
   StartTime,
   EndTime,
   MaxResults = NULL,
-  NextToken = NULL
+  NextToken = NULL,
+  IncludeLinkedAccounts = NULL,
+  AwsAccountId = NULL
 )
 }
 \arguments{
@@ -30,6 +32,14 @@ this parameter, the default of 50 is used.}
 
 \item{NextToken}{Include this value, if it was returned by the previous operation, to get
 the next set of services.}
+
+\item{IncludeLinkedAccounts}{If you are using this operation in a monitoring account, specify \code{true}
+to include services from source accounts in the returned data.
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{ </p>
+}\if{html}{\out{</div>}}}
+
+\item{AwsAccountId}{Amazon Web Services Account ID.}
 }
 \description{
 Returns a list of services that have been discovered by Application Signals. A service represents a minimum logical and transactional unit that completes a business function. Services are discovered through Application Signals instrumentation.

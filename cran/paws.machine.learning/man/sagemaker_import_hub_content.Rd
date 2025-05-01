@@ -14,6 +14,7 @@ sagemaker_import_hub_content(
   HubContentDescription = NULL,
   HubContentMarkdown = NULL,
   HubContentDocument,
+  SupportStatus = NULL,
   HubContentSearchKeywords = NULL,
   Tags = NULL
 )
@@ -38,6 +39,8 @@ include links, tables, and standard markdown formating.}
 
 \item{HubContentDocument}{[required] The hub content document that describes information about the hub
 content such as type, associated containers, scripts, and more.}
+
+\item{SupportStatus}{The status of the hub content resource.}
 
 \item{HubContentSearchKeywords}{The searchable keywords of the hub content.}
 

@@ -51,11 +51,17 @@ null value, the operation returns all log groups in the monitoring
 account and all log groups in all source accounts that are linked to the
 monitoring account.}
 
-\item{logGroupClass}{Specifies the log group class for this log group. There are two classes:
+\item{logGroupClass}{Specifies the log group class for this log group. There are three
+classes:
 \itemize{
 \item The \code{Standard} log class supports all CloudWatch Logs features.
 \item The \verb{Infrequent Access} log class supports a subset of CloudWatch
 Logs features and incurs lower costs.
+\item Use the \code{Delivery} log class only for delivering Lambda logs to
+store in Amazon S3 or Amazon Data Firehose. Log events in log groups
+in the Delivery class are kept in CloudWatch Logs for only one day.
+This log class doesn't offer rich CloudWatch Logs capabilities such
+as CloudWatch Logs Insights queries.
 }
 
 For details about the features supported by each class, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CloudWatch_Logs_Log_Classes.html}{Log classes}}

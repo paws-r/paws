@@ -38,6 +38,42 @@ cloudwatchapplicationsignals_batch_get_service_level_objective_budget_report <- 
 }
 .cloudwatchapplicationsignals$operations$batch_get_service_level_objective_budget_report <- cloudwatchapplicationsignals_batch_get_service_level_objective_budget_report
 
+#' Add or remove time window exclusions for one or more Service Level
+#' Objectives (SLOs)
+#'
+#' @description
+#' Add or remove time window exclusions for one or more Service Level Objectives (SLOs).
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchapplicationsignals_batch_update_exclusion_windows/](https://www.paws-r-sdk.com/docs/cloudwatchapplicationsignals_batch_update_exclusion_windows/) for full documentation.
+#'
+#' @param SloIds &#91;required&#93; The list of SLO IDs to add or remove exclusion windows from.
+#' @param AddExclusionWindows A list of exclusion windows to add to the specified SLOs. You can add up
+#' to 10 exclusion windows per SLO.
+#' @param RemoveExclusionWindows A list of exclusion windows to remove from the specified SLOs. The
+#' window configuration must match an existing exclusion window.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchapplicationsignals_batch_update_exclusion_windows
+cloudwatchapplicationsignals_batch_update_exclusion_windows <- function(SloIds, AddExclusionWindows = NULL, RemoveExclusionWindows = NULL) {
+  op <- new_operation(
+    name = "BatchUpdateExclusionWindows",
+    http_method = "PATCH",
+    http_path = "/exclusion-windows",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudwatchapplicationsignals$batch_update_exclusion_windows_input(SloIds = SloIds, AddExclusionWindows = AddExclusionWindows, RemoveExclusionWindows = RemoveExclusionWindows)
+  output <- .cloudwatchapplicationsignals$batch_update_exclusion_windows_output()
+  config <- get_config()
+  svc <- .cloudwatchapplicationsignals$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchapplicationsignals$operations$batch_update_exclusion_windows <- cloudwatchapplicationsignals_batch_update_exclusion_windows
+
 #' Creates a service level objective (SLO), which can help you ensure that
 #' your critical business operations are meeting customer expectations
 #'
@@ -354,6 +390,45 @@ cloudwatchapplicationsignals_list_service_dependents <- function(StartTime, EndT
 }
 .cloudwatchapplicationsignals$operations$list_service_dependents <- cloudwatchapplicationsignals_list_service_dependents
 
+#' Retrieves all exclusion windows configured for a specific SLO
+#'
+#' @description
+#' Retrieves all exclusion windows configured for a specific SLO.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchapplicationsignals_list_service_level_objective_exclusion_windows/](https://www.paws-r-sdk.com/docs/cloudwatchapplicationsignals_list_service_level_objective_exclusion_windows/) for full documentation.
+#'
+#' @param Id &#91;required&#93; The ID of the SLO to list exclusion windows for.
+#' @param MaxResults The maximum number of results to return in one operation. If you omit
+#' this parameter, the default of 50 is used.
+#' 
+#'      </p> 
+#' @param NextToken Include this value, if it was returned by the previous operation, to get
+#' the next set of service level objectives.
+#' 
+#'      </p> 
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchapplicationsignals_lis_ser_lev_obj_exc_win
+cloudwatchapplicationsignals_list_service_level_objective_exclusion_windows <- function(Id, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListServiceLevelObjectiveExclusionWindows",
+    http_method = "GET",
+    http_path = "/slo/{Id}/exclusion-windows",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ExclusionWindows"),
+    stream_api = FALSE
+  )
+  input <- .cloudwatchapplicationsignals$list_service_level_objective_exclusion_windows_input(Id = Id, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .cloudwatchapplicationsignals$list_service_level_objective_exclusion_windows_output()
+  config <- get_config()
+  svc <- .cloudwatchapplicationsignals$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchapplicationsignals$operations$list_service_level_objective_exclusion_windows <- cloudwatchapplicationsignals_list_service_level_objective_exclusion_windows
+
 #' Returns a list of SLOs created in this account
 #'
 #' @description
@@ -383,15 +458,30 @@ cloudwatchapplicationsignals_list_service_dependents <- function(StartTime, EndT
 #' -   `Environment` specifies the location where this object is hosted, or
 #'     what it belongs to.
 #' @param OperationName The name of the operation that this SLO is associated with.
+#' @param DependencyConfig Identifies the dependency using the `DependencyKeyAttributes` and
+#' `DependencyOperationName`.
 #' @param MaxResults The maximum number of results to return in one operation. If you omit
 #' this parameter, the default of 50 is used.
 #' @param NextToken Include this value, if it was returned by the previous operation, to get
 #' the next set of service level objectives.
+#' @param MetricSourceTypes Use this optional field to only include SLOs with the specified metric
+#' source types in the output. Supported types are:
+#' 
+#' -   Service operation
+#' 
+#' -   Service dependency
+#' 
+#' -   CloudWatch metric
+#' @param IncludeLinkedAccounts If you are using this operation in a monitoring account, specify `true`
+#' to include SLO from source accounts in the returned data.
+#' 
+#'      </p> <p>When you are monitoring an account, you can use Amazon Web Services account ID in <code>KeyAttribute</code> filter for service source account and <code>SloOwnerawsaccountID</code> for SLO source account with <code>IncludeLinkedAccounts</code> to filter the returned data to only a single source account. </p> 
+#' @param SloOwnerAwsAccountId SLO's Amazon Web Services account ID.
 #'
 #' @keywords internal
 #'
 #' @rdname cloudwatchapplicationsignals_list_service_level_objectives
-cloudwatchapplicationsignals_list_service_level_objectives <- function(KeyAttributes = NULL, OperationName = NULL, MaxResults = NULL, NextToken = NULL) {
+cloudwatchapplicationsignals_list_service_level_objectives <- function(KeyAttributes = NULL, OperationName = NULL, DependencyConfig = NULL, MaxResults = NULL, NextToken = NULL, MetricSourceTypes = NULL, IncludeLinkedAccounts = NULL, SloOwnerAwsAccountId = NULL) {
   op <- new_operation(
     name = "ListServiceLevelObjectives",
     http_method = "POST",
@@ -400,7 +490,7 @@ cloudwatchapplicationsignals_list_service_level_objectives <- function(KeyAttrib
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "SloSummaries"),
     stream_api = FALSE
   )
-  input <- .cloudwatchapplicationsignals$list_service_level_objectives_input(KeyAttributes = KeyAttributes, OperationName = OperationName, MaxResults = MaxResults, NextToken = NextToken)
+  input <- .cloudwatchapplicationsignals$list_service_level_objectives_input(KeyAttributes = KeyAttributes, OperationName = OperationName, DependencyConfig = DependencyConfig, MaxResults = MaxResults, NextToken = NextToken, MetricSourceTypes = MetricSourceTypes, IncludeLinkedAccounts = IncludeLinkedAccounts, SloOwnerAwsAccountId = SloOwnerAwsAccountId)
   output <- .cloudwatchapplicationsignals$list_service_level_objectives_output()
   config <- get_config()
   svc <- .cloudwatchapplicationsignals$service(config, op)
@@ -499,11 +589,16 @@ cloudwatchapplicationsignals_list_service_operations <- function(StartTime, EndT
 #' this parameter, the default of 50 is used.
 #' @param NextToken Include this value, if it was returned by the previous operation, to get
 #' the next set of services.
+#' @param IncludeLinkedAccounts If you are using this operation in a monitoring account, specify `true`
+#' to include services from source accounts in the returned data.
+#' 
+#'      </p> 
+#' @param AwsAccountId Amazon Web Services Account ID.
 #'
 #' @keywords internal
 #'
 #' @rdname cloudwatchapplicationsignals_list_services
-cloudwatchapplicationsignals_list_services <- function(StartTime, EndTime, MaxResults = NULL, NextToken = NULL) {
+cloudwatchapplicationsignals_list_services <- function(StartTime, EndTime, MaxResults = NULL, NextToken = NULL, IncludeLinkedAccounts = NULL, AwsAccountId = NULL) {
   op <- new_operation(
     name = "ListServices",
     http_method = "GET",
@@ -512,7 +607,7 @@ cloudwatchapplicationsignals_list_services <- function(StartTime, EndTime, MaxRe
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ServiceSummaries"),
     stream_api = FALSE
   )
-  input <- .cloudwatchapplicationsignals$list_services_input(StartTime = StartTime, EndTime = EndTime, MaxResults = MaxResults, NextToken = NextToken)
+  input <- .cloudwatchapplicationsignals$list_services_input(StartTime = StartTime, EndTime = EndTime, MaxResults = MaxResults, NextToken = NextToken, IncludeLinkedAccounts = IncludeLinkedAccounts, AwsAccountId = AwsAccountId)
   output <- .cloudwatchapplicationsignals$list_services_output()
   config <- get_config()
   svc <- .cloudwatchapplicationsignals$service(config, op)

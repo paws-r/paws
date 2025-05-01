@@ -12,6 +12,7 @@ apigatewayv2_update_api(
   Description = NULL,
   DisableSchemaValidation = NULL,
   DisableExecuteApiEndpoint = NULL,
+  IpAddressType = NULL,
   Name = NULL,
   RouteKey = NULL,
   RouteSelectionExpression = NULL,
@@ -48,6 +49,8 @@ execute-api endpoint. By default, clients can invoke your API with the
 default https://\{api_id\}.execute-api.\{region\}.amazonaws.com
 endpoint. To require that clients use a custom domain name to invoke
 your API, disable the default endpoint.}
+
+\item{IpAddressType}{The IP address types that can invoke your API or domain name.}
 
 \item{Name}{The name of the API.}
 

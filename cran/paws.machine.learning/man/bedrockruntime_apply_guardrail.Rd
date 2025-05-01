@@ -8,7 +8,8 @@ bedrockruntime_apply_guardrail(
   guardrailIdentifier,
   guardrailVersion,
   source,
-  content
+  content,
+  outputScope = NULL
 )
 }
 \arguments{
@@ -19,6 +20,15 @@ bedrockruntime_apply_guardrail(
 \item{source}{[required] The source of data used in the request to apply the guardrail.}
 
 \item{content}{[required] The content details used in the request to apply the guardrail.}
+
+\item{outputScope}{Specifies the scope of the output that you get in the response. Set to
+\code{FULL} to return the entire output, including any detected and
+non-detected entries in the response for enhanced debugging.
+
+Note that the full output scope doesn't apply to word filters or regex
+in sensitive information filters. It does apply to all other filtering
+policies, including sensitive information with filters that can detect
+personally identifiable information (PII).}
 }
 \description{
 The action to apply a guardrail.

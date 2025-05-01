@@ -7,12 +7,14 @@ NULL
 #'
 #' @description
 #' Creates a new identity pool. The identity pool is a store of user
-#' identity information that is specific to your AWS account. The keys for
-#' `SupportedLoginProviders` are as follows:
+#' identity information that is specific to your Amazon Web Services
+#' account. The keys for `SupportedLoginProviders` are as follows:
 #' 
 #' -   Facebook: `graph.facebook.com`
 #' 
 #' -   Google: `accounts.google.com`
+#' 
+#' -   Sign in With Apple: `appleid.apple.com`
 #' 
 #' -   Amazon: `www.amazon.com`
 #' 
@@ -20,7 +22,11 @@ NULL
 #' 
 #' -   Digits: `www.digits.com`
 #' 
-#' You must use AWS Developer credentials to call this API.
+#' If you don't provide a value for a parameter, Amazon Cognito sets it to
+#' its default value.
+#' 
+#' You must use Amazon Web Services developer credentials to call this
+#' operation.
 #'
 #' @usage
 #' cognitoidentity_create_identity_pool(IdentityPoolName,
@@ -142,7 +148,8 @@ cognitoidentity_create_identity_pool <- function(IdentityPoolName, AllowUnauthen
 #' Deletes identities from an identity pool. You can specify a list of 1-60
 #' identities that you want to delete.
 #' 
-#' You must use AWS Developer credentials to call this API.
+#' You must use Amazon Web Services developer credentials to call this
+#' operation.
 #'
 #' @usage
 #' cognitoidentity_delete_identities(IdentityIdsToDelete)
@@ -201,7 +208,8 @@ cognitoidentity_delete_identities <- function(IdentityIdsToDelete) {
 #' Deletes an identity pool. Once a pool is deleted, users will not be able
 #' to authenticate with the pool.
 #' 
-#' You must use AWS Developer credentials to call this API.
+#' You must use Amazon Web Services developer credentials to call this
+#' operation.
 #'
 #' @usage
 #' cognitoidentity_delete_identity_pool(IdentityPoolId)
@@ -249,7 +257,8 @@ cognitoidentity_delete_identity_pool <- function(IdentityPoolId) {
 #' Returns metadata related to the given identity, including when the
 #' identity was created and any associated linked logins.
 #' 
-#' You must use AWS Developer credentials to call this API.
+#' You must use Amazon Web Services developer credentials to call this
+#' operation.
 #'
 #' @usage
 #' cognitoidentity_describe_identity(IdentityId)
@@ -311,7 +320,8 @@ cognitoidentity_describe_identity <- function(IdentityId) {
 #' Gets details about a particular identity pool, including the pool name,
 #' ID description, creation date, and current number of users.
 #' 
-#' You must use AWS Developer credentials to call this API.
+#' You must use Amazon Web Services developer credentials to call this
+#' operation.
 #'
 #' @usage
 #' cognitoidentity_describe_identity_pool(IdentityPoolId)
@@ -385,8 +395,8 @@ cognitoidentity_describe_identity_pool <- function(IdentityPoolId) {
 #' @description
 #' Returns credentials for the provided identity ID. Any provided logins
 #' will be validated against supported login providers. If the token is for
-#' cognito-identity.amazonaws.com, it will be passed through to AWS
-#' Security Token Service with the appropriate role for the token.
+#' `cognito-identity.amazonaws.com`, it will be passed through to Security
+#' Token Service with the appropriate role for the token.
 #' 
 #' This is a public API. You do not need any credentials to call this API.
 #'
@@ -463,10 +473,10 @@ cognitoidentity_get_credentials_for_identity <- function(IdentityId, Logins = NU
 }
 .cognitoidentity$operations$get_credentials_for_identity <- cognitoidentity_get_credentials_for_identity
 
-#' Generates (or retrieves) a Cognito ID
+#' Generates (or retrieves) IdentityID
 #'
 #' @description
-#' Generates (or retrieves) a Cognito ID. Supplying multiple logins will
+#' Generates (or retrieves) IdentityID. Supplying multiple logins will
 #' create an implicit linked account.
 #' 
 #' This is a public API. You do not need any credentials to call this API.
@@ -474,7 +484,7 @@ cognitoidentity_get_credentials_for_identity <- function(IdentityId, Logins = NU
 #' @usage
 #' cognitoidentity_get_id(AccountId, IdentityPoolId, Logins)
 #'
-#' @param AccountId A standard AWS account ID (9+ digits).
+#' @param AccountId A standard Amazon Web Services account ID (9+ digits).
 #' @param IdentityPoolId &#91;required&#93; An identity pool ID in the format REGION:GUID.
 #' @param Logins A set of optional name-value pairs that map provider names to provider
 #' tokens. The available provider names for `Logins` are as follows:
@@ -541,7 +551,8 @@ cognitoidentity_get_id <- function(AccountId = NULL, IdentityPoolId, Logins = NU
 #' @description
 #' Gets the roles for an identity pool.
 #' 
-#' You must use AWS Developer credentials to call this API.
+#' You must use Amazon Web Services developer credentials to call this
+#' operation.
 #'
 #' @usage
 #' cognitoidentity_get_identity_pool_roles(IdentityPoolId)
@@ -692,7 +703,8 @@ cognitoidentity_get_open_id_token <- function(IdentityId, Logins = NULL) {
 #' providing the existing `IdentityId`. This API will create the identity
 #' in the specified `IdentityPoolId`.
 #' 
-#' You must use AWS Developer credentials to call this API.
+#' You must use Amazon Web Services developer credentials to call this
+#' operation.
 #'
 #' @usage
 #' cognitoidentity_get_open_id_token_for_developer_identity(IdentityPoolId,
@@ -714,12 +726,12 @@ cognitoidentity_get_open_id_token <- function(IdentityId, Logins = NULL) {
 #' @param TokenDuration The expiration time of the token, in seconds. You can specify a custom
 #' expiration time for the token so that you can cache it. If you don't
 #' provide an expiration time, the token is valid for 15 minutes. You can
-#' exchange the token with Amazon STS for temporary AWS credentials, which
-#' are valid for a maximum of one hour. The maximum token duration you can
-#' set is 24 hours. You should take care in setting the expiration time for
-#' a token, as there are significant security implications: an attacker
-#' could use a leaked token to access your AWS resources for the token's
-#' duration.
+#' exchange the token with Amazon STS for temporary Amazon Web Services
+#' credentials, which are valid for a maximum of one hour. The maximum
+#' token duration you can set is 24 hours. You should take care in setting
+#' the expiration time for a token, as there are significant security
+#' implications: an attacker could use a leaked token to access your Amazon
+#' Web Services resources for the token's duration.
 #' 
 #' Please provide for a small grace period, usually no more than 5 minutes,
 #' to account for clock skew.
@@ -838,7 +850,8 @@ cognitoidentity_get_principal_tag_attribute_map <- function(IdentityPoolId, Iden
 #' @description
 #' Lists the identities in an identity pool.
 #' 
-#' You must use AWS Developer credentials to call this API.
+#' You must use Amazon Web Services developer credentials to call this
+#' operation.
 #'
 #' @usage
 #' cognitoidentity_list_identities(IdentityPoolId, MaxResults, NextToken,
@@ -913,7 +926,8 @@ cognitoidentity_list_identities <- function(IdentityPoolId, MaxResults, NextToke
 #' @description
 #' Lists all of the Cognito identity pools registered for your account.
 #' 
-#' You must use AWS Developer credentials to call this API.
+#' You must use Amazon Web Services developer credentials to call this
+#' operation.
 #'
 #' @usage
 #' cognitoidentity_list_identity_pools(MaxResults, NextToken)
@@ -1038,7 +1052,7 @@ cognitoidentity_list_tags_for_resource <- function(ResourceArn) {
 #' returned as a part of the response. If you supply both,
 #' `DeveloperUserIdentifier` will be matched against `IdentityID`. If the
 #' values are verified against the database, the response returns both
-#' values and is the same as the request. Otherwise a
+#' values and is the same as the request. Otherwise, a
 #' `ResourceConflictException` is thrown.
 #' 
 #' [`lookup_developer_identity`][cognitoidentity_lookup_developer_identity]
@@ -1049,7 +1063,8 @@ cognitoidentity_list_tags_for_resource <- function(ResourceArn) {
 #' [`get_open_id_token_for_developer_identity`][cognitoidentity_get_open_id_token_for_developer_identity]
 #' is a better option for higher-volume operations for user authentication.
 #' 
-#' You must use AWS Developer credentials to call this API.
+#' You must use Amazon Web Services developer credentials to call this
+#' operation.
 #'
 #' @usage
 #' cognitoidentity_lookup_developer_identity(IdentityPoolId, IdentityId,
@@ -1133,7 +1148,8 @@ cognitoidentity_lookup_developer_identity <- function(IdentityPoolId, IdentityId
 #' user, `DestinationUserIdentifier`, together should not be larger than
 #' 20. Otherwise, an exception will be thrown.
 #' 
-#' You must use AWS Developer credentials to call this API.
+#' You must use Amazon Web Services developer credentials to call this
+#' operation.
 #'
 #' @usage
 #' cognitoidentity_merge_developer_identities(SourceUserIdentifier,
@@ -1201,7 +1217,8 @@ cognitoidentity_merge_developer_identities <- function(SourceUserIdentifier, Des
 #' [`get_credentials_for_identity`][cognitoidentity_get_credentials_for_identity]
 #' action.
 #' 
-#' You must use AWS Developer credentials to call this API.
+#' You must use Amazon Web Services developer credentials to call this
+#' operation.
 #'
 #' @usage
 #' cognitoidentity_set_identity_pool_roles(IdentityPoolId, Roles,
@@ -1213,8 +1230,8 @@ cognitoidentity_merge_developer_identities <- function(SourceUserIdentifier, Des
 #' be the Role ARN.
 #' @param RoleMappings How users for a specific identity provider are to mapped to roles. This
 #' is a string to RoleMapping object map. The string identifies the
-#' identity provider, for example, "graph.facebook.com" or
-#' "cognito-idp.us-east-1.amazonaws.com/us-east-1_abcdefghi:app_client_id".
+#' identity provider, for example, `graph.facebook.com` or
+#' `cognito-idp.us-east-1.amazonaws.com/us-east-1_abcdefghi:app_client_id`.
 #' 
 #' Up to 25 rules can be specified per identity provider.
 #'
@@ -1413,7 +1430,8 @@ cognitoidentity_tag_resource <- function(ResourceArn, Tags) {
 #' identities as well as the developer user identifier, the Cognito
 #' identity becomes inaccessible.
 #' 
-#' You must use AWS Developer credentials to call this API.
+#' You must use Amazon Web Services developer credentials to call this
+#' operation.
 #'
 #' @usage
 #' cognitoidentity_unlink_developer_identity(IdentityId, IdentityPoolId,
@@ -1569,12 +1587,16 @@ cognitoidentity_untag_resource <- function(ResourceArn, TagKeys) {
 }
 .cognitoidentity$operations$untag_resource <- cognitoidentity_untag_resource
 
-#' Updates an identity pool
+#' Updates the configuration of an identity pool
 #'
 #' @description
-#' Updates an identity pool.
+#' Updates the configuration of an identity pool.
 #' 
-#' You must use AWS Developer credentials to call this API.
+#' If you don't provide a value for a parameter, Amazon Cognito sets it to
+#' its default value.
+#' 
+#' You must use Amazon Web Services developer credentials to call this
+#' operation.
 #'
 #' @usage
 #' cognitoidentity_update_identity_pool(IdentityPoolId, IdentityPoolName,

@@ -22,7 +22,8 @@ lexmodelsv2_update_intent(
   botVersion,
   localeId,
   initialResponseSetting = NULL,
-  qnAIntentConfiguration = NULL
+  qnAIntentConfiguration = NULL,
+  qInConnectIntentConfiguration = NULL
 )
 }
 \arguments{
@@ -75,6 +76,8 @@ starts eliciting slots.}
 \code{AMAZON.QnAIntent} intent is called when Amazon Lex can't determine
 another intent to invoke. If you specify this field, you can't specify
 the \code{kendraConfiguration} field.}
+
+\item{qInConnectIntentConfiguration}{Qinconnect intent configuration details for the update intent request.}
 }
 \description{
 Updates the settings for an intent.

@@ -16,11 +16,11 @@ cognitoidentityprovider_admin_list_user_auth_events(
 \item{UserPoolId}{[required] The Id of the user pool that contains the user profile with the logged
 events.}
 
-\item{Username}{[required] The username of the user that you want to query or modify. The value of
-this parameter is typically your user's username, but it can be any of
-their alias attributes. If \code{username} isn't an alias attribute in your
-user pool, this value must be the \code{sub} of a local user or the username
-of a user from a third-party IdP.}
+\item{Username}{[required] The name of the user that you want to query or modify. The value of this
+parameter is typically your user's username, but it can be any of their
+alias attributes. If \code{username} isn't an alias attribute in your user
+pool, this value must be the \code{sub} of a local user or the username of a
+user from a third-party IdP.}
 
 \item{MaxResults}{The maximum number of authentication events to return. Returns 60 events
 if you set \code{MaxResults} to 0, or if you don't include a \code{MaxResults}

@@ -154,6 +154,7 @@ NULL
 #'  \link[=ecs_register_task_definition]{register_task_definition} \tab Registers a new task definition from the supplied family and containerDefinitions\cr
 #'  \link[=ecs_run_task]{run_task} \tab Starts a new task using the specified task definition\cr
 #'  \link[=ecs_start_task]{start_task} \tab Starts a new task from the specified task definition on the specified container instance or instances\cr
+#'  \link[=ecs_stop_service_deployment]{stop_service_deployment} \tab Stops an ongoing service deployment\cr
 #'  \link[=ecs_stop_task]{stop_task} \tab Stops a running task\cr
 #'  \link[=ecs_submit_attachment_state_changes]{submit_attachment_state_changes} \tab This action is only used by the Amazon ECS agent, and it is not intended for use outside of the agent\cr
 #'  \link[=ecs_submit_container_state_change]{submit_container_state_change} \tab This action is only used by the Amazon ECS agent, and it is not intended for use outside of the agent\cr
@@ -200,7 +201,7 @@ ecs <- function(config = list(), credentials = list(), endpoint = NULL, region =
 
 .ecs$metadata <- list(
   service_name = "ecs",
-  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "ecs.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "ecs.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "ecs.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "ecs.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "ecs.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "ecs.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "ecs.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "ecs.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "ecs.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "ecs.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "ecs.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "ecs.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "ecs.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "ecs.{region}.csp.hci.ic.gov", global = FALSE), "^eusc\\-(de)\\-\\w+\\-\\d+$" = list(endpoint = "ecs.{region}.amazonaws.eu", global = FALSE)),
   service_id = "ECS",
   api_version = "2014-11-13",
   signing_name = "ecs",

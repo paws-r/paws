@@ -166,9 +166,9 @@ this property to encrypt data using your own customer managed key.}
 \item{MetricsConfig}{The metrics configuration for your event source. For more information,
 see \href{https://docs.aws.amazon.com/lambda/latest/dg/monitoring-metrics-types.html#event-source-mapping-metrics}{Event source mapping metrics}.}
 
-\item{ProvisionedPollerConfig}{(Amazon MSK and self-managed Apache Kafka only) The Provisioned Mode
+\item{ProvisionedPollerConfig}{(Amazon MSK and self-managed Apache Kafka only) The provisioned mode
 configuration for the event source. For more information, see
-\href{https://docs.aws.amazon.com/lambda/latest/dg/invocation-eventsourcemapping.html#invocation-eventsourcemapping-provisioned-mode}{Provisioned Mode}.}
+\href{https://docs.aws.amazon.com/lambda/latest/dg/invocation-eventsourcemapping.html#invocation-eventsourcemapping-provisioned-mode}{provisioned mode}.}
 }
 \description{
 Creates a mapping between an event source and an Lambda function. Lambda reads items from the event source and invokes the function.

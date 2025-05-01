@@ -13,11 +13,11 @@ cognitoidentityprovider_admin_reset_user_password(
 \arguments{
 \item{UserPoolId}{[required] The ID of the user pool where you want to reset the user's password.}
 
-\item{Username}{[required] The username of the user that you want to query or modify. The value of
-this parameter is typically your user's username, but it can be any of
-their alias attributes. If \code{username} isn't an alias attribute in your
-user pool, this value must be the \code{sub} of a local user or the username
-of a user from a third-party IdP.}
+\item{Username}{[required] The name of the user that you want to query or modify. The value of this
+parameter is typically your user's username, but it can be any of their
+alias attributes. If \code{username} isn't an alias attribute in your user
+pool, this value must be the \code{sub} of a local user or the username of a
+user from a third-party IdP.}
 
 \item{ClientMetadata}{A map of custom key-value pairs that you can provide as input for any
 custom workflows that this action triggers.
@@ -33,7 +33,7 @@ assigned to the ClientMetadata parameter in your AdminResetUserPassword
 request. In your function code in Lambda, you can process the
 \code{clientMetadata} value to enhance your workflow for your specific needs.
 
-For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-working-with-lambda-triggers.html}{Customizing user pool Workflows with Lambda Triggers}
+For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-working-with-lambda-triggers.html}{Using Lambda triggers}
 in the \emph{Amazon Cognito Developer Guide}.
 
 When you use the \code{ClientMetadata} parameter, note that Amazon Cognito
@@ -49,7 +49,7 @@ in this parameter.
 }}
 }
 \description{
-Resets the specified user's password in a user pool. This operation doesn't change the user's password, but sends a password-reset code. This operation is the administrative authentication API equivalent to \code{\link[=cognitoidentityprovider_forgot_password]{forgot_password}}.
+Resets the specified user's password in a user pool. This operation doesn't change the user's password, but sends a password-reset code.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_admin_reset_user_password/} for full documentation.
 }

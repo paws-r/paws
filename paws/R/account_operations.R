@@ -26,9 +26,9 @@ NULL
 #' features
 #' enabled](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html),
 #' and the organization must have [trusted
-#' access](https://docs.aws.amazon.com/organizations/latest/userguide/)
+#' access](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services.html)
 #' enabled for the Account Management service, and optionally a [delegated
-#' admin](https://docs.aws.amazon.com/organizations/latest/userguide/)
+#' admin](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#delegated-admin)
 #' account assigned.
 #' 
 #' This operation can only be called from the management account or the
@@ -192,9 +192,9 @@ account_delete_alternate_contact <- function(AccountId = NULL, AlternateContactT
 #' features
 #' enabled](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html),
 #' and the organization must have [trusted
-#' access](https://docs.aws.amazon.com/organizations/latest/userguide/)
+#' access](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services.html)
 #' enabled for the Account Management service, and optionally a [delegated
-#' admin](https://docs.aws.amazon.com/organizations/latest/userguide/)
+#' admin](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#delegated-admin)
 #' account assigned.
 #' 
 #' The management account can't specify its own `AccountId`. It must call
@@ -267,9 +267,9 @@ account_disable_region <- function(AccountId = NULL, RegionName) {
 #' features
 #' enabled](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html),
 #' and the organization must have [trusted
-#' access](https://docs.aws.amazon.com/organizations/latest/userguide/)
+#' access](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services.html)
 #' enabled for the Account Management service, and optionally a [delegated
-#' admin](https://docs.aws.amazon.com/organizations/latest/userguide/)
+#' admin](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#delegated-admin)
 #' account assigned.
 #' 
 #' The management account can't specify its own `AccountId`. It must call
@@ -322,6 +322,89 @@ account_enable_region <- function(AccountId = NULL, RegionName) {
   return(response)
 }
 .account$operations$enable_region <- account_enable_region
+
+#' Retrieves information about the specified account including its account
+#' name, account ID, and account creation date and time
+#'
+#' @description
+#' Retrieves information about the specified account including its account
+#' name, account ID, and account creation date and time. To use this API,
+#' an IAM user or role must have the `account:GetAccountInformation` IAM
+#' permission.
+#'
+#' @usage
+#' account_get_account_information(AccountId)
+#'
+#' @param AccountId Specifies the 12 digit account ID number of the Amazon Web Services
+#' account that you want to access or modify with this operation.
+#' 
+#' If you do not specify this parameter, it defaults to the Amazon Web
+#' Services account of the identity used to call the operation.
+#' 
+#' To use this parameter, the caller must be an identity in the
+#' [organization's management
+#' account](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#account)
+#' or a delegated administrator account, and the specified account ID must
+#' be a member account in the same organization. The organization must have
+#' [all features
+#' enabled](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html),
+#' and the organization must have [trusted
+#' access](https://docs.aws.amazon.com/organizations/latest/userguide/)
+#' enabled for the Account Management service, and optionally a [delegated
+#' admin](https://docs.aws.amazon.com/organizations/latest/userguide/)
+#' account assigned.
+#' 
+#' The management account can't specify its own `AccountId`; it must call
+#' the operation in standalone context by not including the `AccountId`
+#' parameter.
+#' 
+#' To call this operation on an account that is not a member of an
+#' organization, then don't specify this parameter, and call the operation
+#' using an identity belonging to the account whose contacts you wish to
+#' retrieve or modify.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AccountCreatedDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   AccountId = "string",
+#'   AccountName = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_account_information(
+#'   AccountId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname account_get_account_information
+#'
+#' @aliases account_get_account_information
+account_get_account_information <- function(AccountId = NULL) {
+  op <- new_operation(
+    name = "GetAccountInformation",
+    http_method = "POST",
+    http_path = "/getAccountInformation",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .account$get_account_information_input(AccountId = AccountId)
+  output <- .account$get_account_information_output()
+  config <- get_config()
+  svc <- .account$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.account$operations$get_account_information <- account_get_account_information
 
 #' Retrieves the specified alternate contact attached to an Amazon Web
 #' Services account
@@ -445,9 +528,9 @@ account_get_alternate_contact <- function(AccountId = NULL, AlternateContactType
 #' features
 #' enabled](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html),
 #' and the organization must have [trusted
-#' access](https://docs.aws.amazon.com/organizations/latest/userguide/)
+#' access](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services.html)
 #' enabled for the Account Management service, and optionally a [delegated
-#' admin](https://docs.aws.amazon.com/organizations/latest/userguide/)
+#' admin](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#delegated-admin)
 #' account assigned.
 #' 
 #' The management account can't specify its own `AccountId`. It must call
@@ -529,9 +612,9 @@ account_get_contact_information <- function(AccountId = NULL) {
 #' features
 #' enabled](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html),
 #' and the organization must have [trusted
-#' access](https://docs.aws.amazon.com/organizations/latest/userguide/)
+#' access](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services.html)
 #' enabled for the Account Management service, and optionally a [delegated
-#' admin](https://docs.aws.amazon.com/organizations/latest/userguide/)
+#' admin](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#delegated-admin)
 #' account assigned.
 #' 
 #' This operation can only be called from the management account or the
@@ -598,9 +681,9 @@ account_get_primary_email <- function(AccountId) {
 #' features
 #' enabled](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html),
 #' and the organization must have [trusted
-#' access](https://docs.aws.amazon.com/organizations/latest/userguide/)
+#' access](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services.html)
 #' enabled for the Account Management service, and optionally a [delegated
-#' admin](https://docs.aws.amazon.com/organizations/latest/userguide/)
+#' admin](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#delegated-admin)
 #' account assigned.
 #' 
 #' The management account can't specify its own `AccountId`. It must call
@@ -680,9 +763,9 @@ account_get_region_opt_status <- function(AccountId = NULL, RegionName) {
 #' features
 #' enabled](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html),
 #' and the organization must have [trusted
-#' access](https://docs.aws.amazon.com/organizations/latest/userguide/)
+#' access](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services.html)
 #' enabled for the Account Management service, and optionally a [delegated
-#' admin](https://docs.aws.amazon.com/organizations/latest/userguide/)
+#' admin](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#delegated-admin)
 #' account assigned.
 #' 
 #' The management account can't specify its own `AccountId`. It must call
@@ -760,6 +843,79 @@ account_list_regions <- function(AccountId = NULL, MaxResults = NULL, NextToken 
   return(response)
 }
 .account$operations$list_regions <- account_list_regions
+
+#' Updates the account name of the specified account
+#'
+#' @description
+#' Updates the account name of the specified account. To use this API, IAM
+#' principals must have the `account:PutAccountName` IAM permission.
+#'
+#' @usage
+#' account_put_account_name(AccountId, AccountName)
+#'
+#' @param AccountId Specifies the 12 digit account ID number of the Amazon Web Services
+#' account that you want to access or modify with this operation.
+#' 
+#' If you do not specify this parameter, it defaults to the Amazon Web
+#' Services account of the identity used to call the operation.
+#' 
+#' To use this parameter, the caller must be an identity in the
+#' [organization's management
+#' account](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#account)
+#' or a delegated administrator account, and the specified account ID must
+#' be a member account in the same organization. The organization must have
+#' [all features
+#' enabled](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html),
+#' and the organization must have [trusted
+#' access](https://docs.aws.amazon.com/organizations/latest/userguide/)
+#' enabled for the Account Management service, and optionally a [delegated
+#' admin](https://docs.aws.amazon.com/organizations/latest/userguide/)
+#' account assigned.
+#' 
+#' The management account can't specify its own `AccountId`; it must call
+#' the operation in standalone context by not including the `AccountId`
+#' parameter.
+#' 
+#' To call this operation on an account that is not a member of an
+#' organization, then don't specify this parameter, and call the operation
+#' using an identity belonging to the account whose contacts you wish to
+#' retrieve or modify.
+#' @param AccountName &#91;required&#93; The name of the account.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_account_name(
+#'   AccountId = "string",
+#'   AccountName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname account_put_account_name
+#'
+#' @aliases account_put_account_name
+account_put_account_name <- function(AccountId = NULL, AccountName) {
+  op <- new_operation(
+    name = "PutAccountName",
+    http_method = "POST",
+    http_path = "/putAccountName",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .account$put_account_name_input(AccountId = AccountId, AccountName = AccountName)
+  output <- .account$put_account_name_output()
+  config <- get_config()
+  svc <- .account$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.account$operations$put_account_name <- account_put_account_name
 
 #' Modifies the specified alternate contact attached to an Amazon Web
 #' Services account
@@ -881,9 +1037,9 @@ account_put_alternate_contact <- function(AccountId = NULL, AlternateContactType
 #' features
 #' enabled](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html),
 #' and the organization must have [trusted
-#' access](https://docs.aws.amazon.com/organizations/latest/userguide/)
+#' access](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services.html)
 #' enabled for the Account Management service, and optionally a [delegated
-#' admin](https://docs.aws.amazon.com/organizations/latest/userguide/)
+#' admin](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#delegated-admin)
 #' account assigned.
 #' 
 #' The management account can't specify its own `AccountId`. It must call
@@ -965,9 +1121,9 @@ account_put_contact_information <- function(AccountId = NULL, ContactInformation
 #' features
 #' enabled](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html),
 #' and the organization must have [trusted
-#' access](https://docs.aws.amazon.com/organizations/latest/userguide/)
+#' access](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services.html)
 #' enabled for the Account Management service, and optionally a [delegated
-#' admin](https://docs.aws.amazon.com/organizations/latest/userguide/)
+#' admin](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#delegated-admin)
 #' account assigned.
 #' 
 #' This operation can only be called from the management account or the

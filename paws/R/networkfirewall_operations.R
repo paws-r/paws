@@ -1775,6 +1775,91 @@ networkfirewall_describe_firewall_policy <- function(FirewallPolicyName = NULL, 
 }
 .networkfirewall$operations$describe_firewall_policy <- networkfirewall_describe_firewall_policy
 
+#' Returns key information about a specific flow operation
+#'
+#' @description
+#' Returns key information about a specific flow operation.
+#'
+#' @usage
+#' networkfirewall_describe_flow_operation(FirewallArn, AvailabilityZone,
+#'   FlowOperationId)
+#'
+#' @param FirewallArn &#91;required&#93; The Amazon Resource Name (ARN) of the firewall.
+#' @param AvailabilityZone The ID of the Availability Zone where the firewall is located. For
+#' example, `us-east-2a`.
+#' 
+#' Defines the scope a flow operation. You can use up to 20 filters to
+#' configure a single flow operation.
+#' @param FlowOperationId &#91;required&#93; A unique identifier for the flow operation. This ID is returned in the
+#' responses to start and list commands. You provide to describe commands.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FirewallArn = "string",
+#'   AvailabilityZone = "string",
+#'   FlowOperationId = "string",
+#'   FlowOperationType = "FLOW_FLUSH"|"FLOW_CAPTURE",
+#'   FlowOperationStatus = "COMPLETED"|"IN_PROGRESS"|"FAILED"|"COMPLETED_WITH_ERRORS",
+#'   StatusMessage = "string",
+#'   FlowRequestTimestamp = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   FlowOperation = list(
+#'     MinimumFlowAgeInSeconds = 123,
+#'     FlowFilters = list(
+#'       list(
+#'         SourceAddress = list(
+#'           AddressDefinition = "string"
+#'         ),
+#'         DestinationAddress = list(
+#'           AddressDefinition = "string"
+#'         ),
+#'         SourcePort = "string",
+#'         DestinationPort = "string",
+#'         Protocols = list(
+#'           "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_flow_operation(
+#'   FirewallArn = "string",
+#'   AvailabilityZone = "string",
+#'   FlowOperationId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname networkfirewall_describe_flow_operation
+#'
+#' @aliases networkfirewall_describe_flow_operation
+networkfirewall_describe_flow_operation <- function(FirewallArn, AvailabilityZone = NULL, FlowOperationId) {
+  op <- new_operation(
+    name = "DescribeFlowOperation",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .networkfirewall$describe_flow_operation_input(FirewallArn = FirewallArn, AvailabilityZone = AvailabilityZone, FlowOperationId = FlowOperationId)
+  output <- .networkfirewall$describe_flow_operation_output()
+  config <- get_config()
+  svc <- .networkfirewall$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkfirewall$operations$describe_flow_operation <- networkfirewall_describe_flow_operation
+
 #' Returns the logging configuration for the specified firewall
 #'
 #' @description
@@ -2756,6 +2841,198 @@ networkfirewall_list_firewalls <- function(NextToken = NULL, VpcIds = NULL, MaxR
 }
 .networkfirewall$operations$list_firewalls <- networkfirewall_list_firewalls
 
+#' Returns the results of a specific flow operation
+#'
+#' @description
+#' Returns the results of a specific flow operation.
+#' 
+#' Flow operations let you manage the flows tracked in the flow table, also
+#' known as the firewall table.
+#' 
+#' A flow is network traffic that is monitored by a firewall, either by
+#' stateful or stateless rules. For traffic to be considered part of a
+#' flow, it must share Destination, DestinationPort, Direction, Protocol,
+#' Source, and SourcePort.
+#'
+#' @usage
+#' networkfirewall_list_flow_operation_results(FirewallArn,
+#'   FlowOperationId, NextToken, MaxResults, AvailabilityZone)
+#'
+#' @param FirewallArn &#91;required&#93; The Amazon Resource Name (ARN) of the firewall.
+#' @param FlowOperationId &#91;required&#93; A unique identifier for the flow operation. This ID is returned in the
+#' responses to start and list commands. You provide to describe commands.
+#' @param NextToken When you request a list of objects with a `MaxResults` setting, if the
+#' number of objects that are still available for retrieval exceeds the
+#' maximum you requested, Network Firewall returns a `NextToken` value in
+#' the response. To retrieve the next batch of objects, use the token
+#' returned from the prior request in your next request.
+#' @param MaxResults The maximum number of objects that you want Network Firewall to return
+#' for this request. If more objects are available, in the response,
+#' Network Firewall provides a `NextToken` value that you can use in a
+#' subsequent call to get the next batch of objects.
+#' @param AvailabilityZone The ID of the Availability Zone where the firewall is located. For
+#' example, `us-east-2a`.
+#' 
+#' Defines the scope a flow operation. You can use up to 20 filters to
+#' configure a single flow operation.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FirewallArn = "string",
+#'   AvailabilityZone = "string",
+#'   FlowOperationId = "string",
+#'   FlowOperationStatus = "COMPLETED"|"IN_PROGRESS"|"FAILED"|"COMPLETED_WITH_ERRORS",
+#'   StatusMessage = "string",
+#'   FlowRequestTimestamp = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Flows = list(
+#'     list(
+#'       SourceAddress = list(
+#'         AddressDefinition = "string"
+#'       ),
+#'       DestinationAddress = list(
+#'         AddressDefinition = "string"
+#'       ),
+#'       SourcePort = "string",
+#'       DestinationPort = "string",
+#'       Protocol = "string",
+#'       Age = 123,
+#'       PacketCount = 123,
+#'       ByteCount = 123
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_flow_operation_results(
+#'   FirewallArn = "string",
+#'   FlowOperationId = "string",
+#'   NextToken = "string",
+#'   MaxResults = 123,
+#'   AvailabilityZone = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname networkfirewall_list_flow_operation_results
+#'
+#' @aliases networkfirewall_list_flow_operation_results
+networkfirewall_list_flow_operation_results <- function(FirewallArn, FlowOperationId, NextToken = NULL, MaxResults = NULL, AvailabilityZone = NULL) {
+  op <- new_operation(
+    name = "ListFlowOperationResults",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Flows"),
+    stream_api = FALSE
+  )
+  input <- .networkfirewall$list_flow_operation_results_input(FirewallArn = FirewallArn, FlowOperationId = FlowOperationId, NextToken = NextToken, MaxResults = MaxResults, AvailabilityZone = AvailabilityZone)
+  output <- .networkfirewall$list_flow_operation_results_output()
+  config <- get_config()
+  svc <- .networkfirewall$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkfirewall$operations$list_flow_operation_results <- networkfirewall_list_flow_operation_results
+
+#' Returns a list of all flow operations ran in a specific firewall
+#'
+#' @description
+#' Returns a list of all flow operations ran in a specific firewall. You
+#' can optionally narrow the request scope by specifying the operation type
+#' or Availability Zone associated with a firewall's flow operations.
+#' 
+#' Flow operations let you manage the flows tracked in the flow table, also
+#' known as the firewall table.
+#' 
+#' A flow is network traffic that is monitored by a firewall, either by
+#' stateful or stateless rules. For traffic to be considered part of a
+#' flow, it must share Destination, DestinationPort, Direction, Protocol,
+#' Source, and SourcePort.
+#'
+#' @usage
+#' networkfirewall_list_flow_operations(FirewallArn, AvailabilityZone,
+#'   FlowOperationType, NextToken, MaxResults)
+#'
+#' @param FirewallArn &#91;required&#93; The Amazon Resource Name (ARN) of the firewall.
+#' @param AvailabilityZone The ID of the Availability Zone where the firewall is located. For
+#' example, `us-east-2a`.
+#' 
+#' Defines the scope a flow operation. You can use up to 20 filters to
+#' configure a single flow operation.
+#' @param FlowOperationType An optional string that defines whether any or all operation types are
+#' returned.
+#' @param NextToken When you request a list of objects with a `MaxResults` setting, if the
+#' number of objects that are still available for retrieval exceeds the
+#' maximum you requested, Network Firewall returns a `NextToken` value in
+#' the response. To retrieve the next batch of objects, use the token
+#' returned from the prior request in your next request.
+#' @param MaxResults The maximum number of objects that you want Network Firewall to return
+#' for this request. If more objects are available, in the response,
+#' Network Firewall provides a `NextToken` value that you can use in a
+#' subsequent call to get the next batch of objects.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FlowOperations = list(
+#'     list(
+#'       FlowOperationId = "string",
+#'       FlowOperationType = "FLOW_FLUSH"|"FLOW_CAPTURE",
+#'       FlowRequestTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       FlowOperationStatus = "COMPLETED"|"IN_PROGRESS"|"FAILED"|"COMPLETED_WITH_ERRORS"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_flow_operations(
+#'   FirewallArn = "string",
+#'   AvailabilityZone = "string",
+#'   FlowOperationType = "FLOW_FLUSH"|"FLOW_CAPTURE",
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname networkfirewall_list_flow_operations
+#'
+#' @aliases networkfirewall_list_flow_operations
+networkfirewall_list_flow_operations <- function(FirewallArn, AvailabilityZone = NULL, FlowOperationType = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListFlowOperations",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "FlowOperations"),
+    stream_api = FALSE
+  )
+  input <- .networkfirewall$list_flow_operations_input(FirewallArn = FirewallArn, AvailabilityZone = AvailabilityZone, FlowOperationType = FlowOperationType, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .networkfirewall$list_flow_operations_output()
+  config <- get_config()
+  svc <- .networkfirewall$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkfirewall$operations$list_flow_operations <- networkfirewall_list_flow_operations
+
 #' Retrieves the metadata for the rule groups that you have defined
 #'
 #' @description
@@ -3134,6 +3411,191 @@ networkfirewall_start_analysis_report <- function(FirewallName = NULL, FirewallA
   return(response)
 }
 .networkfirewall$operations$start_analysis_report <- networkfirewall_start_analysis_report
+
+#' Begins capturing the flows in a firewall, according to the filters you
+#' define
+#'
+#' @description
+#' Begins capturing the flows in a firewall, according to the filters you
+#' define. Captures are similar, but not identical to snapshots. Capture
+#' operations provide visibility into flows that are not closed and are
+#' tracked by a firewall's flow table. Unlike snapshots, captures are a
+#' time-boxed view.
+#' 
+#' A flow is network traffic that is monitored by a firewall, either by
+#' stateful or stateless rules. For traffic to be considered part of a
+#' flow, it must share Destination, DestinationPort, Direction, Protocol,
+#' Source, and SourcePort.
+#' 
+#' To avoid encountering operation limits, you should avoid starting
+#' captures with broad filters, like wide IP ranges. Instead, we recommend
+#' you define more specific criteria with `FlowFilters`, like narrow IP
+#' ranges, ports, or protocols.
+#'
+#' @usage
+#' networkfirewall_start_flow_capture(FirewallArn, AvailabilityZone,
+#'   MinimumFlowAgeInSeconds, FlowFilters)
+#'
+#' @param FirewallArn &#91;required&#93; The Amazon Resource Name (ARN) of the firewall.
+#' @param AvailabilityZone The ID of the Availability Zone where the firewall is located. For
+#' example, `us-east-2a`.
+#' 
+#' Defines the scope a flow operation. You can use up to 20 filters to
+#' configure a single flow operation.
+#' @param MinimumFlowAgeInSeconds The reqested `FlowOperation` ignores flows with an age (in seconds)
+#' lower than `MinimumFlowAgeInSeconds`. You provide this for start
+#' commands.
+#' 
+#' We recommend setting this value to at least 1 minute (60 seconds) to
+#' reduce chance of capturing flows that are not yet established.
+#' @param FlowFilters &#91;required&#93; Defines the scope a flow operation. You can use up to 20 filters to
+#' configure a single flow operation.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FirewallArn = "string",
+#'   FlowOperationId = "string",
+#'   FlowOperationStatus = "COMPLETED"|"IN_PROGRESS"|"FAILED"|"COMPLETED_WITH_ERRORS"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$start_flow_capture(
+#'   FirewallArn = "string",
+#'   AvailabilityZone = "string",
+#'   MinimumFlowAgeInSeconds = 123,
+#'   FlowFilters = list(
+#'     list(
+#'       SourceAddress = list(
+#'         AddressDefinition = "string"
+#'       ),
+#'       DestinationAddress = list(
+#'         AddressDefinition = "string"
+#'       ),
+#'       SourcePort = "string",
+#'       DestinationPort = "string",
+#'       Protocols = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname networkfirewall_start_flow_capture
+#'
+#' @aliases networkfirewall_start_flow_capture
+networkfirewall_start_flow_capture <- function(FirewallArn, AvailabilityZone = NULL, MinimumFlowAgeInSeconds = NULL, FlowFilters) {
+  op <- new_operation(
+    name = "StartFlowCapture",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .networkfirewall$start_flow_capture_input(FirewallArn = FirewallArn, AvailabilityZone = AvailabilityZone, MinimumFlowAgeInSeconds = MinimumFlowAgeInSeconds, FlowFilters = FlowFilters)
+  output <- .networkfirewall$start_flow_capture_output()
+  config <- get_config()
+  svc <- .networkfirewall$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkfirewall$operations$start_flow_capture <- networkfirewall_start_flow_capture
+
+#' Begins the flushing of traffic from the firewall, according to the
+#' filters you define
+#'
+#' @description
+#' Begins the flushing of traffic from the firewall, according to the
+#' filters you define. When the operation starts, impacted flows are
+#' temporarily marked as timed out before the Suricata engine prunes, or
+#' flushes, the flows from the firewall table.
+#' 
+#' While the flush completes, impacted flows are processed as midstream
+#' traffic. This may result in a temporary increase in midstream traffic
+#' metrics. We recommend that you double check your stream exception policy
+#' before you perform a flush operation.
+#'
+#' @usage
+#' networkfirewall_start_flow_flush(FirewallArn, AvailabilityZone,
+#'   MinimumFlowAgeInSeconds, FlowFilters)
+#'
+#' @param FirewallArn &#91;required&#93; The Amazon Resource Name (ARN) of the firewall.
+#' @param AvailabilityZone The ID of the Availability Zone where the firewall is located. For
+#' example, `us-east-2a`.
+#' 
+#' Defines the scope a flow operation. You can use up to 20 filters to
+#' configure a single flow operation.
+#' @param MinimumFlowAgeInSeconds The reqested `FlowOperation` ignores flows with an age (in seconds)
+#' lower than `MinimumFlowAgeInSeconds`. You provide this for start
+#' commands.
+#' @param FlowFilters &#91;required&#93; Defines the scope a flow operation. You can use up to 20 filters to
+#' configure a single flow operation.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FirewallArn = "string",
+#'   FlowOperationId = "string",
+#'   FlowOperationStatus = "COMPLETED"|"IN_PROGRESS"|"FAILED"|"COMPLETED_WITH_ERRORS"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$start_flow_flush(
+#'   FirewallArn = "string",
+#'   AvailabilityZone = "string",
+#'   MinimumFlowAgeInSeconds = 123,
+#'   FlowFilters = list(
+#'     list(
+#'       SourceAddress = list(
+#'         AddressDefinition = "string"
+#'       ),
+#'       DestinationAddress = list(
+#'         AddressDefinition = "string"
+#'       ),
+#'       SourcePort = "string",
+#'       DestinationPort = "string",
+#'       Protocols = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname networkfirewall_start_flow_flush
+#'
+#' @aliases networkfirewall_start_flow_flush
+networkfirewall_start_flow_flush <- function(FirewallArn, AvailabilityZone = NULL, MinimumFlowAgeInSeconds = NULL, FlowFilters) {
+  op <- new_operation(
+    name = "StartFlowFlush",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .networkfirewall$start_flow_flush_input(FirewallArn = FirewallArn, AvailabilityZone = AvailabilityZone, MinimumFlowAgeInSeconds = MinimumFlowAgeInSeconds, FlowFilters = FlowFilters)
+  output <- .networkfirewall$start_flow_flush_output()
+  config <- get_config()
+  svc <- .networkfirewall$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkfirewall$operations$start_flow_flush <- networkfirewall_start_flow_flush
 
 #' Adds the specified tags to the specified resource
 #'

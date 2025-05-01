@@ -10,7 +10,7 @@ wafv2_describe_all_managed_products(Scope)
 }
 \arguments{
 \item{Scope}{[required] Specifies whether this is for a global resource type, such as a Amazon
-CloudFront distribution.
+CloudFront distribution. For an Amplify application, use \code{CLOUDFRONT}.
 
 To work with CloudFront, you must also specify the Region US East (N.
 Virginia) as follows:

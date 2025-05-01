@@ -10,13 +10,10 @@ NULL
 #'
 #' See [https://www.paws-r-sdk.com/docs/entityresolution_add_policy_statement/](https://www.paws-r-sdk.com/docs/entityresolution_add_policy_statement/) for full documentation.
 #'
-#' @param action &#91;required&#93; The action that the principal can use on the resource.
-#' 
-#' For example, `entityresolution:GetIdMappingJob`,
-#' `entityresolution:GetMatchingJob`.
 #' @param arn &#91;required&#93; The Amazon Resource Name (ARN) of the resource that will be accessed by
 #' the principal.
-#' @param condition A set of condition keys that you can use in key policies.
+#' @param statementId &#91;required&#93; A statement identifier that differentiates the statement from others in
+#' the same policy.
 #' @param effect &#91;required&#93; Determines whether the permissions specified in the policy are to be
 #' allowed (`Allow`) or denied (`Deny`).
 #' 
@@ -25,15 +22,18 @@ NULL
 #' operation, you must also set the value of the `effect` parameter in the
 #' `policy` to `Deny` for the [`put_policy`][entityresolution_put_policy]
 #' operation.
+#' @param action &#91;required&#93; The action that the principal can use on the resource.
+#' 
+#' For example, `entityresolution:GetIdMappingJob`,
+#' `entityresolution:GetMatchingJob`.
 #' @param principal &#91;required&#93; The Amazon Web Services service or Amazon Web Services account that can
 #' access the resource defined as ARN.
-#' @param statementId &#91;required&#93; A statement identifier that differentiates the statement from others in
-#' the same policy.
+#' @param condition A set of condition keys that you can use in key policies.
 #'
 #' @keywords internal
 #'
 #' @rdname entityresolution_add_policy_statement
-entityresolution_add_policy_statement <- function(action, arn, condition = NULL, effect, principal, statementId) {
+entityresolution_add_policy_statement <- function(arn, statementId, effect, action, principal, condition = NULL) {
   op <- new_operation(
     name = "AddPolicyStatement",
     http_method = "POST",
@@ -42,7 +42,7 @@ entityresolution_add_policy_statement <- function(action, arn, condition = NULL,
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .entityresolution$add_policy_statement_input(action = action, arn = arn, condition = condition, effect = effect, principal = principal, statementId = statementId)
+  input <- .entityresolution$add_policy_statement_input(arn = arn, statementId = statementId, effect = effect, action = action, principal = principal, condition = condition)
   output <- .entityresolution$add_policy_statement_output()
   config <- get_config()
   svc <- .entityresolution$service(config, op)
@@ -59,14 +59,14 @@ entityresolution_add_policy_statement <- function(action, arn, condition = NULL,
 #'
 #' See [https://www.paws-r-sdk.com/docs/entityresolution_batch_delete_unique_id/](https://www.paws-r-sdk.com/docs/entityresolution_batch_delete_unique_id/) for full documentation.
 #'
+#' @param workflowName &#91;required&#93; The name of the workflow.
 #' @param inputSource The input source for the batch delete unique ID operation.
 #' @param uniqueIds &#91;required&#93; The unique IDs to delete.
-#' @param workflowName &#91;required&#93; The name of the workflow.
 #'
 #' @keywords internal
 #'
 #' @rdname entityresolution_batch_delete_unique_id
-entityresolution_batch_delete_unique_id <- function(inputSource = NULL, uniqueIds, workflowName) {
+entityresolution_batch_delete_unique_id <- function(workflowName, inputSource = NULL, uniqueIds) {
   op <- new_operation(
     name = "BatchDeleteUniqueId",
     http_method = "DELETE",
@@ -75,7 +75,7 @@ entityresolution_batch_delete_unique_id <- function(inputSource = NULL, uniqueId
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .entityresolution$batch_delete_unique_id_input(inputSource = inputSource, uniqueIds = uniqueIds, workflowName = workflowName)
+  input <- .entityresolution$batch_delete_unique_id_input(workflowName = workflowName, inputSource = inputSource, uniqueIds = uniqueIds)
   output <- .entityresolution$batch_delete_unique_id_output()
   config <- get_config()
   svc <- .entityresolution$service(config, op)
@@ -93,24 +93,24 @@ entityresolution_batch_delete_unique_id <- function(inputSource = NULL, uniqueId
 #'
 #' See [https://www.paws-r-sdk.com/docs/entityresolution_create_id_mapping_workflow/](https://www.paws-r-sdk.com/docs/entityresolution_create_id_mapping_workflow/) for full documentation.
 #'
+#' @param workflowName &#91;required&#93; The name of the workflow. There can't be multiple `IdMappingWorkflows`
+#' with the same name.
 #' @param description A description of the workflow.
-#' @param idMappingTechniques &#91;required&#93; An object which defines the ID mapping technique and any additional
-#' configurations.
 #' @param inputSourceConfig &#91;required&#93; A list of `InputSource` objects, which have the fields `InputSourceARN`
 #' and `SchemaName`.
 #' @param outputSourceConfig A list of `IdMappingWorkflowOutputSource` objects, each of which
 #' contains fields `OutputS3Path` and `Output`.
+#' @param idMappingTechniques &#91;required&#93; An object which defines the ID mapping technique and any additional
+#' configurations.
 #' @param roleArn The Amazon Resource Name (ARN) of the IAM role. Entity Resolution
 #' assumes this role to create resources on your behalf as part of workflow
 #' execution.
 #' @param tags The tags used to organize, track, or control access for this resource.
-#' @param workflowName &#91;required&#93; The name of the workflow. There can't be multiple `IdMappingWorkflows`
-#' with the same name.
 #'
 #' @keywords internal
 #'
 #' @rdname entityresolution_create_id_mapping_workflow
-entityresolution_create_id_mapping_workflow <- function(description = NULL, idMappingTechniques, inputSourceConfig, outputSourceConfig = NULL, roleArn = NULL, tags = NULL, workflowName) {
+entityresolution_create_id_mapping_workflow <- function(workflowName, description = NULL, inputSourceConfig, outputSourceConfig = NULL, idMappingTechniques, roleArn = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateIdMappingWorkflow",
     http_method = "POST",
@@ -119,7 +119,7 @@ entityresolution_create_id_mapping_workflow <- function(description = NULL, idMa
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .entityresolution$create_id_mapping_workflow_input(description = description, idMappingTechniques = idMappingTechniques, inputSourceConfig = inputSourceConfig, outputSourceConfig = outputSourceConfig, roleArn = roleArn, tags = tags, workflowName = workflowName)
+  input <- .entityresolution$create_id_mapping_workflow_input(workflowName = workflowName, description = description, inputSourceConfig = inputSourceConfig, outputSourceConfig = outputSourceConfig, idMappingTechniques = idMappingTechniques, roleArn = roleArn, tags = tags)
   output <- .entityresolution$create_id_mapping_workflow_output()
   config <- get_config()
   svc <- .entityresolution$service(config, op)
@@ -137,16 +137,12 @@ entityresolution_create_id_mapping_workflow <- function(description = NULL, idMa
 #'
 #' See [https://www.paws-r-sdk.com/docs/entityresolution_create_id_namespace/](https://www.paws-r-sdk.com/docs/entityresolution_create_id_namespace/) for full documentation.
 #'
-#' @param description The description of the ID namespace.
-#' @param idMappingWorkflowProperties Determines the properties of `IdMappingWorflow` where this `IdNamespace`
-#' can be used as a `Source` or a `Target`.
 #' @param idNamespaceName &#91;required&#93; The name of the ID namespace.
+#' @param description The description of the ID namespace.
 #' @param inputSourceConfig A list of `InputSource` objects, which have the fields `InputSourceARN`
 #' and `SchemaName`.
-#' @param roleArn The Amazon Resource Name (ARN) of the IAM role. Entity Resolution
-#' assumes this role to access the resources defined in this `IdNamespace`
-#' on your behalf as part of the workflow run.
-#' @param tags The tags used to organize, track, or control access for this resource.
+#' @param idMappingWorkflowProperties Determines the properties of `IdMappingWorflow` where this `IdNamespace`
+#' can be used as a `Source` or a `Target`.
 #' @param type &#91;required&#93; The type of ID namespace. There are two types: `SOURCE` and `TARGET`.
 #' 
 #' The `SOURCE` contains configurations for `sourceId` data that will be
@@ -154,11 +150,15 @@ entityresolution_create_id_mapping_workflow <- function(description = NULL, idMa
 #' 
 #' The `TARGET` contains a configuration of `targetId` to which all
 #' `sourceIds` will resolve to.
+#' @param roleArn The Amazon Resource Name (ARN) of the IAM role. Entity Resolution
+#' assumes this role to access the resources defined in this `IdNamespace`
+#' on your behalf as part of the workflow run.
+#' @param tags The tags used to organize, track, or control access for this resource.
 #'
 #' @keywords internal
 #'
 #' @rdname entityresolution_create_id_namespace
-entityresolution_create_id_namespace <- function(description = NULL, idMappingWorkflowProperties = NULL, idNamespaceName, inputSourceConfig = NULL, roleArn = NULL, tags = NULL, type) {
+entityresolution_create_id_namespace <- function(idNamespaceName, description = NULL, inputSourceConfig = NULL, idMappingWorkflowProperties = NULL, type, roleArn = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateIdNamespace",
     http_method = "POST",
@@ -167,7 +167,7 @@ entityresolution_create_id_namespace <- function(description = NULL, idMappingWo
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .entityresolution$create_id_namespace_input(description = description, idMappingWorkflowProperties = idMappingWorkflowProperties, idNamespaceName = idNamespaceName, inputSourceConfig = inputSourceConfig, roleArn = roleArn, tags = tags, type = type)
+  input <- .entityresolution$create_id_namespace_input(idNamespaceName = idNamespaceName, description = description, inputSourceConfig = inputSourceConfig, idMappingWorkflowProperties = idMappingWorkflowProperties, type = type, roleArn = roleArn, tags = tags)
   output <- .entityresolution$create_id_namespace_output()
   config <- get_config()
   svc <- .entityresolution$service(config, op)
@@ -185,26 +185,26 @@ entityresolution_create_id_namespace <- function(description = NULL, idMappingWo
 #'
 #' See [https://www.paws-r-sdk.com/docs/entityresolution_create_matching_workflow/](https://www.paws-r-sdk.com/docs/entityresolution_create_matching_workflow/) for full documentation.
 #'
+#' @param workflowName &#91;required&#93; The name of the workflow. There can't be multiple `MatchingWorkflows`
+#' with the same name.
 #' @param description A description of the workflow.
-#' @param incrementalRunConfig An object which defines an incremental run type and has only
-#' `incrementalRunType` as a field.
 #' @param inputSourceConfig &#91;required&#93; A list of `InputSource` objects, which have the fields `InputSourceARN`
 #' and `SchemaName`.
 #' @param outputSourceConfig &#91;required&#93; A list of `OutputSource` objects, each of which contains fields
 #' `OutputS3Path`, `ApplyNormalization`, and `Output`.
 #' @param resolutionTechniques &#91;required&#93; An object which defines the `resolutionType` and the
 #' `ruleBasedProperties`.
+#' @param incrementalRunConfig An object which defines an incremental run type and has only
+#' `incrementalRunType` as a field.
 #' @param roleArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM role. Entity Resolution
 #' assumes this role to create resources on your behalf as part of workflow
 #' execution.
 #' @param tags The tags used to organize, track, or control access for this resource.
-#' @param workflowName &#91;required&#93; The name of the workflow. There can't be multiple `MatchingWorkflows`
-#' with the same name.
 #'
 #' @keywords internal
 #'
 #' @rdname entityresolution_create_matching_workflow
-entityresolution_create_matching_workflow <- function(description = NULL, incrementalRunConfig = NULL, inputSourceConfig, outputSourceConfig, resolutionTechniques, roleArn, tags = NULL, workflowName) {
+entityresolution_create_matching_workflow <- function(workflowName, description = NULL, inputSourceConfig, outputSourceConfig, resolutionTechniques, incrementalRunConfig = NULL, roleArn, tags = NULL) {
   op <- new_operation(
     name = "CreateMatchingWorkflow",
     http_method = "POST",
@@ -213,7 +213,7 @@ entityresolution_create_matching_workflow <- function(description = NULL, increm
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .entityresolution$create_matching_workflow_input(description = description, incrementalRunConfig = incrementalRunConfig, inputSourceConfig = inputSourceConfig, outputSourceConfig = outputSourceConfig, resolutionTechniques = resolutionTechniques, roleArn = roleArn, tags = tags, workflowName = workflowName)
+  input <- .entityresolution$create_matching_workflow_input(workflowName = workflowName, description = description, inputSourceConfig = inputSourceConfig, outputSourceConfig = outputSourceConfig, resolutionTechniques = resolutionTechniques, incrementalRunConfig = incrementalRunConfig, roleArn = roleArn, tags = tags)
   output <- .entityresolution$create_matching_workflow_output()
   config <- get_config()
   svc <- .entityresolution$service(config, op)
@@ -231,18 +231,18 @@ entityresolution_create_matching_workflow <- function(description = NULL, increm
 #'
 #' See [https://www.paws-r-sdk.com/docs/entityresolution_create_schema_mapping/](https://www.paws-r-sdk.com/docs/entityresolution_create_schema_mapping/) for full documentation.
 #'
+#' @param schemaName &#91;required&#93; The name of the schema. There can't be multiple `SchemaMappings` with
+#' the same name.
 #' @param description A description of the schema.
 #' @param mappedInputFields &#91;required&#93; A list of `MappedInputFields`. Each `MappedInputField` corresponds to a
 #' column the source data table, and contains column name plus additional
 #' information that Entity Resolution uses for matching.
-#' @param schemaName &#91;required&#93; The name of the schema. There can't be multiple `SchemaMappings` with
-#' the same name.
 #' @param tags The tags used to organize, track, or control access for this resource.
 #'
 #' @keywords internal
 #'
 #' @rdname entityresolution_create_schema_mapping
-entityresolution_create_schema_mapping <- function(description = NULL, mappedInputFields, schemaName, tags = NULL) {
+entityresolution_create_schema_mapping <- function(schemaName, description = NULL, mappedInputFields, tags = NULL) {
   op <- new_operation(
     name = "CreateSchemaMapping",
     http_method = "POST",
@@ -251,7 +251,7 @@ entityresolution_create_schema_mapping <- function(description = NULL, mappedInp
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .entityresolution$create_schema_mapping_input(description = description, mappedInputFields = mappedInputFields, schemaName = schemaName, tags = tags)
+  input <- .entityresolution$create_schema_mapping_input(schemaName = schemaName, description = description, mappedInputFields = mappedInputFields, tags = tags)
   output <- .entityresolution$create_schema_mapping_output()
   config <- get_config()
   svc <- .entityresolution$service(config, op)
@@ -426,13 +426,13 @@ entityresolution_delete_schema_mapping <- function(schemaName) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/entityresolution_get_id_mapping_job/](https://www.paws-r-sdk.com/docs/entityresolution_get_id_mapping_job/) for full documentation.
 #'
-#' @param jobId &#91;required&#93; The ID of the job.
 #' @param workflowName &#91;required&#93; The name of the workflow.
+#' @param jobId &#91;required&#93; The ID of the job.
 #'
 #' @keywords internal
 #'
 #' @rdname entityresolution_get_id_mapping_job
-entityresolution_get_id_mapping_job <- function(jobId, workflowName) {
+entityresolution_get_id_mapping_job <- function(workflowName, jobId) {
   op <- new_operation(
     name = "GetIdMappingJob",
     http_method = "GET",
@@ -441,7 +441,7 @@ entityresolution_get_id_mapping_job <- function(jobId, workflowName) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .entityresolution$get_id_mapping_job_input(jobId = jobId, workflowName = workflowName)
+  input <- .entityresolution$get_id_mapping_job_input(workflowName = workflowName, jobId = jobId)
   output <- .entityresolution$get_id_mapping_job_output()
   config <- get_config()
   svc <- .entityresolution$service(config, op)
@@ -514,24 +514,25 @@ entityresolution_get_id_namespace <- function(idNamespaceName) {
 .entityresolution$operations$get_id_namespace <- entityresolution_get_id_namespace
 
 #' Returns the corresponding Match ID of a customer record if the record
-#' has been processed
+#' has been processed in a rule-based matching workflow or ML matching
+#' workflow
 #'
 #' @description
-#' Returns the corresponding Match ID of a customer record if the record has been processed.
+#' Returns the corresponding Match ID of a customer record if the record has been processed in a rule-based matching workflow or ML matching workflow.
 #'
 #' See [https://www.paws-r-sdk.com/docs/entityresolution_get_match_id/](https://www.paws-r-sdk.com/docs/entityresolution_get_match_id/) for full documentation.
 #'
+#' @param workflowName &#91;required&#93; The name of the workflow.
+#' @param record &#91;required&#93; The record to fetch the Match ID for.
 #' @param applyNormalization Normalizes the attributes defined in the schema in the input data. For
 #' example, if an attribute has an `AttributeType` of `PHONE_NUMBER`, and
 #' the data in the input table is in a format of 1234567890, Entity
 #' Resolution will normalize this field in the output to (123)-456-7890.
-#' @param record &#91;required&#93; The record to fetch the Match ID for.
-#' @param workflowName &#91;required&#93; The name of the workflow.
 #'
 #' @keywords internal
 #'
 #' @rdname entityresolution_get_match_id
-entityresolution_get_match_id <- function(applyNormalization = NULL, record, workflowName) {
+entityresolution_get_match_id <- function(workflowName, record, applyNormalization = NULL) {
   op <- new_operation(
     name = "GetMatchId",
     http_method = "POST",
@@ -540,7 +541,7 @@ entityresolution_get_match_id <- function(applyNormalization = NULL, record, wor
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .entityresolution$get_match_id_input(applyNormalization = applyNormalization, record = record, workflowName = workflowName)
+  input <- .entityresolution$get_match_id_input(workflowName = workflowName, record = record, applyNormalization = applyNormalization)
   output <- .entityresolution$get_match_id_output()
   config <- get_config()
   svc <- .entityresolution$service(config, op)
@@ -558,13 +559,13 @@ entityresolution_get_match_id <- function(applyNormalization = NULL, record, wor
 #'
 #' See [https://www.paws-r-sdk.com/docs/entityresolution_get_matching_job/](https://www.paws-r-sdk.com/docs/entityresolution_get_matching_job/) for full documentation.
 #'
-#' @param jobId &#91;required&#93; The ID of the job.
 #' @param workflowName &#91;required&#93; The name of the workflow.
+#' @param jobId &#91;required&#93; The ID of the job.
 #'
 #' @keywords internal
 #'
 #' @rdname entityresolution_get_matching_job
-entityresolution_get_matching_job <- function(jobId, workflowName) {
+entityresolution_get_matching_job <- function(workflowName, jobId) {
   op <- new_operation(
     name = "GetMatchingJob",
     http_method = "GET",
@@ -573,7 +574,7 @@ entityresolution_get_matching_job <- function(jobId, workflowName) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .entityresolution$get_matching_job_input(jobId = jobId, workflowName = workflowName)
+  input <- .entityresolution$get_matching_job_input(workflowName = workflowName, jobId = jobId)
   output <- .entityresolution$get_matching_job_output()
   config <- get_config()
   svc <- .entityresolution$service(config, op)
@@ -717,14 +718,14 @@ entityresolution_get_schema_mapping <- function(schemaName) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/entityresolution_list_id_mapping_jobs/](https://www.paws-r-sdk.com/docs/entityresolution_list_id_mapping_jobs/) for full documentation.
 #'
-#' @param maxResults The maximum number of objects returned per page.
-#' @param nextToken The pagination token from the previous API call.
 #' @param workflowName &#91;required&#93; The name of the workflow to be retrieved.
+#' @param nextToken The pagination token from the previous API call.
+#' @param maxResults The maximum number of objects returned per page.
 #'
 #' @keywords internal
 #'
 #' @rdname entityresolution_list_id_mapping_jobs
-entityresolution_list_id_mapping_jobs <- function(maxResults = NULL, nextToken = NULL, workflowName) {
+entityresolution_list_id_mapping_jobs <- function(workflowName, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListIdMappingJobs",
     http_method = "GET",
@@ -733,7 +734,7 @@ entityresolution_list_id_mapping_jobs <- function(maxResults = NULL, nextToken =
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "jobs"),
     stream_api = FALSE
   )
-  input <- .entityresolution$list_id_mapping_jobs_input(maxResults = maxResults, nextToken = nextToken, workflowName = workflowName)
+  input <- .entityresolution$list_id_mapping_jobs_input(workflowName = workflowName, nextToken = nextToken, maxResults = maxResults)
   output <- .entityresolution$list_id_mapping_jobs_output()
   config <- get_config()
   svc <- .entityresolution$service(config, op)
@@ -751,13 +752,13 @@ entityresolution_list_id_mapping_jobs <- function(maxResults = NULL, nextToken =
 #'
 #' See [https://www.paws-r-sdk.com/docs/entityresolution_list_id_mapping_workflows/](https://www.paws-r-sdk.com/docs/entityresolution_list_id_mapping_workflows/) for full documentation.
 #'
-#' @param maxResults The maximum number of objects returned per page.
 #' @param nextToken The pagination token from the previous API call.
+#' @param maxResults The maximum number of objects returned per page.
 #'
 #' @keywords internal
 #'
 #' @rdname entityresolution_list_id_mapping_workflows
-entityresolution_list_id_mapping_workflows <- function(maxResults = NULL, nextToken = NULL) {
+entityresolution_list_id_mapping_workflows <- function(nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListIdMappingWorkflows",
     http_method = "GET",
@@ -766,7 +767,7 @@ entityresolution_list_id_mapping_workflows <- function(maxResults = NULL, nextTo
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "workflowSummaries"),
     stream_api = FALSE
   )
-  input <- .entityresolution$list_id_mapping_workflows_input(maxResults = maxResults, nextToken = nextToken)
+  input <- .entityresolution$list_id_mapping_workflows_input(nextToken = nextToken, maxResults = maxResults)
   output <- .entityresolution$list_id_mapping_workflows_output()
   config <- get_config()
   svc <- .entityresolution$service(config, op)
@@ -783,13 +784,13 @@ entityresolution_list_id_mapping_workflows <- function(maxResults = NULL, nextTo
 #'
 #' See [https://www.paws-r-sdk.com/docs/entityresolution_list_id_namespaces/](https://www.paws-r-sdk.com/docs/entityresolution_list_id_namespaces/) for full documentation.
 #'
-#' @param maxResults The maximum number of `IdNamespace` objects returned per page.
 #' @param nextToken The pagination token from the previous API call.
+#' @param maxResults The maximum number of `IdNamespace` objects returned per page.
 #'
 #' @keywords internal
 #'
 #' @rdname entityresolution_list_id_namespaces
-entityresolution_list_id_namespaces <- function(maxResults = NULL, nextToken = NULL) {
+entityresolution_list_id_namespaces <- function(nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListIdNamespaces",
     http_method = "GET",
@@ -798,7 +799,7 @@ entityresolution_list_id_namespaces <- function(maxResults = NULL, nextToken = N
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "idNamespaceSummaries"),
     stream_api = FALSE
   )
-  input <- .entityresolution$list_id_namespaces_input(maxResults = maxResults, nextToken = nextToken)
+  input <- .entityresolution$list_id_namespaces_input(nextToken = nextToken, maxResults = maxResults)
   output <- .entityresolution$list_id_namespaces_output()
   config <- get_config()
   svc <- .entityresolution$service(config, op)
@@ -815,14 +816,14 @@ entityresolution_list_id_namespaces <- function(maxResults = NULL, nextToken = N
 #'
 #' See [https://www.paws-r-sdk.com/docs/entityresolution_list_matching_jobs/](https://www.paws-r-sdk.com/docs/entityresolution_list_matching_jobs/) for full documentation.
 #'
-#' @param maxResults The maximum number of objects returned per page.
-#' @param nextToken The pagination token from the previous API call.
 #' @param workflowName &#91;required&#93; The name of the workflow to be retrieved.
+#' @param nextToken The pagination token from the previous API call.
+#' @param maxResults The maximum number of objects returned per page.
 #'
 #' @keywords internal
 #'
 #' @rdname entityresolution_list_matching_jobs
-entityresolution_list_matching_jobs <- function(maxResults = NULL, nextToken = NULL, workflowName) {
+entityresolution_list_matching_jobs <- function(workflowName, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListMatchingJobs",
     http_method = "GET",
@@ -831,7 +832,7 @@ entityresolution_list_matching_jobs <- function(maxResults = NULL, nextToken = N
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "jobs"),
     stream_api = FALSE
   )
-  input <- .entityresolution$list_matching_jobs_input(maxResults = maxResults, nextToken = nextToken, workflowName = workflowName)
+  input <- .entityresolution$list_matching_jobs_input(workflowName = workflowName, nextToken = nextToken, maxResults = maxResults)
   output <- .entityresolution$list_matching_jobs_output()
   config <- get_config()
   svc <- .entityresolution$service(config, op)
@@ -849,13 +850,13 @@ entityresolution_list_matching_jobs <- function(maxResults = NULL, nextToken = N
 #'
 #' See [https://www.paws-r-sdk.com/docs/entityresolution_list_matching_workflows/](https://www.paws-r-sdk.com/docs/entityresolution_list_matching_workflows/) for full documentation.
 #'
-#' @param maxResults The maximum number of objects returned per page.
 #' @param nextToken The pagination token from the previous API call.
+#' @param maxResults The maximum number of objects returned per page.
 #'
 #' @keywords internal
 #'
 #' @rdname entityresolution_list_matching_workflows
-entityresolution_list_matching_workflows <- function(maxResults = NULL, nextToken = NULL) {
+entityresolution_list_matching_workflows <- function(nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListMatchingWorkflows",
     http_method = "GET",
@@ -864,7 +865,7 @@ entityresolution_list_matching_workflows <- function(maxResults = NULL, nextToke
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "workflowSummaries"),
     stream_api = FALSE
   )
-  input <- .entityresolution$list_matching_workflows_input(maxResults = maxResults, nextToken = nextToken)
+  input <- .entityresolution$list_matching_workflows_input(nextToken = nextToken, maxResults = maxResults)
   output <- .entityresolution$list_matching_workflows_output()
   config <- get_config()
   svc <- .entityresolution$service(config, op)
@@ -882,14 +883,14 @@ entityresolution_list_matching_workflows <- function(maxResults = NULL, nextToke
 #'
 #' See [https://www.paws-r-sdk.com/docs/entityresolution_list_provider_services/](https://www.paws-r-sdk.com/docs/entityresolution_list_provider_services/) for full documentation.
 #'
-#' @param maxResults The maximum number of objects returned per page.
 #' @param nextToken The pagination token from the previous API call.
+#' @param maxResults The maximum number of objects returned per page.
 #' @param providerName The name of the provider. This name is typically the company name.
 #'
 #' @keywords internal
 #'
 #' @rdname entityresolution_list_provider_services
-entityresolution_list_provider_services <- function(maxResults = NULL, nextToken = NULL, providerName = NULL) {
+entityresolution_list_provider_services <- function(nextToken = NULL, maxResults = NULL, providerName = NULL) {
   op <- new_operation(
     name = "ListProviderServices",
     http_method = "GET",
@@ -898,7 +899,7 @@ entityresolution_list_provider_services <- function(maxResults = NULL, nextToken
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "providerServiceSummaries"),
     stream_api = FALSE
   )
-  input <- .entityresolution$list_provider_services_input(maxResults = maxResults, nextToken = nextToken, providerName = providerName)
+  input <- .entityresolution$list_provider_services_input(nextToken = nextToken, maxResults = maxResults, providerName = providerName)
   output <- .entityresolution$list_provider_services_output()
   config <- get_config()
   svc <- .entityresolution$service(config, op)
@@ -916,13 +917,13 @@ entityresolution_list_provider_services <- function(maxResults = NULL, nextToken
 #'
 #' See [https://www.paws-r-sdk.com/docs/entityresolution_list_schema_mappings/](https://www.paws-r-sdk.com/docs/entityresolution_list_schema_mappings/) for full documentation.
 #'
-#' @param maxResults The maximum number of objects returned per page.
 #' @param nextToken The pagination token from the previous API call.
+#' @param maxResults The maximum number of objects returned per page.
 #'
 #' @keywords internal
 #'
 #' @rdname entityresolution_list_schema_mappings
-entityresolution_list_schema_mappings <- function(maxResults = NULL, nextToken = NULL) {
+entityresolution_list_schema_mappings <- function(nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListSchemaMappings",
     http_method = "GET",
@@ -931,7 +932,7 @@ entityresolution_list_schema_mappings <- function(maxResults = NULL, nextToken =
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "schemaList"),
     stream_api = FALSE
   )
-  input <- .entityresolution$list_schema_mappings_input(maxResults = maxResults, nextToken = nextToken)
+  input <- .entityresolution$list_schema_mappings_input(nextToken = nextToken, maxResults = maxResults)
   output <- .entityresolution$list_schema_mappings_output()
   config <- get_config()
   svc <- .entityresolution$service(config, op)
@@ -981,6 +982,7 @@ entityresolution_list_tags_for_resource <- function(resourceArn) {
 #'
 #' @param arn &#91;required&#93; The Amazon Resource Name (ARN) of the resource for which the policy
 #' needs to be updated.
+#' @param token A unique identifier for the current revision of the policy.
 #' @param policy &#91;required&#93; The resource-based policy.
 #' 
 #' If you set the value of the `effect` parameter in the `policy` to `Deny`
@@ -988,12 +990,11 @@ entityresolution_list_tags_for_resource <- function(resourceArn) {
 #' also set the value of the `effect` parameter to `Deny` for the
 #' [`add_policy_statement`][entityresolution_add_policy_statement]
 #' operation.
-#' @param token A unique identifier for the current revision of the policy.
 #'
 #' @keywords internal
 #'
 #' @rdname entityresolution_put_policy
-entityresolution_put_policy <- function(arn, policy, token = NULL) {
+entityresolution_put_policy <- function(arn, token = NULL, policy) {
   op <- new_operation(
     name = "PutPolicy",
     http_method = "PUT",
@@ -1002,7 +1003,7 @@ entityresolution_put_policy <- function(arn, policy, token = NULL) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .entityresolution$put_policy_input(arn = arn, policy = policy, token = token)
+  input <- .entityresolution$put_policy_input(arn = arn, token = token, policy = policy)
   output <- .entityresolution$put_policy_output()
   config <- get_config()
   svc <- .entityresolution$service(config, op)
@@ -1019,13 +1020,13 @@ entityresolution_put_policy <- function(arn, policy, token = NULL) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/entityresolution_start_id_mapping_job/](https://www.paws-r-sdk.com/docs/entityresolution_start_id_mapping_job/) for full documentation.
 #'
-#' @param outputSourceConfig A list of `OutputSource` objects.
 #' @param workflowName &#91;required&#93; The name of the ID mapping job to be retrieved.
+#' @param outputSourceConfig A list of `OutputSource` objects.
 #'
 #' @keywords internal
 #'
 #' @rdname entityresolution_start_id_mapping_job
-entityresolution_start_id_mapping_job <- function(outputSourceConfig = NULL, workflowName) {
+entityresolution_start_id_mapping_job <- function(workflowName, outputSourceConfig = NULL) {
   op <- new_operation(
     name = "StartIdMappingJob",
     http_method = "POST",
@@ -1034,7 +1035,7 @@ entityresolution_start_id_mapping_job <- function(outputSourceConfig = NULL, wor
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .entityresolution$start_id_mapping_job_input(outputSourceConfig = outputSourceConfig, workflowName = workflowName)
+  input <- .entityresolution$start_id_mapping_job_input(workflowName = workflowName, outputSourceConfig = outputSourceConfig)
   output <- .entityresolution$start_id_mapping_job_output()
   config <- get_config()
   svc <- .entityresolution$service(config, op)
@@ -1147,22 +1148,22 @@ entityresolution_untag_resource <- function(resourceArn, tagKeys) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/entityresolution_update_id_mapping_workflow/](https://www.paws-r-sdk.com/docs/entityresolution_update_id_mapping_workflow/) for full documentation.
 #'
+#' @param workflowName &#91;required&#93; The name of the workflow.
 #' @param description A description of the workflow.
-#' @param idMappingTechniques &#91;required&#93; An object which defines the ID mapping technique and any additional
-#' configurations.
 #' @param inputSourceConfig &#91;required&#93; A list of `InputSource` objects, which have the fields `InputSourceARN`
 #' and `SchemaName`.
 #' @param outputSourceConfig A list of `OutputSource` objects, each of which contains fields
 #' `OutputS3Path` and `KMSArn`.
+#' @param idMappingTechniques &#91;required&#93; An object which defines the ID mapping technique and any additional
+#' configurations.
 #' @param roleArn The Amazon Resource Name (ARN) of the IAM role. Entity Resolution
 #' assumes this role to access Amazon Web Services resources on your
 #' behalf.
-#' @param workflowName &#91;required&#93; The name of the workflow.
 #'
 #' @keywords internal
 #'
 #' @rdname entityresolution_update_id_mapping_workflow
-entityresolution_update_id_mapping_workflow <- function(description = NULL, idMappingTechniques, inputSourceConfig, outputSourceConfig = NULL, roleArn = NULL, workflowName) {
+entityresolution_update_id_mapping_workflow <- function(workflowName, description = NULL, inputSourceConfig, outputSourceConfig = NULL, idMappingTechniques, roleArn = NULL) {
   op <- new_operation(
     name = "UpdateIdMappingWorkflow",
     http_method = "PUT",
@@ -1171,7 +1172,7 @@ entityresolution_update_id_mapping_workflow <- function(description = NULL, idMa
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .entityresolution$update_id_mapping_workflow_input(description = description, idMappingTechniques = idMappingTechniques, inputSourceConfig = inputSourceConfig, outputSourceConfig = outputSourceConfig, roleArn = roleArn, workflowName = workflowName)
+  input <- .entityresolution$update_id_mapping_workflow_input(workflowName = workflowName, description = description, inputSourceConfig = inputSourceConfig, outputSourceConfig = outputSourceConfig, idMappingTechniques = idMappingTechniques, roleArn = roleArn)
   output <- .entityresolution$update_id_mapping_workflow_output()
   config <- get_config()
   svc <- .entityresolution$service(config, op)
@@ -1188,12 +1189,12 @@ entityresolution_update_id_mapping_workflow <- function(description = NULL, idMa
 #'
 #' See [https://www.paws-r-sdk.com/docs/entityresolution_update_id_namespace/](https://www.paws-r-sdk.com/docs/entityresolution_update_id_namespace/) for full documentation.
 #'
-#' @param description The description of the ID namespace.
-#' @param idMappingWorkflowProperties Determines the properties of `IdMappingWorkflow` where this
-#' `IdNamespace` can be used as a `Source` or a `Target`.
 #' @param idNamespaceName &#91;required&#93; The name of the ID namespace.
+#' @param description The description of the ID namespace.
 #' @param inputSourceConfig A list of `InputSource` objects, which have the fields `InputSourceARN`
 #' and `SchemaName`.
+#' @param idMappingWorkflowProperties Determines the properties of `IdMappingWorkflow` where this
+#' `IdNamespace` can be used as a `Source` or a `Target`.
 #' @param roleArn The Amazon Resource Name (ARN) of the IAM role. Entity Resolution
 #' assumes this role to access the resources defined in this `IdNamespace`
 #' on your behalf as part of a workflow run.
@@ -1201,7 +1202,7 @@ entityresolution_update_id_mapping_workflow <- function(description = NULL, idMa
 #' @keywords internal
 #'
 #' @rdname entityresolution_update_id_namespace
-entityresolution_update_id_namespace <- function(description = NULL, idMappingWorkflowProperties = NULL, idNamespaceName, inputSourceConfig = NULL, roleArn = NULL) {
+entityresolution_update_id_namespace <- function(idNamespaceName, description = NULL, inputSourceConfig = NULL, idMappingWorkflowProperties = NULL, roleArn = NULL) {
   op <- new_operation(
     name = "UpdateIdNamespace",
     http_method = "PUT",
@@ -1210,7 +1211,7 @@ entityresolution_update_id_namespace <- function(description = NULL, idMappingWo
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .entityresolution$update_id_namespace_input(description = description, idMappingWorkflowProperties = idMappingWorkflowProperties, idNamespaceName = idNamespaceName, inputSourceConfig = inputSourceConfig, roleArn = roleArn)
+  input <- .entityresolution$update_id_namespace_input(idNamespaceName = idNamespaceName, description = description, inputSourceConfig = inputSourceConfig, idMappingWorkflowProperties = idMappingWorkflowProperties, roleArn = roleArn)
   output <- .entityresolution$update_id_namespace_output()
   config <- get_config()
   svc <- .entityresolution$service(config, op)
@@ -1227,24 +1228,24 @@ entityresolution_update_id_namespace <- function(description = NULL, idMappingWo
 #'
 #' See [https://www.paws-r-sdk.com/docs/entityresolution_update_matching_workflow/](https://www.paws-r-sdk.com/docs/entityresolution_update_matching_workflow/) for full documentation.
 #'
+#' @param workflowName &#91;required&#93; The name of the workflow to be retrieved.
 #' @param description A description of the workflow.
-#' @param incrementalRunConfig An object which defines an incremental run type and has only
-#' `incrementalRunType` as a field.
 #' @param inputSourceConfig &#91;required&#93; A list of `InputSource` objects, which have the fields `InputSourceARN`
 #' and `SchemaName`.
 #' @param outputSourceConfig &#91;required&#93; A list of `OutputSource` objects, each of which contains fields
 #' `OutputS3Path`, `ApplyNormalization`, and `Output`.
 #' @param resolutionTechniques &#91;required&#93; An object which defines the `resolutionType` and the
 #' `ruleBasedProperties`.
+#' @param incrementalRunConfig An object which defines an incremental run type and has only
+#' `incrementalRunType` as a field.
 #' @param roleArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM role. Entity Resolution
 #' assumes this role to create resources on your behalf as part of workflow
 #' execution.
-#' @param workflowName &#91;required&#93; The name of the workflow to be retrieved.
 #'
 #' @keywords internal
 #'
 #' @rdname entityresolution_update_matching_workflow
-entityresolution_update_matching_workflow <- function(description = NULL, incrementalRunConfig = NULL, inputSourceConfig, outputSourceConfig, resolutionTechniques, roleArn, workflowName) {
+entityresolution_update_matching_workflow <- function(workflowName, description = NULL, inputSourceConfig, outputSourceConfig, resolutionTechniques, incrementalRunConfig = NULL, roleArn) {
   op <- new_operation(
     name = "UpdateMatchingWorkflow",
     http_method = "PUT",
@@ -1253,7 +1254,7 @@ entityresolution_update_matching_workflow <- function(description = NULL, increm
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .entityresolution$update_matching_workflow_input(description = description, incrementalRunConfig = incrementalRunConfig, inputSourceConfig = inputSourceConfig, outputSourceConfig = outputSourceConfig, resolutionTechniques = resolutionTechniques, roleArn = roleArn, workflowName = workflowName)
+  input <- .entityresolution$update_matching_workflow_input(workflowName = workflowName, description = description, inputSourceConfig = inputSourceConfig, outputSourceConfig = outputSourceConfig, resolutionTechniques = resolutionTechniques, incrementalRunConfig = incrementalRunConfig, roleArn = roleArn)
   output <- .entityresolution$update_matching_workflow_output()
   config <- get_config()
   svc <- .entityresolution$service(config, op)
@@ -1270,17 +1271,17 @@ entityresolution_update_matching_workflow <- function(description = NULL, increm
 #'
 #' See [https://www.paws-r-sdk.com/docs/entityresolution_update_schema_mapping/](https://www.paws-r-sdk.com/docs/entityresolution_update_schema_mapping/) for full documentation.
 #'
+#' @param schemaName &#91;required&#93; The name of the schema. There can't be multiple `SchemaMappings` with
+#' the same name.
 #' @param description A description of the schema.
 #' @param mappedInputFields &#91;required&#93; A list of `MappedInputFields`. Each `MappedInputField` corresponds to a
 #' column the source data table, and contains column name plus additional
 #' information that Entity Resolution uses for matching.
-#' @param schemaName &#91;required&#93; The name of the schema. There can't be multiple `SchemaMappings` with
-#' the same name.
 #'
 #' @keywords internal
 #'
 #' @rdname entityresolution_update_schema_mapping
-entityresolution_update_schema_mapping <- function(description = NULL, mappedInputFields, schemaName) {
+entityresolution_update_schema_mapping <- function(schemaName, description = NULL, mappedInputFields) {
   op <- new_operation(
     name = "UpdateSchemaMapping",
     http_method = "PUT",
@@ -1289,7 +1290,7 @@ entityresolution_update_schema_mapping <- function(description = NULL, mappedInp
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .entityresolution$update_schema_mapping_input(description = description, mappedInputFields = mappedInputFields, schemaName = schemaName)
+  input <- .entityresolution$update_schema_mapping_input(schemaName = schemaName, description = description, mappedInputFields = mappedInputFields)
   output <- .entityresolution$update_schema_mapping_output()
   config <- get_config()
   svc <- .entityresolution$service(config, op)

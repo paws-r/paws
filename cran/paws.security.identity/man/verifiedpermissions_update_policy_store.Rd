@@ -7,6 +7,7 @@
 verifiedpermissions_update_policy_store(
   policyStoreId,
   validationSettings,
+  deletionProtection = NULL,
   description = NULL
 )
 }
@@ -15,6 +16,13 @@ verifiedpermissions_update_policy_store(
 
 \item{validationSettings}{[required] A structure that defines the validation settings that want to enable for
 the policy store.}
+
+\item{deletionProtection}{Specifies whether the policy store can be deleted. If enabled, the
+policy store can't be deleted.
+
+When you call
+\code{\link[=verifiedpermissions_update_policy_store]{update_policy_store}}, this
+parameter is unchanged unless explicitly included in the call.}
 
 \item{description}{Descriptive text that you can provide to help with identification of the
 current policy store.}

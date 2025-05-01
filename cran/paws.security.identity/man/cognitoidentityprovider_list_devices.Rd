@@ -2,8 +2,8 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_list_devices}
 \alias{cognitoidentityprovider_list_devices}
-\title{Lists the sign-in devices that Amazon Cognito has registered to the
-current user}
+\title{Lists the devices that Amazon Cognito has registered to the currently
+signed-in user}
 \usage{
 cognitoidentityprovider_list_devices(
   AccessToken,
@@ -12,10 +12,12 @@ cognitoidentityprovider_list_devices(
 )
 }
 \arguments{
-\item{AccessToken}{[required] A valid access token that Amazon Cognito issued to the user whose list
-of devices you want to view.}
+\item{AccessToken}{[required] A valid access token that Amazon Cognito issued to the currently
+signed-in user. Must include a scope claim for
+\code{aws.cognito.signin.user.admin}.}
 
-\item{Limit}{The limit of the device request.}
+\item{Limit}{The maximum number of devices that you want Amazon Cognito to return in
+the response.}
 
 \item{PaginationToken}{This API operation returns a limited number of results. The pagination
 token is an identifier that you can present in an additional API request
@@ -25,7 +27,7 @@ requests return a new pagination token. By use of this token, you can
 paginate through the full list of items.}
 }
 \description{
-Lists the sign-in devices that Amazon Cognito has registered to the current user. For more information about device authentication, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/amazon-cognito-user-pools-device-tracking.html}{Working with user devices in your user pool}.
+Lists the devices that Amazon Cognito has registered to the currently signed-in user. For more information about device authentication, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/amazon-cognito-user-pools-device-tracking.html}{Working with user devices in your user pool}.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_list_devices/} for full documentation.
 }

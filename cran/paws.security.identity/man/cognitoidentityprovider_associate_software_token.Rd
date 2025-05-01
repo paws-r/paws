@@ -12,9 +12,11 @@ cognitoidentityprovider_associate_software_token(
 )
 }
 \arguments{
-\item{AccessToken}{A valid access token that Amazon Cognito issued to the user whose
-software token you want to generate. You can provide either an access
-token or a session ID in the request.}
+\item{AccessToken}{A valid access token that Amazon Cognito issued to the currently
+signed-in user. Must include a scope claim for
+\code{aws.cognito.signin.user.admin}.
+
+You can provide either an access token or a session ID in the request.}
 
 \item{Session}{The session identifier that maintains the state of authentication
 requests and challenge responses. In

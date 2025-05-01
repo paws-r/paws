@@ -2,7 +2,7 @@
 % Please edit documentation in R/arczonalshift_operations.R
 \name{arczonalshift_list_autoshifts}
 \alias{arczonalshift_list_autoshifts}
-\title{Returns a list of autoshifts for an Amazon Web Services Region}
+\title{Returns the autoshifts for an Amazon Web Services Region}
 \usage{
 arczonalshift_list_autoshifts(
   maxResults = NULL,
@@ -14,15 +14,15 @@ arczonalshift_list_autoshifts(
 \item{maxResults}{The number of objects that you want to return with this call.}
 
 \item{nextToken}{Specifies that you want to receive the next page of results. Valid only
-if you received a \code{NextToken} response in the previous request. If you
+if you received a \code{nextToken} response in the previous request. If you
 did, it indicates that more output is available. Set this parameter to
-the value provided by the previous call's \code{NextToken} response to
+the value provided by the previous call's \code{nextToken} response to
 request the next page of results.}
 
 \item{status}{The status of the autoshift.}
 }
 \description{
-Returns a list of autoshifts for an Amazon Web Services Region. By default, the call returns only \code{ACTIVE} autoshifts. Optionally, you can specify the \code{status} parameter to return \code{COMPLETED} autoshifts.
+Returns the autoshifts for an Amazon Web Services Region. By default, the call returns only \code{ACTIVE} autoshifts. Optionally, you can specify the \code{status} parameter to return \code{COMPLETED} autoshifts.
 
 See \url{https://www.paws-r-sdk.com/docs/arczonalshift_list_autoshifts/} for full documentation.
 }

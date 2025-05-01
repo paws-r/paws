@@ -15,7 +15,7 @@ NULL
 #' @param ClientToken Idempotency token.
 #' @param DirectoryId &#91;required&#93; The identifier of the Active Directory.
 #' @param Tags Metadata assigned to a connector consisting of a key-value pair.
-#' @param VpcInformation &#91;required&#93; Security group IDs that describe the inbound and outbound rules.
+#' @param VpcInformation &#91;required&#93; Information about your VPC and security groups used with the connector.
 #'
 #' @keywords internal
 #'

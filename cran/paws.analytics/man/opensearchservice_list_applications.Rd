@@ -2,7 +2,7 @@
 % Please edit documentation in R/opensearchservice_operations.R
 \name{opensearchservice_list_applications}
 \alias{opensearchservice_list_applications}
-\title{List all OpenSearch Applications under your account}
+\title{Lists all OpenSearch applications under your account}
 \usage{
 opensearchservice_list_applications(
   nextToken = NULL,
@@ -13,14 +13,13 @@ opensearchservice_list_applications(
 \arguments{
 \item{nextToken}{}
 
-\item{statuses}{OpenSearch Application Status can be used as filters for the listing
-request. Possible values are \code{CREATING}, \code{UPDATING}, \code{DELETING},
-\code{FAILED}, \code{ACTIVE}, and \code{DELETED}.}
+\item{statuses}{Filters the list of OpenSearch applications by status. Possible values:
+\code{CREATING}, \code{UPDATING}, \code{DELETING}, \code{FAILED}, \code{ACTIVE}, and \code{DELETED}.}
 
 \item{maxResults}{}
 }
 \description{
-List all OpenSearch Applications under your account.
+Lists all OpenSearch applications under your account.
 
 See \url{https://www.paws-r-sdk.com/docs/opensearchservice_list_applications/} for full documentation.
 }

@@ -25,8 +25,9 @@ connect_start_outbound_voice_contact(
 \item{Name}{The name of a voice contact that is shown to an agent in the Contact
 Control Panel (CCP).}
 
-\item{Description}{A description of the voice contact that is shown to an agent in the
-Contact Control Panel (CCP).}
+\item{Description}{A description of the voice contact that appears in the agent's snapshot
+in the CCP logs. For more information about CCP logs, see \href{https://docs.aws.amazon.com/connect/latest/adminguide/download-ccp-logs.html}{Download and review CCP logs}
+in the \emph{Amazon Connect Administrator Guide}.}
 
 \item{References}{A formatted URL that is shown to an agent in the Contact Control Panel
 (CCP). Contacts can have the following reference types at the time of

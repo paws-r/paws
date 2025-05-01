@@ -4,12 +4,12 @@
 \alias{entityresolution_list_id_namespaces}
 \title{Returns a list of all ID namespaces}
 \usage{
-entityresolution_list_id_namespaces(maxResults = NULL, nextToken = NULL)
+entityresolution_list_id_namespaces(nextToken = NULL, maxResults = NULL)
 }
 \arguments{
-\item{maxResults}{The maximum number of \code{IdNamespace} objects returned per page.}
-
 \item{nextToken}{The pagination token from the previous API call.}
+
+\item{maxResults}{The maximum number of \code{IdNamespace} objects returned per page.}
 }
 \description{
 Returns a list of all ID namespaces.

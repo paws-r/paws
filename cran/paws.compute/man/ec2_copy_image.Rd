@@ -15,6 +15,7 @@ ec2_copy_image(
   DestinationOutpostArn = NULL,
   CopyImageTags = NULL,
   TagSpecifications = NULL,
+  SnapshotCopyCompletionDurationMinutes = NULL,
   DryRun = NULL
 )
 }
@@ -95,6 +96,17 @@ If you specify other values for \code{ResourceType}, the request fails.
 
 To tag an AMI or snapshot after it has been created, see
 \code{\link[=ec2_create_tags]{create_tags}}.}
+
+\item{SnapshotCopyCompletionDurationMinutes}{Specify a completion duration, in 15 minute increments, to initiate a
+time-based AMI copy. The specified completion duration applies to each
+of the snapshots associated with the AMI. Each snapshot associated with
+the AMI will be completed within the specified completion duration,
+regardless of their size.
+
+If you do not specify a value, the AMI copy operation is completed on a
+best-effort basis.
+
+For more information, see \href{https://docs.aws.amazon.com/ebs/latest/userguide/time-based-copies.html}{Time-based copies}.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have

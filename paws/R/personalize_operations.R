@@ -1631,6 +1631,15 @@ personalize_create_schema <- function(name, schema, domain = NULL) {
 #'         "string"
 #'       )
 #'     ),
+#'     eventsConfig = list(
+#'       eventParametersList = list(
+#'         list(
+#'           eventType = "string",
+#'           eventValueThreshold = 123.0,
+#'           weight = 123.0
+#'         )
+#'       )
+#'     ),
 #'     optimizationObjective = list(
 #'       itemAttribute = "string",
 #'       objectiveSensitivity = "LOW"|"MEDIUM"|"HIGH"|"OFF"
@@ -1862,8 +1871,9 @@ personalize_delete_campaign <- function(campaignArn) {
 #' @description
 #' Deletes a dataset. You can't delete a dataset if an associated
 #' `DatasetImportJob` or `SolutionVersion` is in the CREATE PENDING or IN
-#' PROGRESS state. For more information on datasets, see
-#' [`create_dataset`][personalize_create_dataset].
+#' PROGRESS state. For more information about deleting datasets, see
+#' [Deleting a
+#' dataset](https://docs.aws.amazon.com/personalize/latest/dg/delete-dataset.html).
 #'
 #' @usage
 #' personalize_delete_dataset(datasetArn)
@@ -3545,6 +3555,15 @@ personalize_describe_schema <- function(schemaArn) {
 #'           "string"
 #'         )
 #'       ),
+#'       eventsConfig = list(
+#'         eventParametersList = list(
+#'           list(
+#'             eventType = "string",
+#'             eventValueThreshold = 123.0,
+#'             weight = 123.0
+#'           )
+#'         )
+#'       ),
 #'       optimizationObjective = list(
 #'         itemAttribute = "string",
 #'         objectiveSensitivity = "LOW"|"MEDIUM"|"HIGH"|"OFF"
@@ -3587,6 +3606,15 @@ personalize_describe_schema <- function(schemaArn) {
 #'       solutionUpdateConfig = list(
 #'         autoTrainingConfig = list(
 #'           schedulingExpression = "string"
+#'         ),
+#'         eventsConfig = list(
+#'           eventParametersList = list(
+#'             list(
+#'               eventType = "string",
+#'               eventValueThreshold = 123.0,
+#'               weight = 123.0
+#'             )
+#'           )
 #'         )
 #'       ),
 #'       status = "string",
@@ -3705,6 +3733,15 @@ personalize_describe_solution <- function(solutionArn) {
 #'         metricName = "string",
 #'         recipeList = list(
 #'           "string"
+#'         )
+#'       ),
+#'       eventsConfig = list(
+#'         eventParametersList = list(
+#'           list(
+#'             eventType = "string",
+#'             eventValueThreshold = 123.0,
+#'             weight = 123.0
+#'           )
 #'         )
 #'       ),
 #'       optimizationObjective = list(
@@ -5762,6 +5799,15 @@ personalize_update_recommender <- function(recommenderArn, recommenderConfig) {
 #'   solutionUpdateConfig = list(
 #'     autoTrainingConfig = list(
 #'       schedulingExpression = "string"
+#'     ),
+#'     eventsConfig = list(
+#'       eventParametersList = list(
+#'         list(
+#'           eventType = "string",
+#'           eventValueThreshold = 123.0,
+#'           weight = 123.0
+#'         )
+#'       )
 #'     )
 #'   )
 #' )

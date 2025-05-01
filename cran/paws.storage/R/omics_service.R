@@ -109,7 +109,8 @@ NULL
 #'  \link[=omics_create_sequence_store]{create_sequence_store} \tab Creates a sequence store\cr
 #'  \link[=omics_create_share]{create_share} \tab Creates a cross-account shared resource\cr
 #'  \link[=omics_create_variant_store]{create_variant_store} \tab Creates a variant store\cr
-#'  \link[=omics_create_workflow]{create_workflow} \tab Creates a workflow\cr
+#'  \link[=omics_create_workflow]{create_workflow} \tab Creates a private workflow\cr
+#'  \link[=omics_create_workflow_version]{create_workflow_version} \tab Creates a new workflow version for the workflow that you specify with the workflowId parameter\cr
 #'  \link[=omics_delete_annotation_store]{delete_annotation_store} \tab Deletes an annotation store\cr
 #'  \link[=omics_delete_annotation_store_versions]{delete_annotation_store_versions} \tab Deletes one or multiple versions of an annotation store\cr
 #'  \link[=omics_delete_reference]{delete_reference} \tab Deletes a genome reference\cr
@@ -122,6 +123,7 @@ NULL
 #'  \link[=omics_delete_share]{delete_share} \tab Deletes a resource share\cr
 #'  \link[=omics_delete_variant_store]{delete_variant_store} \tab Deletes a variant store\cr
 #'  \link[=omics_delete_workflow]{delete_workflow} \tab Deletes a workflow\cr
+#'  \link[=omics_delete_workflow_version]{delete_workflow_version} \tab Deletes a workflow version\cr
 #'  \link[=omics_get_annotation_import_job]{get_annotation_import_job} \tab Gets information about an annotation import job\cr
 #'  \link[=omics_get_annotation_store]{get_annotation_store} \tab Gets information about an annotation store\cr
 #'  \link[=omics_get_annotation_store_version]{get_annotation_store_version} \tab Retrieves the metadata for an annotation store version\cr
@@ -144,6 +146,7 @@ NULL
 #'  \link[=omics_get_variant_import_job]{get_variant_import_job} \tab Gets information about a variant import job\cr
 #'  \link[=omics_get_variant_store]{get_variant_store} \tab Gets information about a variant store\cr
 #'  \link[=omics_get_workflow]{get_workflow} \tab Gets information about a workflow\cr
+#'  \link[=omics_get_workflow_version]{get_workflow_version} \tab Gets information about a workflow version\cr
 #'  \link[=omics_list_annotation_import_jobs]{list_annotation_import_jobs} \tab Retrieves a list of annotation import jobs\cr
 #'  \link[=omics_list_annotation_stores]{list_annotation_stores} \tab Retrieves a list of annotation stores\cr
 #'  \link[=omics_list_annotation_store_versions]{list_annotation_store_versions} \tab Lists the versions of an annotation store\cr
@@ -166,13 +169,14 @@ NULL
 #'  \link[=omics_list_variant_import_jobs]{list_variant_import_jobs} \tab Retrieves a list of variant import jobs\cr
 #'  \link[=omics_list_variant_stores]{list_variant_stores} \tab Retrieves a list of variant stores\cr
 #'  \link[=omics_list_workflows]{list_workflows} \tab Retrieves a list of workflows\cr
+#'  \link[=omics_list_workflow_versions]{list_workflow_versions} \tab Lists the workflow versions for the specified workflow\cr
 #'  \link[=omics_put_s3_access_policy]{put_s3_access_policy} \tab Adds an access policy to the specified store\cr
 #'  \link[=omics_start_annotation_import_job]{start_annotation_import_job} \tab Starts an annotation import job\cr
 #'  \link[=omics_start_read_set_activation_job]{start_read_set_activation_job} \tab Activates an archived read set\cr
 #'  \link[=omics_start_read_set_export_job]{start_read_set_export_job} \tab Exports a read set to Amazon S3\cr
 #'  \link[=omics_start_read_set_import_job]{start_read_set_import_job} \tab Starts a read set import job\cr
 #'  \link[=omics_start_reference_import_job]{start_reference_import_job} \tab Starts a reference import job\cr
-#'  \link[=omics_start_run]{start_run} \tab Starts a workflow run\cr
+#'  \link[=omics_start_run]{start_run} \tab Starts a new run or duplicates an existing run\cr
 #'  \link[=omics_start_variant_import_job]{start_variant_import_job} \tab Starts a variant import job\cr
 #'  \link[=omics_tag_resource]{tag_resource} \tab Tags a resource\cr
 #'  \link[=omics_untag_resource]{untag_resource} \tab Removes tags from a resource\cr
@@ -182,7 +186,8 @@ NULL
 #'  \link[=omics_update_run_group]{update_run_group} \tab Updates a run group\cr
 #'  \link[=omics_update_sequence_store]{update_sequence_store} \tab Update one or more parameters for the sequence store\cr
 #'  \link[=omics_update_variant_store]{update_variant_store} \tab Updates a variant store\cr
-#'  \link[=omics_update_workflow]{update_workflow} \tab Updates a workflow\cr
+#'  \link[=omics_update_workflow]{update_workflow} \tab Updates information about a workflow\cr
+#'  \link[=omics_update_workflow_version]{update_workflow_version} \tab Updates information about the workflow version\cr
 #'  \link[=omics_upload_read_set_part]{upload_read_set_part} \tab This operation uploads a specific part of a read set
 #' }
 #'
@@ -215,7 +220,7 @@ omics <- function(config = list(), credentials = list(), endpoint = NULL, region
 
 .omics$metadata <- list(
   service_name = "omics",
-  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "omics.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "omics.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "omics.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "omics.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "omics.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "omics.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "omics.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "omics.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "omics.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "omics.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "omics.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "omics.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "omics.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "omics.{region}.csp.hci.ic.gov", global = FALSE), "^eusc\\-(de)\\-\\w+\\-\\d+$" = list(endpoint = "omics.{region}.amazonaws.eu", global = FALSE)),
   service_id = "Omics",
   api_version = "2022-11-28",
   signing_name = "omics",

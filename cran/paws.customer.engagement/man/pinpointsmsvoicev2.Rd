@@ -195,7 +195,7 @@ that are available in each Region, see \href{https://aws.amazon.com/about-aws/gl
 \link[=pinpointsmsvoicev2_put_keyword]{put_keyword} \tab Creates or updates a keyword configuration on an origination phone number or pool\cr
 \link[=pinpointsmsvoicev2_put_message_feedback]{put_message_feedback} \tab Set the MessageFeedbackStatus as RECEIVED or FAILED for the passed in MessageId\cr
 \link[=pinpointsmsvoicev2_put_opted_out_number]{put_opted_out_number} \tab Creates an opted out destination phone number in the opt-out list\cr
-\link[=pinpointsmsvoicev2_put_protect_configuration_rule_set_number_override]{put_protect_configuration_rule_set_number_override} \tab Create or update a RuleSetNumberOverride and associate it with a protect configuration\cr
+\link[=pinpointsmsvoicev2_put_protect_configuration_rule_set_number_override]{put_protect_configuration_rule_set_number_override} \tab Create or update a phone number rule override and associate it with a protect configuration\cr
 \link[=pinpointsmsvoicev2_put_registration_field_value]{put_registration_field_value} \tab Creates or updates a field value for a registration\cr
 \link[=pinpointsmsvoicev2_put_resource_policy]{put_resource_policy} \tab Attaches a resource-based policy to a AWS End User Messaging SMS and Voice resource(phone number, sender Id, phone poll, or opt-out list) that is used for sharing the resource\cr
 \link[=pinpointsmsvoicev2_release_phone_number]{release_phone_number} \tab Releases an existing origination phone number in your account\cr
@@ -220,7 +220,7 @@ that are available in each Region, see \href{https://aws.amazon.com/about-aws/gl
 \link[=pinpointsmsvoicev2_update_phone_number]{update_phone_number} \tab Updates the configuration of an existing origination phone number\cr
 \link[=pinpointsmsvoicev2_update_pool]{update_pool} \tab Updates the configuration of an existing pool\cr
 \link[=pinpointsmsvoicev2_update_protect_configuration]{update_protect_configuration} \tab Update the setting for an existing protect configuration\cr
-\link[=pinpointsmsvoicev2_update_protect_configuration_country_rule_set]{update_protect_configuration_country_rule_set} \tab Update a country rule set to ALLOW or BLOCK messages to be sent to the specified destination counties\cr
+\link[=pinpointsmsvoicev2_update_protect_configuration_country_rule_set]{update_protect_configuration_country_rule_set} \tab Update a country rule set to ALLOW, BLOCK, MONITOR, or FILTER messages to be sent to the specified destination counties\cr
 \link[=pinpointsmsvoicev2_update_sender_id]{update_sender_id} \tab Updates the configuration of an existing sender ID\cr
 \link[=pinpointsmsvoicev2_verify_destination_number]{verify_destination_number} \tab Use the verification code that was received by the verified destination phone number to opt-in the verified destination phone number to receive more messages
 }

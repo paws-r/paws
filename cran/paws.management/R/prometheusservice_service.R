@@ -127,6 +127,7 @@ NULL
 #'  \link[=prometheusservice_describe_rule_groups_namespace]{describe_rule_groups_namespace} \tab Returns complete information about one rule groups namespace\cr
 #'  \link[=prometheusservice_describe_scraper]{describe_scraper} \tab The DescribeScraper operation displays information about an existing scraper\cr
 #'  \link[=prometheusservice_describe_workspace]{describe_workspace} \tab Returns information about an existing workspace\cr
+#'  \link[=prometheusservice_describe_workspace_configuration]{describe_workspace_configuration} \tab Use this operation to return information about the configuration of a workspace\cr
 #'  \link[=prometheusservice_get_default_scraper_configuration]{get_default_scraper_configuration} \tab The GetDefaultScraperConfiguration operation returns the default scraper configuration used when Amazon EKS creates a scraper for you\cr
 #'  \link[=prometheusservice_list_rule_groups_namespaces]{list_rule_groups_namespaces} \tab Returns a list of rule groups namespaces in a workspace\cr
 #'  \link[=prometheusservice_list_scrapers]{list_scrapers} \tab The ListScrapers operation lists all of the scrapers in your account\cr
@@ -138,7 +139,8 @@ NULL
 #'  \link[=prometheusservice_untag_resource]{untag_resource} \tab Removes the specified tags from an Amazon Managed Service for Prometheus resource\cr
 #'  \link[=prometheusservice_update_logging_configuration]{update_logging_configuration} \tab Updates the log group ARN or the workspace ID of the current logging configuration\cr
 #'  \link[=prometheusservice_update_scraper]{update_scraper} \tab Updates an existing scraper\cr
-#'  \link[=prometheusservice_update_workspace_alias]{update_workspace_alias} \tab Updates the alias of an existing workspace
+#'  \link[=prometheusservice_update_workspace_alias]{update_workspace_alias} \tab Updates the alias of an existing workspace\cr
+#'  \link[=prometheusservice_update_workspace_configuration]{update_workspace_configuration} \tab Use this operation to create or update the label sets, label set limits, and retention period of a workspace
 #' }
 #'
 #' @return
@@ -170,7 +172,7 @@ prometheusservice <- function(config = list(), credentials = list(), endpoint = 
 
 .prometheusservice$metadata <- list(
   service_name = "prometheusservice",
-  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "aps.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "aps.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "aps.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "aps.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "aps.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "aps.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "aps.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "aps.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "aps.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "aps.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "aps.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "aps.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "aps.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "aps.{region}.csp.hci.ic.gov", global = FALSE), "^eusc\\-(de)\\-\\w+\\-\\d+$" = list(endpoint = "aps.{region}.amazonaws.eu", global = FALSE)),
   service_id = "amp",
   api_version = "2020-08-01",
   signing_name = "aps",

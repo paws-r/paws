@@ -10,7 +10,7 @@ NULL
 #'
 #' @usage
 #' bedrockdataautomation_create_blueprint(blueprintName, type,
-#'   blueprintStage, schema, clientToken, encryptionConfiguration)
+#'   blueprintStage, schema, clientToken, encryptionConfiguration, tags)
 #'
 #' @param blueprintName &#91;required&#93; 
 #' @param type &#91;required&#93; 
@@ -18,6 +18,7 @@ NULL
 #' @param schema &#91;required&#93; 
 #' @param clientToken 
 #' @param encryptionConfiguration 
+#' @param tags 
 #'
 #' @return
 #' A list with the following syntax:
@@ -57,6 +58,12 @@ NULL
 #'     kmsEncryptionContext = list(
 #'       "string"
 #'     )
+#'   ),
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -66,7 +73,7 @@ NULL
 #' @rdname bedrockdataautomation_create_blueprint
 #'
 #' @aliases bedrockdataautomation_create_blueprint
-bedrockdataautomation_create_blueprint <- function(blueprintName, type, blueprintStage = NULL, schema, clientToken = NULL, encryptionConfiguration = NULL) {
+bedrockdataautomation_create_blueprint <- function(blueprintName, type, blueprintStage = NULL, schema, clientToken = NULL, encryptionConfiguration = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateBlueprint",
     http_method = "PUT",
@@ -75,7 +82,7 @@ bedrockdataautomation_create_blueprint <- function(blueprintName, type, blueprin
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockdataautomation$create_blueprint_input(blueprintName = blueprintName, type = type, blueprintStage = blueprintStage, schema = schema, clientToken = clientToken, encryptionConfiguration = encryptionConfiguration)
+  input <- .bedrockdataautomation$create_blueprint_input(blueprintName = blueprintName, type = type, blueprintStage = blueprintStage, schema = schema, clientToken = clientToken, encryptionConfiguration = encryptionConfiguration, tags = tags)
   output <- .bedrockdataautomation$create_blueprint_output()
   config <- get_config()
   svc <- .bedrockdataautomation$service(config, op)
@@ -165,7 +172,7 @@ bedrockdataautomation_create_blueprint_version <- function(blueprintArn, clientT
 #' bedrockdataautomation_create_data_automation_project(projectName,
 #'   projectDescription, projectStage, standardOutputConfiguration,
 #'   customOutputConfiguration, overrideConfiguration, clientToken,
-#'   encryptionConfiguration)
+#'   encryptionConfiguration, tags)
 #'
 #' @param projectName &#91;required&#93; 
 #' @param projectDescription 
@@ -175,6 +182,7 @@ bedrockdataautomation_create_blueprint_version <- function(blueprintArn, clientT
 #' @param overrideConfiguration 
 #' @param clientToken 
 #' @param encryptionConfiguration 
+#' @param tags 
 #'
 #' @return
 #' A list with the following syntax:
@@ -223,7 +231,7 @@ bedrockdataautomation_create_blueprint_version <- function(blueprintArn, clientT
 #'         category = list(
 #'           state = "ENABLED"|"DISABLED",
 #'           types = list(
-#'             "CONTENT_MODERATION"|"TEXT_DETECTION"
+#'             "CONTENT_MODERATION"|"TEXT_DETECTION"|"LOGOS"
 #'           )
 #'         ),
 #'         boundingBox = list(
@@ -242,7 +250,7 @@ bedrockdataautomation_create_blueprint_version <- function(blueprintArn, clientT
 #'         category = list(
 #'           state = "ENABLED"|"DISABLED",
 #'           types = list(
-#'             "CONTENT_MODERATION"|"TEXT_DETECTION"|"TRANSCRIPT"
+#'             "CONTENT_MODERATION"|"TEXT_DETECTION"|"TRANSCRIPT"|"LOGOS"
 #'           )
 #'         ),
 #'         boundingBox = list(
@@ -252,7 +260,7 @@ bedrockdataautomation_create_blueprint_version <- function(blueprintArn, clientT
 #'       generativeField = list(
 #'         state = "ENABLED"|"DISABLED",
 #'         types = list(
-#'           "VIDEO_SUMMARY"|"SCENE_SUMMARY"|"IAB"
+#'           "VIDEO_SUMMARY"|"IAB"|"CHAPTER_SUMMARY"
 #'         )
 #'       )
 #'     ),
@@ -261,14 +269,14 @@ bedrockdataautomation_create_blueprint_version <- function(blueprintArn, clientT
 #'         category = list(
 #'           state = "ENABLED"|"DISABLED",
 #'           types = list(
-#'             "AUDIO_CONTENT_MODERATION"|"CHAPTER_CONTENT_MODERATION"|"TRANSCRIPT"
+#'             "AUDIO_CONTENT_MODERATION"|"TRANSCRIPT"|"TOPIC_CONTENT_MODERATION"
 #'           )
 #'         )
 #'       ),
 #'       generativeField = list(
 #'         state = "ENABLED"|"DISABLED",
 #'         types = list(
-#'           "AUDIO_SUMMARY"|"CHAPTER_SUMMARY"|"IAB"
+#'           "AUDIO_SUMMARY"|"IAB"|"TOPIC_SUMMARY"
 #'         )
 #'       )
 #'     )
@@ -286,7 +294,31 @@ bedrockdataautomation_create_blueprint_version <- function(blueprintArn, clientT
 #'     document = list(
 #'       splitter = list(
 #'         state = "ENABLED"|"DISABLED"
+#'       ),
+#'       modalityProcessing = list(
+#'         state = "ENABLED"|"DISABLED"
 #'       )
+#'     ),
+#'     image = list(
+#'       modalityProcessing = list(
+#'         state = "ENABLED"|"DISABLED"
+#'       )
+#'     ),
+#'     video = list(
+#'       modalityProcessing = list(
+#'         state = "ENABLED"|"DISABLED"
+#'       )
+#'     ),
+#'     audio = list(
+#'       modalityProcessing = list(
+#'         state = "ENABLED"|"DISABLED"
+#'       )
+#'     ),
+#'     modalityRouting = list(
+#'       jpeg = "IMAGE"|"DOCUMENT"|"AUDIO"|"VIDEO",
+#'       png = "IMAGE"|"DOCUMENT"|"AUDIO"|"VIDEO",
+#'       mp4 = "IMAGE"|"DOCUMENT"|"AUDIO"|"VIDEO",
+#'       mov = "IMAGE"|"DOCUMENT"|"AUDIO"|"VIDEO"
 #'     )
 #'   ),
 #'   clientToken = "string",
@@ -294,6 +326,12 @@ bedrockdataautomation_create_blueprint_version <- function(blueprintArn, clientT
 #'     kmsKeyId = "string",
 #'     kmsEncryptionContext = list(
 #'       "string"
+#'     )
+#'   ),
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
 #'     )
 #'   )
 #' )
@@ -304,7 +342,7 @@ bedrockdataautomation_create_blueprint_version <- function(blueprintArn, clientT
 #' @rdname bedrockdataautomation_create_data_automation_project
 #'
 #' @aliases bedrockdataautomation_create_data_automation_project
-bedrockdataautomation_create_data_automation_project <- function(projectName, projectDescription = NULL, projectStage = NULL, standardOutputConfiguration, customOutputConfiguration = NULL, overrideConfiguration = NULL, clientToken = NULL, encryptionConfiguration = NULL) {
+bedrockdataautomation_create_data_automation_project <- function(projectName, projectDescription = NULL, projectStage = NULL, standardOutputConfiguration, customOutputConfiguration = NULL, overrideConfiguration = NULL, clientToken = NULL, encryptionConfiguration = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateDataAutomationProject",
     http_method = "PUT",
@@ -313,7 +351,7 @@ bedrockdataautomation_create_data_automation_project <- function(projectName, pr
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockdataautomation$create_data_automation_project_input(projectName = projectName, projectDescription = projectDescription, projectStage = projectStage, standardOutputConfiguration = standardOutputConfiguration, customOutputConfiguration = customOutputConfiguration, overrideConfiguration = overrideConfiguration, clientToken = clientToken, encryptionConfiguration = encryptionConfiguration)
+  input <- .bedrockdataautomation$create_data_automation_project_input(projectName = projectName, projectDescription = projectDescription, projectStage = projectStage, standardOutputConfiguration = standardOutputConfiguration, customOutputConfiguration = customOutputConfiguration, overrideConfiguration = overrideConfiguration, clientToken = clientToken, encryptionConfiguration = encryptionConfiguration, tags = tags)
   output <- .bedrockdataautomation$create_data_automation_project_output()
   config <- get_config()
   svc <- .bedrockdataautomation$service(config, op)
@@ -548,7 +586,7 @@ bedrockdataautomation_get_blueprint <- function(blueprintArn, blueprintVersion =
 #'           category = list(
 #'             state = "ENABLED"|"DISABLED",
 #'             types = list(
-#'               "CONTENT_MODERATION"|"TEXT_DETECTION"
+#'               "CONTENT_MODERATION"|"TEXT_DETECTION"|"LOGOS"
 #'             )
 #'           ),
 #'           boundingBox = list(
@@ -567,7 +605,7 @@ bedrockdataautomation_get_blueprint <- function(blueprintArn, blueprintVersion =
 #'           category = list(
 #'             state = "ENABLED"|"DISABLED",
 #'             types = list(
-#'               "CONTENT_MODERATION"|"TEXT_DETECTION"|"TRANSCRIPT"
+#'               "CONTENT_MODERATION"|"TEXT_DETECTION"|"TRANSCRIPT"|"LOGOS"
 #'             )
 #'           ),
 #'           boundingBox = list(
@@ -577,7 +615,7 @@ bedrockdataautomation_get_blueprint <- function(blueprintArn, blueprintVersion =
 #'         generativeField = list(
 #'           state = "ENABLED"|"DISABLED",
 #'           types = list(
-#'             "VIDEO_SUMMARY"|"SCENE_SUMMARY"|"IAB"
+#'             "VIDEO_SUMMARY"|"IAB"|"CHAPTER_SUMMARY"
 #'           )
 #'         )
 #'       ),
@@ -586,14 +624,14 @@ bedrockdataautomation_get_blueprint <- function(blueprintArn, blueprintVersion =
 #'           category = list(
 #'             state = "ENABLED"|"DISABLED",
 #'             types = list(
-#'               "AUDIO_CONTENT_MODERATION"|"CHAPTER_CONTENT_MODERATION"|"TRANSCRIPT"
+#'               "AUDIO_CONTENT_MODERATION"|"TRANSCRIPT"|"TOPIC_CONTENT_MODERATION"
 #'             )
 #'           )
 #'         ),
 #'         generativeField = list(
 #'           state = "ENABLED"|"DISABLED",
 #'           types = list(
-#'             "AUDIO_SUMMARY"|"CHAPTER_SUMMARY"|"IAB"
+#'             "AUDIO_SUMMARY"|"IAB"|"TOPIC_SUMMARY"
 #'           )
 #'         )
 #'       )
@@ -611,7 +649,31 @@ bedrockdataautomation_get_blueprint <- function(blueprintArn, blueprintVersion =
 #'       document = list(
 #'         splitter = list(
 #'           state = "ENABLED"|"DISABLED"
+#'         ),
+#'         modalityProcessing = list(
+#'           state = "ENABLED"|"DISABLED"
 #'         )
+#'       ),
+#'       image = list(
+#'         modalityProcessing = list(
+#'           state = "ENABLED"|"DISABLED"
+#'         )
+#'       ),
+#'       video = list(
+#'         modalityProcessing = list(
+#'           state = "ENABLED"|"DISABLED"
+#'         )
+#'       ),
+#'       audio = list(
+#'         modalityProcessing = list(
+#'           state = "ENABLED"|"DISABLED"
+#'         )
+#'       ),
+#'       modalityRouting = list(
+#'         jpeg = "IMAGE"|"DOCUMENT"|"AUDIO"|"VIDEO",
+#'         png = "IMAGE"|"DOCUMENT"|"AUDIO"|"VIDEO",
+#'         mp4 = "IMAGE"|"DOCUMENT"|"AUDIO"|"VIDEO",
+#'         mov = "IMAGE"|"DOCUMENT"|"AUDIO"|"VIDEO"
 #'       )
 #'     ),
 #'     status = "COMPLETED"|"IN_PROGRESS"|"FAILED",
@@ -804,6 +866,159 @@ bedrockdataautomation_list_data_automation_projects <- function(maxResults = NUL
 }
 .bedrockdataautomation$operations$list_data_automation_projects <- bedrockdataautomation_list_data_automation_projects
 
+#' List tags for an Amazon Bedrock Data Automation resource
+#'
+#' @description
+#' List tags for an Amazon Bedrock Data Automation resource
+#'
+#' @usage
+#' bedrockdataautomation_list_tags_for_resource(resourceARN)
+#'
+#' @param resourceARN &#91;required&#93; 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_tags_for_resource(
+#'   resourceARN = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockdataautomation_list_tags_for_resource
+#'
+#' @aliases bedrockdataautomation_list_tags_for_resource
+bedrockdataautomation_list_tags_for_resource <- function(resourceARN) {
+  op <- new_operation(
+    name = "ListTagsForResource",
+    http_method = "POST",
+    http_path = "/listTagsForResource",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrockdataautomation$list_tags_for_resource_input(resourceARN = resourceARN)
+  output <- .bedrockdataautomation$list_tags_for_resource_output()
+  config <- get_config()
+  svc <- .bedrockdataautomation$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockdataautomation$operations$list_tags_for_resource <- bedrockdataautomation_list_tags_for_resource
+
+#' Tag an Amazon Bedrock Data Automation resource
+#'
+#' @description
+#' Tag an Amazon Bedrock Data Automation resource
+#'
+#' @usage
+#' bedrockdataautomation_tag_resource(resourceARN, tags)
+#'
+#' @param resourceARN &#91;required&#93; 
+#' @param tags &#91;required&#93; 
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$tag_resource(
+#'   resourceARN = "string",
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockdataautomation_tag_resource
+#'
+#' @aliases bedrockdataautomation_tag_resource
+bedrockdataautomation_tag_resource <- function(resourceARN, tags) {
+  op <- new_operation(
+    name = "TagResource",
+    http_method = "POST",
+    http_path = "/tagResource",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrockdataautomation$tag_resource_input(resourceARN = resourceARN, tags = tags)
+  output <- .bedrockdataautomation$tag_resource_output()
+  config <- get_config()
+  svc <- .bedrockdataautomation$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockdataautomation$operations$tag_resource <- bedrockdataautomation_tag_resource
+
+#' Untag an Amazon Bedrock Data Automation resource
+#'
+#' @description
+#' Untag an Amazon Bedrock Data Automation resource
+#'
+#' @usage
+#' bedrockdataautomation_untag_resource(resourceARN, tagKeys)
+#'
+#' @param resourceARN &#91;required&#93; 
+#' @param tagKeys &#91;required&#93; 
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$untag_resource(
+#'   resourceARN = "string",
+#'   tagKeys = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockdataautomation_untag_resource
+#'
+#' @aliases bedrockdataautomation_untag_resource
+bedrockdataautomation_untag_resource <- function(resourceARN, tagKeys) {
+  op <- new_operation(
+    name = "UntagResource",
+    http_method = "POST",
+    http_path = "/untagResource",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrockdataautomation$untag_resource_input(resourceARN = resourceARN, tagKeys = tagKeys)
+  output <- .bedrockdataautomation$untag_resource_output()
+  config <- get_config()
+  svc <- .bedrockdataautomation$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockdataautomation$operations$untag_resource <- bedrockdataautomation_untag_resource
+
 #' Updates an existing Amazon Bedrock Data Automation Blueprint
 #'
 #' @description
@@ -811,11 +1026,12 @@ bedrockdataautomation_list_data_automation_projects <- function(maxResults = NUL
 #'
 #' @usage
 #' bedrockdataautomation_update_blueprint(blueprintArn, schema,
-#'   blueprintStage)
+#'   blueprintStage, encryptionConfiguration)
 #'
 #' @param blueprintArn &#91;required&#93; ARN generated at the server side when a Blueprint is created
 #' @param schema &#91;required&#93; 
 #' @param blueprintStage 
+#' @param encryptionConfiguration 
 #'
 #' @return
 #' A list with the following syntax:
@@ -847,7 +1063,13 @@ bedrockdataautomation_list_data_automation_projects <- function(maxResults = NUL
 #' svc$update_blueprint(
 #'   blueprintArn = "string",
 #'   schema = "string",
-#'   blueprintStage = "DEVELOPMENT"|"LIVE"
+#'   blueprintStage = "DEVELOPMENT"|"LIVE",
+#'   encryptionConfiguration = list(
+#'     kmsKeyId = "string",
+#'     kmsEncryptionContext = list(
+#'       "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -856,7 +1078,7 @@ bedrockdataautomation_list_data_automation_projects <- function(maxResults = NUL
 #' @rdname bedrockdataautomation_update_blueprint
 #'
 #' @aliases bedrockdataautomation_update_blueprint
-bedrockdataautomation_update_blueprint <- function(blueprintArn, schema, blueprintStage = NULL) {
+bedrockdataautomation_update_blueprint <- function(blueprintArn, schema, blueprintStage = NULL, encryptionConfiguration = NULL) {
   op <- new_operation(
     name = "UpdateBlueprint",
     http_method = "PUT",
@@ -865,7 +1087,7 @@ bedrockdataautomation_update_blueprint <- function(blueprintArn, schema, bluepri
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockdataautomation$update_blueprint_input(blueprintArn = blueprintArn, schema = schema, blueprintStage = blueprintStage)
+  input <- .bedrockdataautomation$update_blueprint_input(blueprintArn = blueprintArn, schema = schema, blueprintStage = blueprintStage, encryptionConfiguration = encryptionConfiguration)
   output <- .bedrockdataautomation$update_blueprint_output()
   config <- get_config()
   svc <- .bedrockdataautomation$service(config, op)
@@ -883,7 +1105,8 @@ bedrockdataautomation_update_blueprint <- function(blueprintArn, schema, bluepri
 #' @usage
 #' bedrockdataautomation_update_data_automation_project(projectArn,
 #'   projectStage, projectDescription, standardOutputConfiguration,
-#'   customOutputConfiguration, overrideConfiguration)
+#'   customOutputConfiguration, overrideConfiguration,
+#'   encryptionConfiguration)
 #'
 #' @param projectArn &#91;required&#93; ARN generated at the server side when a DataAutomationProject is created
 #' @param projectStage 
@@ -891,6 +1114,7 @@ bedrockdataautomation_update_blueprint <- function(blueprintArn, schema, bluepri
 #' @param standardOutputConfiguration &#91;required&#93; 
 #' @param customOutputConfiguration 
 #' @param overrideConfiguration 
+#' @param encryptionConfiguration 
 #'
 #' @return
 #' A list with the following syntax:
@@ -939,7 +1163,7 @@ bedrockdataautomation_update_blueprint <- function(blueprintArn, schema, bluepri
 #'         category = list(
 #'           state = "ENABLED"|"DISABLED",
 #'           types = list(
-#'             "CONTENT_MODERATION"|"TEXT_DETECTION"
+#'             "CONTENT_MODERATION"|"TEXT_DETECTION"|"LOGOS"
 #'           )
 #'         ),
 #'         boundingBox = list(
@@ -958,7 +1182,7 @@ bedrockdataautomation_update_blueprint <- function(blueprintArn, schema, bluepri
 #'         category = list(
 #'           state = "ENABLED"|"DISABLED",
 #'           types = list(
-#'             "CONTENT_MODERATION"|"TEXT_DETECTION"|"TRANSCRIPT"
+#'             "CONTENT_MODERATION"|"TEXT_DETECTION"|"TRANSCRIPT"|"LOGOS"
 #'           )
 #'         ),
 #'         boundingBox = list(
@@ -968,7 +1192,7 @@ bedrockdataautomation_update_blueprint <- function(blueprintArn, schema, bluepri
 #'       generativeField = list(
 #'         state = "ENABLED"|"DISABLED",
 #'         types = list(
-#'           "VIDEO_SUMMARY"|"SCENE_SUMMARY"|"IAB"
+#'           "VIDEO_SUMMARY"|"IAB"|"CHAPTER_SUMMARY"
 #'         )
 #'       )
 #'     ),
@@ -977,14 +1201,14 @@ bedrockdataautomation_update_blueprint <- function(blueprintArn, schema, bluepri
 #'         category = list(
 #'           state = "ENABLED"|"DISABLED",
 #'           types = list(
-#'             "AUDIO_CONTENT_MODERATION"|"CHAPTER_CONTENT_MODERATION"|"TRANSCRIPT"
+#'             "AUDIO_CONTENT_MODERATION"|"TRANSCRIPT"|"TOPIC_CONTENT_MODERATION"
 #'           )
 #'         )
 #'       ),
 #'       generativeField = list(
 #'         state = "ENABLED"|"DISABLED",
 #'         types = list(
-#'           "AUDIO_SUMMARY"|"CHAPTER_SUMMARY"|"IAB"
+#'           "AUDIO_SUMMARY"|"IAB"|"TOPIC_SUMMARY"
 #'         )
 #'       )
 #'     )
@@ -1002,7 +1226,37 @@ bedrockdataautomation_update_blueprint <- function(blueprintArn, schema, bluepri
 #'     document = list(
 #'       splitter = list(
 #'         state = "ENABLED"|"DISABLED"
+#'       ),
+#'       modalityProcessing = list(
+#'         state = "ENABLED"|"DISABLED"
 #'       )
+#'     ),
+#'     image = list(
+#'       modalityProcessing = list(
+#'         state = "ENABLED"|"DISABLED"
+#'       )
+#'     ),
+#'     video = list(
+#'       modalityProcessing = list(
+#'         state = "ENABLED"|"DISABLED"
+#'       )
+#'     ),
+#'     audio = list(
+#'       modalityProcessing = list(
+#'         state = "ENABLED"|"DISABLED"
+#'       )
+#'     ),
+#'     modalityRouting = list(
+#'       jpeg = "IMAGE"|"DOCUMENT"|"AUDIO"|"VIDEO",
+#'       png = "IMAGE"|"DOCUMENT"|"AUDIO"|"VIDEO",
+#'       mp4 = "IMAGE"|"DOCUMENT"|"AUDIO"|"VIDEO",
+#'       mov = "IMAGE"|"DOCUMENT"|"AUDIO"|"VIDEO"
+#'     )
+#'   ),
+#'   encryptionConfiguration = list(
+#'     kmsKeyId = "string",
+#'     kmsEncryptionContext = list(
+#'       "string"
 #'     )
 #'   )
 #' )
@@ -1013,7 +1267,7 @@ bedrockdataautomation_update_blueprint <- function(blueprintArn, schema, bluepri
 #' @rdname bedrockdataautomation_update_data_automation_project
 #'
 #' @aliases bedrockdataautomation_update_data_automation_project
-bedrockdataautomation_update_data_automation_project <- function(projectArn, projectStage = NULL, projectDescription = NULL, standardOutputConfiguration, customOutputConfiguration = NULL, overrideConfiguration = NULL) {
+bedrockdataautomation_update_data_automation_project <- function(projectArn, projectStage = NULL, projectDescription = NULL, standardOutputConfiguration, customOutputConfiguration = NULL, overrideConfiguration = NULL, encryptionConfiguration = NULL) {
   op <- new_operation(
     name = "UpdateDataAutomationProject",
     http_method = "PUT",
@@ -1022,7 +1276,7 @@ bedrockdataautomation_update_data_automation_project <- function(projectArn, pro
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockdataautomation$update_data_automation_project_input(projectArn = projectArn, projectStage = projectStage, projectDescription = projectDescription, standardOutputConfiguration = standardOutputConfiguration, customOutputConfiguration = customOutputConfiguration, overrideConfiguration = overrideConfiguration)
+  input <- .bedrockdataautomation$update_data_automation_project_input(projectArn = projectArn, projectStage = projectStage, projectDescription = projectDescription, standardOutputConfiguration = standardOutputConfiguration, customOutputConfiguration = customOutputConfiguration, overrideConfiguration = overrideConfiguration, encryptionConfiguration = encryptionConfiguration)
   output <- .bedrockdataautomation$update_data_automation_project_output()
   config <- get_config()
   svc <- .bedrockdataautomation$service(config, op)

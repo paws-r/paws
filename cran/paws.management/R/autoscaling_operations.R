@@ -3079,10 +3079,15 @@ autoscaling_terminate_instance_in_auto_scaling_group <- function(InstanceId, Sho
 #' see [Replacing Auto Scaling instances based on maximum instance
 #' lifetime](https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-max-instance-lifetime.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
-#' @param CapacityRebalance Enables or disables Capacity Rebalancing. For more information, see [Use
-#' Capacity Rebalancing to handle Amazon EC2 Spot
-#' Interruptions](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-capacity-rebalancing.html)
+#' @param CapacityRebalance Enables or disables Capacity Rebalancing. If Capacity Rebalancing is
+#' disabled, proactive replacement of at-risk Spot Instances does not
+#' occur. For more information, see [Capacity Rebalancing in Auto Scaling
+#' to replace at-risk Spot
+#' Instances](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-capacity-rebalancing.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
+#' 
+#' To suspend rebalancing across Availability Zones, use the
+#' [`suspend_processes`][autoscaling_suspend_processes] API.
 #' @param Context Reserved.
 #' @param DesiredCapacityType The unit of measurement for the value specified for desired capacity.
 #' Amazon EC2 Auto Scaling supports `DesiredCapacityType` for

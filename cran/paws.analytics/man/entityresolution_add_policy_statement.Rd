@@ -5,24 +5,20 @@
 \title{Adds a policy statement object}
 \usage{
 entityresolution_add_policy_statement(
-  action,
   arn,
-  condition = NULL,
+  statementId,
   effect,
+  action,
   principal,
-  statementId
+  condition = NULL
 )
 }
 \arguments{
-\item{action}{[required] The action that the principal can use on the resource.
-
-For example, \code{entityresolution:GetIdMappingJob},
-\code{entityresolution:GetMatchingJob}.}
-
 \item{arn}{[required] The Amazon Resource Name (ARN) of the resource that will be accessed by
 the principal.}
 
-\item{condition}{A set of condition keys that you can use in key policies.}
+\item{statementId}{[required] A statement identifier that differentiates the statement from others in
+the same policy.}
 
 \item{effect}{[required] Determines whether the permissions specified in the policy are to be
 allowed (\code{Allow}) or denied (\code{Deny}).
@@ -33,11 +29,15 @@ operation, you must also set the value of the \code{effect} parameter in the
 \code{policy} to \code{Deny} for the \code{\link[=entityresolution_put_policy]{put_policy}}
 operation.}
 
+\item{action}{[required] The action that the principal can use on the resource.
+
+For example, \code{entityresolution:GetIdMappingJob},
+\code{entityresolution:GetMatchingJob}.}
+
 \item{principal}{[required] The Amazon Web Services service or Amazon Web Services account that can
 access the resource defined as ARN.}
 
-\item{statementId}{[required] A statement identifier that differentiates the statement from others in
-the same policy.}
+\item{condition}{A set of condition keys that you can use in key policies.}
 }
 \description{
 Adds a policy statement object. To retrieve a list of existing policy statements, use the \code{\link[=entityresolution_get_policy]{get_policy}} API.

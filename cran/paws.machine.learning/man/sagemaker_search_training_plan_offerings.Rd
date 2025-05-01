@@ -10,7 +10,7 @@ sagemaker_search_training_plan_offerings(
   InstanceCount,
   StartTimeAfter = NULL,
   EndTimeBefore = NULL,
-  DurationHours = NULL,
+  DurationHours,
   TargetResources
 )
 }
@@ -34,7 +34,7 @@ specified date.}
 \item{EndTimeBefore}{A filter to search for reserved capacity offerings with an end time
 before a specified date.}
 
-\item{DurationHours}{The desired duration in hours for the training plan offerings.}
+\item{DurationHours}{[required] The desired duration in hours for the training plan offerings.}
 
 \item{TargetResources}{[required] The target resources (e.g., SageMaker Training Jobs, SageMaker HyperPod)
 to search for in the offerings.

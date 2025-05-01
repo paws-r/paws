@@ -431,6 +431,8 @@ NULL
 #'  \link[=sagemaker_update_feature_group]{update_feature_group} \tab Updates the feature group by either adding features or updating the online store configuration\cr
 #'  \link[=sagemaker_update_feature_metadata]{update_feature_metadata} \tab Updates the description and parameters of the feature group\cr
 #'  \link[=sagemaker_update_hub]{update_hub} \tab Update a hub\cr
+#'  \link[=sagemaker_update_hub_content]{update_hub_content} \tab Updates SageMaker hub content (either a Model or Notebook resource)\cr
+#'  \link[=sagemaker_update_hub_content_reference]{update_hub_content_reference} \tab Updates the contents of a SageMaker hub for a ModelReference resource\cr
 #'  \link[=sagemaker_update_image]{update_image} \tab Updates the properties of a SageMaker AI image\cr
 #'  \link[=sagemaker_update_image_version]{update_image_version} \tab Updates the properties of a SageMaker AI image version\cr
 #'  \link[=sagemaker_update_inference_component]{update_inference_component} \tab Updates an inference component\cr
@@ -485,7 +487,7 @@ sagemaker <- function(config = list(), credentials = list(), endpoint = NULL, re
 
 .sagemaker$metadata <- list(
   service_name = "sagemaker",
-  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "api.sagemaker.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "api.sagemaker.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "api.sagemaker.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "api.sagemaker.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "api.sagemaker.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "api.sagemaker.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "api.sagemaker.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "api.sagemaker.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "api.sagemaker.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "api.sagemaker.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "api.sagemaker.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "api.sagemaker.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "api.sagemaker.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "api.sagemaker.{region}.csp.hci.ic.gov", global = FALSE), "^eusc\\-(de)\\-\\w+\\-\\d+$" = list(endpoint = "api.sagemaker.{region}.amazonaws.eu", global = FALSE)),
   service_id = "SageMaker",
   api_version = "2017-07-24",
   signing_name = "sagemaker",

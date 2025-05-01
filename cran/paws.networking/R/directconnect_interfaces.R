@@ -209,13 +209,13 @@ NULL
 
 .directconnect$create_direct_connect_gateway_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(directConnectGatewayName = structure(logical(0), tags = list(type = "string")), amazonSideAsn = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))
+  shape <- structure(list(directConnectGatewayName = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), amazonSideAsn = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .directconnect$create_direct_connect_gateway_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(directConnectGateway = structure(list(directConnectGatewayId = structure(logical(0), tags = list(type = "string")), directConnectGatewayName = structure(logical(0), tags = list(type = "string")), amazonSideAsn = structure(logical(0), tags = list(type = "long")), ownerAccount = structure(logical(0), tags = list(type = "string")), directConnectGatewayState = structure(logical(0), tags = list(type = "string")), stateChangeError = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(directConnectGateway = structure(list(directConnectGatewayId = structure(logical(0), tags = list(type = "string")), directConnectGatewayName = structure(logical(0), tags = list(type = "string")), amazonSideAsn = structure(logical(0), tags = list(type = "long")), ownerAccount = structure(logical(0), tags = list(type = "string")), directConnectGatewayState = structure(logical(0), tags = list(type = "string")), stateChangeError = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -335,7 +335,7 @@ NULL
 
 .directconnect$delete_direct_connect_gateway_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(directConnectGateway = structure(list(directConnectGatewayId = structure(logical(0), tags = list(type = "string")), directConnectGatewayName = structure(logical(0), tags = list(type = "string")), amazonSideAsn = structure(logical(0), tags = list(type = "long")), ownerAccount = structure(logical(0), tags = list(type = "string")), directConnectGatewayState = structure(logical(0), tags = list(type = "string")), stateChangeError = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(directConnectGateway = structure(list(directConnectGatewayId = structure(logical(0), tags = list(type = "string")), directConnectGatewayName = structure(logical(0), tags = list(type = "string")), amazonSideAsn = structure(logical(0), tags = list(type = "long")), ownerAccount = structure(logical(0), tags = list(type = "string")), directConnectGatewayState = structure(logical(0), tags = list(type = "string")), stateChangeError = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -489,7 +489,7 @@ NULL
 
 .directconnect$describe_direct_connect_gateways_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(directConnectGateways = structure(list(structure(list(directConnectGatewayId = structure(logical(0), tags = list(type = "string")), directConnectGatewayName = structure(logical(0), tags = list(type = "string")), amazonSideAsn = structure(logical(0), tags = list(type = "long")), ownerAccount = structure(logical(0), tags = list(type = "string")), directConnectGatewayState = structure(logical(0), tags = list(type = "string")), stateChangeError = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(directConnectGateways = structure(list(structure(list(directConnectGatewayId = structure(logical(0), tags = list(type = "string")), directConnectGatewayName = structure(logical(0), tags = list(type = "string")), amazonSideAsn = structure(logical(0), tags = list(type = "long")), ownerAccount = structure(logical(0), tags = list(type = "string")), directConnectGatewayState = structure(logical(0), tags = list(type = "string")), stateChangeError = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -713,7 +713,7 @@ NULL
 
 .directconnect$update_direct_connect_gateway_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(directConnectGateway = structure(list(directConnectGatewayId = structure(logical(0), tags = list(type = "string")), directConnectGatewayName = structure(logical(0), tags = list(type = "string")), amazonSideAsn = structure(logical(0), tags = list(type = "long")), ownerAccount = structure(logical(0), tags = list(type = "string")), directConnectGatewayState = structure(logical(0), tags = list(type = "string")), stateChangeError = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(directConnectGateway = structure(list(directConnectGatewayId = structure(logical(0), tags = list(type = "string")), directConnectGatewayName = structure(logical(0), tags = list(type = "string")), amazonSideAsn = structure(logical(0), tags = list(type = "long")), ownerAccount = structure(logical(0), tags = list(type = "string")), directConnectGatewayState = structure(logical(0), tags = list(type = "string")), stateChangeError = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

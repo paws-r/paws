@@ -16,7 +16,7 @@ At this time, supported resources are Network Load Balancers and
 Application Load Balancers with cross-zone load balancing turned off.}
 }
 \description{
-Get information about a resource that's been registered for zonal shifts with Amazon Route 53 Application Recovery Controller in this Amazon Web Services Region. Resources that are registered for zonal shifts are managed resources in Route 53 ARC. You can start zonal shifts and configure zonal autoshift for managed resources.
+Get information about a resource that's been registered for zonal shifts with Amazon Route 53 Application Recovery Controller in this Amazon Web Services Region. Resources that are registered for zonal shifts are managed resources in ARC. You can start zonal shifts and configure zonal autoshift for managed resources.
 
 See \url{https://www.paws-r-sdk.com/docs/arczonalshift_get_managed_resource/} for full documentation.
 }

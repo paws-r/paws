@@ -4,11 +4,13 @@
 \alias{entityresolution_put_policy}
 \title{Updates the resource-based policy}
 \usage{
-entityresolution_put_policy(arn, policy, token = NULL)
+entityresolution_put_policy(arn, token = NULL, policy)
 }
 \arguments{
 \item{arn}{[required] The Amazon Resource Name (ARN) of the resource for which the policy
 needs to be updated.}
+
+\item{token}{A unique identifier for the current revision of the policy.}
 
 \item{policy}{[required] The resource-based policy.
 
@@ -17,8 +19,6 @@ for the \code{\link[=entityresolution_put_policy]{put_policy}} operation, you mu
 also set the value of the \code{effect} parameter to \code{Deny} for the
 \code{\link[=entityresolution_add_policy_statement]{add_policy_statement}}
 operation.}
-
-\item{token}{A unique identifier for the current revision of the policy.}
 }
 \description{
 Updates the resource-based policy.

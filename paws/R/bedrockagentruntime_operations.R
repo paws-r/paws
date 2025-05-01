@@ -3,6 +3,177 @@
 #' @include bedrockagentruntime_service.R
 NULL
 
+#' Creates a new invocation within a session
+#'
+#' @description
+#' Creates a new invocation within a session. An invocation groups the
+#' related invocation steps that store the content from a conversation. For
+#' more information about sessions, see [Store and retrieve conversation
+#' history and context with Amazon Bedrock
+#' sessions](https://docs.aws.amazon.com/bedrock/latest/userguide/sessions.html).
+#' 
+#' Related APIs
+#' 
+#' -   [`list_invocations`][bedrockagentruntime_list_invocations]
+#' 
+#' -   [`list_sessions`][bedrockagentruntime_list_sessions]
+#' 
+#' -   [`get_session`][bedrockagentruntime_get_session]
+#'
+#' @usage
+#' bedrockagentruntime_create_invocation(description, invocationId,
+#'   sessionIdentifier)
+#'
+#' @param description A description for the interactions in the invocation. For example, "User
+#' asking about weather in Seattle".
+#' @param invocationId A unique identifier for the invocation in UUID format.
+#' @param sessionIdentifier &#91;required&#93; The unique identifier for the associated session for the invocation. You
+#' can specify either the session's `sessionId` or its Amazon Resource Name
+#' (ARN).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   invocationId = "string",
+#'   sessionId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_invocation(
+#'   description = "string",
+#'   invocationId = "string",
+#'   sessionIdentifier = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockagentruntime_create_invocation
+#'
+#' @aliases bedrockagentruntime_create_invocation
+bedrockagentruntime_create_invocation <- function(description = NULL, invocationId = NULL, sessionIdentifier) {
+  op <- new_operation(
+    name = "CreateInvocation",
+    http_method = "PUT",
+    http_path = "/sessions/{sessionIdentifier}/invocations/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrockagentruntime$create_invocation_input(description = description, invocationId = invocationId, sessionIdentifier = sessionIdentifier)
+  output <- .bedrockagentruntime$create_invocation_output()
+  config <- get_config()
+  svc <- .bedrockagentruntime$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockagentruntime$operations$create_invocation <- bedrockagentruntime_create_invocation
+
+#' Creates a session to temporarily store conversations for generative AI
+#' (GenAI) applications built with open-source frameworks such as LangGraph
+#' and LlamaIndex
+#'
+#' @description
+#' Creates a session to temporarily store conversations for generative AI
+#' (GenAI) applications built with open-source frameworks such as LangGraph
+#' and LlamaIndex. Sessions enable you to save the state of conversations
+#' at checkpoints, with the added security and infrastructure of Amazon Web
+#' Services. For more information, see [Store and retrieve conversation
+#' history and context with Amazon Bedrock
+#' sessions](https://docs.aws.amazon.com/bedrock/latest/userguide/sessions.html).
+#' 
+#' By default, Amazon Bedrock uses Amazon Web Services-managed keys for
+#' session encryption, including session metadata, or you can use your own
+#' KMS key. For more information, see [Amazon Bedrock session
+#' encryption](https://docs.aws.amazon.com/bedrock/latest/userguide/).
+#' 
+#' You use a session to store state and conversation history for generative
+#' AI applications built with open-source frameworks. For Amazon Bedrock
+#' Agents, the service automatically manages conversation context and
+#' associates them with the agent-specific sessionId you specify in the
+#' [`invoke_agent`][bedrockagentruntime_invoke_agent] API operation.
+#' 
+#' Related APIs:
+#' 
+#' -   [`list_sessions`][bedrockagentruntime_list_sessions]
+#' 
+#' -   [`get_session`][bedrockagentruntime_get_session]
+#' 
+#' -   [`end_session`][bedrockagentruntime_end_session]
+#' 
+#' -   [`delete_session`][bedrockagentruntime_delete_session]
+#'
+#' @usage
+#' bedrockagentruntime_create_session(encryptionKeyArn, sessionMetadata,
+#'   tags)
+#'
+#' @param encryptionKeyArn The Amazon Resource Name (ARN) of the KMS key to use to encrypt the
+#' session data. The user or role creating the session must have permission
+#' to use the key. For more information, see [Amazon Bedrock session
+#' encryption](https://docs.aws.amazon.com/bedrock/latest/userguide/).
+#' @param sessionMetadata A map of key-value pairs containing attributes to be persisted across
+#' the session. For example, the user's ID, their language preference, and
+#' the type of device they are using.
+#' @param tags Specify the key-value pairs for the tags that you want to attach to the
+#' session.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   sessionArn = "string",
+#'   sessionId = "string",
+#'   sessionStatus = "ACTIVE"|"EXPIRED"|"ENDED"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_session(
+#'   encryptionKeyArn = "string",
+#'   sessionMetadata = list(
+#'     "string"
+#'   ),
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockagentruntime_create_session
+#'
+#' @aliases bedrockagentruntime_create_session
+bedrockagentruntime_create_session <- function(encryptionKeyArn = NULL, sessionMetadata = NULL, tags = NULL) {
+  op <- new_operation(
+    name = "CreateSession",
+    http_method = "PUT",
+    http_path = "/sessions/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrockagentruntime$create_session_input(encryptionKeyArn = encryptionKeyArn, sessionMetadata = sessionMetadata, tags = tags)
+  output <- .bedrockagentruntime$create_session_output()
+  config <- get_config()
+  svc <- .bedrockagentruntime$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockagentruntime$operations$create_session <- bedrockagentruntime_create_session
+
 #' Deletes memory from the specified memory identifier
 #'
 #' @description
@@ -53,6 +224,113 @@ bedrockagentruntime_delete_agent_memory <- function(agentAliasId, agentId, memor
   return(response)
 }
 .bedrockagentruntime$operations$delete_agent_memory <- bedrockagentruntime_delete_agent_memory
+
+#' Deletes a session that you ended
+#'
+#' @description
+#' Deletes a session that you ended. You can't delete a session with an
+#' `ACTIVE` status. To delete an active session, you must first end it with
+#' the [`end_session`][bedrockagentruntime_end_session] API operation. For
+#' more information about sessions, see [Store and retrieve conversation
+#' history and context with Amazon Bedrock
+#' sessions](https://docs.aws.amazon.com/bedrock/latest/userguide/sessions.html).
+#'
+#' @usage
+#' bedrockagentruntime_delete_session(sessionIdentifier)
+#'
+#' @param sessionIdentifier &#91;required&#93; The unique identifier for the session to be deleted. You can specify
+#' either the session's `sessionId` or its Amazon Resource Name (ARN).
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_session(
+#'   sessionIdentifier = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockagentruntime_delete_session
+#'
+#' @aliases bedrockagentruntime_delete_session
+bedrockagentruntime_delete_session <- function(sessionIdentifier) {
+  op <- new_operation(
+    name = "DeleteSession",
+    http_method = "DELETE",
+    http_path = "/sessions/{sessionIdentifier}/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrockagentruntime$delete_session_input(sessionIdentifier = sessionIdentifier)
+  output <- .bedrockagentruntime$delete_session_output()
+  config <- get_config()
+  svc <- .bedrockagentruntime$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockagentruntime$operations$delete_session <- bedrockagentruntime_delete_session
+
+#' Ends the session
+#'
+#' @description
+#' Ends the session. After you end a session, you can still access its
+#' content but you can’t add to it. To delete the session and it's content,
+#' you use the DeleteSession API operation. For more information about
+#' sessions, see [Store and retrieve conversation history and context with
+#' Amazon Bedrock
+#' sessions](https://docs.aws.amazon.com/bedrock/latest/userguide/sessions.html).
+#'
+#' @usage
+#' bedrockagentruntime_end_session(sessionIdentifier)
+#'
+#' @param sessionIdentifier &#91;required&#93; The unique identifier for the session to end. You can specify either the
+#' session's `sessionId` or its Amazon Resource Name (ARN).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   sessionArn = "string",
+#'   sessionId = "string",
+#'   sessionStatus = "ACTIVE"|"EXPIRED"|"ENDED"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$end_session(
+#'   sessionIdentifier = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockagentruntime_end_session
+#'
+#' @aliases bedrockagentruntime_end_session
+bedrockagentruntime_end_session <- function(sessionIdentifier) {
+  op <- new_operation(
+    name = "EndSession",
+    http_method = "PATCH",
+    http_path = "/sessions/{sessionIdentifier}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrockagentruntime$end_session_input(sessionIdentifier = sessionIdentifier)
+  output <- .bedrockagentruntime$end_session_output()
+  config <- get_config()
+  svc <- .bedrockagentruntime$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockagentruntime$operations$end_session <- bedrockagentruntime_end_session
 
 #' Generates an SQL query from a natural language query
 #'
@@ -207,6 +485,155 @@ bedrockagentruntime_get_agent_memory <- function(agentAliasId, agentId, maxItems
 }
 .bedrockagentruntime$operations$get_agent_memory <- bedrockagentruntime_get_agent_memory
 
+#' Retrieves the details of a specific invocation step within an invocation
+#' in a session
+#'
+#' @description
+#' Retrieves the details of a specific invocation step within an invocation
+#' in a session. For more information about sessions, see [Store and
+#' retrieve conversation history and context with Amazon Bedrock
+#' sessions](https://docs.aws.amazon.com/bedrock/latest/userguide/sessions.html).
+#'
+#' @usage
+#' bedrockagentruntime_get_invocation_step(invocationIdentifier,
+#'   invocationStepId, sessionIdentifier)
+#'
+#' @param invocationIdentifier &#91;required&#93; The unique identifier for the invocation in UUID format.
+#' @param invocationStepId &#91;required&#93; The unique identifier (in UUID format) for the specific invocation step
+#' to retrieve.
+#' @param sessionIdentifier &#91;required&#93; The unique identifier for the invocation step's associated session. You
+#' can specify either the session's `sessionId` or its Amazon Resource Name
+#' (ARN).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   invocationStep = list(
+#'     invocationId = "string",
+#'     invocationStepId = "string",
+#'     invocationStepTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     payload = list(
+#'       contentBlocks = list(
+#'         list(
+#'           image = list(
+#'             format = "png"|"jpeg"|"gif"|"webp",
+#'             source = list(
+#'               bytes = raw,
+#'               s3Location = list(
+#'                 uri = "string"
+#'               )
+#'             )
+#'           ),
+#'           text = "string"
+#'         )
+#'       )
+#'     ),
+#'     sessionId = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_invocation_step(
+#'   invocationIdentifier = "string",
+#'   invocationStepId = "string",
+#'   sessionIdentifier = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockagentruntime_get_invocation_step
+#'
+#' @aliases bedrockagentruntime_get_invocation_step
+bedrockagentruntime_get_invocation_step <- function(invocationIdentifier, invocationStepId, sessionIdentifier) {
+  op <- new_operation(
+    name = "GetInvocationStep",
+    http_method = "POST",
+    http_path = "/sessions/{sessionIdentifier}/invocationSteps/{invocationStepId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrockagentruntime$get_invocation_step_input(invocationIdentifier = invocationIdentifier, invocationStepId = invocationStepId, sessionIdentifier = sessionIdentifier)
+  output <- .bedrockagentruntime$get_invocation_step_output()
+  config <- get_config()
+  svc <- .bedrockagentruntime$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockagentruntime$operations$get_invocation_step <- bedrockagentruntime_get_invocation_step
+
+#' Retrieves details about a specific session
+#'
+#' @description
+#' Retrieves details about a specific session. For more information about
+#' sessions, see [Store and retrieve conversation history and context with
+#' Amazon Bedrock
+#' sessions](https://docs.aws.amazon.com/bedrock/latest/userguide/sessions.html).
+#'
+#' @usage
+#' bedrockagentruntime_get_session(sessionIdentifier)
+#'
+#' @param sessionIdentifier &#91;required&#93; A unique identifier for the session to retrieve. You can specify either
+#' the session's `sessionId` or its Amazon Resource Name (ARN).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   encryptionKeyArn = "string",
+#'   lastUpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   sessionArn = "string",
+#'   sessionId = "string",
+#'   sessionMetadata = list(
+#'     "string"
+#'   ),
+#'   sessionStatus = "ACTIVE"|"EXPIRED"|"ENDED"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_session(
+#'   sessionIdentifier = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockagentruntime_get_session
+#'
+#' @aliases bedrockagentruntime_get_session
+bedrockagentruntime_get_session <- function(sessionIdentifier) {
+  op <- new_operation(
+    name = "GetSession",
+    http_method = "GET",
+    http_path = "/sessions/{sessionIdentifier}/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrockagentruntime$get_session_input(sessionIdentifier = sessionIdentifier)
+  output <- .bedrockagentruntime$get_session_output()
+  config <- get_config()
+  svc <- .bedrockagentruntime$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockagentruntime$operations$get_session <- bedrockagentruntime_get_session
+
 #' Sends a prompt for the agent to process and respond to
 #'
 #' @description
@@ -221,16 +648,6 @@ bedrockagentruntime_get_agent_memory <- function(agentAliasId, agentId, maxItems
 #'     it to the information it processed, the actions it took, and the
 #'     final result it yielded. For more information, see [Trace
 #'     enablement](https://docs.aws.amazon.com/bedrock/latest/userguide/agents-test.html#trace-events).
-#' 
-#' -   To stream agent responses, make sure that only orchestration prompt
-#'     is enabled. Agent streaming is not supported for the following
-#'     steps:
-#' 
-#'     -   `Pre-processing`
-#' 
-#'     -   `Post-processing`
-#' 
-#'     -   Agent with 1 Knowledge base and `User Input` not enabled
 #' 
 #' -   End a conversation by setting `endSession` to `true`.
 #' 
@@ -454,6 +871,9 @@ bedrockagentruntime_get_agent_memory <- function(agentAliasId, agentId, maxItems
 #'         )
 #'       ),
 #'       collaboratorName = "string",
+#'       eventTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
 #'       sessionId = "string",
 #'       trace = list(
 #'         customOrchestrationTrace = list(
@@ -623,7 +1043,15 @@ bedrockagentruntime_get_agent_memory <- function(agentAliasId, agentId, maxItems
 #'                         httpStatusCode = 123,
 #'                         responseBody = list(
 #'                           list(
-#'                             body = "string"
+#'                             body = "string",
+#'                             images = list(
+#'                               list(
+#'                                 format = "png"|"jpeg"|"gif"|"webp",
+#'                                 source = list(
+#'                                   bytes = raw
+#'                                 )
+#'                               )
+#'                             )
 #'                           )
 #'                         ),
 #'                         responseState = "FAILURE"|"REPROMPT"
@@ -635,7 +1063,15 @@ bedrockagentruntime_get_agent_memory <- function(agentAliasId, agentId, maxItems
 #'                         function = "string",
 #'                         responseBody = list(
 #'                           list(
-#'                             body = "string"
+#'                             body = "string",
+#'                             images = list(
+#'                               list(
+#'                                 format = "png"|"jpeg"|"gif"|"webp",
+#'                                 source = list(
+#'                                   bytes = raw
+#'                                 )
+#'                               )
+#'                             )
 #'                           )
 #'                         ),
 #'                         responseState = "FAILURE"|"REPROMPT"
@@ -687,6 +1123,13 @@ bedrockagentruntime_get_agent_memory <- function(agentAliasId, agentId, maxItems
 #'             ),
 #'             rawResponse = list(
 #'               content = "string"
+#'             ),
+#'             reasoningContent = list(
+#'               reasoningText = list(
+#'                 signature = "string",
+#'                 text = "string"
+#'               ),
+#'               redactedContent = raw
 #'             ),
 #'             traceId = "string"
 #'           ),
@@ -854,6 +1297,13 @@ bedrockagentruntime_get_agent_memory <- function(agentAliasId, agentId, maxItems
 #'             rawResponse = list(
 #'               content = "string"
 #'             ),
+#'             reasoningContent = list(
+#'               reasoningText = list(
+#'                 signature = "string",
+#'                 text = "string"
+#'               ),
+#'               redactedContent = raw
+#'             ),
 #'             traceId = "string"
 #'           )
 #'         ),
@@ -889,6 +1339,13 @@ bedrockagentruntime_get_agent_memory <- function(agentAliasId, agentId, maxItems
 #'             ),
 #'             rawResponse = list(
 #'               content = "string"
+#'             ),
+#'             reasoningContent = list(
+#'               reasoningText = list(
+#'                 signature = "string",
+#'                 text = "string"
+#'               ),
+#'               redactedContent = raw
 #'             ),
 #'             traceId = "string"
 #'           )
@@ -938,7 +1395,15 @@ bedrockagentruntime_get_agent_memory <- function(agentAliasId, agentId, maxItems
 #'                         httpStatusCode = 123,
 #'                         responseBody = list(
 #'                           list(
-#'                             body = "string"
+#'                             body = "string",
+#'                             images = list(
+#'                               list(
+#'                                 format = "png"|"jpeg"|"gif"|"webp",
+#'                                 source = list(
+#'                                   bytes = raw
+#'                                 )
+#'                               )
+#'                             )
 #'                           )
 #'                         ),
 #'                         responseState = "FAILURE"|"REPROMPT"
@@ -950,7 +1415,15 @@ bedrockagentruntime_get_agent_memory <- function(agentAliasId, agentId, maxItems
 #'                         function = "string",
 #'                         responseBody = list(
 #'                           list(
-#'                             body = "string"
+#'                             body = "string",
+#'                             images = list(
+#'                               list(
+#'                                 format = "png"|"jpeg"|"gif"|"webp",
+#'                                 source = list(
+#'                                   bytes = raw
+#'                                 )
+#'                               )
+#'                             )
 #'                           )
 #'                         ),
 #'                         responseState = "FAILURE"|"REPROMPT"
@@ -1304,7 +1777,15 @@ bedrockagentruntime_get_agent_memory <- function(agentAliasId, agentId, maxItems
 #'           httpStatusCode = 123,
 #'           responseBody = list(
 #'             list(
-#'               body = "string"
+#'               body = "string",
+#'               images = list(
+#'                 list(
+#'                   format = "png"|"jpeg"|"gif"|"webp",
+#'                   source = list(
+#'                     bytes = raw
+#'                   )
+#'                 )
+#'               )
 #'             )
 #'           ),
 #'           responseState = "FAILURE"|"REPROMPT"
@@ -1316,7 +1797,15 @@ bedrockagentruntime_get_agent_memory <- function(agentAliasId, agentId, maxItems
 #'           function = "string",
 #'           responseBody = list(
 #'             list(
-#'               body = "string"
+#'               body = "string",
+#'               images = list(
+#'                 list(
+#'                   format = "png"|"jpeg"|"gif"|"webp",
+#'                   source = list(
+#'                     bytes = raw
+#'                   )
+#'                 )
+#'               )
 #'             )
 #'           ),
 #'           responseState = "FAILURE"|"REPROMPT"
@@ -1436,6 +1925,15 @@ bedrockagentruntime_invoke_agent <- function(agentAliasId, agentId, bedrockModel
 #'               conditionName = "string"
 #'             )
 #'           ),
+#'           timestamp = as.POSIXct(
+#'             "2015-01-01"
+#'           )
+#'         ),
+#'         nodeActionTrace = list(
+#'           nodeName = "string",
+#'           operationName = "string",
+#'           requestId = "string",
+#'           serviceName = "string",
 #'           timestamp = as.POSIXct(
 #'             "2015-01-01"
 #'           )
@@ -1568,22 +2066,29 @@ bedrockagentruntime_invoke_flow <- function(enableTrace = NULL, executionId = NU
 #'
 #' @usage
 #' bedrockagentruntime_invoke_inline_agent(actionGroups,
-#'   bedrockModelConfigurations, customerEncryptionKeyArn, enableTrace,
-#'   endSession, foundationModel, guardrailConfiguration,
-#'   idleSessionTTLInSeconds, inlineSessionState, inputText, instruction,
-#'   knowledgeBases, promptOverrideConfiguration, sessionId,
-#'   streamingConfigurations)
+#'   agentCollaboration, agentName, bedrockModelConfigurations,
+#'   collaboratorConfigurations, collaborators, customOrchestration,
+#'   customerEncryptionKeyArn, enableTrace, endSession, foundationModel,
+#'   guardrailConfiguration, idleSessionTTLInSeconds, inlineSessionState,
+#'   inputText, instruction, knowledgeBases, orchestrationType,
+#'   promptOverrideConfiguration, sessionId, streamingConfigurations)
 #'
 #' @param actionGroups A list of action groups with each action group defining the action the
 #' inline agent needs to carry out.
+#' @param agentCollaboration Defines how the inline collaborator agent handles information across
+#' multiple collaborator agents to coordinate a final response. The inline
+#' collaborator agent can also be the supervisor.
+#' @param agentName The name for the agent.
 #' @param bedrockModelConfigurations Model settings for the request.
+#' @param collaboratorConfigurations Settings for an inline agent collaborator called with
+#' [`invoke_inline_agent`][bedrockagentruntime_invoke_inline_agent].
+#' @param collaborators List of collaborator inline agents.
+#' @param customOrchestration Contains details of the custom orchestration configured for the agent.
 #' @param customerEncryptionKeyArn The Amazon Resource Name (ARN) of the Amazon Web Services KMS key to use
 #' to encrypt your inline agent.
 #' @param enableTrace Specifies whether to turn on the trace or not to track the agent's
 #' reasoning process. For more information, see [Using
 #' trace](https://docs.aws.amazon.com/bedrock/latest/userguide/trace-events.html).
-#' 
-#'      </p> 
 #' @param endSession Specifies whether to end the session with the inline agent or not.
 #' @param foundationModel &#91;required&#93; The [model identifier
 #' (ID)](https://docs.aws.amazon.com/bedrock/latest/userguide/models-supported.html#model-ids-arns)
@@ -1615,6 +2120,8 @@ bedrockagentruntime_invoke_flow <- function(enableTrace = NULL, executionId = NU
 #' @param instruction &#91;required&#93; The instructions that tell the inline agent what it should do and how it
 #' should interact with users.
 #' @param knowledgeBases Contains information of the knowledge bases to associate with.
+#' @param orchestrationType Specifies the type of orchestration strategy for the agent. This is set
+#' to DEFAULT orchestration type, by default.
 #' @param promptOverrideConfiguration Configurations for advanced prompts used to override the default prompts
 #' to enhance the accuracy of the inline agent.
 #' @param sessionId &#91;required&#93; The unique identifier of the session. Use the same value across requests
@@ -1779,6 +2286,15 @@ bedrockagentruntime_invoke_flow <- function(enableTrace = NULL, executionId = NU
 #'       message = "string"
 #'     ),
 #'     trace = list(
+#'       callerChain = list(
+#'         list(
+#'           agentAliasArn = "string"
+#'         )
+#'       ),
+#'       collaboratorName = "string",
+#'       eventTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
 #'       sessionId = "string",
 #'       trace = list(
 #'         customOrchestrationTrace = list(
@@ -1948,7 +2464,15 @@ bedrockagentruntime_invoke_flow <- function(enableTrace = NULL, executionId = NU
 #'                         httpStatusCode = 123,
 #'                         responseBody = list(
 #'                           list(
-#'                             body = "string"
+#'                             body = "string",
+#'                             images = list(
+#'                               list(
+#'                                 format = "png"|"jpeg"|"gif"|"webp",
+#'                                 source = list(
+#'                                   bytes = raw
+#'                                 )
+#'                               )
+#'                             )
 #'                           )
 #'                         ),
 #'                         responseState = "FAILURE"|"REPROMPT"
@@ -1960,7 +2484,15 @@ bedrockagentruntime_invoke_flow <- function(enableTrace = NULL, executionId = NU
 #'                         function = "string",
 #'                         responseBody = list(
 #'                           list(
-#'                             body = "string"
+#'                             body = "string",
+#'                             images = list(
+#'                               list(
+#'                                 format = "png"|"jpeg"|"gif"|"webp",
+#'                                 source = list(
+#'                                   bytes = raw
+#'                                 )
+#'                               )
+#'                             )
 #'                           )
 #'                         ),
 #'                         responseState = "FAILURE"|"REPROMPT"
@@ -2012,6 +2544,13 @@ bedrockagentruntime_invoke_flow <- function(enableTrace = NULL, executionId = NU
 #'             ),
 #'             rawResponse = list(
 #'               content = "string"
+#'             ),
+#'             reasoningContent = list(
+#'               reasoningText = list(
+#'                 signature = "string",
+#'                 text = "string"
+#'               ),
+#'               redactedContent = raw
 #'             ),
 #'             traceId = "string"
 #'           ),
@@ -2179,6 +2718,13 @@ bedrockagentruntime_invoke_flow <- function(enableTrace = NULL, executionId = NU
 #'             rawResponse = list(
 #'               content = "string"
 #'             ),
+#'             reasoningContent = list(
+#'               reasoningText = list(
+#'                 signature = "string",
+#'                 text = "string"
+#'               ),
+#'               redactedContent = raw
+#'             ),
 #'             traceId = "string"
 #'           )
 #'         ),
@@ -2214,6 +2760,13 @@ bedrockagentruntime_invoke_flow <- function(enableTrace = NULL, executionId = NU
 #'             ),
 #'             rawResponse = list(
 #'               content = "string"
+#'             ),
+#'             reasoningContent = list(
+#'               reasoningText = list(
+#'                 signature = "string",
+#'                 text = "string"
+#'               ),
+#'               redactedContent = raw
 #'             ),
 #'             traceId = "string"
 #'           )
@@ -2263,7 +2816,15 @@ bedrockagentruntime_invoke_flow <- function(enableTrace = NULL, executionId = NU
 #'                         httpStatusCode = 123,
 #'                         responseBody = list(
 #'                           list(
-#'                             body = "string"
+#'                             body = "string",
+#'                             images = list(
+#'                               list(
+#'                                 format = "png"|"jpeg"|"gif"|"webp",
+#'                                 source = list(
+#'                                   bytes = raw
+#'                                 )
+#'                               )
+#'                             )
 #'                           )
 #'                         ),
 #'                         responseState = "FAILURE"|"REPROMPT"
@@ -2275,7 +2836,15 @@ bedrockagentruntime_invoke_flow <- function(enableTrace = NULL, executionId = NU
 #'                         function = "string",
 #'                         responseBody = list(
 #'                           list(
-#'                             body = "string"
+#'                             body = "string",
+#'                             images = list(
+#'                               list(
+#'                                 format = "png"|"jpeg"|"gif"|"webp",
+#'                                 source = list(
+#'                                   bytes = raw
+#'                                 )
+#'                               )
+#'                             )
 #'                           )
 #'                         ),
 #'                         responseState = "FAILURE"|"REPROMPT"
@@ -2503,12 +3072,213 @@ bedrockagentruntime_invoke_flow <- function(enableTrace = NULL, executionId = NU
 #'           )
 #'         )
 #'       ),
-#'       parentActionGroupSignature = "AMAZON.UserInput"|"AMAZON.CodeInterpreter"
+#'       parentActionGroupSignature = "AMAZON.UserInput"|"AMAZON.CodeInterpreter"|"ANTHROPIC.Computer"|"ANTHROPIC.Bash"|"ANTHROPIC.TextEditor",
+#'       parentActionGroupSignatureParams = list(
+#'         "string"
+#'       )
 #'     )
 #'   ),
+#'   agentCollaboration = "SUPERVISOR"|"SUPERVISOR_ROUTER"|"DISABLED",
+#'   agentName = "string",
 #'   bedrockModelConfigurations = list(
 #'     performanceConfig = list(
 #'       latency = "standard"|"optimized"
+#'     )
+#'   ),
+#'   collaboratorConfigurations = list(
+#'     list(
+#'       agentAliasArn = "string",
+#'       collaboratorInstruction = "string",
+#'       collaboratorName = "string",
+#'       relayConversationHistory = "TO_COLLABORATOR"|"DISABLED"
+#'     )
+#'   ),
+#'   collaborators = list(
+#'     list(
+#'       actionGroups = list(
+#'         list(
+#'           actionGroupExecutor = list(
+#'             customControl = "RETURN_CONTROL",
+#'             lambda = "string"
+#'           ),
+#'           actionGroupName = "string",
+#'           apiSchema = list(
+#'             payload = "string",
+#'             s3 = list(
+#'               s3BucketName = "string",
+#'               s3ObjectKey = "string"
+#'             )
+#'           ),
+#'           description = "string",
+#'           functionSchema = list(
+#'             functions = list(
+#'               list(
+#'                 description = "string",
+#'                 name = "string",
+#'                 parameters = list(
+#'                   list(
+#'                     description = "string",
+#'                     required = TRUE|FALSE,
+#'                     type = "string"|"number"|"integer"|"boolean"|"array"
+#'                   )
+#'                 ),
+#'                 requireConfirmation = "ENABLED"|"DISABLED"
+#'               )
+#'             )
+#'           ),
+#'           parentActionGroupSignature = "AMAZON.UserInput"|"AMAZON.CodeInterpreter"|"ANTHROPIC.Computer"|"ANTHROPIC.Bash"|"ANTHROPIC.TextEditor",
+#'           parentActionGroupSignatureParams = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       agentCollaboration = "SUPERVISOR"|"SUPERVISOR_ROUTER"|"DISABLED",
+#'       agentName = "string",
+#'       collaboratorConfigurations = list(
+#'         list(
+#'           agentAliasArn = "string",
+#'           collaboratorInstruction = "string",
+#'           collaboratorName = "string",
+#'           relayConversationHistory = "TO_COLLABORATOR"|"DISABLED"
+#'         )
+#'       ),
+#'       customerEncryptionKeyArn = "string",
+#'       foundationModel = "string",
+#'       guardrailConfiguration = list(
+#'         guardrailIdentifier = "string",
+#'         guardrailVersion = "string"
+#'       ),
+#'       idleSessionTTLInSeconds = 123,
+#'       instruction = "string",
+#'       knowledgeBases = list(
+#'         list(
+#'           description = "string",
+#'           knowledgeBaseId = "string",
+#'           retrievalConfiguration = list(
+#'             vectorSearchConfiguration = list(
+#'               filter = list(
+#'                 andAll = list(
+#'                   list()
+#'                 ),
+#'                 equals = list(
+#'                   key = "string",
+#'                   value = list()
+#'                 ),
+#'                 greaterThan = list(
+#'                   key = "string",
+#'                   value = list()
+#'                 ),
+#'                 greaterThanOrEquals = list(
+#'                   key = "string",
+#'                   value = list()
+#'                 ),
+#'                 in = list(
+#'                   key = "string",
+#'                   value = list()
+#'                 ),
+#'                 lessThan = list(
+#'                   key = "string",
+#'                   value = list()
+#'                 ),
+#'                 lessThanOrEquals = list(
+#'                   key = "string",
+#'                   value = list()
+#'                 ),
+#'                 listContains = list(
+#'                   key = "string",
+#'                   value = list()
+#'                 ),
+#'                 notEquals = list(
+#'                   key = "string",
+#'                   value = list()
+#'                 ),
+#'                 notIn = list(
+#'                   key = "string",
+#'                   value = list()
+#'                 ),
+#'                 orAll = list(
+#'                   list()
+#'                 ),
+#'                 startsWith = list(
+#'                   key = "string",
+#'                   value = list()
+#'                 ),
+#'                 stringContains = list(
+#'                   key = "string",
+#'                   value = list()
+#'                 )
+#'               ),
+#'               implicitFilterConfiguration = list(
+#'                 metadataAttributes = list(
+#'                   list(
+#'                     description = "string",
+#'                     key = "string",
+#'                     type = "STRING"|"NUMBER"|"BOOLEAN"|"STRING_LIST"
+#'                   )
+#'                 ),
+#'                 modelArn = "string"
+#'               ),
+#'               numberOfResults = 123,
+#'               overrideSearchType = "HYBRID"|"SEMANTIC",
+#'               rerankingConfiguration = list(
+#'                 bedrockRerankingConfiguration = list(
+#'                   metadataConfiguration = list(
+#'                     selectionMode = "SELECTIVE"|"ALL",
+#'                     selectiveModeConfiguration = list(
+#'                       fieldsToExclude = list(
+#'                         list(
+#'                           fieldName = "string"
+#'                         )
+#'                       ),
+#'                       fieldsToInclude = list(
+#'                         list(
+#'                           fieldName = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   modelConfiguration = list(
+#'                     additionalModelRequestFields = list(
+#'                       list()
+#'                     ),
+#'                     modelArn = "string"
+#'                   ),
+#'                   numberOfRerankedResults = 123
+#'                 ),
+#'                 type = "BEDROCK_RERANKING_MODEL"
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       promptOverrideConfiguration = list(
+#'         overrideLambda = "string",
+#'         promptConfigurations = list(
+#'           list(
+#'             additionalModelRequestFields = list(),
+#'             basePromptTemplate = "string",
+#'             foundationModel = "string",
+#'             inferenceConfiguration = list(
+#'               maximumLength = 123,
+#'               stopSequences = list(
+#'                 "string"
+#'               ),
+#'               temperature = 123.0,
+#'               topK = 123,
+#'               topP = 123.0
+#'             ),
+#'             parserMode = "DEFAULT"|"OVERRIDDEN",
+#'             promptCreationMode = "DEFAULT"|"OVERRIDDEN",
+#'             promptState = "ENABLED"|"DISABLED",
+#'             promptType = "PRE_PROCESSING"|"ORCHESTRATION"|"KNOWLEDGE_BASE_RESPONSE_GENERATION"|"POST_PROCESSING"|"ROUTING_CLASSIFIER"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   customOrchestration = list(
+#'     executor = list(
+#'       lambda = "string"
 #'     )
 #'   ),
 #'   customerEncryptionKeyArn = "string",
@@ -2521,6 +3291,18 @@ bedrockagentruntime_invoke_flow <- function(enableTrace = NULL, executionId = NU
 #'   ),
 #'   idleSessionTTLInSeconds = 123,
 #'   inlineSessionState = list(
+#'     conversationHistory = list(
+#'       messages = list(
+#'         list(
+#'           content = list(
+#'             list(
+#'               text = "string"
+#'             )
+#'           ),
+#'           role = "user"|"assistant"
+#'         )
+#'       )
+#'     ),
 #'     files = list(
 #'       list(
 #'         name = "string",
@@ -2552,7 +3334,15 @@ bedrockagentruntime_invoke_flow <- function(enableTrace = NULL, executionId = NU
 #'           httpStatusCode = 123,
 #'           responseBody = list(
 #'             list(
-#'               body = "string"
+#'               body = "string",
+#'               images = list(
+#'                 list(
+#'                   format = "png"|"jpeg"|"gif"|"webp",
+#'                   source = list(
+#'                     bytes = raw
+#'                   )
+#'                 )
+#'               )
 #'             )
 #'           ),
 #'           responseState = "FAILURE"|"REPROMPT"
@@ -2564,7 +3354,15 @@ bedrockagentruntime_invoke_flow <- function(enableTrace = NULL, executionId = NU
 #'           function = "string",
 #'           responseBody = list(
 #'             list(
-#'               body = "string"
+#'               body = "string",
+#'               images = list(
+#'                 list(
+#'                   format = "png"|"jpeg"|"gif"|"webp",
+#'                   source = list(
+#'                     bytes = raw
+#'                   )
+#'                 )
+#'               )
 #'             )
 #'           ),
 #'           responseState = "FAILURE"|"REPROMPT"
@@ -2678,12 +3476,14 @@ bedrockagentruntime_invoke_flow <- function(enableTrace = NULL, executionId = NU
 #'       )
 #'     )
 #'   ),
+#'   orchestrationType = "DEFAULT"|"CUSTOM_ORCHESTRATION",
 #'   promptOverrideConfiguration = list(
 #'     overrideLambda = "string",
 #'     promptConfigurations = list(
 #'       list(
 #'         additionalModelRequestFields = list(),
 #'         basePromptTemplate = "string",
+#'         foundationModel = "string",
 #'         inferenceConfiguration = list(
 #'           maximumLength = 123,
 #'           stopSequences = list(
@@ -2713,7 +3513,7 @@ bedrockagentruntime_invoke_flow <- function(enableTrace = NULL, executionId = NU
 #' @rdname bedrockagentruntime_invoke_inline_agent
 #'
 #' @aliases bedrockagentruntime_invoke_inline_agent
-bedrockagentruntime_invoke_inline_agent <- function(actionGroups = NULL, bedrockModelConfigurations = NULL, customerEncryptionKeyArn = NULL, enableTrace = NULL, endSession = NULL, foundationModel, guardrailConfiguration = NULL, idleSessionTTLInSeconds = NULL, inlineSessionState = NULL, inputText = NULL, instruction, knowledgeBases = NULL, promptOverrideConfiguration = NULL, sessionId, streamingConfigurations = NULL) {
+bedrockagentruntime_invoke_inline_agent <- function(actionGroups = NULL, agentCollaboration = NULL, agentName = NULL, bedrockModelConfigurations = NULL, collaboratorConfigurations = NULL, collaborators = NULL, customOrchestration = NULL, customerEncryptionKeyArn = NULL, enableTrace = NULL, endSession = NULL, foundationModel, guardrailConfiguration = NULL, idleSessionTTLInSeconds = NULL, inlineSessionState = NULL, inputText = NULL, instruction, knowledgeBases = NULL, orchestrationType = NULL, promptOverrideConfiguration = NULL, sessionId, streamingConfigurations = NULL) {
   op <- new_operation(
     name = "InvokeInlineAgent",
     http_method = "POST",
@@ -2722,7 +3522,7 @@ bedrockagentruntime_invoke_inline_agent <- function(actionGroups = NULL, bedrock
     paginator = list(),
     stream_api = TRUE
   )
-  input <- .bedrockagentruntime$invoke_inline_agent_input(actionGroups = actionGroups, bedrockModelConfigurations = bedrockModelConfigurations, customerEncryptionKeyArn = customerEncryptionKeyArn, enableTrace = enableTrace, endSession = endSession, foundationModel = foundationModel, guardrailConfiguration = guardrailConfiguration, idleSessionTTLInSeconds = idleSessionTTLInSeconds, inlineSessionState = inlineSessionState, inputText = inputText, instruction = instruction, knowledgeBases = knowledgeBases, promptOverrideConfiguration = promptOverrideConfiguration, sessionId = sessionId, streamingConfigurations = streamingConfigurations)
+  input <- .bedrockagentruntime$invoke_inline_agent_input(actionGroups = actionGroups, agentCollaboration = agentCollaboration, agentName = agentName, bedrockModelConfigurations = bedrockModelConfigurations, collaboratorConfigurations = collaboratorConfigurations, collaborators = collaborators, customOrchestration = customOrchestration, customerEncryptionKeyArn = customerEncryptionKeyArn, enableTrace = enableTrace, endSession = endSession, foundationModel = foundationModel, guardrailConfiguration = guardrailConfiguration, idleSessionTTLInSeconds = idleSessionTTLInSeconds, inlineSessionState = inlineSessionState, inputText = inputText, instruction = instruction, knowledgeBases = knowledgeBases, orchestrationType = orchestrationType, promptOverrideConfiguration = promptOverrideConfiguration, sessionId = sessionId, streamingConfigurations = streamingConfigurations)
   output <- .bedrockagentruntime$invoke_inline_agent_output()
   config <- get_config()
   svc <- .bedrockagentruntime$service(config, op)
@@ -2731,6 +3531,280 @@ bedrockagentruntime_invoke_inline_agent <- function(actionGroups = NULL, bedrock
   return(response)
 }
 .bedrockagentruntime$operations$invoke_inline_agent <- bedrockagentruntime_invoke_inline_agent
+
+#' Lists all invocation steps associated with a session and optionally, an
+#' invocation within the session
+#'
+#' @description
+#' Lists all invocation steps associated with a session and optionally, an
+#' invocation within the session. For more information about sessions, see
+#' [Store and retrieve conversation history and context with Amazon Bedrock
+#' sessions](https://docs.aws.amazon.com/bedrock/latest/userguide/sessions.html).
+#'
+#' @usage
+#' bedrockagentruntime_list_invocation_steps(invocationIdentifier,
+#'   maxResults, nextToken, sessionIdentifier)
+#'
+#' @param invocationIdentifier The unique identifier (in UUID format) for the invocation to list
+#' invocation steps for.
+#' @param maxResults The maximum number of results to return in the response. If the total
+#' number of results is greater than this value, use the token returned in
+#' the response in the `nextToken` field when making another request to
+#' return the next batch of results.
+#' @param nextToken If the total number of results is greater than the `maxResults` value
+#' provided in the request, enter the token returned in the `nextToken`
+#' field in the response in this field to return the next batch of results.
+#' @param sessionIdentifier &#91;required&#93; The unique identifier for the session associated with the invocation
+#' steps. You can specify either the session's `sessionId` or its Amazon
+#' Resource Name (ARN).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   invocationStepSummaries = list(
+#'     list(
+#'       invocationId = "string",
+#'       invocationStepId = "string",
+#'       invocationStepTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       sessionId = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_invocation_steps(
+#'   invocationIdentifier = "string",
+#'   maxResults = 123,
+#'   nextToken = "string",
+#'   sessionIdentifier = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockagentruntime_list_invocation_steps
+#'
+#' @aliases bedrockagentruntime_list_invocation_steps
+bedrockagentruntime_list_invocation_steps <- function(invocationIdentifier = NULL, maxResults = NULL, nextToken = NULL, sessionIdentifier) {
+  op <- new_operation(
+    name = "ListInvocationSteps",
+    http_method = "POST",
+    http_path = "/sessions/{sessionIdentifier}/invocationSteps/",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "invocationStepSummaries"),
+    stream_api = FALSE
+  )
+  input <- .bedrockagentruntime$list_invocation_steps_input(invocationIdentifier = invocationIdentifier, maxResults = maxResults, nextToken = nextToken, sessionIdentifier = sessionIdentifier)
+  output <- .bedrockagentruntime$list_invocation_steps_output()
+  config <- get_config()
+  svc <- .bedrockagentruntime$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockagentruntime$operations$list_invocation_steps <- bedrockagentruntime_list_invocation_steps
+
+#' Lists all invocations associated with a specific session
+#'
+#' @description
+#' Lists all invocations associated with a specific session. For more
+#' information about sessions, see [Store and retrieve conversation history
+#' and context with Amazon Bedrock
+#' sessions](https://docs.aws.amazon.com/bedrock/latest/userguide/sessions.html).
+#'
+#' @usage
+#' bedrockagentruntime_list_invocations(maxResults, nextToken,
+#'   sessionIdentifier)
+#'
+#' @param maxResults The maximum number of results to return in the response. If the total
+#' number of results is greater than this value, use the token returned in
+#' the response in the `nextToken` field when making another request to
+#' return the next batch of results.
+#' @param nextToken If the total number of results is greater than the `maxResults` value
+#' provided in the request, enter the token returned in the `nextToken`
+#' field in the response in this field to return the next batch of results.
+#' @param sessionIdentifier &#91;required&#93; The unique identifier for the session to list invocations for. You can
+#' specify either the session's `sessionId` or its Amazon Resource Name
+#' (ARN).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   invocationSummaries = list(
+#'     list(
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       invocationId = "string",
+#'       sessionId = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_invocations(
+#'   maxResults = 123,
+#'   nextToken = "string",
+#'   sessionIdentifier = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockagentruntime_list_invocations
+#'
+#' @aliases bedrockagentruntime_list_invocations
+bedrockagentruntime_list_invocations <- function(maxResults = NULL, nextToken = NULL, sessionIdentifier) {
+  op <- new_operation(
+    name = "ListInvocations",
+    http_method = "POST",
+    http_path = "/sessions/{sessionIdentifier}/invocations/",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "invocationSummaries"),
+    stream_api = FALSE
+  )
+  input <- .bedrockagentruntime$list_invocations_input(maxResults = maxResults, nextToken = nextToken, sessionIdentifier = sessionIdentifier)
+  output <- .bedrockagentruntime$list_invocations_output()
+  config <- get_config()
+  svc <- .bedrockagentruntime$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockagentruntime$operations$list_invocations <- bedrockagentruntime_list_invocations
+
+#' Lists all sessions in your Amazon Web Services account
+#'
+#' @description
+#' Lists all sessions in your Amazon Web Services account. For more
+#' information about sessions, see [Store and retrieve conversation history
+#' and context with Amazon Bedrock
+#' sessions](https://docs.aws.amazon.com/bedrock/latest/userguide/sessions.html).
+#'
+#' @usage
+#' bedrockagentruntime_list_sessions(maxResults, nextToken)
+#'
+#' @param maxResults The maximum number of results to return in the response. If the total
+#' number of results is greater than this value, use the token returned in
+#' the response in the `nextToken` field when making another request to
+#' return the next batch of results.
+#' @param nextToken If the total number of results is greater than the `maxResults` value
+#' provided in the request, enter the token returned in the `nextToken`
+#' field in the response in this field to return the next batch of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   nextToken = "string",
+#'   sessionSummaries = list(
+#'     list(
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastUpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       sessionArn = "string",
+#'       sessionId = "string",
+#'       sessionStatus = "ACTIVE"|"EXPIRED"|"ENDED"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_sessions(
+#'   maxResults = 123,
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockagentruntime_list_sessions
+#'
+#' @aliases bedrockagentruntime_list_sessions
+bedrockagentruntime_list_sessions <- function(maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListSessions",
+    http_method = "POST",
+    http_path = "/sessions/",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "sessionSummaries"),
+    stream_api = FALSE
+  )
+  input <- .bedrockagentruntime$list_sessions_input(maxResults = maxResults, nextToken = nextToken)
+  output <- .bedrockagentruntime$list_sessions_output()
+  config <- get_config()
+  svc <- .bedrockagentruntime$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockagentruntime$operations$list_sessions <- bedrockagentruntime_list_sessions
+
+#' List all the tags for the resource you specify
+#'
+#' @description
+#' List all the tags for the resource you specify.
+#'
+#' @usage
+#' bedrockagentruntime_list_tags_for_resource(resourceArn)
+#'
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource for which to list tags.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_tags_for_resource(
+#'   resourceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockagentruntime_list_tags_for_resource
+#'
+#' @aliases bedrockagentruntime_list_tags_for_resource
+bedrockagentruntime_list_tags_for_resource <- function(resourceArn) {
+  op <- new_operation(
+    name = "ListTagsForResource",
+    http_method = "GET",
+    http_path = "/tags/{resourceArn}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrockagentruntime$list_tags_for_resource_input(resourceArn = resourceArn)
+  output <- .bedrockagentruntime$list_tags_for_resource_output()
+  config <- get_config()
+  svc <- .bedrockagentruntime$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockagentruntime$operations$list_tags_for_resource <- bedrockagentruntime_list_tags_for_resource
 
 #' Optimizes a prompt for the task that you specify
 #'
@@ -2823,6 +3897,99 @@ bedrockagentruntime_optimize_prompt <- function(input, targetModelId) {
   return(response)
 }
 .bedrockagentruntime$operations$optimize_prompt <- bedrockagentruntime_optimize_prompt
+
+#' Add an invocation step to an invocation in a session
+#'
+#' @description
+#' Add an invocation step to an invocation in a session. An invocation step
+#' stores fine-grained state checkpoints, including text and images, for
+#' each interaction. For more information about sessions, see [Store and
+#' retrieve conversation history and context with Amazon Bedrock
+#' sessions](https://docs.aws.amazon.com/bedrock/latest/userguide/sessions.html).
+#' 
+#' Related APIs:
+#' 
+#' -   [`get_invocation_step`][bedrockagentruntime_get_invocation_step]
+#' 
+#' -   [`list_invocation_steps`][bedrockagentruntime_list_invocation_steps]
+#' 
+#' -   [`list_invocations`][bedrockagentruntime_list_invocations]
+#' 
+#' -   [`list_sessions`][bedrockagentruntime_list_sessions]
+#'
+#' @usage
+#' bedrockagentruntime_put_invocation_step(invocationIdentifier,
+#'   invocationStepId, invocationStepTime, payload, sessionIdentifier)
+#'
+#' @param invocationIdentifier &#91;required&#93; The unique identifier (in UUID format) of the invocation to add the
+#' invocation step to.
+#' @param invocationStepId The unique identifier of the invocation step in UUID format.
+#' @param invocationStepTime &#91;required&#93; The timestamp for when the invocation step occurred.
+#' @param payload &#91;required&#93; The payload for the invocation step, including text and images for the
+#' interaction.
+#' @param sessionIdentifier &#91;required&#93; The unique identifier for the session to add the invocation step to. You
+#' can specify either the session's `sessionId` or its Amazon Resource Name
+#' (ARN).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   invocationStepId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_invocation_step(
+#'   invocationIdentifier = "string",
+#'   invocationStepId = "string",
+#'   invocationStepTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   payload = list(
+#'     contentBlocks = list(
+#'       list(
+#'         image = list(
+#'           format = "png"|"jpeg"|"gif"|"webp",
+#'           source = list(
+#'             bytes = raw,
+#'             s3Location = list(
+#'               uri = "string"
+#'             )
+#'           )
+#'         ),
+#'         text = "string"
+#'       )
+#'     )
+#'   ),
+#'   sessionIdentifier = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockagentruntime_put_invocation_step
+#'
+#' @aliases bedrockagentruntime_put_invocation_step
+bedrockagentruntime_put_invocation_step <- function(invocationIdentifier, invocationStepId = NULL, invocationStepTime, payload, sessionIdentifier) {
+  op <- new_operation(
+    name = "PutInvocationStep",
+    http_method = "PUT",
+    http_path = "/sessions/{sessionIdentifier}/invocationSteps/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrockagentruntime$put_invocation_step_input(invocationIdentifier = invocationIdentifier, invocationStepId = invocationStepId, invocationStepTime = invocationStepTime, payload = payload, sessionIdentifier = sessionIdentifier)
+  output <- .bedrockagentruntime$put_invocation_step_output()
+  config <- get_config()
+  svc <- .bedrockagentruntime$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockagentruntime$operations$put_invocation_step <- bedrockagentruntime_put_invocation_step
 
 #' Reranks the relevance of sources based on queries
 #'
@@ -3881,3 +5048,170 @@ bedrockagentruntime_retrieve_and_generate_stream <- function(input, retrieveAndG
   return(response)
 }
 .bedrockagentruntime$operations$retrieve_and_generate_stream <- bedrockagentruntime_retrieve_and_generate_stream
+
+#' Associate tags with a resource
+#'
+#' @description
+#' Associate tags with a resource. For more information, see [Tagging
+#' resources](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html)
+#' in the Amazon Bedrock User Guide.
+#'
+#' @usage
+#' bedrockagentruntime_tag_resource(resourceArn, tags)
+#'
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource to tag.
+#' @param tags &#91;required&#93; An object containing key-value pairs that define the tags to attach to
+#' the resource.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$tag_resource(
+#'   resourceArn = "string",
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockagentruntime_tag_resource
+#'
+#' @aliases bedrockagentruntime_tag_resource
+bedrockagentruntime_tag_resource <- function(resourceArn, tags) {
+  op <- new_operation(
+    name = "TagResource",
+    http_method = "POST",
+    http_path = "/tags/{resourceArn}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrockagentruntime$tag_resource_input(resourceArn = resourceArn, tags = tags)
+  output <- .bedrockagentruntime$tag_resource_output()
+  config <- get_config()
+  svc <- .bedrockagentruntime$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockagentruntime$operations$tag_resource <- bedrockagentruntime_tag_resource
+
+#' Remove tags from a resource
+#'
+#' @description
+#' Remove tags from a resource.
+#'
+#' @usage
+#' bedrockagentruntime_untag_resource(resourceArn, tagKeys)
+#'
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource from which to remove
+#' tags.
+#' @param tagKeys &#91;required&#93; A list of keys of the tags to remove from the resource.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$untag_resource(
+#'   resourceArn = "string",
+#'   tagKeys = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockagentruntime_untag_resource
+#'
+#' @aliases bedrockagentruntime_untag_resource
+bedrockagentruntime_untag_resource <- function(resourceArn, tagKeys) {
+  op <- new_operation(
+    name = "UntagResource",
+    http_method = "DELETE",
+    http_path = "/tags/{resourceArn}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrockagentruntime$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
+  output <- .bedrockagentruntime$untag_resource_output()
+  config <- get_config()
+  svc <- .bedrockagentruntime$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockagentruntime$operations$untag_resource <- bedrockagentruntime_untag_resource
+
+#' Updates the metadata or encryption settings of a session
+#'
+#' @description
+#' Updates the metadata or encryption settings of a session. For more
+#' information about sessions, see [Store and retrieve conversation history
+#' and context with Amazon Bedrock
+#' sessions](https://docs.aws.amazon.com/bedrock/latest/userguide/sessions.html).
+#'
+#' @usage
+#' bedrockagentruntime_update_session(sessionIdentifier, sessionMetadata)
+#'
+#' @param sessionIdentifier &#91;required&#93; The unique identifier of the session to modify. You can specify either
+#' the session's `sessionId` or its Amazon Resource Name (ARN).
+#' @param sessionMetadata A map of key-value pairs containing attributes to be persisted across
+#' the session. For example the user's ID, their language preference, and
+#' the type of device they are using.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   createdAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   lastUpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   sessionArn = "string",
+#'   sessionId = "string",
+#'   sessionStatus = "ACTIVE"|"EXPIRED"|"ENDED"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_session(
+#'   sessionIdentifier = "string",
+#'   sessionMetadata = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockagentruntime_update_session
+#'
+#' @aliases bedrockagentruntime_update_session
+bedrockagentruntime_update_session <- function(sessionIdentifier, sessionMetadata = NULL) {
+  op <- new_operation(
+    name = "UpdateSession",
+    http_method = "PUT",
+    http_path = "/sessions/{sessionIdentifier}/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrockagentruntime$update_session_input(sessionIdentifier = sessionIdentifier, sessionMetadata = sessionMetadata)
+  output <- .bedrockagentruntime$update_session_output()
+  config <- get_config()
+  svc <- .bedrockagentruntime$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockagentruntime$operations$update_session <- bedrockagentruntime_update_session

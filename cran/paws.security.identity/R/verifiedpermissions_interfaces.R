@@ -65,7 +65,7 @@ NULL
 
 .verifiedpermissions$create_policy_store_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), validationSettings = structure(list(mode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))
+  shape <- structure(list(clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), validationSettings = structure(list(mode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), deletionProtection = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -167,7 +167,7 @@ NULL
 
 .verifiedpermissions$get_policy_store_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(policyStoreId = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), validationSettings = structure(list(mode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), createdDate = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), lastUpdatedDate = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))
+  shape <- structure(list(policyStoreId = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), validationSettings = structure(list(mode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), createdDate = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), lastUpdatedDate = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), deletionProtection = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -305,7 +305,7 @@ NULL
 
 .verifiedpermissions$update_policy_store_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(policyStoreId = structure(logical(0), tags = list(type = "string")), validationSettings = structure(list(mode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))
+  shape <- structure(list(policyStoreId = structure(logical(0), tags = list(type = "string")), validationSettings = structure(list(mode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), deletionProtection = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

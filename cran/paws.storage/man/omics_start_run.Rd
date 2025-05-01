@@ -2,7 +2,7 @@
 % Please edit documentation in R/omics_operations.R
 \name{omics_start_run}
 \alias{omics_start_run}
-\title{Starts a workflow run}
+\title{Starts a new run or duplicates an existing run}
 \usage{
 omics_start_run(
   workflowId = NULL,
@@ -22,7 +22,8 @@ omics_start_run(
   requestId,
   retentionMode = NULL,
   storageType = NULL,
-  workflowOwnerId = NULL
+  workflowOwnerId = NULL,
+  workflowVersionName = NULL
 )
 }
 \arguments{
@@ -42,7 +43,7 @@ cache ID, no task outputs are cached for this run.}
 \item{cacheBehavior}{The cache behavior for the run. You specify this value if you want to
 override the default behavior for the cache. You had set the default
 value when you created the cache. For more information, see \href{https://docs.aws.amazon.com/omics/latest/dev/how-run-cache.html#run-cache-behavior}{Run cache behavior}
-in the AWS HealthOmics User Guide.}
+in the Amazon Web Services HealthOmics User Guide.}
 
 \item{runGroupId}{The run's group ID.}
 
@@ -50,9 +51,9 @@ in the AWS HealthOmics User Guide.}
 
 \item{parameters}{Parameters for the run.}
 
-\item{storageCapacity}{A storage capacity for the run in gibibytes. This field is not required
-if the storage type is dynamic (the system ignores any value that you
-enter).}
+\item{storageCapacity}{The static storage capacity (in gibibytes) for this run. This field is
+not required if the storage type is dynamic (the system ignores any
+value that you enter).}
 
 \item{outputUri}{An output URI for the run.}
 
@@ -65,26 +66,31 @@ for each request.}
 
 \item{retentionMode}{The retention mode for the run. The default value is RETAIN.
 
-HealthOmics stores a fixed number of runs that are available to the
-console and API. In the default mode (RETAIN), you need to remove runs
-manually when the number of run exceeds the maximum. If you set the
-retention mode to \code{REMOVE}, HealthOmics automatically removes runs (that
-have mode set to REMOVE) when the number of run exceeds the maximum. All
-run logs are available in CloudWatch logs, if you need information about
-a run that is no longer available to the API.
+Amazon Web Services HealthOmics stores a fixed number of runs that are
+available to the console and API. In the default mode (RETAIN), you need
+to remove runs manually when the number of run exceeds the maximum. If
+you set the retention mode to \code{REMOVE}, Amazon Web Services HealthOmics
+automatically removes runs (that have mode set to REMOVE) when the
+number of run exceeds the maximum. All run logs are available in
+CloudWatch logs, if you need information about a run that is no longer
+available to the API.
 
 For more information about retention mode, see \href{https://docs.aws.amazon.com/omics/latest/dev/starting-a-run.html}{Specifying run retention mode}
-in the \emph{AWS HealthOmics User Guide}.}
+in the \emph{Amazon Web Services HealthOmics User Guide}.}
 
-\item{storageType}{The run's storage type. By default, the run uses STATIC storage type,
-which allocates a fixed amount of storage. If you set the storage type
-to DYNAMIC, HealthOmics dynamically scales the storage up or down, based
-on file system utilization.}
+\item{storageType}{The storage type for the run. By default, the run uses STATIC storage
+type, which allocates a fixed amount of storage. If you set the storage
+type to DYNAMIC, Amazon Web Services HealthOmics dynamically scales the
+storage up or down, based on file system utilization. For more
+information about static and dynamic storage, see \href{https://docs.aws.amazon.com/omics/latest/dev/}{Running workflows} in the \emph{Amazon
+Web Services HealthOmics User Guide}.}
 
 \item{workflowOwnerId}{The ID of the workflow owner.}
+
+\item{workflowVersionName}{The name of the workflow version.}
 }
 \description{
-Starts a workflow run. To duplicate a run, specify the run's ID and a role ARN. The remaining parameters are copied from the previous run.
+Starts a new run or duplicates an existing run.
 
 See \url{https://www.paws-r-sdk.com/docs/omics_start_run/} for full documentation.
 }

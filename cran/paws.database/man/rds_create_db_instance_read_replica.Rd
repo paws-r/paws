@@ -120,7 +120,10 @@ read replica during the maintenance window.
 
 This setting doesn't apply to RDS Custom DB instances.
 
-Default: Inherits the value from the source DB instance.}
+Default: Inherits the value from the source DB instance.
+
+For more information about automatic minor version upgrades, see
+\href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.Upgrading.html#USER_UpgradeDBInstance.Upgrading.AutoMinorVersionUpgrades}{Automatically upgrading the minor engine version}.}
 
 \item{Iops}{The amount of Provisioned IOPS (input/output operations per second) to
 initially allocate for the DB instance.}
@@ -214,7 +217,7 @@ the \code{Iops} parameter.
 
 Valid Values: \code{gp2 | gp3 | io1 | io2 | standard}
 
-Default: \code{io1} if the \code{Iops} parameter is specified. Otherwise, \code{gp2}.}
+Default: \code{io1} if the \code{Iops} parameter is specified. Otherwise, \code{gp3}.}
 
 \item{CopyTagsToSnapshot}{Specifies whether to copy all tags from the read replica to snapshots of
 the read replica. By default, tags aren't copied.}

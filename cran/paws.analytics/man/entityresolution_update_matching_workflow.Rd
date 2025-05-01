@@ -5,20 +5,19 @@
 \title{Updates an existing MatchingWorkflow}
 \usage{
 entityresolution_update_matching_workflow(
+  workflowName,
   description = NULL,
-  incrementalRunConfig = NULL,
   inputSourceConfig,
   outputSourceConfig,
   resolutionTechniques,
-  roleArn,
-  workflowName
+  incrementalRunConfig = NULL,
+  roleArn
 )
 }
 \arguments{
-\item{description}{A description of the workflow.}
+\item{workflowName}{[required] The name of the workflow to be retrieved.}
 
-\item{incrementalRunConfig}{An object which defines an incremental run type and has only
-\code{incrementalRunType} as a field.}
+\item{description}{A description of the workflow.}
 
 \item{inputSourceConfig}{[required] A list of \code{InputSource} objects, which have the fields \code{InputSourceARN}
 and \code{SchemaName}.}
@@ -29,11 +28,12 @@ and \code{SchemaName}.}
 \item{resolutionTechniques}{[required] An object which defines the \code{resolutionType} and the
 \code{ruleBasedProperties}.}
 
+\item{incrementalRunConfig}{An object which defines an incremental run type and has only
+\code{incrementalRunType} as a field.}
+
 \item{roleArn}{[required] The Amazon Resource Name (ARN) of the IAM role. Entity Resolution
 assumes this role to create resources on your behalf as part of workflow
 execution.}
-
-\item{workflowName}{[required] The name of the workflow to be retrieved.}
 }
 \description{
 Updates an existing \code{MatchingWorkflow}. This method is identical to \code{\link[=entityresolution_create_matching_workflow]{create_matching_workflow}}, except it uses an HTTP \code{PUT} request instead of a \code{POST} request, and the \code{MatchingWorkflow} must already exist for the method to succeed.

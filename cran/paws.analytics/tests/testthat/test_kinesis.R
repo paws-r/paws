@@ -16,6 +16,10 @@ test_that("list_streams", {
   expect_error(svc$list_streams(), NA)
 })
 
+test_that("list_tags_for_resource", {
+  expect_error(svc$list_tags_for_resource(), NA)
+})
+
 test_that("list_tags_for_stream", {
   expect_error(svc$list_tags_for_stream(), NA)
 })

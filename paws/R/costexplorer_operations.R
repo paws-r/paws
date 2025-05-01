@@ -798,7 +798,7 @@ costexplorer_get_anomalies <- function(MonitorArn = NULL, DateInterval, Feedback
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextPageToken", output_token = "NextPageToken", limit_key = "MaxResults", result_key = "Anomalies"),
     stream_api = FALSE
   )
   input <- .costexplorer$get_anomalies_input(MonitorArn = MonitorArn, DateInterval = DateInterval, Feedback = Feedback, TotalImpact = TotalImpact, NextPageToken = NextPageToken, MaxResults = MaxResults)
@@ -906,7 +906,7 @@ costexplorer_get_anomaly_monitors <- function(MonitorArnList = NULL, NextPageTok
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextPageToken", output_token = "NextPageToken", limit_key = "MaxResults", result_key = "AnomalyMonitors"),
     stream_api = FALSE
   )
   input <- .costexplorer$get_anomaly_monitors_input(MonitorArnList = MonitorArnList, NextPageToken = NextPageToken, MaxResults = MaxResults)
@@ -1023,7 +1023,7 @@ costexplorer_get_anomaly_subscriptions <- function(SubscriptionArnList = NULL, M
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
+    paginator = list(input_token = "NextPageToken", output_token = "NextPageToken", limit_key = "MaxResults", result_key = "AnomalySubscriptions"),
     stream_api = FALSE
   )
   input <- .costexplorer$get_anomaly_subscriptions_input(SubscriptionArnList = SubscriptionArnList, MonitorArn = MonitorArn, NextPageToken = NextPageToken, MaxResults = MaxResults)
@@ -1474,13 +1474,6 @@ costexplorer_get_cost_and_usage <- function(TimePeriod, Granularity, Filter = NU
 #' more information, see
 #' [Expression](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html).
 #' 
-#' The
-#' [`get_cost_and_usage_with_resources`][costexplorer_get_cost_and_usage_with_resources]
-#' operation requires that you either group by or filter by a `ResourceId`.
-#' It requires the
-#' [Expression](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html)
-#' `"SERVICE = Amazon Elastic Compute Cloud - Compute"` in the filter.
-#' 
 #' Valid values for `MatchOptions` for `Dimensions` are `EQUALS` and
 #' `CASE_SENSITIVE`.
 #' 
@@ -1859,8 +1852,6 @@ costexplorer_get_cost_categories <- function(SearchString = NULL, TimePeriod, Co
 #' -   `INSTANCE_TYPE`
 #' 
 #' -   `LINKED_ACCOUNT`
-#' 
-#' -   `LINKED_ACCOUNT_NAME`
 #' 
 #' -   `OPERATION`
 #' 
@@ -5189,7 +5180,7 @@ costexplorer_start_commitment_purchase_analysis <- function(CommitmentPurchaseAn
 #' @description
 #' Request a cost allocation tag backfill. This will backfill the
 #' activation status (either `active` or `inactive`) for all tag keys from
-#' `para:BackfillFrom` up to the when this request is made.
+#' `para:BackfillFrom` up to the time this request is made.
 #' 
 #' You can request a backfill once every 24 hours.
 #'

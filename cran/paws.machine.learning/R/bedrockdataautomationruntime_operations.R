@@ -48,11 +48,13 @@ bedrockdataautomationruntime_get_data_automation_status <- function(invocationAr
 #' @param encryptionConfiguration Encryption configuration.
 #' @param notificationConfiguration Notification configuration.
 #' @param blueprints Blueprint list.
+#' @param dataAutomationProfileArn &#91;required&#93; Data automation profile ARN
+#' @param tags List of tags.
 #'
 #' @keywords internal
 #'
 #' @rdname bedrockdataautomationruntime_invoke_data_automation_async
-bedrockdataautomationruntime_invoke_data_automation_async <- function(clientToken = NULL, inputConfiguration, outputConfiguration, dataAutomationConfiguration = NULL, encryptionConfiguration = NULL, notificationConfiguration = NULL, blueprints = NULL) {
+bedrockdataautomationruntime_invoke_data_automation_async <- function(clientToken = NULL, inputConfiguration, outputConfiguration, dataAutomationConfiguration = NULL, encryptionConfiguration = NULL, notificationConfiguration = NULL, blueprints = NULL, dataAutomationProfileArn, tags = NULL) {
   op <- new_operation(
     name = "InvokeDataAutomationAsync",
     http_method = "POST",
@@ -61,7 +63,7 @@ bedrockdataautomationruntime_invoke_data_automation_async <- function(clientToke
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockdataautomationruntime$invoke_data_automation_async_input(clientToken = clientToken, inputConfiguration = inputConfiguration, outputConfiguration = outputConfiguration, dataAutomationConfiguration = dataAutomationConfiguration, encryptionConfiguration = encryptionConfiguration, notificationConfiguration = notificationConfiguration, blueprints = blueprints)
+  input <- .bedrockdataautomationruntime$invoke_data_automation_async_input(clientToken = clientToken, inputConfiguration = inputConfiguration, outputConfiguration = outputConfiguration, dataAutomationConfiguration = dataAutomationConfiguration, encryptionConfiguration = encryptionConfiguration, notificationConfiguration = notificationConfiguration, blueprints = blueprints, dataAutomationProfileArn = dataAutomationProfileArn, tags = tags)
   output <- .bedrockdataautomationruntime$invoke_data_automation_async_output()
   config <- get_config()
   svc <- .bedrockdataautomationruntime$service(config, op)
@@ -70,3 +72,98 @@ bedrockdataautomationruntime_invoke_data_automation_async <- function(clientToke
   return(response)
 }
 .bedrockdataautomationruntime$operations$invoke_data_automation_async <- bedrockdataautomationruntime_invoke_data_automation_async
+
+#' List tags for an Amazon Bedrock Data Automation resource
+#'
+#' @description
+#' List tags for an Amazon Bedrock Data Automation resource
+#'
+#' See [https://www.paws-r-sdk.com/docs/bedrockdataautomationruntime_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/bedrockdataautomationruntime_list_tags_for_resource/) for full documentation.
+#'
+#' @param resourceARN &#91;required&#93; 
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockdataautomationruntime_list_tags_for_resource
+bedrockdataautomationruntime_list_tags_for_resource <- function(resourceARN) {
+  op <- new_operation(
+    name = "ListTagsForResource",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrockdataautomationruntime$list_tags_for_resource_input(resourceARN = resourceARN)
+  output <- .bedrockdataautomationruntime$list_tags_for_resource_output()
+  config <- get_config()
+  svc <- .bedrockdataautomationruntime$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockdataautomationruntime$operations$list_tags_for_resource <- bedrockdataautomationruntime_list_tags_for_resource
+
+#' Tag an Amazon Bedrock Data Automation resource
+#'
+#' @description
+#' Tag an Amazon Bedrock Data Automation resource
+#'
+#' See [https://www.paws-r-sdk.com/docs/bedrockdataautomationruntime_tag_resource/](https://www.paws-r-sdk.com/docs/bedrockdataautomationruntime_tag_resource/) for full documentation.
+#'
+#' @param resourceARN &#91;required&#93; 
+#' @param tags &#91;required&#93; 
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockdataautomationruntime_tag_resource
+bedrockdataautomationruntime_tag_resource <- function(resourceARN, tags) {
+  op <- new_operation(
+    name = "TagResource",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrockdataautomationruntime$tag_resource_input(resourceARN = resourceARN, tags = tags)
+  output <- .bedrockdataautomationruntime$tag_resource_output()
+  config <- get_config()
+  svc <- .bedrockdataautomationruntime$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockdataautomationruntime$operations$tag_resource <- bedrockdataautomationruntime_tag_resource
+
+#' Untag an Amazon Bedrock Data Automation resource
+#'
+#' @description
+#' Untag an Amazon Bedrock Data Automation resource
+#'
+#' See [https://www.paws-r-sdk.com/docs/bedrockdataautomationruntime_untag_resource/](https://www.paws-r-sdk.com/docs/bedrockdataautomationruntime_untag_resource/) for full documentation.
+#'
+#' @param resourceARN &#91;required&#93; 
+#' @param tagKeys &#91;required&#93; 
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockdataautomationruntime_untag_resource
+bedrockdataautomationruntime_untag_resource <- function(resourceARN, tagKeys) {
+  op <- new_operation(
+    name = "UntagResource",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrockdataautomationruntime$untag_resource_input(resourceARN = resourceARN, tagKeys = tagKeys)
+  output <- .bedrockdataautomationruntime$untag_resource_output()
+  config <- get_config()
+  svc <- .bedrockdataautomationruntime$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockdataautomationruntime$operations$untag_resource <- bedrockdataautomationruntime_untag_resource
