@@ -227,8 +227,9 @@ securityhub_batch_delete_automation_rules <- function(AutomationRulesArns) {
 #'         "string"
 #'       ),
 #'       StandardsStatus = "PENDING"|"READY"|"FAILED"|"DELETING"|"INCOMPLETE",
+#'       StandardsControlsUpdatable = "READY_FOR_UPDATES"|"NOT_READY_FOR_UPDATES",
 #'       StandardsStatusReason = list(
-#'         StatusReasonCode = "NO_AVAILABLE_CONFIGURATION_RECORDER"|"INTERNAL_ERROR"
+#'         StatusReasonCode = "NO_AVAILABLE_CONFIGURATION_RECORDER"|"MAXIMUM_NUMBER_OF_CONFIG_RULES_EXCEEDED"|"INTERNAL_ERROR"
 #'       )
 #'     )
 #'   )
@@ -296,8 +297,9 @@ securityhub_batch_disable_standards <- function(StandardsSubscriptionArns) {
 #'         "string"
 #'       ),
 #'       StandardsStatus = "PENDING"|"READY"|"FAILED"|"DELETING"|"INCOMPLETE",
+#'       StandardsControlsUpdatable = "READY_FOR_UPDATES"|"NOT_READY_FOR_UPDATES",
 #'       StandardsStatusReason = list(
-#'         StatusReasonCode = "NO_AVAILABLE_CONFIGURATION_RECORDER"|"INTERNAL_ERROR"
+#'         StatusReasonCode = "NO_AVAILABLE_CONFIGURATION_RECORDER"|"MAXIMUM_NUMBER_OF_CONFIG_RULES_EXCEEDED"|"INTERNAL_ERROR"
 #'       )
 #'     )
 #'   )
@@ -901,6 +903,10 @@ securityhub_batch_get_security_controls <- function(SecurityControlIds) {
 #' @description
 #' For a batch of security controls and standards, identifies whether each
 #' control is currently enabled or disabled in a standard.
+#' 
+#' Calls to this operation return a `RESOURCE_NOT_FOUND_EXCEPTION` error
+#' when the standard subscription for the association has a
+#' `NOT_READY_FOR_UPDATES` value for `StandardsControlsUpdatable`.
 #'
 #' @usage
 #' securityhub_batch_get_standards_control_associations(
@@ -6239,6 +6245,10 @@ securityhub_batch_update_findings <- function(FindingIdentifiers, Note = NULL, S
 #'
 #' @param StandardsControlAssociationUpdates &#91;required&#93; Updates the enablement status of a security control in a specified
 #' standard.
+#' 
+#' Calls to this operation return a `RESOURCE_NOT_FOUND_EXCEPTION` error
+#' when the standard subscription for the control has
+#' `StandardsControlsUpdatable` value `NOT_READY_FOR_UPDATES`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -8614,6 +8624,9 @@ securityhub_describe_standards <- function(NextToken = NULL, MaxResults = NULL) 
 #' 
 #' For each control, the results include information about whether it is
 #' currently enabled, the severity, and a link to remediation information.
+#' 
+#' This operation returns an empty list for standard subscriptions where
+#' `StandardsControlsUpdatable` has value `NOT_READY_FOR_UPDATES`.
 #'
 #' @usage
 #' securityhub_describe_standards_controls(StandardsSubscriptionArn,
@@ -9459,8 +9472,9 @@ securityhub_get_configuration_policy_association <- function(Target) {
 #'         "string"
 #'       ),
 #'       StandardsStatus = "PENDING"|"READY"|"FAILED"|"DELETING"|"INCOMPLETE",
+#'       StandardsControlsUpdatable = "READY_FOR_UPDATES"|"NOT_READY_FOR_UPDATES",
 #'       StandardsStatusReason = list(
-#'         StatusReasonCode = "NO_AVAILABLE_CONFIGURATION_RECORDER"|"INTERNAL_ERROR"
+#'         StatusReasonCode = "NO_AVAILABLE_CONFIGURATION_RECORDER"|"MAXIMUM_NUMBER_OF_CONFIG_RULES_EXCEEDED"|"INTERNAL_ERROR"
 #'       )
 #'     )
 #'   ),
@@ -17009,6 +17023,10 @@ securityhub_list_security_control_definitions <- function(StandardsArn = NULL, N
 #' @description
 #' Specifies whether a control is currently enabled or disabled in each
 #' enabled standard in the calling account.
+#' 
+#' This operation omits standards control associations for standard
+#' subscriptions where `StandardsControlsUpdatable` has value
+#' `NOT_READY_FOR_UPDATES`.
 #'
 #' @usage
 #' securityhub_list_standards_control_associations(SecurityControlId,
@@ -19422,6 +19440,10 @@ securityhub_update_security_hub_configuration <- function(AutoEnableControls = N
 #' @description
 #' Used to control whether an individual security standard control is
 #' enabled or disabled.
+#' 
+#' Calls to this operation return a `RESOURCE_NOT_FOUND_EXCEPTION` error
+#' when the standard subscription for the control has
+#' `StandardsControlsUpdatable` value `NOT_READY_FOR_UPDATES`.
 #'
 #' @usage
 #' securityhub_update_standards_control(StandardsControlArn, ControlStatus,

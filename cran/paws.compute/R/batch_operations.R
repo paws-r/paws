@@ -154,6 +154,49 @@ batch_create_compute_environment <- function(computeEnvironmentName, type, state
 }
 .batch$operations$create_compute_environment <- batch_create_compute_environment
 
+#' Creates an Batch consumable resource
+#'
+#' @description
+#' Creates an Batch consumable resource.
+#'
+#' See [https://www.paws-r-sdk.com/docs/batch_create_consumable_resource/](https://www.paws-r-sdk.com/docs/batch_create_consumable_resource/) for full documentation.
+#'
+#' @param consumableResourceName &#91;required&#93; The name of the consumable resource. Must be unique.
+#' @param totalQuantity The total amount of the consumable resource that is available. Must be
+#' non-negative.
+#' @param resourceType Indicates whether the resource is available to be re-used after a job
+#' completes. Can be one of:
+#' 
+#' -   `REPLENISHABLE` (default)
+#' 
+#' -   `NON_REPLENISHABLE`
+#' @param tags The tags that you apply to the consumable resource to help you
+#' categorize and organize your resources. Each tag consists of a key and
+#' an optional value. For more information, see [Tagging your Batch
+#' resources](https://docs.aws.amazon.com/batch/latest/userguide/using-tags.html).
+#'
+#' @keywords internal
+#'
+#' @rdname batch_create_consumable_resource
+batch_create_consumable_resource <- function(consumableResourceName, totalQuantity = NULL, resourceType = NULL, tags = NULL) {
+  op <- new_operation(
+    name = "CreateConsumableResource",
+    http_method = "POST",
+    http_path = "/v1/createconsumableresource",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .batch$create_consumable_resource_input(consumableResourceName = consumableResourceName, totalQuantity = totalQuantity, resourceType = resourceType, tags = tags)
+  output <- .batch$create_consumable_resource_output()
+  config <- get_config()
+  svc <- .batch$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.batch$operations$create_consumable_resource <- batch_create_consumable_resource
+
 #' Creates an Batch job queue
 #'
 #' @description
@@ -311,6 +354,37 @@ batch_delete_compute_environment <- function(computeEnvironment) {
 }
 .batch$operations$delete_compute_environment <- batch_delete_compute_environment
 
+#' Deletes the specified consumable resource
+#'
+#' @description
+#' Deletes the specified consumable resource.
+#'
+#' See [https://www.paws-r-sdk.com/docs/batch_delete_consumable_resource/](https://www.paws-r-sdk.com/docs/batch_delete_consumable_resource/) for full documentation.
+#'
+#' @param consumableResource &#91;required&#93; The name or ARN of the consumable resource that will be deleted.
+#'
+#' @keywords internal
+#'
+#' @rdname batch_delete_consumable_resource
+batch_delete_consumable_resource <- function(consumableResource) {
+  op <- new_operation(
+    name = "DeleteConsumableResource",
+    http_method = "POST",
+    http_path = "/v1/deleteconsumableresource",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .batch$delete_consumable_resource_input(consumableResource = consumableResource)
+  output <- .batch$delete_consumable_resource_output()
+  config <- get_config()
+  svc <- .batch$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.batch$operations$delete_consumable_resource <- batch_delete_consumable_resource
+
 #' Deletes the specified job queue
 #'
 #' @description
@@ -458,6 +532,38 @@ batch_describe_compute_environments <- function(computeEnvironments = NULL, maxR
   return(response)
 }
 .batch$operations$describe_compute_environments <- batch_describe_compute_environments
+
+#' Returns a description of the specified consumable resource
+#'
+#' @description
+#' Returns a description of the specified consumable resource.
+#'
+#' See [https://www.paws-r-sdk.com/docs/batch_describe_consumable_resource/](https://www.paws-r-sdk.com/docs/batch_describe_consumable_resource/) for full documentation.
+#'
+#' @param consumableResource &#91;required&#93; The name or ARN of the consumable resource whose description will be
+#' returned.
+#'
+#' @keywords internal
+#'
+#' @rdname batch_describe_consumable_resource
+batch_describe_consumable_resource <- function(consumableResource) {
+  op <- new_operation(
+    name = "DescribeConsumableResource",
+    http_method = "POST",
+    http_path = "/v1/describeconsumableresource",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .batch$describe_consumable_resource_input(consumableResource = consumableResource)
+  output <- .batch$describe_consumable_resource_output()
+  config <- get_config()
+  svc <- .batch$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.batch$operations$describe_consumable_resource <- batch_describe_consumable_resource
 
 #' Describes a list of job definitions
 #'
@@ -664,6 +770,67 @@ batch_get_job_queue_snapshot <- function(jobQueue) {
 }
 .batch$operations$get_job_queue_snapshot <- batch_get_job_queue_snapshot
 
+#' Returns a list of Batch consumable resources
+#'
+#' @description
+#' Returns a list of Batch consumable resources.
+#'
+#' See [https://www.paws-r-sdk.com/docs/batch_list_consumable_resources/](https://www.paws-r-sdk.com/docs/batch_list_consumable_resources/) for full documentation.
+#'
+#' @param filters The filters to apply to the consumable resource list query. If used,
+#' only those consumable resources that match the filter are listed. Filter
+#' names and values can be:
+#' 
+#' -   name: `CONSUMABLE_RESOURCE_NAME `
+#' 
+#'     values: case-insensitive matches for the consumable resource name.
+#'     If a filter value ends with an asterisk (*), it matches any
+#'     consumable resource name that begins with the string before the
+#'     '*'.
+#' @param maxResults The maximum number of results returned by
+#' [`list_consumable_resources`][batch_list_consumable_resources] in
+#' paginated output. When this parameter is used,
+#' [`list_consumable_resources`][batch_list_consumable_resources] only
+#' returns `maxResults` results in a single page and a `nextToken` response
+#' element. The remaining results of the initial request can be seen by
+#' sending another
+#' [`list_consumable_resources`][batch_list_consumable_resources] request
+#' with the returned `nextToken` value. This value can be between 1 and
+#' 100. If this parameter isn't used, then
+#' [`list_consumable_resources`][batch_list_consumable_resources] returns
+#' up to 100 results and a `nextToken` value if applicable.
+#' @param nextToken The `nextToken` value returned from a previous paginated
+#' [`list_consumable_resources`][batch_list_consumable_resources] request
+#' where `maxResults` was used and the results exceeded the value of that
+#' parameter. Pagination continues from the end of the previous results
+#' that returned the `nextToken` value. This value is `null` when there are
+#' no more results to return.
+#' 
+#' Treat this token as an opaque identifier that's only used to retrieve
+#' the next items in a list and not for other programmatic purposes.
+#'
+#' @keywords internal
+#'
+#' @rdname batch_list_consumable_resources
+batch_list_consumable_resources <- function(filters = NULL, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListConsumableResources",
+    http_method = "POST",
+    http_path = "/v1/listconsumableresources",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "consumableResources"),
+    stream_api = FALSE
+  )
+  input <- .batch$list_consumable_resources_input(filters = filters, maxResults = maxResults, nextToken = nextToken)
+  output <- .batch$list_consumable_resources_output()
+  config <- get_config()
+  svc <- .batch$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.batch$operations$list_consumable_resources <- batch_list_consumable_resources
+
 #' Returns a list of Batch jobs
 #'
 #' @description
@@ -775,6 +942,73 @@ batch_list_jobs <- function(jobQueue = NULL, arrayJobId = NULL, multiNodeJobId =
   return(response)
 }
 .batch$operations$list_jobs <- batch_list_jobs
+
+#' Returns a list of Batch jobs that require a specific consumable resource
+#'
+#' @description
+#' Returns a list of Batch jobs that require a specific consumable resource.
+#'
+#' See [https://www.paws-r-sdk.com/docs/batch_list_jobs_by_consumable_resource/](https://www.paws-r-sdk.com/docs/batch_list_jobs_by_consumable_resource/) for full documentation.
+#'
+#' @param consumableResource &#91;required&#93; The name or ARN of the consumable resource.
+#' @param filters The filters to apply to the job list query. If used, only those jobs
+#' requiring the specified consumable resource (`consumableResource`) and
+#' that match the value of the filters are listed. The filter names and
+#' values can be:
+#' 
+#' -   name: `JOB_STATUS`
+#' 
+#'     values:
+#'     `SUBMITTED | PENDING | RUNNABLE | STARTING | RUNNING | SUCCEEDED | FAILED`
+#' 
+#' -   name: `JOB_NAME `
+#' 
+#'     The values are case-insensitive matches for the job name. If a
+#'     filter value ends with an asterisk (*), it matches any job name
+#'     that begins with the string before the '*'.
+#' @param maxResults The maximum number of results returned by
+#' [`list_jobs_by_consumable_resource`][batch_list_jobs_by_consumable_resource]
+#' in paginated output. When this parameter is used,
+#' [`list_jobs_by_consumable_resource`][batch_list_jobs_by_consumable_resource]
+#' only returns `maxResults` results in a single page and a `nextToken`
+#' response element. The remaining results of the initial request can be
+#' seen by sending another
+#' [`list_jobs_by_consumable_resource`][batch_list_jobs_by_consumable_resource]
+#' request with the returned `nextToken` value. This value can be between 1
+#' and 100. If this parameter isn't used, then
+#' [`list_jobs_by_consumable_resource`][batch_list_jobs_by_consumable_resource]
+#' returns up to 100 results and a `nextToken` value if applicable.
+#' @param nextToken The `nextToken` value returned from a previous paginated
+#' [`list_jobs_by_consumable_resource`][batch_list_jobs_by_consumable_resource]
+#' request where `maxResults` was used and the results exceeded the value
+#' of that parameter. Pagination continues from the end of the previous
+#' results that returned the `nextToken` value. This value is `null` when
+#' there are no more results to return.
+#' 
+#' Treat this token as an opaque identifier that's only used to retrieve
+#' the next items in a list and not for other programmatic purposes.
+#'
+#' @keywords internal
+#'
+#' @rdname batch_list_jobs_by_consumable_resource
+batch_list_jobs_by_consumable_resource <- function(consumableResource, filters = NULL, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListJobsByConsumableResource",
+    http_method = "POST",
+    http_path = "/v1/listjobsbyconsumableresource",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "jobs"),
+    stream_api = FALSE
+  )
+  input <- .batch$list_jobs_by_consumable_resource_input(consumableResource = consumableResource, filters = filters, maxResults = maxResults, nextToken = nextToken)
+  output <- .batch$list_jobs_by_consumable_resource_output()
+  config <- get_config()
+  svc <- .batch$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.batch$operations$list_jobs_by_consumable_resource <- batch_list_jobs_by_consumable_resource
 
 #' Returns a list of Batch scheduling policies
 #'
@@ -951,11 +1185,12 @@ batch_list_tags_for_resource <- function(resourceArn) {
 #' This must not be specified for Amazon ECS based job definitions.
 #' @param ecsProperties An object with properties that are specific to Amazon ECS-based jobs.
 #' This must not be specified for Amazon EKS-based job definitions.
+#' @param consumableResourceProperties Contains a list of consumable resources required by the job.
 #'
 #' @keywords internal
 #'
 #' @rdname batch_register_job_definition
-batch_register_job_definition <- function(jobDefinitionName, type, parameters = NULL, schedulingPriority = NULL, containerProperties = NULL, nodeProperties = NULL, retryStrategy = NULL, propagateTags = NULL, timeout = NULL, tags = NULL, platformCapabilities = NULL, eksProperties = NULL, ecsProperties = NULL) {
+batch_register_job_definition <- function(jobDefinitionName, type, parameters = NULL, schedulingPriority = NULL, containerProperties = NULL, nodeProperties = NULL, retryStrategy = NULL, propagateTags = NULL, timeout = NULL, tags = NULL, platformCapabilities = NULL, eksProperties = NULL, ecsProperties = NULL, consumableResourceProperties = NULL) {
   op <- new_operation(
     name = "RegisterJobDefinition",
     http_method = "POST",
@@ -964,7 +1199,7 @@ batch_register_job_definition <- function(jobDefinitionName, type, parameters = 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .batch$register_job_definition_input(jobDefinitionName = jobDefinitionName, type = type, parameters = parameters, schedulingPriority = schedulingPriority, containerProperties = containerProperties, nodeProperties = nodeProperties, retryStrategy = retryStrategy, propagateTags = propagateTags, timeout = timeout, tags = tags, platformCapabilities = platformCapabilities, eksProperties = eksProperties, ecsProperties = ecsProperties)
+  input <- .batch$register_job_definition_input(jobDefinitionName = jobDefinitionName, type = type, parameters = parameters, schedulingPriority = schedulingPriority, containerProperties = containerProperties, nodeProperties = nodeProperties, retryStrategy = retryStrategy, propagateTags = propagateTags, timeout = timeout, tags = tags, platformCapabilities = platformCapabilities, eksProperties = eksProperties, ecsProperties = ecsProperties, consumableResourceProperties = consumableResourceProperties)
   output <- .batch$register_job_definition_output()
   config <- get_config()
   svc <- .batch$service(config, op)
@@ -1072,11 +1307,12 @@ batch_register_job_definition <- function(jobDefinitionName, type, parameters = 
 #' @param ecsPropertiesOverride An object, with properties that override defaults for the job
 #' definition, can only be specified for jobs that are run on Amazon ECS
 #' resources.
+#' @param consumableResourcePropertiesOverride An object that contains overrides for the consumable resources of a job.
 #'
 #' @keywords internal
 #'
 #' @rdname batch_submit_job
-batch_submit_job <- function(jobName, jobQueue, shareIdentifier = NULL, schedulingPriorityOverride = NULL, arrayProperties = NULL, dependsOn = NULL, jobDefinition, parameters = NULL, containerOverrides = NULL, nodeOverrides = NULL, retryStrategy = NULL, propagateTags = NULL, timeout = NULL, tags = NULL, eksPropertiesOverride = NULL, ecsPropertiesOverride = NULL) {
+batch_submit_job <- function(jobName, jobQueue, shareIdentifier = NULL, schedulingPriorityOverride = NULL, arrayProperties = NULL, dependsOn = NULL, jobDefinition, parameters = NULL, containerOverrides = NULL, nodeOverrides = NULL, retryStrategy = NULL, propagateTags = NULL, timeout = NULL, tags = NULL, eksPropertiesOverride = NULL, ecsPropertiesOverride = NULL, consumableResourcePropertiesOverride = NULL) {
   op <- new_operation(
     name = "SubmitJob",
     http_method = "POST",
@@ -1085,7 +1321,7 @@ batch_submit_job <- function(jobName, jobQueue, shareIdentifier = NULL, scheduli
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .batch$submit_job_input(jobName = jobName, jobQueue = jobQueue, shareIdentifier = shareIdentifier, schedulingPriorityOverride = schedulingPriorityOverride, arrayProperties = arrayProperties, dependsOn = dependsOn, jobDefinition = jobDefinition, parameters = parameters, containerOverrides = containerOverrides, nodeOverrides = nodeOverrides, retryStrategy = retryStrategy, propagateTags = propagateTags, timeout = timeout, tags = tags, eksPropertiesOverride = eksPropertiesOverride, ecsPropertiesOverride = ecsPropertiesOverride)
+  input <- .batch$submit_job_input(jobName = jobName, jobQueue = jobQueue, shareIdentifier = shareIdentifier, schedulingPriorityOverride = schedulingPriorityOverride, arrayProperties = arrayProperties, dependsOn = dependsOn, jobDefinition = jobDefinition, parameters = parameters, containerOverrides = containerOverrides, nodeOverrides = nodeOverrides, retryStrategy = retryStrategy, propagateTags = propagateTags, timeout = timeout, tags = tags, eksPropertiesOverride = eksPropertiesOverride, ecsPropertiesOverride = ecsPropertiesOverride, consumableResourcePropertiesOverride = consumableResourcePropertiesOverride)
   output <- .batch$submit_job_output()
   config <- get_config()
   svc <- .batch$service(config, op)
@@ -1305,6 +1541,63 @@ batch_update_compute_environment <- function(computeEnvironment, state = NULL, u
   return(response)
 }
 .batch$operations$update_compute_environment <- batch_update_compute_environment
+
+#' Updates a consumable resource
+#'
+#' @description
+#' Updates a consumable resource.
+#'
+#' See [https://www.paws-r-sdk.com/docs/batch_update_consumable_resource/](https://www.paws-r-sdk.com/docs/batch_update_consumable_resource/) for full documentation.
+#'
+#' @param consumableResource &#91;required&#93; The name or ARN of the consumable resource to be updated.
+#' @param operation Indicates how the quantity of the consumable resource will be updated.
+#' Must be one of:
+#' 
+#' -   `SET`
+#' 
+#'     Sets the quantity of the resource to the value specified by the
+#'     `quantity` parameter.
+#' 
+#' -   `ADD`
+#' 
+#'     Increases the quantity of the resource by the value specified by the
+#'     `quantity` parameter.
+#' 
+#' -   `REMOVE`
+#' 
+#'     Reduces the quantity of the resource by the value specified by the
+#'     `quantity` parameter.
+#' @param quantity The change in the total quantity of the consumable resource. The
+#' `operation` parameter determines whether the value specified here will
+#' be the new total quantity, or the amount by which the total quantity
+#' will be increased or reduced. Must be a non-negative value.
+#' @param clientToken If this parameter is specified and two update requests with identical
+#' payloads and `clientToken`s are received, these requests are considered
+#' the same request and the second request is rejected. A `clientToken` is
+#' valid for 8 hours or until one hour after the consumable resource is
+#' deleted, whichever is less.
+#'
+#' @keywords internal
+#'
+#' @rdname batch_update_consumable_resource
+batch_update_consumable_resource <- function(consumableResource, operation = NULL, quantity = NULL, clientToken = NULL) {
+  op <- new_operation(
+    name = "UpdateConsumableResource",
+    http_method = "POST",
+    http_path = "/v1/updateconsumableresource",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .batch$update_consumable_resource_input(consumableResource = consumableResource, operation = operation, quantity = quantity, clientToken = clientToken)
+  output <- .batch$update_consumable_resource_output()
+  config <- get_config()
+  svc <- .batch$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.batch$operations$update_consumable_resource <- batch_update_consumable_resource
 
 #' Updates a job queue
 #'

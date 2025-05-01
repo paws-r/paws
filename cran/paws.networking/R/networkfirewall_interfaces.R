@@ -159,6 +159,18 @@ NULL
   return(populate(args, shape))
 }
 
+.networkfirewall$describe_flow_operation_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(FirewallArn = structure(logical(0), tags = list(type = "string")), AvailabilityZone = structure(logical(0), tags = list(type = "string")), FlowOperationId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.networkfirewall$describe_flow_operation_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(FirewallArn = structure(logical(0), tags = list(type = "string")), AvailabilityZone = structure(logical(0), tags = list(type = "string")), FlowOperationId = structure(logical(0), tags = list(type = "string")), FlowOperationType = structure(logical(0), tags = list(type = "string")), FlowOperationStatus = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), FlowRequestTimestamp = structure(logical(0), tags = list(type = "timestamp")), FlowOperation = structure(list(MinimumFlowAgeInSeconds = structure(logical(0), tags = list(type = "integer")), FlowFilters = structure(list(structure(list(SourceAddress = structure(list(AddressDefinition = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), DestinationAddress = structure(list(AddressDefinition = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SourcePort = structure(logical(0), tags = list(type = "string")), DestinationPort = structure(logical(0), tags = list(type = "string")), Protocols = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .networkfirewall$describe_logging_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(FirewallArn = structure(logical(0), tags = list(type = "string")), FirewallName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -279,6 +291,30 @@ NULL
   return(populate(args, shape))
 }
 
+.networkfirewall$list_flow_operation_results_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(FirewallArn = structure(logical(0), tags = list(type = "string")), FlowOperationId = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), AvailabilityZone = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.networkfirewall$list_flow_operation_results_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(FirewallArn = structure(logical(0), tags = list(type = "string")), AvailabilityZone = structure(logical(0), tags = list(type = "string")), FlowOperationId = structure(logical(0), tags = list(type = "string")), FlowOperationStatus = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), FlowRequestTimestamp = structure(logical(0), tags = list(type = "timestamp")), Flows = structure(list(structure(list(SourceAddress = structure(list(AddressDefinition = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), DestinationAddress = structure(list(AddressDefinition = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SourcePort = structure(logical(0), tags = list(type = "string")), DestinationPort = structure(logical(0), tags = list(type = "string")), Protocol = structure(logical(0), tags = list(type = "string")), Age = structure(logical(0), tags = list(type = "integer")), PacketCount = structure(logical(0), tags = list(type = "integer")), ByteCount = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.networkfirewall$list_flow_operations_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(FirewallArn = structure(logical(0), tags = list(type = "string")), AvailabilityZone = structure(logical(0), tags = list(type = "string")), FlowOperationType = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.networkfirewall$list_flow_operations_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(FlowOperations = structure(list(structure(list(FlowOperationId = structure(logical(0), tags = list(type = "string")), FlowOperationType = structure(logical(0), tags = list(type = "string")), FlowRequestTimestamp = structure(logical(0), tags = list(type = "timestamp")), FlowOperationStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .networkfirewall$list_rule_groups_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), Scope = structure(logical(0), tags = list(type = "string")), ManagedType = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -336,6 +372,30 @@ NULL
 .networkfirewall$start_analysis_report_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(AnalysisReportId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.networkfirewall$start_flow_capture_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(FirewallArn = structure(logical(0), tags = list(type = "string")), AvailabilityZone = structure(logical(0), tags = list(type = "string")), MinimumFlowAgeInSeconds = structure(logical(0), tags = list(type = "integer")), FlowFilters = structure(list(structure(list(SourceAddress = structure(list(AddressDefinition = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), DestinationAddress = structure(list(AddressDefinition = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SourcePort = structure(logical(0), tags = list(type = "string")), DestinationPort = structure(logical(0), tags = list(type = "string")), Protocols = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.networkfirewall$start_flow_capture_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(FirewallArn = structure(logical(0), tags = list(type = "string")), FlowOperationId = structure(logical(0), tags = list(type = "string")), FlowOperationStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.networkfirewall$start_flow_flush_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(FirewallArn = structure(logical(0), tags = list(type = "string")), AvailabilityZone = structure(logical(0), tags = list(type = "string")), MinimumFlowAgeInSeconds = structure(logical(0), tags = list(type = "integer")), FlowFilters = structure(list(structure(list(SourceAddress = structure(list(AddressDefinition = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), DestinationAddress = structure(list(AddressDefinition = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), SourcePort = structure(logical(0), tags = list(type = "string")), DestinationPort = structure(logical(0), tags = list(type = "string")), Protocols = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.networkfirewall$start_flow_flush_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(FirewallArn = structure(logical(0), tags = list(type = "string")), FlowOperationId = structure(logical(0), tags = list(type = "string")), FlowOperationStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

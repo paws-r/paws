@@ -306,7 +306,7 @@ workspaces_authorize_ip_rules <- function(GroupId, UserRules) {
 #' Region.
 #' 
 #' In Amazon Web Services GovCloud (US), to copy images to and from other
-#' Regions, contact Amazon Web Services Support.
+#' Regions, contact Amazon Web ServicesSupport.
 #' 
 #' Before copying a shared image, be sure to verify that it has been shared
 #' from the correct Amazon Web Services account. To determine if an image
@@ -3045,7 +3045,8 @@ workspaces_describe_workspace_bundles <- function(BundleIds = NULL, Owner = NULL
 #'         DeviceTypeAndroid = "ALLOW"|"DENY",
 #'         DeviceTypeChromeOs = "ALLOW"|"DENY",
 #'         DeviceTypeZeroClient = "ALLOW"|"DENY",
-#'         DeviceTypeLinux = "ALLOW"|"DENY"
+#'         DeviceTypeLinux = "ALLOW"|"DENY",
+#'         DeviceTypeWorkSpacesThinClient = "ALLOW"|"DENY"
 #'       ),
 #'       Tenancy = "DEDICATED"|"SHARED",
 #'       SelfservicePermissions = list(
@@ -3064,6 +3065,7 @@ workspaces_describe_workspace_bundles <- function(BundleIds = NULL, Owner = NULL
 #'         Status = "DISABLED"|"ENABLED",
 #'         CertificateAuthorityArn = "string"
 #'       ),
+#'       EndpointEncryptionMode = "STANDARD_TLS"|"FIPS_VALIDATED",
 #'       MicrosoftEntraConfig = list(
 #'         TenantId = "string",
 #'         ApplicationConfigSecretArn = "string"
@@ -3590,7 +3592,8 @@ workspaces_describe_workspaces_connection_status <- function(WorkspaceIds = NULL
 #'
 #' @param PoolId &#91;required&#93; The identifier of the pool.
 #' @param UserId The identifier of the user.
-#' @param Limit The maximum number of items to return.
+#' @param Limit The maximum size of each page of results. The default value is 20 and
+#' the maximum value is 50.
 #' @param NextToken If you received a `NextToken` from a previous call that was paginated,
 #' provide this token to receive the next set of results.
 #'
@@ -4635,6 +4638,56 @@ workspaces_modify_client_properties <- function(ResourceId, ClientProperties) {
 }
 .workspaces$operations$modify_client_properties <- workspaces_modify_client_properties
 
+#' Modifies the endpoint encryption mode that allows you to configure the
+#' specified directory between Standard TLS and FIPS 140-2 validated mode
+#'
+#' @description
+#' Modifies the endpoint encryption mode that allows you to configure the
+#' specified directory between Standard TLS and FIPS 140-2 validated mode.
+#'
+#' @usage
+#' workspaces_modify_endpoint_encryption_mode(DirectoryId,
+#'   EndpointEncryptionMode)
+#'
+#' @param DirectoryId &#91;required&#93; The identifier of the directory.
+#' @param EndpointEncryptionMode &#91;required&#93; The encryption mode used for endpoint connections when streaming to
+#' WorkSpaces Personal or WorkSpace Pools.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$modify_endpoint_encryption_mode(
+#'   DirectoryId = "string",
+#'   EndpointEncryptionMode = "STANDARD_TLS"|"FIPS_VALIDATED"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workspaces_modify_endpoint_encryption_mode
+#'
+#' @aliases workspaces_modify_endpoint_encryption_mode
+workspaces_modify_endpoint_encryption_mode <- function(DirectoryId, EndpointEncryptionMode) {
+  op <- new_operation(
+    name = "ModifyEndpointEncryptionMode",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .workspaces$modify_endpoint_encryption_mode_input(DirectoryId = DirectoryId, EndpointEncryptionMode = EndpointEncryptionMode)
+  output <- .workspaces$modify_endpoint_encryption_mode_output()
+  config <- get_config()
+  svc <- .workspaces$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspaces$operations$modify_endpoint_encryption_mode <- workspaces_modify_endpoint_encryption_mode
+
 #' Modifies multiple properties related to SAML 2
 #'
 #' @description
@@ -4853,7 +4906,8 @@ workspaces_modify_streaming_properties <- function(ResourceId, StreamingProperti
 #'     DeviceTypeAndroid = "ALLOW"|"DENY",
 #'     DeviceTypeChromeOs = "ALLOW"|"DENY",
 #'     DeviceTypeZeroClient = "ALLOW"|"DENY",
-#'     DeviceTypeLinux = "ALLOW"|"DENY"
+#'     DeviceTypeLinux = "ALLOW"|"DENY",
+#'     DeviceTypeWorkSpacesThinClient = "ALLOW"|"DENY"
 #'   )
 #' )
 #' ```
@@ -5694,7 +5748,7 @@ workspaces_stop_workspaces_pool <- function(PoolId) {
 #' 
 #' Terminating a WorkSpace is a permanent action and cannot be undone. The
 #' user's data is destroyed. If you need to archive any user data, contact
-#' Amazon Web Services Support before terminating the WorkSpace.
+#' Amazon Web ServicesSupport before terminating the WorkSpace.
 #' 
 #' You can terminate a WorkSpace that is in any state except `SUSPENDED`.
 #' 
@@ -6110,7 +6164,7 @@ workspaces_update_workspace_bundle <- function(BundleId = NULL, ImageId = NULL) 
 #' Region.
 #' 
 #' In Amazon Web Services GovCloud (US), to copy images to and from other
-#' Regions, contact Amazon Web Services Support.
+#' Regions, contact Amazon Web ServicesSupport.
 #' 
 #' For more information about sharing images, see [Share or Unshare a
 #' Custom WorkSpaces
@@ -6122,8 +6176,8 @@ workspaces_update_workspace_bundle <- function(BundleId = NULL, ImageId = NULL) 
 #' -   Sharing Bring Your Own License (BYOL) images across Amazon Web
 #'     Services accounts isn't supported at this time in Amazon Web
 #'     Services GovCloud (US). To share BYOL images across accounts in
-#'     Amazon Web Services GovCloud (US), contact Amazon Web Services
-#'     Support.
+#'     Amazon Web Services GovCloud (US), contact Amazon Web
+#'     ServicesSupport.
 #'
 #' @usage
 #' workspaces_update_workspace_image_permission(ImageId, AllowCopyImage,

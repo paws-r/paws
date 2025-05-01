@@ -33,12 +33,13 @@ then you must use the full Amazon Resource Name(ARN).}
 
 \item{MediaUrls}{An array of URLs to each media file to send.
 
-The media files have to be stored in a publicly available S3 bucket.
-Supported media file formats are listed in \href{https://docs.aws.amazon.com/sms-voice/latest/userguide/mms-limitations-character.html}{MMS file types, size and character limits}.
+The media files have to be stored in an S3 bucket. Supported media file
+formats are listed in \href{https://docs.aws.amazon.com/sms-voice/latest/userguide/mms-limitations-character.html}{MMS file types, size and character limits}.
 For more information on creating an S3 bucket and managing objects, see
-\href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/create-bucket-overview.html}{Creating a bucket}
-and \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/upload-objects.html}{Uploading objects}
-in the S3 user guide.}
+\href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/create-bucket-overview.html}{Creating a bucket},
+\href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/upload-objects.html}{Uploading objects}
+in the \emph{Amazon S3 User Guide}, and \href{https://docs.aws.amazon.com/sms-voice/latest/userguide/send-mms-message.html#send-mms-message-bucket}{Setting up an Amazon S3 bucket for MMS files}
+in the \emph{Amazon Web Services End User Messaging SMS User Guide}.}
 
 \item{ConfigurationSetName}{The name of the configuration set to use. This can be either the
 ConfigurationSetName or ConfigurationSetArn.}

@@ -106,9 +106,11 @@ idempotency of the request.}
 
 \item{launchTemplate}{An object representing a node group's launch template specification.
 When using this object, don't directly specify \code{instanceTypes},
-\code{diskSize}, or \code{remoteAccess}. Make sure that the launch template meets
-the requirements in \code{launchTemplateSpecification}. Also refer to
-\href{https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html}{Customizing managed nodes with launch templates}
+\code{diskSize}, or \code{remoteAccess}. You cannot later specify a different
+launch template ID or name than what was used to create the node group.
+
+Make sure that the launch template meets the requirements in
+\code{launchTemplateSpecification}. Also refer to \href{https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html}{Customizing managed nodes with launch templates}
 in the \emph{Amazon EKS User Guide}.}
 
 \item{updateConfig}{The node group update configuration.}

@@ -6,15 +6,15 @@
 Amazon Web Services Region}
 \usage{
 entityresolution_list_provider_services(
-  maxResults = NULL,
   nextToken = NULL,
+  maxResults = NULL,
   providerName = NULL
 )
 }
 \arguments{
-\item{maxResults}{The maximum number of objects returned per page.}
-
 \item{nextToken}{The pagination token from the previous API call.}
+
+\item{maxResults}{The maximum number of objects returned per page.}
 
 \item{providerName}{The name of the provider. This name is typically the company name.}
 }

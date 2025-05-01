@@ -2,7 +2,7 @@
 % Please edit documentation in R/cognitoidentity_operations.R
 \name{cognitoidentity_update_identity_pool}
 \alias{cognitoidentity_update_identity_pool}
-\title{Updates an identity pool}
+\title{Updates the configuration of an identity pool}
 \usage{
 cognitoidentity_update_identity_pool(
   IdentityPoolId,
@@ -45,7 +45,7 @@ different ways, such as by purpose, owner, environment, or other
 criteria.}
 }
 \description{
-Updates an identity pool.
+Updates the configuration of an identity pool.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentity_update_identity_pool/} for full documentation.
 }

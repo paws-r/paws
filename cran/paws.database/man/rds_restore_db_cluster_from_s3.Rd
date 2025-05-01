@@ -236,12 +236,12 @@ Logs. The values in the list depend on the DB engine being used.
 
 \strong{Aurora MySQL}
 
-Possible values are \code{audit}, \code{error}, \code{general}, \code{instance}, and
-\code{slowquery}.
+Possible values are \code{audit}, \code{error}, \code{general}, \code{instance},
+\code{slowquery}, and \code{iam-db-auth-error}.
 
 \strong{Aurora PostgreSQL}
 
-Possible value are \code{instance} and \code{postgresql}.
+Possible value are \code{instance}, \code{postgresql}, and \code{iam-db-auth-error}.
 
 For more information about exporting CloudWatch Logs for Amazon RDS, see
 \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch}{Publishing Database Logs to Amazon CloudWatch Logs}

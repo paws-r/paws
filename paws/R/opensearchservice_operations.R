@@ -653,24 +653,25 @@ opensearchservice_cancel_service_software_update <- function(DomainName) {
 }
 .opensearchservice$operations$cancel_service_software_update <- opensearchservice_cancel_service_software_update
 
-#' Creates an OpenSearch Application
+#' Creates an OpenSearch UI application
 #'
 #' @description
-#' Creates an OpenSearch Application.
+#' Creates an OpenSearch UI application. For more information, see [Using
+#' the OpenSearch user interface in Amazon OpenSearch
+#' Service](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/application.html).
 #'
 #' @usage
 #' opensearchservice_create_application(clientToken, name, dataSources,
 #'   iamIdentityCenterOptions, appConfigs, tagList)
 #'
-#' @param clientToken A unique client idempotency token. It will be auto generated if not
-#' provided.
-#' @param name &#91;required&#93; Name of the OpenSearch Appication to create. Application names are
-#' unique across the applications owned by an account within an Amazon Web
-#' Services Region.
-#' @param dataSources Data sources to be associated with the OpenSearch Application.
-#' @param iamIdentityCenterOptions Settings of IAM Identity Center for the OpenSearch Application.
-#' @param appConfigs Configurations of the OpenSearch Application, inlcuding admin
-#' configuration.
+#' @param clientToken Unique, case-sensitive identifier to ensure idempotency of the request.
+#' @param name &#91;required&#93; The unique name of the OpenSearch application. Names must be unique
+#' within an Amazon Web Services Region for each account.
+#' @param dataSources The data sources to link to the OpenSearch application.
+#' @param iamIdentityCenterOptions Configuration settings for integrating Amazon Web Services IAM Identity
+#' Center with the OpenSearch application.
+#' @param appConfigs Configuration settings for the OpenSearch application, including
+#' administrative options.
 #' @param tagList 
 #'
 #' @return
@@ -843,7 +844,8 @@ opensearchservice_create_application <- function(clientToken = NULL, name, dataS
 #' @param DomainEndpointOptions Additional options for the domain endpoint, such as whether to require
 #' HTTPS for all traffic.
 #' @param AdvancedSecurityOptions Options for fine-grained access control.
-#' @param IdentityCenterOptions Options for IAM Identity Center Option control for the domain.
+#' @param IdentityCenterOptions Configuration options for enabling and managing IAM Identity Center
+#' integration within a domain.
 #' @param TagList List of tags to add to the domain upon creation.
 #' @param AutoTuneOptions Options for Auto-Tune.
 #' @param OffPeakWindowOptions Specifies a daily 10-hour time block during which OpenSearch Service can
@@ -1537,16 +1539,15 @@ opensearchservice_create_vpc_endpoint <- function(DomainArn, VpcOptions, ClientT
 }
 .opensearchservice$operations$create_vpc_endpoint <- opensearchservice_create_vpc_endpoint
 
-#' Deletes an existing OpenSearch Application
+#' Deletes a specified OpenSearch application
 #'
 #' @description
-#' Deletes an existing OpenSearch Application.
+#' Deletes a specified OpenSearch application.
 #'
 #' @usage
 #' opensearchservice_delete_application(id)
 #'
-#' @param id &#91;required&#93; Unique identifier for the OpenSearch Application that you want to
-#' delete.
+#' @param id &#91;required&#93; The unique identifier of the OpenSearch application to delete.
 #'
 #' @return
 #' An empty list.
@@ -4544,16 +4545,17 @@ opensearchservice_dissociate_packages <- function(PackageList, DomainName) {
 }
 .opensearchservice$operations$dissociate_packages <- opensearchservice_dissociate_packages
 
-#' Check the configuration and status of an existing OpenSearch Application
+#' Retrieves the configuration and status of an existing OpenSearch
+#' application
 #'
 #' @description
-#' Check the configuration and status of an existing OpenSearch
-#' Application.
+#' Retrieves the configuration and status of an existing OpenSearch
+#' application.
 #'
 #' @usage
 #' opensearchservice_get_application(id)
 #'
-#' @param id &#91;required&#93; Unique identifier of the checked OpenSearch Application.
+#' @param id &#91;required&#93; The unique identifier of the OpenSearch application to retrieve.
 #'
 #' @return
 #' A list with the following syntax:
@@ -5087,18 +5089,17 @@ opensearchservice_get_upgrade_status <- function(DomainName) {
 }
 .opensearchservice$operations$get_upgrade_status <- opensearchservice_get_upgrade_status
 
-#' List all OpenSearch Applications under your account
+#' Lists all OpenSearch applications under your account
 #'
 #' @description
-#' List all OpenSearch Applications under your account.
+#' Lists all OpenSearch applications under your account.
 #'
 #' @usage
 #' opensearchservice_list_applications(nextToken, statuses, maxResults)
 #'
 #' @param nextToken 
-#' @param statuses OpenSearch Application Status can be used as filters for the listing
-#' request. Possible values are `CREATING`, `UPDATING`, `DELETING`,
-#' `FAILED`, `ACTIVE`, and `DELETED`.
+#' @param statuses Filters the list of OpenSearch applications by status. Possible values:
+#' `CREATING`, `UPDATING`, `DELETING`, `FAILED`, `ACTIVE`, and `DELETED`.
 #' @param maxResults 
 #'
 #' @return
@@ -6467,17 +6468,19 @@ opensearchservice_start_service_software_update <- function(DomainName, Schedule
 }
 .opensearchservice$operations$start_service_software_update <- opensearchservice_start_service_software_update
 
-#' Update the OpenSearch Application
+#' Updates the configuration and settings of an existing OpenSearch
+#' application
 #'
 #' @description
-#' Update the OpenSearch Application.
+#' Updates the configuration and settings of an existing OpenSearch
+#' application.
 #'
 #' @usage
 #' opensearchservice_update_application(id, dataSources, appConfigs)
 #'
-#' @param id &#91;required&#93; Unique identifier of the OpenSearch Application to be updated.
-#' @param dataSources Data sources to be associated with the OpenSearch Application.
-#' @param appConfigs Configurations to be changed for the OpenSearch Application.
+#' @param id &#91;required&#93; The unique identifier for the OpenSearch application to be updated.
+#' @param dataSources The data sources to associate with the OpenSearch application.
+#' @param appConfigs The configuration settings to modify for the OpenSearch application.
 #'
 #' @return
 #' A list with the following syntax:

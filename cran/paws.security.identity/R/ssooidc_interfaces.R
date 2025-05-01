@@ -23,7 +23,7 @@ NULL
 
 .ssooidc$create_token_with_iam_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(accessToken = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), tokenType = structure(logical(0), tags = list(type = "string")), expiresIn = structure(logical(0), tags = list(type = "integer")), refreshToken = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), idToken = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), issuedTokenType = structure(logical(0), tags = list(type = "string")), scope = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(accessToken = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), tokenType = structure(logical(0), tags = list(type = "string")), expiresIn = structure(logical(0), tags = list(type = "integer")), refreshToken = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), idToken = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), issuedTokenType = structure(logical(0), tags = list(type = "string")), scope = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), awsAdditionalDetails = structure(list(identityContext = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

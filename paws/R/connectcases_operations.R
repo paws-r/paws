@@ -279,7 +279,11 @@ connectcases_batch_put_field_options <- function(domainId, fieldId, options) {
 #' 
 #' The following fields are required when creating a case:
 #' 
-#'      <ul> <li> <p> <code>customer_id</code> - You must provide the full customer profile ARN in this format: <code>arn:aws:profile:your_AWS_Region:your_AWS_account ID:domains/your_profiles_domain_name/profiles/profile_ID</code> </p> </li> <li> <p> <code>title</code> </p> </li> </ul> 
+#' -   `customer_id` - You must provide the full customer profile ARN in
+#'     this format:
+#'     `arn:aws:profile:your_AWS_Region:your_AWS_account ID:domains/your_profiles_domain_name/profiles/profile_ID`
+#' 
+#' -   `title`
 #'
 #' @usage
 #' connectcases_create_case(clientToken, domainId, fields, performedBy,
@@ -323,6 +327,7 @@ connectcases_batch_put_field_options <- function(domainId, fieldId, options) {
 #'     )
 #'   ),
 #'   performedBy = list(
+#'     customEntity = "string",
 #'     userArn = "string"
 #'   ),
 #'   templateId = "string"
@@ -458,8 +463,6 @@ connectcases_create_case_rule <- function(description = NULL, domainId, name, ru
 #' API. You need specific IAM permissions to successfully associate the
 #' Cases domain. For more information, see [Onboard to
 #' Cases](https://docs.aws.amazon.com/connect/latest/adminguide/required-permissions-iam-cases.html#onboard-cases-iam).
-#' 
-#'      </important> 
 #'
 #' @usage
 #' connectcases_create_domain(name)
@@ -714,13 +717,31 @@ connectcases_create_layout <- function(content, domainId, name) {
 #'     ),
 #'     file = list(
 #'       fileArn = "string"
+#'     ),
+#'     sla = list(
+#'       slaInputConfiguration = list(
+#'         fieldId = "string",
+#'         name = "string",
+#'         targetFieldValues = list(
+#'           list(
+#'             booleanValue = TRUE|FALSE,
+#'             doubleValue = 123.0,
+#'             emptyValue = list(),
+#'             stringValue = "string",
+#'             userArnValue = "string"
+#'           )
+#'         ),
+#'         targetSlaMinutes = 123,
+#'         type = "CaseField"
+#'       )
 #'     )
 #'   ),
 #'   domainId = "string",
 #'   performedBy = list(
+#'     customEntity = "string",
 #'     userArn = "string"
 #'   ),
-#'   type = "Contact"|"Comment"|"File"
+#'   type = "Contact"|"Comment"|"File"|"Sla"
 #' )
 #' ```
 #'
@@ -895,7 +916,10 @@ connectcases_delete_case_rule <- function(caseRuleId, domainId) {
 #' @description
 #' Deletes a Cases domain.
 #' 
-#'      <note> <p>After deleting your domain you must disassociate the deleted domain from your Amazon Connect instance with another API call before being able to use Cases again with this Amazon Connect instance. See <a href="https://docs.aws.amazon.com/connect/latest/APIReference/API_DeleteIntegrationAssociation.html">DeleteIntegrationAssociation</a>.</p> </note> 
+#' After deleting your domain you must disassociate the deleted domain from
+#' your Amazon Connect instance with another API call before being able to
+#' use Cases again with this Amazon Connect instance. See
+#' [DeleteIntegrationAssociation](https://docs.aws.amazon.com/connect/latest/APIReference/API_DeleteIntegrationAssociation.html).
 #'
 #' @usage
 #' connectcases_delete_domain(domainId)
@@ -1036,7 +1060,17 @@ connectcases_delete_field <- function(domainId, fieldId) {
 #' Deletes a layout from a cases template. You can delete up to 100 layouts
 #' per domain.
 #' 
-#'      <p>After a layout is deleted:</p> <ul> <li> <p>You can still retrieve the layout by calling <code>GetLayout</code>.</p> </li> <li> <p>You cannot update a deleted layout by calling <code>UpdateLayout</code>; it throws a <code>ValidationException</code>.</p> </li> <li> <p>Deleted layouts are not included in the <code>ListLayouts</code> response.</p> </li> </ul> 
+#' After a layout is deleted:
+#' 
+#' -   You can still retrieve the layout by calling
+#'     [`get_layout`][connectcases_get_layout].
+#' 
+#' -   You cannot update a deleted layout by calling
+#'     [`update_layout`][connectcases_update_layout]; it throws a
+#'     `ValidationException`.
+#' 
+#' -   Deleted layouts are not included in the
+#'     [`list_layouts`][connectcases_list_layouts] response.
 #'
 #' @usage
 #' connectcases_delete_layout(domainId, layoutId)
@@ -1084,7 +1118,17 @@ connectcases_delete_layout <- function(domainId, layoutId) {
 #' @description
 #' Deletes a cases template. You can delete up to 100 templates per domain.
 #' 
-#'      <p>After a cases template is deleted:</p> <ul> <li> <p>You can still retrieve the template by calling <code>GetTemplate</code>.</p> </li> <li> <p>You cannot update the template. </p> </li> <li> <p>You cannot create a case by using the deleted template.</p> </li> <li> <p>Deleted templates are not included in the <code>ListTemplates</code> response.</p> </li> </ul> 
+#' After a cases template is deleted:
+#' 
+#' -   You can still retrieve the template by calling
+#'     [`get_template`][connectcases_get_template].
+#' 
+#' -   You cannot update the template.
+#' 
+#' -   You cannot create a case by using the deleted template.
+#' 
+#' -   Deleted templates are not included in the
+#'     [`list_templates`][connectcases_list_templates] response.
 #'
 #' @usage
 #' connectcases_delete_template(domainId, templateId)
@@ -1251,13 +1295,14 @@ connectcases_get_case <- function(caseId, domainId, fields, nextToken = NULL) {
 #'       performedBy = list(
 #'         iamPrincipalArn = "string",
 #'         user = list(
+#'           customEntity = "string",
 #'           userArn = "string"
 #'         )
 #'       ),
 #'       performedTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       relatedItemType = "Contact"|"Comment"|"File",
+#'       relatedItemType = "Contact"|"Comment"|"File"|"Sla",
 #'       type = "Case.Created"|"Case.Updated"|"RelatedItem.Created"
 #'     )
 #'   ),
@@ -2402,16 +2447,40 @@ connectcases_search_cases <- function(domainId, fields = NULL, filter = NULL, ma
 #'         ),
 #'         file = list(
 #'           fileArn = "string"
+#'         ),
+#'         sla = list(
+#'           slaConfiguration = list(
+#'             completionTime = as.POSIXct(
+#'               "2015-01-01"
+#'             ),
+#'             fieldId = "string",
+#'             name = "string",
+#'             status = "Active"|"Overdue"|"Met"|"NotMet",
+#'             targetFieldValues = list(
+#'               list(
+#'                 booleanValue = TRUE|FALSE,
+#'                 doubleValue = 123.0,
+#'                 emptyValue = list(),
+#'                 stringValue = "string",
+#'                 userArnValue = "string"
+#'               )
+#'             ),
+#'             targetTime = as.POSIXct(
+#'               "2015-01-01"
+#'             ),
+#'             type = "CaseField"
+#'           )
 #'         )
 #'       ),
 #'       performedBy = list(
+#'         customEntity = "string",
 #'         userArn = "string"
 #'       ),
 #'       relatedItemId = "string",
 #'       tags = list(
 #'         "string"
 #'       ),
-#'       type = "Contact"|"Comment"|"File"
+#'       type = "Contact"|"Comment"|"File"|"Sla"
 #'     )
 #'   )
 #' )
@@ -2433,6 +2502,10 @@ connectcases_search_cases <- function(domainId, fields = NULL, filter = NULL, ma
 #'       ),
 #'       file = list(
 #'         fileArn = "string"
+#'       ),
+#'       sla = list(
+#'         name = "string",
+#'         status = "Active"|"Overdue"|"Met"|"NotMet"
 #'       )
 #'     )
 #'   ),
@@ -2607,6 +2680,7 @@ connectcases_untag_resource <- function(arn, tagKeys) {
 #'     )
 #'   ),
 #'   performedBy = list(
+#'     customEntity = "string",
 #'     userArn = "string"
 #'   )
 #' )

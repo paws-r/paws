@@ -6,7 +6,7 @@ NULL
 #'
 #' @description
 #' Welcome to the API Reference Guide for zonal shift and zonal autoshift
-#' in Amazon Route 53 Application Recovery Controller (Route 53 ARC).
+#' in Amazon Route 53 Application Recovery Controller (ARC).
 #' 
 #' You can start a zonal shift to move traffic for a load balancer resource
 #' away from an Availability Zone to help your application recover quickly
@@ -16,12 +16,12 @@ NULL
 #' Zone.
 #' 
 #' You can also configure zonal autoshift for supported load balancer
-#' resources. Zonal autoshift is a capability in Route 53 ARC where you
-#' authorize Amazon Web Services to shift away application resource traffic
-#' from an Availability Zone during events, on your behalf, to help reduce
-#' your time to recovery. Amazon Web Services starts an autoshift when
-#' internal telemetry indicates that there is an Availability Zone
-#' impairment that could potentially impact customers.
+#' resources. Zonal autoshift is a capability in ARC where you authorize
+#' Amazon Web Services to shift away application resource traffic from an
+#' Availability Zone during events, on your behalf, to help reduce your
+#' time to recovery. Amazon Web Services starts an autoshift when internal
+#' telemetry indicates that there is an Availability Zone impairment that
+#' could potentially impact customers.
 #' 
 #' To help make sure that zonal autoshift is safe for your application, you
 #' must also configure practice runs when you enable zonal autoshift for a
@@ -45,11 +45,11 @@ NULL
 #' recommend that you configure the minimum capacity of your auto scaling
 #' to continue operating normally with the loss of an Availability Zone.
 #' 
-#' Be aware that Route 53 ARC does not inspect the health of individual
-#' resources. Amazon Web Services only starts an autoshift when Amazon Web
-#' Services telemetry detects that there is an Availability Zone impairment
-#' that could potentially impact customers. In some cases, resources might
-#' be shifted away that are not experiencing impact.
+#' Be aware that ARC does not inspect the health of individual resources.
+#' Amazon Web Services only starts an autoshift when Amazon Web Services
+#' telemetry detects that there is an Availability Zone impairment that
+#' could potentially impact customers. In some cases, resources might be
+#' shifted away that are not experiencing impact.
 #' 
 #' For more information about using zonal shift and zonal autoshift, see
 #' the [Amazon Route 53 Application Recovery Controller Developer
@@ -141,9 +141,9 @@ NULL
 #'  \link[=arczonalshift_cancel_zonal_shift]{cancel_zonal_shift} \tab Cancel a zonal shift in Amazon Route 53 Application Recovery Controller\cr
 #'  \link[=arczonalshift_create_practice_run_configuration]{create_practice_run_configuration} \tab A practice run configuration for zonal autoshift is required when you enable zonal autoshift\cr
 #'  \link[=arczonalshift_delete_practice_run_configuration]{delete_practice_run_configuration} \tab Deletes the practice run configuration for a resource\cr
-#'  \link[=arczonalshift_get_autoshift_observer_notification_status]{get_autoshift_observer_notification_status} \tab Returns the status of autoshift observer notification\cr
+#'  \link[=arczonalshift_get_autoshift_observer_notification_status]{get_autoshift_observer_notification_status} \tab Returns the status of the autoshift observer notification\cr
 #'  \link[=arczonalshift_get_managed_resource]{get_managed_resource} \tab Get information about a resource that's been registered for zonal shifts with Amazon Route 53 Application Recovery Controller in this Amazon Web Services Region\cr
-#'  \link[=arczonalshift_list_autoshifts]{list_autoshifts} \tab Returns a list of autoshifts for an Amazon Web Services Region\cr
+#'  \link[=arczonalshift_list_autoshifts]{list_autoshifts} \tab Returns the autoshifts for an Amazon Web Services Region\cr
 #'  \link[=arczonalshift_list_managed_resources]{list_managed_resources} \tab Lists all the resources in your Amazon Web Services account in this Amazon Web Services Region that are managed for zonal shifts in Amazon Route 53 Application Recovery Controller, and information about them\cr
 #'  \link[=arczonalshift_list_zonal_shifts]{list_zonal_shifts} \tab Lists all active and completed zonal shifts in Amazon Route 53 Application Recovery Controller in your Amazon Web Services account in this Amazon Web Services Region\cr
 #'  \link[=arczonalshift_start_zonal_shift]{start_zonal_shift} \tab You start a zonal shift to temporarily move load balancer traffic away from an Availability Zone in an Amazon Web Services Region, to help your application recover immediately, for example, from a developer's bad code deployment or from an Amazon Web Services infrastructure failure in a single Availability Zone\cr
@@ -182,7 +182,7 @@ arczonalshift <- function(config = list(), credentials = list(), endpoint = NULL
 
 .arczonalshift$metadata <- list(
   service_name = "arczonalshift",
-  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "arc-zonal-shift.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "arc-zonal-shift.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "arc-zonal-shift.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "arc-zonal-shift.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "arc-zonal-shift.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "arc-zonal-shift.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "arc-zonal-shift.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "arc-zonal-shift.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "arc-zonal-shift.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "arc-zonal-shift.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "arc-zonal-shift.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "arc-zonal-shift.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "arc-zonal-shift.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "arc-zonal-shift.{region}.csp.hci.ic.gov", global = FALSE), "^eusc\\-(de)\\-\\w+\\-\\d+$" = list(endpoint = "arc-zonal-shift.{region}.amazonaws.eu", global = FALSE)),
   service_id = "ARC Zonal Shift",
   api_version = "2022-10-30",
   signing_name = "arc-zonal-shift",

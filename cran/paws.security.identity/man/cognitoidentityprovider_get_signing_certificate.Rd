@@ -2,15 +2,15 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_get_signing_certificate}
 \alias{cognitoidentityprovider_get_signing_certificate}
-\title{This method takes a user pool ID, and returns the signing certificate}
+\title{Given a user pool ID, returns the signing certificate for SAML 2}
 \usage{
 cognitoidentityprovider_get_signing_certificate(UserPoolId)
 }
 \arguments{
-\item{UserPoolId}{[required] The user pool ID.}
+\item{UserPoolId}{[required] The ID of the user pool where you want to view the signing certificate.}
 }
 \description{
-This method takes a user pool ID, and returns the signing certificate. The issued certificate is valid for 10 years from the date of issue.
+Given a user pool ID, returns the signing certificate for SAML 2.0 federation.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_get_signing_certificate/} for full documentation.
 }

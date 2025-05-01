@@ -11,9 +11,13 @@ sagemaker_batch_delete_cluster_nodes(ClusterName, NodeIds)
 specified nodes.}
 
 \item{NodeIds}{[required] A list of node IDs to be deleted from the specified cluster.
-
-For SageMaker HyperPod clusters using the Slurm workload manager, you
-cannot remove instances that are configured as Slurm controller nodes.}
+\itemize{
+\item For SageMaker HyperPod clusters using the Slurm workload manager,
+you cannot remove instances that are configured as Slurm controller
+nodes.
+\item If you need to delete more than 99 instances, contact
+\href{https://aws.amazon.com/contact-us/}{Support} for assistance.
+}}
 }
 \description{
 Deletes specific nodes within a SageMaker HyperPod cluster. \code{\link[=sagemaker_batch_delete_cluster_nodes]{batch_delete_cluster_nodes}} accepts a cluster name and a list of node IDs.

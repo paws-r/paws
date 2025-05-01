@@ -183,17 +183,19 @@ codebuild_batch_delete_builds <- function(ids) {
 #'         location = "string",
 #'         modes = list(
 #'           "LOCAL_DOCKER_LAYER_CACHE"|"LOCAL_SOURCE_CACHE"|"LOCAL_CUSTOM_CACHE"
-#'         )
+#'         ),
+#'         cacheNamespace = "string"
 #'       ),
 #'       environment = list(
-#'         type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"LINUX_EC2"|"ARM_EC2"|"WINDOWS_EC2"|"MAC_ARM",
+#'         type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"WINDOWS_SERVER_2022_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"LINUX_EC2"|"ARM_EC2"|"WINDOWS_EC2"|"MAC_ARM",
 #'         image = "string",
-#'         computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB"|"ATTRIBUTE_BASED_COMPUTE",
+#'         computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB"|"ATTRIBUTE_BASED_COMPUTE"|"CUSTOM_INSTANCE_TYPE",
 #'         computeConfiguration = list(
 #'           vCpu = 123,
 #'           memory = 123,
 #'           disk = 123,
-#'           machineType = "GENERAL"|"NVME"
+#'           machineType = "GENERAL"|"NVME",
+#'           instanceType = "string"
 #'         ),
 #'         fleet = list(
 #'           fleetArn = "string"
@@ -315,7 +317,10 @@ codebuild_batch_delete_builds <- function(ids) {
 #'           )
 #'         )
 #'       ),
-#'       debugSessionEnabled = TRUE|FALSE
+#'       debugSessionEnabled = TRUE|FALSE,
+#'       reportArns = list(
+#'         "string"
+#'       )
 #'     )
 #'   ),
 #'   buildBatchesNotFound = list(
@@ -479,17 +484,19 @@ codebuild_batch_get_build_batches <- function(ids) {
 #'         location = "string",
 #'         modes = list(
 #'           "LOCAL_DOCKER_LAYER_CACHE"|"LOCAL_SOURCE_CACHE"|"LOCAL_CUSTOM_CACHE"
-#'         )
+#'         ),
+#'         cacheNamespace = "string"
 #'       ),
 #'       environment = list(
-#'         type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"LINUX_EC2"|"ARM_EC2"|"WINDOWS_EC2"|"MAC_ARM",
+#'         type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"WINDOWS_SERVER_2022_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"LINUX_EC2"|"ARM_EC2"|"WINDOWS_EC2"|"MAC_ARM",
 #'         image = "string",
-#'         computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB"|"ATTRIBUTE_BASED_COMPUTE",
+#'         computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB"|"ATTRIBUTE_BASED_COMPUTE"|"CUSTOM_INSTANCE_TYPE",
 #'         computeConfiguration = list(
 #'           vCpu = 123,
 #'           memory = 123,
 #'           disk = 123,
-#'           machineType = "GENERAL"|"NVME"
+#'           machineType = "GENERAL"|"NVME",
+#'           instanceType = "string"
 #'         ),
 #'         fleet = list(
 #'           fleetArn = "string"
@@ -629,6 +636,102 @@ codebuild_batch_get_builds <- function(ids) {
 }
 .codebuild$operations$batch_get_builds <- codebuild_batch_get_builds
 
+#' Gets information about the command executions
+#'
+#' @description
+#' Gets information about the command executions.
+#'
+#' @usage
+#' codebuild_batch_get_command_executions(sandboxId, commandExecutionIds)
+#'
+#' @param sandboxId &#91;required&#93; A `sandboxId` or `sandboxArn`.
+#' @param commandExecutionIds &#91;required&#93; A comma separated list of `commandExecutionIds`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   commandExecutions = list(
+#'     list(
+#'       id = "string",
+#'       sandboxId = "string",
+#'       submitTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       startTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       endTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       status = "string",
+#'       command = "string",
+#'       type = "SHELL",
+#'       exitCode = "string",
+#'       standardOutputContent = "string",
+#'       standardErrContent = "string",
+#'       logs = list(
+#'         groupName = "string",
+#'         streamName = "string",
+#'         deepLink = "string",
+#'         s3DeepLink = "string",
+#'         cloudWatchLogsArn = "string",
+#'         s3LogsArn = "string",
+#'         cloudWatchLogs = list(
+#'           status = "ENABLED"|"DISABLED",
+#'           groupName = "string",
+#'           streamName = "string"
+#'         ),
+#'         s3Logs = list(
+#'           status = "ENABLED"|"DISABLED",
+#'           location = "string",
+#'           encryptionDisabled = TRUE|FALSE,
+#'           bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
+#'         )
+#'       ),
+#'       sandboxArn = "string"
+#'     )
+#'   ),
+#'   commandExecutionsNotFound = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$batch_get_command_executions(
+#'   sandboxId = "string",
+#'   commandExecutionIds = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codebuild_batch_get_command_executions
+#'
+#' @aliases codebuild_batch_get_command_executions
+codebuild_batch_get_command_executions <- function(sandboxId, commandExecutionIds) {
+  op <- new_operation(
+    name = "BatchGetCommandExecutions",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .codebuild$batch_get_command_executions_input(sandboxId = sandboxId, commandExecutionIds = commandExecutionIds)
+  output <- .codebuild$batch_get_command_executions_output()
+  config <- get_config()
+  svc <- .codebuild$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codebuild$operations$batch_get_command_executions <- codebuild_batch_get_command_executions
+
 #' Gets information about one or more compute fleets
 #'
 #' @description
@@ -660,13 +763,14 @@ codebuild_batch_get_builds <- function(ids) {
 #'         message = "string"
 #'       ),
 #'       baseCapacity = 123,
-#'       environmentType = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"LINUX_EC2"|"ARM_EC2"|"WINDOWS_EC2"|"MAC_ARM",
-#'       computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB"|"ATTRIBUTE_BASED_COMPUTE",
+#'       environmentType = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"WINDOWS_SERVER_2022_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"LINUX_EC2"|"ARM_EC2"|"WINDOWS_EC2"|"MAC_ARM",
+#'       computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB"|"ATTRIBUTE_BASED_COMPUTE"|"CUSTOM_INSTANCE_TYPE",
 #'       computeConfiguration = list(
 #'         vCpu = 123,
 #'         memory = 123,
 #'         disk = 123,
-#'         machineType = "GENERAL"|"NVME"
+#'         machineType = "GENERAL"|"NVME",
+#'         instanceType = "string"
 #'       ),
 #'       scalingConfiguration = list(
 #'         scalingType = "TARGET_TRACKING_SCALING",
@@ -851,17 +955,19 @@ codebuild_batch_get_fleets <- function(names) {
 #'         location = "string",
 #'         modes = list(
 #'           "LOCAL_DOCKER_LAYER_CACHE"|"LOCAL_SOURCE_CACHE"|"LOCAL_CUSTOM_CACHE"
-#'         )
+#'         ),
+#'         cacheNamespace = "string"
 #'       ),
 #'       environment = list(
-#'         type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"LINUX_EC2"|"ARM_EC2"|"WINDOWS_EC2"|"MAC_ARM",
+#'         type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"WINDOWS_SERVER_2022_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"LINUX_EC2"|"ARM_EC2"|"WINDOWS_EC2"|"MAC_ARM",
 #'         image = "string",
-#'         computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB"|"ATTRIBUTE_BASED_COMPUTE",
+#'         computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB"|"ATTRIBUTE_BASED_COMPUTE"|"CUSTOM_INSTANCE_TYPE",
 #'         computeConfiguration = list(
 #'           vCpu = 123,
 #'           memory = 123,
 #'           disk = 123,
-#'           machineType = "GENERAL"|"NVME"
+#'           machineType = "GENERAL"|"NVME",
+#'           instanceType = "string"
 #'         ),
 #'         fleet = list(
 #'           fleetArn = "string"
@@ -905,7 +1011,7 @@ codebuild_batch_get_fleets <- function(names) {
 #'         filterGroups = list(
 #'           list(
 #'             list(
-#'               type = "EVENT"|"BASE_REF"|"HEAD_REF"|"ACTOR_ACCOUNT_ID"|"FILE_PATH"|"COMMIT_MESSAGE"|"WORKFLOW_NAME"|"TAG_NAME"|"RELEASE_NAME"|"REPOSITORY_NAME",
+#'               type = "EVENT"|"BASE_REF"|"HEAD_REF"|"ACTOR_ACCOUNT_ID"|"FILE_PATH"|"COMMIT_MESSAGE"|"WORKFLOW_NAME"|"TAG_NAME"|"RELEASE_NAME"|"REPOSITORY_NAME"|"ORGANIZATION_NAME",
 #'               pattern = "string",
 #'               excludeMatchedPattern = TRUE|FALSE
 #'             )
@@ -1200,6 +1306,243 @@ codebuild_batch_get_reports <- function(reportArns) {
 }
 .codebuild$operations$batch_get_reports <- codebuild_batch_get_reports
 
+#' Gets information about the sandbox status
+#'
+#' @description
+#' Gets information about the sandbox status.
+#'
+#' @usage
+#' codebuild_batch_get_sandboxes(ids)
+#'
+#' @param ids &#91;required&#93; A comma separated list of `sandboxIds` or `sandboxArns`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   sandboxes = list(
+#'     list(
+#'       id = "string",
+#'       arn = "string",
+#'       projectName = "string",
+#'       requestTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       startTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       endTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       status = "string",
+#'       source = list(
+#'         type = "CODECOMMIT"|"CODEPIPELINE"|"GITHUB"|"GITLAB"|"GITLAB_SELF_MANAGED"|"S3"|"BITBUCKET"|"GITHUB_ENTERPRISE"|"NO_SOURCE",
+#'         location = "string",
+#'         gitCloneDepth = 123,
+#'         gitSubmodulesConfig = list(
+#'           fetchSubmodules = TRUE|FALSE
+#'         ),
+#'         buildspec = "string",
+#'         auth = list(
+#'           type = "OAUTH"|"CODECONNECTIONS"|"SECRETS_MANAGER",
+#'           resource = "string"
+#'         ),
+#'         reportBuildStatus = TRUE|FALSE,
+#'         buildStatusConfig = list(
+#'           context = "string",
+#'           targetUrl = "string"
+#'         ),
+#'         insecureSsl = TRUE|FALSE,
+#'         sourceIdentifier = "string"
+#'       ),
+#'       sourceVersion = "string",
+#'       secondarySources = list(
+#'         list(
+#'           type = "CODECOMMIT"|"CODEPIPELINE"|"GITHUB"|"GITLAB"|"GITLAB_SELF_MANAGED"|"S3"|"BITBUCKET"|"GITHUB_ENTERPRISE"|"NO_SOURCE",
+#'           location = "string",
+#'           gitCloneDepth = 123,
+#'           gitSubmodulesConfig = list(
+#'             fetchSubmodules = TRUE|FALSE
+#'           ),
+#'           buildspec = "string",
+#'           auth = list(
+#'             type = "OAUTH"|"CODECONNECTIONS"|"SECRETS_MANAGER",
+#'             resource = "string"
+#'           ),
+#'           reportBuildStatus = TRUE|FALSE,
+#'           buildStatusConfig = list(
+#'             context = "string",
+#'             targetUrl = "string"
+#'           ),
+#'           insecureSsl = TRUE|FALSE,
+#'           sourceIdentifier = "string"
+#'         )
+#'       ),
+#'       secondarySourceVersions = list(
+#'         list(
+#'           sourceIdentifier = "string",
+#'           sourceVersion = "string"
+#'         )
+#'       ),
+#'       environment = list(
+#'         type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"WINDOWS_SERVER_2022_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"LINUX_EC2"|"ARM_EC2"|"WINDOWS_EC2"|"MAC_ARM",
+#'         image = "string",
+#'         computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB"|"ATTRIBUTE_BASED_COMPUTE"|"CUSTOM_INSTANCE_TYPE",
+#'         computeConfiguration = list(
+#'           vCpu = 123,
+#'           memory = 123,
+#'           disk = 123,
+#'           machineType = "GENERAL"|"NVME",
+#'           instanceType = "string"
+#'         ),
+#'         fleet = list(
+#'           fleetArn = "string"
+#'         ),
+#'         environmentVariables = list(
+#'           list(
+#'             name = "string",
+#'             value = "string",
+#'             type = "PLAINTEXT"|"PARAMETER_STORE"|"SECRETS_MANAGER"
+#'           )
+#'         ),
+#'         privilegedMode = TRUE|FALSE,
+#'         certificate = "string",
+#'         registryCredential = list(
+#'           credential = "string",
+#'           credentialProvider = "SECRETS_MANAGER"
+#'         ),
+#'         imagePullCredentialsType = "CODEBUILD"|"SERVICE_ROLE"
+#'       ),
+#'       fileSystemLocations = list(
+#'         list(
+#'           type = "EFS",
+#'           location = "string",
+#'           mountPoint = "string",
+#'           identifier = "string",
+#'           mountOptions = "string"
+#'         )
+#'       ),
+#'       timeoutInMinutes = 123,
+#'       queuedTimeoutInMinutes = 123,
+#'       vpcConfig = list(
+#'         vpcId = "string",
+#'         subnets = list(
+#'           "string"
+#'         ),
+#'         securityGroupIds = list(
+#'           "string"
+#'         )
+#'       ),
+#'       logConfig = list(
+#'         cloudWatchLogs = list(
+#'           status = "ENABLED"|"DISABLED",
+#'           groupName = "string",
+#'           streamName = "string"
+#'         ),
+#'         s3Logs = list(
+#'           status = "ENABLED"|"DISABLED",
+#'           location = "string",
+#'           encryptionDisabled = TRUE|FALSE,
+#'           bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
+#'         )
+#'       ),
+#'       encryptionKey = "string",
+#'       serviceRole = "string",
+#'       currentSession = list(
+#'         id = "string",
+#'         status = "string",
+#'         startTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         endTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         currentPhase = "string",
+#'         phases = list(
+#'           list(
+#'             phaseType = "string",
+#'             phaseStatus = "SUCCEEDED"|"FAILED"|"FAULT"|"TIMED_OUT"|"IN_PROGRESS"|"STOPPED",
+#'             startTime = as.POSIXct(
+#'               "2015-01-01"
+#'             ),
+#'             endTime = as.POSIXct(
+#'               "2015-01-01"
+#'             ),
+#'             durationInSeconds = 123,
+#'             contexts = list(
+#'               list(
+#'                 statusCode = "string",
+#'                 message = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         resolvedSourceVersion = "string",
+#'         logs = list(
+#'           groupName = "string",
+#'           streamName = "string",
+#'           deepLink = "string",
+#'           s3DeepLink = "string",
+#'           cloudWatchLogsArn = "string",
+#'           s3LogsArn = "string",
+#'           cloudWatchLogs = list(
+#'             status = "ENABLED"|"DISABLED",
+#'             groupName = "string",
+#'             streamName = "string"
+#'           ),
+#'           s3Logs = list(
+#'             status = "ENABLED"|"DISABLED",
+#'             location = "string",
+#'             encryptionDisabled = TRUE|FALSE,
+#'             bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
+#'           )
+#'         ),
+#'         networkInterface = list(
+#'           subnetId = "string",
+#'           networkInterfaceId = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   sandboxesNotFound = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$batch_get_sandboxes(
+#'   ids = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codebuild_batch_get_sandboxes
+#'
+#' @aliases codebuild_batch_get_sandboxes
+codebuild_batch_get_sandboxes <- function(ids) {
+  op <- new_operation(
+    name = "BatchGetSandboxes",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .codebuild$batch_get_sandboxes_input(ids = ids)
+  output <- .codebuild$batch_get_sandboxes_output()
+  config <- get_config()
+  svc <- .codebuild$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codebuild$operations$batch_get_sandboxes <- codebuild_batch_get_sandboxes
+
 #' Creates a compute fleet
 #'
 #' @description
@@ -1396,13 +1739,14 @@ codebuild_batch_get_reports <- function(reportArns) {
 #'       message = "string"
 #'     ),
 #'     baseCapacity = 123,
-#'     environmentType = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"LINUX_EC2"|"ARM_EC2"|"WINDOWS_EC2"|"MAC_ARM",
-#'     computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB"|"ATTRIBUTE_BASED_COMPUTE",
+#'     environmentType = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"WINDOWS_SERVER_2022_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"LINUX_EC2"|"ARM_EC2"|"WINDOWS_EC2"|"MAC_ARM",
+#'     computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB"|"ATTRIBUTE_BASED_COMPUTE"|"CUSTOM_INSTANCE_TYPE",
 #'     computeConfiguration = list(
 #'       vCpu = 123,
 #'       memory = 123,
 #'       disk = 123,
-#'       machineType = "GENERAL"|"NVME"
+#'       machineType = "GENERAL"|"NVME",
+#'       instanceType = "string"
 #'     ),
 #'     scalingConfiguration = list(
 #'       scalingType = "TARGET_TRACKING_SCALING",
@@ -1454,13 +1798,14 @@ codebuild_batch_get_reports <- function(reportArns) {
 #' svc$create_fleet(
 #'   name = "string",
 #'   baseCapacity = 123,
-#'   environmentType = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"LINUX_EC2"|"ARM_EC2"|"WINDOWS_EC2"|"MAC_ARM",
-#'   computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB"|"ATTRIBUTE_BASED_COMPUTE",
+#'   environmentType = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"WINDOWS_SERVER_2022_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"LINUX_EC2"|"ARM_EC2"|"WINDOWS_EC2"|"MAC_ARM",
+#'   computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB"|"ATTRIBUTE_BASED_COMPUTE"|"CUSTOM_INSTANCE_TYPE",
 #'   computeConfiguration = list(
 #'     vCpu = 123,
 #'     memory = 123,
 #'     disk = 123,
-#'     machineType = "GENERAL"|"NVME"
+#'     machineType = "GENERAL"|"NVME",
+#'     instanceType = "string"
 #'   ),
 #'   scalingConfiguration = list(
 #'     scalingType = "TARGET_TRACKING_SCALING",
@@ -1715,17 +2060,19 @@ codebuild_create_fleet <- function(name, baseCapacity, environmentType, computeT
 #'       location = "string",
 #'       modes = list(
 #'         "LOCAL_DOCKER_LAYER_CACHE"|"LOCAL_SOURCE_CACHE"|"LOCAL_CUSTOM_CACHE"
-#'       )
+#'       ),
+#'       cacheNamespace = "string"
 #'     ),
 #'     environment = list(
-#'       type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"LINUX_EC2"|"ARM_EC2"|"WINDOWS_EC2"|"MAC_ARM",
+#'       type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"WINDOWS_SERVER_2022_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"LINUX_EC2"|"ARM_EC2"|"WINDOWS_EC2"|"MAC_ARM",
 #'       image = "string",
-#'       computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB"|"ATTRIBUTE_BASED_COMPUTE",
+#'       computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB"|"ATTRIBUTE_BASED_COMPUTE"|"CUSTOM_INSTANCE_TYPE",
 #'       computeConfiguration = list(
 #'         vCpu = 123,
 #'         memory = 123,
 #'         disk = 123,
-#'         machineType = "GENERAL"|"NVME"
+#'         machineType = "GENERAL"|"NVME",
+#'         instanceType = "string"
 #'       ),
 #'       fleet = list(
 #'         fleetArn = "string"
@@ -1769,7 +2116,7 @@ codebuild_create_fleet <- function(name, baseCapacity, environmentType, computeT
 #'       filterGroups = list(
 #'         list(
 #'           list(
-#'             type = "EVENT"|"BASE_REF"|"HEAD_REF"|"ACTOR_ACCOUNT_ID"|"FILE_PATH"|"COMMIT_MESSAGE"|"WORKFLOW_NAME"|"TAG_NAME"|"RELEASE_NAME"|"REPOSITORY_NAME",
+#'             type = "EVENT"|"BASE_REF"|"HEAD_REF"|"ACTOR_ACCOUNT_ID"|"FILE_PATH"|"COMMIT_MESSAGE"|"WORKFLOW_NAME"|"TAG_NAME"|"RELEASE_NAME"|"REPOSITORY_NAME"|"ORGANIZATION_NAME",
 #'             pattern = "string",
 #'             excludeMatchedPattern = TRUE|FALSE
 #'           )
@@ -1932,17 +2279,19 @@ codebuild_create_fleet <- function(name, baseCapacity, environmentType, computeT
 #'     location = "string",
 #'     modes = list(
 #'       "LOCAL_DOCKER_LAYER_CACHE"|"LOCAL_SOURCE_CACHE"|"LOCAL_CUSTOM_CACHE"
-#'     )
+#'     ),
+#'     cacheNamespace = "string"
 #'   ),
 #'   environment = list(
-#'     type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"LINUX_EC2"|"ARM_EC2"|"WINDOWS_EC2"|"MAC_ARM",
+#'     type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"WINDOWS_SERVER_2022_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"LINUX_EC2"|"ARM_EC2"|"WINDOWS_EC2"|"MAC_ARM",
 #'     image = "string",
-#'     computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB"|"ATTRIBUTE_BASED_COMPUTE",
+#'     computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB"|"ATTRIBUTE_BASED_COMPUTE"|"CUSTOM_INSTANCE_TYPE",
 #'     computeConfiguration = list(
 #'       vCpu = 123,
 #'       memory = 123,
 #'       disk = 123,
-#'       machineType = "GENERAL"|"NVME"
+#'       machineType = "GENERAL"|"NVME",
+#'       instanceType = "string"
 #'     ),
 #'     fleet = list(
 #'       fleetArn = "string"
@@ -2220,7 +2569,7 @@ codebuild_create_report_group <- function(name, type, exportConfig, tags = NULL)
 #'     filterGroups = list(
 #'       list(
 #'         list(
-#'           type = "EVENT"|"BASE_REF"|"HEAD_REF"|"ACTOR_ACCOUNT_ID"|"FILE_PATH"|"COMMIT_MESSAGE"|"WORKFLOW_NAME"|"TAG_NAME"|"RELEASE_NAME"|"REPOSITORY_NAME",
+#'           type = "EVENT"|"BASE_REF"|"HEAD_REF"|"ACTOR_ACCOUNT_ID"|"FILE_PATH"|"COMMIT_MESSAGE"|"WORKFLOW_NAME"|"TAG_NAME"|"RELEASE_NAME"|"REPOSITORY_NAME"|"ORGANIZATION_NAME",
 #'           pattern = "string",
 #'           excludeMatchedPattern = TRUE|FALSE
 #'         )
@@ -2250,7 +2599,7 @@ codebuild_create_report_group <- function(name, type, exportConfig, tags = NULL)
 #'   filterGroups = list(
 #'     list(
 #'       list(
-#'         type = "EVENT"|"BASE_REF"|"HEAD_REF"|"ACTOR_ACCOUNT_ID"|"FILE_PATH"|"COMMIT_MESSAGE"|"WORKFLOW_NAME"|"TAG_NAME"|"RELEASE_NAME"|"REPOSITORY_NAME",
+#'         type = "EVENT"|"BASE_REF"|"HEAD_REF"|"ACTOR_ACCOUNT_ID"|"FILE_PATH"|"COMMIT_MESSAGE"|"WORKFLOW_NAME"|"TAG_NAME"|"RELEASE_NAME"|"REPOSITORY_NAME"|"ORGANIZATION_NAME",
 #'         pattern = "string",
 #'         excludeMatchedPattern = TRUE|FALSE
 #'       )
@@ -3407,6 +3756,104 @@ codebuild_list_builds_for_project <- function(projectName, sortOrder = NULL, nex
 }
 .codebuild$operations$list_builds_for_project <- codebuild_list_builds_for_project
 
+#' Gets a list of command executions for a sandbox
+#'
+#' @description
+#' Gets a list of command executions for a sandbox.
+#'
+#' @usage
+#' codebuild_list_command_executions_for_sandbox(sandboxId, maxResults,
+#'   sortOrder, nextToken)
+#'
+#' @param sandboxId &#91;required&#93; A `sandboxId` or `sandboxArn`.
+#' @param maxResults The maximum number of sandbox records to be retrieved.
+#' @param sortOrder The order in which sandbox records should be retrieved.
+#' @param nextToken The next token, if any, to get paginated results. You will get this
+#' value from previous execution of list sandboxes.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   commandExecutions = list(
+#'     list(
+#'       id = "string",
+#'       sandboxId = "string",
+#'       submitTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       startTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       endTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       status = "string",
+#'       command = "string",
+#'       type = "SHELL",
+#'       exitCode = "string",
+#'       standardOutputContent = "string",
+#'       standardErrContent = "string",
+#'       logs = list(
+#'         groupName = "string",
+#'         streamName = "string",
+#'         deepLink = "string",
+#'         s3DeepLink = "string",
+#'         cloudWatchLogsArn = "string",
+#'         s3LogsArn = "string",
+#'         cloudWatchLogs = list(
+#'           status = "ENABLED"|"DISABLED",
+#'           groupName = "string",
+#'           streamName = "string"
+#'         ),
+#'         s3Logs = list(
+#'           status = "ENABLED"|"DISABLED",
+#'           location = "string",
+#'           encryptionDisabled = TRUE|FALSE,
+#'           bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
+#'         )
+#'       ),
+#'       sandboxArn = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_command_executions_for_sandbox(
+#'   sandboxId = "string",
+#'   maxResults = 123,
+#'   sortOrder = "ASCENDING"|"DESCENDING",
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codebuild_list_command_executions_for_sandbox
+#'
+#' @aliases codebuild_list_command_executions_for_sandbox
+codebuild_list_command_executions_for_sandbox <- function(sandboxId, maxResults = NULL, sortOrder = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListCommandExecutionsForSandbox",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "commandExecutions"),
+    stream_api = FALSE
+  )
+  input <- .codebuild$list_command_executions_for_sandbox_input(sandboxId = sandboxId, maxResults = maxResults, sortOrder = sortOrder, nextToken = nextToken)
+  output <- .codebuild$list_command_executions_for_sandbox_output()
+  config <- get_config()
+  svc <- .codebuild$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codebuild$operations$list_command_executions_for_sandbox <- codebuild_list_command_executions_for_sandbox
+
 #' Gets information about Docker images that are managed by CodeBuild
 #'
 #' @description
@@ -3863,6 +4310,123 @@ codebuild_list_reports_for_report_group <- function(reportGroupArn, nextToken = 
 }
 .codebuild$operations$list_reports_for_report_group <- codebuild_list_reports_for_report_group
 
+#' Gets a list of sandboxes
+#'
+#' @description
+#' Gets a list of sandboxes.
+#'
+#' @usage
+#' codebuild_list_sandboxes(maxResults, sortOrder, nextToken)
+#'
+#' @param maxResults The maximum number of sandbox records to be retrieved.
+#' @param sortOrder The order in which sandbox records should be retrieved.
+#' @param nextToken The next token, if any, to get paginated results. You will get this
+#' value from previous execution of list sandboxes.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ids = list(
+#'     "string"
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_sandboxes(
+#'   maxResults = 123,
+#'   sortOrder = "ASCENDING"|"DESCENDING",
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codebuild_list_sandboxes
+#'
+#' @aliases codebuild_list_sandboxes
+codebuild_list_sandboxes <- function(maxResults = NULL, sortOrder = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListSandboxes",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "ids"),
+    stream_api = FALSE
+  )
+  input <- .codebuild$list_sandboxes_input(maxResults = maxResults, sortOrder = sortOrder, nextToken = nextToken)
+  output <- .codebuild$list_sandboxes_output()
+  config <- get_config()
+  svc <- .codebuild$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codebuild$operations$list_sandboxes <- codebuild_list_sandboxes
+
+#' Gets a list of sandboxes for a given project
+#'
+#' @description
+#' Gets a list of sandboxes for a given project.
+#'
+#' @usage
+#' codebuild_list_sandboxes_for_project(projectName, maxResults, sortOrder,
+#'   nextToken)
+#'
+#' @param projectName &#91;required&#93; The CodeBuild project name.
+#' @param maxResults The maximum number of sandbox records to be retrieved.
+#' @param sortOrder The order in which sandbox records should be retrieved.
+#' @param nextToken The next token, if any, to get paginated results. You will get this
+#' value from previous execution of list sandboxes.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ids = list(
+#'     "string"
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_sandboxes_for_project(
+#'   projectName = "string",
+#'   maxResults = 123,
+#'   sortOrder = "ASCENDING"|"DESCENDING",
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codebuild_list_sandboxes_for_project
+#'
+#' @aliases codebuild_list_sandboxes_for_project
+codebuild_list_sandboxes_for_project <- function(projectName, maxResults = NULL, sortOrder = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListSandboxesForProject",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "ids"),
+    stream_api = FALSE
+  )
+  input <- .codebuild$list_sandboxes_for_project_input(projectName = projectName, maxResults = maxResults, sortOrder = sortOrder, nextToken = nextToken)
+  output <- .codebuild$list_sandboxes_for_project_output()
+  config <- get_config()
+  svc <- .codebuild$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codebuild$operations$list_sandboxes_for_project <- codebuild_list_sandboxes_for_project
+
 #' Gets a list of projects that are shared with other Amazon Web Services
 #' accounts or users
 #'
@@ -4258,17 +4822,19 @@ codebuild_put_resource_policy <- function(policy, resourceArn) {
 #'       location = "string",
 #'       modes = list(
 #'         "LOCAL_DOCKER_LAYER_CACHE"|"LOCAL_SOURCE_CACHE"|"LOCAL_CUSTOM_CACHE"
-#'       )
+#'       ),
+#'       cacheNamespace = "string"
 #'     ),
 #'     environment = list(
-#'       type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"LINUX_EC2"|"ARM_EC2"|"WINDOWS_EC2"|"MAC_ARM",
+#'       type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"WINDOWS_SERVER_2022_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"LINUX_EC2"|"ARM_EC2"|"WINDOWS_EC2"|"MAC_ARM",
 #'       image = "string",
-#'       computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB"|"ATTRIBUTE_BASED_COMPUTE",
+#'       computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB"|"ATTRIBUTE_BASED_COMPUTE"|"CUSTOM_INSTANCE_TYPE",
 #'       computeConfiguration = list(
 #'         vCpu = 123,
 #'         memory = 123,
 #'         disk = 123,
-#'         machineType = "GENERAL"|"NVME"
+#'         machineType = "GENERAL"|"NVME",
+#'         instanceType = "string"
 #'       ),
 #'       fleet = list(
 #'         fleetArn = "string"
@@ -4521,17 +5087,19 @@ codebuild_retry_build <- function(id = NULL, idempotencyToken = NULL) {
 #'       location = "string",
 #'       modes = list(
 #'         "LOCAL_DOCKER_LAYER_CACHE"|"LOCAL_SOURCE_CACHE"|"LOCAL_CUSTOM_CACHE"
-#'       )
+#'       ),
+#'       cacheNamespace = "string"
 #'     ),
 #'     environment = list(
-#'       type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"LINUX_EC2"|"ARM_EC2"|"WINDOWS_EC2"|"MAC_ARM",
+#'       type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"WINDOWS_SERVER_2022_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"LINUX_EC2"|"ARM_EC2"|"WINDOWS_EC2"|"MAC_ARM",
 #'       image = "string",
-#'       computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB"|"ATTRIBUTE_BASED_COMPUTE",
+#'       computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB"|"ATTRIBUTE_BASED_COMPUTE"|"CUSTOM_INSTANCE_TYPE",
 #'       computeConfiguration = list(
 #'         vCpu = 123,
 #'         memory = 123,
 #'         disk = 123,
-#'         machineType = "GENERAL"|"NVME"
+#'         machineType = "GENERAL"|"NVME",
+#'         instanceType = "string"
 #'       ),
 #'       fleet = list(
 #'         fleetArn = "string"
@@ -4653,7 +5221,10 @@ codebuild_retry_build <- function(id = NULL, idempotencyToken = NULL) {
 #'         )
 #'       )
 #'     ),
-#'     debugSessionEnabled = TRUE|FALSE
+#'     debugSessionEnabled = TRUE|FALSE,
+#'     reportArns = list(
+#'       "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -4992,17 +5563,19 @@ codebuild_retry_build_batch <- function(id = NULL, idempotencyToken = NULL, retr
 #'       location = "string",
 #'       modes = list(
 #'         "LOCAL_DOCKER_LAYER_CACHE"|"LOCAL_SOURCE_CACHE"|"LOCAL_CUSTOM_CACHE"
-#'       )
+#'       ),
+#'       cacheNamespace = "string"
 #'     ),
 #'     environment = list(
-#'       type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"LINUX_EC2"|"ARM_EC2"|"WINDOWS_EC2"|"MAC_ARM",
+#'       type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"WINDOWS_SERVER_2022_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"LINUX_EC2"|"ARM_EC2"|"WINDOWS_EC2"|"MAC_ARM",
 #'       image = "string",
-#'       computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB"|"ATTRIBUTE_BASED_COMPUTE",
+#'       computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB"|"ATTRIBUTE_BASED_COMPUTE"|"CUSTOM_INSTANCE_TYPE",
 #'       computeConfiguration = list(
 #'         vCpu = 123,
 #'         memory = 123,
 #'         disk = 123,
-#'         machineType = "GENERAL"|"NVME"
+#'         machineType = "GENERAL"|"NVME",
+#'         instanceType = "string"
 #'       ),
 #'       fleet = list(
 #'         fleetArn = "string"
@@ -5176,16 +5749,17 @@ codebuild_retry_build_batch <- function(id = NULL, idempotencyToken = NULL, retr
 #'     context = "string",
 #'     targetUrl = "string"
 #'   ),
-#'   environmentTypeOverride = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"LINUX_EC2"|"ARM_EC2"|"WINDOWS_EC2"|"MAC_ARM",
+#'   environmentTypeOverride = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"WINDOWS_SERVER_2022_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"LINUX_EC2"|"ARM_EC2"|"WINDOWS_EC2"|"MAC_ARM",
 #'   imageOverride = "string",
-#'   computeTypeOverride = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB"|"ATTRIBUTE_BASED_COMPUTE",
+#'   computeTypeOverride = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB"|"ATTRIBUTE_BASED_COMPUTE"|"CUSTOM_INSTANCE_TYPE",
 #'   certificateOverride = "string",
 #'   cacheOverride = list(
 #'     type = "NO_CACHE"|"S3"|"LOCAL",
 #'     location = "string",
 #'     modes = list(
 #'       "LOCAL_DOCKER_LAYER_CACHE"|"LOCAL_SOURCE_CACHE"|"LOCAL_CUSTOM_CACHE"
-#'     )
+#'     ),
+#'     cacheNamespace = "string"
 #'   ),
 #'   serviceRoleOverride = "string",
 #'   privilegedModeOverride = TRUE|FALSE,
@@ -5514,17 +6088,19 @@ codebuild_start_build <- function(projectName, secondarySourcesOverride = NULL, 
 #'       location = "string",
 #'       modes = list(
 #'         "LOCAL_DOCKER_LAYER_CACHE"|"LOCAL_SOURCE_CACHE"|"LOCAL_CUSTOM_CACHE"
-#'       )
+#'       ),
+#'       cacheNamespace = "string"
 #'     ),
 #'     environment = list(
-#'       type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"LINUX_EC2"|"ARM_EC2"|"WINDOWS_EC2"|"MAC_ARM",
+#'       type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"WINDOWS_SERVER_2022_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"LINUX_EC2"|"ARM_EC2"|"WINDOWS_EC2"|"MAC_ARM",
 #'       image = "string",
-#'       computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB"|"ATTRIBUTE_BASED_COMPUTE",
+#'       computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB"|"ATTRIBUTE_BASED_COMPUTE"|"CUSTOM_INSTANCE_TYPE",
 #'       computeConfiguration = list(
 #'         vCpu = 123,
 #'         memory = 123,
 #'         disk = 123,
-#'         machineType = "GENERAL"|"NVME"
+#'         machineType = "GENERAL"|"NVME",
+#'         instanceType = "string"
 #'       ),
 #'       fleet = list(
 #'         fleetArn = "string"
@@ -5646,7 +6222,10 @@ codebuild_start_build <- function(projectName, secondarySourcesOverride = NULL, 
 #'         )
 #'       )
 #'     ),
-#'     debugSessionEnabled = TRUE|FALSE
+#'     debugSessionEnabled = TRUE|FALSE,
+#'     reportArns = list(
+#'       "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -5730,16 +6309,17 @@ codebuild_start_build <- function(projectName, secondarySourcesOverride = NULL, 
 #'   buildspecOverride = "string",
 #'   insecureSslOverride = TRUE|FALSE,
 #'   reportBuildBatchStatusOverride = TRUE|FALSE,
-#'   environmentTypeOverride = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"LINUX_EC2"|"ARM_EC2"|"WINDOWS_EC2"|"MAC_ARM",
+#'   environmentTypeOverride = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"WINDOWS_SERVER_2022_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"LINUX_EC2"|"ARM_EC2"|"WINDOWS_EC2"|"MAC_ARM",
 #'   imageOverride = "string",
-#'   computeTypeOverride = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB"|"ATTRIBUTE_BASED_COMPUTE",
+#'   computeTypeOverride = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB"|"ATTRIBUTE_BASED_COMPUTE"|"CUSTOM_INSTANCE_TYPE",
 #'   certificateOverride = "string",
 #'   cacheOverride = list(
 #'     type = "NO_CACHE"|"S3"|"LOCAL",
 #'     location = "string",
 #'     modes = list(
 #'       "LOCAL_DOCKER_LAYER_CACHE"|"LOCAL_SOURCE_CACHE"|"LOCAL_CUSTOM_CACHE"
-#'     )
+#'     ),
+#'     cacheNamespace = "string"
 #'   ),
 #'   serviceRoleOverride = "string",
 #'   privilegedModeOverride = TRUE|FALSE,
@@ -5807,6 +6387,382 @@ codebuild_start_build_batch <- function(projectName, secondarySourcesOverride = 
   return(response)
 }
 .codebuild$operations$start_build_batch <- codebuild_start_build_batch
+
+#' Starts a command execution
+#'
+#' @description
+#' Starts a command execution.
+#'
+#' @usage
+#' codebuild_start_command_execution(sandboxId, command, type)
+#'
+#' @param sandboxId &#91;required&#93; A `sandboxId` or `sandboxArn`.
+#' @param command &#91;required&#93; The command that needs to be executed.
+#' @param type The command type.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   commandExecution = list(
+#'     id = "string",
+#'     sandboxId = "string",
+#'     submitTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     startTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     endTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     status = "string",
+#'     command = "string",
+#'     type = "SHELL",
+#'     exitCode = "string",
+#'     standardOutputContent = "string",
+#'     standardErrContent = "string",
+#'     logs = list(
+#'       groupName = "string",
+#'       streamName = "string",
+#'       deepLink = "string",
+#'       s3DeepLink = "string",
+#'       cloudWatchLogsArn = "string",
+#'       s3LogsArn = "string",
+#'       cloudWatchLogs = list(
+#'         status = "ENABLED"|"DISABLED",
+#'         groupName = "string",
+#'         streamName = "string"
+#'       ),
+#'       s3Logs = list(
+#'         status = "ENABLED"|"DISABLED",
+#'         location = "string",
+#'         encryptionDisabled = TRUE|FALSE,
+#'         bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
+#'       )
+#'     ),
+#'     sandboxArn = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$start_command_execution(
+#'   sandboxId = "string",
+#'   command = "string",
+#'   type = "SHELL"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codebuild_start_command_execution
+#'
+#' @aliases codebuild_start_command_execution
+codebuild_start_command_execution <- function(sandboxId, command, type = NULL) {
+  op <- new_operation(
+    name = "StartCommandExecution",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .codebuild$start_command_execution_input(sandboxId = sandboxId, command = command, type = type)
+  output <- .codebuild$start_command_execution_output()
+  config <- get_config()
+  svc <- .codebuild$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codebuild$operations$start_command_execution <- codebuild_start_command_execution
+
+#' Starts a sandbox
+#'
+#' @description
+#' Starts a sandbox.
+#'
+#' @usage
+#' codebuild_start_sandbox(projectName, idempotencyToken)
+#'
+#' @param projectName The CodeBuild project name.
+#' @param idempotencyToken A unique client token.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   sandbox = list(
+#'     id = "string",
+#'     arn = "string",
+#'     projectName = "string",
+#'     requestTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     startTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     endTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     status = "string",
+#'     source = list(
+#'       type = "CODECOMMIT"|"CODEPIPELINE"|"GITHUB"|"GITLAB"|"GITLAB_SELF_MANAGED"|"S3"|"BITBUCKET"|"GITHUB_ENTERPRISE"|"NO_SOURCE",
+#'       location = "string",
+#'       gitCloneDepth = 123,
+#'       gitSubmodulesConfig = list(
+#'         fetchSubmodules = TRUE|FALSE
+#'       ),
+#'       buildspec = "string",
+#'       auth = list(
+#'         type = "OAUTH"|"CODECONNECTIONS"|"SECRETS_MANAGER",
+#'         resource = "string"
+#'       ),
+#'       reportBuildStatus = TRUE|FALSE,
+#'       buildStatusConfig = list(
+#'         context = "string",
+#'         targetUrl = "string"
+#'       ),
+#'       insecureSsl = TRUE|FALSE,
+#'       sourceIdentifier = "string"
+#'     ),
+#'     sourceVersion = "string",
+#'     secondarySources = list(
+#'       list(
+#'         type = "CODECOMMIT"|"CODEPIPELINE"|"GITHUB"|"GITLAB"|"GITLAB_SELF_MANAGED"|"S3"|"BITBUCKET"|"GITHUB_ENTERPRISE"|"NO_SOURCE",
+#'         location = "string",
+#'         gitCloneDepth = 123,
+#'         gitSubmodulesConfig = list(
+#'           fetchSubmodules = TRUE|FALSE
+#'         ),
+#'         buildspec = "string",
+#'         auth = list(
+#'           type = "OAUTH"|"CODECONNECTIONS"|"SECRETS_MANAGER",
+#'           resource = "string"
+#'         ),
+#'         reportBuildStatus = TRUE|FALSE,
+#'         buildStatusConfig = list(
+#'           context = "string",
+#'           targetUrl = "string"
+#'         ),
+#'         insecureSsl = TRUE|FALSE,
+#'         sourceIdentifier = "string"
+#'       )
+#'     ),
+#'     secondarySourceVersions = list(
+#'       list(
+#'         sourceIdentifier = "string",
+#'         sourceVersion = "string"
+#'       )
+#'     ),
+#'     environment = list(
+#'       type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"WINDOWS_SERVER_2022_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"LINUX_EC2"|"ARM_EC2"|"WINDOWS_EC2"|"MAC_ARM",
+#'       image = "string",
+#'       computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB"|"ATTRIBUTE_BASED_COMPUTE"|"CUSTOM_INSTANCE_TYPE",
+#'       computeConfiguration = list(
+#'         vCpu = 123,
+#'         memory = 123,
+#'         disk = 123,
+#'         machineType = "GENERAL"|"NVME",
+#'         instanceType = "string"
+#'       ),
+#'       fleet = list(
+#'         fleetArn = "string"
+#'       ),
+#'       environmentVariables = list(
+#'         list(
+#'           name = "string",
+#'           value = "string",
+#'           type = "PLAINTEXT"|"PARAMETER_STORE"|"SECRETS_MANAGER"
+#'         )
+#'       ),
+#'       privilegedMode = TRUE|FALSE,
+#'       certificate = "string",
+#'       registryCredential = list(
+#'         credential = "string",
+#'         credentialProvider = "SECRETS_MANAGER"
+#'       ),
+#'       imagePullCredentialsType = "CODEBUILD"|"SERVICE_ROLE"
+#'     ),
+#'     fileSystemLocations = list(
+#'       list(
+#'         type = "EFS",
+#'         location = "string",
+#'         mountPoint = "string",
+#'         identifier = "string",
+#'         mountOptions = "string"
+#'       )
+#'     ),
+#'     timeoutInMinutes = 123,
+#'     queuedTimeoutInMinutes = 123,
+#'     vpcConfig = list(
+#'       vpcId = "string",
+#'       subnets = list(
+#'         "string"
+#'       ),
+#'       securityGroupIds = list(
+#'         "string"
+#'       )
+#'     ),
+#'     logConfig = list(
+#'       cloudWatchLogs = list(
+#'         status = "ENABLED"|"DISABLED",
+#'         groupName = "string",
+#'         streamName = "string"
+#'       ),
+#'       s3Logs = list(
+#'         status = "ENABLED"|"DISABLED",
+#'         location = "string",
+#'         encryptionDisabled = TRUE|FALSE,
+#'         bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
+#'       )
+#'     ),
+#'     encryptionKey = "string",
+#'     serviceRole = "string",
+#'     currentSession = list(
+#'       id = "string",
+#'       status = "string",
+#'       startTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       endTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       currentPhase = "string",
+#'       phases = list(
+#'         list(
+#'           phaseType = "string",
+#'           phaseStatus = "SUCCEEDED"|"FAILED"|"FAULT"|"TIMED_OUT"|"IN_PROGRESS"|"STOPPED",
+#'           startTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           endTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           durationInSeconds = 123,
+#'           contexts = list(
+#'             list(
+#'               statusCode = "string",
+#'               message = "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       resolvedSourceVersion = "string",
+#'       logs = list(
+#'         groupName = "string",
+#'         streamName = "string",
+#'         deepLink = "string",
+#'         s3DeepLink = "string",
+#'         cloudWatchLogsArn = "string",
+#'         s3LogsArn = "string",
+#'         cloudWatchLogs = list(
+#'           status = "ENABLED"|"DISABLED",
+#'           groupName = "string",
+#'           streamName = "string"
+#'         ),
+#'         s3Logs = list(
+#'           status = "ENABLED"|"DISABLED",
+#'           location = "string",
+#'           encryptionDisabled = TRUE|FALSE,
+#'           bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
+#'         )
+#'       ),
+#'       networkInterface = list(
+#'         subnetId = "string",
+#'         networkInterfaceId = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$start_sandbox(
+#'   projectName = "string",
+#'   idempotencyToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codebuild_start_sandbox
+#'
+#' @aliases codebuild_start_sandbox
+codebuild_start_sandbox <- function(projectName = NULL, idempotencyToken = NULL) {
+  op <- new_operation(
+    name = "StartSandbox",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .codebuild$start_sandbox_input(projectName = projectName, idempotencyToken = idempotencyToken)
+  output <- .codebuild$start_sandbox_output()
+  config <- get_config()
+  svc <- .codebuild$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codebuild$operations$start_sandbox <- codebuild_start_sandbox
+
+#' Starts a sandbox connection
+#'
+#' @description
+#' Starts a sandbox connection.
+#'
+#' @usage
+#' codebuild_start_sandbox_connection(sandboxId)
+#'
+#' @param sandboxId &#91;required&#93; A `sandboxId` or `sandboxArn`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ssmSession = list(
+#'     sessionId = "string",
+#'     tokenValue = "string",
+#'     streamUrl = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$start_sandbox_connection(
+#'   sandboxId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codebuild_start_sandbox_connection
+#'
+#' @aliases codebuild_start_sandbox_connection
+codebuild_start_sandbox_connection <- function(sandboxId) {
+  op <- new_operation(
+    name = "StartSandboxConnection",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .codebuild$start_sandbox_connection_input(sandboxId = sandboxId)
+  output <- .codebuild$start_sandbox_connection_output()
+  config <- get_config()
+  svc <- .codebuild$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codebuild$operations$start_sandbox_connection <- codebuild_start_sandbox_connection
 
 #' Attempts to stop running a build
 #'
@@ -5929,17 +6885,19 @@ codebuild_start_build_batch <- function(projectName, secondarySourcesOverride = 
 #'       location = "string",
 #'       modes = list(
 #'         "LOCAL_DOCKER_LAYER_CACHE"|"LOCAL_SOURCE_CACHE"|"LOCAL_CUSTOM_CACHE"
-#'       )
+#'       ),
+#'       cacheNamespace = "string"
 #'     ),
 #'     environment = list(
-#'       type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"LINUX_EC2"|"ARM_EC2"|"WINDOWS_EC2"|"MAC_ARM",
+#'       type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"WINDOWS_SERVER_2022_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"LINUX_EC2"|"ARM_EC2"|"WINDOWS_EC2"|"MAC_ARM",
 #'       image = "string",
-#'       computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB"|"ATTRIBUTE_BASED_COMPUTE",
+#'       computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB"|"ATTRIBUTE_BASED_COMPUTE"|"CUSTOM_INSTANCE_TYPE",
 #'       computeConfiguration = list(
 #'         vCpu = 123,
 #'         memory = 123,
 #'         disk = 123,
-#'         machineType = "GENERAL"|"NVME"
+#'         machineType = "GENERAL"|"NVME",
+#'         instanceType = "string"
 #'       ),
 #'       fleet = list(
 #'         fleetArn = "string"
@@ -6181,17 +7139,19 @@ codebuild_stop_build <- function(id) {
 #'       location = "string",
 #'       modes = list(
 #'         "LOCAL_DOCKER_LAYER_CACHE"|"LOCAL_SOURCE_CACHE"|"LOCAL_CUSTOM_CACHE"
-#'       )
+#'       ),
+#'       cacheNamespace = "string"
 #'     ),
 #'     environment = list(
-#'       type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"LINUX_EC2"|"ARM_EC2"|"WINDOWS_EC2"|"MAC_ARM",
+#'       type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"WINDOWS_SERVER_2022_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"LINUX_EC2"|"ARM_EC2"|"WINDOWS_EC2"|"MAC_ARM",
 #'       image = "string",
-#'       computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB"|"ATTRIBUTE_BASED_COMPUTE",
+#'       computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB"|"ATTRIBUTE_BASED_COMPUTE"|"CUSTOM_INSTANCE_TYPE",
 #'       computeConfiguration = list(
 #'         vCpu = 123,
 #'         memory = 123,
 #'         disk = 123,
-#'         machineType = "GENERAL"|"NVME"
+#'         machineType = "GENERAL"|"NVME",
+#'         instanceType = "string"
 #'       ),
 #'       fleet = list(
 #'         fleetArn = "string"
@@ -6313,7 +7273,10 @@ codebuild_stop_build <- function(id) {
 #'         )
 #'       )
 #'     ),
-#'     debugSessionEnabled = TRUE|FALSE
+#'     debugSessionEnabled = TRUE|FALSE,
+#'     reportArns = list(
+#'       "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -6348,6 +7311,236 @@ codebuild_stop_build_batch <- function(id) {
   return(response)
 }
 .codebuild$operations$stop_build_batch <- codebuild_stop_build_batch
+
+#' Stops a sandbox
+#'
+#' @description
+#' Stops a sandbox.
+#'
+#' @usage
+#' codebuild_stop_sandbox(id)
+#'
+#' @param id &#91;required&#93; Information about the requested sandbox ID.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   sandbox = list(
+#'     id = "string",
+#'     arn = "string",
+#'     projectName = "string",
+#'     requestTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     startTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     endTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     status = "string",
+#'     source = list(
+#'       type = "CODECOMMIT"|"CODEPIPELINE"|"GITHUB"|"GITLAB"|"GITLAB_SELF_MANAGED"|"S3"|"BITBUCKET"|"GITHUB_ENTERPRISE"|"NO_SOURCE",
+#'       location = "string",
+#'       gitCloneDepth = 123,
+#'       gitSubmodulesConfig = list(
+#'         fetchSubmodules = TRUE|FALSE
+#'       ),
+#'       buildspec = "string",
+#'       auth = list(
+#'         type = "OAUTH"|"CODECONNECTIONS"|"SECRETS_MANAGER",
+#'         resource = "string"
+#'       ),
+#'       reportBuildStatus = TRUE|FALSE,
+#'       buildStatusConfig = list(
+#'         context = "string",
+#'         targetUrl = "string"
+#'       ),
+#'       insecureSsl = TRUE|FALSE,
+#'       sourceIdentifier = "string"
+#'     ),
+#'     sourceVersion = "string",
+#'     secondarySources = list(
+#'       list(
+#'         type = "CODECOMMIT"|"CODEPIPELINE"|"GITHUB"|"GITLAB"|"GITLAB_SELF_MANAGED"|"S3"|"BITBUCKET"|"GITHUB_ENTERPRISE"|"NO_SOURCE",
+#'         location = "string",
+#'         gitCloneDepth = 123,
+#'         gitSubmodulesConfig = list(
+#'           fetchSubmodules = TRUE|FALSE
+#'         ),
+#'         buildspec = "string",
+#'         auth = list(
+#'           type = "OAUTH"|"CODECONNECTIONS"|"SECRETS_MANAGER",
+#'           resource = "string"
+#'         ),
+#'         reportBuildStatus = TRUE|FALSE,
+#'         buildStatusConfig = list(
+#'           context = "string",
+#'           targetUrl = "string"
+#'         ),
+#'         insecureSsl = TRUE|FALSE,
+#'         sourceIdentifier = "string"
+#'       )
+#'     ),
+#'     secondarySourceVersions = list(
+#'       list(
+#'         sourceIdentifier = "string",
+#'         sourceVersion = "string"
+#'       )
+#'     ),
+#'     environment = list(
+#'       type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"WINDOWS_SERVER_2022_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"LINUX_EC2"|"ARM_EC2"|"WINDOWS_EC2"|"MAC_ARM",
+#'       image = "string",
+#'       computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB"|"ATTRIBUTE_BASED_COMPUTE"|"CUSTOM_INSTANCE_TYPE",
+#'       computeConfiguration = list(
+#'         vCpu = 123,
+#'         memory = 123,
+#'         disk = 123,
+#'         machineType = "GENERAL"|"NVME",
+#'         instanceType = "string"
+#'       ),
+#'       fleet = list(
+#'         fleetArn = "string"
+#'       ),
+#'       environmentVariables = list(
+#'         list(
+#'           name = "string",
+#'           value = "string",
+#'           type = "PLAINTEXT"|"PARAMETER_STORE"|"SECRETS_MANAGER"
+#'         )
+#'       ),
+#'       privilegedMode = TRUE|FALSE,
+#'       certificate = "string",
+#'       registryCredential = list(
+#'         credential = "string",
+#'         credentialProvider = "SECRETS_MANAGER"
+#'       ),
+#'       imagePullCredentialsType = "CODEBUILD"|"SERVICE_ROLE"
+#'     ),
+#'     fileSystemLocations = list(
+#'       list(
+#'         type = "EFS",
+#'         location = "string",
+#'         mountPoint = "string",
+#'         identifier = "string",
+#'         mountOptions = "string"
+#'       )
+#'     ),
+#'     timeoutInMinutes = 123,
+#'     queuedTimeoutInMinutes = 123,
+#'     vpcConfig = list(
+#'       vpcId = "string",
+#'       subnets = list(
+#'         "string"
+#'       ),
+#'       securityGroupIds = list(
+#'         "string"
+#'       )
+#'     ),
+#'     logConfig = list(
+#'       cloudWatchLogs = list(
+#'         status = "ENABLED"|"DISABLED",
+#'         groupName = "string",
+#'         streamName = "string"
+#'       ),
+#'       s3Logs = list(
+#'         status = "ENABLED"|"DISABLED",
+#'         location = "string",
+#'         encryptionDisabled = TRUE|FALSE,
+#'         bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
+#'       )
+#'     ),
+#'     encryptionKey = "string",
+#'     serviceRole = "string",
+#'     currentSession = list(
+#'       id = "string",
+#'       status = "string",
+#'       startTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       endTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       currentPhase = "string",
+#'       phases = list(
+#'         list(
+#'           phaseType = "string",
+#'           phaseStatus = "SUCCEEDED"|"FAILED"|"FAULT"|"TIMED_OUT"|"IN_PROGRESS"|"STOPPED",
+#'           startTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           endTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           durationInSeconds = 123,
+#'           contexts = list(
+#'             list(
+#'               statusCode = "string",
+#'               message = "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       resolvedSourceVersion = "string",
+#'       logs = list(
+#'         groupName = "string",
+#'         streamName = "string",
+#'         deepLink = "string",
+#'         s3DeepLink = "string",
+#'         cloudWatchLogsArn = "string",
+#'         s3LogsArn = "string",
+#'         cloudWatchLogs = list(
+#'           status = "ENABLED"|"DISABLED",
+#'           groupName = "string",
+#'           streamName = "string"
+#'         ),
+#'         s3Logs = list(
+#'           status = "ENABLED"|"DISABLED",
+#'           location = "string",
+#'           encryptionDisabled = TRUE|FALSE,
+#'           bucketOwnerAccess = "NONE"|"READ_ONLY"|"FULL"
+#'         )
+#'       ),
+#'       networkInterface = list(
+#'         subnetId = "string",
+#'         networkInterfaceId = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$stop_sandbox(
+#'   id = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codebuild_stop_sandbox
+#'
+#' @aliases codebuild_stop_sandbox
+codebuild_stop_sandbox <- function(id) {
+  op <- new_operation(
+    name = "StopSandbox",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .codebuild$stop_sandbox_input(id = id)
+  output <- .codebuild$stop_sandbox_output()
+  config <- get_config()
+  svc <- .codebuild$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codebuild$operations$stop_sandbox <- codebuild_stop_sandbox
 
 #' Updates a compute fleet
 #'
@@ -6545,13 +7738,14 @@ codebuild_stop_build_batch <- function(id) {
 #'       message = "string"
 #'     ),
 #'     baseCapacity = 123,
-#'     environmentType = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"LINUX_EC2"|"ARM_EC2"|"WINDOWS_EC2"|"MAC_ARM",
-#'     computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB"|"ATTRIBUTE_BASED_COMPUTE",
+#'     environmentType = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"WINDOWS_SERVER_2022_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"LINUX_EC2"|"ARM_EC2"|"WINDOWS_EC2"|"MAC_ARM",
+#'     computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB"|"ATTRIBUTE_BASED_COMPUTE"|"CUSTOM_INSTANCE_TYPE",
 #'     computeConfiguration = list(
 #'       vCpu = 123,
 #'       memory = 123,
 #'       disk = 123,
-#'       machineType = "GENERAL"|"NVME"
+#'       machineType = "GENERAL"|"NVME",
+#'       instanceType = "string"
 #'     ),
 #'     scalingConfiguration = list(
 #'       scalingType = "TARGET_TRACKING_SCALING",
@@ -6603,13 +7797,14 @@ codebuild_stop_build_batch <- function(id) {
 #' svc$update_fleet(
 #'   arn = "string",
 #'   baseCapacity = 123,
-#'   environmentType = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"LINUX_EC2"|"ARM_EC2"|"WINDOWS_EC2"|"MAC_ARM",
-#'   computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB"|"ATTRIBUTE_BASED_COMPUTE",
+#'   environmentType = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"WINDOWS_SERVER_2022_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"LINUX_EC2"|"ARM_EC2"|"WINDOWS_EC2"|"MAC_ARM",
+#'   computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB"|"ATTRIBUTE_BASED_COMPUTE"|"CUSTOM_INSTANCE_TYPE",
 #'   computeConfiguration = list(
 #'     vCpu = 123,
 #'     memory = 123,
 #'     disk = 123,
-#'     machineType = "GENERAL"|"NVME"
+#'     machineType = "GENERAL"|"NVME",
+#'     instanceType = "string"
 #'   ),
 #'   scalingConfiguration = list(
 #'     scalingType = "TARGET_TRACKING_SCALING",
@@ -6868,17 +8063,19 @@ codebuild_update_fleet <- function(arn, baseCapacity = NULL, environmentType = N
 #'       location = "string",
 #'       modes = list(
 #'         "LOCAL_DOCKER_LAYER_CACHE"|"LOCAL_SOURCE_CACHE"|"LOCAL_CUSTOM_CACHE"
-#'       )
+#'       ),
+#'       cacheNamespace = "string"
 #'     ),
 #'     environment = list(
-#'       type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"LINUX_EC2"|"ARM_EC2"|"WINDOWS_EC2"|"MAC_ARM",
+#'       type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"WINDOWS_SERVER_2022_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"LINUX_EC2"|"ARM_EC2"|"WINDOWS_EC2"|"MAC_ARM",
 #'       image = "string",
-#'       computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB"|"ATTRIBUTE_BASED_COMPUTE",
+#'       computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB"|"ATTRIBUTE_BASED_COMPUTE"|"CUSTOM_INSTANCE_TYPE",
 #'       computeConfiguration = list(
 #'         vCpu = 123,
 #'         memory = 123,
 #'         disk = 123,
-#'         machineType = "GENERAL"|"NVME"
+#'         machineType = "GENERAL"|"NVME",
+#'         instanceType = "string"
 #'       ),
 #'       fleet = list(
 #'         fleetArn = "string"
@@ -6922,7 +8119,7 @@ codebuild_update_fleet <- function(arn, baseCapacity = NULL, environmentType = N
 #'       filterGroups = list(
 #'         list(
 #'           list(
-#'             type = "EVENT"|"BASE_REF"|"HEAD_REF"|"ACTOR_ACCOUNT_ID"|"FILE_PATH"|"COMMIT_MESSAGE"|"WORKFLOW_NAME"|"TAG_NAME"|"RELEASE_NAME"|"REPOSITORY_NAME",
+#'             type = "EVENT"|"BASE_REF"|"HEAD_REF"|"ACTOR_ACCOUNT_ID"|"FILE_PATH"|"COMMIT_MESSAGE"|"WORKFLOW_NAME"|"TAG_NAME"|"RELEASE_NAME"|"REPOSITORY_NAME"|"ORGANIZATION_NAME",
 #'             pattern = "string",
 #'             excludeMatchedPattern = TRUE|FALSE
 #'           )
@@ -7085,17 +8282,19 @@ codebuild_update_fleet <- function(arn, baseCapacity = NULL, environmentType = N
 #'     location = "string",
 #'     modes = list(
 #'       "LOCAL_DOCKER_LAYER_CACHE"|"LOCAL_SOURCE_CACHE"|"LOCAL_CUSTOM_CACHE"
-#'     )
+#'     ),
+#'     cacheNamespace = "string"
 #'   ),
 #'   environment = list(
-#'     type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"LINUX_EC2"|"ARM_EC2"|"WINDOWS_EC2"|"MAC_ARM",
+#'     type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"WINDOWS_SERVER_2022_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER"|"LINUX_EC2"|"ARM_EC2"|"WINDOWS_EC2"|"MAC_ARM",
 #'     image = "string",
-#'     computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB"|"ATTRIBUTE_BASED_COMPUTE",
+#'     computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_XLARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB"|"ATTRIBUTE_BASED_COMPUTE"|"CUSTOM_INSTANCE_TYPE",
 #'     computeConfiguration = list(
 #'       vCpu = 123,
 #'       memory = 123,
 #'       disk = 123,
-#'       machineType = "GENERAL"|"NVME"
+#'       machineType = "GENERAL"|"NVME",
+#'       instanceType = "string"
 #'     ),
 #'     fleet = list(
 #'       fleetArn = "string"
@@ -7439,7 +8638,7 @@ codebuild_update_report_group <- function(arn, exportConfig = NULL, tags = NULL)
 #'     filterGroups = list(
 #'       list(
 #'         list(
-#'           type = "EVENT"|"BASE_REF"|"HEAD_REF"|"ACTOR_ACCOUNT_ID"|"FILE_PATH"|"COMMIT_MESSAGE"|"WORKFLOW_NAME"|"TAG_NAME"|"RELEASE_NAME"|"REPOSITORY_NAME",
+#'           type = "EVENT"|"BASE_REF"|"HEAD_REF"|"ACTOR_ACCOUNT_ID"|"FILE_PATH"|"COMMIT_MESSAGE"|"WORKFLOW_NAME"|"TAG_NAME"|"RELEASE_NAME"|"REPOSITORY_NAME"|"ORGANIZATION_NAME",
 #'           pattern = "string",
 #'           excludeMatchedPattern = TRUE|FALSE
 #'         )
@@ -7470,7 +8669,7 @@ codebuild_update_report_group <- function(arn, exportConfig = NULL, tags = NULL)
 #'   filterGroups = list(
 #'     list(
 #'       list(
-#'         type = "EVENT"|"BASE_REF"|"HEAD_REF"|"ACTOR_ACCOUNT_ID"|"FILE_PATH"|"COMMIT_MESSAGE"|"WORKFLOW_NAME"|"TAG_NAME"|"RELEASE_NAME"|"REPOSITORY_NAME",
+#'         type = "EVENT"|"BASE_REF"|"HEAD_REF"|"ACTOR_ACCOUNT_ID"|"FILE_PATH"|"COMMIT_MESSAGE"|"WORKFLOW_NAME"|"TAG_NAME"|"RELEASE_NAME"|"REPOSITORY_NAME"|"ORGANIZATION_NAME",
 #'         pattern = "string",
 #'         excludeMatchedPattern = TRUE|FALSE
 #'       )

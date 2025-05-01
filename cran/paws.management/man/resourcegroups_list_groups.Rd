@@ -21,7 +21,7 @@ current supported values are:
 \itemize{
 \item \verb{AWS::ResourceGroups::ApplicationGroup}
 \item \verb{AWS::AppRegistry::Application}
-\item \verb{AWS::AppRegistry::ApplicationResourceGroups}
+\item \verb{AWS::AppRegistry::ApplicationResourceGroup}
 \item \verb{AWS::CloudFormation::Stack}
 \item \verb{AWS::EC2::CapacityReservationPool}
 \item \verb{AWS::EC2::HostManagement}

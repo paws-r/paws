@@ -11,7 +11,7 @@ NULL
 #' @usage
 #' apigatewayv2_create_api(ApiKeySelectionExpression, CorsConfiguration,
 #'   CredentialsArn, Description, DisableSchemaValidation,
-#'   DisableExecuteApiEndpoint, Name, ProtocolType, RouteKey,
+#'   DisableExecuteApiEndpoint, IpAddressType, Name, ProtocolType, RouteKey,
 #'   RouteSelectionExpression, Tags, Target, Version)
 #'
 #' @param ApiKeySelectionExpression An API key selection expression. Supported only for WebSocket APIs. See
@@ -36,6 +36,7 @@ NULL
 #' default https://\{api_id\}.execute-api.\{region\}.amazonaws.com
 #' endpoint. To require that clients use a custom domain name to invoke
 #' your API, disable the default endpoint.
+#' @param IpAddressType The IP address types that can invoke the API.
 #' @param Name &#91;required&#93; The name of the API.
 #' @param ProtocolType &#91;required&#93; The API protocol.
 #' @param RouteKey This property is part of quick create. If you don't specify a routeKey,
@@ -91,6 +92,7 @@ NULL
 #'   ImportInfo = list(
 #'     "string"
 #'   ),
+#'   IpAddressType = "ipv4"|"dualstack",
 #'   Name = "string",
 #'   ProtocolType = "WEBSOCKET"|"HTTP",
 #'   RouteSelectionExpression = "string",
@@ -128,6 +130,7 @@ NULL
 #'   Description = "string",
 #'   DisableSchemaValidation = TRUE|FALSE,
 #'   DisableExecuteApiEndpoint = TRUE|FALSE,
+#'   IpAddressType = "ipv4"|"dualstack",
 #'   Name = "string",
 #'   ProtocolType = "WEBSOCKET"|"HTTP",
 #'   RouteKey = "string",
@@ -145,7 +148,7 @@ NULL
 #' @rdname apigatewayv2_create_api
 #'
 #' @aliases apigatewayv2_create_api
-apigatewayv2_create_api <- function(ApiKeySelectionExpression = NULL, CorsConfiguration = NULL, CredentialsArn = NULL, Description = NULL, DisableSchemaValidation = NULL, DisableExecuteApiEndpoint = NULL, Name, ProtocolType, RouteKey = NULL, RouteSelectionExpression = NULL, Tags = NULL, Target = NULL, Version = NULL) {
+apigatewayv2_create_api <- function(ApiKeySelectionExpression = NULL, CorsConfiguration = NULL, CredentialsArn = NULL, Description = NULL, DisableSchemaValidation = NULL, DisableExecuteApiEndpoint = NULL, IpAddressType = NULL, Name, ProtocolType, RouteKey = NULL, RouteSelectionExpression = NULL, Tags = NULL, Target = NULL, Version = NULL) {
   op <- new_operation(
     name = "CreateApi",
     http_method = "POST",
@@ -154,7 +157,7 @@ apigatewayv2_create_api <- function(ApiKeySelectionExpression = NULL, CorsConfig
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .apigatewayv2$create_api_input(ApiKeySelectionExpression = ApiKeySelectionExpression, CorsConfiguration = CorsConfiguration, CredentialsArn = CredentialsArn, Description = Description, DisableSchemaValidation = DisableSchemaValidation, DisableExecuteApiEndpoint = DisableExecuteApiEndpoint, Name = Name, ProtocolType = ProtocolType, RouteKey = RouteKey, RouteSelectionExpression = RouteSelectionExpression, Tags = Tags, Target = Target, Version = Version)
+  input <- .apigatewayv2$create_api_input(ApiKeySelectionExpression = ApiKeySelectionExpression, CorsConfiguration = CorsConfiguration, CredentialsArn = CredentialsArn, Description = Description, DisableSchemaValidation = DisableSchemaValidation, DisableExecuteApiEndpoint = DisableExecuteApiEndpoint, IpAddressType = IpAddressType, Name = Name, ProtocolType = ProtocolType, RouteKey = RouteKey, RouteSelectionExpression = RouteSelectionExpression, Tags = Tags, Target = Target, Version = Version)
   output <- .apigatewayv2$create_api_output()
   config <- get_config()
   svc <- .apigatewayv2$service(config, op)
@@ -463,6 +466,7 @@ apigatewayv2_create_deployment <- function(ApiId, Description = NULL, StageName 
 #'       DomainNameStatusMessage = "string",
 #'       EndpointType = "REGIONAL"|"EDGE",
 #'       HostedZoneId = "string",
+#'       IpAddressType = "ipv4"|"dualstack",
 #'       SecurityPolicy = "TLS_1_0"|"TLS_1_2",
 #'       OwnershipVerificationCertificateArn = "string"
 #'     )
@@ -496,6 +500,7 @@ apigatewayv2_create_deployment <- function(ApiId, Description = NULL, StageName 
 #'       DomainNameStatusMessage = "string",
 #'       EndpointType = "REGIONAL"|"EDGE",
 #'       HostedZoneId = "string",
+#'       IpAddressType = "ipv4"|"dualstack",
 #'       SecurityPolicy = "TLS_1_0"|"TLS_1_2",
 #'       OwnershipVerificationCertificateArn = "string"
 #'     )
@@ -2244,6 +2249,7 @@ apigatewayv2_reset_authorizers_cache <- function(ApiId, StageName) {
 #'   ImportInfo = list(
 #'     "string"
 #'   ),
+#'   IpAddressType = "ipv4"|"dualstack",
 #'   Name = "string",
 #'   ProtocolType = "WEBSOCKET"|"HTTP",
 #'   RouteSelectionExpression = "string",
@@ -2451,6 +2457,7 @@ apigatewayv2_get_api_mappings <- function(DomainName, MaxResults = NULL, NextTok
 #'       ImportInfo = list(
 #'         "string"
 #'       ),
+#'       IpAddressType = "ipv4"|"dualstack",
 #'       Name = "string",
 #'       ProtocolType = "WEBSOCKET"|"HTTP",
 #'       RouteSelectionExpression = "string",
@@ -2795,6 +2802,7 @@ apigatewayv2_get_deployments <- function(ApiId, MaxResults = NULL, NextToken = N
 #'       DomainNameStatusMessage = "string",
 #'       EndpointType = "REGIONAL"|"EDGE",
 #'       HostedZoneId = "string",
+#'       IpAddressType = "ipv4"|"dualstack",
 #'       SecurityPolicy = "TLS_1_0"|"TLS_1_2",
 #'       OwnershipVerificationCertificateArn = "string"
 #'     )
@@ -2875,6 +2883,7 @@ apigatewayv2_get_domain_name <- function(DomainName) {
 #'           DomainNameStatusMessage = "string",
 #'           EndpointType = "REGIONAL"|"EDGE",
 #'           HostedZoneId = "string",
+#'           IpAddressType = "ipv4"|"dualstack",
 #'           SecurityPolicy = "TLS_1_0"|"TLS_1_2",
 #'           OwnershipVerificationCertificateArn = "string"
 #'         )
@@ -4109,6 +4118,7 @@ apigatewayv2_get_vpc_links <- function(MaxResults = NULL, NextToken = NULL) {
 #'   ImportInfo = list(
 #'     "string"
 #'   ),
+#'   IpAddressType = "ipv4"|"dualstack",
 #'   Name = "string",
 #'   ProtocolType = "WEBSOCKET"|"HTTP",
 #'   RouteSelectionExpression = "string",
@@ -4207,6 +4217,7 @@ apigatewayv2_import_api <- function(Basepath = NULL, Body, FailOnWarnings = NULL
 #'   ImportInfo = list(
 #'     "string"
 #'   ),
+#'   IpAddressType = "ipv4"|"dualstack",
 #'   Name = "string",
 #'   ProtocolType = "WEBSOCKET"|"HTTP",
 #'   RouteSelectionExpression = "string",
@@ -4359,8 +4370,8 @@ apigatewayv2_untag_resource <- function(ResourceArn, TagKeys) {
 #' @usage
 #' apigatewayv2_update_api(ApiId, ApiKeySelectionExpression,
 #'   CorsConfiguration, CredentialsArn, Description, DisableSchemaValidation,
-#'   DisableExecuteApiEndpoint, Name, RouteKey, RouteSelectionExpression,
-#'   Target, Version)
+#'   DisableExecuteApiEndpoint, IpAddressType, Name, RouteKey,
+#'   RouteSelectionExpression, Target, Version)
 #'
 #' @param ApiId &#91;required&#93; The API identifier.
 #' @param ApiKeySelectionExpression An API key selection expression. Supported only for WebSocket APIs. See
@@ -4385,6 +4396,7 @@ apigatewayv2_untag_resource <- function(ResourceArn, TagKeys) {
 #' default https://\{api_id\}.execute-api.\{region\}.amazonaws.com
 #' endpoint. To require that clients use a custom domain name to invoke
 #' your API, disable the default endpoint.
+#' @param IpAddressType The IP address types that can invoke your API or domain name.
 #' @param Name The name of the API.
 #' @param RouteKey This property is part of quick create. If not specified, the route
 #' created using quick create is kept. Otherwise, this value replaces the
@@ -4435,6 +4447,7 @@ apigatewayv2_untag_resource <- function(ResourceArn, TagKeys) {
 #'   ImportInfo = list(
 #'     "string"
 #'   ),
+#'   IpAddressType = "ipv4"|"dualstack",
 #'   Name = "string",
 #'   ProtocolType = "WEBSOCKET"|"HTTP",
 #'   RouteSelectionExpression = "string",
@@ -4473,6 +4486,7 @@ apigatewayv2_untag_resource <- function(ResourceArn, TagKeys) {
 #'   Description = "string",
 #'   DisableSchemaValidation = TRUE|FALSE,
 #'   DisableExecuteApiEndpoint = TRUE|FALSE,
+#'   IpAddressType = "ipv4"|"dualstack",
 #'   Name = "string",
 #'   RouteKey = "string",
 #'   RouteSelectionExpression = "string",
@@ -4486,7 +4500,7 @@ apigatewayv2_untag_resource <- function(ResourceArn, TagKeys) {
 #' @rdname apigatewayv2_update_api
 #'
 #' @aliases apigatewayv2_update_api
-apigatewayv2_update_api <- function(ApiId, ApiKeySelectionExpression = NULL, CorsConfiguration = NULL, CredentialsArn = NULL, Description = NULL, DisableSchemaValidation = NULL, DisableExecuteApiEndpoint = NULL, Name = NULL, RouteKey = NULL, RouteSelectionExpression = NULL, Target = NULL, Version = NULL) {
+apigatewayv2_update_api <- function(ApiId, ApiKeySelectionExpression = NULL, CorsConfiguration = NULL, CredentialsArn = NULL, Description = NULL, DisableSchemaValidation = NULL, DisableExecuteApiEndpoint = NULL, IpAddressType = NULL, Name = NULL, RouteKey = NULL, RouteSelectionExpression = NULL, Target = NULL, Version = NULL) {
   op <- new_operation(
     name = "UpdateApi",
     http_method = "PATCH",
@@ -4495,7 +4509,7 @@ apigatewayv2_update_api <- function(ApiId, ApiKeySelectionExpression = NULL, Cor
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .apigatewayv2$update_api_input(ApiId = ApiId, ApiKeySelectionExpression = ApiKeySelectionExpression, CorsConfiguration = CorsConfiguration, CredentialsArn = CredentialsArn, Description = Description, DisableSchemaValidation = DisableSchemaValidation, DisableExecuteApiEndpoint = DisableExecuteApiEndpoint, Name = Name, RouteKey = RouteKey, RouteSelectionExpression = RouteSelectionExpression, Target = Target, Version = Version)
+  input <- .apigatewayv2$update_api_input(ApiId = ApiId, ApiKeySelectionExpression = ApiKeySelectionExpression, CorsConfiguration = CorsConfiguration, CredentialsArn = CredentialsArn, Description = Description, DisableSchemaValidation = DisableSchemaValidation, DisableExecuteApiEndpoint = DisableExecuteApiEndpoint, IpAddressType = IpAddressType, Name = Name, RouteKey = RouteKey, RouteSelectionExpression = RouteSelectionExpression, Target = Target, Version = Version)
   output <- .apigatewayv2$update_api_output()
   config <- get_config()
   svc <- .apigatewayv2$service(config, op)
@@ -4808,6 +4822,7 @@ apigatewayv2_update_deployment <- function(ApiId, DeploymentId, Description = NU
 #'       DomainNameStatusMessage = "string",
 #'       EndpointType = "REGIONAL"|"EDGE",
 #'       HostedZoneId = "string",
+#'       IpAddressType = "ipv4"|"dualstack",
 #'       SecurityPolicy = "TLS_1_0"|"TLS_1_2",
 #'       OwnershipVerificationCertificateArn = "string"
 #'     )
@@ -4841,6 +4856,7 @@ apigatewayv2_update_deployment <- function(ApiId, DeploymentId, Description = NU
 #'       DomainNameStatusMessage = "string",
 #'       EndpointType = "REGIONAL"|"EDGE",
 #'       HostedZoneId = "string",
+#'       IpAddressType = "ipv4"|"dualstack",
 #'       SecurityPolicy = "TLS_1_0"|"TLS_1_2",
 #'       OwnershipVerificationCertificateArn = "string"
 #'     )

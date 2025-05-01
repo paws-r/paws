@@ -2,7 +2,7 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_change_password}
 \alias{cognitoidentityprovider_change_password}
-\title{Changes the password for a specified user in a user pool}
+\title{Changes the password for the currently signed-in user}
 \usage{
 cognitoidentityprovider_change_password(
   PreviousPassword = NULL,
@@ -21,7 +21,7 @@ authentication options, you can omit this parameter.}
 password you want to change.}
 }
 \description{
-Changes the password for a specified user in a user pool.
+Changes the password for the currently signed-in user.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_change_password/} for full documentation.
 }

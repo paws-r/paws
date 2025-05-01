@@ -8,7 +8,9 @@ cloudwatchrum_update_app_monitor(
   AppMonitorConfiguration = NULL,
   CustomEvents = NULL,
   CwLogEnabled = NULL,
+  DeobfuscationConfiguration = NULL,
   Domain = NULL,
+  DomainList = NULL,
   Name
 )
 }
@@ -31,8 +33,15 @@ Amazon CloudWatch Logs in your account. This enables you to keep the
 telemetry data for more than 30 days, but it does incur Amazon
 CloudWatch Logs charges.}
 
+\item{DeobfuscationConfiguration}{A structure that contains the configuration for how an app monitor can
+deobfuscate stack traces.}
+
 \item{Domain}{The top-level internet domain name for which your application has
 administrative authority.}
+
+\item{DomainList}{List the domain names for which your application has administrative
+authority. The \code{\link[=cloudwatchrum_update_app_monitor]{update_app_monitor}}
+allows either the domain or the domain list.}
 
 \item{Name}{[required] The name of the app monitor to update.}
 }

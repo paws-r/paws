@@ -9,7 +9,8 @@ eventbridge_create_connection(
   Description = NULL,
   AuthorizationType,
   AuthParameters,
-  InvocationConnectivityParameters = NULL
+  InvocationConnectivityParameters = NULL,
+  KmsKeyIdentifier = NULL
 )
 }
 \arguments{
@@ -26,11 +27,22 @@ OAUTH tokens are refreshed when a 401 or 407 response is returned.}
 You must include only authorization parameters for the
 \code{AuthorizationType} you specify.}
 
-\item{InvocationConnectivityParameters}{For connections to private resource endpoints, the parameters to use for
-invoking the resource endpoint.
+\item{InvocationConnectivityParameters}{For connections to private APIs, the parameters to use for invoking the
+API.
 
-For more information, see \href{https://docs.aws.amazon.com/eventbridge/latest/userguide/}{Connecting to private resources} in
-the \emph{Amazon EventBridge User Guide} .}
+For more information, see \href{https://docs.aws.amazon.com/eventbridge/latest/userguide/connection-private.html}{Connecting to private APIs}
+in the \emph{Amazon EventBridge User Guide} .}
+
+\item{KmsKeyIdentifier}{The identifier of the KMS customer managed key for EventBridge to use,
+if you choose to use a customer managed key to encrypt this connection.
+The identifier can be the key Amazon Resource Name (ARN), KeyId, key
+alias, or key alias ARN.
+
+If you do not specify a customer managed key identifier, EventBridge
+uses an Amazon Web Services owned key to encrypt the connection.
+
+For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/viewing-keys.html}{Identify and view keys}
+in the \emph{Key Management Service Developer Guide}.}
 }
 \description{
 Creates a connection. A connection defines the authorization type and credentials to use for authorization with an API destination HTTP endpoint.

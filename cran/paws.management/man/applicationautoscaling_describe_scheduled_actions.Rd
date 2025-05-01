@@ -70,6 +70,9 @@ specified using the cluster ARN. Example:
 \item Amazon ElastiCache replication group - The resource type is
 \code{replication-group} and the unique identifier is the replication
 group name. Example: \code{replication-group/mycluster}.
+\item Amazon ElastiCache cache cluster - The resource type is
+\code{cache-cluster} and the unique identifier is the cache cluster name.
+Example: \code{cache-cluster/mycluster}.
 \item Neptune cluster - The resource type is \code{cluster} and the unique
 identifier is the cluster name. Example: \code{cluster:mycluster}.
 \item SageMaker serverless endpoint - The resource type is \code{variant} and
@@ -123,6 +126,8 @@ for an Amazon Keyspaces table.
 capacity for an Amazon Keyspaces table.
 \item \code{kafka:broker-storage:VolumeSize} - The provisioned volume size (in
 GiB) for brokers in an Amazon MSK cluster.
+\item \code{elasticache:cache-cluster:Nodes} - The number of nodes for an
+Amazon ElastiCache cache cluster.
 \item \code{elasticache:replication-group:NodeGroups} - The number of node
 groups for an Amazon ElastiCache replication group.
 \item \code{elasticache:replication-group:Replicas} - The number of replicas

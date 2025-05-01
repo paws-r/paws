@@ -4,10 +4,16 @@
 \alias{s3tables_create_table_bucket}
 \title{Creates a table bucket}
 \usage{
-s3tables_create_table_bucket(name)
+s3tables_create_table_bucket(name, encryptionConfiguration = NULL)
 }
 \arguments{
 \item{name}{[required] The name for the table bucket.}
+
+\item{encryptionConfiguration}{The encryption configuration to use for the table bucket. This
+configuration specifies the default encryption settings that will be
+applied to all tables created in this bucket unless overridden at the
+table level. The configuration includes the encryption algorithm and, if
+using SSE-KMS, the KMS key to use.}
 }
 \description{
 Creates a table bucket. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-tables-buckets-create.html}{Creating a table bucket} in the \emph{Amazon Simple Storage Service User Guide}.

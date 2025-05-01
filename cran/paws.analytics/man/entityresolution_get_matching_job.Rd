@@ -5,12 +5,12 @@
 \title{Gets the status, metrics, and errors (if there are any) that are
 associated with a job}
 \usage{
-entityresolution_get_matching_job(jobId, workflowName)
+entityresolution_get_matching_job(workflowName, jobId)
 }
 \arguments{
-\item{jobId}{[required] The ID of the job.}
-
 \item{workflowName}{[required] The name of the workflow.}
+
+\item{jobId}{[required] The ID of the job.}
 }
 \description{
 Gets the status, metrics, and errors (if there are any) that are associated with a job.

@@ -2,8 +2,7 @@
 % Please edit documentation in R/marketplacemetering_operations.R
 \name{marketplacemetering_batch_meter_usage}
 \alias{marketplacemetering_batch_meter_usage}
-\title{BatchMeterUsage is called from a SaaS application listed on AWS
-Marketplace to post metering records for a set of customers}
+\title{The CustomerIdentifier parameter is scheduled for deprecation}
 \usage{
 marketplacemetering_batch_meter_usage(UsageRecords, ProductCode)
 }
@@ -12,12 +11,12 @@ marketplacemetering_batch_meter_usage(UsageRecords, ProductCode)
 \code{\link[=marketplacemetering_batch_meter_usage]{batch_meter_usage}} accepts up
 to 25 \code{UsageRecords} at a time.}
 
-\item{ProductCode}{[required] Product code is used to uniquely identify a product in AWS Marketplace.
-The product code should be the same as the one used during the
-publishing of a new product.}
+\item{ProductCode}{[required] Product code is used to uniquely identify a product in Amazon Web
+Services Marketplace. The product code should be the same as the one
+used during the publishing of a new product.}
 }
 \description{
-\code{\link[=marketplacemetering_batch_meter_usage]{batch_meter_usage}} is called from a SaaS application listed on AWS Marketplace to post metering records for a set of customers.
+The \code{CustomerIdentifier} parameter is scheduled for deprecation. Use \code{CustomerAWSAccountID} instead.
 
 See \url{https://www.paws-r-sdk.com/docs/marketplacemetering_batch_meter_usage/} for full documentation.
 }

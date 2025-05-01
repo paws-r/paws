@@ -45,6 +45,18 @@ NULL
   list()
 }
 
+.account$get_account_information_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AccountId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.account$get_account_information_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AccountCreatedDate = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), AccountId = structure(logical(0), tags = list(type = "string")), AccountName = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .account$get_alternate_contact_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(AccountId = structure(logical(0), tags = list(type = "string")), AlternateContactType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -103,6 +115,16 @@ NULL
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), Regions = structure(list(structure(list(RegionName = structure(logical(0), tags = list(type = "string")), RegionOptStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
+}
+
+.account$put_account_name_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AccountId = structure(logical(0), tags = list(type = "string")), AccountName = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.account$put_account_name_output <- function(...) {
+  list()
 }
 
 .account$put_alternate_contact_input <- function(...) {

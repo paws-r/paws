@@ -21,14 +21,17 @@ pinpointsmsvoicev2_request_phone_number(
 \item{IsoCountryCode}{[required] The two-character code, in ISO 3166-1 alpha-2 format, for the country or
 region.}
 
-\item{MessageType}{[required] The type of message. Valid values are TRANSACTIONAL for messages that
-are critical or time-sensitive and PROMOTIONAL for messages that aren't
-critical or time-sensitive.}
+\item{MessageType}{[required] The type of message. Valid values are \code{TRANSACTIONAL} for messages that
+are critical or time-sensitive and \code{PROMOTIONAL} for messages that
+aren't critical or time-sensitive.}
 
 \item{NumberCapabilities}{[required] Indicates if the phone number will be used for text messages, voice
 messages, or both.}
 
-\item{NumberType}{[required] The type of phone number to request.}
+\item{NumberType}{[required] The type of phone number to request.
+
+When you request a \code{SIMULATOR} phone number, you must set
+\strong{MessageType} as \code{TRANSACTIONAL}.}
 
 \item{OptOutListName}{The name of the OptOutList to associate with the phone number. You can
 use the OptOutListName or OptOutListArn.

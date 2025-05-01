@@ -57,6 +57,10 @@ With Service Quotas, you can view and manage your quotas easily as your
 Amazon Web Services workloads grow. Quotas, also referred to as limits,
 are the maximum number of resources that you can create in your Amazon
 Web Services account. For more information, see the \href{https://docs.aws.amazon.com/servicequotas/latest/userguide/}{Service Quotas User Guide}.
+
+You need Amazon Web Services CLI version 2.13.20 or higher to view and
+manage resource-level quotas such as \verb{Instances per domain} for Amazon
+OpenSearch Service.
 }
 \section{Service syntax}{
 
@@ -103,17 +107,17 @@ Web Services account. For more information, see the \href{https://docs.aws.amazo
 \link[=servicequotas_get_association_for_service_quota_template]{get_association_for_service_quota_template} \tab Retrieves the status of the association for the quota request template\cr
 \link[=servicequotas_get_aws_default_service_quota]{get_aws_default_service_quota} \tab Retrieves the default value for the specified quota\cr
 \link[=servicequotas_get_requested_service_quota_change]{get_requested_service_quota_change} \tab Retrieves information about the specified quota increase request\cr
-\link[=servicequotas_get_service_quota]{get_service_quota} \tab Retrieves the applied quota value for the specified quota\cr
+\link[=servicequotas_get_service_quota]{get_service_quota} \tab Retrieves the applied quota value for the specified account-level or resource-level quota\cr
 \link[=servicequotas_get_service_quota_increase_request_from_template]{get_service_quota_increase_request_from_template} \tab Retrieves information about the specified quota increase request in your quota request template\cr
-\link[=servicequotas_list_aws_default_service_quotas]{list_aws_default_service_quotas} \tab Lists the default values for the quotas for the specified Amazon Web Service\cr
-\link[=servicequotas_list_requested_service_quota_change_history]{list_requested_service_quota_change_history} \tab Retrieves the quota increase requests for the specified Amazon Web Service\cr
+\link[=servicequotas_list_aws_default_service_quotas]{list_aws_default_service_quotas} \tab Lists the default values for the quotas for the specified Amazon Web Services service\cr
+\link[=servicequotas_list_requested_service_quota_change_history]{list_requested_service_quota_change_history} \tab Retrieves the quota increase requests for the specified Amazon Web Services service\cr
 \link[=servicequotas_list_requested_service_quota_change_history_by_quota]{list_requested_service_quota_change_history_by_quota} \tab Retrieves the quota increase requests for the specified quota\cr
 \link[=servicequotas_list_service_quota_increase_requests_in_template]{list_service_quota_increase_requests_in_template} \tab Lists the quota increase requests in the specified quota request template\cr
-\link[=servicequotas_list_service_quotas]{list_service_quotas} \tab Lists the applied quota values for the specified Amazon Web Service\cr
-\link[=servicequotas_list_services]{list_services} \tab Lists the names and codes for the Amazon Web Services integrated with Service Quotas\cr
+\link[=servicequotas_list_service_quotas]{list_service_quotas} \tab Lists the applied quota values for the specified Amazon Web Services service\cr
+\link[=servicequotas_list_services]{list_services} \tab Lists the names and codes for the Amazon Web Services services integrated with Service Quotas\cr
 \link[=servicequotas_list_tags_for_resource]{list_tags_for_resource} \tab Returns a list of the tags assigned to the specified applied quota\cr
 \link[=servicequotas_put_service_quota_increase_request_into_template]{put_service_quota_increase_request_into_template} \tab Adds a quota increase request to your quota request template\cr
-\link[=servicequotas_request_service_quota_increase]{request_service_quota_increase} \tab Submits a quota increase request for the specified quota\cr
+\link[=servicequotas_request_service_quota_increase]{request_service_quota_increase} \tab Submits a quota increase request for the specified quota at the account or resource level\cr
 \link[=servicequotas_tag_resource]{tag_resource} \tab Adds tags to the specified applied quota\cr
 \link[=servicequotas_untag_resource]{untag_resource} \tab Removes tags from the specified applied quota
 }

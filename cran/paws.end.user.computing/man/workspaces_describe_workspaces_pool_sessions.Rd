@@ -17,7 +17,8 @@ workspaces_describe_workspaces_pool_sessions(
 
 \item{UserId}{The identifier of the user.}
 
-\item{Limit}{The maximum number of items to return.}
+\item{Limit}{The maximum size of each page of results. The default value is 20 and
+the maximum value is 50.}
 
 \item{NextToken}{If you received a \code{NextToken} from a previous call that was paginated,
 provide this token to receive the next set of results.}

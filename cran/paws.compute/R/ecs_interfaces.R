@@ -531,6 +531,18 @@ NULL
   return(populate(args, shape))
 }
 
+.ecs$stop_service_deployment_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(serviceDeploymentArn = structure(logical(0), tags = list(type = "string")), stopType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ecs$stop_service_deployment_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(serviceDeploymentArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .ecs$stop_task_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(cluster = structure(logical(0), tags = list(type = "string")), task = structure(logical(0), tags = list(type = "string")), reason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))

@@ -23,7 +23,8 @@ ensure the idempotency of the request.}
 
 \item{destination}{[required] The Amazon Managed Service for Prometheus workspace to send metrics to.}
 
-\item{roleConfiguration}{The scraper role configuration for the workspace.}
+\item{roleConfiguration}{Use this structure to enable cross-account access, so that you can use a
+target account to access Prometheus metrics from source accounts.}
 
 \item{scrapeConfiguration}{[required] The configuration file to use in the new scraper. For more information,
 see \href{https://docs.aws.amazon.com/prometheus/latest/userguide/AMP-collector-how-to.html#AMP-collector-configuration}{Scraper configuration}

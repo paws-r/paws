@@ -19,7 +19,8 @@ memorydb_update_cluster(
   EngineVersion = NULL,
   ReplicaConfiguration = NULL,
   ShardConfiguration = NULL,
-  ACLName = NULL
+  ACLName = NULL,
+  IpDiscovery = NULL
 )
 }
 \arguments{
@@ -77,6 +78,14 @@ engine version.}
 \item{ShardConfiguration}{The number of shards in the cluster.}
 
 \item{ACLName}{The Access Control List that is associated with the cluster.}
+
+\item{IpDiscovery}{The mechanism for discovering IP addresses for the cluster discovery
+protocol. Valid values are 'ipv4' or 'ipv6'. When set to 'ipv4', cluster
+discovery functions such as cluster slots, cluster shards, and cluster
+nodes will return IPv4 addresses for cluster nodes. When set to 'ipv6',
+the cluster discovery functions return IPv6 addresses for cluster nodes.
+The value must be compatible with the NetworkType parameter. If not
+specified, the default is 'ipv4'.}
 }
 \description{
 Modifies the settings for a cluster. You can use this operation to change one or more cluster configuration settings by specifying the settings and the new values.

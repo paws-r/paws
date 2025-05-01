@@ -3,7 +3,8 @@
 \name{connect_suspend_contact_recording}
 \alias{connect_suspend_contact_recording}
 \title{When a contact is being recorded, this API suspends recording whatever
-is selected in the flow configuration: call, screen, or both}
+is selected in the flow configuration: call (IVR or agent), screen, or
+both}
 \usage{
 connect_suspend_contact_recording(
   InstanceId,
@@ -24,7 +25,7 @@ associated with the first interaction with the contact center.}
 \item{ContactRecordingType}{The type of recording being operated on.}
 }
 \description{
-When a contact is being recorded, this API suspends recording whatever is selected in the flow configuration: call, screen, or both. If only call recording or only screen recording is enabled, then it would be suspended. For example, you might suspend the screen recording while collecting sensitive information, such as a credit card number. Then use ResumeContactRecording to restart recording the screen.
+When a contact is being recorded, this API suspends recording whatever is selected in the flow configuration: call (IVR or agent), screen, or both. If only call recording or only screen recording is enabled, then it would be suspended. For example, you might suspend the screen recording while collecting sensitive information, such as a credit card number. Then use \code{\link[=connect_resume_contact_recording]{resume_contact_recording}} to restart recording the screen.
 
 See \url{https://www.paws-r-sdk.com/docs/connect_suspend_contact_recording/} for full documentation.
 }

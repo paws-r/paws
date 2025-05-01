@@ -50,11 +50,19 @@ s3tables_create_namespace <- function(tableBucketARN, namespace) {
 #' @param name &#91;required&#93; The name for the table.
 #' @param format &#91;required&#93; The format for the table.
 #' @param metadata The metadata for the table.
+#' @param encryptionConfiguration The encryption configuration to use for the table. This configuration
+#' specifies the encryption algorithm and, if using SSE-KMS, the KMS key to
+#' use for encrypting the table.
+#' 
+#' If you choose SSE-KMS encryption you must grant the S3 Tables
+#' maintenance principal access to your KMS key. For more information, see
+#' [Permissions requirements for S3 Tables SSE-KMS
+#' encryption](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-tables-kms-permissions.html).
 #'
 #' @keywords internal
 #'
 #' @rdname s3tables_create_table
-s3tables_create_table <- function(tableBucketARN, namespace, name, format, metadata = NULL) {
+s3tables_create_table <- function(tableBucketARN, namespace, name, format, metadata = NULL, encryptionConfiguration = NULL) {
   op <- new_operation(
     name = "CreateTable",
     http_method = "PUT",
@@ -63,7 +71,7 @@ s3tables_create_table <- function(tableBucketARN, namespace, name, format, metad
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .s3tables$create_table_input(tableBucketARN = tableBucketARN, namespace = namespace, name = name, format = format, metadata = metadata)
+  input <- .s3tables$create_table_input(tableBucketARN = tableBucketARN, namespace = namespace, name = name, format = format, metadata = metadata, encryptionConfiguration = encryptionConfiguration)
   output <- .s3tables$create_table_output()
   config <- get_config()
   svc <- .s3tables$service(config, op)
@@ -81,11 +89,16 @@ s3tables_create_table <- function(tableBucketARN, namespace, name, format, metad
 #' See [https://www.paws-r-sdk.com/docs/s3tables_create_table_bucket/](https://www.paws-r-sdk.com/docs/s3tables_create_table_bucket/) for full documentation.
 #'
 #' @param name &#91;required&#93; The name for the table bucket.
+#' @param encryptionConfiguration The encryption configuration to use for the table bucket. This
+#' configuration specifies the default encryption settings that will be
+#' applied to all tables created in this bucket unless overridden at the
+#' table level. The configuration includes the encryption algorithm and, if
+#' using SSE-KMS, the KMS key to use.
 #'
 #' @keywords internal
 #'
 #' @rdname s3tables_create_table_bucket
-s3tables_create_table_bucket <- function(name) {
+s3tables_create_table_bucket <- function(name, encryptionConfiguration = NULL) {
   op <- new_operation(
     name = "CreateTableBucket",
     http_method = "PUT",
@@ -94,7 +107,7 @@ s3tables_create_table_bucket <- function(name) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .s3tables$create_table_bucket_input(name = name)
+  input <- .s3tables$create_table_bucket_input(name = name, encryptionConfiguration = encryptionConfiguration)
   output <- .s3tables$create_table_bucket_output()
   config <- get_config()
   svc <- .s3tables$service(config, op)
@@ -202,6 +215,37 @@ s3tables_delete_table_bucket <- function(tableBucketARN) {
   return(response)
 }
 .s3tables$operations$delete_table_bucket <- s3tables_delete_table_bucket
+
+#' Deletes the encryption configuration for a table bucket
+#'
+#' @description
+#' Deletes the encryption configuration for a table bucket.
+#'
+#' See [https://www.paws-r-sdk.com/docs/s3tables_delete_table_bucket_encryption/](https://www.paws-r-sdk.com/docs/s3tables_delete_table_bucket_encryption/) for full documentation.
+#'
+#' @param tableBucketARN &#91;required&#93; The Amazon Resource Name (ARN) of the table bucket.
+#'
+#' @keywords internal
+#'
+#' @rdname s3tables_delete_table_bucket_encryption
+s3tables_delete_table_bucket_encryption <- function(tableBucketARN) {
+  op <- new_operation(
+    name = "DeleteTableBucketEncryption",
+    http_method = "DELETE",
+    http_path = "/buckets/{tableBucketARN}/encryption",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .s3tables$delete_table_bucket_encryption_input(tableBucketARN = tableBucketARN)
+  output <- .s3tables$delete_table_bucket_encryption_output()
+  config <- get_config()
+  svc <- .s3tables$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3tables$operations$delete_table_bucket_encryption <- s3tables_delete_table_bucket_encryption
 
 #' Deletes a table bucket policy
 #'
@@ -365,6 +409,37 @@ s3tables_get_table_bucket <- function(tableBucketARN) {
 }
 .s3tables$operations$get_table_bucket <- s3tables_get_table_bucket
 
+#' Gets the encryption configuration for a table bucket
+#'
+#' @description
+#' Gets the encryption configuration for a table bucket.
+#'
+#' See [https://www.paws-r-sdk.com/docs/s3tables_get_table_bucket_encryption/](https://www.paws-r-sdk.com/docs/s3tables_get_table_bucket_encryption/) for full documentation.
+#'
+#' @param tableBucketARN &#91;required&#93; The Amazon Resource Name (ARN) of the table bucket.
+#'
+#' @keywords internal
+#'
+#' @rdname s3tables_get_table_bucket_encryption
+s3tables_get_table_bucket_encryption <- function(tableBucketARN) {
+  op <- new_operation(
+    name = "GetTableBucketEncryption",
+    http_method = "GET",
+    http_path = "/buckets/{tableBucketARN}/encryption",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .s3tables$get_table_bucket_encryption_input(tableBucketARN = tableBucketARN)
+  output <- .s3tables$get_table_bucket_encryption_output()
+  config <- get_config()
+  svc <- .s3tables$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3tables$operations$get_table_bucket_encryption <- s3tables_get_table_bucket_encryption
+
 #' Gets details about a maintenance configuration for a given table bucket
 #'
 #' @description
@@ -427,6 +502,39 @@ s3tables_get_table_bucket_policy <- function(tableBucketARN) {
   return(response)
 }
 .s3tables$operations$get_table_bucket_policy <- s3tables_get_table_bucket_policy
+
+#' Gets the encryption configuration for a table
+#'
+#' @description
+#' Gets the encryption configuration for a table.
+#'
+#' See [https://www.paws-r-sdk.com/docs/s3tables_get_table_encryption/](https://www.paws-r-sdk.com/docs/s3tables_get_table_encryption/) for full documentation.
+#'
+#' @param tableBucketARN &#91;required&#93; The Amazon Resource Name (ARN) of the table bucket containing the table.
+#' @param namespace &#91;required&#93; The namespace associated with the table.
+#' @param name &#91;required&#93; The name of the table.
+#'
+#' @keywords internal
+#'
+#' @rdname s3tables_get_table_encryption
+s3tables_get_table_encryption <- function(tableBucketARN, namespace, name) {
+  op <- new_operation(
+    name = "GetTableEncryption",
+    http_method = "GET",
+    http_path = "/tables/{tableBucketARN}/{namespace}/{name}/encryption",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .s3tables$get_table_encryption_input(tableBucketARN = tableBucketARN, namespace = namespace, name = name)
+  output <- .s3tables$get_table_encryption_output()
+  config <- get_config()
+  svc <- .s3tables$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3tables$operations$get_table_encryption <- s3tables_get_table_encryption
 
 #' Gets details about the maintenance configuration of a table
 #'
@@ -673,6 +781,38 @@ s3tables_list_tables <- function(tableBucketARN, namespace = NULL, prefix = NULL
   return(response)
 }
 .s3tables$operations$list_tables <- s3tables_list_tables
+
+#' Sets the encryption configuration for a table bucket
+#'
+#' @description
+#' Sets the encryption configuration for a table bucket.
+#'
+#' See [https://www.paws-r-sdk.com/docs/s3tables_put_table_bucket_encryption/](https://www.paws-r-sdk.com/docs/s3tables_put_table_bucket_encryption/) for full documentation.
+#'
+#' @param tableBucketARN &#91;required&#93; The Amazon Resource Name (ARN) of the table bucket.
+#' @param encryptionConfiguration &#91;required&#93; The encryption configuration to apply to the table bucket.
+#'
+#' @keywords internal
+#'
+#' @rdname s3tables_put_table_bucket_encryption
+s3tables_put_table_bucket_encryption <- function(tableBucketARN, encryptionConfiguration) {
+  op <- new_operation(
+    name = "PutTableBucketEncryption",
+    http_method = "PUT",
+    http_path = "/buckets/{tableBucketARN}/encryption",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .s3tables$put_table_bucket_encryption_input(tableBucketARN = tableBucketARN, encryptionConfiguration = encryptionConfiguration)
+  output <- .s3tables$put_table_bucket_encryption_output()
+  config <- get_config()
+  svc <- .s3tables$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.s3tables$operations$put_table_bucket_encryption <- s3tables_put_table_bucket_encryption
 
 #' Creates a new maintenance configuration or replaces an existing
 #' maintenance configuration for a table bucket

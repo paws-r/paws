@@ -376,7 +376,7 @@ ivs_create_channel <- function(authorized = NULL, containerFormat = NULL, insecu
 #' Default: All countries (an empty array).
 #' @param allowedOrigins A list of origin sites that control CORS restriction. Allowed values are
 #' the same as valid values of the Origin header defined at
-#' <https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Origin>.
+#' [https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Origin](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Origin).
 #' Default: All origins (an empty array).
 #' @param enableStrictOriginEnforcement Whether channel playback is constrained by origin site. Default:
 #' `false`.
@@ -2481,7 +2481,7 @@ ivs_update_channel <- function(arn, authorized = NULL, containerFormat = NULL, i
 #' Default: All countries (an empty array).
 #' @param allowedOrigins A list of origin sites that control CORS restriction. Allowed values are
 #' the same as valid values of the Origin header defined at
-#' <https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Origin>.
+#' [https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Origin](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Origin).
 #' Default: All origins (an empty array).
 #' @param arn &#91;required&#93; ARN of the playback-restriction-policy to be updated.
 #' @param enableStrictOriginEnforcement Whether channel playback is constrained by origin site. Default:

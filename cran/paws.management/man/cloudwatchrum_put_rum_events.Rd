@@ -6,6 +6,7 @@
 behavior to CloudWatch RUM}
 \usage{
 cloudwatchrum_put_rum_events(
+  Alias = NULL,
   AppMonitorDetails,
   BatchId,
   Id,
@@ -14,6 +15,12 @@ cloudwatchrum_put_rum_events(
 )
 }
 \arguments{
+\item{Alias}{If the app monitor uses a resource-based policy that requires
+\code{\link[=cloudwatchrum_put_rum_events]{put_rum_events}} requests to specify a
+certain alias, specify that alias here. This alias will be compared to
+the \code{rum:alias} context key in the resource-based policy. For more
+information, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-RUM-resource-policies.html}{Using resource-based policies with CloudWatch RUM}.}
+
 \item{AppMonitorDetails}{[required] A structure that contains information about the app monitor that
 collected this telemetry information.}
 

@@ -2,16 +2,17 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_delete_user}
 \alias{cognitoidentityprovider_delete_user}
-\title{Self-deletes a user profile}
+\title{Deletes the profile of the currently signed-in user}
 \usage{
 cognitoidentityprovider_delete_user(AccessToken)
 }
 \arguments{
-\item{AccessToken}{[required] A valid access token that Amazon Cognito issued to the user whose user
-profile you want to delete.}
+\item{AccessToken}{[required] A valid access token that Amazon Cognito issued to the currently
+signed-in user. Must include a scope claim for
+\code{aws.cognito.signin.user.admin}.}
 }
 \description{
-Self-deletes a user profile. A deleted user profile can no longer be used to sign in and can't be restored.
+Deletes the profile of the currently signed-in user. A deleted user profile can no longer be used to sign in and can't be restored.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_delete_user/} for full documentation.
 }

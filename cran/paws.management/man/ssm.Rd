@@ -173,6 +173,7 @@ see the \emph{\href{https://docs.aws.amazon.com/incident-manager/latest/userguid
 \link[=ssm_describe_patch_properties]{describe_patch_properties} \tab Lists the properties of available patches organized by product, product family, classification, severity, and other properties of available patches\cr
 \link[=ssm_describe_sessions]{describe_sessions} \tab Retrieves a list of all active sessions (both connected and disconnected) or terminated sessions from the past 30 days\cr
 \link[=ssm_disassociate_ops_item_related_item]{disassociate_ops_item_related_item} \tab Deletes the association between an OpsItem and a related item\cr
+\link[=ssm_get_access_token]{get_access_token} \tab Returns a credentials set to be used with just-in-time node access\cr
 \link[=ssm_get_automation_execution]{get_automation_execution} \tab Get detailed information about a particular Automation execution\cr
 \link[=ssm_get_calendar_state]{get_calendar_state} \tab Gets the state of a Amazon Web Services Systems Manager change calendar at the current time or a specified time\cr
 \link[=ssm_get_command_invocation]{get_command_invocation} \tab Returns detailed information about command execution for an invocation or plugin\cr
@@ -221,7 +222,7 @@ see the \emph{\href{https://docs.aws.amazon.com/incident-manager/latest/userguid
 \link[=ssm_modify_document_permission]{modify_document_permission} \tab Shares a Amazon Web Services Systems Manager document (SSM document)publicly or privately\cr
 \link[=ssm_put_compliance_items]{put_compliance_items} \tab Registers a compliance type and other compliance details on a designated resource\cr
 \link[=ssm_put_inventory]{put_inventory} \tab Bulk update custom inventory items on one or more managed nodes\cr
-\link[=ssm_put_parameter]{put_parameter} \tab Add a parameter to the system\cr
+\link[=ssm_put_parameter]{put_parameter} \tab Create or update a parameter in Parameter Store\cr
 \link[=ssm_put_resource_policy]{put_resource_policy} \tab Creates or updates a Systems Manager resource policy\cr
 \link[=ssm_register_default_patch_baseline]{register_default_patch_baseline} \tab Defines the default patch baseline for the relevant operating system\cr
 \link[=ssm_register_patch_baseline_for_patch_group]{register_patch_baseline_for_patch_group} \tab Registers a patch baseline for a patch group\cr
@@ -232,6 +233,7 @@ see the \emph{\href{https://docs.aws.amazon.com/incident-manager/latest/userguid
 \link[=ssm_resume_session]{resume_session} \tab Reconnects a session to a managed node after it has been disconnected\cr
 \link[=ssm_send_automation_signal]{send_automation_signal} \tab Sends a signal to an Automation execution to change the current behavior or status of the execution\cr
 \link[=ssm_send_command]{send_command} \tab Runs commands on one or more managed nodes\cr
+\link[=ssm_start_access_request]{start_access_request} \tab Starts the workflow for just-in-time node access sessions\cr
 \link[=ssm_start_associations_once]{start_associations_once} \tab Runs an association immediately and only one time\cr
 \link[=ssm_start_automation_execution]{start_automation_execution} \tab Initiates execution of an Automation runbook\cr
 \link[=ssm_start_change_request_execution]{start_change_request_execution} \tab Creates a change request for Change Manager\cr

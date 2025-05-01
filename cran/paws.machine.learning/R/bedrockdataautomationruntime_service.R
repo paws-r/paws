@@ -91,7 +91,10 @@ NULL
 #' @section Operations:
 #' \tabular{ll}{
 #'  \link[=bedrockdataautomationruntime_get_data_automation_status]{get_data_automation_status} \tab API used to get data automation status\cr
-#'  \link[=bedrockdataautomationruntime_invoke_data_automation_async]{invoke_data_automation_async} \tab Async API: Invoke data automation
+#'  \link[=bedrockdataautomationruntime_invoke_data_automation_async]{invoke_data_automation_async} \tab Async API: Invoke data automation\cr
+#'  \link[=bedrockdataautomationruntime_list_tags_for_resource]{list_tags_for_resource} \tab List tags for an Amazon Bedrock Data Automation resource\cr
+#'  \link[=bedrockdataautomationruntime_tag_resource]{tag_resource} \tab Tag an Amazon Bedrock Data Automation resource\cr
+#'  \link[=bedrockdataautomationruntime_untag_resource]{untag_resource} \tab Untag an Amazon Bedrock Data Automation resource
 #' }
 #'
 #' @return
@@ -123,7 +126,7 @@ bedrockdataautomationruntime <- function(config = list(), credentials = list(), 
 
 .bedrockdataautomationruntime$metadata <- list(
   service_name = "bedrockdataautomationruntime",
-  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "bedrock-data-automation-runtime.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "bedrock-data-automation-runtime.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "bedrock-data-automation-runtime.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "bedrock-data-automation-runtime.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "bedrock-data-automation-runtime.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "bedrock-data-automation-runtime.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "bedrock-data-automation-runtime.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "bedrock-data-automation-runtime.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "bedrock-data-automation-runtime.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "bedrock-data-automation-runtime.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "bedrock-data-automation-runtime.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "bedrock-data-automation-runtime.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "bedrock-data-automation-runtime.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "bedrock-data-automation-runtime.{region}.csp.hci.ic.gov", global = FALSE), "^eusc\\-(de)\\-\\w+\\-\\d+$" = list(endpoint = "bedrock-data-automation-runtime.{region}.amazonaws.eu", global = FALSE)),
   service_id = "Bedrock Data Automation Runtime",
   api_version = "2024-06-13",
   signing_name = "bedrock",

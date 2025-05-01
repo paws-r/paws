@@ -15,7 +15,8 @@ elbv2_create_load_balancer(
   Type = NULL,
   IpAddressType = NULL,
   CustomerOwnedIpv4Pool = NULL,
-  EnablePrefixForIpv6SourceNat = NULL
+  EnablePrefixForIpv6SourceNat = NULL,
+  IpamPools = NULL
 )
 }
 \arguments{
@@ -106,6 +107,9 @@ address pool (CoIP pool).}
 \item{EnablePrefixForIpv6SourceNat}{[Network Load Balancers with UDP listeners] Indicates whether to use
 an IPv6 prefix from each subnet for source NAT. The IP address type must
 be \code{dualstack}. The default value is \code{off}.}
+
+\item{IpamPools}{[Application Load Balancers] The IPAM pools to use with the load
+balancer.}
 }
 \description{
 Creates an Application Load Balancer, Network Load Balancer, or Gateway Load Balancer.

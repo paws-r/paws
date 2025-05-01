@@ -28,7 +28,9 @@ memorydb_create_cluster(
   Engine = NULL,
   EngineVersion = NULL,
   AutoMinorVersionUpgrade = NULL,
-  DataTiering = NULL
+  DataTiering = NULL,
+  NetworkType = NULL,
+  IpDiscovery = NULL
 )
 }
 \arguments{
@@ -118,6 +120,21 @@ version upgrades after launch.}
 \item{DataTiering}{Enables data tiering. Data tiering is only supported for clusters using
 the r6gd node type. This parameter must be set when using r6gd nodes.
 For more information, see \href{https://docs.aws.amazon.com/memorydb/latest/devguide/data-tiering.html}{Data tiering}.}
+
+\item{NetworkType}{Specifies the IP address type for the cluster. Valid values are 'ipv4',
+'ipv6', or 'dual_stack'. When set to 'ipv4', the cluster will only be
+accessible via IPv4 addresses. When set to 'ipv6', the cluster will only
+be accessible via IPv6 addresses. When set to 'dual_stack', the cluster
+will be accessible via both IPv4 and IPv6 addresses. If not specified,
+the default is 'ipv4'.}
+
+\item{IpDiscovery}{The mechanism for discovering IP addresses for the cluster discovery
+protocol. Valid values are 'ipv4' or 'ipv6'. When set to 'ipv4', cluster
+discovery functions such as cluster slots, cluster shards, and cluster
+nodes return IPv4 addresses for cluster nodes. When set to 'ipv6', the
+cluster discovery functions return IPv6 addresses for cluster nodes. The
+value must be compatible with the NetworkType parameter. If not
+specified, the default is 'ipv4'.}
 }
 \description{
 Creates a cluster. All nodes in the cluster run the same protocol-compliant engine software.

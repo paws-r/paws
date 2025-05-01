@@ -65,6 +65,120 @@ cloudfront_associate_alias <- function(TargetDistributionId, Alias) {
 }
 .cloudfront$operations$associate_alias <- cloudfront_associate_alias
 
+#' Associates the WAF web ACL with a distribution tenant
+#'
+#' @description
+#' Associates the WAF web ACL with a distribution tenant.
+#'
+#' @usage
+#' cloudfront_associate_distribution_tenant_web_acl(Id, WebACLArn, IfMatch)
+#'
+#' @param Id &#91;required&#93; The ID of the distribution tenant.
+#' @param WebACLArn &#91;required&#93; The Amazon Resource Name (ARN) of the WAF web ACL to associate.
+#' @param IfMatch The current `ETag` of the distribution tenant. This value is returned in
+#' the response of the
+#' [`get_distribution_tenant`][cloudfront_get_distribution_tenant] API
+#' operation.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Id = "string",
+#'   WebACLArn = "string",
+#'   ETag = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$associate_distribution_tenant_web_acl(
+#'   Id = "string",
+#'   WebACLArn = "string",
+#'   IfMatch = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_associate_distribution_tenant_web_acl
+#'
+#' @aliases cloudfront_associate_distribution_tenant_web_acl
+cloudfront_associate_distribution_tenant_web_acl <- function(Id, WebACLArn, IfMatch = NULL) {
+  op <- new_operation(
+    name = "AssociateDistributionTenantWebACL",
+    http_method = "PUT",
+    http_path = "/2020-05-31/distribution-tenant/{Id}/associate-web-acl",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudfront$associate_distribution_tenant_web_acl_input(Id = Id, WebACLArn = WebACLArn, IfMatch = IfMatch)
+  output <- .cloudfront$associate_distribution_tenant_web_acl_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$associate_distribution_tenant_web_acl <- cloudfront_associate_distribution_tenant_web_acl
+
+#' Associates the WAF web ACL with a distribution
+#'
+#' @description
+#' Associates the WAF web ACL with a distribution.
+#'
+#' @usage
+#' cloudfront_associate_distribution_web_acl(Id, WebACLArn, IfMatch)
+#'
+#' @param Id &#91;required&#93; The ID of the distribution.
+#' @param WebACLArn &#91;required&#93; The Amazon Resource Name (ARN) of the WAF web ACL to associate.
+#' @param IfMatch The value of the `ETag` header that you received when retrieving the
+#' distribution that you're associating with the WAF web ACL.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Id = "string",
+#'   WebACLArn = "string",
+#'   ETag = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$associate_distribution_web_acl(
+#'   Id = "string",
+#'   WebACLArn = "string",
+#'   IfMatch = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_associate_distribution_web_acl
+#'
+#' @aliases cloudfront_associate_distribution_web_acl
+cloudfront_associate_distribution_web_acl <- function(Id, WebACLArn, IfMatch = NULL) {
+  op <- new_operation(
+    name = "AssociateDistributionWebACL",
+    http_method = "PUT",
+    http_path = "/2020-05-31/distribution/{Id}/associate-web-acl",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudfront$associate_distribution_web_acl_input(Id = Id, WebACLArn = WebACLArn, IfMatch = IfMatch)
+  output <- .cloudfront$associate_distribution_web_acl_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$associate_distribution_web_acl <- cloudfront_associate_distribution_web_acl
+
 #' Creates a staging distribution using the configuration of the provided
 #' primary distribution
 #'
@@ -432,7 +546,7 @@ cloudfront_associate_alias <- function(TargetDistributionId, Alias) {
 #'         Bucket = "string",
 #'         Prefix = "string"
 #'       ),
-#'       PriceClass = "PriceClass_100"|"PriceClass_200"|"PriceClass_All",
+#'       PriceClass = "PriceClass_100"|"PriceClass_200"|"PriceClass_All"|"None",
 #'       Enabled = TRUE|FALSE,
 #'       ViewerCertificate = list(
 #'         CloudFrontDefaultCertificate = TRUE|FALSE,
@@ -457,7 +571,22 @@ cloudfront_associate_alias <- function(TargetDistributionId, Alias) {
 #'       IsIPV6Enabled = TRUE|FALSE,
 #'       ContinuousDeploymentPolicyId = "string",
 #'       Staging = TRUE|FALSE,
-#'       AnycastIpListId = "string"
+#'       AnycastIpListId = "string",
+#'       TenantConfig = list(
+#'         ParameterDefinitions = list(
+#'           list(
+#'             Name = "string",
+#'             Definition = list(
+#'               StringSchema = list(
+#'                 Comment = "string",
+#'                 DefaultValue = "string",
+#'                 Required = TRUE|FALSE
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       ConnectionMode = "direct"|"tenant-only"
 #'     ),
 #'     AliasICPRecordals = list(
 #'       list(
@@ -516,7 +645,7 @@ cloudfront_copy_distribution <- function(PrimaryDistributionId, Staging = NULL, 
 #'
 #' @param Name &#91;required&#93; Name of the Anycast static IP list.
 #' @param IpCount &#91;required&#93; The number of static IP addresses that are allocated to the Anycast
-#' static IP list.
+#' static IP list. Valid values: 21 or 3.
 #' @param Tags 
 #'
 #' @return
@@ -801,6 +930,101 @@ cloudfront_create_cloud_front_origin_access_identity <- function(CloudFrontOrigi
   return(response)
 }
 .cloudfront$operations$create_cloud_front_origin_access_identity <- cloudfront_create_cloud_front_origin_access_identity
+
+#' Creates a connection group
+#'
+#' @description
+#' Creates a connection group.
+#'
+#' @usage
+#' cloudfront_create_connection_group(Name, Ipv6Enabled, Tags,
+#'   AnycastIpListId, Enabled)
+#'
+#' @param Name &#91;required&#93; The name of the connection group. Enter a friendly identifier that is
+#' unique within your Amazon Web Services account. This name can't be
+#' updated after you create the connection group.
+#' @param Ipv6Enabled Enable IPv6 for the connection group. The default is `true`. For more
+#' information, see [Enable
+#' IPv6](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesEnableIPv6)
+#' in the *Amazon CloudFront Developer Guide*.
+#' @param Tags 
+#' @param AnycastIpListId The ID of the Anycast static IP list.
+#' @param Enabled Enable the connection group.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ConnectionGroup = list(
+#'     Id = "string",
+#'     Name = "string",
+#'     Arn = "string",
+#'     CreatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastModifiedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Tags = list(
+#'       Items = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       )
+#'     ),
+#'     Ipv6Enabled = TRUE|FALSE,
+#'     RoutingEndpoint = "string",
+#'     AnycastIpListId = "string",
+#'     Status = "string",
+#'     Enabled = TRUE|FALSE,
+#'     IsDefault = TRUE|FALSE
+#'   ),
+#'   ETag = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_connection_group(
+#'   Name = "string",
+#'   Ipv6Enabled = TRUE|FALSE,
+#'   Tags = list(
+#'     Items = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   ),
+#'   AnycastIpListId = "string",
+#'   Enabled = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_create_connection_group
+#'
+#' @aliases cloudfront_create_connection_group
+cloudfront_create_connection_group <- function(Name, Ipv6Enabled = NULL, Tags = NULL, AnycastIpListId = NULL, Enabled = NULL) {
+  op <- new_operation(
+    name = "CreateConnectionGroup",
+    http_method = "POST",
+    http_path = "/2020-05-31/connection-group",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudfront$create_connection_group_input(Name = Name, Ipv6Enabled = Ipv6Enabled, Tags = Tags, AnycastIpListId = AnycastIpListId, Enabled = Enabled)
+  output <- .cloudfront$create_connection_group_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$create_connection_group <- cloudfront_create_connection_group
 
 #' Creates a continuous deployment policy that distributes traffic for a
 #' custom domain name to two different CloudFront distributions
@@ -1248,7 +1472,7 @@ cloudfront_create_continuous_deployment_policy <- function(ContinuousDeploymentP
 #'         Bucket = "string",
 #'         Prefix = "string"
 #'       ),
-#'       PriceClass = "PriceClass_100"|"PriceClass_200"|"PriceClass_All",
+#'       PriceClass = "PriceClass_100"|"PriceClass_200"|"PriceClass_All"|"None",
 #'       Enabled = TRUE|FALSE,
 #'       ViewerCertificate = list(
 #'         CloudFrontDefaultCertificate = TRUE|FALSE,
@@ -1273,7 +1497,22 @@ cloudfront_create_continuous_deployment_policy <- function(ContinuousDeploymentP
 #'       IsIPV6Enabled = TRUE|FALSE,
 #'       ContinuousDeploymentPolicyId = "string",
 #'       Staging = TRUE|FALSE,
-#'       AnycastIpListId = "string"
+#'       AnycastIpListId = "string",
+#'       TenantConfig = list(
+#'         ParameterDefinitions = list(
+#'           list(
+#'             Name = "string",
+#'             Definition = list(
+#'               StringSchema = list(
+#'                 Comment = "string",
+#'                 DefaultValue = "string",
+#'                 Required = TRUE|FALSE
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       ConnectionMode = "direct"|"tenant-only"
 #'     ),
 #'     AliasICPRecordals = list(
 #'       list(
@@ -1567,7 +1806,7 @@ cloudfront_create_continuous_deployment_policy <- function(ContinuousDeploymentP
 #'       Bucket = "string",
 #'       Prefix = "string"
 #'     ),
-#'     PriceClass = "PriceClass_100"|"PriceClass_200"|"PriceClass_All",
+#'     PriceClass = "PriceClass_100"|"PriceClass_200"|"PriceClass_All"|"None",
 #'     Enabled = TRUE|FALSE,
 #'     ViewerCertificate = list(
 #'       CloudFrontDefaultCertificate = TRUE|FALSE,
@@ -1592,7 +1831,22 @@ cloudfront_create_continuous_deployment_policy <- function(ContinuousDeploymentP
 #'     IsIPV6Enabled = TRUE|FALSE,
 #'     ContinuousDeploymentPolicyId = "string",
 #'     Staging = TRUE|FALSE,
-#'     AnycastIpListId = "string"
+#'     AnycastIpListId = "string",
+#'     TenantConfig = list(
+#'       ParameterDefinitions = list(
+#'         list(
+#'           Name = "string",
+#'           Definition = list(
+#'             StringSchema = list(
+#'               Comment = "string",
+#'               DefaultValue = "string",
+#'               Required = TRUE|FALSE
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     ConnectionMode = "direct"|"tenant-only"
 #'   )
 #' )
 #' ```
@@ -1620,6 +1874,171 @@ cloudfront_create_distribution <- function(DistributionConfig) {
   return(response)
 }
 .cloudfront$operations$create_distribution <- cloudfront_create_distribution
+
+#' Creates a distribution tenant
+#'
+#' @description
+#' Creates a distribution tenant.
+#'
+#' @usage
+#' cloudfront_create_distribution_tenant(DistributionId, Name, Domains,
+#'   Tags, Customizations, Parameters, ConnectionGroupId,
+#'   ManagedCertificateRequest, Enabled)
+#'
+#' @param DistributionId &#91;required&#93; The ID of the multi-tenant distribution to use for creating the
+#' distribution tenant.
+#' @param Name &#91;required&#93; The name of the distribution tenant. Enter a friendly identifier that is
+#' unique within your Amazon Web Services account. This name can't be
+#' updated after you create the distribution tenant.
+#' @param Domains &#91;required&#93; The domains associated with the distribution tenant. You must specify at
+#' least one domain in the request.
+#' @param Tags 
+#' @param Customizations Customizations for the distribution tenant. For each distribution
+#' tenant, you can specify the geographic restrictions, and the Amazon
+#' Resource Names (ARNs) for the ACM certificate and WAF web ACL. These are
+#' specific values that you can override or disable from the multi-tenant
+#' distribution that was used to create the distribution tenant.
+#' @param Parameters A list of parameter values to add to the resource. A parameter is
+#' specified as a key-value pair. A valid parameter value must exist for
+#' any parameter that is marked as required in the multi-tenant
+#' distribution.
+#' @param ConnectionGroupId The ID of the connection group to associate with the distribution
+#' tenant.
+#' @param ManagedCertificateRequest The configuration for the CloudFront managed ACM certificate request.
+#' @param Enabled Indicates whether the distribution tenant should be enabled when
+#' created. If the distribution tenant is disabled, the distribution tenant
+#' won't serve traffic.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DistributionTenant = list(
+#'     Id = "string",
+#'     DistributionId = "string",
+#'     Name = "string",
+#'     Arn = "string",
+#'     Domains = list(
+#'       list(
+#'         Domain = "string",
+#'         Status = "active"|"inactive"
+#'       )
+#'     ),
+#'     Tags = list(
+#'       Items = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       )
+#'     ),
+#'     Customizations = list(
+#'       WebAcl = list(
+#'         Action = "override"|"disable",
+#'         Arn = "string"
+#'       ),
+#'       Certificate = list(
+#'         Arn = "string"
+#'       ),
+#'       GeoRestrictions = list(
+#'         RestrictionType = "blacklist"|"whitelist"|"none",
+#'         Locations = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     Parameters = list(
+#'       list(
+#'         Name = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     ConnectionGroupId = "string",
+#'     CreatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastModifiedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Enabled = TRUE|FALSE,
+#'     Status = "string"
+#'   ),
+#'   ETag = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_distribution_tenant(
+#'   DistributionId = "string",
+#'   Name = "string",
+#'   Domains = list(
+#'     list(
+#'       Domain = "string"
+#'     )
+#'   ),
+#'   Tags = list(
+#'     Items = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   ),
+#'   Customizations = list(
+#'     WebAcl = list(
+#'       Action = "override"|"disable",
+#'       Arn = "string"
+#'     ),
+#'     Certificate = list(
+#'       Arn = "string"
+#'     ),
+#'     GeoRestrictions = list(
+#'       RestrictionType = "blacklist"|"whitelist"|"none",
+#'       Locations = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   Parameters = list(
+#'     list(
+#'       Name = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   ConnectionGroupId = "string",
+#'   ManagedCertificateRequest = list(
+#'     ValidationTokenHost = "cloudfront"|"self-hosted",
+#'     PrimaryDomainName = "string",
+#'     CertificateTransparencyLoggingPreference = "enabled"|"disabled"
+#'   ),
+#'   Enabled = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_create_distribution_tenant
+#'
+#' @aliases cloudfront_create_distribution_tenant
+cloudfront_create_distribution_tenant <- function(DistributionId, Name, Domains, Tags = NULL, Customizations = NULL, Parameters = NULL, ConnectionGroupId = NULL, ManagedCertificateRequest = NULL, Enabled = NULL) {
+  op <- new_operation(
+    name = "CreateDistributionTenant",
+    http_method = "POST",
+    http_path = "/2020-05-31/distribution-tenant",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudfront$create_distribution_tenant_input(DistributionId = DistributionId, Name = Name, Domains = Domains, Tags = Tags, Customizations = Customizations, Parameters = Parameters, ConnectionGroupId = ConnectionGroupId, ManagedCertificateRequest = ManagedCertificateRequest, Enabled = Enabled)
+  output <- .cloudfront$create_distribution_tenant_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$create_distribution_tenant <- cloudfront_create_distribution_tenant
 
 #' Create a new distribution with tags
 #'
@@ -1956,7 +2375,7 @@ cloudfront_create_distribution <- function(DistributionConfig) {
 #'         Bucket = "string",
 #'         Prefix = "string"
 #'       ),
-#'       PriceClass = "PriceClass_100"|"PriceClass_200"|"PriceClass_All",
+#'       PriceClass = "PriceClass_100"|"PriceClass_200"|"PriceClass_All"|"None",
 #'       Enabled = TRUE|FALSE,
 #'       ViewerCertificate = list(
 #'         CloudFrontDefaultCertificate = TRUE|FALSE,
@@ -1981,7 +2400,22 @@ cloudfront_create_distribution <- function(DistributionConfig) {
 #'       IsIPV6Enabled = TRUE|FALSE,
 #'       ContinuousDeploymentPolicyId = "string",
 #'       Staging = TRUE|FALSE,
-#'       AnycastIpListId = "string"
+#'       AnycastIpListId = "string",
+#'       TenantConfig = list(
+#'         ParameterDefinitions = list(
+#'           list(
+#'             Name = "string",
+#'             Definition = list(
+#'               StringSchema = list(
+#'                 Comment = "string",
+#'                 DefaultValue = "string",
+#'                 Required = TRUE|FALSE
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       ConnectionMode = "direct"|"tenant-only"
 #'     ),
 #'     AliasICPRecordals = list(
 #'       list(
@@ -2276,7 +2710,7 @@ cloudfront_create_distribution <- function(DistributionConfig) {
 #'         Bucket = "string",
 #'         Prefix = "string"
 #'       ),
-#'       PriceClass = "PriceClass_100"|"PriceClass_200"|"PriceClass_All",
+#'       PriceClass = "PriceClass_100"|"PriceClass_200"|"PriceClass_All"|"None",
 #'       Enabled = TRUE|FALSE,
 #'       ViewerCertificate = list(
 #'         CloudFrontDefaultCertificate = TRUE|FALSE,
@@ -2301,7 +2735,22 @@ cloudfront_create_distribution <- function(DistributionConfig) {
 #'       IsIPV6Enabled = TRUE|FALSE,
 #'       ContinuousDeploymentPolicyId = "string",
 #'       Staging = TRUE|FALSE,
-#'       AnycastIpListId = "string"
+#'       AnycastIpListId = "string",
+#'       TenantConfig = list(
+#'         ParameterDefinitions = list(
+#'           list(
+#'             Name = "string",
+#'             Definition = list(
+#'               StringSchema = list(
+#'                 Comment = "string",
+#'                 DefaultValue = "string",
+#'                 Required = TRUE|FALSE
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       ConnectionMode = "direct"|"tenant-only"
 #'     ),
 #'     Tags = list(
 #'       Items = list(
@@ -2736,6 +3185,85 @@ cloudfront_create_invalidation <- function(DistributionId, InvalidationBatch) {
 }
 .cloudfront$operations$create_invalidation <- cloudfront_create_invalidation
 
+#' Creates an invalidation for a distribution tenant
+#'
+#' @description
+#' Creates an invalidation for a distribution tenant. For more information,
+#' see [Invalidating
+#' files](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Invalidation.html)
+#' in the *Amazon CloudFront Developer Guide*.
+#'
+#' @usage
+#' cloudfront_create_invalidation_for_distribution_tenant(Id,
+#'   InvalidationBatch)
+#'
+#' @param Id &#91;required&#93; The ID of the distribution tenant.
+#' @param InvalidationBatch &#91;required&#93; 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Location = "string",
+#'   Invalidation = list(
+#'     Id = "string",
+#'     Status = "string",
+#'     CreateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     InvalidationBatch = list(
+#'       Paths = list(
+#'         Quantity = 123,
+#'         Items = list(
+#'           "string"
+#'         )
+#'       ),
+#'       CallerReference = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_invalidation_for_distribution_tenant(
+#'   Id = "string",
+#'   InvalidationBatch = list(
+#'     Paths = list(
+#'       Quantity = 123,
+#'       Items = list(
+#'         "string"
+#'       )
+#'     ),
+#'     CallerReference = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_create_invalidation_for_distribution_tenant
+#'
+#' @aliases cloudfront_create_invalidation_for_distribution_tenant
+cloudfront_create_invalidation_for_distribution_tenant <- function(Id, InvalidationBatch) {
+  op <- new_operation(
+    name = "CreateInvalidationForDistributionTenant",
+    http_method = "POST",
+    http_path = "/2020-05-31/distribution-tenant/{Id}/invalidation",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudfront$create_invalidation_for_distribution_tenant_input(Id = Id, InvalidationBatch = InvalidationBatch)
+  output <- .cloudfront$create_invalidation_for_distribution_tenant_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$create_invalidation_for_distribution_tenant <- cloudfront_create_invalidation_for_distribution_tenant
+
 #' Creates a key group that you can use with CloudFront signed URLs and
 #' signed cookies
 #'
@@ -2892,12 +3420,13 @@ cloudfront_create_key_value_store <- function(Name, Comment = NULL, ImportSource
 }
 .cloudfront$operations$create_key_value_store <- cloudfront_create_key_value_store
 
-#' Enables additional CloudWatch metrics for the specified CloudFront
-#' distribution
+#' Enables or disables additional Amazon CloudWatch metrics for the
+#' specified CloudFront distribution
 #'
 #' @description
-#' Enables additional CloudWatch metrics for the specified CloudFront
-#' distribution. The additional metrics incur an additional cost.
+#' Enables or disables additional Amazon CloudWatch metrics for the
+#' specified CloudFront distribution. The additional metrics incur an
+#' additional cost.
 #' 
 #' For more information, see [Viewing additional CloudFront distribution
 #' metrics](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/viewing-cloudfront-metrics.html#monitoring-console.distributions-additional)
@@ -3653,7 +4182,7 @@ cloudfront_create_response_headers_policy <- function(ResponseHeadersPolicyConfi
 #'           "string"
 #'         )
 #'       ),
-#'       PriceClass = "PriceClass_100"|"PriceClass_200"|"PriceClass_All",
+#'       PriceClass = "PriceClass_100"|"PriceClass_200"|"PriceClass_All"|"None",
 #'       Enabled = TRUE|FALSE
 #'     )
 #'   ),
@@ -3690,7 +4219,7 @@ cloudfront_create_response_headers_policy <- function(ResponseHeadersPolicyConfi
 #'         "string"
 #'       )
 #'     ),
-#'     PriceClass = "PriceClass_100"|"PriceClass_200"|"PriceClass_All",
+#'     PriceClass = "PriceClass_100"|"PriceClass_200"|"PriceClass_All"|"None",
 #'     Enabled = TRUE|FALSE
 #'   )
 #' )
@@ -3786,7 +4315,7 @@ cloudfront_create_streaming_distribution <- function(StreamingDistributionConfig
 #'           "string"
 #'         )
 #'       ),
-#'       PriceClass = "PriceClass_100"|"PriceClass_200"|"PriceClass_All",
+#'       PriceClass = "PriceClass_100"|"PriceClass_200"|"PriceClass_All"|"None",
 #'       Enabled = TRUE|FALSE
 #'     )
 #'   ),
@@ -3824,7 +4353,7 @@ cloudfront_create_streaming_distribution <- function(StreamingDistributionConfig
 #'           "string"
 #'         )
 #'       ),
-#'       PriceClass = "PriceClass_100"|"PriceClass_200"|"PriceClass_All",
+#'       PriceClass = "PriceClass_100"|"PriceClass_200"|"PriceClass_All"|"None",
 #'       Enabled = TRUE|FALSE
 #'     ),
 #'     Tags = list(
@@ -4113,6 +4642,53 @@ cloudfront_delete_cloud_front_origin_access_identity <- function(Id, IfMatch = N
 }
 .cloudfront$operations$delete_cloud_front_origin_access_identity <- cloudfront_delete_cloud_front_origin_access_identity
 
+#' Deletes a connection group
+#'
+#' @description
+#' Deletes a connection group.
+#'
+#' @usage
+#' cloudfront_delete_connection_group(Id, IfMatch)
+#'
+#' @param Id &#91;required&#93; The ID of the connection group to delete.
+#' @param IfMatch &#91;required&#93; The value of the `ETag` header that you received when retrieving the
+#' connection group to delete.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_connection_group(
+#'   Id = "string",
+#'   IfMatch = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_delete_connection_group
+#'
+#' @aliases cloudfront_delete_connection_group
+cloudfront_delete_connection_group <- function(Id, IfMatch) {
+  op <- new_operation(
+    name = "DeleteConnectionGroup",
+    http_method = "DELETE",
+    http_path = "/2020-05-31/connection-group/{Id}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudfront$delete_connection_group_input(Id = Id, IfMatch = IfMatch)
+  output <- .cloudfront$delete_connection_group_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$delete_connection_group <- cloudfront_delete_connection_group
+
 #' Deletes a continuous deployment policy
 #'
 #' @description
@@ -4211,6 +4787,61 @@ cloudfront_delete_distribution <- function(Id, IfMatch = NULL) {
   return(response)
 }
 .cloudfront$operations$delete_distribution <- cloudfront_delete_distribution
+
+#' Deletes a distribution tenant
+#'
+#' @description
+#' Deletes a distribution tenant. If you use this API operation to delete a
+#' distribution tenant that is currently enabled, the request will fail.
+#' 
+#' To delete a distribution tenant, you must first disable the distribution
+#' tenant by using the
+#' [`update_distribution_tenant`][cloudfront_update_distribution_tenant]
+#' API operation.
+#'
+#' @usage
+#' cloudfront_delete_distribution_tenant(Id, IfMatch)
+#'
+#' @param Id &#91;required&#93; The ID of the distribution tenant to delete.
+#' @param IfMatch &#91;required&#93; The value of the `ETag` header that you received when retrieving the
+#' distribution tenant. This value is returned in the response of the
+#' [`get_distribution_tenant`][cloudfront_get_distribution_tenant] API
+#' operation.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_distribution_tenant(
+#'   Id = "string",
+#'   IfMatch = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_delete_distribution_tenant
+#'
+#' @aliases cloudfront_delete_distribution_tenant
+cloudfront_delete_distribution_tenant <- function(Id, IfMatch) {
+  op <- new_operation(
+    name = "DeleteDistributionTenant",
+    http_method = "DELETE",
+    http_path = "/2020-05-31/distribution-tenant/{Id}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudfront$delete_distribution_tenant_input(Id = Id, IfMatch = IfMatch)
+  output <- .cloudfront$delete_distribution_tenant_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$delete_distribution_tenant <- cloudfront_delete_distribution_tenant
 
 #' Remove a field-level encryption configuration
 #'
@@ -5106,6 +5737,115 @@ cloudfront_describe_key_value_store <- function(Name) {
 }
 .cloudfront$operations$describe_key_value_store <- cloudfront_describe_key_value_store
 
+#' Disassociates a distribution tenant from the WAF web ACL
+#'
+#' @description
+#' Disassociates a distribution tenant from the WAF web ACL.
+#'
+#' @usage
+#' cloudfront_disassociate_distribution_tenant_web_acl(Id, IfMatch)
+#'
+#' @param Id &#91;required&#93; The ID of the distribution tenant.
+#' @param IfMatch The current version of the distribution tenant that you're
+#' disassociating from the WAF web ACL. This is the `ETag` value returned
+#' in the response to the
+#' [`get_distribution_tenant`][cloudfront_get_distribution_tenant] API
+#' operation.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Id = "string",
+#'   ETag = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$disassociate_distribution_tenant_web_acl(
+#'   Id = "string",
+#'   IfMatch = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_disassociate_distribution_tenant_web_acl
+#'
+#' @aliases cloudfront_disassociate_distribution_tenant_web_acl
+cloudfront_disassociate_distribution_tenant_web_acl <- function(Id, IfMatch = NULL) {
+  op <- new_operation(
+    name = "DisassociateDistributionTenantWebACL",
+    http_method = "PUT",
+    http_path = "/2020-05-31/distribution-tenant/{Id}/disassociate-web-acl",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudfront$disassociate_distribution_tenant_web_acl_input(Id = Id, IfMatch = IfMatch)
+  output <- .cloudfront$disassociate_distribution_tenant_web_acl_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$disassociate_distribution_tenant_web_acl <- cloudfront_disassociate_distribution_tenant_web_acl
+
+#' Disassociates a distribution from the WAF web ACL
+#'
+#' @description
+#' Disassociates a distribution from the WAF web ACL.
+#'
+#' @usage
+#' cloudfront_disassociate_distribution_web_acl(Id, IfMatch)
+#'
+#' @param Id &#91;required&#93; The ID of the distribution.
+#' @param IfMatch The value of the `ETag` header that you received when retrieving the
+#' distribution that you're disassociating from the WAF web ACL.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Id = "string",
+#'   ETag = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$disassociate_distribution_web_acl(
+#'   Id = "string",
+#'   IfMatch = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_disassociate_distribution_web_acl
+#'
+#' @aliases cloudfront_disassociate_distribution_web_acl
+cloudfront_disassociate_distribution_web_acl <- function(Id, IfMatch = NULL) {
+  op <- new_operation(
+    name = "DisassociateDistributionWebACL",
+    http_method = "PUT",
+    http_path = "/2020-05-31/distribution/{Id}/disassociate-web-acl",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudfront$disassociate_distribution_web_acl_input(Id = Id, IfMatch = IfMatch)
+  output <- .cloudfront$disassociate_distribution_web_acl_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$disassociate_distribution_web_acl <- cloudfront_disassociate_distribution_web_acl
+
 #' Gets an Anycast static IP list
 #'
 #' @description
@@ -5487,6 +6227,157 @@ cloudfront_get_cloud_front_origin_access_identity_config <- function(Id) {
   return(response)
 }
 .cloudfront$operations$get_cloud_front_origin_access_identity_config <- cloudfront_get_cloud_front_origin_access_identity_config
+
+#' Gets information about a connection group
+#'
+#' @description
+#' Gets information about a connection group.
+#'
+#' @usage
+#' cloudfront_get_connection_group(Identifier)
+#'
+#' @param Identifier &#91;required&#93; The ID, name, or Amazon Resource Name (ARN) of the connection group.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ConnectionGroup = list(
+#'     Id = "string",
+#'     Name = "string",
+#'     Arn = "string",
+#'     CreatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastModifiedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Tags = list(
+#'       Items = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       )
+#'     ),
+#'     Ipv6Enabled = TRUE|FALSE,
+#'     RoutingEndpoint = "string",
+#'     AnycastIpListId = "string",
+#'     Status = "string",
+#'     Enabled = TRUE|FALSE,
+#'     IsDefault = TRUE|FALSE
+#'   ),
+#'   ETag = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_connection_group(
+#'   Identifier = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_get_connection_group
+#'
+#' @aliases cloudfront_get_connection_group
+cloudfront_get_connection_group <- function(Identifier) {
+  op <- new_operation(
+    name = "GetConnectionGroup",
+    http_method = "GET",
+    http_path = "/2020-05-31/connection-group/{Identifier}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudfront$get_connection_group_input(Identifier = Identifier)
+  output <- .cloudfront$get_connection_group_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$get_connection_group <- cloudfront_get_connection_group
+
+#' Gets information about a connection group by using the endpoint that you
+#' specify
+#'
+#' @description
+#' Gets information about a connection group by using the endpoint that you
+#' specify.
+#'
+#' @usage
+#' cloudfront_get_connection_group_by_routing_endpoint(RoutingEndpoint)
+#'
+#' @param RoutingEndpoint &#91;required&#93; The routing endpoint for the target connection group, such as
+#' d111111abcdef8.cloudfront.net.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ConnectionGroup = list(
+#'     Id = "string",
+#'     Name = "string",
+#'     Arn = "string",
+#'     CreatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastModifiedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Tags = list(
+#'       Items = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       )
+#'     ),
+#'     Ipv6Enabled = TRUE|FALSE,
+#'     RoutingEndpoint = "string",
+#'     AnycastIpListId = "string",
+#'     Status = "string",
+#'     Enabled = TRUE|FALSE,
+#'     IsDefault = TRUE|FALSE
+#'   ),
+#'   ETag = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_connection_group_by_routing_endpoint(
+#'   RoutingEndpoint = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_get_connection_group_by_routing_endpoint
+#'
+#' @aliases cloudfront_get_connection_group_by_routing_endpoint
+cloudfront_get_connection_group_by_routing_endpoint <- function(RoutingEndpoint) {
+  op <- new_operation(
+    name = "GetConnectionGroupByRoutingEndpoint",
+    http_method = "GET",
+    http_path = "/2020-05-31/connection-group",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudfront$get_connection_group_by_routing_endpoint_input(RoutingEndpoint = RoutingEndpoint)
+  output <- .cloudfront$get_connection_group_by_routing_endpoint_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$get_connection_group_by_routing_endpoint <- cloudfront_get_connection_group_by_routing_endpoint
 
 #' Gets a continuous deployment policy, including metadata (the policy's
 #' identifier and the date and time when the policy was last modified)
@@ -5972,7 +6863,7 @@ cloudfront_get_continuous_deployment_policy_config <- function(Id) {
 #'         Bucket = "string",
 #'         Prefix = "string"
 #'       ),
-#'       PriceClass = "PriceClass_100"|"PriceClass_200"|"PriceClass_All",
+#'       PriceClass = "PriceClass_100"|"PriceClass_200"|"PriceClass_All"|"None",
 #'       Enabled = TRUE|FALSE,
 #'       ViewerCertificate = list(
 #'         CloudFrontDefaultCertificate = TRUE|FALSE,
@@ -5997,7 +6888,22 @@ cloudfront_get_continuous_deployment_policy_config <- function(Id) {
 #'       IsIPV6Enabled = TRUE|FALSE,
 #'       ContinuousDeploymentPolicyId = "string",
 #'       Staging = TRUE|FALSE,
-#'       AnycastIpListId = "string"
+#'       AnycastIpListId = "string",
+#'       TenantConfig = list(
+#'         ParameterDefinitions = list(
+#'           list(
+#'             Name = "string",
+#'             Definition = list(
+#'               StringSchema = list(
+#'                 Comment = "string",
+#'                 DefaultValue = "string",
+#'                 Required = TRUE|FALSE
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       ConnectionMode = "direct"|"tenant-only"
 #'     ),
 #'     AliasICPRecordals = list(
 #'       list(
@@ -6333,7 +7239,7 @@ cloudfront_get_distribution <- function(Id) {
 #'       Bucket = "string",
 #'       Prefix = "string"
 #'     ),
-#'     PriceClass = "PriceClass_100"|"PriceClass_200"|"PriceClass_All",
+#'     PriceClass = "PriceClass_100"|"PriceClass_200"|"PriceClass_All"|"None",
 #'     Enabled = TRUE|FALSE,
 #'     ViewerCertificate = list(
 #'       CloudFrontDefaultCertificate = TRUE|FALSE,
@@ -6358,7 +7264,22 @@ cloudfront_get_distribution <- function(Id) {
 #'     IsIPV6Enabled = TRUE|FALSE,
 #'     ContinuousDeploymentPolicyId = "string",
 #'     Staging = TRUE|FALSE,
-#'     AnycastIpListId = "string"
+#'     AnycastIpListId = "string",
+#'     TenantConfig = list(
+#'       ParameterDefinitions = list(
+#'         list(
+#'           Name = "string",
+#'           Definition = list(
+#'             StringSchema = list(
+#'               Comment = "string",
+#'               DefaultValue = "string",
+#'               Required = TRUE|FALSE
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     ConnectionMode = "direct"|"tenant-only"
 #'   ),
 #'   ETag = "string"
 #' )
@@ -6394,6 +7315,205 @@ cloudfront_get_distribution_config <- function(Id) {
   return(response)
 }
 .cloudfront$operations$get_distribution_config <- cloudfront_get_distribution_config
+
+#' Gets information about a distribution tenant
+#'
+#' @description
+#' Gets information about a distribution tenant.
+#'
+#' @usage
+#' cloudfront_get_distribution_tenant(Identifier)
+#'
+#' @param Identifier &#91;required&#93; The ID of the distribution tenant. You can specify the ARN ID, or name
+#' of the distribution tenant.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DistributionTenant = list(
+#'     Id = "string",
+#'     DistributionId = "string",
+#'     Name = "string",
+#'     Arn = "string",
+#'     Domains = list(
+#'       list(
+#'         Domain = "string",
+#'         Status = "active"|"inactive"
+#'       )
+#'     ),
+#'     Tags = list(
+#'       Items = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       )
+#'     ),
+#'     Customizations = list(
+#'       WebAcl = list(
+#'         Action = "override"|"disable",
+#'         Arn = "string"
+#'       ),
+#'       Certificate = list(
+#'         Arn = "string"
+#'       ),
+#'       GeoRestrictions = list(
+#'         RestrictionType = "blacklist"|"whitelist"|"none",
+#'         Locations = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     Parameters = list(
+#'       list(
+#'         Name = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     ConnectionGroupId = "string",
+#'     CreatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastModifiedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Enabled = TRUE|FALSE,
+#'     Status = "string"
+#'   ),
+#'   ETag = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_distribution_tenant(
+#'   Identifier = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_get_distribution_tenant
+#'
+#' @aliases cloudfront_get_distribution_tenant
+cloudfront_get_distribution_tenant <- function(Identifier) {
+  op <- new_operation(
+    name = "GetDistributionTenant",
+    http_method = "GET",
+    http_path = "/2020-05-31/distribution-tenant/{Identifier}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudfront$get_distribution_tenant_input(Identifier = Identifier)
+  output <- .cloudfront$get_distribution_tenant_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$get_distribution_tenant <- cloudfront_get_distribution_tenant
+
+#' Gets information about a distribution tenant by the associated domain
+#'
+#' @description
+#' Gets information about a distribution tenant by the associated domain.
+#'
+#' @usage
+#' cloudfront_get_distribution_tenant_by_domain(Domain)
+#'
+#' @param Domain &#91;required&#93; A domain name associated with the target distribution tenant.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DistributionTenant = list(
+#'     Id = "string",
+#'     DistributionId = "string",
+#'     Name = "string",
+#'     Arn = "string",
+#'     Domains = list(
+#'       list(
+#'         Domain = "string",
+#'         Status = "active"|"inactive"
+#'       )
+#'     ),
+#'     Tags = list(
+#'       Items = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       )
+#'     ),
+#'     Customizations = list(
+#'       WebAcl = list(
+#'         Action = "override"|"disable",
+#'         Arn = "string"
+#'       ),
+#'       Certificate = list(
+#'         Arn = "string"
+#'       ),
+#'       GeoRestrictions = list(
+#'         RestrictionType = "blacklist"|"whitelist"|"none",
+#'         Locations = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     Parameters = list(
+#'       list(
+#'         Name = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     ConnectionGroupId = "string",
+#'     CreatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastModifiedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Enabled = TRUE|FALSE,
+#'     Status = "string"
+#'   ),
+#'   ETag = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_distribution_tenant_by_domain(
+#'   Domain = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_get_distribution_tenant_by_domain
+#'
+#' @aliases cloudfront_get_distribution_tenant_by_domain
+cloudfront_get_distribution_tenant_by_domain <- function(Domain) {
+  op <- new_operation(
+    name = "GetDistributionTenantByDomain",
+    http_method = "GET",
+    http_path = "/2020-05-31/distribution-tenant",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudfront$get_distribution_tenant_by_domain_input(Domain = Domain)
+  output <- .cloudfront$get_distribution_tenant_by_domain_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$get_distribution_tenant_by_domain <- cloudfront_get_distribution_tenant_by_domain
 
 #' Get the field-level encryption configuration information
 #'
@@ -6828,6 +7948,74 @@ cloudfront_get_invalidation <- function(DistributionId, Id) {
 }
 .cloudfront$operations$get_invalidation <- cloudfront_get_invalidation
 
+#' Gets information about a specific invalidation for a distribution tenant
+#'
+#' @description
+#' Gets information about a specific invalidation for a distribution
+#' tenant.
+#'
+#' @usage
+#' cloudfront_get_invalidation_for_distribution_tenant(
+#'   DistributionTenantId, Id)
+#'
+#' @param DistributionTenantId &#91;required&#93; The ID of the distribution tenant.
+#' @param Id &#91;required&#93; The ID of the invalidation to retrieve.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Invalidation = list(
+#'     Id = "string",
+#'     Status = "string",
+#'     CreateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     InvalidationBatch = list(
+#'       Paths = list(
+#'         Quantity = 123,
+#'         Items = list(
+#'           "string"
+#'         )
+#'       ),
+#'       CallerReference = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_invalidation_for_distribution_tenant(
+#'   DistributionTenantId = "string",
+#'   Id = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_get_invalidation_for_distribution_tenant
+#'
+#' @aliases cloudfront_get_invalidation_for_distribution_tenant
+cloudfront_get_invalidation_for_distribution_tenant <- function(DistributionTenantId, Id) {
+  op <- new_operation(
+    name = "GetInvalidationForDistributionTenant",
+    http_method = "GET",
+    http_path = "/2020-05-31/distribution-tenant/{DistributionTenantId}/invalidation/{Id}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudfront$get_invalidation_for_distribution_tenant_input(DistributionTenantId = DistributionTenantId, Id = Id)
+  output <- .cloudfront$get_invalidation_for_distribution_tenant_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$get_invalidation_for_distribution_tenant <- cloudfront_get_invalidation_for_distribution_tenant
+
 #' Gets a key group, including the date and time when the key group was
 #' last modified
 #'
@@ -6965,6 +8153,66 @@ cloudfront_get_key_group_config <- function(Id) {
   return(response)
 }
 .cloudfront$operations$get_key_group_config <- cloudfront_get_key_group_config
+
+#' Gets details about the CloudFront managed ACM certificate
+#'
+#' @description
+#' Gets details about the CloudFront managed ACM certificate.
+#'
+#' @usage
+#' cloudfront_get_managed_certificate_details(Identifier)
+#'
+#' @param Identifier &#91;required&#93; The identifier of the multi-tenant distribution.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ManagedCertificateDetails = list(
+#'     CertificateArn = "string",
+#'     CertificateStatus = "pending-validation"|"issued"|"inactive"|"expired"|"validation-timed-out"|"revoked"|"failed",
+#'     ValidationTokenHost = "cloudfront"|"self-hosted",
+#'     ValidationTokenDetails = list(
+#'       list(
+#'         Domain = "string",
+#'         RedirectTo = "string",
+#'         RedirectFrom = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_managed_certificate_details(
+#'   Identifier = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_get_managed_certificate_details
+#'
+#' @aliases cloudfront_get_managed_certificate_details
+cloudfront_get_managed_certificate_details <- function(Identifier) {
+  op <- new_operation(
+    name = "GetManagedCertificateDetails",
+    http_method = "GET",
+    http_path = "/2020-05-31/managed-certificate/{Identifier}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudfront$get_managed_certificate_details_input(Identifier = Identifier)
+  output <- .cloudfront$get_managed_certificate_details_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$get_managed_certificate_details <- cloudfront_get_managed_certificate_details
 
 #' Gets information about whether additional CloudWatch metrics are enabled
 #' for the specified CloudFront distribution
@@ -7900,7 +9148,7 @@ cloudfront_get_response_headers_policy_config <- function(Id) {
 #'           "string"
 #'         )
 #'       ),
-#'       PriceClass = "PriceClass_100"|"PriceClass_200"|"PriceClass_All",
+#'       PriceClass = "PriceClass_100"|"PriceClass_200"|"PriceClass_All"|"None",
 #'       Enabled = TRUE|FALSE
 #'     )
 #'   ),
@@ -7978,7 +9226,7 @@ cloudfront_get_streaming_distribution <- function(Id) {
 #'         "string"
 #'       )
 #'     ),
-#'     PriceClass = "PriceClass_100"|"PriceClass_200"|"PriceClass_All",
+#'     PriceClass = "PriceClass_100"|"PriceClass_200"|"PriceClass_All"|"None",
 #'     Enabled = TRUE|FALSE
 #'   ),
 #'   ETag = "string"
@@ -8464,6 +9712,80 @@ cloudfront_list_conflicting_aliases <- function(DistributionId, Alias, Marker = 
 }
 .cloudfront$operations$list_conflicting_aliases <- cloudfront_list_conflicting_aliases
 
+#' Lists the connection groups in your Amazon Web Services account
+#'
+#' @description
+#' Lists the connection groups in your Amazon Web Services account.
+#'
+#' @usage
+#' cloudfront_list_connection_groups(AssociationFilter, Marker, MaxItems)
+#'
+#' @param AssociationFilter Filter by associated Anycast IP list ID.
+#' @param Marker The marker for the next set of connection groups to retrieve.
+#' @param MaxItems The maximum number of connection groups to return.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextMarker = "string",
+#'   ConnectionGroups = list(
+#'     list(
+#'       Id = "string",
+#'       Name = "string",
+#'       Arn = "string",
+#'       RoutingEndpoint = "string",
+#'       CreatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastModifiedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ETag = "string",
+#'       AnycastIpListId = "string",
+#'       Enabled = TRUE|FALSE,
+#'       Status = "string",
+#'       IsDefault = TRUE|FALSE
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_connection_groups(
+#'   AssociationFilter = list(
+#'     AnycastIpListId = "string"
+#'   ),
+#'   Marker = "string",
+#'   MaxItems = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_list_connection_groups
+#'
+#' @aliases cloudfront_list_connection_groups
+cloudfront_list_connection_groups <- function(AssociationFilter = NULL, Marker = NULL, MaxItems = NULL) {
+  op <- new_operation(
+    name = "ListConnectionGroups",
+    http_method = "POST",
+    http_path = "/2020-05-31/connection-groups",
+    host_prefix = "",
+    paginator = list(input_token = "Marker", output_token = "NextMarker", limit_key = "MaxItems", result_key = "ConnectionGroups"),
+    stream_api = FALSE
+  )
+  input <- .cloudfront$list_connection_groups_input(AssociationFilter = AssociationFilter, Marker = Marker, MaxItems = MaxItems)
+  output <- .cloudfront$list_connection_groups_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$list_connection_groups <- cloudfront_list_connection_groups
+
 #' Gets a list of the continuous deployment policies in your Amazon Web
 #' Services account
 #'
@@ -8566,6 +9888,201 @@ cloudfront_list_continuous_deployment_policies <- function(Marker = NULL, MaxIte
 }
 .cloudfront$operations$list_continuous_deployment_policies <- cloudfront_list_continuous_deployment_policies
 
+#' Lists the distribution tenants in your Amazon Web Services account
+#'
+#' @description
+#' Lists the distribution tenants in your Amazon Web Services account.
+#'
+#' @usage
+#' cloudfront_list_distribution_tenants(AssociationFilter, Marker,
+#'   MaxItems)
+#'
+#' @param AssociationFilter 
+#' @param Marker The marker for the next set of results.
+#' @param MaxItems The maximum number of distribution tenants to return.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextMarker = "string",
+#'   DistributionTenantList = list(
+#'     list(
+#'       Id = "string",
+#'       DistributionId = "string",
+#'       Name = "string",
+#'       Arn = "string",
+#'       Domains = list(
+#'         list(
+#'           Domain = "string",
+#'           Status = "active"|"inactive"
+#'         )
+#'       ),
+#'       ConnectionGroupId = "string",
+#'       Customizations = list(
+#'         WebAcl = list(
+#'           Action = "override"|"disable",
+#'           Arn = "string"
+#'         ),
+#'         Certificate = list(
+#'           Arn = "string"
+#'         ),
+#'         GeoRestrictions = list(
+#'           RestrictionType = "blacklist"|"whitelist"|"none",
+#'           Locations = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       CreatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastModifiedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ETag = "string",
+#'       Enabled = TRUE|FALSE,
+#'       Status = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_distribution_tenants(
+#'   AssociationFilter = list(
+#'     DistributionId = "string",
+#'     ConnectionGroupId = "string"
+#'   ),
+#'   Marker = "string",
+#'   MaxItems = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_list_distribution_tenants
+#'
+#' @aliases cloudfront_list_distribution_tenants
+cloudfront_list_distribution_tenants <- function(AssociationFilter = NULL, Marker = NULL, MaxItems = NULL) {
+  op <- new_operation(
+    name = "ListDistributionTenants",
+    http_method = "POST",
+    http_path = "/2020-05-31/distribution-tenants",
+    host_prefix = "",
+    paginator = list(input_token = "Marker", output_token = "NextMarker", limit_key = "MaxItems", result_key = "DistributionTenantList"),
+    stream_api = FALSE
+  )
+  input <- .cloudfront$list_distribution_tenants_input(AssociationFilter = AssociationFilter, Marker = Marker, MaxItems = MaxItems)
+  output <- .cloudfront$list_distribution_tenants_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$list_distribution_tenants <- cloudfront_list_distribution_tenants
+
+#' Lists distribution tenants by the customization that you specify
+#'
+#' @description
+#' Lists distribution tenants by the customization that you specify.
+#' 
+#' You must specify either the `CertificateArn` parameter or `WebACLArn`
+#' parameter, but not both in the same request.
+#'
+#' @usage
+#' cloudfront_list_distribution_tenants_by_customization(WebACLArn,
+#'   CertificateArn, Marker, MaxItems)
+#'
+#' @param WebACLArn Filter by the ARN of the associated WAF web ACL.
+#' @param CertificateArn Filter by the ARN of the associated ACM certificate.
+#' @param Marker The marker for the next set of results.
+#' @param MaxItems The maximum number of distribution tenants to return by the specified
+#' customization.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextMarker = "string",
+#'   DistributionTenantList = list(
+#'     list(
+#'       Id = "string",
+#'       DistributionId = "string",
+#'       Name = "string",
+#'       Arn = "string",
+#'       Domains = list(
+#'         list(
+#'           Domain = "string",
+#'           Status = "active"|"inactive"
+#'         )
+#'       ),
+#'       ConnectionGroupId = "string",
+#'       Customizations = list(
+#'         WebAcl = list(
+#'           Action = "override"|"disable",
+#'           Arn = "string"
+#'         ),
+#'         Certificate = list(
+#'           Arn = "string"
+#'         ),
+#'         GeoRestrictions = list(
+#'           RestrictionType = "blacklist"|"whitelist"|"none",
+#'           Locations = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       CreatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastModifiedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ETag = "string",
+#'       Enabled = TRUE|FALSE,
+#'       Status = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_distribution_tenants_by_customization(
+#'   WebACLArn = "string",
+#'   CertificateArn = "string",
+#'   Marker = "string",
+#'   MaxItems = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_list_distribution_tenants_by_customization
+#'
+#' @aliases cloudfront_list_distribution_tenants_by_customization
+cloudfront_list_distribution_tenants_by_customization <- function(WebACLArn = NULL, CertificateArn = NULL, Marker = NULL, MaxItems = NULL) {
+  op <- new_operation(
+    name = "ListDistributionTenantsByCustomization",
+    http_method = "POST",
+    http_path = "/2020-05-31/distribution-tenants-by-customization",
+    host_prefix = "",
+    paginator = list(input_token = "Marker", output_token = "NextMarker", limit_key = "MaxItems", result_key = "DistributionTenantList"),
+    stream_api = FALSE
+  )
+  input <- .cloudfront$list_distribution_tenants_by_customization_input(WebACLArn = WebACLArn, CertificateArn = CertificateArn, Marker = Marker, MaxItems = MaxItems)
+  output <- .cloudfront$list_distribution_tenants_by_customization_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$list_distribution_tenants_by_customization <- cloudfront_list_distribution_tenants_by_customization
+
 #' List CloudFront distributions
 #'
 #' @description
@@ -8595,6 +10112,7 @@ cloudfront_list_continuous_deployment_policies <- function(Marker = NULL, MaxIte
 #'       list(
 #'         Id = "string",
 #'         ARN = "string",
+#'         ETag = "string",
 #'         Status = "string",
 #'         LastModifiedTime = as.POSIXct(
 #'           "2015-01-01"
@@ -8868,7 +10386,7 @@ cloudfront_list_continuous_deployment_policies <- function(Marker = NULL, MaxIte
 #'           )
 #'         ),
 #'         Comment = "string",
-#'         PriceClass = "PriceClass_100"|"PriceClass_200"|"PriceClass_All",
+#'         PriceClass = "PriceClass_100"|"PriceClass_200"|"PriceClass_All"|"None",
 #'         Enabled = TRUE|FALSE,
 #'         ViewerCertificate = list(
 #'           CloudFrontDefaultCertificate = TRUE|FALSE,
@@ -8898,6 +10416,7 @@ cloudfront_list_continuous_deployment_policies <- function(Marker = NULL, MaxIte
 #'           )
 #'         ),
 #'         Staging = TRUE|FALSE,
+#'         ConnectionMode = "direct"|"tenant-only",
 #'         AnycastIpListId = "string"
 #'       )
 #'     )
@@ -8970,6 +10489,7 @@ cloudfront_list_distributions <- function(Marker = NULL, MaxItems = NULL) {
 #'       list(
 #'         Id = "string",
 #'         ARN = "string",
+#'         ETag = "string",
 #'         Status = "string",
 #'         LastModifiedTime = as.POSIXct(
 #'           "2015-01-01"
@@ -9243,7 +10763,7 @@ cloudfront_list_distributions <- function(Marker = NULL, MaxItems = NULL) {
 #'           )
 #'         ),
 #'         Comment = "string",
-#'         PriceClass = "PriceClass_100"|"PriceClass_200"|"PriceClass_All",
+#'         PriceClass = "PriceClass_100"|"PriceClass_200"|"PriceClass_All"|"None",
 #'         Enabled = TRUE|FALSE,
 #'         ViewerCertificate = list(
 #'           CloudFrontDefaultCertificate = TRUE|FALSE,
@@ -9273,6 +10793,7 @@ cloudfront_list_distributions <- function(Marker = NULL, MaxItems = NULL) {
 #'           )
 #'         ),
 #'         Staging = TRUE|FALSE,
+#'         ConnectionMode = "direct"|"tenant-only",
 #'         AnycastIpListId = "string"
 #'       )
 #'     )
@@ -9389,6 +10910,378 @@ cloudfront_list_distributions_by_cache_policy_id <- function(Marker = NULL, MaxI
   return(response)
 }
 .cloudfront$operations$list_distributions_by_cache_policy_id <- cloudfront_list_distributions_by_cache_policy_id
+
+#' Lists the distributions by the connection mode that you specify
+#'
+#' @description
+#' Lists the distributions by the connection mode that you specify.
+#'
+#' @usage
+#' cloudfront_list_distributions_by_connection_mode(Marker, MaxItems,
+#'   ConnectionMode)
+#'
+#' @param Marker The marker for the next set of distributions to retrieve.
+#' @param MaxItems The maximum number of distributions to return.
+#' @param ConnectionMode &#91;required&#93; The connection mode to filter distributions by.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DistributionList = list(
+#'     Marker = "string",
+#'     NextMarker = "string",
+#'     MaxItems = 123,
+#'     IsTruncated = TRUE|FALSE,
+#'     Quantity = 123,
+#'     Items = list(
+#'       list(
+#'         Id = "string",
+#'         ARN = "string",
+#'         ETag = "string",
+#'         Status = "string",
+#'         LastModifiedTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         DomainName = "string",
+#'         Aliases = list(
+#'           Quantity = 123,
+#'           Items = list(
+#'             "string"
+#'           )
+#'         ),
+#'         Origins = list(
+#'           Quantity = 123,
+#'           Items = list(
+#'             list(
+#'               Id = "string",
+#'               DomainName = "string",
+#'               OriginPath = "string",
+#'               CustomHeaders = list(
+#'                 Quantity = 123,
+#'                 Items = list(
+#'                   list(
+#'                     HeaderName = "string",
+#'                     HeaderValue = "string"
+#'                   )
+#'                 )
+#'               ),
+#'               S3OriginConfig = list(
+#'                 OriginAccessIdentity = "string"
+#'               ),
+#'               CustomOriginConfig = list(
+#'                 HTTPPort = 123,
+#'                 HTTPSPort = 123,
+#'                 OriginProtocolPolicy = "http-only"|"match-viewer"|"https-only",
+#'                 OriginSslProtocols = list(
+#'                   Quantity = 123,
+#'                   Items = list(
+#'                     "SSLv3"|"TLSv1"|"TLSv1.1"|"TLSv1.2"
+#'                   )
+#'                 ),
+#'                 OriginReadTimeout = 123,
+#'                 OriginKeepaliveTimeout = 123
+#'               ),
+#'               VpcOriginConfig = list(
+#'                 VpcOriginId = "string",
+#'                 OriginReadTimeout = 123,
+#'                 OriginKeepaliveTimeout = 123
+#'               ),
+#'               ConnectionAttempts = 123,
+#'               ConnectionTimeout = 123,
+#'               OriginShield = list(
+#'                 Enabled = TRUE|FALSE,
+#'                 OriginShieldRegion = "string"
+#'               ),
+#'               OriginAccessControlId = "string"
+#'             )
+#'           )
+#'         ),
+#'         OriginGroups = list(
+#'           Quantity = 123,
+#'           Items = list(
+#'             list(
+#'               Id = "string",
+#'               FailoverCriteria = list(
+#'                 StatusCodes = list(
+#'                   Quantity = 123,
+#'                   Items = list(
+#'                     123
+#'                   )
+#'                 )
+#'               ),
+#'               Members = list(
+#'                 Quantity = 123,
+#'                 Items = list(
+#'                   list(
+#'                     OriginId = "string"
+#'                   )
+#'                 )
+#'               ),
+#'               SelectionCriteria = "default"|"media-quality-based"
+#'             )
+#'           )
+#'         ),
+#'         DefaultCacheBehavior = list(
+#'           TargetOriginId = "string",
+#'           TrustedSigners = list(
+#'             Enabled = TRUE|FALSE,
+#'             Quantity = 123,
+#'             Items = list(
+#'               "string"
+#'             )
+#'           ),
+#'           TrustedKeyGroups = list(
+#'             Enabled = TRUE|FALSE,
+#'             Quantity = 123,
+#'             Items = list(
+#'               "string"
+#'             )
+#'           ),
+#'           ViewerProtocolPolicy = "allow-all"|"https-only"|"redirect-to-https",
+#'           AllowedMethods = list(
+#'             Quantity = 123,
+#'             Items = list(
+#'               "GET"|"HEAD"|"POST"|"PUT"|"PATCH"|"OPTIONS"|"DELETE"
+#'             ),
+#'             CachedMethods = list(
+#'               Quantity = 123,
+#'               Items = list(
+#'                 "GET"|"HEAD"|"POST"|"PUT"|"PATCH"|"OPTIONS"|"DELETE"
+#'               )
+#'             )
+#'           ),
+#'           SmoothStreaming = TRUE|FALSE,
+#'           Compress = TRUE|FALSE,
+#'           LambdaFunctionAssociations = list(
+#'             Quantity = 123,
+#'             Items = list(
+#'               list(
+#'                 LambdaFunctionARN = "string",
+#'                 EventType = "viewer-request"|"viewer-response"|"origin-request"|"origin-response",
+#'                 IncludeBody = TRUE|FALSE
+#'               )
+#'             )
+#'           ),
+#'           FunctionAssociations = list(
+#'             Quantity = 123,
+#'             Items = list(
+#'               list(
+#'                 FunctionARN = "string",
+#'                 EventType = "viewer-request"|"viewer-response"|"origin-request"|"origin-response"
+#'               )
+#'             )
+#'           ),
+#'           FieldLevelEncryptionId = "string",
+#'           RealtimeLogConfigArn = "string",
+#'           CachePolicyId = "string",
+#'           OriginRequestPolicyId = "string",
+#'           ResponseHeadersPolicyId = "string",
+#'           GrpcConfig = list(
+#'             Enabled = TRUE|FALSE
+#'           ),
+#'           ForwardedValues = list(
+#'             QueryString = TRUE|FALSE,
+#'             Cookies = list(
+#'               Forward = "none"|"whitelist"|"all",
+#'               WhitelistedNames = list(
+#'                 Quantity = 123,
+#'                 Items = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             ),
+#'             Headers = list(
+#'               Quantity = 123,
+#'               Items = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             QueryStringCacheKeys = list(
+#'               Quantity = 123,
+#'               Items = list(
+#'                 "string"
+#'               )
+#'             )
+#'           ),
+#'           MinTTL = 123,
+#'           DefaultTTL = 123,
+#'           MaxTTL = 123
+#'         ),
+#'         CacheBehaviors = list(
+#'           Quantity = 123,
+#'           Items = list(
+#'             list(
+#'               PathPattern = "string",
+#'               TargetOriginId = "string",
+#'               TrustedSigners = list(
+#'                 Enabled = TRUE|FALSE,
+#'                 Quantity = 123,
+#'                 Items = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               TrustedKeyGroups = list(
+#'                 Enabled = TRUE|FALSE,
+#'                 Quantity = 123,
+#'                 Items = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               ViewerProtocolPolicy = "allow-all"|"https-only"|"redirect-to-https",
+#'               AllowedMethods = list(
+#'                 Quantity = 123,
+#'                 Items = list(
+#'                   "GET"|"HEAD"|"POST"|"PUT"|"PATCH"|"OPTIONS"|"DELETE"
+#'                 ),
+#'                 CachedMethods = list(
+#'                   Quantity = 123,
+#'                   Items = list(
+#'                     "GET"|"HEAD"|"POST"|"PUT"|"PATCH"|"OPTIONS"|"DELETE"
+#'                   )
+#'                 )
+#'               ),
+#'               SmoothStreaming = TRUE|FALSE,
+#'               Compress = TRUE|FALSE,
+#'               LambdaFunctionAssociations = list(
+#'                 Quantity = 123,
+#'                 Items = list(
+#'                   list(
+#'                     LambdaFunctionARN = "string",
+#'                     EventType = "viewer-request"|"viewer-response"|"origin-request"|"origin-response",
+#'                     IncludeBody = TRUE|FALSE
+#'                   )
+#'                 )
+#'               ),
+#'               FunctionAssociations = list(
+#'                 Quantity = 123,
+#'                 Items = list(
+#'                   list(
+#'                     FunctionARN = "string",
+#'                     EventType = "viewer-request"|"viewer-response"|"origin-request"|"origin-response"
+#'                   )
+#'                 )
+#'               ),
+#'               FieldLevelEncryptionId = "string",
+#'               RealtimeLogConfigArn = "string",
+#'               CachePolicyId = "string",
+#'               OriginRequestPolicyId = "string",
+#'               ResponseHeadersPolicyId = "string",
+#'               GrpcConfig = list(
+#'                 Enabled = TRUE|FALSE
+#'               ),
+#'               ForwardedValues = list(
+#'                 QueryString = TRUE|FALSE,
+#'                 Cookies = list(
+#'                   Forward = "none"|"whitelist"|"all",
+#'                   WhitelistedNames = list(
+#'                     Quantity = 123,
+#'                     Items = list(
+#'                       "string"
+#'                     )
+#'                   )
+#'                 ),
+#'                 Headers = list(
+#'                   Quantity = 123,
+#'                   Items = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 QueryStringCacheKeys = list(
+#'                   Quantity = 123,
+#'                   Items = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
+#'               MinTTL = 123,
+#'               DefaultTTL = 123,
+#'               MaxTTL = 123
+#'             )
+#'           )
+#'         ),
+#'         CustomErrorResponses = list(
+#'           Quantity = 123,
+#'           Items = list(
+#'             list(
+#'               ErrorCode = 123,
+#'               ResponsePagePath = "string",
+#'               ResponseCode = "string",
+#'               ErrorCachingMinTTL = 123
+#'             )
+#'           )
+#'         ),
+#'         Comment = "string",
+#'         PriceClass = "PriceClass_100"|"PriceClass_200"|"PriceClass_All"|"None",
+#'         Enabled = TRUE|FALSE,
+#'         ViewerCertificate = list(
+#'           CloudFrontDefaultCertificate = TRUE|FALSE,
+#'           IAMCertificateId = "string",
+#'           ACMCertificateArn = "string",
+#'           SSLSupportMethod = "sni-only"|"vip"|"static-ip",
+#'           MinimumProtocolVersion = "SSLv3"|"TLSv1"|"TLSv1_2016"|"TLSv1.1_2016"|"TLSv1.2_2018"|"TLSv1.2_2019"|"TLSv1.2_2021",
+#'           Certificate = "string",
+#'           CertificateSource = "cloudfront"|"iam"|"acm"
+#'         ),
+#'         Restrictions = list(
+#'           GeoRestriction = list(
+#'             RestrictionType = "blacklist"|"whitelist"|"none",
+#'             Quantity = 123,
+#'             Items = list(
+#'               "string"
+#'             )
+#'           )
+#'         ),
+#'         WebACLId = "string",
+#'         HttpVersion = "http1.1"|"http2"|"http3"|"http2and3",
+#'         IsIPV6Enabled = TRUE|FALSE,
+#'         AliasICPRecordals = list(
+#'           list(
+#'             CNAME = "string",
+#'             ICPRecordalStatus = "APPROVED"|"SUSPENDED"|"PENDING"
+#'           )
+#'         ),
+#'         Staging = TRUE|FALSE,
+#'         ConnectionMode = "direct"|"tenant-only",
+#'         AnycastIpListId = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_distributions_by_connection_mode(
+#'   Marker = "string",
+#'   MaxItems = 123,
+#'   ConnectionMode = "direct"|"tenant-only"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_list_distributions_by_connection_mode
+#'
+#' @aliases cloudfront_list_distributions_by_connection_mode
+cloudfront_list_distributions_by_connection_mode <- function(Marker = NULL, MaxItems = NULL, ConnectionMode) {
+  op <- new_operation(
+    name = "ListDistributionsByConnectionMode",
+    http_method = "GET",
+    http_path = "/2020-05-31/distributionsByConnectionMode/{ConnectionMode}",
+    host_prefix = "",
+    paginator = list(input_token = "Marker", output_token = "DistributionList.NextMarker", limit_key = "MaxItems", result_key = "DistributionList.Items"),
+    stream_api = FALSE
+  )
+  input <- .cloudfront$list_distributions_by_connection_mode_input(Marker = Marker, MaxItems = MaxItems, ConnectionMode = ConnectionMode)
+  output <- .cloudfront$list_distributions_by_connection_mode_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$list_distributions_by_connection_mode <- cloudfront_list_distributions_by_connection_mode
 
 #' Gets a list of distribution IDs for distributions that have a cache
 #' behavior that references the specified key group
@@ -9591,6 +11484,7 @@ cloudfront_list_distributions_by_origin_request_policy_id <- function(Marker = N
 #'       list(
 #'         Id = "string",
 #'         ARN = "string",
+#'         ETag = "string",
 #'         Status = "string",
 #'         LastModifiedTime = as.POSIXct(
 #'           "2015-01-01"
@@ -9864,7 +11758,7 @@ cloudfront_list_distributions_by_origin_request_policy_id <- function(Marker = N
 #'           )
 #'         ),
 #'         Comment = "string",
-#'         PriceClass = "PriceClass_100"|"PriceClass_200"|"PriceClass_All",
+#'         PriceClass = "PriceClass_100"|"PriceClass_200"|"PriceClass_All"|"None",
 #'         Enabled = TRUE|FALSE,
 #'         ViewerCertificate = list(
 #'           CloudFrontDefaultCertificate = TRUE|FALSE,
@@ -9894,6 +11788,7 @@ cloudfront_list_distributions_by_origin_request_policy_id <- function(Marker = N
 #'           )
 #'         ),
 #'         Staging = TRUE|FALSE,
+#'         ConnectionMode = "direct"|"tenant-only",
 #'         AnycastIpListId = "string"
 #'       )
 #'     )
@@ -10116,6 +12011,7 @@ cloudfront_list_distributions_by_vpc_origin_id <- function(Marker = NULL, MaxIte
 #'       list(
 #'         Id = "string",
 #'         ARN = "string",
+#'         ETag = "string",
 #'         Status = "string",
 #'         LastModifiedTime = as.POSIXct(
 #'           "2015-01-01"
@@ -10389,7 +12285,7 @@ cloudfront_list_distributions_by_vpc_origin_id <- function(Marker = NULL, MaxIte
 #'           )
 #'         ),
 #'         Comment = "string",
-#'         PriceClass = "PriceClass_100"|"PriceClass_200"|"PriceClass_All",
+#'         PriceClass = "PriceClass_100"|"PriceClass_200"|"PriceClass_All"|"None",
 #'         Enabled = TRUE|FALSE,
 #'         ViewerCertificate = list(
 #'           CloudFrontDefaultCertificate = TRUE|FALSE,
@@ -10419,6 +12315,7 @@ cloudfront_list_distributions_by_vpc_origin_id <- function(Marker = NULL, MaxIte
 #'           )
 #'         ),
 #'         Staging = TRUE|FALSE,
+#'         ConnectionMode = "direct"|"tenant-only",
 #'         AnycastIpListId = "string"
 #'       )
 #'     )
@@ -10458,6 +12355,81 @@ cloudfront_list_distributions_by_web_acl_id <- function(Marker = NULL, MaxItems 
   return(response)
 }
 .cloudfront$operations$list_distributions_by_web_acl_id <- cloudfront_list_distributions_by_web_acl_id
+
+#' Lists existing domain associations that conflict with the domain that
+#' you specify
+#'
+#' @description
+#' Lists existing domain associations that conflict with the domain that
+#' you specify.
+#' 
+#' You can use this API operation when transferring domains to identify
+#' potential domain conflicts. Domain conflicts must be resolved first
+#' before they can be moved.
+#'
+#' @usage
+#' cloudfront_list_domain_conflicts(Domain,
+#'   DomainControlValidationResource, MaxItems, Marker)
+#'
+#' @param Domain &#91;required&#93; The domain to check for conflicts.
+#' @param DomainControlValidationResource &#91;required&#93; The distribution resource identifier. This can be the distribution or
+#' distribution tenant that has a valid certificate, which covers the
+#' domain that you specify.
+#' @param MaxItems The maximum number of domain conflicts to return.
+#' @param Marker The marker for the next set of domain conflicts.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DomainConflicts = list(
+#'     list(
+#'       Domain = "string",
+#'       ResourceType = "distribution"|"distribution-tenant",
+#'       ResourceId = "string",
+#'       AccountId = "string"
+#'     )
+#'   ),
+#'   NextMarker = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_domain_conflicts(
+#'   Domain = "string",
+#'   DomainControlValidationResource = list(
+#'     DistributionId = "string",
+#'     DistributionTenantId = "string"
+#'   ),
+#'   MaxItems = 123,
+#'   Marker = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_list_domain_conflicts
+#'
+#' @aliases cloudfront_list_domain_conflicts
+cloudfront_list_domain_conflicts <- function(Domain, DomainControlValidationResource, MaxItems = NULL, Marker = NULL) {
+  op <- new_operation(
+    name = "ListDomainConflicts",
+    http_method = "POST",
+    http_path = "/2020-05-31/domain-conflicts",
+    host_prefix = "",
+    paginator = list(input_token = "Marker", output_token = "NextMarker", limit_key = "MaxItems", result_key = "DomainConflicts"),
+    stream_api = FALSE
+  )
+  input <- .cloudfront$list_domain_conflicts_input(Domain = Domain, DomainControlValidationResource = DomainControlValidationResource, MaxItems = MaxItems, Marker = Marker)
+  output <- .cloudfront$list_domain_conflicts_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$list_domain_conflicts <- cloudfront_list_domain_conflicts
 
 #' List all field-level encryption configurations that have been created in
 #' CloudFront for this account
@@ -10818,6 +12790,82 @@ cloudfront_list_invalidations <- function(DistributionId, Marker = NULL, MaxItem
   return(response)
 }
 .cloudfront$operations$list_invalidations <- cloudfront_list_invalidations
+
+#' Lists the invalidations for a distribution tenant
+#'
+#' @description
+#' Lists the invalidations for a distribution tenant.
+#'
+#' @usage
+#' cloudfront_list_invalidations_for_distribution_tenant(Id, Marker,
+#'   MaxItems)
+#'
+#' @param Id &#91;required&#93; The ID of the distribution tenant.
+#' @param Marker Use this parameter when paginating results to indicate where to begin in
+#' your list of invalidation batches. Because the results are returned in
+#' decreasing order from most recent to oldest, the most recent results are
+#' on the first page, the second page will contain earlier results, and so
+#' on. To get the next page of results, set `Marker` to the value of the
+#' `NextMarker` from the current page's response. This value is the same as
+#' the ID of the last invalidation batch on that page.
+#' @param MaxItems The maximum number of invalidations to return for the distribution
+#' tenant.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   InvalidationList = list(
+#'     Marker = "string",
+#'     NextMarker = "string",
+#'     MaxItems = 123,
+#'     IsTruncated = TRUE|FALSE,
+#'     Quantity = 123,
+#'     Items = list(
+#'       list(
+#'         Id = "string",
+#'         CreateTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         Status = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_invalidations_for_distribution_tenant(
+#'   Id = "string",
+#'   Marker = "string",
+#'   MaxItems = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_list_invalidations_for_distribution_tenant
+#'
+#' @aliases cloudfront_list_invalidations_for_distribution_tenant
+cloudfront_list_invalidations_for_distribution_tenant <- function(Id, Marker = NULL, MaxItems = NULL) {
+  op <- new_operation(
+    name = "ListInvalidationsForDistributionTenant",
+    http_method = "GET",
+    http_path = "/2020-05-31/distribution-tenant/{Id}/invalidation",
+    host_prefix = "",
+    paginator = list(input_token = "Marker", output_token = "InvalidationList.NextMarker", limit_key = "MaxItems", result_key = "InvalidationList.Items"),
+    stream_api = FALSE
+  )
+  input <- .cloudfront$list_invalidations_for_distribution_tenant_input(Id = Id, Marker = Marker, MaxItems = MaxItems)
+  output <- .cloudfront$list_invalidations_for_distribution_tenant_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$list_invalidations_for_distribution_tenant <- cloudfront_list_invalidations_for_distribution_tenant
 
 #' Gets a list of key groups
 #'
@@ -11560,7 +13608,7 @@ cloudfront_list_response_headers_policies <- function(Type = NULL, Marker = NULL
 #'           )
 #'         ),
 #'         Comment = "string",
-#'         PriceClass = "PriceClass_100"|"PriceClass_200"|"PriceClass_All",
+#'         PriceClass = "PriceClass_100"|"PriceClass_200"|"PriceClass_All"|"None",
 #'         Enabled = TRUE|FALSE
 #'       )
 #'     )
@@ -12258,6 +14306,92 @@ cloudfront_update_cloud_front_origin_access_identity <- function(CloudFrontOrigi
 }
 .cloudfront$operations$update_cloud_front_origin_access_identity <- cloudfront_update_cloud_front_origin_access_identity
 
+#' Updates a connection group
+#'
+#' @description
+#' Updates a connection group.
+#'
+#' @usage
+#' cloudfront_update_connection_group(Id, Ipv6Enabled, IfMatch,
+#'   AnycastIpListId, Enabled)
+#'
+#' @param Id &#91;required&#93; The ID of the connection group.
+#' @param Ipv6Enabled Enable IPv6 for the connection group. For more information, see [Enable
+#' IPv6](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesEnableIPv6)
+#' in the *Amazon CloudFront Developer Guide*.
+#' @param IfMatch &#91;required&#93; The value of the `ETag` header that you received when retrieving the
+#' connection group that you're updating.
+#' @param AnycastIpListId The ID of the Anycast static IP list.
+#' @param Enabled Whether the connection group is enabled.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ConnectionGroup = list(
+#'     Id = "string",
+#'     Name = "string",
+#'     Arn = "string",
+#'     CreatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastModifiedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Tags = list(
+#'       Items = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       )
+#'     ),
+#'     Ipv6Enabled = TRUE|FALSE,
+#'     RoutingEndpoint = "string",
+#'     AnycastIpListId = "string",
+#'     Status = "string",
+#'     Enabled = TRUE|FALSE,
+#'     IsDefault = TRUE|FALSE
+#'   ),
+#'   ETag = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_connection_group(
+#'   Id = "string",
+#'   Ipv6Enabled = TRUE|FALSE,
+#'   IfMatch = "string",
+#'   AnycastIpListId = "string",
+#'   Enabled = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_update_connection_group
+#'
+#' @aliases cloudfront_update_connection_group
+cloudfront_update_connection_group <- function(Id, Ipv6Enabled = NULL, IfMatch, AnycastIpListId = NULL, Enabled = NULL) {
+  op <- new_operation(
+    name = "UpdateConnectionGroup",
+    http_method = "PUT",
+    http_path = "/2020-05-31/connection-group/{Id}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudfront$update_connection_group_input(Id = Id, Ipv6Enabled = Ipv6Enabled, IfMatch = IfMatch, AnycastIpListId = AnycastIpListId, Enabled = Enabled)
+  output <- .cloudfront$update_connection_group_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$update_connection_group <- cloudfront_update_connection_group
+
 #' Updates a continuous deployment policy
 #'
 #' @description
@@ -12748,7 +14882,7 @@ cloudfront_update_continuous_deployment_policy <- function(ContinuousDeploymentP
 #'         Bucket = "string",
 #'         Prefix = "string"
 #'       ),
-#'       PriceClass = "PriceClass_100"|"PriceClass_200"|"PriceClass_All",
+#'       PriceClass = "PriceClass_100"|"PriceClass_200"|"PriceClass_All"|"None",
 #'       Enabled = TRUE|FALSE,
 #'       ViewerCertificate = list(
 #'         CloudFrontDefaultCertificate = TRUE|FALSE,
@@ -12773,7 +14907,22 @@ cloudfront_update_continuous_deployment_policy <- function(ContinuousDeploymentP
 #'       IsIPV6Enabled = TRUE|FALSE,
 #'       ContinuousDeploymentPolicyId = "string",
 #'       Staging = TRUE|FALSE,
-#'       AnycastIpListId = "string"
+#'       AnycastIpListId = "string",
+#'       TenantConfig = list(
+#'         ParameterDefinitions = list(
+#'           list(
+#'             Name = "string",
+#'             Definition = list(
+#'               StringSchema = list(
+#'                 Comment = "string",
+#'                 DefaultValue = "string",
+#'                 Required = TRUE|FALSE
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       ConnectionMode = "direct"|"tenant-only"
 #'     ),
 #'     AliasICPRecordals = list(
 #'       list(
@@ -13066,7 +15215,7 @@ cloudfront_update_continuous_deployment_policy <- function(ContinuousDeploymentP
 #'       Bucket = "string",
 #'       Prefix = "string"
 #'     ),
-#'     PriceClass = "PriceClass_100"|"PriceClass_200"|"PriceClass_All",
+#'     PriceClass = "PriceClass_100"|"PriceClass_200"|"PriceClass_All"|"None",
 #'     Enabled = TRUE|FALSE,
 #'     ViewerCertificate = list(
 #'       CloudFrontDefaultCertificate = TRUE|FALSE,
@@ -13091,7 +15240,22 @@ cloudfront_update_continuous_deployment_policy <- function(ContinuousDeploymentP
 #'     IsIPV6Enabled = TRUE|FALSE,
 #'     ContinuousDeploymentPolicyId = "string",
 #'     Staging = TRUE|FALSE,
-#'     AnycastIpListId = "string"
+#'     AnycastIpListId = "string",
+#'     TenantConfig = list(
+#'       ParameterDefinitions = list(
+#'         list(
+#'           Name = "string",
+#'           Definition = list(
+#'             StringSchema = list(
+#'               Comment = "string",
+#'               DefaultValue = "string",
+#'               Required = TRUE|FALSE
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     ConnectionMode = "direct"|"tenant-only"
 #'   ),
 #'   Id = "string",
 #'   IfMatch = "string"
@@ -13121,6 +15285,164 @@ cloudfront_update_distribution <- function(DistributionConfig, Id, IfMatch = NUL
   return(response)
 }
 .cloudfront$operations$update_distribution <- cloudfront_update_distribution
+
+#' Updates a distribution tenant
+#'
+#' @description
+#' Updates a distribution tenant.
+#'
+#' @usage
+#' cloudfront_update_distribution_tenant(Id, DistributionId, Domains,
+#'   Customizations, Parameters, ConnectionGroupId, IfMatch,
+#'   ManagedCertificateRequest, Enabled)
+#'
+#' @param Id &#91;required&#93; The ID of the distribution tenant.
+#' @param DistributionId The ID for the multi-tenant distribution.
+#' @param Domains The domains to update for the distribution tenant. A domain object can
+#' contain only a domain property. You must specify at least one domain.
+#' Each distribution tenant can have up to 5 domains.
+#' @param Customizations Customizations for the distribution tenant. For each distribution
+#' tenant, you can specify the geographic restrictions, and the Amazon
+#' Resource Names (ARNs) for the ACM certificate and WAF web ACL. These are
+#' specific values that you can override or disable from the multi-tenant
+#' distribution that was used to create the distribution tenant.
+#' @param Parameters A list of parameter values to add to the resource. A parameter is
+#' specified as a key-value pair. A valid parameter value must exist for
+#' any parameter that is marked as required in the multi-tenant
+#' distribution.
+#' @param ConnectionGroupId The ID of the target connection group.
+#' @param IfMatch &#91;required&#93; The value of the `ETag` header that you received when retrieving the
+#' distribution tenant to update. This value is returned in the response of
+#' the [`get_distribution_tenant`][cloudfront_get_distribution_tenant] API
+#' operation.
+#' @param ManagedCertificateRequest An object that contains the CloudFront managed ACM certificate request.
+#' @param Enabled Indicates whether the distribution tenant should be updated to an
+#' enabled state. If you update the distribution tenant and it's not
+#' enabled, the distribution tenant won't serve traffic.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DistributionTenant = list(
+#'     Id = "string",
+#'     DistributionId = "string",
+#'     Name = "string",
+#'     Arn = "string",
+#'     Domains = list(
+#'       list(
+#'         Domain = "string",
+#'         Status = "active"|"inactive"
+#'       )
+#'     ),
+#'     Tags = list(
+#'       Items = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       )
+#'     ),
+#'     Customizations = list(
+#'       WebAcl = list(
+#'         Action = "override"|"disable",
+#'         Arn = "string"
+#'       ),
+#'       Certificate = list(
+#'         Arn = "string"
+#'       ),
+#'       GeoRestrictions = list(
+#'         RestrictionType = "blacklist"|"whitelist"|"none",
+#'         Locations = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     Parameters = list(
+#'       list(
+#'         Name = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     ConnectionGroupId = "string",
+#'     CreatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastModifiedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Enabled = TRUE|FALSE,
+#'     Status = "string"
+#'   ),
+#'   ETag = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_distribution_tenant(
+#'   Id = "string",
+#'   DistributionId = "string",
+#'   Domains = list(
+#'     list(
+#'       Domain = "string"
+#'     )
+#'   ),
+#'   Customizations = list(
+#'     WebAcl = list(
+#'       Action = "override"|"disable",
+#'       Arn = "string"
+#'     ),
+#'     Certificate = list(
+#'       Arn = "string"
+#'     ),
+#'     GeoRestrictions = list(
+#'       RestrictionType = "blacklist"|"whitelist"|"none",
+#'       Locations = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   Parameters = list(
+#'     list(
+#'       Name = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   ConnectionGroupId = "string",
+#'   IfMatch = "string",
+#'   ManagedCertificateRequest = list(
+#'     ValidationTokenHost = "cloudfront"|"self-hosted",
+#'     PrimaryDomainName = "string",
+#'     CertificateTransparencyLoggingPreference = "enabled"|"disabled"
+#'   ),
+#'   Enabled = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_update_distribution_tenant
+#'
+#' @aliases cloudfront_update_distribution_tenant
+cloudfront_update_distribution_tenant <- function(Id, DistributionId = NULL, Domains = NULL, Customizations = NULL, Parameters = NULL, ConnectionGroupId = NULL, IfMatch, ManagedCertificateRequest = NULL, Enabled = NULL) {
+  op <- new_operation(
+    name = "UpdateDistributionTenant",
+    http_method = "PUT",
+    http_path = "/2020-05-31/distribution-tenant/{Id}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudfront$update_distribution_tenant_input(Id = Id, DistributionId = DistributionId, Domains = Domains, Customizations = Customizations, Parameters = Parameters, ConnectionGroupId = ConnectionGroupId, IfMatch = IfMatch, ManagedCertificateRequest = ManagedCertificateRequest, Enabled = Enabled)
+  output <- .cloudfront$update_distribution_tenant_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$update_distribution_tenant <- cloudfront_update_distribution_tenant
 
 #' Copies the staging distribution's configuration to its corresponding
 #' primary distribution
@@ -13480,7 +15802,7 @@ cloudfront_update_distribution <- function(DistributionConfig, Id, IfMatch = NUL
 #'         Bucket = "string",
 #'         Prefix = "string"
 #'       ),
-#'       PriceClass = "PriceClass_100"|"PriceClass_200"|"PriceClass_All",
+#'       PriceClass = "PriceClass_100"|"PriceClass_200"|"PriceClass_All"|"None",
 #'       Enabled = TRUE|FALSE,
 #'       ViewerCertificate = list(
 #'         CloudFrontDefaultCertificate = TRUE|FALSE,
@@ -13505,7 +15827,22 @@ cloudfront_update_distribution <- function(DistributionConfig, Id, IfMatch = NUL
 #'       IsIPV6Enabled = TRUE|FALSE,
 #'       ContinuousDeploymentPolicyId = "string",
 #'       Staging = TRUE|FALSE,
-#'       AnycastIpListId = "string"
+#'       AnycastIpListId = "string",
+#'       TenantConfig = list(
+#'         ParameterDefinitions = list(
+#'           list(
+#'             Name = "string",
+#'             Definition = list(
+#'               StringSchema = list(
+#'                 Comment = "string",
+#'                 DefaultValue = "string",
+#'                 Required = TRUE|FALSE
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       ConnectionMode = "direct"|"tenant-only"
 #'     ),
 #'     AliasICPRecordals = list(
 #'       list(
@@ -13550,6 +15887,68 @@ cloudfront_update_distribution_with_staging_config <- function(Id, StagingDistri
   return(response)
 }
 .cloudfront$operations$update_distribution_with_staging_config <- cloudfront_update_distribution_with_staging_config
+
+#' Moves a domain from its current distribution or distribution tenant to
+#' another one
+#'
+#' @description
+#' Moves a domain from its current distribution or distribution tenant to
+#' another one.
+#'
+#' @usage
+#' cloudfront_update_domain_association(Domain, TargetResource, IfMatch)
+#'
+#' @param Domain &#91;required&#93; The domain to update.
+#' @param TargetResource &#91;required&#93; The target distribution resource for the domain. You can specify either
+#' `DistributionId` or `DistributionTenantId`, but not both.
+#' @param IfMatch The value of the `ETag` identifier for the distribution or distribution
+#' tenant that will be associated with the domain.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Domain = "string",
+#'   ResourceId = "string",
+#'   ETag = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_domain_association(
+#'   Domain = "string",
+#'   TargetResource = list(
+#'     DistributionId = "string",
+#'     DistributionTenantId = "string"
+#'   ),
+#'   IfMatch = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_update_domain_association
+#'
+#' @aliases cloudfront_update_domain_association
+cloudfront_update_domain_association <- function(Domain, TargetResource, IfMatch = NULL) {
+  op <- new_operation(
+    name = "UpdateDomainAssociation",
+    http_method = "POST",
+    http_path = "/2020-05-31/domain-association",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudfront$update_domain_association_input(Domain = Domain, TargetResource = TargetResource, IfMatch = IfMatch)
+  output <- .cloudfront$update_domain_association_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$update_domain_association <- cloudfront_update_domain_association
 
 #' Update a field-level encryption configuration
 #'
@@ -14736,7 +17135,7 @@ cloudfront_update_response_headers_policy <- function(ResponseHeadersPolicyConfi
 #'           "string"
 #'         )
 #'       ),
-#'       PriceClass = "PriceClass_100"|"PriceClass_200"|"PriceClass_All",
+#'       PriceClass = "PriceClass_100"|"PriceClass_200"|"PriceClass_All"|"None",
 #'       Enabled = TRUE|FALSE
 #'     )
 #'   ),
@@ -14772,7 +17171,7 @@ cloudfront_update_response_headers_policy <- function(ResponseHeadersPolicyConfi
 #'         "string"
 #'       )
 #'     ),
-#'     PriceClass = "PriceClass_100"|"PriceClass_200"|"PriceClass_All",
+#'     PriceClass = "PriceClass_100"|"PriceClass_200"|"PriceClass_All"|"None",
 #'     Enabled = TRUE|FALSE
 #'   ),
 #'   Id = "string",
@@ -14892,3 +17291,64 @@ cloudfront_update_vpc_origin <- function(VpcOriginEndpointConfig, Id, IfMatch) {
   return(response)
 }
 .cloudfront$operations$update_vpc_origin <- cloudfront_update_vpc_origin
+
+#' Verify the DNS configuration for your domain names
+#'
+#' @description
+#' Verify the DNS configuration for your domain names. This API operation
+#' checks whether your domain name points to the correct routing endpoint
+#' of the connection group, such as d111111abcdef8.cloudfront.net. You can
+#' use this API operation to troubleshoot and resolve DNS configuration
+#' issues.
+#'
+#' @usage
+#' cloudfront_verify_dns_configuration(Domain, Identifier)
+#'
+#' @param Domain The domain name that you're verifying.
+#' @param Identifier &#91;required&#93; The ID of the distribution tenant.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DnsConfigurationList = list(
+#'     list(
+#'       Domain = "string",
+#'       Status = "valid-configuration"|"invalid-configuration"|"unknown-configuration",
+#'       Reason = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$verify_dns_configuration(
+#'   Domain = "string",
+#'   Identifier = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_verify_dns_configuration
+#'
+#' @aliases cloudfront_verify_dns_configuration
+cloudfront_verify_dns_configuration <- function(Domain = NULL, Identifier) {
+  op <- new_operation(
+    name = "VerifyDnsConfiguration",
+    http_method = "POST",
+    http_path = "/2020-05-31/verify-dns-configuration",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudfront$verify_dns_configuration_input(Domain = Domain, Identifier = Identifier)
+  output <- .cloudfront$verify_dns_configuration_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$verify_dns_configuration <- cloudfront_verify_dns_configuration

@@ -116,6 +116,7 @@ programmatically. For more information, see the \href{https://docs.aws.amazon.co
 \link[=ec2_associate_ipam_byoasn]{associate_ipam_byoasn} \tab Associates your Autonomous System Number (ASN) with a BYOIP CIDR that you own in the same Amazon Web Services Region\cr
 \link[=ec2_associate_ipam_resource_discovery]{associate_ipam_resource_discovery} \tab Associates an IPAM resource discovery with an Amazon VPC IPAM\cr
 \link[=ec2_associate_nat_gateway_address]{associate_nat_gateway_address} \tab Associates Elastic IP addresses (EIPs) and private IPv4 addresses with a public NAT gateway\cr
+\link[=ec2_associate_route_server]{associate_route_server} \tab Associates a route server with a VPC to enable dynamic route updates\cr
 \link[=ec2_associate_route_table]{associate_route_table} \tab Associates a subnet in your VPC or an internet gateway or virtual private gateway attached to your VPC with a route table in your VPC\cr
 \link[=ec2_associate_security_group_vpc]{associate_security_group_vpc} \tab Associates a security group with another VPC in the same Region\cr
 \link[=ec2_associate_subnet_cidr_block]{associate_subnet_cidr_block} \tab Associates a CIDR block with your subnet\cr
@@ -196,6 +197,9 @@ programmatically. For more information, see the \href{https://docs.aws.amazon.co
 \link[=ec2_create_reserved_instances_listing]{create_reserved_instances_listing} \tab Creates a listing for Amazon EC2 Standard Reserved Instances to be sold in the Reserved Instance Marketplace\cr
 \link[=ec2_create_restore_image_task]{create_restore_image_task} \tab Starts a task that restores an AMI from an Amazon S3 object that was previously created by using CreateStoreImageTask\cr
 \link[=ec2_create_route]{create_route} \tab Creates a route in a route table within a VPC\cr
+\link[=ec2_create_route_server]{create_route_server} \tab Creates a new route server to manage dynamic routing in a VPC\cr
+\link[=ec2_create_route_server_endpoint]{create_route_server_endpoint} \tab Creates a new endpoint for a route server in a specified subnet\cr
+\link[=ec2_create_route_server_peer]{create_route_server_peer} \tab Creates a new BGP peer for a specified route server endpoint\cr
 \link[=ec2_create_route_table]{create_route_table} \tab Creates a route table for the specified VPC\cr
 \link[=ec2_create_security_group]{create_security_group} \tab Creates a security group\cr
 \link[=ec2_create_snapshot]{create_snapshot} \tab Creates a snapshot of an EBS volume and stores it in Amazon S3\cr
@@ -242,7 +246,7 @@ programmatically. For more information, see the \href{https://docs.aws.amazon.co
 \link[=ec2_delete_customer_gateway]{delete_customer_gateway} \tab Deletes the specified customer gateway\cr
 \link[=ec2_delete_dhcp_options]{delete_dhcp_options} \tab Deletes the specified set of DHCP options\cr
 \link[=ec2_delete_egress_only_internet_gateway]{delete_egress_only_internet_gateway} \tab Deletes an egress-only internet gateway\cr
-\link[=ec2_delete_fleets]{delete_fleets} \tab Deletes the specified EC2 Fleets\cr
+\link[=ec2_delete_fleets]{delete_fleets} \tab Deletes the specified EC2 Fleet request\cr
 \link[=ec2_delete_flow_logs]{delete_flow_logs} \tab Deletes one or more flow logs\cr
 \link[=ec2_delete_fpga_image]{delete_fpga_image} \tab Deletes the specified Amazon FPGA Image (AFI)\cr
 \link[=ec2_delete_instance_connect_endpoint]{delete_instance_connect_endpoint} \tab Deletes the specified EC2 Instance Connect Endpoint\cr
@@ -274,6 +278,9 @@ programmatically. For more information, see the \href{https://docs.aws.amazon.co
 \link[=ec2_delete_public_ipv_4_pool]{delete_public_ipv_4_pool} \tab Delete a public IPv4 pool\cr
 \link[=ec2_delete_queued_reserved_instances]{delete_queued_reserved_instances} \tab Deletes the queued purchases for the specified Reserved Instances\cr
 \link[=ec2_delete_route]{delete_route} \tab Deletes the specified route from the specified route table\cr
+\link[=ec2_delete_route_server]{delete_route_server} \tab Deletes the specified route server\cr
+\link[=ec2_delete_route_server_endpoint]{delete_route_server_endpoint} \tab Deletes the specified route server endpoint\cr
+\link[=ec2_delete_route_server_peer]{delete_route_server_peer} \tab Deletes the specified BGP peer from a route server\cr
 \link[=ec2_delete_route_table]{delete_route_table} \tab Deletes the specified route table\cr
 \link[=ec2_delete_security_group]{delete_security_group} \tab Deletes a security group\cr
 \link[=ec2_delete_snapshot]{delete_snapshot} \tab Deletes the specified snapshot\cr
@@ -419,6 +426,9 @@ programmatically. For more information, see the \href{https://docs.aws.amazon.co
 \link[=ec2_describe_reserved_instances_listings]{describe_reserved_instances_listings} \tab Describes your account's Reserved Instance listings in the Reserved Instance Marketplace\cr
 \link[=ec2_describe_reserved_instances_modifications]{describe_reserved_instances_modifications} \tab Describes the modifications made to your Reserved Instances\cr
 \link[=ec2_describe_reserved_instances_offerings]{describe_reserved_instances_offerings} \tab Describes Reserved Instance offerings that are available for purchase\cr
+\link[=ec2_describe_route_server_endpoints]{describe_route_server_endpoints} \tab Describes one or more route server endpoints\cr
+\link[=ec2_describe_route_server_peers]{describe_route_server_peers} \tab Describes one or more route server peers\cr
+\link[=ec2_describe_route_servers]{describe_route_servers} \tab Describes one or more route servers\cr
 \link[=ec2_describe_route_tables]{describe_route_tables} \tab Describes your route tables\cr
 \link[=ec2_describe_scheduled_instance_availability]{describe_scheduled_instance_availability} \tab Finds available schedules that meet the specified criteria\cr
 \link[=ec2_describe_scheduled_instances]{describe_scheduled_instances} \tab Describes the specified Scheduled Instances or all your Scheduled Instances\cr
@@ -496,6 +506,7 @@ programmatically. For more information, see the \href{https://docs.aws.amazon.co
 \link[=ec2_disable_image_deprecation]{disable_image_deprecation} \tab Cancels the deprecation of the specified AMI\cr
 \link[=ec2_disable_image_deregistration_protection]{disable_image_deregistration_protection} \tab Disables deregistration protection for an AMI\cr
 \link[=ec2_disable_ipam_organization_admin_account]{disable_ipam_organization_admin_account} \tab Disable the IPAM account\cr
+\link[=ec2_disable_route_server_propagation]{disable_route_server_propagation} \tab Disables route propagation from a route server to a specified route table\cr
 \link[=ec2_disable_serial_console_access]{disable_serial_console_access} \tab Disables access to the EC2 serial console of all instances for your account\cr
 \link[=ec2_disable_snapshot_block_public_access]{disable_snapshot_block_public_access} \tab Disables the block public access for snapshots setting at the account level for the specified Amazon Web Services Region\cr
 \link[=ec2_disable_transit_gateway_route_table_propagation]{disable_transit_gateway_route_table_propagation} \tab Disables the specified resource attachment from propagating routes to the specified propagation route table\cr
@@ -511,6 +522,7 @@ programmatically. For more information, see the \href{https://docs.aws.amazon.co
 \link[=ec2_disassociate_ipam_byoasn]{disassociate_ipam_byoasn} \tab Remove the association between your Autonomous System Number (ASN) and your BYOIP CIDR\cr
 \link[=ec2_disassociate_ipam_resource_discovery]{disassociate_ipam_resource_discovery} \tab Disassociates a resource discovery from an Amazon VPC IPAM\cr
 \link[=ec2_disassociate_nat_gateway_address]{disassociate_nat_gateway_address} \tab Disassociates secondary Elastic IP addresses (EIPs) from a public NAT gateway\cr
+\link[=ec2_disassociate_route_server]{disassociate_route_server} \tab Disassociates a route server from a VPC\cr
 \link[=ec2_disassociate_route_table]{disassociate_route_table} \tab Disassociates a subnet or gateway from a route table\cr
 \link[=ec2_disassociate_security_group_vpc]{disassociate_security_group_vpc} \tab Disassociates a security group from a VPC\cr
 \link[=ec2_disassociate_subnet_cidr_block]{disassociate_subnet_cidr_block} \tab Disassociates a CIDR block from a subnet\cr
@@ -531,6 +543,7 @@ programmatically. For more information, see the \href{https://docs.aws.amazon.co
 \link[=ec2_enable_image_deregistration_protection]{enable_image_deregistration_protection} \tab Enables deregistration protection for an AMI\cr
 \link[=ec2_enable_ipam_organization_admin_account]{enable_ipam_organization_admin_account} \tab Enable an Organizations member account as the IPAM admin account\cr
 \link[=ec2_enable_reachability_analyzer_organization_sharing]{enable_reachability_analyzer_organization_sharing} \tab Establishes a trust relationship between Reachability Analyzer and Organizations\cr
+\link[=ec2_enable_route_server_propagation]{enable_route_server_propagation} \tab Defines which route tables the route server can update with routes\cr
 \link[=ec2_enable_serial_console_access]{enable_serial_console_access} \tab Enables access to the EC2 serial console of all instances for your account\cr
 \link[=ec2_enable_snapshot_block_public_access]{enable_snapshot_block_public_access} \tab Enables or modifies the block public access for snapshots setting at the account level for the specified Amazon Web Services Region\cr
 \link[=ec2_enable_transit_gateway_route_table_propagation]{enable_transit_gateway_route_table_propagation} \tab Enables the specified attachment to propagate routes to the specified propagation route table\cr
@@ -577,6 +590,9 @@ programmatically. For more information, see the \href{https://docs.aws.amazon.co
 \link[=ec2_get_network_insights_access_scope_content]{get_network_insights_access_scope_content} \tab Gets the content for the specified Network Access Scope\cr
 \link[=ec2_get_password_data]{get_password_data} \tab Retrieves the encrypted administrator password for a running Windows instance\cr
 \link[=ec2_get_reserved_instances_exchange_quote]{get_reserved_instances_exchange_quote} \tab Returns a quote and exchange information for exchanging one or more specified Convertible Reserved Instances for a new Convertible Reserved Instance\cr
+\link[=ec2_get_route_server_associations]{get_route_server_associations} \tab Gets information about the associations for the specified route server\cr
+\link[=ec2_get_route_server_propagations]{get_route_server_propagations} \tab Gets information about the route propagations for the specified route server\cr
+\link[=ec2_get_route_server_routing_database]{get_route_server_routing_database} \tab Gets the routing database for the specified route server\cr
 \link[=ec2_get_security_groups_for_vpc]{get_security_groups_for_vpc} \tab Gets security groups that can be associated by the Amazon Web Services account making the request with network interfaces in the specified VPC\cr
 \link[=ec2_get_serial_console_access_status]{get_serial_console_access_status} \tab Retrieves the access status of your account to the EC2 serial console of all instances\cr
 \link[=ec2_get_snapshot_block_public_access_state]{get_snapshot_block_public_access_state} \tab Gets the current state of block public access for snapshots setting for the account and Region\cr
@@ -639,6 +655,7 @@ programmatically. For more information, see the \href{https://docs.aws.amazon.co
 \link[=ec2_modify_network_interface_attribute]{modify_network_interface_attribute} \tab Modifies the specified network interface attribute\cr
 \link[=ec2_modify_private_dns_name_options]{modify_private_dns_name_options} \tab Modifies the options for instance hostnames for the specified instance\cr
 \link[=ec2_modify_reserved_instances]{modify_reserved_instances} \tab Modifies the configuration of your Reserved Instances, such as the Availability Zone, instance count, or instance type\cr
+\link[=ec2_modify_route_server]{modify_route_server} \tab Modifies the configuration of an existing route server\cr
 \link[=ec2_modify_security_group_rules]{modify_security_group_rules} \tab Modifies the rules of a security group\cr
 \link[=ec2_modify_snapshot_attribute]{modify_snapshot_attribute} \tab Adds or removes permission settings for the specified snapshot\cr
 \link[=ec2_modify_snapshot_tier]{modify_snapshot_tier} \tab Archives an Amazon EBS snapshot\cr

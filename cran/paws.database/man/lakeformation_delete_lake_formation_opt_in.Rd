@@ -5,12 +5,18 @@
 \title{Remove the Lake Formation permissions enforcement of the given
 databases, tables, and principals}
 \usage{
-lakeformation_delete_lake_formation_opt_in(Principal, Resource)
+lakeformation_delete_lake_formation_opt_in(
+  Principal,
+  Resource,
+  Condition = NULL
+)
 }
 \arguments{
 \item{Principal}{[required]}
 
 \item{Resource}{[required]}
+
+\item{Condition}{}
 }
 \description{
 Remove the Lake Formation permissions enforcement of the given databases, tables, and principals.

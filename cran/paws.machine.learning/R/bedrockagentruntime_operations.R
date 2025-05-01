@@ -3,6 +3,83 @@
 #' @include bedrockagentruntime_service.R
 NULL
 
+#' Creates a new invocation within a session
+#'
+#' @description
+#' Creates a new invocation within a session. An invocation groups the related invocation steps that store the content from a conversation. For more information about sessions, see [Store and retrieve conversation history and context with Amazon Bedrock sessions](https://docs.aws.amazon.com/bedrock/latest/userguide/sessions.html).
+#'
+#' See [https://www.paws-r-sdk.com/docs/bedrockagentruntime_create_invocation/](https://www.paws-r-sdk.com/docs/bedrockagentruntime_create_invocation/) for full documentation.
+#'
+#' @param description A description for the interactions in the invocation. For example, "User
+#' asking about weather in Seattle".
+#' @param invocationId A unique identifier for the invocation in UUID format.
+#' @param sessionIdentifier &#91;required&#93; The unique identifier for the associated session for the invocation. You
+#' can specify either the session's `sessionId` or its Amazon Resource Name
+#' (ARN).
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockagentruntime_create_invocation
+bedrockagentruntime_create_invocation <- function(description = NULL, invocationId = NULL, sessionIdentifier) {
+  op <- new_operation(
+    name = "CreateInvocation",
+    http_method = "PUT",
+    http_path = "/sessions/{sessionIdentifier}/invocations/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrockagentruntime$create_invocation_input(description = description, invocationId = invocationId, sessionIdentifier = sessionIdentifier)
+  output <- .bedrockagentruntime$create_invocation_output()
+  config <- get_config()
+  svc <- .bedrockagentruntime$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockagentruntime$operations$create_invocation <- bedrockagentruntime_create_invocation
+
+#' Creates a session to temporarily store conversations for generative AI
+#' (GenAI) applications built with open-source frameworks such as LangGraph
+#' and LlamaIndex
+#'
+#' @description
+#' Creates a session to temporarily store conversations for generative AI (GenAI) applications built with open-source frameworks such as LangGraph and LlamaIndex. Sessions enable you to save the state of conversations at checkpoints, with the added security and infrastructure of Amazon Web Services. For more information, see [Store and retrieve conversation history and context with Amazon Bedrock sessions](https://docs.aws.amazon.com/bedrock/latest/userguide/sessions.html).
+#'
+#' See [https://www.paws-r-sdk.com/docs/bedrockagentruntime_create_session/](https://www.paws-r-sdk.com/docs/bedrockagentruntime_create_session/) for full documentation.
+#'
+#' @param encryptionKeyArn The Amazon Resource Name (ARN) of the KMS key to use to encrypt the
+#' session data. The user or role creating the session must have permission
+#' to use the key. For more information, see [Amazon Bedrock session
+#' encryption](https://docs.aws.amazon.com/bedrock/latest/userguide/).
+#' @param sessionMetadata A map of key-value pairs containing attributes to be persisted across
+#' the session. For example, the user's ID, their language preference, and
+#' the type of device they are using.
+#' @param tags Specify the key-value pairs for the tags that you want to attach to the
+#' session.
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockagentruntime_create_session
+bedrockagentruntime_create_session <- function(encryptionKeyArn = NULL, sessionMetadata = NULL, tags = NULL) {
+  op <- new_operation(
+    name = "CreateSession",
+    http_method = "PUT",
+    http_path = "/sessions/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrockagentruntime$create_session_input(encryptionKeyArn = encryptionKeyArn, sessionMetadata = sessionMetadata, tags = tags)
+  output <- .bedrockagentruntime$create_session_output()
+  config <- get_config()
+  svc <- .bedrockagentruntime$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockagentruntime$operations$create_session <- bedrockagentruntime_create_session
+
 #' Deletes memory from the specified memory identifier
 #'
 #' @description
@@ -36,6 +113,70 @@ bedrockagentruntime_delete_agent_memory <- function(agentAliasId, agentId, memor
   return(response)
 }
 .bedrockagentruntime$operations$delete_agent_memory <- bedrockagentruntime_delete_agent_memory
+
+#' Deletes a session that you ended
+#'
+#' @description
+#' Deletes a session that you ended. You can't delete a session with an `ACTIVE` status. To delete an active session, you must first end it with the [`end_session`][bedrockagentruntime_end_session] API operation. For more information about sessions, see [Store and retrieve conversation history and context with Amazon Bedrock sessions](https://docs.aws.amazon.com/bedrock/latest/userguide/sessions.html).
+#'
+#' See [https://www.paws-r-sdk.com/docs/bedrockagentruntime_delete_session/](https://www.paws-r-sdk.com/docs/bedrockagentruntime_delete_session/) for full documentation.
+#'
+#' @param sessionIdentifier &#91;required&#93; The unique identifier for the session to be deleted. You can specify
+#' either the session's `sessionId` or its Amazon Resource Name (ARN).
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockagentruntime_delete_session
+bedrockagentruntime_delete_session <- function(sessionIdentifier) {
+  op <- new_operation(
+    name = "DeleteSession",
+    http_method = "DELETE",
+    http_path = "/sessions/{sessionIdentifier}/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrockagentruntime$delete_session_input(sessionIdentifier = sessionIdentifier)
+  output <- .bedrockagentruntime$delete_session_output()
+  config <- get_config()
+  svc <- .bedrockagentruntime$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockagentruntime$operations$delete_session <- bedrockagentruntime_delete_session
+
+#' Ends the session
+#'
+#' @description
+#' Ends the session. After you end a session, you can still access its content but you can’t add to it. To delete the session and it's content, you use the DeleteSession API operation. For more information about sessions, see [Store and retrieve conversation history and context with Amazon Bedrock sessions](https://docs.aws.amazon.com/bedrock/latest/userguide/sessions.html).
+#'
+#' See [https://www.paws-r-sdk.com/docs/bedrockagentruntime_end_session/](https://www.paws-r-sdk.com/docs/bedrockagentruntime_end_session/) for full documentation.
+#'
+#' @param sessionIdentifier &#91;required&#93; The unique identifier for the session to end. You can specify either the
+#' session's `sessionId` or its Amazon Resource Name (ARN).
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockagentruntime_end_session
+bedrockagentruntime_end_session <- function(sessionIdentifier) {
+  op <- new_operation(
+    name = "EndSession",
+    http_method = "PATCH",
+    http_path = "/sessions/{sessionIdentifier}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrockagentruntime$end_session_input(sessionIdentifier = sessionIdentifier)
+  output <- .bedrockagentruntime$end_session_output()
+  config <- get_config()
+  svc <- .bedrockagentruntime$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockagentruntime$operations$end_session <- bedrockagentruntime_end_session
 
 #' Generates an SQL query from a natural language query
 #'
@@ -111,6 +252,75 @@ bedrockagentruntime_get_agent_memory <- function(agentAliasId, agentId, maxItems
   return(response)
 }
 .bedrockagentruntime$operations$get_agent_memory <- bedrockagentruntime_get_agent_memory
+
+#' Retrieves the details of a specific invocation step within an invocation
+#' in a session
+#'
+#' @description
+#' Retrieves the details of a specific invocation step within an invocation in a session. For more information about sessions, see [Store and retrieve conversation history and context with Amazon Bedrock sessions](https://docs.aws.amazon.com/bedrock/latest/userguide/sessions.html).
+#'
+#' See [https://www.paws-r-sdk.com/docs/bedrockagentruntime_get_invocation_step/](https://www.paws-r-sdk.com/docs/bedrockagentruntime_get_invocation_step/) for full documentation.
+#'
+#' @param invocationIdentifier &#91;required&#93; The unique identifier for the invocation in UUID format.
+#' @param invocationStepId &#91;required&#93; The unique identifier (in UUID format) for the specific invocation step
+#' to retrieve.
+#' @param sessionIdentifier &#91;required&#93; The unique identifier for the invocation step's associated session. You
+#' can specify either the session's `sessionId` or its Amazon Resource Name
+#' (ARN).
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockagentruntime_get_invocation_step
+bedrockagentruntime_get_invocation_step <- function(invocationIdentifier, invocationStepId, sessionIdentifier) {
+  op <- new_operation(
+    name = "GetInvocationStep",
+    http_method = "POST",
+    http_path = "/sessions/{sessionIdentifier}/invocationSteps/{invocationStepId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrockagentruntime$get_invocation_step_input(invocationIdentifier = invocationIdentifier, invocationStepId = invocationStepId, sessionIdentifier = sessionIdentifier)
+  output <- .bedrockagentruntime$get_invocation_step_output()
+  config <- get_config()
+  svc <- .bedrockagentruntime$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockagentruntime$operations$get_invocation_step <- bedrockagentruntime_get_invocation_step
+
+#' Retrieves details about a specific session
+#'
+#' @description
+#' Retrieves details about a specific session. For more information about sessions, see [Store and retrieve conversation history and context with Amazon Bedrock sessions](https://docs.aws.amazon.com/bedrock/latest/userguide/sessions.html).
+#'
+#' See [https://www.paws-r-sdk.com/docs/bedrockagentruntime_get_session/](https://www.paws-r-sdk.com/docs/bedrockagentruntime_get_session/) for full documentation.
+#'
+#' @param sessionIdentifier &#91;required&#93; A unique identifier for the session to retrieve. You can specify either
+#' the session's `sessionId` or its Amazon Resource Name (ARN).
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockagentruntime_get_session
+bedrockagentruntime_get_session <- function(sessionIdentifier) {
+  op <- new_operation(
+    name = "GetSession",
+    http_method = "GET",
+    http_path = "/sessions/{sessionIdentifier}/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrockagentruntime$get_session_input(sessionIdentifier = sessionIdentifier)
+  output <- .bedrockagentruntime$get_session_output()
+  config <- get_config()
+  svc <- .bedrockagentruntime$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockagentruntime$operations$get_session <- bedrockagentruntime_get_session
 
 #' Sends a prompt for the agent to process and respond to
 #'
@@ -219,14 +429,20 @@ bedrockagentruntime_invoke_flow <- function(enableTrace = NULL, executionId = NU
 #'
 #' @param actionGroups A list of action groups with each action group defining the action the
 #' inline agent needs to carry out.
+#' @param agentCollaboration Defines how the inline collaborator agent handles information across
+#' multiple collaborator agents to coordinate a final response. The inline
+#' collaborator agent can also be the supervisor.
+#' @param agentName The name for the agent.
 #' @param bedrockModelConfigurations Model settings for the request.
+#' @param collaboratorConfigurations Settings for an inline agent collaborator called with
+#' [`invoke_inline_agent`][bedrockagentruntime_invoke_inline_agent].
+#' @param collaborators List of collaborator inline agents.
+#' @param customOrchestration Contains details of the custom orchestration configured for the agent.
 #' @param customerEncryptionKeyArn The Amazon Resource Name (ARN) of the Amazon Web Services KMS key to use
 #' to encrypt your inline agent.
 #' @param enableTrace Specifies whether to turn on the trace or not to track the agent's
 #' reasoning process. For more information, see [Using
 #' trace](https://docs.aws.amazon.com/bedrock/latest/userguide/trace-events.html).
-#' 
-#'      </p> 
 #' @param endSession Specifies whether to end the session with the inline agent or not.
 #' @param foundationModel &#91;required&#93; The [model identifier
 #' (ID)](https://docs.aws.amazon.com/bedrock/latest/userguide/models-supported.html#model-ids-arns)
@@ -258,6 +474,8 @@ bedrockagentruntime_invoke_flow <- function(enableTrace = NULL, executionId = NU
 #' @param instruction &#91;required&#93; The instructions that tell the inline agent what it should do and how it
 #' should interact with users.
 #' @param knowledgeBases Contains information of the knowledge bases to associate with.
+#' @param orchestrationType Specifies the type of orchestration strategy for the agent. This is set
+#' to DEFAULT orchestration type, by default.
 #' @param promptOverrideConfiguration Configurations for advanced prompts used to override the default prompts
 #' to enhance the accuracy of the inline agent.
 #' @param sessionId &#91;required&#93; The unique identifier of the session. Use the same value across requests
@@ -270,7 +488,7 @@ bedrockagentruntime_invoke_flow <- function(enableTrace = NULL, executionId = NU
 #' @keywords internal
 #'
 #' @rdname bedrockagentruntime_invoke_inline_agent
-bedrockagentruntime_invoke_inline_agent <- function(actionGroups = NULL, bedrockModelConfigurations = NULL, customerEncryptionKeyArn = NULL, enableTrace = NULL, endSession = NULL, foundationModel, guardrailConfiguration = NULL, idleSessionTTLInSeconds = NULL, inlineSessionState = NULL, inputText = NULL, instruction, knowledgeBases = NULL, promptOverrideConfiguration = NULL, sessionId, streamingConfigurations = NULL) {
+bedrockagentruntime_invoke_inline_agent <- function(actionGroups = NULL, agentCollaboration = NULL, agentName = NULL, bedrockModelConfigurations = NULL, collaboratorConfigurations = NULL, collaborators = NULL, customOrchestration = NULL, customerEncryptionKeyArn = NULL, enableTrace = NULL, endSession = NULL, foundationModel, guardrailConfiguration = NULL, idleSessionTTLInSeconds = NULL, inlineSessionState = NULL, inputText = NULL, instruction, knowledgeBases = NULL, orchestrationType = NULL, promptOverrideConfiguration = NULL, sessionId, streamingConfigurations = NULL) {
   op <- new_operation(
     name = "InvokeInlineAgent",
     http_method = "POST",
@@ -279,7 +497,7 @@ bedrockagentruntime_invoke_inline_agent <- function(actionGroups = NULL, bedrock
     paginator = list(),
     stream_api = TRUE
   )
-  input <- .bedrockagentruntime$invoke_inline_agent_input(actionGroups = actionGroups, bedrockModelConfigurations = bedrockModelConfigurations, customerEncryptionKeyArn = customerEncryptionKeyArn, enableTrace = enableTrace, endSession = endSession, foundationModel = foundationModel, guardrailConfiguration = guardrailConfiguration, idleSessionTTLInSeconds = idleSessionTTLInSeconds, inlineSessionState = inlineSessionState, inputText = inputText, instruction = instruction, knowledgeBases = knowledgeBases, promptOverrideConfiguration = promptOverrideConfiguration, sessionId = sessionId, streamingConfigurations = streamingConfigurations)
+  input <- .bedrockagentruntime$invoke_inline_agent_input(actionGroups = actionGroups, agentCollaboration = agentCollaboration, agentName = agentName, bedrockModelConfigurations = bedrockModelConfigurations, collaboratorConfigurations = collaboratorConfigurations, collaborators = collaborators, customOrchestration = customOrchestration, customerEncryptionKeyArn = customerEncryptionKeyArn, enableTrace = enableTrace, endSession = endSession, foundationModel = foundationModel, guardrailConfiguration = guardrailConfiguration, idleSessionTTLInSeconds = idleSessionTTLInSeconds, inlineSessionState = inlineSessionState, inputText = inputText, instruction = instruction, knowledgeBases = knowledgeBases, orchestrationType = orchestrationType, promptOverrideConfiguration = promptOverrideConfiguration, sessionId = sessionId, streamingConfigurations = streamingConfigurations)
   output <- .bedrockagentruntime$invoke_inline_agent_output()
   config <- get_config()
   svc <- .bedrockagentruntime$service(config, op)
@@ -288,6 +506,157 @@ bedrockagentruntime_invoke_inline_agent <- function(actionGroups = NULL, bedrock
   return(response)
 }
 .bedrockagentruntime$operations$invoke_inline_agent <- bedrockagentruntime_invoke_inline_agent
+
+#' Lists all invocation steps associated with a session and optionally, an
+#' invocation within the session
+#'
+#' @description
+#' Lists all invocation steps associated with a session and optionally, an invocation within the session. For more information about sessions, see [Store and retrieve conversation history and context with Amazon Bedrock sessions](https://docs.aws.amazon.com/bedrock/latest/userguide/sessions.html).
+#'
+#' See [https://www.paws-r-sdk.com/docs/bedrockagentruntime_list_invocation_steps/](https://www.paws-r-sdk.com/docs/bedrockagentruntime_list_invocation_steps/) for full documentation.
+#'
+#' @param invocationIdentifier The unique identifier (in UUID format) for the invocation to list
+#' invocation steps for.
+#' @param maxResults The maximum number of results to return in the response. If the total
+#' number of results is greater than this value, use the token returned in
+#' the response in the `nextToken` field when making another request to
+#' return the next batch of results.
+#' @param nextToken If the total number of results is greater than the `maxResults` value
+#' provided in the request, enter the token returned in the `nextToken`
+#' field in the response in this field to return the next batch of results.
+#' @param sessionIdentifier &#91;required&#93; The unique identifier for the session associated with the invocation
+#' steps. You can specify either the session's `sessionId` or its Amazon
+#' Resource Name (ARN).
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockagentruntime_list_invocation_steps
+bedrockagentruntime_list_invocation_steps <- function(invocationIdentifier = NULL, maxResults = NULL, nextToken = NULL, sessionIdentifier) {
+  op <- new_operation(
+    name = "ListInvocationSteps",
+    http_method = "POST",
+    http_path = "/sessions/{sessionIdentifier}/invocationSteps/",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "invocationStepSummaries"),
+    stream_api = FALSE
+  )
+  input <- .bedrockagentruntime$list_invocation_steps_input(invocationIdentifier = invocationIdentifier, maxResults = maxResults, nextToken = nextToken, sessionIdentifier = sessionIdentifier)
+  output <- .bedrockagentruntime$list_invocation_steps_output()
+  config <- get_config()
+  svc <- .bedrockagentruntime$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockagentruntime$operations$list_invocation_steps <- bedrockagentruntime_list_invocation_steps
+
+#' Lists all invocations associated with a specific session
+#'
+#' @description
+#' Lists all invocations associated with a specific session. For more information about sessions, see [Store and retrieve conversation history and context with Amazon Bedrock sessions](https://docs.aws.amazon.com/bedrock/latest/userguide/sessions.html).
+#'
+#' See [https://www.paws-r-sdk.com/docs/bedrockagentruntime_list_invocations/](https://www.paws-r-sdk.com/docs/bedrockagentruntime_list_invocations/) for full documentation.
+#'
+#' @param maxResults The maximum number of results to return in the response. If the total
+#' number of results is greater than this value, use the token returned in
+#' the response in the `nextToken` field when making another request to
+#' return the next batch of results.
+#' @param nextToken If the total number of results is greater than the `maxResults` value
+#' provided in the request, enter the token returned in the `nextToken`
+#' field in the response in this field to return the next batch of results.
+#' @param sessionIdentifier &#91;required&#93; The unique identifier for the session to list invocations for. You can
+#' specify either the session's `sessionId` or its Amazon Resource Name
+#' (ARN).
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockagentruntime_list_invocations
+bedrockagentruntime_list_invocations <- function(maxResults = NULL, nextToken = NULL, sessionIdentifier) {
+  op <- new_operation(
+    name = "ListInvocations",
+    http_method = "POST",
+    http_path = "/sessions/{sessionIdentifier}/invocations/",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "invocationSummaries"),
+    stream_api = FALSE
+  )
+  input <- .bedrockagentruntime$list_invocations_input(maxResults = maxResults, nextToken = nextToken, sessionIdentifier = sessionIdentifier)
+  output <- .bedrockagentruntime$list_invocations_output()
+  config <- get_config()
+  svc <- .bedrockagentruntime$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockagentruntime$operations$list_invocations <- bedrockagentruntime_list_invocations
+
+#' Lists all sessions in your Amazon Web Services account
+#'
+#' @description
+#' Lists all sessions in your Amazon Web Services account. For more information about sessions, see [Store and retrieve conversation history and context with Amazon Bedrock sessions](https://docs.aws.amazon.com/bedrock/latest/userguide/sessions.html).
+#'
+#' See [https://www.paws-r-sdk.com/docs/bedrockagentruntime_list_sessions/](https://www.paws-r-sdk.com/docs/bedrockagentruntime_list_sessions/) for full documentation.
+#'
+#' @param maxResults The maximum number of results to return in the response. If the total
+#' number of results is greater than this value, use the token returned in
+#' the response in the `nextToken` field when making another request to
+#' return the next batch of results.
+#' @param nextToken If the total number of results is greater than the `maxResults` value
+#' provided in the request, enter the token returned in the `nextToken`
+#' field in the response in this field to return the next batch of results.
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockagentruntime_list_sessions
+bedrockagentruntime_list_sessions <- function(maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListSessions",
+    http_method = "POST",
+    http_path = "/sessions/",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "sessionSummaries"),
+    stream_api = FALSE
+  )
+  input <- .bedrockagentruntime$list_sessions_input(maxResults = maxResults, nextToken = nextToken)
+  output <- .bedrockagentruntime$list_sessions_output()
+  config <- get_config()
+  svc <- .bedrockagentruntime$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockagentruntime$operations$list_sessions <- bedrockagentruntime_list_sessions
+
+#' List all the tags for the resource you specify
+#'
+#' @description
+#' List all the tags for the resource you specify.
+#'
+#' See [https://www.paws-r-sdk.com/docs/bedrockagentruntime_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/bedrockagentruntime_list_tags_for_resource/) for full documentation.
+#'
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource for which to list tags.
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockagentruntime_list_tags_for_resource
+bedrockagentruntime_list_tags_for_resource <- function(resourceArn) {
+  op <- new_operation(
+    name = "ListTagsForResource",
+    http_method = "GET",
+    http_path = "/tags/{resourceArn}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrockagentruntime$list_tags_for_resource_input(resourceArn = resourceArn)
+  output <- .bedrockagentruntime$list_tags_for_resource_output()
+  config <- get_config()
+  svc <- .bedrockagentruntime$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockagentruntime$operations$list_tags_for_resource <- bedrockagentruntime_list_tags_for_resource
 
 #' Optimizes a prompt for the task that you specify
 #'
@@ -321,6 +690,45 @@ bedrockagentruntime_optimize_prompt <- function(input, targetModelId) {
   return(response)
 }
 .bedrockagentruntime$operations$optimize_prompt <- bedrockagentruntime_optimize_prompt
+
+#' Add an invocation step to an invocation in a session
+#'
+#' @description
+#' Add an invocation step to an invocation in a session. An invocation step stores fine-grained state checkpoints, including text and images, for each interaction. For more information about sessions, see [Store and retrieve conversation history and context with Amazon Bedrock sessions](https://docs.aws.amazon.com/bedrock/latest/userguide/sessions.html).
+#'
+#' See [https://www.paws-r-sdk.com/docs/bedrockagentruntime_put_invocation_step/](https://www.paws-r-sdk.com/docs/bedrockagentruntime_put_invocation_step/) for full documentation.
+#'
+#' @param invocationIdentifier &#91;required&#93; The unique identifier (in UUID format) of the invocation to add the
+#' invocation step to.
+#' @param invocationStepId The unique identifier of the invocation step in UUID format.
+#' @param invocationStepTime &#91;required&#93; The timestamp for when the invocation step occurred.
+#' @param payload &#91;required&#93; The payload for the invocation step, including text and images for the
+#' interaction.
+#' @param sessionIdentifier &#91;required&#93; The unique identifier for the session to add the invocation step to. You
+#' can specify either the session's `sessionId` or its Amazon Resource Name
+#' (ARN).
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockagentruntime_put_invocation_step
+bedrockagentruntime_put_invocation_step <- function(invocationIdentifier, invocationStepId = NULL, invocationStepTime, payload, sessionIdentifier) {
+  op <- new_operation(
+    name = "PutInvocationStep",
+    http_method = "PUT",
+    http_path = "/sessions/{sessionIdentifier}/invocationSteps/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrockagentruntime$put_invocation_step_input(invocationIdentifier = invocationIdentifier, invocationStepId = invocationStepId, invocationStepTime = invocationStepTime, payload = payload, sessionIdentifier = sessionIdentifier)
+  output <- .bedrockagentruntime$put_invocation_step_output()
+  config <- get_config()
+  svc <- .bedrockagentruntime$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockagentruntime$operations$put_invocation_step <- bedrockagentruntime_put_invocation_step
 
 #' Reranks the relevance of sources based on queries
 #'
@@ -484,3 +892,104 @@ bedrockagentruntime_retrieve_and_generate_stream <- function(input, retrieveAndG
   return(response)
 }
 .bedrockagentruntime$operations$retrieve_and_generate_stream <- bedrockagentruntime_retrieve_and_generate_stream
+
+#' Associate tags with a resource
+#'
+#' @description
+#' Associate tags with a resource. For more information, see [Tagging resources](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html) in the Amazon Bedrock User Guide.
+#'
+#' See [https://www.paws-r-sdk.com/docs/bedrockagentruntime_tag_resource/](https://www.paws-r-sdk.com/docs/bedrockagentruntime_tag_resource/) for full documentation.
+#'
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource to tag.
+#' @param tags &#91;required&#93; An object containing key-value pairs that define the tags to attach to
+#' the resource.
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockagentruntime_tag_resource
+bedrockagentruntime_tag_resource <- function(resourceArn, tags) {
+  op <- new_operation(
+    name = "TagResource",
+    http_method = "POST",
+    http_path = "/tags/{resourceArn}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrockagentruntime$tag_resource_input(resourceArn = resourceArn, tags = tags)
+  output <- .bedrockagentruntime$tag_resource_output()
+  config <- get_config()
+  svc <- .bedrockagentruntime$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockagentruntime$operations$tag_resource <- bedrockagentruntime_tag_resource
+
+#' Remove tags from a resource
+#'
+#' @description
+#' Remove tags from a resource.
+#'
+#' See [https://www.paws-r-sdk.com/docs/bedrockagentruntime_untag_resource/](https://www.paws-r-sdk.com/docs/bedrockagentruntime_untag_resource/) for full documentation.
+#'
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource from which to remove
+#' tags.
+#' @param tagKeys &#91;required&#93; A list of keys of the tags to remove from the resource.
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockagentruntime_untag_resource
+bedrockagentruntime_untag_resource <- function(resourceArn, tagKeys) {
+  op <- new_operation(
+    name = "UntagResource",
+    http_method = "DELETE",
+    http_path = "/tags/{resourceArn}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrockagentruntime$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
+  output <- .bedrockagentruntime$untag_resource_output()
+  config <- get_config()
+  svc <- .bedrockagentruntime$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockagentruntime$operations$untag_resource <- bedrockagentruntime_untag_resource
+
+#' Updates the metadata or encryption settings of a session
+#'
+#' @description
+#' Updates the metadata or encryption settings of a session. For more information about sessions, see [Store and retrieve conversation history and context with Amazon Bedrock sessions](https://docs.aws.amazon.com/bedrock/latest/userguide/sessions.html).
+#'
+#' See [https://www.paws-r-sdk.com/docs/bedrockagentruntime_update_session/](https://www.paws-r-sdk.com/docs/bedrockagentruntime_update_session/) for full documentation.
+#'
+#' @param sessionIdentifier &#91;required&#93; The unique identifier of the session to modify. You can specify either
+#' the session's `sessionId` or its Amazon Resource Name (ARN).
+#' @param sessionMetadata A map of key-value pairs containing attributes to be persisted across
+#' the session. For example the user's ID, their language preference, and
+#' the type of device they are using.
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockagentruntime_update_session
+bedrockagentruntime_update_session <- function(sessionIdentifier, sessionMetadata = NULL) {
+  op <- new_operation(
+    name = "UpdateSession",
+    http_method = "PUT",
+    http_path = "/sessions/{sessionIdentifier}/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrockagentruntime$update_session_input(sessionIdentifier = sessionIdentifier, sessionMetadata = sessionMetadata)
+  output <- .bedrockagentruntime$update_session_output()
+  config <- get_config()
+  svc <- .bedrockagentruntime$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockagentruntime$operations$update_session <- bedrockagentruntime_update_session

@@ -12,7 +12,8 @@ lexmodelsv2_update_bot(
   dataPrivacy,
   idleSessionTTLInSeconds,
   botType = NULL,
-  botMembers = NULL
+  botMembers = NULL,
+  errorLogSettings = NULL
 )
 }
 \arguments{
@@ -43,6 +44,10 @@ You can specify between 60 (1 minute) and 86,400 (24 hours) seconds.}
 
 \item{botMembers}{The list of bot members in the network associated with the update
 action.}
+
+\item{errorLogSettings}{Allows you to modify how Amazon Lex logs errors during bot interactions,
+including destinations for error logs and the types of errors to be
+captured.}
 }
 \description{
 Updates the configuration of an existing bot.

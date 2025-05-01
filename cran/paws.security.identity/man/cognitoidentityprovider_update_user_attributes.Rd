@@ -2,8 +2,7 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_update_user_attributes}
 \alias{cognitoidentityprovider_update_user_attributes}
-\title{With this operation, your users can update one or more of their
-attributes with their own credentials}
+\title{Updates the currently signed-in user's attributes}
 \usage{
 cognitoidentityprovider_update_user_attributes(
   UserAttributes,
@@ -14,8 +13,8 @@ cognitoidentityprovider_update_user_attributes(
 \arguments{
 \item{UserAttributes}{[required] An array of name-value pairs representing user attributes.
 
-For custom attributes, you must prepend the \verb{custom:} prefix to the
-attribute name.
+For custom attributes, you must add a \verb{custom:} prefix to the attribute
+name.
 
 If you have set an attribute to require verification before Amazon
 Cognito updates its value, this request doesn’t immediately update the
@@ -24,8 +23,9 @@ verification message to verify the new value, Amazon Cognito updates the
 attribute value. Your user can sign in and receive messages with the
 original attribute value until they verify the new value.}
 
-\item{AccessToken}{[required] A valid access token that Amazon Cognito issued to the user whose user
-attributes you want to update.}
+\item{AccessToken}{[required] A valid access token that Amazon Cognito issued to the currently
+signed-in user. Must include a scope claim for
+\code{aws.cognito.signin.user.admin}.}
 
 \item{ClientMetadata}{A map of custom key-value pairs that you can provide as input for any
 custom workflows that this action initiates.
@@ -40,7 +40,7 @@ the ClientMetadata parameter in your UpdateUserAttributes request. In
 your function code in Lambda, you can process the \code{clientMetadata} value
 to enhance your workflow for your specific needs.
 
-For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-working-with-lambda-triggers.html}{Customizing user pool Workflows with Lambda Triggers}
+For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-working-with-lambda-triggers.html}{Using Lambda triggers}
 in the \emph{Amazon Cognito Developer Guide}.
 
 When you use the \code{ClientMetadata} parameter, note that Amazon Cognito
@@ -56,7 +56,7 @@ in this parameter.
 }}
 }
 \description{
-With this operation, your users can update one or more of their attributes with their own credentials. You authorize this API request with the user's access token. To delete an attribute from your user, submit the attribute in your API request with a blank value. Custom attribute values in this request must include the \verb{custom:} prefix.
+Updates the currently signed-in user's attributes. To delete an attribute from the user, submit the attribute in your API request with a blank value.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_update_user_attributes/} for full documentation.
 }

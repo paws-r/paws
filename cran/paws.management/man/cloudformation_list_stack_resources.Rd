@@ -13,9 +13,7 @@ aren't always interchangeable:
 \item Running stacks: You can specify either the stack's name or its
 unique stack ID.
 \item Deleted stacks: You must specify the unique stack ID.
-}
-
-Default: There is no default value.}
+}}
 
 \item{NextToken}{A string that identifies the next page of stack resources that you want
 to retrieve.}

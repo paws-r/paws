@@ -9,7 +9,8 @@ eventbridge_create_archive(
   EventSourceArn,
   Description = NULL,
   EventPattern = NULL,
-  RetentionDays = NULL
+  RetentionDays = NULL,
+  KmsKeyIdentifier = NULL
 )
 }
 \arguments{
@@ -23,6 +24,24 @@ eventbridge_create_archive(
 
 \item{RetentionDays}{The number of days to retain events for. Default value is 0. If set to
 0, events are retained indefinitely}
+
+\item{KmsKeyIdentifier}{The identifier of the KMS customer managed key for EventBridge to use,
+if you choose to use a customer managed key to encrypt this archive. The
+identifier can be the key Amazon Resource Name (ARN), KeyId, key alias,
+or key alias ARN.
+
+If you do not specify a customer managed key identifier, EventBridge
+uses an Amazon Web Services owned key to encrypt the archive.
+
+For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/viewing-keys.html}{Identify and view keys}
+in the \emph{Key Management Service Developer Guide}.
+
+If you have specified that EventBridge use a customer managed key for
+encrypting the source event bus, we strongly recommend you also specify
+a customer managed key for any archives for the event bus as well.
+
+For more information, see \href{https://docs.aws.amazon.com/eventbridge/latest/userguide/encryption-archives.html}{Encrypting archives}
+in the \emph{Amazon EventBridge User Guide}.}
 }
 \description{
 Creates an archive of events with the specified settings. When you create an archive, incoming events might not immediately start being sent to the archive. Allow a short period of time for changes to take effect. If you do not specify a pattern to filter events sent to the archive, all events are sent to the archive except replayed events. Replayed events are not sent to an archive.

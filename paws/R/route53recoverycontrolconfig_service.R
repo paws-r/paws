@@ -112,6 +112,7 @@ NULL
 #'  \link[=route53recoverycontrolconfig_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags for a resource\cr
 #'  \link[=route53recoverycontrolconfig_tag_resource]{tag_resource} \tab Adds a tag to a resource\cr
 #'  \link[=route53recoverycontrolconfig_untag_resource]{untag_resource} \tab Removes a tag from a resource\cr
+#'  \link[=route53recoverycontrolconfig_update_cluster]{update_cluster} \tab Updates an existing cluster\cr
 #'  \link[=route53recoverycontrolconfig_update_control_panel]{update_control_panel} \tab Updates a control panel\cr
 #'  \link[=route53recoverycontrolconfig_update_routing_control]{update_routing_control} \tab Updates a routing control\cr
 #'  \link[=route53recoverycontrolconfig_update_safety_rule]{update_safety_rule} \tab Update a safety rule (an assertion rule or gating rule)
@@ -146,7 +147,7 @@ route53recoverycontrolconfig <- function(config = list(), credentials = list(), 
 
 .route53recoverycontrolconfig$metadata <- list(
   service_name = "route53recoverycontrolconfig",
-  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "route53-recovery-control-config.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "route53-recovery-control-config.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "route53-recovery-control-config.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "route53-recovery-control-config.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "route53-recovery-control-config.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "route53-recovery-control-config.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "route53-recovery-control-config.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "route53-recovery-control-config.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "route53-recovery-control-config.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "route53-recovery-control-config.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "route53-recovery-control-config.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "route53-recovery-control-config.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "route53-recovery-control-config.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "route53-recovery-control-config.{region}.csp.hci.ic.gov", global = FALSE), "^eusc\\-(de)\\-\\w+\\-\\d+$" = list(endpoint = "route53-recovery-control-config.{region}.amazonaws.eu", global = FALSE)),
   service_id = "Route53 Recovery Control Config",
   api_version = "2020-11-02",
   signing_name = "route53-recovery-control-config",

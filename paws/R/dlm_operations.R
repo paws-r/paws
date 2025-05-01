@@ -343,7 +343,7 @@ dlm_create_lifecycle_policy <- function(ExecutionRoleArn, Description, State, Po
 #' operations that the policy specified.
 #' 
 #' For more information about deleting a policy, see [Delete lifecycle
-#' policies](https://docs.aws.amazon.com/ebs/latest/userguide/#delete).
+#' policies](https://docs.aws.amazon.com/ebs/latest/userguide/delete.html#delete).
 #'
 #' @usage
 #' dlm_delete_lifecycle_policy(PolicyId)
@@ -869,7 +869,7 @@ dlm_untag_resource <- function(ResourceArn, TagKeys) {
 #' Updates the specified lifecycle policy.
 #' 
 #' For more information about updating a policy, see [Modify lifecycle
-#' policies](https://docs.aws.amazon.com/ebs/latest/userguide/#modify).
+#' policies](https://docs.aws.amazon.com/ebs/latest/userguide/delete.html#modify).
 #'
 #' @usage
 #' dlm_update_lifecycle_policy(PolicyId, ExecutionRoleArn, State,

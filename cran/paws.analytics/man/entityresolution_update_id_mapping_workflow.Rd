@@ -5,19 +5,18 @@
 \title{Updates an existing IdMappingWorkflow}
 \usage{
 entityresolution_update_id_mapping_workflow(
+  workflowName,
   description = NULL,
-  idMappingTechniques,
   inputSourceConfig,
   outputSourceConfig = NULL,
-  roleArn = NULL,
-  workflowName
+  idMappingTechniques,
+  roleArn = NULL
 )
 }
 \arguments{
-\item{description}{A description of the workflow.}
+\item{workflowName}{[required] The name of the workflow.}
 
-\item{idMappingTechniques}{[required] An object which defines the ID mapping technique and any additional
-configurations.}
+\item{description}{A description of the workflow.}
 
 \item{inputSourceConfig}{[required] A list of \code{InputSource} objects, which have the fields \code{InputSourceARN}
 and \code{SchemaName}.}
@@ -25,11 +24,12 @@ and \code{SchemaName}.}
 \item{outputSourceConfig}{A list of \code{OutputSource} objects, each of which contains fields
 \code{OutputS3Path} and \code{KMSArn}.}
 
+\item{idMappingTechniques}{[required] An object which defines the ID mapping technique and any additional
+configurations.}
+
 \item{roleArn}{The Amazon Resource Name (ARN) of the IAM role. Entity Resolution
 assumes this role to access Amazon Web Services resources on your
 behalf.}
-
-\item{workflowName}{[required] The name of the workflow.}
 }
 \description{
 Updates an existing \code{IdMappingWorkflow}. This method is identical to \code{\link[=entityresolution_create_id_mapping_workflow]{create_id_mapping_workflow}}, except it uses an HTTP \code{PUT} request instead of a \code{POST} request, and the \code{IdMappingWorkflow} must already exist for the method to succeed.

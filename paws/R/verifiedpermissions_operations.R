@@ -839,7 +839,7 @@ verifiedpermissions_create_policy <- function(clientToken = NULL, policyStoreId,
 #'
 #' @usage
 #' verifiedpermissions_create_policy_store(clientToken, validationSettings,
-#'   description)
+#'   description, deletionProtection)
 #'
 #' @param clientToken Specifies a unique, case-sensitive ID that you provide to ensure the
 #' idempotency of the request. This lets you safely retry the request
@@ -872,6 +872,10 @@ verifiedpermissions_create_policy <- function(clientToken = NULL, policyStoreId,
 #' to turn validation back on.
 #' @param description Descriptive text that you can provide to help with identification of the
 #' current policy store.
+#' @param deletionProtection Specifies whether the policy store can be deleted. If enabled, the
+#' policy store can't be deleted.
+#' 
+#' The default state is `DISABLED`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -895,7 +899,8 @@ verifiedpermissions_create_policy <- function(clientToken = NULL, policyStoreId,
 #'   validationSettings = list(
 #'     mode = "OFF"|"STRICT"
 #'   ),
-#'   description = "string"
+#'   description = "string",
+#'   deletionProtection = "ENABLED"|"DISABLED"
 #' )
 #' ```
 #'
@@ -904,7 +909,7 @@ verifiedpermissions_create_policy <- function(clientToken = NULL, policyStoreId,
 #' @rdname verifiedpermissions_create_policy_store
 #'
 #' @aliases verifiedpermissions_create_policy_store
-verifiedpermissions_create_policy_store <- function(clientToken = NULL, validationSettings, description = NULL) {
+verifiedpermissions_create_policy_store <- function(clientToken = NULL, validationSettings, description = NULL, deletionProtection = NULL) {
   op <- new_operation(
     name = "CreatePolicyStore",
     http_method = "POST",
@@ -913,7 +918,7 @@ verifiedpermissions_create_policy_store <- function(clientToken = NULL, validati
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .verifiedpermissions$create_policy_store_input(clientToken = clientToken, validationSettings = validationSettings, description = description)
+  input <- .verifiedpermissions$create_policy_store_input(clientToken = clientToken, validationSettings = validationSettings, description = description, deletionProtection = deletionProtection)
   output <- .verifiedpermissions$create_policy_store_output()
   config <- get_config()
   svc <- .verifiedpermissions$service(config, op)
@@ -1438,7 +1443,8 @@ verifiedpermissions_get_policy <- function(policyStoreId, policyId) {
 #'   lastUpdatedDate = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   description = "string"
+#'   description = "string",
+#'   deletionProtection = "ENABLED"|"DISABLED"
 #' )
 #' ```
 #'
@@ -2694,11 +2700,17 @@ verifiedpermissions_update_policy <- function(policyStoreId, policyId, definitio
 #'
 #' @usage
 #' verifiedpermissions_update_policy_store(policyStoreId,
-#'   validationSettings, description)
+#'   validationSettings, deletionProtection, description)
 #'
 #' @param policyStoreId &#91;required&#93; Specifies the ID of the policy store that you want to update
 #' @param validationSettings &#91;required&#93; A structure that defines the validation settings that want to enable for
 #' the policy store.
+#' @param deletionProtection Specifies whether the policy store can be deleted. If enabled, the
+#' policy store can't be deleted.
+#' 
+#' When you call
+#' [`update_policy_store`][verifiedpermissions_update_policy_store], this
+#' parameter is unchanged unless explicitly included in the call.
 #' @param description Descriptive text that you can provide to help with identification of the
 #' current policy store.
 #'
@@ -2724,6 +2736,7 @@ verifiedpermissions_update_policy <- function(policyStoreId, policyId, definitio
 #'   validationSettings = list(
 #'     mode = "OFF"|"STRICT"
 #'   ),
+#'   deletionProtection = "ENABLED"|"DISABLED",
 #'   description = "string"
 #' )
 #' ```
@@ -2733,7 +2746,7 @@ verifiedpermissions_update_policy <- function(policyStoreId, policyId, definitio
 #' @rdname verifiedpermissions_update_policy_store
 #'
 #' @aliases verifiedpermissions_update_policy_store
-verifiedpermissions_update_policy_store <- function(policyStoreId, validationSettings, description = NULL) {
+verifiedpermissions_update_policy_store <- function(policyStoreId, validationSettings, deletionProtection = NULL, description = NULL) {
   op <- new_operation(
     name = "UpdatePolicyStore",
     http_method = "POST",
@@ -2742,7 +2755,7 @@ verifiedpermissions_update_policy_store <- function(policyStoreId, validationSet
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .verifiedpermissions$update_policy_store_input(policyStoreId = policyStoreId, validationSettings = validationSettings, description = description)
+  input <- .verifiedpermissions$update_policy_store_input(policyStoreId = policyStoreId, validationSettings = validationSettings, deletionProtection = deletionProtection, description = description)
   output <- .verifiedpermissions$update_policy_store_output()
   config <- get_config()
   svc <- .verifiedpermissions$service(config, op)

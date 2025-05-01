@@ -2,7 +2,7 @@
 % Please edit documentation in R/memorydb_operations.R
 \name{memorydb_tag_resource}
 \alias{memorydb_tag_resource}
-\title{A tag is a key-value pair where the key and value are case-sensitive}
+\title{Use this operation to add tags to a resource}
 \usage{
 memorydb_tag_resource(ResourceArn, Tags)
 }
@@ -14,7 +14,7 @@ be added.}
 A tag key must be accompanied by a tag value, although null is accepted.}
 }
 \description{
-A tag is a key-value pair where the key and value are case-sensitive. You can use tags to categorize and track all your MemoryDB resources. When you add or remove tags on clusters, those actions will be replicated to all nodes in the cluster. For more information, see \href{https://docs.aws.amazon.com/memorydb/latest/devguide/iam.resourcelevelpermissions.html}{Resource-level permissions}.
+Use this operation to add tags to a resource. A tag is a key-value pair where the key and value are case-sensitive. You can use tags to categorize and track all your MemoryDB resources. For more information, see \href{https://docs.aws.amazon.com/memorydb/latest/devguide/}{Tagging your MemoryDB resources}.
 
 See \url{https://www.paws-r-sdk.com/docs/memorydb_tag_resource/} for full documentation.
 }

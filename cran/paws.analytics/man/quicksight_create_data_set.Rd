@@ -21,7 +21,8 @@ quicksight_create_data_set(
   DataSetUsageConfiguration = NULL,
   DatasetParameters = NULL,
   FolderArns = NULL,
-  PerformanceConfiguration = NULL
+  PerformanceConfiguration = NULL,
+  UseAs = NULL
 )
 }
 \arguments{
@@ -68,6 +69,9 @@ folders.}
 
 \item{PerformanceConfiguration}{The configuration for the performance optimization of the dataset that
 contains a \code{UniqueKey} configuration.}
+
+\item{UseAs}{The usage of the dataset. \code{RLS_RULES} must be specified for RLS
+permission datasets.}
 }
 \description{
 Creates a dataset. This operation doesn't support datasets that include uploaded files as a source.

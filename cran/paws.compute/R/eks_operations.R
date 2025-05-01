@@ -387,8 +387,8 @@ eks_create_addon <- function(clusterName, addonName, addonVersion = NULL, servic
 #' Shift in Amazon
 #' EKS](https://docs.aws.amazon.com/eks/latest/userguide/zone-shift.html)
 #' in the *Amazon EKS User Guide* .
-#' @param remoteNetworkConfig The configuration in the cluster for EKS Hybrid Nodes. You can't change
-#' or update this configuration after the cluster is created.
+#' @param remoteNetworkConfig The configuration in the cluster for EKS Hybrid Nodes. You can add,
+#' change, or remove this configuration after the cluster is created.
 #' @param computeConfig Enable or disable the compute capability of EKS Auto Mode when creating
 #' your EKS Auto Mode cluster. If the compute capability is enabled, EKS
 #' Auto Mode will create and delete EC2 Managed Instances in your Amazon
@@ -608,9 +608,12 @@ eks_create_fargate_profile <- function(fargateProfileName, clusterName, podExecu
 #' idempotency of the request.
 #' @param launchTemplate An object representing a node group's launch template specification.
 #' When using this object, don't directly specify `instanceTypes`,
-#' `diskSize`, or `remoteAccess`. Make sure that the launch template meets
-#' the requirements in `launchTemplateSpecification`. Also refer to
-#' [Customizing managed nodes with launch
+#' `diskSize`, or `remoteAccess`. You cannot later specify a different
+#' launch template ID or name than what was used to create the node group.
+#' 
+#' Make sure that the launch template meets the requirements in
+#' `launchTemplateSpecification`. Also refer to [Customizing managed nodes
+#' with launch
 #' templates](https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html)
 #' in the *Amazon EKS User Guide*.
 #' @param updateConfig The node group update configuration.
@@ -2378,7 +2381,7 @@ eks_update_addon <- function(clusterName, addonName, addonVersion = NULL, servic
 #' Updates an Amazon EKS cluster configuration
 #'
 #' @description
-#' Updates an Amazon EKS cluster configuration. Your cluster continues to function during the update. The response output includes an update ID that you can use to track the status of your cluster update with [`describe_update`][eks_describe_update]"/\>.
+#' Updates an Amazon EKS cluster configuration. Your cluster continues to function during the update. The response output includes an update ID that you can use to track the status of your cluster update with [`describe_update`][eks_describe_update].
 #'
 #' See [https://www.paws-r-sdk.com/docs/eks_update_cluster_config/](https://www.paws-r-sdk.com/docs/eks_update_cluster_config/) for full documentation.
 #'
@@ -2426,11 +2429,12 @@ eks_update_addon <- function(clusterName, addonName, addonVersion = NULL, servic
 #' @param kubernetesNetworkConfig 
 #' @param storageConfig Update the configuration of the block storage capability of your EKS
 #' Auto Mode cluster. For example, enable the capability.
+#' @param remoteNetworkConfig 
 #'
 #' @keywords internal
 #'
 #' @rdname eks_update_cluster_config
-eks_update_cluster_config <- function(name, resourcesVpcConfig = NULL, logging = NULL, clientRequestToken = NULL, accessConfig = NULL, upgradePolicy = NULL, zonalShiftConfig = NULL, computeConfig = NULL, kubernetesNetworkConfig = NULL, storageConfig = NULL) {
+eks_update_cluster_config <- function(name, resourcesVpcConfig = NULL, logging = NULL, clientRequestToken = NULL, accessConfig = NULL, upgradePolicy = NULL, zonalShiftConfig = NULL, computeConfig = NULL, kubernetesNetworkConfig = NULL, storageConfig = NULL, remoteNetworkConfig = NULL) {
   op <- new_operation(
     name = "UpdateClusterConfig",
     http_method = "POST",
@@ -2439,7 +2443,7 @@ eks_update_cluster_config <- function(name, resourcesVpcConfig = NULL, logging =
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .eks$update_cluster_config_input(name = name, resourcesVpcConfig = resourcesVpcConfig, logging = logging, clientRequestToken = clientRequestToken, accessConfig = accessConfig, upgradePolicy = upgradePolicy, zonalShiftConfig = zonalShiftConfig, computeConfig = computeConfig, kubernetesNetworkConfig = kubernetesNetworkConfig, storageConfig = storageConfig)
+  input <- .eks$update_cluster_config_input(name = name, resourcesVpcConfig = resourcesVpcConfig, logging = logging, clientRequestToken = clientRequestToken, accessConfig = accessConfig, upgradePolicy = upgradePolicy, zonalShiftConfig = zonalShiftConfig, computeConfig = computeConfig, kubernetesNetworkConfig = kubernetesNetworkConfig, storageConfig = storageConfig, remoteNetworkConfig = remoteNetworkConfig)
   output <- .eks$update_cluster_config_output()
   config <- get_config()
   svc <- .eks$service(config, op)
@@ -2460,11 +2464,13 @@ eks_update_cluster_config <- function(name, resourcesVpcConfig = NULL, logging =
 #' @param version &#91;required&#93; The desired Kubernetes version following a successful update.
 #' @param clientRequestToken A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request.
+#' @param force Set this value to `true` to override upgrade-blocking readiness checks
+#' when updating a cluster.
 #'
 #' @keywords internal
 #'
 #' @rdname eks_update_cluster_version
-eks_update_cluster_version <- function(name, version, clientRequestToken = NULL) {
+eks_update_cluster_version <- function(name, version, clientRequestToken = NULL, force = NULL) {
   op <- new_operation(
     name = "UpdateClusterVersion",
     http_method = "POST",
@@ -2473,7 +2479,7 @@ eks_update_cluster_version <- function(name, version, clientRequestToken = NULL)
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .eks$update_cluster_version_input(name = name, version = version, clientRequestToken = clientRequestToken)
+  input <- .eks$update_cluster_version_input(name = name, version = version, clientRequestToken = clientRequestToken, force = force)
   output <- .eks$update_cluster_version_output()
   config <- get_config()
   svc <- .eks$service(config, op)
@@ -2601,7 +2607,9 @@ eks_update_nodegroup_config <- function(clusterName, nodegroupName, labels = NUL
 #' in the *Amazon EKS User Guide*.
 #' @param launchTemplate An object representing a node group's launch template specification. You
 #' can only update a node group using a launch template if the node group
-#' was originally deployed with a launch template.
+#' was originally deployed with a launch template. When updating, you must
+#' specify the same launch template ID or name that was used to create the
+#' node group.
 #' @param force Force the update if any `Pod` on the existing node group can't be
 #' drained due to a `Pod` disruption budget issue. If an update fails
 #' because all Pods can't be drained, you can force the update after it

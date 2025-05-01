@@ -560,7 +560,11 @@ datazone_create_data_product_revision <- function(clientToken = NULL, descriptio
 #' @param recommendation Specifies whether the business name generation is to be enabled for this
 #' data source.
 #' @param schedule The schedule of the data source runs.
-#' @param type &#91;required&#93; The type of the data source.
+#' @param type &#91;required&#93; The type of the data source. In Amazon DataZone, you can use data
+#' sources to import technical metadata of assets (data) from the source
+#' databases or data warehouses into Amazon DataZone. In the current
+#' release of Amazon DataZone, you can create and run data sources for
+#' Amazon Web Services Glue and Amazon Redshift.
 #'
 #' @keywords internal
 #'
@@ -5604,6 +5608,8 @@ datazone_update_domain_unit <- function(description = NULL, domainIdentifier, id
 #'
 #' See [https://www.paws-r-sdk.com/docs/datazone_update_environment/](https://www.paws-r-sdk.com/docs/datazone_update_environment/) for full documentation.
 #'
+#' @param blueprintVersion The blueprint version to which the environment should be updated. You
+#' can only specify the following string for this parameter: `latest`.
 #' @param description The description to be updated as part of the
 #' [`update_environment`][datazone_update_environment] action.
 #' @param domainIdentifier &#91;required&#93; The identifier of the domain in which the environment is to be updated.
@@ -5612,11 +5618,12 @@ datazone_update_domain_unit <- function(description = NULL, domainIdentifier, id
 #' @param identifier &#91;required&#93; The identifier of the environment that is to be updated.
 #' @param name The name to be updated as part of the
 #' [`update_environment`][datazone_update_environment] action.
+#' @param userParameters The user parameters of the environment.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_update_environment
-datazone_update_environment <- function(description = NULL, domainIdentifier, glossaryTerms = NULL, identifier, name = NULL) {
+datazone_update_environment <- function(blueprintVersion = NULL, description = NULL, domainIdentifier, glossaryTerms = NULL, identifier, name = NULL, userParameters = NULL) {
   op <- new_operation(
     name = "UpdateEnvironment",
     http_method = "PATCH",
@@ -5625,7 +5632,7 @@ datazone_update_environment <- function(description = NULL, domainIdentifier, gl
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$update_environment_input(description = description, domainIdentifier = domainIdentifier, glossaryTerms = glossaryTerms, identifier = identifier, name = name)
+  input <- .datazone$update_environment_input(blueprintVersion = blueprintVersion, description = description, domainIdentifier = domainIdentifier, glossaryTerms = glossaryTerms, identifier = identifier, name = name, userParameters = userParameters)
   output <- .datazone$update_environment_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -5853,11 +5860,14 @@ datazone_update_group_profile <- function(domainIdentifier, groupIdentifier, sta
 #' @param identifier &#91;required&#93; The identifier of the project that is to be updated.
 #' @param name The name to be updated as part of the
 #' [`update_project`][datazone_update_project] action.
+#' @param projectProfileVersion The project profile version to which the project should be updated. You
+#' can only specify the following string for this parameter: `latest`.
+#' @param userParameters The user parameters of the project.
 #'
 #' @keywords internal
 #'
 #' @rdname datazone_update_project
-datazone_update_project <- function(description = NULL, domainIdentifier, environmentDeploymentDetails = NULL, glossaryTerms = NULL, identifier, name = NULL) {
+datazone_update_project <- function(description = NULL, domainIdentifier, environmentDeploymentDetails = NULL, glossaryTerms = NULL, identifier, name = NULL, projectProfileVersion = NULL, userParameters = NULL) {
   op <- new_operation(
     name = "UpdateProject",
     http_method = "PATCH",
@@ -5866,7 +5876,7 @@ datazone_update_project <- function(description = NULL, domainIdentifier, enviro
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .datazone$update_project_input(description = description, domainIdentifier = domainIdentifier, environmentDeploymentDetails = environmentDeploymentDetails, glossaryTerms = glossaryTerms, identifier = identifier, name = name)
+  input <- .datazone$update_project_input(description = description, domainIdentifier = domainIdentifier, environmentDeploymentDetails = environmentDeploymentDetails, glossaryTerms = glossaryTerms, identifier = identifier, name = name, projectProfileVersion = projectProfileVersion, userParameters = userParameters)
   output <- .datazone$update_project_output()
   config <- get_config()
   svc <- .datazone$service(config, op)

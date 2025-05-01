@@ -25,13 +25,17 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{InstanceType}{The type of instance for which the Capacity Block offering reserves
 capacity.}
 
-\item{InstanceCount}{The number of instances for which to reserve capacity.}
+\item{InstanceCount}{The number of instances for which to reserve capacity. Each Capacity
+Block can have up to 64 instances, and you can have up to 256 instances
+across Capacity Blocks.}
 
 \item{StartDateRange}{The earliest start date for the Capacity Block offering.}
 
 \item{EndDateRange}{The latest end date for the Capacity Block offering.}
 
-\item{CapacityDurationHours}{[required] The number of hours for which to reserve Capacity Block.}
+\item{CapacityDurationHours}{[required] The reservation duration for the Capacity Block, in hours. You must
+specify the duration in 1-day increments up 14 days, and in 7-day
+increments up to 182 days.}
 
 \item{NextToken}{The token to use to retrieve the next page of results.}
 

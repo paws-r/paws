@@ -12,6 +12,10 @@ test_that("describe_job_queues", {
   expect_error(svc$describe_job_queues(), NA)
 })
 
+test_that("list_consumable_resources", {
+  expect_error(svc$list_consumable_resources(), NA)
+})
+
 test_that("list_scheduling_policies", {
   expect_error(svc$list_scheduling_policies(), NA)
 })

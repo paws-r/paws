@@ -13,33 +13,30 @@ cognitoidentityprovider_update_user_pool_domain(
 )
 }
 \arguments{
-\item{Domain}{[required] The domain name for the custom domain that hosts the sign-up and sign-in
-pages for your application. One example might be \code{auth.example.com}.
+\item{Domain}{[required] The name of the domain that you want to update. For custom domains, this
+is the fully-qualified domain name, for example \code{auth.example.com}. For
+prefix domains, this is the prefix alone, such as \code{myprefix}.}
 
-This string can include only lowercase letters, numbers, and hyphens.
-Don't use a hyphen for the first or last character. Use periods to
-separate subdomain names.}
-
-\item{UserPoolId}{[required] The ID of the user pool that is associated with the custom domain whose
-certificate you're updating.}
+\item{UserPoolId}{[required] The ID of the user pool that is associated with the domain you're
+updating.}
 
 \item{ManagedLoginVersion}{A version number that indicates the state of managed login for your
 domain. Version \code{1} is hosted UI (classic). Version \code{2} is the newer
 managed login with the branding designer. For more information, see
 \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-managed-login.html}{Managed login}.}
 
-\item{CustomDomainConfig}{The configuration for a custom domain that hosts the sign-up and sign-in
-pages for your application. Use this object to specify an SSL
-certificate that is managed by ACM.
+\item{CustomDomainConfig}{The configuration for a custom domain that hosts managed login for your
+application. In an
+\code{\link[=cognitoidentityprovider_update_user_pool_domain]{update_user_pool_domain}}
+request, this parameter specifies an SSL certificate for the managed
+login hosted webserver. The certificate must be an ACM ARN in
+\code{us-east-1}.
 
 When you create a custom domain, the passkey RP ID defaults to the
 custom domain. If you had a prefix domain active, this will cause
 passkey integration for your prefix domain to stop working due to a
 mismatch in RP ID. To keep the prefix domain passkey integration
-working, you can explicitly set RP ID to the prefix domain. Update the
-RP ID in a
-\code{\link[=cognitoidentityprovider_set_user_pool_mfa_config]{set_user_pool_mfa_config}}
-request.}
+working, you can explicitly set RP ID to the prefix domain.}
 }
 \description{
 A user pool domain hosts managed login, an authorization server and web server for authentication in your application. This operation updates the branding version for user pool domains between \code{1} for hosted UI (classic) and \code{2} for managed login. It also updates the SSL certificate for user pool custom domains.

@@ -196,10 +196,15 @@ been accidentally revoked.
 
 This setting doesn't apply to the following DB instances:
 \itemize{
-\item Amazon Aurora (The password for the master user is managed by the DB
-cluster. For more information, see
-\code{\link[=rds_modify_db_cluster]{modify_db_cluster}}.)
+\item Amazon Aurora
+
+The password for the master user is managed by the DB cluster. For
+more information, see \code{\link[=rds_modify_db_cluster]{modify_db_cluster}}.
 \item RDS Custom
+\item RDS for Oracle CDBs in the multi-tenant configuration
+
+Specify the master password in
+\code{\link[=rds_modify_tenant_database]{modify_tenant_database}} instead.
 }
 
 Default: Uses existing setting
@@ -379,7 +384,10 @@ If any of the preceding conditions isn't met, Amazon RDS applies the
 change as soon as possible and doesn't cause an outage.
 
 For an RDS Custom DB instance, don't enable this setting. Otherwise, the
-operation returns an error.}
+operation returns an error.
+
+For more information about automatic minor version upgrades, see
+\href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.Upgrading.html#USER_UpgradeDBInstance.Upgrading.AutoMinorVersionUpgrades}{Automatically upgrading the minor engine version}.}
 
 \item{LicenseModel}{The license model for the DB instance.
 
@@ -724,10 +732,11 @@ This setting doesn't apply to RDS Custom DB instances.
 
 The following values are valid for each DB engine:
 \itemize{
-\item Aurora MySQL - \code{audit | error | general | slowquery}
-\item Aurora PostgreSQL - \code{postgresql}
-\item RDS for MySQL - \code{error | general | slowquery}
-\item RDS for PostgreSQL - \code{postgresql | upgrade}
+\item Aurora MySQL -
+\code{audit | error | general | slowquery | iam-db-auth-error}
+\item Aurora PostgreSQL - \code{postgresql | iam-db-auth-error}
+\item RDS for MySQL - \code{error | general | slowquery | iam-db-auth-error}
+\item RDS for PostgreSQL - \code{postgresql | upgrade | iam-db-auth-error}
 }
 
 For more information about exporting CloudWatch Logs for Amazon RDS, see
@@ -880,13 +889,18 @@ Constraints:
 \itemize{
 \item Can't manage the master user password with Amazon Web Services
 Secrets Manager if \code{MasterUserPassword} is specified.
+\item Can't specify for RDS for Oracle CDB instances in the multi-tenant
+configuration. Use
+\code{\link[=rds_modify_tenant_database]{modify_tenant_database}} instead.
+\item Can't specify the parameters \code{ManageMasterUserPassword} and
+\code{MultiTenant} in the same operation.
 }}
 
 \item{RotateMasterUserPassword}{Specifies whether to rotate the secret managed by Amazon Web Services
 Secrets Manager for the master user password.
 
 This setting is valid only if the master user password is managed by RDS
-in Amazon Web Services Secrets Manager for the DB cluster. The secret
+in Amazon Web Services Secrets Manager for the DB instance. The secret
 value contains the updated password.
 
 For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-secrets-manager.html}{Password management with Amazon Web Services Secrets Manager}

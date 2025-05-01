@@ -72,9 +72,7 @@ by the VPC endpoint service.
 To use a private hosted zone, you must set the following VPC attributes
 to \code{true}: \code{enableDnsHostnames} and \code{enableDnsSupport}. Use
 \code{\link[=ec2_modify_vpc_attribute]{modify_vpc_attribute}} to set the VPC
-attributes.
-
-Default: \code{true}}
+attributes.}
 
 \item{TagSpecifications}{The tags to associate with the endpoint.}
 

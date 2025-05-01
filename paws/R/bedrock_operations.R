@@ -155,6 +155,32 @@ bedrock_batch_delete_evaluation_job <- function(jobIdentifiers) {
 #'             modelIdentifier = "string"
 #'           )
 #'         )
+#'       ),
+#'       customMetricConfig = list(
+#'         customMetrics = list(
+#'           list(
+#'             customMetricDefinition = list(
+#'               name = "string",
+#'               instructions = "string",
+#'               ratingScale = list(
+#'                 list(
+#'                   definition = "string",
+#'                   value = list(
+#'                     stringValue = "string",
+#'                     floatValue = 123.0
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         evaluatorModelConfig = list(
+#'           bedrockEvaluatorModels = list(
+#'             list(
+#'               modelIdentifier = "string"
+#'             )
+#'           )
+#'         )
 #'       )
 #'     ),
 #'     human = list(
@@ -194,6 +220,9 @@ bedrock_batch_delete_evaluation_job <- function(jobIdentifiers) {
 #'           performanceConfig = list(
 #'             latency = "standard"|"optimized"
 #'           )
+#'         ),
+#'         precomputedInferenceSource = list(
+#'           inferenceSourceIdentifier = "string"
 #'         )
 #'       )
 #'     ),
@@ -391,6 +420,14 @@ bedrock_batch_delete_evaluation_job <- function(jobIdentifiers) {
 #'               )
 #'             )
 #'           )
+#'         ),
+#'         precomputedRagSourceConfig = list(
+#'           retrieveSourceConfig = list(
+#'             ragSourceIdentifier = "string"
+#'           ),
+#'           retrieveAndGenerateSourceConfig = list(
+#'             ragSourceIdentifier = "string"
+#'           )
 #'         )
 #'       )
 #'     )
@@ -510,7 +547,11 @@ bedrock_create_evaluation_job <- function(jobName, jobDescription = NULL, client
 #'         examples = list(
 #'           "string"
 #'         ),
-#'         type = "DENY"
+#'         type = "DENY",
+#'         inputAction = "BLOCK"|"NONE",
+#'         outputAction = "BLOCK"|"NONE",
+#'         inputEnabled = TRUE|FALSE,
+#'         outputEnabled = TRUE|FALSE
 #'       )
 #'     )
 #'   ),
@@ -525,19 +566,31 @@ bedrock_create_evaluation_job <- function(jobName, jobDescription = NULL, client
 #'         ),
 #'         outputModalities = list(
 #'           "TEXT"|"IMAGE"
-#'         )
+#'         ),
+#'         inputAction = "BLOCK"|"NONE",
+#'         outputAction = "BLOCK"|"NONE",
+#'         inputEnabled = TRUE|FALSE,
+#'         outputEnabled = TRUE|FALSE
 #'       )
 #'     )
 #'   ),
 #'   wordPolicyConfig = list(
 #'     wordsConfig = list(
 #'       list(
-#'         text = "string"
+#'         text = "string",
+#'         inputAction = "BLOCK"|"NONE",
+#'         outputAction = "BLOCK"|"NONE",
+#'         inputEnabled = TRUE|FALSE,
+#'         outputEnabled = TRUE|FALSE
 #'       )
 #'     ),
 #'     managedWordListsConfig = list(
 #'       list(
-#'         type = "PROFANITY"
+#'         type = "PROFANITY",
+#'         inputAction = "BLOCK"|"NONE",
+#'         outputAction = "BLOCK"|"NONE",
+#'         inputEnabled = TRUE|FALSE,
+#'         outputEnabled = TRUE|FALSE
 #'       )
 #'     )
 #'   ),
@@ -545,7 +598,11 @@ bedrock_create_evaluation_job <- function(jobName, jobDescription = NULL, client
 #'     piiEntitiesConfig = list(
 #'       list(
 #'         type = "ADDRESS"|"AGE"|"AWS_ACCESS_KEY"|"AWS_SECRET_KEY"|"CA_HEALTH_NUMBER"|"CA_SOCIAL_INSURANCE_NUMBER"|"CREDIT_DEBIT_CARD_CVV"|"CREDIT_DEBIT_CARD_EXPIRY"|"CREDIT_DEBIT_CARD_NUMBER"|"DRIVER_ID"|"EMAIL"|"INTERNATIONAL_BANK_ACCOUNT_NUMBER"|"IP_ADDRESS"|"LICENSE_PLATE"|"MAC_ADDRESS"|"NAME"|"PASSWORD"|"PHONE"|"PIN"|"SWIFT_CODE"|"UK_NATIONAL_HEALTH_SERVICE_NUMBER"|"UK_NATIONAL_INSURANCE_NUMBER"|"UK_UNIQUE_TAXPAYER_REFERENCE_NUMBER"|"URL"|"USERNAME"|"US_BANK_ACCOUNT_NUMBER"|"US_BANK_ROUTING_NUMBER"|"US_INDIVIDUAL_TAX_IDENTIFICATION_NUMBER"|"US_PASSPORT_NUMBER"|"US_SOCIAL_SECURITY_NUMBER"|"VEHICLE_IDENTIFICATION_NUMBER",
-#'         action = "BLOCK"|"ANONYMIZE"
+#'         action = "BLOCK"|"ANONYMIZE"|"NONE",
+#'         inputAction = "BLOCK"|"ANONYMIZE"|"NONE",
+#'         outputAction = "BLOCK"|"ANONYMIZE"|"NONE",
+#'         inputEnabled = TRUE|FALSE,
+#'         outputEnabled = TRUE|FALSE
 #'       )
 #'     ),
 #'     regexesConfig = list(
@@ -553,7 +610,11 @@ bedrock_create_evaluation_job <- function(jobName, jobDescription = NULL, client
 #'         name = "string",
 #'         description = "string",
 #'         pattern = "string",
-#'         action = "BLOCK"|"ANONYMIZE"
+#'         action = "BLOCK"|"ANONYMIZE"|"NONE",
+#'         inputAction = "BLOCK"|"ANONYMIZE"|"NONE",
+#'         outputAction = "BLOCK"|"ANONYMIZE"|"NONE",
+#'         inputEnabled = TRUE|FALSE,
+#'         outputEnabled = TRUE|FALSE
 #'       )
 #'     )
 #'   ),
@@ -561,7 +622,9 @@ bedrock_create_evaluation_job <- function(jobName, jobDescription = NULL, client
 #'     filtersConfig = list(
 #'       list(
 #'         type = "GROUNDING"|"RELEVANCE",
-#'         threshold = 123.0
+#'         threshold = 123.0,
+#'         action = "BLOCK"|"NONE",
+#'         enabled = TRUE|FALSE
 #'       )
 #'     )
 #'   ),
@@ -1002,7 +1065,7 @@ bedrock_create_model_copy_job <- function(sourceModelArn, targetModelName, model
 #' @param vpcConfig The configuration of the Virtual Private Cloud (VPC) that contains the
 #' resources that you're using for this job. For more information, see
 #' [Protect your model customization jobs using a
-#' VPC](https://docs.aws.amazon.com/bedrock/latest/userguide/vpc-model-customization.html).
+#' VPC](https://docs.aws.amazon.com/bedrock/latest/userguide/).
 #' @param customizationConfig The customization configuration for the model customization job.
 #'
 #' @return
@@ -1338,6 +1401,90 @@ bedrock_create_model_invocation_job <- function(jobName, roleArn, clientRequestT
   return(response)
 }
 .bedrock$operations$create_model_invocation_job <- bedrock_create_model_invocation_job
+
+#' Creates a prompt router that manages the routing of requests between
+#' multiple foundation models based on the routing criteria
+#'
+#' @description
+#' Creates a prompt router that manages the routing of requests between
+#' multiple foundation models based on the routing criteria.
+#'
+#' @usage
+#' bedrock_create_prompt_router(clientRequestToken, promptRouterName,
+#'   models, description, routingCriteria, fallbackModel, tags)
+#'
+#' @param clientRequestToken A unique, case-sensitive identifier that you provide to ensure
+#' idempotency of your requests. If not specified, the Amazon Web Services
+#' SDK automatically generates one for you.
+#' @param promptRouterName &#91;required&#93; The name of the prompt router. The name must be unique within your
+#' Amazon Web Services account in the current region.
+#' @param models &#91;required&#93; A list of foundation models that the prompt router can route requests
+#' to. At least one model must be specified.
+#' @param description An optional description of the prompt router to help identify its
+#' purpose.
+#' @param routingCriteria &#91;required&#93; The criteria, which is the response quality difference, used to
+#' determine how incoming requests are routed to different models.
+#' @param fallbackModel &#91;required&#93; The default model to use when the routing criteria is not met.
+#' @param tags An array of key-value pairs to apply to this resource as tags. You can
+#' use tags to categorize and manage your Amazon Web Services resources.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   promptRouterArn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_prompt_router(
+#'   clientRequestToken = "string",
+#'   promptRouterName = "string",
+#'   models = list(
+#'     list(
+#'       modelArn = "string"
+#'     )
+#'   ),
+#'   description = "string",
+#'   routingCriteria = list(
+#'     responseQualityDifference = 123.0
+#'   ),
+#'   fallbackModel = list(
+#'     modelArn = "string"
+#'   ),
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrock_create_prompt_router
+#'
+#' @aliases bedrock_create_prompt_router
+bedrock_create_prompt_router <- function(clientRequestToken = NULL, promptRouterName, models, description = NULL, routingCriteria, fallbackModel, tags = NULL) {
+  op <- new_operation(
+    name = "CreatePromptRouter",
+    http_method = "POST",
+    http_path = "/prompt-routers",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrock$create_prompt_router_input(clientRequestToken = clientRequestToken, promptRouterName = promptRouterName, models = models, description = description, routingCriteria = routingCriteria, fallbackModel = fallbackModel, tags = tags)
+  output <- .bedrock$create_prompt_router_output()
+  config <- get_config()
+  svc <- .bedrock$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrock$operations$create_prompt_router <- bedrock_create_prompt_router
 
 #' Creates dedicated throughput for a base or custom model with the model
 #' units and for the duration that you specify
@@ -1729,6 +1876,50 @@ bedrock_delete_model_invocation_logging_configuration <- function() {
 }
 .bedrock$operations$delete_model_invocation_logging_configuration <- bedrock_delete_model_invocation_logging_configuration
 
+#' Deletes a specified prompt router
+#'
+#' @description
+#' Deletes a specified prompt router. This action cannot be undone.
+#'
+#' @usage
+#' bedrock_delete_prompt_router(promptRouterArn)
+#'
+#' @param promptRouterArn &#91;required&#93; The Amazon Resource Name (ARN) of the prompt router to delete.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_prompt_router(
+#'   promptRouterArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrock_delete_prompt_router
+#'
+#' @aliases bedrock_delete_prompt_router
+bedrock_delete_prompt_router <- function(promptRouterArn) {
+  op <- new_operation(
+    name = "DeletePromptRouter",
+    http_method = "DELETE",
+    http_path = "/prompt-routers/{promptRouterArn}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrock$delete_prompt_router_input(promptRouterArn = promptRouterArn)
+  output <- .bedrock$delete_prompt_router_output()
+  config <- get_config()
+  svc <- .bedrock$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrock$operations$delete_prompt_router <- bedrock_delete_prompt_router
+
 #' Deletes a Provisioned Throughput
 #'
 #' @description
@@ -1998,6 +2189,32 @@ bedrock_get_custom_model <- function(modelIdentifier) {
 #'             modelIdentifier = "string"
 #'           )
 #'         )
+#'       ),
+#'       customMetricConfig = list(
+#'         customMetrics = list(
+#'           list(
+#'             customMetricDefinition = list(
+#'               name = "string",
+#'               instructions = "string",
+#'               ratingScale = list(
+#'                 list(
+#'                   definition = "string",
+#'                   value = list(
+#'                     stringValue = "string",
+#'                     floatValue = 123.0
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         evaluatorModelConfig = list(
+#'           bedrockEvaluatorModels = list(
+#'             list(
+#'               modelIdentifier = "string"
+#'             )
+#'           )
+#'         )
 #'       )
 #'     ),
 #'     human = list(
@@ -2037,6 +2254,9 @@ bedrock_get_custom_model <- function(modelIdentifier) {
 #'           performanceConfig = list(
 #'             latency = "standard"|"optimized"
 #'           )
+#'         ),
+#'         precomputedInferenceSource = list(
+#'           inferenceSourceIdentifier = "string"
 #'         )
 #'       )
 #'     ),
@@ -2234,6 +2454,14 @@ bedrock_get_custom_model <- function(modelIdentifier) {
 #'               )
 #'             )
 #'           )
+#'         ),
+#'         precomputedRagSourceConfig = list(
+#'           retrieveSourceConfig = list(
+#'             ragSourceIdentifier = "string"
+#'           ),
+#'           retrieveAndGenerateSourceConfig = list(
+#'             ragSourceIdentifier = "string"
+#'           )
 #'         )
 #'       )
 #'     )
@@ -2386,7 +2614,11 @@ bedrock_get_foundation_model <- function(modelIdentifier) {
 #'         examples = list(
 #'           "string"
 #'         ),
-#'         type = "DENY"
+#'         type = "DENY",
+#'         inputAction = "BLOCK"|"NONE",
+#'         outputAction = "BLOCK"|"NONE",
+#'         inputEnabled = TRUE|FALSE,
+#'         outputEnabled = TRUE|FALSE
 #'       )
 #'     )
 #'   ),
@@ -2401,19 +2633,31 @@ bedrock_get_foundation_model <- function(modelIdentifier) {
 #'         ),
 #'         outputModalities = list(
 #'           "TEXT"|"IMAGE"
-#'         )
+#'         ),
+#'         inputAction = "BLOCK"|"NONE",
+#'         outputAction = "BLOCK"|"NONE",
+#'         inputEnabled = TRUE|FALSE,
+#'         outputEnabled = TRUE|FALSE
 #'       )
 #'     )
 #'   ),
 #'   wordPolicy = list(
 #'     words = list(
 #'       list(
-#'         text = "string"
+#'         text = "string",
+#'         inputAction = "BLOCK"|"NONE",
+#'         outputAction = "BLOCK"|"NONE",
+#'         inputEnabled = TRUE|FALSE,
+#'         outputEnabled = TRUE|FALSE
 #'       )
 #'     ),
 #'     managedWordLists = list(
 #'       list(
-#'         type = "PROFANITY"
+#'         type = "PROFANITY",
+#'         inputAction = "BLOCK"|"NONE",
+#'         outputAction = "BLOCK"|"NONE",
+#'         inputEnabled = TRUE|FALSE,
+#'         outputEnabled = TRUE|FALSE
 #'       )
 #'     )
 #'   ),
@@ -2421,7 +2665,11 @@ bedrock_get_foundation_model <- function(modelIdentifier) {
 #'     piiEntities = list(
 #'       list(
 #'         type = "ADDRESS"|"AGE"|"AWS_ACCESS_KEY"|"AWS_SECRET_KEY"|"CA_HEALTH_NUMBER"|"CA_SOCIAL_INSURANCE_NUMBER"|"CREDIT_DEBIT_CARD_CVV"|"CREDIT_DEBIT_CARD_EXPIRY"|"CREDIT_DEBIT_CARD_NUMBER"|"DRIVER_ID"|"EMAIL"|"INTERNATIONAL_BANK_ACCOUNT_NUMBER"|"IP_ADDRESS"|"LICENSE_PLATE"|"MAC_ADDRESS"|"NAME"|"PASSWORD"|"PHONE"|"PIN"|"SWIFT_CODE"|"UK_NATIONAL_HEALTH_SERVICE_NUMBER"|"UK_NATIONAL_INSURANCE_NUMBER"|"UK_UNIQUE_TAXPAYER_REFERENCE_NUMBER"|"URL"|"USERNAME"|"US_BANK_ACCOUNT_NUMBER"|"US_BANK_ROUTING_NUMBER"|"US_INDIVIDUAL_TAX_IDENTIFICATION_NUMBER"|"US_PASSPORT_NUMBER"|"US_SOCIAL_SECURITY_NUMBER"|"VEHICLE_IDENTIFICATION_NUMBER",
-#'         action = "BLOCK"|"ANONYMIZE"
+#'         action = "BLOCK"|"ANONYMIZE"|"NONE",
+#'         inputAction = "BLOCK"|"ANONYMIZE"|"NONE",
+#'         outputAction = "BLOCK"|"ANONYMIZE"|"NONE",
+#'         inputEnabled = TRUE|FALSE,
+#'         outputEnabled = TRUE|FALSE
 #'       )
 #'     ),
 #'     regexes = list(
@@ -2429,7 +2677,11 @@ bedrock_get_foundation_model <- function(modelIdentifier) {
 #'         name = "string",
 #'         description = "string",
 #'         pattern = "string",
-#'         action = "BLOCK"|"ANONYMIZE"
+#'         action = "BLOCK"|"ANONYMIZE"|"NONE",
+#'         inputAction = "BLOCK"|"ANONYMIZE"|"NONE",
+#'         outputAction = "BLOCK"|"ANONYMIZE"|"NONE",
+#'         inputEnabled = TRUE|FALSE,
+#'         outputEnabled = TRUE|FALSE
 #'       )
 #'     )
 #'   ),
@@ -2437,7 +2689,9 @@ bedrock_get_foundation_model <- function(modelIdentifier) {
 #'     filters = list(
 #'       list(
 #'         type = "GROUNDING"|"RELEVANCE",
-#'         threshold = 123.0
+#'         threshold = 123.0,
+#'         action = "BLOCK"|"NONE",
+#'         enabled = TRUE|FALSE
 #'       )
 #'     )
 #'   ),
@@ -2519,7 +2773,11 @@ bedrock_get_guardrail <- function(guardrailIdentifier, guardrailVersion = NULL) 
 #'   ),
 #'   modelArchitecture = "string",
 #'   modelKmsKeyArn = "string",
-#'   instructSupported = TRUE|FALSE
+#'   instructSupported = TRUE|FALSE,
+#'   customModelUnits = list(
+#'     customModelUnitsPerModelCopy = 123,
+#'     customModelUnitsVersion = "string"
+#'   )
 #' )
 #' ```
 #'
@@ -2801,6 +3059,35 @@ bedrock_get_model_copy_job <- function(jobArn) {
 #'   roleArn = "string",
 #'   status = "InProgress"|"Completed"|"Failed"|"Stopping"|"Stopped",
 #'   failureMessage = "string",
+#'   statusDetails = list(
+#'     validationDetails = list(
+#'       status = "InProgress"|"Completed"|"Stopping"|"Stopped"|"Failed"|"NotStarted",
+#'       creationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastModifiedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     ),
+#'     dataProcessingDetails = list(
+#'       status = "InProgress"|"Completed"|"Stopping"|"Stopped"|"Failed"|"NotStarted",
+#'       creationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastModifiedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     ),
+#'     trainingDetails = list(
+#'       status = "InProgress"|"Completed"|"Stopping"|"Stopped"|"Failed"|"NotStarted",
+#'       creationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastModifiedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
 #'   creationTime = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
@@ -3454,6 +3741,27 @@ bedrock_list_custom_models <- function(creationTimeBefore = NULL, creationTimeAf
 #'       evaluatorModelIdentifiers = list(
 #'         "string"
 #'       ),
+#'       customMetricsEvaluatorModelIdentifiers = list(
+#'         "string"
+#'       ),
+#'       inferenceConfigSummary = list(
+#'         modelConfigSummary = list(
+#'           bedrockModelIdentifiers = list(
+#'             "string"
+#'           ),
+#'           precomputedInferenceSourceIdentifiers = list(
+#'             "string"
+#'           )
+#'         ),
+#'         ragConfigSummary = list(
+#'           bedrockKnowledgeBaseIdentifiers = list(
+#'             "string"
+#'           ),
+#'           precomputedRagSourceIdentifiers = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
 #'       applicationType = "ModelEvaluation"|"RagEvaluation"
 #'     )
 #'   )
@@ -4084,6 +4392,35 @@ bedrock_list_model_copy_jobs <- function(creationTimeAfter = NULL, creationTimeB
 #'       lastModifiedTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
+#'       statusDetails = list(
+#'         validationDetails = list(
+#'           status = "InProgress"|"Completed"|"Stopping"|"Stopped"|"Failed"|"NotStarted",
+#'           creationTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           lastModifiedTime = as.POSIXct(
+#'             "2015-01-01"
+#'           )
+#'         ),
+#'         dataProcessingDetails = list(
+#'           status = "InProgress"|"Completed"|"Stopping"|"Stopped"|"Failed"|"NotStarted",
+#'           creationTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           lastModifiedTime = as.POSIXct(
+#'             "2015-01-01"
+#'           )
+#'         ),
+#'         trainingDetails = list(
+#'           status = "InProgress"|"Completed"|"Stopping"|"Stopped"|"Failed"|"NotStarted",
+#'           creationTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           lastModifiedTime = as.POSIXct(
+#'             "2015-01-01"
+#'           )
+#'         )
+#'       ),
 #'       creationTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
@@ -4293,7 +4630,7 @@ bedrock_list_model_import_jobs <- function(creationTimeAfter = NULL, creationTim
 #' 
 #' -   Failed – This job has failed. Check the failure message for any
 #'     further details. For further assistance, reach out to the Amazon Web
-#'     Services Support Center.
+#'     ServicesSupport Center.
 #' 
 #' -   Stopped – This job was stopped by a user.
 #' 
@@ -4414,11 +4751,12 @@ bedrock_list_model_invocation_jobs <- function(submitTimeAfter = NULL, submitTim
 #' Retrieves a list of prompt routers.
 #'
 #' @usage
-#' bedrock_list_prompt_routers(maxResults, nextToken)
+#' bedrock_list_prompt_routers(maxResults, nextToken, type)
 #'
 #' @param maxResults The maximum number of prompt routers to return in one page of results.
 #' @param nextToken Specify the pagination token from a previous request to retrieve the
 #' next page of results.
+#' @param type The type of the prompt routers, such as whether it's default or custom.
 #'
 #' @return
 #' A list with the following syntax:
@@ -4458,7 +4796,8 @@ bedrock_list_model_invocation_jobs <- function(submitTimeAfter = NULL, submitTim
 #' ```
 #' svc$list_prompt_routers(
 #'   maxResults = 123,
-#'   nextToken = "string"
+#'   nextToken = "string",
+#'   type = "custom"|"default"
 #' )
 #' ```
 #'
@@ -4467,7 +4806,7 @@ bedrock_list_model_invocation_jobs <- function(submitTimeAfter = NULL, submitTim
 #' @rdname bedrock_list_prompt_routers
 #'
 #' @aliases bedrock_list_prompt_routers
-bedrock_list_prompt_routers <- function(maxResults = NULL, nextToken = NULL) {
+bedrock_list_prompt_routers <- function(maxResults = NULL, nextToken = NULL, type = NULL) {
   op <- new_operation(
     name = "ListPromptRouters",
     http_method = "GET",
@@ -4476,7 +4815,7 @@ bedrock_list_prompt_routers <- function(maxResults = NULL, nextToken = NULL) {
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "promptRouterSummaries"),
     stream_api = FALSE
   )
-  input <- .bedrock$list_prompt_routers_input(maxResults = maxResults, nextToken = nextToken)
+  input <- .bedrock$list_prompt_routers_input(maxResults = maxResults, nextToken = nextToken, type = type)
   output <- .bedrock$list_prompt_routers_output()
   config <- get_config()
   svc <- .bedrock$service(config, op)
@@ -5131,7 +5470,11 @@ bedrock_untag_resource <- function(resourceARN, tagKeys) {
 #'         examples = list(
 #'           "string"
 #'         ),
-#'         type = "DENY"
+#'         type = "DENY",
+#'         inputAction = "BLOCK"|"NONE",
+#'         outputAction = "BLOCK"|"NONE",
+#'         inputEnabled = TRUE|FALSE,
+#'         outputEnabled = TRUE|FALSE
 #'       )
 #'     )
 #'   ),
@@ -5146,19 +5489,31 @@ bedrock_untag_resource <- function(resourceARN, tagKeys) {
 #'         ),
 #'         outputModalities = list(
 #'           "TEXT"|"IMAGE"
-#'         )
+#'         ),
+#'         inputAction = "BLOCK"|"NONE",
+#'         outputAction = "BLOCK"|"NONE",
+#'         inputEnabled = TRUE|FALSE,
+#'         outputEnabled = TRUE|FALSE
 #'       )
 #'     )
 #'   ),
 #'   wordPolicyConfig = list(
 #'     wordsConfig = list(
 #'       list(
-#'         text = "string"
+#'         text = "string",
+#'         inputAction = "BLOCK"|"NONE",
+#'         outputAction = "BLOCK"|"NONE",
+#'         inputEnabled = TRUE|FALSE,
+#'         outputEnabled = TRUE|FALSE
 #'       )
 #'     ),
 #'     managedWordListsConfig = list(
 #'       list(
-#'         type = "PROFANITY"
+#'         type = "PROFANITY",
+#'         inputAction = "BLOCK"|"NONE",
+#'         outputAction = "BLOCK"|"NONE",
+#'         inputEnabled = TRUE|FALSE,
+#'         outputEnabled = TRUE|FALSE
 #'       )
 #'     )
 #'   ),
@@ -5166,7 +5521,11 @@ bedrock_untag_resource <- function(resourceARN, tagKeys) {
 #'     piiEntitiesConfig = list(
 #'       list(
 #'         type = "ADDRESS"|"AGE"|"AWS_ACCESS_KEY"|"AWS_SECRET_KEY"|"CA_HEALTH_NUMBER"|"CA_SOCIAL_INSURANCE_NUMBER"|"CREDIT_DEBIT_CARD_CVV"|"CREDIT_DEBIT_CARD_EXPIRY"|"CREDIT_DEBIT_CARD_NUMBER"|"DRIVER_ID"|"EMAIL"|"INTERNATIONAL_BANK_ACCOUNT_NUMBER"|"IP_ADDRESS"|"LICENSE_PLATE"|"MAC_ADDRESS"|"NAME"|"PASSWORD"|"PHONE"|"PIN"|"SWIFT_CODE"|"UK_NATIONAL_HEALTH_SERVICE_NUMBER"|"UK_NATIONAL_INSURANCE_NUMBER"|"UK_UNIQUE_TAXPAYER_REFERENCE_NUMBER"|"URL"|"USERNAME"|"US_BANK_ACCOUNT_NUMBER"|"US_BANK_ROUTING_NUMBER"|"US_INDIVIDUAL_TAX_IDENTIFICATION_NUMBER"|"US_PASSPORT_NUMBER"|"US_SOCIAL_SECURITY_NUMBER"|"VEHICLE_IDENTIFICATION_NUMBER",
-#'         action = "BLOCK"|"ANONYMIZE"
+#'         action = "BLOCK"|"ANONYMIZE"|"NONE",
+#'         inputAction = "BLOCK"|"ANONYMIZE"|"NONE",
+#'         outputAction = "BLOCK"|"ANONYMIZE"|"NONE",
+#'         inputEnabled = TRUE|FALSE,
+#'         outputEnabled = TRUE|FALSE
 #'       )
 #'     ),
 #'     regexesConfig = list(
@@ -5174,7 +5533,11 @@ bedrock_untag_resource <- function(resourceARN, tagKeys) {
 #'         name = "string",
 #'         description = "string",
 #'         pattern = "string",
-#'         action = "BLOCK"|"ANONYMIZE"
+#'         action = "BLOCK"|"ANONYMIZE"|"NONE",
+#'         inputAction = "BLOCK"|"ANONYMIZE"|"NONE",
+#'         outputAction = "BLOCK"|"ANONYMIZE"|"NONE",
+#'         inputEnabled = TRUE|FALSE,
+#'         outputEnabled = TRUE|FALSE
 #'       )
 #'     )
 #'   ),
@@ -5182,7 +5545,9 @@ bedrock_untag_resource <- function(resourceARN, tagKeys) {
 #'     filtersConfig = list(
 #'       list(
 #'         type = "GROUNDING"|"RELEVANCE",
-#'         threshold = 123.0
+#'         threshold = 123.0,
+#'         action = "BLOCK"|"NONE",
+#'         enabled = TRUE|FALSE
 #'       )
 #'     )
 #'   ),

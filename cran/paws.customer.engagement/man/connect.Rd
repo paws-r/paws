@@ -131,7 +131,7 @@ Services service. For a list of Amazon Connect endpoints, see \href{https://docs
 \link[=connect_claim_phone_number]{claim_phone_number} \tab Claims an available phone number to your Amazon Connect instance or traffic distribution group\cr
 \link[=connect_complete_attached_file_upload]{complete_attached_file_upload} \tab Allows you to confirm that the attached file has been uploaded using the pre-signed URL provided in the StartAttachedFileUpload API\cr
 \link[=connect_create_agent_status]{create_agent_status} \tab This API is in preview release for Amazon Connect and is subject to change\cr
-\link[=connect_create_contact]{create_contact} \tab Only the EMAIL channel is supported\cr
+\link[=connect_create_contact]{create_contact} \tab Only the EMAIL and VOICE channels are supported\cr
 \link[=connect_create_contact_flow]{create_contact_flow} \tab Creates a flow for the specified Amazon Connect instance\cr
 \link[=connect_create_contact_flow_module]{create_contact_flow_module} \tab Creates a flow module for the specified Amazon Connect instance\cr
 \link[=connect_create_contact_flow_version]{create_contact_flow_version} \tab Publishes a new version of the flow provided\cr
@@ -272,7 +272,7 @@ Services service. For a list of Amazon Connect endpoints, see \href{https://docs
 \link[=connect_list_queue_quick_connects]{list_queue_quick_connects} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 \link[=connect_list_queues]{list_queues} \tab Provides information about the queues for the specified Amazon Connect instance\cr
 \link[=connect_list_quick_connects]{list_quick_connects} \tab Provides information about the quick connects for the specified Amazon Connect instance\cr
-\link[=connect_list_realtime_contact_analysis_segments_v2]{list_realtime_contact_analysis_segments_v2} \tab Provides a list of analysis segments for a real-time analysis session\cr
+\link[=connect_list_realtime_contact_analysis_segments_v2]{list_realtime_contact_analysis_segments_v2} \tab Provides a list of analysis segments for a real-time chat analysis session\cr
 \link[=connect_list_routing_profile_queues]{list_routing_profile_queues} \tab Lists the queues associated with a routing profile\cr
 \link[=connect_list_routing_profiles]{list_routing_profiles} \tab Provides summary information about the routing profiles for the specified Amazon Connect instance\cr
 \link[=connect_list_rules]{list_rules} \tab List all rules for the specified Amazon Connect instance\cr
@@ -333,10 +333,10 @@ Services service. For a list of Amazon Connect endpoints, see \href{https://docs
 \link[=connect_stop_contact_recording]{stop_contact_recording} \tab Stops recording a call when a contact is being recorded\cr
 \link[=connect_stop_contact_streaming]{stop_contact_streaming} \tab Ends message streaming on a specified contact\cr
 \link[=connect_submit_contact_evaluation]{submit_contact_evaluation} \tab Submits a contact evaluation in the specified Amazon Connect instance\cr
-\link[=connect_suspend_contact_recording]{suspend_contact_recording} \tab When a contact is being recorded, this API suspends recording whatever is selected in the flow configuration: call, screen, or both\cr
+\link[=connect_suspend_contact_recording]{suspend_contact_recording} \tab When a contact is being recorded, this API suspends recording whatever is selected in the flow configuration: call (IVR or agent), screen, or both\cr
 \link[=connect_tag_contact]{tag_contact} \tab Adds the specified tags to the contact resource\cr
 \link[=connect_tag_resource]{tag_resource} \tab Adds the specified tags to the specified resource\cr
-\link[=connect_transfer_contact]{transfer_contact} \tab Transfers contacts from one agent or queue to another agent or queue at any point after a contact is created\cr
+\link[=connect_transfer_contact]{transfer_contact} \tab Transfers TASK or EMAIL contacts from one agent or queue to another agent or queue at any point after a contact is created\cr
 \link[=connect_untag_contact]{untag_contact} \tab Removes the specified tags from the contact resource\cr
 \link[=connect_untag_resource]{untag_resource} \tab Removes the specified tags from the specified resource\cr
 \link[=connect_update_agent_status]{update_agent_status} \tab This API is in preview release for Amazon Connect and is subject to change\cr

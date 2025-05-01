@@ -3,20 +3,19 @@
 #' @include marketplacemetering_service.R
 NULL
 
-#' BatchMeterUsage is called from a SaaS application listed on AWS
-#' Marketplace to post metering records for a set of customers
+#' The CustomerIdentifier parameter is scheduled for deprecation
 #'
 #' @description
-#' [`batch_meter_usage`][marketplacemetering_batch_meter_usage] is called from a SaaS application listed on AWS Marketplace to post metering records for a set of customers.
+#' The `CustomerIdentifier` parameter is scheduled for deprecation. Use `CustomerAWSAccountID` instead.
 #'
 #' See [https://www.paws-r-sdk.com/docs/marketplacemetering_batch_meter_usage/](https://www.paws-r-sdk.com/docs/marketplacemetering_batch_meter_usage/) for full documentation.
 #'
 #' @param UsageRecords &#91;required&#93; The set of `UsageRecords` to submit.
 #' [`batch_meter_usage`][marketplacemetering_batch_meter_usage] accepts up
 #' to 25 `UsageRecords` at a time.
-#' @param ProductCode &#91;required&#93; Product code is used to uniquely identify a product in AWS Marketplace.
-#' The product code should be the same as the one used during the
-#' publishing of a new product.
+#' @param ProductCode &#91;required&#93; Product code is used to uniquely identify a product in Amazon Web
+#' Services Marketplace. The product code should be the same as the one
+#' used during the publishing of a new product.
 #'
 #' @keywords internal
 #'
@@ -43,15 +42,15 @@ marketplacemetering_batch_meter_usage <- function(UsageRecords, ProductCode) {
 #' API to emit metering records
 #'
 #' @description
-#' API to emit metering records. For identical requests, the API is idempotent. It simply returns the metering record ID.
+#' API to emit metering records. For identical requests, the API is idempotent and returns the metering record ID. This is used for metering flexible consumption pricing (FCP) Amazon Machine Images (AMI) and container products.
 #'
 #' See [https://www.paws-r-sdk.com/docs/marketplacemetering_meter_usage/](https://www.paws-r-sdk.com/docs/marketplacemetering_meter_usage/) for full documentation.
 #'
-#' @param ProductCode &#91;required&#93; Product code is used to uniquely identify a product in AWS Marketplace.
-#' The product code should be the same as the one used during the
-#' publishing of a new product.
+#' @param ProductCode &#91;required&#93; Product code is used to uniquely identify a product in Amazon Web
+#' Services Marketplace. The product code should be the same as the one
+#' used during the publishing of a new product.
 #' @param Timestamp &#91;required&#93; Timestamp, in UTC, for which the usage is being reported. Your
-#' application can meter usage for up to one hour in the past. Make sure
+#' application can meter usage for up to six hours in the past. Make sure
 #' the `timestamp` value is not before the start of the software usage.
 #' @param UsageDimension &#91;required&#93; It will be one of the fcp dimension name provided during the publishing
 #' of the product.
@@ -89,19 +88,20 @@ marketplacemetering_meter_usage <- function(ProductCode, Timestamp, UsageDimensi
 }
 .marketplacemetering$operations$meter_usage <- marketplacemetering_meter_usage
 
-#' Paid container software products sold through AWS Marketplace must
-#' integrate with the AWS Marketplace Metering Service and call the
-#' RegisterUsage operation for software entitlement and metering
+#' Paid container software products sold through Amazon Web Services
+#' Marketplace must integrate with the Amazon Web Services Marketplace
+#' Metering Service and call the RegisterUsage operation for software
+#' entitlement and metering
 #'
 #' @description
-#' Paid container software products sold through AWS Marketplace must integrate with the AWS Marketplace Metering Service and call the [`register_usage`][marketplacemetering_register_usage] operation for software entitlement and metering. Free and BYOL products for Amazon ECS or Amazon EKS aren't required to call [`register_usage`][marketplacemetering_register_usage], but you may choose to do so if you would like to receive usage data in your seller reports. The sections below explain the behavior of [`register_usage`][marketplacemetering_register_usage]. [`register_usage`][marketplacemetering_register_usage] performs two primary functions: metering and entitlement.
+#' Paid container software products sold through Amazon Web Services Marketplace must integrate with the Amazon Web Services Marketplace Metering Service and call the [`register_usage`][marketplacemetering_register_usage] operation for software entitlement and metering. Free and BYOL products for Amazon ECS or Amazon EKS aren't required to call [`register_usage`][marketplacemetering_register_usage], but you may choose to do so if you would like to receive usage data in your seller reports. The sections below explain the behavior of [`register_usage`][marketplacemetering_register_usage]. [`register_usage`][marketplacemetering_register_usage] performs two primary functions: metering and entitlement.
 #'
 #' See [https://www.paws-r-sdk.com/docs/marketplacemetering_register_usage/](https://www.paws-r-sdk.com/docs/marketplacemetering_register_usage/) for full documentation.
 #'
-#' @param ProductCode &#91;required&#93; Product code is used to uniquely identify a product in AWS Marketplace.
-#' The product code should be the same as the one used during the
-#' publishing of a new product.
-#' @param PublicKeyVersion &#91;required&#93; Public Key Version provided by AWS Marketplace
+#' @param ProductCode &#91;required&#93; Product code is used to uniquely identify a product in Amazon Web
+#' Services Marketplace. The product code should be the same as the one
+#' used during the publishing of a new product.
+#' @param PublicKeyVersion &#91;required&#93; Public Key Version provided by Amazon Web Services Marketplace
 #' @param Nonce (Optional) To scope down the registration to a specific running software
 #' instance and guard against replay attacks.
 #'

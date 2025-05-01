@@ -171,6 +171,7 @@ acm_delete_certificate <- function(CertificateArn) {
 #'     SubjectAlternativeNames = list(
 #'       "string"
 #'     ),
+#'     ManagedBy = "CLOUDFRONT",
 #'     DomainValidationOptions = list(
 #'       list(
 #'         DomainName = "string",
@@ -184,7 +185,11 @@ acm_delete_certificate <- function(CertificateArn) {
 #'           Type = "CNAME",
 #'           Value = "string"
 #'         ),
-#'         ValidationMethod = "EMAIL"|"DNS"
+#'         HttpRedirect = list(
+#'           RedirectFrom = "string",
+#'           RedirectTo = "string"
+#'         ),
+#'         ValidationMethod = "EMAIL"|"DNS"|"HTTP"
 #'       )
 #'     ),
 #'     Serial = "string",
@@ -203,7 +208,7 @@ acm_delete_certificate <- function(CertificateArn) {
 #'     RevokedAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
-#'     RevocationReason = "UNSPECIFIED"|"KEY_COMPROMISE"|"CA_COMPROMISE"|"AFFILIATION_CHANGED"|"SUPERCEDED"|"CESSATION_OF_OPERATION"|"CERTIFICATE_HOLD"|"REMOVE_FROM_CRL"|"PRIVILEGE_WITHDRAWN"|"A_A_COMPROMISE",
+#'     RevocationReason = "UNSPECIFIED"|"KEY_COMPROMISE"|"CA_COMPROMISE"|"AFFILIATION_CHANGED"|"SUPERCEDED"|"SUPERSEDED"|"CESSATION_OF_OPERATION"|"CERTIFICATE_HOLD"|"REMOVE_FROM_CRL"|"PRIVILEGE_WITHDRAWN"|"A_A_COMPROMISE",
 #'     NotBefore = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
@@ -232,7 +237,11 @@ acm_delete_certificate <- function(CertificateArn) {
 #'             Type = "CNAME",
 #'             Value = "string"
 #'           ),
-#'           ValidationMethod = "EMAIL"|"DNS"
+#'           HttpRedirect = list(
+#'             RedirectFrom = "string",
+#'             RedirectTo = "string"
+#'           ),
+#'           ValidationMethod = "EMAIL"|"DNS"|"HTTP"
 #'         )
 #'       ),
 #'       RenewalStatusReason = "NO_AVAILABLE_CONTACTS"|"ADDITIONAL_VERIFICATION_REQUIRED"|"DOMAIN_NOT_ALLOWED"|"INVALID_PUBLIC_DOMAIN"|"DOMAIN_VALIDATION_DENIED"|"CAA_ERROR"|"PCA_LIMIT_EXCEEDED"|"PCA_INVALID_ARN"|"PCA_INVALID_STATE"|"PCA_REQUEST_FAILED"|"PCA_NAME_CONSTRAINTS_VALIDATION"|"PCA_RESOURCE_NOT_FOUND"|"PCA_INVALID_ARGS"|"PCA_INVALID_DURATION"|"PCA_ACCESS_DENIED"|"SLR_NOT_FOUND"|"OTHER",
@@ -606,14 +615,10 @@ acm_import_certificate <- function(CertificateArn = NULL, Certificate, PrivateKe
 #' Retrieves a list of certificate ARNs and domain names
 #'
 #' @description
-#' Retrieves a list of certificate ARNs and domain names. By default, the
-#' API returns RSA_2048 certificates. To return all certificates in the
-#' account, include the `keyType` filter with the values
-#' `[RSA_1024, RSA_2048, RSA_3072, RSA_4096, EC_prime256v1, EC_secp384r1, EC_secp521r1]`.
-#' 
-#' In addition to `keyType`, you can also filter by the
-#' `CertificateStatuses`, `keyUsage`, and `extendedKeyUsage` attributes on
-#' the certificate. For more information, see Filters.
+#' Retrieves a list of certificate ARNs and domain names. You can request
+#' that only certificates that match a specific status be listed. You can
+#' also filter by specific attributes of the certificate. Default filtering
+#' returns only `RSA_2048` certificates. For more information, see Filters.
 #'
 #' @usage
 #' acm_list_certificates(CertificateStatuses, Includes, NextToken,
@@ -677,7 +682,8 @@ acm_import_certificate <- function(CertificateArn = NULL, Certificate, PrivateKe
 #'       ),
 #'       RevokedAt = as.POSIXct(
 #'         "2015-01-01"
-#'       )
+#'       ),
+#'       ManagedBy = "CLOUDFRONT"
 #'     )
 #'   )
 #' )
@@ -698,7 +704,8 @@ acm_import_certificate <- function(CertificateArn = NULL, Certificate, PrivateKe
 #'     ),
 #'     keyTypes = list(
 #'       "RSA_1024"|"RSA_2048"|"RSA_3072"|"RSA_4096"|"EC_prime256v1"|"EC_secp384r1"|"EC_secp521r1"
-#'     )
+#'     ),
+#'     managedBy = "CLOUDFRONT"
 #'   ),
 #'   NextToken = "string",
 #'   MaxItems = 123,
@@ -1014,7 +1021,7 @@ acm_renew_certificate <- function(CertificateArn) {
 #' @usage
 #' acm_request_certificate(DomainName, ValidationMethod,
 #'   SubjectAlternativeNames, IdempotencyToken, DomainValidationOptions,
-#'   Options, CertificateAuthorityArn, Tags, KeyAlgorithm)
+#'   Options, CertificateAuthorityArn, Tags, KeyAlgorithm, ManagedBy)
 #'
 #' @param DomainName &#91;required&#93; Fully qualified domain name (FQDN), such as www.example.com, that you
 #' want to secure with an ACM certificate. Use an asterisk (*) to create a
@@ -1114,6 +1121,8 @@ acm_renew_certificate <- function(CertificateArn) {
 #' ECDSA) must match the algorithm family of the CA's secret key.
 #' 
 #' Default: RSA_2048
+#' @param ManagedBy Identifies the Amazon Web Services service that manages the certificate
+#' issued by ACM.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1127,7 +1136,7 @@ acm_renew_certificate <- function(CertificateArn) {
 #' ```
 #' svc$request_certificate(
 #'   DomainName = "string",
-#'   ValidationMethod = "EMAIL"|"DNS",
+#'   ValidationMethod = "EMAIL"|"DNS"|"HTTP",
 #'   SubjectAlternativeNames = list(
 #'     "string"
 #'   ),
@@ -1148,7 +1157,8 @@ acm_renew_certificate <- function(CertificateArn) {
 #'       Value = "string"
 #'     )
 #'   ),
-#'   KeyAlgorithm = "RSA_1024"|"RSA_2048"|"RSA_3072"|"RSA_4096"|"EC_prime256v1"|"EC_secp384r1"|"EC_secp521r1"
+#'   KeyAlgorithm = "RSA_1024"|"RSA_2048"|"RSA_3072"|"RSA_4096"|"EC_prime256v1"|"EC_secp384r1"|"EC_secp521r1",
+#'   ManagedBy = "CLOUDFRONT"
 #' )
 #' ```
 #'
@@ -1157,7 +1167,7 @@ acm_renew_certificate <- function(CertificateArn) {
 #' @rdname acm_request_certificate
 #'
 #' @aliases acm_request_certificate
-acm_request_certificate <- function(DomainName, ValidationMethod = NULL, SubjectAlternativeNames = NULL, IdempotencyToken = NULL, DomainValidationOptions = NULL, Options = NULL, CertificateAuthorityArn = NULL, Tags = NULL, KeyAlgorithm = NULL) {
+acm_request_certificate <- function(DomainName, ValidationMethod = NULL, SubjectAlternativeNames = NULL, IdempotencyToken = NULL, DomainValidationOptions = NULL, Options = NULL, CertificateAuthorityArn = NULL, Tags = NULL, KeyAlgorithm = NULL, ManagedBy = NULL) {
   op <- new_operation(
     name = "RequestCertificate",
     http_method = "POST",
@@ -1166,7 +1176,7 @@ acm_request_certificate <- function(DomainName, ValidationMethod = NULL, Subject
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .acm$request_certificate_input(DomainName = DomainName, ValidationMethod = ValidationMethod, SubjectAlternativeNames = SubjectAlternativeNames, IdempotencyToken = IdempotencyToken, DomainValidationOptions = DomainValidationOptions, Options = Options, CertificateAuthorityArn = CertificateAuthorityArn, Tags = Tags, KeyAlgorithm = KeyAlgorithm)
+  input <- .acm$request_certificate_input(DomainName = DomainName, ValidationMethod = ValidationMethod, SubjectAlternativeNames = SubjectAlternativeNames, IdempotencyToken = IdempotencyToken, DomainValidationOptions = DomainValidationOptions, Options = Options, CertificateAuthorityArn = CertificateAuthorityArn, Tags = Tags, KeyAlgorithm = KeyAlgorithm, ManagedBy = ManagedBy)
   output <- .acm$request_certificate_output()
   config <- get_config()
   svc <- .acm$service(config, op)

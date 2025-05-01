@@ -74,6 +74,9 @@ NULL
 #' 
 #' -   For an Amazon Web Services Verified Access instance:
 #'     `arn:partition:ec2:region:account-id:verified-access-instance/instance-id `
+#' 
+#' -   For an Amplify application:
+#'     `arn:partition:amplify:region:account-id:apps/app-id `
 #'
 #' @return
 #' An empty list.
@@ -133,7 +136,7 @@ wafv2_associate_web_acl <- function(WebACLArn, ResourceArn) {
 #' wafv2_check_capacity(Scope, Rules)
 #'
 #' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
-#' CloudFront distribution.
+#' CloudFront distribution. For an Amplify application, use `CLOUDFRONT`.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -220,6 +223,12 @@ wafv2_associate_web_acl <- function(WebACLArn, ResourceArn) {
 #'             ),
 #'             JA3Fingerprint = list(
 #'               FallbackBehavior = "MATCH"|"NO_MATCH"
+#'             ),
+#'             JA4Fingerprint = list(
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
+#'             ),
+#'             UriFragment = list(
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
 #'             )
 #'           ),
 #'           TextTransformations = list(
@@ -286,6 +295,12 @@ wafv2_associate_web_acl <- function(WebACLArn, ResourceArn) {
 #'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
 #'             ),
 #'             JA3Fingerprint = list(
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
+#'             ),
+#'             JA4Fingerprint = list(
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
+#'             ),
+#'             UriFragment = list(
 #'               FallbackBehavior = "MATCH"|"NO_MATCH"
 #'             )
 #'           ),
@@ -354,6 +369,12 @@ wafv2_associate_web_acl <- function(WebACLArn, ResourceArn) {
 #'             ),
 #'             JA3Fingerprint = list(
 #'               FallbackBehavior = "MATCH"|"NO_MATCH"
+#'             ),
+#'             JA4Fingerprint = list(
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
+#'             ),
+#'             UriFragment = list(
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
 #'             )
 #'           ),
 #'           TextTransformations = list(
@@ -419,6 +440,12 @@ wafv2_associate_web_acl <- function(WebACLArn, ResourceArn) {
 #'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
 #'             ),
 #'             JA3Fingerprint = list(
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
+#'             ),
+#'             JA4Fingerprint = list(
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
+#'             ),
+#'             UriFragment = list(
 #'               FallbackBehavior = "MATCH"|"NO_MATCH"
 #'             )
 #'           ),
@@ -573,6 +600,12 @@ wafv2_associate_web_acl <- function(WebACLArn, ResourceArn) {
 #'             ),
 #'             JA3Fingerprint = list(
 #'               FallbackBehavior = "MATCH"|"NO_MATCH"
+#'             ),
+#'             JA4Fingerprint = list(
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
+#'             ),
+#'             UriFragment = list(
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
 #'             )
 #'           ),
 #'           TextTransformations = list(
@@ -641,6 +674,12 @@ wafv2_associate_web_acl <- function(WebACLArn, ResourceArn) {
 #'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
 #'                   )
 #'                 )
+#'               ),
+#'               JA3Fingerprint = list(
+#'                 FallbackBehavior = "MATCH"|"NO_MATCH"
+#'               ),
+#'               JA4Fingerprint = list(
+#'                 FallbackBehavior = "MATCH"|"NO_MATCH"
 #'               )
 #'             )
 #'           )
@@ -917,6 +956,12 @@ wafv2_associate_web_acl <- function(WebACLArn, ResourceArn) {
 #'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
 #'             ),
 #'             JA3Fingerprint = list(
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
+#'             ),
+#'             JA4Fingerprint = list(
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
+#'             ),
+#'             UriFragment = list(
 #'               FallbackBehavior = "MATCH"|"NO_MATCH"
 #'             )
 #'           ),
@@ -1064,7 +1109,7 @@ wafv2_check_capacity <- function(Scope, Rules) {
 #' wafv2_create_api_key(Scope, TokenDomains)
 #'
 #' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
-#' CloudFront distribution.
+#' CloudFront distribution. For an Amplify application, use `CLOUDFRONT`.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -1139,7 +1184,7 @@ wafv2_create_api_key <- function(Scope, TokenDomains) {
 #' @param Name &#91;required&#93; The name of the IP set. You cannot change the name of an `IPSet` after
 #' you create it.
 #' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
-#' CloudFront distribution.
+#' CloudFront distribution. For an Amplify application, use `CLOUDFRONT`.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -1262,7 +1307,7 @@ wafv2_create_ip_set <- function(Name, Scope, Description = NULL, IPAddressVersio
 #' @param Name &#91;required&#93; The name of the set. You cannot change the name after you create the
 #' set.
 #' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
-#' CloudFront distribution.
+#' CloudFront distribution. For an Amplify application, use `CLOUDFRONT`.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -1351,7 +1396,7 @@ wafv2_create_regex_pattern_set <- function(Name, Scope, Description = NULL, Regu
 #' @param Name &#91;required&#93; The name of the rule group. You cannot change the name of a rule group
 #' after you create it.
 #' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
-#' CloudFront distribution.
+#' CloudFront distribution. For an Amplify application, use `CLOUDFRONT`.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -1484,6 +1529,12 @@ wafv2_create_regex_pattern_set <- function(Name, Scope, Description = NULL, Regu
 #'             ),
 #'             JA3Fingerprint = list(
 #'               FallbackBehavior = "MATCH"|"NO_MATCH"
+#'             ),
+#'             JA4Fingerprint = list(
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
+#'             ),
+#'             UriFragment = list(
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
 #'             )
 #'           ),
 #'           TextTransformations = list(
@@ -1550,6 +1601,12 @@ wafv2_create_regex_pattern_set <- function(Name, Scope, Description = NULL, Regu
 #'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
 #'             ),
 #'             JA3Fingerprint = list(
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
+#'             ),
+#'             JA4Fingerprint = list(
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
+#'             ),
+#'             UriFragment = list(
 #'               FallbackBehavior = "MATCH"|"NO_MATCH"
 #'             )
 #'           ),
@@ -1618,6 +1675,12 @@ wafv2_create_regex_pattern_set <- function(Name, Scope, Description = NULL, Regu
 #'             ),
 #'             JA3Fingerprint = list(
 #'               FallbackBehavior = "MATCH"|"NO_MATCH"
+#'             ),
+#'             JA4Fingerprint = list(
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
+#'             ),
+#'             UriFragment = list(
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
 #'             )
 #'           ),
 #'           TextTransformations = list(
@@ -1683,6 +1746,12 @@ wafv2_create_regex_pattern_set <- function(Name, Scope, Description = NULL, Regu
 #'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
 #'             ),
 #'             JA3Fingerprint = list(
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
+#'             ),
+#'             JA4Fingerprint = list(
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
+#'             ),
+#'             UriFragment = list(
 #'               FallbackBehavior = "MATCH"|"NO_MATCH"
 #'             )
 #'           ),
@@ -1837,6 +1906,12 @@ wafv2_create_regex_pattern_set <- function(Name, Scope, Description = NULL, Regu
 #'             ),
 #'             JA3Fingerprint = list(
 #'               FallbackBehavior = "MATCH"|"NO_MATCH"
+#'             ),
+#'             JA4Fingerprint = list(
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
+#'             ),
+#'             UriFragment = list(
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
 #'             )
 #'           ),
 #'           TextTransformations = list(
@@ -1905,6 +1980,12 @@ wafv2_create_regex_pattern_set <- function(Name, Scope, Description = NULL, Regu
 #'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
 #'                   )
 #'                 )
+#'               ),
+#'               JA3Fingerprint = list(
+#'                 FallbackBehavior = "MATCH"|"NO_MATCH"
+#'               ),
+#'               JA4Fingerprint = list(
+#'                 FallbackBehavior = "MATCH"|"NO_MATCH"
 #'               )
 #'             )
 #'           )
@@ -2181,6 +2262,12 @@ wafv2_create_regex_pattern_set <- function(Name, Scope, Description = NULL, Regu
 #'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
 #'             ),
 #'             JA3Fingerprint = list(
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
+#'             ),
+#'             JA4Fingerprint = list(
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
+#'             ),
+#'             UriFragment = list(
 #'               FallbackBehavior = "MATCH"|"NO_MATCH"
 #'             )
 #'           ),
@@ -2340,7 +2427,8 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 #' Web Services resources to protect. The resource types include Amazon
 #' CloudFront distribution, Amazon API Gateway REST API, Application Load
 #' Balancer, AppSync GraphQL API, Amazon Cognito user pool, App Runner
-#' service, and Amazon Web Services Verified Access instance.
+#' service, Amplify application, and Amazon Web Services Verified Access
+#' instance.
 #'
 #' @usage
 #' wafv2_create_web_acl(Name, Scope, DefaultAction, Description, Rules,
@@ -2350,7 +2438,7 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 #' @param Name &#91;required&#93; The name of the web ACL. You cannot change the name of a web ACL after
 #' you create it.
 #' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
-#' CloudFront distribution.
+#' CloudFront distribution. For an Amplify application, use `CLOUDFRONT`.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -2368,15 +2456,14 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 #' handles them.
 #' @param VisibilityConfig &#91;required&#93; Defines and enables Amazon CloudWatch metrics and web request sample
 #' collection.
-#' @param DataProtectionConfig Specifies data protection to apply to the web request data that WAF
-#' stores for the web ACL. This is a web ACL level data protection option.
+#' @param DataProtectionConfig Specifies data protection to apply to the web request data for the web
+#' ACL. This is a web ACL level data protection option.
 #' 
 #' The data protection that you configure for the web ACL alters the data
-#' that's available for any other data collection activity, including WAF
-#' logging, web ACL request sampling, Amazon Web Services Managed Rules,
-#' and Amazon Security Lake data collection and management. Your other
-#' option for data protection is in the logging configuration, which only
-#' affects logging.
+#' that's available for any other data collection activity, including your
+#' WAF logging destinations, web ACL request sampling, and Amazon Security
+#' Lake data collection and management. Your other option for data
+#' protection is in the logging configuration, which only affects logging.
 #' @param Tags An array of key:value pairs to associate with the resource.
 #' @param CustomResponseBodies A map of custom response keys and content bodies. When you create a rule
 #' with a block action, you can send a custom response to the web request.
@@ -2534,6 +2621,12 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 #'             ),
 #'             JA3Fingerprint = list(
 #'               FallbackBehavior = "MATCH"|"NO_MATCH"
+#'             ),
+#'             JA4Fingerprint = list(
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
+#'             ),
+#'             UriFragment = list(
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
 #'             )
 #'           ),
 #'           TextTransformations = list(
@@ -2600,6 +2693,12 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 #'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
 #'             ),
 #'             JA3Fingerprint = list(
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
+#'             ),
+#'             JA4Fingerprint = list(
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
+#'             ),
+#'             UriFragment = list(
 #'               FallbackBehavior = "MATCH"|"NO_MATCH"
 #'             )
 #'           ),
@@ -2668,6 +2767,12 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 #'             ),
 #'             JA3Fingerprint = list(
 #'               FallbackBehavior = "MATCH"|"NO_MATCH"
+#'             ),
+#'             JA4Fingerprint = list(
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
+#'             ),
+#'             UriFragment = list(
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
 #'             )
 #'           ),
 #'           TextTransformations = list(
@@ -2733,6 +2838,12 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 #'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
 #'             ),
 #'             JA3Fingerprint = list(
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
+#'             ),
+#'             JA4Fingerprint = list(
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
+#'             ),
+#'             UriFragment = list(
 #'               FallbackBehavior = "MATCH"|"NO_MATCH"
 #'             )
 #'           ),
@@ -2887,6 +2998,12 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 #'             ),
 #'             JA3Fingerprint = list(
 #'               FallbackBehavior = "MATCH"|"NO_MATCH"
+#'             ),
+#'             JA4Fingerprint = list(
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
+#'             ),
+#'             UriFragment = list(
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
 #'             )
 #'           ),
 #'           TextTransformations = list(
@@ -2955,6 +3072,12 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 #'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
 #'                   )
 #'                 )
+#'               ),
+#'               JA3Fingerprint = list(
+#'                 FallbackBehavior = "MATCH"|"NO_MATCH"
+#'               ),
+#'               JA4Fingerprint = list(
+#'                 FallbackBehavior = "MATCH"|"NO_MATCH"
 #'               )
 #'             )
 #'           )
@@ -3231,6 +3354,12 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 #'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
 #'             ),
 #'             JA3Fingerprint = list(
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
+#'             ),
+#'             JA4Fingerprint = list(
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
+#'             ),
+#'             UriFragment = list(
 #'               FallbackBehavior = "MATCH"|"NO_MATCH"
 #'             )
 #'           ),
@@ -3422,7 +3551,7 @@ wafv2_create_web_acl <- function(Name, Scope, DefaultAction, Description = NULL,
 #' wafv2_delete_api_key(Scope, APIKey)
 #'
 #' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
-#' CloudFront distribution.
+#' CloudFront distribution. For an Amplify application, use `CLOUDFRONT`.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -3542,7 +3671,7 @@ wafv2_delete_firewall_manager_rule_groups <- function(WebACLArn, WebACLLockToken
 #' @param Name &#91;required&#93; The name of the IP set. You cannot change the name of an `IPSet` after
 #' you create it.
 #' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
-#' CloudFront distribution.
+#' CloudFront distribution. For an Amplify application, use `CLOUDFRONT`.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -3723,7 +3852,7 @@ wafv2_delete_permission_policy <- function(ResourceArn) {
 #' @param Name &#91;required&#93; The name of the set. You cannot change the name after you create the
 #' set.
 #' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
-#' CloudFront distribution.
+#' CloudFront distribution. For an Amplify application, use `CLOUDFRONT`.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -3792,7 +3921,7 @@ wafv2_delete_regex_pattern_set <- function(Name, Scope, Id, LockToken) {
 #' @param Name &#91;required&#93; The name of the rule group. You cannot change the name of a rule group
 #' after you create it.
 #' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
-#' CloudFront distribution.
+#' CloudFront distribution. For an Amplify application, use `CLOUDFRONT`.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -3888,7 +4017,7 @@ wafv2_delete_rule_group <- function(Name, Scope, Id, LockToken) {
 #' @param Name &#91;required&#93; The name of the web ACL. You cannot change the name of a web ACL after
 #' you create it.
 #' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
-#' CloudFront distribution.
+#' CloudFront distribution. For an Amplify application, use `CLOUDFRONT`.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -3959,7 +4088,7 @@ wafv2_delete_web_acl <- function(Name, Scope, Id, LockToken) {
 #' wafv2_describe_all_managed_products(Scope)
 #'
 #' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
-#' CloudFront distribution.
+#' CloudFront distribution. For an Amplify application, use `CLOUDFRONT`.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -4033,7 +4162,7 @@ wafv2_describe_all_managed_products <- function(Scope) {
 #' @param VendorName &#91;required&#93; The name of the managed rule group vendor. You use this, along with the
 #' rule group name, to identify a rule group.
 #' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
-#' CloudFront distribution.
+#' CloudFront distribution. For an Amplify application, use `CLOUDFRONT`.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -4110,7 +4239,7 @@ wafv2_describe_managed_products_by_vendor <- function(VendorName, Scope) {
 #' @param Name &#91;required&#93; The name of the managed rule group. You use this, along with the vendor
 #' name, to identify the rule group.
 #' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
-#' CloudFront distribution.
+#' CloudFront distribution. For an Amplify application, use `CLOUDFRONT`.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -4282,6 +4411,9 @@ wafv2_describe_managed_rule_group <- function(VendorName, Name, Scope, VersionNa
 #' 
 #' -   For an Amazon Web Services Verified Access instance:
 #'     `arn:partition:ec2:region:account-id:verified-access-instance/instance-id `
+#' 
+#' -   For an Amplify application:
+#'     `arn:partition:amplify:region:account-id:apps/app-id `
 #'
 #' @return
 #' An empty list.
@@ -4395,7 +4527,7 @@ wafv2_generate_mobile_sdk_release_url <- function(Platform, ReleaseVersion) {
 #' wafv2_get_decrypted_api_key(Scope, APIKey)
 #'
 #' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
-#' CloudFront distribution.
+#' CloudFront distribution. For an Amplify application, use `CLOUDFRONT`.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -4462,7 +4594,7 @@ wafv2_get_decrypted_api_key <- function(Scope, APIKey) {
 #' @param Name &#91;required&#93; The name of the IP set. You cannot change the name of an `IPSet` after
 #' you create it.
 #' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
-#' CloudFront distribution.
+#' CloudFront distribution. For an Amplify application, use `CLOUDFRONT`.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -4619,6 +4751,12 @@ wafv2_get_ip_set <- function(Name, Scope, Id) {
 #'         ),
 #'         JA3Fingerprint = list(
 #'           FallbackBehavior = "MATCH"|"NO_MATCH"
+#'         ),
+#'         JA4Fingerprint = list(
+#'           FallbackBehavior = "MATCH"|"NO_MATCH"
+#'         ),
+#'         UriFragment = list(
+#'           FallbackBehavior = "MATCH"|"NO_MATCH"
 #'         )
 #'       )
 #'     ),
@@ -4707,7 +4845,7 @@ wafv2_get_logging_configuration <- function(ResourceArn, LogType = NULL, LogScop
 #' This name is assigned to the corresponding managed rule group, which
 #' your customers can access and use.
 #' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
-#' CloudFront distribution.
+#' CloudFront distribution. For an Amplify application, use `CLOUDFRONT`.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -4939,7 +5077,7 @@ wafv2_get_permission_policy <- function(ResourceArn) {
 #'   RuleGroupRuleName, RuleName)
 #'
 #' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
-#' CloudFront distribution.
+#' CloudFront distribution. For an Amplify application, use `CLOUDFRONT`.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -5026,7 +5164,7 @@ wafv2_get_rate_based_statement_managed_keys <- function(Scope, WebACLName, WebAC
 #' @param Name &#91;required&#93; The name of the set. You cannot change the name after you create the
 #' set.
 #' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
-#' CloudFront distribution.
+#' CloudFront distribution. For an Amplify application, use `CLOUDFRONT`.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -5102,7 +5240,7 @@ wafv2_get_regex_pattern_set <- function(Name, Scope, Id) {
 #' @param Name The name of the rule group. You cannot change the name of a rule group
 #' after you create it.
 #' @param Scope Specifies whether this is for a global resource type, such as a Amazon
-#' CloudFront distribution.
+#' CloudFront distribution. For an Amplify application, use `CLOUDFRONT`.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -5189,6 +5327,12 @@ wafv2_get_regex_pattern_set <- function(Name, Scope, Id) {
 #'               ),
 #'               JA3Fingerprint = list(
 #'                 FallbackBehavior = "MATCH"|"NO_MATCH"
+#'               ),
+#'               JA4Fingerprint = list(
+#'                 FallbackBehavior = "MATCH"|"NO_MATCH"
+#'               ),
+#'               UriFragment = list(
+#'                 FallbackBehavior = "MATCH"|"NO_MATCH"
 #'               )
 #'             ),
 #'             TextTransformations = list(
@@ -5255,6 +5399,12 @@ wafv2_get_regex_pattern_set <- function(Name, Scope, Id) {
 #'                 OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
 #'               ),
 #'               JA3Fingerprint = list(
+#'                 FallbackBehavior = "MATCH"|"NO_MATCH"
+#'               ),
+#'               JA4Fingerprint = list(
+#'                 FallbackBehavior = "MATCH"|"NO_MATCH"
+#'               ),
+#'               UriFragment = list(
 #'                 FallbackBehavior = "MATCH"|"NO_MATCH"
 #'               )
 #'             ),
@@ -5323,6 +5473,12 @@ wafv2_get_regex_pattern_set <- function(Name, Scope, Id) {
 #'               ),
 #'               JA3Fingerprint = list(
 #'                 FallbackBehavior = "MATCH"|"NO_MATCH"
+#'               ),
+#'               JA4Fingerprint = list(
+#'                 FallbackBehavior = "MATCH"|"NO_MATCH"
+#'               ),
+#'               UriFragment = list(
+#'                 FallbackBehavior = "MATCH"|"NO_MATCH"
 #'               )
 #'             ),
 #'             TextTransformations = list(
@@ -5388,6 +5544,12 @@ wafv2_get_regex_pattern_set <- function(Name, Scope, Id) {
 #'                 OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
 #'               ),
 #'               JA3Fingerprint = list(
+#'                 FallbackBehavior = "MATCH"|"NO_MATCH"
+#'               ),
+#'               JA4Fingerprint = list(
+#'                 FallbackBehavior = "MATCH"|"NO_MATCH"
+#'               ),
+#'               UriFragment = list(
 #'                 FallbackBehavior = "MATCH"|"NO_MATCH"
 #'               )
 #'             ),
@@ -5542,6 +5704,12 @@ wafv2_get_regex_pattern_set <- function(Name, Scope, Id) {
 #'               ),
 #'               JA3Fingerprint = list(
 #'                 FallbackBehavior = "MATCH"|"NO_MATCH"
+#'               ),
+#'               JA4Fingerprint = list(
+#'                 FallbackBehavior = "MATCH"|"NO_MATCH"
+#'               ),
+#'               UriFragment = list(
+#'                 FallbackBehavior = "MATCH"|"NO_MATCH"
 #'               )
 #'             ),
 #'             TextTransformations = list(
@@ -5610,6 +5778,12 @@ wafv2_get_regex_pattern_set <- function(Name, Scope, Id) {
 #'                       Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
 #'                     )
 #'                   )
+#'                 ),
+#'                 JA3Fingerprint = list(
+#'                   FallbackBehavior = "MATCH"|"NO_MATCH"
+#'                 ),
+#'                 JA4Fingerprint = list(
+#'                   FallbackBehavior = "MATCH"|"NO_MATCH"
 #'                 )
 #'               )
 #'             )
@@ -5886,6 +6060,12 @@ wafv2_get_regex_pattern_set <- function(Name, Scope, Id) {
 #'                 OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
 #'               ),
 #'               JA3Fingerprint = list(
+#'                 FallbackBehavior = "MATCH"|"NO_MATCH"
+#'               ),
+#'               JA4Fingerprint = list(
+#'                 FallbackBehavior = "MATCH"|"NO_MATCH"
+#'               ),
+#'               UriFragment = list(
 #'                 FallbackBehavior = "MATCH"|"NO_MATCH"
 #'               )
 #'             ),
@@ -6076,7 +6256,7 @@ wafv2_get_rule_group <- function(Name = NULL, Scope = NULL, Id = NULL, ARN = NUL
 #' @param RuleMetricName &#91;required&#93; The metric name assigned to the `Rule` or `RuleGroup` dimension for
 #' which you want a sample of requests.
 #' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
-#' CloudFront distribution.
+#' CloudFront distribution. For an Amplify application, use `CLOUDFRONT`.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -6208,12 +6388,12 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #' Retrieves the specified WebACL.
 #'
 #' @usage
-#' wafv2_get_web_acl(Name, Scope, Id)
+#' wafv2_get_web_acl(Name, Scope, Id, ARN)
 #'
-#' @param Name &#91;required&#93; The name of the web ACL. You cannot change the name of a web ACL after
+#' @param Name The name of the web ACL. You cannot change the name of a web ACL after
 #' you create it.
-#' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
-#' CloudFront distribution.
+#' @param Scope Specifies whether this is for a global resource type, such as a Amazon
+#' CloudFront distribution. For an Amplify application, use `CLOUDFRONT`.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -6222,9 +6402,10 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'     `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
 #' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
-#' @param Id &#91;required&#93; The unique identifier for the web ACL. This ID is returned in the
+#' @param Id The unique identifier for the web ACL. This ID is returned in the
 #' responses to create and list commands. You provide it to operations like
 #' update and delete.
+#' @param ARN The Amazon Resource Name (ARN) of the web ACL that you want to retrieve.
 #'
 #' @return
 #' A list with the following syntax:
@@ -6322,6 +6503,12 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'               ),
 #'               JA3Fingerprint = list(
 #'                 FallbackBehavior = "MATCH"|"NO_MATCH"
+#'               ),
+#'               JA4Fingerprint = list(
+#'                 FallbackBehavior = "MATCH"|"NO_MATCH"
+#'               ),
+#'               UriFragment = list(
+#'                 FallbackBehavior = "MATCH"|"NO_MATCH"
 #'               )
 #'             ),
 #'             TextTransformations = list(
@@ -6388,6 +6575,12 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'                 OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
 #'               ),
 #'               JA3Fingerprint = list(
+#'                 FallbackBehavior = "MATCH"|"NO_MATCH"
+#'               ),
+#'               JA4Fingerprint = list(
+#'                 FallbackBehavior = "MATCH"|"NO_MATCH"
+#'               ),
+#'               UriFragment = list(
 #'                 FallbackBehavior = "MATCH"|"NO_MATCH"
 #'               )
 #'             ),
@@ -6456,6 +6649,12 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'               ),
 #'               JA3Fingerprint = list(
 #'                 FallbackBehavior = "MATCH"|"NO_MATCH"
+#'               ),
+#'               JA4Fingerprint = list(
+#'                 FallbackBehavior = "MATCH"|"NO_MATCH"
+#'               ),
+#'               UriFragment = list(
+#'                 FallbackBehavior = "MATCH"|"NO_MATCH"
 #'               )
 #'             ),
 #'             TextTransformations = list(
@@ -6521,6 +6720,12 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'                 OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
 #'               ),
 #'               JA3Fingerprint = list(
+#'                 FallbackBehavior = "MATCH"|"NO_MATCH"
+#'               ),
+#'               JA4Fingerprint = list(
+#'                 FallbackBehavior = "MATCH"|"NO_MATCH"
+#'               ),
+#'               UriFragment = list(
 #'                 FallbackBehavior = "MATCH"|"NO_MATCH"
 #'               )
 #'             ),
@@ -6675,6 +6880,12 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'               ),
 #'               JA3Fingerprint = list(
 #'                 FallbackBehavior = "MATCH"|"NO_MATCH"
+#'               ),
+#'               JA4Fingerprint = list(
+#'                 FallbackBehavior = "MATCH"|"NO_MATCH"
+#'               ),
+#'               UriFragment = list(
+#'                 FallbackBehavior = "MATCH"|"NO_MATCH"
 #'               )
 #'             ),
 #'             TextTransformations = list(
@@ -6743,6 +6954,12 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'                       Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
 #'                     )
 #'                   )
+#'                 ),
+#'                 JA3Fingerprint = list(
+#'                   FallbackBehavior = "MATCH"|"NO_MATCH"
+#'                 ),
+#'                 JA4Fingerprint = list(
+#'                   FallbackBehavior = "MATCH"|"NO_MATCH"
 #'                 )
 #'               )
 #'             )
@@ -7019,6 +7236,12 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'                 OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
 #'               ),
 #'               JA3Fingerprint = list(
+#'                 FallbackBehavior = "MATCH"|"NO_MATCH"
+#'               ),
+#'               JA4Fingerprint = list(
+#'                 FallbackBehavior = "MATCH"|"NO_MATCH"
+#'               ),
+#'               UriFragment = list(
 #'                 FallbackBehavior = "MATCH"|"NO_MATCH"
 #'               )
 #'             ),
@@ -7213,6 +7436,12 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'                   ),
 #'                   JA3Fingerprint = list(
 #'                     FallbackBehavior = "MATCH"|"NO_MATCH"
+#'                   ),
+#'                   JA4Fingerprint = list(
+#'                     FallbackBehavior = "MATCH"|"NO_MATCH"
+#'                   ),
+#'                   UriFragment = list(
+#'                     FallbackBehavior = "MATCH"|"NO_MATCH"
 #'                   )
 #'                 ),
 #'                 TextTransformations = list(
@@ -7279,6 +7508,12 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
 #'                   ),
 #'                   JA3Fingerprint = list(
+#'                     FallbackBehavior = "MATCH"|"NO_MATCH"
+#'                   ),
+#'                   JA4Fingerprint = list(
+#'                     FallbackBehavior = "MATCH"|"NO_MATCH"
+#'                   ),
+#'                   UriFragment = list(
 #'                     FallbackBehavior = "MATCH"|"NO_MATCH"
 #'                   )
 #'                 ),
@@ -7347,6 +7582,12 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'                   ),
 #'                   JA3Fingerprint = list(
 #'                     FallbackBehavior = "MATCH"|"NO_MATCH"
+#'                   ),
+#'                   JA4Fingerprint = list(
+#'                     FallbackBehavior = "MATCH"|"NO_MATCH"
+#'                   ),
+#'                   UriFragment = list(
+#'                     FallbackBehavior = "MATCH"|"NO_MATCH"
 #'                   )
 #'                 ),
 #'                 TextTransformations = list(
@@ -7412,6 +7653,12 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
 #'                   ),
 #'                   JA3Fingerprint = list(
+#'                     FallbackBehavior = "MATCH"|"NO_MATCH"
+#'                   ),
+#'                   JA4Fingerprint = list(
+#'                     FallbackBehavior = "MATCH"|"NO_MATCH"
+#'                   ),
+#'                   UriFragment = list(
 #'                     FallbackBehavior = "MATCH"|"NO_MATCH"
 #'                   )
 #'                 ),
@@ -7566,6 +7813,12 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'                   ),
 #'                   JA3Fingerprint = list(
 #'                     FallbackBehavior = "MATCH"|"NO_MATCH"
+#'                   ),
+#'                   JA4Fingerprint = list(
+#'                     FallbackBehavior = "MATCH"|"NO_MATCH"
+#'                   ),
+#'                   UriFragment = list(
+#'                     FallbackBehavior = "MATCH"|"NO_MATCH"
 #'                   )
 #'                 ),
 #'                 TextTransformations = list(
@@ -7634,6 +7887,12 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'                           Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
 #'                         )
 #'                       )
+#'                     ),
+#'                     JA3Fingerprint = list(
+#'                       FallbackBehavior = "MATCH"|"NO_MATCH"
+#'                     ),
+#'                     JA4Fingerprint = list(
+#'                       FallbackBehavior = "MATCH"|"NO_MATCH"
 #'                     )
 #'                   )
 #'                 )
@@ -7713,6 +7972,12 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
 #'                   ),
 #'                   JA3Fingerprint = list(
+#'                     FallbackBehavior = "MATCH"|"NO_MATCH"
+#'                   ),
+#'                   JA4Fingerprint = list(
+#'                     FallbackBehavior = "MATCH"|"NO_MATCH"
+#'                   ),
+#'                   UriFragment = list(
 #'                     FallbackBehavior = "MATCH"|"NO_MATCH"
 #'                   )
 #'                 ),
@@ -8073,6 +8338,12 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'                   ),
 #'                   JA3Fingerprint = list(
 #'                     FallbackBehavior = "MATCH"|"NO_MATCH"
+#'                   ),
+#'                   JA4Fingerprint = list(
+#'                     FallbackBehavior = "MATCH"|"NO_MATCH"
+#'                   ),
+#'                   UriFragment = list(
+#'                     FallbackBehavior = "MATCH"|"NO_MATCH"
 #'                   )
 #'                 ),
 #'                 TextTransformations = list(
@@ -8139,6 +8410,12 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
 #'                   ),
 #'                   JA3Fingerprint = list(
+#'                     FallbackBehavior = "MATCH"|"NO_MATCH"
+#'                   ),
+#'                   JA4Fingerprint = list(
+#'                     FallbackBehavior = "MATCH"|"NO_MATCH"
+#'                   ),
+#'                   UriFragment = list(
 #'                     FallbackBehavior = "MATCH"|"NO_MATCH"
 #'                   )
 #'                 ),
@@ -8207,6 +8484,12 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'                   ),
 #'                   JA3Fingerprint = list(
 #'                     FallbackBehavior = "MATCH"|"NO_MATCH"
+#'                   ),
+#'                   JA4Fingerprint = list(
+#'                     FallbackBehavior = "MATCH"|"NO_MATCH"
+#'                   ),
+#'                   UriFragment = list(
+#'                     FallbackBehavior = "MATCH"|"NO_MATCH"
 #'                   )
 #'                 ),
 #'                 TextTransformations = list(
@@ -8272,6 +8555,12 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
 #'                   ),
 #'                   JA3Fingerprint = list(
+#'                     FallbackBehavior = "MATCH"|"NO_MATCH"
+#'                   ),
+#'                   JA4Fingerprint = list(
+#'                     FallbackBehavior = "MATCH"|"NO_MATCH"
+#'                   ),
+#'                   UriFragment = list(
 #'                     FallbackBehavior = "MATCH"|"NO_MATCH"
 #'                   )
 #'                 ),
@@ -8426,6 +8715,12 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'                   ),
 #'                   JA3Fingerprint = list(
 #'                     FallbackBehavior = "MATCH"|"NO_MATCH"
+#'                   ),
+#'                   JA4Fingerprint = list(
+#'                     FallbackBehavior = "MATCH"|"NO_MATCH"
+#'                   ),
+#'                   UriFragment = list(
+#'                     FallbackBehavior = "MATCH"|"NO_MATCH"
 #'                   )
 #'                 ),
 #'                 TextTransformations = list(
@@ -8494,6 +8789,12 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'                           Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
 #'                         )
 #'                       )
+#'                     ),
+#'                     JA3Fingerprint = list(
+#'                       FallbackBehavior = "MATCH"|"NO_MATCH"
+#'                     ),
+#'                     JA4Fingerprint = list(
+#'                       FallbackBehavior = "MATCH"|"NO_MATCH"
 #'                     )
 #'                   )
 #'                 )
@@ -8573,6 +8874,12 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
 #'                   ),
 #'                   JA3Fingerprint = list(
+#'                     FallbackBehavior = "MATCH"|"NO_MATCH"
+#'                   ),
+#'                   JA4Fingerprint = list(
+#'                     FallbackBehavior = "MATCH"|"NO_MATCH"
+#'                   ),
+#'                   UriFragment = list(
 #'                     FallbackBehavior = "MATCH"|"NO_MATCH"
 #'                   )
 #'                 ),
@@ -8900,7 +9207,8 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #' svc$get_web_acl(
 #'   Name = "string",
 #'   Scope = "CLOUDFRONT"|"REGIONAL",
-#'   Id = "string"
+#'   Id = "string",
+#'   ARN = "string"
 #' )
 #' ```
 #'
@@ -8909,7 +9217,7 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #' @rdname wafv2_get_web_acl
 #'
 #' @aliases wafv2_get_web_acl
-wafv2_get_web_acl <- function(Name, Scope, Id) {
+wafv2_get_web_acl <- function(Name = NULL, Scope = NULL, Id = NULL, ARN = NULL) {
   op <- new_operation(
     name = "GetWebACL",
     http_method = "POST",
@@ -8918,7 +9226,7 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .wafv2$get_web_acl_input(Name = Name, Scope = Scope, Id = Id)
+  input <- .wafv2$get_web_acl_input(Name = Name, Scope = Scope, Id = Id, ARN = ARN)
   output <- .wafv2$get_web_acl_output()
   config <- get_config()
   svc <- .wafv2$service(config, op)
@@ -8976,6 +9284,9 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
 #' 
 #' -   For an Amazon Web Services Verified Access instance:
 #'     `arn:partition:ec2:region:account-id:verified-access-instance/instance-id `
+#' 
+#' -   For an Amplify application:
+#'     `arn:partition:amplify:region:account-id:apps/app-id `
 #'
 #' @return
 #' A list with the following syntax:
@@ -9073,6 +9384,12 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
 #'               ),
 #'               JA3Fingerprint = list(
 #'                 FallbackBehavior = "MATCH"|"NO_MATCH"
+#'               ),
+#'               JA4Fingerprint = list(
+#'                 FallbackBehavior = "MATCH"|"NO_MATCH"
+#'               ),
+#'               UriFragment = list(
+#'                 FallbackBehavior = "MATCH"|"NO_MATCH"
 #'               )
 #'             ),
 #'             TextTransformations = list(
@@ -9139,6 +9456,12 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
 #'                 OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
 #'               ),
 #'               JA3Fingerprint = list(
+#'                 FallbackBehavior = "MATCH"|"NO_MATCH"
+#'               ),
+#'               JA4Fingerprint = list(
+#'                 FallbackBehavior = "MATCH"|"NO_MATCH"
+#'               ),
+#'               UriFragment = list(
 #'                 FallbackBehavior = "MATCH"|"NO_MATCH"
 #'               )
 #'             ),
@@ -9207,6 +9530,12 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
 #'               ),
 #'               JA3Fingerprint = list(
 #'                 FallbackBehavior = "MATCH"|"NO_MATCH"
+#'               ),
+#'               JA4Fingerprint = list(
+#'                 FallbackBehavior = "MATCH"|"NO_MATCH"
+#'               ),
+#'               UriFragment = list(
+#'                 FallbackBehavior = "MATCH"|"NO_MATCH"
 #'               )
 #'             ),
 #'             TextTransformations = list(
@@ -9272,6 +9601,12 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
 #'                 OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
 #'               ),
 #'               JA3Fingerprint = list(
+#'                 FallbackBehavior = "MATCH"|"NO_MATCH"
+#'               ),
+#'               JA4Fingerprint = list(
+#'                 FallbackBehavior = "MATCH"|"NO_MATCH"
+#'               ),
+#'               UriFragment = list(
 #'                 FallbackBehavior = "MATCH"|"NO_MATCH"
 #'               )
 #'             ),
@@ -9426,6 +9761,12 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
 #'               ),
 #'               JA3Fingerprint = list(
 #'                 FallbackBehavior = "MATCH"|"NO_MATCH"
+#'               ),
+#'               JA4Fingerprint = list(
+#'                 FallbackBehavior = "MATCH"|"NO_MATCH"
+#'               ),
+#'               UriFragment = list(
+#'                 FallbackBehavior = "MATCH"|"NO_MATCH"
 #'               )
 #'             ),
 #'             TextTransformations = list(
@@ -9494,6 +9835,12 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
 #'                       Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
 #'                     )
 #'                   )
+#'                 ),
+#'                 JA3Fingerprint = list(
+#'                   FallbackBehavior = "MATCH"|"NO_MATCH"
+#'                 ),
+#'                 JA4Fingerprint = list(
+#'                   FallbackBehavior = "MATCH"|"NO_MATCH"
 #'                 )
 #'               )
 #'             )
@@ -9771,6 +10118,12 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
 #'               ),
 #'               JA3Fingerprint = list(
 #'                 FallbackBehavior = "MATCH"|"NO_MATCH"
+#'               ),
+#'               JA4Fingerprint = list(
+#'                 FallbackBehavior = "MATCH"|"NO_MATCH"
+#'               ),
+#'               UriFragment = list(
+#'                 FallbackBehavior = "MATCH"|"NO_MATCH"
 #'               )
 #'             ),
 #'             TextTransformations = list(
@@ -9964,6 +10317,12 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
 #'                   ),
 #'                   JA3Fingerprint = list(
 #'                     FallbackBehavior = "MATCH"|"NO_MATCH"
+#'                   ),
+#'                   JA4Fingerprint = list(
+#'                     FallbackBehavior = "MATCH"|"NO_MATCH"
+#'                   ),
+#'                   UriFragment = list(
+#'                     FallbackBehavior = "MATCH"|"NO_MATCH"
 #'                   )
 #'                 ),
 #'                 TextTransformations = list(
@@ -10030,6 +10389,12 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
 #'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
 #'                   ),
 #'                   JA3Fingerprint = list(
+#'                     FallbackBehavior = "MATCH"|"NO_MATCH"
+#'                   ),
+#'                   JA4Fingerprint = list(
+#'                     FallbackBehavior = "MATCH"|"NO_MATCH"
+#'                   ),
+#'                   UriFragment = list(
 #'                     FallbackBehavior = "MATCH"|"NO_MATCH"
 #'                   )
 #'                 ),
@@ -10098,6 +10463,12 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
 #'                   ),
 #'                   JA3Fingerprint = list(
 #'                     FallbackBehavior = "MATCH"|"NO_MATCH"
+#'                   ),
+#'                   JA4Fingerprint = list(
+#'                     FallbackBehavior = "MATCH"|"NO_MATCH"
+#'                   ),
+#'                   UriFragment = list(
+#'                     FallbackBehavior = "MATCH"|"NO_MATCH"
 #'                   )
 #'                 ),
 #'                 TextTransformations = list(
@@ -10163,6 +10534,12 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
 #'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
 #'                   ),
 #'                   JA3Fingerprint = list(
+#'                     FallbackBehavior = "MATCH"|"NO_MATCH"
+#'                   ),
+#'                   JA4Fingerprint = list(
+#'                     FallbackBehavior = "MATCH"|"NO_MATCH"
+#'                   ),
+#'                   UriFragment = list(
 #'                     FallbackBehavior = "MATCH"|"NO_MATCH"
 #'                   )
 #'                 ),
@@ -10317,6 +10694,12 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
 #'                   ),
 #'                   JA3Fingerprint = list(
 #'                     FallbackBehavior = "MATCH"|"NO_MATCH"
+#'                   ),
+#'                   JA4Fingerprint = list(
+#'                     FallbackBehavior = "MATCH"|"NO_MATCH"
+#'                   ),
+#'                   UriFragment = list(
+#'                     FallbackBehavior = "MATCH"|"NO_MATCH"
 #'                   )
 #'                 ),
 #'                 TextTransformations = list(
@@ -10385,6 +10768,12 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
 #'                           Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
 #'                         )
 #'                       )
+#'                     ),
+#'                     JA3Fingerprint = list(
+#'                       FallbackBehavior = "MATCH"|"NO_MATCH"
+#'                     ),
+#'                     JA4Fingerprint = list(
+#'                       FallbackBehavior = "MATCH"|"NO_MATCH"
 #'                     )
 #'                   )
 #'                 )
@@ -10464,6 +10853,12 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
 #'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
 #'                   ),
 #'                   JA3Fingerprint = list(
+#'                     FallbackBehavior = "MATCH"|"NO_MATCH"
+#'                   ),
+#'                   JA4Fingerprint = list(
+#'                     FallbackBehavior = "MATCH"|"NO_MATCH"
+#'                   ),
+#'                   UriFragment = list(
 #'                     FallbackBehavior = "MATCH"|"NO_MATCH"
 #'                   )
 #'                 ),
@@ -10824,6 +11219,12 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
 #'                   ),
 #'                   JA3Fingerprint = list(
 #'                     FallbackBehavior = "MATCH"|"NO_MATCH"
+#'                   ),
+#'                   JA4Fingerprint = list(
+#'                     FallbackBehavior = "MATCH"|"NO_MATCH"
+#'                   ),
+#'                   UriFragment = list(
+#'                     FallbackBehavior = "MATCH"|"NO_MATCH"
 #'                   )
 #'                 ),
 #'                 TextTransformations = list(
@@ -10890,6 +11291,12 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
 #'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
 #'                   ),
 #'                   JA3Fingerprint = list(
+#'                     FallbackBehavior = "MATCH"|"NO_MATCH"
+#'                   ),
+#'                   JA4Fingerprint = list(
+#'                     FallbackBehavior = "MATCH"|"NO_MATCH"
+#'                   ),
+#'                   UriFragment = list(
 #'                     FallbackBehavior = "MATCH"|"NO_MATCH"
 #'                   )
 #'                 ),
@@ -10958,6 +11365,12 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
 #'                   ),
 #'                   JA3Fingerprint = list(
 #'                     FallbackBehavior = "MATCH"|"NO_MATCH"
+#'                   ),
+#'                   JA4Fingerprint = list(
+#'                     FallbackBehavior = "MATCH"|"NO_MATCH"
+#'                   ),
+#'                   UriFragment = list(
+#'                     FallbackBehavior = "MATCH"|"NO_MATCH"
 #'                   )
 #'                 ),
 #'                 TextTransformations = list(
@@ -11023,6 +11436,12 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
 #'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
 #'                   ),
 #'                   JA3Fingerprint = list(
+#'                     FallbackBehavior = "MATCH"|"NO_MATCH"
+#'                   ),
+#'                   JA4Fingerprint = list(
+#'                     FallbackBehavior = "MATCH"|"NO_MATCH"
+#'                   ),
+#'                   UriFragment = list(
 #'                     FallbackBehavior = "MATCH"|"NO_MATCH"
 #'                   )
 #'                 ),
@@ -11177,6 +11596,12 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
 #'                   ),
 #'                   JA3Fingerprint = list(
 #'                     FallbackBehavior = "MATCH"|"NO_MATCH"
+#'                   ),
+#'                   JA4Fingerprint = list(
+#'                     FallbackBehavior = "MATCH"|"NO_MATCH"
+#'                   ),
+#'                   UriFragment = list(
+#'                     FallbackBehavior = "MATCH"|"NO_MATCH"
 #'                   )
 #'                 ),
 #'                 TextTransformations = list(
@@ -11245,6 +11670,12 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
 #'                           Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
 #'                         )
 #'                       )
+#'                     ),
+#'                     JA3Fingerprint = list(
+#'                       FallbackBehavior = "MATCH"|"NO_MATCH"
+#'                     ),
+#'                     JA4Fingerprint = list(
+#'                       FallbackBehavior = "MATCH"|"NO_MATCH"
 #'                     )
 #'                   )
 #'                 )
@@ -11324,6 +11755,12 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
 #'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
 #'                   ),
 #'                   JA3Fingerprint = list(
+#'                     FallbackBehavior = "MATCH"|"NO_MATCH"
+#'                   ),
+#'                   JA4Fingerprint = list(
+#'                     FallbackBehavior = "MATCH"|"NO_MATCH"
+#'                   ),
+#'                   UriFragment = list(
 #'                     FallbackBehavior = "MATCH"|"NO_MATCH"
 #'                   )
 #'                 ),
@@ -11694,7 +12131,7 @@ wafv2_get_web_acl_for_resource <- function(ResourceArn) {
 #' wafv2_list_api_keys(Scope, NextMarker, Limit)
 #'
 #' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
-#' CloudFront distribution.
+#' CloudFront distribution. For an Amplify application, use `CLOUDFRONT`.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -11782,7 +12219,7 @@ wafv2_list_api_keys <- function(Scope, NextMarker = NULL, Limit = NULL) {
 #' @param Name &#91;required&#93; The name of the managed rule group. You use this, along with the vendor
 #' name, to identify the rule group.
 #' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
-#' CloudFront distribution.
+#' CloudFront distribution. For an Amplify application, use `CLOUDFRONT`.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -11865,7 +12302,7 @@ wafv2_list_available_managed_rule_group_versions <- function(VendorName, Name, S
 #' wafv2_list_available_managed_rule_groups(Scope, NextMarker, Limit)
 #'
 #' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
-#' CloudFront distribution.
+#' CloudFront distribution. For an Amplify application, use `CLOUDFRONT`.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -11943,7 +12380,7 @@ wafv2_list_available_managed_rule_groups <- function(Scope, NextMarker = NULL, L
 #' wafv2_list_ip_sets(Scope, NextMarker, Limit)
 #'
 #' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
-#' CloudFront distribution.
+#' CloudFront distribution. For an Amplify application, use `CLOUDFRONT`.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -12020,7 +12457,7 @@ wafv2_list_ip_sets <- function(Scope, NextMarker = NULL, Limit = NULL) {
 #' wafv2_list_logging_configurations(Scope, NextMarker, Limit, LogScope)
 #'
 #' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
-#' CloudFront distribution.
+#' CloudFront distribution. For an Amplify application, use `CLOUDFRONT`.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -12117,6 +12554,12 @@ wafv2_list_ip_sets <- function(Scope, NextMarker = NULL, Limit = NULL) {
 #'           ),
 #'           JA3Fingerprint = list(
 #'             FallbackBehavior = "MATCH"|"NO_MATCH"
+#'           ),
+#'           JA4Fingerprint = list(
+#'             FallbackBehavior = "MATCH"|"NO_MATCH"
+#'           ),
+#'           UriFragment = list(
+#'             FallbackBehavior = "MATCH"|"NO_MATCH"
 #'           )
 #'         )
 #'       ),
@@ -12203,7 +12646,7 @@ wafv2_list_logging_configurations <- function(Scope, NextMarker = NULL, Limit = 
 #' wafv2_list_managed_rule_sets(Scope, NextMarker, Limit)
 #'
 #' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
-#' CloudFront distribution.
+#' CloudFront distribution. For an Amplify application, use `CLOUDFRONT`.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -12359,7 +12802,7 @@ wafv2_list_mobile_sdk_releases <- function(Platform, NextMarker = NULL, Limit = 
 #' wafv2_list_regex_pattern_sets(Scope, NextMarker, Limit)
 #'
 #' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
-#' CloudFront distribution.
+#' CloudFront distribution. For an Amplify application, use `CLOUDFRONT`.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -12476,7 +12919,7 @@ wafv2_list_regex_pattern_sets <- function(Scope, NextMarker = NULL, Limit = NULL
 #' ```
 #' svc$list_resources_for_web_acl(
 #'   WebACLArn = "string",
-#'   ResourceType = "APPLICATION_LOAD_BALANCER"|"API_GATEWAY"|"APPSYNC"|"COGNITO_USER_POOL"|"APP_RUNNER_SERVICE"|"VERIFIED_ACCESS_INSTANCE"
+#'   ResourceType = "APPLICATION_LOAD_BALANCER"|"API_GATEWAY"|"APPSYNC"|"COGNITO_USER_POOL"|"APP_RUNNER_SERVICE"|"VERIFIED_ACCESS_INSTANCE"|"AMPLIFY"
 #' )
 #' ```
 #'
@@ -12515,7 +12958,7 @@ wafv2_list_resources_for_web_acl <- function(WebACLArn, ResourceType = NULL) {
 #' wafv2_list_rule_groups(Scope, NextMarker, Limit)
 #'
 #' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
-#' CloudFront distribution.
+#' CloudFront distribution. For an Amplify application, use `CLOUDFRONT`.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -12671,7 +13114,7 @@ wafv2_list_tags_for_resource <- function(NextMarker = NULL, Limit = NULL, Resour
 #' wafv2_list_web_ac_ls(Scope, NextMarker, Limit)
 #'
 #' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
-#' CloudFront distribution.
+#' CloudFront distribution. For an Amplify application, use `CLOUDFRONT`.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -12869,6 +13312,12 @@ wafv2_list_web_ac_ls <- function(Scope, NextMarker = NULL, Limit = NULL) {
 #'         ),
 #'         JA3Fingerprint = list(
 #'           FallbackBehavior = "MATCH"|"NO_MATCH"
+#'         ),
+#'         JA4Fingerprint = list(
+#'           FallbackBehavior = "MATCH"|"NO_MATCH"
+#'         ),
+#'         UriFragment = list(
+#'           FallbackBehavior = "MATCH"|"NO_MATCH"
 #'         )
 #'       )
 #'     ),
@@ -12962,6 +13411,12 @@ wafv2_list_web_ac_ls <- function(Scope, NextMarker = NULL, Limit = NULL) {
 #'           OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
 #'         ),
 #'         JA3Fingerprint = list(
+#'           FallbackBehavior = "MATCH"|"NO_MATCH"
+#'         ),
+#'         JA4Fingerprint = list(
+#'           FallbackBehavior = "MATCH"|"NO_MATCH"
+#'         ),
+#'         UriFragment = list(
 #'           FallbackBehavior = "MATCH"|"NO_MATCH"
 #'         )
 #'       )
@@ -13058,7 +13513,7 @@ wafv2_put_logging_configuration <- function(LoggingConfiguration) {
 #' This name is assigned to the corresponding managed rule group, which
 #' your customers can access and use.
 #' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
-#' CloudFront distribution.
+#' CloudFront distribution. For an Amplify application, use `CLOUDFRONT`.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -13377,7 +13832,7 @@ wafv2_untag_resource <- function(ResourceARN, TagKeys) {
 #' @param Name &#91;required&#93; The name of the IP set. You cannot change the name of an `IPSet` after
 #' you create it.
 #' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
-#' CloudFront distribution.
+#' CloudFront distribution. For an Amplify application, use `CLOUDFRONT`.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -13513,7 +13968,7 @@ wafv2_update_ip_set <- function(Name, Scope, Id, Description = NULL, Addresses, 
 #' This name is assigned to the corresponding managed rule group, which
 #' your customers can access and use.
 #' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
-#' CloudFront distribution.
+#' CloudFront distribution. For an Amplify application, use `CLOUDFRONT`.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -13640,7 +14095,7 @@ wafv2_update_managed_rule_set_version_expiry_date <- function(Name, Scope, Id, L
 #' @param Name &#91;required&#93; The name of the set. You cannot change the name after you create the
 #' set.
 #' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
-#' CloudFront distribution.
+#' CloudFront distribution. For an Amplify application, use `CLOUDFRONT`.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -13766,7 +14221,7 @@ wafv2_update_regex_pattern_set <- function(Name, Scope, Id, Description = NULL, 
 #' @param Name &#91;required&#93; The name of the rule group. You cannot change the name of a rule group
 #' after you create it.
 #' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
-#' CloudFront distribution.
+#' CloudFront distribution. For an Amplify application, use `CLOUDFRONT`.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -13886,6 +14341,12 @@ wafv2_update_regex_pattern_set <- function(Name, Scope, Id, Description = NULL, 
 #'             ),
 #'             JA3Fingerprint = list(
 #'               FallbackBehavior = "MATCH"|"NO_MATCH"
+#'             ),
+#'             JA4Fingerprint = list(
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
+#'             ),
+#'             UriFragment = list(
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
 #'             )
 #'           ),
 #'           TextTransformations = list(
@@ -13952,6 +14413,12 @@ wafv2_update_regex_pattern_set <- function(Name, Scope, Id, Description = NULL, 
 #'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
 #'             ),
 #'             JA3Fingerprint = list(
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
+#'             ),
+#'             JA4Fingerprint = list(
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
+#'             ),
+#'             UriFragment = list(
 #'               FallbackBehavior = "MATCH"|"NO_MATCH"
 #'             )
 #'           ),
@@ -14020,6 +14487,12 @@ wafv2_update_regex_pattern_set <- function(Name, Scope, Id, Description = NULL, 
 #'             ),
 #'             JA3Fingerprint = list(
 #'               FallbackBehavior = "MATCH"|"NO_MATCH"
+#'             ),
+#'             JA4Fingerprint = list(
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
+#'             ),
+#'             UriFragment = list(
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
 #'             )
 #'           ),
 #'           TextTransformations = list(
@@ -14085,6 +14558,12 @@ wafv2_update_regex_pattern_set <- function(Name, Scope, Id, Description = NULL, 
 #'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
 #'             ),
 #'             JA3Fingerprint = list(
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
+#'             ),
+#'             JA4Fingerprint = list(
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
+#'             ),
+#'             UriFragment = list(
 #'               FallbackBehavior = "MATCH"|"NO_MATCH"
 #'             )
 #'           ),
@@ -14239,6 +14718,12 @@ wafv2_update_regex_pattern_set <- function(Name, Scope, Id, Description = NULL, 
 #'             ),
 #'             JA3Fingerprint = list(
 #'               FallbackBehavior = "MATCH"|"NO_MATCH"
+#'             ),
+#'             JA4Fingerprint = list(
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
+#'             ),
+#'             UriFragment = list(
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
 #'             )
 #'           ),
 #'           TextTransformations = list(
@@ -14307,6 +14792,12 @@ wafv2_update_regex_pattern_set <- function(Name, Scope, Id, Description = NULL, 
 #'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
 #'                   )
 #'                 )
+#'               ),
+#'               JA3Fingerprint = list(
+#'                 FallbackBehavior = "MATCH"|"NO_MATCH"
+#'               ),
+#'               JA4Fingerprint = list(
+#'                 FallbackBehavior = "MATCH"|"NO_MATCH"
 #'               )
 #'             )
 #'           )
@@ -14583,6 +15074,12 @@ wafv2_update_regex_pattern_set <- function(Name, Scope, Id, Description = NULL, 
 #'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
 #'             ),
 #'             JA3Fingerprint = list(
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
+#'             ),
+#'             JA4Fingerprint = list(
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
+#'             ),
+#'             UriFragment = list(
 #'               FallbackBehavior = "MATCH"|"NO_MATCH"
 #'             )
 #'           ),
@@ -14751,7 +15248,8 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #' Web Services resources to protect. The resource types include Amazon
 #' CloudFront distribution, Amazon API Gateway REST API, Application Load
 #' Balancer, AppSync GraphQL API, Amazon Cognito user pool, App Runner
-#' service, and Amazon Web Services Verified Access instance.
+#' service, Amplify application, and Amazon Web Services Verified Access
+#' instance.
 #' 
 #' **Temporary inconsistencies during updates**
 #' 
@@ -14786,7 +15284,7 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #' @param Name &#91;required&#93; The name of the web ACL. You cannot change the name of a web ACL after
 #' you create it.
 #' @param Scope &#91;required&#93; Specifies whether this is for a global resource type, such as a Amazon
-#' CloudFront distribution.
+#' CloudFront distribution. For an Amplify application, use `CLOUDFRONT`.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -14807,15 +15305,14 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #' handles them.
 #' @param VisibilityConfig &#91;required&#93; Defines and enables Amazon CloudWatch metrics and web request sample
 #' collection.
-#' @param DataProtectionConfig Specifies data protection to apply to the web request data that WAF
-#' stores for the web ACL. This is a web ACL level data protection option.
+#' @param DataProtectionConfig Specifies data protection to apply to the web request data for the web
+#' ACL. This is a web ACL level data protection option.
 #' 
 #' The data protection that you configure for the web ACL alters the data
-#' that's available for any other data collection activity, including WAF
-#' logging, web ACL request sampling, Amazon Web Services Managed Rules,
-#' and Amazon Security Lake data collection and management. Your other
-#' option for data protection is in the logging configuration, which only
-#' affects logging.
+#' that's available for any other data collection activity, including your
+#' WAF logging destinations, web ACL request sampling, and Amazon Security
+#' Lake data collection and management. Your other option for data
+#' protection is in the logging configuration, which only affects logging.
 #' @param LockToken &#91;required&#93; A token used for optimistic locking. WAF returns a token to your `get`
 #' and `list` requests, to mark the state of the entity at the time of the
 #' request. To make changes to the entity associated with the token, you
@@ -14975,6 +15472,12 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #'             ),
 #'             JA3Fingerprint = list(
 #'               FallbackBehavior = "MATCH"|"NO_MATCH"
+#'             ),
+#'             JA4Fingerprint = list(
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
+#'             ),
+#'             UriFragment = list(
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
 #'             )
 #'           ),
 #'           TextTransformations = list(
@@ -15041,6 +15544,12 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
 #'             ),
 #'             JA3Fingerprint = list(
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
+#'             ),
+#'             JA4Fingerprint = list(
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
+#'             ),
+#'             UriFragment = list(
 #'               FallbackBehavior = "MATCH"|"NO_MATCH"
 #'             )
 #'           ),
@@ -15109,6 +15618,12 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #'             ),
 #'             JA3Fingerprint = list(
 #'               FallbackBehavior = "MATCH"|"NO_MATCH"
+#'             ),
+#'             JA4Fingerprint = list(
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
+#'             ),
+#'             UriFragment = list(
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
 #'             )
 #'           ),
 #'           TextTransformations = list(
@@ -15174,6 +15689,12 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
 #'             ),
 #'             JA3Fingerprint = list(
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
+#'             ),
+#'             JA4Fingerprint = list(
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
+#'             ),
+#'             UriFragment = list(
 #'               FallbackBehavior = "MATCH"|"NO_MATCH"
 #'             )
 #'           ),
@@ -15328,6 +15849,12 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #'             ),
 #'             JA3Fingerprint = list(
 #'               FallbackBehavior = "MATCH"|"NO_MATCH"
+#'             ),
+#'             JA4Fingerprint = list(
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
+#'             ),
+#'             UriFragment = list(
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
 #'             )
 #'           ),
 #'           TextTransformations = list(
@@ -15396,6 +15923,12 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
 #'                   )
 #'                 )
+#'               ),
+#'               JA3Fingerprint = list(
+#'                 FallbackBehavior = "MATCH"|"NO_MATCH"
+#'               ),
+#'               JA4Fingerprint = list(
+#'                 FallbackBehavior = "MATCH"|"NO_MATCH"
 #'               )
 #'             )
 #'           )
@@ -15672,6 +16205,12 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
 #'             ),
 #'             JA3Fingerprint = list(
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
+#'             ),
+#'             JA4Fingerprint = list(
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
+#'             ),
+#'             UriFragment = list(
 #'               FallbackBehavior = "MATCH"|"NO_MATCH"
 #'             )
 #'           ),

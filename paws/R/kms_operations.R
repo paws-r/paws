@@ -2269,15 +2269,17 @@ kms_delete_imported_key_material <- function(KeyId) {
 #' (China Regions only) KMS key pair with a `KeyUsage` value of
 #' `KEY_AGREEMENT` to call DeriveSharedSecret.
 #' 
-#' DeriveSharedSecret uses the Elliptic Curve Cryptography Cofactor
-#' Diffie-Hellman Primitive (ECDH) to establish a key agreement between two
-#' peers by deriving a shared secret from their elliptic curve
-#' public-private key pairs. You can use the raw shared secret that
-#' DeriveSharedSecret returns to derive a symmetric key that can encrypt
-#' and decrypt data that is sent between the two peers, or that can
-#' generate and verify HMACs. KMS recommends that you follow NIST
-#' recommendations for key derivation when using the raw shared secret to
-#' derive a symmetric key.
+#' DeriveSharedSecret uses the [Elliptic Curve Cryptography Cofactor
+#' Diffie-Hellman
+#' Primitive](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-56Ar3.pdf#page=60)
+#' (ECDH) to establish a key agreement between two peers by deriving a
+#' shared secret from their elliptic curve public-private key pairs. You
+#' can use the raw shared secret that DeriveSharedSecret returns to derive
+#' a symmetric key that can encrypt and decrypt data that is sent between
+#' the two peers, or that can generate and verify HMACs. KMS recommends
+#' that you follow [NIST recommendations for key
+#' derivation](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-56Cr2.pdf)
+#' when using the raw shared secret to derive a symmetric key.
 #' 
 #' The following workflow demonstrates how to establish key agreement over
 #' an insecure communication channel using DeriveSharedSecret.

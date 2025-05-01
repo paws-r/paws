@@ -46,7 +46,7 @@ The default \code{Precedence} value is null. The maximum \code{Precedence} value
 is \code{2^31-1}.}
 }
 \description{
-Creates a new group in the specified user pool. For more information about user pool groups see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-user-groups.html}{Adding groups to a user pool}.
+Creates a new group in the specified user pool. For more information about user pool groups, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-user-groups.html}{Adding groups to a user pool}.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_create_group/} for full documentation.
 }

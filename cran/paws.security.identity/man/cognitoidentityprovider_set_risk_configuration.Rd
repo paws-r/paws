@@ -2,7 +2,7 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_set_risk_configuration}
 \alias{cognitoidentityprovider_set_risk_configuration}
-\title{Configures actions on detected risks}
+\title{Configures threat protection for a user pool or app client}
 \usage{
 cognitoidentityprovider_set_risk_configuration(
   UserPoolId,
@@ -13,24 +13,35 @@ cognitoidentityprovider_set_risk_configuration(
 )
 }
 \arguments{
-\item{UserPoolId}{[required] The user pool ID.}
+\item{UserPoolId}{[required] The ID of the user pool where you want to set a risk configuration. If
+you include \code{UserPoolId} in your request, don't include \code{ClientId}. When
+the client ID is null, the same risk configuration is applied to all the
+clients in the userPool. When you include both \code{ClientId} and
+\code{UserPoolId}, Amazon Cognito maps the configuration to the app client
+only.}
 
-\item{ClientId}{The app client ID. If \code{ClientId} is null, then the risk configuration is
-mapped to \code{userPoolId}. When the client ID is null, the same risk
-configuration is applied to all the clients in the userPool.
+\item{ClientId}{The ID of the app client where you want to set a risk configuration. If
+\code{ClientId} is null, then the risk configuration is mapped to
+\code{UserPoolId}. When the client ID is null, the same risk configuration is
+applied to all the clients in the userPool.
 
-Otherwise, \code{ClientId} is mapped to the client. When the client ID isn't
-null, the user pool configuration is overridden and the risk
-configuration for the client is used instead.}
+When you include a \code{ClientId} parameter, Amazon Cognito maps the
+configuration to the app client. When you include both \code{ClientId} and
+\code{UserPoolId}, Amazon Cognito maps the configuration to the app client
+only.}
 
-\item{CompromisedCredentialsRiskConfiguration}{The compromised credentials risk configuration.}
+\item{CompromisedCredentialsRiskConfiguration}{The configuration of automated reactions to detected compromised
+credentials. Includes settings for blocking future sign-in requests and
+for the types of password-submission events you want to monitor.}
 
-\item{AccountTakeoverRiskConfiguration}{The account takeover risk configuration.}
+\item{AccountTakeoverRiskConfiguration}{The settings for automated responses and notification templates for
+adaptive authentication with threat protection.}
 
-\item{RiskExceptionConfiguration}{The configuration to override the risk decision.}
+\item{RiskExceptionConfiguration}{A set of IP-address overrides to threat protection. You can set up
+IP-address always-block and always-allow lists.}
 }
 \description{
-Configures actions on detected risks. To delete the risk configuration for \code{UserPoolId} or \code{ClientId}, pass null values for all four configuration types.
+Configures threat protection for a user pool or app client. Sets configuration for the following.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_set_risk_configuration/} for full documentation.
 }

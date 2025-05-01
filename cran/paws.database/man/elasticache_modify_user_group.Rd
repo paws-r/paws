@@ -18,7 +18,8 @@ elasticache_modify_user_group(
 
 \item{UserIdsToRemove}{The list of user IDs to remove from the user group.}
 
-\item{Engine}{The engine for a user group.}
+\item{Engine}{Modifies the engine listed in a user group. The options are valkey or
+redis.}
 }
 \description{
 Changes the list of users that belong to the user group.

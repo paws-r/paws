@@ -15,7 +15,7 @@ cognitoidentityprovider_set_log_delivery_configuration(
 \item{LogConfigurations}{[required] A collection of the logging configurations for a user pool.}
 }
 \description{
-Sets up or modifies the logging configuration of a user pool. User pools can export user notification logs and advanced security features user activity logs.
+Sets up or modifies the logging configuration of a user pool. User pools can export user notification logs and, when threat protection is active, user-activity logs. For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/exporting-quotas-and-usage.html}{Exporting user pool logs}.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_set_log_delivery_configuration/} for full documentation.
 }

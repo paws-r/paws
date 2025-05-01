@@ -22,7 +22,8 @@ the request. Case-sensitive.}
 \item{destination}{The new Amazon Managed Service for Prometheus workspace to send metrics
 to.}
 
-\item{roleConfiguration}{The scraper role configuration for the workspace.}
+\item{roleConfiguration}{Use this structure to enable cross-account access, so that you can use a
+target account to access Prometheus metrics from source accounts.}
 
 \item{scrapeConfiguration}{Contains the base-64 encoded YAML configuration for the scraper.
 

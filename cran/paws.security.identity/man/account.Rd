@@ -93,11 +93,13 @@ Operations for Amazon Web Services Account Management
 \link[=account_delete_alternate_contact]{delete_alternate_contact} \tab Deletes the specified alternate contact from an Amazon Web Services account\cr
 \link[=account_disable_region]{disable_region} \tab Disables (opts-out) a particular Region for an account\cr
 \link[=account_enable_region]{enable_region} \tab Enables (opts-in) a particular Region for an account\cr
+\link[=account_get_account_information]{get_account_information} \tab Retrieves information about the specified account including its account name, account ID, and account creation date and time\cr
 \link[=account_get_alternate_contact]{get_alternate_contact} \tab Retrieves the specified alternate contact attached to an Amazon Web Services account\cr
 \link[=account_get_contact_information]{get_contact_information} \tab Retrieves the primary contact information of an Amazon Web Services account\cr
 \link[=account_get_primary_email]{get_primary_email} \tab Retrieves the primary email address for the specified account\cr
 \link[=account_get_region_opt_status]{get_region_opt_status} \tab Retrieves the opt-in status of a particular Region\cr
 \link[=account_list_regions]{list_regions} \tab Lists all the Regions for a given account and their respective opt-in statuses\cr
+\link[=account_put_account_name]{put_account_name} \tab Updates the account name of the specified account\cr
 \link[=account_put_alternate_contact]{put_alternate_contact} \tab Modifies the specified alternate contact attached to an Amazon Web Services account\cr
 \link[=account_put_contact_information]{put_contact_information} \tab Updates the primary contact information of an Amazon Web Services account\cr
 \link[=account_start_primary_email_update]{start_primary_email_update} \tab Starts the process to update the primary email address for the specified account

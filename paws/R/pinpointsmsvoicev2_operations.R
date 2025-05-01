@@ -235,6 +235,12 @@ pinpointsmsvoicev2_create_configuration_set <- function(ConfigurationSetName, Ta
 #' information about that event to an event destination, or send
 #' notifications to endpoints that are subscribed to an Amazon SNS topic.
 #' 
+#' You can only create one event destination at a time. You must provide a
+#' value for a single event destination using either
+#' `CloudWatchLogsDestination`, `KinesisFirehoseDestination` or
+#' `SnsDestination`. If an event destination isn't provided then an
+#' exception is returned.
+#' 
 #' Each configuration set can contain between 0 and 5 event destinations.
 #' Each event destination can contain a reference to a single destination,
 #' such as a CloudWatch or Firehose destination.
@@ -4120,7 +4126,7 @@ pinpointsmsvoicev2_discard_registration_version <- function(RegistrationId) {
 #'   NumberCapability = "SMS"|"VOICE"|"MMS",
 #'   CountryRuleSet = list(
 #'     list(
-#'       ProtectStatus = "ALLOW"|"BLOCK"
+#'       ProtectStatus = "ALLOW"|"BLOCK"|"MONITOR"|"FILTER"
 #'     )
 #'   )
 #' )
@@ -4726,12 +4732,12 @@ pinpointsmsvoicev2_put_opted_out_number <- function(OptOutListName, OptedOutNumb
 }
 .pinpointsmsvoicev2$operations$put_opted_out_number <- pinpointsmsvoicev2_put_opted_out_number
 
-#' Create or update a RuleSetNumberOverride and associate it with a protect
-#' configuration
+#' Create or update a phone number rule override and associate it with a
+#' protect configuration
 #'
 #' @description
-#' Create or update a RuleSetNumberOverride and associate it with a protect
-#' configuration.
+#' Create or update a phone number rule override and associate it with a
+#' protect configuration.
 #'
 #' @usage
 #' pinpointsmsvoicev2_put_protect_configuration_rule_set_number_override(
@@ -5090,12 +5096,15 @@ pinpointsmsvoicev2_release_sender_id <- function(SenderId, IsoCountryCode) {
 #'
 #' @param IsoCountryCode &#91;required&#93; The two-character code, in ISO 3166-1 alpha-2 format, for the country or
 #' region.
-#' @param MessageType &#91;required&#93; The type of message. Valid values are TRANSACTIONAL for messages that
-#' are critical or time-sensitive and PROMOTIONAL for messages that aren't
-#' critical or time-sensitive.
+#' @param MessageType &#91;required&#93; The type of message. Valid values are `TRANSACTIONAL` for messages that
+#' are critical or time-sensitive and `PROMOTIONAL` for messages that
+#' aren't critical or time-sensitive.
 #' @param NumberCapabilities &#91;required&#93; Indicates if the phone number will be used for text messages, voice
 #' messages, or both.
 #' @param NumberType &#91;required&#93; The type of phone number to request.
+#' 
+#' When you request a `SIMULATOR` phone number, you must set
+#' **MessageType** as `TRANSACTIONAL`.
 #' @param OptOutListName The name of the OptOutList to associate with the phone number. You can
 #' use the OptOutListName or OptOutListArn.
 #' 
@@ -5393,16 +5402,18 @@ pinpointsmsvoicev2_send_destination_number_verification_code <- function(Verifie
 #' @param MessageBody The text body of the message.
 #' @param MediaUrls An array of URLs to each media file to send.
 #' 
-#' The media files have to be stored in a publicly available S3 bucket.
-#' Supported media file formats are listed in [MMS file types, size and
-#' character
+#' The media files have to be stored in an S3 bucket. Supported media file
+#' formats are listed in [MMS file types, size and character
 #' limits](https://docs.aws.amazon.com/sms-voice/latest/userguide/mms-limitations-character.html).
 #' For more information on creating an S3 bucket and managing objects, see
 #' [Creating a
-#' bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/create-bucket-overview.html)
-#' and [Uploading
+#' bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/create-bucket-overview.html),
+#' [Uploading
 #' objects](https://docs.aws.amazon.com/AmazonS3/latest/userguide/upload-objects.html)
-#' in the S3 user guide.
+#' in the *Amazon S3 User Guide*, and [Setting up an Amazon S3 bucket for
+#' MMS
+#' files](https://docs.aws.amazon.com/sms-voice/latest/userguide/send-mms-message.html#send-mms-message-bucket)
+#' in the *Amazon Web Services End User Messaging SMS User Guide*.
 #' @param ConfigurationSetName The name of the configuration set to use. This can be either the
 #' ConfigurationSetName or ConfigurationSetArn.
 #' @param MaxPrice The maximum amount that you want to spend, in US dollars, per each MMS
@@ -6177,9 +6188,8 @@ pinpointsmsvoicev2_submit_registration_version <- function(RegistrationId) {
 #' @description
 #' Adds or overwrites only the specified tags for the specified resource.
 #' When you specify an existing tag key, the value is overwritten with the
-#' new value. Each resource can have a maximum of 50 tags. Each tag
-#' consists of a key and an optional value. Tag keys must be unique per
-#' resource. For more information about tags, see
+#' new value. Each tag consists of a key and an optional value. Tag keys
+#' must be unique per resource. For more information about tags, see
 #' [Tags](https://docs.aws.amazon.com/sms-voice/latest/userguide/phone-numbers-tags.html)
 #' in the *AWS End User Messaging SMS User Guide*.
 #'
@@ -6643,14 +6653,14 @@ pinpointsmsvoicev2_update_protect_configuration <- function(ProtectConfiguration
 }
 .pinpointsmsvoicev2$operations$update_protect_configuration <- pinpointsmsvoicev2_update_protect_configuration
 
-#' Update a country rule set to ALLOW or BLOCK messages to be sent to the
-#' specified destination counties
+#' Update a country rule set to ALLOW, BLOCK, MONITOR, or FILTER messages
+#' to be sent to the specified destination counties
 #'
 #' @description
-#' Update a country rule set to `ALLOW` or `BLOCK` messages to be sent to
-#' the specified destination counties. You can update one or multiple
-#' countries at a time. The updates are only applied to the specified
-#' NumberCapability type.
+#' Update a country rule set to `ALLOW`, `BLOCK`, `MONITOR`, or `FILTER`
+#' messages to be sent to the specified destination counties. You can
+#' update one or multiple countries at a time. The updates are only applied
+#' to the specified NumberCapability type.
 #'
 #' @usage
 #' pinpointsmsvoicev2_update_protect_configuration_country_rule_set(
@@ -6664,6 +6674,10 @@ pinpointsmsvoicev2_update_protect_configuration <- function(ProtectConfiguration
 #' see [Supported countries and regions (SMS
 #' channel)](https://docs.aws.amazon.com/sms-voice/latest/userguide/phone-numbers-sms-by-country.html)
 #' in the AWS End User Messaging SMS User Guide.
+#' 
+#' For example, to set the United States as allowed and Canada as blocked,
+#' the `CountryRuleSetUpdates` would be formatted as:
+#' `"CountryRuleSetUpdates": { "US" : { "ProtectStatus": "ALLOW" } "CA" : { "ProtectStatus": "BLOCK" } }`
 #'
 #' @return
 #' A list with the following syntax:
@@ -6674,7 +6688,7 @@ pinpointsmsvoicev2_update_protect_configuration <- function(ProtectConfiguration
 #'   NumberCapability = "SMS"|"VOICE"|"MMS",
 #'   CountryRuleSet = list(
 #'     list(
-#'       ProtectStatus = "ALLOW"|"BLOCK"
+#'       ProtectStatus = "ALLOW"|"BLOCK"|"MONITOR"|"FILTER"
 #'     )
 #'   )
 #' )
@@ -6687,7 +6701,7 @@ pinpointsmsvoicev2_update_protect_configuration <- function(ProtectConfiguration
 #'   NumberCapability = "SMS"|"VOICE"|"MMS",
 #'   CountryRuleSetUpdates = list(
 #'     list(
-#'       ProtectStatus = "ALLOW"|"BLOCK"
+#'       ProtectStatus = "ALLOW"|"BLOCK"|"MONITOR"|"FILTER"
 #'     )
 #'   )
 #' )

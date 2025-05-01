@@ -90,19 +90,20 @@ Services Local Zones. The source and destination buckets must have the
 same parent Amazon Web Services Region. Otherwise, you get an HTTP
 \verb{400 Bad Request} error with the error code \code{InvalidRequest}.
 
-\strong{Access points} - When you use this action with an access point, you
-must provide the alias of the access point in place of the bucket name
-or specify the access point ARN. When using the access point ARN, you
-must direct requests to the access point hostname. The access point
-hostname takes the form
+\strong{Access points} - When you use this action with an access point for
+general purpose buckets, you must provide the alias of the access point
+in place of the bucket name or specify the access point ARN. When you
+use this action with an access point for directory buckets, you must
+provide the access point name in place of the bucket name. When using
+the access point ARN, you must direct requests to the access point
+hostname. The access point hostname takes the form
 \emph{AccessPointName}-\emph{AccountId}.s3-accesspoint.\emph{Region}.amazonaws.com.
 When using this action with an access point through the Amazon Web
 Services SDKs, you provide the access point ARN in place of the bucket
 name. For more information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html}{Using access points}
 in the \emph{Amazon S3 User Guide}.
 
-Access points and Object Lambda access points are not supported by
-directory buckets.
+Object Lambda access points are not supported by directory buckets.
 
 \strong{S3 on Outposts} - When you use this action with S3 on Outposts, you
 must use the Outpost bucket access point ARN or the access point alias
@@ -427,10 +428,12 @@ be stored in the \code{STANDARD} Storage Class by default. The \code{STANDARD}
 storage class provides high durability and high availability. Depending
 on performance needs, you can specify a different Storage Class.
 \itemize{
-\item \strong{Directory buckets} - For directory buckets, only the S3 Express
-One Zone storage class is supported to store newly created objects.
-Unsupported storage class values won't write a destination object
-and will respond with the HTTP status code \verb{400 Bad Request}.
+\item \strong{Directory buckets} - Directory buckets only support
+\code{EXPRESS_ONEZONE} (the S3 Express One Zone storage class) in
+Availability Zones and \code{ONEZONE_IA} (the S3 One Zone-Infrequent
+Access storage class) in Dedicated Local Zones. Unsupported storage
+class values won't write a destination object and will respond with
+the HTTP status code \verb{400 Bad Request}.
 \item \strong{Amazon S3 on Outposts} - S3 on Outposts only uses the \code{OUTPOSTS}
 Storage Class.
 }

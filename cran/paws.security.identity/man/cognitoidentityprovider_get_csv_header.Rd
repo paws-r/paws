@@ -2,16 +2,16 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_get_csv_header}
 \alias{cognitoidentityprovider_get_csv_header}
-\title{Gets the header information for the comma-separated value (CSV) file to
-be used as input for the user import job}
+\title{Given a user pool ID, generates a comma-separated value (CSV) list
+populated with available user attributes in the user pool}
 \usage{
 cognitoidentityprovider_get_csv_header(UserPoolId)
 }
 \arguments{
-\item{UserPoolId}{[required] The ID of the user pool that the users are to be imported into.}
+\item{UserPoolId}{[required] The ID of the user pool that you want to import users into.}
 }
 \description{
-Gets the header information for the comma-separated value (CSV) file to be used as input for the user import job.
+Given a user pool ID, generates a comma-separated value (CSV) list populated with available user attributes in the user pool. This list is the header for the CSV file that determines the users in a user import job. Save the content of \code{CSVHeader} in the response as a \code{.csv} file and populate it with the usernames and attributes of users that you want to import. For more information about CSV user import, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-using-import-tool.html}{Importing users from a CSV file}.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_get_csv_header/} for full documentation.
 }

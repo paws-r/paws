@@ -2,8 +2,8 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_admin_link_provider_for_user}
 \alias{cognitoidentityprovider_admin_link_provider_for_user}
-\title{Links an existing user account in a user pool (DestinationUser) to an
-identity from an external IdP (SourceUser) based on a specified
+\title{Links an existing user account in a user pool, or DestinationUser, to an
+identity from an external IdP, or SourceUser, based on a specified
 attribute name and value from the external IdP}
 \usage{
 cognitoidentityprovider_admin_link_provider_for_user(
@@ -67,7 +67,7 @@ in the subject from the IdP token.
 }}
 }
 \description{
-Links an existing user account in a user pool (\code{DestinationUser}) to an identity from an external IdP (\code{SourceUser}) based on a specified attribute name and value from the external IdP. This allows you to create a link from the existing user account to an external federated user identity that has not yet been used to sign in. You can then use the federated user identity to sign in as the existing user account.
+Links an existing user account in a user pool, or \code{DestinationUser}, to an identity from an external IdP, or \code{SourceUser}, based on a specified attribute name and value from the external IdP.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_admin_link_provider_for_user/} for full documentation.
 }

@@ -8,11 +8,14 @@ gateways}
 \usage{
 directconnect_create_direct_connect_gateway(
   directConnectGatewayName,
+  tags = NULL,
   amazonSideAsn = NULL
 )
 }
 \arguments{
 \item{directConnectGatewayName}{[required] The name of the Direct Connect gateway.}
+
+\item{tags}{The key-value pair tags associated with the request.}
 
 \item{amazonSideAsn}{The autonomous system number (ASN) for Border Gateway Protocol (BGP) to
 be configured on the Amazon side of the connection. The ASN must be in

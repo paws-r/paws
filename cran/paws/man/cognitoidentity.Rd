@@ -65,8 +65,8 @@ with one or more third-party identity providers (Facebook, Google, or
 Login with Amazon) or an Amazon Cognito user pool, and you can also
 choose to support unauthenticated access from your app. Cognito delivers
 a unique identifier for each user and acts as an OpenID token provider
-trusted by AWS Security Token Service (STS) to access temporary,
-limited-privilege AWS credentials.
+trusted by Security Token Service (STS) to access temporary,
+limited-privilege Amazon Web Services credentials.
 
 For a description of the authentication flow from the Amazon Cognito
 Developer Guide see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flow.html}{Authentication Flow}.
@@ -118,7 +118,7 @@ For more information see \href{https://docs.aws.amazon.com/cognito/latest/develo
 \link[paws.security.identity:cognitoidentity_describe_identity]{describe_identity} \tab Returns metadata related to the given identity, including when the identity was created and any associated linked logins\cr
 \link[paws.security.identity:cognitoidentity_describe_identity_pool]{describe_identity_pool} \tab Gets details about a particular identity pool, including the pool name, ID description, creation date, and current number of users\cr
 \link[paws.security.identity:cognitoidentity_get_credentials_for_identity]{get_credentials_for_identity} \tab Returns credentials for the provided identity ID\cr
-\link[paws.security.identity:cognitoidentity_get_id]{get_id} \tab Generates (or retrieves) a Cognito ID\cr
+\link[paws.security.identity:cognitoidentity_get_id]{get_id} \tab Generates (or retrieves) IdentityID\cr
 \link[paws.security.identity:cognitoidentity_get_identity_pool_roles]{get_identity_pool_roles} \tab Gets the roles for an identity pool\cr
 \link[paws.security.identity:cognitoidentity_get_open_id_token]{get_open_id_token} \tab Gets an OpenID token, using a known Cognito ID\cr
 \link[paws.security.identity:cognitoidentity_get_open_id_token_for_developer_identity]{get_open_id_token_for_developer_identity} \tab Registers (or retrieves) a Cognito IdentityId and an OpenID Connect token for a user authenticated by your backend authentication process\cr
@@ -134,7 +134,7 @@ For more information see \href{https://docs.aws.amazon.com/cognito/latest/develo
 \link[paws.security.identity:cognitoidentity_unlink_developer_identity]{unlink_developer_identity} \tab Unlinks a DeveloperUserIdentifier from an existing identity\cr
 \link[paws.security.identity:cognitoidentity_unlink_identity]{unlink_identity} \tab Unlinks a federated identity from an existing account\cr
 \link[paws.security.identity:cognitoidentity_untag_resource]{untag_resource} \tab Removes the specified tags from the specified Amazon Cognito identity pool\cr
-\link[paws.security.identity:cognitoidentity_update_identity_pool]{update_identity_pool} \tab Updates an identity pool
+\link[paws.security.identity:cognitoidentity_update_identity_pool]{update_identity_pool} \tab Updates the configuration of an identity pool
 }
 }
 

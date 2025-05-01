@@ -171,8 +171,13 @@ cloudwatchrum_batch_get_rum_metric_definitions <- function(AppMonitorName, Desti
 #' CloudWatch Logs charges.
 #' 
 #' If you omit this parameter, the default is `false`.
-#' @param Domain &#91;required&#93; The top-level internet domain name for which your application has
+#' @param DeobfuscationConfiguration A structure that contains the configuration for how an app monitor can
+#' deobfuscate stack traces.
+#' @param Domain The top-level internet domain name for which your application has
 #' administrative authority.
+#' @param DomainList List the domain names for which your application has administrative
+#' authority. The [`create_app_monitor`][cloudwatchrum_create_app_monitor]
+#' requires either the domain or the domain list.
 #' @param Name &#91;required&#93; A name for the app monitor.
 #' @param Tags Assigns one or more tags (key-value pairs) to the app monitor.
 #' 
@@ -191,7 +196,7 @@ cloudwatchrum_batch_get_rum_metric_definitions <- function(AppMonitorName, Desti
 #' @keywords internal
 #'
 #' @rdname cloudwatchrum_create_app_monitor
-cloudwatchrum_create_app_monitor <- function(AppMonitorConfiguration = NULL, CustomEvents = NULL, CwLogEnabled = NULL, Domain, Name, Tags = NULL) {
+cloudwatchrum_create_app_monitor <- function(AppMonitorConfiguration = NULL, CustomEvents = NULL, CwLogEnabled = NULL, DeobfuscationConfiguration = NULL, Domain = NULL, DomainList = NULL, Name, Tags = NULL) {
   op <- new_operation(
     name = "CreateAppMonitor",
     http_method = "POST",
@@ -200,7 +205,7 @@ cloudwatchrum_create_app_monitor <- function(AppMonitorConfiguration = NULL, Cus
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .cloudwatchrum$create_app_monitor_input(AppMonitorConfiguration = AppMonitorConfiguration, CustomEvents = CustomEvents, CwLogEnabled = CwLogEnabled, Domain = Domain, Name = Name, Tags = Tags)
+  input <- .cloudwatchrum$create_app_monitor_input(AppMonitorConfiguration = AppMonitorConfiguration, CustomEvents = CustomEvents, CwLogEnabled = CwLogEnabled, DeobfuscationConfiguration = DeobfuscationConfiguration, Domain = Domain, DomainList = DomainList, Name = Name, Tags = Tags)
   output <- .cloudwatchrum$create_app_monitor_output()
   config <- get_config()
   svc <- .cloudwatchrum$service(config, op)
@@ -240,6 +245,42 @@ cloudwatchrum_delete_app_monitor <- function(Name) {
   return(response)
 }
 .cloudwatchrum$operations$delete_app_monitor <- cloudwatchrum_delete_app_monitor
+
+#' Removes the association of a resource-based policy from an app monitor
+#'
+#' @description
+#' Removes the association of a resource-based policy from an app monitor.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchrum_delete_resource_policy/](https://www.paws-r-sdk.com/docs/cloudwatchrum_delete_resource_policy/) for full documentation.
+#'
+#' @param Name &#91;required&#93; The app monitor that you want to remove the resource policy from.
+#' @param PolicyRevisionId Specifies a specific policy revision to delete. Provide a
+#' `PolicyRevisionId` to ensure an atomic delete operation. If the revision
+#' ID that you provide doesn't match the latest policy revision ID, the
+#' request will be rejected with an `InvalidPolicyRevisionIdException`
+#' error.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchrum_delete_resource_policy
+cloudwatchrum_delete_resource_policy <- function(Name, PolicyRevisionId = NULL) {
+  op <- new_operation(
+    name = "DeleteResourcePolicy",
+    http_method = "DELETE",
+    http_path = "/appmonitor/{Name}/policy",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudwatchrum$delete_resource_policy_input(Name = Name, PolicyRevisionId = PolicyRevisionId)
+  output <- .cloudwatchrum$delete_resource_policy_output()
+  config <- get_config()
+  svc <- .cloudwatchrum$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchrum$operations$delete_resource_policy <- cloudwatchrum_delete_resource_policy
 
 #' Deletes a destination for CloudWatch RUM extended metrics, so that the
 #' specified app monitor stops sending extended metrics to that destination
@@ -352,6 +393,39 @@ cloudwatchrum_get_app_monitor_data <- function(Filters = NULL, MaxResults = NULL
 }
 .cloudwatchrum$operations$get_app_monitor_data <- cloudwatchrum_get_app_monitor_data
 
+#' Use this operation to retrieve information about a resource-based policy
+#' that is attached to an app monitor
+#'
+#' @description
+#' Use this operation to retrieve information about a resource-based policy that is attached to an app monitor.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchrum_get_resource_policy/](https://www.paws-r-sdk.com/docs/cloudwatchrum_get_resource_policy/) for full documentation.
+#'
+#' @param Name &#91;required&#93; The name of the app monitor that is associated with the resource-based
+#' policy that you want to view.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchrum_get_resource_policy
+cloudwatchrum_get_resource_policy <- function(Name) {
+  op <- new_operation(
+    name = "GetResourcePolicy",
+    http_method = "GET",
+    http_path = "/appmonitor/{Name}/policy",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudwatchrum$get_resource_policy_input(Name = Name)
+  output <- .cloudwatchrum$get_resource_policy_output()
+  config <- get_config()
+  svc <- .cloudwatchrum$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchrum$operations$get_resource_policy <- cloudwatchrum_get_resource_policy
+
 #' Returns a list of the Amazon CloudWatch RUM app monitors in the account
 #'
 #' @description
@@ -457,6 +531,51 @@ cloudwatchrum_list_tags_for_resource <- function(ResourceArn) {
 }
 .cloudwatchrum$operations$list_tags_for_resource <- cloudwatchrum_list_tags_for_resource
 
+#' Use this operation to assign a resource-based policy to a CloudWatch RUM
+#' app monitor to control access to it
+#'
+#' @description
+#' Use this operation to assign a resource-based policy to a CloudWatch RUM app monitor to control access to it. Each app monitor can have one resource-based policy. The maximum size of the policy is 4 KB. To learn more about using resource policies with RUM, see [Using resource-based policies with CloudWatch RUM](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-RUM-resource-policies.html).
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchrum_put_resource_policy/](https://www.paws-r-sdk.com/docs/cloudwatchrum_put_resource_policy/) for full documentation.
+#'
+#' @param Name &#91;required&#93; The name of the app monitor that you want to apply this resource-based
+#' policy to. To find the names of your app monitors, you can use the
+#' [`list_app_monitors`][cloudwatchrum_list_app_monitors] operation.
+#' @param PolicyDocument &#91;required&#93; The JSON to use as the resource policy. The document can be up to 4 KB
+#' in size. For more information about the contents and syntax for this
+#' policy, see [Using resource-based policies with CloudWatch
+#' RUM](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-RUM-resource-policies.html).
+#' @param PolicyRevisionId A string value that you can use to conditionally update your policy. You
+#' can provide the revision ID of your existing policy to make mutating
+#' requests against that policy.
+#' 
+#' When you assign a policy revision ID, then later requests about that
+#' policy will be rejected with an `InvalidPolicyRevisionIdException` error
+#' if they don't provide the correct current revision ID.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchrum_put_resource_policy
+cloudwatchrum_put_resource_policy <- function(Name, PolicyDocument, PolicyRevisionId = NULL) {
+  op <- new_operation(
+    name = "PutResourcePolicy",
+    http_method = "PUT",
+    http_path = "/appmonitor/{Name}/policy",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudwatchrum$put_resource_policy_input(Name = Name, PolicyDocument = PolicyDocument, PolicyRevisionId = PolicyRevisionId)
+  output <- .cloudwatchrum$put_resource_policy_output()
+  config <- get_config()
+  svc <- .cloudwatchrum$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchrum$operations$put_resource_policy <- cloudwatchrum_put_resource_policy
+
 #' Sends telemetry events about your application performance and user
 #' behavior to CloudWatch RUM
 #'
@@ -465,6 +584,12 @@ cloudwatchrum_list_tags_for_resource <- function(ResourceArn) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudwatchrum_put_rum_events/](https://www.paws-r-sdk.com/docs/cloudwatchrum_put_rum_events/) for full documentation.
 #'
+#' @param Alias If the app monitor uses a resource-based policy that requires
+#' [`put_rum_events`][cloudwatchrum_put_rum_events] requests to specify a
+#' certain alias, specify that alias here. This alias will be compared to
+#' the `rum:alias` context key in the resource-based policy. For more
+#' information, see [Using resource-based policies with CloudWatch
+#' RUM](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-RUM-resource-policies.html).
 #' @param AppMonitorDetails &#91;required&#93; A structure that contains information about the app monitor that
 #' collected this telemetry information.
 #' @param BatchId &#91;required&#93; A unique identifier for this batch of RUM event data.
@@ -476,7 +601,7 @@ cloudwatchrum_list_tags_for_resource <- function(ResourceArn) {
 #' @keywords internal
 #'
 #' @rdname cloudwatchrum_put_rum_events
-cloudwatchrum_put_rum_events <- function(AppMonitorDetails, BatchId, Id, RumEvents, UserDetails) {
+cloudwatchrum_put_rum_events <- function(Alias = NULL, AppMonitorDetails, BatchId, Id, RumEvents, UserDetails) {
   op <- new_operation(
     name = "PutRumEvents",
     http_method = "POST",
@@ -485,7 +610,7 @@ cloudwatchrum_put_rum_events <- function(AppMonitorDetails, BatchId, Id, RumEven
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .cloudwatchrum$put_rum_events_input(AppMonitorDetails = AppMonitorDetails, BatchId = BatchId, Id = Id, RumEvents = RumEvents, UserDetails = UserDetails)
+  input <- .cloudwatchrum$put_rum_events_input(Alias = Alias, AppMonitorDetails = AppMonitorDetails, BatchId = BatchId, Id = Id, RumEvents = RumEvents, UserDetails = UserDetails)
   output <- .cloudwatchrum$put_rum_events_output()
   config <- get_config()
   svc <- .cloudwatchrum$service(config, op)
@@ -637,14 +762,19 @@ cloudwatchrum_untag_resource <- function(ResourceArn, TagKeys) {
 #' Amazon CloudWatch Logs in your account. This enables you to keep the
 #' telemetry data for more than 30 days, but it does incur Amazon
 #' CloudWatch Logs charges.
+#' @param DeobfuscationConfiguration A structure that contains the configuration for how an app monitor can
+#' deobfuscate stack traces.
 #' @param Domain The top-level internet domain name for which your application has
 #' administrative authority.
+#' @param DomainList List the domain names for which your application has administrative
+#' authority. The [`update_app_monitor`][cloudwatchrum_update_app_monitor]
+#' allows either the domain or the domain list.
 #' @param Name &#91;required&#93; The name of the app monitor to update.
 #'
 #' @keywords internal
 #'
 #' @rdname cloudwatchrum_update_app_monitor
-cloudwatchrum_update_app_monitor <- function(AppMonitorConfiguration = NULL, CustomEvents = NULL, CwLogEnabled = NULL, Domain = NULL, Name) {
+cloudwatchrum_update_app_monitor <- function(AppMonitorConfiguration = NULL, CustomEvents = NULL, CwLogEnabled = NULL, DeobfuscationConfiguration = NULL, Domain = NULL, DomainList = NULL, Name) {
   op <- new_operation(
     name = "UpdateAppMonitor",
     http_method = "PATCH",
@@ -653,7 +783,7 @@ cloudwatchrum_update_app_monitor <- function(AppMonitorConfiguration = NULL, Cus
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .cloudwatchrum$update_app_monitor_input(AppMonitorConfiguration = AppMonitorConfiguration, CustomEvents = CustomEvents, CwLogEnabled = CwLogEnabled, Domain = Domain, Name = Name)
+  input <- .cloudwatchrum$update_app_monitor_input(AppMonitorConfiguration = AppMonitorConfiguration, CustomEvents = CustomEvents, CwLogEnabled = CwLogEnabled, DeobfuscationConfiguration = DeobfuscationConfiguration, Domain = Domain, DomainList = DomainList, Name = Name)
   output <- .cloudwatchrum$update_app_monitor_output()
   config <- get_config()
   svc <- .cloudwatchrum$service(config, op)

@@ -63,7 +63,8 @@ endpoints
 \item Amazon DynamoDB tables and global secondary indexes throughput
 capacity
 \item Amazon ECS services
-\item Amazon ElastiCache for Redis clusters (replication groups)
+\item Amazon ElastiCache replication groups (Redis OSS and Valkey) and
+Memcached clusters
 \item Amazon EMR clusters
 \item Amazon Keyspaces (for Apache Cassandra) tables
 \item Lambda function provisioned concurrency

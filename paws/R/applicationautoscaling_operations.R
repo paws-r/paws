@@ -93,6 +93,10 @@ NULL
 #'     `replication-group` and the unique identifier is the replication
 #'     group name. Example: `replication-group/mycluster`.
 #' 
+#' -   Amazon ElastiCache cache cluster - The resource type is
+#'     `cache-cluster` and the unique identifier is the cache cluster name.
+#'     Example: `cache-cluster/mycluster`.
+#' 
 #' -   Neptune cluster - The resource type is `cluster` and the unique
 #'     identifier is the cluster name. Example: `cluster:mycluster`.
 #' 
@@ -163,6 +167,9 @@ NULL
 #' -   `kafka:broker-storage:VolumeSize` - The provisioned volume size (in
 #'     GiB) for brokers in an Amazon MSK cluster.
 #' 
+#' -   `elasticache:cache-cluster:Nodes` - The number of nodes for an
+#'     Amazon ElastiCache cache cluster.
+#' 
 #' -   `elasticache:replication-group:NodeGroups` - The number of node
 #'     groups for an Amazon ElastiCache replication group.
 #' 
@@ -190,7 +197,7 @@ NULL
 #'   PolicyName = "string",
 #'   ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda"|"cassandra"|"kafka"|"elasticache"|"neptune"|"workspaces",
 #'   ResourceId = "string",
-#'   ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"comprehend:entity-recognizer-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits"|"kafka:broker-storage:VolumeSize"|"elasticache:replication-group:NodeGroups"|"elasticache:replication-group:Replicas"|"neptune:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredProvisionedConcurrency"|"sagemaker:inference-component:DesiredCopyCount"|"workspaces:workspacespool:DesiredUserSessions"
+#'   ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"comprehend:entity-recognizer-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits"|"kafka:broker-storage:VolumeSize"|"elasticache:cache-cluster:Nodes"|"elasticache:replication-group:NodeGroups"|"elasticache:replication-group:Replicas"|"neptune:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredProvisionedConcurrency"|"sagemaker:inference-component:DesiredCopyCount"|"workspaces:workspacespool:DesiredUserSessions"
 #' )
 #' ```
 #'
@@ -314,6 +321,10 @@ applicationautoscaling_delete_scaling_policy <- function(PolicyName, ServiceName
 #'     `replication-group` and the unique identifier is the replication
 #'     group name. Example: `replication-group/mycluster`.
 #' 
+#' -   Amazon ElastiCache cache cluster - The resource type is
+#'     `cache-cluster` and the unique identifier is the cache cluster name.
+#'     Example: `cache-cluster/mycluster`.
+#' 
 #' -   Neptune cluster - The resource type is `cluster` and the unique
 #'     identifier is the cluster name. Example: `cluster:mycluster`.
 #' 
@@ -384,6 +395,9 @@ applicationautoscaling_delete_scaling_policy <- function(PolicyName, ServiceName
 #' -   `kafka:broker-storage:VolumeSize` - The provisioned volume size (in
 #'     GiB) for brokers in an Amazon MSK cluster.
 #' 
+#' -   `elasticache:cache-cluster:Nodes` - The number of nodes for an
+#'     Amazon ElastiCache cache cluster.
+#' 
 #' -   `elasticache:replication-group:NodeGroups` - The number of node
 #'     groups for an Amazon ElastiCache replication group.
 #' 
@@ -411,7 +425,7 @@ applicationautoscaling_delete_scaling_policy <- function(PolicyName, ServiceName
 #'   ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda"|"cassandra"|"kafka"|"elasticache"|"neptune"|"workspaces",
 #'   ScheduledActionName = "string",
 #'   ResourceId = "string",
-#'   ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"comprehend:entity-recognizer-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits"|"kafka:broker-storage:VolumeSize"|"elasticache:replication-group:NodeGroups"|"elasticache:replication-group:Replicas"|"neptune:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredProvisionedConcurrency"|"sagemaker:inference-component:DesiredCopyCount"|"workspaces:workspacespool:DesiredUserSessions"
+#'   ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"comprehend:entity-recognizer-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits"|"kafka:broker-storage:VolumeSize"|"elasticache:cache-cluster:Nodes"|"elasticache:replication-group:NodeGroups"|"elasticache:replication-group:Replicas"|"neptune:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredProvisionedConcurrency"|"sagemaker:inference-component:DesiredCopyCount"|"workspaces:workspacespool:DesiredUserSessions"
 #' )
 #' ```
 #'
@@ -522,6 +536,10 @@ applicationautoscaling_delete_scheduled_action <- function(ServiceNamespace, Sch
 #'     `replication-group` and the unique identifier is the replication
 #'     group name. Example: `replication-group/mycluster`.
 #' 
+#' -   Amazon ElastiCache cache cluster - The resource type is
+#'     `cache-cluster` and the unique identifier is the cache cluster name.
+#'     Example: `cache-cluster/mycluster`.
+#' 
 #' -   Neptune cluster - The resource type is `cluster` and the unique
 #'     identifier is the cluster name. Example: `cluster:mycluster`.
 #' 
@@ -592,6 +610,9 @@ applicationautoscaling_delete_scheduled_action <- function(ServiceNamespace, Sch
 #' -   `kafka:broker-storage:VolumeSize` - The provisioned volume size (in
 #'     GiB) for brokers in an Amazon MSK cluster.
 #' 
+#' -   `elasticache:cache-cluster:Nodes` - The number of nodes for an
+#'     Amazon ElastiCache cache cluster.
+#' 
 #' -   `elasticache:replication-group:NodeGroups` - The number of node
 #'     groups for an Amazon ElastiCache replication group.
 #' 
@@ -618,7 +639,7 @@ applicationautoscaling_delete_scheduled_action <- function(ServiceNamespace, Sch
 #' svc$deregister_scalable_target(
 #'   ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda"|"cassandra"|"kafka"|"elasticache"|"neptune"|"workspaces",
 #'   ResourceId = "string",
-#'   ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"comprehend:entity-recognizer-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits"|"kafka:broker-storage:VolumeSize"|"elasticache:replication-group:NodeGroups"|"elasticache:replication-group:Replicas"|"neptune:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredProvisionedConcurrency"|"sagemaker:inference-component:DesiredCopyCount"|"workspaces:workspacespool:DesiredUserSessions"
+#'   ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"comprehend:entity-recognizer-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits"|"kafka:broker-storage:VolumeSize"|"elasticache:cache-cluster:Nodes"|"elasticache:replication-group:NodeGroups"|"elasticache:replication-group:Replicas"|"neptune:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredProvisionedConcurrency"|"sagemaker:inference-component:DesiredCopyCount"|"workspaces:workspacespool:DesiredUserSessions"
 #' )
 #' ```
 #'
@@ -736,6 +757,10 @@ applicationautoscaling_deregister_scalable_target <- function(ServiceNamespace, 
 #'     `replication-group` and the unique identifier is the replication
 #'     group name. Example: `replication-group/mycluster`.
 #' 
+#' -   Amazon ElastiCache cache cluster - The resource type is
+#'     `cache-cluster` and the unique identifier is the cache cluster name.
+#'     Example: `cache-cluster/mycluster`.
+#' 
 #' -   Neptune cluster - The resource type is `cluster` and the unique
 #'     identifier is the cluster name. Example: `cluster:mycluster`.
 #' 
@@ -808,6 +833,9 @@ applicationautoscaling_deregister_scalable_target <- function(ServiceNamespace, 
 #' -   `kafka:broker-storage:VolumeSize` - The provisioned volume size (in
 #'     GiB) for brokers in an Amazon MSK cluster.
 #' 
+#' -   `elasticache:cache-cluster:Nodes` - The number of nodes for an
+#'     Amazon ElastiCache cache cluster.
+#' 
 #' -   `elasticache:replication-group:NodeGroups` - The number of node
 #'     groups for an Amazon ElastiCache replication group.
 #' 
@@ -843,7 +871,7 @@ applicationautoscaling_deregister_scalable_target <- function(ServiceNamespace, 
 #'     list(
 #'       ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda"|"cassandra"|"kafka"|"elasticache"|"neptune"|"workspaces",
 #'       ResourceId = "string",
-#'       ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"comprehend:entity-recognizer-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits"|"kafka:broker-storage:VolumeSize"|"elasticache:replication-group:NodeGroups"|"elasticache:replication-group:Replicas"|"neptune:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredProvisionedConcurrency"|"sagemaker:inference-component:DesiredCopyCount"|"workspaces:workspacespool:DesiredUserSessions",
+#'       ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"comprehend:entity-recognizer-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits"|"kafka:broker-storage:VolumeSize"|"elasticache:cache-cluster:Nodes"|"elasticache:replication-group:NodeGroups"|"elasticache:replication-group:Replicas"|"neptune:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredProvisionedConcurrency"|"sagemaker:inference-component:DesiredCopyCount"|"workspaces:workspacespool:DesiredUserSessions",
 #'       MinCapacity = 123,
 #'       MaxCapacity = 123,
 #'       PredictedCapacity = 123,
@@ -870,7 +898,7 @@ applicationautoscaling_deregister_scalable_target <- function(ServiceNamespace, 
 #'   ResourceIds = list(
 #'     "string"
 #'   ),
-#'   ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"comprehend:entity-recognizer-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits"|"kafka:broker-storage:VolumeSize"|"elasticache:replication-group:NodeGroups"|"elasticache:replication-group:Replicas"|"neptune:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredProvisionedConcurrency"|"sagemaker:inference-component:DesiredCopyCount"|"workspaces:workspacespool:DesiredUserSessions",
+#'   ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"comprehend:entity-recognizer-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits"|"kafka:broker-storage:VolumeSize"|"elasticache:cache-cluster:Nodes"|"elasticache:replication-group:NodeGroups"|"elasticache:replication-group:Replicas"|"neptune:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredProvisionedConcurrency"|"sagemaker:inference-component:DesiredCopyCount"|"workspaces:workspacespool:DesiredUserSessions",
 #'   MaxResults = 123,
 #'   NextToken = "string"
 #' )
@@ -995,6 +1023,10 @@ applicationautoscaling_describe_scalable_targets <- function(ServiceNamespace, R
 #'     `replication-group` and the unique identifier is the replication
 #'     group name. Example: `replication-group/mycluster`.
 #' 
+#' -   Amazon ElastiCache cache cluster - The resource type is
+#'     `cache-cluster` and the unique identifier is the cache cluster name.
+#'     Example: `cache-cluster/mycluster`.
+#' 
 #' -   Neptune cluster - The resource type is `cluster` and the unique
 #'     identifier is the cluster name. Example: `cluster:mycluster`.
 #' 
@@ -1066,6 +1098,9 @@ applicationautoscaling_describe_scalable_targets <- function(ServiceNamespace, R
 #' -   `kafka:broker-storage:VolumeSize` - The provisioned volume size (in
 #'     GiB) for brokers in an Amazon MSK cluster.
 #' 
+#' -   `elasticache:cache-cluster:Nodes` - The number of nodes for an
+#'     Amazon ElastiCache cache cluster.
+#' 
 #' -   `elasticache:replication-group:NodeGroups` - The number of node
 #'     groups for an Amazon ElastiCache replication group.
 #' 
@@ -1108,7 +1143,7 @@ applicationautoscaling_describe_scalable_targets <- function(ServiceNamespace, R
 #'       ActivityId = "string",
 #'       ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda"|"cassandra"|"kafka"|"elasticache"|"neptune"|"workspaces",
 #'       ResourceId = "string",
-#'       ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"comprehend:entity-recognizer-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits"|"kafka:broker-storage:VolumeSize"|"elasticache:replication-group:NodeGroups"|"elasticache:replication-group:Replicas"|"neptune:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredProvisionedConcurrency"|"sagemaker:inference-component:DesiredCopyCount"|"workspaces:workspacespool:DesiredUserSessions",
+#'       ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"comprehend:entity-recognizer-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits"|"kafka:broker-storage:VolumeSize"|"elasticache:cache-cluster:Nodes"|"elasticache:replication-group:NodeGroups"|"elasticache:replication-group:Replicas"|"neptune:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredProvisionedConcurrency"|"sagemaker:inference-component:DesiredCopyCount"|"workspaces:workspacespool:DesiredUserSessions",
 #'       Description = "string",
 #'       Cause = "string",
 #'       StartTime = as.POSIXct(
@@ -1139,7 +1174,7 @@ applicationautoscaling_describe_scalable_targets <- function(ServiceNamespace, R
 #' svc$describe_scaling_activities(
 #'   ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda"|"cassandra"|"kafka"|"elasticache"|"neptune"|"workspaces",
 #'   ResourceId = "string",
-#'   ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"comprehend:entity-recognizer-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits"|"kafka:broker-storage:VolumeSize"|"elasticache:replication-group:NodeGroups"|"elasticache:replication-group:Replicas"|"neptune:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredProvisionedConcurrency"|"sagemaker:inference-component:DesiredCopyCount"|"workspaces:workspacespool:DesiredUserSessions",
+#'   ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"comprehend:entity-recognizer-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits"|"kafka:broker-storage:VolumeSize"|"elasticache:cache-cluster:Nodes"|"elasticache:replication-group:NodeGroups"|"elasticache:replication-group:Replicas"|"neptune:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredProvisionedConcurrency"|"sagemaker:inference-component:DesiredCopyCount"|"workspaces:workspacespool:DesiredUserSessions",
 #'   MaxResults = 123,
 #'   NextToken = "string",
 #'   IncludeNotScaledActivities = TRUE|FALSE
@@ -1270,6 +1305,10 @@ applicationautoscaling_describe_scaling_activities <- function(ServiceNamespace,
 #'     `replication-group` and the unique identifier is the replication
 #'     group name. Example: `replication-group/mycluster`.
 #' 
+#' -   Amazon ElastiCache cache cluster - The resource type is
+#'     `cache-cluster` and the unique identifier is the cache cluster name.
+#'     Example: `cache-cluster/mycluster`.
+#' 
 #' -   Neptune cluster - The resource type is `cluster` and the unique
 #'     identifier is the cluster name. Example: `cluster:mycluster`.
 #' 
@@ -1341,6 +1380,9 @@ applicationautoscaling_describe_scaling_activities <- function(ServiceNamespace,
 #' -   `kafka:broker-storage:VolumeSize` - The provisioned volume size (in
 #'     GiB) for brokers in an Amazon MSK cluster.
 #' 
+#' -   `elasticache:cache-cluster:Nodes` - The number of nodes for an
+#'     Amazon ElastiCache cache cluster.
+#' 
 #' -   `elasticache:replication-group:NodeGroups` - The number of node
 #'     groups for an Amazon ElastiCache replication group.
 #' 
@@ -1378,7 +1420,7 @@ applicationautoscaling_describe_scaling_activities <- function(ServiceNamespace,
 #'       PolicyName = "string",
 #'       ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda"|"cassandra"|"kafka"|"elasticache"|"neptune"|"workspaces",
 #'       ResourceId = "string",
-#'       ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"comprehend:entity-recognizer-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits"|"kafka:broker-storage:VolumeSize"|"elasticache:replication-group:NodeGroups"|"elasticache:replication-group:Replicas"|"neptune:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredProvisionedConcurrency"|"sagemaker:inference-component:DesiredCopyCount"|"workspaces:workspacespool:DesiredUserSessions",
+#'       ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"comprehend:entity-recognizer-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits"|"kafka:broker-storage:VolumeSize"|"elasticache:cache-cluster:Nodes"|"elasticache:replication-group:NodeGroups"|"elasticache:replication-group:Replicas"|"neptune:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredProvisionedConcurrency"|"sagemaker:inference-component:DesiredCopyCount"|"workspaces:workspacespool:DesiredUserSessions",
 #'       PolicyType = "StepScaling"|"TargetTrackingScaling"|"PredictiveScaling",
 #'       StepScalingPolicyConfiguration = list(
 #'         AdjustmentType = "ChangeInCapacity"|"PercentChangeInCapacity"|"ExactCapacity",
@@ -1396,7 +1438,7 @@ applicationautoscaling_describe_scaling_activities <- function(ServiceNamespace,
 #'       TargetTrackingScalingPolicyConfiguration = list(
 #'         TargetValue = 123.0,
 #'         PredefinedMetricSpecification = list(
-#'           PredefinedMetricType = "DynamoDBReadCapacityUtilization"|"DynamoDBWriteCapacityUtilization"|"ALBRequestCountPerTarget"|"RDSReaderAverageCPUUtilization"|"RDSReaderAverageDatabaseConnections"|"EC2SpotFleetRequestAverageCPUUtilization"|"EC2SpotFleetRequestAverageNetworkIn"|"EC2SpotFleetRequestAverageNetworkOut"|"SageMakerVariantInvocationsPerInstance"|"ECSServiceAverageCPUUtilization"|"ECSServiceAverageMemoryUtilization"|"AppStreamAverageCapacityUtilization"|"ComprehendInferenceUtilization"|"LambdaProvisionedConcurrencyUtilization"|"CassandraReadCapacityUtilization"|"CassandraWriteCapacityUtilization"|"KafkaBrokerStorageUtilization"|"ElastiCachePrimaryEngineCPUUtilization"|"ElastiCacheReplicaEngineCPUUtilization"|"ElastiCacheDatabaseMemoryUsageCountedForEvictPercentage"|"NeptuneReaderAverageCPUUtilization"|"SageMakerVariantProvisionedConcurrencyUtilization"|"ElastiCacheDatabaseCapacityUsageCountedForEvictPercentage"|"SageMakerInferenceComponentInvocationsPerCopy"|"WorkSpacesAverageUserSessionsCapacityUtilization"|"SageMakerInferenceComponentConcurrentRequestsPerCopyHighResolution"|"SageMakerVariantConcurrentRequestsPerModelHighResolution",
+#'           PredefinedMetricType = "DynamoDBReadCapacityUtilization"|"DynamoDBWriteCapacityUtilization"|"ALBRequestCountPerTarget"|"RDSReaderAverageCPUUtilization"|"RDSReaderAverageDatabaseConnections"|"EC2SpotFleetRequestAverageCPUUtilization"|"EC2SpotFleetRequestAverageNetworkIn"|"EC2SpotFleetRequestAverageNetworkOut"|"SageMakerVariantInvocationsPerInstance"|"ECSServiceAverageCPUUtilization"|"ECSServiceAverageMemoryUtilization"|"AppStreamAverageCapacityUtilization"|"ComprehendInferenceUtilization"|"LambdaProvisionedConcurrencyUtilization"|"CassandraReadCapacityUtilization"|"CassandraWriteCapacityUtilization"|"KafkaBrokerStorageUtilization"|"ElastiCacheEngineCPUUtilization"|"ElastiCacheDatabaseMemoryUsagePercentage"|"ElastiCachePrimaryEngineCPUUtilization"|"ElastiCacheReplicaEngineCPUUtilization"|"ElastiCacheDatabaseMemoryUsageCountedForEvictPercentage"|"NeptuneReaderAverageCPUUtilization"|"SageMakerVariantProvisionedConcurrencyUtilization"|"ElastiCacheDatabaseCapacityUsageCountedForEvictPercentage"|"SageMakerInferenceComponentInvocationsPerCopy"|"WorkSpacesAverageUserSessionsCapacityUtilization"|"SageMakerInferenceComponentConcurrentRequestsPerCopyHighResolution"|"SageMakerVariantConcurrentRequestsPerModelHighResolution",
 #'           ResourceLabel = "string"
 #'         ),
 #'         CustomizedMetricSpecification = list(
@@ -1555,7 +1597,7 @@ applicationautoscaling_describe_scaling_activities <- function(ServiceNamespace,
 #'   ),
 #'   ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda"|"cassandra"|"kafka"|"elasticache"|"neptune"|"workspaces",
 #'   ResourceId = "string",
-#'   ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"comprehend:entity-recognizer-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits"|"kafka:broker-storage:VolumeSize"|"elasticache:replication-group:NodeGroups"|"elasticache:replication-group:Replicas"|"neptune:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredProvisionedConcurrency"|"sagemaker:inference-component:DesiredCopyCount"|"workspaces:workspacespool:DesiredUserSessions",
+#'   ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"comprehend:entity-recognizer-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits"|"kafka:broker-storage:VolumeSize"|"elasticache:cache-cluster:Nodes"|"elasticache:replication-group:NodeGroups"|"elasticache:replication-group:Replicas"|"neptune:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredProvisionedConcurrency"|"sagemaker:inference-component:DesiredCopyCount"|"workspaces:workspacespool:DesiredUserSessions",
 #'   MaxResults = 123,
 #'   NextToken = "string"
 #' )
@@ -1681,6 +1723,10 @@ applicationautoscaling_describe_scaling_policies <- function(PolicyNames = NULL,
 #'     `replication-group` and the unique identifier is the replication
 #'     group name. Example: `replication-group/mycluster`.
 #' 
+#' -   Amazon ElastiCache cache cluster - The resource type is
+#'     `cache-cluster` and the unique identifier is the cache cluster name.
+#'     Example: `cache-cluster/mycluster`.
+#' 
 #' -   Neptune cluster - The resource type is `cluster` and the unique
 #'     identifier is the cluster name. Example: `cluster:mycluster`.
 #' 
@@ -1752,6 +1798,9 @@ applicationautoscaling_describe_scaling_policies <- function(PolicyNames = NULL,
 #' -   `kafka:broker-storage:VolumeSize` - The provisioned volume size (in
 #'     GiB) for brokers in an Amazon MSK cluster.
 #' 
+#' -   `elasticache:cache-cluster:Nodes` - The number of nodes for an
+#'     Amazon ElastiCache cache cluster.
+#' 
 #' -   `elasticache:replication-group:NodeGroups` - The number of node
 #'     groups for an Amazon ElastiCache replication group.
 #' 
@@ -1791,7 +1840,7 @@ applicationautoscaling_describe_scaling_policies <- function(PolicyNames = NULL,
 #'       Schedule = "string",
 #'       Timezone = "string",
 #'       ResourceId = "string",
-#'       ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"comprehend:entity-recognizer-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits"|"kafka:broker-storage:VolumeSize"|"elasticache:replication-group:NodeGroups"|"elasticache:replication-group:Replicas"|"neptune:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredProvisionedConcurrency"|"sagemaker:inference-component:DesiredCopyCount"|"workspaces:workspacespool:DesiredUserSessions",
+#'       ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"comprehend:entity-recognizer-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits"|"kafka:broker-storage:VolumeSize"|"elasticache:cache-cluster:Nodes"|"elasticache:replication-group:NodeGroups"|"elasticache:replication-group:Replicas"|"neptune:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredProvisionedConcurrency"|"sagemaker:inference-component:DesiredCopyCount"|"workspaces:workspacespool:DesiredUserSessions",
 #'       StartTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
@@ -1819,7 +1868,7 @@ applicationautoscaling_describe_scaling_policies <- function(PolicyNames = NULL,
 #'   ),
 #'   ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda"|"cassandra"|"kafka"|"elasticache"|"neptune"|"workspaces",
 #'   ResourceId = "string",
-#'   ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"comprehend:entity-recognizer-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits"|"kafka:broker-storage:VolumeSize"|"elasticache:replication-group:NodeGroups"|"elasticache:replication-group:Replicas"|"neptune:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredProvisionedConcurrency"|"sagemaker:inference-component:DesiredCopyCount"|"workspaces:workspacespool:DesiredUserSessions",
+#'   ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"comprehend:entity-recognizer-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits"|"kafka:broker-storage:VolumeSize"|"elasticache:cache-cluster:Nodes"|"elasticache:replication-group:NodeGroups"|"elasticache:replication-group:Replicas"|"neptune:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredProvisionedConcurrency"|"sagemaker:inference-component:DesiredCopyCount"|"workspaces:workspacespool:DesiredUserSessions",
 #'   MaxResults = 123,
 #'   NextToken = "string"
 #' )
@@ -2004,7 +2053,7 @@ applicationautoscaling_describe_scheduled_actions <- function(ScheduledActionNam
 #' svc$get_predictive_scaling_forecast(
 #'   ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda"|"cassandra"|"kafka"|"elasticache"|"neptune"|"workspaces",
 #'   ResourceId = "string",
-#'   ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"comprehend:entity-recognizer-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits"|"kafka:broker-storage:VolumeSize"|"elasticache:replication-group:NodeGroups"|"elasticache:replication-group:Replicas"|"neptune:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredProvisionedConcurrency"|"sagemaker:inference-component:DesiredCopyCount"|"workspaces:workspacespool:DesiredUserSessions",
+#'   ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"comprehend:entity-recognizer-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits"|"kafka:broker-storage:VolumeSize"|"elasticache:cache-cluster:Nodes"|"elasticache:replication-group:NodeGroups"|"elasticache:replication-group:Replicas"|"neptune:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredProvisionedConcurrency"|"sagemaker:inference-component:DesiredCopyCount"|"workspaces:workspacespool:DesiredUserSessions",
 #'   PolicyName = "string",
 #'   StartTime = as.POSIXct(
 #'     "2015-01-01"
@@ -2135,9 +2184,11 @@ applicationautoscaling_list_tags_for_resource <- function(ResourceARN) {
 #' instruct the scalable target to scale out again.
 #' 
 #' For more information, see [Target tracking scaling
-#' policies](https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-target-tracking.html)
-#' and [Step scaling
-#' policies](https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-step-scaling-policies.html)
+#' policies](https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-target-tracking.html),
+#' [Step scaling
+#' policies](https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-step-scaling-policies.html),
+#' and [Predictive scaling
+#' policies](https://docs.aws.amazon.com/autoscaling/application/userguide/aas-create-predictive-scaling-policy.html)
 #' in the *Application Auto Scaling User Guide*.
 #' 
 #' If a scalable target is deregistered, the scalable target is no longer
@@ -2224,6 +2275,10 @@ applicationautoscaling_list_tags_for_resource <- function(ResourceARN) {
 #'     `replication-group` and the unique identifier is the replication
 #'     group name. Example: `replication-group/mycluster`.
 #' 
+#' -   Amazon ElastiCache cache cluster - The resource type is
+#'     `cache-cluster` and the unique identifier is the cache cluster name.
+#'     Example: `cache-cluster/mycluster`.
+#' 
 #' -   Neptune cluster - The resource type is `cluster` and the unique
 #'     identifier is the cluster name. Example: `cluster:mycluster`.
 #' 
@@ -2294,6 +2349,9 @@ applicationautoscaling_list_tags_for_resource <- function(ResourceARN) {
 #' -   `kafka:broker-storage:VolumeSize` - The provisioned volume size (in
 #'     GiB) for brokers in an Amazon MSK cluster.
 #' 
+#' -   `elasticache:cache-cluster:Nodes` - The number of nodes for an
+#'     Amazon ElastiCache cache cluster.
+#' 
 #' -   `elasticache:replication-group:NodeGroups` - The number of node
 #'     groups for an Amazon ElastiCache replication group.
 #' 
@@ -2321,10 +2379,14 @@ applicationautoscaling_list_tags_for_resource <- function(ResourceARN) {
 #' `StepScaling`—Not supported for DynamoDB, Amazon Comprehend, Lambda,
 #' Amazon Keyspaces, Amazon MSK, Amazon ElastiCache, or Neptune.
 #' 
+#' `PredictiveScaling`—Only supported for Amazon ECS.
+#' 
 #' For more information, see [Target tracking scaling
-#' policies](https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-target-tracking.html)
-#' and [Step scaling
-#' policies](https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-step-scaling-policies.html)
+#' policies](https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-target-tracking.html),
+#' [Step scaling
+#' policies](https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-step-scaling-policies.html),
+#' and [Predictive scaling
+#' policies](https://docs.aws.amazon.com/autoscaling/application/userguide/aas-create-predictive-scaling-policy.html)
 #' in the *Application Auto Scaling User Guide*.
 #' @param StepScalingPolicyConfiguration A step scaling policy.
 #' 
@@ -2357,7 +2419,7 @@ applicationautoscaling_list_tags_for_resource <- function(ResourceARN) {
 #'   PolicyName = "string",
 #'   ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda"|"cassandra"|"kafka"|"elasticache"|"neptune"|"workspaces",
 #'   ResourceId = "string",
-#'   ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"comprehend:entity-recognizer-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits"|"kafka:broker-storage:VolumeSize"|"elasticache:replication-group:NodeGroups"|"elasticache:replication-group:Replicas"|"neptune:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredProvisionedConcurrency"|"sagemaker:inference-component:DesiredCopyCount"|"workspaces:workspacespool:DesiredUserSessions",
+#'   ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"comprehend:entity-recognizer-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits"|"kafka:broker-storage:VolumeSize"|"elasticache:cache-cluster:Nodes"|"elasticache:replication-group:NodeGroups"|"elasticache:replication-group:Replicas"|"neptune:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredProvisionedConcurrency"|"sagemaker:inference-component:DesiredCopyCount"|"workspaces:workspacespool:DesiredUserSessions",
 #'   PolicyType = "StepScaling"|"TargetTrackingScaling"|"PredictiveScaling",
 #'   StepScalingPolicyConfiguration = list(
 #'     AdjustmentType = "ChangeInCapacity"|"PercentChangeInCapacity"|"ExactCapacity",
@@ -2375,7 +2437,7 @@ applicationautoscaling_list_tags_for_resource <- function(ResourceARN) {
 #'   TargetTrackingScalingPolicyConfiguration = list(
 #'     TargetValue = 123.0,
 #'     PredefinedMetricSpecification = list(
-#'       PredefinedMetricType = "DynamoDBReadCapacityUtilization"|"DynamoDBWriteCapacityUtilization"|"ALBRequestCountPerTarget"|"RDSReaderAverageCPUUtilization"|"RDSReaderAverageDatabaseConnections"|"EC2SpotFleetRequestAverageCPUUtilization"|"EC2SpotFleetRequestAverageNetworkIn"|"EC2SpotFleetRequestAverageNetworkOut"|"SageMakerVariantInvocationsPerInstance"|"ECSServiceAverageCPUUtilization"|"ECSServiceAverageMemoryUtilization"|"AppStreamAverageCapacityUtilization"|"ComprehendInferenceUtilization"|"LambdaProvisionedConcurrencyUtilization"|"CassandraReadCapacityUtilization"|"CassandraWriteCapacityUtilization"|"KafkaBrokerStorageUtilization"|"ElastiCachePrimaryEngineCPUUtilization"|"ElastiCacheReplicaEngineCPUUtilization"|"ElastiCacheDatabaseMemoryUsageCountedForEvictPercentage"|"NeptuneReaderAverageCPUUtilization"|"SageMakerVariantProvisionedConcurrencyUtilization"|"ElastiCacheDatabaseCapacityUsageCountedForEvictPercentage"|"SageMakerInferenceComponentInvocationsPerCopy"|"WorkSpacesAverageUserSessionsCapacityUtilization"|"SageMakerInferenceComponentConcurrentRequestsPerCopyHighResolution"|"SageMakerVariantConcurrentRequestsPerModelHighResolution",
+#'       PredefinedMetricType = "DynamoDBReadCapacityUtilization"|"DynamoDBWriteCapacityUtilization"|"ALBRequestCountPerTarget"|"RDSReaderAverageCPUUtilization"|"RDSReaderAverageDatabaseConnections"|"EC2SpotFleetRequestAverageCPUUtilization"|"EC2SpotFleetRequestAverageNetworkIn"|"EC2SpotFleetRequestAverageNetworkOut"|"SageMakerVariantInvocationsPerInstance"|"ECSServiceAverageCPUUtilization"|"ECSServiceAverageMemoryUtilization"|"AppStreamAverageCapacityUtilization"|"ComprehendInferenceUtilization"|"LambdaProvisionedConcurrencyUtilization"|"CassandraReadCapacityUtilization"|"CassandraWriteCapacityUtilization"|"KafkaBrokerStorageUtilization"|"ElastiCacheEngineCPUUtilization"|"ElastiCacheDatabaseMemoryUsagePercentage"|"ElastiCachePrimaryEngineCPUUtilization"|"ElastiCacheReplicaEngineCPUUtilization"|"ElastiCacheDatabaseMemoryUsageCountedForEvictPercentage"|"NeptuneReaderAverageCPUUtilization"|"SageMakerVariantProvisionedConcurrencyUtilization"|"ElastiCacheDatabaseCapacityUsageCountedForEvictPercentage"|"SageMakerInferenceComponentInvocationsPerCopy"|"WorkSpacesAverageUserSessionsCapacityUtilization"|"SageMakerInferenceComponentConcurrentRequestsPerCopyHighResolution"|"SageMakerVariantConcurrentRequestsPerModelHighResolution",
 #'       ResourceLabel = "string"
 #'     ),
 #'     CustomizedMetricSpecification = list(
@@ -2698,6 +2760,10 @@ applicationautoscaling_put_scaling_policy <- function(PolicyName, ServiceNamespa
 #'     `replication-group` and the unique identifier is the replication
 #'     group name. Example: `replication-group/mycluster`.
 #' 
+#' -   Amazon ElastiCache cache cluster - The resource type is
+#'     `cache-cluster` and the unique identifier is the cache cluster name.
+#'     Example: `cache-cluster/mycluster`.
+#' 
 #' -   Neptune cluster - The resource type is `cluster` and the unique
 #'     identifier is the cluster name. Example: `cluster:mycluster`.
 #' 
@@ -2768,6 +2834,9 @@ applicationautoscaling_put_scaling_policy <- function(PolicyName, ServiceNamespa
 #' -   `kafka:broker-storage:VolumeSize` - The provisioned volume size (in
 #'     GiB) for brokers in an Amazon MSK cluster.
 #' 
+#' -   `elasticache:cache-cluster:Nodes` - The number of nodes for an
+#'     Amazon ElastiCache cache cluster.
+#' 
 #' -   `elasticache:replication-group:NodeGroups` - The number of node
 #'     groups for an Amazon ElastiCache replication group.
 #' 
@@ -2804,7 +2873,7 @@ applicationautoscaling_put_scaling_policy <- function(PolicyName, ServiceNamespa
 #'   Timezone = "string",
 #'   ScheduledActionName = "string",
 #'   ResourceId = "string",
-#'   ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"comprehend:entity-recognizer-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits"|"kafka:broker-storage:VolumeSize"|"elasticache:replication-group:NodeGroups"|"elasticache:replication-group:Replicas"|"neptune:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredProvisionedConcurrency"|"sagemaker:inference-component:DesiredCopyCount"|"workspaces:workspacespool:DesiredUserSessions",
+#'   ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"comprehend:entity-recognizer-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits"|"kafka:broker-storage:VolumeSize"|"elasticache:cache-cluster:Nodes"|"elasticache:replication-group:NodeGroups"|"elasticache:replication-group:Replicas"|"neptune:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredProvisionedConcurrency"|"sagemaker:inference-component:DesiredCopyCount"|"workspaces:workspacespool:DesiredUserSessions",
 #'   StartTime = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
@@ -2970,6 +3039,10 @@ applicationautoscaling_put_scheduled_action <- function(ServiceNamespace, Schedu
 #'     `replication-group` and the unique identifier is the replication
 #'     group name. Example: `replication-group/mycluster`.
 #' 
+#' -   Amazon ElastiCache cache cluster - The resource type is
+#'     `cache-cluster` and the unique identifier is the cache cluster name.
+#'     Example: `cache-cluster/mycluster`.
+#' 
 #' -   Neptune cluster - The resource type is `cluster` and the unique
 #'     identifier is the cluster name. Example: `cluster:mycluster`.
 #' 
@@ -3039,6 +3112,9 @@ applicationautoscaling_put_scheduled_action <- function(ServiceNamespace, Schedu
 #' 
 #' -   `kafka:broker-storage:VolumeSize` - The provisioned volume size (in
 #'     GiB) for brokers in an Amazon MSK cluster.
+#' 
+#' -   `elasticache:cache-cluster:Nodes` - The number of nodes for an
+#'     Amazon ElastiCache cache cluster.
 #' 
 #' -   `elasticache:replication-group:NodeGroups` - The number of node
 #'     groups for an Amazon ElastiCache replication group.
@@ -3165,7 +3241,7 @@ applicationautoscaling_put_scheduled_action <- function(ServiceNamespace, Schedu
 #' svc$register_scalable_target(
 #'   ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda"|"cassandra"|"kafka"|"elasticache"|"neptune"|"workspaces",
 #'   ResourceId = "string",
-#'   ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"comprehend:entity-recognizer-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits"|"kafka:broker-storage:VolumeSize"|"elasticache:replication-group:NodeGroups"|"elasticache:replication-group:Replicas"|"neptune:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredProvisionedConcurrency"|"sagemaker:inference-component:DesiredCopyCount"|"workspaces:workspacespool:DesiredUserSessions",
+#'   ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"comprehend:entity-recognizer-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits"|"kafka:broker-storage:VolumeSize"|"elasticache:cache-cluster:Nodes"|"elasticache:replication-group:NodeGroups"|"elasticache:replication-group:Replicas"|"neptune:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredProvisionedConcurrency"|"sagemaker:inference-component:DesiredCopyCount"|"workspaces:workspacespool:DesiredUserSessions",
 #'   MinCapacity = 123,
 #'   MaxCapacity = 123,
 #'   RoleARN = "string",

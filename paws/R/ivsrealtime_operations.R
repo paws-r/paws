@@ -316,6 +316,10 @@ ivsrealtime_create_participant_token <- function(stageArn, duration = NULL, user
 #'           "SEQUENTIAL"|"LATEST"
 #'         ),
 #'         recordingMode = "INTERVAL"|"DISABLED"
+#'       ),
+#'       recordingReconnectWindowSeconds = 123,
+#'       hlsConfiguration = list(
+#'         targetSegmentDurationSeconds = 123
 #'       )
 #'     ),
 #'     endpoints = list(
@@ -375,6 +379,10 @@ ivsrealtime_create_participant_token <- function(stageArn, duration = NULL, user
 #'         "SEQUENTIAL"|"LATEST"
 #'       ),
 #'       recordingMode = "INTERVAL"|"DISABLED"
+#'     ),
+#'     recordingReconnectWindowSeconds = 123,
+#'     hlsConfiguration = list(
+#'       targetSegmentDurationSeconds = 123
 #'     )
 #'   )
 #' )
@@ -839,6 +847,9 @@ ivsrealtime_disconnect_participant <- function(stageArn, participantId, reason =
 #'               "string"
 #'             ),
 #'             recordingConfiguration = list(
+#'               hlsConfiguration = list(
+#'                 targetSegmentDurationSeconds = 123
+#'               ),
 #'               format = "HLS"
 #'             ),
 #'             thumbnailConfigurations = list(
@@ -1192,6 +1203,10 @@ ivsrealtime_get_public_key <- function(arn) {
 #'           "SEQUENTIAL"|"LATEST"
 #'         ),
 #'         recordingMode = "INTERVAL"|"DISABLED"
+#'       ),
+#'       recordingReconnectWindowSeconds = 123,
+#'       hlsConfiguration = list(
+#'         targetSegmentDurationSeconds = 123
 #'       )
 #'     ),
 #'     endpoints = list(
@@ -2210,6 +2225,9 @@ ivsrealtime_list_tags_for_resource <- function(resourceArn) {
 #'               "string"
 #'             ),
 #'             recordingConfiguration = list(
+#'               hlsConfiguration = list(
+#'                 targetSegmentDurationSeconds = 123
+#'               ),
 #'               format = "HLS"
 #'             ),
 #'             thumbnailConfigurations = list(
@@ -2281,6 +2299,9 @@ ivsrealtime_list_tags_for_resource <- function(resourceArn) {
 #'           "string"
 #'         ),
 #'         recordingConfiguration = list(
+#'           hlsConfiguration = list(
+#'             targetSegmentDurationSeconds = 123
+#'           ),
 #'           format = "HLS"
 #'         ),
 #'         thumbnailConfigurations = list(
@@ -2432,8 +2453,8 @@ ivsrealtime_tag_resource <- function(resourceArn, tags) {
 #' ivsrealtime_untag_resource(resourceArn, tagKeys)
 #'
 #' @param resourceArn &#91;required&#93; The ARN of the resource to be untagged. The ARN must be URL-encoded.
-#' @param tagKeys &#91;required&#93; Array of tags to be removed. Array of maps, each of the form
-#' `string:string (key:value)`. See [Best practices and
+#' @param tagKeys &#91;required&#93; Array of tag keys (strings) for the tags to be removed. See [Best
+#' practices and
 #' strategies](https://docs.aws.amazon.com/tag-editor/latest/userguide/best-practices-and-strats.html)
 #' in *Tagging AWS Resources and Tag Editor* for details, including
 #' restrictions that apply to tags and "Tag naming limits and
@@ -2582,6 +2603,10 @@ ivsrealtime_update_ingest_configuration <- function(arn, stageArn = NULL) {
 #'           "SEQUENTIAL"|"LATEST"
 #'         ),
 #'         recordingMode = "INTERVAL"|"DISABLED"
+#'       ),
+#'       recordingReconnectWindowSeconds = 123,
+#'       hlsConfiguration = list(
+#'         targetSegmentDurationSeconds = 123
 #'       )
 #'     ),
 #'     endpoints = list(
@@ -2610,6 +2635,10 @@ ivsrealtime_update_ingest_configuration <- function(arn, stageArn = NULL) {
 #'         "SEQUENTIAL"|"LATEST"
 #'       ),
 #'       recordingMode = "INTERVAL"|"DISABLED"
+#'     ),
+#'     recordingReconnectWindowSeconds = 123,
+#'     hlsConfiguration = list(
+#'       targetSegmentDurationSeconds = 123
 #'     )
 #'   )
 #' )

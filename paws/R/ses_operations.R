@@ -4025,8 +4025,8 @@ ses_send_email <- function(Source, Destination, Message, ReplyToAddresses = NULL
 #' 
 #' -   Attachments must be of a content type that Amazon SES supports. For
 #'     a list on unsupported content types, see [Unsupported Attachment
-#'     Types](https://docs.aws.amazon.com/ses/latest/dg/mime-types.html) in
-#'     the *Amazon SES Developer Guide*.
+#'     Types](https://docs.aws.amazon.com/ses/latest/dg/) in the *Amazon
+#'     SES Developer Guide*.
 #' 
 #' -   The entire message must be base64-encoded.
 #' 

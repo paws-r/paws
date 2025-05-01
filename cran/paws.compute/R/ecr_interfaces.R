@@ -65,13 +65,13 @@ NULL
 
 .ecr$create_pull_through_cache_rule_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ecrRepositoryPrefix = structure(logical(0), tags = list(type = "string")), upstreamRegistryUrl = structure(logical(0), tags = list(type = "string")), registryId = structure(logical(0), tags = list(type = "string")), upstreamRegistry = structure(logical(0), tags = list(type = "string")), credentialArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(ecrRepositoryPrefix = structure(logical(0), tags = list(type = "string")), upstreamRegistryUrl = structure(logical(0), tags = list(type = "string")), registryId = structure(logical(0), tags = list(type = "string")), upstreamRegistry = structure(logical(0), tags = list(type = "string")), credentialArn = structure(logical(0), tags = list(type = "string")), customRoleArn = structure(logical(0), tags = list(type = "string")), upstreamRepositoryPrefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .ecr$create_pull_through_cache_rule_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ecrRepositoryPrefix = structure(logical(0), tags = list(type = "string")), upstreamRegistryUrl = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), registryId = structure(logical(0), tags = list(type = "string")), upstreamRegistry = structure(logical(0), tags = list(type = "string")), credentialArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(ecrRepositoryPrefix = structure(logical(0), tags = list(type = "string")), upstreamRegistryUrl = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), registryId = structure(logical(0), tags = list(type = "string")), upstreamRegistry = structure(logical(0), tags = list(type = "string")), credentialArn = structure(logical(0), tags = list(type = "string")), customRoleArn = structure(logical(0), tags = list(type = "string")), upstreamRepositoryPrefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -119,7 +119,7 @@ NULL
 
 .ecr$delete_pull_through_cache_rule_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ecrRepositoryPrefix = structure(logical(0), tags = list(type = "string")), upstreamRegistryUrl = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), registryId = structure(logical(0), tags = list(type = "string")), credentialArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(ecrRepositoryPrefix = structure(logical(0), tags = list(type = "string")), upstreamRegistryUrl = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), registryId = structure(logical(0), tags = list(type = "string")), credentialArn = structure(logical(0), tags = list(type = "string")), customRoleArn = structure(logical(0), tags = list(type = "string")), upstreamRepositoryPrefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -215,7 +215,7 @@ NULL
 
 .ecr$describe_pull_through_cache_rules_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(pullThroughCacheRules = structure(list(structure(list(ecrRepositoryPrefix = structure(logical(0), tags = list(type = "string")), upstreamRegistryUrl = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), registryId = structure(logical(0), tags = list(type = "string")), credentialArn = structure(logical(0), tags = list(type = "string")), upstreamRegistry = structure(logical(0), tags = list(type = "string")), updatedAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(pullThroughCacheRules = structure(list(structure(list(ecrRepositoryPrefix = structure(logical(0), tags = list(type = "string")), upstreamRegistryUrl = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), registryId = structure(logical(0), tags = list(type = "string")), credentialArn = structure(logical(0), tags = list(type = "string")), customRoleArn = structure(logical(0), tags = list(type = "string")), upstreamRepositoryPrefix = structure(logical(0), tags = list(type = "string")), upstreamRegistry = structure(logical(0), tags = list(type = "string")), updatedAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -545,13 +545,13 @@ NULL
 
 .ecr$update_pull_through_cache_rule_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(registryId = structure(logical(0), tags = list(type = "string")), ecrRepositoryPrefix = structure(logical(0), tags = list(type = "string")), credentialArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(registryId = structure(logical(0), tags = list(type = "string")), ecrRepositoryPrefix = structure(logical(0), tags = list(type = "string")), credentialArn = structure(logical(0), tags = list(type = "string")), customRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .ecr$update_pull_through_cache_rule_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ecrRepositoryPrefix = structure(logical(0), tags = list(type = "string")), registryId = structure(logical(0), tags = list(type = "string")), updatedAt = structure(logical(0), tags = list(type = "timestamp")), credentialArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(ecrRepositoryPrefix = structure(logical(0), tags = list(type = "string")), registryId = structure(logical(0), tags = list(type = "string")), updatedAt = structure(logical(0), tags = list(type = "timestamp")), credentialArn = structure(logical(0), tags = list(type = "string")), customRoleArn = structure(logical(0), tags = list(type = "string")), upstreamRepositoryPrefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -587,6 +587,6 @@ NULL
 
 .ecr$validate_pull_through_cache_rule_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ecrRepositoryPrefix = structure(logical(0), tags = list(type = "string")), registryId = structure(logical(0), tags = list(type = "string")), upstreamRegistryUrl = structure(logical(0), tags = list(type = "string")), credentialArn = structure(logical(0), tags = list(type = "string")), isValid = structure(logical(0), tags = list(type = "boolean")), failure = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(ecrRepositoryPrefix = structure(logical(0), tags = list(type = "string")), registryId = structure(logical(0), tags = list(type = "string")), upstreamRegistryUrl = structure(logical(0), tags = list(type = "string")), credentialArn = structure(logical(0), tags = list(type = "string")), customRoleArn = structure(logical(0), tags = list(type = "string")), upstreamRepositoryPrefix = structure(logical(0), tags = list(type = "string")), isValid = structure(logical(0), tags = list(type = "boolean")), failure = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }

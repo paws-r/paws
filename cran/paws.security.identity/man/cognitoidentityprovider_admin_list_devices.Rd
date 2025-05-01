@@ -14,11 +14,11 @@ cognitoidentityprovider_admin_list_devices(
 \arguments{
 \item{UserPoolId}{[required] The ID of the user pool where the device owner is a user.}
 
-\item{Username}{[required] The username of the user that you want to query or modify. The value of
-this parameter is typically your user's username, but it can be any of
-their alias attributes. If \code{username} isn't an alias attribute in your
-user pool, this value must be the \code{sub} of a local user or the username
-of a user from a third-party IdP.}
+\item{Username}{[required] The name of the user that you want to query or modify. The value of this
+parameter is typically your user's username, but it can be any of their
+alias attributes. If \code{username} isn't an alias attribute in your user
+pool, this value must be the \code{sub} of a local user or the username of a
+user from a third-party IdP.}
 
 \item{Limit}{The maximum number of devices that you want Amazon Cognito to return in
 the response.}

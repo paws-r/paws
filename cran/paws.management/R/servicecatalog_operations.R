@@ -3362,7 +3362,7 @@ servicecatalog_search_products_as_admin <- function(AcceptLanguage = NULL, Portf
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
-#' @param AccessLevelFilter The access level to use to obtain results. The default is `User`.
+#' @param AccessLevelFilter The access level to use to obtain results. The default is `Account`.
 #' @param Filters The search filters.
 #' 
 #' When the key is `SearchQuery`, the searchable fields are `arn`,

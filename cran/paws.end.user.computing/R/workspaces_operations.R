@@ -1666,7 +1666,8 @@ workspaces_describe_workspaces_connection_status <- function(WorkspaceIds = NULL
 #'
 #' @param PoolId &#91;required&#93; The identifier of the pool.
 #' @param UserId The identifier of the user.
-#' @param Limit The maximum number of items to return.
+#' @param Limit The maximum size of each page of results. The default value is 20 and
+#' the maximum value is 50.
 #' @param NextToken If you received a `NextToken` from a previous call that was paginated,
 #' provide this token to receive the next set of results.
 #'
@@ -2165,6 +2166,40 @@ workspaces_modify_client_properties <- function(ResourceId, ClientProperties) {
   return(response)
 }
 .workspaces$operations$modify_client_properties <- workspaces_modify_client_properties
+
+#' Modifies the endpoint encryption mode that allows you to configure the
+#' specified directory between Standard TLS and FIPS 140-2 validated mode
+#'
+#' @description
+#' Modifies the endpoint encryption mode that allows you to configure the specified directory between Standard TLS and FIPS 140-2 validated mode.
+#'
+#' See [https://www.paws-r-sdk.com/docs/workspaces_modify_endpoint_encryption_mode/](https://www.paws-r-sdk.com/docs/workspaces_modify_endpoint_encryption_mode/) for full documentation.
+#'
+#' @param DirectoryId &#91;required&#93; The identifier of the directory.
+#' @param EndpointEncryptionMode &#91;required&#93; The encryption mode used for endpoint connections when streaming to
+#' WorkSpaces Personal or WorkSpace Pools.
+#'
+#' @keywords internal
+#'
+#' @rdname workspaces_modify_endpoint_encryption_mode
+workspaces_modify_endpoint_encryption_mode <- function(DirectoryId, EndpointEncryptionMode) {
+  op <- new_operation(
+    name = "ModifyEndpointEncryptionMode",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .workspaces$modify_endpoint_encryption_mode_input(DirectoryId = DirectoryId, EndpointEncryptionMode = EndpointEncryptionMode)
+  output <- .workspaces$modify_endpoint_encryption_mode_output()
+  config <- get_config()
+  svc <- .workspaces$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspaces$operations$modify_endpoint_encryption_mode <- workspaces_modify_endpoint_encryption_mode
 
 #' Modifies multiple properties related to SAML 2
 #'

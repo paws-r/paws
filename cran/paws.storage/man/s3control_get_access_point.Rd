@@ -2,7 +2,7 @@
 % Please edit documentation in R/s3control_operations.R
 \name{s3control_get_access_point}
 \alias{s3control_get_access_point}
-\title{This operation is not supported by directory buckets}
+\title{Returns configuration information about the specified access point}
 \usage{
 s3control_get_access_point(AccountId, Name)
 }
@@ -27,7 +27,7 @@ the URL encoding of
 The value must be URL encoded.}
 }
 \description{
-This operation is not supported by directory buckets.
+Returns configuration information about the specified access point.
 
 See \url{https://www.paws-r-sdk.com/docs/s3control_get_access_point/} for full documentation.
 }

@@ -80,6 +80,10 @@ NULL
 #'     `replication-group` and the unique identifier is the replication
 #'     group name. Example: `replication-group/mycluster`.
 #' 
+#' -   Amazon ElastiCache cache cluster - The resource type is
+#'     `cache-cluster` and the unique identifier is the cache cluster name.
+#'     Example: `cache-cluster/mycluster`.
+#' 
 #' -   Neptune cluster - The resource type is `cluster` and the unique
 #'     identifier is the cluster name. Example: `cluster:mycluster`.
 #' 
@@ -149,6 +153,9 @@ NULL
 #' 
 #' -   `kafka:broker-storage:VolumeSize` - The provisioned volume size (in
 #'     GiB) for brokers in an Amazon MSK cluster.
+#' 
+#' -   `elasticache:cache-cluster:Nodes` - The number of nodes for an
+#'     Amazon ElastiCache cache cluster.
 #' 
 #' -   `elasticache:replication-group:NodeGroups` - The number of node
 #'     groups for an Amazon ElastiCache replication group.
@@ -267,6 +274,10 @@ applicationautoscaling_delete_scaling_policy <- function(PolicyName, ServiceName
 #'     `replication-group` and the unique identifier is the replication
 #'     group name. Example: `replication-group/mycluster`.
 #' 
+#' -   Amazon ElastiCache cache cluster - The resource type is
+#'     `cache-cluster` and the unique identifier is the cache cluster name.
+#'     Example: `cache-cluster/mycluster`.
+#' 
 #' -   Neptune cluster - The resource type is `cluster` and the unique
 #'     identifier is the cluster name. Example: `cluster:mycluster`.
 #' 
@@ -336,6 +347,9 @@ applicationautoscaling_delete_scaling_policy <- function(PolicyName, ServiceName
 #' 
 #' -   `kafka:broker-storage:VolumeSize` - The provisioned volume size (in
 #'     GiB) for brokers in an Amazon MSK cluster.
+#' 
+#' -   `elasticache:cache-cluster:Nodes` - The number of nodes for an
+#'     Amazon ElastiCache cache cluster.
 #' 
 #' -   `elasticache:replication-group:NodeGroups` - The number of node
 #'     groups for an Amazon ElastiCache replication group.
@@ -453,6 +467,10 @@ applicationautoscaling_delete_scheduled_action <- function(ServiceNamespace, Sch
 #'     `replication-group` and the unique identifier is the replication
 #'     group name. Example: `replication-group/mycluster`.
 #' 
+#' -   Amazon ElastiCache cache cluster - The resource type is
+#'     `cache-cluster` and the unique identifier is the cache cluster name.
+#'     Example: `cache-cluster/mycluster`.
+#' 
 #' -   Neptune cluster - The resource type is `cluster` and the unique
 #'     identifier is the cluster name. Example: `cluster:mycluster`.
 #' 
@@ -522,6 +540,9 @@ applicationautoscaling_delete_scheduled_action <- function(ServiceNamespace, Sch
 #' 
 #' -   `kafka:broker-storage:VolumeSize` - The provisioned volume size (in
 #'     GiB) for brokers in an Amazon MSK cluster.
+#' 
+#' -   `elasticache:cache-cluster:Nodes` - The number of nodes for an
+#'     Amazon ElastiCache cache cluster.
 #' 
 #' -   `elasticache:replication-group:NodeGroups` - The number of node
 #'     groups for an Amazon ElastiCache replication group.
@@ -638,6 +659,10 @@ applicationautoscaling_deregister_scalable_target <- function(ServiceNamespace, 
 #'     `replication-group` and the unique identifier is the replication
 #'     group name. Example: `replication-group/mycluster`.
 #' 
+#' -   Amazon ElastiCache cache cluster - The resource type is
+#'     `cache-cluster` and the unique identifier is the cache cluster name.
+#'     Example: `cache-cluster/mycluster`.
+#' 
 #' -   Neptune cluster - The resource type is `cluster` and the unique
 #'     identifier is the cluster name. Example: `cluster:mycluster`.
 #' 
@@ -709,6 +734,9 @@ applicationautoscaling_deregister_scalable_target <- function(ServiceNamespace, 
 #' 
 #' -   `kafka:broker-storage:VolumeSize` - The provisioned volume size (in
 #'     GiB) for brokers in an Amazon MSK cluster.
+#' 
+#' -   `elasticache:cache-cluster:Nodes` - The number of nodes for an
+#'     Amazon ElastiCache cache cluster.
 #' 
 #' -   `elasticache:replication-group:NodeGroups` - The number of node
 #'     groups for an Amazon ElastiCache replication group.
@@ -835,6 +863,10 @@ applicationautoscaling_describe_scalable_targets <- function(ServiceNamespace, R
 #'     `replication-group` and the unique identifier is the replication
 #'     group name. Example: `replication-group/mycluster`.
 #' 
+#' -   Amazon ElastiCache cache cluster - The resource type is
+#'     `cache-cluster` and the unique identifier is the cache cluster name.
+#'     Example: `cache-cluster/mycluster`.
+#' 
 #' -   Neptune cluster - The resource type is `cluster` and the unique
 #'     identifier is the cluster name. Example: `cluster:mycluster`.
 #' 
@@ -905,6 +937,9 @@ applicationautoscaling_describe_scalable_targets <- function(ServiceNamespace, R
 #' 
 #' -   `kafka:broker-storage:VolumeSize` - The provisioned volume size (in
 #'     GiB) for brokers in an Amazon MSK cluster.
+#' 
+#' -   `elasticache:cache-cluster:Nodes` - The number of nodes for an
+#'     Amazon ElastiCache cache cluster.
 #' 
 #' -   `elasticache:replication-group:NodeGroups` - The number of node
 #'     groups for an Amazon ElastiCache replication group.
@@ -1038,6 +1073,10 @@ applicationautoscaling_describe_scaling_activities <- function(ServiceNamespace,
 #'     `replication-group` and the unique identifier is the replication
 #'     group name. Example: `replication-group/mycluster`.
 #' 
+#' -   Amazon ElastiCache cache cluster - The resource type is
+#'     `cache-cluster` and the unique identifier is the cache cluster name.
+#'     Example: `cache-cluster/mycluster`.
+#' 
 #' -   Neptune cluster - The resource type is `cluster` and the unique
 #'     identifier is the cluster name. Example: `cluster:mycluster`.
 #' 
@@ -1108,6 +1147,9 @@ applicationautoscaling_describe_scaling_activities <- function(ServiceNamespace,
 #' 
 #' -   `kafka:broker-storage:VolumeSize` - The provisioned volume size (in
 #'     GiB) for brokers in an Amazon MSK cluster.
+#' 
+#' -   `elasticache:cache-cluster:Nodes` - The number of nodes for an
+#'     Amazon ElastiCache cache cluster.
 #' 
 #' -   `elasticache:replication-group:NodeGroups` - The number of node
 #'     groups for an Amazon ElastiCache replication group.
@@ -1235,6 +1277,10 @@ applicationautoscaling_describe_scaling_policies <- function(PolicyNames = NULL,
 #'     `replication-group` and the unique identifier is the replication
 #'     group name. Example: `replication-group/mycluster`.
 #' 
+#' -   Amazon ElastiCache cache cluster - The resource type is
+#'     `cache-cluster` and the unique identifier is the cache cluster name.
+#'     Example: `cache-cluster/mycluster`.
+#' 
 #' -   Neptune cluster - The resource type is `cluster` and the unique
 #'     identifier is the cluster name. Example: `cluster:mycluster`.
 #' 
@@ -1305,6 +1351,9 @@ applicationautoscaling_describe_scaling_policies <- function(PolicyNames = NULL,
 #' 
 #' -   `kafka:broker-storage:VolumeSize` - The provisioned volume size (in
 #'     GiB) for brokers in an Amazon MSK cluster.
+#' 
+#' -   `elasticache:cache-cluster:Nodes` - The number of nodes for an
+#'     Amazon ElastiCache cache cluster.
 #' 
 #' -   `elasticache:replication-group:NodeGroups` - The number of node
 #'     groups for an Amazon ElastiCache replication group.
@@ -1515,6 +1564,10 @@ applicationautoscaling_list_tags_for_resource <- function(ResourceARN) {
 #'     `replication-group` and the unique identifier is the replication
 #'     group name. Example: `replication-group/mycluster`.
 #' 
+#' -   Amazon ElastiCache cache cluster - The resource type is
+#'     `cache-cluster` and the unique identifier is the cache cluster name.
+#'     Example: `cache-cluster/mycluster`.
+#' 
 #' -   Neptune cluster - The resource type is `cluster` and the unique
 #'     identifier is the cluster name. Example: `cluster:mycluster`.
 #' 
@@ -1585,6 +1638,9 @@ applicationautoscaling_list_tags_for_resource <- function(ResourceARN) {
 #' -   `kafka:broker-storage:VolumeSize` - The provisioned volume size (in
 #'     GiB) for brokers in an Amazon MSK cluster.
 #' 
+#' -   `elasticache:cache-cluster:Nodes` - The number of nodes for an
+#'     Amazon ElastiCache cache cluster.
+#' 
 #' -   `elasticache:replication-group:NodeGroups` - The number of node
 #'     groups for an Amazon ElastiCache replication group.
 #' 
@@ -1612,10 +1668,14 @@ applicationautoscaling_list_tags_for_resource <- function(ResourceARN) {
 #' `StepScaling`—Not supported for DynamoDB, Amazon Comprehend, Lambda,
 #' Amazon Keyspaces, Amazon MSK, Amazon ElastiCache, or Neptune.
 #' 
+#' `PredictiveScaling`—Only supported for Amazon ECS.
+#' 
 #' For more information, see [Target tracking scaling
-#' policies](https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-target-tracking.html)
-#' and [Step scaling
-#' policies](https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-step-scaling-policies.html)
+#' policies](https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-target-tracking.html),
+#' [Step scaling
+#' policies](https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-step-scaling-policies.html),
+#' and [Predictive scaling
+#' policies](https://docs.aws.amazon.com/autoscaling/application/userguide/aas-create-predictive-scaling-policy.html)
 #' in the *Application Auto Scaling User Guide*.
 #' @param StepScalingPolicyConfiguration A step scaling policy.
 #' 
@@ -1760,6 +1820,10 @@ applicationautoscaling_put_scaling_policy <- function(PolicyName, ServiceNamespa
 #'     `replication-group` and the unique identifier is the replication
 #'     group name. Example: `replication-group/mycluster`.
 #' 
+#' -   Amazon ElastiCache cache cluster - The resource type is
+#'     `cache-cluster` and the unique identifier is the cache cluster name.
+#'     Example: `cache-cluster/mycluster`.
+#' 
 #' -   Neptune cluster - The resource type is `cluster` and the unique
 #'     identifier is the cluster name. Example: `cluster:mycluster`.
 #' 
@@ -1829,6 +1893,9 @@ applicationautoscaling_put_scaling_policy <- function(PolicyName, ServiceNamespa
 #' 
 #' -   `kafka:broker-storage:VolumeSize` - The provisioned volume size (in
 #'     GiB) for brokers in an Amazon MSK cluster.
+#' 
+#' -   `elasticache:cache-cluster:Nodes` - The number of nodes for an
+#'     Amazon ElastiCache cache cluster.
 #' 
 #' -   `elasticache:replication-group:NodeGroups` - The number of node
 #'     groups for an Amazon ElastiCache replication group.
@@ -1953,6 +2020,10 @@ applicationautoscaling_put_scheduled_action <- function(ServiceNamespace, Schedu
 #'     `replication-group` and the unique identifier is the replication
 #'     group name. Example: `replication-group/mycluster`.
 #' 
+#' -   Amazon ElastiCache cache cluster - The resource type is
+#'     `cache-cluster` and the unique identifier is the cache cluster name.
+#'     Example: `cache-cluster/mycluster`.
+#' 
 #' -   Neptune cluster - The resource type is `cluster` and the unique
 #'     identifier is the cluster name. Example: `cluster:mycluster`.
 #' 
@@ -2022,6 +2093,9 @@ applicationautoscaling_put_scheduled_action <- function(ServiceNamespace, Schedu
 #' 
 #' -   `kafka:broker-storage:VolumeSize` - The provisioned volume size (in
 #'     GiB) for brokers in an Amazon MSK cluster.
+#' 
+#' -   `elasticache:cache-cluster:Nodes` - The number of nodes for an
+#'     Amazon ElastiCache cache cluster.
 #' 
 #' -   `elasticache:replication-group:NodeGroups` - The number of node
 #'     groups for an Amazon ElastiCache replication group.

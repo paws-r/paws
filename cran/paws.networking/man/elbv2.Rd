@@ -150,6 +150,7 @@ they complete at most one time. If you repeat an operation, it succeeds.
 \link[=elbv2_get_trust_store_ca_certificates_bundle]{get_trust_store_ca_certificates_bundle} \tab Retrieves the ca certificate bundle\cr
 \link[=elbv2_get_trust_store_revocation_content]{get_trust_store_revocation_content} \tab Retrieves the specified revocation file\cr
 \link[=elbv2_modify_capacity_reservation]{modify_capacity_reservation} \tab Modifies the capacity reservation of the specified load balancer\cr
+\link[=elbv2_modify_ip_pools]{modify_ip_pools} \tab [Application Load Balancers] Modify the IP pool associated to a load balancer\cr
 \link[=elbv2_modify_listener]{modify_listener} \tab Replaces the specified properties of the specified listener\cr
 \link[=elbv2_modify_listener_attributes]{modify_listener_attributes} \tab Modifies the specified attributes of the specified listener\cr
 \link[=elbv2_modify_load_balancer_attributes]{modify_load_balancer_attributes} \tab Modifies the specified attributes of the specified Application Load Balancer, Network Load Balancer, or Gateway Load Balancer\cr

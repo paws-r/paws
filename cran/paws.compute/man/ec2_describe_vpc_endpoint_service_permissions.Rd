@@ -37,7 +37,7 @@ can be between 5 and 1,000; if \code{MaxResults} is given a value larger than
 \item{NextToken}{The token to retrieve the next page of results.}
 }
 \description{
-Describes the principals (service consumers) that are permitted to discover your VPC endpoint service.
+Describes the principals (service consumers) that are permitted to discover your VPC endpoint service. Principal ARNs with path components aren't supported.
 
 See \url{https://www.paws-r-sdk.com/docs/ec2_describe_vpc_endpoint_service_permissions/} for full documentation.
 }

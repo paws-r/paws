@@ -55,22 +55,23 @@ the user to do passwordless sign-in with an email or SMS OTP. These
 attributes must be provided when passwordless options are the only
 available, or when you don't submit a \code{TemporaryPassword}.
 
-In your call to
-\code{\link[=cognitoidentityprovider_admin_create_user]{admin_create_user}}, you
-can set the \code{email_verified} attribute to \code{True}, and you can set the
-\code{phone_number_verified} attribute to \code{True}. You can also do this by
-calling
-\code{\link[=cognitoidentityprovider_admin_update_user_attributes]{admin_update_user_attributes}}.
-\itemize{
-\item \strong{email}: The email address of the user to whom the message that
-contains the code and username will be sent. Required if the
-\code{email_verified} attribute is set to \code{True}, or if \code{"EMAIL"} is
-specified in the \code{DesiredDeliveryMediums} parameter.
-\item \strong{phone_number}: The phone number of the user to whom the message
-that contains the code and username will be sent. Required if the
-\code{phone_number_verified} attribute is set to \code{True}, or if \code{"SMS"} is
-specified in the \code{DesiredDeliveryMediums} parameter.
-}}
+In your \code{\link[=cognitoidentityprovider_admin_create_user]{admin_create_user}}
+request, you can set the \code{email_verified} and \code{phone_number_verified}
+attributes to \code{true}. The following conditions apply:
+
+\strong{email}
+
+The email address where you want the user to receive their confirmation
+code and username. You must provide a value for \code{email} when you want to
+set \code{email_verified} to \code{true}, or if you set \code{EMAIL} in the
+\code{DesiredDeliveryMediums} parameter.
+
+\strong{phone_number}
+
+The phone number where you want the user to receive their confirmation
+code and username. You must provide a value for \code{phone_number} when you
+want to set \code{phone_number_verified} to \code{true}, or if you set \code{SMS} in
+the \code{DesiredDeliveryMediums} parameter.}
 
 \item{ValidationData}{Temporary user attributes that contribute to the outcomes of your pre
 sign-up Lambda trigger. This set of key-value pairs are for custom
@@ -78,11 +79,9 @@ validation of information that you collect from your users but don't
 need to retain.
 
 Your Lambda function can analyze this additional data and act on it.
-Your function might perform external API operations like logging user
-attributes and validation data to Amazon CloudWatch Logs. Validation
-data might also affect the response that your function returns to Amazon
-Cognito, like automatically confirming the user if they sign up from
-within your network.
+Your function can automatically confirm and verify select users or
+perform external API operations like logging user attributes and
+validation data to Amazon CloudWatch Logs.
 
 For more information about the pre sign-up Lambda trigger, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-lambda-pre-sign-up.html}{Pre sign-up Lambda trigger}.}
 
@@ -93,10 +92,6 @@ The exception to the requirement for a password is when your user pool
 supports passwordless sign-in with email or SMS OTPs. To create a user
 with no password, omit this parameter or submit a blank value. You can
 only create a passwordless user when passwordless sign-in is available.
-See \href{https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_SignInPolicyType.html}{the SignInPolicyType}
-property of
-\code{\link[=cognitoidentityprovider_create_user_pool]{create_user_pool}} and
-\code{\link[=cognitoidentityprovider_update_user_pool]{update_user_pool}}.
 
 The temporary password is valid only once. To complete the Admin Create
 User flow, the user must enter the temporary password in the sign-in
@@ -146,7 +141,7 @@ ClientMetadata parameter in your AdminCreateUser request. In your
 function code in Lambda, you can process the \code{clientMetadata} value to
 enhance your workflow for your specific needs.
 
-For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-working-with-lambda-triggers.html}{Customizing user pool Workflows with Lambda Triggers}
+For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-working-with-lambda-triggers.html}{Using Lambda triggers}
 in the \emph{Amazon Cognito Developer Guide}.
 
 When you use the \code{ClientMetadata} parameter, note that Amazon Cognito

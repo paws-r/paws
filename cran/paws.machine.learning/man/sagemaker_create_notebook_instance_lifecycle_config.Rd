@@ -8,7 +8,8 @@ instance}
 sagemaker_create_notebook_instance_lifecycle_config(
   NotebookInstanceLifecycleConfigName,
   OnCreate = NULL,
-  OnStart = NULL
+  OnStart = NULL,
+  Tags = NULL
 )
 }
 \arguments{
@@ -20,6 +21,10 @@ The shell script must be a base64-encoded string.}
 \item{OnStart}{A shell script that runs every time you start a notebook instance,
 including when you create the notebook instance. The shell script must
 be a base64-encoded string.}
+
+\item{Tags}{An array of key-value pairs. You can use tags to categorize your Amazon
+Web Services resources in different ways, for example, by purpose,
+owner, or environment. For more information, see \href{https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html}{Tagging Amazon Web Services Resources}.}
 }
 \description{
 Creates a lifecycle configuration that you can associate with a notebook instance. A \emph{lifecycle configuration} is a collection of shell scripts that run when you create or start a notebook instance.

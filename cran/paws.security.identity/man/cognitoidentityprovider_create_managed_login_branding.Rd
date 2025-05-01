@@ -17,10 +17,7 @@ cognitoidentityprovider_create_managed_login_branding(
 \item{UserPoolId}{[required] The ID of the user pool where you want to create a new branding style.}
 
 \item{ClientId}{[required] The app client that you want to create the branding style for. Each
-style is permanently linked to an app client. To change the style for an
-app client, delete the existing style with
-\code{\link[=cognitoidentityprovider_delete_managed_login_branding]{delete_managed_login_branding}}
-and create a new one.}
+style is linked to an app client until you delete it.}
 
 \item{UseCognitoProvidedValues}{When true, applies the default branding style options. These default
 options are managed by Amazon Cognito. You can modify them later in the
@@ -32,7 +29,7 @@ When you specify \code{true} for this option, you must also omit values for
 \item{Settings}{A JSON file, encoded as a \code{Document} type, with the the settings that
 you want to apply to your style.}
 
-\item{Assets}{An array of image files that you want to apply to roles like
+\item{Assets}{An array of image files that you want to apply to functions like
 backgrounds, logos, and icons. Each object must also indicate whether it
 is for dark mode, light mode, or browser-adaptive mode.}
 }

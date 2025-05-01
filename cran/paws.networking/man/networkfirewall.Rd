@@ -180,6 +180,7 @@ through the new firewall endpoints.
 \link[=networkfirewall_delete_tls_inspection_configuration]{delete_tls_inspection_configuration} \tab Deletes the specified TLSInspectionConfiguration\cr
 \link[=networkfirewall_describe_firewall]{describe_firewall} \tab Returns the data objects for the specified firewall\cr
 \link[=networkfirewall_describe_firewall_policy]{describe_firewall_policy} \tab Returns the data objects for the specified firewall policy\cr
+\link[=networkfirewall_describe_flow_operation]{describe_flow_operation} \tab Returns key information about a specific flow operation\cr
 \link[=networkfirewall_describe_logging_configuration]{describe_logging_configuration} \tab Returns the logging configuration for the specified firewall\cr
 \link[=networkfirewall_describe_resource_policy]{describe_resource_policy} \tab Retrieves a resource policy that you created in a PutResourcePolicy request\cr
 \link[=networkfirewall_describe_rule_group]{describe_rule_group} \tab Returns the data objects for the specified rule group\cr
@@ -190,11 +191,15 @@ through the new firewall endpoints.
 \link[=networkfirewall_list_analysis_reports]{list_analysis_reports} \tab Returns a list of all traffic analysis reports generated within the last 30 days\cr
 \link[=networkfirewall_list_firewall_policies]{list_firewall_policies} \tab Retrieves the metadata for the firewall policies that you have defined\cr
 \link[=networkfirewall_list_firewalls]{list_firewalls} \tab Retrieves the metadata for the firewalls that you have defined\cr
+\link[=networkfirewall_list_flow_operation_results]{list_flow_operation_results} \tab Returns the results of a specific flow operation\cr
+\link[=networkfirewall_list_flow_operations]{list_flow_operations} \tab Returns a list of all flow operations ran in a specific firewall\cr
 \link[=networkfirewall_list_rule_groups]{list_rule_groups} \tab Retrieves the metadata for the rule groups that you have defined\cr
 \link[=networkfirewall_list_tags_for_resource]{list_tags_for_resource} \tab Retrieves the tags associated with the specified resource\cr
 \link[=networkfirewall_list_tls_inspection_configurations]{list_tls_inspection_configurations} \tab Retrieves the metadata for the TLS inspection configurations that you have defined\cr
 \link[=networkfirewall_put_resource_policy]{put_resource_policy} \tab Creates or updates an IAM policy for your rule group or firewall policy\cr
 \link[=networkfirewall_start_analysis_report]{start_analysis_report} \tab Generates a traffic analysis report for the timeframe and traffic type you specify\cr
+\link[=networkfirewall_start_flow_capture]{start_flow_capture} \tab Begins capturing the flows in a firewall, according to the filters you define\cr
+\link[=networkfirewall_start_flow_flush]{start_flow_flush} \tab Begins the flushing of traffic from the firewall, according to the filters you define\cr
 \link[=networkfirewall_tag_resource]{tag_resource} \tab Adds the specified tags to the specified resource\cr
 \link[=networkfirewall_untag_resource]{untag_resource} \tab Removes the tags with the specified keys from the specified resource\cr
 \link[=networkfirewall_update_firewall_analysis_settings]{update_firewall_analysis_settings} \tab Enables specific types of firewall analysis on a specific firewall you define\cr

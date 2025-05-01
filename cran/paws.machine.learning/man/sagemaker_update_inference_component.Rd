@@ -7,7 +7,8 @@
 sagemaker_update_inference_component(
   InferenceComponentName,
   Specification = NULL,
-  RuntimeConfig = NULL
+  RuntimeConfig = NULL,
+  DeploymentConfig = NULL
 )
 }
 \arguments{
@@ -18,6 +19,10 @@ including the model, container, and compute resources.}
 
 \item{RuntimeConfig}{Runtime settings for a model that is deployed with an inference
 component.}
+
+\item{DeploymentConfig}{The deployment configuration for the inference component. The
+configuration contains the desired deployment strategy and rollback
+settings.}
 }
 \description{
 Updates an inference component.

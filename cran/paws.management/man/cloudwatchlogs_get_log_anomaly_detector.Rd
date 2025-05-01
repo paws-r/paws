@@ -13,7 +13,7 @@ find the ARNs of log anomaly detectors in your account by using the
 operation.}
 }
 \description{
-Retrieves information about the log anomaly detector that you specify.
+Retrieves information about the log anomaly detector that you specify. The KMS key ARN detected is valid.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudwatchlogs_get_log_anomaly_detector/} for full documentation.
 }

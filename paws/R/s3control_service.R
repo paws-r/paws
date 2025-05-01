@@ -95,7 +95,7 @@ NULL
 #'  \link[=s3control_create_access_grant]{create_access_grant} \tab Creates an access grant that gives a grantee access to your S3 data\cr
 #'  \link[=s3control_create_access_grants_instance]{create_access_grants_instance} \tab Creates an S3 Access Grants instance, which serves as a logical grouping for access grants\cr
 #'  \link[=s3control_create_access_grants_location]{create_access_grants_location} \tab The S3 data location that you would like to register in your S3 Access Grants instance\cr
-#'  \link[=s3control_create_access_point]{create_access_point} \tab This operation is not supported by directory buckets\cr
+#'  \link[=s3control_create_access_point]{create_access_point} \tab Creates an access point and associates it to a specified bucket\cr
 #'  \link[=s3control_create_access_point_for_object_lambda]{create_access_point_for_object_lambda} \tab This operation is not supported by directory buckets\cr
 #'  \link[=s3control_create_bucket]{create_bucket} \tab This action creates an Amazon S3 on Outposts bucket\cr
 #'  \link[=s3control_create_job]{create_job} \tab This operation creates an S3 Batch Operations job\cr
@@ -105,10 +105,11 @@ NULL
 #'  \link[=s3control_delete_access_grants_instance]{delete_access_grants_instance} \tab Deletes your S3 Access Grants instance\cr
 #'  \link[=s3control_delete_access_grants_instance_resource_policy]{delete_access_grants_instance_resource_policy} \tab Deletes the resource policy of the S3 Access Grants instance\cr
 #'  \link[=s3control_delete_access_grants_location]{delete_access_grants_location} \tab Deregisters a location from your S3 Access Grants instance\cr
-#'  \link[=s3control_delete_access_point]{delete_access_point} \tab This operation is not supported by directory buckets\cr
+#'  \link[=s3control_delete_access_point]{delete_access_point} \tab Deletes the specified access point\cr
 #'  \link[=s3control_delete_access_point_for_object_lambda]{delete_access_point_for_object_lambda} \tab This operation is not supported by directory buckets\cr
-#'  \link[=s3control_delete_access_point_policy]{delete_access_point_policy} \tab This operation is not supported by directory buckets\cr
+#'  \link[=s3control_delete_access_point_policy]{delete_access_point_policy} \tab Deletes the access point policy for the specified access point\cr
 #'  \link[=s3control_delete_access_point_policy_for_object_lambda]{delete_access_point_policy_for_object_lambda} \tab This operation is not supported by directory buckets\cr
+#'  \link[=s3control_delete_access_point_scope]{delete_access_point_scope} \tab Deletes an existing access point scope for a directory bucket\cr
 #'  \link[=s3control_delete_bucket]{delete_bucket} \tab This action deletes an Amazon S3 on Outposts bucket\cr
 #'  \link[=s3control_delete_bucket_lifecycle_configuration]{delete_bucket_lifecycle_configuration} \tab This action deletes an Amazon S3 on Outposts bucket's lifecycle configuration\cr
 #'  \link[=s3control_delete_bucket_policy]{delete_bucket_policy} \tab This action deletes an Amazon S3 on Outposts bucket policy\cr
@@ -128,13 +129,14 @@ NULL
 #'  \link[=s3control_get_access_grants_instance_for_prefix]{get_access_grants_instance_for_prefix} \tab Retrieve the S3 Access Grants instance that contains a particular prefix\cr
 #'  \link[=s3control_get_access_grants_instance_resource_policy]{get_access_grants_instance_resource_policy} \tab Returns the resource policy of the S3 Access Grants instance\cr
 #'  \link[=s3control_get_access_grants_location]{get_access_grants_location} \tab Retrieves the details of a particular location registered in your S3 Access Grants instance\cr
-#'  \link[=s3control_get_access_point]{get_access_point} \tab This operation is not supported by directory buckets\cr
+#'  \link[=s3control_get_access_point]{get_access_point} \tab Returns configuration information about the specified access point\cr
 #'  \link[=s3control_get_access_point_configuration_for_object_lambda]{get_access_point_configuration_for_object_lambda} \tab This operation is not supported by directory buckets\cr
 #'  \link[=s3control_get_access_point_for_object_lambda]{get_access_point_for_object_lambda} \tab This operation is not supported by directory buckets\cr
-#'  \link[=s3control_get_access_point_policy]{get_access_point_policy} \tab This operation is not supported by directory buckets\cr
+#'  \link[=s3control_get_access_point_policy]{get_access_point_policy} \tab Returns the access point policy associated with the specified access point\cr
 #'  \link[=s3control_get_access_point_policy_for_object_lambda]{get_access_point_policy_for_object_lambda} \tab This operation is not supported by directory buckets\cr
 #'  \link[=s3control_get_access_point_policy_status]{get_access_point_policy_status} \tab This operation is not supported by directory buckets\cr
 #'  \link[=s3control_get_access_point_policy_status_for_object_lambda]{get_access_point_policy_status_for_object_lambda} \tab This operation is not supported by directory buckets\cr
+#'  \link[=s3control_get_access_point_scope]{get_access_point_scope} \tab Returns the access point scope for a directory bucket\cr
 #'  \link[=s3control_get_bucket]{get_bucket} \tab Gets an Amazon S3 on Outposts bucket\cr
 #'  \link[=s3control_get_bucket_lifecycle_configuration]{get_bucket_lifecycle_configuration} \tab This action gets an Amazon S3 on Outposts bucket's lifecycle configuration\cr
 #'  \link[=s3control_get_bucket_policy]{get_bucket_policy} \tab This action gets a bucket policy for an Amazon S3 on Outposts bucket\cr
@@ -155,6 +157,7 @@ NULL
 #'  \link[=s3control_list_access_grants_instances]{list_access_grants_instances} \tab Returns a list of S3 Access Grants instances\cr
 #'  \link[=s3control_list_access_grants_locations]{list_access_grants_locations} \tab Returns a list of the locations registered in your S3 Access Grants instance\cr
 #'  \link[=s3control_list_access_points]{list_access_points} \tab This operation is not supported by directory buckets\cr
+#'  \link[=s3control_list_access_points_for_directory_buckets]{list_access_points_for_directory_buckets} \tab Returns a list of the access points that are owned by the Amazon Web Services account and that are associated with the specified directory bucket\cr
 #'  \link[=s3control_list_access_points_for_object_lambda]{list_access_points_for_object_lambda} \tab This operation is not supported by directory buckets\cr
 #'  \link[=s3control_list_caller_access_grants]{list_caller_access_grants} \tab Use this API to list the access grants that grant the caller access to Amazon S3 data through S3 Access Grants\cr
 #'  \link[=s3control_list_jobs]{list_jobs} \tab Lists current S3 Batch Operations jobs as well as the jobs that have ended within the last 90 days for the Amazon Web Services account making the request\cr
@@ -165,8 +168,9 @@ NULL
 #'  \link[=s3control_list_tags_for_resource]{list_tags_for_resource} \tab This operation allows you to list all the Amazon Web Services resource tags for a specified resource\cr
 #'  \link[=s3control_put_access_grants_instance_resource_policy]{put_access_grants_instance_resource_policy} \tab Updates the resource policy of the S3 Access Grants instance\cr
 #'  \link[=s3control_put_access_point_configuration_for_object_lambda]{put_access_point_configuration_for_object_lambda} \tab This operation is not supported by directory buckets\cr
-#'  \link[=s3control_put_access_point_policy]{put_access_point_policy} \tab This operation is not supported by directory buckets\cr
+#'  \link[=s3control_put_access_point_policy]{put_access_point_policy} \tab Associates an access policy with the specified access point\cr
 #'  \link[=s3control_put_access_point_policy_for_object_lambda]{put_access_point_policy_for_object_lambda} \tab This operation is not supported by directory buckets\cr
+#'  \link[=s3control_put_access_point_scope]{put_access_point_scope} \tab Creates or replaces the access point scope for a directory bucket\cr
 #'  \link[=s3control_put_bucket_lifecycle_configuration]{put_bucket_lifecycle_configuration} \tab This action puts a lifecycle configuration to an Amazon S3 on Outposts bucket\cr
 #'  \link[=s3control_put_bucket_policy]{put_bucket_policy} \tab This action puts a bucket policy to an Amazon S3 on Outposts bucket\cr
 #'  \link[=s3control_put_bucket_replication]{put_bucket_replication} \tab This action creates an Amazon S3 on Outposts bucket's replication configuration\cr
@@ -215,7 +219,7 @@ s3control <- function(config = list(), credentials = list(), endpoint = NULL, re
 
 .s3control$metadata <- list(
   service_name = "s3control",
-  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "s3-control.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "s3-control.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "s3-control.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "s3-control.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "s3-control.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "s3-control.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "s3-control.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "s3-control.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "s3-control.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "s3-control.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "s3-control.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "s3-control.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "s3-control.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "s3-control.{region}.csp.hci.ic.gov", global = FALSE), "^eusc\\-(de)\\-\\w+\\-\\d+$" = list(endpoint = "s3-control.{region}.amazonaws.eu", global = FALSE)),
   service_id = "S3 Control",
   api_version = "2018-08-20",
   signing_name = "s3",

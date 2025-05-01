@@ -2,8 +2,8 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_list_web_authn_credentials}
 \alias{cognitoidentityprovider_list_web_authn_credentials}
-\title{Generates a list of the current user's registered passkey, or webauthN,
-credentials}
+\title{Generates a list of the currently signed-in user's registered passkey,
+or WebAuthn, credentials}
 \usage{
 cognitoidentityprovider_list_web_authn_credentials(
   AccessToken,
@@ -12,18 +12,22 @@ cognitoidentityprovider_list_web_authn_credentials(
 )
 }
 \arguments{
-\item{AccessToken}{[required] A valid access token that Amazon Cognito issued to the user whose
-registered passkeys you want to list.}
+\item{AccessToken}{[required] A valid access token that Amazon Cognito issued to the currently
+signed-in user. Must include a scope claim for
+\code{aws.cognito.signin.user.admin}.}
 
-\item{NextToken}{An identifier that was returned from the previous call to this
-operation, which can be used to return the next set of items in the
-list.}
+\item{NextToken}{This API operation returns a limited number of results. The pagination
+token is an identifier that you can present in an additional API request
+with the same parameters. When you include the pagination token, Amazon
+Cognito returns the next set of items after the current list. Subsequent
+requests return a new pagination token. By use of this token, you can
+paginate through the full list of items.}
 
 \item{MaxResults}{The maximum number of the user's passkey credentials that you want to
 return.}
 }
 \description{
-Generates a list of the current user's registered passkey, or webauthN, credentials.
+Generates a list of the currently signed-in user's registered passkey, or WebAuthn, credentials.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_list_web_authn_credentials/} for full documentation.
 }

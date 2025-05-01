@@ -4,7 +4,12 @@
 \alias{budgets_describe_budgets}
 \title{Lists the budgets that are associated with an account}
 \usage{
-budgets_describe_budgets(AccountId, MaxResults = NULL, NextToken = NULL)
+budgets_describe_budgets(
+  AccountId,
+  MaxResults = NULL,
+  NextToken = NULL,
+  ShowFilterExpression = NULL
+)
 }
 \arguments{
 \item{AccountId}{[required] The \code{accountId} that is associated with the budgets that you want to
@@ -15,6 +20,11 @@ contains. The default is 100.}
 
 \item{NextToken}{The pagination token that you include in your request to indicate the
 next set of results that you want to retrieve.}
+
+\item{ShowFilterExpression}{Specifies whether the response includes the filter expression associated
+with the budgets. By showing the filter expression, you can see detailed
+filtering logic applied to the budgets, such as Amazon Web Services
+services or tags that are being tracked.}
 }
 \description{
 Lists the budgets that are associated with an account.

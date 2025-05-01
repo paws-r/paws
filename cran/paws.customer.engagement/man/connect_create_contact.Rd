@@ -2,7 +2,7 @@
 % Please edit documentation in R/connect_operations.R
 \name{connect_create_contact}
 \alias{connect_create_contact}
-\title{Only the EMAIL channel is supported}
+\title{Only the EMAIL and VOICE channels are supported}
 \usage{
 connect_create_contact(
   InstanceId,
@@ -17,7 +17,8 @@ connect_create_contact(
   InitiateAs = NULL,
   Name = NULL,
   Description = NULL,
-  SegmentAttributes = NULL
+  SegmentAttributes = NULL,
+  PreviousContactId = NULL
 )
 }
 \arguments{
@@ -45,16 +46,20 @@ creation: URL | NUMBER | STRING | DATE | EMAIL | ATTACHMENT.}
 
 \item{Channel}{[required] The channel for the contact
 
-CreateContact only supports the EMAIL channel. The following information
-that states other channels are supported is incorrect. We are working to
-update this topic.}
+CreateContact only supports the EMAIL and VOICE channels. The following
+information that states other channels are supported is incorrect. We
+are working to update this topic.}
 
 \item{InitiationMethod}{[required] Indicates how the contact was initiated.
 
-CreateContact only supports the following initiation methods: OUTBOUND,
-AGENT_REPLY, and FLOW. The following information that states other
-initiation methods are supported is incorrect. We are working to update
-this topic.}
+CreateContact only supports the following initiation methods:
+\itemize{
+\item For EMAIL: OUTBOUND, AGENT_REPLY, and FLOW.
+\item For VOICE: TRANSFER and the subtype connect:ExternalAudio.
+}
+
+The following information that states other initiation methods are
+supported is incorrect. We are working to update this topic.}
 
 \item{ExpiryDurationInMinutes}{Number of minutes the contact will be active for before expiring}
 
@@ -79,9 +84,14 @@ To set contact expiry, a ValueMap must be specified containing the
 integer number of minutes the contact will be active for before
 expiring, with \code{SegmentAttributes} like \{
 \verb{ "connect:ContactExpiry": \\\{"ValueMap" : \\\{ "ExpiryDuration": \\\{ "ValueInteger": 135\\\}\\\}\\\}\\\}}.}
+
+\item{PreviousContactId}{The ID of the previous contact when creating a transfer contact. This
+value can be provided only for external audio contacts. For more
+information, see \href{https://docs.aws.amazon.com/connect/latest/adminguide/contact-lens-integration.html}{Integrate Amazon Connect Contact Lens with external voice systems}
+in the \emph{Amazon Connect Administrator Guide}.}
 }
 \description{
-Only the EMAIL channel is supported. The supported initiation methods are: OUTBOUND, AGENT_REPLY, and FLOW.
+Only the EMAIL and VOICE channels are supported. The supported initiation methods for EMAIL are: OUTBOUND, AGENT_REPLY, and FLOW. For VOICE the supported initiation methods are TRANSFER and the subtype connect:ExternalAudio.
 
 See \url{https://www.paws-r-sdk.com/docs/connect_create_contact/} for full documentation.
 }

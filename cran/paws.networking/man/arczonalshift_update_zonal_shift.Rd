@@ -16,8 +16,8 @@ arczonalshift_update_zonal_shift(
 is retained; no comment history is maintained. A new comment overwrites
 any existing comment string.}
 
-\item{expiresIn}{The length of time that you want a zonal shift to be active, which Route
-53 ARC converts to an expiry time (expiration time). Zonal shifts are
+\item{expiresIn}{The length of time that you want a zonal shift to be active, which ARC
+converts to an expiry time (expiration time). Zonal shifts are
 temporary. You can set a zonal shift to be active initially for up to
 three days (72 hours).
 

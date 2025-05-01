@@ -2,7 +2,7 @@
 % Please edit documentation in R/ssm_operations.R
 \name{ssm_put_parameter}
 \alias{ssm_put_parameter}
-\title{Add a parameter to the system}
+\title{Create or update a parameter in Parameter Store}
 \usage{
 ssm_put_parameter(
   Name,
@@ -19,8 +19,8 @@ ssm_put_parameter(
 )
 }
 \arguments{
-\item{Name}{[required] The fully qualified name of the parameter that you want to add to the
-system.
+\item{Name}{[required] The fully qualified name of the parameter that you want to create or
+update.
 
 You can't enter the Amazon Resource Name (ARN) for a parameter, only the
 parameter name itself.
@@ -51,11 +51,16 @@ For additional information about valid values for parameter names, see
 \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-paramstore-su-create.html}{Creating Systems Manager parameters}
 in the \emph{Amazon Web Services Systems Manager User Guide}.
 
-The maximum length constraint of 2048 characters listed below includes
-1037 characters reserved for internal use by Systems Manager. The
-maximum length for a parameter name that you create is 1011 characters.
-This includes the characters in the ARN that precede the name you
-specify, such as \verb{arn:aws:ssm:us-east-2:111122223333:parameter/}.}
+The reported maximum length of 2048 characters for a parameter name
+includes 1037 characters that are reserved for internal use by Systems
+Manager. The maximum length for a parameter name that you specify is
+1011 characters.
+
+This count of 1011 characters includes the characters in the ARN that
+precede the name you specify. This ARN length will vary depending on
+your partition and Region. For example, the following 45 characters
+count toward the 1011 character maximum for a parameter created in the
+US East (Ohio) Region: \verb{arn:aws:ssm:us-east-2:111122223333:parameter/}.}
 
 \item{Description}{Information about the parameter that you want to add to the system.
 Optional but recommended.
@@ -70,7 +75,7 @@ Parameters can't be referenced or nested in the values of other
 parameters. You can't include values wrapped in double brackets \code{{{}}}
 or \code{{{ssm:parameter-name}}} in a parameter value.}
 
-\item{Type}{The type of parameter that you want to add to the system.
+\item{Type}{The type of parameter that you want to create.
 
 \code{SecureString} isn't currently supported for CloudFormation templates.
 
@@ -87,7 +92,7 @@ parameter. Use a custom key for better security. Required for parameters
 that use the \code{SecureString} data type.
 
 If you don't specify a key ID, the system uses the default key
-associated with your Amazon Web Services account which is not as secure
+associated with your Amazon Web Services account, which is not as secure
 as using a custom key.
 \itemize{
 \item To use a custom KMS key, choose the \code{SecureString} data type with
@@ -238,7 +243,7 @@ created successfully, see \href{https://docs.aws.amazon.com/systems-manager/late
 For more information about AMI format validation , see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-ec2-aliases.html}{Native parameter support for Amazon Machine Image IDs}.}
 }
 \description{
-Add a parameter to the system.
+Create or update a parameter in Parameter Store.
 
 See \url{https://www.paws-r-sdk.com/docs/ssm_put_parameter/} for full documentation.
 }

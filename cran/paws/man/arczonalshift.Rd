@@ -54,7 +54,7 @@ Operations section.
 }
 \description{
 Welcome to the API Reference Guide for zonal shift and zonal autoshift
-in Amazon Route 53 Application Recovery Controller (Route 53 ARC).
+in Amazon Route 53 Application Recovery Controller (ARC).
 
 You can start a zonal shift to move traffic for a load balancer resource
 away from an Availability Zone to help your application recover quickly
@@ -64,12 +64,12 @@ Amazon Web Services infrastructure failure in a single Availability
 Zone.
 
 You can also configure zonal autoshift for supported load balancer
-resources. Zonal autoshift is a capability in Route 53 ARC where you
-authorize Amazon Web Services to shift away application resource traffic
-from an Availability Zone during events, on your behalf, to help reduce
-your time to recovery. Amazon Web Services starts an autoshift when
-internal telemetry indicates that there is an Availability Zone
-impairment that could potentially impact customers.
+resources. Zonal autoshift is a capability in ARC where you authorize
+Amazon Web Services to shift away application resource traffic from an
+Availability Zone during events, on your behalf, to help reduce your
+time to recovery. Amazon Web Services starts an autoshift when internal
+telemetry indicates that there is an Availability Zone impairment that
+could potentially impact customers.
 
 To help make sure that zonal autoshift is safe for your application, you
 must also configure practice runs when you enable zonal autoshift for a
@@ -93,11 +93,11 @@ If you use auto scaling to handle regular cycles of traffic, we strongly
 recommend that you configure the minimum capacity of your auto scaling
 to continue operating normally with the loss of an Availability Zone.
 
-Be aware that Route 53 ARC does not inspect the health of individual
-resources. Amazon Web Services only starts an autoshift when Amazon Web
-Services telemetry detects that there is an Availability Zone impairment
-that could potentially impact customers. In some cases, resources might
-be shifted away that are not experiencing impact.
+Be aware that ARC does not inspect the health of individual resources.
+Amazon Web Services only starts an autoshift when Amazon Web Services
+telemetry detects that there is an Availability Zone impairment that
+could potentially impact customers. In some cases, resources might be
+shifted away that are not experiencing impact.
 
 For more information about using zonal shift and zonal autoshift, see
 the \href{https://docs.aws.amazon.com/r53recovery/latest/dg/what-is-route53-recovery.html}{Amazon Route 53 Application Recovery Controller Developer Guide}.
@@ -144,9 +144,9 @@ the \href{https://docs.aws.amazon.com/r53recovery/latest/dg/what-is-route53-reco
 \link[paws.networking:arczonalshift_cancel_zonal_shift]{cancel_zonal_shift} \tab Cancel a zonal shift in Amazon Route 53 Application Recovery Controller\cr
 \link[paws.networking:arczonalshift_create_practice_run_configuration]{create_practice_run_configuration} \tab A practice run configuration for zonal autoshift is required when you enable zonal autoshift\cr
 \link[paws.networking:arczonalshift_delete_practice_run_configuration]{delete_practice_run_configuration} \tab Deletes the practice run configuration for a resource\cr
-\link[paws.networking:arczonalshift_get_autoshift_observer_notification_status]{get_autoshift_observer_notification_status} \tab Returns the status of autoshift observer notification\cr
+\link[paws.networking:arczonalshift_get_autoshift_observer_notification_status]{get_autoshift_observer_notification_status} \tab Returns the status of the autoshift observer notification\cr
 \link[paws.networking:arczonalshift_get_managed_resource]{get_managed_resource} \tab Get information about a resource that's been registered for zonal shifts with Amazon Route 53 Application Recovery Controller in this Amazon Web Services Region\cr
-\link[paws.networking:arczonalshift_list_autoshifts]{list_autoshifts} \tab Returns a list of autoshifts for an Amazon Web Services Region\cr
+\link[paws.networking:arczonalshift_list_autoshifts]{list_autoshifts} \tab Returns the autoshifts for an Amazon Web Services Region\cr
 \link[paws.networking:arczonalshift_list_managed_resources]{list_managed_resources} \tab Lists all the resources in your Amazon Web Services account in this Amazon Web Services Region that are managed for zonal shifts in Amazon Route 53 Application Recovery Controller, and information about them\cr
 \link[paws.networking:arczonalshift_list_zonal_shifts]{list_zonal_shifts} \tab Lists all active and completed zonal shifts in Amazon Route 53 Application Recovery Controller in your Amazon Web Services account in this Amazon Web Services Region\cr
 \link[paws.networking:arczonalshift_start_zonal_shift]{start_zonal_shift} \tab You start a zonal shift to temporarily move load balancer traffic away from an Availability Zone in an Amazon Web Services Region, to help your application recover immediately, for example, from a developer's bad code deployment or from an Amazon Web Services infrastructure failure in a single Availability Zone\cr

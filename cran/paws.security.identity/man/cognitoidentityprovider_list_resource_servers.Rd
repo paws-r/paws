@@ -2,7 +2,7 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_list_resource_servers}
 \alias{cognitoidentityprovider_list_resource_servers}
-\title{Lists the resource servers for a user pool}
+\title{Given a user pool ID, returns all resource servers and their details}
 \usage{
 cognitoidentityprovider_list_resource_servers(
   UserPoolId,
@@ -11,14 +11,20 @@ cognitoidentityprovider_list_resource_servers(
 )
 }
 \arguments{
-\item{UserPoolId}{[required] The ID of the user pool.}
+\item{UserPoolId}{[required] The ID of the user pool where you want to list resource servers.}
 
-\item{MaxResults}{The maximum number of resource servers to return.}
+\item{MaxResults}{The maximum number of resource servers that you want Amazon Cognito to
+return in the response.}
 
-\item{NextToken}{A pagination token.}
+\item{NextToken}{This API operation returns a limited number of results. The pagination
+token is an identifier that you can present in an additional API request
+with the same parameters. When you include the pagination token, Amazon
+Cognito returns the next set of items after the current list. Subsequent
+requests return a new pagination token. By use of this token, you can
+paginate through the full list of items.}
 }
 \description{
-Lists the resource servers for a user pool.
+Given a user pool ID, returns all resource servers and their details. For more information about resource servers, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-define-resource-servers.html}{Access control with resource servers}.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_list_resource_servers/} for full documentation.
 }

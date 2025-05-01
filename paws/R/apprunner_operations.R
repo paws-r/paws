@@ -498,7 +498,7 @@ apprunner_create_observability_configuration <- function(ObservabilityConfigurat
 #'         CodeConfiguration = list(
 #'           ConfigurationSource = "REPOSITORY"|"API",
 #'           CodeConfigurationValues = list(
-#'             Runtime = "PYTHON_3"|"NODEJS_12"|"NODEJS_14"|"CORRETTO_8"|"CORRETTO_11"|"NODEJS_16"|"GO_1"|"DOTNET_6"|"PHP_81"|"RUBY_31"|"PYTHON_311"|"NODEJS_18",
+#'             Runtime = "PYTHON_3"|"NODEJS_12"|"NODEJS_14"|"CORRETTO_8"|"CORRETTO_11"|"NODEJS_16"|"GO_1"|"DOTNET_6"|"PHP_81"|"RUBY_31"|"PYTHON_311"|"NODEJS_18"|"NODEJS_22",
 #'             BuildCommand = "string",
 #'             StartCommand = "string",
 #'             Port = "string",
@@ -592,7 +592,7 @@ apprunner_create_observability_configuration <- function(ObservabilityConfigurat
 #'       CodeConfiguration = list(
 #'         ConfigurationSource = "REPOSITORY"|"API",
 #'         CodeConfigurationValues = list(
-#'           Runtime = "PYTHON_3"|"NODEJS_12"|"NODEJS_14"|"CORRETTO_8"|"CORRETTO_11"|"NODEJS_16"|"GO_1"|"DOTNET_6"|"PHP_81"|"RUBY_31"|"PYTHON_311"|"NODEJS_18",
+#'           Runtime = "PYTHON_3"|"NODEJS_12"|"NODEJS_14"|"CORRETTO_8"|"CORRETTO_11"|"NODEJS_16"|"GO_1"|"DOTNET_6"|"PHP_81"|"RUBY_31"|"PYTHON_311"|"NODEJS_18"|"NODEJS_22",
 #'           BuildCommand = "string",
 #'           StartCommand = "string",
 #'           Port = "string",
@@ -1134,7 +1134,7 @@ apprunner_delete_observability_configuration <- function(ObservabilityConfigurat
 #'         CodeConfiguration = list(
 #'           ConfigurationSource = "REPOSITORY"|"API",
 #'           CodeConfigurationValues = list(
-#'             Runtime = "PYTHON_3"|"NODEJS_12"|"NODEJS_14"|"CORRETTO_8"|"CORRETTO_11"|"NODEJS_16"|"GO_1"|"DOTNET_6"|"PHP_81"|"RUBY_31"|"PYTHON_311"|"NODEJS_18",
+#'             Runtime = "PYTHON_3"|"NODEJS_12"|"NODEJS_14"|"CORRETTO_8"|"CORRETTO_11"|"NODEJS_16"|"GO_1"|"DOTNET_6"|"PHP_81"|"RUBY_31"|"PYTHON_311"|"NODEJS_18"|"NODEJS_22",
 #'             BuildCommand = "string",
 #'             StartCommand = "string",
 #'             Port = "string",
@@ -1668,7 +1668,7 @@ apprunner_describe_observability_configuration <- function(ObservabilityConfigur
 #'         CodeConfiguration = list(
 #'           ConfigurationSource = "REPOSITORY"|"API",
 #'           CodeConfigurationValues = list(
-#'             Runtime = "PYTHON_3"|"NODEJS_12"|"NODEJS_14"|"CORRETTO_8"|"CORRETTO_11"|"NODEJS_16"|"GO_1"|"DOTNET_6"|"PHP_81"|"RUBY_31"|"PYTHON_311"|"NODEJS_18",
+#'             Runtime = "PYTHON_3"|"NODEJS_12"|"NODEJS_14"|"CORRETTO_8"|"CORRETTO_11"|"NODEJS_16"|"GO_1"|"DOTNET_6"|"PHP_81"|"RUBY_31"|"PYTHON_311"|"NODEJS_18"|"NODEJS_22",
 #'             BuildCommand = "string",
 #'             StartCommand = "string",
 #'             Port = "string",
@@ -2754,7 +2754,7 @@ apprunner_list_vpc_ingress_connections <- function(Filter = NULL, MaxResults = N
 #'         CodeConfiguration = list(
 #'           ConfigurationSource = "REPOSITORY"|"API",
 #'           CodeConfigurationValues = list(
-#'             Runtime = "PYTHON_3"|"NODEJS_12"|"NODEJS_14"|"CORRETTO_8"|"CORRETTO_11"|"NODEJS_16"|"GO_1"|"DOTNET_6"|"PHP_81"|"RUBY_31"|"PYTHON_311"|"NODEJS_18",
+#'             Runtime = "PYTHON_3"|"NODEJS_12"|"NODEJS_14"|"CORRETTO_8"|"CORRETTO_11"|"NODEJS_16"|"GO_1"|"DOTNET_6"|"PHP_81"|"RUBY_31"|"PYTHON_311"|"NODEJS_18"|"NODEJS_22",
 #'             BuildCommand = "string",
 #'             StartCommand = "string",
 #'             Port = "string",
@@ -2911,7 +2911,7 @@ apprunner_pause_service <- function(ServiceArn) {
 #'         CodeConfiguration = list(
 #'           ConfigurationSource = "REPOSITORY"|"API",
 #'           CodeConfigurationValues = list(
-#'             Runtime = "PYTHON_3"|"NODEJS_12"|"NODEJS_14"|"CORRETTO_8"|"CORRETTO_11"|"NODEJS_16"|"GO_1"|"DOTNET_6"|"PHP_81"|"RUBY_31"|"PYTHON_311"|"NODEJS_18",
+#'             Runtime = "PYTHON_3"|"NODEJS_12"|"NODEJS_14"|"CORRETTO_8"|"CORRETTO_11"|"NODEJS_16"|"GO_1"|"DOTNET_6"|"PHP_81"|"RUBY_31"|"PYTHON_311"|"NODEJS_18"|"NODEJS_22",
 #'             BuildCommand = "string",
 #'             StartCommand = "string",
 #'             Port = "string",
@@ -3345,7 +3345,7 @@ apprunner_update_default_auto_scaling_configuration <- function(AutoScalingConfi
 #'         CodeConfiguration = list(
 #'           ConfigurationSource = "REPOSITORY"|"API",
 #'           CodeConfigurationValues = list(
-#'             Runtime = "PYTHON_3"|"NODEJS_12"|"NODEJS_14"|"CORRETTO_8"|"CORRETTO_11"|"NODEJS_16"|"GO_1"|"DOTNET_6"|"PHP_81"|"RUBY_31"|"PYTHON_311"|"NODEJS_18",
+#'             Runtime = "PYTHON_3"|"NODEJS_12"|"NODEJS_14"|"CORRETTO_8"|"CORRETTO_11"|"NODEJS_16"|"GO_1"|"DOTNET_6"|"PHP_81"|"RUBY_31"|"PYTHON_311"|"NODEJS_18"|"NODEJS_22",
 #'             BuildCommand = "string",
 #'             StartCommand = "string",
 #'             Port = "string",
@@ -3439,7 +3439,7 @@ apprunner_update_default_auto_scaling_configuration <- function(AutoScalingConfi
 #'       CodeConfiguration = list(
 #'         ConfigurationSource = "REPOSITORY"|"API",
 #'         CodeConfigurationValues = list(
-#'           Runtime = "PYTHON_3"|"NODEJS_12"|"NODEJS_14"|"CORRETTO_8"|"CORRETTO_11"|"NODEJS_16"|"GO_1"|"DOTNET_6"|"PHP_81"|"RUBY_31"|"PYTHON_311"|"NODEJS_18",
+#'           Runtime = "PYTHON_3"|"NODEJS_12"|"NODEJS_14"|"CORRETTO_8"|"CORRETTO_11"|"NODEJS_16"|"GO_1"|"DOTNET_6"|"PHP_81"|"RUBY_31"|"PYTHON_311"|"NODEJS_18"|"NODEJS_22",
 #'           BuildCommand = "string",
 #'           StartCommand = "string",
 #'           Port = "string",

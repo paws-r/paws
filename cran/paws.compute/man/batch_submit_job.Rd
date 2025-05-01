@@ -20,7 +20,8 @@ batch_submit_job(
   timeout = NULL,
   tags = NULL,
   eksPropertiesOverride = NULL,
-  ecsPropertiesOverride = NULL
+  ecsPropertiesOverride = NULL,
+  consumableResourcePropertiesOverride = NULL
 )
 }
 \arguments{
@@ -127,6 +128,8 @@ resources.}
 \item{ecsPropertiesOverride}{An object, with properties that override defaults for the job
 definition, can only be specified for jobs that are run on Amazon ECS
 resources.}
+
+\item{consumableResourcePropertiesOverride}{An object that contains overrides for the consumable resources of a job.}
 }
 \description{
 Submits an Batch job from a job definition. Parameters that are specified during \code{\link[=batch_submit_job]{submit_job}} override parameters defined in the job definition. vCPU and memory requirements that are specified in the \code{resourceRequirements} objects in the job definition are the exception. They can't be overridden this way using the \code{memory} and \code{vcpus} parameters. Rather, you must specify updates to job definition parameters in a \code{resourceRequirements} object that's included in the \code{containerOverrides} parameter.

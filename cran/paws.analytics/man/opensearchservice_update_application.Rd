@@ -2,19 +2,20 @@
 % Please edit documentation in R/opensearchservice_operations.R
 \name{opensearchservice_update_application}
 \alias{opensearchservice_update_application}
-\title{Update the OpenSearch Application}
+\title{Updates the configuration and settings of an existing OpenSearch
+application}
 \usage{
 opensearchservice_update_application(id, dataSources = NULL, appConfigs = NULL)
 }
 \arguments{
-\item{id}{[required] Unique identifier of the OpenSearch Application to be updated.}
+\item{id}{[required] The unique identifier for the OpenSearch application to be updated.}
 
-\item{dataSources}{Data sources to be associated with the OpenSearch Application.}
+\item{dataSources}{The data sources to associate with the OpenSearch application.}
 
-\item{appConfigs}{Configurations to be changed for the OpenSearch Application.}
+\item{appConfigs}{The configuration settings to modify for the OpenSearch application.}
 }
 \description{
-Update the OpenSearch Application.
+Updates the configuration and settings of an existing OpenSearch application.
 
 See \url{https://www.paws-r-sdk.com/docs/opensearchservice_update_application/} for full documentation.
 }

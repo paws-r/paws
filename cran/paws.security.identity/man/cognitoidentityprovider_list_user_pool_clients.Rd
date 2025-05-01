@@ -2,7 +2,7 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_list_user_pool_clients}
 \alias{cognitoidentityprovider_list_user_pool_clients}
-\title{Lists the clients that have been created for the specified user pool}
+\title{Given a user pool ID, lists app clients}
 \usage{
 cognitoidentityprovider_list_user_pool_clients(
   UserPoolId,
@@ -13,15 +13,18 @@ cognitoidentityprovider_list_user_pool_clients(
 \arguments{
 \item{UserPoolId}{[required] The ID of the user pool where you want to list user pool clients.}
 
-\item{MaxResults}{The maximum number of results you want the request to return when
-listing the user pool clients.}
+\item{MaxResults}{The maximum number of app clients that you want Amazon Cognito to return
+in the response.}
 
-\item{NextToken}{An identifier that was returned from the previous call to this
-operation, which can be used to return the next set of items in the
-list.}
+\item{NextToken}{This API operation returns a limited number of results. The pagination
+token is an identifier that you can present in an additional API request
+with the same parameters. When you include the pagination token, Amazon
+Cognito returns the next set of items after the current list. Subsequent
+requests return a new pagination token. By use of this token, you can
+paginate through the full list of items.}
 }
 \description{
-Lists the clients that have been created for the specified user pool.
+Given a user pool ID, lists app clients. App clients are sets of rules for the access that you want a user pool to grant to one application. For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-settings-client-apps.html}{App clients}.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_list_user_pool_clients/} for full documentation.
 }

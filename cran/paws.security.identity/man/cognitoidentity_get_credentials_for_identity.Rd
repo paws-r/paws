@@ -31,7 +31,7 @@ example, a SAML-based identity provider. This parameter is optional for
 identity providers that do not support role customization.}
 }
 \description{
-Returns credentials for the provided identity ID. Any provided logins will be validated against supported login providers. If the token is for cognito-identity.amazonaws.com, it will be passed through to AWS Security Token Service with the appropriate role for the token.
+Returns credentials for the provided identity ID. Any provided logins will be validated against supported login providers. If the token is for \code{cognito-identity.amazonaws.com}, it will be passed through to Security Token Service with the appropriate role for the token.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentity_get_credentials_for_identity/} for full documentation.
 }

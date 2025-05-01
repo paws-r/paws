@@ -109,8 +109,8 @@ to targets in the healthy AZs. For more information about zonal shift in
 EKS, see \href{https://docs.aws.amazon.com/eks/latest/userguide/zone-shift.html}{Learn about Amazon Application Recovery Controller (ARC) Zonal Shift in Amazon EKS}
 in the \emph{Amazon EKS User Guide} .}
 
-\item{remoteNetworkConfig}{The configuration in the cluster for EKS Hybrid Nodes. You can't change
-or update this configuration after the cluster is created.}
+\item{remoteNetworkConfig}{The configuration in the cluster for EKS Hybrid Nodes. You can add,
+change, or remove this configuration after the cluster is created.}
 
 \item{computeConfig}{Enable or disable the compute capability of EKS Auto Mode when creating
 your EKS Auto Mode cluster. If the compute capability is enabled, EKS

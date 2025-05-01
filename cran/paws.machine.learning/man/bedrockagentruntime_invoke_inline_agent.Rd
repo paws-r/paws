@@ -7,7 +7,12 @@ provide with the request}
 \usage{
 bedrockagentruntime_invoke_inline_agent(
   actionGroups = NULL,
+  agentCollaboration = NULL,
+  agentName = NULL,
   bedrockModelConfigurations = NULL,
+  collaboratorConfigurations = NULL,
+  collaborators = NULL,
+  customOrchestration = NULL,
   customerEncryptionKeyArn = NULL,
   enableTrace = NULL,
   endSession = NULL,
@@ -18,6 +23,7 @@ bedrockagentruntime_invoke_inline_agent(
   inputText = NULL,
   instruction,
   knowledgeBases = NULL,
+  orchestrationType = NULL,
   promptOverrideConfiguration = NULL,
   sessionId,
   streamingConfigurations = NULL
@@ -27,16 +33,26 @@ bedrockagentruntime_invoke_inline_agent(
 \item{actionGroups}{A list of action groups with each action group defining the action the
 inline agent needs to carry out.}
 
+\item{agentCollaboration}{Defines how the inline collaborator agent handles information across
+multiple collaborator agents to coordinate a final response. The inline
+collaborator agent can also be the supervisor.}
+
+\item{agentName}{The name for the agent.}
+
 \item{bedrockModelConfigurations}{Model settings for the request.}
+
+\item{collaboratorConfigurations}{Settings for an inline agent collaborator called with
+\code{\link[=bedrockagentruntime_invoke_inline_agent]{invoke_inline_agent}}.}
+
+\item{collaborators}{List of collaborator inline agents.}
+
+\item{customOrchestration}{Contains details of the custom orchestration configured for the agent.}
 
 \item{customerEncryptionKeyArn}{The Amazon Resource Name (ARN) of the Amazon Web Services KMS key to use
 to encrypt your inline agent.}
 
 \item{enableTrace}{Specifies whether to turn on the trace or not to track the agent's
-reasoning process. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/trace-events.html}{Using trace}.
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{ </p>
-}\if{html}{\out{</div>}}}
+reasoning process. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/trace-events.html}{Using trace}.}
 
 \item{endSession}{Specifies whether to end the session with the inline agent or not.}
 
@@ -74,6 +90,9 @@ field, the \code{inputText} field will be ignored.}
 should interact with users.}
 
 \item{knowledgeBases}{Contains information of the knowledge bases to associate with.}
+
+\item{orchestrationType}{Specifies the type of orchestration strategy for the agent. This is set
+to DEFAULT orchestration type, by default.}
 
 \item{promptOverrideConfiguration}{Configurations for advanced prompts used to override the default prompts
 to enhance the accuracy of the inline agent.}

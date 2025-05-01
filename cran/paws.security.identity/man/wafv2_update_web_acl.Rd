@@ -26,7 +26,7 @@ wafv2_update_web_acl(
 you create it.}
 
 \item{Scope}{[required] Specifies whether this is for a global resource type, such as a Amazon
-CloudFront distribution.
+CloudFront distribution. For an Amplify application, use \code{CLOUDFRONT}.
 
 To work with CloudFront, you must also specify the Region US East (N.
 Virginia) as follows:
@@ -53,15 +53,14 @@ handles them.}
 \item{VisibilityConfig}{[required] Defines and enables Amazon CloudWatch metrics and web request sample
 collection.}
 
-\item{DataProtectionConfig}{Specifies data protection to apply to the web request data that WAF
-stores for the web ACL. This is a web ACL level data protection option.
+\item{DataProtectionConfig}{Specifies data protection to apply to the web request data for the web
+ACL. This is a web ACL level data protection option.
 
 The data protection that you configure for the web ACL alters the data
-that's available for any other data collection activity, including WAF
-logging, web ACL request sampling, Amazon Web Services Managed Rules,
-and Amazon Security Lake data collection and management. Your other
-option for data protection is in the logging configuration, which only
-affects logging.}
+that's available for any other data collection activity, including your
+WAF logging destinations, web ACL request sampling, and Amazon Security
+Lake data collection and management. Your other option for data
+protection is in the logging configuration, which only affects logging.}
 
 \item{LockToken}{[required] A token used for optimistic locking. WAF returns a token to your \code{get}
 and \code{list} requests, to mark the state of the entity at the time of the

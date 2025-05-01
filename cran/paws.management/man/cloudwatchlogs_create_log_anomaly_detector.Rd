@@ -38,8 +38,9 @@ assigned to an anomaly detector, a user must have permissions for both
 this key and for the anomaly detector to retrieve information about the
 anomalies that it finds.
 
-For more information about using a KMS key and to see the required IAM
-policy, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/LogsAnomalyDetection-KMS.html}{Use a KMS key with an anomaly detector}.}
+Make sure the value provided is a valid KMS key ARN. For more
+information about using a KMS key and to see the required IAM policy,
+see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/LogsAnomalyDetection-KMS.html}{Use a KMS key with an anomaly detector}.}
 
 \item{anomalyVisibilityTime}{The number of days to have visibility on an anomaly. After this time
 period has elapsed for an anomaly, it will be automatically baselined

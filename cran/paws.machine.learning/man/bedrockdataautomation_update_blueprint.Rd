@@ -7,7 +7,8 @@
 bedrockdataautomation_update_blueprint(
   blueprintArn,
   schema,
-  blueprintStage = NULL
+  blueprintStage = NULL,
+  encryptionConfiguration = NULL
 )
 }
 \arguments{
@@ -16,6 +17,8 @@ bedrockdataautomation_update_blueprint(
 \item{schema}{[required]}
 
 \item{blueprintStage}{}
+
+\item{encryptionConfiguration}{}
 }
 \description{
 Updates an existing Amazon Bedrock Data Automation Blueprint

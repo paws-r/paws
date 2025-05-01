@@ -6,7 +6,7 @@ NULL
 #' Converts a recovery point to a snapshot
 #'
 #' @description
-#' Converts a recovery point to a snapshot. For more information about recovery points and snapshots, see [Working with snapshots and recovery points](https://docs.aws.amazon.com/redshift/latest/mgmt/).
+#' Converts a recovery point to a snapshot. For more information about recovery points and snapshots, see [Working with snapshots and recovery points](https://docs.aws.amazon.com/redshift/latest/mgmt/serverless-snapshots-recovery-points.html).
 #'
 #' See [https://www.paws-r-sdk.com/docs/redshiftserverless_convert_recovery_point_to_snapshot/](https://www.paws-r-sdk.com/docs/redshiftserverless_convert_recovery_point_to_snapshot/) for full documentation.
 #'
@@ -170,6 +170,47 @@ redshiftserverless_create_namespace <- function(adminPasswordSecretKmsKeyId = NU
 }
 .redshiftserverless$operations$create_namespace <- redshiftserverless_create_namespace
 
+#' Creates an Amazon Redshift Serverless reservation, which gives you the
+#' option to commit to a specified number of Redshift Processing Units
+#' (RPUs) for a year at a discount from Serverless on-demand (OD) rates
+#'
+#' @description
+#' Creates an Amazon Redshift Serverless reservation, which gives you the option to commit to a specified number of Redshift Processing Units (RPUs) for a year at a discount from Serverless on-demand (OD) rates.
+#'
+#' See [https://www.paws-r-sdk.com/docs/redshiftserverless_create_reservation/](https://www.paws-r-sdk.com/docs/redshiftserverless_create_reservation/) for full documentation.
+#'
+#' @param capacity &#91;required&#93; The number of Redshift Processing Units (RPUs) to reserve.
+#' @param clientToken A unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request. If not provided, the Amazon Web Services SDK
+#' populates this field. This token must be a valid UUIDv4 value. For more
+#' information about idempotency, see [Making retries safe with idempotent
+#' APIs](https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/)
+#' .
+#' @param offeringId &#91;required&#93; The ID of the offering associated with the reservation. The offering
+#' determines the payment schedule for the reservation.
+#'
+#' @keywords internal
+#'
+#' @rdname redshiftserverless_create_reservation
+redshiftserverless_create_reservation <- function(capacity, clientToken = NULL, offeringId) {
+  op <- new_operation(
+    name = "CreateReservation",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .redshiftserverless$create_reservation_input(capacity = capacity, clientToken = clientToken, offeringId = offeringId)
+  output <- .redshiftserverless$create_reservation_output()
+  config <- get_config()
+  svc <- .redshiftserverless$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshiftserverless$operations$create_reservation <- redshiftserverless_create_reservation
+
 #' Creates a scheduled action
 #'
 #' @description
@@ -236,7 +277,7 @@ redshiftserverless_create_scheduled_action <- function(enabled = NULL, endTime =
 #' Creates a snapshot of all databases in a namespace
 #'
 #' @description
-#' Creates a snapshot of all databases in a namespace. For more information about snapshots, see [Working with snapshots and recovery points](https://docs.aws.amazon.com/redshift/latest/mgmt/).
+#' Creates a snapshot of all databases in a namespace. For more information about snapshots, see [Working with snapshots and recovery points](https://docs.aws.amazon.com/redshift/latest/mgmt/serverless-snapshots-recovery-points.html).
 #'
 #' See [https://www.paws-r-sdk.com/docs/redshiftserverless_create_snapshot/](https://www.paws-r-sdk.com/docs/redshiftserverless_create_snapshot/) for full documentation.
 #'
@@ -384,12 +425,15 @@ redshiftserverless_create_usage_limit <- function(amount, breachAction = NULL, p
 #' @param securityGroupIds An array of security group IDs to associate with the workgroup.
 #' @param subnetIds An array of VPC subnet IDs to associate with the workgroup.
 #' @param tags A array of tag instances.
+#' @param trackName An optional parameter for the name of the track for the workgroup. If
+#' you don't provide a track name, the workgroup is assigned to the
+#' `current` track.
 #' @param workgroupName &#91;required&#93; The name of the created workgroup.
 #'
 #' @keywords internal
 #'
 #' @rdname redshiftserverless_create_workgroup
-redshiftserverless_create_workgroup <- function(baseCapacity = NULL, configParameters = NULL, enhancedVpcRouting = NULL, ipAddressType = NULL, maxCapacity = NULL, namespaceName, port = NULL, pricePerformanceTarget = NULL, publiclyAccessible = NULL, securityGroupIds = NULL, subnetIds = NULL, tags = NULL, workgroupName) {
+redshiftserverless_create_workgroup <- function(baseCapacity = NULL, configParameters = NULL, enhancedVpcRouting = NULL, ipAddressType = NULL, maxCapacity = NULL, namespaceName, port = NULL, pricePerformanceTarget = NULL, publiclyAccessible = NULL, securityGroupIds = NULL, subnetIds = NULL, tags = NULL, trackName = NULL, workgroupName) {
   op <- new_operation(
     name = "CreateWorkgroup",
     http_method = "POST",
@@ -398,7 +442,7 @@ redshiftserverless_create_workgroup <- function(baseCapacity = NULL, configParam
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .redshiftserverless$create_workgroup_input(baseCapacity = baseCapacity, configParameters = configParameters, enhancedVpcRouting = enhancedVpcRouting, ipAddressType = ipAddressType, maxCapacity = maxCapacity, namespaceName = namespaceName, port = port, pricePerformanceTarget = pricePerformanceTarget, publiclyAccessible = publiclyAccessible, securityGroupIds = securityGroupIds, subnetIds = subnetIds, tags = tags, workgroupName = workgroupName)
+  input <- .redshiftserverless$create_workgroup_input(baseCapacity = baseCapacity, configParameters = configParameters, enhancedVpcRouting = enhancedVpcRouting, ipAddressType = ipAddressType, maxCapacity = maxCapacity, namespaceName = namespaceName, port = port, pricePerformanceTarget = pricePerformanceTarget, publiclyAccessible = publiclyAccessible, securityGroupIds = securityGroupIds, subnetIds = subnetIds, tags = tags, trackName = trackName, workgroupName = workgroupName)
   output <- .redshiftserverless$create_workgroup_output()
   config <- get_config()
   svc <- .redshiftserverless$service(config, op)
@@ -868,6 +912,68 @@ redshiftserverless_get_recovery_point <- function(recoveryPointId) {
 }
 .redshiftserverless$operations$get_recovery_point <- redshiftserverless_get_recovery_point
 
+#' Gets an Amazon Redshift Serverless reservation
+#'
+#' @description
+#' Gets an Amazon Redshift Serverless reservation. A reservation gives you the option to commit to a specified number of Redshift Processing Units (RPUs) for a year at a discount from Serverless on-demand (OD) rates.
+#'
+#' See [https://www.paws-r-sdk.com/docs/redshiftserverless_get_reservation/](https://www.paws-r-sdk.com/docs/redshiftserverless_get_reservation/) for full documentation.
+#'
+#' @param reservationId &#91;required&#93; The ID of the reservation to retrieve.
+#'
+#' @keywords internal
+#'
+#' @rdname redshiftserverless_get_reservation
+redshiftserverless_get_reservation <- function(reservationId) {
+  op <- new_operation(
+    name = "GetReservation",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .redshiftserverless$get_reservation_input(reservationId = reservationId)
+  output <- .redshiftserverless$get_reservation_output()
+  config <- get_config()
+  svc <- .redshiftserverless$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshiftserverless$operations$get_reservation <- redshiftserverless_get_reservation
+
+#' Returns the reservation offering
+#'
+#' @description
+#' Returns the reservation offering. The offering determines the payment schedule for the reservation.
+#'
+#' See [https://www.paws-r-sdk.com/docs/redshiftserverless_get_reservation_offering/](https://www.paws-r-sdk.com/docs/redshiftserverless_get_reservation_offering/) for full documentation.
+#'
+#' @param offeringId &#91;required&#93; The identifier for the offering..
+#'
+#' @keywords internal
+#'
+#' @rdname redshiftserverless_get_reservation_offering
+redshiftserverless_get_reservation_offering <- function(offeringId) {
+  op <- new_operation(
+    name = "GetReservationOffering",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .redshiftserverless$get_reservation_offering_input(offeringId = offeringId)
+  output <- .redshiftserverless$get_reservation_offering_output()
+  config <- get_config()
+  svc <- .redshiftserverless$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshiftserverless$operations$get_reservation_offering <- redshiftserverless_get_reservation_offering
+
 #' Returns a resource policy
 #'
 #' @description
@@ -996,6 +1102,37 @@ redshiftserverless_get_table_restore_status <- function(tableRestoreRequestId) {
   return(response)
 }
 .redshiftserverless$operations$get_table_restore_status <- redshiftserverless_get_table_restore_status
+
+#' Get the Redshift Serverless version for a specified track
+#'
+#' @description
+#' Get the Redshift Serverless version for a specified track.
+#'
+#' See [https://www.paws-r-sdk.com/docs/redshiftserverless_get_track/](https://www.paws-r-sdk.com/docs/redshiftserverless_get_track/) for full documentation.
+#'
+#' @param trackName &#91;required&#93; The name of the track of which its version is fetched.
+#'
+#' @keywords internal
+#'
+#' @rdname redshiftserverless_get_track
+redshiftserverless_get_track <- function(trackName) {
+  op <- new_operation(
+    name = "GetTrack",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .redshiftserverless$get_track_input(trackName = trackName)
+  output <- .redshiftserverless$get_track_output()
+  config <- get_config()
+  svc <- .redshiftserverless$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshiftserverless$operations$get_track <- redshiftserverless_get_track
 
 #' Returns information about a usage limit
 #'
@@ -1257,6 +1394,76 @@ redshiftserverless_list_recovery_points <- function(endTime = NULL, maxResults =
 }
 .redshiftserverless$operations$list_recovery_points <- redshiftserverless_list_recovery_points
 
+#' Returns the current reservation offerings in your account
+#'
+#' @description
+#' Returns the current reservation offerings in your account.
+#'
+#' See [https://www.paws-r-sdk.com/docs/redshiftserverless_list_reservation_offerings/](https://www.paws-r-sdk.com/docs/redshiftserverless_list_reservation_offerings/) for full documentation.
+#'
+#' @param maxResults The maximum number of items to return for this call. The call also
+#' returns a token that you can specify in a subsequent call to get the
+#' next set of results.
+#' @param nextToken The token for the next set of items to return. (You received this token
+#' from a previous call.)
+#'
+#' @keywords internal
+#'
+#' @rdname redshiftserverless_list_reservation_offerings
+redshiftserverless_list_reservation_offerings <- function(maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListReservationOfferings",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "reservationOfferingsList"),
+    stream_api = FALSE
+  )
+  input <- .redshiftserverless$list_reservation_offerings_input(maxResults = maxResults, nextToken = nextToken)
+  output <- .redshiftserverless$list_reservation_offerings_output()
+  config <- get_config()
+  svc <- .redshiftserverless$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshiftserverless$operations$list_reservation_offerings <- redshiftserverless_list_reservation_offerings
+
+#' Returns a list of Reservation objects
+#'
+#' @description
+#' Returns a list of Reservation objects.
+#'
+#' See [https://www.paws-r-sdk.com/docs/redshiftserverless_list_reservations/](https://www.paws-r-sdk.com/docs/redshiftserverless_list_reservations/) for full documentation.
+#'
+#' @param maxResults The maximum number of items to return for this call. The call also
+#' returns a token that you can specify in a subsequent call to get the
+#' next set of results.
+#' @param nextToken The token for the next set of items to return. (You received this token
+#' from a previous call.)
+#'
+#' @keywords internal
+#'
+#' @rdname redshiftserverless_list_reservations
+redshiftserverless_list_reservations <- function(maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListReservations",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "reservationsList"),
+    stream_api = FALSE
+  )
+  input <- .redshiftserverless$list_reservations_input(maxResults = maxResults, nextToken = nextToken)
+  output <- .redshiftserverless$list_reservations_output()
+  config <- get_config()
+  svc <- .redshiftserverless$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshiftserverless$operations$list_reservations <- redshiftserverless_list_reservations
+
 #' Returns a list of scheduled actions
 #'
 #' @description
@@ -1445,6 +1652,44 @@ redshiftserverless_list_tags_for_resource <- function(resourceArn) {
 }
 .redshiftserverless$operations$list_tags_for_resource <- redshiftserverless_list_tags_for_resource
 
+#' List the Amazon Redshift Serverless versions
+#'
+#' @description
+#' List the Amazon Redshift Serverless versions.
+#'
+#' See [https://www.paws-r-sdk.com/docs/redshiftserverless_list_tracks/](https://www.paws-r-sdk.com/docs/redshiftserverless_list_tracks/) for full documentation.
+#'
+#' @param maxResults The maximum number of response records to return in each call. If the
+#' number of remaining response records exceeds the specified MaxRecords
+#' value, a value is returned in a marker field of the response. You can
+#' retrieve the next set of records by retrying the command with the
+#' returned marker value.
+#' @param nextToken If your initial `ListTracksRequest` operation returns a `nextToken`, you
+#' can include the returned `nextToken` in following `ListTracksRequest`
+#' operations, which returns results in the next page.
+#'
+#' @keywords internal
+#'
+#' @rdname redshiftserverless_list_tracks
+redshiftserverless_list_tracks <- function(maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListTracks",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "tracks"),
+    stream_api = FALSE
+  )
+  input <- .redshiftserverless$list_tracks_input(maxResults = maxResults, nextToken = nextToken)
+  output <- .redshiftserverless$list_tracks_output()
+  config <- get_config()
+  svc <- .redshiftserverless$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshiftserverless$operations$list_tracks <- redshiftserverless_list_tracks
+
 #' Lists all usage limits within Amazon Redshift Serverless
 #'
 #' @description
@@ -1608,7 +1853,7 @@ redshiftserverless_restore_from_recovery_point <- function(namespaceName, recove
 #' @param namespaceName &#91;required&#93; The name of the namespace to restore the snapshot to.
 #' @param ownerAccount The Amazon Web Services account that owns the snapshot.
 #' @param snapshotArn The Amazon Resource Name (ARN) of the snapshot to restore from. Required
-#' if restoring from Amazon Redshift Serverless to a provisioned cluster.
+#' if restoring from a provisioned cluster to Amazon Redshift Serverless.
 #' Must not be specified at the same time as `snapshotName`.
 #' 
 #' The format of the ARN is
@@ -2103,13 +2348,16 @@ redshiftserverless_update_usage_limit <- function(amount = NULL, breachAction = 
 #' public network.
 #' @param securityGroupIds An array of security group IDs to associate with the workgroup.
 #' @param subnetIds An array of VPC subnet IDs to associate with the workgroup.
+#' @param trackName An optional parameter for the name of the track for the workgroup. If
+#' you don't provide a track name, the workgroup is assigned to the
+#' `current` track.
 #' @param workgroupName &#91;required&#93; The name of the workgroup to update. You can't update the name of a
 #' workgroup once it is created.
 #'
 #' @keywords internal
 #'
 #' @rdname redshiftserverless_update_workgroup
-redshiftserverless_update_workgroup <- function(baseCapacity = NULL, configParameters = NULL, enhancedVpcRouting = NULL, ipAddressType = NULL, maxCapacity = NULL, port = NULL, pricePerformanceTarget = NULL, publiclyAccessible = NULL, securityGroupIds = NULL, subnetIds = NULL, workgroupName) {
+redshiftserverless_update_workgroup <- function(baseCapacity = NULL, configParameters = NULL, enhancedVpcRouting = NULL, ipAddressType = NULL, maxCapacity = NULL, port = NULL, pricePerformanceTarget = NULL, publiclyAccessible = NULL, securityGroupIds = NULL, subnetIds = NULL, trackName = NULL, workgroupName) {
   op <- new_operation(
     name = "UpdateWorkgroup",
     http_method = "POST",
@@ -2118,7 +2366,7 @@ redshiftserverless_update_workgroup <- function(baseCapacity = NULL, configParam
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .redshiftserverless$update_workgroup_input(baseCapacity = baseCapacity, configParameters = configParameters, enhancedVpcRouting = enhancedVpcRouting, ipAddressType = ipAddressType, maxCapacity = maxCapacity, port = port, pricePerformanceTarget = pricePerformanceTarget, publiclyAccessible = publiclyAccessible, securityGroupIds = securityGroupIds, subnetIds = subnetIds, workgroupName = workgroupName)
+  input <- .redshiftserverless$update_workgroup_input(baseCapacity = baseCapacity, configParameters = configParameters, enhancedVpcRouting = enhancedVpcRouting, ipAddressType = ipAddressType, maxCapacity = maxCapacity, port = port, pricePerformanceTarget = pricePerformanceTarget, publiclyAccessible = publiclyAccessible, securityGroupIds = securityGroupIds, subnetIds = subnetIds, trackName = trackName, workgroupName = workgroupName)
   output <- .redshiftserverless$update_workgroup_output()
   config <- get_config()
   svc <- .redshiftserverless$service(config, op)

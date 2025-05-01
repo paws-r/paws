@@ -2729,6 +2729,7 @@ glue_batch_get_partition <- function(CatalogId = NULL, DatabaseName, TableName, 
 #'             IcebergMetrics = list(
 #'               NumberOfBytesCompacted = 123,
 #'               NumberOfFilesCompacted = 123,
+#'               DpuHours = 123.0,
 #'               NumberOfDpus = 123,
 #'               JobDurationInHour = 123.0
 #'             )
@@ -2738,6 +2739,7 @@ glue_batch_get_partition <- function(CatalogId = NULL, DatabaseName, TableName, 
 #'               NumberOfDataFilesDeleted = 123,
 #'               NumberOfManifestFilesDeleted = 123,
 #'               NumberOfManifestListsDeleted = 123,
+#'               DpuHours = 123.0,
 #'               NumberOfDpus = 123,
 #'               JobDurationInHour = 123.0
 #'             )
@@ -2745,6 +2747,7 @@ glue_batch_get_partition <- function(CatalogId = NULL, DatabaseName, TableName, 
 #'           orphanFileDeletionMetrics = list(
 #'             IcebergMetrics = list(
 #'               NumberOfOrphanFilesDeleted = 123,
+#'               DpuHours = 123.0,
 #'               NumberOfDpus = 123,
 #'               JobDurationInHour = 123.0
 #'             )
@@ -3913,7 +3916,8 @@ glue_create_blueprint <- function(Name, Description = NULL, BlueprintLocation, T
 #'           "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"
 #'         )
 #'       )
-#'     )
+#'     ),
+#'     AllowFullTableExternalDataAccess = "True"|"False"
 #'   ),
 #'   Tags = list(
 #'     "string"
@@ -10791,7 +10795,8 @@ glue_get_blueprint_runs <- function(BlueprintName, NextToken = NULL, MaxResults 
 #'           "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"
 #'         )
 #'       )
-#'     )
+#'     ),
+#'     AllowFullTableExternalDataAccess = "True"|"False"
 #'   )
 #' )
 #' ```
@@ -10971,7 +10976,8 @@ glue_get_catalog_import_status <- function(CatalogId = NULL) {
 #'             "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"
 #'           )
 #'         )
-#'       )
+#'       ),
+#'       AllowFullTableExternalDataAccess = "True"|"False"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -19249,6 +19255,7 @@ glue_get_table <- function(CatalogId = NULL, DatabaseName, Name, TransactionId =
 #'         IcebergMetrics = list(
 #'           NumberOfBytesCompacted = 123,
 #'           NumberOfFilesCompacted = 123,
+#'           DpuHours = 123.0,
 #'           NumberOfDpus = 123,
 #'           JobDurationInHour = 123.0
 #'         )
@@ -19258,6 +19265,7 @@ glue_get_table <- function(CatalogId = NULL, DatabaseName, Name, TransactionId =
 #'           NumberOfDataFilesDeleted = 123,
 #'           NumberOfManifestFilesDeleted = 123,
 #'           NumberOfManifestListsDeleted = 123,
+#'           DpuHours = 123.0,
 #'           NumberOfDpus = 123,
 #'           JobDurationInHour = 123.0
 #'         )
@@ -19265,6 +19273,7 @@ glue_get_table <- function(CatalogId = NULL, DatabaseName, Name, TransactionId =
 #'       orphanFileDeletionMetrics = list(
 #'         IcebergMetrics = list(
 #'           NumberOfOrphanFilesDeleted = 123,
+#'           DpuHours = 123.0,
 #'           NumberOfDpus = 123,
 #'           JobDurationInHour = 123.0
 #'         )
@@ -23805,6 +23814,7 @@ glue_list_statements <- function(SessionId, RequestOrigin = NULL, NextToken = NU
 #'         IcebergMetrics = list(
 #'           NumberOfBytesCompacted = 123,
 #'           NumberOfFilesCompacted = 123,
+#'           DpuHours = 123.0,
 #'           NumberOfDpus = 123,
 #'           JobDurationInHour = 123.0
 #'         )
@@ -23814,6 +23824,7 @@ glue_list_statements <- function(SessionId, RequestOrigin = NULL, NextToken = NU
 #'           NumberOfDataFilesDeleted = 123,
 #'           NumberOfManifestFilesDeleted = 123,
 #'           NumberOfManifestListsDeleted = 123,
+#'           DpuHours = 123.0,
 #'           NumberOfDpus = 123,
 #'           JobDurationInHour = 123.0
 #'         )
@@ -23821,6 +23832,7 @@ glue_list_statements <- function(SessionId, RequestOrigin = NULL, NextToken = NU
 #'       orphanFileDeletionMetrics = list(
 #'         IcebergMetrics = list(
 #'           NumberOfOrphanFilesDeleted = 123,
+#'           DpuHours = 123.0,
 #'           NumberOfDpus = 123,
 #'           JobDurationInHour = 123.0
 #'         )
@@ -26835,7 +26847,8 @@ glue_update_blueprint <- function(Name, Description = NULL, BlueprintLocation) {
 #'           "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"
 #'         )
 #'       )
-#'     )
+#'     ),
+#'     AllowFullTableExternalDataAccess = "True"|"False"
 #'   )
 #' )
 #' ```

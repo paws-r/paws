@@ -118,11 +118,30 @@ eventbridge_create_api_destination <- function(Name, Description = NULL, Connect
 #' @param EventPattern An event pattern to use to filter events sent to the archive.
 #' @param RetentionDays The number of days to retain events for. Default value is 0. If set to
 #' 0, events are retained indefinitely
+#' @param KmsKeyIdentifier The identifier of the KMS customer managed key for EventBridge to use,
+#' if you choose to use a customer managed key to encrypt this archive. The
+#' identifier can be the key Amazon Resource Name (ARN), KeyId, key alias,
+#' or key alias ARN.
+#' 
+#' If you do not specify a customer managed key identifier, EventBridge
+#' uses an Amazon Web Services owned key to encrypt the archive.
+#' 
+#' For more information, see [Identify and view
+#' keys](https://docs.aws.amazon.com/kms/latest/developerguide/viewing-keys.html)
+#' in the *Key Management Service Developer Guide*.
+#' 
+#' If you have specified that EventBridge use a customer managed key for
+#' encrypting the source event bus, we strongly recommend you also specify
+#' a customer managed key for any archives for the event bus as well.
+#' 
+#' For more information, see [Encrypting
+#' archives](https://docs.aws.amazon.com/eventbridge/latest/userguide/encryption-archives.html)
+#' in the *Amazon EventBridge User Guide*.
 #'
 #' @keywords internal
 #'
 #' @rdname eventbridge_create_archive
-eventbridge_create_archive <- function(ArchiveName, EventSourceArn, Description = NULL, EventPattern = NULL, RetentionDays = NULL) {
+eventbridge_create_archive <- function(ArchiveName, EventSourceArn, Description = NULL, EventPattern = NULL, RetentionDays = NULL, KmsKeyIdentifier = NULL) {
   op <- new_operation(
     name = "CreateArchive",
     http_method = "POST",
@@ -131,7 +150,7 @@ eventbridge_create_archive <- function(ArchiveName, EventSourceArn, Description 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .eventbridge$create_archive_input(ArchiveName = ArchiveName, EventSourceArn = EventSourceArn, Description = Description, EventPattern = EventPattern, RetentionDays = RetentionDays)
+  input <- .eventbridge$create_archive_input(ArchiveName = ArchiveName, EventSourceArn = EventSourceArn, Description = Description, EventPattern = EventPattern, RetentionDays = RetentionDays, KmsKeyIdentifier = KmsKeyIdentifier)
   output <- .eventbridge$create_archive_output()
   config <- get_config()
   svc <- .eventbridge$service(config, op)
@@ -157,17 +176,28 @@ eventbridge_create_archive <- function(ArchiveName, EventSourceArn, Description 
 #' 
 #' You must include only authorization parameters for the
 #' `AuthorizationType` you specify.
-#' @param InvocationConnectivityParameters For connections to private resource endpoints, the parameters to use for
-#' invoking the resource endpoint.
+#' @param InvocationConnectivityParameters For connections to private APIs, the parameters to use for invoking the
+#' API.
 #' 
 #' For more information, see [Connecting to private
-#' resources](https://docs.aws.amazon.com/eventbridge/latest/userguide/) in
-#' the *Amazon EventBridge User Guide* .
+#' APIs](https://docs.aws.amazon.com/eventbridge/latest/userguide/connection-private.html)
+#' in the *Amazon EventBridge User Guide* .
+#' @param KmsKeyIdentifier The identifier of the KMS customer managed key for EventBridge to use,
+#' if you choose to use a customer managed key to encrypt this connection.
+#' The identifier can be the key Amazon Resource Name (ARN), KeyId, key
+#' alias, or key alias ARN.
+#' 
+#' If you do not specify a customer managed key identifier, EventBridge
+#' uses an Amazon Web Services owned key to encrypt the connection.
+#' 
+#' For more information, see [Identify and view
+#' keys](https://docs.aws.amazon.com/kms/latest/developerguide/viewing-keys.html)
+#' in the *Key Management Service Developer Guide*.
 #'
 #' @keywords internal
 #'
 #' @rdname eventbridge_create_connection
-eventbridge_create_connection <- function(Name, Description = NULL, AuthorizationType, AuthParameters, InvocationConnectivityParameters = NULL) {
+eventbridge_create_connection <- function(Name, Description = NULL, AuthorizationType, AuthParameters, InvocationConnectivityParameters = NULL, KmsKeyIdentifier = NULL) {
   op <- new_operation(
     name = "CreateConnection",
     http_method = "POST",
@@ -176,7 +206,7 @@ eventbridge_create_connection <- function(Name, Description = NULL, Authorizatio
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .eventbridge$create_connection_input(Name = Name, Description = Description, AuthorizationType = AuthorizationType, AuthParameters = AuthParameters, InvocationConnectivityParameters = InvocationConnectivityParameters)
+  input <- .eventbridge$create_connection_input(Name = Name, Description = Description, AuthorizationType = AuthorizationType, AuthParameters = AuthParameters, InvocationConnectivityParameters = InvocationConnectivityParameters, KmsKeyIdentifier = KmsKeyIdentifier)
   output <- .eventbridge$create_connection_output()
   config <- get_config()
   svc <- .eventbridge$service(config, op)
@@ -257,26 +287,30 @@ eventbridge_create_endpoint <- function(Name, Description = NULL, RoutingConfig,
 #' uses an Amazon Web Services owned key to encrypt events on the event
 #' bus.
 #' 
-#' For more information, see [Managing
-#' keys](https://docs.aws.amazon.com/kms/latest/developerguide/) in the
-#' *Key Management Service Developer Guide*.
+#' For more information, see [Identify and view
+#' keys](https://docs.aws.amazon.com/kms/latest/developerguide/viewing-keys.html)
+#' in the *Key Management Service Developer Guide*.
 #' 
-#' Archives and schema discovery are not supported for event buses
-#' encrypted using a customer managed key. EventBridge returns an error if:
-#' 
-#' -   You call [`create_archive`][eventbridge_create_archive] on an event
-#'     bus set to use a customer managed key for encryption.
+#' Schema discovery is not supported for event buses encrypted using a
+#' customer managed key. EventBridge returns an error if:
 #' 
 #' -   You call ` CreateDiscoverer ` on an event bus set to use a customer
 #'     managed key for encryption.
 #' 
 #' -   You call ` UpdatedEventBus ` to set a customer managed key on an
-#'     event bus with an archives or schema discovery enabled.
+#'     event bus with schema discovery enabled.
 #' 
-#' To enable archives or schema discovery on an event bus, choose to use an
-#' Amazon Web Services owned key. For more information, see [Data
-#' encryption in
-#' EventBridge](https://docs.aws.amazon.com/eventbridge/latest/userguide/)
+#' To enable schema discovery on an event bus, choose to use an Amazon Web
+#' Services owned key. For more information, see [Encrypting
+#' events](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-encryption-event-bus-cmkey.html)
+#' in the *Amazon EventBridge User Guide*.
+#' 
+#' If you have specified that EventBridge use a customer managed key for
+#' encrypting the source event bus, we strongly recommend you also specify
+#' a customer managed key for any archives for the event bus as well.
+#' 
+#' For more information, see [Encrypting
+#' archives](https://docs.aws.amazon.com/eventbridge/latest/userguide/encryption-archives.html)
 #' in the *Amazon EventBridge User Guide*.
 #' @param DeadLetterConfig 
 #' @param Tags Tags to associate with the event bus.
@@ -2075,11 +2109,30 @@ eventbridge_update_api_destination <- function(Name, Description = NULL, Connect
 #' @param Description The description for the archive.
 #' @param EventPattern The event pattern to use to filter events sent to the archive.
 #' @param RetentionDays The number of days to retain events in the archive.
+#' @param KmsKeyIdentifier The identifier of the KMS customer managed key for EventBridge to use,
+#' if you choose to use a customer managed key to encrypt this archive. The
+#' identifier can be the key Amazon Resource Name (ARN), KeyId, key alias,
+#' or key alias ARN.
+#' 
+#' If you do not specify a customer managed key identifier, EventBridge
+#' uses an Amazon Web Services owned key to encrypt the archive.
+#' 
+#' For more information, see [Identify and view
+#' keys](https://docs.aws.amazon.com/kms/latest/developerguide/viewing-keys.html)
+#' in the *Key Management Service Developer Guide*.
+#' 
+#' If you have specified that EventBridge use a customer managed key for
+#' encrypting the source event bus, we strongly recommend you also specify
+#' a customer managed key for any archives for the event bus as well.
+#' 
+#' For more information, see [Encrypting
+#' archives](https://docs.aws.amazon.com/eventbridge/latest/userguide/encryption-archives.html)
+#' in the *Amazon EventBridge User Guide*.
 #'
 #' @keywords internal
 #'
 #' @rdname eventbridge_update_archive
-eventbridge_update_archive <- function(ArchiveName, Description = NULL, EventPattern = NULL, RetentionDays = NULL) {
+eventbridge_update_archive <- function(ArchiveName, Description = NULL, EventPattern = NULL, RetentionDays = NULL, KmsKeyIdentifier = NULL) {
   op <- new_operation(
     name = "UpdateArchive",
     http_method = "POST",
@@ -2088,7 +2141,7 @@ eventbridge_update_archive <- function(ArchiveName, Description = NULL, EventPat
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .eventbridge$update_archive_input(ArchiveName = ArchiveName, Description = Description, EventPattern = EventPattern, RetentionDays = RetentionDays)
+  input <- .eventbridge$update_archive_input(ArchiveName = ArchiveName, Description = Description, EventPattern = EventPattern, RetentionDays = RetentionDays, KmsKeyIdentifier = KmsKeyIdentifier)
   output <- .eventbridge$update_archive_output()
   config <- get_config()
   svc <- .eventbridge$service(config, op)
@@ -2109,17 +2162,28 @@ eventbridge_update_archive <- function(ArchiveName, Description = NULL, EventPat
 #' @param Description A description for the connection.
 #' @param AuthorizationType The type of authorization to use for the connection.
 #' @param AuthParameters The authorization parameters to use for the connection.
-#' @param InvocationConnectivityParameters For connections to private resource endpoints, the parameters to use for
-#' invoking the resource endpoint.
+#' @param InvocationConnectivityParameters For connections to private APIs, the parameters to use for invoking the
+#' API.
 #' 
 #' For more information, see [Connecting to private
-#' resources](https://docs.aws.amazon.com/eventbridge/latest/userguide/) in
-#' the *Amazon EventBridge User Guide* .
+#' APIs](https://docs.aws.amazon.com/eventbridge/latest/userguide/connection-private.html)
+#' in the *Amazon EventBridge User Guide* .
+#' @param KmsKeyIdentifier The identifier of the KMS customer managed key for EventBridge to use,
+#' if you choose to use a customer managed key to encrypt this connection.
+#' The identifier can be the key Amazon Resource Name (ARN), KeyId, key
+#' alias, or key alias ARN.
+#' 
+#' If you do not specify a customer managed key identifier, EventBridge
+#' uses an Amazon Web Services owned key to encrypt the connection.
+#' 
+#' For more information, see [Identify and view
+#' keys](https://docs.aws.amazon.com/kms/latest/developerguide/viewing-keys.html)
+#' in the *Key Management Service Developer Guide*.
 #'
 #' @keywords internal
 #'
 #' @rdname eventbridge_update_connection
-eventbridge_update_connection <- function(Name, Description = NULL, AuthorizationType = NULL, AuthParameters = NULL, InvocationConnectivityParameters = NULL) {
+eventbridge_update_connection <- function(Name, Description = NULL, AuthorizationType = NULL, AuthParameters = NULL, InvocationConnectivityParameters = NULL, KmsKeyIdentifier = NULL) {
   op <- new_operation(
     name = "UpdateConnection",
     http_method = "POST",
@@ -2128,7 +2192,7 @@ eventbridge_update_connection <- function(Name, Description = NULL, Authorizatio
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .eventbridge$update_connection_input(Name = Name, Description = Description, AuthorizationType = AuthorizationType, AuthParameters = AuthParameters, InvocationConnectivityParameters = InvocationConnectivityParameters)
+  input <- .eventbridge$update_connection_input(Name = Name, Description = Description, AuthorizationType = AuthorizationType, AuthParameters = AuthParameters, InvocationConnectivityParameters = InvocationConnectivityParameters, KmsKeyIdentifier = KmsKeyIdentifier)
   output <- .eventbridge$update_connection_output()
   config <- get_config()
   svc <- .eventbridge$service(config, op)
@@ -2192,26 +2256,30 @@ eventbridge_update_endpoint <- function(Name, Description = NULL, RoutingConfig 
 #' uses an Amazon Web Services owned key to encrypt events on the event
 #' bus.
 #' 
-#' For more information, see [Managing
-#' keys](https://docs.aws.amazon.com/kms/latest/developerguide/) in the
-#' *Key Management Service Developer Guide*.
+#' For more information, see [Identify and view
+#' keys](https://docs.aws.amazon.com/kms/latest/developerguide/viewing-keys.html)
+#' in the *Key Management Service Developer Guide*.
 #' 
-#' Archives and schema discovery are not supported for event buses
-#' encrypted using a customer managed key. EventBridge returns an error if:
-#' 
-#' -   You call [`create_archive`][eventbridge_create_archive] on an event
-#'     bus set to use a customer managed key for encryption.
+#' Schema discovery is not supported for event buses encrypted using a
+#' customer managed key. EventBridge returns an error if:
 #' 
 #' -   You call ` CreateDiscoverer ` on an event bus set to use a customer
 #'     managed key for encryption.
 #' 
 #' -   You call ` UpdatedEventBus ` to set a customer managed key on an
-#'     event bus with an archives or schema discovery enabled.
+#'     event bus with schema discovery enabled.
 #' 
-#' To enable archives or schema discovery on an event bus, choose to use an
-#' Amazon Web Services owned key. For more information, see [Data
-#' encryption in
-#' EventBridge](https://docs.aws.amazon.com/eventbridge/latest/userguide/)
+#' To enable schema discovery on an event bus, choose to use an Amazon Web
+#' Services owned key. For more information, see [Encrypting
+#' events](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-encryption-event-bus-cmkey.html)
+#' in the *Amazon EventBridge User Guide*.
+#' 
+#' If you have specified that EventBridge use a customer managed key for
+#' encrypting the source event bus, we strongly recommend you also specify
+#' a customer managed key for any archives for the event bus as well.
+#' 
+#' For more information, see [Encrypting
+#' archives](https://docs.aws.amazon.com/eventbridge/latest/userguide/encryption-archives.html)
 #' in the *Amazon EventBridge User Guide*.
 #' @param Description The event bus description.
 #' @param DeadLetterConfig 

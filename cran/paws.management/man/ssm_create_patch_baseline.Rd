@@ -16,6 +16,7 @@ ssm_create_patch_baseline(
   RejectedPatchesAction = NULL,
   Description = NULL,
   Sources = NULL,
+  AvailableSecurityUpdatesComplianceStatus = NULL,
   ClientToken = NULL,
   Tags = NULL
 )
@@ -84,6 +85,19 @@ status is reported as \code{INSTALLED_REJECTED}.}
 \item{Sources}{Information about the patches to use to update the managed nodes,
 including target operating systems and source repositories. Applies to
 Linux managed nodes only.}
+
+\item{AvailableSecurityUpdatesComplianceStatus}{Indicates the status you want to assign to security patches that are
+available but not approved because they don't meet the installation
+criteria specified in the patch baseline.
+
+Example scenario: Security patches that you might want installed can be
+skipped if you have specified a long period to wait after a patch is
+released before installation. If an update to the patch is released
+during your specified waiting period, the waiting period for installing
+the patch starts over. If the waiting period is too long, multiple
+versions of the patch could be released but never installed.
+
+Supported for Windows Server managed nodes only.}
 
 \item{ClientToken}{User-provided idempotency token.}
 

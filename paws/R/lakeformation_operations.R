@@ -317,6 +317,9 @@ lakeformation_assume_decorated_role_with_saml <- function(SAMLAssertion, RoleArn
 #'         Permissions = list(
 #'           "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_LF_TAG"|"ASSOCIATE"|"GRANT_WITH_LF_TAG_EXPRESSION"|"CREATE_LF_TAG_EXPRESSION"|"CREATE_CATALOG"|"SUPER_USER"
 #'         ),
+#'         Condition = list(
+#'           Expression = "string"
+#'         ),
 #'         PermissionsWithGrantOption = list(
 #'           "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_LF_TAG"|"ASSOCIATE"|"GRANT_WITH_LF_TAG_EXPRESSION"|"CREATE_LF_TAG_EXPRESSION"|"CREATE_CATALOG"|"SUPER_USER"
 #'         )
@@ -404,6 +407,9 @@ lakeformation_assume_decorated_role_with_saml <- function(SAMLAssertion, RoleArn
 #'       ),
 #'       Permissions = list(
 #'         "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_LF_TAG"|"ASSOCIATE"|"GRANT_WITH_LF_TAG_EXPRESSION"|"CREATE_LF_TAG_EXPRESSION"|"CREATE_CATALOG"|"SUPER_USER"
+#'       ),
+#'       Condition = list(
+#'         Expression = "string"
 #'       ),
 #'       PermissionsWithGrantOption = list(
 #'         "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_LF_TAG"|"ASSOCIATE"|"GRANT_WITH_LF_TAG_EXPRESSION"|"CREATE_LF_TAG_EXPRESSION"|"CREATE_CATALOG"|"SUPER_USER"
@@ -528,6 +534,9 @@ lakeformation_batch_grant_permissions <- function(CatalogId = NULL, Entries) {
 #'         Permissions = list(
 #'           "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_LF_TAG"|"ASSOCIATE"|"GRANT_WITH_LF_TAG_EXPRESSION"|"CREATE_LF_TAG_EXPRESSION"|"CREATE_CATALOG"|"SUPER_USER"
 #'         ),
+#'         Condition = list(
+#'           Expression = "string"
+#'         ),
 #'         PermissionsWithGrantOption = list(
 #'           "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_LF_TAG"|"ASSOCIATE"|"GRANT_WITH_LF_TAG_EXPRESSION"|"CREATE_LF_TAG_EXPRESSION"|"CREATE_CATALOG"|"SUPER_USER"
 #'         )
@@ -615,6 +624,9 @@ lakeformation_batch_grant_permissions <- function(CatalogId = NULL, Entries) {
 #'       ),
 #'       Permissions = list(
 #'         "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_LF_TAG"|"ASSOCIATE"|"GRANT_WITH_LF_TAG_EXPRESSION"|"CREATE_LF_TAG_EXPRESSION"|"CREATE_CATALOG"|"SUPER_USER"
+#'       ),
+#'       Condition = list(
+#'         Expression = "string"
 #'       ),
 #'       PermissionsWithGrantOption = list(
 #'         "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_LF_TAG"|"ASSOCIATE"|"GRANT_WITH_LF_TAG_EXPRESSION"|"CREATE_LF_TAG_EXPRESSION"|"CREATE_CATALOG"|"SUPER_USER"
@@ -1023,10 +1035,12 @@ lakeformation_create_lake_formation_identity_center_configuration <- function(Ca
 #' principals.
 #'
 #' @usage
-#' lakeformation_create_lake_formation_opt_in(Principal, Resource)
+#' lakeformation_create_lake_formation_opt_in(Principal, Resource,
+#'   Condition)
 #'
 #' @param Principal &#91;required&#93; 
 #' @param Resource &#91;required&#93; 
+#' @param Condition 
 #'
 #' @return
 #' An empty list.
@@ -1098,6 +1112,9 @@ lakeformation_create_lake_formation_identity_center_configuration <- function(Ca
 #'       CatalogId = "string",
 #'       Name = "string"
 #'     )
+#'   ),
+#'   Condition = list(
+#'     Expression = "string"
 #'   )
 #' )
 #' ```
@@ -1107,7 +1124,7 @@ lakeformation_create_lake_formation_identity_center_configuration <- function(Ca
 #' @rdname lakeformation_create_lake_formation_opt_in
 #'
 #' @aliases lakeformation_create_lake_formation_opt_in
-lakeformation_create_lake_formation_opt_in <- function(Principal, Resource) {
+lakeformation_create_lake_formation_opt_in <- function(Principal, Resource, Condition = NULL) {
   op <- new_operation(
     name = "CreateLakeFormationOptIn",
     http_method = "POST",
@@ -1116,7 +1133,7 @@ lakeformation_create_lake_formation_opt_in <- function(Principal, Resource) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .lakeformation$create_lake_formation_opt_in_input(Principal = Principal, Resource = Resource)
+  input <- .lakeformation$create_lake_formation_opt_in_input(Principal = Principal, Resource = Resource, Condition = Condition)
   output <- .lakeformation$create_lake_formation_opt_in_output()
   config <- get_config()
   svc <- .lakeformation$service(config, op)
@@ -1337,10 +1354,12 @@ lakeformation_delete_lake_formation_identity_center_configuration <- function(Ca
 #' databases, tables, and principals.
 #'
 #' @usage
-#' lakeformation_delete_lake_formation_opt_in(Principal, Resource)
+#' lakeformation_delete_lake_formation_opt_in(Principal, Resource,
+#'   Condition)
 #'
 #' @param Principal &#91;required&#93; 
 #' @param Resource &#91;required&#93; 
+#' @param Condition 
 #'
 #' @return
 #' An empty list.
@@ -1412,6 +1431,9 @@ lakeformation_delete_lake_formation_identity_center_configuration <- function(Ca
 #'       CatalogId = "string",
 #'       Name = "string"
 #'     )
+#'   ),
+#'   Condition = list(
+#'     Expression = "string"
 #'   )
 #' )
 #' ```
@@ -1421,7 +1443,7 @@ lakeformation_delete_lake_formation_identity_center_configuration <- function(Ca
 #' @rdname lakeformation_delete_lake_formation_opt_in
 #'
 #' @aliases lakeformation_delete_lake_formation_opt_in
-lakeformation_delete_lake_formation_opt_in <- function(Principal, Resource) {
+lakeformation_delete_lake_formation_opt_in <- function(Principal, Resource, Condition = NULL) {
   op <- new_operation(
     name = "DeleteLakeFormationOptIn",
     http_method = "POST",
@@ -1430,7 +1452,7 @@ lakeformation_delete_lake_formation_opt_in <- function(Principal, Resource) {
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .lakeformation$delete_lake_formation_opt_in_input(Principal = Principal, Resource = Resource)
+  input <- .lakeformation$delete_lake_formation_opt_in_input(Principal = Principal, Resource = Resource, Condition = Condition)
   output <- .lakeformation$delete_lake_formation_opt_in_output()
   config <- get_config()
   svc <- .lakeformation$service(config, op)
@@ -1650,7 +1672,8 @@ lakeformation_describe_lake_formation_identity_center_configuration <- function(
 #'       "2015-01-01"
 #'     ),
 #'     WithFederation = TRUE|FALSE,
-#'     HybridAccessEnabled = TRUE|FALSE
+#'     HybridAccessEnabled = TRUE|FALSE,
+#'     WithPrivilegedAccess = TRUE|FALSE
 #'   )
 #' )
 #' ```
@@ -2977,7 +3000,7 @@ lakeformation_get_work_units <- function(NextToken = NULL, PageSize = NULL, Quer
 #'
 #' @usage
 #' lakeformation_grant_permissions(CatalogId, Principal, Resource,
-#'   Permissions, PermissionsWithGrantOption)
+#'   Permissions, Condition, PermissionsWithGrantOption)
 #'
 #' @param CatalogId The identifier for the Data Catalog. By default, the account ID. The
 #' Data Catalog is the persistent metadata store. It contains database
@@ -2997,6 +3020,7 @@ lakeformation_get_work_units <- function(NextToken = NULL, PageSize = NULL, Quer
 #' Catalog and data organized in underlying data storage such as Amazon S3.
 #' Lake Formation requires that each principal be authorized to perform a
 #' specific task on Lake Formation resources.
+#' @param Condition 
 #' @param PermissionsWithGrantOption Indicates a list of the granted permissions that the principal may pass
 #' to other users. These permissions may only be a subset of the
 #' permissions granted in the `Privileges`.
@@ -3076,6 +3100,9 @@ lakeformation_get_work_units <- function(NextToken = NULL, PageSize = NULL, Quer
 #'   Permissions = list(
 #'     "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_LF_TAG"|"ASSOCIATE"|"GRANT_WITH_LF_TAG_EXPRESSION"|"CREATE_LF_TAG_EXPRESSION"|"CREATE_CATALOG"|"SUPER_USER"
 #'   ),
+#'   Condition = list(
+#'     Expression = "string"
+#'   ),
 #'   PermissionsWithGrantOption = list(
 #'     "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_LF_TAG"|"ASSOCIATE"|"GRANT_WITH_LF_TAG_EXPRESSION"|"CREATE_LF_TAG_EXPRESSION"|"CREATE_CATALOG"|"SUPER_USER"
 #'   )
@@ -3087,7 +3114,7 @@ lakeformation_get_work_units <- function(NextToken = NULL, PageSize = NULL, Quer
 #' @rdname lakeformation_grant_permissions
 #'
 #' @aliases lakeformation_grant_permissions
-lakeformation_grant_permissions <- function(CatalogId = NULL, Principal, Resource, Permissions, PermissionsWithGrantOption = NULL) {
+lakeformation_grant_permissions <- function(CatalogId = NULL, Principal, Resource, Permissions, Condition = NULL, PermissionsWithGrantOption = NULL) {
   op <- new_operation(
     name = "GrantPermissions",
     http_method = "POST",
@@ -3096,7 +3123,7 @@ lakeformation_grant_permissions <- function(CatalogId = NULL, Principal, Resourc
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .lakeformation$grant_permissions_input(CatalogId = CatalogId, Principal = Principal, Resource = Resource, Permissions = Permissions, PermissionsWithGrantOption = PermissionsWithGrantOption)
+  input <- .lakeformation$grant_permissions_input(CatalogId = CatalogId, Principal = Principal, Resource = Resource, Permissions = Permissions, Condition = Condition, PermissionsWithGrantOption = PermissionsWithGrantOption)
   output <- .lakeformation$grant_permissions_output()
   config <- get_config()
   svc <- .lakeformation$service(config, op)
@@ -3786,7 +3813,8 @@ lakeformation_list_permissions <- function(CatalogId = NULL, Principal = NULL, R
 #'         "2015-01-01"
 #'       ),
 #'       WithFederation = TRUE|FALSE,
-#'       HybridAccessEnabled = TRUE|FALSE
+#'       HybridAccessEnabled = TRUE|FALSE,
+#'       WithPrivilegedAccess = TRUE|FALSE
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -4095,7 +4123,7 @@ lakeformation_put_data_lake_settings <- function(CatalogId = NULL, DataLakeSetti
 #' Registers the resource as managed by the Data Catalog.
 #' 
 #' To add or update data, Lake Formation needs read/write access to the
-#' chosen Amazon S3 path. Choose a role that you know has permission to do
+#' chosen data location. Choose a role that you know has permission to do
 #' this, or choose the AWSServiceRoleForLakeFormationDataAccess
 #' service-linked role. When you register the first Amazon S3 path, the
 #' service-linked role and a new inline policy are created on your behalf.
@@ -4115,7 +4143,7 @@ lakeformation_put_data_lake_settings <- function(CatalogId = NULL, DataLakeSetti
 #'
 #' @usage
 #' lakeformation_register_resource(ResourceArn, UseServiceLinkedRole,
-#'   RoleArn, WithFederation, HybridAccessEnabled)
+#'   RoleArn, WithFederation, HybridAccessEnabled, WithPrivilegedAccess)
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource that you want to
 #' register.
@@ -4130,6 +4158,8 @@ lakeformation_put_data_lake_settings <- function(CatalogId = NULL, DataLakeSetti
 #' @param HybridAccessEnabled Specifies whether the data access of tables pointing to the location can
 #' be managed by both Lake Formation permissions as well as Amazon S3
 #' bucket policies.
+#' @param WithPrivilegedAccess Grants the calling principal the permissions to perform all supported
+#' Lake Formation operations on the registered data location.
 #'
 #' @return
 #' An empty list.
@@ -4141,7 +4171,8 @@ lakeformation_put_data_lake_settings <- function(CatalogId = NULL, DataLakeSetti
 #'   UseServiceLinkedRole = TRUE|FALSE,
 #'   RoleArn = "string",
 #'   WithFederation = TRUE|FALSE,
-#'   HybridAccessEnabled = TRUE|FALSE
+#'   HybridAccessEnabled = TRUE|FALSE,
+#'   WithPrivilegedAccess = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -4150,7 +4181,7 @@ lakeformation_put_data_lake_settings <- function(CatalogId = NULL, DataLakeSetti
 #' @rdname lakeformation_register_resource
 #'
 #' @aliases lakeformation_register_resource
-lakeformation_register_resource <- function(ResourceArn, UseServiceLinkedRole = NULL, RoleArn = NULL, WithFederation = NULL, HybridAccessEnabled = NULL) {
+lakeformation_register_resource <- function(ResourceArn, UseServiceLinkedRole = NULL, RoleArn = NULL, WithFederation = NULL, HybridAccessEnabled = NULL, WithPrivilegedAccess = NULL) {
   op <- new_operation(
     name = "RegisterResource",
     http_method = "POST",
@@ -4159,7 +4190,7 @@ lakeformation_register_resource <- function(ResourceArn, UseServiceLinkedRole = 
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .lakeformation$register_resource_input(ResourceArn = ResourceArn, UseServiceLinkedRole = UseServiceLinkedRole, RoleArn = RoleArn, WithFederation = WithFederation, HybridAccessEnabled = HybridAccessEnabled)
+  input <- .lakeformation$register_resource_input(ResourceArn = ResourceArn, UseServiceLinkedRole = UseServiceLinkedRole, RoleArn = RoleArn, WithFederation = WithFederation, HybridAccessEnabled = HybridAccessEnabled, WithPrivilegedAccess = WithPrivilegedAccess)
   output <- .lakeformation$register_resource_output()
   config <- get_config()
   svc <- .lakeformation$service(config, op)
@@ -4320,7 +4351,7 @@ lakeformation_remove_lf_tags_from_resource <- function(CatalogId = NULL, Resourc
 #'
 #' @usage
 #' lakeformation_revoke_permissions(CatalogId, Principal, Resource,
-#'   Permissions, PermissionsWithGrantOption)
+#'   Permissions, Condition, PermissionsWithGrantOption)
 #'
 #' @param CatalogId The identifier for the Data Catalog. By default, the account ID. The
 #' Data Catalog is the persistent metadata store. It contains database
@@ -4332,6 +4363,7 @@ lakeformation_remove_lf_tags_from_resource <- function(CatalogId = NULL, Resourc
 #' information about permissions, see [Security and Access Control to
 #' Metadata and
 #' Data](https://docs.aws.amazon.com/lake-formation/latest/dg/).
+#' @param Condition 
 #' @param PermissionsWithGrantOption Indicates a list of permissions for which to revoke the grant option
 #' allowing the principal to pass permissions to other principals.
 #'
@@ -4410,6 +4442,9 @@ lakeformation_remove_lf_tags_from_resource <- function(CatalogId = NULL, Resourc
 #'   Permissions = list(
 #'     "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_LF_TAG"|"ASSOCIATE"|"GRANT_WITH_LF_TAG_EXPRESSION"|"CREATE_LF_TAG_EXPRESSION"|"CREATE_CATALOG"|"SUPER_USER"
 #'   ),
+#'   Condition = list(
+#'     Expression = "string"
+#'   ),
 #'   PermissionsWithGrantOption = list(
 #'     "ALL"|"SELECT"|"ALTER"|"DROP"|"DELETE"|"INSERT"|"DESCRIBE"|"CREATE_DATABASE"|"CREATE_TABLE"|"DATA_LOCATION_ACCESS"|"CREATE_LF_TAG"|"ASSOCIATE"|"GRANT_WITH_LF_TAG_EXPRESSION"|"CREATE_LF_TAG_EXPRESSION"|"CREATE_CATALOG"|"SUPER_USER"
 #'   )
@@ -4421,7 +4456,7 @@ lakeformation_remove_lf_tags_from_resource <- function(CatalogId = NULL, Resourc
 #' @rdname lakeformation_revoke_permissions
 #'
 #' @aliases lakeformation_revoke_permissions
-lakeformation_revoke_permissions <- function(CatalogId = NULL, Principal, Resource, Permissions, PermissionsWithGrantOption = NULL) {
+lakeformation_revoke_permissions <- function(CatalogId = NULL, Principal, Resource, Permissions, Condition = NULL, PermissionsWithGrantOption = NULL) {
   op <- new_operation(
     name = "RevokePermissions",
     http_method = "POST",
@@ -4430,7 +4465,7 @@ lakeformation_revoke_permissions <- function(CatalogId = NULL, Principal, Resour
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .lakeformation$revoke_permissions_input(CatalogId = CatalogId, Principal = Principal, Resource = Resource, Permissions = Permissions, PermissionsWithGrantOption = PermissionsWithGrantOption)
+  input <- .lakeformation$revoke_permissions_input(CatalogId = CatalogId, Principal = Principal, Resource = Resource, Permissions = Permissions, Condition = Condition, PermissionsWithGrantOption = PermissionsWithGrantOption)
   output <- .lakeformation$revoke_permissions_output()
   config <- get_config()
   svc <- .lakeformation$service(config, op)

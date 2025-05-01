@@ -16,11 +16,12 @@ NULL
 #' @param schema &#91;required&#93; 
 #' @param clientToken 
 #' @param encryptionConfiguration 
+#' @param tags 
 #'
 #' @keywords internal
 #'
 #' @rdname bedrockdataautomation_create_blueprint
-bedrockdataautomation_create_blueprint <- function(blueprintName, type, blueprintStage = NULL, schema, clientToken = NULL, encryptionConfiguration = NULL) {
+bedrockdataautomation_create_blueprint <- function(blueprintName, type, blueprintStage = NULL, schema, clientToken = NULL, encryptionConfiguration = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateBlueprint",
     http_method = "PUT",
@@ -29,7 +30,7 @@ bedrockdataautomation_create_blueprint <- function(blueprintName, type, blueprin
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockdataautomation$create_blueprint_input(blueprintName = blueprintName, type = type, blueprintStage = blueprintStage, schema = schema, clientToken = clientToken, encryptionConfiguration = encryptionConfiguration)
+  input <- .bedrockdataautomation$create_blueprint_input(blueprintName = blueprintName, type = type, blueprintStage = blueprintStage, schema = schema, clientToken = clientToken, encryptionConfiguration = encryptionConfiguration, tags = tags)
   output <- .bedrockdataautomation$create_blueprint_output()
   config <- get_config()
   svc <- .bedrockdataautomation$service(config, op)
@@ -87,11 +88,12 @@ bedrockdataautomation_create_blueprint_version <- function(blueprintArn, clientT
 #' @param overrideConfiguration 
 #' @param clientToken 
 #' @param encryptionConfiguration 
+#' @param tags 
 #'
 #' @keywords internal
 #'
 #' @rdname bedrockdataautomation_create_data_automation_project
-bedrockdataautomation_create_data_automation_project <- function(projectName, projectDescription = NULL, projectStage = NULL, standardOutputConfiguration, customOutputConfiguration = NULL, overrideConfiguration = NULL, clientToken = NULL, encryptionConfiguration = NULL) {
+bedrockdataautomation_create_data_automation_project <- function(projectName, projectDescription = NULL, projectStage = NULL, standardOutputConfiguration, customOutputConfiguration = NULL, overrideConfiguration = NULL, clientToken = NULL, encryptionConfiguration = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateDataAutomationProject",
     http_method = "PUT",
@@ -100,7 +102,7 @@ bedrockdataautomation_create_data_automation_project <- function(projectName, pr
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockdataautomation$create_data_automation_project_input(projectName = projectName, projectDescription = projectDescription, projectStage = projectStage, standardOutputConfiguration = standardOutputConfiguration, customOutputConfiguration = customOutputConfiguration, overrideConfiguration = overrideConfiguration, clientToken = clientToken, encryptionConfiguration = encryptionConfiguration)
+  input <- .bedrockdataautomation$create_data_automation_project_input(projectName = projectName, projectDescription = projectDescription, projectStage = projectStage, standardOutputConfiguration = standardOutputConfiguration, customOutputConfiguration = customOutputConfiguration, overrideConfiguration = overrideConfiguration, clientToken = clientToken, encryptionConfiguration = encryptionConfiguration, tags = tags)
   output <- .bedrockdataautomation$create_data_automation_project_output()
   config <- get_config()
   svc <- .bedrockdataautomation$service(config, op)
@@ -309,6 +311,101 @@ bedrockdataautomation_list_data_automation_projects <- function(maxResults = NUL
 }
 .bedrockdataautomation$operations$list_data_automation_projects <- bedrockdataautomation_list_data_automation_projects
 
+#' List tags for an Amazon Bedrock Data Automation resource
+#'
+#' @description
+#' List tags for an Amazon Bedrock Data Automation resource
+#'
+#' See [https://www.paws-r-sdk.com/docs/bedrockdataautomation_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/bedrockdataautomation_list_tags_for_resource/) for full documentation.
+#'
+#' @param resourceARN &#91;required&#93; 
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockdataautomation_list_tags_for_resource
+bedrockdataautomation_list_tags_for_resource <- function(resourceARN) {
+  op <- new_operation(
+    name = "ListTagsForResource",
+    http_method = "POST",
+    http_path = "/listTagsForResource",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrockdataautomation$list_tags_for_resource_input(resourceARN = resourceARN)
+  output <- .bedrockdataautomation$list_tags_for_resource_output()
+  config <- get_config()
+  svc <- .bedrockdataautomation$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockdataautomation$operations$list_tags_for_resource <- bedrockdataautomation_list_tags_for_resource
+
+#' Tag an Amazon Bedrock Data Automation resource
+#'
+#' @description
+#' Tag an Amazon Bedrock Data Automation resource
+#'
+#' See [https://www.paws-r-sdk.com/docs/bedrockdataautomation_tag_resource/](https://www.paws-r-sdk.com/docs/bedrockdataautomation_tag_resource/) for full documentation.
+#'
+#' @param resourceARN &#91;required&#93; 
+#' @param tags &#91;required&#93; 
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockdataautomation_tag_resource
+bedrockdataautomation_tag_resource <- function(resourceARN, tags) {
+  op <- new_operation(
+    name = "TagResource",
+    http_method = "POST",
+    http_path = "/tagResource",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrockdataautomation$tag_resource_input(resourceARN = resourceARN, tags = tags)
+  output <- .bedrockdataautomation$tag_resource_output()
+  config <- get_config()
+  svc <- .bedrockdataautomation$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockdataautomation$operations$tag_resource <- bedrockdataautomation_tag_resource
+
+#' Untag an Amazon Bedrock Data Automation resource
+#'
+#' @description
+#' Untag an Amazon Bedrock Data Automation resource
+#'
+#' See [https://www.paws-r-sdk.com/docs/bedrockdataautomation_untag_resource/](https://www.paws-r-sdk.com/docs/bedrockdataautomation_untag_resource/) for full documentation.
+#'
+#' @param resourceARN &#91;required&#93; 
+#' @param tagKeys &#91;required&#93; 
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockdataautomation_untag_resource
+bedrockdataautomation_untag_resource <- function(resourceARN, tagKeys) {
+  op <- new_operation(
+    name = "UntagResource",
+    http_method = "POST",
+    http_path = "/untagResource",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .bedrockdataautomation$untag_resource_input(resourceARN = resourceARN, tagKeys = tagKeys)
+  output <- .bedrockdataautomation$untag_resource_output()
+  config <- get_config()
+  svc <- .bedrockdataautomation$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockdataautomation$operations$untag_resource <- bedrockdataautomation_untag_resource
+
 #' Updates an existing Amazon Bedrock Data Automation Blueprint
 #'
 #' @description
@@ -319,11 +416,12 @@ bedrockdataautomation_list_data_automation_projects <- function(maxResults = NUL
 #' @param blueprintArn &#91;required&#93; ARN generated at the server side when a Blueprint is created
 #' @param schema &#91;required&#93; 
 #' @param blueprintStage 
+#' @param encryptionConfiguration 
 #'
 #' @keywords internal
 #'
 #' @rdname bedrockdataautomation_update_blueprint
-bedrockdataautomation_update_blueprint <- function(blueprintArn, schema, blueprintStage = NULL) {
+bedrockdataautomation_update_blueprint <- function(blueprintArn, schema, blueprintStage = NULL, encryptionConfiguration = NULL) {
   op <- new_operation(
     name = "UpdateBlueprint",
     http_method = "PUT",
@@ -332,7 +430,7 @@ bedrockdataautomation_update_blueprint <- function(blueprintArn, schema, bluepri
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockdataautomation$update_blueprint_input(blueprintArn = blueprintArn, schema = schema, blueprintStage = blueprintStage)
+  input <- .bedrockdataautomation$update_blueprint_input(blueprintArn = blueprintArn, schema = schema, blueprintStage = blueprintStage, encryptionConfiguration = encryptionConfiguration)
   output <- .bedrockdataautomation$update_blueprint_output()
   config <- get_config()
   svc <- .bedrockdataautomation$service(config, op)
@@ -355,11 +453,12 @@ bedrockdataautomation_update_blueprint <- function(blueprintArn, schema, bluepri
 #' @param standardOutputConfiguration &#91;required&#93; 
 #' @param customOutputConfiguration 
 #' @param overrideConfiguration 
+#' @param encryptionConfiguration 
 #'
 #' @keywords internal
 #'
 #' @rdname bedrockdataautomation_update_data_automation_project
-bedrockdataautomation_update_data_automation_project <- function(projectArn, projectStage = NULL, projectDescription = NULL, standardOutputConfiguration, customOutputConfiguration = NULL, overrideConfiguration = NULL) {
+bedrockdataautomation_update_data_automation_project <- function(projectArn, projectStage = NULL, projectDescription = NULL, standardOutputConfiguration, customOutputConfiguration = NULL, overrideConfiguration = NULL, encryptionConfiguration = NULL) {
   op <- new_operation(
     name = "UpdateDataAutomationProject",
     http_method = "PUT",
@@ -368,7 +467,7 @@ bedrockdataautomation_update_data_automation_project <- function(projectArn, pro
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockdataautomation$update_data_automation_project_input(projectArn = projectArn, projectStage = projectStage, projectDescription = projectDescription, standardOutputConfiguration = standardOutputConfiguration, customOutputConfiguration = customOutputConfiguration, overrideConfiguration = overrideConfiguration)
+  input <- .bedrockdataautomation$update_data_automation_project_input(projectArn = projectArn, projectStage = projectStage, projectDescription = projectDescription, standardOutputConfiguration = standardOutputConfiguration, customOutputConfiguration = customOutputConfiguration, overrideConfiguration = overrideConfiguration, encryptionConfiguration = encryptionConfiguration)
   output <- .bedrockdataautomation$update_data_automation_project_output()
   config <- get_config()
   svc <- .bedrockdataautomation$service(config, op)

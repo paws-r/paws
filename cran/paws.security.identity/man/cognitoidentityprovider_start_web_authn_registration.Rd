@@ -2,17 +2,18 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_start_web_authn_registration}
 \alias{cognitoidentityprovider_start_web_authn_registration}
-\title{Requests credential creation options from your user pool for
-registration of a passkey authenticator}
+\title{Requests credential creation options from your user pool for the
+currently signed-in user}
 \usage{
 cognitoidentityprovider_start_web_authn_registration(AccessToken)
 }
 \arguments{
-\item{AccessToken}{[required] A valid access token that Amazon Cognito issued to the user whose
-passkey metadata you want to generate.}
+\item{AccessToken}{[required] A valid access token that Amazon Cognito issued to the currently
+signed-in user. Must include a scope claim for
+\code{aws.cognito.signin.user.admin}.}
 }
 \description{
-Requests credential creation options from your user pool for registration of a passkey authenticator. Returns information about the user pool, the user profile, and authentication requirements. Users must provide this information in their request to enroll your application with their passkey provider.
+Requests credential creation options from your user pool for the currently signed-in user. Returns information about the user pool, the user profile, and authentication requirements. Users must provide this information in their request to enroll your application with their passkey provider.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_start_web_authn_registration/} for full documentation.
 }

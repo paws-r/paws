@@ -663,6 +663,18 @@ NULL
   return(populate(args, shape))
 }
 
+.storagegateway$evict_files_failing_upload_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(FileShareARN = structure(logical(0), tags = list(type = "string")), ForceRemove = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.storagegateway$evict_files_failing_upload_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(NotificationId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .storagegateway$join_domain_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(GatewayARN = structure(logical(0), tags = list(type = "string")), DomainName = structure(logical(0), tags = list(type = "string")), OrganizationalUnit = structure(logical(0), tags = list(type = "string")), DomainControllers = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), TimeoutInSeconds = structure(logical(0), tags = list(type = "integer")), UserName = structure(logical(0), tags = list(type = "string")), Password = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))

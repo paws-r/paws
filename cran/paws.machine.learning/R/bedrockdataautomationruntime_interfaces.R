@@ -17,12 +17,48 @@ NULL
 
 .bedrockdataautomationruntime$invoke_data_automation_async_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), inputConfiguration = structure(list(s3Uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), outputConfiguration = structure(list(s3Uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), dataAutomationConfiguration = structure(list(dataAutomationArn = structure(logical(0), tags = list(type = "string")), stage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), encryptionConfiguration = structure(list(kmsKeyId = structure(logical(0), tags = list(type = "string")), kmsEncryptionContext = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure")), notificationConfiguration = structure(list(eventBridgeConfiguration = structure(list(eventBridgeEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure")), blueprints = structure(list(structure(list(blueprintArn = structure(logical(0), tags = list(type = "string")), version = structure(logical(0), tags = list(type = "string")), stage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), inputConfiguration = structure(list(s3Uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), outputConfiguration = structure(list(s3Uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), dataAutomationConfiguration = structure(list(dataAutomationProjectArn = structure(logical(0), tags = list(type = "string")), stage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), encryptionConfiguration = structure(list(kmsKeyId = structure(logical(0), tags = list(type = "string")), kmsEncryptionContext = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure")), notificationConfiguration = structure(list(eventBridgeConfiguration = structure(list(eventBridgeEnabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure")), blueprints = structure(list(structure(list(blueprintArn = structure(logical(0), tags = list(type = "string")), version = structure(logical(0), tags = list(type = "string")), stage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), dataAutomationProfileArn = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .bedrockdataautomationruntime$invoke_data_automation_async_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(invocationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.bedrockdataautomationruntime$list_tags_for_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(resourceARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.bedrockdataautomationruntime$list_tags_for_resource_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.bedrockdataautomationruntime$tag_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(resourceARN = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.bedrockdataautomationruntime$tag_resource_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.bedrockdataautomationruntime$untag_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(resourceARN = structure(logical(0), tags = list(type = "string")), tagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.bedrockdataautomationruntime$untag_resource_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
   return(populate(args, shape))
 }

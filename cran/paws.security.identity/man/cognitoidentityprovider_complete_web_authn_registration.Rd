@@ -2,7 +2,8 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_complete_web_authn_registration}
 \alias{cognitoidentityprovider_complete_web_authn_registration}
-\title{Completes registration of a passkey authenticator for the current user}
+\title{Completes registration of a passkey authenticator for the currently
+signed-in user}
 \usage{
 cognitoidentityprovider_complete_web_authn_registration(
   AccessToken,
@@ -10,15 +11,16 @@ cognitoidentityprovider_complete_web_authn_registration(
 )
 }
 \arguments{
-\item{AccessToken}{[required] A valid access token that Amazon Cognito issued to the user whose
-passkey registration you want to complete.}
+\item{AccessToken}{[required] A valid access token that Amazon Cognito issued to the currently
+signed-in user. Must include a scope claim for
+\code{aws.cognito.signin.user.admin}.}
 
 \item{Credential}{[required] A
 \href{https://www.w3.org/TR/webauthn-3/#dictdef-registrationresponsejson}{RegistrationResponseJSON}
 public-key credential response from the user's passkey provider.}
 }
 \description{
-Completes registration of a passkey authenticator for the current user. Your application provides data from a successful registration request with the data from the output of a \href{https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_StartWebAuthnRegistration.html}{StartWebAuthnRegistration}.
+Completes registration of a passkey authenticator for the currently signed-in user.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_complete_web_authn_registration/} for full documentation.
 }

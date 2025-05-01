@@ -433,6 +433,8 @@ Other Resources:
 \link[paws.machine.learning:sagemaker_update_feature_group]{update_feature_group} \tab Updates the feature group by either adding features or updating the online store configuration\cr
 \link[paws.machine.learning:sagemaker_update_feature_metadata]{update_feature_metadata} \tab Updates the description and parameters of the feature group\cr
 \link[paws.machine.learning:sagemaker_update_hub]{update_hub} \tab Update a hub\cr
+\link[paws.machine.learning:sagemaker_update_hub_content]{update_hub_content} \tab Updates SageMaker hub content (either a Model or Notebook resource)\cr
+\link[paws.machine.learning:sagemaker_update_hub_content_reference]{update_hub_content_reference} \tab Updates the contents of a SageMaker hub for a ModelReference resource\cr
 \link[paws.machine.learning:sagemaker_update_image]{update_image} \tab Updates the properties of a SageMaker AI image\cr
 \link[paws.machine.learning:sagemaker_update_image_version]{update_image_version} \tab Updates the properties of a SageMaker AI image version\cr
 \link[paws.machine.learning:sagemaker_update_inference_component]{update_inference_component} \tab Updates an inference component\cr

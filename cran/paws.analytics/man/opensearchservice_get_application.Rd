@@ -2,15 +2,16 @@
 % Please edit documentation in R/opensearchservice_operations.R
 \name{opensearchservice_get_application}
 \alias{opensearchservice_get_application}
-\title{Check the configuration and status of an existing OpenSearch Application}
+\title{Retrieves the configuration and status of an existing OpenSearch
+application}
 \usage{
 opensearchservice_get_application(id)
 }
 \arguments{
-\item{id}{[required] Unique identifier of the checked OpenSearch Application.}
+\item{id}{[required] The unique identifier of the OpenSearch application to retrieve.}
 }
 \description{
-Check the configuration and status of an existing OpenSearch Application.
+Retrieves the configuration and status of an existing OpenSearch application.
 
 See \url{https://www.paws-r-sdk.com/docs/opensearchservice_get_application/} for full documentation.
 }

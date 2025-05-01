@@ -2,7 +2,7 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_update_resource_server}
 \alias{cognitoidentityprovider_update_resource_server}
-\title{Updates the name and scopes of resource server}
+\title{Updates the name and scopes of a resource server}
 \usage{
 cognitoidentityprovider_update_resource_server(
   UserPoolId,
@@ -12,7 +12,8 @@ cognitoidentityprovider_update_resource_server(
 )
 }
 \arguments{
-\item{UserPoolId}{[required] The ID of the user pool.}
+\item{UserPoolId}{[required] The ID of the user pool that contains the resource server that you want
+to update.}
 
 \item{Identifier}{[required] A unique resource server identifier for the resource server. The
 identifier can be an API friendly name like \code{solar-system-data}. You can
@@ -23,12 +24,13 @@ Amazon Cognito represents scopes in the access token in the format
 \verb{$resource-server-identifier/$scope}. Longer scope-identifier strings
 increase the size of your access tokens.}
 
-\item{Name}{[required] The name of the resource server.}
+\item{Name}{[required] The updated name of the resource server.}
 
-\item{Scopes}{The scope values to be set for the resource server.}
+\item{Scopes}{An array of updated custom scope names and descriptions that you want to
+associate with your resource server.}
 }
 \description{
-Updates the name and scopes of resource server. All other fields are read-only.
+Updates the name and scopes of a resource server. All other fields are read-only. For more information about resource servers, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-define-resource-servers.html}{Access control with resource servers}.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_update_resource_server/} for full documentation.
 }

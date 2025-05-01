@@ -113,10 +113,10 @@ eks_associate_access_policy <- function(clusterName, principalArn, policyArn, ac
 #'   update = list(
 #'     id = "string",
 #'     status = "InProgress"|"Failed"|"Cancelled"|"Successful",
-#'     type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AssociateIdentityProviderConfig"|"DisassociateIdentityProviderConfig"|"AssociateEncryptionConfig"|"AddonUpdate"|"VpcConfigUpdate"|"AccessConfigUpdate"|"UpgradePolicyUpdate"|"ZonalShiftConfigUpdate"|"AutoModeUpdate",
+#'     type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AssociateIdentityProviderConfig"|"DisassociateIdentityProviderConfig"|"AssociateEncryptionConfig"|"AddonUpdate"|"VpcConfigUpdate"|"AccessConfigUpdate"|"UpgradePolicyUpdate"|"ZonalShiftConfigUpdate"|"AutoModeUpdate"|"RemoteNetworkConfigUpdate",
 #'     params = list(
 #'       list(
-#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"TaintsToAdd"|"TaintsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"LaunchTemplateName"|"LaunchTemplateVersion"|"IdentityProviderConfig"|"EncryptionConfig"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts"|"MaxUnavailable"|"MaxUnavailablePercentage"|"NodeRepairEnabled"|"UpdateStrategy"|"ConfigurationValues"|"SecurityGroups"|"Subnets"|"AuthenticationMode"|"PodIdentityAssociations"|"UpgradePolicy"|"ZonalShiftConfig"|"ComputeConfig"|"StorageConfig"|"KubernetesNetworkConfig",
+#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"TaintsToAdd"|"TaintsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"LaunchTemplateName"|"LaunchTemplateVersion"|"IdentityProviderConfig"|"EncryptionConfig"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts"|"MaxUnavailable"|"MaxUnavailablePercentage"|"NodeRepairEnabled"|"UpdateStrategy"|"ConfigurationValues"|"SecurityGroups"|"Subnets"|"AuthenticationMode"|"PodIdentityAssociations"|"UpgradePolicy"|"ZonalShiftConfig"|"ComputeConfig"|"StorageConfig"|"KubernetesNetworkConfig"|"RemoteNetworkConfig",
 #'         value = "string"
 #'       )
 #'     ),
@@ -212,10 +212,10 @@ eks_associate_encryption_config <- function(clusterName, encryptionConfig, clien
 #'   update = list(
 #'     id = "string",
 #'     status = "InProgress"|"Failed"|"Cancelled"|"Successful",
-#'     type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AssociateIdentityProviderConfig"|"DisassociateIdentityProviderConfig"|"AssociateEncryptionConfig"|"AddonUpdate"|"VpcConfigUpdate"|"AccessConfigUpdate"|"UpgradePolicyUpdate"|"ZonalShiftConfigUpdate"|"AutoModeUpdate",
+#'     type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AssociateIdentityProviderConfig"|"DisassociateIdentityProviderConfig"|"AssociateEncryptionConfig"|"AddonUpdate"|"VpcConfigUpdate"|"AccessConfigUpdate"|"UpgradePolicyUpdate"|"ZonalShiftConfigUpdate"|"AutoModeUpdate"|"RemoteNetworkConfigUpdate",
 #'     params = list(
 #'       list(
-#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"TaintsToAdd"|"TaintsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"LaunchTemplateName"|"LaunchTemplateVersion"|"IdentityProviderConfig"|"EncryptionConfig"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts"|"MaxUnavailable"|"MaxUnavailablePercentage"|"NodeRepairEnabled"|"UpdateStrategy"|"ConfigurationValues"|"SecurityGroups"|"Subnets"|"AuthenticationMode"|"PodIdentityAssociations"|"UpgradePolicy"|"ZonalShiftConfig"|"ComputeConfig"|"StorageConfig"|"KubernetesNetworkConfig",
+#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"TaintsToAdd"|"TaintsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"LaunchTemplateName"|"LaunchTemplateVersion"|"IdentityProviderConfig"|"EncryptionConfig"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts"|"MaxUnavailable"|"MaxUnavailablePercentage"|"NodeRepairEnabled"|"UpdateStrategy"|"ConfigurationValues"|"SecurityGroups"|"Subnets"|"AuthenticationMode"|"PodIdentityAssociations"|"UpgradePolicy"|"ZonalShiftConfig"|"ComputeConfig"|"StorageConfig"|"KubernetesNetworkConfig"|"RemoteNetworkConfig",
 #'         value = "string"
 #'       )
 #'     ),
@@ -752,8 +752,8 @@ eks_create_addon <- function(clusterName, addonName, addonVersion = NULL, servic
 #' Shift in Amazon
 #' EKS](https://docs.aws.amazon.com/eks/latest/userguide/zone-shift.html)
 #' in the *Amazon EKS User Guide* .
-#' @param remoteNetworkConfig The configuration in the cluster for EKS Hybrid Nodes. You can't change
-#' or update this configuration after the cluster is created.
+#' @param remoteNetworkConfig The configuration in the cluster for EKS Hybrid Nodes. You can add,
+#' change, or remove this configuration after the cluster is created.
 #' @param computeConfig Enable or disable the compute capability of EKS Auto Mode when creating
 #' your EKS Auto Mode cluster. If the compute capability is enabled, EKS
 #' Auto Mode will create and delete EC2 Managed Instances in your Amazon
@@ -1115,6 +1115,12 @@ eks_create_cluster <- function(name, version = NULL, roleArn, resourcesVpcConfig
 #'     licenseArns = list(
 #'       "string"
 #'     ),
+#'     licenses = list(
+#'       list(
+#'         id = "string",
+#'         token = "string"
+#'       )
+#'     ),
 #'     tags = list(
 #'       "string"
 #'     )
@@ -1330,8 +1336,14 @@ eks_create_fargate_profile <- function(fargateProfileName, clusterName, podExecu
 #' current Kubernetes version for the cluster. All node groups are created
 #' with the latest AMI release version for the respective minor Kubernetes
 #' version of the cluster, unless you deploy a custom AMI using a launch
-#' template. For more information about using launch templates, see
-#' [Customizing managed nodes with launch
+#' template.
+#' 
+#' For later updates, you will only be able to update a node group using a
+#' launch template only if it was originally deployed with a launch
+#' template. Additionally, the launch template ID or name must match what
+#' was used when the node group was created. You can update the launch
+#' template version with necessary changes. For more information about
+#' using launch templates, see [Customizing managed nodes with launch
 #' templates](https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html).
 #' 
 #' An Amazon EKS managed node group is an Amazon EC2 Auto Scaling group and
@@ -1425,9 +1437,12 @@ eks_create_fargate_profile <- function(fargateProfileName, clusterName, podExecu
 #' idempotency of the request.
 #' @param launchTemplate An object representing a node group's launch template specification.
 #' When using this object, don't directly specify `instanceTypes`,
-#' `diskSize`, or `remoteAccess`. Make sure that the launch template meets
-#' the requirements in `launchTemplateSpecification`. Also refer to
-#' [Customizing managed nodes with launch
+#' `diskSize`, or `remoteAccess`. You cannot later specify a different
+#' launch template ID or name than what was used to create the node group.
+#' 
+#' Make sure that the launch template meets the requirements in
+#' `launchTemplateSpecification`. Also refer to [Customizing managed nodes
+#' with launch
 #' templates](https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html)
 #' in the *Amazon EKS User Guide*.
 #' @param updateConfig The node group update configuration.
@@ -1495,7 +1510,7 @@ eks_create_fargate_profile <- function(fargateProfileName, clusterName, podExecu
 #'         "string"
 #'       )
 #'     ),
-#'     amiType = "AL2_x86_64"|"AL2_x86_64_GPU"|"AL2_ARM_64"|"CUSTOM"|"BOTTLEROCKET_ARM_64"|"BOTTLEROCKET_x86_64"|"BOTTLEROCKET_ARM_64_NVIDIA"|"BOTTLEROCKET_x86_64_NVIDIA"|"WINDOWS_CORE_2019_x86_64"|"WINDOWS_FULL_2019_x86_64"|"WINDOWS_CORE_2022_x86_64"|"WINDOWS_FULL_2022_x86_64"|"AL2023_x86_64_STANDARD"|"AL2023_ARM_64_STANDARD"|"AL2023_x86_64_NEURON"|"AL2023_x86_64_NVIDIA",
+#'     amiType = "AL2_x86_64"|"AL2_x86_64_GPU"|"AL2_ARM_64"|"CUSTOM"|"BOTTLEROCKET_ARM_64"|"BOTTLEROCKET_x86_64"|"BOTTLEROCKET_ARM_64_FIPS"|"BOTTLEROCKET_x86_64_FIPS"|"BOTTLEROCKET_ARM_64_NVIDIA"|"BOTTLEROCKET_x86_64_NVIDIA"|"WINDOWS_CORE_2019_x86_64"|"WINDOWS_FULL_2019_x86_64"|"WINDOWS_CORE_2022_x86_64"|"WINDOWS_FULL_2022_x86_64"|"AL2023_x86_64_STANDARD"|"AL2023_ARM_64_STANDARD"|"AL2023_x86_64_NEURON"|"AL2023_x86_64_NVIDIA"|"AL2023_ARM_64_NVIDIA",
 #'     nodeRole = "string",
 #'     labels = list(
 #'       "string"
@@ -1564,7 +1579,7 @@ eks_create_fargate_profile <- function(fargateProfileName, clusterName, podExecu
 #'   instanceTypes = list(
 #'     "string"
 #'   ),
-#'   amiType = "AL2_x86_64"|"AL2_x86_64_GPU"|"AL2_ARM_64"|"CUSTOM"|"BOTTLEROCKET_ARM_64"|"BOTTLEROCKET_x86_64"|"BOTTLEROCKET_ARM_64_NVIDIA"|"BOTTLEROCKET_x86_64_NVIDIA"|"WINDOWS_CORE_2019_x86_64"|"WINDOWS_FULL_2019_x86_64"|"WINDOWS_CORE_2022_x86_64"|"WINDOWS_FULL_2022_x86_64"|"AL2023_x86_64_STANDARD"|"AL2023_ARM_64_STANDARD"|"AL2023_x86_64_NEURON"|"AL2023_x86_64_NVIDIA",
+#'   amiType = "AL2_x86_64"|"AL2_x86_64_GPU"|"AL2_ARM_64"|"CUSTOM"|"BOTTLEROCKET_ARM_64"|"BOTTLEROCKET_x86_64"|"BOTTLEROCKET_ARM_64_FIPS"|"BOTTLEROCKET_x86_64_FIPS"|"BOTTLEROCKET_ARM_64_NVIDIA"|"BOTTLEROCKET_x86_64_NVIDIA"|"WINDOWS_CORE_2019_x86_64"|"WINDOWS_FULL_2019_x86_64"|"WINDOWS_CORE_2022_x86_64"|"WINDOWS_FULL_2022_x86_64"|"AL2023_x86_64_STANDARD"|"AL2023_ARM_64_STANDARD"|"AL2023_x86_64_NEURON"|"AL2023_x86_64_NVIDIA"|"AL2023_ARM_64_NVIDIA",
 #'   remoteAccess = list(
 #'     ec2SshKey = "string",
 #'     sourceSecurityGroups = list(
@@ -2153,6 +2168,12 @@ eks_delete_cluster <- function(name) {
 #'     licenseArns = list(
 #'       "string"
 #'     ),
+#'     licenses = list(
+#'       list(
+#'         id = "string",
+#'         token = "string"
+#'       )
+#'     ),
 #'     tags = list(
 #'       "string"
 #'     )
@@ -2332,7 +2353,7 @@ eks_delete_fargate_profile <- function(clusterName, fargateProfileName) {
 #'         "string"
 #'       )
 #'     ),
-#'     amiType = "AL2_x86_64"|"AL2_x86_64_GPU"|"AL2_ARM_64"|"CUSTOM"|"BOTTLEROCKET_ARM_64"|"BOTTLEROCKET_x86_64"|"BOTTLEROCKET_ARM_64_NVIDIA"|"BOTTLEROCKET_x86_64_NVIDIA"|"WINDOWS_CORE_2019_x86_64"|"WINDOWS_FULL_2019_x86_64"|"WINDOWS_CORE_2022_x86_64"|"WINDOWS_FULL_2022_x86_64"|"AL2023_x86_64_STANDARD"|"AL2023_ARM_64_STANDARD"|"AL2023_x86_64_NEURON"|"AL2023_x86_64_NVIDIA",
+#'     amiType = "AL2_x86_64"|"AL2_x86_64_GPU"|"AL2_ARM_64"|"CUSTOM"|"BOTTLEROCKET_ARM_64"|"BOTTLEROCKET_x86_64"|"BOTTLEROCKET_ARM_64_FIPS"|"BOTTLEROCKET_x86_64_FIPS"|"BOTTLEROCKET_ARM_64_NVIDIA"|"BOTTLEROCKET_x86_64_NVIDIA"|"WINDOWS_CORE_2019_x86_64"|"WINDOWS_FULL_2019_x86_64"|"WINDOWS_CORE_2022_x86_64"|"WINDOWS_FULL_2022_x86_64"|"AL2023_x86_64_STANDARD"|"AL2023_ARM_64_STANDARD"|"AL2023_x86_64_NEURON"|"AL2023_x86_64_NVIDIA"|"AL2023_ARM_64_NVIDIA",
 #'     nodeRole = "string",
 #'     labels = list(
 #'       "string"
@@ -3353,6 +3374,12 @@ eks_describe_cluster_versions <- function(clusterType = NULL, maxResults = NULL,
 #'     licenseArns = list(
 #'       "string"
 #'     ),
+#'     licenses = list(
+#'       list(
+#'         id = "string",
+#'         token = "string"
+#'       )
+#'     ),
 #'     tags = list(
 #'       "string"
 #'     )
@@ -3704,7 +3731,7 @@ eks_describe_insight <- function(clusterName, id) {
 #'         "string"
 #'       )
 #'     ),
-#'     amiType = "AL2_x86_64"|"AL2_x86_64_GPU"|"AL2_ARM_64"|"CUSTOM"|"BOTTLEROCKET_ARM_64"|"BOTTLEROCKET_x86_64"|"BOTTLEROCKET_ARM_64_NVIDIA"|"BOTTLEROCKET_x86_64_NVIDIA"|"WINDOWS_CORE_2019_x86_64"|"WINDOWS_FULL_2019_x86_64"|"WINDOWS_CORE_2022_x86_64"|"WINDOWS_FULL_2022_x86_64"|"AL2023_x86_64_STANDARD"|"AL2023_ARM_64_STANDARD"|"AL2023_x86_64_NEURON"|"AL2023_x86_64_NVIDIA",
+#'     amiType = "AL2_x86_64"|"AL2_x86_64_GPU"|"AL2_ARM_64"|"CUSTOM"|"BOTTLEROCKET_ARM_64"|"BOTTLEROCKET_x86_64"|"BOTTLEROCKET_ARM_64_FIPS"|"BOTTLEROCKET_x86_64_FIPS"|"BOTTLEROCKET_ARM_64_NVIDIA"|"BOTTLEROCKET_x86_64_NVIDIA"|"WINDOWS_CORE_2019_x86_64"|"WINDOWS_FULL_2019_x86_64"|"WINDOWS_CORE_2022_x86_64"|"WINDOWS_FULL_2022_x86_64"|"AL2023_x86_64_STANDARD"|"AL2023_ARM_64_STANDARD"|"AL2023_x86_64_NEURON"|"AL2023_x86_64_NVIDIA"|"AL2023_ARM_64_NVIDIA",
 #'     nodeRole = "string",
 #'     labels = list(
 #'       "string"
@@ -3889,10 +3916,10 @@ eks_describe_pod_identity_association <- function(clusterName, associationId) {
 #'   update = list(
 #'     id = "string",
 #'     status = "InProgress"|"Failed"|"Cancelled"|"Successful",
-#'     type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AssociateIdentityProviderConfig"|"DisassociateIdentityProviderConfig"|"AssociateEncryptionConfig"|"AddonUpdate"|"VpcConfigUpdate"|"AccessConfigUpdate"|"UpgradePolicyUpdate"|"ZonalShiftConfigUpdate"|"AutoModeUpdate",
+#'     type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AssociateIdentityProviderConfig"|"DisassociateIdentityProviderConfig"|"AssociateEncryptionConfig"|"AddonUpdate"|"VpcConfigUpdate"|"AccessConfigUpdate"|"UpgradePolicyUpdate"|"ZonalShiftConfigUpdate"|"AutoModeUpdate"|"RemoteNetworkConfigUpdate",
 #'     params = list(
 #'       list(
-#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"TaintsToAdd"|"TaintsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"LaunchTemplateName"|"LaunchTemplateVersion"|"IdentityProviderConfig"|"EncryptionConfig"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts"|"MaxUnavailable"|"MaxUnavailablePercentage"|"NodeRepairEnabled"|"UpdateStrategy"|"ConfigurationValues"|"SecurityGroups"|"Subnets"|"AuthenticationMode"|"PodIdentityAssociations"|"UpgradePolicy"|"ZonalShiftConfig"|"ComputeConfig"|"StorageConfig"|"KubernetesNetworkConfig",
+#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"TaintsToAdd"|"TaintsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"LaunchTemplateName"|"LaunchTemplateVersion"|"IdentityProviderConfig"|"EncryptionConfig"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts"|"MaxUnavailable"|"MaxUnavailablePercentage"|"NodeRepairEnabled"|"UpdateStrategy"|"ConfigurationValues"|"SecurityGroups"|"Subnets"|"AuthenticationMode"|"PodIdentityAssociations"|"UpgradePolicy"|"ZonalShiftConfig"|"ComputeConfig"|"StorageConfig"|"KubernetesNetworkConfig"|"RemoteNetworkConfig",
 #'         value = "string"
 #'       )
 #'     ),
@@ -4021,10 +4048,10 @@ eks_disassociate_access_policy <- function(clusterName, principalArn, policyArn)
 #'   update = list(
 #'     id = "string",
 #'     status = "InProgress"|"Failed"|"Cancelled"|"Successful",
-#'     type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AssociateIdentityProviderConfig"|"DisassociateIdentityProviderConfig"|"AssociateEncryptionConfig"|"AddonUpdate"|"VpcConfigUpdate"|"AccessConfigUpdate"|"UpgradePolicyUpdate"|"ZonalShiftConfigUpdate"|"AutoModeUpdate",
+#'     type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AssociateIdentityProviderConfig"|"DisassociateIdentityProviderConfig"|"AssociateEncryptionConfig"|"AddonUpdate"|"VpcConfigUpdate"|"AccessConfigUpdate"|"UpgradePolicyUpdate"|"ZonalShiftConfigUpdate"|"AutoModeUpdate"|"RemoteNetworkConfigUpdate",
 #'     params = list(
 #'       list(
-#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"TaintsToAdd"|"TaintsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"LaunchTemplateName"|"LaunchTemplateVersion"|"IdentityProviderConfig"|"EncryptionConfig"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts"|"MaxUnavailable"|"MaxUnavailablePercentage"|"NodeRepairEnabled"|"UpdateStrategy"|"ConfigurationValues"|"SecurityGroups"|"Subnets"|"AuthenticationMode"|"PodIdentityAssociations"|"UpgradePolicy"|"ZonalShiftConfig"|"ComputeConfig"|"StorageConfig"|"KubernetesNetworkConfig",
+#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"TaintsToAdd"|"TaintsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"LaunchTemplateName"|"LaunchTemplateVersion"|"IdentityProviderConfig"|"EncryptionConfig"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts"|"MaxUnavailable"|"MaxUnavailablePercentage"|"NodeRepairEnabled"|"UpdateStrategy"|"ConfigurationValues"|"SecurityGroups"|"Subnets"|"AuthenticationMode"|"PodIdentityAssociations"|"UpgradePolicy"|"ZonalShiftConfig"|"ComputeConfig"|"StorageConfig"|"KubernetesNetworkConfig"|"RemoteNetworkConfig",
 #'         value = "string"
 #'       )
 #'     ),
@@ -4518,6 +4545,12 @@ eks_list_clusters <- function(maxResults = NULL, nextToken = NULL, include = NUL
 #'       autoRenew = TRUE|FALSE,
 #'       licenseArns = list(
 #'         "string"
+#'       ),
+#'       licenses = list(
+#'         list(
+#'           id = "string",
+#'           token = "string"
+#'         )
 #'       ),
 #'       tags = list(
 #'         "string"
@@ -5598,10 +5631,10 @@ eks_update_access_entry <- function(clusterName, principalArn, kubernetesGroups 
 #'   update = list(
 #'     id = "string",
 #'     status = "InProgress"|"Failed"|"Cancelled"|"Successful",
-#'     type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AssociateIdentityProviderConfig"|"DisassociateIdentityProviderConfig"|"AssociateEncryptionConfig"|"AddonUpdate"|"VpcConfigUpdate"|"AccessConfigUpdate"|"UpgradePolicyUpdate"|"ZonalShiftConfigUpdate"|"AutoModeUpdate",
+#'     type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AssociateIdentityProviderConfig"|"DisassociateIdentityProviderConfig"|"AssociateEncryptionConfig"|"AddonUpdate"|"VpcConfigUpdate"|"AccessConfigUpdate"|"UpgradePolicyUpdate"|"ZonalShiftConfigUpdate"|"AutoModeUpdate"|"RemoteNetworkConfigUpdate",
 #'     params = list(
 #'       list(
-#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"TaintsToAdd"|"TaintsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"LaunchTemplateName"|"LaunchTemplateVersion"|"IdentityProviderConfig"|"EncryptionConfig"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts"|"MaxUnavailable"|"MaxUnavailablePercentage"|"NodeRepairEnabled"|"UpdateStrategy"|"ConfigurationValues"|"SecurityGroups"|"Subnets"|"AuthenticationMode"|"PodIdentityAssociations"|"UpgradePolicy"|"ZonalShiftConfig"|"ComputeConfig"|"StorageConfig"|"KubernetesNetworkConfig",
+#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"TaintsToAdd"|"TaintsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"LaunchTemplateName"|"LaunchTemplateVersion"|"IdentityProviderConfig"|"EncryptionConfig"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts"|"MaxUnavailable"|"MaxUnavailablePercentage"|"NodeRepairEnabled"|"UpdateStrategy"|"ConfigurationValues"|"SecurityGroups"|"Subnets"|"AuthenticationMode"|"PodIdentityAssociations"|"UpgradePolicy"|"ZonalShiftConfig"|"ComputeConfig"|"StorageConfig"|"KubernetesNetworkConfig"|"RemoteNetworkConfig",
 #'         value = "string"
 #'       )
 #'     ),
@@ -5670,38 +5703,47 @@ eks_update_addon <- function(clusterName, addonName, addonVersion = NULL, servic
 #' Updates an Amazon EKS cluster configuration. Your cluster continues to
 #' function during the update. The response output includes an update ID
 #' that you can use to track the status of your cluster update with
-#' [`describe_update`][eks_describe_update]"/\>.
+#' [`describe_update`][eks_describe_update].
 #' 
-#' You can use this API operation to enable or disable exporting the
-#' Kubernetes control plane logs for your cluster to CloudWatch Logs. By
-#' default, cluster control plane logs aren't exported to CloudWatch Logs.
-#' For more information, see [Amazon EKS Cluster control plane
-#' logs](https://docs.aws.amazon.com/eks/latest/userguide/control-plane-logs.html)
-#' in the *Amazon EKS User Guide* .
+#' You can use this operation to do the following actions:
 #' 
-#' CloudWatch Logs ingestion, archive storage, and data scanning rates
-#' apply to exported control plane logs. For more information, see
-#' [CloudWatch Pricing](https://aws.amazon.com/cloudwatch/pricing/).
+#' -   You can use this API operation to enable or disable exporting the
+#'     Kubernetes control plane logs for your cluster to CloudWatch Logs.
+#'     By default, cluster control plane logs aren't exported to CloudWatch
+#'     Logs. For more information, see [Amazon EKS Cluster control plane
+#'     logs](https://docs.aws.amazon.com/eks/latest/userguide/control-plane-logs.html)
+#'     in the *Amazon EKS User Guide* .
 #' 
-#' You can also use this API operation to enable or disable public and
-#' private access to your cluster's Kubernetes API server endpoint. By
-#' default, public access is enabled, and private access is disabled. For
-#' more information, see [Amazon EKS cluster endpoint access
-#' control](https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html)
-#' in the *Amazon EKS User Guide* .
+#'     CloudWatch Logs ingestion, archive storage, and data scanning rates
+#'     apply to exported control plane logs. For more information, see
+#'     [CloudWatch Pricing](https://aws.amazon.com/cloudwatch/pricing/).
 #' 
-#' You can also use this API operation to choose different subnets and
-#' security groups for the cluster. You must specify at least two subnets
-#' that are in different Availability Zones. You can't change which VPC the
-#' subnets are from, the subnets must be in the same VPC as the subnets
-#' that the cluster was created with. For more information about the VPC
-#' requirements, see
-#' [https://docs.aws.amazon.com/eks/latest/userguide/network_reqs.html](https://docs.aws.amazon.com/eks/latest/userguide/network-reqs.html)
-#' in the *Amazon EKS User Guide* .
+#' -   You can also use this API operation to enable or disable public and
+#'     private access to your cluster's Kubernetes API server endpoint. By
+#'     default, public access is enabled, and private access is disabled.
+#'     For more information, see [Amazon EKS cluster endpoint access
+#'     control](https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html)
+#'     in the *Amazon EKS User Guide* .
 #' 
-#' You can also use this API operation to enable or disable ARC zonal
-#' shift. If zonal shift is enabled, Amazon Web Services configures zonal
-#' autoshift for the cluster.
+#' -   You can also use this API operation to choose different subnets and
+#'     security groups for the cluster. You must specify at least two
+#'     subnets that are in different Availability Zones. You can't change
+#'     which VPC the subnets are from, the subnets must be in the same VPC
+#'     as the subnets that the cluster was created with. For more
+#'     information about the VPC requirements, see
+#'     [https://docs.aws.amazon.com/eks/latest/userguide/network_reqs.html](https://docs.aws.amazon.com/eks/latest/userguide/network-reqs.html)
+#'     in the *Amazon EKS User Guide* .
+#' 
+#' -   You can also use this API operation to enable or disable ARC zonal
+#'     shift. If zonal shift is enabled, Amazon Web Services configures
+#'     zonal autoshift for the cluster.
+#' 
+#' -   You can also use this API operation to add, change, or remove the
+#'     configuration in the cluster for EKS Hybrid Nodes. To remove the
+#'     configuration, use the `remoteNetworkConfig` key with an object
+#'     containing both subkeys with empty arrays for each. Here is an
+#'     inline example:
+#'     `"remoteNetworkConfig": { "remoteNodeNetworks": [], "remotePodNetworks": [] }`.
 #' 
 #' Cluster updates are asynchronous, and they should finish within a few
 #' minutes. During an update, the cluster status moves to `UPDATING` (this
@@ -5711,7 +5753,8 @@ eks_update_addon <- function(clusterName, addonName, addonVersion = NULL, servic
 #' @usage
 #' eks_update_cluster_config(name, resourcesVpcConfig, logging,
 #'   clientRequestToken, accessConfig, upgradePolicy, zonalShiftConfig,
-#'   computeConfig, kubernetesNetworkConfig, storageConfig)
+#'   computeConfig, kubernetesNetworkConfig, storageConfig,
+#'   remoteNetworkConfig)
 #'
 #' @param name &#91;required&#93; The name of the Amazon EKS cluster to update.
 #' @param resourcesVpcConfig 
@@ -5757,6 +5800,7 @@ eks_update_addon <- function(clusterName, addonName, addonVersion = NULL, servic
 #' @param kubernetesNetworkConfig 
 #' @param storageConfig Update the configuration of the block storage capability of your EKS
 #' Auto Mode cluster. For example, enable the capability.
+#' @param remoteNetworkConfig 
 #'
 #' @return
 #' A list with the following syntax:
@@ -5765,10 +5809,10 @@ eks_update_addon <- function(clusterName, addonName, addonVersion = NULL, servic
 #'   update = list(
 #'     id = "string",
 #'     status = "InProgress"|"Failed"|"Cancelled"|"Successful",
-#'     type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AssociateIdentityProviderConfig"|"DisassociateIdentityProviderConfig"|"AssociateEncryptionConfig"|"AddonUpdate"|"VpcConfigUpdate"|"AccessConfigUpdate"|"UpgradePolicyUpdate"|"ZonalShiftConfigUpdate"|"AutoModeUpdate",
+#'     type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AssociateIdentityProviderConfig"|"DisassociateIdentityProviderConfig"|"AssociateEncryptionConfig"|"AddonUpdate"|"VpcConfigUpdate"|"AccessConfigUpdate"|"UpgradePolicyUpdate"|"ZonalShiftConfigUpdate"|"AutoModeUpdate"|"RemoteNetworkConfigUpdate",
 #'     params = list(
 #'       list(
-#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"TaintsToAdd"|"TaintsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"LaunchTemplateName"|"LaunchTemplateVersion"|"IdentityProviderConfig"|"EncryptionConfig"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts"|"MaxUnavailable"|"MaxUnavailablePercentage"|"NodeRepairEnabled"|"UpdateStrategy"|"ConfigurationValues"|"SecurityGroups"|"Subnets"|"AuthenticationMode"|"PodIdentityAssociations"|"UpgradePolicy"|"ZonalShiftConfig"|"ComputeConfig"|"StorageConfig"|"KubernetesNetworkConfig",
+#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"TaintsToAdd"|"TaintsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"LaunchTemplateName"|"LaunchTemplateVersion"|"IdentityProviderConfig"|"EncryptionConfig"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts"|"MaxUnavailable"|"MaxUnavailablePercentage"|"NodeRepairEnabled"|"UpdateStrategy"|"ConfigurationValues"|"SecurityGroups"|"Subnets"|"AuthenticationMode"|"PodIdentityAssociations"|"UpgradePolicy"|"ZonalShiftConfig"|"ComputeConfig"|"StorageConfig"|"KubernetesNetworkConfig"|"RemoteNetworkConfig",
 #'         value = "string"
 #'       )
 #'     ),
@@ -5843,6 +5887,22 @@ eks_update_addon <- function(clusterName, addonName, addonVersion = NULL, servic
 #'     blockStorage = list(
 #'       enabled = TRUE|FALSE
 #'     )
+#'   ),
+#'   remoteNetworkConfig = list(
+#'     remoteNodeNetworks = list(
+#'       list(
+#'         cidrs = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     remotePodNetworks = list(
+#'       list(
+#'         cidrs = list(
+#'           "string"
+#'         )
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -5852,7 +5912,7 @@ eks_update_addon <- function(clusterName, addonName, addonVersion = NULL, servic
 #' @rdname eks_update_cluster_config
 #'
 #' @aliases eks_update_cluster_config
-eks_update_cluster_config <- function(name, resourcesVpcConfig = NULL, logging = NULL, clientRequestToken = NULL, accessConfig = NULL, upgradePolicy = NULL, zonalShiftConfig = NULL, computeConfig = NULL, kubernetesNetworkConfig = NULL, storageConfig = NULL) {
+eks_update_cluster_config <- function(name, resourcesVpcConfig = NULL, logging = NULL, clientRequestToken = NULL, accessConfig = NULL, upgradePolicy = NULL, zonalShiftConfig = NULL, computeConfig = NULL, kubernetesNetworkConfig = NULL, storageConfig = NULL, remoteNetworkConfig = NULL) {
   op <- new_operation(
     name = "UpdateClusterConfig",
     http_method = "POST",
@@ -5861,7 +5921,7 @@ eks_update_cluster_config <- function(name, resourcesVpcConfig = NULL, logging =
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .eks$update_cluster_config_input(name = name, resourcesVpcConfig = resourcesVpcConfig, logging = logging, clientRequestToken = clientRequestToken, accessConfig = accessConfig, upgradePolicy = upgradePolicy, zonalShiftConfig = zonalShiftConfig, computeConfig = computeConfig, kubernetesNetworkConfig = kubernetesNetworkConfig, storageConfig = storageConfig)
+  input <- .eks$update_cluster_config_input(name = name, resourcesVpcConfig = resourcesVpcConfig, logging = logging, clientRequestToken = clientRequestToken, accessConfig = accessConfig, upgradePolicy = upgradePolicy, zonalShiftConfig = zonalShiftConfig, computeConfig = computeConfig, kubernetesNetworkConfig = kubernetesNetworkConfig, storageConfig = storageConfig, remoteNetworkConfig = remoteNetworkConfig)
   output <- .eks$update_cluster_config_output()
   config <- get_config()
   svc <- .eks$service(config, op)
@@ -5891,12 +5951,14 @@ eks_update_cluster_config <- function(name, resourcesVpcConfig = NULL, logging =
 #' in order to update the cluster to a new Kubernetes version.
 #'
 #' @usage
-#' eks_update_cluster_version(name, version, clientRequestToken)
+#' eks_update_cluster_version(name, version, clientRequestToken, force)
 #'
 #' @param name &#91;required&#93; The name of the Amazon EKS cluster to update.
 #' @param version &#91;required&#93; The desired Kubernetes version following a successful update.
 #' @param clientRequestToken A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request.
+#' @param force Set this value to `true` to override upgrade-blocking readiness checks
+#' when updating a cluster.
 #'
 #' @return
 #' A list with the following syntax:
@@ -5905,10 +5967,10 @@ eks_update_cluster_config <- function(name, resourcesVpcConfig = NULL, logging =
 #'   update = list(
 #'     id = "string",
 #'     status = "InProgress"|"Failed"|"Cancelled"|"Successful",
-#'     type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AssociateIdentityProviderConfig"|"DisassociateIdentityProviderConfig"|"AssociateEncryptionConfig"|"AddonUpdate"|"VpcConfigUpdate"|"AccessConfigUpdate"|"UpgradePolicyUpdate"|"ZonalShiftConfigUpdate"|"AutoModeUpdate",
+#'     type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AssociateIdentityProviderConfig"|"DisassociateIdentityProviderConfig"|"AssociateEncryptionConfig"|"AddonUpdate"|"VpcConfigUpdate"|"AccessConfigUpdate"|"UpgradePolicyUpdate"|"ZonalShiftConfigUpdate"|"AutoModeUpdate"|"RemoteNetworkConfigUpdate",
 #'     params = list(
 #'       list(
-#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"TaintsToAdd"|"TaintsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"LaunchTemplateName"|"LaunchTemplateVersion"|"IdentityProviderConfig"|"EncryptionConfig"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts"|"MaxUnavailable"|"MaxUnavailablePercentage"|"NodeRepairEnabled"|"UpdateStrategy"|"ConfigurationValues"|"SecurityGroups"|"Subnets"|"AuthenticationMode"|"PodIdentityAssociations"|"UpgradePolicy"|"ZonalShiftConfig"|"ComputeConfig"|"StorageConfig"|"KubernetesNetworkConfig",
+#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"TaintsToAdd"|"TaintsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"LaunchTemplateName"|"LaunchTemplateVersion"|"IdentityProviderConfig"|"EncryptionConfig"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts"|"MaxUnavailable"|"MaxUnavailablePercentage"|"NodeRepairEnabled"|"UpdateStrategy"|"ConfigurationValues"|"SecurityGroups"|"Subnets"|"AuthenticationMode"|"PodIdentityAssociations"|"UpgradePolicy"|"ZonalShiftConfig"|"ComputeConfig"|"StorageConfig"|"KubernetesNetworkConfig"|"RemoteNetworkConfig",
 #'         value = "string"
 #'       )
 #'     ),
@@ -5933,7 +5995,8 @@ eks_update_cluster_config <- function(name, resourcesVpcConfig = NULL, logging =
 #' svc$update_cluster_version(
 #'   name = "string",
 #'   version = "string",
-#'   clientRequestToken = "string"
+#'   clientRequestToken = "string",
+#'   force = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -5942,7 +6005,7 @@ eks_update_cluster_config <- function(name, resourcesVpcConfig = NULL, logging =
 #' @rdname eks_update_cluster_version
 #'
 #' @aliases eks_update_cluster_version
-eks_update_cluster_version <- function(name, version, clientRequestToken = NULL) {
+eks_update_cluster_version <- function(name, version, clientRequestToken = NULL, force = NULL) {
   op <- new_operation(
     name = "UpdateClusterVersion",
     http_method = "POST",
@@ -5951,7 +6014,7 @@ eks_update_cluster_version <- function(name, version, clientRequestToken = NULL)
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .eks$update_cluster_version_input(name = name, version = version, clientRequestToken = clientRequestToken)
+  input <- .eks$update_cluster_version_input(name = name, version = version, clientRequestToken = clientRequestToken, force = force)
   output <- .eks$update_cluster_version_output()
   config <- get_config()
   svc <- .eks$service(config, op)
@@ -6002,6 +6065,12 @@ eks_update_cluster_version <- function(name, version, clientRequestToken = NULL)
 #'     autoRenew = TRUE|FALSE,
 #'     licenseArns = list(
 #'       "string"
+#'     ),
+#'     licenses = list(
+#'       list(
+#'         id = "string",
+#'         token = "string"
+#'       )
 #'     ),
 #'     tags = list(
 #'       "string"
@@ -6079,10 +6148,10 @@ eks_update_eks_anywhere_subscription <- function(id, autoRenew, clientRequestTok
 #'   update = list(
 #'     id = "string",
 #'     status = "InProgress"|"Failed"|"Cancelled"|"Successful",
-#'     type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AssociateIdentityProviderConfig"|"DisassociateIdentityProviderConfig"|"AssociateEncryptionConfig"|"AddonUpdate"|"VpcConfigUpdate"|"AccessConfigUpdate"|"UpgradePolicyUpdate"|"ZonalShiftConfigUpdate"|"AutoModeUpdate",
+#'     type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AssociateIdentityProviderConfig"|"DisassociateIdentityProviderConfig"|"AssociateEncryptionConfig"|"AddonUpdate"|"VpcConfigUpdate"|"AccessConfigUpdate"|"UpgradePolicyUpdate"|"ZonalShiftConfigUpdate"|"AutoModeUpdate"|"RemoteNetworkConfigUpdate",
 #'     params = list(
 #'       list(
-#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"TaintsToAdd"|"TaintsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"LaunchTemplateName"|"LaunchTemplateVersion"|"IdentityProviderConfig"|"EncryptionConfig"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts"|"MaxUnavailable"|"MaxUnavailablePercentage"|"NodeRepairEnabled"|"UpdateStrategy"|"ConfigurationValues"|"SecurityGroups"|"Subnets"|"AuthenticationMode"|"PodIdentityAssociations"|"UpgradePolicy"|"ZonalShiftConfig"|"ComputeConfig"|"StorageConfig"|"KubernetesNetworkConfig",
+#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"TaintsToAdd"|"TaintsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"LaunchTemplateName"|"LaunchTemplateVersion"|"IdentityProviderConfig"|"EncryptionConfig"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts"|"MaxUnavailable"|"MaxUnavailablePercentage"|"NodeRepairEnabled"|"UpdateStrategy"|"ConfigurationValues"|"SecurityGroups"|"Subnets"|"AuthenticationMode"|"PodIdentityAssociations"|"UpgradePolicy"|"ZonalShiftConfig"|"ComputeConfig"|"StorageConfig"|"KubernetesNetworkConfig"|"RemoteNetworkConfig",
 #'         value = "string"
 #'       )
 #'     ),
@@ -6180,11 +6249,15 @@ eks_update_nodegroup_config <- function(clusterName, nodegroupName, labels = NUL
 #' node group.
 #' 
 #' You can update a node group using a launch template only if the node
-#' group was originally deployed with a launch template. If you need to
-#' update a custom AMI in a node group that was deployed with a launch
-#' template, then update your custom AMI, specify the new ID in a new
-#' version of the launch template, and then update the node group to the
-#' new version of the launch template.
+#' group was originally deployed with a launch template. Additionally, the
+#' launch template ID or name must match what was used when the node group
+#' was created. You can update the launch template version with necessary
+#' changes.
+#' 
+#' If you need to update a custom AMI in a node group that was deployed
+#' with a launch template, then update your custom AMI, specify the new ID
+#' in a new version of the launch template, and then update the node group
+#' to the new version of the launch template.
 #' 
 #' If you update without a launch template, then you can update to the
 #' latest available AMI version of a node group's current Kubernetes
@@ -6244,7 +6317,9 @@ eks_update_nodegroup_config <- function(clusterName, nodegroupName, labels = NUL
 #' in the *Amazon EKS User Guide*.
 #' @param launchTemplate An object representing a node group's launch template specification. You
 #' can only update a node group using a launch template if the node group
-#' was originally deployed with a launch template.
+#' was originally deployed with a launch template. When updating, you must
+#' specify the same launch template ID or name that was used to create the
+#' node group.
 #' @param force Force the update if any `Pod` on the existing node group can't be
 #' drained due to a `Pod` disruption budget issue. If an update fails
 #' because all Pods can't be drained, you can force the update after it
@@ -6260,10 +6335,10 @@ eks_update_nodegroup_config <- function(clusterName, nodegroupName, labels = NUL
 #'   update = list(
 #'     id = "string",
 #'     status = "InProgress"|"Failed"|"Cancelled"|"Successful",
-#'     type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AssociateIdentityProviderConfig"|"DisassociateIdentityProviderConfig"|"AssociateEncryptionConfig"|"AddonUpdate"|"VpcConfigUpdate"|"AccessConfigUpdate"|"UpgradePolicyUpdate"|"ZonalShiftConfigUpdate"|"AutoModeUpdate",
+#'     type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AssociateIdentityProviderConfig"|"DisassociateIdentityProviderConfig"|"AssociateEncryptionConfig"|"AddonUpdate"|"VpcConfigUpdate"|"AccessConfigUpdate"|"UpgradePolicyUpdate"|"ZonalShiftConfigUpdate"|"AutoModeUpdate"|"RemoteNetworkConfigUpdate",
 #'     params = list(
 #'       list(
-#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"TaintsToAdd"|"TaintsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"LaunchTemplateName"|"LaunchTemplateVersion"|"IdentityProviderConfig"|"EncryptionConfig"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts"|"MaxUnavailable"|"MaxUnavailablePercentage"|"NodeRepairEnabled"|"UpdateStrategy"|"ConfigurationValues"|"SecurityGroups"|"Subnets"|"AuthenticationMode"|"PodIdentityAssociations"|"UpgradePolicy"|"ZonalShiftConfig"|"ComputeConfig"|"StorageConfig"|"KubernetesNetworkConfig",
+#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"TaintsToAdd"|"TaintsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"LaunchTemplateName"|"LaunchTemplateVersion"|"IdentityProviderConfig"|"EncryptionConfig"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts"|"MaxUnavailable"|"MaxUnavailablePercentage"|"NodeRepairEnabled"|"UpdateStrategy"|"ConfigurationValues"|"SecurityGroups"|"Subnets"|"AuthenticationMode"|"PodIdentityAssociations"|"UpgradePolicy"|"ZonalShiftConfig"|"ComputeConfig"|"StorageConfig"|"KubernetesNetworkConfig"|"RemoteNetworkConfig",
 #'         value = "string"
 #'       )
 #'     ),

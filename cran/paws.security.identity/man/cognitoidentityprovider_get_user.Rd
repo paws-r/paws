@@ -2,16 +2,18 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_get_user}
 \alias{cognitoidentityprovider_get_user}
-\title{Gets the user attributes and metadata for a user}
+\title{Gets user attributes and and MFA settings for the currently signed-in
+user}
 \usage{
 cognitoidentityprovider_get_user(AccessToken)
 }
 \arguments{
-\item{AccessToken}{[required] A non-expired access token for the user whose information you want to
-query.}
+\item{AccessToken}{[required] A valid access token that Amazon Cognito issued to the currently
+signed-in user. Must include a scope claim for
+\code{aws.cognito.signin.user.admin}.}
 }
 \description{
-Gets the user attributes and metadata for a user.
+Gets user attributes and and MFA settings for the currently signed-in user.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_get_user/} for full documentation.
 }

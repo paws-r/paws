@@ -44,6 +44,13 @@ you have the required permissions, the error response is
 
 \item{Attribute}{The name of the attribute to modify.
 
+When changing the instance type: If the original instance type is
+configured for configurable bandwidth, and the desired instance type
+doesn't support configurable bandwidth, first set the existing bandwidth
+configuration to \code{default} using the
+\code{\link[=ec2_modify_instance_network_performance_options]{modify_instance_network_performance_options}}
+operation.
+
 You can modify the following attributes only: \code{disableApiTermination} |
 \code{instanceType} | \code{kernel} | \code{ramdisk} |
 \code{instanceInitiatedShutdownBehavior} | \code{blockDeviceMapping} | \code{userData}

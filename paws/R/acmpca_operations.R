@@ -115,7 +115,7 @@ NULL
 #' ```
 #' svc$create_certificate_authority(
 #'   CertificateAuthorityConfiguration = list(
-#'     KeyAlgorithm = "RSA_2048"|"RSA_4096"|"EC_prime256v1"|"EC_secp384r1"|"SM2",
+#'     KeyAlgorithm = "RSA_2048"|"RSA_3072"|"RSA_4096"|"EC_prime256v1"|"EC_secp384r1"|"EC_secp521r1"|"SM2",
 #'     SigningAlgorithm = "SHA256WITHECDSA"|"SHA384WITHECDSA"|"SHA512WITHECDSA"|"SHA256WITHRSA"|"SHA384WITHRSA"|"SHA512WITHRSA"|"SM3WITHSM2",
 #'     Subject = list(
 #'       Country = "string",
@@ -739,7 +739,7 @@ acmpca_delete_policy <- function(ResourceArn) {
 #'     ),
 #'     FailureReason = "REQUEST_TIMED_OUT"|"UNSUPPORTED_ALGORITHM"|"OTHER",
 #'     CertificateAuthorityConfiguration = list(
-#'       KeyAlgorithm = "RSA_2048"|"RSA_4096"|"EC_prime256v1"|"EC_secp384r1"|"SM2",
+#'       KeyAlgorithm = "RSA_2048"|"RSA_3072"|"RSA_4096"|"EC_prime256v1"|"EC_secp384r1"|"EC_secp521r1"|"SM2",
 #'       SigningAlgorithm = "SHA256WITHECDSA"|"SHA384WITHECDSA"|"SHA512WITHECDSA"|"SHA256WITHRSA"|"SHA384WITHRSA"|"SHA512WITHRSA"|"SM3WITHSM2",
 #'       Subject = list(
 #'         Country = "string",
@@ -1701,7 +1701,7 @@ acmpca_issue_certificate <- function(ApiPassthrough = NULL, CertificateAuthority
 #'       ),
 #'       FailureReason = "REQUEST_TIMED_OUT"|"UNSUPPORTED_ALGORITHM"|"OTHER",
 #'       CertificateAuthorityConfiguration = list(
-#'         KeyAlgorithm = "RSA_2048"|"RSA_4096"|"EC_prime256v1"|"EC_secp384r1"|"SM2",
+#'         KeyAlgorithm = "RSA_2048"|"RSA_3072"|"RSA_4096"|"EC_prime256v1"|"EC_secp384r1"|"EC_secp521r1"|"SM2",
 #'         SigningAlgorithm = "SHA256WITHECDSA"|"SHA384WITHECDSA"|"SHA512WITHECDSA"|"SHA256WITHRSA"|"SHA384WITHRSA"|"SHA512WITHRSA"|"SM3WITHSM2",
 #'         Subject = list(
 #'           Country = "string",

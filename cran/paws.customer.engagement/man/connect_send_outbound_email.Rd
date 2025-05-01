@@ -27,7 +27,9 @@ in the Amazon Resource Name (ARN) of the instance.}
 
 \item{EmailMessage}{[required] The email message body to be sent to the newly created email.}
 
-\item{TrafficType}{[required] Denotes the class of traffic.}
+\item{TrafficType}{[required] Denotes the class of traffic.
+
+Only the CAMPAIGN traffic type is supported.}
 
 \item{SourceCampaign}{A Campaign object need for Campaign traffic type.}
 

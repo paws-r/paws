@@ -6,7 +6,7 @@ NULL
 #' GetEntitlements retrieves entitlement values for a given product
 #'
 #' @description
-#' GetEntitlements retrieves entitlement values for a given product. The results can be filtered based on customer identifier or product dimensions.
+#' GetEntitlements retrieves entitlement values for a given product. The results can be filtered based on customer identifier, AWS account ID, or product dimensions.
 #'
 #' See [https://www.paws-r-sdk.com/docs/marketplaceentitlementservice_get_entitlements/](https://www.paws-r-sdk.com/docs/marketplaceentitlementservice_get_entitlements/) for full documentation.
 #'
@@ -17,6 +17,9 @@ NULL
 #' specific dimension. Filters are described as keys mapped to a lists of
 #' values. Filtered requests are *unioned* for each value in the value
 #' list, and then *intersected* for each filter key.
+#' 
+#' `CustomerIdentifier` and `CustomerAWSAccountID` are mutually exclusive.
+#' You can't specify both in the same request.
 #' @param NextToken For paginated calls to GetEntitlements, pass the NextToken from the
 #' previous GetEntitlementsResult.
 #' @param MaxResults The maximum number of items to retrieve from the GetEntitlements

@@ -2,7 +2,7 @@
 % Please edit documentation in R/cloudformation_operations.R
 \name{cloudformation_update_stack_set}
 \alias{cloudformation_update_stack_set}
-\title{Updates the stack set, and associated stack instances in the specified
+\title{Updates the stack set and associated stack instances in the specified
 accounts and Amazon Web Services Regions}
 \usage{
 cloudformation_update_stack_set(
@@ -142,12 +142,12 @@ an \verb{access denied} error, and the stack set is not updated.}
 
 \item{OperationPreferences}{Preferences for how CloudFormation performs this stack set operation.}
 
-\item{AdministrationRoleARN}{The Amazon Resource Name (ARN) of the IAM role to use to update this
-stack set.
+\item{AdministrationRoleARN}{[Self-managed permissions] The Amazon Resource Name (ARN) of the IAM
+role to use to update this stack set.
 
 Specify an IAM role only if you are using customized administrator roles
 to control which users or groups can manage specific stack sets within
-the same administrator account. For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-prereqs.html}{Prerequisites for using CloudFormation StackSets}
+the same administrator account. For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-prereqs-self-managed.html}{Grant self-managed permissions}
 in the \emph{CloudFormation User Guide}.
 
 If you specified a customized administrator role when you created the
@@ -155,10 +155,10 @@ stack set, you must specify a customized administrator role, even if it
 is the same customized administrator role used with this stack set
 previously.}
 
-\item{ExecutionRoleName}{The name of the IAM execution role to use to update the stack set. If
-you do not specify an execution role, CloudFormation uses the
-\code{AWSCloudFormationStackSetExecutionRole} role for the stack set
-operation.
+\item{ExecutionRoleName}{[Self-managed permissions] The name of the IAM execution role to use
+to update the stack set. If you do not specify an execution role,
+CloudFormation uses the \code{AWSCloudFormationStackSetExecutionRole} role
+for the stack set operation.
 
 Specify an IAM role only if you are using customized execution roles to
 control which stack resources users and groups can include in their
@@ -199,7 +199,9 @@ Organizations. For more information, see \href{https://docs.aws.amazon.com/AWSCl
 
 \item{AutoDeployment}{[Service-managed permissions] Describes whether StackSets
 automatically deploys to Organizations accounts that are added to a
-target organization or organizational unit (OU).
+target organization or organizational unit (OU). For more information,
+see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-manage-auto-deployment.html}{Manage automatic deployments for CloudFormation StackSets that use service-managed permissions}
+in the \emph{CloudFormation User Guide}.
 
 If you specify \code{AutoDeployment}, don't specify \code{DeploymentTargets} or
 \code{Regions}.}
@@ -271,7 +273,7 @@ in the \emph{CloudFormation User Guide}.
 concurrently and queues conflicting operations.}
 }
 \description{
-Updates the stack set, and associated stack instances in the specified accounts and Amazon Web Services Regions.
+Updates the stack set and associated stack instances in the specified accounts and Amazon Web Services Regions.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudformation_update_stack_set/} for full documentation.
 }

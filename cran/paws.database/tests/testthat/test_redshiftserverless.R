@@ -20,6 +20,14 @@ test_that("list_recovery_points", {
   expect_error(svc$list_recovery_points(), NA)
 })
 
+test_that("list_reservation_offerings", {
+  expect_error(svc$list_reservation_offerings(), NA)
+})
+
+test_that("list_reservations", {
+  expect_error(svc$list_reservations(), NA)
+})
+
 test_that("list_scheduled_actions", {
   expect_error(svc$list_scheduled_actions(), NA)
 })
@@ -34,6 +42,10 @@ test_that("list_snapshots", {
 
 test_that("list_table_restore_status", {
   expect_error(svc$list_table_restore_status(), NA)
+})
+
+test_that("list_tracks", {
+  expect_error(svc$list_tracks(), NA)
 })
 
 test_that("list_usage_limits", {

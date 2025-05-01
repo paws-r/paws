@@ -369,14 +369,24 @@ ssm_create_activation <- function(Description = NULL, DefaultInstanceName = NULL
 #' By default, all associations use `AUTO` mode.
 #' @param ApplyOnlyAtCronInterval By default, when you create a new association, the system runs it
 #' immediately after it is created and then according to the schedule you
-#' specified. Specify this option if you don't want an association to run
-#' immediately after you create it. This parameter isn't supported for rate
-#' expressions.
-#' @param CalendarNames The names or Amazon Resource Names (ARNs) of the Change Calendar type
+#' specified and when target changes are detected. Specify `true` for
+#' `ApplyOnlyAtCronInterval`if you want the association to run only
+#' according to the schedule you specified.
+#' 
+#' For more information, see [Understanding when associations are applied
+#' to
+#' resources](https://docs.aws.amazon.com/systems-manager/latest/userguide/state-manager-about.html#state-manager-about-scheduling)
+#' and [\>About target updates with Automation
+#' runbooks](https://docs.aws.amazon.com/systems-manager/latest/userguide/state-manager-about.html#runbook-target-updates)
+#' in the *Amazon Web Services Systems Manager User Guide*.
+#' 
+#' This parameter isn't supported for rate expressions.
+#' @param CalendarNames The names of Amazon Resource Names (ARNs) of the Change Calendar type
 #' documents you want to gate your associations under. The associations
 #' only run when that change calendar is open. For more information, see
 #' [Amazon Web Services Systems Manager Change
-#' Calendar](https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-change-calendar.html).
+#' Calendar](https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-change-calendar.html)
+#' in the *Amazon Web Services Systems Manager User Guide*.
 #' @param TargetLocations A location is a combination of Amazon Web Services Regions and Amazon
 #' Web Services accounts where you want to run the association. Use this
 #' action to create an association in multiple Regions and multiple
@@ -888,6 +898,18 @@ ssm_create_ops_metadata <- function(ResourceId, Metadata = NULL, Tags = NULL) {
 #' @param Sources Information about the patches to use to update the managed nodes,
 #' including target operating systems and source repositories. Applies to
 #' Linux managed nodes only.
+#' @param AvailableSecurityUpdatesComplianceStatus Indicates the status you want to assign to security patches that are
+#' available but not approved because they don't meet the installation
+#' criteria specified in the patch baseline.
+#' 
+#' Example scenario: Security patches that you might want installed can be
+#' skipped if you have specified a long period to wait after a patch is
+#' released before installation. If an update to the patch is released
+#' during your specified waiting period, the waiting period for installing
+#' the patch starts over. If the waiting period is too long, multiple
+#' versions of the patch could be released but never installed.
+#' 
+#' Supported for Windows Server managed nodes only.
 #' @param ClientToken User-provided idempotency token.
 #' @param Tags Optional metadata that you assign to a resource. Tags enable you to
 #' categorize a resource in different ways, such as by purpose, owner, or
@@ -906,7 +928,7 @@ ssm_create_ops_metadata <- function(ResourceId, Metadata = NULL, Tags = NULL) {
 #' @keywords internal
 #'
 #' @rdname ssm_create_patch_baseline
-ssm_create_patch_baseline <- function(OperatingSystem = NULL, Name, GlobalFilters = NULL, ApprovalRules = NULL, ApprovedPatches = NULL, ApprovedPatchesComplianceLevel = NULL, ApprovedPatchesEnableNonSecurity = NULL, RejectedPatches = NULL, RejectedPatchesAction = NULL, Description = NULL, Sources = NULL, ClientToken = NULL, Tags = NULL) {
+ssm_create_patch_baseline <- function(OperatingSystem = NULL, Name, GlobalFilters = NULL, ApprovalRules = NULL, ApprovedPatches = NULL, ApprovedPatchesComplianceLevel = NULL, ApprovedPatchesEnableNonSecurity = NULL, RejectedPatches = NULL, RejectedPatchesAction = NULL, Description = NULL, Sources = NULL, AvailableSecurityUpdatesComplianceStatus = NULL, ClientToken = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreatePatchBaseline",
     http_method = "POST",
@@ -915,7 +937,7 @@ ssm_create_patch_baseline <- function(OperatingSystem = NULL, Name, GlobalFilter
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ssm$create_patch_baseline_input(OperatingSystem = OperatingSystem, Name = Name, GlobalFilters = GlobalFilters, ApprovalRules = ApprovalRules, ApprovedPatches = ApprovedPatches, ApprovedPatchesComplianceLevel = ApprovedPatchesComplianceLevel, ApprovedPatchesEnableNonSecurity = ApprovedPatchesEnableNonSecurity, RejectedPatches = RejectedPatches, RejectedPatchesAction = RejectedPatchesAction, Description = Description, Sources = Sources, ClientToken = ClientToken, Tags = Tags)
+  input <- .ssm$create_patch_baseline_input(OperatingSystem = OperatingSystem, Name = Name, GlobalFilters = GlobalFilters, ApprovalRules = ApprovalRules, ApprovedPatches = ApprovedPatches, ApprovedPatchesComplianceLevel = ApprovedPatchesComplianceLevel, ApprovedPatchesEnableNonSecurity = ApprovedPatchesEnableNonSecurity, RejectedPatches = RejectedPatches, RejectedPatchesAction = RejectedPatchesAction, Description = Description, Sources = Sources, AvailableSecurityUpdatesComplianceStatus = AvailableSecurityUpdatesComplianceStatus, ClientToken = ClientToken, Tags = Tags)
   output <- .ssm$create_patch_baseline_output()
   config <- get_config()
   svc <- .ssm$service(config, op)
@@ -1400,7 +1422,7 @@ ssm_delete_resource_policy <- function(ResourceArn, PolicyId, PolicyHash) {
 #' servers
 #'
 #' @description
-#' Removes the server or virtual machine from the list of registered servers. You can reregister the node again at any time. If you don't plan to use Run Command on the server, we suggest uninstalling SSM Agent first.
+#' Removes the server or virtual machine from the list of registered servers.
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssm_deregister_managed_instance/](https://www.paws-r-sdk.com/docs/ssm_deregister_managed_instance/) for full documentation.
 #'
@@ -3065,6 +3087,37 @@ ssm_disassociate_ops_item_related_item <- function(OpsItemId, AssociationId) {
 }
 .ssm$operations$disassociate_ops_item_related_item <- ssm_disassociate_ops_item_related_item
 
+#' Returns a credentials set to be used with just-in-time node access
+#'
+#' @description
+#' Returns a credentials set to be used with just-in-time node access.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ssm_get_access_token/](https://www.paws-r-sdk.com/docs/ssm_get_access_token/) for full documentation.
+#'
+#' @param AccessRequestId &#91;required&#93; The ID of a just-in-time node access request.
+#'
+#' @keywords internal
+#'
+#' @rdname ssm_get_access_token
+ssm_get_access_token <- function(AccessRequestId) {
+  op <- new_operation(
+    name = "GetAccessToken",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ssm$get_access_token_input(AccessRequestId = AccessRequestId)
+  output <- .ssm$get_access_token_output()
+  config <- get_config()
+  svc <- .ssm$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ssm$operations$get_access_token <- ssm_get_access_token
+
 #' Get detailed information about a particular Automation execution
 #'
 #' @description
@@ -3106,7 +3159,7 @@ ssm_get_automation_execution <- function(AutomationExecutionId) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssm_get_calendar_state/](https://www.paws-r-sdk.com/docs/ssm_get_calendar_state/) for full documentation.
 #'
-#' @param CalendarNames &#91;required&#93; The names or Amazon Resource Names (ARNs) of the Systems Manager
+#' @param CalendarNames &#91;required&#93; The names of Amazon Resource Names (ARNs) of the Systems Manager
 #' documents (SSM documents) that represent the calendar entries for which
 #' you want to get the state.
 #' @param AtTime (Optional) The specific time for which you want to get calendar state
@@ -4516,9 +4569,15 @@ ssm_list_inventory_entries <- function(InstanceId, TypeName, Filters = NULL, Nex
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssm_list_nodes/](https://www.paws-r-sdk.com/docs/ssm_list_nodes/) for full documentation.
 #'
-#' @param SyncName The name of the resource data sync to retrieve information about.
-#' Required for cross-account/cross-Region configurations. Optional for
-#' single account/single-Region configurations.
+#' @param SyncName The name of the Amazon Web Services managed resource data sync to
+#' retrieve information about.
+#' 
+#' For cross-account/cross-Region configurations, this parameter is
+#' required, and the name of the supported resource data sync is
+#' `AWS-QuickSetup-ManagedNode`.
+#' 
+#' For single account/single-Region configurations, the parameter is not
+#' required.
 #' @param Filters One or more filters. Use a filter to return a more specific list of
 #' managed nodes.
 #' @param NextToken The token for the next set of items to return. (You received this token
@@ -4557,9 +4616,15 @@ ssm_list_nodes <- function(SyncName = NULL, Filters = NULL, NextToken = NULL, Ma
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssm_list_nodes_summary/](https://www.paws-r-sdk.com/docs/ssm_list_nodes_summary/) for full documentation.
 #'
-#' @param SyncName The name of the resource data sync to retrieve information about.
-#' Required for cross-account/cross-Region configuration. Optional for
-#' single account/single-Region configurations.
+#' @param SyncName The name of the Amazon Web Services managed resource data sync to
+#' retrieve information about.
+#' 
+#' For cross-account/cross-Region configurations, this parameter is
+#' required, and the name of the supported resource data sync is
+#' `AWS-QuickSetup-ManagedNode`.
+#' 
+#' For single account/single-Region configurations, the parameter is not
+#' required.
 #' @param Filters One or more filters. Use a filter to generate a summary that matches
 #' your specified filter criteria.
 #' @param Aggregators &#91;required&#93; Specify one or more aggregators to return a count of managed nodes that
@@ -4830,12 +4895,15 @@ ssm_list_tags_for_resource <- function(ResourceType, ResourceId) {
 #' @param PermissionType &#91;required&#93; The permission type for the document. The permission type can be
 #' *Share*.
 #' @param AccountIdsToAdd The Amazon Web Services users that should have access to the document.
-#' The account IDs can either be a group of account IDs or *All*.
+#' The account IDs can either be a group of account IDs or *All*. You must
+#' specify a value for this parameter or the `AccountIdsToRemove`
+#' parameter.
 #' @param AccountIdsToRemove The Amazon Web Services users that should no longer have access to the
 #' document. The Amazon Web Services user can either be a group of account
 #' IDs or *All*. This action has a higher priority than `AccountIdsToAdd`.
 #' If you specify an ID to add and the same ID to remove, the system
-#' removes access to the document.
+#' removes access to the document. You must specify a value for this
+#' parameter or the `AccountIdsToAdd` parameter.
 #' @param SharedDocumentVersion (Optional) The version of the document to share. If it isn't specified,
 #' the system choose the `Default` version to share.
 #'
@@ -4951,15 +5019,15 @@ ssm_put_inventory <- function(InstanceId, Items) {
 }
 .ssm$operations$put_inventory <- ssm_put_inventory
 
-#' Add a parameter to the system
+#' Create or update a parameter in Parameter Store
 #'
 #' @description
-#' Add a parameter to the system.
+#' Create or update a parameter in Parameter Store.
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssm_put_parameter/](https://www.paws-r-sdk.com/docs/ssm_put_parameter/) for full documentation.
 #'
-#' @param Name &#91;required&#93; The fully qualified name of the parameter that you want to add to the
-#' system.
+#' @param Name &#91;required&#93; The fully qualified name of the parameter that you want to create or
+#' update.
 #' 
 #' You can't enter the Amazon Resource Name (ARN) for a parameter, only the
 #' parameter name itself.
@@ -4995,11 +5063,16 @@ ssm_put_inventory <- function(InstanceId, Items) {
 #' parameters](https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-paramstore-su-create.html)
 #' in the *Amazon Web Services Systems Manager User Guide*.
 #' 
-#' The maximum length constraint of 2048 characters listed below includes
-#' 1037 characters reserved for internal use by Systems Manager. The
-#' maximum length for a parameter name that you create is 1011 characters.
-#' This includes the characters in the ARN that precede the name you
-#' specify, such as `arn:aws:ssm:us-east-2:111122223333:parameter/`.
+#' The reported maximum length of 2048 characters for a parameter name
+#' includes 1037 characters that are reserved for internal use by Systems
+#' Manager. The maximum length for a parameter name that you specify is
+#' 1011 characters.
+#' 
+#' This count of 1011 characters includes the characters in the ARN that
+#' precede the name you specify. This ARN length will vary depending on
+#' your partition and Region. For example, the following 45 characters
+#' count toward the 1011 character maximum for a parameter created in the
+#' US East (Ohio) Region: `arn:aws:ssm:us-east-2:111122223333:parameter/`.
 #' @param Description Information about the parameter that you want to add to the system.
 #' Optional but recommended.
 #' 
@@ -5011,7 +5084,7 @@ ssm_put_inventory <- function(InstanceId, Items) {
 #' Parameters can't be referenced or nested in the values of other
 #' parameters. You can't include values wrapped in double brackets `{{}}`
 #' or `{{ssm:parameter-name}}` in a parameter value.
-#' @param Type The type of parameter that you want to add to the system.
+#' @param Type The type of parameter that you want to create.
 #' 
 #' `SecureString` isn't currently supported for CloudFormation templates.
 #' 
@@ -5027,7 +5100,7 @@ ssm_put_inventory <- function(InstanceId, Items) {
 #' that use the `SecureString` data type.
 #' 
 #' If you don't specify a key ID, the system uses the default key
-#' associated with your Amazon Web Services account which is not as secure
+#' associated with your Amazon Web Services account, which is not as secure
 #' as using a custom key.
 #' 
 #' -   To use a custom KMS key, choose the `SecureString` data type with
@@ -5834,6 +5907,40 @@ ssm_send_command <- function(InstanceIds = NULL, Targets = NULL, DocumentName, D
 }
 .ssm$operations$send_command <- ssm_send_command
 
+#' Starts the workflow for just-in-time node access sessions
+#'
+#' @description
+#' Starts the workflow for just-in-time node access sessions.
+#'
+#' See [https://www.paws-r-sdk.com/docs/ssm_start_access_request/](https://www.paws-r-sdk.com/docs/ssm_start_access_request/) for full documentation.
+#'
+#' @param Reason &#91;required&#93; A brief description explaining why you are requesting access to the
+#' node.
+#' @param Targets &#91;required&#93; The node you are requesting access to.
+#' @param Tags Key-value pairs of metadata you want to assign to the access request.
+#'
+#' @keywords internal
+#'
+#' @rdname ssm_start_access_request
+ssm_start_access_request <- function(Reason, Targets, Tags = NULL) {
+  op <- new_operation(
+    name = "StartAccessRequest",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .ssm$start_access_request_input(Reason = Reason, Targets = Targets, Tags = Tags)
+  output <- .ssm$start_access_request_output()
+  config <- get_config()
+  svc <- .ssm$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ssm$operations$start_access_request <- ssm_start_access_request
+
 #' Runs an association immediately and only one time
 #'
 #' @description
@@ -6340,22 +6447,30 @@ ssm_unlabel_parameter_version <- function(Name, ParameterVersion, Labels) {
 #' By default, all associations use `AUTO` mode.
 #' @param ApplyOnlyAtCronInterval By default, when you update an association, the system runs it
 #' immediately after it is updated and then according to the schedule you
-#' specified. Specify this option if you don't want an association to run
-#' immediately after you update it. This parameter isn't supported for rate
-#' expressions.
+#' specified. Specify `true` for `ApplyOnlyAtCronInterval` if you want the
+#' association to run only according to the schedule you specified.
 #' 
 #' If you chose this option when you created an association and later you
-#' edit that association or you make changes to the SSM document on which
-#' that association is based (by using the Documents page in the console),
-#' State Manager applies the association at the next specified cron
-#' interval. For example, if you chose the `Latest` version of an SSM
-#' document when you created an association and you edit the association by
-#' choosing a different document version on the Documents page, State
-#' Manager applies the association at the next specified cron interval if
-#' you previously selected this option. If this option wasn't selected,
+#' edit that association or you make changes to the Automation runbook or
+#' SSM document on which that association is based, State Manager applies
+#' the association at the next specified cron interval. For example, if you
+#' chose the `Latest` version of an SSM document when you created an
+#' association and you edit the association by choosing a different
+#' document version on the Documents page, State Manager applies the
+#' association at the next specified cron interval if you previously set
+#' `ApplyOnlyAtCronInterval` to `true`. If this option wasn't selected,
 #' State Manager immediately runs the association.
 #' 
-#' You can reset this option. To do so, specify the
+#' For more information, see [Understanding when associations are applied
+#' to
+#' resources](https://docs.aws.amazon.com/systems-manager/latest/userguide/state-manager-about.html#state-manager-about-scheduling)
+#' and [About target updates with Automation
+#' runbooks](https://docs.aws.amazon.com/systems-manager/latest/userguide/state-manager-about.html#runbook-target-updates)
+#' in the *Amazon Web Services Systems Manager User Guide*.
+#' 
+#' This parameter isn't supported for rate expressions.
+#' 
+#' You can reset this parameter. To do so, specify the
 #' `no-apply-only-at-cron-interval` parameter when you update the
 #' association from the command line. This parameter forces the association
 #' to run immediately after updating it and according to the interval
@@ -6364,7 +6479,8 @@ ssm_unlabel_parameter_version <- function(Name, ParameterVersion, Labels) {
 #' documents you want to gate your associations under. The associations
 #' only run when that change calendar is open. For more information, see
 #' [Amazon Web Services Systems Manager Change
-#' Calendar](https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-change-calendar.html).
+#' Calendar](https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-change-calendar.html)
+#' in the *Amazon Web Services Systems Manager User Guide*.
 #' @param TargetLocations A location is a combination of Amazon Web Services Regions and Amazon
 #' Web Services accounts where you want to run the association. Use this
 #' action to update an association in multiple Regions and multiple
@@ -7058,6 +7174,18 @@ ssm_update_ops_metadata <- function(OpsMetadataArn, MetadataToUpdate = NULL, Key
 #' @param Sources Information about the patches to use to update the managed nodes,
 #' including target operating systems and source repositories. Applies to
 #' Linux managed nodes only.
+#' @param AvailableSecurityUpdatesComplianceStatus Indicates the status to be assigned to security patches that are
+#' available but not approved because they don't meet the installation
+#' criteria specified in the patch baseline.
+#' 
+#' Example scenario: Security patches that you might want installed can be
+#' skipped if you have specified a long period to wait after a patch is
+#' released before installation. If an update to the patch is released
+#' during your specified waiting period, the waiting period for installing
+#' the patch starts over. If the waiting period is too long, multiple
+#' versions of the patch could be released but never installed.
+#' 
+#' Supported for Windows Server managed nodes only.
 #' @param Replace If True, then all fields that are required by the
 #' [`create_patch_baseline`][ssm_create_patch_baseline] operation are also
 #' required for this API request. Optional fields that aren't specified are
@@ -7066,7 +7194,7 @@ ssm_update_ops_metadata <- function(OpsMetadataArn, MetadataToUpdate = NULL, Key
 #' @keywords internal
 #'
 #' @rdname ssm_update_patch_baseline
-ssm_update_patch_baseline <- function(BaselineId, Name = NULL, GlobalFilters = NULL, ApprovalRules = NULL, ApprovedPatches = NULL, ApprovedPatchesComplianceLevel = NULL, ApprovedPatchesEnableNonSecurity = NULL, RejectedPatches = NULL, RejectedPatchesAction = NULL, Description = NULL, Sources = NULL, Replace = NULL) {
+ssm_update_patch_baseline <- function(BaselineId, Name = NULL, GlobalFilters = NULL, ApprovalRules = NULL, ApprovedPatches = NULL, ApprovedPatchesComplianceLevel = NULL, ApprovedPatchesEnableNonSecurity = NULL, RejectedPatches = NULL, RejectedPatchesAction = NULL, Description = NULL, Sources = NULL, AvailableSecurityUpdatesComplianceStatus = NULL, Replace = NULL) {
   op <- new_operation(
     name = "UpdatePatchBaseline",
     http_method = "POST",
@@ -7075,7 +7203,7 @@ ssm_update_patch_baseline <- function(BaselineId, Name = NULL, GlobalFilters = N
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .ssm$update_patch_baseline_input(BaselineId = BaselineId, Name = Name, GlobalFilters = GlobalFilters, ApprovalRules = ApprovalRules, ApprovedPatches = ApprovedPatches, ApprovedPatchesComplianceLevel = ApprovedPatchesComplianceLevel, ApprovedPatchesEnableNonSecurity = ApprovedPatchesEnableNonSecurity, RejectedPatches = RejectedPatches, RejectedPatchesAction = RejectedPatchesAction, Description = Description, Sources = Sources, Replace = Replace)
+  input <- .ssm$update_patch_baseline_input(BaselineId = BaselineId, Name = Name, GlobalFilters = GlobalFilters, ApprovalRules = ApprovalRules, ApprovedPatches = ApprovedPatches, ApprovedPatchesComplianceLevel = ApprovedPatchesComplianceLevel, ApprovedPatchesEnableNonSecurity = ApprovedPatchesEnableNonSecurity, RejectedPatches = RejectedPatches, RejectedPatchesAction = RejectedPatchesAction, Description = Description, Sources = Sources, AvailableSecurityUpdatesComplianceStatus = AvailableSecurityUpdatesComplianceStatus, Replace = Replace)
   output <- .ssm$update_patch_baseline_output()
   config <- get_config()
   svc <- .ssm$service(config, op)

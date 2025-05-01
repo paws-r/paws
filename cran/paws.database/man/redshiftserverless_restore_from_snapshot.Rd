@@ -28,7 +28,7 @@ cluster had at the time the snapshot was taken.}
 \item{ownerAccount}{The Amazon Web Services account that owns the snapshot.}
 
 \item{snapshotArn}{The Amazon Resource Name (ARN) of the snapshot to restore from. Required
-if restoring from Amazon Redshift Serverless to a provisioned cluster.
+if restoring from a provisioned cluster to Amazon Redshift Serverless.
 Must not be specified at the same time as \code{snapshotName}.
 
 The format of the ARN is

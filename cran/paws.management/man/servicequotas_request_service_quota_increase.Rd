@@ -2,13 +2,15 @@
 % Please edit documentation in R/servicequotas_operations.R
 \name{servicequotas_request_service_quota_increase}
 \alias{servicequotas_request_service_quota_increase}
-\title{Submits a quota increase request for the specified quota}
+\title{Submits a quota increase request for the specified quota at the account
+or resource level}
 \usage{
 servicequotas_request_service_quota_increase(
   ServiceCode,
   QuotaCode,
   DesiredValue,
-  ContextId = NULL
+  ContextId = NULL,
+  SupportCaseAllowed = NULL
 )
 }
 \arguments{
@@ -24,12 +26,20 @@ want.}
 
 \item{DesiredValue}{[required] Specifies the new, increased value for the quota.}
 
-\item{ContextId}{Specifies the Amazon Web Services account or resource to which the quota
-applies. The value in this field depends on the context scope associated
-with the specified service quota.}
+\item{ContextId}{Specifies the resource with an Amazon Resource Name (ARN).}
+
+\item{SupportCaseAllowed}{Specifies if an Amazon Web Services Support case can be opened for the
+quota increase request. This parameter is optional.
+
+By default, this flag is set to \code{True} and Amazon Web Services may
+create a support case for some quota increase requests. You can set this
+flag to \code{False} if you do not want a support case created when you
+request a quota increase. If you set the flag to \code{False}, Amazon Web
+Services does not open a support case and updates the request status to
+\verb{Not approved}.}
 }
 \description{
-Submits a quota increase request for the specified quota.
+Submits a quota increase request for the specified quota at the account or resource level.
 
 See \url{https://www.paws-r-sdk.com/docs/servicequotas_request_service_quota_increase/} for full documentation.
 }

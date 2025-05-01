@@ -389,10 +389,11 @@ Valid for Cluster Type: Aurora DB clusters and Multi-AZ DB clusters
 
 The following values are valid for each DB engine:
 \itemize{
-\item Aurora MySQL - \code{audit | error | general | instance | slowquery}
-\item Aurora PostgreSQL - \code{instance | postgresql}
-\item RDS for MySQL - \code{error | general | slowquery}
-\item RDS for PostgreSQL - \code{postgresql | upgrade}
+\item Aurora MySQL -
+\code{audit | error | general | instance | slowquery | iam-db-auth-error}
+\item Aurora PostgreSQL - \code{instance | postgresql | iam-db-auth-error}
+\item RDS for MySQL - \code{error | general | slowquery | iam-db-auth-error}
+\item RDS for PostgreSQL - \code{postgresql | upgrade | iam-db-auth-error}
 }
 
 For more information about exporting CloudWatch Logs for Amazon RDS, see
@@ -589,7 +590,10 @@ attached to it, the DB cluster is public.
 DB cluster during the maintenance window. By default, minor engine
 upgrades are applied automatically.
 
-Valid for Cluster Type: Aurora DB clusters and Multi-AZ DB cluster}
+Valid for Cluster Type: Aurora DB clusters and Multi-AZ DB cluster.
+
+For more information about automatic minor version upgrades, see
+\href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.Upgrading.html#USER_UpgradeDBInstance.Upgrading.AutoMinorVersionUpgrades}{Automatically upgrading the minor engine version}.}
 
 \item{MonitoringInterval}{The interval, in seconds, between points when Enhanced Monitoring
 metrics are collected for the DB cluster. To turn off collecting

@@ -12,8 +12,20 @@ test_that("list_cloud_front_origin_access_identities", {
   expect_error(svc$list_cloud_front_origin_access_identities(), NA)
 })
 
+test_that("list_connection_groups", {
+  expect_error(svc$list_connection_groups(), NA)
+})
+
 test_that("list_continuous_deployment_policies", {
   expect_error(svc$list_continuous_deployment_policies(), NA)
+})
+
+test_that("list_distribution_tenants", {
+  expect_error(svc$list_distribution_tenants(), NA)
+})
+
+test_that("list_distribution_tenants_by_customization", {
+  expect_error(svc$list_distribution_tenants_by_customization(), NA)
 })
 
 test_that("list_distributions", {

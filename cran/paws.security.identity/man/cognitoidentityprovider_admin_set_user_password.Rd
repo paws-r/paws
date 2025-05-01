@@ -14,11 +14,11 @@ cognitoidentityprovider_admin_set_user_password(
 \arguments{
 \item{UserPoolId}{[required] The ID of the user pool where you want to set the user's password.}
 
-\item{Username}{[required] The username of the user that you want to query or modify. The value of
-this parameter is typically your user's username, but it can be any of
-their alias attributes. If \code{username} isn't an alias attribute in your
-user pool, this value must be the \code{sub} of a local user or the username
-of a user from a third-party IdP.}
+\item{Username}{[required] The name of the user that you want to query or modify. The value of this
+parameter is typically your user's username, but it can be any of their
+alias attributes. If \code{username} isn't an alias attribute in your user
+pool, this value must be the \code{sub} of a local user or the username of a
+user from a third-party IdP.}
 
 \item{Password}{[required] The new temporary or permanent password that you want to set for the
 user. You can't remove the password for a user who already has a

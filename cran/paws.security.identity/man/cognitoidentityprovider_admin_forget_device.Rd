@@ -9,16 +9,13 @@ cognitoidentityprovider_admin_forget_device(UserPoolId, Username, DeviceKey)
 \arguments{
 \item{UserPoolId}{[required] The ID of the user pool where the device owner is a user.}
 
-\item{Username}{[required] The username of the user that you want to query or modify. The value of
-this parameter is typically your user's username, but it can be any of
-their alias attributes. If \code{username} isn't an alias attribute in your
-user pool, this value must be the \code{sub} of a local user or the username
-of a user from a third-party IdP.}
+\item{Username}{[required] The name of the user that you want to query or modify. The value of this
+parameter is typically your user's username, but it can be any of their
+alias attributes. If \code{username} isn't an alias attribute in your user
+pool, this value must be the \code{sub} of a local user or the username of a
+user from a third-party IdP.}
 
-\item{DeviceKey}{[required] The key ID of the device that you want to delete. You can get device
-keys in the response to an
-\code{\link[=cognitoidentityprovider_admin_list_devices]{admin_list_devices}}
-request.}
+\item{DeviceKey}{[required] The key ID of the device that you want to delete.}
 }
 \description{
 Forgets, or deletes, a remembered device from a user's profile. After you forget the device, the user can no longer complete device authentication with that device and when applicable, must submit MFA codes again. For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/amazon-cognito-user-pools-device-tracking.html}{Working with devices}.

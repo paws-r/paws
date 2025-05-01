@@ -465,7 +465,8 @@ bedrockagent_create_agent <- function(agentCollaboration = NULL, agentName, agen
 #' @usage
 #' bedrockagent_create_agent_action_group(actionGroupExecutor,
 #'   actionGroupName, actionGroupState, agentId, agentVersion, apiSchema,
-#'   clientToken, description, functionSchema, parentActionGroupSignature)
+#'   clientToken, description, functionSchema, parentActionGroupSignature,
+#'   parentActionGroupSignatureParams)
 #'
 #' @param actionGroupExecutor The Amazon Resource Name (ARN) of the Lambda function containing the
 #' business logic that is carried out upon invoking the action or the
@@ -490,22 +491,45 @@ bedrockagent_create_agent <- function(agentCollaboration = NULL, agentName, agen
 #' @param description A description of the action group.
 #' @param functionSchema Contains details about the function schema for the action group or the
 #' JSON or YAML-formatted payload defining the schema.
-#' @param parentActionGroupSignature To allow your agent to request the user for additional information when
-#' trying to complete a task, set this field to `AMAZON.UserInput`. You
-#' must leave the `description`, `apiSchema`, and `actionGroupExecutor`
-#' fields blank for this action group.
+#' @param parentActionGroupSignature Specify a built-in or computer use action for this action group. If you
+#' specify a value, you must leave the `description`, `apiSchema`, and
+#' `actionGroupExecutor` fields empty for this action group.
 #' 
-#' To allow your agent to generate, run, and troubleshoot code when trying
-#' to complete a task, set this field to `AMAZON.CodeInterpreter`. You must
-#' leave the `description`, `apiSchema`, and `actionGroupExecutor` fields
-#' blank for this action group.
+#' -   To allow your agent to request the user for additional information
+#'     when trying to complete a task, set this field to
+#'     `AMAZON.UserInput`.
 #' 
-#' During orchestration, if your agent determines that it needs to invoke
-#' an API in an action group, but doesn't have enough information to
-#' complete the API request, it will invoke this action group instead and
-#' return an
-#' [Observation](https://docs.aws.amazon.com/bedrock/latest/APIReference/API_agent-runtime_Observation.html)
-#' reprompting the user for more information.
+#' -   To allow your agent to generate, run, and troubleshoot code when
+#'     trying to complete a task, set this field to
+#'     `AMAZON.CodeInterpreter`.
+#' 
+#' -   To allow your agent to use an Anthropic computer use tool, specify
+#'     one of the following values.
+#' 
+#'     Computer use is a new Anthropic Claude model capability (in beta)
+#'     available with Anthropic Claude 3.7 Sonnet and Claude 3.5 Sonnet v2
+#'     only. When operating computer use functionality, we recommend taking
+#'     additional security precautions, such as executing computer actions
+#'     in virtual environments with restricted data access and limited
+#'     internet connectivity. For more information, see [Configure an
+#'     Amazon Bedrock Agent to complete tasks with computer use
+#'     tools](https://docs.aws.amazon.com/bedrock/latest/userguide/agents-computer-use.html).
+#' 
+#'     -   `ANTHROPIC.Computer` - Gives the agent permission to use the
+#'         mouse and keyboard and take screenshots.
+#' 
+#'     -   `ANTHROPIC.TextEditor` - Gives the agent permission to view,
+#'         create and edit files.
+#' 
+#'     -   `ANTHROPIC.Bash` - Gives the agent permission to run commands in
+#'         a bash shell.
+#' @param parentActionGroupSignatureParams The configuration settings for a computer use action.
+#' 
+#' Computer use is a new Anthropic Claude model capability (in beta)
+#' available with Anthropic Claude 3.7 Sonnet and Claude 3.5 Sonnet v2
+#' only. For more information, see [Configure an Amazon Bedrock Agent to
+#' complete tasks with computer use
+#' tools](https://docs.aws.amazon.com/bedrock/latest/userguide/agents-computer-use.html).
 #'
 #' @return
 #' A list with the following syntax:
@@ -549,7 +573,10 @@ bedrockagent_create_agent <- function(agentCollaboration = NULL, agentName, agen
 #'         )
 #'       )
 #'     ),
-#'     parentActionSignature = "AMAZON.UserInput"|"AMAZON.CodeInterpreter",
+#'     parentActionGroupSignatureParams = list(
+#'       "string"
+#'     ),
+#'     parentActionSignature = "AMAZON.UserInput"|"AMAZON.CodeInterpreter"|"ANTHROPIC.Computer"|"ANTHROPIC.Bash"|"ANTHROPIC.TextEditor",
 #'     updatedAt = as.POSIXct(
 #'       "2015-01-01"
 #'     )
@@ -593,7 +620,10 @@ bedrockagent_create_agent <- function(agentCollaboration = NULL, agentName, agen
 #'       )
 #'     )
 #'   ),
-#'   parentActionGroupSignature = "AMAZON.UserInput"|"AMAZON.CodeInterpreter"
+#'   parentActionGroupSignature = "AMAZON.UserInput"|"AMAZON.CodeInterpreter"|"ANTHROPIC.Computer"|"ANTHROPIC.Bash"|"ANTHROPIC.TextEditor",
+#'   parentActionGroupSignatureParams = list(
+#'     "string"
+#'   )
 #' )
 #' ```
 #'
@@ -602,7 +632,7 @@ bedrockagent_create_agent <- function(agentCollaboration = NULL, agentName, agen
 #' @rdname bedrockagent_create_agent_action_group
 #'
 #' @aliases bedrockagent_create_agent_action_group
-bedrockagent_create_agent_action_group <- function(actionGroupExecutor = NULL, actionGroupName, actionGroupState = NULL, agentId, agentVersion, apiSchema = NULL, clientToken = NULL, description = NULL, functionSchema = NULL, parentActionGroupSignature = NULL) {
+bedrockagent_create_agent_action_group <- function(actionGroupExecutor = NULL, actionGroupName, actionGroupState = NULL, agentId, agentVersion, apiSchema = NULL, clientToken = NULL, description = NULL, functionSchema = NULL, parentActionGroupSignature = NULL, parentActionGroupSignatureParams = NULL) {
   op <- new_operation(
     name = "CreateAgentActionGroup",
     http_method = "PUT",
@@ -611,7 +641,7 @@ bedrockagent_create_agent_action_group <- function(actionGroupExecutor = NULL, a
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagent$create_agent_action_group_input(actionGroupExecutor = actionGroupExecutor, actionGroupName = actionGroupName, actionGroupState = actionGroupState, agentId = agentId, agentVersion = agentVersion, apiSchema = apiSchema, clientToken = clientToken, description = description, functionSchema = functionSchema, parentActionGroupSignature = parentActionGroupSignature)
+  input <- .bedrockagent$create_agent_action_group_input(actionGroupExecutor = actionGroupExecutor, actionGroupName = actionGroupName, actionGroupState = actionGroupState, agentId = agentId, agentVersion = agentVersion, apiSchema = apiSchema, clientToken = clientToken, description = description, functionSchema = functionSchema, parentActionGroupSignature = parentActionGroupSignature, parentActionGroupSignatureParams = parentActionGroupSignatureParams)
   output <- .bedrockagent$create_agent_action_group_output()
   config <- get_config()
   svc <- .bedrockagent$service(config, op)
@@ -934,6 +964,15 @@ bedrockagent_create_agent_alias <- function(agentAliasName, agentId, clientToken
 #'           maxTokens = 123
 #'         )
 #'       ),
+#'       contextEnrichmentConfiguration = list(
+#'         bedrockFoundationModelConfiguration = list(
+#'           enrichmentStrategyConfiguration = list(
+#'             method = "CHUNK_ENTITY_EXTRACTION"
+#'           ),
+#'           modelArn = "string"
+#'         ),
+#'         type = "BEDROCK_FOUNDATION_MODEL"
+#'       ),
 #'       customTransformationConfiguration = list(
 #'         intermediateStorage = list(
 #'           s3Location = list(
@@ -1118,6 +1157,15 @@ bedrockagent_create_agent_alias <- function(agentAliasName, agentId, clientToken
 #'         maxTokens = 123
 #'       )
 #'     ),
+#'     contextEnrichmentConfiguration = list(
+#'       bedrockFoundationModelConfiguration = list(
+#'         enrichmentStrategyConfiguration = list(
+#'           method = "CHUNK_ENTITY_EXTRACTION"
+#'         ),
+#'         modelArn = "string"
+#'       ),
+#'       type = "BEDROCK_FOUNDATION_MODEL"
+#'     ),
 #'     customTransformationConfiguration = list(
 #'       intermediateStorage = list(
 #'         s3Location = list(
@@ -1253,6 +1301,10 @@ bedrockagent_create_data_source <- function(clientToken = NULL, dataDeletionPoli
 #'               )
 #'             )
 #'           ),
+#'           inlineCode = list(
+#'             code = "string",
+#'             language = "Python_3"
+#'           ),
 #'           input = list(),
 #'           iterator = list(),
 #'           knowledgeBase = list(
@@ -1390,7 +1442,7 @@ bedrockagent_create_data_source <- function(clientToken = NULL, dataDeletionPoli
 #'             type = "String"|"Number"|"Boolean"|"Object"|"Array"
 #'           )
 #'         ),
-#'         type = "Input"|"Output"|"KnowledgeBase"|"Condition"|"Lex"|"Prompt"|"LambdaFunction"|"Storage"|"Agent"|"Retrieval"|"Iterator"|"Collector"
+#'         type = "Input"|"Output"|"KnowledgeBase"|"Condition"|"Lex"|"Prompt"|"LambdaFunction"|"Storage"|"Agent"|"Retrieval"|"Iterator"|"Collector"|"InlineCode"
 #'       )
 #'     )
 #'   ),
@@ -1444,6 +1496,10 @@ bedrockagent_create_data_source <- function(clientToken = NULL, dataDeletionPoli
 #'               )
 #'             )
 #'           ),
+#'           inlineCode = list(
+#'             code = "string",
+#'             language = "Python_3"
+#'           ),
 #'           input = list(),
 #'           iterator = list(),
 #'           knowledgeBase = list(
@@ -1581,7 +1637,7 @@ bedrockagent_create_data_source <- function(clientToken = NULL, dataDeletionPoli
 #'             type = "String"|"Number"|"Boolean"|"Object"|"Array"
 #'           )
 #'         ),
-#'         type = "Input"|"Output"|"KnowledgeBase"|"Condition"|"Lex"|"Prompt"|"LambdaFunction"|"Storage"|"Agent"|"Retrieval"|"Iterator"|"Collector"
+#'         type = "Input"|"Output"|"KnowledgeBase"|"Condition"|"Lex"|"Prompt"|"LambdaFunction"|"Storage"|"Agent"|"Retrieval"|"Iterator"|"Collector"|"InlineCode"
 #'       )
 #'     )
 #'   ),
@@ -1770,6 +1826,10 @@ bedrockagent_create_flow_alias <- function(clientToken = NULL, description = NUL
 #'               )
 #'             )
 #'           ),
+#'           inlineCode = list(
+#'             code = "string",
+#'             language = "Python_3"
+#'           ),
 #'           input = list(),
 #'           iterator = list(),
 #'           knowledgeBase = list(
@@ -1907,7 +1967,7 @@ bedrockagent_create_flow_alias <- function(clientToken = NULL, description = NUL
 #'             type = "String"|"Number"|"Boolean"|"Object"|"Array"
 #'           )
 #'         ),
-#'         type = "Input"|"Output"|"KnowledgeBase"|"Condition"|"Lex"|"Prompt"|"LambdaFunction"|"Storage"|"Agent"|"Retrieval"|"Iterator"|"Collector"
+#'         type = "Input"|"Output"|"KnowledgeBase"|"Condition"|"Lex"|"Prompt"|"LambdaFunction"|"Storage"|"Agent"|"Retrieval"|"Iterator"|"Collector"|"InlineCode"
 #'       )
 #'     )
 #'   ),
@@ -2131,6 +2191,24 @@ bedrockagent_create_flow_version <- function(clientToken = NULL, description = N
 #'           textField = "string",
 #'           vectorField = "string"
 #'         ),
+#'         textIndexName = "string",
+#'         vectorIndexName = "string"
+#'       ),
+#'       neptuneAnalyticsConfiguration = list(
+#'         fieldMapping = list(
+#'           metadataField = "string",
+#'           textField = "string"
+#'         ),
+#'         graphArn = "string"
+#'       ),
+#'       opensearchManagedClusterConfiguration = list(
+#'         domainArn = "string",
+#'         domainEndpoint = "string",
+#'         fieldMapping = list(
+#'           metadataField = "string",
+#'           textField = "string",
+#'           vectorField = "string"
+#'         ),
 #'         vectorIndexName = "string"
 #'       ),
 #'       opensearchServerlessConfiguration = list(
@@ -2155,6 +2233,7 @@ bedrockagent_create_flow_version <- function(clientToken = NULL, description = N
 #'         credentialsSecretArn = "string",
 #'         databaseName = "string",
 #'         fieldMapping = list(
+#'           customMetadataField = "string",
 #'           metadataField = "string",
 #'           primaryKeyField = "string",
 #'           textField = "string",
@@ -2173,7 +2252,7 @@ bedrockagent_create_flow_version <- function(clientToken = NULL, description = N
 #'         ),
 #'         vectorIndexName = "string"
 #'       ),
-#'       type = "OPENSEARCH_SERVERLESS"|"PINECONE"|"REDIS_ENTERPRISE_CLOUD"|"RDS"|"MONGO_DB_ATLAS"
+#'       type = "OPENSEARCH_SERVERLESS"|"PINECONE"|"REDIS_ENTERPRISE_CLOUD"|"RDS"|"MONGO_DB_ATLAS"|"NEPTUNE_ANALYTICS"|"OPENSEARCH_MANAGED_CLUSTER"
 #'     ),
 #'     updatedAt = as.POSIXct(
 #'       "2015-01-01"
@@ -2287,6 +2366,24 @@ bedrockagent_create_flow_version <- function(clientToken = NULL, description = N
 #'         textField = "string",
 #'         vectorField = "string"
 #'       ),
+#'       textIndexName = "string",
+#'       vectorIndexName = "string"
+#'     ),
+#'     neptuneAnalyticsConfiguration = list(
+#'       fieldMapping = list(
+#'         metadataField = "string",
+#'         textField = "string"
+#'       ),
+#'       graphArn = "string"
+#'     ),
+#'     opensearchManagedClusterConfiguration = list(
+#'       domainArn = "string",
+#'       domainEndpoint = "string",
+#'       fieldMapping = list(
+#'         metadataField = "string",
+#'         textField = "string",
+#'         vectorField = "string"
+#'       ),
 #'       vectorIndexName = "string"
 #'     ),
 #'     opensearchServerlessConfiguration = list(
@@ -2311,6 +2408,7 @@ bedrockagent_create_flow_version <- function(clientToken = NULL, description = N
 #'       credentialsSecretArn = "string",
 #'       databaseName = "string",
 #'       fieldMapping = list(
+#'         customMetadataField = "string",
 #'         metadataField = "string",
 #'         primaryKeyField = "string",
 #'         textField = "string",
@@ -2329,7 +2427,7 @@ bedrockagent_create_flow_version <- function(clientToken = NULL, description = N
 #'       ),
 #'       vectorIndexName = "string"
 #'     ),
-#'     type = "OPENSEARCH_SERVERLESS"|"PINECONE"|"REDIS_ENTERPRISE_CLOUD"|"RDS"|"MONGO_DB_ATLAS"
+#'     type = "OPENSEARCH_SERVERLESS"|"PINECONE"|"REDIS_ENTERPRISE_CLOUD"|"RDS"|"MONGO_DB_ATLAS"|"NEPTUNE_ANALYTICS"|"OPENSEARCH_MANAGED_CLUSTER"
 #'   ),
 #'   tags = list(
 #'     "string"
@@ -3732,7 +3830,10 @@ bedrockagent_get_agent <- function(agentId) {
 #'         )
 #'       )
 #'     ),
-#'     parentActionSignature = "AMAZON.UserInput"|"AMAZON.CodeInterpreter",
+#'     parentActionGroupSignatureParams = list(
+#'       "string"
+#'     ),
+#'     parentActionSignature = "AMAZON.UserInput"|"AMAZON.CodeInterpreter"|"ANTHROPIC.Computer"|"ANTHROPIC.Bash"|"ANTHROPIC.TextEditor",
 #'     updatedAt = as.POSIXct(
 #'       "2015-01-01"
 #'     )
@@ -4286,6 +4387,15 @@ bedrockagent_get_agent_version <- function(agentId, agentVersion) {
 #'           maxTokens = 123
 #'         )
 #'       ),
+#'       contextEnrichmentConfiguration = list(
+#'         bedrockFoundationModelConfiguration = list(
+#'           enrichmentStrategyConfiguration = list(
+#'             method = "CHUNK_ENTITY_EXTRACTION"
+#'           ),
+#'           modelArn = "string"
+#'         ),
+#'         type = "BEDROCK_FOUNDATION_MODEL"
+#'       ),
 #'       customTransformationConfiguration = list(
 #'         intermediateStorage = list(
 #'           s3Location = list(
@@ -4407,6 +4517,10 @@ bedrockagent_get_data_source <- function(dataSourceId, knowledgeBaseId) {
 #'                 name = "string"
 #'               )
 #'             )
+#'           ),
+#'           inlineCode = list(
+#'             code = "string",
+#'             language = "Python_3"
 #'           ),
 #'           input = list(),
 #'           iterator = list(),
@@ -4545,7 +4659,7 @@ bedrockagent_get_data_source <- function(dataSourceId, knowledgeBaseId) {
 #'             type = "String"|"Number"|"Boolean"|"Object"|"Array"
 #'           )
 #'         ),
-#'         type = "Input"|"Output"|"KnowledgeBase"|"Condition"|"Lex"|"Prompt"|"LambdaFunction"|"Storage"|"Agent"|"Retrieval"|"Iterator"|"Collector"
+#'         type = "Input"|"Output"|"KnowledgeBase"|"Condition"|"Lex"|"Prompt"|"LambdaFunction"|"Storage"|"Agent"|"Retrieval"|"Iterator"|"Collector"|"InlineCode"
 #'       )
 #'     )
 #'   ),
@@ -4817,6 +4931,10 @@ bedrockagent_get_flow_alias <- function(aliasIdentifier, flowIdentifier) {
 #'               )
 #'             )
 #'           ),
+#'           inlineCode = list(
+#'             code = "string",
+#'             language = "Python_3"
+#'           ),
 #'           input = list(),
 #'           iterator = list(),
 #'           knowledgeBase = list(
@@ -4954,7 +5072,7 @@ bedrockagent_get_flow_alias <- function(aliasIdentifier, flowIdentifier) {
 #'             type = "String"|"Number"|"Boolean"|"Object"|"Array"
 #'           )
 #'         ),
-#'         type = "Input"|"Output"|"KnowledgeBase"|"Condition"|"Lex"|"Prompt"|"LambdaFunction"|"Storage"|"Agent"|"Retrieval"|"Iterator"|"Collector"
+#'         type = "Input"|"Output"|"KnowledgeBase"|"Condition"|"Lex"|"Prompt"|"LambdaFunction"|"Storage"|"Agent"|"Retrieval"|"Iterator"|"Collector"|"InlineCode"
 #'       )
 #'     )
 #'   ),
@@ -5208,6 +5326,24 @@ bedrockagent_get_ingestion_job <- function(dataSourceId, ingestionJobId, knowled
 #'           textField = "string",
 #'           vectorField = "string"
 #'         ),
+#'         textIndexName = "string",
+#'         vectorIndexName = "string"
+#'       ),
+#'       neptuneAnalyticsConfiguration = list(
+#'         fieldMapping = list(
+#'           metadataField = "string",
+#'           textField = "string"
+#'         ),
+#'         graphArn = "string"
+#'       ),
+#'       opensearchManagedClusterConfiguration = list(
+#'         domainArn = "string",
+#'         domainEndpoint = "string",
+#'         fieldMapping = list(
+#'           metadataField = "string",
+#'           textField = "string",
+#'           vectorField = "string"
+#'         ),
 #'         vectorIndexName = "string"
 #'       ),
 #'       opensearchServerlessConfiguration = list(
@@ -5232,6 +5368,7 @@ bedrockagent_get_ingestion_job <- function(dataSourceId, ingestionJobId, knowled
 #'         credentialsSecretArn = "string",
 #'         databaseName = "string",
 #'         fieldMapping = list(
+#'           customMetadataField = "string",
 #'           metadataField = "string",
 #'           primaryKeyField = "string",
 #'           textField = "string",
@@ -5250,7 +5387,7 @@ bedrockagent_get_ingestion_job <- function(dataSourceId, ingestionJobId, knowled
 #'         ),
 #'         vectorIndexName = "string"
 #'       ),
-#'       type = "OPENSEARCH_SERVERLESS"|"PINECONE"|"REDIS_ENTERPRISE_CLOUD"|"RDS"|"MONGO_DB_ATLAS"
+#'       type = "OPENSEARCH_SERVERLESS"|"PINECONE"|"REDIS_ENTERPRISE_CLOUD"|"RDS"|"MONGO_DB_ATLAS"|"NEPTUNE_ANALYTICS"|"OPENSEARCH_MANAGED_CLUSTER"
 #'     ),
 #'     updatedAt = as.POSIXct(
 #'       "2015-01-01"
@@ -7451,7 +7588,8 @@ bedrockagent_update_agent <- function(agentCollaboration = NULL, agentId, agentN
 #' @usage
 #' bedrockagent_update_agent_action_group(actionGroupExecutor,
 #'   actionGroupId, actionGroupName, actionGroupState, agentId, agentVersion,
-#'   apiSchema, description, functionSchema, parentActionGroupSignature)
+#'   apiSchema, description, functionSchema, parentActionGroupSignature,
+#'   parentActionGroupSignatureParams)
 #'
 #' @param actionGroupExecutor The Amazon Resource Name (ARN) of the Lambda function containing the
 #' business logic that is carried out upon invoking the action.
@@ -7471,10 +7609,38 @@ bedrockagent_update_agent <- function(agentCollaboration = NULL, agentId, agentN
 #' @param description Specifies a new name for the action group.
 #' @param functionSchema Contains details about the function schema for the action group or the
 #' JSON or YAML-formatted payload defining the schema.
-#' @param parentActionGroupSignature To allow your agent to request the user for additional information when
-#' trying to complete a task, set this field to `AMAZON.UserInput`. You
-#' must leave the `description`, `apiSchema`, and `actionGroupExecutor`
-#' fields blank for this action group.
+#' @param parentActionGroupSignature Update the built-in or computer use action for this action group. If you
+#' specify a value, you must leave the `description`, `apiSchema`, and
+#' `actionGroupExecutor` fields empty for this action group.
+#' 
+#' -   To allow your agent to request the user for additional information
+#'     when trying to complete a task, set this field to
+#'     `AMAZON.UserInput`.
+#' 
+#' -   To allow your agent to generate, run, and troubleshoot code when
+#'     trying to complete a task, set this field to
+#'     `AMAZON.CodeInterpreter`.
+#' 
+#' -   To allow your agent to use an Anthropic computer use tool, specify
+#'     one of the following values.
+#' 
+#'     Computer use is a new Anthropic Claude model capability (in beta)
+#'     available with Anthropic Claude 3.7 Sonnet and Claude 3.5 Sonnet v2
+#'     only. When operating computer use functionality, we recommend taking
+#'     additional security precautions, such as executing computer actions
+#'     in virtual environments with restricted data access and limited
+#'     internet connectivity. For more information, see [Configure an
+#'     Amazon Bedrock Agent to complete tasks with computer use
+#'     tools](https://docs.aws.amazon.com/bedrock/latest/userguide/agents-computer-use.html).
+#' 
+#'     -   `ANTHROPIC.Computer` - Gives the agent permission to use the
+#'         mouse and keyboard and take screenshots.
+#' 
+#'     -   `ANTHROPIC.TextEditor` - Gives the agent permission to view,
+#'         create and edit files.
+#' 
+#'     -   `ANTHROPIC.Bash` - Gives the agent permission to run commands in
+#'         a bash shell.
 #' 
 #' During orchestration, if your agent determines that it needs to invoke
 #' an API in an action group, but doesn't have enough information to
@@ -7482,6 +7648,13 @@ bedrockagent_update_agent <- function(agentCollaboration = NULL, agentId, agentN
 #' return an
 #' [Observation](https://docs.aws.amazon.com/bedrock/latest/APIReference/API_agent-runtime_Observation.html)
 #' reprompting the user for more information.
+#' @param parentActionGroupSignatureParams The configuration settings for a computer use action.
+#' 
+#' Computer use is a new Anthropic Claude model capability (in beta)
+#' available with Claude 3.7 Sonnet and Claude 3.5 Sonnet v2 only. For more
+#' information, see [Configure an Amazon Bedrock Agent to complete tasks
+#' with computer use
+#' tools](https://docs.aws.amazon.com/bedrock/latest/userguide/agents-computer-use.html).
 #'
 #' @return
 #' A list with the following syntax:
@@ -7525,7 +7698,10 @@ bedrockagent_update_agent <- function(agentCollaboration = NULL, agentId, agentN
 #'         )
 #'       )
 #'     ),
-#'     parentActionSignature = "AMAZON.UserInput"|"AMAZON.CodeInterpreter",
+#'     parentActionGroupSignatureParams = list(
+#'       "string"
+#'     ),
+#'     parentActionSignature = "AMAZON.UserInput"|"AMAZON.CodeInterpreter"|"ANTHROPIC.Computer"|"ANTHROPIC.Bash"|"ANTHROPIC.TextEditor",
 #'     updatedAt = as.POSIXct(
 #'       "2015-01-01"
 #'     )
@@ -7569,7 +7745,10 @@ bedrockagent_update_agent <- function(agentCollaboration = NULL, agentId, agentN
 #'       )
 #'     )
 #'   ),
-#'   parentActionGroupSignature = "AMAZON.UserInput"|"AMAZON.CodeInterpreter"
+#'   parentActionGroupSignature = "AMAZON.UserInput"|"AMAZON.CodeInterpreter"|"ANTHROPIC.Computer"|"ANTHROPIC.Bash"|"ANTHROPIC.TextEditor",
+#'   parentActionGroupSignatureParams = list(
+#'     "string"
+#'   )
 #' )
 #' ```
 #'
@@ -7578,7 +7757,7 @@ bedrockagent_update_agent <- function(agentCollaboration = NULL, agentId, agentN
 #' @rdname bedrockagent_update_agent_action_group
 #'
 #' @aliases bedrockagent_update_agent_action_group
-bedrockagent_update_agent_action_group <- function(actionGroupExecutor = NULL, actionGroupId, actionGroupName, actionGroupState = NULL, agentId, agentVersion, apiSchema = NULL, description = NULL, functionSchema = NULL, parentActionGroupSignature = NULL) {
+bedrockagent_update_agent_action_group <- function(actionGroupExecutor = NULL, actionGroupId, actionGroupName, actionGroupState = NULL, agentId, agentVersion, apiSchema = NULL, description = NULL, functionSchema = NULL, parentActionGroupSignature = NULL, parentActionGroupSignatureParams = NULL) {
   op <- new_operation(
     name = "UpdateAgentActionGroup",
     http_method = "PUT",
@@ -7587,7 +7766,7 @@ bedrockagent_update_agent_action_group <- function(actionGroupExecutor = NULL, a
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockagent$update_agent_action_group_input(actionGroupExecutor = actionGroupExecutor, actionGroupId = actionGroupId, actionGroupName = actionGroupName, actionGroupState = actionGroupState, agentId = agentId, agentVersion = agentVersion, apiSchema = apiSchema, description = description, functionSchema = functionSchema, parentActionGroupSignature = parentActionGroupSignature)
+  input <- .bedrockagent$update_agent_action_group_input(actionGroupExecutor = actionGroupExecutor, actionGroupId = actionGroupId, actionGroupName = actionGroupName, actionGroupState = actionGroupState, agentId = agentId, agentVersion = agentVersion, apiSchema = apiSchema, description = description, functionSchema = functionSchema, parentActionGroupSignature = parentActionGroupSignature, parentActionGroupSignatureParams = parentActionGroupSignatureParams)
   output <- .bedrockagent$update_agent_action_group_output()
   config <- get_config()
   svc <- .bedrockagent$service(config, op)
@@ -8044,6 +8223,15 @@ bedrockagent_update_agent_knowledge_base <- function(agentId, agentVersion, desc
 #'           maxTokens = 123
 #'         )
 #'       ),
+#'       contextEnrichmentConfiguration = list(
+#'         bedrockFoundationModelConfiguration = list(
+#'           enrichmentStrategyConfiguration = list(
+#'             method = "CHUNK_ENTITY_EXTRACTION"
+#'           ),
+#'           modelArn = "string"
+#'         ),
+#'         type = "BEDROCK_FOUNDATION_MODEL"
+#'       ),
 #'       customTransformationConfiguration = list(
 #'         intermediateStorage = list(
 #'           s3Location = list(
@@ -8228,6 +8416,15 @@ bedrockagent_update_agent_knowledge_base <- function(agentId, agentVersion, desc
 #'         maxTokens = 123
 #'       )
 #'     ),
+#'     contextEnrichmentConfiguration = list(
+#'       bedrockFoundationModelConfiguration = list(
+#'         enrichmentStrategyConfiguration = list(
+#'           method = "CHUNK_ENTITY_EXTRACTION"
+#'         ),
+#'         modelArn = "string"
+#'       ),
+#'       type = "BEDROCK_FOUNDATION_MODEL"
+#'     ),
 #'     customTransformationConfiguration = list(
 #'       intermediateStorage = list(
 #'         s3Location = list(
@@ -8354,6 +8551,10 @@ bedrockagent_update_data_source <- function(dataDeletionPolicy = NULL, dataSourc
 #'               )
 #'             )
 #'           ),
+#'           inlineCode = list(
+#'             code = "string",
+#'             language = "Python_3"
+#'           ),
 #'           input = list(),
 #'           iterator = list(),
 #'           knowledgeBase = list(
@@ -8491,7 +8692,7 @@ bedrockagent_update_data_source <- function(dataDeletionPolicy = NULL, dataSourc
 #'             type = "String"|"Number"|"Boolean"|"Object"|"Array"
 #'           )
 #'         ),
-#'         type = "Input"|"Output"|"KnowledgeBase"|"Condition"|"Lex"|"Prompt"|"LambdaFunction"|"Storage"|"Agent"|"Retrieval"|"Iterator"|"Collector"
+#'         type = "Input"|"Output"|"KnowledgeBase"|"Condition"|"Lex"|"Prompt"|"LambdaFunction"|"Storage"|"Agent"|"Retrieval"|"Iterator"|"Collector"|"InlineCode"
 #'       )
 #'     )
 #'   ),
@@ -8544,6 +8745,10 @@ bedrockagent_update_data_source <- function(dataDeletionPolicy = NULL, dataSourc
 #'               )
 #'             )
 #'           ),
+#'           inlineCode = list(
+#'             code = "string",
+#'             language = "Python_3"
+#'           ),
 #'           input = list(),
 #'           iterator = list(),
 #'           knowledgeBase = list(
@@ -8681,7 +8886,7 @@ bedrockagent_update_data_source <- function(dataDeletionPolicy = NULL, dataSourc
 #'             type = "String"|"Number"|"Boolean"|"Object"|"Array"
 #'           )
 #'         ),
-#'         type = "Input"|"Output"|"KnowledgeBase"|"Condition"|"Lex"|"Prompt"|"LambdaFunction"|"Storage"|"Agent"|"Retrieval"|"Iterator"|"Collector"
+#'         type = "Input"|"Output"|"KnowledgeBase"|"Condition"|"Lex"|"Prompt"|"LambdaFunction"|"Storage"|"Agent"|"Retrieval"|"Iterator"|"Collector"|"InlineCode"
 #'       )
 #'     )
 #'   ),
@@ -8951,6 +9156,24 @@ bedrockagent_update_flow_alias <- function(aliasIdentifier, description = NULL, 
 #'           textField = "string",
 #'           vectorField = "string"
 #'         ),
+#'         textIndexName = "string",
+#'         vectorIndexName = "string"
+#'       ),
+#'       neptuneAnalyticsConfiguration = list(
+#'         fieldMapping = list(
+#'           metadataField = "string",
+#'           textField = "string"
+#'         ),
+#'         graphArn = "string"
+#'       ),
+#'       opensearchManagedClusterConfiguration = list(
+#'         domainArn = "string",
+#'         domainEndpoint = "string",
+#'         fieldMapping = list(
+#'           metadataField = "string",
+#'           textField = "string",
+#'           vectorField = "string"
+#'         ),
 #'         vectorIndexName = "string"
 #'       ),
 #'       opensearchServerlessConfiguration = list(
@@ -8975,6 +9198,7 @@ bedrockagent_update_flow_alias <- function(aliasIdentifier, description = NULL, 
 #'         credentialsSecretArn = "string",
 #'         databaseName = "string",
 #'         fieldMapping = list(
+#'           customMetadataField = "string",
 #'           metadataField = "string",
 #'           primaryKeyField = "string",
 #'           textField = "string",
@@ -8993,7 +9217,7 @@ bedrockagent_update_flow_alias <- function(aliasIdentifier, description = NULL, 
 #'         ),
 #'         vectorIndexName = "string"
 #'       ),
-#'       type = "OPENSEARCH_SERVERLESS"|"PINECONE"|"REDIS_ENTERPRISE_CLOUD"|"RDS"|"MONGO_DB_ATLAS"
+#'       type = "OPENSEARCH_SERVERLESS"|"PINECONE"|"REDIS_ENTERPRISE_CLOUD"|"RDS"|"MONGO_DB_ATLAS"|"NEPTUNE_ANALYTICS"|"OPENSEARCH_MANAGED_CLUSTER"
 #'     ),
 #'     updatedAt = as.POSIXct(
 #'       "2015-01-01"
@@ -9107,6 +9331,24 @@ bedrockagent_update_flow_alias <- function(aliasIdentifier, description = NULL, 
 #'         textField = "string",
 #'         vectorField = "string"
 #'       ),
+#'       textIndexName = "string",
+#'       vectorIndexName = "string"
+#'     ),
+#'     neptuneAnalyticsConfiguration = list(
+#'       fieldMapping = list(
+#'         metadataField = "string",
+#'         textField = "string"
+#'       ),
+#'       graphArn = "string"
+#'     ),
+#'     opensearchManagedClusterConfiguration = list(
+#'       domainArn = "string",
+#'       domainEndpoint = "string",
+#'       fieldMapping = list(
+#'         metadataField = "string",
+#'         textField = "string",
+#'         vectorField = "string"
+#'       ),
 #'       vectorIndexName = "string"
 #'     ),
 #'     opensearchServerlessConfiguration = list(
@@ -9131,6 +9373,7 @@ bedrockagent_update_flow_alias <- function(aliasIdentifier, description = NULL, 
 #'       credentialsSecretArn = "string",
 #'       databaseName = "string",
 #'       fieldMapping = list(
+#'         customMetadataField = "string",
 #'         metadataField = "string",
 #'         primaryKeyField = "string",
 #'         textField = "string",
@@ -9149,7 +9392,7 @@ bedrockagent_update_flow_alias <- function(aliasIdentifier, description = NULL, 
 #'       ),
 #'       vectorIndexName = "string"
 #'     ),
-#'     type = "OPENSEARCH_SERVERLESS"|"PINECONE"|"REDIS_ENTERPRISE_CLOUD"|"RDS"|"MONGO_DB_ATLAS"
+#'     type = "OPENSEARCH_SERVERLESS"|"PINECONE"|"REDIS_ENTERPRISE_CLOUD"|"RDS"|"MONGO_DB_ATLAS"|"NEPTUNE_ANALYTICS"|"OPENSEARCH_MANAGED_CLUSTER"
 #'   )
 #' )
 #' ```
@@ -9598,6 +9841,10 @@ bedrockagent_update_prompt <- function(customerEncryptionKeyArn = NULL, defaultV
 #'               )
 #'             )
 #'           ),
+#'           inlineCode = list(
+#'             code = "string",
+#'             language = "Python_3"
+#'           ),
 #'           input = list(),
 #'           iterator = list(),
 #'           knowledgeBase = list(
@@ -9735,7 +9982,7 @@ bedrockagent_update_prompt <- function(customerEncryptionKeyArn = NULL, defaultV
 #'             type = "String"|"Number"|"Boolean"|"Object"|"Array"
 #'           )
 #'         ),
-#'         type = "Input"|"Output"|"KnowledgeBase"|"Condition"|"Lex"|"Prompt"|"LambdaFunction"|"Storage"|"Agent"|"Retrieval"|"Iterator"|"Collector"
+#'         type = "Input"|"Output"|"KnowledgeBase"|"Condition"|"Lex"|"Prompt"|"LambdaFunction"|"Storage"|"Agent"|"Retrieval"|"Iterator"|"Collector"|"InlineCode"
 #'       )
 #'     )
 #'   )

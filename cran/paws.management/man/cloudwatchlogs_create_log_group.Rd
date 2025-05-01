@@ -28,11 +28,16 @@ For more information about using tags to control access, see
 \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_tags.html}{Controlling access to Amazon Web Services resources using tags}.}
 
 \item{logGroupClass}{Use this parameter to specify the log group class for this log group.
-There are two classes:
+There are three classes:
 \itemize{
 \item The \code{Standard} log class supports all CloudWatch Logs features.
 \item The \verb{Infrequent Access} log class supports a subset of CloudWatch
 Logs features and incurs lower costs.
+\item Use the \code{Delivery} log class only for delivering Lambda logs to
+store in Amazon S3 or Amazon Data Firehose. Log events in log groups
+in the Delivery class are kept in CloudWatch Logs for only one day.
+This log class doesn't offer rich CloudWatch Logs capabilities such
+as CloudWatch Logs Insights queries.
 }
 
 If you omit this parameter, the default of \code{STANDARD} is used.

@@ -44,8 +44,8 @@ bucket you have designated for log file delivery. For more information,
 see \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/get-and-view-cloudtrail-log-files.html#cloudtrail-find-log-files}{Finding Your CloudTrail Log Files}.
 The maximum length is 200 characters.}
 
-\item{SnsTopicName}{Specifies the name of the Amazon SNS topic defined for notification of
-log file delivery. The maximum length is 256 characters.}
+\item{SnsTopicName}{Specifies the name or ARN of the Amazon SNS topic defined for
+notification of log file delivery. The maximum length is 256 characters.}
 
 \item{IncludeGlobalServiceEvents}{Specifies whether the trail is publishing events from global services
 such as IAM to the log files.}

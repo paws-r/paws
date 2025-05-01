@@ -2,17 +2,18 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_get_group}
 \alias{cognitoidentityprovider_get_group}
-\title{Gets a group}
+\title{Given a user pool ID and a group name, returns information about the
+user group}
 \usage{
 cognitoidentityprovider_get_group(GroupName, UserPoolId)
 }
 \arguments{
-\item{GroupName}{[required] The name of the group.}
+\item{GroupName}{[required] The name of the group that you want to get information about.}
 
-\item{UserPoolId}{[required] The ID of the user pool.}
+\item{UserPoolId}{[required] The ID of the user pool that contains the group that you want to query.}
 }
 \description{
-Gets a group.
+Given a user pool ID and a group name, returns information about the user group.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_get_group/} for full documentation.
 }

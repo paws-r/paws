@@ -98,7 +98,8 @@ HTTPS for all traffic.}
 
 \item{AdvancedSecurityOptions}{Options for fine-grained access control.}
 
-\item{IdentityCenterOptions}{Options for IAM Identity Center Option control for the domain.}
+\item{IdentityCenterOptions}{Configuration options for enabling and managing IAM Identity Center
+integration within a domain.}
 
 \item{TagList}{List of tags to add to the domain upon creation.}
 

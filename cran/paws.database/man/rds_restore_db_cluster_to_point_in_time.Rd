@@ -188,20 +188,21 @@ Logs. The values in the list depend on the DB engine being used.
 
 \strong{RDS for MySQL}
 
-Possible values are \code{error}, \code{general}, and \code{slowquery}.
+Possible values are \code{error}, \code{general}, \code{slowquery}, and
+\code{iam-db-auth-error}.
 
 \strong{RDS for PostgreSQL}
 
-Possible values are \code{postgresql} and \code{upgrade}.
+Possible values are \code{postgresql}, \code{upgrade}, and \code{iam-db-auth-error}.
 
 \strong{Aurora MySQL}
 
-Possible values are \code{audit}, \code{error}, \code{general}, \code{instance}, and
-\code{slowquery}.
+Possible values are \code{audit}, \code{error}, \code{general}, \code{instance},
+\code{slowquery}, and \code{iam-db-auth-error}.
 
 \strong{Aurora PostgreSQL}
 
-Possible value are \code{instance} and \code{postgresql}.
+Possible value are \code{instance}, \code{postgresql}, and \code{iam-db-auth-error}.
 
 For more information about exporting CloudWatch Logs for Amazon RDS, see
 \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch}{Publishing Database Logs to Amazon CloudWatch Logs}
@@ -442,7 +443,7 @@ Valid Values:
 Default: \code{open-source-rds-extended-support}}
 }
 \description{
-Restores a DB cluster to an arbitrary point in time. Users can restore to any point in time before \code{LatestRestorableTime} for up to \code{BackupRetentionPeriod} days. The target DB cluster is created from the source DB cluster with the same configuration as the original DB cluster, except that the new DB cluster is created with the default DB security group.
+Restores a DB cluster to an arbitrary point in time. Users can restore to any point in time before \code{LatestRestorableTime} for up to \code{BackupRetentionPeriod} days. The target DB cluster is created from the source DB cluster with the same configuration as the original DB cluster, except that the new DB cluster is created with the default DB security group. Unless the \code{RestoreType} is set to \code{copy-on-write}, the restore may occur in a different Availability Zone (AZ) from the original DB cluster. The AZ where RDS restores the DB cluster depends on the AZs in the specified subnet group.
 
 See \url{https://www.paws-r-sdk.com/docs/rds_restore_db_cluster_to_point_in_time/} for full documentation.
 }

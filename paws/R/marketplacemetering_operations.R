@@ -3,47 +3,49 @@
 #' @include marketplacemetering_service.R
 NULL
 
-#' BatchMeterUsage is called from a SaaS application listed on AWS
-#' Marketplace to post metering records for a set of customers
+#' The CustomerIdentifier parameter is scheduled for deprecation
 #'
 #' @description
-#' [`batch_meter_usage`][marketplacemetering_batch_meter_usage] is called
-#' from a SaaS application listed on AWS Marketplace to post metering
-#' records for a set of customers.
+#' The `CustomerIdentifier` parameter is scheduled for deprecation. Use
+#' `CustomerAWSAccountID` instead.
 #' 
-#' For identical requests, the API is idempotent; requests can be retried
-#' with the same records or a subset of the input records.
+#' These parameters are mutually exclusive. You can't specify both
+#' `CustomerIdentifier` and `CustomerAWSAccountID` in the same request.
 #' 
-#' Every request to
-#' [`batch_meter_usage`][marketplacemetering_batch_meter_usage] is for one
-#' product. If you need to meter usage for multiple products, you must make
-#' multiple calls to
-#' [`batch_meter_usage`][marketplacemetering_batch_meter_usage].
+#' To post metering records for customers, SaaS applications call
+#' [`batch_meter_usage`][marketplacemetering_batch_meter_usage], which is
+#' used for metering SaaS flexible consumption pricing (FCP). Identical
+#' requests are idempotent and can be retried with the same records or a
+#' subset of records. Each
+#' [`batch_meter_usage`][marketplacemetering_batch_meter_usage] request is
+#' for only one product. If you want to meter usage for multiple products,
+#' you must make multiple
+#' [`batch_meter_usage`][marketplacemetering_batch_meter_usage] calls.
 #' 
-#' Usage records are expected to be submitted as quickly as possible after
-#' the event that is being recorded, and are not accepted more than 6 hours
-#' after the event.
+#' Usage records should be submitted in quick succession following a
+#' recorded event. Usage records aren't accepted 6 hours or more after an
+#' event.
 #' 
 #' [`batch_meter_usage`][marketplacemetering_batch_meter_usage] can process
-#' up to 25 `UsageRecords` at a time.
-#' 
-#' A `UsageRecord` can optionally include multiple usage allocations, to
-#' provide customers with usage data split into buckets by tags that you
-#' define (or allow the customer to define).
+#' up to 25 `UsageRecords` at a time, and each request must be less than 1
+#' MB in size. Optionally, you can have multiple usage allocations for
+#' usage data that's split into buckets according to predefined tags.
 #' 
 #' [`batch_meter_usage`][marketplacemetering_batch_meter_usage] returns a
-#' list of `UsageRecordResult` objects, showing the result for each
-#' `UsageRecord`, as well as a list of `UnprocessedRecords`, indicating
-#' errors in the service side that you should retry.
+#' list of `UsageRecordResult` objects, which have each `UsageRecord`. It
+#' also returns a list of `UnprocessedRecords`, which indicate errors on
+#' the service side that should be retried.
 #' 
-#' [`batch_meter_usage`][marketplacemetering_batch_meter_usage] requests
-#' must be less than 1MB in size.
+#' For Amazon Web Services Regions that support
+#' [`batch_meter_usage`][marketplacemetering_batch_meter_usage], see
+#' [BatchMeterUsage Region
+#' support](https://docs.aws.amazon.com/marketplace/latest/APIReference/metering-regions.html#batchmeterusage-region-support).
 #' 
-#' For an example of using
+#' For an example of
 #' [`batch_meter_usage`][marketplacemetering_batch_meter_usage], see
 #' [BatchMeterUsage code
 #' example](https://docs.aws.amazon.com/marketplace/latest/userguide/saas-code-examples.html#saas-batchmeterusage-example)
-#' in the *AWS Marketplace Seller Guide*.
+#' in the *Amazon Web Services Marketplace Seller Guide*.
 #'
 #' @usage
 #' marketplacemetering_batch_meter_usage(UsageRecords, ProductCode)
@@ -51,9 +53,9 @@ NULL
 #' @param UsageRecords &#91;required&#93; The set of `UsageRecords` to submit.
 #' [`batch_meter_usage`][marketplacemetering_batch_meter_usage] accepts up
 #' to 25 `UsageRecords` at a time.
-#' @param ProductCode &#91;required&#93; Product code is used to uniquely identify a product in AWS Marketplace.
-#' The product code should be the same as the one used during the
-#' publishing of a new product.
+#' @param ProductCode &#91;required&#93; Product code is used to uniquely identify a product in Amazon Web
+#' Services Marketplace. The product code should be the same as the one
+#' used during the publishing of a new product.
 #'
 #' @return
 #' A list with the following syntax:
@@ -78,7 +80,8 @@ NULL
 #'               )
 #'             )
 #'           )
-#'         )
+#'         ),
+#'         CustomerAWSAccountId = "string"
 #'       ),
 #'       MeteringRecordId = "string",
 #'       Status = "Success"|"CustomerNotSubscribed"|"DuplicateRecord"
@@ -102,7 +105,8 @@ NULL
 #'             )
 #'           )
 #'         )
-#'       )
+#'       ),
+#'       CustomerAWSAccountId = "string"
 #'     )
 #'   )
 #' )
@@ -129,7 +133,8 @@ NULL
 #'             )
 #'           )
 #'         )
-#'       )
+#'       ),
+#'       CustomerAWSAccountId = "string"
 #'     )
 #'   ),
 #'   ProductCode = "string"
@@ -164,11 +169,13 @@ marketplacemetering_batch_meter_usage <- function(UsageRecords, ProductCode) {
 #'
 #' @description
 #' API to emit metering records. For identical requests, the API is
-#' idempotent. It simply returns the metering record ID.
+#' idempotent and returns the metering record ID. This is used for metering
+#' flexible consumption pricing (FCP) Amazon Machine Images (AMI) and
+#' container products.
 #' 
 #' [`meter_usage`][marketplacemetering_meter_usage] is authenticated on the
-#' buyer's AWS account using credentials from the EC2 instance, ECS task,
-#' or EKS pod.
+#' buyer's Amazon Web Services account using credentials from the Amazon
+#' EC2 instance, Amazon ECS task, or Amazon EKS pod.
 #' 
 #' [`meter_usage`][marketplacemetering_meter_usage] can optionally include
 #' multiple usage allocations, to provide customers with usage data split
@@ -177,16 +184,23 @@ marketplacemetering_batch_meter_usage <- function(UsageRecords, ProductCode) {
 #' Usage records are expected to be submitted as quickly as possible after
 #' the event that is being recorded, and are not accepted more than 6 hours
 #' after the event.
+#' 
+#' For Amazon Web Services Regions that support
+#' [`meter_usage`][marketplacemetering_meter_usage], see [MeterUsage Region
+#' support for Amazon
+#' EC2](https://docs.aws.amazon.com/marketplace/latest/APIReference/metering-regions.html#meterusage-region-support-ec2)
+#' and [MeterUsage Region support for Amazon ECS and Amazon
+#' EKS](https://docs.aws.amazon.com/marketplace/latest/APIReference/metering-regions.html#meterusage-region-support-ecs-eks).
 #'
 #' @usage
 #' marketplacemetering_meter_usage(ProductCode, Timestamp, UsageDimension,
 #'   UsageQuantity, DryRun, UsageAllocations)
 #'
-#' @param ProductCode &#91;required&#93; Product code is used to uniquely identify a product in AWS Marketplace.
-#' The product code should be the same as the one used during the
-#' publishing of a new product.
+#' @param ProductCode &#91;required&#93; Product code is used to uniquely identify a product in Amazon Web
+#' Services Marketplace. The product code should be the same as the one
+#' used during the publishing of a new product.
 #' @param Timestamp &#91;required&#93; Timestamp, in UTC, for which the usage is being reported. Your
-#' application can meter usage for up to one hour in the past. Make sure
+#' application can meter usage for up to six hours in the past. Make sure
 #' the `timestamp` value is not before the start of the software usage.
 #' @param UsageDimension &#91;required&#93; It will be one of the fcp dimension name provided during the publishing
 #' of the product.
@@ -258,13 +272,15 @@ marketplacemetering_meter_usage <- function(ProductCode, Timestamp, UsageDimensi
 }
 .marketplacemetering$operations$meter_usage <- marketplacemetering_meter_usage
 
-#' Paid container software products sold through AWS Marketplace must
-#' integrate with the AWS Marketplace Metering Service and call the
-#' RegisterUsage operation for software entitlement and metering
+#' Paid container software products sold through Amazon Web Services
+#' Marketplace must integrate with the Amazon Web Services Marketplace
+#' Metering Service and call the RegisterUsage operation for software
+#' entitlement and metering
 #'
 #' @description
-#' Paid container software products sold through AWS Marketplace must
-#' integrate with the AWS Marketplace Metering Service and call the
+#' Paid container software products sold through Amazon Web Services
+#' Marketplace must integrate with the Amazon Web Services Marketplace
+#' Metering Service and call the
 #' [`register_usage`][marketplacemetering_register_usage] operation for
 #' software entitlement and metering. Free and BYOL products for Amazon ECS
 #' or Amazon EKS aren't required to call
@@ -278,9 +294,9 @@ marketplacemetering_meter_usage <- function(ProductCode, Timestamp, UsageDimensi
 #' -   *Entitlement*:
 #'     [`register_usage`][marketplacemetering_register_usage] allows you to
 #'     verify that the customer running your paid software is subscribed to
-#'     your product on AWS Marketplace, enabling you to guard against
-#'     unauthorized use. Your container image that integrates with
-#'     [`register_usage`][marketplacemetering_register_usage] is only
+#'     your product on Amazon Web Services Marketplace, enabling you to
+#'     guard against unauthorized use. Your container image that integrates
+#'     with [`register_usage`][marketplacemetering_register_usage] is only
 #'     required to guard against unauthorized use at container startup, as
 #'     such a `CustomerNotSubscribedException` or
 #'     `PlatformNotSupportedException` will only be thrown on the initial
@@ -297,24 +313,35 @@ marketplacemetering_meter_usage <- function(ProductCode, Timestamp, UsageDimensi
 #'     customer has a 10 node Amazon ECS or Amazon EKS cluster and a
 #'     service configured as a Daemon Set, then Amazon ECS or Amazon EKS
 #'     will launch a task on all 10 cluster nodes and the customer will be
-#'     charged: (10 * hourly_rate). Metering for software use is
-#'     automatically handled by the AWS Marketplace Metering Control Plane
-#'     -- your software is not required to perform any metering specific
-#'     actions, other than call
-#'     [`register_usage`][marketplacemetering_register_usage] once for
-#'     metering of software use to commence. The AWS Marketplace Metering
-#'     Control Plane will also continue to bill customers for running ECS
-#'     tasks and Amazon EKS pods, regardless of the customers subscription
-#'     state, removing the need for your software to perform entitlement
-#'     checks at runtime.
+#'     charged for 10 tasks. Software metering is handled by the Amazon Web
+#'     Services Marketplace metering control plane—your software is not
+#'     required to perform metering-specific actions other than to call
+#'     [`register_usage`][marketplacemetering_register_usage] to commence
+#'     metering. The Amazon Web Services Marketplace metering control plane
+#'     will also bill customers for running ECS tasks and Amazon EKS pods,
+#'     regardless of the customer's subscription state, which removes the
+#'     need for your software to run entitlement checks at runtime. For
+#'     containers, [`register_usage`][marketplacemetering_register_usage]
+#'     should be called immediately at launch. If you don’t register the
+#'     container within the first 6 hours of the launch, Amazon Web
+#'     Services Marketplace Metering Service doesn’t provide any metering
+#'     guarantees for previous months. Metering will continue, however, for
+#'     the current month forward until the container ends.
+#'     [`register_usage`][marketplacemetering_register_usage] is for
+#'     metering paid hourly container products.
+#' 
+#'     For Amazon Web Services Regions that support
+#'     [`register_usage`][marketplacemetering_register_usage], see
+#'     [RegisterUsage Region
+#'     support](https://docs.aws.amazon.com/marketplace/latest/APIReference/metering-regions.html#registerusage-region-support).
 #'
 #' @usage
 #' marketplacemetering_register_usage(ProductCode, PublicKeyVersion, Nonce)
 #'
-#' @param ProductCode &#91;required&#93; Product code is used to uniquely identify a product in AWS Marketplace.
-#' The product code should be the same as the one used during the
-#' publishing of a new product.
-#' @param PublicKeyVersion &#91;required&#93; Public Key Version provided by AWS Marketplace
+#' @param ProductCode &#91;required&#93; Product code is used to uniquely identify a product in Amazon Web
+#' Services Marketplace. The product code should be the same as the one
+#' used during the publishing of a new product.
+#' @param PublicKeyVersion &#91;required&#93; Public Key Version provided by Amazon Web Services Marketplace
 #' @param Nonce (Optional) To scope down the registration to a specific running software
 #' instance and guard against replay attacks.
 #'
@@ -373,14 +400,25 @@ marketplacemetering_register_usage <- function(ProductCode, PublicKeyVersion, No
 #' resolved through this API to obtain a `CustomerIdentifier` along with
 #' the `CustomerAWSAccountId` and `ProductCode`.
 #' 
-#' The API needs to called from the seller account id used to publish the
-#' SaaS application to successfully resolve the token.
-#' 
-#' For an example of using
-#' [`resolve_customer`][marketplacemetering_resolve_customer], see
+#' To successfully resolve the token, the API must be called from the
+#' account that was used to publish the SaaS application. For an example of
+#' using [`resolve_customer`][marketplacemetering_resolve_customer], see
 #' [ResolveCustomer code
 #' example](https://docs.aws.amazon.com/marketplace/latest/userguide/saas-code-examples.html#saas-resolvecustomer-example)
-#' in the *AWS Marketplace Seller Guide*.
+#' in the *Amazon Web Services Marketplace Seller Guide*.
+#' 
+#' Permission is required for this operation. Your IAM role or user
+#' performing this operation requires a policy to allow the
+#' `aws-marketplace:ResolveCustomer` action. For more information, see
+#' [Actions, resources, and condition keys for Amazon Web Services
+#' Marketplace Metering
+#' Service](https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsmarketplacemeteringservice.html)
+#' in the *Service Authorization Reference*.
+#' 
+#' For Amazon Web Services Regions that support
+#' [`resolve_customer`][marketplacemetering_resolve_customer], see
+#' [ResolveCustomer Region
+#' support](https://docs.aws.amazon.com/marketplace/latest/APIReference/metering-regions.html#resolvecustomer-region-support).
 #'
 #' @usage
 #' marketplacemetering_resolve_customer(RegistrationToken)

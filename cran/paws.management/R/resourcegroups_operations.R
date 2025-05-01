@@ -502,7 +502,7 @@ resourcegroups_list_grouping_statuses <- function(Group, MaxResults = NULL, Filt
 #' 
 #'     -   `AWS::AppRegistry::Application`
 #' 
-#'     -   `AWS::AppRegistry::ApplicationResourceGroups`
+#'     -   `AWS::AppRegistry::ApplicationResourceGroup`
 #' 
 #'     -   `AWS::CloudFormation::Stack`
 #' 
@@ -684,25 +684,67 @@ resourcegroups_search_resources <- function(ResourceQuery, MaxResults = NULL, Ne
 #' specific tag key-value pair to an application
 #'
 #' @description
-#' Creates a new tag-sync task to onboard and sync resources tagged with a specific tag key-value pair to an application.
+#' Creates a new tag-sync task to onboard and sync resources tagged with a specific tag key-value pair to an application. To start a tag-sync task, you need a [resource tagging role](https://docs.aws.amazon.com/servicecatalog/latest/arguide/app-tag-sync.html#tag-sync-role). The resource tagging role grants permissions to tag and untag applications resources and must include a trust policy that allows Resource Groups to assume the role and perform resource tagging tasks on your behalf.
 #'
 #' See [https://www.paws-r-sdk.com/docs/resourcegroups_start_tag_sync_task/](https://www.paws-r-sdk.com/docs/resourcegroups_start_tag_sync_task/) for full documentation.
 #'
 #' @param Group &#91;required&#93; The Amazon resource name (ARN) or name of the application group for
 #' which you want to create a tag-sync task.
-#' @param TagKey &#91;required&#93; The tag key. Resources tagged with this tag key-value pair will be added
+#' @param TagKey The tag key. Resources tagged with this tag key-value pair will be added
 #' to the application. If a resource with this tag is later untagged, the
 #' tag-sync task removes the resource from the application.
-#' @param TagValue &#91;required&#93; The tag value. Resources tagged with this tag key-value pair will be
+#' 
+#' When using the `TagKey` parameter, you must also specify the `TagValue`
+#' parameter. If you specify a tag key-value pair, you can't use the
+#' `ResourceQuery` parameter.
+#' @param TagValue The tag value. Resources tagged with this tag key-value pair will be
 #' added to the application. If a resource with this tag is later untagged,
 #' the tag-sync task removes the resource from the application.
+#' 
+#' When using the `TagValue` parameter, you must also specify the `TagKey`
+#' parameter. If you specify a tag key-value pair, you can't use the
+#' `ResourceQuery` parameter.
+#' @param ResourceQuery The query you can use to create the tag-sync task. With this method, all
+#' resources matching the query are added to the specified application
+#' group. A `ResourceQuery` specifies both a query `Type` and a `Query`
+#' string as JSON string objects. For more information on defining a
+#' resource query for a tag-sync task, see the tag-based query type in
+#' [Types of resource group
+#' queries](https://docs.aws.amazon.com/ARG/latest/userguide/gettingstarted-query.html#getting_started-query_types)
+#' in *Resource Groups User Guide*.
+#' 
+#' When using the `ResourceQuery` parameter, you cannot use the `TagKey`
+#' and `TagValue` parameters.
+#' 
+#' When you combine all of the elements together into a single string, any
+#' double quotes that are embedded inside another double quote pair must be
+#' escaped by preceding the embedded double quote with a backslash
+#' character (\\). For example, a complete `ResourceQuery` parameter must
+#' be formatted like the following CLI parameter example:
+#' 
+#' `--resource-query '{"Type":"TAG_FILTERS_1_0","Query":"{\"ResourceTypeFilters\":[\"AWS::AllSupported\"],\"TagFilters\":[{\"Key\":\"Stage\",\"Values\":[\"Test\"]}]}"}'`
+#' 
+#' In the preceding example, all of the double quote characters in the
+#' value part of the `Query` element must be escaped because the value
+#' itself is surrounded by double quotes. For more information, see
+#' [Quoting
+#' strings](https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-parameters-quoting-strings.html)
+#' in the *Command Line Interface User Guide*.
+#' 
+#' For the complete list of resource types that you can use in the array
+#' value for `ResourceTypeFilters`, see [Resources you can use with
+#' Resource Groups and Tag
+#' Editor](https://docs.aws.amazon.com/ARG/latest/userguide/supported-resources.html)
+#' in the *Resource Groups User Guide*. For example:
+#' 
+#' `"ResourceTypeFilters":["AWS::S3::Bucket", "AWS::EC2::Instance"]`
 #' @param RoleArn &#91;required&#93; The Amazon resource name (ARN) of the role assumed by the service to tag
 #' and untag resources on your behalf.
 #'
 #' @keywords internal
 #'
 #' @rdname resourcegroups_start_tag_sync_task
-resourcegroups_start_tag_sync_task <- function(Group, TagKey, TagValue, RoleArn) {
+resourcegroups_start_tag_sync_task <- function(Group, TagKey = NULL, TagValue = NULL, ResourceQuery = NULL, RoleArn) {
   op <- new_operation(
     name = "StartTagSyncTask",
     http_method = "POST",
@@ -711,7 +753,7 @@ resourcegroups_start_tag_sync_task <- function(Group, TagKey, TagValue, RoleArn)
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .resourcegroups$start_tag_sync_task_input(Group = Group, TagKey = TagKey, TagValue = TagValue, RoleArn = RoleArn)
+  input <- .resourcegroups$start_tag_sync_task_input(Group = Group, TagKey = TagKey, TagValue = TagValue, ResourceQuery = ResourceQuery, RoleArn = RoleArn)
   output <- .resourcegroups$start_tag_sync_task_output()
   config <- get_config()
   svc <- .resourcegroups$service(config, op)

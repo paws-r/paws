@@ -111,19 +111,24 @@ NULL
 #' \tabular{ll}{
 #'  \link[=batch_cancel_job]{cancel_job} \tab Cancels a job in an Batch job queue\cr
 #'  \link[=batch_create_compute_environment]{create_compute_environment} \tab Creates an Batch compute environment\cr
+#'  \link[=batch_create_consumable_resource]{create_consumable_resource} \tab Creates an Batch consumable resource\cr
 #'  \link[=batch_create_job_queue]{create_job_queue} \tab Creates an Batch job queue\cr
 #'  \link[=batch_create_scheduling_policy]{create_scheduling_policy} \tab Creates an Batch scheduling policy\cr
 #'  \link[=batch_delete_compute_environment]{delete_compute_environment} \tab Deletes an Batch compute environment\cr
+#'  \link[=batch_delete_consumable_resource]{delete_consumable_resource} \tab Deletes the specified consumable resource\cr
 #'  \link[=batch_delete_job_queue]{delete_job_queue} \tab Deletes the specified job queue\cr
 #'  \link[=batch_delete_scheduling_policy]{delete_scheduling_policy} \tab Deletes the specified scheduling policy\cr
 #'  \link[=batch_deregister_job_definition]{deregister_job_definition} \tab Deregisters an Batch job definition\cr
 #'  \link[=batch_describe_compute_environments]{describe_compute_environments} \tab Describes one or more of your compute environments\cr
+#'  \link[=batch_describe_consumable_resource]{describe_consumable_resource} \tab Returns a description of the specified consumable resource\cr
 #'  \link[=batch_describe_job_definitions]{describe_job_definitions} \tab Describes a list of job definitions\cr
 #'  \link[=batch_describe_job_queues]{describe_job_queues} \tab Describes one or more of your job queues\cr
 #'  \link[=batch_describe_jobs]{describe_jobs} \tab Describes a list of Batch jobs\cr
 #'  \link[=batch_describe_scheduling_policies]{describe_scheduling_policies} \tab Describes one or more of your scheduling policies\cr
 #'  \link[=batch_get_job_queue_snapshot]{get_job_queue_snapshot} \tab Provides a list of the first 100 RUNNABLE jobs associated to a single job queue\cr
+#'  \link[=batch_list_consumable_resources]{list_consumable_resources} \tab Returns a list of Batch consumable resources\cr
 #'  \link[=batch_list_jobs]{list_jobs} \tab Returns a list of Batch jobs\cr
+#'  \link[=batch_list_jobs_by_consumable_resource]{list_jobs_by_consumable_resource} \tab Returns a list of Batch jobs that require a specific consumable resource\cr
 #'  \link[=batch_list_scheduling_policies]{list_scheduling_policies} \tab Returns a list of Batch scheduling policies\cr
 #'  \link[=batch_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags for an Batch resource\cr
 #'  \link[=batch_register_job_definition]{register_job_definition} \tab Registers an Batch job definition\cr
@@ -132,6 +137,7 @@ NULL
 #'  \link[=batch_terminate_job]{terminate_job} \tab Terminates a job in a job queue\cr
 #'  \link[=batch_untag_resource]{untag_resource} \tab Deletes specified tags from an Batch resource\cr
 #'  \link[=batch_update_compute_environment]{update_compute_environment} \tab Updates an Batch compute environment\cr
+#'  \link[=batch_update_consumable_resource]{update_consumable_resource} \tab Updates a consumable resource\cr
 #'  \link[=batch_update_job_queue]{update_job_queue} \tab Updates a job queue\cr
 #'  \link[=batch_update_scheduling_policy]{update_scheduling_policy} \tab Updates a scheduling policy
 #' }
@@ -165,7 +171,7 @@ batch <- function(config = list(), credentials = list(), endpoint = NULL, region
 
 .batch$metadata <- list(
   service_name = "batch",
-  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "batch.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "batch.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "batch.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "batch.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "batch.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "batch.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "batch.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "batch.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "batch.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "batch.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "batch.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "batch.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "batch.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "batch.{region}.csp.hci.ic.gov", global = FALSE), "^eusc\\-(de)\\-\\w+\\-\\d+$" = list(endpoint = "batch.{region}.amazonaws.eu", global = FALSE)),
   service_id = "Batch",
   api_version = "2016-08-10",
   signing_name = "batch",

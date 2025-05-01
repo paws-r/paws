@@ -10,7 +10,8 @@ bedrockdataautomation_update_data_automation_project(
   projectDescription = NULL,
   standardOutputConfiguration,
   customOutputConfiguration = NULL,
-  overrideConfiguration = NULL
+  overrideConfiguration = NULL,
+  encryptionConfiguration = NULL
 )
 }
 \arguments{
@@ -25,6 +26,8 @@ bedrockdataautomation_update_data_automation_project(
 \item{customOutputConfiguration}{}
 
 \item{overrideConfiguration}{}
+
+\item{encryptionConfiguration}{}
 }
 \description{
 Updates an existing Amazon Bedrock Data Automation Project

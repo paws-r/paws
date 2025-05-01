@@ -28,8 +28,7 @@ May 1, 2024, and you don't want practice runs to shift traffic away at
 that time, you could set a blocked date for \code{2024-05-01}.}
 
 \item{blockedWindows}{Add, change, or remove windows of days and times for when you can,
-optionally, block Route 53 ARC from starting a practice run for a
-resource.
+optionally, block ARC from starting a practice run for a resource.
 
 The format for blocked windows is: DAY:HH:SS-DAY:HH:SS. Keep in mind,
 when you specify dates, that dates and times for practice runs are in

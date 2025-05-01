@@ -205,10 +205,11 @@ servicequotas_get_requested_service_quota_change <- function(RequestId) {
 }
 .servicequotas$operations$get_requested_service_quota_change <- servicequotas_get_requested_service_quota_change
 
-#' Retrieves the applied quota value for the specified quota
+#' Retrieves the applied quota value for the specified account-level or
+#' resource-level quota
 #'
 #' @description
-#' Retrieves the applied quota value for the specified quota. For some quotas, only the default values are available. If the applied quota value is not available for a quota, the quota is not retrieved.
+#' Retrieves the applied quota value for the specified account-level or resource-level quota. For some quotas, only the default values are available. If the applied quota value is not available for a quota, the quota is not retrieved.
 #'
 #' See [https://www.paws-r-sdk.com/docs/servicequotas_get_service_quota/](https://www.paws-r-sdk.com/docs/servicequotas_get_service_quota/) for full documentation.
 #'
@@ -220,9 +221,7 @@ servicequotas_get_requested_service_quota_change <- function(RequestId) {
 #' [`list_service_quotas`][servicequotas_list_service_quotas] operation,
 #' and look for the `QuotaCode` response in the output for the quota you
 #' want.
-#' @param ContextId Specifies the Amazon Web Services account or resource to which the quota
-#' applies. The value in this field depends on the context scope associated
-#' with the specified service quota.
+#' @param ContextId Specifies the resource with an Amazon Resource Name (ARN).
 #'
 #' @keywords internal
 #'
@@ -287,10 +286,10 @@ servicequotas_get_service_quota_increase_request_from_template <- function(Servi
 .servicequotas$operations$get_service_quota_increase_request_from_template <- servicequotas_get_service_quota_increase_request_from_template
 
 #' Lists the default values for the quotas for the specified Amazon Web
-#' Service
+#' Services service
 #'
 #' @description
-#' Lists the default values for the quotas for the specified Amazon Web Service. A default value does not reflect any quota increases.
+#' Lists the default values for the quotas for the specified Amazon Web Services service. A default value does not reflect any quota increases.
 #'
 #' See [https://www.paws-r-sdk.com/docs/servicequotas_list_aws_default_service_quotas/](https://www.paws-r-sdk.com/docs/servicequotas_list_aws_default_service_quotas/) for full documentation.
 #'
@@ -337,10 +336,10 @@ servicequotas_list_aws_default_service_quotas <- function(ServiceCode, NextToken
 .servicequotas$operations$list_aws_default_service_quotas <- servicequotas_list_aws_default_service_quotas
 
 #' Retrieves the quota increase requests for the specified Amazon Web
-#' Service
+#' Services service
 #'
 #' @description
-#' Retrieves the quota increase requests for the specified Amazon Web Service.
+#' Retrieves the quota increase requests for the specified Amazon Web Services service. Filter responses to return quota requests at either the account level, resource level, or all levels. Responses include any open or closed requests within 90 days.
 #'
 #' See [https://www.paws-r-sdk.com/docs/servicequotas_list_requested_service_quota_change_history/](https://www.paws-r-sdk.com/docs/servicequotas_list_requested_service_quota_change_history/) for full documentation.
 #'
@@ -365,8 +364,8 @@ servicequotas_list_aws_default_service_quotas <- function(ServiceCode, NextToken
 #' An API operation can return fewer results than the maximum even when
 #' there are more results available. You should check `NextToken` after
 #' every operation to ensure that you receive all of the results.
-#' @param QuotaRequestedAtLevel Specifies at which level within the Amazon Web Services account the
-#' quota request applies to.
+#' @param QuotaRequestedAtLevel Filters the response to return quota requests for the `ACCOUNT`,
+#' `RESOURCE`, or `ALL` levels. `ACCOUNT` is the default.
 #'
 #' @keywords internal
 #'
@@ -393,7 +392,7 @@ servicequotas_list_requested_service_quota_change_history <- function(ServiceCod
 #' Retrieves the quota increase requests for the specified quota
 #'
 #' @description
-#' Retrieves the quota increase requests for the specified quota.
+#' Retrieves the quota increase requests for the specified quota. Filter responses to return quota requests at either the account level, resource level, or all levels.
 #'
 #' See [https://www.paws-r-sdk.com/docs/servicequotas_list_requested_service_quota_change_history_by_quota/](https://www.paws-r-sdk.com/docs/servicequotas_list_requested_service_quota_change_history_by_quota/) for full documentation.
 #'
@@ -423,8 +422,8 @@ servicequotas_list_requested_service_quota_change_history <- function(ServiceCod
 #' An API operation can return fewer results than the maximum even when
 #' there are more results available. You should check `NextToken` after
 #' every operation to ensure that you receive all of the results.
-#' @param QuotaRequestedAtLevel Specifies at which level within the Amazon Web Services account the
-#' quota request applies to.
+#' @param QuotaRequestedAtLevel Filters the response to return quota requests for the `ACCOUNT`,
+#' `RESOURCE`, or `ALL` levels. `ACCOUNT` is the default.
 #'
 #' @keywords internal
 #'
@@ -499,10 +498,11 @@ servicequotas_list_service_quota_increase_requests_in_template <- function(Servi
 }
 .servicequotas$operations$list_service_quota_increase_requests_in_template <- servicequotas_list_service_quota_increase_requests_in_template
 
-#' Lists the applied quota values for the specified Amazon Web Service
+#' Lists the applied quota values for the specified Amazon Web Services
+#' service
 #'
 #' @description
-#' Lists the applied quota values for the specified Amazon Web Service. For some quotas, only the default values are available. If the applied quota value is not available for a quota, the quota is not retrieved.
+#' Lists the applied quota values for the specified Amazon Web Services service. For some quotas, only the default values are available. If the applied quota value is not available for a quota, the quota is not retrieved. Filter responses to return applied quota values at either the account level, resource level, or all levels.
 #'
 #' See [https://www.paws-r-sdk.com/docs/servicequotas_list_service_quotas/](https://www.paws-r-sdk.com/docs/servicequotas_list_service_quotas/) for full documentation.
 #'
@@ -530,7 +530,8 @@ servicequotas_list_service_quota_increase_requests_in_template <- function(Servi
 #' [`list_service_quotas`][servicequotas_list_service_quotas] operation,
 #' and look for the `QuotaCode` response in the output for the quota you
 #' want.
-#' @param QuotaAppliedAtLevel Specifies at which level of granularity that the quota value is applied.
+#' @param QuotaAppliedAtLevel Filters the response to return applied quota values for the `ACCOUNT`,
+#' `RESOURCE`, or `ALL` levels. `ACCOUNT` is the default.
 #'
 #' @keywords internal
 #'
@@ -554,11 +555,11 @@ servicequotas_list_service_quotas <- function(ServiceCode, NextToken = NULL, Max
 }
 .servicequotas$operations$list_service_quotas <- servicequotas_list_service_quotas
 
-#' Lists the names and codes for the Amazon Web Services integrated with
-#' Service Quotas
+#' Lists the names and codes for the Amazon Web Services services
+#' integrated with Service Quotas
 #'
 #' @description
-#' Lists the names and codes for the Amazon Web Services integrated with Service Quotas.
+#' Lists the names and codes for the Amazon Web Services services integrated with Service Quotas.
 #'
 #' See [https://www.paws-r-sdk.com/docs/servicequotas_list_services/](https://www.paws-r-sdk.com/docs/servicequotas_list_services/) for full documentation.
 #'
@@ -678,10 +679,11 @@ servicequotas_put_service_quota_increase_request_into_template <- function(Quota
 }
 .servicequotas$operations$put_service_quota_increase_request_into_template <- servicequotas_put_service_quota_increase_request_into_template
 
-#' Submits a quota increase request for the specified quota
+#' Submits a quota increase request for the specified quota at the account
+#' or resource level
 #'
 #' @description
-#' Submits a quota increase request for the specified quota.
+#' Submits a quota increase request for the specified quota at the account or resource level.
 #'
 #' See [https://www.paws-r-sdk.com/docs/servicequotas_request_service_quota_increase/](https://www.paws-r-sdk.com/docs/servicequotas_request_service_quota_increase/) for full documentation.
 #'
@@ -694,14 +696,21 @@ servicequotas_put_service_quota_increase_request_into_template <- function(Quota
 #' and look for the `QuotaCode` response in the output for the quota you
 #' want.
 #' @param DesiredValue &#91;required&#93; Specifies the new, increased value for the quota.
-#' @param ContextId Specifies the Amazon Web Services account or resource to which the quota
-#' applies. The value in this field depends on the context scope associated
-#' with the specified service quota.
+#' @param ContextId Specifies the resource with an Amazon Resource Name (ARN).
+#' @param SupportCaseAllowed Specifies if an Amazon Web Services Support case can be opened for the
+#' quota increase request. This parameter is optional.
+#' 
+#' By default, this flag is set to `True` and Amazon Web Services may
+#' create a support case for some quota increase requests. You can set this
+#' flag to `False` if you do not want a support case created when you
+#' request a quota increase. If you set the flag to `False`, Amazon Web
+#' Services does not open a support case and updates the request status to
+#' `Not approved`.
 #'
 #' @keywords internal
 #'
 #' @rdname servicequotas_request_service_quota_increase
-servicequotas_request_service_quota_increase <- function(ServiceCode, QuotaCode, DesiredValue, ContextId = NULL) {
+servicequotas_request_service_quota_increase <- function(ServiceCode, QuotaCode, DesiredValue, ContextId = NULL, SupportCaseAllowed = NULL) {
   op <- new_operation(
     name = "RequestServiceQuotaIncrease",
     http_method = "POST",
@@ -710,7 +719,7 @@ servicequotas_request_service_quota_increase <- function(ServiceCode, QuotaCode,
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .servicequotas$request_service_quota_increase_input(ServiceCode = ServiceCode, QuotaCode = QuotaCode, DesiredValue = DesiredValue, ContextId = ContextId)
+  input <- .servicequotas$request_service_quota_increase_input(ServiceCode = ServiceCode, QuotaCode = QuotaCode, DesiredValue = DesiredValue, ContextId = ContextId, SupportCaseAllowed = SupportCaseAllowed)
   output <- .servicequotas$request_service_quota_increase_output()
   config <- get_config()
   svc <- .servicequotas$service(config, op)

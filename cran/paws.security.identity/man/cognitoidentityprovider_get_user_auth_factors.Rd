@@ -7,8 +7,9 @@
 cognitoidentityprovider_get_user_auth_factors(AccessToken)
 }
 \arguments{
-\item{AccessToken}{[required] A valid access token that Amazon Cognito issued to the user whose
-authentication factors you want to view.}
+\item{AccessToken}{[required] A valid access token that Amazon Cognito issued to the currently
+signed-in user. Must include a scope claim for
+\code{aws.cognito.signin.user.admin}.}
 }
 \description{
 Lists the authentication options for the currently signed-in user. Returns the following:

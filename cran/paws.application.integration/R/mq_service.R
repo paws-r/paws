@@ -99,6 +99,7 @@ NULL
 #'  \link[=mq_create_tags]{create_tags} \tab Add a tag to a resource\cr
 #'  \link[=mq_create_user]{create_user} \tab Creates an ActiveMQ user\cr
 #'  \link[=mq_delete_broker]{delete_broker} \tab Deletes a broker\cr
+#'  \link[=mq_delete_configuration]{delete_configuration} \tab Deletes the specified configuration\cr
 #'  \link[=mq_delete_tags]{delete_tags} \tab Removes a tag from a resource\cr
 #'  \link[=mq_delete_user]{delete_user} \tab Deletes an ActiveMQ user\cr
 #'  \link[=mq_describe_broker]{describe_broker} \tab Returns information about the specified broker\cr
@@ -148,7 +149,7 @@ mq <- function(config = list(), credentials = list(), endpoint = NULL, region = 
 
 .mq$metadata <- list(
   service_name = "mq",
-  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "mq.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "mq.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "mq.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "mq.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "mq.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "mq.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "mq.{region}.csp.hci.ic.gov", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "mq.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "mq.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "mq.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "mq.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "mq.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "mq.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "mq.{region}.csp.hci.ic.gov", global = FALSE), "^eusc\\-(de)\\-\\w+\\-\\d+$" = list(endpoint = "mq.{region}.amazonaws.eu", global = FALSE)),
   service_id = "mq",
   api_version = "2017-11-27",
   signing_name = "mq",

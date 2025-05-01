@@ -31,6 +31,11 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{Filters}{The filters.
 \itemize{
+\item \code{group-long-name} - The long name of the zone group for the
+Availability Zone (for example, \verb{US West (Oregon) 1}), the Local
+Zone (for example, for Zone group \code{us-west-2-lax-1}, it is
+\verb{US West (Los Angeles)}, or the Wavelength Zone (for example, for
+Zone group \code{us-east-1-wl1}, it is \verb{US East (Verizon)}.
 \item \code{group-name} - The name of the zone group for the Availability Zone
 (for example, \code{us-east-1-zg-1}), the Local Zone (for example,
 \code{us-west-2-lax-1}), or the Wavelength Zone (for example,
@@ -47,7 +52,7 @@ calls.
 \item \code{region-name} - The name of the Region for the Zone (for example,
 \code{us-east-1}).
 \item \code{state} - The state of the Availability Zone, the Local Zone, or the
-Wavelength Zone (\code{available}).
+Wavelength Zone (\code{available} | \code{unavailable} | \code{constrained}).
 \item \code{zone-id} - The ID of the Availability Zone (for example,
 \code{use1-az1}), the Local Zone (for example, \code{usw2-lax1-az1}), or the
 Wavelength Zone (for example, \code{us-east-1-wl1-bos-wlz-1}).
@@ -59,7 +64,7 @@ the Wavelength Zone (for example, \code{us-east-1-wl1-bos-wlz-1}).
 }}
 }
 \description{
-Describes the Availability Zones, Local Zones, and Wavelength Zones that are available to you. If there is an event impacting a zone, you can use this request to view the state and any provided messages for that zone.
+Describes the Availability Zones, Local Zones, and Wavelength Zones that are available to you.
 
 See \url{https://www.paws-r-sdk.com/docs/ec2_describe_availability_zones/} for full documentation.
 }

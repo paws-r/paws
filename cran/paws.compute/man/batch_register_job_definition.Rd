@@ -17,7 +17,8 @@ batch_register_job_definition(
   tags = NULL,
   platformCapabilities = NULL,
   eksProperties = NULL,
-  ecsProperties = NULL
+  ecsProperties = NULL,
+  consumableResourceProperties = NULL
 )
 }
 \arguments{
@@ -111,6 +112,8 @@ This must not be specified for Amazon ECS based job definitions.}
 
 \item{ecsProperties}{An object with properties that are specific to Amazon ECS-based jobs.
 This must not be specified for Amazon EKS-based job definitions.}
+
+\item{consumableResourceProperties}{Contains a list of consumable resources required by the job.}
 }
 \description{
 Registers an Batch job definition.

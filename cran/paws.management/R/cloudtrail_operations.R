@@ -335,8 +335,8 @@ cloudtrail_create_event_data_store <- function(Name, AdvancedEventSelectors = NU
 #' see [Finding Your CloudTrail Log
 #' Files](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/get-and-view-cloudtrail-log-files.html#cloudtrail-find-log-files).
 #' The maximum length is 200 characters.
-#' @param SnsTopicName Specifies the name of the Amazon SNS topic defined for notification of
-#' log file delivery. The maximum length is 256 characters.
+#' @param SnsTopicName Specifies the name or ARN of the Amazon SNS topic defined for
+#' notification of log file delivery. The maximum length is 256 characters.
 #' @param IncludeGlobalServiceEvents Specifies whether the trail is publishing events from global services
 #' such as IAM to the log files.
 #' @param IsMultiRegionTrail Specifies whether the trail is created in the current Region or in all
@@ -2502,8 +2502,8 @@ cloudtrail_update_event_data_store <- function(EventDataStore, Name = NULL, Adva
 #' see [Finding Your CloudTrail Log
 #' Files](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/get-and-view-cloudtrail-log-files.html#cloudtrail-find-log-files).
 #' The maximum length is 200 characters.
-#' @param SnsTopicName Specifies the name of the Amazon SNS topic defined for notification of
-#' log file delivery. The maximum length is 256 characters.
+#' @param SnsTopicName Specifies the name or ARN of the Amazon SNS topic defined for
+#' notification of log file delivery. The maximum length is 256 characters.
 #' @param IncludeGlobalServiceEvents Specifies whether the trail is publishing events from global services
 #' such as IAM to the log files.
 #' @param IsMultiRegionTrail Specifies whether the trail applies only to the current Region or to all

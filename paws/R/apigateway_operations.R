@@ -556,7 +556,7 @@ apigateway_create_documentation_version <- function(restApiId, documentationVers
 #' used by regional endpoint for this domain name. Certificate Manager is
 #' the only supported source.
 #' @param endpointConfiguration The endpoint configuration of this DomainName showing the endpoint types
-#' of the domain name.
+#' and IP address types of the domain name.
 #' @param tags The key-value map of strings. The valid character set is
 #' \[a-zA-Z+-=._:/\]. The tag key can be up to 128 characters and must not
 #' start with `aws:`. The tag value can be up to 256 characters.
@@ -593,6 +593,7 @@ apigateway_create_documentation_version <- function(restApiId, documentationVers
 #'     types = list(
 #'       "REGIONAL"|"EDGE"|"PRIVATE"
 #'     ),
+#'     ipAddressType = "ipv4"|"dualstack",
 #'     vpcEndpointIds = list(
 #'       "string"
 #'     )
@@ -631,6 +632,7 @@ apigateway_create_documentation_version <- function(restApiId, documentationVers
 #'     types = list(
 #'       "REGIONAL"|"EDGE"|"PRIVATE"
 #'     ),
+#'     ipAddressType = "ipv4"|"dualstack",
 #'     vpcEndpointIds = list(
 #'       "string"
 #'     )
@@ -1014,8 +1016,8 @@ apigateway_create_resource <- function(restApiId, parentId, pathPart) {
 #' plan. Valid values are: `HEADER` to read the API key from the
 #' `X-API-Key` header of a request. `AUTHORIZER` to read the API key from
 #' the `UsageIdentifierKey` from a custom authorizer.
-#' @param endpointConfiguration The endpoint configuration of this RestApi showing the endpoint types of
-#' the API.
+#' @param endpointConfiguration The endpoint configuration of this RestApi showing the endpoint types
+#' and IP address types of the API.
 #' @param policy A stringified JSON policy document that applies to this RestApi
 #' regardless of the caller and Method configuration.
 #' @param tags The key-value map of strings. The valid character set is
@@ -1050,6 +1052,7 @@ apigateway_create_resource <- function(restApiId, parentId, pathPart) {
 #'     types = list(
 #'       "REGIONAL"|"EDGE"|"PRIVATE"
 #'     ),
+#'     ipAddressType = "ipv4"|"dualstack",
 #'     vpcEndpointIds = list(
 #'       "string"
 #'     )
@@ -1079,6 +1082,7 @@ apigateway_create_resource <- function(restApiId, parentId, pathPart) {
 #'     types = list(
 #'       "REGIONAL"|"EDGE"|"PRIVATE"
 #'     ),
+#'     ipAddressType = "ipv4"|"dualstack",
 #'     vpcEndpointIds = list(
 #'       "string"
 #'     )
@@ -3723,6 +3727,7 @@ apigateway_get_documentation_versions <- function(restApiId, position = NULL, li
 #'     types = list(
 #'       "REGIONAL"|"EDGE"|"PRIVATE"
 #'     ),
+#'     ipAddressType = "ipv4"|"dualstack",
 #'     vpcEndpointIds = list(
 #'       "string"
 #'     )
@@ -3885,6 +3890,7 @@ apigateway_get_domain_name_access_associations <- function(position = NULL, limi
 #'         types = list(
 #'           "REGIONAL"|"EDGE"|"PRIVATE"
 #'         ),
+#'         ipAddressType = "ipv4"|"dualstack",
 #'         vpcEndpointIds = list(
 #'           "string"
 #'         )
@@ -5071,6 +5077,7 @@ apigateway_get_resources <- function(restApiId, position = NULL, limit = NULL, e
 #'     types = list(
 #'       "REGIONAL"|"EDGE"|"PRIVATE"
 #'     ),
+#'     ipAddressType = "ipv4"|"dualstack",
 #'     vpcEndpointIds = list(
 #'       "string"
 #'     )
@@ -5153,6 +5160,7 @@ apigateway_get_rest_api <- function(restApiId) {
 #'         types = list(
 #'           "REGIONAL"|"EDGE"|"PRIVATE"
 #'         ),
+#'         ipAddressType = "ipv4"|"dualstack",
 #'         vpcEndpointIds = list(
 #'           "string"
 #'         )
@@ -6319,6 +6327,7 @@ apigateway_import_documentation_parts <- function(restApiId, mode = NULL, failOn
 #'     types = list(
 #'       "REGIONAL"|"EDGE"|"PRIVATE"
 #'     ),
+#'     ipAddressType = "ipv4"|"dualstack",
 #'     vpcEndpointIds = list(
 #'       "string"
 #'     )
@@ -7013,6 +7022,7 @@ apigateway_put_method_response <- function(restApiId, resourceId, httpMethod, st
 #'     types = list(
 #'       "REGIONAL"|"EDGE"|"PRIVATE"
 #'     ),
+#'     ipAddressType = "ipv4"|"dualstack",
 #'     vpcEndpointIds = list(
 #'       "string"
 #'     )
@@ -8004,6 +8014,7 @@ apigateway_update_documentation_version <- function(restApiId, documentationVers
 #'     types = list(
 #'       "REGIONAL"|"EDGE"|"PRIVATE"
 #'     ),
+#'     ipAddressType = "ipv4"|"dualstack",
 #'     vpcEndpointIds = list(
 #'       "string"
 #'     )
@@ -8806,6 +8817,7 @@ apigateway_update_resource <- function(restApiId, resourceId, patchOperations = 
 #'     types = list(
 #'       "REGIONAL"|"EDGE"|"PRIVATE"
 #'     ),
+#'     ipAddressType = "ipv4"|"dualstack",
 #'     vpcEndpointIds = list(
 #'       "string"
 #'     )

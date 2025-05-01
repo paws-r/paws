@@ -16,12 +16,20 @@ NULL
 #'
 #' @usage
 #' bedrockruntime_apply_guardrail(guardrailIdentifier, guardrailVersion,
-#'   source, content)
+#'   source, content, outputScope)
 #'
 #' @param guardrailIdentifier &#91;required&#93; The guardrail identifier used in the request to apply the guardrail.
 #' @param guardrailVersion &#91;required&#93; The guardrail version used in the request to apply the guardrail.
 #' @param source &#91;required&#93; The source of data used in the request to apply the guardrail.
 #' @param content &#91;required&#93; The content details used in the request to apply the guardrail.
+#' @param outputScope Specifies the scope of the output that you get in the response. Set to
+#' `FULL` to return the entire output, including any detected and
+#' non-detected entries in the response for enhanced debugging.
+#' 
+#' Note that the full output scope doesn't apply to word filters or regex
+#' in sensitive information filters. It does apply to all other filtering
+#' policies, including sensitive information with filters that can detect
+#' personally identifiable information (PII).
 #'
 #' @return
 #' A list with the following syntax:
@@ -33,9 +41,11 @@ NULL
 #'     wordPolicyUnits = 123,
 #'     sensitiveInformationPolicyUnits = 123,
 #'     sensitiveInformationPolicyFreeUnits = 123,
-#'     contextualGroundingPolicyUnits = 123
+#'     contextualGroundingPolicyUnits = 123,
+#'     contentPolicyImageUnits = 123
 #'   ),
 #'   action = "NONE"|"GUARDRAIL_INTERVENED",
+#'   actionReason = "string",
 #'   outputs = list(
 #'     list(
 #'       text = "string"
@@ -48,7 +58,8 @@ NULL
 #'           list(
 #'             name = "string",
 #'             type = "DENY",
-#'             action = "BLOCKED"
+#'             action = "BLOCKED"|"NONE",
+#'             detected = TRUE|FALSE
 #'           )
 #'         )
 #'       ),
@@ -58,7 +69,8 @@ NULL
 #'             type = "INSULTS"|"HATE"|"SEXUAL"|"VIOLENCE"|"MISCONDUCT"|"PROMPT_ATTACK",
 #'             confidence = "NONE"|"LOW"|"MEDIUM"|"HIGH",
 #'             filterStrength = "NONE"|"LOW"|"MEDIUM"|"HIGH",
-#'             action = "BLOCKED"
+#'             action = "BLOCKED"|"NONE",
+#'             detected = TRUE|FALSE
 #'           )
 #'         )
 #'       ),
@@ -66,14 +78,16 @@ NULL
 #'         customWords = list(
 #'           list(
 #'             match = "string",
-#'             action = "BLOCKED"
+#'             action = "BLOCKED"|"NONE",
+#'             detected = TRUE|FALSE
 #'           )
 #'         ),
 #'         managedWordLists = list(
 #'           list(
 #'             match = "string",
 #'             type = "PROFANITY",
-#'             action = "BLOCKED"
+#'             action = "BLOCKED"|"NONE",
+#'             detected = TRUE|FALSE
 #'           )
 #'         )
 #'       ),
@@ -82,7 +96,8 @@ NULL
 #'           list(
 #'             match = "string",
 #'             type = "ADDRESS"|"AGE"|"AWS_ACCESS_KEY"|"AWS_SECRET_KEY"|"CA_HEALTH_NUMBER"|"CA_SOCIAL_INSURANCE_NUMBER"|"CREDIT_DEBIT_CARD_CVV"|"CREDIT_DEBIT_CARD_EXPIRY"|"CREDIT_DEBIT_CARD_NUMBER"|"DRIVER_ID"|"EMAIL"|"INTERNATIONAL_BANK_ACCOUNT_NUMBER"|"IP_ADDRESS"|"LICENSE_PLATE"|"MAC_ADDRESS"|"NAME"|"PASSWORD"|"PHONE"|"PIN"|"SWIFT_CODE"|"UK_NATIONAL_HEALTH_SERVICE_NUMBER"|"UK_NATIONAL_INSURANCE_NUMBER"|"UK_UNIQUE_TAXPAYER_REFERENCE_NUMBER"|"URL"|"USERNAME"|"US_BANK_ACCOUNT_NUMBER"|"US_BANK_ROUTING_NUMBER"|"US_INDIVIDUAL_TAX_IDENTIFICATION_NUMBER"|"US_PASSPORT_NUMBER"|"US_SOCIAL_SECURITY_NUMBER"|"VEHICLE_IDENTIFICATION_NUMBER",
-#'             action = "ANONYMIZED"|"BLOCKED"
+#'             action = "ANONYMIZED"|"BLOCKED"|"NONE",
+#'             detected = TRUE|FALSE
 #'           )
 #'         ),
 #'         regexes = list(
@@ -90,7 +105,8 @@ NULL
 #'             name = "string",
 #'             match = "string",
 #'             regex = "string",
-#'             action = "ANONYMIZED"|"BLOCKED"
+#'             action = "ANONYMIZED"|"BLOCKED"|"NONE",
+#'             detected = TRUE|FALSE
 #'           )
 #'         )
 #'       ),
@@ -100,7 +116,8 @@ NULL
 #'             type = "GROUNDING"|"RELEVANCE",
 #'             threshold = 123.0,
 #'             score = 123.0,
-#'             action = "BLOCKED"|"NONE"
+#'             action = "BLOCKED"|"NONE",
+#'             detected = TRUE|FALSE
 #'           )
 #'         )
 #'       ),
@@ -112,7 +129,8 @@ NULL
 #'           wordPolicyUnits = 123,
 #'           sensitiveInformationPolicyUnits = 123,
 #'           sensitiveInformationPolicyFreeUnits = 123,
-#'           contextualGroundingPolicyUnits = 123
+#'           contextualGroundingPolicyUnits = 123,
+#'           contentPolicyImageUnits = 123
 #'         ),
 #'         guardrailCoverage = list(
 #'           textCharacters = list(
@@ -161,7 +179,8 @@ NULL
 #'         )
 #'       )
 #'     )
-#'   )
+#'   ),
+#'   outputScope = "INTERVENTIONS"|"FULL"
 #' )
 #' ```
 #'
@@ -170,7 +189,7 @@ NULL
 #' @rdname bedrockruntime_apply_guardrail
 #'
 #' @aliases bedrockruntime_apply_guardrail
-bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion, source, content) {
+bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion, source, content, outputScope = NULL) {
   op <- new_operation(
     name = "ApplyGuardrail",
     http_method = "POST",
@@ -179,7 +198,7 @@ bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .bedrockruntime$apply_guardrail_input(guardrailIdentifier = guardrailIdentifier, guardrailVersion = guardrailVersion, source = source, content = content)
+  input <- .bedrockruntime$apply_guardrail_input(guardrailIdentifier = guardrailIdentifier, guardrailVersion = guardrailVersion, source = source, content = content, outputScope = outputScope)
   output <- .bedrockruntime$apply_guardrail_output()
   config <- get_config()
   svc <- .bedrockruntime$service(config, op)
@@ -347,14 +366,22 @@ bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion
 #'           image = list(
 #'             format = "png"|"jpeg"|"gif"|"webp",
 #'             source = list(
-#'               bytes = raw
+#'               bytes = raw,
+#'               s3Location = list(
+#'                 uri = "string",
+#'                 bucketOwner = "string"
+#'               )
 #'             )
 #'           ),
 #'           document = list(
 #'             format = "pdf"|"csv"|"doc"|"docx"|"xls"|"xlsx"|"html"|"txt"|"md",
 #'             name = "string",
 #'             source = list(
-#'               bytes = raw
+#'               bytes = raw,
+#'               s3Location = list(
+#'                 uri = "string",
+#'                 bucketOwner = "string"
+#'               )
 #'             )
 #'           ),
 #'           video = list(
@@ -381,14 +408,22 @@ bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion
 #'                 image = list(
 #'                   format = "png"|"jpeg"|"gif"|"webp",
 #'                   source = list(
-#'                     bytes = raw
+#'                     bytes = raw,
+#'                     s3Location = list(
+#'                       uri = "string",
+#'                       bucketOwner = "string"
+#'                     )
 #'                   )
 #'                 ),
 #'                 document = list(
 #'                   format = "pdf"|"csv"|"doc"|"docx"|"xls"|"xlsx"|"html"|"txt"|"md",
 #'                   name = "string",
 #'                   source = list(
-#'                     bytes = raw
+#'                     bytes = raw,
+#'                     s3Location = list(
+#'                       uri = "string",
+#'                       bucketOwner = "string"
+#'                     )
 #'                   )
 #'                 ),
 #'                 video = list(
@@ -418,6 +453,16 @@ bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion
 #'                 bytes = raw
 #'               )
 #'             )
+#'           ),
+#'           cachePoint = list(
+#'             type = "default"
+#'           ),
+#'           reasoningContent = list(
+#'             reasoningText = list(
+#'               text = "string",
+#'               signature = "string"
+#'             ),
+#'             redactedContent = raw
 #'           )
 #'         )
 #'       )
@@ -427,7 +472,9 @@ bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion
 #'   usage = list(
 #'     inputTokens = 123,
 #'     outputTokens = 123,
-#'     totalTokens = 123
+#'     totalTokens = 123,
+#'     cacheReadInputTokens = 123,
+#'     cacheWriteInputTokens = 123
 #'   ),
 #'   metrics = list(
 #'     latencyMs = 123
@@ -445,7 +492,8 @@ bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion
 #'               list(
 #'                 name = "string",
 #'                 type = "DENY",
-#'                 action = "BLOCKED"
+#'                 action = "BLOCKED"|"NONE",
+#'                 detected = TRUE|FALSE
 #'               )
 #'             )
 #'           ),
@@ -455,7 +503,8 @@ bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion
 #'                 type = "INSULTS"|"HATE"|"SEXUAL"|"VIOLENCE"|"MISCONDUCT"|"PROMPT_ATTACK",
 #'                 confidence = "NONE"|"LOW"|"MEDIUM"|"HIGH",
 #'                 filterStrength = "NONE"|"LOW"|"MEDIUM"|"HIGH",
-#'                 action = "BLOCKED"
+#'                 action = "BLOCKED"|"NONE",
+#'                 detected = TRUE|FALSE
 #'               )
 #'             )
 #'           ),
@@ -463,14 +512,16 @@ bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion
 #'             customWords = list(
 #'               list(
 #'                 match = "string",
-#'                 action = "BLOCKED"
+#'                 action = "BLOCKED"|"NONE",
+#'                 detected = TRUE|FALSE
 #'               )
 #'             ),
 #'             managedWordLists = list(
 #'               list(
 #'                 match = "string",
 #'                 type = "PROFANITY",
-#'                 action = "BLOCKED"
+#'                 action = "BLOCKED"|"NONE",
+#'                 detected = TRUE|FALSE
 #'               )
 #'             )
 #'           ),
@@ -479,7 +530,8 @@ bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion
 #'               list(
 #'                 match = "string",
 #'                 type = "ADDRESS"|"AGE"|"AWS_ACCESS_KEY"|"AWS_SECRET_KEY"|"CA_HEALTH_NUMBER"|"CA_SOCIAL_INSURANCE_NUMBER"|"CREDIT_DEBIT_CARD_CVV"|"CREDIT_DEBIT_CARD_EXPIRY"|"CREDIT_DEBIT_CARD_NUMBER"|"DRIVER_ID"|"EMAIL"|"INTERNATIONAL_BANK_ACCOUNT_NUMBER"|"IP_ADDRESS"|"LICENSE_PLATE"|"MAC_ADDRESS"|"NAME"|"PASSWORD"|"PHONE"|"PIN"|"SWIFT_CODE"|"UK_NATIONAL_HEALTH_SERVICE_NUMBER"|"UK_NATIONAL_INSURANCE_NUMBER"|"UK_UNIQUE_TAXPAYER_REFERENCE_NUMBER"|"URL"|"USERNAME"|"US_BANK_ACCOUNT_NUMBER"|"US_BANK_ROUTING_NUMBER"|"US_INDIVIDUAL_TAX_IDENTIFICATION_NUMBER"|"US_PASSPORT_NUMBER"|"US_SOCIAL_SECURITY_NUMBER"|"VEHICLE_IDENTIFICATION_NUMBER",
-#'                 action = "ANONYMIZED"|"BLOCKED"
+#'                 action = "ANONYMIZED"|"BLOCKED"|"NONE",
+#'                 detected = TRUE|FALSE
 #'               )
 #'             ),
 #'             regexes = list(
@@ -487,7 +539,8 @@ bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion
 #'                 name = "string",
 #'                 match = "string",
 #'                 regex = "string",
-#'                 action = "ANONYMIZED"|"BLOCKED"
+#'                 action = "ANONYMIZED"|"BLOCKED"|"NONE",
+#'                 detected = TRUE|FALSE
 #'               )
 #'             )
 #'           ),
@@ -497,7 +550,8 @@ bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion
 #'                 type = "GROUNDING"|"RELEVANCE",
 #'                 threshold = 123.0,
 #'                 score = 123.0,
-#'                 action = "BLOCKED"|"NONE"
+#'                 action = "BLOCKED"|"NONE",
+#'                 detected = TRUE|FALSE
 #'               )
 #'             )
 #'           ),
@@ -509,7 +563,8 @@ bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion
 #'               wordPolicyUnits = 123,
 #'               sensitiveInformationPolicyUnits = 123,
 #'               sensitiveInformationPolicyFreeUnits = 123,
-#'               contextualGroundingPolicyUnits = 123
+#'               contextualGroundingPolicyUnits = 123,
+#'               contentPolicyImageUnits = 123
 #'             ),
 #'             guardrailCoverage = list(
 #'               textCharacters = list(
@@ -532,7 +587,8 @@ bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion
 #'                 list(
 #'                   name = "string",
 #'                   type = "DENY",
-#'                   action = "BLOCKED"
+#'                   action = "BLOCKED"|"NONE",
+#'                   detected = TRUE|FALSE
 #'                 )
 #'               )
 #'             ),
@@ -542,7 +598,8 @@ bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion
 #'                   type = "INSULTS"|"HATE"|"SEXUAL"|"VIOLENCE"|"MISCONDUCT"|"PROMPT_ATTACK",
 #'                   confidence = "NONE"|"LOW"|"MEDIUM"|"HIGH",
 #'                   filterStrength = "NONE"|"LOW"|"MEDIUM"|"HIGH",
-#'                   action = "BLOCKED"
+#'                   action = "BLOCKED"|"NONE",
+#'                   detected = TRUE|FALSE
 #'                 )
 #'               )
 #'             ),
@@ -550,14 +607,16 @@ bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion
 #'               customWords = list(
 #'                 list(
 #'                   match = "string",
-#'                   action = "BLOCKED"
+#'                   action = "BLOCKED"|"NONE",
+#'                   detected = TRUE|FALSE
 #'                 )
 #'               ),
 #'               managedWordLists = list(
 #'                 list(
 #'                   match = "string",
 #'                   type = "PROFANITY",
-#'                   action = "BLOCKED"
+#'                   action = "BLOCKED"|"NONE",
+#'                   detected = TRUE|FALSE
 #'                 )
 #'               )
 #'             ),
@@ -566,7 +625,8 @@ bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion
 #'                 list(
 #'                   match = "string",
 #'                   type = "ADDRESS"|"AGE"|"AWS_ACCESS_KEY"|"AWS_SECRET_KEY"|"CA_HEALTH_NUMBER"|"CA_SOCIAL_INSURANCE_NUMBER"|"CREDIT_DEBIT_CARD_CVV"|"CREDIT_DEBIT_CARD_EXPIRY"|"CREDIT_DEBIT_CARD_NUMBER"|"DRIVER_ID"|"EMAIL"|"INTERNATIONAL_BANK_ACCOUNT_NUMBER"|"IP_ADDRESS"|"LICENSE_PLATE"|"MAC_ADDRESS"|"NAME"|"PASSWORD"|"PHONE"|"PIN"|"SWIFT_CODE"|"UK_NATIONAL_HEALTH_SERVICE_NUMBER"|"UK_NATIONAL_INSURANCE_NUMBER"|"UK_UNIQUE_TAXPAYER_REFERENCE_NUMBER"|"URL"|"USERNAME"|"US_BANK_ACCOUNT_NUMBER"|"US_BANK_ROUTING_NUMBER"|"US_INDIVIDUAL_TAX_IDENTIFICATION_NUMBER"|"US_PASSPORT_NUMBER"|"US_SOCIAL_SECURITY_NUMBER"|"VEHICLE_IDENTIFICATION_NUMBER",
-#'                   action = "ANONYMIZED"|"BLOCKED"
+#'                   action = "ANONYMIZED"|"BLOCKED"|"NONE",
+#'                   detected = TRUE|FALSE
 #'                 )
 #'               ),
 #'               regexes = list(
@@ -574,7 +634,8 @@ bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion
 #'                   name = "string",
 #'                   match = "string",
 #'                   regex = "string",
-#'                   action = "ANONYMIZED"|"BLOCKED"
+#'                   action = "ANONYMIZED"|"BLOCKED"|"NONE",
+#'                   detected = TRUE|FALSE
 #'                 )
 #'               )
 #'             ),
@@ -584,7 +645,8 @@ bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion
 #'                   type = "GROUNDING"|"RELEVANCE",
 #'                   threshold = 123.0,
 #'                   score = 123.0,
-#'                   action = "BLOCKED"|"NONE"
+#'                   action = "BLOCKED"|"NONE",
+#'                   detected = TRUE|FALSE
 #'                 )
 #'               )
 #'             ),
@@ -596,7 +658,8 @@ bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion
 #'                 wordPolicyUnits = 123,
 #'                 sensitiveInformationPolicyUnits = 123,
 #'                 sensitiveInformationPolicyFreeUnits = 123,
-#'                 contextualGroundingPolicyUnits = 123
+#'                 contextualGroundingPolicyUnits = 123,
+#'                 contentPolicyImageUnits = 123
 #'               ),
 #'               guardrailCoverage = list(
 #'                 textCharacters = list(
@@ -611,7 +674,8 @@ bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion
 #'             )
 #'           )
 #'         )
-#'       )
+#'       ),
+#'       actionReason = "string"
 #'     ),
 #'     promptRouter = list(
 #'       invokedModelId = "string"
@@ -636,14 +700,22 @@ bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion
 #'           image = list(
 #'             format = "png"|"jpeg"|"gif"|"webp",
 #'             source = list(
-#'               bytes = raw
+#'               bytes = raw,
+#'               s3Location = list(
+#'                 uri = "string",
+#'                 bucketOwner = "string"
+#'               )
 #'             )
 #'           ),
 #'           document = list(
 #'             format = "pdf"|"csv"|"doc"|"docx"|"xls"|"xlsx"|"html"|"txt"|"md",
 #'             name = "string",
 #'             source = list(
-#'               bytes = raw
+#'               bytes = raw,
+#'               s3Location = list(
+#'                 uri = "string",
+#'                 bucketOwner = "string"
+#'               )
 #'             )
 #'           ),
 #'           video = list(
@@ -670,14 +742,22 @@ bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion
 #'                 image = list(
 #'                   format = "png"|"jpeg"|"gif"|"webp",
 #'                   source = list(
-#'                     bytes = raw
+#'                     bytes = raw,
+#'                     s3Location = list(
+#'                       uri = "string",
+#'                       bucketOwner = "string"
+#'                     )
 #'                   )
 #'                 ),
 #'                 document = list(
 #'                   format = "pdf"|"csv"|"doc"|"docx"|"xls"|"xlsx"|"html"|"txt"|"md",
 #'                   name = "string",
 #'                   source = list(
-#'                     bytes = raw
+#'                     bytes = raw,
+#'                     s3Location = list(
+#'                       uri = "string",
+#'                       bucketOwner = "string"
+#'                     )
 #'                   )
 #'                 ),
 #'                 video = list(
@@ -707,6 +787,16 @@ bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion
 #'                 bytes = raw
 #'               )
 #'             )
+#'           ),
+#'           cachePoint = list(
+#'             type = "default"
+#'           ),
+#'           reasoningContent = list(
+#'             reasoningText = list(
+#'               text = "string",
+#'               signature = "string"
+#'             ),
+#'             redactedContent = raw
 #'           )
 #'         )
 #'       )
@@ -728,6 +818,9 @@ bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion
 #'             bytes = raw
 #'           )
 #'         )
+#'       ),
+#'       cachePoint = list(
+#'         type = "default"
 #'       )
 #'     )
 #'   ),
@@ -748,6 +841,9 @@ bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion
 #'           inputSchema = list(
 #'             json = list()
 #'           )
+#'         ),
+#'         cachePoint = list(
+#'           type = "default"
 #'         )
 #'       )
 #'     ),
@@ -762,7 +858,7 @@ bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion
 #'   guardrailConfig = list(
 #'     guardrailIdentifier = "string",
 #'     guardrailVersion = "string",
-#'     trace = "enabled"|"disabled"
+#'     trace = "enabled"|"disabled"|"enabled_full"
 #'   ),
 #'   additionalModelRequestFields = list(),
 #'   promptVariables = list(
@@ -983,6 +1079,11 @@ bedrockruntime_converse <- function(modelId, messages = NULL, system = NULL, inf
 #'         text = "string",
 #'         toolUse = list(
 #'           input = "string"
+#'         ),
+#'         reasoningContent = list(
+#'           text = "string",
+#'           redactedContent = raw,
+#'           signature = "string"
 #'         )
 #'       ),
 #'       contentBlockIndex = 123
@@ -998,7 +1099,9 @@ bedrockruntime_converse <- function(modelId, messages = NULL, system = NULL, inf
 #'       usage = list(
 #'         inputTokens = 123,
 #'         outputTokens = 123,
-#'         totalTokens = 123
+#'         totalTokens = 123,
+#'         cacheReadInputTokens = 123,
+#'         cacheWriteInputTokens = 123
 #'       ),
 #'       metrics = list(
 #'         latencyMs = 123
@@ -1015,7 +1118,8 @@ bedrockruntime_converse <- function(modelId, messages = NULL, system = NULL, inf
 #'                   list(
 #'                     name = "string",
 #'                     type = "DENY",
-#'                     action = "BLOCKED"
+#'                     action = "BLOCKED"|"NONE",
+#'                     detected = TRUE|FALSE
 #'                   )
 #'                 )
 #'               ),
@@ -1025,7 +1129,8 @@ bedrockruntime_converse <- function(modelId, messages = NULL, system = NULL, inf
 #'                     type = "INSULTS"|"HATE"|"SEXUAL"|"VIOLENCE"|"MISCONDUCT"|"PROMPT_ATTACK",
 #'                     confidence = "NONE"|"LOW"|"MEDIUM"|"HIGH",
 #'                     filterStrength = "NONE"|"LOW"|"MEDIUM"|"HIGH",
-#'                     action = "BLOCKED"
+#'                     action = "BLOCKED"|"NONE",
+#'                     detected = TRUE|FALSE
 #'                   )
 #'                 )
 #'               ),
@@ -1033,14 +1138,16 @@ bedrockruntime_converse <- function(modelId, messages = NULL, system = NULL, inf
 #'                 customWords = list(
 #'                   list(
 #'                     match = "string",
-#'                     action = "BLOCKED"
+#'                     action = "BLOCKED"|"NONE",
+#'                     detected = TRUE|FALSE
 #'                   )
 #'                 ),
 #'                 managedWordLists = list(
 #'                   list(
 #'                     match = "string",
 #'                     type = "PROFANITY",
-#'                     action = "BLOCKED"
+#'                     action = "BLOCKED"|"NONE",
+#'                     detected = TRUE|FALSE
 #'                   )
 #'                 )
 #'               ),
@@ -1049,7 +1156,8 @@ bedrockruntime_converse <- function(modelId, messages = NULL, system = NULL, inf
 #'                   list(
 #'                     match = "string",
 #'                     type = "ADDRESS"|"AGE"|"AWS_ACCESS_KEY"|"AWS_SECRET_KEY"|"CA_HEALTH_NUMBER"|"CA_SOCIAL_INSURANCE_NUMBER"|"CREDIT_DEBIT_CARD_CVV"|"CREDIT_DEBIT_CARD_EXPIRY"|"CREDIT_DEBIT_CARD_NUMBER"|"DRIVER_ID"|"EMAIL"|"INTERNATIONAL_BANK_ACCOUNT_NUMBER"|"IP_ADDRESS"|"LICENSE_PLATE"|"MAC_ADDRESS"|"NAME"|"PASSWORD"|"PHONE"|"PIN"|"SWIFT_CODE"|"UK_NATIONAL_HEALTH_SERVICE_NUMBER"|"UK_NATIONAL_INSURANCE_NUMBER"|"UK_UNIQUE_TAXPAYER_REFERENCE_NUMBER"|"URL"|"USERNAME"|"US_BANK_ACCOUNT_NUMBER"|"US_BANK_ROUTING_NUMBER"|"US_INDIVIDUAL_TAX_IDENTIFICATION_NUMBER"|"US_PASSPORT_NUMBER"|"US_SOCIAL_SECURITY_NUMBER"|"VEHICLE_IDENTIFICATION_NUMBER",
-#'                     action = "ANONYMIZED"|"BLOCKED"
+#'                     action = "ANONYMIZED"|"BLOCKED"|"NONE",
+#'                     detected = TRUE|FALSE
 #'                   )
 #'                 ),
 #'                 regexes = list(
@@ -1057,7 +1165,8 @@ bedrockruntime_converse <- function(modelId, messages = NULL, system = NULL, inf
 #'                     name = "string",
 #'                     match = "string",
 #'                     regex = "string",
-#'                     action = "ANONYMIZED"|"BLOCKED"
+#'                     action = "ANONYMIZED"|"BLOCKED"|"NONE",
+#'                     detected = TRUE|FALSE
 #'                   )
 #'                 )
 #'               ),
@@ -1067,7 +1176,8 @@ bedrockruntime_converse <- function(modelId, messages = NULL, system = NULL, inf
 #'                     type = "GROUNDING"|"RELEVANCE",
 #'                     threshold = 123.0,
 #'                     score = 123.0,
-#'                     action = "BLOCKED"|"NONE"
+#'                     action = "BLOCKED"|"NONE",
+#'                     detected = TRUE|FALSE
 #'                   )
 #'                 )
 #'               ),
@@ -1079,7 +1189,8 @@ bedrockruntime_converse <- function(modelId, messages = NULL, system = NULL, inf
 #'                   wordPolicyUnits = 123,
 #'                   sensitiveInformationPolicyUnits = 123,
 #'                   sensitiveInformationPolicyFreeUnits = 123,
-#'                   contextualGroundingPolicyUnits = 123
+#'                   contextualGroundingPolicyUnits = 123,
+#'                   contentPolicyImageUnits = 123
 #'                 ),
 #'                 guardrailCoverage = list(
 #'                   textCharacters = list(
@@ -1102,7 +1213,8 @@ bedrockruntime_converse <- function(modelId, messages = NULL, system = NULL, inf
 #'                     list(
 #'                       name = "string",
 #'                       type = "DENY",
-#'                       action = "BLOCKED"
+#'                       action = "BLOCKED"|"NONE",
+#'                       detected = TRUE|FALSE
 #'                     )
 #'                   )
 #'                 ),
@@ -1112,7 +1224,8 @@ bedrockruntime_converse <- function(modelId, messages = NULL, system = NULL, inf
 #'                       type = "INSULTS"|"HATE"|"SEXUAL"|"VIOLENCE"|"MISCONDUCT"|"PROMPT_ATTACK",
 #'                       confidence = "NONE"|"LOW"|"MEDIUM"|"HIGH",
 #'                       filterStrength = "NONE"|"LOW"|"MEDIUM"|"HIGH",
-#'                       action = "BLOCKED"
+#'                       action = "BLOCKED"|"NONE",
+#'                       detected = TRUE|FALSE
 #'                     )
 #'                   )
 #'                 ),
@@ -1120,14 +1233,16 @@ bedrockruntime_converse <- function(modelId, messages = NULL, system = NULL, inf
 #'                   customWords = list(
 #'                     list(
 #'                       match = "string",
-#'                       action = "BLOCKED"
+#'                       action = "BLOCKED"|"NONE",
+#'                       detected = TRUE|FALSE
 #'                     )
 #'                   ),
 #'                   managedWordLists = list(
 #'                     list(
 #'                       match = "string",
 #'                       type = "PROFANITY",
-#'                       action = "BLOCKED"
+#'                       action = "BLOCKED"|"NONE",
+#'                       detected = TRUE|FALSE
 #'                     )
 #'                   )
 #'                 ),
@@ -1136,7 +1251,8 @@ bedrockruntime_converse <- function(modelId, messages = NULL, system = NULL, inf
 #'                     list(
 #'                       match = "string",
 #'                       type = "ADDRESS"|"AGE"|"AWS_ACCESS_KEY"|"AWS_SECRET_KEY"|"CA_HEALTH_NUMBER"|"CA_SOCIAL_INSURANCE_NUMBER"|"CREDIT_DEBIT_CARD_CVV"|"CREDIT_DEBIT_CARD_EXPIRY"|"CREDIT_DEBIT_CARD_NUMBER"|"DRIVER_ID"|"EMAIL"|"INTERNATIONAL_BANK_ACCOUNT_NUMBER"|"IP_ADDRESS"|"LICENSE_PLATE"|"MAC_ADDRESS"|"NAME"|"PASSWORD"|"PHONE"|"PIN"|"SWIFT_CODE"|"UK_NATIONAL_HEALTH_SERVICE_NUMBER"|"UK_NATIONAL_INSURANCE_NUMBER"|"UK_UNIQUE_TAXPAYER_REFERENCE_NUMBER"|"URL"|"USERNAME"|"US_BANK_ACCOUNT_NUMBER"|"US_BANK_ROUTING_NUMBER"|"US_INDIVIDUAL_TAX_IDENTIFICATION_NUMBER"|"US_PASSPORT_NUMBER"|"US_SOCIAL_SECURITY_NUMBER"|"VEHICLE_IDENTIFICATION_NUMBER",
-#'                       action = "ANONYMIZED"|"BLOCKED"
+#'                       action = "ANONYMIZED"|"BLOCKED"|"NONE",
+#'                       detected = TRUE|FALSE
 #'                     )
 #'                   ),
 #'                   regexes = list(
@@ -1144,7 +1260,8 @@ bedrockruntime_converse <- function(modelId, messages = NULL, system = NULL, inf
 #'                       name = "string",
 #'                       match = "string",
 #'                       regex = "string",
-#'                       action = "ANONYMIZED"|"BLOCKED"
+#'                       action = "ANONYMIZED"|"BLOCKED"|"NONE",
+#'                       detected = TRUE|FALSE
 #'                     )
 #'                   )
 #'                 ),
@@ -1154,7 +1271,8 @@ bedrockruntime_converse <- function(modelId, messages = NULL, system = NULL, inf
 #'                       type = "GROUNDING"|"RELEVANCE",
 #'                       threshold = 123.0,
 #'                       score = 123.0,
-#'                       action = "BLOCKED"|"NONE"
+#'                       action = "BLOCKED"|"NONE",
+#'                       detected = TRUE|FALSE
 #'                     )
 #'                   )
 #'                 ),
@@ -1166,7 +1284,8 @@ bedrockruntime_converse <- function(modelId, messages = NULL, system = NULL, inf
 #'                     wordPolicyUnits = 123,
 #'                     sensitiveInformationPolicyUnits = 123,
 #'                     sensitiveInformationPolicyFreeUnits = 123,
-#'                     contextualGroundingPolicyUnits = 123
+#'                     contextualGroundingPolicyUnits = 123,
+#'                     contentPolicyImageUnits = 123
 #'                   ),
 #'                   guardrailCoverage = list(
 #'                     textCharacters = list(
@@ -1181,7 +1300,8 @@ bedrockruntime_converse <- function(modelId, messages = NULL, system = NULL, inf
 #'                 )
 #'               )
 #'             )
-#'           )
+#'           ),
+#'           actionReason = "string"
 #'         ),
 #'         promptRouter = list(
 #'           invokedModelId = "string"
@@ -1225,14 +1345,22 @@ bedrockruntime_converse <- function(modelId, messages = NULL, system = NULL, inf
 #'           image = list(
 #'             format = "png"|"jpeg"|"gif"|"webp",
 #'             source = list(
-#'               bytes = raw
+#'               bytes = raw,
+#'               s3Location = list(
+#'                 uri = "string",
+#'                 bucketOwner = "string"
+#'               )
 #'             )
 #'           ),
 #'           document = list(
 #'             format = "pdf"|"csv"|"doc"|"docx"|"xls"|"xlsx"|"html"|"txt"|"md",
 #'             name = "string",
 #'             source = list(
-#'               bytes = raw
+#'               bytes = raw,
+#'               s3Location = list(
+#'                 uri = "string",
+#'                 bucketOwner = "string"
+#'               )
 #'             )
 #'           ),
 #'           video = list(
@@ -1259,14 +1387,22 @@ bedrockruntime_converse <- function(modelId, messages = NULL, system = NULL, inf
 #'                 image = list(
 #'                   format = "png"|"jpeg"|"gif"|"webp",
 #'                   source = list(
-#'                     bytes = raw
+#'                     bytes = raw,
+#'                     s3Location = list(
+#'                       uri = "string",
+#'                       bucketOwner = "string"
+#'                     )
 #'                   )
 #'                 ),
 #'                 document = list(
 #'                   format = "pdf"|"csv"|"doc"|"docx"|"xls"|"xlsx"|"html"|"txt"|"md",
 #'                   name = "string",
 #'                   source = list(
-#'                     bytes = raw
+#'                     bytes = raw,
+#'                     s3Location = list(
+#'                       uri = "string",
+#'                       bucketOwner = "string"
+#'                     )
 #'                   )
 #'                 ),
 #'                 video = list(
@@ -1296,6 +1432,16 @@ bedrockruntime_converse <- function(modelId, messages = NULL, system = NULL, inf
 #'                 bytes = raw
 #'               )
 #'             )
+#'           ),
+#'           cachePoint = list(
+#'             type = "default"
+#'           ),
+#'           reasoningContent = list(
+#'             reasoningText = list(
+#'               text = "string",
+#'               signature = "string"
+#'             ),
+#'             redactedContent = raw
 #'           )
 #'         )
 #'       )
@@ -1317,6 +1463,9 @@ bedrockruntime_converse <- function(modelId, messages = NULL, system = NULL, inf
 #'             bytes = raw
 #'           )
 #'         )
+#'       ),
+#'       cachePoint = list(
+#'         type = "default"
 #'       )
 #'     )
 #'   ),
@@ -1337,6 +1486,9 @@ bedrockruntime_converse <- function(modelId, messages = NULL, system = NULL, inf
 #'           inputSchema = list(
 #'             json = list()
 #'           )
+#'         ),
+#'         cachePoint = list(
+#'           type = "default"
 #'         )
 #'       )
 #'     ),
@@ -1351,7 +1503,7 @@ bedrockruntime_converse <- function(modelId, messages = NULL, system = NULL, inf
 #'   guardrailConfig = list(
 #'     guardrailIdentifier = "string",
 #'     guardrailVersion = "string",
-#'     trace = "enabled"|"disabled",
+#'     trace = "enabled"|"disabled"|"enabled_full",
 #'     streamProcessingMode = "sync"|"async"
 #'   ),
 #'   additionalModelRequestFields = list(),
@@ -1579,7 +1731,7 @@ bedrockruntime_get_async_invoke <- function(invocationArn) {
 #'   contentType = "string",
 #'   accept = "string",
 #'   modelId = "string",
-#'   trace = "ENABLED"|"DISABLED",
+#'   trace = "ENABLED"|"DISABLED"|"ENABLED_FULL",
 #'   guardrailIdentifier = "string",
 #'   guardrailVersion = "string",
 #'   performanceConfigLatency = "standard"|"optimized"
@@ -1609,6 +1761,104 @@ bedrockruntime_invoke_model <- function(body = NULL, contentType = NULL, accept 
   return(response)
 }
 .bedrockruntime$operations$invoke_model <- bedrockruntime_invoke_model
+
+#' Invoke the specified Amazon Bedrock model to run inference using the
+#' bidirectional stream
+#'
+#' @description
+#' Invoke the specified Amazon Bedrock model to run inference using the
+#' bidirectional stream. The response is returned in a stream that remains
+#' open for 8 minutes. A single session can contain multiple prompts and
+#' responses from the model. The prompts to the model are provided as audio
+#' files and the model's responses are spoken back to the user and
+#' transcribed.
+#' 
+#' It is possible for users to interrupt the model's response with a new
+#' prompt, which will halt the response speech. The model will retain
+#' contextual awareness of the conversation while pivoting to respond to
+#' the new prompt.
+#'
+#' @usage
+#' bedrockruntime_invoke_model_with_bidirectional_stream(modelId, body)
+#'
+#' @param modelId &#91;required&#93; The model ID or ARN of the model ID to use. Currently, only
+#' `amazon.nova-sonic-v1:0` is supported.
+#' @param body &#91;required&#93; The prompt and inference parameters in the format specified in the
+#' `BidirectionalInputPayloadPart` in the header. You must provide the body
+#' in JSON format. To see the format and content of the request and
+#' response bodies for different models, refer to [Inference
+#' parameters](https://docs.aws.amazon.com/bedrock/latest/userguide/model-parameters.html).
+#' For more information, see [Run
+#' inference](https://docs.aws.amazon.com/bedrock/latest/userguide/inference.html)
+#' in the Bedrock User Guide.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   body = list(
+#'     chunk = list(
+#'       bytes = raw
+#'     ),
+#'     internalServerException = list(
+#'       message = "string"
+#'     ),
+#'     modelStreamErrorException = list(
+#'       message = "string",
+#'       originalStatusCode = 123,
+#'       originalMessage = "string"
+#'     ),
+#'     validationException = list(
+#'       message = "string"
+#'     ),
+#'     throttlingException = list(
+#'       message = "string"
+#'     ),
+#'     modelTimeoutException = list(
+#'       message = "string"
+#'     ),
+#'     serviceUnavailableException = list(
+#'       message = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$invoke_model_with_bidirectional_stream(
+#'   modelId = "string",
+#'   body = list(
+#'     chunk = list(
+#'       bytes = raw
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockruntime_invoke_model_with_bidirectional_stream
+#'
+#' @aliases bedrockruntime_invoke_model_with_bidirectional_stream
+bedrockruntime_invoke_model_with_bidirectional_stream <- function(modelId, body) {
+  op <- new_operation(
+    name = "InvokeModelWithBidirectionalStream",
+    http_method = "POST",
+    http_path = "/model/{modelId}/invoke-with-bidirectional-stream",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = TRUE
+  )
+  input <- .bedrockruntime$invoke_model_with_bidirectional_stream_input(modelId = modelId, body = body)
+  output <- .bedrockruntime$invoke_model_with_bidirectional_stream_output()
+  config <- get_config()
+  svc <- .bedrockruntime$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockruntime$operations$invoke_model_with_bidirectional_stream <- bedrockruntime_invoke_model_with_bidirectional_stream
 
 #' Invoke the specified Amazon Bedrock model to run inference using the
 #' prompt and inference parameters provided in the request body
@@ -1759,7 +2009,7 @@ bedrockruntime_invoke_model <- function(body = NULL, contentType = NULL, accept 
 #'   contentType = "string",
 #'   accept = "string",
 #'   modelId = "string",
-#'   trace = "ENABLED"|"DISABLED",
+#'   trace = "ENABLED"|"DISABLED"|"ENABLED_FULL",
 #'   guardrailIdentifier = "string",
 #'   guardrailVersion = "string",
 #'   performanceConfigLatency = "standard"|"optimized"

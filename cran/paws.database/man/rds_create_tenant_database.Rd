@@ -9,9 +9,11 @@ rds_create_tenant_database(
   DBInstanceIdentifier,
   TenantDBName,
   MasterUsername,
-  MasterUserPassword,
+  MasterUserPassword = NULL,
   CharacterSetName = NULL,
   NcharCharacterSetName = NULL,
+  ManageMasterUserPassword = NULL,
+  MasterUserSecretKmsKeyId = NULL,
   Tags = NULL
 )
 }
@@ -34,7 +36,7 @@ Constraints:
 \item Can't be a reserved word for the chosen database engine.
 }}
 
-\item{MasterUserPassword}{[required] The password for the master user in your tenant database.
+\item{MasterUserPassword}{The password for the master user in your tenant database.
 
 Constraints:
 \itemize{
@@ -42,12 +44,46 @@ Constraints:
 \item Can include any printable ASCII character except forward slash
 (\code{/}), double quote (\verb{\\"}), at symbol (\code{@}), ampersand (\code{&}), or
 single quote (\verb{\\'}).
+\item Can't be specified when \code{ManageMasterUserPassword} is enabled.
 }}
 
 \item{CharacterSetName}{The character set for your tenant database. If you don't specify a
 value, the character set name defaults to \code{AL32UTF8}.}
 
 \item{NcharCharacterSetName}{The \code{NCHAR} value for the tenant database.}
+
+\item{ManageMasterUserPassword}{Specifies whether to manage the master user password with Amazon Web
+Services Secrets Manager.
+
+For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-secrets-manager.html}{Password management with Amazon Web Services Secrets Manager}
+in the \emph{Amazon RDS User Guide.}
+
+Constraints:
+\itemize{
+\item Can't manage the master user password with Amazon Web Services
+Secrets Manager if \code{MasterUserPassword} is specified.
+}}
+
+\item{MasterUserSecretKmsKeyId}{The Amazon Web Services KMS key identifier to encrypt a secret that is
+automatically generated and managed in Amazon Web Services Secrets
+Manager.
+
+This setting is valid only if the master user password is managed by RDS
+in Amazon Web Services Secrets Manager for the DB instance.
+
+The Amazon Web Services KMS key identifier is the key ARN, key ID, alias
+ARN, or alias name for the KMS key. To use a KMS key in a different
+Amazon Web Services account, specify the key ARN or alias ARN.
+
+If you don't specify \code{MasterUserSecretKmsKeyId}, then the
+\code{aws/secretsmanager} KMS key is used to encrypt the secret. If the
+secret is in a different Amazon Web Services account, then you can't use
+the \code{aws/secretsmanager} KMS key to encrypt the secret, and you must use
+a customer managed KMS key.
+
+There is a default KMS key for your Amazon Web Services account. Your
+Amazon Web Services account has a different default KMS key for each
+Amazon Web Services Region.}
 
 \item{Tags}{}
 }

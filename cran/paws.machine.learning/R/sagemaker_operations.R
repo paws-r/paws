@@ -130,8 +130,12 @@ sagemaker_associate_trial_component <- function(TrialComponentName, TrialName) {
 #' specified nodes.
 #' @param NodeIds &#91;required&#93; A list of node IDs to be deleted from the specified cluster.
 #' 
-#' For SageMaker HyperPod clusters using the Slurm workload manager, you
-#' cannot remove instances that are configured as Slurm controller nodes.
+#' -   For SageMaker HyperPod clusters using the Slurm workload manager,
+#'     you cannot remove instances that are configured as Slurm controller
+#'     nodes.
+#' 
+#' -   If you need to delete more than 99 instances, contact
+#'     [Support](https://aws.amazon.com/contact-us/) for assistance.
 #'
 #' @keywords internal
 #'
@@ -326,11 +330,12 @@ sagemaker_create_algorithm <- function(AlgorithmName, AlgorithmDescription = NUL
 #' `ResourceSpec` values for a `KernelGateway` app, the
 #' [`create_app`][sagemaker_create_app] call fails with a request
 #' validation error.
+#' @param RecoveryMode Indicates whether the application is launched in recovery mode.
 #'
 #' @keywords internal
 #'
 #' @rdname sagemaker_create_app
-sagemaker_create_app <- function(DomainId, UserProfileName = NULL, SpaceName = NULL, AppType, AppName, Tags = NULL, ResourceSpec = NULL) {
+sagemaker_create_app <- function(DomainId, UserProfileName = NULL, SpaceName = NULL, AppType, AppName, Tags = NULL, ResourceSpec = NULL, RecoveryMode = NULL) {
   op <- new_operation(
     name = "CreateApp",
     http_method = "POST",
@@ -339,7 +344,7 @@ sagemaker_create_app <- function(DomainId, UserProfileName = NULL, SpaceName = N
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .sagemaker$create_app_input(DomainId = DomainId, UserProfileName = UserProfileName, SpaceName = SpaceName, AppType = AppType, AppName = AppName, Tags = Tags, ResourceSpec = ResourceSpec)
+  input <- .sagemaker$create_app_input(DomainId = DomainId, UserProfileName = UserProfileName, SpaceName = SpaceName, AppType = AppType, AppName = AppName, Tags = Tags, ResourceSpec = ResourceSpec, RecoveryMode = RecoveryMode)
   output <- .sagemaker$create_app_output()
   config <- get_config()
   svc <- .sagemaker$service(config, op)
@@ -2863,11 +2868,16 @@ sagemaker_create_notebook_instance <- function(NotebookInstanceName, InstanceTyp
 #' @param OnStart A shell script that runs every time you start a notebook instance,
 #' including when you create the notebook instance. The shell script must
 #' be a base64-encoded string.
+#' @param Tags An array of key-value pairs. You can use tags to categorize your Amazon
+#' Web Services resources in different ways, for example, by purpose,
+#' owner, or environment. For more information, see [Tagging Amazon Web
+#' Services
+#' Resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html).
 #'
 #' @keywords internal
 #'
 #' @rdname sagemaker_create_notebook_instance_lifecycle_config
-sagemaker_create_notebook_instance_lifecycle_config <- function(NotebookInstanceLifecycleConfigName, OnCreate = NULL, OnStart = NULL) {
+sagemaker_create_notebook_instance_lifecycle_config <- function(NotebookInstanceLifecycleConfigName, OnCreate = NULL, OnStart = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateNotebookInstanceLifecycleConfig",
     http_method = "POST",
@@ -2876,7 +2886,7 @@ sagemaker_create_notebook_instance_lifecycle_config <- function(NotebookInstance
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .sagemaker$create_notebook_instance_lifecycle_config_input(NotebookInstanceLifecycleConfigName = NotebookInstanceLifecycleConfigName, OnCreate = OnCreate, OnStart = OnStart)
+  input <- .sagemaker$create_notebook_instance_lifecycle_config_input(NotebookInstanceLifecycleConfigName = NotebookInstanceLifecycleConfigName, OnCreate = OnCreate, OnStart = OnStart, Tags = Tags)
   output <- .sagemaker$create_notebook_instance_lifecycle_config_output()
   config <- get_config()
   svc <- .sagemaker$service(config, op)
@@ -2960,6 +2970,9 @@ sagemaker_create_optimization_job <- function(OptimizationJobName, RoleArn, Mode
 #' following: `lakera-guard`, `comet`, `deepchecks-llm-evaluation`, or
 #' `fiddler`.
 #' @param ExecutionRoleArn &#91;required&#93; The ARN of the IAM role that the partner application uses.
+#' @param KmsKeyId SageMaker Partner AI Apps uses Amazon Web Services KMS to encrypt data
+#' at rest using an Amazon Web Services managed key by default. For more
+#' control, specify a customer managed key.
 #' @param MaintenanceConfig Maintenance configuration settings for the SageMaker Partner AI App.
 #' @param Tier &#91;required&#93; Indicates the instance type and size of the cluster attached to the
 #' SageMaker Partner AI App.
@@ -2976,7 +2989,7 @@ sagemaker_create_optimization_job <- function(OptimizationJobName, RoleArn, Mode
 #' @keywords internal
 #'
 #' @rdname sagemaker_create_partner_app
-sagemaker_create_partner_app <- function(Name, Type, ExecutionRoleArn, MaintenanceConfig = NULL, Tier, ApplicationConfig = NULL, AuthType, EnableIamSessionBasedIdentity = NULL, ClientToken = NULL, Tags = NULL) {
+sagemaker_create_partner_app <- function(Name, Type, ExecutionRoleArn, KmsKeyId = NULL, MaintenanceConfig = NULL, Tier, ApplicationConfig = NULL, AuthType, EnableIamSessionBasedIdentity = NULL, ClientToken = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreatePartnerApp",
     http_method = "POST",
@@ -2985,7 +2998,7 @@ sagemaker_create_partner_app <- function(Name, Type, ExecutionRoleArn, Maintenan
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .sagemaker$create_partner_app_input(Name = Name, Type = Type, ExecutionRoleArn = ExecutionRoleArn, MaintenanceConfig = MaintenanceConfig, Tier = Tier, ApplicationConfig = ApplicationConfig, AuthType = AuthType, EnableIamSessionBasedIdentity = EnableIamSessionBasedIdentity, ClientToken = ClientToken, Tags = Tags)
+  input <- .sagemaker$create_partner_app_input(Name = Name, Type = Type, ExecutionRoleArn = ExecutionRoleArn, KmsKeyId = KmsKeyId, MaintenanceConfig = MaintenanceConfig, Tier = Tier, ApplicationConfig = ApplicationConfig, AuthType = AuthType, EnableIamSessionBasedIdentity = EnableIamSessionBasedIdentity, ClientToken = ClientToken, Tags = Tags)
   output <- .sagemaker$create_partner_app_output()
   config <- get_config()
   svc <- .sagemaker$service(config, op)
@@ -3268,7 +3281,7 @@ sagemaker_create_processing_job <- function(ProcessingInputs = NULL, ProcessingO
 #'
 #' @param ProjectName &#91;required&#93; The name of the project.
 #' @param ProjectDescription A description for the project.
-#' @param ServiceCatalogProvisioningDetails &#91;required&#93; The product ID and provisioning artifact ID to provision a service
+#' @param ServiceCatalogProvisioningDetails The product ID and provisioning artifact ID to provision a service
 #' catalog. The provisioning artifact ID will default to the latest
 #' provisioning artifact ID of the product, if you don't provide the
 #' provisioning artifact ID. For more information, see [What is Amazon Web
@@ -3283,7 +3296,7 @@ sagemaker_create_processing_job <- function(ProcessingInputs = NULL, ProcessingO
 #' @keywords internal
 #'
 #' @rdname sagemaker_create_project
-sagemaker_create_project <- function(ProjectName, ProjectDescription = NULL, ServiceCatalogProvisioningDetails, Tags = NULL) {
+sagemaker_create_project <- function(ProjectName, ProjectDescription = NULL, ServiceCatalogProvisioningDetails = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateProject",
     http_method = "POST",
@@ -8151,13 +8164,14 @@ sagemaker_get_search_suggestions <- function(Resource, SuggestionQuery = NULL) {
 #' include links, tables, and standard markdown formating.
 #' @param HubContentDocument &#91;required&#93; The hub content document that describes information about the hub
 #' content such as type, associated containers, scripts, and more.
+#' @param SupportStatus The status of the hub content resource.
 #' @param HubContentSearchKeywords The searchable keywords of the hub content.
 #' @param Tags Any tags associated with the hub content.
 #'
 #' @keywords internal
 #'
 #' @rdname sagemaker_import_hub_content
-sagemaker_import_hub_content <- function(HubContentName, HubContentVersion = NULL, HubContentType, DocumentSchemaVersion, HubName, HubContentDisplayName = NULL, HubContentDescription = NULL, HubContentMarkdown = NULL, HubContentDocument, HubContentSearchKeywords = NULL, Tags = NULL) {
+sagemaker_import_hub_content <- function(HubContentName, HubContentVersion = NULL, HubContentType, DocumentSchemaVersion, HubName, HubContentDisplayName = NULL, HubContentDescription = NULL, HubContentMarkdown = NULL, HubContentDocument, SupportStatus = NULL, HubContentSearchKeywords = NULL, Tags = NULL) {
   op <- new_operation(
     name = "ImportHubContent",
     http_method = "POST",
@@ -8166,7 +8180,7 @@ sagemaker_import_hub_content <- function(HubContentName, HubContentVersion = NUL
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .sagemaker$import_hub_content_input(HubContentName = HubContentName, HubContentVersion = HubContentVersion, HubContentType = HubContentType, DocumentSchemaVersion = DocumentSchemaVersion, HubName = HubName, HubContentDisplayName = HubContentDisplayName, HubContentDescription = HubContentDescription, HubContentMarkdown = HubContentMarkdown, HubContentDocument = HubContentDocument, HubContentSearchKeywords = HubContentSearchKeywords, Tags = Tags)
+  input <- .sagemaker$import_hub_content_input(HubContentName = HubContentName, HubContentVersion = HubContentVersion, HubContentType = HubContentType, DocumentSchemaVersion = DocumentSchemaVersion, HubName = HubName, HubContentDisplayName = HubContentDisplayName, HubContentDescription = HubContentDescription, HubContentMarkdown = HubContentMarkdown, HubContentDocument = HubContentDocument, SupportStatus = SupportStatus, HubContentSearchKeywords = HubContentSearchKeywords, Tags = Tags)
   output <- .sagemaker$import_hub_content_output()
   config <- get_config()
   svc <- .sagemaker$service(config, op)
@@ -12126,7 +12140,7 @@ sagemaker_search <- function(Resource, SearchExpression = NULL, SortBy = NULL, S
 #' specified date.
 #' @param EndTimeBefore A filter to search for reserved capacity offerings with an end time
 #' before a specified date.
-#' @param DurationHours The desired duration in hours for the training plan offerings.
+#' @param DurationHours &#91;required&#93; The desired duration in hours for the training plan offerings.
 #' @param TargetResources &#91;required&#93; The target resources (e.g., SageMaker Training Jobs, SageMaker HyperPod)
 #' to search for in the offerings.
 #' 
@@ -12141,7 +12155,7 @@ sagemaker_search <- function(Resource, SearchExpression = NULL, SortBy = NULL, S
 #' @keywords internal
 #'
 #' @rdname sagemaker_search_training_plan_offerings
-sagemaker_search_training_plan_offerings <- function(InstanceType, InstanceCount, StartTimeAfter = NULL, EndTimeBefore = NULL, DurationHours = NULL, TargetResources) {
+sagemaker_search_training_plan_offerings <- function(InstanceType, InstanceCount, StartTimeAfter = NULL, EndTimeBefore = NULL, DurationHours, TargetResources) {
   op <- new_operation(
     name = "SearchTrainingPlanOfferings",
     http_method = "POST",
@@ -13125,7 +13139,7 @@ sagemaker_update_cluster_scheduler_config <- function(ClusterSchedulerConfigId, 
 #' security patching
 #'
 #' @description
-#' Updates the platform software of a SageMaker HyperPod cluster for security patching. To learn how to use this API, see [Update the SageMaker HyperPod platform software of a cluster](https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-hyperpod-operate.html#sagemaker-hyperpod-operate-cli-command-update-cluster-software).
+#' Updates the platform software of a SageMaker HyperPod cluster for security patching. To learn how to use this API, see [Update the SageMaker HyperPod platform software of a cluster](https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-hyperpod-operate-slurm.html#sagemaker-hyperpod-operate-cli-command-update-cluster-software).
 #'
 #' See [https://www.paws-r-sdk.com/docs/sagemaker_update_cluster_software/](https://www.paws-r-sdk.com/docs/sagemaker_update_cluster_software/) for full documentation.
 #'
@@ -13630,6 +13644,94 @@ sagemaker_update_hub <- function(HubName, HubDescription = NULL, HubDisplayName 
 }
 .sagemaker$operations$update_hub <- sagemaker_update_hub
 
+#' Updates SageMaker hub content (either a Model or Notebook resource)
+#'
+#' @description
+#' Updates SageMaker hub content (either a `Model` or `Notebook` resource).
+#'
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_update_hub_content/](https://www.paws-r-sdk.com/docs/sagemaker_update_hub_content/) for full documentation.
+#'
+#' @param HubName &#91;required&#93; The name of the SageMaker hub that contains the hub content you want to
+#' update. You can optionally use the hub ARN instead.
+#' @param HubContentName &#91;required&#93; The name of the hub content resource that you want to update.
+#' @param HubContentType &#91;required&#93; The content type of the resource that you want to update. Only specify a
+#' `Model` or `Notebook` resource for this API. To update a
+#' `ModelReference`, use the
+#' [`update_hub_content_reference`][sagemaker_update_hub_content_reference]
+#' API instead.
+#' @param HubContentVersion &#91;required&#93; The hub content version that you want to update. For example, if you
+#' have two versions of a resource in your hub, you can update the second
+#' version.
+#' @param HubContentDisplayName The display name of the hub content.
+#' @param HubContentDescription The description of the hub content.
+#' @param HubContentMarkdown A string that provides a description of the hub content. This string can
+#' include links, tables, and standard markdown formatting.
+#' @param HubContentSearchKeywords The searchable keywords of the hub content.
+#' @param SupportStatus Indicates the current status of the hub content resource.
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_update_hub_content
+sagemaker_update_hub_content <- function(HubName, HubContentName, HubContentType, HubContentVersion, HubContentDisplayName = NULL, HubContentDescription = NULL, HubContentMarkdown = NULL, HubContentSearchKeywords = NULL, SupportStatus = NULL) {
+  op <- new_operation(
+    name = "UpdateHubContent",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .sagemaker$update_hub_content_input(HubName = HubName, HubContentName = HubContentName, HubContentType = HubContentType, HubContentVersion = HubContentVersion, HubContentDisplayName = HubContentDisplayName, HubContentDescription = HubContentDescription, HubContentMarkdown = HubContentMarkdown, HubContentSearchKeywords = HubContentSearchKeywords, SupportStatus = SupportStatus)
+  output <- .sagemaker$update_hub_content_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$update_hub_content <- sagemaker_update_hub_content
+
+#' Updates the contents of a SageMaker hub for a ModelReference resource
+#'
+#' @description
+#' Updates the contents of a SageMaker hub for a `ModelReference` resource. A `ModelReference` allows you to access public SageMaker JumpStart models from within your private hub.
+#'
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_update_hub_content_reference/](https://www.paws-r-sdk.com/docs/sagemaker_update_hub_content_reference/) for full documentation.
+#'
+#' @param HubName &#91;required&#93; The name of the SageMaker hub that contains the hub content you want to
+#' update. You can optionally use the hub ARN instead.
+#' @param HubContentName &#91;required&#93; The name of the hub content resource that you want to update.
+#' @param HubContentType &#91;required&#93; The content type of the resource that you want to update. Only specify a
+#' `ModelReference` resource for this API. To update a `Model` or
+#' `Notebook` resource, use the
+#' [`update_hub_content`][sagemaker_update_hub_content] API instead.
+#' @param MinVersion The minimum hub content version of the referenced model that you want to
+#' use. The minimum version must be older than the latest available version
+#' of the referenced model. To support all versions of a model, set the
+#' value to `1.0.0`.
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_update_hub_content_reference
+sagemaker_update_hub_content_reference <- function(HubName, HubContentName, HubContentType, MinVersion = NULL) {
+  op <- new_operation(
+    name = "UpdateHubContentReference",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .sagemaker$update_hub_content_reference_input(HubName = HubName, HubContentName = HubContentName, HubContentType = HubContentType, MinVersion = MinVersion)
+  output <- .sagemaker$update_hub_content_reference_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$update_hub_content_reference <- sagemaker_update_hub_content_reference
+
 #' Updates the properties of a SageMaker AI image
 #'
 #' @description
@@ -13746,11 +13848,14 @@ sagemaker_update_image_version <- function(ImageName, Alias = NULL, Version = NU
 #' including the model, container, and compute resources.
 #' @param RuntimeConfig Runtime settings for a model that is deployed with an inference
 #' component.
+#' @param DeploymentConfig The deployment configuration for the inference component. The
+#' configuration contains the desired deployment strategy and rollback
+#' settings.
 #'
 #' @keywords internal
 #'
 #' @rdname sagemaker_update_inference_component
-sagemaker_update_inference_component <- function(InferenceComponentName, Specification = NULL, RuntimeConfig = NULL) {
+sagemaker_update_inference_component <- function(InferenceComponentName, Specification = NULL, RuntimeConfig = NULL, DeploymentConfig = NULL) {
   op <- new_operation(
     name = "UpdateInferenceComponent",
     http_method = "POST",
@@ -13759,7 +13864,7 @@ sagemaker_update_inference_component <- function(InferenceComponentName, Specifi
     paginator = list(),
     stream_api = FALSE
   )
-  input <- .sagemaker$update_inference_component_input(InferenceComponentName = InferenceComponentName, Specification = Specification, RuntimeConfig = RuntimeConfig)
+  input <- .sagemaker$update_inference_component_input(InferenceComponentName = InferenceComponentName, Specification = Specification, RuntimeConfig = RuntimeConfig, DeploymentConfig = DeploymentConfig)
   output <- .sagemaker$update_inference_component_output()
   config <- get_config()
   svc <- .sagemaker$service(config, op)

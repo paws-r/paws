@@ -3,7 +3,7 @@
 \name{servicequotas_list_requested_service_quota_change_history}
 \alias{servicequotas_list_requested_service_quota_change_history}
 \title{Retrieves the quota increase requests for the specified Amazon Web
-Service}
+Services service}
 \usage{
 servicequotas_list_requested_service_quota_change_history(
   ServiceCode = NULL,
@@ -39,11 +39,11 @@ An API operation can return fewer results than the maximum even when
 there are more results available. You should check \code{NextToken} after
 every operation to ensure that you receive all of the results.}
 
-\item{QuotaRequestedAtLevel}{Specifies at which level within the Amazon Web Services account the
-quota request applies to.}
+\item{QuotaRequestedAtLevel}{Filters the response to return quota requests for the \code{ACCOUNT},
+\code{RESOURCE}, or \code{ALL} levels. \code{ACCOUNT} is the default.}
 }
 \description{
-Retrieves the quota increase requests for the specified Amazon Web Service.
+Retrieves the quota increase requests for the specified Amazon Web Services service. Filter responses to return quota requests at either the account level, resource level, or all levels. Responses include any open or closed requests within 90 days.
 
 See \url{https://www.paws-r-sdk.com/docs/servicequotas_list_requested_service_quota_change_history/} for full documentation.
 }

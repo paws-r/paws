@@ -2,8 +2,8 @@
 % Please edit documentation in R/pinpointsmsvoicev2_operations.R
 \name{pinpointsmsvoicev2_update_protect_configuration_country_rule_set}
 \alias{pinpointsmsvoicev2_update_protect_configuration_country_rule_set}
-\title{Update a country rule set to ALLOW or BLOCK messages to be sent to the
-specified destination counties}
+\title{Update a country rule set to ALLOW, BLOCK, MONITOR, or FILTER messages
+to be sent to the specified destination counties}
 \usage{
 pinpointsmsvoicev2_update_protect_configuration_country_rule_set(
   ProtectConfigurationId,
@@ -20,10 +20,14 @@ pinpointsmsvoicev2_update_protect_configuration_country_rule_set(
 contain the details for the requested NumberCapability. The Key is the
 two-letter ISO country code. For a list of supported ISO country codes,
 see \href{https://docs.aws.amazon.com/sms-voice/latest/userguide/phone-numbers-sms-by-country.html}{Supported countries and regions (SMS channel)}
-in the AWS End User Messaging SMS User Guide.}
+in the AWS End User Messaging SMS User Guide.
+
+For example, to set the United States as allowed and Canada as blocked,
+the \code{CountryRuleSetUpdates} would be formatted as:
+\verb{"CountryRuleSetUpdates": \{ "US" : \{ "ProtectStatus": "ALLOW" \} "CA" : \{ "ProtectStatus": "BLOCK" \} \}}}
 }
 \description{
-Update a country rule set to \code{ALLOW} or \code{BLOCK} messages to be sent to the specified destination counties. You can update one or multiple countries at a time. The updates are only applied to the specified NumberCapability type.
+Update a country rule set to \code{ALLOW}, \code{BLOCK}, \code{MONITOR}, or \code{FILTER} messages to be sent to the specified destination counties. You can update one or multiple countries at a time. The updates are only applied to the specified NumberCapability type.
 
 See \url{https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_update_protect_configuration_country_rule_set/} for full documentation.
 }

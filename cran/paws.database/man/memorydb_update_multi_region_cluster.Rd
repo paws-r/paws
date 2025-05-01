@@ -27,7 +27,8 @@ memorydb_update_multi_region_cluster(
 
 \item{MultiRegionParameterGroupName}{The new multi-Region parameter group to be associated with the cluster.}
 
-\item{UpdateStrategy}{Whether to force the update even if it may cause data loss.}
+\item{UpdateStrategy}{The strategy to use for the update operation. Supported values are
+"coordinated" or "uncoordinated".}
 }
 \description{
 Updates the configuration of an existing multi-Region cluster.

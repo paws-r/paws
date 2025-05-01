@@ -2,7 +2,8 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_update_group}
 \alias{cognitoidentityprovider_update_group}
-\title{Updates the specified group with the specified attributes}
+\title{Given the name of a user pool group, updates any of the properties for
+precedence, IAM role, or description}
 \usage{
 cognitoidentityprovider_update_group(
   GroupName,
@@ -13,21 +14,36 @@ cognitoidentityprovider_update_group(
 )
 }
 \arguments{
-\item{GroupName}{[required] The name of the group.}
+\item{GroupName}{[required] The name of the group that you want to update.}
 
-\item{UserPoolId}{[required] The ID of the user pool.}
+\item{UserPoolId}{[required] The ID of the user pool that contains the group you want to update.}
 
-\item{Description}{A string containing the new description of the group.}
+\item{Description}{A new description of the existing group.}
 
-\item{RoleArn}{The new role Amazon Resource Name (ARN) for the group. This is used for
-setting the \code{cognito:roles} and \code{cognito:preferred_role} claims in the
-token.}
+\item{RoleArn}{The Amazon Resource Name (ARN) of an IAM role that you want to associate
+with the group. The role assignment contributes to the \code{cognito:roles}
+and \code{cognito:preferred_role} claims in group members' tokens.}
 
-\item{Precedence}{The new precedence value for the group. For more information about this
-parameter, see \code{\link[=cognitoidentityprovider_create_group]{create_group}}.}
+\item{Precedence}{A non-negative integer value that specifies the precedence of this group
+relative to the other groups that a user can belong to in the user pool.
+Zero is the highest precedence value. Groups with lower \code{Precedence}
+values take precedence over groups with higher or null \code{Precedence}
+values. If a user belongs to two or more groups, it is the group with
+the lowest precedence value whose role ARN is given in the user's tokens
+for the \code{cognito:roles} and \code{cognito:preferred_role} claims.
+
+Two groups can have the same \code{Precedence} value. If this happens,
+neither group takes precedence over the other. If two groups with the
+same \code{Precedence} have the same role ARN, that role is used in the
+\code{cognito:preferred_role} claim in tokens for users in each group. If the
+two groups have different role ARNs, the \code{cognito:preferred_role} claim
+isn't set in users' tokens.
+
+The default \code{Precedence} value is null. The maximum \code{Precedence} value
+is \code{2^31-1}.}
 }
 \description{
-Updates the specified group with the specified attributes.
+Given the name of a user pool group, updates any of the properties for precedence, IAM role, or description. For more information about user pool groups, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-user-groups.html}{Adding groups to a user pool}.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_update_group/} for full documentation.
 }

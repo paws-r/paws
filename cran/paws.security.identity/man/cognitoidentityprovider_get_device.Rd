@@ -2,18 +2,20 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_get_device}
 \alias{cognitoidentityprovider_get_device}
-\title{Gets the device}
+\title{Given a device key, returns information about a remembered device for
+the current user}
 \usage{
 cognitoidentityprovider_get_device(DeviceKey, AccessToken = NULL)
 }
 \arguments{
-\item{DeviceKey}{[required] The device key.}
+\item{DeviceKey}{[required] The key of the device that you want to get information about.}
 
-\item{AccessToken}{A valid access token that Amazon Cognito issued to the user whose device
-information you want to request.}
+\item{AccessToken}{A valid access token that Amazon Cognito issued to the currently
+signed-in user. Must include a scope claim for
+\code{aws.cognito.signin.user.admin}.}
 }
 \description{
-Gets the device. For more information about device authentication, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/amazon-cognito-user-pools-device-tracking.html}{Working with user devices in your user pool}.
+Given a device key, returns information about a remembered device for the current user. For more information about device authentication, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/amazon-cognito-user-pools-device-tracking.html}{Working with user devices in your user pool}.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_get_device/} for full documentation.
 }

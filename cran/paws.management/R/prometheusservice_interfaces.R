@@ -175,6 +175,18 @@ NULL
   return(populate(args, shape))
 }
 
+.prometheusservice$describe_workspace_configuration_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(workspaceId = structure(logical(0), tags = list(location = "uri", locationName = "workspaceId", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.prometheusservice$describe_workspace_configuration_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(workspaceConfiguration = structure(list(limitsPerLabelSet = structure(list(structure(list(labelSet = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), limits = structure(list(maxSeries = structure(logical(0), tags = list(type = "long", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), retentionPeriodInDays = structure(logical(0), tags = list(type = "integer", box = TRUE)), status = structure(list(statusCode = structure(logical(0), tags = list(type = "string")), statusReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .prometheusservice$get_default_scraper_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(), tags = list(type = "structure"))
@@ -315,4 +327,16 @@ NULL
 
 .prometheusservice$update_workspace_alias_output <- function(...) {
   list()
+}
+
+.prometheusservice$update_workspace_configuration_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), limitsPerLabelSet = structure(list(structure(list(labelSet = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), limits = structure(list(maxSeries = structure(logical(0), tags = list(type = "long", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), retentionPeriodInDays = structure(logical(0), tags = list(type = "integer", box = TRUE)), workspaceId = structure(logical(0), tags = list(location = "uri", locationName = "workspaceId", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.prometheusservice$update_workspace_configuration_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(status = structure(list(statusCode = structure(logical(0), tags = list(type = "string")), statusReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
 }

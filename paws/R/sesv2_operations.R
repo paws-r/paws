@@ -640,6 +640,17 @@ sesv2_create_dedicated_ip_pool <- function(PoolName, Tags = NULL, ScalingMode = 
 #'           Name = "string",
 #'           Value = "string"
 #'         )
+#'       ),
+#'       Attachments = list(
+#'         list(
+#'           RawContent = raw,
+#'           ContentDisposition = "ATTACHMENT"|"INLINE",
+#'           FileName = "string",
+#'           ContentDescription = "string",
+#'           ContentId = "string",
+#'           ContentTransferEncoding = "BASE64"|"QUOTED_PRINTABLE"|"SEVEN_BIT",
+#'           ContentType = "string"
+#'         )
 #'       )
 #'     ),
 #'     Raw = list(
@@ -658,6 +669,17 @@ sesv2_create_dedicated_ip_pool <- function(PoolName, Tags = NULL, ScalingMode = 
 #'         list(
 #'           Name = "string",
 #'           Value = "string"
+#'         )
+#'       ),
+#'       Attachments = list(
+#'         list(
+#'           RawContent = raw,
+#'           ContentDisposition = "ATTACHMENT"|"INLINE",
+#'           FileName = "string",
+#'           ContentDescription = "string",
+#'           ContentId = "string",
+#'           ContentTransferEncoding = "BASE64"|"QUOTED_PRINTABLE"|"SEVEN_BIT",
+#'           ContentType = "string"
 #'         )
 #'       )
 #'     )
@@ -3542,6 +3564,10 @@ sesv2_list_configuration_sets <- function(NextToken = NULL, PageSize = NULL) {
 #'
 #' @description
 #' Lists all of the contact lists available.
+#' 
+#' If your output includes a "NextToken" field with a string value, this
+#' indicates there may be additional contacts on the filtered list -
+#' regardless of the number of contacts returned.
 #'
 #' @usage
 #' sesv2_list_contact_lists(PageSize, NextToken)
@@ -5981,6 +6007,17 @@ sesv2_put_suppressed_destination <- function(EmailAddress, Reason) {
 #'           Name = "string",
 #'           Value = "string"
 #'         )
+#'       ),
+#'       Attachments = list(
+#'         list(
+#'           RawContent = raw,
+#'           ContentDisposition = "ATTACHMENT"|"INLINE",
+#'           FileName = "string",
+#'           ContentDescription = "string",
+#'           ContentId = "string",
+#'           ContentTransferEncoding = "BASE64"|"QUOTED_PRINTABLE"|"SEVEN_BIT",
+#'           ContentType = "string"
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -6241,6 +6278,17 @@ sesv2_send_custom_verification_email <- function(EmailAddress, TemplateName, Con
 #'           Name = "string",
 #'           Value = "string"
 #'         )
+#'       ),
+#'       Attachments = list(
+#'         list(
+#'           RawContent = raw,
+#'           ContentDisposition = "ATTACHMENT"|"INLINE",
+#'           FileName = "string",
+#'           ContentDescription = "string",
+#'           ContentId = "string",
+#'           ContentTransferEncoding = "BASE64"|"QUOTED_PRINTABLE"|"SEVEN_BIT",
+#'           ContentType = "string"
+#'         )
 #'       )
 #'     ),
 #'     Raw = list(
@@ -6259,6 +6307,17 @@ sesv2_send_custom_verification_email <- function(EmailAddress, TemplateName, Con
 #'         list(
 #'           Name = "string",
 #'           Value = "string"
+#'         )
+#'       ),
+#'       Attachments = list(
+#'         list(
+#'           RawContent = raw,
+#'           ContentDisposition = "ATTACHMENT"|"INLINE",
+#'           FileName = "string",
+#'           ContentDescription = "string",
+#'           ContentId = "string",
+#'           ContentTransferEncoding = "BASE64"|"QUOTED_PRINTABLE"|"SEVEN_BIT",
+#'           ContentType = "string"
 #'         )
 #'       )
 #'     )

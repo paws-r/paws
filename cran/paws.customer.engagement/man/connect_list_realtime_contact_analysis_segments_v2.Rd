@@ -2,7 +2,8 @@
 % Please edit documentation in R/connect_operations.R
 \name{connect_list_realtime_contact_analysis_segments_v2}
 \alias{connect_list_realtime_contact_analysis_segments_v2}
-\title{Provides a list of analysis segments for a real-time analysis session}
+\title{Provides a list of analysis segments for a real-time chat analysis
+session}
 \usage{
 connect_list_realtime_contact_analysis_segments_v2(
   InstanceId,
@@ -33,7 +34,7 @@ structure. Different channels may have different sets of supported
 segment types.}
 }
 \description{
-Provides a list of analysis segments for a real-time analysis session.
+Provides a list of analysis segments for a real-time chat analysis session. This API supports CHAT channels only.
 
 See \url{https://www.paws-r-sdk.com/docs/connect_list_realtime_contact_analysis_segments_v2/} for full documentation.
 }

@@ -201,7 +201,7 @@ Services product, you can find the product's technical documentation at
 \link[paws.management:cloudformation_update_generated_template]{update_generated_template} \tab Updates a generated template\cr
 \link[paws.management:cloudformation_update_stack]{update_stack} \tab Updates a stack as specified in the template\cr
 \link[paws.management:cloudformation_update_stack_instances]{update_stack_instances} \tab Updates the parameter values for stack instances for the specified accounts, within the specified Amazon Web Services Regions\cr
-\link[paws.management:cloudformation_update_stack_set]{update_stack_set} \tab Updates the stack set, and associated stack instances in the specified accounts and Amazon Web Services Regions\cr
+\link[paws.management:cloudformation_update_stack_set]{update_stack_set} \tab Updates the stack set and associated stack instances in the specified accounts and Amazon Web Services Regions\cr
 \link[paws.management:cloudformation_update_termination_protection]{update_termination_protection} \tab Updates termination protection for the specified stack\cr
 \link[paws.management:cloudformation_validate_template]{validate_template} \tab Validates a specified template
 }

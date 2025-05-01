@@ -91,7 +91,7 @@ NULL
 
 .resourcegroups$get_tag_sync_task_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GroupArn = structure(logical(0), tags = list(type = "string")), GroupName = structure(logical(0), tags = list(type = "string")), TaskArn = structure(logical(0), tags = list(type = "string")), TagKey = structure(logical(0), tags = list(type = "string")), TagValue = structure(logical(0), tags = list(type = "string")), RoleArn = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
+  shape <- structure(list(GroupArn = structure(logical(0), tags = list(type = "string")), GroupName = structure(logical(0), tags = list(type = "string")), TaskArn = structure(logical(0), tags = list(type = "string")), TagKey = structure(logical(0), tags = list(type = "string")), TagValue = structure(logical(0), tags = list(type = "string")), ResourceQuery = structure(list(Type = structure(logical(0), tags = list(type = "string")), Query = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), RoleArn = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -163,7 +163,7 @@ NULL
 
 .resourcegroups$list_tag_sync_tasks_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TagSyncTasks = structure(list(structure(list(GroupArn = structure(logical(0), tags = list(type = "string")), GroupName = structure(logical(0), tags = list(type = "string")), TaskArn = structure(logical(0), tags = list(type = "string")), TagKey = structure(logical(0), tags = list(type = "string")), TagValue = structure(logical(0), tags = list(type = "string")), RoleArn = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(TagSyncTasks = structure(list(structure(list(GroupArn = structure(logical(0), tags = list(type = "string")), GroupName = structure(logical(0), tags = list(type = "string")), TaskArn = structure(logical(0), tags = list(type = "string")), TagKey = structure(logical(0), tags = list(type = "string")), TagValue = structure(logical(0), tags = list(type = "string")), ResourceQuery = structure(list(Type = structure(logical(0), tags = list(type = "string")), Query = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), RoleArn = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -193,13 +193,13 @@ NULL
 
 .resourcegroups$start_tag_sync_task_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Group = structure(logical(0), tags = list(type = "string")), TagKey = structure(logical(0), tags = list(type = "string")), TagValue = structure(logical(0), tags = list(type = "string")), RoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Group = structure(logical(0), tags = list(type = "string")), TagKey = structure(logical(0), tags = list(type = "string")), TagValue = structure(logical(0), tags = list(type = "string")), ResourceQuery = structure(list(Type = structure(logical(0), tags = list(type = "string")), Query = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), RoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .resourcegroups$start_tag_sync_task_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(GroupArn = structure(logical(0), tags = list(type = "string")), GroupName = structure(logical(0), tags = list(type = "string")), TaskArn = structure(logical(0), tags = list(type = "string")), TagKey = structure(logical(0), tags = list(type = "string")), TagValue = structure(logical(0), tags = list(type = "string")), RoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(GroupArn = structure(logical(0), tags = list(type = "string")), GroupName = structure(logical(0), tags = list(type = "string")), TaskArn = structure(logical(0), tags = list(type = "string")), TagKey = structure(logical(0), tags = list(type = "string")), TagValue = structure(logical(0), tags = list(type = "string")), ResourceQuery = structure(list(Type = structure(logical(0), tags = list(type = "string")), Query = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), RoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

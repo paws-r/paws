@@ -2,7 +2,8 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_list_users}
 \alias{cognitoidentityprovider_list_users}
-\title{Lists users and their basic details in a user pool}
+\title{Given a user pool ID, returns a list of users and their basic details in
+a user pool}
 \usage{
 cognitoidentityprovider_list_users(
   UserPoolId,
@@ -13,7 +14,7 @@ cognitoidentityprovider_list_users(
 )
 }
 \arguments{
-\item{UserPoolId}{[required] The ID of the user pool on which the search should be performed.}
+\item{UserPoolId}{[required] The ID of the user pool where you want to display or search for users.}
 
 \item{AttributesToGet}{A JSON array of user attribute names, for example \code{given_name}, that you
 want Amazon Cognito to include in the response for each user. When you
@@ -27,7 +28,8 @@ Attributes that you can't filter on, including custom attributes, must
 have a value set in every user profile before an \code{AttributesToGet}
 parameter returns results.}
 
-\item{Limit}{Maximum number of users to be returned.}
+\item{Limit}{The maximum number of users that you want Amazon Cognito to return in
+the response.}
 
 \item{PaginationToken}{This API operation returns a limited number of results. The pagination
 token is an identifier that you can present in an additional API request
@@ -89,7 +91,7 @@ and \href{https://docs.aws.amazon.com/cognito/latest/developerguide/how-to-manag
 in the \emph{Amazon Cognito Developer Guide}.}
 }
 \description{
-Lists users and their basic details in a user pool.
+Given a user pool ID, returns a list of users and their basic details in a user pool.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_list_users/} for full documentation.
 }

@@ -14,11 +14,11 @@ cognitoidentityprovider_admin_confirm_sign_up(
 \item{UserPoolId}{[required] The ID of the user pool where you want to confirm a user's sign-up
 request.}
 
-\item{Username}{[required] The username of the user that you want to query or modify. The value of
-this parameter is typically your user's username, but it can be any of
-their alias attributes. If \code{username} isn't an alias attribute in your
-user pool, this value must be the \code{sub} of a local user or the username
-of a user from a third-party IdP.}
+\item{Username}{[required] The name of the user that you want to query or modify. The value of this
+parameter is typically your user's username, but it can be any of their
+alias attributes. If \code{username} isn't an alias attribute in your user
+pool, this value must be the \code{sub} of a local user or the username of a
+user from a third-party IdP.}
 
 \item{ClientMetadata}{A map of custom key-value pairs that you can provide as input for any
 custom workflows that this action triggers.
@@ -33,7 +33,7 @@ your AdminConfirmSignUp request. In your function code in Lambda, you
 can process the ClientMetadata value to enhance your workflow for your
 specific needs.
 
-For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-working-with-lambda-triggers.html}{Customizing user pool Workflows with Lambda Triggers}
+For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-working-with-lambda-triggers.html}{Using Lambda triggers}
 in the \emph{Amazon Cognito Developer Guide}.
 
 When you use the \code{ClientMetadata} parameter, note that Amazon Cognito
@@ -49,7 +49,7 @@ in this parameter.
 }}
 }
 \description{
-Confirms user sign-up as an administrator. Unlike \code{\link[=cognitoidentityprovider_confirm_sign_up]{confirm_sign_up}}, your IAM credentials authorize user account confirmation. No confirmation code is required.
+Confirms user sign-up as an administrator.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_admin_confirm_sign_up/} for full documentation.
 }

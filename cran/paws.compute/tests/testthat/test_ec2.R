@@ -596,6 +596,30 @@ test_that("describe_reserved_instances_offerings", {
   expect_error(svc$describe_reserved_instances_offerings(MaxResults = 20), NA)
 })
 
+test_that("describe_route_server_endpoints", {
+  expect_error(svc$describe_route_server_endpoints(), NA)
+})
+
+test_that("describe_route_server_endpoints", {
+  expect_error(svc$describe_route_server_endpoints(MaxResults = 20), NA)
+})
+
+test_that("describe_route_server_peers", {
+  expect_error(svc$describe_route_server_peers(), NA)
+})
+
+test_that("describe_route_server_peers", {
+  expect_error(svc$describe_route_server_peers(MaxResults = 20), NA)
+})
+
+test_that("describe_route_servers", {
+  expect_error(svc$describe_route_servers(), NA)
+})
+
+test_that("describe_route_servers", {
+  expect_error(svc$describe_route_servers(MaxResults = 20), NA)
+})
+
 test_that("describe_route_tables", {
   expect_error(svc$describe_route_tables(), NA)
 })

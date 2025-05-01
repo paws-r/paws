@@ -14,17 +14,17 @@ cognitoidentityprovider_admin_set_user_settings(
 \item{UserPoolId}{[required] The ID of the user pool that contains the user whose options you're
 setting.}
 
-\item{Username}{[required] The username of the user that you want to query or modify. The value of
-this parameter is typically your user's username, but it can be any of
-their alias attributes. If \code{username} isn't an alias attribute in your
-user pool, this value must be the \code{sub} of a local user or the username
-of a user from a third-party IdP.}
+\item{Username}{[required] The name of the user that you want to query or modify. The value of this
+parameter is typically your user's username, but it can be any of their
+alias attributes. If \code{username} isn't an alias attribute in your user
+pool, this value must be the \code{sub} of a local user or the username of a
+user from a third-party IdP.}
 
 \item{MFAOptions}{[required] You can use this parameter only to set an SMS configuration that uses
 SMS for delivery.}
 }
 \description{
-\emph{This action is no longer supported.} You can use it to configure only SMS MFA. You can't use it to configure time-based one-time password (TOTP) software token MFA. To configure either type of MFA, use \code{\link[=cognitoidentityprovider_admin_set_user_mfa_preference]{admin_set_user_mfa_preference}} instead.
+\emph{This action is no longer supported.} You can use it to configure only SMS MFA. You can't use it to configure time-based one-time password (TOTP) software token MFA.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_admin_set_user_settings/} for full documentation.
 }

@@ -2,17 +2,18 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_stop_user_import_job}
 \alias{cognitoidentityprovider_stop_user_import_job}
-\title{Stops the user import job}
+\title{Instructs your user pool to stop a running job that's importing users
+from a CSV file that contains their usernames and attributes}
 \usage{
 cognitoidentityprovider_stop_user_import_job(UserPoolId, JobId)
 }
 \arguments{
-\item{UserPoolId}{[required] The ID of the user pool that the users are being imported into.}
+\item{UserPoolId}{[required] The ID of the user pool that you want to stop.}
 
-\item{JobId}{[required] The job ID for the user import job.}
+\item{JobId}{[required] The ID of a running user import job.}
 }
 \description{
-Stops the user import job.
+Instructs your user pool to stop a running job that's importing users from a CSV file that contains their usernames and attributes. For more information about importing users from a CSV file, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-using-import-tool.html}{Importing users from a CSV file}.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_stop_user_import_job/} for full documentation.
 }

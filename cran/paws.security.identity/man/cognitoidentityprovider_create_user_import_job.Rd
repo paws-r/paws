@@ -20,7 +20,7 @@ results to Amazon CloudWatch Logs. This parameter is the ARN of that
 role.}
 }
 \description{
-Creates a user import job. You can import users into user pools from a comma-separated values (CSV) file without adding Amazon Cognito MAU costs to your Amazon Web Services bill. To generate a template for your import, see \code{\link[=cognitoidentityprovider_get_csv_header]{get_csv_header}}. To learn more about CSV import, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-using-import-tool.html}{Importing users from a CSV file}.
+Creates a user import job. You can import users into user pools from a comma-separated values (CSV) file without adding Amazon Cognito MAU costs to your Amazon Web Services bill.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_create_user_import_job/} for full documentation.
 }

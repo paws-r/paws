@@ -20,18 +20,20 @@ available.}
 
 \item{SoftwareTokenMfaSettings}{User preferences for time-based one-time password (TOTP) MFA. Activates
 or deactivates TOTP MFA and sets it as the preferred MFA method when
-multiple methods are available.}
+multiple methods are available. This operation can set TOTP as a user's
+preferred MFA method before they register a TOTP authenticator.}
 
 \item{EmailMfaSettings}{User preferences for email message MFA. Activates or deactivates email
 MFA and sets it as the preferred MFA method when multiple methods are
-available. To activate this setting, \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pool-settings-threat-protection.html}{advanced security features}
-must be active in your user pool.}
+available. To activate this setting, your user pool must be in the
+\href{https://docs.aws.amazon.com/cognito/latest/developerguide/feature-plans-features-essentials.html}{Essentials tier}
+or higher.}
 
-\item{Username}{[required] The username of the user that you want to query or modify. The value of
-this parameter is typically your user's username, but it can be any of
-their alias attributes. If \code{username} isn't an alias attribute in your
-user pool, this value must be the \code{sub} of a local user or the username
-of a user from a third-party IdP.}
+\item{Username}{[required] The name of the user that you want to query or modify. The value of this
+parameter is typically your user's username, but it can be any of their
+alias attributes. If \code{username} isn't an alias attribute in your user
+pool, this value must be the \code{sub} of a local user or the username of a
+user from a third-party IdP.}
 
 \item{UserPoolId}{[required] The ID of the user pool where you want to set a user's MFA preferences.}
 }

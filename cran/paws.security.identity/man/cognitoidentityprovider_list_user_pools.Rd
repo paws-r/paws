@@ -2,20 +2,24 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_list_user_pools}
 \alias{cognitoidentityprovider_list_user_pools}
-\title{Lists the user pools associated with an Amazon Web Services account}
+\title{Lists user pools and their details in the current Amazon Web Services
+account}
 \usage{
 cognitoidentityprovider_list_user_pools(NextToken = NULL, MaxResults)
 }
 \arguments{
-\item{NextToken}{An identifier that was returned from the previous call to this
-operation, which can be used to return the next set of items in the
-list.}
+\item{NextToken}{This API operation returns a limited number of results. The pagination
+token is an identifier that you can present in an additional API request
+with the same parameters. When you include the pagination token, Amazon
+Cognito returns the next set of items after the current list. Subsequent
+requests return a new pagination token. By use of this token, you can
+paginate through the full list of items.}
 
-\item{MaxResults}{[required] The maximum number of results you want the request to return when
-listing the user pools.}
+\item{MaxResults}{[required] The maximum number of user pools that you want Amazon Cognito to return
+in the response.}
 }
 \description{
-Lists the user pools associated with an Amazon Web Services account.
+Lists user pools and their details in the current Amazon Web Services account.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_list_user_pools/} for full documentation.
 }

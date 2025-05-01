@@ -130,7 +130,7 @@ structures, APIs, and commands.
 \link[=memorydb_list_tags]{list_tags} \tab Lists all tags currently on a named resource\cr
 \link[=memorydb_purchase_reserved_nodes_offering]{purchase_reserved_nodes_offering} \tab Allows you to purchase a reserved node offering\cr
 \link[=memorydb_reset_parameter_group]{reset_parameter_group} \tab Modifies the parameters of a parameter group to the engine or system default value\cr
-\link[=memorydb_tag_resource]{tag_resource} \tab A tag is a key-value pair where the key and value are case-sensitive\cr
+\link[=memorydb_tag_resource]{tag_resource} \tab Use this operation to add tags to a resource\cr
 \link[=memorydb_untag_resource]{untag_resource} \tab Use this operation to remove tags on a resource\cr
 \link[=memorydb_update_acl]{update_acl} \tab Changes the list of users that belong to the Access Control List\cr
 \link[=memorydb_update_cluster]{update_cluster} \tab Modifies the settings for a cluster\cr

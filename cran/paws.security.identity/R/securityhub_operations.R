@@ -464,6 +464,10 @@ securityhub_batch_update_findings <- function(FindingIdentifiers, Note = NULL, S
 #'
 #' @param StandardsControlAssociationUpdates &#91;required&#93; Updates the enablement status of a security control in a specified
 #' standard.
+#' 
+#' Calls to this operation return a `RESOURCE_NOT_FOUND_EXCEPTION` error
+#' when the standard subscription for the control has
+#' `StandardsControlsUpdatable` value `NOT_READY_FOR_UPDATES`.
 #'
 #' @keywords internal
 #'

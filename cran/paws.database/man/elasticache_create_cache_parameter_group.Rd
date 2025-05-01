@@ -17,9 +17,9 @@ elasticache_create_cache_parameter_group(
 \item{CacheParameterGroupFamily}{[required] The name of the cache parameter group family that the cache parameter
 group can be used with.
 
-Valid values are: \code{memcached1.4} | \code{memcached1.5} | \code{memcached1.6} |
-\code{redis2.6} | \code{redis2.8} | \code{redis3.2} | \code{redis4.0} | \code{redis5.0} |
-\code{redis6.x} | \code{redis7}}
+Valid values are: \code{valkey8} | \code{valkey7} | \code{memcached1.4} |
+\code{memcached1.5} | \code{memcached1.6} | \code{redis2.6} | \code{redis2.8} | \code{redis3.2} |
+\code{redis4.0} | \code{redis5.0} | \code{redis6.x} | \code{redis7}}
 
 \item{Description}{[required] A user-specified description for the cache parameter group.}
 

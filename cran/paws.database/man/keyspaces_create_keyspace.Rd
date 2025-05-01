@@ -25,8 +25,7 @@ in the \emph{Amazon Keyspaces Developer Guide}.}
 \item \code{regionList} - if the \code{replicationStrategy} is \code{MULTI_REGION}, the
 \code{regionList} requires the current Region and at least one additional
 Amazon Web Services Region where the keyspace is going to be
-replicated in. The maximum number of supported replication Regions
-including the current Region is six.
+replicated in.
 }}
 }
 \description{

@@ -26,7 +26,8 @@ elasticache_modify_cache_cluster(
   AuthToken = NULL,
   AuthTokenUpdateStrategy = NULL,
   LogDeliveryConfigurations = NULL,
-  IpDiscovery = NULL
+  IpDiscovery = NULL,
+  ScaleConfig = NULL
 )
 }
 \arguments{
@@ -229,8 +230,8 @@ Valid values: \code{true} | \code{false}
 
 Default: \code{false}}
 
-\item{Engine}{Modifies the engine listed in a cluster message. The options are redis,
-memcached or valkey.}
+\item{Engine}{The engine type used by the cache cluster. The options are valkey,
+memcached or redis.}
 
 \item{EngineVersion}{The upgraded version of the cache engine to be run on the cache nodes.
 
@@ -284,8 +285,11 @@ For more information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/la
 
 \item{IpDiscovery}{The network type you choose when modifying a cluster, either \code{ipv4} |
 \code{ipv6}. IPv6 is supported for workloads using Valkey 7.2 and above,
-Redis OSS engine version 6.2 and above or Memcached engine version 1.6.6
+Redis OSS engine version 6.2 to 7.1 or Memcached engine version 1.6.6
 and above on all instances built on the \href{https://aws.amazon.com/ec2/nitro/}{Nitro system}.}
+
+\item{ScaleConfig}{Configures horizontal or vertical scaling for Memcached clusters,
+specifying the scaling percentage and interval.}
 }
 \description{
 Modifies the settings for a cluster. You can use this operation to change one or more cluster configuration parameters by specifying the parameters and the new values.

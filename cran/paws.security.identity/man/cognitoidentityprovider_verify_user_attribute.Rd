@@ -2,20 +2,23 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_verify_user_attribute}
 \alias{cognitoidentityprovider_verify_user_attribute}
-\title{Verifies the specified user attributes in the user pool}
+\title{Submits a verification code for a signed-in user who has added or
+changed a value of an auto-verified attribute}
 \usage{
 cognitoidentityprovider_verify_user_attribute(AccessToken, AttributeName, Code)
 }
 \arguments{
-\item{AccessToken}{[required] A valid access token that Amazon Cognito issued to the user whose user
-attributes you want to verify.}
+\item{AccessToken}{[required] A valid access token that Amazon Cognito issued to the currently
+signed-in user. Must include a scope claim for
+\code{aws.cognito.signin.user.admin}.}
 
-\item{AttributeName}{[required] The attribute name in the request to verify user attributes.}
+\item{AttributeName}{[required] The name of the attribute that you want to verify.}
 
-\item{Code}{[required] The verification code in the request to verify user attributes.}
+\item{Code}{[required] The verification code that your user pool sent to the added or changed
+attribute, for example the user's email address.}
 }
 \description{
-Verifies the specified user attributes in the user pool.
+Submits a verification code for a signed-in user who has added or changed a value of an auto-verified attribute. When successful, the user's attribute becomes verified and the attribute \code{email_verified} or \code{phone_number_verified} becomes \code{true}.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_verify_user_attribute/} for full documentation.
 }

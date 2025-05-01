@@ -230,7 +230,7 @@ This parameter can only import resources that have custom names in
 templates. For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-name.html}{name type}
 in the \emph{CloudFormation User Guide}. To import resources that do not
 accept custom names, such as EC2 instances, use the resource import
-feature instead. For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/resource-import.html}{Import Amazon Web Services resources into a CloudFormation stack with a resource import}
+feature instead. For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/import-resources.html}{Import Amazon Web Services resources into a CloudFormation stack with a resource import}
 in the \emph{CloudFormation User Guide}.}
 }
 \description{

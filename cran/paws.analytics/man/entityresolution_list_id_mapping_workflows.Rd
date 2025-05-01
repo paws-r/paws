@@ -5,12 +5,12 @@
 \title{Returns a list of all the IdMappingWorkflows that have been created for
 an Amazon Web Services account}
 \usage{
-entityresolution_list_id_mapping_workflows(maxResults = NULL, nextToken = NULL)
+entityresolution_list_id_mapping_workflows(nextToken = NULL, maxResults = NULL)
 }
 \arguments{
-\item{maxResults}{The maximum number of objects returned per page.}
-
 \item{nextToken}{The pagination token from the previous API call.}
+
+\item{maxResults}{The maximum number of objects returned per page.}
 }
 \description{
 Returns a list of all the \code{IdMappingWorkflows} that have been created for an Amazon Web Services account.

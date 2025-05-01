@@ -105,7 +105,7 @@ NULL
 #'     )
 #'   ),
 #'   ResourceTypes = list(
-#'     "AWS::CloudWatch::Metric"|"AWS::Logs::LogGroup"|"AWS::XRay::Trace"|"AWS::ApplicationInsights::Application"|"AWS::InternetMonitor::Monitor"
+#'     "AWS::CloudWatch::Metric"|"AWS::Logs::LogGroup"|"AWS::XRay::Trace"|"AWS::ApplicationInsights::Application"|"AWS::InternetMonitor::Monitor"|"AWS::ApplicationSignals::Service"|"AWS::ApplicationSignals::ServiceLevelObjective"
 #'   ),
 #'   SinkIdentifier = "string",
 #'   Tags = list(
@@ -1050,7 +1050,7 @@ cloudwatchobservabilityaccessmanager_untag_resource <- function(ResourceArn, Tag
 #'     )
 #'   ),
 #'   ResourceTypes = list(
-#'     "AWS::CloudWatch::Metric"|"AWS::Logs::LogGroup"|"AWS::XRay::Trace"|"AWS::ApplicationInsights::Application"|"AWS::InternetMonitor::Monitor"
+#'     "AWS::CloudWatch::Metric"|"AWS::Logs::LogGroup"|"AWS::XRay::Trace"|"AWS::ApplicationInsights::Application"|"AWS::InternetMonitor::Monitor"|"AWS::ApplicationSignals::Service"|"AWS::ApplicationSignals::ServiceLevelObjective"
 #'   )
 #' )
 #' ```

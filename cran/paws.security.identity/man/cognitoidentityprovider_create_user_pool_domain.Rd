@@ -16,7 +16,7 @@ cognitoidentityprovider_create_user_pool_domain(
 \item{Domain}{[required] The domain string. For custom domains, this is the fully-qualified
 domain name, such as \code{auth.example.com}. For prefix domains, this is the
 prefix alone, such as \code{myprefix}. A prefix value of \code{myprefix} for a
-user pool in the us-east-1 Region results in a domain of
+user pool in the \code{us-east-1} Region results in a domain of
 \verb{myprefix.auth.us-east-1.amazoncognito.com}.}
 
 \item{UserPoolId}{[required] The ID of the user pool where you want to add a domain.}
@@ -32,15 +32,19 @@ other than \code{Lite}.}
 \item{CustomDomainConfig}{The configuration for a custom domain. Configures your domain with an
 Certificate Manager certificate in the \code{us-east-1} Region.
 
-Provide this parameter only if you want to use a custom domain for your
-user pool. Otherwise, you can exclude this parameter and use a prefix
-domain instead.
+Provide this parameter only if you want to use a \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-add-custom-domain.html}{custom domain}
+for your user pool. Otherwise, you can omit this parameter and use a
+\href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-assign-domain-prefix.html}{prefix domain}
+instead.
 
-For more information about the hosted domain and custom domains, see
-\href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-assign-domain.html}{Configuring a User Pool Domain}.}
+When you create a custom domain, the passkey RP ID defaults to the
+custom domain. If you had a prefix domain active, this will cause
+passkey integration for your prefix domain to stop working due to a
+mismatch in RP ID. To keep the prefix domain passkey integration
+working, you can explicitly set RP ID to the prefix domain.}
 }
 \description{
-A user pool domain hosts managed login, an authorization server and web server for authentication in your application. This operation creates a new user pool prefix or custom domain and sets the managed login branding version. Set the branding version to \code{1} for hosted UI (classic) or \code{2} for managed login. When you choose a custom domain, you must provide an SSL certificate in the US East (N. Virginia) Amazon Web Services Region in your request.
+A user pool domain hosts managed login, an authorization server and web server for authentication in your application. This operation creates a new user pool prefix domain or custom domain and sets the managed login branding version. Set the branding version to \code{1} for hosted UI (classic) or \code{2} for managed login. When you choose a custom domain, you must provide an SSL certificate in the US East (N. Virginia) Amazon Web Services Region in your request.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_create_user_pool_domain/} for full documentation.
 }

@@ -10,7 +10,9 @@ datazone_update_project(
   environmentDeploymentDetails = NULL,
   glossaryTerms = NULL,
   identifier,
-  name = NULL
+  name = NULL,
+  projectProfileVersion = NULL,
+  userParameters = NULL
 )
 }
 \arguments{
@@ -28,6 +30,11 @@ datazone_update_project(
 
 \item{name}{The name to be updated as part of the
 \code{\link[=datazone_update_project]{update_project}} action.}
+
+\item{projectProfileVersion}{The project profile version to which the project should be updated. You
+can only specify the following string for this parameter: \code{latest}.}
+
+\item{userParameters}{The user parameters of the project.}
 }
 \description{
 Updates the specified project in Amazon DataZone.

@@ -9,7 +9,9 @@ cloudwatchrum_create_app_monitor(
   AppMonitorConfiguration = NULL,
   CustomEvents = NULL,
   CwLogEnabled = NULL,
-  Domain,
+  DeobfuscationConfiguration = NULL,
+  Domain = NULL,
+  DomainList = NULL,
   Name,
   Tags = NULL
 )
@@ -39,8 +41,15 @@ CloudWatch Logs charges.
 
 If you omit this parameter, the default is \code{false}.}
 
-\item{Domain}{[required] The top-level internet domain name for which your application has
+\item{DeobfuscationConfiguration}{A structure that contains the configuration for how an app monitor can
+deobfuscate stack traces.}
+
+\item{Domain}{The top-level internet domain name for which your application has
 administrative authority.}
+
+\item{DomainList}{List the domain names for which your application has administrative
+authority. The \code{\link[=cloudwatchrum_create_app_monitor]{create_app_monitor}}
+requires either the domain or the domain list.}
 
 \item{Name}{[required] A name for the app monitor.}
 

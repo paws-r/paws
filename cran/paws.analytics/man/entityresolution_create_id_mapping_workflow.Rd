@@ -6,20 +6,20 @@
 the data processing job to be run}
 \usage{
 entityresolution_create_id_mapping_workflow(
+  workflowName,
   description = NULL,
-  idMappingTechniques,
   inputSourceConfig,
   outputSourceConfig = NULL,
+  idMappingTechniques,
   roleArn = NULL,
-  tags = NULL,
-  workflowName
+  tags = NULL
 )
 }
 \arguments{
-\item{description}{A description of the workflow.}
+\item{workflowName}{[required] The name of the workflow. There can't be multiple \code{IdMappingWorkflows}
+with the same name.}
 
-\item{idMappingTechniques}{[required] An object which defines the ID mapping technique and any additional
-configurations.}
+\item{description}{A description of the workflow.}
 
 \item{inputSourceConfig}{[required] A list of \code{InputSource} objects, which have the fields \code{InputSourceARN}
 and \code{SchemaName}.}
@@ -27,14 +27,14 @@ and \code{SchemaName}.}
 \item{outputSourceConfig}{A list of \code{IdMappingWorkflowOutputSource} objects, each of which
 contains fields \code{OutputS3Path} and \code{Output}.}
 
+\item{idMappingTechniques}{[required] An object which defines the ID mapping technique and any additional
+configurations.}
+
 \item{roleArn}{The Amazon Resource Name (ARN) of the IAM role. Entity Resolution
 assumes this role to create resources on your behalf as part of workflow
 execution.}
 
 \item{tags}{The tags used to organize, track, or control access for this resource.}
-
-\item{workflowName}{[required] The name of the workflow. There can't be multiple \code{IdMappingWorkflows}
-with the same name.}
 }
 \description{
 Creates an \code{IdMappingWorkflow} object which stores the configuration of the data processing job to be run. Each \code{IdMappingWorkflow} must have a unique workflow name. To modify an existing workflow, use the \code{\link[=entityresolution_update_id_mapping_workflow]{update_id_mapping_workflow}} API.

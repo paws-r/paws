@@ -38,9 +38,9 @@ be able to failover to a replica if your primary node fails)
 }}
 
 \item{ReplicaConfiguration}{A list of \code{ConfigureShard} objects that can be used to configure each
-shard in a Valkey or Redis OSS (cluster mode enabled) replication group.
-The \code{ConfigureShard} has three members: \code{NewReplicaCount},
-\code{NodeGroupId}, and \code{PreferredAvailabilityZones}.}
+shard in a Valkey or Redis OSS replication group. The \code{ConfigureShard}
+has three members: \code{NewReplicaCount}, \code{NodeGroupId}, and
+\code{PreferredAvailabilityZones}.}
 
 \item{ReplicasToRemove}{A list of the node ids to remove from the replication group or node
 group (shard).}

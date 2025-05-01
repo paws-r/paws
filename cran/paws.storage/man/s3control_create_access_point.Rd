@@ -2,7 +2,7 @@
 % Please edit documentation in R/s3control_operations.R
 \name{s3control_create_access_point}
 \alias{s3control_create_access_point}
-\title{This operation is not supported by directory buckets}
+\title{Creates an access point and associates it to a specified bucket}
 \usage{
 s3control_create_access_point(
   AccountId,
@@ -10,14 +10,21 @@ s3control_create_access_point(
   Bucket,
   VpcConfiguration = NULL,
   PublicAccessBlockConfiguration = NULL,
-  BucketAccountId = NULL
+  BucketAccountId = NULL,
+  Scope = NULL
 )
 }
 \arguments{
 \item{AccountId}{[required] The Amazon Web Services account ID for the account that owns the
 specified access point.}
 
-\item{Name}{[required] The name you want to assign to this access point.}
+\item{Name}{[required] The name you want to assign to this access point.
+
+For directory buckets, the access point name must consist of a base name
+that you provide and suffix that includes the \code{ZoneID} (Amazon Web
+Services Availability Zone or Local Zone) of your bucket location,
+followed by \code{--xa-s3}. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points-directory-buckets.html}{Managing access to shared datasets in directory buckets with access points}
+in the Amazon S3 User Guide.}
 
 \item{Bucket}{[required] The name of the bucket that you want to associate this access point
 with.
@@ -51,9 +58,16 @@ For same account access point when your bucket and access point belong
 to the same account owner, the \code{BucketAccountId} is not required. For
 cross-account access point when your bucket and access point are not in
 the same account, the \code{BucketAccountId} is required.}
+
+\item{Scope}{For directory buckets, you can filter access control to specific
+prefixes, API operations, or a combination of both. For more
+information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points-directory-buckets.html}{Managing access to shared datasets in directory buckets with access points}
+in the Amazon S3 User Guide.
+
+Scope is not supported for access points for general purpose buckets.}
 }
 \description{
-This operation is not supported by directory buckets.
+Creates an access point and associates it to a specified bucket. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points.html}{Managing access to shared datasets in general purpose buckets with access points} or \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points-directory-buckets.html}{Managing access to shared datasets in directory buckets with access points} in the \emph{Amazon S3 User Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/s3control_create_access_point/} for full documentation.
 }

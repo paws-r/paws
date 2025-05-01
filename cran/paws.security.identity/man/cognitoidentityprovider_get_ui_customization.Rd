@@ -2,18 +2,18 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_get_ui_customization}
 \alias{cognitoidentityprovider_get_ui_customization}
-\title{Gets the user interface (UI) Customization information for a particular
-app client's app UI, if any such information exists for the client}
+\title{Given a user pool ID or app client, returns information about classic
+hosted UI branding that you applied, if any}
 \usage{
 cognitoidentityprovider_get_ui_customization(UserPoolId, ClientId = NULL)
 }
 \arguments{
-\item{UserPoolId}{[required] The ID of the user pool.}
+\item{UserPoolId}{[required] The ID of the user pool that you want to query for branding settings.}
 
-\item{ClientId}{The client ID for the client app.}
+\item{ClientId}{The ID of the app client that you want to query for branding settings.}
 }
 \description{
-Gets the user interface (UI) Customization information for a particular app client's app UI, if any such information exists for the client. If nothing is set for the particular client, but there is an existing pool level customization (the app \code{clientId} is \code{ALL}), then that information is returned. If nothing is present, then an empty shape is returned.
+Given a user pool ID or app client, returns information about classic hosted UI branding that you applied, if any. Returns user-pool level branding information if no app client branding is applied, or if you don't specify an app client ID. Returns an empty object if you haven't applied hosted UI branding to either the client or the user pool. For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/hosted-ui-classic-branding.html}{Hosted UI (classic) branding}.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_get_ui_customization/} for full documentation.
 }

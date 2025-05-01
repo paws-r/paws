@@ -33,8 +33,8 @@ if you want to restrict access to authenticated users only. Set to
 \code{NONE} if you want to bypass IAM authentication to create a public
 endpoint. For more information, see \href{https://docs.aws.amazon.com/lambda/latest/dg/urls-auth.html}{Security and auth model for Lambda function URLs}.}
 
-\item{Cors}{The \href{https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS}{cross-origin resource sharing (CORS)} settings
-for your function URL.}
+\item{Cors}{The \href{https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS}{cross-origin resource sharing (CORS)}
+settings for your function URL.}
 
 \item{InvokeMode}{Use one of the following options:
 \itemize{

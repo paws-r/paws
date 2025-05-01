@@ -2,7 +2,7 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_admin_update_user_attributes}
 \alias{cognitoidentityprovider_admin_update_user_attributes}
-\title{This action might generate an SMS text message}
+\title{Updates the specified user's attributes}
 \usage{
 cognitoidentityprovider_admin_update_user_attributes(
   UserPoolId,
@@ -14,11 +14,11 @@ cognitoidentityprovider_admin_update_user_attributes(
 \arguments{
 \item{UserPoolId}{[required] The ID of the user pool where you want to update user attributes.}
 
-\item{Username}{[required] The username of the user that you want to query or modify. The value of
-this parameter is typically your user's username, but it can be any of
-their alias attributes. If \code{username} isn't an alias attribute in your
-user pool, this value must be the \code{sub} of a local user or the username
-of a user from a third-party IdP.}
+\item{Username}{[required] The name of the user that you want to query or modify. The value of this
+parameter is typically your user's username, but it can be any of their
+alias attributes. If \code{username} isn't an alias attribute in your user
+pool, this value must be the \code{sub} of a local user or the username of a
+user from a third-party IdP.}
 
 \item{UserAttributes}{[required] An array of name-value pairs representing user attributes.
 
@@ -53,7 +53,7 @@ the ClientMetadata parameter in your AdminUpdateUserAttributes request.
 In your function code in Lambda, you can process the \code{clientMetadata}
 value to enhance your workflow for your specific needs.
 
-For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-working-with-lambda-triggers.html}{Customizing user pool Workflows with Lambda Triggers}
+For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-working-with-lambda-triggers.html}{Using Lambda triggers}
 in the \emph{Amazon Cognito Developer Guide}.
 
 When you use the \code{ClientMetadata} parameter, note that Amazon Cognito
@@ -69,7 +69,7 @@ in this parameter.
 }}
 }
 \description{
-This action might generate an SMS text message. Starting June 1, 2021, US telecom carriers require you to register an origination phone number before you can send SMS messages to US phone numbers. If you use SMS text messages in Amazon Cognito, you must register a phone number with Amazon Pinpoint. Amazon Cognito uses the registered number automatically. Otherwise, Amazon Cognito users who must receive SMS messages might not be able to sign up, activate their accounts, or sign in.
+Updates the specified user's attributes. To delete an attribute from your user, submit the attribute in your API request with a blank value.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_admin_update_user_attributes/} for full documentation.
 }

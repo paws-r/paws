@@ -2,17 +2,18 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_start_user_import_job}
 \alias{cognitoidentityprovider_start_user_import_job}
-\title{Starts the user import}
+\title{Instructs your user pool to start importing users from a CSV file that
+contains their usernames and attributes}
 \usage{
 cognitoidentityprovider_start_user_import_job(UserPoolId, JobId)
 }
 \arguments{
-\item{UserPoolId}{[required] The ID of the user pool that the users are being imported into.}
+\item{UserPoolId}{[required] The ID of the user pool that you want to start importing users into.}
 
-\item{JobId}{[required] The job ID for the user import job.}
+\item{JobId}{[required] The ID of a user import job that you previously created.}
 }
 \description{
-Starts the user import.
+Instructs your user pool to start importing users from a CSV file that contains their usernames and attributes. For more information about importing users from a CSV file, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-using-import-tool.html}{Importing users from a CSV file}.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_start_user_import_job/} for full documentation.
 }

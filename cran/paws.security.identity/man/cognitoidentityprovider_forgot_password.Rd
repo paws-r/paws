@@ -2,8 +2,8 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_forgot_password}
 \alias{cognitoidentityprovider_forgot_password}
-\title{Calling this API causes a message to be sent to the end user with a
-confirmation code that is required to change the user's password}
+\title{Sends a password-reset confirmation code for the currently signed-in
+user}
 \usage{
 cognitoidentityprovider_forgot_password(
   ClientId,
@@ -15,27 +15,30 @@ cognitoidentityprovider_forgot_password(
 )
 }
 \arguments{
-\item{ClientId}{[required] The ID of the client associated with the user pool.}
+\item{ClientId}{[required] The ID of the user pool app client associated with the current signed-in
+user.}
 
 \item{SecretHash}{A keyed-hash message authentication code (HMAC) calculated using the
 secret key of a user pool client and username plus the client ID in the
 message. For more information about \code{SecretHash}, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/signing-up-users-in-your-app.html#cognito-user-pools-computing-secret-hash}{Computing secret hash values}.}
 
-\item{UserContextData}{Contextual data about your user session, such as the device fingerprint,
-IP address, or location. Amazon Cognito advanced security evaluates the
+\item{UserContextData}{Contextual data about your user session like the device fingerprint, IP
+address, or location. Amazon Cognito threat protection evaluates the
 risk of an authentication event based on the context that your app
 generates and passes to Amazon Cognito when it makes API requests.
 
 For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-settings-viewing-threat-protection-app.html}{Collecting data for threat protection in applications}.}
 
-\item{Username}{[required] The username of the user that you want to query or modify. The value of
-this parameter is typically your user's username, but it can be any of
-their alias attributes. If \code{username} isn't an alias attribute in your
-user pool, this value must be the \code{sub} of a local user or the username
-of a user from a third-party IdP.}
+\item{Username}{[required] The name of the user that you want to query or modify. The value of this
+parameter is typically your user's username, but it can be any of their
+alias attributes. If \code{username} isn't an alias attribute in your user
+pool, this value must be the \code{sub} of a local user or the username of a
+user from a third-party IdP.}
 
-\item{AnalyticsMetadata}{The Amazon Pinpoint analytics metadata that contributes to your metrics
-for \code{\link[=cognitoidentityprovider_forgot_password]{forgot_password}} calls.}
+\item{AnalyticsMetadata}{Information that supports analytics outcomes with Amazon Pinpoint,
+including the user's endpoint ID. The endpoint ID is a destination for
+Amazon Pinpoint push notifications, for example a device identifier,
+email address, or phone number.}
 
 \item{ClientMetadata}{A map of custom key-value pairs that you can provide as input for any
 custom workflows that this action triggers.
@@ -51,7 +54,7 @@ ClientMetadata parameter in your ForgotPassword request. In your
 function code in Lambda, you can process the \code{clientMetadata} value to
 enhance your workflow for your specific needs.
 
-For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-working-with-lambda-triggers.html}{Customizing user pool Workflows with Lambda Triggers}
+For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-working-with-lambda-triggers.html}{Using Lambda triggers}
 in the \emph{Amazon Cognito Developer Guide}.
 
 When you use the \code{ClientMetadata} parameter, note that Amazon Cognito
@@ -67,7 +70,7 @@ in this parameter.
 }}
 }
 \description{
-Calling this API causes a message to be sent to the end user with a confirmation code that is required to change the user's password. For the \code{Username} parameter, you can use the username or user alias. The method used to send the confirmation code is sent according to the specified AccountRecoverySetting. For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/managing-users-passwords.html}{Recovering User Accounts} in the \emph{Amazon Cognito Developer Guide}. To use the confirmation code for resetting the password, call \code{\link[=cognitoidentityprovider_confirm_forgot_password]{confirm_forgot_password}}.
+Sends a password-reset confirmation code for the currently signed-in user.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_forgot_password/} for full documentation.
 }

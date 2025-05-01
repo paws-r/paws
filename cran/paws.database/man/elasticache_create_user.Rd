@@ -20,7 +20,7 @@ elasticache_create_user(
 
 \item{UserName}{[required] The username of the user.}
 
-\item{Engine}{[required] The current supported value is Redis.}
+\item{Engine}{[required] The options are valkey or redis.}
 
 \item{Passwords}{Passwords used for this user. You can create up to two passwords for
 each user.}
@@ -35,7 +35,7 @@ A tag key must be accompanied by a tag value, although null is accepted.}
 \item{AuthenticationMode}{Specifies how to authenticate the user.}
 }
 \description{
-For Valkey engine version 7.2 onwards and Redis OSS 6.0 and onwards: Creates a user. For more information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/Clusters.RBAC.html}{Using Role Based Access Control (RBAC)}.
+For Valkey engine version 7.2 onwards and Redis OSS 6.0 to 7.1: Creates a user. For more information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/Clusters.RBAC.html}{Using Role Based Access Control (RBAC)}.
 
 See \url{https://www.paws-r-sdk.com/docs/elasticache_create_user/} for full documentation.
 }

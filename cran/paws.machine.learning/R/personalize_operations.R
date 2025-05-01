@@ -769,7 +769,7 @@ personalize_delete_campaign <- function(campaignArn) {
 #' Deletes a dataset
 #'
 #' @description
-#' Deletes a dataset. You can't delete a dataset if an associated `DatasetImportJob` or `SolutionVersion` is in the CREATE PENDING or IN PROGRESS state. For more information on datasets, see [`create_dataset`][personalize_create_dataset].
+#' Deletes a dataset. You can't delete a dataset if an associated `DatasetImportJob` or `SolutionVersion` is in the CREATE PENDING or IN PROGRESS state. For more information about deleting datasets, see [Deleting a dataset](https://docs.aws.amazon.com/personalize/latest/dg/delete-dataset.html).
 #'
 #' See [https://www.paws-r-sdk.com/docs/personalize_delete_dataset/](https://www.paws-r-sdk.com/docs/personalize_delete_dataset/) for full documentation.
 #'

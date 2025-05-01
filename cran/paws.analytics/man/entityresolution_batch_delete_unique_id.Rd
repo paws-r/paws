@@ -5,17 +5,17 @@
 \title{Deletes multiple unique IDs in a matching workflow}
 \usage{
 entityresolution_batch_delete_unique_id(
+  workflowName,
   inputSource = NULL,
-  uniqueIds,
-  workflowName
+  uniqueIds
 )
 }
 \arguments{
+\item{workflowName}{[required] The name of the workflow.}
+
 \item{inputSource}{The input source for the batch delete unique ID operation.}
 
 \item{uniqueIds}{[required] The unique IDs to delete.}
-
-\item{workflowName}{[required] The name of the workflow.}
 }
 \description{
 Deletes multiple unique IDs in a matching workflow.

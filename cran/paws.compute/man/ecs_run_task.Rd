@@ -42,7 +42,10 @@ providers.}
 
 \item{cluster}{The short name or full Amazon Resource Name (ARN) of the cluster to run
 your task on. If you do not specify a cluster, the default cluster is
-assumed.}
+assumed.
+
+Each account receives a default cluster the first time you use the
+service, but you may also create other clusters.}
 
 \item{count}{The number of instantiations of the specified task to place on your
 cluster. You can specify up to 10 tasks for each call.}
